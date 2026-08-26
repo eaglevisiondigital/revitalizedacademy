@@ -68,6 +68,7 @@ const matrixData={
 
 const matrixNodes=document.querySelectorAll('.matrix-node[data-matrix-target]');
 if(matrixNodes.length){
+  const modal=document.getElementById('matrix-modal');
   const detailCard=document.getElementById('matrix-detail-card');
   const kicker=document.getElementById('matrix-detail-kicker');
   const title=document.getElementById('matrix-detail-title');
@@ -84,13 +85,27 @@ if(matrixNodes.length){
   let settleTimer=null;
 
   const setCopy=(data)=>{
-    detailCard.className=`matrix-detail-card theme-${data.theme}`;
+    detailCard.className=`matrix-detail-card matrix-detail-modal theme-${data.theme}`;
     figure.className=`matrix-detail-figure theme-${data.theme}`;
     kicker.textContent=data.kicker;
     title.textContent=data.title;
     description.textContent=data.description;
     list.innerHTML=data.items.map((item,index)=>`<li><span class="matrix-detail-index">0${index+1}</span><span class="matrix-detail-item-text">${item}</span></li>`).join('');
     caption.textContent=data.caption;
+  };
+
+  const openModal=()=>{
+    if(!modal) return;
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.classList.add('matrix-modal-open');
+  };
+
+  const closeModal=()=>{
+    if(!modal) return;
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden','true');
+    document.body.classList.remove('matrix-modal-open');
   };
 
   const settleOnFocus=(data)=>{
@@ -103,12 +118,13 @@ if(matrixNodes.length){
     },160);
   };
 
-  const applyMatrixState=(key,node,{animate=true}={})=>{
+  const applyMatrixState=(key,node,{animate=true,open=false}={})=>{
     const data=matrixData[key];
     if(!data) return;
     matrixNodes.forEach((btn)=>{btn.classList.remove('active');btn.setAttribute('aria-selected','false');});
     if(node){node.classList.add('active');node.setAttribute('aria-selected','true');}
     setCopy(data);
+    if(open) openModal();
 
     if(settleTimer){window.clearTimeout(settleTimer);settleTimer=null;}
     if(!animate){
@@ -123,7 +139,7 @@ if(matrixNodes.length){
 
     const currentMod=((currentSpin%360)+360)%360;
     let delta=(data.spinTarget-currentMod+360)%360;
-    if(delta<30) delta+=360;
+    if(delta<45) delta+=360;
     currentSpin+=delta;
 
     viewport.classList.add('is-spinning');
@@ -132,10 +148,19 @@ if(matrixNodes.length){
     requestAnimationFrame(()=>{
       requestAnimationFrame(()=>spinWheel.style.setProperty('--spin',`${currentSpin}deg`));
     });
-    settleTimer=window.setTimeout(()=>settleOnFocus(data),960);
+    settleTimer=window.setTimeout(()=>settleOnFocus(data),980);
   };
 
-  matrixNodes.forEach((node)=>node.addEventListener('click',()=>{applyMatrixState(node.dataset.matrixTarget,node); if(window.innerWidth<992){setTimeout(()=>detailCard.scrollIntoView({behavior:'smooth',block:'start'}),140);}}));
+  matrixNodes.forEach((node)=>node.addEventListener('click',()=>applyMatrixState(node.dataset.matrixTarget,node,{open:true})));
+  if(modal){
+    modal.querySelectorAll('[data-matrix-close]').forEach((el)=>el.addEventListener('click',closeModal));
+    modal.addEventListener('click',(event)=>{
+      if(event.target===modal) closeModal();
+    });
+    document.addEventListener('keydown',(event)=>{
+      if(event.key==='Escape' && modal.classList.contains('is-open')) closeModal();
+    });
+  }
   const initial=[...matrixNodes].find((node)=>node.classList.contains('active')) || matrixNodes[0];
-  if(initial) applyMatrixState(initial.dataset.matrixTarget,initial,{animate:false});
+  if(initial) applyMatrixState(initial.dataset.matrixTarget,initial,{animate:false,open:false});
 }
