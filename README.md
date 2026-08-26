@@ -46,3 +46,10 @@ Netlify Forms captures the consultation, enrollment, and Founder’s Webinar not
 - Hero artwork is now scaled with `object-fit: contain` so heads are never cropped and proportions stay closer to the approved mockup.
 - Preserves Build 4 headline and CTA sizing.
 - Replaces the header logo asset with the full approved transparent LightBG logo.
+
+## Build 6 hero refinement
+- Preserves the approved Justyn & Elle hero artwork exactly as supplied.
+- Keeps the current founder image scale/crop behavior from Build 5.
+- Moves the desktop hero copy slightly left for better visual balance.
+- Increases the desktop headline and supporting copy modestly for a stronger left-side presence.
+- Widens CTA padding without changing the mobile layout.
