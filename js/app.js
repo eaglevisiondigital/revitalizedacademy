@@ -22,47 +22,47 @@ document.querySelectorAll('.video-embed[data-youtube-id]').forEach((wrap)=>{
 const matrixData={
   athletic:{
     theme:'athletic',
-    kicker:'ATHLETIC QUADRANT',
+    kicker:'ATHLETIC FOCUS',
     title:'Move dynamically without pain',
-    description:'The Athletic quadrant helps you build a body that can move, recover, and perform with greater confidence. It focuses on the habits that help you stay active, capable, and resilient.',
+    description:'The Athletic focus helps you build a body that can move, recover, and perform with greater confidence. It highlights the daily inputs that keep you active, resilient, and capable for the long haul.',
     items:['Functional Training','Holistic Recovery','Thriving Diet'],
-    caption:'Focus areas include Functional Training, Holistic Recovery, and a Thriving Diet.',
+    caption:'Key focus areas include Functional Training, Holistic Recovery, and a Thriving Diet.',
     spinTarget:0,
     focus:'assets/images/matrix-focus-athletic.png',
-    alt:'Athletic quadrant detail from the ReVitalized Longevity Matrix'
+    alt:'Athletic focus detail from the ReVitalized Longevity Matrix'
   },
   refined:{
     theme:'refined',
-    kicker:'REFINED QUADRANT',
+    kicker:'REFINED FOCUS',
     title:'Be impressed with your reflection',
-    description:'The Refined quadrant is centered on confidence, balance, and restoration. It highlights the systems that support body composition, hormone balance, and a stronger sense of well-being.',
+    description:'The Refined focus is centered on confidence, balance, and restoration. It emphasizes the systems that support body composition, hormone balance, gut restoration, and a stronger sense of well-being.',
     items:['Gut Renovation','Hormone Balancing','Neural Repatterning'],
-    caption:'Focus areas include Gut Renovation, Hormone Balancing, and Neural Repatterning.',
+    caption:'Key focus areas include Gut Renovation, Hormone Balancing, and Neural Repatterning.',
     spinTarget:270,
     focus:'assets/images/matrix-focus-refined.png',
-    alt:'Refined quadrant detail from the ReVitalized Longevity Matrix'
+    alt:'Refined focus detail from the ReVitalized Longevity Matrix'
   },
   organized:{
     theme:'organized',
-    kicker:'ORGANIZED QUADRANT',
+    kicker:'ORGANIZED FOCUS',
     title:'Living healthy is easy and fun',
-    description:'The Organized quadrant helps turn healthy living into something practical and sustainable. It brings more clarity, momentum, and structure to the habits that support long-term progress.',
+    description:'The Organized focus helps turn healthy living into something practical and sustainable. It adds clarity, momentum, and structure to the habits that make long-term progress easier to maintain.',
     items:['Wise Budgeting','Mentality Realignment','Momentum Regimens'],
-    caption:'Focus areas include Wise Budgeting, Mentality Realignment, and Momentum Regimens.',
+    caption:'Key focus areas include Wise Budgeting, Mentality Realignment, and Momentum Regimens.',
     spinTarget:180,
     focus:'assets/images/matrix-focus-organized.png',
-    alt:'Organized quadrant detail from the ReVitalized Longevity Matrix'
+    alt:'Organized focus detail from the ReVitalized Longevity Matrix'
   },
   energized:{
     theme:'energized',
-    kicker:'ENERGIZED QUADRANT',
+    kicker:'ENERGIZED FOCUS',
     title:'Feel good everyday',
-    description:'The Energized quadrant focuses on restoring energy, helping the body clear what is not serving it, and building the daily foundations that help you feel better and function better.',
+    description:'The Energized focus is about restoring energy, helping the body clear what is not serving it, and building the foundational rhythms that help you feel better and function better each day.',
     items:['Quantum Habits','Systemic Detoxification','Cellular Hydration'],
-    caption:'Focus areas include Quantum Habits, Systemic Detoxification, and Cellular Hydration.',
+    caption:'Key focus areas include Quantum Habits, Systemic Detoxification, and Cellular Hydration.',
     spinTarget:90,
     focus:'assets/images/matrix-focus-energized.png',
-    alt:'Energized quadrant detail from the ReVitalized Longevity Matrix'
+    alt:'Energized focus detail from the ReVitalized Longevity Matrix'
   }
 };
 
@@ -135,7 +135,7 @@ if(matrixNodes.length){
     settleTimer=window.setTimeout(()=>settleOnFocus(data),960);
   };
 
-  matrixNodes.forEach((node)=>node.addEventListener('click',()=>applyMatrixState(node.dataset.matrixTarget,node)));
+  matrixNodes.forEach((node)=>node.addEventListener('click',()=>{applyMatrixState(node.dataset.matrixTarget,node); if(window.innerWidth<992){setTimeout(()=>detailCard.scrollIntoView({behavior:'smooth',block:'start'}),140);}}));
   const initial=[...matrixNodes].find((node)=>node.classList.contains('active')) || matrixNodes[0];
   if(initial) applyMatrixState(initial.dataset.matrixTarget,initial,{animate:false});
 }
