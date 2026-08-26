@@ -27,9 +27,9 @@ const matrixData={
     description:'The Athletic quadrant helps you build a body that can move, recover, and perform with greater confidence. It focuses on the habits that help you stay active, capable, and resilient.',
     items:['Functional Training','Holistic Recovery','Thriving Diet'],
     caption:'Focus areas include Functional Training, Holistic Recovery, and a Thriving Diet.',
-    rotation:'0deg',
-    x:0,
-    y:145
+    spinTarget:0,
+    focus:'assets/images/matrix-focus-athletic.png',
+    alt:'Athletic quadrant detail from the ReVitalized Longevity Matrix'
   },
   refined:{
     theme:'refined',
@@ -38,9 +38,9 @@ const matrixData={
     description:'The Refined quadrant is centered on confidence, balance, and restoration. It highlights the systems that support body composition, hormone balance, and a stronger sense of well-being.',
     items:['Gut Renovation','Hormone Balancing','Neural Repatterning'],
     caption:'Focus areas include Gut Renovation, Hormone Balancing, and Neural Repatterning.',
-    rotation:'-90deg',
-    x:0,
-    y:218
+    spinTarget:270,
+    focus:'assets/images/matrix-focus-refined.png',
+    alt:'Refined quadrant detail from the ReVitalized Longevity Matrix'
   },
   organized:{
     theme:'organized',
@@ -49,9 +49,9 @@ const matrixData={
     description:'The Organized quadrant helps turn healthy living into something practical and sustainable. It brings more clarity, momentum, and structure to the habits that support long-term progress.',
     items:['Wise Budgeting','Mentality Realignment','Momentum Regimens'],
     caption:'Focus areas include Wise Budgeting, Mentality Realignment, and Momentum Regimens.',
-    rotation:'0deg',
-    x:0,
-    y:-145
+    spinTarget:180,
+    focus:'assets/images/matrix-focus-organized.png',
+    alt:'Organized quadrant detail from the ReVitalized Longevity Matrix'
   },
   energized:{
     theme:'energized',
@@ -60,11 +60,12 @@ const matrixData={
     description:'The Energized quadrant focuses on restoring energy, helping the body clear what is not serving it, and building the daily foundations that help you feel better and function better.',
     items:['Quantum Habits','Systemic Detoxification','Cellular Hydration'],
     caption:'Focus areas include Quantum Habits, Systemic Detoxification, and Cellular Hydration.',
-    rotation:'90deg',
-    x:0,
-    y:218
+    spinTarget:90,
+    focus:'assets/images/matrix-focus-energized.png',
+    alt:'Energized quadrant detail from the ReVitalized Longevity Matrix'
   }
 };
+
 const matrixNodes=document.querySelectorAll('.matrix-node[data-matrix-target]');
 if(matrixNodes.length){
   const detailCard=document.getElementById('matrix-detail-card');
@@ -74,37 +75,67 @@ if(matrixNodes.length){
   const list=document.getElementById('matrix-detail-list');
   const caption=document.getElementById('matrix-detail-caption');
   const figure=document.getElementById('matrix-detail-figure');
-  const rotationImage=document.getElementById('matrix-rotation-image');
+  const viewport=document.querySelector('.matrix-spin-viewport');
+  const spinLayer=document.getElementById('matrix-spin-layer');
+  const focusLayer=document.getElementById('matrix-focus-layer');
+  const spinWheel=document.getElementById('matrix-spin-wheel');
+  const focusImage=document.getElementById('matrix-focus-image');
+  let currentSpin=0;
+  let settleTimer=null;
 
-  const applyMatrixState=(key,node)=>{
+  const setCopy=(data)=>{
+    detailCard.className=`matrix-detail-card theme-${data.theme}`;
+    figure.className=`matrix-detail-figure theme-${data.theme}`;
+    kicker.textContent=data.kicker;
+    title.textContent=data.title;
+    description.textContent=data.description;
+    list.innerHTML=data.items.map((item,index)=>`<li data-index="0${index+1}">${item}</li>`).join('');
+    caption.textContent=data.caption;
+  };
+
+  const settleOnFocus=(data)=>{
+    focusImage.src=data.focus;
+    focusImage.alt=data.alt;
+    focusLayer.classList.add('is-visible');
+    window.setTimeout(()=>{
+      spinLayer.classList.remove('is-visible');
+      viewport.classList.remove('is-spinning');
+    },160);
+  };
+
+  const applyMatrixState=(key,node,{animate=true}={})=>{
     const data=matrixData[key];
     if(!data) return;
     matrixNodes.forEach((btn)=>{btn.classList.remove('active');btn.setAttribute('aria-selected','false');});
-    if(node){
-      node.classList.add('active');
-      node.setAttribute('aria-selected','true');
+    if(node){node.classList.add('active');node.setAttribute('aria-selected','true');}
+    setCopy(data);
+
+    if(settleTimer){window.clearTimeout(settleTimer);settleTimer=null;}
+    if(!animate){
+      currentSpin=data.spinTarget;
+      spinWheel.style.setProperty('--spin',`${currentSpin}deg`);
+      focusImage.src=data.focus;
+      focusImage.alt=data.alt;
+      focusLayer.classList.add('is-visible');
+      spinLayer.classList.remove('is-visible');
+      return;
     }
-    detailCard.classList.add('is-changing');
-    window.setTimeout(()=>{
-      detailCard.className=`matrix-detail-card theme-${data.theme}`;
-      figure.className=`matrix-detail-figure theme-${data.theme}`;
-      kicker.textContent=data.kicker;
-      title.textContent=data.title;
-      description.textContent=data.description;
-      list.innerHTML=data.items.map((item,index)=>`<li data-index="0${index+1}">${item}</li>`).join('');
-      caption.textContent=data.caption;
-      rotationImage.style.setProperty('--mx',`${data.x}px`);
-      rotationImage.style.setProperty('--my',`${data.y}px`);
-      rotationImage.style.setProperty('--rot',data.rotation);
-    },120);
+
+    const currentMod=((currentSpin%360)+360)%360;
+    let delta=(data.spinTarget-currentMod+360)%360;
+    if(delta<30) delta+=360;
+    currentSpin+=delta;
+
+    viewport.classList.add('is-spinning');
+    focusLayer.classList.remove('is-visible');
+    spinLayer.classList.add('is-visible');
+    requestAnimationFrame(()=>{
+      requestAnimationFrame(()=>spinWheel.style.setProperty('--spin',`${currentSpin}deg`));
+    });
+    settleTimer=window.setTimeout(()=>settleOnFocus(data),960);
   };
 
-  matrixNodes.forEach((node)=>{
-    node.addEventListener('click',()=>applyMatrixState(node.dataset.matrixTarget,node));
-  });
-
+  matrixNodes.forEach((node)=>node.addEventListener('click',()=>applyMatrixState(node.dataset.matrixTarget,node)));
   const initial=[...matrixNodes].find((node)=>node.classList.contains('active')) || matrixNodes[0];
-  if(initial){
-    applyMatrixState(initial.dataset.matrixTarget,initial);
-  }
+  if(initial) applyMatrixState(initial.dataset.matrixTarget,initial,{animate:false});
 }

@@ -489,3 +489,80 @@
   .matrix-rotation-stage{min-height:250px}
   .matrix-rotation-image{width:570px}
 }
+
+/* Build 10 — exact square Matrix spin + locked upright focus window */
+.matrix-detail-card{overflow:hidden}
+.matrix-detail-copy{border-left:6px solid var(--matrix-accent,#78ad76);background:
+  radial-gradient(circle at 100% 0,var(--matrix-accent-soft,rgba(80,160,80,.09)) 0,transparent 34%),
+  #fff}
+.matrix-detail-kicker{font-size:13px;padding:11px 17px 11px 38px;letter-spacing:.105em;text-transform:uppercase}
+.matrix-detail-copy h3{max-width:650px}
+.matrix-detail-list li{padding-left:66px;background:linear-gradient(145deg,#fff 0%,#f5f9f3 100%);border-color:color-mix(in srgb,var(--matrix-accent,#78ad76) 20%,#dce7d9);transition:transform .2s ease,box-shadow .2s ease}
+.matrix-detail-list li:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(20,45,24,.08)}
+.matrix-detail-list li::after{content:attr(data-index);background:var(--matrix-accent-soft,rgba(109,167,108,.14));color:var(--matrix-accent,#5b9d5f);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--matrix-accent,#5b9d5f) 24%,transparent)}
+
+.matrix-detail-figure{padding:24px;background:linear-gradient(180deg,#fbfdf9,#f3f8ef)}
+.matrix-spin-viewport{
+  position:relative;
+  width:100%;
+  aspect-ratio:610/405;
+  overflow:hidden;
+  border-radius:28px;
+  background:#fff;
+  border:1px solid rgba(153,187,146,.42);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.85),0 18px 36px rgba(28,53,19,.07);
+  isolation:isolate;
+}
+.matrix-spin-viewport::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:4;
+  pointer-events:none;
+  border-radius:inherit;
+  box-shadow:inset 0 0 34px rgba(30,70,26,.035);
+}
+.matrix-spin-viewport::after{
+  content:"";
+  position:absolute;
+  left:50%;bottom:-110px;
+  width:74%;height:190px;
+  transform:translateX(-50%);
+  border-radius:50%;
+  background:radial-gradient(ellipse at center,var(--matrix-accent-soft,rgba(80,160,80,.10)) 0,transparent 68%);
+  z-index:3;pointer-events:none;
+}
+.matrix-spin-layer,.matrix-focus-layer{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;transition:opacity .18s ease}
+.matrix-spin-layer{opacity:0;z-index:1;background:#fff}
+.matrix-spin-layer.is-visible{opacity:1}
+.matrix-focus-layer{opacity:0;z-index:2;padding:0;background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(250,252,248,.98))}
+.matrix-focus-layer.is-visible{opacity:1}
+.matrix-focus-layer img{width:100%;height:100%;object-fit:contain;display:block;filter:saturate(.98) contrast(.99)}
+.matrix-spin-wheel{
+  position:absolute;
+  left:50%;
+  top:-2%;
+  width:118%;
+  max-width:none;
+  height:auto;
+  transform:translateX(-50%) rotate(var(--spin,0deg));
+  transform-origin:50% 50%;
+  transition:transform .92s cubic-bezier(.18,.72,.2,1);
+  will-change:transform;
+}
+.matrix-spin-viewport.is-spinning .matrix-spin-wheel{filter:saturate(.95) contrast(.98)}
+.matrix-detail-figure.theme-athletic{background:linear-gradient(180deg,#f9fdff,#eef8fc)}
+.matrix-detail-figure.theme-refined{background:linear-gradient(180deg,#fffafb,#fff0f5)}
+.matrix-detail-figure.theme-organized{background:linear-gradient(180deg,#fcfaff,#f3effc)}
+.matrix-detail-figure.theme-energized{background:linear-gradient(180deg,#fffef7,#fff7dc)}
+
+@media(max-width:980px){
+  .matrix-detail-copy{border-left:0;border-top:6px solid var(--matrix-accent,#78ad76)}
+  .matrix-detail-figure{padding:0 22px 24px}
+  .matrix-spin-viewport{aspect-ratio:610/410}
+}
+@media(max-width:740px){
+  .matrix-detail-list li{padding-left:60px}
+  .matrix-spin-viewport{border-radius:22px;aspect-ratio:610/430}
+  .matrix-spin-wheel{width:125%}
+}
