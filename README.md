@@ -32,3 +32,10 @@ The homepage contains prepared placeholders for:
 Netlify Forms captures the consultation, enrollment, and Founder’s Webinar notification forms. Configure form notification recipients in the Netlify dashboard to:
 
 `contact@revitalizedacademy.com`
+
+
+## Build 4 update
+- Uses the exact approved Justyn & Elle hero image asset without facial regeneration or retouching.
+- Hero and header expand across more of the viewport on desktop while preserving responsive behavior.
+- On mobile/tablet the hero stacks so the approved founder image remains visible without awkward cropping.
+- Primary secondary CTA is now “Free Health Assessment.”

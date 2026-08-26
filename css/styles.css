@@ -16,3 +16,95 @@
 /* Build 3 — inline video embeds + updated Longevity Matrix */
 .video-embed{position:relative;width:100%;aspect-ratio:16/9;background:#0a311e;overflow:hidden;border-radius:inherit}.video-poster{position:absolute;inset:0;border:0;padding:0;margin:0;width:100%;height:100%;cursor:pointer;background:#0a311e;display:block}.video-poster img{width:100%;height:100%;object-fit:cover;display:block}.video-poster:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.18));transition:.2s}.video-poster:hover:after{background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.08))}.video-poster .play-button{z-index:2}.play-button.small{width:56px;height:56px;font-size:20px}.video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.featured-video{min-height:0;aspect-ratio:16/9}.featured-video img{min-height:0}.testimonial-card.video-story{display:block;padding:0;overflow:hidden}.testimonial-card.video-story .video-embed{border-radius:0;aspect-ratio:16/9}.testimonial-card.video-story>div:last-child{padding:13px 15px 15px}.testimonial-card.video-story strong{font-size:15px}.testimonial-card.video-story p{margin:4px 0 8px}.testimonial-card.video-story span{font-size:11px;color:var(--green);font-weight:800}.story-card .video-embed{border-radius:0}.story-card .video-poster img{height:100%}.matrix-section{align-items:start}.matrix-media{display:grid;grid-template-columns:1fr;gap:16px}.matrix-image-card,.matrix-video-card{margin:0;border:1px solid var(--line);border-radius:16px;background:#fff;overflow:hidden;box-shadow:0 8px 24px rgba(20,45,24,.05)}.matrix-image-card img{display:block;width:100%;height:auto}.matrix-image-card figcaption{font-size:12px;color:#58625b;padding:10px 14px 12px;text-align:center}.matrix-video-card .video-embed{border-radius:0}.matrix-video-copy{padding:12px 14px;display:flex;flex-direction:column;gap:4px}.matrix-video-copy strong{font-size:14px}.matrix-video-copy span{font-size:12px;color:#5a645d}.video-placeholder.live-video .video-embed{border-radius:14px 14px 0 0}.video-placeholder.live-video .video-poster img{height:100%}
 @media(max-width:740px){.play-button.small{width:50px;height:50px}.matrix-media{gap:12px}}
+
+
+/* Build 4 — full-width premium header/hero + exact approved founder image */
+:root{--content-wide:1680px}
+.site-header{
+  height:104px;
+  grid-template-columns:minmax(280px,360px) 1fr auto;
+  gap:clamp(22px,2.2vw,46px);
+  padding-inline:clamp(28px,4.2vw,84px);
+}
+.brand{display:flex;align-items:center;min-width:0}
+.brand img{width:clamp(245px,16vw,310px);height:auto}
+.main-nav{gap:clamp(24px,2.8vw,54px);font-size:16px}
+.header-cta{min-height:56px;padding-inline:30px;font-size:17px}
+.hero.hero-approved{
+  position:relative;
+  display:block;
+  width:100%;
+  max-width:none;
+  min-height:clamp(640px,50vw,790px);
+  overflow:hidden;
+  isolation:isolate;
+  background:#fff;
+}
+.hero-approved-bg{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  width:100%;
+  height:100%;
+  max-width:none;
+  object-fit:cover;
+  object-position:52% 43%;
+}
+.hero.hero-approved:after{
+  content:"";
+  position:absolute;
+  z-index:1;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(90deg,rgba(255,255,255,.99) 0%,rgba(255,255,255,.96) 30%,rgba(255,255,255,.67) 45%,rgba(255,255,255,.08) 60%,rgba(255,255,255,0) 75%);
+}
+.hero.hero-approved .hero-copy{
+  position:relative;
+  z-index:2;
+  width:min(49vw,790px);
+  min-width:620px;
+  padding:clamp(56px,5.4vw,92px) 20px 48px clamp(36px,4.8vw,96px);
+  align-self:auto;
+}
+.hero.hero-approved h1{
+  font-size:clamp(58px,4.55vw,82px);
+  line-height:.98;
+  margin:24px 0 20px;
+  letter-spacing:-.045em;
+  text-wrap:balance;
+}
+.hero.hero-approved .hero-sub{font-size:clamp(24px,1.7vw,30px);margin-bottom:18px}
+.hero.hero-approved .hero-text{font-size:clamp(17px,1.15vw,20px);line-height:1.48;max-width:680px;margin-bottom:28px}
+.hero.hero-approved .eyebrow{font-size:13px;padding:9px 15px;border-radius:999px;letter-spacing:.055em}
+.hero.hero-approved .hero-actions{gap:16px}
+.hero.hero-approved .btn-large{min-height:60px;font-size:19px;padding-inline:30px}
+.hero.hero-approved .fine-note{font-size:13px;margin-top:15px}
+
+@media(min-width:1800px){
+  .site-header{padding-inline:max(56px,calc((100vw - 1800px)/2))}
+  .hero.hero-approved .hero-copy{padding-left:max(64px,calc((100vw - 1800px)/2))}
+}
+@media(max-width:1100px){
+  .site-header{height:94px;grid-template-columns:245px 1fr auto;padding-inline:26px}.brand img{width:230px}.main-nav{gap:22px;font-size:14px}.header-cta{padding-inline:20px;font-size:15px}
+  .hero.hero-approved{min-height:620px}.hero.hero-approved .hero-copy{width:55vw;min-width:0;padding-left:32px;padding-top:52px}.hero.hero-approved h1{font-size:58px}.hero-approved-bg{object-position:60% 45%}.hero.hero-approved:after{background:linear-gradient(90deg,rgba(255,255,255,.99) 0%,rgba(255,255,255,.95) 38%,rgba(255,255,255,.54) 54%,rgba(255,255,255,0) 74%)}
+}
+@media(max-width:840px){
+  .site-header{height:82px;padding:0 18px;grid-template-columns:1fr auto}.brand img{width:205px}.header-cta{display:none}.menu-toggle{display:block}.main-nav{top:82px}
+  .hero.hero-approved{display:flex;flex-direction:column;min-height:0;background:linear-gradient(180deg,#fff,#fbfef9)}
+  .hero.hero-approved:after{display:none}
+  .hero.hero-approved .hero-copy{order:1;width:100%;min-width:0;padding:38px 22px 28px}
+  .hero.hero-approved h1{font-size:clamp(46px,10vw,64px);margin:20px 0 16px}
+  .hero.hero-approved .hero-sub{font-size:22px}
+  .hero.hero-approved .hero-text{font-size:17px;max-width:680px}
+  .hero.hero-approved .hero-actions{align-items:stretch}.hero.hero-approved .hero-actions .btn{width:100%}
+  .hero-approved-bg{order:2;position:relative;width:100%;height:auto;object-fit:contain;object-position:center;z-index:0}
+}
+@media(max-width:520px){
+  .brand img{width:188px}
+  .hero.hero-approved .hero-copy{padding:30px 18px 24px}
+  .hero.hero-approved h1{font-size:clamp(42px,12vw,54px)}
+  .hero.hero-approved .eyebrow{font-size:11px;padding:8px 11px}
+  .hero.hero-approved .hero-sub{font-size:20px}
+  .hero.hero-approved .btn-large{min-height:56px;font-size:17px;padding-inline:18px}
+  .hero.hero-approved .fine-note{font-size:12px;line-height:1.4}
+}
