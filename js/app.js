@@ -89,7 +89,7 @@ if(matrixNodes.length){
     kicker.textContent=data.kicker;
     title.textContent=data.title;
     description.textContent=data.description;
-    list.innerHTML=data.items.map((item,index)=>`<li data-index="0${index+1}">${item}</li>`).join('');
+    list.innerHTML=data.items.map((item,index)=>`<li><span class="matrix-detail-index">0${index+1}</span><span class="matrix-detail-item-text">${item}</span></li>`).join('');
     caption.textContent=data.caption;
   };
 
