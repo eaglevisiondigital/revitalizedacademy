@@ -39,3 +39,10 @@ Netlify Forms captures the consultation, enrollment, and Founder’s Webinar not
 - Hero and header expand across more of the viewport on desktop while preserving responsive behavior.
 - On mobile/tablet the hero stacks so the approved founder image remains visible without awkward cropping.
 - Primary secondary CTA is now “Free Health Assessment.”
+
+
+## Build 5 hero refinement
+- Uses the exact approved Justyn & Elle hero artwork without altering faces.
+- Hero artwork is now scaled with `object-fit: contain` so heads are never cropped and proportions stay closer to the approved mockup.
+- Preserves Build 4 headline and CTA sizing.
+- Replaces the header logo asset with the full approved transparent LightBG logo.
