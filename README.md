@@ -1,59 +1,34 @@
-# ReVitalized Academy Website — Production Build 1
+# ReVitalized Academy — Production Website Build 2
 
-Static, GitHub-ready, Netlify-ready website based on the approved ReVitalized Academy homepage mockup.
+This build is the ReVitalized Academy corporate/coaching website, not the webinar landing page.
 
-## Included
-- `index.html` — production homepage
-- `consult.html` — free consultation form
-- `enroll.html` — Phase One enrollment form with placeholders for final approved questions
+## Locked strategy
+- ReVitalized Academy and personalized coaching are the primary focus.
+- Approved homepage mockup remains the visual source of truth.
+- "Longevity Matrix" is the current name of the roadmap framework section.
+- Founder’s Webinar appears only as a small "notify me" teaser; registration/payment are not live yet.
+- ReFuel is teased as Coming 2027 with no pricing or multi-pack presentation.
+- Future ecosystem tools are teased without suggesting visitors should wait to begin.
+- Main conversion paths are Start Enrollment and Schedule a Free Consultation.
+- All website form notifications should be configured in Netlify to deliver to contact@revitalizedacademy.com.
+
+## Files
+- `index.html` — Academy-first homepage
+- `stories.html` — complete 12-video client story library
+- `consult.html` — Phase One free consultation form
+- `enroll.html` — Phase One enrollment form placeholder/foundation
 - `css/styles.css` — responsive design system
-- `js/app.js` — mobile navigation
-- `assets/images/` — approved/reference assets used in this build
+- `js/app.js` — mobile navigation behavior
+- `assets/images/` — approved/reference assets used in the build
+- `netlify.toml` — Netlify configuration
 
-## Locked visual direction
-- Approved mockup is the source of truth.
-- Header and hero follow the approved composition as closely as possible.
-- ReVitalized Academy remains the focal brand.
-- Coaching is the primary conversion focus.
-- Longevity section is now labeled **Longevity Matrix**.
-- ReFuel appears only as a secondary **Coming 2027** teaser with no pricing.
-- Future ecosystem is teased without implying clients should wait.
-
-## Forms
-Both forms use Netlify Forms:
-- `consultation`
-- `enrollment`
-
-After deployment, in Netlify configure **Form submission notifications** to:
-
-`contact@revitalizedacademy.com`
-
-This is required because notification routing is configured in Netlify, not hard-coded into static HTML.
-
-## Future integrations
-The forms are intentionally front-end stable so the submission endpoint can later be swapped to:
-- ReVitalized CRM
-- custom back office
-- client portal
-- enrollment workflow
-- Authorize.Net/payment workflow
-
-## Video placeholders
-Three placeholders are included and ready for later YouTube embeds:
-1. Coaching Explanation
-2. Longevity Matrix Explanation
+## Future placeholders
+The homepage contains prepared placeholders for:
+1. Coaching Explanation Video
+2. Longevity Matrix Explanation Video
 3. Program Overview / How Coaching Works
 
-## Existing testimonial links used
-- Brandy & Mark — https://youtu.be/UDwJV-gW7iI2
-- Julien — https://youtu.be/6so5sXskgXA3
-- Watt Family — https://youtu.be/9gDp42pU5S86
+## Netlify form routing
+Netlify Forms captures the consultation, enrollment, and Founder’s Webinar notification forms. Configure form notification recipients in the Netlify dashboard to:
 
-The remaining supplied testimonial links can be added to a dedicated Stories page in the next build.
-
-## Deploy to Netlify
-1. Push this folder to a GitHub repository.
-2. Create a new Netlify site from the repository.
-3. No build command is required.
-4. Publish directory: repository root.
-5. Configure Netlify form notifications to `contact@revitalizedacademy.com`.
+`contact@revitalizedacademy.com`
