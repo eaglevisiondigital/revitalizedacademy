@@ -18,3 +18,68 @@ document.querySelectorAll('.video-embed[data-youtube-id]').forEach((wrap)=>{
     wrap.appendChild(iframe);
   });
 });
+
+const matrixData={
+  athletic:{
+    kicker:'ATHLETIC QUADRANT',
+    title:'Move dynamically without pain',
+    description:'The Athletic quadrant helps you build a body that can move, recover, and perform with greater confidence. It focuses on the habits that help you stay active, capable, and resilient.',
+    items:['Functional Training','Holistic Recovery','Thriving Diet'],
+    caption:'Focus areas include Functional Training, Holistic Recovery, and a Thriving Diet.',
+    image:'assets/images/matrix-athletic-detail.jpg',
+    alt:'Athletic quadrant detail from the ReVitalized Longevity Matrix'
+  },
+  refined:{
+    kicker:'REFINED QUADRANT',
+    title:'Be impressed with your reflection',
+    description:'The Refined quadrant is centered on confidence, balance, and restoration. It highlights the systems that support body composition, hormone balance, and a stronger sense of well-being.',
+    items:['Gut Renovation','Hormone Balancing','Neural Repatterning'],
+    caption:'Focus areas include Gut Renovation, Hormone Balancing, and Neural Repatterning.',
+    image:'assets/images/matrix-refined-detail.jpg',
+    alt:'Refined quadrant detail from the ReVitalized Longevity Matrix'
+  },
+  organized:{
+    kicker:'ORGANIZED QUADRANT',
+    title:'Living healthy is easy and fun',
+    description:'The Organized quadrant helps turn healthy living into something practical and sustainable. It brings more clarity, momentum, and structure to the habits that support long-term progress.',
+    items:['Wise Budgeting','Mentality Realignment','Momentum Regimens'],
+    caption:'Focus areas include Wise Budgeting, Mentality Realignment, and Momentum Regimens.',
+    image:'assets/images/matrix-organized-detail.jpg',
+    alt:'Organized quadrant detail from the ReVitalized Longevity Matrix'
+  },
+  energized:{
+    kicker:'ENERGIZED QUADRANT',
+    title:'Feel good everyday',
+    description:'The Energized quadrant focuses on restoring energy, helping the body clear what is not serving it, and building the daily foundations that help you feel better and function better.',
+    items:['Quantum Habits','Systemic Detoxification','Cellular Hydration'],
+    caption:'Focus areas include Quantum Habits, Systemic Detoxification, and Cellular Hydration.',
+    image:'assets/images/matrix-energized-detail.jpg',
+    alt:'Energized quadrant detail from the ReVitalized Longevity Matrix'
+  }
+};
+const matrixNodes=document.querySelectorAll('.matrix-node[data-matrix-target]');
+if(matrixNodes.length){
+  const kicker=document.getElementById('matrix-detail-kicker');
+  const title=document.getElementById('matrix-detail-title');
+  const description=document.getElementById('matrix-detail-description');
+  const list=document.getElementById('matrix-detail-list');
+  const caption=document.getElementById('matrix-detail-caption');
+  const image=document.getElementById('matrix-detail-image');
+  matrixNodes.forEach((node)=>{
+    node.addEventListener('click',()=>{
+      const key=node.dataset.matrixTarget;
+      const data=matrixData[key];
+      if(!data) return;
+      matrixNodes.forEach((btn)=>{btn.classList.remove('active');btn.setAttribute('aria-selected','false');});
+      node.classList.add('active');
+      node.setAttribute('aria-selected','true');
+      kicker.textContent=data.kicker;
+      title.textContent=data.title;
+      description.textContent=data.description;
+      list.innerHTML=data.items.map((item)=>`<li>${item}</li>`).join('');
+      caption.textContent=data.caption;
+      image.src=data.image;
+      image.alt=data.alt;
+    });
+  });
+}
