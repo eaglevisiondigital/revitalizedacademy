@@ -66,7 +66,7 @@ const matrixData={
   }
 };
 
-const matrixNodes=document.querySelectorAll('.matrix-node[data-matrix-target]');
+const matrixNodes=document.querySelectorAll('[data-matrix-target]');
 if(matrixNodes.length){
   const modal=document.getElementById('matrix-modal');
   const detailCard=document.getElementById('matrix-detail-card');
