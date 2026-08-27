@@ -1231,3 +1231,66 @@ body.matrix-modal-open{overflow:hidden}
 .hotspot-organized{left:35.1%!important;top:65.5%!important;width:24.5%!important;height:26.5%!important;}
 @media(max-width:1050px){.matrix-approved-layout{grid-template-columns:1fr;gap:18px}.matrix-approved-copy{padding:12px 20px 0}.matrix-approved-copy h2{font-size:clamp(46px,8vw,70px)}.matrix-approved-wrap{width:min(90%,820px)!important}.matrix-approved-copy p{max-width:700px}}
 @media(max-width:620px){.matrix-section{padding-inline:14px!important}.matrix-approved-copy{padding:8px 4px}.matrix-approved-copy h2{font-size:44px}.matrix-approved-copy p{font-size:16px}.matrix-click-cue{margin-top:18px}.matrix-approved-wrap{width:100%!important}.matrix-approved-art{width:100%!important;min-width:0!important}.matrix-hotspot{display:block!important}}
+
+
+/* Build 18 — Matrix transparency, copy scale, and clearer modal exits */
+.matrix-approved-wrap{
+  background:transparent!important;
+}
+.matrix-approved-art{
+  background:transparent!important;
+}
+.matrix-approved-copy h2{
+  font-size:clamp(56px,5vw,80px)!important;
+}
+.matrix-approved-copy p{
+  font-size:19px!important;
+  line-height:1.57!important;
+  max-width:570px!important;
+}
+.matrix-click-cue{
+  font-size:16px!important;
+}
+.matrix-modal-close{
+  position:sticky!important;
+  top:14px!important;
+  margin-left:auto!important;
+  width:auto!important;
+  min-width:96px!important;
+  height:44px!important;
+  padding:0 12px 0 16px!important;
+  border-radius:999px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:8px!important;
+  background:#18231b!important;
+  color:#fff!important;
+  border:1px solid rgba(255,255,255,.16)!important;
+  font-size:14px!important;
+  font-weight:800!important;
+  line-height:1!important;
+  z-index:10!important;
+  box-shadow:0 12px 28px rgba(8,18,10,.22)!important;
+}
+.matrix-modal-close b{
+  font-size:26px!important;
+  line-height:1!important;
+  font-weight:400!important;
+  margin-top:-1px!important;
+}
+.matrix-modal-close:hover{
+  background:#0f1711!important;
+  transform:translateY(-1px)!important;
+}
+.matrix-modal-close-bottom{
+  min-width:120px!important;
+}
+.matrix-modal-actions{
+  align-items:center!important;
+}
+@media(max-width:620px){
+  .matrix-approved-copy h2{font-size:46px!important;}
+  .matrix-approved-copy p{font-size:17px!important;}
+  .matrix-modal-close{top:8px!important;min-width:88px!important;height:42px!important;}
+}
