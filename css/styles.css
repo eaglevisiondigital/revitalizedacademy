@@ -1196,3 +1196,38 @@ body.matrix-modal-open{overflow:hidden}
   .matrix-hotspot{display:block;min-width:44px;min-height:44px;}
   .matrix-approved-wrap::after{display:none;}
 }
+
+/* Build 16 — scale approved Longevity Matrix artwork down ~12% on desktop */
+@media(min-width:901px){
+  .matrix-approved-wrap{
+    width:88% !important;
+    max-width:1400px !important;
+    margin-inline:auto !important;
+  }
+}
+@media(max-width:900px){
+  .matrix-approved-wrap{
+    width:100% !important;
+    max-width:none !important;
+    margin-inline:auto !important;
+  }
+}
+
+/* Build 17 — true matrix graphic reduction: separate copy + smaller right artwork */
+.matrix-section{max-width:min(96vw,1600px)!important;padding:30px 0 28px!important}
+.matrix-approved-layout{display:grid;grid-template-columns:minmax(360px,.8fr) minmax(0,1.2fr);gap:38px;align-items:center;width:100%;}
+.matrix-approved-copy{padding:26px 0 26px 26px;align-self:center;}
+.matrix-approved-copy h2{font-size:clamp(52px,4.7vw,76px);line-height:.95;letter-spacing:-.055em;margin:20px 0 18px;}
+.matrix-approved-copy h2 em{font-style:normal;color:var(--green)}
+.matrix-copy-rule{width:62px;height:3px;background:linear-gradient(90deg,var(--green),rgba(35,148,8,.1));border-radius:999px;margin:0 0 22px;}
+.matrix-approved-copy p{max-width:540px;font-size:18px;line-height:1.55;color:#4c5750;margin:0 0 18px;}
+.matrix-click-cue{margin-top:30px;display:inline-flex;align-items:center;gap:14px;border:1px solid #cfe1ca;border-radius:10px;padding:12px 20px 12px 14px;color:#344c35;background:#fff;box-shadow:0 8px 22px rgba(20,45,24,.04)}
+.matrix-click-cue strong{color:#238a12;font-size:17px}.matrix-click-icon{width:42px;height:42px;border:2px solid #5aa24c;border-radius:50%;display:grid;place-items:center;color:#238a12;font-size:25px;font-weight:800}
+.matrix-approved-wrap{width:88%!important;max-width:900px!important;margin:0 auto!important;border:0!important;box-shadow:none!important;background:transparent!important;border-radius:0!important;overflow:visible!important;}
+.matrix-approved-art{width:100%!important;height:auto!important;display:block!important;}
+.hotspot-athletic{left:35.1%!important;top:4.2%!important;width:24.5%!important;height:25.9%!important;}
+.hotspot-energized{left:3.2%!important;top:34.5%!important;width:24.7%!important;height:26.3%!important;}
+.hotspot-refined{left:65.4%!important;top:34.5%!important;width:24.7%!important;height:26.3%!important;}
+.hotspot-organized{left:35.1%!important;top:65.5%!important;width:24.5%!important;height:26.5%!important;}
+@media(max-width:1050px){.matrix-approved-layout{grid-template-columns:1fr;gap:18px}.matrix-approved-copy{padding:12px 20px 0}.matrix-approved-copy h2{font-size:clamp(46px,8vw,70px)}.matrix-approved-wrap{width:min(90%,820px)!important}.matrix-approved-copy p{max-width:700px}}
+@media(max-width:620px){.matrix-section{padding-inline:14px!important}.matrix-approved-copy{padding:8px 4px}.matrix-approved-copy h2{font-size:44px}.matrix-approved-copy p{font-size:16px}.matrix-click-cue{margin-top:18px}.matrix-approved-wrap{width:100%!important}.matrix-approved-art{width:100%!important;min-width:0!important}.matrix-hotspot{display:block!important}}
