@@ -31,10 +31,10 @@ document.querySelectorAll('.video-embed[data-youtube-id]').forEach((wrap) => {
 });
 
 const iconSvg = {
-  athletic: '<svg viewBox="0 0 64 64"><circle cx="38" cy="11" r="5"/><path d="M29 22l10-4 8 7M32 23l-5 13-10 7M31 31l9 9 11 4M40 40l-4 13M20 29l-11 2"/></svg>',
+  athletic: '<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="35.5" cy="12" r="4.5"/><path d="M29 25l7-4 8 7m-12-2-4 9-10 6m14-15-1 13-9 8m10-9 11 4m-11-4 2 11m-14-12H17"/></svg>',
   energized: '<svg viewBox="0 0 64 64"><path d="M36 5 17 34h15l-5 25 21-32H34z"/></svg>',
   organized: '<svg viewBox="0 0 64 64"><rect x="16" y="14" width="36" height="42" rx="3"/><path d="M25 14v-5h18v5M23 27l4 4 7-8M23 40l4 4 7-8M38 27h8M38 40h8"/></svg>',
-  refined: '<svg viewBox="0 0 64 64"><path d="M32 53c-9-5-14-13-13-22 8 0 13 3 17 8-1-10 3-18 11-25 5 9 5 17 1 24 7-5 14-6 20-2-2 10-10 17-20 18-7 1-12-1-16-1Z"/><path d="M31 52c-8-1-16-6-20-14 7-4 14-3 20 1"/></svg>',
+  refined: '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 16c-4 5-6 10-6 15 0 5 2 9 6 12 4-3 6-7 6-12 0-5-2-10-6-15Z"/><path d="M24 25c-6 2-10 7-11 13 5 4 11 5 17 4-1-6-3-11-6-17Z"/><path d="M40 25c6 2 10 7 11 13-5 4-11 5-17 4 1-6 3-11 6-17Z"/><path d="M21 46c4 2 7 3 11 3s7-1 11-3"/></svg>',
   diet: '<svg viewBox="0 0 64 64"><path d="M13 32h38l-4 19H17z"/><path d="M22 32c0-10 7-17 17-17 6 0 11 2 15 7M37 14c0-6 4-10 10-12"/></svg>',
   training: '<svg viewBox="0 0 64 64"><path d="M7 24v16M15 18v28M49 18v28M57 24v16M15 32h34"/></svg>',
   recovery: '<svg viewBox="0 0 64 64"><path d="M32 54c13-9 23-20 23-34-10 0-18 4-23 13-6-9-14-13-24-13 0 14 10 25 24 34Z"/><path d="M32 12v31"/></svg>',
