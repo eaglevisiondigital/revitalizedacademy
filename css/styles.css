@@ -1294,3 +1294,446 @@ body.matrix-modal-open{overflow:hidden}
   .matrix-approved-copy p{font-size:17px!important;}
   .matrix-modal-close{top:8px!important;min-width:88px!important;height:42px!important;}
 }
+
+/* Build 19 — exact SVG hit areas for Matrix artwork */
+.matrix-approved-wrap{position:relative}
+.matrix-svg-overlay{position:absolute;inset:0;width:100%;height:100%;display:block;overflow:visible;z-index:4;pointer-events:none}
+.matrix-svg-hit{pointer-events:auto;cursor:pointer;fill:transparent;stroke:transparent;stroke-width:0;outline:none;transition:fill .18s ease,filter .18s ease}
+.matrix-svg-hit:focus-visible{fill:rgba(35,148,8,.045);filter:drop-shadow(0 0 5px rgba(35,148,8,.32))}
+@media (hover:hover) and (pointer:fine){
+  .matrix-svg-hit:hover{fill:rgba(255,255,255,.025);filter:drop-shadow(0 0 7px rgba(35,148,8,.20))}
+  .matrix-svg-hit.hit-athletic:hover{filter:drop-shadow(0 0 8px rgba(0,132,255,.28))}
+  .matrix-svg-hit.hit-energized:hover{filter:drop-shadow(0 0 8px rgba(255,184,0,.30))}
+  .matrix-svg-hit.hit-refined:hover{filter:drop-shadow(0 0 8px rgba(255,48,126,.26))}
+  .matrix-svg-hit.hit-organized:hover{filter:drop-shadow(0 0 8px rgba(140,46,255,.28))}
+}
+/* Retire legacy percentage-positioned hotspot buttons */
+.matrix-hotspot{display:none!important}
+
+/* Build 20: matrix overview cleanup + accordion modal redesign */
+
+.matrix-top{
+  align-items:center !important;
+}
+
+.matrix-intro.premium h2{
+  font-size:clamp(46px,4.5vw,66px) !important;
+  line-height:.95 !important;
+  letter-spacing:-.05em;
+}
+
+.matrix-intro.premium p,
+.matrix-intro .matrix-lead{
+  font-size:18px !important;
+  line-height:1.62 !important;
+  color:#546058;
+}
+
+.matrix-overview-card{
+  background:transparent !important;
+  border:none !important;
+  box-shadow:none !important;
+  padding:12px 10px !important;
+  min-height:auto !important;
+  overflow:visible !important;
+}
+
+.matrix-overview-card::before,
+.matrix-overview-card::after{
+  display:none !important;
+}
+
+.matrix-modal{
+  position:fixed;
+  inset:0;
+  display:none;
+  z-index:90;
+}
+
+.matrix-modal.is-open{
+  display:block;
+}
+
+.matrix-modal-backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(19,27,21,.55);
+  backdrop-filter:blur(8px);
+}
+
+body.matrix-modal-open{
+  overflow:hidden;
+}
+
+.matrix-detail-modal{
+  --matrix-accent:#48aedd;
+  --matrix-accent-soft:rgba(72,174,221,.16);
+  position:relative;
+  width:min(1180px, calc(100vw - 48px));
+  max-height:min(90vh, 980px);
+  margin:5vh auto;
+  overflow:auto;
+  border-radius:30px;
+  background:linear-gradient(180deg,#ffffff 0%,#fbfdf9 100%);
+  border:1px solid #dde9dc;
+  box-shadow:0 26px 70px rgba(18,35,20,.22);
+}
+
+.matrix-detail-modal.theme-athletic{
+  --matrix-accent:#43a8e8;
+  --matrix-accent-soft:rgba(67,168,232,.16);
+}
+
+.matrix-detail-modal.theme-energized{
+  --matrix-accent:#e4bc31;
+  --matrix-accent-soft:rgba(228,188,49,.18);
+}
+
+.matrix-detail-modal.theme-refined{
+  --matrix-accent:#ef6d9c;
+  --matrix-accent-soft:rgba(239,109,156,.15);
+}
+
+.matrix-detail-modal.theme-organized{
+  --matrix-accent:#a171e5;
+  --matrix-accent-soft:rgba(161,113,229,.15);
+}
+
+.matrix-modal-shell{
+  padding:26px 28px 30px;
+  border-top:6px solid var(--matrix-accent);
+}
+
+.matrix-modal-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  margin-bottom:20px;
+}
+
+.matrix-detail-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  padding:11px 18px 11px 14px;
+  border-radius:999px;
+  background:#f2f7ee;
+  color:#1a6a2d;
+  border:1px solid #d9e7d4;
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.matrix-detail-kicker::before{
+  content:"";
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:var(--matrix-accent);
+  box-shadow:0 0 0 7px color-mix(in srgb, var(--matrix-accent) 14%, white);
+}
+
+.matrix-modal-close{
+  border:none;
+  background:#14261d;
+  color:#fff;
+  border-radius:999px;
+  padding:12px 18px;
+  font-weight:800;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  cursor:pointer;
+  box-shadow:0 10px 20px rgba(20,38,29,.18);
+}
+
+.matrix-modal-close span[aria-hidden="true"]{
+  font-size:24px;
+  line-height:1;
+  margin-top:-1px;
+}
+
+.matrix-modal-grid{
+  display:grid;
+  grid-template-columns:minmax(320px, 420px) minmax(0, 1fr);
+  gap:28px;
+  align-items:start;
+}
+
+.matrix-modal-visual{
+  display:grid;
+  gap:18px;
+}
+
+.matrix-modal-hero-card,
+.matrix-modal-wheel-card{
+  background:linear-gradient(180deg,#fff 0%,#fbfcfa 100%);
+  border:1px solid color-mix(in srgb, var(--matrix-accent) 22%, #dbe6d8);
+  box-shadow:0 12px 28px rgba(18,34,21,.06);
+}
+
+.matrix-modal-hero-card{
+  border-radius:28px;
+  padding:18px;
+}
+
+.matrix-modal-hero-card img{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:22px;
+}
+
+.matrix-modal-wheel-card{
+  border-radius:26px;
+  padding:18px;
+}
+
+.matrix-modal-wheel-card figcaption{
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:#5a655d;
+  margin-bottom:12px;
+}
+
+.matrix-modal-wheel-card img{
+  width:100%;
+  border-radius:18px;
+  box-shadow:0 10px 22px rgba(22,41,27,.10);
+}
+
+.matrix-detail-copy{
+  padding:4px 2px 6px !important;
+}
+
+.matrix-detail-copy h3{
+  margin:0;
+  font-size:clamp(46px,4.6vw,74px);
+  line-height:.92;
+  letter-spacing:-.06em;
+  color:#101720;
+}
+
+.matrix-detail-tagline{
+  margin:10px 0 18px;
+  font-size:23px;
+  font-style:italic;
+  color:color-mix(in srgb, var(--matrix-accent) 72%, #2d3b34);
+}
+
+.matrix-detail-copy > p#matrix-detail-description{
+  margin:0 0 20px;
+  max-width:720px;
+  font-size:18px;
+  line-height:1.68;
+  color:#566158;
+}
+
+.matrix-accordion-list{
+  display:grid;
+  gap:14px;
+  margin:22px 0 16px;
+}
+
+.matrix-accordion-item{
+  border:1px solid color-mix(in srgb, var(--matrix-accent) 18%, #dce6da);
+  border-radius:22px;
+  background:#fff;
+  box-shadow:0 8px 22px rgba(18,34,21,.05);
+  overflow:hidden;
+}
+
+.matrix-accordion-item summary{
+  list-style:none;
+  display:grid;
+  grid-template-columns:56px 1fr 28px;
+  align-items:center;
+  gap:16px;
+  padding:18px 20px;
+  cursor:pointer;
+  font-weight:800;
+  color:#1f2c25;
+}
+
+.matrix-accordion-item summary::-webkit-details-marker{
+  display:none;
+}
+
+.matrix-accordion-index{
+  width:56px;
+  height:56px;
+  display:grid;
+  place-items:center;
+  border-radius:18px;
+  background:linear-gradient(180deg,#fff 0%, color-mix(in srgb, var(--matrix-accent) 16%, white) 100%);
+  border:1px solid color-mix(in srgb, var(--matrix-accent) 28%, #dce6da);
+  color:color-mix(in srgb, var(--matrix-accent) 78%, #45614e);
+  font-size:20px;
+  font-weight:900;
+}
+
+.matrix-accordion-title{
+  font-size:26px;
+  line-height:1.05;
+  letter-spacing:-.03em;
+}
+
+.matrix-accordion-item summary::after{
+  content:"⌄";
+  width:28px;
+  height:28px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  color:color-mix(in srgb, var(--matrix-accent) 78%, #506557);
+  background:color-mix(in srgb, var(--matrix-accent) 10%, white);
+  font-size:20px;
+  transition:transform .2s ease;
+}
+
+.matrix-accordion-item[open] summary::after{
+  transform:rotate(180deg);
+}
+
+.matrix-accordion-panel{
+  padding:0 22px 20px 92px;
+}
+
+.matrix-accordion-panel ul{
+  margin:0;
+  padding:0;
+  list-style:none;
+  display:grid;
+  gap:10px;
+}
+
+.matrix-accordion-panel li{
+  position:relative;
+  padding-left:18px;
+  font-size:17px;
+  line-height:1.55;
+  color:#536056;
+}
+
+.matrix-accordion-panel li::before{
+  content:"";
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--matrix-accent);
+  position:absolute;
+  left:0;
+  top:.68em;
+}
+
+.matrix-detail-caption{
+  margin:4px 0 22px !important;
+  font-size:15px !important;
+  color:#6a756d !important;
+}
+
+.matrix-modal-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+}
+
+.matrix-modal-actions .btn-secondary{
+  background:#fff;
+  color:#205c1d;
+  border:1px solid #cfe0ca;
+  box-shadow:none;
+  cursor:pointer;
+}
+
+@media (max-width: 1080px){
+  .matrix-modal-grid{
+    grid-template-columns:1fr;
+  }
+
+  .matrix-modal-visual{
+    grid-template-columns:1fr 1fr;
+    align-items:start;
+  }
+}
+
+@media (max-width: 760px){
+  .matrix-intro.premium h2{
+    font-size:clamp(38px,10vw,54px) !important;
+  }
+
+  .matrix-intro.premium p,
+  .matrix-intro .matrix-lead{
+    font-size:16px !important;
+  }
+
+  .matrix-detail-modal{
+    width:min(100vw - 18px, 1000px);
+    max-height:92vh;
+    margin:4vh auto;
+    border-radius:24px;
+  }
+
+  .matrix-modal-shell{
+    padding:18px 16px 20px;
+  }
+
+  .matrix-modal-header{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .matrix-modal-close{
+    align-self:flex-end;
+  }
+
+  .matrix-modal-visual{
+    grid-template-columns:1fr;
+  }
+
+  .matrix-detail-copy h3{
+    font-size:clamp(38px,11vw,52px);
+  }
+
+  .matrix-detail-tagline{
+    font-size:20px;
+  }
+
+  .matrix-accordion-item summary{
+    grid-template-columns:48px 1fr 24px;
+    gap:12px;
+    padding:16px;
+  }
+
+  .matrix-accordion-index{
+    width:48px;
+    height:48px;
+    border-radius:16px;
+    font-size:18px;
+  }
+
+  .matrix-accordion-title{
+    font-size:21px;
+  }
+
+  .matrix-accordion-panel{
+    padding:0 16px 18px 76px;
+  }
+
+  .matrix-accordion-panel li{
+    font-size:15px;
+  }
+}
+
+/* Build 21: icon/accordion refinements */
+.matrix-accordion-item summary{grid-template-columns:58px minmax(0,1fr) 30px !important;min-height:78px;}
+.matrix-accordion-icon{width:54px;height:54px;display:grid;place-items:center;border-radius:18px;background:linear-gradient(180deg,#fff 0%,color-mix(in srgb,var(--matrix-accent) 13%,#fff) 100%);border:1px solid color-mix(in srgb,var(--matrix-accent) 28%,#dce6da);color:var(--matrix-accent);}
+.matrix-accordion-icon svg{width:29px;height:29px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.matrix-accordion-title{font-size:24px !important;}
+.matrix-accordion-panel{padding-left:96px !important;}
+@media(max-width:760px){.matrix-accordion-item summary{grid-template-columns:48px minmax(0,1fr) 24px !important;}.matrix-accordion-icon{width:46px;height:46px;border-radius:15px;}.matrix-accordion-icon svg{width:25px;height:25px;}.matrix-accordion-title{font-size:20px !important;}.matrix-accordion-panel{padding-left:76px !important;}}

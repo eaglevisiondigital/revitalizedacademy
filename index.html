@@ -62,42 +62,45 @@
         </div>
         <div class="matrix-approved-wrap" aria-label="Interactive ReVitalized Longevity Matrix">
           <img class="matrix-approved-art" src="assets/images/longevity-matrix-approved-right-transparent.png" alt="The ReVitalized Longevity Matrix with Athletic, Energized, Refined and Organized focus areas around Longevity Lifestyle">
-          <button class="matrix-hotspot hotspot-athletic" type="button" data-matrix-target="athletic" aria-label="Explore Athletic focus"></button>
-          <button class="matrix-hotspot hotspot-energized" type="button" data-matrix-target="energized" aria-label="Explore Energized focus"></button>
-          <button class="matrix-hotspot hotspot-refined" type="button" data-matrix-target="refined" aria-label="Explore Refined focus"></button>
-          <button class="matrix-hotspot hotspot-organized" type="button" data-matrix-target="organized" aria-label="Explore Organized focus"></button>
+          <svg class="matrix-svg-overlay" viewBox="0 0 1002 941" preserveAspectRatio="xMidYMid meet" aria-label="Interactive Longevity Matrix focus areas">
+            <circle class="matrix-svg-hit hit-athletic" cx="474" cy="161" r="120" tabindex="0" role="button" data-matrix-target="athletic" aria-label="Explore Athletic focus"></circle>
+            <circle class="matrix-svg-hit hit-energized" cx="156" cy="448" r="121" tabindex="0" role="button" data-matrix-target="energized" aria-label="Explore Energized focus"></circle>
+            <circle class="matrix-svg-hit hit-refined" cx="779" cy="448" r="121" tabindex="0" role="button" data-matrix-target="refined" aria-label="Explore Refined focus"></circle>
+            <circle class="matrix-svg-hit hit-organized" cx="474" cy="741" r="121" tabindex="0" role="button" data-matrix-target="organized" aria-label="Explore Organized focus"></circle>
+          </svg>
         </div>
       </div>
-
       <div class="matrix-modal" id="matrix-modal" aria-hidden="true">
         <div class="matrix-modal-backdrop" data-matrix-close></div>
-        <div class="matrix-detail-card matrix-detail-modal" id="matrix-detail-card" role="dialog" aria-modal="true" aria-labelledby="matrix-detail-title">
-          <button class="matrix-modal-close" type="button" aria-label="Close Longevity Matrix detail" data-matrix-close><span>Close</span><b aria-hidden="true">×</b></button>
-          <div class="matrix-detail-copy">
-            <span class="matrix-detail-kicker" id="matrix-detail-kicker">ATHLETIC FOCUS</span>
-            <h3 id="matrix-detail-title">Move dynamically without pain</h3>
-            <p id="matrix-detail-description">The Athletic focus helps you build a body that can move, recover, and perform with greater confidence. It highlights the daily inputs that keep you active, resilient, and capable for the long haul.</p>
-            <ul class="matrix-detail-list" id="matrix-detail-list">
-              <li><span class="matrix-detail-index">01</span><span class="matrix-detail-item-text">Functional Training</span></li>
-              <li><span class="matrix-detail-index">02</span><span class="matrix-detail-item-text">Holistic Recovery</span></li>
-              <li><span class="matrix-detail-index">03</span><span class="matrix-detail-item-text">Thriving Diet</span></li>
-            </ul>
-            <p class="matrix-detail-caption" id="matrix-detail-caption">Key focus areas include Functional Training, Holistic Recovery, and a Thriving Diet.</p>
-            <div class="matrix-modal-actions">
-              <a class="btn btn-primary" href="consult.html">Free Health Assessment</a>
-              <button class="btn btn-secondary matrix-modal-close-bottom" type="button" data-matrix-close>Close</button>
+        <div class="matrix-detail-card matrix-detail-modal theme-athletic" id="matrix-detail-card" role="dialog" aria-modal="true" aria-labelledby="matrix-detail-title">
+          <div class="matrix-modal-shell">
+            <div class="matrix-modal-header">
+              <span class="matrix-detail-kicker" id="matrix-detail-kicker">ATHLETIC FOCUS</span>
+              <button class="matrix-modal-close" type="button" aria-label="Close Longevity Matrix detail" data-matrix-close>Close <span aria-hidden="true">×</span></button>
+            </div>
+            <div class="matrix-modal-grid">
+              <div class="matrix-modal-visual">
+                <div class="matrix-modal-hero-card">
+                  <img id="matrix-focus-image" src="assets/images/matrix-focus-athletic.png" alt="Athletic focus overview from the ReVitalized Longevity Matrix">
+                </div>
+                <figure class="matrix-modal-wheel-card" id="matrix-detail-figure">
+                  <figcaption>Where this fits in the Longevity Matrix</figcaption>
+                  <img id="matrix-wheel-image" src="assets/images/matrix-athletic-detail.jpg" alt="Athletic detail from the ReVitalized Longevity Matrix">
+                </figure>
+              </div>
+              <div class="matrix-detail-copy">
+                <h3 id="matrix-detail-title">Athletic</h3>
+                <p class="matrix-detail-tagline" id="matrix-detail-tagline">Move dynamically without pain</p>
+                <p id="matrix-detail-description">The Athletic focus helps you build a body that can move, recover, and perform with greater confidence. It highlights the daily inputs that keep you active, resilient, and capable for the long haul.</p>
+                <div class="matrix-accordion-list" id="matrix-accordion-list"></div>
+                <p class="matrix-detail-caption" id="matrix-detail-caption">Open each section below to see the practical focus points that support this area.</p>
+                <div class="matrix-modal-actions">
+                  <a class="btn btn-primary" href="consult.html">Free Health Assessment</a>
+                  <button class="btn btn-secondary matrix-modal-close-bottom" type="button" data-matrix-close>Close</button>
+                </div>
+              </div>
             </div>
           </div>
-          <figure class="matrix-detail-figure theme-athletic" id="matrix-detail-figure">
-            <div class="matrix-spin-viewport" aria-live="polite">
-              <div class="matrix-spin-layer" id="matrix-spin-layer" aria-hidden="true">
-                <img class="matrix-spin-wheel" id="matrix-spin-wheel" src="assets/images/longevity-matrix-square.png" alt="">
-              </div>
-              <div class="matrix-focus-layer is-visible" id="matrix-focus-layer">
-                <img id="matrix-focus-image" src="assets/images/matrix-focus-athletic.png" alt="Athletic focus detail from the ReVitalized Longevity Matrix">
-              </div>
-            </div>
-          </figure>
         </div>
       </div>
 
