@@ -2224,3 +2224,26 @@ body.matrix-modal-open { overflow: hidden !important; }
 .ecosystem-image-clean .ecosystem-phone-grid,.ecosystem-image-clean .ecosystem-phone,.ecosystem-image-clean .ecosystem-phone-frame{display:none!important}
 @media(max-width:980px){.ecosystem-image-clean img{width:min(100%,720px)}}
 @media(max-width:740px){.ecosystem-image-clean{padding-top:4px}.ecosystem-image-clean img{width:100%;max-width:620px}.ecosystem-image-clean figcaption{font-size:11px;padding:0 12px}}
+
+
+/* Build 30 — premium inline video thumbnail section */
+.premium-video-grid{gap:22px}
+.premium-video-card{border-radius:18px;box-shadow:0 14px 34px rgba(18,45,24,.07);transition:transform .2s ease,box-shadow .2s ease}
+.premium-video-card:hover{transform:translateY(-3px);box-shadow:0 20px 42px rgba(18,45,24,.11)}
+.premium-video-card .video-embed{border-radius:18px 18px 0 0}
+.premium-video-card .video-poster img{object-fit:cover;width:100%;height:100%}
+.premium-video-card .video-poster:after{background:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.08))}
+.premium-video-card .play-button{width:70px;height:70px;background:rgba(255,255,255,.88);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.9);box-shadow:0 14px 32px rgba(0,0,0,.22);color:#1d8f14}
+.premium-video-card h3{font-size:19px;margin-top:16px}
+.premium-video-card p{font-size:13px;line-height:1.5}
+.video-cta-row{display:flex;justify-content:center;align-items:center;gap:16px;flex-wrap:wrap;margin:28px auto 0}
+.video-cta-row .btn{min-width:260px}
+@media(max-width:740px){.premium-video-grid{gap:18px}.video-cta-row{flex-direction:column;align-items:stretch}.video-cta-row .btn{width:100%;min-width:0}}
+
+/* Build 31 — approved video thumbnails */
+.premium-video-card .video-embed{aspect-ratio:16/9!important;background:#071f13!important}
+.premium-video-card .video-poster{background:#071f13!important}
+.premium-video-card .video-poster img{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important;opacity:1!important;visibility:visible!important}
+.premium-video-card .video-poster:after{background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.04))!important}
+.premium-video-card .play-button{display:none!important}
+.premium-video-card{overflow:hidden!important}
