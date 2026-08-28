@@ -59,3 +59,9 @@ Build 26 updates:
 - Replaced the four-phone ecosystem image with a live HTML/CSS phone showcase using the approved dashboard, meal plans, progress, and ReFuel screens.
 - Updated the FAQ section with expanded questions/answers plus helpful video links.
 - Updated the ReFuel product image so the full pouch displays cleanly without cropping.
+
+
+Build 32 updates:
+- Added founders.html with the approved hero photo, founder bios, and fun-facts placeholders.
+- Added free-help.html with featured training, six podcast episodes, ReVitalized Report article cards, topic navigation, assessment CTA, and newsletter form.
+- Updated main navigation to include the new About/Founders and Free Help pages.
