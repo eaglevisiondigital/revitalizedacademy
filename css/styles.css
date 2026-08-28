@@ -2162,3 +2162,32 @@ body.matrix-modal-open { overflow: hidden !important; }
   .ecosystem-device-showcase img{width:100%;max-width:620px}
   .ecosystem-device-showcase figcaption{font-size:11px;padding:0 12px}
 }
+
+
+/* Build 26 — live device showcase and FAQ expansion */
+.ecosystem-phone-grid{display:flex;align-items:flex-end;justify-content:center;gap:18px;flex-wrap:nowrap;width:100%;max-width:860px;margin:0 auto}
+.ecosystem-phone{position:relative;display:flex;align-items:flex-end;justify-content:center;flex:0 0 auto}
+.ecosystem-phone.small{width:158px}
+.ecosystem-phone.medium{width:182px}
+.ecosystem-phone.featured{width:250px;z-index:2}
+.ecosystem-phone.tilt-left{transform:rotate(-8deg) translateY(16px)}
+.ecosystem-phone.tilt-right.small{transform:rotate(8deg) translateY(18px)}
+.ecosystem-phone.tilt-right.medium{transform:rotate(6deg) translateY(8px)}
+.ecosystem-phone-frame{position:relative;width:100%;aspect-ratio:430 / 932;border-radius:38px;background:#0f1713;padding:16px 7px 9px;box-shadow:0 26px 44px rgba(10,40,24,.18), 0 8px 16px rgba(10,40,24,.12);overflow:hidden}
+.ecosystem-phone-frame.light-ui{background:#242a28}
+.ecosystem-phone-frame:before{content:"";position:absolute;top:9px;left:50%;transform:translateX(-50%);width:34%;height:18px;border-radius:999px;background:#0a0d0c;z-index:2;box-shadow:inset 0 -1px 0 rgba(255,255,255,.12)}
+.ecosystem-phone-frame img{width:100%;height:100%;object-fit:cover;border-radius:28px;background:#fff}
+.ecosystem-device-showcase img{filter:none}
+.faq-grid details{padding:0 16px}
+.faq-grid summary{font-size:14px;font-weight:700;list-style:none;position:relative;padding:16px 26px 16px 0}
+.faq-grid summary::-webkit-details-marker{display:none}
+.faq-grid summary:after{content:"+";position:absolute;right:0;top:50%;transform:translateY(-50%);font-size:20px;line-height:1;color:var(--green-dark);font-weight:500}
+.faq-grid details[open] summary:after{content:"–"}
+.faq-answer{padding:0 0 16px}
+.faq-grid p{font-size:13px;line-height:1.6;padding:0;margin:0 0 10px;color:#59615c}
+.faq-grid p:last-child{margin-bottom:0}
+.faq-grid a{color:var(--green-dark);font-weight:700}
+.refuel-art{height:440px;display:flex;align-items:center;justify-content:center;padding:18px;background:linear-gradient(180deg,#f3eadf,#f8f1e8)}
+.refuel-art img{width:100%;height:100%;object-fit:contain;object-position:center}
+@media(max-width:1100px){.ecosystem-phone-grid{gap:12px}.ecosystem-phone.small{width:138px}.ecosystem-phone.medium{width:160px}.ecosystem-phone.featured{width:220px}}
+@media(max-width:740px){.ecosystem-phone-grid{gap:8px;align-items:flex-end}.ecosystem-phone.small{width:80px}.ecosystem-phone.medium{width:96px}.ecosystem-phone.featured{width:132px}.ecosystem-phone-frame{border-radius:24px;padding:10px 4px 5px}.ecosystem-phone-frame:before{top:6px;height:10px}.ecosystem-phone-frame img{border-radius:18px}.ecosystem-phone.tilt-left{transform:rotate(-7deg) translateY(10px)}.ecosystem-phone.tilt-right.small{transform:rotate(7deg) translateY(12px)}.ecosystem-phone.tilt-right.medium{transform:rotate(5deg) translateY(6px)}.refuel-art{height:360px;padding:14px}}

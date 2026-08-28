@@ -53,3 +53,9 @@ Netlify Forms captures the consultation, enrollment, and Founder’s Webinar not
 - Moves the desktop hero copy slightly left for better visual balance.
 - Increases the desktop headline and supporting copy modestly for a stronger left-side presence.
 - Widens CTA padding without changing the mobile layout.
+
+
+Build 26 updates:
+- Replaced the four-phone ecosystem image with a live HTML/CSS phone showcase using the approved dashboard, meal plans, progress, and ReFuel screens.
+- Updated the FAQ section with expanded questions/answers plus helpful video links.
+- Updated the ReFuel product image so the full pouch displays cleanly without cropping.
