@@ -225,7 +225,13 @@ if (matrixNodes.length) {
     const data = matrixData[key];
     if (!data) return;
     card.className = `matrix-focus-modal theme-${data.theme}`;
-    focusIcon.innerHTML = iconSvg[data.focusIcon] || '';
+    if (data.focusIcon === 'athletic') {
+      focusIcon.innerHTML = '<img class="matrix-focus-icon-image" src="assets/images/athletic-focus-approved.png" alt="">';
+      focusIcon.classList.add('uses-approved-image');
+    } else {
+      focusIcon.innerHTML = iconSvg[data.focusIcon] || '';
+      focusIcon.classList.remove('uses-approved-image');
+    }
     focusTitle.textContent = data.name;
     focusTagline.textContent = data.tagline;
     focusSummary.textContent = data.summary;
@@ -261,3 +267,15 @@ if (matrixNodes.length) {
     if (event.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
   });
 }
+
+
+// Keep the FAQ section clean: opening one answer closes the previously open answer.
+const faqItems = document.querySelectorAll('#faq .faq-grid details');
+faqItems.forEach((item) => {
+  item.addEventListener('toggle', () => {
+    if (!item.open) return;
+    faqItems.forEach((other) => {
+      if (other !== item) other.open = false;
+    });
+  });
+});

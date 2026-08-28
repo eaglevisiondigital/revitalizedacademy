@@ -9,13 +9,13 @@ This build is the ReVitalized Academy corporate/coaching website, not the webina
 - Founder’s Webinar appears only as a small "notify me" teaser; registration/payment are not live yet.
 - ReFuel is teased as Coming 2027 with no pricing or multi-pack presentation.
 - Future ecosystem tools are teased without suggesting visitors should wait to begin.
-- Main conversion paths are Start Enrollment and Schedule a Free Consultation.
+- Main conversion paths are Start Enrollment and Start Your Free Health Assessment.
 - All website form notifications should be configured in Netlify to deliver to contact@revitalizedacademy.com.
 
 ## Files
 - `index.html` — Academy-first homepage
 - `stories.html` — complete 12-video client story library
-- `consult.html` — Phase One free consultation form
+- `consult.html` — Phase One free health assessment form
 - `enroll.html` — Phase One enrollment form placeholder/foundation
 - `css/styles.css` — responsive design system
 - `js/app.js` — mobile navigation behavior

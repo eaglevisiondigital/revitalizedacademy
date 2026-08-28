@@ -2191,3 +2191,27 @@ body.matrix-modal-open { overflow: hidden !important; }
 .refuel-art img{width:100%;height:100%;object-fit:contain;object-position:center}
 @media(max-width:1100px){.ecosystem-phone-grid{gap:12px}.ecosystem-phone.small{width:138px}.ecosystem-phone.medium{width:160px}.ecosystem-phone.featured{width:220px}}
 @media(max-width:740px){.ecosystem-phone-grid{gap:8px;align-items:flex-end}.ecosystem-phone.small{width:80px}.ecosystem-phone.medium{width:96px}.ecosystem-phone.featured{width:132px}.ecosystem-phone-frame{border-radius:24px;padding:10px 4px 5px}.ecosystem-phone-frame:before{top:6px;height:10px}.ecosystem-phone-frame img{border-radius:18px}.ecosystem-phone.tilt-left{transform:rotate(-7deg) translateY(10px)}.ecosystem-phone.tilt-right.small{transform:rotate(7deg) translateY(12px)}.ecosystem-phone.tilt-right.medium{transform:rotate(5deg) translateY(6px)}.refuel-art{height:360px;padding:14px}}
+
+
+/* Build 28 — approved Athletic focus icon and single-open FAQ accordion */
+.matrix-focus-icon.uses-approved-image{
+  padding:0 !important;
+  background:#fff !important;
+  overflow:hidden !important;
+}
+.matrix-focus-icon.uses-approved-image::before{
+  display:none !important;
+}
+.matrix-focus-icon.uses-approved-image svg{
+  display:none !important;
+}
+.matrix-focus-icon-image{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  object-position:center !important;
+  display:block !important;
+}
+@media(max-width:740px){
+  .matrix-focus-icon-image{object-fit:cover !important;}
+}
