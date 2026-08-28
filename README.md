@@ -65,3 +65,6 @@ Build 32 updates:
 - Added founders.html with the approved hero photo, founder bios, and fun-facts placeholders.
 - Added free-help.html with featured training, six podcast episodes, ReVitalized Report article cards, topic navigation, assessment CTA, and newsletter form.
 - Updated main navigation to include the new About/Founders and Free Help pages.
+
+
+Build 33 update: replaced the Founders page hero with the final approved Justyn & Elle hero artwork, preserving full headroom and improved headline contrast.
