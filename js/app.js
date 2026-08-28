@@ -13,7 +13,7 @@ if (toggle && nav) {
   );
 }
 
-// Inline YouTube playback: keep visitors on the ReVitalized page and lazy-load players only when clicked.
+// Inline YouTube playback.
 document.querySelectorAll('.video-embed[data-youtube-id]').forEach((wrap) => {
   const button = wrap.querySelector('.video-poster');
   if (!button) return;
@@ -30,139 +30,167 @@ document.querySelectorAll('.video-embed[data-youtube-id]').forEach((wrap) => {
   });
 });
 
-const matrixIcons = {
-  diet: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 11h14l-1.2 7H6.2L5 11Z"/><path d="M8 11c0-3 2-5 5-5 1.7 0 3 .5 4 1.6"/><path d="M13 6c0-2 1.1-3.4 3.3-4"/></svg>',
-  dumbbell: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6M7 7v10M17 7v10M20 9v6M7 12h10"/></svg>',
-  recovery: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20c4-3 7-6 7-10-3 0-5 1-7 4-2-3-4-4-7-4 0 4 3 7 7 10Z"/><path d="M12 4v10"/></svg>',
-  check: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 2.5 2.5L16 9"/></svg>',
-  leaf: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19c8 0 13-5 14-14-9 1-14 6-14 14Z"/><path d="M6 18c3-4 6-7 10-10"/></svg>',
-  drop: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3S6 10 6 14a6 6 0 0 0 12 0c0-4-6-11-6-11Z"/></svg>',
-  stomach: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 4v5c0 2-1 3-3 4-2 1-2 5 1 6 4 2 9-1 10-6 .5-3-1-6-4-6-2 0-2-2-2-3"/></svg>',
-  scales: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M6 7h12M5 7l-3 6h6L5 7ZM19 7l-3 6h6l-3-6ZM8 20h8"/></svg>',
-  brain: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5a3 3 0 0 0-5 2 3 3 0 0 0 0 5 3 3 0 0 0 3 5h2M15 5a3 3 0 0 1 5 2 3 3 0 0 1 0 5 3 3 0 0 1-3 5h-2M9 4v16M15 4v16M9 8h3M12 12h3M9 16h3"/></svg>',
-  wallet: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h14a2 2 0 0 1 2 2v10H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z"/><path d="M16 10h6v5h-6a2.5 2.5 0 0 1 0-5Z"/></svg>',
-  mindset: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a7 7 0 0 0-7 7c0 3 1.5 5 3 6v4h8v-4c1.5-1 3-3 3-6a7 7 0 0 0-7-7Z"/><path d="M9 10h6M10 14h4"/></svg>',
-  calendar: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18M7 14h2M11 14h2M15 14h2M7 17h2M11 17h2"/></svg>'
+const iconSvg = {
+  athletic: '<svg viewBox="0 0 64 64"><circle cx="38" cy="11" r="5"/><path d="M29 22l10-4 8 7M32 23l-5 13-10 7M31 31l9 9 11 4M40 40l-4 13M20 29l-11 2"/></svg>',
+  energized: '<svg viewBox="0 0 64 64"><path d="M36 5 17 34h15l-5 25 21-32H34z"/></svg>',
+  organized: '<svg viewBox="0 0 64 64"><rect x="16" y="14" width="36" height="42" rx="3"/><path d="M25 14v-5h18v5M23 27l4 4 7-8M23 40l4 4 7-8M38 27h8M38 40h8"/></svg>',
+  refined: '<svg viewBox="0 0 64 64"><path d="M32 53c-9-5-14-13-13-22 8 0 13 3 17 8-1-10 3-18 11-25 5 9 5 17 1 24 7-5 14-6 20-2-2 10-10 17-20 18-7 1-12-1-16-1Z"/><path d="M31 52c-8-1-16-6-20-14 7-4 14-3 20 1"/></svg>',
+  diet: '<svg viewBox="0 0 64 64"><path d="M13 32h38l-4 19H17z"/><path d="M22 32c0-10 7-17 17-17 6 0 11 2 15 7M37 14c0-6 4-10 10-12"/></svg>',
+  training: '<svg viewBox="0 0 64 64"><path d="M7 24v16M15 18v28M49 18v28M57 24v16M15 32h34"/></svg>',
+  recovery: '<svg viewBox="0 0 64 64"><path d="M32 54c13-9 23-20 23-34-10 0-18 4-23 13-6-9-14-13-24-13 0 14 10 25 24 34Z"/><path d="M32 12v31"/></svg>',
+  habits: '<svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="23"/><path d="m21 32 7 7 16-18"/></svg>',
+  detox: '<svg viewBox="0 0 64 64"><path d="M13 53c23 0 36-14 38-41-25 3-39 16-38 41Z"/><path d="M16 49c9-11 18-21 30-30"/></svg>',
+  hydration: '<svg viewBox="0 0 64 64"><path d="M32 5S15 26 15 39a17 17 0 0 0 34 0C49 26 32 5 32 5Z"/></svg>',
+  budgeting: '<svg viewBox="0 0 64 64"><path d="M12 20h40v30H12z"/><path d="M12 28h30c8 0 10 12 2 12H30"/><circle cx="45" cy="34" r="2"/></svg>',
+  mindset: '<svg viewBox="0 0 64 64"><path d="M32 9c-12 0-21 9-21 21 0 8 4 14 10 18v7h22v-7c6-4 10-10 10-18 0-12-9-21-21-21Z"/><path d="M26 28c2-4 10-4 12 0M24 38c5 5 11 5 16 0"/></svg>',
+  momentum: '<svg viewBox="0 0 64 64"><rect x="10" y="16" width="44" height="38" rx="3"/><path d="M19 9v14M45 9v14M10 27h44M20 36h6M31 36h6M42 36h4M20 45h6M31 45h6M42 45h4"/></svg>',
+  gi: '<svg viewBox="0 0 64 64"><path d="M31 7c-6 7-6 14-2 19 3 4 2 9-2 13-5 5-2 15 7 16 12 1 21-8 20-21-1-9-6-15-13-16-4 0-7-3-6-7"/></svg>',
+  hormone: '<svg viewBox="0 0 64 64"><path d="M32 12v42M18 17h28M12 25l-8 14h16L12 25ZM52 25l-8 14h16L52 25Z"/><path d="M9 46h46"/></svg>',
+  neural: '<svg viewBox="0 0 64 64"><path d="M27 9c-9-5-17 3-14 12-8 2-9 13-3 18-4 9 5 17 13 13 4 7 14 5 14-3V16c0-5-5-9-10-7ZM37 16v33c0 8 10 10 14 3 8 4 17-4 13-13 6-5 5-16-3-18 3-9-5-17-14-12-5-2-10 2-10 7Z"/><path d="M19 25c8-2 12 2 12 7M17 41c6-4 12-2 14 3M45 25c-8-2-12 2-12 7M47 41c-6-4-12-2-14 3"/></svg>'
 };
 
 const matrixData = {
-  athletic: {
-    theme: 'athletic',
-    kicker: 'ATHLETIC FOCUS',
-    name: 'Athletic',
-    tagline: 'Move dynamically without pain',
-    description:
-      'The Athletic focus helps you build a body that can move, recover, and perform with greater confidence. It highlights the daily inputs that keep you active, resilient, and capable for the long haul.',
-    caption: 'Open each section below to see the practical focus points that support this area.',
-    focusImage: 'assets/images/matrix-focus-athletic.png',
-    focusAlt: 'Athletic focus overview from the ReVitalized Longevity Matrix',
-    wheelImage: 'assets/images/matrix-athletic-detail.jpg',
-    wheelAlt: 'Athletic detail from the ReVitalized Longevity Matrix',
-    sections: [
-      {
-        title: 'The Living Diet',
-        icon: 'diet',
-        points: ['Enhance digestive function', 'Apply holistic eating routines', 'High performance nutrition']
-      },
-      {
-        title: 'Functional Training',
-        icon: 'dumbbell',
-        points: ['Maintain full-body athletic performance', 'Train to functional baseline', 'Movement rehabilitation']
-      },
-      {
-        title: 'Holistic Recovery',
-        icon: 'recovery',
-        points: ['Increase breathing efficiency', 'Increase metabolic flexibility', 'Adaptability rebound']
-      }
-    ]
-  },
   energized: {
     theme: 'energized',
-    kicker: 'ENERGIZED FOCUS',
     name: 'Energized',
     tagline: 'Feel good everyday',
-    description:
-      'The Energized focus is about restoring energy, helping the body clear what is not serving it, and building the foundational rhythms that help you feel better and function better each day.',
-    caption: 'Open each section below to see the practical focus points that support this area.',
-    focusImage: 'assets/images/matrix-focus-energized.png',
-    focusAlt: 'Energized focus overview from the ReVitalized Longevity Matrix',
-    wheelImage: 'assets/images/matrix-energized-detail.jpg',
-    wheelAlt: 'Energized detail from the ReVitalized Longevity Matrix',
+    focusIcon: 'energized',
+    summary: 'Build the everyday habits that support energy, detoxification, hydration, and a body that feels better from the inside out.',
     sections: [
       {
-        title: 'Quantum Habits',
-        icon: 'check',
-        points: ['Bioelectrical charge grounding routine', 'Quantum-safe home hygiene', 'Stabilize the circadian rhythm']
+        title: 'Habits',
+        icon: 'habits',
+        points: [
+          'Bioelectrical charge grounding routine',
+          'Quantum-safe home hygiene',
+          'Stabilize the circadian rhythm'
+        ]
       },
       {
         title: 'Detoxification',
-        icon: 'leaf',
-        points: ['Bind and eliminate toxins from the body', 'Target and pull toxins out of tissue', 'Open detox pathways']
+        icon: 'detox',
+        points: [
+          'Bind & eliminate toxins out of the body',
+          'Target & pull toxins out of tissue',
+          'Open detox pathways'
+        ]
       },
       {
         title: 'Cellular Hydration',
-        icon: 'drop',
-        points: ['Daily hydration equation', 'Rehydrate to daily baseline', 'Purify drinking water']
-      }
-    ]
-  },
-  refined: {
-    theme: 'refined',
-    kicker: 'REFINED FOCUS',
-    name: 'Refined',
-    tagline: 'Be impressed with your reflection',
-    description:
-      'The Refined focus is centered on confidence, balance, and restoration. It emphasizes the systems that support body composition, hormone balance, gut restoration, and a stronger sense of well-being.',
-    caption: 'Open each section below to see the practical focus points that support this area.',
-    focusImage: 'assets/images/matrix-focus-refined.png',
-    focusAlt: 'Refined focus overview from the ReVitalized Longevity Matrix',
-    wheelImage: 'assets/images/matrix-refined-detail.jpg',
-    wheelAlt: 'Refined detail from the ReVitalized Longevity Matrix',
-    sections: [
-      {
-        title: 'G.I. Renovation',
-        icon: 'stomach',
-        points: ['Stimulate healthy BMs everyday', 'Consistently positive bowel transit rate', 'Repopulate gut microbiome']
-      },
-      {
-        title: 'Hormone Balancing',
-        icon: 'scales',
-        points: ['Calm the hormone storm', 'Practice body recomposition', 'Recalibrate endocrine system to homeostasis']
-      },
-      {
-        title: 'Neural Repatterning',
-        icon: 'brain',
-        points: ['De-stress the brain', 'Balance neurochemistry', 'Strengthen neural circuits']
+        icon: 'hydration',
+        points: [
+          'Daily hydration equation',
+          'Rehydrate to daily baseline',
+          'Purify drinking water'
+        ]
       }
     ]
   },
   organized: {
     theme: 'organized',
-    kicker: 'ORGANIZED FOCUS',
     name: 'Organized',
     tagline: 'Living healthy is easy and fun',
-    description:
-      'The Organized focus helps turn healthy living into something practical and sustainable. It adds clarity, momentum, and structure to the habits that make long-term progress easier to maintain.',
-    caption: 'Open each section below to see the practical focus points that support this area.',
-    focusImage: 'assets/images/matrix-focus-organized.png',
-    focusAlt: 'Organized focus overview from the ReVitalized Longevity Matrix',
-    wheelImage: 'assets/images/matrix-organized-detail.jpg',
-    wheelAlt: 'Organized detail from the ReVitalized Longevity Matrix',
+    focusIcon: 'organized',
+    summary: 'Create simple systems for money, mindset, and momentum so healthy living becomes practical, repeatable, and sustainable.',
     sections: [
       {
         title: 'Wise Budgeting',
-        icon: 'wallet',
-        points: ['Build up a healthy emergency savings', 'Create a healthy budget', 'Cut unnecessary spending']
+        icon: 'budgeting',
+        points: [
+          'Build up a healthy emergency savings',
+          'Create a healthy budget',
+          'Cut unnecessary spending'
+        ]
       },
       {
         title: 'Mentality Realignment',
         icon: 'mindset',
-        points: ['Learn to be a grateful whitebelt', 'Enhance your vocabulary', 'Control your environment']
+        points: [
+          'Learn to be a grateful whitebelt',
+          'Enhance your vocabulary',
+          'Control your environment'
+        ]
       },
       {
         title: 'Momentum Regimens',
-        icon: 'calendar',
-        points: ['Goal focused monthly targets & standards', 'Simple weekly routines', 'Simple daily habits']
+        icon: 'momentum',
+        points: [
+          'Goal-focused monthly targets & standards',
+          'Simple weekly routines',
+          'Simple daily habits'
+        ]
+      }
+    ]
+  },
+  athletic: {
+    theme: 'athletic',
+    name: 'Athletic',
+    tagline: 'Move dynamically without pain',
+    focusIcon: 'athletic',
+    summary: 'Support a body that moves well, recovers well, and keeps the physical capacity to perform for the long haul.',
+    sections: [
+      {
+        title: 'The Living Diet',
+        icon: 'diet',
+        points: [
+          'Enhance digestion',
+          'Balance blood sugar',
+          'Reduce inflammation'
+        ]
+      },
+      {
+        title: 'Functional Training',
+        icon: 'training',
+        points: [
+          'Maintain full-body athletic performance',
+          'Train to functional baseline',
+          'Movement rehabilitation'
+        ]
+      },
+      {
+        title: 'Holistic Recovery',
+        icon: 'recovery',
+        points: [
+          'Challenge & support your stress response',
+          'Refresh extension',
+          'Laboratory measures'
+        ]
+      }
+    ]
+  },
+  refined: {
+    theme: 'refined',
+    name: 'Refined',
+    tagline: 'Be impressed with your reflection',
+    focusIcon: 'refined',
+    summary: 'Support the systems that influence digestion, hormone balance, body composition, brain health, and how you feel in your own skin.',
+    sections: [
+      {
+        title: 'G.I. Renovation',
+        icon: 'gi',
+        points: [
+          'Stimulate healthy bile everyday',
+          'Consistently positive bowel transit rate',
+          'Repopulate gut microbiome'
+        ]
+      },
+      {
+        title: 'Hormone Balancing',
+        icon: 'hormone',
+        points: [
+          'Calm the hormone storm',
+          'Practice body recomposition',
+          'Recalibrate endocrine system to homeostasis'
+        ]
+      },
+      {
+        title: 'Neural Repatterning',
+        icon: 'neural',
+        points: [
+          'De-stress the brain',
+          'Balance neurochemistry',
+          'Strengthen neural circuits'
+        ]
       }
     ]
   }
@@ -171,107 +199,65 @@ const matrixData = {
 const matrixNodes = document.querySelectorAll('[data-matrix-target]');
 if (matrixNodes.length) {
   const modal = document.getElementById('matrix-modal');
-  const detailCard = document.getElementById('matrix-detail-card');
-  const kicker = document.getElementById('matrix-detail-kicker');
-  const title = document.getElementById('matrix-detail-title');
-  const tagline = document.getElementById('matrix-detail-tagline');
-  const description = document.getElementById('matrix-detail-description');
-  const caption = document.getElementById('matrix-detail-caption');
-  const focusImage = document.getElementById('matrix-focus-image');
-  const wheelImage = document.getElementById('matrix-wheel-image');
-  const accordionList = document.getElementById('matrix-accordion-list');
+  const card = document.getElementById('matrix-focus-modal');
+  const focusIcon = document.getElementById('matrix-focus-icon');
+  const focusTitle = document.getElementById('matrix-focus-title');
+  const focusTagline = document.getElementById('matrix-focus-tagline');
+  const focusSummary = document.getElementById('matrix-focus-summary');
+  const accordionHost = document.getElementById('matrix-focus-accordions');
 
-  const buildAccordions = (sections) =>
-    sections
-      .map(
-        (section, index) => `
-          <details class="matrix-accordion-item" ${index === 0 ? 'open' : ''}>
-            <summary>
-              <span class="matrix-accordion-icon">${matrixIcons[section.icon] || matrixIcons.check}</span>
-              <span class="matrix-accordion-title">${section.title}</span>
-            </summary>
-            <div class="matrix-accordion-panel">
-              <ul>
-                ${section.points.map((point) => `<li>${point}</li>`).join('')}
-              </ul>
-            </div>
-          </details>
-        `
-      )
-      .join('');
+  const buildAccordion = (section) => `
+    <details class="matrix-focus-accordion">
+      <summary>
+        <span class="matrix-focus-row-icon">${iconSvg[section.icon] || ''}</span>
+        <span class="matrix-focus-row-title">${section.title}</span>
+        <span class="matrix-focus-chevron" aria-hidden="true">⌄</span>
+      </summary>
+      <div class="matrix-focus-panel">
+        <ul>
+          ${section.points.map((point) => `<li>${point}</li>`).join('')}
+        </ul>
+      </div>
+    </details>
+  `;
 
-  const setCopy = (data) => {
-    detailCard.className = `matrix-detail-card matrix-detail-modal theme-${data.theme}`;
-    kicker.textContent = data.kicker;
-    title.textContent = data.name;
-    tagline.textContent = data.tagline;
-    description.textContent = data.description;
-    caption.textContent = data.caption;
-    focusImage.src = data.focusImage;
-    focusImage.alt = data.focusAlt;
-    wheelImage.src = data.wheelImage;
-    wheelImage.alt = data.wheelAlt;
-    accordionList.innerHTML = buildAccordions(data.sections);
-
-    const accordionItems = accordionList.querySelectorAll('.matrix-accordion-item');
-    accordionItems.forEach((item) => {
-      item.addEventListener('toggle', () => {
-        if (!item.open) return;
-        accordionItems.forEach((other) => {
-          if (other !== item) other.open = false;
-        });
-      });
-    });
+  const setModal = (key) => {
+    const data = matrixData[key];
+    if (!data) return;
+    card.className = `matrix-focus-modal theme-${data.theme}`;
+    focusIcon.innerHTML = iconSvg[data.focusIcon] || '';
+    focusTitle.textContent = data.name;
+    focusTagline.textContent = data.tagline;
+    focusSummary.textContent = data.summary;
+    accordionHost.innerHTML = data.sections.map(buildAccordion).join('');
   };
 
-  const openModal = () => {
-    if (!modal) return;
+  const openModal = (key) => {
+    setModal(key);
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('matrix-modal-open');
   };
 
   const closeModal = () => {
-    if (!modal) return;
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('matrix-modal-open');
   };
 
-  const applyMatrixState = (key, node, { open = false } = {}) => {
-    const data = matrixData[key];
-    if (!data) return;
-
-    matrixNodes.forEach((btn) => {
-      btn.classList.remove('active');
-      btn.setAttribute('aria-selected', 'false');
-    });
-    if (node) {
-      node.classList.add('active');
-      node.setAttribute('aria-selected', 'true');
-    }
-
-    setCopy(data);
-    if (open) openModal();
-  };
-
   matrixNodes.forEach((node) => {
-    node.addEventListener('click', () => applyMatrixState(node.dataset.matrixTarget, node, { open: true }));
+    const activate = () => openModal(node.dataset.matrixTarget);
+    node.addEventListener('click', activate);
     node.addEventListener('keydown', (event) => {
       if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault();
-        applyMatrixState(node.dataset.matrixTarget, node, { open: true });
+        activate();
       }
     });
   });
 
-  if (modal) {
-    modal.querySelectorAll('[data-matrix-close]').forEach((el) => el.addEventListener('click', closeModal));
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
-    });
-  }
-
-  const initial = [...matrixNodes].find((node) => node.classList.contains('active')) || matrixNodes[0];
-  if (initial) applyMatrixState(initial.dataset.matrixTarget, initial, { open: false });
+  modal.querySelectorAll('[data-matrix-close]').forEach((el) => el.addEventListener('click', closeModal));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+  });
 }
