@@ -81,3 +81,10 @@ Build 33 update: replaced the Founders page hero with the final approved Justyn 
 ## Build 35 update
 - Includes Build 34 approved site-wide logo system.
 - Replaces all three ReVitalized approach video thumbnails with the newly approved graphics: Coaching, Longevity Matrix, and Your ReVitalized Journey.
+
+
+## Build 36 — Longevity Matrix lock
+- Replaced the Longevity Matrix hero artwork with the newly approved transparent version while preserving the existing website display footprint and clickable hit areas.
+- Updated all four connected popup identity icons to the locked approved assets: Athletic blue runner, Energized gold lightning, Refined red crown, Organized purple cubes.
+- Updated each popup accent system to the corresponding approved blue/gold/red/purple color.
+- Preserved the existing popup layout, accordions, copy, CTA, close controls, responsive behavior, and website interaction.

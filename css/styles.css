@@ -2257,3 +2257,66 @@ body.matrix-modal-open { overflow: hidden !important; }
 .founders-hero-final{min-height:0!important;background:#fff!important;overflow:hidden!important}
 .founders-hero-final>img{position:relative!important;inset:auto!important;width:100%!important;height:auto!important;object-fit:contain!important;object-position:center!important;display:block!important}
 @media(max-width:740px){.founders-hero-final{min-height:0!important}.founders-hero-final>img{width:100%!important;height:auto!important;object-fit:contain!important;object-position:center!important}}
+
+
+/* Build 36 — locked Longevity Matrix icons/colors */
+.matrix-focus-modal.theme-athletic { --focus:#168FEA !important; --focus-rgb:22,143,234 !important; }
+.matrix-focus-modal.theme-energized { --focus:#E6AD00 !important; --focus-rgb:230,173,0 !important; }
+.matrix-focus-modal.theme-refined { --focus:#D71920 !important; --focus-rgb:215,25,32 !important; }
+.matrix-focus-modal.theme-organized { --focus:#7D3FC7 !important; --focus-rgb:125,63,199 !important; }
+
+.matrix-focus-icon.uses-approved-focus-icon{
+  position:relative !important;
+  min-height:285px !important;
+  display:grid !important;
+  place-items:center !important;
+  padding:28px !important;
+  overflow:visible !important;
+  background:
+    radial-gradient(circle at 50% 48%, rgba(var(--focus-rgb),.18), rgba(var(--focus-rgb),.07) 48%, rgba(var(--focus-rgb),.03) 72%, transparent 73%),
+    linear-gradient(135deg, rgba(var(--focus-rgb),.14), rgba(var(--focus-rgb),.035)) !important;
+  border-right:1px solid rgba(var(--focus-rgb),.24) !important;
+}
+.matrix-focus-icon.uses-approved-focus-icon::before{
+  display:block !important;
+  content:"" !important;
+  position:absolute !important;
+  width:132px !important;
+  height:132px !important;
+  border-radius:50% !important;
+  background:rgba(255,255,255,.96) !important;
+  border:1px solid rgba(var(--focus-rgb),.18) !important;
+  box-shadow:0 12px 28px rgba(var(--focus-rgb),.18), inset 0 0 0 12px rgba(var(--focus-rgb),.05) !important;
+}
+.matrix-focus-icon.uses-approved-focus-icon svg{display:none !important;}
+.matrix-focus-icon .approved-focus-icon{
+  position:relative !important;
+  z-index:2 !important;
+  width:96px !important;
+  height:96px !important;
+  object-fit:contain !important;
+  object-position:center !important;
+  display:block !important;
+  background:transparent !important;
+  border:0 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+  filter:none !important;
+}
+.matrix-focus-modal.theme-energized .approved-focus-icon{width:86px !important;height:86px !important;}
+.matrix-focus-modal.theme-refined .approved-focus-icon{width:92px !important;height:92px !important;}
+.matrix-focus-modal.theme-organized .approved-focus-icon{width:92px !important;height:92px !important;}
+
+.matrix-approved-art{
+  background:transparent !important;
+  object-fit:contain !important;
+}
+
+@media(max-width:740px){
+  .matrix-focus-icon.uses-approved-focus-icon{min-height:210px !important;}
+  .matrix-focus-icon.uses-approved-focus-icon::before{width:116px !important;height:116px !important;}
+  .matrix-focus-icon .approved-focus-icon{width:84px !important;height:84px !important;}
+  .matrix-focus-modal.theme-energized .approved-focus-icon{width:76px !important;height:76px !important;}
+  .matrix-focus-modal.theme-refined .approved-focus-icon,
+  .matrix-focus-modal.theme-organized .approved-focus-icon{width:80px !important;height:80px !important;}
+}

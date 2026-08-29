@@ -225,12 +225,19 @@ if (matrixNodes.length) {
     const data = matrixData[key];
     if (!data) return;
     card.className = `matrix-focus-modal theme-${data.theme}`;
-    if (data.focusIcon === 'athletic') {
-      focusIcon.innerHTML = '<img class="matrix-focus-icon-image" src="assets/images/athletic-focus-approved.png" alt="">';
-      focusIcon.classList.add('uses-approved-image');
+    const approvedFocusImages = {
+      athletic: 'assets/images/icon-athletic-approved.png',
+      energized: 'assets/images/icon-energized-approved.png',
+      refined: 'assets/images/icon-refined-approved.png',
+      organized: 'assets/images/icon-organized-approved.png'
+    };
+    if (approvedFocusImages[data.focusIcon]) {
+      focusIcon.innerHTML = `<img class="matrix-focus-icon-image approved-focus-icon" src="${approvedFocusImages[data.focusIcon]}" alt="">`;
+      focusIcon.classList.add('uses-approved-focus-icon');
+      focusIcon.classList.remove('uses-approved-image');
     } else {
       focusIcon.innerHTML = iconSvg[data.focusIcon] || '';
-      focusIcon.classList.remove('uses-approved-image');
+      focusIcon.classList.remove('uses-approved-focus-icon', 'uses-approved-image');
     }
     focusTitle.textContent = data.name;
     focusTagline.textContent = data.tagline;
