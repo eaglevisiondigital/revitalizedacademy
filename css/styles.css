@@ -2320,3 +2320,89 @@ body.matrix-modal-open { overflow: hidden !important; }
   .matrix-focus-modal.theme-refined .approved-focus-icon,
   .matrix-focus-modal.theme-organized .approved-focus-icon{width:80px !important;height:80px !important;}
 }
+
+/* Build 38 — restore approved founders hero copy over the updated founders image */
+.founders-hero-final{
+  position:relative!important;
+  min-height:620px!important;
+  overflow:hidden!important;
+  background:#f8fbf6!important;
+  border-bottom:1px solid var(--line)!important;
+}
+.founders-hero-final>img{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center 31%!important;
+  display:block!important;
+}
+.founders-hero-final .founders-hero-overlay{
+  position:absolute!important;
+  inset:0!important;
+  z-index:1!important;
+  background:linear-gradient(90deg,rgba(255,255,255,.98) 0%,rgba(255,255,255,.94) 28%,rgba(255,255,255,.66) 42%,rgba(255,255,255,.12) 61%,rgba(255,255,255,0) 76%)!important;
+}
+.founders-hero-final .founders-hero-copy{
+  position:relative!important;
+  z-index:2!important;
+  width:min(var(--max),calc(100% - 40px))!important;
+  max-width:var(--max)!important;
+  min-height:620px!important;
+  margin:0 auto!important;
+  padding:0 20px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  align-items:flex-start!important;
+}
+.founders-hero-final .founders-hero-copy span{
+  font-size:clamp(18px,1.65vw,26px)!important;
+  line-height:1.15!important;
+  color:var(--green)!important;
+  font-weight:800!important;
+  margin:0 0 18px!important;
+}
+.founders-hero-final .founders-hero-copy h1{
+  max-width:720px!important;
+  margin:0!important;
+  font-size:clamp(58px,6.8vw,104px)!important;
+  line-height:.92!important;
+  letter-spacing:-.055em!important;
+  color:#171c1f!important;
+  text-shadow:0 1px 0 rgba(255,255,255,.65)!important;
+}
+@media(max-width:980px){
+  .founders-hero-final{min-height:560px!important}
+  .founders-hero-final>img{object-position:58% 28%!important}
+  .founders-hero-final .founders-hero-copy{min-height:560px!important}
+  .founders-hero-final .founders-hero-copy h1{max-width:590px!important}
+}
+@media(max-width:740px){
+  .founders-hero-final{min-height:610px!important}
+  .founders-hero-final>img{
+    position:absolute!important;
+    width:100%!important;
+    height:100%!important;
+    object-fit:cover!important;
+    object-position:63% 16%!important;
+  }
+  .founders-hero-final .founders-hero-overlay{
+    background:linear-gradient(180deg,rgba(255,255,255,.04) 20%,rgba(255,255,255,.20) 48%,rgba(255,255,255,.94) 68%,#fff 100%)!important;
+  }
+  .founders-hero-final .founders-hero-copy{
+    min-height:610px!important;
+    padding:0 22px 48px!important;
+    justify-content:flex-end!important;
+  }
+  .founders-hero-final .founders-hero-copy span{
+    font-size:18px!important;
+    margin-bottom:10px!important;
+  }
+  .founders-hero-final .founders-hero-copy h1{
+    font-size:50px!important;
+    line-height:.95!important;
+    max-width:100%!important;
+  }
+}

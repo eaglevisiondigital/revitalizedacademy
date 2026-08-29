@@ -88,3 +88,8 @@ Build 33 update: replaced the Founders page hero with the final approved Justyn 
 - Updated all four connected popup identity icons to the locked approved assets: Athletic blue runner, Energized gold lightning, Refined red crown, Organized purple cubes.
 - Updated each popup accent system to the corresponding approved blue/gold/red/purple color.
 - Preserved the existing popup layout, accordions, copy, CTA, close controls, responsive behavior, and website interaction.
+
+
+## Build 38 update
+- Restored the approved founders hero text overlay: “Justyn & Elle Oliver” and “About Our Founders.”
+- Preserved the new approved founders photo while restoring desktop and mobile text-overlay behavior.
