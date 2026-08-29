@@ -68,3 +68,16 @@ Build 32 updates:
 
 
 Build 33 update: replaced the Founders page hero with the final approved Justyn & Elle hero artwork, preserving full headroom and improved headline contrast.
+
+
+## Build 34 update
+- Replaced site-wide logos with the newly approved ReVitalized Academy logo system.
+- Added approved dark logo for light backgrounds: `assets/images/revitalized-logo-dark-approved.png`.
+- Added approved light logo for dark backgrounds: `assets/images/revitalized-logo-light-approved.png`.
+- Updated standard page headers, footers, and form-page brand marks to use the approved dark logo on light backgrounds.
+- Refreshed the standalone shield asset to match the approved mark.
+
+
+## Build 35 update
+- Includes Build 34 approved site-wide logo system.
+- Replaces all three ReVitalized approach video thumbnails with the newly approved graphics: Coaching, Longevity Matrix, and Your ReVitalized Journey.
