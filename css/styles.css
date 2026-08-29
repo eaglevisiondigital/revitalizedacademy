@@ -2436,3 +2436,161 @@ body.matrix-modal-open { overflow: hidden !important; }
   .founders-hero-final{min-height:0!important}
   .founders-hero-final>img{position:relative!important;width:100%!important;height:auto!important;object-fit:contain!important;object-position:center!important}
 }
+
+/* Build 40 — mobile polish pass */
+@media (max-width:740px){
+  html{scroll-padding-top:76px}
+  body{overflow-x:hidden}
+
+  /* Compact sticky navigation without sacrificing tap size */
+  .site-header{
+    height:68px!important;
+    padding:0 14px!important;
+    gap:10px!important;
+    grid-template-columns:minmax(0,1fr) auto!important;
+  }
+  .brand{min-width:0;display:flex;align-items:center}
+  .brand img{width:154px!important;max-height:54px!important;object-fit:contain!important;object-position:left center!important}
+  .menu-toggle{padding:10px 14px!important;font-size:15px!important;border-radius:10px!important}
+  .main-nav{top:68px!important}
+
+  /* Home hero: preserve the approved people/art but reduce vertical takeover */
+  .hero.hero-approved{min-height:0!important;background:#fff!important}
+  .hero.hero-approved .hero-copy{padding:26px 18px 20px!important}
+  .hero.hero-approved h1{font-size:clamp(40px,11vw,50px)!important;line-height:1!important;margin:16px 0 12px!important}
+  .hero.hero-approved .hero-sub{font-size:19px!important}
+  .hero.hero-approved .hero-text{font-size:15px!important;line-height:1.55!important}
+  .hero.hero-approved .fine-note{margin-top:10px!important}
+  .hero-approved-bg{
+    width:100%!important;
+    height:292px!important;
+    object-fit:cover!important;
+    object-position:68% 30%!important;
+    background:#fff!important;
+  }
+
+  /* Section headings */
+  .section-kicker{gap:10px!important;margin-bottom:16px!important}
+  .section-kicker h2{font-size:21px!important;line-height:1.15!important}
+  .section-kicker span{width:24px!important}
+  .learn-section,.founders-section,.testimonials-section,.video-section,.faq-section{padding:28px 14px 30px!important}
+  .founders-section h2{font-size:24px!important;line-height:1.12!important;margin:0 auto 20px!important;padding:0 12px!important;max-width:360px!important}
+
+  /* The six coaching pillars should scan quickly instead of becoming six giant screens */
+  .founders-section .founder-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:10px!important;
+  }
+  .founders-section .mini-card{
+    min-height:176px!important;
+    padding:16px 10px 14px!important;
+    border-radius:16px!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+  }
+  .founders-section .line-icon{font-size:32px!important;height:35px!important;margin-bottom:3px!important}
+  .founders-section .mini-card h3{font-size:15px!important;line-height:1.18!important;margin:7px 0 8px!important}
+  .founders-section .mini-card p{font-size:12px!important;line-height:1.42!important;margin:0!important}
+
+  /* Brand video block */
+  .brand-video-section{padding:32px 16px!important;gap:20px!important}
+  .brand-video-copy h2{font-size:32px!important;line-height:1.05!important;margin:10px 0 12px!important}
+  .brand-video-copy p{font-size:15px!important;line-height:1.6!important}
+  .brand-video-copy .text-link{font-size:14px!important;line-height:1.4!important}
+
+  /* Journey CTA */
+  .journey-banner{
+    margin:18px 14px 0!important;
+    padding:20px 18px!important;
+    grid-template-columns:54px 1fr!important;
+    gap:12px!important;
+    border-radius:18px!important;
+  }
+  .journey-banner>img{width:48px!important}
+  .journey-banner h2{font-size:21px!important;line-height:1.15!important}
+  .journey-banner h3{font-size:16px!important;line-height:1.3!important}
+  .journey-banner p{font-size:13px!important;line-height:1.5!important}
+  .journey-actions{grid-column:1/-1!important;flex-direction:column!important;gap:10px!important;align-items:stretch!important}
+  .journey-actions .btn{width:100%!important;min-height:52px!important}
+  .journey-actions .text-link{text-align:center!important;font-size:13px!important;padding:4px 0!important}
+
+  /* Future ecosystem: no horizontal CTA collision */
+  .next-chapter{padding:34px 16px 38px!important;gap:24px!important}
+  .future-copy h2{font-size:34px!important;line-height:1.03!important;margin:12px 0 16px!important}
+  .future-copy p{font-size:15px!important;line-height:1.55!important}
+  .future-actions{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    gap:10px!important;
+    margin-top:20px!important;
+  }
+  .future-actions .btn,.future-actions .text-link{
+    width:100%!important;
+    max-width:none!important;
+    text-align:center!important;
+    justify-content:center!important;
+  }
+  .future-actions .btn{min-height:54px!important}
+  .future-actions .text-link{padding:10px 4px!important;font-size:14px!important}
+  .ecosystem-device-showcase{margin-top:0!important;padding-top:0!important}
+  .ecosystem-device-showcase img{max-width:100%!important;width:100%!important;height:auto!important}
+
+  /* Keep ReFuel and video cards comfortably readable */
+  .refuel-section{padding:36px 16px!important;gap:20px!important}
+  .refuel-art{height:330px!important}
+  .refuel-copy h2{font-size:34px!important}
+  .refuel-copy h3{font-size:23px!important;line-height:1.15!important}
+  .refuel-copy p{font-size:15px!important;line-height:1.55!important}
+  .refuel-copy .btn{width:100%!important;min-height:54px!important}
+
+  /* Matrix CTA cards and video CTAs */
+  .matrix-cta-row{gap:12px!important;margin-top:16px!important}
+  .matrix-cta-card{padding:18px 16px!important;border-radius:16px!important}
+  .matrix-cta-card h3{font-size:21px!important}
+  .matrix-cta-card p{font-size:14px!important;line-height:1.5!important}
+  .matrix-cta-card .btn{width:100%!important}
+  .video-cta-row{gap:10px!important;margin-top:20px!important}
+
+  /* Founders-page closing CTA */
+  .founders-cta{
+    margin:20px 14px 28px!important;
+    padding:22px 18px!important;
+    gap:20px!important;
+    border-radius:18px!important;
+  }
+  .founders-cta h2{font-size:30px!important;line-height:1.05!important;margin:10px 0 10px!important}
+  .founders-cta p{font-size:15px!important;line-height:1.5!important}
+  .founders-cta-actions{width:100%!important;display:flex!important;flex-direction:column!important;gap:10px!important;align-items:stretch!important}
+  .founders-cta-actions .btn{width:100%!important;min-height:52px!important}
+
+  /* Footer: smaller mark and less dead space */
+  .site-footer{
+    margin-top:0!important;
+    padding:24px 18px 0!important;
+    gap:16px!important;
+    align-items:start!important;
+  }
+  .site-footer>img{width:164px!important;margin:0 0 4px!important}
+  .footer-copy,.footer-links,.footer-contact{font-size:12px!important;line-height:1.5!important}
+  .footer-bottom{font-size:10px!important;padding:12px 0 16px!important}
+
+  /* Anchor destinations should clear sticky header */
+  #matrix,#coaching,#stories,#faq,#matrix-videos{scroll-margin-top:78px!important}
+}
+
+@media (max-width:430px){
+  .site-header{height:66px!important;padding:0 12px!important}
+  .brand img{width:146px!important;max-height:50px!important}
+  .menu-toggle{font-size:14px!important;padding:9px 12px!important}
+  .main-nav{top:66px!important}
+  .hero-approved-bg{height:270px!important;object-position:68% 30%!important}
+  .founders-section .mini-card{min-height:168px!important;padding:14px 8px!important}
+  .founders-section .mini-card h3{font-size:14px!important}
+  .founders-section .mini-card p{font-size:11.5px!important}
+  .future-copy h2{font-size:32px!important}
+  .journey-banner{grid-template-columns:46px 1fr!important;padding:18px 15px!important}
+  .journey-banner>img{width:42px!important}
+}

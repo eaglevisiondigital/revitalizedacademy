@@ -98,3 +98,11 @@ Build 33 update: replaced the Founders page hero with the final approved Justyn 
 ## Build 39
 - Updated the About Our Founders hero to the approved final artwork with adjusted text placement and full headroom for Justyn and Elle.
 - Removed the separate HTML text overlay on this hero so the approved composition stays exact and cannot drift or crop differently across desktop widths.
+
+
+## Build 40 — mobile polish
+- Reduced mobile header footprint.
+- Compacted the home hero image while keeping the approved founders visible.
+- Reflowed the six coaching pillars into a two-column mobile grid.
+- Tightened mobile CTA cards, future ecosystem, ReFuel, founders CTA, and footer spacing.
+- Stacked future-action CTAs to eliminate mobile horizontal overflow.
