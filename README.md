@@ -93,3 +93,8 @@ Build 33 update: replaced the Founders page hero with the final approved Justyn 
 ## Build 38 update
 - Restored the approved founders hero text overlay: “Justyn & Elle Oliver” and “About Our Founders.”
 - Preserved the new approved founders photo while restoring desktop and mobile text-overlay behavior.
+
+
+## Build 39
+- Updated the About Our Founders hero to the approved final artwork with adjusted text placement and full headroom for Justyn and Elle.
+- Removed the separate HTML text overlay on this hero so the approved composition stays exact and cannot drift or crop differently across desktop widths.

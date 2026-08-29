@@ -2406,3 +2406,33 @@ body.matrix-modal-open { overflow: hidden !important; }
     max-width:100%!important;
   }
 }
+
+/* Build 39 — approved founders hero artwork with final text positioning */
+.founders-hero-final{
+  min-height:0!important;
+  height:auto!important;
+  overflow:hidden!important;
+  background:#fff!important;
+}
+.founders-hero-final>img{
+  position:relative!important;
+  inset:auto!important;
+  width:100%!important;
+  height:auto!important;
+  max-width:none!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  display:block!important;
+}
+.founders-hero-final .founders-hero-overlay,
+.founders-hero-final .founders-hero-copy{
+  display:none!important;
+}
+@media(max-width:980px){
+  .founders-hero-final{min-height:0!important}
+  .founders-hero-final>img{width:100%!important;height:auto!important;object-fit:contain!important;object-position:center!important}
+}
+@media(max-width:740px){
+  .founders-hero-final{min-height:0!important}
+  .founders-hero-final>img{position:relative!important;width:100%!important;height:auto!important;object-fit:contain!important;object-position:center!important}
+}
