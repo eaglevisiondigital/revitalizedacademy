@@ -106,3 +106,19 @@ Build 33 update: replaced the Founders page hero with the final approved Justyn 
 - Reflowed the six coaching pillars into a two-column mobile grid.
 - Tightened mobile CTA cards, future ecosystem, ReFuel, founders CTA, and footer spacing.
 - Stacked future-action CTAs to eliminate mobile horizontal overflow.
+
+## Build 42 — Editorial transformation proof prototype
+- Added a new emerald Digital Blueprint social-proof section to the homepage, separate from video testimonials.
+- Implemented Claudia as the featured editorial story using only a crop of the original supplied image; no AI reconstruction, face/body editing, retouching, or visual enhancement was applied.
+- Added one smaller Julien companion card for design review only.
+- Stories are driven by structured data in `assets/data/transformation-stories.json` with fields for name, images, headline, summary, tags, full story, timeframe, Matrix categories, video URL, homepage priority, status, claim review, and desktop/mobile image positioning.
+- Claudia is flagged `review-required` because the supplied source includes a chronic-pain claim. Final publishing language should receive claim/compliance review.
+- Existing video testimonials remain unchanged.
+
+
+## Build 42 updates
+- Refined homepage messaging around clarity, conflicting health information, personalization, and application without redesigning the approved site.
+- Kept the approved Longevity Matrix section intact and changed only its section background to Blueprint cream #FCF5EE.
+- Added a dedicated Families page and a premium family teaser on the homepage.
+- Reduced the webinar on the main website to a small coming-soon teaser; no webinar funnel or registration mechanics are introduced here.
+- Added Blueprint emerald/cream/gold rhythm to selected new sections while preserving existing approved design/content.
