@@ -158,3 +158,10 @@ Key updates:
 
 ## Build 47 update
 - Renamed all user-facing references from Free Health Assessment to Free Vitality Assessment across the site and supporting story/CTA data.
+
+## Build 48 — Homepage hero fidelity correction
+- Corrected the Build 47 homepage hero, which had an unintended hard vertical split.
+- Rebuilt the hero background as a smooth emerald-to-warm-cream transition.
+- Added subtle gold arc detailing to more closely match the approved mockup.
+- Kept the approved Justyn & Elle source image untouched; only CSS crop/position/fade behavior changed.
+- Preserved the Free Vitality Assessment terminology from Build 47.

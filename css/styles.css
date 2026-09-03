@@ -3471,3 +3471,182 @@ body{background:var(--blueprint-cream);color:#183128;}
   .family-home-section{grid-template-columns:1fr!important;gap:28px!important;}
   .family-home-copy h2{font-size:clamp(40px,13vw,58px)!important;}
 }
+
+
+/* ==========================================================
+   Build 48 — Hero fidelity correction to approved mockup
+   Fixes the hard vertical split seen in Build 47.
+   Keeps the approved Justyn & Elle image untouched.
+   ========================================================== */
+
+@media(min-width:841px){
+  .hero.hero-approved{
+    min-height:660px!important;
+    background:
+      radial-gradient(circle at 58% 38%,rgba(216,166,42,.18),transparent 20%),
+      linear-gradient(90deg,
+        #07392d 0%,
+        #0a4637 27%,
+        #0f5a45 42%,
+        #386c59 51%,
+        #b8b59a 59%,
+        #eee3d2 67%,
+        #f8f1e7 100%)!important;
+    overflow:hidden!important;
+    isolation:isolate!important;
+  }
+
+  /* Gold concentric arcs visible in the approved concept. */
+  .hero.hero-approved:before{
+    content:""!important;
+    position:absolute!important;
+    inset:-18% -4% -22% 32%!important;
+    z-index:1!important;
+    pointer-events:none!important;
+    opacity:.72!important;
+    background:
+      radial-gradient(ellipse at 42% 55%,
+        transparent 0 29%,
+        rgba(216,166,42,.52) 29.15% 29.32%,
+        transparent 29.48% 38%,
+        rgba(216,166,42,.34) 38.15% 38.30%,
+        transparent 38.46% 47%,
+        rgba(216,166,42,.23) 47.15% 47.28%,
+        transparent 47.44% 57%,
+        rgba(216,166,42,.16) 57.15% 57.28%,
+        transparent 57.44%)!important;
+  }
+
+  /* The founders artwork is confined to the right and fades naturally into
+     the emerald field instead of creating a hard vertical seam. */
+  .hero-approved-bg{
+    position:absolute!important;
+    z-index:0!important;
+    top:0!important;
+    right:-1%!important;
+    left:auto!important;
+    bottom:0!important;
+    width:69%!important;
+    height:100%!important;
+    max-width:none!important;
+    object-fit:cover!important;
+    object-position:56% 38%!important;
+    background:#f8f1e7!important;
+    -webkit-mask-image:linear-gradient(90deg,
+      transparent 0%,
+      rgba(0,0,0,.10) 5%,
+      rgba(0,0,0,.42) 13%,
+      rgba(0,0,0,.82) 22%,
+      #000 33%,
+      #000 100%)!important;
+    mask-image:linear-gradient(90deg,
+      transparent 0%,
+      rgba(0,0,0,.10) 5%,
+      rgba(0,0,0,.42) 13%,
+      rgba(0,0,0,.82) 22%,
+      #000 33%,
+      #000 100%)!important;
+  }
+
+  .hero.hero-approved:after{
+    content:""!important;
+    position:absolute!important;
+    inset:0!important;
+    z-index:2!important;
+    pointer-events:none!important;
+    background:
+      linear-gradient(90deg,
+        rgba(7,57,45,.98) 0%,
+        rgba(7,57,45,.96) 19%,
+        rgba(10,70,55,.87) 34%,
+        rgba(15,90,69,.62) 45%,
+        rgba(21,71,52,.18) 55%,
+        rgba(248,241,231,0) 67%)!important;
+  }
+
+  .hero.hero-approved .hero-copy{
+    position:relative!important;
+    z-index:3!important;
+    width:min(47vw,760px)!important;
+    min-width:570px!important;
+    padding:54px 20px 46px clamp(72px,7.4vw,150px)!important;
+  }
+
+  .hero.hero-approved h1{
+    font-size:clamp(58px,4.35vw,78px)!important;
+    line-height:.97!important;
+    margin:20px 0 26px!important;
+    max-width:640px!important;
+    letter-spacing:-.035em!important;
+  }
+
+  .hero.hero-approved .hero-sub{
+    font-size:20px!important;
+    margin-bottom:20px!important;
+  }
+
+  .hero.hero-approved .hero-text{
+    max-width:590px!important;
+    font-size:15.5px!important;
+    line-height:1.52!important;
+  }
+
+  .hero.hero-approved .hero-actions{
+    margin-top:26px!important;
+    gap:20px!important;
+  }
+
+  .hero.hero-approved .btn-large{
+    min-height:54px!important;
+    font-size:15px!important;
+    letter-spacing:.02em!important;
+  }
+
+  .hero.hero-approved .fine-note{
+    font-size:12px!important;
+    margin-top:18px!important;
+  }
+
+  .hero.hero-approved .eyebrow{
+    font-size:12px!important;
+    color:#edc568!important;
+  }
+
+  .hero.hero-approved .gold-accent-text{
+    color:#d9a33b!important;
+  }
+}
+
+/* Tablet: retain the smooth gradient without forcing a hard split. */
+@media(max-width:1100px) and (min-width:841px){
+  .hero.hero-approved .hero-copy{
+    min-width:0!important;
+    width:51vw!important;
+    padding-left:38px!important;
+  }
+  .hero-approved-bg{
+    width:67%!important;
+    object-position:57% 36%!important;
+  }
+}
+
+/* Mobile stays stacked and readable; the approved founders image remains intact. */
+@media(max-width:840px){
+  .hero.hero-approved{
+    background:linear-gradient(180deg,#07392d 0%,#0f5a45 50%,#f8f1e7 50.2%,#f8f1e7 100%)!important;
+  }
+  .hero.hero-approved:before{display:none!important;}
+  .hero.hero-approved:after{display:none!important;}
+  .hero.hero-approved .hero-copy{
+    color:#fff!important;
+  }
+  .hero-approved-bg{
+    width:100%!important;
+    height:auto!important;
+    position:relative!important;
+    object-fit:contain!important;
+    object-position:center top!important;
+    -webkit-mask-image:none!important;
+    mask-image:none!important;
+  }
+}
