@@ -149,3 +149,9 @@ Key updates:
 - Family Longevity Blueprint cards upgraded with the approved colorful kid-friendly icons.
 - Family story callout, final CTA and footer composition polished.
 - Plain white section canvases replaced with Blueprint cream, emerald or approved gradient treatments where appropriate.
+
+## Build 46 updates
+- Applied the approved emerald-and-gold homepage refinement language.
+- Removed the duplicate logo from the “Transformation, made personal” section.
+- Updated the homepage hero, family teaser, CTA styling, and section surfaces to better match the latest approved concepts.
+- Bumped page references to build 46.
