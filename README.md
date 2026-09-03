@@ -9,13 +9,13 @@ This build is the ReVitalized Academy corporate/coaching website, not the webina
 - Founder’s Webinar appears only as a small "notify me" teaser; registration/payment are not live yet.
 - ReFuel is teased as Coming 2027 with no pricing or multi-pack presentation.
 - Future ecosystem tools are teased without suggesting visitors should wait to begin.
-- Main conversion paths are Start Enrollment and Start Your Free Health Assessment.
+- Main conversion paths are Start Enrollment and Start Your Free Vitality Assessment.
 - All website form notifications should be configured in Netlify to deliver to contact@revitalizedacademy.com.
 
 ## Files
 - `index.html` — Academy-first homepage
 - `stories.html` — complete 12-video client story library
-- `consult.html` — Phase One free health assessment form
+- `consult.html` — Phase One free vitality assessment form
 - `enroll.html` — Phase One enrollment form placeholder/foundation
 - `css/styles.css` — responsive design system
 - `js/app.js` — mobile navigation behavior
@@ -38,7 +38,7 @@ Netlify Forms captures the consultation, enrollment, and Founder’s Webinar not
 - Uses the exact approved Justyn & Elle hero image asset without facial regeneration or retouching.
 - Hero and header expand across more of the viewport on desktop while preserving responsive behavior.
 - On mobile/tablet the hero stacks so the approved founder image remains visible without awkward cropping.
-- Primary secondary CTA is now “Free Health Assessment.”
+- Primary secondary CTA is now “Free Vitality Assessment.”
 
 
 ## Build 5 hero refinement
@@ -155,3 +155,6 @@ Key updates:
 - Removed the duplicate logo from the “Transformation, made personal” section.
 - Updated the homepage hero, family teaser, CTA styling, and section surfaces to better match the latest approved concepts.
 - Bumped page references to build 46.
+
+## Build 47 update
+- Renamed all user-facing references from Free Health Assessment to Free Vitality Assessment across the site and supporting story/CTA data.
