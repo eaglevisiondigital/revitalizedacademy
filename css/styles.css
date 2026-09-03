@@ -2671,3 +2671,343 @@ body.matrix-modal-open { overflow: hidden !important; }
   .family-page-hero{padding:48px 18px;gap:30px}.family-page-hero h1{font-size:50px}.family-page-hero-art{min-height:430px}.family-bubble{min-width:142px;padding:13px;font-size:9px}.family-bubble b{font-size:12px}.family-hub-badge{width:185px;height:185px}.family-hub-badge strong{font-size:34px}
   .family-values,.family-matrix-section,.family-hub-section{padding:52px 18px}.family-stage-grid{grid-template-columns:1fr}.family-playful-matrix{grid-template-columns:1fr 1fr}.family-matrix-card{min-height:185px;padding:20px 12px}.family-matrix-icon{font-size:44px}.family-matrix-center{width:190px}.family-hub-section{gap:30px}.family-story-callout{padding:38px 18px;display:block}.family-story-callout .btn{margin-top:20px}.family-final-cta{padding:36px 18px;display:block;text-align:center}.family-final-cta img{margin:0 auto 20px}.family-final-cta .btn{margin-top:18px}.family-final-cta h2{font-size:27px}
 }
+
+
+/* =========================================================
+   BUILD 43 — Blueprint palette + approved family direction
+   ========================================================= */
+
+/* No white section canvases: use Blueprint cream / emerald / emerald gradients. */
+body{background:var(--blueprint-cream);}
+.site-header{background:rgba(252,245,238,.96);}
+.hero-approved,
+.learn-section,
+.matrix-section,
+.difference-section,
+.founders-section,
+.brand-video-section,
+.testimonials-section,
+.video-section,
+.coaching-section,
+.next-chapter,
+.faq-section,
+.reserve-banner,
+.webinar-teaser-compact,
+.founder-belief,
+.family-values,
+.family-hub-section,
+.family-story-callout,
+.site-footer{
+  background:var(--blueprint-cream);
+}
+.family-home-section,
+.family-final-cta,
+.family-page-hero-approved{
+  background:linear-gradient(135deg,#0f3e30 0%,var(--blueprint-emerald) 52%,#0b3a2c 100%);
+}
+
+/* Premium clarity cards — same content, elevated Blueprint presentation */
+.clarity-section{background:var(--blueprint-cream)!important;padding-top:58px!important;padding-bottom:62px!important;}
+.clarity-intro{text-align:center;max-width:960px;margin:0 auto 34px;}
+.clarity-intro .eyebrow{background:transparent;color:var(--blueprint-gold);letter-spacing:.15em;padding:0;}
+.clarity-intro h2{max-width:900px;margin:13px auto 12px!important;}
+.clarity-intro p{max-width:820px;margin:0 auto;color:#5d655f;font-size:15px;line-height:1.6;}
+.clarity-section .learn-grid{gap:20px;}
+.clarity-section .mini-card{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(177,136,69,.20);
+  border-bottom:4px solid var(--blueprint-gold);
+  border-radius:20px;
+  padding:30px 19px 28px;
+  min-height:275px;
+  background:linear-gradient(180deg,#fffaf4 0%,#fcf5ee 100%);
+  box-shadow:0 16px 32px rgba(21,71,52,.07);
+}
+.clarity-section .mini-card:before{
+  content:"";
+  position:absolute;
+  width:120px;height:70px;
+  left:50%;top:47px;transform:translateX(-50%);
+  opacity:.45;
+  background-image:radial-gradient(var(--blueprint-gold-accent) 1.2px,transparent 1.2px);
+  background-size:8px 8px;
+  z-index:0;
+}
+.clarity-section .line-icon{
+  position:relative;
+  z-index:1;
+  width:82px;height:82px;
+  border-radius:50%;
+  margin:0 auto 22px;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(145deg,#195640,#0f3e30);
+  color:#e6b74e;
+  font-size:34px;
+  border:5px solid #fffaf4;
+  box-shadow:0 7px 0 rgba(177,136,69,.9),0 14px 26px rgba(21,71,52,.16);
+}
+.clarity-section .mini-card h3{
+  position:relative;z-index:1;
+  font-family:Georgia,"Times New Roman",serif;
+  color:var(--blueprint-emerald);
+  font-size:22px;
+  line-height:1.05;
+  margin:0 0 18px;
+}
+.clarity-section .mini-card h3:after{
+  content:"";
+  display:block;
+  width:34px;height:2px;
+  margin:13px auto 0;
+  background:var(--blueprint-gold);
+}
+.clarity-section .mini-card p{
+  position:relative;z-index:1;
+  font-size:13px;
+  line-height:1.52;
+  color:#4f5752;
+}
+
+/* Homepage family section — approved photo-led family treatment */
+.family-home-photo{
+  position:relative;
+  min-height:610px;
+  grid-template-columns:1fr 1.12fr!important;
+  gap:28px!important;
+  padding-top:56px!important;
+  padding-bottom:40px!important;
+}
+.family-home-photo:before{
+  content:"";
+  position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 78% 45%,rgba(255,255,255,.10),transparent 34%),
+    linear-gradient(90deg,rgba(7,47,35,.98) 0%,rgba(21,71,52,.96) 38%,rgba(21,71,52,.45) 68%,rgba(21,71,52,.05) 100%);
+  pointer-events:none;
+}
+.family-home-photo>*{position:relative;z-index:1;}
+.family-pill-label{
+  display:inline-flex;
+  align-items:center;
+  border:1px solid var(--blueprint-gold-accent);
+  border-radius:999px;
+  padding:9px 16px;
+  color:#f4cf77;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.09em;
+}
+.family-home-copy h2{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(48px,4.4vw,72px)!important;
+  line-height:.99!important;
+  letter-spacing:-.04em;
+  margin:22px 0 18px!important;
+}
+.family-home-copy h2 em{
+  display:block;
+  color:#d5a23f;
+  font-family:"Brush Script MT","Segoe Script",cursive;
+  font-style:normal;
+  font-weight:500;
+  letter-spacing:-.03em;
+}
+.family-home-copy p{max-width:640px!important;font-size:17px!important;line-height:1.62!important;}
+.family-audience-pills{display:flex;flex-wrap:wrap;gap:10px;margin:25px 0 28px!important;}
+.family-audience-pills span{
+  border:1px solid rgba(216,166,42,.55)!important;
+  background:rgba(8,53,39,.30)!important;
+  color:#fff!important;
+  border-radius:999px;
+  padding:9px 14px!important;
+  font-weight:700;
+}
+.family-gold-cta{
+  background:linear-gradient(180deg,#d6a950,#b98b3d)!important;
+  color:#103c2e!important;
+  border:1px solid #e7c777;
+  box-shadow:0 12px 28px rgba(0,0,0,.16)!important;
+}
+.family-home-family-photo{
+  position:relative;
+  height:520px;
+  align-self:end;
+  overflow:hidden;
+  border-radius:38% 20px 0 22%;
+  margin-right:-40px;
+  margin-bottom:-40px;
+}
+.family-home-family-photo:after{
+  content:"";
+  position:absolute;inset:0;
+  background:linear-gradient(90deg,var(--blueprint-emerald) 0%,rgba(21,71,52,.35) 18%,transparent 46%);
+  pointer-events:none;
+}
+.family-home-family-photo>img:first-child{
+  width:100%;height:100%;object-fit:cover;object-position:55% center;
+}
+.family-float-icon{
+  position:absolute!important;
+  z-index:3!important;
+  width:88px!important;height:88px!important;
+  object-fit:contain!important;
+  filter:drop-shadow(0 10px 14px rgba(0,0,0,.16));
+}
+.family-float-energy{left:5%;top:6%;}
+.family-float-athletic{right:4%;top:4%;}
+.family-float-refined{right:4%;bottom:5%;}
+
+/* Dedicated Family page — approved mockup direction */
+.family-page-hero-approved{
+  color:#fff!important;
+  min-height:650px!important;
+  grid-template-columns:.92fr 1.08fr!important;
+  gap:18px!important;
+  padding-top:58px!important;
+  padding-bottom:0!important;
+  position:relative;
+}
+.family-page-hero-approved:before{
+  content:"";
+  position:absolute;inset:0;
+  background:radial-gradient(circle at 73% 45%,rgba(255,255,255,.12),transparent 35%);
+}
+.family-page-hero-approved>*{position:relative;z-index:1;}
+.family-page-hero-approved h1{
+  color:#fff!important;
+  font-size:clamp(54px,5vw,80px)!important;
+  line-height:.98!important;
+  margin:22px 0 20px!important;
+}
+.family-page-hero-approved h1 em{
+  display:block;
+  color:#d5a23f!important;
+  font-family:"Brush Script MT","Segoe Script",cursive;
+  font-style:normal!important;
+  font-weight:500;
+}
+.family-page-hero-approved p{color:rgba(255,255,255,.90)!important;max-width:610px!important;}
+.family-page-hero-approved .family-outline-btn{
+  border:1px solid var(--blueprint-gold-accent);
+  color:#fff;
+  background:rgba(8,53,39,.35);
+}
+.family-page-photo{
+  height:580px;
+  position:relative;
+  align-self:end;
+  overflow:hidden;
+  border-radius:38% 0 0 20%;
+  margin-right:calc(-1 * max(28px,calc((100vw - var(--max))/2)));
+}
+.family-page-photo:after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,var(--blueprint-emerald) 0%,rgba(21,71,52,.20) 25%,transparent 53%);
+}
+.family-page-photo>img:first-child{
+  width:100%;height:100%;object-fit:cover;object-position:58% center;
+}
+
+/* Family blueprint matrix — actual supplied icons, kid-friendly premium cards */
+.family-blueprint-section{
+  background:var(--blueprint-cream)!important;
+  color:var(--ink)!important;
+  padding-top:70px!important;
+}
+.family-blueprint-section .family-section-heading h2{font-size:clamp(38px,3.3vw,56px);}
+.family-blueprint-section .family-section-heading:after{
+  content:"";
+  display:block;width:74px;height:3px;
+  background:var(--blueprint-gold-accent);
+  margin:18px auto 0;
+  border-radius:5px;
+}
+.family-star{color:var(--blueprint-gold-accent);font-size:34px;display:block;}
+.family-blueprint-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:22px;
+  max-width:1180px;
+  margin:0 auto;
+}
+.family-blueprint-card{
+  min-height:430px;
+  border-radius:24px;
+  padding:25px 22px 22px;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  border:1px solid rgba(21,71,52,.09);
+  box-shadow:0 16px 34px rgba(21,71,52,.08);
+}
+.family-blueprint-card img{
+  width:150px;height:150px;object-fit:contain;margin:0 auto 10px;
+}
+.family-blueprint-card h3{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:25px;margin:3px 0 12px;
+}
+.family-blueprint-card p{
+  font-size:13px;line-height:1.55;color:#434b46;flex:1;margin:0;
+}
+.family-blueprint-card small{
+  width:100%;border-top:1px solid rgba(21,71,52,.10);
+  padding-top:15px;margin-top:18px;font-size:12px;font-weight:700;
+}
+.family-blueprint-card.organized{background:linear-gradient(180deg,#f1edf8,#fcf5ee);}.family-blueprint-card.organized h3,.family-blueprint-card.organized small{color:#6444a1}
+.family-blueprint-card.energized{background:linear-gradient(180deg,#fff3d9,#fcf5ee);}.family-blueprint-card.energized h3,.family-blueprint-card.energized small{color:#c88600}
+.family-blueprint-card.athletic{background:linear-gradient(180deg,#e9f4f7,#fcf5ee);}.family-blueprint-card.athletic h3,.family-blueprint-card.athletic small{color:#0877aa}
+.family-blueprint-card.refined{background:linear-gradient(180deg,#fde9e5,#fcf5ee);}.family-blueprint-card.refined h3,.family-blueprint-card.refined small{color:#cf3131}
+
+/* Family lower sections — no stacked logos and stronger composition */
+.family-story-callout{
+  position:relative;
+  padding-top:58px!important;padding-bottom:58px!important;
+}
+.family-story-callout:before{
+  content:"";
+  position:absolute;left:0;bottom:0;width:180px;height:180px;opacity:.12;
+  background:radial-gradient(circle at 0 100%,var(--blueprint-gold) 0 2px,transparent 3px);
+  background-size:13px 13px;
+}
+.family-final-cta{
+  grid-template-columns:1fr auto!important;
+  background:linear-gradient(120deg,#0f513d,#07392b)!important;
+  border-top:1px solid rgba(216,166,42,.35)!important;
+}
+.family-final-cta h2{font-size:36px!important;max-width:850px;}
+.site-footer{margin-top:0!important;background:var(--blueprint-cream)!important;}
+
+/* Other former white section areas */
+.faq-grid details,
+.mini-card,
+.compare-card,
+.testimonial-card,
+.video-card{
+  background:#fffaf4;
+}
+
+/* Responsive */
+@media(max-width:980px){
+  .family-home-photo{grid-template-columns:1fr!important;}
+  .family-home-family-photo{height:480px;margin:0;border-radius:28px;}
+  .family-page-hero-approved{grid-template-columns:1fr!important;padding-bottom:0!important;}
+  .family-page-photo{height:520px;margin:0 -28px 0;border-radius:30px 30px 0 0;}
+  .family-blueprint-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:640px){
+  .clarity-section .learn-grid{grid-template-columns:1fr!important;}
+  .clarity-section .mini-card{min-height:0;}
+  .family-home-photo{padding:44px 18px 0!important;}
+  .family-home-copy h2{font-size:46px!important;}
+  .family-home-family-photo{height:410px;margin-top:20px;border-radius:26px 26px 0 0;}
+  .family-page-hero-approved{padding:42px 18px 0!important;}
+  .family-page-hero-approved h1{font-size:48px!important;}
+  .family-page-photo{height:420px;margin:22px -18px 0;}
+  .family-blueprint-grid{grid-template-columns:1fr;}
+  .family-blueprint-card{min-height:0;}
+  .family-final-cta{display:block!important;text-align:left!important;}
+  .family-final-cta .btn{margin-top:20px;}
+}
