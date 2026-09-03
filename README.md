@@ -165,3 +165,12 @@ Key updates:
 - Added subtle gold arc detailing to more closely match the approved mockup.
 - Kept the approved Justyn & Elle source image untouched; only CSS crop/position/fade behavior changed.
 - Preserved the Free Vitality Assessment terminology from Build 47.
+
+## Build 49 — Approved premium refinement pass
+- Implemented the approved emerald / cream / gold visual upgrades across the reviewed sections.
+- Homepage family teaser moved to the approved deep emerald treatment.
+- Coaching comparison and coaching experience cards upgraded.
+- Member-story section, next-chapter section, stories page hero/CTA, and older gradient areas polished.
+- Webinar teaser rebuilt as a premium MacBook-style coming-soon section with a Netlify email notification form and limited-seating messaging.
+- Free Vitality Assessment terminology retained throughout.
+- IMPORTANT: every new Justyn & Elle placement in Build 49 uses the existing approved `founders-hero-approved.png` source asset directly. Their photo is not AI-generated, retouched, beautified, reconstructed, or otherwise altered. CSS only controls crop, size, and placement.
