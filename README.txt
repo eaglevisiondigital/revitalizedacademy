@@ -1,18 +1,21 @@
-BUILD 57 — CTA + BRAND STORY FIXES ONLY
+BUILD 58 — CTA HIERARCHY + BRAND STORY SECTION FIXES ONLY
 
 Replace these files in the live repo:
 - index.html
-- families.html
-- founders.html
-- free-help.html
 - stories.html
+- founders.html
+- families.html
+- free-help.html
+- consult.html
 - css/styles.css
-- css/vitality55.css
-- js/vitality55.js
 
 CHANGES
-1. Every button-style Free Vitality Assessment CTA now has a dedicated `vitality-primary-cta` class.
-2. Those CTAs are forced to the ReVitalized gold treatment even if older accumulated CSS is present.
-3. Start Your Journey / enrollment CTAs remain emerald.
-4. “A better way forward.” in the Meet ReVitalized Academy section is changed to the warm Blueprint gold.
-5. Asset/CSS cache versions bumped to 57.
+1. Free Vitality Assessment remains the primary site-wide CTA and stays gold everywhere.
+2. The homepage hero enrollment CTA is now the lighter cream/white secondary button beside the gold assessment CTA.
+3. Enrollment wording is standardized to “Start Your Journey” across the updated homepage and stories CTA areas.
+4. The “More than information. A better way forward.” section is rebuilt to match the approved premium mockup more closely with:
+   - gold “A better way forward.” accent
+   - reduced dead space
+   - stronger two-column editorial layout
+   - visible premium founder/video card on the right
+5. CSS asset version references were bumped to 58 on the updated pages to help with cache refresh.
