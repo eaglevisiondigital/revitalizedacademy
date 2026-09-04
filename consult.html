@@ -1,1 +1,68 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Free Vitality Assessment | ReVitalized Academy</title><link rel="stylesheet" href="css/styles.css?v=61"><link rel="stylesheet" href="css/vitality55.css?v=56"></head><body><main class="vitality-page"><div class="vitality-shell"><a class="vitality-brand" href="index.html"><img src="assets/images/revitalized-logo-dark-approved.png" alt="ReVitalized Academy"></a><section class="vitality-card"><header class="vitality-card-head"><span class="vitality-kicker">FREE VITALITY ASSESSMENT</span><h1>Start with <span>clarity.</span></h1><p>Your first step takes less than a minute. Save your contact information now, then continue into the full Vitality Assessment.</p></header><div class="vitality-progress"><div class="active">1 · Contact Information</div><div class="future">2 · Vitality Assessment</div></div><div class="vitality-body"><h2>Where should we send your results?</h2><p>When you select <strong>Save & Continue</strong>, this information is saved immediately—even if you finish the rest later.</p><form name="vitality-lead" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-vitality-lead-form><input type="hidden" name="form-name" value="vitality-lead"><input type="hidden" name="lead_source" value="Free Vitality Assessment"><p hidden><label>Don’t fill this out: <input name="bot-field"></label></p><div class="vitality-grid"><div class="vitality-field"><label>First name</label><input name="first_name" autocomplete="given-name" required></div><div class="vitality-field"><label>Last name</label><input name="last_name" autocomplete="family-name" required></div><div class="vitality-field"><label>Email</label><input name="email" type="email" autocomplete="email" required></div><div class="vitality-field"><label>Cell phone</label><input name="phone" type="tel" autocomplete="tel" required></div></div><div class="vitality-actions"><button class="vitality-next" type="submit">Save &amp; Continue →</button><span class="vitality-assurance"><strong>Step 1 saves your information.</strong> The assessment continues next.</span></div><div class="vitality-error">We couldn’t save your information. Please try again.</div></form></div><div class="vitality-step2"><div class="vitality-saved">✓ Your contact information has been saved</div><h2>Now let’s look at your vitality.</h2><p>The approved assessment questions will be added here when you bring them over. Your lead information has already been captured.</p></div></section></div></main><script src="js/vitality55.js?v=56"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Complete the ReVitalized Academy Free Vitality Assessment to identify patterns across the 12 Drivers of Health and prepare for your Vitality Roadmap Consultation.">
+  <title>Free Vitality Assessment | ReVitalized Academy</title>
+  <link rel="stylesheet" href="css/styles.css?v=61">
+  <link rel="stylesheet" href="css/vitality55.css?v=62">
+</head>
+<body>
+  <main class="vitality-page">
+    <div class="vitality-shell">
+      <a class="vitality-brand" href="index.html" aria-label="ReVitalized Academy home"><img src="assets/images/revitalized-logo-dark-approved.png" alt="ReVitalized Academy"></a>
+      <section class="vitality-card" aria-live="polite">
+        <header class="vitality-card-head">
+          <span class="vitality-kicker">FREE VITALITY ASSESSMENT</span>
+          <h1>Start with <span>clarity.</span></h1>
+          <p>Discover what your body may be telling you and which areas of your lifestyle deserve a closer look.</p>
+        </header>
+        <div class="vitality-progress" aria-label="Assessment progress">
+          <div class="active" data-progress-contact>1 · Contact</div><div class="future" data-progress-assessment>2 · Assessment</div><div class="future" data-progress-complete>3 · Complete</div>
+        </div>
+        <div class="vitality-body" data-lead-step>
+          <div class="vitality-step-heading"><span class="vitality-step-count">STEP 1 OF 3</span><h2>Where should we send your results?</h2><p>When you select <strong>Save &amp; Continue</strong>, your information is saved immediately—even if you do not finish the assessment.</p></div>
+          <form name="vitality-lead" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-vitality-lead-form>
+            <input type="hidden" name="form-name" value="vitality-lead"><input type="hidden" name="lead_source" value="Free Vitality Assessment"><input type="hidden" name="assessment_status" value="Lead captured - assessment not yet completed">
+            <p hidden><label>Don’t fill this out: <input name="bot-field"></label></p>
+            <div class="vitality-grid">
+              <div class="vitality-field"><label for="lead-first">First name</label><input id="lead-first" name="first_name" autocomplete="given-name" required></div>
+              <div class="vitality-field"><label for="lead-last">Last name</label><input id="lead-last" name="last_name" autocomplete="family-name" required></div>
+              <div class="vitality-field"><label for="lead-email">Email</label><input id="lead-email" name="email" type="email" autocomplete="email" required></div>
+              <div class="vitality-field"><label for="lead-phone">Cell phone</label><input id="lead-phone" name="phone" type="tel" autocomplete="tel" required></div>
+            </div>
+            <div class="vitality-actions"><button class="vitality-next" type="submit">Save &amp; Continue <span aria-hidden="true">→</span></button><span class="vitality-assurance"><strong>Your information saves at this step.</strong><br>The full assessment continues next.</span></div>
+            <div class="vitality-error" role="alert">We couldn’t save your information. Please check your connection and try again.</div>
+          </form>
+        </div>
+        <div class="vitality-assessment" data-assessment-step hidden>
+          <div class="vitality-assessment-toolbar">
+            <button class="vitality-back" type="button" data-back disabled aria-label="Go to previous assessment section">← Back</button>
+            <div class="vitality-section-progress"><span data-section-label>Introduction</span><div><i data-progress-bar></i></div></div><span class="vitality-percent" data-progress-percent>0%</span>
+          </div>
+          <form name="vitality-assessment" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-assessment-form autocomplete="off">
+            <input type="hidden" name="form-name" value="vitality-assessment"><input type="hidden" name="lead_source" value="Free Vitality Assessment"><input type="hidden" name="assessment_version" value="Vitality Roadmap PDF - September 2026">
+            <input type="hidden" name="first_name" data-copy-field="first_name"><input type="hidden" name="last_name" data-copy-field="last_name"><input type="hidden" name="email" data-copy-field="email"><input type="hidden" name="phone" data-copy-field="phone">
+            <input type="hidden" name="assessment_status" value="Complete - coach review requested"><input type="hidden" name="submitted_at" data-submitted-at><input type="hidden" name="coach_review_flags" data-coach-review-flags value="None reported">
+            <textarea name="assessment_summary" data-assessment-summary hidden></textarea>
+            <p hidden><label>Don’t fill this out: <input name="bot-field"></label></p>
+            <div data-assessment-stage></div>
+            <div class="vitality-form-navigation"><p class="vitality-save-note">Your full assessment is submitted when you finish. Your contact information is already saved.</p><button class="vitality-next" type="button" data-next>Continue <span aria-hidden="true">→</span></button></div>
+            <div class="vitality-error" data-assessment-error role="alert">Please complete the required questions above before continuing.</div>
+          </form>
+        </div>
+        <div class="vitality-complete" data-complete-step hidden>
+          <div class="vitality-complete-mark" aria-hidden="true">✓</div><span class="vitality-kicker vitality-kicker-light">ASSESSMENT COMPLETE</span>
+          <h2>Thank you, <span data-complete-name>your assessment is complete</span>.</h2>
+          <p>Your answers have been submitted to ReVitalized Academy for review. This assessment identifies patterns and practical areas to investigate; it does not diagnose disease or determine the cause of symptoms.</p>
+          <div class="vitality-complete-card"><span>NEXT STEP</span><h3>Book your Vitality Roadmap Consultation</h3><p>Your assessment shows where concerns and strengths appear. A consultation helps you understand what may deserve attention and what order makes sense for you.</p><a class="vitality-next vitality-complete-cta" href="mailto:contact@revitalizedacademy.com?subject=Vitality%20Roadmap%20Consultation">Request Your Consultation →</a></div>
+          <a class="vitality-home-link" href="index.html">Return to ReVitalized Academy</a>
+        </div>
+      </section>
+      <p class="vitality-footer-note">Your Health Spectrum stage is a ReVitalized Academy coaching classification, not a medical diagnosis.</p>
+    </div>
+  </main>
+  <script src="js/vitality55.js?v=62"></script>
+</body>
+</html>
