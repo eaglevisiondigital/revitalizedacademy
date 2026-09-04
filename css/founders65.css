@@ -1,0 +1,107 @@
+/* =========================================================
+   BUILD 65 — FOUNDERS HERO CLEAN REBUILD
+   Recreates the approved mockup as a true layered website hero.
+   The founders photo is the approved untouched PNG and is only
+   proportionally scaled/positioned via CSS.
+   ========================================================= */
+:root{
+  --f65-cream:#FCF5EE;
+  --f65-cream-2:#FFF9F1;
+  --f65-emerald:#154734;
+  --f65-emerald-deep:#0A4033;
+  --f65-gold:#D8A62A;
+  --f65-gold-soft:#E8C56D;
+  --f65-sage:#C9D8C8;
+  --f65-sage-2:#E7EEE3;
+  --f65-ink:#24322E;
+  --f65-bluegray:#536565;
+}
+
+.site-header .main-nav a.active{color:var(--f65-emerald);font-weight:800;position:relative}
+.site-header .main-nav a.active::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--f65-gold)}
+
+/* Reset accumulated founders hero rules so the old implementation cannot leak in. */
+.founders64-hero,
+.founders64-hero *{box-sizing:border-box}
+.founders64-hero{position:relative!important;isolation:isolate!important;overflow:hidden!important;min-height:770px!important;background:linear-gradient(105deg,#fffaf4 0%,#fcf5ee 58%,#f8eddf 100%)!important;border-bottom:1px solid rgba(216,166,42,.28)!important}
+.founders64-backdrop{position:absolute!important;inset:0!important;overflow:hidden!important;z-index:0!important;pointer-events:none!important}
+
+/* Left sage sweep — intentionally subtle and behind the copy, like the approved mockup. */
+.founders64-green-sweep{position:absolute!important;left:-27%!important;top:-34%!important;width:69%!important;height:165%!important;border-radius:49%!important;background:radial-gradient(ellipse at 72% 48%,rgba(255,255,255,.98) 0 37%,rgba(223,234,220,.78) 38% 49%,rgba(193,213,191,.70) 50% 59%,rgba(171,197,170,.58) 60% 70%,rgba(139,175,143,.38) 71% 77%,transparent 78%)!important;transform:rotate(-7deg)!important;opacity:.92!important}
+
+/* Curved gold transition — replaces the old thick diagonal bar. */
+.founders64-backdrop::before{content:""!important;position:absolute!important;left:-41%!important;top:-89%!important;width:92%!important;height:205%!important;border:16px solid rgba(216,166,42,.72)!important;border-radius:50%!important;background:transparent!important;transform:none!important;opacity:1!important;box-shadow:none!important}
+.founders64-backdrop::after{content:"";position:absolute;left:-38.8%;top:-86%;width:87%;height:198%;border:2px solid rgba(255,255,255,.92);border-radius:50%;pointer-events:none}
+
+/* Right side circles and watermark. */
+.founders64-gold-arc{position:absolute!important;border:1px solid rgba(216,166,42,.56)!important;border-radius:50%!important;background:transparent!important}
+.founders64-gold-arc.arc-a{width:61%!important;aspect-ratio:1!important;right:-13%!important;top:-12%!important}
+.founders64-gold-arc.arc-b{width:49%!important;aspect-ratio:1!important;right:-7%!important;top:0!important;opacity:.70!important}
+.founders64-gold-arc.arc-c{width:38%!important;aspect-ratio:1!important;right:-1.5%!important;top:12%!important;opacity:.50!important}
+.founders64-shield{position:absolute!important;right:1.4%!important;top:3.5%!important;width:min(29vw,470px)!important;height:auto!important;opacity:.07!important;filter:grayscale(1) sepia(.18)!important;mix-blend-mode:multiply!important}
+
+/* Leaves: keep them out of the copy and let them rise at the visual divide. */
+.founders64-leaves{position:absolute!important;color:rgba(93,126,83,.58)!important;filter:drop-shadow(0 8px 15px rgba(35,69,43,.06))!important}
+.founders64-leaves-left{left:37.1%!important;bottom:-6%!important;width:min(15.5vw,245px)!important;height:auto!important;opacity:.88!important}
+.founders64-leaves-corner{right:-1.5%!important;bottom:-10%!important;width:min(12vw,190px)!important;height:auto!important;opacity:.42!important;filter:blur(1.2px)!important}
+
+/* Main two-column layout. */
+.founders64-inner{position:relative!important;z-index:2!important;max-width:1600px!important;margin:0 auto!important;min-height:770px!important;display:grid!important;grid-template-columns:minmax(520px,.93fr) minmax(650px,1.07fr)!important;gap:0!important;padding:0 58px!important;align-items:stretch!important}
+
+/* Left live HTML copy — sized and spaced to match the approved comp. */
+.founders64-copy{align-self:center!important;padding:72px 0 52px 12px!important;max-width:610px!important;position:relative!important;z-index:4!important}
+.founders64-kicker{display:block!important;color:var(--f65-emerald)!important;font-size:15px!important;letter-spacing:.25em!important;font-weight:800!important;margin:0 0 22px!important}
+.founders64-copy h1{font-family:Georgia,"Times New Roman",serif!important;color:var(--f65-emerald-deep)!important;font-size:clamp(70px,6vw,98px)!important;line-height:.88!important;letter-spacing:-.048em!important;margin:0!important;max-width:600px!important;font-weight:700!important}
+.founders64-rule{display:block!important;width:124px!important;height:3px!important;background:linear-gradient(90deg,#b67d18 0%,#e3bd58 72%,transparent 100%)!important;margin:30px 0 32px!important;border-radius:999px!important}
+.founders64-copy p{font-size:clamp(18px,1.12vw,20px)!important;line-height:1.58!important;color:#34433D!important;margin:0 0 22px!important;max-width:560px!important;font-weight:400!important}
+.founders64-copy p strong{color:#1a2824!important;font-weight:800!important}
+.founders64-watch{display:inline-flex!important;align-items:center!important;gap:17px!important;min-width:382px!important;min-height:76px!important;padding:15px 28px 15px 18px!important;margin-top:7px!important;border-radius:13px!important;background:linear-gradient(180deg,#12614A 0%,#093B30 100%)!important;border:1px solid rgba(216,166,42,.82)!important;color:#F0C966!important;font-size:21px!important;font-weight:900!important;box-shadow:0 14px 28px rgba(9,55,44,.18)!important}
+.founders64-watch:hover{transform:translateY(-2px)!important;box-shadow:0 18px 36px rgba(9,55,44,.24)!important}
+.founders64-play{width:48px!important;height:48px!important;border:1px solid #F0C966!important;border-radius:50%!important;display:grid!important;place-items:center!important;font-size:15px!important;padding-left:2px!important;color:#F4D57C!important;flex:0 0 auto!important}
+.founders64-purpose{margin-top:31px!important;font-size:12px!important;letter-spacing:.31em!important;color:#68807A!important;font-weight:700!important;white-space:nowrap!important}
+
+/* Right visual. Important: the approved founders PNG itself is never filtered, masked or regenerated. */
+.founders64-visual{position:relative!important;min-width:0!important;height:770px!important;align-self:end!important;z-index:3!important}
+.founders64-founders{position:absolute!important;z-index:5!important;right:-1%!important;bottom:-1px!important;width:min(47.5vw,730px)!important;height:745px!important;object-fit:contain!important;object-position:center bottom!important;filter:none!important;-webkit-filter:none!important;transform:none!important;opacity:1!important;mix-blend-mode:normal!important;mask:none!important;-webkit-mask:none!important}
+.founders64-script{position:absolute!important;z-index:6!important;left:-4.3%!important;top:136px!important;color:#C68C22!important;font-family:"Segoe Script","Brush Script MT",cursive!important;font-size:clamp(28px,2.0vw,39px)!important;line-height:1.10!important;font-style:italic!important;transform:rotate(-4deg)!important;text-shadow:0 1px 0 rgba(255,255,255,.55)!important}
+.founders64-script::after{content:""!important;display:block!important;width:72px!important;height:3px!important;background:#C68C22!important;margin:13px 0 0 26px!important;transform:rotate(-11deg)!important;border-radius:999px!important}
+.founders64-sidewords{position:absolute!important;z-index:7!important;right:-1.2%!important;bottom:119px!important;font-size:11px!important;line-height:2.10!important;letter-spacing:.29em!important;color:#6D8984!important;font-weight:700!important;text-align:left!important}
+.founders64-sidewords span{display:block!important;width:28px!important;height:2px!important;background:#C79A36!important;margin-top:5px!important}
+
+/* Responsive behavior keeps heads visible and removes desktop-only clutter when necessary. */
+@media(max-width:1280px){
+  .founders64-hero,.founders64-inner{min-height:700px!important}
+  .founders64-inner{grid-template-columns:minmax(440px,.9fr) minmax(570px,1.1fr)!important;padding:0 34px!important}
+  .founders64-copy{padding-left:8px!important}
+  .founders64-visual{height:700px!important}
+  .founders64-founders{height:674px!important;width:min(51vw,680px)!important;right:-2%!important}
+  .founders64-script{left:-3%!important;top:128px!important}
+}
+@media(max-width:1000px){
+  .founders64-hero{min-height:0!important}
+  .founders64-inner{min-height:0!important;display:flex!important;flex-direction:column!important;padding:0!important}
+  .founders64-copy{order:1!important;max-width:none!important;padding:56px 34px 30px!important}
+  .founders64-copy h1{font-size:clamp(60px,10vw,82px)!important}
+  .founders64-purpose{white-space:normal!important}
+  .founders64-visual{order:2!important;width:100%!important;height:610px!important}
+  .founders64-founders{height:590px!important;width:min(84vw,700px)!important;right:50%!important;transform:translateX(50%)!important}
+  .founders64-script{left:10%!important;top:72px!important}
+  .founders64-sidewords{right:7%!important;bottom:88px!important}
+  .founders64-green-sweep{left:-48%!important;width:120%!important}
+  .founders64-backdrop::before{left:-60%!important;top:-68%!important;width:122%!important;height:180%!important;border-width:12px!important}
+  .founders64-leaves-left{left:4%!important;width:25vw!important;bottom:-3%!important}
+}
+@media(max-width:650px){
+  .founders64-copy{padding:44px 20px 26px!important}
+  .founders64-kicker{font-size:12px!important;letter-spacing:.18em!important}
+  .founders64-copy h1{font-size:53px!important}
+  .founders64-copy p{font-size:16px!important}
+  .founders64-watch{min-width:0!important;width:100%!important;justify-content:center!important;font-size:18px!important}
+  .founders64-purpose{font-size:10px!important;letter-spacing:.18em!important}
+  .founders64-visual{height:500px!important}
+  .founders64-founders{height:490px!important;width:96vw!important}
+  .founders64-script{left:5%!important;top:44px!important;font-size:24px!important}
+  .founders64-sidewords{display:none!important}
+  .founders64-leaves-left{left:-4%!important;width:38vw!important;opacity:.70!important}
+  .founders64-leaves-corner{display:none!important}
+}

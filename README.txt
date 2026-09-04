@@ -1,14 +1,22 @@
-BUILD 64 — FOUNDERS HERO FIX ONLY
+BUILD 67 — FOUNDERS HERO CLEAN REBUILD ONLY
 
-Replace/add these paths in the live repository:
+Upload/replace these files in the repo:
 - founders.html
-- css/founders64.css
+- css/founders67.css
 - assets/images/justyn-elle-approved-untouched.png
 - assets/images/revitalized-icon-approved.png
 
-What this does:
-- Completely replaces the accumulated old Founders hero implementation with a new layered component.
-- Keeps the approved Justyn & Elle PNG completely untouched (exact source file copy, no image processing).
-- Recreates the approved premium mockup using live HTML/CSS layers: cream background, sage sweep, gold arc, shield watermark, botanical accents, headline/copy, Watch Our Story CTA, and supporting editorial text.
-- Ensures both heads remain fully visible on desktop/tablet/mobile.
-- Leaves the rest of the Founders page unchanged.
+WHAT CHANGED
+- Old Founders hero implementation is bypassed by a new isolated stylesheet.
+- The approved mockup is recreated with real layered HTML/CSS:
+  * live text on the left
+  * subtle sage sweep and curved gold transition
+  * botanical artwork
+  * gold circular linework
+  * ReVitalized shield watermark
+  * Stronger People / Brighter Tomorrows script
+  * Healthier People / Brighter Futures side label
+  * Watch Our Story CTA
+- The Justyn & Elle asset is copied directly from the approved source and is not edited.
+- Their heads remain fully visible on desktop/tablet/mobile.
+- Everything below the hero is untouched.
