@@ -1,11 +1,10 @@
-BUILD 54 — HOMEPAGE HERO REBUILD ONLY
-
-Replace these paths in the current site:
+BUILD 55 — VITALITY FUNNEL FIXES ONLY
+Replace these paths in the current live repository:
 - index.html
-- css/hero54.css
-- assets/images/hero54-background.png
-- assets/images/justyn-elle-approved-untouched.png
+- consult.html
+- css/styles.css
+- css/vitality55.css
+- js/vitality55.js
 
-This patch intentionally abandons the prior .hero/.hero-approved implementation for the homepage hero and uses a new isolated .hero54 component so older accumulated hero CSS cannot distort it.
-
-IMPORTANT: justyn-elle-approved-untouched.png is copied directly from the user-approved source file with no pixel edits, filters, masks, opacity changes, or AI regeneration. CSS only positions/scales the image proportionally.
+Step 1 captures first name, last name, email and cell phone. Save & Continue posts immediately to Netlify form "vitality-lead" before showing Step 2. Step 2 is a placeholder until the approved assessment content is supplied.
+The homepage popup triggers at ~40 seconds or ~45% scroll, once every 5 days per browser.
