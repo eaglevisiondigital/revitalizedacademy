@@ -17,3 +17,55 @@ a.hero54-btn.vitality-primary-cta{
   border:1px solid #F3D984!important;
   box-shadow:0 12px 28px rgba(177,136,69,.28)!important;
 }
+
+
+/* =========================================================
+   BUILD 59 — CTA CONSISTENCY + BRAND STORY VIDEO CARD FIX
+   ========================================================= */
+a.journey-secondary-cta,
+a.btn.journey-secondary-cta,
+a.hero54-btn.journey-secondary-cta{
+  background:linear-gradient(180deg,#185942 0%,#0B382A 100%)!important;
+  color:#fff!important;
+  border:1px solid rgba(216,166,42,.54)!important;
+  box-shadow:0 10px 24px rgba(11,56,42,.18)!important;
+  text-shadow:none!important;
+}
+.hero54 .hero54-actions a.journey-secondary-cta[href="enroll.html"]{
+  background:linear-gradient(180deg,#FFFDF8 0%,#F8EEE1 100%)!important;
+  color:#0F4B3E!important;
+  border:1px solid rgba(216,166,42,.66)!important;
+  box-shadow:0 12px 26px rgba(28,38,33,.16)!important;
+}
+.hero54 .hero54-actions a.journey-secondary-cta[href="enroll.html"] b{color:#B18845!important;}
+.hero54 .hero54-actions a.journey-secondary-cta[href="enroll.html"]:hover{background:#fff!important;transform:translateY(-2px)!important;}
+.site-header a.header-cta.journey-secondary-cta{
+  background:linear-gradient(180deg,#185942 0%,#0B382A 100%)!important;
+  color:#fff!important;
+  border:1px solid rgba(216,166,42,.56)!important;
+}
+.brand-story-media{align-self:center!important;}
+.brand-story-video-card.video-embed{
+  aspect-ratio:auto!important;
+  min-height:540px!important;
+  height:540px!important;
+  overflow:hidden!important;
+}
+.brand-story-video-card .brand-story-video-poster{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+}
+.brand-story-video-card .brand-story-video-founders{
+  position:absolute!important;
+  left:0!important;right:0!important;bottom:0!important;top:auto!important;
+  width:100%!important;height:100%!important;
+  object-fit:contain!important;object-position:center bottom!important;z-index:2!important;
+}
+.brand-story-video-card .brand-story-play-button{left:50%!important;top:50%!important;transform:translate(-50%,-50%)!important;}
+.brand-video-section.brand-story-premium{padding-top:64px!important;padding-bottom:64px!important;}
+@media(max-width:1180px){.brand-story-video-card.video-embed{height:480px!important;min-height:480px!important;}}
+@media(max-width:920px){.brand-story-video-card.video-embed{height:460px!important;min-height:460px!important;}}
+@media(max-width:640px){.brand-story-video-card.video-embed{height:360px!important;min-height:360px!important;}}
