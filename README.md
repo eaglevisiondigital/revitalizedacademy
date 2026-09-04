@@ -174,3 +174,12 @@ Key updates:
 - Webinar teaser rebuilt as a premium MacBook-style coming-soon section with a Netlify email notification form and limited-seating messaging.
 - Free Vitality Assessment terminology retained throughout.
 - IMPORTANT: every new Justyn & Elle placement in Build 49 uses the existing approved `founders-hero-approved.png` source asset directly. Their photo is not AI-generated, retouched, beautified, reconstructed, or otherwise altered. CSS only controls crop, size, and placement.
+
+## Build 50 — post-49 approved refinement pass
+- The user-supplied `Justyn & Elle(1).PNG` is now the single canonical founder photo source.
+- `justyn-elle-approved-only.png`, `approved-hero-justyn-elle.png`, `founders-hero-approved.png`, and `justyn-elle-source.png` are byte-for-byte copies of that exact approved file. No facial, hair, body, clothing, or photo-content edits are applied.
+- Homepage hero rebuilt with layered CSS/SVG-style backgrounds so the emerald-to-cream boundary curves toward Justyn's lower body and all gold arcs sit BEHIND the founders.
+- Founders hero rebuilt as live HTML/CSS using the approved transparent photo over premium cream/emerald/gold layers.
+- Founder belief/story/fun-facts/CTA/footer sections receive a premium Blueprint polish.
+- Homepage family, member-story, coaching comparison, brand story, next chapter, webinar notification, stories CTA, and page background treatments retain and refine the approved post-49 direction.
+- Free Vitality Assessment wording retained.
