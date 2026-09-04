@@ -208,5 +208,5 @@ Key updates:
 - Added a dedicated `disclaimer.html` page containing the supplied individual-results, educational/medical, testimonial, FDA and intellectual-property language.
 - Added a required linked disclaimer acknowledgment before visitors begin the health assessment.
 - Added concise results disclosures directly beside the homepage testimonials and the complete Client Stories library.
-- Added the Health & Results Disclaimer link to the site-wide footer and assessment completion area.
+- Added the Health & Results Disclaimer link to the principal site footers and assessment completion area.
 - Preserved the separate claim-review requirement for individual stories; a general disclaimer does not replace substantiation or claim review.
