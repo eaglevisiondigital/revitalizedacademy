@@ -4183,3 +4183,153 @@ body{background:var(--blueprint-cream);color:#183128;}
   .founders-page-premium .founders-hero-final>img{position:relative!important;right:auto!important;bottom:auto!important;width:100%!important;max-height:520px!important;object-fit:contain!important;order:2!important;}
   .founders-page-premium .founders-hero-final .founders-hero-copy{padding:46px 22px 22px!important;order:1!important;}
 }
+
+
+/* ==========================================================
+   BUILD 52 — Approved layered founder imagery + final hero fidelity
+   Exact approved Justyn & Elle PNG is used as a live top layer.
+   No filters, transforms, opacity effects or image-content edits.
+   ========================================================== */
+:root{
+  --b52-emerald:#063f33;
+  --b52-emerald-2:#0b5a46;
+  --b52-cream:#FCF5EE;
+  --b52-gold:#D8A62A;
+  --b52-gold-deep:#B18845;
+}
+
+/* Absolute image integrity rule for all approved founder placements */
+img[src$="justyn-elle-approved-untouched.png"],
+.hero-approved-bg,.approved-founders-only,.brand-story-founders img,.laptop-screen img{
+  filter:none!important;
+  mix-blend-mode:normal!important;
+  opacity:1!important;
+  image-rendering:auto!important;
+}
+
+/* Homepage hero — layered version of the approved mockup */
+@media(min-width:841px){
+  .hero.hero-approved{
+    min-height:720px!important;
+    overflow:hidden!important;
+    isolation:isolate!important;
+    background:
+      radial-gradient(circle at 13% 14%,rgba(216,166,42,.10),transparent 18%),
+      linear-gradient(90deg,#05382f 0%,#064738 35%,#0b5a46 48%,#d9d5b9 59%,#f0e5d3 68%,#FCF5EE 100%)!important;
+  }
+
+  /* Curved emerald field, shaped like the approved mockup */
+  .hero.hero-approved::before{
+    content:""!important;
+    position:absolute!important;
+    z-index:0!important;
+    inset:-12% 38% -24% -18%!important;
+    background:
+      radial-gradient(circle at 26% 28%,rgba(216,166,42,.08),transparent 17%),
+      linear-gradient(145deg,#033a2e 0%,#064738 48%,#0b5a46 100%)!important;
+    border-radius:0 52% 56% 0 / 0 42% 58% 0!important;
+    box-shadow:inset -3px 0 0 rgba(216,166,42,.85), 16px 0 50px rgba(6,63,51,.12)!important;
+  }
+
+  /* Gold arcs + subtle shield remain behind the founders */
+  .hero.hero-approved::after{
+    content:""!important;
+    position:absolute!important;
+    z-index:1!important;
+    inset:-10% -5% -14% 30%!important;
+    pointer-events:none!important;
+    opacity:.72!important;
+    background:
+      radial-gradient(ellipse at 56% 51%,transparent 0 26%,rgba(216,166,42,.47) 26.1% 26.27%,transparent 26.42% 35%,rgba(216,166,42,.30) 35.1% 35.27%,transparent 35.42% 44%,rgba(216,166,42,.19) 44.1% 44.23%,transparent 44.4% 53%,rgba(216,166,42,.12) 53.1% 53.22%,transparent 53.4%)!important;
+  }
+
+  .hero.hero-approved .hero-copy{
+    position:relative!important;
+    z-index:4!important;
+    width:48%!important;
+    min-width:600px!important;
+    padding:70px 24px 54px clamp(70px,7vw,145px)!important;
+  }
+  .hero.hero-approved h1{font-size:clamp(60px,4.8vw,82px)!important;line-height:.95!important;max-width:650px!important;}
+  .hero.hero-approved .hero-text{max-width:625px!important;}
+
+  .hero-approved-bg{
+    position:absolute!important;
+    z-index:3!important;
+    right:3.4%!important;
+    left:auto!important;
+    bottom:-2px!important;
+    top:auto!important;
+    width:min(47vw,760px)!important;
+    height:auto!important;
+    max-height:690px!important;
+    object-fit:contain!important;
+    object-position:right bottom!important;
+    background:transparent!important;
+    transform:none!important;
+  }
+}
+
+@media(max-width:1100px) and (min-width:841px){
+  .hero.hero-approved .hero-copy{width:52%!important;min-width:0!important;padding-left:38px!important;}
+  .hero-approved-bg{right:1%!important;width:49vw!important;}
+  .hero.hero-approved::before{inset:-10% 35% -24% -20%!important;}
+}
+
+@media(max-width:840px){
+  .hero.hero-approved{
+    display:flex!important;
+    flex-direction:column!important;
+    background:linear-gradient(180deg,#043b30 0%,#0b5845 55%,var(--b52-cream) 55.2%,var(--b52-cream) 100%)!important;
+    min-height:0!important;
+  }
+  .hero.hero-approved::before,.hero.hero-approved::after{display:none!important;}
+  .hero.hero-approved .hero-copy{order:1!important;width:100%!important;padding:38px 20px 28px!important;}
+  .hero-approved-bg{order:2!important;position:relative!important;width:100%!important;height:auto!important;max-height:520px!important;object-fit:contain!important;object-position:center bottom!important;background:var(--b52-cream)!important;}
+}
+
+/* Homepage family feature — raise image and balance composition */
+.family-home-section.family-home-photo{
+  background:linear-gradient(135deg,#033a2e 0%,#07513f 58%,#033a2e 100%)!important;
+  min-height:650px!important;
+  align-items:center!important;
+}
+.family-home-family-photo{
+  align-self:center!important;
+  height:535px!important;
+  margin:0 -26px 0 0!important;
+  border-radius:30px!important;
+  overflow:hidden!important;
+  border:1px solid rgba(216,166,42,.55)!important;
+  box-shadow:0 24px 55px rgba(0,0,0,.18)!important;
+}
+.family-home-family-photo img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center 45%!important;}
+
+/* Founders page hero — exact approved image, clean layered background */
+.founders-hero.founders-hero-final{
+  position:relative!important;
+  overflow:hidden!important;
+  min-height:610px!important;
+  background:
+    radial-gradient(circle at 73% 45%,rgba(216,166,42,.09),transparent 22%),
+    linear-gradient(100deg,#FCF5EE 0%,#FCF5EE 50%,#f4eadb 100%)!important;
+}
+.founders-hero.founders-hero-final::before{
+  content:"";position:absolute;inset:-16% -4% -16% 36%;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse at 55% 50%,transparent 0 28%,rgba(216,166,42,.35) 28.1% 28.25%,transparent 28.4% 38%,rgba(216,166,42,.20) 38.1% 38.22%,transparent 38.4% 49%,rgba(216,166,42,.12) 49.1% 49.22%,transparent 49.4%);
+}
+.founders-hero.founders-hero-final>img{
+  position:absolute!important;z-index:2!important;right:4%!important;bottom:0!important;width:min(49vw,800px)!important;height:auto!important;object-fit:contain!important;object-position:right bottom!important;filter:none!important;opacity:1!important;transform:none!important;
+}
+.founders-hero-copy{position:relative!important;z-index:3!important;max-width:640px!important;padding:90px 0 70px clamp(64px,7vw,140px)!important;}
+
+/* Brand story founder image and webinar image are live, untouched PNG layers */
+.brand-story-founders{position:relative!important;overflow:hidden!important;}
+.brand-story-founders img{object-fit:contain!important;object-position:center bottom!important;transform:none!important;filter:none!important;}
+.laptop-screen{position:relative!important;overflow:hidden!important;}
+.laptop-screen img{object-fit:contain!important;object-position:right bottom!important;transform:none!important;filter:none!important;}
+
+/* Footer contrast / final polish */
+.site-footer{background:linear-gradient(120deg,#043a2f,#07503f)!important;color:#fff!important;border-top:2px solid rgba(216,166,42,.55)!important;}
+.site-footer p,.site-footer a,.site-footer small,.site-footer span{color:rgba(255,255,255,.88)!important;}
+.site-footer h3,.site-footer h4{color:#efc86e!important;}
