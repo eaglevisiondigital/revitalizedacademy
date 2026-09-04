@@ -210,3 +210,4 @@ Key updates:
 - Added concise results disclosures directly beside the homepage testimonials and the complete Client Stories library.
 - Added the Health & Results Disclaimer link to the principal site footers and assessment completion area.
 - Preserved the separate claim-review requirement for individual stories; a general disclaimer does not replace substantiation or claim review.
+- Netlify form detection must remain enabled so both `vitality-lead` and `vitality-assessment` are registered during deployment.
