@@ -1,12 +1,12 @@
-ReVitalized Academy — Build 61
+BUILD 62 — SAMSUNG APP MOCKUP FIX ONLY
 
-Included fixes:
-- Consistent CTA button system across the site
-- Free Vitality Assessment remains gold site-wide
-- Start Your Journey buttons now follow the approved color logic
-  * cream / white on emerald sections
-  * emerald with gold text on light sections
-- Header CTA updated to gold text on emerald
-- Support buttons on light sections updated for visual consistency
+Replace this file in the live repository:
+assets/images/revitalized-app-ecosystem-four-phone.png
 
-Open index.html to preview the homepage.
+This replaces the Apple/iPhone device mockup with the new Samsung/Android-style large-screen device mockup while preserving the same four ReVitalized app screens:
+- ReFuel Store
+- Dashboard
+- Meal Plans
+- Progress
+
+The PNG has a true transparent background so it can sit cleanly on the existing website section background.
