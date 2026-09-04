@@ -203,3 +203,10 @@ Key updates:
 - No automated Green/Yellow/Red, Health Spectrum, cross-driver, or recommendation result is generated yet because the supplied specification does not define final answer-to-score mappings or calibrated thresholds.
 - Configure Netlify form notifications for both `vitality-lead` and `vitality-assessment` to deliver to `contact@revitalizedacademy.com`.
 - When the ReVitalized backend is ready, replace the completed-assessment transport in `js/vitality55.js` while leaving the lead capture and assessment UI intact.
+
+## Build 65 — Health, Results & Website Disclaimer
+- Added a dedicated `disclaimer.html` page containing the supplied individual-results, educational/medical, testimonial, FDA and intellectual-property language.
+- Added a required linked disclaimer acknowledgment before visitors begin the health assessment.
+- Added concise results disclosures directly beside the homepage testimonials and the complete Client Stories library.
+- Added the Health & Results Disclaimer link to the site-wide footer and assessment completion area.
+- Preserved the separate claim-review requirement for individual stories; a general disclaimer does not replace substantiation or claim review.
