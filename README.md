@@ -193,3 +193,13 @@ Key updates:
 - Meet ReVitalized / webinar founder images explicitly restored and made deployment-safe.
 - Founders page hero, belief/story/facts/CTA sections polished into the same cream/emerald/gold system.
 - FAQ, footer and family lower CTA areas upgraded to remove older washed-out gradient treatments.
+
+## Build 64 — Free Vitality Assessment
+- Replaced the assessment placeholder with the complete adaptive Vitality Roadmap experience supplied by Justyn and Elle.
+- Preserved immediate lead capture as a separate `vitality-lead` Netlify submission when the visitor selects **Save & Continue**, even if the visitor never completes the assessment.
+- Added the Whole-Person Snapshot and all 12 Drivers of Health, with symptom detail questions expanding only for selected symptoms.
+- Added separate neutral safety messaging and coach-review flags without treating those flags as Driver status or a medical diagnosis.
+- Added a second `vitality-assessment` Netlify submission containing the completed response set plus a human-readable `assessment_summary` for Justyn and Elle's initial manual review.
+- No automated Green/Yellow/Red, Health Spectrum, cross-driver, or recommendation result is generated yet because the supplied specification does not define final answer-to-score mappings or calibrated thresholds.
+- Configure Netlify form notifications for both `vitality-lead` and `vitality-assessment` to deliver to `contact@revitalizedacademy.com`.
+- When the ReVitalized backend is ready, replace the completed-assessment transport in `js/vitality55.js` while leaving the lead capture and assessment UI intact.
