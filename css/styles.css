@@ -3919,3 +3919,107 @@ body{background:var(--blueprint-cream);color:#183128;}
   .brand-video-section.brand-story-premium{grid-template-columns:1fr!important;}
   .webinar-premium{grid-template-columns:1fr!important;}
 }
+
+
+/* =========================================================
+   BUILD 51 — approved fixes + exact untouched founder source
+   ========================================================= */
+
+/* Exact founder PNG is used as a foreground layer. No filters, no transforms that alter anatomy, no blending on the image itself. */
+.hero-approved-bg,
+.brand-story-founders img,
+.webinar-founder-photo,
+.founders-hero-final>img{
+  filter:none!important;
+  opacity:1!important;
+  mix-blend-mode:normal!important;
+}
+
+/* Homepage hero: softer curved emerald-to-cream transition with arcs behind founders. */
+.hero.hero-approved{
+  background:linear-gradient(90deg,#07392d 0%,#0b4938 46%,#f8f1e7 100%)!important;
+  overflow:hidden!important;
+}
+.hero.hero-approved:before{
+  content:""!important;
+  position:absolute!important;
+  inset:-8% 28% -16% 38%!important;
+  z-index:1!important;
+  pointer-events:none!important;
+  background:
+    radial-gradient(ellipse at 30% 52%,transparent 0 31%,rgba(216,166,42,.40) 31.2% 31.45%,transparent 31.7% 39%,rgba(216,166,42,.25) 39.2% 39.42%,transparent 39.7% 48%,rgba(216,166,42,.16) 48.2% 48.4%,transparent 48.7%)!important;
+}
+.hero.hero-approved:after{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:2!important;
+  pointer-events:none!important;
+  background:
+    radial-gradient(ellipse 58% 110% at 61% 44%,rgba(248,241,231,.98) 0 52%,rgba(248,241,231,.84) 56%,rgba(248,241,231,.40) 63%,rgba(248,241,231,0) 72%),
+    linear-gradient(90deg,rgba(7,57,45,.98) 0%,rgba(7,57,45,.96) 26%,rgba(10,71,55,.78) 40%,rgba(15,90,69,.36) 50%,rgba(15,90,69,0) 61%)!important;
+}
+.hero-approved-bg{
+  z-index:3!important;
+  width:58%!important;
+  height:100%!important;
+  right:2%!important;
+  top:0!important;
+  object-fit:contain!important;
+  object-position:right bottom!important;
+  -webkit-mask-image:none!important;
+  mask-image:none!important;
+}
+.hero.hero-approved .hero-copy{z-index:4!important;}
+
+/* Homepage family section balance */
+.family-home-photo{min-height:620px!important;padding-top:52px!important;padding-bottom:26px!important;align-items:center!important;}
+.family-home-family-photo{height:500px!important;margin:0 -20px -10px 0!important;align-self:center!important;border-radius:28px!important;}
+.family-home-family-photo img{object-position:center 46%!important;}
+
+/* Meet ReVitalized section */
+.brand-video-section{display:grid!important;grid-template-columns:.95fr 1.05fr!important;gap:44px!important;align-items:center!important;padding-top:76px!important;padding-bottom:76px!important;}
+.brand-story-founders{min-height:470px!important;display:flex!important;align-items:end!important;justify-content:center!important;position:relative!important;overflow:hidden!important;border-radius:28px!important;background:linear-gradient(135deg,#f7efe3,#fffaf4)!important;border:1px solid rgba(177,136,69,.22)!important;}
+.brand-story-founders:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 35%,rgba(216,166,42,.10),transparent 30%);}
+.brand-story-founders img{position:relative!important;z-index:1!important;width:86%!important;height:auto!important;object-fit:contain!important;}
+
+/* Webinar section layout + exact founder image in laptop */
+.webinar-teaser-compact{padding-top:74px!important;padding-bottom:74px!important;background:linear-gradient(180deg,#fffaf4,#f6efe5)!important;}
+.webinar-teaser-inner{max-width:1240px!important;margin:0 auto!important;display:grid!important;grid-template-columns:.92fr 1.08fr!important;gap:46px!important;align-items:center!important;}
+.webinar-visual{min-height:520px!important;}
+.webinar-visual .laptop-mockup{transform:none!important;margin:0!important;}
+.webinar-founder-photo{position:absolute!important;right:4%!important;bottom:0!important;width:47%!important;height:auto!important;object-fit:contain!important;z-index:2!important;}
+
+/* FAQ polish */
+.faq-section{padding-top:76px!important;padding-bottom:70px!important;background:#fffaf4!important;}
+.faq-grid details{border:1px solid rgba(177,136,69,.18)!important;border-radius:14px!important;box-shadow:0 8px 22px rgba(21,71,52,.05)!important;}
+
+/* Footer polish */
+.site-footer{background:linear-gradient(135deg,#08392e,#0c513e)!important;color:#fff!important;border-top:1px solid rgba(216,166,42,.52)!important;}
+.site-footer .footer-copy,.site-footer .footer-links span,.site-footer .footer-bottom{color:rgba(255,255,255,.88)!important;}
+.site-footer strong,.site-footer a{color:#f0c76e!important;}
+.site-footer img{filter:none!important;}
+
+/* Founders hero */
+.founders-hero-final{background:linear-gradient(90deg,#fffaf4 0%,#f6efe5 52%,#eef4ee 100%)!important;min-height:620px!important;position:relative!important;overflow:hidden!important;}
+.founders-hero-final:before{content:"";position:absolute;inset:-15% -8% -15% 34%;background:radial-gradient(ellipse at 45% 50%,transparent 0 34%,rgba(216,166,42,.22) 34.2% 34.4%,transparent 34.7% 44%,rgba(216,166,42,.13) 44.2% 44.4%,transparent 44.7% 56%);pointer-events:none;}
+.founders-hero-final>img{position:absolute!important;right:3%!important;bottom:0!important;width:55%!important;height:100%!important;object-fit:contain!important;object-position:right bottom!important;z-index:1!important;}
+.founders-hero-overlay{position:relative!important;z-index:2!important;max-width:650px!important;padding:90px 0 70px max(42px,calc((100vw - var(--max))/2))!important;color:var(--blueprint-emerald)!important;}
+.founders-hero-overlay h1{font-family:Georgia,"Times New Roman",serif!important;font-size:clamp(60px,5.8vw,92px)!important;line-height:.94!important;color:var(--blueprint-emerald)!important;}
+
+/* Founder lower sections */
+.founder-belief,.founder-story,.founder-facts-section{background:#fffaf4!important;}
+.founder-belief,.founder-story{border:1px solid rgba(177,136,69,.14)!important;box-shadow:0 14px 30px rgba(21,71,52,.04)!important;}
+.founder-fact-card{border:1px solid rgba(177,136,69,.20)!important;box-shadow:0 12px 26px rgba(21,71,52,.05)!important;}
+
+/* Family lower callout and CTA */
+.family-story-callout{background:linear-gradient(180deg,#fffaf4,#f7efe4)!important;border-top:1px solid rgba(177,136,69,.16)!important;}
+.family-final-cta{background:linear-gradient(120deg,#0a4334,#07392d)!important;border-top:1px solid rgba(216,166,42,.5)!important;}
+
+@media(max-width:980px){
+  .brand-video-section,.webinar-teaser-inner{grid-template-columns:1fr!important;}
+  .hero-approved-bg{position:relative!important;width:100%!important;height:auto!important;right:auto!important;}
+  .hero.hero-approved:after,.hero.hero-approved:before{display:none!important;}
+  .founders-hero-final>img{position:relative!important;width:100%!important;height:auto!important;right:auto!important;}
+  .founders-hero-overlay{padding:46px 24px!important;}
+}

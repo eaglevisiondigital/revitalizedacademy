@@ -183,3 +183,9 @@ Key updates:
 - Founder belief/story/fun-facts/CTA/footer sections receive a premium Blueprint polish.
 - Homepage family, member-story, coaching comparison, brand story, next chapter, webinar notification, stories CTA, and page background treatments retain and refine the approved post-49 direction.
 - Free Vitality Assessment wording retained.
+
+## Build 51
+- Applies the approved post-Build-50 layout fixes.
+- Uses the exact untouched approved `Justyn & Elle(2).PNG` as the sole founder-image source for hero, about, brand-video and webinar placements.
+- No filters, facial/body edits, AI reconstruction, retouching, or image-content alterations are applied to the founder image.
+- Corrects missing-image placements and improves homepage hero, family section balance, founders hero, webinar section, FAQ, family lower CTA and footer styling.
