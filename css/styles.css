@@ -4808,3 +4808,136 @@ a.hero54-btn.journey-secondary-cta{
 .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 @media(max-width:1100px){.webinar60-inner{grid-template-columns:1fr;max-width:820px}.webinar60-copy{max-width:680px}.webinar60-device{width:100%}.webinar60-footer{grid-template-columns:1fr}.webinar60-footer>div{border-right:0;border-bottom:1px solid rgba(216,166,42,.25);padding:12px}.webinar60-footer>div:last-child{border-bottom:0}}
 @media(max-width:640px){.webinar60-inner{padding:48px 18px 28px}.webinar60 h2{font-size:44px!important}.webinar60-copy>p{font-size:16px}.webinar60-benefits{grid-template-columns:1fr 1fr 1fr;gap:8px}.webinar60-icon{width:48px;height:48px}.webinar60-limited em{font-size:14px}.webinar60-laptop-screen{border-width:9px;border-radius:18px 18px 8px 8px}.webinar60-screen-copy{left:5%;top:7%;width:50%}.webinar60-screen-copy h3{font-size:26px}.webinar60-screen-copy p{font-size:9px}.webinar60-laptop-screen>img{width:54%;max-height:87%}.webinar60-screen-bottom{min-height:78px;padding:10px 8px}.webinar60-screen-bottom>div{gap:5px;padding:0 4px}.webinar60-screen-bottom b{font-size:18px}.webinar60-screen-bottom span{font-size:7px}.webinar60-laptop-base{margin:0 -16px;height:12px}}
+
+
+/* =========================================================
+   BUILD 61 — BUTTON SYSTEM CONSISTENCY
+   White / cream CTAs on emerald backgrounds.
+   Emerald CTAs on light backgrounds.
+   Header CTA uses gold text on emerald for extra pop.
+   ========================================================= */
+
+:root{
+  --ra-emerald-top:#13624c;
+  --ra-emerald-bottom:#08392f;
+  --ra-emerald-text:#0D4F40;
+  --ra-cream-top:#FFFDF8;
+  --ra-cream-bottom:#F7EEE1;
+  --ra-gold:#EFCB6C;
+  --ra-gold-deep:#D8A62A;
+}
+
+/* Primary lead-generation CTA remains gold everywhere. */
+a.vitality-primary-cta,
+a.btn.vitality-primary-cta,
+a.hero54-btn.vitality-primary-cta,
+a.family-outline-btn.vitality-primary-cta,
+a.family-cream-btn.vitality-primary-cta,
+a.btn-primary.vitality-primary-cta,
+a.btn-secondary.vitality-primary-cta,
+a.btn-large.vitality-primary-cta,
+.vitality-popup-start.vitality-primary-cta{
+  background:linear-gradient(180deg,#F2CD69 0%,#D8A62A 56%,#BB8D2A 100%)!important;
+  color:#14382E!important;
+  border:1px solid #F5DE97!important;
+  box-shadow:0 14px 28px rgba(177,136,69,.28), inset 0 1px 0 rgba(255,255,255,.36)!important;
+}
+a.vitality-primary-cta:hover,
+a.btn.vitality-primary-cta:hover,
+a.hero54-btn.vitality-primary-cta:hover,
+a.family-outline-btn.vitality-primary-cta:hover,
+a.family-cream-btn.vitality-primary-cta:hover,
+a.btn-primary.vitality-primary-cta:hover,
+a.btn-secondary.vitality-primary-cta:hover,
+a.btn-large.vitality-primary-cta:hover,
+.vitality-popup-start.vitality-primary-cta:hover{
+  background:linear-gradient(180deg,#F5D77A 0%,#E0B042 58%,#C3922F 100%)!important;
+  color:#103429!important;
+  transform:translateY(-2px)!important;
+  box-shadow:0 16px 34px rgba(177,136,69,.34)!important;
+}
+
+/* Default journey / secondary CTA on light backgrounds = emerald button with gold text. */
+a.journey-secondary-cta,
+a.btn.journey-secondary-cta,
+a.hero54-btn.journey-secondary-cta,
+.site-header a.header-cta.journey-secondary-cta,
+a.btn.btn-secondary:not(.vitality-primary-cta):not([data-matrix-close]),
+a.btn-primary.header-cta{
+  background:linear-gradient(180deg,var(--ra-emerald-top) 0%,var(--ra-emerald-bottom) 100%)!important;
+  color:var(--ra-gold)!important;
+  border:1px solid rgba(216,166,42,.72)!important;
+  box-shadow:0 12px 26px rgba(7,57,47,.18), inset 0 1px 0 rgba(255,255,255,.05)!important;
+  text-shadow:none!important;
+}
+
+a.journey-secondary-cta:hover,
+a.btn.journey-secondary-cta:hover,
+a.hero54-btn.journey-secondary-cta:hover,
+.site-header a.header-cta.journey-secondary-cta:hover,
+a.btn.btn-secondary:not(.vitality-primary-cta):not([data-matrix-close]):hover,
+a.btn-primary.header-cta:hover{
+  background:linear-gradient(180deg,#187259 0%,#0A4739 100%)!important;
+  color:#F4D986!important;
+  transform:translateY(-2px)!important;
+  box-shadow:0 16px 34px rgba(7,57,47,.24)!important;
+}
+
+/* Keep the hero secondary CTA light on the dark hero. */
+.hero54 .hero54-actions a.journey-secondary-cta,
+.hero54 .hero54-actions a.journey-secondary-cta.hero54-btn-gold,
+.hero54 .hero54-actions a.journey-secondary-cta[href="enroll.html"]{
+  background:linear-gradient(180deg,var(--ra-cream-top) 0%,var(--ra-cream-bottom) 100%)!important;
+  color:var(--ra-emerald-text)!important;
+  border:1px solid rgba(216,166,42,.64)!important;
+  box-shadow:0 12px 28px rgba(34,40,34,.16)!important;
+}
+.hero54 .hero54-actions a.journey-secondary-cta b,
+.hero54 .hero54-actions a.journey-secondary-cta.hero54-btn-gold b,
+.hero54 .hero54-actions a.journey-secondary-cta[href="enroll.html"] b{
+  color:#B18845!important;
+}
+.hero54 .hero54-actions a.journey-secondary-cta:hover,
+.hero54 .hero54-actions a.journey-secondary-cta.hero54-btn-gold:hover,
+.hero54 .hero54-actions a.journey-secondary-cta[href="enroll.html"]:hover{
+  background:#FFFFFF!important;
+  color:#0B4C3E!important;
+}
+
+/* Dark emerald sections also get the light/cream journey button. */
+.journey-banner .journey-secondary-cta,
+.webinar60 .journey-secondary-cta,
+.hero.hero-approved .hero-actions .journey-secondary-cta{
+  background:linear-gradient(180deg,var(--ra-cream-top) 0%,var(--ra-cream-bottom) 100%)!important;
+  color:var(--ra-emerald-text)!important;
+  border:1px solid rgba(216,166,42,.64)!important;
+  box-shadow:0 12px 28px rgba(25,35,31,.16)!important;
+}
+.journey-banner .journey-secondary-cta:hover,
+.webinar60 .journey-secondary-cta:hover,
+.hero.hero-approved .hero-actions .journey-secondary-cta:hover{
+  background:#FFFFFF!important;
+  color:#0B4C3E!important;
+}
+
+/* Header CTA: keep emerald but switch the text to gold for more pop. */
+.site-header .header-cta,
+.site-header a.header-cta.journey-secondary-cta{
+  color:var(--ra-gold)!important;
+  letter-spacing:.01em!important;
+}
+
+/* Specific light-background support button shown in the mockup. */
+a.btn.btn-secondary[href="#matrix-videos"],
+.free-help-actions a.btn.btn-secondary,
+.founders-cta-actions a.btn.journey-secondary-cta,
+.stories-cta a.btn.journey-secondary-cta,
+.future-actions a.btn.journey-secondary-cta,
+.refuel-copy a.btn.journey-secondary-cta{
+  background:linear-gradient(180deg,var(--ra-emerald-top) 0%,var(--ra-emerald-bottom) 100%)!important;
+  color:var(--ra-gold)!important;
+  border:1px solid rgba(216,166,42,.72)!important;
+}
+
+/* Preserve the softer light-card look for the premium video watch button. */
+.premium-watch-btn{color:#0F4B3E!important;}
