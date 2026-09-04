@@ -4333,3 +4333,88 @@ img[src$="justyn-elle-approved-untouched.png"],
 .site-footer{background:linear-gradient(120deg,#043a2f,#07503f)!important;color:#fff!important;border-top:2px solid rgba(216,166,42,.55)!important;}
 .site-footer p,.site-footer a,.site-footer small,.site-footer span{color:rgba(255,255,255,.88)!important;}
 .site-footer h3,.site-footer h4{color:#efc86e!important;}
+
+
+/* =========================================================
+   BUILD 56 — FINAL CTA PRIORITY + FAMILY IMAGE CLEANUP
+   Loaded last intentionally so accumulated legacy rules cannot override it.
+   ========================================================= */
+:root{
+  --b56-emerald:#154734;
+  --b56-emerald-deep:#0b382a;
+  --b56-gold:#D8A62A;
+  --b56-gold-deep:#B18845;
+  --b56-cream:#FCF5EE;
+}
+
+/* FREE VITALITY ASSESSMENT = PRIMARY LEAD-GENERATION CTA */
+a.btn[href="consult.html"],
+a.hero54-btn[href="consult.html"],
+a.family-outline-btn[href="consult.html"],
+a.family-cream-btn[href="consult.html"],
+a[href="consult.html"].btn-primary,
+a[href="consult.html"].btn-secondary,
+a[href="consult.html"].btn-large{
+  background:linear-gradient(180deg,#efc85f 0%,#d8a62a 55%,#c49328 100%)!important;
+  color:#10382c!important;
+  border:1px solid #f3d888!important;
+  box-shadow:0 12px 28px rgba(177,136,69,.28)!important;
+  text-shadow:none!important;
+}
+a.btn[href="consult.html"]:hover,
+a.hero54-btn[href="consult.html"]:hover,
+a.family-outline-btn[href="consult.html"]:hover,
+a.family-cream-btn[href="consult.html"]:hover{
+  transform:translateY(-2px)!important;
+  box-shadow:0 16px 34px rgba(177,136,69,.36)!important;
+}
+
+/* START YOUR JOURNEY / ENROLLMENT = SECONDARY HIGH-INTENT CTA */
+a.btn[href="enroll.html"],
+a.hero54-btn[href="enroll.html"],
+.site-header a.header-cta[href="enroll.html"]{
+  background:linear-gradient(180deg,#185942 0%,#0b382a 100%)!important;
+  color:#fff!important;
+  border:1px solid rgba(216,166,42,.48)!important;
+  box-shadow:0 10px 24px rgba(11,56,42,.18)!important;
+}
+
+/* Text-only vitality links remain links, but gain a gold cue instead of becoming blocks. */
+a.text-link[href="consult.html"],
+a[href="consult.html"]:not(.btn):not(.hero54-btn):not(.family-outline-btn):not(.family-cream-btn){
+  color:#a87417!important;
+  text-decoration-color:rgba(216,166,42,.45)!important;
+}
+
+/* Homepage family photo: remove the accidental top strip completely. */
+.family-home-family-photo{
+  padding:0!important;
+  background:transparent!important;
+  line-height:0!important;
+  overflow:hidden!important;
+}
+.family-home-family-photo::before{
+  display:none!important;
+  content:none!important;
+}
+.family-home-family-photo::after{
+  content:""!important;
+  display:block!important;
+  position:absolute!important;
+  inset:0!important;
+  background:linear-gradient(90deg,rgba(4,61,49,.34),transparent 34%)!important;
+  pointer-events:none!important;
+  z-index:2!important;
+}
+.family-home-family-photo img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  margin:0!important;
+  padding:0!important;
+  object-fit:cover!important;
+  object-position:center 44%!important;
+  border:0!important;
+  border-radius:28px!important;
+  vertical-align:top!important;
+}
