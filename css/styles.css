@@ -4023,3 +4023,159 @@ body{background:var(--blueprint-cream);color:#183128;}
   .founders-hero-final>img{position:relative!important;width:100%!important;height:auto!important;right:auto!important;}
   .founders-hero-overlay{padding:46px 24px!important;}
 }
+
+
+/* =========================================================
+   BUILD 51 HOTFIX 1 — Homepage + Founders hero only
+   Uses exact untouched approved founder PNG.
+   ========================================================= */
+
+/* Exact image protection */
+.hero-approved-bg,
+.founders-hero-final > img{
+  filter:none!important;
+  opacity:1!important;
+  mix-blend-mode:normal!important;
+  transform:none!important;
+}
+
+/* HOME HERO */
+.hero.hero-approved{
+  position:relative!important;
+  min-height:690px!important;
+  overflow:hidden!important;
+  background:#f8f1e7!important;
+}
+.hero.hero-approved::before{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:0!important;
+  pointer-events:none!important;
+  background:
+    radial-gradient(circle at 18% 78%,rgba(216,166,42,.10),transparent 20%),
+    linear-gradient(90deg,#06392d 0%,#084535 42%,#0c5944 49%,#f8f1e7 67%,#f8f1e7 100%)!important;
+}
+/* Curved cream field matching approved mockup; curve moves right near bottom. */
+.hero.hero-approved::after{
+  content:""!important;
+  position:absolute!important;
+  z-index:1!important;
+  pointer-events:none!important;
+  top:-12%!important;
+  right:-7%!important;
+  width:63%!important;
+  height:128%!important;
+  border-radius:58% 0 0 58% / 46% 0 0 58%!important;
+  background:
+    radial-gradient(ellipse at 40% 48%,transparent 0 35%,rgba(216,166,42,.28) 35.15% 35.35%,transparent 35.55% 43%,rgba(216,166,42,.18) 43.15% 43.35%,transparent 43.55% 52%,rgba(216,166,42,.11) 52.15% 52.3%,transparent 52.5%),
+    #f8f1e7!important;
+  box-shadow:-18px 0 38px rgba(216,166,42,.08)!important;
+}
+.hero.hero-approved .hero-copy{
+  position:relative!important;
+  z-index:3!important;
+  width:min(49vw,720px)!important;
+  padding:64px 20px 48px max(54px,calc((100vw - var(--max))/2))!important;
+}
+.hero-approved-bg{
+  display:block!important;
+  position:absolute!important;
+  z-index:4!important;
+  right:5.5%!important;
+  bottom:0!important;
+  top:auto!important;
+  left:auto!important;
+  width:min(48vw,760px)!important;
+  height:auto!important;
+  max-height:94%!important;
+  object-fit:contain!important;
+  object-position:right bottom!important;
+  background:transparent!important;
+}
+/* gold arcs remain behind the people */
+.hero.hero-approved .hero-copy h1{max-width:650px!important;}
+
+/* FOUNDERS HERO */
+.founders-page-premium .founders-hero-final{
+  position:relative!important;
+  min-height:650px!important;
+  overflow:hidden!important;
+  background:
+    radial-gradient(circle at 86% 40%,rgba(216,166,42,.10),transparent 27%),
+    linear-gradient(100deg,#fffaf4 0%,#fffaf4 55%,#f3eadc 100%)!important;
+  border-bottom:1px solid rgba(216,166,42,.25)!important;
+}
+.founders-page-premium .founders-hero-final::before{
+  content:""!important;
+  position:absolute!important;
+  z-index:0!important;
+  pointer-events:none!important;
+  right:-7%!important;
+  top:-28%!important;
+  width:68%!important;
+  aspect-ratio:1!important;
+  border-radius:50%!important;
+  background:
+    radial-gradient(circle,transparent 0 35%,rgba(216,166,42,.22) 35.15% 35.35%,transparent 35.55% 45%,rgba(216,166,42,.14) 45.15% 45.35%,transparent 45.55% 56%,rgba(216,166,42,.08) 56.15% 56.35%,transparent 56.55%)!important;
+}
+.founders-page-premium .founders-hero-final > img{
+  display:block!important;
+  position:absolute!important;
+  z-index:2!important;
+  right:4%!important;
+  bottom:0!important;
+  top:auto!important;
+  left:auto!important;
+  width:min(48vw,760px)!important;
+  height:auto!important;
+  max-height:94%!important;
+  object-fit:contain!important;
+  object-position:right bottom!important;
+  background:transparent!important;
+}
+.founders-page-premium .founders-hero-final .founders-hero-overlay{
+  display:none!important;
+}
+.founders-page-premium .founders-hero-final .founders-hero-copy{
+  display:block!important;
+  position:relative!important;
+  z-index:3!important;
+  max-width:var(--max)!important;
+  margin:0 auto!important;
+  padding:152px 20px 90px!important;
+}
+.founders-page-premium .founders-hero-final .founders-hero-copy span{
+  display:block!important;
+  color:#176b50!important;
+  text-transform:uppercase!important;
+  letter-spacing:.12em!important;
+  font-size:17px!important;
+  font-weight:800!important;
+  margin-bottom:20px!important;
+}
+.founders-page-premium .founders-hero-final .founders-hero-copy h1{
+  font-family:Georgia,"Times New Roman",serif!important;
+  font-size:clamp(68px,6.8vw,108px)!important;
+  line-height:.9!important;
+  letter-spacing:-.035em!important;
+  color:#0b4f3d!important;
+  max-width:620px!important;
+  margin:0!important;
+}
+
+@media(max-width:980px){
+  .hero.hero-approved .hero-copy{width:54vw!important;padding-left:34px!important;}
+  .hero-approved-bg{right:1%!important;width:49vw!important;}
+  .founders-page-premium .founders-hero-final > img{right:0!important;width:52vw!important;}
+}
+@media(max-width:840px){
+  .hero.hero-approved{min-height:0!important;background:#f8f1e7!important;display:flex!important;flex-direction:column!important;}
+  .hero.hero-approved::before{height:58%!important;background:linear-gradient(180deg,#06392d,#0b5742)!important;}
+  .hero.hero-approved::after{display:none!important;}
+  .hero.hero-approved .hero-copy{width:100%!important;padding:38px 20px 30px!important;}
+  .hero-approved-bg{position:relative!important;order:2!important;right:auto!important;bottom:auto!important;width:100%!important;max-height:none!important;}
+  .founders-page-premium .founders-hero-final{min-height:0!important;display:flex!important;flex-direction:column!important;}
+  .founders-page-premium .founders-hero-final > img{position:relative!important;order:2!important;right:auto!important;width:100%!important;max-height:none!important;}
+  .founders-page-premium .founders-hero-final .founders-hero-copy{order:1!important;padding:48px 20px 28px!important;}
+}
