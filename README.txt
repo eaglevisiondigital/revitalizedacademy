@@ -1,19 +1,13 @@
-BUILD 59 — LAYOUT + CTA FIXES ONLY
+BUILD 60 — WEBINAR WOW SECTION FIX ONLY
 
 Replace these files in the live repo:
 - index.html
-- families.html
-- founders.html
-- free-help.html
-- stories.html
 - css/styles.css
-- css/vitality55.css
 
-FIXES
-1. Free Vitality Assessment remains GOLD.
-2. Start Your Journey is explicitly styled as the secondary enrollment CTA.
-3. In the dark homepage hero, Start Your Journey is cream/white so it no longer competes with the gold assessment button.
-4. Header Start Your Journey stays premium emerald.
-5. Other enrollment buttons on light sections stay emerald.
-6. The More than information right-side visual is fixed so the generic 16:9 video rule no longer clips it.
-7. Cache versions bumped to 59.
+WHAT CHANGED
+- Rebuilt the upcoming webinar section from scratch to closely match the approved premium mockup.
+- Stronger editorial hierarchy, premium cream/emerald/gold palette, three benefit icons, upgraded lead-capture form, large laptop presentation and lower credibility strip.
+- The laptop screen uses the existing approved untouched Justyn & Elle PNG asset.
+- The Netlify webinar notification form remains functional.
+- Responsive layouts included for tablet and mobile.
+- CSS cache bumped to version 60.
