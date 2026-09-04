@@ -194,7 +194,7 @@ Key updates:
 - Founders page hero, belief/story/facts/CTA sections polished into the same cream/emerald/gold system.
 - FAQ, footer and family lower CTA areas upgraded to remove older washed-out gradient treatments.
 
-## Build 62 — Free Vitality Assessment
+## Build 63 — Free Vitality Assessment
 - Replaced the assessment placeholder with the complete adaptive Vitality Roadmap experience supplied by Justyn and Elle.
 - Preserved immediate lead capture as a separate `vitality-lead` Netlify submission when the visitor selects **Save & Continue**, even if the visitor never completes the assessment.
 - Added the Whole-Person Snapshot and all 12 Drivers of Health, with symptom detail questions expanding only for selected symptoms.
