@@ -211,3 +211,12 @@ Key updates:
 - Added the Health & Results Disclaimer link to the principal site footers and assessment completion area.
 - Preserved the separate claim-review requirement for individual stories; a general disclaimer does not replace substantiation or claim review.
 - Netlify form detection must remain enabled so both `vitality-lead` and `vitality-assessment` are registered during deployment.
+
+## Build 68 — Who the assessment is for
+- Preserve immediate contact capture: the first screen collects the respondent's own contact details; no health answers or subject details are added to that lead submission.
+- After the lead saves, Introduction asks Myself / My child / My spouse / Someone else. Proxy paths require the assessed person's first name, last name, and age; Someone else also requires relationship.
+- A required proxy acknowledgment distinguishes parent/legal guardian authorization for under-18s from an adult's permission. Changing person details clears the acknowledgment. This is a recorded statement, not identity/authority verification.
+- Register these fields in static HTML for Netlify detection and move the controls into Introduction when rendering. Hidden paths are disabled, preserving the Build 67 validation fix.
+- Coach summaries distinguish Completed by / Assessment for / relationship / age / authorization. Existing first_name, last_name, email, and phone fields continue to identify the respondent.
+- A visible reminder explains whose answers to enter. Health questions, scoring, and child-specific branching are unchanged as requested; this is not a newly adapted pediatric assessment.
+- Save-and-resume remains pending: no authenticated health-draft backend is connected in this site. No health drafts are stored in localStorage, sessionStorage, or new third-party storage. The page explicitly warns that unfinished answers are lost on reload/close.
