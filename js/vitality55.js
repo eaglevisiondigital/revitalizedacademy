@@ -49,7 +49,7 @@
     return `<div data-conditional-group>${radio(prefix, label, ['No', 'Yes'], '', required)}<div data-show-when="${esc(prefix)}:Yes" hidden>${textQuestion(`${prefix}_details`, detailLabel, 'Share only what you are comfortable sharing.', false)}</div></div>`;
   }
 
-  const sections = [
+  const adultSections = [
     {
       key: 'introduction', label: 'Introduction', html: () => `${heading('BEFORE YOU BEGIN', 'Your Vitality Roadmap', 'Your health is not a light switch. It exists on a spectrum.')}
         <div class="vitality-disclaimer">The Vitality Roadmap looks at current symptoms, lifestyle, environment, habits, strengths and quality of life across the 12 Drivers of Health. It helps identify patterns and practical areas to investigate and improve. It does not diagnose disease or determine the cause of symptoms.</div>
@@ -222,6 +222,10 @@
     }
   ];
 
+  let sections = adultSections;
+  let activePathway = 'Adult';
+  const childAssessment = window.ReVitalizedChildAssessment;
+
   const leadForm = document.querySelector('[data-vitality-lead-form]');
   const assessmentForm = document.querySelector('[data-assessment-form]');
   const assessmentStage = document.querySelector('[data-assessment-stage]');
@@ -246,6 +250,39 @@
       age: proxy ? value('assessed_age') : '',
       relationship: proxy ? (choice === 'Someone else' ? value('assessed_relationship') : choice) : 'Self'
     };
+  }
+
+  function usesChildQuestions() {
+    if (!assessmentForm) return false;
+    const person = assessmentPerson();
+    const age = Number(person.age);
+    return person.choice === 'My child' && person.age !== '' && Number.isInteger(age) && age >= 0 && age <= 18;
+  }
+
+  function updateAssessmentPathway() {
+    if (!assessmentForm || !assessmentStage) return;
+    const isChild = usesChildQuestions();
+    const nextPathway = isChild ? 'Child (ages 0–18)' : 'Adult';
+    const routeNote = assessmentForm.querySelector('[data-child-route-note]');
+    routeNote.hidden = assessmentPerson().choice !== 'My child';
+    routeNote.textContent = isChild
+      ? 'Children’s Vitality Assessment · ages 0–18. Answer for your child’s age and development; not applicable and prefer not to answer are available. Changing between child and adult questions clears answers from the previous question set.'
+      : 'Children ages 0–18 use the children’s questions. Adult children ages 19 and older use the adult assessment. Enter their age to select the question set.';
+    if (isChild && !childAssessment) return; // Never silently fall back to adult questions.
+    if (nextPathway !== activePathway) {
+      const childSections = isChild ? childAssessment.buildSections({heading,subsection,selectQuestion,checks,textQuestion,radio,requiredMark}) : null;
+      sections = isChild ? [adultSections[0], ...childSections] : adultSections;
+      assessmentStage.querySelectorAll('[data-panel]:not([data-panel="0"])').forEach(panel => panel.remove());
+      assessmentStage.insertAdjacentHTML('beforeend', sections.slice(1).map((section,index) => `<section class="vitality-panel" data-panel="${index+1}" hidden>${section.html()}</section>`).join(''));
+      activePathway = nextPathway;
+      assessmentForm.elements.assessment_pathway.value = activePathway;
+      assessmentForm.elements.assessment_version.value = isChild ? 'Children’s Vitality Assessment - approved September 2026 - ages 0–18' : 'Vitality Roadmap PDF - September 2026';
+      document.querySelector('[data-adult-spectrum-note]').hidden = isChild;
+      document.querySelector('[data-child-spectrum-note]').hidden = !isChild;
+      const intro = assessmentStage.querySelector('[data-panel="0"] .vitality-panel-head');
+      intro.querySelector('h2').textContent = isChild ? 'Your Child’s Vitality Roadmap' : 'Your Vitality Roadmap';
+      intro.querySelector('p').textContent = isChild ? 'A whole-child view of everyday experiences, habits and strengths.' : 'Your health is not a light switch. It exists on a spectrum.';
+    }
   }
 
   function updateAssessmentPerson() {
@@ -284,6 +321,7 @@
       `Completed by: ${person.completedBy}`,
       `Assessment for: ${person.name}`,
       `Completing for: ${person.choice}`,
+      `Question set: ${activePathway}`,
       `Relationship to person completing the form: ${person.relationship}`
     ];
     if (person.proxy) {
@@ -360,19 +398,22 @@
     }
     if (event.target.name === 'urgent_safety_flag') document.querySelector('[data-safety-message]').classList.toggle('show', event.target.value === 'Yes');
     if (event.target.name === 'self_harm_safety_flag') document.querySelector('[data-self-harm-message]').classList.toggle('show', event.target.value === 'Yes');
+    updateAssessmentPathway();
     updateConditionalFields();
+    if (usesChildQuestions() && childAssessment) childAssessment.update(assessmentForm, event.target);
     updateAssessmentPerson();
   });
 
-  document.querySelectorAll('[data-max-choices]').forEach((group) => {
-    group.addEventListener('change', (event) => {
+  document.addEventListener('change', (event) => {
+    const group = event.target.closest('[data-max-choices]');
+    if (group) {
       const selected = group.querySelectorAll('input:checked');
       if (selected.length > Number(group.dataset.maxChoices)) {
         event.target.checked = false;
         const help = group.querySelector('.vitality-question-help');
         if (help) help.textContent = `Please select no more than ${group.dataset.maxChoices}.`;
       }
-    });
+    }
   });
 
   let currentSection = 0;
@@ -391,12 +432,18 @@
     nextButton.innerHTML = currentSection === sections.length - 1 ? 'Submit Assessment <span aria-hidden="true">→</span>' : 'Continue <span aria-hidden="true">→</span>';
     assessmentError.classList.remove('show');
     updateConditionalFields();
+    if (usesChildQuestions() && childAssessment) childAssessment.update(assessmentForm);
     updateAssessmentPerson();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function validateCurrentSection() {
     const panel = document.querySelector(`[data-panel="${currentSection}"]`);
+    if (usesChildQuestions() && !childAssessment) {
+      assessmentError.textContent = 'The children’s questions could not load. Your contact information is saved. Please reload this page to try again.';
+      assessmentError.classList.add('show');
+      return false;
+    }
     assessmentError.textContent = 'Please complete the required questions above before continuing.';
     panel.querySelectorAll('[data-assessment-person] input:not([disabled])').forEach((control) => {
       if (control.type === 'text' && control.required) control.setCustomValidity(control.value.trim() ? '' : 'Please enter an answer.');
@@ -419,7 +466,18 @@
       unansweredSymptoms.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return false;
     }
-    if (currentSection === 1 && !panel.querySelector('[name="primary_goals"]:checked')) {
+    if (usesChildQuestions()) {
+      const problem = childAssessment.validate(panel);
+      if (problem) {
+        assessmentError.textContent = problem.message;
+        assessmentError.classList.add('show');
+        problem.group.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        const control = problem.group.querySelector('input:not([disabled])');
+        if (control) control.focus({ preventScroll: true });
+        return false;
+      }
+    }
+    if (!usesChildQuestions() && currentSection === 1 && !panel.querySelector('[name="primary_goals"]:checked')) {
       assessmentError.textContent = 'Please select at least one primary health goal before continuing.';
       assessmentError.classList.add('show');
       panel.querySelector('[name="primary_goals"]').scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -439,7 +497,7 @@
     try {
       updateAssessmentPerson();
       assessmentForm.querySelector('[data-submitted-at]').value = new Date().toISOString();
-      const flags = [];
+      const flags = usesChildQuestions() ? childAssessment.reviewFlags(assessmentForm) : [];
       if (assessmentForm.elements.urgent_safety_flag && assessmentForm.elements.urgent_safety_flag.value === 'Yes') flags.push('URGENT SYMPTOM / SAFETY RESPONSE');
       if (assessmentForm.elements.self_harm_safety_flag && assessmentForm.elements.self_harm_safety_flag.value === 'Yes') flags.push('SELF-HARM / IMMEDIATE SAFETY RESPONSE');
       assessmentForm.querySelector('[data-coach-review-flags]').value = flags.length ? flags.join(' | ') : 'None reported';
