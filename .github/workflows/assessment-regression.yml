@@ -1,0 +1,38 @@
+name: Assessment regression checks
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - consult.html
+      - js/vitality55.js
+      - css/vitality55.css
+      - netlify.toml
+      - tests/**
+      - .github/workflows/assessment-regression.yml
+  pull_request:
+    paths:
+      - consult.html
+      - js/vitality55.js
+      - css/vitality55.css
+      - netlify.toml
+      - tests/**
+      - .github/workflows/assessment-regression.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  assessment:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install isolated test dependency
+        run: npm install --prefix "$RUNNER_TEMP/assessment-tests" --no-save --no-package-lock jsdom@26.1.0
+      - name: Verify lead capture, all sections, and conditional pathways
+        run: NODE_PATH="$RUNNER_TEMP/assessment-tests/node_modules" node --test tests/assessment-person.cjs
