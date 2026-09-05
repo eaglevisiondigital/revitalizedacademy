@@ -351,7 +351,10 @@
       invalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return false;
     }
-    const unansweredSymptoms = [...panel.querySelectorAll('[data-symptom-screen]')].find((screen) => !screen.querySelector('input[type="checkbox"]:checked'));
+    const unansweredSymptoms = [...panel.querySelectorAll('[data-symptom-screen]')].find((screen) => {
+      const enabledChoices = [...screen.querySelectorAll('input[type="checkbox"]:not([disabled])')];
+      return enabledChoices.length && !enabledChoices.some((choice) => choice.checked);
+    });
     if (unansweredSymptoms) {
       assessmentError.textContent = 'Please select any symptoms that apply, or choose “None of these,” before continuing.';
       assessmentError.classList.add('show');
