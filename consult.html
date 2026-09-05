@@ -6,7 +6,7 @@
   <meta name="description" content="Complete the ReVitalized Academy Free Vitality Assessment to identify patterns across the 12 Drivers of Health and prepare for your Vitality Roadmap Consultation.">
   <title>Free Vitality Assessment | ReVitalized Academy</title>
   <link rel="stylesheet" href="css/styles.css?v=71">
-  <link rel="stylesheet" href="css/vitality55.css?v=71">
+  <link rel="stylesheet" href="css/vitality55.css?v=72">
 </head>
 <body>
   <main class="vitality-page">
@@ -43,7 +43,7 @@
           </div>
           <p class="vitality-person-context" data-person-context hidden></p>
           <form name="vitality-assessment" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-assessment-form autocomplete="off">
-            <input type="hidden" name="form-name" value="vitality-assessment"><input type="hidden" name="lead_source" value="Free Vitality Assessment"><input type="hidden" name="assessment_version" value="Vitality Roadmap PDF - September 2026">
+            <input type="hidden" name="form-name" value="vitality-assessment"><input type="hidden" name="lead_source" value="Free Vitality Assessment"><input type="hidden" name="assessment_pathway" value="Adult"><input type="hidden" name="assessment_version" value="Vitality Roadmap PDF - September 2026">
             <input type="hidden" name="first_name" data-copy-field="first_name"><input type="hidden" name="last_name" data-copy-field="last_name"><input type="hidden" name="email" data-copy-field="email"><input type="hidden" name="phone" data-copy-field="phone">
             <input type="hidden" name="completed_by" data-completed-by><input type="hidden" name="assessment_for_name" data-assessment-for-name>
             <input type="hidden" name="assessment_status" value="Complete - coach review requested"><input type="hidden" name="submitted_at" data-submitted-at><input type="hidden" name="coach_review_flags" data-coach-review-flags value="None reported">
@@ -55,7 +55,7 @@
                 <legend>Who are you completing this assessment for? <span class="vitality-required" aria-hidden="true">*</span></legend>
                 <div class="vitality-options">
                   <label class="vitality-choice"><input type="radio" name="assessment_for" value="Myself" required><span>Myself</span></label>
-                  <label class="vitality-choice"><input type="radio" name="assessment_for" value="My child" required><span>My child</span></label>
+                  <label class="vitality-choice"><input type="radio" name="assessment_for" value="My child" required><span>My child <small>(children’s questions: ages 0–18)</small></span></label>
                   <label class="vitality-choice"><input type="radio" name="assessment_for" value="My spouse" required><span>My spouse</span></label>
                   <label class="vitality-choice"><input type="radio" name="assessment_for" value="Someone else" required><span>Someone else</span></label>
                 </div>
@@ -65,7 +65,7 @@
                 <div class="vitality-grid">
                   <div class="vitality-field"><label for="assessed-first">Their first name <span class="vitality-required" aria-hidden="true">*</span></label><input id="assessed-first" name="assessed_first_name" maxlength="100" autocomplete="off" required disabled></div>
                   <div class="vitality-field"><label for="assessed-last">Their last name <span class="vitality-required" aria-hidden="true">*</span></label><input id="assessed-last" name="assessed_last_name" maxlength="100" autocomplete="off" required disabled></div>
-                  <div class="vitality-field"><label for="assessed-age">Their age in years <span class="vitality-required" aria-hidden="true">*</span></label><input id="assessed-age" name="assessed_age" type="number" min="0" max="125" step="1" aria-describedby="assessed-age-help" required disabled><span id="assessed-age-help" class="vitality-person-help">For a child under one year, enter 0.</span></div>
+                  <div class="vitality-field"><label for="assessed-age">Their age in years <span class="vitality-required" aria-hidden="true">*</span></label><input id="assessed-age" name="assessed_age" type="number" min="0" max="125" step="1" aria-describedby="assessed-age-help" required disabled><span id="assessed-age-help" class="vitality-person-help">For a child under one year, enter 0. Ages 0–18 use the children’s questions when “My child” is selected; ages 19+ use the adult questions.</span></div>
                 </div>
                 <div data-show-when="assessment_for:Someone else" hidden>
                   <div class="vitality-field"><label for="assessed-relationship">What is their relationship to you? <span class="vitality-required" aria-hidden="true">*</span></label><input id="assessed-relationship" name="assessed_relationship" maxlength="100" placeholder="For example, my parent or my sibling" required disabled></div>
@@ -75,6 +75,7 @@
                   <label class="vitality-choice"><input type="checkbox" name="assessment_authorization" value="Acknowledged" required disabled><span data-authorization-label>I have permission to complete this assessment and share these answers with ReVitalized Academy. For a person under 18, I am their parent or legal guardian.</span></label>
                 </fieldset>
               </div>
+              <p class="vitality-disclaimer" data-child-route-note hidden></p>
             </section>
             <div data-assessment-stage></div>
             <div class="vitality-form-navigation"><p class="vitality-save-note">Your contact information is already saved. Your full assessment is submitted when you finish. Unfinished answers are not saved if you reload or close this page.</p><button class="vitality-next" type="button" data-next>Continue <span aria-hidden="true">→</span></button></div>
@@ -89,9 +90,10 @@
           <a class="vitality-home-link" href="index.html">Return to ReVitalized Academy</a>
         </div>
       </section>
-      <p class="vitality-footer-note">Your Health Spectrum stage is a ReVitalized Academy coaching classification, not a medical diagnosis. <a href="disclaimer.html" target="_blank" rel="noopener">Read the Health &amp; Results Disclaimer.</a></p>
+      <p class="vitality-footer-note"><span data-adult-spectrum-note>Your Health Spectrum stage is a ReVitalized Academy coaching classification, not a medical diagnosis.</span><span data-child-spectrum-note hidden>This is an educational coaching assessment, not a medical diagnosis or a developmental screening tool.</span> <a href="disclaimer.html" target="_blank" rel="noopener">Read the Health &amp; Results Disclaimer.</a></p>
     </div>
   </main>
-  <script src="js/vitality55.js?v=71"></script>
+  <script src="js/vitality-child.js?v=72"></script>
+  <script src="js/vitality55.js?v=72"></script>
 </body>
 </html>
