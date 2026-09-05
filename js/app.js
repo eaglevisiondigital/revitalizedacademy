@@ -287,33 +287,48 @@ faqItems.forEach((item) => {
   });
 });
 
-// Build 72 — premium coaching experience. Appended to the current-main app.js only.
-// Intentionally isolated from the Build 71 Vitality Assessment and disclaimer system.
-(() => {
-  const oldDifference = document.querySelector('#coaching.difference-section');
-  const oldArchitecture = oldDifference ? oldDifference.nextElementSibling : null;
 
-  if (oldDifference && oldArchitecture && oldArchitecture.classList.contains('coaching-premium')) {
+// Build 73 — complete coaching-section replacement.
+// This removes both previous coaching blocks from the DOM and rebuilds them as one cohesive,
+// responsive layered section. It intentionally does not touch the Build 71 Vitality Assessment
+// or any disclaimer/legal elements.
+(() => {
+  const oldDifference = document.querySelector('#coaching.difference-section, #coaching.coaching72, #coaching.coaching73');
+  let oldArchitecture = null;
+
+  if (oldDifference) {
+    const next = oldDifference.nextElementSibling;
+    if (next && (next.classList.contains('coaching-premium') || next.classList.contains('founders-section'))) {
+      oldArchitecture = next;
+    }
+  }
+
+  if (oldDifference) {
     const section = document.createElement('section');
-    section.className = 'coaching72';
+    section.className = 'coaching73';
     section.id = 'coaching';
-    section.setAttribute('aria-labelledby', 'coaching72-title');
+    section.setAttribute('aria-labelledby', 'coaching73-title');
 
     section.innerHTML = `
-      <div class="coaching72-difference">
-        <div class="coaching72-botanical coaching72-botanical-left" aria-hidden="true"></div>
-        <div class="coaching72-scenic" aria-hidden="true"></div>
-        <div class="coaching72-difference-inner">
-          <div class="coaching72-title-block">
-            <span class="coaching72-overline">A HEALTHIER TOMORROW STARTS WITH A DIFFERENT APPROACH</span>
-            <h2 id="coaching72-title">Why<br>ReVitalized<br>Is Different</h2>
-            <span class="coaching72-gold-rule"></span>
+      <div class="coaching73-layer coaching73-leaf-left" aria-hidden="true"></div>
+      <div class="coaching73-layer coaching73-leaf-right" aria-hidden="true"></div>
+      <div class="coaching73-layer coaching73-rings" aria-hidden="true"></div>
+
+      <div class="coaching73-shell">
+        <div class="coaching73-top">
+          <div class="coaching73-title-block">
+            <span class="coaching73-overline">A HEALTHIER TOMORROW<br>STARTS WITH A DIFFERENT APPROACH</span>
+            <h2 id="coaching73-title">Why<br>ReVitalized<br>Is Different</h2>
+            <span class="coaching73-rule"></span>
             <p>The challenge is not finding more information. It is knowing what matters, what fits, and what to do next.</p>
             <em>Clarity changes everything.</em>
           </div>
 
-          <article class="coaching72-compare coaching72-compare-muted">
-            <h3><span class="coaching72-circle coaching72-circle-muted">i</span> Most Health Advice</h3>
+          <article class="coaching73-compare coaching73-muted">
+            <div class="coaching73-compare-title">
+              <span class="coaching73-info">i</span>
+              <h3>Most Health Advice</h3>
+            </div>
             <ul>
               <li>One-size-fits-all plans</li>
               <li>Focus on isolated symptoms</li>
@@ -321,15 +336,18 @@ faqItems.forEach((item) => {
               <li>Conflicting &amp; confusing information</li>
               <li>Leaves you guessing what to do next</li>
             </ul>
-            <p class="coaching72-card-footer">More information. Less clarity.</p>
+            <div class="coaching73-card-footer">More information. Less clarity.</div>
           </article>
 
-          <div class="coaching72-vs" aria-hidden="true">VS.</div>
+          <div class="coaching73-vs" aria-hidden="true">VS.</div>
 
-          <article class="coaching72-compare coaching72-compare-premium">
-            <div class="coaching72-premium-head">
-              <span class="coaching72-medallion">☆</span>
-              <div><h3>ReVitalized Coaching</h3><small>REAL GUIDANCE. A BRIGHTER TOMORROW.</small></div>
+          <article class="coaching73-compare coaching73-premium">
+            <div class="coaching73-premium-head">
+              <span class="coaching73-medallion">☆</span>
+              <div>
+                <h3>ReVitalized Coaching</h3>
+                <small>REAL GUIDANCE. A BRIGHTER TOMORROW.</small>
+              </div>
             </div>
             <ul>
               <li>Personalized roadmap</li>
@@ -338,119 +356,373 @@ faqItems.forEach((item) => {
               <li>Clear priorities and practical application</li>
               <li>Education, support &amp; accountability</li>
             </ul>
-            <p class="coaching72-card-footer">Real guidance. A healthier, longer you.</p>
+            <div class="coaching73-card-footer">Real guidance. A healthier, longer you.</div>
           </article>
 
-          <div class="coaching72-side-note" aria-hidden="true">
-            <span>BETTER</span><span>INFORMATION</span><span>BRIGHTER</span><span>TOMORROWS</span><b></b>
+          <div class="coaching73-scenic" aria-hidden="true">
+            <div class="coaching73-scenic-label">
+              <span>BETTER</span><span>INFORMATION</span><span>BRIGHTER</span><span>TOMORROWS</span><b></b>
+            </div>
+            <div class="coaching73-mountain m1"></div>
+            <div class="coaching73-mountain m2"></div>
+            <div class="coaching73-mountain m3"></div>
           </div>
         </div>
-      </div>
 
-      <div class="coaching72-architecture">
-        <div class="coaching72-architecture-inner">
-          <div class="coaching72-section-label"><span></span><b>PERSONAL APPLICATION</b><span></span></div>
+        <div class="coaching73-middle">
+          <div class="coaching73-label"><span></span><b>PERSONAL APPLICATION</b><span></span></div>
           <h2>What the ReVitalized Coaching Experience Is Built Around</h2>
-          <p class="coaching72-intro">Knowing more is not the same as knowing where to begin. Coaching helps evaluate the bigger picture, prioritize what matters and turn it into practical action.</p>
+          <p>Knowing more is not the same as knowing where to begin. Coaching helps evaluate the bigger picture, prioritize what matters and turn it into practical action.</p>
 
-          <div class="coaching72-steps">
-            <article><span class="coaching72-step-icon">◎</span><h3>Personalized<br>Starting Point</h3><p>Understand where you are today and what matters most.</p><i></i></article>
-            <article><span class="coaching72-step-icon">✥</span><h3>Your Longevity<br>Roadmap</h3><p>Build a clearer path around your goals and lifestyle.</p><i></i></article>
-            <article><span class="coaching72-step-icon">♧</span><h3>Direct Coaching<br>&amp; Support</h3><p>Get guidance instead of trying to figure it all out alone.</p><i></i></article>
-            <article><span class="coaching72-step-icon">↗</span><h3>Actionable<br>Strategy</h3><p>Turn what you learn into practical steps you can use.</p><i></i></article>
-            <article><span class="coaching72-step-icon">✓</span><h3>Accountability<br>&amp; Progress</h3><p>Stay focused, adjust as needed and keep moving forward.</p><i></i></article>
-            <article><span class="coaching72-step-icon">☆</span><h3>A Growing<br>Ecosystem</h3><p>Start with proven coaching now and gain more resources as ReVitalized grows.</p><i></i></article>
+          <div class="coaching73-steps">
+            <article>
+              <span class="coaching73-step-icon">♙</span>
+              <h3>Personalized<br>Starting Point</h3>
+              <p>Understand where you are today and what matters most.</p>
+              <i></i>
+            </article>
+            <article>
+              <span class="coaching73-step-icon">✥</span>
+              <h3>Your Longevity<br>Roadmap</h3>
+              <p>Build a clearer path around your goals and lifestyle.</p>
+              <i></i>
+            </article>
+            <article>
+              <span class="coaching73-step-icon">♧</span>
+              <h3>Direct Coaching<br>&amp; Support</h3>
+              <p>Get guidance instead of trying to figure it all out alone.</p>
+              <i></i>
+            </article>
+            <article>
+              <span class="coaching73-step-icon">↗</span>
+              <h3>Actionable<br>Strategy</h3>
+              <p>Turn what you learn into practical steps you can use.</p>
+              <i></i>
+            </article>
+            <article>
+              <span class="coaching73-step-icon">✓</span>
+              <h3>Accountability<br>&amp; Progress</h3>
+              <p>Stay focused, adjust as needed and keep moving forward.</p>
+              <i></i>
+            </article>
+            <article>
+              <span class="coaching73-step-icon">☆</span>
+              <h3>A Growing<br>Ecosystem</h3>
+              <p>Start with proven coaching now and gain more resources as ReVitalized grows.</p>
+              <i></i>
+            </article>
           </div>
+        </div>
 
-          <div class="coaching72-value-band">
-            <div class="coaching72-value-mark">♢</div>
-            <div class="coaching72-value-title"><small>MORE THAN COACHING</small><strong>A Healthier, Longer You Is Within Reach</strong></div>
-            <div class="coaching72-value-copy"><strong>Personalized guidance. Practical application. A brighter tomorrow.</strong><span>Take the first step toward the life you want.</span></div>
-            <a href="enroll.html" class="coaching72-cta journey-secondary-cta">Start Your Journey <span>→</span></a>
+        <div class="coaching73-value-band">
+          <div class="coaching73-leaf-mark" aria-hidden="true">❧</div>
+          <div class="coaching73-value-title">
+            <small>MORE THAN COACHING</small>
+            <strong>A Healthier, Longer You Is Within Reach</strong>
           </div>
+          <div class="coaching73-value-copy">
+            <strong>Personalized guidance. Practical application. A brighter tomorrow.</strong>
+            <span>Take the first step toward the life you want.</span>
+          </div>
+          <a class="coaching73-cta journey-secondary-cta" href="enroll.html">Start Your Journey <span>→</span></a>
         </div>
       </div>
     `;
 
     oldDifference.replaceWith(section);
-    oldArchitecture.remove();
+    if (oldArchitecture) oldArchitecture.remove();
+
+    const existing = document.getElementById('coaching73-styles');
+    if (existing) existing.remove();
 
     const style = document.createElement('style');
-    style.id = 'coaching72-styles';
+    style.id = 'coaching73-styles';
     style.textContent = `
-      .coaching72{--c72-green:#073f34;--c72-green2:#0d5d4a;--c72-gold:#d7a424;--c72-cream:#fcf5ee;--c72-ink:#18382f;background:var(--c72-cream);border-top:1px solid rgba(177,136,69,.2);overflow:hidden}
-      .coaching72 *{box-sizing:border-box}
-      .coaching72-difference{position:relative;background:linear-gradient(90deg,#fffaf3 0%,#f9f1e5 62%,#edf2e6 100%);overflow:hidden}
-      .coaching72-difference:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 68% 50%,rgba(216,166,42,.09),transparent 26%),radial-gradient(circle at 28% 8%,rgba(255,255,255,.8),transparent 34%);pointer-events:none}
-      .coaching72-difference-inner{position:relative;z-index:2;max-width:1480px;margin:auto;padding:48px 38px 42px;display:grid;grid-template-columns:1.08fr 1.23fr 76px 1.42fr .28fr;gap:24px;align-items:center}
-      .coaching72-title-block{padding:4px 8px 0 10px}
-      .coaching72-overline{display:block;max-width:310px;font-size:10px;line-height:1.35;letter-spacing:.28em;font-weight:800;color:#4d665e;margin-bottom:18px}
-      .coaching72-title-block h2{font-family:Georgia,"Times New Roman",serif;color:var(--c72-green);font-size:clamp(48px,4.25vw,72px);line-height:.91;letter-spacing:-.035em;margin:0}
-      .coaching72-gold-rule{display:block;width:78px;height:2px;background:linear-gradient(90deg,var(--c72-gold),rgba(215,164,36,.08));margin:20px 0}
-      .coaching72-title-block p{font-size:17px;line-height:1.5;color:#304b42;max-width:360px;margin:0 0 18px}
-      .coaching72-title-block em{font-family:Georgia,"Times New Roman",serif;font-size:23px;color:#a97412}
-      .coaching72-compare{position:relative;background:rgba(255,255,255,.86);border-radius:22px;min-height:315px;padding:26px 30px 20px;box-shadow:0 20px 40px rgba(39,42,36,.10);border:1px solid rgba(122,112,91,.16);overflow:hidden}
-      .coaching72-compare h3{font-family:Georgia,"Times New Roman",serif;font-size:25px;color:#172e28;display:flex;gap:13px;align-items:center;margin:0 0 20px}
-      .coaching72-circle{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;flex:none;font-family:Arial,sans-serif;font-weight:900;border:1px solid #c6c6c2;background:#fafafa}
-      .coaching72-circle-muted{color:#5c6260}
-      .coaching72-compare ul{list-style:none;padding:0;margin:0}
-      .coaching72-compare li{position:relative;padding-left:38px;margin:12px 0;font-size:16px;color:#304940}
-      .coaching72-compare-muted li:before{content:"×";position:absolute;left:0;top:-1px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:#929897;color:#fff;font-weight:900;line-height:1}
-      .coaching72-card-footer{position:absolute;left:0;right:0;bottom:0;margin:0!important;padding:16px 20px;text-align:center;background:linear-gradient(180deg,rgba(238,238,234,.4),#e9e7e0);font-family:Georgia,"Times New Roman",serif;font-style:italic;color:#6e746f!important;font-size:17px!important}
-      .coaching72-vs{width:66px;height:66px;border-radius:50%;display:grid;place-items:center;background:#fff;border:2px solid var(--c72-gold);box-shadow:0 0 0 8px rgba(255,255,255,.72),0 10px 24px rgba(72,59,28,.12);color:var(--c72-green);font-weight:900;font-size:20px;justify-self:center}
-      .coaching72-compare-premium{border:2px solid #b98717;padding:0 28px 20px;box-shadow:0 22px 44px rgba(45,55,42,.12),0 0 0 4px rgba(216,166,42,.08)}
-      .coaching72-premium-head{margin:0 -28px 14px;padding:17px 24px;display:flex;gap:14px;align-items:center;background:linear-gradient(100deg,#074a3b,#0b5c49);color:#fff}
-      .coaching72-premium-head h3{font-family:Georgia,"Times New Roman",serif;color:#fff;margin:0;font-size:26px;display:block}
-      .coaching72-premium-head small{font-size:9px;letter-spacing:.18em;font-weight:800;color:#f3d37f}
-      .coaching72-medallion{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(180deg,#e4b53e,#a66d0c);border:2px solid #f6d474;color:#fff;font-size:22px;box-shadow:0 6px 14px rgba(0,0,0,.18)}
-      .coaching72-compare-premium li{padding-left:38px}
-      .coaching72-compare-premium li:before{content:"✓";position:absolute;left:0;top:-1px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(180deg,#d7a424,#b47d16);color:#fff;font-weight:900;font-size:14px}
-      .coaching72-compare-premium .coaching72-card-footer{background:linear-gradient(180deg,rgba(224,239,226,.75),#e4eee5);color:#16503f!important}
-      .coaching72-side-note{align-self:start;margin-top:20px;display:flex;flex-direction:column;gap:7px;font-size:9px;letter-spacing:.28em;font-weight:800;color:#526c62}
-      .coaching72-side-note b{display:block;width:40px;height:2px;background:var(--c72-gold);margin-top:6px}
-      .coaching72-botanical{position:absolute;left:-54px;top:20px;width:200px;height:320px;opacity:.58;transform:rotate(-9deg);z-index:1;background:radial-gradient(ellipse at 50% 10%,#365d37 0 13%,transparent 14%),radial-gradient(ellipse at 72% 27%,#406f40 0 13%,transparent 14%),radial-gradient(ellipse at 40% 44%,#507a48 0 14%,transparent 15%),radial-gradient(ellipse at 70% 61%,#345c37 0 12%,transparent 13%),linear-gradient(82deg,transparent 48%,rgba(89,99,49,.6) 49% 51%,transparent 52%)}
-      .coaching72-scenic{position:absolute;right:0;bottom:0;width:19%;height:100%;opacity:.42;background:linear-gradient(180deg,transparent 18%,rgba(63,96,69,.08) 19%),linear-gradient(145deg,transparent 48%,#9fa789 49% 54%,transparent 55%),linear-gradient(155deg,transparent 57%,#6f856d 58% 65%,transparent 66%),linear-gradient(170deg,transparent 67%,#314d3e 68% 100%);clip-path:polygon(20% 0,100% 0,100% 100%,0 100%,22% 72%,0 56%,25% 35%)}
-
-      .coaching72-architecture{position:relative;background:radial-gradient(circle at 50% 10%,rgba(216,166,42,.05),transparent 30%),linear-gradient(180deg,#fffaf4,#fbf5ed);border-top:1px solid rgba(216,166,42,.14)}
-      .coaching72-architecture:before,.coaching72-architecture:after{content:"";position:absolute;left:-5%;right:-5%;height:120px;border-top:1px solid rgba(216,166,42,.19);border-radius:50%;pointer-events:none}
-      .coaching72-architecture:before{top:70px;transform:rotate(-2deg)}
-      .coaching72-architecture:after{top:110px;transform:rotate(2deg)}
-      .coaching72-architecture-inner{position:relative;z-index:2;max-width:1530px;margin:auto;padding:26px 44px 28px}
-      .coaching72-section-label{display:flex;align-items:center;justify-content:center;gap:16px;margin:0 auto 12px}
-      .coaching72-section-label span{width:46px;height:1px;background:var(--c72-gold)}
-      .coaching72-section-label b{padding:7px 14px;border-radius:999px;background:#f0eee6;color:#165440;font-size:11px;letter-spacing:.18em}
-      .coaching72-architecture h2{font-family:Georgia,"Times New Roman",serif;color:var(--c72-green);font-size:clamp(35px,3vw,52px);line-height:1;margin:0 auto 10px;text-align:center;max-width:1040px}
-      .coaching72-intro{max-width:880px;margin:0 auto 26px;text-align:center;color:#53645e;font-size:15px}
-      .coaching72-steps{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
-      .coaching72-steps article{position:relative;min-height:230px;padding:16px 14px 20px;text-align:center;background:linear-gradient(180deg,#fffdf9,#fbf6ee);border:1px solid rgba(177,136,69,.22);border-radius:18px;box-shadow:0 11px 24px rgba(36,45,38,.055);display:flex;flex-direction:column;align-items:center}
-      .coaching72-step-icon{width:62px;height:62px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(180deg,#fff,#fbf2e4);border:1px solid rgba(216,166,42,.34);color:#b17b13;font-size:28px;margin-bottom:13px;box-shadow:0 7px 16px rgba(216,166,42,.08)}
-      .coaching72-steps h3{font-family:Georgia,"Times New Roman",serif;color:var(--c72-green);font-size:21px;line-height:1.05;margin:0 0 10px}
-      .coaching72-steps p{font-size:13px;line-height:1.45;color:#53615c;margin:0}
-      .coaching72-steps i{margin-top:auto;width:34px;height:2px;background:var(--c72-gold)}
-      .coaching72-value-band{margin-top:18px;padding:17px 22px;border-radius:18px;background:linear-gradient(100deg,#064a3b,#075746 55%,#064536);border:1px solid #c79522;box-shadow:0 14px 28px rgba(6,72,56,.18);display:grid;grid-template-columns:54px 1.25fr 1.25fr auto;gap:18px;align-items:center;color:#fff}
-      .coaching72-value-mark{font-size:35px;color:#e4bc57;text-align:center}
-      .coaching72-value-title{display:flex;flex-direction:column;gap:3px}
-      .coaching72-value-title small{font-size:10px;letter-spacing:.22em;color:#e6c66e;font-weight:900}
-      .coaching72-value-title strong{font-family:Georgia,"Times New Roman",serif;font-size:23px;line-height:1.1}
-      .coaching72-value-copy{border-left:1px solid rgba(230,198,110,.45);padding-left:24px;display:flex;flex-direction:column;font-size:12px;color:rgba(255,255,255,.88)}
-      .coaching72-cta{min-width:220px;min-height:52px;border-radius:11px;display:flex;align-items:center;justify-content:center;gap:20px;background:linear-gradient(180deg,#f1cd65,#d8a62a);color:#173e31;font-weight:900;box-shadow:0 10px 22px rgba(0,0,0,.15);border:1px solid rgba(255,226,132,.8)}
-      .coaching72-cta:hover{transform:translateY(-1px)}
-
-      @media(max-width:1180px){
-        .coaching72-difference-inner{grid-template-columns:1fr 1fr 62px 1fr;padding:42px 26px}.coaching72-side-note{display:none}.coaching72-title-block{grid-column:1/-1;text-align:center}.coaching72-title-block p,.coaching72-overline{margin-left:auto;margin-right:auto}.coaching72-gold-rule{margin-left:auto;margin-right:auto}.coaching72-title-block h2 br{display:none}.coaching72-steps{grid-template-columns:repeat(3,1fr)}.coaching72-value-band{grid-template-columns:54px 1fr 1fr}.coaching72-cta{grid-column:1/-1;justify-self:end}
+      .coaching73{
+        --c73-green:#063f34;
+        --c73-green2:#0d5a48;
+        --c73-gold:#d8a62a;
+        --c73-gold2:#b67c12;
+        --c73-cream:#fcf5ee;
+        --c73-cream2:#fffaf4;
+        --c73-ink:#17392f;
+        position:relative;
+        overflow:hidden;
+        background:
+          radial-gradient(circle at 72% 10%,rgba(216,166,42,.07),transparent 26%),
+          linear-gradient(180deg,#fffaf4 0%,#fcf5ee 100%);
+        border-top:1px solid rgba(216,166,42,.18);
+        border-bottom:1px solid rgba(216,166,42,.18);
+        isolation:isolate;
       }
+      .coaching73 *{box-sizing:border-box}
+      .coaching73-shell{position:relative;z-index:3;max-width:1540px;margin:0 auto;padding:34px 34px 40px}
+      .coaching73-layer{position:absolute;z-index:1;pointer-events:none}
+      .coaching73-rings{
+        inset:0;
+        background:
+          radial-gradient(ellipse 95% 43% at 50% 54%,transparent 66%,rgba(216,166,42,.17) 66.2%,transparent 66.6%),
+          radial-gradient(ellipse 110% 52% at 50% 61%,transparent 69%,rgba(216,166,42,.10) 69.2%,transparent 69.6%);
+        opacity:.95;
+      }
+      .coaching73-leaf-left,.coaching73-leaf-right{
+        width:180px;height:610px;top:28px;opacity:.55;filter:saturate(.82);
+        background:
+          radial-gradient(ellipse at 38% 7%,#325c3c 0 10%,transparent 11%),
+          radial-gradient(ellipse at 70% 17%,#3f7048 0 11%,transparent 12%),
+          radial-gradient(ellipse at 33% 29%,#547b51 0 12%,transparent 13%),
+          radial-gradient(ellipse at 72% 42%,#386746 0 11%,transparent 12%),
+          radial-gradient(ellipse at 38% 55%,#527853 0 12%,transparent 13%),
+          radial-gradient(ellipse at 72% 68%,#365f42 0 10%,transparent 11%),
+          radial-gradient(ellipse at 40% 82%,#4b704c 0 10%,transparent 11%),
+          linear-gradient(85deg,transparent 48%,rgba(88,100,53,.5) 49% 51%,transparent 52%);
+      }
+      .coaching73-leaf-left{left:-72px;transform:rotate(-8deg)}
+      .coaching73-leaf-right{right:-68px;top:430px;transform:scaleX(-1) rotate(-4deg)}
+
+      .coaching73-top{
+        position:relative;
+        display:grid;
+        grid-template-columns:1.08fr 1.16fr 74px 1.42fr .34fr;
+        gap:24px;
+        align-items:center;
+        min-height:420px;
+        border-radius:38px 38px 0 0;
+      }
+      .coaching73-title-block{padding:12px 8px 0 38px;position:relative;z-index:3}
+      .coaching73-overline{
+        display:block;
+        font-size:10px;
+        line-height:1.45;
+        letter-spacing:.29em;
+        font-weight:900;
+        color:#4f6a60;
+        margin-bottom:16px;
+      }
+      .coaching73-title-block h2{
+        font-family:Georgia,"Times New Roman",serif;
+        color:var(--c73-green);
+        font-size:clamp(56px,4.5vw,78px);
+        line-height:.83;
+        letter-spacing:-.035em;
+        margin:0;
+      }
+      .coaching73-rule{display:block;width:76px;height:2px;background:linear-gradient(90deg,var(--c73-gold),rgba(216,166,42,.12));margin:22px 0 20px}
+      .coaching73-title-block p{max-width:360px;margin:0;font-size:17px;line-height:1.48;color:#29473d}
+      .coaching73-title-block em{display:block;margin-top:18px;font-family:Georgia,"Times New Roman",serif;font-size:24px;color:#ad7613}
+
+      .coaching73-compare{
+        position:relative;
+        min-height:326px;
+        border-radius:22px;
+        overflow:hidden;
+        background:rgba(255,255,255,.90);
+        border:1px solid rgba(112,108,95,.18);
+        box-shadow:0 20px 42px rgba(44,42,34,.10);
+        padding:24px 28px 66px;
+      }
+      .coaching73-compare-title{display:flex;align-items:center;gap:13px;margin-bottom:18px}
+      .coaching73-compare-title h3,.coaching73-premium-head h3{
+        margin:0;
+        font-family:Georgia,"Times New Roman",serif;
+        font-size:26px;
+        line-height:1.04;
+        color:#18352d;
+      }
+      .coaching73-info{
+        width:35px;height:35px;border-radius:50%;display:grid;place-items:center;
+        border:1px solid #c7cbc6;background:#fbfbf9;color:#59645f;font-weight:900;
+      }
+      .coaching73-compare ul{list-style:none;padding:0;margin:0}
+      .coaching73-compare li{position:relative;padding-left:38px;margin:11px 0;font-size:15.5px;color:#304b42}
+      .coaching73-muted li:before{
+        content:"×";position:absolute;left:0;top:-1px;width:24px;height:24px;border-radius:50%;
+        display:grid;place-items:center;background:#919795;color:white;font-weight:900;
+      }
+      .coaching73-card-footer{
+        position:absolute;left:0;right:0;bottom:0;padding:16px 18px;text-align:center;
+        font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:17px;
+        background:linear-gradient(180deg,rgba(239,238,232,.72),#e9e6df);color:#67716c;
+      }
+      .coaching73-vs{
+        width:68px;height:68px;border-radius:50%;display:grid;place-items:center;justify-self:center;
+        background:#fff;border:2px solid var(--c73-gold);
+        box-shadow:0 0 0 8px rgba(255,255,255,.78),0 12px 28px rgba(88,67,27,.12);
+        color:var(--c73-green);font-size:20px;font-weight:900;z-index:5;
+      }
+      .coaching73-premium{
+        padding:0 28px 66px;
+        border:2px solid #b88417;
+        box-shadow:0 22px 46px rgba(38,54,45,.12),0 0 0 4px rgba(216,166,42,.06);
+      }
+      .coaching73-premium-head{
+        margin:0 -28px 16px;padding:17px 23px;display:flex;align-items:center;gap:14px;
+        background:linear-gradient(100deg,#064a3b,#0b604b);
+      }
+      .coaching73-premium-head h3{color:#fff}
+      .coaching73-premium-head small{display:block;margin-top:3px;font-size:9px;letter-spacing:.18em;font-weight:900;color:#f2d27a}
+      .coaching73-medallion{
+        width:44px;height:44px;border-radius:50%;display:grid;place-items:center;flex:none;
+        color:#fff;font-size:22px;background:linear-gradient(180deg,#e4b943,#a56d0c);
+        border:2px solid #f6d578;box-shadow:0 7px 15px rgba(0,0,0,.18);
+      }
+      .coaching73-premium li:before{
+        content:"✓";position:absolute;left:0;top:-1px;width:24px;height:24px;border-radius:50%;
+        display:grid;place-items:center;background:linear-gradient(180deg,#d9aa32,#b27a14);
+        color:#fff;font-size:14px;font-weight:900;
+      }
+      .coaching73-premium .coaching73-card-footer{
+        color:#164d3e;
+        background:linear-gradient(180deg,rgba(225,238,226,.82),#e5eee6);
+      }
+
+      .coaching73-scenic{
+        position:relative;height:326px;align-self:center;overflow:hidden;border-radius:0 28px 28px 0;
+      }
+      .coaching73-scenic:before{
+        content:"";position:absolute;inset:0;
+        background:
+          radial-gradient(circle at 70% 18%,rgba(255,240,185,.85),transparent 11%),
+          linear-gradient(180deg,#edf1e5 0%,#e7eadf 48%,#cfd8c9 100%);
+      }
+      .coaching73-scenic-label{
+        position:absolute;z-index:4;top:28px;left:10px;display:flex;flex-direction:column;gap:8px;
+        font-size:9px;letter-spacing:.29em;font-weight:900;color:#4e6a60;
+      }
+      .coaching73-scenic-label b{display:block;width:38px;height:2px;background:var(--c73-gold);margin-top:7px}
+      .coaching73-mountain{position:absolute;bottom:0;right:-10%;transform-origin:bottom right}
+      .coaching73-mountain.m1{width:120%;height:58%;background:#a7b2a0;clip-path:polygon(0 100%,18% 68%,30% 76%,47% 38%,62% 72%,76% 42%,100% 100%)}
+      .coaching73-mountain.m2{width:112%;height:48%;background:#768b78;clip-path:polygon(0 100%,20% 75%,36% 43%,53% 72%,68% 46%,80% 64%,100% 100%)}
+      .coaching73-mountain.m3{width:105%;height:36%;background:#345846;clip-path:polygon(0 100%,12% 72%,28% 52%,44% 80%,61% 45%,74% 67%,88% 44%,100% 100%)}
+
+      .coaching73-middle{
+        position:relative;
+        padding:24px 0 0;
+        text-align:center;
+      }
+      .coaching73-label{display:flex;justify-content:center;align-items:center;gap:16px;margin:0 0 12px}
+      .coaching73-label span{width:48px;height:1px;background:var(--c73-gold)}
+      .coaching73-label b{
+        padding:7px 14px;border-radius:999px;background:#efeee6;color:#14503e;
+        font-size:11px;letter-spacing:.18em;
+      }
+      .coaching73-middle>h2{
+        max-width:1100px;margin:0 auto 10px;
+        font-family:Georgia,"Times New Roman",serif;color:var(--c73-green);
+        font-size:clamp(38px,3.15vw,54px);line-height:.98;letter-spacing:-.02em;
+      }
+      .coaching73-middle>p{
+        max-width:880px;margin:0 auto 26px;color:#54665f;font-size:15px;line-height:1.5;
+      }
+      .coaching73-steps{
+        display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:13px;
+      }
+      .coaching73-steps article{
+        min-height:236px;padding:17px 14px 19px;display:flex;flex-direction:column;align-items:center;
+        border-radius:17px;background:linear-gradient(180deg,#fffdf9,#fcf7ef);
+        border:1px solid rgba(177,136,69,.23);box-shadow:0 11px 24px rgba(36,45,38,.045);
+      }
+      .coaching73-step-icon{
+        width:64px;height:64px;border-radius:50%;display:grid;place-items:center;margin-bottom:14px;
+        background:linear-gradient(180deg,#fff,#fbf3e6);border:1px solid rgba(216,166,42,.34);
+        color:#b57d12;font-size:29px;box-shadow:0 7px 16px rgba(216,166,42,.07);
+      }
+      .coaching73-steps h3{
+        margin:0 0 10px;font-family:Georgia,"Times New Roman",serif;
+        color:var(--c73-green);font-size:20px;line-height:1.05;
+      }
+      .coaching73-steps p{margin:0;color:#55645e;font-size:13px;line-height:1.42}
+      .coaching73-steps i{width:34px;height:2px;background:var(--c73-gold);margin-top:auto}
+
+      .coaching73-value-band{
+        margin-top:18px;
+        min-height:94px;
+        padding:15px 22px;
+        display:grid;
+        grid-template-columns:58px 1.2fr 1.15fr auto;
+        gap:18px;
+        align-items:center;
+        color:#fff;
+        border-radius:17px;
+        border:1px solid #c79320;
+        background:
+          linear-gradient(90deg,rgba(9,75,60,.96),rgba(5,73,57,.98)),
+          radial-gradient(circle at 20% 50%,rgba(255,255,255,.05),transparent 25%);
+        box-shadow:0 14px 28px rgba(6,72,56,.18);
+      }
+      .coaching73-leaf-mark{font-size:38px;color:#e3bc56;text-align:center}
+      .coaching73-value-title{display:flex;flex-direction:column;gap:4px}
+      .coaching73-value-title small{font-size:10px;letter-spacing:.22em;color:#e8cb75;font-weight:900}
+      .coaching73-value-title strong{
+        font-family:Georgia,"Times New Roman",serif;font-size:22px;line-height:1.08;
+      }
+      .coaching73-value-copy{
+        padding-left:24px;border-left:1px solid rgba(230,198,110,.42);
+        display:flex;flex-direction:column;color:rgba(255,255,255,.90);font-size:12px;
+      }
+      .coaching73-cta{
+        min-width:225px;min-height:54px;padding:0 24px;border-radius:11px;
+        display:flex;align-items:center;justify-content:center;gap:20px;
+        background:linear-gradient(180deg,#f0cf6c,#d8a62a);
+        border:1px solid rgba(255,228,139,.86);
+        color:#153b2f;font-weight:900;
+        box-shadow:0 10px 22px rgba(0,0,0,.15);
+      }
+      .coaching73-cta:hover{transform:translateY(-1px)}
+
+      @media(max-width:1200px){
+        .coaching73-shell{padding:30px 24px 34px}
+        .coaching73-top{grid-template-columns:1fr 1fr 64px 1fr;gap:18px}
+        .coaching73-title-block{grid-column:1/-1;text-align:center;padding:0 18px 12px}
+        .coaching73-title-block h2 br{display:none}
+        .coaching73-title-block p,.coaching73-overline{margin-left:auto;margin-right:auto}
+        .coaching73-rule{margin-left:auto;margin-right:auto}
+        .coaching73-scenic{display:none}
+        .coaching73-steps{grid-template-columns:repeat(3,1fr)}
+        .coaching73-value-band{grid-template-columns:58px 1fr 1fr}
+        .coaching73-cta{grid-column:1/-1;justify-self:end}
+      }
+
       @media(max-width:820px){
-        .coaching72-difference-inner{grid-template-columns:1fr;gap:18px;padding:38px 18px}.coaching72-title-block{grid-column:auto}.coaching72-vs{width:58px;height:58px}.coaching72-compare{min-height:0;padding-bottom:68px}.coaching72-compare-premium{padding-top:0}.coaching72-botanical,.coaching72-scenic{opacity:.25}.coaching72-architecture-inner{padding:34px 18px 24px}.coaching72-steps{grid-template-columns:repeat(2,1fr)}.coaching72-value-band{grid-template-columns:1fr;text-align:center}.coaching72-value-copy{border-left:0;border-top:1px solid rgba(230,198,110,.35);padding:12px 0 0}.coaching72-cta{justify-self:stretch}.coaching72-value-mark{display:none}
+        .coaching73-shell{padding:24px 16px 28px}
+        .coaching73-top{grid-template-columns:1fr;gap:18px;min-height:0}
+        .coaching73-title-block{grid-column:auto;text-align:center;padding:8px 12px}
+        .coaching73-title-block h2{font-size:clamp(48px,13vw,66px);line-height:.9}
+        .coaching73-overline{font-size:9px}
+        .coaching73-title-block p{font-size:16px}
+        .coaching73-vs{width:58px;height:58px}
+        .coaching73-compare{min-height:0;padding-bottom:66px}
+        .coaching73-premium{padding-top:0}
+        .coaching73-middle{padding-top:30px}
+        .coaching73-middle>h2{font-size:clamp(34px,8.8vw,46px)}
+        .coaching73-steps{grid-template-columns:repeat(2,1fr)}
+        .coaching73-value-band{grid-template-columns:1fr;text-align:center;padding:20px}
+        .coaching73-value-copy{border-left:0;border-top:1px solid rgba(230,198,110,.35);padding:12px 0 0}
+        .coaching73-cta{grid-column:auto;justify-self:stretch}
+        .coaching73-leaf-mark{display:none}
+        .coaching73-leaf-left,.coaching73-leaf-right{opacity:.25}
       }
+
       @media(max-width:540px){
-        .coaching72-title-block h2{font-size:47px}.coaching72-title-block p{font-size:16px}.coaching72-steps{grid-template-columns:1fr}.coaching72-architecture h2{font-size:34px}.coaching72-steps article{min-height:205px}.coaching72-compare h3{font-size:23px}.coaching72-compare li{font-size:14px}.coaching72-premium-head h3{font-size:23px}.coaching72-value-title strong{font-size:21px}
+        .coaching73-shell{padding:20px 12px 24px}
+        .coaching73-title-block h2{font-size:48px}
+        .coaching73-title-block em{font-size:21px}
+        .coaching73-compare{padding-left:22px;padding-right:22px}
+        .coaching73-compare-title h3,.coaching73-premium-head h3{font-size:23px}
+        .coaching73-compare li{font-size:14px}
+        .coaching73-steps{grid-template-columns:1fr}
+        .coaching73-steps article{min-height:205px}
+        .coaching73-middle>p{font-size:14px}
+        .coaching73-value-title strong{font-size:20px}
       }
     `;
     document.head.appendChild(style);
   }
 
-  // Build 72 approved wording tweak on the Founders page only.
+  // Approved wording tweak on the Founders page.
   document.querySelectorAll('.fun-fact-row strong').forEach((label) => {
-    if (label.textContent.trim() === 'Favorite way to move') label.textContent = 'Favorite way to be active';
+    if (label.textContent.trim() === 'Favorite way to move') {
+      label.textContent = 'Favorite way to be active';
+    }
   });
 })();
