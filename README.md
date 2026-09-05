@@ -194,29 +194,11 @@ Key updates:
 - Founders page hero, belief/story/facts/CTA sections polished into the same cream/emerald/gold system.
 - FAQ, footer and family lower CTA areas upgraded to remove older washed-out gradient treatments.
 
-## Build 64 — Free Vitality Assessment
-- Replaced the assessment placeholder with the complete adaptive Vitality Roadmap experience supplied by Justyn and Elle.
-- Preserved immediate lead capture as a separate `vitality-lead` Netlify submission when the visitor selects **Save & Continue**, even if the visitor never completes the assessment.
-- Added the Whole-Person Snapshot and all 12 Drivers of Health, with symptom detail questions expanding only for selected symptoms.
-- Added separate neutral safety messaging and coach-review flags without treating those flags as Driver status or a medical diagnosis.
-- Added a second `vitality-assessment` Netlify submission containing the completed response set plus a human-readable `assessment_summary` for Justyn and Elle's initial manual review.
-- No automated Green/Yellow/Red, Health Spectrum, cross-driver, or recommendation result is generated yet because the supplied specification does not define final answer-to-score mappings or calibrated thresholds.
-- Configure Netlify form notifications for both `vitality-lead` and `vitality-assessment` to deliver to `contact@revitalizedacademy.com`.
-- When the ReVitalized backend is ready, replace the completed-assessment transport in `js/vitality55.js` while leaving the lead capture and assessment UI intact.
-
-## Build 65 — Health, Results & Website Disclaimer
-- Added a dedicated `disclaimer.html` page containing the supplied individual-results, educational/medical, testimonial, FDA and intellectual-property language.
-- Added a required linked disclaimer acknowledgment before visitors begin the health assessment.
-- Added concise results disclosures directly beside the homepage testimonials and the complete Client Stories library.
-- Added the Health & Results Disclaimer link to the principal site footers and assessment completion area.
-- Preserved the separate claim-review requirement for individual stories; a general disclaimer does not replace substantiation or claim review.
-- Netlify form detection must remain enabled so both `vitality-lead` and `vitality-assessment` are registered during deployment.
-
-## Build 68 — Who the assessment is for
-- Preserve immediate contact capture: the first screen collects the respondent's own contact details; no health answers or subject details are added to that lead submission.
-- After the lead saves, Introduction asks Myself / My child / My spouse / Someone else. Proxy paths require the assessed person's first name, last name, and age; Someone else also requires relationship.
-- A required proxy acknowledgment distinguishes parent/legal guardian authorization for under-18s from an adult's permission. Changing person details clears the acknowledgment. This is a recorded statement, not identity/authority verification.
-- Register these fields in static HTML for Netlify detection and move the controls into Introduction when rendering. Hidden paths are disabled, preserving the Build 67 validation fix.
-- Coach summaries distinguish Completed by / Assessment for / relationship / age / authorization. Existing first_name, last_name, email, and phone fields continue to identify the respondent.
-- A visible reminder explains whose answers to enter. Health questions, scoring, and child-specific branching are unchanged as requested; this is not a newly adapted pediatric assessment.
-- Save-and-resume remains pending: no authenticated health-draft backend is connected in this site. No health drafts are stored in localStorage, sessionStorage, or new third-party storage. The page explicitly warns that unfinished answers are lost on reload/close.
+## Build 52 — Approved layered hero implementation
+- Uses the exact user-supplied `Justyn & Elle(2).PNG` as `assets/images/justyn-elle-approved-untouched.png`.
+- Replaces all founder-image references with that single approved file.
+- No filters, transforms, opacity changes, retouching, regeneration, or image-content edits are applied to the founders.
+- Rebuilds the homepage hero with a deep emerald background, curved emerald-to-cream transition and gold arcs behind the founders.
+- Raises and rebalances the homepage family photo.
+- Rebuilds the founders-page hero using the same untouched founder PNG as a live layer.
+- Improves footer contrast and finish.

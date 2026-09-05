@@ -1,0 +1,20 @@
+ReVitalized Academy — BUILD 70 FULL RESTORATION
+
+Purpose: repair the accidental Build 69 rollback without losing any subsequently approved work.
+
+This package restores/retains:
+• Build 54 exact rebuilt homepage hero and layered hero assets
+• Build 55 Free Vitality Assessment funnel: first name, last name, email, cell phone, immediate Save & Continue lead submission, step-two continuation, homepage engagement popup
+• Build 56 family section and CTA refinements
+• Build 57 brand-story refinements
+• Build 58 brand-section refinements
+• Build 59 layout/CTA refinements
+• Build 60 approved premium webinar section + signup notification panel
+• Build 61 approved site-wide button hierarchy
+• Build 62 Samsung-style four-phone app ecosystem asset
+• Build 63 Coaching navigation anchor
+• Build 68 exact approved About Our Founders hero
+• Build 69 refined About-page sections
+• New approved darker-emerald dark logo and emblem on light backgrounds
+
+IMPORTANT: This is intentionally a FULL-SITE package so all interdependent HTML, CSS, JS and image assets deploy together. Do not layer the old Build 69 package over this package afterward.

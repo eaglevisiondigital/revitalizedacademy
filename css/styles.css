@@ -4335,6 +4335,614 @@ img[src$="justyn-elle-approved-untouched.png"],
 .site-footer h3,.site-footer h4{color:#efc86e!important;}
 
 
+/* =========================================================
+   BUILD 56 — FINAL CTA PRIORITY + FAMILY IMAGE CLEANUP
+   Loaded last intentionally so accumulated legacy rules cannot override it.
+   ========================================================= */
+:root{
+  --b56-emerald:#154734;
+  --b56-emerald-deep:#0b382a;
+  --b56-gold:#D8A62A;
+  --b56-gold-deep:#B18845;
+  --b56-cream:#FCF5EE;
+}
+
+/* FREE VITALITY ASSESSMENT = PRIMARY LEAD-GENERATION CTA */
+a.btn[href="consult.html"],
+a.hero54-btn[href="consult.html"],
+a.family-outline-btn[href="consult.html"],
+a.family-cream-btn[href="consult.html"],
+a[href="consult.html"].btn-primary,
+a[href="consult.html"].btn-secondary,
+a[href="consult.html"].btn-large{
+  background:linear-gradient(180deg,#efc85f 0%,#d8a62a 55%,#c49328 100%)!important;
+  color:#10382c!important;
+  border:1px solid #f3d888!important;
+  box-shadow:0 12px 28px rgba(177,136,69,.28)!important;
+  text-shadow:none!important;
+}
+a.btn[href="consult.html"]:hover,
+a.hero54-btn[href="consult.html"]:hover,
+a.family-outline-btn[href="consult.html"]:hover,
+a.family-cream-btn[href="consult.html"]:hover{
+  transform:translateY(-2px)!important;
+  box-shadow:0 16px 34px rgba(177,136,69,.36)!important;
+}
+
+/* START YOUR JOURNEY / ENROLLMENT = SECONDARY HIGH-INTENT CTA */
+a.btn[href="enroll.html"],
+a.hero54-btn[href="enroll.html"],
+.site-header a.header-cta[href="enroll.html"]{
+  background:linear-gradient(180deg,#185942 0%,#0b382a 100%)!important;
+  color:#fff!important;
+  border:1px solid rgba(216,166,42,.48)!important;
+  box-shadow:0 10px 24px rgba(11,56,42,.18)!important;
+}
+
+/* Text-only vitality links remain links, but gain a gold cue instead of becoming blocks. */
+a.text-link[href="consult.html"],
+a[href="consult.html"]:not(.btn):not(.hero54-btn):not(.family-outline-btn):not(.family-cream-btn){
+  color:#a87417!important;
+  text-decoration-color:rgba(216,166,42,.45)!important;
+}
+
+/* Homepage family photo: remove the accidental top strip completely. */
+.family-home-family-photo{
+  padding:0!important;
+  background:transparent!important;
+  line-height:0!important;
+  overflow:hidden!important;
+}
+.family-home-family-photo::before{
+  display:none!important;
+  content:none!important;
+}
+.family-home-family-photo::after{
+  content:""!important;
+  display:block!important;
+  position:absolute!important;
+  inset:0!important;
+  background:linear-gradient(90deg,rgba(4,61,49,.34),transparent 34%)!important;
+  pointer-events:none!important;
+  z-index:2!important;
+}
+.family-home-family-photo img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  margin:0!important;
+  padding:0!important;
+  object-fit:cover!important;
+  object-position:center 44%!important;
+  border:0!important;
+  border-radius:28px!important;
+  vertical-align:top!important;
+}
+
+
+/* =========================================================
+   BUILD 57 — AUTHORITATIVE CTA HIERARCHY + BRAND STORY ACCENT
+   ========================================================= */
+
+/* Explicitly-classed Vitality Assessment buttons:
+   GOLD = primary lead-generation action across the entire site. */
+.vitality-primary-cta,
+a.vitality-primary-cta,
+a.btn.vitality-primary-cta,
+a.hero54-btn.vitality-primary-cta,
+a.family-outline-btn.vitality-primary-cta,
+a.family-cream-btn.vitality-primary-cta,
+a.btn-primary.vitality-primary-cta,
+a.btn-secondary.vitality-primary-cta,
+a.btn-large.vitality-primary-cta{
+  background:linear-gradient(180deg,#F0C85C 0%,#D8A62A 52%,#B98A28 100%)!important;
+  color:#12382c!important;
+  border:1px solid #F3D984!important;
+  box-shadow:
+    0 12px 28px rgba(177,136,69,.28),
+    inset 0 1px 0 rgba(255,255,255,.35)!important;
+  text-shadow:none!important;
+}
+a.vitality-primary-cta:hover{
+  background:linear-gradient(180deg,#F3D16E 0%,#DEA92A 55%,#BE8E29 100%)!important;
+  color:#0f3529!important;
+  transform:translateY(-2px)!important;
+  box-shadow:0 16px 34px rgba(177,136,69,.36)!important;
+}
+
+/* Enrollment / Start Your Journey remains emerald as the secondary, high-intent CTA. */
+a.btn[href="enroll.html"],
+a.hero54-btn[href="enroll.html"],
+.site-header .header-cta{
+  background:linear-gradient(180deg,#185942 0%,#0B382A 100%)!important;
+  color:#fff!important;
+  border:1px solid rgba(216,166,42,.52)!important;
+}
+
+/* Brand-story visual hierarchy */
+.brand-video-copy h2 .brand-story-gold,
+.brand-video-copy h2 em.brand-story-gold{
+  color:#B18845!important;
+  font-style:italic!important;
+}
+
+
+/* =========================================================
+   BUILD 58 — CTA HIERARCHY REFINEMENT + APPROVED BRAND STORY LAYOUT
+   ========================================================= */
+
+/* Keep Free Vitality Assessment as the primary lead-generation action site-wide. */
+.vitality-primary-cta,
+a.vitality-primary-cta,
+a.btn.vitality-primary-cta,
+a.hero54-btn.vitality-primary-cta,
+a.btn-secondary.vitality-primary-cta,
+a.btn-primary.vitality-primary-cta{
+  background:linear-gradient(180deg,#F2CD6A 0%,#D8A62A 54%,#B98A28 100%)!important;
+  color:#12382c!important;
+  border:1px solid #F4DD94!important;
+  box-shadow:0 14px 30px rgba(177,136,69,.28), inset 0 1px 0 rgba(255,255,255,.38)!important;
+}
+
+a.vitality-primary-cta:hover{
+  background:linear-gradient(180deg,#F5D77B 0%,#DEAD3D 56%,#C18E2E 100%)!important;
+}
+
+/* Enrollment CTA hierarchy:
+   - hero on dark green = light / cream secondary CTA
+   - header and light sections = emerald secondary CTA */
+.hero54-actions a[href="enroll.html"]{
+  background:linear-gradient(180deg,#FFFDF8 0%,#F8EEE1 100%)!important;
+  color:#0F4B3E!important;
+  border:1px solid rgba(216,166,42,.56)!important;
+  box-shadow:0 10px 24px rgba(54,46,33,.14)!important;
+}
+.hero54-actions a[href="enroll.html"] b{color:#B18845!important;}
+.hero54-actions a[href="enroll.html"]:hover{
+  background:linear-gradient(180deg,#FFFFFF 0%,#F7EFE4 100%)!important;
+  transform:translateY(-2px)!important;
+  box-shadow:0 14px 30px rgba(54,46,33,.18)!important;
+}
+.site-header .header-cta,
+a.btn[href="enroll.html"],
+a.hero54-btn[href="enroll.html"]{
+  background:linear-gradient(180deg,#185942 0%,#0B382A 100%)!important;
+  color:#fff!important;
+  border:1px solid rgba(216,166,42,.52)!important;
+}
+/* Re-apply the light hero override after the general enroll rule. */
+.hero54 .hero54-actions a[href="enroll.html"]{
+  background:linear-gradient(180deg,#FFFDF8 0%,#F8EEE1 100%)!important;
+  color:#0F4B3E!important;
+  border:1px solid rgba(216,166,42,.56)!important;
+}
+
+/* Approved premium brand-story section layout */
+.brand-video-section.brand-story-premium{
+  position:relative!important;
+  overflow:hidden!important;
+  max-width:none!important;
+  margin:0!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1.02fr) minmax(460px,.98fr)!important;
+  gap:clamp(32px,4vw,60px)!important;
+  align-items:center!important;
+  min-height:auto!important;
+  padding:72px max(34px,calc((100vw - var(--max))/2))!important;
+  background:
+    radial-gradient(circle at 74% 34%,rgba(216,166,42,.11),transparent 23%),
+    linear-gradient(115deg,#fffaf4 0%,#fcf5ed 58%,#f4eadb 100%)!important;
+}
+.brand-video-section.brand-story-premium::before{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  background:
+    radial-gradient(circle at 25% 28%,transparent 0 79px, rgba(216,166,42,.11) 80px 81px, transparent 82px 170px, rgba(216,166,42,.08) 171px 172px, transparent 173px),
+    radial-gradient(circle at 78% 30%,transparent 0 155px, rgba(216,166,42,.07) 156px 157px, transparent 158px 295px, rgba(216,166,42,.05) 296px 297px, transparent 298px)!important;
+  pointer-events:none!important;
+  opacity:1!important;
+}
+.brand-video-section.brand-story-premium::after{
+  content:""!important;
+  position:absolute!important;
+  left:18%!important;
+  top:52%!important;
+  transform:translate(-50%,-50%)!important;
+  width:min(34vw,520px)!important;
+  aspect-ratio:1 / 1.18!important;
+  background:url("assets/images/revitalized-shield.png") center/contain no-repeat!important;
+  opacity:.055!important;
+  pointer-events:none!important;
+}
+.brand-story-copy{
+  position:relative!important;
+  z-index:2!important;
+  padding:0!important;
+  max-width:620px!important;
+}
+.brand-story-copy .premium-pill{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-height:50px!important;
+  padding:12px 20px!important;
+  border-radius:999px!important;
+  background:#fffaf2!important;
+  border:1px solid rgba(216,166,42,.52)!important;
+  color:#0F4B3E!important;
+  letter-spacing:.14em!important;
+}
+.brand-story-copy h2{
+  font-family:Georgia,"Times New Roman",serif!important;
+  color:#0D5A49!important;
+  font-size:clamp(54px,5vw,84px)!important;
+  line-height:.96!important;
+  letter-spacing:-.045em!important;
+  margin:28px 0 16px!important;
+}
+.brand-story-copy h2 em.brand-story-gold,
+.brand-story-copy .brand-story-gold{
+  color:#B18845!important;
+  font-style:italic!important;
+  font-weight:400!important;
+}
+.brand-story-copy .premium-rule{
+  display:flex!important;
+  align-items:center!important;
+  gap:16px!important;
+  max-width:430px!important;
+  margin:18px 0 28px!important;
+}
+.brand-story-copy .premium-rule span{height:1px!important;background:#D8A62A!important;flex:1!important;}
+.brand-story-copy .premium-rule b{color:#D8A62A!important;font-weight:500!important;}
+.brand-story-copy p{
+  font-size:clamp(18px,1.55vw,22px)!important;
+  line-height:1.58!important;
+  color:#56615b!important;
+  max-width:590px!important;
+  margin:0!important;
+}
+.premium-watch-btn{
+  display:flex!important;
+  align-items:center!important;
+  gap:16px!important;
+  width:min(100%,540px)!important;
+  min-height:92px!important;
+  margin-top:34px!important;
+  padding:18px 22px!important;
+  border-radius:18px!important;
+  border:1px solid rgba(216,166,42,.62)!important;
+  background:#fffaf1!important;
+  box-shadow:0 12px 28px rgba(30,46,37,.06)!important;
+  color:#0F4B3E!important;
+}
+.premium-watch-btn strong{font-size:18px!important;line-height:1.35!important;font-weight:800!important;max-width:290px!important;}
+.premium-watch-btn > span:last-child{margin-left:auto!important;color:#D8A62A!important;font-size:34px!important;line-height:1!important;}
+.premium-play{
+  width:48px!important;
+  height:48px!important;
+  border-radius:50%!important;
+  display:grid!important;
+  place-items:center!important;
+  background:#0F5A49!important;
+  color:#fff!important;
+  flex:0 0 auto!important;
+}
+.brand-story-media{
+  position:relative!important;
+  z-index:2!important;
+  width:100%!important;
+  max-width:760px!important;
+  margin-left:auto!important;
+}
+.brand-story-video-card{
+  position:relative!important;
+  border-radius:34px!important;
+  border:2px solid rgba(216,166,42,.85)!important;
+  overflow:hidden!important;
+  box-shadow:0 22px 60px rgba(8,47,38,.22)!important;
+  background:linear-gradient(140deg,#0C5C4A 0%,#083C31 56%,#07271F 100%)!important;
+}
+.brand-story-video-poster{
+  position:relative!important;
+  display:block!important;
+  width:100%!important;
+  min-height:540px!important;
+  border:0!important;
+  margin:0!important;
+  padding:0!important;
+  border-radius:inherit!important;
+  background:
+    radial-gradient(circle at 50% 46%,rgba(216,166,42,.20) 0%,rgba(216,166,42,.09) 13%,rgba(216,166,42,0) 33%),
+    linear-gradient(140deg,#0C5C4A 0%,#083C31 56%,#07271F 100%)!important;
+  overflow:hidden!important;
+  cursor:pointer!important;
+}
+.brand-story-video-poster::after{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(0,0,0,.06))!important;
+  pointer-events:none!important;
+}
+.brand-story-video-shield{
+  position:absolute!important;
+  right:4%!important;
+  top:9%!important;
+  width:44%!important;
+  height:78%!important;
+  background:url("assets/images/revitalized-shield.png") center/contain no-repeat!important;
+  opacity:.12!important;
+}
+.brand-story-video-rings{
+  position:absolute!important;
+  border:1px solid rgba(216,166,42,.22)!important;
+  border-radius:50%!important;
+  pointer-events:none!important;
+}
+.brand-story-video-rings.ring-one{width:118%;height:118%;left:-48%;top:-14%;}
+.brand-story-video-rings.ring-two{width:92%;height:92%;left:-22%;top:4%;}
+.brand-story-video-rings.ring-three{width:72%;height:72%;left:4%;top:17%;}
+.brand-story-video-founders{
+  position:absolute!important;
+  inset:auto 0 0 0!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  object-position:center bottom!important;
+  z-index:2!important;
+}
+.brand-story-play-button{
+  position:absolute!important;
+  left:50%!important;
+  top:50%!important;
+  transform:translate(-50%,-34%)!important;
+  z-index:3!important;
+  width:132px!important;
+  height:132px!important;
+  border-radius:50%!important;
+  display:grid!important;
+  place-items:center!important;
+  background:rgba(255,255,255,.96)!important;
+  color:#D8A62A!important;
+  font-size:46px!important;
+  padding-left:6px!important;
+  box-shadow:0 0 0 5px rgba(216,166,42,.88), 0 20px 36px rgba(8,47,38,.28)!important;
+}
+
+@media(max-width:1180px){
+  .brand-video-section.brand-story-premium{
+    grid-template-columns:minmax(0,1fr) minmax(0,.96fr)!important;
+    gap:28px!important;
+    padding:60px 24px!important;
+  }
+  .brand-story-video-poster{min-height:480px!important;}
+  .brand-story-copy h2{font-size:clamp(46px,5.2vw,70px)!important;}
+}
+@media(max-width:920px){
+  .brand-video-section.brand-story-premium{grid-template-columns:1fr!important;padding:52px 22px!important;}
+  .brand-video-section.brand-story-premium::after{left:50%!important;top:35%!important;width:54vw!important;}
+  .brand-story-copy{max-width:none!important;}
+  .brand-story-media{max-width:720px!important;margin:0 auto!important;}
+  .brand-story-video-poster{min-height:460px!important;}
+}
+@media(max-width:640px){
+  .brand-story-copy h2{font-size:clamp(40px,11vw,56px)!important;}
+  .brand-story-copy p{font-size:17px!important;}
+  .premium-watch-btn{min-height:78px!important;padding:16px 18px!important;}
+  .premium-watch-btn strong{font-size:16px!important;}
+  .brand-story-video-poster{min-height:360px!important;}
+  .brand-story-play-button{width:98px!important;height:98px!important;font-size:34px!important;}
+}
+
+
+/* =========================================================
+   BUILD 59 — CTA CONSISTENCY + BRAND STORY VIDEO CARD FIX
+   ========================================================= */
+a.journey-secondary-cta,
+a.btn.journey-secondary-cta,
+a.hero54-btn.journey-secondary-cta{
+  background:linear-gradient(180deg,#185942 0%,#0B382A 100%)!important;
+  color:#fff!important;
+  border:1px solid rgba(216,166,42,.54)!important;
+  box-shadow:0 10px 24px rgba(11,56,42,.18)!important;
+  text-shadow:none!important;
+}
+.hero54 .hero54-actions a.journey-secondary-cta[href="enroll.html"]{
+  background:linear-gradient(180deg,#FFFDF8 0%,#F8EEE1 100%)!important;
+  color:#0F4B3E!important;
+  border:1px solid rgba(216,166,42,.66)!important;
+  box-shadow:0 12px 26px rgba(28,38,33,.16)!important;
+}
+.hero54 .hero54-actions a.journey-secondary-cta[href="enroll.html"] b{color:#B18845!important;}
+.hero54 .hero54-actions a.journey-secondary-cta[href="enroll.html"]:hover{background:#fff!important;transform:translateY(-2px)!important;}
+.site-header a.header-cta.journey-secondary-cta{
+  background:linear-gradient(180deg,#185942 0%,#0B382A 100%)!important;
+  color:#fff!important;
+  border:1px solid rgba(216,166,42,.56)!important;
+}
+.brand-story-media{align-self:center!important;}
+.brand-story-video-card.video-embed{
+  aspect-ratio:auto!important;
+  min-height:540px!important;
+  height:540px!important;
+  overflow:hidden!important;
+}
+.brand-story-video-card .brand-story-video-poster{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+}
+.brand-story-video-card .brand-story-video-founders{
+  position:absolute!important;
+  left:0!important;right:0!important;bottom:0!important;top:auto!important;
+  width:100%!important;height:100%!important;
+  object-fit:contain!important;object-position:center bottom!important;z-index:2!important;
+}
+.brand-story-video-card .brand-story-play-button{left:50%!important;top:50%!important;transform:translate(-50%,-50%)!important;}
+.brand-video-section.brand-story-premium{padding-top:64px!important;padding-bottom:64px!important;}
+@media(max-width:1180px){.brand-story-video-card.video-embed{height:480px!important;min-height:480px!important;}}
+@media(max-width:920px){.brand-story-video-card.video-embed{height:460px!important;min-height:460px!important;}}
+@media(max-width:640px){.brand-story-video-card.video-embed{height:360px!important;min-height:360px!important;}}
+
+
+/* =========================================================
+   BUILD 60 — WEBINAR WOW SECTION
+   Approved mockup recreated as live responsive HTML/CSS.
+   ========================================================= */
+.webinar60{background:#fcf5ee!important;border-top:1px solid rgba(216,166,42,.24)!important;border-bottom:1px solid rgba(216,166,42,.24)!important;overflow:hidden!important;position:relative!important}
+.webinar60::before{content:"";position:absolute;inset:0;background:repeating-radial-gradient(circle at 61% 46%,transparent 0 150px,rgba(216,166,42,.065) 151px 152px);pointer-events:none}
+.webinar60-inner{position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:68px 32px 34px;display:grid;grid-template-columns:minmax(430px,.82fr) minmax(610px,1.18fr);gap:44px;align-items:center}
+.webinar60-copy{position:relative;z-index:3}.webinar60-copy::before{content:"";position:absolute;left:-94px;bottom:62px;width:105px;height:360px;background:linear-gradient(90deg,transparent,rgba(216,166,42,.06));opacity:.7;pointer-events:none}
+.webinar60-pill{display:inline-flex;align-items:center;background:linear-gradient(180deg,#0f5947,#083a30);color:#f5cd65;border:1px solid rgba(216,166,42,.72);border-radius:999px;padding:10px 20px;font-weight:900;letter-spacing:.16em;box-shadow:0 7px 18px rgba(8,56,45,.18)}
+.webinar60 h2{font-family:Georgia,"Times New Roman",serif!important;font-size:clamp(48px,4.3vw,72px)!important;line-height:.98!important;letter-spacing:-.035em!important;color:#0e5343!important;margin:26px 0 18px!important;max-width:630px}
+.webinar60-rule{display:flex;align-items:center;gap:14px;max-width:520px;margin:8px 0 24px}.webinar60-rule span{height:1px;background:#d8a62a;flex:1}.webinar60-rule b{color:#d8a62a;font-weight:400}
+.webinar60-copy>p{font-size:18px;line-height:1.52;color:#4b5650;max-width:585px;margin:0}
+.webinar60-benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:28px 0 26px}.webinar60-benefits>div{text-align:center;display:flex;flex-direction:column;align-items:center}.webinar60-icon{width:56px;height:56px;border:1px solid rgba(216,166,42,.62);border-radius:50%;display:grid;place-items:center;color:#c89220;font-size:25px;margin-bottom:9px}.webinar60-benefits strong{font-size:13px;color:#25352f}.webinar60-benefits small{font-size:12px;line-height:1.25;color:#5e675f;max-width:120px}
+.webinar60-notify{background:linear-gradient(160deg,#0e5946,#06392f);border:1px solid rgba(216,166,42,.72);border-radius:20px;padding:18px 20px 17px;box-shadow:0 18px 42px rgba(5,52,42,.18);max-width:600px}.webinar60-notify-title{color:#f0c55c;font-size:13px;font-weight:900;letter-spacing:.15em;line-height:1.25;margin:0 0 12px}.webinar60-notify-title span{font-size:18px;margin-right:10px}.webinar60-notify-row{position:relative;background:#fffaf2;border-radius:10px;display:flex;align-items:center}.webinar60-notify-row input{border:0;background:transparent;outline:0;width:100%;padding:16px 48px 16px 15px;font:inherit;color:#23352e}.webinar60-mail{position:absolute;right:16px;color:#c89220}.webinar60-notify button{width:100%;border:0;border-radius:10px;margin-top:10px;padding:14px 18px;background:linear-gradient(180deg,#efc95f,#d2a037);color:#14372d;font-weight:900;letter-spacing:.10em;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:12px}.webinar60-notify button span{font-size:21px}.webinar60-limited{display:flex;align-items:center;justify-content:center;gap:12px;color:#f0c65f;margin-top:11px}.webinar60-limited span{height:1px;width:54px;background:#d8a62a}.webinar60-limited em{font-family:Georgia,"Times New Roman",serif;font-size:16px}
+.webinar60-device{position:relative;align-self:center;filter:drop-shadow(0 24px 26px rgba(48,37,16,.18))}.webinar60-laptop-screen{position:relative;aspect-ratio:1.52/1;background:linear-gradient(135deg,#07533f,#03372d);border:15px solid #181a19;border-radius:28px 28px 12px 12px;overflow:hidden}.webinar60-laptop-screen::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 79% 44%,rgba(216,166,42,.12),transparent 24%),linear-gradient(90deg,rgba(0,0,0,.06),transparent);z-index:0}.webinar60-screen-rings{position:absolute;right:-14%;top:9%;width:73%;aspect-ratio:1;border:1px solid rgba(216,166,42,.28);border-radius:50%;box-shadow:0 0 0 38px rgba(216,166,42,.05),0 0 0 76px rgba(216,166,42,.035);z-index:1}.webinar60-screen-shield{position:absolute;right:2%;top:1%;width:40%;height:92%;background:url("assets/images/revitalized-shield.png") center/contain no-repeat;opacity:.075;z-index:1}.webinar60-screen-copy{position:absolute;left:6%;top:9%;width:48%;z-index:3;color:#fff}.webinar60-screen-copy>span{font-size:11px;color:#e8b94f;letter-spacing:.12em;font-weight:800}.webinar60-screen-rule{height:1px;background:linear-gradient(90deg,#d8a62a,transparent);margin:13px 0 16px}.webinar60-screen-copy h3{font-family:Georgia,"Times New Roman",serif;font-size:clamp(34px,3.1vw,54px);font-weight:400;line-height:1.02;margin:0 0 20px}.webinar60-screen-copy h3 span{color:#d8a62a}.webinar60-screen-copy p{font-size:13px;line-height:1.55;color:rgba(255,255,255,.88);max-width:310px}.webinar60-laptop-screen>img{position:absolute;z-index:2;right:1%;bottom:0;width:53%;height:auto;max-height:91%;object-fit:contain;object-position:center bottom;filter:none!important;transform:none!important}.webinar60-screen-bottom{position:absolute;z-index:4;left:0;right:0;bottom:0;min-height:105px;background:linear-gradient(180deg,rgba(7,66,53,.95),rgba(4,52,42,.98));border-top:1px solid rgba(216,166,42,.45);display:grid;grid-template-columns:repeat(3,1fr);padding:18px 22px;gap:10px}.webinar60-screen-bottom>div{display:flex;align-items:center;gap:10px;padding:0 12px;border-right:1px solid rgba(216,166,42,.36)}.webinar60-screen-bottom>div:last-child{border-right:0}.webinar60-screen-bottom b{color:#d8a62a;font-size:27px;font-weight:400}.webinar60-screen-bottom span{font-size:10px;line-height:1.45;letter-spacing:.10em;color:#f1d48b;font-weight:800}.webinar60-laptop-base{height:20px;margin:-1px -42px 0;background:linear-gradient(180deg,#b58d49,#655333 50%,#a18049 100%);border-radius:0 0 55% 55%;box-shadow:0 9px 15px rgba(0,0,0,.12)}
+.webinar60-footer{grid-column:1/-1;margin-top:10px;border:1px solid rgba(216,166,42,.28);border-radius:18px;background:rgba(255,250,242,.76);display:grid;grid-template-columns:repeat(3,1fr);padding:16px 20px}.webinar60-footer>div{display:flex;align-items:center;gap:14px;padding:0 24px;border-right:1px solid rgba(216,166,42,.32)}.webinar60-footer>div:last-child{border-right:0}.webinar60-footer b{width:44px;height:44px;border:1px solid rgba(216,166,42,.58);border-radius:50%;display:grid;place-items:center;color:#c99524;font-size:20px;font-weight:400}.webinar60-footer span{display:flex;flex-direction:column}.webinar60-footer strong{font-family:Georgia,"Times New Roman",serif;color:#274138;font-size:17px;font-weight:500}.webinar60-footer small{font-size:11px;color:#777f7a;margin-top:2px}
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+@media(max-width:1100px){.webinar60-inner{grid-template-columns:1fr;max-width:820px}.webinar60-copy{max-width:680px}.webinar60-device{width:100%}.webinar60-footer{grid-template-columns:1fr}.webinar60-footer>div{border-right:0;border-bottom:1px solid rgba(216,166,42,.25);padding:12px}.webinar60-footer>div:last-child{border-bottom:0}}
+@media(max-width:640px){.webinar60-inner{padding:48px 18px 28px}.webinar60 h2{font-size:44px!important}.webinar60-copy>p{font-size:16px}.webinar60-benefits{grid-template-columns:1fr 1fr 1fr;gap:8px}.webinar60-icon{width:48px;height:48px}.webinar60-limited em{font-size:14px}.webinar60-laptop-screen{border-width:9px;border-radius:18px 18px 8px 8px}.webinar60-screen-copy{left:5%;top:7%;width:50%}.webinar60-screen-copy h3{font-size:26px}.webinar60-screen-copy p{font-size:9px}.webinar60-laptop-screen>img{width:54%;max-height:87%}.webinar60-screen-bottom{min-height:78px;padding:10px 8px}.webinar60-screen-bottom>div{gap:5px;padding:0 4px}.webinar60-screen-bottom b{font-size:18px}.webinar60-screen-bottom span{font-size:7px}.webinar60-laptop-base{margin:0 -16px;height:12px}}
+
+
+/* =========================================================
+   BUILD 61 — BUTTON SYSTEM CONSISTENCY
+   White / cream CTAs on emerald backgrounds.
+   Emerald CTAs on light backgrounds.
+   Header CTA uses gold text on emerald for extra pop.
+   ========================================================= */
+
+:root{
+  --ra-emerald-top:#13624c;
+  --ra-emerald-bottom:#08392f;
+  --ra-emerald-text:#0D4F40;
+  --ra-cream-top:#FFFDF8;
+  --ra-cream-bottom:#F7EEE1;
+  --ra-gold:#EFCB6C;
+  --ra-gold-deep:#D8A62A;
+}
+
+/* Primary lead-generation CTA remains gold everywhere. */
+a.vitality-primary-cta,
+a.btn.vitality-primary-cta,
+a.hero54-btn.vitality-primary-cta,
+a.family-outline-btn.vitality-primary-cta,
+a.family-cream-btn.vitality-primary-cta,
+a.btn-primary.vitality-primary-cta,
+a.btn-secondary.vitality-primary-cta,
+a.btn-large.vitality-primary-cta,
+.vitality-popup-start.vitality-primary-cta{
+  background:linear-gradient(180deg,#F2CD69 0%,#D8A62A 56%,#BB8D2A 100%)!important;
+  color:#14382E!important;
+  border:1px solid #F5DE97!important;
+  box-shadow:0 14px 28px rgba(177,136,69,.28), inset 0 1px 0 rgba(255,255,255,.36)!important;
+}
+a.vitality-primary-cta:hover,
+a.btn.vitality-primary-cta:hover,
+a.hero54-btn.vitality-primary-cta:hover,
+a.family-outline-btn.vitality-primary-cta:hover,
+a.family-cream-btn.vitality-primary-cta:hover,
+a.btn-primary.vitality-primary-cta:hover,
+a.btn-secondary.vitality-primary-cta:hover,
+a.btn-large.vitality-primary-cta:hover,
+.vitality-popup-start.vitality-primary-cta:hover{
+  background:linear-gradient(180deg,#F5D77A 0%,#E0B042 58%,#C3922F 100%)!important;
+  color:#103429!important;
+  transform:translateY(-2px)!important;
+  box-shadow:0 16px 34px rgba(177,136,69,.34)!important;
+}
+
+/* Default journey / secondary CTA on light backgrounds = emerald button with gold text. */
+a.journey-secondary-cta,
+a.btn.journey-secondary-cta,
+a.hero54-btn.journey-secondary-cta,
+.site-header a.header-cta.journey-secondary-cta,
+a.btn.btn-secondary:not(.vitality-primary-cta):not([data-matrix-close]),
+a.btn-primary.header-cta{
+  background:linear-gradient(180deg,var(--ra-emerald-top) 0%,var(--ra-emerald-bottom) 100%)!important;
+  color:var(--ra-gold)!important;
+  border:1px solid rgba(216,166,42,.72)!important;
+  box-shadow:0 12px 26px rgba(7,57,47,.18), inset 0 1px 0 rgba(255,255,255,.05)!important;
+  text-shadow:none!important;
+}
+
+a.journey-secondary-cta:hover,
+a.btn.journey-secondary-cta:hover,
+a.hero54-btn.journey-secondary-cta:hover,
+.site-header a.header-cta.journey-secondary-cta:hover,
+a.btn.btn-secondary:not(.vitality-primary-cta):not([data-matrix-close]):hover,
+a.btn-primary.header-cta:hover{
+  background:linear-gradient(180deg,#187259 0%,#0A4739 100%)!important;
+  color:#F4D986!important;
+  transform:translateY(-2px)!important;
+  box-shadow:0 16px 34px rgba(7,57,47,.24)!important;
+}
+
+/* Keep the hero secondary CTA light on the dark hero. */
+.hero54 .hero54-actions a.journey-secondary-cta,
+.hero54 .hero54-actions a.journey-secondary-cta.hero54-btn-gold,
+.hero54 .hero54-actions a.journey-secondary-cta[href="enroll.html"]{
+  background:linear-gradient(180deg,var(--ra-cream-top) 0%,var(--ra-cream-bottom) 100%)!important;
+  color:var(--ra-emerald-text)!important;
+  border:1px solid rgba(216,166,42,.64)!important;
+  box-shadow:0 12px 28px rgba(34,40,34,.16)!important;
+}
+.hero54 .hero54-actions a.journey-secondary-cta b,
+.hero54 .hero54-actions a.journey-secondary-cta.hero54-btn-gold b,
+.hero54 .hero54-actions a.journey-secondary-cta[href="enroll.html"] b{
+  color:#B18845!important;
+}
+.hero54 .hero54-actions a.journey-secondary-cta:hover,
+.hero54 .hero54-actions a.journey-secondary-cta.hero54-btn-gold:hover,
+.hero54 .hero54-actions a.journey-secondary-cta[href="enroll.html"]:hover{
+  background:#FFFFFF!important;
+  color:#0B4C3E!important;
+}
+
+/* Dark emerald sections also get the light/cream journey button. */
+.journey-banner .journey-secondary-cta,
+.webinar60 .journey-secondary-cta,
+.hero.hero-approved .hero-actions .journey-secondary-cta{
+  background:linear-gradient(180deg,var(--ra-cream-top) 0%,var(--ra-cream-bottom) 100%)!important;
+  color:var(--ra-emerald-text)!important;
+  border:1px solid rgba(216,166,42,.64)!important;
+  box-shadow:0 12px 28px rgba(25,35,31,.16)!important;
+}
+.journey-banner .journey-secondary-cta:hover,
+.webinar60 .journey-secondary-cta:hover,
+.hero.hero-approved .hero-actions .journey-secondary-cta:hover{
+  background:#FFFFFF!important;
+  color:#0B4C3E!important;
+}
+
+/* Header CTA: keep emerald but switch the text to gold for more pop. */
+.site-header .header-cta,
+.site-header a.header-cta.journey-secondary-cta{
+  color:var(--ra-gold)!important;
+  letter-spacing:.01em!important;
+}
+
+/* Specific light-background support button shown in the mockup. */
+a.btn.btn-secondary[href="#matrix-videos"],
+.free-help-actions a.btn.btn-secondary,
+.founders-cta-actions a.btn.journey-secondary-cta,
+.stories-cta a.btn.journey-secondary-cta,
+.future-actions a.btn.journey-secondary-cta,
+.refuel-copy a.btn.journey-secondary-cta{
+  background:linear-gradient(180deg,var(--ra-emerald-top) 0%,var(--ra-emerald-bottom) 100%)!important;
+  color:var(--ra-gold)!important;
+  border:1px solid rgba(216,166,42,.72)!important;
+}
+
+/* Preserve the softer light-card look for the premium video watch button. */
+.premium-watch-btn{color:#0F4B3E!important;}
+
+
 /* Build 69 — About page premium polish + approved dark logo refresh */
 :root{
   --ra69-cream:#FCF5EE;
