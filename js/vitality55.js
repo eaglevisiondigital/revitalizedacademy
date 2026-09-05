@@ -227,6 +227,43 @@
   const assessmentStage = document.querySelector('[data-assessment-stage]');
   if (assessmentForm && assessmentStage) {
     assessmentStage.innerHTML = sections.map((section, index) => `<section class="vitality-panel" data-panel="${index}" ${index ? 'hidden' : ''}>${section.html()}</section>`).join('');
+    // Keep person fields in the static Netlify form, then place them in Introduction.
+    const person = assessmentForm.querySelector('[data-assessment-person]');
+    if (person) assessmentStage.querySelector('[data-panel="0"] .vitality-panel-head').after(person);
+  }
+
+  function assessmentPerson() {
+    const value = (name) => {
+      const control = assessmentForm.elements.namedItem(name);
+      return control ? String(control.value).trim() : '';
+    };
+    const choice = value('assessment_for');
+    const proxy = Boolean(choice && choice !== 'Myself');
+    const completedBy = [value('first_name'), value('last_name')].filter(Boolean).join(' ');
+    return {
+      choice, proxy, completedBy,
+      name: proxy ? [value('assessed_first_name'), value('assessed_last_name')].filter(Boolean).join(' ') : completedBy,
+      age: proxy ? value('assessed_age') : '',
+      relationship: proxy ? (choice === 'Someone else' ? value('assessed_relationship') : choice) : 'Self'
+    };
+  }
+
+  function updateAssessmentPerson() {
+    if (!assessmentForm || !assessmentForm.querySelector('[data-assessment-person]')) return;
+    const person = assessmentPerson();
+    assessmentForm.querySelector('[data-completed-by]').value = person.completedBy;
+    assessmentForm.querySelector('[data-assessment-for-name]').value = person.name;
+    const authorization = assessmentForm.elements.namedItem('assessment_authorization');
+    const authorizationLabel = assessmentForm.querySelector('[data-authorization-label]');
+    authorization.value = person.age !== '' && Number(person.age) < 18 ? 'Parent or legal guardian authorization' : 'Permission to complete and share assessment';
+    authorizationLabel.textContent = person.age === ''
+      ? 'I have permission to complete this assessment and share these answers with ReVitalized Academy. For a person under 18, I am their parent or legal guardian.'
+      : Number(person.age) < 18
+        ? 'I am this person’s parent or legal guardian and authorize completing this assessment and sharing these answers with ReVitalized Academy.'
+        : 'I have this person’s permission to complete this assessment and share these answers with ReVitalized Academy.';
+    const context = document.querySelector('[data-person-context]');
+    context.hidden = !person.proxy || currentSection === 0;
+    context.textContent = person.proxy ? `Answering for ${person.name || 'someone else'}. “You” and “your” in the questions refer to that person. Answer based on what you know about them.` : '';
   }
 
   function encodeForm(form) {
@@ -241,7 +278,19 @@
   }
 
   function buildAssessmentSummary() {
-    const lines = [];
+    const person = assessmentPerson();
+    const lines = [
+      '=== ASSESSMENT DETAILS ===',
+      `Completed by: ${person.completedBy}`,
+      `Assessment for: ${person.name}`,
+      `Completing for: ${person.choice}`,
+      `Relationship to person completing the form: ${person.relationship}`
+    ];
+    if (person.proxy) {
+      lines.push(`Assessed person's age in years: ${person.age}`);
+      const authorization = assessmentForm.elements.namedItem('assessment_authorization');
+      lines.push(`Authorization: ${authorization.checked ? authorization.value : 'Not acknowledged'}`);
+    }
     sections.forEach((section, index) => {
       const panel = assessmentForm.querySelector(`[data-panel="${index}"]`);
       lines.push('', `=== ${section.label.toUpperCase()} ===`);
@@ -297,6 +346,9 @@
   }
 
   document.addEventListener('input', (event) => {
+    if (event.target.closest('[data-assessment-person]') && event.target.name !== 'assessment_authorization') {
+      assessmentForm.elements.namedItem('assessment_authorization').checked = false;
+    }
     if (event.target.matches('[data-range]')) event.target.nextElementSibling.value = event.target.value;
     if (event.target.closest('[data-symptom-screen]')) {
       const screen = event.target.closest('[data-symptom-screen]');
@@ -309,6 +361,7 @@
     if (event.target.name === 'urgent_safety_flag') document.querySelector('[data-safety-message]').classList.toggle('show', event.target.value === 'Yes');
     if (event.target.name === 'self_harm_safety_flag') document.querySelector('[data-self-harm-message]').classList.toggle('show', event.target.value === 'Yes');
     updateConditionalFields();
+    updateAssessmentPerson();
   });
 
   document.querySelectorAll('[data-max-choices]').forEach((group) => {
@@ -335,14 +388,19 @@
     document.querySelector('[data-progress-bar]').style.width = `${percent}%`;
     document.querySelector('[data-progress-percent]').textContent = `${percent}%`;
     backButton.disabled = currentSection === 0;
-    nextButton.innerHTML = currentSection === sections.length - 1 ? 'Submit My Assessment <span aria-hidden="true">→</span>' : 'Continue <span aria-hidden="true">→</span>';
+    nextButton.innerHTML = currentSection === sections.length - 1 ? 'Submit Assessment <span aria-hidden="true">→</span>' : 'Continue <span aria-hidden="true">→</span>';
     assessmentError.classList.remove('show');
     updateConditionalFields();
+    updateAssessmentPerson();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function validateCurrentSection() {
     const panel = document.querySelector(`[data-panel="${currentSection}"]`);
+    assessmentError.textContent = 'Please complete the required questions above before continuing.';
+    panel.querySelectorAll('[data-assessment-person] input:not([disabled])').forEach((control) => {
+      if (control.type === 'text' && control.required) control.setCustomValidity(control.value.trim() ? '' : 'Please enter an answer.');
+    });
     const invalid = [...panel.querySelectorAll('[required]:not([disabled])')].find((control) => !control.checkValidity());
     if (invalid) {
       assessmentError.classList.add('show');
@@ -379,6 +437,7 @@
     nextButton.disabled = true;
     nextButton.textContent = 'Submitting…';
     try {
+      updateAssessmentPerson();
       assessmentForm.querySelector('[data-submitted-at]').value = new Date().toISOString();
       const flags = [];
       if (assessmentForm.elements.urgent_safety_flag && assessmentForm.elements.urgent_safety_flag.value === 'Yes') flags.push('URGENT SYMPTOM / SAFETY RESPONSE');
@@ -431,6 +490,7 @@
   }
 
   updateConditionalFields();
+  updateAssessmentPerson();
 
   // Site-wide assessment invitation popup retained for pages that include it.
   const popup = document.querySelector('.vitality-popup-backdrop');

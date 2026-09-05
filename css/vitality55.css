@@ -75,6 +75,17 @@ a.hero54-btn.journey-secondary-cta{
 @media(max-width:700px){.vitality-page{padding:20px 12px 28px}.vitality-brand{margin-bottom:18px}.vitality-card{border-radius:20px}.vitality-card-head{padding:30px 23px 23px}.vitality-card-head p{font-size:14px}.vitality-progress div{padding:11px 5px;font-size:10px;letter-spacing:0}.vitality-assessment{padding:0 23px 34px}.vitality-assessment-toolbar{grid-template-columns:62px 1fr 36px;gap:10px}.vitality-options,.vitality-options.compact{grid-template-columns:1fr}.vitality-detail-grid{grid-template-columns:1fr}.vitality-panel[data-panel="0"] fieldset.vitality-question{padding:17px}.vitality-form-navigation{align-items:stretch;flex-direction:column}.vitality-form-navigation .vitality-next{width:100%;order:-1}.vitality-complete{padding:40px 23px}.vitality-complete-card{padding:23px 18px}}
 @media(max-width:420px){.vitality-progress div{font-size:9px}.vitality-body{padding-left:20px;padding-right:20px}.vitality-card-head h1{font-size:38px}.vitality-assessment{padding-left:20px;padding-right:20px}}
 .brand-story-media{align-self:center!important;}
+/* Build 68: distinguish the respondent from the assessed person. */
+.vitality-person{margin:0 0 28px;padding:22px;border:1px solid rgba(177,136,69,.3);border-radius:16px;background:#FCF5EE}
+.vitality-person h3{margin:0 0 12px;font:700 24px/1.2 Georgia,"Times New Roman",serif;color:#154734}
+.vitality-person .vitality-grid{margin:16px 0}
+.vitality-person .vitality-field label,.vitality-person .vitality-choice,.vitality-person-context{font-size:14px;line-height:1.5}
+.vitality-person-help{color:#606D66;font-size:13px;line-height:1.5}
+.vitality-person-context{margin:18px 0 0;padding:14px 17px;border-left:3px solid #B18845;border-radius:0 10px 10px 0;background:#F8F1E7;color:#154734;overflow-wrap:anywhere}
+.vitality-panel[data-panel="0"] .vitality-person fieldset.vitality-question{padding:0;margin:18px 0;border:0;box-shadow:none;background:transparent}
+.vitality-panel[data-panel="0"] .vitality-person fieldset.vitality-question .vitality-options{grid-template-columns:repeat(2,minmax(0,1fr))}
+.vitality-person .vitality-choice:focus-within{outline:2px solid #B18845;outline-offset:2px}
+@media(max-width:700px){.vitality-person{padding:17px}.vitality-person .vitality-grid{grid-template-columns:1fr}.vitality-panel[data-panel="0"] .vitality-person fieldset.vitality-question .vitality-options{grid-template-columns:1fr}}
 .brand-story-video-card.video-embed{
   aspect-ratio:auto!important;
   min-height:540px!important;
