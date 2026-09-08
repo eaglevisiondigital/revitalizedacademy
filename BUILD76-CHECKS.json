@@ -1,0 +1,249 @@
+{
+  "build": 76,
+  "repository": "eaglevisiondigital/revitalizedacademy",
+  "base_branch": "main",
+  "base_commit": "8bdeb0840023f8ccaf18656cef196c7f249ba82b",
+  "base_index_git_blob": "4036f64732469f8b468fa35bad0f49ded6170d3b",
+  "base_app_git_blob": "0c9b77f174f331b826279ec431bdf30afed50f03",
+  "index_outside_coaching_unchanged": true,
+  "app_prefix_sha256": "346c0dcb90ef29aab92d9b477c17d8cf3a8c61d0b486a4bace5e4d71f81755f3",
+  "app_prefix_length": 11271,
+  "assessment_files_in_patch": [],
+  "shared_stylesheet_in_patch": false,
+  "old_coaching_sections_removed": 2,
+  "old_runtime_removed": "Build 73",
+  "desktop_image_is_lossless_approved_crop": true,
+  "browser_qa": {
+    "engine": "Chromium",
+    "desktop_art_native_width": 1448,
+    "viewports": [
+      {
+        "width": 320,
+        "mode": "native-text",
+        "sectionWidth": 320,
+        "overflowElements": [],
+        "ctaHref": "enroll.html",
+        "activeCtaCount": 1,
+        "oldSections": 0,
+        "pillars": 6
+      },
+      {
+        "width": 375,
+        "mode": "native-text",
+        "sectionWidth": 375,
+        "overflowElements": [],
+        "ctaHref": "enroll.html",
+        "activeCtaCount": 1,
+        "oldSections": 0,
+        "pillars": 6
+      },
+      {
+        "width": 390,
+        "mode": "native-text",
+        "sectionWidth": 390,
+        "overflowElements": [],
+        "ctaHref": "enroll.html",
+        "activeCtaCount": 1,
+        "oldSections": 0,
+        "pillars": 6
+      },
+      {
+        "width": 430,
+        "mode": "native-text",
+        "sectionWidth": 430,
+        "overflowElements": [],
+        "ctaHref": "enroll.html",
+        "activeCtaCount": 1,
+        "oldSections": 0,
+        "pillars": 6
+      },
+      {
+        "width": 600,
+        "mode": "native-text",
+        "sectionWidth": 600,
+        "overflowElements": [],
+        "ctaHref": "enroll.html",
+        "activeCtaCount": 1,
+        "oldSections": 0,
+        "pillars": 6
+      },
+      {
+        "width": 768,
+        "mode": "native-text",
+        "sectionWidth": 768,
+        "overflowElements": [],
+        "ctaHref": "enroll.html",
+        "activeCtaCount": 1,
+        "oldSections": 0,
+        "pillars": 6
+      },
+      {
+        "width": 820,
+        "mode": "native-text",
+        "sectionWidth": 820,
+        "overflowElements": [],
+        "ctaHref": "enroll.html",
+        "activeCtaCount": 1,
+        "oldSections": 0,
+        "pillars": 6
+      },
+      {
+        "width": 1024,
+        "mode": "native-text",
+        "sectionWidth": 1024,
+        "overflowElements": [],
+        "ctaHref": "enroll.html",
+        "activeCtaCount": 1,
+        "oldSections": 0,
+        "pillars": 6
+      },
+      {
+        "width": 1199,
+        "mode": "native-text",
+        "sectionWidth": 1199,
+        "overflowElements": [],
+        "ctaHref": "enroll.html",
+        "activeCtaCount": 1,
+        "oldSections": 0,
+        "pillars": 6
+      },
+      {
+        "width": 1200,
+        "mode": "desktop-art",
+        "sectionWidth": 1200,
+        "overflowElements": [],
+        "ctaHref": "enroll.html",
+        "activeCtaCount": 1,
+        "oldSections": 0,
+        "pillars": 6
+      },
+      {
+        "width": 1280,
+        "mode": "desktop-art",
+        "sectionWidth": 1280,
+        "overflowElements": [],
+        "ctaHref": "enroll.html",
+        "activeCtaCount": 1,
+        "oldSections": 0,
+        "pillars": 6
+      },
+      {
+        "width": 1448,
+        "mode": "desktop-art",
+        "sectionWidth": 1448,
+        "overflowElements": [],
+        "ctaHref": "enroll.html",
+        "activeCtaCount": 1,
+        "oldSections": 0,
+        "pillars": 6
+      },
+      {
+        "width": 1628,
+        "mode": "desktop-art",
+        "sectionWidth": 1628,
+        "overflowElements": [],
+        "ctaHref": "enroll.html",
+        "activeCtaCount": 1,
+        "oldSections": 0,
+        "pillars": 6
+      },
+      {
+        "width": 1920,
+        "mode": "desktop-art",
+        "sectionWidth": 1920,
+        "overflowElements": [],
+        "ctaHref": "enroll.html",
+        "activeCtaCount": 1,
+        "oldSections": 0,
+        "pillars": 6
+      },
+      {
+        "width": 2560,
+        "mode": "desktop-art",
+        "sectionWidth": 2560,
+        "overflowElements": [],
+        "ctaHref": "enroll.html",
+        "activeCtaCount": 1,
+        "oldSections": 0,
+        "pillars": 6
+      }
+    ],
+    "interactions": {
+      "cta_1448": "pointer click reached enrollment anchor",
+      "keyboard_1448": "link focus works",
+      "cta_390": "pointer click reached enrollment anchor",
+      "keyboard_390": "link focus works",
+      "mobile_menu": "opens and closes",
+      "art_failure": "native fallback works"
+    },
+    "existing_sections": {},
+    "desktop_exact_pixel_match": true,
+    "page_errors": [],
+    "full_homepage_integration": {
+      "one_coaching_component": true,
+      "no_old_runtime_component": true,
+      "popup_markup_present": true,
+      "results_disclaimer_present": true
+    },
+    "anchor_alignment": {
+      "sectionTop": 116.453125,
+      "headerBottom": 104
+    }
+  },
+  "art": {
+    "source_file": "revitalized_academy_wellness_landing_page.png",
+    "source_sha256": "e836825374a5481060fdfb224d01c6253092c91a2550e3895f83ff5d26552cea",
+    "source_dimensions": [
+      1448,
+      1086
+    ],
+    "section_crop": [
+      0,
+      100,
+      1448,
+      1086
+    ],
+    "section_dimensions": [
+      1448,
+      986
+    ],
+    "desktop_cta_rect_in_section": [
+      1126,
+      861,
+      1374,
+      918
+    ],
+    "strategy": "Lossless approved desktop artwork + accessible semantic content + real CTA. Tablet/mobile native responsive content using approved decorative extracts."
+  },
+  "assessment_regression": {
+    "existing_run_verified": "https://github.com/eaglevisiondigital/revitalizedacademy/actions/runs/34276296557",
+    "commit": "8bdeb0840023f8ccaf18656cef196c7f249ba82b",
+    "status": "success",
+    "scope": "Verified the existing successful assessment workflow on the unchanged latest-main assessment files. The assessment functional suite was not re-run in this local browser fixture. A tests/** file is included so uploading the patch triggers the existing assessment workflow."
+  },
+  "local_browser_fixture": "Exact main index/app/styles verified by Git blob hash; local assets inlined into Chromium because browser network policy blocks localhost. No production source was inlined. Assessment functional JS was not exercised in this local fixture.",
+  "integrity_tests": {
+    "passed": 8,
+    "failed": 0,
+    "command": "node --test tests/coaching76-integrity.cjs"
+  },
+  "payload_files": [
+    "BUILD76-CHECKS.json",
+    "BUILD76-README.txt",
+    "assets/images/coaching76/accountability.png",
+    "assets/images/coaching76/approved-desktop.png",
+    "assets/images/coaching76/botanical-edge.png",
+    "assets/images/coaching76/clarity-signature.png",
+    "assets/images/coaching76/coaches.png",
+    "assets/images/coaching76/compass.png",
+    "assets/images/coaching76/mountain-detail.png",
+    "assets/images/coaching76/person.png",
+    "assets/images/coaching76/progress.png",
+    "assets/images/coaching76/star.png",
+    "css/coaching76.css",
+    "index.html",
+    "js/app.js",
+    "tests/coaching76-integrity.cjs"
+  ],
+  "excluded_protected_files_checked": true
+}
