@@ -202,6 +202,8 @@ for (const age of ['0','8','18']) {
     assert.equal(f.form.querySelector('[name="reproductive_screen_path"]'),null);
     assert.equal(f.form.querySelector('[name="self_harm_safety_flag"]'),null);
     f.set('child_additional_context','Additional family context for the coach.');
+    const gender=age==='8'?'Female':'Male';
+    f.input([...f.form.querySelectorAll('[name="child_gender"]')].find(c=>c.value===gender),true);
     assert.equal(f.form.elements.assessment_authorization.value,Number(age)<18?'Parent or legal guardian authorization':'Permission to complete and share assessment');
     await f.next();
     assert.equal(f.d.querySelector('[data-section-label]').textContent,'Whole-Child Snapshot');
@@ -220,6 +222,8 @@ for (const age of ['0','8','18']) {
     assert.match(payload.get('assessment_summary'),/WHOLE-CHILD SNAPSHOT/);
     assert.match(payload.get('assessment_summary'),/FINAL THOUGHTS & SUBMIT/);
     assert.match(payload.get('assessment_summary'),/Additional family context for the coach/);
+    assert.equal(payload.get('child_gender'),gender);
+    assert.ok(payload.get('assessment_summary').includes('What is your child’s gender?: '+gender));
     assert.match(payload.get('assessment_summary'),/Assessment for: Synthetic Subject/);
     assert.match(payload.get('assessment_summary'),/What one change would make daily life better/);
     assert.equal(payload.has('hormone_pathway'),false);
@@ -375,4 +379,24 @@ test('adult and child submissions have a separate required closing step and opti
     assert.equal(f.posts.length,2,'optional closing text may be left blank');
     f.dom.window.close();
   }
+});
+
+
+test('child gender offers only Male and Female, requires an answer and clears on adult switch', async () => {
+  const f=fixture();await f.start();f.person('My child','8');await f.next();
+  const gender=[...f.form.querySelectorAll('[name="child_gender"]')];
+  assert.deepEqual(gender.map(c=>c.value),['Male','Female']);
+  assert.ok(gender.every(c=>c.required));
+  assert.ok(gender.every(c=>!c.checked),'no gender is preselected');
+  fillChildPanel(f);
+  gender.forEach(c=>{c.checked=false;});
+  await f.next();assert.equal(f.index(),1,'gender must be answered');
+  f.input(gender[1],true);await f.next();assert.equal(f.index(),2);
+  f.d.querySelector('[data-back]').click();f.d.querySelector('[data-back]').click();
+  assert.equal(f.index(),0);
+  f.choose('Myself');
+  assert.equal(new f.w.FormData(f.form).has('child_gender'),false,'child gender must not enter an adult record');
+  f.person('My child','8');
+  assert.ok([...f.form.querySelectorAll('[name="child_gender"]')].every(c=>!c.checked));
+  f.dom.window.close();
 });
