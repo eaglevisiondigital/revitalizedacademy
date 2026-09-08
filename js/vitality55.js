@@ -6,7 +6,7 @@
   const requiredMark = '<span class="vitality-required" aria-hidden="true">*</span>';
   const frequency = ['Rarely', 'Sometimes', 'Often', 'Almost Daily'];
   const disruption = ['Barely noticeable', 'Mild', 'Moderate', 'Significant', 'Severe'];
-  const duration = ['Less than 2 weeks', '2–6 weeks', '6 weeks–3 months', '3–12 months', 'More than one year'];
+  const duration = ['Less than 2 weeks', '2 weeks to under 2 months', '2–3 months', 'More than 3 months to 1 year', 'More than one year'];
   const neverAlways = ['Never', 'Rarely', 'Sometimes', 'Often', 'Almost always'];
   const confidence = ["I don't understand it yet", 'Beginner', 'Somewhat confident', 'Very confident', 'I have a strong system that works for me'];
 
@@ -52,8 +52,8 @@
   const adultSections = [
     {
       key: 'introduction', label: 'Introduction', html: () => `${heading('BEFORE YOU BEGIN', 'Your Vitality Roadmap', 'Your health is not a light switch. It exists on a spectrum.')}
-        <div class="vitality-disclaimer">The Vitality Roadmap looks at current symptoms, lifestyle, environment, habits, strengths and quality of life across the 12 Drivers of Health. It helps identify patterns and practical areas to investigate and improve. It does not diagnose disease or determine the cause of symptoms.</div>
-        <div class="vitality-question"><span class="vitality-question-label">How the assessment works</span><div class="vitality-options compact"><div class="vitality-choice"><span><strong>Symptoms</strong><br>What your body is experiencing</span></div><div class="vitality-choice"><span><strong>Weaknesses</strong><br>What may be working against you</span></div><div class="vitality-choice"><span><strong>Strengths</strong><br>What you are already doing well</span></div></div></div>
+        <div class="vitality-disclaimer" data-intro-explanation>The Vitality Roadmap looks at current symptoms, lifestyle, environment, habits, strengths and quality of life across the 12 Drivers of Health. It helps identify patterns and practical areas to investigate and improve. It does not diagnose disease or determine the cause of symptoms.</div>
+        <div class="vitality-question"><span class="vitality-question-label">How the assessment works</span><dl class="vitality-explanation-list"><div><dt>Symptoms</dt><dd>What your body is experiencing</dd></div><div><dt>Weaknesses</dt><dd>What may be working against you</dd></div><div><dt>Strengths</dt><dd>What you are already doing well</dd></div></dl></div>
         ${radio('assessment_consent', 'I understand this is a coaching assessment—not a medical diagnosis—and that my answers will be submitted to the ReVitalized Academy coaching team for review.', ['Yes, continue'], '', true)}
         <fieldset class="vitality-question vitality-legal-check"><legend>I acknowledge the ReVitalized Academy Health &amp; Results Disclaimer. ${requiredMark}</legend><span class="vitality-question-help">Individual experiences and results vary. ReVitalized Academy does not guarantee specific outcomes. The content and assessment are educational and are not a substitute for professional medical advice, diagnosis or treatment. <a href="disclaimer.html" target="_blank" rel="noopener">Read the complete disclaimer.</a></span><label class="vitality-choice"><input type="checkbox" name="disclaimer_acknowledgment" value="Acknowledged" required><span>I have read and acknowledge the disclaimer.</span></label></fieldset>`
     },
@@ -64,7 +64,7 @@
         ${scale('overall_quality_of_life', 'How would you rate your current overall quality of life?', '', 'Very low', 'Excellent')}
         ${subsection('Quality of Life by Area')}
         ${['Energy','Sleep','Digestion','Physical comfort','Strength/mobility','Mental clarity','Emotional well-being','Ability to handle stress','Ability to work/parent/study','Ability to enjoy life'].map((area) => scale(`qol_${slug(area)}`, area, '', 'Very limited', 'Excellent')).join('')}
-        ${radio('health_interference', 'How much does your current health affect what you can do?', ['Not at all','Slightly','Moderately','Significantly','My health controls much of my life'])}
+        ${radio('health_interference', 'How much does your current health limit what you can do?', ['Not at all','Slightly','Moderately','Significantly','My health controls much of my life'])}
         ${subsection('Medical Background')}
         ${yesDetails('diagnosed_conditions', 'Are you currently living with any diagnosed health conditions?', 'Tell us as much as you would like.')}
         ${yesDetails('prescription_medications', 'Are you currently taking prescription medications?', 'Optional medication details.')}
@@ -73,7 +73,13 @@
         ${textQuestion('most_concerning_symptoms', 'What symptoms concern you the most right now?', '', true)}
         ${textQuestion('ninety_day_goal', 'If you could improve ONE thing about your health over the next 90 days, what would it be?', 'Your exact words will be highlighted for the ReVitalized coaching team.', true)}
         ${subsection('Health Spectrum Self-Perception')}
-        <div class="vitality-disclaimer"><strong>Peace:</strong> resilient with little limitation. <strong>Impaired:</strong> early, mild weaknesses. <strong>Dysregulated:</strong> recurring symptoms that are harder to ignore. <strong>Chronic:</strong> persistent patterns affecting daily life. <strong>Chaos:</strong> health substantially dominates daily life.</div>
+        <div class="vitality-disclaimer vitality-spectrum-explanation"><p>ReVitalized Academy describes its Health Spectrum using the five stages below. These are descriptions within our coaching framework, not a medical diagnosis or a required sequence of health changes.</p><dl>
+          <div><dt>Peace</dt><dd>This is your body in optimal health; everything is in balance. You have no symptoms affecting daily life.</dd></div>
+          <div><dt>Impaired</dt><dd>This is where things start to get off track. You aren't unhealthy, but we are starting to slip. In this stage, our framework focuses on early changes in brain function, such as cognitive difficulties.</dd></div>
+          <div><dt>Dysregulated</dt><dd>This is where symptoms—red alerts from your body—start to become harder to ignore. In our framework, this stage looks at gut symptoms alongside cognitive difficulties.</dd></div>
+          <div><dt>Chronic</dt><dd>This is when multiple symptoms have persisted for a long time and long-term health conditions may be part of daily life.</dd></div>
+          <div><dt>Chaos</dt><dd>This is where symptoms start to take over your day-to-day life. You may have needed to make some big changes to your lifestyle because of your health.</dd></div>
+        </dl></div>
         ${radio('self_perceived_spectrum', 'Before your results are reviewed, where do YOU think you currently fall?', ['Peace','Impaired','Dysregulated','Chronic','Chaos',"I'm not sure"], 'This answer is recorded separately and is not used to calculate a score.')}
         ${subsection('Immediate Safety Check')}
         ${radio('urgent_safety_flag', 'Are you currently experiencing any potentially urgent concern such as severe breathing difficulty, severe chest pain, new neurological impairment, major bleeding, suicidal thoughts, or a serious pregnancy-related warning symptom?', ['No','Yes'], 'This question is separate from your Vitality Roadmap classification.')}
@@ -85,18 +91,13 @@
         ${textQuestion('hydration_other', 'If you selected Other, tell us more.', '', false, 2)}
         ${selectQuestion('water_source', 'What is your primary drinking water source?', ['Properly filtered/remineralized water','Well water','Spring water','Municipal tap water','Reverse osmosis','Bottled water','Water filter — unsure what type','Other',"I don't know"])}
         ${textQuestion('water_filtration_mineralization', 'Optional: Tell us about your filtration or mineralization approach.', '', false, 2)}
-        ${selectQuestion('water_intake_consistency', "How consistently do you drink enough water to comfortably satisfy your body's needs?", neverAlways)}
+        ${selectQuestion('water_intake_consistency', "How consistently do you drink enough water to comfortably satisfy your body's needs?", [...neverAlways, "I don't know"])}
         ${selectQuestion('electrolyte_consistency', 'How consistently do you consume meaningful food or beverage sources of electrolytes such as sodium, potassium and magnesium?', neverAlways)}
         ${selectQuestion('hydration_proficiency', 'How confident are you that you understand how to hydrate properly rather than simply drinking more water?', confidence)}
         ${checks('hydration_strengths', 'Which are already strengths?', ['Good drinking water','Consistent water intake','Good electrolyte intake','Minimal excessive alcohol','Appropriate hydration around exercise','I recognize thirst/dehydration signals well'])}`
     },
     {
       key: 'detoxification', label: 'Systemic Detoxification', html: () => `${heading('DRIVER 2 OF 12', 'Systemic Detoxification', 'Review patterns related to the systems involved in processing or removing bodily waste.', 'We use the term drainage pathways to describe several systems involved in removing or processing bodily waste. This screening identifies patterns worth discussing; it does not determine organ function or diagnose disease.')}
-        ${subsection('Colon Screen')}
-        ${selectQuestion('bowel_movement_frequency', 'How often do you usually have a bowel movement?', ['2–4/day','1/day','Every other day','Fewer than 3/week','Highly variable','Multiple loose movements/day'])}
-        ${checks('bristol_stool_types', 'Which Bristol Stool Chart types are most common for you?', ['Type 1 — separate hard lumps','Type 2 — lumpy sausage','Type 3 — cracked sausage','Type 4 — smooth, soft sausage','Type 5 — soft blobs','Type 6 — mushy pieces','Type 7 — watery'], 'Select all that regularly apply.')}
-        ${symptomScreen('colon', ['Straining','Incomplete evacuation','Bloating/pressure','Urgency','Diarrhea','Constipation'], 'How often do you experience these bowel patterns?')}
-        ${textQuestion('colon_follow_up', 'If bowel habits concern you, optionally describe bathroom duration, pain, major changes, or worsening with dietary/supplement changes.', '', false)}
         ${subsection('Kidneys / Urinary')}
         ${symptomScreen('urinary', ['Very dark urine','Unusually foamy urine','Strong/unusual urine odor','Excessive urinary frequency','Significant urgency','Facial/hand/ankle swelling','Persistent flank/lower-back discomfort','Blood in urine','Painful urination'])}
         ${selectQuestion('pale_yellow_urine', 'How often does your urine generally fall in a pale-yellow range?', neverAlways)}
@@ -107,11 +108,11 @@
         ${selectQuestion('whole_body_movement', 'How frequently do you move your whole body throughout the day?', neverAlways)}
         ${selectQuestion('sedentary_periods', 'How often are you sedentary for long uninterrupted periods?', neverAlways)}
         ${selectQuestion('walking_regularity', 'How regularly do you walk?', neverAlways)}
-        ${subsection('Overnight Brain Recovery')}
+        ${subsection('Glymphatic Brain Recovery')}
         <div class="vitality-disclaimer">These questions assess sleep and morning neurological patterns associated with overnight recovery. They do not measure glymphatic function directly.</div>
         ${symptomScreen('overnight_recovery', ['Wake with brain fog','Morning headache','Morning mental fatigue','Difficulty feeling fully awake','Poor memory in the morning','Frequent nighttime awakening','Wake feeling unrefreshed despite enough time in bed'])}
         ${subsection('Reproductive Drainage')}
-        ${selectQuestion('reproductive_screen_path', 'Which screening pathway is relevant to you?', ['Female','Male','Neither / prefer not to answer'], '', true)}
+        ${selectQuestion('reproductive_screen_path', 'Which screening pathway is relevant to you?', ['Female','Male'], '', true)}
         <div data-show-when="reproductive_screen_path:Female" hidden>${symptomScreen('reproductive_female', ['Significant menstrual clotting','Very heavy menstrual bleeding','Significant pelvic pressure/bloating','Spotting between periods','Unusual cycle-associated swelling','Significant pelvic pain'])}</div>
         <div data-show-when="reproductive_screen_path:Male" hidden>${symptomScreen('reproductive_male', ['Persistent pelvic discomfort','Painful ejaculation','Urinary changes','Erectile changes','Significant libido decline'])}</div>
         ${subsection('Lungs')}
@@ -142,7 +143,7 @@
         ${symptomScreen('functional_training', ['Recurring pain during movement','Joint stiffness','Limited range of motion','Poor balance','Poor coordination','Low strength','Low endurance','Frequent exercise-related injury','Fear of certain movements','Difficulty getting off the floor','Difficulty lifting/carrying everyday objects'])}
         ${subsection('Bodily Control')}
         ${['Squatting','Hinging','Pushing','Pulling','Carrying','Lunging','Rotating','Balancing','Running/jumping when appropriate'].map((item) => selectQuestion(`movement_${slug(item)}`, `How confident are you with ${item.toLowerCase()}?`, ['Not able / not appropriate','Not confident','Somewhat confident','Very confident','Highly confident'])).join('')}
-        ${selectQuestion('training_sessions_weekly', 'How many purposeful training sessions do you average per week?', ['0','1','2','3','4','5','6+'])}
+        ${selectQuestion('training_sessions_weekly', 'How many purposeful training sessions do you average per week?', ['0','1–2','3–4','5–6','7+'])}
         ${radio('training_program', 'Which best describes your current training?', ['No program','Exercise randomly','Basic routine','Structured progressive program','Structured individualized program'])}
         ${['Strength','Mobility','Cardiovascular fitness','Speed/power where relevant','Athletic confidence'].map((area) => scale(`performance_${slug(area)}`, `How would you rate your ${area.toLowerCase()}?`, '', 'Very low', 'Excellent')).join('')}
         ${selectQuestion('body_allows_activities', 'Does your body allow you to physically do the things you want to do?', neverAlways)}`
@@ -160,11 +161,16 @@
     },
     {
       key: 'gi', label: 'G.I. Renovation', html: () => `${heading('DRIVER 7 OF 12', 'G.I. Renovation', 'Take a dedicated look at intestinal symptoms, transit and microbiome-supporting behaviors.')}
-        <div class="vitality-disclaimer">Your bowel frequency and Bristol stool-type answers from Systemic Detoxification will be included here automatically so you do not have to answer them twice.</div>
-        ${symptomScreen('gi', ['Bloating','Gas','Cramping','Abdominal pain','Diarrhea','Constipation','Reflux','Food-triggered symptoms','Mucus','Unpredictable stools'])}
-        ${selectQuestion('plant_food_diversity', 'In a typical week, how diverse is your intake of plant foods?', ['Very limited','Limited','Moderate','Diverse','Very diverse'])}
-        ${selectQuestion('fermented_foods', 'How regularly do you eat fermented foods if tolerated?', neverAlways)}
-        ${selectQuestion('fiber_whole_foods', 'How consistently do you consume fiber-rich whole foods?', neverAlways)}
+        ${subsection('Colon Screen')}
+        ${selectQuestion('bowel_movement_frequency', 'How often do you usually have a bowel movement?', ['2–4/day','1/day','Every other day','Fewer than 3/week','Highly variable','Multiple loose movements/day'])}
+        ${checks('bristol_stool_types', 'Which Bristol Stool Chart types are most common for you?', ['Type 1 — separate hard lumps','Type 2 — lumpy sausage','Type 3 — cracked sausage','Type 4 — smooth, soft sausage','Type 5 — soft blobs','Type 6 — mushy pieces','Type 7 — watery'], 'Select up to 3 that regularly apply.', 3)}
+        ${symptomScreen('colon', ['Straining','Incomplete evacuation','Bloating/pressure','Urgency','Diarrhea','Constipation'], 'How often do you experience these bowel patterns?')}
+        ${textQuestion('colon_follow_up', 'If bowel habits concern you, optionally describe bathroom duration, pain, major changes, or worsening with dietary/supplement changes.', '', false)}
+        ${subsection('Other Intestinal Symptoms')}
+        ${symptomScreen('gi', ['Gas','Cramping','Abdominal pain','Reflux','Food-triggered symptoms','Mucus','Unpredictable stools'])}
+        ${selectQuestion('plant_food_diversity', 'In a typical week, how diverse is your intake of plant foods (such as vegetables, fruit, beans, nuts, and seeds)?', ['Very limited','Limited','Moderate','Diverse','Very diverse'])}
+        ${selectQuestion('fermented_foods', 'How regularly do you eat fermented foods (such as yogurt, kefir, or sauerkraut) if tolerated?', neverAlways)}
+        ${selectQuestion('fiber_whole_foods', 'How consistently do you consume fiber-rich whole foods (such as chia seeds, carrots, and legumes)?', neverAlways)}
         ${radio('antibiotics_last_year', 'Have you used antibiotics within the last 12 months?', ['No','Yes','Prefer not to answer'], '', false)}
         ${yesDetails('microbiome_testing', 'Have you previously completed microbiome/stool testing?', 'Optional notes about prior testing.', false)}`
     },
@@ -195,7 +201,7 @@
         ${radio('weekly_rhythm', 'Do you have a predictable weekly rhythm for meals, training, recovery and preparation?', ['No','Somewhat','Yes'])}
         ${selectQuestion('monthly_goal_review', 'How often do you intentionally review your goals and adjust your plan?', ['Never','A few times a year','Monthly','Several times a month','Weekly'])}
         ${radio('routine_friction', 'Which best describes you?', ['I know what I should do but rarely do it','I frequently start and stop',"I'm somewhat consistent","I'm consistent unless life gets stressful",'My routines remain stable even when life gets busy'])}
-        ${radio('routine_restart', 'When you fall out of routine, how quickly do you usually restart?', ['Same/next day','Within several days','Within a week','Several weeks',"I often don't restart"])}`
+        ${radio('routine_restart', 'When you fall out of routine, how quickly do you usually restart?', ['Same/next day','Within a few days','Within a week','Several weeks',"I often don't restart"])}`
     },
     {
       key: 'mentality', label: 'Mentality Realignment', html: () => `${heading('DRIVER 11 OF 12', 'Mentality Realignment', 'Reflect on self-talk, gratitude, recurring emotional patterns, influence, learning and purpose.')}
@@ -217,7 +223,11 @@
         ${radio('unexpected_health_expense', 'If an unexpected health expense appeared tomorrow, how prepared would you feel?', ['Completely unprepared','Slightly prepared','Moderately prepared','Well prepared','Very well prepared'])}
         ${textQuestion('optional_health_savings_range', 'Optional: What range have you set aside for unexpected health expenses?', '', false, 2)}
         ${selectQuestion('money_blocks_health', 'How frequently does money stop you from doing something you believe would meaningfully improve your health?', ['Never','Rarely','Sometimes','Often','Very often'])}
-        ${selectQuestion('budget_priority_confidence', 'How confident are you that you spend your health budget on the highest-value priorities first?', ['Not confident','Slightly confident','Somewhat confident','Very confident','Highly confident'])}
+        ${selectQuestion('budget_priority_confidence', 'How confident are you that you spend your health budget on the highest-value priorities first?', ['Not confident','Slightly confident','Somewhat confident','Very confident','Highly confident'])}`
+    },
+    {
+      key: 'closing', label: 'Final Thoughts & Submit', html: () => `${heading('ONE LAST STEP', 'Anything else you’d like us to know?', 'Share any additional context before sending your assessment to the ReVitalized Academy coaching team.')}
+        ${textQuestion('additional_context', 'Is there anything else you would like us to know?', 'Optional. Share anything you would like the coaching team to understand.', false, 4)}
         ${radio('final_accuracy', 'I have answered as accurately as I reasonably can and understand my assessment will be reviewed as coaching information, not a medical diagnosis.', ['Yes, submit my assessment'])}`
     }
   ];
@@ -233,7 +243,7 @@
     assessmentStage.innerHTML = sections.map((section, index) => `<section class="vitality-panel" data-panel="${index}" ${index ? 'hidden' : ''}>${section.html()}</section>`).join('');
     // Keep person fields in the static Netlify form, then place them in Introduction.
     const person = assessmentForm.querySelector('[data-assessment-person]');
-    if (person) assessmentStage.querySelector('[data-panel="0"] .vitality-panel-head').after(person);
+    if (person) assessmentStage.querySelector('[data-intro-explanation]').after(person);
   }
 
   function assessmentPerson() {
@@ -454,6 +464,14 @@
       invalid.reportValidity();
       invalid.focus({ preventScroll: true });
       invalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return false;
+    }
+    const overLimit = [...panel.querySelectorAll('[data-max-choices]')].find((group) =>
+      group.querySelectorAll('input[type="checkbox"]:checked:not([disabled])').length > Number(group.dataset.maxChoices));
+    if (overLimit) {
+      assessmentError.textContent = `Please select no more than ${overLimit.dataset.maxChoices} answers for this question.`;
+      assessmentError.classList.add('show');
+      overLimit.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return false;
     }
     const unansweredSymptoms = [...panel.querySelectorAll('[data-symptom-screen]')].find((screen) => {

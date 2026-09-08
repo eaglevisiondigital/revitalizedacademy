@@ -956,8 +956,12 @@
           : '') + renderQuestion(question)).join('')
         + (index===5 ? '<div class="vitality-safety" data-child-sleep-guidance hidden><strong>Please discuss breathing concerns with your child’s healthcare professional.</strong><p>Frequent snoring or breathing pauses warrant prompt pediatric review. If your child is having severe breathing difficulty now, contact local emergency services.</p></div>' : '')
         + (index===10 ? '<div class="vitality-disclaimer">A parent’s observations cannot capture every internal experience or rule out suicide risk. Emotional concerns deserve appropriate professional follow-up. If your child is in immediate danger, contact local emergency services now.</div>' : '')
-        + (index===11 ? helpers.radio('child_final_accuracy','I have answered as accurately as I reasonably can and understand that this educational coaching assessment will be reviewed by the ReVitalized Academy team.',['Yes, submit my child’s assessment'],'This assessment does not diagnose or treat conditions.') : '')
-    }))];
+    })), {
+      key:'child_closing', label:'Final Thoughts & Submit',
+      html:() => helpers.heading('ONE LAST STEP','Anything else you’d like us to know?','Share any additional context before sending your child’s assessment to the ReVitalized Academy coaching team.')
+        + helpers.textQuestion('child_additional_context','Is there anything else you would like us to know?','Optional. Share anything you would like the coaching team to understand about your child or family.',false,4)
+        + helpers.radio('child_final_accuracy','I have answered as accurately as I reasonably can and understand that this educational coaching assessment will be reviewed by the ReVitalized Academy team.',['Yes, submit my child’s assessment'],'This assessment does not diagnose or treat conditions.')
+    }];
   }
 
   function definition(name) { return [...content.snapshot,...content.drivers.flatMap(d=>d.questions)].find(q=>q.name===name); }

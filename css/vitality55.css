@@ -116,3 +116,15 @@ a.hero54-btn.journey-secondary-cta{
 .vitality-child-plan textarea{display:block;width:100%;box-sizing:border-box;margin-top:7px;padding:12px;border:1px solid #D9D5CC;border-radius:10px;background:#fff;font:inherit;color:#173128;resize:vertical}
 .vitality-child-plan textarea:focus{outline:2px solid #B18845;outline-offset:2px}
 .vitality-person .vitality-choice small{display:block;color:#65706A;font-size:12px}
+
+/* Build 74: clear lead guidance, informational text and expanded spectrum. */
+.vitality-field-help{font-size:14px;line-height:1.5;color:#606D66}
+.vitality-explanation-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin:14px 0 0;cursor:default}
+.vitality-explanation-list dt{font-weight:800;color:#154734;font-size:16px;line-height:1.5}
+.vitality-explanation-list dd{margin:5px 0 0;color:#606D66;font-size:15px;line-height:1.5}
+.vitality-spectrum-explanation{font-size:15px;line-height:1.6}
+.vitality-spectrum-explanation p{margin:0 0 18px}
+.vitality-spectrum-explanation dl{margin:0;display:grid;gap:16px}
+.vitality-spectrum-explanation dt{font-weight:800;color:#154734;font-size:17px}
+.vitality-spectrum-explanation dd{margin:3px 0 0}
+@media(max-width:700px){.vitality-explanation-list{grid-template-columns:1fr;gap:16px}}

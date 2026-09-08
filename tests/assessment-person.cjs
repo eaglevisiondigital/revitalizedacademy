@@ -115,7 +115,7 @@ test('proxy details, relationship, age and authorization are required; switching
 });
 
 const completions = [
-  ['Myself','', 'Neither / prefer not to answer','Male'],
+  ['Myself','', 'Male','Male'],
   ['My child','19','Male','Male'],
   ['My spouse','35','Female','Pregnant'],
   ['Someone else','35','Female','Postpartum'],
@@ -127,8 +127,9 @@ for (const [choice,age,reproductive,hormone] of completions) {
     const f = fixture();
     await f.start(); f.person(choice,age);
     assert.equal(f.form.querySelector('[data-assessment-person]').closest('[data-panel]').dataset.panel,'0');
+    f.set('additional_context','Please discuss this extra context with me.');
     await f.next(); assert.equal(f.index(),1);
-    for (let section=1;section<14;section++) {
+    for (let section=1;section<15;section++) {
       assert.equal(f.index(),section);
       f.fillPanel(reproductive,hormone);
       await f.next();
@@ -139,6 +140,8 @@ for (const [choice,age,reproductive,hormone] of completions) {
     assert.equal(response.get('form-name'),'vitality-assessment');
     assert.equal(response.get('reproductive_screen_path'),reproductive);
     assert.equal(response.get('hormone_pathway'),hormone);
+    assert.match(response.get('assessment_summary'),/FINAL THOUGHTS & SUBMIT/);
+    assert.match(response.get('assessment_summary'),/Please discuss this extra context with me/);
     assert.equal(response.get('first_name'),'Synthetic');
     assert.equal(response.get('last_name'),'Respondent');
     assert.equal(response.get('assessment_for_name'),choice==='Myself'?'Synthetic Respondent':'Synthetic Subject');
@@ -194,14 +197,15 @@ for (const age of ['0','8','18']) {
     const f=fixture();
     await f.start(); f.person('My child',age);
     assert.equal(f.form.elements.assessment_pathway.value,'Child (ages 0–18)');
-    assert.equal(f.d.querySelectorAll('[data-panel]').length,14);
+    assert.equal(f.d.querySelectorAll('[data-panel]').length,15);
     assert.equal(f.form.querySelector('[name="hormone_pathway"]'),null);
     assert.equal(f.form.querySelector('[name="reproductive_screen_path"]'),null);
     assert.equal(f.form.querySelector('[name="self_harm_safety_flag"]'),null);
+    f.set('child_additional_context','Additional family context for the coach.');
     assert.equal(f.form.elements.assessment_authorization.value,Number(age)<18?'Parent or legal guardian authorization':'Permission to complete and share assessment');
     await f.next();
     assert.equal(f.d.querySelector('[data-section-label]').textContent,'Whole-Child Snapshot');
-    for (let section=1;section<14;section++) {
+    for (let section=1;section<15;section++) {
       assert.equal(f.index(),section);
       fillChildPanel(f, age==='8');
       await f.next();
@@ -214,6 +218,8 @@ for (const age of ['0','8','18']) {
     assert.equal(payload.get('assessment_pathway'),'Child (ages 0–18)');
     assert.equal(payload.get('assessed_age'),age);
     assert.match(payload.get('assessment_summary'),/WHOLE-CHILD SNAPSHOT/);
+    assert.match(payload.get('assessment_summary'),/FINAL THOUGHTS & SUBMIT/);
+    assert.match(payload.get('assessment_summary'),/Additional family context for the coach/);
     assert.match(payload.get('assessment_summary'),/Assessment for: Synthetic Subject/);
     assert.match(payload.get('assessment_summary'),/What one change would make daily life better/);
     assert.equal(payload.has('hormone_pathway'),false);
@@ -303,4 +309,70 @@ test('missing child module blocks child continuation without losing captured lea
   assert.equal(f.posts.length,1);
   f.person('Myself'); await f.next(); assert.equal(f.index(),1);
   f.dom.window.close();
+});
+
+
+test('gut questions appear once in Driver 7; stool choices cap at three and validate without change events', async () => {
+  const f=fixture(); await f.start(); f.person('Myself'); await f.next();
+  for (let section=1;section<8;section++) { f.fillPanel('Male','Male'); await f.next(); }
+  assert.equal(f.index(),8);
+  assert.equal(f.d.querySelector('[data-section-label]').textContent,'G.I. Renovation');
+  for (const name of ['bowel_movement_frequency','bristol_stool_types','colon_symptoms','colon_follow_up']) {
+    const controls=[...f.form.querySelectorAll(`[name="${name}"]`)];
+    assert.ok(controls.length);
+    assert.ok(controls.every(c=>c.closest('[data-panel]').dataset.panel==='8'));
+  }
+  const boxes=[...f.form.querySelectorAll('[name="bristol_stool_types"]')];
+  boxes.slice(0,4).forEach(c=>{f.input(c,true);c.dispatchEvent(new f.w.Event('change',{bubbles:true}));});
+  assert.equal(boxes.filter(c=>c.checked).length,3);
+  assert.equal(boxes[3].checked,false);
+  f.fillPanel('Male','Male');
+  f.input(boxes[3],true); // even a missing change event cannot bypass validation
+  await f.next(); assert.equal(f.index(),8);
+  assert.match(f.d.querySelector('[data-assessment-error]').textContent,/no more than 3/);
+  f.input(boxes[3],false);
+  await f.next(); assert.equal(f.index(),9);
+  f.dom.window.close();
+});
+
+test('reproductive pathways require a selection and validate only the visible sex-specific symptom details', async () => {
+  const f=fixture(); await f.start(); f.person('Myself'); await f.next();
+  for(let section=1;section<3;section++){f.fillPanel('Male','Male');await f.next();}
+  assert.equal(f.index(),3);
+  const pathway=f.form.elements.reproductive_screen_path;
+  assert.deepEqual([...pathway.options].map(o=>o.value),['','Female','Male']);
+  f.fillPanel('Female','Male');
+  f.set('reproductive_screen_path',''); await f.next(); assert.equal(f.index(),3);
+  f.set('reproductive_screen_path','Female');
+  const female=f.form.querySelector('[name="reproductive_female_symptoms"]');
+  f.input(female,true);
+  await f.next(); assert.equal(f.index(),3,'visible symptom details must remain required');
+  const duration=f.form.querySelector('[name$="_duration"]');
+  assert.ok([...duration.options].some(o=>o.value==='2–3 months'));
+  f.set('reproductive_screen_path','Male');
+  f.fillPanel('Male','Male');
+  assert.equal(new f.w.FormData(f.form).has('reproductive_female_symptoms'),false);
+  await f.next(); assert.equal(f.index(),4,'hidden female details must not block male path');
+  f.dom.window.close();
+});
+
+test('adult and child submissions have a separate required closing step and optional context', async () => {
+  for(const child of [false,true]) {
+    const f=fixture();await f.start();f.person(child?'My child':'Myself','8');await f.next();
+    const finalName=child?'child_final_accuracy':'final_accuracy';
+    const notesName=child?'child_additional_context':'additional_context';
+    const final=f.form.querySelector(`[name="${finalName}"]`);
+    assert.equal(final.closest('[data-panel]').dataset.panel,'14');
+    assert.equal(f.form.elements[notesName].required,false);
+    for(let section=1;section<14;section++) {
+      if(child)fillChildPanel(f);else f.fillPanel('Male','Male');
+      await f.next();
+    }
+    assert.equal(f.index(),14);
+    assert.equal(f.posts.length,1,'budget completion must not submit');
+    await f.next();assert.equal(f.posts.length,1,'final acknowledgment must be required');
+    f.input(final,true);await f.next();
+    assert.equal(f.posts.length,2,'optional closing text may be left blank');
+    f.dom.window.close();
+  }
 });
