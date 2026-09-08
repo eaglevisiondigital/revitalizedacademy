@@ -943,6 +943,7 @@
       key:'child_snapshot', label:'Whole-Child Snapshot',
       html:() => helpers.heading('THE WHOLE CHILD','Whole-Child Snapshot','Help us understand your child’s everyday experience—what feels easy, what feels difficult, and what already helps. Consider the last 30 days unless a question says otherwise. There are no perfect families or “right” answers.')
         + '<div class="vitality-disclaimer">Answer for your child’s age, abilities and usual supports. Choose “Not applicable to age or development” whenever a question does not fit. These questions do not provide feeding, fluid or developmental targets.</div>'
+        + helpers.radio('child_gender','What is your child’s gender?',['Male','Female'],'',true)
         + content.snapshot.map(renderQuestion).join('')
         + helpers.textQuestion('child_own_words','Your child’s own words (optional)','If comfortable and appropriate, invite your child to share a favorite activity, something that feels difficult, and something that helps. Record their words separately from your observations; communication supports are welcome.',false)
         + safety
