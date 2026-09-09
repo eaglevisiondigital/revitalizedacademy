@@ -46,6 +46,9 @@ assert(thankYou.includes('Step 1 complete'), 'Confirmation copy missing');
 assert(css.includes('--ra-forest:#154734'), 'Approved emerald styling missing');
 assert(css.includes('--ra-cream:#fcf5ee'), 'Approved cream styling missing');
 assert(css.includes('--ra-gold:#b18845'), 'Approved gold styling missing');
+assert(enroll.includes('css/enrollment82-program-picker.css?v=82.1'), 'Premium program picker stylesheet missing');
+assert(enroll.includes('Which path feels closest to where you want to begin?'), 'Premium program picker heading missing');
+assert(fs.existsSync('css/enrollment82-program-picker.css'), 'Program picker refinement CSS missing');
 assert(js.includes("allowedPlans"), 'Plan preselection logic missing');
 assert(js.includes("utm_source"), 'Attribution capture missing');
 
