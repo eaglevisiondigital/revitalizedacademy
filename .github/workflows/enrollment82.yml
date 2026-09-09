@@ -2,13 +2,24 @@ name: Enrollment Build 82 QA
 on:
   push:
     branches:
+      - main
       - feature/programs-enrollment-step1-20260909
+    paths:
+      - 'plans.html'
+      - 'enroll.html'
+      - 'enrollment-thank-you.html'
+      - 'css/enrollment82.css'
+      - 'css/enrollment82-program-picker.css'
+      - 'js/enrollment82.js'
+      - 'tests/enrollment82.cjs'
+      - '.github/workflows/enrollment82.yml'
   pull_request:
     paths:
       - 'plans.html'
       - 'enroll.html'
       - 'enrollment-thank-you.html'
       - 'css/enrollment82.css'
+      - 'css/enrollment82-program-picker.css'
       - 'js/enrollment82.js'
       - 'tests/enrollment82.cjs'
       - '.github/workflows/enrollment82.yml'
