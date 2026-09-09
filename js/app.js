@@ -53,7 +53,7 @@ const matrixData = {
   energized: {
     theme: 'energized',
     name: 'Energized',
-    tagline: 'Feel good everyday',
+    tagline: 'Feel good physically and mentally every day',
     focusIcon: 'energized',
     summary: 'Build the everyday habits that support energy, detoxification, hydration, and a body that feels better from the inside out.',
     sections: [
