@@ -1,1 +1,159 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Enrollment | ReVitalized Academy</title><link rel="stylesheet" href="css/styles.css?v=70"><style>.form-page{min-height:100vh;background:linear-gradient(180deg,#fff,#f4faf1);padding:36px 18px}.form-shell{max-width:800px;margin:auto}.form-shell>a img{width:230px;margin:0 auto 26px}.form-card{background:#fff;border:1px solid #e5e9e4;border-radius:18px;box-shadow:0 18px 55px rgba(20,45,24,.08);padding:34px}.form-card h1{font-size:38px;margin:0 0 8px}.form-card h1 em{font-style:normal;color:#239408}.form-card>p{color:#5c665e}.placeholder{border:1px dashed #a9c9a0;background:#f8fcf7;border-radius:12px;padding:18px;margin:20px 0;font-size:13px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:13px;font-weight:800}.field input,.field textarea,.field select{border:1px solid #dbe2da;border-radius:9px;padding:13px 14px;font:inherit}.field textarea{min-height:110px;resize:vertical}.form-actions{margin-top:20px}.form-note{font-size:11px;color:#6d756f;margin-top:12px}@media(max-width:650px){.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.form-card{padding:24px}.form-card h1{font-size:32px}}</style></head><body><main class="form-page"><div class="form-shell"><a href="index.html"><img src="assets/images/revitalized-logo-dark-approved-v69.png" alt="ReVitalized Academy"></a><section class="form-card"><span class="eyebrow green">ENROLLMENT</span><h1>Ready to begin your <em>ReVitalized journey?</em></h1><p>This Phase One form is intentionally streamlined. It is prepared for the final enrollment questions and future back-office integration without redesigning the page.</p><div class="placeholder"><strong>Enrollment content placeholder:</strong> final package selection, required enrollment questions, acknowledgements and payment/onboarding steps will be added once approved by Justyn &amp; Elle.</div><form name="enrollment" method="POST" data-netlify="true" netlify-honeypot="bot-field"><input type="hidden" name="form-name" value="enrollment"><p hidden><label>Don’t fill this out: <input name="bot-field"></label></p><div class="form-grid"><div class="field"><label for="first">First name</label><input id="first" name="first_name" required></div><div class="field"><label for="last">Last name</label><input id="last" name="last_name" required></div><div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required></div><div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" required></div><div class="field full"><label for="goal">What are you hoping to improve?</label><textarea id="goal" name="health_goals"></textarea></div><div class="field full"><label for="success">What would meaningful progress look like for you?</label><textarea id="success" name="success_definition"></textarea></div></div><div class="form-actions"><button class="btn btn-primary btn-large" type="submit">Submit Enrollment Interest</button><p class="form-note">This Phase One form avoids detailed medical-history collection. Netlify form notifications should be configured to contact@revitalizedacademy.com. The submission layer can later be replaced by the ReVitalized back office/API.</p></div></form></section></div></main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Start your ReVitalized Academy journey with a short first-step application and program selection.">
+  <title>Start Your Journey | ReVitalized Academy</title>
+  <link rel="stylesheet" href="css/enrollment82.css?v=82">
+</head>
+<body class="ra-journey">
+  <a class="ra-skip" href="#enrollment-step-one">Skip to application</a>
+  <header class="ra-topbar">
+    <div class="ra-topbar-inner">
+      <a class="ra-logo" href="index.html" aria-label="ReVitalized Academy home"><img src="assets/images/revitalized-logo-dark-approved-v69.png" alt="ReVitalized Academy"></a>
+      <nav class="ra-nav" id="journey-nav" aria-label="Enrollment navigation">
+        <a href="index.html">Home</a>
+        <a href="plans.html">Programs</a>
+        <a href="consult.html">Free Vitality Assessment</a>
+        <a href="stories.html">Stories</a>
+      </nav>
+      <div>
+        <button class="ra-menu-toggle" type="button" aria-expanded="false" aria-controls="journey-nav">Menu</button>
+        <a class="ra-header-cta" href="plans.html">Compare Programs</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="ra-enroll-hero">
+      <div class="ra-enroll-hero-inner">
+        <span class="ra-eyebrow">Start your journey</span>
+        <h1>Tell us where you want to <em>begin.</em></h1>
+        <p>This first step is intentionally short. Give us the basics, tell us what you want help with and choose the program that interests you. If you are not sure which program fits, that is completely fine.</p>
+        <div class="ra-progress" aria-label="Enrollment progress">
+          <div class="ra-progress-step is-current" aria-current="step">Step 1 · Get started</div>
+          <div class="ra-progress-step">Step 2 · Health profile</div>
+          <div class="ra-progress-step">Step 3 · Coaching path</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ra-enroll-shell">
+      <form class="ra-enroll-card" id="enrollment-step-one" name="enrollment" method="POST" action="enrollment-thank-you.html" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="enrollment">
+        <input type="hidden" name="enrollment_stage" value="initial-lead-capture">
+        <input type="hidden" name="program_source" id="program-source" value="direct">
+        <input type="hidden" name="utm_source" id="utm-source" value="">
+        <input type="hidden" name="utm_medium" id="utm-medium" value="">
+        <input type="hidden" name="utm_campaign" id="utm-campaign" value="">
+        <p hidden><label>Don’t fill this out: <input name="bot-field"></label></p>
+
+        <div class="ra-enroll-card-head">
+          <div><h2>A little clarity starts here.</h2><p>Eight required questions. No long health history yet.</p></div>
+          <span class="ra-time-pill">About 2–3 minutes</span>
+        </div>
+
+        <div class="ra-form-body">
+          <div class="ra-form-grid">
+            <div class="ra-field" data-field>
+              <label for="full-name">Full name <span class="ra-required" aria-hidden="true">*</span></label>
+              <input id="full-name" name="full_name" autocomplete="name" maxlength="150" placeholder="Your first and last name" required>
+              <span class="ra-field-error" data-error>Please enter your full name.</span>
+            </div>
+
+            <div class="ra-field" data-field>
+              <label for="email">Best email <span class="ra-required" aria-hidden="true">*</span></label>
+              <input id="email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="254" placeholder="you@example.com" required>
+              <span class="ra-field-error" data-error>Please enter a valid email address.</span>
+            </div>
+
+            <div class="ra-field" data-field>
+              <label for="phone">Phone number <span class="ra-required" aria-hidden="true">*</span></label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="30" placeholder="(555) 234-5678" required>
+              <span class="ra-field-error" data-error>Please enter your best phone number.</span>
+            </div>
+
+            <div class="ra-field" data-field>
+              <label for="age">How old are you this year? <span class="ra-required" aria-hidden="true">*</span></label>
+              <input id="age" name="age" type="number" min="14" max="120" step="1" inputmode="numeric" placeholder="Age" required>
+              <span class="ra-field-error" data-error>Please enter your age.</span>
+            </div>
+
+            <div class="ra-field" data-field>
+              <label for="sex">Are you a man or woman? <span class="ra-required" aria-hidden="true">*</span></label>
+              <select id="sex" name="sex" required>
+                <option value="">Select one</option>
+                <option value="Man">Man</option>
+                <option value="Woman">Woman</option>
+              </select>
+              <span class="ra-field-error" data-error>Please select one option.</span>
+            </div>
+
+            <div class="ra-field" data-field>
+              <label for="referral-source">How did you learn about ReVitalized Academy?</label>
+              <input id="referral-source" name="referral_source" maxlength="300" placeholder="Friend, referral, social media, event…">
+              <p class="ra-field-help">Optional, but it helps us know who or what connected you with us.</p>
+            </div>
+
+            <div class="ra-field ra-full" data-field>
+              <label for="biggest-goals">What are the biggest things you want help with in the next 6–12 months? <span class="ra-required" aria-hidden="true">*</span></label>
+              <textarea id="biggest-goals" name="biggest_goals" maxlength="2200" placeholder="Tell us what you most want to improve and what would make the biggest difference in your life." required></textarea>
+              <span class="ra-field-error" data-error>Please tell us what you most want help with.</span>
+            </div>
+
+            <fieldset class="ra-program-fieldset ra-full" id="program-interest" data-program-fieldset>
+              <legend>Which program are you most interested in? <span class="ra-required" aria-hidden="true">*</span></legend>
+              <div class="ra-program-choices">
+                <label class="ra-program-choice"><input type="radio" name="program_interest" value="Holistic Foundations" data-plan="holistic-foundations" required><span><strong>Holistic Foundations</strong><small>$25/week · family membership</small></span></label>
+                <label class="ra-program-choice"><input type="radio" name="program_interest" value="Vitality Accelerator Cohort" data-plan="vitality-accelerator-cohort"><span><strong>Vitality Accelerator Cohort</strong><small>$1,000 · 40-day group cohort</small></span></label>
+                <label class="ra-program-choice"><input type="radio" name="program_interest" value="Vitality Accelerator" data-plan="vitality-accelerator"><span><strong>Vitality Accelerator</strong><small>$2,000 · 40-day private + group</small></span></label>
+                <label class="ra-program-choice"><input type="radio" name="program_interest" value="Total Wellness Intensive — 6 Month" data-plan="total-wellness-6"><span><strong>6-Month Intensive</strong><small>Investment discussed with coach</small></span></label>
+                <label class="ra-program-choice"><input type="radio" name="program_interest" value="Total Wellness Intensive — 12 Month" data-plan="total-wellness-12"><span><strong>12-Month Intensive</strong><small>Investment discussed with coach</small></span></label>
+                <label class="ra-program-choice"><input type="radio" name="program_interest" value="I'm not sure yet" data-plan="not-sure"><span><strong>I’m not sure yet</strong><small>Help me choose the right program</small></span></label>
+              </div>
+              <div class="ra-program-help"><span>You are not locking yourself into a package here.</span><a href="plans.html" target="_blank" rel="noopener">Compare every program and what is included →</a></div>
+              <span class="ra-field-error" data-program-error>Please choose a program or select “I’m not sure yet.”</span>
+            </fieldset>
+
+            <div class="ra-field ra-full" data-field>
+              <label for="start-timeline">How soon would you like to start getting healthier? <span class="ra-required" aria-hidden="true">*</span></label>
+              <select id="start-timeline" name="start_timeline" required>
+                <option value="">Select the closest answer</option>
+                <option>As soon as possible</option>
+                <option>Within the next 30 days</option>
+                <option>Within 1–3 months</option>
+                <option>More than 3 months from now</option>
+                <option>I’m exploring my options right now</option>
+              </select>
+              <span class="ra-field-error" data-error>Please tell us when you would like to begin.</span>
+            </div>
+          </div>
+
+          <div class="ra-consent">
+            <label><input type="checkbox" name="application_contact_consent" value="Yes" required><span>I’m asking ReVitalized Academy to follow up with me about this application and understand that the team may contact me by phone, text or email regarding my next steps. <span class="ra-required" aria-hidden="true">*</span></span></label>
+          </div>
+
+          <div class="ra-review-note"><strong>What happens after this?</strong> This first step captures your intent to begin. The detailed health profile comes after this initial application so you do not have to answer a hundred-plus questions before ReVitalized knows you want to move forward.</div>
+
+          <div class="ra-form-status" id="form-status" role="alert"></div>
+          <div class="ra-form-footer">
+            <p>Submitting this first step is not a payment and does not lock you into a program. Your answers are used to begin the enrollment conversation and prepare the next step.</p>
+            <button class="ra-btn ra-btn-primary" id="enrollment-submit" type="submit">Save Step 1 &amp; Continue <span aria-hidden="true">→</span></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer class="ra-journey-footer">
+    <div class="ra-journey-footer-inner">
+      <a href="index.html"><img src="assets/images/revitalized-logo-dark-approved-v69.png" alt="ReVitalized Academy"></a>
+      <div class="ra-footer-copy">This short application collects initial enrollment interest and general goals. Detailed health information is handled separately in the health-profile / assessment process.</div>
+      <div class="ra-footer-links"><a href="plans.html">Programs</a><a href="consult.html">Free Vitality Assessment</a><a href="disclaimer.html">Health &amp; Results Disclaimer</a></div>
+      <div class="ra-footer-disclaimer">ReVitalized Academy provides educational and coaching services. Content is not intended to diagnose, treat, cure or prevent disease and is not a substitute for professional medical advice. Results vary.</div>
+    </div>
+  </footer>
+  <script src="js/enrollment82.js?v=82" defer></script>
+</body>
+</html>
