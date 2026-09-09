@@ -1,0 +1,32 @@
+name: Longevity Matrix copy QA
+on:
+  push:
+    branches: [fix/longevity-matrix-copy-20260909]
+    paths: ['.github/workflows/matrix-copy-qa.yml']
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Record source snapshot
+        run: |
+          git rev-parse HEAD > MATRIX-QA-SNAPSHOT.txt
+          git ls-tree -r HEAD >> MATRIX-QA-SNAPSHOT.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: matrix-copy-source
+          retention-days: 2
+          path: |
+            *.html
+            css/
+            js/
+            netlify.toml
+            package.json
+            tests/
+            .github/workflows/assessment-regression.yml
+            BUILD71-ASSESSMENT-RESTORE.md
+            MATRIX-QA-SNAPSHOT.txt
+            assets/images/longevity-matrix-approved-2026.png
+            assets/images/icon-*-approved.png
