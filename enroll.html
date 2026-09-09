@@ -1,1 +1,344 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Enrollment | ReVitalized Academy</title><link rel="stylesheet" href="css/styles.css?v=70"><style>.form-page{min-height:100vh;background:linear-gradient(180deg,#fff,#f4faf1);padding:36px 18px}.form-shell{max-width:800px;margin:auto}.form-shell>a img{width:230px;margin:0 auto 26px}.form-card{background:#fff;border:1px solid #e5e9e4;border-radius:18px;box-shadow:0 18px 55px rgba(20,45,24,.08);padding:34px}.form-card h1{font-size:38px;margin:0 0 8px}.form-card h1 em{font-style:normal;color:#239408}.form-card>p{color:#5c665e}.placeholder{border:1px dashed #a9c9a0;background:#f8fcf7;border-radius:12px;padding:18px;margin:20px 0;font-size:13px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:13px;font-weight:800}.field input,.field textarea,.field select{border:1px solid #dbe2da;border-radius:9px;padding:13px 14px;font:inherit}.field textarea{min-height:110px;resize:vertical}.form-actions{margin-top:20px}.form-note{font-size:11px;color:#6d756f;margin-top:12px}@media(max-width:650px){.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.form-card{padding:24px}.form-card h1{font-size:32px}}</style></head><body><main class="form-page"><div class="form-shell"><a href="index.html"><img src="assets/images/revitalized-logo-dark-approved-v69.png" alt="ReVitalized Academy"></a><section class="form-card"><span class="eyebrow green">ENROLLMENT</span><h1>Ready to begin your <em>ReVitalized journey?</em></h1><p>This Phase One form is intentionally streamlined. It is prepared for the final enrollment questions and future back-office integration without redesigning the page.</p><div class="placeholder"><strong>Enrollment content placeholder:</strong> final package selection, required enrollment questions, acknowledgements and payment/onboarding steps will be added once approved by Justyn &amp; Elle.</div><form name="enrollment" method="POST" data-netlify="true" netlify-honeypot="bot-field"><input type="hidden" name="form-name" value="enrollment"><p hidden><label>Don’t fill this out: <input name="bot-field"></label></p><div class="form-grid"><div class="field"><label for="first">First name</label><input id="first" name="first_name" required></div><div class="field"><label for="last">Last name</label><input id="last" name="last_name" required></div><div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required></div><div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" required></div><div class="field full"><label for="goal">What are you hoping to improve?</label><textarea id="goal" name="health_goals"></textarea></div><div class="field full"><label for="success">What would meaningful progress look like for you?</label><textarea id="success" name="success_definition"></textarea></div></div><div class="form-actions"><button class="btn btn-primary btn-large" type="submit">Submit Enrollment Interest</button><p class="form-note">This Phase One form avoids detailed medical-history collection. Netlify form notifications should be configured to contact@revitalizedacademy.com. The submission layer can later be replaced by the ReVitalized back office/API.</p></div></form></section></div></main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Programs & Enrollment | ReVitalized Academy</title>
+  <meta name="description" content="Explore ReVitalized Academy coaching and membership programs, compare the level of support that fits you, and start your enrollment journey.">
+  <link rel="stylesheet" href="css/styles.css?v=71">
+  <link rel="stylesheet" href="css/enroll82.css?v=82">
+</head>
+<body class="enroll82-page">
+  <header class="site-header enroll82-header">
+    <a class="brand" href="index.html" aria-label="ReVitalized Academy home">
+      <img src="assets/images/revitalized-logo-dark-approved-v69.png" alt="ReVitalized Academy">
+    </a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav">Menu</button>
+    <nav id="main-nav" class="main-nav" aria-label="Primary navigation">
+      <a href="founders.html">About</a>
+      <a href="index.html#matrix">Longevity Matrix</a>
+      <a href="index.html#coaching">Coaching</a>
+      <a href="families.html">Family Health</a>
+      <a href="stories.html">Stories</a>
+      <a href="free-help.html">Free Help</a>
+    </nav>
+    <a class="btn btn-primary header-cta vitality-primary-cta" href="consult.html">Free Vitality Assessment</a>
+  </header>
+
+  <main>
+    <section class="enroll82-hero" aria-labelledby="enroll82-title">
+      <div class="enroll82-hero-glow" aria-hidden="true"></div>
+      <div class="enroll82-hero-copy">
+        <span class="enroll82-kicker">PROGRAMS &amp; COACHING</span>
+        <h1 id="enroll82-title">The right level of support for the <em>season you’re in.</em></h1>
+        <p class="enroll82-lead">One ReVitalized philosophy. Five ways to begin. Choose the path that best matches the amount of guidance, accountability and personal coaching you want right now.</p>
+        <div class="enroll82-hero-actions">
+          <a class="btn btn-primary btn-large" href="#programs">Explore Programs <span aria-hidden="true">↓</span></a>
+          <a class="enroll82-text-link" href="consult.html">Not sure where to start? Take the Free Vitality Assessment →</a>
+        </div>
+        <p class="enroll82-hero-note"><span>✓</span> Selecting a package starts the enrollment conversation. Final fit, payment structure, agreements and start date are confirmed with the ReVitalized team before enrollment is complete.</p>
+      </div>
+      <aside class="enroll82-hero-card" aria-label="ReVitalized program philosophy">
+        <span class="enroll82-card-kicker">ONE LONGEVITY LIFESTYLE</span>
+        <h2>Different levels of support.<br><strong>One personalized path forward.</strong></h2>
+        <div class="enroll82-path">
+          <span>Evaluate</span><i>→</i><span>Prioritize</span><i>→</i><span>Personalize</span><i>→</i><span>Implement</span>
+        </div>
+        <p>The goal is not to force everyone into the same plan. It is to help you choose the level of support that makes healthy living more practical, consistent and sustainable in real life.</p>
+      </aside>
+    </section>
+
+    <section class="enroll82-programs" id="programs" aria-labelledby="programs-title">
+      <div class="enroll82-section-intro">
+        <span class="enroll82-kicker">CHOOSE YOUR PATH</span>
+        <h2 id="programs-title">From self-guided family access to private coaching with Justyn &amp; Elle.</h2>
+        <p>You can begin with a flexible membership, step into a focused 40-day coaching experience, or choose a longer-term intensive for deeper ongoing support.</p>
+      </div>
+
+      <div class="enroll82-tier-label"><span>01</span><div><strong>Build the foundation</strong><small>Flexible, family-ready access</small></div></div>
+      <article class="program82-card program82-card--wide" data-program-card="holistic-foundations">
+        <div class="program82-head">
+          <div>
+            <span class="program82-badge">MOST ACCESSIBLE</span>
+            <h3>Holistic Foundations</h3>
+            <p class="program82-position">A self-guided ReVitalized membership for families who want the tools, education and community to build healthier rhythms at their own pace.</p>
+          </div>
+          <div class="program82-price"><strong>$25</strong><span>/ week</span><small>Recurring membership</small></div>
+        </div>
+        <div class="program82-meta">
+          <span><b>Format</b> Self-guided membership</span>
+          <span><b>Who it serves</b> Family</span>
+          <span><b>Family access</b> Up to 5 profiles</span>
+          <span><b>Length</b> Until cancellation</span>
+        </div>
+        <div class="program82-body program82-body--wide">
+          <div>
+            <h4>What’s included</h4>
+            <ul class="program82-list">
+              <li>ReVitalized member platform access</li>
+              <li>Private community of like-minded people</li>
+              <li>Educational content and practical resources</li>
+              <li>Monthly community livestream Q&amp;A</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Tools for daily life</h4>
+            <ul class="program82-list">
+              <li>Signature nutrition and fitness plans</li>
+              <li>Nutrition and workout tracking</li>
+              <li>Longevity Lifestyle habit builder</li>
+              <li>Gamified health challenges and personal biometric recording</li>
+              <li>Family Health Hub</li>
+            </ul>
+          </div>
+        </div>
+        <div class="program82-foot">
+          <p><strong>Best fit:</strong> Families who want the most budget-friendly way to begin and prefer to move at their own pace.</p>
+          <button class="btn btn-primary program82-select" type="button" data-select-program="holistic-foundations">Select This Package &amp; Start Your Journey <span aria-hidden="true">→</span></button>
+        </div>
+      </article>
+
+      <div class="enroll82-tier-label"><span>02</span><div><strong>Create focused momentum</strong><small>40-day coaching experiences</small></div></div>
+      <div class="program82-grid program82-grid--two">
+        <article class="program82-card" data-program-card="vitality-accelerator-cohort">
+          <div class="program82-head program82-head--stacked">
+            <div>
+              <span class="program82-badge program82-badge--gold">GROUP COACHING</span>
+              <h3>Vitality Accelerator Cohort</h3>
+              <p class="program82-position">The 40-day Accelerator framework delivered in a group setting for people who want structure, coaching and community without scheduled private 1-on-1 sessions.</p>
+            </div>
+            <div class="program82-price"><strong>$1,000</strong><span>one time</span><small>40-day cohort</small></div>
+          </div>
+          <div class="program82-meta program82-meta--compact">
+            <span><b>Format</b> Group coaching</span>
+            <span><b>Who it serves</b> Individual / couple</span>
+            <span><b>Maximum</b> 2 people</span>
+          </div>
+          <div class="program82-body">
+            <h4>Designed for</h4>
+            <ul class="program82-list">
+              <li>The same core 40-day path as Vitality Accelerator in a cohort environment</li>
+              <li>Group-based coaching and accountability</li>
+              <li>No scheduled private 1-on-1 coaching except when an emergency requires it</li>
+              <li>A lower-cost path for people who still want a defined coaching experience</li>
+            </ul>
+          </div>
+          <div class="program82-terms">Flexible payment arrangements may be available; the cohort begins after the program is paid in full.</div>
+          <div class="program82-foot program82-foot--stacked">
+            <p><strong>Best fit:</strong> You want a defined 40-day plan and group accountability without the cost of private coaching.</p>
+            <button class="btn btn-primary program82-select" type="button" data-select-program="vitality-accelerator-cohort">Select This Package &amp; Start Your Journey <span aria-hidden="true">→</span></button>
+          </div>
+        </article>
+
+        <article class="program82-card program82-card--featured" data-program-card="vitality-accelerator">
+          <div class="program82-feature-flag">RECOMMENDED STARTING POINT</div>
+          <div class="program82-head program82-head--stacked">
+            <div>
+              <span class="program82-badge">PRIVATE + GROUP COACHING</span>
+              <h3>Vitality Accelerator</h3>
+              <p class="program82-position">A focused 40-day coaching experience built to help you get clear on priorities, create a practical plan and build momentum with direct coach support.</p>
+            </div>
+            <div class="program82-price"><strong>$2,000</strong><span>one time</span><small>40 days</small></div>
+          </div>
+          <div class="program82-meta program82-meta--compact">
+            <span><b>Format</b> 1-on-1 + group</span>
+            <span><b>Who it serves</b> Individual / couple</span>
+            <span><b>Maximum</b> 2 people</span>
+          </div>
+          <div class="program82-body">
+            <h4>What’s included</h4>
+            <ul class="program82-list">
+              <li>4 private coaching sessions, up to 45 minutes each</li>
+              <li>6 live group coaching classes across the program</li>
+              <li>Direct coach support through messages and calls when needed</li>
+              <li>ReVitalized member platform access</li>
+              <li>Holistic Clarity Course included <span class="program82-value">($750 value)</span></li>
+            </ul>
+          </div>
+          <div class="program82-terms">Flexible payment arrangements may be available; the program begins after it is paid in full.</div>
+          <div class="program82-foot program82-foot--stacked">
+            <p><strong>Best fit:</strong> You want a fast, focused coaching experience with both private guidance and group support.</p>
+            <button class="btn btn-primary program82-select" type="button" data-select-program="vitality-accelerator">Select This Package &amp; Start Your Journey <span aria-hidden="true">→</span></button>
+          </div>
+        </article>
+      </div>
+
+      <div class="enroll82-tier-label"><span>03</span><div><strong>Go deeper with ongoing coaching</strong><small>Longer-term personalized support</small></div></div>
+      <div class="program82-grid program82-grid--two">
+        <article class="program82-card program82-card--premium" data-program-card="total-wellness-6">
+          <div class="program82-head program82-head--stacked">
+            <div>
+              <span class="program82-badge program82-badge--deep">LONG-TERM COACHING</span>
+              <h3>Total Wellness Intensive</h3>
+              <p class="program82-program-length">6-Month</p>
+              <p class="program82-position">A higher-touch coaching relationship for people who want a personalized Longevity Lifestyle plan, consistent direct support and monthly plan refinement.</p>
+            </div>
+            <div class="program82-price"><strong>$7,500</strong><span>total</span><small>$1,250 / month equivalent</small></div>
+          </div>
+          <div class="program82-meta program82-meta--compact">
+            <span><b>Format</b> Personalized intensive</span>
+            <span><b>Who it serves</b> Individual / couple</span>
+            <span><b>Length</b> 6 months</span>
+          </div>
+          <div class="program82-body">
+            <h4>What’s included</h4>
+            <ul class="program82-list">
+              <li>1 private 90-minute coaching meeting each month</li>
+              <li>2–3 direct weekly coach check-ins by message or call</li>
+              <li>Custom Longevity Lifestyle plan built around all 12 drivers of holistic health</li>
+              <li>Plan reviewed and updated monthly</li>
+              <li>Weekly live group coaching class</li>
+              <li>ReVitalized member platform + Holistic Clarity Course <span class="program82-value">($750 value)</span></li>
+            </ul>
+          </div>
+          <div class="program82-terms">Program can begin once $3,750 has been paid. The remaining balance can be structured through monthly or weekly payments within the six-month term.</div>
+          <div class="program82-foot program82-foot--stacked">
+            <p><strong>Best fit:</strong> You want sustained personal coaching beyond the 40-day Accelerator and consistent help adapting the plan as life changes.</p>
+            <button class="btn btn-primary program82-select" type="button" data-select-program="total-wellness-6">Select This Package &amp; Start Your Journey <span aria-hidden="true">→</span></button>
+          </div>
+        </article>
+
+        <article class="program82-card program82-card--signature" data-program-card="total-wellness-12">
+          <div class="program82-signature-line"><span>✦</span> SIGNATURE PRIVATE COACHING <span>✦</span></div>
+          <div class="program82-head program82-head--stacked">
+            <div>
+              <span class="program82-badge program82-badge--signature">WITH JUSTYN &amp; ELLE</span>
+              <h3>Total Wellness Intensive</h3>
+              <p class="program82-program-length">12-Month</p>
+              <p class="program82-position">The highest-access ReVitalized coaching experience, designed for clients who want an extended private coaching relationship directly with Justyn &amp; Elle.</p>
+            </div>
+            <div class="program82-price"><strong>$30,000</strong><span>total</span><small>$2,500 / month equivalent</small></div>
+          </div>
+          <div class="program82-meta program82-meta--compact">
+            <span><b>Format</b> Signature private coaching</span>
+            <span><b>Coach access</b> Justyn &amp; Elle</span>
+            <span><b>Length</b> 12 months</span>
+          </div>
+          <div class="program82-body">
+            <h4>What’s included</h4>
+            <ul class="program82-list">
+              <li>1 private 90-minute coaching meeting each month with Justyn &amp; Elle</li>
+              <li>2–3 direct weekly check-ins with Justyn &amp; Elle by message or call</li>
+              <li>Custom Longevity Lifestyle plan built around all 12 drivers of holistic health</li>
+              <li>Plan reviewed and updated monthly</li>
+              <li>Weekly live group coaching class</li>
+              <li>ReVitalized member platform + Holistic Clarity Course <span class="program82-value">($750 value)</span></li>
+            </ul>
+          </div>
+          <div class="program82-terms">By application. This path normally follows Vitality Accelerator unless the ReVitalized team approves an exception. Program can begin once $10,000 has been paid, with the remaining balance structured within the 12-month term.</div>
+          <div class="program82-foot program82-foot--stacked">
+            <p><strong>Best fit:</strong> You want the greatest level of direct access, personalization and long-term accountability available through ReVitalized Academy.</p>
+            <button class="btn btn-primary program82-select" type="button" data-select-program="total-wellness-12">Select This Package &amp; Start Your Journey <span aria-hidden="true">→</span></button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="enroll82-chooser" aria-labelledby="chooser-title">
+      <div class="enroll82-chooser-copy">
+        <span class="enroll82-kicker">NOT SURE WHICH ONE?</span>
+        <h2 id="chooser-title">Choose based on the support you want—not just the price.</h2>
+        <p>There is no advantage to buying more coaching than you need. The goal is to match the program to your current starting point, your desired pace and the level of accountability that will actually help you follow through.</p>
+      </div>
+      <div class="enroll82-choice-grid">
+        <div><strong>I want flexibility.</strong><span>Start with Holistic Foundations.</span></div>
+        <div><strong>I want group accountability.</strong><span>Choose Vitality Accelerator Cohort.</span></div>
+        <div><strong>I want a focused private jumpstart.</strong><span>Choose Vitality Accelerator.</span></div>
+        <div><strong>I want ongoing personalized coaching.</strong><span>Choose the 6-Month Intensive.</span></div>
+        <div><strong>I want direct long-term access to Justyn &amp; Elle.</strong><span>Apply for the 12-Month Intensive.</span></div>
+      </div>
+      <a class="enroll82-assessment-link" href="consult.html"><span>◎</span><div><strong>Still unsure?</strong><small>Take the Free Vitality Assessment and let the ReVitalized team help you identify the best next step.</small></div><b>Start Assessment →</b></a>
+    </section>
+
+    <section class="enroll82-enrollment" id="enrollment" aria-labelledby="enrollment-title">
+      <div class="enroll82-enrollment-copy">
+        <span class="enroll82-kicker">YOUR NEXT STEP</span>
+        <h2 id="enrollment-title">Tell us where you’d like to begin.</h2>
+        <p>Selecting a package does not lock you into anything. It gives the ReVitalized team context so the next conversation can focus on fit, timing and the right level of support.</p>
+        <div class="enroll82-selected" id="selected-program-card" aria-live="polite">
+          <span>SELECTED PACKAGE</span>
+          <strong id="selected-program-name">Choose a package above</strong>
+          <small id="selected-program-details">Your selection will appear here.</small>
+        </div>
+        <ul class="enroll82-next-list">
+          <li><span>1</span><div><strong>Send your enrollment request</strong><small>Share the essentials so the team knows how to follow up.</small></div></li>
+          <li><span>2</span><div><strong>Confirm fit and details</strong><small>Program fit, payment terms, agreements and start timing are reviewed with you.</small></div></li>
+          <li><span>3</span><div><strong>Begin your ReVitalized journey</strong><small>Once accepted and enrolled, onboarding and your first next steps are coordinated.</small></div></li>
+        </ul>
+      </div>
+
+      <form class="enroll82-form" name="enrollment" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="enrollment">
+        <input type="hidden" name="form_source" value="website-programs-build82">
+        <p hidden><label>Don’t fill this out: <input name="bot-field"></label></p>
+
+        <div class="enroll82-form-head">
+          <span>ENROLLMENT REQUEST</span>
+          <h3>Start Your Journey</h3>
+          <p>Complete the short form below and the ReVitalized team can help confirm your next step.</p>
+        </div>
+
+        <div class="enroll82-form-grid">
+          <div class="enroll82-field"><label for="first">First name</label><input id="first" name="first_name" autocomplete="given-name" required></div>
+          <div class="enroll82-field"><label for="last">Last name</label><input id="last" name="last_name" autocomplete="family-name" required></div>
+          <div class="enroll82-field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+          <div class="enroll82-field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" autocomplete="tel" required></div>
+          <div class="enroll82-field enroll82-field--full">
+            <label for="program">Which package are you interested in?</label>
+            <select id="program" name="selected_program" required>
+              <option value="">Choose a package</option>
+              <option value="holistic-foundations">Holistic Foundations — $25/week</option>
+              <option value="vitality-accelerator-cohort">Vitality Accelerator Cohort — $1,000</option>
+              <option value="vitality-accelerator">Vitality Accelerator — $2,000</option>
+              <option value="total-wellness-6">Total Wellness Intensive 6-Month — $7,500</option>
+              <option value="total-wellness-12">Total Wellness Intensive 12-Month — $30,000</option>
+            </select>
+          </div>
+          <div class="enroll82-field enroll82-field--full">
+            <label for="who">Who are you exploring ReVitalized for?</label>
+            <select id="who" name="enrollment_for" required>
+              <option value="">Select one</option>
+              <option>Myself</option>
+              <option>Myself + spouse / partner</option>
+              <option>My family</option>
+            </select>
+          </div>
+          <div class="enroll82-field enroll82-field--full">
+            <label for="goal">What are the biggest things you want help with over the next 6–12 months?</label>
+            <textarea id="goal" name="health_goals" rows="4" required></textarea>
+          </div>
+          <div class="enroll82-field enroll82-field--full">
+            <label for="why-now">Why does making progress matter to you right now?</label>
+            <textarea id="why-now" name="why_now" rows="4"></textarea>
+          </div>
+          <div class="enroll82-field enroll82-field--full">
+            <label for="referral">How did you learn about ReVitalized Academy? <span>Optional</span></label>
+            <input id="referral" name="referral_source">
+          </div>
+        </div>
+
+        <label class="enroll82-consent">
+          <input type="checkbox" name="enrollment_acknowledgement" value="yes" required>
+          <span>I understand this is an enrollment request. Final program fit, pricing/payment structure, agreements and start date are confirmed by ReVitalized Academy before enrollment is complete.</span>
+        </label>
+
+        <button class="btn btn-primary btn-large enroll82-submit" type="submit">Send My Enrollment Request <span aria-hidden="true">→</span></button>
+        <p class="enroll82-form-note">Health and wellness information on this site is educational and is not a substitute for professional medical advice. <a href="disclaimer.html">Read the Health &amp; Results Disclaimer.</a></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="enroll82-footer">
+    <div class="enroll82-footer-main">
+      <img src="assets/images/revitalized-logo-dark-approved-v69.png" alt="ReVitalized Academy">
+      <p>Personalized coaching, education and accountability for building a healthier Longevity Lifestyle.</p>
+      <div class="enroll82-footer-links"><a href="index.html">Home</a><a href="founders.html">About</a><a href="stories.html">Stories</a><a href="free-help.html">Free Help</a><a href="disclaimer.html">Disclaimer</a></div>
+      <a class="enroll82-footer-contact" href="mailto:contact@revitalizedacademy.com">contact@revitalizedacademy.com</a>
+    </div>
+    <div class="enroll82-footer-bottom"><span>© 2026 ReVitalized Academy. All rights reserved.</span><span>Results vary. No specific health outcome is guaranteed.</span></div>
+  </footer>
+
+  <script src="js/app.js?v=82"></script>
+  <script src="js/enroll82.js?v=82"></script>
+</body>
+</html>
