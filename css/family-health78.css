@@ -1,0 +1,88 @@
+/* BUILD 78 — Family Health spacing + illustrated generations.
+   Scoped to the family page; no shared CTA, assessment or legal styles. */
+
+/* The approved desktop art contains 132 source pixels of empty cream below
+   its final paragraph. Crop only the bottom 66 pixels at proportional scale.
+   The image and its CTA overlay coordinate system remain unchanged. Together
+   with 70px -> 35px pillar padding, this halves the desktop gap. */
+@media (min-width:1024px){
+  .family-health-page77 #family-health:not(.is-art-unavailable) .fh77-desktop{
+    margin-bottom:calc(-100vw * 66 / 1448);
+  }
+  .family-health-page77 #family-matrix.fh77-pillars{
+    padding-top:35px!important;
+  }
+}
+
+#family-generations78{
+  position:relative;isolation:isolate;margin:0;padding:58px 0 62px;
+  border-top:1px solid rgba(183,147,72,.12);
+  border-bottom:1px solid rgba(183,147,72,.12);
+  background:radial-gradient(ellipse at 9% 85%,rgba(189,205,157,.10),transparent 42%),
+             radial-gradient(ellipse at 94% 80%,rgba(190,168,211,.08),transparent 39%),#fcf7ee;
+  color:#154734;
+}
+#family-generations78 *,#family-generations78 *::before,#family-generations78 *::after{box-sizing:border-box}
+#family-generations78 .fh78-generations-inner{width:calc(100% - 88px);max-width:1440px;margin:0 auto}
+#family-generations78 .family-section-heading{max-width:890px;margin:0 auto 36px;text-align:center}
+#family-generations78 .family-section-heading h2{font-size:clamp(32px,3vw,46px);line-height:1.13;margin:15px 0 15px;color:#124c3a}
+#family-generations78 .family-section-heading p{font-size:16px;line-height:1.65;max-width:790px;color:#52645b}
+#family-generations78 .fh78-stage-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));align-items:stretch;gap:16px}
+#family-generations78 .fh78-stage{
+  --fh78-accent:#608446;--fh78-doodle:#8ba96b;--fh78-border:#dce3cd;--fh78-tint:#f2f5e8;
+  position:relative;display:grid;grid-template-columns:82px minmax(0,1fr);column-gap:12px;
+  align-content:start;min-width:0;padding:24px 18px 40px;min-height:225px;
+  border:1px solid var(--fh78-border);border-radius:18px;
+  background:linear-gradient(130deg,rgba(255,255,255,.67),transparent 62%),var(--fh78-tint);
+  box-shadow:0 3px 5px rgba(29,46,30,.025),0 13px 29px rgba(44,54,37,.045);
+}
+#family-generations78 .fh78-stage--teens{--fh78-accent:#c4912c;--fh78-doodle:#deb568;--fh78-border:#f0dfb5;--fh78-tint:#fff5e2}
+#family-generations78 .fh78-stage--parents{--fh78-accent:#2e8090;--fh78-doodle:#7ba8b0;--fh78-border:#d0e3e8;--fh78-tint:#f0f7f8}
+#family-generations78 .fh78-stage--grandparents{--fh78-accent:#82639f;--fh78-doodle:#ad95c3;--fh78-border:#e5d7eb;--fh78-tint:#faf2fa}
+#family-generations78 .fh78-number{
+  position:absolute;left:13px;top:13px;width:25px;height:25px;display:grid;place-items:center;
+  border-radius:50%;border:1px solid rgba(255,255,255,.85);box-shadow:0 2px 4px rgba(20,40,24,.06);
+  font-family:inherit;font-weight:750;font-size:11px;letter-spacing:0;line-height:1;
+  color:#fff;background:var(--fh78-accent);z-index:1;
+}
+#family-generations78 .fh78-portrait{grid-column:1;align-self:start;display:flex;align-items:flex-end;justify-content:center;margin:21px 0 0;min-width:0;height:98px}
+#family-generations78 .fh78-portrait img{display:block;width:100%;height:auto;max-width:100%;max-height:98px;object-fit:contain;object-position:50% 100%;margin:0;border:0;padding:0}
+#family-generations78 .fh78-stage--parents .fh78-portrait,#family-generations78 .fh78-stage--grandparents .fh78-portrait{height:81px}
+#family-generations78 .fh78-stage-copy{grid-column:2;min-width:0}
+#family-generations78 .fh78-stage-copy h3{margin:0 0 10px;font-family:Georgia,'Times New Roman',serif;font-size:clamp(22px,1.64vw,26px);line-height:1.16;letter-spacing:-.025em;color:#173f32;font-weight:700;overflow-wrap:normal}
+#family-generations78 .fh78-stage--parents h3{color:#205567}
+#family-generations78 .fh78-stage--grandparents h3{color:#5c416f}
+#family-generations78 .fh78-stage-copy p{margin:0;font-size:14px;line-height:1.65;color:#43564c;font-weight:400}
+#family-generations78 .fh78-doodle{position:absolute;bottom:12px;color:var(--fh78-doodle);width:28px;height:28px;pointer-events:none}
+#family-generations78 .fh78-doodle--left{left:17px;transform:rotate(-8deg)}
+#family-generations78 .fh78-doodle--right{right:14px;width:19px;height:19px;bottom:14px;transform:rotate(9deg)}
+#family-generations78 .fh78-doodle svg{display:block;width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+#family-generations78 .fh78-stage--teens .fh78-doodle svg{fill:rgba(224,180,75,.12)}
+@media (max-width:1279px){
+  #family-generations78 .fh78-generations-inner{width:calc(100% - 48px);max-width:920px}
+  #family-generations78 .fh78-stage-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+  #family-generations78 .fh78-stage{grid-template-columns:90px minmax(0,1fr);gap:18px;padding:26px 24px 40px;min-height:210px}
+  #family-generations78 .fh78-stage-copy h3{font-size:26px}
+  #family-generations78 .fh78-stage-copy p{font-size:15px}
+}
+@media (min-width:640px) and (max-width:959px){
+  #family-generations78 .fh78-stage{grid-template-columns:70px minmax(0,1fr);gap:12px;padding:24px 18px 38px}
+  #family-generations78 .fh78-stage-copy h3{font-size:24px}
+}
+@media (max-width:639px){
+  #family-generations78{padding:40px 0 42px}
+  #family-generations78 .fh78-generations-inner{width:calc(100% - 32px);max-width:470px}
+  #family-generations78 .family-section-heading{margin-bottom:27px}
+  #family-generations78 .family-section-heading h2{font-size:32px;line-height:1.13}
+  #family-generations78 .family-section-heading p{font-size:15px;line-height:1.7}
+  #family-generations78 .fh78-stage-grid{grid-template-columns:minmax(0,1fr);gap:15px}
+  #family-generations78 .fh78-stage{grid-template-columns:82px minmax(0,1fr);gap:14px;padding:24px 20px 36px;min-height:204px;border-radius:18px}
+  #family-generations78 .fh78-stage-copy h3{font-size:25px;letter-spacing:-.028em}
+  #family-generations78 .fh78-stage-copy p{font-size:15px;line-height:1.6}
+}
+@media(max-width:359px){
+  #family-generations78 .fh78-stage{padding-inline:15px;grid-template-columns:72px minmax(0,1fr);gap:11px}
+  #family-generations78 .fh78-stage-copy h3{font-size:23px}
+  #family-generations78 .fh78-stage-copy p{font-size:14px}
+}
+@media print{#family-generations78{background:white}#family-generations78 .fh78-stage-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#family-generations78 .fh78-stage{box-shadow:none;break-inside:avoid}}

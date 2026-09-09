@@ -1,0 +1,783 @@
+{
+  "base_commit": "70ebc02a35615c15131789489e886f37f47886d2",
+  "viewports": [
+    {
+      "width": 320,
+      "pageWidth": 320,
+      "issues": [],
+      "cards": [
+        {
+          "height": 204,
+          "width": 288
+        },
+        {
+          "height": 204,
+          "width": 288
+        },
+        {
+          "height": 204,
+          "width": 288
+        },
+        {
+          "height": 204,
+          "width": 288
+        }
+      ],
+      "portraits": true
+    },
+    {
+      "width": 359,
+      "pageWidth": 359,
+      "issues": [],
+      "cards": [
+        {
+          "height": 204,
+          "width": 327
+        },
+        {
+          "height": 204,
+          "width": 327
+        },
+        {
+          "height": 204,
+          "width": 327
+        },
+        {
+          "height": 204,
+          "width": 327
+        }
+      ],
+      "portraits": true
+    },
+    {
+      "width": 360,
+      "pageWidth": 360,
+      "issues": [],
+      "cards": [
+        {
+          "height": 204,
+          "width": 328
+        },
+        {
+          "height": 204,
+          "width": 328
+        },
+        {
+          "height": 204,
+          "width": 328
+        },
+        {
+          "height": 204,
+          "width": 328
+        }
+      ],
+      "portraits": true
+    },
+    {
+      "width": 375,
+      "pageWidth": 375,
+      "issues": [],
+      "cards": [
+        {
+          "height": 204,
+          "width": 343
+        },
+        {
+          "height": 204,
+          "width": 343
+        },
+        {
+          "height": 204,
+          "width": 343
+        },
+        {
+          "height": 204,
+          "width": 343
+        }
+      ],
+      "portraits": true
+    },
+    {
+      "width": 390,
+      "pageWidth": 390,
+      "issues": [],
+      "cards": [
+        {
+          "height": 204,
+          "width": 358
+        },
+        {
+          "height": 204,
+          "width": 358
+        },
+        {
+          "height": 204,
+          "width": 358
+        },
+        {
+          "height": 204,
+          "width": 358
+        }
+      ],
+      "portraits": true
+    },
+    {
+      "width": 414,
+      "pageWidth": 414,
+      "issues": [],
+      "cards": [
+        {
+          "height": 204,
+          "width": 382
+        },
+        {
+          "height": 204,
+          "width": 382
+        },
+        {
+          "height": 204,
+          "width": 382
+        },
+        {
+          "height": 204,
+          "width": 382
+        }
+      ],
+      "portraits": true
+    },
+    {
+      "width": 480,
+      "pageWidth": 480,
+      "issues": [],
+      "cards": [
+        {
+          "height": 204,
+          "width": 448
+        },
+        {
+          "height": 204,
+          "width": 448
+        },
+        {
+          "height": 204,
+          "width": 448
+        },
+        {
+          "height": 204,
+          "width": 448
+        }
+      ],
+      "portraits": true
+    },
+    {
+      "width": 540,
+      "pageWidth": 540,
+      "issues": [],
+      "cards": [
+        {
+          "height": 204,
+          "width": 470
+        },
+        {
+          "height": 204,
+          "width": 470
+        },
+        {
+          "height": 204,
+          "width": 470
+        },
+        {
+          "height": 204,
+          "width": 470
+        }
+      ],
+      "portraits": true
+    },
+    {
+      "width": 639,
+      "pageWidth": 639,
+      "issues": [],
+      "cards": [
+        {
+          "height": 204,
+          "width": 470
+        },
+        {
+          "height": 204,
+          "width": 470
+        },
+        {
+          "height": 204,
+          "width": 470
+        },
+        {
+          "height": 204,
+          "width": 470
+        }
+      ],
+      "portraits": true
+    },
+    {
+      "width": 640,
+      "pageWidth": 640,
+      "issues": [],
+      "cards": [
+        {
+          "height": 225.578125,
+          "width": 286
+        },
+        {
+          "height": 225.578125,
+          "width": 286
+        },
+        {
+          "height": 225.578125,
+          "width": 286
+        },
+        {
+          "height": 225.578125,
+          "width": 286
+        }
+      ],
+      "portraits": true
+    },
+    {
+      "width": 700,
+      "pageWidth": 700,
+      "issues": [],
+      "cards": [
+        {
+          "height": 210,
+          "width": 316
+        },
+        {
+          "height": 210,
+          "width": 316
+        },
+        {
+          "height": 210,
+          "width": 316
+        },
+        {
+          "height": 210,
+          "width": 316
+        }
+      ],
+      "portraits": true
+    },
+    {
+      "width": 768,
+      "pageWidth": 768,
+      "issues": [],
+      "cards": [
+        {
+          "height": 210,
+          "width": 350
+        },
+        {
+          "height": 210,
+          "width": 350
+        },
+        {
+          "height": 210,
+          "width": 350
+        },
+        {
+          "height": 210,
+          "width": 350
+        }
+      ],
+      "portraits": true
+    },
+    {
+      "width": 800,
+      "pageWidth": 800,
+      "issues": [],
+      "cards": [
+        {
+          "height": 210,
+          "width": 366
+        },
+        {
+          "height": 210,
+          "width": 366
+        },
+        {
+          "height": 210,
+          "width": 366
+        },
+        {
+          "height": 210,
+          "width": 366
+        }
+      ],
+      "portraits": true
+    },
+    {
+      "width": 860,
+      "pageWidth": 860,
+      "issues": [],
+      "cards": [
+        {
+          "height": 210,
+          "width": 396
+        },
+        {
+          "height": 210,
+          "width": 396
+        },
+        {
+          "height": 210,
+          "width": 396
+        },
+        {
+          "height": 210,
+          "width": 396
+        }
+      ],
+      "portraits": true
+    },
+    {
+      "width": 959,
+      "pageWidth": 959,
+      "issues": [],
+      "cards": [
+        {
+          "height": 210,
+          "width": 445.5
+        },
+        {
+          "height": 210,
+          "width": 445.5
+        },
+        {
+          "height": 210,
+          "width": 445.5
+        },
+        {
+          "height": 210,
+          "width": 445.5
+        }
+      ],
+      "portraits": true
+    },
+    {
+      "width": 960,
+      "pageWidth": 960,
+      "issues": [],
+      "cards": [
+        {
+          "height": 210,
+          "width": 446
+        },
+        {
+          "height": 210,
+          "width": 446
+        },
+        {
+          "height": 210,
+          "width": 446
+        },
+        {
+          "height": 210,
+          "width": 446
+        }
+      ],
+      "portraits": true
+    },
+    {
+      "width": 1023,
+      "pageWidth": 1023,
+      "issues": [],
+      "cards": [
+        {
+          "height": 210,
+          "width": 450
+        },
+        {
+          "height": 210,
+          "width": 450
+        },
+        {
+          "height": 210,
+          "width": 450
+        },
+        {
+          "height": 210,
+          "width": 450
+        }
+      ],
+      "portraits": true
+    },
+    {
+      "width": 1024,
+      "pageWidth": 1024,
+      "issues": [],
+      "cards": [
+        {
+          "height": 210,
+          "width": 450
+        },
+        {
+          "height": 210,
+          "width": 450
+        },
+        {
+          "height": 210,
+          "width": 450
+        },
+        {
+          "height": 210,
+          "width": 450
+        }
+      ],
+      "portraits": true
+    },
+    {
+      "width": 1180,
+      "pageWidth": 1180,
+      "issues": [],
+      "cards": [
+        {
+          "height": 210,
+          "width": 450
+        },
+        {
+          "height": 210,
+          "width": 450
+        },
+        {
+          "height": 210,
+          "width": 450
+        },
+        {
+          "height": 210,
+          "width": 450
+        }
+      ],
+      "portraits": true
+    },
+    {
+      "width": 1279,
+      "pageWidth": 1279,
+      "issues": [],
+      "cards": [
+        {
+          "height": 210,
+          "width": 450
+        },
+        {
+          "height": 210,
+          "width": 450
+        },
+        {
+          "height": 210,
+          "width": 450
+        },
+        {
+          "height": 210,
+          "width": 450
+        }
+      ],
+      "portraits": true
+    },
+    {
+      "width": 1280,
+      "pageWidth": 1280,
+      "issues": [],
+      "cards": [
+        {
+          "height": 225,
+          "width": 286
+        },
+        {
+          "height": 225,
+          "width": 286
+        },
+        {
+          "height": 225,
+          "width": 286
+        },
+        {
+          "height": 225,
+          "width": 286
+        }
+      ],
+      "portraits": true
+    },
+    {
+      "width": 1366,
+      "pageWidth": 1366,
+      "issues": [],
+      "cards": [
+        {
+          "height": 225,
+          "width": 307.5
+        },
+        {
+          "height": 225,
+          "width": 307.5
+        },
+        {
+          "height": 225,
+          "width": 307.5
+        },
+        {
+          "height": 225,
+          "width": 307.5
+        }
+      ],
+      "portraits": true
+    },
+    {
+      "width": 1448,
+      "pageWidth": 1448,
+      "issues": [],
+      "cards": [
+        {
+          "height": 225,
+          "width": 328
+        },
+        {
+          "height": 225,
+          "width": 328
+        },
+        {
+          "height": 225,
+          "width": 328
+        },
+        {
+          "height": 225,
+          "width": 328
+        }
+      ],
+      "portraits": true
+    },
+    {
+      "width": 1628,
+      "pageWidth": 1628,
+      "issues": [],
+      "cards": [
+        {
+          "height": 225,
+          "width": 348
+        },
+        {
+          "height": 225,
+          "width": 348
+        },
+        {
+          "height": 225,
+          "width": 348
+        },
+        {
+          "height": 225,
+          "width": 348
+        }
+      ],
+      "portraits": true
+    },
+    {
+      "width": 1920,
+      "pageWidth": 1920,
+      "issues": [],
+      "cards": [
+        {
+          "height": 225,
+          "width": 348
+        },
+        {
+          "height": 225,
+          "width": 348
+        },
+        {
+          "height": 225,
+          "width": 348
+        },
+        {
+          "height": 225,
+          "width": 348
+        }
+      ],
+      "portraits": true
+    },
+    {
+      "width": 2048,
+      "pageWidth": 2048,
+      "issues": [],
+      "cards": [
+        {
+          "height": 225,
+          "width": 348
+        },
+        {
+          "height": 225,
+          "width": 348
+        },
+        {
+          "height": 225,
+          "width": 348
+        },
+        {
+          "height": 225,
+          "width": 348
+        }
+      ],
+      "portraits": true
+    },
+    {
+      "width": 2560,
+      "pageWidth": 2560,
+      "issues": [],
+      "cards": [
+        {
+          "height": 225,
+          "width": 348
+        },
+        {
+          "height": 225,
+          "width": 348
+        },
+        {
+          "height": 225,
+          "width": 348
+        },
+        {
+          "height": 225,
+          "width": 348
+        }
+      ],
+      "portraits": true
+    }
+  ],
+  "gap": [
+    {
+      "width": 1024,
+      "before": 163.3480662983426,
+      "after": 81.67619129834259,
+      "ratio": 0.5000132119664481
+    },
+    {
+      "width": 1180,
+      "before": 177.56906077348071,
+      "after": 88.78781077348071,
+      "ratio": 0.5000184738643436
+    },
+    {
+      "width": 1279,
+      "before": 186.59392265193367,
+      "after": 93.29704765193367,
+      "ratio": 0.5000004626408278
+    },
+    {
+      "width": 1280,
+      "before": 186.6850828729282,
+      "after": 93.3569578729282,
+      "ratio": 0.5000772232909145
+    },
+    {
+      "width": 1366,
+      "before": 194.52486187845307,
+      "after": 97.27486187845307,
+      "ratio": 0.5000639041154251
+    },
+    {
+      "width": 1448,
+      "before": 202,
+      "after": 101,
+      "ratio": 0.5
+    },
+    {
+      "width": 1628,
+      "before": 218.40883977900558,
+      "after": 109.20571477900558,
+      "ratio": 0.500005928741273
+    },
+    {
+      "width": 1920,
+      "before": 245.0276243093922,
+      "after": 122.5276243093922,
+      "ratio": 0.5000563697857947
+    },
+    {
+      "width": 2048,
+      "before": 256.6961325966852,
+      "after": 128.35238259668517,
+      "ratio": 0.5000168148164092
+    },
+    {
+      "width": 2560,
+      "before": 303.3701657458564,
+      "after": 151.6982907458564,
+      "ratio": 0.5000435371517029
+    }
+  ],
+  "browser": "Chromium, supplied production HTML/CSS/JS and assets inlined in-memory; network disabled",
+  "hero_pixels_unchanged": true,
+  "mobile_menu_pass": true,
+  "js_errors": [],
+  "build": 78,
+  "source_files_verified_against_current_git_blobs": {
+    "families.html": "d762d1dfeae184fed9243be4dd2ee8ee9a5058ca",
+    "css/family-health77.css": "a27a62d427a8a854bfc9f352891221582e049eff",
+    "css/styles.css": "934d58c1aa16a83927d966a278ebb9c1cfd48b99",
+    "js/app.js": "0f14aabeea12ecd2203e78ddeb3bda279a777d06"
+  },
+  "approved_card_copy": [
+    {
+      "title": "Kids",
+      "body": "Simple, age-appropriate habits around movement, hydration, food, sleep and healthy routines.",
+      "number": "01"
+    },
+    {
+      "title": "Teens",
+      "body": "Practical structure that can support energy, confidence, recovery and increasing independence.",
+      "number": "02"
+    },
+    {
+      "title": "Parents",
+      "body": "Personalized guidance plus a clearer framework for helping lead health inside the home.",
+      "number": "03"
+    },
+    {
+      "title": "Grandparents",
+      "body": "A focus on sustainable habits, movement, energy and long-term quality of life.",
+      "number": "04"
+    }
+  ],
+  "outside_changed_region_sha256": "1a7dfc5a96036785939d373630a70b918ba3af5ee555184a24e80572a818fc90",
+  "hero_markup_sha256": "a7f5453294c670f3d432c9fefc81af512c06d6a774024c4743fb15460f0f46a5",
+  "pillar_markup_sha256": "9838451749a16c3c52e98802f2bde98417628e848d0c4c199db14a2cae0bfbd0",
+  "footer_sha256": "7317639910631a400a7633494385ba507d79a3f5c1fc0b7851e52732c316dd60",
+  "assessment_links": [
+    "<a class=\"fh77-hotspot fh77-assessment-hotspot\" href=\"consult.html\" aria-label=\"Free Vitality Assessment\">",
+    "<a class=\"fh77-native-cta fh77-native-cta--assessment\" href=\"consult.html\">",
+    "<a class=\"btn family-cream-btn vitality-primary-cta\" href=\"consult.html\">"
+  ],
+  "file_sha256": {
+    "families.html": "288afa6e82b3321b8e41c828c7e13165002e4ce03f6a60bc30b988fdec740136",
+    "css/family-health78.css": "63e6ccdfd600c05cd90ceafb97855a5eaede0ead2165b755694d52c2dffa16d5",
+    "assets/images/family-health78/grandparents.png": "b97e73603467074b37cd137283dfa925ca86406c580eb16d7dab690fdfa6a67a",
+    "assets/images/family-health78/kids.png": "0f5ba29311a7b2d1d976904e8249a98c975f1110e4d11d696fc6e8e24d6c9f08",
+    "assets/images/family-health78/parents.png": "c40b61a9e0988e763f29d032f9274e20c89d9e5a7ed84d286cb642be9895f81c",
+    "assets/images/family-health78/teens.png": "a93b1d5d5014748ad1d43dec4a8c2f2692e9538dfd935cc0db444eb384a892bd"
+  },
+  "art_source": "Existing approved family_wellness_journey_landing_page.png, character crops only. No testimonial or altered copy imported.",
+  "assessment_check": {
+    "scope": "Existing unchanged latest main baseline; no Build78 files published",
+    "main_sha": "70ebc02a35615c15131789489e886f37f47886d2",
+    "rerun_workflow_id": 34350031621,
+    "rerun_job_id": 102468696049,
+    "conclusion": "success"
+  },
+  "published": false,
+  "untouched_existing_files": {
+    "js/app.js": "21b15805e5cb735950a63d083019d26f568e199acca4262eef4af725f1ddcc78",
+    "js/family-health77.js": "b5678c6ab9ef7d3bb7cc6cedaa9978b5f4385e32c8674c22982da6708e9ea9a0",
+    "css/styles.css": "b2703c7cd8bf1201cbdf61fc1bce816a314a0720abff6aa0cea7930ff9e51dc9",
+    "css/family-health77.css": "ceb1329c40b4ca5ee66f174a7b150e84279105a275f6b1c8ce21fdd4d67fa271",
+    "assets/images/family-health77/approved-desktop.png": "6e1aad6dd8174564cf39378374bb238ace22b576cf1ec93ce1b2a148934364c0",
+    "assets/images/family-health77/approved-family-mobile.webp": "c8929331c087903001fb143bfdf5927630b5be03a029b8f045566d0feefc77d5",
+    "assets/images/family-health77/together-signature.png": "daa3b22a7fdc9c3ad8fc0327a07420ba6a8531e78c6f767bcb3fa699df638665"
+  }
+}
