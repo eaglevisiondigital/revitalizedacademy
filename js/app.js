@@ -316,3 +316,17 @@ faqItems.forEach((item) => {
   artwork.addEventListener('load', checkArtwork);
   checkArtwork();
 })();
+
+// Build 77: rename only navigation links for the existing Family Health route.
+(() => {
+  const links = document.querySelectorAll('.main-nav a[href], .site-footer a[href]');
+  links.forEach((link) => {
+    const href = link.getAttribute('href') || '';
+    const path = href.split(/[?#]/)[0].replace(/\/$/, '');
+    if (!/(?:^|\/)families(?:\.html)?$/.test(path)) return;
+    if (!/^(Families|Family|Family Health)$/.test(link.textContent.trim())) return;
+    link.textContent = 'Family Health';
+    if (link.hasAttribute('aria-label')) link.setAttribute('aria-label', 'Family Health');
+    link.setAttribute('data-family-health-nav', '77');
+  });
+})();

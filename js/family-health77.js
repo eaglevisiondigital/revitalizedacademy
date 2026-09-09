@@ -1,0 +1,23 @@
+// Build 77: isolated hero image fallback, loaded on families.html only.
+(() => {
+  const section = document.getElementById('family-health');
+  if (!section) return;
+  const art = section.querySelector('.fh77-approved-art');
+  const desktop = window.matchMedia('(min-width: 1024px)');
+  function verifyArtwork() {
+    const missing = desktop.matches && art.complete && art.naturalWidth < 16;
+    section.classList.toggle('is-art-unavailable', missing);
+    if (missing) {
+      const portrait = section.querySelector('.fh77-family-portrait');
+      if (!portrait.dataset.fallbackLoaded) {
+        portrait.dataset.fallbackLoaded = 'true';
+        portrait.src = 'assets/images/family-health77/approved-family-mobile.webp';
+      }
+    }
+  }
+  art.addEventListener('load', verifyArtwork);
+  art.addEventListener('error', verifyArtwork);
+  if (desktop.addEventListener) desktop.addEventListener('change', verifyArtwork);
+  else desktop.addListener(verifyArtwork);
+  verifyArtwork();
+})();

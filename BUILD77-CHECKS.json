@@ -1,0 +1,644 @@
+{
+  "build": 77,
+  "name": "Family Health hero and navigation rename",
+  "baseline_main": "d96602bba2da6476a884dd5baa1eb1c347d67b73",
+  "prior_coaching_build_preserved": 76,
+  "status": "download package; not published",
+  "changed_or_new_runtime_files": [
+    "families.html",
+    "js/app.js",
+    "js/family-health77.js",
+    "css/family-health77.css",
+    "assets/images/family-health77/approved-desktop.png",
+    "assets/images/family-health77/approved-family-mobile.webp",
+    "assets/images/family-health77/together-signature.png"
+  ],
+  "main_family_blob": "cf4121f400331e9661e7f783bd0b4ce511b928dd",
+  "base_app_bytes": 12667,
+  "base_app_git_blob": "39feab9ae93ca797ed0ad535290b8ad079ca1810",
+  "protected_family_sections": {
+    "family-values": "6aa880da968f22aa8198290c420acead171757d246f1ace0fa0750d851e7d986",
+    "family-hub-section": "ab5f912caa27f9fc944cca25372c0fdece6bedde2110988425ee26a18633d545",
+    "family-story-callout": "ec811b2a7fc6c10479134d0443054f66f1f08589a5d7c8471558dd1f3c4aed38",
+    "family-final-cta": "fe7f54ffc8745ed60aab3eb8150888e57e857752c1610e56828a80047075bb01"
+  },
+  "family_footer_sha256": "7317639910631a400a7633494385ba507d79a3f5c1fc0b7851e52732c316dd60",
+  "untouched_baseline_blobs": {
+    "index.html": "bd9d22fb161a3d1f71f54326606900983d9ed0a2",
+    "css/styles.css": "934d58c1aa16a83927d966a278ebb9c1cfd48b99",
+    "consult.html": "f34e0b4ce5c0a8f7b64f3c871ad7d288e1f93c22",
+    "disclaimer.html": "b75e3df852d0b2aecf98ac09e478ccb6dea0f4ca",
+    "netlify.toml": "8699902f8696f2f1f6368942ab1bd37c98b916e5"
+  },
+  "assessment_regression": {
+    "scope": "rerun of unchanged current main, not a deployed Build77 run",
+    "run_id": 34280993742,
+    "rerun_job_id": 102453572635,
+    "conclusion": "success"
+  },
+  "integrity_checks": {
+    "old_hero_removed": true,
+    "all_four_original_pillar_cards_unchanged": true,
+    "footer_unchanged": true,
+    ".family-values_unchanged": true,
+    ".family-hub-section_unchanged": true,
+    ".family-story-callout_unchanged": true,
+    ".family-final-cta_unchanged": true,
+    "assessment_destination_kept": true,
+    "no_blueprint_headline": true,
+    "family_health_name_present": true,
+    "existing_app_and_coaching_unchanged": true,
+    "styles_css_unchanged": true,
+    "index_html_unchanged": true,
+    "approved_image_bytes_unchanged": true
+  },
+  "browser_checks": {
+    "baseline_main": "d96602bba2da6476a884dd5baa1eb1c347d67b73",
+    "widths": [
+      {
+        "width": 320,
+        "overflow": 0,
+        "heroWidth": 320,
+        "heroHeight": 1175.1875,
+        "mode": "responsive",
+        "headerOverlap": false,
+        "navLabel": "Family Health",
+        "ctaWidth": 0,
+        "links": [
+          {
+            "text": "Free Vitality Assessment",
+            "href": "consult.html",
+            "width": 288,
+            "height": 56
+          },
+          {
+            "text": "Explore Client Stories",
+            "href": "stories.html",
+            "width": 288,
+            "height": 56
+          }
+        ],
+        "portraitWidth": 709
+      },
+      {
+        "width": 360,
+        "overflow": 0,
+        "heroWidth": 360,
+        "heroHeight": 1189.21875,
+        "mode": "responsive",
+        "headerOverlap": false,
+        "navLabel": "Family Health",
+        "ctaWidth": 0,
+        "links": [
+          {
+            "text": "Free Vitality Assessment",
+            "href": "consult.html",
+            "width": 316,
+            "height": 56
+          },
+          {
+            "text": "Explore Client Stories",
+            "href": "stories.html",
+            "width": 316,
+            "height": 56
+          }
+        ],
+        "portraitWidth": 709
+      },
+      {
+        "width": 375,
+        "overflow": 0,
+        "heroWidth": 375,
+        "heroHeight": 1182.609375,
+        "mode": "responsive",
+        "headerOverlap": false,
+        "navLabel": "Family Health",
+        "ctaWidth": 0,
+        "links": [
+          {
+            "text": "Free Vitality Assessment",
+            "href": "consult.html",
+            "width": 331,
+            "height": 56
+          },
+          {
+            "text": "Explore Client Stories",
+            "href": "stories.html",
+            "width": 331,
+            "height": 56
+          }
+        ],
+        "portraitWidth": 709
+      },
+      {
+        "width": 390,
+        "overflow": 0,
+        "heroWidth": 390,
+        "heroHeight": 1201.59375,
+        "mode": "responsive",
+        "headerOverlap": false,
+        "navLabel": "Family Health",
+        "ctaWidth": 0,
+        "links": [
+          {
+            "text": "Free Vitality Assessment",
+            "href": "consult.html",
+            "width": 346,
+            "height": 56
+          },
+          {
+            "text": "Explore Client Stories",
+            "href": "stories.html",
+            "width": 346,
+            "height": 56
+          }
+        ],
+        "portraitWidth": 709
+      },
+      {
+        "width": 414,
+        "overflow": 0,
+        "heroWidth": 414,
+        "heroHeight": 1234.640625,
+        "mode": "responsive",
+        "headerOverlap": false,
+        "navLabel": "Family Health",
+        "ctaWidth": 0,
+        "links": [
+          {
+            "text": "Free Vitality Assessment",
+            "href": "consult.html",
+            "width": 370,
+            "height": 56
+          },
+          {
+            "text": "Explore Client Stories",
+            "href": "stories.html",
+            "width": 370,
+            "height": 56
+          }
+        ],
+        "portraitWidth": 709
+      },
+      {
+        "width": 540,
+        "overflow": 0,
+        "heroWidth": 540,
+        "heroHeight": 1367.046875,
+        "mode": "responsive",
+        "headerOverlap": false,
+        "navLabel": "Family Health",
+        "ctaWidth": 0,
+        "links": [
+          {
+            "text": "Free Vitality Assessment",
+            "href": "consult.html",
+            "width": 496,
+            "height": 56
+          },
+          {
+            "text": "Explore Client Stories",
+            "href": "stories.html",
+            "width": 496,
+            "height": 56
+          }
+        ],
+        "portraitWidth": 709
+      },
+      {
+        "width": 640,
+        "overflow": 0,
+        "heroWidth": 640,
+        "heroHeight": 1435.03125,
+        "mode": "responsive",
+        "headerOverlap": false,
+        "navLabel": "Family Health",
+        "ctaWidth": 0,
+        "links": [
+          {
+            "text": "Free Vitality Assessment",
+            "href": "consult.html",
+            "width": 580,
+            "height": 56
+          },
+          {
+            "text": "Explore Client Stories",
+            "href": "stories.html",
+            "width": 580,
+            "height": 56
+          }
+        ],
+        "portraitWidth": 709
+      },
+      {
+        "width": 700,
+        "overflow": 0,
+        "heroWidth": 700,
+        "heroHeight": 1435.03125,
+        "mode": "responsive",
+        "headerOverlap": false,
+        "navLabel": "Family Health",
+        "ctaWidth": 0,
+        "links": [
+          {
+            "text": "Free Vitality Assessment",
+            "href": "consult.html",
+            "width": 580,
+            "height": 56
+          },
+          {
+            "text": "Explore Client Stories",
+            "href": "stories.html",
+            "width": 580,
+            "height": 56
+          }
+        ],
+        "portraitWidth": 709
+      },
+      {
+        "width": 701,
+        "overflow": 0,
+        "heroWidth": 701,
+        "heroHeight": 806.671875,
+        "mode": "responsive",
+        "headerOverlap": false,
+        "navLabel": "Family Health",
+        "ctaWidth": 0,
+        "links": [
+          {
+            "text": "Free Vitality Assessment",
+            "href": "consult.html",
+            "width": 309.5,
+            "height": 56
+          },
+          {
+            "text": "Explore Client Stories",
+            "href": "stories.html",
+            "width": 309.5,
+            "height": 56
+          }
+        ],
+        "portraitWidth": 709
+      },
+      {
+        "width": 768,
+        "overflow": 0,
+        "heroWidth": 768,
+        "heroHeight": 796.71875,
+        "mode": "responsive",
+        "headerOverlap": false,
+        "navLabel": "Family Health",
+        "ctaWidth": 0,
+        "links": [
+          {
+            "text": "Free Vitality Assessment",
+            "href": "consult.html",
+            "width": 343,
+            "height": 56
+          },
+          {
+            "text": "Explore Client Stories",
+            "href": "stories.html",
+            "width": 343,
+            "height": 56
+          }
+        ],
+        "portraitWidth": 709
+      },
+      {
+        "width": 820,
+        "overflow": 0,
+        "heroWidth": 820,
+        "heroHeight": 809.671875,
+        "mode": "responsive",
+        "headerOverlap": false,
+        "navLabel": "Family Health",
+        "ctaWidth": 0,
+        "links": [
+          {
+            "text": "Free Vitality Assessment",
+            "href": "consult.html",
+            "width": 369,
+            "height": 56
+          },
+          {
+            "text": "Explore Client Stories",
+            "href": "stories.html",
+            "width": 369,
+            "height": 56
+          }
+        ],
+        "portraitWidth": 709
+      },
+      {
+        "width": 900,
+        "overflow": 0,
+        "heroWidth": 900,
+        "heroHeight": 822.71875,
+        "mode": "responsive",
+        "headerOverlap": false,
+        "navLabel": "Family Health",
+        "ctaWidth": 161.578125,
+        "links": [
+          {
+            "text": "Free Vitality Assessment",
+            "href": "consult.html",
+            "width": 409,
+            "height": 56
+          },
+          {
+            "text": "Explore Client Stories",
+            "href": "stories.html",
+            "width": 409,
+            "height": 56
+          }
+        ],
+        "portraitWidth": 709
+      },
+      {
+        "width": 980,
+        "overflow": 0,
+        "heroWidth": 980,
+        "heroHeight": 835.78125,
+        "mode": "responsive",
+        "headerOverlap": false,
+        "navLabel": "Family Health",
+        "ctaWidth": 182.328125,
+        "links": [
+          {
+            "text": "Free Vitality Assessment",
+            "href": "consult.html",
+            "width": 440,
+            "height": 56
+          },
+          {
+            "text": "Explore Client Stories",
+            "href": "stories.html",
+            "width": 440,
+            "height": 56
+          }
+        ],
+        "portraitWidth": 709
+      },
+      {
+        "width": 1023,
+        "overflow": 0,
+        "heroWidth": 1023,
+        "heroHeight": 815.703125,
+        "mode": "responsive",
+        "headerOverlap": false,
+        "navLabel": "Family Health",
+        "ctaWidth": 182.328125,
+        "links": [
+          {
+            "text": "Free Vitality Assessment",
+            "href": "consult.html",
+            "width": 440,
+            "height": 56
+          },
+          {
+            "text": "Explore Client Stories",
+            "href": "stories.html",
+            "width": 440,
+            "height": 56
+          }
+        ],
+        "portraitWidth": 709
+      },
+      {
+        "width": 1024,
+        "overflow": 0,
+        "heroWidth": 1024,
+        "heroHeight": 768,
+        "mode": "approved-art",
+        "headerOverlap": false,
+        "navLabel": "Family Health",
+        "ctaWidth": 182.328125,
+        "links": [
+          {
+            "text": "Explore Client Stories",
+            "href": "stories.html",
+            "width": 221.171875,
+            "height": 46.609375
+          },
+          {
+            "text": "Free Vitality Assessment",
+            "href": "consult.html",
+            "width": 227.53125,
+            "height": 46.609375
+          }
+        ],
+        "portraitWidth": 1
+      },
+      {
+        "width": 1100,
+        "overflow": 0,
+        "heroWidth": 1100,
+        "heroHeight": 825,
+        "mode": "approved-art",
+        "headerOverlap": false,
+        "navLabel": "Family Health",
+        "ctaWidth": 182.328125,
+        "links": [
+          {
+            "text": "Explore Client Stories",
+            "href": "stories.html",
+            "width": 237.59375,
+            "height": 50.0625
+          },
+          {
+            "text": "Free Vitality Assessment",
+            "href": "consult.html",
+            "width": 244.40625,
+            "height": 50.0625
+          }
+        ],
+        "portraitWidth": 1
+      },
+      {
+        "width": 1200,
+        "overflow": 0,
+        "heroWidth": 1200,
+        "heroHeight": 900,
+        "mode": "approved-art",
+        "headerOverlap": false,
+        "navLabel": "Family Health",
+        "ctaWidth": 192.53125,
+        "links": [
+          {
+            "text": "Explore Client Stories",
+            "href": "stories.html",
+            "width": 259.1875,
+            "height": 54.625
+          },
+          {
+            "text": "Free Vitality Assessment",
+            "href": "consult.html",
+            "width": 266.625,
+            "height": 54.625
+          }
+        ],
+        "portraitWidth": 1
+      },
+      {
+        "width": 1280,
+        "overflow": 0,
+        "heroWidth": 1280,
+        "heroHeight": 960,
+        "mode": "approved-art",
+        "headerOverlap": false,
+        "navLabel": "Family Health",
+        "ctaWidth": 216,
+        "links": [
+          {
+            "text": "Explore Client Stories",
+            "href": "stories.html",
+            "width": 276.46875,
+            "height": 58.265625
+          },
+          {
+            "text": "Free Vitality Assessment",
+            "href": "consult.html",
+            "width": 284.40625,
+            "height": 58.265625
+          }
+        ],
+        "portraitWidth": 1
+      },
+      {
+        "width": 1448,
+        "overflow": 0,
+        "heroWidth": 1448,
+        "heroHeight": 1086,
+        "mode": "approved-art",
+        "headerOverlap": false,
+        "navLabel": "Family Health",
+        "ctaWidth": 220.796875,
+        "links": [
+          {
+            "text": "Explore Client Stories",
+            "href": "stories.html",
+            "width": 312.765625,
+            "height": 65.90625
+          },
+          {
+            "text": "Free Vitality Assessment",
+            "href": "consult.html",
+            "width": 321.734375,
+            "height": 65.90625
+          }
+        ],
+        "portraitWidth": 1
+      },
+      {
+        "width": 1628,
+        "overflow": 0,
+        "heroWidth": 1628,
+        "heroHeight": 1221,
+        "mode": "approved-art",
+        "headerOverlap": false,
+        "navLabel": "Family Health",
+        "ctaWidth": 221.046875,
+        "links": [
+          {
+            "text": "Explore Client Stories",
+            "href": "stories.html",
+            "width": 351.640625,
+            "height": 74.109375
+          },
+          {
+            "text": "Free Vitality Assessment",
+            "href": "consult.html",
+            "width": 361.734375,
+            "height": 74.109375
+          }
+        ],
+        "portraitWidth": 1
+      },
+      {
+        "width": 1920,
+        "overflow": 0,
+        "heroWidth": 1920,
+        "heroHeight": 1440,
+        "mode": "approved-art",
+        "headerOverlap": false,
+        "navLabel": "Family Health",
+        "ctaWidth": 221.046875,
+        "links": [
+          {
+            "text": "Explore Client Stories",
+            "href": "stories.html",
+            "width": 414.71875,
+            "height": 87.40625
+          },
+          {
+            "text": "Free Vitality Assessment",
+            "href": "consult.html",
+            "width": 426.609375,
+            "height": 87.40625
+          }
+        ],
+        "portraitWidth": 1
+      },
+      {
+        "width": 2560,
+        "overflow": 0,
+        "heroWidth": 2560,
+        "heroHeight": 1920,
+        "mode": "approved-art",
+        "headerOverlap": false,
+        "navLabel": "Family Health",
+        "ctaWidth": 221.046875,
+        "links": [
+          {
+            "text": "Explore Client Stories",
+            "href": "stories.html",
+            "width": 552.953125,
+            "height": 116.53125
+          },
+          {
+            "text": "Free Vitality Assessment",
+            "href": "consult.html",
+            "width": 568.828125,
+            "height": 116.53125
+          }
+        ],
+        "portraitWidth": 1
+      }
+    ],
+    "checks": [
+      "Real CTA clicks target consult.html and stories.html on desktop/mobile",
+      "Desktop hotspots are keyboard reachable with a visible focus ring",
+      "Existing mobile menu opens/closes and shows Family Health",
+      "Missing desktop image reveals readable native hero and working actions",
+      "Sitewide navigation-label delta leaves forms, popup, assessment links and legal DOM unchanged",
+      "No JavaScript errors in tested Family Health layouts"
+    ],
+    "page_errors": [],
+    "pixel_match": {
+      "width": 1448,
+      "height": 1086,
+      "equal_pixels": false,
+      "bbox": [
+        0,
+        0,
+        1448,
+        28
+      ],
+      "isolated_art_equal_pixels": true
+    }
+  },
+  "file_sha256": {
+    "families.html": "d91cbfa05190eba941fce6fe6101c326c26cf92e7f96c9c5c0f450265f71a8a5",
+    "js/app.js": "21b15805e5cb735950a63d083019d26f568e199acca4262eef4af725f1ddcc78",
+    "js/family-health77.js": "b5678c6ab9ef7d3bb7cc6cedaa9978b5f4385e32c8674c22982da6708e9ea9a0",
+    "css/family-health77.css": "ceb1329c40b4ca5ee66f174a7b150e84279105a275f6b1c8ce21fdd4d67fa271",
+    "assets/images/family-health77/approved-desktop.png": "6e1aad6dd8174564cf39378374bb238ace22b576cf1ec93ce1b2a148934364c0",
+    "assets/images/family-health77/approved-family-mobile.webp": "c8929331c087903001fb143bfdf5927630b5be03a029b8f045566d0feefc77d5",
+    "assets/images/family-health77/together-signature.png": "daa3b22a7fdc9c3ad8fc0327a07420ba6a8531e78c6f767bcb3fa699df638665"
+  },
+  "test_environment": "Chromium browser, exact site source with local assets embedded for offline rendering; no production form submission",
+  "desktop_method": "approved original PNG presentation with native clickable/focusable overlays; semantic text available; content is baked into the desktop art",
+  "mobile_method": "native responsive HTML/CSS using an unchanged crop of the approved photo and its four icons",
+  "url": "families.html retained for existing links"
+}
