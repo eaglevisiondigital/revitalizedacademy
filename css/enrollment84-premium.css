@@ -1,0 +1,167 @@
+/* Build 84 — premium enrollment page correction
+   Goals: consistent site navigation, full-width desktop form, stronger hierarchy,
+   improved contrast/spacing, and a horizontal connected-journey band. */
+
+body.ra-journey{background:#f8f3eb}
+
+/* Header: make this feel like the same ReVitalized website. */
+.ra-topbar{background:rgba(252,248,242,.97);border-bottom:1px solid rgba(177,136,69,.20);box-shadow:0 8px 24px rgba(21,71,52,.035)}
+.ra-topbar-inner{width:min(calc(100% - 48px),1420px);grid-template-columns:230px 1fr auto;gap:24px;min-height:84px}
+.ra-logo img{width:214px}
+.ra-nav{gap:22px;font-size:13px;font-weight:700;color:#38584b}
+.ra-nav a{position:relative;padding:12px 0;white-space:nowrap}
+.ra-nav a:hover,.ra-nav a:focus-visible{color:#154734}
+.ra-nav a:after{content:"";position:absolute;left:50%;right:50%;bottom:5px;height:1px;background:#b18845;transition:left .18s ease,right .18s ease}
+.ra-nav a:hover:after,.ra-nav a:focus-visible:after{left:0;right:0}
+body.ra-journey a.ra-header-cta{color:#fff!important;background:linear-gradient(135deg,#154734,#1b6249)!important;border:1px solid rgba(255,255,255,.06);box-shadow:0 12px 28px rgba(21,71,52,.18);font-size:13px;min-height:48px;padding:12px 23px}
+body.ra-journey a.ra-header-cta:hover{color:#fff!important;background:linear-gradient(135deg,#1a5b44,#216d52)!important;box-shadow:0 15px 34px rgba(21,71,52,.24)}
+
+/* Hero: compact, premium, clearly separated from the application. */
+.ra-enroll-hero{background:radial-gradient(circle at 86% 10%,rgba(216,166,42,.18),transparent 29%),radial-gradient(circle at 5% 110%,rgba(21,71,52,.09),transparent 32%),linear-gradient(180deg,#fffdfa 0%,#f5ede2 100%)}
+.ra-enroll-hero-inner{width:min(calc(100% - 48px),1180px);padding:50px 0 40px}
+.ra-enroll-hero h1{max-width:900px;margin:14px 0 16px;font-size:clamp(48px,4.8vw,66px);line-height:1.01}
+.ra-enroll-hero p{max-width:780px;font-size:15px;line-height:1.68}
+.ra83-hero-assurance{margin-top:20px}
+.ra83-hero-assurance span{min-height:32px;padding:6px 11px;background:rgba(255,255,255,.82);font-size:9.5px}
+.ra-progress{width:min(100%,880px);margin:25px 0 0;padding:14px 18px 12px;border-radius:16px;background:rgba(255,255,255,.82);box-shadow:0 9px 24px rgba(21,71,52,.04)}
+
+/* Restore the form to a generous, centered desktop width. */
+.ra-enroll-shell{width:min(calc(100% - 48px),1180px);margin:0 auto;padding:40px 0 78px;display:grid!important;grid-template-columns:1fr!important;gap:24px!important;align-items:start}
+.ra-enroll-card{order:2;width:100%;border-radius:30px;box-shadow:0 30px 75px rgba(21,71,52,.105);border:1px solid rgba(21,71,52,.11)}
+.ra-enroll-card-head{padding:29px 36px 27px;background:radial-gradient(circle at 92% -30%,rgba(216,166,42,.22),transparent 34%),linear-gradient(135deg,#123e2f 0%,#154734 58%,#1d6048 100%)}
+.ra-enroll-card-head h2{font-size:31px;color:#fff}
+.ra-enroll-card-head p{font-size:11px;color:rgba(255,255,255,.70)}
+.ra-time-pill{color:#f3dab0;border-color:rgba(243,218,176,.34);background:rgba(255,255,255,.09)}
+.ra-form-body{padding:34px 36px 38px}
+.ra-form-grid{gap:24px 28px}
+
+/* Section labels and fields */
+.ra83-section-label{padding:24px 0 3px}
+.ra83-section-label.ra83-first{padding-top:0}
+.ra83-section-number{width:34px;height:34px;font-size:11px}
+.ra83-section-label strong{font-size:20px}
+.ra83-section-label small{font-size:9.5px}
+.ra-field label{font-size:11.5px}
+.ra-field input,.ra-field select,.ra-field textarea{min-height:56px;border-radius:13px;padding:13px 15px;font-size:15px}
+.ra-field textarea{min-height:138px}
+.ra-field-help{font-size:9.5px}
+
+/* Program chooser: use the full width so cards feel intentional, not squeezed. */
+.ra-program-fieldset{padding:29px 30px 26px;border-radius:24px;background:radial-gradient(circle at 94% 0,rgba(177,136,69,.09),transparent 24%),linear-gradient(145deg,#fdfbf7 0%,#f7f2e9 100%)}
+.ra-program-picker-head{grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:12px 24px;padding-bottom:21px;margin-bottom:20px}
+.ra-program-picker-head h3{max-width:720px;font-size:31px;line-height:1.08}
+.ra-program-picker-head p{max-width:820px;font-size:11px}
+.ra-program-picker-note{margin-top:2px}
+.ra-program-choices{grid-template-columns:repeat(6,minmax(0,1fr));gap:14px}
+.ra-program-choice:nth-child(1),.ra-program-choice:nth-child(2),.ra-program-choice:nth-child(3){grid-column:span 2}
+.ra-program-choice:nth-child(4),.ra-program-choice:nth-child(5){grid-column:span 3}
+.ra-program-choice:nth-child(6){grid-column:1/-1}
+.ra-program-choice span{min-height:132px;padding:20px 48px 18px 19px;border-radius:17px}
+.ra-program-choice strong{font-size:20px;line-height:1.08}
+.ra-program-choice small{font-size:11px;line-height:1.5;margin-top:10px}
+.ra-program-choice:nth-child(4) span,.ra-program-choice:nth-child(5) span{min-height:112px}
+.ra-program-choice:nth-child(4) strong,.ra-program-choice:nth-child(5) strong{font-size:20px}
+.ra-program-choice:nth-child(6) span{min-height:84px;grid-template-columns:minmax(260px,.65fr) 1fr;padding:17px 58px 17px 21px}
+.ra-program-choice:nth-child(6) strong{font-size:20px}
+.ra-program-choice:nth-child(6) small{font-size:11px}
+.ra-program-help{font-size:10px;margin-top:18px;padding-top:15px}
+.ra-program-help a{font-size:10px;min-height:36px;padding:8px 14px;background:#fff;color:#154734;font-weight:800}
+
+.ra-consent{padding:19px 20px;border-radius:15px}
+.ra-consent label{font-size:10.5px}
+.ra-review-note{padding:18px 20px 18px 54px;border-radius:15px;font-size:10.5px}
+.ra-form-footer{margin-top:27px;padding-top:26px}
+.ra-form-footer p{font-size:9.5px;max-width:720px}
+.ra-form-footer .ra-btn{min-width:250px;min-height:54px;font-size:14px}
+
+/* Connected journey: convert the Build 83 sidebar into a horizontal premium band. */
+.ra83-enroll-aside{order:1;position:static!important;display:grid!important;grid-template-columns:minmax(0,1.55fr) minmax(270px,.45fr)!important;gap:16px!important;align-items:stretch;margin:0}
+.ra83-side-card{padding:25px 28px 23px;border-radius:23px;box-shadow:0 18px 45px rgba(21,71,52,.13)}
+.ra83-side-card h2{font-size:28px;margin-bottom:7px}
+.ra83-side-card>p{max-width:820px;font-size:10.5px;line-height:1.6}
+.ra83-connected-steps{grid-template-columns:repeat(3,1fr);gap:0;margin-top:18px;border-top:1px solid rgba(255,255,255,.11)}
+.ra83-connected-step{grid-template-columns:31px 1fr;gap:10px;padding:14px 18px 8px 0;border-bottom:0;border-right:1px solid rgba(255,255,255,.10)}
+.ra83-connected-step:last-child{border-right:0;padding-right:0;padding-bottom:8px}
+.ra83-connected-step b{width:29px;height:29px;font-size:10px}
+.ra83-connected-step strong{font-size:10.5px}
+.ra83-connected-step span{font-size:8.8px;line-height:1.45}
+.ra83-side-note{display:flex;flex-direction:column;justify-content:center;padding:24px 24px;border-radius:23px;background:linear-gradient(145deg,#fffdf9,#f7f1e6);box-shadow:0 15px 34px rgba(21,71,52,.06)}
+.ra83-side-note-mark{margin-bottom:11px}
+.ra83-side-note strong{font-size:19px}
+.ra83-side-note p{font-size:9.5px;line-height:1.58}
+.ra83-side-trust{grid-column:1/-1;padding:0 2px 2px;font-size:9px}
+
+/* Footer: stronger finish and better contrast. */
+.ra-journey-footer{background:linear-gradient(135deg,#103629,#154734 58%,#1b5943);border-top:1px solid rgba(255,255,255,.08);color:#fff}
+.ra-journey-footer-inner{width:min(calc(100% - 48px),1180px);padding:31px 0 33px;grid-template-columns:210px 1fr auto;gap:34px}
+.ra-journey-footer img{width:188px}
+.ra-footer-copy{color:rgba(255,255,255,.68);font-size:10px}
+.ra-footer-links{color:#f0d6a3;font-size:10.5px}
+.ra-footer-links a{color:#f0d6a3!important}
+.ra-footer-disclaimer{border-top-color:rgba(255,255,255,.11);color:rgba(255,255,255,.50);font-size:8.8px}
+
+@media(max-width:1240px){
+  .ra-topbar-inner{width:min(calc(100% - 36px),1180px);grid-template-columns:205px 1fr auto;gap:18px}
+  .ra-logo img{width:195px}
+  .ra-nav{gap:15px;font-size:12px}
+  body.ra-journey a.ra-header-cta{font-size:12px;padding:11px 18px}
+}
+
+@media(max-width:1050px){
+  .ra-nav{gap:12px;font-size:11px}
+  .ra83-enroll-aside{grid-template-columns:1fr!important}
+  .ra83-side-note{display:none}
+  .ra83-side-trust{grid-column:auto}
+  .ra-program-choice strong{font-size:18px}
+}
+
+@media(max-width:900px){
+  .ra-topbar-inner{grid-template-columns:190px 1fr auto}
+  .ra-logo img{width:180px}
+  .ra-nav{display:none}
+  .ra-menu-toggle{display:block}
+  .ra-header-cta{display:none!important}
+  .ra-nav.is-open{display:flex;position:absolute;left:18px;right:18px;top:74px;background:#fff;border:1px solid #ddd8cc;border-radius:18px;padding:12px 18px;box-shadow:0 18px 40px rgba(21,71,52,.12);flex-direction:column;gap:0;font-size:13px}
+  .ra-nav.is-open a{padding:12px 0;border-bottom:1px solid #eee9df}
+  .ra-nav.is-open a:last-child{border-bottom:0}
+  .ra-program-choice:nth-child(1),.ra-program-choice:nth-child(2),.ra-program-choice:nth-child(3),.ra-program-choice:nth-child(4),.ra-program-choice:nth-child(5){grid-column:span 3}
+  .ra-program-picker-head{grid-template-columns:1fr}
+  .ra-program-picker-note{justify-self:start}
+  .ra83-connected-steps{grid-template-columns:1fr}
+  .ra83-connected-step{border-right:0;border-bottom:1px solid rgba(255,255,255,.10);padding-right:0}
+  .ra83-connected-step:last-child{border-bottom:0}
+}
+
+@media(max-width:760px){
+  .ra-topbar-inner{min-height:72px}
+  .ra-enroll-hero-inner{width:min(calc(100% - 32px),1180px);padding:42px 0 34px}
+  .ra-enroll-hero h1{font-size:clamp(41px,11vw,56px)}
+  .ra-enroll-shell{width:min(calc(100% - 28px),1180px);padding:27px 0 55px}
+  .ra-enroll-card-head{padding:25px 22px 23px}
+  .ra-form-body{padding:26px 22px 30px}
+  .ra-program-fieldset{padding:21px 17px 19px}
+  .ra-program-picker-head h3{font-size:26px}
+  .ra-program-choice:nth-child(n){grid-column:1/-1}
+  .ra-program-choices{grid-template-columns:1fr}
+  .ra-program-choice span,.ra-program-choice:nth-child(4) span,.ra-program-choice:nth-child(5) span{min-height:94px;padding:17px 46px 16px 17px}
+  .ra-program-choice:nth-child(6) span{display:flex;min-height:94px;padding:17px 46px 16px 17px;gap:4px}
+  .ra-program-choice:nth-child(6) small{padding-left:0;border-left:0;margin-top:4px}
+  .ra83-side-card{padding:23px 20px}
+  .ra83-side-card h2{font-size:26px}
+  .ra-journey-footer-inner{width:min(calc(100% - 32px),1180px);grid-template-columns:1fr;gap:16px}
+  .ra-footer-disclaimer{grid-column:auto}
+}
+
+@media(max-width:480px){
+  .ra-enroll-shell{width:calc(100% - 22px)}
+  .ra-enroll-card-head{padding:22px 18px 20px}
+  .ra-enroll-card-head h2{font-size:27px}
+  .ra-form-body{padding:22px 17px 27px}
+  .ra83-section-label strong{font-size:18px}
+  .ra-program-choice strong{font-size:18px}
+  .ra-program-choice:nth-child(6) strong{font-size:18px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .ra-nav a:after{transition:none!important}
+}
