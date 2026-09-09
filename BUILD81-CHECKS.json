@@ -1,0 +1,253 @@
+{
+  "viewport_checks": [
+    {
+      "width": 320,
+      "passed": true,
+      "issues": [],
+      "center_delta": 233.516,
+      "screen_clearance": 4.438,
+      "section_height": 1459.98
+    },
+    {
+      "width": 360,
+      "passed": true,
+      "issues": [],
+      "center_delta": 229.328,
+      "screen_clearance": 3.094,
+      "section_height": 1398.67
+    },
+    {
+      "width": 375,
+      "passed": true,
+      "issues": [],
+      "center_delta": 229.328,
+      "screen_clearance": 6.078,
+      "section_height": 1408.53
+    },
+    {
+      "width": 390,
+      "passed": true,
+      "issues": [],
+      "center_delta": 222.234,
+      "screen_clearance": 9.125,
+      "section_height": 1404.22
+    },
+    {
+      "width": 414,
+      "passed": true,
+      "issues": [],
+      "center_delta": 213.539,
+      "screen_clearance": 22.406,
+      "section_height": 1402.61
+    },
+    {
+      "width": 480,
+      "passed": true,
+      "issues": [],
+      "center_delta": 204.766,
+      "screen_clearance": 33.266,
+      "section_height": 1423.64
+    },
+    {
+      "width": 600,
+      "passed": true,
+      "issues": [],
+      "center_delta": 204.766,
+      "screen_clearance": 51.562,
+      "section_height": 1503.31
+    },
+    {
+      "width": 640,
+      "passed": true,
+      "issues": [],
+      "center_delta": 204.766,
+      "screen_clearance": 57.641,
+      "section_height": 1529.62
+    },
+    {
+      "width": 641,
+      "passed": true,
+      "issues": [],
+      "center_delta": 237.062,
+      "screen_clearance": 29.375,
+      "section_height": 1689.94
+    },
+    {
+      "width": 768,
+      "passed": true,
+      "issues": [],
+      "center_delta": 237.062,
+      "screen_clearance": 43.344,
+      "section_height": 1773.48
+    },
+    {
+      "width": 820,
+      "passed": true,
+      "issues": [],
+      "center_delta": 237.062,
+      "screen_clearance": 44.672,
+      "section_height": 1781.38
+    },
+    {
+      "width": 900,
+      "passed": true,
+      "issues": [],
+      "center_delta": 237.062,
+      "screen_clearance": 44.672,
+      "section_height": 1781.38
+    },
+    {
+      "width": 1024,
+      "passed": true,
+      "issues": [],
+      "center_delta": 237.062,
+      "screen_clearance": 44.672,
+      "section_height": 1781.38
+    },
+    {
+      "width": 1100,
+      "passed": true,
+      "issues": [],
+      "center_delta": 237.062,
+      "screen_clearance": 44.672,
+      "section_height": 1781.38
+    },
+    {
+      "width": 1101,
+      "passed": true,
+      "issues": [],
+      "center_delta": 0.008,
+      "screen_clearance": 29.328,
+      "section_height": 944.39
+    },
+    {
+      "width": 1180,
+      "passed": true,
+      "issues": [],
+      "center_delta": 0.008,
+      "screen_clearance": 34.344,
+      "section_height": 974.53
+    },
+    {
+      "width": 1200,
+      "passed": true,
+      "issues": [],
+      "center_delta": 0.008,
+      "screen_clearance": 35.641,
+      "section_height": 982.17
+    },
+    {
+      "width": 1280,
+      "passed": true,
+      "issues": [],
+      "center_delta": 0,
+      "screen_clearance": 38.5,
+      "section_height": 998.95
+    },
+    {
+      "width": 1366,
+      "passed": true,
+      "issues": [],
+      "center_delta": 0,
+      "screen_clearance": 43.984,
+      "section_height": 1031.77
+    },
+    {
+      "width": 1440,
+      "passed": true,
+      "issues": [],
+      "center_delta": 0,
+      "screen_clearance": 45.625,
+      "section_height": 1041.69
+    },
+    {
+      "width": 1536,
+      "passed": true,
+      "issues": [],
+      "center_delta": 0,
+      "screen_clearance": 45.625,
+      "section_height": 1041.69
+    },
+    {
+      "width": 1568,
+      "passed": true,
+      "issues": [],
+      "center_delta": 0,
+      "screen_clearance": 45.625,
+      "section_height": 1041.69
+    },
+    {
+      "width": 1648,
+      "passed": true,
+      "issues": [],
+      "center_delta": 0,
+      "screen_clearance": 45.625,
+      "section_height": 1069.08
+    },
+    {
+      "width": 1920,
+      "passed": true,
+      "issues": [],
+      "center_delta": 0,
+      "screen_clearance": 45.625,
+      "section_height": 1074.62
+    },
+    {
+      "width": 2560,
+      "passed": true,
+      "issues": [],
+      "center_delta": 0,
+      "screen_clearance": 45.625,
+      "section_height": 1074.62
+    }
+  ],
+  "functional_checks": {
+    "laptop_raised_pixels_at_1568": 206.36,
+    "empty_email_blocks_submit": true,
+    "invalid_email_blocks_submit": true,
+    "native_form_payload_preserved": true,
+    "netlify_contract_intact": true,
+    "keyboard_input_to_submit": true,
+    "submit_visible_focus": true,
+    "honeypot_hidden": true,
+    "one_signup_form": true,
+    "founders_asset_loaded": true,
+    "no_javascript_errors": true
+  },
+  "errors": [],
+  "limitations": [
+    "Local browser rendering uses the production markup and matching shared CSS, with local assets inlined because sandbox network navigation is unavailable.",
+    "Test submission intercepted locally; no subscriber data was sent and live Netlify email delivery has not been tested."
+  ],
+  "build": 81,
+  "repository": "eaglevisiondigital/revitalizedacademy",
+  "baseline_commit": "fd260cf0fd633f3491d046d82bc641fafc0512bf",
+  "baseline_rechecked_before_packaging": true,
+  "verified_baseline_git_blobs": {
+    "index.html": "bd9d22fb161a3d1f71f54326606900983d9ed0a2",
+    "css/styles.css": "934d58c1aa16a83927d966a278ebb9c1cfd48b99",
+    "js/app.js": "0f14aabeea12ecd2203e78ddeb3bda279a777d06"
+  },
+  "integrity_test_command": "node --test tests/webinar81-integrity.cjs",
+  "integrity_tests_passed": 10,
+  "integrity_tests_failed": 0,
+  "assessment_regression_note": "Assessment-owned files are not included or modified. Existing assessment workflow is unchanged; its tests/** trigger will run after this package is committed to main. The full assessment suite was not rerun locally in this build.",
+  "files": {
+    "BUILD81-README.txt": {
+      "bytes": 2633,
+      "sha256": "e9ad0b4f43fd9b2c0c249aad8ab9e5b7706dc7a624a6e2b55d78e16880f6bf0d"
+    },
+    "index.html": {
+      "bytes": 39274,
+      "sha256": "68eeb615ad5355d4f82a3bc183d7b790936b1e87921412b0a8ff5e126ce43eb6"
+    },
+    "tests/webinar81-integrity.cjs": {
+      "bytes": 4410,
+      "sha256": "d3bdacd6175a7f1f582836ec869fa740af8ba5be6186ba049bb1b901c628923b"
+    },
+    "css/webinar81.css": {
+      "bytes": 9718,
+      "sha256": "a9476f08bce38898aacd800e499c3612ac4e240378066c7c994a853ec0a46f94"
+    }
+  }
+}
