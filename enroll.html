@@ -7,8 +7,9 @@
   <title>Start Your Journey | ReVitalized Academy</title>
   <link rel="stylesheet" href="css/enrollment82.css?v=82">
   <link rel="stylesheet" href="css/enrollment82-program-picker.css?v=82.1">
+  <link rel="stylesheet" href="css/enrollment83-premium.css?v=83">
 </head>
-<body class="ra-journey">
+<body class="ra-journey" data-enrollment-build="83">
   <a class="ra-skip" href="#enrollment-step-one">Skip to application</a>
   <header class="ra-topbar">
     <div class="ra-topbar-inner">
@@ -32,6 +33,11 @@
         <span class="ra-eyebrow">Start your journey</span>
         <h1>Tell us where you want to <em>begin.</em></h1>
         <p>This first step is intentionally short. Give us the basics, tell us what you want help with and choose the program that interests you. If you are not sure which program fits, that is completely fine.</p>
+        <div class="ra83-hero-assurance" aria-label="Enrollment highlights">
+          <span>About 2–3 minutes</span>
+          <span>No payment today</span>
+          <span>No final program commitment</span>
+        </div>
         <div class="ra-progress" aria-label="Enrollment progress">
           <div class="ra-progress-step is-current" aria-current="step">Step 1 · Get started</div>
           <div class="ra-progress-step">Step 2 · Health profile</div>
@@ -41,13 +47,22 @@
     </section>
 
     <div class="ra-enroll-shell">
-      <form class="ra-enroll-card" id="enrollment-step-one" name="enrollment" method="POST" action="enrollment-thank-you.html" data-netlify="true" netlify-honeypot="bot-field">
+      <form class="ra-enroll-card" id="enrollment-step-one" name="enrollment" method="POST" action="enrollment-thank-you.html" data-netlify="true" netlify-honeypot="bot-field" data-enrollment-schema="step1-v1">
         <input type="hidden" name="form-name" value="enrollment">
         <input type="hidden" name="enrollment_stage" value="initial-lead-capture">
+        <input type="hidden" name="schema_version" value="enrollment-step1-v1">
+        <input type="hidden" name="lead_source_page" value="enroll">
         <input type="hidden" name="program_source" id="program-source" value="direct">
         <input type="hidden" name="utm_source" id="utm-source" value="">
         <input type="hidden" name="utm_medium" id="utm-medium" value="">
         <input type="hidden" name="utm_campaign" id="utm-campaign" value="">
+        <input type="hidden" name="enrollment_session_id" id="enrollment-session-id" value="">
+        <input type="hidden" name="first_name" id="first-name-hidden" value="">
+        <input type="hidden" name="last_name" id="last-name-hidden" value="">
+        <input type="hidden" name="selected_plan_code" id="selected-plan-code" value="">
+        <input type="hidden" name="client_started_at" id="client-started-at" value="">
+        <input type="hidden" name="client_submitted_at" id="client-submitted-at" value="">
+        <input type="hidden" name="contact_consent_at" id="contact-consent-at" value="">
         <p hidden><label>Don’t fill this out: <input name="bot-field"></label></p>
 
         <div class="ra-enroll-card-head">
@@ -57,6 +72,11 @@
 
         <div class="ra-form-body">
           <div class="ra-form-grid">
+            <div class="ra83-section-label ra83-first">
+              <span class="ra83-section-number" aria-hidden="true">01</span>
+              <div><strong>About you</strong><small>The basics we’ll use to begin your ReVitalized profile.</small></div>
+            </div>
+
             <div class="ra-field" data-field>
               <label for="full-name">Full name <span class="ra-required" aria-hidden="true">*</span></label>
               <input id="full-name" name="full_name" autocomplete="name" maxlength="150" placeholder="Your first and last name" required>
@@ -97,6 +117,11 @@
               <p class="ra-field-help">Optional, but it helps us know who or what connected you with us.</p>
             </div>
 
+            <div class="ra83-section-label">
+              <span class="ra83-section-number" aria-hidden="true">02</span>
+              <div><strong>Your goals</strong><small>Give the coaching team a quick picture of what matters most right now.</small></div>
+            </div>
+
             <div class="ra-field ra-full" data-field>
               <label for="biggest-goals">What are the biggest things you want help with in the next 6–12 months? <span class="ra-required" aria-hidden="true">*</span></label>
               <textarea id="biggest-goals" name="biggest_goals" maxlength="2200" placeholder="Tell us what you most want to improve and what would make the biggest difference in your life." required></textarea>
@@ -125,6 +150,11 @@
               <span class="ra-field-error" data-program-error>Please choose a program or select “I’m not sure yet.”</span>
             </fieldset>
 
+            <div class="ra83-section-label">
+              <span class="ra83-section-number" aria-hidden="true">04</span>
+              <div><strong>Timing &amp; next step</strong><small>Help us understand how quickly you would like to move forward.</small></div>
+            </div>
+
             <div class="ra-field ra-full" data-field>
               <label for="start-timeline">How soon would you like to start getting healthier? <span class="ra-required" aria-hidden="true">*</span></label>
               <select id="start-timeline" name="start_timeline" required>
@@ -152,6 +182,25 @@
           </div>
         </div>
       </form>
+
+      <aside class="ra83-enroll-aside" aria-label="Your connected ReVitalized journey">
+        <section class="ra83-side-card">
+          <span class="ra83-side-kicker">One connected journey</span>
+          <h2>Built to grow with you.</h2>
+          <p>This enrollment is being structured as the beginning of a connected ReVitalized experience, so the information you share can eventually flow into your member profile, health assessment and coaching path.</p>
+          <div class="ra83-connected-steps">
+            <div class="ra83-connected-step"><b>01</b><div><strong>Enrollment</strong><span>Your goals, interests and preferred starting point.</span></div></div>
+            <div class="ra83-connected-step"><b>02</b><div><strong>Health profile + assessment</strong><span>A deeper picture of where you are and what deserves attention.</span></div></div>
+            <div class="ra83-connected-step"><b>03</b><div><strong>Coaching path</strong><span>A more personalized direction built around your next steps.</span></div></div>
+          </div>
+        </section>
+        <section class="ra83-side-note">
+          <span class="ra83-side-note-mark" aria-hidden="true">∞</span>
+          <strong>Less repetition. More continuity.</strong>
+          <p>As the ReVitalized platform expands, the goal is for enrollment, assessment information and coaching progress to work together instead of feeling like separate systems.</p>
+        </section>
+        <div class="ra83-side-trust">No payment is collected on this page. Your answers are used to begin the enrollment conversation and prepare the next step.</div>
+      </aside>
     </div>
   </main>
 
@@ -164,5 +213,6 @@
     </div>
   </footer>
   <script src="js/enrollment82.js?v=82" defer></script>
+  <script src="js/enrollment83-bridge.js?v=83" defer></script>
 </body>
 </html>
