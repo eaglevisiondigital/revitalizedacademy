@@ -1,0 +1,23 @@
+name: Enrollment Build 82 QA
+on:
+  push:
+    branches:
+      - feature/programs-enrollment-step1-20260909
+  pull_request:
+    paths:
+      - 'plans.html'
+      - 'enroll.html'
+      - 'enrollment-thank-you.html'
+      - 'css/enrollment82.css'
+      - 'js/enrollment82.js'
+      - 'tests/enrollment82.cjs'
+      - '.github/workflows/enrollment82.yml'
+permissions:
+  contents: read
+jobs:
+  static-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run enrollment regression checks
+        run: node tests/enrollment82.cjs
