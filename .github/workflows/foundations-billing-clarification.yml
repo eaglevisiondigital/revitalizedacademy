@@ -1,0 +1,65 @@
+name: Apply Foundations billing clarification
+on:
+  push:
+    branches: [feature/programs-enrollment-step1-20260909]
+    paths: ['.github/workflows/foundations-billing-clarification.yml']
+permissions:
+  contents: write
+jobs:
+  update-copy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/programs-enrollment-step1-20260909
+      - name: Update Holistic Foundations pricing and commitment copy
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          def replace_exact(path, old, new):
+              p = Path(path)
+              text = p.read_text()
+              if old not in text:
+                  raise SystemExit(f'Missing expected text in {path}: {old}')
+              p.write_text(text.replace(old, new))
+
+          replace_exact('plans.html',
+            '<span class="ra-plan-label">Ongoing membership</span>',
+            '<span class="ra-plan-label">3-month membership</span>')
+          replace_exact('plans.html',
+            '<div class="ra-plan-price"><strong>$25</strong><span>/ week</span></div>',
+            '<div class="ra-plan-price"><strong>$25</strong><span>/ week<br>or $89/month</span></div>')
+          replace_exact('plans.html',
+            '<div class="ra-plan-meta"><span>Recurring</span><span>Family</span><span>Until cancelled</span></div>',
+            '<div class="ra-plan-meta"><span>Recurring</span><span>Family</span><span>3-month minimum</span></div>')
+          replace_exact('plans.html',
+            '<div class="ra-plan-detail"><strong>Billing</strong>Recurring membership at $25 per week.</div>',
+            '<div class="ra-plan-detail"><strong>Billing</strong>Choose $25 per week or $89 per month. Both payment options carry a minimum three-month commitment.</div>')
+          replace_exact('plans.html',
+            '<div class="ra-plan-detail"><strong>Cancellation</strong>Cancel before the next billing cycle.</div>',
+            '<div class="ra-plan-detail"><strong>Cancellation</strong>After the initial three-month commitment, the membership continues until cancelled. Cancel before the next billing cycle.</div>')
+          replace_exact('plans.html',
+            '<tr><td>Holistic Foundations</td><td>Ongoing</td><td>Self-paced platform + community</td><td>Family • up to 5 profiles</td><td>$25/week</td></tr>',
+            '<tr><td>Holistic Foundations</td><td>3-month minimum; then ongoing</td><td>Self-paced platform + community</td><td>Family • up to 5 profiles</td><td>$25/week or $89/month</td></tr>')
+          replace_exact('enroll.html',
+            '<small>$25/week · family membership</small>',
+            '<small>$25/week or $89/month · 3-month minimum</small>')
+
+          test = Path('tests/enrollment82.cjs')
+          text = test.read_text()
+          anchor = "assert(plans.includes('$25'), 'Holistic Foundations public price missing');"
+          if anchor not in text:
+              raise SystemExit('Missing test anchor')
+          replacement = anchor + "\nassert(plans.includes('$89/month'), 'Holistic Foundations monthly payment option missing');\nassert(plans.includes('3-month minimum'), 'Holistic Foundations minimum commitment missing');\nassert(enroll.includes('$25/week or $89/month · 3-month minimum'), 'Enrollment Foundations billing summary missing');"
+          test.write_text(text.replace(anchor, replacement))
+          PY
+      - name: Run enrollment checks
+        run: node tests/enrollment82.cjs
+      - name: Commit clarification
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add plans.html enroll.html tests/enrollment82.cjs
+          git commit -m "Clarify Holistic Foundations payment options and 3-month minimum"
+          git push origin HEAD:feature/programs-enrollment-step1-20260909
