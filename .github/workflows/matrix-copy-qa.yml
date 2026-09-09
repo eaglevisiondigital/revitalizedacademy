@@ -4,29 +4,69 @@ on:
     branches: [fix/longevity-matrix-copy-20260909]
     paths: ['.github/workflows/matrix-copy-qa.yml']
 permissions:
-  contents: read
+  contents: write
 jobs:
-  inspect:
+  apply-and-test:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
-      - name: Record source snapshot
-        run: |
-          git rev-parse HEAD > MATRIX-QA-SNAPSHOT.txt
-          git ls-tree -r HEAD >> MATRIX-QA-SNAPSHOT.txt
-      - uses: actions/upload-artifact@v4
+      - uses: actions/setup-node@v4
         with:
-          name: matrix-copy-source
-          retention-days: 2
-          path: |
-            *.html
-            css/
-            js/
-            netlify.toml
-            package.json
-            tests/
-            .github/workflows/assessment-regression.yml
-            BUILD71-ASSESSMENT-RESTORE.md
-            MATRIX-QA-SNAPSHOT.txt
-            assets/images/longevity-matrix-approved-2026.png
-            assets/images/icon-*-approved.png
+          node-version: '22'
+      - name: Apply only the approved Matrix copy and caption
+        shell: python
+        run: |
+          from pathlib import Path
+          import subprocess
+          def sha(path):
+              return subprocess.check_output(['git','hash-object',path],text=True).strip()
+          assert sha('index.html') == 'a2d0dad7b632e955bcb329dd8a15cca475a481a4', 'Homepage changed; re-review before applying.'
+          assert sha('js/app.js') == '0f14aabeea12ecd2203e78ddeb3bda279a777d06', 'Shared script changed; re-review before applying.'
+          p = Path('index.html')
+          s = p.read_text()
+          old = 'Explore the four core focus areas to see how ReVitalized helps create a healthier, stronger, more sustainable lifestyle.'
+          new = 'Explore the four core principles of holistic health to see how the ReVitalized method helps create a healthier, stronger, more sustainable lifestyle.'
+          assert s.count(old) == 1
+          s = s.replace(old,new)
+          oldimg = '<img class="matrix-approved-art" src="assets/images/longevity-matrix-approved-2026.png" alt="The ReVitalized Longevity Matrix with Athletic, Energized, Refined and Organized focus areas around Longevity Lifestyle">'
+          newimg = '''<img class="matrix-approved-art" src="assets/images/longevity-matrix-approved-2026.png" alt="The ReVitalized Longevity Matrix with Athletic, Energized, Refined and Organized focus areas around Longevity Lifestyle. Energized: Feel good physically and mentally every day.">
+                    <!-- Keep the approved artwork intact; replace only the Energized caption with crisp, responsive text. -->
+                    <svg class="matrix-energized-copy" viewBox="0 0 1322 1190" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false" style="position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none">
+                      <rect x="158" y="595" width="150" height="77" rx="3" fill="#000"></rect>
+                      <text fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="400" text-anchor="middle">
+                        <tspan x="231" y="622">Feel good physically</tspan>
+                        <tspan x="231" y="651">and mentally</tspan>
+                        <tspan x="231" y="680">every day</tspan>
+                      </text>
+                    </svg>'''
+          assert s.count(oldimg) == 1
+          s = s.replace(oldimg,newimg)
+          assert s.count('aria-label="Explore Energized focus"') == 1
+          s = s.replace('aria-label="Explore Energized focus"','aria-label="Explore Energized focus: Feel good physically and mentally every day"')
+          assert s.count('js/app.js?v=76') == 1
+          s = s.replace('js/app.js?v=76','js/app.js?v=matrix-copy-20260909')
+          p.write_text(s)
+          p = Path('js/app.js')
+          s = p.read_text()
+          assert s.count("tagline: 'Feel good everyday'") == 1
+          p.write_text(s.replace("tagline: 'Feel good everyday'","tagline: 'Feel good physically and mentally every day'"))
+          assert sha('index.html') == '8d384a4b34f8e962c5d5b9897e864dd87e5e5362', 'Must match the desktop/mobile-tested homepage exactly.'
+          assert sha('js/app.js') == '6f48dd4cd436a7614dd5e313fb0d9088129c13e0'
+          changed = set(subprocess.check_output(['git','diff','--name-only'],text=True).splitlines())
+          assert changed == {'index.html','js/app.js'}, changed
+          print('Exact tested files reproduced. Approved artwork, assessment, styles and all other files remain unchanged.')
+      - name: Check JavaScript and run the existing assessment regression suite
+        run: |
+          node --check js/app.js
+          npm install --prefix "$RUNNER_TEMP/matrix-qa" --no-audit --no-fund --ignore-scripts jsdom@26.1.0
+          NODE_PATH="$RUNNER_TEMP/matrix-qa/node_modules" node --test tests/assessment-person.cjs
+      - name: Commit only the approved changes and remove this temporary workflow
+        run: |
+          git rm .github/workflows/matrix-copy-qa.yml
+          git add index.html js/app.js
+          git diff --cached --check
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m "Update approved Longevity Matrix introduction and Energized caption"
+          git push origin HEAD:refs/heads/fix/longevity-matrix-copy-20260909
