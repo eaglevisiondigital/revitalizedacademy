@@ -40,7 +40,7 @@
     </section>
 
     <div class="ra-enroll-shell">
-      <form class="ra-enroll-card" id="enrollment-step-one" name="enrollment" method="POST" action="enrollment-thank-you.html" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+      <form class="ra-enroll-card" id="enrollment-step-one" name="enrollment" method="POST" action="enrollment-thank-you.html" data-netlify="true" netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="enrollment">
         <input type="hidden" name="enrollment_stage" value="initial-lead-capture">
         <input type="hidden" name="program_source" id="program-source" value="direct">
@@ -70,7 +70,7 @@
 
             <div class="ra-field" data-field>
               <label for="phone">Phone number <span class="ra-required" aria-hidden="true">*</span></label>
-              <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="30" placeholder="(555) 234-5678" required>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="30" pattern="[+()0-9 .-]{10,}" placeholder="(555) 234-5678" required>
               <span class="ra-field-error" data-error>Please enter your best phone number.</span>
             </div>
 
