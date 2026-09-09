@@ -58,30 +58,24 @@ const matrixData = {
     summary: 'Build the everyday habits that support energy, detoxification, hydration, and a body that feels better from the inside out.',
     sections: [
       {
-        title: 'Habits',
-        icon: 'habits',
-        points: [
-          'Bioelectrical charge grounding routine',
-          'Quantum-safe home hygiene',
-          'Stabilize the circadian rhythm'
-        ]
-      },
-      {
-        title: 'Detoxification',
-        icon: 'detox',
-        points: [
-          'Bind & eliminate toxins out of the body',
-          'Target & pull toxins out of tissue',
-          'Open detox pathways'
-        ]
-      },
-      {
         title: 'Cellular Hydration',
         icon: 'hydration',
         points: [
-          'Daily hydration equation',
-          'Rehydrate to daily baseline',
-          'Purify drinking water'
+          'Get your body consistently hydrated to support mental energy and better circulation.'
+        ]
+      },
+      {
+        title: 'Systemic Detoxification',
+        icon: 'detox',
+        points: [
+          'Open up your drainage pathways to cleanse built-up toxins and relieve internal stress.'
+        ]
+      },
+      {
+        title: 'Electrobiology Rhythms',
+        icon: 'habits',
+        points: [
+          'Align your body electrically to support restorative sleep and healthy hormone balance.'
         ]
       }
     ]
@@ -97,27 +91,21 @@ const matrixData = {
         title: 'Wise Budgeting',
         icon: 'budgeting',
         points: [
-          'Build up a healthy emergency savings',
-          'Create a healthy budget',
-          'Cut unnecessary spending'
+          'Create peace of mind with a thoughtful health budget planned for your family’s unique needs.'
         ]
       },
       {
         title: 'Mentality Realignment',
         icon: 'mindset',
         points: [
-          'Learn to be a grateful whitebelt',
-          'Enhance your vocabulary',
-          'Control your environment'
+          'Get proactive with your health education so that you can become self-reliant with your family’s health and not at the mercy of online marketing.'
         ]
       },
       {
         title: 'Momentum Regimens',
         icon: 'momentum',
         points: [
-          'Goal-focused monthly targets & standards',
-          'Simple weekly routines',
-          'Simple daily habits'
+          'Take back control over the direction of your health by implementing holistic practices into your lifestyle so health becomes natural and effective.'
         ]
       }
     ]
@@ -130,30 +118,24 @@ const matrixData = {
     summary: 'Support a body that moves well, recovers well, and keeps the physical capacity to perform for the long haul.',
     sections: [
       {
-        title: 'The Living Diet',
+        title: 'A Living Diet',
         icon: 'diet',
         points: [
-          'Enhance digestion',
-          'Balance blood sugar',
-          'Reduce inflammation'
+          'Create a whole food diet that fully nourishes your body while still tasting delicious and not trapping you in the kitchen.'
         ]
       },
       {
         title: 'Functional Training',
         icon: 'training',
         points: [
-          'Maintain full-body athletic performance',
-          'Train to functional baseline',
-          'Movement rehabilitation'
+          'Use functional exercises aligned to your body’s natural movement to build lean muscle, get stronger, and move more dynamically.'
         ]
       },
       {
         title: 'Holistic Recovery',
         icon: 'recovery',
         points: [
-          'Challenge & support your stress response',
-          'Refresh extension',
-          'Laboratory measures'
+          'Support your body to recover faster and more effectively from physical activity to get past aches and pains.'
         ]
       }
     ]
@@ -161,7 +143,7 @@ const matrixData = {
   refined: {
     theme: 'refined',
     name: 'Refined',
-    tagline: 'Be impressed with your reflection',
+    tagline: 'Get impressed with who you see in the mirror',
     focusIcon: 'refined',
     summary: 'Support the systems that influence digestion, hormone balance, body composition, brain health, and how you feel in your own skin.',
     sections: [
@@ -169,27 +151,21 @@ const matrixData = {
         title: 'G.I. Renovation',
         icon: 'gi',
         points: [
-          'Stimulate healthy bile everyday',
-          'Consistently positive bowel transit rate',
-          'Repopulate gut microbiome'
+          'Improve your digestion and overall feeling of your gut by fixing bowel transit rate and building up a strong gut microbiome.'
         ]
       },
       {
         title: 'Hormone Balancing',
         icon: 'hormone',
         points: [
-          'Calm the hormone storm',
-          'Practice body recomposition',
-          'Recalibrate endocrine system to homeostasis'
+          'Get back in control of your hormones by reducing disruptors in your home and getting rid of stubborn fat.'
         ]
       },
       {
         title: 'Neural Repatterning',
         icon: 'neural',
         points: [
-          'De-stress the brain',
-          'Balance neurochemistry',
-          'Strengthen neural circuits'
+          'Train your brain to think faster and remember better as you learn to manage stress and regulate brain chemicals.'
         ]
       }
     ]
