@@ -1,0 +1,467 @@
+{
+  "build": 80,
+  "scope": "Free Help page only",
+  "baseline_commit": "dabb308feb2362c6369e3fa119a7d21ba91b3cf4",
+  "baseline_free_help_blob": "1b7cc021c664446d3c17818e8f66b6fecf2682a1",
+  "integrity_checks": {
+    "current_main_free_help_blob_verified": true,
+    "footer_byte_for_byte_unchanged": true,
+    "original_assessment_anchor_unchanged": true,
+    "all_seven_video_ids_preserved": true,
+    "all_original_resource_titles_and_descriptions_preserved": true,
+    "all_original_article_destinations_preserved": true,
+    "original_newsletter_fields_preserved": true,
+    "single_main_h1_and_unique_ids": true,
+    "existing_watch_read_anchors_preserved": true,
+    "all_assessment_links_reach_consult": true,
+    "shared_css_and_js_unmodified": true,
+    "no_assessment_data_or_storage_mutation": true
+  },
+  "node_integrity_tests": {
+    "passed": 9,
+    "failed": 0,
+    "command": "node --test tests/free-help80.cjs"
+  },
+  "browser": {
+    "render_method": "Chromium rendering of package HTML/CSS/JS with local assets inlined. Original external thumbnail URLs are retained in release; offline preview uses the branded fallbacks.",
+    "widths": [
+      {
+        "width": 320,
+        "bodyWidth": 320,
+        "sectionWidth": 320,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "width": 344,
+        "bodyWidth": 344,
+        "sectionWidth": 344,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "width": 360,
+        "bodyWidth": 360,
+        "sectionWidth": 360,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "width": 375,
+        "bodyWidth": 375,
+        "sectionWidth": 375,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "width": 390,
+        "bodyWidth": 390,
+        "sectionWidth": 390,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "width": 414,
+        "bodyWidth": 414,
+        "sectionWidth": 414,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "width": 430,
+        "bodyWidth": 430,
+        "sectionWidth": 430,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "width": 480,
+        "bodyWidth": 480,
+        "sectionWidth": 480,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "width": 481,
+        "bodyWidth": 481,
+        "sectionWidth": 481,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "width": 540,
+        "bodyWidth": 540,
+        "sectionWidth": 540,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "width": 640,
+        "bodyWidth": 640,
+        "sectionWidth": 640,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "width": 700,
+        "bodyWidth": 700,
+        "sectionWidth": 700,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "width": 760,
+        "bodyWidth": 760,
+        "sectionWidth": 760,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "width": 761,
+        "bodyWidth": 761,
+        "sectionWidth": 761,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "width": 768,
+        "bodyWidth": 768,
+        "sectionWidth": 768,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "width": 820,
+        "bodyWidth": 820,
+        "sectionWidth": 820,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "width": 860,
+        "bodyWidth": 860,
+        "sectionWidth": 860,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "width": 912,
+        "bodyWidth": 912,
+        "sectionWidth": 912,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "width": 1024,
+        "bodyWidth": 1024,
+        "sectionWidth": 1024,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "width": 1050,
+        "bodyWidth": 1050,
+        "sectionWidth": 1050,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "width": 1051,
+        "bodyWidth": 1051,
+        "sectionWidth": 1051,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "width": 1100,
+        "bodyWidth": 1100,
+        "sectionWidth": 1100,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "width": 1180,
+        "bodyWidth": 1180,
+        "sectionWidth": 1180,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "width": 1240,
+        "bodyWidth": 1240,
+        "sectionWidth": 1240,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "width": 1280,
+        "bodyWidth": 1280,
+        "sectionWidth": 1280,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "width": 1366,
+        "bodyWidth": 1366,
+        "sectionWidth": 1366,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "width": 1440,
+        "bodyWidth": 1440,
+        "sectionWidth": 1440,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "width": 1536,
+        "bodyWidth": 1536,
+        "sectionWidth": 1536,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "width": 1628,
+        "bodyWidth": 1628,
+        "sectionWidth": 1628,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "width": 1920,
+        "bodyWidth": 1920,
+        "sectionWidth": 1920,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "width": 2560,
+        "bodyWidth": 2560,
+        "sectionWidth": 2560,
+        "overflow": false,
+        "bad": []
+      }
+    ],
+    "functional": [
+      {
+        "check": "All ten resources visible initially",
+        "pass": true,
+        "detail": null
+      },
+      {
+        "check": "Topic filter Gut Health",
+        "pass": true,
+        "detail": {
+          "visible": 4,
+          "expected": 4
+        }
+      },
+      {
+        "check": "Topic filter Brain Health",
+        "pass": true,
+        "detail": {
+          "visible": 3,
+          "expected": 3
+        }
+      },
+      {
+        "check": "Topic filter Nutrition",
+        "pass": true,
+        "detail": {
+          "visible": 4,
+          "expected": 4
+        }
+      },
+      {
+        "check": "Topic filter Movement",
+        "pass": true,
+        "detail": {
+          "visible": 4,
+          "expected": 4
+        }
+      },
+      {
+        "check": "Topic filter Mindset",
+        "pass": true,
+        "detail": {
+          "visible": 5,
+          "expected": 5
+        }
+      },
+      {
+        "check": "Topic filter Family Health",
+        "pass": true,
+        "detail": {
+          "visible": 2,
+          "expected": 2
+        }
+      },
+      {
+        "check": "Topic filter Longevity",
+        "pass": true,
+        "detail": {
+          "visible": 7,
+          "expected": 7
+        }
+      },
+      {
+        "check": "Topic filter Oral Health",
+        "pass": true,
+        "detail": {
+          "visible": 1,
+          "expected": 1
+        }
+      },
+      {
+        "check": "Title search finds matching podcast",
+        "pass": true,
+        "detail": null
+      },
+      {
+        "check": "No-results message appears",
+        "pass": true,
+        "detail": null
+      },
+      {
+        "check": "Reset restores all resources",
+        "pass": true,
+        "detail": null
+      },
+      {
+        "check": "Inline player destination yRYRxfbK5X8",
+        "pass": true,
+        "detail": null
+      },
+      {
+        "check": "Inline player destination 9YGA1pigUsA",
+        "pass": true,
+        "detail": null
+      },
+      {
+        "check": "Inline player destination rX8QeXgyiCg",
+        "pass": true,
+        "detail": null
+      },
+      {
+        "check": "Inline player destination 2uCdM0w3Guk",
+        "pass": true,
+        "detail": null
+      },
+      {
+        "check": "Inline player destination An8Vf3t63XI",
+        "pass": true,
+        "detail": null
+      },
+      {
+        "check": "Inline player destination 42qY6TLi8lM",
+        "pass": true,
+        "detail": null
+      },
+      {
+        "check": "Inline player destination qYc4rgpV3dw",
+        "pass": true,
+        "detail": null
+      },
+      {
+        "check": "Filtered-out videos stop playing",
+        "pass": true,
+        "detail": null
+      },
+      {
+        "check": "Restored poster opens player again",
+        "pass": true,
+        "detail": null
+      },
+      {
+        "check": "Empty signup is blocked",
+        "pass": true,
+        "detail": null
+      },
+      {
+        "check": "Failure retains details and offers retry",
+        "pass": true,
+        "detail": null
+      },
+      {
+        "check": "Signup uses original Netlify form independently",
+        "pass": true,
+        "detail": {
+          "url": "/",
+          "body": "form-name=revitalized-report&bot-field=&first_name=Synthetic&email=synthetic%40example.invalid"
+        }
+      },
+      {
+        "check": "Success message and reset require successful response",
+        "pass": true,
+        "detail": null
+      },
+      {
+        "check": "Footer disclaimer still present",
+        "pass": true,
+        "detail": null
+      },
+      {
+        "check": "Both assessment CTAs still reach consult",
+        "pass": true,
+        "detail": null
+      },
+      {
+        "check": "Menu opens 320",
+        "pass": true,
+        "detail": null
+      },
+      {
+        "check": "Menu closes 320",
+        "pass": true,
+        "detail": null
+      },
+      {
+        "check": "Menu opens 768",
+        "pass": true,
+        "detail": null
+      },
+      {
+        "check": "Menu closes 768",
+        "pass": true,
+        "detail": null
+      },
+      {
+        "check": "Menu opens 1024",
+        "pass": true,
+        "detail": null
+      },
+      {
+        "check": "Menu closes 1024",
+        "pass": true,
+        "detail": null
+      },
+      {
+        "check": "No-JavaScript fallback shows all resources and the original form",
+        "pass": true,
+        "detail": null
+      }
+    ],
+    "errors": [],
+    "pass": true
+  },
+  "assessment_baseline": {
+    "run_id": 34356963162,
+    "rerun_job_id": 102495130968,
+    "result": "success",
+    "note": "Existing protected assessment regression suite rerun on current main. This is not a test of the unpublished candidate. No assessment files changed."
+  },
+  "external_limits": {
+    "live_page": "Netlify could not be fetched in this environment. Latest GitHub source was fetched and verified instead.",
+    "thumbnails": "Browser previews show deliberate local cover fallbacks. Original YouTube thumbnail URLs and all video IDs retained.",
+    "newsletter": "Success/failure responses simulated with synthetic data. No real subscriptions sent. Netlify processing and notification delivery need a post-deploy check.",
+    "video_playback": "Embed creation/destinations and restored video handlers tested; actual external YouTube playback not verified in the offline browser."
+  },
+  "sha256_files": {
+    "free-help.html": "172f1e89f7b03539d3d7b28adccaa6038cd78ff396903b49846733eb82edba8c",
+    "css/free-help80.css": "37f4ec0526ccaafe3d78a8674ccfbe958d20285a80dceddb66e94e2b3f36c6b1",
+    "js/free-help80.js": "f782331a719fb814fc65b4898acc1f4516930e7772b0583b83c2402eff333e6a",
+    "assets/images/free-help80/emerald-botanical.webp": "2da83721c975a43e2aa99133a48b4f57971ff807a89b47e712c2a191448a5586",
+    "assets/images/free-help80/cream-library.webp": "9d3274ec6dd9995f47159757360d8b827729a4a4345455fe8de928245316f89b"
+  }
+}
