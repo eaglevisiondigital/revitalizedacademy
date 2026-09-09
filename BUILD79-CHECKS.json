@@ -1,0 +1,303 @@
+{
+  "viewports": [
+    {
+      "width": 320,
+      "pageWidth": 320,
+      "issues": [],
+      "ctaLines": 1,
+      "ctaHeight": 56.703125,
+      "storySlides": 1
+    },
+    {
+      "width": 360,
+      "pageWidth": 360,
+      "issues": [],
+      "ctaLines": 1,
+      "ctaHeight": 56.96875,
+      "storySlides": 1
+    },
+    {
+      "width": 375,
+      "pageWidth": 375,
+      "issues": [],
+      "ctaLines": 1,
+      "ctaHeight": 57,
+      "storySlides": 1
+    },
+    {
+      "width": 390,
+      "pageWidth": 390,
+      "issues": [],
+      "ctaLines": 1,
+      "ctaHeight": 57,
+      "storySlides": 1
+    },
+    {
+      "width": 414,
+      "pageWidth": 414,
+      "issues": [],
+      "ctaLines": 1,
+      "ctaHeight": 57,
+      "storySlides": 1
+    },
+    {
+      "width": 430,
+      "pageWidth": 430,
+      "issues": [],
+      "ctaLines": 1,
+      "ctaHeight": 57,
+      "storySlides": 1
+    },
+    {
+      "width": 540,
+      "pageWidth": 540,
+      "issues": [],
+      "ctaLines": 1,
+      "ctaHeight": 57,
+      "storySlides": 1
+    },
+    {
+      "width": 639,
+      "pageWidth": 639,
+      "issues": [],
+      "ctaLines": 1,
+      "ctaHeight": 57,
+      "storySlides": 1
+    },
+    {
+      "width": 640,
+      "pageWidth": 640,
+      "issues": [],
+      "ctaLines": 1,
+      "ctaHeight": 56.28125,
+      "storySlides": 1
+    },
+    {
+      "width": 700,
+      "pageWidth": 700,
+      "issues": [],
+      "ctaLines": 1,
+      "ctaHeight": 56.015625,
+      "storySlides": 1
+    },
+    {
+      "width": 768,
+      "pageWidth": 768,
+      "issues": [],
+      "ctaLines": 1,
+      "ctaHeight": 56,
+      "storySlides": 1
+    },
+    {
+      "width": 820,
+      "pageWidth": 820,
+      "issues": [],
+      "ctaLines": 1,
+      "ctaHeight": 56,
+      "storySlides": 1
+    },
+    {
+      "width": 860,
+      "pageWidth": 860,
+      "issues": [],
+      "ctaLines": 1,
+      "ctaHeight": 56,
+      "storySlides": 1
+    },
+    {
+      "width": 900,
+      "pageWidth": 900,
+      "issues": [],
+      "ctaLines": 1,
+      "ctaHeight": 56,
+      "storySlides": 1
+    },
+    {
+      "width": 960,
+      "pageWidth": 960,
+      "issues": [],
+      "ctaLines": 1,
+      "ctaHeight": 56,
+      "storySlides": 1
+    },
+    {
+      "width": 1024,
+      "pageWidth": 1024,
+      "issues": [],
+      "ctaLines": 1,
+      "ctaHeight": 56,
+      "storySlides": 1
+    },
+    {
+      "width": 1100,
+      "pageWidth": 1100,
+      "issues": [],
+      "ctaLines": 1,
+      "ctaHeight": 56,
+      "storySlides": 1
+    },
+    {
+      "width": 1280,
+      "pageWidth": 1280,
+      "issues": [],
+      "ctaLines": 1,
+      "ctaHeight": 56,
+      "storySlides": 1
+    },
+    {
+      "width": 1366,
+      "pageWidth": 1366,
+      "issues": [],
+      "ctaLines": 1,
+      "ctaHeight": 56,
+      "storySlides": 1
+    },
+    {
+      "width": 1440,
+      "pageWidth": 1440,
+      "issues": [],
+      "ctaLines": 1,
+      "ctaHeight": 56,
+      "storySlides": 1
+    },
+    {
+      "width": 1536,
+      "pageWidth": 1536,
+      "issues": [],
+      "ctaLines": 1,
+      "ctaHeight": 56,
+      "storySlides": 1
+    },
+    {
+      "width": 1600,
+      "pageWidth": 1600,
+      "issues": [],
+      "ctaLines": 1,
+      "ctaHeight": 56,
+      "storySlides": 1
+    },
+    {
+      "width": 1920,
+      "pageWidth": 1920,
+      "issues": [],
+      "ctaLines": 1,
+      "ctaHeight": 56,
+      "storySlides": 1
+    },
+    {
+      "width": 2560,
+      "pageWidth": 2560,
+      "issues": [],
+      "ctaLines": 1,
+      "ctaHeight": 56,
+      "storySlides": 1
+    }
+  ],
+  "js_errors": [],
+  "checks": {
+    "carousel_controls": true,
+    "dialog_open_escape_close_focus_return": true,
+    "media_not_requested_before_click": true,
+    "both_original_video_ids_preserved": true,
+    "cta_keyboard_href_color": true,
+    "mobile_menu_unchanged": true,
+    "images_loaded": true,
+    "no_js_fallback": true
+  },
+  "browser": "Chromium",
+  "render_method": "Offline inlining of exact packaged HTML, CSS, JavaScript and image bytes; network blocked.",
+  "build": 79,
+  "base_commit": "1af29a8a72e0eb65572b6d5852be067606d6be1a",
+  "source_families_git_blob": "097626820aa914917bba4daf5c3de2b44d84c1a0",
+  "source_families_sha256": "288afa6e82b3321b8e41c828c7e13165002e4ce03f6a60bc30b988fdec740136",
+  "published": false,
+  "existing_files_changed": [
+    "families.html"
+  ],
+  "new_runtime_files": [
+    "css/family-health79.css",
+    "js/family-health79.js",
+    "assets/images/family-health79/family-walk.webp"
+  ],
+  "protected_files_excluded": [
+    "consult.html",
+    "js/vitality55.js",
+    "js/vitality-child.js",
+    "css/vitality55.css",
+    "disclaimer.html",
+    "netlify.toml",
+    "tests/assessment-person.cjs",
+    ".github/workflows/assessment-regression.yml",
+    "BUILD71-ASSESSMENT-RESTORE.md",
+    "index.html",
+    "stories.html",
+    "free-help.html",
+    "css/styles.css",
+    "js/app.js"
+  ],
+  "family_story_sources": {
+    "file": "stories.html",
+    "git_blob": "393ac2121deaef6b9f5a06e8b67e93014af6cde8",
+    "Watt": "9gDp42pU5S8",
+    "Hynes": "OQdXdxuHjJU",
+    "unverified_mockup_quote_published": false,
+    "reference_photo_caption": "Illustrative image"
+  },
+  "baseline_assessment_ci": {
+    "run_id": 34353437348,
+    "commit": "1af29a8a72e0eb65572b6d5852be067606d6be1a",
+    "conclusion": "success",
+    "note": "Existing GitHub main CI result checked; not a new run of this downloadable package. All assessment files are excluded from the patch."
+  },
+  "outside_change_strategy": "Source reversibility check: removing only Build 79 additions restores the exact GitHub main families.html blob.",
+  "preserved_markup": {
+    "header": {
+      "regex": "<header class=\"site-header\"[\\s\\S]*?</header>",
+      "sha256": "cd17fd89f9fd79a34bb79199be22c8c1d8eac803292ad71ed41f9cb7dec56cbb"
+    },
+    "hero": {
+      "regex": "<section class=\"fh77\"[\\s\\S]*?</section>",
+      "sha256": "a7f5453294c670f3d432c9fefc81af512c06d6a774024c4743fb15460f0f46a5"
+    },
+    "pillars": {
+      "regex": "<section class=\"family-matrix-section[\\s\\S]*?</section>",
+      "sha256": "9838451749a16c3c52e98802f2bde98417628e848d0c4c199db14a2cae0bfbd0"
+    },
+    "footer": {
+      "regex": "<footer\\b[\\s\\S]*?</footer>",
+      "sha256": "7317639910631a400a7633494385ba507d79a3f5c1fc0b7851e52732c316dd60"
+    },
+    "final_cta": {
+      "regex": "<section class=\"family-final-cta[\\s\\S]*?</section>",
+      "sha256": "fe7f54ffc8745ed60aab3eb8150888e57e857752c1610e56828a80047075bb01"
+    }
+  },
+  "card_markup_sha256": [
+    "ba13ac4151ff420fe8c1ac522d52e9196865917459ffa550f7f867e1b6adc5b4",
+    "a4693306771f4839367ffe2de501b87d0b0dd72615c8831ceaf724941dd580e0",
+    "c624768eba6e43d62665e4da7454bebd8cdc8419aa3ba86f26f61e59ec30004b",
+    "07e211217e2ed4ae947d99475f5d652af89f3fe381d1141b9f6c485a6d0f19d5"
+  ],
+  "hub_copy_before": "THE FAMILY HUB VISION Health gets easier when the family can move in the same direction. The growing ReVitalized digital ecosystem is being designed with family participation in mind\u2014bringing coaching, education, healthy routines, progress and resources into a more connected experience. The individual still matters. A family approach should make it easier to support one another without assuming that everyone needs the same priorities. \u2713 Shared healthy rhythms Make the home environment part of the solution. \u2713 Age-appropriate participation Help younger family members understand healthy choices. \u2713 Individual priorities Keep personalized needs from getting lost in a family plan. \u2713 Family encouragement Build consistency through support instead of isolation.",
+  "callout_copy_before": "REAL FAMILY JOURNEYS Health can become something the family builds together. See stories from ReVitalized clients, including families who have worked toward healthier lifestyles together. Explore Client Stories",
+  "assessment_destinations": [
+    "<a class=\"fh77-hotspot fh77-assessment-hotspot\" href=\"consult.html\" aria-label=\"Free Vitality Assessment\">",
+    "<a class=\"fh77-native-cta fh77-native-cta--assessment\" href=\"consult.html\">",
+    "<a class=\"btn family-cream-btn vitality-primary-cta\" href=\"consult.html\">"
+  ],
+  "untouched_resources": {
+    "css/styles.css": "b2703c7cd8bf1201cbdf61fc1bce816a314a0720abff6aa0cea7930ff9e51dc9",
+    "css/family-health77.css": "ceb1329c40b4ca5ee66f174a7b150e84279105a275f6b1c8ce21fdd4d67fa271",
+    "css/family-health78.css": "63e6ccdfd600c05cd90ceafb97855a5eaede0ead2165b755694d52c2dffa16d5",
+    "js/app.js": "21b15805e5cb735950a63d083019d26f568e199acca4262eef4af725f1ddcc78",
+    "js/family-health77.js": "b5678c6ab9ef7d3bb7cc6cedaa9978b5f4385e32c8674c22982da6708e9ea9a0",
+    "assets/images/family-health77/approved-desktop.png": "6e1aad6dd8174564cf39378374bb238ace22b576cf1ec93ce1b2a148934364c0",
+    "assets/images/family-health77/approved-family-mobile.webp": "c8929331c087903001fb143bfdf5927630b5be03a029b8f045566d0feefc77d5"
+  },
+  "file_sha256": {
+    "families.html": "308ef7a1bf626efc5cb0f3b979e8c71d6086069a7c09b52cc456e44355bb0881",
+    "js/family-health79.js": "f733db39a1fdeb1caf387df49a288b9ed196035052bb01ef3588fc7fe260e21b",
+    "css/family-health79.css": "e1ec0a31044f457c4997c8a6029a0beb4e947c4b02091b98c57878153b8c432a",
+    "assets/images/family-health79/family-walk.webp": "7d96f714cac17aad469bd8777cf398dbae08d91308bb03435016c3da0900b204"
+  }
+}

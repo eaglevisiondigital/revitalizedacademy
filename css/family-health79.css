@@ -1,0 +1,102 @@
+/* BUILD 79 — restrained Family Health lower-page polish.
+   This file styles only the added story strip and two explicitly marked sections.
+   No global button, header, assessment, legal, hero, or pillar styles. */
+#family-generations78 .fh79-story{position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(210px,25%) minmax(0,1fr) auto;align-items:stretch;gap:0;margin:25px 0 0;overflow:hidden;border:1px solid #bd994f;border-radius:17px;background:radial-gradient(ellipse at 72% 0,rgba(20,105,78,.26),transparent 64%),linear-gradient(108deg,#0c513d,#053c30 58%,#04372c);box-shadow:0 10px 23px rgba(14,56,40,.095);color:#fffaf0}
+#family-generations78 .fh79-story [hidden]{display:none!important}
+#family-generations78 .fh79-story-media{position:relative;min-height:154px;align-self:stretch;margin:0;overflow:hidden;background:#174637}
+#family-generations78 .fh79-story-media img{display:block;width:100%;height:100%;position:absolute;inset:0;object-fit:cover;object-position:50% 22%;margin:0;border:0;filter:none}
+#family-generations78 .fh79-story-media::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,transparent 74%,rgba(5,60,48,.6)),linear-gradient(0deg,rgba(0,31,23,.45),transparent 38%)}
+#family-generations78 .fh79-story-media figcaption{position:absolute;z-index:1;left:12px;bottom:8px;margin:0;font-size:10px;line-height:1.4;color:#fff;text-shadow:0 1px 3px #000;letter-spacing:.025em}
+#family-generations78 .fh79-story-track{position:relative;z-index:1;align-self:center;min-width:0;padding:19px 25px 17px}
+#family-generations78 .fh79-story-kicker{display:block;margin:0 0 7px;font-size:10px;font-weight:800;letter-spacing:.16em;line-height:1.4;color:#edca76}
+#family-generations78 .fh79-story-slide h3{margin:0 0 5px;font-family:Georgia,'Times New Roman',serif;font-size:clamp(24px,1.9vw,28px);font-weight:700;letter-spacing:-.02em;line-height:1.12;color:#fffaf1}
+#family-generations78 .fh79-story-slide p{margin:0;font-family:Georgia,'Times New Roman',serif;font-size:clamp(17px,1.36vw,21px);font-weight:400;line-height:1.4;color:#faf5e9}
+#family-generations78 a.fh79-watch{display:inline-flex;align-items:center;gap:7px;min-height:30px;margin:7px 0 0;color:#f1cf83;text-decoration:none;font-size:12px;font-weight:750;letter-spacing:.01em;line-height:1.3}
+#family-generations78 .fh79-watch svg{display:block;width:17px;height:17px;fill:currentColor;stroke:none}
+#family-generations78 .fh79-story-nav{position:relative;z-index:2;align-self:center;display:flex;align-items:center;gap:7px;padding:18px 29px 18px 5px}
+#family-generations78 .fh79-story-nav>button{display:grid;place-items:center;width:40px;height:40px;min-height:40px;padding:8px;background:rgba(255,255,255,.025);color:#e3bf73;border:1px solid rgba(227,191,115,.6);border-radius:50%;cursor:pointer;box-shadow:none;font:inherit}
+#family-generations78 .fh79-story-nav>button svg{display:block;width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+#family-generations78 .fh79-prev svg{transform:rotate(180deg)}
+#family-generations78 .fh79-dots{display:flex;gap:0;align-items:center}
+#family-generations78 .fh79-dots button{display:grid;place-items:center;width:22px;height:40px;min-height:40px;margin:0;padding:0;border:0;background:transparent;color:#fff;box-shadow:none;cursor:pointer}
+#family-generations78 .fh79-dots span{display:block;width:7px;height:7px;border-radius:50%;border:1px solid #e6c97e;background:transparent}
+#family-generations78 .fh79-dots [aria-current=true] span{background:#f8e4ac;border-color:#f8e4ac}
+#family-generations78 .fh79-leaf{position:absolute;z-index:0;right:7px;bottom:2px;display:block;width:112px;height:140px;color:#d7c697;opacity:.13;pointer-events:none;transform:none}
+#family-generations78 .fh79-leaf svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round}
+#family-generations78 .fh79-story a:focus-visible,#family-generations78 .fh79-story button:focus-visible{outline:2px solid #fff5da;outline-offset:4px}
+#family-generations78 .fh79-sr{position:absolute!important;width:1px!important;height:1px!important;margin:-1px!important;padding:0!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;clip-path:inset(50%)!important;border:0!important;white-space:nowrap!important}
+#family-generations78 .fh79-story-disclosure{max-width:1050px;margin:12px auto 0;color:#67736b;font-size:11px;line-height:1.55;text-align:center}
+#family-generations78 .fh79-story-disclosure a{color:#23513f;text-decoration:underline;text-underline-offset:2px}
+/* Same copy and structure in the hub: softer panels, a short accent rule. */
+.family-health-page77 #family-hub-vision.fh79-hub{position:relative;gap:clamp(32px,4.4vw,66px);padding-top:58px;padding-bottom:60px;background:radial-gradient(ellipse at 87% 46%,rgba(218,231,215,.34),transparent 43%),#fcf7ef!important;border-top:1px solid rgba(177,136,69,.16);color:#254639}
+#family-hub-vision .family-hub-copy{min-width:0}
+#family-hub-vision .family-hub-copy .eyebrow{background:#eeeee5;color:#155440;font-size:11px;letter-spacing:.055em}
+#family-hub-vision .family-hub-copy h2{font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:clamp(34px,3.1vw,48px);line-height:1.1;letter-spacing:-.022em;color:#10523e;margin:17px 0 20px}
+#family-hub-vision .family-hub-copy h2::after{content:"";display:block;width:70px;height:2px;margin-top:21px;background:linear-gradient(90deg,#b38b40,#e1ca97)}
+#family-hub-vision .family-hub-copy p{font-size:16px;line-height:1.72;color:#57665d;margin:0 0 15px}
+#family-hub-vision .family-hub-copy p:last-child{margin-bottom:0}
+#family-hub-vision .family-hub-copy p strong{color:#194c3c}
+#family-hub-vision .family-hub-list{gap:13px;min-width:0}
+#family-hub-vision .family-hub-list>div{grid-template-columns:37px minmax(0,1fr);gap:14px;padding:21px 23px;border:1px solid #e5dece;border-radius:16px;background:linear-gradient(110deg,#fffdf8,#f9faf2);box-shadow:0 6px 15px rgba(34,63,43,.035);align-items:start}
+#family-hub-vision .family-hub-list b{width:35px;height:35px;background:#0d5c47;color:#f2d180;border:1px solid rgba(215,184,111,.22);font-weight:750;box-shadow:none}
+#family-hub-vision .family-hub-list strong{font-size:16px;line-height:1.4;color:#165340}
+#family-hub-vision .family-hub-list small{font-size:13px;line-height:1.55;color:#647169;margin-top:4px}
+/* A compact secondary CTA on the light canvas. No global button overrides. */
+.family-health-page77 #family-client-stories.fh79-callout{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:42px;padding-top:45px!important;padding-bottom:45px!important;background:linear-gradient(118deg,#fffbf5,#f7f6ea)!important;border:1px solid rgba(181,144,70,.2);border-bottom:0;border-radius:27px 27px 0 0}
+#family-client-stories.fh79-callout::before{display:none}
+#family-client-stories>div{min-width:0}
+#family-client-stories .eyebrow{background:#edece1;letter-spacing:.05em;font-size:11px}
+#family-client-stories h2{max-width:790px;font-size:clamp(29px,2.55vw,38px);line-height:1.15;letter-spacing:-.02em;margin:14px 0 12px}
+#family-client-stories p{max-width:770px;font-size:16px;line-height:1.65}
+.family-health-page77 #family-client-stories a.fh79-stories-button{display:inline-flex;align-items:center;justify-content:center;gap:16px;min-width:252px;min-height:56px;width:auto;max-width:100%;margin:0;padding:15px 24px;border:1px solid #b99b56;border-radius:12px;background:linear-gradient(120deg,#0c5d46,#073b2f)!important;color:#f4d283!important;font-family:inherit;font-size:16px;font-weight:750;line-height:1.3;text-align:center;text-decoration:none;white-space:nowrap;box-shadow:0 9px 20px rgba(18,73,49,.12)!important;transform:none}
+#family-client-stories .fh79-stories-button svg{display:block;flex:none;width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+#family-client-stories .fh79-stories-button:focus-visible{outline:3px solid #977522;outline-offset:4px}
+@media(hover:hover){#family-generations78 .fh79-story-nav button:hover{background:rgba(246,219,144,.13)}#family-generations78 a.fh79-watch:hover{text-decoration:underline;text-underline-offset:3px}.family-health-page77 #family-client-stories a.fh79-stories-button:hover{filter:brightness(1.06)}}
+/* The video opens only following a deliberate watch click. */
+.fh79-video-dialog{position:fixed;inset:0;width:min(92vw,960px);max-width:960px;height:fit-content;max-height:94dvh;margin:auto;padding:0;border:1px solid #bd9c58;border-radius:18px;background:#052f26;color:#fffaf0;box-shadow:0 24px 80px rgba(0,0,0,.3);overflow:auto}
+.fh79-video-dialog:not([open]){display:none}
+.fh79-video-dialog::backdrop{background:rgba(0,20,15,.8)}
+.fh79-dialog-bar{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 17px}
+.fh79-dialog-bar h2{margin:0;font-size:18px;font-family:Georgia,'Times New Roman',serif;line-height:1.25;color:#fffaf0}
+.fh79-dialog-bar button{display:grid;place-items:center;width:44px;height:44px;flex:none;border:1px solid #c4a764;border-radius:50%;background:transparent;color:#f5dd9c;font:28px/1 sans-serif;cursor:pointer}
+.fh79-video-slot{aspect-ratio:16/9;background:#011a14}
+.fh79-video-slot iframe{display:block;width:100%;height:100%;border:0}
+.fh79-dialog-note{padding:12px 17px 16px;margin:0;color:#ece8d9;font-size:12px;line-height:1.5}
+.fh79-dialog-note a{color:#f0d492;text-decoration:underline}
+@media(max-width:1100px){
+ #family-generations78 .fh79-story{grid-template-columns:25% minmax(0,1fr)}
+ #family-generations78 .fh79-story-media{grid-row:1/3}
+ #family-generations78 .fh79-story-track{padding:20px 23px 0}
+ #family-generations78 .fh79-story-nav{grid-column:2;justify-self:start;padding:4px 21px 16px}
+ .family-health-page77 #family-client-stories.fh79-callout{gap:27px}
+ .family-health-page77 #family-client-stories a.fh79-stories-button{min-width:236px;font-size:15px;padding-inline:19px}
+}
+@media(max-width:900px){
+ .family-health-page77 #family-hub-vision.fh79-hub{grid-template-columns:minmax(0,1fr);gap:31px;padding-top:44px;padding-bottom:45px}
+ #family-hub-vision .family-hub-copy h2{max-width:700px;font-size:clamp(34px,5.4vw,43px)}
+ .family-health-page77 #family-client-stories.fh79-callout{grid-template-columns:minmax(0,1fr);gap:24px;padding-top:36px!important;padding-bottom:37px!important}
+ .family-health-page77 #family-client-stories a.fh79-stories-button{justify-self:start;min-width:252px}
+}
+@media(max-width:639px){
+ #family-generations78 .fh79-story{grid-template-columns:minmax(0,1fr);margin-top:22px;border-radius:17px}
+ #family-generations78 .fh79-story-media{grid-row:auto;height:auto;min-height:0;aspect-ratio:2.9/1}
+ #family-generations78 .fh79-story-media img{object-fit:cover;object-position:50% 20%}
+ #family-generations78 .fh79-story-media::after{background:linear-gradient(0deg,rgba(3,54,39,.4),transparent 50%)}
+ #family-generations78 .fh79-story-track{padding:20px 22px 0;min-height:153px}
+ #family-generations78 .fh79-story-slide h3{font-size:26px}
+ #family-generations78 .fh79-story-slide p{font-size:19px}
+ #family-generations78 a.fh79-watch{font-size:13px;min-height:38px}
+ #family-generations78 .fh79-story-nav{grid-column:1;justify-self:start;padding:6px 20px 19px}
+ #family-generations78 .fh79-story-nav>button{width:44px;height:44px;min-height:44px}
+ #family-generations78 .fh79-dots button{height:44px;width:26px}
+ #family-generations78 .fh79-story-disclosure{font-size:11px;text-align:left;margin:12px 2px 0;line-height:1.6}
+ .family-health-page77 #family-hub-vision.fh79-hub{padding-inline:20px}
+ #family-hub-vision .family-hub-copy p{font-size:15px}
+ #family-hub-vision .family-hub-list>div{padding:19px 16px;gap:11px}
+ #family-hub-vision .family-hub-list strong{font-size:15px}
+ .family-health-page77 #family-client-stories.fh79-callout{padding-inline:20px;gap:23px;border-radius:23px 23px 0 0}
+ #family-client-stories h2{font-size:31px}
+ #family-client-stories p{font-size:15px}
+ .family-health-page77 #family-client-stories a.fh79-stories-button{width:100%;min-width:0;min-height:57px;justify-self:stretch;font-size:15px;gap:12px;padding-inline:15px}
+}
+@media print{#family-generations78 .fh79-story{background:#fff;color:#000;break-inside:avoid}#family-generations78 .fh79-story-slide h3,#family-generations78 .fh79-story-slide p{color:#000}#family-generations78 .fh79-story-nav{display:none}.fh79-video-dialog{display:none!important}}
