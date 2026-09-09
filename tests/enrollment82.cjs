@@ -17,6 +17,9 @@ const requiredPrograms = [
 requiredPrograms.forEach((name) => assert(plans.includes(name), `Missing plan: ${name}`));
 
 assert(plans.includes('$25'), 'Holistic Foundations public price missing');
+assert(plans.includes('$89/month'), 'Holistic Foundations monthly payment option missing');
+assert(plans.includes('3-month minimum'), 'Holistic Foundations minimum commitment missing');
+assert(enroll.includes('$25/week or $89/month · 3-month minimum'), 'Enrollment Foundations billing summary missing');
 assert(plans.includes('$1,000'), 'Cohort public price missing');
 assert(plans.includes('$2,000'), 'Accelerator public price missing');
 assert(plans.includes('Personalized investment'), 'Private pricing language missing');
