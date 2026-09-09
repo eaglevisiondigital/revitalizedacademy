@@ -1,1 +1,227 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Enrollment | ReVitalized Academy</title><link rel="stylesheet" href="css/styles.css?v=70"><style>.form-page{min-height:100vh;background:linear-gradient(180deg,#fff,#f4faf1);padding:36px 18px}.form-shell{max-width:800px;margin:auto}.form-shell>a img{width:230px;margin:0 auto 26px}.form-card{background:#fff;border:1px solid #e5e9e4;border-radius:18px;box-shadow:0 18px 55px rgba(20,45,24,.08);padding:34px}.form-card h1{font-size:38px;margin:0 0 8px}.form-card h1 em{font-style:normal;color:#239408}.form-card>p{color:#5c665e}.placeholder{border:1px dashed #a9c9a0;background:#f8fcf7;border-radius:12px;padding:18px;margin:20px 0;font-size:13px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:13px;font-weight:800}.field input,.field textarea,.field select{border:1px solid #dbe2da;border-radius:9px;padding:13px 14px;font:inherit}.field textarea{min-height:110px;resize:vertical}.form-actions{margin-top:20px}.form-note{font-size:11px;color:#6d756f;margin-top:12px}@media(max-width:650px){.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.form-card{padding:24px}.form-card h1{font-size:32px}}</style></head><body><main class="form-page"><div class="form-shell"><a href="index.html"><img src="assets/images/revitalized-logo-dark-approved-v69.png" alt="ReVitalized Academy"></a><section class="form-card"><span class="eyebrow green">ENROLLMENT</span><h1>Ready to begin your <em>ReVitalized journey?</em></h1><p>This Phase One form is intentionally streamlined. It is prepared for the final enrollment questions and future back-office integration without redesigning the page.</p><div class="placeholder"><strong>Enrollment content placeholder:</strong> final package selection, required enrollment questions, acknowledgements and payment/onboarding steps will be added once approved by Justyn &amp; Elle.</div><form name="enrollment" method="POST" data-netlify="true" netlify-honeypot="bot-field"><input type="hidden" name="form-name" value="enrollment"><p hidden><label>Don’t fill this out: <input name="bot-field"></label></p><div class="form-grid"><div class="field"><label for="first">First name</label><input id="first" name="first_name" required></div><div class="field"><label for="last">Last name</label><input id="last" name="last_name" required></div><div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required></div><div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" required></div><div class="field full"><label for="goal">What are you hoping to improve?</label><textarea id="goal" name="health_goals"></textarea></div><div class="field full"><label for="success">What would meaningful progress look like for you?</label><textarea id="success" name="success_definition"></textarea></div></div><div class="form-actions"><button class="btn btn-primary btn-large" type="submit">Submit Enrollment Interest</button><p class="form-note">This Phase One form avoids detailed medical-history collection. Netlify form notifications should be configured to contact@revitalizedacademy.com. The submission layer can later be replaced by the ReVitalized back office/API.</p></div></form></section></div></main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Apply to join ReVitalized Academy. Share your goals, your starting point, and what you hope to achieve through personalized coaching.">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Start Your Journey | ReVitalized Academy</title>
+  <style>
+    /* Enrollment-only page. No shared styles, scripts, or assessment files are changed. */
+    :root{--forest:#154734;--deep:#103b2c;--cream:#fcf5ee;--gold:#b18845;--ink:#233b30;--muted:#5e6d64;--line:#dddcd1;--soft:#f5f7f2;--error:#993b2b}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:16px;line-height:1.55}button,input,select,textarea{font:inherit}a{color:var(--forest)}button,a,input,select,textarea,summary{-webkit-tap-highlight-color:transparent}a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:5px}input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--forest);outline-offset:2px}button{cursor:pointer}img{max-width:100%}[hidden]{display:none!important}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.skip-link{position:absolute;left:16px;top:-100px;z-index:9;background:#fff;padding:12px}.skip-link:focus{top:12px}
+    .en-header{background:#fff;border-bottom:1px solid #e6e6dc;padding:20px 30px}.en-header-inner{max-width:1100px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:24px}.en-brand{text-decoration:none;display:block}.en-brand img{display:block;width:230px;height:auto;max-height:68px;object-fit:contain}.en-brand-text{font-family:Georgia,"Times New Roman",serif;font-size:27px;letter-spacing:-.7px;white-space:nowrap}.en-back{font-size:14px;font-weight:600;text-decoration:none;white-space:nowrap;display:inline-flex;gap:10px;align-items:center;min-height:44px}
+    .en-intro{max-width:920px;padding:45px 24px 29px;margin:auto;text-align:center}.en-eyebrow{font-size:11px;letter-spacing:.21em;font-weight:750;text-transform:uppercase;color:#80602e;margin:0 0 16px;display:flex;align-items:center;justify-content:center;gap:13px}.en-eyebrow:before,.en-eyebrow:after{content:"";height:1px;width:40px;background:#c3a572}.en-intro h1{font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:clamp(34px,4.4vw,53px);line-height:1.1;letter-spacing:-1.6px;margin:0 0 19px;color:var(--forest)}.en-intro h1 span{display:block}.en-intro p:not(.en-eyebrow){font-size:16px;line-height:1.75;max-width:690px;margin:0 auto;color:var(--muted)}
+    .en-shell{width:min(100% - 48px,1020px);margin:0 auto 54px}.en-flow{display:grid;grid-template-columns:repeat(3,1fr);list-style:none;padding:0;margin:0 0 26px;gap:24px}.en-flow li{display:flex;align-items:center;gap:13px;padding:13px 0;border-bottom:1px solid #d7d3c5;min-width:0}.en-flow-number{flex:0 0 33px;width:33px;height:33px;display:grid;place-items:center;background:#fff;border:1px solid #bda371;border-radius:50%;font-family:Georgia,serif;font-size:15px;color:#80602e}.en-flow strong{display:block;font-size:13px;font-weight:650}.en-flow small{font-size:11px;color:var(--muted);display:block;margin-top:2px}.en-flow li:first-child .en-flow-number{background:var(--forest);border-color:var(--forest);color:#fff}
+    .en-preview{background:#eee7d6;border:1px solid #d6c399;padding:13px 18px;margin:0 0 20px;border-radius:10px;display:flex;align-items:flex-start;gap:12px;font-size:12px;color:#624d28}.en-preview strong{font-size:11px;letter-spacing:.06em;text-transform:uppercase;flex-shrink:0;padding-top:1px}.en-preview p{margin:0}.en-form{background:#fff;border:1px solid #e1dfd2;border-radius:20px;overflow:hidden;box-shadow:0 17px 55px rgba(40,55,38,.06)}.en-form-top{display:flex;justify-content:space-between;align-items:center;gap:20px;background:#f8f9f5;padding:20px 34px;border-bottom:1px solid #e5e6dc}.en-form-top strong{font-size:15px;font-weight:650}.en-form-top small{font-size:12px;color:var(--muted)}.en-required{color:#91652e;font-weight:700}
+    .en-section{min-width:0;margin:0;border:0;padding:29px 34px 32px}.en-section+.en-section{border-top:1px solid #e8e8df}.en-section-head{display:flex;gap:15px;align-items:flex-start;margin:0 0 25px}.en-section-number{font-family:Georgia,serif;font-size:23px;color:#9b7b40;line-height:1.3}.en-section h2{font-family:Georgia,"Times New Roman",serif;font-size:27px;font-weight:400;line-height:1.2;color:var(--forest);margin:0 0 6px}.en-section-head p{font-size:13px;color:var(--muted);margin:0}.en-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:23px 28px}.en-field{min-width:0;display:flex;flex-direction:column;gap:8px}.en-field>label,.en-rating>legend{font-size:13px;font-weight:650;line-height:1.55;color:#273e32}.en-field input,.en-field select,.en-field textarea{width:100%;min-width:0;max-width:100%;border:1px solid #d9dfd5;border-radius:8px;background:#fbfcf9;color:#203e2e;min-height:50px;padding:12px 14px;font-size:16px;line-height:1.5;transition:border-color .15s,background .15s}.en-field input:hover,.en-field textarea:hover,.en-field select:not(:disabled):hover{border-color:#a2b1a1}.en-field input::placeholder,.en-field textarea::placeholder{color:#727d75;opacity:1;font-size:14px}.en-field select{padding-right:36px}.en-field select:disabled{opacity:1;color:#71766e;background:#f2f3ed;cursor:not-allowed}.en-field textarea{min-height:123px;resize:vertical}.en-field .en-help{margin:0;font-size:11px;line-height:1.6;color:var(--muted)}.en-pair{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-content:start}.en-full{grid-column:1/-1}.en-pending{display:inline-flex;align-self:flex-start;padding:3px 8px;border-radius:4px;background:#f5eedf;color:#755922;font-size:10px;font-weight:650;letter-spacing:.015em}.en-note{padding:12px 16px;background:var(--soft);border-radius:8px;margin:19px 0 0;color:#5a695e;font-size:12px;line-height:1.7}
+    .en-location{padding-top:2px}.en-location summary{font-size:13px;font-weight:600;cursor:pointer;color:var(--forest);width:fit-content;min-height:34px;padding:5px 0}.en-location summary span{font-weight:400;color:var(--muted)}.en-location[open] .en-grid{margin-top:17px;padding:20px;background:#f8f9f5;border:1px solid #e4e7dc;border-radius:10px}.en-location-status{font-size:12px;color:var(--forest);margin:0;line-height:1.5;overflow-wrap:anywhere}.en-rating{padding:0;border:0;margin:0;min-width:0;display:block}.en-rating>legend{padding:0;margin-bottom:11px;max-width:100%}.en-stars{display:flex;gap:8px}.en-star{position:relative;display:inline-flex;cursor:pointer}.en-star input{position:absolute;width:1px;height:1px;opacity:0;clip-path:inset(50%)}.en-star span{display:grid;place-items:center;border:1px solid #dddccf;border-radius:9px;width:47px;height:47px;color:#8b7d60;background:#fbfcf9;transition:.15s}.en-star svg{width:27px;height:27px;stroke:currentColor;stroke-width:1.5;fill:none}.en-star.is-on span{border-color:#a28144;background:#f7efdc;color:#8b682d}.en-star.is-on svg{fill:#b18845;stroke:#89692e}.en-star input:focus-visible+span{outline:2px solid var(--forest);outline-offset:3px}.en-rating-description{font-size:11px;color:var(--muted);margin:9px 0 0}
+    .en-submit-area{background:#f7f8f2;border-top:1px solid #e4e7db;padding:27px 34px 28px}.en-application-note{font-size:12px;color:var(--muted);margin:0 0 20px;max-width:750px;line-height:1.75}.en-submit-row{display:flex;gap:25px;justify-content:space-between;align-items:center}.en-submit-row p{margin:0;color:#667166;font-size:11px;max-width:470px;line-height:1.6}.en-button{display:inline-flex;align-items:center;justify-content:center;gap:35px;min-height:52px;padding:14px 26px;background:var(--forest);border:1px solid var(--forest);border-radius:8px;color:#fff;font-size:14px;font-weight:650;white-space:nowrap}.en-button:hover{background:var(--deep);box-shadow:0 5px 15px #15473420}.en-button span{font-size:20px;font-weight:400;line-height:1}.en-error{color:var(--error);font-size:12px;line-height:1.5;margin:0}.en-field [aria-invalid="true"]{border-color:var(--error);background:#fffaf7}.en-rating.has-error .en-stars{border-radius:8px;outline:1px solid var(--error);outline-offset:5px;width:fit-content}.en-message{padding:15px 18px;border:1px solid #c8d2c1;border-radius:9px;background:#fff;color:var(--forest);font-size:13px;line-height:1.65;margin:20px 0 0}.en-message:focus{outline:2px solid var(--forest);outline-offset:3px}.en-footer{text-align:center;font-size:11px;line-height:1.8;color:#697368;margin-top:28px;padding:0 10px}.en-footer p{max-width:790px;margin:0 auto 10px}.en-footer a{text-underline-offset:3px}.en-footer-links{display:flex;justify-content:center;gap:18px;flex-wrap:wrap}.en-footer-links a{overflow-wrap:anywhere}
+    @media(min-width:750px){.en-goals-grid .en-field:nth-child(3){grid-column:1/-1}.en-readiness-grid .en-field>label{min-height:41px}.en-readiness-grid .en-rating>legend{min-height:41px}}
+    @media(max-width:749px){.en-header{padding:15px 20px}.en-brand img{width:195px}.en-brand-text{font-size:23px}.en-back{font-size:12px;gap:5px}.en-intro{padding:32px 22px 22px}.en-intro h1{letter-spacing:-1px}.en-intro p:not(.en-eyebrow){font-size:14px}.en-eyebrow{font-size:10px;letter-spacing:.16em;gap:10px}.en-shell{width:calc(100% - 32px)}.en-flow{gap:14px;margin-bottom:22px}.en-flow li{gap:8px}.en-flow-number{width:28px;height:28px;flex-basis:28px;font-size:12px}.en-flow strong{font-size:11px}.en-flow small{display:none}.en-preview{display:block;padding:12px 15px}.en-preview strong{display:block;margin-bottom:5px}.en-form-top{padding:18px 22px;gap:10px}.en-form-top strong{font-size:13px}.en-form-top small{font-size:10px}.en-section{padding:25px 22px 28px}.en-section-head{margin-bottom:21px}.en-section h2{font-size:25px}.en-grid{grid-template-columns:1fr;gap:21px}.en-full{grid-column:auto}.en-submit-area{padding:24px 22px}.en-submit-row{flex-direction:column-reverse;align-items:stretch;gap:13px}.en-submit-row p{text-align:center;max-width:none}.en-button{width:100%;gap:24px}.en-location[open] .en-grid{padding:16px}.en-stars{gap:8px}.en-star span{width:43px;height:43px}}
+    @media(max-width:379px){.en-header{padding:13px 16px}.en-brand img{width:170px}.en-brand-text{font-size:20px}.en-back .en-back-word{display:none}.en-shell{width:calc(100% - 24px)}.en-form-top,.en-section,.en-submit-area{padding-left:18px;padding-right:18px}.en-form-top{align-items:flex-start;flex-direction:column;gap:3px}.en-flow{gap:9px}.en-flow li{gap:6px}.en-flow-number{width:24px;height:24px;flex-basis:24px}.en-flow strong{font-size:10px}.en-section-head p{font-size:12px}.en-pair{gap:12px}.en-stars{gap:6px}.en-star span{width:40px;height:43px}.en-footer-links{gap:10px}.en-eyebrow:before,.en-eyebrow:after{width:24px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+    @media print{body{background:#fff}.en-header,.en-preview,.en-submit-area,.en-flow{display:none}.en-shell{width:100%;margin:0}.en-form{box-shadow:none}.en-section{break-inside:avoid}.en-intro{padding-top:0}.en-footer{font-size:9px}}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#application">Skip to application</a>
+  <header class="en-header">
+    <div class="en-header-inner">
+      <a class="en-brand" href="index.html" aria-label="ReVitalized Academy home">
+        <img id="en-logo" src="assets/images/revitalized-logo-dark-approved-v69.png" alt="ReVitalized Academy" hidden>
+        <span id="en-brand-fallback" class="en-brand-text">ReVitalized Academy</span>
+      </a>
+      <a class="en-back" href="index.html"><span aria-hidden="true">←</span> Back<span class="en-back-word"> to website</span></a>
+    </div>
+  </header>
+  <main>
+    <div class="en-intro">
+      <p class="en-eyebrow">Start your journey</p>
+      <h1>Apply to join<span>ReVitalized Academy.</span></h1>
+      <p>Tell us a little about yourself and what you want to change. This is the first step toward a free conversation with our team about your goals, your next steps, and whether ReVitalized is the right fit for you.</p>
+    </div>
+    <div class="en-shell">
+      <ol class="en-flow" aria-label="Your path to coaching">
+        <li aria-current="step"><span class="en-flow-number" aria-hidden="true">01</span><div><strong>Your application</strong><small>Help us understand you</small></div></li>
+        <li><span class="en-flow-number" aria-hidden="true">02</span><div><strong>A conversation</strong><small>Explore the right next step</small></div></li>
+        <li><span class="en-flow-number" aria-hidden="true">03</span><div><strong>Your journey</strong><small>A more personalized path</small></div></li>
+      </ol>
+      <aside class="en-preview" role="note"><strong>Design preview</strong><p>Not accepting submissions yet. Two original dropdown lists and the next-step booking connection still need to be confirmed. Please use sample information when reviewing.</p></aside>
+      <!-- Draft only: deliberately NOT registered with Netlify Forms. Activate the existing
+           enrollment form name and submission handler only after the original options,
+           booking handoff, form detection and notification destination are verified. -->
+      <form class="en-form" id="application" method="dialog" aria-labelledby="en-form-title" novalidate>
+        <div class="en-form-top"><strong id="en-form-title">A little clarity starts here.</strong><small><span class="en-required">*</span> Required information</small></div>
+        <section class="en-section" aria-labelledby="en-about-title">
+          <div class="en-section-head"><span class="en-section-number" aria-hidden="true">01</span><div><h2 id="en-about-title">A little about you</h2><p>Let’s start with the basics.</p></div></div>
+          <div class="en-grid">
+            <div class="en-field" data-field><label for="full-name">Full name&nbsp;<span class="en-required">*</span></label><input id="full-name" name="full_name" autocomplete="name" placeholder="Enter your full name" maxlength="150" required><p class="en-error" id="full-name-error" hidden></p></div>
+            <div class="en-field" data-field><label for="email">Email&nbsp;<span class="en-required">*</span></label><input id="email" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" maxlength="254" placeholder="Enter your email address" required><p class="en-error" id="email-error" hidden></p></div>
+            <div class="en-field" data-field><label for="phone">Phone&nbsp;<span class="en-required">*</span></label><input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="30" placeholder="(555) 234-5678" aria-describedby="phone-help" required><p class="en-help" id="phone-help">United States and Canada both use country code +1.</p><p class="en-error" id="phone-error" hidden></p></div>
+            <div class="en-field" data-field><label for="referral-source">How did you learn about us?</label><input id="referral-source" name="referral_source" maxlength="300" placeholder="Friend, referral, social media…"><p class="en-error" id="referral-source-error" hidden></p></div>
+            <div class="en-pair">
+              <div class="en-field" data-field><label for="sex">Sex&nbsp;<span class="en-required">*</span></label><select id="sex" name="sex" required><option value="">Select</option><option value="male">Male</option><option value="female">Female</option></select><p class="en-error" id="sex-error" hidden></p></div>
+              <div class="en-field" data-field><label for="age">Age&nbsp;<span class="en-required">*</span></label><input id="age" name="age" type="number" min="1" max="120" step="1" inputmode="numeric" placeholder="Years old" required><p class="en-error" id="age-error" hidden></p></div>
+            </div>
+            <div class="en-field" data-field><label for="start-timing">How soon do you want to start getting healthier?&nbsp;<span class="en-required">*</span></label><input id="start-timing" name="start_timing" maxlength="300" placeholder="When would you like to begin?" required><p class="en-error" id="start-timing-error" hidden></p></div>
+            <details class="en-location en-full"><summary>Add your location <span>(optional)</span></summary>
+              <div class="en-grid">
+                <div class="en-field" data-field><label for="country">Country</label><select id="country" name="country" autocomplete="country"><option value="">Select your country</option><option value="US">United States</option><option value="CA">Canada</option></select><p class="en-error" id="country-error" hidden></p></div>
+                <div class="en-field" data-field><label id="region-label" for="region">State / province</label><select id="region" name="region" autocomplete="address-level1" disabled aria-describedby="region-help region-selected"><option value="">Select a country first</option></select><p class="en-help" id="region-help">Choose a country to see its states or provinces.</p><p class="en-location-status" id="region-selected" aria-live="polite" hidden></p><p class="en-error" id="region-error" hidden></p></div>
+              </div>
+            </details>
+          </div>
+        </section>
+        <section class="en-section" aria-labelledby="en-goals-title">
+          <div class="en-section-head"><span class="en-section-number" aria-hidden="true">02</span><div><h2 id="en-goals-title">What matters most to you</h2><p>Your goals. Your challenges. Your starting point.</p></div></div>
+          <div class="en-grid en-goals-grid">
+            <div class="en-field" data-field><label for="health-goals">What do you want to improve most in the next six months?&nbsp;<span class="en-required">*</span></label><textarea id="health-goals" name="health_goals" rows="4" maxlength="3000" placeholder="Describe your most important goal for the next six months." required></textarea><p class="en-error" id="health-goals-error" hidden></p></div>
+            <div class="en-field" data-field><label for="roadblock">What do you believe is the biggest roadblock stopping you right now?&nbsp;<span class="en-required">*</span></label><textarea id="roadblock" name="biggest_roadblock" rows="4" maxlength="3000" placeholder="What feels missing, or what has made progress difficult?" required></textarea><p class="en-error" id="roadblock-error" hidden></p></div>
+            <div class="en-field" data-field><label for="meeting-goal">What are you hoping to get from meeting with us?&nbsp;<span class="en-required">*</span></label><input id="meeting-goal" name="meeting_goal" maxlength="1000" placeholder="What would make this helpful?" required><p class="en-error" id="meeting-goal-error" hidden></p></div>
+          </div>
+          <p class="en-note">Please share general goals and challenges only. You do not need to include medical records, test results, or a detailed medical history in this application.</p>
+        </section>
+        <section class="en-section" aria-labelledby="en-readiness-title">
+          <div class="en-section-head"><span class="en-section-number" aria-hidden="true">03</span><div><h2 id="en-readiness-title">Your readiness for change</h2><p>Help us understand what feels possible for you right now.</p></div></div>
+          <div class="en-grid en-readiness-grid">
+            <div class="en-field" data-field><label for="monthly-investment">How much are you able to invest per month to accomplish your goals?&nbsp;<span class="en-required">*</span></label><select id="monthly-investment" name="monthly_investment" required disabled aria-describedby="investment-pending"><option value="">Monthly investment</option></select><span class="en-pending" id="investment-pending">Original options pending confirmation</span><p class="en-error" id="monthly-investment-error" hidden></p></div>
+            <div class="en-field" data-field><label for="program-confidence">How much faith do you have that our program is the right step for you?&nbsp;<span class="en-required">*</span></label><select id="program-confidence" name="program_confidence" required disabled aria-describedby="confidence-pending"><option value="">Confidence level</option></select><span class="en-pending" id="confidence-pending">Original options pending confirmation</span><p class="en-error" id="program-confidence-error" hidden></p></div>
+            <fieldset class="en-rating en-full" data-field><legend>How committed are you right now to achieving your goals?&nbsp;<span class="en-required">*</span></legend>
+              <div class="en-stars" aria-describedby="commitment-help">
+                <label class="en-star"><input type="radio" id="commitment-1" name="commitment" value="1" aria-label="1 out of 5" aria-describedby="commitment-help" required><span aria-hidden="true"><svg viewBox="0 0 32 32"><path d="m16 3 3.9 8 8.8 1.3-6.4 6.2 1.5 8.8-7.8-4.1-7.8 4.1 1.5-8.8-6.4-6.2 8.8-1.3Z"/></svg></span></label>
+                <label class="en-star"><input type="radio" id="commitment-2" name="commitment" value="2" aria-label="2 out of 5" aria-describedby="commitment-help"><span aria-hidden="true"><svg viewBox="0 0 32 32"><path d="m16 3 3.9 8 8.8 1.3-6.4 6.2 1.5 8.8-7.8-4.1-7.8 4.1 1.5-8.8-6.4-6.2 8.8-1.3Z"/></svg></span></label>
+                <label class="en-star"><input type="radio" id="commitment-3" name="commitment" value="3" aria-label="3 out of 5" aria-describedby="commitment-help"><span aria-hidden="true"><svg viewBox="0 0 32 32"><path d="m16 3 3.9 8 8.8 1.3-6.4 6.2 1.5 8.8-7.8-4.1-7.8 4.1 1.5-8.8-6.4-6.2 8.8-1.3Z"/></svg></span></label>
+                <label class="en-star"><input type="radio" id="commitment-4" name="commitment" value="4" aria-label="4 out of 5" aria-describedby="commitment-help"><span aria-hidden="true"><svg viewBox="0 0 32 32"><path d="m16 3 3.9 8 8.8 1.3-6.4 6.2 1.5 8.8-7.8-4.1-7.8 4.1 1.5-8.8-6.4-6.2 8.8-1.3Z"/></svg></span></label>
+                <label class="en-star"><input type="radio" id="commitment-5" name="commitment" value="5" aria-label="5 out of 5" aria-describedby="commitment-help"><span aria-hidden="true"><svg viewBox="0 0 32 32"><path d="m16 3 3.9 8 8.8 1.3-6.4 6.2 1.5 8.8-7.8-4.1-7.8 4.1 1.5-8.8-6.4-6.2 8.8-1.3Z"/></svg></span></label>
+              </div>
+              <p class="en-rating-description" id="commitment-help">Choose a rating from 1 to 5.</p><p class="en-error" id="commitment-error" hidden></p>
+            </fieldset>
+          </div>
+        </section>
+        <div class="en-submit-area">
+          <p class="en-application-note">Submitting an application is not a payment or an enrollment commitment. This step is about understanding your goals and starting a conversation about the right fit.</p>
+          <div class="en-submit-row"><p>Preview only. Your answers are not sent or saved by this page.</p><button class="en-button" id="review-application" type="button" disabled>Review application <span aria-hidden="true">→</span></button></div>
+          <div class="en-message" id="en-review-message" role="status" tabindex="-1" hidden></div>
+          <noscript><p class="en-message">This is a non-submitting design preview. Enable JavaScript to try the location menus, star rating and field validation.</p></noscript>
+        </div>
+      </form>
+      <footer class="en-footer"><p>ReVitalized Academy provides health and lifestyle education and coaching, not medical diagnosis or treatment. Results vary. Consult a qualified healthcare professional before beginning a new health program.</p><div class="en-footer-links"><a href="disclaimer.html">Health &amp; Results Disclaimer</a><a href="mailto:contact@revitalizedacademy.com">contact@revitalizedacademy.com</a></div></footer>
+    </div>
+  </main>
+  <script>
+  (() => {
+    'use strict';
+    // Review-only build: there is no POST, external analytics, browser storage, payment or booking request.
+    // The two pending lists must be copied from Justyn & Elle's original form, not inferred.
+    const regions = Object.freeze({
+      US: [['AL','Alabama'],['AK','Alaska'],['AZ','Arizona'],['AR','Arkansas'],['CA','California'],['CO','Colorado'],['CT','Connecticut'],['DE','Delaware'],['DC','District of Columbia'],['FL','Florida'],['GA','Georgia'],['HI','Hawaii'],['ID','Idaho'],['IL','Illinois'],['IN','Indiana'],['IA','Iowa'],['KS','Kansas'],['KY','Kentucky'],['LA','Louisiana'],['ME','Maine'],['MD','Maryland'],['MA','Massachusetts'],['MI','Michigan'],['MN','Minnesota'],['MS','Mississippi'],['MO','Missouri'],['MT','Montana'],['NE','Nebraska'],['NV','Nevada'],['NH','New Hampshire'],['NJ','New Jersey'],['NM','New Mexico'],['NY','New York'],['NC','North Carolina'],['ND','North Dakota'],['OH','Ohio'],['OK','Oklahoma'],['OR','Oregon'],['PA','Pennsylvania'],['RI','Rhode Island'],['SC','South Carolina'],['SD','South Dakota'],['TN','Tennessee'],['TX','Texas'],['UT','Utah'],['VT','Vermont'],['VA','Virginia'],['WA','Washington'],['WV','West Virginia'],['WI','Wisconsin'],['WY','Wyoming']],
+      CA: [['AB','Alberta'],['BC','British Columbia'],['MB','Manitoba'],['NB','New Brunswick'],['NL','Newfoundland and Labrador'],['NT','Northwest Territories'],['NS','Nova Scotia'],['NU','Nunavut'],['ON','Ontario'],['PE','Prince Edward Island'],['QC','Quebec'],['SK','Saskatchewan'],['YT','Yukon']]
+    });
+    const form = document.getElementById('application');
+    const country = document.getElementById('country');
+    const region = document.getElementById('region');
+    const regionLabel = document.getElementById('region-label');
+    const selectedRegion = document.getElementById('region-selected');
+    const regionHelp = document.getElementById('region-help');
+    let lastCountry = '';
+    const showSelectedRegion = () => {
+      selectedRegion.hidden = !region.value;
+      selectedRegion.textContent = region.value ? `${region.options[region.selectedIndex].text} · ${country.options[country.selectedIndex].text}` : '';
+    };
+    const updateRegions = (preserve = false) => {
+      const code = country.value;
+      const previous = preserve && code === lastCountry ? region.value : '';
+      const choices = regions[code] || [];
+      const canada = code === 'CA';
+      const prompt = !choices.length ? 'Select a country first' : canada ? 'Select province / territory' : 'Select your state';
+      const fragment = document.createDocumentFragment();
+      fragment.appendChild(new Option(prompt, ''));
+      choices.forEach(([value, label]) => fragment.appendChild(new Option(label, value)));
+      region.replaceChildren(fragment);
+      region.disabled = !choices.length;
+      if (previous && choices.some(([value]) => value === previous)) region.value = previous;
+      regionLabel.textContent = !code ? 'State / province' : canada ? 'Province / territory' : 'State';
+      regionHelp.textContent = !code ? 'Choose a country to see its states or provinces.' : canada ? 'All Canadian provinces and territories are available.' : 'All 50 states and the District of Columbia are available.';
+      lastCountry = code;
+      showSelectedRegion();
+    };
+    country.addEventListener('change', () => updateRegions(true));
+    country.addEventListener('input', () => { if (country.value !== lastCountry) updateRegions(false); });
+    region.addEventListener('change', showSelectedRegion);
+    window.addEventListener('pageshow', () => updateRegions(true));
+    updateRegions();
+    const logo = document.getElementById('en-logo');
+    const displayLogo = () => {
+      const loaded = logo.complete && logo.naturalWidth > 0;
+      logo.hidden = !loaded;
+      document.getElementById('en-brand-fallback').hidden = loaded;
+    };
+    logo.addEventListener('load', displayLogo);
+    logo.addEventListener('error', displayLogo);
+    displayLogo();
+    const ratingInputs = [...form.querySelectorAll('input[name="commitment"]')];
+    const updateRating = () => {
+      const checked = ratingInputs.find(input => input.checked);
+      const value = Number(checked?.value || 0);
+      ratingInputs.forEach(input => input.closest('.en-star').classList.toggle('is-on', Number(input.value) <= value));
+      document.getElementById('commitment-help').textContent = value ? `${value} out of 5 selected.` : 'Choose a rating from 1 to 5.';
+    };
+    ratingInputs.forEach(input => input.addEventListener('change', updateRating));
+    updateRating();
+    const fields = [...form.querySelectorAll('[data-field]')];
+    const checkField = wrapper => {
+      const controls = [...wrapper.querySelectorAll('input,select,textarea')].filter(control => !control.disabled);
+      const first = controls[0];
+      if (!first) return true;
+      let message = '';
+      if (first.type === 'radio') {
+        if (!controls.some(control => control.checked)) message = 'Please choose a commitment rating from 1 to 5.';
+      } else if (first.required && !first.value.trim()) message = 'Please complete this field.';
+      else if (first.type === 'email' && first.value && !first.validity.valid) message = 'Please enter a valid email address.';
+      else if (first.id === 'phone' && first.value) {
+        const digits = first.value.replace(/\D/g, '');
+        if (!/^[+()\d .-]+$/.test(first.value) || !/^(?:1)?[2-9]\d{2}[2-9]\d{6}$/.test(digits)) message = 'Enter a valid 10-digit U.S. or Canadian phone number, with optional +1.';
+      } else if (first.id === 'age' && first.value && !first.validity.valid) message = 'Enter an age in whole years, from 1 to 120.';
+      else if (!first.validity.valid) message = 'Please check this field.';
+      const error = wrapper.querySelector('.en-error');
+      error.textContent = message;
+      error.hidden = !message;
+      wrapper.classList.toggle('has-error', Boolean(message));
+      controls.forEach(control => {
+        if (message) control.setAttribute('aria-invalid', 'true');
+        else control.removeAttribute('aria-invalid');
+        const descriptions = new Set((control.getAttribute('aria-describedby') || '').split(/\s+/).filter(Boolean));
+        if (message) descriptions.add(error.id); else descriptions.delete(error.id);
+        if (descriptions.size) control.setAttribute('aria-describedby', [...descriptions].join(' '));
+        else control.removeAttribute('aria-describedby');
+      });
+      return !message;
+    };
+    fields.forEach(wrapper => {
+      wrapper.addEventListener('input', () => { if (!wrapper.querySelector('.en-error').hidden) checkField(wrapper); });
+      wrapper.addEventListener('change', () => { if (!wrapper.querySelector('.en-error').hidden) checkField(wrapper); });
+    });
+    const message = document.getElementById('en-review-message');
+    const review = () => {
+      let firstInvalid = null;
+      fields.forEach(wrapper => { if (!checkField(wrapper) && !firstInvalid) firstInvalid = wrapper.querySelector('input,select,textarea'); });
+      message.hidden = false;
+      if (firstInvalid) {
+        message.textContent = 'Please check the highlighted fields. This preview does not send or save your answers.';
+        firstInvalid.focus();
+      } else {
+        message.textContent = 'The completed preview fields look good. Nothing has been submitted or saved. The original monthly investment choices, program confidence choices and booking handoff are still pending before this form can go live.';
+        message.focus();
+      }
+    };
+    document.getElementById('review-application').disabled = false;
+    document.getElementById('review-application').addEventListener('click', review);
+    form.addEventListener('submit', event => { event.preventDefault(); review(); });
+    form.addEventListener('input', () => { message.hidden = true; });
+    form.addEventListener('change', () => { message.hidden = true; });
+  })();
+  </script>
+</body>
+</html>
