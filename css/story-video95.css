@@ -10,5 +10,22 @@ body.story-video-modal-open{overflow:hidden}
 .story-video95-foot{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 20px;background:#fffaf4;color:#52675d;font-size:12.5px;line-height:1.5}.story-video95-foot strong{color:#154734}.story-video95-foot button{border:0;background:transparent;color:#154734;font-weight:850;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
 .companion-editorial-actions button[data-story-video-open],.story-detail-actions button[data-story-video-open]{appearance:none;font:inherit;cursor:pointer}
 .companion-editorial-actions button[data-story-video-open]{border:0;background:transparent;padding:0;color:#7b5b1e;font-weight:800}
-.story-detail-actions button.btn[data-story-video-open]{border:1px solid rgba(216,166,42,.7);background:linear-gradient(180deg,#185942,#0b382a);color:#fff!important}
+/* Build 96 — force strong contrast inside the story detail modal even against older .btn-secondary overrides. */
+html body .story-detail-actions button.btn.btn-secondary[data-story-video-open]{
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  min-height:54px!important;padding:14px 24px!important;border-radius:13px!important;
+  border:1px solid rgba(216,166,42,.72)!important;
+  background:linear-gradient(180deg,#185942 0%,#0b382a 100%)!important;
+  color:#fff!important;-webkit-text-fill-color:#fff!important;
+  font-weight:850!important;text-shadow:none!important;
+  box-shadow:0 10px 24px rgba(11,56,42,.18)!important;
+  opacity:1!important;
+}
+html body .story-detail-actions button.btn.btn-secondary[data-story-video-open]:hover,
+html body .story-detail-actions button.btn.btn-secondary[data-story-video-open]:focus-visible{
+  background:linear-gradient(180deg,#1e654d 0%,#104536 100%)!important;
+  color:#fff!important;-webkit-text-fill-color:#fff!important;
+  transform:translateY(-1px);outline:none;
+  box-shadow:0 13px 28px rgba(11,56,42,.23)!important;
+}
 @media(max-width:700px){.story-video95{padding:10px}.story-video95-dialog{border-radius:18px}.story-video95-head{padding:14px 15px}.story-video95-title strong{font-size:21px}.story-video95-close{width:38px;height:38px;flex-basis:38px}.story-video95-foot{padding:12px 15px;font-size:12px;align-items:flex-start;flex-direction:column}.story-video95-foot button{padding:0}}
