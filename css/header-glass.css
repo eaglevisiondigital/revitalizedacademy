@@ -17,6 +17,21 @@
   pointer-events:none;
 }
 
+/* Homepage hero wording / line-break refinement. */
+.hero54-eyebrow{
+  font-size:0!important;
+}
+.hero54-eyebrow::after{
+  content:"✓  PERSONALIZED HOLISTIC HEALTH COACHING";
+  font:800 12px/1.2 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  letter-spacing:.18em;
+}
+/* Remove only the forced break after "Your". The existing hero width then lets
+   Family’s sit beside Your while Future naturally wraps flush-left below it. */
+#hero54-title br:nth-of-type(3){
+  display:none!important;
+}
+
 @media(max-width:740px){
   .site-header{
     background:linear-gradient(120deg,rgba(252,245,238,.89),rgba(248,241,231,.75))!important;
@@ -35,6 +50,10 @@
     border:1px solid rgba(177,136,69,.24)!important;
     color:#154734!important;
     box-shadow:inset 0 1px 0 rgba(255,255,255,.66)!important;
+  }
+  .hero54-eyebrow::after{
+    font-size:11px;
+    letter-spacing:.14em;
   }
 }
 
