@@ -27,16 +27,24 @@
       </div>
     </div>
   </header>
+
   <main class="ra-thankyou">
     <section class="ra-thankyou-card" aria-labelledby="thank-you-title">
       <div class="ra-thankyou-mark" aria-hidden="true">✓</div>
       <span class="ra-eyebrow">Step 1 complete</span>
       <h1 id="thank-you-title">Your ReVitalized journey has started.</h1>
-      <p>We’ve received your initial application. You’ve told us you intend to move forward, what you want help with and which program currently interests you.</p>
-      <div class="ra-thankyou-next"><strong>What comes next</strong><p>Your next step will be the deeper health-profile portion of enrollment. We are structuring that experience so the information you already provide through ReVitalized assessments can be used intelligently rather than making you repeat the same questions unnecessarily.</p></div>
-      <div class="ra-thankyou-actions"><a class="ra-btn ra-btn-primary" href="plans.html">Review Programs</a><a class="ra-btn ra-btn-secondary" href="index.html">Return to Website</a></div>
+      <p>We’ve received your initial enrollment information, goals and preferred starting point. You do not need to enter those basics again before moving into your health profile.</p>
+      <div class="ra-thankyou-next">
+        <strong>Step 2 · Health Profile</strong>
+        <p>Next, we’ll go deeper into your symptoms, lifestyle, strengths, quality of life and the 12 Drivers of Health. The questions adapt based on the person being enrolled and what is reported.</p>
+      </div>
+      <div class="ra-thankyou-actions">
+        <a class="ra-btn ra-btn-primary" href="health-profile.html">Continue to Health Profile →</a>
+        <a class="ra-btn ra-btn-secondary" href="plans.html">Review Programs</a>
+      </div>
     </section>
   </main>
-  <script>(()=>{const b=document.querySelector('.ra-menu-toggle'),n=document.querySelector('.ra-nav');if(!b||!n)return;b.addEventListener('click',()=>{const o=n.classList.toggle('is-open');b.setAttribute('aria-expanded',String(o));});})();</script>
+
+  <script>(()=>{const b=document.querySelector('.ra-menu-toggle'),n=document.querySelector('.ra-nav');if(!b||!n)return;b.addEventListener('click',()=>{const o=n.classList.toggle('is-open');b.setAttribute('aria-expanded',String(o));});n.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{n.classList.remove('is-open');b.setAttribute('aria-expanded','false');}));})();</script>
 </body>
 </html>
