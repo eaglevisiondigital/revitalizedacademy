@@ -16,3 +16,37 @@
   document.addEventListener('click',e=>{const opener=e.target.closest('[data-story-open]');if(opener)openStory(opener.dataset.storyOpen);if(e.target.closest('[data-story-close]'))closeStory();});
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('is-open'))closeStory();});
 })();
+
+/* Build 89 — place program-choice CTA directly after Coaching and before Family Health.
+   Kept here to avoid modifying assessment-protected sections in index.html. */
+(() => {
+  const coaching = document.querySelector('#coaching.ra-coaching76');
+  const family = document.querySelector('#families.family-home-section');
+  if (!coaching || !family || document.querySelector('.home-programs-banner89')) return;
+
+  if (!document.querySelector('link[data-home-programs-banner89]')) {
+    const css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.href = 'css/home-programs-banner89.css?v=89';
+    css.dataset.homeProgramsBanner89 = 'true';
+    document.head.appendChild(css);
+  }
+
+  const section = document.createElement('section');
+  section.className = 'home-programs-banner89';
+  section.setAttribute('aria-labelledby','home-programs-banner89-title');
+  section.innerHTML = `
+    <div class="home-programs-banner89-inner">
+      <div>
+        <span class="home-programs-banner89-kicker">Choose your level of support</span>
+        <h2 id="home-programs-banner89-title">Compare our programs and coaching options.</h2>
+        <p>From flexible family access to focused 40-day coaching and high-touch private support, see the options side by side and choose the starting point that fits you best.</p>
+      </div>
+      <div class="home-programs-banner89-actions">
+        <a class="home-programs-banner89-primary" href="plans.html">Compare Programs <span aria-hidden="true">→</span></a>
+        <a class="home-programs-banner89-secondary" href="enroll.html?plan=not-sure">Help Me Choose</a>
+      </div>
+    </div>`;
+
+  family.parentNode.insertBefore(section, family);
+})();
