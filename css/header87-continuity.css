@@ -2,7 +2,7 @@
    Mirrors the approved main-site header treatment for Programs / Enrollment pages.
    Intentionally scoped to .ra-topbar journey headers only; assessment-owned files untouched. */
 
-body.ra-journey .ra-topbar{
+html body.ra-journey .ra-topbar{
   position:sticky;
   top:0;
   z-index:50;
@@ -12,7 +12,7 @@ body.ra-journey .ra-topbar{
   border-bottom:1px solid #e5e9e4!important;
   box-shadow:none!important;
 }
-body.ra-journey .ra-topbar-inner{
+html body.ra-journey .ra-topbar-inner{
   width:100%!important;
   max-width:none!important;
   height:88px;
@@ -24,12 +24,12 @@ body.ra-journey .ra-topbar-inner{
   align-items:center;
   gap:32px!important;
 }
-body.ra-journey .ra-logo img{
+html body.ra-journey .ra-logo img{
   width:220px!important;
   max-height:60px;
   object-fit:contain;
 }
-body.ra-journey .ra-nav{
+html body.ra-journey .ra-nav{
   display:flex;
   justify-content:center;
   align-items:center;
@@ -38,17 +38,17 @@ body.ra-journey .ra-nav{
   font-weight:400!important;
   color:#171c20!important;
 }
-body.ra-journey .ra-nav a{
+html body.ra-journey .ra-nav a{
   position:relative;
   padding:10px 0!important;
   white-space:nowrap;
   color:inherit!important;
   font-weight:400!important;
 }
-body.ra-journey .ra-nav a:after{display:none!important}
-body.ra-journey .ra-nav a:hover,
-body.ra-journey .ra-nav a:focus-visible{color:#239408!important}
-body.ra-journey a.ra-header-cta{
+html body.ra-journey .ra-nav a:after{display:none!important}
+html body.ra-journey .ra-nav a:hover,
+html body.ra-journey .ra-nav a:focus-visible{color:#239408!important}
+html body.ra-journey .ra-topbar a.ra-header-cta{
   display:inline-flex;
   align-items:center;
   justify-content:center;
@@ -65,13 +65,13 @@ body.ra-journey a.ra-header-cta{
   box-shadow:0 8px 20px rgba(35,148,8,.18)!important;
   transition:transform .2s ease,box-shadow .2s ease!important;
 }
-body.ra-journey a.ra-header-cta:hover{
+html body.ra-journey .ra-topbar a.ra-header-cta:hover{
   background:linear-gradient(180deg,#2da80e,#1f8c08)!important;
   color:#fff!important;
   transform:translateY(-1px);
   box-shadow:0 10px 25px rgba(35,148,8,.25)!important;
 }
-body.ra-journey .ra-menu-toggle{
+html body.ra-journey .ra-menu-toggle{
   display:none;
   border:1px solid #dfe5df;
   background:#fff;
@@ -82,23 +82,23 @@ body.ra-journey .ra-menu-toggle{
 }
 
 @media(max-width:1180px){
-  body.ra-journey .ra-topbar-inner{grid-template-columns:210px 1fr auto!important;gap:22px!important}
-  body.ra-journey .ra-logo img{width:190px!important}
-  body.ra-journey .ra-nav{gap:22px!important;font-size:14px!important}
+  html body.ra-journey .ra-topbar-inner{grid-template-columns:210px 1fr auto!important;gap:22px!important}
+  html body.ra-journey .ra-logo img{width:190px!important}
+  html body.ra-journey .ra-nav{gap:22px!important;font-size:14px!important}
 }
 
 @media(max-width:930px){
-  body.ra-journey .ra-topbar-inner{
+  html body.ra-journey .ra-topbar-inner{
     height:78px;
     min-height:78px!important;
     grid-template-columns:1fr auto auto!important;
     padding:0 22px;
   }
-  body.ra-journey .ra-logo img{width:190px!important}
-  body.ra-journey .ra-nav{display:none}
-  body.ra-journey .ra-menu-toggle{display:block}
-  body.ra-journey .ra-header-cta{display:none!important}
-  body.ra-journey .ra-nav.is-open{
+  html body.ra-journey .ra-logo img{width:190px!important}
+  html body.ra-journey .ra-nav{display:none}
+  html body.ra-journey .ra-menu-toggle{display:block}
+  html body.ra-journey .ra-header-cta{display:none!important}
+  html body.ra-journey .ra-nav.is-open{
     display:flex!important;
     position:absolute;
     left:18px;
@@ -115,14 +115,14 @@ body.ra-journey .ra-menu-toggle{
     box-shadow:0 16px 40px rgba(20,45,24,.10);
     font-size:14px!important;
   }
-  body.ra-journey .ra-nav.is-open a{
+  html body.ra-journey .ra-nav.is-open a{
     padding:12px 2px!important;
     border-bottom:1px solid #edf0ed;
   }
-  body.ra-journey .ra-nav.is-open a:last-child{border-bottom:0}
+  html body.ra-journey .ra-nav.is-open a:last-child{border-bottom:0}
 }
 
 @media(max-width:520px){
-  body.ra-journey .ra-topbar-inner{height:72px;min-height:72px!important;padding:0 16px}
-  body.ra-journey .ra-logo img{width:172px!important}
+  html body.ra-journey .ra-topbar-inner{height:72px;min-height:72px!important;padding:0 16px}
+  html body.ra-journey .ra-logo img{width:172px!important}
 }
