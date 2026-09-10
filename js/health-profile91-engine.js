@@ -1,4 +1,4 @@
-/* Build 91 Step 2 Health Profile engine — no Free Vitality Assessment question bank. */
+/* Build 94 Step 2 Health Profile engine — no Free Vitality Assessment question bank. */
 (() => {
   'use strict';
   const SECTIONS=window.RVAHealthProfile91Sections||[];
@@ -99,6 +99,9 @@
       const body=new URLSearchParams(new FormData(form)).toString();
       const response=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body});
       if(!response.ok)throw new Error('submit failed');
+      try {
+        sessionStorage.setItem('ra_health_profile_complete_v1', JSON.stringify({completed:true,enrollment_session_id:context.enrollment_session_id||'',completed_at:new Date().toISOString()}));
+      } catch (_) {}
       form.hidden=true;
       if(complete)complete.hidden=false;
       window.scrollTo({top:0,behavior:'smooth'});
