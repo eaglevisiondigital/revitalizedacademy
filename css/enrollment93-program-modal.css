@@ -1,0 +1,47 @@
+/* Build 93 — in-form program comparison modal for Step 1 enrollment. */
+.ra93-modal-lock{overflow:hidden}
+.ra93-program-modal{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(8,31,24,.66);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.ra93-program-modal.is-open{display:flex}
+.ra93-program-dialog{position:relative;width:min(1120px,100%);max-height:min(88vh,900px);overflow:hidden;border:1px solid rgba(216,166,42,.35);border-radius:28px;background:#fffaf4;box-shadow:0 35px 100px rgba(4,24,18,.34)}
+.ra93-program-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:22px;align-items:start;padding:28px 30px 24px;background:radial-gradient(circle at 96% 0,rgba(216,166,42,.18),transparent 34%),linear-gradient(135deg,#0d3d2f,#154734 62%,#1b5e47);color:#fff;border-bottom:1px solid rgba(255,255,255,.11)}
+.ra93-program-kicker{display:block;margin-bottom:7px;color:#f0d18c;font-size:11px;font-weight:900;letter-spacing:.15em;text-transform:uppercase}
+.ra93-program-head h2{margin:0 0 8px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(31px,4vw,46px);font-weight:400;line-height:1.05;color:#fff}
+.ra93-program-head p{margin:0;max-width:760px;color:rgba(255,255,255,.9);font-size:15px;line-height:1.6}
+.ra93-program-close{display:grid;place-items:center;width:44px;height:44px;border:1px solid rgba(255,255,255,.28);border-radius:50%;background:rgba(255,255,255,.1);color:#fff;font-size:25px;line-height:1;cursor:pointer}
+.ra93-program-close:hover,.ra93-program-close:focus-visible{background:#fff;color:#154734;outline:none}
+.ra93-program-scroll{max-height:calc(min(88vh,900px) - 150px);overflow:auto;padding:24px 26px 28px;scroll-behavior:smooth}
+.ra93-program-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.ra93-program-card{position:relative;padding:23px 23px 21px;border:1px solid #ddd8cc;border-radius:21px;background:#fff;box-shadow:0 10px 28px rgba(21,71,52,.055);scroll-margin-top:14px}
+.ra93-program-card.is-focused{border-color:#b18845;box-shadow:0 0 0 3px rgba(177,136,69,.12),0 16px 34px rgba(21,71,52,.09)}
+.ra93-program-card.ra93-premium{background:linear-gradient(145deg,#113b2d,#154734);border-color:#2a6650;color:#fff}
+.ra93-program-card.ra93-wide{grid-column:1/-1}
+.ra93-program-label{display:inline-flex;align-items:center;min-height:29px;padding:6px 10px;border-radius:999px;background:#f3f6f2;color:#3d6553;font-size:10.5px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+.ra93-premium .ra93-program-label{background:rgba(255,255,255,.11);color:#f1d493}
+.ra93-program-card h3{margin:12px 0 6px;font-family:Georgia,"Times New Roman",serif;font-size:29px;font-weight:400;line-height:1.08;color:#154734}
+.ra93-premium h3{color:#fff}
+.ra93-program-price{margin:0 0 14px;color:#8a672f;font-size:15px;font-weight:850}
+.ra93-premium .ra93-program-price{color:#f0d18c}
+.ra93-program-best{margin:0 0 15px;padding:13px 14px;border-radius:13px;background:#f8f3e9;color:#40584d;font-size:13.5px;line-height:1.55}
+.ra93-program-best strong{color:#154734}
+.ra93-premium .ra93-program-best{background:rgba(255,255,255,.08);color:rgba(255,255,255,.91)}
+.ra93-premium .ra93-program-best strong{color:#f3d99f}
+.ra93-program-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 16px;margin:0 0 19px;padding:0;list-style:none}
+.ra93-program-list li{position:relative;padding-left:20px;color:#445e53;font-size:13px;line-height:1.48}
+.ra93-program-list li:before{content:"✓";position:absolute;left:0;color:#6a9558;font-weight:900}
+.ra93-premium .ra93-program-list li{color:rgba(255,255,255,.9)}
+.ra93-premium .ra93-program-list li:before{color:#efcb82}
+.ra93-program-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.ra93-program-select{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:11px 17px;border:1px solid #154734;border-radius:12px;background:#154734;color:#fff;font-size:13.5px;font-weight:850;cursor:pointer}
+.ra93-program-select:hover{background:#0f3e2f}
+.ra93-premium .ra93-program-select{border-color:#f2d28c;background:linear-gradient(180deg,#ebc876,#cea14c);color:#17382d}
+.ra93-program-more{font-size:12.5px;font-weight:800;color:#7c653b}
+.ra93-premium .ra93-program-more{color:#f1d493}
+.ra93-undecided{margin-top:18px;padding:18px 20px;border:1px solid #dbc599;border-radius:17px;background:linear-gradient(135deg,#fff8eb,#f6f8f3);display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center}
+.ra93-undecided strong{display:block;margin-bottom:4px;color:#154734;font-size:16px}.ra93-undecided span{color:#50645a;font-size:13px;line-height:1.5}.ra93-undecided button{min-height:43px;padding:10px 15px;border:0;border-radius:11px;background:#fff;border:1px solid #b18845;color:#6e5328;font-weight:850;cursor:pointer}
+.ra93-view-details{position:relative;z-index:3;display:inline-flex;align-items:center;gap:5px;margin-top:10px;padding:0;border:0;background:transparent;color:#6b542f;font:800 11.5px/1.3 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.ra93-view-details:hover{color:#154734}
+body.ra-journey[data-enrollment-build="88"] .ra-program-help a.ra93-compare-trigger{background:#154734!important;color:#fff!important;border-color:#154734!important;text-decoration:none!important;box-shadow:0 8px 18px rgba(21,71,52,.14)}
+body.ra-journey[data-enrollment-build="88"] .ra-program-help a.ra93-compare-trigger:hover{background:#0f3e2f!important;color:#fff!important}
+@media(max-width:760px){.ra93-program-modal{padding:10px}.ra93-program-dialog{max-height:94vh;border-radius:20px}.ra93-program-head{padding:22px 19px 19px}.ra93-program-head p{font-size:13.5px}.ra93-program-close{width:40px;height:40px}.ra93-program-scroll{max-height:calc(94vh - 145px);padding:17px 15px 20px}.ra93-program-grid{grid-template-columns:1fr}.ra93-program-card.ra93-wide{grid-column:auto}.ra93-program-card{padding:20px 18px}.ra93-program-card h3{font-size:26px}.ra93-program-list{grid-template-columns:1fr}.ra93-undecided{grid-template-columns:1fr}.ra93-undecided button{width:100%}}
+@media(max-width:430px){.ra93-program-head{grid-template-columns:1fr auto}.ra93-program-head h2{font-size:30px}.ra93-program-head p{font-size:13px}.ra93-program-card h3{font-size:24px}.ra93-program-best,.ra93-program-list li{font-size:13px}}
+@media(prefers-reduced-motion:reduce){.ra93-program-scroll{scroll-behavior:auto}}
