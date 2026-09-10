@@ -1,0 +1,134 @@
+/* Build 88 — enrollment readability, contrast and family-context refinement.
+   Scoped to Start Your Journey only. Assessment-owned files intentionally untouched. */
+
+body.ra-journey[data-enrollment-build="88"]{background:#f8f4ed}
+
+/* Readability: remove tiny, low-contrast supporting copy. */
+body.ra-journey[data-enrollment-build="88"] .ra-enroll-hero p{font-size:17px;line-height:1.72;color:#53675e}
+body.ra-journey[data-enrollment-build="88"] .ra83-hero-assurance{gap:10px}
+body.ra-journey[data-enrollment-build="88"] .ra83-hero-assurance span{min-height:38px;padding:8px 14px;font-size:11.5px;font-weight:800;color:#36584a;border:1px solid #dfe8e1;box-shadow:0 6px 16px rgba(21,71,52,.045)}
+body.ra-journey[data-enrollment-build="88"] .ra-progress{padding:17px 20px 15px}
+body.ra-journey[data-enrollment-build="88"] .ra-progress-step{font-size:12px;font-weight:800;color:#66756d}
+body.ra-journey[data-enrollment-build="88"] .ra-progress-step.is-current{color:#154734}
+
+/* Connected journey: bright, readable copy on green. */
+body.ra-journey[data-enrollment-build="88"] .ra83-side-card>p{font-size:13.5px;line-height:1.65;color:rgba(255,255,255,.92)}
+body.ra-journey[data-enrollment-build="88"] .ra83-connected-step strong{font-size:12.5px;color:#fff}
+body.ra-journey[data-enrollment-build="88"] .ra83-connected-step span{font-size:11.5px;line-height:1.5;color:rgba(255,255,255,.84)}
+body.ra-journey[data-enrollment-build="88"] .ra83-connected-step b{font-size:11px;color:#f5d99f;border-color:rgba(245,217,159,.48)}
+body.ra-journey[data-enrollment-build="88"] .ra83-side-note strong{font-size:21px;line-height:1.13;color:#154734}
+body.ra-journey[data-enrollment-build="88"] .ra83-side-note p{font-size:12.5px;line-height:1.62;color:#586b62}
+body.ra-journey[data-enrollment-build="88"] .ra83-side-trust{font-size:11.5px;line-height:1.55;color:#53675e;font-weight:650}
+
+/* Enrollment card heading and section labels. */
+body.ra-journey[data-enrollment-build="88"] .ra-enroll-card-head p{font-size:13.5px;line-height:1.55;color:rgba(255,255,255,.90)}
+body.ra-journey[data-enrollment-build="88"] .ra-time-pill{padding:8px 13px;font-size:11.5px;font-weight:850;color:#ffe5ae;border-color:rgba(255,228,170,.50);background:rgba(255,255,255,.13)}
+body.ra-journey[data-enrollment-build="88"] .ra83-section-label{grid-column:1/-1;padding:28px 0 5px}
+body.ra-journey[data-enrollment-build="88"] .ra83-section-label.ra83-first{padding-top:0}
+body.ra-journey[data-enrollment-build="88"] .ra83-section-number{width:38px;height:38px;font-size:12px;font-weight:800}
+body.ra-journey[data-enrollment-build="88"] .ra83-section-label strong{font-size:22px;line-height:1.15;color:#154734}
+body.ra-journey[data-enrollment-build="88"] .ra83-section-label small{font-size:11.5px;line-height:1.5;color:#607269;font-weight:650}
+
+/* Fields: larger labels, helpers and controls. */
+body.ra-journey[data-enrollment-build="88"] .ra-field{gap:9px}
+body.ra-journey[data-enrollment-build="88"] .ra-field label{font-size:13.5px;font-weight:800;color:#234638}
+body.ra-journey[data-enrollment-build="88"] .ra-field input,
+body.ra-journey[data-enrollment-build="88"] .ra-field select,
+body.ra-journey[data-enrollment-build="88"] .ra-field textarea{min-height:58px;padding:14px 16px;font-size:16px;color:#17372b;background:#fff;border-color:#cfd9d2}
+body.ra-journey[data-enrollment-build="88"] .ra-field textarea{min-height:145px}
+body.ra-journey[data-enrollment-build="88"] .ra-field input::placeholder,
+body.ra-journey[data-enrollment-build="88"] .ra-field textarea::placeholder{font-size:15px;color:#77837c}
+body.ra-journey[data-enrollment-build="88"] .ra-field-help{font-size:11.5px;line-height:1.55;color:#607269;font-weight:600}
+body.ra-journey[data-enrollment-build="88"] .ra-field-error{font-size:11.5px;font-weight:700}
+
+/* New family-aware enrollment-for selector. */
+.ra88-who-fieldset{grid-column:1/-1;margin:2px 0 4px;padding:0;border:0;min-width:0}
+.ra88-who-fieldset>legend{padding:0;margin:0 0 7px;color:#234638;font-size:13.5px;font-weight:850}
+.ra88-who-helper{margin:0 0 13px;color:#607269;font-size:12.5px;line-height:1.55}
+.ra88-who-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.ra88-who-choice{position:relative;display:block;cursor:pointer}
+.ra88-who-choice input{position:absolute;opacity:0;pointer-events:none}
+.ra88-who-choice span{position:relative;display:flex;flex-direction:column;justify-content:center;min-height:92px;padding:17px 48px 16px 18px;border:1px solid #d6dfd9;border-radius:17px;background:linear-gradient(145deg,#fff,#fbfcf9);box-shadow:0 8px 20px rgba(21,71,52,.045);transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease,background .18s ease}
+.ra88-who-choice span:after{content:"";position:absolute;right:17px;top:50%;transform:translateY(-50%);width:21px;height:21px;border-radius:50%;border:2px solid #b5c2ba;background:#fff;box-shadow:inset 0 0 0 4px #fff}
+.ra88-who-choice strong{font-family:Georgia,"Times New Roman",serif;font-size:21px;line-height:1.08;font-weight:400;color:#154734}
+.ra88-who-choice small{display:block;margin-top:5px;color:#617269;font-size:11.5px;line-height:1.4}
+.ra88-who-choice:hover span{transform:translateY(-1px);border-color:#b99a63;box-shadow:0 12px 26px rgba(21,71,52,.08)}
+.ra88-who-choice input:checked+span{border-color:#a97f3e;background:linear-gradient(145deg,#fffdf8,#f8f0e2);box-shadow:0 0 0 3px rgba(177,136,69,.11),0 12px 26px rgba(21,71,52,.07)}
+.ra88-who-choice input:checked+span:after{border-color:#154734;background:#154734;box-shadow:inset 0 0 0 4px #fff}
+.ra88-who-choice input:focus-visible+span{outline:3px solid rgba(21,71,52,.24);outline-offset:3px}
+
+.ra88-on-behalf{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr);gap:20px;align-items:start;margin:5px 0 2px;padding:21px 22px;border:1px solid #dbc9a6;border-left:4px solid #b18845;border-radius:18px;background:linear-gradient(135deg,#fffaf0,#fbf8f2);box-shadow:0 10px 24px rgba(21,71,52,.045)}
+.ra88-on-behalf[hidden]{display:none!important}
+.ra88-on-behalf-copy h4{margin:0 0 7px;font-family:Georgia,"Times New Roman",serif;font-size:21px;line-height:1.15;font-weight:400;color:#154734}
+.ra88-on-behalf-copy p{margin:0;color:#4f645a;font-size:12.75px;line-height:1.65}
+.ra88-on-behalf-copy p+p{margin-top:8px}
+.ra88-on-behalf .ra-field label{font-size:12.5px}
+.ra88-on-behalf .ra-field input{min-height:54px;background:#fff}
+.ra88-authorization{margin-top:9px!important;padding-top:9px;border-top:1px solid #eadfc9;color:#6d572f!important;font-weight:700}
+
+/* Program chooser: force true full width and strengthen all decision copy. */
+body.ra-journey[data-enrollment-build="88"] .ra-program-fieldset{grid-column:1/-1;width:100%;padding:31px 32px 28px}
+body.ra-journey[data-enrollment-build="88"] .ra-program-picker-kicker{font-size:11px;font-weight:900}
+body.ra-journey[data-enrollment-build="88"] .ra-program-picker-head h3{font-size:33px;line-height:1.08}
+body.ra-journey[data-enrollment-build="88"] .ra-program-picker-head p{font-size:13.5px;line-height:1.65;color:#52675d;max-width:900px}
+body.ra-journey[data-enrollment-build="88"] .ra-program-picker-note{min-height:36px;padding:8px 12px;font-size:10.5px;font-weight:900;color:#6a5028}
+body.ra-journey[data-enrollment-build="88"] .ra-program-choice strong{font-size:21px;line-height:1.1}
+body.ra-journey[data-enrollment-build="88"] .ra-program-choice small{font-size:13px;line-height:1.5;color:#53675d;font-weight:650}
+body.ra-journey[data-enrollment-build="88"] .ra-program-choice span{padding-top:21px;padding-bottom:20px}
+body.ra-journey[data-enrollment-build="88"] .ra-program-help{font-size:12.5px;line-height:1.5;color:#52665c;font-weight:650}
+body.ra-journey[data-enrollment-build="88"] .ra-program-help a{min-height:40px;padding:9px 15px;font-size:12px;font-weight:850;color:#154734;background:#fff;border-color:#cbd8d0}
+
+/* Consent, explanation and submit area. */
+body.ra-journey[data-enrollment-build="88"] .ra-consent{padding:20px 21px;background:#f7faf6;border-color:#d6e0d8;border-left:3px solid #779b87}
+body.ra-journey[data-enrollment-build="88"] .ra-consent label{font-size:12.5px;line-height:1.62;color:#40594e;font-weight:650}
+body.ra-journey[data-enrollment-build="88"] .ra-consent input{width:18px;height:18px;flex:0 0 auto;margin-top:1px}
+body.ra-journey[data-enrollment-build="88"] .ra-review-note{padding:19px 21px 19px 55px;font-size:12.5px;line-height:1.65;color:#5f4e2f;background:#fbf5e9}
+body.ra-journey[data-enrollment-build="88"] .ra-review-note strong{color:#6a512b}
+body.ra-journey[data-enrollment-build="88"] .ra-form-footer p{font-size:11.75px;line-height:1.62;color:#5f7067;font-weight:600;max-width:720px}
+body.ra-journey[data-enrollment-build="88"] .ra-form-footer .ra-btn{min-height:56px;font-size:14.5px;font-weight:800;color:#fff!important}
+
+/* Footer fine print still needs to be readable. */
+body.ra-journey[data-enrollment-build="88"] .ra-footer-copy{font-size:11.5px;line-height:1.65;color:rgba(255,255,255,.82)}
+body.ra-journey[data-enrollment-build="88"] .ra-footer-links{font-size:11.5px;line-height:1.5}
+body.ra-journey[data-enrollment-build="88"] .ra-footer-disclaimer{font-size:10.5px;line-height:1.6;color:rgba(255,255,255,.72)}
+
+@media(max-width:900px){
+  .ra88-on-behalf{grid-template-columns:1fr}
+  body.ra-journey[data-enrollment-build="88"] .ra-program-fieldset{padding:27px 24px 24px}
+}
+
+@media(max-width:760px){
+  body.ra-journey[data-enrollment-build="88"] .ra-enroll-hero p{font-size:15.5px}
+  body.ra-journey[data-enrollment-build="88"] .ra83-hero-assurance span{font-size:11px;min-height:36px}
+  body.ra-journey[data-enrollment-build="88"] .ra-progress-step{font-size:10.5px}
+  body.ra-journey[data-enrollment-build="88"] .ra83-section-label strong{font-size:20px}
+  body.ra-journey[data-enrollment-build="88"] .ra83-section-label small{font-size:11px}
+  .ra88-who-options{grid-template-columns:1fr}
+  .ra88-who-choice span{min-height:78px}
+  .ra88-on-behalf{padding:18px 17px}
+  body.ra-journey[data-enrollment-build="88"] .ra-program-fieldset{grid-column:auto;padding:23px 18px 21px}
+  body.ra-journey[data-enrollment-build="88"] .ra-program-picker-head h3{font-size:28px}
+  body.ra-journey[data-enrollment-build="88"] .ra-program-picker-head p{font-size:12.5px}
+  body.ra-journey[data-enrollment-build="88"] .ra-program-choice strong{font-size:19px}
+  body.ra-journey[data-enrollment-build="88"] .ra-program-choice small{font-size:12.5px}
+  body.ra-journey[data-enrollment-build="88"] .ra-program-help{font-size:12px}
+  body.ra-journey[data-enrollment-build="88"] .ra83-side-card>p{font-size:12.5px}
+  body.ra-journey[data-enrollment-build="88"] .ra83-connected-step strong{font-size:12px}
+  body.ra-journey[data-enrollment-build="88"] .ra83-connected-step span{font-size:11px}
+  body.ra-journey[data-enrollment-build="88"] .ra-form-footer p{font-size:11.5px}
+}
+
+@media(max-width:480px){
+  body.ra-journey[data-enrollment-build="88"] .ra-form-body{padding-left:18px;padding-right:18px}
+  body.ra-journey[data-enrollment-build="88"] .ra-field label{font-size:13px}
+  body.ra-journey[data-enrollment-build="88"] .ra-field input,
+  body.ra-journey[data-enrollment-build="88"] .ra-field select,
+  body.ra-journey[data-enrollment-build="88"] .ra-field textarea{font-size:16px}
+  body.ra-journey[data-enrollment-build="88"] .ra-program-fieldset{padding:20px 14px 18px}
+  body.ra-journey[data-enrollment-build="88"] .ra-program-choice strong{font-size:18.5px}
+  body.ra-journey[data-enrollment-build="88"] .ra-review-note{padding-left:47px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .ra88-who-choice span{transition:none!important}
+}
