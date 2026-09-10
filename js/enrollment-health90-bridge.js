@@ -92,7 +92,9 @@
 
     if (!proxy) {
       personSection.hidden = true;
+      body.classList.add('health90-self');
     } else {
+      body.classList.add('health90-proxy');
       const proxyWrap = personSection.querySelector('[data-show-when="assessment_for:My child|My spouse|Someone else"]');
       if (proxyWrap) proxyWrap.classList.add('health90-prefilled-proxy');
       const heading = personSection.querySelector('h3');
