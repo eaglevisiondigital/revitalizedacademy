@@ -1,0 +1,15 @@
+Build 86 — Programs readability and contrast polish
+
+Baseline preserved: Build 84 enrollment remains untouched.
+Programs page refinements only.
+
+Changes:
+- Enlarged and strengthened plan metadata pills.
+- Increased benefit, detail, supporting and comparison text readability.
+- Enlarged and emphasized the Holistic Foundations “What you receive” panel.
+- Brightened copy throughout dark green private-coaching surfaces.
+- Enforced gold CTAs on green private-coaching/featured surfaces.
+- Enforced green high-contrast CTAs on white comparison rows.
+- Reworked bottom decision buttons so there is no light-on-light treatment.
+- Preserved mobile responsive behavior while increasing legibility.
+- No assessment-owned files changed.
