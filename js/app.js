@@ -306,3 +306,13 @@ faqItems.forEach((item) => {
     link.setAttribute('data-family-health-nav', '77');
   });
 })();
+
+// Build 87: load the sitewide premium cream glass header skin after legacy styles.
+(() => {
+  if (document.querySelector('link[data-ra-header-glass]')) return;
+  const link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = '/css/header-glass.css?v=20260910-1';
+  link.setAttribute('data-ra-header-glass', '87');
+  document.head.appendChild(link);
+})();
