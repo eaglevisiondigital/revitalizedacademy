@@ -1,0 +1,16 @@
+/* Build 89 — homepage programs/coaching options banner.
+   Inserted after Coaching and before Family Health. */
+.home-programs-banner89{background:#fcf5ee;border-top:1px solid #eadfce;border-bottom:1px solid #eadfce;padding:24px clamp(22px,5vw,84px)}
+.home-programs-banner89-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px;align-items:center;padding:25px 30px;border:1px solid #d9bd82;border-radius:22px;background:radial-gradient(circle at 92% 20%,rgba(216,166,42,.14),transparent 25%),linear-gradient(135deg,#fffaf3,#f6eddf);box-shadow:0 16px 36px rgba(21,71,52,.07)}
+.home-programs-banner89-kicker{display:block;margin-bottom:6px;color:#976c2f;font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase}
+.home-programs-banner89 h2{margin:0 0 7px;color:#0f493a;font-family:Georgia,'Times New Roman',serif;font-size:clamp(28px,3vw,40px);font-weight:600;line-height:1.08;letter-spacing:-.025em}
+.home-programs-banner89 p{max-width:760px;margin:0;color:#405e54;font-size:15px;line-height:1.62}
+.home-programs-banner89-actions{display:flex;gap:12px;align-items:center;justify-content:flex-end;flex-wrap:wrap}
+.home-programs-banner89-primary,.home-programs-banner89-secondary{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:14px 22px;border-radius:13px;font-size:14px;font-weight:850;line-height:1.15;text-decoration:none;white-space:nowrap;transition:transform .18s ease,box-shadow .18s ease}
+.home-programs-banner89-primary{background:linear-gradient(180deg,#115542,#0a4437);border:1px solid rgba(216,166,42,.72);color:#fff;box-shadow:0 10px 24px rgba(13,68,54,.16)}
+.home-programs-banner89-secondary{background:#fff;border:1px solid #d9c7a2;color:#154734;box-shadow:0 7px 18px rgba(21,71,52,.05)}
+.home-programs-banner89-primary:hover,.home-programs-banner89-secondary:hover{transform:translateY(-1px)}
+.home-programs-banner89-primary:hover{box-shadow:0 13px 28px rgba(13,68,54,.22)}
+.home-programs-banner89-secondary:hover{box-shadow:0 10px 22px rgba(21,71,52,.09)}
+@media(max-width:900px){.home-programs-banner89{padding:20px}.home-programs-banner89-inner{grid-template-columns:1fr;padding:24px}.home-programs-banner89-actions{justify-content:flex-start}}
+@media(max-width:560px){.home-programs-banner89{padding:16px}.home-programs-banner89-inner{padding:22px 18px;border-radius:18px}.home-programs-banner89 p{font-size:14px}.home-programs-banner89-actions{display:grid;grid-template-columns:1fr}.home-programs-banner89-primary,.home-programs-banner89-secondary{width:100%;white-space:normal;text-align:center}}
