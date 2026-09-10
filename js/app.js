@@ -312,7 +312,17 @@ faqItems.forEach((item) => {
   if (document.querySelector('link[data-ra-header-glass]')) return;
   const link = document.createElement('link');
   link.rel = 'stylesheet';
-  link.href = '/css/header-glass.css?v=20260910-1';
+  link.href = '/css/header-glass.css?v=20260910-2';
   link.setAttribute('data-ra-header-glass', '87');
   document.head.appendChild(link);
+})();
+
+// Build 88: make the sitewide header CTA the Free Vitality Assessment lead action.
+(() => {
+  const cta = document.querySelector('.site-header .header-cta');
+  if (!cta) return;
+  cta.textContent = 'Free Vitality Assessment';
+  cta.setAttribute('href', '/consult.html');
+  cta.classList.remove('journey-secondary-cta');
+  cta.classList.add('vitality-primary-cta');
 })();
