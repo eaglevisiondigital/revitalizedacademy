@@ -1,0 +1,107 @@
+/* Build 86 — readability, contrast and CTA polish for Programs page only.
+   This stylesheet intentionally touches no enrollment or assessment-owned assets. */
+
+/* Stronger reading hierarchy across the page */
+body.ra85-plans .ra85-tier-heading p,
+body.ra85-plans .ra85-card-sub{font-size:14px;line-height:1.62;color:#5f7168}
+body.ra85-plans .ra85-card-section-label{font-size:11px;letter-spacing:.14em;margin-bottom:12px;color:#365c4e}
+body.ra85-plans .ra85-best{font-size:14px;line-height:1.62;padding:18px 19px 18px 49px;margin-bottom:24px}
+body.ra85-plans .ra85-best:before{top:18px;font-size:19px}
+body.ra85-plans .ra85-benefits{gap:11px}
+body.ra85-plans .ra85-benefits li{font-size:14px;line-height:1.52;padding-left:25px;color:#38584b}
+body.ra85-plans .ra85-benefits li:before{font-size:15px;top:-1px}
+body.ra85-plans .ra85-card summary,
+body.ra85-plans .ra85-private-card summary{font-size:12.5px;letter-spacing:.01em}
+body.ra85-plans .ra85-detail{font-size:12.75px;line-height:1.68;color:#53675d}
+body.ra85-plans .ra85-detail strong{font-size:12px;margin-bottom:4px;color:#274d3d}
+
+/* Make program pills feel intentional instead of tiny metadata */
+body.ra85-plans .ra85-meta{gap:9px;margin-bottom:20px}
+body.ra85-plans .ra85-meta span{min-height:34px;align-items:center;padding:8px 13px;border-radius:999px;background:#eef3ed;border:1px solid #dfe9e1;color:#36584a;font-size:11.5px;font-weight:820;letter-spacing:.01em;box-shadow:0 4px 10px rgba(21,71,52,.025)}
+body.ra85-plans .ra85-badge{min-height:32px;padding:7px 12px;font-size:10px;letter-spacing:.075em}
+
+/* Holistic Foundations: larger, clearer benefit panel */
+body.ra85-plans .ra85-foundations-body{grid-template-columns:minmax(0,.82fr) minmax(390px,1.18fr);gap:38px}
+body.ra85-plans .ra85-foundations-body .ra85-right{padding:28px 30px;border-radius:22px;background:linear-gradient(145deg,#f9f7f1,#fff);border:1px solid #e5dccb;box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 10px 24px rgba(21,71,52,.035)}
+body.ra85-plans .ra85-foundations-body .ra85-right .ra85-card-section-label{font-size:11.5px;color:#31594a;margin-bottom:14px}
+body.ra85-plans .ra85-foundations-body .ra85-right .ra85-benefits{gap:13px 28px}
+body.ra85-plans .ra85-foundations-body .ra85-right .ra85-benefits li{font-size:14.5px;line-height:1.5}
+
+/* Hero/support panel text should never read like fine print */
+body.ra85-plans .ra85-hero-trust span{font-size:11.5px;font-weight:780;color:rgba(255,255,255,.9);padding:8px 12px}
+body.ra85-plans .ra85-fit-item strong{font-size:13.5px;line-height:1.42}
+body.ra85-plans .ra85-fit-item span{font-size:12.25px;line-height:1.58;color:rgba(255,255,255,.84)}
+body.ra85-plans .ra85-fit-foot{font-size:12.25px;color:rgba(255,255,255,.88)}
+
+/* Private green section: bright, confident typography */
+body.ra85-plans .ra85-private-zone .ra85-tier-heading p{color:rgba(255,255,255,.9);font-size:14.5px}
+body.ra85-plans .ra85-private-card .ra85-card-sub{color:rgba(255,255,255,.9)}
+body.ra85-plans .ra85-private-card .ra85-price.ra85-price-consult span{color:rgba(255,255,255,.9);font-size:13.5px}
+body.ra85-plans .ra85-private-card .ra85-best{color:#fff;background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.18)}
+body.ra85-plans .ra85-private-card .ra85-best strong{color:#f7d896}
+body.ra85-plans .ra85-private-card .ra85-card-section-label{color:#f7d896}
+body.ra85-plans .ra85-private-card .ra85-benefits li{color:#fff;font-size:14px;font-weight:560}
+body.ra85-plans .ra85-private-card .ra85-benefits li:before{color:#f2cb7e}
+body.ra85-plans .ra85-private-card .ra85-meta span{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.14);color:#fff;font-size:11.25px}
+body.ra85-plans .ra85-private-card .ra85-detail{color:rgba(255,255,255,.86);font-size:12.75px}
+body.ra85-plans .ra85-private-card .ra85-detail strong{color:#fff;font-size:12px}
+body.ra85-plans .ra85-private-card summary{color:#f6d593;font-size:12.5px}
+
+/* No green-on-green actions: gold or white on every green surface */
+body.ra85-plans .ra85-private-card a.ra85-btn-primary,
+body.ra85-plans .ra85-help-card-featured a.ra85-btn-primary{background:linear-gradient(135deg,#efcf8e,#c99a49)!important;color:#12382b!important;border:1px solid rgba(255,255,255,.14)!important;box-shadow:0 14px 30px rgba(0,0,0,.17)!important;font-weight:850}
+body.ra85-plans .ra85-private-card a.ra85-btn-primary:hover,
+body.ra85-plans .ra85-help-card-featured a.ra85-btn-primary:hover{background:linear-gradient(135deg,#f4d99f,#d5a755)!important;transform:translateY(-1px)}
+
+/* Comparison area: stronger data and unmistakable action buttons */
+body.ra85-plans .ra85-compare-row{padding:20px 21px;border-color:#ddd5c9;box-shadow:0 11px 26px rgba(21,71,52,.045)}
+body.ra85-plans .ra85-compare-program strong{font-size:20.5px}
+body.ra85-plans .ra85-compare-program span{font-size:9.75px;font-weight:850}
+body.ra85-plans .ra85-compare-cell small{font-size:9.5px;color:#6f7c75}
+body.ra85-plans .ra85-compare-cell b{font-size:13px;line-height:1.42;color:#334f43;font-weight:760}
+body.ra85-plans .ra85-compare-row>a{min-height:44px;padding:10px 18px;background:linear-gradient(135deg,#154734,#1f684f)!important;color:#fff!important;border:1px solid #154734!important;font-size:11.5px;font-weight:850;box-shadow:0 8px 18px rgba(21,71,52,.14)}
+body.ra85-plans .ra85-compare-row>a:hover{background:linear-gradient(135deg,#1b5944,#25735a)!important;color:#fff!important;transform:translateY(-1px)}
+
+/* Bottom decision cards: no light-on-light buttons */
+body.ra85-plans .ra85-help-card p{font-size:13.5px;line-height:1.65;color:#586d63}
+body.ra85-plans .ra85-help-card-featured p{color:#fff;font-weight:560}
+body.ra85-plans .ra85-help-card:nth-child(2) a.ra85-btn-ghost{background:linear-gradient(135deg,#154734,#1f684f)!important;color:#fff!important;border-color:#154734!important;box-shadow:0 10px 24px rgba(21,71,52,.15)}
+body.ra85-plans .ra85-help-card:nth-child(3) a.ra85-btn-ghost{background:linear-gradient(135deg,#e5c27b,#c99a49)!important;color:#17382d!important;border-color:#d1aa65!important;box-shadow:0 10px 24px rgba(177,136,69,.16)}
+body.ra85-plans .ra85-help-card:nth-child(2) a.ra85-btn-ghost:hover,
+body.ra85-plans .ra85-help-card:nth-child(3) a.ra85-btn-ghost:hover{transform:translateY(-1px)}
+
+/* Question/contact area readability */
+body.ra85-plans .ra85-question-copy>p{font-size:14.5px;line-height:1.72;color:#586e63}
+body.ra85-plans .ra85-question-note strong{font-size:13px}
+body.ra85-plans .ra85-question-note span,
+body.ra85-plans .ra85-question-note a{font-size:12px}
+body.ra85-plans .ra85-contact-form-head p{font-size:13px}
+body.ra85-plans .ra85-contact-field label{font-size:12px}
+body.ra85-plans .ra85-contact-form-actions p{font-size:10.5px;line-height:1.55}
+
+/* Slightly stronger section copy throughout */
+body.ra85-plans .ra85-section-head p,
+body.ra85-plans .ra85-help-head p{color:#5e7167}
+
+@media(max-width:930px){
+  body.ra85-plans .ra85-foundations-body{grid-template-columns:1fr;gap:24px}
+  body.ra85-plans .ra85-foundations-body .ra85-right{padding:25px 24px}
+  body.ra85-plans .ra85-compare-row>a{justify-self:stretch}
+}
+
+@media(max-width:700px){
+  body.ra85-plans .ra85-card-sub,
+  body.ra85-plans .ra85-tier-heading p{font-size:13.5px}
+  body.ra85-plans .ra85-best{font-size:13.5px;padding:17px 17px 17px 46px}
+  body.ra85-plans .ra85-benefits li,
+  body.ra85-plans .ra85-foundations-body .ra85-right .ra85-benefits li,
+  body.ra85-plans .ra85-private-card .ra85-benefits li{font-size:13.75px;line-height:1.52}
+  body.ra85-plans .ra85-meta span{font-size:11px;min-height:33px;padding:7px 12px}
+  body.ra85-plans .ra85-foundations-body .ra85-right{padding:22px 19px}
+  body.ra85-plans .ra85-foundations-body .ra85-right .ra85-benefits{grid-template-columns:1fr;gap:11px}
+  body.ra85-plans .ra85-detail,
+  body.ra85-plans .ra85-private-card .ra85-detail{font-size:12.5px}
+  body.ra85-plans .ra85-compare-cell b{font-size:12.75px}
+  body.ra85-plans .ra85-compare-row>a{font-size:12px;min-height:46px}
+  body.ra85-plans .ra85-help-card p{font-size:13.5px}
+}
