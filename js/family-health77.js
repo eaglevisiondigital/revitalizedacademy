@@ -21,3 +21,15 @@
   else desktop.addListener(verifyArtwork);
   verifyArtwork();
 })();
+
+// Keep the sitewide header complete on Family Health.
+(() => {
+  const nav = document.querySelector('.site-header .main-nav');
+  if (!nav) return;
+  const hasFaq = Array.from(nav.querySelectorAll('a')).some((link) => link.textContent.trim() === 'FAQ');
+  if (hasFaq) return;
+  const faq = document.createElement('a');
+  faq.href = 'index.html#faq';
+  faq.textContent = 'FAQ';
+  nav.appendChild(faq);
+})();
