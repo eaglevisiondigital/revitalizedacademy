@@ -3,6 +3,9 @@
 (() => {
   'use strict';
 
+  /* Build 89 changes the shared header, not the enrollment-content styling baseline. */
+  if (document.body?.classList.contains('ra-journey')) document.body.dataset.enrollmentBuild = '88';
+
   const form = document.getElementById('enrollment-step-one');
   if (!form) return;
 
