@@ -1,5 +1,6 @@
 /* Build 88 — family-aware Step 1 enrollment context.
-   This only controls enrollment-page presentation and fields. No assessment-owned files are touched. */
+   Build 90 adds a transient Step 1 handoff for the post-enrollment health profile.
+   No health answers are stored here and no assessment-owned files are touched. */
 (() => {
   'use strict';
 
@@ -88,4 +89,33 @@
 
   const initial = form.querySelector('[name="enrollment_for"]:checked');
   if (initial) applyContext(initial.value);
+
+  const value = (name) => {
+    const control = form.elements.namedItem(name);
+    return control ? String(control.value || '').trim() : '';
+  };
+
+  form.addEventListener('submit', (event) => {
+    if (event.defaultPrevented) return;
+    const selectedPlan = form.querySelector('[name="program_interest"]:checked');
+    const context = {
+      version: 'enrollment-step1-v2',
+      enrollment_session_id: value('enrollment_session_id'),
+      enrollment_for: value('enrollment_for'),
+      completed_by_name: value('completed_by_name'),
+      full_name: value('full_name'),
+      email: value('email'),
+      phone: value('phone'),
+      age: value('age'),
+      gender: value('sex'),
+      referral_source: value('referral_source'),
+      program_interest: selectedPlan ? selectedPlan.value : '',
+      selected_plan_code: selectedPlan ? (selectedPlan.dataset.plan || '') : '',
+      start_timeline: value('start_timeline'),
+      captured_at: new Date().toISOString()
+    };
+    try {
+      sessionStorage.setItem('ra_enrollment_context_v2', JSON.stringify(context));
+    } catch (_) {}
+  });
 })();
