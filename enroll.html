@@ -9,8 +9,9 @@
   <link rel="stylesheet" href="css/enrollment82-program-picker.css?v=82.1">
   <link rel="stylesheet" href="css/enrollment83-premium.css?v=83">
   <link rel="stylesheet" href="css/enrollment84-premium.css?v=84">
+  <link rel="stylesheet" href="css/enrollment88-refinement.css?v=88">
 </head>
-<body class="ra-journey" data-enrollment-build="84">
+<body class="ra-journey" data-enrollment-build="88">
   <a class="ra-skip" href="#enrollment-step-one">Skip to application</a>
   <header class="ra-topbar">
     <div class="ra-topbar-inner">
@@ -51,10 +52,10 @@
     </section>
 
     <div class="ra-enroll-shell">
-      <form class="ra-enroll-card" id="enrollment-step-one" name="enrollment" method="POST" action="enrollment-thank-you.html" data-netlify="true" netlify-honeypot="bot-field" data-enrollment-schema="step1-v1">
+      <form class="ra-enroll-card" id="enrollment-step-one" name="enrollment" method="POST" action="enrollment-thank-you.html" data-netlify="true" netlify-honeypot="bot-field" data-enrollment-schema="step1-v2">
         <input type="hidden" name="form-name" value="enrollment">
         <input type="hidden" name="enrollment_stage" value="initial-lead-capture">
-        <input type="hidden" name="schema_version" value="enrollment-step1-v1">
+        <input type="hidden" name="schema_version" value="enrollment-step1-v2">
         <input type="hidden" name="lead_source_page" value="enroll">
         <input type="hidden" name="program_source" id="program-source" value="direct">
         <input type="hidden" name="utm_source" id="utm-source" value="">
@@ -70,7 +71,7 @@
         <p hidden><label>Don’t fill this out: <input name="bot-field"></label></p>
 
         <div class="ra-enroll-card-head">
-          <div><h2>A little clarity starts here.</h2><p>Eight required questions. No long health history yet.</p></div>
+          <div><h2>A little clarity starts here.</h2><p>A short first step. No long health history yet.</p></div>
           <span class="ra-time-pill">About 2–3 minutes</span>
         </div>
 
@@ -78,39 +79,64 @@
           <div class="ra-form-grid">
             <div class="ra83-section-label ra83-first">
               <span class="ra83-section-number" aria-hidden="true">01</span>
-              <div><strong>About you</strong><small>The basics we’ll use to begin your ReVitalized profile.</small></div>
+              <div><strong id="about-person-title">About you</strong><small id="about-person-help">The basics we’ll use to begin your ReVitalized profile.</small></div>
+            </div>
+
+            <fieldset class="ra88-who-fieldset">
+              <legend>Who is this enrollment for? <span class="ra-required" aria-hidden="true">*</span></legend>
+              <p class="ra88-who-helper">Each person gets their own ReVitalized profile. Choose who this Step 1 is beginning for.</p>
+              <div class="ra88-who-options">
+                <label class="ra88-who-choice"><input type="radio" name="enrollment_for" value="self" required><span><strong>Myself</strong><small>I’m beginning my own enrollment.</small></span></label>
+                <label class="ra88-who-choice"><input type="radio" name="enrollment_for" value="spouse"><span><strong>My spouse</strong><small>I’m beginning this on their behalf.</small></span></label>
+                <label class="ra88-who-choice"><input type="radio" name="enrollment_for" value="child"><span><strong>My child</strong><small>I’m a parent or guardian beginning their profile.</small></span></label>
+              </div>
+            </fieldset>
+
+            <div class="ra88-on-behalf" id="on-behalf-panel" hidden>
+              <div class="ra88-on-behalf-copy">
+                <h4 id="on-behalf-title">You’re completing this enrollment for someone else.</h4>
+                <p id="on-behalf-copy"></p>
+                <p class="ra88-authorization" id="on-behalf-authorization"></p>
+              </div>
+              <div class="ra-field" data-field>
+                <label for="completed-by-name">Your full name <span class="ra-required" aria-hidden="true">*</span></label>
+                <input id="completed-by-name" name="completed_by_name" autocomplete="name" maxlength="150" placeholder="Person completing this form" disabled>
+                <span class="ra-field-error" data-error>Please enter your name.</span>
+              </div>
             </div>
 
             <div class="ra-field" data-field>
-              <label for="full-name">Full name <span class="ra-required" aria-hidden="true">*</span></label>
-              <input id="full-name" name="full_name" autocomplete="name" maxlength="150" placeholder="Your first and last name" required>
-              <span class="ra-field-error" data-error>Please enter your full name.</span>
+              <label for="full-name"><span id="full-name-label-text">Full name</span> <span class="ra-required" aria-hidden="true">*</span></label>
+              <input id="full-name" name="full_name" autocomplete="name" maxlength="150" placeholder="First and last name" required>
+              <span class="ra-field-error" data-error>Please enter the full name of the person being enrolled.</span>
             </div>
 
             <div class="ra-field" data-field>
-              <label for="email">Best email <span class="ra-required" aria-hidden="true">*</span></label>
+              <label for="email">Best email for enrollment updates <span class="ra-required" aria-hidden="true">*</span></label>
               <input id="email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="254" placeholder="you@example.com" required>
+              <p class="ra-field-help" id="email-context-help">Use the email where you want to receive enrollment updates.</p>
               <span class="ra-field-error" data-error>Please enter a valid email address.</span>
             </div>
 
             <div class="ra-field" data-field>
-              <label for="phone">Phone number <span class="ra-required" aria-hidden="true">*</span></label>
+              <label for="phone">Best phone for enrollment updates <span class="ra-required" aria-hidden="true">*</span></label>
               <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="30" pattern="[+()0-9 .-]{10,}" placeholder="(555) 234-5678" required>
-              <span class="ra-field-error" data-error>Please enter your best phone number.</span>
+              <p class="ra-field-help" id="phone-context-help">Use the best number for enrollment follow-up.</p>
+              <span class="ra-field-error" data-error>Please enter the best phone number for this enrollment.</span>
             </div>
 
             <div class="ra-field" data-field>
-              <label for="age">How old are you this year? <span class="ra-required" aria-hidden="true">*</span></label>
-              <input id="age" name="age" type="number" min="14" max="120" step="1" inputmode="numeric" placeholder="Age" required>
-              <span class="ra-field-error" data-error>Please enter your age.</span>
+              <label for="age"><span id="age-label-text">Age</span> <span class="ra-required" aria-hidden="true">*</span></label>
+              <input id="age" name="age" type="number" min="0" max="120" step="1" inputmode="numeric" placeholder="Age in years" required>
+              <span class="ra-field-error" data-error>Please enter the age of the person being enrolled.</span>
             </div>
 
             <div class="ra-field" data-field>
-              <label for="sex">Are you a man or woman? <span class="ra-required" aria-hidden="true">*</span></label>
+              <label for="sex">Gender <span class="ra-required" aria-hidden="true">*</span></label>
               <select id="sex" name="sex" required>
                 <option value="">Select one</option>
-                <option value="Man">Man</option>
-                <option value="Woman">Woman</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
               </select>
               <span class="ra-field-error" data-error>Please select one option.</span>
             </div>
@@ -136,7 +162,7 @@
               <legend class="ra-program-accessible-legend">Which program are you most interested in? Required.</legend>
               <div class="ra-program-picker-head">
                 <div class="ra-program-picker-head-copy">
-                  <span class="ra-program-picker-kicker">Your starting point</span>
+                  <span class="ra-program-picker-kicker">03 · Your starting point</span>
                   <h3>Which path feels closest to where you want to begin?</h3>
                 </div>
                 <span class="ra-program-picker-note">No final commitment yet</span>
@@ -150,7 +176,7 @@
                 <label class="ra-program-choice"><input type="radio" name="program_interest" value="Total Wellness Intensive — 12 Month" data-plan="total-wellness-12"><span><strong>12-Month Intensive</strong><small>Investment discussed with coach</small></span></label>
                 <label class="ra-program-choice"><input type="radio" name="program_interest" value="I'm not sure yet" data-plan="not-sure"><span><strong>I’m not sure yet</strong><small>Help me choose the right program</small></span></label>
               </div>
-              <div class="ra-program-help"><span>Not sure? Choose the final option below and the team can guide you.</span><a href="plans.html" target="_blank" rel="noopener">Compare programs and everything included →</a></div>
+              <div class="ra-program-help"><span>Not sure? Choose the final option and the team can guide you.</span><a href="plans.html" target="_blank" rel="noopener">Compare programs and everything included →</a></div>
               <span class="ra-field-error" data-program-error>Please choose a program or select “I’m not sure yet.”</span>
             </fieldset>
 
@@ -174,14 +200,14 @@
           </div>
 
           <div class="ra-consent">
-            <label><input type="checkbox" name="application_contact_consent" value="Yes" required><span>I’m asking ReVitalized Academy to follow up with me about this application and understand that the team may contact me by phone, text or email regarding my next steps. <span class="ra-required" aria-hidden="true">*</span></span></label>
+            <label><input type="checkbox" name="application_contact_consent" value="Yes" required><span>I’m asking ReVitalized Academy to follow up about this enrollment and understand that the team may contact the email or phone number provided regarding next steps. <span class="ra-required" aria-hidden="true">*</span></span></label>
           </div>
 
-          <div class="ra-review-note"><strong>What happens after this?</strong> This first step captures your intent to begin. The detailed health profile comes after this initial application so you do not have to answer a hundred-plus questions before ReVitalized knows you want to move forward.</div>
+          <div class="ra-review-note"><strong>What happens after this?</strong> This first step captures the intent to begin. The detailed health profile comes after this initial enrollment so you do not have to answer a hundred-plus questions before ReVitalized knows you want to move forward.</div>
 
           <div class="ra-form-status" id="form-status" role="alert"></div>
           <div class="ra-form-footer">
-            <p>Submitting this first step is not a payment and does not lock you into a program. Your answers are used to begin the enrollment conversation and prepare the next step.</p>
+            <p>Submitting this first step is not a payment and does not lock anyone into a program. These answers are used to begin the enrollment conversation and prepare the next step.</p>
             <button class="ra-btn ra-btn-primary" id="enrollment-submit" type="submit">Save Step 1 &amp; Continue <span aria-hidden="true">→</span></button>
           </div>
         </div>
@@ -191,11 +217,11 @@
         <section class="ra83-side-card">
           <span class="ra83-side-kicker">One connected journey</span>
           <h2>Built to grow with you.</h2>
-          <p>This enrollment is being structured as the beginning of a connected ReVitalized experience, so the information you share can eventually flow into your member profile, health assessment and coaching path.</p>
+          <p>This enrollment is being structured as the beginning of a connected ReVitalized experience, so the information you share can eventually flow into the right member profile, health assessment and coaching path.</p>
           <div class="ra83-connected-steps">
-            <div class="ra83-connected-step"><b>01</b><div><strong>Enrollment</strong><span>Your goals, interests and preferred starting point.</span></div></div>
-            <div class="ra83-connected-step"><b>02</b><div><strong>Health profile + assessment</strong><span>A deeper picture of where you are and what deserves attention.</span></div></div>
-            <div class="ra83-connected-step"><b>03</b><div><strong>Coaching path</strong><span>A more personalized direction built around your next steps.</span></div></div>
+            <div class="ra83-connected-step"><b>01</b><div><strong>Enrollment</strong><span>Goals, interests and the preferred starting point.</span></div></div>
+            <div class="ra83-connected-step"><b>02</b><div><strong>Health profile + assessment</strong><span>A deeper picture of where that person is and what deserves attention.</span></div></div>
+            <div class="ra83-connected-step"><b>03</b><div><strong>Coaching path</strong><span>A more personalized direction built around the next steps.</span></div></div>
           </div>
         </section>
         <section class="ra83-side-note">
@@ -218,5 +244,6 @@
   </footer>
   <script src="js/enrollment82.js?v=82" defer></script>
   <script src="js/enrollment83-bridge.js?v=83" defer></script>
+  <script src="js/enrollment88-family.js?v=88" defer></script>
 </body>
 </html>
