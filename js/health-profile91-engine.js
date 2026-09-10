@@ -1,7 +1,17 @@
-/* Build 94 Step 2 Health Profile engine — no Free Vitality Assessment question bank. */
+/* Build 95 Step 2 Health Profile engine — no Free Vitality Assessment question bank. */
 (() => {
   'use strict';
   const SECTIONS=window.RVAHealthProfile91Sections||[];
+
+  /* Build 95 presentation/copy refinements requested during Step 2 QA. */
+  const navCss=document.createElement('link');
+  navCss.rel='stylesheet';
+  navCss.href='css/health-profile95-nav.css?v=95';
+  document.head.appendChild(navCss);
+  SECTIONS.flatMap(section=>section.items||[]).forEach(item=>{
+    if(item.id==='lead_15') item.label='How does your home/family situation influence your health habits?';
+  });
+
   const form = document.querySelector('[data-health91-form]');
   const stage = document.querySelector('[data-health91-stage]');
   const back = document.querySelector('[data-health91-back]');
@@ -69,7 +79,7 @@
     if (counter) counter.textContent=`${current+1} of ${SECTIONS.length}`;
     if (bar) bar.style.width=`${Math.round(((current+1)/SECTIONS.length)*100)}%`;
     if (back) back.disabled=current===0;
-    if (next) next.innerHTML=current===SECTIONS.length-1?'Submit Health Profile <span aria-hidden="true">→</span>':'Save on this page & Continue <span aria-hidden="true">→</span>';
+    if (next) next.innerHTML=current===SECTIONS.length-1?'Submit Health Profile <span aria-hidden="true">→</span>':'Continue <span aria-hidden="true">→</span>';
     restoreCurrent();
     if (status) {status.textContent='';status.className='health91-status';}
     window.scrollTo({top:Math.max(0,stage.getBoundingClientRect().top+window.scrollY-160),behavior:'smooth'});
