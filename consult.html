@@ -7,8 +7,23 @@
   <title>Free Vitality Assessment | ReVitalized Academy</title>
   <link rel="stylesheet" href="css/styles.css?v=71">
   <link rel="stylesheet" href="css/vitality55.css?v=74">
+  <link rel="stylesheet" href="css/header-glass.css?v=20260910-3">
 </head>
 <body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="ReVitalized Academy home"><img src="assets/images/revitalized-logo-dark-approved-v69.png" alt="ReVitalized Academy"></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menu</button>
+    <nav id="main-nav" class="main-nav" aria-label="Primary navigation">
+      <a href="founders.html">About</a>
+      <a href="index.html#matrix">Longevity Matrix</a>
+      <a href="index.html#coaching">Coaching</a>
+      <a href="families.html">Family Health</a>
+      <a href="stories.html">Stories</a>
+      <a href="free-help.html">Free Help</a>
+      <a href="index.html#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-primary header-cta vitality-primary-cta" href="consult.html" aria-current="page">Free Vitality Assessment</a>
+  </header>
   <main class="vitality-page">
     <div class="vitality-shell">
       <a class="vitality-brand" href="index.html" aria-label="ReVitalized Academy home"><img src="assets/images/revitalized-logo-dark-approved-v69.png" alt="ReVitalized Academy"></a>
@@ -93,6 +108,21 @@
       <p class="vitality-footer-note"><span data-adult-spectrum-note>Your Health Spectrum stage is a ReVitalized Academy coaching classification, not a medical diagnosis.</span><span data-child-spectrum-note hidden>This is an educational coaching assessment, not a medical diagnosis or a developmental screening tool.</span> <a href="disclaimer.html" target="_blank" rel="noopener">Read the Health &amp; Results Disclaimer.</a></p>
     </div>
   </main>
+  <script>
+    (() => {
+      const toggle = document.querySelector('.site-header .menu-toggle');
+      const nav = document.querySelector('.site-header .main-nav');
+      if (!toggle || !nav) return;
+      toggle.addEventListener('click', () => {
+        const open = nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(open));
+      });
+      nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }));
+    })();
+  </script>
   <script src="js/vitality-child.js?v=75"></script>
   <script src="js/vitality55.js?v=74"></script>
 </body>
