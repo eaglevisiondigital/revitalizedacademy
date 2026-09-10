@@ -1,0 +1,125 @@
+/* Build 92 — Step 2 Health Profile premium readability pass.
+   Presentation only. Question content remains sourced from RVA Platform Build Checklist MK4(1). */
+
+/* Overall rhythm and stronger visual hierarchy */
+body.ra-health-profile91 .health91-page{padding-bottom:78px}
+body.ra-health-profile91 .health91-intro{padding-top:56px;padding-bottom:32px}
+body.ra-health-profile91 .health91-kicker{font-size:12px;letter-spacing:.15em;color:#815f2d}
+body.ra-health-profile91 .health91-intro h1{font-size:clamp(48px,5.3vw,68px);max-width:860px}
+body.ra-health-profile91 .health91-intro p{font-size:18px;line-height:1.72;color:#3f5d50;max-width:820px}
+body.ra-health-profile91 .health91-person-pill{min-height:46px;padding:10px 16px;font-size:13px;color:#5a4628;border-color:#d7c294;background:#fffdf9;box-shadow:0 10px 22px rgba(21,71,52,.055)}
+
+/* Premium card header — stronger white-on-green contrast */
+body.ra-health-profile91 .health91-card-head{padding:40px 46px 36px}
+body.ra-health-profile91 .health91-card-head .health91-overline{padding:9px 14px;font-size:12px;color:#f6dc9e;border-color:rgba(246,220,158,.58);background:rgba(255,255,255,.06)}
+body.ra-health-profile91 .health91-card-head h2{font-size:clamp(40px,4.8vw,56px);line-height:1.03;margin:17px 0 13px}
+body.ra-health-profile91 .health91-card-head p{font-size:17px;line-height:1.7;color:#fff;max-width:900px}
+
+/* Journey progress should feel important, not like fine print */
+body.ra-health-profile91 .health91-journey-progress div{padding:19px 18px 17px;font-size:13px;font-weight:850;color:#53685d}
+body.ra-health-profile91 .health91-journey-progress .done,
+body.ra-health-profile91 .health91-journey-progress .active{color:#123f30;background:#fff9ef}
+
+/* Sticky section progress */
+body.ra-health-profile91 .health91-toolbar{padding:18px 46px;grid-template-columns:120px 1fr 88px;box-shadow:0 8px 22px rgba(21,71,52,.035)}
+body.ra-health-profile91 .health91-back{font-size:14px;font-weight:850;color:#154734}
+body.ra-health-profile91 .health91-progress-label{font-size:14px;font-weight:900;color:#154734}
+body.ra-health-profile91 .health91-progress-track{height:9px;background:#e8e0d4}
+body.ra-health-profile91 .health91-counter{font-size:13px;font-weight:900;color:#594c3a}
+
+/* Main body */
+body.ra-health-profile91 .health91-body{padding:34px 46px 50px}
+body.ra-health-profile91 .health91-context-note{padding:18px 20px;border-left-width:5px;font-size:14.5px;line-height:1.65;color:#385648;background:linear-gradient(135deg,#fffaf0,#f8f3e9)}
+body.ra-health-profile91 .health91-source-note{padding:17px 18px;gap:13px;font-size:14px;line-height:1.6;color:#355246;background:#f1f7f2;border-color:#d3e1d7}
+body.ra-health-profile91 .health91-source-note:before{flex-basis:28px;width:28px;height:28px;font-size:13px}
+
+/* Section intros */
+body.ra-health-profile91 .health91-section-head{margin-bottom:24px;padding-bottom:22px;border-bottom:1px solid #e7dfd4}
+body.ra-health-profile91 .health91-section-head>span{display:inline-flex;align-items:center;min-height:32px;padding:7px 11px;border-radius:999px;background:#f6efe3;border:1px solid #e4d2b1;color:#775a2f;font-size:11.5px;font-weight:900;letter-spacing:.13em;margin-bottom:12px}
+body.ra-health-profile91 .health91-section-head h2{font-size:clamp(35px,4vw,47px);line-height:1.06;margin-bottom:12px}
+body.ra-health-profile91 .health91-section-head p{font-size:16.5px;line-height:1.68;color:#405e50}
+
+/* Every question should read like primary content, not fine print */
+body.ra-health-profile91 .health91-question{grid-template-columns:46px minmax(0,1fr);gap:18px;padding:28px 0;border-top-color:#e4ddd3}
+body.ra-health-profile91 .health91-question-number{width:38px;height:38px;border-radius:50%;font-size:12px;font-weight:900;color:#785927;background:#fff8eb;border-color:#d6b97d;box-shadow:0 4px 12px rgba(177,136,69,.07)}
+body.ra-health-profile91 .health91-question-main>label{font-size:17px;line-height:1.48;font-weight:850;color:#163b2f;margin-bottom:11px;max-width:940px}
+body.ra-health-profile91 .health91-help{max-width:900px;margin:0 0 14px;padding:11px 13px;border-left:3px solid #c9a05b;border-radius:0 9px 9px 0;background:#fbf6ed;color:#4c6258;font-size:14px;line-height:1.58;font-weight:600}
+
+/* Text and date controls */
+body.ra-health-profile91 .health91-input,
+body.ra-health-profile91 .health91-textarea{border:1.5px solid #cdd8d1;background:#fff;color:#17372b;border-radius:14px;padding:15px 17px;font-size:16.5px;line-height:1.55;box-shadow:inset 0 1px 0 rgba(255,255,255,.8);transition:border-color .17s ease,box-shadow .17s ease,background .17s ease}
+body.ra-health-profile91 .health91-input{min-height:58px}
+body.ra-health-profile91 .health91-textarea{min-height:132px}
+body.ra-health-profile91 .health91-input:focus,
+body.ra-health-profile91 .health91-textarea:focus{border-color:#9b7435;background:#fffdf9;box-shadow:0 0 0 4px rgba(177,136,69,.13)}
+body.ra-health-profile91 .health91-textarea::placeholder{color:#77847d;font-size:15.5px}
+
+/* 1–10 answer scales — larger, clearer, stronger selected state */
+body.ra-health-profile91 .health91-scale{gap:9px;max-width:820px}
+body.ra-health-profile91 .health91-scale span{min-height:52px;border:1.5px solid #ccd8d1;border-radius:12px;background:#fff;color:#294d3e;font-size:14px;font-weight:900;box-shadow:0 4px 12px rgba(21,71,52,.025)}
+body.ra-health-profile91 .health91-scale label:hover span{border-color:#aa8040;background:#fff8eb}
+body.ra-health-profile91 .health91-scale input:checked+span{border-color:#154734;background:linear-gradient(180deg,#1b5a45,#0f4637);color:#fff;box-shadow:0 0 0 3px rgba(177,136,69,.18),0 7px 16px rgba(21,71,52,.15)}
+
+/* Bottom continuation area mirrors polished Step 1 */
+body.ra-health-profile91 .health91-actions{margin-top:34px;padding:27px 0 0;gap:30px;border-top-color:#ddd5ca}
+body.ra-health-profile91 .health91-save-note{max-width:760px;padding:14px 16px;border-radius:12px;background:#f5f8f5;border:1px solid #dae4dc;color:#3d584c;font-size:13.5px;line-height:1.62;font-weight:650}
+body.ra-health-profile91 .health91-next{min-width:250px;min-height:58px;padding:15px 25px;border:1px solid rgba(216,166,42,.62);border-radius:13px;background:linear-gradient(180deg,#185942 0%,#0b382a 100%);color:#fff;font-size:15.5px;font-weight:850;box-shadow:0 12px 26px rgba(11,56,42,.18)}
+body.ra-health-profile91 .health91-next:hover{transform:translateY(-1px);box-shadow:0 15px 30px rgba(11,56,42,.23)}
+body.ra-health-profile91 .health91-status{font-size:14px;line-height:1.55}
+
+/* Recovery/completion */
+body.ra-health-profile91 .health91-recovery,
+body.ra-health-profile91 .health91-complete{padding:34px;border-radius:22px}
+body.ra-health-profile91 .health91-recovery h2,
+body.ra-health-profile91 .health91-complete h2{font-size:36px}
+body.ra-health-profile91 .health91-recovery p,
+body.ra-health-profile91 .health91-complete p{font-size:15px;line-height:1.7;color:#455f53}
+body.ra-health-profile91 .health91-recovery a,
+body.ra-health-profile91 .health91-complete a{min-height:52px;align-items:center;padding:14px 22px;border:1px solid rgba(216,166,42,.58);background:linear-gradient(180deg,#185942,#0b382a);font-size:14px}
+
+/* Disclaimer remains readable without dominating the page */
+body.ra-health-profile91 .health91-footer-note{max-width:900px;font-size:13px;line-height:1.65;color:#455a50;padding:0 14px}
+
+@media(max-width:1040px){
+  body.ra-health-profile91 .health91-toolbar{padding-left:28px;padding-right:28px}
+  body.ra-health-profile91 .health91-body{padding-left:30px;padding-right:30px}
+}
+
+@media(max-width:760px){
+  body.ra-health-profile91 .health91-intro{padding-top:38px}
+  body.ra-health-profile91 .health91-intro h1{font-size:clamp(42px,11vw,56px)}
+  body.ra-health-profile91 .health91-intro p{font-size:16px;line-height:1.65}
+  body.ra-health-profile91 .health91-card-head{padding:30px 22px 26px}
+  body.ra-health-profile91 .health91-card-head .health91-overline{font-size:10.5px}
+  body.ra-health-profile91 .health91-card-head h2{font-size:clamp(35px,10vw,45px)}
+  body.ra-health-profile91 .health91-card-head p{font-size:15.5px;line-height:1.65}
+  body.ra-health-profile91 .health91-journey-progress div{font-size:11px;padding:14px 5px 13px}
+  body.ra-health-profile91 .health91-toolbar{padding:15px 18px;grid-template-columns:70px 1fr 56px}
+  body.ra-health-profile91 .health91-body{padding:25px 19px 34px}
+  body.ra-health-profile91 .health91-context-note,
+  body.ra-health-profile91 .health91-source-note{font-size:13.5px}
+  body.ra-health-profile91 .health91-section-head h2{font-size:34px}
+  body.ra-health-profile91 .health91-section-head p{font-size:15px}
+  body.ra-health-profile91 .health91-question{grid-template-columns:38px minmax(0,1fr);gap:11px;padding:24px 0}
+  body.ra-health-profile91 .health91-question-number{width:32px;height:32px;font-size:11px}
+  body.ra-health-profile91 .health91-question-main>label{font-size:16px;line-height:1.48}
+  body.ra-health-profile91 .health91-help{font-size:13px}
+  body.ra-health-profile91 .health91-input,
+  body.ra-health-profile91 .health91-textarea{font-size:16px}
+  body.ra-health-profile91 .health91-textarea{min-height:120px}
+  body.ra-health-profile91 .health91-scale{grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+  body.ra-health-profile91 .health91-scale span{min-height:49px;font-size:14px}
+  body.ra-health-profile91 .health91-actions{flex-direction:column;align-items:stretch}
+  body.ra-health-profile91 .health91-next{width:100%;order:-1}
+  body.ra-health-profile91 .health91-save-note{font-size:13px}
+  body.ra-health-profile91 .health91-footer-note{font-size:12.5px}
+}
+
+@media(max-width:430px){
+  body.ra-health-profile91 .health91-body{padding-left:16px;padding-right:16px}
+  body.ra-health-profile91 .health91-question{grid-template-columns:1fr;gap:9px}
+  body.ra-health-profile91 .health91-question-number{margin-bottom:0}
+  body.ra-health-profile91 .health91-question-main>label{font-size:16px}
+  body.ra-health-profile91 .health91-source-note{align-items:flex-start}
+  body.ra-health-profile91 .health91-save-note{padding:13px 14px}
+}
