@@ -1,0 +1,37 @@
+name: Header 101 responsive verification
+on:
+  push:
+    branches: [main, header101-responsive]
+    paths:
+      - css/header-glass.css
+      - css/header87-continuity.css
+      - tests/header101_visual.py
+      - .github/workflows/header101-visual.yml
+permissions:
+  contents: read
+jobs:
+  header-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install browser test runtime
+        run: |
+          pip install playwright==1.57.0
+          python -m playwright install --with-deps chromium webkit
+      - name: Verify source headers, menus, and resize behavior
+        run: python tests/header101_visual.py
+      - name: Verify public site headers
+        if: github.ref == 'refs/heads/main'
+        env:
+          HEADER_LIVE_URL: https://revitalizedacademy.netlify.app
+        run: python tests/header101_visual.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: header101-browser-verification
+          path: artifacts/header101/
+          retention-days: 7
