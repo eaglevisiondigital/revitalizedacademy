@@ -189,3 +189,19 @@
   .site-header{background:rgba(252,245,238,.97)!important}
   @media(max-width:1399px){.site-header .main-nav.open{background:rgba(252,245,238,.99)!important}}
 }
+
+/* Build 101 final: legacy Free Help header rules must not hide or recolor
+   the shared assessment CTA or substitute a two-column tablet grid.
+   These selectors affect the header only, not any Free Help page content. */
+body.fh80-page > .site-header .header-cta{color:#154734!important;}
+body.fh80-page > .site-header .header-cta:hover,
+body.fh80-page > .site-header .header-cta:focus-visible{color:#0F4B3E!important;}
+@media(min-width:761px){
+  body.fh80-page > .site-header .header-cta{display:inline-flex!important;}
+}
+@media(min-width:761px) and (max-width:1399px){
+  body.fh80-page > .site-header{grid-template-columns:minmax(0,1fr) auto auto!important;}
+}
+@media(max-width:760px){
+  body.fh80-page > .site-header{grid-template-columns:minmax(0,1fr) auto!important;}
+}
