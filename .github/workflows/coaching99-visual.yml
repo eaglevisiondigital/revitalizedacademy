@@ -1,0 +1,37 @@
+name: Coaching 99 visual verification
+on:
+  push:
+    branches: [main, coaching99-brand-match]
+    paths:
+      - css/coaching76.css
+      - css/coaching99-brand-layers.css
+      - tests/coaching99_visual.py
+      - .github/workflows/coaching99-visual.yml
+permissions:
+  contents: read
+jobs:
+  rendered-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install browser test runtime
+        run: |
+          pip install playwright==1.57.0
+          python -m playwright install --with-deps chromium webkit
+      - name: Render actual site source in Chromium and WebKit
+        run: python tests/coaching99_visual.py
+      - name: Verify public deployment on main
+        if: github.ref == 'refs/heads/main'
+        env:
+          COACHING_LIVE_URL: https://revitalizedacademy.netlify.app/
+        run: python tests/coaching99_visual.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coaching99-browser-verification
+          path: artifacts/coaching99/
+          retention-days: 7
