@@ -2,3 +2,55 @@
 @import url("coaching99-brand-layers.css?v=99");
 /* Keep the decorative arch inside its section; no horizontal scroll area. */
 #coaching .ra76-architecture::before{left:0;right:0;}
+
+/* BUILD 100 — Coaching-only heading containment.
+   Keep the approved layered artwork and content. Size desktop titles against
+   their own columns, not the viewport; Safari's Georgia is wider than the
+   Times fallback used in Linux browser previews. Never crop heading text. */
+#coaching.ra-coaching76{--ra-coaching-cleanup:100;}
+#coaching.ra-coaching76 .ra76-intro,
+#coaching.ra-coaching76 .ra76-compare-head,
+#coaching.ra-coaching76 .ra76-compare-head > div{min-width:0;}
+#coaching.ra-coaching76 .ra76-compare-head > div{flex:1;}
+#coaching.ra-coaching76 .ra76-compare-head h3{
+  white-space:normal;overflow-wrap:normal;word-break:normal;line-height:1.1;
+}
+#coaching.ra-coaching76 .ra76-premium .ra76-compare-head p{
+  white-space:normal;overflow-wrap:normal;line-height:1.4;
+}
+@media(min-width:1200px){
+  #coaching.ra-coaching76 .ra76-intro{
+    container-type:inline-size;margin-bottom:0;
+  }
+  #coaching.ra-coaching76 .ra76-intro h2{
+    font-size:clamp(40px,3.04vw,54px);
+    font-size:min(16.5cqw,58px);
+    line-height:1;letter-spacing:-.045em;overflow-wrap:break-word;
+  }
+  #coaching.ra-coaching76 .ra76-kicker{margin-bottom:8px;}
+  #coaching.ra-coaching76 .ra76-compare{container-type:inline-size;}
+  #coaching.ra-coaching76 .ra76-compare-head{
+    padding:16px 18px;gap:10px;min-height:76px;
+  }
+  #coaching.ra-coaching76 .ra76-compare-head h3{
+    font-size:clamp(23px,1.5vw,28px);
+    font-size:min(7.2cqw,29px);
+  }
+  #coaching.ra-coaching76 .ra76-info{
+    flex-basis:32px;width:32px;height:32px;font-size:27px;
+  }
+  #coaching.ra-coaching76 .ra76-premium .ra76-compare-head{
+    padding:14px 16px;gap:12px;min-height:80px;
+  }
+  #coaching.ra-coaching76 .ra76-premium .ra76-compare-head h3{
+    font-size:clamp(24px,1.7vw,32px);
+    font-size:min(6.8cqw,33px);letter-spacing:-.025em;
+  }
+  #coaching.ra-coaching76 .ra76-seal{
+    flex-basis:46px;width:46px;height:46px;
+  }
+  #coaching.ra-coaching76 .ra76-seal svg{width:29px;height:29px;}
+  #coaching.ra-coaching76 .ra76-premium .ra76-compare-head p{
+    letter-spacing:.1em;
+  }
+}
