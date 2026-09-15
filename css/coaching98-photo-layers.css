@@ -1,0 +1,200 @@
+/* BUILD 98 — layered photographic desktop coaching section.
+   Keeps the semantic Build 76 HTML and makes it visible at every breakpoint.
+   Real-photo background: Unsplash / Kjell-Jostein Sivertsen, Peyto Lake, Canada. */
+
+#coaching.ra-coaching76{
+  --ra98-cream:#fbf7ee;
+  --ra98-emerald:#074c3d;
+  --ra98-gold:#d49a2d;
+  background:
+    linear-gradient(90deg,rgba(255,251,244,.80) 0%,rgba(255,251,244,.42) 32%,rgba(255,251,244,.14) 58%,rgba(255,251,244,.02) 100%),
+    linear-gradient(180deg,rgba(245,247,240,.06) 0%,rgba(240,244,238,.04) 44%,rgba(248,243,233,.10) 100%),
+    url('https://images.unsplash.com/photo-1730216827021-bc1dfa3d9c5b?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=82&w=2600') center 43%/cover no-repeat;
+}
+
+/* Never fall back to the old flattened desktop art. */
+#coaching.ra-coaching76 .ra76-desktop{display:none!important}
+#coaching.ra-coaching76 .ra76-content{
+  position:relative!important;
+  width:min(calc(100% - 64px),1480px)!important;
+  height:auto!important;
+  max-width:1480px!important;
+  margin:0 auto!important;
+  padding:48px 28px 34px!important;
+  overflow:visible!important;
+  clip:auto!important;
+  clip-path:none!important;
+  white-space:normal!important;
+  display:grid;
+  grid-template-columns:minmax(300px,.82fr) minmax(0,1.72fr);
+  grid-template-areas:
+    'intro comparison'
+    'architecture architecture'
+    'value value';
+  gap:28px 34px;
+}
+
+#coaching.ra-coaching76 .ra76-native-art{display:none}
+#coaching.ra-coaching76 .ra76-botanical,
+#coaching.ra-coaching76 .ra76-mountains{display:none!important}
+
+#coaching.ra-coaching76 .ra76-intro{
+  grid-area:intro;
+  align-self:start;
+  max-width:390px;
+  margin:0;
+  padding:20px 4px 0;
+  text-align:left;
+}
+#coaching.ra-coaching76 .ra76-kicker{
+  margin:0 0 12px;
+  color:#0c5848;
+  font-size:11px;
+  line-height:1.55;
+  letter-spacing:.22em;
+}
+#coaching.ra-coaching76 .ra76-intro h2{
+  margin:0;
+  color:#0d2521;
+  font-size:clamp(44px,4.3vw,68px);
+  line-height:.96;
+  letter-spacing:-.04em;
+}
+#coaching.ra-coaching76 .ra76-rule{margin:19px 0 14px;width:42px}
+#coaching.ra-coaching76 .ra76-lead{
+  margin:0;
+  max-width:340px;
+  color:#163f3a;
+  font-size:15px;
+  line-height:1.48;
+}
+#coaching.ra-coaching76 .ra76-signature{margin:12px 0 0;max-width:285px}
+
+#coaching.ra-coaching76 .ra76-comparison{
+  grid-area:comparison;
+  align-self:start;
+  display:grid;
+  grid-template-columns:minmax(270px,.92fr) 64px minmax(330px,1.15fr);
+  gap:18px;
+  align-items:stretch;
+}
+#coaching.ra-coaching76 .ra76-compare{
+  border-radius:20px;
+  box-shadow:0 18px 40px rgba(18,49,40,.14);
+  background:rgba(255,255,255,.965);
+  backdrop-filter:blur(4px);
+}
+#coaching.ra-coaching76 .ra76-premium{
+  border:2px solid #c99024;
+  box-shadow:0 18px 44px rgba(72,54,11,.18);
+}
+#coaching.ra-coaching76 .ra76-compare-head{min-height:78px;padding:18px 20px 12px}
+#coaching.ra-coaching76 .ra76-compare-head h3{font-size:clamp(21px,1.8vw,28px)}
+#coaching.ra-coaching76 .ra76-list{gap:12px;padding:14px 22px 22px}
+#coaching.ra-coaching76 .ra76-list li{font-size:14px;line-height:1.42}
+#coaching.ra-coaching76 .ra76-card-note{padding:15px 12px;font-size:16px}
+#coaching.ra-coaching76 .ra76-versus::before{top:14%;bottom:14%}
+#coaching.ra-coaching76 .ra76-versus span{width:58px;height:58px;flex-basis:58px;font-size:20px;box-shadow:0 0 0 8px rgba(251,247,238,.88),0 6px 16px rgba(18,49,40,.10)}
+
+#coaching.ra-coaching76 .ra76-architecture{
+  grid-area:architecture;
+  position:relative;
+  margin:0 -12px;
+  padding:34px 28px 18px;
+  border-top:1px solid rgba(198,140,34,.50);
+  border-radius:48% 48% 0 0 / 9% 9% 0 0;
+  background:linear-gradient(180deg,rgba(255,252,247,.97),rgba(252,248,239,.94));
+  box-shadow:0 -12px 34px rgba(255,250,240,.72);
+}
+#coaching.ra-coaching76 .ra76-section-label{margin-bottom:14px}
+#coaching.ra-coaching76 .ra76-architecture>h3{
+  max-width:1180px;
+  margin-bottom:8px;
+  font-size:clamp(31px,3.15vw,47px);
+  color:#0e1e2c;
+}
+#coaching.ra-coaching76 .ra76-explainer{max-width:950px;margin-bottom:20px;font-size:15px;line-height:1.45;color:#244f69}
+#coaching.ra-coaching76 .ra76-pillars{
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  gap:10px;
+}
+#coaching.ra-coaching76 .ra76-pillar{
+  min-height:238px;
+  padding:18px 12px 14px;
+  border-radius:16px;
+  background:rgba(255,255,255,.94);
+  box-shadow:0 8px 22px rgba(45,55,42,.055);
+}
+#coaching.ra-coaching76 .ra76-pillar>img{width:58px;height:58px;margin-bottom:10px}
+#coaching.ra-coaching76 .ra76-pillar h4{font-size:clamp(16px,1.35vw,21px);line-height:1.0;margin-bottom:8px}
+#coaching.ra-coaching76 .ra76-pillar p{font-size:12.8px;line-height:1.35;color:#36556a}
+#coaching.ra-coaching76 .ra76-pillar>span{margin-top:auto;padding-top:0;width:30px}
+
+#coaching.ra-coaching76 .ra76-value-band{
+  grid-area:value;
+  margin:0 0 0;
+  grid-template-columns:52px minmax(260px,.95fr) minmax(280px,1fr) auto;
+  grid-template-rows:auto;
+  gap:18px;
+  min-height:96px;
+  padding:19px 24px;
+  border-radius:18px;
+  background:linear-gradient(120deg,#005342,#003e34 72%);
+  box-shadow:0 14px 30px rgba(15,54,43,.20);
+}
+#coaching.ra-coaching76 .ra76-leaf-mark{grid-column:1;grid-row:1;width:44px;height:62px}
+#coaching.ra-coaching76 .ra76-value-heading{grid-column:2;grid-row:1;align-self:center}
+#coaching.ra-coaching76 .ra76-value-heading h3{font-size:23px}
+#coaching.ra-coaching76 .ra76-value-copy{grid-column:3;grid-row:1;align-self:center;font-size:13px}
+#coaching.ra-coaching76 .ra76-native-action{
+  display:flex!important;
+  grid-column:4;
+  grid-row:1;
+  align-self:center;
+  min-width:228px;
+  min-height:54px;
+  padding:13px 20px;
+  background:linear-gradient(180deg,#f6d982,#d6a23f);
+  color:#173a30;
+}
+
+@media(max-width:1199px){
+  #coaching.ra-coaching76 .ra76-content{
+    width:min(calc(100% - 36px),1120px)!important;
+    display:block;
+    padding:42px 24px 30px!important;
+  }
+  #coaching.ra-coaching76 .ra76-intro{max-width:680px;margin:0 auto 28px;padding-top:0;text-align:center}
+  #coaching.ra-coaching76 .ra76-rule{margin:20px auto}
+  #coaching.ra-coaching76 .ra76-lead{max-width:570px;margin:0 auto}
+  #coaching.ra-coaching76 .ra76-signature{margin:14px auto 0}
+  #coaching.ra-coaching76 .ra76-comparison{grid-template-columns:minmax(0,1fr) 50px minmax(0,1fr)}
+  #coaching.ra-coaching76 .ra76-architecture{margin-top:32px}
+  #coaching.ra-coaching76 .ra76-pillars{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+  #coaching.ra-coaching76 .ra76-value-band{margin-top:20px;grid-template-columns:48px minmax(0,1fr) auto;grid-template-rows:auto auto}
+  #coaching.ra-coaching76 .ra76-value-heading{grid-column:2;grid-row:1}
+  #coaching.ra-coaching76 .ra76-value-copy{grid-column:2;grid-row:2}
+  #coaching.ra-coaching76 .ra76-native-action{grid-column:3;grid-row:1 / 3}
+}
+
+@media(max-width:779px){
+  #coaching.ra-coaching76{
+    background:
+      linear-gradient(180deg,rgba(255,251,244,.82),rgba(251,247,238,.88)),
+      url('https://images.unsplash.com/photo-1730216827021-bc1dfa3d9c5b?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=78&w=1800') 68% center/cover no-repeat;
+  }
+  #coaching.ra-coaching76 .ra76-content{width:100%!important;padding:34px 18px 26px!important}
+  #coaching.ra-coaching76 .ra76-comparison{grid-template-columns:1fr;max-width:560px;margin:auto}
+  #coaching.ra-coaching76 .ra76-pillars{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #coaching.ra-coaching76 .ra76-pillar{min-height:0}
+  #coaching.ra-coaching76 .ra76-architecture{margin:28px 0 0;padding:30px 12px 16px;border-radius:28px 28px 0 0}
+  #coaching.ra-coaching76 .ra76-value-band{grid-template-columns:44px minmax(0,1fr);grid-template-rows:auto auto auto;padding:22px 18px}
+  #coaching.ra-coaching76 .ra76-value-heading{grid-column:2;grid-row:1}
+  #coaching.ra-coaching76 .ra76-value-copy{grid-column:1 / -1;grid-row:2}
+  #coaching.ra-coaching76 .ra76-native-action{grid-column:1 / -1;grid-row:3;min-width:0;width:100%}
+}
+
+@media(max-width:519px){
+  #coaching.ra-coaching76 .ra76-pillars{grid-template-columns:1fr 1fr}
+  #coaching.ra-coaching76 .ra76-architecture>h3{font-size:30px}
+}
