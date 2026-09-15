@@ -1,2 +1,4 @@
 @import url("coaching76-base.css?v=76");
 @import url("coaching99-brand-layers.css?v=99");
+/* Keep the decorative arch inside its section; no horizontal scroll area. */
+#coaching .ra76-architecture::before{left:0;right:0;}
