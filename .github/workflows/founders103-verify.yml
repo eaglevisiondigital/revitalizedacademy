@@ -1,0 +1,38 @@
+name: Founders 103 verification
+on:
+  push:
+    branches: [founders103-original-portrait, main]
+    paths:
+      - founders.html
+      - css/founders103-portrait.css
+      - tests/founders103_visual.py
+      - .github/workflows/founders103-verify.yml
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 30
+      - name: Export source for exact asset inspection
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile, subprocess
+          out = Path('artifacts/founders103')
+          out.mkdir(parents=True, exist_ok=True)
+          files = subprocess.check_output(['git', 'ls-files'], text=True).splitlines()
+          with zipfile.ZipFile(out/'source.zip', 'w', zipfile.ZIP_DEFLATED) as z:
+              for p in files:
+                  if p.endswith(('.html','.css','.js','.svg','.woff','.woff2')) or any(k in p for k in ['founders-hero','justyn-elle-professional-approved-102.png','revitalized-logo-dark-approved-v69.png','justyn-elle-approved-untouched.png']):
+                      z.write(p)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: founders103-verification
+          path: artifacts/founders103/
+          retention-days: 7
