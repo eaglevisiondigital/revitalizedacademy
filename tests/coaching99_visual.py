@@ -9,6 +9,7 @@ from pathlib import Path
 import threading
 import time
 import urllib.request
+from urllib.parse import urlsplit
 from playwright.sync_api import sync_playwright
 
 LIVE = os.environ.get('COACHING_LIVE_URL', '').rstrip('/')
@@ -66,12 +67,18 @@ try:
                         backdrop:cs.backgroundImage,cards:root.querySelectorAll('.ra76-pillar').length,
                         comparisons:[...root.querySelectorAll('.ra76-list')].map(e=>e.children.length),
                         minBodyFont:Math.min(...paragraphs.map(e=>parseFloat(getComputedStyle(e).fontSize))),
-                        buttonHref:button.getAttribute('href'),buttonVisible:button.getBoundingClientRect().height>=44,
+                        buttonHref:button.getAttribute('href'),buttonUrl:button.href,buttonVisible:button.getBoundingClientRect().height>=44,
                         internalOverflow:overflow,outsideContent:outside,
                         sectionScrollWidth:root.scrollWidth,sectionClientWidth:root.clientWidth,
                         sectionOverflow:root.scrollWidth > root.clientWidth + 2,
                         liveText:root.querySelector('#ra76-title').textContent};
                 }''')
+                # Netlify rewrites the same enrollment page from enroll.html to /enroll.
+                # Verify the same-origin destination, not its literal extension.
+                destination = urlsplit(metrics['buttonUrl'])
+                enrollment_route = destination.netloc == urlsplit(base).netloc and destination.path.rstrip('/') in ['/enroll', '/enroll.html']
+                destination_status = page.request.get(metrics['buttonUrl'], timeout=30000).status if enrollment_route else 0
+                metrics['destinationStatus'] = destination_status
                 metrics['engine'] = engine
                 results.append(metrics)
                 checks = {
@@ -79,7 +86,7 @@ try:
                     'native-content': metrics['oldPosterHidden'] and metrics['contentWidth'] > 250 and metrics['clip'] == 'none',
                     'cards': metrics['cards'] == 6 and metrics['comparisons'] == [5, 5],
                     'readability': metrics['minBodyFont'] >= 16,
-                    'enroll-button': metrics['buttonHref'] == 'enroll.html' and metrics['buttonVisible'],
+                    'enroll-button': enrollment_route and destination_status == 200 and metrics['buttonVisible'],
                     'internal-containment': not metrics['internalOverflow'],
                     'content-containment': not metrics['outsideContent'],
                     'section-containment': not metrics['sectionOverflow'],
@@ -89,8 +96,6 @@ try:
                     if not passed:
                         failures.append(f'{engine} {width}: {label}')
                 print(engine, width, 'CHECKS', json.dumps(checks), flush=True)
-                # Use a tall capture viewport to prevent the sticky header covering the section.
-                # All responsive checks above use the normal 1100px viewport height.
                 page.set_viewport_size({'width': width, 'height': max(1100, int(metrics['height']) + 250)})
                 page.evaluate("window.scrollTo({top:Math.max(0,document.querySelector('#coaching').getBoundingClientRect().top + scrollY - 150),behavior:'instant'})")
                 page.wait_for_timeout(300)
