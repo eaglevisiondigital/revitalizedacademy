@@ -1,5 +1,7 @@
 """Read-only verification of the approved homepage hero.
 No repository writes, form submissions, or changes to the source portrait.
+Mobile already displays the portrait before the copy: preserve that order.
+A taller portrait shifts the entire copy block, not its internal layout.
 """
 from pathlib import Path
 import functools
@@ -65,7 +67,8 @@ METRICS = r'''() => {
  const hr=rect(hero),pr=rect(p),cr=rect(copy),br=rect(bg),ps=getComputedStyle(p);
  const scale=Math.min(pr.width/p.naturalWidth,pr.height/p.naturalHeight);
  const painted={x:pr.right-p.naturalWidth*scale,y:pr.bottom-p.naturalHeight*scale,width:p.naturalWidth*scale,height:p.naturalHeight*scale};
- const textGeometry=[...copy.children].map(e=>{const s=getComputedStyle(e),r=rect(e);return {tag:e.tagName,class:e.className,x:r.x,y:r.y-hr.y,width:r.width,height:r.height,font:s.fontFamily,size:s.fontSize,line:s.lineHeight,color:s.color}});
+ const origin=innerWidth<=840?cr.y:hr.y;
+ const textGeometry=[...copy.children].map(e=>{const s=getComputedStyle(e),r=rect(e);return {tag:e.tagName,class:e.className,x:r.x,y:Math.round((r.y-origin)*64)/64,width:r.width,height:r.height,font:s.fontFamily,size:s.fontSize,line:s.lineHeight,color:s.color}});
  return {width:innerWidth,version:getComputedStyle(hero).getPropertyValue('--ra-hero-portrait').trim(),hero:hr,portrait:pr,painted,copy:cr,bg:br,
   imageLoaded:p.complete&&p.naturalWidth===1348&&p.naturalHeight===1254,source:p.getAttribute('src'),objectFit:ps.objectFit,opacity:ps.opacity,transform:ps.transform,
   textGeometry,links:[...copy.querySelectorAll('a')].map(a=>({href:a.getAttribute('href'),height:rect(a).height})),
@@ -89,6 +92,7 @@ try:
                 before_page.goto(base+'/'+baseline_path.name,wait_until='domcontentloaded',timeout=60000)
                 before_page.wait_for_function("getComputedStyle(document.querySelector('.site-header')).getPropertyValue('--ra-header-layout').trim()==='101'",timeout=30000)
                 before_page.evaluate('document.fonts.ready')
+                before_page.add_style_tag(content='.vitality-popup-backdrop{display:none!important}')
             for width in WIDTHS:
                 page.set_viewport_size({'width':width,'height':1300})
                 page.evaluate("window.scrollTo({top:0,behavior:'instant'})")
@@ -102,7 +106,7 @@ try:
                     'portrait-within-width':m['painted']['x']>=-1 and m['painted']['x']+m['painted']['width']<=width+1,
                     'headroom':m['painted']['y']+m['painted']['height']*.045>=m['hero']['y']+10,
                     'buttons':len(m['links'])==2 and all(a['height']>=44 for a in m['links']),
-                    'separate-from-copy':m['painted']['x']>=m['copy']['right']-2 if width>840 else m['portrait']['y']>=m['copy']['bottom']-2,
+                    'separate-from-copy':m['painted']['x']>=m['copy']['right']-2 if width>840 else m['portrait']['bottom']<=m['copy']['y']+2,
                 }
                 if before_page:
                     before_page.set_viewport_size({'width':width,'height':1300});before_page.wait_for_timeout(80)
@@ -110,6 +114,11 @@ try:
                     checks['unchanged-copy-layout']=m['textGeometry']==bm['textGeometry']
                     checks['unchanged-header']=m['header']==bm['header']
                     checks['unchanged-links']=m['links']==bm['links']
+                    if width<=840:
+                        checks['existing-mobile-order']=bm['portrait']['bottom']<=bm['copy']['y']+2
+                    m['baselineCopy']=bm['copy']
+                    if width==390:
+                        before_page.locator('#about.hero54').screenshot(path=str(OUT/f'baseline-{engine}-390.png'),timeout=45000)
                 m['checks']=checks;results.append(m)
                 for label,passed in checks.items():
                     if not passed: failures.append(f'{engine} {width}: {label}')
