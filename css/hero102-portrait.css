@@ -1,0 +1,27 @@
+/* Build 102 — isolated homepage hero refinement.
+   The approved source portrait must be used byte-for-byte, without retouching.
+   No changes to the header, coaching comparison, assessment, or other sections. */
+#about.hero54{--ra-hero-portrait:102;}
+/* Keep the top of the existing botanical background in view. */
+#about.hero54 > .hero54-bg{object-position:center top;}
+/* Native image layer: uniform browser sizing only. The shadow is external. */
+#about.hero54 > .hero54-founders{
+  width:min(50.5vw,900px);
+  max-height:calc(100% - 18px);
+  height:auto;
+  right:1%;
+  object-fit:contain;
+  object-position:right bottom;
+  filter:drop-shadow(0 8px 18px rgba(14,42,30,.15))!important;
+  opacity:1!important;
+  transform:none!important;
+}
+@media(min-width:841px) and (max-width:1100px){
+  #about.hero54 > .hero54-founders{width:47vw;right:.5%;}
+}
+@media(max-width:840px){
+  #about.hero54 > .hero54-bg{object-position:left top;}
+  #about.hero54 > .hero54-founders{
+    width:min(96%,620px);right:auto;max-height:none;
+  }
+}
