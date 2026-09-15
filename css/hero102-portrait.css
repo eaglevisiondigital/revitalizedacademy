@@ -1,9 +1,16 @@
 /* Build 102 — isolated homepage hero refinement.
-   The approved source portrait must be used byte-for-byte, without retouching.
+   The approved source portrait is used byte-for-byte, without retouching.
    No changes to the header, coaching comparison, assessment, or other sections. */
 #about.hero54{--ra-hero-portrait:102;}
-/* Keep the top of the existing botanical background in view. */
-#about.hero54 > .hero54-bg{object-position:center top;}
+/* Inset the original botanical image, not the text, so its upper leaf tip
+   clears the section edge without increasing the hero or adding empty space. */
+#about.hero54::before{
+  content:"";position:absolute;inset:0 0 auto;height:12px;z-index:0;pointer-events:none;
+  background:linear-gradient(90deg,#07211c 0%,#071f1b 9%,#001e1c 18%,#052320 27%,#2e4134 36%,#7c7a5d 45%,#bcab84 55%,#ead6af 64%,#f9e3ba 73%,#fceccc 82%,#fdf2d2 91%,#fdfbeb 100%);
+}
+#about.hero54 > .hero54-bg{
+  top:12px;height:calc(100% - 12px);object-position:left top;
+}
 /* Native image layer: uniform browser sizing only. The shadow is external. */
 #about.hero54 > .hero54-founders{
   width:min(50.5vw,900px);
@@ -20,7 +27,7 @@
   #about.hero54 > .hero54-founders{width:47vw;right:.5%;}
 }
 @media(max-width:840px){
-  #about.hero54 > .hero54-bg{object-position:left top;}
+  #about.hero54 > .hero54-bg{height:calc(58% - 12px);object-position:left top;}
   #about.hero54 > .hero54-founders{
     width:min(96%,620px);right:auto;max-height:none;
   }
