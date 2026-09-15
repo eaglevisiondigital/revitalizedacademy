@@ -1,38 +1,40 @@
 name: Hero 102 verification
 on:
   push:
-    branches: [hero102-approved-portrait]
+    branches: [main, hero102-approved-portrait]
     paths:
-      - .github/workflows/hero102-verify.yml
-      - css/hero54.css
+      - index.html
+      - css/hero102-portrait.css
       - assets/images/justyn-elle-professional-approved-102.png
       - tests/hero102_visual.py
+      - .github/workflows/hero102-verify.yml
 permissions:
   contents: read
 jobs:
-  source:
+  hero-check:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
-      - name: Export existing hero source for isolated comparison
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          import json, subprocess, zipfile
-          out = Path('artifacts/hero102')
-          out.mkdir(parents=True, exist_ok=True)
-          files = subprocess.check_output(['git','ls-files'],text=True).splitlines()
-          image_list = [p for p in files if p.lower().endswith(('.png','.webp','.jpg','.jpeg','.svg')) and any(x in p.lower() for x in ('founder','justyn','elle','hero54','botanical'))]
-          (out/'image-inventory.json').write_text(json.dumps(image_list,indent=2))
-          selected = [p for p in files if p.endswith(('.html','.css','.js','.json','.svg')) or p in ['assets/images/hero54-background.png','assets/images/justyn-elle-approved-untouched.png','assets/images/revitalized-logo-dark-approved-v69.png','assets/images/justyn-elle-professional-approved-102.png']]
-          with zipfile.ZipFile(out/'hero-source.zip','w',zipfile.ZIP_DEFLATED) as z:
-              for p in selected:
-                  z.write(p)
-          print('Exported',len(selected),'source files; no website content modified.')
-          PY
-      - uses: actions/upload-artifact@v4
         with:
-          name: hero102-source
+          fetch-depth: 50
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install browser verification runtime
+        run: |
+          pip install playwright==1.57.0 Pillow==11.3.0
+          python -m playwright install --with-deps chromium webkit
+      - name: Verify original portrait and unchanged page content
+        run: python tests/hero102_visual.py
+      - name: Verify published homepage
+        if: github.ref == 'refs/heads/main'
+        env:
+          HERO_LIVE_URL: https://revitalizedacademy.netlify.app
+        run: python tests/hero102_visual.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hero102-browser-verification
           path: artifacts/hero102/
-          retention-days: 3
+          retention-days: 7
