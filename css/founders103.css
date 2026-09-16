@@ -1,0 +1,195 @@
+/* Build 103 — isolated About / Founders hero only.
+   Uses the original approved portrait file as a separate browser layer.
+   No retouching, masking, recoloring, or generative face edits are applied. */
+.founders103-hero{
+  --f103-green:#0f4b3e;
+  --f103-deep:#063b32;
+  --f103-gold:#c9952f;
+  --f103-cream:#fcf7ef;
+  position:relative;
+  isolation:isolate;
+  min-height:clamp(680px,52vw,840px);
+  overflow:hidden;
+  border-top:1px solid rgba(201,149,47,.16);
+  border-bottom:1px solid rgba(201,149,47,.22);
+  background:
+    radial-gradient(circle at 83% 19%,rgba(255,255,255,.95) 0 24%,rgba(255,255,255,.55) 38%,transparent 58%),
+    linear-gradient(112deg,#eef7ef 0%,#fbfaf6 30%,#fffaf1 62%,#fffdf9 100%);
+}
+.founders103-hero::before{
+  content:"";
+  position:absolute;
+  left:-19vw;bottom:-31vw;
+  width:62vw;height:62vw;border-radius:50%;
+  border:1px solid rgba(201,149,47,.42);
+  box-shadow:0 0 0 72px rgba(89,146,113,.13),0 0 0 152px rgba(89,146,113,.08),0 0 0 235px rgba(89,146,113,.045);
+  z-index:0;
+}
+.founders103-hero::after{
+  content:"";
+  position:absolute;
+  right:-6.5vw;top:6%;
+  width:min(48vw,760px);height:min(48vw,760px);
+  border-radius:50%;
+  border:2px solid rgba(201,149,47,.78);
+  box-shadow:0 0 0 46px rgba(201,149,47,.07),0 0 0 92px rgba(201,149,47,.045);
+  z-index:0;
+}
+.founders103-shield{
+  position:absolute;z-index:0;
+  right:3.2%;top:4%;
+  width:min(31vw,500px);aspect-ratio:1/1;
+  background:url('../assets/images/revitalized-shield-approved-v69.png') center/contain no-repeat;
+  opacity:.075;
+  pointer-events:none;
+}
+.founders103-gold-sweep{
+  position:absolute;z-index:0;left:36%;top:-16%;
+  width:12%;height:132%;
+  border-left:18px solid rgba(201,149,47,.72);
+  transform:rotate(18deg);
+  opacity:.9;
+  pointer-events:none;
+}
+.founders103-copy{
+  position:relative;z-index:4;
+  width:min(39%,650px);
+  padding:clamp(72px,7vw,112px) 0 52px clamp(54px,6.3vw,108px);
+}
+.founders103-kicker{
+  margin:0 0 22px;
+  color:#216b67;
+  font:700 clamp(13px,1.05vw,18px)/1.2 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+}
+.founders103-title{
+  margin:0;
+  color:#073f33;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(68px,6.45vw,108px);
+  line-height:.89;
+  letter-spacing:-.045em;
+  font-weight:600;
+}
+.founders103-rule{width:126px;height:5px;margin:26px 0 30px;background:linear-gradient(90deg,#b97e19,#e3b94b);}
+.founders103-copy p{
+  max-width:585px;
+  margin:0 0 22px;
+  color:#244f7b;
+  font-size:clamp(17px,1.45vw,25px);
+  line-height:1.38;
+}
+.founders103-story-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:18px;
+  min-width:min(100%,390px);
+  min-height:76px;
+  margin-top:10px;
+  padding:16px 28px;
+  border:2px solid #d7a62d;
+  border-radius:13px;
+  background:linear-gradient(180deg,#075844,#034d3b);
+  color:#f2c64f;
+  font:800 clamp(18px,1.45vw,25px)/1 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  box-shadow:0 12px 28px rgba(15,75,62,.16);
+}
+.founders103-story-btn:hover{transform:translateY(-1px);box-shadow:0 15px 34px rgba(15,75,62,.21)}
+.founders103-play{
+  width:48px;height:48px;border:2px solid #e0b43e;border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:21px;line-height:1;color:#f5c84d;flex:0 0 auto;
+}
+.founders103-strap{
+  margin:22px 0 0!important;
+  color:#1a6f70!important;
+  font-size:clamp(12px,1vw,16px)!important;
+  font-weight:650!important;
+  letter-spacing:.23em;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+.founders103-script{
+  position:absolute;z-index:3;
+  left:42.7%;top:18%;
+  width:13.5%;
+  color:#c48b25;
+  font-family:"Snell Roundhand","Segoe Script","Brush Script MT",cursive;
+  font-size:clamp(31px,2.7vw,49px);
+  line-height:1.04;
+  font-style:italic;
+  transform:rotate(-6deg);
+  text-align:center;
+  pointer-events:none;
+}
+.founders103-script::after{content:"";display:block;width:76%;height:3px;margin:12px auto 0;background:#bd7d14;transform:rotate(-7deg)}
+.founders103-portrait{
+  position:absolute;z-index:2;
+  right:5.1%;bottom:-1px;
+  width:min(48.2vw,790px);
+  max-height:94%;
+  object-fit:contain;
+  object-position:right bottom;
+  opacity:1!important;
+  transform:none!important;
+  filter:drop-shadow(0 15px 20px rgba(26,42,34,.12))!important;
+  pointer-events:none;
+}
+.founders103-tagline{
+  position:absolute;z-index:5;
+  right:1.35%;top:64%;
+  color:#216b67;
+  font:800 clamp(10px,.9vw,14px)/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  text-align:left;
+  white-space:nowrap;
+}
+.founders103-tagline::after{content:"";display:block;width:55px;height:2px;margin-top:8px;background:#c9952f}
+.founders103-leaf{
+  position:absolute;z-index:1;left:37.5%;bottom:-34px;
+  width:150px;height:300px;transform:rotate(-13deg);pointer-events:none;opacity:.92;
+}
+.founders103-leaf::before,.founders103-leaf::after{content:"";position:absolute;background:linear-gradient(135deg,#4f906d,#b7cda7);border-radius:100% 0 100% 0;box-shadow:0 0 0 1px rgba(37,104,77,.08)}
+.founders103-leaf::before{width:48px;height:118px;left:33px;top:86px;transform:rotate(-24deg)}
+.founders103-leaf::after{width:58px;height:140px;left:77px;top:25px;transform:rotate(28deg)}
+.founders103-stem{position:absolute;left:72px;top:42px;width:3px;height:230px;background:#608d6e;transform:rotate(8deg);transform-origin:bottom center}
+
+@media(max-width:1180px) and (min-width:901px){
+  .founders103-copy{width:42%;padding-left:42px}
+  .founders103-title{font-size:clamp(60px,6.3vw,84px)}
+  .founders103-copy p{font-size:17px}
+  .founders103-portrait{right:2%;width:49vw;max-height:90%}
+  .founders103-script{left:41%;top:20%;font-size:30px}
+  .founders103-tagline{right:.8%;font-size:9px}
+}
+@media(max-width:900px){
+  .founders103-hero{min-height:0;padding:42px 20px 0;background:linear-gradient(160deg,#eef7ef,#fffaf2 52%,#fff)}
+  .founders103-hero::before{left:-72vw;bottom:-40vw;width:130vw;height:130vw}
+  .founders103-hero::after{right:-44vw;top:48%;width:105vw;height:105vw}
+  .founders103-shield{right:-6%;top:46%;width:66vw;opacity:.06}
+  .founders103-gold-sweep{left:auto;right:12%;top:42%;height:65%;width:14%;opacity:.55}
+  .founders103-copy{width:100%;padding:0;max-width:680px;margin:0 auto;text-align:center}
+  .founders103-kicker{font-size:12px;margin-bottom:15px}
+  .founders103-title{font-size:clamp(52px,14vw,82px);line-height:.92}
+  .founders103-rule{margin:20px auto 24px;width:92px;height:4px}
+  .founders103-copy p{max-width:620px;margin:0 auto 18px;font-size:17px}
+  .founders103-story-btn{min-height:64px;min-width:0;width:min(100%,420px);margin:8px auto 0}
+  .founders103-play{width:40px;height:40px}
+  .founders103-strap{white-space:normal;margin-top:18px!important;font-size:11px!important;letter-spacing:.17em}
+  .founders103-script{position:relative;left:auto;top:auto;width:auto;margin:30px auto 0;max-width:320px;font-size:34px;transform:rotate(-4deg)}
+  .founders103-portrait{position:relative;display:block;right:auto;bottom:auto;width:min(96%,680px);max-height:none;margin:10px auto 0;z-index:3;filter:drop-shadow(0 13px 18px rgba(26,42,34,.1))!important}
+  .founders103-tagline{position:relative;right:auto;top:auto;width:max-content;margin:-22px 18px 30px auto;font-size:10px;z-index:5}
+  .founders103-leaf{left:4%;bottom:0;opacity:.48;transform:scale(.7) rotate(-13deg);transform-origin:bottom left}
+}
+@media(max-width:520px){
+  .founders103-hero{padding-inline:16px}
+  .founders103-title{font-size:clamp(48px,15vw,68px)}
+  .founders103-copy p{font-size:16px;line-height:1.45}
+  .founders103-story-btn{font-size:18px;gap:12px;padding-inline:18px}
+  .founders103-script{font-size:30px}
+  .founders103-portrait{width:100%}
+  .founders103-tagline{margin-right:2px}
+}
