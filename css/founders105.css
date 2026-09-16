@@ -19,8 +19,7 @@
 
 .founders-page-build69 .founders-hero-exact.founders105-exact-artwork::before,
 .founders-page-build69 .founders-hero-exact.founders105-exact-artwork::after,
-.founders-page-build69 .founders-hero-exact.founders105-exact-artwork .founders-hero-exact-media::before,
-.founders-page-build69 .founders-hero-exact.founders105-exact-artwork .founders-hero-exact-media::after {
+.founders-page-build69 .founders-hero-exact.founders105-exact-artwork .founders-hero-exact-media::before {
   content: none !important;
   display: none !important;
 }
@@ -57,6 +56,25 @@
   filter: none !important;
   pointer-events: none !important;
   z-index: 1 !important;
+}
+
+/* Build 107 — remove ONLY the covered HEALTHIER PEOPLE BRIGHTER FUTURES words.
+   This small cream mask follows Elle's sleeve edge, stops above the gold underline,
+   and stays inside the outer gold arc so all other artwork remains visible. */
+@media (min-width: 721px) {
+  .founders-page-build69 .founders-hero-exact.founders105-exact-artwork .founders-hero-exact-media::after {
+    content: "" !important;
+    display: block !important;
+    position: absolute !important;
+    z-index: 2 !important;
+    left: 92.15% !important;
+    top: 65.2% !important;
+    width: 6.15% !important;
+    height: 13.4% !important;
+    background: linear-gradient(90deg, #fffdf8 0%, #fffdf8 72%, rgba(255,253,248,.98) 100%) !important;
+    clip-path: polygon(22% 0,100% 0,100% 100%,44% 100%,41% 82%,36% 64%,31% 46%,26% 27%) !important;
+    pointer-events: none !important;
+  }
 }
 
 /* Keep semantic hero copy available to screen readers while the approved artwork
