@@ -1,0 +1,272 @@
+/* Build 105 — exact approved About / Founders hero.
+   Desktop uses the approved hero artwork exactly as supplied, with the existing
+   Watch Our Story anchor kept as a real clickable overlay. Mobile switches to
+   the exact original professional portrait plus live semantic copy for legibility. */
+
+.founders-page-build69 .founders-hero-exact.founders105-exact-artwork {
+  position: relative !important;
+  width: 100% !important;
+  min-height: 0 !important;
+  aspect-ratio: 1673 / 820 !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: #fff !important;
+  border-top: 0 !important;
+  border-bottom: 1px solid rgba(201,149,47,.18) !important;
+}
+
+.founders-page-build69 .founders-hero-exact.founders105-exact-artwork::before,
+.founders-page-build69 .founders-hero-exact.founders105-exact-artwork::after,
+.founders-page-build69 .founders-hero-exact.founders105-exact-artwork .founders-hero-exact-media::before,
+.founders-page-build69 .founders-hero-exact.founders105-exact-artwork .founders-hero-exact-media::after {
+  content: none !important;
+  display: none !important;
+}
+
+.founders-page-build69 .founders-hero-exact.founders105-exact-artwork .founders-hero-exact-media {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  aspect-ratio: auto !important;
+  background: none !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+
+.founders-page-build69 .founders-hero-exact.founders105-exact-artwork .founders-hero-exact-media > img {
+  content: normal !important;
+  position: absolute !important;
+  inset: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  margin: 0 !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+
+/* Keep semantic hero copy available to screen readers while the approved artwork
+   supplies the exact visual typography on desktop. */
+.founders-page-build69 .founders-hero-exact.founders105-exact-artwork > .visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Real clickable hotspot positioned directly over the baked Watch Our Story button. */
+.founders-page-build69 .founders-hero-exact.founders105-exact-artwork .founders-hero-exact-button {
+  position: absolute !important;
+  z-index: 10 !important;
+  left: 6.52% !important;
+  top: 79.55% !important;
+  bottom: auto !important;
+  width: 24.0% !important;
+  min-width: 0 !important;
+  height: 9.55% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: block !important;
+  border: 0 !important;
+  border-radius: 12px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: transparent !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  text-indent: -9999px !important;
+  overflow: hidden !important;
+  opacity: 1 !important;
+  transform: none !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+
+.founders-page-build69 .founders-hero-exact.founders105-exact-artwork .founders-hero-exact-button::before,
+.founders-page-build69 .founders-hero-exact.founders105-exact-artwork .founders-hero-exact-button::after {
+  content: none !important;
+  display: none !important;
+}
+
+.founders-page-build69 .founders-hero-exact.founders105-exact-artwork .founders-hero-exact-button:hover,
+.founders-page-build69 .founders-hero-exact.founders105-exact-artwork .founders-hero-exact-button:focus-visible {
+  background: rgba(255,255,255,.055) !important;
+  outline: 2px solid rgba(224,180,62,.75) !important;
+  outline-offset: -2px !important;
+  transform: none !important;
+}
+
+/* Narrow screens prioritize readable live copy while preserving the exact,
+   unretouched professional portrait file. */
+@media (max-width: 720px) {
+  .founders-page-build69 .founders-hero-exact.founders105-exact-artwork {
+    aspect-ratio: auto !important;
+    min-height: 0 !important;
+    padding: 34px 18px 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    background: linear-gradient(160deg,#eef7f0 0%,#fffaf2 54%,#fff 100%) !important;
+    overflow: hidden !important;
+  }
+
+  .founders-page-build69 .founders-hero-exact.founders105-exact-artwork > .visually-hidden {
+    position: relative !important;
+    order: 1 !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 620px !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    overflow: visible !important;
+    clip: auto !important;
+    white-space: normal !important;
+    border: 0 !important;
+    text-align: center !important;
+  }
+
+  .founders-page-build69 .founders-hero-exact.founders105-exact-artwork > .visually-hidden > span {
+    display: block !important;
+    margin: 0 0 14px !important;
+    color: #216b67 !important;
+    font: 800 12px/1.2 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif !important;
+    letter-spacing: .22em !important;
+    text-transform: uppercase !important;
+  }
+
+  .founders-page-build69 .founders-hero-exact.founders105-exact-artwork > .visually-hidden h1 {
+    margin: 0 0 30px !important;
+    color: #073f33 !important;
+    font-family: Georgia,"Times New Roman",serif !important;
+    font-size: clamp(50px,14vw,72px) !important;
+    line-height: .9 !important;
+    letter-spacing: -.04em !important;
+    font-weight: 600 !important;
+  }
+
+  .founders-page-build69 .founders-hero-exact.founders105-exact-artwork > .visually-hidden h1::after {
+    content: "" !important;
+    display: block !important;
+    width: 92px !important;
+    height: 4px !important;
+    margin: 22px auto 0 !important;
+    background: linear-gradient(90deg,#b97e19,#e3b94b) !important;
+  }
+
+  .founders-page-build69 .founders-hero-exact.founders105-exact-artwork > .visually-hidden p {
+    max-width: 560px !important;
+    margin: 0 auto 17px !important;
+    color: #244f7b !important;
+    font-size: 16px !important;
+    line-height: 1.48 !important;
+  }
+
+  .founders-page-build69 .founders-hero-exact.founders105-exact-artwork > .visually-hidden::before,
+  .founders-page-build69 .founders-hero-exact.founders105-exact-artwork > .visually-hidden::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  .founders-page-build69 .founders-hero-exact.founders105-exact-artwork .founders-hero-exact-media {
+    position: relative !important;
+    order: 2 !important;
+    inset: auto !important;
+    width: calc(100% + 36px) !important;
+    height: auto !important;
+    min-height: 560px !important;
+    margin: 10px -18px 0 !important;
+    overflow: hidden !important;
+    background:
+      radial-gradient(circle at 77% 34%,rgba(201,149,47,.13),transparent 34%),
+      linear-gradient(180deg,transparent,#fff7e9 100%) !important;
+    pointer-events: none !important;
+  }
+
+  .founders-page-build69 .founders-hero-exact.founders105-exact-artwork .founders-hero-exact-media > img {
+    content: url('../assets/images/justyn-elle-professional-approved-102.png') !important;
+    position: relative !important;
+    inset: auto !important;
+    display: block !important;
+    width: min(100%,650px) !important;
+    height: auto !important;
+    max-width: 650px !important;
+    max-height: none !important;
+    margin: 0 auto !important;
+    object-fit: contain !important;
+    object-position: center bottom !important;
+    filter: drop-shadow(0 12px 18px rgba(24,42,34,.12)) !important;
+  }
+
+  .founders-page-build69 .founders-hero-exact.founders105-exact-artwork .founders-hero-exact-button {
+    left: 50% !important;
+    top: auto !important;
+    bottom: 18px !important;
+    width: min(calc(100% - 36px),420px) !important;
+    height: 62px !important;
+    transform: translateX(-50%) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    border: 2px solid #d7a62d !important;
+    border-radius: 12px !important;
+    background: linear-gradient(180deg,#075844,#034d3b) !important;
+    box-shadow: 0 12px 28px rgba(15,75,62,.16) !important;
+    color: #f2c64f !important;
+    font: 800 18px/1 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif !important;
+    text-indent: 0 !important;
+    line-height: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  .founders-page-build69 .founders-hero-exact.founders105-exact-artwork .founders-hero-exact-button::before {
+    content: "▶" !important;
+    display: inline-flex !important;
+    width: 38px !important;
+    height: 38px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border: 2px solid #e0b43e !important;
+    border-radius: 50% !important;
+    color: #f5c84d !important;
+    font-size: 15px !important;
+  }
+
+  .founders-page-build69 .founders-hero-exact.founders105-exact-artwork .founders-hero-exact-button:hover,
+  .founders-page-build69 .founders-hero-exact.founders105-exact-artwork .founders-hero-exact-button:focus-visible {
+    transform: translateX(-50%) translateY(-1px) !important;
+    background: linear-gradient(180deg,#08634c,#054f3d) !important;
+  }
+}
+
+@media (max-width: 440px) {
+  .founders-page-build69 .founders-hero-exact.founders105-exact-artwork {
+    padding-inline: 14px !important;
+  }
+  .founders-page-build69 .founders-hero-exact.founders105-exact-artwork .founders-hero-exact-media {
+    width: calc(100% + 28px) !important;
+    margin-inline: -14px !important;
+    min-height: 520px !important;
+  }
+  .founders-page-build69 .founders-hero-exact.founders105-exact-artwork > .visually-hidden p {
+    font-size: 15.5px !important;
+  }
+}
