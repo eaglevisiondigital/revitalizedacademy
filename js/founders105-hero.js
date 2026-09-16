@@ -1,4 +1,9 @@
 (() => {
+  const phraseFix = document.createElement('link');
+  phraseFix.rel = 'stylesheet';
+  phraseFix.href = 'css/founders106-phrase-fix.css?v=106';
+  document.head.appendChild(phraseFix);
+
   const hero = document.querySelector('.founders-page-build69 .founders-hero-exact');
   const media = hero?.querySelector('.founders-hero-exact-media');
   const img = media?.querySelector('img');
