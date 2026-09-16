@@ -17,7 +17,6 @@
   border-bottom:1px solid rgba(201,149,47,.2);
 }
 
-/* Decorative green sweep on the left and gold orbit on the right. */
 .founders-page-build69 .founders-hero-exact::before{
   content:"";
   position:absolute;
@@ -38,14 +37,14 @@
   content:"Stronger\A People\A Brighter\A Tomorrows";
   white-space:pre;
   position:absolute;
-  z-index:3;
-  left:42.5%;
+  z-index:6;
+  left:41%;
   top:18.5%;
-  width:14%;
+  width:10%;
   color:#c58b27;
   font-family:"Snell Roundhand","Segoe Script","Brush Script MT",cursive;
-  font-size:clamp(31px,2.65vw,48px);
-  line-height:1.02;
+  font-size:clamp(29px,2.45vw,46px);
+  line-height:1.04;
   font-style:italic;
   text-align:center;
   transform:rotate(-6deg);
@@ -53,7 +52,6 @@
   pointer-events:none;
 }
 
-/* Re-purpose the existing media wrapper as the decorative/right-side layer. */
 .founders-page-build69 .founders-hero-exact-media{
   position:absolute!important;
   inset:0!important;
@@ -99,14 +97,14 @@
   pointer-events:none;
 }
 
-/* The existing IMG element becomes the exact uploaded portrait layer. */
+/* Exact source portrait, browser-scaled only. */
 .founders-page-build69 .founders-hero-exact-media > img{
   content:url('../assets/images/justyn-elle-professional-approved-102.png');
   position:absolute!important;
   z-index:4!important;
-  right:5.1%!important;
+  right:7.8%!important;
   bottom:-1px!important;
-  width:min(48.2vw,790px)!important;
+  width:min(43vw,720px)!important;
   height:auto!important;
   max-height:94%!important;
   object-fit:contain!important;
@@ -117,7 +115,6 @@
   pointer-events:none!important;
 }
 
-/* The already-present semantic copy is made visible and styled to match the approved hero. */
 .founders-page-build69 .founders-hero-exact > .visually-hidden{
   position:relative!important;
   z-index:5!important;
@@ -174,7 +171,6 @@
   white-space:nowrap;
 }
 
-/* Keep the existing real anchor as the live Watch Our Story button. */
 .founders-page-build69 .founders-hero-exact-button{
   left:clamp(54px,6.3vw,108px)!important;
   top:auto!important;
@@ -218,19 +214,19 @@
   .founders-page-build69 .founders-hero-exact > .visually-hidden{width:42%!important;padding-left:42px!important}
   .founders-page-build69 .founders-hero-exact > .visually-hidden h1{font-size:clamp(60px,6.3vw,84px)}
   .founders-page-build69 .founders-hero-exact > .visually-hidden p{font-size:17px}
-  .founders-page-build69 .founders-hero-exact-media > img{right:2%!important;width:49vw!important;max-height:90%!important}
-  .founders-page-build69 .founders-hero-exact::after{left:41%;top:20%;font-size:30px}
-  .founders-page-build69 .founders-hero-exact-media::after{right:.7%;font-size:9px}
+  .founders-page-build69 .founders-hero-exact-media > img{right:7%!important;width:43vw!important;max-height:90%!important}
+  .founders-page-build69 .founders-hero-exact::after{left:40%;top:20%;font-size:28px;width:10%}
+  .founders-page-build69 .founders-hero-exact-media::after{right:.8%;font-size:9px}
   .founders-page-build69 .founders-hero-exact-button{left:42px!important;min-width:290px;width:31vw!important}
 }
 
 @media(max-width:900px){
   .founders-page-build69 .founders-hero-exact{
     min-height:0;
-    padding:38px 18px 0;
+    padding:42px 20px 0;
     display:flex;
     flex-direction:column;
-    background:linear-gradient(160deg,#edf6ef,#fff9f0 55%,#fff)!important;
+    background:linear-gradient(160deg,#edf6ef,#fffaf2 52%,#fff)!important;
   }
   .founders-page-build69 .founders-hero-exact::before{left:-72vw;bottom:-40vw;width:130vw;height:130vw}
   .founders-page-build69 .founders-hero-exact::after{
@@ -262,7 +258,7 @@
     inset:auto!important;
     height:auto!important;
     min-height:640px;
-    margin:0 -18px!important;
+    margin:0 -20px!important;
     overflow:hidden;
     background:
       url('../assets/images/revitalized-shield-approved-v69.png') 86% 13% / 58vw no-repeat,
@@ -274,7 +270,7 @@
     display:block!important;
     right:auto!important;
     bottom:auto!important;
-    width:min(96%,680px)!important;
+    width:min(94%,650px)!important;
     max-height:none!important;
     margin:0 auto!important;
     z-index:4!important;
@@ -296,10 +292,10 @@
 }
 
 @media(max-width:520px){
-  .founders-page-build69 .founders-hero-exact{padding-inline:14px}
+  .founders-page-build69 .founders-hero-exact{padding-inline:16px}
   .founders-page-build69 .founders-hero-exact > .visually-hidden h1{font-size:clamp(48px,15vw,68px)}
   .founders-page-build69 .founders-hero-exact > .visually-hidden p{font-size:16px;line-height:1.45}
-  .founders-page-build69 .founders-hero-exact-media{margin-inline:-14px!important;min-height:560px}
+  .founders-page-build69 .founders-hero-exact-media{margin-inline:-16px!important;min-height:560px}
   .founders-page-build69 .founders-hero-exact-media > img{width:100%!important}
   .founders-page-build69 .founders-hero-exact-media::after{font-size:8px;right:5px}
   .founders-page-build69 .founders-hero-exact-button{font-size:17px!important;gap:11px}
