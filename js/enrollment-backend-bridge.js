@@ -119,10 +119,12 @@
       programId: null,
 
       /*
-       * Current ReVitalized Step 2 is the Vitality/Health assessment
-       * journey. 0 = VitalityAssessment in the public API contract.
+       * ReVitalized enrollment Step 2 is the Health Profile.
+       * 2 = HealthProfile in the public API contract.
+       *
+       * The standalone Free Vitality Assessment remains separate.
        */
-      assessmentPath: 0
+      assessmentPath: 2
     };
 
     try {
