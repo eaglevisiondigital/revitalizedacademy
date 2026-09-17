@@ -1,0 +1,205 @@
+/* Build 110: one portrait-free artwork layer, one ORIGINAL portrait, one real link.
+   Deliberately separate from every earlier founders-hero-exact selector/loader. */
+.founders-page-build69 .rva-founders110 {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: none;
+  min-height: 0;
+  aspect-ratio: 1672 / 941;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  overflow: hidden;
+  isolation: isolate;
+  background: #fffaf2;
+  box-shadow: none;
+}
+.rva-founders110::before, .rva-founders110::after { content: none; }
+.rva-founders110 .rva-founders110__art {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  object-fit: fill;
+  opacity: 1;
+  filter: none;
+  transform: none;
+  pointer-events: none;
+}
+/* Never substitute, retouch, recolor, filter, mask or independently stretch this PNG. */
+.rva-founders110 .rva-founders110__portrait {
+  content: normal !important;
+  position: absolute;
+  z-index: 1;
+  left: 43.660287%;
+  bottom: 0;
+  display: block;
+  width: 51.435407%;
+  height: auto !important;
+  max-width: none;
+  max-height: none;
+  aspect-ratio: 1348 / 1254;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  opacity: 1 !important;
+  filter: none !important;
+  transform: none !important;
+  mix-blend-mode: normal !important;
+  object-fit: contain;
+  pointer-events: none;
+}
+.rva-founders110 .rva-founders110__copy,
+.rva-founders110 .rva-founders110__tagline {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+/* Hotspot follows the actual button in the artwork at every desktop width. */
+.rva-founders110 .rva-founders110__watch {
+  position: absolute;
+  z-index: 2;
+  left: 5.62201%;
+  top: 76.62062%;
+  width: 25.35885%;
+  height: 8.60786%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 14px;
+  background: transparent;
+  box-shadow: none;
+  text-decoration: none;
+  cursor: pointer;
+  pointer-events: auto;
+}
+.rva-founders110__watch > span,
+.rva-founders110__watch > svg { visibility: hidden; }
+.rva-founders110 .rva-founders110__watch:hover {
+  background: rgba(255, 255, 255, .045);
+}
+.rva-founders110 .rva-founders110__watch:focus-visible {
+  outline: 3px solid #095b48;
+  outline-offset: 5px;
+}
+/* Phone/tablet: readable live copy instead of shrinking a desktop text image. */
+@media (max-width: 1100px) {
+  .founders-page-build69 .rva-founders110 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    aspect-ratio: auto;
+    padding: 36px 22px 0;
+    background: linear-gradient(145deg, #eef7f0, #fffaf2 58%, #ffffff);
+  }
+  .rva-founders110 .rva-founders110__art { display: none; }
+  .rva-founders110 .rva-founders110__copy {
+    position: relative;
+    order: 0;
+    width: 100%;
+    height: auto;
+    max-width: 700px;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+    clip: auto;
+    clip-path: none;
+    white-space: normal;
+    text-align: center;
+  }
+  .rva-founders110__copy > span {
+    display: block;
+    margin: 0 0 16px;
+    font: 700 15px/1.5 system-ui, sans-serif;
+    letter-spacing: .16em;
+    color: #176668;
+    text-transform: uppercase;
+  }
+  .rva-founders110__copy h1 {
+    margin: 0 0 24px;
+    color: #073f33;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(44px, 8vw, 72px);
+    line-height: 1.04;
+    letter-spacing: -.04em;
+  }
+  .rva-founders110__copy h1::after {
+    content: '';
+    display: block;
+    width: 110px;
+    height: 4px;
+    margin: 22px auto 0;
+    background: linear-gradient(90deg, #b88322, #f4d47d);
+  }
+  .rva-founders110__copy p {
+    margin: 0 auto 20px;
+    color: #244f7b;
+    font-size: 18px;
+    line-height: 1.55;
+  }
+  .rva-founders110 .rva-founders110__watch {
+    position: relative;
+    order: 1;
+    left: auto;
+    top: auto;
+    width: min(100%, 430px);
+    height: auto;
+    min-height: 68px;
+    padding: 12px 18px;
+    margin: 6px auto 0;
+    border: 2px solid #d5a63a;
+    background: linear-gradient(180deg, #075844, #034d3b);
+    color: #f7d774;
+    font: 750 20px/1.3 system-ui, sans-serif;
+    box-shadow: 0 10px 28px rgba(12, 62, 47, .12);
+  }
+  .rva-founders110__watch > span,
+  .rva-founders110__watch > svg { visibility: visible; }
+  .rva-founders110__watch > svg { width: 40px; height: 40px; flex: 0 0 40px; }
+  .rva-founders110 .rva-founders110__watch:hover { background: #075844; }
+  .rva-founders110 .rva-founders110__tagline {
+    position: relative;
+    order: 2;
+    width: 100%;
+    height: auto;
+    max-width: 650px;
+    margin: 22px 0 0;
+    overflow: visible;
+    clip: auto;
+    clip-path: none;
+    white-space: normal;
+    font: 650 15px/1.55 system-ui, sans-serif;
+    letter-spacing: .08em;
+    color: #176668;
+    text-align: center;
+  }
+  .rva-founders110 .rva-founders110__portrait {
+    position: relative;
+    order: 3;
+    left: auto;
+    bottom: auto;
+    width: min(calc(100% + 28px), 650px);
+    margin: 16px -14px 0;
+    flex: none;
+  }
+}

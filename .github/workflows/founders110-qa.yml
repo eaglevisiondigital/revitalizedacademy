@@ -1,0 +1,38 @@
+name: Verify original-portrait Founders hero
+on:
+  push:
+    branches: [work/founders110-original-portrait]
+    paths:
+      - '.founders110-transfer/apply.py'
+      - '.founders110-transfer/verify.py'
+      - '.founders110-transfer/founders110.css'
+      - '.github/workflows/founders110-qa.yml'
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Replace only the retired hero
+        run: python3 .founders110-transfer/apply.py
+      - name: Install browser verification tools
+        run: |
+          python3 -m pip install playwright==1.55.0
+          python3 -m playwright install --with-deps chromium webkit
+      - name: Verify PNG integrity, responsive layers and real story link
+        run: python3 .founders110-transfer/verify.py
+      - name: Save verified implementation on isolated branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add founders.html css/founders110.css
+          git commit -m 'Build 110: verified original portrait with separate approved background'
+          git push origin HEAD:work/founders110-original-portrait
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: founders110-verified-site-and-screenshots
+          path: founders110-proof/
+          retention-days: 14
