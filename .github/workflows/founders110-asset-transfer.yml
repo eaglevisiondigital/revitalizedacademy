@@ -1,0 +1,35 @@
+name: Assemble verified Founders background
+on:
+  push:
+    branches: [work/founders110-original-portrait]
+    paths:
+      - '.founders110-transfer/**'
+      - '.github/workflows/founders110-asset-transfer.yml'
+permissions:
+  contents: write
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reassemble and verify background bytes
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          source = Path('.founders110-transfer')
+          data = b''.join((source / f'background.{i}').read_bytes() for i in range(4))
+          assert len(data) == 47121, 'Unexpected background file size'
+          assert hashlib.sha256(data).hexdigest() == '92997712deeba47a3e5022476fe1635e033edbf997653f8b6b9b5ecad30870c8', 'Background integrity check failed'
+          git_sha = hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest()
+          assert git_sha == '47ff17f57dd76d46fe2232fc87c210cefca1db3b'
+          Path('assets/images/founders110-background.avif').write_bytes(data)
+          print('Verified approved portrait-free background:', git_sha)
+          PY
+      - name: Commit verified image on transfer branch only
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/images/founders110-background.avif
+          git commit -m 'Assemble verified portrait-free Founders background'
+          git push origin HEAD:work/founders110-original-portrait
