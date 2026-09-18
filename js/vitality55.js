@@ -326,43 +326,63 @@
 
   function buildAssessmentSummary() {
     const person = assessmentPerson();
+    const divider = '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━';
     const lines = [
-      '=== ASSESSMENT DETAILS ===',
+      divider,
+      'ASSESSMENT DETAILS',
+      divider,
       `Completed by: ${person.completedBy}`,
       `Assessment for: ${person.name}`,
       `Completing for: ${person.choice}`,
       `Question set: ${activePathway}`,
-      `Relationship to person completing the form: ${person.relationship}`
+      `Relationship: ${person.relationship}`
     ];
+
     if (person.proxy) {
-      lines.push(`Assessed person's age in years: ${person.age}`);
+      lines.push(`Assessed person's age: ${person.age}`);
       const authorization = assessmentForm.elements.namedItem('assessment_authorization');
       lines.push(`Authorization: ${authorization.checked ? authorization.value : 'Not acknowledged'}`);
     }
+
     sections.forEach((section, index) => {
       const panel = assessmentForm.querySelector(`[data-panel="${index}"]`);
-      lines.push('', `=== ${section.label.toUpperCase()} ===`);
+      if (!panel) return;
+
+      lines.push('', divider, section.label.toUpperCase(), divider);
+
       const handled = new Set();
       panel.querySelectorAll('input:not([type="hidden"]),select,textarea').forEach((control) => {
-        if (control.disabled || !control.name || handled.has(control.name)) return;
+        if (control.disabled || !control.name || handled.has(control.name) || control.closest('.vitality-symptom-card')) return;
         handled.add(control.name);
+
         let values = [];
         if (control.type === 'radio' || control.type === 'checkbox') {
           values = [...panel.querySelectorAll(`[name="${CSS.escape(control.name)}"]:checked`)].map((item) => item.value);
-        } else if (control.value.trim()) values = [control.value.trim()];
-        if (!values.length) return;
-        const question = control.closest('.vitality-question');
-        const symptomCard = control.closest('.vitality-symptom-card');
-        const baseLabel = question && (question.querySelector('legend') || question.querySelector('.vitality-question-label'));
-        let label = baseLabel ? baseLabel.textContent.replace('*', '').trim() : control.name.replaceAll('_', ' ');
-        if (symptomCard) {
-          const symptom = symptomCard.querySelector('strong');
-          const detail = control.closest('label');
-          label = `${symptom ? symptom.textContent.trim() : label} — ${detail ? detail.childNodes[0].textContent.trim() : label}`;
+        } else if (control.value.trim()) {
+          values = [control.value.trim()];
         }
-        lines.push(`${label}: ${values.join(', ')}`);
+        if (!values.length) return;
+
+        const question = control.closest('.vitality-question');
+        const baseLabel = question && (question.querySelector('legend') || question.querySelector('.vitality-question-label'));
+        const label = baseLabel ? baseLabel.textContent.replace('*', '').trim() : control.name.replaceAll('_', ' ');
+        lines.push(`• ${label}: ${values.join(', ')}`);
+      });
+
+      panel.querySelectorAll('.vitality-symptom-card').forEach((card) => {
+        const symptom = card.querySelector('strong');
+        const symptomName = symptom ? symptom.textContent.trim() : 'Selected symptom';
+        const details = [];
+        card.querySelectorAll('select').forEach((select) => {
+          if (!select.value) return;
+          const label = select.closest('label');
+          const labelText = label ? label.childNodes[0].textContent.trim().replace(/\?$/, '') : 'Detail';
+          details.push(`${labelText}: ${select.value}`);
+        });
+        if (details.length) lines.push(`• ${symptomName} — ${details.join(' | ')}`);
       });
     });
+
     return lines.join('\n').trim();
   }
 
