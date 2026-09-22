@@ -54,3 +54,102 @@
     letter-spacing:.1em;
   }
 }
+
+
+/* BUILD 103 — Approved desktop artwork copy overlays for client-requested wording.
+   Keeps the locked artwork intact while replacing only the changed visible text. */
+#coaching.ra-coaching76 .ra76-desktop-copyfix{display:none;}
+@media(min-width:1200px){
+  #coaching.ra-coaching76:not(.is-art-unavailable) .ra76-desktop-copyfix{
+    display:block;
+    position:absolute;
+    inset:0;
+    z-index:3;
+    pointer-events:none;
+    font-family:Arial,Helvetica,sans-serif;
+    color:#234d6f;
+  }
+  #coaching.ra-coaching76 .ra76-copyfix{
+    position:absolute;
+    display:flex;
+    align-items:center;
+    box-sizing:border-box;
+  }
+
+  /* ReVitalized Coaching card */
+  #coaching.ra-coaching76 .ra76-copyfix.bullet{
+    left:62.4%;
+    width:19.6%;
+    min-height:3.5%;
+    padding:0 .35%;
+    background:#fff;
+    font-size:clamp(12px,1.02vw,16px);
+    line-height:1.18;
+    font-weight:400;
+    white-space:normal;
+  }
+  #coaching.ra-coaching76 .ra76-copyfix.bullet-1{top:8.7%;}
+  #coaching.ra-coaching76 .ra76-copyfix.bullet-2{top:12.8%;}
+  #coaching.ra-coaching76 .ra76-copyfix.bullet-4{top:20.7%;}
+
+  #coaching.ra-coaching76 .ra76-copyfix.premium-footer{
+    left:58.8%;
+    top:29.0%;
+    width:24.6%;
+    height:5.4%;
+    justify-content:center;
+    padding:0 1%;
+    background:linear-gradient(90deg,#e8f3e7,#eef6ec);
+    color:#114a3f;
+    text-align:center;
+    font-family:Georgia,'Times New Roman',serif;
+    font-size:clamp(13px,1.12vw,18px);
+    font-style:italic;
+    line-height:1.18;
+  }
+
+  /* Personal Implementation band */
+  #coaching.ra-coaching76 .ra76-copyfix.implementation-label{
+    left:42.6%;
+    top:38.0%;
+    width:15.8%;
+    height:3.9%;
+    justify-content:center;
+    background:#eef0e5;
+    color:#0c5a49;
+    font-size:clamp(9px,.78vw,12px);
+    font-weight:800;
+    letter-spacing:.17em;
+    text-align:center;
+  }
+
+  /* Architecture subheading */
+  #coaching.ra-coaching76 .ra76-copyfix.architecture-subhead{
+    left:20.5%;
+    top:45.9%;
+    width:59%;
+    min-height:4.6%;
+    justify-content:center;
+    padding:.15% 1.2%;
+    background:#fcf8ef;
+    color:#245b70;
+    text-align:center;
+    font-size:clamp(12px,1.03vw,16px);
+    line-height:1.18;
+  }
+
+  /* Actionable Strategy description */
+  #coaching.ra-coaching76 .ra76-copyfix.actionable-copy{
+    left:51.4%;
+    top:63.6%;
+    width:12.2%;
+    min-height:6.3%;
+    justify-content:center;
+    padding:.2% .45%;
+    background:#fff;
+    color:#285b79;
+    text-align:center;
+    font-size:clamp(11px,.98vw,15px);
+    line-height:1.16;
+  }
+}
