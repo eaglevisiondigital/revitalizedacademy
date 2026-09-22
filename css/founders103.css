@@ -1,333 +1,387 @@
-/* Build 104 — About / Founders hero fidelity correction.
-   Scope: this hero only. The uploaded professional portrait remains the exact
-   repository image; CSS only scales/positions it and adds an external shadow. */
+/* Build 111 - Founders hero cleanup.
+   Uses the exact approved Justyn and Elle portrait file with no retouching,
+   regeneration, recoloring, masking, filter, or baked portrait stack.
+   Decorative script/right-side phrases are removed and the gold circles are
+   rendered cleanly in CSS so no mask can wash them out. */
 
-.founders-page-build69 .founders-hero-exact{
-  --f104-green:#0e6a64;
-  --f104-deep:#073f33;
-  --f104-gold:#c9952f;
-  --f104-blue:#244f7b;
-  position:relative;
-  min-height:clamp(700px,49vw,820px);
-  overflow:hidden;
-  isolation:isolate;
+.founders-page-build69 .founders-hero-exact.founders111-clean {
+  position: relative !important;
+  width: 100vw !important;
+  max-width: none !important;
+  min-height: clamp(700px, 49vw, 820px) !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
   background:
-    radial-gradient(ellipse at 4% 105%,rgba(64,121,91,.58) 0 3.5%,transparent 3.9%),
-    radial-gradient(ellipse at 0% 108%,rgba(78,142,107,.40) 0 6.5%,transparent 6.9%),
-    radial-gradient(ellipse at -12% 82%,transparent 0 38%,rgba(78,142,107,.17) 38.2% 47%,transparent 47.3% 57%,rgba(78,142,107,.09) 57.2% 66%,transparent 66.3%),
-    linear-gradient(112deg,#eef7f0 0%,#fcfbf7 31%,#fffaf1 66%,#fffdf9 100%)!important;
-  border-top:1px solid rgba(201,149,47,.16);
-  border-bottom:1px solid rgba(201,149,47,.22);
+    radial-gradient(ellipse at 3% 106%, rgba(64,121,91,.20) 0 4%, transparent 4.4%),
+    radial-gradient(ellipse at -3% 109%, rgba(78,142,107,.14) 0 8%, transparent 8.4%),
+    linear-gradient(112deg, #eef7f0 0%, #fcfbf7 31%, #fffaf1 66%, #fffdf9 100%) !important;
+  border-top: 1px solid rgba(201,149,47,.16) !important;
+  border-bottom: 1px solid rgba(201,149,47,.22) !important;
 }
 
-/* Center script — positioned to match the approved reference and kept clear of the portrait. */
-.founders-page-build69 .founders-hero-exact::after{
-  content:"Stronger\A People\A Brighter\A Tomorrows";
-  white-space:pre;
-  position:absolute;
-  z-index:6;
-  left:41.6%;
-  top:18%;
-  width:12.2%;
-  color:#c58b27;
-  font-family:"Snell Roundhand","Segoe Script","Brush Script MT",cursive;
-  font-size:clamp(30px,2.5vw,44px);
-  line-height:1.02;
-  font-style:italic;
-  text-align:center;
-  transform:rotate(-6deg);
-  text-shadow:0 1px 0 rgba(255,255,255,.45);
-  pointer-events:none;
-}
-
-/* Existing media wrapper becomes the decorative / portrait layer only. */
-.founders-page-build69 .founders-hero-exact-media{
-  position:absolute!important;
-  inset:0!important;
-  width:100%!important;
-  height:100%!important;
-  margin:0!important;
-  aspect-ratio:auto!important;
-  overflow:hidden!important;
-  z-index:1!important;
-  pointer-events:none;
+.founders-page-build69 .founders-hero-exact.founders111-clean::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 0 !important;
   background:
-    linear-gradient(71deg,transparent 0 37.2%,rgba(201,149,47,.92) 37.35% 38.15%,transparent 38.3% 100%),
-    radial-gradient(ellipse at 82% 50%,transparent 0 29.8%,rgba(201,149,47,.72) 30% 30.15%,transparent 30.3% 37.2%,rgba(201,149,47,.38) 37.35% 37.48%,transparent 37.63% 44.4%,rgba(201,149,47,.22) 44.55% 44.67%,transparent 44.82% 100%)!important;
+    radial-gradient(ellipse at 0% 100%, rgba(37,101,70,.12) 0 5.5%, transparent 5.9%),
+    radial-gradient(ellipse at 4% 96%, rgba(83,145,105,.10) 0 8%, transparent 8.4%);
+  pointer-events: none !important;
 }
 
-/* Pale shield watermark behind the founders. */
-.founders-page-build69 .founders-hero-exact-media::before{
-  content:"";
-  position:absolute;
-  z-index:1;
-  right:2.8%;
-  top:2.2%;
-  width:min(29vw,465px);
-  aspect-ratio:1;
-  background:url('../assets/images/revitalized-shield-approved-v69.png') center/contain no-repeat;
-  opacity:.065;
-  filter:grayscale(.25) sepia(.12);
-  pointer-events:none;
+.founders-page-build69 .founders-hero-exact.founders111-clean::after {
+  content: none !important;
+  display: none !important;
 }
 
-/* Right-side phrase from the approved artwork. */
-.founders-page-build69 .founders-hero-exact-media::after{
-  content:"HEALTHIER\A PEOPLE\A BRIGHTER\A FUTURES";
-  white-space:pre;
-  position:absolute;
-  z-index:7;
-  right:1.15%;
-  top:64%;
-  color:#216b67;
-  font:800 clamp(9px,.82vw,13px)/1.6 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  letter-spacing:.15em;
-  text-align:left;
-  pointer-events:none;
-}
-
-/* EXACT uploaded portrait. No face retouching, recoloring, masking, warping or regeneration. */
-.founders-page-build69 .founders-hero-exact-media > img{
-  content:url('../assets/images/justyn-elle-professional-approved-102.png');
-  position:absolute!important;
-  z-index:4!important;
-  right:7.2%!important;
-  bottom:-1px!important;
-  width:min(47.2vw,790px)!important;
-  height:auto!important;
-  max-height:96%!important;
-  object-fit:contain!important;
-  object-position:right bottom!important;
-  opacity:1!important;
-  transform:none!important;
-  filter:drop-shadow(0 14px 20px rgba(24,42,34,.12))!important;
-  pointer-events:none!important;
-}
-
-/* The semantic copy already present in founders.html becomes the live visual copy. */
-.founders-page-build69 .founders-hero-exact > .visually-hidden{
-  position:absolute!important;
-  z-index:5!important;
-  left:0!important;
-  top:0!important;
-  bottom:0!important;
-  width:39.5%!important;
-  height:auto!important;
-  margin:0!important;
-  padding:clamp(84px,6.2vw,104px) 0 0 clamp(54px,6.35vw,106px)!important;
-  overflow:visible!important;
-  clip:auto!important;
-  white-space:normal!important;
-  border:0!important;
-}
-.founders-page-build69 .founders-hero-exact > .visually-hidden > span{
-  display:block;
-  margin:0 0 20px;
-  color:#216b67;
-  font:800 clamp(13px,1.05vw,17px)/1.2 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  letter-spacing:.23em;
-  text-transform:uppercase;
-}
-.founders-page-build69 .founders-hero-exact > .visually-hidden h1{
-  margin:0;
-  color:#073f33;
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:clamp(68px,6.05vw,102px);
-  line-height:.88;
-  letter-spacing:-.045em;
-  font-weight:600;
-  position:relative;
-}
-.founders-page-build69 .founders-hero-exact > .visually-hidden h1::after{
-  content:"";
-  display:block;
-  width:124px;
-  height:4px;
-  margin:28px 0 28px;
-  background:linear-gradient(90deg,#b97e19,#e3b94b);
-}
-.founders-page-build69 .founders-hero-exact > .visually-hidden p{
-  max-width:565px;
-  margin:0 0 22px;
-  color:#244f7b;
-  font-size:clamp(17px,1.28vw,22px);
-  line-height:1.4;
-}
-
-/* Small botanical cluster between copy and portrait, matching the approved composition. */
-.founders-page-build69 .founders-hero-exact > .visually-hidden::before{
-  content:"";
-  position:absolute;
-  z-index:-1;
-  left:96%;
-  bottom:-38px;
-  width:155px;
-  height:330px;
-  transform:rotate(-8deg);
-  opacity:.88;
+.founders-page-build69 .founders-hero-exact.founders111-clean .founders-hero-exact-media {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
   background:
-    radial-gradient(ellipse at 32% 42%,#5d9272 0 15%,transparent 15.7%),
-    radial-gradient(ellipse at 68% 26%,#82aa87 0 16%,transparent 16.7%),
-    radial-gradient(ellipse at 38% 67%,#7fa486 0 14%,transparent 14.7%),
-    radial-gradient(ellipse at 69% 58%,#a5c39c 0 13%,transparent 13.7%),
-    linear-gradient(83deg,transparent 49%,#668d70 49.5% 51%,transparent 51.5%);
-  pointer-events:none;
+    linear-gradient(70deg,
+      transparent 0 38.15%,
+      rgba(201,149,47,.70) 38.28% 38.42%,
+      transparent 38.55% 100%),
+    radial-gradient(circle at 78% 49%,
+      transparent 0 27.7%,
+      rgba(201,149,47,.62) 27.86% 28.05%,
+      transparent 28.22% 35.7%,
+      rgba(201,149,47,.38) 35.88% 36.05%,
+      transparent 36.22% 43.8%,
+      rgba(201,149,47,.22) 43.96% 44.12%,
+      transparent 44.3% 100%) !important;
 }
 
-/* Bottom strap line. */
-.founders-page-build69 .founders-hero-exact > .visually-hidden::after{
-  content:"BUILT FROM EXPERIENCE.  DRIVEN BY PURPOSE.";
-  position:absolute;
-  left:clamp(54px,6.35vw,106px);
-  bottom:28px;
-  display:block;
-  color:#1a6f70;
-  font:700 clamp(11px,.95vw,15px)/1.3 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  letter-spacing:.2em;
-  white-space:nowrap;
+.founders-page-build69 .founders-hero-exact.founders111-clean .founders-hero-exact-media::before {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  z-index: 1 !important;
+  right: 3.2% !important;
+  top: 3.5% !important;
+  width: min(29vw, 465px) !important;
+  aspect-ratio: 1 !important;
+  background: url('../assets/images/revitalized-shield-approved-v69.png') center / contain no-repeat !important;
+  opacity: .065 !important;
+  filter: grayscale(.2) sepia(.08) !important;
+  pointer-events: none !important;
 }
 
-/* Existing real anchor remains the active Watch Our Story button. */
-.founders-page-build69 .founders-hero-exact-button{
-  pointer-events:auto!important;
-  position:absolute!important;
-  left:clamp(54px,6.35vw,106px)!important;
-  top:auto!important;
-  bottom:86px!important;
-  width:min(24.5vw,400px)!important;
-  min-width:315px!important;
-  height:76px!important;
-  border-radius:13px!important;
-  z-index:8!important;
-  text-indent:0!important;
-  overflow:visible!important;
-  display:flex!important;
-  align-items:center!important;
-  justify-content:center!important;
-  gap:16px!important;
-  background:linear-gradient(180deg,#075844,#034d3b)!important;
-  border:2px solid #d7a62d!important;
-  color:#f2c64f!important;
-  font:800 clamp(18px,1.45vw,24px)/1 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
-  box-shadow:0 12px 28px rgba(15,75,62,.16)!important;
-}
-.founders-page-build69 .founders-hero-exact-button::before{
-  content:"▶";
-  width:46px;
-  height:46px;
-  border:2px solid #e0b43e;
-  border-radius:50%;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  color:#f5c84d;
-  font-size:18px;
-  line-height:1;
-}
-.founders-page-build69 .founders-hero-exact-button:hover{
-  transform:translateY(-1px)!important;
-  box-shadow:0 15px 34px rgba(15,75,62,.21)!important;
+.founders-page-build69 .founders-hero-exact.founders111-clean .founders-hero-exact-media::after {
+  content: none !important;
+  display: none !important;
 }
 
-@media(max-width:1180px) and (min-width:901px){
-  .founders-page-build69 .founders-hero-exact > .visually-hidden{width:41%!important;padding-left:42px!important}
-  .founders-page-build69 .founders-hero-exact > .visually-hidden h1{font-size:clamp(60px,6vw,86px)}
-  .founders-page-build69 .founders-hero-exact > .visually-hidden p{font-size:17px}
-  .founders-page-build69 .founders-hero-exact-media > img{right:6.2%!important;width:47vw!important;max-height:95%!important}
-  .founders-page-build69 .founders-hero-exact::after{left:40.5%;top:19%;font-size:29px;width:11%}
-  .founders-page-build69 .founders-hero-exact-media::after{right:.6%;font-size:9px}
-  .founders-page-build69 .founders-hero-exact-button{left:42px!important;min-width:290px!important;width:31vw!important}
-  .founders-page-build69 .founders-hero-exact > .visually-hidden::after{left:42px;font-size:11px}
+/* Exact approved portrait. Position and scale only. */
+.founders-page-build69 .founders-hero-exact.founders111-clean .founders-hero-exact-media > img {
+  content: normal !important;
+  position: absolute !important;
+  z-index: 4 !important;
+  right: 6.1% !important;
+  bottom: 0 !important;
+  display: block !important;
+  width: min(51vw, 820px) !important;
+  height: auto !important;
+  max-width: none !important;
+  max-height: 96% !important;
+  margin: 0 !important;
+  object-fit: contain !important;
+  object-position: right bottom !important;
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+  clip-path: none !important;
+  mask: none !important;
+  pointer-events: none !important;
 }
 
-/* Mobile / narrow layouts: preserve readability and keep the exact portrait untouched. */
-@media(max-width:900px){
-  .founders-page-build69 .founders-hero-exact{
-    min-height:0!important;
-    padding:40px 18px 0!important;
-    display:flex!important;
-    flex-direction:column!important;
-    background:linear-gradient(160deg,#eef7f0,#fffaf2 52%,#fff)!important;
-  }
-  .founders-page-build69 .founders-hero-exact::after{
-    position:relative!important;
-    order:2!important;
-    left:auto!important;
-    top:auto!important;
-    width:auto!important;
-    margin:28px auto 0!important;
-    max-width:300px!important;
-    font-size:32px!important;
-    transform:rotate(-4deg)!important;
-  }
-  .founders-page-build69 .founders-hero-exact > .visually-hidden{
-    position:relative!important;
-    order:1!important;
-    left:auto!important;
-    top:auto!important;
-    bottom:auto!important;
-    width:100%!important;
-    max-width:680px!important;
-    padding:0!important;
-    margin:0 auto!important;
-    text-align:center!important;
-  }
-  .founders-page-build69 .founders-hero-exact > .visually-hidden::before{display:none!important}
-  .founders-page-build69 .founders-hero-exact > .visually-hidden::after{
-    position:static!important;
-    margin:18px auto 0!important;
-    font-size:10px!important;
-    letter-spacing:.15em!important;
-    white-space:normal!important;
-  }
-  .founders-page-build69 .founders-hero-exact > .visually-hidden > span{font-size:12px!important;margin-bottom:15px!important}
-  .founders-page-build69 .founders-hero-exact > .visually-hidden h1{font-size:clamp(52px,14vw,82px)!important;line-height:.92!important}
-  .founders-page-build69 .founders-hero-exact > .visually-hidden h1::after{margin:20px auto 24px!important;width:92px!important}
-  .founders-page-build69 .founders-hero-exact > .visually-hidden p{font-size:17px!important;line-height:1.5!important;margin:0 auto 18px!important}
-
-  .founders-page-build69 .founders-hero-exact-media{
-    position:relative!important;
-    order:3!important;
-    inset:auto!important;
-    width:calc(100% + 36px)!important;
-    height:auto!important;
-    min-height:650px!important;
-    margin:6px -18px 0!important;
-    overflow:hidden!important;
-    background:radial-gradient(ellipse at 78% 48%,transparent 0 28%,rgba(201,149,47,.40) 28.2% 28.4%,transparent 28.6% 38%,rgba(201,149,47,.22) 38.2% 38.35%,transparent 38.55%)!important;
-  }
-  .founders-page-build69 .founders-hero-exact-media::before{right:-4%!important;top:6%!important;width:65vw!important;opacity:.055!important}
-  .founders-page-build69 .founders-hero-exact-media::after{right:8px!important;top:auto!important;bottom:100px!important;font-size:9px!important}
-  .founders-page-build69 .founders-hero-exact-media > img{
-    position:relative!important;
-    display:block!important;
-    right:auto!important;
-    bottom:auto!important;
-    width:min(94%,650px)!important;
-    max-height:none!important;
-    margin:0 auto!important;
-    z-index:4!important;
-  }
-  .founders-page-build69 .founders-hero-exact-button{
-    left:50%!important;
-    transform:translateX(-50%)!important;
-    top:auto!important;
-    bottom:20px!important;
-    width:min(calc(100% - 36px),420px)!important;
-    min-width:0!important;
-    height:64px!important;
-    font-size:18px!important;
-  }
-  .founders-page-build69 .founders-hero-exact-button:hover{transform:translateX(-50%) translateY(-1px)!important}
+/* Main hero copy stays live HTML, not baked into an image. */
+.founders-page-build69 .founders-hero-exact.founders111-clean > .visually-hidden {
+  position: absolute !important;
+  z-index: 6 !important;
+  left: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  width: 41% !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: clamp(82px, 6vw, 102px) 0 0 clamp(54px, 6.35vw, 106px) !important;
+  overflow: visible !important;
+  clip: auto !important;
+  white-space: normal !important;
+  border: 0 !important;
+  text-align: left !important;
 }
 
-@media(max-width:520px){
-  .founders-page-build69 .founders-hero-exact{padding-inline:16px!important}
-  .founders-page-build69 .founders-hero-exact > .visually-hidden h1{font-size:clamp(48px,15vw,68px)!important}
-  .founders-page-build69 .founders-hero-exact > .visually-hidden p{font-size:16px!important;line-height:1.45!important}
-  .founders-page-build69 .founders-hero-exact-media{width:calc(100% + 32px)!important;margin-inline:-16px!important;min-height:575px!important}
-  .founders-page-build69 .founders-hero-exact-media > img{width:100%!important}
-  .founders-page-build69 .founders-hero-exact-media::after{font-size:8px!important;right:5px!important}
-  .founders-page-build69 .founders-hero-exact-button{font-size:17px!important;gap:11px!important}
-  .founders-page-build69 .founders-hero-exact-button::before{width:38px!important;height:38px!important;font-size:16px!important}
+.founders-page-build69 .founders-hero-exact.founders111-clean > .visually-hidden > span {
+  display: block !important;
+  margin: 0 0 20px !important;
+  color: #216b67 !important;
+  font: 800 clamp(13px, 1.05vw, 17px)/1.2 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  letter-spacing: .23em !important;
+  text-transform: uppercase !important;
+}
+
+.founders-page-build69 .founders-hero-exact.founders111-clean > .visually-hidden h1 {
+  position: relative !important;
+  margin: 0 !important;
+  color: #073f33 !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: clamp(68px, 6.05vw, 102px) !important;
+  line-height: .88 !important;
+  letter-spacing: -.045em !important;
+  font-weight: 600 !important;
+}
+
+.founders-page-build69 .founders-hero-exact.founders111-clean > .visually-hidden h1::after {
+  content: "" !important;
+  display: block !important;
+  width: 124px !important;
+  height: 4px !important;
+  margin: 28px 0 28px !important;
+  background: linear-gradient(90deg, #b97e19, #e3b94b) !important;
+}
+
+.founders-page-build69 .founders-hero-exact.founders111-clean > .visually-hidden p {
+  max-width: 565px !important;
+  margin: 0 0 22px !important;
+  color: #244f7b !important;
+  font-size: clamp(17px, 1.28vw, 22px) !important;
+  line-height: 1.4 !important;
+}
+
+.founders-page-build69 .founders-hero-exact.founders111-clean > .visually-hidden::before,
+.founders-page-build69 .founders-hero-exact.founders111-clean > .visually-hidden::after {
+  content: none !important;
+  display: none !important;
+}
+
+.founders-page-build69 .founders-hero-exact.founders111-clean .founders-hero-exact-button {
+  pointer-events: auto !important;
+  position: absolute !important;
+  z-index: 9 !important;
+  left: clamp(54px, 6.35vw, 106px) !important;
+  top: auto !important;
+  bottom: 74px !important;
+  width: min(24.5vw, 400px) !important;
+  min-width: 315px !important;
+  height: 72px !important;
+  margin: 0 !important;
+  padding: 0 24px !important;
+  border: 2px solid #d7a62d !important;
+  border-radius: 13px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 16px !important;
+  background: linear-gradient(180deg, #075844, #034d3b) !important;
+  color: #f2c64f !important;
+  font: 800 clamp(18px, 1.45vw, 24px)/1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  text-indent: 0 !important;
+  box-shadow: 0 12px 28px rgba(15,75,62,.16) !important;
+  overflow: visible !important;
+}
+
+.founders-page-build69 .founders-hero-exact.founders111-clean .founders-hero-exact-button::before {
+  content: "▶" !important;
+  display: inline-flex !important;
+  width: 44px !important;
+  height: 44px !important;
+  flex: 0 0 44px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 2px solid #e0b43e !important;
+  border-radius: 50% !important;
+  color: #f5c84d !important;
+  font-size: 17px !important;
+}
+
+.founders-page-build69 .founders-hero-exact.founders111-clean .founders-hero-exact-button::after {
+  content: none !important;
+  display: none !important;
+}
+
+.founders-page-build69 .founders-hero-exact.founders111-clean .founders-hero-exact-button:hover,
+.founders-page-build69 .founders-hero-exact.founders111-clean .founders-hero-exact-button:focus-visible {
+  transform: translateY(-1px) !important;
+  background: linear-gradient(180deg, #08634c, #054f3d) !important;
+  box-shadow: 0 15px 34px rgba(15,75,62,.21) !important;
+  outline: 2px solid rgba(224,180,62,.72) !important;
+  outline-offset: 2px !important;
+}
+
+@media (max-width: 1180px) and (min-width: 901px) {
+  .founders-page-build69 .founders-hero-exact.founders111-clean > .visually-hidden {
+    width: 43% !important;
+    padding-left: 42px !important;
+  }
+
+  .founders-page-build69 .founders-hero-exact.founders111-clean > .visually-hidden h1 {
+    font-size: clamp(60px, 6vw, 86px) !important;
+  }
+
+  .founders-page-build69 .founders-hero-exact.founders111-clean > .visually-hidden p {
+    font-size: 17px !important;
+  }
+
+  .founders-page-build69 .founders-hero-exact.founders111-clean .founders-hero-exact-media > img {
+    right: 4.2% !important;
+    width: 52vw !important;
+    max-height: 95% !important;
+  }
+
+  .founders-page-build69 .founders-hero-exact.founders111-clean .founders-hero-exact-button {
+    left: 42px !important;
+    min-width: 290px !important;
+    width: 31vw !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .founders-page-build69 .founders-hero-exact.founders111-clean {
+    min-height: 0 !important;
+    padding: 40px 18px 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    background: linear-gradient(160deg, #eef7f0 0%, #fffaf2 52%, #fff 100%) !important;
+  }
+
+  .founders-page-build69 .founders-hero-exact.founders111-clean > .visually-hidden {
+    position: relative !important;
+    order: 1 !important;
+    left: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    width: 100% !important;
+    max-width: 680px !important;
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+  }
+
+  .founders-page-build69 .founders-hero-exact.founders111-clean > .visually-hidden > span {
+    font-size: 12px !important;
+    margin-bottom: 15px !important;
+  }
+
+  .founders-page-build69 .founders-hero-exact.founders111-clean > .visually-hidden h1 {
+    font-size: clamp(52px, 14vw, 82px) !important;
+    line-height: .92 !important;
+  }
+
+  .founders-page-build69 .founders-hero-exact.founders111-clean > .visually-hidden h1::after {
+    width: 92px !important;
+    margin: 20px auto 24px !important;
+  }
+
+  .founders-page-build69 .founders-hero-exact.founders111-clean > .visually-hidden p {
+    max-width: 600px !important;
+    margin: 0 auto 18px !important;
+    font-size: 17px !important;
+    line-height: 1.5 !important;
+  }
+
+  .founders-page-build69 .founders-hero-exact.founders111-clean .founders-hero-exact-media {
+    position: relative !important;
+    order: 2 !important;
+    inset: auto !important;
+    width: calc(100% + 36px) !important;
+    height: auto !important;
+    min-height: 640px !important;
+    margin: 12px -18px 0 !important;
+    background:
+      radial-gradient(circle at 70% 47%,
+        transparent 0 27%,
+        rgba(201,149,47,.48) 27.2% 27.45%,
+        transparent 27.65% 36%,
+        rgba(201,149,47,.28) 36.2% 36.42%,
+        transparent 36.62% 45%,
+        rgba(201,149,47,.16) 45.2% 45.4%,
+        transparent 45.6% 100%) !important;
+  }
+
+  .founders-page-build69 .founders-hero-exact.founders111-clean .founders-hero-exact-media::before {
+    right: -2% !important;
+    top: 5% !important;
+    width: min(65vw, 430px) !important;
+    opacity: .055 !important;
+  }
+
+  .founders-page-build69 .founders-hero-exact.founders111-clean .founders-hero-exact-media > img {
+    position: relative !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: min(100%, 650px) !important;
+    height: auto !important;
+    max-width: 650px !important;
+    max-height: none !important;
+    margin: 0 auto !important;
+    object-position: center bottom !important;
+  }
+
+  .founders-page-build69 .founders-hero-exact.founders111-clean .founders-hero-exact-button {
+    left: 50% !important;
+    top: auto !important;
+    bottom: 18px !important;
+    width: min(calc(100% - 36px), 420px) !important;
+    min-width: 0 !important;
+    height: 64px !important;
+    transform: translateX(-50%) !important;
+    font-size: 18px !important;
+  }
+
+  .founders-page-build69 .founders-hero-exact.founders111-clean .founders-hero-exact-button:hover,
+  .founders-page-build69 .founders-hero-exact.founders111-clean .founders-hero-exact-button:focus-visible {
+    transform: translateX(-50%) translateY(-1px) !important;
+  }
+}
+
+@media (max-width: 520px) {
+  .founders-page-build69 .founders-hero-exact.founders111-clean {
+    padding-inline: 16px !important;
+  }
+
+  .founders-page-build69 .founders-hero-exact.founders111-clean > .visually-hidden h1 {
+    font-size: clamp(48px, 15vw, 68px) !important;
+  }
+
+  .founders-page-build69 .founders-hero-exact.founders111-clean > .visually-hidden p {
+    font-size: 16px !important;
+    line-height: 1.45 !important;
+  }
+
+  .founders-page-build69 .founders-hero-exact.founders111-clean .founders-hero-exact-media {
+    width: calc(100% + 32px) !important;
+    min-height: 560px !important;
+    margin-inline: -16px !important;
+  }
+
+  .founders-page-build69 .founders-hero-exact.founders111-clean .founders-hero-exact-media > img {
+    width: 100% !important;
+  }
+
+  .founders-page-build69 .founders-hero-exact.founders111-clean .founders-hero-exact-button {
+    font-size: 17px !important;
+    gap: 11px !important;
+  }
+
+  .founders-page-build69 .founders-hero-exact.founders111-clean .founders-hero-exact-button::before {
+    width: 38px !important;
+    height: 38px !important;
+    flex-basis: 38px !important;
+    font-size: 15px !important;
+  }
 }
