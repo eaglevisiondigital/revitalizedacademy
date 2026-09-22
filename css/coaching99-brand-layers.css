@@ -32,7 +32,7 @@
 #coaching .ra76-signature{width:100%;max-width:306px;margin:0 0 0;padding:0}
 #coaching .ra76-signature img{display:block;width:100%;height:auto;max-width:100%;filter:none;transform:none}
 #coaching .ra76-comparison{grid-column:4 / 7;grid-row:1;position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,20.81fr) minmax(64px,5.58fr) minmax(0,25.79fr);gap:0;align-self:start;align-items:stretch;margin:0;padding:0}
-#coaching .ra76-comparison::after{content:'BETTER\A INFORMATION\A BRIGHTER\A TOMORROWS';position:absolute;left:calc(100% + 2.43vw);top:22px;color:#00483e;font-size:clamp(11px,.79vw,13px);font-weight:700;line-height:1.7;letter-spacing:.21em;white-space:pre;padding-bottom:14px;border-bottom:1px solid #d69b21;}
+#coaching .ra76-comparison::after{content:none;display:none;}
 #coaching .ra76-compare{display:flex;flex-direction:column;min-width:0;overflow:hidden;margin:0;padding:0;border:1px solid #e5e5df;border-radius:17px;background:linear-gradient(150deg,#fff,#fffefd);box-shadow:0 14px 30px #43513a26;}
 #coaching .ra76-compare-head{display:flex;align-items:center;gap:12px;margin:0;padding:18px 20px 14px;min-height:76px}
 #coaching .ra76-compare-head h3{font-family:Georgia,'Times New Roman',serif;color:#080e1a;font-size:clamp(24px,1.79vw,30px);font-weight:700;line-height:1.06;letter-spacing:-.04em;margin:0;padding:0;}
