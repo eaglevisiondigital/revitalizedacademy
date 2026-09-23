@@ -27,3 +27,9 @@
 .ra-webinar-limit{padding:6px 9px;border:1px solid rgba(242,204,112,.35);border-radius:999px;color:#efca65;font-size:9px;font-weight:900;letter-spacing:.1em}.ra-webinar-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:18px}.ra-webinar-stats div{padding:12px 10px;border:1px solid rgba(255,255,255,.1);border-radius:12px;background:rgba(255,255,255,.05)}.ra-webinar-stats strong{display:block;color:#f3cd68;font-family:Georgia,"Times New Roman",serif;font-size:25px}.ra-webinar-stats span{display:block;margin-top:4px;color:#cbdad3;font-size:8px;line-height:1.35}.ra-seat-bar{height:7px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden;margin-top:14px}.ra-seat-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#d8a62a,#f1d276);transition:width .35s ease}
 .ra-pipeline-mini{display:grid;gap:8px;margin-top:15px}.ra-pipeline-mini div{display:flex;justify-content:space-between;align-items:center;padding:10px 11px;border-bottom:1px solid #eeeae2}.ra-pipeline-mini div:last-child{border-bottom:0}.ra-pipeline-mini span{font-size:10px;color:#78837c}.ra-pipeline-mini b{color:var(--green);font-size:17px}
 @media(max-width:1180px){.ra-executive-grid{grid-template-columns:1fr 1fr}.ra-executive-card:last-child{grid-column:1/-1}}@media(max-width:760px){.ra-executive-grid{grid-template-columns:1fr}.ra-executive-card:last-child{grid-column:auto}.ra-webinar-stats{grid-template-columns:1fr 1fr 1fr}}
+
+/* Build 107: ReFuel admin visibility */
+.ra-status.refuel{background:#eef6e8;color:#496b30;border:1px solid rgba(90,128,57,.14)}
+.ra-person-journey{grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){.ra-person-journey{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.ra-person-journey{grid-template-columns:1fr}}
