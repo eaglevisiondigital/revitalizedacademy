@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
   <title>ReVitalized Academy | Team Dashboard</title>
-  <link rel="stylesheet" href="css/admin104.css?v=104">
+  <link rel="stylesheet" href="css/admin104.css?v=105">
 </head>
 <body class="ra-admin">
   <div class="ra-admin-bg" aria-hidden="true"></div>
@@ -115,6 +115,22 @@
       <article><span>Enrollment</span><strong id="person-enrollment-status">Not started</strong><div><i id="person-enrollment-bar"></i></div><small id="person-enrollment-percent">0%</small></article>
     </div>
 
+    <section class="ra-person-command">
+      <div class="ra-person-command-head"><span class="ra-admin-eyebrow">RELATIONSHIP MANAGEMENT</span><strong>Next best action</strong></div>
+      <div class="ra-person-command-grid">
+        <label>Follow-up status<select id="person-followup-status">
+          <option value="new">New</option><option value="needs_follow_up">Needs follow-up</option><option value="contacted">Contacted</option><option value="consultation_scheduled">Consultation scheduled</option><option value="consultation_completed">Consultation completed</option><option value="nurture">Nurture</option><option value="not_ready">Not ready</option><option value="closed">Closed</option>
+        </select></label>
+        <label>Consultation<select id="person-consult-status">
+          <option value="not_scheduled">Not scheduled</option><option value="scheduled">Scheduled</option><option value="completed">Completed</option><option value="cancelled">Cancelled</option>
+        </select></label>
+        <label>Next follow-up<input id="person-followup-date" type="datetime-local"></label>
+      </div>
+      <div class="ra-person-quick-actions"><a id="person-email-link" href="#">Email</a><a id="person-phone-link" href="#">Call / Text</a><button id="person-save-status" type="button">Save Status</button></div>
+      <div class="ra-tag-row" id="person-tags"></div>
+      <form class="ra-tag-form" id="person-tag-form"><input id="person-tag-input" maxlength="80" placeholder="Add tag, e.g. Hot Lead"><button>Add</button></form>
+    </section>
+
     <section class="ra-person-section">
       <div class="ra-person-section-head"><h3>Known Information</h3><span>Shared across the journey</span></div>
       <div class="ra-facts-grid" id="person-facts"></div>
@@ -123,6 +139,17 @@
     <section class="ra-person-section">
       <div class="ra-person-section-head"><h3>Recent Answers</h3><span>Assessment + enrollment</span></div>
       <div class="ra-answer-list" id="person-answers"></div>
+    </section>
+
+    <section class="ra-person-section">
+      <div class="ra-person-section-head"><h3>Activity Timeline</h3><span>What has happened</span></div>
+      <div class="ra-activity-list" id="person-activity"></div>
+    </section>
+
+    <section class="ra-person-section">
+      <div class="ra-person-section-head"><h3>Follow-up Tasks</h3><span>Keep the relationship moving</span></div>
+      <form id="person-task-form" class="ra-task-form"><input id="person-task-title" maxlength="200" placeholder="Follow up after webinar"><input id="person-task-due" type="datetime-local"><select id="person-task-priority"><option value="normal">Normal</option><option value="high">High</option><option value="urgent">Urgent</option><option value="low">Low</option></select><button>Add Task</button></form>
+      <div class="ra-task-list" id="person-tasks"></div>
     </section>
 
     <section class="ra-person-section">
@@ -136,6 +163,6 @@
   </aside>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="js/admin104.js?v=104"></script>
+  <script src="js/admin104.js?v=105"></script>
 </body>
 </html>
