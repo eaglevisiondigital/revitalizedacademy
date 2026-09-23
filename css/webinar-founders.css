@@ -172,3 +172,72 @@ body.wf-page{margin:0;background:#fff;color:var(--wf-ink);font-family:Inter,ui-s
     height:26px;
   }
 }
+
+
+/* Build 83 - compact priority CTA, prevent stretched button */
+.wf-hero-actions{
+  align-items:center;
+}
+.wf-hero-actions .wf-button{
+  width:auto;
+  min-width:310px;
+  max-width:390px;
+  min-height:64px;
+  height:auto;
+  align-self:center;
+  padding:14px 22px;
+  border-radius:14px;
+  font-size:16px;
+  line-height:1.18;
+}
+.wf-hero-actions .wf-button span{
+  font-size:24px;
+}
+.wf-payment-note{
+  min-height:0;
+  padding:14px 18px 14px 52px;
+  border-radius:15px;
+  font-size:13px;
+  line-height:1.42;
+}
+.wf-payment-note::before{
+  left:15px;
+  top:15px;
+  width:26px;
+  height:26px;
+}
+.wf-payment-note strong{
+  font-size:12px;
+  margin-bottom:3px;
+}
+
+@media(max-width:1100px){
+  .wf-hero-actions{
+    grid-template-columns:minmax(280px,360px) minmax(300px,1fr);
+    max-width:720px;
+    align-items:center;
+  }
+  .wf-hero-actions .wf-button{
+    width:100%;
+    min-width:0;
+    max-width:none;
+    min-height:64px;
+  }
+}
+
+@media(max-width:760px){
+  .wf-hero-actions{
+    grid-template-columns:1fr;
+    max-width:100%;
+  }
+  .wf-hero-actions .wf-button{
+    width:100%;
+    max-width:420px;
+    justify-self:center;
+  }
+  .wf-payment-note{
+    width:100%;
+    max-width:520px;
+    justify-self:center;
+  }
+}
