@@ -1,0 +1,6 @@
+/* APPROVED CHANGE ONLY — Webinar hero 50-seat card width/alignment */
+.wf-page .wf-seat-card{
+  width:100%;
+  max-width:820px;
+  padding:16px 24px;
+}

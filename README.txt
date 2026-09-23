@@ -1,22 +1,24 @@
-BUILD 67 — FOUNDERS HERO CLEAN REBUILD ONLY
+ReVitalized Academy Webinar Hero Seat Card — APPROVED CHANGE ONLY
 
-Upload/replace these files in the repo:
-- founders.html
-- css/founders67.css
-- assets/images/justyn-elle-approved-untouched.png
-- assets/images/revitalized-icon-approved.png
+Purpose:
+Make the top "Only 50 seats" card slightly wider so it visually balances better with the CTA row beneath it.
 
-WHAT CHANGED
-- Old Founders hero implementation is bypassed by a new isolated stylesheet.
-- The approved mockup is recreated with real layered HTML/CSS:
-  * live text on the left
-  * subtle sage sweep and curved gold transition
-  * botanical artwork
-  * gold circular linework
-  * ReVitalized shield watermark
-  * Stronger People / Brighter Tomorrows script
-  * Healthier People / Brighter Futures side label
-  * Watch Our Story CTA
-- The Justyn & Elle asset is copied directly from the approved source and is not edited.
-- Their heads remain fully visible on desktop/tablet/mobile.
-- Everything below the hero is untouched.
+Target file:
+css/webinar-founders.css
+
+Approved change only:
+- Add width: 100%;
+- Change max-width from 640px to 820px
+- Change padding from 16px 18px to 16px 24px
+
+No other files or styles should be changed.
+
+Safest implementation:
+Append the contents of "webinar-seat-card-override.css" to the END of css/webinar-founders.css.
+Because this is an override, it avoids editing or replacing any unrelated existing CSS.
+
+Expected visual result:
+- The 50-seat card extends farther to the right
+- Better visual alignment with the CTA / "No Payment Today" row below
+- Same card height, colors, typography, icon, and content
+- No changes to mobile behavior beyond inheriting the existing responsive layout

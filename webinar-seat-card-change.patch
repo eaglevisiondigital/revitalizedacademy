@@ -1,0 +1,13 @@
+--- a/css/webinar-founders.css
++++ b/css/webinar-founders.css
+@@ -6,7 +6,8 @@
+   border:1px solid #d8e1dc;
+   background:rgba(255,255,255,.82);
+   border-radius:16px;
+-  padding:16px 18px;
+-  max-width:640px;
++  padding:16px 24px;
++  width:100%;
++  max-width:820px;
+   box-shadow:0 12px 35px rgba(21,71,52,.07)
+ }
