@@ -2,6 +2,27 @@
   const ENDPOINT = 'https://voalfpxiyznnqfcqcymd.supabase.co/functions/v1/public-intake';
   const API_KEY = 'sb_publishable_09WCwErmz_KpKsI7AtlHyg_SQtHWmZd';
 
+  const updateWebinarCounter = (count) => {
+    document.querySelectorAll('[data-webinar-priority-count]').forEach(el => el.textContent = String(count));
+    document.querySelectorAll('[data-webinar-counter-copy]').forEach(el => {
+      el.textContent = count > 0
+        ? count + (count === 1 ? ' person has' : ' people have') + ' already joined the priority list.'
+        : 'Be among the first to pre-register.';
+    });
+  };
+
+  const loadWebinarCounter = () => {
+    if (!document.querySelector('[data-webinar-priority-count]')) return;
+    fetch(ENDPOINT + '?event_slug=founders-webinar-2026', {
+      method: 'GET',
+      headers: { 'apikey': API_KEY },
+      cache: 'no-store'
+    })
+      .then(r => r.ok ? r.json() : null)
+      .then(data => { if (data && Number.isFinite(Number(data.priority_count))) updateWebinarCounter(Number(data.priority_count)); })
+      .catch(() => {});
+  };
+
   const send = (payload) => {
     fetch(ENDPOINT, {
       method: 'POST',
@@ -11,8 +32,17 @@
       },
       body: JSON.stringify(payload),
       keepalive: true
-    }).catch(() => {});
+    })
+      .then(r => r.ok ? r.json() : null)
+      .then(data => {
+        if (data && payload.type === 'webinar' && Number.isFinite(Number(data.registration_count))) {
+          updateWebinarCounter(Number(data.registration_count));
+        }
+      })
+      .catch(() => {});
   };
+
+  loadWebinarCounter();
 
   document.addEventListener('submit', (event) => {
     const form = event.target;
