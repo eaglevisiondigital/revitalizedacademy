@@ -5081,3 +5081,102 @@ a.btn.btn-secondary[href="#matrix-videos"],
   .vitality-popup-webinar h4{font-size:21px}
   .vitality-popup-webinar-badge{font-size:10px;line-height:1.35}
 }
+
+
+/* Build 93 - clarify two distinct next-step paths in homepage vitality popup */
+.vitality-popup-dual .vitality-popup-body{
+  padding-top:20px;
+}
+.vitality-popup-path-label{
+  margin:0 0 10px;
+  color:#6f5a21;
+  font-size:10px;
+  line-height:1.2;
+  font-weight:900;
+  letter-spacing:.12em;
+  text-align:center;
+}
+.vitality-popup-path-label-webinar{
+  margin-bottom:8px;
+  color:#154734;
+}
+.vitality-popup-dual .vitality-popup-actions{
+  margin:0;
+}
+.vitality-popup-dual .vitality-popup-start.vitality-primary-cta{
+  min-height:58px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid #f1d37b;
+  border-radius:12px;
+  background:linear-gradient(180deg,#f0c856 0%,#d8a62a 100%);
+  color:#123d30!important;
+  box-shadow:0 12px 26px rgba(177,136,69,.22),inset 0 1px 0 rgba(255,255,255,.38);
+}
+.vitality-popup-dual .vitality-popup-start.vitality-primary-cta:hover{
+  background:linear-gradient(180deg,#f6d36d 0%,#dfb13c 100%);
+  color:#0c3529!important;
+  transform:translateY(-1px);
+}
+.vitality-popup-or{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin:18px 0 14px;
+  color:#8a6a2f;
+}
+.vitality-popup-or span{
+  flex:1 1 auto;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(177,136,69,.42),transparent);
+}
+.vitality-popup-or b{
+  flex:0 0 auto;
+  display:grid;
+  place-items:center;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  border:1px solid rgba(177,136,69,.34);
+  background:#fffaf3;
+  color:#8a6a2f;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.08em;
+}
+.vitality-popup-webinar{
+  margin-top:0;
+  padding-top:0;
+  border-top:0;
+}
+.vitality-popup-webinar h4{
+  font-size:23px;
+  margin-bottom:8px;
+}
+.vitality-popup-webinar p{
+  max-width:520px;
+  margin-bottom:14px;
+}
+.vitality-popup-webinar-cta{
+  border:1px solid #d8a62a;
+  background:linear-gradient(180deg,#185942 0%,#0b382a 100%);
+  color:#fff!important;
+  box-shadow:0 10px 24px rgba(11,56,42,.15);
+}
+.vitality-popup-webinar-cta:hover{
+  border-color:#f0c856;
+  box-shadow:0 12px 28px rgba(11,56,42,.19);
+}
+@media(max-width:640px){
+  .vitality-popup-path-label{
+    font-size:9px;
+    letter-spacing:.09em;
+  }
+  .vitality-popup-or{
+    margin:16px 0 12px;
+  }
+  .vitality-popup-webinar h4{
+    font-size:21px;
+  }
+}
