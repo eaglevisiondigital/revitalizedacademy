@@ -238,3 +238,112 @@
   .wf-page .wf-promo-proof span{font-size:9.5px}
   .wf-page .wf-promo-disclaimer{font-size:8px}
 }
+
+
+/* Build 3 - align the promo stack with the hero and reduce visual heaviness */
+.wf-page .wf-hero-visual.wf-hero-promo-stack{
+  align-self:start;
+  gap:14px;
+  width:100%;
+  max-width:560px;
+  justify-self:end;
+}
+.wf-page .wf-webinar-promo{
+  padding:22px 24px 19px;
+  border-radius:20px;
+}
+.wf-page .wf-promo-topline{
+  margin-bottom:8px;
+}
+.wf-page .wf-promo-heading{
+  font-size:clamp(31px,2.55vw,40px);
+  line-height:1.02;
+}
+.wf-page .wf-promo-copy{
+  margin:10px 0 14px;
+  font-size:13.5px;
+  line-height:1.45;
+}
+.wf-page .wf-promo-proof{
+  margin-bottom:13px;
+  gap:9px;
+}
+.wf-page .wf-promo-proof>div{
+  padding:11px 12px 10px;
+}
+.wf-page .wf-promo-proof strong{
+  font-size:23px;
+}
+.wf-page .wf-promo-cta{
+  min-height:52px;
+  padding:12px 17px;
+  font-size:15px;
+}
+.wf-page .wf-promo-note{
+  margin-top:9px;
+  line-height:1.4;
+}
+.wf-page .wf-promo-disclaimer{
+  margin-top:5px;
+}
+.wf-page .wf-hero-promo-stack .wf-photo-frame{
+  min-height:0;
+  height:360px;
+  border-radius:22px;
+  overflow:hidden;
+  background:linear-gradient(180deg,#f0f6f2,#e8f1eb);
+  box-shadow:0 18px 38px rgba(21,71,52,.10);
+}
+.wf-page .wf-hero-promo-stack .wf-photo-frame>img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center bottom;
+}
+.wf-page .wf-hero-promo-stack .wf-photo-badge{
+  left:18px;
+  right:18px;
+  bottom:18px;
+  padding:15px 17px;
+  border-radius:14px;
+}
+.wf-page .wf-hero-promo-stack .wf-photo-badge span{
+  font-size:9.5px;
+}
+.wf-page .wf-hero-promo-stack .wf-photo-badge strong{
+  font-size:22px;
+  line-height:1.08;
+}
+
+@media(max-width:1180px){
+  .wf-page .wf-hero-visual.wf-hero-promo-stack{
+    max-width:520px;
+  }
+  .wf-page .wf-hero-promo-stack .wf-photo-frame{
+    height:330px;
+  }
+}
+@media(max-width:980px){
+  .wf-page .wf-hero-visual.wf-hero-promo-stack{
+    max-width:700px;
+    justify-self:center;
+  }
+  .wf-page .wf-hero-promo-stack .wf-photo-frame{
+    height:430px;
+  }
+}
+@media(max-width:680px){
+  .wf-page .wf-webinar-promo{
+    padding:19px 17px 17px;
+  }
+  .wf-page .wf-promo-heading{
+    font-size:clamp(29px,8vw,35px);
+  }
+  .wf-page .wf-hero-promo-stack .wf-photo-frame{
+    height:auto;
+    min-height:0;
+  }
+  .wf-page .wf-hero-promo-stack .wf-photo-frame>img{
+    height:auto;
+  }
+}
