@@ -32,3 +32,95 @@
     width:min(96%,620px);right:auto;max-height:none;
   }
 }
+
+
+/* Build 109 - mobile homepage hero cleanup */
+@media(max-width:840px){
+  #about.hero54{
+    display:flex!important;
+    flex-direction:column!important;
+    min-height:0!important;
+    overflow:hidden!important;
+    background:#073f33!important;
+  }
+  #about.hero54::before{display:none!important;}
+  #about.hero54 > .hero54-bg{
+    position:absolute!important;
+    inset:0!important;
+    width:100%!important;
+    height:100%!important;
+    object-fit:cover!important;
+    object-position:left top!important;
+    opacity:.98;
+  }
+  #about.hero54 > .hero54-founders{
+    position:relative!important;
+    order:1!important;
+    inset:auto!important;
+    width:100%!important;
+    max-width:none!important;
+    height:auto!important;
+    max-height:none!important;
+    margin:0!important;
+    object-fit:contain!important;
+    object-position:center bottom!important;
+    filter:drop-shadow(0 8px 18px rgba(14,42,30,.10))!important;
+    z-index:1!important;
+  }
+  #about.hero54 .hero54-copy{
+    position:relative!important;
+    order:2!important;
+    z-index:2!important;
+    width:100%!important;
+    max-width:none!important;
+    margin:0!important;
+    padding:28px 20px 34px!important;
+    background:linear-gradient(180deg,rgba(4,67,53,.98),#064537 42%,#073f33 100%)!important;
+  }
+  #about.hero54 .hero54-eyebrow{
+    margin:0 0 14px!important;
+    font-size:11px!important;
+    line-height:1.35!important;
+    letter-spacing:.12em!important;
+  }
+  #about.hero54 h1{
+    max-width:11.5em!important;
+    margin:0 0 18px!important;
+    font-size:clamp(43px,12vw,58px)!important;
+    line-height:.96!important;
+    letter-spacing:-.045em!important;
+  }
+  #about.hero54 .hero54-sub{
+    margin:0 0 14px!important;
+    font-size:19px!important;
+    line-height:1.35!important;
+  }
+  #about.hero54 .hero54-text{
+    max-width:none!important;
+    margin:0 0 22px!important;
+    font-size:15.5px!important;
+    line-height:1.6!important;
+  }
+  #about.hero54 .hero54-actions{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:12px!important;
+  }
+  #about.hero54 .hero54-btn{
+    width:100%!important;
+    min-height:58px!important;
+    padding:14px 16px!important;
+    font-size:16px!important;
+  }
+  #about.hero54 .hero54-note{
+    margin:18px 0 0!important;
+    font-size:13px!important;
+    line-height:1.45!important;
+  }
+}
+@media(max-width:430px){
+  #about.hero54 h1{
+    font-size:clamp(40px,12vw,52px)!important;
+    max-width:10.5em!important;
+  }
+}
