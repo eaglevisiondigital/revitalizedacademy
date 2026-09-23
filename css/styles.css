@@ -5063,3 +5063,21 @@ a.btn.btn-secondary[href="#matrix-videos"],
 .legal-hero{max-width:900px;margin:0 auto;padding:78px 0 36px;text-align:center}.legal-hero h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(42px,6vw,66px);line-height:1.04;color:#154734;letter-spacing:-.03em;margin:18px 0 15px}.legal-hero h1 em{color:#B18845;font-style:normal}.legal-hero>p{max-width:720px;margin:0 auto;color:#59675F;font-size:17px;line-height:1.65}
 .legal-card{max-width:900px;margin:0 auto;padding:42px 48px;border:1px solid rgba(177,136,69,.3);border-radius:24px;background:#FFFCF8;box-shadow:0 24px 65px rgba(21,71,52,.09)}.legal-card section{padding:0 0 25px;margin:0 0 25px;border-bottom:1px solid #E8E0D5}.legal-card section:last-of-type{margin-bottom:20px}.legal-card h2{font-family:Georgia,"Times New Roman",serif;color:#154734;font-size:25px;margin:0 0 10px}.legal-card p{color:#4F5C55;font-size:15px;line-height:1.75;margin:0}.legal-card .legal-copyright{color:#154734;font-weight:800;text-align:center;font-size:13px}
 @media(max-width:650px){.results-disclaimer{margin-top:18px}.legal-page{padding:0 14px 48px}.legal-hero{padding:52px 10px 28px}.legal-hero>p{font-size:15px}.legal-card{padding:30px 22px;border-radius:18px}.legal-card h2{font-size:22px}.legal-card p{font-size:14px}.footer-bottom span:last-child{line-height:1.8;text-align:center}}
+
+/* BUILD 104 - DUAL-ACTION DELAYED POPUP */
+.vitality-popup-dual{width:min(620px,100%)}
+.vitality-popup-dual .vitality-popup-body{padding-top:22px}
+.vitality-popup-dual .vitality-popup-actions{display:block}
+.vitality-popup-dual .vitality-popup-actions a{display:block;width:100%}
+.vitality-popup-webinar{margin-top:20px;padding-top:20px;border-top:1px solid rgba(177,136,69,.28);text-align:center}
+.vitality-popup-webinar-badge{display:inline-block;margin-bottom:10px;padding:7px 10px;border-radius:999px;background:rgba(21,71,52,.08);color:#154734;font-size:11px;font-weight:900;letter-spacing:.08em}
+.vitality-popup-webinar h4{margin:0 0 8px;color:#154734;font-family:Georgia,"Times New Roman",serif;font-size:24px;line-height:1.12}
+.vitality-popup-webinar p{margin:0 auto 15px;max-width:510px;color:#5d6962;font-size:14px;line-height:1.55}
+.vitality-popup-webinar-cta{display:block;width:100%;padding:14px 17px;border:1px solid #154734;border-radius:11px;background:linear-gradient(180deg,#185942 0%,#0B382A 100%);color:#fff;text-align:center;text-decoration:none;font-weight:900;box-shadow:0 10px 24px rgba(11,56,42,.15)}
+.vitality-popup-webinar-cta:hover{transform:translateY(-1px)}
+.vitality-popup-later{display:block;margin:12px auto 0}
+@media(max-width:650px){
+  .vitality-popup-dual{max-height:92vh;overflow:auto}
+  .vitality-popup-webinar h4{font-size:21px}
+  .vitality-popup-webinar-badge{font-size:10px;line-height:1.35}
+}
