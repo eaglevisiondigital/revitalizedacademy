@@ -36,6 +36,7 @@
       const fd = new FormData(form);
       const fullName = String(fd.get('full_name') || '').trim();
       const parts = fullName.split(/\s+/);
+      const checkedProgram = form.querySelector('input[name="program_interest"]:checked');
       send({
         type: 'enrollment_start',
         source: 'website_enrollment',
@@ -43,7 +44,17 @@
         last_name: parts.join(' '),
         email: fd.get('email'),
         phone: fd.get('phone'),
-        website: fd.get('bot-field') || ''
+        website: fd.get('bot-field') || '',
+        answers: {
+          enrollment_for: fd.get('enrollment_for'),
+          completed_by_name: fd.get('completed_by_name'),
+          age: fd.get('age'),
+          sex: fd.get('sex'),
+          referral_source: fd.get('referral_source'),
+          biggest_goals: fd.get('biggest_goals'),
+          program_interest: checkedProgram ? checkedProgram.value : '',
+          start_timeline: fd.get('start_timeline')
+        }
       });
       return;
     }
@@ -58,6 +69,7 @@
         last_name: fd.get('last-name'),
         email: fd.get('email'),
         phone: fd.get('phone'),
+        primary_goal: fd.get('primary-goal'),
         referral_source: 'website_webinar',
         website: fd.get('company-site') || ''
       });
