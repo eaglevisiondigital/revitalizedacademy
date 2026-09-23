@@ -1,0 +1,122 @@
+/* Webinar hero promo. Scoped to the webinar only; existing site and Matrix styles stay intact. */
+.wf-page .wf-hero-visual.wf-hero-promo-stack{
+  display:flex;
+  flex-direction:column;
+  align-self:start;
+  gap:16px;
+  min-width:0;
+  width:100%;
+}
+.wf-page .wf-hero-promo-stack .wf-photo-frame{
+  min-height:0;
+  width:100%;
+}
+.wf-page .wf-hero-promo-stack .wf-photo-frame>img{
+  width:100%;
+  height:auto;
+  object-fit:contain;
+  filter:none;
+  transform:none;
+}
+.wf-page .wf-webinar-promo{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  margin:0;
+  padding:24px 26px 21px;
+  border:1px solid #c6a25b;
+  border-radius:22px;
+  background:radial-gradient(ellipse at 100% 0,rgba(216,166,42,.15),transparent 65%),linear-gradient(135deg,#195842,#0c382c);
+  box-shadow:0 18px 40px rgba(21,71,52,.15),inset 0 1px 0 rgba(255,255,255,.12);
+  color:#fff;
+}
+.wf-page .wf-webinar-promo::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  width:230px;
+  height:230px;
+  right:-130px;
+  top:-145px;
+  border:1px solid rgba(239,205,126,.25);
+  border-radius:50%;
+  box-shadow:0 0 0 30px rgba(239,205,126,.04),0 0 0 60px rgba(239,205,126,.03);
+  pointer-events:none;
+}
+.wf-page .wf-promo-eyebrow{
+  margin:0 0 9px;
+  font-size:12px;
+  line-height:1.35;
+  font-weight:850;
+  letter-spacing:.13em;
+  color:#f1cf78;
+}
+.wf-page .wf-promo-heading{
+  margin:0;
+  color:#fff;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(30px,2.65vw,40px);
+  line-height:1.06;
+  letter-spacing:-.035em;
+  font-weight:700;
+  text-wrap:balance;
+}
+.wf-page .wf-promo-heading span{color:#f2d387;white-space:nowrap}
+.wf-page .wf-promo-copy{
+  margin:12px 0 17px;
+  max-width:38em;
+  color:#e6eee8;
+  font-size:14px;
+  line-height:1.5;
+}
+.wf-page .wf-promo-cta{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  width:100%;
+  min-height:52px;
+  padding:13px 18px;
+  border:1px solid #f1d794;
+  border-radius:10px;
+  background:linear-gradient(180deg,#f4d685,#dcaf4a);
+  box-shadow:0 7px 18px rgba(0,0,0,.15);
+  color:#153b2e;
+  text-decoration:none;
+  font-size:15px;
+  font-weight:850;
+  line-height:1.25;
+  text-align:left;
+  transition:background-color .18s ease,box-shadow .18s ease;
+}
+.wf-page .wf-promo-cta>span:last-child{flex:0 0 auto;font-size:23px;line-height:1}
+.wf-page .wf-promo-cta:hover{background:#f4d991;box-shadow:0 9px 22px rgba(0,0,0,.2)}
+.wf-page .wf-promo-cta:focus-visible{outline:3px solid #fff;outline-offset:4px}
+.wf-page .wf-promo-note{
+  margin:12px 0 0;
+  color:#dce9e1;
+  font-size:11.5px;
+  line-height:1.5;
+  text-align:center;
+}
+.wf-page .wf-promo-note strong{color:#fff;font-weight:800}
+.wf-page .wf-promo-note span{display:block}
+/* Keep anchor destinations visible beneath the existing sticky webinar header. */
+.wf-page #priority{scroll-margin-top:104px}
+@media(max-width:980px){
+  .wf-page .wf-hero-visual.wf-hero-promo-stack{max-width:680px;margin-inline:auto}
+  .wf-page .wf-promo-heading{font-size:36px}
+}
+@media(max-width:680px){
+  .wf-page .wf-hero-visual.wf-hero-promo-stack{gap:12px}
+  .wf-page .wf-webinar-promo{padding:21px 19px 18px;border-radius:18px}
+  .wf-page .wf-promo-eyebrow{font-size:11px;letter-spacing:.09em}
+  .wf-page .wf-promo-heading{font-size:clamp(29px,8vw,36px)}
+  .wf-page .wf-promo-copy{font-size:14px;margin:11px 0 15px}
+  .wf-page .wf-promo-cta{font-size:14px;padding:13px 14px;min-height:52px}
+  .wf-page .wf-promo-note{font-size:11.5px}
+  .wf-page #priority{scroll-margin-top:88px}
+}
+@media(prefers-reduced-motion:reduce){
+  .wf-page .wf-promo-cta{transition:none}
+}
