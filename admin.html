@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>ReVitalized Academy | Team Dashboard</title>
+  <link rel="stylesheet" href="css/admin104.css?v=104">
+</head>
+<body class="ra-admin">
+  <div class="ra-admin-bg" aria-hidden="true"></div>
+
+  <section class="ra-admin-auth" id="admin-auth">
+    <div class="ra-auth-card">
+      <img src="assets/images/revitalized-logo-dark-approved-v69.png" alt="ReVitalized Academy" class="ra-auth-logo">
+      <span class="ra-auth-kicker">SECURE TEAM ACCESS</span>
+      <h1>ReVitalized Team Dashboard</h1>
+      <p>Sign in with your approved ReVitalized Academy staff account.</p>
+      <form id="admin-login-form">
+        <label>Email<input id="admin-email" type="email" autocomplete="email" required></label>
+        <label>Password<input id="admin-password" type="password" autocomplete="current-password" required></label>
+        <button type="submit">Sign In <span>→</span></button>
+        <div class="ra-auth-status" id="admin-auth-status" role="alert"></div>
+      </form>
+      <p class="ra-auth-note">Access is limited to approved ReVitalized Academy team members.</p>
+    </div>
+  </section>
+
+  <div class="ra-admin-app" id="admin-app" hidden>
+    <aside class="ra-admin-sidebar">
+      <a href="index.html" class="ra-admin-brand"><img src="assets/images/revitalized-logo-light-approved.png" alt="ReVitalized Academy"></a>
+      <div class="ra-admin-role"><span>TEAM PORTAL</span><strong id="admin-display-name">ReVitalized Team</strong><small id="admin-role-label">Secure access</small></div>
+      <nav>
+        <button class="is-active" data-view="overview"><span>⌂</span>Overview</button>
+        <button data-view="people"><span>◎</span>People</button>
+        <button data-filter="assessment"><span>◇</span>Vitality Assessments</button>
+        <button data-filter="webinar"><span>◉</span>Founders Webinar</button>
+        <button data-filter="enrollment"><span>↗</span>Enrollments</button>
+      </nav>
+      <div class="ra-admin-sidebar-bottom">
+        <a href="index.html">View Website</a>
+        <button id="admin-signout">Sign Out</button>
+      </div>
+    </aside>
+
+    <main class="ra-admin-main">
+      <header class="ra-admin-topbar">
+        <div>
+          <span class="ra-admin-eyebrow">REVITALIZED ACADEMY</span>
+          <h1 id="dashboard-title">Good afternoon.</h1>
+          <p>Everything important across assessments, webinar registrations and enrollment in one place.</p>
+        </div>
+        <div class="ra-admin-top-actions">
+          <div class="ra-admin-live"><i></i><span>Live database</span></div>
+          <button id="admin-refresh">Refresh</button>
+        </div>
+      </header>
+
+      <section class="ra-metrics" id="admin-metrics" aria-label="Dashboard totals">
+        <article><span>All People</span><strong data-metric="total_contacts">0</strong><small>Known ReVitalized contacts</small></article>
+        <article><span>Assessments</span><strong data-metric="assessment_leads">0</strong><small>Assessment-stage leads</small></article>
+        <article><span>Webinar</span><strong data-metric="webinar_registrations">0</strong><small>Priority registrations</small></article>
+        <article><span>Applicants</span><strong data-metric="applicants">0</strong><small>Enrollment applicants</small></article>
+        <article class="accent"><span>Clients</span><strong data-metric="clients">0</strong><small>Active clients</small></article>
+      </section>
+
+      <section class="ra-admin-panel">
+        <div class="ra-admin-panel-head">
+          <div>
+            <span class="ra-admin-eyebrow">PEOPLE & JOURNEY STATUS</span>
+            <h2>ReVitalized Pipeline</h2>
+          </div>
+          <div class="ra-admin-tools">
+            <input id="admin-search" type="search" placeholder="Search name, email or phone">
+            <select id="admin-filter">
+              <option value="all">All people</option>
+              <option value="assessment">Vitality Assessment</option>
+              <option value="webinar">Founders Webinar</option>
+              <option value="enrollment">Enrollment</option>
+              <option value="client">Clients</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="ra-pipeline-summary">
+          <span><b data-summary="completed_assessments">0</b> completed assessments</span>
+          <span><b data-summary="completed_enrollments">0</b> completed enrollments</span>
+          <span><b data-summary="webinar_registrations">0</b> webinar registrations</span>
+        </div>
+
+        <div class="ra-admin-table-wrap">
+          <table class="ra-admin-table">
+            <thead><tr><th>Person</th><th>Stage</th><th>Vitality</th><th>Webinar</th><th>Enrollment</th><th>Last Activity</th><th></th></tr></thead>
+            <tbody id="admin-people-body"></tbody>
+          </table>
+          <div class="ra-admin-empty" id="admin-empty" hidden>No people match this view yet.</div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="ra-person-drawer-backdrop" id="person-backdrop" hidden></div>
+  <aside class="ra-person-drawer" id="person-drawer" aria-hidden="true">
+    <button class="ra-drawer-close" id="person-close" aria-label="Close">×</button>
+    <div class="ra-person-head">
+      <span class="ra-admin-eyebrow">PERSON PROFILE</span>
+      <h2 id="person-name">Client</h2>
+      <p id="person-contact"></p>
+      <div class="ra-person-stage" id="person-stage"></div>
+    </div>
+
+    <div class="ra-person-journey">
+      <article><span>Vitality Assessment</span><strong id="person-vitality-status">Not started</strong><div><i id="person-vitality-bar"></i></div><small id="person-vitality-percent">0%</small></article>
+      <article><span>Founders Webinar</span><strong id="person-webinar-status">Not registered</strong><small id="person-webinar-detail"></small></article>
+      <article><span>Enrollment</span><strong id="person-enrollment-status">Not started</strong><div><i id="person-enrollment-bar"></i></div><small id="person-enrollment-percent">0%</small></article>
+    </div>
+
+    <section class="ra-person-section">
+      <div class="ra-person-section-head"><h3>Known Information</h3><span>Shared across the journey</span></div>
+      <div class="ra-facts-grid" id="person-facts"></div>
+    </section>
+
+    <section class="ra-person-section">
+      <div class="ra-person-section-head"><h3>Recent Answers</h3><span>Assessment + enrollment</span></div>
+      <div class="ra-answer-list" id="person-answers"></div>
+    </section>
+
+    <section class="ra-person-section">
+      <div class="ra-person-section-head"><h3>Team Notes</h3><span>Private staff notes</span></div>
+      <form id="person-note-form">
+        <textarea id="person-note" rows="3" placeholder="Add a follow-up note, conversation summary or coaching observation..."></textarea>
+        <button type="submit">Save Note</button>
+      </form>
+      <div class="ra-note-list" id="person-notes"></div>
+    </section>
+  </aside>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/admin104.js?v=104"></script>
+</body>
+</html>
