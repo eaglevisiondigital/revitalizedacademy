@@ -54,17 +54,34 @@
   document.getElementById('admin-refresh').addEventListener('click',loadAll);
 
   async function loadAll(){
-    const [{data:metrics,error:mErr},{data:list,error:pErr}]=await Promise.all([
+    const [{data:metrics,error:mErr},{data:list,error:pErr},{data:queue,error:qErr},{data:tasks,error:tErr}]=await Promise.all([
       sb.from('admin_dashboard_metrics').select('*').maybeSingle(),
-      sb.from('admin_contact_overview').select('*').order('updated_at',{ascending:false}).limit(500)
+      sb.from('admin_contact_overview').select('*').order('updated_at',{ascending:false}).limit(500),
+      sb.from('admin_followup_queue').select('*').limit(8),
+      sb.from('admin_due_tasks').select('*').limit(8)
     ]);
-    if(mErr||pErr){console.error(mErr||pErr);return}
+    if(mErr||pErr||qErr||tErr){console.error(mErr||pErr||qErr||tErr);return}
     people=list||[];
     if(metrics){
       document.querySelectorAll('[data-metric]').forEach(el=>el.textContent=metrics[el.dataset.metric]??0);
       document.querySelectorAll('[data-summary]').forEach(el=>el.textContent=metrics[el.dataset.summary]??0);
+      const confirmed=Number(metrics.webinar_confirmed||0),capacity=50;
+      document.getElementById('admin-webinar-open').textContent=Math.max(0,capacity-confirmed);
+      document.getElementById('admin-seat-bar').style.width=Math.min(100,(confirmed/capacity)*100)+'%';
     }
+    renderAttention(queue||[],tasks||[]);
     render();
+  }
+
+  function renderAttention(queue,tasks){
+    const host=document.getElementById('admin-attention-list');
+    const merged=[];
+    tasks.forEach(t=>merged.push({type:'task',id:t.contact_id,title:t.title,name:[t.first_name,t.last_name].filter(Boolean).join(' ')||t.email||'Contact',detail:t.due_at?'Due '+date(t.due_at):pretty(t.priority)+' priority'}));
+    queue.forEach(q=>merged.push({type:'person',id:q.id,title:pretty(q.follow_up_status),name:[q.first_name,q.last_name].filter(Boolean).join(' ')||q.email||'Contact',detail:q.next_follow_up_at?'Follow up '+date(q.next_follow_up_at):pretty(q.consultation_status)}));
+    const unique=[];const seen=new Set();
+    merged.forEach(x=>{const k=x.type+':'+x.id+':'+x.title;if(!seen.has(k)){seen.add(k);unique.push(x)}});
+    host.innerHTML=unique.slice(0,6).length?unique.slice(0,6).map(x=>`<button class="ra-attention-item" data-attention-id="${x.id}"><span><b>${esc(x.name)}</b><small>${esc(x.title)} • ${esc(x.detail)}</small></span><em>Open →</em></button>`).join(''):'<div class="ra-attention-clear"><strong>All clear.</strong><span>No follow-ups need immediate attention.</span></div>';
+    host.querySelectorAll('[data-attention-id]').forEach(b=>b.addEventListener('click',()=>openPerson(b.dataset.attentionId)));
   }
 
   function matchesFilter(p,f){
