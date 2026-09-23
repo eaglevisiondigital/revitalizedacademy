@@ -1,148 +1,99 @@
-/* Build 117 - complete clean founders hero rebuild.
-   Exactly two visible image layers on desktop:
-   1) approved Build 117 background artwork
-   2) untouched approved Justyn & Elle portrait
-   No legacy hero artwork, no duplicate portrait, no live text overlays.
-   The baked Watch Our Story button has one transparent clickable hotspot. */
+/* Build 118 - clean layered founders hero, no broken background asset.
+   Visible layers are decorative CSS + approved shield + untouched approved portrait.
+   No duplicate portraits, no baked hero screenshot, no text-cover overlays. */
 
-.founders-page-build69 .founders-hero-build117{
+.founders-page-build69 .founders-hero-build118{
   position:relative;
   width:100vw;
-  max-width:none;
   margin-left:calc(50% - 50vw);
   margin-right:calc(50% - 50vw);
   overflow:hidden;
-  background:#fffaf3;
+  isolation:isolate;
+  background:linear-gradient(116deg,#eef7f0 0%,#fcfbf7 29%,#fffaf2 67%,#fffdf9 100%);
   border-top:1px solid rgba(201,149,47,.16);
   border-bottom:1px solid rgba(201,149,47,.18);
 }
 
-.founders-hero-build117-art{
-  position:relative;
-  width:100%;
-  aspect-ratio:1791 / 878;
-  overflow:hidden;
+.founders-bg118{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.wash118{position:absolute;border-radius:999px}
+.wash118-a{top:-15%;left:-9%;width:35%;height:40%;background:radial-gradient(ellipse at center,rgba(105,177,133,.24) 0 38%,rgba(105,177,133,.12) 38% 59%,rgba(105,177,133,0) 60%)}
+.wash118-b{bottom:-22%;left:-8%;width:35%;height:40%;background:radial-gradient(ellipse at center,rgba(105,177,133,.22) 0 40%,rgba(105,177,133,.10) 40% 61%,rgba(105,177,133,0) 62%)}
+
+.gold-curve118{position:absolute;top:-13%;left:36.5%;width:18%;height:136%;border-left:17px solid #d4a035;border-radius:999px;transform:rotate(8deg);opacity:.97}
+
+.rings118{position:absolute;right:-1.5%;top:3%;width:55%;aspect-ratio:1/1}
+.rings118 span{position:absolute;inset:0;border:2px solid rgba(223,169,48,.88);border-radius:50%}
+.rings118 span:nth-child(2){inset:9%;opacity:.74}
+.rings118 span:nth-child(3){inset:18%;opacity:.54}
+.rings118 span:nth-child(4){inset:27%;opacity:.34}
+
+.shield118{position:absolute;right:3.7%;top:3.2%;width:min(22vw,360px);opacity:.095;filter:grayscale(1) sepia(.12)}
+
+.script118{position:absolute;top:20%;left:43%;display:flex;flex-direction:column;gap:2px;color:#c48815;font-family:"Snell Roundhand","Segoe Script","Brush Script MT",cursive;font-size:clamp(32px,2.65vw,58px);line-height:.96;transform:rotate(-4deg)}
+.script118 i{display:block;width:94px;height:3px;margin-top:10px;background:#c48815;border-radius:999px}
+
+.right-copy118{position:absolute;right:6.2%;top:51%;display:flex;flex-direction:column;gap:8px;color:#1b7c7c;font:800 clamp(14px,.95vw,21px)/1.15 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:.16em}
+.right-copy118 i{display:block;width:56px;height:3px;margin-top:8px;background:#ca9422}
+
+.sprig118{position:absolute;left:38.7%;bottom:-1%;width:13%;height:43%;transform:rotate(-7deg)}
+.stem118{position:absolute;left:51%;bottom:0;width:3px;height:100%;background:linear-gradient(180deg,#789f62,#98ba77);transform:translateX(-50%)}
+.leaf118{position:absolute;width:27%;height:13%;background:linear-gradient(145deg,#9bc67c,#548b5d);border-radius:100% 0 100% 0;box-shadow:inset 0 0 10px rgba(255,255,255,.24)}
+.l1{left:7%;bottom:8%;transform:rotate(-38deg)} .l2{right:10%;bottom:15%;transform:rotate(48deg)}
+.l3{left:11%;bottom:25%;transform:rotate(-33deg)} .l4{right:12%;bottom:33%;transform:rotate(43deg)}
+.l5{left:14%;bottom:43%;transform:rotate(-30deg)} .l6{right:14%;bottom:52%;transform:rotate(41deg)}
+.l7{left:18%;bottom:65%;transform:rotate(-27deg)} .l8{right:18%;bottom:75%;transform:rotate(38deg)}
+
+.founders-inner118{position:relative;z-index:2;display:grid;grid-template-columns:.98fr 1.02fr;align-items:end;min-height:860px;padding:74px 78px 54px}
+.copy118{max-width:650px;padding-bottom:28px;z-index:3}
+.eyebrow118{margin:0 0 18px;color:#1c7771;font:800 16px/1.2 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:.26em;text-transform:uppercase}
+.copy118 h1{margin:0;color:#074136;font-family:Georgia,"Times New Roman",serif;font-size:clamp(78px,6.2vw,120px);line-height:.88;letter-spacing:-.045em;font-weight:600}
+.rule118{width:138px;height:5px;margin:28px 0 30px;background:linear-gradient(90deg,#b77a13,#e0b748)}
+.copy118>p:not(.eyebrow118):not(.tagline118){margin:0 0 24px;color:#2453d0;max-width:620px;font:400 clamp(20px,1.28vw,27px)/1.44 Arial,Helvetica,sans-serif}
+
+.watch118{display:inline-flex;align-items:center;gap:18px;min-height:76px;padding:0 30px;margin-top:10px;border:2px solid #d7a62d;border-radius:14px;background:linear-gradient(180deg,#075844,#034d3b);box-shadow:0 12px 30px rgba(15,75,62,.16);color:#f2c64f;text-decoration:none;font:800 24px/1 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.watch118:hover,.watch118:focus-visible{transform:translateY(-1px);background:linear-gradient(180deg,#08634c,#054f3d);outline:2px solid rgba(224,180,62,.72);outline-offset:2px}
+.play118{display:inline-flex;width:44px;height:44px;align-items:center;justify-content:center;border:2px solid #e0b43e;border-radius:50%;color:#f5c84d;font-size:16px}
+.tagline118{margin:30px 0 0;color:#1b7770;font:800 16px/1.2 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:.24em;text-transform:uppercase}
+
+.portrait-wrap118{position:relative;min-height:720px;z-index:2}
+.portrait118{position:absolute;right:2%;bottom:0;width:min(46vw,760px);max-width:none;height:auto;object-fit:contain;object-position:right bottom;opacity:1;filter:none;transform:none;clip-path:none;mask:none}
+
+@media(max-width:1200px){
+  .founders-inner118{padding:56px 42px 44px;min-height:760px}
+  .copy118 h1{font-size:clamp(64px,6.6vw,94px)}
+  .copy118>p:not(.eyebrow118):not(.tagline118){font-size:18px}
+  .portrait118{width:min(50vw,680px)}
+  .script118{font-size:clamp(26px,2.3vw,44px)}
 }
 
-.founders-hero-build117-bg{
-  position:absolute;
-  inset:0;
-  z-index:1;
-}
-
-.founders-hero-build117-bg > img{
-  display:block;
-  width:100%;
-  height:100%;
-  object-fit:fill;
-  object-position:center;
-}
-
-.founders-hero-build117-portrait{
-  position:absolute;
-  z-index:2;
-  right:8.5%;
-  bottom:0;
-  width:44%;
-  height:auto;
-  max-width:none;
-  max-height:92%;
-  object-fit:contain;
-  object-position:right bottom;
-  opacity:1;
-  filter:none;
-  transform:none;
-  clip-path:none;
-  mask:none;
-}
-
-.founders-hero-build117-cta{
-  position:absolute;
-  z-index:4;
-  left:5.55%;
-  top:80.35%;
-  width:25.45%;
-  height:9.55%;
-  display:block;
-  border:0;
-  border-radius:14px;
-  background:transparent;
-  color:transparent;
-  font-size:0;
-  line-height:0;
-  text-indent:-9999px;
-  overflow:hidden;
-  cursor:pointer;
-}
-
-.founders-hero-build117-cta:hover,
-.founders-hero-build117-cta:focus-visible{
-  outline:2px solid rgba(224,180,62,.80);
-  outline-offset:-2px;
-  background:rgba(255,255,255,.04);
-}
-
-.founders-hero-build117-sr{
-  position:absolute!important;
-  width:1px!important;
-  height:1px!important;
-  padding:0!important;
-  margin:-1px!important;
-  overflow:hidden!important;
-  clip:rect(0 0 0 0)!important;
-  white-space:nowrap!important;
-  border:0!important;
-}
-
-/* Mobile/tablet: no overlap. Show the exact background first, then the exact portrait. */
 @media(max-width:900px){
-  .founders-page-build69 .founders-hero-build117{
-    background:linear-gradient(180deg,#fffaf3,#eef7f0);
-  }
-
-  .founders-hero-build117-art{
-    aspect-ratio:auto;
-    display:flex;
-    flex-direction:column;
-    overflow:hidden;
-  }
-
-  .founders-hero-build117-bg{
-    position:relative;
-    inset:auto;
-    width:100%;
-    z-index:1;
-  }
-
-  .founders-hero-build117-bg > img{
-    width:100%;
-    height:auto;
-    object-fit:contain;
-  }
-
-  .founders-hero-build117-portrait{
-    position:relative;
-    right:auto;
-    bottom:auto;
-    z-index:2;
-    width:min(96%,650px);
-    max-height:none;
-    margin:-2px auto 0;
-    object-position:center bottom;
-  }
-
-  .founders-hero-build117-cta{
-    left:5.55%;
-    top:80.35%;
-    width:25.45%;
-    height:9.55%;
-  }
+  .founders-page-build69 .founders-hero-build118{background:linear-gradient(150deg,#eef7f0 0%,#fffaf2 58%,#fff 100%)}
+  .gold-curve118{top:-9%;left:63%;width:26%;height:132%;border-left-width:12px}
+  .rings118{width:88%;right:-24%;top:12%}
+  .shield118{width:min(34vw,180px);right:2%;top:4%}
+  .script118{top:24%;left:56%;font-size:clamp(22px,6vw,42px)}
+  .script118 i{width:74px}
+  .right-copy118{right:3%;top:53%;font-size:13px}
+  .right-copy118 i{width:48px}
+  .sprig118{left:45%;width:27%;height:31%;bottom:7%}
+  .founders-inner118{grid-template-columns:1fr;min-height:980px;padding:32px 20px 24px}
+  .copy118{max-width:100%;padding-bottom:0}
+  .eyebrow118{font-size:12px;margin-bottom:12px;letter-spacing:.22em}
+  .copy118 h1{font-size:clamp(52px,13vw,78px);line-height:.92}
+  .rule118{width:92px;height:4px;margin:18px 0 20px}
+  .copy118>p:not(.eyebrow118):not(.tagline118){max-width:92%;font-size:16px;line-height:1.46;margin-bottom:16px}
+  .watch118{min-height:64px;width:min(100%,420px);justify-content:center;font-size:18px;padding:0 20px}
+  .play118{width:38px;height:38px;font-size:15px}
+  .tagline118{font-size:13px;letter-spacing:.18em;margin-top:24px}
+  .portrait-wrap118{min-height:470px}
+  .portrait118{left:50%;right:auto;bottom:0;width:min(95vw,620px);transform:translateX(-50%);object-position:center bottom}
 }
 
-@media(max-width:560px){
-  .founders-hero-build117-portrait{
-    width:108%;
-    margin-left:-4%;
-    margin-right:-4%;
-  }
+@media(max-width:520px){
+  .founders-inner118{min-height:930px;padding:26px 18px 22px}
+  .copy118>p:not(.eyebrow118):not(.tagline118){max-width:100%;font-size:15.5px;line-height:1.45}
+  .watch118{width:100%}
+  .script118{left:55%;top:24%}
+  .right-copy118{right:2%;top:54%;font-size:12px}
+  .portrait118{width:min(108vw,640px)}
 }
