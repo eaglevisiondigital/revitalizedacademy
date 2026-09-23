@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
   <title>ReVitalized Academy | Team Dashboard</title>
-  <link rel="stylesheet" href="css/admin104.css?v=106">
+  <link rel="stylesheet" href="css/admin104.css?v=107">
 </head>
 <body class="ra-admin">
   <div class="ra-admin-bg" aria-hidden="true"></div>
@@ -36,6 +36,7 @@
         <button data-filter="assessment"><span>◇</span>Vitality Assessments</button>
         <button data-filter="webinar"><span>◉</span>Founders Webinar</button>
         <button data-filter="enrollment"><span>↗</span>Enrollments</button>
+        <button data-filter="refuel"><span>✦</span>ReFuel Interest</button>
       </nav>
       <div class="ra-admin-sidebar-bottom">
         <a href="index.html">View Website</a>
@@ -61,6 +62,7 @@
         <article><span>Assessments</span><strong data-metric="assessment_leads">0</strong><small>Assessment-stage leads</small></article>
         <article><span>Webinar</span><strong data-metric="webinar_registrations">0</strong><small>Priority registrations</small></article>
         <article><span>Applicants</span><strong data-metric="applicants">0</strong><small>Enrollment applicants</small></article>
+        <article><span>ReFuel Interest</span><strong data-metric="refuel_interest">0</strong><small>Waiting for ReFuel launch</small></article>
         <article class="accent"><span>Clients</span><strong data-metric="clients">0</strong><small>Active clients</small></article>
       </section>
 
@@ -107,6 +109,7 @@
               <option value="webinar">Founders Webinar</option>
               <option value="enrollment">Enrollment</option>
               <option value="client">Clients</option>
+              <option value="refuel">ReFuel Interest</option>
             </select>
           </div>
         </div>
@@ -119,7 +122,7 @@
 
         <div class="ra-admin-table-wrap">
           <table class="ra-admin-table">
-            <thead><tr><th>Person</th><th>Stage</th><th>Vitality</th><th>Webinar</th><th>Enrollment</th><th>Last Activity</th><th></th></tr></thead>
+            <thead><tr><th>Person</th><th>Stage</th><th>Vitality</th><th>Webinar</th><th>ReFuel</th><th>Enrollment</th><th>Last Activity</th><th></th></tr></thead>
             <tbody id="admin-people-body"></tbody>
           </table>
           <div class="ra-admin-empty" id="admin-empty" hidden>No people match this view yet.</div>
@@ -142,6 +145,7 @@
       <article><span>Vitality Assessment</span><strong id="person-vitality-status">Not started</strong><div><i id="person-vitality-bar"></i></div><small id="person-vitality-percent">0%</small></article>
       <article><span>Founders Webinar</span><strong id="person-webinar-status">Not registered</strong><small id="person-webinar-detail"></small></article>
       <article><span>Enrollment</span><strong id="person-enrollment-status">Not started</strong><div><i id="person-enrollment-bar"></i></div><small id="person-enrollment-percent">0%</small></article>
+      <article><span>ReFuel</span><strong id="person-refuel-status">Not interested yet</strong><small id="person-refuel-detail"></small></article>
     </div>
 
     <section class="ra-person-command">
@@ -192,6 +196,6 @@
   </aside>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="js/admin104.js?v=106"></script>
+  <script src="js/admin104.js?v=107"></script>
 </body>
 </html>
