@@ -698,15 +698,17 @@
   line-height:1.38;
 }
 #founders-webinar.webinar85 .webinar85-cta{
-  border-color:#f1d37b;
-  background:linear-gradient(180deg,#f3cc5c 0%,#d8a62a 100%);
+  border-color:#f1d37b!important;
+  background:linear-gradient(180deg,#f3cc5c 0%,#d8a62a 100%)!important;
   color:#123d30!important;
-  box-shadow:0 12px 26px rgba(177,136,69,.25),inset 0 1px 0 rgba(255,255,255,.42);
+  box-shadow:0 12px 26px rgba(177,136,69,.25),inset 0 1px 0 rgba(255,255,255,.42)!important;
 }
 #founders-webinar.webinar85 .webinar85-cta:hover,
 #founders-webinar.webinar85 .webinar85-cta:focus-visible{
-  background:linear-gradient(180deg,#f7d66f 0%,#dfb13c 100%);
+  border-color:#f5dd96!important;
+  background:linear-gradient(180deg,#f7d66f 0%,#dfb13c 100%)!important;
   color:#0c3529!important;
+  box-shadow:0 14px 30px rgba(177,136,69,.30),inset 0 1px 0 rgba(255,255,255,.45)!important;
 }
 @media(max-width:1100px){
   #founders-webinar.webinar85 .webinar60-benefits{
