@@ -1,436 +1,148 @@
-/* Build 115 - Founders hero desktop background reset.
-   Desktop now uses the approved background artwork as the visual base,
-   keeps the untouched approved portrait, keeps the corrected shield,
-   and overlays only the updated copy and live CTA hotspot.
-   Mobile/tablet keeps a clean responsive composition without stacked layers. */
+/* Build 117 - complete clean founders hero rebuild.
+   Exactly two visible image layers on desktop:
+   1) approved Build 117 background artwork
+   2) untouched approved Justyn & Elle portrait
+   No legacy hero artwork, no duplicate portrait, no live text overlays.
+   The baked Watch Our Story button has one transparent clickable hotspot. */
 
-.founders-hero-clean{
+.founders-page-build69 .founders-hero-build117{
   position:relative;
   width:100vw;
+  max-width:none;
   margin-left:calc(50% - 50vw);
   margin-right:calc(50% - 50vw);
   overflow:hidden;
-  isolation:isolate;
+  background:#fffaf3;
+  border-top:1px solid rgba(201,149,47,.16);
+  border-bottom:1px solid rgba(201,149,47,.18);
 }
 
-.founders-hero-bg,
-.founders-hero-inner{
+.founders-hero-build117-art{
   position:relative;
+  width:100%;
+  aspect-ratio:1791 / 878;
+  overflow:hidden;
 }
 
-.founders-copy>p:not(.founders-eyebrow):not(.founders-tagline){
-  color:#2453d0;
-  font-family:Arial,Helvetica,sans-serif;
+.founders-hero-build117-bg{
+  position:absolute;
+  inset:0;
+  z-index:1;
 }
 
-.founders-watch-btn{
-  text-decoration:none;
+.founders-hero-build117-bg > img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:fill;
+  object-position:center;
 }
 
-/* Desktop: use the approved background artwork directly. */
-@media (min-width: 901px){
-  .founders-hero-clean{
-    min-height:941px;
-    background:url('../assets/images/about-our-founders-hero-approved.png') center center / 100% 100% no-repeat;
-    border-top:1px solid rgba(201,149,47,.16);
-    border-bottom:1px solid rgba(201,149,47,.18);
+.founders-hero-build117-portrait{
+  position:absolute;
+  z-index:2;
+  right:8.5%;
+  bottom:0;
+  width:44%;
+  height:auto;
+  max-width:none;
+  max-height:92%;
+  object-fit:contain;
+  object-position:right bottom;
+  opacity:1;
+  filter:none;
+  transform:none;
+  clip-path:none;
+  mask:none;
+}
+
+.founders-hero-build117-cta{
+  position:absolute;
+  z-index:4;
+  left:5.55%;
+  top:80.35%;
+  width:25.45%;
+  height:9.55%;
+  display:block;
+  border:0;
+  border-radius:14px;
+  background:transparent;
+  color:transparent;
+  font-size:0;
+  line-height:0;
+  text-indent:-9999px;
+  overflow:hidden;
+  cursor:pointer;
+}
+
+.founders-hero-build117-cta:hover,
+.founders-hero-build117-cta:focus-visible{
+  outline:2px solid rgba(224,180,62,.80);
+  outline-offset:-2px;
+  background:rgba(255,255,255,.04);
+}
+
+.founders-hero-build117-sr{
+  position:absolute!important;
+  width:1px!important;
+  height:1px!important;
+  padding:0!important;
+  margin:-1px!important;
+  overflow:hidden!important;
+  clip:rect(0 0 0 0)!important;
+  white-space:nowrap!important;
+  border:0!important;
+}
+
+/* Mobile/tablet: no overlap. Show the exact background first, then the exact portrait. */
+@media(max-width:900px){
+  .founders-page-build69 .founders-hero-build117{
+    background:linear-gradient(180deg,#fffaf3,#eef7f0);
   }
 
-  .founders-hero-bg{
-    position:absolute;
-    inset:0;
-    z-index:1;
-    pointer-events:none;
-  }
-
-  .bg-left-wash,
-  .bg-top-curve,
-  .bg-rings,
-  .bg-script,
-  .bg-right-copy,
-  .leaf-sprig{
-    display:none;
-  }
-
-  .bg-shield{
-    position:absolute;
-    right:3.9%;
-    top:4.1%;
-    width:min(22vw,360px);
-    opacity:.08;
-    filter:grayscale(1) sepia(.15);
-  }
-
-  .founders-hero-inner{
-    z-index:2;
-    min-height:941px;
-  }
-
-  .founders-copy{
-    position:absolute;
-    left:5.35%;
-    top:45.7%;
-    width:34.2%;
-    padding:.6% .5% .2%;
-    box-sizing:border-box;
-    background:linear-gradient(90deg, rgba(255,255,255,.97) 0%, rgba(255,255,255,.95) 82%, rgba(255,255,255,.62) 93%, rgba(255,255,255,0) 100%);
-    z-index:4;
-  }
-
-  .founders-eyebrow,
-  .founders-copy h1,
-  .founders-title-rule,
-  .founders-tagline{
-    position:absolute!important;
-    width:1px!important;
-    height:1px!important;
-    margin:-1px!important;
-    padding:0!important;
-    overflow:hidden!important;
-    clip:rect(0 0 0 0)!important;
-    white-space:nowrap!important;
-    border:0!important;
-  }
-
-  .founders-copy>p:not(.founders-eyebrow):not(.founders-tagline){
-    margin:0 0 1.02em;
-    max-width:100%;
-    font-size:clamp(17px,1.18vw,22px);
-    line-height:1.42;
-    font-weight:400;
-  }
-
-  .founders-copy>p:last-of-type{
-    margin-bottom:0;
-  }
-
-  .founders-watch-btn{
-    position:absolute;
-    left:5.4%;
-    top:74.55%;
-    width:26.0%;
-    height:9.0%;
-    border-radius:13px;
-    background:transparent;
-    color:transparent;
-    font-size:0;
-    text-indent:-9999px;
+  .founders-hero-build117-art{
+    aspect-ratio:auto;
+    display:flex;
+    flex-direction:column;
     overflow:hidden;
-    z-index:5;
   }
 
-  .play-circle{ display:none; }
-
-  .founders-portrait-wrap{
-    position:absolute;
-    inset:0;
-    z-index:3;
-    pointer-events:none;
-  }
-
-  .founders-portrait{
-    position:absolute;
-    right:5.4%;
-    bottom:0;
-    width:min(44.8vw,760px);
-    max-width:none;
-    height:auto;
-    object-fit:contain;
-    object-position:right bottom;
-    opacity:1;
-    filter:none;
-    transform:none;
-    clip-path:none;
-    mask:none;
-  }
-}
-
-/* Mobile and tablet: clean responsive composition without legacy layers. */
-@media (max-width: 900px){
-  .founders-hero-clean{
-    min-height:980px;
-    background:linear-gradient(150deg,#eef7f0 0%,#fffaf2 58%,#fff 100%);
-    border-top:1px solid rgba(201,149,47,.16);
-    border-bottom:1px solid rgba(201,149,47,.18);
-  }
-
-  .founders-hero-bg{
-    position:absolute;
-    inset:0;
-    z-index:0;
-    pointer-events:none;
-  }
-
-  .bg-left-wash{
-    position:absolute;
-    inset:0;
-    background:
-      radial-gradient(ellipse at 0% 100%,rgba(67,130,94,.22) 0 7%,transparent 7.4%),
-      radial-gradient(ellipse at 5% 96%,rgba(96,160,120,.15) 0 11%,transparent 11.4%),
-      radial-gradient(ellipse at 28% 42%,rgba(133,175,145,.10) 0 18%,transparent 18.4%),
-      linear-gradient(155deg,rgba(171,224,183,.18),transparent 28%);
-  }
-
-  .bg-top-curve{
-    position:absolute;
-    top:-10%;
-    left:63%;
-    width:28%;
-    height:132%;
-    border-left:12px solid #d6a439;
-    border-radius:999px;
-    transform:rotate(8deg);
-    opacity:.95;
-  }
-
-  .bg-rings{
-    position:absolute;
-    right:-22%;
-    top:12%;
-    width:88%;
-    aspect-ratio:1/1;
-  }
-
-  .bg-rings span{
-    position:absolute;
-    inset:0;
-    border:2px solid rgba(221,168,48,.90);
-    border-radius:50%;
-  }
-  .bg-rings span:nth-child(2){inset:8%;opacity:.72}
-  .bg-rings span:nth-child(3){inset:16%;opacity:.50}
-  .bg-rings span:nth-child(4){inset:24%;opacity:.32}
-
-  .bg-script{
-    position:absolute;
-    top:23%;
-    left:56%;
-    display:flex;
-    flex-direction:column;
-    gap:2px;
-    color:#c78b19;
-    font-family:"Snell Roundhand","Segoe Script","Brush Script MT",cursive;
-    font-size:clamp(22px,6vw,42px);
-    line-height:.96;
-    transform:rotate(-5deg);
-  }
-
-  .bg-script i{
-    display:block;
-    width:74px;
-    height:3px;
-    margin-top:8px;
-    background:#c78b19;
-    border-radius:999px;
-  }
-
-  .bg-right-copy{
-    position:absolute;
-    right:3%;
-    top:52%;
-    display:flex;
-    flex-direction:column;
-    gap:6px;
-    color:#1a7c7a;
-    font:800 13px/1.15 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-    letter-spacing:.16em;
-  }
-
-  .bg-right-copy i{
-    display:block;
-    width:48px;
-    height:3px;
-    margin-top:7px;
-    background:#cb9426;
-  }
-
-  .bg-shield{
-    position:absolute;
-    right:2%;
-    top:4%;
-    width:min(34vw,180px);
-    opacity:.09;
-    filter:grayscale(1) sepia(.12);
-  }
-
-  .leaf-sprig{
-    position:absolute;
-    left:44%;
-    bottom:8%;
-    width:28%;
-    height:32%;
-    transform:rotate(-8deg);
-  }
-
-  .leaf-sprig .stem{
-    position:absolute;
-    left:50%;
-    bottom:0;
-    width:3px;
-    height:100%;
-    background:linear-gradient(180deg,#6d8e54,#91b46e);
-    transform:translateX(-50%);
-  }
-
-  .leaf-sprig .leaf{
-    position:absolute;
-    width:24%;
-    height:13%;
-    background:linear-gradient(145deg,#8fbb70,#4f8858);
-    border-radius:100% 0 100% 0;
-    box-shadow:inset 0 0 10px rgba(255,255,255,.24);
-  }
-  .leaf-1{left:8%;bottom:7%;transform:rotate(-38deg)}
-  .leaf-2{right:10%;bottom:14%;transform:rotate(48deg)}
-  .leaf-3{left:12%;bottom:24%;transform:rotate(-32deg)}
-  .leaf-4{right:12%;bottom:31%;transform:rotate(44deg)}
-  .leaf-5{left:14%;bottom:42%;transform:rotate(-30deg)}
-  .leaf-6{right:14%;bottom:50%;transform:rotate(42deg)}
-  .leaf-7{left:19%;bottom:63%;transform:rotate(-26deg)}
-  .leaf-8{right:18%;bottom:73%;transform:rotate(38deg)}
-
-  .founders-hero-inner{
-    z-index:2;
-    display:grid;
-    grid-template-columns:1fr;
-    min-height:980px;
-    padding:32px 20px 24px;
-  }
-
-  .founders-copy{
-    max-width:100%;
-    padding-bottom:0;
+  .founders-hero-build117-bg{
     position:relative;
-    z-index:5;
-  }
-
-  .founders-eyebrow{
-    margin:0 0 12px;
-    color:#1c7771;
-    font:800 12px/1.2 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-    letter-spacing:.22em;
-    text-transform:uppercase;
-  }
-
-  .founders-copy h1{
-    margin:0;
-    color:#083f34;
-    font-family:Georgia,"Times New Roman",serif;
-    font-size:clamp(52px,13vw,78px);
-    line-height:.92;
-    letter-spacing:-.04em;
-    font-weight:600;
-  }
-
-  .founders-title-rule{
-    width:92px;
-    height:4px;
-    margin:18px 0 20px;
-    background:linear-gradient(90deg,#b97d17,#e2b949);
-  }
-
-  .founders-copy>p:not(.founders-eyebrow):not(.founders-tagline){
-    margin:0 0 16px;
-    max-width:92%;
-    font-size:16px;
-    line-height:1.46;
-    font-weight:400;
-  }
-
-  .founders-watch-btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:12px;
-    min-height:64px;
-    width:min(100%,420px);
-    padding:0 20px;
-    margin-top:10px;
-    border:2px solid #d7a62d;
-    border-radius:12px;
-    background:linear-gradient(180deg,#075844,#034d3b);
-    box-shadow:0 10px 24px rgba(15,75,62,.16);
-    color:#f2c64f;
-    font:800 18px/1 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-    text-decoration:none;
-  }
-
-  .play-circle{
-    display:inline-flex;
-    width:38px;
-    height:38px;
-    align-items:center;
-    justify-content:center;
-    border:2px solid #e0b43e;
-    border-radius:50%;
-    color:#f5c84d;
-    font-size:15px;
-  }
-
-  .founders-tagline{
-    margin:24px 0 0;
-    color:#1b7770;
-    font:800 13px/1.2 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-    letter-spacing:.18em;
-    text-transform:uppercase;
-  }
-
-  .founders-portrait-wrap{
-    position:relative;
-    z-index:3;
-    min-height:470px;
-  }
-
-  .founders-portrait{
-    position:absolute;
-    left:50%;
-    right:auto;
-    bottom:0;
-    width:min(95vw,620px);
-    transform:translateX(-50%);
-    max-width:none;
-    height:auto;
-    object-fit:contain;
-    object-position:center bottom;
-    opacity:1;
-    filter:none;
-    clip-path:none;
-    mask:none;
-  }
-}
-
-@media (max-width: 520px){
-  .founders-hero-clean{
-    min-height:930px;
-  }
-
-  .founders-hero-inner{
-    min-height:930px;
-    padding:26px 18px 22px;
-  }
-
-  .founders-copy>p:not(.founders-eyebrow):not(.founders-tagline){
-    max-width:100%;
-    font-size:15.5px;
-    line-height:1.45;
-  }
-
-  .founders-watch-btn{
+    inset:auto;
     width:100%;
+    z-index:1;
   }
 
-  .bg-script{
-    left:55%;
-    top:24%;
+  .founders-hero-build117-bg > img{
+    width:100%;
+    height:auto;
+    object-fit:contain;
   }
 
-  .bg-right-copy{
-    right:2%;
-    top:54%;
-    font-size:12px;
+  .founders-hero-build117-portrait{
+    position:relative;
+    right:auto;
+    bottom:auto;
+    z-index:2;
+    width:min(96%,650px);
+    max-height:none;
+    margin:-2px auto 0;
+    object-position:center bottom;
   }
 
-  .founders-portrait{
-    width:min(108vw,640px);
+  .founders-hero-build117-cta{
+    left:5.55%;
+    top:80.35%;
+    width:25.45%;
+    height:9.55%;
+  }
+}
+
+@media(max-width:560px){
+  .founders-hero-build117-portrait{
+    width:108%;
+    margin-left:-4%;
+    margin-right:-4%;
   }
 }
