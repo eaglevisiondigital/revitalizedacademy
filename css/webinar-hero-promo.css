@@ -347,3 +347,35 @@
     height:auto;
   }
 }
+
+
+/* Build 4 - tighten promo/photo stack to align with left conversion row */
+.wf-page .wf-hero-visual.wf-hero-promo-stack{
+  gap:10px;
+}
+.wf-page .wf-webinar-promo{
+  padding-top:20px;
+  padding-bottom:18px;
+}
+.wf-page .wf-hero-promo-stack .wf-photo-frame{
+  height:320px;
+}
+.wf-page .wf-hero-promo-stack .wf-photo-badge{
+  bottom:16px;
+  padding:14px 16px;
+}
+@media(max-width:1180px){
+  .wf-page .wf-hero-promo-stack .wf-photo-frame{
+    height:305px;
+  }
+}
+@media(max-width:980px){
+  .wf-page .wf-hero-promo-stack .wf-photo-frame{
+    height:400px;
+  }
+}
+@media(max-width:680px){
+  .wf-page .wf-hero-promo-stack .wf-photo-frame{
+    height:auto;
+  }
+}

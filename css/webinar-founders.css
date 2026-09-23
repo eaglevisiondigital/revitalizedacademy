@@ -930,3 +930,31 @@ body.wf-page{margin:0;background:#fff;color:var(--wf-ink);font-family:Inter,ui-s
     min-height:66px;
   }
 }
+
+
+/* Build 90 - final lower-edge alignment polish for webinar hero */
+.wf-page .wf-seat-card{
+  margin-bottom:0;
+}
+.wf-page .wf-hero-actions{
+  margin-top:10px;
+  gap:14px;
+  align-items:stretch;
+}
+.wf-page .wf-hero-actions .wf-button,
+.wf-page .wf-payment-note{
+  min-height:72px;
+}
+.wf-page .wf-hero-actions .wf-button{
+  padding-top:0;
+  padding-bottom:0;
+}
+.wf-page .wf-payment-note{
+  padding-top:12px;
+  padding-bottom:12px;
+}
+@media(max-width:700px){
+  .wf-page .wf-hero-actions{
+    margin-top:12px;
+  }
+}
