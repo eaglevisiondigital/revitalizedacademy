@@ -43,8 +43,15 @@
 <circle cx="1044" cy="603" r="172" fill="url(#emerald)"/>
 <circle cx="627" cy="986" r="172" fill="url(#emerald)"/>
 
-<!-- Athletic icon: exact approved runner asset recolored cream -->
-<image href="data:image/png;base64," x="552" y="78" width="150" height="118" preserveAspectRatio="xMidYMid meet" filter="url(#creamIcon)"/>
+<!-- Athletic icon - clean cream runner vector -->
+<g transform="translate(627 128)" fill="none" stroke="#FCF5EE" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="23" cy="-28" r="13" fill="#FCF5EE" stroke="none"/>
+  <path d="M8 -6 L-17 21 L5 38 L28 14 L49 26" stroke-width="13"/>
+  <path d="M5 38 L-21 67" stroke-width="13"/>
+  <path d="M-17 21 L-46 49" stroke-width="13"/>
+  <path d="M-42 68 C-23 75 -5 71 10 60" stroke-width="7"/>
+  <path d="M-51 56 C-64 43 -61 29 -49 19" stroke-width="7"/>
+</g>
 <text x="627" y="251" fill="#fff" font-family="Arial,Helvetica,sans-serif" font-size="47" font-weight="800" text-anchor="middle">Athletic</text>
 <text x="627" y="296" fill="#fff" font-family="Arial,Helvetica,sans-serif" font-size="29" text-anchor="middle">
   <tspan x="627">Move dynamically</tspan><tspan x="627" dy="35">without pain</tspan>
