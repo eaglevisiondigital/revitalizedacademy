@@ -963,3 +963,24 @@ body.wf-page{margin:0;background:#fff;color:var(--wf-ink);font-family:Inter,ui-s
 .wf-priority-live-note{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:14px;color:#dbe9e2;font-size:12px}
 .wf-priority-live-note strong{color:#f0cc70}.wf-live-dot{width:8px;height:8px;border-radius:50%;background:#64c887;box-shadow:0 0 0 4px rgba(100,200,135,.14)}
 .wf-live-registration-stat{position:relative;overflow:hidden}.wf-live-registration-stat:after{content:"LIVE";position:absolute;right:8px;top:8px;font-size:8px;font-weight:900;letter-spacing:.08em;color:#dbe9e2;background:rgba(255,255,255,.08);padding:3px 5px;border-radius:999px}
+
+
+/* Build 91 - remove Matrix hover/focus ring; preserve invisible hotspots */
+.wf-matrix-live-hotspots circle:hover,
+.wf-matrix-live-hotspots circle:focus,
+.wf-matrix-live-hotspots circle:focus-visible,
+.wf-matrix-live-hotspots .wf-matrix-center-hotspot:hover,
+.wf-matrix-live-hotspots .wf-matrix-center-hotspot:focus,
+.wf-matrix-live-hotspots .wf-matrix-center-hotspot:focus-visible{
+  stroke:transparent!important;
+  stroke-width:0!important;
+  outline:none!important;
+  filter:none!important;
+}
+.wf-matrix-live-hotspots a:hover circle,
+.wf-matrix-live-hotspots a:focus circle,
+.wf-matrix-live-hotspots a:focus-visible circle{
+  stroke:transparent!important;
+  stroke-width:0!important;
+  outline:none!important;
+}
