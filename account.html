@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>My ReVitalized Journey | ReVitalized Academy</title>
+  <link rel="stylesheet" href="css/account104.css?v=104">
+</head>
+<body>
+  <header class="ra-account-header"><a href="index.html"><img src="assets/images/revitalized-logo-dark-approved-v69.png" alt="ReVitalized Academy"></a><a href="index.html">Back to Website</a></header>
+  <main>
+    <section class="ra-account-auth" id="account-auth">
+      <div class="ra-account-auth-card">
+        <span>MY REVITALIZED JOURNEY</span><h1>Pick up where you left off.</h1>
+        <p>Use the same email you used for your Vitality Assessment, webinar registration or enrollment.</p>
+        <div class="ra-account-tabs"><button class="is-active" data-mode="login">Sign In</button><button data-mode="signup">Create Account</button></div>
+        <form id="account-form">
+          <label>Email<input id="account-email" type="email" autocomplete="email" required></label>
+          <label>Password<input id="account-password" type="password" minlength="8" required></label>
+          <div id="account-signup-fields" hidden>
+            <label>First name<input id="account-first" type="text" autocomplete="given-name"></label>
+            <label>Last name<input id="account-last" type="text" autocomplete="family-name"></label>
+          </div>
+          <button type="submit" id="account-submit">Sign In <span>→</span></button>
+          <div id="account-status" role="alert"></div>
+        </form>
+      </div>
+    </section>
+    <section class="ra-account-dashboard" id="account-dashboard" hidden>
+      <div class="ra-account-welcome"><span>MY REVITALIZED JOURNEY</span><h1>Welcome back, <em id="account-name">there</em>.</h1><p>Your assessment, webinar and enrollment progress stay connected here.</p></div>
+      <div class="ra-account-grid">
+        <article><div class="ra-account-icon">◇</div><span>VITALITY ASSESSMENT</span><h2 id="account-vitality-status">Not started</h2><div class="ra-account-progress"><i id="account-vitality-bar"></i></div><p id="account-vitality-copy">Get clarity on where your health may need the most attention.</p><a href="consult.html" id="account-vitality-link">Start Assessment →</a></article>
+        <article><div class="ra-account-icon">◉</div><span>FOUNDERS WEBINAR</span><h2 id="account-webinar-status">Not registered</h2><p id="account-webinar-copy">Join the priority list for the private Founders webinar.</p><a href="webinar.html">View Webinar →</a></article>
+        <article><div class="ra-account-icon">↗</div><span>ENROLLMENT</span><h2 id="account-enrollment-status">Not started</h2><div class="ra-account-progress"><i id="account-enrollment-bar"></i></div><p>Continue your ReVitalized enrollment when you are ready.</p><a href="enroll.html" id="account-enrollment-link">Start Enrollment →</a></article>
+      </div>
+      <div class="ra-account-bottom"><p>Your information is connected to the same secure ReVitalized profile.</p><button id="account-signout">Sign Out</button></div>
+    </section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/account104.js?v=104"></script>
+</body>
+</html>
