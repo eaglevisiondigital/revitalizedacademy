@@ -90,6 +90,7 @@
     if(f==='webinar')return !!p.webinar_status;
     if(f==='enrollment')return !!p.enrollment_status;
     if(f==='client')return p.lifecycle_stage==='client';
+    if(f==='refuel')return !!p.refuel_status && p.refuel_status!=='unsubscribed';
     return true;
   }
 
@@ -103,6 +104,7 @@
         <td><span class="ra-status ${p.lifecycle_stage==='client'?'green':''}">${esc(pretty(p.lifecycle_stage))}</span></td>
         <td class="ra-progress-cell">${p.vitality_status?'<span class="ra-status">'+esc(pretty(p.vitality_status))+'</span><div class="ra-progress-mini"><i style="width:'+Number(p.vitality_completion||0)+'%"></i></div>':'—'}</td>
         <td>${p.webinar_status?'<span class="ra-status gold">'+esc(pretty(p.webinar_status))+'</span>':'—'}</td>
+        <td>${p.refuel_status?'<span class="ra-status refuel">'+esc(pretty(p.refuel_status))+'</span>':'—'}</td>
         <td class="ra-progress-cell">${p.enrollment_status?'<span class="ra-status">'+esc(pretty(p.enrollment_status))+'</span><div class="ra-progress-mini"><i style="width:'+Number(p.enrollment_completion||0)+'%"></i></div>':'—'}</td>
         <td>${date(p.updated_at)}</td>
         <td><button class="ra-view-person" data-id="${p.id}">Open</button></td>
@@ -129,6 +131,8 @@
     document.getElementById('person-enrollment-status').textContent=pretty(currentPerson.enrollment_status||'Not started');
     document.getElementById('person-enrollment-percent').textContent=(currentPerson.enrollment_completion||0)+'%';
     document.getElementById('person-enrollment-bar').style.width=(currentPerson.enrollment_completion||0)+'%';
+    document.getElementById('person-refuel-status').textContent=pretty(currentPerson.refuel_status||'Not interested yet');
+    document.getElementById('person-refuel-detail').textContent=currentPerson.refuel_joined_at?'Joined '+date(currentPerson.refuel_joined_at):'';
     document.getElementById('person-email-link').href=currentPerson.email?'mailto:'+encodeURIComponent(currentPerson.email):'#';
     document.getElementById('person-email-link').classList.toggle('is-disabled',!currentPerson.email);
     document.getElementById('person-phone-link').href=currentPerson.phone?'tel:'+currentPerson.phone.replace(/[^+0-9]/g,''):'#';
