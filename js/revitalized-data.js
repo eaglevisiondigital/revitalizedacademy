@@ -23,7 +23,7 @@
       .catch(() => {});
   };
 
-  const send = (payload) => {
+  const send = (payload, onSuccess) => {
     fetch(ENDPOINT, {
       method: 'POST',
       headers: {
@@ -38,6 +38,7 @@
         if (data && payload.type === 'webinar' && Number.isFinite(Number(data.registration_count))) {
           updateWebinarCounter(Number(data.registration_count));
         }
+        if (data && data.ok && typeof onSuccess === 'function') onSuccess(data);
       })
       .catch(() => {});
   };
@@ -47,6 +48,28 @@
   document.addEventListener('submit', (event) => {
     const form = event.target;
     if (!(form instanceof HTMLFormElement)) return;
+
+    if (form.matches('[data-refuel-notify-form]')) {
+      event.preventDefault();
+      const fd = new FormData(form);
+      const button = form.querySelector('button[type="submit"]');
+      const status = form.querySelector('[data-refuel-status]');
+      if (button) button.disabled = true;
+      if (status) status.textContent = 'Saving your spot on the ReFuel launch list...';
+      send({
+        type: 'refuel_notify',
+        source: 'website_refuel_launch',
+        first_name: fd.get('first_name'),
+        email: fd.get('email'),
+        website: fd.get('website') || ''
+      }, () => {
+        form.reset();
+        if (button) button.disabled = false;
+        if (status) status.textContent = 'You are on the list. We will let you know when ReFuel launches.';
+      });
+      setTimeout(() => { if (button) button.disabled = false; }, 6000);
+      return;
+    }
 
     if (form.matches('[data-vitality-lead-form]')) {
       const fd = new FormData(form);
