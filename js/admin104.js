@@ -112,15 +112,22 @@
     document.getElementById('person-enrollment-status').textContent=pretty(currentPerson.enrollment_status||'Not started');
     document.getElementById('person-enrollment-percent').textContent=(currentPerson.enrollment_completion||0)+'%';
     document.getElementById('person-enrollment-bar').style.width=(currentPerson.enrollment_completion||0)+'%';
+    document.getElementById('person-email-link').href=currentPerson.email?'mailto:'+encodeURIComponent(currentPerson.email):'#';
+    document.getElementById('person-email-link').classList.toggle('is-disabled',!currentPerson.email);
+    document.getElementById('person-phone-link').href=currentPerson.phone?'tel:'+currentPerson.phone.replace(/[^+0-9]/g,''):'#';
+    document.getElementById('person-phone-link').classList.toggle('is-disabled',!currentPerson.phone);
     backdrop.hidden=false;drawer.classList.add('is-open');drawer.setAttribute('aria-hidden','false');
     await loadPersonData(id);
   }
 
   async function loadPersonData(contactId){
-    const [{data:facts},{data:workflows},{data:notes}]=await Promise.all([
+    const [{data:facts},{data:workflows},{data:notes},{data:tags},{data:activity},{data:tasks}]=await Promise.all([
       sb.from('canonical_facts').select('*').eq('contact_id',contactId).order('updated_at',{ascending:false}),
       sb.from('workflow_records').select('id,workflow_type').eq('contact_id',contactId).neq('status','abandoned'),
-      sb.from('contact_notes').select('*').eq('contact_id',contactId).order('created_at',{ascending:false})
+      sb.from('contact_notes').select('*').eq('contact_id',contactId).order('created_at',{ascending:false}),
+      sb.from('contact_tags').select('*').eq('contact_id',contactId).order('created_at',{ascending:true}),
+      sb.from('contact_activity').select('*').eq('contact_id',contactId).order('created_at',{ascending:false}).limit(40),
+      sb.from('follow_up_tasks').select('*').eq('contact_id',contactId).order('created_at',{ascending:false})
     ]);
     document.getElementById('person-facts').innerHTML=(facts||[]).length?(facts||[]).map(f=>`<div class="ra-fact"><b>${esc(pretty(f.field_key))}</b><span>${esc(valueText(f.value))}</span></div>`).join(''):'<div class="ra-fact"><span>No shared facts saved yet.</span></div>';
     const ids=(workflows||[]).map(w=>w.id);
@@ -128,11 +135,72 @@
     if(ids.length){const r=await sb.from('workflow_answers').select('*').in('workflow_id',ids).order('updated_at',{ascending:false}).limit(30);answers=r.data||[]}
     document.getElementById('person-answers').innerHTML=answers.length?answers.map(a=>`<div class="ra-answer"><b>${esc(pretty(a.question_key))}</b><span>${esc(valueText(a.answer))}</span></div>`).join(''):'<div class="ra-answer"><span>No saved answers yet.</span></div>';
     renderNotes(notes||[]);
+    renderTags(tags||[]);
+    renderActivity(activity||[]);
+    renderTasks(tasks||[]);
+    hydrateRelationshipControls();
   }
 
   function renderNotes(notes){
     document.getElementById('person-notes').innerHTML=notes.length?notes.map(n=>`<div class="ra-note"><b>Team note</b><span>${esc(n.note)}</span><small>${date(n.created_at)}</small></div>`).join(''):'<div class="ra-note"><span>No team notes yet.</span></div>';
   }
+
+  function hydrateRelationshipControls(){
+    if(!currentPerson)return;
+    document.getElementById('person-followup-status').value=currentPerson.follow_up_status||'new';
+    document.getElementById('person-consult-status').value=currentPerson.consultation_status||'not_scheduled';
+    const input=document.getElementById('person-followup-date');
+    input.value=currentPerson.next_follow_up_at?new Date(new Date(currentPerson.next_follow_up_at).getTime()-new Date().getTimezoneOffset()*60000).toISOString().slice(0,16):'';
+  }
+
+  function renderTags(tags){
+    document.getElementById('person-tags').innerHTML=tags.length?tags.map(t=>`<button type="button" class="ra-tag" data-tag-id="${t.id}">${esc(t.tag)} <span>×</span></button>`).join(''):'<span class="ra-tag-empty">No tags yet</span>';
+    document.querySelectorAll('[data-tag-id]').forEach(btn=>btn.addEventListener('click',async()=>{
+      await sb.from('contact_tags').delete().eq('id',btn.dataset.tagId);
+      if(currentPerson) await loadPersonData(currentPerson.id);
+    }));
+  }
+
+  function renderActivity(items){
+    document.getElementById('person-activity').innerHTML=items.length?items.map(a=>`<div class="ra-activity"><i></i><div><b>${esc(a.title)}</b><span>${esc(a.detail||pretty(a.activity_type))}</span><small>${date(a.created_at)}</small></div></div>`).join(''):'<div class="ra-answer"><span>Activity will appear here as this person moves through ReVitalized.</span></div>';
+  }
+
+  function renderTasks(tasks){
+    document.getElementById('person-tasks').innerHTML=tasks.length?tasks.map(t=>`<label class="ra-task ${t.status==='completed'?'is-complete':''}"><input type="checkbox" data-task-id="${t.id}" ${t.status==='completed'?'checked':''}><span><b>${esc(t.title)}</b><small>${t.due_at?'Due '+date(t.due_at):'No due date'} • ${esc(pretty(t.priority))}</small></span></label>`).join(''):'<div class="ra-answer"><span>No follow-up tasks yet.</span></div>';
+    document.querySelectorAll('[data-task-id]').forEach(box=>box.addEventListener('change',async()=>{
+      await sb.from('follow_up_tasks').update({status:box.checked?'completed':'open',completed_at:box.checked?new Date().toISOString():null}).eq('id',box.dataset.taskId);
+      if(currentPerson) await loadPersonData(currentPerson.id);
+    }));
+  }
+
+  document.getElementById('person-save-status').addEventListener('click',async()=>{
+    if(!currentPerson)return;
+    const follow=document.getElementById('person-followup-status').value;
+    const consult=document.getElementById('person-consult-status').value;
+    const raw=document.getElementById('person-followup-date').value;
+    const next=raw?new Date(raw).toISOString():null;
+    const {error}=await sb.from('contacts').update({follow_up_status:follow,consultation_status:consult,next_follow_up_at:next}).eq('id',currentPerson.id);
+    if(!error){
+      currentPerson.follow_up_status=follow;currentPerson.consultation_status=consult;currentPerson.next_follow_up_at=next;
+      await sb.from('contact_activity').insert({contact_id:currentPerson.id,activity_type:'relationship_update',title:'Follow-up status updated',detail:'Follow-up: '+pretty(follow)+' • Consultation: '+pretty(consult),actor_user_id:currentUser.id});
+      await loadAll();await loadPersonData(currentPerson.id);
+    }
+  });
+
+  document.getElementById('person-tag-form').addEventListener('submit',async e=>{
+    e.preventDefault();if(!currentPerson)return;
+    const input=document.getElementById('person-tag-input'),tag=input.value.trim();if(!tag)return;
+    const {error}=await sb.from('contact_tags').upsert({contact_id:currentPerson.id,tag},{onConflict:'contact_id,tag'});
+    if(!error){input.value='';await loadPersonData(currentPerson.id)}
+  });
+
+  document.getElementById('person-task-form').addEventListener('submit',async e=>{
+    e.preventDefault();if(!currentPerson||!currentUser)return;
+    const title=document.getElementById('person-task-title').value.trim();if(!title)return;
+    const raw=document.getElementById('person-task-due').value;
+    const {error}=await sb.from('follow_up_tasks').insert({contact_id:currentPerson.id,assigned_to:currentUser.id,created_by:currentUser.id,title,due_at:raw?new Date(raw).toISOString():null,priority:document.getElementById('person-task-priority').value});
+    if(!error){document.getElementById('person-task-title').value='';document.getElementById('person-task-due').value='';await loadPersonData(currentPerson.id)}
+  });
 
   document.getElementById('person-note-form').addEventListener('submit',async e=>{
     e.preventDefault(); if(!currentPerson||!currentUser)return;
