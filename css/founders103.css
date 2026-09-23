@@ -97,3 +97,112 @@
   .right-copy118{right:2%;top:54%;font-size:12px}
   .portrait118{width:min(108vw,640px)}
 }
+
+
+/* Build 109 - mobile founders hero cleanup */
+@media(max-width:900px){
+  .founders-page-build69 .founders-hero-build118{
+    overflow:hidden!important;
+    background:linear-gradient(180deg,#f3f7f1 0%,#fffaf2 52%,#fffdf9 100%)!important;
+  }
+  .founders-bg118 .script118,
+  .founders-bg118 .right-copy118,
+  .founders-bg118 .sprig118{
+    display:none!important;
+  }
+  .rings118{
+    width:72%!important;
+    right:-30%!important;
+    top:8%!important;
+    opacity:.38!important;
+  }
+  .gold-curve118{
+    left:auto!important;
+    right:10%!important;
+    top:-5%!important;
+    height:118%!important;
+    border-left-width:8px!important;
+    opacity:.55!important;
+  }
+  .shield118{
+    width:145px!important;
+    right:2%!important;
+    top:3%!important;
+    opacity:.055!important;
+  }
+  .founders-inner118{
+    display:flex!important;
+    flex-direction:column!important;
+    min-height:0!important;
+    padding:34px 20px 0!important;
+  }
+  .copy118{
+    order:1!important;
+    max-width:none!important;
+    width:100%!important;
+    padding:0!important;
+  }
+  .eyebrow118{
+    margin:0 0 14px!important;
+    color:#1b7770!important;
+    font-size:11px!important;
+    letter-spacing:.20em!important;
+  }
+  .copy118 h1{
+    max-width:7.4em!important;
+    font-size:clamp(54px,14vw,72px)!important;
+    line-height:.91!important;
+  }
+  .rule118{
+    width:82px!important;
+    height:4px!important;
+    margin:20px 0 22px!important;
+  }
+  .copy118>p:not(.eyebrow118):not(.tagline118){
+    max-width:none!important;
+    margin:0 0 16px!important;
+    color:#35564c!important;
+    font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
+    font-size:16px!important;
+    line-height:1.55!important;
+  }
+  .watch118{
+    width:100%!important;
+    min-height:62px!important;
+    margin-top:8px!important;
+    padding:0 18px!important;
+    font-size:18px!important;
+  }
+  .tagline118{
+    margin:24px 0 18px!important;
+    font-size:12px!important;
+    line-height:1.45!important;
+    letter-spacing:.17em!important;
+  }
+  .portrait-wrap118{
+    order:2!important;
+    width:calc(100% + 40px)!important;
+    min-height:0!important;
+    margin:0 -20px!important;
+    overflow:hidden!important;
+  }
+  .portrait118{
+    position:relative!important;
+    left:auto!important;
+    right:auto!important;
+    bottom:auto!important;
+    width:100%!important;
+    max-width:none!important;
+    height:auto!important;
+    margin:0!important;
+    transform:none!important;
+    object-fit:contain!important;
+    object-position:center bottom!important;
+  }
+}
+@media(max-width:520px){
+  .founders-inner118{padding:30px 18px 0!important;}
+  .portrait-wrap118{width:calc(100% + 36px)!important;margin:0 -18px!important;}
+  .copy118 h1{font-size:clamp(52px,14vw,66px)!important;}
+  .copy118>p:not(.eyebrow118):not(.tagline118){font-size:15.5px!important;}
+}
