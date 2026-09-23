@@ -106,14 +106,39 @@
     <section class="wf-section wf-matrix">
       <div class="wf-shell wf-matrix-grid">
         <div class="wf-matrix-art">
-          <div class="wf-matrix-image-wrap wf-matrix-native" role="img" aria-label="The ReVitalized Longevity Matrix showing Athletic, Refined, Organized and Energized around a Longevity Lifestyle">
-            <div class="wf-matrix-wheel">
-              <div class="wf-matrix-segment wf-athletic"><span class="wf-matrix-symbol">↗</span><b>Athletic</b><small>Move dynamically<br>without pain</small></div>
-              <div class="wf-matrix-segment wf-refined"><span class="wf-matrix-symbol">✦</span><b>Refined</b><small>Be impressed<br>with your reflection</small></div>
-              <div class="wf-matrix-segment wf-organized"><span class="wf-matrix-symbol">✓</span><b>Organized</b><small>Living healthy<br>is easy and fun</small></div>
-              <div class="wf-matrix-segment wf-energized"><span class="wf-matrix-symbol">ϟ</span><b>Energized</b><small>Feel good<br>every day</small></div>
-              <div class="wf-matrix-center"><span>LONGEVITY</span><strong>LIFESTYLE</strong></div>
+          <div class="wf-matrix-image-wrap wf-matrix-native wf-matrix-premium" aria-label="Interactive ReVitalized Longevity Matrix">
+            <div class="wf-matrix-flower" role="group" aria-label="Choose a Longevity Matrix focus area">
+              <button class="wf-matrix-petal wf-matrix-athletic" type="button" data-matrix-target="athletic" aria-label="Explore Athletic focus">
+                <span class="wf-matrix-symbol" aria-hidden="true">↗</span>
+                <b>Athletic</b>
+                <small>Move dynamically<br>without pain</small>
+              </button>
+
+              <button class="wf-matrix-petal wf-matrix-refined" type="button" data-matrix-target="refined" aria-label="Explore Refined focus">
+                <span class="wf-matrix-symbol" aria-hidden="true">✦</span>
+                <b>Refined</b>
+                <small>Get impressed with who<br>you see in the mirror</small>
+              </button>
+
+              <button class="wf-matrix-petal wf-matrix-organized" type="button" data-matrix-target="organized" aria-label="Explore Organized focus">
+                <span class="wf-matrix-symbol" aria-hidden="true">✓</span>
+                <b>Organized</b>
+                <small>Living healthy<br>is easy and fun</small>
+              </button>
+
+              <button class="wf-matrix-petal wf-matrix-energized" type="button" data-matrix-target="energized" aria-label="Explore Energized focus">
+                <span class="wf-matrix-symbol" aria-hidden="true">ϟ</span>
+                <b>Energized</b>
+                <small>Feel good physically and<br>mentally every day</small>
+              </button>
+
+              <a class="wf-matrix-center-video" href="https://youtu.be/ti0p-qibQao" target="_blank" rel="noopener" aria-label="Watch the Longevity Matrix overview video">
+                <span>LONGEVITY</span>
+                <strong>LIFESTYLE</strong>
+                <em>▶ Watch the overview</em>
+              </a>
             </div>
+            <p class="wf-matrix-click-note">Click any focus area for details. Click the center to watch the Longevity Matrix overview.</p>
           </div>
         </div>
         <div class="wf-matrix-copy">
@@ -274,7 +299,31 @@
         <p class="wf-final-note">No payment today • $50 required later to confirm your seat • Applied toward coaching if you enroll</p>
       </div>
     </section>
-  </main>
+  <div class="matrix-modal" id="matrix-modal" aria-hidden="true">
+  <div class="matrix-modal-backdrop" data-matrix-close></div>
+  <div class="matrix-focus-modal theme-athletic" id="matrix-focus-modal" role="dialog" aria-modal="true" aria-labelledby="matrix-focus-title">
+    <button class="matrix-focus-close" type="button" aria-label="Close focus details" data-matrix-close>Close <span aria-hidden="true">×</span></button>
+    <div class="matrix-focus-card">
+      <div class="matrix-focus-identity">
+        <div class="matrix-focus-icon" id="matrix-focus-icon" aria-hidden="true"></div>
+        <div class="matrix-focus-nameblock">
+          <h3 id="matrix-focus-title">Athletic</h3>
+          <p id="matrix-focus-tagline">Move dynamically without pain</p>
+          <span class="matrix-focus-rule"></span>
+        </div>
+      </div>
+      <div class="matrix-focus-accordions" id="matrix-focus-accordions"></div>
+    </div>
+    <div class="matrix-focus-footer">
+      <p id="matrix-focus-summary">Explore the three areas that support this focus.</p>
+      <div class="matrix-focus-actions">
+        <a class="btn btn-primary vitality-primary-cta" href="consult.html">Free Vitality Assessment</a>
+        <button class="btn btn-secondary" type="button" data-matrix-close>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
 
   <footer class="wf-footer">
     <div class="wf-shell wf-footer-grid">
@@ -283,5 +332,6 @@
       <div><a href="index.html">Home</a><a href="disclaimer.html">Disclaimer</a></div>
     </div>
   </footer>
+<script src="js/app.js?v=118"></script>
 </body>
 </html>
