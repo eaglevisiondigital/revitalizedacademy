@@ -332,3 +332,137 @@ body.wf-page{margin:0;background:#fff;color:var(--wf-ink);font-family:Inter,ui-s
     font-size:16px;
   }
 }
+
+
+/* Build 86 - premium interactive webinar Longevity Matrix */
+.wf-matrix-image-wrap.wf-matrix-premium{
+  padding:28px;
+  aspect-ratio:1/1;
+  display:grid;
+  place-items:center;
+  overflow:visible;
+  background:linear-gradient(145deg,#f8fbf9,#eef5f0);
+  border:1px solid #dfe9e2;
+  border-radius:28px;
+  box-shadow:0 18px 44px rgba(21,71,52,.08);
+}
+.wf-matrix-flower{
+  position:relative;
+  width:min(100%,560px);
+  aspect-ratio:1/1;
+}
+.wf-matrix-petal{
+  position:absolute;
+  width:46%;
+  height:46%;
+  border:0;
+  margin:0;
+  padding:24px 22px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  background:linear-gradient(160deg,#195c46,#0f4737);
+  color:#fcf5ee;
+  box-shadow:0 14px 34px rgba(21,71,52,.16);
+  cursor:pointer;
+  transition:transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+.wf-matrix-petal:hover,
+.wf-matrix-petal:focus-visible{
+  transform:translateY(-3px) scale(1.015);
+  box-shadow:0 20px 40px rgba(21,71,52,.22);
+  filter:brightness(1.04);
+  outline:3px solid rgba(216,166,42,.55);
+  outline-offset:4px;
+}
+.wf-matrix-athletic{left:27%;top:1%;border-radius:50% 50% 18% 18%}
+.wf-matrix-refined{right:1%;top:27%;border-radius:18% 50% 50% 18%}
+.wf-matrix-organized{left:27%;bottom:1%;border-radius:18% 18% 50% 50%}
+.wf-matrix-energized{left:1%;top:27%;border-radius:50% 18% 18% 50%}
+.wf-matrix-petal .wf-matrix-symbol{
+  display:block;
+  margin-bottom:9px;
+  color:#fcf5ee;
+  font-size:clamp(28px,3vw,42px);
+  line-height:1;
+}
+.wf-matrix-petal b{
+  color:#fcf5ee;
+  font-size:clamp(22px,2.2vw,31px);
+  line-height:1;
+}
+.wf-matrix-petal small{
+  margin-top:7px;
+  color:#fcf5ee;
+  opacity:.92;
+  font-size:clamp(11px,1vw,14px);
+  line-height:1.3;
+}
+.wf-matrix-center-video{
+  position:absolute;
+  left:50%;
+  top:50%;
+  z-index:7;
+  transform:translate(-50%,-50%);
+  width:34%;
+  aspect-ratio:1/1;
+  border-radius:50%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  text-decoration:none;
+  background:#08261d;
+  color:#fcf5ee!important;
+  box-shadow:0 14px 34px rgba(0,0,0,.22);
+  transition:transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+.wf-matrix-center-video:hover,
+.wf-matrix-center-video:focus-visible{
+  transform:translate(-50%,-50%) scale(1.035);
+  box-shadow:0 22px 44px rgba(0,0,0,.28);
+  filter:brightness(1.05);
+  outline:3px solid rgba(216,166,42,.62);
+  outline-offset:4px;
+}
+.wf-matrix-center-video span{
+  color:#fcf5ee;
+  font-size:clamp(10px,1vw,14px);
+  font-weight:850;
+  letter-spacing:.12em;
+}
+.wf-matrix-center-video strong{
+  color:#fcf5ee;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(20px,2.4vw,34px);
+  line-height:1;
+}
+.wf-matrix-center-video em{
+  margin-top:10px;
+  color:#e8c66f;
+  font-size:clamp(8px,.8vw,11px);
+  font-style:normal;
+  font-weight:800;
+  letter-spacing:.03em;
+}
+.wf-matrix-click-note{
+  margin:18px auto 0;
+  color:#5c6962;
+  font-size:12px;
+  line-height:1.4;
+  text-align:center;
+  max-width:480px;
+}
+@media(max-width:680px){
+  .wf-matrix-image-wrap.wf-matrix-premium{padding:12px}
+  .wf-matrix-petal{padding:12px 10px}
+  .wf-matrix-petal b{font-size:18px}
+  .wf-matrix-petal small{font-size:9.5px}
+  .wf-matrix-petal .wf-matrix-symbol{font-size:24px;margin-bottom:5px}
+  .wf-matrix-center-video span{font-size:8px}
+  .wf-matrix-center-video strong{font-size:20px}
+  .wf-matrix-center-video em{font-size:7px;margin-top:5px}
+}
