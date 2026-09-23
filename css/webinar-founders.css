@@ -769,3 +769,45 @@ body.wf-page{margin:0;background:#fff;color:var(--wf-ink);font-family:Inter,ui-s
   .wf-matrix-live-canvas{max-width:100%}
   .wf-matrix-live-image .wf-matrix-click-note{font-size:11px;margin-top:10px}
 }
+
+
+/* Build 89 - hero priority CTA: gold, stronger contrast, single-line desktop label */
+.wf-page .wf-hero-actions{
+  grid-template-columns:minmax(370px,430px) minmax(300px,1fr);
+}
+.wf-page .wf-hero-actions .wf-button{
+  min-width:370px;
+  max-width:430px;
+  white-space:nowrap;
+  background:linear-gradient(180deg,#e2b74f 0%,#c9972c 100%);
+  color:#17382d!important;
+  border:1px solid #b98720;
+  box-shadow:0 14px 30px rgba(177,136,69,.24);
+}
+.wf-page .wf-hero-actions .wf-button:hover{
+  background:linear-gradient(180deg,#ecc45e 0%,#d5a33a 100%);
+  box-shadow:0 18px 36px rgba(177,136,69,.3);
+}
+.wf-page .wf-hero-actions .wf-button span{
+  color:#17382d;
+}
+@media(max-width:1100px){
+  .wf-page .wf-hero-actions{
+    grid-template-columns:minmax(350px,400px) minmax(280px,1fr);
+  }
+  .wf-page .wf-hero-actions .wf-button{
+    min-width:350px;
+    max-width:400px;
+  }
+}
+@media(max-width:760px){
+  .wf-page .wf-hero-actions{
+    grid-template-columns:1fr;
+  }
+  .wf-page .wf-hero-actions .wf-button{
+    width:100%;
+    min-width:0;
+    max-width:100%;
+    white-space:normal;
+  }
+}
