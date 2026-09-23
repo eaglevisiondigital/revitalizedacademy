@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
   <title>ReVitalized Academy | Team Dashboard</title>
-  <link rel="stylesheet" href="css/admin104.css?v=105">
+  <link rel="stylesheet" href="css/admin104.css?v=106">
 </head>
 <body class="ra-admin">
   <div class="ra-admin-bg" aria-hidden="true"></div>
@@ -62,6 +62,35 @@
         <article><span>Webinar</span><strong data-metric="webinar_registrations">0</strong><small>Priority registrations</small></article>
         <article><span>Applicants</span><strong data-metric="applicants">0</strong><small>Enrollment applicants</small></article>
         <article class="accent"><span>Clients</span><strong data-metric="clients">0</strong><small>Active clients</small></article>
+      </section>
+
+      <section class="ra-executive-grid">
+        <article class="ra-executive-card">
+          <div class="ra-executive-head"><div><span class="ra-admin-eyebrow">ATTENTION TODAY</span><h2>Follow-Up Queue</h2></div><div class="ra-attention-number" data-metric="followups_due_24h">0</div></div>
+          <p>People and tasks that need attention now or within the next 24 hours.</p>
+          <div class="ra-attention-list" id="admin-attention-list"></div>
+        </article>
+
+        <article class="ra-executive-card webinar-card">
+          <div class="ra-executive-head"><div><span class="ra-admin-eyebrow">FOUNDERS WEBINAR</span><h2>Seat Management</h2></div><span class="ra-webinar-limit">50 SEATS</span></div>
+          <div class="ra-webinar-stats">
+            <div><strong data-metric="webinar_registrations">0</strong><span>Priority registrations</span></div>
+            <div><strong data-metric="webinar_confirmed">0</strong><span>Confirmed seats</span></div>
+            <div><strong id="admin-webinar-open">50</strong><span>Seats not yet confirmed</span></div>
+          </div>
+          <div class="ra-seat-bar"><i id="admin-seat-bar"></i></div>
+          <p id="admin-webinar-note">Payment is not live yet. Priority registrations are being collected now.</p>
+        </article>
+
+        <article class="ra-executive-card">
+          <div class="ra-executive-head"><div><span class="ra-admin-eyebrow">COACHING PIPELINE</span><h2>Consultations</h2></div><div class="ra-attention-number" data-metric="consultations_scheduled">0</div></div>
+          <div class="ra-pipeline-mini">
+            <div><span>Needs follow-up</span><b data-metric="needs_follow_up">0</b></div>
+            <div><span>Scheduled consultations</span><b data-metric="consultations_scheduled">0</b></div>
+            <div><span>Completed assessments</span><b data-metric="completed_assessments">0</b></div>
+            <div><span>Completed enrollments</span><b data-metric="completed_enrollments">0</b></div>
+          </div>
+        </article>
       </section>
 
       <section class="ra-admin-panel">
@@ -163,6 +192,6 @@
   </aside>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="js/admin104.js?v=105"></script>
+  <script src="js/admin104.js?v=106"></script>
 </body>
 </html>
