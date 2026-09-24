@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="portal-health-integrations.css?v=123">
   <link rel="stylesheet" href="portal-challenges.css?v=124">
   <link rel="stylesheet" href="portal-executive.css?v=125">
+  <link rel="stylesheet" href="portal-community.css?v=126">
 </head>
 <body>
   <main class="portal-page">
@@ -1669,6 +1670,33 @@
         </section>
       </div>
 
+
+      <div id="community-admin-modal" class="community-admin-modal hidden" aria-hidden="true">
+        <div class="community-admin-backdrop" data-community-admin-close></div>
+        <section class="community-admin-dialog" role="dialog" aria-modal="true" aria-labelledby="community-admin-modal-title">
+          <button class="community-admin-close" type="button" data-community-admin-close aria-label="Close community manager">×</button>
+          <p class="eyebrow">COMMUNITY ANNOUNCEMENT</p>
+          <h2 id="community-admin-modal-title">Post to a ReVitalized space</h2>
+          <form id="community-admin-form" class="community-admin-form">
+            <label><span>Space</span><select id="community-admin-space" required></select></label>
+            <label><span>Post type</span>
+              <select id="community-admin-type">
+                <option value="announcement">Announcement</option>
+                <option value="encouragement">Encouragement</option>
+                <option value="resource_share">Resource Share</option>
+                <option value="challenge_update">Challenge Update</option>
+                <option value="discussion">Discussion</option>
+              </select>
+            </label>
+            <label><span>Title</span><input id="community-admin-post-title" type="text" maxlength="220"></label>
+            <label><span>Message</span><textarea id="community-admin-body" rows="6" maxlength="12000" required></textarea></label>
+            <label class="community-admin-check"><input id="community-admin-pin" type="checkbox"><span>Pin this post</span></label>
+            <button class="primary-button" type="submit">Publish Announcement</button>
+            <p id="community-admin-status" class="form-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
       <div class="portal-content">
         <div class="portal-intro">
           <div>
@@ -1690,6 +1718,22 @@
           <div id="metrics-grid" class="metrics-grid" aria-live="polite"></div>
         </section>
 
+
+
+        <section class="panel community-admin-panel" aria-labelledby="community-admin-title">
+          <div class="panel-heading community-admin-heading">
+            <div>
+              <p class="section-kicker">COMMUNITY</p>
+              <h2 id="community-admin-title">Announcements &amp; moderation</h2>
+              <p class="panel-note">Program and family community activity, separate from private coaching data.</p>
+            </div>
+            <button id="community-admin-new" class="secondary-button compact" type="button">New Announcement</button>
+          </div>
+          <div id="community-admin-metrics" class="community-admin-metrics"></div>
+          <div id="community-admin-feed" class="community-admin-feed">
+            <div class="empty-state">Loading community activity...</div>
+          </div>
+        </section>
 
         <section class="panel executive-pulse-panel" aria-labelledby="executive-pulse-title">
           <div class="panel-heading executive-pulse-heading">
@@ -1895,5 +1939,6 @@
   <script defer src="portal-health-integrations.js?v=123"></script>
   <script defer src="portal-challenges.js?v=124"></script>
   <script defer src="portal-executive.js?v=125"></script>
+  <script defer src="portal-community.js?v=126"></script>
 </body>
 </html>
