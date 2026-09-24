@@ -4,12 +4,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
-  <title>Step 1 Complete | ReVitalized Academy</title>
+  <title>Application Received | ReVitalized Academy</title>
   <link rel="stylesheet" href="css/enrollment82.css?v=82">
   <link rel="stylesheet" href="css/header87-continuity.css?v=89">
   <style>
+    .ra-thankyou-actions{justify-content:center;gap:12px;flex-wrap:wrap}
     .ra-thankyou-actions .ra-btn-primary{color:#fff!important}
-    .ra-thankyou-actions{justify-content:center}
+    .ra-thankyou-actions .ra-btn-secondary{display:inline-flex;align-items:center;justify-content:center}
+    .ra-thankyou-path{margin-top:18px;display:grid;gap:9px;text-align:left}
+    .ra-thankyou-path div{display:flex;gap:10px;align-items:flex-start;padding:11px 12px;border:1px solid rgba(21,71,52,.12);border-radius:11px;background:#fbfcfb}
+    .ra-thankyou-path b{width:24px;height:24px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#edf5ef;color:#154734;font-size:10px;flex:0 0 auto}
+    .ra-thankyou-path strong{display:block;font-size:12px;color:#2d4036}
+    .ra-thankyou-path span{display:block;margin-top:2px;font-size:10px;color:#718078}
   </style>
 </head>
 <body class="ra-journey">
@@ -35,19 +41,68 @@
   <main class="ra-thankyou">
     <section class="ra-thankyou-card" aria-labelledby="thank-you-title">
       <div class="ra-thankyou-mark" aria-hidden="true">✓</div>
-      <span class="ra-eyebrow">Step 1 complete</span>
+      <span class="ra-eyebrow">Application received</span>
       <h1 id="thank-you-title">Your ReVitalized journey has started.</h1>
-      <p>We’ve received your initial enrollment information, goals and preferred starting point. You do not need to enter those basics again before moving into your health profile.</p>
+      <p>We’ve received your initial information, goals and preferred starting point. From here, ReVitalized can move you through the right next steps without making you start over every time.</p>
+
       <div class="ra-thankyou-next">
-        <strong>Step 2 · Health Profile</strong>
-        <p>Next, we’ll go deeper into your story, health history, lifestyle, goals and the information your coach needs to understand the whole picture.</p>
+        <strong id="ra-next-title">We’re preparing your next step.</strong>
+        <p id="ra-next-copy">Your next step depends on the path you selected and anything you may have already completed with ReVitalized Academy.</p>
       </div>
-      <div class="ra-thankyou-actions">
-        <a class="ra-btn ra-btn-primary" href="health-profile.html">Continue to Step 2 →</a>
+
+      <div class="ra-thankyou-actions" id="ra-next-actions"></div>
+
+      <div class="ra-thankyou-path">
+        <div><b>1</b><div><strong>Initial application</strong><span>Complete. Your goals, contact information and preferred starting point are saved.</span></div></div>
+        <div><b>2</b><div><strong>Sales / assessment next step</strong><span>Vitality Assessment, membership activation or application interview scheduling, depending on your route.</span></div></div>
+        <div><b>3</b><div><strong>Enrollment and onboarding</strong><span>Payment, agreement and the New Client Enrollment Health Questionnaire happen at the appropriate point after the decision to join.</span></div></div>
       </div>
     </section>
   </main>
 
-  <script>(()=>{const b=document.querySelector('.ra-menu-toggle'),n=document.querySelector('.ra-nav');if(!b||!n)return;b.addEventListener('click',()=>{const o=n.classList.toggle('is-open');b.setAttribute('aria-expanded',String(o));});n.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{n.classList.remove('is-open');b.setAttribute('aria-expanded','false');}));})();</script>
+  <script>
+    (() => {
+      const b=document.querySelector('.ra-menu-toggle'),n=document.querySelector('.ra-nav');
+      if(b&&n){
+        b.addEventListener('click',()=>{const o=n.classList.toggle('is-open');b.setAttribute('aria-expanded',String(o));});
+        n.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{n.classList.remove('is-open');b.setAttribute('aria-expanded','false');}));
+      }
+
+      const title=document.getElementById('ra-next-title');
+      const copy=document.getElementById('ra-next-copy');
+      const actions=document.getElementById('ra-next-actions');
+
+      let context=null;
+      let vitalityComplete=false;
+      try {
+        context=JSON.parse(sessionStorage.getItem('ra_enrollment_context_v2') || 'null');
+        vitalityComplete=sessionStorage.getItem('ra_vitality_completed') === 'true';
+      } catch (_) {}
+
+      const button=(href,label,kind='primary') => {
+        const a=document.createElement('a');
+        a.href=href;
+        a.className='ra-btn ' + (kind==='primary' ? 'ra-btn-primary' : 'ra-btn-secondary');
+        a.textContent=label;
+        actions.append(a);
+      };
+
+      if (context?.selected_plan_code === 'holistic-foundations') {
+        title.textContent='Next: Activate Holistic Foundations';
+        copy.textContent='Because you selected Holistic Foundations, membership activation and payment come next. After activation, your Vitality Assessment must also be complete before full member access is unlocked. The ReVitalized team can guide you through activation.';
+        button('plans.html','Review Holistic Foundations','secondary');
+        if (!vitalityComplete) button('consult.html','Preview the Vitality Assessment','secondary');
+      } else if (vitalityComplete) {
+        title.textContent='Your Vitality Assessment is already complete.';
+        copy.textContent='Great. ReVitalized can use that assessment instead of making you repeat it. Your next sales step is application-interview scheduling, and the team will move you forward from here.';
+        button('vitality-next.html','Watch the Longevity Matrix');
+      } else {
+        title.textContent='Next: Complete your Vitality Assessment';
+        copy.textContent='Your Vitality Assessment gives the coaching team the health context they need before your application interview. If you have already completed it on another device, the team can use the existing assessment rather than asking you to repeat it.';
+        button('consult.html','Continue to the Vitality Assessment');
+        button('index.html#matrix-videos','Watch the Longevity Matrix','secondary');
+      }
+    })();
+  </script>
 </body>
 </html>
