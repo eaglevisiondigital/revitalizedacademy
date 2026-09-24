@@ -144,7 +144,7 @@
     el("journey-pause").disabled = !pausable;
     el("journey-pause").textContent = journey.journey_status === "paused" ? "Resume Journey" : "Pause Journey";
     el("journey-nurture").disabled = !pausable;
-    el("journey-nurture").textContent = journey.journey_status === "nurture" ? "Resume Active" : "Move to Nurture";
+    el("journey-nurture").textContent = journey.journey_status === "nurture" ? "Resume Active Journey" : "Long-Term Nurture";
 
     const queued = jobs.filter((job) => job.status === "queued").length;
     const blocked = jobs.filter((job) => job.status === "blocked").length;
@@ -309,6 +309,19 @@
 
   el("journey-nurture").addEventListener("click", () => {
     if (!journey) return;
-    setJourneyState(journey.journey_status === "nurture" ? "active" : "nurture");
+
+    if (journey.journey_status === "nurture") {
+      setJourneyState("active");
+      return;
+    }
+
+    const confirmed = window.confirm(
+      "Move this person to Long-Term Nurture?\n\n" +
+      "Their ReVitalized history, assessment, tags and current journey are preserved. " +
+      "Immediate sales/onboarding follow-up is paused so the team can use a gentler long-term follow-up approach. " +
+      "You can resume the active journey later without starting over."
+    );
+
+    if (confirmed) setJourneyState("nurture");
   });
 })();
