@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="portal-wellness.css?v=117">
   <link rel="stylesheet" href="portal-overrides.css?v=118">
   <link rel="stylesheet" href="portal-learning.css?v=119">
-  <link rel="stylesheet" href="portal-member-messaging.css?v=120">
+  <link rel="stylesheet" href="portal-member-messaging.css?v=121">
 </head>
 <body>
   <main class="portal-page">
@@ -1466,6 +1466,11 @@
           <div id="staff-message-thread" class="staff-message-thread"></div>
           <form id="staff-message-form" class="staff-message-compose">
             <textarea id="staff-message-body" rows="3" maxlength="8000" placeholder="Write a private message to this member..." required></textarea>
+            <label class="staff-message-attachment-field">
+              <span>Optional attachment</span>
+              <input id="staff-message-file" type="file" accept="application/pdf,image/jpeg,image/png,image/webp,audio/mpeg,audio/mp4,audio/x-m4a,audio/wav">
+              <small>PDF, image or audio up to 10 MB.</small>
+            </label>
             <div class="staff-message-compose-actions">
               <button class="primary-button" type="submit">Send Message</button>
             </div>
@@ -1648,6 +1653,6 @@
   <script defer src="portal-wellness.js?v=117"></script>
   <script defer src="portal-overrides.js?v=118"></script>
   <script defer src="portal-learning.js?v=119"></script>
-  <script defer src="portal-member-messaging.js?v=120"></script>
+  <script defer src="portal-member-messaging.js?v=121"></script>
 </body>
 </html>
