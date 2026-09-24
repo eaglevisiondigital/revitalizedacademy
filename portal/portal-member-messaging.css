@@ -46,3 +46,6 @@
   .staff-inbox-item{grid-template-columns:1fr}
   .staff-message-modal{padding:7px}.staff-message-dialog{padding:22px 13px}
 }
+
+.staff-message-attachment-field{display:grid;gap:4px}.staff-message-attachment-field span{font-size:9px;font-weight:850;color:#586961}.staff-message-attachment-field input{padding:8px;border:1px solid #cedad2;border-radius:9px;background:#fff;font-size:10px}.staff-message-attachment-field small{font-size:8px;color:#839087}
+.staff-message-files{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}.staff-message-file{display:inline-flex;align-items:center;min-height:27px;padding:0 8px;border:1px solid #cedad2;border-radius:7px;background:#fff;color:#154734;font-size:8px;font-weight:850;text-decoration:none}
