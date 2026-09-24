@@ -41,7 +41,10 @@
   }
 
   if (!token) {
-    window.RA_HEALTH_PROFILE_JOURNEY = null;
+    sessionStorage.removeItem("ra_enrollment_context_v2");
+    window.RA_HEALTH_PROFILE_JOURNEY = {
+      loadError: "This New Client Enrollment Health Questionnaire opens from your secure ReVitalized Journey link after the enrollment requirements are complete."
+    };
     loadEngine();
     return;
   }
