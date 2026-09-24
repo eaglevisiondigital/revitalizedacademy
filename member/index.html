@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex,nofollow,noarchive">
   <title>Member Dashboard | ReVitalized Academy</title>
   <link rel="icon" href="../assets/images/revitalized-logo-dark-approved-v69.png">
-  <link rel="stylesheet" href="member110.css?v=120">
+  <link rel="stylesheet" href="member110.css?v=121">
 </head>
 <body>
   <main class="rm112-page">
@@ -281,11 +281,37 @@
           <div id="rm-message-thread" class="rm120-thread"></div>
           <form id="rm-message-form" class="rm120-compose">
             <textarea id="rm-message-body" rows="3" maxlength="8000" placeholder="Write a message to your ReVitalized coaching team..." required></textarea>
+            <label class="rm120-attachment-field">
+              <span>Optional attachment</span>
+              <input id="rm-message-file" type="file" accept="application/pdf,image/jpeg,image/png,image/webp,audio/mpeg,audio/mp4,audio/x-m4a,audio/wav">
+              <small>PDF, image or audio up to 10 MB.</small>
+            </label>
             <button type="submit">Send Message</button>
             <p id="rm-message-status" class="rm112-status" aria-live="polite"></p>
           </form>
         </section>
       </div>
+
+
+      <section class="rm112-card rm121-settings-card">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">NOTIFICATION SETTINGS</p>
+            <h2>How ReVitalized can reach you</h2>
+          </div>
+        </div>
+        <form id="rm-notification-form" class="rm121-preferences">
+          <label><input id="pref-in-app-messages" type="checkbox"><span>In-app message notifications</span></label>
+          <label><input id="pref-email-messages" type="checkbox"><span>Email me about private messages</span></label>
+          <label><input id="pref-sms-messages" type="checkbox"><span>Text me about private messages</span></label>
+          <label><input id="pref-email-coaching" type="checkbox"><span>Email coaching/session reminders</span></label>
+          <label><input id="pref-sms-coaching" type="checkbox"><span>Text coaching/session reminders</span></label>
+          <label><input id="pref-email-program" type="checkbox"><span>Email program updates</span></label>
+          <label><input id="pref-sms-program" type="checkbox"><span>Text program updates</span></label>
+          <button type="submit">Save Notification Preferences</button>
+          <p id="rm-notification-status" class="rm112-status" aria-live="polite"></p>
+        </form>
+      </section>
 
       <section class="rm112-card rm112-access-card">
         <div class="rm112-card-head">
@@ -322,6 +348,6 @@
   </main>
 
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
-  <script defer src="member110.js?v=120"></script>
+  <script defer src="member110.js?v=121"></script>
 </body>
 </html>
