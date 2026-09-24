@@ -112,6 +112,33 @@
 
   let currentMember = null;
 
+  function renderRefuel(row){
+    const card=el("rm-refuel-card");
+    if(!row){card.classList.add("hidden");return;}
+    card.classList.remove("hidden");
+    el("rm-refuel-status").textContent=title(row.enrollment_status);
+    const content=el("rm-refuel-content");
+    content.replaceChildren();
+    const strong=document.createElement("strong");
+    strong.textContent=row.offer_name||"ReFuel";
+    content.append(strong);
+    if(row.description){
+      const p=document.createElement("p");p.textContent=row.description;content.append(p);
+    }
+    const meta=document.createElement("small");
+    const price=row.price_cents!==null&&row.price_cents!==undefined
+      ? new Intl.NumberFormat(undefined,{style:"currency",currency:row.currency||"USD"}).format(Number(row.price_cents)/100)
+      : "";
+    meta.textContent=[
+      title(row.payment_status),
+      price,
+      row.starts_at?"Starts "+formatDate(row.starts_at,true):"",
+      row.ends_at?"Ends "+formatDate(row.ends_at,true):""
+    ].filter(Boolean).join(" · ");
+    content.append(meta);
+  }
+
+
   let communitySpaces=[];
   let communityFeed=[];
   let activeCommunityPost=null;
@@ -1340,7 +1367,8 @@
       healthConnectionsResult,
       challengesResult,
       communitySpacesResult,
-      communityFeedResult
+      communityFeedResult,
+      refuelResult
     ] = await Promise.all([
       client.from("my_member_dashboard").select("*").maybeSingle(),
       client.from("my_member_entitlements").select("*").order("label"),
@@ -1367,10 +1395,11 @@
       client.from("my_health_connections").select("*").order("provider_name"),
       client.from("my_challenges").select("*"),
       client.from("my_community_spaces").select("*"),
-      client.from("my_community_feed").select("*")
+      client.from("my_community_feed").select("*"),
+      client.from("my_refuel_access").select("*").limit(1).maybeSingle()
     ]);
 
-    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult,notificationPrefsResult,healthConnectionsResult,challengesResult,communitySpacesResult,communityFeedResult].find((r) => r.error);
+    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult,notificationPrefsResult,healthConnectionsResult,challengesResult,communitySpacesResult,communityFeedResult,refuelResult].find((r) => r.error);
     if (failed?.error) throw failed.error;
 
     const member = dashboardResult.data;
