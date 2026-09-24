@@ -1,0 +1,44 @@
+
+.client-coaching-section{border-color:#d9e5dd;background:linear-gradient(180deg,#fff,#fbfdfb)}
+.client-coaching-summary-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:1px solid #e3eae6;border-radius:12px;overflow:hidden}
+.client-coaching-summary-grid>div{padding:11px 12px;background:#fbfcfb;border-right:1px solid #e3eae6;border-bottom:1px solid #e3eae6}
+.client-coaching-summary-grid>div:nth-child(3n){border-right:0}
+.client-coaching-summary-grid>div:nth-last-child(-n+3){border-bottom:0}
+.client-coaching-summary-grid span{display:block;font-size:9px;font-weight:900;letter-spacing:.07em;text-transform:uppercase;color:#7c8982;margin-bottom:3px}
+.client-coaching-summary-grid strong{font-size:12px;color:#31463a}
+.client-coaching-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+
+.coaching-modal{position:fixed;inset:0;z-index:150;display:flex;align-items:center;justify-content:center;padding:18px}
+.coaching-modal-backdrop{position:absolute;inset:0;background:rgba(8,31,23,.48);backdrop-filter:blur(4px)}
+.coaching-dialog{position:relative;width:min(980px,100%);max-height:95vh;overflow:auto;background:#f9fbfa;border:1px solid rgba(21,71,52,.15);border-radius:22px;padding:28px;box-shadow:0 32px 100px rgba(13,53,39,.29)}
+.coaching-close{position:absolute;right:16px;top:15px;width:36px;height:36px;border:0;border-radius:50%;background:#eef3ef;color:#596b61;font-size:23px}
+.coaching-dialog>h2{font-family:Georgia,"Times New Roman",serif;color:var(--green-deep);font-size:36px;line-height:1.05;font-weight:500;letter-spacing:-.025em;margin:8px 0}
+.coaching-intro{max-width:760px;margin:0 0 16px;color:#68776f;font-size:11px;line-height:1.5}
+.coaching-two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.coaching-block{background:#fff;border:1px solid #dfe7e2;border-radius:15px;padding:15px;margin-top:12px}
+.coaching-block-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:11px}
+.coaching-block-head span{display:block;font-size:9px;font-weight:900;letter-spacing:.08em;color:#7a8880}
+.coaching-block-head strong{display:block;margin-top:3px;color:#2f4639;font-size:14px}
+.coaching-inline-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.coaching-inline-row select{flex:1;min-width:210px;height:40px;border:1px solid #cfdad3;border-radius:8px;background:#fff;color:#2f4338;padding:0 9px;font-size:11px}
+.coaching-form{display:grid;gap:9px}.coaching-form label{display:grid;gap:5px}.coaching-form label>span{font-size:9px;font-weight:850;color:#586961}
+.coaching-form input,.coaching-form select,.coaching-form textarea{width:100%;border:1px solid #cfdad3;border-radius:8px;background:#fff;color:#2f4338;outline:none}
+.coaching-form input,.coaching-form select{height:40px;padding:0 9px;font-size:11px}.coaching-form textarea{padding:9px;resize:vertical;font-size:11px}
+.coaching-form input:focus,.coaching-form select:focus,.coaching-form textarea:focus{border-color:#659d79;box-shadow:0 0 0 3px rgba(35,148,8,.06)}
+.coaching-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.coaching-wide{grid-column:1/-1}
+.coaching-list{display:grid;gap:7px;margin-top:10px}
+.coaching-item{padding:10px 11px;border:1px solid #e5ebe7;border-radius:10px;background:#fbfcfb}
+.coaching-item-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.coaching-item strong{display:block;font-size:11px;color:#30463a}.coaching-item p{margin:4px 0 0;color:#718078;font-size:10px;line-height:1.45;white-space:pre-wrap}.coaching-item small{display:block;margin-top:3px;color:#839088;font-size:9px}
+.coaching-item-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:7px}.coaching-item-actions button{min-height:29px;padding:0 8px;border-radius:7px;border:1px solid #cdd9d1;background:#fff;color:var(--green);font-size:8px;font-weight:900}.coaching-item-actions button.primary{background:#154734;color:#fff;border-color:#154734}
+.coaching-response{padding:8px 9px;margin-top:7px;border-left:3px solid #b18845;background:#fffaf1;color:#6b5a37;font-size:9px;line-height:1.45}
+.coaching-metric-grid{display:grid;grid-template-columns:1fr auto;gap:7px 12px;align-items:center}.coaching-metric-grid strong{font-size:10px}.coaching-metric-grid span{font-size:9px;color:#78867e}
+.coaching-empty{padding:12px;border:1px dashed #d7e1db;border-radius:9px;color:#7b8981;text-align:center;font-size:10px;background:#fbfcfb}
+.coaching-badge{display:inline-flex;padding:4px 6px;border-radius:999px;background:#edf4ef;color:#587064;font-size:8px;font-weight:900;text-transform:uppercase;letter-spacing:.04em}
+.coaching-badge.review{background:#fff7e8;color:#846124}
+.coaching-badge.completed{background:#e9f4ec;color:#2f6d44}
+@media(max-width:760px){
+  .client-coaching-summary-grid{grid-template-columns:1fr 1fr}.client-coaching-summary-grid>div:nth-child(3n){border-right:1px solid #e3eae6}.client-coaching-summary-grid>div:nth-child(2n){border-right:0}.client-coaching-summary-grid>div:nth-last-child(-n+3){border-bottom:1px solid #e3eae6}.client-coaching-summary-grid>div:nth-last-child(-n+2){border-bottom:0}
+  .coaching-modal{padding:8px}.coaching-dialog{padding:24px 14px}.coaching-two-col{grid-template-columns:1fr}.coaching-form-grid{grid-template-columns:1fr}.coaching-wide{grid-column:auto}
+}
+@media(max-width:520px){.client-coaching-summary-grid{grid-template-columns:1fr}.client-coaching-summary-grid>div{border-right:0!important;border-bottom:1px solid #e3eae6!important}.client-coaching-summary-grid>div:last-child{border-bottom:0!important}}
