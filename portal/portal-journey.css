@@ -42,3 +42,36 @@
   .journey-step-status{grid-column:2}
   .journey-action-row button{flex:1 1 46%}
 }
+
+.journey-pipeline-panel{margin-bottom:18px}
+.journey-pipeline-heading{align-items:center}
+.journey-pipeline-summary{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+.pipeline-summary-chip{display:inline-flex;align-items:center;gap:5px;padding:6px 9px;border-radius:999px;background:#f0f5f1;border:1px solid #dce6df;font-size:10px;font-weight:850;color:#51655a}
+.pipeline-summary-chip strong{font-size:11px;color:#2d4538}
+.pipeline-summary-chip.hot{background:#fff0e8;border-color:#edcfc5;color:#934938}
+.pipeline-summary-chip.stalled{background:#fff8f1;border-color:#eadbc6;color:#8a6328}
+.journey-pipeline-list{display:grid;gap:8px}
+.pipeline-row{display:grid;grid-template-columns:minmax(170px,1.25fr) minmax(170px,1.3fr) minmax(190px,1.7fr) 110px 120px;gap:12px;align-items:center;padding:12px 13px;border:1px solid #e5ebe7;border-radius:12px;background:#fbfcfb;cursor:pointer;transition:.15s}
+.pipeline-row:hover{border-color:#bfd3c6;background:#f7faf8;transform:translateY(-1px)}
+.pipeline-person strong{display:block;font-size:13px;color:#2c4035}
+.pipeline-person span,.pipeline-route span,.pipeline-step span{display:block;font-size:10px;color:#7a8880;margin-top:2px}
+.pipeline-route strong,.pipeline-step strong{display:block;font-size:11px;color:#42574b}
+.pipeline-temp{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:6px 8px;font-size:9px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;background:#edf3ef;color:#5c6d63}
+.pipeline-temp.hot{background:#fff0e8;color:#9b4938}
+.pipeline-temp.warm{background:#fff7e8;color:#856124}
+.pipeline-progress{text-align:right}
+.pipeline-progress strong{display:block;font-size:12px;color:#355044}
+.pipeline-progress span{display:block;font-size:9px;color:#829088;margin-top:2px}
+.pipeline-due{text-align:right;font-size:10px;color:#6d7c74}
+.pipeline-due.stalled{color:#9b4938;font-weight:850}
+@media(max-width:950px){
+  .pipeline-row{grid-template-columns:1fr 1fr}
+  .pipeline-step{grid-column:1/-1}
+  .pipeline-progress,.pipeline-due{text-align:left}
+}
+@media(max-width:600px){
+  .journey-pipeline-heading{align-items:flex-start;flex-direction:column}
+  .journey-pipeline-summary{justify-content:flex-start}
+  .pipeline-row{grid-template-columns:1fr}
+  .pipeline-step{grid-column:auto}
+}
