@@ -425,6 +425,7 @@
 
   function renderOperational() {
     const wrap = el("action-center-operational");
+    const financialAuthorized = ["owner","admin"].includes(portal.currentStaffRole?.() || "");
     const appointmentPanel = el("action-center-appointment");
     const activationPanel = el("action-center-activation");
     const reportPanel = el("action-center-report");
@@ -463,7 +464,7 @@
       setOperationalStatus("appointment-status-message", "");
     }
 
-    if (["payment_agreement","backend_activation"].includes(step?.step_key)) {
+    if (["payment_agreement","backend_activation"].includes(step?.step_key) && financialAuthorized) {
       wrap.classList.remove("hidden");
       activationPanel.classList.remove("hidden");
 
