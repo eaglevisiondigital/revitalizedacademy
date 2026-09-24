@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="portal-overrides.css?v=118">
   <link rel="stylesheet" href="portal-learning.css?v=119">
   <link rel="stylesheet" href="portal-member-messaging.css?v=121">
+  <link rel="stylesheet" href="portal-companion.css?v=122">
 </head>
 <body>
   <main class="portal-page">
@@ -1479,6 +1480,108 @@
         </section>
       </div>
 
+
+      <div id="companion-review-modal" class="companion-modal hidden" aria-hidden="true">
+        <div class="companion-modal-backdrop" data-companion-review-close></div>
+        <section class="companion-dialog" role="dialog" aria-modal="true" aria-labelledby="companion-review-title">
+          <button class="companion-close" type="button" data-companion-review-close aria-label="Close Coach Companion review">×</button>
+          <p class="eyebrow">COACH COMPANION REVIEW</p>
+          <h2 id="companion-review-title">Review member question</h2>
+
+          <div class="companion-question-card">
+            <span id="companion-question-type">Question type</span>
+            <strong id="companion-question-text">Loading...</strong>
+            <p id="companion-review-reason"></p>
+          </div>
+
+          <section class="companion-block">
+            <div class="companion-block-head">
+              <div><span>APPROVED SOURCES</span><strong>Retrieved ReVitalized knowledge</strong></div>
+              <span id="companion-confidence" class="companion-chip">No retrieval</span>
+            </div>
+            <div id="companion-source-list" class="companion-source-list"></div>
+          </section>
+
+          <section class="companion-block">
+            <div class="companion-block-head">
+              <div><span>COACH RESPONSE</span><strong>Human-reviewed answer</strong></div>
+            </div>
+            <form id="companion-review-form" class="companion-form">
+              <label>
+                <span>Response to member</span>
+                <textarea id="companion-response" rows="6" maxlength="8000" required></textarea>
+              </label>
+              <label>
+                <span>Resolution</span>
+                <select id="companion-resolution-type">
+                  <option value="coach_answered">Coach answered</option>
+                  <option value="approved_draft">Approved draft</option>
+                  <option value="redirected">Redirected / referred</option>
+                  <option value="no_response">Resolve without member response</option>
+                </select>
+              </label>
+              <label class="companion-check">
+                <input id="companion-send-member" type="checkbox" checked>
+                <span>Send response into the member’s private ReVitalized conversation</span>
+              </label>
+              <div class="companion-form-actions">
+                <button id="companion-claim-review" class="secondary-button" type="button">Claim Review</button>
+                <button class="primary-button" type="submit">Resolve Review</button>
+              </div>
+              <p id="companion-review-status" class="form-status" aria-live="polite"></p>
+            </form>
+          </section>
+        </section>
+      </div>
+
+      <div id="companion-knowledge-modal" class="companion-modal hidden" aria-hidden="true">
+        <div class="companion-modal-backdrop" data-companion-knowledge-close></div>
+        <section class="companion-dialog companion-knowledge-dialog" role="dialog" aria-modal="true" aria-labelledby="companion-knowledge-title">
+          <button class="companion-close" type="button" data-companion-knowledge-close aria-label="Close Coach Companion knowledge manager">×</button>
+          <p class="eyebrow">COACH COMPANION KNOWLEDGE</p>
+          <h2 id="companion-knowledge-title">Approved ReVitalized Knowledge</h2>
+          <p class="companion-intro">Only approved sources are eligible for Coach Companion retrieval. Draft content remains invisible to the retrieval engine.</p>
+
+          <section class="companion-block">
+            <div class="companion-block-head">
+              <div><span>ADD SOURCE</span><strong>Create or update knowledge</strong></div>
+            </div>
+            <form id="companion-knowledge-form" class="companion-form">
+              <div class="companion-grid">
+                <label><span>Source key</span><input id="companion-source-key" type="text" maxlength="160" placeholder="nutrition-foundation-v1" required></label>
+                <label><span>Title</span><input id="companion-source-title" type="text" maxlength="240" required></label>
+                <label><span>Type</span>
+                  <select id="companion-source-type">
+                    <option value="course">Course</option>
+                    <option value="lesson">Lesson</option>
+                    <option value="resource">Resource</option>
+                    <option value="methodology">Methodology</option>
+                    <option value="coach_guide">Coach Guide</option>
+                    <option value="faq">FAQ</option>
+                    <option value="policy">Policy</option>
+                    <option value="other">Other</option>
+                  </select>
+                </label>
+                <label><span>Version</span><input id="companion-source-version" type="text" value="1.0" maxlength="40"></label>
+                <label class="companion-wide"><span>Approved content</span><textarea id="companion-source-content" rows="10" maxlength="200000" required></textarea></label>
+              </div>
+              <div class="companion-form-actions">
+                <button id="companion-save-draft" class="secondary-button" type="button">Save Draft</button>
+                <button id="companion-approve-embed" class="primary-button" type="button">Approve &amp; Embed</button>
+              </div>
+              <p id="companion-knowledge-status" class="form-status" aria-live="polite"></p>
+            </form>
+          </section>
+
+          <section class="companion-block">
+            <div class="companion-block-head">
+              <div><span>KNOWLEDGE SOURCES</span><strong>Current source library</strong></div>
+            </div>
+            <div id="companion-knowledge-list" class="companion-knowledge-list"></div>
+          </section>
+        </section>
+      </div>
+
       <div class="portal-content">
         <div class="portal-intro">
           <div>
@@ -1526,6 +1629,23 @@
 
 
 
+
+
+        <section class="panel companion-panel" aria-labelledby="companion-title">
+          <div class="panel-heading companion-heading">
+            <div>
+              <p class="section-kicker">COACH COMPANION</p>
+              <h2 id="companion-title">Human review &amp; approved knowledge</h2>
+              <p class="panel-note">Questions that need a coach stay here until a human resolves them.</p>
+            </div>
+            <button id="companion-manage-knowledge" class="secondary-button compact" type="button">Manage Knowledge</button>
+          </div>
+
+          <div id="companion-summary" class="companion-summary"></div>
+          <div id="companion-review-list" class="companion-review-list">
+            <div class="empty-state">Loading Coach Companion review queue...</div>
+          </div>
+        </section>
 
         <section class="panel staff-inbox-panel" aria-labelledby="staff-inbox-title">
           <div class="panel-heading staff-inbox-heading">
@@ -1654,5 +1774,6 @@
   <script defer src="portal-overrides.js?v=118"></script>
   <script defer src="portal-learning.js?v=119"></script>
   <script defer src="portal-member-messaging.js?v=121"></script>
+  <script defer src="portal-companion.js?v=122"></script>
 </body>
 </html>
