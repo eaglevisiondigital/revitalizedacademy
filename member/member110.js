@@ -110,25 +110,346 @@
     }
   }
 
+  let currentMember = null;
+  let metricCatalog = [];
+  let checkinTemplate = null;
+  let checkinFields = [];
+
+
+  function renderCoach(row) {
+    const target = el("rm-coach");
+    target.replaceChildren();
+    if (!row) {
+      target.className = "rm112-empty";
+      target.textContent = "Your primary coach assignment is being prepared.";
+      return;
+    }
+    target.className = "rm114-coach-card";
+    const name = document.createElement("strong");
+    name.textContent = row.coach_name || "ReVitalized Coach";
+    const meta = document.createElement("span");
+    meta.textContent = "Primary coaching connection";
+    target.append(name, meta);
+  }
+
+  function renderGoals(rows) {
+    const list = el("rm-goals");
+    list.replaceChildren();
+    const active = rows.filter((row) => row.status === "active");
+    if (!active.length) {
+      list.innerHTML = '<div class="rm112-empty">Your active goals will appear here as you and your coach define them.</div>';
+      return;
+    }
+    active.forEach((row) => {
+      const item = document.createElement("div");
+      item.className = "rm114-item";
+      const top = document.createElement("div");
+      top.className = "rm114-item-top";
+      const titleEl = document.createElement("strong");
+      titleEl.textContent = row.title;
+      const due = document.createElement("small");
+      due.textContent = row.target_date ? "Target " + formatDate(row.target_date) : "Active goal";
+      top.append(titleEl, due);
+      item.append(top);
+      if (row.description) {
+        const p = document.createElement("p");
+        p.textContent = row.description;
+        item.append(p);
+      }
+      list.append(item);
+    });
+  }
+
+  function renderHabits(rows) {
+    const list = el("rm-habits");
+    list.replaceChildren();
+    const active = rows.filter((row) => row.status === "active");
+    if (!active.length) {
+      list.innerHTML = '<div class="rm112-empty">Your habit plan will appear here as your coaching plan is built.</div>';
+      return;
+    }
+
+    active.forEach((row) => {
+      const item = document.createElement("div");
+      item.className = "rm114-item";
+      const top = document.createElement("div");
+      top.className = "rm114-item-top";
+      const titleEl = document.createElement("strong");
+      titleEl.textContent = row.title;
+      const meta = document.createElement("small");
+      meta.textContent = title(row.frequency) + " · Target " + row.target_per_period + (row.unit ? " " + row.unit : "");
+      top.append(titleEl, meta);
+      item.append(top);
+
+      const progress = document.createElement("div");
+      progress.className = "rm114-habit-progress";
+      const bar = document.createElement("i");
+      const denominator = row.frequency === "daily"
+        ? Math.max(1, Number(row.target_per_period || 1) * 7)
+        : Math.max(1, Number(row.target_per_period || 1));
+      bar.style.width = Math.min(100, Math.round((Number(row.last_7_day_value || 0) / denominator) * 100)) + "%";
+      progress.append(bar);
+      item.append(progress);
+
+      const actions = document.createElement("div");
+      actions.className = "rm114-item-actions";
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "primary";
+      const doneToday = Number(row.today_value || 0) > 0;
+      button.textContent = doneToday ? "Logged Today ✓" : "Mark Today";
+      button.disabled = doneToday;
+      button.addEventListener("click", () => markHabit(row));
+      actions.append(button);
+      item.append(actions);
+      list.append(item);
+    });
+  }
+
+  function renderAssignments(rows) {
+    const list = el("rm-assignments");
+    list.replaceChildren();
+    const open = rows.filter((row) => ["assigned","in_progress"].includes(row.status));
+    el("rm-assignment-count").textContent = open.length + " open";
+
+    if (!open.length) {
+      list.innerHTML = '<div class="rm112-empty">No open coach assignments right now.</div>';
+      return;
+    }
+
+    open.forEach((row) => {
+      const item = document.createElement("div");
+      item.className = "rm114-item";
+      const top = document.createElement("div");
+      top.className = "rm114-item-top";
+      const titleEl = document.createElement("strong");
+      titleEl.textContent = row.title;
+      const due = document.createElement("small");
+      due.textContent = row.due_at ? "Due " + formatDate(row.due_at, true) : title(row.assignment_type);
+      top.append(titleEl, due);
+      item.append(top);
+
+      if (row.instructions) {
+        const p = document.createElement("p");
+        p.textContent = row.instructions;
+        item.append(p);
+      }
+
+      const actions = document.createElement("div");
+      actions.className = "rm114-item-actions";
+      const complete = document.createElement("button");
+      complete.type = "button";
+      complete.className = "primary";
+      complete.textContent = "Mark Complete";
+      complete.addEventListener("click", () => completeAssignment(row));
+      actions.append(complete);
+      item.append(actions);
+      list.append(item);
+    });
+  }
+
+  function renderMetricOptions() {
+    const select = el("rm-progress-metric");
+    select.replaceChildren();
+    metricCatalog.forEach((metric) => {
+      const option = document.createElement("option");
+      option.value = metric.metric_key;
+      option.textContent = metric.label;
+      select.append(option);
+    });
+    updateProgressUnit();
+  }
+
+  function updateProgressUnit() {
+    const metric = metricCatalog.find((row) => row.metric_key === el("rm-progress-metric").value);
+    el("rm-progress-unit").textContent = metric?.unit ? "Unit: " + metric.unit : "";
+    const input = el("rm-progress-value");
+    input.min = metric?.minimum_value ?? "";
+    input.max = metric?.maximum_value ?? "";
+  }
+
+  function renderRecentProgress(rows) {
+    const list = el("rm-recent-progress");
+    list.replaceChildren();
+    if (!rows.length) return;
+
+    rows.slice(0,6).forEach((row) => {
+      const item = document.createElement("div");
+      item.className = "rm114-progress-row";
+      const label = document.createElement("strong");
+      label.textContent = row.label;
+      const value = document.createElement("span");
+      const raw = row.value_boolean !== null && row.value_boolean !== undefined
+        ? (row.value_boolean ? "Yes" : "No")
+        : row.value_numeric;
+      value.textContent = raw + (row.unit ? " " + row.unit : "") + " · " + formatDate(row.recorded_at, true);
+      item.append(label, value);
+      list.append(item);
+    });
+  }
+
+  async function renderCheckinForm() {
+    const container = el("rm-checkin-fields");
+    container.replaceChildren();
+
+    if (!checkinTemplate || !checkinFields.length || !currentMember) {
+      container.innerHTML = '<div class="rm112-empty">Your weekly check-in is being prepared.</div>';
+      el("rm-checkin-submit").disabled = true;
+      return;
+    }
+
+    const period = weekPeriod();
+    const { data: existing, error } = await client
+      .from("client_checkins")
+      .select("id,status,submitted_at")
+      .eq("contact_id", currentMember.contact_id)
+      .eq("template_id", checkinTemplate.id)
+      .eq("period_start", period.start)
+      .maybeSingle();
+
+    if (error) throw error;
+
+    if (existing && existing.status !== "draft") {
+      el("rm-checkin-state").textContent = "Submitted";
+      el("rm-checkin-submit").disabled = true;
+      container.innerHTML = '<div class="rm112-empty">Your check-in for this week has been submitted. Your coach can review it from their Work Desk.</div>';
+      return;
+    }
+
+    el("rm-checkin-state").textContent = "Ready";
+    el("rm-checkin-submit").disabled = false;
+
+    checkinFields.forEach((field) => {
+      const wrapper = document.createElement("label");
+      const label = document.createElement("span");
+      label.textContent = field.label + (field.required ? " *" : "");
+      wrapper.append(label);
+
+      if (field.field_type === "rating") {
+        const rating = document.createElement("div");
+        rating.className = "rm114-rating";
+        const min = Number(field.minimum_value || 1);
+        const max = Number(field.maximum_value || 10);
+        for (let n=min;n<=max;n++) {
+          const option = document.createElement("label");
+          const input = document.createElement("input");
+          input.type = "radio";
+          input.name = "checkin_" + field.field_key;
+          input.value = String(n);
+          input.required = field.required;
+          const span = document.createElement("span");
+          span.textContent = String(n);
+          option.append(input, span);
+          rating.append(option);
+        }
+        wrapper.append(rating);
+      } else if (field.field_type === "textarea") {
+        const input = document.createElement("textarea");
+        input.name = "checkin_" + field.field_key;
+        input.rows = 3;
+        input.required = field.required;
+        wrapper.append(input);
+      } else {
+        const input = document.createElement("input");
+        input.name = "checkin_" + field.field_key;
+        input.type = field.field_type === "number" || field.field_type === "percent" ? "number" : "text";
+        if (field.minimum_value !== null) input.min = field.minimum_value;
+        if (field.maximum_value !== null) input.max = field.maximum_value;
+        input.step = "0.1";
+        input.required = field.required;
+        wrapper.append(input);
+      }
+
+      if (field.help_text) {
+        const help = document.createElement("small");
+        help.textContent = field.help_text;
+        wrapper.append(help);
+      }
+
+      container.append(wrapper);
+    });
+  }
+
+  function weekPeriod() {
+    const today = new Date();
+    const day = today.getDay();
+    const diff = day === 0 ? -6 : 1 - day;
+    const start = new Date(today);
+    start.setDate(today.getDate() + diff);
+    const end = new Date(start);
+    end.setDate(start.getDate() + 6);
+    const iso = (date) => {
+      const y = date.getFullYear();
+      const m = String(date.getMonth()+1).padStart(2,"0");
+      const d = String(date.getDate()).padStart(2,"0");
+      return y + "-" + m + "-" + d;
+    };
+    return { start: iso(start), end: iso(end) };
+  }
+
+  async function markHabit(row) {
+    if (!currentMember) return;
+    const { data: { user } } = await client.auth.getUser();
+    const { error } = await client.from("habit_checkins").insert({
+      habit_id: row.id,
+      contact_id: currentMember.contact_id,
+      checkin_date: new Date().toISOString().slice(0,10),
+      value: 1,
+      source: "member",
+      created_by: user?.id || null
+    });
+    if (error) {
+      window.alert("Could not log this habit: " + error.message);
+      return;
+    }
+    await loadDashboard();
+  }
+
+  async function completeAssignment(row) {
+    const { data, error } = await client.functions.invoke("member-coaching", {
+      body: { action: "complete_assignment", assignment_id: row.id }
+    });
+    if (error || !data?.ok) {
+      window.alert(error?.message || data?.error || "Could not complete this assignment.");
+      return;
+    }
+    await loadDashboard();
+  }
+
   async function loadDashboard() {
     const [
       dashboardResult,
       entitlementsResult,
       householdResult,
       journeyResult,
-      appointmentResult
+      appointmentResult,
+      goalsResult,
+      habitsResult,
+      assignmentsResult,
+      coachResult,
+      progressResult,
+      metricsResult,
+      templateResult
     ] = await Promise.all([
       client.from("my_member_dashboard").select("*").maybeSingle(),
       client.from("my_member_entitlements").select("*").order("label"),
       client.from("my_household").select("*").order("is_primary", { ascending: false }),
       client.from("my_member_journey").select("*").maybeSingle(),
-      client.from("my_member_upcoming_appointment").select("*").maybeSingle()
+      client.from("my_member_upcoming_appointment").select("*").maybeSingle(),
+      client.from("my_goals").select("*"),
+      client.from("my_habits").select("*"),
+      client.from("my_client_assignments").select("*"),
+      client.from("my_coach").select("*").eq("role","primary").maybeSingle(),
+      client.from("my_recent_progress").select("*").limit(8),
+      client.from("progress_metric_catalog").select("*").eq("active",true).eq("member_trackable",true).order("display_order"),
+      client.from("checkin_templates").select("*").eq("template_key","weekly-revitalized-checkin").eq("active",true).maybeSingle()
     ]);
 
-    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult].find((r) => r.error);
+    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult].find((r) => r.error);
     if (failed?.error) throw failed.error;
 
     const member = dashboardResult.data;
+    currentMember = member || null;
     if (!member || member.access_status !== "active") {
       showOnly("rm-denied");
       return;
@@ -163,6 +484,27 @@
     renderAppointment(appointmentResult.data);
     renderEntitlements(entitlementsResult.data || []);
     renderHousehold(householdResult.data || [], member.household_type);
+    renderCoach(coachResult.data);
+    renderGoals(goalsResult.data || []);
+    renderHabits(habitsResult.data || []);
+    renderAssignments(assignmentsResult.data || []);
+    metricCatalog = metricsResult.data || [];
+    renderMetricOptions();
+    renderRecentProgress(progressResult.data || []);
+
+    checkinTemplate = templateResult.data || null;
+    checkinFields = [];
+    if (checkinTemplate?.id) {
+      const { data: fields, error: fieldError } = await client
+        .from("checkin_template_fields")
+        .select("*")
+        .eq("template_id", checkinTemplate.id)
+        .order("display_order");
+      if (fieldError) throw fieldError;
+      checkinFields = fields || [];
+    }
+    await renderCheckinForm();
+
     showOnly("rm-dashboard");
   }
 
@@ -223,6 +565,112 @@
     }
 
     window.location.href = data.url;
+  });
+
+
+  el("rm-progress-metric").addEventListener("change", updateProgressUnit);
+
+  el("rm-progress-form").addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!currentMember) return;
+
+    const status = el("rm-progress-status");
+    showStatus(status, "Saving progress...");
+
+    const metric = metricCatalog.find((row) => row.metric_key === el("rm-progress-metric").value);
+    const value = Number(el("rm-progress-value").value);
+
+    if (!metric || !Number.isFinite(value)) {
+      showStatus(status, "Enter a valid progress value.", "error");
+      return;
+    }
+
+    if (metric.minimum_value !== null && value < Number(metric.minimum_value)) {
+      showStatus(status, "That value is below the expected range for this metric.", "error");
+      return;
+    }
+
+    if (metric.maximum_value !== null && value > Number(metric.maximum_value)) {
+      showStatus(status, "That value is above the expected range for this metric.", "error");
+      return;
+    }
+
+    const { data: { user } } = await client.auth.getUser();
+    const { error } = await client.from("progress_entries").insert({
+      contact_id: currentMember.contact_id,
+      membership_id: currentMember.membership_id,
+      metric_key: metric.metric_key,
+      value_numeric: value,
+      recorded_at: new Date().toISOString(),
+      source: "member",
+      created_by: user?.id || null,
+      note: el("rm-progress-note").value.trim() || null
+    });
+
+    if (error) {
+      showStatus(status, error.message, "error");
+      return;
+    }
+
+    el("rm-progress-value").value = "";
+    el("rm-progress-note").value = "";
+    showStatus(status, "Progress saved.", "success");
+    await loadDashboard();
+  });
+
+  el("rm-checkin-form").addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!currentMember || !checkinTemplate) return;
+
+    const status = el("rm-checkin-status");
+    showStatus(status, "Submitting your check-in...");
+
+    const responses = {};
+    for (const field of checkinFields) {
+      const name = "checkin_" + field.field_key;
+      const inputs = [...event.currentTarget.querySelectorAll('[name="' + CSS.escape(name) + '"]')];
+      if (!inputs.length) continue;
+
+      let value = "";
+      if (inputs[0].type === "radio") {
+        value = inputs.find((input) => input.checked)?.value || "";
+      } else {
+        value = inputs[0].value.trim();
+      }
+
+      if (field.required && !value) {
+        showStatus(status, "Please complete all required check-in questions.", "error");
+        return;
+      }
+
+      responses[field.field_key] =
+        ["rating","number","percent"].includes(field.field_type) && value !== ""
+          ? Number(value)
+          : value;
+    }
+
+    const period = weekPeriod();
+    const { data: { user } } = await client.auth.getUser();
+
+    const { error } = await client.from("client_checkins").insert({
+      contact_id: currentMember.contact_id,
+      membership_id: currentMember.membership_id,
+      template_id: checkinTemplate.id,
+      period_start: period.start,
+      period_end: period.end,
+      status: "submitted",
+      responses,
+      submitted_at: new Date().toISOString(),
+      created_by: user?.id || null
+    });
+
+    if (error) {
+      showStatus(status, error.code === "23505" ? "This week’s check-in has already been submitted." : error.message, "error");
+      return;
+    }
+
+    showStatus(status, "Check-in submitted to your coaching team.", "success");
+    await loadDashboard();
   });
 
   client.auth.onAuthStateChange((_event, session) => {
