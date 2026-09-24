@@ -28,11 +28,37 @@
   const versionField = document.querySelector('[name="health_profile_question_set"]');
   if (!form || !stage) return;
 
+  const secureJourney = window.RA_HEALTH_PROFILE_JOURNEY || null;
   let context = null;
   try { const raw = sessionStorage.getItem('ra_enrollment_context_v2'); if (raw) context = JSON.parse(raw); } catch (_) {}
-  if (!context || !context.full_name || !context.email || !context.enrollment_for) {
+  if (secureJourney?.loadError || !context || !context.full_name || !context.email || !context.enrollment_for) {
     form.hidden = true;
-    if (recovery) recovery.hidden = false;
+    if (recovery) {
+      recovery.hidden = false;
+      const heading = recovery.querySelector('h2');
+      const copy = recovery.querySelector('p');
+      if (secureJourney?.loadError) {
+        if (heading) heading.textContent='This onboarding link is not available.';
+        if (copy) copy.textContent=secureJourney.loadError;
+      }
+    }
+    return;
+  }
+
+  if (secureJourney?.completed) {
+    form.hidden = true;
+    if (complete) {
+      complete.hidden = false;
+      const heading = complete.querySelector('h2');
+      const copy = complete.querySelector('p');
+      const link = complete.querySelector('a');
+      if (heading) heading.textContent='Your onboarding questionnaire is complete.';
+      if (copy) copy.textContent='Your New Client Enrollment Health Questionnaire is already saved with ReVitalized Academy.';
+      if (link && secureJourney.journeyUrl) {
+        link.href=secureJourney.journeyUrl;
+        link.textContent='Return to Your ReVitalized Journey →';
+      }
+    }
     return;
   }
 
@@ -50,8 +76,8 @@
     return `<div class="health91-question" data-question-id="${esc(item.id)}"><div class="health91-question-number">${ordinal}</div><div class="health91-question-main"><label>${esc(item.label)}</label>${item.help?`<p class="health91-help">${esc(item.help)}</p>`:''}${control}</div></div>`;
   };
 
-  let current=0;
-  const answers={};
+  let current=Number.isInteger(secureJourney?.startIndex) ? Math.max(0,Math.min(SECTIONS.length-1,secureJourney.startIndex)) : 0;
+  const answers={...(secureJourney?.savedAnswers||{})};
   const saveCurrent = () => {
     const section=SECTIONS[current];
     section.items.filter(visibleFor).forEach(item=>{
@@ -87,6 +113,18 @@
 
   const collect = () => { saveCurrent(); return {...answers}; };
 
+  const saveSecureProgress = async () => {
+    if (!secureJourney?.saveProgress) return;
+    const percent=Math.round(((current+1)/SECTIONS.length)*100);
+    if (status){status.textContent='Saving your progress…';status.className='health91-status is-working';}
+    await secureJourney.saveProgress({
+      answers:{...answers},
+      sectionIndex:current,
+      completionPercent:Math.min(99,percent)
+    });
+    if (status){status.textContent='Progress saved.';status.className='health91-status';}
+  };
+
   const hydrateContext = () => {
     const fields={enrollment_session_id:context.enrollment_session_id||'',enrollment_for:context.enrollment_for||'',full_name:context.full_name||'',email:context.email||'',phone:context.phone||'',age:context.age||'',gender:context.gender||'',program_interest:context.program_interest||'',selected_plan_code:context.selected_plan_code||'',start_timeline:context.start_timeline||'',completed_by_name:context.completed_by_name||''};
     Object.entries(fields).forEach(([name,value])=>{const el=form.elements.namedItem(name);if(el)el.value=value;});
@@ -99,25 +137,50 @@
     }
   };
 
-  back?.addEventListener('click',()=>{if(current>0){saveCurrent();current--;render();}});
+  back?.addEventListener('click',async()=>{
+    if(current>0){
+      saveCurrent();
+      try{await saveSecureProgress();}catch(_){}
+      current--;
+      render();
+    }
+  });
   next?.addEventListener('click',async()=>{
-    if(current<SECTIONS.length-1){saveCurrent();current++;render();return;}
+    if(current<SECTIONS.length-1){
+      saveCurrent();
+      try{await saveSecureProgress();}catch(e){
+        if(status){status.textContent='We could not save your progress just now. Please check your connection and try again.';status.className='health91-status is-error';}
+        return;
+      }
+      current++;
+      render();
+      return;
+    }
     if(jsonField)jsonField.value=JSON.stringify({question_set:'platform-build-checklist-mk4-step2-v1',source:'RVA Platform Build Checklist MK4(1)',answers:collect()});
     if(next) next.disabled=true;
     if(status){status.textContent='Submitting your health profile…';status.className='health91-status is-working';}
     try{
+      const finalAnswers=collect();
       const body=new URLSearchParams(new FormData(form)).toString();
       const response=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body});
       if(!response.ok)throw new Error('submit failed');
+      if(secureJourney?.complete) await secureJourney.complete({answers:finalAnswers});
       try {
         sessionStorage.setItem('ra_health_profile_complete_v1', JSON.stringify({completed:true,enrollment_session_id:context.enrollment_session_id||'',completed_at:new Date().toISOString()}));
       } catch (_) {}
       form.hidden=true;
-      if(complete)complete.hidden=false;
+      if(complete){
+        complete.hidden=false;
+        const link=complete.querySelector('a');
+        if(link && secureJourney?.journeyUrl){
+          link.href=secureJourney.journeyUrl;
+          link.textContent='Return to Your ReVitalized Journey →';
+        }
+      }
       window.scrollTo({top:0,behavior:'smooth'});
     }catch(e){
       if(next)next.disabled=false;
-      if(status){status.textContent='We could not submit that just now. Your answers are still on this page; please try again.';status.className='health91-status is-error';}
+      if(status){status.textContent='We could not submit that just now. Your answers are still on this page and your saved sections remain in ReVitalized; please try again.';status.className='health91-status is-error';}
     }
   });
 
