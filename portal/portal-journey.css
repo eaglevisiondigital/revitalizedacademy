@@ -51,7 +51,7 @@
 .pipeline-summary-chip.hot{background:#fff0e8;border-color:#edcfc5;color:#934938}
 .pipeline-summary-chip.stalled{background:#fff8f1;border-color:#eadbc6;color:#8a6328}
 .journey-pipeline-list{display:grid;gap:8px}
-.pipeline-row{display:grid;grid-template-columns:minmax(170px,1.25fr) minmax(170px,1.3fr) minmax(190px,1.7fr) 110px 120px;gap:12px;align-items:center;padding:12px 13px;border:1px solid #e5ebe7;border-radius:12px;background:#fbfcfb;cursor:pointer;transition:.15s}
+.pipeline-row{display:grid;grid-template-columns:minmax(165px,1.2fr) minmax(165px,1.2fr) minmax(185px,1.55fr) 92px 82px 125px;gap:12px;align-items:center;padding:12px 13px;border:1px solid #e5ebe7;border-radius:12px;background:#fbfcfb;cursor:pointer;transition:.15s}
 .pipeline-row:hover{border-color:#bfd3c6;background:#f7faf8;transform:translateY(-1px)}
 .pipeline-person strong{display:block;font-size:13px;color:#2c4035}
 .pipeline-person span,.pipeline-route span,.pipeline-step span{display:block;font-size:10px;color:#7a8880;margin-top:2px}
