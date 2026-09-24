@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex,nofollow,noarchive">
   <title>Member Dashboard | ReVitalized Academy</title>
   <link rel="icon" href="../assets/images/revitalized-logo-dark-approved-v69.png">
-  <link rel="stylesheet" href="member110.css?v=124">
+  <link rel="stylesheet" href="member110.css?v=126">
 </head>
 <body>
   <main class="rm112-page">
@@ -336,6 +336,60 @@
 
 
 
+
+      <section class="rm112-card rm126-community-card">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">COMMUNITY &amp; FAMILY HUB</p>
+            <h2>Encouragement, wins &amp; connection</h2>
+          </div>
+          <button id="rm-community-new-post" class="rm126-new-post" type="button">New Post</button>
+        </div>
+        <div id="rm-community-spaces" class="rm126-spaces"></div>
+        <div id="rm-community-feed" class="rm126-feed"></div>
+      </section>
+
+      <div id="rm-community-post-modal" class="rm126-modal hidden" aria-hidden="true">
+        <div class="rm126-modal-backdrop" data-community-post-close></div>
+        <section class="rm126-dialog" role="dialog" aria-modal="true" aria-labelledby="rm-community-post-title">
+          <button class="rm126-close" type="button" data-community-post-close aria-label="Close new post">×</button>
+          <p class="rm112-kicker">COMMUNITY POST</p>
+          <h2 id="rm-community-post-title">Share with your ReVitalized space</h2>
+          <form id="rm-community-post-form" class="rm126-form">
+            <label><span>Space</span><select id="rm-community-space-select" required></select></label>
+            <label><span>Post type</span>
+              <select id="rm-community-post-type">
+                <option value="discussion">Discussion</option>
+                <option value="encouragement">Encouragement</option>
+                <option value="win">Win</option>
+                <option value="challenge_update">Challenge Update</option>
+              </select>
+            </label>
+            <label><span>Optional title</span><input id="rm-community-post-heading" type="text" maxlength="220"></label>
+            <label><span>Post</span><textarea id="rm-community-post-body" rows="6" maxlength="12000" required></textarea></label>
+            <p class="rm126-privacy-note">Keep private health details, assessments, payment information and confidential coaching conversations out of community posts.</p>
+            <button type="submit">Publish Post</button>
+            <p id="rm-community-post-status" class="rm112-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
+      <div id="rm-community-thread-modal" class="rm126-modal hidden" aria-hidden="true">
+        <div class="rm126-modal-backdrop" data-community-thread-close></div>
+        <section class="rm126-dialog" role="dialog" aria-modal="true" aria-labelledby="rm-community-thread-title">
+          <button class="rm126-close" type="button" data-community-thread-close aria-label="Close discussion">×</button>
+          <p class="rm112-kicker">COMMUNITY DISCUSSION</p>
+          <h2 id="rm-community-thread-title">Post</h2>
+          <div id="rm-community-thread-post"></div>
+          <div id="rm-community-comments" class="rm126-comments"></div>
+          <form id="rm-community-comment-form" class="rm126-form rm126-comment-form">
+            <label><span>Add a comment</span><textarea id="rm-community-comment-body" rows="3" maxlength="5000" required></textarea></label>
+            <button type="submit">Add Comment</button>
+            <p id="rm-community-comment-status" class="rm112-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
       <section class="rm112-card rm124-challenges-card">
         <div class="rm112-card-head">
           <div>
@@ -373,6 +427,6 @@
   </main>
 
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
-  <script defer src="member110.js?v=124"></script>
+  <script defer src="member110.js?v=126"></script>
 </body>
 </html>
