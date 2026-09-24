@@ -141,6 +141,7 @@
 
   function replaceTokens(value) {
     return String(value || "")
+      .replaceAll("\\n", "\n")
       .replaceAll("{{first_name}}", contact?.first_name || "there")
       .replaceAll("{{next_step}}", step?.name || "your next ReVitalized step")
       .replaceAll("{{journey_link}}", journeyLink || "[secure journey link]");
