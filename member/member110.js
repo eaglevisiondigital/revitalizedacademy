@@ -115,6 +115,56 @@
   let activeConversationId = null;
 
 
+
+  function renderChallenges(rows){
+    const list=el("rm-challenges");
+    list.replaceChildren();
+    const points=rows.reduce((sum,row)=>sum+Number(row.points_earned||0),0);
+    el("rm-challenge-points").textContent=points+" points";
+
+    if(!rows.length){
+      list.innerHTML='<div class="rm112-empty">No ReVitalized challenge is active for you or your household right now.</div>';
+      return;
+    }
+
+    rows.forEach((row)=>{
+      const card=document.createElement("div");
+      card.className="rm124-challenge";
+      const top=document.createElement("div");
+      top.className="rm124-challenge-top";
+      const heading=document.createElement("strong");
+      heading.textContent=row.title;
+      const chip=document.createElement("span");
+      chip.className="rm112-chip";
+      chip.textContent=Number(row.completion_percent||0)+"%";
+      top.append(heading,chip);
+      card.append(top);
+
+      if(row.description){
+        const p=document.createElement("p");
+        p.textContent=row.description;
+        card.append(p);
+      }
+
+      const progress=document.createElement("div");
+      progress.className="rm124-challenge-progress";
+      const bar=document.createElement("i");
+      bar.style.width=Math.max(0,Math.min(100,Number(row.completion_percent||0)))+"%";
+      progress.append(bar);
+      card.append(progress);
+
+      const meta=document.createElement("small");
+      meta.textContent=[
+        title(row.scope),
+        row.target_value!==null?String(row.current_value||0)+" / "+row.target_value+(row.unit?" "+row.unit:""):"",
+        row.points_earned+" points",
+        "Ends "+formatDate(row.ends_on)
+      ].filter(Boolean).join(" · ");
+      card.append(meta);
+      list.append(card);
+    });
+  }
+
   function renderHealthConnections(rows){
     const list=el("rm-health-connections");
     list.replaceChildren();
@@ -1088,7 +1138,8 @@
       conversationsResult,
       notificationsResult,
       notificationPrefsResult,
-      healthConnectionsResult
+      healthConnectionsResult,
+      challengesResult
     ] = await Promise.all([
       client.from("my_member_dashboard").select("*").maybeSingle(),
       client.from("my_member_entitlements").select("*").order("label"),
@@ -1112,10 +1163,11 @@
       client.from("my_conversations").select("*"),
       client.from("my_notifications").select("*").limit(20),
       client.from("notification_preferences").select("*").maybeSingle(),
-      client.from("my_health_connections").select("*").order("provider_name")
+      client.from("my_health_connections").select("*").order("provider_name"),
+      client.from("my_challenges").select("*")
     ]);
 
-    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult,notificationPrefsResult,healthConnectionsResult].find((r) => r.error);
+    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult,notificationPrefsResult,healthConnectionsResult,challengesResult].find((r) => r.error);
     if (failed?.error) throw failed.error;
 
     const member = dashboardResult.data;
