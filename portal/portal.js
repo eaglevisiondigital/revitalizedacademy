@@ -971,8 +971,10 @@
   });
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && !contactDrawer.classList.contains("hidden")) closeContact();
-    else if (event.key === "Escape" && !accountModal.classList.contains("hidden")) closeAccount();
+    if (event.key !== "Escape") return;
+    if (document.querySelector(".message-modal:not(.hidden)")) return;
+    if (!contactDrawer.classList.contains("hidden")) closeContact();
+    else if (!accountModal.classList.contains("hidden")) closeAccount();
   });
   el("pending-password").addEventListener("click", showPasswordSetup);
 
