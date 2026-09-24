@@ -124,3 +124,26 @@ button{cursor:pointer}
   .portal-header{display:block}
   .portal-header-actions{margin-top:12px;justify-content:flex-start}
 }
+
+.account-modal{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:24px}
+.account-modal-backdrop{position:absolute;inset:0;background:rgba(9,35,26,.38);backdrop-filter:blur(5px)}
+.account-dialog{position:relative;width:min(500px,100%);background:#fff;border:1px solid rgba(21,71,52,.12);border-radius:22px;padding:30px;box-shadow:0 28px 80px rgba(13,53,39,.22)}
+.account-dialog h2{font-family:Georgia,"Times New Roman",serif;color:var(--green-deep);font-size:34px;line-height:1.05;font-weight:500;letter-spacing:-.02em;margin:8px 0 8px}
+.account-intro{margin:0 0 22px;color:var(--muted);font-size:14px}
+.account-close{position:absolute;top:16px;right:18px;width:36px;height:36px;border:0;border-radius:50%;background:#f1f5f2;color:#54655b;font-size:23px;line-height:1}
+.account-close:hover{background:#e9f0eb;color:var(--green)}
+.account-details{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fbfcfb}
+.account-detail-row{display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:center;padding:14px 16px;border-bottom:1px solid #e9eeeb}
+.account-detail-row:last-child{border-bottom:0}
+.account-detail-row span{font-size:11px;font-weight:900;letter-spacing:.07em;text-transform:uppercase;color:#748179}
+.account-detail-row strong{font-size:14px;color:#2d4036;overflow-wrap:anywhere}
+.account-actions{display:flex;justify-content:flex-end;gap:10px;align-items:center;margin-top:20px}
+.account-actions .primary-button,.account-actions .secondary-button{min-width:132px}
+.account-done{min-height:46px}
+#account-password-status{margin-top:2px}
+@media(max-width:560px){
+  .account-dialog{padding:26px 20px}
+  .account-detail-row{grid-template-columns:1fr;gap:4px}
+  .account-actions{flex-direction:column-reverse}
+  .account-actions .primary-button,.account-actions .secondary-button{width:100%}
+}
