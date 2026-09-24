@@ -821,7 +821,8 @@
     showStatus,
     titleCase,
     formatDate,
-    personName
+    personName,
+    staffDirectory: () => [...staffDirectory]
   };
 
   el("contact-close").addEventListener("click", closeContact);
