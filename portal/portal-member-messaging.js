@@ -14,6 +14,38 @@
   let contactConversation=null;
 
   function title(value){return portal.titleCase(value||"");}
+
+  function safeFilename(name){
+    return String(name||"attachment").replace(/[^A-Za-z0-9._-]+/g,"-").replace(/-+/g,"-").replace(/^-|-$/g,"")||"attachment";
+  }
+
+  async function uploadAttachment(conversationId,messageId,file){
+    if(!file)return null;
+    if(file.size>10485760)throw new Error("Attachment must be 10 MB or smaller.");
+    const path=conversationId+"/"+messageId+"/"+safeFilename(file.name);
+    const {error:uploadError}=await client.storage.from("member-message-attachments").upload(path,file,{
+      contentType:file.type||"application/octet-stream",
+      upsert:false,
+      cacheControl:"3600"
+    });
+    if(uploadError)throw uploadError;
+    const {data,error}=await client.from("member_message_attachments").insert({
+      message_id:messageId,
+      storage_path:path,
+      original_filename:file.name,
+      content_type:file.type||null,
+      size_bytes:file.size
+    }).select("*").single();
+    if(error)throw error;
+    return data;
+  }
+
+  async function signedAttachmentUrl(path){
+    const {data,error}=await client.storage.from("member-message-attachments").createSignedUrl(path,900);
+    if(error||!data?.signedUrl)return null;
+    return data.signedUrl;
+  }
+
   function setStatus(id,message,type=""){
     const t=el(id); if(!t)return;
     t.textContent=message||"";
@@ -158,13 +190,44 @@
 
     const thread=el("staff-message-thread");
     thread.replaceChildren();
-    (data||[]).forEach((message)=>{
+
+    const ids=(data||[]).map((m)=>m.id);
+    const attachmentMap=new Map();
+    if(ids.length){
+      const {data:attachments}=await client.from("member_message_attachments").select("*").in("message_id",ids);
+      for(const attachment of attachments||[]){
+        if(!attachmentMap.has(attachment.message_id))attachmentMap.set(attachment.message_id,[]);
+        attachmentMap.get(attachment.message_id).push(attachment);
+      }
+    }
+
+    for(const message of (data||[])){
       const bubble=document.createElement("div");
       bubble.className="staff-message-bubble"+(message.sender_user_id===portal.currentUserId()?" mine":"");
       const p=document.createElement("p"); p.textContent=message.body;
       const time=document.createElement("small"); time.textContent=portal.formatDate(message.created_at,true);
-      bubble.append(p,time); thread.append(bubble);
-    });
+      bubble.append(p,time);
+
+      const attachments=attachmentMap.get(message.id)||[];
+      if(attachments.length){
+        const files=document.createElement("div");
+        files.className="staff-message-files";
+        for(const attachment of attachments){
+          const href=await signedAttachmentUrl(attachment.storage_path);
+          if(!href)continue;
+          const link=document.createElement("a");
+          link.className="staff-message-file";
+          link.href=href;
+          link.target="_blank";
+          link.rel="noopener noreferrer";
+          link.textContent=attachment.original_filename||"Attachment";
+          files.append(link);
+        }
+        bubble.append(files);
+      }
+
+      thread.append(bubble);
+    }
     thread.scrollTop=thread.scrollHeight;
 
     await markRead(row.conversation_id);
@@ -219,20 +282,32 @@
     if(!body)return;
 
     setStatus("staff-message-status","Sending...");
-    const {error}=await client.from("member_messages").insert({
+    const {data:message,error}=await client.from("member_messages").insert({
       conversation_id:activeConversationId,
       sender_user_id:portal.currentUserId(),
       sender_contact_id:null,
       body,
       message_type:"text"
-    });
+    }).select("id").single();
 
     if(error){
       setStatus("staff-message-status",error.message,"error");
       return;
     }
 
+    const file=el("staff-message-file").files?.[0]||null;
+    if(file){
+      try{
+        setStatus("staff-message-status","Uploading attachment...");
+        await uploadAttachment(activeConversationId,message.id,file);
+      }catch(uploadError){
+        setStatus("staff-message-status","Message sent, but attachment failed: "+uploadError.message,"error");
+        return;
+      }
+    }
+
     el("staff-message-body").value="";
+    el("staff-message-file").value="";
     setStatus("staff-message-status","Sent.","success");
 
     const row=inboxRows.find((r)=>r.conversation_id===activeConversationId)||{
