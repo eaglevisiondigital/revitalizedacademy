@@ -443,6 +443,8 @@
 
     el("video-share-link").value = link;
     el("video-ready-text").textContent = finalBody;
+    el("video-open-text").disabled = !smsAllowed();
+    el("video-open-text").title = smsAllowed() ? "" : "Record SMS opt-in before texting this contact.";
     el("video-ready-box").classList.remove("hidden");
     el("video-create-button").disabled = false;
     setStatus(el("video-upload-status"), "Video uploaded and personal link created.", "success");
