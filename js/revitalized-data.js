@@ -128,4 +128,108 @@
       });
     }
   }, true);
+
+  // Journey Engine bridge for the protected Vitality Assessment.
+  // This observes progress/completion only. It does not read or transmit health answers.
+  const installVitalityJourneyBridge = () => {
+    const assessmentForm = document.querySelector('[data-vitality-assessment-form], form[data-assessment-form], form[name="vitality-assessment"]')
+      || document.querySelector('[data-assessment-step] form');
+    const completeStep = document.querySelector('[data-complete-step]');
+    const progressPercent = document.querySelector('[data-progress-percent]');
+    const sectionLabel = document.querySelector('[data-section-label]');
+
+    if (!assessmentForm || !completeStep) return;
+
+    let lastProgress = -1;
+    let completionSent = false;
+    let progressTimer = null;
+
+    const fieldValue = (selector, fallbackName) => {
+      const field = assessmentForm.querySelector(selector)
+        || (fallbackName ? assessmentForm.elements.namedItem(fallbackName) : null);
+      return field ? String(field.value || '').trim() : '';
+    };
+
+    const identity = () => ({
+      first_name: fieldValue('[data-copy-field="first_name"]', 'first_name'),
+      last_name: fieldValue('[data-copy-field="last_name"]', 'last_name'),
+      email: fieldValue('[data-copy-field="email"]', 'email'),
+      phone: fieldValue('[data-copy-field="phone"]', 'phone')
+    });
+
+    const sendProgress = () => {
+      const person = identity();
+      if (!person.email) return;
+
+      const raw = String(progressPercent?.textContent || '').replace(/[^0-9]/g, '');
+      const percent = Math.max(1, Math.min(99, Number(raw || 1)));
+      const step = String(sectionLabel?.textContent || 'assessment').trim().slice(0, 160);
+
+      if (percent === lastProgress) return;
+      lastProgress = percent;
+
+      send({
+        type: 'vitality_progress',
+        source: 'website_vitality_assessment',
+        ...person,
+        completion_percent: percent,
+        current_step: step
+      });
+    };
+
+    const queueProgress = () => {
+      window.clearTimeout(progressTimer);
+      progressTimer = window.setTimeout(sendProgress, 350);
+    };
+
+    const sendCompletion = () => {
+      if (completionSent || completeStep.hidden) return;
+      const person = identity();
+      if (!person.email) return;
+
+      completionSent = true;
+      try {
+        sessionStorage.setItem('ra_vitality_completed', 'true');
+        sessionStorage.setItem('ra_vitality_completed_at', new Date().toISOString());
+      } catch (_) {}
+
+      send({
+        type: 'vitality_complete',
+        source: 'website_vitality_assessment',
+        ...person,
+        completion_percent: 100,
+        current_step: 'complete'
+      });
+    };
+
+    if (progressPercent) {
+      new MutationObserver(queueProgress).observe(progressPercent, {
+        childList: true,
+        characterData: true,
+        subtree: true
+      });
+    }
+
+    if (sectionLabel) {
+      new MutationObserver(queueProgress).observe(sectionLabel, {
+        childList: true,
+        characterData: true,
+        subtree: true
+      });
+    }
+
+    new MutationObserver(() => {
+      sendCompletion();
+    }).observe(completeStep, { attributes: true, attributeFilter: ['hidden'] });
+
+    queueProgress();
+    sendCompletion();
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', installVitalityJourneyBridge, { once: true });
+  } else {
+    installVitalityJourneyBridge();
+  }
+
 })();
