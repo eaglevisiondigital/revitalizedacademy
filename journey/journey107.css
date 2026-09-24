@@ -40,3 +40,6 @@ footer{text-align:center;color:#7c8881;font-size:10px;margin-top:20px}
 @media(max-width:700px){.cj107-page{width:min(100% - 18px,920px);padding-top:18px}.cj107-brand{align-items:flex-start;flex-direction:column}.cj107-brand img{width:200px}.cj107-hero{grid-template-columns:1fr}.cj107-hero h1{font-size:37px}.cj107-card{padding:20px 15px}.cj107-step{grid-template-columns:28px 1fr}.cj107-step>span{grid-column:2}.cj107-action{width:100%}}
 .cj107-report-card{border-color:#d7c69d;background:linear-gradient(180deg,#fffdf8,#fff)}
 .cj107-report-card small{display:block;margin-top:10px;color:#879088;font-size:9px;line-height:1.45}
+
+.cj107-member-card{border-color:#cfe0d4;background:linear-gradient(180deg,#f9fdf9,#fff)}
+.cj107-member-card h2{margin-bottom:8px}
