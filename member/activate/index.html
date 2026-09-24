@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="referrer" content="no-referrer">
+  <title>Activate Member Account | ReVitalized Academy</title>
+  <link rel="icon" href="../../assets/images/revitalized-logo-dark-approved-v69.png">
+  <link rel="stylesheet" href="activate112.css?v=112">
+</head>
+<body>
+  <main class="rma112-page">
+    <header class="rma112-brand">
+      <a href="../../" aria-label="ReVitalized Academy home">
+        <img src="../../assets/images/revitalized-logo-dark-approved-v69.png" alt="ReVitalized Academy">
+      </a>
+      <span>MEMBER ACCOUNT ACTIVATION</span>
+    </header>
+
+    <section id="rma-loading" class="rma112-card rma112-loading">
+      <div class="rma112-spinner"></div>
+      <p>Verifying your ReVitalized membership...</p>
+    </section>
+
+    <section id="rma-form-card" class="rma112-card hidden">
+      <p class="rma112-kicker">YOUR MEMBER ACCOUNT</p>
+      <h1>Welcome, <span id="rma-first-name">there</span>.</h1>
+      <p id="rma-copy">Your ReVitalized membership is ready. Create the login you’ll use for your Member Dashboard.</p>
+
+      <div class="rma112-ready">
+        <span>Membership ready</span>
+        <strong id="rma-program">ReVitalized Academy</strong>
+        <small id="rma-email-hint"></small>
+      </div>
+
+      <form id="rma-form" class="rma112-form">
+        <label>
+          <span>Enrollment email</span>
+          <input id="rma-email" type="email" autocomplete="email" required>
+          <small>Enter the same email address used for your ReVitalized enrollment.</small>
+        </label>
+
+        <label>
+          <span>Create password</span>
+          <input id="rma-password" type="password" autocomplete="new-password" minlength="10" maxlength="128" required>
+          <small>Use at least 10 characters.</small>
+        </label>
+
+        <label>
+          <span>Confirm password</span>
+          <input id="rma-confirm" type="password" autocomplete="new-password" minlength="10" maxlength="128" required>
+        </label>
+
+        <button type="submit">Activate My Member Account</button>
+        <p id="rma-status" class="rma112-status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section id="rma-success" class="rma112-card hidden">
+      <div class="rma112-success-mark">✓</div>
+      <p class="rma112-kicker">ACCOUNT ACTIVE</p>
+      <h1>Your ReVitalized member account is ready.</h1>
+      <p>You can now sign in to your Member Dashboard and continue your onboarding and coaching journey from there.</p>
+      <a href="../">Go to Member Dashboard →</a>
+    </section>
+
+    <section id="rma-error" class="rma112-card hidden">
+      <p class="rma112-kicker">MEMBER ACCESS</p>
+      <h1>This activation link is not available.</h1>
+      <p id="rma-error-copy">The link may have expired or your membership may not be ready for activation yet.</p>
+      <a href="../../journey/">Return to Your ReVitalized Journey →</a>
+    </section>
+
+    <footer>ReVitalized Academy · Secure Member Activation</footer>
+  </main>
+
+  <script src="activate112.js?v=112" defer></script>
+</body>
+</html>
