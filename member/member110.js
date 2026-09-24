@@ -114,6 +114,38 @@
 
   let activeConversationId = null;
 
+
+  function renderHealthConnections(rows){
+    const list=el("rm-health-connections");
+    list.replaceChildren();
+    const connected=rows.filter((row)=>row.status==="connected").length;
+    el("rm-health-connection-count").textContent=connected+" connected";
+
+    if(!rows.length){
+      list.innerHTML='<div class="rm112-empty">No health or wearable source is connected yet. This section is ready for provider setup when ReVitalized enables integrations.</div>';
+      return;
+    }
+
+    rows.forEach((row)=>{
+      const item=document.createElement("div");
+      item.className="rm123-health-connection";
+      const copy=document.createElement("div");
+      const heading=document.createElement("strong");
+      heading.textContent=row.provider_name;
+      const meta=document.createElement("span");
+      meta.textContent=[
+        title(row.status),
+        row.last_successful_sync_at?"Last synced "+formatDate(row.last_successful_sync_at,true):""
+      ].filter(Boolean).join(" · ");
+      copy.append(heading,meta);
+      const state=document.createElement("span");
+      state.className="rm112-chip";
+      state.textContent=title(row.status);
+      item.append(copy,state);
+      list.append(item);
+    });
+  }
+
   function renderNotificationPreferences(row){
     const values=row||{};
     el("pref-in-app-messages").checked=values.in_app_messages!==false;
@@ -1055,7 +1087,8 @@
       resourcesResult,
       conversationsResult,
       notificationsResult,
-      notificationPrefsResult
+      notificationPrefsResult,
+      healthConnectionsResult
     ] = await Promise.all([
       client.from("my_member_dashboard").select("*").maybeSingle(),
       client.from("my_member_entitlements").select("*").order("label"),
@@ -1078,10 +1111,11 @@
       client.from("my_resources").select("*"),
       client.from("my_conversations").select("*"),
       client.from("my_notifications").select("*").limit(20),
-      client.from("notification_preferences").select("*").maybeSingle()
+      client.from("notification_preferences").select("*").maybeSingle(),
+      client.from("my_health_connections").select("*").order("provider_name")
     ]);
 
-    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult,notificationPrefsResult].find((r) => r.error);
+    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult,notificationPrefsResult,healthConnectionsResult].find((r) => r.error);
     if (failed?.error) throw failed.error;
 
     const member = dashboardResult.data;
