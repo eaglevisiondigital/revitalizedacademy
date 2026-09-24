@@ -13,6 +13,7 @@
   let activation = null;
   let paymentRecords = [];
   let auditRows = [];
+  let programs = [];
 
   function title(value) {
     const special = {
@@ -82,7 +83,7 @@
     const journey = getJourney();
     if (!journey?.journey_id) return;
 
-    const [activationResult, paymentResult] = await Promise.all([
+    const [activationResult, paymentResult, programResult] = await Promise.all([
       client
         .from("journey_enrollment_activations")
         .select("*")
@@ -94,20 +95,28 @@
         .from("payment_records")
         .select("*")
         .eq("journey_id", journey.journey_id)
-        .order("received_at", { ascending: false })
+        .order("received_at", { ascending: false }),
+      client
+        .from("program_catalog")
+        .select("program_code,name,active")
+        .eq("active", true)
+        .order("name")
     ]);
 
     if (activationResult.error) throw activationResult.error;
     if (paymentResult.error) throw paymentResult.error;
+    if (programResult.error) throw programResult.error;
 
     activation = activationResult.data || null;
     paymentRecords = paymentResult.data || [];
+    programs = programResult.data || [];
   }
 
   async function loadAudit() {
     const journey = getJourney();
     if (!journey?.journey_id || !selectedStep?.id) {
       auditRows = [];
+    programs = [];
       return;
     }
 
@@ -128,6 +137,7 @@
     const reverse = Boolean(capabilities["finance.reverse_payment"]);
     const agreement = Boolean(capabilities["agreement.override"]);
     const access = Boolean(capabilities["membership.access_override"]);
+    const plan = Boolean(capabilities["plan.override"]);
     const waive = Boolean(capabilities["journey.step.waive"]);
 
     const statusSelect = el("override-status");
@@ -151,7 +161,36 @@
     el("override-financial-role").textContent =
       financial ? title(staffRole) + " authorized" : title(staffRole) + " view only";
 
-    return { financial, reverse, agreement, access, waive };
+    el("override-program-select").disabled = !plan;
+    el("override-save-program").disabled = !plan;
+
+    return { financial, reverse, agreement, access, plan, waive };
+  }
+
+
+  function renderPlanPanel() {
+    const show = ["plan_selection","payment_agreement"].includes(selectedStep?.step_key);
+    const panel = el("override-plan-panel");
+    panel.classList.toggle("hidden", !show);
+    if (!show) return;
+
+    const select = el("override-program-select");
+    select.replaceChildren();
+
+    const blank = document.createElement("option");
+    blank.value = "";
+    blank.textContent = "Select ReVitalized program";
+    select.append(blank);
+
+    programs.forEach((row) => {
+      const option = document.createElement("option");
+      option.value = row.program_code;
+      option.textContent = row.name;
+      select.append(option);
+    });
+
+    select.value = activation?.program_code || "";
+    status("override-program-message", "");
   }
 
   function renderFinancial() {
@@ -186,6 +225,8 @@
     if (accessStep) {
       el("override-access-status").value = activation?.access_status || "pending";
     }
+
+    renderPlanPanel();
   }
 
   function renderPaymentHistory() {
@@ -395,6 +436,43 @@
     }
   }
 
+
+  async function saveProgramOverride() {
+    const journey = getJourney();
+    if (!journey?.journey_id) return;
+
+    const programCode = el("override-program-select").value;
+    const reason = el("override-reason").value.trim();
+
+    if (!programCode) {
+      status("override-program-message", "Choose the ReVitalized program.", "error");
+      return;
+    }
+
+    if (!reason) {
+      status("override-program-message", "Enter the override reason above first.", "error");
+      return;
+    }
+
+    status("override-program-message", "Saving program override...");
+
+    try {
+      const data = await invokeOverride({
+        action: "plan_override",
+        journey_id: journey.journey_id,
+        program_code: programCode,
+        reason,
+        notes: el("override-notes").value.trim()
+      });
+
+      activation = data.activation;
+      status("override-program-message", "Program updated and entitlements realigned where applicable.", "success");
+      await refreshAfterOverride();
+    } catch (error) {
+      status("override-program-message", error.message, "error");
+    }
+  }
+
   async function recordPayment(event) {
     event.preventDefault();
     const journey = getJourney();
@@ -569,6 +647,7 @@
   document.querySelectorAll("[data-override-close]").forEach((node) => node.addEventListener("click", closeModal));
   el("override-save-step").addEventListener("click", saveStepOverride);
   el("override-payment-form").addEventListener("submit", recordPayment);
+  el("override-save-program").addEventListener("click", saveProgramOverride);
   el("override-save-agreement").addEventListener("click", saveAgreement);
   el("override-save-access").addEventListener("click", saveAccess);
   el("override-open-client-form").addEventListener("click", openClientForm);
