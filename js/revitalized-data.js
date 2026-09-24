@@ -157,6 +157,50 @@
       phone: fieldValue('[data-copy-field="phone"]', 'phone')
     });
 
+    const deriveAssessmentTags = () => {
+      const values = [];
+
+      assessmentForm.querySelectorAll('input:checked,select').forEach((control) => {
+        if (control.disabled || control.type === 'hidden') return;
+        const value = String(control.value || '').trim();
+        if (value) values.push(value);
+      });
+
+      assessmentForm.querySelectorAll('textarea').forEach((control) => {
+        if (control.disabled) return;
+        const name = String(control.name || '').toLowerCase();
+        if (!/(goal|concern|symptom|condition|challenge|priority)/.test(name)) return;
+        const value = String(control.value || '').trim();
+        if (value) values.push(value);
+      });
+
+      const text = values.join(' ').toLowerCase();
+      const tags = new Set();
+      const add = (pattern, tag) => { if (pattern.test(text)) tags.add(tag); };
+
+      add(/low energy|lack of energy|energy crash|energy level/, 'concern:low-energy');
+      add(/fatigue|fatigued|exhausted|always tired|tiredness/, 'concern:fatigue');
+      add(/pain|aching|aches|joint pain|back pain|neck pain/, 'concern:pain');
+      add(/sleep|insomnia|waking at night|poor sleep/, 'concern:sleep');
+      add(/stress|overwhelm|anxiety/, 'concern:stress');
+      add(/digest|digestion|gut|bloat|bloating|constipat|reflux/, 'concern:digestion');
+      add(/chronic|long-term condition|long term condition/, 'concern:chronic-condition');
+      add(/energy|energetic/, 'goal:energy');
+      add(/weight|fat loss|lose weight/, 'goal:weight');
+      add(/strength|stronger|muscle/, 'goal:strength');
+      add(/mobility|flexibility|move better/, 'goal:mobility');
+      add(/longevity|live longer|healthy aging|age well/, 'goal:longevity');
+      add(/family|children|kids|spouse/, 'goal:family-health');
+
+      return [...tags];
+    };
+
+    const completionCta = completeStep.querySelector('.vitality-complete-cta');
+    if (completionCta) {
+      completionCta.href = 'vitality-next.html';
+      completionCta.textContent = 'Continue: Watch the Longevity Matrix →';
+    }
+
     const sendProgress = () => {
       const person = identity();
       if (!person.email) return;
@@ -188,9 +232,11 @@
       if (!person.email) return;
 
       completionSent = true;
+      const derivedTags = deriveAssessmentTags();
       try {
         sessionStorage.setItem('ra_vitality_completed', 'true');
         sessionStorage.setItem('ra_vitality_completed_at', new Date().toISOString());
+        sessionStorage.setItem('ra_vitality_identity_v1', JSON.stringify(person));
       } catch (_) {}
 
       send({
@@ -198,7 +244,8 @@
         source: 'website_vitality_assessment',
         ...person,
         completion_percent: 100,
-        current_step: 'complete'
+        current_step: 'complete',
+        derived_tags: derivedTags
       });
     };
 
