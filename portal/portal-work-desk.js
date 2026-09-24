@@ -63,6 +63,8 @@
       statCard("Overdue", source.filter((row) => row.overdue).length, "overdue"),
       statCard("Due today", source.filter((row) => row.due_bucket === "today").length, "today"),
       statCard("Reports", source.filter((row) => row.work_category === "Report Review").length),
+      statCard("Check-Ins", source.filter((row) => row.work_category === "Check-In Review").length),
+      statCard("Coaching", source.filter((row) => row.work_category === "Coaching").length),
       statCard("Scheduling", source.filter((row) => row.work_category === "Scheduling").length)
     );
   }
