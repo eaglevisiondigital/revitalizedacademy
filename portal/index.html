@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="portal-action-center.css?v=109">
   <link rel="stylesheet" href="portal-work-desk.css?v=110">
   <link rel="stylesheet" href="portal-client-foundation.css?v=113">
+  <link rel="stylesheet" href="portal-coaching.css?v=115">
 </head>
 <body>
   <main class="portal-page">
@@ -247,6 +248,32 @@
                 <span id="client-entitlement-count">0 included features</span>
               </div>
               <div id="client-entitlements-preview" class="client-entitlements-preview"></div>
+            </section>
+
+
+            <section id="client-coaching-section" class="contact-section client-coaching-section hidden">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">COACHING &amp; PROGRESS</p>
+                  <h3>Client coaching workspace</h3>
+                </div>
+                <span id="client-coaching-chip" class="status-badge">Active</span>
+              </div>
+
+              <div class="client-coaching-summary-grid">
+                <div><span>Primary coach</span><strong id="client-coach-name">—</strong></div>
+                <div><span>Active goals</span><strong id="client-goal-count">0</strong></div>
+                <div><span>Active habits</span><strong id="client-habit-count">0</strong></div>
+                <div><span>Open assignments</span><strong id="client-assignment-count">0</strong></div>
+                <div><span>Last check-in</span><strong id="client-last-checkin">None yet</strong></div>
+                <div><span>Last progress</span><strong id="client-last-progress">None yet</strong></div>
+              </div>
+
+              <div class="client-coaching-actions">
+                <button id="client-manage-coaching" class="primary-button compact-action" type="button">Manage Coaching</button>
+                <button id="client-schedule-session" class="secondary-button compact-action" type="button">Schedule Coaching Session</button>
+              </div>
+              <p id="client-coaching-status" class="form-status" aria-live="polite"></p>
             </section>
 
             <section class="contact-section">
@@ -884,6 +911,177 @@
         </section>
       </div>
 
+
+      <div id="coaching-modal" class="coaching-modal hidden" aria-hidden="true">
+        <div class="coaching-modal-backdrop" data-coaching-close></div>
+        <section class="coaching-dialog" role="dialog" aria-modal="true" aria-labelledby="coaching-title">
+          <button class="coaching-close" type="button" data-coaching-close aria-label="Close coaching manager">×</button>
+          <p class="eyebrow">CLIENT COACHING</p>
+          <h2 id="coaching-title">Coaching &amp; Progress</h2>
+          <p class="coaching-intro">Manage coach ownership, goals, habits, action items, weekly check-ins, progress and coaching sessions without leaving the client record.</p>
+
+          <section class="coaching-block">
+            <div class="coaching-block-head">
+              <div><span>COACH OWNERSHIP</span><strong>Primary coach</strong></div>
+            </div>
+            <div class="coaching-inline-row">
+              <select id="coaching-primary-coach"></select>
+              <button id="coaching-save-coach" class="primary-button compact-action" type="button">Save Coach</button>
+            </div>
+            <p id="coaching-coach-status" class="form-status" aria-live="polite"></p>
+          </section>
+
+          <div class="coaching-two-col">
+            <section class="coaching-block">
+              <div class="coaching-block-head">
+                <div><span>GOALS</span><strong>Active client goals</strong></div>
+              </div>
+              <form id="coaching-goal-form" class="coaching-form">
+                <label><span>Goal title</span><input id="coaching-goal-title" type="text" maxlength="220" required></label>
+                <label><span>Description</span><textarea id="coaching-goal-description" rows="3" maxlength="2000"></textarea></label>
+                <div class="coaching-form-grid">
+                  <label><span>Target date</span><input id="coaching-goal-date" type="date"></label>
+                  <label><span>Priority</span>
+                    <select id="coaching-goal-priority">
+                      <option value="1">High</option>
+                      <option value="2">Important</option>
+                      <option value="3" selected>Normal</option>
+                      <option value="4">Lower</option>
+                      <option value="5">Long-term</option>
+                    </select>
+                  </label>
+                </div>
+                <button class="secondary-button compact-action" type="submit">Add Goal</button>
+                <p id="coaching-goal-status" class="form-status" aria-live="polite"></p>
+              </form>
+              <div id="coaching-goal-list" class="coaching-list"></div>
+            </section>
+
+            <section class="coaching-block">
+              <div class="coaching-block-head">
+                <div><span>HABITS</span><strong>Coaching rhythms</strong></div>
+              </div>
+              <form id="coaching-habit-form" class="coaching-form">
+                <label><span>Habit</span><input id="coaching-habit-title" type="text" maxlength="220" required></label>
+                <div class="coaching-form-grid">
+                  <label><span>Category</span><input id="coaching-habit-category" type="text" maxlength="120" placeholder="Activity, Nutrition, Recovery..."></label>
+                  <label><span>Frequency</span>
+                    <select id="coaching-habit-frequency">
+                      <option value="daily">Daily</option>
+                      <option value="weekly">Weekly</option>
+                      <option value="custom">Custom</option>
+                    </select>
+                  </label>
+                  <label><span>Target</span><input id="coaching-habit-target" type="number" min="0.1" step="0.1" value="1"></label>
+                  <label><span>Unit</span><input id="coaching-habit-unit" type="text" maxlength="60" placeholder="walk, oz, servings..."></label>
+                </div>
+                <button class="secondary-button compact-action" type="submit">Add Habit</button>
+                <p id="coaching-habit-status" class="form-status" aria-live="polite"></p>
+              </form>
+              <div id="coaching-habit-list" class="coaching-list"></div>
+            </section>
+          </div>
+
+          <section class="coaching-block">
+            <div class="coaching-block-head">
+              <div><span>CLIENT ACTION ITEMS</span><strong>Assignments from the coaching team</strong></div>
+            </div>
+            <form id="coaching-assignment-form" class="coaching-form">
+              <div class="coaching-form-grid">
+                <label><span>Assignment title</span><input id="coaching-assignment-title" type="text" maxlength="220" required></label>
+                <label><span>Type</span>
+                  <select id="coaching-assignment-type">
+                    <option value="action">Action</option>
+                    <option value="resource">Resource</option>
+                    <option value="reflection">Reflection</option>
+                    <option value="workout">Workout</option>
+                    <option value="nutrition">Nutrition</option>
+                    <option value="course">Course</option>
+                  </select>
+                </label>
+                <label class="coaching-wide"><span>Instructions</span><textarea id="coaching-assignment-instructions" rows="3" maxlength="3000"></textarea></label>
+                <label><span>Due</span><input id="coaching-assignment-due" type="datetime-local"></label>
+              </div>
+              <button class="secondary-button compact-action" type="submit">Assign to Client</button>
+              <p id="coaching-assignment-status" class="form-status" aria-live="polite"></p>
+            </form>
+            <div id="coaching-assignment-list" class="coaching-list"></div>
+          </section>
+
+          <div class="coaching-two-col">
+            <section class="coaching-block">
+              <div class="coaching-block-head">
+                <div><span>WEEKLY CHECK-INS</span><strong>Coach review</strong></div>
+              </div>
+              <div id="coaching-checkin-list" class="coaching-list"></div>
+              <form id="coaching-checkin-review-form" class="coaching-form hidden">
+                <input id="coaching-review-checkin-id" type="hidden">
+                <label><span>Coach response</span><textarea id="coaching-checkin-response" rows="4" maxlength="4000" placeholder="Optional response or coaching note..."></textarea></label>
+                <div class="coaching-inline-row">
+                  <button class="primary-button compact-action" type="submit">Mark Reviewed</button>
+                  <button id="coaching-review-cancel" class="secondary-button compact-action" type="button">Cancel</button>
+                </div>
+                <p id="coaching-checkin-status" class="form-status" aria-live="polite"></p>
+              </form>
+            </section>
+
+            <section class="coaching-block">
+              <div class="coaching-block-head">
+                <div><span>PROGRESS</span><strong>Latest recorded metrics</strong></div>
+              </div>
+              <div id="coaching-progress-list" class="coaching-list"></div>
+            </section>
+          </div>
+
+          <section id="coaching-sessions-block" class="coaching-block">
+            <div class="coaching-block-head">
+              <div><span>COACHING SESSIONS</span><strong>Schedule and document sessions</strong></div>
+            </div>
+            <form id="coaching-session-form" class="coaching-form">
+              <div class="coaching-form-grid">
+                <label><span>Coach</span><select id="coaching-session-coach"></select></label>
+                <label><span>Start</span><input id="coaching-session-start" type="datetime-local" required></label>
+                <label><span>End</span><input id="coaching-session-end" type="datetime-local"></label>
+                <label><span>Format</span>
+                  <select id="coaching-session-format">
+                    <option value="Zoom / video">Zoom / video</option>
+                    <option value="Phone">Phone</option>
+                    <option value="In person">In person</option>
+                  </select>
+                </label>
+                <label class="coaching-wide"><span>Meeting / location link</span><input id="coaching-session-link" type="url" maxlength="1000" placeholder="https://..."></label>
+                <label class="coaching-wide"><span>Client agenda / focus</span><textarea id="coaching-session-agenda" rows="3" maxlength="3000"></textarea></label>
+              </div>
+              <button class="secondary-button compact-action" type="submit">Schedule Coaching Session</button>
+              <p id="coaching-session-status" class="form-status" aria-live="polite"></p>
+            </form>
+            <div id="coaching-session-list" class="coaching-list"></div>
+          </section>
+
+          <section class="coaching-block">
+            <div class="coaching-block-head">
+              <div><span>PRIVATE COACH NOTES</span><strong>Session documentation</strong></div>
+            </div>
+            <form id="coaching-note-form" class="coaching-form">
+              <div class="coaching-form-grid">
+                <label><span>Session</span><select id="coaching-note-session"></select></label>
+                <label><span>Note type</span>
+                  <select id="coaching-note-type">
+                    <option value="coach_note">Coach Note</option>
+                    <option value="session_summary">Session Summary</option>
+                    <option value="follow_up">Follow-Up</option>
+                  </select>
+                </label>
+                <label class="coaching-wide"><span>Private note</span><textarea id="coaching-note-text" rows="4" maxlength="8000" required></textarea></label>
+              </div>
+              <button class="secondary-button compact-action" type="submit">Save Private Note</button>
+              <p id="coaching-note-status" class="form-status" aria-live="polite"></p>
+            </form>
+            <div id="coaching-note-list" class="coaching-list"></div>
+          </section>
+        </section>
+      </div>
+
       <div class="portal-content">
         <div class="portal-intro">
           <div>
@@ -1035,5 +1233,6 @@
   <script defer src="portal-action-center.js?v=109"></script>
   <script defer src="portal-work-desk.js?v=115"></script>
   <script defer src="portal-client-foundation.js?v=113"></script>
+  <script defer src="portal-coaching.js?v=115"></script>
 </body>
 </html>
