@@ -1,0 +1,47 @@
+
+.journey-action-center-button{position:relative}
+.journey-action-count{display:none;min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:#fff;color:var(--green);font-size:9px;font-weight:900;align-items:center;justify-content:center;margin-left:4px}
+.journey-action-count.show{display:inline-flex}
+.action-center-modal{position:fixed;inset:0;z-index:135;display:flex;align-items:center;justify-content:center;padding:22px}
+.action-center-backdrop{position:absolute;inset:0;background:rgba(8,31,23,.44);backdrop-filter:blur(4px)}
+.action-center-dialog{position:relative;width:min(720px,100%);max-height:92vh;overflow:auto;background:#fff;border:1px solid rgba(21,71,52,.13);border-radius:22px;padding:28px;box-shadow:0 30px 90px rgba(13,53,39,.25)}
+.action-center-close{position:absolute;right:16px;top:15px;width:36px;height:36px;border:0;border-radius:50%;background:#f0f4f1;color:#596b61;font-size:23px;line-height:1}
+.action-center-dialog h2{font-family:Georgia,"Times New Roman",serif;color:var(--green-deep);font-size:34px;line-height:1.05;font-weight:500;letter-spacing:-.025em;margin:8px 0}
+.action-center-intro{margin:0 0 16px;color:#68776f;font-size:12px;line-height:1.5}
+.action-center-step{padding:13px 14px;border:1px solid #dce7df;background:#f7faf8;border-radius:12px;margin-bottom:15px}
+.action-center-step span{display:block;font-size:9px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#738178}
+.action-center-step strong{display:block;margin-top:3px;color:#294035;font-size:14px}
+.action-center-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.action-center-grid label{display:grid;gap:6px}
+.action-center-grid label>span{font-size:11px;font-weight:850;color:#506158}
+.action-center-grid input,.action-center-grid select,.action-center-grid textarea{width:100%;border:1px solid #ccd9d1;border-radius:9px;background:#fff;color:var(--ink);outline:none}
+.action-center-grid input,.action-center-grid select{height:44px;padding:0 11px}
+.action-center-grid textarea{padding:11px 12px;resize:vertical;min-height:112px}
+.action-center-grid input:focus,.action-center-grid select:focus,.action-center-grid textarea:focus{border-color:#659d79;box-shadow:0 0 0 3px rgba(35,148,8,.07)}
+.action-center-wide{grid-column:1/-1}
+.action-center-template-note{grid-column:1/-1;margin:-2px 0 0;color:#7a8880;font-size:10px;line-height:1.45}
+.action-center-link-box{grid-column:1/-1;padding:10px 11px;border:1px dashed #cedbd3;border-radius:9px;background:#fbfcfb}
+.action-center-link-box span{display:block;font-size:9px;font-weight:900;letter-spacing:.07em;text-transform:uppercase;color:#7d8b83;margin-bottom:5px}
+.action-center-link-box input{height:38px;font-size:10px;background:#fff}
+.action-center-actions{display:flex;justify-content:flex-end;gap:9px;flex-wrap:wrap;margin-top:16px}
+.action-center-actions button{min-height:42px;padding:0 15px;border-radius:9px;font-size:11px;font-weight:900;border:1px solid #cfdcd4;background:#fff;color:var(--green)}
+.action-center-actions button.primary{background:linear-gradient(180deg,#247f55,#154734);border-color:var(--green);color:#fff}
+.action-center-actions button.gold{background:linear-gradient(180deg,#c49b50,#a67e36);border-color:#a67e36;color:#fff}
+.action-center-actions button:disabled{opacity:.45;cursor:not-allowed}
+.action-center-open-list{display:grid;gap:8px;margin-top:17px}
+.action-center-open-title{font-size:10px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#738178}
+.action-center-open-item{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;padding:10px 11px;border:1px solid #e4eae6;border-radius:10px;background:#fbfcfb}
+.action-center-open-item strong{display:block;font-size:11px;color:#344b3e}
+.action-center-open-item span{display:block;margin-top:2px;font-size:9px;color:#7b8981}
+.action-center-open-item button{border:1px solid #cfdcd4;border-radius:8px;background:#fff;color:var(--green);font-size:9px;font-weight:900;padding:6px 8px}
+.action-center-status{min-height:17px;margin-top:10px;font-size:11px;color:#66766d}
+.action-center-status.error{color:#993634}
+.action-center-status.success{color:#2f6d44}
+@media(max-width:650px){
+  .action-center-modal{padding:10px}
+  .action-center-dialog{padding:24px 16px}
+  .action-center-grid{grid-template-columns:1fr}
+  .action-center-wide,.action-center-template-note,.action-center-link-box{grid-column:auto}
+  .action-center-actions{flex-direction:column-reverse}
+  .action-center-actions button{width:100%}
+}
