@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex,nofollow,noarchive">
   <title>ReVitalized Academy | Staff Portal</title>
   <link rel="icon" href="../assets/images/revitalized-logo-dark-approved-v69.png">
-  <link rel="stylesheet" href="portal.css?v=101">
+  <link rel="stylesheet" href="portal.css?v=103">
 </head>
 <body>
   <main class="portal-page">
@@ -144,6 +144,194 @@
         </section>
       </div>
 
+
+      <div id="contact-drawer" class="contact-drawer hidden" aria-hidden="true">
+        <div class="contact-drawer-backdrop" data-contact-close></div>
+        <aside class="contact-drawer-panel" role="dialog" aria-modal="true" aria-labelledby="contact-title">
+          <div class="contact-drawer-topbar">
+            <div>
+              <p class="eyebrow">CONTACT RECORD</p>
+              <h2 id="contact-title">Contact</h2>
+              <div id="contact-badges" class="contact-badges"></div>
+            </div>
+            <button id="contact-close" class="contact-close" type="button" aria-label="Close contact record">×</button>
+          </div>
+
+          <div id="contact-loading" class="contact-loading">Loading contact record...</div>
+
+          <div id="contact-content" class="hidden">
+            <div class="contact-actions">
+              <a id="contact-email-action" class="contact-action primary" href="#">Email</a>
+              <a id="contact-call-action" class="contact-action" href="#">Call</a>
+            </div>
+
+            <section class="contact-section">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">CONTACT</p>
+                  <h3>Contact details</h3>
+                </div>
+              </div>
+              <div class="contact-info-grid">
+                <div><span>Email</span><strong id="contact-email">—</strong></div>
+                <div><span>Phone</span><strong id="contact-phone">—</strong></div>
+                <div><span>Location</span><strong id="contact-location">—</strong></div>
+                <div><span>Source</span><strong id="contact-source">—</strong></div>
+                <div><span>Created</span><strong id="contact-created">—</strong></div>
+                <div><span>Assigned to</span><strong id="contact-assigned-name">—</strong></div>
+              </div>
+            </section>
+
+            <section class="contact-section">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">JOURNEY</p>
+                  <h3>Current progress</h3>
+                </div>
+              </div>
+              <div id="contact-journey-grid" class="journey-grid"></div>
+            </section>
+
+            <section class="contact-section">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">FOLLOW-UP</p>
+                  <h3>Status and ownership</h3>
+                </div>
+              </div>
+              <form id="contact-status-form" class="contact-form-grid">
+                <label>
+                  <span>Lifecycle stage</span>
+                  <select id="contact-lifecycle">
+                    <option value="lead">Lead</option>
+                    <option value="assessment_lead">Assessment Lead</option>
+                    <option value="webinar_lead">Webinar Lead</option>
+                    <option value="applicant">Applicant</option>
+                    <option value="client">Client</option>
+                    <option value="inactive">Inactive</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Follow-up status</span>
+                  <select id="contact-followup-status">
+                    <option value="new">New</option>
+                    <option value="needs_follow_up">Needs Follow-up</option>
+                    <option value="contacted">Contacted</option>
+                    <option value="consultation_scheduled">Consultation Scheduled</option>
+                    <option value="consultation_completed">Consultation Completed</option>
+                    <option value="nurture">Nurture</option>
+                    <option value="not_ready">Not Ready</option>
+                    <option value="closed">Closed</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Consultation</span>
+                  <select id="contact-consultation-status">
+                    <option value="not_scheduled">Not Scheduled</option>
+                    <option value="scheduled">Scheduled</option>
+                    <option value="completed">Completed</option>
+                    <option value="cancelled">Cancelled</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Assigned staff</span>
+                  <select id="contact-assigned-to">
+                    <option value="">Unassigned</option>
+                  </select>
+                </label>
+                <label class="contact-form-wide">
+                  <span>Next follow-up</span>
+                  <input id="contact-next-followup" type="datetime-local">
+                </label>
+                <div class="contact-form-actions contact-form-wide">
+                  <button class="primary-button compact-action" type="submit">Save status</button>
+                  <p id="contact-status-message" class="form-status" aria-live="polite"></p>
+                </div>
+              </form>
+            </section>
+
+            <section class="contact-section">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">NOTES</p>
+                  <h3>Internal notes</h3>
+                </div>
+              </div>
+              <form id="contact-note-form" class="inline-create-form">
+                <textarea id="contact-note-input" rows="3" maxlength="10000" placeholder="Add an internal note..." required></textarea>
+                <button class="secondary-button compact-action" type="submit">Add note</button>
+              </form>
+              <p id="contact-note-message" class="form-status" aria-live="polite"></p>
+              <div id="contact-notes-list" class="record-list"></div>
+            </section>
+
+            <section class="contact-section">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">TASKS</p>
+                  <h3>Follow-up tasks</h3>
+                </div>
+              </div>
+              <form id="contact-task-form" class="contact-form-grid compact-form">
+                <label class="contact-form-wide">
+                  <span>Task</span>
+                  <input id="contact-task-title" type="text" maxlength="240" placeholder="What needs to happen next?" required>
+                </label>
+                <label>
+                  <span>Due</span>
+                  <input id="contact-task-due" type="datetime-local">
+                </label>
+                <label>
+                  <span>Priority</span>
+                  <select id="contact-task-priority">
+                    <option value="normal">Normal</option>
+                    <option value="high">High</option>
+                    <option value="urgent">Urgent</option>
+                    <option value="low">Low</option>
+                  </select>
+                </label>
+                <label class="contact-form-wide">
+                  <span>Assign to</span>
+                  <select id="contact-task-assigned">
+                    <option value="">Unassigned</option>
+                  </select>
+                </label>
+                <div class="contact-form-actions contact-form-wide">
+                  <button class="secondary-button compact-action" type="submit">Create task</button>
+                  <p id="contact-task-message" class="form-status" aria-live="polite"></p>
+                </div>
+              </form>
+              <div id="contact-tasks-list" class="record-list"></div>
+            </section>
+
+            <section class="contact-section">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">TAGS</p>
+                  <h3>Organization</h3>
+                </div>
+              </div>
+              <form id="contact-tag-form" class="tag-form">
+                <input id="contact-tag-input" type="text" maxlength="80" placeholder="Add a tag" required>
+                <button class="secondary-button compact-action" type="submit">Add</button>
+              </form>
+              <div id="contact-tags-list" class="tag-list"></div>
+              <p id="contact-tag-message" class="form-status" aria-live="polite"></p>
+            </section>
+
+            <section class="contact-section">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">ACTIVITY</p>
+                  <h3>Recent timeline</h3>
+                </div>
+              </div>
+              <div id="contact-activity-list" class="activity-list"></div>
+            </section>
+          </div>
+        </aside>
+      </div>
+
       <div class="portal-content">
         <div class="portal-intro">
           <div>
@@ -221,6 +409,6 @@
 
   <noscript>This portal requires JavaScript.</noscript>
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
-  <script defer src="portal.js?v=101"></script>
+  <script defer src="portal.js?v=103"></script>
 </body>
 </html>
