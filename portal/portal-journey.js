@@ -44,7 +44,7 @@
     el("journey-temperature").textContent = "No journey";
     el("journey-route").textContent = "Not assigned";
     el("journey-intent").textContent = "No score yet";
-    el("journey-current-step").textContent = "No active journey";
+    el("journey-current-step").textContent = "No active journey";\n    el("journey-state-label").textContent = "Not active";
     el("journey-progress-copy").textContent = "0 of 0 steps";
     el("journey-progress-percent").textContent = "0%";
     el("journey-progress-bar").style.width = "0%";
@@ -106,7 +106,7 @@
     el("journey-temperature").textContent = title(temp) + " lead";
     el("journey-route").textContent = journey.journey_name || title(journey.journey_key);
     el("journey-intent").textContent = (journey.intent_score || 0) + " / 100";
-    el("journey-current-step").textContent = journey.current_step_name || "Journey complete";
+    el("journey-current-step").textContent = journey.current_step_name || "Journey complete";\n    el("journey-state-label").textContent = title(journey.journey_status);
     el("journey-progress-copy").textContent =
       (journey.completed_steps || 0) + " of " + (journey.total_steps || 0) + " steps";
     el("journey-progress-percent").textContent = (journey.progress_percent || 0) + "%";
