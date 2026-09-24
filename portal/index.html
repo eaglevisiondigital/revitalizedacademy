@@ -7,7 +7,9 @@
   <title>ReVitalized Academy | Staff Portal</title>
   <link rel="icon" href="../assets/images/revitalized-logo-dark-approved-v69.png">
   <link rel="stylesheet" href="portal.css?v=103">
-  <link rel="stylesheet" href="portal-messaging.css?v=105">\n  <link rel="stylesheet" href="portal-journey.css?v=106">
+  <link rel="stylesheet" href="portal-messaging.css?v=105">
+  <link rel="stylesheet" href="portal-journey.css?v=107">
+  <link rel="stylesheet" href="portal-action-center.css?v=107">
 </head>
 <body>
   <main class="portal-page">
@@ -198,8 +200,10 @@
               </div>
 
               <div class="journey-action-row">
-                <button id="journey-complete-step" class="primary" type="button">Complete &amp; Continue</button>
-                <button id="journey-send-next" type="button">Text Next Step</button>\n                <button id="journey-email-next" type="button">Email Next Step</button>
+                <button id="journey-action-center" class="primary journey-action-center-button" type="button">
+                  Take / Assign Next Action <span id="journey-action-count" class="journey-action-count">0</span>
+                </button>
+                <button id="journey-complete-step" type="button">Complete &amp; Continue</button>
                 <button id="journey-skip-step" type="button">Skip Step</button>
                 <button id="journey-pause" class="warn" type="button">Pause Journey</button>
                 <button id="journey-nurture" class="warn" type="button">Move to Nurture</button>
@@ -516,6 +520,76 @@
         </section>
       </div>
 
+
+      <div id="journey-action-modal" class="action-center-modal hidden" aria-hidden="true">
+        <div class="action-center-backdrop" data-action-center-close></div>
+        <section class="action-center-dialog" role="dialog" aria-modal="true" aria-labelledby="action-center-title">
+          <button class="action-center-close" type="button" data-action-center-close aria-label="Close Action Center">×</button>
+          <p class="eyebrow">NEXT STEP ACTION CENTER</p>
+          <h2 id="action-center-title">Take it now or assign it.</h2>
+          <p class="action-center-intro">Choose how the next step should be handled. Approved templates can be personalized, assigned to a coach, or opened immediately.</p>
+
+          <div class="action-center-step">
+            <span>Current next step</span>
+            <strong id="action-center-step-name">Loading...</strong>
+          </div>
+
+          <div class="action-center-grid">
+            <label>
+              <span>Action</span>
+              <select id="action-center-type"></select>
+            </label>
+            <label>
+              <span>Assign to</span>
+              <select id="action-center-assignee"></select>
+            </label>
+            <label>
+              <span>Template</span>
+              <select id="action-center-template"></select>
+            </label>
+            <label>
+              <span>Due</span>
+              <input id="action-center-due" type="datetime-local">
+            </label>
+
+            <label id="action-center-subject-wrap" class="action-center-wide">
+              <span>Email subject</span>
+              <input id="action-center-subject" type="text" maxlength="220">
+            </label>
+
+            <label id="action-center-body-wrap" class="action-center-wide">
+              <span>Message</span>
+              <textarea id="action-center-body" maxlength="5000"></textarea>
+            </label>
+
+            <label id="action-center-instructions-wrap" class="action-center-wide">
+              <span>Call / task instructions</span>
+              <textarea id="action-center-instructions" maxlength="5000"></textarea>
+            </label>
+
+            <p class="action-center-template-note">Templates are starting points. Justyn, Elle or a coach can personalize the wording before sending or calling.</p>
+
+            <div id="action-center-link-box" class="action-center-link-box hidden">
+              <span>Secure client journey link</span>
+              <input id="action-center-link" type="text" readonly>
+            </div>
+          </div>
+
+          <div class="action-center-actions">
+            <button type="button" data-action-center-close>Cancel</button>
+            <button id="action-center-assign" class="gold" type="button">Assign Action</button>
+            <button id="action-center-do-now" class="primary" type="button">Do Now</button>
+          </div>
+
+          <p id="action-center-status" class="action-center-status" aria-live="polite"></p>
+
+          <div class="action-center-open-list">
+            <div class="action-center-open-title">Assigned actions for this step</div>
+            <div id="action-center-open-list"></div>
+          </div>
+        </section>
+      </div>
+
       <div class="portal-content">
         <div class="portal-intro">
           <div>
@@ -608,7 +682,10 @@
   <noscript>This portal requires JavaScript.</noscript>
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/tus-js-client@4.3.1/dist/tus.min.js"></script>
-  <script defer src="portal.js?v=106"></script>
-  <script defer src="portal-messaging.js?v=106"></script>\n  <script defer src="portal-journey.js?v=106"></script>\n  <script defer src="portal-pipeline.js?v=106"></script>
+  <script defer src="portal.js?v=107"></script>
+  <script defer src="portal-messaging.js?v=107"></script>
+  <script defer src="portal-journey.js?v=107"></script>
+  <script defer src="portal-pipeline.js?v=107"></script>
+  <script defer src="portal-action-center.js?v=107"></script>
 </body>
 </html>
