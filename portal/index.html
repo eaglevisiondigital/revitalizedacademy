@@ -7,6 +7,7 @@
   <title>ReVitalized Academy | Staff Portal</title>
   <link rel="icon" href="../assets/images/revitalized-logo-dark-approved-v69.png">
   <link rel="stylesheet" href="portal.css?v=103">
+  <link rel="stylesheet" href="portal-messaging.css?v=105">
 </head>
 <body>
   <main class="portal-page">
@@ -163,6 +164,8 @@
             <div class="contact-actions">
               <a id="contact-email-action" class="contact-action primary" href="#">Email</a>
               <a id="contact-call-action" class="contact-action" href="#">Call</a>
+              <button id="contact-text-action" class="contact-action contact-action-button" type="button">Text</button>
+              <button id="contact-video-action" class="contact-action contact-action-button" type="button">Send Video</button>
             </div>
 
             <section class="contact-section">
@@ -180,6 +183,52 @@
                 <div><span>Created</span><strong id="contact-created">—</strong></div>
                 <div><span>Assigned to</span><strong id="contact-assigned-name">—</strong></div>
               </div>
+            </section>
+
+
+            <section class="contact-section">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">COMMUNICATIONS</p>
+                  <h3>SMS permission</h3>
+                </div>
+                <span id="sms-consent-summary" class="status-badge">Not recorded</span>
+              </div>
+              <form id="sms-consent-form" class="sms-consent-grid">
+                <label>
+                  <span>SMS status</span>
+                  <select id="sms-consent-status">
+                    <option value="unknown">Not Recorded</option>
+                    <option value="opted_in">Opted In</option>
+                    <option value="opted_out">Opted Out</option>
+                    <option value="blocked">Blocked</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Consent source</span>
+                  <select id="sms-consent-source">
+                    <option value="">Not Recorded</option>
+                    <option value="website">Website</option>
+                    <option value="enrollment">Enrollment</option>
+                    <option value="verbal">Verbal</option>
+                    <option value="written">Written</option>
+                    <option value="other">Other</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Consent version</span>
+                  <input id="sms-consent-version" type="text" value="revitalized-sms-v1">
+                </label>
+                <label class="sms-consent-wide">
+                  <span>Internal notes</span>
+                  <textarea id="sms-consent-notes" rows="2" placeholder="Optional consent or opt-out notes"></textarea>
+                </label>
+                <div class="contact-form-actions sms-consent-wide">
+                  <button class="secondary-button compact-action" type="submit">Save SMS permission</button>
+                  <p id="sms-consent-message" class="message-status" aria-live="polite"></p>
+                </div>
+              </form>
+              <div id="sms-provider-state" class="provider-state"></div>
             </section>
 
             <section class="contact-section">
@@ -304,6 +353,17 @@
               <div id="contact-tasks-list" class="record-list"></div>
             </section>
 
+
+            <section class="contact-section">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">MESSAGES</p>
+                  <h3>Messages and personal videos</h3>
+                </div>
+              </div>
+              <div id="contact-messages-list" class="message-history-grid"></div>
+            </section>
+
             <section class="contact-section">
               <div class="contact-section-heading">
                 <div>
@@ -330,6 +390,87 @@
             </section>
           </div>
         </aside>
+      </div>
+
+
+      <div id="text-modal" class="message-modal hidden" aria-hidden="true">
+        <div class="message-modal-backdrop" data-text-close></div>
+        <section class="message-dialog" role="dialog" aria-modal="true" aria-labelledby="text-modal-title">
+          <button class="message-dialog-close" type="button" data-text-close aria-label="Close text composer">×</button>
+          <p class="eyebrow">PERSONAL OUTREACH</p>
+          <h2 id="text-modal-title">Send a text</h2>
+          <p id="text-recipient" class="message-recipient"></p>
+          <div id="text-consent-banner" class="message-consent-banner"></div>
+
+          <div class="message-form">
+            <label>
+              <span>Template</span>
+              <select id="text-template"></select>
+            </label>
+            <label>
+              <span>Message</span>
+              <textarea id="text-message-body" maxlength="1200" placeholder="Write a personal message..."></textarea>
+            </label>
+            <p class="message-help">Keep text messages free of sensitive health details. Use secure portal links for private information.</p>
+            <div class="message-warning">Automated Twilio delivery is being prepared. Until it is connected, approved texts can be handed off to the text app on this device.</div>
+            <div class="message-actions">
+              <button id="text-save-draft" class="message-button" type="button">Save draft</button>
+              <button id="text-open-app" class="message-button primary" type="button">Open Text App</button>
+            </div>
+            <p id="text-message-status" class="message-status" aria-live="polite"></p>
+          </div>
+        </section>
+      </div>
+
+      <div id="video-modal" class="message-modal hidden" aria-hidden="true">
+        <div class="message-modal-backdrop" data-video-close></div>
+        <section class="message-dialog" role="dialog" aria-modal="true" aria-labelledby="video-modal-title">
+          <button class="message-dialog-close" type="button" data-video-close aria-label="Close video composer">×</button>
+          <p class="eyebrow">PERSONAL VIDEO</p>
+          <h2 id="video-modal-title">Send a personal video</h2>
+          <p id="video-recipient" class="message-recipient"></p>
+          <div id="video-consent-banner" class="message-consent-banner"></div>
+
+          <div class="message-form">
+            <label>
+              <span>Video title</span>
+              <input id="video-title-input" type="text" maxlength="180">
+            </label>
+            <label>
+              <span>Personal note shown above the video</span>
+              <textarea id="video-personal-message" maxlength="1200"></textarea>
+            </label>
+            <label>
+              <span>Record or upload video</span>
+              <input id="video-file" type="file" accept="video/mp4,video/quicktime,video/webm,video/x-m4v,video/*" capture="user">
+            </label>
+            <div id="video-file-summary" class="upload-file-summary">Choose a video file or record one from your phone.</div>
+            <label>
+              <span>Text message that will accompany the video link</span>
+              <textarea id="video-sms-body" maxlength="1200"></textarea>
+            </label>
+            <p class="message-help">Large videos use a resumable secure upload, so an interrupted upload can continue instead of restarting from zero.</p>
+            <div id="video-upload-progress-wrap" class="upload-progress-wrap hidden">
+              <progress id="video-upload-progress" class="upload-progress" max="100" value="0"></progress>
+              <span id="video-upload-progress-label" class="upload-progress-label">0%</span>
+            </div>
+            <div class="message-actions">
+              <button id="video-create-button" class="message-button primary" type="button">Upload and Create Link</button>
+            </div>
+            <p id="video-upload-status" class="message-status" aria-live="polite"></p>
+
+            <div id="video-ready-box" class="video-ready-box hidden">
+              <h3>Your personal video link is ready.</h3>
+              <p id="video-ready-text"></p>
+              <input id="video-share-link" class="video-ready-link" type="text" readonly>
+              <div class="video-ready-actions">
+                <button id="video-copy-link" class="message-button" type="button">Copy link</button>
+                <button id="video-copy-text" class="message-button" type="button">Copy text</button>
+                <button id="video-open-text" class="message-button primary" type="button">Open Text App</button>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
 
       <div class="portal-content">
@@ -409,6 +550,8 @@
 
   <noscript>This portal requires JavaScript.</noscript>
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
-  <script defer src="portal.js?v=104"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/tus-js-client@4.3.1/dist/tus.min.js"></script>
+  <script defer src="portal.js?v=105"></script>
+  <script defer src="portal-messaging.js?v=105"></script>
 </body>
 </html>
