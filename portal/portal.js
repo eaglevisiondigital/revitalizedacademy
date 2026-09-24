@@ -407,6 +407,9 @@
     showStatus(el("contact-tag-message"), "");
     contactLoading.classList.add("hidden");
     contactContent.classList.remove("hidden");
+    document.dispatchEvent(new CustomEvent("ra:contact-opened", {
+      detail: { contactId, contact }
+    }));
   }
 
   function closeContact() {
@@ -415,6 +418,7 @@
     contactDrawer.setAttribute("aria-hidden", "true");
     contactContent.classList.add("hidden");
     contactLoading.classList.remove("hidden");
+    document.dispatchEvent(new CustomEvent("ra:contact-closed"));
   }
 
   async function completeContactTask(taskId, taskTitle) {
@@ -794,6 +798,18 @@
     showStatus(loginStatus, "Signed out.", "success");
   }
 
+
+  window.RA_PORTAL = {
+    authClient,
+    currentUserId: () => currentUserId,
+    openContact,
+    loadDashboard,
+    logActivity,
+    showStatus,
+    titleCase,
+    formatDate,
+    personName
+  };
 
   el("contact-close").addEventListener("click", closeContact);
   document.querySelectorAll("[data-contact-close]").forEach((node) => node.addEventListener("click", closeContact));
