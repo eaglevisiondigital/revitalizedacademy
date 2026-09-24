@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="portal.css?v=103">
   <link rel="stylesheet" href="portal-messaging.css?v=105">
   <link rel="stylesheet" href="portal-journey.css?v=107">
-  <link rel="stylesheet" href="portal-action-center.css?v=108">
+  <link rel="stylesheet" href="portal-action-center.css?v=109">
 </head>
 <body>
   <main class="portal-page">
@@ -729,6 +729,52 @@
               </div>
               <p id="activation-status-message" class="action-center-status" aria-live="polite"></p>
             </div>
+
+            <div id="action-center-report" class="action-center-ops-card hidden">
+              <div class="action-center-ops-head">
+                <div>
+                  <span>VITALITY REPORT</span>
+                  <strong>Review, approve and prepare for delivery</strong>
+                </div>
+                <span id="report-ops-state" class="action-center-ops-state">Awaiting Review</span>
+              </div>
+
+              <div class="action-center-grid">
+                <label>
+                  <span>Report status</span>
+                  <select id="report-status">
+                    <option value="awaiting_review">Awaiting Review</option>
+                    <option value="in_review">In Review</option>
+                    <option value="revision_needed">Revision Needed</option>
+                    <option value="approved">Approved</option>
+                    <option value="sent">Sent</option>
+                    <option value="archived">Archived</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Report PDF</span>
+                  <input id="report-file" type="file" accept="application/pdf">
+                </label>
+                <label class="action-center-wide">
+                  <span>Internal coach summary</span>
+                  <textarea id="report-coach-summary" maxlength="8000" placeholder="Internal notes for the coaching team..."></textarea>
+                </label>
+                <label class="action-center-wide">
+                  <span>Client-facing note</span>
+                  <textarea id="report-client-message" maxlength="4000" placeholder="Optional note that can accompany the report..."></textarea>
+                </label>
+              </div>
+
+              <div id="report-file-state" class="action-center-request-copy"></div>
+
+              <div class="action-center-ops-actions action-center-report-actions">
+                <button id="report-preview" type="button">Preview PDF</button>
+                <button id="report-save" type="button">Save Review</button>
+                <button id="report-approve" class="primary" type="button">Approve Report</button>
+              </div>
+              <p id="report-status-message" class="action-center-status" aria-live="polite"></p>
+            </div>
+
           </div>
 
           <div class="action-center-open-list">
@@ -834,6 +880,6 @@
   <script defer src="portal-messaging.js?v=107"></script>
   <script defer src="portal-journey.js?v=107"></script>
   <script defer src="portal-pipeline.js?v=107"></script>
-  <script defer src="portal-action-center.js?v=108"></script>
+  <script defer src="portal-action-center.js?v=109"></script>
 </body>
 </html>
