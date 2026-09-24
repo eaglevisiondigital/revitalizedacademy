@@ -1,0 +1,33 @@
+
+.client-challenges-section{border-color:#dbe6df;background:linear-gradient(180deg,#fff,#fbfdfb)}
+.client-challenges-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:1px solid #e3eae6;border-radius:12px;overflow:hidden}
+.client-challenges-grid>div{padding:11px 12px;background:#fbfcfb;border-right:1px solid #e3eae6}
+.client-challenges-grid>div:last-child{border-right:0}
+.client-challenges-grid span{display:block;font-size:9px;font-weight:900;letter-spacing:.07em;text-transform:uppercase;color:#7c8982;margin-bottom:3px}
+.client-challenges-grid strong{font-size:12px;color:#31463a}
+.client-challenges-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+
+.challenges-modal{position:fixed;inset:0;z-index:188;display:flex;align-items:center;justify-content:center;padding:16px}
+.challenges-modal-backdrop{position:absolute;inset:0;background:rgba(8,31,23,.50);backdrop-filter:blur(4px)}
+.challenges-dialog{position:relative;width:min(980px,100%);max-height:95vh;overflow:auto;background:#f9fbfa;border:1px solid rgba(21,71,52,.15);border-radius:22px;padding:28px;box-shadow:0 32px 100px rgba(13,53,39,.30)}
+.challenges-close{position:absolute;right:16px;top:15px;width:36px;height:36px;border:0;border-radius:50%;background:#eef3ef;color:#596b61;font-size:23px}
+.challenges-dialog>h2{font-family:Georgia,"Times New Roman",serif;color:var(--green-deep);font-size:36px;line-height:1.05;font-weight:500;letter-spacing:-.025em;margin:8px 0}
+.challenges-intro{max-width:780px;margin:0 0 16px;color:#68776f;font-size:11px;line-height:1.5}
+.challenges-two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.challenges-block{background:#fff;border:1px solid #dfe7e2;border-radius:15px;padding:15px;margin-top:12px}
+.challenges-block-head span{display:block;font-size:9px;font-weight:900;letter-spacing:.08em;color:#7a8880}
+.challenges-block-head strong{display:block;margin-top:3px;color:#2f4639;font-size:14px}
+.challenges-list{display:grid;gap:7px;margin-top:10px}
+.challenges-item{padding:10px 11px;border:1px solid #e5ebe7;border-radius:10px;background:#fbfcfb}
+.challenges-item-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.challenges-item strong{font-size:11px;color:#30463a}.challenges-item p{margin:4px 0 0;color:#718078;font-size:10px;line-height:1.45}.challenges-item small{display:block;margin-top:3px;color:#839087;font-size:9px}
+.challenges-progress{height:6px;border-radius:999px;background:#eaf0ec;overflow:hidden;margin-top:7px}.challenges-progress i{display:block;height:100%;background:#2f7955;border-radius:999px}
+.challenges-actions-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:7px}.challenges-actions-row button{min-height:29px;padding:0 8px;border-radius:7px;border:1px solid #cedad2;background:#fff;color:#154734;font-size:8px;font-weight:900}.challenges-actions-row button.primary{background:#154734;border-color:#154734;color:#fff}
+.challenges-form{display:grid;gap:9px;margin-top:10px}.challenges-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.challenges-form label{display:grid;gap:5px}.challenges-form label>span{font-size:9px;font-weight:850;color:#586961}
+.challenges-form input,.challenges-form select,.challenges-form textarea{width:100%;border:1px solid #cfdad3;border-radius:8px;background:#fff;color:#2f4338;outline:none}
+.challenges-form input,.challenges-form select{height:40px;padding:0 9px;font-size:11px}.challenges-form textarea{padding:9px;resize:vertical;font-size:11px}
+.challenges-wide{grid-column:1/-1}
+.challenges-empty{padding:12px;border:1px dashed #d7e1db;border-radius:9px;color:#7b8981;text-align:center;font-size:10px;background:#fbfcfb}
+@media(max-width:760px){.challenges-two-col{grid-template-columns:1fr}.challenges-grid{grid-template-columns:1fr}.challenges-wide{grid-column:auto}.challenges-modal{padding:8px}.challenges-dialog{padding:24px 14px}}
+@media(max-width:560px){.client-challenges-grid{grid-template-columns:1fr}.client-challenges-grid>div{border-right:0;border-bottom:1px solid #e3eae6}.client-challenges-grid>div:last-child{border-bottom:0}}
