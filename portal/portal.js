@@ -822,7 +822,8 @@
     titleCase,
     formatDate,
     personName,
-    staffDirectory: () => [...staffDirectory]
+    staffDirectory: () => [...staffDirectory],
+    currentStaffRole: () => staffDirectory.find((row) => row.user_id === currentUserId)?.role || null
   };
 
   el("contact-close").addEventListener("click", closeContact);
