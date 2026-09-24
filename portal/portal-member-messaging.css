@@ -1,0 +1,48 @@
+
+.client-messaging-section{border-color:#d9e5dd;background:linear-gradient(180deg,#fff,#fbfdfb)}
+.client-message-preview{margin-top:10px;padding:11px 12px;border:1px solid #e4ebe7;border-radius:11px;background:#fbfcfb}
+.client-message-preview strong{display:block;font-size:11px;color:#30463a}
+.client-message-preview p{margin:4px 0 0;color:#718078;font-size:10px;line-height:1.45}
+.client-message-preview small{display:block;margin-top:4px;color:#829087;font-size:9px}
+.client-message-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+
+.staff-inbox-panel{margin-bottom:18px}
+.staff-inbox-heading{align-items:flex-start}
+.staff-inbox-tabs{display:flex;gap:6px;flex-wrap:wrap}
+.staff-inbox-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:14px 0 12px}
+.staff-inbox-stat{border:1px solid #e2e9e5;border-radius:12px;background:#fbfcfb;padding:10px 11px}
+.staff-inbox-stat span{display:block;font-size:9px;font-weight:900;letter-spacing:.07em;text-transform:uppercase;color:#7c8982}
+.staff-inbox-stat strong{display:block;margin-top:4px;font-family:Georgia,"Times New Roman",serif;font-size:24px;font-weight:500;color:#294134}
+.staff-inbox-list{display:grid;gap:8px}
+.staff-inbox-item{display:grid;grid-template-columns:minmax(180px,1.2fr) minmax(240px,1.5fr) 120px auto;gap:12px;align-items:center;padding:12px 13px;border:1px solid #e4ebe6;border-radius:12px;background:#fbfcfb;cursor:pointer}
+.staff-inbox-item.unread{border-color:#c9ddcf;background:#f7fbf8}
+.staff-inbox-person strong,.staff-inbox-copy strong{display:block;color:#2f4338;font-size:12px}
+.staff-inbox-person span,.staff-inbox-copy span{display:block;margin-top:2px;color:#7a8880;font-size:9px}
+.staff-inbox-unread{display:inline-flex;width:max-content;padding:5px 7px;border-radius:999px;background:#154734;color:#fff;font-size:8px;font-weight:900;text-transform:uppercase}
+.staff-inbox-time{font-size:9px;color:#7d8a83}
+.staff-inbox-actions{display:flex;gap:6px;justify-content:flex-end}
+.staff-inbox-actions button{min-height:32px;padding:0 9px;border-radius:8px;border:1px solid #cedad2;background:#fff;color:#154734;font-size:9px;font-weight:900}
+
+.staff-message-modal{position:fixed;inset:0;z-index:182;display:flex;align-items:center;justify-content:center;padding:15px}
+.staff-message-modal-backdrop{position:absolute;inset:0;background:rgba(8,31,23,.50);backdrop-filter:blur(4px)}
+.staff-message-dialog{position:relative;width:min(820px,100%);max-height:94vh;display:flex;flex-direction:column;background:#fff;border:1px solid #dfe7e2;border-radius:21px;padding:25px;box-shadow:0 30px 90px rgba(13,53,39,.28)}
+.staff-message-close{position:absolute;right:14px;top:13px;width:35px;height:35px;border:0;border-radius:50%;background:#eef3ef;color:#596b61;font-size:22px}
+.staff-message-dialog h2{font-family:Georgia,"Times New Roman",serif;color:var(--green-deep);font-size:32px;font-weight:500;margin:6px 0}
+.staff-message-meta{margin-bottom:10px;color:#7c8982;font-size:9px}
+.staff-message-thread{display:grid;gap:8px;min-height:240px;max-height:54vh;overflow:auto;padding:11px;border:1px solid #e6ece8;border-radius:12px;background:#f8faf9}
+.staff-message-bubble{max-width:82%;padding:9px 10px;border-radius:11px;background:#fff;border:1px solid #e0e8e3}
+.staff-message-bubble.mine{margin-left:auto;background:#edf6f0;border-color:#d5e5da}
+.staff-message-bubble p{margin:0;color:#3d5146;font-size:11px;line-height:1.45;white-space:pre-wrap}
+.staff-message-bubble small{display:block;margin-top:4px;color:#869189;font-size:8px}
+.staff-message-compose{display:grid;gap:8px;margin-top:10px}
+.staff-message-compose textarea{width:100%;border:1px solid #cedad2;border-radius:9px;padding:10px;resize:vertical;font-size:11px}
+.staff-message-compose-actions{display:flex;justify-content:flex-end}
+@media(max-width:900px){
+  .staff-inbox-item{grid-template-columns:1fr 1fr}
+  .staff-inbox-actions{justify-content:flex-start}
+}
+@media(max-width:620px){
+  .staff-inbox-summary{grid-template-columns:1fr 1fr}
+  .staff-inbox-item{grid-template-columns:1fr}
+  .staff-message-modal{padding:7px}.staff-message-dialog{padding:22px 13px}
+}
