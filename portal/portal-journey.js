@@ -35,6 +35,14 @@
     return steps.find((step) => step.step_key === journey?.current_step_key) || null;
   }
 
+  window.RA_JOURNEY = {
+    getContact: () => contact,
+    getJourney: () => journey,
+    getSteps: () => [...steps],
+    getCurrentStep: () => currentStep(),
+    refresh: () => refreshEverything()
+  };
+
   function renderNoJourney() {
     journey = null;
     steps = [];
@@ -73,7 +81,7 @@
 
       const index = document.createElement("span");
       index.className = "journey-step-index";
-      index.textContent = step.status === "completed" ? "✓" : String(step.step_order).padStart(2, "0");
+      index.textContent = ["completed","waived"].includes(step.status) ? "✓" : String(step.step_order).padStart(2, "0");
 
       const copy = document.createElement("div");
       copy.className = "journey-step-copy";
@@ -82,14 +90,22 @@
       const meta = document.createElement("span");
       const parts = [];
       if (!step.required) parts.push("Optional");
-      if (step.due_at && !["completed","skipped"].includes(step.status)) parts.push("Due " + dateTime(step.due_at));
+      if (step.due_at && !["completed","skipped","waived"].includes(step.status)) parts.push("Due " + dateTime(step.due_at));
       if (step.completed_at) parts.push("Completed " + dateTime(step.completed_at));
       meta.textContent = parts.join(" · ") || title(step.step_type);
       copy.append(name, meta);
 
-      const status = document.createElement("span");
-      status.className = "journey-step-status";
+      const status = document.createElement("button");
+      status.type = "button";
+      status.className = "journey-step-status journey-step-manage";
       status.textContent = isCurrent && step.status === "in_progress" ? "Current" : title(step.status);
+      status.title = "Manage this journey step";
+      status.addEventListener("click", (event) => {
+        event.stopPropagation();
+        document.dispatchEvent(new CustomEvent("ra:open-override", {
+          detail: { step_id: step.id }
+        }));
+      });
 
       row.append(index, copy, status);
       list.append(row);
@@ -249,7 +265,7 @@
     );
 
     const hasLaterStep = steps.some((candidate) =>
-      candidate.step_order > step.step_order && !["completed","skipped"].includes(candidate.status)
+      candidate.step_order > step.step_order && !["completed","skipped","waived"].includes(candidate.status)
     );
     setJourneyStatus("Journey advanced.", "success");
     await refreshEverything();
@@ -299,8 +315,21 @@
     jobs = [];
   });
 
-  el("journey-complete-step").addEventListener("click", () => updateCurrentStep("completed"));
-  el("journey-skip-step").addEventListener("click", () => updateCurrentStep("skipped"));
+  el("journey-complete-step").addEventListener("click", () => {
+    const step = currentStep();
+    if (!step) return;
+    document.dispatchEvent(new CustomEvent("ra:open-override", {
+      detail: { step_id: step.id, target_status: "completed" }
+    }));
+  });
+
+  el("journey-skip-step").addEventListener("click", () => {
+    const step = currentStep();
+    if (!step) return;
+    document.dispatchEvent(new CustomEvent("ra:open-override", {
+      detail: { step_id: step.id, target_status: "skipped" }
+    }));
+  });
 
   el("journey-pause").addEventListener("click", () => {
     if (!journey) return;
