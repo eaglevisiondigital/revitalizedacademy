@@ -31,3 +31,10 @@
   for = "/js/revitalized-data.js"
   [headers.values]
     Cache-Control = "no-store"
+
+
+[[headers]]
+  for = "/vitality-next.html"
+  [headers.values]
+    Cache-Control = "no-store"
+    X-Robots-Tag = "noindex, nofollow, noarchive"
