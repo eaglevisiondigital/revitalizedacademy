@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex,nofollow,noarchive">
   <title>Member Dashboard | ReVitalized Academy</title>
   <link rel="icon" href="../assets/images/revitalized-logo-dark-approved-v69.png">
-  <link rel="stylesheet" href="member110.css?v=116">
+  <link rel="stylesheet" href="member110.css?v=119">
 </head>
 <body>
   <main class="rm112-page">
@@ -212,6 +212,42 @@
         </section>
       </div>
 
+
+      <div class="rm112-grid rm119-learning-grid">
+        <section class="rm112-card">
+          <div class="rm112-card-head">
+            <div>
+              <p class="rm112-kicker">LEARNING</p>
+              <h2>Your courses</h2>
+            </div>
+            <span id="rm-course-count" class="rm112-chip">0 courses</span>
+          </div>
+          <div id="rm-courses" class="rm114-stack"></div>
+        </section>
+
+        <section class="rm112-card">
+          <div class="rm112-card-head">
+            <div>
+              <p class="rm112-kicker">RESOURCES</p>
+              <h2>Your resource library</h2>
+            </div>
+          </div>
+          <div id="rm-resources" class="rm114-stack"></div>
+        </section>
+      </div>
+
+      <div id="rm-course-modal" class="rm119-modal hidden" aria-hidden="true">
+        <div class="rm119-modal-backdrop" data-course-close></div>
+        <section class="rm119-dialog" role="dialog" aria-modal="true" aria-labelledby="rm-course-title">
+          <button class="rm119-close" type="button" data-course-close aria-label="Close course">×</button>
+          <p class="rm112-kicker">REVITALIZED LEARNING</p>
+          <h2 id="rm-course-title">Course</h2>
+          <p id="rm-course-description" class="rm119-course-description"></p>
+          <div id="rm-course-progress" class="rm112-progress"><i></i></div>
+          <div id="rm-course-lessons" class="rm119-lessons"></div>
+        </section>
+      </div>
+
       <section class="rm112-card rm112-access-card">
         <div class="rm112-card-head">
           <div>
@@ -247,6 +283,6 @@
   </main>
 
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
-  <script defer src="member110.js?v=116"></script>
+  <script defer src="member110.js?v=119"></script>
 </body>
 </html>
