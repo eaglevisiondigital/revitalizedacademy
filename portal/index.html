@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="portal-companion.css?v=122">
   <link rel="stylesheet" href="portal-health-integrations.css?v=123">
   <link rel="stylesheet" href="portal-challenges.css?v=124">
+  <link rel="stylesheet" href="portal-executive.css?v=125">
 </head>
 <body>
   <main class="portal-page">
@@ -1689,6 +1690,36 @@
           <div id="metrics-grid" class="metrics-grid" aria-live="polite"></div>
         </section>
 
+
+        <section class="panel executive-pulse-panel" aria-labelledby="executive-pulse-title">
+          <div class="panel-heading executive-pulse-heading">
+            <div>
+              <p class="section-kicker">EXECUTIVE PULSE</p>
+              <h2 id="executive-pulse-title">Growth, engagement &amp; platform health</h2>
+              <p class="panel-note">A live operating snapshot across the ReVitalized client lifecycle.</p>
+            </div>
+            <button id="executive-pulse-refresh" class="secondary-button compact" type="button">Refresh pulse</button>
+          </div>
+
+          <div id="executive-pulse-metrics" class="executive-pulse-metrics"></div>
+
+          <div class="executive-pulse-grid">
+            <section class="executive-subpanel">
+              <div class="executive-subhead">
+                <div><span>CONVERSION FUNNEL</span><strong>From lead to active member</strong></div>
+              </div>
+              <div id="executive-funnel" class="executive-funnel"></div>
+            </section>
+
+            <section class="executive-subpanel">
+              <div class="executive-subhead">
+                <div><span>PROGRAM PERFORMANCE</span><strong>Membership and engagement</strong></div>
+              </div>
+              <div id="executive-programs" class="executive-programs"></div>
+            </section>
+          </div>
+        </section>
+
         <div class="dashboard-grid">
           <section class="panel" aria-labelledby="followup-title">
             <div class="panel-heading">
@@ -1863,5 +1894,6 @@
   <script defer src="portal-companion.js?v=122"></script>
   <script defer src="portal-health-integrations.js?v=123"></script>
   <script defer src="portal-challenges.js?v=124"></script>
+  <script defer src="portal-executive.js?v=125"></script>
 </body>
 </html>
