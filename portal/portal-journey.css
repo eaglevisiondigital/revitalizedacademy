@@ -75,3 +75,41 @@
   .pipeline-row{grid-template-columns:1fr}
   .pipeline-step{grid-column:auto}
 }
+
+/* Build 116: intentional Journey action layout */
+.journey-action-row{
+  display:grid;
+  grid-template-columns:minmax(190px,1.45fr) minmax(160px,1.15fr) minmax(110px,.75fr) minmax(145px,.95fr) minmax(145px,.95fr);
+  gap:9px;
+  align-items:stretch;
+}
+.journey-action-row button{
+  width:100%;
+  min-height:46px;
+  padding:0 14px;
+  white-space:nowrap;
+}
+@media(max-width:1080px){
+  .journey-action-row{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+  .journey-action-row .journey-action-center-button{
+    grid-column:span 2;
+  }
+}
+@media(max-width:720px){
+  .journey-action-row{
+    grid-template-columns:1fr 1fr;
+  }
+  .journey-action-row .journey-action-center-button{
+    grid-column:1/-1;
+  }
+}
+@media(max-width:480px){
+  .journey-action-row{
+    grid-template-columns:1fr;
+  }
+  .journey-action-row .journey-action-center-button{
+    grid-column:auto;
+  }
+}
