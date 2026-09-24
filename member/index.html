@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Member Dashboard | ReVitalized Academy</title>
+  <link rel="icon" href="../assets/images/revitalized-logo-dark-approved-v69.png">
+  <link rel="stylesheet" href="member110.css?v=112">
+</head>
+<body>
+  <main class="rm112-page">
+    <section id="rm-auth" class="rm112-auth">
+      <div class="rm112-brand">
+        <a href="../" aria-label="ReVitalized Academy home">
+          <img src="../assets/images/revitalized-logo-dark-approved-v69.png" alt="ReVitalized Academy">
+        </a>
+        <span>MEMBER ACCESS</span>
+      </div>
+
+      <div class="rm112-auth-card">
+        <div>
+          <p class="rm112-kicker">REVITALIZED ACADEMY</p>
+          <h1>Your health journey,<br><em>all in one place.</em></h1>
+          <p>Sign in to your ReVitalized member account to continue onboarding, see your current next step, access your program and stay connected with your coaching journey.</p>
+        </div>
+
+        <form id="rm-login-form" class="rm112-form">
+          <label>
+            <span>Email</span>
+            <input id="rm-email" type="email" autocomplete="email" required>
+          </label>
+          <label>
+            <span>Password</span>
+            <input id="rm-password" type="password" autocomplete="current-password" required>
+          </label>
+          <button type="submit">Sign In</button>
+          <p id="rm-login-status" class="rm112-status" aria-live="polite"></p>
+        </form>
+
+        <p class="rm112-auth-note">New member? Use the private activation link provided in your ReVitalized Journey after your membership becomes active.</p>
+      </div>
+    </section>
+
+    <section id="rm-dashboard" class="rm112-dashboard hidden">
+      <header class="rm112-header">
+        <a href="../" class="rm112-logo"><img src="../assets/images/revitalized-logo-dark-approved-v69.png" alt="ReVitalized Academy"></a>
+        <div class="rm112-header-actions">
+          <span id="rm-member-name"></span>
+          <button id="rm-signout" type="button">Sign Out</button>
+        </div>
+      </header>
+
+      <section class="rm112-hero">
+        <div>
+          <p class="rm112-kicker">YOUR REVITALIZED DASHBOARD</p>
+          <h1>Welcome back, <span id="rm-first-name">there</span>.</h1>
+          <p id="rm-program-copy">Your ReVitalized program and next steps are ready.</p>
+        </div>
+        <div class="rm112-program-card">
+          <span>Current program</span>
+          <strong id="rm-program-name">ReVitalized Academy</strong>
+          <small id="rm-membership-status">Active membership</small>
+        </div>
+      </section>
+
+      <div class="rm112-grid">
+        <section class="rm112-card rm112-journey-card">
+          <div class="rm112-card-head">
+            <div>
+              <p class="rm112-kicker">YOUR JOURNEY</p>
+              <h2>What happens next</h2>
+            </div>
+            <span id="rm-progress-chip" class="rm112-chip">0%</span>
+          </div>
+          <div class="rm112-progress"><i id="rm-progress-bar"></i></div>
+          <div class="rm112-next">
+            <span>Current next step</span>
+            <strong id="rm-next-step">Loading...</strong>
+            <small id="rm-next-due"></small>
+          </div>
+          <button id="rm-continue-journey" class="rm112-primary" type="button">Continue My Journey</button>
+          <p id="rm-journey-status" class="rm112-status" aria-live="polite"></p>
+        </section>
+
+        <section class="rm112-card">
+          <div class="rm112-card-head">
+            <div>
+              <p class="rm112-kicker">COACHING</p>
+              <h2>Your next appointment</h2>
+            </div>
+          </div>
+          <div id="rm-appointment" class="rm112-empty">No upcoming appointment is currently scheduled.</div>
+        </section>
+      </div>
+
+      <section class="rm112-card rm112-access-card">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">PROGRAM ACCESS</p>
+            <h2>What your membership currently includes</h2>
+          </div>
+        </div>
+        <div id="rm-entitlements" class="rm112-entitlements"></div>
+      </section>
+
+      <section class="rm112-card">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">HOUSEHOLD</p>
+            <h2>Your ReVitalized household</h2>
+          </div>
+          <span id="rm-household-type" class="rm112-chip"></span>
+        </div>
+        <div id="rm-household" class="rm112-household"></div>
+      </section>
+
+      <footer class="rm112-footer">ReVitalized Academy · Educational coaching platform · Not medical diagnosis or treatment.</footer>
+    </section>
+
+    <section id="rm-denied" class="rm112-auth hidden">
+      <div class="rm112-auth-card">
+        <p class="rm112-kicker">MEMBER ACCESS</p>
+        <h1>Your account is not active yet.</h1>
+        <p>This login is valid, but it is not currently connected to active ReVitalized member access. Contact the ReVitalized Academy team if you believe this is an error.</p>
+        <button id="rm-denied-signout" class="rm112-secondary" type="button">Sign Out</button>
+      </div>
+    </section>
+  </main>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
+  <script defer src="member110.js?v=112"></script>
+</body>
+</html>
