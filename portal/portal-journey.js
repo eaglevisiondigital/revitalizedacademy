@@ -54,7 +54,7 @@
     el("journey-next-meta").textContent = "A journey will appear automatically when this person starts an assessment or Start Your Journey.";
     el("journey-steps-list").replaceChildren();
 
-    ["journey-complete-step","journey-skip-step","journey-send-next","journey-email-next","journey-pause","journey-nurture"].forEach((id) => {
+    ["journey-action-center","journey-complete-step","journey-skip-step","journey-pause","journey-nurture"].forEach((id) => {
       el(id).disabled = true;
     });
 
@@ -140,8 +140,7 @@
     const pausable = ["active","paused","nurture"].includes(journey.journey_status);
     el("journey-complete-step").disabled = !step || !active;
     el("journey-skip-step").disabled = !step || !active;
-    el("journey-send-next").disabled = !step;
-    el("journey-email-next").disabled = !step || !contact?.email;
+    el("journey-action-center").disabled = !step;
     el("journey-pause").disabled = !pausable;
     el("journey-pause").textContent = journey.journey_status === "paused" ? "Resume Journey" : "Pause Journey";
     el("journey-nurture").disabled = !pausable;
@@ -278,47 +277,6 @@
     await refreshEverything();
   }
 
-  function nextStepMessage() {
-    const step = currentStep();
-    if (!step || !contact) return null;
-    const name = contact.first_name || "there";
-    return {
-      subject: "Your next ReVitalized step",
-      body:
-        "Hi " + name + ", your next ReVitalized step is " + step.name +
-        ". We’re here to help if you have any questions or need anything as you keep moving forward."
-    };
-  }
-
-  function sendNextStep() {
-    const message = nextStepMessage();
-    const step = currentStep();
-    if (!message || !step) return;
-
-    document.dispatchEvent(new CustomEvent("ra:open-text-composer", {
-      detail: { body: message.body, step_key: step.step_key, journey_id: journey?.journey_id || null }
-    }));
-  }
-
-  async function emailNextStep() {
-    const message = nextStepMessage();
-    const step = currentStep();
-    if (!message || !step || !contact?.email) return;
-
-    await portal.logActivity(
-      contact.id,
-      "journey_next_step_email_started",
-      "Next-step email started",
-      step.name,
-      { journey_id: journey?.journey_id || null, step_key: step.step_key }
-    );
-
-    window.location.href =
-      "mailto:" + encodeURIComponent(contact.email) +
-      "?subject=" + encodeURIComponent(message.subject) +
-      "&body=" + encodeURIComponent(message.body);
-  }
-
   document.addEventListener("ra:contact-opened", (event) => {
     loadJourney(event.detail.contactId, event.detail.contact).catch((error) => {
       renderNoJourney();
@@ -335,8 +293,6 @@
 
   el("journey-complete-step").addEventListener("click", () => updateCurrentStep("completed"));
   el("journey-skip-step").addEventListener("click", () => updateCurrentStep("skipped"));
-  el("journey-send-next").addEventListener("click", sendNextStep);
-  el("journey-email-next").addEventListener("click", emailNextStep);
 
   el("journey-pause").addEventListener("click", () => {
     if (!journey) return;
