@@ -140,7 +140,8 @@
     const pausable = ["active","paused","nurture"].includes(journey.journey_status);
     el("journey-complete-step").disabled = !step || !active;
     el("journey-skip-step").disabled = !step || !active;
-    el("journey-send-next").disabled = !step;\n    el("journey-email-next").disabled = !step || !contact?.email;
+    el("journey-send-next").disabled = !step;
+    el("journey-email-next").disabled = !step || !contact?.email;
     el("journey-pause").disabled = !pausable;
     el("journey-pause").textContent = journey.journey_status === "paused" ? "Resume Journey" : "Pause Journey";
     el("journey-nurture").disabled = !pausable;
@@ -334,7 +335,8 @@
 
   el("journey-complete-step").addEventListener("click", () => updateCurrentStep("completed"));
   el("journey-skip-step").addEventListener("click", () => updateCurrentStep("skipped"));
-  el("journey-send-next").addEventListener("click", sendNextStep);\n  el("journey-email-next").addEventListener("click", emailNextStep);
+  el("journey-send-next").addEventListener("click", sendNextStep);
+  el("journey-email-next").addEventListener("click", emailNextStep);
 
   el("journey-pause").addEventListener("click", () => {
     if (!journey) return;
