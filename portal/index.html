@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>ReVitalized Academy | Staff Portal</title>
+  <link rel="icon" href="../assets/images/revitalized-logo-dark-approved-v69.png">
+  <link rel="stylesheet" href="portal.css?v=97">
+</head>
+<body>
+  <main class="portal-page">
+    <section id="auth-view" class="auth-view">
+      <div class="auth-brand">
+        <a href="../" aria-label="ReVitalized Academy home">
+          <img src="../assets/images/revitalized-logo-dark-approved-v69.png" alt="ReVitalized Academy">
+        </a>
+        <span>STAFF PORTAL</span>
+      </div>
+
+      <div class="auth-card">
+        <div class="auth-copy">
+          <p class="eyebrow">REVITALIZED ACADEMY</p>
+          <h1>Welcome back.</h1>
+          <p>Secure access for ReVitalized Academy owners, coaches and approved team members.</p>
+        </div>
+
+        <form id="login-form" class="portal-form">
+          <label>
+            <span>Email address</span>
+            <input id="login-email" type="email" autocomplete="email" required>
+          </label>
+          <label>
+            <span>Password</span>
+            <input id="login-password" type="password" autocomplete="current-password" required>
+          </label>
+          <button class="primary-button" type="submit">Sign in</button>
+          <button id="forgot-password" class="text-button" type="button">Forgot your password?</button>
+          <p id="login-status" class="form-status" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <div id="password-card" class="auth-card password-card hidden">
+        <div class="auth-copy">
+          <p class="eyebrow">ACCOUNT SETUP</p>
+          <h2>Choose your password.</h2>
+          <p>Finish setting up your secure ReVitalized Academy account.</p>
+        </div>
+        <form id="password-form" class="portal-form">
+          <label>
+            <span>New password</span>
+            <input id="new-password" type="password" autocomplete="new-password" minlength="10" required>
+          </label>
+          <label>
+            <span>Confirm new password</span>
+            <input id="confirm-password" type="password" autocomplete="new-password" minlength="10" required>
+          </label>
+          <button class="primary-button" type="submit">Save password</button>
+          <p id="password-status" class="form-status" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <div id="pending-card" class="auth-card hidden">
+        <div class="auth-copy">
+          <p class="eyebrow">ACCOUNT ACTIVE</p>
+          <h2>Staff access is pending.</h2>
+          <p>Your login is working, but this account has not yet been assigned an approved ReVitalized staff role.</p>
+        </div>
+        <div class="pending-actions">
+          <button id="pending-password" class="secondary-button" type="button">Set or change password</button>
+          <button id="pending-logout" class="text-button" type="button">Sign out</button>
+        </div>
+      </div>
+
+      <p class="auth-footer">ReVitalized Academy secure operations portal</p>
+    </section>
+
+    <section id="portal-view" class="portal-view hidden">
+      <header class="portal-header">
+        <a class="portal-logo" href="../">
+          <img src="../assets/images/revitalized-logo-dark-approved-v69.png" alt="ReVitalized Academy">
+        </a>
+        <div class="portal-header-actions">
+          <span id="staff-name" class="staff-name"></span>
+          <span id="staff-role" class="role-chip"></span>
+          <button id="account-password" class="header-link" type="button">Account</button>
+          <button id="logout-button" class="header-link" type="button">Sign out</button>
+        </div>
+      </header>
+
+      <div class="portal-content">
+        <div class="portal-intro">
+          <div>
+            <p class="eyebrow">PRODUCTION LAYER 1</p>
+            <h1>Operations Dashboard</h1>
+            <p>Current leads, assessments, enrollments, webinar activity and follow-up in one place.</p>
+          </div>
+          <div class="live-pill"><span></span> Live Supabase data</div>
+        </div>
+
+        <section aria-labelledby="metrics-title">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">AT A GLANCE</p>
+              <h2 id="metrics-title">Today’s operating picture</h2>
+            </div>
+            <button id="refresh-button" class="secondary-button compact" type="button">Refresh data</button>
+          </div>
+          <div id="metrics-grid" class="metrics-grid" aria-live="polite"></div>
+        </section>
+
+        <div class="dashboard-grid">
+          <section class="panel" aria-labelledby="followup-title">
+            <div class="panel-heading">
+              <div>
+                <p class="section-kicker">FOLLOW-UP</p>
+                <h2 id="followup-title">Needs attention</h2>
+              </div>
+              <span id="followup-count" class="count-chip">0</span>
+            </div>
+            <div id="followup-list" class="list-stack"></div>
+          </section>
+
+          <section class="panel" aria-labelledby="tasks-title">
+            <div class="panel-heading">
+              <div>
+                <p class="section-kicker">TASKS</p>
+                <h2 id="tasks-title">Open priorities</h2>
+              </div>
+              <span id="task-count" class="count-chip">0</span>
+            </div>
+            <div id="task-list" class="list-stack"></div>
+          </section>
+        </div>
+
+        <section class="panel contacts-panel" aria-labelledby="contacts-title">
+          <div class="panel-heading contacts-heading">
+            <div>
+              <p class="section-kicker">PEOPLE</p>
+              <h2 id="contacts-title">Recent contacts</h2>
+            </div>
+            <p class="panel-note">Newest records first</p>
+          </div>
+          <div class="table-wrap">
+            <table class="contacts-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Stage</th>
+                  <th>Assessment</th>
+                  <th>Enrollment</th>
+                  <th>Webinar</th>
+                  <th>Follow-up</th>
+                  <th>Created</th>
+                </tr>
+              </thead>
+              <tbody id="contacts-body"></tbody>
+            </table>
+          </div>
+          <p id="portal-status" class="form-status" aria-live="polite"></p>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <noscript>This portal requires JavaScript.</noscript>
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
+  <script defer src="portal.js?v=97"></script>
+</body>
+</html>
