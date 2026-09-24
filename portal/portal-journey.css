@@ -113,3 +113,36 @@
     grid-column:auto;
   }
 }
+
+/* Build 117: size Journey actions from the contact workspace, not viewport */
+.journey-ops-section{container-type:inline-size}
+@container (max-width:900px){
+  .journey-action-row{
+    display:grid;
+    grid-template-columns:repeat(6,minmax(0,1fr));
+    gap:9px;
+  }
+  .journey-action-row #journey-action-center{grid-column:span 2}
+  .journey-action-row #journey-complete-step{grid-column:span 2}
+  .journey-action-row #journey-skip-step{grid-column:span 2}
+  .journey-action-row #journey-pause{grid-column:span 3}
+  .journey-action-row #journey-nurture{grid-column:span 3}
+  .journey-action-row button{
+    min-width:0;
+    white-space:normal;
+    line-height:1.18;
+    text-align:center;
+  }
+}
+@container (max-width:520px){
+  .journey-action-row{
+    grid-template-columns:1fr;
+  }
+  .journey-action-row #journey-action-center,
+  .journey-action-row #journey-complete-step,
+  .journey-action-row #journey-skip-step,
+  .journey-action-row #journey-pause,
+  .journey-action-row #journey-nurture{
+    grid-column:auto;
+  }
+}
