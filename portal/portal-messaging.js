@@ -553,6 +553,12 @@
     });
   });
 
+  document.addEventListener("ra:open-text-composer", (event) => {
+    if (!contact) return;
+    openTextComposer();
+    if (event.detail?.body) el("text-message-body").value = String(event.detail.body);
+  });
+
   document.addEventListener("ra:contact-closed", () => {
     contact = null;
     closeModal(el("text-modal"));
