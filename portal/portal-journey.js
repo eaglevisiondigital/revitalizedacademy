@@ -248,8 +248,16 @@
       { journey_id: journey.journey_id, step_key: step.step_key }
     );
 
+    const hasLaterStep = steps.some((candidate) =>
+      candidate.step_order > step.step_order && !["completed","skipped"].includes(candidate.status)
+    );
     setJourneyStatus("Journey advanced.", "success");
     await refreshEverything();
+    if (status === "completed" && hasLaterStep) {
+      window.setTimeout(() => {
+        document.dispatchEvent(new CustomEvent("ra:open-action-center"));
+      }, 450);
+    }
   }
 
   async function setJourneyState(status) {
