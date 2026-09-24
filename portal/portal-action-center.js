@@ -156,11 +156,18 @@
   }
 
   function replaceTokens(value) {
+    const appointmentTime = appointment?.scheduled_start
+      ? new Date(appointment.scheduled_start).toLocaleString([], { dateStyle: "medium", timeStyle: "short" })
+      : "[appointment time]";
+    const appointmentLink = appointment?.location_url || "";
     return String(value || "")
       .replaceAll("\\n", "\n")
       .replaceAll("{{first_name}}", contact?.first_name || "there")
       .replaceAll("{{next_step}}", step?.name || "your next ReVitalized step")
-      .replaceAll("{{journey_link}}", journeyLink || "[secure journey link]");
+      .replaceAll("{{journey_link}}", journeyLink || "[secure journey link]")
+      .replaceAll("{{appointment_time}}", appointmentTime)
+      .replaceAll("{{appointment_link_line}}", appointmentLink ? "Meeting link: " + appointmentLink : "")
+      .replaceAll("{{appointment_link_short}}", appointmentLink ? "Meeting link: " + appointmentLink : "");
   }
 
   async function applySelectedTemplate() {
