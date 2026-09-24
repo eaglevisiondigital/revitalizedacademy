@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="portal-journey.css?v=107">
   <link rel="stylesheet" href="portal-action-center.css?v=109">
   <link rel="stylesheet" href="portal-work-desk.css?v=110">
+  <link rel="stylesheet" href="portal-client-foundation.css?v=113">
 </head>
 <body>
   <main class="portal-page">
@@ -215,6 +216,38 @@
               <div id="journey-automation-note" class="journey-automation-note">Loading automation status...</div>
             </section>
 
+
+
+            <section id="client-foundation-section" class="contact-section client-foundation-section hidden">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">CLIENT ACCESS</p>
+                  <h3>Membership &amp; household</h3>
+                </div>
+                <span id="client-access-chip" class="status-badge">Ready</span>
+              </div>
+
+              <div class="client-foundation-grid">
+                <div><span>Program</span><strong id="client-program-name">—</strong></div>
+                <div><span>Membership</span><strong id="client-membership-status">—</strong></div>
+                <div><span>Access</span><strong id="client-access-status">—</strong></div>
+                <div><span>Household</span><strong id="client-household-summary">—</strong></div>
+                <div><span>Billing</span><strong id="client-billing-summary">—</strong></div>
+                <div><span>Assigned coach</span><strong id="client-assigned-coach">—</strong></div>
+              </div>
+
+              <div class="client-foundation-actions">
+                <button id="client-copy-activation" class="secondary-button compact-action hidden" type="button">Copy Member Activation Link</button>
+                <button id="client-manage-household" class="secondary-button compact-action" type="button">Manage Household</button>
+              </div>
+              <p id="client-foundation-status" class="form-status" aria-live="polite"></p>
+
+              <div class="client-foundation-subhead">
+                <strong>Current access</strong>
+                <span id="client-entitlement-count">0 included features</span>
+              </div>
+              <div id="client-entitlements-preview" class="client-entitlements-preview"></div>
+            </section>
 
             <section class="contact-section">
               <div class="contact-section-heading">
@@ -785,6 +818,72 @@
         </section>
       </div>
 
+
+      <div id="household-modal" class="household-modal hidden" aria-hidden="true">
+        <div class="household-modal-backdrop" data-household-close></div>
+        <section class="household-dialog" role="dialog" aria-modal="true" aria-labelledby="household-title">
+          <button class="household-close" type="button" data-household-close aria-label="Close household manager">×</button>
+          <p class="eyebrow">FAMILY HEALTH HUB</p>
+          <h2 id="household-title">Manage household</h2>
+          <p class="household-intro">ReVitalized household structure is intentionally limited to an individual, a husband and wife, or a husband and wife with children/dependents.</p>
+
+          <div class="household-structure-row">
+            <label>
+              <span>Household type</span>
+              <select id="household-type-select">
+                <option value="individual">Individual</option>
+                <option value="couple">Husband + Wife</option>
+                <option value="family">Husband + Wife + Children/Dependents</option>
+              </select>
+            </label>
+            <div>
+              <span>Status</span>
+              <strong id="household-status-label">Draft</strong>
+            </div>
+            <div>
+              <span>Profiles</span>
+              <strong id="household-profile-limit">1</strong>
+            </div>
+          </div>
+
+          <div class="household-actions-top">
+            <button id="household-save-type" class="secondary-button compact-action" type="button">Save Household Type</button>
+            <button id="household-activate" class="primary-button compact-action" type="button">Activate Household</button>
+          </div>
+          <p id="household-status-message" class="form-status" aria-live="polite"></p>
+
+          <div class="household-member-heading">
+            <strong>Household members</strong>
+          </div>
+          <div id="household-member-list" class="household-member-list"></div>
+
+          <form id="household-add-form" class="household-add-form">
+            <div class="household-add-heading">
+              <strong>Add household member</strong>
+              <span id="household-add-note"></span>
+            </div>
+            <div class="household-add-grid">
+              <label><span>First name</span><input id="household-first-name" type="text" maxlength="120" required></label>
+              <label><span>Last name</span><input id="household-last-name" type="text" maxlength="120" required></label>
+              <label><span>Relationship</span><select id="household-relationship" required></select></label>
+              <label>
+                <span>Sex</span>
+                <select id="household-sex" required>
+                  <option value="">Select</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </label>
+              <label><span>Email</span><input id="household-email" type="email" maxlength="320"></label>
+              <label><span>Phone</span><input id="household-phone" type="tel" maxlength="50"></label>
+              <label class="household-add-wide"><span>Date of birth</span><input id="household-dob" type="date"></label>
+            </div>
+            <button id="household-add-button" class="primary-button compact-action" type="submit">Add Household Member</button>
+            <p id="household-add-status" class="form-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
       <div class="portal-content">
         <div class="portal-intro">
           <div>
@@ -933,5 +1032,6 @@
   <script defer src="portal-pipeline.js?v=107"></script>
   <script defer src="portal-action-center.js?v=109"></script>
   <script defer src="portal-work-desk.js?v=110"></script>
+  <script defer src="portal-client-foundation.js?v=113"></script>
 </body>
 </html>
