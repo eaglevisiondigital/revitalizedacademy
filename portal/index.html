@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="portal-client-foundation.css?v=113">
   <link rel="stylesheet" href="portal-coaching.css?v=115">
   <link rel="stylesheet" href="portal-wellness.css?v=117">
+  <link rel="stylesheet" href="portal-overrides.css?v=118">
 </head>
 <body>
   <main class="portal-page">
@@ -1180,6 +1181,180 @@
         </section>
       </div>
 
+
+      <div id="override-modal" class="override-modal hidden" aria-hidden="true">
+        <div class="override-modal-backdrop" data-override-close></div>
+        <section class="override-dialog" role="dialog" aria-modal="true" aria-labelledby="override-title">
+          <button class="override-close" type="button" data-override-close aria-label="Close manual override">×</button>
+          <p class="eyebrow">MANUAL OVERRIDE</p>
+          <h2 id="override-title">Manage journey step</h2>
+          <p class="override-intro">Manual changes are permission-controlled and permanently audited. Use the real client data whenever possible, especially for forms and financial records.</p>
+
+          <div class="override-step-card">
+            <span>Selected step</span>
+            <strong id="override-step-name">Loading...</strong>
+            <small id="override-step-meta"></small>
+          </div>
+
+          <section id="override-standard-panel" class="override-block">
+            <div class="override-block-head">
+              <div><span>STEP STATUS</span><strong>Manual status / completion</strong></div>
+            </div>
+
+            <div class="override-grid">
+              <label>
+                <span>Status</span>
+                <select id="override-status">
+                  <option value="pending">Pending</option>
+                  <option value="in_progress">In Progress</option>
+                  <option value="waiting_client">Waiting on Client</option>
+                  <option value="waiting_revit">Waiting on ReVitalized</option>
+                  <option value="completed">Completed</option>
+                  <option value="skipped">Skipped</option>
+                  <option value="waived">Waived</option>
+                  <option value="blocked">Blocked</option>
+                  <option value="cancelled">Cancelled</option>
+                </select>
+              </label>
+
+              <label>
+                <span>Completion / update method</span>
+                <select id="override-method">
+                  <option value="manual_staff">Manual staff update</option>
+                  <option value="completed_with_client">Completed with client</option>
+                  <option value="client_confirmed">Client confirmed completion</option>
+                  <option value="watched_together">Completed / watched together</option>
+                  <option value="verified_external">Verified outside ReVitalized</option>
+                  <option value="owner_admin_override">Owner/Admin override</option>
+                  <option value="other">Other</option>
+                </select>
+              </label>
+
+              <label class="override-wide">
+                <span>Reason *</span>
+                <input id="override-reason" type="text" maxlength="2000" placeholder="Why is this being changed manually?" required>
+              </label>
+
+              <label class="override-wide">
+                <span>Internal notes</span>
+                <textarea id="override-notes" rows="3" maxlength="4000" placeholder="Optional context, verification details, or what happened with the client."></textarea>
+              </label>
+            </div>
+
+            <div class="override-actions">
+              <button id="override-save-step" class="primary-button" type="button">Save Manual Status</button>
+            </div>
+            <p id="override-step-status" class="form-status" aria-live="polite"></p>
+          </section>
+
+          <section id="override-financial-panel" class="override-block hidden">
+            <div class="override-block-head">
+              <div><span>PAYMENT &amp; AGREEMENT</span><strong>Financial override controls</strong></div>
+              <span id="override-financial-role" class="override-permission-chip"></span>
+            </div>
+
+            <div class="override-financial-status">
+              <div><span>Payment</span><strong id="override-current-payment">Pending</strong></div>
+              <div><span>Agreement</span><strong id="override-current-agreement">Not Sent</strong></div>
+              <div><span>Member access</span><strong id="override-current-access">Pending</strong></div>
+            </div>
+
+            <form id="override-payment-form" class="override-subform">
+              <div class="override-subhead"><strong>Record payment received</strong><span>Owner/Admin</span></div>
+              <div class="override-grid">
+                <label><span>Amount</span><input id="override-payment-amount" type="number" min="0" step="0.01"></label>
+                <label><span>Currency</span>
+                  <select id="override-payment-currency"><option value="USD">USD</option><option value="CAD">CAD</option></select>
+                </label>
+                <label><span>Payment method</span>
+                  <select id="override-payment-method">
+                    <option value="external_card">External credit/debit card</option>
+                    <option value="interac_etransfer">Interac e-Transfer</option>
+                    <option value="ach_bank_transfer">ACH / bank transfer</option>
+                    <option value="wire_transfer">Wire transfer</option>
+                    <option value="paypal">PayPal</option>
+                    <option value="cash">Cash</option>
+                    <option value="check">Check</option>
+                    <option value="integrated_processor">Integrated processor</option>
+                    <option value="other">Other</option>
+                    <option value="complimentary_waived">Complimentary / waived</option>
+                  </select>
+                </label>
+                <label><span>Date received</span><input id="override-payment-date" type="datetime-local"></label>
+                <label><span>Reference / confirmation</span><input id="override-payment-reference" type="text" maxlength="300"></label>
+                <label><span>Provider / source</span><input id="override-payment-provider" type="text" maxlength="200" placeholder="Interac, Stripe, bank, etc."></label>
+              </div>
+              <button id="override-record-payment" class="primary-button" type="submit">Record Payment</button>
+              <p id="override-payment-status" class="form-status" aria-live="polite"></p>
+            </form>
+
+            <div class="override-subform">
+              <div class="override-subhead"><strong>Agreement status</strong><span>Owner/Admin</span></div>
+              <div class="override-grid">
+                <label><span>Agreement status</span>
+                  <select id="override-agreement-status">
+                    <option value="not_sent">Not Sent</option>
+                    <option value="sent">Sent</option>
+                    <option value="signed">Signed</option>
+                    <option value="waived">Waived</option>
+                    <option value="declined">Declined</option>
+                  </select>
+                </label>
+                <label><span>Method</span>
+                  <select id="override-agreement-method">
+                    <option value="manual_owner_admin">Manual Owner/Admin</option>
+                    <option value="signed_external">Signed outside platform</option>
+                    <option value="verified_paper">Verified paper agreement</option>
+                    <option value="owner_waiver">Owner waiver</option>
+                  </select>
+                </label>
+              </div>
+              <button id="override-save-agreement" class="secondary-button" type="button">Save Agreement Status</button>
+              <p id="override-agreement-message" class="form-status" aria-live="polite"></p>
+            </div>
+
+            <div id="override-payment-history-wrap" class="override-subform">
+              <div class="override-subhead"><strong>Payment history</strong><span>Audit records</span></div>
+              <div id="override-payment-history" class="override-history-list"></div>
+            </div>
+          </section>
+
+          <section id="override-access-panel" class="override-block hidden">
+            <div class="override-block-head">
+              <div><span>MEMBER ACCESS</span><strong>Manual access status</strong></div>
+            </div>
+            <div class="override-grid">
+              <label>
+                <span>Access status</span>
+                <select id="override-access-status">
+                  <option value="pending">Pending</option>
+                  <option value="ready">Ready for Access</option>
+                  <option value="active">Active</option>
+                  <option value="suspended">Suspended</option>
+                </select>
+              </label>
+              <label>
+                <span>Method</span>
+                <select id="override-access-method">
+                  <option value="manual_owner_admin">Manual Owner/Admin</option>
+                  <option value="verified_external">Verified external activation</option>
+                  <option value="support_resolution">Support resolution</option>
+                </select>
+              </label>
+            </div>
+            <button id="override-save-access" class="secondary-button" type="button">Save Access Status</button>
+            <p id="override-access-message" class="form-status" aria-live="polite"></p>
+          </section>
+
+          <section class="override-block">
+            <div class="override-block-head">
+              <div><span>AUDIT TRAIL</span><strong>Manual changes to this step</strong></div>
+            </div>
+            <div id="override-audit-history" class="override-history-list"></div>
+          </section>
+        </section>
+      </div>
+
       <div class="portal-content">
         <div class="portal-intro">
           <div>
@@ -1333,5 +1508,6 @@
   <script defer src="portal-client-foundation.js?v=113"></script>
   <script defer src="portal-coaching.js?v=115"></script>
   <script defer src="portal-wellness.js?v=117"></script>
+  <script defer src="portal-overrides.js?v=118"></script>
 </body>
 </html>
