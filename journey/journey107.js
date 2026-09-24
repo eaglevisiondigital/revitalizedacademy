@@ -116,6 +116,16 @@
     renderAction(data);
     renderSteps(data.steps || [], data.current_step_key);
 
+    const reportSection = document.getElementById("cj-report-section");
+    if (data.report?.available && data.report.signed_url) {
+      reportSection.classList.remove("hidden");
+      document.getElementById("cj-report-message").textContent =
+        data.report.client_message || "Your ReVitalized team has reviewed and sent your Vitality report.";
+      document.getElementById("cj-report-link").href = data.report.signed_url;
+    } else {
+      reportSection.classList.add("hidden");
+    }
+
     loading.classList.add("hidden");
     errorPanel.classList.add("hidden");
     content.classList.remove("hidden");
