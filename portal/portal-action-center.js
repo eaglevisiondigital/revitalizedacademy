@@ -15,6 +15,7 @@
   let journeyLink = "";
   let appointment = null;
   let activation = null;
+  let report = null;
   let programTag = "";
 
   const PROGRAMS = {
@@ -245,14 +246,193 @@
     }
   }
 
+
+  function safeReportFilename(name) {
+    const cleaned = String(name || "vitality-report.pdf")
+      .replace(/[^A-Za-z0-9._-]+/g, "-")
+      .replace(/-+/g, "-")
+      .replace(/^-|-$/g, "");
+    return cleaned || "vitality-report.pdf";
+  }
+
+  async function ensureReportRecord() {
+    if (report?.id) return report;
+
+    const { data, error } = await client
+      .from("vitality_reports")
+      .insert({
+        contact_id: contact.id,
+        journey_id: summary.journey_id,
+        status: "awaiting_review",
+        created_by: portal.currentUserId()
+      })
+      .select("*")
+      .single();
+
+    if (error) throw error;
+    report = data;
+    return report;
+  }
+
+  async function uploadSelectedReportPdf() {
+    const file = el("report-file").files?.[0];
+    if (!file) return report;
+
+    if (file.type && file.type !== "application/pdf") {
+      throw new Error("Please choose a PDF report.");
+    }
+
+    const record = await ensureReportRecord();
+    const path = contact.id + "/" + record.id + "/" + safeReportFilename(file.name);
+    const previousPath = record.storage_path || null;
+
+    setOperationalStatus("report-status-message", "Uploading report PDF...");
+
+    const { error: uploadError } = await client.storage
+      .from("vitality-reports")
+      .upload(path, file, {
+        contentType: "application/pdf",
+        upsert: true,
+        cacheControl: "3600"
+      });
+
+    if (uploadError) throw uploadError;
+
+    const { data, error } = await client
+      .from("vitality_reports")
+      .update({
+        storage_path: path,
+        original_filename: file.name,
+        content_type: "application/pdf",
+        updated_at: new Date().toISOString()
+      })
+      .eq("id", record.id)
+      .select("*")
+      .single();
+
+    if (error) throw error;
+
+    report = data;
+
+    if (previousPath && previousPath !== path) {
+      await client.storage.from("vitality-reports").remove([previousPath]);
+    }
+
+    el("report-file").value = "";
+    return report;
+  }
+
+  async function saveReportReview(statusOverride = null) {
+    if (!contact?.id || !summary?.journey_id) return null;
+
+    try {
+      await uploadSelectedReportPdf();
+      const record = await ensureReportRecord();
+      const statusValue = statusOverride || el("report-status").value || record.status || "in_review";
+
+      if (statusValue === "approved" && !record.storage_path) {
+        throw new Error("Upload the final report PDF before approving it.");
+      }
+
+      const now = new Date().toISOString();
+      const updates = {
+        status: statusValue,
+        coach_summary: el("report-coach-summary").value.trim() || null,
+        client_message: el("report-client-message").value.trim() || null,
+        reviewed_by: portal.currentUserId(),
+        updated_at: now
+      };
+
+      if (statusValue === "approved") {
+        updates.approved_by = portal.currentUserId();
+        updates.approved_at = report?.approved_at || now;
+      }
+
+      const { data, error } = await client
+        .from("vitality_reports")
+        .update(updates)
+        .eq("id", record.id)
+        .select("*")
+        .single();
+
+      if (error) throw error;
+      report = data;
+
+      await portal.logActivity(
+        contact.id,
+        statusValue === "approved" ? "vitality_report_approved" : "vitality_report_reviewed",
+        statusValue === "approved" ? "Vitality report approved" : "Vitality report review saved",
+        report.original_filename || portal.titleCase(statusValue),
+        {
+          report_id: report.id,
+          journey_id: summary.journey_id,
+          report_status: statusValue
+        }
+      );
+
+      setOperationalStatus(
+        "report-status-message",
+        statusValue === "approved" ? "Report approved. Journey advanced to delivery." : "Report review saved.",
+        "success"
+      );
+
+      await refreshOperationalJourney();
+      return report;
+    } catch (error) {
+      setOperationalStatus("report-status-message", error.message || "Could not save the report.", "error");
+      return null;
+    }
+  }
+
+  async function previewReport() {
+    if (!report?.storage_path) {
+      setOperationalStatus("report-status-message", "Upload the report PDF first.", "error");
+      return;
+    }
+
+    const { data, error } = await client.storage
+      .from("vitality-reports")
+      .createSignedUrl(report.storage_path, 600);
+
+    if (error || !data?.signedUrl) {
+      setOperationalStatus("report-status-message", error?.message || "Could not open the report.", "error");
+      return;
+    }
+
+    window.open(data.signedUrl, "_blank", "noopener,noreferrer");
+  }
+
+  function renderReportOperational() {
+    const panel = el("action-center-report");
+    panel.classList.add("hidden");
+
+    if (!["report_review","report_send"].includes(step?.step_key)) return;
+
+    el("action-center-operational").classList.remove("hidden");
+    panel.classList.remove("hidden");
+
+    el("report-ops-state").textContent = portal.titleCase(report?.status || "awaiting_review");
+    el("report-status").value = report?.status || (step.step_key === "report_send" ? "approved" : "awaiting_review");
+    el("report-coach-summary").value = report?.coach_summary || "";
+    el("report-client-message").value = report?.client_message || "";
+    el("report-file-state").textContent = report?.original_filename
+      ? "Current PDF: " + report.original_filename
+      : "No report PDF uploaded yet.";
+    el("report-preview").disabled = !report?.storage_path;
+    el("report-approve").disabled = step.step_key !== "report_review" || report?.status === "approved" || report?.status === "sent";
+    setOperationalStatus("report-status-message", "");
+  }
+
   function renderOperational() {
     const wrap = el("action-center-operational");
     const appointmentPanel = el("action-center-appointment");
     const activationPanel = el("action-center-activation");
+    const reportPanel = el("action-center-report");
 
     wrap.classList.add("hidden");
     appointmentPanel.classList.add("hidden");
     activationPanel.classList.add("hidden");
+    reportPanel.classList.add("hidden");
 
     const appointmentSteps = new Set([
       "application_interview_schedule","application_interview",
@@ -319,6 +499,8 @@
 
       setOperationalStatus("activation-status-message", "");
     }
+
+    renderReportOperational();
   }
 
   async function refreshOperationalJourney() {
@@ -530,7 +712,7 @@
 
     summary = journeySummary;
 
-    const [stepResult, templateResult, actionResult, appointmentResult, activationResult, programTagResult] = await Promise.all([
+    const [stepResult, templateResult, actionResult, appointmentResult, activationResult, programTagResult, reportResult] = await Promise.all([
       client
         .from("contact_journey_steps")
         .select("*")
@@ -570,10 +752,17 @@
         .like("tag", "program:%")
         .order("created_at", { ascending: false })
         .limit(1)
+        .maybeSingle(),
+      client
+        .from("vitality_reports")
+        .select("*")
+        .eq("journey_id", summary.journey_id)
+        .order("created_at", { ascending: false })
+        .limit(1)
         .maybeSingle()
     ]);
 
-    const loadError = stepResult.error || templateResult.error || actionResult.error || appointmentResult.error || activationResult.error || programTagResult.error;
+    const loadError = stepResult.error || templateResult.error || actionResult.error || appointmentResult.error || activationResult.error || programTagResult.error || reportResult.error;
     if (loadError || !stepResult.data) {
       setStatus(loadError?.message || "Current journey step could not be loaded.", "error");
       return false;
@@ -584,6 +773,7 @@
     openActions = (actionResult.data || []).filter((action) => action.journey_step_id === step.id);
     appointment = appointmentResult.data || null;
     activation = activationResult.data || null;
+    report = reportResult.data || null;
     programTag = programTagResult.data?.tag || "";
 
     el("action-center-step-name").textContent = step.name;
@@ -602,6 +792,7 @@
     journeyLink = "";
     appointment = null;
     activation = null;
+    report = null;
     programTag = "";
     el("action-center-link").value = "";
     el("action-center-link-box").classList.add("hidden");
@@ -763,6 +954,7 @@
     journeyLink = "";
     appointment = null;
     activation = null;
+    report = null;
     programTag = "";
 
     client
@@ -817,6 +1009,13 @@
   el("action-center-do-now").addEventListener("click", doNow);
   el("appointment-save").addEventListener("click", saveAppointment);
   el("activation-save").addEventListener("click", saveActivation);
+  el("report-save").addEventListener("click", () => saveReportReview());
+  el("report-approve").addEventListener("click", () => saveReportReview("approved"));
+  el("report-preview").addEventListener("click", previewReport);
+  el("report-file").addEventListener("change", () => {
+    const file = el("report-file").files?.[0];
+    if (file) el("report-file-state").textContent = "Selected PDF: " + file.name;
+  });
   el("activation-program").addEventListener("change", () => applyActivationDefaults(true));
   el("activation-billing").addEventListener("change", () => applyActivationDefaults(true));
 
