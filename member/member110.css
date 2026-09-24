@@ -73,3 +73,7 @@
 .rm123-health-card{margin-top:13px}.rm123-health-note{margin:7px 0 0;color:#74827a;font-size:10px;line-height:1.5}
 .rm123-health-connection{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 11px;border:1px solid #e4ebe7;border-radius:10px;background:#fbfcfb}
 .rm123-health-connection strong{font-size:11px;color:#30463a}.rm123-health-connection span{display:block;margin-top:3px;font-size:9px;color:#7f8c84}
+
+.rm124-challenges-card{margin-top:13px}.rm124-challenge{padding:12px;border:1px solid #e4ebe7;border-radius:11px;background:#fbfcfb}
+.rm124-challenge-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.rm124-challenge strong{display:block;font-size:11px;color:#30463a}.rm124-challenge p{margin:4px 0 0;color:#718078;font-size:10px;line-height:1.45}.rm124-challenge small{display:block;margin-top:4px;color:#829087;font-size:9px}
+.rm124-challenge-progress{height:7px;border-radius:999px;background:#eaf0ec;overflow:hidden;margin-top:8px}.rm124-challenge-progress i{display:block;height:100%;background:#2f7955;border-radius:999px}
