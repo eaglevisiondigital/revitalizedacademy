@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="portal-member-messaging.css?v=121">
   <link rel="stylesheet" href="portal-companion.css?v=122">
   <link rel="stylesheet" href="portal-health-integrations.css?v=123">
+  <link rel="stylesheet" href="portal-challenges.css?v=124">
 </head>
 <body>
   <main class="portal-page">
@@ -364,6 +365,25 @@
                 <div><span>Needs attention</span><strong id="client-health-attention">0</strong></div>
                 <div><span>Last successful sync</span><strong id="client-health-last-sync">None</strong></div>
                 <div><span>Observations · 24h</span><strong id="client-health-observations">0</strong></div>
+              </div>
+            </section>
+
+
+            <section id="client-challenges-section" class="contact-section client-challenges-section hidden">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">CHALLENGES</p>
+                  <h3>Accountability &amp; family challenges</h3>
+                </div>
+                <span id="client-challenges-chip" class="status-badge">0 Active</span>
+              </div>
+              <div class="client-challenges-grid">
+                <div><span>Active</span><strong id="client-active-challenges">0</strong></div>
+                <div><span>Completed</span><strong id="client-completed-challenges">0</strong></div>
+                <div><span>Points</span><strong id="client-challenge-points">0</strong></div>
+              </div>
+              <div class="client-challenges-actions">
+                <button id="client-manage-challenges" class="primary-button compact-action" type="button">Manage Challenges</button>
               </div>
             </section>
 
@@ -1600,6 +1620,54 @@
         </section>
       </div>
 
+
+      <div id="challenges-modal" class="challenges-modal hidden" aria-hidden="true">
+        <div class="challenges-modal-backdrop" data-challenges-close></div>
+        <section class="challenges-dialog" role="dialog" aria-modal="true" aria-labelledby="challenges-title">
+          <button class="challenges-close" type="button" data-challenges-close aria-label="Close challenges manager">×</button>
+          <p class="eyebrow">REVITALIZED CHALLENGES</p>
+          <h2 id="challenges-title">Challenges &amp; Accountability</h2>
+          <p class="challenges-intro">Enroll this client or their ReVitalized household in published challenges, or create a new challenge definition for future use.</p>
+
+          <div class="challenges-two-col">
+            <section class="challenges-block">
+              <div class="challenges-block-head"><div><span>ENROLLMENT</span><strong>Available challenges</strong></div></div>
+              <div id="challenges-available-list" class="challenges-list"></div>
+            </section>
+
+            <section class="challenges-block">
+              <div class="challenges-block-head"><div><span>CURRENT</span><strong>Client challenge progress</strong></div></div>
+              <div id="challenges-current-list" class="challenges-list"></div>
+            </section>
+          </div>
+
+          <section class="challenges-block">
+            <div class="challenges-block-head"><div><span>CREATE CHALLENGE</span><strong>New challenge definition</strong></div></div>
+            <form id="challenge-create-form" class="challenges-form">
+              <div class="challenges-grid">
+                <label><span>Challenge key</span><input id="challenge-key" type="text" maxlength="160" required></label>
+                <label><span>Title</span><input id="challenge-title-input" type="text" maxlength="240" required></label>
+                <label class="challenges-wide"><span>Description</span><textarea id="challenge-description" rows="3" maxlength="3000"></textarea></label>
+                <label><span>Scope</span>
+                  <select id="challenge-scope"><option value="individual">Individual</option><option value="household">Household</option><option value="both">Individual or Household</option></select>
+                </label>
+                <label><span>Progress metric</span><select id="challenge-metric"></select></label>
+                <label><span>Aggregation</span>
+                  <select id="challenge-aggregation"><option value="sum">Sum</option><option value="count">Count entries</option><option value="latest">Latest value</option><option value="average">Average</option></select>
+                </label>
+                <label><span>Target</span><input id="challenge-target" type="number" min="0.01" step="0.01" required></label>
+                <label><span>Unit</span><input id="challenge-unit" type="text" maxlength="60"></label>
+                <label><span>Starts</span><input id="challenge-start" type="date" required></label>
+                <label><span>Ends</span><input id="challenge-end" type="date" required></label>
+                <label><span>Points</span><input id="challenge-points-input" type="number" min="0" step="1" value="100"></label>
+              </div>
+              <button class="primary-button compact-action" type="submit">Publish Challenge</button>
+              <p id="challenge-create-status" class="form-status" aria-live="polite"></p>
+            </form>
+          </section>
+        </section>
+      </div>
+
       <div class="portal-content">
         <div class="portal-intro">
           <div>
@@ -1794,5 +1862,6 @@
   <script defer src="portal-member-messaging.js?v=121"></script>
   <script defer src="portal-companion.js?v=122"></script>
   <script defer src="portal-health-integrations.js?v=123"></script>
+  <script defer src="portal-challenges.js?v=124"></script>
 </body>
 </html>
