@@ -24,3 +24,12 @@
 .rm114-progress-list{display:grid;gap:6px;margin-top:13px}.rm114-progress-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 9px;border-top:1px solid #edf1ee}.rm114-progress-row:first-child{border-top:0}.rm114-progress-row strong{font-size:10px;color:#344a3e}.rm114-progress-row span{font-size:9px;color:#7d8a83}
 .rm114-coach-card{padding:13px;border:1px solid #dbe7df;border-radius:12px;background:#f7faf8}.rm114-coach-card strong{display:block;color:#2f4639;font-size:15px}.rm114-coach-card span{display:block;margin-top:3px;color:#738179;font-size:10px}
 @media(max-width:620px){.rm114-rating{grid-template-columns:repeat(5,1fr)}}
+
+.rm116-wellness-grid{align-items:start}
+.rm116-plan-summary{padding:12px 13px;border:1px solid #dfe8e2;border-radius:11px;background:#f8fbf9;margin-top:13px}
+.rm116-plan-summary strong{display:block;font-size:13px;color:#2f4639}.rm116-plan-summary span{display:block;margin-top:3px;font-size:9px;color:#7b8981}
+.rm116-meal-row,.rm116-workout-row{padding:10px 11px;border:1px solid #e4ebe7;border-radius:10px;background:#fbfcfb}
+.rm116-row-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.rm116-row-top strong{font-size:11px;color:#30463a}.rm116-row-top span{font-size:9px;color:#7d8a83;text-transform:uppercase;font-weight:850}
+.rm116-meal-row small,.rm116-workout-row small{display:block;margin-top:3px;color:#809087;font-size:9px}
+.rm116-row-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:7px}.rm116-row-actions button{min-height:30px;padding:0 8px;border-radius:7px;border:1px solid #cedad2;background:#fff;color:#154734;font-size:8px;font-weight:900}.rm116-row-actions button.primary{background:#154734;color:#fff;border-color:#154734}
+.rm116-grocery{margin-top:12px}.rm116-grocery h3{margin:0 0 7px;color:#31473b;font-size:11px}.rm116-grocery-item{display:flex;align-items:center;gap:8px;padding:7px 0;border-top:1px solid #edf1ee}.rm116-grocery-item:first-of-type{border-top:0}.rm116-grocery-item input{width:16px;height:16px}.rm116-grocery-item span{font-size:10px;color:#5f7067}
