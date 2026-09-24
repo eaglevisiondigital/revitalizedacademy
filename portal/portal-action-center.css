@@ -58,3 +58,7 @@
 .action-center-ops-actions button{min-height:40px;padding:0 14px;border-radius:9px;border:1px solid #cfdcd4;background:#fff;color:var(--green);font-size:11px;font-weight:900}
 .action-center-ops-actions button.primary{background:linear-gradient(180deg,#247f55,#154734);border-color:var(--green);color:#fff}
 .action-center-ops-card input[readonly]{background:#f3f6f4;color:#6f7e76}
+
+.action-center-report-actions{gap:8px;flex-wrap:wrap}
+.action-center-report-actions button{min-width:110px}
+#report-file-state:empty{display:none}
