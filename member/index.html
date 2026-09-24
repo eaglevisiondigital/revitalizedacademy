@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex,nofollow,noarchive">
   <title>Member Dashboard | ReVitalized Academy</title>
   <link rel="icon" href="../assets/images/revitalized-logo-dark-approved-v69.png">
-  <link rel="stylesheet" href="member110.css?v=112">
+  <link rel="stylesheet" href="member110.css?v=114">
 </head>
 <body>
   <main class="rm112-page">
@@ -94,6 +94,96 @@
         </section>
       </div>
 
+
+      <div class="rm112-grid rm114-coaching-grid">
+        <section class="rm112-card">
+          <div class="rm112-card-head">
+            <div>
+              <p class="rm112-kicker">YOUR COACH</p>
+              <h2>Connected support</h2>
+            </div>
+          </div>
+          <div id="rm-coach" class="rm112-empty">Your primary coach assignment is being prepared.</div>
+        </section>
+
+        <section class="rm112-card">
+          <div class="rm112-card-head">
+            <div>
+              <p class="rm112-kicker">COACH ASSIGNMENTS</p>
+              <h2>Your current action items</h2>
+            </div>
+            <span id="rm-assignment-count" class="rm112-chip">0 open</span>
+          </div>
+          <div id="rm-assignments" class="rm114-stack"></div>
+        </section>
+      </div>
+
+      <div class="rm112-grid rm114-coaching-grid">
+        <section class="rm112-card">
+          <div class="rm112-card-head">
+            <div>
+              <p class="rm112-kicker">YOUR GOALS</p>
+              <h2>What you’re working toward</h2>
+            </div>
+          </div>
+          <div id="rm-goals" class="rm114-stack"></div>
+        </section>
+
+        <section class="rm112-card">
+          <div class="rm112-card-head">
+            <div>
+              <p class="rm112-kicker">HABITS</p>
+              <h2>Daily and weekly rhythms</h2>
+            </div>
+          </div>
+          <div id="rm-habits" class="rm114-stack"></div>
+        </section>
+      </div>
+
+      <div class="rm112-grid rm114-coaching-grid">
+        <section class="rm112-card">
+          <div class="rm112-card-head">
+            <div>
+              <p class="rm112-kicker">PROGRESS</p>
+              <h2>Log a progress metric</h2>
+            </div>
+          </div>
+          <form id="rm-progress-form" class="rm114-form">
+            <label>
+              <span>What are you tracking?</span>
+              <select id="rm-progress-metric" required></select>
+            </label>
+            <label>
+              <span>Value</span>
+              <input id="rm-progress-value" type="number" step="0.01" required>
+              <small id="rm-progress-unit"></small>
+            </label>
+            <label>
+              <span>Optional note</span>
+              <input id="rm-progress-note" type="text" maxlength="500">
+            </label>
+            <button type="submit">Save Progress</button>
+            <p id="rm-progress-status" class="rm112-status" aria-live="polite"></p>
+          </form>
+          <div id="rm-recent-progress" class="rm114-progress-list"></div>
+        </section>
+
+        <section class="rm112-card">
+          <div class="rm112-card-head">
+            <div>
+              <p class="rm112-kicker">WEEKLY CHECK-IN</p>
+              <h2>A quick pulse for your coach</h2>
+            </div>
+            <span id="rm-checkin-state" class="rm112-chip">Ready</span>
+          </div>
+          <form id="rm-checkin-form" class="rm114-form">
+            <div id="rm-checkin-fields" class="rm114-checkin-fields"></div>
+            <button id="rm-checkin-submit" type="submit">Submit Weekly Check-In</button>
+            <p id="rm-checkin-status" class="rm112-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
       <section class="rm112-card rm112-access-card">
         <div class="rm112-card-head">
           <div>
@@ -129,6 +219,6 @@
   </main>
 
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
-  <script defer src="member110.js?v=112"></script>
+  <script defer src="member110.js?v=114"></script>
 </body>
 </html>
