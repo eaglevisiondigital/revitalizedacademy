@@ -1,0 +1,17 @@
+
+.client-health-integrations-section{border-color:#d9e5dd;background:linear-gradient(180deg,#fff,#fbfdfb)}
+.client-health-integrations-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:1px solid #e3eae6;border-radius:12px;overflow:hidden}
+.client-health-integrations-grid>div{padding:11px 12px;background:#fbfcfb;border-right:1px solid #e3eae6}
+.client-health-integrations-grid>div:last-child{border-right:0}
+.client-health-integrations-grid span{display:block;font-size:9px;font-weight:900;letter-spacing:.07em;text-transform:uppercase;color:#7c8982;margin-bottom:3px}
+.client-health-integrations-grid strong{font-size:12px;color:#31463a}
+@media(max-width:760px){
+  .client-health-integrations-grid{grid-template-columns:1fr 1fr}
+  .client-health-integrations-grid>div:nth-child(2n){border-right:0}
+  .client-health-integrations-grid>div:nth-child(-n+2){border-bottom:1px solid #e3eae6}
+}
+@media(max-width:520px){
+  .client-health-integrations-grid{grid-template-columns:1fr}
+  .client-health-integrations-grid>div{border-right:0!important;border-bottom:1px solid #e3eae6}
+  .client-health-integrations-grid>div:last-child{border-bottom:0}
+}
