@@ -30,6 +30,14 @@
   const accountPasswordPanel = el("account-password-panel");
   const accountPasswordStatus = el("account-password-status");
 
+  const contactDrawer = el("contact-drawer");
+  const contactContent = el("contact-content");
+  const contactLoading = el("contact-loading");
+  let activeContactId = null;
+  let currentUserId = null;
+  let staffDirectory = [];
+
+
   const metricDefinitions = [
     ["total_contacts", "Total contacts"],
     ["assessment_leads", "Assessment leads"],
@@ -82,6 +90,368 @@
     span.className = "status-badge " + normalized.replaceAll(" ", "_");
     span.textContent = titleCase(normalized);
     return span;
+  }
+
+
+  function staffName(userId) {
+    if (!userId) return "Unassigned";
+    const match = staffDirectory.find((staff) => staff.user_id === userId);
+    return match?.display_name || "Assigned staff";
+  }
+
+  function toDatetimeLocal(value) {
+    if (!value) return "";
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return "";
+    const pad = (part) => String(part).padStart(2, "0");
+    return date.getFullYear() + "-" + pad(date.getMonth() + 1) + "-" + pad(date.getDate()) + "T" + pad(date.getHours()) + ":" + pad(date.getMinutes());
+  }
+
+  function fromDatetimeLocal(value) {
+    return value ? new Date(value).toISOString() : null;
+  }
+
+  function displayJson(value) {
+    if (value === null || value === undefined) return "";
+    if (typeof value === "string") return value;
+    try {
+      return JSON.stringify(value);
+    } catch {
+      return String(value);
+    }
+  }
+
+  function populateStaffSelect(select, selectedValue = "") {
+    select.replaceChildren();
+    const unassigned = document.createElement("option");
+    unassigned.value = "";
+    unassigned.textContent = "Unassigned";
+    select.append(unassigned);
+
+    staffDirectory.forEach((staff) => {
+      const option = document.createElement("option");
+      option.value = staff.user_id;
+      option.textContent = staff.display_name + " · " + titleCase(staff.role);
+      option.selected = staff.user_id === selectedValue;
+      select.append(option);
+    });
+  }
+
+  async function loadStaffDirectory() {
+    const { data, error } = await authClient.rpc("list_staff_directory");
+    if (error) {
+      staffDirectory = [];
+      return;
+    }
+    staffDirectory = data || [];
+  }
+
+  async function logActivity(contactId, activityType, title, detail = null, metadata = {}) {
+    if (!currentUserId || !contactId) return;
+    await authClient.from("contact_activity").insert({
+      contact_id: contactId,
+      activity_type: activityType,
+      title,
+      detail,
+      actor_user_id: currentUserId,
+      metadata
+    });
+  }
+
+  function makeJourneyCard(label, status, detail) {
+    const card = document.createElement("div");
+    card.className = "journey-card";
+    const labelEl = document.createElement("span");
+    labelEl.textContent = label;
+    const statusEl = document.createElement("strong");
+    statusEl.textContent = titleCase(status || "not_started");
+    const detailEl = document.createElement("small");
+    detailEl.textContent = detail || "No additional activity yet";
+    card.append(labelEl, statusEl, detailEl);
+    return card;
+  }
+
+  function renderNotes(rows) {
+    const list = el("contact-notes-list");
+    list.replaceChildren();
+    if (!rows.length) {
+      const empty = document.createElement("div");
+      empty.className = "drawer-empty";
+      empty.textContent = "No internal notes yet.";
+      list.append(empty);
+      return;
+    }
+
+    rows.forEach((row) => {
+      const item = document.createElement("article");
+      item.className = "record-item";
+      const top = document.createElement("div");
+      top.className = "record-item-top";
+      const author = document.createElement("strong");
+      author.textContent = staffName(row.author_user_id);
+      const date = document.createElement("span");
+      date.className = "record-item-meta";
+      date.textContent = formatDate(row.created_at, true);
+      const note = document.createElement("p");
+      note.textContent = row.note;
+      top.append(author, date);
+      item.append(top, note);
+      list.append(item);
+    });
+  }
+
+  function renderContactTasks(rows) {
+    const list = el("contact-tasks-list");
+    list.replaceChildren();
+    if (!rows.length) {
+      const empty = document.createElement("div");
+      empty.className = "drawer-empty";
+      empty.textContent = "No tasks for this contact.";
+      list.append(empty);
+      return;
+    }
+
+    rows.forEach((row) => {
+      const item = document.createElement("article");
+      item.className = "record-item task-item" + (row.status === "completed" ? " completed" : "");
+      const top = document.createElement("div");
+      top.className = "record-item-top";
+      const title = document.createElement("strong");
+      title.textContent = row.title;
+      const meta = document.createElement("span");
+      meta.className = "record-item-meta";
+      meta.textContent = titleCase(row.priority) + (row.due_at ? " · " + formatDate(row.due_at, true) : "");
+      top.append(title, meta);
+
+      const assignment = document.createElement("p");
+      assignment.textContent = "Assigned to: " + staffName(row.assigned_to);
+
+      item.append(top, assignment);
+
+      if (row.status === "open") {
+        const actions = document.createElement("div");
+        actions.className = "task-actions";
+        const complete = document.createElement("button");
+        complete.className = "mini-button";
+        complete.type = "button";
+        complete.textContent = "Mark complete";
+        complete.addEventListener("click", () => completeContactTask(row.id, row.title));
+        actions.append(complete);
+        item.append(actions);
+      }
+
+      list.append(item);
+    });
+  }
+
+  function renderTags(rows) {
+    const list = el("contact-tags-list");
+    list.replaceChildren();
+
+    if (!rows.length) {
+      const empty = document.createElement("span");
+      empty.className = "drawer-empty";
+      empty.textContent = "No tags yet.";
+      list.append(empty);
+      return;
+    }
+
+    rows.forEach((row) => {
+      const chip = document.createElement("span");
+      chip.className = "tag-chip";
+      const label = document.createElement("span");
+      label.textContent = row.tag;
+      const remove = document.createElement("button");
+      remove.type = "button";
+      remove.setAttribute("aria-label", "Remove " + row.tag);
+      remove.textContent = "×";
+      remove.addEventListener("click", () => removeContactTag(row.id, row.tag));
+      chip.append(label, remove);
+      list.append(chip);
+    });
+  }
+
+  function renderActivity(rows) {
+    const list = el("contact-activity-list");
+    list.replaceChildren();
+
+    if (!rows.length) {
+      const empty = document.createElement("div");
+      empty.className = "drawer-empty";
+      empty.textContent = "No recorded activity yet.";
+      list.append(empty);
+      return;
+    }
+
+    rows.forEach((row) => {
+      const item = document.createElement("div");
+      item.className = "activity-item";
+      const dot = document.createElement("span");
+      dot.className = "activity-dot";
+      const copy = document.createElement("div");
+      copy.className = "activity-copy";
+      const title = document.createElement("strong");
+      title.textContent = row.title || titleCase(row.activity_type);
+      const detail = document.createElement("p");
+      detail.textContent = row.detail || "";
+      const time = document.createElement("time");
+      time.textContent = formatDate(row.created_at, true);
+      copy.append(title);
+      if (row.detail) copy.append(detail);
+      copy.append(time);
+      item.append(dot, copy);
+      list.append(item);
+    });
+  }
+
+  async function openContact(contactId) {
+    if (!contactId) return;
+    activeContactId = contactId;
+    contactDrawer.classList.remove("hidden");
+    contactDrawer.setAttribute("aria-hidden", "false");
+    contactContent.classList.add("hidden");
+    contactLoading.classList.remove("hidden");
+    contactLoading.textContent = "Loading contact record...";
+
+    if (!staffDirectory.length) await loadStaffDirectory();
+
+    const [
+      contactResult,
+      workflowsResult,
+      webinarResult,
+      refuelResult,
+      notesResult,
+      tasksResult,
+      tagsResult,
+      activityResult
+    ] = await Promise.all([
+      authClient.from("contacts").select("*").eq("id", contactId).single(),
+      authClient.from("workflow_records").select("id,workflow_type,status,current_step,completion_percent,last_activity_at,completed_at").eq("contact_id", contactId).order("created_at", { ascending: false }),
+      authClient.from("webinar_registrations").select("status,payment_status,registered_at,attended_at,primary_goal").eq("contact_id", contactId).order("registered_at", { ascending: false }).limit(1),
+      authClient.from("refuel_interest").select("status,created_at").eq("contact_id", contactId).maybeSingle(),
+      authClient.from("contact_notes").select("id,note,created_at,author_user_id").eq("contact_id", contactId).order("created_at", { ascending: false }).limit(30),
+      authClient.from("follow_up_tasks").select("id,title,due_at,status,priority,assigned_to,created_by,created_at,completed_at").eq("contact_id", contactId).order("created_at", { ascending: false }).limit(30),
+      authClient.from("contact_tags").select("id,tag,created_at").eq("contact_id", contactId).order("tag"),
+      authClient.from("contact_activity").select("id,activity_type,title,detail,actor_user_id,metadata,created_at").eq("contact_id", contactId).order("created_at", { ascending: false }).limit(40)
+    ]);
+
+    const failed = [contactResult, workflowsResult, webinarResult, refuelResult, notesResult, tasksResult, tagsResult, activityResult].find((result) => result.error);
+    if (failed?.error) {
+      contactLoading.textContent = "This contact record could not be loaded. " + failed.error.message;
+      return;
+    }
+
+    const contact = contactResult.data;
+    const workflows = workflowsResult.data || [];
+    const vitality = workflows.find((row) => row.workflow_type === "vitality_assessment");
+    const enrollment = workflows.find((row) => row.workflow_type === "enrollment");
+    const webinar = (webinarResult.data || [])[0];
+    const refuel = refuelResult.data;
+
+    el("contact-title").textContent = personName(contact);
+    const badges = el("contact-badges");
+    badges.replaceChildren();
+    badges.append(makeBadge(contact.lifecycle_stage), makeBadge(contact.follow_up_status));
+
+    el("contact-email").textContent = contact.email || "Not provided";
+    el("contact-phone").textContent = contact.phone || "Not provided";
+    el("contact-location").textContent = [contact.city, contact.state, contact.country].filter(Boolean).join(", ") || "Not provided";
+    el("contact-source").textContent = contact.last_source || contact.first_source || "Not recorded";
+    el("contact-created").textContent = formatDate(contact.created_at, true);
+    el("contact-assigned-name").textContent = staffName(contact.assigned_to);
+
+    const emailAction = el("contact-email-action");
+    if (contact.email) {
+      emailAction.href = "mailto:" + encodeURIComponent(contact.email) + "?subject=" + encodeURIComponent("ReVitalized Academy follow-up");
+      emailAction.classList.remove("disabled");
+    } else {
+      emailAction.href = "#";
+      emailAction.classList.add("disabled");
+    }
+
+    const callAction = el("contact-call-action");
+    if (contact.phone) {
+      callAction.href = "tel:" + String(contact.phone).replace(/[^+\d]/g, "");
+      callAction.classList.remove("disabled");
+    } else {
+      callAction.href = "#";
+      callAction.classList.add("disabled");
+    }
+
+    const journeyGrid = el("contact-journey-grid");
+    journeyGrid.replaceChildren(
+      makeJourneyCard("Vitality assessment", vitality?.status, vitality ? (vitality.completion_percent || 0) + "% complete" + (vitality.current_step ? " · " + vitality.current_step : "") : "Not started"),
+      makeJourneyCard("Enrollment", enrollment?.status, enrollment ? (enrollment.completion_percent || 0) + "% complete" + (enrollment.current_step ? " · " + enrollment.current_step : "") : "Not started"),
+      makeJourneyCard("Webinar", webinar?.status, webinar ? "Payment: " + titleCase(webinar.payment_status) : "No registration"),
+      makeJourneyCard("ReFuel", refuel?.status, refuel ? "Joined " + formatDate(refuel.created_at) : "No interest record")
+    );
+
+    el("contact-lifecycle").value = contact.lifecycle_stage || "lead";
+    el("contact-followup-status").value = contact.follow_up_status || "new";
+    el("contact-consultation-status").value = contact.consultation_status || "not_scheduled";
+    populateStaffSelect(el("contact-assigned-to"), contact.assigned_to || "");
+    el("contact-next-followup").value = toDatetimeLocal(contact.next_follow_up_at);
+    populateStaffSelect(el("contact-task-assigned"), currentUserId || "");
+
+    renderNotes(notesResult.data || []);
+    renderContactTasks(tasksResult.data || []);
+    renderTags(tagsResult.data || []);
+    renderActivity(activityResult.data || []);
+
+    showStatus(el("contact-status-message"), "");
+    showStatus(el("contact-note-message"), "");
+    showStatus(el("contact-task-message"), "");
+    showStatus(el("contact-tag-message"), "");
+    contactLoading.classList.add("hidden");
+    contactContent.classList.remove("hidden");
+  }
+
+  function closeContact() {
+    activeContactId = null;
+    contactDrawer.classList.add("hidden");
+    contactDrawer.setAttribute("aria-hidden", "true");
+    contactContent.classList.add("hidden");
+    contactLoading.classList.remove("hidden");
+  }
+
+  async function completeContactTask(taskId, taskTitle) {
+    const { error } = await authClient.from("follow_up_tasks").update({
+      status: "completed",
+      completed_at: new Date().toISOString()
+    }).eq("id", taskId);
+
+    if (error) {
+      showStatus(el("contact-task-message"), error.message, "error");
+      return;
+    }
+
+    await logActivity(activeContactId, "task_completed", "Task completed", taskTitle);
+    await Promise.all([openContact(activeContactId), loadDashboard()]);
+  }
+
+  async function removeContactTag(tagId, tagName) {
+    const { error } = await authClient.from("contact_tags").delete().eq("id", tagId);
+    if (error) {
+      showStatus(el("contact-tag-message"), error.message, "error");
+      return;
+    }
+
+    await logActivity(activeContactId, "tag_removed", "Tag removed", tagName);
+    await openContact(activeContactId);
+  }
+
+  function wireContactOpen(element, contactId) {
+    element.classList.add("contact-clickable");
+    element.tabIndex = 0;
+    element.setAttribute("role", "button");
+    element.setAttribute("aria-label", "Open contact record");
+    element.addEventListener("click", () => openContact(contactId));
+    element.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openContact(contactId);
+      }
+    });
   }
 
   function showPasswordSetup() {
@@ -144,6 +514,8 @@
       return;
     }
 
+    currentUserId = session.user.id;
+    await loadStaffDirectory();
     showPortal(staff);
     await loadDashboard();
   }
@@ -230,6 +602,7 @@
       meta.append(status, due);
 
       item.append(main, meta);
+      wireContactOpen(item, row.id);
       list.append(item);
     });
   }
@@ -268,6 +641,7 @@
       meta.append(priority, due);
 
       item.append(main, meta);
+      wireContactOpen(item, row.contact_id);
       list.append(item);
     });
   }
@@ -312,6 +686,7 @@
       created.textContent = formatDate(row.created_at);
 
       tr.append(name, stage, vitality, enrollment, webinar, followup, created);
+      wireContactOpen(tr, row.id);
       body.append(tr);
     });
   }
@@ -416,6 +791,124 @@
     showStatus(loginStatus, "Signed out.", "success");
   }
 
+
+  el("contact-close").addEventListener("click", closeContact);
+  document.querySelectorAll("[data-contact-close]").forEach((node) => node.addEventListener("click", closeContact));
+
+  el("contact-email-action").addEventListener("click", () => {
+    if (activeContactId && !el("contact-email-action").classList.contains("disabled")) {
+      logActivity(activeContactId, "email_started", "Email started", "Opened email composer from the ReVitalized portal.");
+    }
+  });
+
+  el("contact-call-action").addEventListener("click", () => {
+    if (activeContactId && !el("contact-call-action").classList.contains("disabled")) {
+      logActivity(activeContactId, "call_started", "Call started", "Opened phone action from the ReVitalized portal.");
+    }
+  });
+
+  el("contact-status-form").addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!activeContactId) return;
+
+    showStatus(el("contact-status-message"), "Saving...");
+    const updates = {
+      lifecycle_stage: el("contact-lifecycle").value,
+      follow_up_status: el("contact-followup-status").value,
+      consultation_status: el("contact-consultation-status").value,
+      assigned_to: el("contact-assigned-to").value || null,
+      next_follow_up_at: fromDatetimeLocal(el("contact-next-followup").value)
+    };
+
+    const { error } = await authClient.from("contacts").update(updates).eq("id", activeContactId);
+    if (error) {
+      showStatus(el("contact-status-message"), error.message, "error");
+      return;
+    }
+
+    await logActivity(activeContactId, "contact_updated", "Contact status updated", "Lifecycle, follow-up, consultation, assignment or follow-up date changed.", updates);
+    showStatus(el("contact-status-message"), "Saved.", "success");
+    await Promise.all([openContact(activeContactId), loadDashboard()]);
+  });
+
+  el("contact-note-form").addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!activeContactId || !currentUserId) return;
+    const note = el("contact-note-input").value.trim();
+    if (!note) return;
+
+    showStatus(el("contact-note-message"), "Adding note...");
+    const { error } = await authClient.from("contact_notes").insert({
+      contact_id: activeContactId,
+      author_user_id: currentUserId,
+      note
+    });
+
+    if (error) {
+      showStatus(el("contact-note-message"), error.message, "error");
+      return;
+    }
+
+    el("contact-note-input").value = "";
+    await logActivity(activeContactId, "note_added", "Internal note added", note.slice(0, 240));
+    showStatus(el("contact-note-message"), "Note added.", "success");
+    await openContact(activeContactId);
+  });
+
+  el("contact-task-form").addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!activeContactId || !currentUserId) return;
+    const title = el("contact-task-title").value.trim();
+    if (!title) return;
+
+    showStatus(el("contact-task-message"), "Creating task...");
+    const payload = {
+      contact_id: activeContactId,
+      assigned_to: el("contact-task-assigned").value || null,
+      title,
+      due_at: fromDatetimeLocal(el("contact-task-due").value),
+      status: "open",
+      priority: el("contact-task-priority").value,
+      created_by: currentUserId
+    };
+
+    const { error } = await authClient.from("follow_up_tasks").insert(payload);
+    if (error) {
+      showStatus(el("contact-task-message"), error.message, "error");
+      return;
+    }
+
+    el("contact-task-title").value = "";
+    el("contact-task-due").value = "";
+    el("contact-task-priority").value = "normal";
+    await logActivity(activeContactId, "task_created", "Task created", title, { priority: payload.priority, due_at: payload.due_at });
+    showStatus(el("contact-task-message"), "Task created.", "success");
+    await Promise.all([openContact(activeContactId), loadDashboard()]);
+  });
+
+  el("contact-tag-form").addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!activeContactId) return;
+    const tag = el("contact-tag-input").value.trim();
+    if (!tag) return;
+
+    const { data: existing } = await authClient.from("contact_tags").select("id").eq("contact_id", activeContactId).ilike("tag", tag).limit(1);
+    if (existing?.length) {
+      showStatus(el("contact-tag-message"), "That tag is already on this contact.", "error");
+      return;
+    }
+
+    const { error } = await authClient.from("contact_tags").insert({ contact_id: activeContactId, tag });
+    if (error) {
+      showStatus(el("contact-tag-message"), error.message, "error");
+      return;
+    }
+
+    el("contact-tag-input").value = "";
+    await logActivity(activeContactId, "tag_added", "Tag added", tag);
+    await openContact(activeContactId);
+  });
+
   el("logout-button").addEventListener("click", signOut);
   el("pending-logout").addEventListener("click", signOut);
   el("refresh-button").addEventListener("click", loadDashboard);
@@ -459,7 +952,8 @@
   });
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && !accountModal.classList.contains("hidden")) closeAccount();
+    if (event.key === "Escape" && !contactDrawer.classList.contains("hidden")) closeContact();
+    else if (event.key === "Escape" && !accountModal.classList.contains("hidden")) closeAccount();
   });
   el("pending-password").addEventListener("click", showPasswordSetup);
 
