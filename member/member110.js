@@ -111,6 +111,241 @@
   }
 
   let currentMember = null;
+
+  let currentCourses = [];
+  let currentCourseLessons = [];
+
+  function renderCourses(rows) {
+    currentCourses = rows;
+    const list = el("rm-courses");
+    list.replaceChildren();
+    el("rm-course-count").textContent = rows.length + (rows.length === 1 ? " course" : " courses");
+
+    if (!rows.length) {
+      list.innerHTML = '<div class="rm112-empty">Your ReVitalized courses will appear here when they are published and included with your program or assigned by your coach.</div>';
+      return;
+    }
+
+    rows.forEach((row) => {
+      const card = document.createElement("div");
+      card.className = "rm119-course-card";
+
+      const top = document.createElement("div");
+      top.className = "rm119-course-top";
+      const heading = document.createElement("strong");
+      heading.textContent = row.title;
+      const progress = document.createElement("span");
+      progress.className = "rm112-chip";
+      progress.textContent = Number(row.progress_percent || 0) + "%";
+      top.append(heading, progress);
+      card.append(top);
+
+      if (row.description) {
+        const p = document.createElement("p");
+        p.textContent = row.description;
+        card.append(p);
+      }
+
+      const mini = document.createElement("div");
+      mini.className = "rm119-mini-progress";
+      const bar = document.createElement("i");
+      bar.style.width = Math.max(0,Math.min(100,Number(row.progress_percent || 0))) + "%";
+      mini.append(bar);
+      card.append(mini);
+
+      const meta = document.createElement("small");
+      meta.textContent = [
+        title(row.status),
+        row.estimated_minutes ? row.estimated_minutes + " estimated minutes" : ""
+      ].filter(Boolean).join(" · ");
+      card.append(meta);
+
+      const actions = document.createElement("div");
+      actions.className = "rm119-course-actions";
+      const open = document.createElement("button");
+      open.type = "button";
+      open.className = "primary";
+      open.textContent = row.progress_percent > 0 ? "Continue Course" : "Start Course";
+      open.addEventListener("click", () => openCourse(row));
+      actions.append(open);
+      card.append(actions);
+      list.append(card);
+    });
+  }
+
+  function renderResources(rows) {
+    const list = el("rm-resources");
+    list.replaceChildren();
+
+    if (!rows.length) {
+      list.innerHTML = '<div class="rm112-empty">Approved guides, worksheets and resources included with your program will appear here.</div>';
+      return;
+    }
+
+    rows.forEach((row) => {
+      const card = document.createElement("div");
+      card.className = "rm119-resource-card";
+
+      const top = document.createElement("div");
+      top.className = "rm119-resource-top";
+      const heading = document.createElement("strong");
+      heading.textContent = row.title;
+      const kind = document.createElement("span");
+      kind.className = "rm112-chip";
+      kind.textContent = title(row.resource_type);
+      top.append(heading, kind);
+      card.append(top);
+
+      if (row.description) {
+        const p = document.createElement("p");
+        p.textContent = row.description;
+        card.append(p);
+      }
+
+      const meta = document.createElement("small");
+      meta.textContent = [row.category || "", row.assignment_note || ""].filter(Boolean).join(" · ");
+      card.append(meta);
+
+      const actions = document.createElement("div");
+      actions.className = "rm119-resource-actions";
+      const link = document.createElement("a");
+      link.href = row.resource_url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.textContent = "Open Resource";
+      actions.append(link);
+      card.append(actions);
+      list.append(card);
+    });
+  }
+
+  function closeCourse() {
+    el("rm-course-modal").classList.add("hidden");
+    el("rm-course-modal").setAttribute("aria-hidden", "true");
+  }
+
+  async function openCourse(course) {
+    el("rm-course-title").textContent = course.title;
+    el("rm-course-description").textContent = course.description || "";
+    el("rm-course-progress").querySelector("i").style.width = Math.max(0,Math.min(100,Number(course.progress_percent || 0))) + "%";
+    el("rm-course-lessons").innerHTML = '<div class="rm112-empty">Loading lessons...</div>';
+    el("rm-course-modal").classList.remove("hidden");
+    el("rm-course-modal").setAttribute("aria-hidden", "false");
+
+    const { data, error } = await client
+      .from("my_course_lessons")
+      .select("*")
+      .eq("course_id", course.course_id)
+      .order("module_order")
+      .order("lesson_order");
+
+    if (error) {
+      el("rm-course-lessons").innerHTML = '<div class="rm112-empty">Course lessons could not be loaded.</div>';
+      return;
+    }
+
+    currentCourseLessons = data || [];
+    renderCourseLessons(course, currentCourseLessons);
+  }
+
+  function renderCourseLessons(course, rows) {
+    const list = el("rm-course-lessons");
+    list.replaceChildren();
+    let moduleId = null;
+
+    rows.forEach((row) => {
+      if (row.module_id !== moduleId) {
+        moduleId = row.module_id;
+        const module = document.createElement("div");
+        module.className = "rm119-module-title";
+        module.textContent = row.module_title;
+        list.append(module);
+      }
+
+      const lesson = document.createElement("div");
+      lesson.className = "rm119-lesson";
+      const top = document.createElement("div");
+      top.className = "rm119-lesson-top";
+      const heading = document.createElement("strong");
+      heading.textContent = row.lesson_title;
+      const state = document.createElement("span");
+      state.textContent = title(row.progress_status);
+      top.append(heading, state);
+      lesson.append(top);
+
+      if (row.lesson_description) {
+        const p = document.createElement("p");
+        p.textContent = row.lesson_description;
+        lesson.append(p);
+      }
+
+      const actions = document.createElement("div");
+      actions.className = "rm119-lesson-actions";
+
+      if (row.media_url) {
+        const media = document.createElement("a");
+        media.href = row.media_url;
+        media.target = "_blank";
+        media.rel = "noopener noreferrer";
+        media.textContent = row.progress_status === "in_progress" ? "Resume Lesson" : "Open Lesson";
+        media.addEventListener("click", () => markLessonStarted(row));
+        actions.append(media);
+      }
+
+      if (row.progress_status !== "completed") {
+        const complete = document.createElement("button");
+        complete.type = "button";
+        complete.className = "primary";
+        complete.textContent = "Mark Complete";
+        complete.addEventListener("click", () => completeLesson(course, row));
+        actions.append(complete);
+      }
+
+      lesson.append(actions);
+      list.append(lesson);
+    });
+  }
+
+  async function markLessonStarted(row) {
+    const { data: { user } } = await client.auth.getUser();
+    await client.from("lesson_progress").upsert({
+      enrollment_id: row.enrollment_id,
+      contact_id: currentMember.contact_id,
+      lesson_id: row.lesson_id,
+      status: row.progress_status === "completed" ? "completed" : "in_progress",
+      progress_seconds: Number(row.progress_seconds || 0),
+      completion_percent: Number(row.completion_percent || 0),
+      first_started_at: new Date().toISOString(),
+      last_activity_at: new Date().toISOString(),
+      created_by: user?.id || null
+    }, { onConflict: "enrollment_id,lesson_id" });
+  }
+
+  async function completeLesson(course, row) {
+    const { data: { user } } = await client.auth.getUser();
+    const { error } = await client.from("lesson_progress").upsert({
+      enrollment_id: row.enrollment_id,
+      contact_id: currentMember.contact_id,
+      lesson_id: row.lesson_id,
+      status: "completed",
+      progress_seconds: row.duration_seconds || Number(row.progress_seconds || 0),
+      completion_percent: 100,
+      first_started_at: new Date().toISOString(),
+      last_activity_at: new Date().toISOString(),
+      completed_at: new Date().toISOString(),
+      created_by: user?.id || null
+    }, { onConflict: "enrollment_id,lesson_id" });
+
+    if (error) {
+      window.alert("Could not complete lesson: " + error.message);
+      return;
+    }
+
+    await loadDashboard();
+    const refreshed = currentCourses.find((c) => c.course_id === course.course_id) || course;
+    await openCourse(refreshed);
+  }
+
   let metricCatalog = [];
   let checkinTemplate = null;
   let checkinFields = [];
@@ -591,7 +826,9 @@
       mealsResult,
       fitnessPlanResult,
       workoutsResult,
-      groceryResult
+      groceryResult,
+      coursesResult,
+      resourcesResult
     ] = await Promise.all([
       client.from("my_member_dashboard").select("*").maybeSingle(),
       client.from("my_member_entitlements").select("*").order("label"),
@@ -609,10 +846,12 @@
       client.from("my_upcoming_meals").select("*"),
       client.from("my_active_fitness_plan").select("*").maybeSingle(),
       client.from("my_upcoming_workouts").select("*"),
-      client.from("my_grocery_list").select("*")
+      client.from("my_grocery_list").select("*"),
+      client.from("my_courses").select("*"),
+      client.from("my_resources").select("*")
     ]);
 
-    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult].find((r) => r.error);
+    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult].find((r) => r.error);
     if (failed?.error) throw failed.error;
 
     const member = dashboardResult.data;
@@ -714,6 +953,11 @@
     showOnly("rm-auth");
     el("rm-password").value = "";
   }
+
+  document.querySelectorAll("[data-course-close]").forEach((node) => node.addEventListener("click", closeCourse));
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !el("rm-course-modal").classList.contains("hidden")) closeCourse();
+  });
 
   el("rm-signout").addEventListener("click", signOut);
   el("rm-denied-signout").addEventListener("click", signOut);
