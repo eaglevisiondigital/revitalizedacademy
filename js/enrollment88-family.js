@@ -137,7 +137,7 @@
       code: 'holistic-foundations',
       label: 'Most flexible',
       name: 'Holistic Foundations',
-      price: '$25/week or $89/month · 3-month minimum',
+      price: '$25/week or $89/month · 6-month minimum',
       best: 'Families who want the most budget-friendly way to begin, learn the ReVitalized approach and move at their own pace.',
       bullets: ['Family access for up to 5 profiles','ReVitalized Academy platform access','Private like-minded community','Educational content + monthly community Q&A','AI advisor and signature nutrition/fitness plans','Tracking, habit builder, challenges and Family Health Hub']
     },
