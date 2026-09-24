@@ -7,7 +7,7 @@
   <title>ReVitalized Academy | Staff Portal</title>
   <link rel="icon" href="../assets/images/revitalized-logo-dark-approved-v69.png">
   <link rel="stylesheet" href="portal.css?v=103">
-  <link rel="stylesheet" href="portal-messaging.css?v=105">
+  <link rel="stylesheet" href="portal-messaging.css?v=105">\n  <link rel="stylesheet" href="portal-journey.css?v=106">
 </head>
 <body>
   <main class="portal-page">
@@ -167,6 +167,49 @@
               <button id="contact-text-action" class="contact-action contact-action-button" type="button">Text</button>
               <button id="contact-video-action" class="contact-action contact-action-button" type="button">Send Video</button>
             </div>
+
+            <section class="contact-section journey-ops-section">
+              <div class="journey-ops-head">
+                <div>
+                  <p class="section-kicker">CLIENT JOURNEY</p>
+                  <h3>Where they are and what happens next</h3>
+                </div>
+                <span id="journey-temperature" class="journey-temp-chip">Loading</span>
+              </div>
+
+              <div class="journey-summary-grid">
+                <div class="journey-summary-card"><span>Route</span><strong id="journey-route">Loading...</strong></div>
+                <div class="journey-summary-card"><span>Intent score</span><strong id="journey-intent">—</strong></div>
+                <div class="journey-summary-card"><span>Current step</span><strong id="journey-current-step">—</strong></div>
+                <div class="journey-summary-card"><span>Journey status</span><strong id="journey-state-label">Active</strong></div>
+              </div>
+
+              <div class="journey-progress-wrap">
+                <div class="journey-progress-top">
+                  <span id="journey-progress-copy">0 of 0 steps</span>
+                  <strong id="journey-progress-percent">0%</strong>
+                </div>
+                <div class="journey-progress-track"><div id="journey-progress-bar" class="journey-progress-bar"></div></div>
+              </div>
+
+              <div id="journey-next-box" class="journey-next-box">
+                <strong id="journey-next-title">Loading next step...</strong>
+                <span id="journey-next-meta"></span>
+              </div>
+
+              <div class="journey-action-row">
+                <button id="journey-complete-step" class="primary" type="button">Complete &amp; Continue</button>
+                <button id="journey-send-next" type="button">Send Next Step</button>
+                <button id="journey-skip-step" type="button">Skip Step</button>
+                <button id="journey-pause" class="warn" type="button">Pause Journey</button>
+                <button id="journey-nurture" class="warn" type="button">Move to Nurture</button>
+              </div>
+              <p id="journey-action-status" class="form-status" aria-live="polite"></p>
+
+              <div id="journey-steps-list" class="journey-steps"></div>
+              <div id="journey-automation-note" class="journey-automation-note">Loading automation status...</div>
+            </section>
+
 
             <section class="contact-section">
               <div class="contact-section-heading">
@@ -551,7 +594,7 @@
   <noscript>This portal requires JavaScript.</noscript>
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/tus-js-client@4.3.1/dist/tus.min.js"></script>
-  <script defer src="portal.js?v=105"></script>
-  <script defer src="portal-messaging.js?v=105"></script>
+  <script defer src="portal.js?v=106"></script>
+  <script defer src="portal-messaging.js?v=106"></script>\n  <script defer src="portal-journey.js?v=106"></script>
 </body>
 </html>
