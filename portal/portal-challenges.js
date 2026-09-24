@@ -36,14 +36,10 @@
     contact=contactRecord||contact;
     if(!contactId)return;
 
-    const [accessResult,summaryResult,challengeResult,enrollmentResult,metricResult]=await Promise.all([
+    const [accessResult,summaryResult,challengeResult,metricResult]=await Promise.all([
       client.from("client_access").select("*").eq("contact_id",contactId).maybeSingle(),
       client.from("admin_client_challenge_summary").select("*").eq("contact_id",contactId).maybeSingle(),
       client.from("wellness_challenges").select("*").in("status",["published","active"]).order("starts_on"),
-      client.from("challenge_enrollments").select("*,wellness_challenges:challenge_id(*)")
-        .or("contact_id.eq."+contactId+",household_id.in.("+(
-          "select household_id from client_access where contact_id='"+contactId+"'"
-        )+")"),
       client.from("progress_metric_catalog").select("metric_key,label,unit,active").eq("active",true).order("display_order")
     ]);
 
