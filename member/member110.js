@@ -114,6 +114,72 @@
 
   let activeConversationId = null;
 
+  function renderNotificationPreferences(row){
+    const values=row||{};
+    el("pref-in-app-messages").checked=values.in_app_messages!==false;
+    el("pref-email-messages").checked=Boolean(values.email_messages);
+    el("pref-sms-messages").checked=Boolean(values.sms_messages);
+    el("pref-email-coaching").checked=values.email_coaching_reminders!==false;
+    el("pref-sms-coaching").checked=Boolean(values.sms_coaching_reminders);
+    el("pref-email-program").checked=values.email_program_updates!==false;
+    el("pref-sms-program").checked=Boolean(values.sms_program_updates);
+  }
+
+  async function saveNotificationPreferences(event){
+    event.preventDefault();
+    const {data:{user}}=await client.auth.getUser();
+    if(!user)return;
+    const status=el("rm-notification-status");
+    showStatus(status,"Saving...");
+    const payload={
+      user_id:user.id,
+      in_app_messages:el("pref-in-app-messages").checked,
+      email_messages:el("pref-email-messages").checked,
+      sms_messages:el("pref-sms-messages").checked,
+      email_coaching_reminders:el("pref-email-coaching").checked,
+      sms_coaching_reminders:el("pref-sms-coaching").checked,
+      email_program_updates:el("pref-email-program").checked,
+      sms_program_updates:el("pref-sms-program").checked,
+      updated_at:new Date().toISOString()
+    };
+    const {error}=await client.from("notification_preferences").upsert(payload,{onConflict:"user_id"});
+    if(error){showStatus(status,error.message,"error");return;}
+    showStatus(status,"Notification preferences saved.","success");
+  }
+
+  function safeFilename(name){
+    return String(name||"attachment").replace(/[^A-Za-z0-9._-]+/g,"-").replace(/-+/g,"-").replace(/^-|-$/g,"")||"attachment";
+  }
+
+  async function uploadMessageAttachment(conversationId,messageId,file){
+    if(!file)return null;
+    if(file.size>10485760)throw new Error("Attachment must be 10 MB or smaller.");
+    const path=conversationId+"/"+messageId+"/"+safeFilename(file.name);
+    const {error:uploadError}=await client.storage.from("member-message-attachments").upload(path,file,{
+      contentType:file.type||"application/octet-stream",
+      upsert:false,
+      cacheControl:"3600"
+    });
+    if(uploadError)throw uploadError;
+
+    const {data,error}=await client.from("member_message_attachments").insert({
+      message_id:messageId,
+      storage_path:path,
+      original_filename:file.name,
+      content_type:file.type||null,
+      size_bytes:file.size
+    }).select("*").single();
+    if(error)throw error;
+    return data;
+  }
+
+  async function signedAttachmentUrl(path){
+    const {data,error}=await client.storage.from("member-message-attachments").createSignedUrl(path,900);
+    if(error||!data?.signedUrl)return null;
+    return data.signedUrl;
+  }
+
+
   function renderConversations(rows) {
     const list=el("rm-conversations");
     list.replaceChildren();
@@ -214,7 +280,18 @@
 
     const thread=el("rm-message-thread");
     thread.replaceChildren();
-    (data||[]).forEach((message)=>{
+
+    const messageIds=(data||[]).map((m)=>m.id);
+    const attachmentMap=new Map();
+    if(messageIds.length){
+      const {data:attachments}=await client.from("my_message_attachments").select("*").in("message_id",messageIds);
+      for(const attachment of attachments||[]){
+        if(!attachmentMap.has(attachment.message_id))attachmentMap.set(attachment.message_id,[]);
+        attachmentMap.get(attachment.message_id).push(attachment);
+      }
+    }
+
+    for(const message of (data||[])){
       const bubble=document.createElement("div");
       bubble.className="rm120-bubble"+(message.sender_user_id===user?.id?" mine":"");
       const p=document.createElement("p");
@@ -222,8 +299,27 @@
       const time=document.createElement("small");
       time.textContent=formatDate(message.created_at,true);
       bubble.append(p,time);
+
+      const attachments=attachmentMap.get(message.id)||[];
+      if(attachments.length){
+        const files=document.createElement("div");
+        files.className="rm120-attachments";
+        for(const attachment of attachments){
+          const href=await signedAttachmentUrl(attachment.storage_path);
+          if(!href)continue;
+          const link=document.createElement("a");
+          link.className="rm120-attachment";
+          link.href=href;
+          link.target="_blank";
+          link.rel="noopener noreferrer";
+          link.textContent=attachment.original_filename||"Attachment";
+          files.append(link);
+        }
+        bubble.append(files);
+      }
+
       thread.append(bubble);
-    });
+    }
     thread.scrollTop=thread.scrollHeight;
 
     await client.from("member_conversation_participants")
@@ -958,7 +1054,8 @@
       coursesResult,
       resourcesResult,
       conversationsResult,
-      notificationsResult
+      notificationsResult,
+      notificationPrefsResult
     ] = await Promise.all([
       client.from("my_member_dashboard").select("*").maybeSingle(),
       client.from("my_member_entitlements").select("*").order("label"),
@@ -980,10 +1077,11 @@
       client.from("my_courses").select("*"),
       client.from("my_resources").select("*"),
       client.from("my_conversations").select("*"),
-      client.from("my_notifications").select("*").limit(20)
+      client.from("my_notifications").select("*").limit(20),
+      client.from("notification_preferences").select("*").maybeSingle()
     ]);
 
-    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult].find((r) => r.error);
+    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult,notificationPrefsResult].find((r) => r.error);
     if (failed?.error) throw failed.error;
 
     const member = dashboardResult.data;
@@ -1087,6 +1185,8 @@
   }
 
 
+  el("rm-notification-form").addEventListener("submit",saveNotificationPreferences);
+
   el("rm-message-form").addEventListener("submit",async(event)=>{
     event.preventDefault();
     if(!activeConversationId||!currentMember)return;
@@ -1096,20 +1196,32 @@
     const status=el("rm-message-status");
     showStatus(status,"Sending...");
     const {data:{user}}=await client.auth.getUser();
-    const {error}=await client.from("member_messages").insert({
+    const {data:message,error}=await client.from("member_messages").insert({
       conversation_id:activeConversationId,
       sender_user_id:user.id,
       sender_contact_id:currentMember.contact_id,
       body,
       message_type:"text"
-    });
+    }).select("id").single();
 
     if(error){
       showStatus(status,error.message,"error");
       return;
     }
 
+    const file=el("rm-message-file").files?.[0]||null;
+    if(file){
+      try{
+        showStatus(status,"Uploading attachment...");
+        await uploadMessageAttachment(activeConversationId,message.id,file);
+      }catch(uploadError){
+        showStatus(status,"Message sent, but attachment failed: "+uploadError.message,"error");
+        return;
+      }
+    }
+
     el("rm-message-body").value="";
+    el("rm-message-file").value="";
     showStatus(status,"Sent.","success");
     const conversation={conversation_id:activeConversationId,title:el("rm-message-title").textContent};
     await openConversation(conversation);
