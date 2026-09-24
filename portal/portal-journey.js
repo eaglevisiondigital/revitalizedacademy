@@ -13,7 +13,12 @@
   let jobs = [];
 
   function title(value) {
-    return portal.titleCase(value || "");
+    const labels = {
+      waiting_client: "Waiting on Client",
+      waiting_revit: "Waiting on ReVitalized",
+      waived: "Waived"
+    };
+    return labels[value] || portal.titleCase(value || "");
   }
 
   function dateTime(value) {
@@ -136,7 +141,7 @@
       step &&
       step.due_at &&
       new Date(step.due_at).getTime() < Date.now() &&
-      ["pending","in_progress","blocked"].includes(step.status)
+      ["pending","in_progress","waiting_client","waiting_revit","blocked"].includes(step.status)
     );
 
     nextBox.className = "journey-next-box" + (stalled ? " stalled" : "");
