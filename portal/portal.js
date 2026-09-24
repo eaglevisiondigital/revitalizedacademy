@@ -568,6 +568,7 @@
     renderTasks(tasks);
     renderContacts(contacts);
     showStatus(portalStatus, "Live data refreshed " + new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" }) + ".", "success");
+    document.dispatchEvent(new CustomEvent("ra:dashboard-loaded"));
   }
 
   function renderMetrics(data) {
