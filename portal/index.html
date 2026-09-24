@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="portal-challenges.css?v=124">
   <link rel="stylesheet" href="portal-executive.css?v=125">
   <link rel="stylesheet" href="portal-community.css?v=126">
+  <link rel="stylesheet" href="portal-refuel.css?v=127">
 </head>
 <body>
   <main class="portal-page">
@@ -1697,6 +1698,31 @@
         </section>
       </div>
 
+
+      <div id="refuel-offer-modal" class="refuel-offer-modal hidden" aria-hidden="true">
+        <div class="refuel-offer-backdrop" data-refuel-offer-close></div>
+        <section class="refuel-offer-dialog" role="dialog" aria-modal="true" aria-labelledby="refuel-offer-title">
+          <button class="refuel-offer-close" type="button" data-refuel-offer-close aria-label="Close ReFuel offer">×</button>
+          <p class="eyebrow">REFUEL OFFER</p>
+          <h2 id="refuel-offer-title">Create ReFuel offer</h2>
+          <form id="refuel-offer-form" class="refuel-offer-form">
+            <label><span>Offer key</span><input id="refuel-offer-key" type="text" maxlength="160" required></label>
+            <label><span>Name</span><input id="refuel-offer-name" type="text" maxlength="240" required></label>
+            <label><span>Description</span><textarea id="refuel-offer-description" rows="4"></textarea></label>
+            <div class="refuel-offer-grid">
+              <label><span>Price</span><input id="refuel-offer-price" type="number" min="0" step="0.01"></label>
+              <label><span>Currency</span><select id="refuel-offer-currency"><option value="USD">USD</option><option value="CAD">CAD</option></select></label>
+              <label><span>Billing</span><select id="refuel-offer-billing"><option value="">Not set</option><option value="one_time">One-time</option><option value="monthly">Monthly</option><option value="weekly">Weekly</option><option value="included">Included</option><option value="custom">Custom</option></select></label>
+              <label><span>Capacity</span><input id="refuel-offer-capacity" type="number" min="1"></label>
+              <label><span>Starts</span><input id="refuel-offer-start" type="datetime-local"></label>
+              <label><span>Ends</span><input id="refuel-offer-end" type="datetime-local"></label>
+            </div>
+            <button class="primary-button" type="submit">Publish ReFuel Offer</button>
+            <p id="refuel-offer-status" class="form-status"></p>
+          </form>
+        </section>
+      </div>
+
       <div class="portal-content">
         <div class="portal-intro">
           <div>
@@ -1719,6 +1745,20 @@
         </section>
 
 
+
+
+        <section class="panel refuel-admin-panel" aria-labelledby="refuel-admin-title">
+          <div class="panel-heading refuel-admin-heading">
+            <div>
+              <p class="section-kicker">REFUEL</p>
+              <h2 id="refuel-admin-title">Interest, invitations &amp; enrollment</h2>
+              <p class="panel-note">ReFuel remains connected to the same ReVitalized contact/member record.</p>
+            </div>
+            <button id="refuel-admin-new-offer" class="secondary-button compact" type="button">New Offer</button>
+          </div>
+          <div id="refuel-admin-metrics" class="refuel-admin-metrics"></div>
+          <div id="refuel-admin-list" class="refuel-admin-list"><div class="empty-state">Loading ReFuel pipeline...</div></div>
+        </section>
 
         <section class="panel community-admin-panel" aria-labelledby="community-admin-title">
           <div class="panel-heading community-admin-heading">
@@ -1940,5 +1980,6 @@
   <script defer src="portal-challenges.js?v=124"></script>
   <script defer src="portal-executive.js?v=125"></script>
   <script defer src="portal-community.js?v=126"></script>
+  <script defer src="portal-refuel.js?v=127"></script>
 </body>
 </html>
