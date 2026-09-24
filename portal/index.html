@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="portal.css?v=103">
   <link rel="stylesheet" href="portal-messaging.css?v=105">
   <link rel="stylesheet" href="portal-journey.css?v=107">
-  <link rel="stylesheet" href="portal-action-center.css?v=107">
+  <link rel="stylesheet" href="portal-action-center.css?v=108">
 </head>
 <body>
   <main class="portal-page">
@@ -583,6 +583,154 @@
 
           <p id="action-center-status" class="action-center-status" aria-live="polite"></p>
 
+
+          <div id="action-center-operational" class="action-center-operational hidden">
+            <div id="action-center-appointment" class="action-center-ops-card hidden">
+              <div class="action-center-ops-head">
+                <div>
+                  <span>APPOINTMENT</span>
+                  <strong id="appointment-ops-title">Confirm appointment</strong>
+                </div>
+                <span id="appointment-ops-state" class="action-center-ops-state">Requested</span>
+              </div>
+              <p id="appointment-request-copy" class="action-center-request-copy"></p>
+              <div class="action-center-grid">
+                <label>
+                  <span>Status</span>
+                  <select id="appointment-status">
+                    <option value="requested">Requested</option>
+                    <option value="scheduled">Scheduled</option>
+                    <option value="completed">Completed</option>
+                    <option value="cancelled">Cancelled</option>
+                    <option value="no_show">No Show</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Assigned coach</span>
+                  <select id="appointment-assignee"></select>
+                </label>
+                <label>
+                  <span>Start</span>
+                  <input id="appointment-start" type="datetime-local">
+                </label>
+                <label>
+                  <span>End</span>
+                  <input id="appointment-end" type="datetime-local">
+                </label>
+                <label>
+                  <span>Time zone</span>
+                  <input id="appointment-time-zone" type="text" maxlength="100" placeholder="Eastern">
+                </label>
+                <label>
+                  <span>Format</span>
+                  <select id="appointment-format">
+                    <option value="">Select format</option>
+                    <option value="Zoom / video">Zoom / video</option>
+                    <option value="Phone">Phone</option>
+                    <option value="In person">In person</option>
+                  </select>
+                </label>
+                <label class="action-center-wide">
+                  <span>Meeting / location link</span>
+                  <input id="appointment-location" type="url" maxlength="1000" placeholder="https://...">
+                </label>
+              </div>
+              <div class="action-center-ops-actions">
+                <button id="appointment-save" class="primary" type="button">Save Appointment</button>
+              </div>
+              <p id="appointment-status-message" class="action-center-status" aria-live="polite"></p>
+            </div>
+
+            <div id="action-center-activation" class="action-center-ops-card hidden">
+              <div class="action-center-ops-head">
+                <div>
+                  <span>ENROLLMENT ACTIVATION</span>
+                  <strong>Payment, agreement and access</strong>
+                </div>
+                <span id="activation-ops-state" class="action-center-ops-state">Pending</span>
+              </div>
+              <div class="action-center-grid">
+                <label>
+                  <span>Program</span>
+                  <select id="activation-program">
+                    <option value="">Select program</option>
+                    <option value="holistic-foundations">Holistic Foundations</option>
+                    <option value="vitality-accelerator-cohort">Vitality Accelerator Cohort</option>
+                    <option value="vitality-accelerator">Vitality Accelerator</option>
+                    <option value="total-wellness-6">6-Month Intensive</option>
+                    <option value="total-wellness-12">12-Month Intensive</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Billing choice</span>
+                  <select id="activation-billing">
+                    <option value="">Select billing</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="monthly">Monthly</option>
+                    <option value="one_time">One-time</option>
+                    <option value="custom">Custom</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Commitment months</span>
+                  <input id="activation-commitment" type="number" min="1" max="36" step="1">
+                </label>
+                <label>
+                  <span>Amount</span>
+                  <input id="activation-amount" type="number" min="0" step="0.01" placeholder="89.00">
+                </label>
+                <label>
+                  <span>Payment status</span>
+                  <select id="activation-payment-status">
+                    <option value="pending">Pending</option>
+                    <option value="authorized">Authorized</option>
+                    <option value="paid">Paid</option>
+                    <option value="failed">Failed</option>
+                    <option value="refunded">Refunded</option>
+                    <option value="cancelled">Cancelled</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Agreement status</span>
+                  <select id="activation-agreement-status">
+                    <option value="not_sent">Not Sent</option>
+                    <option value="sent">Sent</option>
+                    <option value="signed">Signed</option>
+                    <option value="declined">Declined</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Member access</span>
+                  <select id="activation-access-status">
+                    <option value="pending">Pending</option>
+                    <option value="ready">Ready for Access</option>
+                    <option value="active">Active</option>
+                    <option value="suspended">Suspended</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Currency</span>
+                  <select id="activation-currency">
+                    <option value="USD">USD</option>
+                    <option value="CAD">CAD</option>
+                  </select>
+                </label>
+                <label class="action-center-wide">
+                  <span>Payment URL</span>
+                  <input id="activation-payment-url" type="url" maxlength="1000" placeholder="https://...">
+                </label>
+                <label class="action-center-wide">
+                  <span>Agreement URL</span>
+                  <input id="activation-agreement-url" type="url" maxlength="1000" placeholder="https://...">
+                </label>
+              </div>
+              <div class="action-center-ops-actions">
+                <button id="activation-save" class="primary" type="button">Save Enrollment Activation</button>
+              </div>
+              <p id="activation-status-message" class="action-center-status" aria-live="polite"></p>
+            </div>
+          </div>
+
           <div class="action-center-open-list">
             <div class="action-center-open-title">Assigned actions for this step</div>
             <div id="action-center-open-list"></div>
@@ -686,6 +834,6 @@
   <script defer src="portal-messaging.js?v=107"></script>
   <script defer src="portal-journey.js?v=107"></script>
   <script defer src="portal-pipeline.js?v=107"></script>
-  <script defer src="portal-action-center.js?v=107"></script>
+  <script defer src="portal-action-center.js?v=108"></script>
 </body>
 </html>
