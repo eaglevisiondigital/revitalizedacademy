@@ -416,6 +416,163 @@
     await loadDashboard();
   }
 
+
+  function renderMealPlan(plan, meals, groceryRows) {
+    const chip = el("rm-meal-plan-chip");
+    const summary = el("rm-meal-plan-summary");
+    const list = el("rm-upcoming-meals");
+    const grocery = el("rm-grocery-list");
+    list.replaceChildren();
+    grocery.replaceChildren();
+
+    if (!plan) {
+      chip.textContent = "Not assigned";
+      summary.className = "rm112-empty";
+      summary.textContent = "Your ReVitalized nutrition plan will appear here once assigned.";
+      return;
+    }
+
+    chip.textContent = title(plan.status);
+    summary.className = "rm116-plan-summary";
+    summary.replaceChildren();
+    const heading=document.createElement("strong");
+    heading.textContent=plan.title;
+    const meta=document.createElement("span");
+    meta.textContent=[plan.phase_name||"",plan.starts_on?"Started "+formatDate(plan.starts_on):""].filter(Boolean).join(" · ");
+    summary.append(heading,meta);
+
+    meals.forEach((row)=>{
+      const item=document.createElement("div");
+      item.className="rm116-meal-row";
+      const top=document.createElement("div");
+      top.className="rm116-row-top";
+      const name=document.createElement("strong");
+      name.textContent=row.title||"Planned meal";
+      const slot=document.createElement("span");
+      slot.textContent=title(row.meal_slot);
+      top.append(name,slot);
+      item.append(top);
+      const when=document.createElement("small");
+      when.textContent=formatDate(row.scheduled_date)+" · "+title(row.status);
+      item.append(when);
+
+      if(row.status==="planned"){
+        const actions=document.createElement("div");
+        actions.className="rm116-row-actions";
+        const done=document.createElement("button");
+        done.type="button";done.className="primary";done.textContent="Mark Complete";
+        done.addEventListener("click",()=>completeMeal(row));
+        actions.append(done);
+        item.append(actions);
+      }
+      list.append(item);
+    });
+
+    if(groceryRows.length){
+      const h=document.createElement("h3");
+      h.textContent="Grocery List";
+      grocery.append(h);
+      groceryRows.forEach((row)=>{
+        const line=document.createElement("label");
+        line.className="rm116-grocery-item";
+        const box=document.createElement("input");
+        box.type="checkbox";box.checked=Boolean(row.checked);
+        box.addEventListener("change",()=>toggleGrocery(row.item_id,box.checked));
+        const text=document.createElement("span");
+        const qty=row.quantity?String(row.quantity)+(row.unit?" "+row.unit:"")+" ":"";
+        text.textContent=qty+row.item;
+        line.append(box,text);
+        grocery.append(line);
+      });
+    }
+  }
+
+  function renderFitnessPlan(plan, workouts) {
+    const chip=el("rm-fitness-plan-chip");
+    const summary=el("rm-fitness-plan-summary");
+    const list=el("rm-upcoming-workouts");
+    list.replaceChildren();
+
+    if(!plan){
+      chip.textContent="Not assigned";
+      summary.className="rm112-empty";
+      summary.textContent="Your ReVitalized fitness plan will appear here once assigned.";
+      return;
+    }
+
+    chip.textContent=title(plan.status);
+    summary.className="rm116-plan-summary";
+    summary.replaceChildren();
+    const heading=document.createElement("strong");
+    heading.textContent=plan.title;
+    const meta=document.createElement("span");
+    meta.textContent=[title(plan.difficulty),title(plan.environment),plan.weeks?plan.weeks+" weeks":""].filter(Boolean).join(" · ");
+    summary.append(heading,meta);
+
+    workouts.forEach((row)=>{
+      const item=document.createElement("div");
+      item.className="rm116-workout-row";
+      const top=document.createElement("div");
+      top.className="rm116-row-top";
+      const name=document.createElement("strong");
+      name.textContent=row.title;
+      const state=document.createElement("span");
+      state.textContent=title(row.status);
+      top.append(name,state);
+      item.append(top);
+      const metaEl=document.createElement("small");
+      metaEl.textContent=[formatDate(row.scheduled_date),row.duration_minutes?row.duration_minutes+" min":"",title(row.environment)].filter(Boolean).join(" · ");
+      item.append(metaEl);
+
+      if(row.status==="assigned"){
+        const actions=document.createElement("div");
+        actions.className="rm116-row-actions";
+        const done=document.createElement("button");
+        done.type="button";done.className="primary";done.textContent="Complete Workout";
+        done.addEventListener("click",()=>completeWorkout(row));
+        actions.append(done);
+        item.append(actions);
+      }
+      list.append(item);
+    });
+  }
+
+  async function completeMeal(row){
+    const {error}=await client.from("client_meal_plan_items").update({
+      status:"completed",adherence_percent:100,completed_at:new Date().toISOString()
+    }).eq("id",row.meal_item_id);
+    if(error){window.alert("Could not complete meal: "+error.message);return;}
+    await loadDashboard();
+  }
+
+  async function toggleGrocery(itemId,checked){
+    const {error}=await client.from("grocery_list_items").update({checked}).eq("id",itemId);
+    if(error) window.alert("Could not update grocery item: "+error.message);
+  }
+
+  async function completeWorkout(row){
+    if(!currentMember)return;
+    const duration=window.prompt("How many minutes did you spend on this workout?",row.duration_minutes||"");
+    if(duration===null)return;
+    const minutes=Number(duration);
+    if(!Number.isFinite(minutes)||minutes<=0){window.alert("Enter a valid number of minutes.");return;}
+
+    const effort=window.prompt("Optional: effort from 1-10?","");
+    const effortValue=effort?Number(effort):null;
+    const {data:{user}}=await client.auth.getUser();
+    const {error}=await client.from("workout_completions").insert({
+      assignment_id:row.workout_assignment_id,
+      contact_id:currentMember.contact_id,
+      completed_at:new Date().toISOString(),
+      duration_minutes:Math.round(minutes),
+      effort_rating:Number.isFinite(effortValue)?Math.max(1,Math.min(10,Math.round(effortValue))):null,
+      source:"member",
+      created_by:user?.id||null
+    });
+    if(error){window.alert("Could not complete workout: "+error.message);return;}
+    await loadDashboard();
+  }
+
   async function loadDashboard() {
     const [
       dashboardResult,
@@ -429,7 +586,12 @@
       coachResult,
       progressResult,
       metricsResult,
-      templateResult
+      templateResult,
+      mealPlanResult,
+      mealsResult,
+      fitnessPlanResult,
+      workoutsResult,
+      groceryResult
     ] = await Promise.all([
       client.from("my_member_dashboard").select("*").maybeSingle(),
       client.from("my_member_entitlements").select("*").order("label"),
@@ -442,10 +604,15 @@
       client.from("my_coach").select("*").eq("role","primary").maybeSingle(),
       client.from("my_recent_progress").select("*").limit(8),
       client.from("progress_metric_catalog").select("*").eq("active",true).eq("member_trackable",true).order("display_order"),
-      client.from("checkin_templates").select("*").eq("template_key","weekly-revitalized-checkin").eq("active",true).maybeSingle()
+      client.from("checkin_templates").select("*").eq("template_key","weekly-revitalized-checkin").eq("active",true).maybeSingle(),
+      client.from("my_active_meal_plan").select("*").maybeSingle(),
+      client.from("my_upcoming_meals").select("*"),
+      client.from("my_active_fitness_plan").select("*").maybeSingle(),
+      client.from("my_upcoming_workouts").select("*"),
+      client.from("my_grocery_list").select("*")
     ]);
 
-    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult].find((r) => r.error);
+    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult].find((r) => r.error);
     if (failed?.error) throw failed.error;
 
     const member = dashboardResult.data;
