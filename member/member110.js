@@ -112,6 +112,134 @@
 
   let currentMember = null;
 
+  let activeConversationId = null;
+
+  function renderConversations(rows) {
+    const list=el("rm-conversations");
+    list.replaceChildren();
+    const unread=rows.reduce((sum,row)=>sum+Number(row.unread_count||0),0);
+    el("rm-message-unread").textContent=unread+" unread";
+
+    if(!rows.length){
+      list.innerHTML='<div class="rm112-empty">Your private coaching conversation will appear here when your member account and primary coach are connected.</div>';
+      return;
+    }
+
+    rows.forEach((row)=>{
+      const item=document.createElement("div");
+      item.className="rm120-conversation";
+      const top=document.createElement("div");
+      top.className="rm120-row";
+      const heading=document.createElement("strong");
+      heading.textContent=row.title||"ReVitalized Conversation";
+      top.append(heading);
+      if(Number(row.unread_count||0)>0){
+        const badge=document.createElement("span");
+        badge.className="rm120-unread";
+        badge.textContent=String(row.unread_count);
+        top.append(badge);
+      }
+      item.append(top);
+      if(row.last_message_preview){
+        const p=document.createElement("p");
+        p.textContent=row.last_message_preview;
+        item.append(p);
+      }
+      const meta=document.createElement("small");
+      meta.textContent=row.last_message_at?formatDate(row.last_message_at,true):"Start a conversation";
+      item.append(meta);
+      item.addEventListener("click",()=>openConversation(row));
+      list.append(item);
+    });
+  }
+
+  function renderNotifications(rows){
+    const list=el("rm-notifications");
+    list.replaceChildren();
+    const visible=rows.filter((row)=>row.status!=="dismissed");
+
+    if(!visible.length){
+      list.innerHTML='<div class="rm112-empty">No new notifications right now.</div>';
+      return;
+    }
+
+    visible.slice(0,10).forEach((row)=>{
+      const item=document.createElement("div");
+      item.className="rm120-notification";
+      const top=document.createElement("div");
+      top.className="rm120-row";
+      const heading=document.createElement("strong");
+      heading.textContent=row.title;
+      const state=document.createElement("span");
+      state.className="rm112-chip";
+      state.textContent=title(row.status);
+      top.append(heading,state);
+      item.append(top);
+      if(row.body){
+        const p=document.createElement("p");
+        p.textContent=row.body;
+        item.append(p);
+      }
+      const meta=document.createElement("small");
+      meta.textContent=formatDate(row.created_at,true);
+      item.append(meta);
+      if(row.status==="unread"){
+        item.addEventListener("click",async()=>{
+          await client.from("member_notifications").update({status:"read",read_at:new Date().toISOString()}).eq("id",row.id);
+          await loadDashboard();
+        });
+      }
+      list.append(item);
+    });
+  }
+
+  async function openConversation(row){
+    activeConversationId=row.conversation_id;
+    el("rm-message-title").textContent=row.title||"ReVitalized Conversation";
+    el("rm-message-thread").innerHTML='<div class="rm112-empty">Loading messages...</div>';
+    el("rm-message-modal").classList.remove("hidden");
+    el("rm-message-modal").setAttribute("aria-hidden","false");
+
+    const {data:{user}}=await client.auth.getUser();
+    const {data,error}=await client.from("member_messages")
+      .select("id,sender_user_id,body,message_type,created_at")
+      .eq("conversation_id",row.conversation_id)
+      .is("deleted_at",null)
+      .order("created_at");
+
+    if(error){
+      el("rm-message-thread").innerHTML='<div class="rm112-empty">Messages could not be loaded.</div>';
+      return;
+    }
+
+    const thread=el("rm-message-thread");
+    thread.replaceChildren();
+    (data||[]).forEach((message)=>{
+      const bubble=document.createElement("div");
+      bubble.className="rm120-bubble"+(message.sender_user_id===user?.id?" mine":"");
+      const p=document.createElement("p");
+      p.textContent=message.body;
+      const time=document.createElement("small");
+      time.textContent=formatDate(message.created_at,true);
+      bubble.append(p,time);
+      thread.append(bubble);
+    });
+    thread.scrollTop=thread.scrollHeight;
+
+    await client.from("member_conversation_participants")
+      .update({last_read_at:new Date().toISOString()})
+      .eq("conversation_id",row.conversation_id)
+      .eq("user_id",user?.id);
+  }
+
+  function closeConversation(){
+    activeConversationId=null;
+    el("rm-message-modal").classList.add("hidden");
+    el("rm-message-modal").setAttribute("aria-hidden","true");
+    el("rm-message-body").value="";
+  }
+
+
   let currentCourses = [];
   let currentCourseLessons = [];
 
@@ -828,7 +956,9 @@
       workoutsResult,
       groceryResult,
       coursesResult,
-      resourcesResult
+      resourcesResult,
+      conversationsResult,
+      notificationsResult
     ] = await Promise.all([
       client.from("my_member_dashboard").select("*").maybeSingle(),
       client.from("my_member_entitlements").select("*").order("label"),
@@ -848,10 +978,12 @@
       client.from("my_upcoming_workouts").select("*"),
       client.from("my_grocery_list").select("*"),
       client.from("my_courses").select("*"),
-      client.from("my_resources").select("*")
+      client.from("my_resources").select("*"),
+      client.from("my_conversations").select("*"),
+      client.from("my_notifications").select("*").limit(20)
     ]);
 
-    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult].find((r) => r.error);
+    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult].find((r) => r.error);
     if (failed?.error) throw failed.error;
 
     const member = dashboardResult.data;
@@ -954,9 +1086,42 @@
     el("rm-password").value = "";
   }
 
+
+  el("rm-message-form").addEventListener("submit",async(event)=>{
+    event.preventDefault();
+    if(!activeConversationId||!currentMember)return;
+    const body=el("rm-message-body").value.trim();
+    if(!body)return;
+
+    const status=el("rm-message-status");
+    showStatus(status,"Sending...");
+    const {data:{user}}=await client.auth.getUser();
+    const {error}=await client.from("member_messages").insert({
+      conversation_id:activeConversationId,
+      sender_user_id:user.id,
+      sender_contact_id:currentMember.contact_id,
+      body,
+      message_type:"text"
+    });
+
+    if(error){
+      showStatus(status,error.message,"error");
+      return;
+    }
+
+    el("rm-message-body").value="";
+    showStatus(status,"Sent.","success");
+    const conversation={conversation_id:activeConversationId,title:el("rm-message-title").textContent};
+    await openConversation(conversation);
+    await loadDashboard();
+  });
+
+  document.querySelectorAll("[data-message-close]").forEach((node)=>node.addEventListener("click",closeConversation));
+
   document.querySelectorAll("[data-course-close]").forEach((node) => node.addEventListener("click", closeCourse));
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && !el("rm-course-modal").classList.contains("hidden")) closeCourse();
+    if (event.key === "Escape" && !el("rm-message-modal").classList.contains("hidden")) closeConversation();
   });
 
   el("rm-signout").addEventListener("click", signOut);
