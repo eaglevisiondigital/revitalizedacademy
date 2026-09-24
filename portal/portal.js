@@ -353,9 +353,9 @@
       return;
     }
 
+    initialFlowType = "";
     window.history.replaceState({}, document.title, window.location.pathname);
-    showStatus(passwordStatus, "Password saved.", "success");
-    initialHash.delete("type");
+    showStatus(passwordStatus, "Password saved. Opening your dashboard...", "success");
     await resolveStaff(data.user ? { user: data.user } : (await authClient.auth.getSession()).data.session);
   });
 
