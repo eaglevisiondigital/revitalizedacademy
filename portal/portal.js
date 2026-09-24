@@ -260,16 +260,28 @@
     }
 
     rows.forEach((row) => {
+      const automatic = row.source === "automatic" || row.source === "system";
       const chip = document.createElement("span");
-      chip.className = "tag-chip";
+      chip.className = "tag-chip" + (automatic ? " auto" : "");
+
       const label = document.createElement("span");
       label.textContent = row.tag;
-      const remove = document.createElement("button");
-      remove.type = "button";
-      remove.setAttribute("aria-label", "Remove " + row.tag);
-      remove.textContent = "×";
-      remove.addEventListener("click", () => removeContactTag(row.id, row.tag));
-      chip.append(label, remove);
+      chip.append(label);
+
+      if (automatic) {
+        const mark = document.createElement("small");
+        mark.className = "tag-auto-mark";
+        mark.textContent = "AUTO";
+        chip.append(mark);
+      } else {
+        const remove = document.createElement("button");
+        remove.type = "button";
+        remove.setAttribute("aria-label", "Remove " + row.tag);
+        remove.textContent = "×";
+        remove.addEventListener("click", () => removeContactTag(row.id, row.tag));
+        chip.append(remove);
+      }
+
       list.append(chip);
     });
   }
@@ -334,7 +346,7 @@
       authClient.from("refuel_interest").select("status,created_at").eq("contact_id", contactId).maybeSingle(),
       authClient.from("contact_notes").select("id,note,created_at,author_user_id").eq("contact_id", contactId).order("created_at", { ascending: false }).limit(30),
       authClient.from("follow_up_tasks").select("id,title,due_at,status,priority,assigned_to,created_by,created_at,completed_at").eq("contact_id", contactId).order("created_at", { ascending: false }).limit(30),
-      authClient.from("contact_tags").select("id,tag,created_at").eq("contact_id", contactId).order("tag"),
+      authClient.from("contact_tags").select("id,tag,source,rule_key,created_at").eq("contact_id", contactId).order("tag"),
       authClient.from("contact_activity").select("id,activity_type,title,detail,actor_user_id,metadata,created_at").eq("contact_id", contactId).order("created_at", { ascending: false }).limit(40)
     ]);
 
