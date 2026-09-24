@@ -116,6 +116,24 @@
     renderAction(data);
     renderSteps(data.steps || [], data.current_step_key);
 
+    const memberSection = document.getElementById("cj-member-section");
+    const memberAction = document.getElementById("cj-member-action");
+    if (data.member_access?.activation_url) {
+      memberSection.classList.remove("hidden");
+      document.getElementById("cj-member-title").textContent = "Your ReVitalized member account is ready.";
+      document.getElementById("cj-member-copy").textContent = "Create your secure login to access your Member Dashboard and continue from one place.";
+      memberAction.textContent = "Activate Your Member Account";
+      memberAction.href = data.member_access.activation_url;
+    } else if (data.member_access?.dashboard_url) {
+      memberSection.classList.remove("hidden");
+      document.getElementById("cj-member-title").textContent = "Your Member Dashboard is active.";
+      document.getElementById("cj-member-copy").textContent = "Your ReVitalized membership, journey and program access are now connected to your member login.";
+      memberAction.textContent = "Open Member Dashboard";
+      memberAction.href = data.member_access.dashboard_url;
+    } else {
+      memberSection.classList.add("hidden");
+    }
+
     const reportSection = document.getElementById("cj-report-section");
     if (data.report?.available && data.report.signed_url) {
       reportSection.classList.remove("hidden");
