@@ -95,3 +95,7 @@
 .rm126-comments{display:grid;gap:7px;margin:12px 0}.rm126-comment{padding:9px 10px;border:1px solid #e7ece9;border-radius:9px;background:#fbfcfb}.rm126-comment strong{font-size:10px;color:#30463a}.rm126-comment p{margin:4px 0 0;color:#697a70;font-size:9px;line-height:1.45;white-space:pre-wrap}.rm126-comment small{display:block;margin-top:3px;color:#85918a;font-size:8px}
 .rm126-comment-form{padding-top:11px;border-top:1px solid #edf1ee}
 @media(max-width:650px){.rm126-modal{padding:7px}.rm126-dialog{padding:22px 13px}}
+
+.rm127-refuel-card{margin-top:13px;border-color:#d9e4dc;background:linear-gradient(180deg,#fffdf8,#fff)}
+.rm127-refuel-content{margin-top:12px;padding:12px 13px;border:1px solid #e7dfcf;border-radius:11px;background:#fffaf1}
+.rm127-refuel-content strong{display:block;font-size:13px;color:#30463a}.rm127-refuel-content p{margin:5px 0 0;color:#6e725f;font-size:10px;line-height:1.5}.rm127-refuel-content small{display:block;margin-top:5px;color:#857c68;font-size:9px}
