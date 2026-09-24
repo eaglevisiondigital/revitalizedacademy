@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="portal-work-desk.css?v=110">
   <link rel="stylesheet" href="portal-client-foundation.css?v=113">
   <link rel="stylesheet" href="portal-coaching.css?v=115">
+  <link rel="stylesheet" href="portal-wellness.css?v=117">
 </head>
 <body>
   <main class="portal-page">
@@ -274,6 +275,31 @@
                 <button id="client-schedule-session" class="secondary-button compact-action" type="button">Schedule Coaching Session</button>
               </div>
               <p id="client-coaching-status" class="form-status" aria-live="polite"></p>
+            </section>
+
+
+            <section id="client-wellness-section" class="contact-section client-wellness-section hidden">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">NUTRITION &amp; FITNESS</p>
+                  <h3>Wellness plan workspace</h3>
+                </div>
+                <span id="client-wellness-chip" class="status-badge">Not Assigned</span>
+              </div>
+
+              <div class="client-wellness-summary-grid">
+                <div><span>Meal plan</span><strong id="client-meal-plan-name">Not assigned</strong></div>
+                <div><span>Fitness plan</span><strong id="client-fitness-plan-name">Not assigned</strong></div>
+                <div><span>Upcoming meals</span><strong id="client-upcoming-meals">0</strong></div>
+                <div><span>Upcoming workouts</span><strong id="client-upcoming-workouts">0</strong></div>
+                <div><span>7-day nutrition adherence</span><strong id="client-nutrition-adherence">No data</strong></div>
+                <div><span>Grocery list</span><strong id="client-grocery-status">Not generated</strong></div>
+              </div>
+
+              <div class="client-wellness-actions">
+                <button id="client-manage-wellness" class="primary-button compact-action" type="button">Manage Nutrition &amp; Fitness</button>
+              </div>
+              <p id="client-wellness-status" class="form-status" aria-live="polite"></p>
             </section>
 
             <section class="contact-section">
@@ -1082,6 +1108,78 @@
         </section>
       </div>
 
+
+      <div id="wellness-modal" class="wellness-modal hidden" aria-hidden="true">
+        <div class="wellness-modal-backdrop" data-wellness-close></div>
+        <section class="wellness-dialog" role="dialog" aria-modal="true" aria-labelledby="wellness-title">
+          <button class="wellness-close" type="button" data-wellness-close aria-label="Close wellness manager">×</button>
+          <p class="eyebrow">NUTRITION &amp; FITNESS</p>
+          <h2 id="wellness-title">Client Wellness Plans</h2>
+          <p class="wellness-intro">Assign only published ReVitalized methodology, meal-plan templates and fitness programs. Draft content stays unavailable to clients.</p>
+
+          <div class="wellness-two-col">
+            <section class="wellness-block">
+              <div class="wellness-block-head">
+                <div><span>NUTRITION</span><strong>Meal plan assignment</strong></div>
+                <span id="wellness-nutrition-methodology-state" class="wellness-state">Draft</span>
+              </div>
+
+              <form id="wellness-meal-form" class="wellness-form">
+                <label><span>Published meal-plan template</span><select id="wellness-meal-template"></select></label>
+                <div class="wellness-form-grid">
+                  <label><span>Start date</span><input id="wellness-meal-start" type="date"></label>
+                  <label><span>Custom title</span><input id="wellness-meal-title" type="text" maxlength="220" placeholder="Optional"></label>
+                </div>
+                <label><span>Coach notes</span><textarea id="wellness-meal-notes" rows="3" maxlength="3000"></textarea></label>
+                <div class="wellness-inline-actions">
+                  <button class="primary-button compact-action" type="submit">Assign Meal Plan</button>
+                  <button id="wellness-grocery-generate" class="secondary-button compact-action" type="button">Generate Grocery List</button>
+                </div>
+                <p id="wellness-meal-status" class="form-status" aria-live="polite"></p>
+              </form>
+
+              <div id="wellness-active-meal" class="wellness-current"></div>
+            </section>
+
+            <section class="wellness-block">
+              <div class="wellness-block-head">
+                <div><span>FITNESS</span><strong>Fitness program assignment</strong></div>
+                <span id="wellness-fitness-methodology-state" class="wellness-state">Draft</span>
+              </div>
+
+              <form id="wellness-fitness-form" class="wellness-form">
+                <label><span>Published fitness program</span><select id="wellness-fitness-program"></select></label>
+                <div class="wellness-form-grid">
+                  <label><span>Start date</span><input id="wellness-fitness-start" type="date"></label>
+                  <label><span>Custom title</span><input id="wellness-fitness-title" type="text" maxlength="220" placeholder="Optional"></label>
+                </div>
+                <label><span>Coach notes</span><textarea id="wellness-fitness-notes" rows="3" maxlength="3000"></textarea></label>
+                <button class="primary-button compact-action" type="submit">Assign Fitness Program</button>
+                <p id="wellness-fitness-status" class="form-status" aria-live="polite"></p>
+              </form>
+
+              <div id="wellness-active-fitness" class="wellness-current"></div>
+            </section>
+          </div>
+
+          <div class="wellness-two-col">
+            <section class="wellness-block">
+              <div class="wellness-block-head">
+                <div><span>THIS WEEK</span><strong>Upcoming meals</strong></div>
+              </div>
+              <div id="wellness-meal-items" class="wellness-list"></div>
+            </section>
+
+            <section class="wellness-block">
+              <div class="wellness-block-head">
+                <div><span>THIS WEEK</span><strong>Upcoming workouts</strong></div>
+              </div>
+              <div id="wellness-workout-items" class="wellness-list"></div>
+            </section>
+          </div>
+        </section>
+      </div>
+
       <div class="portal-content">
         <div class="portal-intro">
           <div>
@@ -1234,5 +1332,6 @@
   <script defer src="portal-work-desk.js?v=115"></script>
   <script defer src="portal-client-foundation.js?v=113"></script>
   <script defer src="portal-coaching.js?v=115"></script>
+  <script defer src="portal-wellness.js?v=117"></script>
 </body>
 </html>
