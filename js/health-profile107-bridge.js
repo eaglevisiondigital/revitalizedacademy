@@ -74,7 +74,7 @@
 
     window.RA_HEALTH_PROFILE_JOURNEY = {
       token,
-      journeyUrl: "journey/?token=" + encodeURIComponent(token),
+      journeyUrl: "/journey/?token=" + encodeURIComponent(token),
       savedAnswers: saved,
       startIndex,
       completed: Boolean(profile.completed),
