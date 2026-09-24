@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="portal-learning.css?v=119">
   <link rel="stylesheet" href="portal-member-messaging.css?v=121">
   <link rel="stylesheet" href="portal-companion.css?v=122">
+  <link rel="stylesheet" href="portal-health-integrations.css?v=123">
 </head>
 <body>
   <main class="portal-page">
@@ -347,6 +348,23 @@
                 <button id="client-open-conversation" class="primary-button compact-action" type="button">Open Conversation</button>
               </div>
               <p id="client-message-status" class="form-status" aria-live="polite"></p>
+            </section>
+
+
+            <section id="client-health-integrations-section" class="contact-section client-health-integrations-section hidden">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">HEALTH INTEGRATIONS</p>
+                  <h3>Wearables &amp; synced health data</h3>
+                </div>
+                <span id="client-health-integrations-chip" class="status-badge">0 Connected</span>
+              </div>
+              <div class="client-health-integrations-grid">
+                <div><span>Connected providers</span><strong id="client-connected-providers">0</strong></div>
+                <div><span>Needs attention</span><strong id="client-health-attention">0</strong></div>
+                <div><span>Last successful sync</span><strong id="client-health-last-sync">None</strong></div>
+                <div><span>Observations · 24h</span><strong id="client-health-observations">0</strong></div>
+              </div>
             </section>
 
             <section class="contact-section">
@@ -1775,5 +1793,6 @@
   <script defer src="portal-learning.js?v=119"></script>
   <script defer src="portal-member-messaging.js?v=121"></script>
   <script defer src="portal-companion.js?v=122"></script>
+  <script defer src="portal-health-integrations.js?v=123"></script>
 </body>
 </html>
