@@ -7,7 +7,7 @@
 
   const initialHash = new URLSearchParams(window.location.hash.replace(/^#/, ""));
   const initialQuery = new URLSearchParams(window.location.search);
-  const initialFlowType = initialHash.get("type") || initialQuery.get("type") || "";
+  let initialFlowType = initialHash.get("type") || initialQuery.get("type") || "";
   const authClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
     auth: {
       persistSession: true,
