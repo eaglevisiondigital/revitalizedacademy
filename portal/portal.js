@@ -138,7 +138,10 @@
   }
 
   async function loadStaffDirectory() {
-    const { data, error } = await authClient.rpc("list_staff_directory");
+    const { data, error } = await authClient
+      .from("staff_directory")
+      .select("user_id,display_name,role")
+      .order("display_name");
     if (error) {
       staffDirectory = [];
       return;
