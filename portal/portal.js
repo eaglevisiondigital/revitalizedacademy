@@ -32,7 +32,7 @@
     ["webinar_leads", "Webinar leads"],
     ["applicants", "Applicants"],
     ["clients", "Clients"],
-    ["needs_follow_up", "Need follow-up", true],
+    ["needs_attention", "Needs attention", true],
     ["consultations_scheduled", "Consultations"],
     ["followups_due_24h", "Due in 24 hours", true],
     ["completed_assessments", "Assessments complete"],
@@ -160,10 +160,18 @@
       return;
     }
 
-    renderMetrics(metricsResult.data || {});
-    renderFollowups(followupResult.data || []);
-    renderTasks(tasksResult.data || []);
-    renderContacts(contactsResult.data || []);
+    const followups = followupResult.data || [];
+    const tasks = tasksResult.data || [];
+    const contacts = contactsResult.data || [];
+    const metrics = {
+      ...(metricsResult.data || {}),
+      needs_attention: followups.length
+    };
+
+    renderMetrics(metrics);
+    renderFollowups(followups);
+    renderTasks(tasks);
+    renderContacts(contacts);
     showStatus(portalStatus, "Live data refreshed " + new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" }) + ".", "success");
   }
 
@@ -173,9 +181,10 @@
 
     metricDefinitions.forEach(([key, label, priority]) => {
       const card = document.createElement("article");
-      card.className = "metric-card" + (priority ? " priority" : "");
+      const numericValue = Number(data[key] || 0);
+      card.className = "metric-card" + (priority && numericValue > 0 ? " priority" : "");
       const value = document.createElement("strong");
-      value.textContent = Number(data[key] || 0).toLocaleString();
+      value.textContent = numericValue.toLocaleString();
       const name = document.createElement("span");
       name.textContent = label;
       card.append(value, name);
