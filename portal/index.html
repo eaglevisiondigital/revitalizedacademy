@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="portal-wellness.css?v=117">
   <link rel="stylesheet" href="portal-overrides.css?v=118">
   <link rel="stylesheet" href="portal-learning.css?v=119">
+  <link rel="stylesheet" href="portal-member-messaging.css?v=120">
 </head>
 <body>
   <main class="portal-page">
@@ -325,6 +326,26 @@
                 <button id="client-manage-learning" class="primary-button compact-action" type="button">Manage Learning &amp; Resources</button>
               </div>
               <p id="client-learning-status" class="form-status" aria-live="polite"></p>
+            </section>
+
+
+            <section id="client-messaging-section" class="contact-section client-messaging-section hidden">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">PRIVATE MESSAGING</p>
+                  <h3>Client conversation</h3>
+                </div>
+                <span id="client-message-chip" class="status-badge">0 Unread</span>
+              </div>
+
+              <div id="client-message-preview" class="client-message-preview">
+                <div class="drawer-empty">No private member conversation yet.</div>
+              </div>
+
+              <div class="client-message-actions">
+                <button id="client-open-conversation" class="primary-button compact-action" type="button">Open Conversation</button>
+              </div>
+              <p id="client-message-status" class="form-status" aria-live="polite"></p>
             </section>
 
             <section class="contact-section">
@@ -1434,6 +1455,25 @@
         </section>
       </div>
 
+
+      <div id="staff-message-modal" class="staff-message-modal hidden" aria-hidden="true">
+        <div class="staff-message-modal-backdrop" data-staff-message-close></div>
+        <section class="staff-message-dialog" role="dialog" aria-modal="true" aria-labelledby="staff-message-title">
+          <button class="staff-message-close" type="button" data-staff-message-close aria-label="Close conversation">×</button>
+          <p class="eyebrow">PRIVATE MEMBER MESSAGING</p>
+          <h2 id="staff-message-title">Conversation</h2>
+          <div id="staff-message-meta" class="staff-message-meta"></div>
+          <div id="staff-message-thread" class="staff-message-thread"></div>
+          <form id="staff-message-form" class="staff-message-compose">
+            <textarea id="staff-message-body" rows="3" maxlength="8000" placeholder="Write a private message to this member..." required></textarea>
+            <div class="staff-message-compose-actions">
+              <button class="primary-button" type="submit">Send Message</button>
+            </div>
+            <p id="staff-message-status" class="form-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
       <div class="portal-content">
         <div class="portal-intro">
           <div>
@@ -1480,6 +1520,25 @@
         </div>
 
 
+
+
+        <section class="panel staff-inbox-panel" aria-labelledby="staff-inbox-title">
+          <div class="panel-heading staff-inbox-heading">
+            <div>
+              <p class="section-kicker">COACH INBOX</p>
+              <h2 id="staff-inbox-title">Member conversations</h2>
+              <p class="panel-note">Private in-platform messages from active ReVitalized members.</p>
+            </div>
+            <div class="staff-inbox-tabs">
+              <button id="inbox-tab-mine" class="work-tab active" type="button">My Inbox</button>
+              <button id="inbox-tab-team" class="work-tab" type="button">Team Inbox</button>
+            </div>
+          </div>
+          <div id="staff-inbox-summary" class="staff-inbox-summary"></div>
+          <div id="staff-inbox-list" class="staff-inbox-list">
+            <div class="empty-state">Loading member conversations...</div>
+          </div>
+        </section>
 
         <section class="panel work-desk-panel" aria-labelledby="work-desk-title">
           <div class="panel-heading work-desk-heading">
@@ -1589,5 +1648,6 @@
   <script defer src="portal-wellness.js?v=117"></script>
   <script defer src="portal-overrides.js?v=118"></script>
   <script defer src="portal-learning.js?v=119"></script>
+  <script defer src="portal-member-messaging.js?v=120"></script>
 </body>
 </html>
