@@ -112,6 +112,205 @@
 
   let currentMember = null;
 
+  let communitySpaces=[];
+  let communityFeed=[];
+  let activeCommunityPost=null;
+
+  function renderCommunity(spaces,feed){
+    communitySpaces=spaces;
+    communityFeed=feed;
+
+    const chips=el("rm-community-spaces");
+    chips.replaceChildren();
+    spaces.forEach((space)=>{
+      const chip=document.createElement("span");
+      chip.className="rm126-space-chip";
+      chip.textContent=space.name;
+      chips.append(chip);
+    });
+
+    el("rm-community-new-post").disabled=!spaces.some((space)=>space.membership_status==="active");
+
+    const list=el("rm-community-feed");
+    list.replaceChildren();
+    if(!feed.length){
+      list.innerHTML='<div class="rm112-empty">Your ReVitalized community feed is ready. Approved announcements, encouragement, wins and family/community posts will appear here.</div>';
+      return;
+    }
+
+    feed.forEach((row)=>{
+      const card=document.createElement("div");
+      card.className="rm126-post"+(row.pinned?" pinned":"");
+
+      const top=document.createElement("div");
+      top.className="rm126-post-top";
+      const author=document.createElement("strong");
+      author.textContent=row.author_name;
+      const space=document.createElement("span");
+      space.textContent=(row.pinned?"PINNED · ":"")+row.space_name;
+      top.append(author,space);
+      card.append(top);
+
+      if(row.title){
+        const h=document.createElement("h3");
+        h.textContent=row.title;
+        card.append(h);
+      }
+
+      const p=document.createElement("p");
+      p.textContent=row.body;
+      card.append(p);
+
+      const meta=document.createElement("small");
+      meta.textContent=[
+        title(row.post_type),
+        formatDate(row.created_at,true),
+        row.reaction_count+" reaction"+(Number(row.reaction_count)===1?"":"s"),
+        row.comment_count+" comment"+(Number(row.comment_count)===1?"":"s")
+      ].join(" · ");
+      card.append(meta);
+
+      const actions=document.createElement("div");
+      actions.className="rm126-post-actions";
+      const like=document.createElement("button");
+      like.type="button";like.textContent="Encourage";
+      like.addEventListener("click",()=>reactToPost(row.post_id));
+      const discuss=document.createElement("button");
+      discuss.type="button";discuss.textContent="View Discussion";
+      discuss.addEventListener("click",()=>openCommunityThread(row));
+      actions.append(like,discuss);
+      card.append(actions);
+      list.append(card);
+    });
+  }
+
+  function closeCommunityPost(){
+    el("rm-community-post-modal").classList.add("hidden");
+    el("rm-community-post-modal").setAttribute("aria-hidden","true");
+  }
+
+  function openCommunityPost(){
+    const select=el("rm-community-space-select");
+    select.replaceChildren();
+    communitySpaces.filter((s)=>s.membership_status==="active").forEach((space)=>{
+      const option=document.createElement("option");
+      option.value=space.space_id;
+      option.textContent=space.name+" · "+title(space.space_type);
+      select.append(option);
+    });
+    el("rm-community-post-modal").classList.remove("hidden");
+    el("rm-community-post-modal").setAttribute("aria-hidden","false");
+    showStatus(el("rm-community-post-status"),"");
+  }
+
+  async function publishCommunityPost(event){
+    event.preventDefault();
+    if(!currentMember)return;
+    const body=el("rm-community-post-body").value.trim();
+    if(!body)return;
+    const {data:{user}}=await client.auth.getUser();
+    const status=el("rm-community-post-status");
+    showStatus(status,"Publishing...");
+
+    const {error}=await client.from("community_posts").insert({
+      space_id:el("rm-community-space-select").value,
+      author_user_id:user.id,
+      author_contact_id:currentMember.contact_id,
+      post_type:el("rm-community-post-type").value,
+      title:el("rm-community-post-heading").value.trim()||null,
+      body,
+      status:"published"
+    });
+
+    if(error){showStatus(status,error.message,"error");return;}
+    event.currentTarget.reset();
+    showStatus(status,"Post published.","success");
+    await loadDashboard();
+    window.setTimeout(closeCommunityPost,450);
+  }
+
+  async function reactToPost(postId){
+    const {data:{user}}=await client.auth.getUser();
+    const {error}=await client.from("community_reactions").upsert({
+      post_id:postId,user_id:user.id,reaction:"encourage"
+    },{onConflict:"post_id,user_id,reaction"});
+    if(error){window.alert("Could not add reaction: "+error.message);return;}
+    await loadDashboard();
+  }
+
+  function closeCommunityThread(){
+    activeCommunityPost=null;
+    el("rm-community-thread-modal").classList.add("hidden");
+    el("rm-community-thread-modal").setAttribute("aria-hidden","true");
+    el("rm-community-comment-body").value="";
+  }
+
+  async function openCommunityThread(row){
+    activeCommunityPost=row;
+    el("rm-community-thread-title").textContent=row.title||row.space_name;
+    const post=el("rm-community-thread-post");
+    post.replaceChildren();
+    const card=document.createElement("div");
+    card.className="rm126-post";
+    const author=document.createElement("strong");author.textContent=row.author_name;
+    const p=document.createElement("p");p.textContent=row.body;
+    const small=document.createElement("small");small.textContent=formatDate(row.created_at,true)+" · "+row.space_name;
+    card.append(author,p,small);post.append(card);
+
+    el("rm-community-comments").innerHTML='<div class="rm112-empty">Loading comments...</div>';
+    el("rm-community-thread-modal").classList.remove("hidden");
+    el("rm-community-thread-modal").setAttribute("aria-hidden","false");
+
+    const {data,error}=await client.from("community_comments")
+      .select("id,author_user_id,author_contact_id,body,created_at")
+      .eq("post_id",row.post_id).eq("status","published").order("created_at");
+    if(error){el("rm-community-comments").innerHTML='<div class="rm112-empty">Comments could not be loaded.</div>';return;}
+
+    const contacts=[...new Set((data||[]).map((c)=>c.author_contact_id).filter(Boolean))];
+    const authorMap=new Map();
+    if(contacts.length){
+      const {data:people}=await client.from("contacts").select("id,first_name,last_name").in("id",contacts);
+      for(const person of people||[])authorMap.set(person.id,[person.first_name,person.last_name].filter(Boolean).join(" "));
+    }
+
+    const list=el("rm-community-comments");
+    list.replaceChildren();
+    if(!(data||[]).length){list.innerHTML='<div class="rm112-empty">No comments yet.</div>';return;}
+
+    for(const comment of data||[]){
+      const item=document.createElement("div");
+      item.className="rm126-comment";
+      const strong=document.createElement("strong");
+      strong.textContent=authorMap.get(comment.author_contact_id)||"ReVitalized Team";
+      const p2=document.createElement("p");p2.textContent=comment.body;
+      const time=document.createElement("small");time.textContent=formatDate(comment.created_at,true);
+      item.append(strong,p2,time);list.append(item);
+    }
+  }
+
+  async function addCommunityComment(event){
+    event.preventDefault();
+    if(!activeCommunityPost||!currentMember)return;
+    const body=el("rm-community-comment-body").value.trim();
+    if(!body)return;
+    const {data:{user}}=await client.auth.getUser();
+    const status=el("rm-community-comment-status");
+    showStatus(status,"Posting...");
+    const {error}=await client.from("community_comments").insert({
+      post_id:activeCommunityPost.post_id,
+      author_user_id:user.id,
+      author_contact_id:currentMember.contact_id,
+      body,status:"published"
+    });
+    if(error){showStatus(status,error.message,"error");return;}
+    el("rm-community-comment-body").value="";
+    showStatus(status,"Comment added.","success");
+    const row=activeCommunityPost;
+    await loadDashboard();
+    await openCommunityThread(row);
+  }
+
+
   let activeConversationId = null;
 
 
@@ -1139,7 +1338,9 @@
       notificationsResult,
       notificationPrefsResult,
       healthConnectionsResult,
-      challengesResult
+      challengesResult,
+      communitySpacesResult,
+      communityFeedResult
     ] = await Promise.all([
       client.from("my_member_dashboard").select("*").maybeSingle(),
       client.from("my_member_entitlements").select("*").order("label"),
@@ -1164,10 +1365,12 @@
       client.from("my_notifications").select("*").limit(20),
       client.from("notification_preferences").select("*").maybeSingle(),
       client.from("my_health_connections").select("*").order("provider_name"),
-      client.from("my_challenges").select("*")
+      client.from("my_challenges").select("*"),
+      client.from("my_community_spaces").select("*"),
+      client.from("my_community_feed").select("*")
     ]);
 
-    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult,notificationPrefsResult,healthConnectionsResult,challengesResult].find((r) => r.error);
+    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult,notificationPrefsResult,healthConnectionsResult,challengesResult,communitySpacesResult,communityFeedResult].find((r) => r.error);
     if (failed?.error) throw failed.error;
 
     const member = dashboardResult.data;
@@ -1270,6 +1473,13 @@
     el("rm-password").value = "";
   }
 
+
+
+  el("rm-community-new-post").addEventListener("click",openCommunityPost);
+  el("rm-community-post-form").addEventListener("submit",publishCommunityPost);
+  el("rm-community-comment-form").addEventListener("submit",addCommunityComment);
+  document.querySelectorAll("[data-community-post-close]").forEach((node)=>node.addEventListener("click",closeCommunityPost));
+  document.querySelectorAll("[data-community-thread-close]").forEach((node)=>node.addEventListener("click",closeCommunityThread));
 
   el("rm-notification-form").addEventListener("submit",saveNotificationPreferences);
 
