@@ -1,0 +1,11 @@
+
+.client-coaching-access-section{border-color:#dbe6df;background:linear-gradient(180deg,#fff,#fbfdfb)}
+.client-coaching-entitlement-list{display:grid;gap:8px;margin-top:10px}
+.client-coaching-entitlement-item{padding:10px 11px;border:1px solid #e4ebe7;border-radius:10px;background:#fbfcfb}
+.client-coaching-entitlement-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.client-coaching-entitlement-item strong{font-size:11px;color:#30463a}.client-coaching-entitlement-item small{display:block;margin-top:3px;font-size:9px;color:#819087}
+.client-coaching-entitlement-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:8px}
+.client-coaching-entitlement-stats>div{padding:8px;border:1px solid #e8edea;border-radius:8px;background:#fff}.client-coaching-entitlement-stats span{display:block;font-size:7px;font-weight:900;text-transform:uppercase;color:#849188}.client-coaching-entitlement-stats b{display:block;margin-top:3px;font-size:11px;color:#30463a}
+.client-entitlement-review{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 9px;margin-top:8px;border:1px solid #ead6bd;border-radius:8px;background:#fff9ee}.client-entitlement-review span{font-size:8px;color:#80602f}.client-entitlement-review-actions{display:flex;gap:5px}.client-entitlement-review-actions button{min-height:27px;padding:0 7px;border-radius:6px;border:1px solid #d9c9ae;background:#fff;color:#765524;font-size:8px;font-weight:900}
+.staff-capacity-dialog{width:min(900px,100%)}
+@media(max-width:700px){.client-coaching-entitlement-stats{grid-template-columns:1fr 1fr}.client-entitlement-review{align-items:flex-start;flex-direction:column}}
