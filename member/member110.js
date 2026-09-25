@@ -112,6 +112,36 @@
 
   let currentMember = null;
 
+  function renderBilling(row){
+    const card=el("rm-billing-card");
+    if(!row){card.classList.add("hidden");return;}
+    card.classList.remove("hidden");
+    el("rm-billing-status-chip").textContent=title(row.status);
+    const target=el("rm-billing-summary");
+    target.replaceChildren();
+
+    const money=row.amount_cents!==null&&row.amount_cents!==undefined
+      ?new Intl.NumberFormat(undefined,{style:"currency",currency:row.currency||"USD"}).format(Number(row.amount_cents)/100)
+      :"Not set";
+
+    const interval=row.billing_interval
+      ?money+" / "+(Number(row.interval_count||1)>1?row.interval_count+" ":"")+title(row.billing_interval)
+      :money;
+
+    [
+      ["Plan",row.billing_plan_name||"Membership"],
+      ["Billing",interval],
+      ["Next Charge",row.next_charge_at?formatDate(row.next_charge_at,true):"Not scheduled"],
+      ["Commitment End",row.commitment_ends_at?formatDate(row.commitment_ends_at,true):"Not set"]
+    ].forEach(([label,value])=>{
+      const item=document.createElement("div");
+      const span=document.createElement("span");span.textContent=label;
+      const strong=document.createElement("strong");strong.textContent=value;
+      item.append(span,strong);target.append(item);
+    });
+  }
+
+
   function safeDocumentFilename(name){
     return String(name||"file").replace(/[^A-Za-z0-9._-]+/g,"-").replace(/-+/g,"-").replace(/^-|-$/g,"")||"file";
   }
@@ -1494,7 +1524,8 @@
       communityFeedResult,
       refuelResult,
       referralSummaryResult,
-      documentsResult
+      documentsResult,
+      billingResult
     ] = await Promise.all([
       client.from("my_member_dashboard").select("*").maybeSingle(),
       client.from("my_member_entitlements").select("*").order("label"),
@@ -1524,10 +1555,11 @@
       client.from("my_community_feed").select("*"),
       client.from("my_refuel_access").select("*").limit(1).maybeSingle(),
       client.from("my_referral_summary").select("*").maybeSingle(),
-      client.from("my_documents").select("*")
+      client.from("my_documents").select("*"),
+      client.from("my_billing_summary").select("*").limit(1).maybeSingle()
     ]);
 
-    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult,notificationPrefsResult,healthConnectionsResult,challengesResult,communitySpacesResult,communityFeedResult,refuelResult,referralSummaryResult,documentsResult].find((r) => r.error);
+    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult,notificationPrefsResult,healthConnectionsResult,challengesResult,communitySpacesResult,communityFeedResult,refuelResult,referralSummaryResult,documentsResult,billingResult].find((r) => r.error);
     if (failed?.error) throw failed.error;
 
     const member = dashboardResult.data;
