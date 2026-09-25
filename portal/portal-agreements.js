@@ -205,7 +205,7 @@
     if(!(portal.hasPermission?.("finance.view")??false))return;
 
     const [templatesResult,requirementsResult,programsResult,agreementsResult]=await Promise.all([
-      client.from("agreement_templates").select("*").order("created_at",{ascending:false}),
+      client.from("agreement_templates").select("*").eq("audience","client").order("created_at",{ascending:false}),
       client.from("program_agreement_requirements").select("*"),
       client.from("program_catalog").select("program_code,name,active").eq("active",true).order("name"),
       client.from("admin_client_agreements").select("id,status").limit(5000)
