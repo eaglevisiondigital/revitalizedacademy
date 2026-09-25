@@ -14,6 +14,8 @@
   let timer=null;
   let quickView="all";
   let savedViews=[];
+  let importRows=[];
+  let importFilename="";
 
   function dateText(value){
     return value?portal.formatDate(value,true):"—";
@@ -218,6 +220,10 @@
   }
 
   async function exportCsv(){
+    if(!(portal.hasPermission?.("people.export")??false)){
+      window.alert("You do not have permission to export the People database.");
+      return;
+    }
     let q=client.from("admin_people_directory").select("*");
     const search=el("people-search-input").value.trim();
     if(search){
@@ -240,6 +246,12 @@
     ]);
     const esc=(v)=>'"'+String(v).replace(/"/g,'""')+'"';
     const csv=[headers,...rows].map((row)=>row.map(esc).join(",")).join("\n");
+    const {error:auditError}=await client.rpc("log_people_export",{
+      p_row_count:rows.length,
+      p_filters:currentConfiguration()
+    });
+    if(auditError){window.alert("Export was blocked because the audit record could not be created: "+auditError.message);return;}
+
     const blob=new Blob([csv],{type:"text/csv;charset=utf-8"});
     const url=URL.createObjectURL(blob);
     const a=document.createElement("a");
@@ -247,6 +259,157 @@
     a.click();URL.revokeObjectURL(url);
   }
 
+
+
+  function closeImport(){
+    importRows=[];
+    importFilename="";
+    el("people-import-form").reset();
+    el("people-import-preview").classList.add("hidden");
+    el("people-import-preview").replaceChildren();
+    el("people-import-submit").disabled=true;
+    portal.showStatus(el("people-import-status"),"");
+    el("people-import-modal").classList.add("hidden");
+    el("people-import-modal").setAttribute("aria-hidden","true");
+  }
+
+  function openImport(){
+    if(!(portal.hasPermission?.("people.import")??false))return;
+    closeImport();
+    el("people-import-modal").classList.remove("hidden");
+    el("people-import-modal").setAttribute("aria-hidden","false");
+  }
+
+  function csvParse(text){
+    const rows=[];let row=[];let field="";let quoted=false;
+    for(let i=0;i<text.length;i++){
+      const ch=text[i];
+      if(quoted){
+        if(ch==='"'&&text[i+1]==='"'){field+='"';i++;}
+        else if(ch==='"')quoted=false;
+        else field+=ch;
+      }else{
+        if(ch==='"')quoted=true;
+        else if(ch===","){row.push(field);field="";}
+        else if(ch==="\n"){row.push(field.replace(/\r$/,""));rows.push(row);row=[];field="";}
+        else field+=ch;
+      }
+    }
+    if(field.length||row.length){row.push(field.replace(/\r$/,""));rows.push(row);}
+    return rows;
+  }
+
+  function normalizeHeader(value){
+    return String(value||"").trim().toLowerCase().replace(/[^a-z0-9]+/g,"_").replace(/^_|_$/g,"");
+  }
+
+  function previewImport(file,text){
+    const parsed=csvParse(text).filter(row=>row.some(cell=>String(cell).trim()!==""));
+    if(parsed.length<2){portal.showStatus(el("people-import-status"),"The CSV needs a header row and at least one data row.","error");return;}
+
+    const headers=parsed[0].map(normalizeHeader);
+    const aliases={
+      firstname:"first_name",first:"first_name",
+      lastname:"last_name",last:"last_name",
+      email_address:"email",emailaddress:"email",
+      phone_number:"phone",phonenumber:"phone",
+      province:"state",state_province:"state",
+      stage:"lifecycle_stage",lifecycle:"lifecycle_stage",
+      lead_source:"source",interests:"tags"
+    };
+    const normalized=headers.map(h=>aliases[h]||h);
+    const supported=new Set(["first_name","last_name","email","phone","city","state","country","lifecycle_stage","source","tags"]);
+
+    importRows=parsed.slice(1).map(cells=>{
+      const item={};
+      normalized.forEach((header,index)=>{
+        if(!supported.has(header))return;
+        const value=String(cells[index]??"").trim();
+        if(header==="tags")item.tags=value.split(/[;,]/).map(v=>v.trim()).filter(Boolean);
+        else item[header]=value;
+      });
+      return item;
+    }).filter(row=>Object.values(row).some(v=>Array.isArray(v)?v.length:Boolean(v)));
+
+    if(importRows.length>5000){
+      portal.showStatus(el("people-import-status"),"This file has more than 5,000 data rows. Split it into smaller imports.","error");
+      importRows=[];return;
+    }
+
+    importFilename=file.name;
+    const preview=el("people-import-preview");
+    preview.replaceChildren();
+    const table=document.createElement("table");
+    const thead=document.createElement("thead");
+    const hr=document.createElement("tr");
+    ["First","Last","Email","Phone","Stage","Source","Tags"].forEach(label=>{const th=document.createElement("th");th.textContent=label;hr.append(th);});
+    thead.append(hr);table.append(thead);
+    const tbody=document.createElement("tbody");
+    importRows.slice(0,10).forEach(row=>{
+      const tr=document.createElement("tr");
+      [row.first_name,row.last_name,row.email,row.phone,row.lifecycle_stage||"lead",row.source||"csv_import",(row.tags||[]).join(", ")].forEach(value=>{
+        const td=document.createElement("td");td.textContent=value||"";tr.append(td);
+      });
+      tbody.append(tr);
+    });
+    table.append(tbody);preview.append(table);
+    preview.classList.remove("hidden");
+    el("people-import-submit").disabled=!importRows.length;
+    portal.showStatus(el("people-import-status"),importRows.length+" row"+(importRows.length===1?"":"s")+" ready to import. Showing the first "+Math.min(10,importRows.length)+" for review.","success");
+  }
+
+  async function handleImportFile(event){
+    const file=event.target.files?.[0];
+    if(!file)return;
+    if(file.size>10*1024*1024){portal.showStatus(el("people-import-status"),"CSV file must be 10 MB or smaller.","error");return;}
+    const text=await file.text();
+    previewImport(file,text);
+  }
+
+  async function submitImport(event){
+    event.preventDefault();
+    if(!importRows.length)return;
+    if(!(portal.hasPermission?.("people.import")??false))return;
+    if(!window.confirm("Import "+importRows.length+" People rows now? Existing matching email/phone records will be updated rather than duplicated."))return;
+
+    el("people-import-submit").disabled=true;
+    portal.showStatus(el("people-import-status"),"Importing People...");
+
+    const {data,error}=await client.rpc("import_people_batch",{
+      p_rows:importRows,
+      p_filename:importFilename||null
+    });
+    if(error){
+      el("people-import-submit").disabled=false;
+      portal.showStatus(el("people-import-status"),error.message,"error");
+      return;
+    }
+
+    const result=data||{};
+    portal.showStatus(el("people-import-status"),
+      "Import complete: "+(result.created_rows||0)+" created, "+(result.updated_rows||0)+" updated, "+(result.error_rows||0)+" errors.",
+      result.error_rows?"error":"success"
+    );
+    await Promise.all([load(),portal.loadDashboard()]);
+    if(!result.error_rows)window.setTimeout(closeImport,900);
+  }
+
+  function downloadImportTemplate(){
+    const csv=[
+      "first_name,last_name,email,phone,city,state,country,lifecycle_stage,source,tags",
+      "Jane,Doe,jane@example.com,+1 555 555 1212,Toronto,Ontario,Canada,lead,referral,\"low energy,coaching interest\""
+    ].join("\n");
+    const blob=new Blob([csv],{type:"text/csv;charset=utf-8"});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement("a");a.href=url;a.download="revitalized-people-import-template.csv";a.click();URL.revokeObjectURL(url);
+  }
+
+  function applyDataPermissions(){
+    const canExport=portal.hasPermission?.("people.export")??false;
+    const canImport=portal.hasPermission?.("people.import")??false;
+    el("people-export").classList.toggle("hidden",!canExport);
+    el("people-import").classList.toggle("hidden",!canImport);
+  }
 
   function currentConfiguration(){
     return {
@@ -343,6 +506,12 @@
     updateBulkBar();
   });
   el("people-export").addEventListener("click",exportCsv);
+  el("people-import").addEventListener("click",openImport);
+  el("people-import-file").addEventListener("change",handleImportFile);
+  el("people-import-form").addEventListener("submit",submitImport);
+  el("people-download-template").addEventListener("click",downloadImportTemplate);
+  document.querySelectorAll("[data-people-import-close]").forEach(n=>n.addEventListener("click",closeImport));
+  document.addEventListener("ra:permissions-loaded",applyDataPermissions);
   populateBulkValue();
 
   el("people-save-view").addEventListener("click",saveCurrentView);
@@ -378,6 +547,7 @@
 
   document.addEventListener("ra:dashboard-loaded",load);
 
+  applyDataPermissions();
   populateFilters().then(async()=>{
     await loadSavedViews();
     await load();
