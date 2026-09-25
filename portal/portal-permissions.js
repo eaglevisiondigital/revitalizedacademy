@@ -63,7 +63,7 @@
   }
 
   async function loadPermissions(){
-    const {data,error}=await client.rpc("my_staff_permissions");
+    const {data,error}=await client.from("my_staff_permissions_view").select("*");
     if(error){
       console.error("Staff permissions failed",error);
       permissions={};
