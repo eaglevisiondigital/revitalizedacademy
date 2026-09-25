@@ -92,3 +92,17 @@
 .staff-agreement-file-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 10px;border:1px solid #e5ebe7;border-radius:9px;background:#fbfcfb}
 .staff-agreement-file-item strong{display:block;font-size:10px;color:#334a3d}
 .staff-agreement-file-item span:not(.staff-status-pill){display:block;margin-top:2px;font-size:8px;color:#7f8c85}
+
+
+/* Build 154: Team larger text */
+.staff-access-stat span{font-size:11px}
+.staff-access-stat strong{font-size:27px}
+.staff-access-person strong{font-size:14px}
+.staff-access-person span{font-size:11px}
+.staff-role-pill,.staff-status-pill{font-size:10px;min-height:29px;padding:0 10px}
+.staff-access-perm-chip{font-size:10px;min-height:28px;padding:0 9px}
+.staff-access-actions button{font-size:10.5px;min-height:37px;padding:0 12px}
+.team-workload-person strong{font-size:13px}
+.team-workload-person span{font-size:9.5px}
+.team-workload-metric strong{font-size:16px}
+.team-workload-metric span{font-size:9px}
