@@ -2439,6 +2439,7 @@
               <h2 id="program-content-title">Content that powers the member app</h2>
               <p class="panel-note">Courses, challenges, nutrition and fitness content stay connected to the same ReVitalized program and client experience.</p>
             </div>
+            <button id="program-content-new" class="primary-button compact" type="button">New Content</button>
           </div>
           <div id="program-content-summary" class="program-content-summary"></div>
           <div class="program-content-tabs" role="tablist" aria-label="Client experience content">
@@ -2850,6 +2851,39 @@
       </div>
     </section>
   </main>
+
+
+      <div id="program-content-modal" class="program-content-modal hidden" aria-hidden="true">
+        <div class="program-content-modal-backdrop" data-program-content-close></div>
+        <section class="program-content-dialog" role="dialog" aria-modal="true" aria-labelledby="program-content-modal-title">
+          <button id="program-content-close" class="program-content-close" type="button" aria-label="Close content editor">×</button>
+          <p class="eyebrow">CLIENT EXPERIENCE CONTENT</p>
+          <h2 id="program-content-modal-title">Create new content</h2>
+          <p class="program-content-intro">Create a draft for the member and coach experience. You can publish it when it is ready.</p>
+          <form id="program-content-form" class="program-content-form">
+            <div class="program-content-form-grid">
+              <label class="program-content-wide"><span>Content type</span>
+                <select id="program-content-type" required>
+                  <option value="courses">Course</option>
+                  <option value="challenges">Challenge</option>
+                  <option value="meal-plans">Meal Plan</option>
+                  <option value="recipes">Recipe</option>
+                  <option value="fitness">Fitness Program</option>
+                  <option value="workouts">Workout</option>
+                </select>
+              </label>
+              <label class="program-content-wide"><span>Title</span><input id="program-content-title-input" type="text" maxlength="180" required></label>
+              <label class="program-content-wide"><span>Description</span><textarea id="program-content-description" rows="3" maxlength="1800"></textarea></label>
+              <div id="program-content-dynamic-fields" class="program-content-dynamic-fields program-content-wide"></div>
+            </div>
+            <div class="program-content-form-actions">
+              <button id="program-content-cancel" class="secondary-button" type="button">Cancel</button>
+              <button class="primary-button" type="submit">Save Draft</button>
+            </div>
+            <p id="program-content-form-status" class="form-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
 
   <noscript>This portal requires JavaScript.</noscript>
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
