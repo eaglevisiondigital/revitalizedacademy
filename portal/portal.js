@@ -39,14 +39,14 @@
 
 
   const metricDefinitions = [
-    ["total_contacts", "Total contacts"],
+    ["clients", "Active clients"],
     ["assessment_leads", "Assessment leads"],
-    ["webinar_leads", "Webinar leads"],
     ["applicants", "Applicants"],
-    ["clients", "Clients"],
     ["needs_attention", "Needs attention", true],
     ["consultations_scheduled", "Consultations"],
     ["followups_due_24h", "Due in 24 hours", true],
+    ["total_contacts", "Total contacts"],
+    ["webinar_leads", "Webinar leads"],
     ["completed_assessments", "Assessments complete"],
     ["completed_enrollments", "Enrollments complete"],
     ["webinar_registrations", "Webinar registrations"],
