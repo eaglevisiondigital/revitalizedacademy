@@ -376,7 +376,8 @@
           <div id="rm-agreement-content" class="rm139-agreement-content"></div>
           <div id="rm-agreement-completed" class="rm139-agreement-completed hidden"></div>
           <form id="rm-agreement-sign-form" class="rm126-form">
-            <label><span>Type your legal name</span><input id="rm-agreement-signer-name" type="text" maxlength="240" required></label>
+            <label><span>Primary client · type your legal name</span><input id="rm-agreement-signer-name" type="text" maxlength="240" required></label>
+            <label id="rm-agreement-secondary-signer-field" class="hidden"><span>Secondary client · Husband/Wife legal name</span><input id="rm-agreement-secondary-signer-name" type="text" maxlength="240"></label>
             <label class="rm139-agreement-check"><input id="rm-agreement-accept" type="checkbox" required><span>I have read and agree to the terms above.</span></label>
             <div class="rm139-agreement-actions">
               <button id="rm-agreement-decline" type="button" class="rm139-secondary">Decline</button>
@@ -556,6 +557,6 @@
   </main>
 
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
-  <script defer src="member110.js?v=140"></script>
+  <script defer src="member110.js?v=142"></script>
 </body>
 </html>
