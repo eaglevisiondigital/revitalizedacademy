@@ -75,7 +75,7 @@
 
     const target=el("staff-inbox-summary");
     target.replaceChildren();
-    [["Conversations",active],["Unread messages",unread],["Need reply",waiting]].forEach(([label,value])=>{
+    [["Conversations",active],["Unread Messages",unread],["Need Reply",waiting]].forEach(([label,value])=>{
       const card=document.createElement("div");
       card.className="staff-inbox-stat";
       const s=document.createElement("span"); s.textContent=label;
