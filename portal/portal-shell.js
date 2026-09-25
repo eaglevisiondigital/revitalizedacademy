@@ -175,6 +175,9 @@
       btn.classList.toggle("active",active);
       btn.closest(".ra-nav-group")?.classList.toggle("open",active);
     });
+    document.querySelectorAll(".ra-subnav button").forEach(btn=>{
+      btn.classList.toggle("ra-sub-active", Boolean(target) && btn.dataset.workspace===key && btn.dataset.target===target);
+    });
 
     if(target){
       const node=document.querySelector(target);
