@@ -30,6 +30,7 @@
   <link rel="stylesheet" href="portal-documents.css?v=136">
   <link rel="stylesheet" href="portal-billing.css?v=137">
   <link rel="stylesheet" href="portal-agreements.css?v=139">
+  <link rel="stylesheet" href="portal-coach-capacity.css?v=140">
 </head>
 <body>
   <main class="portal-page">
@@ -399,6 +400,18 @@
 
 
 
+
+
+            <section id="client-coaching-access-section" class="contact-section client-coaching-access-section hidden">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">COACHING ACCESS</p>
+                  <h3>Session entitlement usage</h3>
+                </div>
+                <span id="client-coaching-access-chip" class="status-badge">0</span>
+              </div>
+              <div id="client-coaching-entitlement-list" class="client-coaching-entitlement-list"></div>
+            </section>
 
             <section id="client-agreements-section" class="contact-section client-agreements-section hidden">
               <div class="contact-section-heading">
@@ -2181,6 +2194,46 @@
         </section>
       </div>
 
+
+      <div id="staff-capacity-modal" class="staff-admin-modal hidden" aria-hidden="true">
+        <div class="staff-admin-backdrop" data-staff-capacity-close></div>
+        <section class="staff-admin-dialog staff-capacity-dialog" role="dialog" aria-modal="true" aria-labelledby="staff-capacity-title">
+          <button class="staff-admin-close" type="button" data-staff-capacity-close aria-label="Close capacity settings">×</button>
+          <p class="eyebrow">COACH CAPACITY</p>
+          <h2 id="staff-capacity-title">Availability &amp; capacity</h2>
+          <p id="staff-capacity-meta" class="staff-admin-intro"></p>
+
+          <form id="staff-capacity-form" class="staff-admin-form">
+            <div class="staff-admin-grid">
+              <label><span>Max active clients</span><input id="capacity-max-clients" type="number" min="0"></label>
+              <label><span>Max sessions per day</span><input id="capacity-max-day" type="number" min="0"></label>
+              <label><span>Max sessions per week</span><input id="capacity-max-week" type="number" min="0"></label>
+              <label><span>Session buffer · minutes</span><input id="capacity-buffer" type="number" min="0" max="240" value="15"></label>
+              <label><span>Default session · minutes</span><input id="capacity-session-minutes" type="number" min="15" max="480" value="60"></label>
+              <label><span>Time zone</span><input id="capacity-timezone" type="text" maxlength="120" placeholder="America/Toronto"></label>
+              <label class="staff-admin-wide staff-capacity-check"><input id="capacity-accepting" type="checkbox" checked><span>Accepting new clients</span></label>
+              <label class="staff-admin-wide"><span>Notes</span><textarea id="capacity-notes" rows="3" maxlength="2000"></textarea></label>
+            </div>
+            <div class="staff-admin-actions"><button class="primary-button" type="submit">Save Capacity</button></div>
+            <p id="staff-capacity-status" class="form-status" aria-live="polite"></p>
+          </form>
+
+          <section class="staff-admin-block">
+            <div class="staff-admin-block-head"><div><span>WEEKLY AVAILABILITY</span><strong>Recurring availability windows</strong></div></div>
+            <form id="staff-availability-form" class="staff-admin-form">
+              <div class="staff-admin-grid">
+                <label><span>Day</span><select id="availability-day"><option value="0">Sunday</option><option value="1">Monday</option><option value="2">Tuesday</option><option value="3">Wednesday</option><option value="4">Thursday</option><option value="5">Friday</option><option value="6">Saturday</option></select></label>
+                <label><span>Time zone</span><input id="availability-timezone" type="text" maxlength="120" placeholder="America/Toronto"></label>
+                <label><span>Starts</span><input id="availability-start" type="time" required></label>
+                <label><span>Ends</span><input id="availability-end" type="time" required></label>
+              </div>
+              <div class="staff-admin-actions"><button class="secondary-button" type="submit">Add Availability</button></div>
+            </form>
+            <div id="staff-availability-list" class="staff-availability-list"></div>
+          </section>
+        </section>
+      </div>
+
       <div class="portal-content">
         <div class="portal-intro">
           <div>
@@ -2648,5 +2701,6 @@
   <script defer src="portal-billing.js?v=137"></script>
   <script defer src="portal-client-billing.js?v=138"></script>
   <script defer src="portal-agreements.js?v=139"></script>
+  <script defer src="portal-coach-capacity.js?v=140"></script>
 </body>
 </html>
