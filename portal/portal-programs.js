@@ -89,6 +89,8 @@
   let entitlementRows=[];
   let courseRows=[];
   let courseAccessRows=[];
+  let resourceRows=[];
+  let resourceAccessRows=[];
 
   async function toggleProgramCourse(programCode,courseId,current){
     const canManage=["owner","admin","coach"].includes(String(portal.currentStaffRole?.()||"").toLowerCase());
@@ -104,6 +106,20 @@
     await loadProgramAccess();
   }
 
+  async function toggleProgramResource(programCode,resourceId,current){
+    const canManage=["owner","admin","coach"].includes(String(portal.currentStaffRole?.()||"").toLowerCase());
+    if(!canManage)return;
+    const existing=resourceAccessRows.find(r=>r.program_code===programCode&&r.resource_id===resourceId);
+    if(existing){
+      const {error}=await client.from("program_resource_access").update({active:!current}).eq("id",existing.id);
+      if(error){window.alert(error.message);return;}
+    }else{
+      const {error}=await client.from("program_resource_access").insert({program_code:programCode,resource_id:resourceId,active:true});
+      if(error){window.alert(error.message);return;}
+    }
+    await loadProgramAccess();
+  }
+
   function renderProgramAccess(){
     if(!accessRoot)return;
     accessRoot.replaceChildren();
@@ -111,13 +127,14 @@
     programRows.filter(r=>r.active).forEach(program=>{
       const entitlements=entitlementRows.filter(r=>r.program_code===program.program_code&&r.active);
       const included=courseAccessRows.filter(r=>r.program_code===program.program_code&&r.active);
+      const includedResources=resourceAccessRows.filter(r=>r.program_code===program.program_code&&r.active);
       const card=document.createElement("article");card.className="program-access-card";
       const head=document.createElement("div");head.className="program-access-card-head";
       const copy=document.createElement("div");
       const name=document.createElement("strong");name.textContent=program.name;
       const sub=document.createElement("span");sub.textContent=program.metadata?.support_model||portal.titleCase(program.program_type||"program");
       copy.append(name,sub);
-      const count=document.createElement("span");count.className="program-access-count";count.textContent=included.length+" course"+(included.length===1?"":"s")+" included";
+      const count=document.createElement("span");count.className="program-access-count";count.textContent=included.length+" course"+(included.length===1?"":"s")+" · "+includedResources.length+" resource"+(includedResources.length===1?"":"s");
       head.append(copy,count);
 
       const sections=document.createElement("div");sections.className="program-access-sections";
@@ -163,7 +180,30 @@
         });
       }
       courseBlock.append(ch,courses);
-      sections.append(benefitBlock,courseBlock);
+
+      const resourceBlock=document.createElement("div");resourceBlock.className="program-access-block program-access-resources";
+      const rh=document.createElement("h3");rh.textContent="Resource access";
+      const resources=document.createElement("div");resources.className="program-access-course-list";
+      const publishedResources=resourceRows.filter(r=>r.status==="published");
+      if(!publishedResources.length){
+        const empty=document.createElement("span");empty.className="program-access-empty";empty.textContent="No resources assigned yet. Publish a resource, then add it here.";resources.append(empty);
+      }else{
+        publishedResources.forEach(resource=>{
+          const row=document.createElement("div");row.className="program-access-course-row";
+          const rc=document.createElement("div");rc.className="program-access-course-copy";
+          const title=document.createElement("strong");title.textContent=resource.title;
+          const meta=document.createElement("span");meta.textContent=[portal.titleCase(resource.resource_type||"resource"),resource.category].filter(Boolean).join(" · ");
+          rc.append(title,meta);
+          const access=resourceAccessRows.find(r=>r.program_code===program.program_code&&r.resource_id===resource.id);
+          const active=Boolean(access?.active);
+          const btn=document.createElement("button");btn.type="button";btn.classList.toggle("active",active);btn.textContent=active?"Included":"Add";
+          btn.disabled=!canManage;
+          btn.addEventListener("click",()=>toggleProgramResource(program.program_code,resource.id,active));
+          row.append(rc,btn);resources.append(row);
+        });
+      }
+      resourceBlock.append(rh,resources);
+      sections.append(benefitBlock,courseBlock,resourceBlock);
       card.append(head,sections);
       accessRoot.append(card);
     });
@@ -171,13 +211,15 @@
 
   async function loadProgramAccess(){
     if(!accessRoot)return;
-    const [programs,entitlements,courses,access]=await Promise.all([
+    const [programs,entitlements,courses,access,resources,resourceAccess]=await Promise.all([
       client.from("program_catalog").select("program_code,name,program_type,active,metadata").order("name"),
       client.from("program_entitlement_templates").select("program_code,entitlement_key,label,limit_value,reset_cadence,active").eq("active",true).order("label"),
       client.from("learning_courses").select("id,title,version,status").order("title"),
-      client.from("program_course_access").select("id,program_code,course_id,access_level,active")
+      client.from("program_course_access").select("id,program_code,course_id,access_level,active"),
+      client.from("resource_library").select("id,title,resource_type,category,status").order("title"),
+      client.from("program_resource_access").select("id,program_code,resource_id,active")
     ]);
-    if(programs.error||entitlements.error||courses.error||access.error){
+    if(programs.error||entitlements.error||courses.error||access.error||resources.error||resourceAccess.error){
       accessRoot.innerHTML='<div class="empty-state">Program access rules could not be loaded.</div>';
       return;
     }
@@ -185,6 +227,8 @@
     entitlementRows=entitlements.data||[];
     courseRows=courses.data||[];
     courseAccessRows=access.data||[];
+    resourceRows=resources.data||[];
+    resourceAccessRows=resourceAccess.data||[];
     renderProgramAccess();
   }
 
@@ -205,7 +249,8 @@
     "meal-plans":{table:"meal_plan_templates",label:"Meal Plans",select:"id,title,description,status,days_count",order:"title"},
     recipes:{table:"recipes",label:"Recipes",select:"id,title,status,meal_type,prep_minutes,cook_minutes",order:"title"},
     fitness:{table:"fitness_programs",label:"Fitness Programs",select:"id,title,description,status,difficulty,environment,weeks",order:"title"},
-    workouts:{table:"workout_templates",label:"Workouts",select:"id,title,description,status,category,difficulty,environment,duration_minutes",order:"title"}
+    workouts:{table:"workout_templates",label:"Workouts",select:"id,title,description,status,category,difficulty,environment,duration_minutes",order:"title"},
+    resources:{table:"resource_library",label:"Resources",select:"id,title,description,status,resource_type,resource_url,category",order:"title"}
   };
   let contentCache={};
   let activeContent="courses";
@@ -221,6 +266,7 @@
     if(key==="recipes")return [row.meal_type?portal.titleCase(row.meal_type):null,row.prep_minutes?row.prep_minutes+" min prep":null,row.cook_minutes?row.cook_minutes+" min cook":null].filter(Boolean).join(" · ")||"Recipe";
     if(key==="fitness")return [row.difficulty?portal.titleCase(row.difficulty):null,row.environment?portal.titleCase(row.environment):null,row.weeks?row.weeks+" weeks":null].filter(Boolean).join(" · ")||"Fitness program";
     if(key==="workouts")return [row.category?portal.titleCase(row.category):null,row.difficulty?portal.titleCase(row.difficulty):null,row.environment?portal.titleCase(row.environment):null,row.duration_minutes?row.duration_minutes+" min":null].filter(Boolean).join(" · ")||"Workout";
+    if(key==="resources")return [row.resource_type?portal.titleCase(row.resource_type):null,row.category||null].filter(Boolean).join(" · ")||"Resource";
     return "";
   };
 
@@ -242,8 +288,10 @@
       dynamicFields.innerHTML='<label class="wide"><span>Nutrition methodology</span><select id="content-methodology" required>'+methodologyOptions(nutritionMethodologies)+'</select></label><label><span>Meal type</span><select id="content-meal-type"><option value="breakfast">Breakfast</option><option value="lunch">Lunch</option><option value="dinner">Dinner</option><option value="snack">Snack</option><option value="beverage">Beverage</option><option value="other">Other</option></select></label><label><span>Servings</span><input id="content-servings" type="number" min="0.1" step="0.1"></label><label><span>Prep minutes</span><input id="content-prep" type="number" min="0" step="1"></label><label><span>Cook minutes</span><input id="content-cook" type="number" min="0" step="1"></label><label class="wide"><span>Instructions</span><textarea id="content-instructions" rows="5"></textarea></label>';
     }else if(type==="fitness"){
       dynamicFields.innerHTML='<label class="wide"><span>Fitness methodology</span><select id="content-methodology" required>'+methodologyOptions(fitnessMethodologies)+'</select></label><label><span>Difficulty</span><select id="content-difficulty"><option value="beginner">Beginner</option><option value="intermediate">Intermediate</option><option value="advanced">Advanced</option></select></label><label><span>Environment</span><select id="content-environment"><option value="either">Home or Gym</option><option value="home">Home</option><option value="gym">Gym</option></select></label><label><span>Weeks</span><input id="content-weeks" type="number" min="1" step="1"></label>';
-    }else{
+    }else if(type==="workouts"){
       dynamicFields.innerHTML='<label class="wide"><span>Fitness methodology</span><select id="content-methodology" required>'+methodologyOptions(fitnessMethodologies)+'</select></label><label><span>Category</span><input id="content-category" type="text" maxlength="80" placeholder="Strength, Mobility, HIIT..."></label><label><span>Difficulty</span><select id="content-difficulty"><option value="beginner">Beginner</option><option value="intermediate">Intermediate</option><option value="advanced">Advanced</option></select></label><label><span>Environment</span><select id="content-environment"><option value="either">Home or Gym</option><option value="home">Home</option><option value="gym">Gym</option></select></label><label><span>Duration minutes</span><input id="content-duration" type="number" min="1" step="1"></label>';
+    }else{
+      dynamicFields.innerHTML='<label><span>Resource type</span><select id="content-resource-type"><option value="pdf">PDF</option><option value="video">Video</option><option value="audio">Audio</option><option value="worksheet">Worksheet</option><option value="link">Link</option><option value="guide">Guide</option><option value="other">Other</option></select></label><label><span>Category</span><input id="content-resource-category" type="text" maxlength="80" placeholder="Getting Started, Nutrition, Coaching..."></label><label class="wide"><span>Resource URL</span><input id="content-resource-url" type="url" maxlength="1000" placeholder="https://..." required></label>';
     }
   }
 
@@ -393,13 +441,22 @@
       payload.environment=document.getElementById("content-environment")?.value||"either";
       const weeks=document.getElementById("content-weeks")?.value;
       payload.weeks=weeks?Number(weeks):null;
-    }else{
+    }else if(key==="workouts"){
       payload.methodology_id=document.getElementById("content-methodology")?.value||null;
       payload.category=document.getElementById("content-category")?.value.trim()||null;
       payload.difficulty=document.getElementById("content-difficulty")?.value||"beginner";
       payload.environment=document.getElementById("content-environment")?.value||"either";
       const duration=document.getElementById("content-duration")?.value;
       payload.duration_minutes=duration?Number(duration):null;
+    }else{
+      payload.resource_key=slugify(title);
+      payload.resource_type=document.getElementById("content-resource-type")?.value||"other";
+      payload.category=document.getElementById("content-resource-category")?.value.trim()||null;
+      payload.resource_url=document.getElementById("content-resource-url")?.value.trim()||"";
+      payload.tags=[];
+      if(!payload.resource_url){
+        portal.showStatus(formStatus,"Add the resource URL before saving.","error");return;
+      }
     }
 
     if(["meal-plans","recipes","fitness","workouts"].includes(key)&&!payload.methodology_id){
