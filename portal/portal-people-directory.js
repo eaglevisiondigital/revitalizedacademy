@@ -99,6 +99,9 @@
       q=q.or("first_name.ilike.%"+safe+"%,last_name.ilike.%"+safe+"%,email.ilike.%"+safe+"%,phone.ilike.%"+safe+"%");
     }
 
+    const type=el("people-type-filter").value;
+    if(type)q=q.eq("record_kind",type);
+
     const stage=el("people-stage-filter").value;
     if(stage)q=q.eq("lifecycle_stage",stage);
 
@@ -275,12 +278,13 @@
   el("people-next").addEventListener("click",()=>{if((page+1)*pageSize<total){page++;load();}});
   el("people-search-input").addEventListener("input",()=>{clearTimeout(timer);timer=setTimeout(()=>{page=0;load();},220);});
 
-  ["people-sort","people-stage-filter","people-assigned-filter","people-source-filter","people-assessment-filter","people-enrollment-filter"]
+  ["people-sort","people-type-filter","people-stage-filter","people-assigned-filter","people-source-filter","people-assessment-filter","people-enrollment-filter"]
     .forEach(id=>el(id).addEventListener("change",()=>{page=0;load();}));
 
   el("people-clear-filters").addEventListener("click",()=>{
     el("people-search-input").value="";
     el("people-sort").value="recent";
+    el("people-type-filter").value="";
     el("people-stage-filter").value="";
     el("people-assigned-filter").value="";
     el("people-source-filter").value="";
