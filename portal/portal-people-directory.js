@@ -9,6 +9,8 @@
   let page=0;
   const pageSize=100;
   let total=0;
+  let currentRows=[];
+  const selectedIds=new Set();
   let timer=null;
   let quickView="all";
 
@@ -20,10 +22,11 @@
     const body=el("contacts-body");
     body.replaceChildren();
 
+    currentRows=rows||[];
     if(!rows.length){
       const tr=document.createElement("tr");
       const td=document.createElement("td");
-      td.colSpan=9;
+      td.colSpan=10;
       td.className="empty-state";
       td.textContent="No people match this view.";
       tr.append(td); body.append(tr);
@@ -32,6 +35,19 @@
 
     rows.forEach((row)=>{
       const tr=document.createElement("tr");
+
+      const selectTd=document.createElement("td");
+      selectTd.className="people-select-col";
+      const checkbox=document.createElement("input");
+      checkbox.type="checkbox";
+      checkbox.className="people-row-select";
+      checkbox.checked=selectedIds.has(row.id);
+      checkbox.addEventListener("click",(event)=>event.stopPropagation());
+      checkbox.addEventListener("change",()=>{
+        if(checkbox.checked)selectedIds.add(row.id); else selectedIds.delete(row.id);
+        updateBulkBar();
+      });
+      selectTd.append(checkbox);
 
       const name=document.createElement("td");
       const wrap=document.createElement("div");
@@ -51,7 +67,7 @@
       const follow=document.createElement("td"); follow.textContent=row.next_follow_up_at?dateText(row.next_follow_up_at):portal.titleCase(row.follow_up_status||"");
       const created=document.createElement("td"); created.textContent=dateText(row.created_at);
 
-      tr.append(name,stage,assess,enroll,assigned,enrolled,activity,follow,created);
+      tr.append(selectTd,name,stage,assess,enroll,assigned,enrolled,activity,follow,created);
       tr.addEventListener("click",()=>portal.openContact(row.id));
       body.append(tr);
     });
@@ -122,6 +138,7 @@
     }
     total=count||0;
     render(data||[]);
+    updateBulkBar();
     el("people-result-count").textContent=(mode==="recent"?"Showing recent people · ":"All people · ")+total+" total";
     el("people-page-label").textContent=mode==="recent"?"Recent 25":"Page "+(page+1);
     el("people-prev").disabled=mode==="recent"||page===0;
@@ -144,6 +161,88 @@
     });
   }
 
+
+  function updateBulkBar(){
+    el("people-selected-count").textContent=selectedIds.size+" selected";
+    el("people-bulk-bar").classList.toggle("hidden",selectedIds.size===0);
+    el("people-select-page").checked=currentRows.length>0&&currentRows.every((row)=>selectedIds.has(row.id));
+  }
+
+  function populateBulkValue(){
+    const action=el("people-bulk-action").value;
+    const select=el("people-bulk-value");
+    select.replaceChildren();
+    const add=(value,label)=>{const o=document.createElement("option");o.value=value;o.textContent=label;select.append(o);};
+
+    if(action==="assign_staff"){
+      add("","Unassigned");
+      portal.staffDirectory().forEach((s)=>add(s.user_id,s.display_name));
+    }else if(action==="set_stage"){
+      [["lead","Lead"],["assessment_lead","Assessment Lead"],["webinar_lead","Webinar Lead"],["applicant","Applicant"],["client","Client"],["inactive","Inactive"]].forEach(([v,l])=>add(v,l));
+    }else if(action==="set_followup_status"){
+      [["new","New"],["needs_follow_up","Needs Follow-Up"],["contacted","Contacted"],["consultation_scheduled","Consultation Scheduled"],["consultation_completed","Consultation Completed"],["nurture","Nurture"],["not_ready","Not Ready"],["closed","Closed"]].forEach(([v,l])=>add(v,l));
+    }else if(action==="add_tag"){
+      const o=document.createElement("option");o.value="__custom__";o.textContent="Enter tag when applying";select.append(o);
+    }else{
+      add("","Select action first");
+    }
+  }
+
+  async function applyBulk(){
+    if(!selectedIds.size)return;
+    const action=el("people-bulk-action").value;
+    if(!action)return;
+
+    let value=el("people-bulk-value").value;
+    if(action==="add_tag"){
+      value=window.prompt("Tag to add to "+selectedIds.size+" selected people:","")||"";
+      if(!value.trim())return;
+    }
+
+    const reason=window.prompt("Optional internal reason/note for this bulk change:","")||null;
+    const {data,error}=await client.rpc("bulk_update_people",{
+      p_contact_ids:[...selectedIds],
+      p_action:action,
+      p_value:value,
+      p_reason:reason
+    });
+    if(error){window.alert(error.message);return;}
+
+    selectedIds.clear();
+    updateBulkBar();
+    await Promise.all([load(),portal.loadDashboard()]);
+  }
+
+  async function exportCsv(){
+    let q=client.from("admin_people_directory").select("*");
+    const search=el("people-search-input").value.trim();
+    if(search){
+      const safe=search.replace(/[,%]/g," ").trim();
+      q=q.or("first_name.ilike.%"+safe+"%,last_name.ilike.%"+safe+"%,email.ilike.%"+safe+"%,phone.ilike.%"+safe+"%");
+    }
+    const stage=el("people-stage-filter").value;if(stage)q=q.eq("lifecycle_stage",stage);
+    const assigned=el("people-assigned-filter").value;if(assigned==="unassigned")q=q.is("assigned_to",null);else if(assigned)q=q.eq("assigned_to",assigned);
+    const source=el("people-source-filter").value;if(source)q=q.eq("first_source",source);
+    q=applySort(q).limit(5000);
+
+    const {data,error}=await q;
+    if(error){window.alert(error.message);return;}
+
+    const headers=["First Name","Last Name","Email","Phone","Stage","Assessment","Enrollment","Assigned","Source","Created","Enrolled","Last Activity","Follow-Up"];
+    const rows=(data||[]).map((r)=>[
+      r.first_name||"",r.last_name||"",r.email||"",r.phone||"",r.lifecycle_stage||"",
+      r.vitality_status||"not_started",r.enrollment_status||"not_started",r.assigned_name||"",
+      r.first_source||"",r.created_at||"",r.enrolled_at||"",r.last_activity_at||"",r.next_follow_up_at||""
+    ]);
+    const esc=(v)=>'"'+String(v).replace(/"/g,'""')+'"';
+    const csv=[headers,...rows].map((row)=>row.map(esc).join(",")).join("\n");
+    const blob=new Blob([csv],{type:"text/csv;charset=utf-8"});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement("a");
+    a.href=url;a.download="revitalized-people-"+new Date().toISOString().slice(0,10)+".csv";
+    a.click();URL.revokeObjectURL(url);
+  }
+
   function setMode(next){
     mode=next;page=0;
     el("people-view-recent").classList.toggle("active",mode==="recent");
@@ -158,6 +257,17 @@
       page=0;load();
     });
   });
+
+  el("people-bulk-action").addEventListener("change",populateBulkValue);
+  el("people-apply-bulk").addEventListener("click",applyBulk);
+  el("people-clear-selection").addEventListener("click",()=>{selectedIds.clear();updateBulkBar();document.querySelectorAll(".people-row-select").forEach((c)=>c.checked=false);});
+  el("people-select-page").addEventListener("change",(event)=>{
+    currentRows.forEach((row)=>event.target.checked?selectedIds.add(row.id):selectedIds.delete(row.id));
+    document.querySelectorAll(".people-row-select").forEach((c)=>c.checked=event.target.checked);
+    updateBulkBar();
+  });
+  el("people-export").addEventListener("click",exportCsv);
+  populateBulkValue();
 
   el("people-view-recent").addEventListener("click",()=>setMode("recent"));
   el("people-view-all").addEventListener("click",()=>setMode("all"));
