@@ -112,6 +112,99 @@
 
   let currentMember = null;
 
+  let activeAgreement=null;
+
+  function renderAgreements(rows){
+    const list=el("rm-agreements");
+    list.replaceChildren();
+    const actionNeeded=rows.filter((row)=>!["signed","waived"].includes(row.status)).length;
+    el("rm-agreement-action-count").textContent=actionNeeded+" action needed";
+
+    if(!rows.length){
+      list.innerHTML='<div class="rm112-empty">No membership agreements have been assigned yet.</div>';
+      return;
+    }
+
+    rows.forEach((row)=>{
+      const item=document.createElement("div");
+      item.className="rm139-agreement-item";
+      const top=document.createElement("div");
+      top.className="rm139-agreement-top";
+      const heading=document.createElement("strong");heading.textContent=row.name;
+      const chip=document.createElement("span");chip.className="rm112-chip";chip.textContent=title(row.status);
+      top.append(heading,chip);item.append(top);
+      if(row.description){const p=document.createElement("p");p.textContent=row.description;item.append(p);}
+      const meta=document.createElement("small");
+      meta.textContent=["Version "+row.template_version,row.signed_at?"Signed "+formatDate(row.signed_at,true):""].filter(Boolean).join(" · ");
+      item.append(meta);
+      const open=document.createElement("button");open.type="button";open.textContent=["signed","waived"].includes(row.status)?"View Agreement":"Review & Sign";
+      open.addEventListener("click",()=>openAgreement(row));item.append(open);
+      list.append(item);
+    });
+  }
+
+  function closeAgreement(){
+    activeAgreement=null;
+    el("rm-agreement-modal").classList.add("hidden");
+    el("rm-agreement-modal").setAttribute("aria-hidden","true");
+    showStatus(el("rm-agreement-sign-status"),"");
+  }
+
+  async function openAgreement(row){
+    activeAgreement=row;
+    el("rm-agreement-title").textContent=row.name;
+    el("rm-agreement-meta").textContent="Version "+row.template_version+" · "+title(row.status);
+    el("rm-agreement-content").textContent=row.content_text||"";
+    el("rm-agreement-signer-name").value="";
+    el("rm-agreement-accept").checked=false;
+    showStatus(el("rm-agreement-sign-status"),"");
+
+    const completed=["signed","waived"].includes(row.status);
+    el("rm-agreement-sign-form").classList.toggle("hidden",completed);
+    el("rm-agreement-completed").classList.toggle("hidden",!completed);
+    el("rm-agreement-completed").textContent=completed
+      ?(row.status==="signed"
+        ?"Signed by "+(row.signer_name||"member")+" on "+formatDate(row.acceptance_signed_at||row.signed_at,true)+"."
+        :"This agreement requirement was waived by ReVitalized.")
+      :"";
+
+    el("rm-agreement-modal").classList.remove("hidden");
+    el("rm-agreement-modal").setAttribute("aria-hidden","false");
+
+    if(!completed){
+      await client.functions.invoke("agreement-sign",{body:{action:"view",client_agreement_id:row.client_agreement_id}});
+    }
+  }
+
+  async function signAgreement(event){
+    event.preventDefault();
+    if(!activeAgreement)return;
+    showStatus(el("rm-agreement-sign-status"),"Signing agreement...");
+    const {data,error}=await client.functions.invoke("agreement-sign",{
+      body:{
+        action:"sign",
+        client_agreement_id:activeAgreement.client_agreement_id,
+        signer_name:el("rm-agreement-signer-name").value.trim(),
+        accepted_terms:el("rm-agreement-accept").checked
+      }
+    });
+    if(error||!data?.ok){showStatus(el("rm-agreement-sign-status"),error?.message||data?.error||"Agreement could not be signed.","error");return;}
+    showStatus(el("rm-agreement-sign-status"),"Agreement signed successfully.","success");
+    await loadDashboard();
+    window.setTimeout(closeAgreement,650);
+  }
+
+  async function declineAgreement(){
+    if(!activeAgreement)return;
+    if(!window.confirm("Decline this agreement? ReVitalized staff will need to review the next step with you."))return;
+    const {data,error}=await client.functions.invoke("agreement-sign",{body:{action:"decline",client_agreement_id:activeAgreement.client_agreement_id}});
+    if(error||!data?.ok){showStatus(el("rm-agreement-sign-status"),error?.message||data?.error||"Agreement could not be declined.","error");return;}
+    showStatus(el("rm-agreement-sign-status"),"Agreement declined. The ReVitalized team can review this with you.","success");
+    await loadDashboard();
+    window.setTimeout(closeAgreement,650);
+  }
+
+
   function renderBilling(row){
     const card=el("rm-billing-card");
     if(!row){card.classList.add("hidden");return;}
@@ -1529,7 +1622,8 @@
       refuelResult,
       referralSummaryResult,
       documentsResult,
-      billingResult
+      billingResult,
+      agreementsResult
     ] = await Promise.all([
       client.from("my_member_dashboard").select("*").maybeSingle(),
       client.from("my_member_entitlements").select("*").order("label"),
@@ -1560,10 +1654,11 @@
       client.from("my_refuel_access").select("*").limit(1).maybeSingle(),
       client.from("my_referral_summary").select("*").maybeSingle(),
       client.from("my_documents").select("*"),
-      client.from("my_billing_summary").select("*").limit(1).maybeSingle()
+      client.from("my_billing_summary").select("*").limit(1).maybeSingle(),
+      client.from("my_agreements").select("*")
     ]);
 
-    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult,notificationPrefsResult,healthConnectionsResult,challengesResult,communitySpacesResult,communityFeedResult,refuelResult,referralSummaryResult,documentsResult,billingResult].find((r) => r.error);
+    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult,notificationPrefsResult,healthConnectionsResult,challengesResult,communitySpacesResult,communityFeedResult,refuelResult,referralSummaryResult,documentsResult,billingResult,agreementsResult].find((r) => r.error);
     if (failed?.error) throw failed.error;
 
     const member = dashboardResult.data;
@@ -1724,6 +1819,10 @@
     if (event.key === "Escape" && !el("rm-course-modal").classList.contains("hidden")) closeCourse();
     if (event.key === "Escape" && !el("rm-message-modal").classList.contains("hidden")) closeConversation();
   });
+
+  el("rm-agreement-sign-form").addEventListener("submit",signAgreement);
+  el("rm-agreement-decline").addEventListener("click",declineAgreement);
+  document.querySelectorAll("[data-agreement-close]").forEach((n)=>n.addEventListener("click",closeAgreement));
 
   el("rm-document-upload-button").addEventListener("click",openDocumentUpload);
   el("rm-document-upload-form").addEventListener("submit",uploadMemberDocument);
