@@ -88,5 +88,80 @@
     if(!rows.length){root.innerHTML='<div class="empty-state">No active programs are currently configured.</div>';return;}
     rows.forEach(r=>root.append(card(r)));
   }
+  const contentSummary=document.getElementById("program-content-summary");
+  const contentList=document.getElementById("program-content-list");
+  const contentTabs=[...document.querySelectorAll("[data-program-content]")];
+  const contentSources={
+    courses:{table:"learning_courses",label:"Courses",select:"id,title,description,status,estimated_minutes,version",order:"title"},
+    challenges:{table:"wellness_challenges",label:"Challenges",select:"id,title,description,status,scope,starts_on,ends_on",order:"title"},
+    "meal-plans":{table:"meal_plan_templates",label:"Meal Plans",select:"id,title,description,status,days_count",order:"title"},
+    recipes:{table:"recipes",label:"Recipes",select:"id,title,status,meal_type,prep_minutes,cook_minutes",order:"title"},
+    fitness:{table:"fitness_programs",label:"Fitness Programs",select:"id,title,description,status,difficulty,environment,weeks",order:"title"},
+    workouts:{table:"workout_templates",label:"Workouts",select:"id,title,description,status,category,difficulty,duration_minutes",order:"title"}
+  };
+  let contentCache={};
+  let activeContent="courses";
+
+  const contentDetail=(key,row)=>{
+    if(key==="courses")return [row.version?"Version "+row.version:null,row.estimated_minutes?row.estimated_minutes+" min":null].filter(Boolean).join(" · ")||"Course content";
+    if(key==="challenges")return [row.scope?portal.titleCase(row.scope):null,row.starts_on&&row.ends_on?row.starts_on+" to "+row.ends_on:null].filter(Boolean).join(" · ")||"Wellness challenge";
+    if(key==="meal-plans")return row.days_count?row.days_count+" day plan":"Meal plan template";
+    if(key==="recipes")return [row.meal_type?portal.titleCase(row.meal_type):null,row.prep_minutes?row.prep_minutes+" min prep":null,row.cook_minutes?row.cook_minutes+" min cook":null].filter(Boolean).join(" · ")||"Recipe";
+    if(key==="fitness")return [row.difficulty?portal.titleCase(row.difficulty):null,row.environment?portal.titleCase(row.environment):null,row.weeks?row.weeks+" weeks":null].filter(Boolean).join(" · ")||"Fitness program";
+    if(key==="workouts")return [row.category?portal.titleCase(row.category):null,row.difficulty?portal.titleCase(row.difficulty):null,row.duration_minutes?row.duration_minutes+" min":null].filter(Boolean).join(" · ")||"Workout";
+    return "";
+  };
+
+  function renderContent(){
+    if(!contentList)return;
+    const rows=contentCache[activeContent]||[];
+    contentTabs.forEach(b=>b.classList.toggle("active",b.dataset.programContent===activeContent));
+    contentList.replaceChildren();
+    if(!rows.length){
+      const empty=document.createElement("div");
+      empty.className="program-content-empty";
+      empty.textContent="No "+contentSources[activeContent].label.toLowerCase()+" have been created yet. The backend structure is ready for this content when ReVitalized is ready to publish it.";
+      contentList.append(empty);
+      return;
+    }
+    rows.forEach(row=>{
+      const item=document.createElement("article");item.className="program-content-row";
+      const copy=document.createElement("div");copy.className="program-content-copy";
+      const name=document.createElement("strong");name.textContent=row.title||"Untitled";
+      const desc=document.createElement("span");desc.textContent=row.description||contentDetail(activeContent,row);
+      copy.append(name,desc);
+      const detail=document.createElement("span");detail.textContent=contentDetail(activeContent,row);
+      const status=document.createElement("span");status.className="program-content-status "+String(row.status||"draft").toLowerCase();status.textContent=portal.titleCase(row.status||"draft");
+      const kind=document.createElement("span");kind.textContent=contentSources[activeContent].label;
+      item.append(copy,detail,status,kind);
+      contentList.append(item);
+    });
+  }
+
+  async function loadContent(){
+    if(!contentSummary||!contentList)return;
+    const entries=Object.entries(contentSources);
+    const results=await Promise.all(entries.map(async([key,source])=>{
+      const {data,error}=await client.from(source.table).select(source.select).order(source.order,{ascending:true});
+      return {key,data:data||[],error};
+    }));
+    contentCache={};
+    contentSummary.replaceChildren();
+    results.forEach(({key,data,error})=>{
+      contentCache[key]=error?[]:data;
+      const stat=document.createElement("div");stat.className="program-content-stat";
+      const l=document.createElement("span");l.textContent=contentSources[key].label;
+      const v=document.createElement("strong");v.textContent=error?"—":String(data.length);
+      stat.append(l,v);contentSummary.append(stat);
+    });
+    renderContent();
+  }
+
+  contentTabs.forEach(button=>button.addEventListener("click",()=>{
+    activeContent=button.dataset.programContent;
+    renderContent();
+  }));
+
   load();
+  loadContent();
 })();
