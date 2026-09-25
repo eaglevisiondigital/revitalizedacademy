@@ -10,6 +10,7 @@
   const pageSize=100;
   let total=0;
   let timer=null;
+  let quickView="all";
 
   function dateText(value){
     return value?portal.formatDate(value,true):"—";
@@ -85,6 +86,12 @@
     const stage=el("people-stage-filter").value;
     if(stage)q=q.eq("lifecycle_stage",stage);
 
+    if(quickView==="new_leads")q=q.in("lifecycle_stage",["lead","assessment_lead","webinar_lead"]).eq("follow_up_status","new");
+    if(quickView==="unassigned")q=q.is("assigned_to",null);
+    if(quickView==="needs_followup")q=q.eq("follow_up_status","needs_follow_up");
+    if(quickView==="applicants")q=q.eq("lifecycle_stage","applicant");
+    if(quickView==="clients")q=q.eq("lifecycle_stage","client");
+
     const assigned=el("people-assigned-filter").value;
     if(assigned==="unassigned")q=q.is("assigned_to",null);
     else if(assigned)q=q.eq("assigned_to",assigned);
@@ -144,6 +151,14 @@
     load();
   }
 
+  document.querySelectorAll("[data-people-quick]").forEach((button)=>{
+    button.addEventListener("click",()=>{
+      quickView=button.dataset.peopleQuick||"all";
+      document.querySelectorAll("[data-people-quick]").forEach((b)=>b.classList.toggle("active",b===button));
+      page=0;load();
+    });
+  });
+
   el("people-view-recent").addEventListener("click",()=>setMode("recent"));
   el("people-view-all").addEventListener("click",()=>setMode("all"));
   el("people-prev").addEventListener("click",()=>{if(page>0){page--;load();}});
@@ -161,6 +176,8 @@
     el("people-source-filter").value="";
     el("people-assessment-filter").value="";
     el("people-enrollment-filter").value="";
+    quickView="all";
+    document.querySelectorAll("[data-people-quick]").forEach((b)=>b.classList.toggle("active",b.dataset.peopleQuick==="all"));
     page=0;load();
   });
 
