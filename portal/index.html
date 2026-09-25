@@ -1924,7 +1924,7 @@
                 <span>Email</span>
                 <input id="staff-invite-email" type="email" maxlength="320" required>
               </label>
-              <label class="staff-admin-wide">
+              <label>
                 <span>Role</span>
                 <select id="staff-invite-role">
                   <option value="coach">Coach</option>
@@ -1932,6 +1932,14 @@
                   <option value="financial">Financial</option>
                   <option value="support">Support</option>
                   <option value="owner">Owner</option>
+                </select>
+              </label>
+              <label>
+                <span>People data scope</span>
+                <select id="staff-invite-contact-scope">
+                  <option value="assigned">Assigned People Only</option>
+                  <option value="all">All People</option>
+                  <option value="none">No People Access</option>
                 </select>
               </label>
               <label class="staff-admin-wide">
@@ -1979,6 +1987,14 @@
                   <option value="inactive">Inactive</option>
                 </select>
               </label>
+              <label>
+                <span>People data scope</span>
+                <select id="staff-edit-contact-scope">
+                  <option value="all">All People</option>
+                  <option value="assigned">Assigned People Only</option>
+                  <option value="none">No People Access</option>
+                </select>
+              </label>
               <label class="staff-admin-wide">
                 <span>Reason for role/status change</span>
                 <input id="staff-edit-reason" type="text" maxlength="2000" placeholder="Required when changing access">
@@ -1987,6 +2003,7 @@
             <div class="staff-admin-actions">
               <button id="staff-save-role" class="secondary-button" type="button">Save Role</button>
               <button id="staff-save-status" class="secondary-button" type="button">Save Status</button>
+              <button id="staff-save-contact-scope" class="secondary-button" type="button">Save People Scope</button>
             </div>
             <p id="staff-account-status" class="form-status" aria-live="polite"></p>
           </section>
