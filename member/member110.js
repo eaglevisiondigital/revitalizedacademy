@@ -1640,6 +1640,122 @@
     await loadDashboard();
   }
 
+
+  function renderAskReVitalized(questionTypes,requests,enabled){
+    const card=el("rm-ask-revitalized-card");
+    if(!card)return;
+    card.classList.toggle("hidden",!enabled);
+    if(!enabled)return;
+
+    const select=el("rm-ask-type");
+    const current=select.value;
+    select.replaceChildren();
+    (questionTypes||[]).forEach((row)=>{
+      const option=document.createElement("option");
+      option.value=row.question_type;
+      option.textContent=row.label;
+      option.dataset.mode=row.handling_mode||"";
+      select.append(option);
+    });
+    if(current&&[...select.options].some(o=>o.value===current))select.value=current;
+
+    const history=el("rm-ask-history");
+    history.replaceChildren();
+    const rows=requests||[];
+    const open=rows.filter(r=>!["answered","resolved","cancelled"].includes(r.status)).length;
+    el("rm-ask-summary").textContent=rows.length
+      ? open+" Open · "+rows.filter(r=>["answered","resolved"].includes(r.status)).length+" Answered"
+      : "No Questions Yet";
+    el("rm-ask-status-chip").textContent=open?open+" Open":"Ready";
+
+    if(!rows.length){
+      const empty=document.createElement("div");
+      empty.className="rm112-empty";
+      empty.textContent="Your recent Ask ReVitalized questions will appear here.";
+      history.append(empty);
+      return;
+    }
+
+    rows.slice(0,8).forEach((row)=>{
+      const item=document.createElement("article");
+      item.className="rm169-ask-item";
+
+      const top=document.createElement("div");
+      top.className="rm169-ask-item-top";
+      const label=document.createElement("strong");
+      label.textContent=row.question_type_label||title(row.question_type);
+      const state=document.createElement("span");
+      state.className="rm112-chip";
+      const statusLabel={
+        queued:"Processing",
+        retrieving:"Processing",
+        draft_ready:"Reviewing",
+        coach_review:"Coach Review",
+        escalated:"Coach Review",
+        answered:"Answered",
+        resolved:"Resolved",
+        cancelled:"Cancelled"
+      }[row.status]||title(row.status);
+      state.textContent=statusLabel;
+      top.append(label,state);
+
+      const question=document.createElement("p");
+      question.textContent=row.question;
+
+      item.append(top,question);
+
+      if(row.final_answer){
+        const answer=document.createElement("div");
+        answer.className="rm169-ask-answer";
+        const answerLabel=document.createElement("strong");
+        answerLabel.textContent="ReVitalized Response";
+        const answerText=document.createElement("p");
+        answerText.textContent=row.final_answer;
+        answer.append(answerLabel,answerText);
+        item.append(answer);
+      }else{
+        const note=document.createElement("small");
+        note.textContent=row.status==="coach_review"||row.status==="escalated"
+          ?"Your coaching team is reviewing this question."
+          :"Your question is being processed.";
+        item.append(note);
+      }
+
+      const meta=document.createElement("small");
+      meta.textContent=[
+        row.assigned_coach_name?"Coach: "+row.assigned_coach_name:null,
+        row.created_at?formatDate(row.created_at,true):null
+      ].filter(Boolean).join(" · ");
+      item.append(meta);
+      history.append(item);
+    });
+  }
+
+  async function submitAskReVitalized(event){
+    event.preventDefault();
+    const status=el("rm-ask-form-status");
+    const type=el("rm-ask-type").value;
+    const question=el("rm-ask-question").value.trim();
+    if(!type||question.length<2){
+      showStatus(status,"Choose a category and enter your question.","error");
+      return;
+    }
+
+    showStatus(status,"Sending your question...");
+    const {error}=await client.rpc("submit_my_companion_question",{
+      p_question_type:type,
+      p_question:question
+    });
+    if(error){
+      showStatus(status,error.message||"Your question could not be submitted.","error");
+      return;
+    }
+
+    el("rm-ask-question").value="";
+    showStatus(status,"Question submitted.","success");
+    await loadDashboard();
+  }
+
   async function loadDashboard() {
     const [
       dashboardResult,
@@ -1673,7 +1789,9 @@
       documentsResult,
       billingResult,
       agreementsResult,
-      coachingEntitlementsResult
+      coachingEntitlementsResult,
+      companionTypesResult,
+      companionRequestsResult
     ] = await Promise.all([
       client.from("my_member_dashboard").select("*").maybeSingle(),
       client.from("my_member_entitlements").select("*").order("label"),
@@ -1706,10 +1824,12 @@
       client.from("my_documents").select("*"),
       client.from("my_billing_summary").select("*").limit(1).maybeSingle(),
       client.from("my_agreements").select("*"),
-      client.from("my_coaching_entitlements").select("*")
+      client.from("my_coaching_entitlements").select("*"),
+      client.from("my_companion_question_types").select("*").order("sort_order"),
+      client.from("my_companion_requests").select("*").limit(20)
     ]);
 
-    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult,notificationPrefsResult,healthConnectionsResult,challengesResult,communitySpacesResult,communityFeedResult,refuelResult,referralSummaryResult,documentsResult,billingResult,agreementsResult,coachingEntitlementsResult].find((r) => r.error);
+    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult,notificationPrefsResult,healthConnectionsResult,challengesResult,communitySpacesResult,communityFeedResult,refuelResult,referralSummaryResult,documentsResult,billingResult,agreementsResult,coachingEntitlementsResult,companionTypesResult,companionRequestsResult].find((r) => r.error);
     if (failed?.error) throw failed.error;
 
     const member = dashboardResult.data;
@@ -1752,6 +1872,8 @@
     renderGoals(goalsResult.data || []);
     renderHabits(habitsResult.data || []);
     renderAssignments(assignmentsResult.data || []);
+    const askEnabled=(entitlementsResult.data||[]).some((row)=>row.entitlement_key==="ai_advisor"&&row.status==="active");
+    renderAskReVitalized(companionTypesResult.data||[],companionRequestsResult.data||[],askEnabled);
     metricCatalog = metricsResult.data || [];
     renderMetricOptions();
     renderRecentProgress(progressResult.data || []);
@@ -1819,6 +1941,8 @@
   el("rm-community-comment-form").addEventListener("submit",addCommunityComment);
   document.querySelectorAll("[data-community-post-close]").forEach((node)=>node.addEventListener("click",closeCommunityPost));
   document.querySelectorAll("[data-community-thread-close]").forEach((node)=>node.addEventListener("click",closeCommunityThread));
+
+  el("rm-ask-form").addEventListener("submit",submitAskReVitalized);
 
   el("rm-notification-form").addEventListener("submit",saveNotificationPreferences);
 

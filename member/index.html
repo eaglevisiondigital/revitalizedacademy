@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex,nofollow,noarchive">
   <title>Member Dashboard | ReVitalized Academy</title>
   <link rel="icon" href="../assets/images/revitalized-logo-dark-approved-v69.png">
-  <link rel="stylesheet" href="member110.css?v=140">
+  <link rel="stylesheet" href="member110.css?v=169">
 </head>
 <body>
   <main class="rm112-page">
@@ -293,6 +293,35 @@
       </div>
 
 
+
+      <section id="rm-ask-revitalized-card" class="rm112-card rm169-ask-card hidden">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">ASK REVITALIZED</p>
+            <h2>Get help with your program</h2>
+          </div>
+          <span id="rm-ask-status-chip" class="rm112-chip">Ready</span>
+        </div>
+        <p class="rm169-ask-intro">Ask about your ReVitalized program, habits, nutrition, fitness, assignments or platform features. Questions that need personal health judgment are routed to your coaching team for review.</p>
+        <form id="rm-ask-form" class="rm169-ask-form">
+          <label>
+            <span>Question Category</span>
+            <select id="rm-ask-type" required></select>
+          </label>
+          <label>
+            <span>Your Question</span>
+            <textarea id="rm-ask-question" rows="4" maxlength="8000" placeholder="What would you like help with?" required></textarea>
+          </label>
+          <button type="submit">Ask ReVitalized</button>
+          <p id="rm-ask-form-status" class="rm112-status" aria-live="polite"></p>
+        </form>
+        <div class="rm169-ask-history-head">
+          <strong>Recent Questions</strong>
+          <span id="rm-ask-summary"></span>
+        </div>
+        <div id="rm-ask-history" class="rm169-ask-history"></div>
+      </section>
+
       <section class="rm112-card rm121-settings-card">
         <div class="rm112-card-head">
           <div>
@@ -557,6 +586,6 @@
   </main>
 
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
-  <script defer src="member110.js?v=142"></script>
+  <script defer src="member110.js?v=169"></script>
 </body>
 </html>
