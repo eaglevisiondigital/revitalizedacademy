@@ -769,16 +769,16 @@
     }
 
     showStatus(loginStatus, "Sending password reset email...");
-    const { data, error } = await authClient.functions.invoke("staff-password-reset", {
-      body: { email }
+    const { error } = await authClient.auth.resetPasswordForEmail(email, {
+      redirectTo: "https://revitalizedacademy.com/portal/password-reset.html"
     });
     if (error) {
-      showStatus(loginStatus, "We could not send the reset email right now. Please try again or contact a ReVitalized owner.", "error");
+      showStatus(loginStatus, error.message || "We could not send the reset email right now.", "error");
       return;
     }
     showStatus(
       loginStatus,
-      data?.message || "If that email belongs to a staff account, a password setup email has been sent.",
+      "Check your inbox. The reset link will open a dedicated page where you can choose a new password.",
       "success"
     );
   });
