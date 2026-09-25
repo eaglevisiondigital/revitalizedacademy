@@ -20,3 +20,8 @@
 .client-agreements-actions{display:flex;gap:8px;margin-top:10px}
 @media(max-width:900px){.agreement-library-metrics{grid-template-columns:repeat(3,1fr)}.agreement-template-item,.client-agreement-item{grid-template-columns:1fr 1fr}.agreement-template-actions,.client-agreement-actions-row{justify-content:flex-start}}
 @media(max-width:580px){.agreement-library-metrics{grid-template-columns:1fr 1fr}.agreement-template-item,.client-agreement-item{grid-template-columns:1fr}}
+
+.client-contract-fields{padding:12px;border:1px solid #e2d6bc;border-radius:11px;background:#fffaf1}
+.client-contract-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:10px}
+.client-contract-heading strong{font-size:12px;color:#30463a}.client-contract-heading span{font-size:8px;color:#85765c;text-align:right}
+.client-contract-approval-note{margin-top:8px;padding:8px 9px;border-radius:8px;background:#fff;color:#746444;font-size:8px;line-height:1.45}
