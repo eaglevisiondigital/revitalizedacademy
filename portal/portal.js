@@ -760,20 +760,26 @@
   });
 
   el("forgot-password").addEventListener("click", async () => {
-    const email = el("login-email").value.trim();
+    const email = el("login-email").value.trim().toLowerCase();
     if (!email) {
       showStatus(loginStatus, "Enter your email address first.", "error");
       el("login-email").focus();
       return;
     }
 
-    showStatus(loginStatus, "Sending reset email...");
-    const { error } = await authClient.auth.resetPasswordForEmail(email, { redirectTo: PORTAL_URL });
+    showStatus(loginStatus, "Sending password reset email...");
+    const { data, error } = await authClient.functions.invoke("staff-password-reset", {
+      body: { email }
+    });
     if (error) {
-      showStatus(loginStatus, error.message, "error");
+      showStatus(loginStatus, "We could not send the reset email right now. Please try again or contact a ReVitalized owner.", "error");
       return;
     }
-    showStatus(loginStatus, "Check your inbox for the password reset email.", "success");
+    showStatus(
+      loginStatus,
+      data?.message || "If that email belongs to a staff account, a password setup email has been sent.",
+      "success"
+    );
   });
 
   el("password-form").addEventListener("submit", async (event) => {

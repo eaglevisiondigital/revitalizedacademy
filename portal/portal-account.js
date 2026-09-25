@@ -172,6 +172,67 @@
     }
 
     byId("account-profile-form")?.addEventListener("submit",saveProfile);
+
+    const changePassword=byId("account-change-password");
+    if(changePassword){
+      changePassword.onclick=(event)=>{
+        event.preventDefault();
+        setHidden(byId("account-overview"),true);
+        setHidden(byId("account-password-panel"),false);
+        const status=byId("account-password-status");
+        if(status){status.textContent="";status.className="form-status";}
+        byId("account-new-password")?.focus();
+      };
+    }
+
+    const passwordCancel=byId("account-password-cancel");
+    if(passwordCancel){
+      passwordCancel.onclick=(event)=>{
+        event.preventDefault();
+        setHidden(byId("account-password-panel"),true);
+        setHidden(byId("account-overview"),false);
+      };
+    }
+
+    const passwordForm=byId("account-password-form");
+    if(passwordForm){
+      passwordForm.addEventListener("submit",async(event)=>{
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        const client=window.RA_PORTAL?.authClient;
+        const status=byId("account-password-status");
+        const password=byId("account-new-password")?.value||"";
+        const confirm=byId("account-confirm-password")?.value||"";
+        if(!client||!status)return;
+        if(password.length<10){
+          status.textContent="Use at least 10 characters for your password.";
+          status.className="form-status error";
+          return;
+        }
+        if(password!==confirm){
+          status.textContent="The passwords do not match.";
+          status.className="form-status error";
+          return;
+        }
+        status.textContent="Saving your new password...";
+        status.className="form-status";
+        const {error}=await client.auth.updateUser({password});
+        if(error){
+          status.textContent=error.message;
+          status.className="form-status error";
+          return;
+        }
+        byId("account-new-password").value="";
+        byId("account-confirm-password").value="";
+        status.textContent="Password updated successfully.";
+        status.className="form-status success";
+        window.setTimeout(()=>{
+          setHidden(byId("account-password-panel"),true);
+          setHidden(byId("account-overview"),false);
+        },900);
+      },true);
+    }
+
     byId("account-close")?.addEventListener("click",closeAccount);
     byId("account-done")?.addEventListener("click",closeAccount);
     document.querySelectorAll("[data-account-close]").forEach((node)=>{
