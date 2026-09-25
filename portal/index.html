@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="portal-staff-access.css?v=131">
   <link rel="stylesheet" href="portal-referrals.css?v=130">
   <link rel="stylesheet" href="portal-team-calendar.css?v=135">
+  <link rel="stylesheet" href="portal-documents.css?v=136">
 </head>
 <body>
   <main class="portal-page">
@@ -392,6 +393,22 @@
               <div class="client-challenges-actions">
                 <button id="client-manage-challenges" class="primary-button compact-action" type="button">Manage Challenges</button>
               </div>
+            </section>
+
+
+            <section id="client-documents-section" class="contact-section client-documents-section hidden">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">DOCUMENT VAULT</p>
+                  <h3>Secure client files</h3>
+                </div>
+                <span id="client-documents-chip" class="status-badge">0 Files</span>
+              </div>
+              <div id="client-documents-list" class="client-documents-list"></div>
+              <div class="client-documents-actions">
+                <button id="client-document-upload-button" class="primary-button compact-action" type="button">Upload Document</button>
+              </div>
+              <p id="client-documents-status" class="form-status" aria-live="polite"></p>
             </section>
 
             <section class="contact-section">
@@ -1977,6 +1994,39 @@
         </section>
       </div>
 
+
+      <div id="client-document-modal" class="people-modal hidden" aria-hidden="true">
+        <div class="people-modal-backdrop" data-client-document-close></div>
+        <section class="people-dialog" role="dialog" aria-modal="true" aria-labelledby="client-document-modal-title">
+          <button class="people-close" type="button" data-client-document-close aria-label="Close document upload">×</button>
+          <p class="eyebrow">SECURE DOCUMENT VAULT</p>
+          <h2 id="client-document-modal-title">Upload client document</h2>
+          <form id="client-document-form" class="people-form">
+            <div class="people-grid">
+              <label><span>Title</span><input id="client-document-title" type="text" maxlength="240" required></label>
+              <label><span>Category</span>
+                <select id="client-document-category">
+                  <option value="general">General</option>
+                  <option value="coaching">Coaching</option>
+                  <option value="health">Health</option>
+                  <option value="progress">Progress</option>
+                  <option value="financial">Financial</option>
+                  <option value="agreement">Agreement</option>
+                </select>
+              </label>
+              <label class="people-wide"><span>Description</span><textarea id="client-document-description" rows="3" maxlength="3000"></textarea></label>
+              <label class="people-wide"><span>File</span><input id="client-document-file" type="file" accept=".pdf,.jpg,.jpeg,.png,.webp,.txt,.doc,.docx,.xls,.xlsx" required></label>
+              <label class="people-wide client-document-visible"><input id="client-document-visible" type="checkbox" checked><span>Visible to member in their Document Vault</span></label>
+            </div>
+            <div class="people-form-actions">
+              <button class="secondary-button" type="button" data-client-document-close>Cancel</button>
+              <button class="primary-button" type="submit">Upload Securely</button>
+            </div>
+            <p id="client-document-form-status" class="form-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
       <div class="portal-content">
         <div class="portal-intro">
           <div>
@@ -2408,5 +2458,6 @@
   <script defer src="portal-permissions.js?v=130"></script>
   <script defer src="portal-referrals.js?v=130"></script>
   <script defer src="portal-team-calendar.js?v=135"></script>
+  <script defer src="portal-documents.js?v=136"></script>
 </body>
 </html>
