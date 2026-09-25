@@ -112,6 +112,40 @@
 
   let currentMember = null;
 
+  function renderCoachingEntitlements(rows){
+    const target=el("rm-coaching-entitlements");
+    target.replaceChildren();
+    if(!rows.length){
+      target.innerHTML='<div class="rm112-empty">Your coaching access will appear here when your program entitlements are activated.</div>';
+      return;
+    }
+    rows.forEach((row)=>{
+      const item=document.createElement("div");item.className="rm140-entitlement";
+      const heading=document.createElement("strong");heading.textContent=row.label;
+      const meta=document.createElement("small");
+      meta.textContent=row.limit_value===null
+        ?"Access included · no numeric session limit has been configured."
+        :(row.reset_cadence&&row.reset_cadence!=="none"?"Resets "+title(row.reset_cadence):"Program allowance");
+      item.append(heading,meta);
+
+      const stats=document.createElement("div");stats.className="rm140-entitlement-stats";
+      const values=[
+        ["Included",row.limit_value===null?"Included":row.limit_value],
+        ["Used",row.used_value||0],
+        ["Reserved",row.reserved_sessions||0],
+        ["Remaining",row.remaining_value===null?"—":row.remaining_value]
+      ];
+      values.forEach(([label,value])=>{
+        const d=document.createElement("div");
+        const s=document.createElement("span");s.textContent=label;
+        const b=document.createElement("b");b.textContent=String(value);
+        d.append(s,b);stats.append(d);
+      });
+      item.append(stats);target.append(item);
+    });
+  }
+
+
   let activeAgreement=null;
 
   function renderAgreements(rows){
@@ -1623,7 +1657,8 @@
       referralSummaryResult,
       documentsResult,
       billingResult,
-      agreementsResult
+      agreementsResult,
+      coachingEntitlementsResult
     ] = await Promise.all([
       client.from("my_member_dashboard").select("*").maybeSingle(),
       client.from("my_member_entitlements").select("*").order("label"),
@@ -1655,10 +1690,11 @@
       client.from("my_referral_summary").select("*").maybeSingle(),
       client.from("my_documents").select("*"),
       client.from("my_billing_summary").select("*").limit(1).maybeSingle(),
-      client.from("my_agreements").select("*")
+      client.from("my_agreements").select("*"),
+      client.from("my_coaching_entitlements").select("*")
     ]);
 
-    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult,notificationPrefsResult,healthConnectionsResult,challengesResult,communitySpacesResult,communityFeedResult,refuelResult,referralSummaryResult,documentsResult,billingResult,agreementsResult].find((r) => r.error);
+    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult,notificationPrefsResult,healthConnectionsResult,challengesResult,communitySpacesResult,communityFeedResult,refuelResult,referralSummaryResult,documentsResult,billingResult,agreementsResult,coachingEntitlementsResult].find((r) => r.error);
     if (failed?.error) throw failed.error;
 
     const member = dashboardResult.data;
