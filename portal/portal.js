@@ -518,7 +518,7 @@
 
     const { data: staff, error } = await authClient
       .from("staff_access")
-      .select("role, display_name")
+      .select("role, display_name, status")
       .eq("user_id", session.user.id)
       .maybeSingle();
 
@@ -530,6 +530,19 @@
 
     if (!staff) {
       showPending();
+      return;
+    }
+
+    if (staff.status !== "active") {
+      showLogin();
+      showStatus(
+        loginStatus,
+        staff.status === "suspended"
+          ? "Your ReVitalized staff access is currently suspended. Please contact an owner or administrator."
+          : "Your ReVitalized staff access is inactive. Please contact an owner or administrator.",
+        "error"
+      );
+      await authClient.auth.signOut();
       return;
     }
 
@@ -770,7 +783,7 @@
   async function openAccount() {
     const [{ data: userData, error: userError }, { data: staff, error: staffError }] = await Promise.all([
       authClient.auth.getUser(),
-      authClient.from("staff_access").select("role, display_name").maybeSingle()
+      authClient.from("staff_access").select("role, display_name, status").maybeSingle()
     ]);
 
     if (userError || staffError || !userData?.user) {
