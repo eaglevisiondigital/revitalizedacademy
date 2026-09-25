@@ -1,0 +1,22 @@
+
+.agreement-library-panel{margin-bottom:18px}
+.agreement-library-heading{align-items:flex-start}
+.agreement-library-metrics{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:14px 0 12px}
+.agreement-library-stat{padding:10px 11px;border:1px solid #e2e9e5;border-radius:12px;background:#fbfcfb}
+.agreement-library-stat span{display:block;font-size:8px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:#7d8a83}
+.agreement-library-stat strong{display:block;margin-top:4px;font-family:Georgia,"Times New Roman",serif;font-size:22px;font-weight:500;color:#294134}
+.agreement-library-list{display:grid;gap:8px}
+.agreement-template-item{display:grid;grid-template-columns:minmax(180px,1.4fr) 100px 120px minmax(180px,1fr);gap:10px;align-items:center;padding:11px 12px;border:1px solid #e4ebe7;border-radius:11px;background:#fbfcfb}
+.agreement-template-copy strong{display:block;font-size:11px;color:#30463a}.agreement-template-copy span{display:block;margin-top:2px;font-size:8px;color:#7d8a83}
+.agreement-template-state{font-size:8px;font-weight:900;text-transform:uppercase;color:#65756b}
+.agreement-template-actions{display:flex;gap:6px;justify-content:flex-end;flex-wrap:wrap}.agreement-template-actions button{min-height:29px;padding:0 8px;border:1px solid #cedad2;border-radius:7px;background:#fff;color:#154734;font-size:8px;font-weight:900}
+
+.client-agreements-section{border-color:#dbe5dd;background:linear-gradient(180deg,#fff,#fbfdfb)}
+.client-agreements-list{display:grid;gap:8px;margin-top:10px}
+.client-agreement-item{display:grid;grid-template-columns:minmax(180px,1.4fr) 90px 130px auto;gap:10px;align-items:center;padding:10px 11px;border:1px solid #e4ebe7;border-radius:10px;background:#fbfcfb}
+.client-agreement-copy strong{display:block;font-size:11px;color:#30463a}.client-agreement-copy span{display:block;margin-top:2px;font-size:8px;color:#7d8a83}
+.client-agreement-state{font-size:8px;font-weight:900;text-transform:uppercase;color:#65756b}
+.client-agreement-actions-row{display:flex;gap:6px;justify-content:flex-end;flex-wrap:wrap}.client-agreement-actions-row button{min-height:29px;padding:0 8px;border:1px solid #cedad2;border-radius:7px;background:#fff;color:#154734;font-size:8px;font-weight:900}.client-agreement-actions-row button.warn{color:#8f5a2d;border-color:#dfc7b5}
+.client-agreements-actions{display:flex;gap:8px;margin-top:10px}
+@media(max-width:900px){.agreement-library-metrics{grid-template-columns:repeat(3,1fr)}.agreement-template-item,.client-agreement-item{grid-template-columns:1fr 1fr}.agreement-template-actions,.client-agreement-actions-row{justify-content:flex-start}}
+@media(max-width:580px){.agreement-library-metrics{grid-template-columns:1fr 1fr}.agreement-template-item,.client-agreement-item{grid-template-columns:1fr}}
