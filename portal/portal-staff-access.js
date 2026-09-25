@@ -156,6 +156,13 @@
       const actions=document.createElement("div");
       actions.className="staff-access-actions";
       if(kind==="staff"){
+        if(["owner","admin","coach"].includes(row.role)){
+          const capacity=document.createElement("button");
+          capacity.type="button";
+          capacity.textContent="Capacity";
+          capacity.addEventListener("click",()=>document.dispatchEvent(new CustomEvent("ra:open-capacity",{detail:{staff:row}})));
+          actions.append(capacity);
+        }
         const manage=document.createElement("button");
         manage.type="button";
         manage.textContent="Manage";
