@@ -127,10 +127,18 @@
 
       const state=document.createElement("span");
       state.className="staff-status-pill "+String(row.status||"").toLowerCase();
-      state.textContent=kind==="invite"?"Invitation "+portal.titleCase(row.status):portal.titleCase(row.status);
+      state.textContent=kind==="invite"
+        ?"Invitation "+portal.titleCase(row.status)
+        :portal.titleCase(row.status)+(row.onboarding_status==="pending"?" · NDA Pending":"");
 
       const perms=document.createElement("div");
       perms.className="staff-access-perms";
+      if(kind==="staff"&&row.onboarding_status==="complete"&&row.last_staff_agreement_signed_at){
+        const nda=document.createElement("span");
+        nda.className="staff-access-perm-chip";
+        nda.textContent="NDA Signed";
+        perms.append(nda);
+      }
       if(kind==="staff"){
         const highlights=permissionHighlights(row);
         if(!highlights.length){
