@@ -547,6 +547,275 @@
     await loadContent();
   }
 
+
+  let courseBuilderModal=null;
+  let courseBuilderCourse=null;
+  let courseBuilderModules=[];
+  let courseBuilderLessons=[];
+
+  function ensureCourseBuilder(){
+    if(courseBuilderModal)return courseBuilderModal;
+    courseBuilderModal=document.createElement("div");
+    courseBuilderModal.className="course-builder-modal hidden";
+    courseBuilderModal.setAttribute("aria-hidden","true");
+    courseBuilderModal.innerHTML=
+      '<div class="course-builder-backdrop" data-course-builder-close></div>'+
+      '<section class="course-builder-dialog" role="dialog" aria-modal="true" aria-labelledby="course-builder-title">'+
+        '<button class="course-builder-close" type="button" aria-label="Close">×</button>'+
+        '<p class="eyebrow">COURSE BUILDER</p>'+
+        '<h2 id="course-builder-title">Build Course</h2>'+
+        '<p class="course-builder-intro">Organize modules and lessons, then publish lessons when they are ready for members.</p>'+
+        '<div id="course-builder-list" class="course-builder-list"></div>'+
+        '<div class="course-builder-create-grid">'+
+          '<section class="course-builder-create">'+
+            '<div><strong>Add Module</strong><span>Create a new section inside this course.</span></div>'+
+            '<label><span>Module Title</span><input id="course-builder-module-title" type="text" maxlength="120"></label>'+
+            '<label><span>Description</span><textarea id="course-builder-module-description" rows="3"></textarea></label>'+
+            '<label><span>Order</span><input id="course-builder-module-order" type="number" min="1" step="1" value="1"></label>'+
+            '<button id="course-builder-add-module" class="primary" type="button">Add Module</button>'+
+          '</section>'+
+          '<section class="course-builder-create">'+
+            '<div><strong>Add Lesson</strong><span>Add content to one of the course modules.</span></div>'+
+            '<label><span>Module</span><select id="course-builder-lesson-module"></select></label>'+
+            '<label><span>Lesson Title</span><input id="course-builder-lesson-title" type="text" maxlength="140"></label>'+
+            '<div class="course-builder-inline">'+
+              '<label><span>Type</span><select id="course-builder-lesson-type"><option value="content">Content</option><option value="video">Video</option><option value="audio">Audio</option><option value="article">Article</option><option value="worksheet">Worksheet</option><option value="checkin">Check-In</option></select></label>'+
+              '<label><span>Duration</span><input id="course-builder-lesson-duration" type="number" min="0" step="1" placeholder="Minutes"></label>'+
+            '</div>'+
+            '<label><span>Media URL</span><input id="course-builder-lesson-media" type="url" maxlength="1000" placeholder="Optional"></label>'+
+            '<label><span>Description</span><textarea id="course-builder-lesson-description" rows="3"></textarea></label>'+
+            '<label class="course-builder-check"><input id="course-builder-lesson-required" type="checkbox" checked><span>Required For Completion</span></label>'+
+            '<button id="course-builder-add-lesson" class="primary" type="button">Add Lesson</button>'+
+          '</section>'+
+        '</div>'+
+        '<p id="course-builder-status" class="form-status" aria-live="polite"></p>'+
+      '</section>';
+    document.body.append(courseBuilderModal);
+    courseBuilderModal.querySelector("[data-course-builder-close]")?.addEventListener("click",closeCourseBuilder);
+    courseBuilderModal.querySelector(".course-builder-close")?.addEventListener("click",closeCourseBuilder);
+    courseBuilderModal.querySelector("#course-builder-add-module")?.addEventListener("click",addCourseModule);
+    courseBuilderModal.querySelector("#course-builder-add-lesson")?.addEventListener("click",addCourseLesson);
+    return courseBuilderModal;
+  }
+
+  function closeCourseBuilder(){
+    if(!courseBuilderModal)return;
+    courseBuilderModal.classList.add("hidden");
+    courseBuilderModal.setAttribute("aria-hidden","true");
+    courseBuilderCourse=null;
+    courseBuilderModules=[];
+    courseBuilderLessons=[];
+  }
+
+  async function loadCourseBuilderData(){
+    if(!courseBuilderCourse)return;
+    const [modules,lessons]=await Promise.all([
+      client.from("learning_modules")
+        .select("id,course_id,module_key,title,description,module_order,active,metadata")
+        .eq("course_id",courseBuilderCourse.id)
+        .order("module_order"),
+      client.from("learning_lessons")
+        .select("id,module_id,lesson_key,title,description,lesson_order,lesson_type,media_url,duration_seconds,requires_completion,status,published_at")
+        .in("module_id",courseBuilderModules.length?courseBuilderModules.map(m=>m.id):["00000000-0000-0000-0000-000000000000"])
+        .order("lesson_order")
+    ]);
+    if(modules.error){throw modules.error;}
+    courseBuilderModules=modules.data||[];
+
+    let lessonResult={data:[],error:null};
+    if(courseBuilderModules.length){
+      lessonResult=await client.from("learning_lessons")
+        .select("id,module_id,lesson_key,title,description,lesson_order,lesson_type,media_url,duration_seconds,requires_completion,status,published_at")
+        .in("module_id",courseBuilderModules.map(m=>m.id))
+        .order("lesson_order");
+    }
+    if(lessonResult.error)throw lessonResult.error;
+    courseBuilderLessons=lessonResult.data||[];
+  }
+
+  function renderCourseBuilder(){
+    ensureCourseBuilder();
+    const list=courseBuilderModal.querySelector("#course-builder-list");
+    const heading=courseBuilderModal.querySelector("#course-builder-title");
+    const moduleSelect=courseBuilderModal.querySelector("#course-builder-lesson-module");
+    if(!courseBuilderCourse||!list||!heading||!moduleSelect)return;
+
+    heading.textContent=courseBuilderCourse.title;
+    list.replaceChildren();
+    moduleSelect.replaceChildren();
+
+    courseBuilderModules.forEach(module=>{
+      const opt=document.createElement("option");
+      opt.value=module.id;
+      opt.textContent=module.module_order+". "+module.title;
+      moduleSelect.append(opt);
+
+      const card=document.createElement("article");
+      card.className="course-builder-module"+(module.active?"":" inactive");
+
+      const head=document.createElement("div");head.className="course-builder-module-head";
+      const copy=document.createElement("div");
+      const title=document.createElement("strong");title.textContent=module.module_order+". "+module.title;
+      const desc=document.createElement("span");desc.textContent=module.description||"Course module";
+      copy.append(title,desc);
+
+      const actions=document.createElement("div");actions.className="course-builder-module-actions";
+      const toggle=document.createElement("button");toggle.type="button";toggle.textContent=module.active?"Deactivate":"Activate";
+      toggle.addEventListener("click",async()=>{
+        toggle.disabled=true;
+        const {error}=await client.from("learning_modules").update({active:!module.active}).eq("id",module.id);
+        if(error){window.alert(error.message);toggle.disabled=false;return;}
+        await refreshCourseBuilder();
+      });
+      actions.append(toggle);
+      head.append(copy,actions);
+
+      const lessonList=document.createElement("div");lessonList.className="course-builder-lessons";
+      const lessons=courseBuilderLessons.filter(l=>l.module_id===module.id);
+      if(!lessons.length){
+        const empty=document.createElement("div");empty.className="course-builder-empty";empty.textContent="No lessons in this module yet.";lessonList.append(empty);
+      }else{
+        lessons.forEach(lesson=>{
+          const row=document.createElement("div");row.className="course-builder-lesson";
+          const lessonCopy=document.createElement("div");lessonCopy.className="course-builder-lesson-copy";
+          const lessonTitle=document.createElement("strong");lessonTitle.textContent=lesson.lesson_order+". "+lesson.title;
+          const lessonMeta=document.createElement("span");
+          lessonMeta.textContent=[
+            portal.titleCase(lesson.lesson_type||"content"),
+            lesson.duration_seconds?Math.round(lesson.duration_seconds/60)+" Min":null,
+            lesson.requires_completion?"Required":"Optional"
+          ].filter(Boolean).join(" · ");
+          lessonCopy.append(lessonTitle,lessonMeta);
+
+          const status=document.createElement("span");status.className="course-builder-status "+lesson.status;status.textContent=portal.titleCase(lesson.status);
+          const lessonActions=document.createElement("div");lessonActions.className="course-builder-lesson-actions";
+          const next=lesson.status==="published"?"draft":"published";
+          const stateBtn=document.createElement("button");stateBtn.type="button";stateBtn.className=next==="published"?"primary":"";stateBtn.textContent=next==="published"?"Publish":"Move To Draft";
+          stateBtn.addEventListener("click",async()=>{
+            stateBtn.disabled=true;
+            const payload={status:next,updated_at:new Date().toISOString()};
+            if(next==="published")payload.published_at=new Date().toISOString();
+            const {error}=await client.from("learning_lessons").update(payload).eq("id",lesson.id);
+            if(error){window.alert(error.message);stateBtn.disabled=false;return;}
+            await refreshCourseBuilder();
+          });
+          lessonActions.append(stateBtn);
+          row.append(lessonCopy,status,lessonActions);
+          lessonList.append(row);
+        });
+      }
+
+      card.append(head,lessonList);
+      list.append(card);
+    });
+
+    if(!courseBuilderModules.length){
+      const empty=document.createElement("div");empty.className="course-builder-empty large";empty.textContent="No modules yet. Add the first module below.";list.append(empty);
+      const placeholder=document.createElement("option");placeholder.value="";placeholder.textContent="Add a module first";moduleSelect.append(placeholder);
+    }
+
+    const orderInput=courseBuilderModal.querySelector("#course-builder-module-order");
+    if(orderInput)orderInput.value=String(courseBuilderModules.length+1);
+  }
+
+  async function refreshCourseBuilder(){
+    try{
+      const modules=await client.from("learning_modules")
+        .select("id,course_id,module_key,title,description,module_order,active,metadata")
+        .eq("course_id",courseBuilderCourse.id)
+        .order("module_order");
+      if(modules.error)throw modules.error;
+      courseBuilderModules=modules.data||[];
+      let lessons={data:[],error:null};
+      if(courseBuilderModules.length){
+        lessons=await client.from("learning_lessons")
+          .select("id,module_id,lesson_key,title,description,lesson_order,lesson_type,media_url,duration_seconds,requires_completion,status,published_at")
+          .in("module_id",courseBuilderModules.map(m=>m.id))
+          .order("lesson_order");
+      }
+      if(lessons.error)throw lessons.error;
+      courseBuilderLessons=lessons.data||[];
+      renderCourseBuilder();
+    }catch(error){
+      const status=courseBuilderModal?.querySelector("#course-builder-status");
+      if(status)portal.showStatus(status,error.message||String(error),"error");
+    }
+  }
+
+  async function openCourseBuilder(course){
+    if(!canManagePrograms())return;
+    courseBuilderCourse=course;
+    ensureCourseBuilder();
+    courseBuilderModal.classList.remove("hidden");
+    courseBuilderModal.setAttribute("aria-hidden","false");
+    const list=courseBuilderModal.querySelector("#course-builder-list");
+    if(list)list.innerHTML='<div class="course-builder-empty large">Loading course structure...</div>';
+    await refreshCourseBuilder();
+  }
+
+  async function addCourseModule(){
+    if(!courseBuilderCourse||!canManagePrograms())return;
+    const titleInput=courseBuilderModal.querySelector("#course-builder-module-title");
+    const description=courseBuilderModal.querySelector("#course-builder-module-description");
+    const order=courseBuilderModal.querySelector("#course-builder-module-order");
+    const status=courseBuilderModal.querySelector("#course-builder-status");
+    const title=titleInput.value.trim();
+    if(!title){portal.showStatus(status,"Add a module title.","error");return;}
+    const moduleOrder=Math.max(1,Number(order.value||courseBuilderModules.length+1));
+    const key=normalizeKey(title)+"_"+moduleOrder;
+    portal.showStatus(status,"Adding module...");
+    const {error}=await client.from("learning_modules").insert({
+      course_id:courseBuilderCourse.id,
+      module_key:key,
+      title,
+      description:description.value.trim()||null,
+      module_order:moduleOrder,
+      active:true,
+      metadata:{}
+    });
+    if(error){portal.showStatus(status,error.message,"error");return;}
+    titleInput.value="";description.value="";
+    portal.showStatus(status,"Module added.","success");
+    await refreshCourseBuilder();
+  }
+
+  async function addCourseLesson(){
+    if(!courseBuilderCourse||!canManagePrograms())return;
+    const moduleSelect=courseBuilderModal.querySelector("#course-builder-lesson-module");
+    const titleInput=courseBuilderModal.querySelector("#course-builder-lesson-title");
+    const type=courseBuilderModal.querySelector("#course-builder-lesson-type");
+    const duration=courseBuilderModal.querySelector("#course-builder-lesson-duration");
+    const media=courseBuilderModal.querySelector("#course-builder-lesson-media");
+    const description=courseBuilderModal.querySelector("#course-builder-lesson-description");
+    const required=courseBuilderModal.querySelector("#course-builder-lesson-required");
+    const status=courseBuilderModal.querySelector("#course-builder-status");
+    const moduleId=moduleSelect.value;
+    const title=titleInput.value.trim();
+    if(!moduleId){portal.showStatus(status,"Add a module before adding lessons.","error");return;}
+    if(!title){portal.showStatus(status,"Add a lesson title.","error");return;}
+    const existing=courseBuilderLessons.filter(l=>l.module_id===moduleId);
+    const lessonOrder=existing.length+1;
+    portal.showStatus(status,"Adding lesson...");
+    const {error}=await client.from("learning_lessons").insert({
+      module_id:moduleId,
+      lesson_key:normalizeKey(title)+"_"+lessonOrder,
+      title,
+      description:description.value.trim()||null,
+      lesson_order:lessonOrder,
+      lesson_type:type.value||"content",
+      media_url:media.value.trim()||null,
+      duration_seconds:duration.value?Math.round(Number(duration.value)*60):null,
+      requires_completion:required.checked,
+      status:"draft",
+      metadata:{},
+      created_by:portal.currentUserId()
+    });
+    if(error){portal.showStatus(status,error.message,"error");return;}
+    titleInput.value="";duration.value="";media.value="";description.value="";required.checked=true;
+    portal.showStatus(status,"Lesson added as a draft.","success");
+    await refreshCourseBuilder();
+  }
+
   function renderContent(){
     if(!contentList)return;
     const rows=contentCache[activeContent]||[];
@@ -568,6 +837,11 @@
       const detail=document.createElement("span");detail.textContent=contentDetail(activeContent,row);
       const status=document.createElement("span");status.className="program-content-status "+String(row.status||"draft").toLowerCase();status.textContent=portal.titleCase(row.status||"draft");
       const actions=document.createElement("div");actions.className="program-content-row-actions";
+      if(activeContent==="courses"&&canManagePrograms()){
+        const build=document.createElement("button");build.type="button";build.className="edit";build.textContent="Build Course";
+        build.addEventListener("click",()=>openCourseBuilder(row));
+        actions.append(build);
+      }
       const statusValue=String(row.status||"draft").toLowerCase();
       if(statusValue!=="published"&&statusValue!=="active"){
         const publish=document.createElement("button");publish.type="button";publish.className="publish";publish.textContent="Publish";
