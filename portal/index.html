@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="portal-executive.css?v=125">
   <link rel="stylesheet" href="portal-community.css?v=126">
   <link rel="stylesheet" href="portal-refuel.css?v=127">
-  <link rel="stylesheet" href="portal-people.css?v=133">
+  <link rel="stylesheet" href="portal-people.css?v=141">
   <link rel="stylesheet" href="portal-staff-access.css?v=131">
   <link rel="stylesheet" href="portal-referrals.css?v=130">
   <link rel="stylesheet" href="portal-team-calendar.css?v=135">
@@ -2247,6 +2247,36 @@
         </section>
       </div>
 
+
+      <div id="people-import-modal" class="people-modal hidden" aria-hidden="true">
+        <div class="people-modal-backdrop" data-people-import-close></div>
+        <section class="people-dialog people-import-dialog" role="dialog" aria-modal="true" aria-labelledby="people-import-title">
+          <button class="people-close" type="button" data-people-import-close aria-label="Close CSV import">×</button>
+          <p class="eyebrow">PEOPLE IMPORT</p>
+          <h2 id="people-import-title">Import People from CSV</h2>
+          <p class="people-intro">Preview the file before importing. Existing records are matched by email first, then normalized phone number, to reduce duplicates.</p>
+          <div class="people-import-security">CSV import is a sensitive permission. Every import is recorded with the importing staff member, filename, row counts and errors.</div>
+          <form id="people-import-form" class="people-form">
+            <div class="people-grid">
+              <label class="people-wide">
+                <span>CSV file</span>
+                <input id="people-import-file" type="file" accept=".csv,text/csv" required>
+              </label>
+            </div>
+            <div class="people-import-template">
+              <button id="people-download-template" class="secondary-button compact" type="button">Download CSV Template</button>
+              <span>Supported: first_name, last_name, email, phone, city, state, country, lifecycle_stage, source, tags.</span>
+            </div>
+            <div id="people-import-preview" class="people-import-preview hidden"></div>
+            <div class="people-form-actions">
+              <button class="secondary-button" type="button" data-people-import-close>Cancel</button>
+              <button id="people-import-submit" class="primary-button" type="submit" disabled>Import People</button>
+            </div>
+            <p id="people-import-status" class="form-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
       <div class="portal-content">
         <div class="portal-intro">
           <div>
@@ -2650,7 +2680,8 @@
           <div class="people-result-bar">
             <span id="people-result-count">Loading people...</span>
             <div class="people-result-actions">
-              <button id="people-export" class="secondary-button compact" type="button">Export CSV</button>
+              <button id="people-import" class="secondary-button compact hidden" type="button">Import CSV</button>
+              <button id="people-export" class="secondary-button compact hidden" type="button">Export CSV</button>
               <div class="people-pagination">
               <button id="people-prev" type="button">Previous</button>
               <span id="people-page-label">Page 1</span>
@@ -2705,7 +2736,7 @@
   <script defer src="portal-community.js?v=126"></script>
   <script defer src="portal-refuel.js?v=127"></script>
   <script defer src="portal-people.js?v=133"></script>
-  <script defer src="portal-people-directory.js?v=133"></script>
+  <script defer src="portal-people-directory.js?v=141"></script>
   <script defer src="portal-staff-access.js?v=131"></script>
   <script defer src="portal-permissions.js?v=130"></script>
   <script defer src="portal-referrals.js?v=130"></script>
