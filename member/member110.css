@@ -121,3 +121,14 @@
 .rm137-billing-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:12px}
 .rm137-billing-summary>div{padding:11px;border:1px solid #e4e9e3;border-radius:10px;background:#fbfcfb}.rm137-billing-summary span{display:block;font-size:8px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:#7d8a83}.rm137-billing-summary strong{display:block;margin-top:4px;font-size:11px;color:#30463a}
 @media(max-width:700px){.rm137-billing-summary{grid-template-columns:1fr 1fr}}
+
+.rm139-agreements-card{margin-top:13px}
+.rm139-agreement-item{padding:11px 12px;border:1px solid #e4ebe7;border-radius:11px;background:#fbfcfb}
+.rm139-agreement-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.rm139-agreement-item strong{display:block;font-size:11px;color:#30463a}.rm139-agreement-item p{margin:4px 0 0;color:#718078;font-size:10px;line-height:1.45}.rm139-agreement-item small{display:block;margin-top:4px;color:#829087;font-size:9px}
+.rm139-agreement-item button{margin-top:8px;min-height:31px;padding:0 9px;border-radius:8px;border:1px solid #cfdbd3;background:#fff;color:#154734;font-size:9px;font-weight:900}
+.rm139-agreement-dialog{width:min(820px,100%)}.rm139-agreement-meta{margin:0 0 10px;color:#7c8982;font-size:9px}
+.rm139-agreement-content{max-height:46vh;overflow:auto;padding:14px;border:1px solid #e4ebe7;border-radius:10px;background:#fbfcfb;color:#3f5348;font-size:10px;line-height:1.65;white-space:pre-wrap}
+.rm139-agreement-check{display:flex!important;align-items:flex-start;gap:8px;padding:9px 10px;border:1px solid #e5ebe7;border-radius:9px;background:#fbfcfb}.rm139-agreement-check input{width:16px!important;height:16px!important;margin-top:1px}.rm139-agreement-check span{font-size:10px!important}
+.rm139-agreement-actions{display:flex;gap:8px;justify-content:flex-end}.rm139-agreement-actions button{min-height:41px}.rm139-agreement-actions .rm139-secondary{background:#fff;color:#154734;border:1px solid #cedad2}
+.rm139-agreement-completed{padding:11px;border:1px solid #d7e4dc;border-radius:9px;background:#f4f8f5;color:#476054;font-size:10px;line-height:1.5;margin-top:10px}
