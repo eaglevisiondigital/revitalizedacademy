@@ -585,6 +585,8 @@
     el("pref-sms-coaching").checked=Boolean(values.sms_coaching_reminders);
     el("pref-email-program").checked=values.email_program_updates!==false;
     el("pref-sms-program").checked=Boolean(values.sms_program_updates);
+    el("pref-email-billing").checked=values.email_billing_alerts!==false;
+    el("pref-sms-billing").checked=Boolean(values.sms_billing_alerts);
   }
 
   async function saveNotificationPreferences(event){
@@ -602,6 +604,8 @@
       sms_coaching_reminders:el("pref-sms-coaching").checked,
       email_program_updates:el("pref-email-program").checked,
       sms_program_updates:el("pref-sms-program").checked,
+      email_billing_alerts:el("pref-email-billing").checked,
+      sms_billing_alerts:el("pref-sms-billing").checked,
       updated_at:new Date().toISOString()
     };
     const {error}=await client.from("notification_preferences").upsert(payload,{onConflict:"user_id"});
