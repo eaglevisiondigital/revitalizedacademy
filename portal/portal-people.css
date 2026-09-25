@@ -89,3 +89,53 @@
   .people-view-tab{flex:1}
   .people-quick-views button{min-height:38px}
 }
+
+
+/* Build 153: People readability cleanup */
+.people-saved-views label>span,
+.people-directory-controls label>span{
+  font-size:10px;
+  letter-spacing:.055em;
+}
+.people-saved-views select,
+.people-directory-controls select{
+  height:44px;
+  font-size:12px;
+}
+.people-search input{
+  height:44px;
+  font-size:12px;
+}
+.people-view-tab{
+  min-height:40px;
+  padding:0 15px;
+  font-size:11.5px;
+}
+.people-quick-views button{
+  min-height:38px;
+  padding:0 14px;
+  font-size:10.5px;
+}
+.people-result-bar{
+  margin-top:10px;
+  font-size:11px;
+}
+.people-pagination button{
+  min-height:36px;
+  font-size:9.5px;
+}
+.people-directory-table th{
+  padding-top:13px;
+  padding-bottom:13px;
+  font-size:10px;
+}
+.people-directory-table td{
+  padding-top:14px;
+  padding-bottom:14px;
+  font-size:11px;
+}
+.people-directory-name strong{font-size:12px}
+.people-directory-name span{font-size:9.5px}
+.people-toolbar{gap:10px}
+.people-saved-views{gap:10px;margin-top:14px}
+.people-directory-controls{gap:10px;margin-top:16px}
