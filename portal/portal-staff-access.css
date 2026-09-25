@@ -84,3 +84,6 @@
 .team-workload-metric.warn strong{color:#9a672b}
 @media(max-width:980px){.team-workload-item{grid-template-columns:1fr 1fr 1fr}.team-workload-person{grid-column:1/-1}.team-workload-metric{text-align:left}}
 @media(max-width:560px){.team-workload-item{grid-template-columns:1fr 1fr}}
+
+.staff-capacity-check{display:flex!important;align-items:center;gap:8px}.staff-capacity-check input{width:16px!important;height:16px!important}.staff-capacity-check span{font-size:10px!important}
+.staff-availability-list{display:grid;gap:7px;margin-top:10px}.staff-availability-row{display:grid;grid-template-columns:110px 1fr auto;gap:10px;align-items:center;padding:9px 10px;border:1px solid #e5ebe7;border-radius:9px;background:#fbfcfb}.staff-availability-row strong{font-size:10px;color:#30463a}.staff-availability-row span{font-size:9px;color:#7d8a83}.staff-availability-row button{min-height:28px;padding:0 8px;border:1px solid #cedad2;border-radius:7px;background:#fff;color:#8d4337;font-size:8px;font-weight:900}
