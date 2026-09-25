@@ -842,6 +842,8 @@
 
   window.RA_PORTAL = {
     authClient,
+    openAccount,
+    closeAccount,
     currentUserId: () => currentUserId,
     openContact,
     loadDashboard,
