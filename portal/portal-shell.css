@@ -868,3 +868,345 @@ body[data-ra-workspace="messages"] .staff-inbox-panel{margin-top:0}
     grid-template-columns:minmax(210px,1.35fr) minmax(140px,.65fr) minmax(100px,.55fr) minmax(260px,1.35fr) auto!important;
   }
 }
+
+
+/* Build 163: visual QA pass from full portal screenshots */
+:root{
+  --ra-emerald-strong:#154734;
+  --ra-emerald-hover:#103b2a;
+  --ra-emerald-pale:#edf5ef;
+  --ra-gold-strong:#b18845;
+  --ra-line-strong:#cedbd3;
+}
+
+/* Dashboard emphasis */
+body[data-ra-workspace="dashboard"] .count-chip{
+  min-width:40px;
+  min-height:34px;
+  padding:0 12px;
+  background:var(--ra-emerald-strong)!important;
+  color:#fff!important;
+  border:1px solid var(--ra-emerald-strong);
+  letter-spacing:.01em;
+  text-transform:none;
+  font-size:12px!important;
+}
+body[data-ra-workspace="dashboard"] .list-item{
+  min-height:76px;
+  align-items:center;
+  padding:15px 17px;
+  border-color:#d8e3dc;
+}
+body[data-ra-workspace="dashboard"] .list-main strong{
+  font-size:15px!important;
+}
+body[data-ra-workspace="dashboard"] .list-main span{
+  font-size:12.5px!important;
+}
+body[data-ra-workspace="dashboard"] .list-meta strong{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:29px;
+  padding:0 9px;
+  border-radius:999px;
+  background:var(--ra-emerald-pale);
+  color:var(--ra-emerald-strong);
+  font-size:10.5px!important;
+  text-transform:capitalize;
+  letter-spacing:.02em;
+}
+body[data-ra-workspace="dashboard"] .list-meta span{
+  font-size:11.5px!important;
+}
+body[data-ra-workspace="dashboard"] .ra-dashboard-quick-actions{
+  padding-top:24px;
+  padding-bottom:24px;
+}
+body[data-ra-workspace="dashboard"] .ra-quick-action{
+  min-height:68px;
+  padding:13px 15px;
+  border-color:#d2dfd7;
+  background:#fff;
+  font-size:12.5px;
+}
+body[data-ra-workspace="dashboard"] .ra-quick-action:hover{
+  border-color:#a9c1b2;
+  box-shadow:0 8px 20px rgba(21,71,52,.08);
+}
+body[data-ra-workspace="dashboard"] .ra-quick-action.gold{
+  border-color:#decba4;
+  background:#fffdfa;
+}
+
+/* Primary creation actions should read as primary */
+#referral-admin-new-program,
+#community-admin-new,
+#agreement-new-template,
+#billing-new-plan,
+#refuel-admin-new-offer{
+  background:linear-gradient(180deg,#1f7750,var(--ra-emerald-strong))!important;
+  border-color:var(--ra-emerald-strong)!important;
+  color:#fff!important;
+  box-shadow:0 8px 18px rgba(21,71,52,.12);
+}
+#referral-admin-new-program:hover,
+#community-admin-new:hover,
+#agreement-new-template:hover,
+#billing-new-plan:hover,
+#refuel-admin-new-offer:hover{
+  background:var(--ra-emerald-hover)!important;
+  border-color:var(--ra-emerald-hover)!important;
+}
+
+/* Summary cards: one strong anchor card, remaining cards light */
+.staff-access-stat:first-child,
+.agreement-library-stat:first-child,
+.billing-operations-stat:first-child,
+.community-admin-stat:first-child,
+.referral-admin-stat:first-child,
+.refuel-admin-stat:first-child{
+  background:linear-gradient(180deg,#1c6b49,var(--ra-emerald-strong))!important;
+  border-color:var(--ra-emerald-strong)!important;
+}
+.staff-access-stat:first-child span,
+.agreement-library-stat:first-child span,
+.billing-operations-stat:first-child span,
+.community-admin-stat:first-child span,
+.referral-admin-stat:first-child span,
+.refuel-admin-stat:first-child span{
+  color:#dcebe3!important;
+}
+.staff-access-stat:first-child strong,
+.agreement-library-stat:first-child strong,
+.billing-operations-stat:first-child strong,
+.community-admin-stat:first-child strong,
+.referral-admin-stat:first-child strong,
+.refuel-admin-stat:first-child strong{
+  color:#fff!important;
+}
+
+/* Short labels use readable title style rather than shouting */
+.staff-access-stat span,
+.agreement-library-stat span,
+.billing-operations-stat span,
+.community-admin-stat span,
+.referral-admin-stat span,
+.refuel-admin-stat span,
+.team-calendar-stat span,
+.staff-inbox-stat span,
+.work-stat span,
+.executive-metric span{
+  text-transform:none!important;
+  letter-spacing:.02em!important;
+  font-weight:850!important;
+}
+.staff-access-stat span,
+.agreement-library-stat span,
+.billing-operations-stat span,
+.community-admin-stat span,
+.referral-admin-stat span,
+.refuel-admin-stat span,
+.team-calendar-stat span,
+.staff-inbox-stat span,
+.work-stat span{
+  font-size:11px!important;
+}
+
+/* Program access hierarchy */
+.program-access-card-head>div>span{
+  text-transform:capitalize;
+  color:#5f7469!important;
+  font-weight:650;
+}
+.program-access-count{
+  background:var(--ra-emerald-strong)!important;
+  border:1px solid var(--ra-emerald-strong)!important;
+  color:#fff!important;
+  box-shadow:0 5px 13px rgba(21,71,52,.12);
+  text-transform:none!important;
+}
+.program-access-block h3{
+  text-transform:none!important;
+  letter-spacing:.02em!important;
+  font-size:12.5px!important;
+}
+.program-access-chip{
+  text-transform:none!important;
+}
+.program-access-chip-list{
+  gap:8px!important;
+}
+.program-access-chip{
+  min-height:36px!important;
+  padding:0 12px!important;
+  font-size:11.5px!important;
+}
+.program-access-chip.more{
+  background:#fff7e8!important;
+  border-color:#dfc895!important;
+  color:#805c21!important;
+}
+.program-access-card{
+  padding:22px!important;
+}
+.program-access-sections{
+  margin-top:16px!important;
+  gap:14px!important;
+}
+
+/* Catalog pills and states */
+.program-catalog-status{
+  background:var(--ra-emerald-strong)!important;
+  color:#fff!important;
+  border:1px solid var(--ra-emerald-strong)!important;
+}
+.program-catalog-chip{
+  background:#f8faf9!important;
+  border-color:#cfddd4!important;
+  color:#4d675a!important;
+}
+.program-catalog-price span{
+  color:#65796e!important;
+  font-weight:650;
+}
+
+/* People filters and table */
+.people-quick-views button.active,
+.people-view-tab.active{
+  background:var(--ra-emerald-strong)!important;
+  color:#fff!important;
+}
+.people-saved-views label>span,
+.people-directory-controls label>span{
+  text-transform:none!important;
+  letter-spacing:.02em!important;
+  font-weight:850!important;
+}
+.people-directory-controls{
+  grid-template-columns:repeat(7,minmax(135px,1fr));
+}
+.people-directory-table th{
+  font-weight:850!important;
+  color:#496356!important;
+}
+.people-directory-table .status-badge{
+  min-height:30px;
+  padding:0 10px;
+  text-transform:capitalize!important;
+  letter-spacing:.01em!important;
+}
+.people-directory-table .status-badge.client,
+.people-directory-table .status-badge.active{
+  background:var(--ra-emerald-strong)!important;
+  color:#fff!important;
+}
+
+/* Journey pills */
+.pipeline-summary-chip{
+  min-height:34px!important;
+  padding:0 12px!important;
+  text-transform:capitalize;
+}
+.pipeline-temp{
+  text-transform:capitalize!important;
+  letter-spacing:.02em!important;
+}
+
+/* Calendar and messages */
+.team-calendar-tabs button,
+.staff-inbox-tabs button,
+.work-tab{
+  min-height:42px!important;
+  padding:0 15px!important;
+  font-size:11.5px!important;
+}
+.team-calendar-conflict-chip{
+  min-height:36px!important;
+  padding:0 12px!important;
+  text-transform:none!important;
+  letter-spacing:.02em!important;
+}
+.team-calendar-toolbar select{
+  min-width:120px;
+}
+.staff-inbox-summary{
+  gap:12px!important;
+}
+
+/* Team */
+.staff-role-pill{
+  background:var(--ra-emerald-strong)!important;
+  color:#fff!important;
+  min-height:32px!important;
+  padding:0 11px!important;
+  text-transform:none!important;
+  letter-spacing:.01em!important;
+}
+.staff-status-pill.active{
+  background:#e9f4ed!important;
+  border:1px solid #cfe2d5;
+  color:#2e6242!important;
+}
+.staff-access-perm-chip{
+  min-height:31px!important;
+  padding:0 10px!important;
+  border:1px solid #d4dfd8!important;
+  background:#f8faf9!important;
+  color:#4d675a!important;
+  font-size:10.5px!important;
+}
+.staff-access-actions button{
+  min-height:40px!important;
+  padding:0 13px!important;
+}
+.team-workload-person span,
+.team-workload-metric span{
+  text-transform:none!important;
+  letter-spacing:.02em!important;
+}
+
+/* Agreement row status becomes a pill */
+.agreement-template-state{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:max-content;
+  min-height:30px;
+  padding:0 10px;
+  border-radius:999px;
+  background:var(--ra-emerald-pale);
+  color:var(--ra-emerald-strong)!important;
+  text-transform:capitalize!important;
+  letter-spacing:.01em!important;
+  font-size:10px!important;
+}
+.agreement-template-item{
+  min-height:66px;
+  padding:14px 15px!important;
+}
+
+/* Empty states get consistent breathing room */
+.community-admin-feed>.empty-state,
+.billing-operations-list>.empty-state,
+.staff-inbox-list>.empty-state,
+.team-calendar-list>.empty-state,
+.refuel-admin-list>.empty-state,
+.referral-admin-list>.empty-state{
+  min-height:70px;
+}
+
+/* Heading/title consistency */
+.portal-view.ra-shell-ready .panel-heading h2{
+  text-wrap:balance;
+}
+@media(max-width:1250px){
+  .people-directory-controls{
+    grid-template-columns:repeat(4,minmax(150px,1fr));
+  }
+}
+@media(max-width:820px){
+  .people-directory-controls{
+    grid-template-columns:1fr 1fr;
+  }
+}
