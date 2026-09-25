@@ -91,6 +91,8 @@
   let courseAccessRows=[];
   let resourceRows=[];
   let resourceAccessRows=[];
+  let challengeRows=[];
+  let challengeAccessRows=[];
 
   async function toggleProgramCourse(programCode,courseId,current){
     const canManage=["owner","admin","coach"].includes(String(portal.currentStaffRole?.()||"").toLowerCase());
@@ -120,6 +122,20 @@
     await loadProgramAccess();
   }
 
+  async function toggleProgramChallenge(programCode,challengeId,current){
+    const canManage=["owner","admin","coach"].includes(String(portal.currentStaffRole?.()||"").toLowerCase());
+    if(!canManage)return;
+    const existing=challengeAccessRows.find(r=>r.program_code===programCode&&r.challenge_id===challengeId);
+    if(existing){
+      const {error}=await client.from("program_challenge_access").update({active:!current}).eq("id",existing.id);
+      if(error){window.alert(error.message);return;}
+    }else{
+      const {error}=await client.from("program_challenge_access").insert({program_code:programCode,challenge_id:challengeId,active:true});
+      if(error){window.alert(error.message);return;}
+    }
+    await loadProgramAccess();
+  }
+
   function renderProgramAccess(){
     if(!accessRoot)return;
     accessRoot.replaceChildren();
@@ -128,13 +144,14 @@
       const entitlements=entitlementRows.filter(r=>r.program_code===program.program_code&&r.active);
       const included=courseAccessRows.filter(r=>r.program_code===program.program_code&&r.active);
       const includedResources=resourceAccessRows.filter(r=>r.program_code===program.program_code&&r.active);
+      const includedChallenges=challengeAccessRows.filter(r=>r.program_code===program.program_code&&r.active);
       const card=document.createElement("article");card.className="program-access-card";
       const head=document.createElement("div");head.className="program-access-card-head";
       const copy=document.createElement("div");
       const name=document.createElement("strong");name.textContent=program.name;
       const sub=document.createElement("span");sub.textContent=program.metadata?.support_model||portal.titleCase(program.program_type||"program");
       copy.append(name,sub);
-      const count=document.createElement("span");count.className="program-access-count";count.textContent=included.length+" course"+(included.length===1?"":"s")+" · "+includedResources.length+" resource"+(includedResources.length===1?"":"s");
+      const count=document.createElement("span");count.className="program-access-count";count.textContent=included.length+" course"+(included.length===1?"":"s")+" · "+includedResources.length+" resource"+(includedResources.length===1?"":"s")+" · "+includedChallenges.length+" challenge"+(includedChallenges.length===1?"":"s");
       head.append(copy,count);
 
       const sections=document.createElement("div");sections.className="program-access-sections";
@@ -203,7 +220,35 @@
         });
       }
       resourceBlock.append(rh,resources);
-      sections.append(benefitBlock,courseBlock,resourceBlock);
+
+      const challengeBlock=document.createElement("div");challengeBlock.className="program-access-block program-access-challenges";
+      const wh=document.createElement("h3");wh.textContent="Challenge access";
+      const challenges=document.createElement("div");challenges.className="program-access-course-list";
+      const publishedChallenges=challengeRows.filter(r=>r.status==="published");
+      if(!publishedChallenges.length){
+        const empty=document.createElement("span");empty.className="program-access-empty";empty.textContent="No challenges assigned yet. Publish a challenge, then add it here.";challenges.append(empty);
+      }else{
+        publishedChallenges.forEach(challenge=>{
+          const row=document.createElement("div");row.className="program-access-course-row";
+          const cc=document.createElement("div");cc.className="program-access-course-copy";
+          const title=document.createElement("strong");title.textContent=challenge.title;
+          const meta=document.createElement("span");
+          meta.textContent=[
+            challenge.scope?portal.titleCase(challenge.scope):null,
+            challenge.starts_on&&challenge.ends_on?challenge.starts_on+" to "+challenge.ends_on:null
+          ].filter(Boolean).join(" · ")||"Published challenge";
+          cc.append(title,meta);
+          const access=challengeAccessRows.find(r=>r.program_code===program.program_code&&r.challenge_id===challenge.id);
+          const active=Boolean(access?.active);
+          const btn=document.createElement("button");btn.type="button";btn.classList.toggle("active",active);btn.textContent=active?"Included":"Add";
+          btn.disabled=!canManage;
+          btn.addEventListener("click",()=>toggleProgramChallenge(program.program_code,challenge.id,active));
+          row.append(cc,btn);challenges.append(row);
+        });
+      }
+      challengeBlock.append(wh,challenges);
+
+      sections.append(benefitBlock,courseBlock,resourceBlock,challengeBlock);
       card.append(head,sections);
       accessRoot.append(card);
     });
@@ -211,15 +256,17 @@
 
   async function loadProgramAccess(){
     if(!accessRoot)return;
-    const [programs,entitlements,courses,access,resources,resourceAccess]=await Promise.all([
+    const [programs,entitlements,courses,access,resources,resourceAccess,challenges,challengeAccess]=await Promise.all([
       client.from("program_catalog").select("program_code,name,program_type,active,metadata").order("name"),
       client.from("program_entitlement_templates").select("program_code,entitlement_key,label,limit_value,reset_cadence,active").eq("active",true).order("label"),
       client.from("learning_courses").select("id,title,version,status").order("title"),
       client.from("program_course_access").select("id,program_code,course_id,access_level,active"),
       client.from("resource_library").select("id,title,resource_type,category,status").order("title"),
-      client.from("program_resource_access").select("id,program_code,resource_id,active")
+      client.from("program_resource_access").select("id,program_code,resource_id,active"),
+      client.from("wellness_challenges").select("id,title,scope,starts_on,ends_on,status").order("title"),
+      client.from("program_challenge_access").select("id,program_code,challenge_id,active")
     ]);
-    if(programs.error||entitlements.error||courses.error||access.error||resources.error||resourceAccess.error){
+    if(programs.error||entitlements.error||courses.error||access.error||resources.error||resourceAccess.error||challenges.error||challengeAccess.error){
       accessRoot.innerHTML='<div class="empty-state">Program access rules could not be loaded.</div>';
       return;
     }
@@ -229,6 +276,8 @@
     courseAccessRows=access.data||[];
     resourceRows=resources.data||[];
     resourceAccessRows=resourceAccess.data||[];
+    challengeRows=challenges.data||[];
+    challengeAccessRows=challengeAccess.data||[];
     renderProgramAccess();
   }
 
