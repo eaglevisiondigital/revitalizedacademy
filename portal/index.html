@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="portal-executive.css?v=125">
   <link rel="stylesheet" href="portal-community.css?v=126">
   <link rel="stylesheet" href="portal-refuel.css?v=127">
+  <link rel="stylesheet" href="portal-people.css?v=128">
 </head>
 <body>
   <main class="portal-page">
@@ -1723,6 +1724,113 @@
         </section>
       </div>
 
+
+      <div id="people-modal" class="people-modal hidden" aria-hidden="true">
+        <div class="people-modal-backdrop" data-people-close></div>
+        <section class="people-dialog" role="dialog" aria-modal="true" aria-labelledby="people-modal-title">
+          <button class="people-close" type="button" data-people-close aria-label="Close Add Person">×</button>
+          <p class="eyebrow">PEOPLE</p>
+          <h2 id="people-modal-title">Add a person to ReVitalized</h2>
+          <p class="people-intro">Add a referral, phone lead, event contact, prospective client or other person manually. If the email or phone already exists, ReVitalized will open that record instead of creating a duplicate.</p>
+
+          <form id="people-add-form" class="people-form">
+            <div class="people-grid">
+              <label>
+                <span>First name *</span>
+                <input id="people-first-name" type="text" maxlength="120" required>
+              </label>
+              <label>
+                <span>Last name *</span>
+                <input id="people-last-name" type="text" maxlength="120" required>
+              </label>
+
+              <label>
+                <span>Email</span>
+                <input id="people-email" type="email" autocomplete="email" maxlength="320">
+              </label>
+              <label>
+                <span>Phone</span>
+                <input id="people-phone" type="tel" autocomplete="tel" maxlength="60">
+              </label>
+
+              <label>
+                <span>City</span>
+                <input id="people-city" type="text" maxlength="140">
+              </label>
+              <label>
+                <span>State / Province</span>
+                <input id="people-state" type="text" maxlength="140">
+              </label>
+              <label>
+                <span>Country</span>
+                <select id="people-country">
+                  <option value="">Not provided</option>
+                  <option value="United States">United States</option>
+                  <option value="Canada">Canada</option>
+                  <option value="Other">Other</option>
+                </select>
+              </label>
+              <label>
+                <span>Stage</span>
+                <select id="people-stage">
+                  <option value="lead">Lead</option>
+                  <option value="assessment_lead">Assessment Lead</option>
+                  <option value="webinar_lead">Webinar Lead</option>
+                  <option value="applicant">Applicant</option>
+                  <option value="client">Client</option>
+                </select>
+              </label>
+
+              <label>
+                <span>Source</span>
+                <select id="people-source">
+                  <option value="manual_referral">Referral</option>
+                  <option value="manual_phone">Phone / Direct Conversation</option>
+                  <option value="manual_event">Event / In Person</option>
+                  <option value="manual_social">Social Media</option>
+                  <option value="manual_staff_entry">Other Manual Entry</option>
+                </select>
+              </label>
+              <label>
+                <span>Assign to</span>
+                <select id="people-assigned-to"></select>
+              </label>
+
+              <label>
+                <span>Next follow-up</span>
+                <input id="people-follow-up" type="datetime-local">
+              </label>
+              <label>
+                <span>Journey route</span>
+                <select id="people-journey">
+                  <option value="">Lead only · no journey yet</option>
+                  <option value="assessment_first">Vitality Assessment First</option>
+                  <option value="coaching_application">Coaching Application</option>
+                  <option value="direct_membership">Direct Membership / Enrollment</option>
+                </select>
+              </label>
+
+              <label class="people-wide">
+                <span>Tags / interests</span>
+                <input id="people-tags" type="text" maxlength="1000" placeholder="low energy, pain, fatigue, referral, interested in coaching">
+                <small>Separate tags with commas. These can be refined later from assessments and client activity.</small>
+              </label>
+
+              <label class="people-wide">
+                <span>Internal note</span>
+                <textarea id="people-note" rows="4" maxlength="5000" placeholder="How did you meet them? What are they interested in? What should the team know before follow-up?"></textarea>
+              </label>
+            </div>
+
+            <div class="people-form-actions">
+              <button class="secondary-button" type="button" data-people-close>Cancel</button>
+              <button class="primary-button" type="submit">Add Person</button>
+            </div>
+            <p id="people-form-status" class="form-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
       <div class="portal-content">
         <div class="portal-intro">
           <div>
@@ -1935,8 +2043,15 @@
             <div>
               <p class="section-kicker">PEOPLE</p>
               <h2 id="contacts-title">Recent contacts</h2>
+              <p class="panel-note">Website leads, referrals, manually added people and clients in one CRM.</p>
             </div>
-            <p class="panel-note">Newest records first</p>
+            <div class="people-toolbar">
+              <label class="people-search">
+                <span class="sr-only">Search people</span>
+                <input id="people-search-input" type="search" placeholder="Search people...">
+              </label>
+              <button id="people-add-button" class="primary-button compact" type="button">Add Person</button>
+            </div>
           </div>
           <div class="table-wrap">
             <table class="contacts-table">
@@ -1981,5 +2096,6 @@
   <script defer src="portal-executive.js?v=125"></script>
   <script defer src="portal-community.js?v=126"></script>
   <script defer src="portal-refuel.js?v=127"></script>
+  <script defer src="portal-people.js?v=128"></script>
 </body>
 </html>
