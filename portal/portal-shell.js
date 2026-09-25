@@ -72,7 +72,23 @@
   const settings = document.createElement("button");
   settings.className="ra-nav-item"; settings.type="button";
   settings.innerHTML='<span class="ra-nav-icon">'+icon("settings")+'</span><span class="ra-nav-text">Account & Settings</span>';
-  settings.addEventListener("click",()=>document.getElementById("account-button")?.click());
+  settings.addEventListener("click",async()=>{
+    document.body.classList.remove("ra-mobile-nav-open");
+    if(window.RA_PORTAL?.openAccount){
+      await window.RA_PORTAL.openAccount();
+      return;
+    }
+    const accountButton=document.getElementById("account-button");
+    if(accountButton){
+      accountButton.click();
+      return;
+    }
+    const modal=document.getElementById("account-modal");
+    if(modal){
+      modal.classList.remove("hidden");
+      modal.setAttribute("aria-hidden","false");
+    }
+  });
   footer.append(settings);
 
   const headerContext=document.createElement("div");
