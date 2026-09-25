@@ -309,13 +309,40 @@
   }
 
   async function loadMatrix(userId){
-    const [matrixResult,auditResult]=await Promise.all([
+    const [matrixResult,auditResult,agreementResult]=await Promise.all([
       client.from("admin_staff_permission_matrix").select("*").eq("user_id",userId).order("sort_order"),
-      client.from("staff_access_audit").select("*").eq("staff_user_id",userId).order("created_at",{ascending:false}).limit(20)
+      client.from("staff_access_audit").select("*").eq("staff_user_id",userId).order("created_at",{ascending:false}).limit(20),
+      client.from("admin_staff_agreements").select("*").eq("staff_user_id",userId).order("created_at",{ascending:false})
     ]);
     if(matrixResult.error)throw matrixResult.error;
     matrixRows=matrixResult.data||[];
     renderPermissionMatrix();
+
+    const agreements=el("staff-agreement-file-list");
+    agreements.replaceChildren();
+    if(agreementResult.error||!(agreementResult.data||[]).length){
+      agreements.innerHTML='<div class="empty-state">No required staff agreements on file.</div>';
+    }else{
+      (agreementResult.data||[]).forEach((row)=>{
+        const item=document.createElement("div");
+        item.className="staff-agreement-file-item";
+        const copy=document.createElement("div");
+        const heading=document.createElement("strong");
+        heading.textContent=row.agreement_name;
+        const meta=document.createElement("span");
+        meta.textContent=[
+          "v"+row.template_version,
+          portal.titleCase(row.status),
+          row.acceptance_signed_at?"Signed "+portal.formatDate(row.acceptance_signed_at,true):""
+        ].filter(Boolean).join(" · ");
+        copy.append(heading,meta);
+        const state=document.createElement("span");
+        state.className="staff-status-pill "+(row.status==="signed"?"":"suspended");
+        state.textContent=portal.titleCase(row.status);
+        item.append(copy,state);
+        agreements.append(item);
+      });
+    }
 
     const audit=el("staff-audit-list");
     audit.replaceChildren();
@@ -352,6 +379,7 @@
     el("staff-edit-status").value=row.status;
     el("staff-edit-reason").value="";
     el("staff-permission-list").innerHTML='<div class="empty-state">Loading permissions...</div>';
+    el("staff-agreement-file-list").innerHTML='<div class="empty-state">Loading staff agreements...</div>';
     el("staff-audit-list").innerHTML='<div class="empty-state">Loading audit trail...</div>';
     el("staff-permissions-modal").classList.remove("hidden");
     el("staff-permissions-modal").setAttribute("aria-hidden","false");
