@@ -218,14 +218,20 @@
     setStatus("staff-invite-status","Creating staff account and sending invitation...");
 
     try{
-      await invoke({
+      const data=await invoke({
         action:"invite",
         display_name:name,
         email,
         role,
         reason
       });
-      setStatus("staff-invite-status","Staff invitation sent. Their account is already assigned the selected access role.","success");
+      setStatus(
+        "staff-invite-status",
+        data.existing_auth_user
+          ?"Existing ReVitalized login found. Staff access has been applied to that account."
+          :"Staff invitation sent. Their account is already assigned the selected access role.",
+        "success"
+      );
       await load();
       window.setTimeout(closeInvite,650);
     }catch(error){
