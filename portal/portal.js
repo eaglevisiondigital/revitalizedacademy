@@ -8,6 +8,7 @@
   const initialHash = new URLSearchParams(window.location.hash.replace(/^#/, ""));
   const initialQuery = new URLSearchParams(window.location.search);
   let initialFlowType = initialHash.get("type") || initialQuery.get("type") || "";
+  const initialAuthError = initialHash.get("error_description") || initialQuery.get("error_description") || "";
   const authClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
     auth: {
       persistSession: true,
@@ -526,7 +527,10 @@
       return;
     }
 
-    if (initialFlowType === "invite" || initialFlowType === "recovery") {
+    const metadata=session.user.user_metadata||{};
+    const invitedUser=metadata.staff_invite===true && metadata.staff_invite_completed!==true;
+
+    if (initialFlowType === "invite" || initialFlowType === "recovery" || invitedUser) {
       showPasswordSetup();
       return;
     }
@@ -783,16 +787,28 @@
     }
 
     showStatus(passwordStatus, "Saving your password...");
-    const { data, error } = await authClient.auth.updateUser({ password });
+    const currentUser=(await authClient.auth.getUser()).data.user;
+    const currentMeta=currentUser?.user_metadata||{};
+    const { data, error } = await authClient.auth.updateUser({
+      password,
+      data:{
+        ...currentMeta,
+        staff_invite:false,
+        staff_invite_completed:true
+      }
+    });
     if (error) {
       showStatus(passwordStatus, error.message, "error");
       return;
     }
 
+    await authClient.rpc("complete_my_staff_invitation");
+
     initialFlowType = "";
     window.history.replaceState({}, document.title, window.location.pathname);
     showStatus(passwordStatus, "Password saved. Opening your dashboard...", "success");
-    await resolveStaff(data.user ? { user: data.user } : (await authClient.auth.getSession()).data.session);
+    const session=(await authClient.auth.getSession()).data.session;
+    await resolveStaff(session || (data.user ? { user:data.user } : null));
   });
 
   async function openAccount() {
@@ -1037,6 +1053,11 @@
 
   (async function init() {
     const { data, error } = await authClient.auth.getSession();
+    if (initialAuthError && !data?.session) {
+      showLogin();
+      showStatus(loginStatus, "That invitation link has already been used or has expired. Use Forgot your password? to finish setting up access, or ask an owner to resend access.", "error");
+      return;
+    }
     if (error) {
       showLogin();
       showStatus(loginStatus, "Unable to restore your session. Please sign in.", "error");

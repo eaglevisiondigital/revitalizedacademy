@@ -12,6 +12,7 @@
   let matrixRows=[];
   let activeStaff=null;
   let myPermissions={};
+  let inviteSubmitting=false;
 
   function setStatus(id,message,type=""){
     const target=el(id);
@@ -275,6 +276,10 @@
 
   async function inviteStaff(event){
     event.preventDefault();
+    if(inviteSubmitting)return;
+    inviteSubmitting=true;
+    const submitButton=el("staff-invite-form").querySelector('button[type="submit"]');
+    if(submitButton){submitButton.disabled=true;submitButton.textContent="Sending Invitation...";}
     const name=el("staff-invite-name").value.trim();
     const email=el("staff-invite-email").value.trim().toLowerCase();
     const phone=el("staff-invite-phone").value.trim();
@@ -283,6 +288,8 @@
 
     if(!name||!email||!phone){
       setStatus("staff-invite-status","Name, email and phone are required.","error");
+      inviteSubmitting=false;
+      if(submitButton){submitButton.disabled=false;submitButton.textContent="Send Staff Invitation";}
       return;
     }
 
@@ -314,6 +321,9 @@
       window.setTimeout(closeInvite,650);
     }catch(error){
       setStatus("staff-invite-status",error.message,"error");
+    }finally{
+      inviteSubmitting=false;
+      if(submitButton){submitButton.disabled=false;submitButton.textContent="Send Staff Invitation";}
     }
   }
 
