@@ -1,0 +1,31 @@
+
+.people-toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.people-search input{width:min(250px,38vw);height:38px;border:1px solid #cedad2;border-radius:9px;background:#fff;padding:0 11px;color:#30463a;font-size:10px}
+.people-search input:focus{outline:none;border-color:#77a789;box-shadow:0 0 0 3px rgba(21,71,52,.06)}
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+
+.people-modal{position:fixed;inset:0;z-index:196;display:flex;align-items:center;justify-content:center;padding:16px}
+.people-modal-backdrop{position:absolute;inset:0;background:rgba(8,31,23,.50);backdrop-filter:blur(4px)}
+.people-dialog{position:relative;width:min(900px,100%);max-height:95vh;overflow:auto;background:#f9fbfa;border:1px solid rgba(21,71,52,.15);border-radius:22px;padding:28px;box-shadow:0 32px 100px rgba(13,53,39,.30)}
+.people-close{position:absolute;right:16px;top:15px;width:36px;height:36px;border:0;border-radius:50%;background:#eef3ef;color:#596b61;font-size:23px}
+.people-dialog>h2{font-family:Georgia,"Times New Roman",serif;color:var(--green-deep);font-size:36px;line-height:1.05;font-weight:500;letter-spacing:-.025em;margin:8px 0}
+.people-intro{max-width:760px;margin:0 0 16px;color:#68776f;font-size:11px;line-height:1.5}
+.people-form{display:grid;gap:12px}
+.people-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.people-form label{display:grid;gap:5px}
+.people-form label>span{font-size:9px;font-weight:850;color:#586961}
+.people-form input,.people-form select,.people-form textarea{width:100%;border:1px solid #cfdad3;border-radius:8px;background:#fff;color:#2f4338;outline:none}
+.people-form input,.people-form select{height:41px;padding:0 9px;font-size:11px}
+.people-form textarea{padding:9px;resize:vertical;font-size:11px}
+.people-form input:focus,.people-form select:focus,.people-form textarea:focus{border-color:#6e9f7e;box-shadow:0 0 0 3px rgba(21,71,52,.06)}
+.people-form small{font-size:8px;line-height:1.4;color:#839087}
+.people-wide{grid-column:1/-1}
+.people-form-actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.people-existing-notice{padding:10px 11px;border:1px solid #e4d5b6;border-radius:9px;background:#fffaf0;color:#735f38;font-size:10px;line-height:1.45}
+@media(max-width:720px){
+  .people-grid{grid-template-columns:1fr}
+  .people-wide{grid-column:auto}
+  .people-toolbar{width:100%;justify-content:stretch}
+  .people-search{flex:1}.people-search input{width:100%}
+  .people-modal{padding:8px}.people-dialog{padding:24px 14px}
+}
