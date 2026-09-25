@@ -72,11 +72,11 @@
     const pending=inviteRows.filter((row)=>["pending","invited"].includes(row.status)).length;
 
     el("staff-access-summary").replaceChildren(
-      statCard("Active staff",active),
+      statCard("Active Staff",active),
       statCard("Owners/Admins",admins),
       statCard("Coaches",coaches),
       statCard("Financial",financial),
-      statCard("Pending invites",pending)
+      statCard("Pending Invites",pending)
     );
   }
 
