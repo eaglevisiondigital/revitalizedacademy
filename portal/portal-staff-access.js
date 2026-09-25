@@ -168,6 +168,59 @@
     });
   }
 
+  async function loadWorkload(){
+    if(!myPermissions["staff.view"]){
+      el("team-workload-panel").classList.add("hidden");
+      return;
+    }
+
+    const {data,error}=await client.from("admin_staff_workload").select("*");
+    if(error){
+      el("team-workload-list").innerHTML='<div class="empty-state">Team workload could not be loaded. '+error.message+'</div>';
+      return;
+    }
+
+    el("team-workload-panel").classList.remove("hidden");
+    const list=el("team-workload-list");
+    list.replaceChildren();
+
+    (data||[]).forEach((row)=>{
+      const item=document.createElement("article");
+      item.className="team-workload-item";
+
+      const person=document.createElement("div");
+      person.className="team-workload-person";
+      const name=document.createElement("strong");
+      name.textContent=row.display_name||"Staff member";
+      const role=document.createElement("span");
+      role.textContent=title(row.role);
+      person.append(name,role);
+
+      const metrics=[
+        ["Contacts",row.assigned_contacts||0,false],
+        ["Clients",row.active_clients||0,false],
+        ["Open tasks",row.open_tasks||0,false],
+        ["Overdue",row.overdue_tasks||0,Number(row.overdue_tasks||0)>0],
+        ["Sessions · 7d",row.coaching_sessions_7d||0,false],
+        ["Unread / Reviews",Number(row.unread_member_messages||0)+Number(row.companion_reviews||0),Number(row.unread_member_messages||0)+Number(row.companion_reviews||0)>0]
+      ];
+
+      item.append(person);
+      metrics.forEach(([label,value,warn])=>{
+        const metric=document.createElement("div");
+        metric.className="team-workload-metric"+(warn?" warn":"");
+        const strong=document.createElement("strong");
+        strong.textContent=String(value);
+        const span=document.createElement("span");
+        span.textContent=label;
+        metric.append(strong,span);
+        item.append(metric);
+      });
+
+      list.append(item);
+    });
+  }
+
   async function load(){
     await loadMyPermissions();
 
@@ -192,6 +245,7 @@
     staffRows=staffResult.data||[];
     inviteRows=inviteResult.error?[]:(inviteResult.data||[]);
     renderStaff();
+    await loadWorkload();
   }
 
   function openInvite(){
