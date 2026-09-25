@@ -5,6 +5,7 @@
   const summary=document.getElementById("program-catalog-summary");
   if(!portal||!root||!summary)return;
   const client=portal.authClient;
+  const canManagePrograms=()=>portal.hasPermission?.("learning.manage") ?? ["owner","admin","coach"].includes(String(portal.currentStaffRole?.()||"").toLowerCase());
 
   const describe=(row)=>{
     const code=row.program_code;
@@ -95,7 +96,7 @@
   let challengeAccessRows=[];
 
   async function toggleProgramCourse(programCode,courseId,current){
-    const canManage=["owner","admin","coach"].includes(String(portal.currentStaffRole?.()||"").toLowerCase());
+    const canManage=canManagePrograms();
     if(!canManage)return;
     const existing=courseAccessRows.find(r=>r.program_code===programCode&&r.course_id===courseId);
     if(existing){
@@ -109,7 +110,7 @@
   }
 
   async function toggleProgramResource(programCode,resourceId,current){
-    const canManage=["owner","admin","coach"].includes(String(portal.currentStaffRole?.()||"").toLowerCase());
+    const canManage=canManagePrograms();
     if(!canManage)return;
     const existing=resourceAccessRows.find(r=>r.program_code===programCode&&r.resource_id===resourceId);
     if(existing){
@@ -123,7 +124,7 @@
   }
 
   async function toggleProgramChallenge(programCode,challengeId,current){
-    const canManage=["owner","admin","coach"].includes(String(portal.currentStaffRole?.()||"").toLowerCase());
+    const canManage=canManagePrograms();
     if(!canManage)return;
     const existing=challengeAccessRows.find(r=>r.program_code===programCode&&r.challenge_id===challengeId);
     if(existing){
@@ -136,10 +137,174 @@
     await loadProgramAccess();
   }
 
+
+  let benefitProgram=null;
+  let benefitModal=null;
+
+  function ensureBenefitModal(){
+    if(benefitModal)return benefitModal;
+    benefitModal=document.createElement("div");
+    benefitModal.className="program-benefit-modal hidden";
+    benefitModal.setAttribute("aria-hidden","true");
+    benefitModal.innerHTML=
+      '<div class="program-benefit-backdrop" data-benefit-close></div>'+
+      '<section class="program-benefit-dialog" role="dialog" aria-modal="true" aria-labelledby="program-benefit-title">'+
+        '<button class="program-benefit-close" type="button" aria-label="Close">×</button>'+
+        '<p class="eyebrow">PROGRAM BENEFITS</p>'+
+        '<h2 id="program-benefit-title">Manage Benefits</h2>'+
+        '<p class="program-benefit-intro">Benefits control what members receive. Changes are applied to existing memberships automatically.</p>'+
+        '<div id="program-benefit-existing" class="program-benefit-existing"></div>'+
+        '<section class="program-benefit-add">'+
+          '<div class="program-benefit-add-copy"><strong>Add Benefit</strong><span>Create a new entitlement for this program.</span></div>'+
+          '<div class="program-benefit-form-grid">'+
+            '<label><span>Benefit Key</span><input id="program-benefit-new-key" type="text" maxlength="80" placeholder="example_benefit"></label>'+
+            '<label><span>Display Label</span><input id="program-benefit-new-label" type="text" maxlength="120" placeholder="Example Benefit"></label>'+
+            '<label><span>Limit</span><input id="program-benefit-new-limit" type="number" min="0" step="1" placeholder="Optional"></label>'+
+            '<label><span>Reset</span><select id="program-benefit-new-cadence"><option value="none">None</option><option value="weekly">Weekly</option><option value="monthly">Monthly</option><option value="annual">Annual</option></select></label>'+
+          '</div>'+
+          '<div class="program-benefit-actions"><button id="program-benefit-add-button" class="primary" type="button">Add Benefit</button></div>'+
+          '<p id="program-benefit-status" class="form-status" aria-live="polite"></p>'+
+        '</section>'+
+      '</section>';
+    document.body.append(benefitModal);
+    benefitModal.querySelector("[data-benefit-close]")?.addEventListener("click",closeBenefitModal);
+    benefitModal.querySelector(".program-benefit-close")?.addEventListener("click",closeBenefitModal);
+    benefitModal.querySelector("#program-benefit-add-button")?.addEventListener("click",addBenefit);
+    return benefitModal;
+  }
+
+  function closeBenefitModal(){
+    if(!benefitModal)return;
+    benefitModal.classList.add("hidden");
+    benefitModal.setAttribute("aria-hidden","true");
+    benefitProgram=null;
+  }
+
+  function normalizeKey(value){
+    return String(value||"").trim().toLowerCase().replace(/[^a-z0-9]+/g,"_").replace(/^_+|_+$/g,"").slice(0,80);
+  }
+
+  function renderBenefitModal(){
+    ensureBenefitModal();
+    const existing=benefitModal.querySelector("#program-benefit-existing");
+    const title=benefitModal.querySelector("#program-benefit-title");
+    if(!benefitProgram||!existing||!title)return;
+    title.textContent=benefitProgram.name+" Benefits";
+    existing.replaceChildren();
+
+    const rows=entitlementRows.filter(r=>r.program_code===benefitProgram.program_code);
+    if(!rows.length){
+      const empty=document.createElement("div");
+      empty.className="program-benefit-empty";
+      empty.textContent="No benefits have been configured for this program yet.";
+      existing.append(empty);
+      return;
+    }
+
+    rows.forEach(row=>{
+      const item=document.createElement("article");item.className="program-benefit-row"+(row.active?"":" inactive");
+      const key=document.createElement("div");key.className="program-benefit-key";
+      const keyLabel=document.createElement("span");keyLabel.textContent="Benefit Key";
+      const keyValue=document.createElement("strong");keyValue.textContent=row.entitlement_key;
+      key.append(keyLabel,keyValue);
+
+      const labelWrap=document.createElement("label");
+      const labelCaption=document.createElement("span");labelCaption.textContent="Display Label";
+      const labelInput=document.createElement("input");labelInput.type="text";labelInput.value=row.label||"";labelInput.maxLength=120;
+      labelWrap.append(labelCaption,labelInput);
+
+      const limitWrap=document.createElement("label");
+      const limitCaption=document.createElement("span");limitCaption.textContent="Limit";
+      const limitInput=document.createElement("input");limitInput.type="number";limitInput.min="0";limitInput.step="1";limitInput.value=row.limit_value??"";
+      limitWrap.append(limitCaption,limitInput);
+
+      const cadenceWrap=document.createElement("label");
+      const cadenceCaption=document.createElement("span");cadenceCaption.textContent="Reset";
+      const cadence=document.createElement("select");
+      ["none","weekly","monthly","annual"].forEach(v=>{
+        const o=document.createElement("option");o.value=v;o.textContent=portal.titleCase(v);o.selected=(row.reset_cadence||"none")===v;cadence.append(o);
+      });
+      cadenceWrap.append(cadenceCaption,cadence);
+
+      const controls=document.createElement("div");controls.className="program-benefit-row-actions";
+      const activeLabel=document.createElement("label");activeLabel.className="program-benefit-active";
+      const active=document.createElement("input");active.type="checkbox";active.checked=Boolean(row.active);
+      const activeText=document.createElement("span");activeText.textContent="Active";
+      activeLabel.append(active,activeText);
+      const save=document.createElement("button");save.type="button";save.className="primary";save.textContent="Save";
+      save.addEventListener("click",async()=>{
+        const nextLabel=labelInput.value.trim();
+        if(!nextLabel){window.alert("Add a display label before saving.");return;}
+        save.disabled=true;save.textContent="Saving";
+        const rawLimit=limitInput.value.trim();
+        const payload={
+          label:nextLabel,
+          limit_value:rawLimit===""?null:Number(rawLimit),
+          reset_cadence:cadence.value,
+          active:active.checked
+        };
+        const {error}=await client.from("program_entitlement_templates").update(payload).eq("id",row.id);
+        save.disabled=false;save.textContent="Save";
+        if(error){window.alert(error.message);return;}
+        await loadProgramAccess();
+        renderBenefitModal();
+      });
+      controls.append(activeLabel,save);
+
+      item.append(key,labelWrap,limitWrap,cadenceWrap,controls);
+      existing.append(item);
+    });
+  }
+
+  function openBenefitModal(program){
+    if(!canManagePrograms())return;
+    benefitProgram=program;
+    ensureBenefitModal();
+    renderBenefitModal();
+    benefitModal.classList.remove("hidden");
+    benefitModal.setAttribute("aria-hidden","false");
+  }
+
+  async function addBenefit(){
+    if(!benefitProgram||!canManagePrograms())return;
+    const keyInput=benefitModal.querySelector("#program-benefit-new-key");
+    const labelInput=benefitModal.querySelector("#program-benefit-new-label");
+    const limitInput=benefitModal.querySelector("#program-benefit-new-limit");
+    const cadence=benefitModal.querySelector("#program-benefit-new-cadence");
+    const status=benefitModal.querySelector("#program-benefit-status");
+    const label=labelInput.value.trim();
+    const key=normalizeKey(keyInput.value||label);
+    if(!key||!label){
+      portal.showStatus(status,"Add a benefit key and display label.","error");
+      return;
+    }
+    const exists=entitlementRows.some(r=>r.program_code===benefitProgram.program_code&&r.entitlement_key===key);
+    if(exists){
+      portal.showStatus(status,"That benefit key already exists for this program.","error");
+      return;
+    }
+    portal.showStatus(status,"Adding benefit...");
+    const rawLimit=limitInput.value.trim();
+    const {error}=await client.from("program_entitlement_templates").insert({
+      program_code:benefitProgram.program_code,
+      entitlement_key:key,
+      label,
+      limit_value:rawLimit===""?null:Number(rawLimit),
+      reset_cadence:cadence.value||"none",
+      active:true,
+      metadata:{}
+    });
+    if(error){portal.showStatus(status,error.message,"error");return;}
+    keyInput.value="";labelInput.value="";limitInput.value="";cadence.value="none";
+    portal.showStatus(status,"Benefit added.","success");
+    await loadProgramAccess();
+    renderBenefitModal();
+  }
+
   function renderProgramAccess(){
     if(!accessRoot)return;
     accessRoot.replaceChildren();
-    const canManage=["owner","admin","coach"].includes(String(portal.currentStaffRole?.()||"").toLowerCase());
+    const canManage=canManagePrograms();
     programRows.filter(r=>r.active).forEach(program=>{
       const entitlements=entitlementRows.filter(r=>r.program_code===program.program_code&&r.active);
       const included=courseAccessRows.filter(r=>r.program_code===program.program_code&&r.active);
@@ -156,7 +321,14 @@
 
       const sections=document.createElement("div");sections.className="program-access-sections";
       const benefitBlock=document.createElement("div");benefitBlock.className="program-access-block";
-      const bh=document.createElement("h3");bh.textContent="Included benefits";
+      const benefitHead=document.createElement("div");benefitHead.className="program-access-block-head";
+      const bh=document.createElement("h3");bh.textContent="Included Benefits";
+      benefitHead.append(bh);
+      if(canManage){
+        const manage=document.createElement("button");manage.type="button";manage.className="program-benefit-manage";manage.textContent="Manage Benefits";
+        manage.addEventListener("click",()=>openBenefitModal(program));
+        benefitHead.append(manage);
+      }
       const benefitList=document.createElement("div");benefitList.className="program-access-chip-list";
       if(entitlements.length){
         entitlements.slice(0,6).forEach(row=>{
@@ -173,7 +345,7 @@
       }else{
         const empty=document.createElement("span");empty.className="program-access-empty";empty.textContent="No entitlements configured.";benefitList.append(empty);
       }
-      benefitBlock.append(bh,benefitList);
+      benefitBlock.append(benefitHead,benefitList);
 
       const courseBlock=document.createElement("div");courseBlock.className="program-access-block";
       const ch=document.createElement("h3");ch.textContent="Course access";
@@ -258,7 +430,7 @@
     if(!accessRoot)return;
     const [programs,entitlements,courses,access,resources,resourceAccess,challenges,challengeAccess]=await Promise.all([
       client.from("program_catalog").select("program_code,name,program_type,active,metadata").order("name"),
-      client.from("program_entitlement_templates").select("program_code,entitlement_key,label,limit_value,reset_cadence,active").eq("active",true).order("label"),
+      client.from("program_entitlement_templates").select("id,program_code,entitlement_key,label,limit_value,reset_cadence,active,metadata").order("label"),
       client.from("learning_courses").select("id,title,version,status").order("title"),
       client.from("program_course_access").select("id,program_code,course_id,access_level,active"),
       client.from("resource_library").select("id,title,resource_type,category,status").order("title"),
@@ -521,8 +693,7 @@
   }
 
   function syncContentManagementAccess(){
-    const role=portal.currentStaffRole?.();
-    const canManage=["owner","admin","coach"].includes(String(role||"").toLowerCase());
+    const canManage=canManagePrograms();
     if(contentNew)contentNew.classList.toggle("hidden",!canManage);
     document.querySelectorAll(".program-content-row-actions").forEach(node=>node.classList.toggle("hidden",!canManage));
   }
