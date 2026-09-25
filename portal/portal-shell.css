@@ -406,3 +406,45 @@ body[data-ra-workspace="messages"] .staff-inbox-panel{margin-top:0}
   .portal-view.ra-shell-ready .panel-heading h2{font-size:22px}
   .portal-view.ra-shell-ready .portal-intro h1{font-size:32px}
 }
+
+
+/* Build 154: larger desktop typography and less microcopy */
+@media(min-width:861px){
+  .ra-sidebar-label{font-size:11px;letter-spacing:.11em}
+  .ra-nav-item{min-height:48px;font-size:14px}
+  .ra-subnav button{min-height:36px;font-size:12px}
+  .ra-header-context strong{font-size:15px}
+  .ra-header-context span{font-size:11px}
+  .staff-name{font-size:14px}
+  .role-chip{font-size:11px;padding:8px 11px}
+  .header-link{font-size:14px}
+
+  .portal-view.ra-shell-ready .portal-intro h1{font-size:44px}
+  .portal-view.ra-shell-ready .portal-intro>div>p:not(.eyebrow){font-size:15px}
+  .portal-view.ra-shell-ready .panel-heading h2{font-size:29px}
+  .portal-view.ra-shell-ready .panel-note{font-size:14px}
+  .portal-view.ra-shell-ready .section-kicker,
+  .portal-view.ra-shell-ready .eyebrow{font-size:11px}
+
+  .portal-view.ra-shell-ready .secondary-button.compact{
+    min-height:44px;
+    padding:0 18px;
+    font-size:12.5px;
+  }
+  .portal-view.ra-shell-ready .primary-button.compact{
+    min-height:46px;
+    padding:0 20px;
+    font-size:13px;
+  }
+  .portal-view.ra-shell-ready .empty-state{
+    min-height:64px;
+    font-size:13.5px;
+  }
+
+  .metric-card span{font-size:14px}
+  .metric-card strong{font-size:32px}
+  .count-chip,.role-chip{font-size:11px}
+  .list-main strong{font-size:14px}
+  .list-main span{font-size:12px}
+  .list-meta strong,.list-meta span{font-size:11px}
+}
