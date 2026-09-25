@@ -18,6 +18,7 @@
     [".executive-pulse-panel","analytics.view"],
     [".community-admin-panel","community.manage"],
     [".refuel-admin-panel","refuel.manage"],
+    ["#referral-admin-panel","referrals.manage"],
     [".companion-panel","companion.manage"],
     [".staff-inbox-panel","messaging.manage"],
     ["#staff-access-panel","staff.view"],
