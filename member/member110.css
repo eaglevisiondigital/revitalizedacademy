@@ -111,3 +111,8 @@
 .rm130-referral-stats span{display:block;font-size:8px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;color:#7f8c85}
 .rm130-referral-stats strong{display:block;margin-top:4px;font-size:17px;color:#30463a}
 @media(max-width:700px){.rm130-referral-grid{grid-template-columns:1fr}.rm130-referral-stats{grid-template-columns:1fr 1fr 1fr}}
+
+.rm136-documents-card{margin-top:13px}.rm136-doc-note{margin:7px 0 12px;color:#74827a;font-size:10px;line-height:1.5}
+.rm136-document{padding:11px 12px;border:1px solid #e4ebe7;border-radius:11px;background:#fbfcfb}
+.rm136-document-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.rm136-document strong{display:block;font-size:11px;color:#30463a}.rm136-document p{margin:4px 0 0;color:#718078;font-size:10px;line-height:1.45}.rm136-document small{display:block;margin-top:4px;color:#829087;font-size:9px}
+.rm136-document-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.rm136-document-actions button{min-height:31px;padding:0 9px;border-radius:8px;border:1px solid #cfdbd3;background:#fff;color:#154734;font-size:9px;font-weight:900}
