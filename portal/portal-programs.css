@@ -76,3 +76,31 @@
   .program-content-form-grid,.program-content-dynamic-fields{grid-template-columns:1fr}
   .program-content-wide,.program-content-dynamic-fields .wide{grid-column:auto}
 }
+
+
+.program-access-panel{margin-bottom:18px}
+.program-access-heading{align-items:flex-start}
+.program-access-list{display:grid;gap:10px}
+.program-access-card{padding:15px;border:1px solid #dfe8e2;border-radius:14px;background:linear-gradient(180deg,#fff,#fbfcfb)}
+.program-access-card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}
+.program-access-card-head strong{display:block;color:#1f4738;font-size:15px}
+.program-access-card-head span{display:block;margin-top:3px;color:#7a8880;font-size:9.5px}
+.program-access-count{display:inline-flex;align-items:center;min-height:28px;padding:0 9px;border-radius:999px;background:#edf5ef;color:#285b3d;font-size:8.5px;font-weight:900;white-space:nowrap}
+.program-access-sections{display:grid;grid-template-columns:1.1fr .9fr;gap:12px;margin-top:12px}
+.program-access-block{border:1px solid #e4ebe7;border-radius:11px;background:#fff;padding:11px}
+.program-access-block h3{margin:0 0 8px;color:#45594e;font-size:9px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+.program-access-chip-list{display:flex;gap:6px;flex-wrap:wrap}
+.program-access-chip{display:inline-flex;align-items:center;min-height:27px;padding:0 9px;border:1px solid #dde7e0;border-radius:999px;background:#f7f9f8;color:#5a6d63;font-size:8.5px;font-weight:800}
+.program-access-chip.course{background:#edf5ef;color:#2d6043;border-color:#d6e5da}
+.program-access-empty{color:#809087;font-size:9.5px}
+.program-access-actions{display:flex;gap:7px;justify-content:flex-end;margin-top:10px}
+.program-access-actions button{min-height:34px;padding:0 10px;border:1px solid #cedad2;border-radius:9px;background:#fff;color:#154734;font-size:9px;font-weight:900}
+.program-access-actions button:hover{background:#f3f8f5;border-color:#b8cabf}
+.program-access-actions button.primary{background:#154734;border-color:#154734;color:#fff}
+.program-access-course-list{display:grid;gap:7px;margin-top:10px}
+.program-access-course-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 10px;border:1px solid #e6ece8;border-radius:9px;background:#fbfcfb}
+.program-access-course-copy strong{display:block;color:#30463a;font-size:10px}
+.program-access-course-copy span{display:block;margin-top:2px;color:#7d8a83;font-size:8.5px}
+.program-access-course-row button{min-height:30px;padding:0 9px;border:1px solid #cedad2;border-radius:8px;background:#fff;color:#154734;font-size:8.5px;font-weight:900}
+.program-access-course-row button.active{background:#154734;border-color:#154734;color:#fff}
+@media(max-width:850px){.program-access-sections{grid-template-columns:1fr}}
