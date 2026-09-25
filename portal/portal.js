@@ -473,6 +473,22 @@
     });
   }
 
+
+  function togglePasswordVisibility(button){
+    const input=el(button.dataset.passwordToggle);
+    if(!input)return;
+    const showing=input.type==="text";
+    input.type=showing?"password":"text";
+    button.setAttribute("aria-pressed",String(!showing));
+    button.setAttribute("aria-label",showing?"Show password":"Hide password");
+    const icon=button.querySelector("span");
+    if(icon)icon.textContent=showing?"👁":"◉";
+  }
+
+  document.querySelectorAll("[data-password-toggle]").forEach((button)=>{
+    button.addEventListener("click",()=>togglePasswordVisibility(button));
+  });
+
   function showPasswordSetup() {
     authView.classList.remove("hidden");
     portalView.classList.add("hidden");
@@ -516,11 +532,8 @@
       return;
     }
 
-    const { data: staff, error } = await authClient
-      .from("staff_access")
-      .select("role, display_name, status")
-      .eq("user_id", session.user.id)
-      .maybeSingle();
+    const { data: staffRows, error } = await authClient.rpc("get_my_staff_access");
+    const staff = Array.isArray(staffRows) ? (staffRows[0] || null) : staffRows;
 
     if (error) {
       showLogin();
