@@ -1,0 +1,11 @@
+
+.client-documents-section{border-color:#d9e5dd;background:linear-gradient(180deg,#fff,#fbfdfb)}
+.client-documents-list{display:grid;gap:8px;margin-top:10px}
+.client-document-item{display:grid;grid-template-columns:minmax(180px,1.4fr) 110px minmax(160px,1fr) auto;gap:10px;align-items:center;padding:10px 11px;border:1px solid #e4ebe7;border-radius:10px;background:#fbfcfb}
+.client-document-copy strong{display:block;font-size:11px;color:#30463a}.client-document-copy span{display:block;margin-top:2px;font-size:8px;color:#7d8a83}
+.client-document-state{font-size:8px;font-weight:900;text-transform:uppercase;color:#65756b}
+.client-document-actions-row{display:flex;gap:6px;justify-content:flex-end;flex-wrap:wrap}.client-document-actions-row button{min-height:29px;padding:0 8px;border:1px solid #cedad2;border-radius:7px;background:#fff;color:#154734;font-size:8px;font-weight:900}
+.client-documents-actions{display:flex;gap:8px;margin-top:10px}
+.client-document-visible{display:flex!important;align-items:center;gap:8px}.client-document-visible input{width:16px!important;height:16px!important}.client-document-visible span{font-size:10px!important}
+@media(max-width:760px){.client-document-item{grid-template-columns:1fr 1fr}.client-document-actions-row{justify-content:flex-start}}
+@media(max-width:520px){.client-document-item{grid-template-columns:1fr}}
