@@ -13,6 +13,7 @@
   const selectedIds=new Set();
   let timer=null;
   let quickView="all";
+  let savedViews=[];
 
   function dateText(value){
     return value?portal.formatDate(value,true):"—";
@@ -246,6 +247,78 @@
     a.click();URL.revokeObjectURL(url);
   }
 
+
+  function currentConfiguration(){
+    return {
+      mode,
+      quickView,
+      search:el("people-search-input").value.trim(),
+      sort:el("people-sort").value,
+      type:el("people-type-filter").value,
+      stage:el("people-stage-filter").value,
+      assigned:el("people-assigned-filter").value,
+      source:el("people-source-filter").value,
+      assessment:el("people-assessment-filter").value,
+      enrollment:el("people-enrollment-filter").value
+    };
+  }
+
+  function applyConfiguration(config){
+    mode=config.mode||"all";
+    quickView=config.quickView||"all";
+    el("people-search-input").value=config.search||"";
+    el("people-sort").value=config.sort||"recent";
+    el("people-type-filter").value=config.type||"";
+    el("people-stage-filter").value=config.stage||"";
+    el("people-assigned-filter").value=config.assigned||"";
+    el("people-source-filter").value=config.source||"";
+    el("people-assessment-filter").value=config.assessment||"";
+    el("people-enrollment-filter").value=config.enrollment||"";
+    el("people-view-recent").classList.toggle("active",mode==="recent");
+    el("people-view-all").classList.toggle("active",mode==="all");
+    document.querySelectorAll("[data-people-quick]").forEach((b)=>b.classList.toggle("active",b.dataset.peopleQuick===quickView));
+    page=0;load();
+  }
+
+  async function loadSavedViews(){
+    const {data,error}=await client.from("people_saved_views").select("*").order("name");
+    if(error)return;
+    savedViews=data||[];
+    const select=el("people-saved-view");
+    select.innerHTML='<option value="">Choose saved view...</option>';
+    savedViews.forEach((row)=>{
+      const option=document.createElement("option");
+      option.value=row.id;
+      option.textContent=row.name+(row.shared?" · Shared":"");
+      select.append(option);
+    });
+    el("people-delete-view").disabled=!select.value;
+  }
+
+  async function saveCurrentView(){
+    const name=window.prompt("Name this People view:","");
+    if(!name?.trim())return;
+    const shared=window.confirm("Share this saved view with other authorized staff?");
+    const {error}=await client.from("people_saved_views").upsert({
+      name:name.trim(),
+      owner_user_id:portal.currentUserId(),
+      shared,
+      configuration:currentConfiguration(),
+      updated_at:new Date().toISOString()
+    },{onConflict:"owner_user_id,name"});
+    if(error){window.alert(error.message);return;}
+    await loadSavedViews();
+  }
+
+  async function deleteSavedView(){
+    const id=el("people-saved-view").value;
+    if(!id)return;
+    if(!window.confirm("Delete this saved People view?"))return;
+    const {error}=await client.from("people_saved_views").delete().eq("id",id);
+    if(error){window.alert(error.message);return;}
+    await loadSavedViews();
+  }
+
   function setMode(next){
     mode=next;page=0;
     el("people-view-recent").classList.toggle("active",mode==="recent");
@@ -272,6 +345,14 @@
   el("people-export").addEventListener("click",exportCsv);
   populateBulkValue();
 
+  el("people-save-view").addEventListener("click",saveCurrentView);
+  el("people-delete-view").addEventListener("click",deleteSavedView);
+  el("people-saved-view").addEventListener("change",(event)=>{
+    const row=savedViews.find((v)=>v.id===event.target.value);
+    el("people-delete-view").disabled=!row;
+    if(row)applyConfiguration(row.configuration||{});
+  });
+
   el("people-view-recent").addEventListener("click",()=>setMode("recent"));
   el("people-view-all").addEventListener("click",()=>setMode("all"));
   el("people-prev").addEventListener("click",()=>{if(page>0){page--;load();}});
@@ -297,5 +378,8 @@
 
   document.addEventListener("ra:dashboard-loaded",load);
 
-  populateFilters().then(load);
+  populateFilters().then(async()=>{
+    await loadSavedViews();
+    await load();
+  });
 })();
