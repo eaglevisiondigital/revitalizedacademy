@@ -22,15 +22,15 @@
       const parts=[];
       if(Number.isFinite(p.weekly_cents))parts.push("$"+(p.weekly_cents/100).toLocaleString("en-US",{maximumFractionDigits:2})+"/week");
       if(Number.isFinite(p.monthly_cents))parts.push("$"+(p.monthly_cents/100).toLocaleString("en-US",{maximumFractionDigits:2})+"/month");
-      return [parts.join(" or "),"recurring"];
+      return [parts.join(" or "),"Recurring"];
     }
-    if(Number.isFinite(p.one_time_cents))return ["$"+(p.one_time_cents/100).toLocaleString("en-US",{maximumFractionDigits:0}),"one time"];
-    return ["Personalized investment","discussed with coach"];
+    if(Number.isFinite(p.one_time_cents))return ["$"+(p.one_time_cents/100).toLocaleString("en-US",{maximumFractionDigits:0}),"One Time"];
+    return ["Personalized Investment","Discussed With Coach"];
   };
 
   const length=(row)=>{
-    if(row.metadata&&row.metadata.duration_days)return row.metadata.duration_days+" days";
-    if(row.default_commitment_months)return row.default_commitment_months+" months";
+    if(row.metadata&&row.metadata.duration_days)return row.metadata.duration_days+" Days";
+    if(row.default_commitment_months)return row.default_commitment_months+" Months";
     return "Flexible";
   };
 
@@ -52,14 +52,14 @@
     pricing.append(a,n);
 
     const meta=document.createElement("div");meta.className="program-catalog-meta";
-    [length(row), row.program_type==="membership"?"Membership":row.program_type==="cohort"?"Group coaching":"Coaching"].forEach(v=>{
+    [length(row), row.program_type==="membership"?"Membership":row.program_type==="cohort"?"Group Coaching":"Coaching"].forEach(v=>{
       const chip=document.createElement("span");chip.className="program-catalog-chip";chip.textContent=v;meta.append(chip);
     });
     if(row.metadata&&row.metadata.family_profiles){
-      const chip=document.createElement("span");chip.className="program-catalog-chip";chip.textContent="Up to "+row.metadata.family_profiles+" profiles";meta.append(chip);
+      const chip=document.createElement("span");chip.className="program-catalog-chip";chip.textContent="Up To "+row.metadata.family_profiles+" Profiles";meta.append(chip);
     }
     if(row.program_code==="vitality-accelerator"||row.program_code==="vitality-accelerator-cohort"){
-      const chip=document.createElement("span");chip.className="program-catalog-chip";chip.textContent="Up to 2 people";meta.append(chip);
+      const chip=document.createElement("span");chip.className="program-catalog-chip";chip.textContent="Up To 2 People";meta.append(chip);
     }
 
     article.append(top,pricing,meta);
@@ -149,9 +149,9 @@
       const head=document.createElement("div");head.className="program-access-card-head";
       const copy=document.createElement("div");
       const name=document.createElement("strong");name.textContent=program.name;
-      const sub=document.createElement("span");sub.textContent=program.metadata?.support_model||portal.titleCase(program.program_type||"program");
+      const sub=document.createElement("span");sub.textContent=portal.titleCase(program.metadata?.support_model||program.program_type||"program");
       copy.append(name,sub);
-      const count=document.createElement("span");count.className="program-access-count";count.textContent=included.length+" course"+(included.length===1?"":"s")+" · "+includedResources.length+" resource"+(includedResources.length===1?"":"s")+" · "+includedChallenges.length+" challenge"+(includedChallenges.length===1?"":"s");
+      const count=document.createElement("span");count.className="program-access-count";count.textContent=included.length+" Course"+(included.length===1?"":"s")+" · "+includedResources.length+" Resource"+(includedResources.length===1?"":"s")+" · "+includedChallenges.length+" Challenge"+(includedChallenges.length===1?"":"s");
       head.append(copy,count);
 
       const sections=document.createElement("div");sections.className="program-access-sections";
@@ -161,13 +161,13 @@
       if(entitlements.length){
         entitlements.slice(0,6).forEach(row=>{
           const chip=document.createElement("span");chip.className="program-access-chip";
-          chip.textContent=row.label+(row.limit_value?" · "+row.limit_value:"");
+          chip.textContent=portal.titleCase(row.label)+(row.limit_value?" · "+row.limit_value:"");
           benefitList.append(chip);
         });
         if(entitlements.length>6){
           const more=document.createElement("span");
           more.className="program-access-chip more";
-          more.textContent="+"+(entitlements.length-6)+" more included";
+          more.textContent="+"+(entitlements.length-6)+" More Included";
           benefitList.append(more);
         }
       }else{
