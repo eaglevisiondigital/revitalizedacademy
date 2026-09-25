@@ -312,3 +312,18 @@
 .program-content-dynamic-fields select,
 .program-content-form textarea,
 .program-content-dynamic-fields textarea{font-size:13px}
+
+
+/* Build 155: resources and cleaner access layout */
+.program-content-summary{grid-template-columns:repeat(4,minmax(0,1fr))}
+.program-access-sections{grid-template-columns:1fr 1fr}
+.program-access-sections>.program-access-block:first-child{grid-column:1/-1}
+.program-access-resources{min-width:0}
+@media(max-width:900px){
+  .program-content-summary{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .program-access-sections{grid-template-columns:1fr}
+  .program-access-sections>.program-access-block:first-child{grid-column:auto}
+}
+@media(max-width:620px){
+  .program-content-summary{grid-template-columns:1fr 1fr}
+}
