@@ -810,3 +810,61 @@ body[data-ra-workspace="messages"] .staff-inbox-panel{margin-top:0}
     padding:18px;
   }
 }
+
+
+/* Build 160b: casing and density details */
+.staff-role-pill,
+.staff-status-pill,
+.work-unassigned{
+  text-transform:none!important;
+}
+.staff-access-perm-chip{
+  text-transform:none!important;
+}
+.executive-subhead span{
+  color:#547064!important;
+}
+.executive-subhead strong{
+  color:#193f31!important;
+}
+.executive-program span{
+  color:#64786d!important;
+}
+.executive-program span b{
+  color:#244a39!important;
+}
+.program-access-block h3{
+  color:#36594a!important;
+}
+.program-content-tabs{
+  row-gap:9px!important;
+}
+.program-content-tabs button{
+  min-height:44px!important;
+  padding:0 17px!important;
+}
+.people-quick-views button{
+  min-height:42px!important;
+  padding:0 15px!important;
+}
+.people-pagination button{
+  min-height:38px!important;
+}
+.team-calendar-conflict-chip{
+  border-color:#cedcd3!important;
+  background:#f7faf8!important;
+  color:#476456!important;
+}
+.team-calendar-conflict-chip.warn{
+  background:#fff5df!important;
+  border-color:#e7d1a7!important;
+  color:#805e23!important;
+}
+@media(min-width:1100px){
+  .executive-pulse-grid{
+    grid-template-columns:.9fr 1.1fr!important;
+  }
+  .staff-access-item{
+    grid-template-columns:minmax(210px,1.35fr) minmax(140px,.65fr) minmax(100px,.55fr) minmax(260px,1.35fr) auto!important;
+  }
+}
