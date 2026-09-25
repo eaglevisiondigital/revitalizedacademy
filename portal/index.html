@@ -31,6 +31,7 @@
   <link rel="stylesheet" href="portal-billing.css?v=137">
   <link rel="stylesheet" href="portal-agreements.css?v=139">
   <link rel="stylesheet" href="portal-coach-capacity.css?v=140">
+  <link rel="stylesheet" href="portal-staff-onboarding.css?v=142">
 </head>
 <body>
   <main class="portal-page">
@@ -2183,6 +2184,34 @@
           <form id="client-agreement-assign-form" class="people-form">
             <div class="people-grid">
               <label class="people-wide"><span>Published agreement</span><select id="client-agreement-template-select"></select></label>
+
+              <div id="client-contract-fields" class="people-wide client-contract-fields hidden">
+                <div class="client-contract-heading">
+                  <strong>ReVitalized Academy Contract Details</strong>
+                  <span>These values become part of the signed agreement snapshot.</span>
+                </div>
+                <div class="people-grid">
+                  <label><span>Effective date</span><input id="contract-effective-date" type="date"></label>
+                  <label><span>Primary client</span><input id="contract-client-name" type="text" maxlength="240"></label>
+                  <label><span>Secondary client · Husband/Wife only</span><input id="contract-secondary-client-name" type="text" maxlength="240" placeholder="Leave blank for individual client"></label>
+                  <label><span>Program level</span>
+                    <select id="contract-program-level">
+                      <option value="">Select level</option>
+                      <option value="Level 1">Level 1</option>
+                      <option value="Level 2">Level 2</option>
+                      <option value="Level 3">Level 3</option>
+                    </select>
+                  </label>
+                  <label><span>Monthly fee</span><input id="contract-monthly-fee" type="number" min="0" step="0.01"></label>
+                  <label><span>Term / duration</span><input id="contract-term-duration" type="text" maxlength="120" placeholder="Example: 6 months"></label>
+                  <label><span>Good Faith deposit</span><input id="contract-good-faith-deposit" type="number" min="0" step="0.01"></label>
+                  <label><span>Adjusted monthly payment</span><input id="contract-adjusted-monthly-payment" type="number" min="0" step="0.01"></label>
+                  <label class="people-wide"><span>Special conditions</span><textarea id="contract-special-conditions" rows="3" maxlength="4000" placeholder="Leave blank if none."></textarea></label>
+                  <label class="people-wide"><span>Appendix A · Plan Structure</span><textarea id="contract-appendix-a" rows="6" maxlength="8000" placeholder="Describe the approved plan structure and included services." required></textarea></label>
+                </div>
+                <div class="client-contract-approval-note">The approving staff member and approval date are recorded automatically in the contract snapshot.</div>
+              </div>
+
               <label class="client-document-visible people-wide"><input id="client-agreement-send-now" type="checkbox" checked><span>Send to member now</span></label>
             </div>
             <div class="people-form-actions">
@@ -2274,6 +2303,33 @@
             </div>
             <p id="people-import-status" class="form-status" aria-live="polite"></p>
           </form>
+        </section>
+      </div>
+
+
+      <div id="staff-onboarding-modal" class="staff-onboarding-modal hidden" aria-hidden="true">
+        <div class="staff-onboarding-backdrop"></div>
+        <section class="staff-onboarding-dialog" role="dialog" aria-modal="true" aria-labelledby="staff-onboarding-title">
+          <p class="eyebrow">STAFF ONBOARDING</p>
+          <h2 id="staff-onboarding-title">Required agreement</h2>
+          <p class="staff-onboarding-intro">Complete the required ReVitalized Nation agreement before staff operational access is activated.</p>
+          <div id="staff-onboarding-list" class="staff-onboarding-list"></div>
+          <div id="staff-onboarding-document" class="staff-onboarding-document hidden">
+            <div class="staff-onboarding-document-head">
+              <div>
+                <strong id="staff-onboarding-document-title">Agreement</strong>
+                <span id="staff-onboarding-document-meta"></span>
+              </div>
+              <button id="staff-onboarding-back" type="button">Back</button>
+            </div>
+            <div id="staff-onboarding-document-content" class="staff-onboarding-document-content"></div>
+            <form id="staff-onboarding-sign-form" class="staff-onboarding-sign-form">
+              <label><span>Type your legal name</span><input id="staff-onboarding-signer-name" type="text" maxlength="240" required></label>
+              <label class="staff-onboarding-check"><input id="staff-onboarding-accept" type="checkbox" required><span>I have read and agree to the agreement above.</span></label>
+              <button class="primary-button" type="submit">Sign Agreement</button>
+              <p id="staff-onboarding-status" class="form-status" aria-live="polite"></p>
+            </form>
+          </div>
         </section>
       </div>
 
@@ -2744,7 +2800,8 @@
   <script defer src="portal-documents.js?v=136"></script>
   <script defer src="portal-billing.js?v=137"></script>
   <script defer src="portal-client-billing.js?v=138"></script>
-  <script defer src="portal-agreements.js?v=139"></script>
+  <script defer src="portal-agreements.js?v=142"></script>
   <script defer src="portal-coach-capacity.js?v=140"></script>
+  <script defer src="portal-staff-onboarding.js?v=142"></script>
 </body>
 </html>
