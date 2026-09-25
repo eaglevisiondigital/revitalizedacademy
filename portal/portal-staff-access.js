@@ -123,7 +123,7 @@
 
       const role=document.createElement("span");
       role.className="staff-role-pill "+String(row.role||"").toLowerCase();
-      role.textContent=title(row.role);
+      role.textContent=title(row.role)+(kind==="staff"?" · "+(row.contact_scope==="all"?"All People":row.contact_scope==="assigned"?"Assigned Only":"No People"):"");
 
       const state=document.createElement("span");
       state.className="staff-status-pill "+String(row.status||"").toLowerCase();
@@ -267,6 +267,7 @@
     if(!myPermissions["staff.manage"])return;
     el("staff-invite-form").reset();
     el("staff-invite-role").value="coach";
+    el("staff-invite-contact-scope").value="assigned";
     el("staff-invite-modal").classList.remove("hidden");
     el("staff-invite-modal").setAttribute("aria-hidden","false");
     window.setTimeout(()=>el("staff-invite-name").focus(),30);
@@ -377,6 +378,7 @@
     ].filter(Boolean).join(" · ");
     el("staff-edit-role").value=row.role;
     el("staff-edit-status").value=row.status;
+    el("staff-edit-contact-scope").value=row.contact_scope||"assigned";
     el("staff-edit-reason").value="";
     el("staff-permission-list").innerHTML='<div class="empty-state">Loading permissions...</div>';
     el("staff-agreement-file-list").innerHTML='<div class="empty-state">Loading staff agreements...</div>';
@@ -503,6 +505,31 @@
     }
   }
 
+
+  async function saveContactScope(){
+    if(!activeStaff)return;
+    const contactScope=el("staff-edit-contact-scope").value;
+    const reason=el("staff-edit-reason").value.trim();
+    if(!reason){
+      setStatus("staff-account-status","Enter a reason before changing People data scope.","error");
+      return;
+    }
+    setStatus("staff-account-status","Saving People data scope...");
+    try{
+      const data=await invoke({
+        action:"set_contact_scope",
+        user_id:activeStaff.user_id,
+        contact_scope:contactScope,
+        reason
+      });
+      activeStaff={...activeStaff,...data.staff};
+      setStatus("staff-account-status","People data scope updated.","success");
+      await load();
+    }catch(error){
+      setStatus("staff-account-status",error.message,"error");
+    }
+  }
+
   async function saveStatus(){
     if(!activeStaff)return;
     const statusValue=el("staff-edit-status").value;
@@ -531,6 +558,7 @@
   el("staff-invite-form").addEventListener("submit",inviteStaff);
   el("staff-save-role").addEventListener("click",saveRole);
   el("staff-save-status").addEventListener("click",saveStatus);
+  el("staff-save-contact-scope").addEventListener("click",saveContactScope);
 
   document.querySelectorAll("[data-staff-invite-close]").forEach((node)=>node.addEventListener("click",closeInvite));
   document.querySelectorAll("[data-staff-permissions-close]").forEach((node)=>node.addEventListener("click",closePermissions));
