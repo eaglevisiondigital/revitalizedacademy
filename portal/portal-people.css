@@ -62,3 +62,30 @@
 .people-import-template{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.people-import-template span{font-size:8px;color:#7e8b84}
 .people-import-preview{max-height:320px;overflow:auto;border:1px solid #dfe7e2;border-radius:10px;background:#fff}
 .people-import-preview table{width:100%;border-collapse:collapse;font-size:8px}.people-import-preview th,.people-import-preview td{padding:7px 8px;border-bottom:1px solid #edf1ee;text-align:left;white-space:nowrap}.people-import-preview th{position:sticky;top:0;background:#f4f7f5;color:#53675c;font-weight:900;text-transform:uppercase;letter-spacing:.05em}.people-import-preview tr:last-child td{border-bottom:0}
+
+
+/* Portal UI readability polish */
+.people-view-tabs{gap:6px;padding:4px;border-radius:12px}
+.people-view-tab{min-height:38px;padding:0 14px;font-size:11px;line-height:1;font-weight:850;transition:background .16s ease,color .16s ease,box-shadow .16s ease}
+.people-view-tab:hover{background:#eef4f0;color:#154734}
+.people-view-tab.active{box-shadow:0 2px 8px rgba(21,71,52,.10)}
+.people-quick-views{gap:8px;margin:14px 0 4px}
+.people-quick-views button{min-height:36px;padding:0 14px;font-size:10px;line-height:1;font-weight:850;transition:background .16s ease,color .16s ease,border-color .16s ease,transform .16s ease}
+.people-quick-views button:hover{border-color:#a9beb0;color:#154734;background:#f7faf8}
+.people-quick-views button.active:hover{background:#154734;color:#fff}
+.people-directory-controls label>span,.people-saved-views label>span{font-size:9px;letter-spacing:.075em;color:#64756b}
+.people-directory-controls select,.people-saved-views select{height:42px;font-size:11px;border-radius:10px;padding:0 11px}
+.people-search input{height:42px;font-size:11px;border-radius:10px;padding:0 13px}
+.people-result-bar{font-size:10px}
+.people-pagination{gap:8px}
+.people-pagination button{min-height:34px;padding:0 11px;font-size:9px;border-radius:9px}
+.people-pagination button:not(:disabled):hover{background:#f3f8f5;border-color:#b8cabf}
+.people-directory-name span{font-size:9px}
+.people-toolbar .primary-button.compact{min-height:42px;padding:0 20px;font-size:12px;border-radius:10px}
+.people-saved-views .secondary-button.compact{min-height:42px;padding:0 18px;font-size:11px}
+.people-quick-views button:focus-visible,.people-view-tab:focus-visible,.people-pagination button:focus-visible{outline:2px solid #5f9f79;outline-offset:2px}
+@media(max-width:720px){
+  .people-view-tabs{width:100%}
+  .people-view-tab{flex:1}
+  .people-quick-views button{min-height:38px}
+}
