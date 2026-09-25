@@ -167,7 +167,7 @@
     (conflictResult.data||[]).forEach((r)=>{conflicts.add(r.item_a_id);conflicts.add(r.item_b_id);});
     availabilityIssues=new Map((availabilityResult.data||[]).map((r)=>[r.item_id,r]));
     const issueCount=new Set([...conflicts,...availabilityIssues.keys()]).size;
-    el("team-calendar-conflict-chip").textContent=issueCount+" scheduling issue"+(issueCount===1?"":"s");
+    el("team-calendar-conflict-chip").textContent=issueCount+" Scheduling Issue"+(issueCount===1?"":"s");
     el("team-calendar-conflict-chip").classList.toggle("warn",issueCount>0);
     render();
   }
