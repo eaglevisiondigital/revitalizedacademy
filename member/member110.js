@@ -112,6 +112,96 @@
 
   let currentMember = null;
 
+  function safeDocumentFilename(name){
+    return String(name||"file").replace(/[^A-Za-z0-9._-]+/g,"-").replace(/-+/g,"-").replace(/^-|-$/g,"")||"file";
+  }
+
+  async function signedDocumentUrl(path){
+    const {data,error}=await client.storage.from("client-documents").createSignedUrl(path,900);
+    if(error||!data?.signedUrl)return null;
+    return data.signedUrl;
+  }
+
+  function renderDocuments(rows){
+    const list=el("rm-documents");
+    list.replaceChildren();
+    if(!rows.length){
+      list.innerHTML='<div class="rm112-empty">No member-visible documents yet.</div>';
+      return;
+    }
+    rows.forEach((row)=>{
+      const item=document.createElement("div");
+      item.className="rm136-document";
+      const top=document.createElement("div");top.className="rm136-document-top";
+      const heading=document.createElement("strong");heading.textContent=row.title;
+      const kind=document.createElement("span");kind.className="rm112-chip";kind.textContent=title(row.category);
+      top.append(heading,kind);item.append(top);
+      if(row.description){const p=document.createElement("p");p.textContent=row.description;item.append(p);}
+      const meta=document.createElement("small");meta.textContent=[row.original_filename,formatDate(row.created_at,true)].filter(Boolean).join(" · ");item.append(meta);
+      const actions=document.createElement("div");actions.className="rm136-document-actions";
+      const open=document.createElement("button");open.type="button";open.textContent="Open Document";
+      open.addEventListener("click",async()=>{
+        const url=await signedDocumentUrl(row.storage_path);
+        if(url)window.open(url,"_blank","noopener");
+      });
+      actions.append(open);item.append(actions);list.append(item);
+    });
+  }
+
+  function closeDocumentUpload(){
+    el("rm-document-upload-modal").classList.add("hidden");
+    el("rm-document-upload-modal").setAttribute("aria-hidden","true");
+  }
+
+  function openDocumentUpload(){
+    el("rm-document-upload-form").reset();
+    el("rm-document-upload-modal").classList.remove("hidden");
+    el("rm-document-upload-modal").setAttribute("aria-hidden","false");
+    showStatus(el("rm-document-upload-status"),"");
+  }
+
+  async function uploadMemberDocument(event){
+    event.preventDefault();
+    if(!currentMember)return;
+    const file=el("rm-document-file").files?.[0];
+    if(!file)return;
+    if(file.size>26214400){showStatus(el("rm-document-upload-status"),"File must be 25 MB or smaller.","error");return;}
+
+    const {data:{user}}=await client.auth.getUser();
+    const id=crypto.randomUUID();
+    const path=currentMember.contact_id+"/"+id+"/"+safeDocumentFilename(file.name);
+    const category=el("rm-document-category").value;
+
+    showStatus(el("rm-document-upload-status"),"Preparing secure upload...");
+    const {error:rowError}=await client.from("client_documents").insert({
+      id,
+      contact_id:currentMember.contact_id,
+      membership_id:currentMember.membership_id||null,
+      category,
+      title:el("rm-document-title").value.trim(),
+      description:el("rm-document-description").value.trim()||null,
+      storage_path:path,
+      original_filename:file.name,
+      content_type:file.type||null,
+      size_bytes:file.size,
+      member_visible:true,
+      uploaded_by_user_id:user.id,
+      uploaded_by_contact_id:currentMember.contact_id
+    });
+    if(rowError){showStatus(el("rm-document-upload-status"),rowError.message,"error");return;}
+
+    const {error:uploadError}=await client.storage.from("client-documents").upload(path,file,{contentType:file.type||"application/octet-stream",upsert:false});
+    if(uploadError){
+      await client.from("client_documents").update({status:"archived"}).eq("id",id);
+      showStatus(el("rm-document-upload-status"),uploadError.message,"error");return;
+    }
+
+    showStatus(el("rm-document-upload-status"),"Document uploaded securely.","success");
+    await loadDashboard();
+    window.setTimeout(closeDocumentUpload,500);
+  }
+
+
   let currentReferralCode=null;
 
   function renderReferralSummary(row){
@@ -1403,7 +1493,8 @@
       communitySpacesResult,
       communityFeedResult,
       refuelResult,
-      referralSummaryResult
+      referralSummaryResult,
+      documentsResult
     ] = await Promise.all([
       client.from("my_member_dashboard").select("*").maybeSingle(),
       client.from("my_member_entitlements").select("*").order("label"),
@@ -1432,10 +1523,11 @@
       client.from("my_community_spaces").select("*"),
       client.from("my_community_feed").select("*"),
       client.from("my_refuel_access").select("*").limit(1).maybeSingle(),
-      client.from("my_referral_summary").select("*").maybeSingle()
+      client.from("my_referral_summary").select("*").maybeSingle(),
+      client.from("my_documents").select("*")
     ]);
 
-    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult,notificationPrefsResult,healthConnectionsResult,challengesResult,communitySpacesResult,communityFeedResult,refuelResult,referralSummaryResult].find((r) => r.error);
+    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult,notificationPrefsResult,healthConnectionsResult,challengesResult,communitySpacesResult,communityFeedResult,refuelResult,referralSummaryResult,documentsResult].find((r) => r.error);
     if (failed?.error) throw failed.error;
 
     const member = dashboardResult.data;
@@ -1596,6 +1688,10 @@
     if (event.key === "Escape" && !el("rm-course-modal").classList.contains("hidden")) closeCourse();
     if (event.key === "Escape" && !el("rm-message-modal").classList.contains("hidden")) closeConversation();
   });
+
+  el("rm-document-upload-button").addEventListener("click",openDocumentUpload);
+  el("rm-document-upload-form").addEventListener("submit",uploadMemberDocument);
+  document.querySelectorAll("[data-document-upload-close]").forEach((n)=>n.addEventListener("click",closeDocumentUpload));
 
   el("rm-referral-copy").addEventListener("click",copyReferralLink);
 
