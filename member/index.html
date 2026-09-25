@@ -13,7 +13,7 @@
   <link rel="shortcut icon" type="image/png" href="../assets/images/revitalized-icon-approved.png">
   <link rel="apple-touch-icon" href="../assets/images/revitalized-icon-approved.png">
   <link rel="manifest" href="manifest.webmanifest?v=171">
-  <link rel="stylesheet" href="member110.css?v=183">
+  <link rel="stylesheet" href="member110.css?v=184">
 </head>
 <body>
   <main class="rm112-page">
@@ -66,7 +66,7 @@
         <button type="button" data-member-jump=".rm120-message-grid">Messages</button>
         <button type="button" data-member-jump="#rm-family-hub-card">Family Hub</button>
         <button type="button" data-member-jump="#rm-referral-card">Ambassador</button>
-        <button type="button" data-member-jump=".rm139-agreements-card">Account</button>
+        <button type="button" data-member-jump="#rm-member-account-card">Account</button>
       </nav>
 
       <section class="rm112-hero">
@@ -448,6 +448,46 @@
         <div id="rm-ask-history" class="rm169-ask-history"></div>
       </section>
 
+      <section id="rm-member-account-card" class="rm112-card rm184-account-card">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">MY ACCOUNT</p>
+            <h2>Profile &amp; Security</h2>
+          </div>
+          <span id="rm-account-email-state" class="rm112-chip">Current Email</span>
+        </div>
+        <div class="rm184-account-grid">
+          <form id="rm-member-profile-form" class="rm184-profile-form">
+            <div class="rm184-fields">
+              <label><span>First Name</span><input id="rm-profile-first" type="text" maxlength="120" autocomplete="given-name" required></label>
+              <label><span>Last Name</span><input id="rm-profile-last" type="text" maxlength="120" autocomplete="family-name"></label>
+              <label><span>Email</span><input id="rm-profile-email" type="email" maxlength="320" autocomplete="email" required></label>
+              <label><span>Phone</span><input id="rm-profile-phone" type="tel" maxlength="40" autocomplete="tel"></label>
+              <label><span>City</span><input id="rm-profile-city" type="text" maxlength="120" autocomplete="address-level2"></label>
+              <label><span>State / Province</span><input id="rm-profile-state" type="text" maxlength="120" autocomplete="address-level1"></label>
+              <label class="wide"><span>Country</span><input id="rm-profile-country" type="text" maxlength="120" autocomplete="country-name"></label>
+            </div>
+            <div class="rm184-account-actions">
+              <button type="submit">Save Profile</button>
+              <button id="rm-member-change-password" class="secondary" type="button">Change Password</button>
+            </div>
+            <p class="rm184-account-note">If you change your email, you may be asked to confirm the new address before it becomes your sign-in email.</p>
+            <p id="rm-member-profile-status" class="rm112-status" aria-live="polite"></p>
+          </form>
+
+          <form id="rm-member-password-form" class="rm184-password-form hidden">
+            <strong>Change Password</strong>
+            <label><span>New Password</span><input id="rm-member-new-password" type="password" minlength="10" autocomplete="new-password" required></label>
+            <label><span>Confirm New Password</span><input id="rm-member-confirm-password" type="password" minlength="10" autocomplete="new-password" required></label>
+            <div class="rm184-account-actions">
+              <button type="submit">Save New Password</button>
+              <button id="rm-member-password-cancel" class="secondary" type="button">Cancel</button>
+            </div>
+            <p id="rm-member-password-status" class="rm112-status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+
       <section class="rm112-card rm121-settings-card">
         <div class="rm112-card-head">
           <div>
@@ -778,6 +818,6 @@
   </main>
 
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
-  <script defer src="member110.js?v=183"></script>
+  <script defer src="member110.js?v=184"></script>
 </body>
 </html>

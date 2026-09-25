@@ -2176,6 +2176,63 @@
     await loadDashboard();
   }
 
+  async function saveMemberProfile(event){
+    event.preventDefault();
+    const status=el("rm-member-profile-status");
+    const first=el("rm-profile-first").value.trim();
+    const last=el("rm-profile-last").value.trim();
+    const email=el("rm-profile-email").value.trim().toLowerCase();
+    const phone=el("rm-profile-phone").value.trim();
+    const city=el("rm-profile-city").value.trim();
+    const state=el("rm-profile-state").value.trim();
+    const country=el("rm-profile-country").value.trim();
+    if(!first||!email){showStatus(status,"First name and email are required.","error");return;}
+
+    showStatus(status,"Saving your profile...");
+    const {error:profileError}=await client.rpc("update_my_member_profile",{
+      p_first_name:first,p_last_name:last||null,p_phone:phone||null,
+      p_city:city||null,p_state:state||null,p_country:country||null
+    });
+    if(profileError){showStatus(status,profileError.message,"error");return;}
+
+    const {data:{user},error:userError}=await client.auth.getUser();
+    if(userError){showStatus(status,userError.message,"error");return;}
+
+    let emailChanged=false;
+    if(user?.email&&user.email.toLowerCase()!==email){
+      const {error:emailError}=await client.auth.updateUser({email});
+      if(emailError){showStatus(status,emailError.message,"error");return;}
+      emailChanged=true;
+    }
+
+    if(!emailChanged) await client.rpc("sync_my_member_email");
+    el("rm-member-name").textContent=[first,last].filter(Boolean).join(" ");
+    el("rm-first-name").textContent=first;
+    showStatus(status,emailChanged
+      ?"Profile saved. Check your email to confirm the new sign-in address."
+      :"Profile saved.","success");
+    await loadDashboard();
+  }
+
+  async function saveMemberPassword(event){
+    event.preventDefault();
+    const status=el("rm-member-password-status");
+    const password=el("rm-member-new-password").value;
+    const confirm=el("rm-member-confirm-password").value;
+    if(password.length<10){showStatus(status,"Use at least 10 characters.","error");return;}
+    if(password!==confirm){showStatus(status,"The passwords do not match.","error");return;}
+    showStatus(status,"Saving your new password...");
+    const {error}=await client.auth.updateUser({password});
+    if(error){showStatus(status,error.message,"error");return;}
+    el("rm-member-new-password").value="";
+    el("rm-member-confirm-password").value="";
+    showStatus(status,"Password updated successfully.","success");
+    window.setTimeout(()=>{
+      el("rm-member-password-form").classList.add("hidden");
+      el("rm-member-profile-form").classList.remove("hidden");
+    },700);
+  }
+
   async function loadDashboard() {
     const [
       dashboardResult,
@@ -2219,7 +2276,8 @@
       dailyActionsResult,
       weeklySummaryResult,
       activityTimelineResult,
-      familyRequestsResult
+      familyRequestsResult,
+      memberProfileResult
     ] = await Promise.all([
       client.from("my_member_dashboard").select("*").maybeSingle(),
       client.from("my_member_entitlements").select("*").order("label"),
@@ -2262,10 +2320,11 @@
       client.from("my_daily_action_center").select("*").maybeSingle(),
       client.from("my_weekly_summary").select("*").maybeSingle(),
       client.from("my_activity_timeline").select("*").order("occurred_at",{ascending:false}).limit(25),
-      client.from("my_family_requests").select("*").order("created_at",{ascending:false}).limit(10)
+      client.from("my_family_requests").select("*").order("created_at",{ascending:false}).limit(10),
+      client.from("my_member_profile").select("*").maybeSingle()
     ]);
 
-    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult,notificationPrefsResult,healthConnectionsResult,challengesResult,communitySpacesResult,communityFeedResult,refuelResult,ambassadorResult,referralActivityResult,coachingRequestsResult,assignmentSummaryResult,coachingHubResult,documentsResult,billingResult,agreementsResult,coachingEntitlementsResult,companionTypesResult,companionRequestsResult,dailyActionsResult,weeklySummaryResult,activityTimelineResult,familyRequestsResult].find((r) => r.error);
+    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult,notificationPrefsResult,healthConnectionsResult,challengesResult,communitySpacesResult,communityFeedResult,refuelResult,ambassadorResult,referralActivityResult,coachingRequestsResult,assignmentSummaryResult,coachingHubResult,documentsResult,billingResult,agreementsResult,coachingEntitlementsResult,companionTypesResult,companionRequestsResult,dailyActionsResult,weeklySummaryResult,activityTimelineResult,familyRequestsResult,memberProfileResult].find((r) => r.error);
     if (failed?.error) throw failed.error;
 
     const member = dashboardResult.data;
@@ -2283,6 +2342,16 @@
       (member.commitment_ends_at ? " · Initial commitment through " + formatDate(member.commitment_ends_at) : "");
     el("rm-program-copy").textContent =
       "Your " + (member.program_name || "ReVitalized") + " membership, household access and next steps are connected here.";
+
+    const profile=memberProfileResult.data||member;
+    el("rm-profile-first").value=profile?.first_name||"";
+    el("rm-profile-last").value=profile?.last_name||"";
+    el("rm-profile-email").value=profile?.email||member.email||"";
+    el("rm-profile-phone").value=profile?.phone||"";
+    el("rm-profile-city").value=profile?.city||"";
+    el("rm-profile-state").value=profile?.state||"";
+    el("rm-profile-country").value=profile?.country||"";
+    el("rm-account-email-state").textContent="Current Email";
 
     const journey = journeyResult.data;
     if (journey) {
@@ -2469,6 +2538,19 @@
     event.preventDefault();
     jumpToMemberSection(button.dataset.memberJump);
   });
+
+  el("rm-member-profile-form").addEventListener("submit",saveMemberProfile);
+  el("rm-member-change-password").addEventListener("click",()=>{
+    el("rm-member-profile-form").classList.add("hidden");
+    el("rm-member-password-form").classList.remove("hidden");
+    el("rm-member-new-password").focus();
+  });
+  el("rm-member-password-cancel").addEventListener("click",()=>{
+    el("rm-member-password-form").classList.add("hidden");
+    el("rm-member-profile-form").classList.remove("hidden");
+    showStatus(el("rm-member-password-status"),"");
+  });
+  el("rm-member-password-form").addEventListener("submit",saveMemberPassword);
 
   el("rm-signout").addEventListener("click", signOut);
   el("rm-denied-signout").addEventListener("click", signOut);

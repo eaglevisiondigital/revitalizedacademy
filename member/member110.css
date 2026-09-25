@@ -1013,3 +1013,49 @@
 }
 @media(max-width:760px){.rm183-coaching-hub-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:480px){.rm183-coaching-hub-grid{grid-template-columns:1fr}}
+
+
+/* Build 184: Member profile & security */
+.rm184-account-card{background:linear-gradient(180deg,#fbfdfb,#fff)}
+.rm184-account-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(280px,.8fr);gap:14px;margin-top:10px}
+.rm184-profile-form,.rm184-password-form{
+  padding:16px;
+  border:1px solid #dce6e0;
+  border-radius:14px;
+  background:#fff;
+}
+.rm184-fields{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.rm184-fields label,.rm184-password-form label{display:grid;gap:6px}
+.rm184-fields label.wide{grid-column:1/-1}
+.rm184-fields span,.rm184-password-form label span{
+  color:#5d7166;
+  font-size:9.5px;
+  font-weight:850;
+}
+.rm184-fields input,.rm184-password-form input{
+  width:100%;
+  height:42px;
+  border:1px solid #cbd9d1;
+  border-radius:9px;
+  background:#fff;
+  padding:0 11px;
+  color:#2d473a;
+  font:inherit;
+}
+.rm184-account-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:13px}
+.rm184-account-actions button{
+  min-height:40px;
+  padding:0 12px;
+  border:1px solid #154734;
+  border-radius:9px;
+  background:#154734;
+  color:#fff;
+  font-size:9.5px;
+  font-weight:900;
+}
+.rm184-account-actions button.secondary{background:#fff;border-color:#cbdad1;color:#154734}
+.rm184-account-note{margin:10px 0 0;color:#748179;font-size:10.5px;line-height:1.45}
+.rm184-password-form>strong{display:block;margin-bottom:12px;color:#214b39;font-size:14px}
+.rm184-password-form label+label{margin-top:10px}
+@media(max-width:820px){.rm184-account-grid{grid-template-columns:1fr}}
+@media(max-width:560px){.rm184-fields{grid-template-columns:1fr}.rm184-fields label.wide{grid-column:auto}}
