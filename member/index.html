@@ -13,7 +13,7 @@
   <link rel="shortcut icon" type="image/png" href="../assets/images/revitalized-icon-approved.png">
   <link rel="apple-touch-icon" href="../assets/images/revitalized-icon-approved.png">
   <link rel="manifest" href="manifest.webmanifest?v=171">
-  <link rel="stylesheet" href="member110.css?v=184">
+  <link rel="stylesheet" href="member110.css?v=185">
 </head>
 <body>
   <main class="rm112-page">
@@ -108,6 +108,18 @@
         </div>
         <div id="rm-today-focus" class="rm170-focus-row"></div>
         <p id="rm-today-status" class="rm112-status" aria-live="polite"></p>
+      </section>
+
+      <section class="rm112-card rm185-app-home-card">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">YOUR REVITALIZED</p>
+            <h2>Everything Moving With You</h2>
+          </div>
+          <span id="rm-home-notification-chip" class="rm112-chip">0 Notifications</span>
+        </div>
+        <div id="rm-app-home-metrics" class="rm185-home-metrics"></div>
+        <div id="rm-app-home-focus" class="rm185-home-focus"></div>
       </section>
 
       <div class="rm112-grid rm170-week-grid">
@@ -220,6 +232,16 @@
         <div id="rm-coaching-requests" class="rm172-request-list"></div>
       </section>
 
+      <section class="rm112-card rm185-session-history-card">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">COACHING HISTORY</p>
+            <h2>Your Sessions</h2>
+          </div>
+          <span id="rm-session-history-count" class="rm112-chip">0 Sessions</span>
+        </div>
+        <div id="rm-session-history" class="rm185-session-history"></div>
+      </section>
 
       <div class="rm112-grid rm114-coaching-grid">
         <section class="rm112-card">
@@ -311,6 +333,17 @@
       </div>
 
 
+      <section class="rm112-card rm185-progress-center">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">PROGRESS CENTER</p>
+            <h2>Your Momentum at a Glance</h2>
+          </div>
+          <span id="rm-progress-last-updated" class="rm112-chip">Progress Ready</span>
+        </div>
+        <div id="rm-progress-snapshot" class="rm185-progress-snapshot"></div>
+      </section>
+
       <div class="rm112-grid rm116-wellness-grid">
         <section class="rm112-card">
           <div class="rm112-card-head">
@@ -338,6 +371,17 @@
         </section>
       </div>
 
+
+      <section class="rm112-card rm185-learning-progress-card">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">LEARNING PROGRESS</p>
+            <h2>Your Courses &amp; Completion</h2>
+          </div>
+          <span id="rm-learning-progress-chip" class="rm112-chip">0 Active</span>
+        </div>
+        <div id="rm-learning-progress" class="rm185-learning-progress"></div>
+      </section>
 
       <div class="rm112-grid rm119-learning-grid">
         <section class="rm112-card">
@@ -818,6 +862,6 @@
   </main>
 
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
-  <script defer src="member110.js?v=184"></script>
+  <script defer src="member110.js?v=185"></script>
 </body>
 </html>

@@ -2233,6 +2233,127 @@
     },700);
   }
 
+  function renderAppHome(row){
+    const metrics=el("rm-app-home-metrics");
+    const focus=el("rm-app-home-focus");
+    metrics.replaceChildren();focus.replaceChildren();
+    const items=[
+      ["Active Goals",row?.active_goals||0],
+      ["Active Habits",row?.active_habits||0],
+      ["Challenges",row?.active_challenges||0],
+      ["Active Courses",row?.active_courses||0],
+      ["Course Progress",(row?.average_course_progress||0)+"%"]
+    ];
+    items.forEach(([label,value])=>{
+      const card=document.createElement("div");
+      const s=document.createElement("span");s.textContent=label;
+      const v=document.createElement("strong");v.textContent=String(value);
+      card.append(s,v);metrics.append(card);
+    });
+    el("rm-home-notification-chip").textContent=String(Number(row?.unread_notifications||0))+" Notifications";
+
+    const focusItems=[
+      ["Continue Course",row?.continue_course_title,".rm185-learning-progress-card"],
+      ["Next Workout",row?.next_workout_title,".rm116-wellness-grid"],
+      ["Next Meal",row?.next_meal_title,".rm116-wellness-grid"]
+    ];
+    focusItems.forEach(([label,value,target])=>{
+      if(!value)return;
+      const button=document.createElement("button");button.type="button";
+      button.dataset.memberJump=target;
+      const s=document.createElement("span");s.textContent=label;
+      const v=document.createElement("strong");v.textContent=value;
+      button.append(s,v);focus.append(button);
+    });
+    if(!focus.children.length){
+      focus.innerHTML='<div class="rm112-empty">Your next course, meal and workout priorities will appear here as they are assigned.</div>';
+    }
+  }
+
+  function renderProgressSnapshot(row){
+    const target=el("rm-progress-snapshot");target.replaceChildren();
+    const items=[
+      ["Active Goals",row?.active_goals||0],
+      ["Goals Completed",row?.completed_goals||0],
+      ["Habit Check-Ins · 7 Days",row?.habit_checkins_last_7_days||0],
+      ["Active Challenges",row?.active_challenges||0],
+      ["Challenge Points",row?.challenge_points||0],
+      ["Workouts · 30 Days",row?.workouts_completed_30d||0],
+      ["Meals · 30 Days",row?.meals_completed_30d||0],
+      ["Meal Adherence",row?.meal_adherence_30d!==null&&row?.meal_adherence_30d!==undefined?Math.round(Number(row.meal_adherence_30d))+"%":"—"]
+    ];
+    items.forEach(([label,value])=>{
+      const card=document.createElement("div");
+      const s=document.createElement("span");s.textContent=label;
+      const v=document.createElement("strong");v.textContent=String(value);
+      card.append(s,v);target.append(card);
+    });
+    el("rm-progress-last-updated").textContent=row?.last_progress_at
+      ?"Updated "+formatDate(row.last_progress_at,true)
+      :"Progress Ready";
+  }
+
+  function renderSessionHistory(rows){
+    const target=el("rm-session-history");target.replaceChildren();
+    el("rm-session-history-count").textContent=rows.length+" Sessions";
+    if(!rows.length){
+      target.innerHTML='<div class="rm112-empty">Your coaching session history will appear here.</div>';
+      return;
+    }
+    rows.forEach(row=>{
+      const item=document.createElement("div");item.className="rm185-session-row";
+      const main=document.createElement("div");
+      const titleEl=document.createElement("strong");
+      titleEl.textContent="Session "+(row.session_number||"")+" · "+(row.coach_name||"ReVitalized Coach");
+      const meta=document.createElement("span");
+      meta.textContent=[row.scheduled_start?formatDate(row.scheduled_start,true):null,row.format?title(row.format):null].filter(Boolean).join(" · ");
+      main.append(titleEl,meta);
+      const state=document.createElement("span");state.textContent=title(row.status||"scheduled");
+      const action=document.createElement("div");
+      if(row.location_url&&["scheduled","confirmed"].includes(row.status)){
+        const link=document.createElement("a");link.href=row.location_url;link.target="_blank";link.rel="noopener noreferrer";link.textContent="Join Session";action.append(link);
+      }
+      item.append(main,state,action);target.append(item);
+    });
+  }
+
+  function renderCourseProgress(rows){
+    const target=el("rm-learning-progress");target.replaceChildren();
+    const active=rows.filter(r=>r.status!=="completed");
+    el("rm-learning-progress-chip").textContent=active.length+" Active";
+    if(!rows.length){
+      target.innerHTML='<div class="rm112-empty">Your course progress will appear here when learning is assigned.</div>';
+      return;
+    }
+    rows.forEach(row=>{
+      const item=document.createElement("div");item.className="rm185-learning-row";
+      const main=document.createElement("div");
+      const titleEl=document.createElement("strong");titleEl.textContent=row.course_title||"ReVitalized Course";
+      const meta=document.createElement("span");
+      meta.textContent=String(row.completed_lessons||0)+" of "+String(row.required_lessons||0)+" required lessons completed";
+      main.append(titleEl,meta);
+      const progress=document.createElement("div");progress.className="rm185-learning-meta";
+      const label=document.createElement("span");label.textContent=String(row.progress_percent||0)+"%";
+      const bar=document.createElement("div");bar.className="rm185-learning-progressbar";
+      const fill=document.createElement("i");fill.style.width=Math.max(0,Math.min(100,Number(row.progress_percent||0)))+"%";bar.append(fill);
+      progress.append(label,bar);
+      const state=document.createElement("span");state.textContent=title(row.status||"active");
+      item.append(main,progress,state);target.append(item);
+    });
+  }
+
+  function applyMemberAccess(access){
+    const rules=[
+      ['[data-member-jump=".rm116-wellness-grid"]',Boolean(access?.nutrition_enabled||access?.fitness_enabled)],
+      ['[data-member-jump=".rm119-learning-grid"]',Boolean(access?.courses_enabled)],
+      ['[data-member-jump="#rm-family-hub-card"]',Boolean(access?.family_hub_enabled)],
+      ['[data-member-jump="#rm-referral-card"]',Boolean(access?.ambassador_center_enabled)]
+    ];
+    rules.forEach(([selector,allowed])=>{
+      document.querySelectorAll(selector).forEach(node=>node.classList.toggle("rm185-feature-hidden",!allowed));
+    });
+  }
+
   async function loadDashboard() {
     const [
       dashboardResult,
@@ -2277,7 +2398,12 @@
       weeklySummaryResult,
       activityTimelineResult,
       familyRequestsResult,
-      memberProfileResult
+      memberProfileResult,
+      appHomeResult,
+      appAccessResult,
+      progressSnapshotResult,
+      coachingSessionsResult,
+      courseProgressResult
     ] = await Promise.all([
       client.from("my_member_dashboard").select("*").maybeSingle(),
       client.from("my_member_entitlements").select("*").order("label"),
@@ -2321,10 +2447,15 @@
       client.from("my_weekly_summary").select("*").maybeSingle(),
       client.from("my_activity_timeline").select("*").order("occurred_at",{ascending:false}).limit(25),
       client.from("my_family_requests").select("*").order("created_at",{ascending:false}).limit(10),
-      client.from("my_member_profile").select("*").maybeSingle()
+      client.from("my_member_profile").select("*").maybeSingle(),
+      client.from("my_app_home").select("*").maybeSingle(),
+      client.from("my_app_access").select("*").maybeSingle(),
+      client.from("my_progress_snapshot").select("*").maybeSingle(),
+      client.from("my_coaching_sessions").select("*").order("scheduled_start",{ascending:false}).limit(8),
+      client.from("my_course_progress_summary").select("*").order("last_lesson_activity_at",{ascending:false}).limit(12)
     ]);
 
-    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult,notificationPrefsResult,healthConnectionsResult,challengesResult,communitySpacesResult,communityFeedResult,refuelResult,ambassadorResult,referralActivityResult,coachingRequestsResult,assignmentSummaryResult,coachingHubResult,documentsResult,billingResult,agreementsResult,coachingEntitlementsResult,companionTypesResult,companionRequestsResult,dailyActionsResult,weeklySummaryResult,activityTimelineResult,familyRequestsResult,memberProfileResult].find((r) => r.error);
+    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult,notificationPrefsResult,healthConnectionsResult,challengesResult,communitySpacesResult,communityFeedResult,refuelResult,ambassadorResult,referralActivityResult,coachingRequestsResult,assignmentSummaryResult,coachingHubResult,documentsResult,billingResult,agreementsResult,coachingEntitlementsResult,companionTypesResult,companionRequestsResult,dailyActionsResult,weeklySummaryResult,activityTimelineResult,familyRequestsResult,memberProfileResult,appHomeResult,appAccessResult,progressSnapshotResult,coachingSessionsResult,courseProgressResult].find((r) => r.error);
     if (failed?.error) throw failed.error;
 
     const member = dashboardResult.data;
@@ -2352,6 +2483,11 @@
     el("rm-profile-state").value=profile?.state||"";
     el("rm-profile-country").value=profile?.country||"";
     el("rm-account-email-state").textContent="Current Email";
+    renderAppHome(appHomeResult.data||null);
+    applyMemberAccess(appAccessResult.data||null);
+    renderProgressSnapshot(progressSnapshotResult.data||null);
+    renderSessionHistory(coachingSessionsResult.data||[]);
+    renderCourseProgress(courseProgressResult.data||[]);
 
     const journey = journeyResult.data;
     if (journey) {
