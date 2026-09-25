@@ -228,6 +228,10 @@ button{cursor:pointer}
 
 .password-input-wrap{position:relative}
 .password-input-wrap input{padding-right:52px}
-.password-toggle{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:36px;height:36px;border:0;border-radius:8px;background:#f1f4f2;color:#30463a;display:grid;place-items:center;font-size:17px;cursor:pointer}
+.password-toggle{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:36px;height:36px;border:0;border-radius:8px;background:#f1f4f2;color:#30463a;display:grid;place-items:center;cursor:pointer}
 .password-toggle:hover{background:#e8efea}
 .password-toggle:focus-visible{outline:2px solid #5f9f79;outline-offset:2px}
+.password-toggle svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.password-toggle .eye-closed{display:none}
+.password-toggle.is-visible .eye-open{display:none}
+.password-toggle.is-visible .eye-closed{display:block}
