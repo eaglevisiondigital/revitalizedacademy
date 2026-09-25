@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex,nofollow,noarchive">
   <title>Member Dashboard | ReVitalized Academy</title>
   <link rel="icon" href="../assets/images/revitalized-logo-dark-approved-v69.png">
-  <link rel="stylesheet" href="member110.css?v=130">
+  <link rel="stylesheet" href="member110.css?v=136">
 </head>
 <body>
   <main class="rm112-page">
@@ -339,6 +339,42 @@
 
 
 
+
+      <section class="rm112-card rm136-documents-card">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">DOCUMENTS</p>
+            <h2>Your secure document vault</h2>
+          </div>
+          <button id="rm-document-upload-button" class="rm126-new-post" type="button">Upload Document</button>
+        </div>
+        <p class="rm136-doc-note">Only documents marked visible to you appear here. ReVitalized staff-only coaching, health or financial files remain private.</p>
+        <div id="rm-documents" class="rm114-stack"></div>
+      </section>
+
+      <div id="rm-document-upload-modal" class="rm126-modal hidden" aria-hidden="true">
+        <div class="rm126-modal-backdrop" data-document-upload-close></div>
+        <section class="rm126-dialog" role="dialog" aria-modal="true" aria-labelledby="rm-document-upload-title">
+          <button class="rm126-close" type="button" data-document-upload-close aria-label="Close document upload">×</button>
+          <p class="rm112-kicker">SECURE DOCUMENT UPLOAD</p>
+          <h2 id="rm-document-upload-title">Share a file with your ReVitalized team</h2>
+          <form id="rm-document-upload-form" class="rm126-form">
+            <label><span>Title</span><input id="rm-document-title" type="text" maxlength="240" required></label>
+            <label><span>Category</span>
+              <select id="rm-document-category">
+                <option value="general">General</option>
+                <option value="progress">Progress</option>
+              </select>
+            </label>
+            <label><span>Description</span><textarea id="rm-document-description" rows="3" maxlength="3000"></textarea></label>
+            <label><span>File</span><input id="rm-document-file" type="file" accept=".pdf,.jpg,.jpeg,.png,.webp,.txt,.doc,.docx,.xls,.xlsx" required></label>
+            <p class="rm126-privacy-note">Files are stored privately and are visible only to you and authorized ReVitalized staff.</p>
+            <button type="submit">Upload Securely</button>
+            <p id="rm-document-upload-status" class="rm112-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
       <section id="rm-referral-card" class="rm112-card rm130-referral-card hidden">
         <div class="rm112-card-head">
           <div>
@@ -462,6 +498,6 @@
   </main>
 
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
-  <script defer src="member110.js?v=130"></script>
+  <script defer src="member110.js?v=136"></script>
 </body>
 </html>
