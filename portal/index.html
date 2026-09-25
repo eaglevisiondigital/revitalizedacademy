@@ -25,6 +25,7 @@
   <link rel="stylesheet" href="portal-refuel.css?v=127">
   <link rel="stylesheet" href="portal-people.css?v=128">
   <link rel="stylesheet" href="portal-staff-access.css?v=129">
+  <link rel="stylesheet" href="portal-referrals.css?v=130">
 </head>
 <body>
   <main class="portal-page">
@@ -1945,6 +1946,36 @@
         </section>
       </div>
 
+
+      <div id="referral-program-modal" class="referral-program-modal hidden" aria-hidden="true">
+        <div class="referral-program-backdrop" data-referral-program-close></div>
+        <section class="referral-program-dialog" role="dialog" aria-modal="true" aria-labelledby="referral-program-title">
+          <button class="referral-program-close" type="button" data-referral-program-close aria-label="Close referral program">×</button>
+          <p class="eyebrow">REFERRAL PROGRAM</p>
+          <h2 id="referral-program-title">Create referral / ambassador program</h2>
+          <form id="referral-program-form" class="referral-program-form">
+            <label><span>Program key</span><input id="referral-program-key" type="text" maxlength="160" required></label>
+            <label><span>Name</span><input id="referral-program-name" type="text" maxlength="240" required></label>
+            <label><span>Description</span><textarea id="referral-program-description" rows="4"></textarea></label>
+            <div class="referral-program-grid">
+              <label><span>Reward type</span>
+                <select id="referral-program-reward-type">
+                  <option value="none">No reward</option>
+                  <option value="credit">Account credit</option>
+                  <option value="cash">Cash</option>
+                  <option value="gift">Gift</option>
+                  <option value="custom">Custom</option>
+                </select>
+              </label>
+              <label><span>Reward value</span><input id="referral-program-reward-value" type="number" min="0" step="0.01"></label>
+              <label><span>Currency</span><select id="referral-program-currency"><option value="USD">USD</option><option value="CAD">CAD</option></select></label>
+            </div>
+            <button class="primary-button" type="submit">Publish Referral Program</button>
+            <p id="referral-program-status" class="form-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
       <div class="portal-content">
         <div class="portal-intro">
           <div>
@@ -1968,6 +1999,22 @@
 
 
 
+
+
+        <section id="referral-admin-panel" class="panel referral-admin-panel hidden" aria-labelledby="referral-admin-title">
+          <div class="panel-heading referral-admin-heading">
+            <div>
+              <p class="section-kicker">REFERRALS &amp; AMBASSADORS</p>
+              <h2 id="referral-admin-title">Referral growth</h2>
+              <p class="panel-note">Track who referred whom, conversions and eligible rewards without losing original attribution.</p>
+            </div>
+            <button id="referral-admin-new-program" class="secondary-button compact" type="button">New Referral Program</button>
+          </div>
+          <div id="referral-admin-metrics" class="referral-admin-metrics"></div>
+          <div id="referral-admin-list" class="referral-admin-list">
+            <div class="empty-state">Loading referral pipeline...</div>
+          </div>
+        </section>
 
         <section class="panel refuel-admin-panel" aria-labelledby="refuel-admin-title">
           <div class="panel-heading refuel-admin-heading">
@@ -2229,5 +2276,6 @@
   <script defer src="portal-people.js?v=128"></script>
   <script defer src="portal-staff-access.js?v=129"></script>
   <script defer src="portal-permissions.js?v=129"></script>
+  <script defer src="portal-referrals.js?v=130"></script>
 </body>
 </html>
