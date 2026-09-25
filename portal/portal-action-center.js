@@ -425,7 +425,9 @@
 
   function renderOperational() {
     const wrap = el("action-center-operational");
-    const financialAuthorized = ["owner","admin"].includes(portal.currentStaffRole?.() || "");
+    const financialAuthorized =
+      portal.hasPermission?.("finance.view")
+      ?? ["owner","admin","financial"].includes(portal.currentStaffRole?.() || "");
     const appointmentPanel = el("action-center-appointment");
     const activationPanel = el("action-center-activation");
     const reportPanel = el("action-center-report");
