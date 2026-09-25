@@ -268,13 +268,12 @@
   el("people-add-button").addEventListener("click",openModal);
   el("people-source").addEventListener("change",syncReferralField);
   el("people-add-form").addEventListener("submit",createPerson);
-  el("people-search-input").addEventListener("input",filterPeople);
+
   document.querySelectorAll("[data-people-close]").forEach((node)=>node.addEventListener("click",closeModal));
 
   document.addEventListener("keydown",(event)=>{
     if(event.key==="Escape"&&!el("people-modal").classList.contains("hidden"))closeModal();
   });
 
-  // Re-apply the current People search after dashboard refreshes rerender the contact table.
-  document.addEventListener("ra:dashboard-loaded",filterPeople);
+  // Full People Directory search and filtering are handled by portal-people-directory.js.
 })();
