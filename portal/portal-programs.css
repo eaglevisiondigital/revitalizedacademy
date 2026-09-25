@@ -23,3 +23,26 @@
 .program-catalog-code{color:#849188;font-size:8.5px}
 @media(max-width:900px){.program-catalog-summary{grid-template-columns:1fr 1fr}.program-catalog-list{grid-template-columns:1fr}}
 @media(max-width:560px){.program-catalog-summary{grid-template-columns:1fr 1fr}.program-catalog-card-top{flex-direction:column}}
+
+
+.program-content-panel{margin-bottom:18px}
+.program-content-heading{align-items:flex-start}
+.program-content-summary{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin:14px 0 12px}
+.program-content-stat{min-height:70px;padding:11px 12px;border:1px solid #dfe8e2;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfcfb)}
+.program-content-stat span{display:block;font-size:9px;font-weight:900;letter-spacing:.07em;text-transform:uppercase;color:#728279}
+.program-content-stat strong{display:block;margin-top:6px;font-family:Georgia,"Times New Roman",serif;font-size:22px;font-weight:500;color:#294134}
+.program-content-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:11px}
+.program-content-tabs button{min-height:36px;padding:0 12px;border:1px solid #d6e1da;border-radius:999px;background:#f7f9f8;color:#617269;font-size:9.5px;font-weight:900}
+.program-content-tabs button:hover{background:#eef5f0;color:#154734}
+.program-content-tabs button.active{background:#154734;border-color:#154734;color:#fff}
+.program-content-list{display:grid;gap:8px}
+.program-content-row{display:grid;grid-template-columns:minmax(200px,1.5fr) 120px 120px minmax(160px,.8fr);gap:12px;align-items:center;min-height:58px;padding:11px 12px;border:1px solid #e2e9e5;border-radius:11px;background:#fbfcfb}
+.program-content-copy strong{display:block;color:#30463a;font-size:11.5px}
+.program-content-copy span{display:block;margin-top:2px;color:#7a8880;font-size:9px}
+.program-content-row>span{font-size:9px;color:#66776e}
+.program-content-status{display:inline-flex;width:max-content;min-height:26px;align-items:center;padding:0 9px;border-radius:999px;background:#eef4ef;color:#586f62;font-size:8.5px!important;font-weight:900;text-transform:uppercase}
+.program-content-status.published,.program-content-status.active{background:#eaf3ec;color:#255c39}
+.program-content-status.draft{background:#fff7e8;color:#856124}
+.program-content-empty{padding:14px 16px;border:1px dashed #d9e4dd;border-radius:11px;background:#fcfdfc;color:#718078;font-size:11px}
+@media(max-width:1050px){.program-content-summary{grid-template-columns:repeat(3,1fr)}.program-content-row{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.program-content-summary{grid-template-columns:1fr 1fr}.program-content-row{grid-template-columns:1fr}.program-content-tabs button{flex:1 1 40%}}
