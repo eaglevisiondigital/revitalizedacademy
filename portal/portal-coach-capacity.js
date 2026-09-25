@@ -10,6 +10,7 @@
   let capacityStaff=null;
   let capacity=null;
   let availability=[];
+  let exceptions=[];
   let entitlementRows=[];
   let usageReviews=[];
 
@@ -29,14 +30,17 @@
   }
 
   async function loadCapacity(userId){
-    const [settingsResult,availabilityResult]=await Promise.all([
+    const [settingsResult,availabilityResult,exceptionResult]=await Promise.all([
       client.from("staff_capacity_settings").select("*").eq("user_id",userId).maybeSingle(),
-      client.from("staff_availability_rules").select("*").eq("user_id",userId).eq("active",true).order("day_of_week").order("start_time")
+      client.from("staff_availability_rules").select("*").eq("user_id",userId).eq("active",true).order("day_of_week").order("start_time"),
+      client.from("staff_availability_exceptions").select("*").eq("user_id",userId).gte("ends_at",new Date().toISOString()).order("starts_at")
     ]);
     if(settingsResult.error)throw settingsResult.error;
     if(availabilityResult.error)throw availabilityResult.error;
+    if(exceptionResult.error)throw exceptionResult.error;
     capacity=settingsResult.data||null;
     availability=availabilityResult.data||[];
+    exceptions=exceptionResult.data||[];
     renderCapacity();
   }
 
@@ -71,6 +75,21 @@
       remove.addEventListener("click",()=>removeAvailability(row));
       item.append(day,time,remove);list.append(item);
     });
+
+    const exceptionList=el("staff-exception-list");
+    exceptionList.replaceChildren();
+    if(!exceptions.length){
+      exceptionList.innerHTML='<div class="empty-state">No upcoming unavailable blocks.</div>';
+    }else{
+      exceptions.forEach((row)=>{
+        const item=document.createElement("div");item.className="staff-availability-row";
+        const label=document.createElement("strong");label.textContent="Unavailable";
+        const time=document.createElement("span");time.textContent=portal.formatDate(row.starts_at,true)+" – "+portal.formatDate(row.ends_at,true)+(row.reason?" · "+row.reason:"");
+        const remove=document.createElement("button");remove.type="button";remove.textContent="Remove";
+        remove.addEventListener("click",()=>removeException(row));
+        item.append(label,time,remove);exceptionList.append(item);
+      });
+    }
   }
 
   async function openCapacity(event){
@@ -135,6 +154,33 @@
     if(error){window.alert(error.message);return;}
     event.currentTarget.reset();
     el("availability-timezone").value=capacity?.time_zone||tz;
+    await loadCapacity(capacityStaff.user_id);
+  }
+
+
+  async function addException(event){
+    event.preventDefault();
+    if(!capacityStaff)return;
+    const start=el("exception-start").value;
+    const end=el("exception-end").value;
+    if(!start||!end)return;
+    const {error}=await client.from("staff_availability_exceptions").insert({
+      user_id:capacityStaff.user_id,
+      starts_at:new Date(start).toISOString(),
+      ends_at:new Date(end).toISOString(),
+      exception_type:"unavailable",
+      reason:el("exception-reason").value.trim()||null,
+      created_by:portal.currentUserId()
+    });
+    if(error){window.alert(error.message);return;}
+    event.currentTarget.reset();
+    await loadCapacity(capacityStaff.user_id);
+  }
+
+  async function removeException(row){
+    if(!window.confirm("Remove this unavailable block?"))return;
+    const {error}=await client.from("staff_availability_exceptions").delete().eq("id",row.id);
+    if(error){window.alert(error.message);return;}
     await loadCapacity(capacityStaff.user_id);
   }
 
@@ -230,6 +276,7 @@
   document.addEventListener("ra:open-capacity",openCapacity);
   el("staff-capacity-form").addEventListener("submit",saveCapacity);
   el("staff-availability-form").addEventListener("submit",addAvailability);
+  el("staff-exception-form").addEventListener("submit",addException);
   document.querySelectorAll("[data-staff-capacity-close]").forEach(n=>n.addEventListener("click",closeCapacity));
 
   document.addEventListener("ra:contact-opened",(event)=>{
