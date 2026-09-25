@@ -87,3 +87,8 @@
 
 .staff-capacity-check{display:flex!important;align-items:center;gap:8px}.staff-capacity-check input{width:16px!important;height:16px!important}.staff-capacity-check span{font-size:10px!important}
 .staff-availability-list{display:grid;gap:7px;margin-top:10px}.staff-availability-row{display:grid;grid-template-columns:110px 1fr auto;gap:10px;align-items:center;padding:9px 10px;border:1px solid #e5ebe7;border-radius:9px;background:#fbfcfb}.staff-availability-row strong{font-size:10px;color:#30463a}.staff-availability-row span{font-size:9px;color:#7d8a83}.staff-availability-row button{min-height:28px;padding:0 8px;border:1px solid #cedad2;border-radius:7px;background:#fff;color:#8d4337;font-size:8px;font-weight:900}
+
+.staff-agreement-file-list{display:grid;gap:7px}
+.staff-agreement-file-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 10px;border:1px solid #e5ebe7;border-radius:9px;background:#fbfcfb}
+.staff-agreement-file-item strong{display:block;font-size:10px;color:#334a3d}
+.staff-agreement-file-item span:not(.staff-status-pill){display:block;margin-top:2px;font-size:8px;color:#7f8c85}
