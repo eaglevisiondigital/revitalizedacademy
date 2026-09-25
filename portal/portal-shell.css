@@ -448,3 +448,365 @@ body[data-ra-workspace="messages"] .staff-inbox-panel{margin-top:0}
   .list-main span{font-size:12px}
   .list-meta strong,.list-meta span{font-size:11px}
 }
+
+
+/* Build 160: full portal visual polish */
+:root{
+  --ra-emerald:#154734;
+  --ra-emerald-deep:#0e3929;
+  --ra-emerald-soft:#eaf3ed;
+  --ra-emerald-soft-2:#f3f7f4;
+  --ra-border:#d6e2da;
+  --ra-text:#28463a;
+  --ra-muted:#687a70;
+}
+
+/* Stronger rhythm and consistency */
+.portal-view.ra-shell-ready .panel{
+  padding:24px;
+  border-color:var(--ra-border);
+}
+.portal-view.ra-shell-ready .panel-heading{
+  align-items:flex-start;
+  margin-bottom:2px;
+}
+.portal-view.ra-shell-ready .panel-note{
+  max-width:860px;
+  color:#5f7368;
+}
+.portal-view.ra-shell-ready .empty-state{
+  border-color:#d8e3dc;
+  background:#fbfdfb;
+  color:#61756a;
+}
+
+/* Buttons */
+.portal-view.ra-shell-ready .primary-button,
+.portal-view.ra-shell-ready .secondary-button,
+.portal-view.ra-shell-ready button{
+  transition:background .16s ease,border-color .16s ease,color .16s ease,box-shadow .16s ease,transform .16s ease;
+}
+.portal-view.ra-shell-ready .secondary-button:hover{
+  background:#f2f7f4;
+  border-color:#b7cabf;
+}
+.portal-view.ra-shell-ready .primary-button{
+  background:linear-gradient(180deg,#1f7750,var(--ra-emerald));
+}
+.portal-view.ra-shell-ready .primary-button:hover{
+  background:linear-gradient(180deg,#196844,var(--ra-emerald-deep));
+}
+
+/* Pills and compact controls use clearer title-style presentation */
+.program-catalog-chip,
+.program-access-chip,
+.program-access-count,
+.program-catalog-status,
+.program-content-tabs button,
+.people-view-tab,
+.people-quick-views button,
+.work-tab,
+.work-category,
+.pipeline-summary-chip,
+.pipeline-temp,
+.staff-role-pill,
+.staff-status-pill,
+.staff-access-perm-chip,
+.role-chip,
+.count-chip,
+.status-badge,
+.team-calendar-tabs button,
+.staff-inbox-tabs button{
+  letter-spacing:.01em!important;
+}
+.program-catalog-chip,
+.program-access-chip,
+.program-content-tabs button,
+.people-view-tab,
+.people-quick-views button,
+.work-tab,
+.work-category,
+.pipeline-summary-chip,
+.program-access-count{
+  text-transform:capitalize;
+}
+
+/* Better contrast for important state pills */
+.program-catalog-status,
+.program-access-count,
+.staff-role-pill.owner,
+.staff-status-pill:not(.inactive):not(.suspended),
+.role-chip,
+.status-badge.active,
+.status-badge.completed{
+  background:var(--ra-emerald)!important;
+  border-color:var(--ra-emerald)!important;
+  color:#fff!important;
+}
+.program-access-count{
+  min-height:36px;
+  padding:0 13px;
+  font-weight:850;
+}
+.program-catalog-status{
+  font-weight:900;
+}
+.staff-access-actions button:last-child{
+  background:var(--ra-emerald);
+  border-color:var(--ra-emerald);
+  color:#fff;
+}
+.staff-access-actions button:last-child:hover{
+  background:var(--ra-emerald-deep);
+  border-color:var(--ra-emerald-deep);
+}
+
+/* Neutral pills need stronger borders and text */
+.program-catalog-chip,
+.program-access-chip:not(.more),
+.staff-access-perm-chip,
+.people-quick-views button:not(.active),
+.work-tab:not(.active),
+.program-content-tabs button:not(.active){
+  border-color:#cfddd4;
+  background:#f7faf8;
+  color:#4c6759;
+}
+.program-access-chip.more{
+  font-weight:900;
+}
+
+/* Selected tabs are unmistakable */
+.program-content-tabs button.active,
+.people-view-tab.active,
+.people-quick-views button.active,
+.work-tab.active,
+.team-calendar-tabs button.active,
+.staff-inbox-tabs button.active{
+  background:var(--ra-emerald)!important;
+  border-color:var(--ra-emerald)!important;
+  color:#fff!important;
+  box-shadow:0 6px 14px rgba(21,71,52,.12);
+}
+
+/* Programs: compact the repeated access cards */
+.program-access-sections{
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  align-items:stretch;
+}
+.program-access-sections>.program-access-block:first-child{
+  grid-column:1/-1!important;
+}
+.program-access-challenges{
+  grid-column:auto!important;
+}
+.program-access-block{
+  min-height:112px;
+  padding:16px!important;
+}
+.program-access-block:has(.program-access-empty){
+  min-height:104px;
+}
+.program-access-card{
+  box-shadow:0 5px 18px rgba(21,71,52,.025);
+}
+.program-access-card-head{
+  align-items:center;
+}
+.program-access-card-head>div:first-child{min-width:0}
+.program-access-course-row button.active{
+  box-shadow:0 4px 10px rgba(21,71,52,.13);
+}
+
+/* Program catalog cards */
+.program-catalog-card{
+  border-color:#d4e0d8;
+  box-shadow:0 5px 18px rgba(21,71,52,.03);
+}
+.program-catalog-card.featured{
+  border-color:#d3b77b;
+  background:linear-gradient(180deg,#fffdf9,#fff);
+}
+
+/* Reports: create contrast without making every card heavy */
+.executive-pulse-metrics{
+  gap:12px!important;
+}
+.executive-metric{
+  min-height:84px;
+  padding:14px 15px!important;
+  border-color:#d7e3db!important;
+}
+.executive-metric:nth-child(1),
+.executive-metric:nth-child(2){
+  background:linear-gradient(180deg,#1b6848,var(--ra-emerald));
+  border-color:var(--ra-emerald)!important;
+}
+.executive-metric:nth-child(1) span,
+.executive-metric:nth-child(2) span{
+  color:#dcebe2!important;
+}
+.executive-metric:nth-child(1) strong,
+.executive-metric:nth-child(2) strong{
+  color:#fff!important;
+}
+.executive-subpanel{
+  border-color:#d5e1d9!important;
+  box-shadow:0 5px 16px rgba(21,71,52,.025);
+}
+.executive-funnel-track{
+  background:#e8efeb!important;
+}
+.executive-program{
+  min-height:72px!important;
+  border-color:#d9e4dd!important;
+}
+
+/* Team: improve balance and readability */
+.staff-access-summary,
+.team-calendar-summary,
+.billing-operations-metrics,
+.community-admin-metrics,
+.refuel-admin-metrics{
+  gap:12px!important;
+}
+.staff-access-item{
+  min-height:72px!important;
+  padding:15px 16px!important;
+  border-color:#d8e3dc!important;
+}
+.staff-access-perms{gap:7px!important}
+.staff-access-actions{gap:8px!important}
+.team-workload-item{
+  min-height:72px!important;
+  padding:14px 16px!important;
+  gap:12px!important;
+  border-color:#d8e3dc!important;
+}
+.team-workload-metric span{
+  font-size:10px!important;
+  line-height:1.25;
+}
+.team-workload-metric strong{
+  font-size:18px!important;
+}
+
+/* People directory */
+.people-directory-controls{
+  gap:12px!important;
+}
+.people-quick-views{
+  gap:8px!important;
+}
+.people-directory-table th{
+  font-size:11.5px!important;
+  text-transform:none!important;
+  letter-spacing:.02em!important;
+  color:#526b5e!important;
+}
+.people-directory-table td{
+  font-size:12.5px!important;
+}
+.people-directory-name strong{
+  font-size:14px!important;
+}
+.people-directory-name span{
+  font-size:11px!important;
+}
+.people-result-bar{
+  padding-top:12px;
+  border-top:1px solid #edf2ef;
+}
+.people-result-actions{gap:10px!important}
+
+/* Journey */
+.pipeline-row{
+  min-height:72px!important;
+  padding:15px 16px!important;
+}
+.pipeline-summary-chip:first-child{
+  background:var(--ra-emerald);
+  border-color:var(--ra-emerald);
+  color:#fff;
+}
+.pipeline-summary-chip{
+  font-size:11px!important;
+  border:1px solid #d0ddd5;
+}
+
+/* Calendar, Messages, Billing, Community */
+.team-calendar-item,
+.staff-inbox-item,
+.billing-subscription-item,
+.community-admin-item,
+.refuel-admin-item{
+  border-color:#d8e3dc!important;
+}
+.team-calendar-tabs,
+.staff-inbox-tabs{
+  gap:8px!important;
+}
+.staff-inbox-stat,
+.team-calendar-stat,
+.billing-operations-stat,
+.community-admin-stat,
+.refuel-admin-stat{
+  min-height:82px!important;
+  padding:14px 15px!important;
+}
+.staff-inbox-stat span,
+.team-calendar-stat span,
+.billing-operations-stat span,
+.community-admin-stat span,
+.refuel-admin-stat span{
+  font-size:10.5px!important;
+}
+.staff-inbox-stat strong,
+.team-calendar-stat strong,
+.billing-operations-stat strong,
+.community-admin-stat strong,
+.refuel-admin-stat strong{
+  font-size:28px!important;
+}
+
+/* Forms and filters */
+.portal-view.ra-shell-ready select,
+.portal-view.ra-shell-ready input[type="search"]{
+  min-height:44px;
+}
+.work-desk-toolbar,
+.team-calendar-toolbar{
+  gap:12px!important;
+}
+.work-desk-toolbar label span,
+.team-calendar-toolbar label>span{
+  font-size:10.5px!important;
+  text-transform:none!important;
+  letter-spacing:.02em!important;
+}
+
+/* Sidebar polish */
+.ra-subnav button{
+  padding-left:10px!important;
+}
+.ra-subnav button.ra-sub-active{
+  background:rgba(255,255,255,.10)!important;
+  box-shadow:inset 2px 0 0 #d2aa62;
+}
+.ra-sidebar-footer .ra-nav-item{
+  min-height:54px!important;
+  font-size:14.5px!important;
+}
+
+/* Keep mobile compact */
+@media(max-width:900px){
+  .program-access-sections{
+    grid-template-columns:1fr!important;
+  }
+  .program-access-sections>.program-access-block:first-child{
+    grid-column:auto!important;
+  }
+  .portal-view.ra-shell-ready .panel{
+    padding:18px;
+  }
+}
