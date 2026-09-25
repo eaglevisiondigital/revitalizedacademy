@@ -20,6 +20,7 @@
   let checkinFieldMap = new Map();
   let sessions = [];
   let notes = [];
+  let coachCapacity = [];
 
   function setStatus(id, message, type = "") {
     const target = el(id);
@@ -80,10 +81,24 @@
     select.append(blank);
 
     staffRows().forEach((row) => {
+      if (!["owner","admin","coach"].includes(row.role)) return;
+      const cap = coachCapacity.find((c) => c.user_id === row.user_id);
       const option = document.createElement("option");
       option.value = row.user_id;
-      option.textContent = row.display_name + " · " + title(row.role);
+      const capacityText = cap
+        ? [
+            cap.accepts_new_clients ? "accepting clients" : "not accepting",
+            cap.max_active_clients === null || cap.max_active_clients === undefined
+              ? cap.active_clients + " active"
+              : cap.active_clients + "/" + cap.max_active_clients + " clients",
+            cap.max_sessions_per_week === null || cap.max_sessions_per_week === undefined
+              ? cap.scheduled_sessions_this_week + " sessions this week"
+              : cap.scheduled_sessions_this_week + "/" + cap.max_sessions_per_week + " sessions this week"
+          ].join(" · ")
+        : "capacity not configured";
+      option.textContent = row.display_name + " · " + capacityText;
       option.selected = row.user_id === selected;
+      if (cap && !cap.accepts_new_clients && row.user_id !== selected) option.disabled = true;
       select.append(option);
     });
   }
@@ -151,7 +166,8 @@
       metricResult,
       fieldResult,
       sessionsResult,
-      notesResult
+      notesResult,
+      capacityResult
     ] = await Promise.all([
       client.from("client_memberships").select("*").eq("id", access.membership_id).maybeSingle(),
       client.from("admin_client_coaching_summary").select("*").eq("contact_id", contactId).maybeSingle(),
@@ -184,6 +200,7 @@
     (fieldResult.data || []).forEach((row) => checkinFieldMap.set(row.field_key, row.label));
     sessions = sessionsResult.data || [];
     notes = notesResult.data || [];
+    coachCapacity = capacityResult.data || [];
 
     renderSummary();
   }
