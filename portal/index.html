@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta name="ra-build" content="173">
+  <meta name="ra-build" content="174">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow,noarchive">
@@ -14,7 +14,7 @@
   <link rel="shortcut icon" type="image/png" href="../assets/images/revitalized-icon-approved.png">
   <link rel="apple-touch-icon" href="../assets/images/revitalized-icon-approved.png">
   <link rel="manifest" href="manifest.webmanifest?v=171">
-  <link rel="stylesheet" href="portal.css?v=145">
+  <link rel="stylesheet" href="portal.css?v=174">
   <link rel="stylesheet" href="portal-messaging.css?v=105">
   <link rel="stylesheet" href="portal-journey.css?v=118">
   <link rel="stylesheet" href="portal-action-center.css?v=109">
@@ -148,25 +148,32 @@
             <h2 id="account-title">Account settings</h2>
             <p class="account-intro">Your secure ReVitalized Academy staff account and access level.</p>
 
-            <div class="account-details">
-              <div class="account-detail-row">
-                <span>Name</span>
-                <strong id="account-name">—</strong>
+            <form id="account-profile-form" class="account-profile-form">
+              <div class="account-details account-edit-details">
+                <label class="account-detail-row">
+                  <span>Name</span>
+                  <input id="account-name-input" type="text" maxlength="240" autocomplete="name" required>
+                </label>
+                <label class="account-detail-row">
+                  <span>Email</span>
+                  <input id="account-email-input" type="email" maxlength="320" autocomplete="email" required>
+                </label>
+                <label class="account-detail-row">
+                  <span>Phone</span>
+                  <input id="account-phone-input" type="tel" maxlength="40" autocomplete="tel" placeholder="(555) 234-5678">
+                </label>
+                <div class="account-detail-row">
+                  <span>Access Level</span>
+                  <strong id="account-role">—</strong>
+                </div>
               </div>
-              <div class="account-detail-row">
-                <span>Email</span>
-                <strong id="account-email">—</strong>
+              <p class="account-profile-note">Changing your email may require confirmation before the new address becomes active.</p>
+              <div class="account-actions">
+                <button id="account-change-password" class="secondary-button" type="button">Change Password</button>
+                <button class="primary-button account-done" type="submit">Save Profile</button>
               </div>
-              <div class="account-detail-row">
-                <span>Access level</span>
-                <strong id="account-role">—</strong>
-              </div>
-            </div>
-
-            <div class="account-actions">
-              <button id="account-change-password" class="secondary-button" type="button">Change Password</button>
-              <button id="account-done" class="primary-button account-done" type="button">Done</button>
-            </div>
+              <p id="account-profile-status" class="form-status" aria-live="polite"></p>
+            </form>
           </div>
 
           <div id="account-password-panel" class="hidden">
@@ -2973,6 +2980,6 @@
   <script defer src="portal-agreements.js?v=144"></script>
   <script defer src="portal-coach-capacity.js?v=140"></script>
   <script defer src="portal-staff-onboarding.js?v=144"></script>
-  <script defer src="portal-shell.js?v=159"></script>\n  <script defer src="portal-account.js?v=173"></script>
+  <script defer src="portal-shell.js?v=159"></script>\n  <script defer src="portal-account.js?v=174"></script>
 </body>
 </html>

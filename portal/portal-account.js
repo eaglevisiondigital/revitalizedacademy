@@ -17,17 +17,19 @@
     const client=window.RA_PORTAL?.authClient;
     if(!client) throw new Error("Account service is still loading.");
 
-    const [{data:userData,error:userError},{data:accessData,error:accessError}]=await Promise.all([
+    const [{data:userData,error:userError},{data:accessData,error:accessError},{data:profileData,error:profileError}]=await Promise.all([
       client.auth.getUser(),
-      client.rpc("get_my_staff_access")
+      client.rpc("get_my_staff_access"),
+      client.from("staff_access").select("display_name,phone,role,status").maybeSingle()
     ]);
     if(userError) throw userError;
     if(accessError) throw accessError;
+    if(profileError) throw profileError;
     const user=userData?.user;
     if(!user) throw new Error("Your signed-in account could not be loaded.");
 
     const access=Array.isArray(accessData)?accessData[0]:accessData;
-    return {user,access};
+    return {user,access,profile:profileData||null};
   }
 
   async function openAccount(){
@@ -37,13 +39,17 @@
     if(!modal)return;
 
     try{
-      const {user,access}=await loadAccountDetails();
-      byId("account-name").textContent=access?.display_name||"Staff Member";
-      byId("account-email").textContent=user.email||"Not Available";
-      byId("account-role").textContent=titleCase(access?.role||"staff");
+      const {user,access,profile}=await loadAccountDetails();
+      byId("account-name-input").value=profile?.display_name||access?.display_name||"";
+      byId("account-email-input").value=user.email||"";
+      byId("account-phone-input").value=profile?.phone||"";
+      byId("account-role").textContent=titleCase(profile?.role||access?.role||"staff");
+      const profileStatus=byId("account-profile-status");
+      if(profileStatus){profileStatus.textContent="";profileStatus.className="form-status";}
     }catch(error){
-      byId("account-name").textContent=byId("staff-name")?.textContent||"Staff Member";
-      byId("account-email").textContent="Signed-In Staff Account";
+      byId("account-name-input").value=byId("staff-name")?.textContent||"";
+      byId("account-email-input").value="";
+      byId("account-phone-input").value="";
       byId("account-role").textContent=titleCase(byId("staff-role")?.textContent||"staff");
       const status=byId("account-password-status");
       if(status){
@@ -71,6 +77,53 @@
     if(p2)p2.value="";
   }
 
+  async function saveProfile(event){
+    event.preventDefault();
+    const client=window.RA_PORTAL?.authClient;
+    const status=byId("account-profile-status");
+    if(!client||!status)return;
+
+    const name=byId("account-name-input").value.trim();
+    const email=byId("account-email-input").value.trim().toLowerCase();
+    const phone=byId("account-phone-input").value.trim();
+
+    if(!name||!email){
+      status.textContent="Name and email are required.";
+      status.className="form-status error";
+      return;
+    }
+
+    status.textContent="Saving profile...";
+    status.className="form-status";
+
+    try{
+      const {data:{user},error:userError}=await client.auth.getUser();
+      if(userError)throw userError;
+
+      const {error:profileError}=await client.rpc("update_my_staff_profile",{
+        p_display_name:name,
+        p_phone:phone||null
+      });
+      if(profileError)throw profileError;
+
+      let emailChanged=false;
+      if(user?.email && user.email.toLowerCase()!==email){
+        const {error:emailError}=await client.auth.updateUser({email});
+        if(emailError)throw emailError;
+        emailChanged=true;
+      }
+
+      if(byId("staff-name"))byId("staff-name").textContent=name;
+      status.textContent=emailChanged
+        ?"Profile saved. Check your email to confirm the address change."
+        :"Profile saved.";
+      status.className="form-status success";
+    }catch(error){
+      status.textContent=error?.message||"Profile could not be saved.";
+      status.className="form-status error";
+    }
+  }
+
   function bind(){
     const header=byId("account-button");
     if(header){
@@ -91,6 +144,7 @@
       };
     }
 
+    byId("account-profile-form")?.addEventListener("submit",saveProfile);
     byId("account-close")?.addEventListener("click",closeAccount);
     byId("account-done")?.addEventListener("click",closeAccount);
     document.querySelectorAll("[data-account-close]").forEach((node)=>{

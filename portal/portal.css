@@ -235,3 +235,43 @@ button{cursor:pointer}
 .password-toggle .eye-closed{display:none}
 .password-toggle.is-visible .eye-open{display:none}
 .password-toggle.is-visible .eye-closed{display:block}
+
+
+/* Build 174: editable staff account profile */
+.account-edit-details .account-detail-row{
+  cursor:default;
+}
+.account-edit-details label.account-detail-row{
+  margin:0;
+}
+.account-edit-details input{
+  width:100%;
+  min-width:0;
+  height:42px;
+  border:1px solid #cbd8d0;
+  border-radius:9px;
+  background:#fff;
+  padding:0 11px;
+  color:#2d4036;
+  font:inherit;
+  font-size:13px;
+}
+.account-edit-details input:focus{
+  outline:none;
+  border-color:#8db29e;
+  box-shadow:0 0 0 3px rgba(21,71,52,.08);
+}
+.account-profile-note{
+  margin:10px 2px 0;
+  color:#748179;
+  font-size:11px;
+  line-height:1.45;
+}
+#account-profile-status{
+  margin-top:9px;
+}
+@media(max-width:560px){
+  .account-edit-details .account-detail-row{
+    grid-template-columns:1fr;
+  }
+}
