@@ -77,16 +77,16 @@
       name.textContent=row.program_name;
 
       const active=document.createElement("span");
-      active.innerHTML="<b>"+String(row.active_members||0)+"</b>Active";
+      active.innerHTML="<b>"+String(row.active_members||0)+"</b>Active Members";
 
       const progress=document.createElement("span");
-      progress.innerHTML="<b>"+Math.round(Number(row.average_course_progress||0))+"%</b>Course";
+      progress.innerHTML="<b>"+Math.round(Number(row.average_course_progress||0))+"%</b>Course Progress";
 
       const sessions=document.createElement("span");
-      sessions.innerHTML="<b>"+String(row.coaching_sessions_30d||0)+"</b>Sessions 30d";
+      sessions.innerHTML="<b>"+String(row.coaching_sessions_30d||0)+"</b>Sessions · 30d";
 
       const checkins=document.createElement("span");
-      checkins.innerHTML="<b>"+String(row.checkins_30d||0)+"</b>Check-ins 30d";
+      checkins.innerHTML="<b>"+String(row.checkins_30d||0)+"</b>Check-Ins · 30d";
 
       item.append(name,active,progress,sessions,checkins);
       target.append(item);
