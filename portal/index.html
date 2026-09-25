@@ -29,6 +29,7 @@
   <link rel="stylesheet" href="portal-team-calendar.css?v=135">
   <link rel="stylesheet" href="portal-documents.css?v=136">
   <link rel="stylesheet" href="portal-billing.css?v=137">
+  <link rel="stylesheet" href="portal-agreements.css?v=139">
 </head>
 <body>
   <main class="portal-page">
@@ -397,6 +398,22 @@
             </section>
 
 
+
+
+            <section id="client-agreements-section" class="contact-section client-agreements-section hidden">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">AGREEMENTS</p>
+                  <h3>Client agreements</h3>
+                </div>
+                <span id="client-agreements-chip" class="status-badge">0</span>
+              </div>
+              <div id="client-agreements-list" class="client-agreements-list"></div>
+              <div class="client-agreements-actions">
+                <button id="client-agreement-assign" class="primary-button compact-action" type="button">Assign / Send Agreement</button>
+              </div>
+              <p id="client-agreements-status" class="form-status" aria-live="polite"></p>
+            </section>
 
             <section id="client-billing-section" class="contact-section client-billing-section hidden">
               <div class="contact-section-heading">
@@ -2118,6 +2135,52 @@
         </section>
       </div>
 
+
+      <div id="agreement-template-modal" class="people-modal hidden" aria-hidden="true">
+        <div class="people-modal-backdrop" data-agreement-template-close></div>
+        <section class="people-dialog" role="dialog" aria-modal="true" aria-labelledby="agreement-template-modal-title">
+          <button class="people-close" type="button" data-agreement-template-close aria-label="Close agreement template">×</button>
+          <p class="eyebrow">AGREEMENT TEMPLATE</p>
+          <h2 id="agreement-template-modal-title">Create versioned agreement</h2>
+          <form id="agreement-template-form" class="people-form">
+            <div class="people-grid">
+              <label><span>Agreement key</span><input id="agreement-template-key" type="text" maxlength="160" required></label>
+              <label><span>Version</span><input id="agreement-template-version" type="text" maxlength="40" value="1.0" required></label>
+              <label class="people-wide"><span>Name</span><input id="agreement-template-name" type="text" maxlength="240" required></label>
+              <label class="people-wide"><span>Description</span><textarea id="agreement-template-description" rows="2" maxlength="2000"></textarea></label>
+              <label class="people-wide"><span>Agreement text</span><textarea id="agreement-template-content" rows="14" required></textarea></label>
+              <label><span>Program</span><select id="agreement-template-program"><option value="">Not tied to a program</option></select></label>
+              <label class="client-document-visible"><input id="agreement-template-required" type="checkbox" checked><span>Required for this program</span></label>
+            </div>
+            <div class="people-form-actions">
+              <button class="secondary-button" type="button" data-agreement-template-close>Cancel</button>
+              <button class="primary-button" type="submit">Publish Agreement</button>
+            </div>
+            <p id="agreement-template-status" class="form-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
+      <div id="client-agreement-assign-modal" class="people-modal hidden" aria-hidden="true">
+        <div class="people-modal-backdrop" data-client-agreement-close></div>
+        <section class="people-dialog" role="dialog" aria-modal="true" aria-labelledby="client-agreement-modal-title">
+          <button class="people-close" type="button" data-client-agreement-close aria-label="Close client agreement">×</button>
+          <p class="eyebrow">CLIENT AGREEMENT</p>
+          <h2 id="client-agreement-modal-title">Assign agreement</h2>
+          <form id="client-agreement-assign-form" class="people-form">
+            <div class="people-grid">
+              <label class="people-wide"><span>Published agreement</span><select id="client-agreement-template-select"></select></label>
+              <label class="client-document-visible people-wide"><input id="client-agreement-send-now" type="checkbox" checked><span>Send to member now</span></label>
+            </div>
+            <div class="people-form-actions">
+              <button class="secondary-button" type="button" data-client-agreement-close>Cancel</button>
+              <button class="primary-button" type="submit">Assign Agreement</button>
+            </div>
+            <p id="client-agreement-assign-status" class="form-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
       <div class="portal-content">
         <div class="portal-intro">
           <div>
@@ -2203,6 +2266,22 @@
         </section>
 
 
+
+
+        <section id="agreement-library-panel" class="panel agreement-library-panel hidden" aria-labelledby="agreement-library-title">
+          <div class="panel-heading agreement-library-heading">
+            <div>
+              <p class="section-kicker">AGREEMENTS</p>
+              <h2 id="agreement-library-title">Agreement library &amp; signatures</h2>
+              <p class="panel-note">Versioned membership agreements tied to programs and the Payment & Agreement journey step.</p>
+            </div>
+            <button id="agreement-new-template" class="secondary-button compact" type="button">New Agreement</button>
+          </div>
+          <div id="agreement-library-metrics" class="agreement-library-metrics"></div>
+          <div id="agreement-library-list" class="agreement-library-list">
+            <div class="empty-state">Loading agreement library...</div>
+          </div>
+        </section>
 
         <section id="billing-operations-panel" class="panel billing-operations-panel hidden" aria-labelledby="billing-operations-title">
           <div class="panel-heading billing-operations-heading">
@@ -2568,5 +2647,6 @@
   <script defer src="portal-documents.js?v=136"></script>
   <script defer src="portal-billing.js?v=137"></script>
   <script defer src="portal-client-billing.js?v=138"></script>
+  <script defer src="portal-agreements.js?v=139"></script>
 </body>
 </html>
