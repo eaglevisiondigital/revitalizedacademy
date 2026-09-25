@@ -189,7 +189,11 @@
     el("rm-agreement-title").textContent=row.name;
     el("rm-agreement-meta").textContent="Version "+row.template_version+" · "+title(row.status);
     el("rm-agreement-content").textContent=row.content_text||"";
-    el("rm-agreement-signer-name").value="";
+    el("rm-agreement-signer-name").value=row.merge_values?.client_name||"";
+    el("rm-agreement-secondary-signer-name").value=row.merge_values?.secondary_client_name||"";
+    const needsSecondary=Number(row.required_client_signatures||1)===2;
+    el("rm-agreement-secondary-signer-field").classList.toggle("hidden",!needsSecondary);
+    el("rm-agreement-secondary-signer-name").required=needsSecondary;
     el("rm-agreement-accept").checked=false;
     showStatus(el("rm-agreement-sign-status"),"");
 
@@ -198,7 +202,7 @@
     el("rm-agreement-completed").classList.toggle("hidden",!completed);
     el("rm-agreement-completed").textContent=completed
       ?(row.status==="signed"
-        ?"Signed by "+(row.signer_name||"member")+" on "+formatDate(row.acceptance_signed_at||row.signed_at,true)+"."
+        ?"Signed "+(Number(row.required_client_signatures||1)===2?"by both clients":"by "+(row.primary_signer_name||"member"))+" on "+formatDate(row.acceptance_signed_at||row.signed_at,true)+"."
         :"This agreement requirement was waived by ReVitalized.")
       :"";
 
@@ -214,11 +218,22 @@
     event.preventDefault();
     if(!activeAgreement)return;
     showStatus(el("rm-agreement-sign-status"),"Signing agreement...");
+    const signatures=[{
+      signer_role:"primary_client",
+      signer_name:el("rm-agreement-signer-name").value.trim()
+    }];
+    if(Number(activeAgreement.required_client_signatures||1)===2){
+      signatures.push({
+        signer_role:"secondary_client",
+        signer_name:el("rm-agreement-secondary-signer-name").value.trim()
+      });
+    }
+
     const {data,error}=await client.functions.invoke("agreement-sign",{
       body:{
         action:"sign",
         client_agreement_id:activeAgreement.client_agreement_id,
-        signer_name:el("rm-agreement-signer-name").value.trim(),
+        signatures,
         accepted_terms:el("rm-agreement-accept").checked
       }
     });
