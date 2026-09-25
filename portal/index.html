@@ -2278,18 +2278,35 @@
             <label><span>Enrollment</span><select id="people-enrollment-filter"><option value="">Any</option><option value="not_started">Not Started</option><option value="in_progress">In Progress</option><option value="completed">Completed</option></select></label>
             <button id="people-clear-filters" class="secondary-button compact" type="button">Clear filters</button>
           </div>
+          <div id="people-bulk-bar" class="people-bulk-bar hidden">
+            <span id="people-selected-count">0 selected</span>
+            <select id="people-bulk-action">
+              <option value="">Bulk action...</option>
+              <option value="assign_staff">Assign staff</option>
+              <option value="set_stage">Change stage</option>
+              <option value="set_followup_status">Change follow-up status</option>
+              <option value="add_tag">Add tag</option>
+            </select>
+            <select id="people-bulk-value"></select>
+            <button id="people-apply-bulk" class="primary-button compact" type="button">Apply</button>
+            <button id="people-clear-selection" class="secondary-button compact" type="button">Clear</button>
+          </div>
           <div class="people-result-bar">
             <span id="people-result-count">Loading people...</span>
-            <div class="people-pagination">
+            <div class="people-result-actions">
+              <button id="people-export" class="secondary-button compact" type="button">Export CSV</button>
+              <div class="people-pagination">
               <button id="people-prev" type="button">Previous</button>
               <span id="people-page-label">Page 1</span>
               <button id="people-next" type="button">Next</button>
+              </div>
             </div>
           </div>
           <div class="table-wrap">
             <table class="contacts-table people-directory-table">
               <thead>
                 <tr>
+                  <th class="people-select-col"><input id="people-select-page" type="checkbox" aria-label="Select visible people"></th>
                   <th>Name</th>
                   <th>Stage</th>
                   <th>Assessment</th>
