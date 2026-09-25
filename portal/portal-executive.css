@@ -35,3 +35,77 @@
   .executive-program>strong{grid-column:1/-1}
   .executive-program span{text-align:left}
 }
+
+
+/* Build 156: Reports readability overhaul */
+.executive-pulse-grid{gap:18px}
+.executive-subpanel{
+  padding:20px;
+  border-radius:16px;
+}
+.executive-subhead span{
+  font-size:12px;
+  letter-spacing:.06em;
+  line-height:1.25;
+}
+.executive-subhead strong{
+  margin-top:6px;
+  font-size:18px;
+  line-height:1.25;
+}
+.executive-funnel{
+  gap:13px;
+  margin-top:18px;
+}
+.executive-funnel-row{
+  grid-template-columns:175px 1fr 52px;
+  gap:14px;
+}
+.executive-funnel-row span{
+  font-size:13.5px;
+  line-height:1.35;
+}
+.executive-funnel-track{
+  height:12px;
+}
+.executive-funnel-row strong{
+  font-size:14px;
+}
+
+.executive-programs{
+  gap:11px;
+  margin-top:18px;
+}
+.executive-program{
+  grid-template-columns:minmax(190px,1.5fr) repeat(4,minmax(82px,.7fr));
+  gap:12px;
+  min-height:66px;
+  padding:12px 14px;
+  border-radius:12px;
+}
+.executive-program>strong{
+  font-size:13.5px;
+  line-height:1.3;
+}
+.executive-program span{
+  font-size:11.5px;
+  line-height:1.25;
+}
+.executive-program span b{
+  margin-bottom:3px;
+  font-size:15px;
+  line-height:1;
+}
+@media(min-width:1200px){
+  .executive-pulse-grid{
+    grid-template-columns:.95fr 1.05fr;
+  }
+}
+@media(max-width:650px){
+  .executive-funnel-row{
+    grid-template-columns:130px 1fr 44px;
+  }
+  .executive-funnel-row span{font-size:12.5px}
+  .executive-program>strong{font-size:13px}
+  .executive-program span{font-size:11px}
+}
