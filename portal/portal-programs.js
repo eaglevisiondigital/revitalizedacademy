@@ -238,6 +238,7 @@
     });
     renderContent();
     renderDynamicFields();
+    syncContentManagementAccess();
   }
 
   async function createContent(event){
@@ -313,6 +314,13 @@
     await loadContent();
   }
 
+  function syncContentManagementAccess(){
+    const role=portal.currentStaffRole?.();
+    const canManage=["owner","admin","coach"].includes(String(role||"").toLowerCase());
+    if(contentNew)contentNew.classList.toggle("hidden",!canManage);
+    document.querySelectorAll(".program-content-row-actions").forEach(node=>node.classList.toggle("hidden",!canManage));
+  }
+
   contentTabs.forEach(button=>button.addEventListener("click",()=>{
     activeContent=button.dataset.programContent;
     renderContent();
@@ -323,6 +331,7 @@
   document.getElementById("program-content-close")?.addEventListener("click",closeContentModal);
   document.getElementById("program-content-cancel")?.addEventListener("click",closeContentModal);
   document.querySelectorAll("[data-program-content-close]").forEach(node=>node.addEventListener("click",closeContentModal));
+  document.addEventListener("ra:dashboard-loaded",syncContentManagementAccess);
 
   load();
   loadContent();
