@@ -4,6 +4,7 @@
   const SUPABASE_URL = "https://voalfpxiyznnqfcqcymd.supabase.co";
   const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_09WCwErmz_KpKsI7AtlHyg_SQtHWmZd";
   const PORTAL_URL = "https://revitalizedacademy.com/portal/";
+  const RA_AUTH_BUILD = "181-custom-reset-v2";
 
   const initialHash = new URLSearchParams(window.location.hash.replace(/^#/, ""));
   const initialQuery = new URLSearchParams(window.location.search);
