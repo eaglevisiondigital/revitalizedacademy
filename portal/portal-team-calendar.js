@@ -8,6 +8,7 @@
   let view="today";
   let rows=[];
   let conflicts=new Set();
+  let availabilityIssues=new Map();
 
   function title(v){return portal.titleCase(v||"");}
   function stat(label,value){
@@ -59,7 +60,7 @@
 
     rows.forEach((row)=>{
       const item=document.createElement("article");
-      item.className="team-calendar-item"+(conflicts.has(row.item_id)?" conflict":"");
+      item.className="team-calendar-item"+((conflicts.has(row.item_id)||availabilityIssues.has(row.item_id))?" conflict":"");
 
       const time=document.createElement("div");
       time.className="team-calendar-time";
@@ -87,7 +88,9 @@
 
       const state=document.createElement("div");
       state.className="team-calendar-state";
-      state.textContent=title(row.status)+(conflicts.has(row.item_id)?" · Conflict":"");
+      const issue=availabilityIssues.get(row.item_id);
+      state.textContent=title(row.status)+(conflicts.has(row.item_id)?" · Double-booked":"")+(issue?" · "+title(issue.issue_type):"");
+      if(issue)state.title=issue.issue_detail||"";
 
       const actions=document.createElement("div");
       actions.className="team-calendar-actions";
@@ -148,9 +151,10 @@
     const status=el("calendar-status-filter").value;
     if(status)q=q.eq("status",status);
 
-    const [scheduleResult,conflictResult]=await Promise.all([
+    const [scheduleResult,conflictResult,availabilityResult]=await Promise.all([
       q,
-      client.from("admin_schedule_conflicts").select("*")
+      client.from("admin_schedule_conflicts").select("*"),
+      client.from("admin_schedule_availability_issues").select("*")
     ]);
 
     if(scheduleResult.error){
@@ -161,8 +165,10 @@
     rows=scheduleResult.data||[];
     conflicts=new Set();
     (conflictResult.data||[]).forEach((r)=>{conflicts.add(r.item_a_id);conflicts.add(r.item_b_id);});
-    el("team-calendar-conflict-chip").textContent=conflicts.size+" conflict"+(conflicts.size===1?"":"s");
-    el("team-calendar-conflict-chip").classList.toggle("warn",conflicts.size>0);
+    availabilityIssues=new Map((availabilityResult.data||[]).map((r)=>[r.item_id,r]));
+    const issueCount=new Set([...conflicts,...availabilityIssues.keys()]).size;
+    el("team-calendar-conflict-chip").textContent=issueCount+" scheduling issue"+(issueCount===1?"":"s");
+    el("team-calendar-conflict-chip").classList.toggle("warn",issueCount>0);
     render();
   }
 
