@@ -481,8 +481,7 @@
     input.type=showing?"password":"text";
     button.setAttribute("aria-pressed",String(!showing));
     button.setAttribute("aria-label",showing?"Show password":"Hide password");
-    const icon=button.querySelector("span");
-    if(icon)icon.textContent=showing?"👁":"◉";
+    button.classList.toggle("is-visible", !showing);
   }
 
   document.querySelectorAll("[data-password-toggle]").forEach((button)=>{
@@ -745,7 +744,10 @@
 
     const { data, error } = await authClient.auth.signInWithPassword({ email, password });
     if (error) {
-      showStatus(loginStatus, error.message, "error");
+      const message = error.code === "invalid_credentials"
+        ? "Email or password is incorrect. Check your password or use Forgot your password? to reset it."
+        : error.message;
+      showStatus(loginStatus, message, "error");
       return;
     }
 
