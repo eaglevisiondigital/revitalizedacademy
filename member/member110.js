@@ -112,6 +112,40 @@
 
   let currentMember = null;
 
+  let currentReferralCode=null;
+
+  function renderReferralSummary(row){
+    const card=el("rm-referral-card");
+    if(!row||!row.referral_code){
+      card.classList.add("hidden");
+      currentReferralCode=null;
+      return;
+    }
+
+    card.classList.remove("hidden");
+    currentReferralCode=row.referral_code;
+    el("rm-referral-code").textContent=row.referral_code;
+    el("rm-referral-total").textContent=String(row.total_referrals||0);
+    el("rm-referral-converted").textContent=String(row.converted_referrals||0);
+    el("rm-referral-pending").textContent=String(row.pending_rewards||0);
+    el("rm-referral-conversions").textContent=String(row.converted_referrals||0)+" converted";
+  }
+
+  async function copyReferralLink(){
+    if(!currentReferralCode)return;
+    const url="https://revitalizedacademy.com/?ref="+encodeURIComponent(currentReferralCode);
+    try{
+      await navigator.clipboard.writeText(url);
+      const button=el("rm-referral-copy");
+      const old=button.textContent;
+      button.textContent="Copied ✓";
+      window.setTimeout(()=>button.textContent=old,1300);
+    }catch{
+      window.prompt("Copy your ReVitalized referral link:",url);
+    }
+  }
+
+
   function renderRefuel(row){
     const card=el("rm-refuel-card");
     if(!row){card.classList.add("hidden");return;}
@@ -1368,7 +1402,8 @@
       challengesResult,
       communitySpacesResult,
       communityFeedResult,
-      refuelResult
+      refuelResult,
+      referralSummaryResult
     ] = await Promise.all([
       client.from("my_member_dashboard").select("*").maybeSingle(),
       client.from("my_member_entitlements").select("*").order("label"),
@@ -1396,10 +1431,11 @@
       client.from("my_challenges").select("*"),
       client.from("my_community_spaces").select("*"),
       client.from("my_community_feed").select("*"),
-      client.from("my_refuel_access").select("*").limit(1).maybeSingle()
+      client.from("my_refuel_access").select("*").limit(1).maybeSingle(),
+      client.from("my_referral_summary").select("*").maybeSingle()
     ]);
 
-    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult,notificationPrefsResult,healthConnectionsResult,challengesResult,communitySpacesResult,communityFeedResult,refuelResult].find((r) => r.error);
+    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult,notificationPrefsResult,healthConnectionsResult,challengesResult,communitySpacesResult,communityFeedResult,refuelResult,referralSummaryResult].find((r) => r.error);
     if (failed?.error) throw failed.error;
 
     const member = dashboardResult.data;
@@ -1560,6 +1596,8 @@
     if (event.key === "Escape" && !el("rm-course-modal").classList.contains("hidden")) closeCourse();
     if (event.key === "Escape" && !el("rm-message-modal").classList.contains("hidden")) closeConversation();
   });
+
+  el("rm-referral-copy").addEventListener("click",copyReferralLink);
 
   el("rm-signout").addEventListener("click", signOut);
   el("rm-denied-signout").addEventListener("click", signOut);
