@@ -104,8 +104,11 @@
         decline.addEventListener("click",()=>updateStatus(row,"declined"));actions.append(decline);
       }
       if(row.status==="approved"){
-        const complete=document.createElement("button");complete.type="button";complete.className="primary";complete.textContent="Mark Completed";
-        complete.addEventListener("click",()=>updateStatus(row,"completed"));actions.append(complete);
+        const complete=document.createElement("button");complete.type="button";complete.className="primary";complete.textContent="Complete & Apply";
+        complete.addEventListener("click",()=>{
+          if(!window.confirm("Apply this approved Family Hub change to the household now?"))return;
+          updateStatus(row,"completed");
+        });actions.append(complete);
       }
 
       card.append(person,detail,actions);
