@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex,nofollow,noarchive">
   <title>Member Dashboard | ReVitalized Academy</title>
   <link rel="icon" href="../assets/images/revitalized-logo-dark-approved-v69.png">
-  <link rel="stylesheet" href="member110.css?v=137">
+  <link rel="stylesheet" href="member110.css?v=139">
 </head>
 <body>
   <main class="rm112-page">
@@ -343,6 +343,39 @@
 
 
 
+
+      <section class="rm112-card rm139-agreements-card">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">AGREEMENTS</p>
+            <h2>Your membership agreements</h2>
+          </div>
+          <span id="rm-agreement-action-count" class="rm112-chip">0 action needed</span>
+        </div>
+        <div id="rm-agreements" class="rm114-stack"></div>
+      </section>
+
+      <div id="rm-agreement-modal" class="rm126-modal hidden" aria-hidden="true">
+        <div class="rm126-modal-backdrop" data-agreement-close></div>
+        <section class="rm126-dialog rm139-agreement-dialog" role="dialog" aria-modal="true" aria-labelledby="rm-agreement-title">
+          <button class="rm126-close" type="button" data-agreement-close aria-label="Close agreement">×</button>
+          <p class="rm112-kicker">MEMBERSHIP AGREEMENT</p>
+          <h2 id="rm-agreement-title">Agreement</h2>
+          <p id="rm-agreement-meta" class="rm139-agreement-meta"></p>
+          <div id="rm-agreement-content" class="rm139-agreement-content"></div>
+          <div id="rm-agreement-completed" class="rm139-agreement-completed hidden"></div>
+          <form id="rm-agreement-sign-form" class="rm126-form">
+            <label><span>Type your legal name</span><input id="rm-agreement-signer-name" type="text" maxlength="240" required></label>
+            <label class="rm139-agreement-check"><input id="rm-agreement-accept" type="checkbox" required><span>I have read and agree to the terms above.</span></label>
+            <div class="rm139-agreement-actions">
+              <button id="rm-agreement-decline" type="button" class="rm139-secondary">Decline</button>
+              <button type="submit">Sign Agreement</button>
+            </div>
+            <p id="rm-agreement-sign-status" class="rm112-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
       <section id="rm-billing-card" class="rm112-card rm137-billing-card hidden">
         <div class="rm112-card-head">
           <div>
@@ -512,6 +545,6 @@
   </main>
 
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
-  <script defer src="member110.js?v=138"></script>
+  <script defer src="member110.js?v=139"></script>
 </body>
 </html>
