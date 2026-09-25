@@ -327,3 +327,10 @@
 @media(max-width:620px){
   .program-content-summary{grid-template-columns:1fr 1fr}
 }
+
+
+/* Build 157: challenge access */
+.program-access-challenges{grid-column:1/-1}
+@media(max-width:850px){
+  .program-access-challenges{grid-column:auto}
+}
