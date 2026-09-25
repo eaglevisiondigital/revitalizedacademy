@@ -1,0 +1,16 @@
+
+.billing-operations-panel{margin-bottom:18px}
+.billing-operations-heading{align-items:flex-start}
+.billing-operations-metrics{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:14px 0 12px}
+.billing-operations-stat{padding:10px 11px;border:1px solid #e2e9e5;border-radius:12px;background:#fbfcfb}
+.billing-operations-stat span{display:block;font-size:9px;font-weight:900;letter-spacing:.07em;text-transform:uppercase;color:#7d8a83}
+.billing-operations-stat strong{display:block;margin-top:4px;font-family:Georgia,"Times New Roman",serif;font-size:22px;font-weight:500;color:#294134}
+.billing-operations-stat.warn{background:#fff8ee;border-color:#ebdcc1}.billing-operations-stat.warn strong{color:#8a6428}
+.billing-operations-list{display:grid;gap:8px}
+.billing-subscription-item{display:grid;grid-template-columns:minmax(170px,1.2fr) minmax(170px,1fr) 120px 130px minmax(160px,1fr);gap:10px;align-items:center;padding:11px 12px;border:1px solid #e4ebe7;border-radius:11px;background:#fbfcfb}
+.billing-subscription-item.past-due{border-color:#e7cbbd;background:#fff9f5}
+.billing-subscription-person strong,.billing-subscription-plan strong{display:block;font-size:11px;color:#30463a}.billing-subscription-person span,.billing-subscription-plan span{display:block;margin-top:2px;font-size:8px;color:#7d8a83}
+.billing-subscription-state{font-size:8px;font-weight:900;text-transform:uppercase;color:#65756b}.billing-subscription-state.warn{color:#9a5d2b}
+.billing-subscription-actions{display:flex;gap:6px;justify-content:flex-end;flex-wrap:wrap}.billing-subscription-actions button{min-height:29px;padding:0 8px;border:1px solid #cedad2;border-radius:7px;background:#fff;color:#154734;font-size:8px;font-weight:900}
+@media(max-width:1000px){.billing-operations-metrics{grid-template-columns:repeat(3,1fr)}.billing-subscription-item{grid-template-columns:1fr 1fr}.billing-subscription-actions{justify-content:flex-start}}
+@media(max-width:620px){.billing-operations-metrics{grid-template-columns:1fr 1fr}.billing-subscription-item{grid-template-columns:1fr}}
