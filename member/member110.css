@@ -653,3 +653,267 @@
   .rm170-family-actions span{display:none}
   .rm170-household-head-actions{align-items:flex-end;flex-direction:column}
 }
+
+
+/* Build 172: Coaching Requests + Ambassador Center */
+.rm172-section-intro{
+  margin:4px 0 16px;
+  color:#687b70;
+  font-size:13.5px;
+  line-height:1.5;
+}
+.rm172-coaching-request-card{
+  margin-top:14px;
+  background:linear-gradient(180deg,#fbfdfb,#fff);
+}
+.rm172-coaching-request-form{
+  padding:16px;
+  border:1px solid #d9e4dc;
+  border-radius:15px;
+  background:#fff;
+}
+.rm172-availability-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:10px;
+}
+.rm172-coaching-request-form label{
+  display:grid;
+  gap:6px;
+}
+.rm172-coaching-request-form label>span{
+  color:#536d5f;
+  font-size:10px;
+  font-weight:850;
+}
+.rm172-coaching-request-form input,
+.rm172-coaching-request-form select,
+.rm172-coaching-request-form textarea{
+  width:100%;
+  border:1px solid #cbd9d1;
+  border-radius:9px;
+  background:#fff;
+  color:#2d473a;
+  font:inherit;
+}
+.rm172-coaching-request-form input,
+.rm172-coaching-request-form select{
+  height:42px;
+  padding:0 10px;
+}
+.rm172-coaching-request-form textarea{
+  min-height:88px;
+  padding:10px;
+  resize:vertical;
+}
+.rm172-request-notes{
+  margin-top:10px;
+}
+.rm172-request-actions{
+  display:flex;
+  justify-content:flex-end;
+  margin-top:11px;
+}
+.rm172-request-actions button{
+  min-height:42px;
+  padding:0 15px;
+  border:1px solid #154734;
+  border-radius:9px;
+  background:#154734;
+  color:#fff;
+  font-size:10.5px;
+  font-weight:900;
+}
+.rm172-request-list{
+  display:grid;
+  gap:9px;
+  margin-top:14px;
+}
+.rm172-request-item{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:12px;
+  align-items:center;
+  padding:12px 13px;
+  border:1px solid #dce5df;
+  border-radius:12px;
+  background:#fbfcfb;
+}
+.rm172-request-item strong{
+  display:block;
+  color:#2b4c3d;
+  font-size:11.5px;
+}
+.rm172-request-item span{
+  display:block;
+  margin-top:3px;
+  color:#74847b;
+  font-size:9.5px;
+  line-height:1.4;
+}
+.rm172-request-item-actions{
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+.rm172-request-status{
+  display:inline-flex!important;
+  align-items:center;
+  min-height:30px;
+  padding:0 9px;
+  border-radius:999px;
+  background:#edf4ef;
+  color:#2e6543!important;
+  font-size:9px!important;
+  font-weight:900;
+}
+.rm172-request-item button{
+  min-height:31px;
+  padding:0 9px;
+  border:1px solid #d9c6bf;
+  border-radius:8px;
+  background:#fff7f4;
+  color:#8d4d3d;
+  font-size:8.5px;
+  font-weight:900;
+}
+
+.rm172-ambassador-card{
+  background:linear-gradient(180deg,#fbfdfb,#fff);
+}
+.rm172-ambassador-hero{
+  display:grid;
+  grid-template-columns:minmax(260px,.8fr) minmax(0,1.4fr);
+  gap:13px;
+  margin-top:12px;
+}
+.rm172-share-card{
+  padding:17px;
+  border:1px solid #d8e3dc;
+  border-radius:15px;
+  background:#f5faf6;
+}
+.rm172-share-card>span{
+  display:block;
+  color:#61756a;
+  font-size:9.5px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+}
+.rm172-share-card>strong{
+  display:block;
+  margin-top:5px;
+  color:#154734;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:28px;
+  font-weight:500;
+}
+.rm172-share-card>p{
+  margin:9px 0 0;
+  color:#63766b;
+  font-size:11px;
+  line-height:1.5;
+}
+.rm172-share-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:14px;
+}
+.rm172-share-actions button{
+  min-height:38px;
+  padding:0 11px;
+  border:1px solid #154734;
+  border-radius:9px;
+  background:#154734;
+  color:#fff;
+  font-size:9px;
+  font-weight:900;
+}
+.rm172-share-actions button.rm172-secondary{
+  background:#fff;
+  border-color:#c7d7cd;
+  color:#154734;
+}
+.rm172-ambassador-stats{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:9px;
+}
+.rm172-ambassador-stats>div,
+.rm172-reward-summary>div{
+  padding:13px 14px;
+  border:1px solid #dce5df;
+  border-radius:12px;
+  background:#fff;
+}
+.rm172-ambassador-stats span,
+.rm172-reward-summary span{
+  display:block;
+  color:#708178;
+  font-size:9px;
+  font-weight:850;
+}
+.rm172-ambassador-stats strong,
+.rm172-reward-summary strong{
+  display:block;
+  margin-top:4px;
+  color:#214b39;
+  font-size:21px;
+}
+.rm172-reward-summary{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+  margin-top:9px;
+}
+.rm172-activity-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:12px;
+  margin:17px 0 9px;
+}
+.rm172-activity-head strong{
+  color:#244b3a;
+  font-size:13px;
+}
+.rm172-activity-head span{
+  color:#7a8980;
+  font-size:9.5px;
+}
+.rm172-referral-activity{
+  display:grid;
+  gap:8px;
+}
+.rm172-referral-item{
+  display:grid;
+  grid-template-columns:minmax(150px,1fr) minmax(120px,.7fr) minmax(120px,.7fr);
+  gap:12px;
+  align-items:center;
+  padding:11px 12px;
+  border:1px solid #e0e8e3;
+  border-radius:11px;
+  background:#fbfcfb;
+}
+.rm172-referral-item strong{
+  color:#304c3f;
+  font-size:10.5px;
+}
+.rm172-referral-item span{
+  color:#73837a;
+  font-size:9px;
+}
+@media(max-width:900px){
+  .rm172-availability-grid{grid-template-columns:1fr 1fr}
+  .rm172-ambassador-hero{grid-template-columns:1fr}
+}
+@media(max-width:620px){
+  .rm172-availability-grid,
+  .rm172-ambassador-stats,
+  .rm172-reward-summary,
+  .rm172-referral-item{
+    grid-template-columns:1fr;
+  }
+}

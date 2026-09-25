@@ -13,7 +13,7 @@
   <link rel="shortcut icon" type="image/png" href="../assets/images/revitalized-icon-approved.png">
   <link rel="apple-touch-icon" href="../assets/images/revitalized-icon-approved.png">
   <link rel="manifest" href="manifest.webmanifest?v=171">
-  <link rel="stylesheet" href="member110.css?v=170">
+  <link rel="stylesheet" href="member110.css?v=172">
 </head>
 <body>
   <main class="rm112-page">
@@ -143,12 +143,50 @@
           <div class="rm112-card-head">
             <div>
               <p class="rm112-kicker">COACHING</p>
-              <h2>Your next appointment</h2>
+              <h2>Your Next Appointment</h2>
             </div>
           </div>
           <div id="rm-appointment" class="rm112-empty">No upcoming appointment is currently scheduled.</div>
         </section>
       </div>
+
+      <section class="rm112-card rm172-coaching-request-card">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">COACHING REQUESTS</p>
+            <h2>Request Time With Your Coach</h2>
+          </div>
+          <span id="rm-coaching-request-count" class="rm112-chip">0 Open</span>
+        </div>
+        <p class="rm172-section-intro">Share a few times that work for you and what you would like to cover. Your coaching team will confirm the session.</p>
+        <form id="rm-coaching-request-form" class="rm172-coaching-request-form">
+          <div class="rm172-availability-grid">
+            <label><span>Preferred Date</span><input id="rm-coaching-request-date-1" type="date" required></label>
+            <label><span>Preferred Time</span>
+              <select id="rm-coaching-request-window-1" required>
+                <option value="morning">Morning</option>
+                <option value="afternoon">Afternoon</option>
+                <option value="evening">Evening</option>
+              </select>
+            </label>
+            <label><span>Alternate Date</span><input id="rm-coaching-request-date-2" type="date"></label>
+            <label><span>Alternate Time</span>
+              <select id="rm-coaching-request-window-2">
+                <option value="">No Preference</option>
+                <option value="morning">Morning</option>
+                <option value="afternoon">Afternoon</option>
+                <option value="evening">Evening</option>
+              </select>
+            </label>
+          </div>
+          <label class="rm172-request-notes"><span>What Would You Like To Cover?</span><textarea id="rm-coaching-request-notes" rows="3" maxlength="2000" placeholder="Progress review, questions, next steps, accountability..."></textarea></label>
+          <div class="rm172-request-actions">
+            <button type="submit">Request Coaching Session</button>
+          </div>
+          <p id="rm-coaching-request-status" class="rm112-status" aria-live="polite"></p>
+        </form>
+        <div id="rm-coaching-requests" class="rm172-request-list"></div>
+      </section>
 
 
       <div class="rm112-grid rm114-coaching-grid">
@@ -569,26 +607,42 @@
         </section>
       </div>
 
-      <section id="rm-referral-card" class="rm112-card rm130-referral-card hidden">
+      <section id="rm-referral-card" class="rm112-card rm172-ambassador-card hidden">
         <div class="rm112-card-head">
           <div>
-            <p class="rm112-kicker">REFER &amp; SHARE</p>
-            <h2>Your ReVitalized referral link</h2>
+            <p class="rm112-kicker">AMBASSADOR CENTER</p>
+            <h2>Share ReVitalized &amp; Track Your Impact</h2>
           </div>
-          <span id="rm-referral-conversions" class="rm112-chip">0 converted</span>
+          <span id="rm-referral-conversions" class="rm112-chip">0 Converted</span>
         </div>
-        <div class="rm130-referral-grid">
-          <div class="rm130-referral-code">
-            <span>Your code</span>
+        <div class="rm172-ambassador-hero">
+          <div class="rm172-share-card">
+            <span>Your Referral Code</span>
             <strong id="rm-referral-code">—</strong>
-            <button id="rm-referral-copy" type="button">Copy Referral Link</button>
+            <p id="rm-referral-message">Share ReVitalized with someone you care about.</p>
+            <div class="rm172-share-actions">
+              <button id="rm-referral-copy" type="button">Copy Referral Link</button>
+              <button id="rm-referral-copy-message" class="rm172-secondary" type="button">Copy Share Message</button>
+            </div>
           </div>
-          <div class="rm130-referral-stats">
-            <div><span>Total referrals</span><strong id="rm-referral-total">0</strong></div>
+          <div class="rm172-ambassador-stats">
+            <div><span>Total Referrals</span><strong id="rm-referral-total">0</strong></div>
+            <div><span>Engaged</span><strong id="rm-referral-engaged">0</strong></div>
+            <div><span>Applicants</span><strong id="rm-referral-applicants">0</strong></div>
             <div><span>Converted</span><strong id="rm-referral-converted">0</strong></div>
-            <div><span>Pending rewards</span><strong id="rm-referral-pending">0</strong></div>
+            <div><span>Pending Rewards</span><strong id="rm-referral-pending">0</strong></div>
+            <div><span>Issued Rewards</span><strong id="rm-referral-issued">0</strong></div>
           </div>
         </div>
+        <div class="rm172-reward-summary">
+          <div><span>Pending Reward Value</span><strong id="rm-referral-pending-value">—</strong></div>
+          <div><span>Issued Reward Value</span><strong id="rm-referral-issued-value">—</strong></div>
+        </div>
+        <div class="rm172-activity-head">
+          <strong>Referral Activity</strong>
+          <span>Names are intentionally limited for privacy.</span>
+        </div>
+        <div id="rm-referral-activity" class="rm172-referral-activity"></div>
       </section>
 
       <section id="rm-refuel-card" class="rm112-card rm127-refuel-card hidden">
@@ -692,6 +746,6 @@
   </main>
 
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
-  <script defer src="member110.js?v=170"></script>
+  <script defer src="member110.js?v=172"></script>
 </body>
 </html>

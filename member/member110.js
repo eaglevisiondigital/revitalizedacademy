@@ -357,6 +357,68 @@
     await loadDashboard();
   }
 
+  function renderCoachingRequests(rows){
+    const list=el("rm-coaching-requests");list.replaceChildren();
+    const open=rows.filter(r=>["requested","scheduled"].includes(r.status));
+    el("rm-coaching-request-count").textContent=open.length+" Open";
+    if(!rows.length){
+      list.innerHTML='<div class="rm112-empty">No coaching session requests yet.</div>';
+      return;
+    }
+    rows.slice(0,6).forEach(row=>{
+      const item=document.createElement("div");item.className="rm172-request-item";
+      const copy=document.createElement("div");
+      const h=document.createElement("strong");
+      h.textContent=row.status==="scheduled"&&row.scheduled_start
+        ?"Coaching Session · "+formatDate(row.scheduled_start,true)
+        :"Coaching Session Request";
+      const availability=Array.isArray(row.requested_availability)?row.requested_availability:[];
+      const meta=document.createElement("span");
+      meta.textContent=row.status==="scheduled"
+        ?[row.assigned_coach_name?"With "+row.assigned_coach_name:null,row.format?title(row.format):null].filter(Boolean).join(" · ")
+        :availability.map(a=>[a.date,title(a.window)].filter(Boolean).join(" ")).join(" · ")||"Availability submitted";
+      copy.append(h,meta);
+      if(row.client_notes){
+        const note=document.createElement("span");note.textContent=row.client_notes;copy.append(note);
+      }
+      const actions=document.createElement("div");actions.className="rm172-request-item-actions";
+      const status=document.createElement("span");status.className="rm172-request-status";status.textContent=title(row.status);actions.append(status);
+      if(["requested","scheduled"].includes(row.status)){
+        const cancel=document.createElement("button");cancel.type="button";cancel.textContent="Cancel";
+        cancel.addEventListener("click",()=>cancelCoachingRequest(row.appointment_id));
+        actions.append(cancel);
+      }
+      item.append(copy,actions);list.append(item);
+    });
+  }
+
+  async function submitCoachingRequest(event){
+    event.preventDefault();
+    const status=el("rm-coaching-request-status");
+    const date1=el("rm-coaching-request-date-1").value;
+    const date2=el("rm-coaching-request-date-2").value;
+    const windows=[];
+    if(date1)windows.push({date:date1,window:el("rm-coaching-request-window-1").value});
+    if(date2)windows.push({date:date2,window:el("rm-coaching-request-window-2").value||"flexible"});
+    if(!windows.length){showStatus(status,"Choose at least one preferred date.","error");return;}
+    showStatus(status,"Sending your request...");
+    const {error}=await client.rpc("request_my_coaching_session",{
+      p_requested_availability:windows,
+      p_client_notes:el("rm-coaching-request-notes").value.trim()||null
+    });
+    if(error){showStatus(status,error.message,"error");return;}
+    event.currentTarget.reset();
+    showStatus(status,"Coaching request submitted.","success");
+    await loadDashboard();
+  }
+
+  async function cancelCoachingRequest(id){
+    if(!window.confirm("Cancel this coaching session request?"))return;
+    const {error}=await client.rpc("cancel_my_coaching_session",{p_appointment_id:id});
+    if(error){window.alert(error.message);return;}
+    await loadDashboard();
+  }
+
   function renderAppointment(row) {
     const target = el("rm-appointment");
     target.replaceChildren();
@@ -656,35 +718,87 @@
 
 
   let currentReferralCode=null;
+  let currentReferralShareUrl=null;
+  let currentReferralShareMessage=null;
 
-  function renderReferralSummary(row){
+  function moneyValue(value,currency){
+    if(value===null||value===undefined||value==="")return "—";
+    try{
+      return new Intl.NumberFormat(undefined,{style:"currency",currency:currency||"USD"}).format(Number(value));
+    }catch{
+      return String(value)+" "+(currency||"");
+    }
+  }
+
+  function renderReferralSummary(row,activity=[]){
     const card=el("rm-referral-card");
     if(!row||!row.referral_code){
       card.classList.add("hidden");
       currentReferralCode=null;
+      currentReferralShareUrl=null;
+      currentReferralShareMessage=null;
       return;
     }
 
     card.classList.remove("hidden");
     currentReferralCode=row.referral_code;
+    currentReferralShareUrl=row.share_url||("https://revitalizedacademy.com/enroll?ref="+encodeURIComponent(row.referral_code));
+    currentReferralShareMessage=row.share_message||("I wanted to share ReVitalized Academy with you: "+currentReferralShareUrl);
+
     el("rm-referral-code").textContent=row.referral_code;
+    el("rm-referral-message").textContent=currentReferralShareMessage;
     el("rm-referral-total").textContent=String(row.total_referrals||0);
+    el("rm-referral-engaged").textContent=String(row.engaged_count||0);
+    el("rm-referral-applicants").textContent=String(row.applicant_count||0);
     el("rm-referral-converted").textContent=String(row.converted_referrals||0);
     el("rm-referral-pending").textContent=String(row.pending_rewards||0);
-    el("rm-referral-conversions").textContent=String(row.converted_referrals||0)+" converted";
+    el("rm-referral-issued").textContent=String(row.issued_rewards||0);
+    el("rm-referral-pending-value").textContent=moneyValue(row.pending_reward_value,row.reward_currency);
+    el("rm-referral-issued-value").textContent=moneyValue(row.issued_reward_value,row.reward_currency);
+    el("rm-referral-conversions").textContent=String(row.converted_referrals||0)+" Converted";
+
+    const list=el("rm-referral-activity");list.replaceChildren();
+    if(!activity.length){
+      list.innerHTML='<div class="rm112-empty">Your referral activity will appear here as people engage with ReVitalized.</div>';
+      return;
+    }
+    activity.slice(0,12).forEach(item=>{
+      const rowEl=document.createElement("div");rowEl.className="rm172-referral-item";
+      const who=document.createElement("strong");
+      who.textContent=[item.referred_first_name,item.referred_last_initial].filter(Boolean).join(" ")||"Referral";
+      const state=document.createElement("span");
+      state.textContent=title(item.status)+" · "+formatDate(item.first_touch_at,true);
+      const reward=document.createElement("span");
+      reward.textContent=item.reward_status
+        ?title(item.reward_status)+(item.reward_value!==null&&item.reward_value!==undefined?" · "+moneyValue(item.reward_value,item.currency):"")
+        :"No Reward Yet";
+      rowEl.append(who,state,reward);list.append(rowEl);
+    });
   }
 
   async function copyReferralLink(){
-    if(!currentReferralCode)return;
-    const url="https://revitalizedacademy.com/?ref="+encodeURIComponent(currentReferralCode);
+    if(!currentReferralShareUrl)return;
     try{
-      await navigator.clipboard.writeText(url);
+      await navigator.clipboard.writeText(currentReferralShareUrl);
       const button=el("rm-referral-copy");
       const old=button.textContent;
       button.textContent="Copied ✓";
       window.setTimeout(()=>button.textContent=old,1300);
     }catch{
-      window.prompt("Copy your ReVitalized referral link:",url);
+      window.prompt("Copy your ReVitalized referral link:",currentReferralShareUrl);
+    }
+  }
+
+  async function copyReferralMessage(){
+    if(!currentReferralShareMessage)return;
+    try{
+      await navigator.clipboard.writeText(currentReferralShareMessage);
+      const button=el("rm-referral-copy-message");
+      const old=button.textContent;
+      button.textContent="Copied ✓";
+      window.setTimeout(()=>button.textContent=old,1300);
+    }catch{
+      window.prompt("Copy your share message:",currentReferralShareMessage);
     }
   }
 
@@ -2066,7 +2180,9 @@
       communitySpacesResult,
       communityFeedResult,
       refuelResult,
-      referralSummaryResult,
+      ambassadorResult,
+      referralActivityResult,
+      coachingRequestsResult,
       documentsResult,
       billingResult,
       agreementsResult,
@@ -2105,7 +2221,9 @@
       client.from("my_community_spaces").select("*"),
       client.from("my_community_feed").select("*"),
       client.from("my_refuel_access").select("*").limit(1).maybeSingle(),
-      client.from("my_referral_summary").select("*").maybeSingle(),
+      client.from("my_ambassador_center").select("*").maybeSingle(),
+      client.from("my_referral_activity").select("*").order("first_touch_at",{ascending:false}).limit(20),
+      client.from("my_coaching_requests").select("*").order("created_at",{ascending:false}).limit(10),
       client.from("my_documents").select("*"),
       client.from("my_billing_summary").select("*").limit(1).maybeSingle(),
       client.from("my_agreements").select("*"),
@@ -2118,7 +2236,7 @@
       client.from("my_family_requests").select("*").order("created_at",{ascending:false}).limit(10)
     ]);
 
-    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult,notificationPrefsResult,healthConnectionsResult,challengesResult,communitySpacesResult,communityFeedResult,refuelResult,referralSummaryResult,documentsResult,billingResult,agreementsResult,coachingEntitlementsResult,companionTypesResult,companionRequestsResult,dailyActionsResult,weeklySummaryResult,activityTimelineResult,familyRequestsResult].find((r) => r.error);
+    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult,notificationPrefsResult,healthConnectionsResult,challengesResult,communitySpacesResult,communityFeedResult,refuelResult,ambassadorResult,referralActivityResult,coachingRequestsResult,documentsResult,billingResult,agreementsResult,coachingEntitlementsResult,companionTypesResult,companionRequestsResult,dailyActionsResult,weeklySummaryResult,activityTimelineResult,familyRequestsResult].find((r) => r.error);
     if (failed?.error) throw failed.error;
 
     const member = dashboardResult.data;
@@ -2299,6 +2417,8 @@
   document.querySelectorAll("[data-document-upload-close]").forEach((n)=>n.addEventListener("click",closeDocumentUpload));
 
   el("rm-referral-copy").addEventListener("click",copyReferralLink);
+  el("rm-referral-copy-message").addEventListener("click",copyReferralMessage);
+  el("rm-coaching-request-form").addEventListener("submit",submitCoachingRequest);
 
   el("rm-family-add").addEventListener("click",()=>openFamilyRequest());
   el("rm-family-form").addEventListener("submit",submitFamilyRequest);
