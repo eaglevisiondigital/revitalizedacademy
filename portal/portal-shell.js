@@ -27,7 +27,7 @@
 
   const nav = [
     {key:"dashboard",label:"Dashboard",subs:[]},
-    {key:"people",label:"People",subs:[["Directory",".contacts-panel"],["Referrals","#referral-admin-panel"]]},
+    {key:"people",label:"People",subs:[["Directory",".contacts-panel"],["Referrals","#referral-admin-panel"],["Family Requests","#family-requests-panel"]]},
     {key:"journey",label:"Journey",subs:[["Pipeline",".journey-pipeline-panel"]]},
     {key:"coaching",label:"Coaching",subs:[["Work Desk",".work-desk-panel"],["Coach Companion",".companion-panel"]]},
     {key:"calendar",label:"Calendar",subs:[["Team Calendar","#team-calendar-panel"]]},
@@ -123,7 +123,7 @@
   const metricsSection=content.querySelector('section[aria-labelledby="metrics-title"]');
   const workspaceMap = {
     dashboard:[metricsSection,dashboardGrid,content.querySelector(".work-desk-panel"),content.querySelector(".journey-pipeline-panel")],
-    people:[content.querySelector(".contacts-panel"),document.getElementById("referral-admin-panel")],
+    people:[content.querySelector(".contacts-panel"),document.getElementById("referral-admin-panel"),document.getElementById("family-requests-panel")],
     journey:[content.querySelector(".journey-pipeline-panel")],
     coaching:[content.querySelector(".work-desk-panel"),content.querySelector(".companion-panel")],
     calendar:[document.getElementById("team-calendar-panel")],
