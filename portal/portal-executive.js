@@ -21,16 +21,16 @@
   function renderMetrics(row){
     const target=el("executive-pulse-metrics");
     target.replaceChildren(
-      metricCard("Active members",row.active_memberships||0),
-      metricCard("Paid enrollments",row.paid_enrollments||0),
-      metricCard("Stalled journeys",row.stalled_journeys||0,Number(row.stalled_journeys||0)>0?"warn":""),
-      metricCard("Check-ins · 7d",row.checkins_7d||0),
-      metricCard("Open assignments",row.open_client_assignments||0),
-      metricCard("Course progress",Math.round(Number(row.average_course_progress||0))+"%"),
-      metricCard("Active challenges",row.active_challenge_enrollments||0),
-      metricCard("Health sources",row.connected_health_sources||0),
-      metricCard("Companion reviews",row.companion_reviews_open||0,Number(row.companion_reviews_open||0)>0?"warn":""),
-      metricCard("Delivery blockers",row.blocked_notification_deliveries||0,Number(row.blocked_notification_deliveries||0)>0?"alert":"")
+      metricCard("Active Members",row.active_memberships||0),
+      metricCard("Paid Enrollments",row.paid_enrollments||0),
+      metricCard("Stalled Journeys",row.stalled_journeys||0,Number(row.stalled_journeys||0)>0?"warn":""),
+      metricCard("Check-Ins · 7d",row.checkins_7d||0),
+      metricCard("Open Assignments",row.open_client_assignments||0),
+      metricCard("Course Progress",Math.round(Number(row.average_course_progress||0))+"%"),
+      metricCard("Active Challenges",row.active_challenge_enrollments||0),
+      metricCard("Health Sources",row.connected_health_sources||0),
+      metricCard("Companion Reviews",row.companion_reviews_open||0,Number(row.companion_reviews_open||0)>0?"warn":""),
+      metricCard("Delivery Blockers",row.blocked_notification_deliveries||0,Number(row.blocked_notification_deliveries||0)>0?"alert":"")
     );
   }
 
