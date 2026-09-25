@@ -46,3 +46,10 @@
 .people-quick-views{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0 2px}
 .people-quick-views button{min-height:31px;padding:0 9px;border:1px solid #d4dfd8;border-radius:999px;background:#fff;color:#62736a;font-size:8px;font-weight:900}
 .people-quick-views button.active{background:#154734;border-color:#154734;color:#fff}
+
+.people-result-actions{display:flex;align-items:center;gap:8px}
+.people-bulk-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:9px 10px;margin:9px 0;border:1px solid #d9e4dd;border-radius:10px;background:#f8fbf9}
+.people-bulk-bar>span{font-size:9px;font-weight:900;color:#154734}
+.people-bulk-bar select{height:34px;border:1px solid #d0dcd4;border-radius:8px;background:#fff;padding:0 8px;font-size:9px;color:#43584d}
+.people-select-col{width:34px}.people-select-col input,.people-row-select{width:15px;height:15px}
+@media(max-width:720px){.people-result-actions{width:100%;justify-content:space-between}.people-bulk-bar{align-items:stretch}.people-bulk-bar select{flex:1}}
