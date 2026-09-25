@@ -397,6 +397,22 @@
             </section>
 
 
+
+            <section id="client-billing-section" class="contact-section client-billing-section hidden">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">MEMBERSHIP BILLING</p>
+                  <h3>Subscription &amp; commitment</h3>
+                </div>
+                <span id="client-billing-chip" class="status-badge">Not Set</span>
+              </div>
+              <div id="client-billing-summary" class="client-billing-summary"></div>
+              <div class="client-billing-actions">
+                <button id="client-billing-manage" class="primary-button compact-action" type="button">Manage Billing</button>
+              </div>
+              <p id="client-billing-status" class="form-status" aria-live="polite"></p>
+            </section>
+
             <section id="client-documents-section" class="contact-section client-documents-section hidden">
               <div class="contact-section-heading">
                 <div>
@@ -2058,6 +2074,50 @@
         </section>
       </div>
 
+
+      <div id="client-billing-modal" class="people-modal hidden" aria-hidden="true">
+        <div class="people-modal-backdrop" data-client-billing-close></div>
+        <section class="people-dialog" role="dialog" aria-modal="true" aria-labelledby="client-billing-modal-title">
+          <button class="people-close" type="button" data-client-billing-close aria-label="Close billing manager">×</button>
+          <p class="eyebrow">MEMBERSHIP BILLING</p>
+          <h2 id="client-billing-modal-title">Manage client subscription</h2>
+          <form id="client-billing-form" class="people-form">
+            <div class="people-grid">
+              <label class="people-wide"><span>Billing plan</span><select id="client-billing-plan"></select></label>
+              <label><span>Provider</span>
+                <select id="client-billing-provider">
+                  <option value="">Not connected yet</option>
+                  <option value="authorize_net">Authorize.Net</option>
+                  <option value="stripe">Stripe</option>
+                  <option value="paypal">PayPal</option>
+                  <option value="manual">Manual / External</option>
+                </select>
+              </label>
+              <label><span>Status</span>
+                <select id="client-billing-subscription-status">
+                  <option value="pending">Pending</option>
+                  <option value="trialing">Trialing</option>
+                  <option value="active">Active</option>
+                  <option value="past_due">Past Due</option>
+                  <option value="paused">Paused</option>
+                  <option value="cancelled">Cancelled</option>
+                  <option value="completed">Completed</option>
+                </select>
+              </label>
+              <label><span>Provider customer ID</span><input id="client-billing-customer-id" type="text" maxlength="300"></label>
+              <label><span>Provider subscription ID</span><input id="client-billing-subscription-id" type="text" maxlength="300"></label>
+              <label><span>Starts</span><input id="client-billing-start" type="datetime-local"></label>
+              <label><span>Next charge</span><input id="client-billing-next-charge" type="datetime-local"></label>
+            </div>
+            <div class="people-form-actions">
+              <button class="secondary-button" type="button" data-client-billing-close>Cancel</button>
+              <button class="primary-button" type="submit">Save Subscription</button>
+            </div>
+            <p id="client-billing-form-status" class="form-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
       <div class="portal-content">
         <div class="portal-intro">
           <div>
@@ -2507,5 +2567,6 @@
   <script defer src="portal-team-calendar.js?v=135"></script>
   <script defer src="portal-documents.js?v=136"></script>
   <script defer src="portal-billing.js?v=137"></script>
+  <script defer src="portal-client-billing.js?v=138"></script>
 </body>
 </html>
