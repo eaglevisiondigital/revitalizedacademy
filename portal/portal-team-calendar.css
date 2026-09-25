@@ -1,0 +1,21 @@
+
+.team-calendar-panel{margin-bottom:18px}
+.team-calendar-heading{align-items:flex-start}
+.team-calendar-conflict-chip{display:inline-flex;align-items:center;min-height:34px;padding:0 10px;border:1px solid #d6e2da;border-radius:999px;background:#f4f8f5;color:#5c7063;font-size:9px;font-weight:900;text-transform:uppercase}
+.team-calendar-conflict-chip.warn{background:#fff3e8;border-color:#edd2b7;color:#95632d}
+.team-calendar-toolbar{display:flex;align-items:end;gap:8px;flex-wrap:wrap;margin:14px 0 10px}
+.team-calendar-tabs{display:flex;gap:5px;padding:3px;border:1px solid #d8e2dc;border-radius:10px;background:#f5f8f6}
+.team-calendar-toolbar label{display:grid;gap:4px}.team-calendar-toolbar label>span{font-size:8px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:#7c8982}
+.team-calendar-toolbar select{height:35px;border:1px solid #d1ddd5;border-radius:8px;background:#fff;padding:0 8px;color:#42574c;font-size:9px}
+.team-calendar-summary{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-bottom:10px}
+.team-calendar-stat{padding:10px 11px;border:1px solid #e2e9e5;border-radius:11px;background:#fbfcfb}
+.team-calendar-stat span{display:block;font-size:8px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:#7d8a83}.team-calendar-stat strong{display:block;margin-top:4px;font-size:19px;color:#30463a}
+.team-calendar-list{display:grid;gap:8px}
+.team-calendar-item{display:grid;grid-template-columns:115px minmax(170px,1.1fr) minmax(160px,1fr) 120px minmax(180px,1.3fr);gap:10px;align-items:center;padding:11px 12px;border:1px solid #e4ebe7;border-radius:11px;background:#fbfcfb}
+.team-calendar-item.conflict{border-color:#ebcdb6;background:#fffaf4}
+.team-calendar-time strong{display:block;font-size:11px;color:#30463a}.team-calendar-time span{display:block;margin-top:2px;font-size:8px;color:#7d8a83}
+.team-calendar-person strong,.team-calendar-staff strong{display:block;font-size:11px;color:#30463a}.team-calendar-person span,.team-calendar-staff span{display:block;margin-top:2px;font-size:8px;color:#7d8a83}
+.team-calendar-state{font-size:8px;font-weight:900;text-transform:uppercase;color:#607067}
+.team-calendar-actions{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.team-calendar-actions button{min-height:29px;padding:0 8px;border-radius:7px;border:1px solid #cedad2;background:#fff;color:#154734;font-size:8px;font-weight:900}.team-calendar-actions button.primary{background:#154734;border-color:#154734;color:#fff}.team-calendar-actions button.warn{color:#9a5d2b;border-color:#e2c9b3}
+@media(max-width:1000px){.team-calendar-summary{grid-template-columns:repeat(3,1fr)}.team-calendar-item{grid-template-columns:1fr 1fr}.team-calendar-actions{justify-content:flex-start}}
+@media(max-width:620px){.team-calendar-summary{grid-template-columns:1fr 1fr}.team-calendar-item{grid-template-columns:1fr}.team-calendar-toolbar{align-items:stretch}.team-calendar-toolbar label{flex:1}}
