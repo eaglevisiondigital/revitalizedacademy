@@ -88,6 +88,104 @@
     if(!rows.length){root.innerHTML='<div class="empty-state">No active programs are currently configured.</div>';return;}
     rows.forEach(r=>root.append(card(r)));
   }
+  const accessRoot=document.getElementById("program-access-list");
+  let programRows=[];
+  let entitlementRows=[];
+  let courseRows=[];
+  let courseAccessRows=[];
+
+  async function toggleProgramCourse(programCode,courseId,current){
+    const canManage=["owner","admin","coach"].includes(String(portal.currentStaffRole?.()||"").toLowerCase());
+    if(!canManage)return;
+    const existing=courseAccessRows.find(r=>r.program_code===programCode&&r.course_id===courseId);
+    if(existing){
+      const {error}=await client.from("program_course_access").update({active:!current}).eq("id",existing.id);
+      if(error){window.alert(error.message);return;}
+    }else{
+      const {error}=await client.from("program_course_access").insert({program_code:programCode,course_id:courseId,access_level:"included",active:true});
+      if(error){window.alert(error.message);return;}
+    }
+    await loadProgramAccess();
+  }
+
+  function renderProgramAccess(){
+    if(!accessRoot)return;
+    accessRoot.replaceChildren();
+    const canManage=["owner","admin","coach"].includes(String(portal.currentStaffRole?.()||"").toLowerCase());
+    programRows.filter(r=>r.active).forEach(program=>{
+      const entitlements=entitlementRows.filter(r=>r.program_code===program.program_code&&r.active);
+      const included=courseAccessRows.filter(r=>r.program_code===program.program_code&&r.active);
+      const card=document.createElement("article");card.className="program-access-card";
+      const head=document.createElement("div");head.className="program-access-card-head";
+      const copy=document.createElement("div");
+      const name=document.createElement("strong");name.textContent=program.name;
+      const sub=document.createElement("span");sub.textContent=(program.metadata?.support_model||portal.titleCase(program.program_type||"program"))+" · "+entitlements.length+" benefits";
+      copy.append(name,sub);
+      const count=document.createElement("span");count.className="program-access-count";count.textContent=included.length+" course"+(included.length===1?"":"s")+" included";
+      head.append(copy,count);
+
+      const sections=document.createElement("div");sections.className="program-access-sections";
+      const benefitBlock=document.createElement("div");benefitBlock.className="program-access-block";
+      const bh=document.createElement("h3");bh.textContent="Included benefits";
+      const benefitList=document.createElement("div");benefitList.className="program-access-chip-list";
+      if(entitlements.length){
+        entitlements.slice(0,12).forEach(row=>{
+          const chip=document.createElement("span");chip.className="program-access-chip";
+          chip.textContent=row.label+(row.limit_value?" · "+row.limit_value:"");
+          benefitList.append(chip);
+        });
+      }else{
+        const empty=document.createElement("span");empty.className="program-access-empty";empty.textContent="No entitlements configured.";benefitList.append(empty);
+      }
+      benefitBlock.append(bh,benefitList);
+
+      const courseBlock=document.createElement("div");courseBlock.className="program-access-block";
+      const ch=document.createElement("h3");ch.textContent="Course access";
+      const courses=document.createElement("div");courses.className="program-access-course-list";
+      const published=courseRows.filter(r=>r.status==="published");
+      if(!published.length){
+        const empty=document.createElement("span");empty.className="program-access-empty";empty.textContent="Publish a course to assign it to this program.";courses.append(empty);
+      }else{
+        published.forEach(course=>{
+          const row=document.createElement("div");row.className="program-access-course-row";
+          const cc=document.createElement("div");cc.className="program-access-course-copy";
+          const title=document.createElement("strong");title.textContent=course.title;
+          const meta=document.createElement("span");meta.textContent=course.version?"Version "+course.version:"Published course";
+          cc.append(title,meta);
+          const access=courseAccessRows.find(r=>r.program_code===program.program_code&&r.course_id===course.id);
+          const active=Boolean(access?.active);
+          const btn=document.createElement("button");btn.type="button";btn.classList.toggle("active",active);btn.textContent=active?"Included":"Add";
+          btn.disabled=!canManage;
+          btn.addEventListener("click",()=>toggleProgramCourse(program.program_code,course.id,active));
+          row.append(cc,btn);courses.append(row);
+        });
+      }
+      courseBlock.append(ch,courses);
+      sections.append(benefitBlock,courseBlock);
+      card.append(head,sections);
+      accessRoot.append(card);
+    });
+  }
+
+  async function loadProgramAccess(){
+    if(!accessRoot)return;
+    const [programs,entitlements,courses,access]=await Promise.all([
+      client.from("program_catalog").select("program_code,name,program_type,active,metadata").order("name"),
+      client.from("program_entitlement_templates").select("program_code,entitlement_key,label,limit_value,reset_cadence,active").eq("active",true).order("label"),
+      client.from("learning_courses").select("id,title,version,status").order("title"),
+      client.from("program_course_access").select("id,program_code,course_id,access_level,active")
+    ]);
+    if(programs.error||entitlements.error||courses.error||access.error){
+      accessRoot.innerHTML='<div class="empty-state">Program access rules could not be loaded.</div>';
+      return;
+    }
+    programRows=programs.data||[];
+    entitlementRows=entitlements.data||[];
+    courseRows=courses.data||[];
+    courseAccessRows=access.data||[];
+    renderProgramAccess();
+  }
+
   const contentSummary=document.getElementById("program-content-summary");
   const contentList=document.getElementById("program-content-list");
   const contentTabs=[...document.querySelectorAll("[data-program-content]")];
@@ -334,5 +432,6 @@
   document.addEventListener("ra:dashboard-loaded",syncContentManagementAccess);
 
   load();
+  loadProgramAccess();
   loadContent();
 })();
