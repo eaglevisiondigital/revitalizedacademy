@@ -316,8 +316,18 @@
       const name=document.createElement("strong");name.textContent=program.name;
       const sub=document.createElement("span");sub.textContent=portal.titleCase(program.metadata?.support_model||program.program_type||"program");
       copy.append(name,sub);
-      const count=document.createElement("span");count.className="program-access-count";count.textContent=included.length+" Course"+(included.length===1?"":"s")+" · "+includedResources.length+" Resource"+(includedResources.length===1?"":"s")+" · "+includedChallenges.length+" Challenge"+(includedChallenges.length===1?"":"s");
-      head.append(copy,count);
+      const counts=document.createElement("div");counts.className="program-access-counts";
+      [
+        [included.length,"Course"],
+        [includedResources.length,"Resource"],
+        [includedChallenges.length,"Challenge"]
+      ].forEach(([value,label])=>{
+        const pill=document.createElement("span");
+        pill.className="program-access-count"+(Number(value)>0?" has-access":"");
+        pill.textContent=String(value)+" "+label+(Number(value)===1?"":"s");
+        counts.append(pill);
+      });
+      head.append(copy,counts);
 
       const sections=document.createElement("div");sections.className="program-access-sections";
       const benefitBlock=document.createElement("div");benefitBlock.className="program-access-block";

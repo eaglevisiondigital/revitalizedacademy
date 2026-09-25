@@ -36,10 +36,10 @@
     const stalled = rows.filter((row) => row.stalled).length;
 
     summary.append(
-      chip("active", rows.length),
-      chip("hot", hot, hot ? "hot" : ""),
-      chip("warm", warm),
-      chip("stalled", stalled, stalled ? "stalled" : "")
+      chip("Active", rows.length, rows.length ? "active" : ""),
+      chip("Hot", hot, hot ? "hot" : ""),
+      chip("Warm", warm, warm ? "warm" : ""),
+      chip("Stalled", stalled, stalled ? "stalled" : "")
     );
 
     if (!rows.length) {
@@ -92,7 +92,7 @@
       const progressValue = document.createElement("strong");
       progressValue.textContent = Number(row.progress_percent || 0) + "%";
       const progressLabel = document.createElement("span");
-      progressLabel.textContent = "complete";
+      progressLabel.textContent = "Complete";
       progress.append(progressValue, progressLabel);
 
       const due = document.createElement("div");
