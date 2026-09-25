@@ -20,7 +20,7 @@
   }
   function renderMetrics(row){
     el("community-admin-metrics").replaceChildren(
-      stat("Active spaces",row.active_spaces||0),
+      stat("Active Spaces",row.active_spaces||0),
       stat("Posts · 7d",row.posts_7d||0),
       stat("Comments · 7d",row.comments_7d||0),
       stat("Reactions · 7d",row.reactions_7d||0),
