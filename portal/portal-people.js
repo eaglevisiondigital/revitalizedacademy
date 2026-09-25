@@ -14,12 +14,48 @@
     portal.showStatus(el("people-form-status"),"");
   }
 
-  function openModal(){
+  async function openModal(){
     populateStaff();
+    await populateReferrers();
+    syncReferralField();
     el("people-modal").classList.remove("hidden");
     el("people-modal").setAttribute("aria-hidden","false");
     portal.showStatus(el("people-form-status"),"");
     window.setTimeout(()=>el("people-first-name").focus(),30);
+  }
+
+
+  async function populateReferrers(){
+    const select=el("people-referrer");
+    select.replaceChildren();
+    const blank=document.createElement("option");
+    blank.value="";
+    blank.textContent="Unknown / not in ReVitalized";
+    select.append(blank);
+
+    const {data,error}=await client.from("contacts")
+      .select("id,first_name,last_name,email")
+      .not("email","is",null)
+      .order("first_name")
+      .limit(500);
+
+    if(error)return;
+
+    (data||[]).forEach((row)=>{
+      const option=document.createElement("option");
+      option.value=row.id;
+      option.textContent=[
+        [row.first_name,row.last_name].filter(Boolean).join(" ")||row.email,
+        row.email
+      ].filter(Boolean).join(" · ");
+      select.append(option);
+    });
+  }
+
+  function syncReferralField(){
+    const referral=el("people-source").value==="manual_referral";
+    el("people-referrer-field").classList.toggle("hidden",!referral);
+    if(!referral)el("people-referrer").value="";
   }
 
   function populateStaff(){
@@ -162,12 +198,28 @@
         if(error)throw error;
       }
 
+      const referrerContactId=el("people-referrer").value||null;
+      if(source==="manual_referral"&&referrerContactId){
+        const {data:profile}=await client.from("referral_profiles")
+          .select("referral_code").eq("contact_id",referrerContactId).maybeSingle();
+
+        const {error:referralError}=await client.from("referrals").insert({
+          referrer_contact_id:referrerContactId,
+          referred_contact_id:contactId,
+          referral_code:profile?.referral_code||null,
+          source_channel:"staff_manual",
+          status:"referred",
+          notes:note||null
+        });
+        if(referralError)throw referralError;
+      }
+
       await portal.logActivity(
         contactId,
         "manual_contact_created",
         "Contact added manually",
         "Added from the ReVitalized People workspace.",
-        {source,tags}
+        {source,tags,referrer_contact_id:referrerContactId}
       );
 
       const journeyKey=el("people-journey").value;
@@ -214,6 +266,7 @@
   }
 
   el("people-add-button").addEventListener("click",openModal);
+  el("people-source").addEventListener("change",syncReferralField);
   el("people-add-form").addEventListener("submit",createPerson);
   el("people-search-input").addEventListener("input",filterPeople);
   document.querySelectorAll("[data-people-close]").forEach((node)=>node.addEventListener("click",closeModal));
