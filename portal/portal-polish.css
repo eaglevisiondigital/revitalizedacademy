@@ -669,3 +669,44 @@ body[data-ra-workspace="dashboard"] .ra-quick-action:hover{
     max-width:none;
   }
 }
+
+
+/* Build 168: Program Access count pill spacing */
+.program-access-counts{
+  display:flex!important;
+  flex-wrap:wrap!important;
+  align-items:center!important;
+  justify-content:flex-end!important;
+  gap:8px!important;
+  margin:0!important;
+}
+.program-access-count{
+  box-sizing:border-box!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-width:0!important;
+  min-height:38px!important;
+  height:38px!important;
+  padding:0 14px!important;
+  margin:0!important;
+  border-radius:999px!important;
+  line-height:1!important;
+  vertical-align:middle!important;
+  white-space:nowrap!important;
+  font-size:11px!important;
+  font-weight:850!important;
+  letter-spacing:.01em!important;
+}
+.program-access-card-head{
+  min-height:48px!important;
+}
+.program-access-card-head .program-access-counts{
+  align-self:center!important;
+}
+@media(max-width:760px){
+  .program-access-counts{
+    justify-content:flex-start!important;
+    width:100%!important;
+  }
+}
