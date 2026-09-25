@@ -75,7 +75,7 @@
     const coaching=rows.filter(r=>r.program_type==="coaching").length;
     const cohorts=rows.filter(r=>r.program_type==="cohort").length;
     summary.replaceChildren();
-    [["Active programs",rows.length],["Memberships",memberships],["Private coaching",coaching],["Cohorts",cohorts]].forEach(([label,value])=>{
+    [["Active Programs",rows.length],["Memberships",memberships],["Private Coaching",coaching],["Cohorts",cohorts]].forEach(([label,value])=>{
       const stat=document.createElement("div");stat.className="program-catalog-stat";
       const l=document.createElement("span");l.textContent=label;
       const v=document.createElement("strong");v.textContent=String(value);
