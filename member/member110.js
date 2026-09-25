@@ -57,10 +57,13 @@
     });
   }
 
-  function renderHousehold(rows, householdType) {
+  function renderHousehold(rows, householdType, familyEnabled = false) {
+    latestHouseholdRows = rows || [];
+    familyHubEnabled = Boolean(familyEnabled);
     const list = el("rm-household");
     list.replaceChildren();
     el("rm-household-type").textContent = title(householdType || "individual");
+    el("rm-family-add").classList.toggle("hidden",!familyHubEnabled);
 
     if (!rows.length) {
       list.innerHTML = '<div class="rm112-empty">Your household profile is being prepared.</div>';
@@ -70,13 +73,288 @@
     rows.forEach((row) => {
       const person = document.createElement("div");
       person.className = "rm112-person";
+      const copy = document.createElement("div");
       const name = document.createElement("strong");
-      name.textContent = [row.first_name,row.last_name].filter(Boolean).join(" ") || "Household member";
+      name.textContent = [row.first_name,row.last_name].filter(Boolean).join(" ") || "Household Member";
       const relation = document.createElement("span");
       relation.textContent = title(row.relationship_type) + (row.sex ? " · " + title(row.sex) : "");
-      person.append(name, relation);
+      copy.append(name, relation);
+      person.append(copy);
+
+      if(familyHubEnabled && !row.is_primary){
+        const edit=document.createElement("button");
+        edit.type="button";
+        edit.className="rm170-person-action";
+        edit.textContent="Request Change";
+        edit.addEventListener("click",()=>openFamilyRequest(row));
+        person.append(edit);
+      }
+
       list.append(person);
     });
+  }
+
+  function actionEmpty(target,message){
+    target.innerHTML='<div class="rm170-list-empty">'+message+'</div>';
+  }
+
+  function renderDailyActions(row){
+    const summary=el("rm-today-summary");
+    const habits=Array.isArray(row?.habits)?row.habits:[];
+    const meals=Array.isArray(row?.meals)?row.meals:[];
+    const workouts=Array.isArray(row?.workouts)?row.workouts:[];
+    const challenges=Array.isArray(row?.challenges)?row.challenges:[];
+    const completedHabits=Number(row?.habits_completed_today||0);
+    const habitCount=Number(row?.habit_count||0);
+
+    summary.replaceChildren();
+    [
+      ["Habits",habitCount?completedHabits+" / "+habitCount:"0"],
+      ["Meals",Number(row?.meal_count||0)],
+      ["Workouts",Number(row?.workout_count||0)],
+      ["Challenges",challenges.length]
+    ].forEach(([label,value])=>{
+      const card=document.createElement("div");card.className="rm170-summary-stat";
+      const s=document.createElement("span");s.textContent=label;
+      const b=document.createElement("strong");b.textContent=String(value);
+      card.append(s,b);summary.append(card);
+    });
+
+    const possible=Math.max(habitCount,0)+meals.length+workouts.length;
+    const complete=completedHabits+
+      meals.filter(m=>m.status==="completed").length+
+      workouts.filter(w=>w.status==="completed").length;
+    el("rm-today-progress").textContent=possible?Math.round((complete/possible)*100)+"% Complete":"Ready";
+    el("rm-today-habit-count").textContent=habitCount+" Today";
+    el("rm-today-meal-count").textContent=meals.length+" Today";
+    el("rm-today-workout-count").textContent=workouts.length+" Today";
+
+    const habitList=el("rm-today-habits");habitList.replaceChildren();
+    if(!habits.length)actionEmpty(habitList,"No habits are due today.");
+    habits.forEach(h=>{
+      const item=document.createElement("div");item.className="rm170-action"+(h.completed_today?" done":"");
+      const copy=document.createElement("div");copy.className="rm170-action-copy";
+      const name=document.createElement("strong");name.textContent=h.title||"Habit";
+      const meta=document.createElement("span");
+      meta.textContent=h.completed_today?"Completed today":[h.target?String(h.target):null,h.unit||null].filter(Boolean).join(" ")||title(h.frequency||"daily");
+      copy.append(name,meta);
+      const btn=document.createElement("button");btn.type="button";btn.className=h.completed_today?"":"primary";btn.disabled=Boolean(h.completed_today);btn.textContent=h.completed_today?"Done":"Check In";
+      btn.addEventListener("click",()=>completeHabit(h));
+      item.append(copy,btn);habitList.append(item);
+    });
+
+    const mealList=el("rm-today-meals");mealList.replaceChildren();
+    if(!meals.length)actionEmpty(mealList,"No meals are scheduled today.");
+    meals.forEach(m=>{
+      const done=m.status==="completed";
+      const item=document.createElement("div");item.className="rm170-action"+(done?" done":"");
+      const copy=document.createElement("div");copy.className="rm170-action-copy";
+      const name=document.createElement("strong");name.textContent=m.title||title(m.meal_slot||"Meal");
+      const meta=document.createElement("span");meta.textContent=[title(m.meal_slot||""),m.prep_minutes?"Prep "+m.prep_minutes+" Min":null].filter(Boolean).join(" · ");
+      copy.append(name,meta);
+      const btn=document.createElement("button");btn.type="button";btn.className=done?"":"primary";btn.disabled=done;btn.textContent=done?"Done":"Complete";
+      btn.addEventListener("click",()=>completeMeal(m));
+      item.append(copy,btn);mealList.append(item);
+    });
+
+    const workoutList=el("rm-today-workouts");workoutList.replaceChildren();
+    if(!workouts.length)actionEmpty(workoutList,"No workout is scheduled today.");
+    workouts.forEach(w=>{
+      const done=w.status==="completed";
+      const item=document.createElement("div");item.className="rm170-action"+(done?" done":"");
+      const copy=document.createElement("div");copy.className="rm170-action-copy";
+      const name=document.createElement("strong");name.textContent=w.title||"Workout";
+      const meta=document.createElement("span");meta.textContent=[w.duration_minutes?w.duration_minutes+" Min":null,w.category?title(w.category):null,w.difficulty?title(w.difficulty):null].filter(Boolean).join(" · ");
+      copy.append(name,meta);
+      const btn=document.createElement("button");btn.type="button";btn.className=done?"":"primary";btn.disabled=done;btn.textContent=done?"Done":"Complete";
+      btn.addEventListener("click",()=>completeWorkout(w));
+      item.append(copy,btn);workoutList.append(item);
+    });
+
+    const focus=el("rm-today-focus");focus.replaceChildren();
+    if(challenges.length){
+      const ch=challenges[0];
+      const card=document.createElement("div");card.className="rm170-focus";
+      const s=document.createElement("span");s.textContent="Current Challenge";
+      const b=document.createElement("strong");b.textContent=(ch.title||"ReVitalized Challenge")+" · "+Number(ch.completion_percent||0)+"%";
+      card.append(s,b);focus.append(card);
+    }
+    if(row?.continue_course){
+      const course=row.continue_course;
+      const card=document.createElement("div");card.className="rm170-focus";
+      const s=document.createElement("span");s.textContent="Continue Learning";
+      const b=document.createElement("strong");b.textContent=course.title||"Continue Your Course";
+      card.append(s,b);focus.append(card);
+    }
+  }
+
+  async function completeHabit(habit){
+    showStatus(el("rm-today-status"),"Saving habit check-in...");
+    const {error}=await client.rpc("check_in_my_habit",{
+      p_habit_id:habit.habit_id,
+      p_value:Number(habit.target||1),
+      p_note:null,
+      p_checkin_date:new Date().toISOString().slice(0,10)
+    });
+    if(error){showStatus(el("rm-today-status"),error.message,"error");return;}
+    showStatus(el("rm-today-status"),"Habit completed.","success");
+    await loadDashboard();
+  }
+
+  async function completeMeal(meal){
+    showStatus(el("rm-today-status"),"Updating meal...");
+    const {error}=await client.rpc("update_my_meal_item",{
+      p_item_id:meal.meal_item_id,
+      p_status:"completed",
+      p_adherence_percent:100
+    });
+    if(error){showStatus(el("rm-today-status"),error.message,"error");return;}
+    showStatus(el("rm-today-status"),"Meal completed.","success");
+    await loadDashboard();
+  }
+
+  async function completeWorkout(workout){
+    showStatus(el("rm-today-status"),"Updating workout...");
+    const {error}=await client.rpc("update_my_workout_status",{
+      p_assignment_id:workout.workout_assignment_id,
+      p_status:"completed",
+      p_note:null
+    });
+    if(error){showStatus(el("rm-today-status"),error.message,"error");return;}
+    showStatus(el("rm-today-status"),"Workout completed.","success");
+    await loadDashboard();
+  }
+
+  function renderWeeklySummary(row){
+    const target=el("rm-weekly-summary");target.replaceChildren();
+    if(!row){target.innerHTML='<div class="rm112-empty">Your weekly momentum will appear as you begin logging activity.</div>';return;}
+    [
+      ["Habit Check-Ins",row.habit_checkins||0],
+      ["Active Habit Days",row.active_habit_days||0],
+      ["Workouts Completed",row.workouts_completed||0],
+      ["Meals Completed",row.meals_completed||0],
+      ["Meal Adherence",row.meal_adherence===null||row.meal_adherence===undefined?"—":Math.round(Number(row.meal_adherence))+"%"],
+      ["Progress Entries",row.progress_entries||0],
+      ["Goals Completed",row.goals_completed||0],
+      ["Challenge Points",row.challenge_points_earned||0]
+    ].forEach(([label,value])=>{
+      const item=document.createElement("div");item.className="rm170-week-stat";
+      const s=document.createElement("span");s.textContent=label;
+      const b=document.createElement("strong");b.textContent=String(value);
+      item.append(s,b);target.append(item);
+    });
+  }
+
+  function renderActivityTimeline(rows){
+    const target=el("rm-activity-timeline");target.replaceChildren();
+    if(!rows.length){target.innerHTML='<div class="rm112-empty">Your recent progress and achievements will appear here.</div>';return;}
+    rows.slice(0,12).forEach(row=>{
+      const item=document.createElement("div");item.className="rm170-activity";
+      const icon=document.createElement("div");icon.className="rm170-activity-icon";
+      const type=String(row.activity_type||"activity");
+      icon.textContent=type.includes("goal")?"✓":type.includes("course")?"▶":type.includes("challenge")?"★":type.includes("progress")?"↗":"•";
+      const copy=document.createElement("div");
+      const h=document.createElement("strong");h.textContent=row.title||title(type);
+      const meta=document.createElement("span");meta.textContent=[row.detail,formatDate(row.occurred_at,true)].filter(Boolean).join(" · ");
+      copy.append(h,meta);item.append(icon,copy);target.append(item);
+    });
+  }
+
+  function renderFamilyRequests(rows){
+    const target=el("rm-family-requests");target.replaceChildren();
+    if(!familyHubEnabled){
+      target.innerHTML='<div class="rm112-empty">Family Hub profile management is not included with this membership.</div>';
+      return;
+    }
+    if(!rows.length){
+      target.innerHTML='<div class="rm170-list-empty">No Family Hub changes are waiting for review.</div>';
+      return;
+    }
+    rows.slice(0,8).forEach(row=>{
+      const item=document.createElement("div");item.className="rm170-family-request";
+      const copy=document.createElement("div");
+      const h=document.createElement("strong");
+      h.textContent=title(row.request_type)+" · "+([row.first_name,row.last_name].filter(Boolean).join(" ")||"Household Member");
+      const meta=document.createElement("span");meta.textContent=title(row.status)+" · "+formatDate(row.created_at,true);
+      copy.append(h,meta);item.append(copy);
+      if(["submitted","in_review"].includes(row.status)){
+        const cancel=document.createElement("button");cancel.type="button";cancel.textContent="Cancel Request";
+        cancel.addEventListener("click",()=>cancelFamilyRequest(row.request_id));
+        item.append(cancel);
+      }
+      target.append(item);
+    });
+  }
+
+  function openFamilyRequest(row=null){
+    if(!familyHubEnabled)return;
+    currentFamilyTarget=row||null;
+    el("rm-family-form").reset();
+    el("rm-family-request-type").value=row?"update_member":"add_member";
+    el("rm-family-target-id").value=row?.household_member_id||"";
+    el("rm-family-title").textContent=row?"Request Family Member Change":"Add Family Member";
+    el("rm-family-first").value=row?.first_name||"";
+    el("rm-family-last").value=row?.last_name||"";
+    el("rm-family-relationship").value=row?.relationship_type||"child";
+    el("rm-family-sex").value=row?.sex||"male";
+    el("rm-family-dob").value=row?.date_of_birth||"";
+    el("rm-family-email").value=row?.email||"";
+    el("rm-family-remove").classList.toggle("hidden",!row);
+    showStatus(el("rm-family-status"),"");
+    el("rm-family-modal").classList.remove("hidden");
+    el("rm-family-modal").setAttribute("aria-hidden","false");
+  }
+
+  function closeFamilyRequest(){
+    currentFamilyTarget=null;
+    el("rm-family-modal").classList.add("hidden");
+    el("rm-family-modal").setAttribute("aria-hidden","true");
+    showStatus(el("rm-family-status"),"");
+  }
+
+  async function submitFamilyRequest(event){
+    event.preventDefault();
+    const status=el("rm-family-status");
+    showStatus(status,"Submitting request...");
+    const {error}=await client.rpc("request_my_family_change",{
+      p_request_type:el("rm-family-request-type").value,
+      p_target_household_member_id:el("rm-family-target-id").value||null,
+      p_first_name:el("rm-family-first").value.trim()||null,
+      p_last_name:el("rm-family-last").value.trim()||null,
+      p_relationship_type:el("rm-family-relationship").value||null,
+      p_sex:el("rm-family-sex").value||null,
+      p_date_of_birth:el("rm-family-dob").value||null,
+      p_email:el("rm-family-email").value.trim()||null,
+      p_notes:el("rm-family-notes").value.trim()||null
+    });
+    if(error){showStatus(status,error.message,"error");return;}
+    showStatus(status,"Family Hub request submitted.","success");
+    await loadDashboard();
+    window.setTimeout(closeFamilyRequest,500);
+  }
+
+  async function requestFamilyRemoval(){
+    if(!currentFamilyTarget)return;
+    if(!window.confirm("Request removal of this family member from your ReVitalized household?"))return;
+    const status=el("rm-family-status");
+    showStatus(status,"Submitting removal request...");
+    const {error}=await client.rpc("request_my_family_change",{
+      p_request_type:"remove_member",
+      p_target_household_member_id:currentFamilyTarget.household_member_id,
+      p_first_name:null,p_last_name:null,p_relationship_type:null,p_sex:null,p_date_of_birth:null,p_email:null,
+      p_notes:el("rm-family-notes").value.trim()||null
+    });
+    if(error){showStatus(status,error.message,"error");return;}
+    showStatus(status,"Removal request submitted.","success");
+    await loadDashboard();
+    window.setTimeout(closeFamilyRequest,500);
+  }
+
+  async function cancelFamilyRequest(requestId){
+    if(!window.confirm("Cancel this pending Family Hub request?"))return;
+    const {error}=await client.rpc("cancel_my_family_change_request",{p_request_id:requestId});
+    if(error){window.alert(error.message);return;}
+    await loadDashboard();
   }
 
   function renderAppointment(row) {
@@ -111,6 +389,9 @@
   }
 
   let currentMember = null;
+  let latestHouseholdRows = [];
+  let familyHubEnabled = false;
+  let currentFamilyTarget = null;
 
   function renderCoachingEntitlements(rows){
     const target=el("rm-coaching-entitlements");
@@ -1791,7 +2072,11 @@
       agreementsResult,
       coachingEntitlementsResult,
       companionTypesResult,
-      companionRequestsResult
+      companionRequestsResult,
+      dailyActionsResult,
+      weeklySummaryResult,
+      activityTimelineResult,
+      familyRequestsResult
     ] = await Promise.all([
       client.from("my_member_dashboard").select("*").maybeSingle(),
       client.from("my_member_entitlements").select("*").order("label"),
@@ -1826,10 +2111,14 @@
       client.from("my_agreements").select("*"),
       client.from("my_coaching_entitlements").select("*"),
       client.from("my_companion_question_types").select("*").order("sort_order"),
-      client.from("my_companion_requests").select("*").limit(20)
+      client.from("my_companion_requests").select("*").limit(20),
+      client.from("my_daily_action_center").select("*").maybeSingle(),
+      client.from("my_weekly_summary").select("*").maybeSingle(),
+      client.from("my_activity_timeline").select("*").order("occurred_at",{ascending:false}).limit(25),
+      client.from("my_family_requests").select("*").order("created_at",{ascending:false}).limit(10)
     ]);
 
-    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult,notificationPrefsResult,healthConnectionsResult,challengesResult,communitySpacesResult,communityFeedResult,refuelResult,referralSummaryResult,documentsResult,billingResult,agreementsResult,coachingEntitlementsResult,companionTypesResult,companionRequestsResult].find((r) => r.error);
+    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult,notificationPrefsResult,healthConnectionsResult,challengesResult,communitySpacesResult,communityFeedResult,refuelResult,referralSummaryResult,documentsResult,billingResult,agreementsResult,coachingEntitlementsResult,companionTypesResult,companionRequestsResult,dailyActionsResult,weeklySummaryResult,activityTimelineResult,familyRequestsResult].find((r) => r.error);
     if (failed?.error) throw failed.error;
 
     const member = dashboardResult.data;
@@ -1866,8 +2155,14 @@
     }
 
     renderAppointment(appointmentResult.data);
-    renderEntitlements(entitlementsResult.data || []);
-    renderHousehold(householdResult.data || [], member.household_type);
+    const activeEntitlements=entitlementsResult.data||[];
+    const hasFamilyHub=activeEntitlements.some((row)=>row.entitlement_key==="family_profiles"&&row.status==="active");
+    renderEntitlements(activeEntitlements);
+    renderHousehold(householdResult.data || [], member.household_type,hasFamilyHub);
+    renderFamilyRequests(familyRequestsResult.data||[]);
+    renderDailyActions(dailyActionsResult.data||null);
+    renderWeeklySummary(weeklySummaryResult.data||null);
+    renderActivityTimeline(activityTimelineResult.data||[]);
     renderCoach(coachResult.data);
     renderGoals(goalsResult.data || []);
     renderHabits(habitsResult.data || []);
@@ -2004,6 +2299,11 @@
   document.querySelectorAll("[data-document-upload-close]").forEach((n)=>n.addEventListener("click",closeDocumentUpload));
 
   el("rm-referral-copy").addEventListener("click",copyReferralLink);
+
+  el("rm-family-add").addEventListener("click",()=>openFamilyRequest());
+  el("rm-family-form").addEventListener("submit",submitFamilyRequest);
+  el("rm-family-remove").addEventListener("click",requestFamilyRemoval);
+  document.querySelectorAll("[data-family-close]").forEach((node)=>node.addEventListener("click",closeFamilyRequest));
 
   el("rm-signout").addEventListener("click", signOut);
   el("rm-denied-signout").addEventListener("click", signOut);

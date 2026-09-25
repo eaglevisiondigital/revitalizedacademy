@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex,nofollow,noarchive">
   <title>Member Dashboard | ReVitalized Academy</title>
   <link rel="icon" href="../assets/images/revitalized-logo-dark-approved-v69.png">
-  <link rel="stylesheet" href="member110.css?v=169">
+  <link rel="stylesheet" href="member110.css?v=170">
 </head>
 <body>
   <main class="rm112-page">
@@ -63,6 +63,55 @@
           <small id="rm-membership-status">Active membership</small>
         </div>
       </section>
+
+      <section class="rm112-card rm170-today-card">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">TODAY</p>
+            <h2>Your Daily Action Center</h2>
+          </div>
+          <span id="rm-today-progress" class="rm112-chip">Ready</span>
+        </div>
+        <p class="rm170-section-intro">Your habits, meals, workouts and current program priorities in one place.</p>
+        <div id="rm-today-summary" class="rm170-today-summary"></div>
+        <div class="rm170-today-grid">
+          <section>
+            <div class="rm170-subhead"><strong>Habits</strong><span id="rm-today-habit-count"></span></div>
+            <div id="rm-today-habits" class="rm170-action-list"></div>
+          </section>
+          <section>
+            <div class="rm170-subhead"><strong>Meals</strong><span id="rm-today-meal-count"></span></div>
+            <div id="rm-today-meals" class="rm170-action-list"></div>
+          </section>
+          <section>
+            <div class="rm170-subhead"><strong>Workouts</strong><span id="rm-today-workout-count"></span></div>
+            <div id="rm-today-workouts" class="rm170-action-list"></div>
+          </section>
+        </div>
+        <div id="rm-today-focus" class="rm170-focus-row"></div>
+        <p id="rm-today-status" class="rm112-status" aria-live="polite"></p>
+      </section>
+
+      <div class="rm112-grid rm170-week-grid">
+        <section class="rm112-card">
+          <div class="rm112-card-head">
+            <div>
+              <p class="rm112-kicker">YOUR WEEK</p>
+              <h2>Weekly Momentum</h2>
+            </div>
+          </div>
+          <div id="rm-weekly-summary" class="rm170-weekly-summary"></div>
+        </section>
+        <section class="rm112-card">
+          <div class="rm112-card-head">
+            <div>
+              <p class="rm112-kicker">RECENT ACTIVITY</p>
+              <h2>Your Progress Timeline</h2>
+            </div>
+          </div>
+          <div id="rm-activity-timeline" class="rm170-activity-list"></div>
+        </section>
+      </div>
 
       <div class="rm112-grid">
         <section class="rm112-card rm112-journey-card">
@@ -357,13 +406,63 @@
       <section class="rm112-card">
         <div class="rm112-card-head">
           <div>
-            <p class="rm112-kicker">HOUSEHOLD</p>
-            <h2>Your ReVitalized household</h2>
+            <p class="rm112-kicker">FAMILY HUB</p>
+            <h2>Your ReVitalized Household</h2>
           </div>
-          <span id="rm-household-type" class="rm112-chip"></span>
+          <div class="rm170-household-head-actions">
+            <span id="rm-household-type" class="rm112-chip"></span>
+            <button id="rm-family-add" class="rm170-secondary hidden" type="button">Add Family Member</button>
+          </div>
         </div>
         <div id="rm-household" class="rm112-household"></div>
+        <div class="rm170-family-requests-head">
+          <strong>Family Requests</strong>
+          <span>Changes are reviewed by the ReVitalized team before they are applied.</span>
+        </div>
+        <div id="rm-family-requests" class="rm170-family-requests"></div>
       </section>
+
+      <div id="rm-family-modal" class="rm119-modal hidden" aria-hidden="true">
+        <div class="rm119-modal-backdrop" data-family-close></div>
+        <section class="rm119-dialog rm170-family-dialog" role="dialog" aria-modal="true" aria-labelledby="rm-family-title">
+          <button class="rm119-close" type="button" data-family-close aria-label="Close Family Hub request">×</button>
+          <p class="rm112-kicker">FAMILY HUB</p>
+          <h2 id="rm-family-title">Add Family Member</h2>
+          <p class="rm170-family-intro">Submit the details below. Your ReVitalized team will review the request before changing your household profile.</p>
+          <form id="rm-family-form" class="rm170-family-form">
+            <input id="rm-family-request-type" type="hidden" value="add_member">
+            <input id="rm-family-target-id" type="hidden">
+            <div class="rm170-family-fields">
+              <label><span>First Name</span><input id="rm-family-first" type="text" maxlength="120" required></label>
+              <label><span>Last Name</span><input id="rm-family-last" type="text" maxlength="120"></label>
+              <label><span>Relationship</span>
+                <select id="rm-family-relationship" required>
+                  <option value="husband">Husband</option>
+                  <option value="wife">Wife</option>
+                  <option value="child">Child</option>
+                  <option value="dependent">Dependent</option>
+                </select>
+              </label>
+              <label><span>Sex</span>
+                <select id="rm-family-sex" required>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </label>
+              <label><span>Date of Birth</span><input id="rm-family-dob" type="date"></label>
+              <label><span>Email</span><input id="rm-family-email" type="email" maxlength="240"></label>
+              <label class="wide"><span>Notes</span><textarea id="rm-family-notes" rows="3" maxlength="1000" placeholder="Anything your ReVitalized team should know?"></textarea></label>
+            </div>
+            <div class="rm170-family-actions">
+              <button id="rm-family-remove" class="rm170-danger hidden" type="button">Request Removal</button>
+              <span></span>
+              <button class="rm170-secondary" type="button" data-family-close>Cancel</button>
+              <button type="submit">Submit Request</button>
+            </div>
+            <p id="rm-family-status" class="rm112-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
 
 
 
@@ -586,6 +685,6 @@
   </main>
 
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
-  <script defer src="member110.js?v=169"></script>
+  <script defer src="member110.js?v=170"></script>
 </body>
 </html>
