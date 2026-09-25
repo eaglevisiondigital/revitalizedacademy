@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="portal-executive.css?v=125">
   <link rel="stylesheet" href="portal-community.css?v=126">
   <link rel="stylesheet" href="portal-refuel.css?v=127">
-  <link rel="stylesheet" href="portal-people.css?v=128">
+  <link rel="stylesheet" href="portal-people.css?v=132">
   <link rel="stylesheet" href="portal-staff-access.css?v=131">
   <link rel="stylesheet" href="portal-referrals.css?v=130">
 </head>
@@ -2232,26 +2232,63 @@
           <div class="panel-heading contacts-heading">
             <div>
               <p class="section-kicker">PEOPLE</p>
-              <h2 id="contacts-title">Recent contacts</h2>
+              <h2 id="contacts-title">People Directory</h2>
               <p class="panel-note">Website leads, referrals, manually added people and clients in one CRM.</p>
             </div>
             <div class="people-toolbar">
+              <div class="people-view-tabs">
+                <button id="people-view-recent" class="people-view-tab active" type="button">Recent</button>
+                <button id="people-view-all" class="people-view-tab" type="button">All People</button>
+              </div>
               <label class="people-search">
                 <span class="sr-only">Search people</span>
-                <input id="people-search-input" type="search" placeholder="Search people...">
+                <input id="people-search-input" type="search" placeholder="Search name, email or phone...">
               </label>
               <button id="people-add-button" class="primary-button compact" type="button">Add Person</button>
             </div>
           </div>
+          <div class="people-directory-controls">
+            <label><span>Sort</span>
+              <select id="people-sort">
+                <option value="recent">Most Recent</option>
+                <option value="oldest">Oldest Created</option>
+                <option value="first_az">First Name A–Z</option>
+                <option value="first_za">First Name Z–A</option>
+                <option value="last_az">Last Name A–Z</option>
+                <option value="last_za">Last Name Z–A</option>
+                <option value="enrolled_recent">Recently Enrolled</option>
+                <option value="activity_recent">Recent Activity</option>
+                <option value="followup_soon">Next Follow-up</option>
+              </select>
+            </label>
+            <label><span>Stage</span>
+              <select id="people-stage-filter"><option value="">All stages</option><option value="lead">Lead</option><option value="assessment_lead">Assessment Lead</option><option value="webinar_lead">Webinar Lead</option><option value="applicant">Applicant</option><option value="client">Client</option><option value="inactive">Inactive</option></select>
+            </label>
+            <label><span>Assigned</span><select id="people-assigned-filter"><option value="">All staff</option><option value="unassigned">Unassigned</option></select></label>
+            <label><span>Source</span><select id="people-source-filter"><option value="">All sources</option></select></label>
+            <label><span>Assessment</span><select id="people-assessment-filter"><option value="">Any</option><option value="not_started">Not Started</option><option value="in_progress">In Progress</option><option value="completed">Completed</option></select></label>
+            <label><span>Enrollment</span><select id="people-enrollment-filter"><option value="">Any</option><option value="not_started">Not Started</option><option value="in_progress">In Progress</option><option value="completed">Completed</option></select></label>
+            <button id="people-clear-filters" class="secondary-button compact" type="button">Clear filters</button>
+          </div>
+          <div class="people-result-bar">
+            <span id="people-result-count">Loading people...</span>
+            <div class="people-pagination">
+              <button id="people-prev" type="button">Previous</button>
+              <span id="people-page-label">Page 1</span>
+              <button id="people-next" type="button">Next</button>
+            </div>
+          </div>
           <div class="table-wrap">
-            <table class="contacts-table">
+            <table class="contacts-table people-directory-table">
               <thead>
                 <tr>
                   <th>Name</th>
                   <th>Stage</th>
                   <th>Assessment</th>
                   <th>Enrollment</th>
-                  <th>Webinar</th>
+                  <th>Assigned</th>
+                  <th>Enrolled</th>
+                  <th>Last Activity</th>
                   <th>Follow-up</th>
                   <th>Created</th>
                 </tr>
@@ -2286,7 +2323,8 @@
   <script defer src="portal-executive.js?v=125"></script>
   <script defer src="portal-community.js?v=126"></script>
   <script defer src="portal-refuel.js?v=127"></script>
-  <script defer src="portal-people.js?v=130"></script>
+  <script defer src="portal-people.js?v=132"></script>
+  <script defer src="portal-people-directory.js?v=132"></script>
   <script defer src="portal-staff-access.js?v=131"></script>
   <script defer src="portal-permissions.js?v=130"></script>
   <script defer src="portal-referrals.js?v=130"></script>
