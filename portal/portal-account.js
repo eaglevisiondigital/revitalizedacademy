@@ -17,19 +17,34 @@
     const client=window.RA_PORTAL?.authClient;
     if(!client) throw new Error("Account service is still loading.");
 
-    const [{data:userData,error:userError},{data:accessData,error:accessError},{data:profileData,error:profileError}]=await Promise.all([
-      client.auth.getUser(),
-      client.rpc("get_my_staff_access"),
-      client.from("staff_access").select("display_name,phone,role,status").maybeSingle()
-    ]);
-    if(userError) throw userError;
-    if(accessError) throw accessError;
-    if(profileError) throw profileError;
-    const user=userData?.user;
-    if(!user) throw new Error("Your signed-in account could not be loaded.");
+    // Resolve the signed-in user independently so a profile/RPC issue can never blank the email field.
+    const sessionResult=await client.auth.getSession();
+    const sessionUser=sessionResult?.data?.session?.user||null;
 
+    let authUser=sessionUser;
+    try{
+      const userResult=await client.auth.getUser();
+      if(userResult?.data?.user)authUser=userResult.data.user;
+    }catch(_error){
+      // The active session still provides the current authenticated email.
+    }
+
+    if(!authUser)throw new Error("Your signed-in account could not be loaded.");
+
+    const [accessResult,profileResult]=await Promise.allSettled([
+      client.rpc("get_my_staff_access"),
+      client.from("staff_access").select("display_name,phone,role,status").eq("user_id",authUser.id).maybeSingle()
+    ]);
+
+    const accessData=accessResult.status==="fulfilled"&&!accessResult.value.error
+      ? accessResult.value.data
+      : null;
+    const profileData=profileResult.status==="fulfilled"&&!profileResult.value.error
+      ? profileResult.value.data
+      : null;
     const access=Array.isArray(accessData)?accessData[0]:accessData;
-    return {user,access,profile:profileData||null};
+
+    return {user:authUser,access,profile:profileData||null};
   }
 
   async function openAccount(){
@@ -97,8 +112,13 @@
     status.className="form-status";
 
     try{
-      const {data:{user},error:userError}=await client.auth.getUser();
-      if(userError)throw userError;
+      const sessionResult=await client.auth.getSession();
+      let user=sessionResult?.data?.session?.user||null;
+      try{
+        const userResult=await client.auth.getUser();
+        if(userResult?.data?.user)user=userResult.data.user;
+      }catch(_error){}
+      if(!user)throw new Error("Your signed-in account could not be loaded.");
 
       const {error:profileError}=await client.rpc("update_my_staff_profile",{
         p_display_name:name,
@@ -114,8 +134,15 @@
       }
 
       if(byId("staff-name"))byId("staff-name").textContent=name;
+
+      // Keep the settings window open after saving so confirmation messages remain visible.
+      // Always repopulate the field with the currently authenticated email.
+      const sessionAfter=await client.auth.getSession();
+      const currentEmail=sessionAfter?.data?.session?.user?.email||user.email||email;
+      byId("account-email-input").value=currentEmail;
+
       status.textContent=emailChanged
-        ?"Profile saved. Check your email to confirm the address change."
+        ?"Profile saved. Check your email to confirm the address change. Your current sign-in email will remain here until confirmation is complete."
         :"Profile saved.";
       status.className="form-status success";
     }catch(error){
