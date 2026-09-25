@@ -132,3 +132,8 @@
 .rm139-agreement-check{display:flex!important;align-items:flex-start;gap:8px;padding:9px 10px;border:1px solid #e5ebe7;border-radius:9px;background:#fbfcfb}.rm139-agreement-check input{width:16px!important;height:16px!important;margin-top:1px}.rm139-agreement-check span{font-size:10px!important}
 .rm139-agreement-actions{display:flex;gap:8px;justify-content:flex-end}.rm139-agreement-actions button{min-height:41px}.rm139-agreement-actions .rm139-secondary{background:#fff;color:#154734;border:1px solid #cedad2}
 .rm139-agreement-completed{padding:11px;border:1px solid #d7e4dc;border-radius:9px;background:#f4f8f5;color:#476054;font-size:10px;line-height:1.5;margin-top:10px}
+
+.rm140-coaching-access-card{margin-top:13px}.rm140-entitlements{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:12px}
+.rm140-entitlement{padding:11px 12px;border:1px solid #e4ebe7;border-radius:10px;background:#fbfcfb}.rm140-entitlement strong{display:block;font-size:11px;color:#30463a}.rm140-entitlement small{display:block;margin-top:3px;font-size:9px;color:#819087}
+.rm140-entitlement-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:9px}.rm140-entitlement-stats>div{padding:8px;border-radius:8px;background:#fff;border:1px solid #e8edea}.rm140-entitlement-stats span{display:block;font-size:7px;text-transform:uppercase;font-weight:900;color:#849188}.rm140-entitlement-stats b{display:block;margin-top:3px;font-size:12px;color:#30463a}
+@media(max-width:680px){.rm140-entitlements{grid-template-columns:1fr}.rm140-entitlement-stats{grid-template-columns:1fr 1fr}}
