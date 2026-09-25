@@ -348,7 +348,7 @@
       benefitBlock.append(benefitHead,benefitList);
 
       const courseBlock=document.createElement("div");courseBlock.className="program-access-block";
-      const ch=document.createElement("h3");ch.textContent="Course access";
+      const ch=document.createElement("h3");ch.textContent="Course Access";
       const courses=document.createElement("div");courses.className="program-access-course-list";
       const published=courseRows.filter(r=>r.status==="published");
       if(!published.length){
@@ -358,7 +358,7 @@
           const row=document.createElement("div");row.className="program-access-course-row";
           const cc=document.createElement("div");cc.className="program-access-course-copy";
           const title=document.createElement("strong");title.textContent=course.title;
-          const meta=document.createElement("span");meta.textContent=course.version?"Version "+course.version:"Published course";
+          const meta=document.createElement("span");meta.textContent=course.version?"Version "+course.version:"Published Course";
           cc.append(title,meta);
           const access=courseAccessRows.find(r=>r.program_code===program.program_code&&r.course_id===course.id);
           const active=Boolean(access?.active);
@@ -371,7 +371,7 @@
       courseBlock.append(ch,courses);
 
       const resourceBlock=document.createElement("div");resourceBlock.className="program-access-block program-access-resources";
-      const rh=document.createElement("h3");rh.textContent="Resource access";
+      const rh=document.createElement("h3");rh.textContent="Resource Access";
       const resources=document.createElement("div");resources.className="program-access-course-list";
       const publishedResources=resourceRows.filter(r=>r.status==="published");
       if(!publishedResources.length){
@@ -394,7 +394,7 @@
       resourceBlock.append(rh,resources);
 
       const challengeBlock=document.createElement("div");challengeBlock.className="program-access-block program-access-challenges";
-      const wh=document.createElement("h3");wh.textContent="Challenge access";
+      const wh=document.createElement("h3");wh.textContent="Challenge Access";
       const challenges=document.createElement("div");challenges.className="program-access-course-list";
       const publishedChallenges=challengeRows.filter(r=>r.status==="published");
       if(!publishedChallenges.length){
@@ -408,7 +408,7 @@
           meta.textContent=[
             challenge.scope?portal.titleCase(challenge.scope):null,
             challenge.starts_on&&challenge.ends_on?challenge.starts_on+" to "+challenge.ends_on:null
-          ].filter(Boolean).join(" · ")||"Published challenge";
+          ].filter(Boolean).join(" · ")||"Published Challenge";
           cc.append(title,meta);
           const access=challengeAccessRows.find(r=>r.program_code===program.program_code&&r.challenge_id===challenge.id);
           const active=Boolean(access?.active);
@@ -481,11 +481,11 @@
   const slugify=(value)=>String(value||"").trim().toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"").slice(0,100);
 
   const contentDetail=(key,row)=>{
-    if(key==="courses")return [row.version?"Version "+row.version:null,row.estimated_minutes?row.estimated_minutes+" min":null].filter(Boolean).join(" · ")||"Course content";
-    if(key==="challenges")return [row.scope?portal.titleCase(row.scope):null,row.starts_on&&row.ends_on?row.starts_on+" to "+row.ends_on:null].filter(Boolean).join(" · ")||"Wellness challenge";
-    if(key==="meal-plans")return row.days_count?row.days_count+" day plan":"Meal plan template";
+    if(key==="courses")return [row.version?"Version "+row.version:null,row.estimated_minutes?row.estimated_minutes+" min":null].filter(Boolean).join(" · ")||"Course Content";
+    if(key==="challenges")return [row.scope?portal.titleCase(row.scope):null,row.starts_on&&row.ends_on?row.starts_on+" to "+row.ends_on:null].filter(Boolean).join(" · ")||"Wellness Challenge";
+    if(key==="meal-plans")return row.days_count?row.days_count+" day plan":"Meal Plan Template";
     if(key==="recipes")return [row.meal_type?portal.titleCase(row.meal_type):null,row.prep_minutes?row.prep_minutes+" min prep":null,row.cook_minutes?row.cook_minutes+" min cook":null].filter(Boolean).join(" · ")||"Recipe";
-    if(key==="fitness")return [row.difficulty?portal.titleCase(row.difficulty):null,row.environment?portal.titleCase(row.environment):null,row.weeks?row.weeks+" weeks":null].filter(Boolean).join(" · ")||"Fitness program";
+    if(key==="fitness")return [row.difficulty?portal.titleCase(row.difficulty):null,row.environment?portal.titleCase(row.environment):null,row.weeks?row.weeks+" weeks":null].filter(Boolean).join(" · ")||"Fitness Program";
     if(key==="workouts")return [row.category?portal.titleCase(row.category):null,row.difficulty?portal.titleCase(row.difficulty):null,row.environment?portal.titleCase(row.environment):null,row.duration_minutes?row.duration_minutes+" min":null].filter(Boolean).join(" · ")||"Workout";
     if(key==="resources")return [row.resource_type?portal.titleCase(row.resource_type):null,row.category||null].filter(Boolean).join(" · ")||"Resource";
     return "";
