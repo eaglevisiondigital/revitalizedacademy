@@ -35,11 +35,11 @@
 
   function renderMetrics(){
     el("referral-admin-metrics").replaceChildren(
-      stat("Total referrals",metrics.total_referrals||0),
+      stat("Total Referrals",metrics.total_referrals||0),
       stat("Converted",metrics.converted_referrals||0),
-      stat("Active ambassadors",metrics.active_ambassadors||0),
-      stat("Pending rewards",metrics.pending_rewards||0),
-      stat("Issued rewards",metrics.issued_rewards||0)
+      stat("Active Ambassadors",metrics.active_ambassadors||0),
+      stat("Pending Rewards",metrics.pending_rewards||0),
+      stat("Issued Rewards",metrics.issued_rewards||0)
     );
   }
 
