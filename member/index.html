@@ -13,7 +13,7 @@
   <link rel="shortcut icon" type="image/png" href="../assets/images/revitalized-icon-approved.png">
   <link rel="apple-touch-icon" href="../assets/images/revitalized-icon-approved.png">
   <link rel="manifest" href="manifest.webmanifest?v=171">
-  <link rel="stylesheet" href="member110.css?v=172">
+  <link rel="stylesheet" href="member110.css?v=183">
 </head>
 <body>
   <main class="rm112-page">
@@ -57,6 +57,17 @@
           <button id="rm-signout" type="button">Sign Out</button>
         </div>
       </header>
+
+      <nav class="rm183-member-nav" aria-label="Member dashboard sections">
+        <button type="button" class="active" data-member-jump=".rm112-hero">Dashboard</button>
+        <button type="button" data-member-jump=".rm172-coaching-request-card">Coaching</button>
+        <button type="button" data-member-jump=".rm116-wellness-grid">Wellness</button>
+        <button type="button" data-member-jump=".rm119-learning-grid">Learning</button>
+        <button type="button" data-member-jump=".rm120-message-grid">Messages</button>
+        <button type="button" data-member-jump="#rm-family-hub-card">Family Hub</button>
+        <button type="button" data-member-jump="#rm-referral-card">Ambassador</button>
+        <button type="button" data-member-jump=".rm139-agreements-card">Account</button>
+      </nav>
 
       <section class="rm112-hero">
         <div>
@@ -149,6 +160,27 @@
           <div id="rm-appointment" class="rm112-empty">No upcoming appointment is currently scheduled.</div>
         </section>
       </div>
+
+      <section class="rm112-card rm183-coaching-hub-card">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">COACHING HUB</p>
+            <h2>Your Coaching Command Center</h2>
+          </div>
+          <span id="rm-coaching-hub-unread" class="rm112-chip">0 Unread</span>
+        </div>
+        <div class="rm183-coaching-hub-grid">
+          <div><span>Primary Coach</span><strong id="rm-hub-coach">Being Assigned</strong></div>
+          <div><span>Open Assignments</span><strong id="rm-hub-open-assignments">0</strong></div>
+          <div><span>Due Next 7 Days</span><strong id="rm-hub-due-soon">0</strong></div>
+          <div><span>Overdue</span><strong id="rm-hub-overdue">0</strong></div>
+        </div>
+        <div class="rm183-coaching-hub-actions">
+          <button type="button" data-member-jump=".rm172-coaching-request-card">Request Coaching Time</button>
+          <button type="button" class="secondary" data-member-jump=".rm120-message-grid">Message Coaching Team</button>
+          <button type="button" class="secondary" data-member-jump="#rm-assignments">View Assignments</button>
+        </div>
+      </section>
 
       <section class="rm112-card rm172-coaching-request-card">
         <div class="rm112-card-head">
@@ -448,7 +480,7 @@
         <div id="rm-entitlements" class="rm112-entitlements"></div>
       </section>
 
-      <section class="rm112-card">
+      <section id="rm-family-hub-card" class="rm112-card">
         <div class="rm112-card-head">
           <div>
             <p class="rm112-kicker">FAMILY HUB</p>
@@ -746,6 +778,6 @@
   </main>
 
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
-  <script defer src="member110.js?v=172"></script>
+  <script defer src="member110.js?v=183"></script>
 </body>
 </html>

@@ -357,6 +357,16 @@
     await loadDashboard();
   }
 
+  function renderCoachingHub(summary,hub){
+    const assigned=Number(summary?.assigned_count||0);
+    const progress=Number(summary?.in_progress_count||0);
+    el("rm-hub-coach").textContent=hub?.assigned_coach_name||"Being Assigned";
+    el("rm-hub-open-assignments").textContent=String(assigned+progress);
+    el("rm-hub-due-soon").textContent=String(Number(summary?.due_next_7_days||0));
+    el("rm-hub-overdue").textContent=String(Number(summary?.overdue_count||0));
+    el("rm-coaching-hub-unread").textContent=String(Number(hub?.unread_messages||0))+" Unread";
+  }
+
   function renderCoachingRequests(rows){
     const list=el("rm-coaching-requests");list.replaceChildren();
     const open=rows.filter(r=>["requested","scheduled"].includes(r.status));
@@ -1699,11 +1709,24 @@
 
       const actions = document.createElement("div");
       actions.className = "rm114-item-actions";
+      const state=document.createElement("span");
+      state.className="rm183-assignment-status";
+      state.textContent=title(row.status);
+      actions.append(state);
+
+      if(row.status==="assigned"){
+        const start=document.createElement("button");
+        start.type="button";
+        start.textContent="Start Assignment";
+        start.addEventListener("click",()=>updateAssignmentStatus(row,"in_progress"));
+        actions.append(start);
+      }
+
       const complete = document.createElement("button");
       complete.type = "button";
       complete.className = "primary";
       complete.textContent = "Mark Complete";
-      complete.addEventListener("click", () => completeAssignment(row));
+      complete.addEventListener("click", () => updateAssignmentStatus(row,"completed"));
       actions.append(complete);
       item.append(actions);
       list.append(item);
@@ -1867,12 +1890,14 @@
     await loadDashboard();
   }
 
-  async function completeAssignment(row) {
-    const { data, error } = await client.functions.invoke("member-coaching", {
-      body: { action: "complete_assignment", assignment_id: row.id }
+  async function updateAssignmentStatus(row,status){
+    const {error}=await client.rpc("update_my_assignment",{
+      p_assignment_id:row.id,
+      p_status:status,
+      p_member_note:null
     });
-    if (error || !data?.ok) {
-      window.alert(error?.message || data?.error || "Could not complete this assignment.");
+    if(error){
+      window.alert(error.message||"Could not update this assignment.");
       return;
     }
     await loadDashboard();
@@ -2183,6 +2208,8 @@
       ambassadorResult,
       referralActivityResult,
       coachingRequestsResult,
+      assignmentSummaryResult,
+      coachingHubResult,
       documentsResult,
       billingResult,
       agreementsResult,
@@ -2224,6 +2251,8 @@
       client.from("my_ambassador_center").select("*").maybeSingle(),
       client.from("my_referral_activity").select("*").order("first_touch_at",{ascending:false}).limit(20),
       client.from("my_coaching_requests").select("*").order("created_at",{ascending:false}).limit(10),
+      client.from("my_assignment_summary").select("*").maybeSingle(),
+      client.from("my_coaching_hub").select("*").maybeSingle(),
       client.from("my_documents").select("*"),
       client.from("my_billing_summary").select("*").limit(1).maybeSingle(),
       client.from("my_agreements").select("*"),
@@ -2236,7 +2265,7 @@
       client.from("my_family_requests").select("*").order("created_at",{ascending:false}).limit(10)
     ]);
 
-    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult,notificationPrefsResult,healthConnectionsResult,challengesResult,communitySpacesResult,communityFeedResult,refuelResult,ambassadorResult,referralActivityResult,coachingRequestsResult,documentsResult,billingResult,agreementsResult,coachingEntitlementsResult,companionTypesResult,companionRequestsResult,dailyActionsResult,weeklySummaryResult,activityTimelineResult,familyRequestsResult].find((r) => r.error);
+    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult,notificationPrefsResult,healthConnectionsResult,challengesResult,communitySpacesResult,communityFeedResult,refuelResult,ambassadorResult,referralActivityResult,coachingRequestsResult,assignmentSummaryResult,coachingHubResult,documentsResult,billingResult,agreementsResult,coachingEntitlementsResult,companionTypesResult,companionRequestsResult,dailyActionsResult,weeklySummaryResult,activityTimelineResult,familyRequestsResult].find((r) => r.error);
     if (failed?.error) throw failed.error;
 
     const member = dashboardResult.data;
@@ -2424,6 +2453,22 @@
   el("rm-family-form").addEventListener("submit",submitFamilyRequest);
   el("rm-family-remove").addEventListener("click",requestFamilyRemoval);
   document.querySelectorAll("[data-family-close]").forEach((node)=>node.addEventListener("click",closeFamilyRequest));
+
+  function jumpToMemberSection(selector){
+    const target=document.querySelector(selector);
+    if(!target||target.classList.contains("hidden"))return;
+    target.scrollIntoView({behavior:"smooth",block:"start"});
+    document.querySelectorAll(".rm183-member-nav [data-member-jump]").forEach((button)=>{
+      button.classList.toggle("active",button.dataset.memberJump===selector);
+    });
+  }
+
+  document.addEventListener("click",(event)=>{
+    const button=event.target.closest("[data-member-jump]");
+    if(!button)return;
+    event.preventDefault();
+    jumpToMemberSection(button.dataset.memberJump);
+  });
 
   el("rm-signout").addEventListener("click", signOut);
   el("rm-denied-signout").addEventListener("click", signOut);
