@@ -227,9 +227,8 @@
         status.textContent="Password updated successfully.";
         status.className="form-status success";
         window.setTimeout(()=>{
-          setHidden(byId("account-password-panel"),true);
-          setHidden(byId("account-overview"),false);
-        },900);
+          closeAccount();
+        },700);
       },true);
     }
 
