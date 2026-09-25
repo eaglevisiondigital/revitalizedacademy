@@ -24,6 +24,7 @@
   <link rel="stylesheet" href="portal-community.css?v=126">
   <link rel="stylesheet" href="portal-refuel.css?v=127">
   <link rel="stylesheet" href="portal-people.css?v=128">
+  <link rel="stylesheet" href="portal-staff-access.css?v=129">
 </head>
 <body>
   <main class="portal-page">
@@ -1831,6 +1832,113 @@
         </section>
       </div>
 
+
+      <div id="staff-invite-modal" class="staff-admin-modal hidden" aria-hidden="true">
+        <div class="staff-admin-backdrop" data-staff-invite-close></div>
+        <section class="staff-admin-dialog" role="dialog" aria-modal="true" aria-labelledby="staff-invite-title">
+          <button class="staff-admin-close" type="button" data-staff-invite-close aria-label="Close staff invitation">×</button>
+          <p class="eyebrow">STAFF INVITATION</p>
+          <h2 id="staff-invite-title">Add a ReVitalized team member</h2>
+          <p class="staff-admin-intro">This creates a staff account directly. It does not send the person through the lead or sales journey.</p>
+
+          <form id="staff-invite-form" class="staff-admin-form">
+            <div class="staff-admin-grid">
+              <label>
+                <span>Name</span>
+                <input id="staff-invite-name" type="text" maxlength="240" required>
+              </label>
+              <label>
+                <span>Email</span>
+                <input id="staff-invite-email" type="email" maxlength="320" required>
+              </label>
+              <label class="staff-admin-wide">
+                <span>Role</span>
+                <select id="staff-invite-role">
+                  <option value="coach">Coach</option>
+                  <option value="admin">Administrator</option>
+                  <option value="financial">Financial</option>
+                  <option value="support">Support</option>
+                  <option value="owner">Owner</option>
+                </select>
+              </label>
+              <label class="staff-admin-wide">
+                <span>Internal reason / note</span>
+                <textarea id="staff-invite-reason" rows="3" maxlength="2000" placeholder="Optional: why this access is being granted."></textarea>
+              </label>
+            </div>
+            <div class="staff-admin-actions">
+              <button class="secondary-button" type="button" data-staff-invite-close>Cancel</button>
+              <button class="primary-button" type="submit">Send Staff Invitation</button>
+            </div>
+            <p id="staff-invite-status" class="form-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
+      <div id="staff-permissions-modal" class="staff-admin-modal hidden" aria-hidden="true">
+        <div class="staff-admin-backdrop" data-staff-permissions-close></div>
+        <section class="staff-admin-dialog staff-permissions-dialog" role="dialog" aria-modal="true" aria-labelledby="staff-permissions-title">
+          <button class="staff-admin-close" type="button" data-staff-permissions-close aria-label="Close permissions">×</button>
+          <p class="eyebrow">STAFF ACCESS</p>
+          <h2 id="staff-permissions-title">Team member permissions</h2>
+          <p id="staff-permissions-meta" class="staff-admin-intro"></p>
+
+          <section class="staff-admin-block">
+            <div class="staff-admin-block-head">
+              <div><span>ACCOUNT</span><strong>Role &amp; status</strong></div>
+            </div>
+            <div class="staff-admin-grid">
+              <label>
+                <span>Role</span>
+                <select id="staff-edit-role">
+                  <option value="owner">Owner</option>
+                  <option value="admin">Administrator</option>
+                  <option value="coach">Coach</option>
+                  <option value="financial">Financial</option>
+                  <option value="support">Support</option>
+                </select>
+              </label>
+              <label>
+                <span>Status</span>
+                <select id="staff-edit-status">
+                  <option value="active">Active</option>
+                  <option value="suspended">Suspended</option>
+                  <option value="inactive">Inactive</option>
+                </select>
+              </label>
+              <label class="staff-admin-wide">
+                <span>Reason for role/status change</span>
+                <input id="staff-edit-reason" type="text" maxlength="2000" placeholder="Required when changing access">
+              </label>
+            </div>
+            <div class="staff-admin-actions">
+              <button id="staff-save-role" class="secondary-button" type="button">Save Role</button>
+              <button id="staff-save-status" class="secondary-button" type="button">Save Status</button>
+            </div>
+            <p id="staff-account-status" class="form-status" aria-live="polite"></p>
+          </section>
+
+          <section class="staff-admin-block">
+            <div class="staff-admin-block-head">
+              <div>
+                <span>PERMISSIONS</span>
+                <strong>Role defaults + individual overrides</strong>
+              </div>
+            </div>
+            <p class="staff-permissions-help">Inherited means the person is using the default for their selected role. Override only the permissions Justyn or Elle want to customize.</p>
+            <div id="staff-permission-list" class="staff-permission-list"></div>
+            <p id="staff-permission-status" class="form-status" aria-live="polite"></p>
+          </section>
+
+          <section class="staff-admin-block">
+            <div class="staff-admin-block-head">
+              <div><span>AUDIT TRAIL</span><strong>Recent access changes</strong></div>
+            </div>
+            <div id="staff-audit-list" class="staff-audit-list"></div>
+          </section>
+        </section>
+      </div>
+
       <div class="portal-content">
         <div class="portal-intro">
           <div>
@@ -1880,6 +1988,22 @@
           <div id="community-admin-metrics" class="community-admin-metrics"></div>
           <div id="community-admin-feed" class="community-admin-feed">
             <div class="empty-state">Loading community activity...</div>
+          </div>
+        </section>
+
+
+        <section id="staff-access-panel" class="panel staff-access-panel hidden" aria-labelledby="staff-access-title">
+          <div class="panel-heading staff-access-heading">
+            <div>
+              <p class="section-kicker">STAFF &amp; ACCESS</p>
+              <h2 id="staff-access-title">Team permissions</h2>
+              <p class="panel-note">Invite staff directly, assign a role, and control exactly what each person can access.</p>
+            </div>
+            <button id="staff-invite-button" class="primary-button compact" type="button">Invite Staff</button>
+          </div>
+          <div id="staff-access-summary" class="staff-access-summary"></div>
+          <div id="staff-access-list" class="staff-access-list">
+            <div class="empty-state">Loading staff access...</div>
           </div>
         </section>
 
@@ -2097,5 +2221,6 @@
   <script defer src="portal-community.js?v=126"></script>
   <script defer src="portal-refuel.js?v=127"></script>
   <script defer src="portal-people.js?v=128"></script>
+  <script defer src="portal-staff-access.js?v=129"></script>
 </body>
 </html>
