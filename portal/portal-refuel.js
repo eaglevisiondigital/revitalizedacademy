@@ -25,7 +25,7 @@
       stat("Invited",metrics.invited_open||0),
       stat("Active",metrics.active_enrollments||0),
       stat("Paid",metrics.paid_enrollments||0),
-      stat("Published offers",metrics.published_offers||0)
+      stat("Published Offers",metrics.published_offers||0)
     );
   }
   function offerName(id){
