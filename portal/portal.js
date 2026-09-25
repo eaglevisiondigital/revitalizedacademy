@@ -822,6 +822,7 @@
     titleCase,
     formatDate,
     personName,
+    renderContacts,
     staffDirectory: () => [...staffDirectory],
     currentStaffRole: () => staffDirectory.find((row) => row.user_id === currentUserId)?.role || null
   };
