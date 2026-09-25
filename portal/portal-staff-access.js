@@ -214,7 +214,7 @@
       const metrics=[
         ["Contacts",row.assigned_contacts||0,false],
         ["Clients",row.active_clients||0,false],
-        ["Open tasks",row.open_tasks||0,false],
+        ["Open Tasks",row.open_tasks||0,false],
         ["Overdue",row.overdue_tasks||0,Number(row.overdue_tasks||0)>0],
         ["Sessions · 7d",row.coaching_sessions_7d||0,false],
         ["Unread / Reviews",Number(row.unread_member_messages||0)+Number(row.companion_reviews||0),Number(row.unread_member_messages||0)+Number(row.companion_reviews||0)>0]
