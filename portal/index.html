@@ -28,6 +28,7 @@
   <link rel="stylesheet" href="portal-referrals.css?v=130">
   <link rel="stylesheet" href="portal-team-calendar.css?v=135">
   <link rel="stylesheet" href="portal-documents.css?v=136">
+  <link rel="stylesheet" href="portal-billing.css?v=137">
 </head>
 <body>
   <main class="portal-page">
@@ -2027,6 +2028,36 @@
         </section>
       </div>
 
+
+      <div id="billing-plan-modal" class="people-modal hidden" aria-hidden="true">
+        <div class="people-modal-backdrop" data-billing-plan-close></div>
+        <section class="people-dialog" role="dialog" aria-modal="true" aria-labelledby="billing-plan-modal-title">
+          <button class="people-close" type="button" data-billing-plan-close aria-label="Close billing plan">×</button>
+          <p class="eyebrow">BILLING PLAN</p>
+          <h2 id="billing-plan-modal-title">Create membership billing plan</h2>
+          <p class="people-intro">Create the billing structure only after ReVitalized approves the price, interval and commitment.</p>
+          <form id="billing-plan-form" class="people-form">
+            <div class="people-grid">
+              <label><span>Plan key</span><input id="billing-plan-key" type="text" maxlength="160" required></label>
+              <label><span>Name</span><input id="billing-plan-name" type="text" maxlength="240" required></label>
+              <label><span>Program</span><select id="billing-plan-program"><option value="">Any / not tied to one program</option></select></label>
+              <label><span>Interval</span><select id="billing-plan-interval"><option value="weekly">Weekly</option><option value="monthly">Monthly</option><option value="one_time">One-time</option><option value="custom">Custom</option></select></label>
+              <label><span>Interval count</span><input id="billing-plan-interval-count" type="number" min="1" step="1" value="1"></label>
+              <label><span>Amount</span><input id="billing-plan-amount" type="number" min="0" step="0.01" required></label>
+              <label><span>Currency</span><select id="billing-plan-currency"><option value="USD">USD</option><option value="CAD">CAD</option></select></label>
+              <label><span>Commitment months</span><input id="billing-plan-commitment" type="number" min="1" step="1"></label>
+              <label><span>Grace days</span><input id="billing-plan-grace" type="number" min="0" step="1" value="3"></label>
+              <label class="people-wide"><span>Description</span><textarea id="billing-plan-description" rows="3" maxlength="3000"></textarea></label>
+            </div>
+            <div class="people-form-actions">
+              <button class="secondary-button" type="button" data-billing-plan-close>Cancel</button>
+              <button class="primary-button" type="submit">Create Billing Plan</button>
+            </div>
+            <p id="billing-plan-status" class="form-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
       <div class="portal-content">
         <div class="portal-intro">
           <div>
@@ -2111,6 +2142,22 @@
           </div>
         </section>
 
+
+
+        <section id="billing-operations-panel" class="panel billing-operations-panel hidden" aria-labelledby="billing-operations-title">
+          <div class="panel-heading billing-operations-heading">
+            <div>
+              <p class="section-kicker">BILLING OPERATIONS</p>
+              <h2 id="billing-operations-title">Membership subscriptions</h2>
+              <p class="panel-note">Provider-neutral recurring billing, commitments, payment status and next charges.</p>
+            </div>
+            <button id="billing-new-plan" class="secondary-button compact" type="button">New Billing Plan</button>
+          </div>
+          <div id="billing-operations-metrics" class="billing-operations-metrics"></div>
+          <div id="billing-operations-list" class="billing-operations-list">
+            <div class="empty-state">Loading subscription activity...</div>
+          </div>
+        </section>
 
         <section id="team-calendar-panel" class="panel team-calendar-panel hidden" aria-labelledby="team-calendar-title">
           <div class="panel-heading team-calendar-heading">
@@ -2459,5 +2506,6 @@
   <script defer src="portal-referrals.js?v=130"></script>
   <script defer src="portal-team-calendar.js?v=135"></script>
   <script defer src="portal-documents.js?v=136"></script>
+  <script defer src="portal-billing.js?v=137"></script>
 </body>
 </html>
