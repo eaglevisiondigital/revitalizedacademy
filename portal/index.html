@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta name="ra-build" content="175">
+  <meta name="ra-build" content="176">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow,noarchive">
@@ -1959,7 +1959,11 @@
               </label>
               <label>
                 <span>Email</span>
-                <input id="staff-invite-email" type="email" maxlength="320" required>
+                <input id="staff-invite-email" type="email" maxlength="320" autocomplete="email" required>
+              </label>
+              <label>
+                <span>Phone</span>
+                <input id="staff-invite-phone" type="tel" maxlength="40" autocomplete="tel" placeholder="(555) 234-5678" required>
               </label>
               <label>
                 <span>Role</span>
@@ -2969,7 +2973,7 @@
   <script defer src="portal-programs.js?v=167"></script>
   <script defer src="portal-people.js?v=133"></script>
   <script defer src="portal-people-directory.js?v=144"></script>
-  <script defer src="portal-staff-access.js?v=166"></script>
+  <script defer src="portal-staff-access.js?v=176"></script>
   <script defer src="portal-permissions.js?v=130"></script>
   <script defer src="portal-referrals.js?v=166"></script>
   <script defer src="portal-family-requests.js?v=166"></script>

@@ -277,11 +277,12 @@
     event.preventDefault();
     const name=el("staff-invite-name").value.trim();
     const email=el("staff-invite-email").value.trim().toLowerCase();
+    const phone=el("staff-invite-phone").value.trim();
     const role=el("staff-invite-role").value;
     const reason=el("staff-invite-reason").value.trim();
 
-    if(!name||!email){
-      setStatus("staff-invite-status","Name and email are required.","error");
+    if(!name||!email||!phone){
+      setStatus("staff-invite-status","Name, email and phone are required.","error");
       return;
     }
 
@@ -292,9 +293,16 @@
         action:"invite",
         display_name:name,
         email,
+        phone,
         role,
         reason
       });
+
+      const {error:phoneError}=await client.rpc("set_staff_phone_by_email",{
+        p_email:email,
+        p_phone:phone
+      });
+      if(phoneError)throw phoneError;
       setStatus(
         "staff-invite-status",
         data.existing_auth_user
