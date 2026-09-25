@@ -546,7 +546,7 @@
       authClient.from("admin_dashboard_metrics").select("*").single(),
       authClient.from("admin_followup_queue").select("*").limit(12),
       authClient.from("admin_due_tasks").select("*").limit(12),
-      authClient.from("admin_contact_overview").select("*").order("created_at", { ascending: false }).limit(15)
+      authClient.from("admin_contact_overview").select("*").order("created_at", { ascending: false }).limit(100)
     ]);
 
     const firstError = [metricsResult, followupResult, tasksResult, contactsResult].find((result) => result.error);
