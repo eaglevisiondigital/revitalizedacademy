@@ -139,3 +139,21 @@
 .people-toolbar{gap:10px}
 .people-saved-views{gap:10px;margin-top:14px}
 .people-directory-controls{gap:10px;margin-top:16px}
+
+
+/* Build 154: People larger text */
+.people-view-tab{font-size:12.5px}
+.people-quick-views button{font-size:11.5px}
+.people-saved-views label>span,
+.people-directory-controls label>span{font-size:11px}
+.people-saved-views select,
+.people-directory-controls select,
+.people-search input{font-size:13px}
+.people-result-bar{font-size:12px}
+.people-pagination button{font-size:10.5px}
+.people-directory-table th{font-size:11px}
+.people-directory-table td{font-size:12px}
+.people-directory-name strong{font-size:13px}
+.people-directory-name span{font-size:10.5px}
+.people-toolbar .primary-button.compact{font-size:13px}
+.people-saved-views .secondary-button.compact{font-size:12px}
