@@ -69,3 +69,5 @@
   .staff-access-summary{grid-template-columns:1fr 1fr}
   .staff-access-item{grid-template-columns:1fr}
 }
+
+.permission-hidden{display:none!important}
