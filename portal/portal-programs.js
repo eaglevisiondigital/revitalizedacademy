@@ -40,10 +40,9 @@
     const [amount,note]=price(row);
     const top=document.createElement("div");top.className="program-catalog-card-top";
     const copy=document.createElement("div");copy.className="program-catalog-card-copy";
-    const type=document.createElement("small");type.textContent=portal.titleCase(row.program_type||"program");
     const name=document.createElement("strong");name.textContent=row.name;
     const desc=document.createElement("p");desc.textContent=describe(row);
-    copy.append(type,name,desc);
+    copy.append(name,desc);
     const status=document.createElement("span");status.className="program-catalog-status";status.textContent=row.active?"Active":"Inactive";
     top.append(copy,status);
 
@@ -63,10 +62,7 @@
       const chip=document.createElement("span");chip.className="program-catalog-chip";chip.textContent="Up to 2 people";meta.append(chip);
     }
 
-    const footer=document.createElement("div");footer.className="program-catalog-footer";
-    const code=document.createElement("span");code.className="program-catalog-code";code.textContent=row.program_code;
-    footer.append(code);
-    article.append(top,pricing,meta,footer);
+    article.append(top,pricing,meta);
     return article;
   }
 
@@ -119,7 +115,7 @@
       const head=document.createElement("div");head.className="program-access-card-head";
       const copy=document.createElement("div");
       const name=document.createElement("strong");name.textContent=program.name;
-      const sub=document.createElement("span");sub.textContent=(program.metadata?.support_model||portal.titleCase(program.program_type||"program"))+" · "+entitlements.length+" benefits";
+      const sub=document.createElement("span");sub.textContent=program.metadata?.support_model||portal.titleCase(program.program_type||"program");
       copy.append(name,sub);
       const count=document.createElement("span");count.className="program-access-count";count.textContent=included.length+" course"+(included.length===1?"":"s")+" included";
       head.append(copy,count);
@@ -129,11 +125,17 @@
       const bh=document.createElement("h3");bh.textContent="Included benefits";
       const benefitList=document.createElement("div");benefitList.className="program-access-chip-list";
       if(entitlements.length){
-        entitlements.slice(0,12).forEach(row=>{
+        entitlements.slice(0,6).forEach(row=>{
           const chip=document.createElement("span");chip.className="program-access-chip";
           chip.textContent=row.label+(row.limit_value?" · "+row.limit_value:"");
           benefitList.append(chip);
         });
+        if(entitlements.length>6){
+          const more=document.createElement("span");
+          more.className="program-access-chip more";
+          more.textContent="+"+(entitlements.length-6)+" more included";
+          benefitList.append(more);
+        }
       }else{
         const empty=document.createElement("span");empty.className="program-access-empty";empty.textContent="No entitlements configured.";benefitList.append(empty);
       }
@@ -144,7 +146,7 @@
       const courses=document.createElement("div");courses.className="program-access-course-list";
       const published=courseRows.filter(r=>r.status==="published");
       if(!published.length){
-        const empty=document.createElement("span");empty.className="program-access-empty";empty.textContent="Publish a course to assign it to this program.";courses.append(empty);
+        const empty=document.createElement("span");empty.className="program-access-empty";empty.textContent="No courses assigned yet. Publish a course, then add it here.";courses.append(empty);
       }else{
         published.forEach(course=>{
           const row=document.createElement("div");row.className="program-access-course-row";
@@ -284,7 +286,7 @@
     if(!rows.length){
       const empty=document.createElement("div");
       empty.className="program-content-empty";
-      empty.textContent="No "+contentSources[activeContent].label.toLowerCase()+" have been created yet. Use New Content to create the first draft for this area.";
+      empty.textContent="No "+contentSources[activeContent].label.toLowerCase()+" yet. Use New Content to create the first draft.";
       contentList.append(empty);
       return;
     }
