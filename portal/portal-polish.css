@@ -710,3 +710,53 @@ body[data-ra-workspace="dashboard"] .ra-quick-action:hover{
     width:100%!important;
   }
 }
+
+
+/* Build 171: dashboard balance + shortcut icon follow-up */
+body[data-ra-workspace="dashboard"] .dashboard-grid{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:20px!important;
+  align-items:stretch!important;
+  margin-bottom:20px!important;
+}
+body[data-ra-workspace="dashboard"] .dashboard-grid>.panel{
+  margin:0!important;
+  min-height:286px!important;
+  height:100%!important;
+  display:flex!important;
+  flex-direction:column!important;
+  padding:24px!important;
+}
+body[data-ra-workspace="dashboard"] .dashboard-grid>.panel .panel-heading{
+  min-height:82px!important;
+  margin:0 0 16px!important;
+  align-items:flex-start!important;
+}
+body[data-ra-workspace="dashboard"] .dashboard-grid>.panel .list-stack{
+  flex:1 1 auto!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:flex-start!important;
+}
+body[data-ra-workspace="dashboard"] .dashboard-grid>.panel .empty-state{
+  flex:1 1 auto!important;
+  min-height:110px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+body[data-ra-workspace="dashboard"] .dashboard-grid>.panel .list-item{
+  flex:0 0 auto!important;
+}
+@media(max-width:900px){
+  body[data-ra-workspace="dashboard"] .dashboard-grid{
+    grid-template-columns:1fr!important;
+  }
+  body[data-ra-workspace="dashboard"] .dashboard-grid>.panel{
+    min-height:0!important;
+  }
+  body[data-ra-workspace="dashboard"] .dashboard-grid>.panel .panel-heading{
+    min-height:0!important;
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "ReVitalized Academy",
+  "short_name": "ReVitalized",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F7FAF8",
+  "theme_color": "#154734",
+  "icons": [
+    {
+      "src": "../assets/images/revitalized-icon-approved.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
