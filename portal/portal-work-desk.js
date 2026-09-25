@@ -61,7 +61,7 @@
     stats.replaceChildren(
       statCard("Open", source.length),
       statCard("Overdue", source.filter((row) => row.overdue).length, "overdue"),
-      statCard("Due today", source.filter((row) => row.due_bucket === "today").length, "today"),
+      statCard("Due Today", source.filter((row) => row.due_bucket === "today").length, "today"),
       statCard("Reports", source.filter((row) => row.work_category === "Report Review").length),
       statCard("Check-Ins", source.filter((row) => row.work_category === "Check-In Review").length),
       statCard("Coaching", source.filter((row) => row.work_category === "Coaching").length),
@@ -102,7 +102,7 @@
       if (!row.assigned_to) {
         const unassigned = document.createElement("em");
         unassigned.className = "work-unassigned";
-        unassigned.textContent = "UNASSIGNED";
+        unassigned.textContent = "Unassigned";
         person.append(unassigned);
       }
 
