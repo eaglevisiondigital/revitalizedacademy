@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="portal-people.css?v=133">
   <link rel="stylesheet" href="portal-staff-access.css?v=131">
   <link rel="stylesheet" href="portal-referrals.css?v=130">
+  <link rel="stylesheet" href="portal-team-calendar.css?v=135">
 </head>
 <body>
   <main class="portal-page">
@@ -2060,6 +2061,51 @@
           </div>
         </section>
 
+
+        <section id="team-calendar-panel" class="panel team-calendar-panel hidden" aria-labelledby="team-calendar-title">
+          <div class="panel-heading team-calendar-heading">
+            <div>
+              <p class="section-kicker">TEAM CALENDAR</p>
+              <h2 id="team-calendar-title">Consultations &amp; coaching schedule</h2>
+              <p class="panel-note">One schedule for interviews, consultations and coaching sessions across the ReVitalized team.</p>
+            </div>
+            <div id="team-calendar-conflict-chip" class="team-calendar-conflict-chip">0 conflicts</div>
+          </div>
+
+          <div class="team-calendar-toolbar">
+            <div class="team-calendar-tabs">
+              <button id="calendar-view-today" class="work-tab active" type="button">Today</button>
+              <button id="calendar-view-week" class="work-tab" type="button">Next 7 Days</button>
+              <button id="calendar-view-upcoming" class="work-tab" type="button">Upcoming</button>
+            </div>
+            <label><span>Staff</span><select id="calendar-staff-filter"><option value="">All staff</option></select></label>
+            <label><span>Type</span>
+              <select id="calendar-type-filter">
+                <option value="">All types</option>
+                <option value="application_interview">Application Interview</option>
+                <option value="consultation">Consultation</option>
+                <option value="coaching_session">Coaching Session</option>
+              </select>
+            </label>
+            <label><span>Status</span>
+              <select id="calendar-status-filter">
+                <option value="">All statuses</option>
+                <option value="requested">Requested</option>
+                <option value="scheduled">Scheduled</option>
+                <option value="completed">Completed</option>
+                <option value="no_show">No Show</option>
+                <option value="cancelled">Cancelled</option>
+              </select>
+            </label>
+            <button id="calendar-refresh" class="secondary-button compact" type="button">Refresh</button>
+          </div>
+
+          <div id="team-calendar-summary" class="team-calendar-summary"></div>
+          <div id="team-calendar-list" class="team-calendar-list">
+            <div class="empty-state">Loading team schedule...</div>
+          </div>
+        </section>
+
         <section id="team-workload-panel" class="panel team-workload-panel hidden" aria-labelledby="team-workload-title">
           <div class="panel-heading team-workload-heading">
             <div>
@@ -2361,5 +2407,6 @@
   <script defer src="portal-staff-access.js?v=131"></script>
   <script defer src="portal-permissions.js?v=130"></script>
   <script defer src="portal-referrals.js?v=130"></script>
+  <script defer src="portal-team-calendar.js?v=135"></script>
 </body>
 </html>
