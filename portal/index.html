@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="portal-people.css?v=154">
   <link rel="stylesheet" href="portal-staff-access.css?v=154">
   <link rel="stylesheet" href="portal-referrals.css?v=130">
+  <link rel="stylesheet" href="portal-family-requests.css?v=159">
   <link rel="stylesheet" href="portal-team-calendar.css?v=135">
   <link rel="stylesheet" href="portal-documents.css?v=136">
   <link rel="stylesheet" href="portal-billing.css?v=137">
@@ -2417,6 +2418,34 @@
           </div>
         </section>
 
+        <section id="family-requests-panel" class="panel family-requests-panel hidden" aria-labelledby="family-requests-title">
+          <div class="panel-heading family-requests-heading">
+            <div>
+              <p class="section-kicker">FAMILY HUB</p>
+              <h2 id="family-requests-title">Family Requests</h2>
+              <p class="panel-note">Review member requests to add, update or remove household profiles while preserving membership limits and household safeguards.</p>
+            </div>
+            <button id="family-requests-refresh" class="secondary-button compact" type="button">Refresh</button>
+          </div>
+          <div id="family-requests-summary" class="family-requests-summary"></div>
+          <div class="family-request-toolbar">
+            <label><span>Show requests</span>
+              <select id="family-requests-filter">
+                <option value="open">Open requests</option>
+                <option value="submitted">New</option>
+                <option value="in_review">In review</option>
+                <option value="approved">Approved</option>
+                <option value="completed">Completed</option>
+                <option value="declined">Declined</option>
+                <option value="all">All requests</option>
+              </select>
+            </label>
+          </div>
+          <div id="family-requests-list" class="family-request-list">
+            <div class="family-request-empty">Loading Family Hub requests...</div>
+          </div>
+        </section>
+
         <section id="program-catalog-panel" class="panel program-catalog-panel" aria-labelledby="program-catalog-title">
           <div class="panel-heading program-catalog-heading">
             <div>
@@ -2927,6 +2956,7 @@
   <script defer src="portal-staff-access.js?v=144"></script>
   <script defer src="portal-permissions.js?v=130"></script>
   <script defer src="portal-referrals.js?v=130"></script>
+  <script defer src="portal-family-requests.js?v=159"></script>
   <script defer src="portal-team-calendar.js?v=135"></script>
   <script defer src="portal-documents.js?v=136"></script>
   <script defer src="portal-billing.js?v=137"></script>
