@@ -2231,6 +2231,19 @@
             </form>
             <div id="staff-availability-list" class="staff-availability-list"></div>
           </section>
+
+          <section class="staff-admin-block">
+            <div class="staff-admin-block-head"><div><span>TIME OFF / EXCEPTIONS</span><strong>One-time unavailable blocks</strong></div></div>
+            <form id="staff-exception-form" class="staff-admin-form">
+              <div class="staff-admin-grid">
+                <label><span>Starts</span><input id="exception-start" type="datetime-local" required></label>
+                <label><span>Ends</span><input id="exception-end" type="datetime-local" required></label>
+                <label class="staff-admin-wide"><span>Reason</span><input id="exception-reason" type="text" maxlength="500" placeholder="Vacation, travel, blocked time, etc."></label>
+              </div>
+              <div class="staff-admin-actions"><button class="secondary-button" type="submit">Add Unavailable Block</button></div>
+            </form>
+            <div id="staff-exception-list" class="staff-availability-list"></div>
+          </section>
         </section>
       </div>
 
