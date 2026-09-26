@@ -2638,15 +2638,14 @@
 
   async function loadDashboard() {
     const [
+      bootstrapResult,
       dashboardResult,
       entitlementsResult,
       householdResult,
       journeyResult,
-      appointmentResult,
       goalsResult,
       habitsResult,
       assignmentsResult,
-      coachResult,
       progressResult,
       metricsResult,
       templateResult,
@@ -2657,51 +2656,24 @@
       groceryResult,
       coursesResult,
       resourcesResult,
-      conversationsResult,
-      notificationsResult,
-      notificationPrefsResult,
       healthConnectionsResult,
       challengesResult,
       communitySpacesResult,
       communityFeedResult,
       refuelResult,
-      ambassadorResult,
-      referralActivityResult,
-      coachingRequestsResult,
-      assignmentSummaryResult,
-      coachingHubResult,
       documentsResult,
-      billingResult,
-      agreementsResult,
       coachingEntitlementsResult,
       companionTypesResult,
-      companionRequestsResult,
-      dailyActionsResult,
-      weeklySummaryResult,
-      activityTimelineResult,
-      familyRequestsResult,
-      memberProfileResult,
-      appHomeResult,
-      appAccessResult,
-      progressSnapshotResult,
-      coachingSessionsResult,
-      courseProgressResult,
-      invoicesResult,
-      paymentHistoryResult,
-      journeyStatusResult,
-      familyHubSummaryResult,
-      companionSummaryResult,
-      membershipOverviewResult
+      companionRequestsResult
     ] = await Promise.all([
+      client.from("my_app_bootstrap_v2").select("*").single(),
       client.from("my_member_dashboard").select("*").maybeSingle(),
       client.from("my_member_entitlements").select("*").order("label"),
-      client.from("my_household").select("*").order("is_primary", { ascending: false }),
+      client.from("my_household").select("*").order("is_primary",{ascending:false}),
       client.from("my_member_journey").select("*").maybeSingle(),
-      client.from("my_member_upcoming_appointment").select("*").maybeSingle(),
       client.from("my_goals").select("*"),
       client.from("my_habits").select("*"),
       client.from("my_client_assignments").select("*"),
-      client.from("my_coach").select("*").eq("role","primary").maybeSingle(),
       client.from("my_recent_progress").select("*").limit(8),
       client.from("progress_metric_catalog").select("*").eq("active",true).eq("member_trackable",true).order("display_order"),
       client.from("checkin_templates").select("*").eq("template_key","weekly-revitalized-checkin").eq("active",true).maybeSingle(),
@@ -2712,45 +2684,58 @@
       client.from("my_grocery_list").select("*"),
       client.from("my_courses").select("*"),
       client.from("my_resources").select("*"),
-      client.from("my_conversations").select("*"),
-      client.from("my_notifications").select("*").limit(20),
-      client.from("notification_preferences").select("*").maybeSingle(),
       client.from("my_health_connections").select("*").order("provider_name"),
       client.from("my_challenges").select("*"),
       client.from("my_community_spaces").select("*"),
       client.from("my_community_feed").select("*"),
       client.from("my_refuel_access").select("*").limit(1).maybeSingle(),
-      client.from("my_ambassador_center").select("*").maybeSingle(),
-      client.from("my_referral_activity").select("*").order("first_touch_at",{ascending:false}).limit(20),
-      client.from("my_coaching_requests").select("*").order("created_at",{ascending:false}).limit(10),
-      client.from("my_assignment_summary").select("*").maybeSingle(),
-      client.from("my_coaching_hub").select("*").maybeSingle(),
       client.from("my_documents").select("*"),
-      client.from("my_billing_summary").select("*").limit(1).maybeSingle(),
-      client.from("my_agreements").select("*"),
       client.from("my_coaching_entitlements").select("*"),
       client.from("my_companion_question_types").select("*").order("sort_order"),
-      client.from("my_companion_requests").select("*").limit(20),
-      client.from("my_daily_action_center").select("*").maybeSingle(),
-      client.from("my_weekly_summary").select("*").maybeSingle(),
-      client.from("my_activity_timeline").select("*").order("occurred_at",{ascending:false}).limit(25),
-      client.from("my_family_requests").select("*").order("created_at",{ascending:false}).limit(10),
-      client.from("my_member_profile").select("*").maybeSingle(),
-      client.from("my_app_home").select("*").maybeSingle(),
-      client.from("my_app_access").select("*").maybeSingle(),
-      client.from("my_progress_snapshot").select("*").maybeSingle(),
-      client.from("my_coaching_sessions").select("*").order("scheduled_start",{ascending:false}).limit(8),
-      client.from("my_course_progress_summary").select("*").order("last_lesson_activity_at",{ascending:false}).limit(12),
-      client.from("my_invoices").select("*").order("created_at",{ascending:false}).limit(12),
-      client.from("my_payment_history").select("*").order("occurred_at",{ascending:false}).limit(20),
-      client.from("my_journey_status").select("*").maybeSingle(),
-      client.from("my_family_hub_summary").select("*").maybeSingle(),
-      client.from("my_companion_summary").select("*").maybeSingle(),
-      client.from("my_membership_overview").select("*").maybeSingle()
+      client.from("my_companion_requests").select("*").limit(20)
     ]);
 
-    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult,notificationPrefsResult,healthConnectionsResult,challengesResult,communitySpacesResult,communityFeedResult,refuelResult,ambassadorResult,referralActivityResult,coachingRequestsResult,assignmentSummaryResult,coachingHubResult,documentsResult,billingResult,agreementsResult,coachingEntitlementsResult,companionTypesResult,companionRequestsResult,dailyActionsResult,weeklySummaryResult,activityTimelineResult,familyRequestsResult,memberProfileResult,appHomeResult,appAccessResult,progressSnapshotResult,coachingSessionsResult,courseProgressResult,invoicesResult,paymentHistoryResult,journeyStatusResult,familyHubSummaryResult,companionSummaryResult,membershipOverviewResult].find((r) => r.error);
-    if (failed?.error) throw failed.error;
+    const failed=[
+      bootstrapResult,dashboardResult,entitlementsResult,householdResult,journeyResult,goalsResult,habitsResult,
+      assignmentsResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,
+      workoutsResult,groceryResult,coursesResult,resourcesResult,healthConnectionsResult,challengesResult,
+      communitySpacesResult,communityFeedResult,refuelResult,documentsResult,coachingEntitlementsResult,
+      companionTypesResult,companionRequestsResult
+    ].find((r)=>r.error);
+    if(failed?.error) throw failed.error;
+
+    const boot=bootstrapResult.data||{};
+    const packed=(data)=>({data:data??null,error:null});
+    const packedList=(data)=>({data:Array.isArray(data)?data:[],error:null});
+
+    const appointmentResult=packed(boot.upcoming_appointment);
+    const coachResult=packed(boot.coach);
+    const conversationsResult=packedList(boot.message_threads);
+    const notificationsResult=packedList(boot.recent_notifications);
+    const notificationPrefsResult=packed(boot.notification_preferences);
+    const ambassadorResult=packed(boot.ambassador);
+    const referralActivityResult=packedList(boot.referral_activity);
+    const coachingRequestsResult=packedList(boot.coaching_requests);
+    const assignmentSummaryResult=packed(boot.assignment_summary);
+    const coachingHubResult=packed(boot.coaching_hub);
+    const billingResult=packed(boot.billing);
+    const agreementsResult=packedList(boot.agreements);
+    const dailyActionsResult=packed(boot.daily_actions);
+    const weeklySummaryResult=packed(boot.weekly_summary);
+    const activityTimelineResult=packedList(boot.activity_timeline);
+    const familyRequestsResult=packedList(boot.family_requests);
+    const memberProfileResult=packed(boot.member_profile);
+    const appHomeResult=packed(boot.home);
+    const appAccessResult=packed(boot.access);
+    const progressSnapshotResult=packed(boot.progress_snapshot);
+    const coachingSessionsResult=packedList(boot.coaching_sessions);
+    const courseProgressResult=packedList(boot.course_progress);
+    const invoicesResult=packedList(boot.invoices);
+    const paymentHistoryResult=packedList(boot.payment_history);
+    const journeyStatusResult=packed(boot.journey_status);
+    const familyHubSummaryResult=packed(boot.family_hub);
+    const companionSummaryResult=packed(boot.companion_summary);
+    const membershipOverviewResult=packed(boot.membership_overview);
 
     const member = dashboardResult.data;
     currentMember = member || null;
