@@ -1690,12 +1690,20 @@
 
   function renderGoals(rows) {
     const list = el("rm-goals");
+    const history = el("rm-goal-history");
     list.replaceChildren();
+    history.replaceChildren();
+
     const active = rows.filter((row) => row.status === "active");
+    const historical = rows.filter((row) => ["paused","completed"].includes(row.status));
+
+    el("rm-goal-active-count").textContent=active.length+" Active";
+    el("rm-goal-history-count").textContent=String(historical.length);
+
     if (!active.length) {
       list.innerHTML = '<div class="rm112-empty">No active goals yet. Add one when you are ready to define your next target.</div>';
-      return;
     }
+
     active.forEach((row) => {
       const item = document.createElement("div");
       item.className = "rm114-item";
@@ -1707,33 +1715,95 @@
       due.textContent = row.target_date ? "Target " + formatDate(row.target_date) : "Active Goal";
       top.append(titleEl, due);
       item.append(top);
+
       if (row.description) {
         const p = document.createElement("p");
         p.textContent = row.description;
         item.append(p);
       }
+
       if(row.target_value!==null&&row.target_value!==undefined){
-        const target=document.createElement("span");target.className="rm190-goal-target";
+        const target=document.createElement("span");
+        target.className="rm190-goal-target";
         target.textContent="Target: "+row.target_value+(row.target_unit?" "+row.target_unit:"");
         item.append(target);
       }
-      const actions=document.createElement("div");actions.className="rm190-item-actions";
-      const complete=document.createElement("button");complete.type="button";complete.className="primary";complete.textContent="Complete Goal";
+
+      const actions=document.createElement("div");
+      actions.className="rm190-item-actions";
+      const complete=document.createElement("button");
+      complete.type="button";
+      complete.className="primary";
+      complete.textContent="Complete Goal";
       complete.addEventListener("click",()=>updateGoalStatus(row,"completed"));
-      const pause=document.createElement("button");pause.type="button";pause.className="muted";pause.textContent="Pause";
+      const pause=document.createElement("button");
+      pause.type="button";
+      pause.className="muted";
+      pause.textContent="Pause";
       pause.addEventListener("click",()=>updateGoalStatus(row,"paused"));
-      actions.append(complete,pause);item.append(actions);
+      actions.append(complete,pause);
+      item.append(actions);
       list.append(item);
     });
+
+    if(!historical.length){
+      history.innerHTML='<div class="rm112-empty">No paused or completed goals yet.</div>';
+      return;
+    }
+
+    historical
+      .sort((a,b)=>new Date(b.updated_at||b.completed_at||0)-new Date(a.updated_at||a.completed_at||0))
+      .forEach((row)=>{
+        const item=document.createElement("div");
+        item.className="rm191-history-item";
+        const copy=document.createElement("div");
+        const h=document.createElement("strong");
+        h.textContent=row.title;
+        const meta=document.createElement("span");
+        meta.textContent=row.status==="completed"
+          ?"Completed"+(row.completed_at?" · "+formatDate(row.completed_at,true):"")
+          :"Paused";
+        copy.append(h,meta);
+
+        const actions=document.createElement("div");
+        actions.className="rm191-history-actions";
+        if(row.status==="paused"){
+          const resume=document.createElement("button");
+          resume.type="button";
+          resume.textContent="Resume";
+          resume.addEventListener("click",()=>updateGoalStatus(row,"active"));
+          const cancel=document.createElement("button");
+          cancel.type="button";
+          cancel.className="cancel";
+          cancel.textContent="Cancel Goal";
+          cancel.addEventListener("click",()=>updateGoalStatus(row,"cancelled"));
+          actions.append(resume,cancel);
+        }else{
+          const reopen=document.createElement("button");
+          reopen.type="button";
+          reopen.textContent="Reopen";
+          reopen.addEventListener("click",()=>updateGoalStatus(row,"active"));
+          actions.append(reopen);
+        }
+        item.append(copy,actions);
+        history.append(item);
+      });
   }
 
   function renderHabits(rows) {
     const list = el("rm-habits");
+    const history = el("rm-habit-history");
     list.replaceChildren();
+    history.replaceChildren();
+
     const active = rows.filter((row) => row.status === "active");
+    const historical = rows.filter((row) => ["paused","completed"].includes(row.status));
+
+    el("rm-habit-active-count").textContent=active.length+" Active";
+    el("rm-habit-history-count").textContent=String(historical.length);
+
     if (!active.length) {
-      list.innerHTML = '<div class="rm112-empty">Your habit plan will appear here as your coaching plan is built.</div>';
-      return;
+      list.innerHTML = '<div class="rm112-empty">No active habits yet. Add a rhythm when you are ready to start tracking it.</div>';
     }
 
     active.forEach((row) => {
@@ -1768,13 +1838,63 @@
       button.disabled = doneToday;
       button.addEventListener("click", () => markHabit(row));
       actions.append(button);
+
       const pause=document.createElement("button");
-      pause.type="button";pause.className="muted";pause.textContent="Pause";
+      pause.type="button";
+      pause.className="muted";
+      pause.textContent="Pause";
       pause.addEventListener("click",()=>updateHabitStatus(row,"paused"));
       actions.append(pause);
+
       item.append(actions);
       list.append(item);
     });
+
+    if(!historical.length){
+      history.innerHTML='<div class="rm112-empty">No paused or completed habits yet.</div>';
+      return;
+    }
+
+    historical
+      .sort((a,b)=>new Date(b.updated_at||0)-new Date(a.updated_at||0))
+      .forEach((row)=>{
+        const item=document.createElement("div");
+        item.className="rm191-history-item";
+        const copy=document.createElement("div");
+        const h=document.createElement("strong");
+        h.textContent=row.title;
+        const meta=document.createElement("span");
+        meta.textContent=title(row.status)+" · "+title(row.frequency)+" · Target "+row.target_per_period+(row.unit?" "+row.unit:"");
+        copy.append(h,meta);
+
+        const actions=document.createElement("div");
+        actions.className="rm191-history-actions";
+        if(row.status==="paused"){
+          const resume=document.createElement("button");
+          resume.type="button";
+          resume.textContent="Resume";
+          resume.addEventListener("click",()=>updateHabitStatus(row,"active"));
+          const complete=document.createElement("button");
+          complete.type="button";
+          complete.textContent="Complete";
+          complete.addEventListener("click",()=>updateHabitStatus(row,"completed"));
+          const cancel=document.createElement("button");
+          cancel.type="button";
+          cancel.className="cancel";
+          cancel.textContent="Cancel";
+          cancel.addEventListener("click",()=>updateHabitStatus(row,"cancelled"));
+          actions.append(resume,complete,cancel);
+        }else{
+          const resume=document.createElement("button");
+          resume.type="button";
+          resume.textContent="Resume";
+          resume.addEventListener("click",()=>updateHabitStatus(row,"active"));
+          actions.append(resume);
+        }
+
+        item.append(copy,actions);
+        history.append(item);
+      });
   }
 
   function renderAssignments(rows) {

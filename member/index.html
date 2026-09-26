@@ -13,7 +13,7 @@
   <link rel="shortcut icon" type="image/png" href="../assets/images/revitalized-icon-approved.png">
   <link rel="apple-touch-icon" href="../assets/images/revitalized-icon-approved.png">
   <link rel="manifest" href="manifest.webmanifest?v=171">
-  <link rel="stylesheet" href="member110.css?v=190">
+  <link rel="stylesheet" href="member110.css?v=191">
 </head>
 <body>
   <main class="rm112-page">
@@ -342,9 +342,16 @@
               <p class="rm112-kicker">YOUR GOALS</p>
               <h2>What You’re Working Toward</h2>
             </div>
-            <button id="rm-add-goal" class="rm190-mini-action" type="button">Add Goal</button>
+            <div class="rm191-head-actions">
+              <span id="rm-goal-active-count" class="rm112-chip">0 Active</span>
+              <button id="rm-add-goal" class="rm190-mini-action" type="button">Add Goal</button>
+            </div>
           </div>
           <div id="rm-goals" class="rm114-stack"></div>
+          <details id="rm-goal-history-wrap" class="rm191-history-wrap">
+            <summary>Paused &amp; Completed Goals <span id="rm-goal-history-count">0</span></summary>
+            <div id="rm-goal-history" class="rm191-history-list"></div>
+          </details>
         </section>
 
         <section class="rm112-card">
@@ -353,9 +360,16 @@
               <p class="rm112-kicker">HABITS</p>
               <h2>Daily &amp; Weekly Rhythms</h2>
             </div>
-            <button id="rm-add-habit" class="rm190-mini-action" type="button">Add Habit</button>
+            <div class="rm191-head-actions">
+              <span id="rm-habit-active-count" class="rm112-chip">0 Active</span>
+              <button id="rm-add-habit" class="rm190-mini-action" type="button">Add Habit</button>
+            </div>
           </div>
           <div id="rm-habits" class="rm114-stack"></div>
+          <details id="rm-habit-history-wrap" class="rm191-history-wrap">
+            <summary>Paused &amp; Completed Habits <span id="rm-habit-history-count">0</span></summary>
+            <div id="rm-habit-history" class="rm191-history-list"></div>
+          </details>
         </section>
       </div>
 
@@ -1025,6 +1039,6 @@
   </main>
 
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
-  <script defer src="member110.js?v=190"></script>
+  <script defer src="member110.js?v=191"></script>
 </body>
 </html>

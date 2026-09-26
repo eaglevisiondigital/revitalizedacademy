@@ -1547,3 +1547,91 @@
   font-weight:850;
 }
 @media(max-width:560px){.rm190-form-grid{grid-template-columns:1fr}.rm190-form label.wide{grid-column:auto}}
+
+
+/* Build 191: goal and habit lifecycle management */
+.rm191-head-actions{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.rm191-history-wrap{
+  margin-top:12px;
+  border-top:1px solid #e4ece7;
+  padding-top:10px;
+}
+.rm191-history-wrap summary{
+  cursor:pointer;
+  color:#4e6558;
+  font-size:9.5px;
+  font-weight:900;
+  list-style:none;
+}
+.rm191-history-wrap summary::-webkit-details-marker{display:none}
+.rm191-history-wrap summary::after{
+  content:"＋";
+  float:right;
+  color:#789085;
+}
+.rm191-history-wrap[open] summary::after{content:"−"}
+.rm191-history-wrap summary span{
+  display:inline-flex;
+  min-width:24px;
+  justify-content:center;
+  margin-left:6px;
+  padding:2px 7px;
+  border-radius:999px;
+  background:#eef4f0;
+  color:#315b45;
+}
+.rm191-history-list{
+  display:grid;
+  gap:8px;
+  margin-top:9px;
+}
+.rm191-history-item{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:10px;
+  align-items:center;
+  padding:10px 11px;
+  border:1px solid #e0e8e3;
+  border-radius:10px;
+  background:#fbfcfb;
+}
+.rm191-history-item strong{
+  display:block;
+  color:#324c40;
+  font-size:10.5px;
+}
+.rm191-history-item span{
+  display:block;
+  margin-top:3px;
+  color:#78877e;
+  font-size:8.8px;
+}
+.rm191-history-actions{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+.rm191-history-actions button{
+  min-height:29px;
+  padding:0 8px;
+  border:1px solid #cfdcd4;
+  border-radius:8px;
+  background:#fff;
+  color:#154734;
+  font-size:8.2px;
+  font-weight:900;
+}
+.rm191-history-actions button.cancel{
+  color:#7d5b4d;
+  border-color:#dfd3ce;
+}
+@media(max-width:620px){
+  .rm191-history-item{grid-template-columns:1fr}
+  .rm191-history-actions{justify-content:flex-start}
+}
