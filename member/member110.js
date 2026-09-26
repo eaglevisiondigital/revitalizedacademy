@@ -607,7 +607,12 @@
   }
 
 
-  function renderBilling(row){
+  function moneyFromCents(cents,currency){
+    if(cents===null||cents===undefined)return "—";
+    return new Intl.NumberFormat(undefined,{style:"currency",currency:currency||"USD"}).format(Number(cents)/100);
+  }
+
+  function renderBilling(row,invoices=[],payments=[]){
     const card=el("rm-billing-card");
     if(!row){card.classList.add("hidden");return;}
     card.classList.remove("hidden");
@@ -615,10 +620,7 @@
     const target=el("rm-billing-summary");
     target.replaceChildren();
 
-    const money=row.amount_cents!==null&&row.amount_cents!==undefined
-      ?new Intl.NumberFormat(undefined,{style:"currency",currency:row.currency||"USD"}).format(Number(row.amount_cents)/100)
-      :"Not set";
-
+    const money=moneyFromCents(row.amount_cents,row.currency);
     const interval=row.billing_interval
       ?money+" / "+(Number(row.interval_count||1)>1?row.interval_count+" ":"")+title(row.billing_interval)
       :money;
@@ -627,15 +629,73 @@
       ["Plan",row.billing_plan_name||"Membership"],
       ["Billing",interval],
       ["Next Charge",row.next_charge_at?formatDate(row.next_charge_at,true):"Not scheduled"],
-      ["Commitment End",row.commitment_ends_at?formatDate(row.commitment_ends_at,true):"Not set"]
+      ["Commitment End",row.commitment_ends_at?formatDate(row.commitment_ends_at,true):"Not set"],
+      ["Last Payment",row.last_payment_at?formatDate(row.last_payment_at,true):"No payment recorded"],
+      ["Failed Payments",String(Number(row.failed_payment_count||0))]
     ].forEach(([label,value])=>{
       const item=document.createElement("div");
       const span=document.createElement("span");span.textContent=label;
       const strong=document.createElement("strong");strong.textContent=value;
       item.append(span,strong);target.append(item);
     });
+
+    const alert=el("rm-billing-alert");
+    const failed=Number(row.failed_payment_count||0);
+    if(failed>0||row.status==="past_due"){
+      alert.classList.remove("hidden");
+      alert.textContent="Your membership has a billing item that needs attention. Review the invoice below or contact the ReVitalized team for help.";
+    }else if(row.cancel_at_period_end){
+      alert.classList.remove("hidden");
+      alert.textContent="This membership is currently set to end at the close of the present billing period.";
+    }else{
+      alert.classList.add("hidden");
+      alert.textContent="";
+    }
+
+    renderInvoices(invoices);
+    renderPaymentHistory(payments);
   }
 
+  function renderInvoices(rows){
+    const target=el("rm-invoices");target.replaceChildren();
+    el("rm-invoice-count").textContent=String(rows.length);
+    if(!rows.length){
+      target.innerHTML='<div class="rm112-empty">No invoices are available yet.</div>';
+      return;
+    }
+    rows.forEach(row=>{
+      const item=document.createElement("div");item.className="rm186-record";
+      const copy=document.createElement("div");
+      const heading=document.createElement("strong");
+      heading.textContent=(row.invoice_number?"Invoice "+row.invoice_number:"Membership Invoice")+" · "+moneyFromCents(row.amount_due_cents,row.currency);
+      const meta=document.createElement("span");
+      meta.textContent=[title(row.status),row.due_at?"Due "+formatDate(row.due_at,true):null,row.paid_at?"Paid "+formatDate(row.paid_at,true):null].filter(Boolean).join(" · ");
+      copy.append(heading,meta);
+      const action=document.createElement("div");
+      if(row.hosted_invoice_url){
+        const link=document.createElement("a");link.href=row.hosted_invoice_url;link.target="_blank";link.rel="noopener noreferrer";link.textContent=row.status==="paid"?"View Invoice":"Open Invoice";action.append(link);
+      }
+      item.append(copy,action);target.append(item);
+    });
+  }
+
+  function renderPaymentHistory(rows){
+    const target=el("rm-payment-history");target.replaceChildren();
+    el("rm-payment-count").textContent=String(rows.length);
+    if(!rows.length){
+      target.innerHTML='<div class="rm112-empty">No payment activity is available yet.</div>';
+      return;
+    }
+    rows.forEach(row=>{
+      const item=document.createElement("div");item.className="rm186-record";
+      const copy=document.createElement("div");
+      const heading=document.createElement("strong");
+      heading.textContent=title(row.event_type||"payment")+" · "+moneyFromCents(row.amount_cents,row.currency);
+      const meta=document.createElement("span");
+      meta.textContent=[title(row.status),row.provider?title(row.provider):null,row.occurred_at?formatDate(row.occurred_at,true):null].filter(Boolean).join(" · ");
+      copy.append(heading,meta);item.append(copy);target.append(item);
+    });
+  }
 
   function safeDocumentFilename(name){
     return String(name||"file").replace(/[^A-Za-z0-9._-]+/g,"-").replace(/-+/g,"-").replace(/^-|-$/g,"")||"file";
@@ -1242,7 +1302,7 @@
       return;
     }
 
-    visible.slice(0,10).forEach((row)=>{
+    visible.slice(0,12).forEach((row)=>{
       const item=document.createElement("div");
       item.className="rm120-notification";
       const top=document.createElement("div");
@@ -1262,14 +1322,37 @@
       const meta=document.createElement("small");
       meta.textContent=formatDate(row.created_at,true);
       item.append(meta);
+
+      const actions=document.createElement("div");
+      actions.className="rm186-notification-actions";
       if(row.status==="unread"){
-        item.addEventListener("click",async()=>{
-          await client.from("member_notifications").update({status:"read",read_at:new Date().toISOString()}).eq("id",row.id);
+        const read=document.createElement("button");read.type="button";read.textContent="Mark Read";
+        read.addEventListener("click",async(event)=>{
+          event.stopPropagation();
+          await client.rpc("update_my_notification",{p_notification_id:row.id,p_action:"read"});
           await loadDashboard();
         });
+        actions.append(read);
       }
-      list.append(item);
+      const dismiss=document.createElement("button");dismiss.type="button";dismiss.className="dismiss";dismiss.textContent="Dismiss";
+      dismiss.addEventListener("click",async(event)=>{
+        event.stopPropagation();
+        await client.rpc("update_my_notification",{p_notification_id:row.id,p_action:"dismissed"});
+        await loadDashboard();
+      });
+      actions.append(dismiss);
+      item.append(actions);
     });
+  }
+
+  async function markAllNotificationsRead(){
+    const button=el("rm-notifications-mark-all");
+    const old=button.textContent;
+    button.disabled=true;button.textContent="Updating...";
+    const {error}=await client.rpc("mark_all_my_notifications_read");
+    button.disabled=false;button.textContent=old;
+    if(error){window.alert(error.message);return;}
+    await loadDashboard();
   }
 
   async function openConversation(row){
@@ -2403,7 +2486,9 @@
       appAccessResult,
       progressSnapshotResult,
       coachingSessionsResult,
-      courseProgressResult
+      courseProgressResult,
+      invoicesResult,
+      paymentHistoryResult
     ] = await Promise.all([
       client.from("my_member_dashboard").select("*").maybeSingle(),
       client.from("my_member_entitlements").select("*").order("label"),
@@ -2452,10 +2537,12 @@
       client.from("my_app_access").select("*").maybeSingle(),
       client.from("my_progress_snapshot").select("*").maybeSingle(),
       client.from("my_coaching_sessions").select("*").order("scheduled_start",{ascending:false}).limit(8),
-      client.from("my_course_progress_summary").select("*").order("last_lesson_activity_at",{ascending:false}).limit(12)
+      client.from("my_course_progress_summary").select("*").order("last_lesson_activity_at",{ascending:false}).limit(12),
+      client.from("my_invoices").select("*").order("created_at",{ascending:false}).limit(12),
+      client.from("my_payment_history").select("*").order("occurred_at",{ascending:false}).limit(20)
     ]);
 
-    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult,notificationPrefsResult,healthConnectionsResult,challengesResult,communitySpacesResult,communityFeedResult,refuelResult,ambassadorResult,referralActivityResult,coachingRequestsResult,assignmentSummaryResult,coachingHubResult,documentsResult,billingResult,agreementsResult,coachingEntitlementsResult,companionTypesResult,companionRequestsResult,dailyActionsResult,weeklySummaryResult,activityTimelineResult,familyRequestsResult,memberProfileResult,appHomeResult,appAccessResult,progressSnapshotResult,coachingSessionsResult,courseProgressResult].find((r) => r.error);
+    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult,notificationPrefsResult,healthConnectionsResult,challengesResult,communitySpacesResult,communityFeedResult,refuelResult,ambassadorResult,referralActivityResult,coachingRequestsResult,assignmentSummaryResult,coachingHubResult,documentsResult,billingResult,agreementsResult,coachingEntitlementsResult,companionTypesResult,companionRequestsResult,dailyActionsResult,weeklySummaryResult,activityTimelineResult,familyRequestsResult,memberProfileResult,appHomeResult,appAccessResult,progressSnapshotResult,coachingSessionsResult,courseProgressResult,invoicesResult,paymentHistoryResult].find((r) => r.error);
     if (failed?.error) throw failed.error;
 
     const member = dashboardResult.data;
@@ -2488,6 +2575,24 @@
     renderProgressSnapshot(progressSnapshotResult.data||null);
     renderSessionHistory(coachingSessionsResult.data||[]);
     renderCourseProgress(courseProgressResult.data||[]);
+    renderCoachingRequests(coachingRequestsResult.data||[]);
+    renderCoachingHub(assignmentSummaryResult.data||null,coachingHubResult.data||null);
+    renderCoachingEntitlements(coachingEntitlementsResult.data||[]);
+    renderAgreements(agreementsResult.data||[]);
+    renderBilling(billingResult.data||null,invoicesResult.data||[],paymentHistoryResult.data||[]);
+    renderDocuments(documentsResult.data||[]);
+    renderReferralSummary(ambassadorResult.data||null,referralActivityResult.data||[]);
+    renderRefuel(refuelResult.data||null);
+    renderCommunity(communitySpacesResult.data||[],communityFeedResult.data||[]);
+    renderChallenges(challengesResult.data||[]);
+    renderHealthConnections(healthConnectionsResult.data||[]);
+    renderNotificationPreferences(notificationPrefsResult.data||null);
+    renderConversations(conversationsResult.data||[]);
+    renderNotifications(notificationsResult.data||[]);
+    renderCourses(coursesResult.data||[]);
+    renderResources(resourcesResult.data||[]);
+    renderMealPlan(mealPlanResult.data||null,mealsResult.data||[],groceryResult.data||[]);
+    renderFitnessPlan(fitnessPlanResult.data||null,workoutsResult.data||[]);
 
     const journey = journeyResult.data;
     if (journey) {
@@ -2592,6 +2697,7 @@
   el("rm-ask-form").addEventListener("submit",submitAskReVitalized);
 
   el("rm-notification-form").addEventListener("submit",saveNotificationPreferences);
+  el("rm-notifications-mark-all").addEventListener("click",markAllNotificationsRead);
 
   el("rm-message-form").addEventListener("submit",async(event)=>{
     event.preventDefault();

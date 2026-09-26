@@ -1200,3 +1200,114 @@
   .rm185-session-row,
   .rm185-learning-row{grid-template-columns:1fr}
 }
+
+
+/* Build 186: restore full member rendering + billing center + notification controls */
+.rm186-secondary-action{
+  min-height:34px;
+  padding:0 10px;
+  border:1px solid #cbdad1;
+  border-radius:8px;
+  background:#fff;
+  color:#154734;
+  font-size:9px;
+  font-weight:900;
+  cursor:pointer;
+}
+.rm186-billing-alert{
+  margin:10px 0 12px;
+  padding:12px 14px;
+  border:1px solid #edd6c8;
+  border-radius:11px;
+  background:#fff7f2;
+  color:#874f38;
+  font-size:11px;
+  line-height:1.45;
+}
+.rm186-billing-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-top:16px;
+}
+.rm186-billing-grid>section{
+  min-width:0;
+}
+.rm186-subhead{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:8px;
+}
+.rm186-subhead strong{
+  color:#284a3b;
+  font-size:12px;
+}
+.rm186-subhead span{
+  color:#73837a;
+  font-size:9px;
+  font-weight:850;
+}
+.rm186-record-list{
+  display:grid;
+  gap:8px;
+}
+.rm186-record{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:10px;
+  align-items:center;
+  padding:11px 12px;
+  border:1px solid #dde7e1;
+  border-radius:11px;
+  background:#fff;
+}
+.rm186-record strong{
+  display:block;
+  color:#2a4a3c;
+  font-size:10.5px;
+}
+.rm186-record span,
+.rm186-record small{
+  display:block;
+  margin-top:3px;
+  color:#74847b;
+  font-size:8.8px;
+  line-height:1.4;
+}
+.rm186-record a{
+  display:inline-flex;
+  align-items:center;
+  min-height:30px;
+  padding:0 8px;
+  border:1px solid #154734;
+  border-radius:8px;
+  color:#154734;
+  text-decoration:none;
+  font-size:8.5px;
+  font-weight:900;
+}
+.rm186-notification-actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:6px;
+  margin-top:8px;
+}
+.rm186-notification-actions button{
+  min-height:29px;
+  padding:0 8px;
+  border:1px solid #d3dfd7;
+  border-radius:8px;
+  background:#fff;
+  color:#496154;
+  font-size:8.5px;
+  font-weight:850;
+}
+.rm186-notification-actions button.dismiss{
+  color:#7e5a4d;
+  border-color:#e0d4cf;
+}
+@media(max-width:800px){
+  .rm186-billing-grid{grid-template-columns:1fr}
+}

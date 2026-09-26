@@ -13,7 +13,7 @@
   <link rel="shortcut icon" type="image/png" href="../assets/images/revitalized-icon-approved.png">
   <link rel="apple-touch-icon" href="../assets/images/revitalized-icon-approved.png">
   <link rel="manifest" href="manifest.webmanifest?v=171">
-  <link rel="stylesheet" href="member110.css?v=185">
+  <link rel="stylesheet" href="member110.css?v=186">
 </head>
 <body>
   <main class="rm112-page">
@@ -435,8 +435,9 @@
           <div class="rm112-card-head">
             <div>
               <p class="rm112-kicker">NOTIFICATIONS</p>
-              <h2>What needs your attention</h2>
+              <h2>What Needs Your Attention</h2>
             </div>
+            <button id="rm-notifications-mark-all" class="rm186-secondary-action" type="button">Mark All Read</button>
           </div>
           <div id="rm-notifications" class="rm114-stack"></div>
         </section>
@@ -681,11 +682,29 @@
         <div class="rm112-card-head">
           <div>
             <p class="rm112-kicker">MEMBERSHIP BILLING</p>
-            <h2>Your billing schedule</h2>
+            <h2>Your Billing Center</h2>
           </div>
           <span id="rm-billing-status-chip" class="rm112-chip">Pending</span>
         </div>
+        <div id="rm-billing-alert" class="rm186-billing-alert hidden"></div>
         <div id="rm-billing-summary" class="rm137-billing-summary"></div>
+
+        <div class="rm186-billing-grid">
+          <section>
+            <div class="rm186-subhead">
+              <strong>Invoices</strong>
+              <span id="rm-invoice-count">0</span>
+            </div>
+            <div id="rm-invoices" class="rm186-record-list"></div>
+          </section>
+          <section>
+            <div class="rm186-subhead">
+              <strong>Payment History</strong>
+              <span id="rm-payment-count">0</span>
+            </div>
+            <div id="rm-payment-history" class="rm186-record-list"></div>
+          </section>
+        </div>
       </section>
 
       <section class="rm112-card rm136-documents-card">
@@ -862,6 +881,6 @@
   </main>
 
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
-  <script defer src="member110.js?v=185"></script>
+  <script defer src="member110.js?v=186"></script>
 </body>
 </html>
