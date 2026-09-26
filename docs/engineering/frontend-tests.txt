@@ -1,0 +1,96 @@
+
+> test
+> node --test tests/*.cjs
+
+✔ first lead saves independently; failed lead does not advance (1233.03225ms)
+✔ proxy details, relationship, age and authorization are required; switching hides stale values (2590.260125ms)
+✔ full completion: Myself, age self, Male, Male (7639.906ms)
+✔ full completion: My child, age 19, Male, Male (8703.764167ms)
+✔ full completion: My spouse, age 35, Female, Pregnant (9008.6985ms)
+✔ full completion: Someone else, age 35, Female, Postpartum (8389.106292ms)
+✔ full completion: Someone else, age 55, Female, Perimenopause (8722.480333ms)
+✔ full completion: Someone else, age 60, Female, Menopause (8766.9735ms)
+✔ new subject display is text-only and never alters clinical section markup (1318.622417ms)
+✔ child age 0: full approved questionnaire, independent lead, child-only coach record (2964.111084ms)
+✔ child age 8: full approved questionnaire, independent lead, child-only coach record (4857.998583ms)
+✔ child age 18: full approved questionnaire, independent lead, child-only coach record (2812.981625ms)
+✔ switching child/adult question sets drops stale answers and preserves lead and identity controls (1595.9465ms)
+✔ child follow-ups clear deselected concerns; period and digestion branches disable hidden answers (1211.724166ms)
+✔ child required choices and detail questions block precisely; skipped optional puberty does not block (1534.381167ms)
+✔ missing child module blocks child continuation without losing captured lead or breaking adults (1288.153167ms)
+✔ gut questions appear once in Driver 7; stool choices cap at three and validate without change events (7126.202917ms)
+✔ reproductive pathways require a selection and validate only the visible sex-specific symptom details (3305.4905ms)
+✔ adult and child submissions have a separate required closing step and optional context (10702.549833ms)
+✔ child gender offers only Male and Female, requires an answer and clears on adult switch (1672.245791ms)
+✔ one static Build 76 coaching section replaces both legacy sections (0.770792ms)
+﹣ every byte outside the authorized coaching region and its asset includes is unchanged (0.069125ms) # SKIP
+﹣ assessment popup is byte-for-byte unchanged (0.055833ms) # SKIP
+﹣ footer and results disclaimer are byte-for-byte unchanged (0.048791ms) # SKIP
+﹣ all assessment routes and includes are preserved (0.055917ms) # SKIP
+﹣ shared health/results disclaimer CSS is unchanged (0.041667ms) # SKIP
+﹣ original menu, video and Longevity Matrix JS is preserved; replacement JS parses (0.042625ms) # SKIP
+﹣ approved art, unique asset references and two responsive enrollment links exist (4.314334ms) # SKIP
+✔ protected baseline unchanged: consult.html (0.859916ms)
+✔ protected baseline unchanged: js/vitality55.js (0.149042ms)
+✔ protected baseline unchanged: js/vitality-child.js (0.109291ms)
+✔ protected baseline unchanged: css/vitality55.css (0.226167ms)
+✔ protected baseline unchanged: js/revitalized-data.js (0.372542ms)
+✔ protected baseline unchanged: webinar.html (0.3025ms)
+✔ homepage routes assessment and webinar visitors to existing protected flows (77.585833ms)
+✔ priority webinar retains fifty-seat copy, free priority form and required contact/consent (22.993541ms)
+✔ member bootstrap stays v2 while signing submits displayed hash (1.908459ms)
+✔ CSV uses atomic export RPC; independent audit-call race is gone (0.645167ms)
+✔ CSV quoting neutralizes formula prefixes and preserves ordinary names (1.041667ms)
+Enrollment Build 82 static checks passed.
+✔ tests/enrollment82.cjs (99.199ms)
+﹣ existing Build76 app prefix is preserved (0.494834ms) # SKIP
+✔ old family hero is removed and new section is unique (2.488916ms)
+✔ all four original family cards remain (1.198667ms)
+﹣ other family sections and footer are unchanged (0.06775ms) # SKIP
+✔ buttons retain real stories and assessment destinations (0.281084ms)
+﹣ approved assets, markup and code match the checked package (0.055042ms) # SKIP
+﹣ protected baseline files are untouched when present (0.043833ms) # SKIP
+﹣ only the authorized card section and CSS include changed (0.5705ms) # SKIP
+✔ all four titles, descriptions and numbers remain verbatim (0.791167ms)
+✔ approved hero and all original pillar markup are unchanged (6.336084ms)
+✔ footer and assessment destinations are unchanged (1.317041ms)
+﹣ approved build artwork and files match validated output (0.068042ms) # SKIP
+﹣ existing shared resources remain unchanged when present (0.044792ms) # SKIP
+✔ new CSS contains no assessment or legal element selectors (1.550334ms)
+✔ browser results confirm 50% gap reduction and responsive fit (0.1215ms)
+✔ removing only Build 79 additions restores byte-identical current-main source (24.952375ms)
+✔ all four age-group cards and their wording are unchanged (0.967791ms)
+✔ header, approved hero, pillar cards, footer and final CTA remain identical (4.5145ms)
+✔ assessment destinations and their existing attributes are unchanged (0.764333ms)
+✔ real family story IDs are used; unverified mockup quote is absent (2.168958ms)
+✔ new CSS and JS do not select assessment or footer components (0.848417ms)
+﹣ all packaged runtime files have the expected hashes (0.065084ms) # SKIP
+﹣ shared resources are unchanged when checked in the installed site (0.047125ms) # SKIP
+✔ saved browser checks show responsive fit and working controls (0.098917ms)
+✔ seven original videos remain available (2.774ms)
+✔ three original article destinations remain available (0.160042ms)
+﹣ existing footer and disclaimer are unchanged (0.061083ms) # SKIP
+✔ assessment buttons still point to the protected consult route (0.256708ms)
+✔ newsletter remains the original public Netlify form (0.945916ms)
+✔ new assets and stylesheet exist (0.131958ms)
+✔ no assessment or legal CSS selectors added (0.130917ms)
+✔ page script does not write assessment data or local storage (0.079666ms)
+✔ single main and h1; original watch/read anchor IDs retained (0.534167ms)
+﹣ only the webinar section and its new stylesheet include changed (0.594791ms) # SKIP
+﹣ existing footer and disclaimer link are unchanged (0.073959ms) # SKIP
+﹣ assessment popup and script include are unchanged (0.05575ms) # SKIP
+﹣ all assessment buttons preserve their destinations and markup (0.047584ms) # SKIP
+﹣ shared stylesheet, including disclaimer rules, is unchanged (0.059958ms) # SKIP
+﹣ shared JavaScript is unchanged (0.040542ms) # SKIP
+﹣ webinar form fields, validation and Netlify configuration are preserved (0.045542ms) # SKIP
+﹣ the three existing benefits retain their original wording and icons (1.807458ms) # SKIP
+﹣ benefits and signup are both in the new conversion row (0.257417ms) # SKIP
+﹣ new layout styles are scoped only to this webinar (0.114208ms) # SKIP
+ℹ tests 83
+ℹ suites 0
+ℹ pass 56
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 27
+ℹ todo 0
+ℹ duration_ms 95961.42075

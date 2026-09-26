@@ -50,16 +50,18 @@ Do not conflate these with the earlier explicitly ReVitalized dashboard referenc
 - “Mobile health bridge complete” supports a backend ingestion claim, not proof of native apps or connected watches.
 - Historical “security passed” is narrower than the current authorization concerns. Advisor output is not a substitute for tests.
 
-## Primary Chat decisions still needed
+## Remaining decisions and missing evidence
 
-1. **Authoritative ownership and release baseline.** Confirm the exact primary Chat title and adoption of the evidence-backed application repository recommendation. Current documents live locally in that repository; no remote publication occurred.
-2. **Native app and platform roadmap.** Decide the implementation/release path for native iOS/Android and any remaining GoodBarber/Global Propel/Mighty Networks relationship. Current static web + Supabase implementation is the baseline; do not infer a migration off working integrations.
-3. **Family health visibility and score methodology.** The mockups establish desired views; they do not settle guardian/adult permissions, family aggregation rules or a clinically approved scoring formula. Preserve deployed behavior and require explicit decisions before expanding disclosure or presenting illustrative scores as real outcomes.
-4. **Activation and paid-launch sequencing.** Reconcile the earlier payment-plus-assessment access rule with personalized company-approved contracts/signatures and current enrollment-readiness checks, including membership-specific exceptions. Payment provider, webinar date, current merchant readiness and release criteria are not verified.
-5. **Assessment record architecture.** Detailed public answers remain in Netlify while Supabase receives progress/tags. Historical game-plan ideas include scoring and save/resume, but protected build notes explicitly omit them. Decide whether/when to introduce them, approved methodology, retention and consent; do not implement from an assistant's feature wishlist.
-6. **Stronger export constraints, if intended.** CSV UI permission is distinct from restricting bulk extraction of data a staff user can otherwise read. Specify any additional server-side limits before changing access patterns.
+Repository and primary authority, system ownership, adult-health privacy defaults, guardian-aware access, six-month Foundations, 50-seat webinar, export requirements and the independent payment/agreement gates are now APPROVED (see below). Do not request them again.
 
-These are unresolved decisions or missing approval provenance, not evidence that contradictory approved decisions can be silently reconciled by Codex.
+UNKNOWN / requiring primary Chat or Work resolution before the relevant release:
+
+1. Justyn/Elle’s Health Score/Family Health Score methodology and detailed family aggregation rules; no formula is approved by mockup numbers.
+2. Native app vendor/release path, after preserving owned GitHub/Supabase architecture and optional shell boundaries.
+3. Hosted staging origin, Netlify binding, real provider/payment/webinar readiness and coordinated release acceptance.
+4. Original assessment source materials; detailed answers/scoring/resume stay in Netlify until a later explicit change.
+5. Onboarding access sequencing for unsigned clients, independently authenticated secondary signatures, and post-activation payment reversal/access lifecycle. Current implementation does not invent new rules for these cases or rewrite existing records.
+6. Any stronger restriction on bulk copying beyond explicit CSV permission and least-privilege readable rows.
 
 ## Approved engineering-package decisions — 2026-09-26
 

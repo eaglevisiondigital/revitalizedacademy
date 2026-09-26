@@ -1,0 +1,170 @@
+[
+  {
+    "test": "every byte outside the authorized coaching region and its asset includes is unchanged",
+    "file": "tests/coaching76-integrity.cjs",
+    "category": "1. stale expected build hash/markup",
+    "action": "Retire the Build 76\u201381 change-only snapshot; retain its body for historical evidence. Current behavioral and protected-file tests replace this assertion."
+  },
+  {
+    "test": "assessment popup is byte-for-byte unchanged",
+    "file": "tests/coaching76-integrity.cjs",
+    "category": "1. stale expected build hash/markup",
+    "action": "Retire the Build 76\u201381 change-only snapshot; retain its body for historical evidence. Current behavioral and protected-file tests replace this assertion."
+  },
+  {
+    "test": "footer and results disclaimer are byte-for-byte unchanged",
+    "file": "tests/coaching76-integrity.cjs",
+    "category": "1. stale expected build hash/markup",
+    "action": "Retire the Build 76\u201381 change-only snapshot; retain its body for historical evidence. Current behavioral and protected-file tests replace this assertion."
+  },
+  {
+    "test": "all assessment routes and includes are preserved",
+    "file": "tests/coaching76-integrity.cjs",
+    "category": "1. stale expected build hash/markup",
+    "action": "Retire the Build 76\u201381 change-only snapshot; retain its body for historical evidence. Current behavioral and protected-file tests replace this assertion."
+  },
+  {
+    "test": "shared health/results disclaimer CSS is unchanged",
+    "file": "tests/coaching76-integrity.cjs",
+    "category": "1. stale expected build hash/markup",
+    "action": "Retire the Build 76\u201381 change-only snapshot; retain its body for historical evidence. Current behavioral and protected-file tests replace this assertion."
+  },
+  {
+    "test": "original menu, video and Longevity Matrix JS is preserved; replacement JS parses",
+    "file": "tests/coaching76-integrity.cjs",
+    "category": "1. stale expected build hash/markup",
+    "action": "Retire the Build 76\u201381 change-only snapshot; retain its body for historical evidence. Current behavioral and protected-file tests replace this assertion."
+  },
+  {
+    "test": "approved art, unique asset references and two responsive enrollment links exist",
+    "file": "tests/coaching76-integrity.cjs",
+    "category": "1. stale expected build hash/markup",
+    "action": "Retire the Build 76\u201381 change-only snapshot; retain its body for historical evidence. Current behavioral and protected-file tests replace this assertion."
+  },
+  {
+    "test": "tests/enrollment82.cjs",
+    "file": "tests/enrollment82.cjs",
+    "category": "2. stale requirement",
+    "action": "Update approved six-month requirement and current 12-Month Intensive label; retain all other assertions."
+  },
+  {
+    "test": "existing Build76 app prefix is preserved",
+    "file": "tests/family-health77-integrity.cjs",
+    "category": "1. stale expected build hash/markup",
+    "action": "Retire the Build 76\u201381 change-only snapshot; retain its body for historical evidence. Current behavioral and protected-file tests replace this assertion."
+  },
+  {
+    "test": "other family sections and footer are unchanged",
+    "file": "tests/family-health77-integrity.cjs",
+    "category": "1. stale expected build hash/markup",
+    "action": "Retire the Build 76\u201381 change-only snapshot; retain its body for historical evidence. Current behavioral and protected-file tests replace this assertion."
+  },
+  {
+    "test": "approved assets, markup and code match the checked package",
+    "file": "tests/family-health77-integrity.cjs",
+    "category": "1. stale expected build hash/markup",
+    "action": "Retire the Build 76\u201381 change-only snapshot; retain its body for historical evidence. Current behavioral and protected-file tests replace this assertion."
+  },
+  {
+    "test": "protected baseline files are untouched when present",
+    "file": "tests/family-health77-integrity.cjs",
+    "category": "1. stale expected build hash/markup",
+    "action": "Retire the Build 76\u201381 change-only snapshot; retain its body for historical evidence. Current behavioral and protected-file tests replace this assertion."
+  },
+  {
+    "test": "only the authorized card section and CSS include changed",
+    "file": "tests/family-health78-integrity.cjs",
+    "category": "1. stale expected build hash/markup",
+    "action": "Retire the Build 76\u201381 change-only snapshot; retain its body for historical evidence. Current behavioral and protected-file tests replace this assertion."
+  },
+  {
+    "test": "approved build artwork and files match validated output",
+    "file": "tests/family-health78-integrity.cjs",
+    "category": "1. stale expected build hash/markup",
+    "action": "Retire the Build 76\u201381 change-only snapshot; retain its body for historical evidence. Current behavioral and protected-file tests replace this assertion."
+  },
+  {
+    "test": "existing shared resources remain unchanged when present",
+    "file": "tests/family-health78-integrity.cjs",
+    "category": "1. stale expected build hash/markup",
+    "action": "Retire the Build 76\u201381 change-only snapshot; retain its body for historical evidence. Current behavioral and protected-file tests replace this assertion."
+  },
+  {
+    "test": "all packaged runtime files have the expected hashes",
+    "file": "tests/family-health79-integrity.cjs",
+    "category": "1. stale expected build hash/markup",
+    "action": "Retire the Build 76\u201381 change-only snapshot; retain its body for historical evidence. Current behavioral and protected-file tests replace this assertion."
+  },
+  {
+    "test": "shared resources are unchanged when checked in the installed site",
+    "file": "tests/family-health79-integrity.cjs",
+    "category": "1. stale expected build hash/markup",
+    "action": "Retire the Build 76\u201381 change-only snapshot; retain its body for historical evidence. Current behavioral and protected-file tests replace this assertion."
+  },
+  {
+    "test": "existing footer and disclaimer are unchanged",
+    "file": "tests/free-help80.cjs",
+    "category": "1. stale expected build hash/markup",
+    "action": "Retire the Build 76\u201381 change-only snapshot; retain its body for historical evidence. Current behavioral and protected-file tests replace this assertion."
+  },
+  {
+    "test": "only the webinar section and its new stylesheet include changed",
+    "file": "tests/webinar81-integrity.cjs",
+    "category": "1. stale expected build hash/markup",
+    "action": "Retire the Build 76\u201381 change-only snapshot; retain its body for historical evidence. Current behavioral and protected-file tests replace this assertion."
+  },
+  {
+    "test": "existing footer and disclaimer link are unchanged",
+    "file": "tests/webinar81-integrity.cjs",
+    "category": "1. stale expected build hash/markup",
+    "action": "Retire the Build 76\u201381 change-only snapshot; retain its body for historical evidence. Current behavioral and protected-file tests replace this assertion."
+  },
+  {
+    "test": "assessment popup and script include are unchanged",
+    "file": "tests/webinar81-integrity.cjs",
+    "category": "1. stale expected build hash/markup",
+    "action": "Retire the Build 76\u201381 change-only snapshot; retain its body for historical evidence. Current behavioral and protected-file tests replace this assertion."
+  },
+  {
+    "test": "all assessment buttons preserve their destinations and markup",
+    "file": "tests/webinar81-integrity.cjs",
+    "category": "1. stale expected build hash/markup",
+    "action": "Retire the Build 76\u201381 change-only snapshot; retain its body for historical evidence. Current behavioral and protected-file tests replace this assertion."
+  },
+  {
+    "test": "shared stylesheet, including disclaimer rules, is unchanged",
+    "file": "tests/webinar81-integrity.cjs",
+    "category": "1. stale expected build hash/markup",
+    "action": "Retire the Build 76\u201381 change-only snapshot; retain its body for historical evidence. Current behavioral and protected-file tests replace this assertion."
+  },
+  {
+    "test": "shared JavaScript is unchanged",
+    "file": "tests/webinar81-integrity.cjs",
+    "category": "1. stale expected build hash/markup",
+    "action": "Retire the Build 76\u201381 change-only snapshot; retain its body for historical evidence. Current behavioral and protected-file tests replace this assertion."
+  },
+  {
+    "test": "webinar form fields, validation and Netlify configuration are preserved",
+    "file": "tests/webinar81-integrity.cjs",
+    "category": "1. stale expected build hash/markup",
+    "action": "Retire the Build 76\u201381 change-only snapshot; retain its body for historical evidence. Current behavioral and protected-file tests replace this assertion."
+  },
+  {
+    "test": "the three existing benefits retain their original wording and icons",
+    "file": "tests/webinar81-integrity.cjs",
+    "category": "1. stale expected build hash/markup",
+    "action": "Retire the Build 76\u201381 change-only snapshot; retain its body for historical evidence. Current behavioral and protected-file tests replace this assertion."
+  },
+  {
+    "test": "benefits and signup are both in the new conversion row",
+    "file": "tests/webinar81-integrity.cjs",
+    "category": "1. stale expected build hash/markup",
+    "action": "Retire the Build 76\u201381 change-only snapshot; retain its body for historical evidence. Current behavioral and protected-file tests replace this assertion."
+  },
+  {
+    "test": "new layout styles are scoped only to this webinar",
+    "file": "tests/webinar81-integrity.cjs",
+    "category": "1. stale expected build hash/markup",
+    "action": "Retire the Build 76\u201381 change-only snapshot; retain its body for historical evidence. Current behavioral and protected-file tests replace this assertion."
+  }
+]

@@ -283,3 +283,11 @@ Remote investigation for this baseline is read-only. Do not apply migrations, up
 CURRENT PACKAGE AUTHORIZATION — 2026-09-26
 
 The user authorizes backend source recovery, narrowly scoped authorization fixes, isolated tests, documentation, commits and an ordinary push to codex/* (no force push). Production remains read-only. Do not merge, deploy, apply migrations remotely, or change production configuration. Earlier baseline-only restrictions above describe the completed investigation and do not prevent this engineering package.
+
+POST-RECOVERY ENGINEERING RULES — 2026-09-26
+
+Read supabase/SOURCE_RECOVERY.md before database work. The historical snapshot is outside migrations and must never be blindly applied to live Supabase. Use Supabase CLI migration new for forward files; do not fabricate historical SQL, ledger entries or timestamps. Reconcile actual remote history before any approved push/apply. Source recovery is not a full production backup.
+
+Run npm test, npm run check:js, npm run test:backend and frozen Deno check/test as applicable. The backend test runner only creates disposable databases on loopback. Preserve explicit retired-test classifications; do not renew whole-page historical hashes as a shortcut.
+
+Current branch: codex/backend-security-gate. Baseline docs are committed as 562db3f. Current code fixes are not deployed. For this authorized branch push, use [skip netlify] in the latest commit message to prevent Netlify deploys. No deployment workflow belongs in this package. Preserve the existing v2 consumer; use docs/BOOTSTRAP_COMPATIBILITY.md for staged integration.

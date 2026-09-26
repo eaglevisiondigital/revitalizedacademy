@@ -224,19 +224,8 @@
       window.alert("You do not have permission to export the People database.");
       return;
     }
-    let q=client.from("admin_people_directory").select("*");
-    const search=el("people-search-input").value.trim();
-    if(search){
-      const safe=search.replace(/[,%]/g," ").trim();
-      q=q.or("first_name.ilike.%"+safe+"%,last_name.ilike.%"+safe+"%,email.ilike.%"+safe+"%,phone.ilike.%"+safe+"%");
-    }
-    const stage=el("people-stage-filter").value;if(stage)q=q.eq("lifecycle_stage",stage);
-    const assigned=el("people-assigned-filter").value;if(assigned==="unassigned")q=q.is("assigned_to",null);else if(assigned)q=q.eq("assigned_to",assigned);
-    const source=el("people-source-filter").value;if(source)q=q.eq("first_source",source);
-    q=applySort(q).limit(5000);
-
-    const {data,error}=await q;
-    if(error){window.alert(error.message);return;}
+    const {data,error}=await client.rpc("export_people",{p_filters:currentConfiguration()});
+    if(error){window.alert("Export was blocked: "+error.message);return;}
 
     const headers=["First Name","Last Name","Email","Phone","Stage","Assessment","Enrollment","Assigned","Source","Created","Enrolled","Last Activity","Follow-Up"];
     const rows=(data||[]).map((r)=>[
@@ -244,14 +233,8 @@
       r.vitality_status||"not_started",r.enrollment_status||"not_started",r.assigned_name||"",
       r.first_source||"",r.created_at||"",r.enrolled_at||"",r.last_activity_at||"",r.next_follow_up_at||""
     ]);
-    const esc=(v)=>'"'+String(v).replace(/"/g,'""')+'"';
+    const esc=(v)=>{const value=String(v);return '"'+(/^[\s\uFEFF]*[=+@-]|^[\t\r\n]/.test(value)?"'":"")+value.replace(/"/g,'""')+'"';};
     const csv=[headers,...rows].map((row)=>row.map(esc).join(",")).join("\n");
-    const {error:auditError}=await client.rpc("log_people_export",{
-      p_row_count:rows.length,
-      p_filters:currentConfiguration()
-    });
-    if(auditError){window.alert("Export was blocked because the audit record could not be created: "+auditError.message);return;}
-
     const blob=new Blob([csv],{type:"text/csv;charset=utf-8"});
     const url=URL.createObjectURL(blob);
     const a=document.createElement("a");

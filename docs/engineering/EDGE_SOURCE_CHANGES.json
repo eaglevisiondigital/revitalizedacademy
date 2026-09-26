@@ -1,0 +1,107 @@
+[
+  {
+    "function": "public-intake",
+    "observed_live_version": 6,
+    "branch_source_changed": true,
+    "reason": "Type-only non-null and Set annotations; emitted intake behavior unchanged.",
+    "deployed_by_this_package": false
+  },
+  {
+    "function": "video-message-view",
+    "observed_live_version": 2,
+    "branch_source_changed": false,
+    "reason": "Recovered unchanged.",
+    "deployed_by_this_package": false
+  },
+  {
+    "function": "journey-link",
+    "observed_live_version": 6,
+    "branch_source_changed": true,
+    "reason": "Active/onboarded staff and scoped CRM permission before staff link creation.",
+    "deployed_by_this_package": false
+  },
+  {
+    "function": "health-profile-intake",
+    "observed_live_version": 2,
+    "branch_source_changed": false,
+    "reason": "Recovered unchanged.",
+    "deployed_by_this_package": false
+  },
+  {
+    "function": "member-account",
+    "observed_live_version": 2,
+    "branch_source_changed": true,
+    "reason": "Recheck payment/agreement readiness before linked account creation.",
+    "deployed_by_this_package": false
+  },
+  {
+    "function": "member-coaching",
+    "observed_live_version": 1,
+    "branch_source_changed": false,
+    "reason": "Recovered unchanged.",
+    "deployed_by_this_package": false
+  },
+  {
+    "function": "journey-override",
+    "observed_live_version": 3,
+    "branch_source_changed": true,
+    "reason": "Active/onboarded staff, current permissions, legacy action limits and contact scope.",
+    "deployed_by_this_package": false
+  },
+  {
+    "function": "coach-companion-knowledge",
+    "observed_live_version": 1,
+    "branch_source_changed": true,
+    "reason": "Central active-staff companion permission.",
+    "deployed_by_this_package": false
+  },
+  {
+    "function": "coach-companion-request",
+    "observed_live_version": 1,
+    "branch_source_changed": true,
+    "reason": "companion.manage and contact scope; member own-contact path preserved.",
+    "deployed_by_this_package": false
+  },
+  {
+    "function": "coach-companion-review",
+    "observed_live_version": 1,
+    "branch_source_changed": true,
+    "reason": "Central permission/contact scope and invalid timestamp now() call corrected.",
+    "deployed_by_this_package": false
+  },
+  {
+    "function": "notification-delivery",
+    "observed_live_version": 1,
+    "branch_source_changed": true,
+    "reason": "Require active staff status in existing owner/admin authorization.",
+    "deployed_by_this_package": false
+  },
+  {
+    "function": "staff-management",
+    "observed_live_version": 3,
+    "branch_source_changed": true,
+    "reason": "Use centralized permission gate, retaining existing owner-only restrictions.",
+    "deployed_by_this_package": false
+  },
+  {
+    "function": "agreement-sign",
+    "observed_live_version": 3,
+    "branch_source_changed": true,
+    "reason": "Atomic JWT-bound signing with displayed hash; handler separated for HTTP tests.",
+    "deployed_by_this_package": false
+  },
+  {
+    "function": "staff-agreement-sign",
+    "observed_live_version": 2,
+    "branch_source_changed": true,
+    "reason": "Atomic JWT-bound signing with displayed hash; no unconditional onboarding completion.",
+    "deployed_by_this_package": false
+  },
+  {
+    "function": "staff-password-reset",
+    "observed_live_version": 2,
+    "branch_source_changed": false,
+    "reason": "Recovered unchanged.",
+    "deployed_by_this_package": false
+  }
+]

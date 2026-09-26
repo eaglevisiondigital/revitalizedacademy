@@ -1,0 +1,53 @@
+
+> test:backend
+> node scripts/backend/run-tests.cjs
+
+Restored live baseline + forward migrations into an empty local database.
+✔ owner retains active permissions and financial override limits (49.631542ms)
+✔ admin retains active permissions and financial override limits (5.809667ms)
+✔ inactive staff overrides cannot retain permission, contact scope, or manual finance access (5.264458ms)
+✔ suspended staff overrides cannot retain permission, contact scope, or manual finance access (3.98675ms)
+✔ removed staff overrides cannot retain permission, contact scope, or manual finance access (4.367334ms)
+✔ explicit permission denial wins over active owner default (5.126833ms)
+✔ assigned staff companion access allows own contact and denies cross-contact (4.327875ms)
+✔ member never obtains privileged staff action (3.612292ms)
+✔ owner permitted export returns ordinary columns, scoped rows and durable matching audit (7.960833ms)
+✔ admin permitted export returns ordinary columns, scoped rows and durable matching audit (5.223875ms)
+✔ scoped permitted export returns ordinary columns, scoped rows and durable matching audit (5.204ms)
+✔ staff without people.export cannot export or create authorized export audit (5.686167ms)
+✔ staff without people.export cannot log or create authorized export audit (3.450667ms)
+✔ legacy audit RPC succeeds for permitted actual scoped count and rejects forged count (6.620708ms)
+✔ export filters and denial produce no inaccessible contacts (5.369167ms)
+✔ audit insert failure rolls back the entire export (6.4785ms)
+✔ anonymous cannot call signing/export/authorization RPCs (4.171625ms)
+✔ inactive owner cannot directly update enrollment through RLS (10.860042ms)
+✔ payment shortfall blocks even if status was manually marked paid (16.163416ms)
+✔ payment completion alone does not waive the independent agreement gate (5.668584ms)
+✔ complete payment plus explicit agreement waiver permits activation (11.328167ms)
+✔ explicit payment and agreement waivers satisfy both gates (5.981125ms)
+✔ correct signature records displayed hash; full payment and signatures activate (22.8755ms)
+✔ missing second signature blocks readiness despite signed status (12.354875ms)
+✔ stale client signing is rejected without acceptance (8.239458ms)
+✔ missing client signing is rejected without acceptance (6.574584ms)
+✔ changed-content client signing is rejected without acceptance (5.068333ms)
+✔ cross-user client signing is rejected without acceptance (4.979291ms)
+✔ waived individual required agreement needs no signatures (9.037ms)
+✔ coach NDA is issued automatically; unsigned NDA keeps permissions pending (9.522875ms)
+✔ one signed NDA cannot complete onboarding when another required agreement is unsigned (8.338ms)
+✔ declined required NDA blocks onboarding (4.311834ms)
+✔ inactive staff cannot sign to regain privileges (5.341542ms)
+✔ stale staff content hash is rejected (4.700416ms)
+✔ reactivating coach with completed NDA does not unnecessarily lock them out (4.9555ms)
+✔ inactive and pending staff cannot satisfy legacy raw staff-row RLS, but self status remains readable (6.193ms)
+✔ account-activation readiness API is unavailable to anonymous or ordinary authenticated users (4.295833ms)
+✔ current member and staff agreement views supply the displayed signing hashes (7.672791ms)
+✔ account activation rechecks actual payment and agreement gates, including later shortfall (18.049458ms)
+✔ active financial staff retain configured scoped payment permission without unrelated CRM management (5.404792ms)
+ℹ tests 40
+ℹ suites 0
+ℹ pass 40
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 413.020583

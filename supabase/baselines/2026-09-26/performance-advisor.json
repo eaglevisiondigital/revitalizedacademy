@@ -1,0 +1,2880 @@
+{
+  "result": {
+    "lints": [
+      {
+        "name": "unused_index",
+        "title": "Unused Index",
+        "level": "INFO",
+        "facing": "EXTERNAL",
+        "categories": [
+          "PERFORMANCE"
+        ],
+        "description": "Detects if an index has never been used and may be a candidate for removal.",
+        "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0005_unused_index",
+        "count": 303,
+        "findings": [
+          {
+            "detail": "Index \\`health_mobile_sync_batches_contact_idx\\` on table \\`public.health_mobile_sync_batches\\` has not been used",
+            "metadata": {
+              "name": "health_mobile_sync_batches",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`health_mobile_sync_batches_device_idx\\` on table \\`public.health_mobile_sync_batches\\` has not been used",
+            "metadata": {
+              "name": "health_mobile_sync_batches",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`health_mobile_sync_batches_connection_idx\\` on table \\`public.health_mobile_sync_batches\\` has not been used",
+            "metadata": {
+              "name": "health_mobile_sync_batches",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`health_mobile_sync_batches_provider_idx\\` on table \\`public.health_mobile_sync_batches\\` has not been used",
+            "metadata": {
+              "name": "health_mobile_sync_batches",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`refuel_interest_email_idx\\` on table \\`public.refuel_interest\\` has not been used",
+            "metadata": {
+              "name": "refuel_interest",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`contact_journey_steps_due_idx\\` on table \\`public.contact_journey_steps\\` has not been used",
+            "metadata": {
+              "name": "contact_journey_steps",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`contact_journey_steps_assigned_to_idx\\` on table \\`public.contact_journey_steps\\` has not been used",
+            "metadata": {
+              "name": "contact_journey_steps",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`contact_activity_actor_user_id_idx\\` on table \\`public.contact_activity\\` has not been used",
+            "metadata": {
+              "name": "contact_activity",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`contacts_assigned_to_idx\\` on table \\`public.contacts\\` has not been used",
+            "metadata": {
+              "name": "contacts",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`follow_up_tasks_created_by_idx\\` on table \\`public.follow_up_tasks\\` has not been used",
+            "metadata": {
+              "name": "follow_up_tasks",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`journey_events_journey_idx\\` on table \\`public.journey_events\\` has not been used",
+            "metadata": {
+              "name": "journey_events",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`journey_events_step_idx\\` on table \\`public.journey_events\\` has not been used",
+            "metadata": {
+              "name": "journey_events",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`health_mobile_sync_batches_membership_idx\\` on table \\`public.health_mobile_sync_batches\\` has not been used",
+            "metadata": {
+              "name": "health_mobile_sync_batches",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`contact_sms_preferences_status_idx\\` on table \\`public.contact_sms_preferences\\` has not been used",
+            "metadata": {
+              "name": "contact_sms_preferences",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`personal_video_messages_share_token_idx\\` on table \\`public.personal_video_messages\\` has not been used",
+            "metadata": {
+              "name": "personal_video_messages",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`contact_messages_status_idx\\` on table \\`public.contact_messages\\` has not been used",
+            "metadata": {
+              "name": "contact_messages",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`contact_messages_provider_message_id_idx\\` on table \\`public.contact_messages\\` has not been used",
+            "metadata": {
+              "name": "contact_messages",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`message_events_message_idx\\` on table \\`public.message_events\\` has not been used",
+            "metadata": {
+              "name": "message_events",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`personal_video_views_video_idx\\` on table \\`public.personal_video_views\\` has not been used",
+            "metadata": {
+              "name": "personal_video_views",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`member_privacy_requests_user_status_idx\\` on table \\`public.member_privacy_requests\\` has not been used",
+            "metadata": {
+              "name": "member_privacy_requests",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`member_privacy_requests_contact_idx\\` on table \\`public.member_privacy_requests\\` has not been used",
+            "metadata": {
+              "name": "member_privacy_requests",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`member_privacy_requests_assigned_idx\\` on table \\`public.member_privacy_requests\\` has not been used",
+            "metadata": {
+              "name": "member_privacy_requests",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`journey_events_actor_idx\\` on table \\`public.journey_events\\` has not been used",
+            "metadata": {
+              "name": "journey_events",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`sms_consent_events_contact_idx\\` on table \\`public.sms_consent_events\\` has not been used",
+            "metadata": {
+              "name": "sms_consent_events",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`sms_consent_events_changed_by_idx\\` on table \\`public.sms_consent_events\\` has not been used",
+            "metadata": {
+              "name": "sms_consent_events",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`contact_sms_preferences_updated_by_idx\\` on table \\`public.contact_sms_preferences\\` has not been used",
+            "metadata": {
+              "name": "contact_sms_preferences",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`message_templates_created_by_idx\\` on table \\`public.message_templates\\` has not been used",
+            "metadata": {
+              "name": "message_templates",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`personal_video_messages_created_by_idx\\` on table \\`public.personal_video_messages\\` has not been used",
+            "metadata": {
+              "name": "personal_video_messages",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`contact_messages_template_id_idx\\` on table \\`public.contact_messages\\` has not been used",
+            "metadata": {
+              "name": "contact_messages",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`contact_messages_video_message_id_idx\\` on table \\`public.contact_messages\\` has not been used",
+            "metadata": {
+              "name": "contact_messages",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`contact_messages_sent_by_idx\\` on table \\`public.contact_messages\\` has not been used",
+            "metadata": {
+              "name": "contact_messages",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`webinar_registrations_user_id_idx\\` on table \\`public.webinar_registrations\\` has not been used",
+            "metadata": {
+              "name": "webinar_registrations",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`contact_notes_author_idx\\` on table \\`public.contact_notes\\` has not been used",
+            "metadata": {
+              "name": "contact_notes",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`contact_journeys_journey_key_idx\\` on table \\`public.contact_journeys\\` has not been used",
+            "metadata": {
+              "name": "contact_journeys",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`journey_automation_jobs_rule_id_idx\\` on table \\`public.journey_automation_jobs\\` has not been used",
+            "metadata": {
+              "name": "journey_automation_jobs",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`journey_automation_rules_journey_key_idx\\` on table \\`public.journey_automation_rules\\` has not been used",
+            "metadata": {
+              "name": "journey_automation_rules",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`contact_journeys_assigned_to_idx\\` on table \\`public.contact_journeys\\` has not been used",
+            "metadata": {
+              "name": "contact_journeys",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`contact_journeys_current_step_idx\\` on table \\`public.contact_journeys\\` has not been used",
+            "metadata": {
+              "name": "contact_journeys",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`workflow_records_contact_type_status_idx\\` on table \\`public.workflow_records\\` has not been used",
+            "metadata": {
+              "name": "workflow_records",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`journey_enrollment_activations_provider_payment_idx\\` on table \\`public.journey_enrollment_activations\\` has not been used",
+            "metadata": {
+              "name": "journey_enrollment_activations",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`member_privacy_exports_user_status_idx\\` on table \\`public.member_privacy_exports\\` has not been used",
+            "metadata": {
+              "name": "member_privacy_exports",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`member_privacy_exports_contact_idx\\` on table \\`public.member_privacy_exports\\` has not been used",
+            "metadata": {
+              "name": "member_privacy_exports",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`household_members_guardian_idx\\` on table \\`public.household_members\\` has not been used",
+            "metadata": {
+              "name": "household_members",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`member_privacy_actions_request_idx\\` on table \\`public.member_privacy_actions\\` has not been used",
+            "metadata": {
+              "name": "member_privacy_actions",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`journey_access_links_contact_idx\\` on table \\`public.journey_access_links\\` has not been used",
+            "metadata": {
+              "name": "journey_access_links",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`journey_access_links_journey_idx\\` on table \\`public.journey_access_links\\` has not been used",
+            "metadata": {
+              "name": "journey_access_links",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`journey_access_links_created_by_idx\\` on table \\`public.journey_access_links\\` has not been used",
+            "metadata": {
+              "name": "journey_access_links",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`journey_access_links_expiry_idx\\` on table \\`public.journey_access_links\\` has not been used",
+            "metadata": {
+              "name": "journey_access_links",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`journey_appointments_step_idx\\` on table \\`public.journey_appointments\\` has not been used",
+            "metadata": {
+              "name": "journey_appointments",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`journey_appointments_assigned_to_idx\\` on table \\`public.journey_appointments\\` has not been used",
+            "metadata": {
+              "name": "journey_appointments",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`journey_appointments_created_by_idx\\` on table \\`public.journey_appointments\\` has not been used",
+            "metadata": {
+              "name": "journey_appointments",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`journey_appointments_provider_event_idx\\` on table \\`public.journey_appointments\\` has not been used",
+            "metadata": {
+              "name": "journey_appointments",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`journey_enrollment_activations_step_idx\\` on table \\`public.journey_enrollment_activations\\` has not been used",
+            "metadata": {
+              "name": "journey_enrollment_activations",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`journey_enrollment_activations_created_by_idx\\` on table \\`public.journey_enrollment_activations\\` has not been used",
+            "metadata": {
+              "name": "journey_enrollment_activations",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`journey_step_actions_assigned_idx\\` on table \\`public.journey_step_actions\\` has not been used",
+            "metadata": {
+              "name": "journey_step_actions",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`journey_step_actions_created_by_idx\\` on table \\`public.journey_step_actions\\` has not been used",
+            "metadata": {
+              "name": "journey_step_actions",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`journey_step_actions_completed_by_idx\\` on table \\`public.journey_step_actions\\` has not been used",
+            "metadata": {
+              "name": "journey_step_actions",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`follow_up_tasks_journey_idx\\` on table \\`public.follow_up_tasks\\` has not been used",
+            "metadata": {
+              "name": "follow_up_tasks",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`vitality_reports_created_by_idx\\` on table \\`public.vitality_reports\\` has not been used",
+            "metadata": {
+              "name": "vitality_reports",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`vitality_reports_reviewed_by_idx\\` on table \\`public.vitality_reports\\` has not been used",
+            "metadata": {
+              "name": "vitality_reports",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`vitality_reports_approved_by_idx\\` on table \\`public.vitality_reports\\` has not been used",
+            "metadata": {
+              "name": "vitality_reports",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`vitality_reports_status_idx\\` on table \\`public.vitality_reports\\` has not been used",
+            "metadata": {
+              "name": "vitality_reports",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`households_created_by_idx\\` on table \\`public.households\\` has not been used",
+            "metadata": {
+              "name": "households",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_memberships_household_idx\\` on table \\`public.client_memberships\\` has not been used",
+            "metadata": {
+              "name": "client_memberships",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_memberships_created_by_idx\\` on table \\`public.client_memberships\\` has not been used",
+            "metadata": {
+              "name": "client_memberships",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_coach_assignments_membership_idx\\` on table \\`public.client_coach_assignments\\` has not been used",
+            "metadata": {
+              "name": "client_coach_assignments",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_coach_assignments_coach_idx\\` on table \\`public.client_coach_assignments\\` has not been used",
+            "metadata": {
+              "name": "client_coach_assignments",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_coach_assignments_assigned_by_idx\\` on table \\`public.client_coach_assignments\\` has not been used",
+            "metadata": {
+              "name": "client_coach_assignments",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_goals_membership_idx\\` on table \\`public.client_goals\\` has not been used",
+            "metadata": {
+              "name": "client_goals",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_goals_creator_idx\\` on table \\`public.client_goals\\` has not been used",
+            "metadata": {
+              "name": "client_goals",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_habits_membership_idx\\` on table \\`public.client_habits\\` has not been used",
+            "metadata": {
+              "name": "client_habits",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_habits_created_by_idx\\` on table \\`public.client_habits\\` has not been used",
+            "metadata": {
+              "name": "client_habits",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`habit_checkins_created_by_idx\\` on table \\`public.habit_checkins\\` has not been used",
+            "metadata": {
+              "name": "habit_checkins",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`progress_entries_membership_idx\\` on table \\`public.progress_entries\\` has not been used",
+            "metadata": {
+              "name": "progress_entries",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`progress_entries_created_by_idx\\` on table \\`public.progress_entries\\` has not been used",
+            "metadata": {
+              "name": "progress_entries",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`checkin_template_fields_order_idx\\` on table \\`public.checkin_template_fields\\` has not been used",
+            "metadata": {
+              "name": "checkin_template_fields",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_checkins_contact_date_idx\\` on table \\`public.client_checkins\\` has not been used",
+            "metadata": {
+              "name": "client_checkins",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_checkins_membership_idx\\` on table \\`public.client_checkins\\` has not been used",
+            "metadata": {
+              "name": "client_checkins",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_checkins_template_idx\\` on table \\`public.client_checkins\\` has not been used",
+            "metadata": {
+              "name": "client_checkins",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_checkins_reviewed_by_idx\\` on table \\`public.client_checkins\\` has not been used",
+            "metadata": {
+              "name": "client_checkins",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_checkins_created_by_idx\\` on table \\`public.client_checkins\\` has not been used",
+            "metadata": {
+              "name": "client_checkins",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_assignments_assigned_by_idx\\` on table \\`public.client_assignments\\` has not been used",
+            "metadata": {
+              "name": "client_assignments",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`coaching_sessions_membership_idx\\` on table \\`public.coaching_sessions\\` has not been used",
+            "metadata": {
+              "name": "coaching_sessions",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`coaching_sessions_appointment_idx\\` on table \\`public.coaching_sessions\\` has not been used",
+            "metadata": {
+              "name": "coaching_sessions",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`coaching_sessions_created_by_idx\\` on table \\`public.coaching_sessions\\` has not been used",
+            "metadata": {
+              "name": "coaching_sessions",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`coaching_session_notes_session_idx\\` on table \\`public.coaching_session_notes\\` has not been used",
+            "metadata": {
+              "name": "coaching_session_notes",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`coaching_session_notes_author_idx\\` on table \\`public.coaching_session_notes\\` has not been used",
+            "metadata": {
+              "name": "coaching_session_notes",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`food_catalog_phase_idx\\` on table \\`public.food_catalog\\` has not been used",
+            "metadata": {
+              "name": "food_catalog",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`recipes_methodology_status_idx\\` on table \\`public.recipes\\` has not been used",
+            "metadata": {
+              "name": "recipes",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`recipes_created_by_idx\\` on table \\`public.recipes\\` has not been used",
+            "metadata": {
+              "name": "recipes",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`nutrition_methodologies_created_by_idx\\` on table \\`public.nutrition_methodologies\\` has not been used",
+            "metadata": {
+              "name": "nutrition_methodologies",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`meal_plan_templates_methodology_status_idx\\` on table \\`public.meal_plan_templates\\` has not been used",
+            "metadata": {
+              "name": "meal_plan_templates",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`meal_plan_templates_created_by_idx\\` on table \\`public.meal_plan_templates\\` has not been used",
+            "metadata": {
+              "name": "meal_plan_templates",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`meal_plan_template_items_recipe_idx\\` on table \\`public.meal_plan_template_items\\` has not been used",
+            "metadata": {
+              "name": "meal_plan_template_items",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_meal_plans_membership_idx\\` on table \\`public.client_meal_plans\\` has not been used",
+            "metadata": {
+              "name": "client_meal_plans",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_meal_plans_template_idx\\` on table \\`public.client_meal_plans\\` has not been used",
+            "metadata": {
+              "name": "client_meal_plans",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_meal_plans_assigned_by_idx\\` on table \\`public.client_meal_plans\\` has not been used",
+            "metadata": {
+              "name": "client_meal_plans",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_meal_plan_items_recipe_idx\\` on table \\`public.client_meal_plan_items\\` has not been used",
+            "metadata": {
+              "name": "client_meal_plan_items",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`nutrition_logs_contact_date_idx\\` on table \\`public.nutrition_logs\\` has not been used",
+            "metadata": {
+              "name": "nutrition_logs",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`nutrition_logs_membership_idx\\` on table \\`public.nutrition_logs\\` has not been used",
+            "metadata": {
+              "name": "nutrition_logs",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`nutrition_logs_created_by_idx\\` on table \\`public.nutrition_logs\\` has not been used",
+            "metadata": {
+              "name": "nutrition_logs",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_grocery_lists_meal_plan_idx\\` on table \\`public.client_grocery_lists\\` has not been used",
+            "metadata": {
+              "name": "client_grocery_lists",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_grocery_lists_created_by_idx\\` on table \\`public.client_grocery_lists\\` has not been used",
+            "metadata": {
+              "name": "client_grocery_lists",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`grocery_list_items_list_order_idx\\` on table \\`public.grocery_list_items\\` has not been used",
+            "metadata": {
+              "name": "grocery_list_items",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`fitness_methodologies_created_by_idx\\` on table \\`public.fitness_methodologies\\` has not been used",
+            "metadata": {
+              "name": "fitness_methodologies",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`exercise_catalog_methodology_status_idx\\` on table \\`public.exercise_catalog\\` has not been used",
+            "metadata": {
+              "name": "exercise_catalog",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`exercise_catalog_created_by_idx\\` on table \\`public.exercise_catalog\\` has not been used",
+            "metadata": {
+              "name": "exercise_catalog",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`workout_templates_methodology_status_idx\\` on table \\`public.workout_templates\\` has not been used",
+            "metadata": {
+              "name": "workout_templates",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`workout_templates_created_by_idx\\` on table \\`public.workout_templates\\` has not been used",
+            "metadata": {
+              "name": "workout_templates",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`workout_template_exercises_workout_order_idx\\` on table \\`public.workout_template_exercises\\` has not been used",
+            "metadata": {
+              "name": "workout_template_exercises",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`workout_template_exercises_exercise_idx\\` on table \\`public.workout_template_exercises\\` has not been used",
+            "metadata": {
+              "name": "workout_template_exercises",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`fitness_programs_created_by_idx\\` on table \\`public.fitness_programs\\` has not been used",
+            "metadata": {
+              "name": "fitness_programs",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`fitness_program_workouts_workout_idx\\` on table \\`public.fitness_program_workouts\\` has not been used",
+            "metadata": {
+              "name": "fitness_program_workouts",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_fitness_plans_membership_idx\\` on table \\`public.client_fitness_plans\\` has not been used",
+            "metadata": {
+              "name": "client_fitness_plans",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_fitness_plans_program_idx\\` on table \\`public.client_fitness_plans\\` has not been used",
+            "metadata": {
+              "name": "client_fitness_plans",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_fitness_plans_assigned_by_idx\\` on table \\`public.client_fitness_plans\\` has not been used",
+            "metadata": {
+              "name": "client_fitness_plans",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_workout_assignments_plan_idx\\` on table \\`public.client_workout_assignments\\` has not been used",
+            "metadata": {
+              "name": "client_workout_assignments",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_workout_assignments_workout_idx\\` on table \\`public.client_workout_assignments\\` has not been used",
+            "metadata": {
+              "name": "client_workout_assignments",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_workout_assignments_assigned_by_idx\\` on table \\`public.client_workout_assignments\\` has not been used",
+            "metadata": {
+              "name": "client_workout_assignments",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`workout_completions_contact_date_idx\\` on table \\`public.workout_completions\\` has not been used",
+            "metadata": {
+              "name": "workout_completions",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`workout_completions_created_by_idx\\` on table \\`public.workout_completions\\` has not been used",
+            "metadata": {
+              "name": "workout_completions",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`payment_records_reversed_by_idx\\` on table \\`public.payment_records\\` has not been used",
+            "metadata": {
+              "name": "payment_records",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`lesson_progress_created_by_idx\\` on table \\`public.lesson_progress\\` has not been used",
+            "metadata": {
+              "name": "lesson_progress",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_exercise_restrictions_contact_idx\\` on table \\`public.client_exercise_restrictions\\` has not been used",
+            "metadata": {
+              "name": "client_exercise_restrictions",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_exercise_restrictions_exercise_idx\\` on table \\`public.client_exercise_restrictions\\` has not been used",
+            "metadata": {
+              "name": "client_exercise_restrictions",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_exercise_restrictions_created_by_idx\\` on table \\`public.client_exercise_restrictions\\` has not been used",
+            "metadata": {
+              "name": "client_exercise_restrictions",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`journey_activation_last_override_by_idx\\` on table \\`public.journey_enrollment_activations\\` has not been used",
+            "metadata": {
+              "name": "journey_enrollment_activations",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_course_enrollments_assigned_by_idx\\` on table \\`public.client_course_enrollments\\` has not been used",
+            "metadata": {
+              "name": "client_course_enrollments",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`lesson_progress_contact_idx\\` on table \\`public.lesson_progress\\` has not been used",
+            "metadata": {
+              "name": "lesson_progress",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`lesson_progress_lesson_idx\\` on table \\`public.lesson_progress\\` has not been used",
+            "metadata": {
+              "name": "lesson_progress",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`resource_library_created_by_idx\\` on table \\`public.resource_library\\` has not been used",
+            "metadata": {
+              "name": "resource_library",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`progress_entries_metric_key_idx\\` on table \\`public.progress_entries\\` has not been used",
+            "metadata": {
+              "name": "progress_entries",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`manual_override_audit_contact_idx\\` on table \\`public.manual_override_audit\\` has not been used",
+            "metadata": {
+              "name": "manual_override_audit",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`manual_override_audit_step_idx\\` on table \\`public.manual_override_audit\\` has not been used",
+            "metadata": {
+              "name": "manual_override_audit",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`manual_override_audit_actor_idx\\` on table \\`public.manual_override_audit\\` has not been used",
+            "metadata": {
+              "name": "manual_override_audit",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`manual_override_audit_entity_idx\\` on table \\`public.manual_override_audit\\` has not been used",
+            "metadata": {
+              "name": "manual_override_audit",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`learning_courses_created_by_idx\\` on table \\`public.learning_courses\\` has not been used",
+            "metadata": {
+              "name": "learning_courses",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`payment_records_contact_idx\\` on table \\`public.payment_records\\` has not been used",
+            "metadata": {
+              "name": "payment_records",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`payment_records_activation_idx\\` on table \\`public.payment_records\\` has not been used",
+            "metadata": {
+              "name": "payment_records",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`payment_records_recorded_by_idx\\` on table \\`public.payment_records\\` has not been used",
+            "metadata": {
+              "name": "payment_records",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`learning_lessons_created_by_idx\\` on table \\`public.learning_lessons\\` has not been used",
+            "metadata": {
+              "name": "learning_lessons",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`lesson_resources_lesson_order_idx\\` on table \\`public.learning_lesson_resources\\` has not been used",
+            "metadata": {
+              "name": "learning_lesson_resources",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_resource_assignments_membership_idx\\` on table \\`public.client_resource_assignments\\` has not been used",
+            "metadata": {
+              "name": "client_resource_assignments",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_resource_assignments_resource_idx\\` on table \\`public.client_resource_assignments\\` has not been used",
+            "metadata": {
+              "name": "client_resource_assignments",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_resource_assignments_assigned_by_idx\\` on table \\`public.client_resource_assignments\\` has not been used",
+            "metadata": {
+              "name": "client_resource_assignments",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`member_conversations_contact_idx\\` on table \\`public.member_conversations\\` has not been used",
+            "metadata": {
+              "name": "member_conversations",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`member_conversations_membership_idx\\` on table \\`public.member_conversations\\` has not been used",
+            "metadata": {
+              "name": "member_conversations",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`member_conversations_created_by_idx\\` on table \\`public.member_conversations\\` has not been used",
+            "metadata": {
+              "name": "member_conversations",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`conversation_participants_contact_idx\\` on table \\`public.member_conversation_participants\\` has not been used",
+            "metadata": {
+              "name": "member_conversation_participants",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`companion_request_sources_chunk_idx\\` on table \\`public.coach_companion_request_sources\\` has not been used",
+            "metadata": {
+              "name": "coach_companion_request_sources",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`member_message_attachments_message_idx\\` on table \\`public.member_message_attachments\\` has not been used",
+            "metadata": {
+              "name": "member_message_attachments",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`member_notifications_contact_idx\\` on table \\`public.member_notifications\\` has not been used",
+            "metadata": {
+              "name": "member_notifications",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`companion_reviews_reviewed_by_idx\\` on table \\`public.coach_companion_reviews\\` has not been used",
+            "metadata": {
+              "name": "coach_companion_reviews",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_course_enrollments_last_lesson_idx\\` on table \\`public.client_course_enrollments\\` has not been used",
+            "metadata": {
+              "name": "client_course_enrollments",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`member_messages_sender_contact_idx\\` on table \\`public.member_messages\\` has not been used",
+            "metadata": {
+              "name": "member_messages",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`coach_companion_policies_updated_by_idx\\` on table \\`public.coach_companion_policies\\` has not been used",
+            "metadata": {
+              "name": "coach_companion_policies",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`companion_sources_approved_by_idx\\` on table \\`public.coach_companion_knowledge_sources\\` has not been used",
+            "metadata": {
+              "name": "coach_companion_knowledge_sources",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`companion_sources_created_by_idx\\` on table \\`public.coach_companion_knowledge_sources\\` has not been used",
+            "metadata": {
+              "name": "coach_companion_knowledge_sources",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`companion_chunks_source_idx\\` on table \\`public.coach_companion_knowledge_chunks\\` has not been used",
+            "metadata": {
+              "name": "coach_companion_knowledge_chunks",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`companion_chunks_embedding_hnsw\\` on table \\`public.coach_companion_knowledge_chunks\\` has not been used",
+            "metadata": {
+              "name": "coach_companion_knowledge_chunks",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`companion_requests_contact_idx\\` on table \\`public.coach_companion_requests\\` has not been used",
+            "metadata": {
+              "name": "coach_companion_requests",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`companion_requests_membership_idx\\` on table \\`public.coach_companion_requests\\` has not been used",
+            "metadata": {
+              "name": "coach_companion_requests",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`companion_requests_assigned_coach_idx\\` on table \\`public.coach_companion_requests\\` has not been used",
+            "metadata": {
+              "name": "coach_companion_requests",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`companion_requests_answered_by_idx\\` on table \\`public.coach_companion_requests\\` has not been used",
+            "metadata": {
+              "name": "coach_companion_requests",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`companion_requests_question_type_idx\\` on table \\`public.coach_companion_requests\\` has not been used",
+            "metadata": {
+              "name": "coach_companion_requests",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`notification_delivery_jobs_user_idx\\` on table \\`public.notification_delivery_jobs\\` has not been used",
+            "metadata": {
+              "name": "notification_delivery_jobs",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`notification_delivery_jobs_contact_idx\\` on table \\`public.notification_delivery_jobs\\` has not been used",
+            "metadata": {
+              "name": "notification_delivery_jobs",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`health_connections_membership_idx\\` on table \\`public.health_integration_connections\\` has not been used",
+            "metadata": {
+              "name": "health_integration_connections",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`health_connections_user_idx\\` on table \\`public.health_integration_connections\\` has not been used",
+            "metadata": {
+              "name": "health_integration_connections",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`health_observations_contact_metric_idx\\` on table \\`public.health_observations\\` has not been used",
+            "metadata": {
+              "name": "health_observations",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`health_observations_connection_idx\\` on table \\`public.health_observations\\` has not been used",
+            "metadata": {
+              "name": "health_observations",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`health_observations_membership_idx\\` on table \\`public.health_observations\\` has not been used",
+            "metadata": {
+              "name": "health_observations",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`health_observations_provider_idx\\` on table \\`public.health_observations\\` has not been used",
+            "metadata": {
+              "name": "health_observations",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`health_sync_jobs_status_idx\\` on table \\`public.health_sync_jobs\\` has not been used",
+            "metadata": {
+              "name": "health_sync_jobs",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`health_sync_jobs_connection_idx\\` on table \\`public.health_sync_jobs\\` has not been used",
+            "metadata": {
+              "name": "health_sync_jobs",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`health_sync_jobs_contact_idx\\` on table \\`public.health_sync_jobs\\` has not been used",
+            "metadata": {
+              "name": "health_sync_jobs",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`wellness_challenges_created_by_idx\\` on table \\`public.wellness_challenges\\` has not been used",
+            "metadata": {
+              "name": "wellness_challenges",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`challenge_enrollments_enrolled_by_idx\\` on table \\`public.challenge_enrollments\\` has not been used",
+            "metadata": {
+              "name": "challenge_enrollments",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`challenge_activity_enrollment_idx\\` on table \\`public.challenge_activity\\` has not been used",
+            "metadata": {
+              "name": "challenge_activity",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`challenge_activity_contact_idx\\` on table \\`public.challenge_activity\\` has not been used",
+            "metadata": {
+              "name": "challenge_activity",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`health_sync_jobs_provider_idx\\` on table \\`public.health_sync_jobs\\` has not been used",
+            "metadata": {
+              "name": "health_sync_jobs",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`community_spaces_program_idx\\` on table \\`public.community_spaces\\` has not been used",
+            "metadata": {
+              "name": "community_spaces",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`community_spaces_household_idx\\` on table \\`public.community_spaces\\` has not been used",
+            "metadata": {
+              "name": "community_spaces",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`community_spaces_created_by_idx\\` on table \\`public.community_spaces\\` has not been used",
+            "metadata": {
+              "name": "community_spaces",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`community_memberships_user_idx\\` on table \\`public.community_memberships\\` has not been used",
+            "metadata": {
+              "name": "community_memberships",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`community_posts_author_idx\\` on table \\`public.community_posts\\` has not been used",
+            "metadata": {
+              "name": "community_posts",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`community_posts_contact_idx\\` on table \\`public.community_posts\\` has not been used",
+            "metadata": {
+              "name": "community_posts",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`community_comments_author_idx\\` on table \\`public.community_comments\\` has not been used",
+            "metadata": {
+              "name": "community_comments",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`community_comments_contact_idx\\` on table \\`public.community_comments\\` has not been used",
+            "metadata": {
+              "name": "community_comments",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`community_moderation_space_idx\\` on table \\`public.community_moderation_events\\` has not been used",
+            "metadata": {
+              "name": "community_moderation_events",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`community_moderation_post_idx\\` on table \\`public.community_moderation_events\\` has not been used",
+            "metadata": {
+              "name": "community_moderation_events",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`community_moderation_comment_idx\\` on table \\`public.community_moderation_events\\` has not been used",
+            "metadata": {
+              "name": "community_moderation_events",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`community_moderation_actor_idx\\` on table \\`public.community_moderation_events\\` has not been used",
+            "metadata": {
+              "name": "community_moderation_events",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`refuel_offers_created_by_idx\\` on table \\`public.refuel_offers\\` has not been used",
+            "metadata": {
+              "name": "refuel_offers",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`refuel_invitations_invited_by_idx\\` on table \\`public.refuel_invitations\\` has not been used",
+            "metadata": {
+              "name": "refuel_invitations",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`refuel_enrollments_membership_idx\\` on table \\`public.refuel_enrollments\\` has not been used",
+            "metadata": {
+              "name": "refuel_enrollments",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`refuel_enrollments_invitation_idx\\` on table \\`public.refuel_enrollments\\` has not been used",
+            "metadata": {
+              "name": "refuel_enrollments",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`refuel_enrollments_enrolled_by_idx\\` on table \\`public.refuel_enrollments\\` has not been used",
+            "metadata": {
+              "name": "refuel_enrollments",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`refuel_entitlements_enrollment_idx\\` on table \\`public.refuel_entitlements\\` has not been used",
+            "metadata": {
+              "name": "refuel_entitlements",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`refuel_participation_enrollment_idx\\` on table \\`public.refuel_participation\\` has not been used",
+            "metadata": {
+              "name": "refuel_participation",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`refuel_participation_contact_idx\\` on table \\`public.refuel_participation\\` has not been used",
+            "metadata": {
+              "name": "refuel_participation",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`staff_invitations_invited_by_idx\\` on table \\`public.staff_invitations\\` has not been used",
+            "metadata": {
+              "name": "staff_invitations",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`staff_access_status_idx\\` on table \\`public.staff_access\\` has not been used",
+            "metadata": {
+              "name": "staff_access",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`staff_access_updated_by_idx\\` on table \\`public.staff_access\\` has not been used",
+            "metadata": {
+              "name": "staff_access",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`staff_permission_overrides_updated_by_idx\\` on table \\`public.staff_permission_overrides\\` has not been used",
+            "metadata": {
+              "name": "staff_permission_overrides",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`staff_access_audit_actor_idx\\` on table \\`public.staff_access_audit\\` has not been used",
+            "metadata": {
+              "name": "staff_access_audit",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`referral_programs_status_idx\\` on table \\`public.referral_programs\\` has not been used",
+            "metadata": {
+              "name": "referral_programs",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`referral_programs_created_by_idx\\` on table \\`public.referral_programs\\` has not been used",
+            "metadata": {
+              "name": "referral_programs",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`referral_rewards_approved_by_idx\\` on table \\`public.referral_rewards\\` has not been used",
+            "metadata": {
+              "name": "referral_rewards",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`staff_role_permission_defaults_permission_idx\\` on table \\`public.staff_role_permission_defaults\\` has not been used",
+            "metadata": {
+              "name": "staff_role_permission_defaults",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_documents_membership_idx\\` on table \\`public.client_documents\\` has not been used",
+            "metadata": {
+              "name": "client_documents",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_documents_uploaded_by_user_idx\\` on table \\`public.client_documents\\` has not been used",
+            "metadata": {
+              "name": "client_documents",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_documents_uploaded_by_contact_idx\\` on table \\`public.client_documents\\` has not been used",
+            "metadata": {
+              "name": "client_documents",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_documents_category_idx\\` on table \\`public.client_documents\\` has not been used",
+            "metadata": {
+              "name": "client_documents",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`membership_subscriptions_contact_idx\\` on table \\`public.membership_subscriptions\\` has not been used",
+            "metadata": {
+              "name": "membership_subscriptions",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`membership_subscriptions_plan_idx\\` on table \\`public.membership_subscriptions\\` has not been used",
+            "metadata": {
+              "name": "membership_subscriptions",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`billing_plans_created_by_idx\\` on table \\`public.billing_plans\\` has not been used",
+            "metadata": {
+              "name": "billing_plans",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`membership_subscriptions_provider_idx\\` on table \\`public.membership_subscriptions\\` has not been used",
+            "metadata": {
+              "name": "membership_subscriptions",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`membership_subscriptions_created_by_idx\\` on table \\`public.membership_subscriptions\\` has not been used",
+            "metadata": {
+              "name": "membership_subscriptions",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`billing_events_subscription_idx\\` on table \\`public.billing_events\\` has not been used",
+            "metadata": {
+              "name": "billing_events",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`billing_events_membership_idx\\` on table \\`public.billing_events\\` has not been used",
+            "metadata": {
+              "name": "billing_events",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`billing_events_contact_idx\\` on table \\`public.billing_events\\` has not been used",
+            "metadata": {
+              "name": "billing_events",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`billing_events_recorded_by_idx\\` on table \\`public.billing_events\\` has not been used",
+            "metadata": {
+              "name": "billing_events",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`billing_invoices_subscription_idx\\` on table \\`public.billing_invoices\\` has not been used",
+            "metadata": {
+              "name": "billing_invoices",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`billing_invoices_contact_idx\\` on table \\`public.billing_invoices\\` has not been used",
+            "metadata": {
+              "name": "billing_invoices",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`billing_invoices_membership_idx\\` on table \\`public.billing_invoices\\` has not been used",
+            "metadata": {
+              "name": "billing_invoices",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`agreement_templates_created_by_idx\\` on table \\`public.agreement_templates\\` has not been used",
+            "metadata": {
+              "name": "agreement_templates",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`agreement_templates_published_by_idx\\` on table \\`public.agreement_templates\\` has not been used",
+            "metadata": {
+              "name": "agreement_templates",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_agreements_membership_idx\\` on table \\`public.client_agreements\\` has not been used",
+            "metadata": {
+              "name": "client_agreements",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_agreements_activation_idx\\` on table \\`public.client_agreements\\` has not been used",
+            "metadata": {
+              "name": "client_agreements",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_agreements_template_idx\\` on table \\`public.client_agreements\\` has not been used",
+            "metadata": {
+              "name": "client_agreements",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_agreements_waived_by_idx\\` on table \\`public.client_agreements\\` has not been used",
+            "metadata": {
+              "name": "client_agreements",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_agreements_created_by_idx\\` on table \\`public.client_agreements\\` has not been used",
+            "metadata": {
+              "name": "client_agreements",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`agreement_acceptances_contact_idx\\` on table \\`public.agreement_acceptances\\` has not been used",
+            "metadata": {
+              "name": "agreement_acceptances",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`agreement_acceptances_user_idx\\` on table \\`public.agreement_acceptances\\` has not been used",
+            "metadata": {
+              "name": "agreement_acceptances",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`coaching_entitlement_usage_membership_idx\\` on table \\`public.coaching_entitlement_usage\\` has not been used",
+            "metadata": {
+              "name": "coaching_entitlement_usage",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`coaching_entitlement_usage_entitlement_idx\\` on table \\`public.coaching_entitlement_usage\\` has not been used",
+            "metadata": {
+              "name": "coaching_entitlement_usage",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`coaching_entitlement_usage_updated_by_idx\\` on table \\`public.coaching_entitlement_usage\\` has not been used",
+            "metadata": {
+              "name": "coaching_entitlement_usage",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`staff_capacity_settings_updated_by_idx\\` on table \\`public.staff_capacity_settings\\` has not been used",
+            "metadata": {
+              "name": "staff_capacity_settings",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`staff_availability_rules_created_by_idx\\` on table \\`public.staff_availability_rules\\` has not been used",
+            "metadata": {
+              "name": "staff_availability_rules",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`staff_availability_exceptions_created_by_idx\\` on table \\`public.staff_availability_exceptions\\` has not been used",
+            "metadata": {
+              "name": "staff_availability_exceptions",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`progress_photo_sets_contact_captured_idx\\` on table \\`public.progress_photo_sets\\` has not been used",
+            "metadata": {
+              "name": "progress_photo_sets",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`progress_photo_sets_membership_idx\\` on table \\`public.progress_photo_sets\\` has not been used",
+            "metadata": {
+              "name": "progress_photo_sets",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`progress_photos_set_idx\\` on table \\`public.progress_photos\\` has not been used",
+            "metadata": {
+              "name": "progress_photos",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`progress_photos_contact_created_idx\\` on table \\`public.progress_photos\\` has not been used",
+            "metadata": {
+              "name": "progress_photos",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`progress_photos_membership_idx\\` on table \\`public.progress_photos\\` has not been used",
+            "metadata": {
+              "name": "progress_photos",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`people_import_batches_uploaded_by_idx\\` on table \\`public.people_import_batches\\` has not been used",
+            "metadata": {
+              "name": "people_import_batches",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`client_agreements_company_approved_by_idx\\` on table \\`public.client_agreements\\` has not been used",
+            "metadata": {
+              "name": "client_agreements",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`staff_agreements_waived_by_idx\\` on table \\`public.staff_agreements\\` has not been used",
+            "metadata": {
+              "name": "staff_agreements",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`staff_agreements_created_by_idx\\` on table \\`public.staff_agreements\\` has not been used",
+            "metadata": {
+              "name": "staff_agreements",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`staff_agreement_acceptances_user_idx\\` on table \\`public.staff_agreement_acceptances\\` has not been used",
+            "metadata": {
+              "name": "staff_agreement_acceptances",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`staff_agreements_company_approved_by_idx\\` on table \\`public.staff_agreements\\` has not been used",
+            "metadata": {
+              "name": "staff_agreements",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`program_challenge_access_challenge_idx\\` on table \\`public.program_challenge_access\\` has not been used",
+            "metadata": {
+              "name": "program_challenge_access",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`family_change_requests_household_idx\\` on table \\`public.family_change_requests\\` has not been used",
+            "metadata": {
+              "name": "family_change_requests",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`health_metric_consents_user_idx\\` on table \\`public.health_metric_consents\\` has not been used",
+            "metadata": {
+              "name": "health_metric_consents",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`health_metric_consents_contact_idx\\` on table \\`public.health_metric_consents\\` has not been used",
+            "metadata": {
+              "name": "health_metric_consents",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`family_change_requests_membership_idx\\` on table \\`public.family_change_requests\\` has not been used",
+            "metadata": {
+              "name": "family_change_requests",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`family_change_requests_target_member_idx\\` on table \\`public.family_change_requests\\` has not been used",
+            "metadata": {
+              "name": "family_change_requests",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`health_observations_contact_metric_recorded_desc_idx\\` on table \\`public.health_observations\\` has not been used",
+            "metadata": {
+              "name": "health_observations",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`progress_entries_contact_metric_recorded_desc_idx\\` on table \\`public.progress_entries\\` has not been used",
+            "metadata": {
+              "name": "progress_entries",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`health_metric_consents_metric_key_idx\\` on table \\`public.health_metric_consents\\` has not been used",
+            "metadata": {
+              "name": "health_metric_consents",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`health_metric_consents_provider_key_idx\\` on table \\`public.health_metric_consents\\` has not been used",
+            "metadata": {
+              "name": "health_metric_consents",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`wellness_score_snapshots_contact_calc_idx\\` on table \\`public.wellness_score_snapshots\\` has not been used",
+            "metadata": {
+              "name": "wellness_score_snapshots",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`wellness_score_snapshots_household_calc_idx\\` on table \\`public.wellness_score_snapshots\\` has not been used",
+            "metadata": {
+              "name": "wellness_score_snapshots",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`wellness_score_snapshots_membership_idx\\` on table \\`public.wellness_score_snapshots\\` has not been used",
+            "metadata": {
+              "name": "wellness_score_snapshots",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`member_achievements_contact_unlocked_idx\\` on table \\`public.member_achievements\\` has not been used",
+            "metadata": {
+              "name": "member_achievements",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`member_achievements_membership_idx\\` on table \\`public.member_achievements\\` has not been used",
+            "metadata": {
+              "name": "member_achievements",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`member_achievements_achievement_key_idx\\` on table \\`public.member_achievements\\` has not been used",
+            "metadata": {
+              "name": "member_achievements",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`companion_context_contact_idx\\` on table \\`public.coach_companion_context_snapshots\\` has not been used",
+            "metadata": {
+              "name": "coach_companion_context_snapshots",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`companion_context_membership_idx\\` on table \\`public.coach_companion_context_snapshots\\` has not been used",
+            "metadata": {
+              "name": "coach_companion_context_snapshots",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`companion_source_revisions_source_idx\\` on table \\`public.coach_companion_source_revisions\\` has not been used",
+            "metadata": {
+              "name": "coach_companion_source_revisions",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`companion_usage_membership_time_idx\\` on table \\`public.coach_companion_usage_events\\` has not been used",
+            "metadata": {
+              "name": "coach_companion_usage_events",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`companion_usage_contact_time_idx\\` on table \\`public.coach_companion_usage_events\\` has not been used",
+            "metadata": {
+              "name": "coach_companion_usage_events",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`companion_usage_request_idx\\` on table \\`public.coach_companion_usage_events\\` has not been used",
+            "metadata": {
+              "name": "coach_companion_usage_events",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`companion_ingestion_jobs_source_created_idx\\` on table \\`public.coach_companion_ingestion_jobs\\` has not been used",
+            "metadata": {
+              "name": "coach_companion_ingestion_jobs",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`companion_ingestion_jobs_status_created_idx\\` on table \\`public.coach_companion_ingestion_jobs\\` has not been used",
+            "metadata": {
+              "name": "coach_companion_ingestion_jobs",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`companion_source_events_source_time_idx\\` on table \\`public.coach_companion_source_events\\` has not been used",
+            "metadata": {
+              "name": "coach_companion_source_events",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`companion_answer_feedback_helpful_idx\\` on table \\`public.coach_companion_answer_feedback\\` has not been used",
+            "metadata": {
+              "name": "coach_companion_answer_feedback",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`companion_answer_feedback_contact_idx\\` on table \\`public.coach_companion_answer_feedback\\` has not been used",
+            "metadata": {
+              "name": "coach_companion_answer_feedback",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`ai_advisor_personalization_contact_idx\\` on table \\`public.ai_advisor_personalization_preferences\\` has not been used",
+            "metadata": {
+              "name": "ai_advisor_personalization_preferences",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`member_devices_user_active_idx\\` on table \\`public.member_devices\\` has not been used",
+            "metadata": {
+              "name": "member_devices",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`member_devices_contact_idx\\` on table \\`public.member_devices\\` has not been used",
+            "metadata": {
+              "name": "member_devices",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`push_delivery_jobs_status_idx\\` on table \\`public.push_delivery_jobs\\` has not been used",
+            "metadata": {
+              "name": "push_delivery_jobs",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`push_delivery_jobs_user_idx\\` on table \\`public.push_delivery_jobs\\` has not been used",
+            "metadata": {
+              "name": "push_delivery_jobs",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`push_delivery_jobs_device_idx\\` on table \\`public.push_delivery_jobs\\` has not been used",
+            "metadata": {
+              "name": "push_delivery_jobs",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`push_delivery_jobs_contact_idx\\` on table \\`public.push_delivery_jobs\\` has not been used",
+            "metadata": {
+              "name": "push_delivery_jobs",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`notification_route_rules_route_key_idx\\` on table \\`public.notification_route_rules\\` has not been used",
+            "metadata": {
+              "name": "notification_route_rules",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`member_mutation_receipts_user_created_idx\\` on table \\`public.member_mutation_receipts\\` has not been used",
+            "metadata": {
+              "name": "member_mutation_receipts",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`member_mutation_receipts_contact_idx\\` on table \\`public.member_mutation_receipts\\` has not been used",
+            "metadata": {
+              "name": "member_mutation_receipts",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`member_mutation_receipts_device_idx\\` on table \\`public.member_mutation_receipts\\` has not been used",
+            "metadata": {
+              "name": "member_mutation_receipts",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`member_sync_events_contact_event_idx\\` on table \\`public.member_sync_events\\` has not been used",
+            "metadata": {
+              "name": "member_sync_events",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`member_sync_events_household_event_idx\\` on table \\`public.member_sync_events\\` has not been used",
+            "metadata": {
+              "name": "member_sync_events",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`member_sync_events_changed_at_idx\\` on table \\`public.member_sync_events\\` has not been used",
+            "metadata": {
+              "name": "member_sync_events",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`member_app_sessions_user_last_seen_idx\\` on table \\`public.member_app_sessions\\` has not been used",
+            "metadata": {
+              "name": "member_app_sessions",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`member_app_sessions_contact_idx\\` on table \\`public.member_app_sessions\\` has not been used",
+            "metadata": {
+              "name": "member_app_sessions",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`member_app_sessions_device_idx\\` on table \\`public.member_app_sessions\\` has not been used",
+            "metadata": {
+              "name": "member_app_sessions",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`member_app_events_user_time_idx\\` on table \\`public.member_app_events\\` has not been used",
+            "metadata": {
+              "name": "member_app_events",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`member_app_events_contact_time_idx\\` on table \\`public.member_app_events\\` has not been used",
+            "metadata": {
+              "name": "member_app_events",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`member_app_events_event_time_idx\\` on table \\`public.member_app_events\\` has not been used",
+            "metadata": {
+              "name": "member_app_events",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`member_app_events_route_time_idx\\` on table \\`public.member_app_events\\` has not been used",
+            "metadata": {
+              "name": "member_app_events",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`member_app_events_feature_time_idx\\` on table \\`public.member_app_events\\` has not been used",
+            "metadata": {
+              "name": "member_app_events",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`member_app_events_device_idx\\` on table \\`public.member_app_events\\` has not been used",
+            "metadata": {
+              "name": "member_app_events",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Index \\`member_app_events_session_idx\\` on table \\`public.member_app_events\\` has not been used",
+            "metadata": {
+              "name": "member_app_events",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          }
+        ]
+      },
+      {
+        "name": "multiple_permissive_policies",
+        "title": "Multiple Permissive Policies",
+        "level": "WARN",
+        "facing": "EXTERNAL",
+        "categories": [
+          "PERFORMANCE"
+        ],
+        "description": "Detects if multiple permissive row level security policies are present on a table for the same \\`role\\` and \\`action\\` (e.g. insert). Multiple permissive policies are suboptimal for performance as each policy must be executed for every relevant query.",
+        "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0006_multiple_permissive_policies",
+        "count": 5,
+        "findings": [
+          {
+            "detail": "Table \\`public.achievement_catalog\\` has multiple permissive policies for role \\`authenticated\\` for action \\`SELECT\\`. Policies include \\`{achievement_catalog_member_read,achievement_catalog_staff_manage}\\`",
+            "metadata": {
+              "name": "achievement_catalog",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Table \\`public.app_route_registry\\` has multiple permissive policies for role \\`authenticated\\` for action \\`SELECT\\`. Policies include \\`{app_route_registry_member_read,app_route_registry_staff_manage}\\`",
+            "metadata": {
+              "name": "app_route_registry",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Table \\`public.app_runtime_config\\` has multiple permissive policies for role \\`authenticated\\` for action \\`SELECT\\`. Policies include \\`{app_runtime_config_member_read,app_runtime_config_staff_manage}\\`",
+            "metadata": {
+              "name": "app_runtime_config",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Table \\`public.health_metric_consents\\` has multiple permissive policies for role \\`authenticated\\` for action \\`SELECT\\`. Policies include \\`{\"authorized staff view health metric consents\",\"members manage own health metric consents\"}\\`",
+            "metadata": {
+              "name": "health_metric_consents",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Table \\`public.notification_route_rules\\` has multiple permissive policies for role \\`authenticated\\` for action \\`SELECT\\`. Policies include \\`{notification_route_rules_member_read,notification_route_rules_staff_manage}\\`",
+            "metadata": {
+              "name": "notification_route_rules",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          }
+        ]
+      },
+      {
+        "name": "duplicate_index",
+        "title": "Duplicate Index",
+        "level": "WARN",
+        "facing": "EXTERNAL",
+        "categories": [
+          "PERFORMANCE"
+        ],
+        "description": "Detects cases where two ore more identical indexes exist.",
+        "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0009_duplicate_index",
+        "count": 3,
+        "findings": [
+          {
+            "detail": "Table \\`public.learning_lessons\\` has identical indexes {learning_lessons_module_id_lesson_key_key,learning_lessons_module_key_uidx}. Drop all except one of them",
+            "metadata": {
+              "name": "learning_lessons",
+              "type": "table",
+              "schema": "public",
+              "indexes": [
+                "learning_lessons_module_id_lesson_key_key",
+                "learning_lessons_module_key_uidx"
+              ]
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Table \\`public.learning_modules\\` has identical indexes {learning_modules_course_id_module_key_key,learning_modules_course_key_uidx}. Drop all except one of them",
+            "metadata": {
+              "name": "learning_modules",
+              "type": "table",
+              "schema": "public",
+              "indexes": [
+                "learning_modules_course_id_module_key_key",
+                "learning_modules_course_key_uidx"
+              ]
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          },
+          {
+            "detail": "Table \\`public.program_entitlement_templates\\` has identical indexes {program_entitlement_templates_program_code_entitlement_key_key,program_entitlement_templates_program_key_uidx}. Drop all except one of them",
+            "metadata": {
+              "name": "program_entitlement_templates",
+              "type": "table",
+              "schema": "public",
+              "indexes": [
+                "program_entitlement_templates_program_code_entitlement_key_key",
+                "program_entitlement_templates_program_key_uidx"
+              ]
+            },
+            "observed_at": "2026-09-26T21:23:26.776Z"
+          }
+        ]
+      },
+      {
+        "name": "auth_db_connections_absolute",
+        "title": "Auth DB Connection Strategy is not Percentage",
+        "level": "INFO",
+        "facing": "EXTERNAL",
+        "categories": [
+          "PERFORMANCE"
+        ],
+        "description": "Using a percentage based allocation connection strategy for Auth can help to improve the server's performance when increasing instance size.",
+        "remediation": "https://supabase.com/docs/guides/deployment/going-into-prod",
+        "count": 1,
+        "findings": [
+          {
+            "detail": "Your project's Auth server is configured to use at most 10 connections. Increasing the instance size without manually adjusting this number will not improve the performance of the Auth server. Switch to a percentage based connection allocation strategy instead.",
+            "metadata": {
+              "type": "auth",
+              "entity": "Auth"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

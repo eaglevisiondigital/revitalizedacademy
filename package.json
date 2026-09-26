@@ -1,0 +1,15 @@
+{
+  "name": "revitalized-academy-verification",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/*.cjs",
+    "test:backend": "node scripts/backend/run-tests.cjs",
+    "check:js": "node scripts/check-js.cjs",
+    "check:edge": "deno check --config supabase/functions/deno.json supabase/functions/*/index.ts",
+    "test:edge": "deno test --config supabase/functions/deno.json tests/edge/"
+  },
+  "devDependencies": {
+    "jsdom": "26.1.0",
+    "pg": "8.16.3"
+  }
+}

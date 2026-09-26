@@ -12,14 +12,14 @@ const requiredPrograms = [
   'Vitality Accelerator Cohort',
   'Vitality Accelerator',
   '6-Month Intensive',
-  'Total Wellness Intensive — 12 Month'
+  '12-Month Intensive'
 ];
 requiredPrograms.forEach((name) => assert(plans.includes(name), `Missing plan: ${name}`));
 
 assert(plans.includes('$25'), 'Holistic Foundations public price missing');
 assert(plans.includes('$89/month'), 'Holistic Foundations monthly payment option missing');
-assert(plans.includes('3-month minimum'), 'Holistic Foundations minimum commitment missing');
-assert(enroll.includes('$25/week or $89/month · 3-month minimum'), 'Enrollment Foundations billing summary missing');
+assert(plans.includes('6-month minimum'), 'Holistic Foundations minimum commitment missing');
+assert(enroll.includes('$25/week or $89/month · 6-month minimum'), 'Enrollment Foundations billing summary missing');
 assert(plans.includes('$1,000'), 'Cohort public price missing');
 assert(plans.includes('$2,000'), 'Accelerator public price missing');
 assert(plans.includes('Personalized investment'), 'Private pricing language missing');
@@ -42,7 +42,7 @@ requiredLeadFields.forEach((name) => assert(enroll.includes(`name="${name}"`), `
 assert(enroll.includes('name="referral_source"'), 'Optional referral source missing');
 assert(enroll.includes('name="application_contact_consent"'), 'Application follow-up consent missing');
 
-assert(thankYou.includes('Step 1 complete'), 'Confirmation copy missing');
+assert(/Application received/i.test(thankYou), 'Enrollment confirmation missing');
 assert(css.includes('--ra-forest:#154734'), 'Approved emerald styling missing');
 assert(css.includes('--ra-cream:#fcf5ee'), 'Approved cream styling missing');
 assert(css.includes('--ra-gold:#b18845'), 'Approved gold styling missing');

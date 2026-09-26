@@ -589,6 +589,7 @@
       body:{
         action:"sign",
         client_agreement_id:activeAgreement.client_agreement_id,
+        expected_content_hash:activeAgreement.rendered_content_hash||activeAgreement.content_hash,
         signatures,
         accepted_terms:el("rm-agreement-accept").checked
       }

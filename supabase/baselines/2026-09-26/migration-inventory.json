@@ -1,0 +1,1112 @@
+[
+  {
+    "name": "revitalized_member_foundation",
+    "version": "20260923183431",
+    "statement_md5": "b5d41fd25a9924146075532dfa8e3186",
+    "statement_count": 1
+  },
+  {
+    "name": "harden_revitalized_member_foundation",
+    "version": "20260923183656",
+    "statement_md5": "55b1ed92fb342965d685481cb4e6f55b",
+    "statement_count": 1
+  },
+  {
+    "name": "add_resumable_workflow_helpers",
+    "version": "20260923183741",
+    "statement_md5": "c1d170514cb427451c364d4ee5991a85",
+    "statement_count": 1
+  },
+  {
+    "name": "capture_current_form_fields",
+    "version": "20260923183803",
+    "statement_md5": "38b51d382298af1dee4108c773b1a9cb",
+    "statement_count": 1
+  },
+  {
+    "name": "use_rls_for_authenticated_workflow_helpers",
+    "version": "20260923183858",
+    "statement_md5": "64c14a90f2ff6366a85c2b1cf221c49a",
+    "statement_count": 1
+  },
+  {
+    "name": "add_staff_admin_backend",
+    "version": "20260923184804",
+    "statement_md5": "2f2ce42f7f16867dc42278de523eaeb5",
+    "statement_count": 1
+  },
+  {
+    "name": "consolidate_staff_member_rls",
+    "version": "20260923185137",
+    "statement_md5": "ed97159d6219b49966ff39301967fd2a",
+    "statement_count": 1
+  },
+  {
+    "name": "upgrade_revit_backend_crm_features_v2",
+    "version": "20260923190944",
+    "statement_md5": "d39315e9608e205e1db84ddb89fab88c",
+    "statement_count": 1
+  },
+  {
+    "name": "add_executive_dashboard_views",
+    "version": "20260923192732",
+    "statement_md5": "cdfe34300c36d2b8b81d5cf8b9833954",
+    "statement_count": 1
+  },
+  {
+    "name": "add_refuel_launch_interest",
+    "version": "20260923214008",
+    "statement_md5": "1bdd37dd527073043bdc773c567731ac",
+    "statement_count": 1
+  },
+  {
+    "name": "add_refuel_to_admin_views",
+    "version": "20260923214235",
+    "statement_md5": "237884db16913f0406745f043610c5f9",
+    "statement_count": 1
+  },
+  {
+    "name": "portal_contact_operations_support",
+    "version": "20260924171850",
+    "statement_md5": "5fb821b4dc32dfd39153a5ab1ccbb950",
+    "statement_count": 1
+  },
+  {
+    "name": "replace_staff_directory_rpc_with_rls_table",
+    "version": "20260924172254",
+    "statement_md5": "e8a9b8f1b452f00f3baa884c89d76002",
+    "statement_count": 1
+  },
+  {
+    "name": "revitalized_messaging_video_foundation",
+    "version": "20260924183014",
+    "statement_md5": "f5af0e4a53e9457cbd7d7f7a444bdb73",
+    "statement_count": 1
+  },
+  {
+    "name": "harden_messaging_indexes_and_consent_audit",
+    "version": "20260924183721",
+    "statement_md5": "1d5878ad2722f673f43bb9309a34b4d6",
+    "statement_count": 1
+  },
+  {
+    "name": "revitalized_journey_engine_v1",
+    "version": "20260924192928",
+    "statement_md5": "ef47ae20ba52498e8a5083e441d59689",
+    "statement_count": 1
+  },
+  {
+    "name": "journey_engine_event_dedupe_and_completion_fix",
+    "version": "20260924193031",
+    "statement_md5": "b97b0a61896cc35bce4274943930c476",
+    "statement_count": 1
+  },
+  {
+    "name": "make_longevity_vsl_tracked_journey_step",
+    "version": "20260924193101",
+    "statement_md5": "e9ca732a30a1ff105b886beef80fe0d7",
+    "statement_count": 1
+  },
+  {
+    "name": "fix_journey_event_dedupe_constraint",
+    "version": "20260924193321",
+    "statement_md5": "ecd7945b6e338aef824ced1de4cc8b99",
+    "statement_count": 1
+  },
+  {
+    "name": "backfill_existing_contacts_into_journey_engine_v2",
+    "version": "20260924193333",
+    "statement_md5": "8d41126b253cabd86235c080bfd2071a",
+    "statement_count": 1
+  },
+  {
+    "name": "tune_journey_temperature_and_assessment_followup",
+    "version": "20260924193420",
+    "statement_md5": "743bda738ab8307867e3bda166a7a735",
+    "statement_count": 1
+  },
+  {
+    "name": "fix_journey_step_advance_trigger_columns",
+    "version": "20260924193911",
+    "statement_md5": "faa1aaa62408daec5e3e8e8fff8e7831",
+    "statement_count": 1
+  },
+  {
+    "name": "tag_longevity_matrix_view",
+    "version": "20260924194304",
+    "statement_md5": "e6984c28f6e9f83f79ef70cf59d2183f",
+    "statement_count": 1
+  },
+  {
+    "name": "journey_semantic_events_and_coach_tasks",
+    "version": "20260924194359",
+    "statement_md5": "93c4daa5269ea659b0c493a9571630dd",
+    "statement_count": 1
+  },
+  {
+    "name": "journey_engine_covering_indexes",
+    "version": "20260924194500",
+    "statement_md5": "82adbe8e034124b0603204ef229b2d0b",
+    "statement_count": 1
+  },
+  {
+    "name": "client_journey_access_scheduling_payment_foundation",
+    "version": "20260924195402",
+    "statement_md5": "7bcd13b5cb057518c493909a542f9b1f",
+    "statement_count": 1
+  },
+  {
+    "name": "journey_action_center_and_templates",
+    "version": "20260924195647",
+    "statement_md5": "711c8957f70f57df7263cda4b21fbd5b",
+    "statement_count": 1
+  },
+  {
+    "name": "connect_automation_tasks_to_journey_actions",
+    "version": "20260924195900",
+    "statement_md5": "7882b94613b556cda1eec953c4a93f6b",
+    "statement_count": 1
+  },
+  {
+    "name": "vitality_completion_action_templates",
+    "version": "20260924195937",
+    "statement_md5": "728a53895fa13f95814912a7b42fd56a",
+    "statement_count": 1
+  },
+  {
+    "name": "secure_onboarding_health_profile_workflow",
+    "version": "20260924201330",
+    "statement_md5": "91c406ca9b4cf058be1fabf2a2651bc5",
+    "statement_count": 1
+  },
+  {
+    "name": "appointment_task_cleanup_and_direct_access_readiness",
+    "version": "20260924201715",
+    "statement_md5": "41c8dfcdf7b4453e63888bec2b5b299f",
+    "statement_count": 1
+  },
+  {
+    "name": "appointment_confirmation_templates",
+    "version": "20260924202005",
+    "statement_md5": "356a041a3f2a952397ed0b497264f9e9",
+    "statement_count": 1
+  },
+  {
+    "name": "vitality_report_review_and_delivery_foundation",
+    "version": "20260924202248",
+    "statement_md5": "59313992ac5c1a92683e900f5c9642f3",
+    "statement_count": 1
+  },
+  {
+    "name": "advance_delivery_steps_from_completed_actions",
+    "version": "20260924202434",
+    "statement_md5": "1e42cd5f02e74a13201318fcc264984e",
+    "statement_count": 1
+  },
+  {
+    "name": "coach_work_queue_and_appointment_reminders",
+    "version": "20260924204244",
+    "statement_md5": "740490f192e8b5470fe8aff866e7ac9e",
+    "statement_count": 1
+  },
+  {
+    "name": "separate_communication_tasks_from_coach_tasks",
+    "version": "20260924204443",
+    "statement_md5": "a7fc1b91bb20bb273f516872791c74d9",
+    "statement_count": 1
+  },
+  {
+    "name": "journey_exception_handling",
+    "version": "20260924204547",
+    "statement_md5": "a90ffb773f875d4cc9046687d3bb0287",
+    "statement_count": 1
+  },
+  {
+    "name": "fix_journey_exception_event_and_assignment",
+    "version": "20260924204628",
+    "statement_md5": "8a7e8e7cfd70a53e2652e4ebbb049126",
+    "statement_count": 1
+  },
+  {
+    "name": "revitalized_permanent_client_foundation",
+    "version": "20260924205011",
+    "statement_md5": "e86bd81394e1c5867e77062e89c5bc75",
+    "statement_count": 1
+  },
+  {
+    "name": "consolidate_member_foundation_rls",
+    "version": "20260924205104",
+    "statement_md5": "443e3d775e9e2ae9592588b38b9f6fd4",
+    "statement_count": 1
+  },
+  {
+    "name": "auto_activate_direct_membership_and_member_journey_rls",
+    "version": "20260924205203",
+    "statement_md5": "ccc20edea2fa7c6a67209457f39463dd",
+    "statement_count": 1
+  },
+  {
+    "name": "staff_household_management_rpc",
+    "version": "20260924205740",
+    "statement_md5": "ca9ee9e33ef607c5cab23db9bba26a32",
+    "statement_count": 1
+  },
+  {
+    "name": "revitalized_coaching_progress_foundation",
+    "version": "20260924210243",
+    "statement_md5": "8c98b6e2c4f8416facf8f166133a7482",
+    "statement_count": 1
+  },
+  {
+    "name": "connect_checkins_to_progress_and_coach_queue",
+    "version": "20260924210330",
+    "statement_md5": "c39b903461822ffe23d3ce30422677ba",
+    "statement_count": 1
+  },
+  {
+    "name": "remove_public_assignment_security_definer",
+    "version": "20260924210342",
+    "statement_md5": "90246ce2927588b1258af9a9335d1b49",
+    "statement_count": 1
+  },
+  {
+    "name": "member_dashboard_checkin_habit_helpers",
+    "version": "20260924210432",
+    "statement_md5": "05ffb60633ae0a512b1800a1b9bff65c",
+    "statement_count": 1
+  },
+  {
+    "name": "coaching_work_categories_and_upcoming_sessions_v2",
+    "version": "20260924210933",
+    "statement_md5": "31d188609169ce44812ed92c65914b92",
+    "statement_count": 1
+  },
+  {
+    "name": "sync_primary_coach_operational_ownership",
+    "version": "20260924211021",
+    "statement_md5": "a33f3141a0688708cbe35fdc543b3261",
+    "statement_count": 1
+  },
+  {
+    "name": "coaching_session_task_cleanup_and_activity",
+    "version": "20260924211044",
+    "statement_md5": "51de9e3044a6a1bde38555cd71d8532b",
+    "statement_count": 1
+  },
+  {
+    "name": "revitalized_nutrition_fitness_foundation",
+    "version": "20260924211718",
+    "statement_md5": "74fb5bd9dd3dedea470427804a0fd248",
+    "statement_count": 1
+  },
+  {
+    "name": "progress_metric_covering_index",
+    "version": "20260924211807",
+    "statement_md5": "118daef4909e1b714be309d99eaa0885",
+    "statement_count": 1
+  },
+  {
+    "name": "operationalize_nutrition_fitness_assignments",
+    "version": "20260924221848",
+    "statement_md5": "d59f6a6a1cf53b44808e181ba8193333",
+    "statement_count": 1
+  },
+  {
+    "name": "manual_override_audit_and_permissions",
+    "version": "20260924223410",
+    "statement_md5": "fe05e594683eed3765d63a657733076b",
+    "statement_count": 1
+  },
+  {
+    "name": "restrict_financial_activation_writes_to_owner_admin",
+    "version": "20260924224002",
+    "statement_md5": "7a9594cf4d3e9b42f96b878433858fb3",
+    "statement_count": 1
+  },
+  {
+    "name": "propagate_manual_statuses_through_journey_engine",
+    "version": "20260924224104",
+    "statement_md5": "aef5b715b31a0011419755a1d41a45a8",
+    "statement_count": 1
+  },
+  {
+    "name": "index_payment_records_journey",
+    "version": "20260924224410",
+    "statement_md5": "d9b0bdfd3da8192e5b39d55007e2effe",
+    "statement_count": 1
+  },
+  {
+    "name": "revitalized_learning_resources_foundation",
+    "version": "20260924224523",
+    "statement_md5": "2b70384d667f359e6ab4280a8879e0ce",
+    "statement_count": 1
+  },
+  {
+    "name": "sync_learning_access_and_staff_summary",
+    "version": "20260924224656",
+    "statement_md5": "4bdd0fa8e4435e81d827bba5926cc5f5",
+    "statement_count": 1
+  },
+  {
+    "name": "revitalized_member_messaging_foundation",
+    "version": "20260924224925",
+    "statement_md5": "9e0404055fe88933417a6ea3938fd1b7",
+    "statement_count": 1
+  },
+  {
+    "name": "index_learning_and_message_foreign_keys",
+    "version": "20260924225050",
+    "statement_md5": "52a78163fb1049ddc47444ffdf46d4ee",
+    "statement_count": 1
+  },
+  {
+    "name": "staff_inbox_family_conversations_and_notification_preferences",
+    "version": "20260924230012",
+    "statement_md5": "dfb3e7b96eeed4ae6b6b4d0e0cf2d123",
+    "statement_count": 1
+  },
+  {
+    "name": "secure_member_message_attachments",
+    "version": "20260924230157",
+    "statement_md5": "584d63fa27c77b639e91a55cea6a1846",
+    "statement_count": 1
+  },
+  {
+    "name": "coach_companion_guardrails_and_knowledge",
+    "version": "20260924230456",
+    "statement_md5": "bce7081adb6184be435f7f8bfa812cd6",
+    "statement_count": 1
+  },
+  {
+    "name": "coach_companion_service_rpc",
+    "version": "20260924230520",
+    "statement_md5": "b9d0c7c0d8140ad0a389bb5e07ec85a3",
+    "statement_count": 1
+  },
+  {
+    "name": "notification_delivery_outbox_and_companion_index",
+    "version": "20260924231110",
+    "statement_md5": "8157105ffc2294e4cda3131eaae2e8e0",
+    "statement_count": 1
+  },
+  {
+    "name": "health_integrations_and_wearable_foundation",
+    "version": "20260924231310",
+    "statement_md5": "9bb05ebef809752c1f14ad40c6d825ee",
+    "statement_count": 1
+  },
+  {
+    "name": "family_hub_challenges_foundation",
+    "version": "20260924231524",
+    "statement_md5": "b001328732d798dfb2d0673693a206ba",
+    "statement_count": 1
+  },
+  {
+    "name": "challenge_staff_enrollment_rpc",
+    "version": "20260924231654",
+    "statement_md5": "4d7bff381665287c736040adf65961d1",
+    "statement_count": 1
+  },
+  {
+    "name": "fix_challenge_summary_point_math",
+    "version": "20260924231820",
+    "statement_md5": "9883c91d2045e8a42346db33ce8f3123",
+    "statement_count": 1
+  },
+  {
+    "name": "owner_analytics_and_recent_indexes",
+    "version": "20260924231922",
+    "statement_md5": "6dc8022ff000c0fb1bf10ad2d86e743f",
+    "statement_count": 1
+  },
+  {
+    "name": "community_and_family_hub_foundation",
+    "version": "20260924232321",
+    "statement_md5": "e9b3f59c90cd86cac979959329373fd8",
+    "statement_count": 1
+  },
+  {
+    "name": "community_staff_moderation_and_space_sync",
+    "version": "20260924232505",
+    "statement_md5": "c43727d48e6dac7213547a33cbdbb143",
+    "statement_count": 1
+  },
+  {
+    "name": "refuel_program_readiness_foundation_v2",
+    "version": "20260924232827",
+    "statement_md5": "482824fe7398b5b7c238c3defbb25d50",
+    "statement_count": 1
+  },
+  {
+    "name": "refuel_operational_rpcs",
+    "version": "20260924232859",
+    "statement_md5": "de2785e50eed5feb8c9b0bdcb25f9429",
+    "statement_count": 1
+  },
+  {
+    "name": "name_existing_revitalized_founder_contacts",
+    "version": "20260925003014",
+    "statement_md5": "080eedf0b163c2a4cf6ca3e52f995f75",
+    "statement_count": 1
+  },
+  {
+    "name": "staff_access_roles_permissions_and_audit",
+    "version": "20260925004052",
+    "statement_md5": "453797b345d7bd915734bfabfb1e0162",
+    "statement_count": 1
+  },
+  {
+    "name": "staff_directory_visibility_and_management_policies",
+    "version": "20260925004115",
+    "statement_md5": "dabbe8c3a3c444d64b60a7f195d3a777",
+    "statement_count": 1
+  },
+  {
+    "name": "financial_role_compatibility_with_existing_override_engine",
+    "version": "20260925004418",
+    "statement_md5": "50d6bd8fe0ebb5dee55d1df23afa50e7",
+    "statement_count": 1
+  },
+  {
+    "name": "enforce_staff_permissions_on_sensitive_modules",
+    "version": "20260925004458",
+    "statement_md5": "1a70a4875e6382f0a0af842f25001815",
+    "statement_count": 1
+  },
+  {
+    "name": "financial_role_staff_directory_compatibility",
+    "version": "20260925004711",
+    "statement_md5": "c4b0a9f89c45928514826a8e67573137",
+    "statement_count": 1
+  },
+  {
+    "name": "staff_manager_profile_visibility",
+    "version": "20260925004745",
+    "statement_md5": "67aab656abccba8f8619a104706eeaac",
+    "statement_count": 1
+  },
+  {
+    "name": "referral_ambassador_core_tables",
+    "version": "20260925004802",
+    "statement_md5": "9a4d74933c79ea1d5be83f5948d27573",
+    "statement_count": 1
+  },
+  {
+    "name": "referral_permissions_rls_and_lifecycle_v2",
+    "version": "20260925004917",
+    "statement_md5": "0327c3c2ebc0889c021a616342ebd1de",
+    "statement_count": 1
+  },
+  {
+    "name": "referral_backfill_and_reward_operations",
+    "version": "20260925005004",
+    "statement_md5": "f2138d343964a504828e3a5abd65a3f8",
+    "statement_count": 1
+  },
+  {
+    "name": "staff_permission_lint_cleanup",
+    "version": "20260925005250",
+    "statement_md5": "a5e9b9b0ca07838be08e1bb8eef7e0b4",
+    "statement_count": 1
+  },
+  {
+    "name": "team_workload_summary",
+    "version": "20260925005343",
+    "statement_md5": "7ffe5443586817e30853016795bf1cdc",
+    "statement_count": 1
+  },
+  {
+    "name": "enforce_crm_permissions_on_legacy_core",
+    "version": "20260925005514",
+    "statement_md5": "0d19f4a625858fb5d32395422d525cb6",
+    "statement_count": 1
+  },
+  {
+    "name": "active_staff_directory_and_session_enforcement",
+    "version": "20260925005550",
+    "statement_md5": "4b0e8992bede1c7bfe252793716bb94e",
+    "statement_count": 1
+  },
+  {
+    "name": "people_directory_support",
+    "version": "20260925005942",
+    "statement_md5": "0cbddac07048164807c547ae142cca81",
+    "statement_count": 1
+  },
+  {
+    "name": "people_directory_bulk_operations",
+    "version": "20260925010211",
+    "statement_md5": "bc8efbc6fff00a8a6d31f279527f587d",
+    "statement_count": 1
+  },
+  {
+    "name": "people_directory_include_all_person_types_v2",
+    "version": "20260925010421",
+    "statement_md5": "619b3b364ea5e270b46c90843896293f",
+    "statement_count": 1
+  },
+  {
+    "name": "people_saved_views",
+    "version": "20260925010455",
+    "statement_md5": "750c3769f325f90fab0c54c073a52069",
+    "statement_count": 1
+  },
+  {
+    "name": "team_calendar_and_schedule_operations",
+    "version": "20260925010627",
+    "statement_md5": "8e5b5275bdd6f8daa64255ebf32b6090",
+    "statement_count": 1
+  },
+  {
+    "name": "secure_client_document_vault",
+    "version": "20260925010937",
+    "statement_md5": "a08648aa774fda6d9651c90c11faf31a",
+    "statement_count": 1
+  },
+  {
+    "name": "automatic_appointment_reminders",
+    "version": "20260925011202",
+    "statement_md5": "564174e0ef98007a65136173d2888f3f",
+    "statement_count": 1
+  },
+  {
+    "name": "provider_neutral_recurring_billing",
+    "version": "20260925011320",
+    "statement_md5": "750f5cdeece1f1b21bdc264f79e0e62e",
+    "statement_count": 1
+  },
+  {
+    "name": "billing_recovery_workflow_and_preferences",
+    "version": "20260925011611",
+    "statement_md5": "bb93bfa891086cab9278da9b468f5a8f",
+    "statement_count": 1
+  },
+  {
+    "name": "billing_policy_and_index_cleanup",
+    "version": "20260925011817",
+    "statement_md5": "b2db0bebea775b4e856df7aa6215ba82",
+    "statement_count": 1
+  },
+  {
+    "name": "versioned_client_agreements",
+    "version": "20260925011928",
+    "statement_md5": "3aaab5993f7240a0cbc985155ab1b495",
+    "statement_count": 1
+  },
+  {
+    "name": "agreement_operations_and_backfill",
+    "version": "20260925012105",
+    "statement_md5": "9546f02265b4318db7d409ad31849cc9",
+    "statement_count": 1
+  },
+  {
+    "name": "coaching_entitlement_usage_and_staff_availability",
+    "version": "20260925012659",
+    "statement_md5": "93aeaccc3059c442081a5eb53bd5034d",
+    "statement_count": 1
+  },
+  {
+    "name": "schedule_capacity_and_availability_issues",
+    "version": "20260925013009",
+    "statement_md5": "e3d32c2fe601878e5711e103316dbfd8",
+    "statement_count": 1
+  },
+  {
+    "name": "people_import_export_permissions_and_audit",
+    "version": "20260925013241",
+    "statement_md5": "6c1eff5c1a1871961537fac79e7b78a2",
+    "statement_count": 1
+  },
+  {
+    "name": "personalized_client_contracts_and_staff_nda",
+    "version": "20260925013531",
+    "statement_md5": "baac981a3a2e5deac858ec351d6a7227",
+    "statement_count": 1
+  },
+  {
+    "name": "seed_revitalized_client_contract_and_coach_nda",
+    "version": "20260925013625",
+    "statement_md5": "5e72731485c1556a7544fed1b934d5e2",
+    "statement_count": 1
+  },
+  {
+    "name": "personalized_agreement_views_and_signature_counts",
+    "version": "20260925013653",
+    "statement_md5": "b367f8ca8515e1c2b6135560665c6912",
+    "statement_count": 1
+  },
+  {
+    "name": "staff_directory_onboarding_status",
+    "version": "20260925014015",
+    "statement_md5": "967dd0e3fd526a3f491b632c0adda1b8",
+    "statement_count": 1
+  },
+  {
+    "name": "payment_agreement_contract_action",
+    "version": "20260925014302",
+    "statement_md5": "41ce6ae2c8dc06b4155903b39a8296c9",
+    "statement_count": 1
+  },
+  {
+    "name": "staff_nda_company_approval_and_capacity_policy_cleanup",
+    "version": "20260925014516",
+    "statement_md5": "63a36e586e30d535d525014602246505",
+    "statement_count": 1
+  },
+  {
+    "name": "staff_people_data_scope_v2",
+    "version": "20260925014724",
+    "statement_md5": "43eb6699b7469f250118881d343fa17c",
+    "statement_count": 1
+  },
+  {
+    "name": "enforce_people_scope_across_sensitive_modules",
+    "version": "20260925015011",
+    "statement_md5": "f31ad8cab6ac73c44325fc3b4f5df906",
+    "statement_count": 1
+  },
+  {
+    "name": "stable_self_staff_access_lookup",
+    "version": "20260925021614",
+    "statement_md5": "b3ffdf661472d61ed9cdb4928d50d4c8",
+    "statement_count": 1
+  },
+  {
+    "name": "backfill_existing_active_coach_ndas",
+    "version": "20260925021820",
+    "statement_md5": "fe96d1c59e60e37da7424ef27b5f9f47",
+    "statement_count": 1
+  },
+  {
+    "name": "grant_rls_permission_helper_execution",
+    "version": "20260925022743",
+    "statement_md5": "99bcce8b4d103f53e5b5e9a7fb099177",
+    "statement_count": 1
+  },
+  {
+    "name": "fix_recursive_member_access_policies",
+    "version": "20260925023406",
+    "statement_md5": "72c8f51e26b129250029dbc1d5cd085e",
+    "statement_count": 1
+  },
+  {
+    "name": "tighten_program_content_management_permissions",
+    "version": "20260925033521",
+    "statement_md5": "9de6aa61fa33ea5c0a6ab430653a31c6",
+    "statement_count": 1
+  },
+  {
+    "name": "tighten_program_access_management_permissions",
+    "version": "20260925033922",
+    "statement_md5": "c84dd30d1fff101a7b67e7893cb469fa",
+    "statement_count": 1
+  },
+  {
+    "name": "sync_program_entitlements_to_memberships",
+    "version": "20260925035153",
+    "statement_md5": "dbe678f49b64bf81769c40633bb0c4ad",
+    "statement_count": 1
+  },
+  {
+    "name": "reconcile_program_course_access",
+    "version": "20260925035228",
+    "statement_md5": "ae711ea0c61217f4afdf283f18e975b8",
+    "statement_count": 1
+  },
+  {
+    "name": "secure_program_resource_access",
+    "version": "20260925035503",
+    "statement_md5": "eee4d877f1997c3bee01b4a34a79c3f7",
+    "statement_count": 1
+  },
+  {
+    "name": "harden_get_my_staff_access_rpc",
+    "version": "20260925040926",
+    "statement_md5": "8faaefd44de891b58c77edff8459977c",
+    "statement_count": 1
+  },
+  {
+    "name": "add_member_program_overview_view",
+    "version": "20260925041008",
+    "statement_md5": "1af365978922bb27d8b63a64deff1612",
+    "statement_count": 1
+  },
+  {
+    "name": "add_member_app_home_summary",
+    "version": "20260925041502",
+    "statement_md5": "c9279f3551ac0fb7ff9f34d14c3a9031",
+    "statement_count": 1
+  },
+  {
+    "name": "add_member_app_feature_access",
+    "version": "20260925041531",
+    "statement_md5": "42cdc40817f00e420b576a1d1af26452",
+    "statement_count": 1
+  },
+  {
+    "name": "add_family_and_ambassador_app_views",
+    "version": "20260925041718",
+    "statement_md5": "8889cf88e04b76d035b52b866e5a162f",
+    "statement_count": 1
+  },
+  {
+    "name": "add_member_course_and_activation_notifications",
+    "version": "20260925041909",
+    "statement_md5": "745cae9a1fbe6f0f253082238ce51b45",
+    "statement_count": 1
+  },
+  {
+    "name": "add_member_app_bootstrap_and_appointment_notifications",
+    "version": "20260925043128",
+    "statement_md5": "5055478400e44be1b429457a062e5588",
+    "statement_count": 1
+  },
+  {
+    "name": "add_resource_and_challenge_notifications",
+    "version": "20260925043220",
+    "statement_md5": "f1e0ebbd2c0004521be26b14020b519f",
+    "statement_count": 1
+  },
+  {
+    "name": "add_member_coaching_sessions_and_financial_notifications",
+    "version": "20260925043719",
+    "statement_md5": "91a602120d0ee8a361a807a9cbe460a2",
+    "statement_count": 1
+  },
+  {
+    "name": "extend_member_app_bootstrap_v2",
+    "version": "20260925043750",
+    "statement_md5": "d839be5bd0bd05aefa4c1ee534e033a7",
+    "statement_count": 1
+  },
+  {
+    "name": "improve_notification_routing_and_quiet_hours",
+    "version": "20260925044032",
+    "statement_md5": "22d0f0b6b5ad3a677e6a5449c61e487f",
+    "statement_count": 1
+  },
+  {
+    "name": "add_member_billing_history_and_notification_settings_rpc",
+    "version": "20260925044146",
+    "statement_md5": "ad8d6bf966b1bb556dee3ea3d5abe717",
+    "statement_count": 1
+  },
+  {
+    "name": "add_member_daily_action_and_progress_rpcs",
+    "version": "20260925044519",
+    "statement_md5": "47f2358cfe34a50cc1c6d8e428174f9e",
+    "statement_count": 1
+  },
+  {
+    "name": "add_member_course_progress_and_completion_notifications",
+    "version": "20260925044652",
+    "statement_md5": "30323aabba202afe39cf396e4ee24bae",
+    "statement_count": 1
+  },
+  {
+    "name": "add_member_weekly_summary_and_achievement_notifications_v2",
+    "version": "20260925044811",
+    "statement_md5": "15bb3cef42585ad06b47e11cae98cc18",
+    "statement_count": 1
+  },
+  {
+    "name": "extend_member_app_bootstrap_with_actions_and_progress",
+    "version": "20260925044826",
+    "statement_md5": "7f810a73f3e31bcc43f6cc28632a019a",
+    "statement_count": 1
+  },
+  {
+    "name": "add_program_challenge_access_and_member_action_workflows",
+    "version": "20260925110957",
+    "statement_md5": "5e8da37075680de11a7997d11cfe0991",
+    "statement_count": 1
+  },
+  {
+    "name": "add_member_coaching_hub_and_assignment_summary",
+    "version": "20260925111029",
+    "statement_md5": "1900b3d6d3edd84141711b282dbe5910",
+    "statement_count": 1
+  },
+  {
+    "name": "extend_member_bootstrap_with_coaching_hub",
+    "version": "20260925111044",
+    "statement_md5": "71c9b897472498ffb6573e3d383a12d7",
+    "statement_count": 1
+  },
+  {
+    "name": "add_member_coaching_request_workflow",
+    "version": "20260925111233",
+    "statement_md5": "11adebc11a9054cb6bb1bbf1f4c83159",
+    "statement_count": 1
+  },
+  {
+    "name": "extend_bootstrap_with_coaching_requests",
+    "version": "20260925111249",
+    "statement_md5": "94f9593e1eb726bf52a3103ff9ecae12",
+    "statement_count": 1
+  },
+  {
+    "name": "expand_member_ambassador_center_v2",
+    "version": "20260925115223",
+    "statement_md5": "bf15b6a4291e1694afebc60db3953494",
+    "statement_count": 1
+  },
+  {
+    "name": "route_referral_notifications_and_extend_app_access",
+    "version": "20260925115251",
+    "statement_md5": "bfbfa220256221d17186a326878bdaa4",
+    "statement_count": 1
+  },
+  {
+    "name": "extend_bootstrap_with_ambassador_activity",
+    "version": "20260925115313",
+    "statement_md5": "88f09be281bb633c7eb4b0cc7d0ef220",
+    "statement_count": 1
+  },
+  {
+    "name": "add_family_hub_request_workflow",
+    "version": "20260925115455",
+    "statement_md5": "35ebf5e28695193e1b3a5509ff174db3",
+    "statement_count": 1
+  },
+  {
+    "name": "notify_and_surface_family_requests",
+    "version": "20260925115526",
+    "statement_md5": "5132bd486cdabb2aa107641b5ccbef22",
+    "statement_count": 1
+  },
+  {
+    "name": "secure_program_entitlement_management",
+    "version": "20260925122652",
+    "statement_md5": "9239c1cceda9ca34c7e2b7bd4f9c2291",
+    "statement_count": 1
+  },
+  {
+    "name": "tighten_course_builder_permissions",
+    "version": "20260925122939",
+    "statement_md5": "63154f5fa2962f3a1b3cda4dd8481ca2",
+    "statement_count": 1
+  },
+  {
+    "name": "apply_family_requests_on_completion",
+    "version": "20260925124958",
+    "statement_md5": "a077327bb3d576564efa2f136f6322d4",
+    "statement_count": 1
+  },
+  {
+    "name": "add_member_ask_revitalized_workflow",
+    "version": "20260925134707",
+    "statement_md5": "13b8eb4d5f1c84550ced5e1f7cb85ec5",
+    "statement_count": 1
+  },
+  {
+    "name": "route_companion_notifications_and_add_summary",
+    "version": "20260925134815",
+    "statement_md5": "167944d160e92a0564a99f1ddc8042f7",
+    "statement_count": 1
+  },
+  {
+    "name": "fallback_companion_questions_to_coach_when_knowledge_empty",
+    "version": "20260925134941",
+    "statement_md5": "923853ba8b126ecf00dd78d49b2b4c8c",
+    "statement_count": 1
+  },
+  {
+    "name": "add_staff_self_profile_updates",
+    "version": "20260925143720",
+    "statement_md5": "9b5e5d4f653256f3d169d11ca95575c3",
+    "statement_count": 1
+  },
+  {
+    "name": "add_staff_phone_onboarding_support",
+    "version": "20260925151316",
+    "statement_md5": "9a43a355a4e5ebfa095d6d5cca77c7f0",
+    "statement_count": 1
+  },
+  {
+    "name": "complete_staff_invitation_after_password_setup",
+    "version": "20260925171639",
+    "statement_md5": "58eea0c11b7188cde5c2583c2a29a910",
+    "statement_count": 1
+  },
+  {
+    "name": "add_events_attendance_operations",
+    "version": "20260925211016",
+    "statement_md5": "b99e875c7e5a4f60925a1a224c05397d",
+    "statement_count": 1
+  },
+  {
+    "name": "revert_accidental_events_attendance_changes",
+    "version": "20260925211149",
+    "statement_md5": "94d13b11c8b59852d1f98101a3e7ed2c",
+    "statement_count": 1
+  },
+  {
+    "name": "add_member_self_profile_management",
+    "version": "20260925234728",
+    "statement_md5": "59fe4b3b612ba36d582335deba26bf02",
+    "statement_count": 1
+  },
+  {
+    "name": "add_member_session_agenda_update",
+    "version": "20260926021801",
+    "statement_md5": "be9cc85732e6769e7332a80864749fc4",
+    "statement_count": 1
+  },
+  {
+    "name": "add_member_app_bootstrap_v2",
+    "version": "20260926023618",
+    "statement_md5": "ed42310d5cfa035b61a613b37a3d8617",
+    "statement_count": 1
+  },
+  {
+    "name": "health_integration_phase1_metric_consent_center_v2",
+    "version": "20260926031139",
+    "statement_md5": "a0853ac9f66d36d4ea9784d58907f846",
+    "statement_count": 1
+  },
+  {
+    "name": "health_integration_phase1_bulk_consent_and_snapshot",
+    "version": "20260926031203",
+    "statement_md5": "e39de3f89a887697bdca1d1d72dbdbf5",
+    "statement_count": 1
+  },
+  {
+    "name": "member_health_dashboard_trend_layer_v1",
+    "version": "20260926033033",
+    "statement_md5": "67915a54a652441f0a9f5aa3fa591721",
+    "statement_count": 1
+  },
+  {
+    "name": "extend_member_app_bootstrap_with_health_dashboard_v3",
+    "version": "20260926033138",
+    "statement_md5": "8345f8dee38019266723422a96d7e5e7",
+    "statement_count": 1
+  },
+  {
+    "name": "harden_exposed_profile_helper_functions",
+    "version": "20260926033517",
+    "statement_md5": "e345f28e8b64774e81c40a1c84ac7be9",
+    "statement_count": 1
+  },
+  {
+    "name": "private_progress_photo_vault_and_app_bootstrap_v4",
+    "version": "20260926033555",
+    "statement_md5": "365965fa52b3cbd97e042480d434b855",
+    "statement_count": 1
+  },
+  {
+    "name": "versioned_wellness_scores_and_family_summary",
+    "version": "20260926033642",
+    "statement_md5": "d5582d97d94a067ba233f2b3658c2eaf",
+    "statement_count": 1
+  },
+  {
+    "name": "achievements_goal_progress_and_descriptive_insights_v1",
+    "version": "20260926034715",
+    "statement_md5": "aeb6e8eee4a706f81be67c7418079311",
+    "statement_count": 1
+  },
+  {
+    "name": "achievement_notifications_and_family_progress_dashboard_v2",
+    "version": "20260926034821",
+    "statement_md5": "33cc9401275225e76a13bb96ae4d7d0f",
+    "statement_count": 1
+  },
+  {
+    "name": "daily_plan_consistency_and_streak_summary_v1",
+    "version": "20260926034900",
+    "statement_md5": "f6df88c644dedeb5bb4c3f73960a1976",
+    "statement_count": 1
+  },
+  {
+    "name": "coaching_momentum_and_staff_attention_center_v1",
+    "version": "20260926035311",
+    "statement_md5": "d233b3f6d44015bca3506461f739110d",
+    "statement_count": 1
+  },
+  {
+    "name": "coaching_attention_summary_views_v1",
+    "version": "20260926035331",
+    "statement_md5": "0d00009c35b238de6de2932d6e129e3b",
+    "statement_count": 1
+  },
+  {
+    "name": "advisor_context_snapshots_and_knowledge_access_hardening_v1",
+    "version": "20260926035602",
+    "statement_md5": "f6a33835ac51659f7abd562bf9f298fc",
+    "statement_count": 1
+  },
+  {
+    "name": "advisor_source_governance_usage_and_provenance_v1",
+    "version": "20260926035827",
+    "statement_md5": "e5128ff383856ba2d9a1c30b7b8a11ef",
+    "statement_count": 1
+  },
+  {
+    "name": "advisor_admin_operations_control_center_v1",
+    "version": "20260926035907",
+    "statement_md5": "1c74e639bf75ccdf9297274138b16af4",
+    "statement_count": 1
+  },
+  {
+    "name": "advisor_knowledge_ingestion_and_approval_lifecycle_v1",
+    "version": "20260926040109",
+    "statement_md5": "4983ebb090784b0d876980ae9e7bbdce",
+    "statement_count": 1
+  },
+  {
+    "name": "advisor_member_feedback_and_quality_loop_v1",
+    "version": "20260926040202",
+    "statement_md5": "be1da587c0bf3d351604b2353dbb849a",
+    "statement_count": 1
+  },
+  {
+    "name": "ai_advisor_member_personalization_consent_v2",
+    "version": "20260926040254",
+    "statement_md5": "4a6b1e751985e8d42c49682aa4cf7772",
+    "statement_count": 1
+  },
+  {
+    "name": "member_family_unified_calendar_and_up_next_v1",
+    "version": "20260926040404",
+    "statement_md5": "a485105ae0368b7d876c2fdc2c13e8c3",
+    "statement_count": 1
+  },
+  {
+    "name": "member_weekly_progress_story_and_bootstrap_v15",
+    "version": "20260926042017",
+    "statement_md5": "0de8d2ba28af86acf62386833701f25c",
+    "statement_count": 1
+  },
+  {
+    "name": "member_next_best_actions_and_bootstrap_v16",
+    "version": "20260926042114",
+    "statement_md5": "64feb9101df615eb0301c9cff9661307",
+    "statement_count": 1
+  },
+  {
+    "name": "mobile_device_registry_and_push_delivery_foundation_v1",
+    "version": "20260926051241",
+    "statement_md5": "c2177bfbd5a26ee373fe6eb5e8ff8be7",
+    "statement_count": 1
+  },
+  {
+    "name": "mobile_runtime_config_and_push_index_v1",
+    "version": "20260926051332",
+    "statement_md5": "9da28895ad6622ce6d74963622f6a618",
+    "statement_count": 1
+  },
+  {
+    "name": "mobile_route_registry_and_notification_deep_links_v1",
+    "version": "20260926051417",
+    "statement_md5": "106c5d34e5d0d90c12e9e99d5cfa033d",
+    "statement_count": 1
+  },
+  {
+    "name": "index_notification_route_rule_foreign_key",
+    "version": "20260926051441",
+    "statement_md5": "f1ff74c015a4290b74d0cc1c489730c0",
+    "statement_count": 1
+  }
+]

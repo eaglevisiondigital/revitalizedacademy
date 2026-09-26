@@ -1,0 +1,137 @@
+[
+  {
+    "slug": "public-intake",
+    "version": 6,
+    "status": "ACTIVE",
+    "verify_jwt": false,
+    "source_path": "supabase/baselines/2026-09-26/edge-functions/public-intake/index.ts",
+    "source_sha256": "d016c609a9b31d6ba3adcb73d97fd8035ae3bf54b4f8234444d512ceac4b6b96",
+    "deployment_bundle_sha256": "13a5a2589ee98e661ad470dd009f152f8316adaf02d1806c5951104e7d51f09d"
+  },
+  {
+    "slug": "video-message-view",
+    "version": 2,
+    "status": "ACTIVE",
+    "verify_jwt": false,
+    "source_path": "supabase/baselines/2026-09-26/edge-functions/video-message-view/index.ts",
+    "source_sha256": "d247da91fb2c4a1743b30dfd7feeb9e1bb95059e6b8866d31cc3d8f58711525d",
+    "deployment_bundle_sha256": "5abd10ba9d2a855b4d577368af9a77b34ea622b91fc4ebc54a00464764ae7c2d"
+  },
+  {
+    "slug": "journey-link",
+    "version": 6,
+    "status": "ACTIVE",
+    "verify_jwt": false,
+    "source_path": "supabase/baselines/2026-09-26/edge-functions/journey-link/index.ts",
+    "source_sha256": "7ff1ddf7e0a5eec32d77738d5fe882ba2486368f8e61c04dc30881d66cd3f161",
+    "deployment_bundle_sha256": "9b20f099b1dceeea9a0dd4862b44ea0ed07c71b9e39df82eeecad5c3daa4f34c"
+  },
+  {
+    "slug": "health-profile-intake",
+    "version": 2,
+    "status": "ACTIVE",
+    "verify_jwt": false,
+    "source_path": "supabase/baselines/2026-09-26/edge-functions/health-profile-intake/index.ts",
+    "source_sha256": "bdea7e298d249f4a5a2879886e8faf576363c57e06f86318a7303e16335a61ba",
+    "deployment_bundle_sha256": "76235b6e4e0d833bdc06644265c87c6a9bb007f3bf0b565abd091c0c506adb1f"
+  },
+  {
+    "slug": "member-account",
+    "version": 2,
+    "status": "ACTIVE",
+    "verify_jwt": false,
+    "source_path": "supabase/baselines/2026-09-26/edge-functions/member-account/index.ts",
+    "source_sha256": "2ef9bbbdf63f91222c504ca31a8fd664dd9273d2c01708f3e3641d8ce9304bc1",
+    "deployment_bundle_sha256": "e9356be47758c9f32c4518f3b47f400040e3ca74ce3b08a7a4e89703ffa079a0"
+  },
+  {
+    "slug": "member-coaching",
+    "version": 1,
+    "status": "ACTIVE",
+    "verify_jwt": false,
+    "source_path": "supabase/baselines/2026-09-26/edge-functions/member-coaching/index.ts",
+    "source_sha256": "20c27aaa6eb7f91b8861454e47b63e5db3f3d8eaece993c0667fdb6cf9b273f9",
+    "deployment_bundle_sha256": "79def5ced840d41a5a48120f0ea9e136f919c240ed6dd3d747ebc98acf68e44b"
+  },
+  {
+    "slug": "journey-override",
+    "version": 3,
+    "status": "ACTIVE",
+    "verify_jwt": false,
+    "source_path": "supabase/baselines/2026-09-26/edge-functions/journey-override/index.ts",
+    "source_sha256": "767587468188b05ee8ecd8df5d95041b9ca175621177c8df5d06ed963dcc0875",
+    "deployment_bundle_sha256": "a3e0ff99e6bc9f98b1ea4e98f672f09018e84deb4e9dd3aefe701d894b4d35f1"
+  },
+  {
+    "slug": "coach-companion-knowledge",
+    "version": 1,
+    "status": "ACTIVE",
+    "verify_jwt": false,
+    "source_path": "supabase/baselines/2026-09-26/edge-functions/coach-companion-knowledge/index.ts",
+    "source_sha256": "ed84ee446e6db6a93c286f73335f911e8e2bc4e77914f3e5e722de83c4fb5f93",
+    "deployment_bundle_sha256": "c70ba9f86351a53155b9c953423e764f565ec9f7bc7b017f043a633f3654d1f1"
+  },
+  {
+    "slug": "coach-companion-request",
+    "version": 1,
+    "status": "ACTIVE",
+    "verify_jwt": false,
+    "source_path": "supabase/baselines/2026-09-26/edge-functions/coach-companion-request/index.ts",
+    "source_sha256": "31fe62ddd5550cc4a0132a749c53f9aa8b7c0ef77ed164c7426523078e9fc41c",
+    "deployment_bundle_sha256": "f9365bca3eedae4fe81e6f0d0555292067ced4019b73fbed9a08ffd2c4f665a9"
+  },
+  {
+    "slug": "coach-companion-review",
+    "version": 1,
+    "status": "ACTIVE",
+    "verify_jwt": false,
+    "source_path": "supabase/baselines/2026-09-26/edge-functions/coach-companion-review/index.ts",
+    "source_sha256": "279281aa34ac276e2ac2c5a0c4cbc97fa251b5fb396b8c5717d88fb142c992da",
+    "deployment_bundle_sha256": "64c46e46766b1d977505991c00082f5f7e95936cf3b1fd69490ed2fc5ef89b9c"
+  },
+  {
+    "slug": "notification-delivery",
+    "version": 1,
+    "status": "ACTIVE",
+    "verify_jwt": false,
+    "source_path": "supabase/baselines/2026-09-26/edge-functions/notification-delivery/index.ts",
+    "source_sha256": "729be8c0555dcd71acc9da53fff448d3e90a2cd8049d8fce40616c7855dcded0",
+    "deployment_bundle_sha256": "eda5487e524d1986ba77d95bd86db91a85ab23c2574052779a5d0878596ee004"
+  },
+  {
+    "slug": "staff-management",
+    "version": 3,
+    "status": "ACTIVE",
+    "verify_jwt": false,
+    "source_path": "supabase/baselines/2026-09-26/edge-functions/staff-management/index.ts",
+    "source_sha256": "bc2f494a1d1890eafb23e66fbae6b63d18608be262e89c579ac4c045d6c8d4b9",
+    "deployment_bundle_sha256": "8c0561b0ec7e233c72733001fb72324129a1378720dac87332eb7c788bad37e1"
+  },
+  {
+    "slug": "agreement-sign",
+    "version": 3,
+    "status": "ACTIVE",
+    "verify_jwt": false,
+    "source_path": "supabase/baselines/2026-09-26/edge-functions/agreement-sign/index.ts",
+    "source_sha256": "2459a18a0a7ee7d26dd47d80a9ba0ea4c7a87942c54f48c7e9e1fc8053c3e06a",
+    "deployment_bundle_sha256": "9432a000d8e56865caa908a1b5d1fe20d9b1390eab284aeeed9eab3619d40f49"
+  },
+  {
+    "slug": "staff-agreement-sign",
+    "version": 2,
+    "status": "ACTIVE",
+    "verify_jwt": false,
+    "source_path": "supabase/baselines/2026-09-26/edge-functions/staff-agreement-sign/index.ts",
+    "source_sha256": "b4d27ebcd4fe97907be64f1b79d2b6999cd1675a3c36c1ad63d1189e5482ebbd",
+    "deployment_bundle_sha256": "d464025fdc7ebfed8b04e43d9c928341df056fdc59533efada3f9c4cd760de61"
+  },
+  {
+    "slug": "staff-password-reset",
+    "version": 2,
+    "status": "ACTIVE",
+    "verify_jwt": false,
+    "source_path": "supabase/baselines/2026-09-26/edge-functions/staff-password-reset/index.ts",
+    "source_sha256": "536ef54e89eb999317d1f456355a1901c1b37b3f98d3168c74dec083c76423ac",
+    "deployment_bundle_sha256": "a0c45a78fd3e06e528092a7317b4f1ab2196d64a23d8a6ef44a92accb3abdcfc"
+  }
+]

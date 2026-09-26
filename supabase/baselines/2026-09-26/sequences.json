@@ -1,0 +1,50 @@
+[
+  {
+    "schema": "public",
+    "name": "question_mappings_id_seq",
+    "acl": "{postgres=rwU/postgres,anon=rwU/postgres,authenticated=rwU/postgres,service_role=rwU/postgres}",
+    "table_schema": "public",
+    "table_name": "question_mappings",
+    "column_name": "id",
+    "deptype": "i",
+    "type": "bigint",
+    "seqstart": 1,
+    "seqincrement": 1,
+    "seqmax": "9223372036854775807",
+    "seqmin": 1,
+    "seqcache": 1,
+    "seqcycle": false
+  },
+  {
+    "schema": "public",
+    "name": "member_sync_events_event_id_seq",
+    "acl": "{postgres=rwU/postgres,anon=rwU/postgres,authenticated=rwU/postgres,service_role=rwU/postgres}",
+    "table_schema": "public",
+    "table_name": "member_sync_events",
+    "column_name": "event_id",
+    "deptype": "i",
+    "type": "bigint",
+    "seqstart": 1,
+    "seqincrement": 1,
+    "seqmax": "9223372036854775807",
+    "seqmin": 1,
+    "seqcache": 1,
+    "seqcycle": false
+  },
+  {
+    "schema": "public",
+    "name": "member_app_events_id_seq",
+    "acl": "{postgres=rwU/postgres,anon=rwU/postgres,authenticated=rwU/postgres,service_role=rwU/postgres}",
+    "table_schema": "public",
+    "table_name": "member_app_events",
+    "column_name": "id",
+    "deptype": "i",
+    "type": "bigint",
+    "seqstart": 1,
+    "seqincrement": 1,
+    "seqmax": "9223372036854775807",
+    "seqmin": 1,
+    "seqcache": 1,
+    "seqcycle": false
+  }
+]

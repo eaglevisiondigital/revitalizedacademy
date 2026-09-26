@@ -1,6 +1,6 @@
 # ReVitalized Academy architecture
 
-Status: observed architecture and preserved target, 2026-09-26. This document does not authorize a redesign.
+Status: observed production architecture plus IMPLEMENTED, undeployed engineering changes, 2026-09-26. This document does not authorize a redesign.
 
 ## Product target
 
@@ -81,3 +81,13 @@ The migration ledger ends at 185 entries on `20260926051441`; a read-only search
 - **Email/SMS:** Resend and Twilio code exists; SMS configuration is disabled/setup required. Branded password reset targets `/portal/password-reset.html`. Provider success is unverified.
 - **Push/offline:** backend tables/RPCs and settings exist; native client retry/sync and a working APNs/FCM delivery path were not demonstrated.
 - **Payments/ReFuel:** provider-neutral records and readiness foundations exist. Merchant integration, checkout, callbacks, refunds and commerce fulfillment were not verified.
+
+## Implemented engineering package (not deployed)
+
+The application now tracks recovered backend definitions and original Edge deployments under `supabase/baselines/2026-09-26`, editable functions under `supabase/functions`, and one normal forward migration. [Recovery boundaries and workflow](supabase/SOURCE_RECOVERY.md) distinguish observed live structure from the test platform and proposed release. Earlier statements about missing repository source describe the pre-package baseline.
+
+Privileged companion and journey operations ask a JWT-scoped permission RPC before using their administrative data client. An atomic export API selects the permitted ordinary fields and records its audit in one transaction. Signing now uses narrow private database helpers invoked by public invoker RPCs: caller identity, ownership, content hash, acceptances, aggregate agreement state and onboarding changes are handled transactionally. A shared readiness predicate checks payment totals/waivers and required agreements/signatures. Link-based member account creation rechecks it. Existing active records are not mass-modified.
+
+Database changes precede compatible Edge/frontend releases. Member bootstrap remains v2, with additive signing hashes in the existing agreement views. [Compatibility plan](docs/BOOTSTRAP_COMPATIBILITY.md) specifies consumed fields, privacy/auth checks, performance measurement and gradual upgrades.
+
+APPROVED: ReVitalized owns the system of record; GoodBarber can be a shell; Mighty Networks does not own core data; unfinished Global Propel work is not a runtime dependency. Adult health is private by default and guardian/minor access is relationship-aware. Score methodology requires Justyn/Elle approval. Payment and required agreements are independent gates, each complete or explicitly waived. The assessment's Netlify flow remains in place.

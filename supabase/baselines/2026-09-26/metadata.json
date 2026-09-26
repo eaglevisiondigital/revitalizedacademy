@@ -1,0 +1,4476 @@
+{
+  "view_dependencies": [
+    {
+      "view": "admin_app_runtime_config",
+      "schema": "public",
+      "depends_on": "app_runtime_config"
+    },
+    {
+      "view": "admin_app_runtime_config",
+      "schema": "public",
+      "depends_on": "staff_directory"
+    },
+    {
+      "view": "admin_billing_overview",
+      "schema": "public",
+      "depends_on": "billing_plans"
+    },
+    {
+      "view": "admin_billing_overview",
+      "schema": "public",
+      "depends_on": "client_memberships"
+    },
+    {
+      "view": "admin_billing_overview",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "admin_billing_overview",
+      "schema": "public",
+      "depends_on": "membership_subscriptions"
+    },
+    {
+      "view": "admin_billing_overview",
+      "schema": "public",
+      "depends_on": "program_catalog"
+    },
+    {
+      "view": "admin_client_agreements",
+      "schema": "public",
+      "depends_on": "agreement_acceptances"
+    },
+    {
+      "view": "admin_client_agreements",
+      "schema": "public",
+      "depends_on": "agreement_templates"
+    },
+    {
+      "view": "admin_client_agreements",
+      "schema": "public",
+      "depends_on": "client_agreements"
+    },
+    {
+      "view": "admin_client_attention_center",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "admin_client_attention_center",
+      "schema": "public",
+      "depends_on": "client_assignments"
+    },
+    {
+      "view": "admin_client_attention_center",
+      "schema": "public",
+      "depends_on": "client_checkins"
+    },
+    {
+      "view": "admin_client_attention_center",
+      "schema": "public",
+      "depends_on": "client_coach_assignments"
+    },
+    {
+      "view": "admin_client_attention_center",
+      "schema": "public",
+      "depends_on": "client_goals"
+    },
+    {
+      "view": "admin_client_attention_center",
+      "schema": "public",
+      "depends_on": "client_memberships"
+    },
+    {
+      "view": "admin_client_attention_center",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "admin_client_attention_center",
+      "schema": "public",
+      "depends_on": "follow_up_tasks"
+    },
+    {
+      "view": "admin_client_attention_center",
+      "schema": "public",
+      "depends_on": "health_observations"
+    },
+    {
+      "view": "admin_client_attention_center",
+      "schema": "public",
+      "depends_on": "program_catalog"
+    },
+    {
+      "view": "admin_client_attention_center",
+      "schema": "public",
+      "depends_on": "progress_entries"
+    },
+    {
+      "view": "admin_client_attention_center",
+      "schema": "public",
+      "depends_on": "staff_directory"
+    },
+    {
+      "view": "admin_client_challenge_summary",
+      "schema": "public",
+      "depends_on": "challenge_enrollments"
+    },
+    {
+      "view": "admin_client_challenge_summary",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "admin_client_challenge_summary",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "admin_client_challenge_summary",
+      "schema": "public",
+      "depends_on": "household_members"
+    },
+    {
+      "view": "admin_client_coaching_entitlements",
+      "schema": "public",
+      "depends_on": "client_memberships"
+    },
+    {
+      "view": "admin_client_coaching_entitlements",
+      "schema": "public",
+      "depends_on": "coaching_entitlement_usage"
+    },
+    {
+      "view": "admin_client_coaching_entitlements",
+      "schema": "public",
+      "depends_on": "membership_entitlements"
+    },
+    {
+      "view": "admin_client_coaching_summary",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "admin_client_coaching_summary",
+      "schema": "public",
+      "depends_on": "client_assignments"
+    },
+    {
+      "view": "admin_client_coaching_summary",
+      "schema": "public",
+      "depends_on": "client_checkins"
+    },
+    {
+      "view": "admin_client_coaching_summary",
+      "schema": "public",
+      "depends_on": "client_coach_assignments"
+    },
+    {
+      "view": "admin_client_coaching_summary",
+      "schema": "public",
+      "depends_on": "client_goals"
+    },
+    {
+      "view": "admin_client_coaching_summary",
+      "schema": "public",
+      "depends_on": "client_habits"
+    },
+    {
+      "view": "admin_client_coaching_summary",
+      "schema": "public",
+      "depends_on": "client_memberships"
+    },
+    {
+      "view": "admin_client_coaching_summary",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "admin_client_coaching_summary",
+      "schema": "public",
+      "depends_on": "program_catalog"
+    },
+    {
+      "view": "admin_client_coaching_summary",
+      "schema": "public",
+      "depends_on": "progress_entries"
+    },
+    {
+      "view": "admin_client_coaching_summary",
+      "schema": "public",
+      "depends_on": "staff_directory"
+    },
+    {
+      "view": "admin_client_documents",
+      "schema": "public",
+      "depends_on": "client_documents"
+    },
+    {
+      "view": "admin_client_documents",
+      "schema": "public",
+      "depends_on": "staff_directory"
+    },
+    {
+      "view": "admin_client_health_integration_summary",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "admin_client_health_integration_summary",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "admin_client_health_integration_summary",
+      "schema": "public",
+      "depends_on": "health_integration_connections"
+    },
+    {
+      "view": "admin_client_health_integration_summary",
+      "schema": "public",
+      "depends_on": "health_observations"
+    },
+    {
+      "view": "admin_client_learning_detail",
+      "schema": "public",
+      "depends_on": "client_course_enrollments"
+    },
+    {
+      "view": "admin_client_learning_detail",
+      "schema": "public",
+      "depends_on": "learning_courses"
+    },
+    {
+      "view": "admin_client_learning_detail",
+      "schema": "public",
+      "depends_on": "learning_lessons"
+    },
+    {
+      "view": "admin_client_learning_detail",
+      "schema": "public",
+      "depends_on": "learning_modules"
+    },
+    {
+      "view": "admin_client_learning_detail",
+      "schema": "public",
+      "depends_on": "lesson_progress"
+    },
+    {
+      "view": "admin_client_learning_summary",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "admin_client_learning_summary",
+      "schema": "public",
+      "depends_on": "client_course_enrollments"
+    },
+    {
+      "view": "admin_client_learning_summary",
+      "schema": "public",
+      "depends_on": "client_resource_assignments"
+    },
+    {
+      "view": "admin_client_learning_summary",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "admin_client_wellness_summary",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "admin_client_wellness_summary",
+      "schema": "public",
+      "depends_on": "client_fitness_plans"
+    },
+    {
+      "view": "admin_client_wellness_summary",
+      "schema": "public",
+      "depends_on": "client_meal_plan_items"
+    },
+    {
+      "view": "admin_client_wellness_summary",
+      "schema": "public",
+      "depends_on": "client_meal_plans"
+    },
+    {
+      "view": "admin_client_wellness_summary",
+      "schema": "public",
+      "depends_on": "client_workout_assignments"
+    },
+    {
+      "view": "admin_client_wellness_summary",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "admin_client_wellness_summary",
+      "schema": "public",
+      "depends_on": "nutrition_logs"
+    },
+    {
+      "view": "admin_coach_attention_by_owner",
+      "schema": "public",
+      "depends_on": "admin_client_attention_center"
+    },
+    {
+      "view": "admin_coach_capacity",
+      "schema": "public",
+      "depends_on": "client_coach_assignments"
+    },
+    {
+      "view": "admin_coach_capacity",
+      "schema": "public",
+      "depends_on": "coaching_sessions"
+    },
+    {
+      "view": "admin_coach_capacity",
+      "schema": "public",
+      "depends_on": "staff_access"
+    },
+    {
+      "view": "admin_coach_capacity",
+      "schema": "public",
+      "depends_on": "staff_capacity_settings"
+    },
+    {
+      "view": "admin_coaching_attention_summary",
+      "schema": "public",
+      "depends_on": "admin_client_attention_center"
+    },
+    {
+      "view": "admin_community_feed",
+      "schema": "public",
+      "depends_on": "community_comments"
+    },
+    {
+      "view": "admin_community_feed",
+      "schema": "public",
+      "depends_on": "community_posts"
+    },
+    {
+      "view": "admin_community_feed",
+      "schema": "public",
+      "depends_on": "community_reactions"
+    },
+    {
+      "view": "admin_community_feed",
+      "schema": "public",
+      "depends_on": "community_spaces"
+    },
+    {
+      "view": "admin_community_feed",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "admin_community_feed",
+      "schema": "public",
+      "depends_on": "staff_access"
+    },
+    {
+      "view": "admin_community_metrics",
+      "schema": "public",
+      "depends_on": "community_comments"
+    },
+    {
+      "view": "admin_community_metrics",
+      "schema": "public",
+      "depends_on": "community_memberships"
+    },
+    {
+      "view": "admin_community_metrics",
+      "schema": "public",
+      "depends_on": "community_posts"
+    },
+    {
+      "view": "admin_community_metrics",
+      "schema": "public",
+      "depends_on": "community_reactions"
+    },
+    {
+      "view": "admin_community_metrics",
+      "schema": "public",
+      "depends_on": "community_spaces"
+    },
+    {
+      "view": "admin_community_spaces",
+      "schema": "public",
+      "depends_on": "community_memberships"
+    },
+    {
+      "view": "admin_community_spaces",
+      "schema": "public",
+      "depends_on": "community_posts"
+    },
+    {
+      "view": "admin_community_spaces",
+      "schema": "public",
+      "depends_on": "community_spaces"
+    },
+    {
+      "view": "admin_companion_control_center",
+      "schema": "public",
+      "depends_on": "admin_companion_knowledge_readiness"
+    },
+    {
+      "view": "admin_companion_control_center",
+      "schema": "public",
+      "depends_on": "admin_companion_operations_summary"
+    },
+    {
+      "view": "admin_companion_control_center",
+      "schema": "public",
+      "depends_on": "admin_companion_review_queue"
+    },
+    {
+      "view": "admin_companion_control_center",
+      "schema": "public",
+      "depends_on": "admin_companion_source_health"
+    },
+    {
+      "view": "admin_companion_control_center",
+      "schema": "public",
+      "depends_on": "admin_companion_usage_summary_30d"
+    },
+    {
+      "view": "admin_companion_control_center_v2",
+      "schema": "public",
+      "depends_on": "admin_companion_control_center"
+    },
+    {
+      "view": "admin_companion_control_center_v2",
+      "schema": "public",
+      "depends_on": "admin_companion_ingestion_queue"
+    },
+    {
+      "view": "admin_companion_control_center_v2",
+      "schema": "public",
+      "depends_on": "admin_companion_quality_queue"
+    },
+    {
+      "view": "admin_companion_control_center_v2",
+      "schema": "public",
+      "depends_on": "admin_companion_quality_summary"
+    },
+    {
+      "view": "admin_companion_ingestion_queue",
+      "schema": "public",
+      "depends_on": "coach_companion_ingestion_jobs"
+    },
+    {
+      "view": "admin_companion_ingestion_queue",
+      "schema": "public",
+      "depends_on": "coach_companion_knowledge_sources"
+    },
+    {
+      "view": "admin_companion_ingestion_queue",
+      "schema": "public",
+      "depends_on": "staff_directory"
+    },
+    {
+      "view": "admin_companion_knowledge_readiness",
+      "schema": "public",
+      "depends_on": "coach_companion_knowledge_chunks"
+    },
+    {
+      "view": "admin_companion_knowledge_readiness",
+      "schema": "public",
+      "depends_on": "coach_companion_knowledge_sources"
+    },
+    {
+      "view": "admin_companion_operations_summary",
+      "schema": "public",
+      "depends_on": "coach_companion_requests"
+    },
+    {
+      "view": "admin_companion_quality_queue",
+      "schema": "public",
+      "depends_on": "coach_companion_answer_feedback"
+    },
+    {
+      "view": "admin_companion_quality_queue",
+      "schema": "public",
+      "depends_on": "coach_companion_requests"
+    },
+    {
+      "view": "admin_companion_quality_queue",
+      "schema": "public",
+      "depends_on": "coach_companion_reviews"
+    },
+    {
+      "view": "admin_companion_quality_queue",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "admin_companion_quality_summary",
+      "schema": "public",
+      "depends_on": "coach_companion_answer_feedback"
+    },
+    {
+      "view": "admin_companion_review_queue",
+      "schema": "public",
+      "depends_on": "coach_companion_question_types"
+    },
+    {
+      "view": "admin_companion_review_queue",
+      "schema": "public",
+      "depends_on": "coach_companion_requests"
+    },
+    {
+      "view": "admin_companion_review_queue",
+      "schema": "public",
+      "depends_on": "coach_companion_reviews"
+    },
+    {
+      "view": "admin_companion_review_queue",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "admin_companion_review_queue",
+      "schema": "public",
+      "depends_on": "staff_directory"
+    },
+    {
+      "view": "admin_companion_source_health",
+      "schema": "public",
+      "depends_on": "coach_companion_knowledge_chunks"
+    },
+    {
+      "view": "admin_companion_source_health",
+      "schema": "public",
+      "depends_on": "coach_companion_knowledge_sources"
+    },
+    {
+      "view": "admin_companion_source_health",
+      "schema": "public",
+      "depends_on": "coach_companion_source_revisions"
+    },
+    {
+      "view": "admin_companion_sources_needing_review",
+      "schema": "public",
+      "depends_on": "coach_companion_knowledge_sources"
+    },
+    {
+      "view": "admin_companion_usage_summary_30d",
+      "schema": "public",
+      "depends_on": "coach_companion_usage_events"
+    },
+    {
+      "view": "admin_contact_conversations",
+      "schema": "public",
+      "depends_on": "member_conversations"
+    },
+    {
+      "view": "admin_contact_conversations",
+      "schema": "public",
+      "depends_on": "member_messages"
+    },
+    {
+      "view": "admin_contact_journey_summary",
+      "schema": "public",
+      "depends_on": "contact_engagement"
+    },
+    {
+      "view": "admin_contact_journey_summary",
+      "schema": "public",
+      "depends_on": "contact_journey_steps"
+    },
+    {
+      "view": "admin_contact_journey_summary",
+      "schema": "public",
+      "depends_on": "contact_journeys"
+    },
+    {
+      "view": "admin_contact_journey_summary",
+      "schema": "public",
+      "depends_on": "journey_definitions"
+    },
+    {
+      "view": "admin_contact_next_step",
+      "schema": "public",
+      "depends_on": "contact_engagement"
+    },
+    {
+      "view": "admin_contact_next_step",
+      "schema": "public",
+      "depends_on": "contact_journey_steps"
+    },
+    {
+      "view": "admin_contact_next_step",
+      "schema": "public",
+      "depends_on": "contact_journeys"
+    },
+    {
+      "view": "admin_contact_next_step",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "admin_contact_next_step",
+      "schema": "public",
+      "depends_on": "journey_appointments"
+    },
+    {
+      "view": "admin_contact_next_step",
+      "schema": "public",
+      "depends_on": "journey_definitions"
+    },
+    {
+      "view": "admin_contact_next_step",
+      "schema": "public",
+      "depends_on": "journey_enrollment_activations"
+    },
+    {
+      "view": "admin_contact_overview",
+      "schema": "public",
+      "depends_on": "contact_activity"
+    },
+    {
+      "view": "admin_contact_overview",
+      "schema": "public",
+      "depends_on": "contact_notes"
+    },
+    {
+      "view": "admin_contact_overview",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "admin_contact_overview",
+      "schema": "public",
+      "depends_on": "follow_up_tasks"
+    },
+    {
+      "view": "admin_contact_overview",
+      "schema": "public",
+      "depends_on": "refuel_interest"
+    },
+    {
+      "view": "admin_contact_overview",
+      "schema": "public",
+      "depends_on": "webinar_registrations"
+    },
+    {
+      "view": "admin_contact_overview",
+      "schema": "public",
+      "depends_on": "workflow_records"
+    },
+    {
+      "view": "admin_conversion_funnel",
+      "schema": "public",
+      "depends_on": "client_memberships"
+    },
+    {
+      "view": "admin_conversion_funnel",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "admin_conversion_funnel",
+      "schema": "public",
+      "depends_on": "journey_enrollment_activations"
+    },
+    {
+      "view": "admin_dashboard_metrics",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "admin_dashboard_metrics",
+      "schema": "public",
+      "depends_on": "refuel_interest"
+    },
+    {
+      "view": "admin_dashboard_metrics",
+      "schema": "public",
+      "depends_on": "webinar_registrations"
+    },
+    {
+      "view": "admin_dashboard_metrics",
+      "schema": "public",
+      "depends_on": "workflow_records"
+    },
+    {
+      "view": "admin_due_tasks",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "admin_due_tasks",
+      "schema": "public",
+      "depends_on": "follow_up_tasks"
+    },
+    {
+      "view": "admin_enrollment_readiness",
+      "schema": "public",
+      "depends_on": "agreement_acceptances"
+    },
+    {
+      "view": "admin_enrollment_readiness",
+      "schema": "public",
+      "depends_on": "client_agreements"
+    },
+    {
+      "view": "admin_enrollment_readiness",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "admin_enrollment_readiness",
+      "schema": "public",
+      "depends_on": "journey_enrollment_activations"
+    },
+    {
+      "view": "admin_enrollment_readiness",
+      "schema": "public",
+      "depends_on": "payment_records"
+    },
+    {
+      "view": "admin_enrollment_readiness_summary",
+      "schema": "public",
+      "depends_on": "admin_enrollment_readiness"
+    },
+    {
+      "view": "admin_family_requests",
+      "schema": "public",
+      "depends_on": "client_memberships"
+    },
+    {
+      "view": "admin_family_requests",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "admin_family_requests",
+      "schema": "public",
+      "depends_on": "family_change_requests"
+    },
+    {
+      "view": "admin_family_requests",
+      "schema": "public",
+      "depends_on": "households"
+    },
+    {
+      "view": "admin_family_requests",
+      "schema": "public",
+      "depends_on": "program_catalog"
+    },
+    {
+      "view": "admin_family_requests",
+      "schema": "public",
+      "depends_on": "staff_access"
+    },
+    {
+      "view": "admin_followup_queue",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "admin_followup_queue",
+      "schema": "public",
+      "depends_on": "follow_up_tasks"
+    },
+    {
+      "view": "admin_journey_pipeline",
+      "schema": "public",
+      "depends_on": "contact_engagement"
+    },
+    {
+      "view": "admin_journey_pipeline",
+      "schema": "public",
+      "depends_on": "contact_journey_steps"
+    },
+    {
+      "view": "admin_journey_pipeline",
+      "schema": "public",
+      "depends_on": "contact_journeys"
+    },
+    {
+      "view": "admin_journey_pipeline",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "admin_journey_pipeline",
+      "schema": "public",
+      "depends_on": "journey_definitions"
+    },
+    {
+      "view": "admin_manual_override_history",
+      "schema": "public",
+      "depends_on": "manual_override_audit"
+    },
+    {
+      "view": "admin_manual_override_history",
+      "schema": "public",
+      "depends_on": "staff_access"
+    },
+    {
+      "view": "admin_mobile_adoption_summary",
+      "schema": "public",
+      "depends_on": "member_app_sessions"
+    },
+    {
+      "view": "admin_mobile_feature_usage_30d",
+      "schema": "public",
+      "depends_on": "member_app_events"
+    },
+    {
+      "view": "admin_mobile_health_connections",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "admin_mobile_health_connections",
+      "schema": "public",
+      "depends_on": "health_integration_connections"
+    },
+    {
+      "view": "admin_mobile_health_connections",
+      "schema": "public",
+      "depends_on": "health_integration_providers"
+    },
+    {
+      "view": "admin_mobile_health_connections",
+      "schema": "public",
+      "depends_on": "health_mobile_sync_batches"
+    },
+    {
+      "view": "admin_mobile_health_sync_summary",
+      "schema": "public",
+      "depends_on": "health_mobile_sync_batches"
+    },
+    {
+      "view": "admin_mobile_operations_center",
+      "schema": "public",
+      "depends_on": "admin_mobile_adoption_summary"
+    },
+    {
+      "view": "admin_mobile_operations_center",
+      "schema": "public",
+      "depends_on": "admin_mobile_feature_usage_30d"
+    },
+    {
+      "view": "admin_mobile_operations_center",
+      "schema": "public",
+      "depends_on": "admin_mobile_versions"
+    },
+    {
+      "view": "admin_mobile_versions",
+      "schema": "public",
+      "depends_on": "member_devices"
+    },
+    {
+      "view": "admin_notification_delivery_queue",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "admin_notification_delivery_queue",
+      "schema": "public",
+      "depends_on": "notification_delivery_jobs"
+    },
+    {
+      "view": "admin_people_directory",
+      "schema": "public",
+      "depends_on": "client_memberships"
+    },
+    {
+      "view": "admin_people_directory",
+      "schema": "public",
+      "depends_on": "contact_activity"
+    },
+    {
+      "view": "admin_people_directory",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "admin_people_directory",
+      "schema": "public",
+      "depends_on": "staff_directory"
+    },
+    {
+      "view": "admin_people_directory",
+      "schema": "public",
+      "depends_on": "webinar_registrations"
+    },
+    {
+      "view": "admin_people_directory",
+      "schema": "public",
+      "depends_on": "workflow_records"
+    },
+    {
+      "view": "admin_platform_health_metrics",
+      "schema": "public",
+      "depends_on": "challenge_enrollments"
+    },
+    {
+      "view": "admin_platform_health_metrics",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "admin_platform_health_metrics",
+      "schema": "public",
+      "depends_on": "client_assignments"
+    },
+    {
+      "view": "admin_platform_health_metrics",
+      "schema": "public",
+      "depends_on": "client_checkins"
+    },
+    {
+      "view": "admin_platform_health_metrics",
+      "schema": "public",
+      "depends_on": "client_coach_assignments"
+    },
+    {
+      "view": "admin_platform_health_metrics",
+      "schema": "public",
+      "depends_on": "client_course_enrollments"
+    },
+    {
+      "view": "admin_platform_health_metrics",
+      "schema": "public",
+      "depends_on": "client_memberships"
+    },
+    {
+      "view": "admin_platform_health_metrics",
+      "schema": "public",
+      "depends_on": "coach_companion_reviews"
+    },
+    {
+      "view": "admin_platform_health_metrics",
+      "schema": "public",
+      "depends_on": "coaching_sessions"
+    },
+    {
+      "view": "admin_platform_health_metrics",
+      "schema": "public",
+      "depends_on": "contact_journey_steps"
+    },
+    {
+      "view": "admin_platform_health_metrics",
+      "schema": "public",
+      "depends_on": "contact_journeys"
+    },
+    {
+      "view": "admin_platform_health_metrics",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "admin_platform_health_metrics",
+      "schema": "public",
+      "depends_on": "health_integration_connections"
+    },
+    {
+      "view": "admin_platform_health_metrics",
+      "schema": "public",
+      "depends_on": "journey_enrollment_activations"
+    },
+    {
+      "view": "admin_platform_health_metrics",
+      "schema": "public",
+      "depends_on": "member_messages"
+    },
+    {
+      "view": "admin_platform_health_metrics",
+      "schema": "public",
+      "depends_on": "notification_delivery_jobs"
+    },
+    {
+      "view": "admin_privacy_operations_summary",
+      "schema": "public",
+      "depends_on": "member_privacy_requests"
+    },
+    {
+      "view": "admin_privacy_request_queue",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "admin_privacy_request_queue",
+      "schema": "public",
+      "depends_on": "member_privacy_requests"
+    },
+    {
+      "view": "admin_privacy_request_queue",
+      "schema": "public",
+      "depends_on": "staff_directory"
+    },
+    {
+      "view": "admin_program_performance",
+      "schema": "public",
+      "depends_on": "client_checkins"
+    },
+    {
+      "view": "admin_program_performance",
+      "schema": "public",
+      "depends_on": "client_course_enrollments"
+    },
+    {
+      "view": "admin_program_performance",
+      "schema": "public",
+      "depends_on": "client_memberships"
+    },
+    {
+      "view": "admin_program_performance",
+      "schema": "public",
+      "depends_on": "coaching_sessions"
+    },
+    {
+      "view": "admin_program_performance",
+      "schema": "public",
+      "depends_on": "program_catalog"
+    },
+    {
+      "view": "admin_referral_metrics",
+      "schema": "public",
+      "depends_on": "referral_profiles"
+    },
+    {
+      "view": "admin_referral_metrics",
+      "schema": "public",
+      "depends_on": "referral_rewards"
+    },
+    {
+      "view": "admin_referral_metrics",
+      "schema": "public",
+      "depends_on": "referrals"
+    },
+    {
+      "view": "admin_referral_pipeline",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "admin_referral_pipeline",
+      "schema": "public",
+      "depends_on": "referral_programs"
+    },
+    {
+      "view": "admin_referral_pipeline",
+      "schema": "public",
+      "depends_on": "referrals"
+    },
+    {
+      "view": "admin_referral_rewards",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "admin_referral_rewards",
+      "schema": "public",
+      "depends_on": "referral_rewards"
+    },
+    {
+      "view": "admin_referral_summary",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "admin_referral_summary",
+      "schema": "public",
+      "depends_on": "referral_profiles"
+    },
+    {
+      "view": "admin_referral_summary",
+      "schema": "public",
+      "depends_on": "referral_rewards"
+    },
+    {
+      "view": "admin_referral_summary",
+      "schema": "public",
+      "depends_on": "referrals"
+    },
+    {
+      "view": "admin_refuel_interest",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "admin_refuel_interest",
+      "schema": "public",
+      "depends_on": "refuel_interest"
+    },
+    {
+      "view": "admin_refuel_metrics",
+      "schema": "public",
+      "depends_on": "refuel_enrollments"
+    },
+    {
+      "view": "admin_refuel_metrics",
+      "schema": "public",
+      "depends_on": "refuel_interest"
+    },
+    {
+      "view": "admin_refuel_metrics",
+      "schema": "public",
+      "depends_on": "refuel_invitations"
+    },
+    {
+      "view": "admin_refuel_metrics",
+      "schema": "public",
+      "depends_on": "refuel_offers"
+    },
+    {
+      "view": "admin_refuel_pipeline",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "admin_refuel_pipeline",
+      "schema": "public",
+      "depends_on": "refuel_enrollments"
+    },
+    {
+      "view": "admin_refuel_pipeline",
+      "schema": "public",
+      "depends_on": "refuel_interest"
+    },
+    {
+      "view": "admin_refuel_pipeline",
+      "schema": "public",
+      "depends_on": "refuel_invitations"
+    },
+    {
+      "view": "admin_refuel_pipeline",
+      "schema": "public",
+      "depends_on": "refuel_offers"
+    },
+    {
+      "view": "admin_schedule_availability_issues",
+      "schema": "public",
+      "depends_on": "admin_team_calendar"
+    },
+    {
+      "view": "admin_schedule_availability_issues",
+      "schema": "public",
+      "depends_on": "staff_availability_exceptions"
+    },
+    {
+      "view": "admin_schedule_availability_issues",
+      "schema": "public",
+      "depends_on": "staff_availability_rules"
+    },
+    {
+      "view": "admin_schedule_availability_issues",
+      "schema": "public",
+      "depends_on": "staff_capacity_settings"
+    },
+    {
+      "view": "admin_schedule_conflicts",
+      "schema": "public",
+      "depends_on": "admin_team_calendar"
+    },
+    {
+      "view": "admin_staff_access_directory",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "admin_staff_access_directory",
+      "schema": "public",
+      "depends_on": "profiles"
+    },
+    {
+      "view": "admin_staff_access_directory",
+      "schema": "public",
+      "depends_on": "staff_access"
+    },
+    {
+      "view": "admin_staff_access_directory",
+      "schema": "public",
+      "depends_on": "staff_agreements"
+    },
+    {
+      "view": "admin_staff_access_directory",
+      "schema": "public",
+      "depends_on": "staff_permission_catalog"
+    },
+    {
+      "view": "admin_staff_agreements",
+      "schema": "public",
+      "depends_on": "agreement_templates"
+    },
+    {
+      "view": "admin_staff_agreements",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "admin_staff_agreements",
+      "schema": "public",
+      "depends_on": "profiles"
+    },
+    {
+      "view": "admin_staff_agreements",
+      "schema": "public",
+      "depends_on": "staff_access"
+    },
+    {
+      "view": "admin_staff_agreements",
+      "schema": "public",
+      "depends_on": "staff_agreement_acceptances"
+    },
+    {
+      "view": "admin_staff_agreements",
+      "schema": "public",
+      "depends_on": "staff_agreements"
+    },
+    {
+      "view": "admin_staff_inbox",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "admin_staff_inbox",
+      "schema": "public",
+      "depends_on": "member_conversation_participants"
+    },
+    {
+      "view": "admin_staff_inbox",
+      "schema": "public",
+      "depends_on": "member_conversations"
+    },
+    {
+      "view": "admin_staff_inbox",
+      "schema": "public",
+      "depends_on": "member_messages"
+    },
+    {
+      "view": "admin_staff_inbox",
+      "schema": "public",
+      "depends_on": "staff_access"
+    },
+    {
+      "view": "admin_staff_onboarding_readiness",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "admin_staff_onboarding_readiness",
+      "schema": "public",
+      "depends_on": "profiles"
+    },
+    {
+      "view": "admin_staff_onboarding_readiness",
+      "schema": "public",
+      "depends_on": "staff_access"
+    },
+    {
+      "view": "admin_staff_onboarding_readiness",
+      "schema": "public",
+      "depends_on": "staff_agreements"
+    },
+    {
+      "view": "admin_staff_onboarding_summary",
+      "schema": "public",
+      "depends_on": "admin_staff_onboarding_readiness"
+    },
+    {
+      "view": "admin_staff_permission_matrix",
+      "schema": "public",
+      "depends_on": "staff_access"
+    },
+    {
+      "view": "admin_staff_permission_matrix",
+      "schema": "public",
+      "depends_on": "staff_permission_catalog"
+    },
+    {
+      "view": "admin_staff_permission_matrix",
+      "schema": "public",
+      "depends_on": "staff_permission_overrides"
+    },
+    {
+      "view": "admin_staff_permission_matrix",
+      "schema": "public",
+      "depends_on": "staff_role_permission_defaults"
+    },
+    {
+      "view": "admin_staff_workload",
+      "schema": "public",
+      "depends_on": "admin_staff_inbox"
+    },
+    {
+      "view": "admin_staff_workload",
+      "schema": "public",
+      "depends_on": "client_coach_assignments"
+    },
+    {
+      "view": "admin_staff_workload",
+      "schema": "public",
+      "depends_on": "coach_companion_reviews"
+    },
+    {
+      "view": "admin_staff_workload",
+      "schema": "public",
+      "depends_on": "coaching_sessions"
+    },
+    {
+      "view": "admin_staff_workload",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "admin_staff_workload",
+      "schema": "public",
+      "depends_on": "follow_up_tasks"
+    },
+    {
+      "view": "admin_staff_workload",
+      "schema": "public",
+      "depends_on": "staff_access"
+    },
+    {
+      "view": "admin_team_calendar",
+      "schema": "public",
+      "depends_on": "coaching_sessions"
+    },
+    {
+      "view": "admin_team_calendar",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "admin_team_calendar",
+      "schema": "public",
+      "depends_on": "journey_appointments"
+    },
+    {
+      "view": "admin_team_calendar",
+      "schema": "public",
+      "depends_on": "staff_directory"
+    },
+    {
+      "view": "admin_work_queue",
+      "schema": "public",
+      "depends_on": "contact_journey_steps"
+    },
+    {
+      "view": "admin_work_queue",
+      "schema": "public",
+      "depends_on": "contact_journeys"
+    },
+    {
+      "view": "admin_work_queue",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "admin_work_queue",
+      "schema": "public",
+      "depends_on": "follow_up_tasks"
+    },
+    {
+      "view": "admin_work_queue",
+      "schema": "public",
+      "depends_on": "journey_definitions"
+    },
+    {
+      "view": "admin_work_queue",
+      "schema": "public",
+      "depends_on": "staff_directory"
+    },
+    {
+      "view": "admin_work_queue_summary",
+      "schema": "public",
+      "depends_on": "admin_work_queue"
+    },
+    {
+      "view": "my_achievements",
+      "schema": "public",
+      "depends_on": "achievement_catalog"
+    },
+    {
+      "view": "my_achievements",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_achievements",
+      "schema": "public",
+      "depends_on": "member_achievements"
+    },
+    {
+      "view": "my_active_app_routes",
+      "schema": "public",
+      "depends_on": "app_route_registry"
+    },
+    {
+      "view": "my_active_fitness_plan",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_active_fitness_plan",
+      "schema": "public",
+      "depends_on": "client_fitness_plans"
+    },
+    {
+      "view": "my_active_fitness_plan",
+      "schema": "public",
+      "depends_on": "fitness_programs"
+    },
+    {
+      "view": "my_active_meal_plan",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_active_meal_plan",
+      "schema": "public",
+      "depends_on": "client_meal_plans"
+    },
+    {
+      "view": "my_active_meal_plan",
+      "schema": "public",
+      "depends_on": "meal_plan_templates"
+    },
+    {
+      "view": "my_active_meal_plan",
+      "schema": "public",
+      "depends_on": "nutrition_phases"
+    },
+    {
+      "view": "my_activity_timeline",
+      "schema": "public",
+      "depends_on": "challenge_enrollments"
+    },
+    {
+      "view": "my_activity_timeline",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_activity_timeline",
+      "schema": "public",
+      "depends_on": "client_course_enrollments"
+    },
+    {
+      "view": "my_activity_timeline",
+      "schema": "public",
+      "depends_on": "learning_courses"
+    },
+    {
+      "view": "my_activity_timeline",
+      "schema": "public",
+      "depends_on": "my_goals"
+    },
+    {
+      "view": "my_activity_timeline",
+      "schema": "public",
+      "depends_on": "my_notifications"
+    },
+    {
+      "view": "my_activity_timeline",
+      "schema": "public",
+      "depends_on": "progress_entries"
+    },
+    {
+      "view": "my_activity_timeline",
+      "schema": "public",
+      "depends_on": "progress_metric_catalog"
+    },
+    {
+      "view": "my_activity_timeline",
+      "schema": "public",
+      "depends_on": "wellness_challenges"
+    },
+    {
+      "view": "my_agreements",
+      "schema": "public",
+      "depends_on": "agreement_acceptances"
+    },
+    {
+      "view": "my_agreements",
+      "schema": "public",
+      "depends_on": "agreement_templates"
+    },
+    {
+      "view": "my_agreements",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_agreements",
+      "schema": "public",
+      "depends_on": "client_agreements"
+    },
+    {
+      "view": "my_ai_advisor_personalization",
+      "schema": "public",
+      "depends_on": "ai_advisor_personalization_preferences"
+    },
+    {
+      "view": "my_ai_advisor_personalization",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_ai_advisor_usage",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_ai_advisor_usage",
+      "schema": "public",
+      "depends_on": "membership_entitlements"
+    },
+    {
+      "view": "my_ambassador_center",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_ambassador_center",
+      "schema": "public",
+      "depends_on": "referral_profiles"
+    },
+    {
+      "view": "my_ambassador_center",
+      "schema": "public",
+      "depends_on": "referral_rewards"
+    },
+    {
+      "view": "my_ambassador_center",
+      "schema": "public",
+      "depends_on": "referrals"
+    },
+    {
+      "view": "my_app_access",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_app_access",
+      "schema": "public",
+      "depends_on": "client_course_enrollments"
+    },
+    {
+      "view": "my_app_access",
+      "schema": "public",
+      "depends_on": "client_memberships"
+    },
+    {
+      "view": "my_app_access",
+      "schema": "public",
+      "depends_on": "membership_entitlements"
+    },
+    {
+      "view": "my_app_access",
+      "schema": "public",
+      "depends_on": "my_refuel_access"
+    },
+    {
+      "view": "my_app_access",
+      "schema": "public",
+      "depends_on": "program_catalog"
+    },
+    {
+      "view": "my_app_access",
+      "schema": "public",
+      "depends_on": "referral_profiles"
+    },
+    {
+      "view": "my_app_bootstrap",
+      "schema": "public",
+      "depends_on": "my_activity_timeline"
+    },
+    {
+      "view": "my_app_bootstrap",
+      "schema": "public",
+      "depends_on": "my_agreements"
+    },
+    {
+      "view": "my_app_bootstrap",
+      "schema": "public",
+      "depends_on": "my_ambassador_center"
+    },
+    {
+      "view": "my_app_bootstrap",
+      "schema": "public",
+      "depends_on": "my_app_access"
+    },
+    {
+      "view": "my_app_bootstrap",
+      "schema": "public",
+      "depends_on": "my_app_home"
+    },
+    {
+      "view": "my_app_bootstrap",
+      "schema": "public",
+      "depends_on": "my_assignment_summary"
+    },
+    {
+      "view": "my_app_bootstrap",
+      "schema": "public",
+      "depends_on": "my_billing_summary"
+    },
+    {
+      "view": "my_app_bootstrap",
+      "schema": "public",
+      "depends_on": "my_coach"
+    },
+    {
+      "view": "my_app_bootstrap",
+      "schema": "public",
+      "depends_on": "my_coaching_hub"
+    },
+    {
+      "view": "my_app_bootstrap",
+      "schema": "public",
+      "depends_on": "my_coaching_requests"
+    },
+    {
+      "view": "my_app_bootstrap",
+      "schema": "public",
+      "depends_on": "my_coaching_sessions"
+    },
+    {
+      "view": "my_app_bootstrap",
+      "schema": "public",
+      "depends_on": "my_course_progress_summary"
+    },
+    {
+      "view": "my_app_bootstrap",
+      "schema": "public",
+      "depends_on": "my_courses"
+    },
+    {
+      "view": "my_app_bootstrap",
+      "schema": "public",
+      "depends_on": "my_daily_action_center"
+    },
+    {
+      "view": "my_app_bootstrap",
+      "schema": "public",
+      "depends_on": "my_family_hub_summary"
+    },
+    {
+      "view": "my_app_bootstrap",
+      "schema": "public",
+      "depends_on": "my_family_requests"
+    },
+    {
+      "view": "my_app_bootstrap",
+      "schema": "public",
+      "depends_on": "my_invoices"
+    },
+    {
+      "view": "my_app_bootstrap",
+      "schema": "public",
+      "depends_on": "my_member_upcoming_appointment"
+    },
+    {
+      "view": "my_app_bootstrap",
+      "schema": "public",
+      "depends_on": "my_message_threads"
+    },
+    {
+      "view": "my_app_bootstrap",
+      "schema": "public",
+      "depends_on": "my_notification_preferences"
+    },
+    {
+      "view": "my_app_bootstrap",
+      "schema": "public",
+      "depends_on": "my_notifications"
+    },
+    {
+      "view": "my_app_bootstrap",
+      "schema": "public",
+      "depends_on": "my_payment_history"
+    },
+    {
+      "view": "my_app_bootstrap",
+      "schema": "public",
+      "depends_on": "my_progress_snapshot"
+    },
+    {
+      "view": "my_app_bootstrap",
+      "schema": "public",
+      "depends_on": "my_referral_activity"
+    },
+    {
+      "view": "my_app_bootstrap",
+      "schema": "public",
+      "depends_on": "my_resources"
+    },
+    {
+      "view": "my_app_bootstrap",
+      "schema": "public",
+      "depends_on": "my_weekly_summary"
+    },
+    {
+      "view": "my_app_bootstrap_v10",
+      "schema": "public",
+      "depends_on": "my_app_bootstrap_v9"
+    },
+    {
+      "view": "my_app_bootstrap_v10",
+      "schema": "public",
+      "depends_on": "my_companion_request_context"
+    },
+    {
+      "view": "my_app_bootstrap_v11",
+      "schema": "public",
+      "depends_on": "my_ai_advisor_usage"
+    },
+    {
+      "view": "my_app_bootstrap_v11",
+      "schema": "public",
+      "depends_on": "my_app_bootstrap_v10"
+    },
+    {
+      "view": "my_app_bootstrap_v11",
+      "schema": "public",
+      "depends_on": "my_companion_answer_sources"
+    },
+    {
+      "view": "my_app_bootstrap_v12",
+      "schema": "public",
+      "depends_on": "my_app_bootstrap_v11"
+    },
+    {
+      "view": "my_app_bootstrap_v12",
+      "schema": "public",
+      "depends_on": "my_companion_feedback"
+    },
+    {
+      "view": "my_app_bootstrap_v13",
+      "schema": "public",
+      "depends_on": "my_ai_advisor_personalization"
+    },
+    {
+      "view": "my_app_bootstrap_v13",
+      "schema": "public",
+      "depends_on": "my_app_bootstrap_v12"
+    },
+    {
+      "view": "my_app_bootstrap_v14",
+      "schema": "public",
+      "depends_on": "my_app_bootstrap_v13"
+    },
+    {
+      "view": "my_app_bootstrap_v14",
+      "schema": "public",
+      "depends_on": "my_family_calendar_summary"
+    },
+    {
+      "view": "my_app_bootstrap_v14",
+      "schema": "public",
+      "depends_on": "my_up_next"
+    },
+    {
+      "view": "my_app_bootstrap_v15",
+      "schema": "public",
+      "depends_on": "my_app_bootstrap_v14"
+    },
+    {
+      "view": "my_app_bootstrap_v15",
+      "schema": "public",
+      "depends_on": "my_weekly_progress_story"
+    },
+    {
+      "view": "my_app_bootstrap_v16",
+      "schema": "public",
+      "depends_on": "my_app_bootstrap_v15"
+    },
+    {
+      "view": "my_app_bootstrap_v16",
+      "schema": "public",
+      "depends_on": "my_home_priority_summary"
+    },
+    {
+      "view": "my_app_bootstrap_v16",
+      "schema": "public",
+      "depends_on": "my_next_best_actions"
+    },
+    {
+      "view": "my_app_bootstrap_v17",
+      "schema": "public",
+      "depends_on": "my_app_bootstrap_v16"
+    },
+    {
+      "view": "my_app_bootstrap_v17",
+      "schema": "public",
+      "depends_on": "my_device_summary"
+    },
+    {
+      "view": "my_app_bootstrap_v17",
+      "schema": "public",
+      "depends_on": "my_notification_preferences_v2"
+    },
+    {
+      "view": "my_app_bootstrap_v18",
+      "schema": "public",
+      "depends_on": "my_app_bootstrap_v17"
+    },
+    {
+      "view": "my_app_bootstrap_v18",
+      "schema": "public",
+      "depends_on": "my_app_runtime"
+    },
+    {
+      "view": "my_app_bootstrap_v19",
+      "schema": "public",
+      "depends_on": "my_active_app_routes"
+    },
+    {
+      "view": "my_app_bootstrap_v19",
+      "schema": "public",
+      "depends_on": "my_app_bootstrap_v18"
+    },
+    {
+      "view": "my_app_bootstrap_v2",
+      "schema": "public",
+      "depends_on": "my_app_bootstrap"
+    },
+    {
+      "view": "my_app_bootstrap_v2",
+      "schema": "public",
+      "depends_on": "my_companion_summary"
+    },
+    {
+      "view": "my_app_bootstrap_v2",
+      "schema": "public",
+      "depends_on": "my_journey_status"
+    },
+    {
+      "view": "my_app_bootstrap_v2",
+      "schema": "public",
+      "depends_on": "my_member_profile"
+    },
+    {
+      "view": "my_app_bootstrap_v2",
+      "schema": "public",
+      "depends_on": "my_membership_overview"
+    },
+    {
+      "view": "my_app_bootstrap_v20",
+      "schema": "public",
+      "depends_on": "my_app_bootstrap_v19"
+    },
+    {
+      "view": "my_app_bootstrap_v20",
+      "schema": "public",
+      "depends_on": "my_sync_status"
+    },
+    {
+      "view": "my_app_bootstrap_v21",
+      "schema": "public",
+      "depends_on": "my_app_bootstrap_v20"
+    },
+    {
+      "view": "my_app_bootstrap_v21",
+      "schema": "public",
+      "depends_on": "my_sync_cursor"
+    },
+    {
+      "view": "my_app_bootstrap_v22",
+      "schema": "public",
+      "depends_on": "my_app_bootstrap_v21"
+    },
+    {
+      "view": "my_app_bootstrap_v23",
+      "schema": "public",
+      "depends_on": "my_app_bootstrap_v22"
+    },
+    {
+      "view": "my_app_bootstrap_v23",
+      "schema": "public",
+      "depends_on": "my_mobile_health_sync_status"
+    },
+    {
+      "view": "my_app_bootstrap_v24",
+      "schema": "public",
+      "depends_on": "my_app_bootstrap_v23"
+    },
+    {
+      "view": "my_app_bootstrap_v24",
+      "schema": "public",
+      "depends_on": "my_privacy_center"
+    },
+    {
+      "view": "my_app_bootstrap_v25",
+      "schema": "public",
+      "depends_on": "my_app_bootstrap_v24"
+    },
+    {
+      "view": "my_app_bootstrap_v25",
+      "schema": "public",
+      "depends_on": "my_privacy_exports"
+    },
+    {
+      "view": "my_app_bootstrap_v26",
+      "schema": "public",
+      "depends_on": "my_app_bootstrap_v25"
+    },
+    {
+      "view": "my_app_bootstrap_v26",
+      "schema": "public",
+      "depends_on": "my_enrollment_readiness"
+    },
+    {
+      "view": "my_app_bootstrap_v27",
+      "schema": "public",
+      "depends_on": "my_app_bootstrap_v26"
+    },
+    {
+      "view": "my_app_bootstrap_v27",
+      "schema": "public",
+      "depends_on": "my_signature_center"
+    },
+    {
+      "view": "my_app_bootstrap_v3",
+      "schema": "public",
+      "depends_on": "my_app_bootstrap_v2"
+    },
+    {
+      "view": "my_app_bootstrap_v3",
+      "schema": "public",
+      "depends_on": "my_health_connection_center"
+    },
+    {
+      "view": "my_app_bootstrap_v3",
+      "schema": "public",
+      "depends_on": "my_health_dashboard_cards_30d"
+    },
+    {
+      "view": "my_app_bootstrap_v3",
+      "schema": "public",
+      "depends_on": "my_health_data_snapshot"
+    },
+    {
+      "view": "my_app_bootstrap_v3",
+      "schema": "public",
+      "depends_on": "my_health_metric_permissions"
+    },
+    {
+      "view": "my_app_bootstrap_v4",
+      "schema": "public",
+      "depends_on": "my_app_bootstrap_v3"
+    },
+    {
+      "view": "my_app_bootstrap_v4",
+      "schema": "public",
+      "depends_on": "my_progress_photo_sets"
+    },
+    {
+      "view": "my_app_bootstrap_v5",
+      "schema": "public",
+      "depends_on": "my_app_bootstrap_v4"
+    },
+    {
+      "view": "my_app_bootstrap_v5",
+      "schema": "public",
+      "depends_on": "my_family_wellness_summary"
+    },
+    {
+      "view": "my_app_bootstrap_v5",
+      "schema": "public",
+      "depends_on": "my_latest_wellness_scores"
+    },
+    {
+      "view": "my_app_bootstrap_v6",
+      "schema": "public",
+      "depends_on": "my_achievements"
+    },
+    {
+      "view": "my_app_bootstrap_v6",
+      "schema": "public",
+      "depends_on": "my_app_bootstrap_v5"
+    },
+    {
+      "view": "my_app_bootstrap_v6",
+      "schema": "public",
+      "depends_on": "my_goal_progress"
+    },
+    {
+      "view": "my_app_bootstrap_v6",
+      "schema": "public",
+      "depends_on": "my_progress_insights"
+    },
+    {
+      "view": "my_app_bootstrap_v7",
+      "schema": "public",
+      "depends_on": "my_app_bootstrap_v6"
+    },
+    {
+      "view": "my_app_bootstrap_v7",
+      "schema": "public",
+      "depends_on": "my_family_dashboard_summary_v2"
+    },
+    {
+      "view": "my_app_bootstrap_v7",
+      "schema": "public",
+      "depends_on": "my_family_progress_dashboard"
+    },
+    {
+      "view": "my_app_bootstrap_v8",
+      "schema": "public",
+      "depends_on": "my_app_bootstrap_v7"
+    },
+    {
+      "view": "my_app_bootstrap_v8",
+      "schema": "public",
+      "depends_on": "my_consistency_summary"
+    },
+    {
+      "view": "my_app_bootstrap_v8",
+      "schema": "public",
+      "depends_on": "my_daily_plan_history_30d"
+    },
+    {
+      "view": "my_app_bootstrap_v9",
+      "schema": "public",
+      "depends_on": "my_app_bootstrap_v8"
+    },
+    {
+      "view": "my_app_bootstrap_v9",
+      "schema": "public",
+      "depends_on": "my_coaching_momentum"
+    },
+    {
+      "view": "my_app_home",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_app_home",
+      "schema": "public",
+      "depends_on": "client_memberships"
+    },
+    {
+      "view": "my_app_home",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "my_app_home",
+      "schema": "public",
+      "depends_on": "my_challenges"
+    },
+    {
+      "view": "my_app_home",
+      "schema": "public",
+      "depends_on": "my_courses"
+    },
+    {
+      "view": "my_app_home",
+      "schema": "public",
+      "depends_on": "my_goals"
+    },
+    {
+      "view": "my_app_home",
+      "schema": "public",
+      "depends_on": "my_habits"
+    },
+    {
+      "view": "my_app_home",
+      "schema": "public",
+      "depends_on": "my_member_journey"
+    },
+    {
+      "view": "my_app_home",
+      "schema": "public",
+      "depends_on": "my_notifications"
+    },
+    {
+      "view": "my_app_home",
+      "schema": "public",
+      "depends_on": "my_resources"
+    },
+    {
+      "view": "my_app_home",
+      "schema": "public",
+      "depends_on": "my_upcoming_meals"
+    },
+    {
+      "view": "my_app_home",
+      "schema": "public",
+      "depends_on": "my_upcoming_workouts"
+    },
+    {
+      "view": "my_app_home",
+      "schema": "public",
+      "depends_on": "program_catalog"
+    },
+    {
+      "view": "my_app_home",
+      "schema": "public",
+      "depends_on": "staff_access"
+    },
+    {
+      "view": "my_app_runtime",
+      "schema": "public",
+      "depends_on": "app_runtime_config"
+    },
+    {
+      "view": "my_assignment_summary",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_assignment_summary",
+      "schema": "public",
+      "depends_on": "client_assignments"
+    },
+    {
+      "view": "my_billing_summary",
+      "schema": "public",
+      "depends_on": "billing_plans"
+    },
+    {
+      "view": "my_billing_summary",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_billing_summary",
+      "schema": "public",
+      "depends_on": "membership_subscriptions"
+    },
+    {
+      "view": "my_calendar_feed_60d",
+      "schema": "public",
+      "depends_on": "challenge_enrollments"
+    },
+    {
+      "view": "my_calendar_feed_60d",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_calendar_feed_60d",
+      "schema": "public",
+      "depends_on": "client_goals"
+    },
+    {
+      "view": "my_calendar_feed_60d",
+      "schema": "public",
+      "depends_on": "client_meal_plan_items"
+    },
+    {
+      "view": "my_calendar_feed_60d",
+      "schema": "public",
+      "depends_on": "client_workout_assignments"
+    },
+    {
+      "view": "my_calendar_feed_60d",
+      "schema": "public",
+      "depends_on": "coaching_sessions"
+    },
+    {
+      "view": "my_calendar_feed_60d",
+      "schema": "public",
+      "depends_on": "journey_appointments"
+    },
+    {
+      "view": "my_calendar_feed_60d",
+      "schema": "public",
+      "depends_on": "recipes"
+    },
+    {
+      "view": "my_calendar_feed_60d",
+      "schema": "public",
+      "depends_on": "wellness_challenges"
+    },
+    {
+      "view": "my_calendar_feed_60d",
+      "schema": "public",
+      "depends_on": "workout_templates"
+    },
+    {
+      "view": "my_challenges",
+      "schema": "public",
+      "depends_on": "challenge_enrollments"
+    },
+    {
+      "view": "my_challenges",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_challenges",
+      "schema": "public",
+      "depends_on": "wellness_challenges"
+    },
+    {
+      "view": "my_client_assignments",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_client_assignments",
+      "schema": "public",
+      "depends_on": "client_assignments"
+    },
+    {
+      "view": "my_client_assignments",
+      "schema": "public",
+      "depends_on": "staff_directory"
+    },
+    {
+      "view": "my_coach",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_coach",
+      "schema": "public",
+      "depends_on": "client_coach_assignments"
+    },
+    {
+      "view": "my_coach",
+      "schema": "public",
+      "depends_on": "staff_directory"
+    },
+    {
+      "view": "my_coach_attention_queue",
+      "schema": "public",
+      "depends_on": "admin_client_attention_center"
+    },
+    {
+      "view": "my_coach_attention_summary",
+      "schema": "public",
+      "depends_on": "my_coach_attention_queue"
+    },
+    {
+      "view": "my_coaching_entitlements",
+      "schema": "public",
+      "depends_on": "admin_client_coaching_entitlements"
+    },
+    {
+      "view": "my_coaching_entitlements",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_coaching_hub",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_coaching_hub",
+      "schema": "public",
+      "depends_on": "client_memberships"
+    },
+    {
+      "view": "my_coaching_hub",
+      "schema": "public",
+      "depends_on": "my_assignment_summary"
+    },
+    {
+      "view": "my_coaching_hub",
+      "schema": "public",
+      "depends_on": "my_client_assignments"
+    },
+    {
+      "view": "my_coaching_hub",
+      "schema": "public",
+      "depends_on": "my_coaching_entitlements"
+    },
+    {
+      "view": "my_coaching_hub",
+      "schema": "public",
+      "depends_on": "my_coaching_sessions"
+    },
+    {
+      "view": "my_coaching_hub",
+      "schema": "public",
+      "depends_on": "my_conversations"
+    },
+    {
+      "view": "my_coaching_hub",
+      "schema": "public",
+      "depends_on": "my_member_upcoming_appointment"
+    },
+    {
+      "view": "my_coaching_hub",
+      "schema": "public",
+      "depends_on": "program_catalog"
+    },
+    {
+      "view": "my_coaching_hub",
+      "schema": "public",
+      "depends_on": "staff_directory"
+    },
+    {
+      "view": "my_coaching_momentum",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_coaching_momentum",
+      "schema": "public",
+      "depends_on": "client_checkins"
+    },
+    {
+      "view": "my_coaching_momentum",
+      "schema": "public",
+      "depends_on": "client_goals"
+    },
+    {
+      "view": "my_coaching_momentum",
+      "schema": "public",
+      "depends_on": "my_daily_plan_history_30d"
+    },
+    {
+      "view": "my_coaching_momentum",
+      "schema": "public",
+      "depends_on": "my_health_metric_timeline"
+    },
+    {
+      "view": "my_coaching_requests",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_coaching_requests",
+      "schema": "public",
+      "depends_on": "journey_appointments"
+    },
+    {
+      "view": "my_coaching_requests",
+      "schema": "public",
+      "depends_on": "staff_directory"
+    },
+    {
+      "view": "my_coaching_sessions",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_coaching_sessions",
+      "schema": "public",
+      "depends_on": "coaching_sessions"
+    },
+    {
+      "view": "my_coaching_sessions",
+      "schema": "public",
+      "depends_on": "staff_directory"
+    },
+    {
+      "view": "my_community_feed",
+      "schema": "public",
+      "depends_on": "community_comments"
+    },
+    {
+      "view": "my_community_feed",
+      "schema": "public",
+      "depends_on": "community_memberships"
+    },
+    {
+      "view": "my_community_feed",
+      "schema": "public",
+      "depends_on": "community_posts"
+    },
+    {
+      "view": "my_community_feed",
+      "schema": "public",
+      "depends_on": "community_reactions"
+    },
+    {
+      "view": "my_community_feed",
+      "schema": "public",
+      "depends_on": "community_spaces"
+    },
+    {
+      "view": "my_community_feed",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "my_community_feed",
+      "schema": "public",
+      "depends_on": "staff_access"
+    },
+    {
+      "view": "my_community_spaces",
+      "schema": "public",
+      "depends_on": "community_memberships"
+    },
+    {
+      "view": "my_community_spaces",
+      "schema": "public",
+      "depends_on": "community_spaces"
+    },
+    {
+      "view": "my_companion_answer_sources",
+      "schema": "public",
+      "depends_on": "coach_companion_knowledge_chunks"
+    },
+    {
+      "view": "my_companion_answer_sources",
+      "schema": "public",
+      "depends_on": "coach_companion_knowledge_sources"
+    },
+    {
+      "view": "my_companion_answer_sources",
+      "schema": "public",
+      "depends_on": "coach_companion_request_sources"
+    },
+    {
+      "view": "my_companion_answer_sources",
+      "schema": "public",
+      "depends_on": "coach_companion_requests"
+    },
+    {
+      "view": "my_companion_feedback",
+      "schema": "public",
+      "depends_on": "coach_companion_answer_feedback"
+    },
+    {
+      "view": "my_companion_question_types",
+      "schema": "public",
+      "depends_on": "coach_companion_question_types"
+    },
+    {
+      "view": "my_companion_request_context",
+      "schema": "public",
+      "depends_on": "coach_companion_context_snapshots"
+    },
+    {
+      "view": "my_companion_request_context",
+      "schema": "public",
+      "depends_on": "coach_companion_requests"
+    },
+    {
+      "view": "my_companion_requests",
+      "schema": "public",
+      "depends_on": "coach_companion_question_types"
+    },
+    {
+      "view": "my_companion_requests",
+      "schema": "public",
+      "depends_on": "coach_companion_requests"
+    },
+    {
+      "view": "my_companion_requests",
+      "schema": "public",
+      "depends_on": "staff_directory"
+    },
+    {
+      "view": "my_companion_summary",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_companion_summary",
+      "schema": "public",
+      "depends_on": "coach_companion_requests"
+    },
+    {
+      "view": "my_consistency_summary",
+      "schema": "public",
+      "depends_on": "my_daily_plan_history_30d"
+    },
+    {
+      "view": "my_conversations",
+      "schema": "public",
+      "depends_on": "member_conversation_participants"
+    },
+    {
+      "view": "my_conversations",
+      "schema": "public",
+      "depends_on": "member_conversations"
+    },
+    {
+      "view": "my_conversations",
+      "schema": "public",
+      "depends_on": "member_messages"
+    },
+    {
+      "view": "my_course_lessons",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_course_lessons",
+      "schema": "public",
+      "depends_on": "client_course_enrollments"
+    },
+    {
+      "view": "my_course_lessons",
+      "schema": "public",
+      "depends_on": "learning_courses"
+    },
+    {
+      "view": "my_course_lessons",
+      "schema": "public",
+      "depends_on": "learning_lessons"
+    },
+    {
+      "view": "my_course_lessons",
+      "schema": "public",
+      "depends_on": "learning_modules"
+    },
+    {
+      "view": "my_course_lessons",
+      "schema": "public",
+      "depends_on": "lesson_progress"
+    },
+    {
+      "view": "my_course_progress_summary",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_course_progress_summary",
+      "schema": "public",
+      "depends_on": "client_course_enrollments"
+    },
+    {
+      "view": "my_course_progress_summary",
+      "schema": "public",
+      "depends_on": "learning_courses"
+    },
+    {
+      "view": "my_course_progress_summary",
+      "schema": "public",
+      "depends_on": "learning_lessons"
+    },
+    {
+      "view": "my_course_progress_summary",
+      "schema": "public",
+      "depends_on": "learning_modules"
+    },
+    {
+      "view": "my_course_progress_summary",
+      "schema": "public",
+      "depends_on": "lesson_progress"
+    },
+    {
+      "view": "my_courses",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_courses",
+      "schema": "public",
+      "depends_on": "client_course_enrollments"
+    },
+    {
+      "view": "my_courses",
+      "schema": "public",
+      "depends_on": "learning_courses"
+    },
+    {
+      "view": "my_daily_action_center",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_daily_action_center",
+      "schema": "public",
+      "depends_on": "client_habits"
+    },
+    {
+      "view": "my_daily_action_center",
+      "schema": "public",
+      "depends_on": "habit_checkins"
+    },
+    {
+      "view": "my_daily_action_center",
+      "schema": "public",
+      "depends_on": "my_challenges"
+    },
+    {
+      "view": "my_daily_action_center",
+      "schema": "public",
+      "depends_on": "my_courses"
+    },
+    {
+      "view": "my_daily_action_center",
+      "schema": "public",
+      "depends_on": "my_upcoming_meals"
+    },
+    {
+      "view": "my_daily_action_center",
+      "schema": "public",
+      "depends_on": "my_upcoming_workouts"
+    },
+    {
+      "view": "my_daily_plan_history_30d",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_daily_plan_history_30d",
+      "schema": "public",
+      "depends_on": "client_habits"
+    },
+    {
+      "view": "my_daily_plan_history_30d",
+      "schema": "public",
+      "depends_on": "client_meal_plan_items"
+    },
+    {
+      "view": "my_daily_plan_history_30d",
+      "schema": "public",
+      "depends_on": "client_workout_assignments"
+    },
+    {
+      "view": "my_daily_plan_history_30d",
+      "schema": "public",
+      "depends_on": "habit_checkins"
+    },
+    {
+      "view": "my_device_summary",
+      "schema": "public",
+      "depends_on": "member_devices"
+    },
+    {
+      "view": "my_devices",
+      "schema": "public",
+      "depends_on": "member_devices"
+    },
+    {
+      "view": "my_documents",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_documents",
+      "schema": "public",
+      "depends_on": "client_documents"
+    },
+    {
+      "view": "my_enrollment_readiness",
+      "schema": "public",
+      "depends_on": "agreement_acceptances"
+    },
+    {
+      "view": "my_enrollment_readiness",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_enrollment_readiness",
+      "schema": "public",
+      "depends_on": "client_agreements"
+    },
+    {
+      "view": "my_enrollment_readiness",
+      "schema": "public",
+      "depends_on": "journey_enrollment_activations"
+    },
+    {
+      "view": "my_family_calendar_summary",
+      "schema": "public",
+      "depends_on": "my_calendar_feed_60d"
+    },
+    {
+      "view": "my_family_dashboard_summary_v2",
+      "schema": "public",
+      "depends_on": "my_family_progress_dashboard"
+    },
+    {
+      "view": "my_family_hub_summary",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_family_hub_summary",
+      "schema": "public",
+      "depends_on": "client_goals"
+    },
+    {
+      "view": "my_family_hub_summary",
+      "schema": "public",
+      "depends_on": "household_members"
+    },
+    {
+      "view": "my_family_hub_summary",
+      "schema": "public",
+      "depends_on": "households"
+    },
+    {
+      "view": "my_family_progress_dashboard",
+      "schema": "public",
+      "depends_on": "challenge_enrollments"
+    },
+    {
+      "view": "my_family_progress_dashboard",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_family_progress_dashboard",
+      "schema": "public",
+      "depends_on": "client_goals"
+    },
+    {
+      "view": "my_family_progress_dashboard",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "my_family_progress_dashboard",
+      "schema": "public",
+      "depends_on": "household_members"
+    },
+    {
+      "view": "my_family_progress_dashboard",
+      "schema": "public",
+      "depends_on": "member_achievements"
+    },
+    {
+      "view": "my_family_progress_dashboard",
+      "schema": "public",
+      "depends_on": "wellness_score_snapshots"
+    },
+    {
+      "view": "my_family_requests",
+      "schema": "public",
+      "depends_on": "family_change_requests"
+    },
+    {
+      "view": "my_family_wellness_summary",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_family_wellness_summary",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "my_family_wellness_summary",
+      "schema": "public",
+      "depends_on": "household_members"
+    },
+    {
+      "view": "my_family_wellness_summary",
+      "schema": "public",
+      "depends_on": "wellness_score_snapshots"
+    },
+    {
+      "view": "my_goal_progress",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_goal_progress",
+      "schema": "public",
+      "depends_on": "client_goals"
+    },
+    {
+      "view": "my_goal_progress",
+      "schema": "public",
+      "depends_on": "my_health_metric_timeline"
+    },
+    {
+      "view": "my_goals",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_goals",
+      "schema": "public",
+      "depends_on": "client_goals"
+    },
+    {
+      "view": "my_grocery_list",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_grocery_list",
+      "schema": "public",
+      "depends_on": "client_grocery_lists"
+    },
+    {
+      "view": "my_grocery_list",
+      "schema": "public",
+      "depends_on": "grocery_list_items"
+    },
+    {
+      "view": "my_habits",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_habits",
+      "schema": "public",
+      "depends_on": "client_habits"
+    },
+    {
+      "view": "my_habits",
+      "schema": "public",
+      "depends_on": "habit_checkins"
+    },
+    {
+      "view": "my_health_connection_center",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_health_connection_center",
+      "schema": "public",
+      "depends_on": "health_integration_connections"
+    },
+    {
+      "view": "my_health_connection_center",
+      "schema": "public",
+      "depends_on": "health_integration_providers"
+    },
+    {
+      "view": "my_health_connection_center",
+      "schema": "public",
+      "depends_on": "health_metric_consents"
+    },
+    {
+      "view": "my_health_connections",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_health_connections",
+      "schema": "public",
+      "depends_on": "health_integration_connections"
+    },
+    {
+      "view": "my_health_connections",
+      "schema": "public",
+      "depends_on": "health_integration_providers"
+    },
+    {
+      "view": "my_health_dashboard_cards_30d",
+      "schema": "public",
+      "depends_on": "my_health_metric_timeline"
+    },
+    {
+      "view": "my_health_data_snapshot",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_health_data_snapshot",
+      "schema": "public",
+      "depends_on": "health_integration_providers"
+    },
+    {
+      "view": "my_health_data_snapshot",
+      "schema": "public",
+      "depends_on": "health_metric_catalog"
+    },
+    {
+      "view": "my_health_data_snapshot",
+      "schema": "public",
+      "depends_on": "health_observations"
+    },
+    {
+      "view": "my_health_metric_latest",
+      "schema": "public",
+      "depends_on": "my_health_metric_timeline"
+    },
+    {
+      "view": "my_health_metric_permissions",
+      "schema": "public",
+      "depends_on": "health_integration_providers"
+    },
+    {
+      "view": "my_health_metric_permissions",
+      "schema": "public",
+      "depends_on": "health_metric_catalog"
+    },
+    {
+      "view": "my_health_metric_permissions",
+      "schema": "public",
+      "depends_on": "health_metric_consents"
+    },
+    {
+      "view": "my_health_metric_timeline",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_health_metric_timeline",
+      "schema": "public",
+      "depends_on": "health_metric_catalog"
+    },
+    {
+      "view": "my_health_metric_timeline",
+      "schema": "public",
+      "depends_on": "health_observations"
+    },
+    {
+      "view": "my_health_metric_timeline",
+      "schema": "public",
+      "depends_on": "progress_entries"
+    },
+    {
+      "view": "my_health_metric_timeline",
+      "schema": "public",
+      "depends_on": "progress_metric_catalog"
+    },
+    {
+      "view": "my_home_priority_summary",
+      "schema": "public",
+      "depends_on": "my_next_best_actions"
+    },
+    {
+      "view": "my_household",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_household",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "my_household",
+      "schema": "public",
+      "depends_on": "household_members"
+    },
+    {
+      "view": "my_invoices",
+      "schema": "public",
+      "depends_on": "billing_invoices"
+    },
+    {
+      "view": "my_invoices",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_journey_status",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "my_journey_status",
+      "schema": "public",
+      "depends_on": "profiles"
+    },
+    {
+      "view": "my_journey_status",
+      "schema": "public",
+      "depends_on": "webinar_registrations"
+    },
+    {
+      "view": "my_journey_status",
+      "schema": "public",
+      "depends_on": "workflow_records"
+    },
+    {
+      "view": "my_latest_wellness_scores",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_latest_wellness_scores",
+      "schema": "public",
+      "depends_on": "wellness_score_snapshots"
+    },
+    {
+      "view": "my_member_dashboard",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_member_dashboard",
+      "schema": "public",
+      "depends_on": "client_memberships"
+    },
+    {
+      "view": "my_member_dashboard",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "my_member_dashboard",
+      "schema": "public",
+      "depends_on": "households"
+    },
+    {
+      "view": "my_member_dashboard",
+      "schema": "public",
+      "depends_on": "program_catalog"
+    },
+    {
+      "view": "my_member_dashboard",
+      "schema": "public",
+      "depends_on": "staff_directory"
+    },
+    {
+      "view": "my_member_entitlements",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_member_entitlements",
+      "schema": "public",
+      "depends_on": "membership_entitlements"
+    },
+    {
+      "view": "my_member_journey",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_member_journey",
+      "schema": "public",
+      "depends_on": "contact_journey_steps"
+    },
+    {
+      "view": "my_member_journey",
+      "schema": "public",
+      "depends_on": "contact_journeys"
+    },
+    {
+      "view": "my_member_journey",
+      "schema": "public",
+      "depends_on": "journey_definitions"
+    },
+    {
+      "view": "my_member_profile",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "my_member_profile",
+      "schema": "public",
+      "depends_on": "profiles"
+    },
+    {
+      "view": "my_member_upcoming_appointment",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_member_upcoming_appointment",
+      "schema": "public",
+      "depends_on": "coaching_sessions"
+    },
+    {
+      "view": "my_member_upcoming_appointment",
+      "schema": "public",
+      "depends_on": "journey_appointments"
+    },
+    {
+      "view": "my_member_upcoming_appointment",
+      "schema": "public",
+      "depends_on": "staff_directory"
+    },
+    {
+      "view": "my_membership_overview",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_membership_overview",
+      "schema": "public",
+      "depends_on": "client_course_enrollments"
+    },
+    {
+      "view": "my_membership_overview",
+      "schema": "public",
+      "depends_on": "client_memberships"
+    },
+    {
+      "view": "my_membership_overview",
+      "schema": "public",
+      "depends_on": "membership_entitlements"
+    },
+    {
+      "view": "my_membership_overview",
+      "schema": "public",
+      "depends_on": "program_catalog"
+    },
+    {
+      "view": "my_membership_overview",
+      "schema": "public",
+      "depends_on": "program_resource_access"
+    },
+    {
+      "view": "my_membership_overview",
+      "schema": "public",
+      "depends_on": "resource_library"
+    },
+    {
+      "view": "my_membership_overview",
+      "schema": "public",
+      "depends_on": "staff_access"
+    },
+    {
+      "view": "my_message_attachments",
+      "schema": "public",
+      "depends_on": "member_conversation_participants"
+    },
+    {
+      "view": "my_message_attachments",
+      "schema": "public",
+      "depends_on": "member_message_attachments"
+    },
+    {
+      "view": "my_message_attachments",
+      "schema": "public",
+      "depends_on": "member_messages"
+    },
+    {
+      "view": "my_message_threads",
+      "schema": "public",
+      "depends_on": "member_messages"
+    },
+    {
+      "view": "my_message_threads",
+      "schema": "public",
+      "depends_on": "my_conversations"
+    },
+    {
+      "view": "my_mobile_health_sync_status",
+      "schema": "public",
+      "depends_on": "health_integration_providers"
+    },
+    {
+      "view": "my_mobile_health_sync_status",
+      "schema": "public",
+      "depends_on": "health_mobile_sync_batches"
+    },
+    {
+      "view": "my_next_best_actions",
+      "schema": "public",
+      "depends_on": "my_client_assignments"
+    },
+    {
+      "view": "my_next_best_actions",
+      "schema": "public",
+      "depends_on": "my_companion_feedback"
+    },
+    {
+      "view": "my_next_best_actions",
+      "schema": "public",
+      "depends_on": "my_companion_requests"
+    },
+    {
+      "view": "my_next_best_actions",
+      "schema": "public",
+      "depends_on": "my_courses"
+    },
+    {
+      "view": "my_next_best_actions",
+      "schema": "public",
+      "depends_on": "my_daily_action_center"
+    },
+    {
+      "view": "my_next_best_actions",
+      "schema": "public",
+      "depends_on": "my_goal_progress"
+    },
+    {
+      "view": "my_next_best_actions",
+      "schema": "public",
+      "depends_on": "my_member_upcoming_appointment"
+    },
+    {
+      "view": "my_next_best_actions",
+      "schema": "public",
+      "depends_on": "my_upcoming_meals"
+    },
+    {
+      "view": "my_next_best_actions",
+      "schema": "public",
+      "depends_on": "my_upcoming_workouts"
+    },
+    {
+      "view": "my_notification_preferences",
+      "schema": "public",
+      "depends_on": "notification_preferences"
+    },
+    {
+      "view": "my_notification_preferences_v2",
+      "schema": "public",
+      "depends_on": "notification_preferences"
+    },
+    {
+      "view": "my_notification_routes",
+      "schema": "public",
+      "depends_on": "app_route_registry"
+    },
+    {
+      "view": "my_notification_routes",
+      "schema": "public",
+      "depends_on": "member_notifications"
+    },
+    {
+      "view": "my_notification_routes",
+      "schema": "public",
+      "depends_on": "notification_route_rules"
+    },
+    {
+      "view": "my_notifications",
+      "schema": "public",
+      "depends_on": "member_notifications"
+    },
+    {
+      "view": "my_payment_history",
+      "schema": "public",
+      "depends_on": "billing_events"
+    },
+    {
+      "view": "my_payment_history",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_prefill_facts",
+      "schema": "public",
+      "depends_on": "canonical_facts"
+    },
+    {
+      "view": "my_prefill_facts",
+      "schema": "public",
+      "depends_on": "profiles"
+    },
+    {
+      "view": "my_privacy_center",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_privacy_center",
+      "schema": "public",
+      "depends_on": "health_integration_connections"
+    },
+    {
+      "view": "my_privacy_center",
+      "schema": "public",
+      "depends_on": "health_integration_providers"
+    },
+    {
+      "view": "my_privacy_center",
+      "schema": "public",
+      "depends_on": "health_observations"
+    },
+    {
+      "view": "my_privacy_center",
+      "schema": "public",
+      "depends_on": "member_privacy_requests"
+    },
+    {
+      "view": "my_privacy_exports",
+      "schema": "public",
+      "depends_on": "member_privacy_exports"
+    },
+    {
+      "view": "my_progress_insights",
+      "schema": "public",
+      "depends_on": "my_health_dashboard_cards_30d"
+    },
+    {
+      "view": "my_progress_photo_sets",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_progress_photo_sets",
+      "schema": "public",
+      "depends_on": "progress_photo_sets"
+    },
+    {
+      "view": "my_progress_photo_sets",
+      "schema": "public",
+      "depends_on": "progress_photos"
+    },
+    {
+      "view": "my_progress_photos",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_progress_photos",
+      "schema": "public",
+      "depends_on": "progress_photos"
+    },
+    {
+      "view": "my_progress_snapshot",
+      "schema": "public",
+      "depends_on": "challenge_enrollments"
+    },
+    {
+      "view": "my_progress_snapshot",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_progress_snapshot",
+      "schema": "public",
+      "depends_on": "client_goals"
+    },
+    {
+      "view": "my_progress_snapshot",
+      "schema": "public",
+      "depends_on": "client_habits"
+    },
+    {
+      "view": "my_progress_snapshot",
+      "schema": "public",
+      "depends_on": "client_meal_plan_items"
+    },
+    {
+      "view": "my_progress_snapshot",
+      "schema": "public",
+      "depends_on": "client_workout_assignments"
+    },
+    {
+      "view": "my_progress_snapshot",
+      "schema": "public",
+      "depends_on": "habit_checkins"
+    },
+    {
+      "view": "my_progress_snapshot",
+      "schema": "public",
+      "depends_on": "progress_entries"
+    },
+    {
+      "view": "my_recent_progress",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_recent_progress",
+      "schema": "public",
+      "depends_on": "progress_entries"
+    },
+    {
+      "view": "my_recent_progress",
+      "schema": "public",
+      "depends_on": "progress_metric_catalog"
+    },
+    {
+      "view": "my_referral_activity",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_referral_activity",
+      "schema": "public",
+      "depends_on": "contacts"
+    },
+    {
+      "view": "my_referral_activity",
+      "schema": "public",
+      "depends_on": "referral_rewards"
+    },
+    {
+      "view": "my_referral_activity",
+      "schema": "public",
+      "depends_on": "referrals"
+    },
+    {
+      "view": "my_referral_summary",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_referral_summary",
+      "schema": "public",
+      "depends_on": "referral_profiles"
+    },
+    {
+      "view": "my_referral_summary",
+      "schema": "public",
+      "depends_on": "referral_rewards"
+    },
+    {
+      "view": "my_referral_summary",
+      "schema": "public",
+      "depends_on": "referrals"
+    },
+    {
+      "view": "my_refuel_access",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_refuel_access",
+      "schema": "public",
+      "depends_on": "refuel_enrollments"
+    },
+    {
+      "view": "my_refuel_access",
+      "schema": "public",
+      "depends_on": "refuel_offers"
+    },
+    {
+      "view": "my_resources",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_resources",
+      "schema": "public",
+      "depends_on": "client_memberships"
+    },
+    {
+      "view": "my_resources",
+      "schema": "public",
+      "depends_on": "client_resource_assignments"
+    },
+    {
+      "view": "my_resources",
+      "schema": "public",
+      "depends_on": "program_resource_access"
+    },
+    {
+      "view": "my_resources",
+      "schema": "public",
+      "depends_on": "resource_library"
+    },
+    {
+      "view": "my_signature_center",
+      "schema": "public",
+      "depends_on": "agreement_templates"
+    },
+    {
+      "view": "my_signature_center",
+      "schema": "public",
+      "depends_on": "my_agreements"
+    },
+    {
+      "view": "my_signature_center",
+      "schema": "public",
+      "depends_on": "my_staff_agreements"
+    },
+    {
+      "view": "my_signature_center",
+      "schema": "public",
+      "depends_on": "staff_agreements"
+    },
+    {
+      "view": "my_staff_agreements",
+      "schema": "public",
+      "depends_on": "agreement_templates"
+    },
+    {
+      "view": "my_staff_agreements",
+      "schema": "public",
+      "depends_on": "staff_agreement_acceptances"
+    },
+    {
+      "view": "my_staff_agreements",
+      "schema": "public",
+      "depends_on": "staff_agreements"
+    },
+    {
+      "view": "my_staff_onboarding_readiness",
+      "schema": "public",
+      "depends_on": "staff_access"
+    },
+    {
+      "view": "my_staff_onboarding_readiness",
+      "schema": "public",
+      "depends_on": "staff_agreements"
+    },
+    {
+      "view": "my_staff_permissions_view",
+      "schema": "public",
+      "depends_on": "staff_access"
+    },
+    {
+      "view": "my_staff_permissions_view",
+      "schema": "public",
+      "depends_on": "staff_permission_catalog"
+    },
+    {
+      "view": "my_staff_permissions_view",
+      "schema": "public",
+      "depends_on": "staff_permission_overrides"
+    },
+    {
+      "view": "my_staff_permissions_view",
+      "schema": "public",
+      "depends_on": "staff_role_permission_defaults"
+    },
+    {
+      "view": "my_sync_cursor",
+      "schema": "public",
+      "depends_on": "member_sync_events"
+    },
+    {
+      "view": "my_sync_status",
+      "schema": "public",
+      "depends_on": "member_mutation_receipts"
+    },
+    {
+      "view": "my_up_next",
+      "schema": "public",
+      "depends_on": "my_calendar_feed_60d"
+    },
+    {
+      "view": "my_upcoming_meals",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_upcoming_meals",
+      "schema": "public",
+      "depends_on": "client_meal_plan_items"
+    },
+    {
+      "view": "my_upcoming_meals",
+      "schema": "public",
+      "depends_on": "recipes"
+    },
+    {
+      "view": "my_upcoming_workouts",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_upcoming_workouts",
+      "schema": "public",
+      "depends_on": "client_workout_assignments"
+    },
+    {
+      "view": "my_upcoming_workouts",
+      "schema": "public",
+      "depends_on": "workout_templates"
+    },
+    {
+      "view": "my_weekly_progress_story",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_weekly_progress_story",
+      "schema": "public",
+      "depends_on": "my_achievements"
+    },
+    {
+      "view": "my_weekly_progress_story",
+      "schema": "public",
+      "depends_on": "my_coaching_momentum"
+    },
+    {
+      "view": "my_weekly_progress_story",
+      "schema": "public",
+      "depends_on": "my_daily_plan_history_30d"
+    },
+    {
+      "view": "my_weekly_progress_story",
+      "schema": "public",
+      "depends_on": "my_goal_progress"
+    },
+    {
+      "view": "my_weekly_progress_story",
+      "schema": "public",
+      "depends_on": "my_progress_insights"
+    },
+    {
+      "view": "my_weekly_progress_story",
+      "schema": "public",
+      "depends_on": "my_up_next"
+    },
+    {
+      "view": "my_weekly_progress_story",
+      "schema": "public",
+      "depends_on": "my_weekly_summary"
+    },
+    {
+      "view": "my_weekly_summary",
+      "schema": "public",
+      "depends_on": "challenge_enrollments"
+    },
+    {
+      "view": "my_weekly_summary",
+      "schema": "public",
+      "depends_on": "client_access"
+    },
+    {
+      "view": "my_weekly_summary",
+      "schema": "public",
+      "depends_on": "client_course_enrollments"
+    },
+    {
+      "view": "my_weekly_summary",
+      "schema": "public",
+      "depends_on": "client_goals"
+    },
+    {
+      "view": "my_weekly_summary",
+      "schema": "public",
+      "depends_on": "client_meal_plan_items"
+    },
+    {
+      "view": "my_weekly_summary",
+      "schema": "public",
+      "depends_on": "client_workout_assignments"
+    },
+    {
+      "view": "my_weekly_summary",
+      "schema": "public",
+      "depends_on": "habit_checkins"
+    },
+    {
+      "view": "my_weekly_summary",
+      "schema": "public",
+      "depends_on": "progress_entries"
+    }
+  ],
+  "legacy_permissions": [
+    {
+      "role": "owner",
+      "allowed": true,
+      "permission_key": "journey.step.status"
+    },
+    {
+      "role": "owner",
+      "allowed": true,
+      "permission_key": "journey.step.complete_assisted"
+    },
+    {
+      "role": "owner",
+      "allowed": true,
+      "permission_key": "journey.step.waive"
+    },
+    {
+      "role": "owner",
+      "allowed": true,
+      "permission_key": "finance.record_payment"
+    },
+    {
+      "role": "owner",
+      "allowed": true,
+      "permission_key": "finance.reverse_payment"
+    },
+    {
+      "role": "owner",
+      "allowed": true,
+      "permission_key": "agreement.override"
+    },
+    {
+      "role": "owner",
+      "allowed": true,
+      "permission_key": "membership.access_override"
+    },
+    {
+      "role": "owner",
+      "allowed": true,
+      "permission_key": "plan.override"
+    },
+    {
+      "role": "admin",
+      "allowed": true,
+      "permission_key": "journey.step.status"
+    },
+    {
+      "role": "admin",
+      "allowed": true,
+      "permission_key": "journey.step.complete_assisted"
+    },
+    {
+      "role": "admin",
+      "allowed": true,
+      "permission_key": "journey.step.waive"
+    },
+    {
+      "role": "admin",
+      "allowed": true,
+      "permission_key": "finance.record_payment"
+    },
+    {
+      "role": "admin",
+      "allowed": false,
+      "permission_key": "finance.reverse_payment"
+    },
+    {
+      "role": "admin",
+      "allowed": true,
+      "permission_key": "agreement.override"
+    },
+    {
+      "role": "admin",
+      "allowed": true,
+      "permission_key": "membership.access_override"
+    },
+    {
+      "role": "admin",
+      "allowed": true,
+      "permission_key": "plan.override"
+    },
+    {
+      "role": "coach",
+      "allowed": true,
+      "permission_key": "journey.step.status"
+    },
+    {
+      "role": "coach",
+      "allowed": true,
+      "permission_key": "journey.step.complete_assisted"
+    },
+    {
+      "role": "coach",
+      "allowed": false,
+      "permission_key": "journey.step.waive"
+    },
+    {
+      "role": "coach",
+      "allowed": false,
+      "permission_key": "finance.record_payment"
+    },
+    {
+      "role": "coach",
+      "allowed": false,
+      "permission_key": "finance.reverse_payment"
+    },
+    {
+      "role": "coach",
+      "allowed": false,
+      "permission_key": "agreement.override"
+    },
+    {
+      "role": "coach",
+      "allowed": false,
+      "permission_key": "membership.access_override"
+    },
+    {
+      "role": "coach",
+      "allowed": false,
+      "permission_key": "plan.override"
+    },
+    {
+      "role": "support",
+      "allowed": true,
+      "permission_key": "journey.step.status"
+    },
+    {
+      "role": "support",
+      "allowed": false,
+      "permission_key": "journey.step.complete_assisted"
+    },
+    {
+      "role": "support",
+      "allowed": false,
+      "permission_key": "journey.step.waive"
+    },
+    {
+      "role": "support",
+      "allowed": false,
+      "permission_key": "finance.record_payment"
+    },
+    {
+      "role": "support",
+      "allowed": false,
+      "permission_key": "finance.reverse_payment"
+    },
+    {
+      "role": "support",
+      "allowed": false,
+      "permission_key": "agreement.override"
+    },
+    {
+      "role": "support",
+      "allowed": false,
+      "permission_key": "membership.access_override"
+    },
+    {
+      "role": "support",
+      "allowed": false,
+      "permission_key": "plan.override"
+    },
+    {
+      "role": "financial",
+      "allowed": false,
+      "permission_key": "journey.step.status"
+    },
+    {
+      "role": "financial",
+      "allowed": false,
+      "permission_key": "journey.step.complete_assisted"
+    },
+    {
+      "role": "financial",
+      "allowed": false,
+      "permission_key": "journey.step.waive"
+    },
+    {
+      "role": "financial",
+      "allowed": true,
+      "permission_key": "finance.record_payment"
+    },
+    {
+      "role": "financial",
+      "allowed": false,
+      "permission_key": "finance.reverse_payment"
+    },
+    {
+      "role": "financial",
+      "allowed": true,
+      "permission_key": "agreement.override"
+    },
+    {
+      "role": "financial",
+      "allowed": false,
+      "permission_key": "membership.access_override"
+    },
+    {
+      "role": "financial",
+      "allowed": false,
+      "permission_key": "plan.override"
+    }
+  ],
+  "permission_catalog": [
+    {
+      "label": "View People & CRM",
+      "active": true,
+      "category": "People",
+      "sensitive": false,
+      "sort_order": 10,
+      "description": "View CRM contacts, lead history, tasks, tags and general contact information.",
+      "permission_key": "crm.view"
+    },
+    {
+      "label": "Manage People & CRM",
+      "active": true,
+      "category": "People",
+      "sensitive": false,
+      "sort_order": 20,
+      "description": "Create and update contacts, tasks, tags, follow-up and journey operations.",
+      "permission_key": "crm.manage"
+    },
+    {
+      "label": "View Coaching",
+      "active": true,
+      "category": "Coaching",
+      "sensitive": true,
+      "sort_order": 30,
+      "description": "View goals, habits, check-ins, assignments, sessions and coaching progress.",
+      "permission_key": "coaching.view"
+    },
+    {
+      "label": "Manage Coaching",
+      "active": true,
+      "category": "Coaching",
+      "sensitive": true,
+      "sort_order": 40,
+      "description": "Assign coaches, goals, habits, client action items and coaching sessions.",
+      "permission_key": "coaching.manage"
+    },
+    {
+      "label": "View Private Health Data",
+      "active": true,
+      "category": "Health",
+      "sensitive": true,
+      "sort_order": 50,
+      "description": "View assessments, health questionnaires, synced health data and other private health context.",
+      "permission_key": "health.private.view"
+    },
+    {
+      "label": "Manage Progress & Wellness",
+      "active": true,
+      "category": "Health",
+      "sensitive": true,
+      "sort_order": 60,
+      "description": "Manage progress, nutrition, fitness and wellness assignments.",
+      "permission_key": "health.progress.manage"
+    },
+    {
+      "label": "View Financial",
+      "active": true,
+      "category": "Financial",
+      "sensitive": true,
+      "sort_order": 70,
+      "description": "View payment, agreement, billing and ReFuel payment information.",
+      "permission_key": "finance.view"
+    },
+    {
+      "label": "Manage Financial",
+      "active": true,
+      "category": "Financial",
+      "sensitive": true,
+      "sort_order": 80,
+      "description": "Record payments, agreements, billing/access overrides and financial corrections within allowed limits.",
+      "permission_key": "finance.manage"
+    },
+    {
+      "label": "Manage Learning & Resources",
+      "active": true,
+      "category": "Learning",
+      "sensitive": false,
+      "sort_order": 90,
+      "description": "Assign and manage courses, resources and learning content.",
+      "permission_key": "learning.manage"
+    },
+    {
+      "label": "Private Member Messaging",
+      "active": true,
+      "category": "Communication",
+      "sensitive": true,
+      "sort_order": 100,
+      "description": "View and reply to private member/coach conversations.",
+      "permission_key": "messaging.manage"
+    },
+    {
+      "label": "Manage Community",
+      "active": true,
+      "category": "Community",
+      "sensitive": false,
+      "sort_order": 110,
+      "description": "Publish announcements and moderate ReVitalized community spaces.",
+      "permission_key": "community.manage"
+    },
+    {
+      "label": "Manage Coach Companion",
+      "active": true,
+      "category": "AI / Coaching",
+      "sensitive": true,
+      "sort_order": 120,
+      "description": "Manage approved knowledge and resolve Coach Companion review requests.",
+      "permission_key": "companion.manage"
+    },
+    {
+      "label": "Manage ReFuel",
+      "active": true,
+      "category": "Programs",
+      "sensitive": true,
+      "sort_order": 130,
+      "description": "Manage ReFuel interest, offers, invitations and enrollment.",
+      "permission_key": "refuel.manage"
+    },
+    {
+      "label": "View Executive Analytics",
+      "active": true,
+      "category": "Analytics",
+      "sensitive": true,
+      "sort_order": 140,
+      "description": "View Executive Pulse, conversion, engagement and platform-health analytics.",
+      "permission_key": "analytics.view"
+    },
+    {
+      "label": "View Staff & Access",
+      "active": true,
+      "category": "Administration",
+      "sensitive": true,
+      "sort_order": 150,
+      "description": "View staff accounts, roles and permission settings.",
+      "permission_key": "staff.view"
+    },
+    {
+      "label": "Manage Staff & Access",
+      "active": true,
+      "category": "Administration",
+      "sensitive": true,
+      "sort_order": 160,
+      "description": "Invite, deactivate and change staff roles/permissions.",
+      "permission_key": "staff.manage"
+    },
+    {
+      "label": "Manage Referrals & Ambassadors",
+      "active": true,
+      "category": "Growth",
+      "sensitive": false,
+      "sort_order": 135,
+      "description": "Manage referral attribution, ambassador profiles, referral status and rewards.",
+      "permission_key": "referrals.manage"
+    },
+    {
+      "label": "Export People Database",
+      "active": true,
+      "category": "People",
+      "sensitive": true,
+      "sort_order": 25,
+      "description": "Export CRM and People data to CSV. This can expose a large portion of the client database.",
+      "permission_key": "people.export"
+    },
+    {
+      "label": "Import People Database",
+      "active": true,
+      "category": "People",
+      "sensitive": true,
+      "sort_order": 26,
+      "description": "Import or update People records from CSV with duplicate matching and audit history.",
+      "permission_key": "people.import"
+    }
+  ],
+  "permission_defaults": [
+    {
+      "role": "owner",
+      "allowed": true,
+      "permission_key": "crm.view"
+    },
+    {
+      "role": "owner",
+      "allowed": true,
+      "permission_key": "crm.manage"
+    },
+    {
+      "role": "owner",
+      "allowed": true,
+      "permission_key": "coaching.view"
+    },
+    {
+      "role": "owner",
+      "allowed": true,
+      "permission_key": "coaching.manage"
+    },
+    {
+      "role": "owner",
+      "allowed": true,
+      "permission_key": "health.private.view"
+    },
+    {
+      "role": "owner",
+      "allowed": true,
+      "permission_key": "health.progress.manage"
+    },
+    {
+      "role": "owner",
+      "allowed": true,
+      "permission_key": "finance.view"
+    },
+    {
+      "role": "owner",
+      "allowed": true,
+      "permission_key": "finance.manage"
+    },
+    {
+      "role": "owner",
+      "allowed": true,
+      "permission_key": "learning.manage"
+    },
+    {
+      "role": "owner",
+      "allowed": true,
+      "permission_key": "messaging.manage"
+    },
+    {
+      "role": "owner",
+      "allowed": true,
+      "permission_key": "community.manage"
+    },
+    {
+      "role": "owner",
+      "allowed": true,
+      "permission_key": "companion.manage"
+    },
+    {
+      "role": "owner",
+      "allowed": true,
+      "permission_key": "refuel.manage"
+    },
+    {
+      "role": "owner",
+      "allowed": true,
+      "permission_key": "analytics.view"
+    },
+    {
+      "role": "owner",
+      "allowed": true,
+      "permission_key": "staff.view"
+    },
+    {
+      "role": "owner",
+      "allowed": true,
+      "permission_key": "staff.manage"
+    },
+    {
+      "role": "admin",
+      "allowed": true,
+      "permission_key": "crm.view"
+    },
+    {
+      "role": "admin",
+      "allowed": true,
+      "permission_key": "crm.manage"
+    },
+    {
+      "role": "admin",
+      "allowed": true,
+      "permission_key": "coaching.view"
+    },
+    {
+      "role": "admin",
+      "allowed": true,
+      "permission_key": "coaching.manage"
+    },
+    {
+      "role": "admin",
+      "allowed": true,
+      "permission_key": "health.private.view"
+    },
+    {
+      "role": "admin",
+      "allowed": true,
+      "permission_key": "health.progress.manage"
+    },
+    {
+      "role": "admin",
+      "allowed": true,
+      "permission_key": "finance.view"
+    },
+    {
+      "role": "admin",
+      "allowed": true,
+      "permission_key": "finance.manage"
+    },
+    {
+      "role": "admin",
+      "allowed": true,
+      "permission_key": "learning.manage"
+    },
+    {
+      "role": "admin",
+      "allowed": true,
+      "permission_key": "messaging.manage"
+    },
+    {
+      "role": "admin",
+      "allowed": true,
+      "permission_key": "community.manage"
+    },
+    {
+      "role": "admin",
+      "allowed": true,
+      "permission_key": "companion.manage"
+    },
+    {
+      "role": "admin",
+      "allowed": true,
+      "permission_key": "refuel.manage"
+    },
+    {
+      "role": "admin",
+      "allowed": true,
+      "permission_key": "analytics.view"
+    },
+    {
+      "role": "admin",
+      "allowed": true,
+      "permission_key": "staff.view"
+    },
+    {
+      "role": "admin",
+      "allowed": true,
+      "permission_key": "staff.manage"
+    },
+    {
+      "role": "coach",
+      "allowed": true,
+      "permission_key": "crm.view"
+    },
+    {
+      "role": "coach",
+      "allowed": true,
+      "permission_key": "crm.manage"
+    },
+    {
+      "role": "coach",
+      "allowed": true,
+      "permission_key": "coaching.view"
+    },
+    {
+      "role": "coach",
+      "allowed": true,
+      "permission_key": "coaching.manage"
+    },
+    {
+      "role": "coach",
+      "allowed": true,
+      "permission_key": "health.private.view"
+    },
+    {
+      "role": "coach",
+      "allowed": true,
+      "permission_key": "health.progress.manage"
+    },
+    {
+      "role": "coach",
+      "allowed": false,
+      "permission_key": "finance.view"
+    },
+    {
+      "role": "coach",
+      "allowed": false,
+      "permission_key": "finance.manage"
+    },
+    {
+      "role": "coach",
+      "allowed": true,
+      "permission_key": "learning.manage"
+    },
+    {
+      "role": "coach",
+      "allowed": true,
+      "permission_key": "messaging.manage"
+    },
+    {
+      "role": "coach",
+      "allowed": true,
+      "permission_key": "community.manage"
+    },
+    {
+      "role": "coach",
+      "allowed": true,
+      "permission_key": "companion.manage"
+    },
+    {
+      "role": "coach",
+      "allowed": false,
+      "permission_key": "refuel.manage"
+    },
+    {
+      "role": "coach",
+      "allowed": false,
+      "permission_key": "analytics.view"
+    },
+    {
+      "role": "coach",
+      "allowed": false,
+      "permission_key": "staff.view"
+    },
+    {
+      "role": "coach",
+      "allowed": false,
+      "permission_key": "staff.manage"
+    },
+    {
+      "role": "financial",
+      "allowed": true,
+      "permission_key": "crm.view"
+    },
+    {
+      "role": "financial",
+      "allowed": false,
+      "permission_key": "crm.manage"
+    },
+    {
+      "role": "financial",
+      "allowed": false,
+      "permission_key": "coaching.view"
+    },
+    {
+      "role": "financial",
+      "allowed": false,
+      "permission_key": "coaching.manage"
+    },
+    {
+      "role": "financial",
+      "allowed": false,
+      "permission_key": "health.private.view"
+    },
+    {
+      "role": "financial",
+      "allowed": false,
+      "permission_key": "health.progress.manage"
+    },
+    {
+      "role": "financial",
+      "allowed": true,
+      "permission_key": "finance.view"
+    },
+    {
+      "role": "financial",
+      "allowed": true,
+      "permission_key": "finance.manage"
+    },
+    {
+      "role": "financial",
+      "allowed": false,
+      "permission_key": "learning.manage"
+    },
+    {
+      "role": "financial",
+      "allowed": false,
+      "permission_key": "messaging.manage"
+    },
+    {
+      "role": "financial",
+      "allowed": false,
+      "permission_key": "community.manage"
+    },
+    {
+      "role": "financial",
+      "allowed": false,
+      "permission_key": "companion.manage"
+    },
+    {
+      "role": "financial",
+      "allowed": true,
+      "permission_key": "refuel.manage"
+    },
+    {
+      "role": "financial",
+      "allowed": true,
+      "permission_key": "analytics.view"
+    },
+    {
+      "role": "financial",
+      "allowed": false,
+      "permission_key": "staff.view"
+    },
+    {
+      "role": "financial",
+      "allowed": false,
+      "permission_key": "staff.manage"
+    },
+    {
+      "role": "support",
+      "allowed": true,
+      "permission_key": "crm.view"
+    },
+    {
+      "role": "support",
+      "allowed": true,
+      "permission_key": "crm.manage"
+    },
+    {
+      "role": "support",
+      "allowed": false,
+      "permission_key": "coaching.view"
+    },
+    {
+      "role": "support",
+      "allowed": false,
+      "permission_key": "coaching.manage"
+    },
+    {
+      "role": "support",
+      "allowed": false,
+      "permission_key": "health.private.view"
+    },
+    {
+      "role": "support",
+      "allowed": false,
+      "permission_key": "health.progress.manage"
+    },
+    {
+      "role": "support",
+      "allowed": false,
+      "permission_key": "finance.view"
+    },
+    {
+      "role": "support",
+      "allowed": false,
+      "permission_key": "finance.manage"
+    },
+    {
+      "role": "support",
+      "allowed": false,
+      "permission_key": "learning.manage"
+    },
+    {
+      "role": "support",
+      "allowed": true,
+      "permission_key": "messaging.manage"
+    },
+    {
+      "role": "support",
+      "allowed": false,
+      "permission_key": "community.manage"
+    },
+    {
+      "role": "support",
+      "allowed": false,
+      "permission_key": "companion.manage"
+    },
+    {
+      "role": "support",
+      "allowed": false,
+      "permission_key": "refuel.manage"
+    },
+    {
+      "role": "support",
+      "allowed": false,
+      "permission_key": "analytics.view"
+    },
+    {
+      "role": "support",
+      "allowed": false,
+      "permission_key": "staff.view"
+    },
+    {
+      "role": "support",
+      "allowed": false,
+      "permission_key": "staff.manage"
+    },
+    {
+      "role": "owner",
+      "allowed": true,
+      "permission_key": "referrals.manage"
+    },
+    {
+      "role": "admin",
+      "allowed": true,
+      "permission_key": "referrals.manage"
+    },
+    {
+      "role": "coach",
+      "allowed": true,
+      "permission_key": "referrals.manage"
+    },
+    {
+      "role": "financial",
+      "allowed": false,
+      "permission_key": "referrals.manage"
+    },
+    {
+      "role": "support",
+      "allowed": false,
+      "permission_key": "referrals.manage"
+    },
+    {
+      "role": "owner",
+      "allowed": true,
+      "permission_key": "people.export"
+    },
+    {
+      "role": "admin",
+      "allowed": false,
+      "permission_key": "people.export"
+    },
+    {
+      "role": "coach",
+      "allowed": false,
+      "permission_key": "people.export"
+    },
+    {
+      "role": "financial",
+      "allowed": false,
+      "permission_key": "people.export"
+    },
+    {
+      "role": "support",
+      "allowed": false,
+      "permission_key": "people.export"
+    },
+    {
+      "role": "owner",
+      "allowed": true,
+      "permission_key": "people.import"
+    },
+    {
+      "role": "admin",
+      "allowed": false,
+      "permission_key": "people.import"
+    },
+    {
+      "role": "coach",
+      "allowed": false,
+      "permission_key": "people.import"
+    },
+    {
+      "role": "financial",
+      "allowed": false,
+      "permission_key": "people.import"
+    },
+    {
+      "role": "support",
+      "allowed": false,
+      "permission_key": "people.import"
+    }
+  ]
+}

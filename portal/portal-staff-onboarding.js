@@ -87,6 +87,7 @@
       body:{
         action:"sign",
         staff_agreement_id:active.staff_agreement_id,
+        expected_content_hash:active.rendered_content_hash||active.content_hash,
         signer_name:el("staff-onboarding-signer-name").value.trim(),
         accepted_terms:el("staff-onboarding-accept").checked
       }

@@ -1,0 +1,21 @@
+✔ protected baseline unchanged: consult.html (1.764541ms)
+✔ protected baseline unchanged: js/vitality55.js (0.538542ms)
+✔ protected baseline unchanged: js/vitality-child.js (0.293917ms)
+✔ protected baseline unchanged: css/vitality55.css (0.415708ms)
+✔ protected baseline unchanged: js/revitalized-data.js (0.360375ms)
+✔ protected baseline unchanged: webinar.html (0.373042ms)
+✔ homepage routes assessment and webinar visitors to existing protected flows (73.236333ms)
+✔ priority webinar retains fifty-seat copy, free priority form and required contact/consent (24.057584ms)
+✔ member bootstrap stays v2 while signing submits displayed hash (1.640375ms)
+✔ CSV uses atomic export RPC; independent audit-call race is gone (0.34425ms)
+✔ CSV quoting neutralizes formula prefixes and preserves ordinary names (3.254708ms)
+Enrollment Build 82 static checks passed.
+✔ tests/enrollment82.cjs (48.98375ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 492.124583
