@@ -1,0 +1,834 @@
+✔ first lead saves independently; failed lead does not advance (1294.362084ms)
+✔ proxy details, relationship, age and authorization are required; switching hides stale values (2846.1975ms)
+✔ full completion: Myself, age self, Male, Male (8959.501042ms)
+✔ full completion: My child, age 19, Male, Male (9611.571125ms)
+✔ full completion: My spouse, age 35, Female, Pregnant (10005.326292ms)
+✔ full completion: Someone else, age 35, Female, Postpartum (9890.103375ms)
+✔ full completion: Someone else, age 55, Female, Perimenopause (9814.06275ms)
+✔ full completion: Someone else, age 60, Female, Menopause (9930.42625ms)
+✔ new subject display is text-only and never alters clinical section markup (1466.78625ms)
+✔ child age 0: full approved questionnaire, independent lead, child-only coach record (3155.438ms)
+✔ child age 8: full approved questionnaire, independent lead, child-only coach record (5361.540833ms)
+✔ child age 18: full approved questionnaire, independent lead, child-only coach record (3299.399667ms)
+✔ switching child/adult question sets drops stale answers and preserves lead and identity controls (1776.135167ms)
+✔ child follow-ups clear deselected concerns; period and digestion branches disable hidden answers (1492.285541ms)
+✔ child required choices and detail questions block precisely; skipped optional puberty does not block (1665.176792ms)
+✔ missing child module blocks child continuation without losing captured lead or breaking adults (1460.271875ms)
+✔ gut questions appear once in Driver 7; stool choices cap at three and validate without change events (7369.796083ms)
+✔ reproductive pathways require a selection and validate only the visible sex-specific symptom details (4013.366666ms)
+✔ adult and child submissions have a separate required closing step and optional context (12726.005666ms)
+✔ child gender offers only Male and Female, requires an answer and clears on adult switch (1983.70775ms)
+✔ one static Build 76 coaching section replaces both legacy sections (0.790583ms)
+✖ every byte outside the authorized coaching region and its asset includes is unchanged (15.867459ms)
+✖ assessment popup is byte-for-byte unchanged (0.728833ms)
+✖ footer and results disclaimer are byte-for-byte unchanged (0.186459ms)
+✖ all assessment routes and includes are preserved (0.852708ms)
+✖ shared health/results disclaimer CSS is unchanged (6.677209ms)
+✖ original menu, video and Longevity Matrix JS is preserved; replacement JS parses (0.170917ms)
+✖ approved art, unique asset references and two responsive enrollment links exist (3.503209ms)
+node:internal/assert/utils:77
+    throw err;
+    ^
+
+AssertionError [ERR_ASSERTION]: Missing plan: Total Wellness Intensive — 12 Month
+    at <repository>/tests/enrollment82.cjs:17:36
+    at Array.forEach (<anonymous>)
+    at Object.<anonymous> (<repository>/tests/enrollment82.cjs:17:18)
+    at Module._compile (node:internal/modules/cjs/loader:1929:14)
+    at Object..js (node:internal/modules/cjs/loader:2060:10)
+    at Module.load (node:internal/modules/cjs/loader:1651:32)
+    at Module._load (node:internal/modules/cjs/loader:1443:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.20.0
+✖ tests/enrollment82.cjs (75.427791ms)
+✖ existing Build76 app prefix is preserved (1.356917ms)
+✔ old family hero is removed and new section is unique (1.162083ms)
+✔ all four original family cards remain (1.159708ms)
+✖ other family sections and footer are unchanged (0.489166ms)
+✔ buttons retain real stories and assessment destinations (0.227291ms)
+✖ approved assets, markup and code match the checked package (2.545166ms)
+✖ protected baseline files are untouched when present (0.346417ms)
+✖ only the authorized card section and CSS include changed (7.285625ms)
+✔ all four titles, descriptions and numbers remain verbatim (0.600375ms)
+✔ approved hero and all original pillar markup are unchanged (4.3115ms)
+✔ footer and assessment destinations are unchanged (1.285166ms)
+✖ approved build artwork and files match validated output (1.099291ms)
+✖ existing shared resources remain unchanged when present (0.194459ms)
+✔ new CSS contains no assessment or legal element selectors (0.983417ms)
+✔ browser results confirm 50% gap reduction and responsive fit (0.158792ms)
+✔ removing only Build 79 additions restores byte-identical current-main source (22.381125ms)
+✔ all four age-group cards and their wording are unchanged (1.08075ms)
+✔ header, approved hero, pillar cards, footer and final CTA remain identical (10.321291ms)
+✔ assessment destinations and their existing attributes are unchanged (0.856708ms)
+✔ real family story IDs are used; unverified mockup quote is absent (2.39325ms)
+✔ new CSS and JS do not select assessment or footer components (0.904041ms)
+✖ all packaged runtime files have the expected hashes (1.748167ms)
+✖ shared resources are unchanged when checked in the installed site (0.442875ms)
+✔ saved browser checks show responsive fit and working controls (0.115916ms)
+✔ seven original videos remain available (2.253833ms)
+✔ three original article destinations remain available (0.147666ms)
+✖ existing footer and disclaimer are unchanged (1.034708ms)
+✔ assessment buttons still point to the protected consult route (0.235625ms)
+✔ newsletter remains the original public Netlify form (0.181292ms)
+✔ new assets and stylesheet exist (1.321958ms)
+✔ no assessment or legal CSS selectors added (0.192542ms)
+✔ page script does not write assessment data or local storage (0.081291ms)
+✔ single main and h1; original watch/read anchor IDs retained (0.472375ms)
+✖ only the webinar section and its new stylesheet include changed (4.862ms)
+✖ existing footer and disclaimer link are unchanged (0.698083ms)
+✖ assessment popup and script include are unchanged (0.204834ms)
+✖ all assessment buttons preserve their destinations and markup (0.192959ms)
+✖ shared stylesheet, including disclaimer rules, is unchanged (0.4265ms)
+✖ shared JavaScript is unchanged (0.154042ms)
+✖ webinar form fields, validation and Netlify configuration are preserved (0.077417ms)
+✖ the three existing benefits retain their original wording and icons (0.057542ms)
+✖ benefits and signup are both in the new conversion row (0.08375ms)
+✖ new layout styles are scoped only to this webinar (0.296042ms)
+ℹ tests 72
+ℹ suites 0
+ℹ pass 44
+ℹ fail 28
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 108526.840417
+
+✖ failing tests:
+
+test at tests/coaching76-integrity.cjs:46:1
+✖ every byte outside the authorized coaching region and its asset includes is unchanged (15.867459ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(a>=0&&b>a)
+  
+      at TestContext.<anonymous> (<repository>/tests/coaching76-integrity.cjs:50:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19)
+      at Test.run (node:internal/test_runner/test:1462:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/coaching76-integrity.cjs:53:1
+✖ assessment popup is byte-for-byte unchanged (0.728833ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + '6290366fe66ad8b678cdc9db0c3de6e0eb10c43f1bd90dcb38eb92bb13b05431'
+  - '167b20a7ebf4d0c7f9c77dba8ccff8d65e70b3a715cbb56381b54299c96fa23a'
+  
+      at TestContext.<anonymous> (<repository>/tests/coaching76-integrity.cjs:54:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19)
+      at Test.run (node:internal/test_runner/test:1462:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '6290366fe66ad8b678cdc9db0c3de6e0eb10c43f1bd90dcb38eb92bb13b05431',
+    expected: '167b20a7ebf4d0c7f9c77dba8ccff8d65e70b3a715cbb56381b54299c96fa23a',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/coaching76-integrity.cjs:56:1
+✖ footer and results disclaimer are byte-for-byte unchanged (0.186459ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'e062e9d0b1a2cc846b422b9d0c050a3b2336180829939c3b3b518c79a3f96417'
+  - '3ca6399c79147298b726e73c73872a770c5fb72c928efb669a1a6bc2de4a0b11'
+  
+      at TestContext.<anonymous> (<repository>/tests/coaching76-integrity.cjs:57:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19)
+      at Test.run (node:internal/test_runner/test:1462:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'e062e9d0b1a2cc846b422b9d0c050a3b2336180829939c3b3b518c79a3f96417',
+    expected: '3ca6399c79147298b726e73c73872a770c5fb72c928efb669a1a6bc2de4a0b11',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/coaching76-integrity.cjs:60:1
+✖ all assessment routes and includes are preserved (0.852708ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      '<a class="hero54-btn hero54-btn-light vitality-primary-cta" href="consult.html">',
+      '<a class="btn btn-primary vitality-primary-cta" href="consult.html">',
+      '<a class="btn btn-primary vitality-primary-cta" href="consult.html">',
+  +   '<a class="btn btn-primary vitality-primary-cta" href="consult.html">',
+      '<a class="text-link" href="consult.html">',
+  -   '<a class="text-link" href="consult.html">',
+      '<a class="btn btn-secondary btn-large vitality-primary-cta" href="consult.html">',
+      '<a href="consult.html">',
+      '<a class="vitality-popup-start vitality-primary-cta" href="consult.html">'
+    ]
+  
+      at TestContext.<anonymous> (<repository>/tests/coaching76-integrity.cjs:61:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19)
+      at Test.run (node:internal/test_runner/test:1462:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ '<a class="hero54-btn hero54-btn-light vitality-primary-cta" href="consult.html">', '<a class="btn btn-primary vitality-primary-cta" href="consult.html">', '<a class="btn btn-primary vitality-primary-cta" href="consult.html">', '<a class="btn btn-primary vitality-primary-cta" href="consult.html">', '<a class="text-link" href="consult.html">', '<a class="btn btn-secondary btn-large vitality-primary-cta" href="consult.html">', '<a href="consult.html">', '<a class="vitality-popup-start vitality-primary-cta" href="consult.html">' ],
+    expected: [ '<a class="hero54-btn hero54-btn-light vitality-primary-cta" href="consult.html">', '<a class="btn btn-primary vitality-primary-cta" href="consult.html">', '<a class="btn btn-primary vitality-primary-cta" href="consult.html">', '<a class="text-link" href="consult.html">', '<a class="text-link" href="consult.html">', '<a class="btn btn-secondary btn-large vitality-primary-cta" href="consult.html">', '<a href="consult.html">', '<a class="vitality-popup-start vitality-primary-cta" href="consult.html">' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/coaching76-integrity.cjs:64:1
+✖ shared health/results disclaimer CSS is unchanged (6.677209ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'a54154d832e9164bc4d407ea0b9247520e8addb1145724b3d25fb41728de3603'
+  - 'a716e205dd740363e680d2f7b404ae0e41d302f9c074d7aad477fdffcc070bf4'
+  
+      at TestContext.<anonymous> (<repository>/tests/coaching76-integrity.cjs:66:22)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19)
+      at Test.run (node:internal/test_runner/test:1462:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'a54154d832e9164bc4d407ea0b9247520e8addb1145724b3d25fb41728de3603',
+    expected: 'a716e205dd740363e680d2f7b404ae0e41d302f9c074d7aad477fdffcc070bf4',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/coaching76-integrity.cjs:68:1
+✖ original menu, video and Longevity Matrix JS is preserved; replacement JS parses (0.170917ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + '89a093c526616bad46116c5009c0594f618896813d714e5be949fefc99215e5a'
+  - '346c0dcb90ef29aab92d9b477c17d8cf3a8c61d0b486a4bace5e4d71f81755f3'
+  
+      at TestContext.<anonymous> (<repository>/tests/coaching76-integrity.cjs:70:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19)
+      at Test.run (node:internal/test_runner/test:1462:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '89a093c526616bad46116c5009c0594f618896813d714e5be949fefc99215e5a',
+    expected: '346c0dcb90ef29aab92d9b477c17d8cf3a8c61d0b486a4bace5e4d71f81755f3',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/coaching76-integrity.cjs:73:1
+✖ approved art, unique asset references and two responsive enrollment links exist (3.503209ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /css\/coaching76\.css\?v=76/. Input:
+  
+  '<!doctype html>\n' +
+    '<html lang="en">\n' +
+    '<head>\n' +
+    ' <meta charset="utf-8">\n' +
+    ' <meta name="viewport" content="width=device-width, initial-scale=1">\n' +
+    ' <title>ReVitalized Academy | The Roadmap to a Healthy You</title>\n' +
+    ' <meta name="description" content="ReVitalized Academy helps you understand your health, build a personalized Longevity Matrix, and create lasting change through coaching, education and accountability.">\n' +
+    ' <link rel="stylesheet" href="css/styles.css?v=71">\n' +
+    ' <link rel="stylesheet" href="css/hero54.css?v=54">\n' +
+    ' <link rel="stylesheet" href="css/hero102-portrait.css?v=109">\n' +
+    '<link rel="stylesheet" href="css/vitality55.css?v=71">\n' +
+    ' <link rel="stylesheet" href="css/coaching76.css?v=103">\n' +
+    ' <link rel="stylesheet" href="css/webinar81.css?v=108">\n' +
+    '</head>\n' +
+    '<body data-build="54">\n' +
+    ' <header class="site-header">\n' +
+    ' <a class="brand" href="#top" aria-label="ReVitalized Academy home">\n' +
+    ' <img src="assets/images/revitalized-logo-dark-approved-v69.png" alt="ReVitalized Academy">\n' +
+    ' </a>\n' +
+    ' <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav">Menu</button>\n' +
+    ' <nav id="main-nav" class="main-nav" aria-label="Primary navigation">\n' +
+    ' <a href="founders.html">About</a>\n' +
+    ' <a href="#matrix">Longevity Matrix</a>\n' +
+    ' <a href="#coaching">Coaching</a>\n' +
+    ' <a href="families.html">Families</a>\n' +
+    ' <a href="stories.html">Stories</a>\n' +
+    ' <a href="free-help.html">Free Help</a>\n' +
+    ' <a href="#faq">FAQ</a>\n' +
+    ' </nav>\n' +
+    ' <a class="btn btn-primary header-cta journey-secondary-cta" href="enroll.html">Start Your Journey</a>\n' +
+    ' </header>\n' +
+    '\n' +
+    ' <main id="top">\n' +
+    ' <section class="hero54" id="about" aria-labelledby="hero54-title">\n' +
+    ' <img class="hero54-bg" src="assets/images/hero54-background.png" alt="" aria-hidden="true">\n' +
+    ' <img class="hero54-founders" src="assets/images/justyn-elle-professional-approved-102.png" alt="Justyn and Elle Oliver, founders of ReVitalized Academy">\n' +
+    ' <div class="hero54-copy">\n' +
+    ' <div class="hero54-eyebrow">✓ &nbsp; PERSONALIZED LONGEVITY COACHING</div>\n' +
+    ' <h1 id="hero54-title">Chronic Health<br>Struggles Don’t<br>Have to Define Your<br><span>Family’s Future</span></h1>\n' +
+    ' <p class="hero54-sub">Personalized coaching with <strong>Justyn &amp; Elle Oliver</strong></p>\n' +
+    ' <p class="hero54-text">There is more health information available than ever - and more conflicting advice to sort through. ReVitalized Academy helps you understand the full picture, identify what matters for you, and turn the right information into a healthier way of life.</p>\n' +
+    ' <div class="hero54-actions">\n' +
+    ' <a class="hero54-btn hero54-btn-gold journey-secondary-cta" href="enroll.html">Start Your Journey <b>→</b></a>\n' +
+    ' <a class="hero54-btn hero54-btn-light vitality-primary-cta" href="consult.html">▣ &nbsp; Free Vitality Assessment</a>\n' +
+    ' </div>\n' +
+    ' <p class="hero54-note"><span>✓</span> Everything you need to begin is already here. The experience only gets better.</p>\n' +
+    ' </div>\n' +
+    ' </section>\n' +
+    '\n' +
+    ' <section class="learn-section clarity-section section-border">\n' +
+    ' <div class="clarity-intro">\n' +
+    ' <span class="eyebrow green">MORE INFORMATION ISN’T ALWAYS MORE CLARITY</span>\n' +
+    ' <h2>When Chronic Health Issues Become Your Family’s Normal, It’s Time for a New Approach.</h2>\n' +
+    ' <p>Nutrition, supplements, movement, recovery and lifestyle advice can quickly become conflicting and overwhelming. ReVitalized helps organize the bigger picture so you can make more informed, personalized decisions.</p>\n' +
+    ' </div>\n' +
+    ' <div class="learn-grid">\n' +
+    ' <article class="mini-card"><div class="line-icon">↯</div><h3>Conflicting<br>Information</h3><p>Different voices can recommend completely different answers to the same health question.</p></article>\n' +
+    ' <article class="mini-card"><div class="line-icon">◌</div><h3>Generic<br>Solutions</h3><p>What worked for someone else may not be the right starting point for you or your family.</p></article>\n' +
+    ' <article class="mini-card"><div class="line-icon">⌘</div><h3>Disconnected<br>Pieces</h3><p>Sleep, nutrition, movement, mindset, hydration and daily habits work together - not in isolation.</p></article>\n' +
+    ' <article class="mini-card"><div class="line-icon">⌖</div><h3>No Clear<br>Starting Point</h3><p>More knowledge does not automatically tell you which priority deserves your attention first.</p></article>\n' +
+    ' <article class="mini-card"><div class="line-icon">◎</div><h3>Personalized<br>Approach</h3><p>ReVitalized helps turn education into a practical path built around your goals and real life.</p></article>\n' +
+    ' </div>\n' +
+    ' </section>\n' +
+    '\n' +
+    ' <section class="matrix-section section-border" id="matrix">\n' +
+    ' <div class="matrix-approved-layout">\n' +
+    ' <div class="matrix-approved-copy">\n' +
+    ' <span class="eyebrow green">A WHOLE-PICTURE FRAMEWORK</span>\n' +
+    ' <h2>The ReVitalized<br><em>Longevity Matrix</em></h2>\n' +
+    ' <div class="matrix-copy-rule"></div>\n' +
+    ' <p>True health isn’t found in one fix. It’s built by aligning the essential areas that work together to support your body, mind, and future.</p>\n' +
+    ' <p>Explore the four core principles of holistic health to see how the ReVitalized method helps create a healthier, stronger, more sustainable lifestyle.</p>\n' +
+    ' <div class="matrix-click-cue"><span class="matrix-click-icon">◎</span><span><strong>Click a focus area</strong><br>for more details</span></div>\n' +
+    ' </div>\n' +
+    ' <div class="matrix-approved-wrap" aria-label="Interactive ReVitalized Longevity Matrix">\n' +
+    ' <img class="matrix-approved-art" src="assets/images/longevity-matrix-approved-2026.png" alt="The ReVitalized Longevity Matrix with Athletic, Energized, Refined and Organized focus areas around Longevity Lifestyle. Energized: Feel good physically and mentally every day.">\n' +
+    ' <!-- Keep the approved artwork intact; replace only the Energized caption with crisp, responsive text. -->\n' +
+    ' <svg class="matrix-energized-copy" viewBox="0 0 1322 1190" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false" style="position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none">\n' +
+    ' <rect x="158" y="595" width="150" height="77" rx="3" fill="#000"></rect>\n' +
+    ' <text fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="400" text-anchor="middle">\n' +
+    ' <tspan x="231" y="622">Feel good physically</tspan>\n' +
+    ' <tspan x="231" y="651">and mentally</tspan>\n' +
+    ' <tspan x="231" y="680">every day</tspan>\n' +
+    ' </text>\n' +
+    ' </svg>\n' +
+    ' <svg class="matrix-svg-overlay" viewBox="0 0 1002 941" preserveAspectRatio="xMidYMid meet" aria-label="Interactive Longevity Matrix focus areas">\n' +
+    ' <circle class="matrix-svg-hit hit-athletic" cx="474" cy="161" r="120" tabindex="0" role="button" data-matrix-target="athletic" aria-label="Explore Athletic focus"></circle>\n' +
+    ' <circle class="matrix-svg-hit hit-energized" cx="156" cy="448" r="121" tabindex="0" role="button" data-matrix-target="energized" aria-label="Explore Energized focus: Feel good physically and mentally every day"></circle>\n' +
+    ' <circle class="matrix-svg-hit hit-refined" cx="779" cy="448" r="121" tabindex="0" role="button" data-matrix-target="refined" aria-label="Explore Refined focus"></circle>\n' +
+    ' <circle class="matrix-svg-hit hit-organized" cx="474" cy="741" r="121" tabindex="0" role="button" data-matrix-target="organized" aria-label="Explore Organized focus"></circle>\n' +
+    ' </svg>\n' +
+    ' </div>\n' +
+    ' </div>\n' +
+    ' <div class="matrix-modal" id="matrix-modal" aria-hidden="true">\n' +
+    ' <div class="matrix-modal-backdrop" data-matrix-close></div>\n' +
+    ' <div class="matrix-focus-modal theme-athletic" id="matrix-focus-modal" role="dialog" aria-modal="true" aria-labelledby="matrix-focus-title">\n' +
+    ' <button class="matrix-focus-close" type="button" aria-label="Close focus details" data-matrix-close>Close <span aria-hidden="true">×</span></button>\n' +
+    '\n' +
+    ' <div class="matrix-focus-card">\n' +
+    ' <div class="matrix-focus-identity">\n' +
+    ' <div class="matrix-focus-icon" id="matrix-focus-icon" aria-hidden="true"></div>\n' +
+    ' <div class="matrix-focus-nameblock">\n' +
+    ' <h3 id="matrix-focus-title">Athletic</h3>\n' +
+    ' <p id="matrix-focus-tagline">Move dynamically without pain</p>\n' +
+    ' <span class="matrix-focus-rule"></span>\n' +
+    ' </div>\n' +
+    ' </div>\n' +
+    '\n' +
+    ' <div class="matrix-focus-accordions" id="matrix-focus-accordions"></div>\n' +
+    ' </div>\n' +
+    '\n' +
+    ' <div class="matrix-focus-footer">\n' +
+    ' <p id="matrix-focus-summary">Explore the three areas that support this focus.</p>\n' +
+    ' <div class="matrix-focus-actions">\n' +
+    ' <a class="btn btn-primary vitality-primary-cta" href="consult.html">Free Vitality Assessment</a>\n' +
+    ' <button class="btn btn-secondary" type="button" data-matrix-close>Close</button>\n' +
+    ' </div>\n' +
+    ' </div>\n' +
+    ' </div>\n' +
+    ' </div>\n' +
+    '\n' +
+    ' <div class="matrix-cta-row">\n' +
+    ' <div class="matrix-cta-card">\n' +
+    ' <span class="eyebrow green">LEARN MORE</span>\n' +
+    ' <h3>Want to see the Longevity Matrix explained?</h3>\n' +
+    ' <p>Watch the Longevity Matrix overview for a clearer look at how the four focus areas work together inside a personalized path to better health.</p>\n' +
+    ' <a class="btn btn-secondary" href="#matrix-videos">Learn More About the Longevity Matrix</a>\n' +
+    ' </div>\n' +
+    ' <div class="matrix-cta-card accent">\n' +
+    ' <span class="eyebrow green">NEXT STEP</span>\n' +
+    ' <h3>Ready to apply this to your life?</h3>\n' +
+    ' <p>Take the next step with a free vitality assessment and get clarity on where to begin in your own ReVitalized journey.</p>\n' +
+    ' <a class="btn btn-primary vitality-primary-cta" href="consult.html">Free Vitality Assessment</a>\n' +
+    ' </div>\n' +
+    ' </div>\n' +
+    ' </section>\n' +
+    '\n' +
+    '\n' +
+    ' <section class="transformation-proof-section" id="transformation-proof" aria-labelledby="transformation-proof-title">\n' +
+    ' <div class="transformation-proof-shell">\n' +
+    ' <div class="transformation-proof-brandline">\n' +
+    ' <span>THE LONGEVITY LIFESTYLE</span>\n' +
+    ' </div>\n' +
+    ' <div class="transformation-proof-intro">\n' +
+    ' <span class="transformation-proof-kicker">REAL PEOPLE <b>·</b> REAL MOMENTUM</span>\n' +
+    ' <h2 id="transformation-proof-title">Transformation, made <span>personal.</span></h2>\n' +
+    ' <p>Every journey begins in a different place. The right structure, support and daily rhythm can change what comes next.</p>\n' +
+    ' </div>\n' +
+    ' <div id="transformation-featured-story" class="transformation-featured-story" aria-live="polite"></div>\n' +
+    ' <div class="transformation-proof-companion-wrap">\n' +
+    ' <div class="transformation-proof-companion-heading">\n' +
+    ' <span>ANOTHER REPORTED JOURNEY</span>\n' +
+    ' <a href="stories.html">Explore current video '... 29717 more characters
+  
+      at TestContext.<anonymous> (<repository>/tests/coaching76-integrity.cjs:76:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19)
+      at Test.run (node:internal/test_runner/test:1462:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '<!doctype html>\n<html lang="en">\n<head>\n <meta charset="utf-8">\n <meta name="viewport" content="width=device-width, initial-scale=1">\n <title>ReVitalized Academy | The Roadmap to a Healthy You</title>\n <meta name="description" content="ReVitalized Academy helps you understand your health, build a personalized Longevity Matrix, and create lasting change through coaching, education and accountability.">\n <link rel="stylesheet" href="css/styles.css?v=71">\n <link rel="stylesheet" href="css/hero54.css?v=54">\n <link rel="stylesheet" href="css/hero102-portrait.css?v=109">\n<link rel="stylesheet" href="css/vitality55.css?v=71">\n <link rel="stylesheet" href="css/coaching76.css?v=103">\n <link rel="stylesheet" href="css/webinar81.css?v=108">\n</head>\n<body data-build="54">\n <header class="site-header">\n <a class="brand" href="#top" aria-label="ReVitalized Academy home">\n <img src="assets/images/revitalized-logo-dark-approved-v69.png" alt="ReVitalized Academy">\n </a>\n <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav">Menu</button>\n <nav id="main-nav" class="main-nav" aria-label="Primary navigation">\n <a href="founders.html">About</a>\n <a href="#matrix">Longevity Matrix</a>\n <a href="#coaching">Coaching</a>\n <a href="families.html">Families</a>\n <a href="stories.html">Stories</a>\n <a href="free-help.html">Free Help</a>\n <a href="#faq">FAQ</a>\n </nav>\n <a class="btn btn-primary header-cta journey-secondary-cta" href="enroll.html">Start Your Journey</a>\n </header>\n\n <main id="top">\n <section class="hero54" id="about" aria-labelledby="hero54-title">\n <img class="hero54-bg" src="assets/images/hero54-background.png" alt="" aria-hidden="true">\n <img class="hero54-founders" src="assets/images/justyn-elle-professional-approved-102.png" alt="Justyn and Elle Oliver, founders of ReVitalized Academy">\n <div class="hero54-copy">\n <div class="hero54-eyebrow">✓ &nbsp; PERSONALIZED LONGEVITY COACHING</div>\n <h1 id="hero54-title">Chronic Health<br>Struggles Don’t<br>Have to Define Your<br><span>Family’s Future</span></h1>\n <p class="hero54-sub">Personalized coaching with <strong>Justyn &amp; Elle Oliver</strong></p>\n <p class="hero54-text">There is more health information available than ever - and more conflicting advice to sort through. ReVitalized Academy helps you understand the full picture, identify what matters for you, and turn the right information into a healthier way of life.</p>\n <div class="hero54-actions">\n <a class="hero54-btn hero54-btn-gold journey-secondary-cta" href="enroll.html">Start Your Journey <b>→</b></a>\n <a class="hero54-btn hero54-btn-light vitality-primary-cta" href="consult.html">▣ &nbsp; Free Vitality Assessment</a>\n </div>\n <p class="hero54-note"><span>✓</span> Everything you need to begin is already here. The experience only gets better.</p>\n </div>\n </section>\n\n <section class="learn-section clarity-section section-border">\n <div class="clarity-intro">\n <span class="eyebrow green">MORE INFORMATION ISN’T ALWAYS MORE CLARITY</span>\n <h2>When Chronic Health Issues Become Your Family’s Normal, It’s Time for a New Approach.</h2>\n <p>Nutrition, supplements, movement, recovery and lifestyle advice can quickly become conflicting and overwhelming. ReVitalized helps organize the bigger picture so you can make more informed, personalized decisions.</p>\n </div>\n <div class="learn-grid">\n <article class="mini-card"><div class="line-icon">↯</div><h3>Conflicting<br>Information</h3><p>Different voices can recommend completely different answers to the same health question.</p></article>\n <article class="mini-card"><div class="line-icon">◌</div><h3>Generic<br>Solutions</h3><p>What worked for someone else may not be the right starting point for you or your family.</p></article>\n <article class="mini-card"><div class="line-icon">⌘</div><h3>Disconnected<br>Pieces</h3><p>Sleep, nutrition, movement, mindset, hydration and daily habits work together - not in isolation.</p></article>\n <article class="mini-card"><div class="line-icon">⌖</div><h3>No Clear<br>Starting Point</h3><p>More knowledge does not automatically tell you which priority deserves your attention first.</p></article>\n <article class="mini-card"><div class="line-icon">◎</div><h3>Personalized<br>Approach</h3><p>ReVitalized helps turn education into a practical path built around your goals and real life.</p></article>\n </div>\n </section>\n\n <section class="matrix-section section-border" id="matrix">\n <div class="matrix-approved-layout">\n <div class="matrix-approved-copy">\n <span class="eyebrow green">A WHOLE-PICTURE FRAMEWORK</span>\n <h2>The ReVitalized<br><em>Longevity Matrix</em></h2>\n <div class="matrix-copy-rule"></div>\n <p>True health isn’t found in one fix. It’s built by aligning the essential areas that work together to support your body, mind, and future.</p>\n <p>Explore the four core principles of holistic health to see how the ReVitalized method helps create a healthier, stronger, more sustainable lifestyle.</p>\n <div class="matrix-click-cue"><span class="matrix-click-icon">◎</span><span><strong>Click a focus area</strong><br>for more details</span></div>\n </div>\n <div class="matrix-approved-wrap" aria-label="Interactive ReVitalized Longevity Matrix">\n <img class="matrix-approved-art" src="assets/images/longevity-matrix-approved-2026.png" alt="The ReVitalized Longevity Matrix with Athletic, Energized, Refined and Organized focus areas around Longevity Lifestyle. Energized: Feel good physically and mentally every day.">\n <!-- Keep the approved artwork intact; replace only the Energized caption with crisp, responsive text. -->\n <svg class="matrix-energized-copy" viewBox="0 0 1322 1190" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false" style="position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none">\n <rect x="158" y="595" width="150" height="77" rx="3" fill="#000"></rect>\n <text fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="400" text-anchor="middle">\n <tspan x="231" y="622">Feel good physically</tspan>\n <tspan x="231" y="651">and mentally</tspan>\n <tspan x="231" y="680">every day</tspan>\n </text>\n </svg>\n <svg class="matrix-svg-overlay" viewBox="0 0 1002 941" preserveAspectRatio="xMidYMid meet" aria-label="Interactive Longevity Matrix focus areas">\n <circle class="matrix-svg-hit hit-athletic" cx="474" cy="161" r="120" tabindex="0" role="button" data-matrix-target="athletic" aria-label="Explore Athletic focus"></circle>\n <circle class="matrix-svg-hit hit-energized" cx="156" cy="448" r="121" tabindex="0" role="button" data-matrix-target="energized" aria-label="Explore Energized focus: Feel good physically and mentally every day"></circle>\n <circle class="matrix-svg-hit hit-refined" cx="779" cy="448" r="121" tabindex="0" role="button" data-matrix-target="refined" aria-label="Explore Refined focus"></circle>\n <circle class="matrix-svg-hit hit-organized" cx="474" cy="741" r="121" tabindex="0" role="button" data-matrix-target="organized" aria-label="Explore Organized focus"></circle>\n </svg>\n </div>\n </div>\n <div class="matrix-modal" id="matrix-modal" aria-hidden="true">\n <div class="matrix-modal-backdrop" data-matrix-close></div>\n <div class="matrix-focus-modal theme-athletic" id="matrix-focus-modal" role="dialog" aria-modal="true" aria-labelledby="matrix-focus-title">\n <button class="matrix-focus-close" type="button" aria-label="Close focus details" data-matrix-close>Close <span aria-hidden="true">×</span></button>\n\n <div class="matrix-focus-card">\n <div class="matrix-focus-identity">\n <div class="matrix-focus-icon" id="matrix-focus-icon" aria-hidden="true"></div>\n <div class="matrix-focus-nameblock">\n <h3 id="matrix-focus-title">Athletic</h3>\n <p id="matrix-focus-tagline">Move dynamically without pain</p>\n <span class="matrix-focus-rule"></span>\n </div>\n </div>\n\n <div class="matrix-focus-accordions" id="matrix-focus-accordions"></div>\n </div>\n\n <div class="matrix-focus-footer">\n <p id="matrix-focus-summary">Explore the three areas that support this focus.</p>\n <div class="matrix-focus-actions">\n <a class="btn btn-primary vitality-primary-cta" href="consult.html">Free Vitality Assessment</a>\n <button class="btn btn-secondary" type="button" data-matrix-close>Close</button>\n </div>\n </div>\n </div>\n </div>\n\n <div class="matrix-cta-row">\n <div class="matrix-cta-card">\n <span class="eyebrow green">LEARN MORE</span>\n <h3>Want to see the Longevity Matrix explained?</h3>\n <p>Watch the Longevity Matrix overview for a clearer look at how the four focus areas work together inside a personalized path to better health.</p>\n <a class="btn btn-secondary" href="#matrix-videos">Learn More About the Longevity Matrix</a>\n </div>\n <div class="matrix-cta-card accent">\n <span class="eyebrow green">NEXT STEP</span>\n <h3>Ready to apply this to your life?</h3>\n <p>Take the next step with a free vitality assessment and get clarity on where to begin in your own ReVitalized journey.</p>\n <a class="btn btn-primary vitality-primary-cta" href="consult.html">Free Vitality Assessment</a>\n </div>\n </div>\n </section>\n\n\n <section class="transformation-proof-section" id="transformation-proof" aria-labelledby="transformation-proof-title">\n <div class="transformation-proof-shell">\n <div class="transformation-proof-brandline">\n <span>THE LONGEVITY LIFESTYLE</span>\n </div>\n <div class="transformation-proof-intro">\n <span class="transformation-proof-kicker">REAL PEOPLE <b>·</b> REAL MOMENTUM</span>\n <h2 id="transformation-proof-title">Transformation, made <span>personal.</span></h2>\n <p>Every journey begins in a different place. The right structure, support and daily rhythm can change what comes next.</p>\n </div>\n <div id="transformation-featured-story" class="transformation-featured-story" aria-live="polite"></div>\n <div class="transformation-proof-companion-wrap">\n <div class="transformation-proof-companion-heading">\n <span>ANOTHER REPORTED JOURNEY</span>\n <a href="stories.html">Explore current video '... 29717 more characters,
+    expected: /css\/coaching76\.css\?v=76/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tests/enrollment82.cjs:1:1
+✖ tests/enrollment82.cjs (75.427791ms)
+  'test failed'
+
+test at tests/family-health77-integrity.cjs:15:1
+✖ existing Build76 app prefix is preserved (1.356917ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'ef97c37b7a2a41b32663b9812e70872b0c2c854f'
+  - '39feab9ae93ca797ed0ad535290b8ad079ca1810'
+  
+      at TestContext.<anonymous> (<repository>/tests/family-health77-integrity.cjs:16:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.start (node:internal/test_runner/test:1257:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'ef97c37b7a2a41b32663b9812e70872b0c2c854f',
+    expected: '39feab9ae93ca797ed0ad535290b8ad079ca1810',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/family-health77-integrity.cjs:29:1
+✖ other family sections and footer are unchanged (0.489166ms)
+  AssertionError [ERR_ASSERTION]: family-values
+      at TestContext.<anonymous> (<repository>/tests/family-health77-integrity.cjs:32:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19)
+      at Test.run (node:internal/test_runner/test:1462:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/family-health77-integrity.cjs:42:1
+✖ approved assets, markup and code match the checked package (2.545166ms)
+  AssertionError [ERR_ASSERTION]: families.html
+  + actual - expected
+  
+  + '308ef7a1bf626efc5cb0f3b979e8c71d6086069a7c09b52cc456e44355bb0881'
+  - 'd91cbfa05190eba941fce6fe6101c326c26cf92e7f96c9c5c0f450265f71a8a5'
+  
+      at TestContext.<anonymous> (<repository>/tests/family-health77-integrity.cjs:43:73)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19)
+      at Test.run (node:internal/test_runner/test:1462:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: '308ef7a1bf626efc5cb0f3b979e8c71d6086069a7c09b52cc456e44355bb0881',
+    expected: 'd91cbfa05190eba941fce6fe6101c326c26cf92e7f96c9c5c0f450265f71a8a5',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/family-health77-integrity.cjs:45:1
+✖ protected baseline files are untouched when present (0.346417ms)
+  AssertionError [ERR_ASSERTION]: index.html
+  + actual - expected
+  
+  + '6aa704bba490124d18dbcf55e92c58feeabde486'
+  - 'bd9d22fb161a3d1f71f54326606900983d9ed0a2'
+  
+      at TestContext.<anonymous> (<repository>/tests/family-health77-integrity.cjs:47:49)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19)
+      at Test.run (node:internal/test_runner/test:1462:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: '6aa704bba490124d18dbcf55e92c58feeabde486',
+    expected: 'bd9d22fb161a3d1f71f54326606900983d9ed0a2',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/family-health78-integrity.cjs:13:1
+✖ only the authorized card section and CSS include changed (7.285625ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + '220e387f0da94cd86a02f484ef143df72136af6166d19c25511bab42f0f0cf10'
+  - '1a7dfc5a96036785939d373630a70b918ba3af5ee555184a24e80572a818fc90'
+  
+      at TestContext.<anonymous> (<repository>/tests/family-health78-integrity.cjs:15:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.start (node:internal/test_runner/test:1257:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '220e387f0da94cd86a02f484ef143df72136af6166d19c25511bab42f0f0cf10',
+    expected: '1a7dfc5a96036785939d373630a70b918ba3af5ee555184a24e80572a818fc90',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/family-health78-integrity.cjs:34:1
+✖ approved build artwork and files match validated output (1.099291ms)
+  AssertionError [ERR_ASSERTION]: families.html
+  + actual - expected
+  
+  + '308ef7a1bf626efc5cb0f3b979e8c71d6086069a7c09b52cc456e44355bb0881'
+  - '288afa6e82b3321b8e41c828c7e13165002e4ce03f6a60bc30b988fdec740136'
+  
+      at TestContext.<anonymous> (<repository>/tests/family-health78-integrity.cjs:35:72)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19)
+      at Test.run (node:internal/test_runner/test:1462:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: '308ef7a1bf626efc5cb0f3b979e8c71d6086069a7c09b52cc456e44355bb0881',
+    expected: '288afa6e82b3321b8e41c828c7e13165002e4ce03f6a60bc30b988fdec740136',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/family-health78-integrity.cjs:37:1
+✖ existing shared resources remain unchanged when present (0.194459ms)
+  AssertionError [ERR_ASSERTION]: js/app.js
+  + actual - expected
+  
+  + 'a008a980f97ad50ae50b40901aaf9fa97d4f944f2db0fb1779f984ad68d68b2d'
+  - '21b15805e5cb735950a63d083019d26f568e199acca4262eef4af725f1ddcc78'
+  
+      at TestContext.<anonymous> (<repository>/tests/family-health78-integrity.cjs:39:50)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19)
+      at Test.run (node:internal/test_runner/test:1462:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'a008a980f97ad50ae50b40901aaf9fa97d4f944f2db0fb1779f984ad68d68b2d',
+    expected: '21b15805e5cb735950a63d083019d26f568e199acca4262eef4af725f1ddcc78',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/family-health79-integrity.cjs:54:1
+✖ all packaged runtime files have the expected hashes (1.748167ms)
+  AssertionError [ERR_ASSERTION]: js/family-health79.js
+  + actual - expected
+  
+  + '81487b2bde2d5ff193cf110d23fe1180a486f8af5fc87934ac616117620b2782'
+  - 'f733db39a1fdeb1caf387df49a288b9ed196035052bb01ef3588fc7fe260e21b'
+  
+      at TestContext.<anonymous> (<repository>/tests/family-health79-integrity.cjs:55:73)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19)
+      at Test.run (node:internal/test_runner/test:1462:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: '81487b2bde2d5ff193cf110d23fe1180a486f8af5fc87934ac616117620b2782',
+    expected: 'f733db39a1fdeb1caf387df49a288b9ed196035052bb01ef3588fc7fe260e21b',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/family-health79-integrity.cjs:59:1
+✖ shared resources are unchanged when checked in the installed site (0.442875ms)
+  AssertionError [ERR_ASSERTION]: css/styles.css
+  + actual - expected
+  
+  + 'e5b39dc6ba188ba7161c93502b4932fb0929211a92d3ef3744fdb4ea0ee6c901'
+  - 'b2703c7cd8bf1201cbdf61fc1bce816a314a0720abff6aa0cea7930ff9e51dc9'
+  
+      at TestContext.<anonymous> (<repository>/tests/family-health79-integrity.cjs:61:49)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19)
+      at Test.run (node:internal/test_runner/test:1462:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'e5b39dc6ba188ba7161c93502b4932fb0929211a92d3ef3744fdb4ea0ee6c901',
+    expected: 'b2703c7cd8bf1201cbdf61fc1bce816a314a0720abff6aa0cea7930ff9e51dc9',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/free-help80.cjs:17:1
+✖ existing footer and disclaimer are unchanged (1.034708ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'e062e9d0b1a2cc846b422b9d0c050a3b2336180829939c3b3b518c79a3f96417'
+  - '3ca6399c79147298b726e73c73872a770c5fb72c928efb669a1a6bc2de4a0b11'
+  
+      at TestContext.<anonymous> (<repository>/tests/free-help80.cjs:17:142)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19)
+      at Test.run (node:internal/test_runner/test:1462:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'e062e9d0b1a2cc846b422b9d0c050a3b2336180829939c3b3b518c79a3f96417',
+    expected: '3ca6399c79147298b726e73c73872a770c5fb72c928efb669a1a6bc2de4a0b11',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/webinar81-integrity.cjs:23:1
+✖ only the webinar section and its new stylesheet include changed (4.862ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(section)
+  
+      at TestContext.<anonymous> (<repository>/tests/webinar81-integrity.cjs:24:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.start (node:internal/test_runner/test:1257:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/webinar81-integrity.cjs:28:1
+✖ existing footer and disclaimer link are unchanged (0.698083ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'e062e9d0b1a2cc846b422b9d0c050a3b2336180829939c3b3b518c79a3f96417'
+  - '3ca6399c79147298b726e73c73872a770c5fb72c928efb669a1a6bc2de4a0b11'
+  
+      at TestContext.<anonymous> (<repository>/tests/webinar81-integrity.cjs:30:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19)
+      at Test.run (node:internal/test_runner/test:1462:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'e062e9d0b1a2cc846b422b9d0c050a3b2336180829939c3b3b518c79a3f96417',
+    expected: '3ca6399c79147298b726e73c73872a770c5fb72c928efb669a1a6bc2de4a0b11',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/webinar81-integrity.cjs:32:1
+✖ assessment popup and script include are unchanged (0.204834ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + '5def927e359557f01865ec16aa549c2f9131f1713a019da4d541276fd1228e4b'
+  - '2bf84c4bdbe113fa3d13a483e361d66571016b6d60adb9a2b3ab251d10af8d78'
+  
+      at TestContext.<anonymous> (<repository>/tests/webinar81-integrity.cjs:34:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19)
+      at Test.run (node:internal/test_runner/test:1462:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '5def927e359557f01865ec16aa549c2f9131f1713a019da4d541276fd1228e4b',
+    expected: '2bf84c4bdbe113fa3d13a483e361d66571016b6d60adb9a2b3ab251d10af8d78',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/webinar81-integrity.cjs:36:1
+✖ all assessment buttons preserve their destinations and markup (0.192959ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'd47e40745c3dda576324cfa5489001eb3deb1d031327ad545bef47cd28103bd7'
+  - 'eaaffd1c58164f5ec255d844aef2d108b877e32ee49f4267bc03eb4aa7543a68'
+  
+      at TestContext.<anonymous> (<repository>/tests/webinar81-integrity.cjs:39:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19)
+      at Test.run (node:internal/test_runner/test:1462:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'd47e40745c3dda576324cfa5489001eb3deb1d031327ad545bef47cd28103bd7',
+    expected: 'eaaffd1c58164f5ec255d844aef2d108b877e32ee49f4267bc03eb4aa7543a68',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/webinar81-integrity.cjs:41:1
+✖ shared stylesheet, including disclaimer rules, is unchanged (0.4265ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'e5b39dc6ba188ba7161c93502b4932fb0929211a92d3ef3744fdb4ea0ee6c901'
+  - 'b2703c7cd8bf1201cbdf61fc1bce816a314a0720abff6aa0cea7930ff9e51dc9'
+  
+      at TestContext.<anonymous> (<repository>/tests/webinar81-integrity.cjs:42:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19)
+      at Test.run (node:internal/test_runner/test:1462:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'e5b39dc6ba188ba7161c93502b4932fb0929211a92d3ef3744fdb4ea0ee6c901',
+    expected: 'b2703c7cd8bf1201cbdf61fc1bce816a314a0720abff6aa0cea7930ff9e51dc9',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/webinar81-integrity.cjs:44:1
+✖ shared JavaScript is unchanged (0.154042ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'a008a980f97ad50ae50b40901aaf9fa97d4f944f2db0fb1779f984ad68d68b2d'
+  - '21b15805e5cb735950a63d083019d26f568e199acca4262eef4af725f1ddcc78'
+  
+      at TestContext.<anonymous> (<repository>/tests/webinar81-integrity.cjs:45:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19)
+      at Test.run (node:internal/test_runner/test:1462:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'a008a980f97ad50ae50b40901aaf9fa97d4f944f2db0fb1779f984ad68d68b2d',
+    expected: '21b15805e5cb735950a63d083019d26f568e199acca4262eef4af725f1ddcc78',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/webinar81-integrity.cjs:47:1
+✖ webinar form fields, validation and Netlify configuration are preserved (0.077417ms)
+  TypeError: Cannot read properties of undefined (reading 'match')
+      at TestContext.<anonymous> (<repository>/tests/webinar81-integrity.cjs:48:21)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19)
+      at Test.run (node:internal/test_runner/test:1462:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+
+test at tests/webinar81-integrity.cjs:53:1
+✖ the three existing benefits retain their original wording and icons (0.057542ms)
+  TypeError: Cannot read properties of undefined (reading 'match')
+      at TestContext.<anonymous> (<repository>/tests/webinar81-integrity.cjs:54:25)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19)
+      at Test.run (node:internal/test_runner/test:1462:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+
+test at tests/webinar81-integrity.cjs:57:1
+✖ benefits and signup are both in the new conversion row (0.08375ms)
+  TypeError: Cannot read properties of undefined (reading 'indexOf')
+      at TestContext.<anonymous> (<repository>/tests/webinar81-integrity.cjs:58:22)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19)
+      at Test.run (node:internal/test_runner/test:1462:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+
+test at tests/webinar81-integrity.cjs:66:1
+✖ new layout styles are scoped only to this webinar (0.296042ms)
+  AssertionError [ERR_ASSERTION]: #founders-webinar.webinar85
+      at TestContext.<anonymous> (<repository>/tests/webinar81-integrity.cjs:72:11)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19)
+      at Test.run (node:internal/test_runner/test:1462:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

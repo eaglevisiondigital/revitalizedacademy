@@ -1,0 +1,1570 @@
+{
+  "observed_at_utc": "2026-09-26T20:56:31.589025+00:00",
+  "scope": "Read-only external inspection; local documentation only. No personal records, credentials or raw conversations included.",
+  "repositories": {
+    "revitalizedacademy": {
+      "head": "df8aba33cd8bac16e54aded92a4c99439f74f1d5",
+      "origin": "https://github.com/eaglevisiondigital/revitalizedacademy.git",
+      "shallow": "true",
+      "branches": [
+        "origin df8aba33cd8bac16e54aded92a4c99439f74f1d5 2026-09-25 22:13:23 -0500",
+        "origin/about-hero-hotfix 2edb2aa7b662d6403412e65321b9096390bedb02 2026-09-10 21:12:22 -0500",
+        "origin/about-hero-hotfix-2 2edb2aa7b662d6403412e65321b9096390bedb02 2026-09-10 21:12:22 -0500",
+        "origin/about-hero-hotfix-3 2edb2aa7b662d6403412e65321b9096390bedb02 2026-09-10 21:12:22 -0500",
+        "origin/about-hero-hotfix-4 2edb2aa7b662d6403412e65321b9096390bedb02 2026-09-10 21:12:22 -0500",
+        "origin/build-62-vitality-assessment 80e4af2d144ef0e1e16b409c00fcfccb9e56118a 2026-09-04 16:03:18 -0500",
+        "origin/build-63-vitality-assessment 80ced5bcd6cf27008ee751b9040850f4898aad93 2026-09-04 16:04:17 -0500",
+        "origin/build-64-vitality-assessment 71b449106cdf001b312a5e18d3d5ed173eb0248c 2026-09-04 17:40:29 -0500",
+        "origin/build-67-hidden-branch-validation 2db1b418cb35392349ec924abff13207d2788ff4 2026-09-04 22:18:26 -0500",
+        "origin/build-68-assessment-for 9d82d4cde853671c859cca12a4a4f7211c5838ef 2026-09-04 22:35:30 -0500",
+        "origin/build-71-restore-assessment 3ed372a117c8d90a4f3244888944f05277a48348 2026-09-05 07:46:58 -0500",
+        "origin/build-72-child-assessment 162c29986aefdfef49e4dd3402856d67583bfe98 2026-09-05 08:26:59 -0500",
+        "origin/build-74-assessment-notes 4a161033abd244c2cab538f2e784a3cd9f283c81 2026-09-08 15:31:56 -0500",
+        "origin/build-75-child-gender da28c8b7b2ad157a30adbf855090a090239cbae5 2026-09-08 15:38:15 -0500",
+        "origin/build84-enrollment-premium ca01857adcb6763b99005c0e5490da69d291ca63 2026-09-09 17:47:37 -0500",
+        "origin/coaching99-brand-match 9c350cde407773f1a9169d64f10c4a9053de1a57 2026-09-15 07:37:44 -0500",
+        "origin/feature/enrollment-application-20260909 ec5a6086d85ba4a5a8ae2aabf0bc520197a9a09d 2026-09-09 14:47:05 -0500",
+        "origin/feature/enrollment-backend-bridge c4a599b1975b5de761a2aab8ee02130ba428d2ce 2026-09-17 10:19:06 -0500",
+        "origin/feature/programs-enrollment-step1-20260909 67c2b3f1b9bf18f34ce51b0687fceaa0ebb99054 2026-09-09 15:34:06 -0500",
+        "origin/feature/programs-enrollment-step1-20260909-copy da037efe4a7382db4767def9cce67582b617cc05 2026-09-09 13:33:38 -0500",
+        "origin/fix/founders110-original-portrait a6a79d7a1eb47b79249e8bb0f3f428573915b6bb 2026-09-17 12:14:21 -0500",
+        "origin/fix/journey-banner-copy-20260909 aeb33ad256080637d1291682a123e898f27a4567 2026-09-09 18:32:59 +0000",
+        "origin/fix/longevity-matrix-copy-20260909 9d915fd578d791441776aa4235d5f3fc0dddffca 2026-09-09 17:13:49 +0000",
+        "origin/fix/matrix-popup-descriptions-20260909 4b118821fa27366efd171597a50df21b6d07905a 2026-09-09 18:18:48 +0000",
+        "origin/founders103-original-portrait fb8d7cb8e66158fa954f18a447d1c34df0648f06 2026-09-15 16:53:57 -0500",
+        "origin/header101-responsive b5d6dedc4bcb0490a9f4580fa8037bcb1d68ecf0 2026-09-15 08:44:28 -0500",
+        "origin/hero102-approved-portrait dfec1d259bd44e68544fd8b3f31af8e5d4822d3b 2026-09-15 15:38:19 -0500",
+        "origin/main df8aba33cd8bac16e54aded92a4c99439f74f1d5 2026-09-25 22:13:23 -0500",
+        "origin/noop-temp-do-not-use 2edb2aa7b662d6403412e65321b9096390bedb02 2026-09-10 21:12:22 -0500",
+        "origin/temp-restore-check f65a74bcdc77b5eed3e0088f7a34989efce14dab 2026-09-10 21:22:51 -0500",
+        "origin/work/founders110-original-portrait f92645786d04412cdbb222f480c35c1f096e3f14 2026-09-17 12:01:47 -0500"
+      ],
+      "recent_commits": [
+        "df8aba33cd8bac16e54aded92a4c99439f74f1d5 2026-09-25T22:13:23-05:00 Build 192: add health connection consent and wearable data center",
+        "0a9435b9c93f1ea618644a0e727204e86fa1ed50 2026-09-25T22:02:25-05:00 Build 191: add goal and habit lifecycle management",
+        "bdcb838ad5a809abfbce2043cdf799e468ec1b5a 2026-09-25T21:41:21-05:00 Build 190: add self-service member goals and habits",
+        "4f921904d3b0565e7a55ab868dc124c0fc0f3953 2026-09-25T21:37:12-05:00 Build 189: consolidate member bootstrap data loading",
+        "c4bd8c179bfe527cbd7bb4755095a792de1c95d5 2026-09-25T21:32:41-05:00 Build 188: expand member membership journey family and Ask insights",
+        "5f9a8b859537bd5a21a5410c8f3f6672c1663084 2026-09-25T21:19:27-05:00 Build 187: add member attention program hub and session prep",
+        "315652fb30b716d284d81053a0374c3c3daa0d1a 2026-09-25T21:04:16-05:00 Build 186: restore member modules and add billing notification controls",
+        "7cc30865b7b40ec75a32a5d186bec398d95bedb7 2026-09-25T18:53:49-05:00 Build 185: expand member app home progress coaching and learning"
+      ],
+      "documentation": [
+        "BUILD72-CHILD-ASSESSMENT.md",
+        "README.md",
+        "BUILD71-ASSESSMENT-RESTORE.md",
+        "BUILD97-PORTAL-LAYER1.md",
+        "BUILD74-ASSESSMENT-NOTES.md",
+        "README-HOMEPAGE-HERO-DESKTOP-BLEND-FIX-2026-08-27.md",
+        "site-build/README.md"
+      ],
+      "supabase_reference_files": [
+        "admin.html",
+        "account.html",
+        "BUILD97-PORTAL-LAYER1.md",
+        "portal/index.html",
+        "portal/password-reset.html",
+        "portal/portal.js",
+        "portal/portal-messaging.js",
+        "portal/portal-challenges.js",
+        "js/revitalized-data.js",
+        "js/account104.js",
+        "js/vitality-next106.js",
+        "js/health-profile107-bridge.js",
+        "js/admin104.js",
+        "member/index.html",
+        "member/member110.js",
+        "member/activate/activate112.js",
+        "journey/journey107.js",
+        "v/video-message.js"
+      ]
+    },
+    "revitalizedroadmap": {
+      "head": "212214307d38369f92d8bf545c105f46b24ecc93",
+      "origin": "https://github.com/eaglevisiondigital/revitalizedroadmap.git",
+      "shallow": "false",
+      "branches": [
+        "origin 212214307d38369f92d8bf545c105f46b24ecc93 2026-08-05 16:56:14 -0500",
+        "origin/main 212214307d38369f92d8bf545c105f46b24ecc93 2026-08-05 16:56:14 -0500"
+      ],
+      "recent_commits": [
+        "212214307d38369f92d8bf545c105f46b24ecc93 2026-08-05T16:56:14-05:00 Add files via upload",
+        "aa8a34dc60ff8858366d696f3c86d2210cb74379 2026-08-05T16:29:14-05:00 Add files via upload",
+        "374e4a8a56db3d2b23d1b5b59d083542b2bf3f65 2026-08-05T11:07:06-05:00 Add files via upload",
+        "996ac30ce01936e69c0e97159dff54dce40863b5 2026-08-05T10:38:03-05:00 Add files via upload"
+      ],
+      "documentation": [
+        "README.md"
+      ],
+      "supabase_reference_files": []
+    },
+    "revitalized-digital-blueprint": {
+      "head": "0eaaa11ba42e6045bfaa5f4a18fb3b0d29f4f810",
+      "origin": "https://github.com/eaglevisiondigital/revitalized-digital-blueprint.git",
+      "shallow": "false",
+      "branches": [
+        "origin 0eaaa11ba42e6045bfaa5f4a18fb3b0d29f4f810 2026-08-19 15:39:01 -0500",
+        "origin/main 0eaaa11ba42e6045bfaa5f4a18fb3b0d29f4f810 2026-08-19 15:39:01 -0500"
+      ],
+      "recent_commits": [
+        "0eaaa11ba42e6045bfaa5f4a18fb3b0d29f4f810 2026-08-19T15:39:01-05:00 Add files via upload",
+        "bf2953e6ed934549522414230bd35c4c39357d19 2026-07-28T22:43:00-05:00 Add files via upload",
+        "e4d5ea8debfac2c6512bf0a521ef2428669f5704 2026-07-28T01:47:05-05:00 Add files via upload",
+        "43a828bb82c10cfb89e636c1be8c29105b8001de 2026-07-28T01:31:20-05:00 Build 3.1 \u2014 Add ReFuel E-Commerce Experience",
+        "85d9c325129633a5aa96fe994d292de315e93e55 2026-07-28T01:23:05-05:00 Add files via upload",
+        "b200004bd196df1630d2df46e57352cccc4fc018 2026-07-28T01:20:30-05:00 Build 4 \u2014 Final Executive Presentation",
+        "ac15f810f3c15f12ac2c91d46bb99ade7926d719 2026-07-28T01:12:11-05:00 Build 3 \u2014 Business Ecosystem & Executive Strategy",
+        "2d51642cc0c27442ee139ec3655f4c5594ee6395 2026-07-28T00:54:10-05:00 Build 2 \u2014 Member Experience"
+      ],
+      "documentation": [
+        "README.md"
+      ],
+      "supabase_reference_files": []
+    }
+  },
+  "history_coverage": {
+    "Webinar Launch System Design": {
+      "thread_id": "6a748eaa-2c04-83ea-a8f2-0ab7271c8f7a",
+      "oldest_reached": true,
+      "turn_count": 64
+    },
+    "Backend Game Plan": {
+      "thread_id": "6ab547fc-ed48-83ea-a317-3fe668d7d544",
+      "oldest_reached": true,
+      "turn_count": 55
+    },
+    "Resume backend buildout": {
+      "thread_id": "6ab739b0-3488-83ea-a3e5-fa8358d82c21",
+      "oldest_reached": true,
+      "turn_count": 17
+    },
+    "BACKEND BUILDOUT CONT 2 RVA": {
+      "thread_id": "6ab5dacb-3268-83ea-89d0-5079a66cef49",
+      "oldest_reached": true,
+      "turn_count": 81
+    },
+    "Locate Academy Mockup": {
+      "thread_id": "6ab72fe8-68c8-83ea-8407-76ce915f7aa5",
+      "oldest_reached": true,
+      "turn_count": 2
+    }
+  },
+  "supabase": {
+    "project_ref": "voalfpxiyznnqfcqcymd",
+    "public_table_count": 180,
+    "public_rls_disabled": [],
+    "public_views_count": 204,
+    "non_security_invoker_views": [],
+    "public_private_function_count": 223,
+    "public_storage_policy_count": 426,
+    "public_trigger_count": 113,
+    "migration_summary": {
+      "count": 185,
+      "latest": "20260926051441"
+    },
+    "migrations": [
+      {
+        "version": "20260923183431",
+        "name": "revitalized_member_foundation"
+      },
+      {
+        "version": "20260923183656",
+        "name": "harden_revitalized_member_foundation"
+      },
+      {
+        "version": "20260923183741",
+        "name": "add_resumable_workflow_helpers"
+      },
+      {
+        "version": "20260923183803",
+        "name": "capture_current_form_fields"
+      },
+      {
+        "version": "20260923183858",
+        "name": "use_rls_for_authenticated_workflow_helpers"
+      },
+      {
+        "version": "20260923184804",
+        "name": "add_staff_admin_backend"
+      },
+      {
+        "version": "20260923185137",
+        "name": "consolidate_staff_member_rls"
+      },
+      {
+        "version": "20260923190944",
+        "name": "upgrade_revit_backend_crm_features_v2"
+      },
+      {
+        "version": "20260923192732",
+        "name": "add_executive_dashboard_views"
+      },
+      {
+        "version": "20260923214008",
+        "name": "add_refuel_launch_interest"
+      },
+      {
+        "version": "20260923214235",
+        "name": "add_refuel_to_admin_views"
+      },
+      {
+        "version": "20260924171850",
+        "name": "portal_contact_operations_support"
+      },
+      {
+        "version": "20260924172254",
+        "name": "replace_staff_directory_rpc_with_rls_table"
+      },
+      {
+        "version": "20260924183014",
+        "name": "revitalized_messaging_video_foundation"
+      },
+      {
+        "version": "20260924183721",
+        "name": "harden_messaging_indexes_and_consent_audit"
+      },
+      {
+        "version": "20260924192928",
+        "name": "revitalized_journey_engine_v1"
+      },
+      {
+        "version": "20260924193031",
+        "name": "journey_engine_event_dedupe_and_completion_fix"
+      },
+      {
+        "version": "20260924193101",
+        "name": "make_longevity_vsl_tracked_journey_step"
+      },
+      {
+        "version": "20260924193321",
+        "name": "fix_journey_event_dedupe_constraint"
+      },
+      {
+        "version": "20260924193333",
+        "name": "backfill_existing_contacts_into_journey_engine_v2"
+      },
+      {
+        "version": "20260924193420",
+        "name": "tune_journey_temperature_and_assessment_followup"
+      },
+      {
+        "version": "20260924193911",
+        "name": "fix_journey_step_advance_trigger_columns"
+      },
+      {
+        "version": "20260924194304",
+        "name": "tag_longevity_matrix_view"
+      },
+      {
+        "version": "20260924194359",
+        "name": "journey_semantic_events_and_coach_tasks"
+      },
+      {
+        "version": "20260924194500",
+        "name": "journey_engine_covering_indexes"
+      },
+      {
+        "version": "20260924195402",
+        "name": "client_journey_access_scheduling_payment_foundation"
+      },
+      {
+        "version": "20260924195647",
+        "name": "journey_action_center_and_templates"
+      },
+      {
+        "version": "20260924195900",
+        "name": "connect_automation_tasks_to_journey_actions"
+      },
+      {
+        "version": "20260924195937",
+        "name": "vitality_completion_action_templates"
+      },
+      {
+        "version": "20260924201330",
+        "name": "secure_onboarding_health_profile_workflow"
+      },
+      {
+        "version": "20260924201715",
+        "name": "appointment_task_cleanup_and_direct_access_readiness"
+      },
+      {
+        "version": "20260924202005",
+        "name": "appointment_confirmation_templates"
+      },
+      {
+        "version": "20260924202248",
+        "name": "vitality_report_review_and_delivery_foundation"
+      },
+      {
+        "version": "20260924202434",
+        "name": "advance_delivery_steps_from_completed_actions"
+      },
+      {
+        "version": "20260924204244",
+        "name": "coach_work_queue_and_appointment_reminders"
+      },
+      {
+        "version": "20260924204443",
+        "name": "separate_communication_tasks_from_coach_tasks"
+      },
+      {
+        "version": "20260924204547",
+        "name": "journey_exception_handling"
+      },
+      {
+        "version": "20260924204628",
+        "name": "fix_journey_exception_event_and_assignment"
+      },
+      {
+        "version": "20260924205011",
+        "name": "revitalized_permanent_client_foundation"
+      },
+      {
+        "version": "20260924205104",
+        "name": "consolidate_member_foundation_rls"
+      },
+      {
+        "version": "20260924205203",
+        "name": "auto_activate_direct_membership_and_member_journey_rls"
+      },
+      {
+        "version": "20260924205740",
+        "name": "staff_household_management_rpc"
+      },
+      {
+        "version": "20260924210243",
+        "name": "revitalized_coaching_progress_foundation"
+      },
+      {
+        "version": "20260924210330",
+        "name": "connect_checkins_to_progress_and_coach_queue"
+      },
+      {
+        "version": "20260924210342",
+        "name": "remove_public_assignment_security_definer"
+      },
+      {
+        "version": "20260924210432",
+        "name": "member_dashboard_checkin_habit_helpers"
+      },
+      {
+        "version": "20260924210933",
+        "name": "coaching_work_categories_and_upcoming_sessions_v2"
+      },
+      {
+        "version": "20260924211021",
+        "name": "sync_primary_coach_operational_ownership"
+      },
+      {
+        "version": "20260924211044",
+        "name": "coaching_session_task_cleanup_and_activity"
+      },
+      {
+        "version": "20260924211718",
+        "name": "revitalized_nutrition_fitness_foundation"
+      },
+      {
+        "version": "20260924211807",
+        "name": "progress_metric_covering_index"
+      },
+      {
+        "version": "20260924221848",
+        "name": "operationalize_nutrition_fitness_assignments"
+      },
+      {
+        "version": "20260924223410",
+        "name": "manual_override_audit_and_permissions"
+      },
+      {
+        "version": "20260924224002",
+        "name": "restrict_financial_activation_writes_to_owner_admin"
+      },
+      {
+        "version": "20260924224104",
+        "name": "propagate_manual_statuses_through_journey_engine"
+      },
+      {
+        "version": "20260924224410",
+        "name": "index_payment_records_journey"
+      },
+      {
+        "version": "20260924224523",
+        "name": "revitalized_learning_resources_foundation"
+      },
+      {
+        "version": "20260924224656",
+        "name": "sync_learning_access_and_staff_summary"
+      },
+      {
+        "version": "20260924224925",
+        "name": "revitalized_member_messaging_foundation"
+      },
+      {
+        "version": "20260924225050",
+        "name": "index_learning_and_message_foreign_keys"
+      },
+      {
+        "version": "20260924230012",
+        "name": "staff_inbox_family_conversations_and_notification_preferences"
+      },
+      {
+        "version": "20260924230157",
+        "name": "secure_member_message_attachments"
+      },
+      {
+        "version": "20260924230456",
+        "name": "coach_companion_guardrails_and_knowledge"
+      },
+      {
+        "version": "20260924230520",
+        "name": "coach_companion_service_rpc"
+      },
+      {
+        "version": "20260924231110",
+        "name": "notification_delivery_outbox_and_companion_index"
+      },
+      {
+        "version": "20260924231310",
+        "name": "health_integrations_and_wearable_foundation"
+      },
+      {
+        "version": "20260924231524",
+        "name": "family_hub_challenges_foundation"
+      },
+      {
+        "version": "20260924231654",
+        "name": "challenge_staff_enrollment_rpc"
+      },
+      {
+        "version": "20260924231820",
+        "name": "fix_challenge_summary_point_math"
+      },
+      {
+        "version": "20260924231922",
+        "name": "owner_analytics_and_recent_indexes"
+      },
+      {
+        "version": "20260924232321",
+        "name": "community_and_family_hub_foundation"
+      },
+      {
+        "version": "20260924232505",
+        "name": "community_staff_moderation_and_space_sync"
+      },
+      {
+        "version": "20260924232827",
+        "name": "refuel_program_readiness_foundation_v2"
+      },
+      {
+        "version": "20260924232859",
+        "name": "refuel_operational_rpcs"
+      },
+      {
+        "version": "20260925003014",
+        "name": "name_existing_revitalized_founder_contacts"
+      },
+      {
+        "version": "20260925004052",
+        "name": "staff_access_roles_permissions_and_audit"
+      },
+      {
+        "version": "20260925004115",
+        "name": "staff_directory_visibility_and_management_policies"
+      },
+      {
+        "version": "20260925004418",
+        "name": "financial_role_compatibility_with_existing_override_engine"
+      },
+      {
+        "version": "20260925004458",
+        "name": "enforce_staff_permissions_on_sensitive_modules"
+      },
+      {
+        "version": "20260925004711",
+        "name": "financial_role_staff_directory_compatibility"
+      },
+      {
+        "version": "20260925004745",
+        "name": "staff_manager_profile_visibility"
+      },
+      {
+        "version": "20260925004802",
+        "name": "referral_ambassador_core_tables"
+      },
+      {
+        "version": "20260925004917",
+        "name": "referral_permissions_rls_and_lifecycle_v2"
+      },
+      {
+        "version": "20260925005004",
+        "name": "referral_backfill_and_reward_operations"
+      },
+      {
+        "version": "20260925005250",
+        "name": "staff_permission_lint_cleanup"
+      },
+      {
+        "version": "20260925005343",
+        "name": "team_workload_summary"
+      },
+      {
+        "version": "20260925005514",
+        "name": "enforce_crm_permissions_on_legacy_core"
+      },
+      {
+        "version": "20260925005550",
+        "name": "active_staff_directory_and_session_enforcement"
+      },
+      {
+        "version": "20260925005942",
+        "name": "people_directory_support"
+      },
+      {
+        "version": "20260925010211",
+        "name": "people_directory_bulk_operations"
+      },
+      {
+        "version": "20260925010421",
+        "name": "people_directory_include_all_person_types_v2"
+      },
+      {
+        "version": "20260925010455",
+        "name": "people_saved_views"
+      },
+      {
+        "version": "20260925010627",
+        "name": "team_calendar_and_schedule_operations"
+      },
+      {
+        "version": "20260925010937",
+        "name": "secure_client_document_vault"
+      },
+      {
+        "version": "20260925011202",
+        "name": "automatic_appointment_reminders"
+      },
+      {
+        "version": "20260925011320",
+        "name": "provider_neutral_recurring_billing"
+      },
+      {
+        "version": "20260925011611",
+        "name": "billing_recovery_workflow_and_preferences"
+      },
+      {
+        "version": "20260925011817",
+        "name": "billing_policy_and_index_cleanup"
+      },
+      {
+        "version": "20260925011928",
+        "name": "versioned_client_agreements"
+      },
+      {
+        "version": "20260925012105",
+        "name": "agreement_operations_and_backfill"
+      },
+      {
+        "version": "20260925012659",
+        "name": "coaching_entitlement_usage_and_staff_availability"
+      },
+      {
+        "version": "20260925013009",
+        "name": "schedule_capacity_and_availability_issues"
+      },
+      {
+        "version": "20260925013241",
+        "name": "people_import_export_permissions_and_audit"
+      },
+      {
+        "version": "20260925013531",
+        "name": "personalized_client_contracts_and_staff_nda"
+      },
+      {
+        "version": "20260925013625",
+        "name": "seed_revitalized_client_contract_and_coach_nda"
+      },
+      {
+        "version": "20260925013653",
+        "name": "personalized_agreement_views_and_signature_counts"
+      },
+      {
+        "version": "20260925014015",
+        "name": "staff_directory_onboarding_status"
+      },
+      {
+        "version": "20260925014302",
+        "name": "payment_agreement_contract_action"
+      },
+      {
+        "version": "20260925014516",
+        "name": "staff_nda_company_approval_and_capacity_policy_cleanup"
+      },
+      {
+        "version": "20260925014724",
+        "name": "staff_people_data_scope_v2"
+      },
+      {
+        "version": "20260925015011",
+        "name": "enforce_people_scope_across_sensitive_modules"
+      },
+      {
+        "version": "20260925021614",
+        "name": "stable_self_staff_access_lookup"
+      },
+      {
+        "version": "20260925021820",
+        "name": "backfill_existing_active_coach_ndas"
+      },
+      {
+        "version": "20260925022743",
+        "name": "grant_rls_permission_helper_execution"
+      },
+      {
+        "version": "20260925023406",
+        "name": "fix_recursive_member_access_policies"
+      },
+      {
+        "version": "20260925033521",
+        "name": "tighten_program_content_management_permissions"
+      },
+      {
+        "version": "20260925033922",
+        "name": "tighten_program_access_management_permissions"
+      },
+      {
+        "version": "20260925035153",
+        "name": "sync_program_entitlements_to_memberships"
+      },
+      {
+        "version": "20260925035228",
+        "name": "reconcile_program_course_access"
+      },
+      {
+        "version": "20260925035503",
+        "name": "secure_program_resource_access"
+      },
+      {
+        "version": "20260925040926",
+        "name": "harden_get_my_staff_access_rpc"
+      },
+      {
+        "version": "20260925041008",
+        "name": "add_member_program_overview_view"
+      },
+      {
+        "version": "20260925041502",
+        "name": "add_member_app_home_summary"
+      },
+      {
+        "version": "20260925041531",
+        "name": "add_member_app_feature_access"
+      },
+      {
+        "version": "20260925041718",
+        "name": "add_family_and_ambassador_app_views"
+      },
+      {
+        "version": "20260925041909",
+        "name": "add_member_course_and_activation_notifications"
+      },
+      {
+        "version": "20260925043128",
+        "name": "add_member_app_bootstrap_and_appointment_notifications"
+      },
+      {
+        "version": "20260925043220",
+        "name": "add_resource_and_challenge_notifications"
+      },
+      {
+        "version": "20260925043719",
+        "name": "add_member_coaching_sessions_and_financial_notifications"
+      },
+      {
+        "version": "20260925043750",
+        "name": "extend_member_app_bootstrap_v2"
+      },
+      {
+        "version": "20260925044032",
+        "name": "improve_notification_routing_and_quiet_hours"
+      },
+      {
+        "version": "20260925044146",
+        "name": "add_member_billing_history_and_notification_settings_rpc"
+      },
+      {
+        "version": "20260925044519",
+        "name": "add_member_daily_action_and_progress_rpcs"
+      },
+      {
+        "version": "20260925044652",
+        "name": "add_member_course_progress_and_completion_notifications"
+      },
+      {
+        "version": "20260925044811",
+        "name": "add_member_weekly_summary_and_achievement_notifications_v2"
+      },
+      {
+        "version": "20260925044826",
+        "name": "extend_member_app_bootstrap_with_actions_and_progress"
+      },
+      {
+        "version": "20260925110957",
+        "name": "add_program_challenge_access_and_member_action_workflows"
+      },
+      {
+        "version": "20260925111029",
+        "name": "add_member_coaching_hub_and_assignment_summary"
+      },
+      {
+        "version": "20260925111044",
+        "name": "extend_member_bootstrap_with_coaching_hub"
+      },
+      {
+        "version": "20260925111233",
+        "name": "add_member_coaching_request_workflow"
+      },
+      {
+        "version": "20260925111249",
+        "name": "extend_bootstrap_with_coaching_requests"
+      },
+      {
+        "version": "20260925115223",
+        "name": "expand_member_ambassador_center_v2"
+      },
+      {
+        "version": "20260925115251",
+        "name": "route_referral_notifications_and_extend_app_access"
+      },
+      {
+        "version": "20260925115313",
+        "name": "extend_bootstrap_with_ambassador_activity"
+      },
+      {
+        "version": "20260925115455",
+        "name": "add_family_hub_request_workflow"
+      },
+      {
+        "version": "20260925115526",
+        "name": "notify_and_surface_family_requests"
+      },
+      {
+        "version": "20260925122652",
+        "name": "secure_program_entitlement_management"
+      },
+      {
+        "version": "20260925122939",
+        "name": "tighten_course_builder_permissions"
+      },
+      {
+        "version": "20260925124958",
+        "name": "apply_family_requests_on_completion"
+      },
+      {
+        "version": "20260925134707",
+        "name": "add_member_ask_revitalized_workflow"
+      },
+      {
+        "version": "20260925134815",
+        "name": "route_companion_notifications_and_add_summary"
+      },
+      {
+        "version": "20260925134941",
+        "name": "fallback_companion_questions_to_coach_when_knowledge_empty"
+      },
+      {
+        "version": "20260925143720",
+        "name": "add_staff_self_profile_updates"
+      },
+      {
+        "version": "20260925151316",
+        "name": "add_staff_phone_onboarding_support"
+      },
+      {
+        "version": "20260925171639",
+        "name": "complete_staff_invitation_after_password_setup"
+      },
+      {
+        "version": "20260925211016",
+        "name": "add_events_attendance_operations"
+      },
+      {
+        "version": "20260925211149",
+        "name": "revert_accidental_events_attendance_changes"
+      },
+      {
+        "version": "20260925234728",
+        "name": "add_member_self_profile_management"
+      },
+      {
+        "version": "20260926021801",
+        "name": "add_member_session_agenda_update"
+      },
+      {
+        "version": "20260926023618",
+        "name": "add_member_app_bootstrap_v2"
+      },
+      {
+        "version": "20260926031139",
+        "name": "health_integration_phase1_metric_consent_center_v2"
+      },
+      {
+        "version": "20260926031203",
+        "name": "health_integration_phase1_bulk_consent_and_snapshot"
+      },
+      {
+        "version": "20260926033033",
+        "name": "member_health_dashboard_trend_layer_v1"
+      },
+      {
+        "version": "20260926033138",
+        "name": "extend_member_app_bootstrap_with_health_dashboard_v3"
+      },
+      {
+        "version": "20260926033517",
+        "name": "harden_exposed_profile_helper_functions"
+      },
+      {
+        "version": "20260926033555",
+        "name": "private_progress_photo_vault_and_app_bootstrap_v4"
+      },
+      {
+        "version": "20260926033642",
+        "name": "versioned_wellness_scores_and_family_summary"
+      },
+      {
+        "version": "20260926034715",
+        "name": "achievements_goal_progress_and_descriptive_insights_v1"
+      },
+      {
+        "version": "20260926034821",
+        "name": "achievement_notifications_and_family_progress_dashboard_v2"
+      },
+      {
+        "version": "20260926034900",
+        "name": "daily_plan_consistency_and_streak_summary_v1"
+      },
+      {
+        "version": "20260926035311",
+        "name": "coaching_momentum_and_staff_attention_center_v1"
+      },
+      {
+        "version": "20260926035331",
+        "name": "coaching_attention_summary_views_v1"
+      },
+      {
+        "version": "20260926035602",
+        "name": "advisor_context_snapshots_and_knowledge_access_hardening_v1"
+      },
+      {
+        "version": "20260926035827",
+        "name": "advisor_source_governance_usage_and_provenance_v1"
+      },
+      {
+        "version": "20260926035907",
+        "name": "advisor_admin_operations_control_center_v1"
+      },
+      {
+        "version": "20260926040109",
+        "name": "advisor_knowledge_ingestion_and_approval_lifecycle_v1"
+      },
+      {
+        "version": "20260926040202",
+        "name": "advisor_member_feedback_and_quality_loop_v1"
+      },
+      {
+        "version": "20260926040254",
+        "name": "ai_advisor_member_personalization_consent_v2"
+      },
+      {
+        "version": "20260926040404",
+        "name": "member_family_unified_calendar_and_up_next_v1"
+      },
+      {
+        "version": "20260926042017",
+        "name": "member_weekly_progress_story_and_bootstrap_v15"
+      },
+      {
+        "version": "20260926042114",
+        "name": "member_next_best_actions_and_bootstrap_v16"
+      },
+      {
+        "version": "20260926051241",
+        "name": "mobile_device_registry_and_push_delivery_foundation_v1"
+      },
+      {
+        "version": "20260926051332",
+        "name": "mobile_runtime_config_and_push_index_v1"
+      },
+      {
+        "version": "20260926051417",
+        "name": "mobile_route_registry_and_notification_deep_links_v1"
+      },
+      {
+        "version": "20260926051441",
+        "name": "index_notification_route_rule_foreign_key"
+      }
+    ],
+    "bootstrap_views": [
+      "my_app_bootstrap",
+      "my_app_bootstrap_v10",
+      "my_app_bootstrap_v11",
+      "my_app_bootstrap_v12",
+      "my_app_bootstrap_v13",
+      "my_app_bootstrap_v14",
+      "my_app_bootstrap_v15",
+      "my_app_bootstrap_v16",
+      "my_app_bootstrap_v17",
+      "my_app_bootstrap_v18",
+      "my_app_bootstrap_v19",
+      "my_app_bootstrap_v2",
+      "my_app_bootstrap_v20",
+      "my_app_bootstrap_v21",
+      "my_app_bootstrap_v22",
+      "my_app_bootstrap_v23",
+      "my_app_bootstrap_v24",
+      "my_app_bootstrap_v25",
+      "my_app_bootstrap_v26",
+      "my_app_bootstrap_v27",
+      "my_app_bootstrap_v3",
+      "my_app_bootstrap_v4",
+      "my_app_bootstrap_v5",
+      "my_app_bootstrap_v6",
+      "my_app_bootstrap_v7",
+      "my_app_bootstrap_v8",
+      "my_app_bootstrap_v9"
+    ],
+    "branches": {
+      "branches": []
+    },
+    "buckets": [
+      {
+        "id": "personal-videos",
+        "public": false,
+        "file_size_limit": null,
+        "allowed_mime_types": [
+          "video/mp4",
+          "video/quicktime",
+          "video/webm",
+          "video/x-m4v"
+        ]
+      },
+      {
+        "id": "vitality-reports",
+        "public": false,
+        "file_size_limit": null,
+        "allowed_mime_types": [
+          "application/pdf"
+        ]
+      },
+      {
+        "id": "member-message-attachments",
+        "public": false,
+        "file_size_limit": 10485760,
+        "allowed_mime_types": [
+          "application/pdf",
+          "image/jpeg",
+          "image/png",
+          "image/webp",
+          "audio/mpeg",
+          "audio/mp4",
+          "audio/x-m4a",
+          "audio/wav"
+        ]
+      },
+      {
+        "id": "client-documents",
+        "public": false,
+        "file_size_limit": 26214400,
+        "allowed_mime_types": [
+          "application/pdf",
+          "image/jpeg",
+          "image/png",
+          "image/webp",
+          "text/plain",
+          "application/msword",
+          "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          "application/vnd.ms-excel",
+          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        ]
+      },
+      {
+        "id": "progress-photos",
+        "public": false,
+        "file_size_limit": 15728640,
+        "allowed_mime_types": [
+          "image/jpeg",
+          "image/png",
+          "image/webp"
+        ]
+      },
+      {
+        "id": "privacy-exports",
+        "public": false,
+        "file_size_limit": 104857600,
+        "allowed_mime_types": [
+          "application/zip",
+          "application/json",
+          "text/csv",
+          "application/pdf"
+        ]
+      }
+    ],
+    "edge_functions": [
+      {
+        "slug": "public-intake",
+        "version": 6,
+        "status": "ACTIVE",
+        "verify_jwt": false,
+        "ezbr_sha256": "13a5a2589ee98e661ad470dd009f152f8316adaf02d1806c5951104e7d51f09d"
+      },
+      {
+        "slug": "video-message-view",
+        "version": 2,
+        "status": "ACTIVE",
+        "verify_jwt": false,
+        "ezbr_sha256": "5abd10ba9d2a855b4d577368af9a77b34ea622b91fc4ebc54a00464764ae7c2d"
+      },
+      {
+        "slug": "journey-link",
+        "version": 6,
+        "status": "ACTIVE",
+        "verify_jwt": false,
+        "ezbr_sha256": "9b20f099b1dceeea9a0dd4862b44ea0ed07c71b9e39df82eeecad5c3daa4f34c"
+      },
+      {
+        "slug": "health-profile-intake",
+        "version": 2,
+        "status": "ACTIVE",
+        "verify_jwt": false,
+        "ezbr_sha256": "76235b6e4e0d833bdc06644265c87c6a9bb007f3bf0b565abd091c0c506adb1f"
+      },
+      {
+        "slug": "member-account",
+        "version": 2,
+        "status": "ACTIVE",
+        "verify_jwt": false,
+        "ezbr_sha256": "e9356be47758c9f32c4518f3b47f400040e3ca74ce3b08a7a4e89703ffa079a0"
+      },
+      {
+        "slug": "member-coaching",
+        "version": 1,
+        "status": "ACTIVE",
+        "verify_jwt": false,
+        "ezbr_sha256": "79def5ced840d41a5a48120f0ea9e136f919c240ed6dd3d747ebc98acf68e44b"
+      },
+      {
+        "slug": "journey-override",
+        "version": 3,
+        "status": "ACTIVE",
+        "verify_jwt": false,
+        "ezbr_sha256": "a3e0ff99e6bc9f98b1ea4e98f672f09018e84deb4e9dd3aefe701d894b4d35f1"
+      },
+      {
+        "slug": "coach-companion-knowledge",
+        "version": 1,
+        "status": "ACTIVE",
+        "verify_jwt": false,
+        "ezbr_sha256": "c70ba9f86351a53155b9c953423e764f565ec9f7bc7b017f043a633f3654d1f1"
+      },
+      {
+        "slug": "coach-companion-request",
+        "version": 1,
+        "status": "ACTIVE",
+        "verify_jwt": false,
+        "ezbr_sha256": "f9365bca3eedae4fe81e6f0d0555292067ced4019b73fbed9a08ffd2c4f665a9"
+      },
+      {
+        "slug": "coach-companion-review",
+        "version": 1,
+        "status": "ACTIVE",
+        "verify_jwt": false,
+        "ezbr_sha256": "64c46e46766b1d977505991c00082f5f7e95936cf3b1fd69490ed2fc5ef89b9c"
+      },
+      {
+        "slug": "notification-delivery",
+        "version": 1,
+        "status": "ACTIVE",
+        "verify_jwt": false,
+        "ezbr_sha256": "eda5487e524d1986ba77d95bd86db91a85ab23c2574052779a5d0878596ee004"
+      },
+      {
+        "slug": "staff-management",
+        "version": 3,
+        "status": "ACTIVE",
+        "verify_jwt": false,
+        "ezbr_sha256": "8c0561b0ec7e233c72733001fb72324129a1378720dac87332eb7c788bad37e1"
+      },
+      {
+        "slug": "agreement-sign",
+        "version": 3,
+        "status": "ACTIVE",
+        "verify_jwt": false,
+        "ezbr_sha256": "9432a000d8e56865caa908a1b5d1fe20d9b1390eab284aeeed9eab3619d40f49"
+      },
+      {
+        "slug": "staff-agreement-sign",
+        "version": 2,
+        "status": "ACTIVE",
+        "verify_jwt": false,
+        "ezbr_sha256": "d464025fdc7ebfed8b04e43d9c928341df056fdc59533efada3f9c4cd760de61"
+      },
+      {
+        "slug": "staff-password-reset",
+        "version": 2,
+        "status": "ACTIVE",
+        "verify_jwt": false,
+        "ezbr_sha256": "a0c45a78fd3e06e528092a7317b4f1ab2196d64a23d8a6ef44a92accb3abdcfc"
+      }
+    ],
+    "security_advisor": {
+      "result": {
+        "lints": [
+          {
+            "name": "auth_leaked_password_protection",
+            "title": "Leaked Password Protection Disabled",
+            "level": "WARN",
+            "facing": "EXTERNAL",
+            "categories": [
+              "SECURITY"
+            ],
+            "description": "Leaked password protection is currently disabled.",
+            "remediation": "https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection",
+            "count": 1,
+            "findings": [
+              {
+                "detail": "Supabase Auth prevents the use of compromised passwords by checking against HaveIBeenPwned.org. Enable this feature to enhance security.",
+                "metadata": {
+                  "type": "auth",
+                  "entity": "Auth"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "configuration": {
+      "channels": [
+        {
+          "channel": "sms",
+          "enabled": false,
+          "provider": "twilio",
+          "setup_status": "setup_required"
+        },
+        {
+          "channel": "email",
+          "enabled": true,
+          "provider": null,
+          "setup_status": "ready"
+        },
+        {
+          "channel": "video_link",
+          "enabled": true,
+          "provider": "supabase",
+          "setup_status": "ready"
+        }
+      ],
+      "programs": [
+        {
+          "code": "holistic-foundations",
+          "name": "Holistic Foundations",
+          "active": true,
+          "commitment_months": 6
+        },
+        {
+          "code": "vitality-accelerator-cohort",
+          "name": "Vitality Accelerator Cohort",
+          "active": true,
+          "commitment_months": null
+        },
+        {
+          "code": "vitality-accelerator",
+          "name": "Vitality Accelerator",
+          "active": true,
+          "commitment_months": null
+        },
+        {
+          "code": "total-wellness-6",
+          "name": "6-Month Intensive",
+          "active": true,
+          "commitment_months": 6
+        },
+        {
+          "code": "total-wellness-12",
+          "name": "12-Month Intensive",
+          "active": true,
+          "commitment_months": 12
+        }
+      ],
+      "webinars": [
+        {
+          "slug": "founders-webinar-2026",
+          "capacity": 50,
+          "starts_at": null,
+          "registration_open": true,
+          "reservation_amount_cents": 5000
+        }
+      ],
+      "providers": [
+        {
+          "key": "manual_import",
+          "mode": "file_import",
+          "type": "manual_import",
+          "active": true
+        },
+        {
+          "key": "apple_health",
+          "mode": "mobile_bridge",
+          "type": "device_platform",
+          "active": true
+        },
+        {
+          "key": "health_connect",
+          "mode": "mobile_bridge",
+          "type": "device_platform",
+          "active": true
+        },
+        {
+          "key": "oura",
+          "mode": "oauth",
+          "type": "wearable",
+          "active": true
+        },
+        {
+          "key": "fitbit",
+          "mode": "oauth",
+          "type": "wearable",
+          "active": true
+        },
+        {
+          "key": "garmin",
+          "mode": "oauth",
+          "type": "wearable",
+          "active": true
+        },
+        {
+          "key": "withings",
+          "mode": "oauth",
+          "type": "health_service",
+          "active": true
+        }
+      ],
+      "advisor_policy": [
+        {
+          "key": "revitalized-default",
+          "require_sources": true,
+          "allow_member_direct_answers": true,
+          "human_review_when_uncertain": true
+        }
+      ],
+      "export_defaults": [
+        {
+          "role": "admin",
+          "allowed": false,
+          "permission_key": "people.export"
+        },
+        {
+          "role": "coach",
+          "allowed": false,
+          "permission_key": "people.export"
+        },
+        {
+          "role": "financial",
+          "allowed": false,
+          "permission_key": "people.export"
+        },
+        {
+          "role": "owner",
+          "allowed": true,
+          "permission_key": "people.export"
+        },
+        {
+          "role": "support",
+          "allowed": false,
+          "permission_key": "people.export"
+        },
+        {
+          "role": "admin",
+          "allowed": false,
+          "permission_key": "people.import"
+        },
+        {
+          "role": "coach",
+          "allowed": false,
+          "permission_key": "people.import"
+        },
+        {
+          "role": "financial",
+          "allowed": false,
+          "permission_key": "people.import"
+        },
+        {
+          "role": "owner",
+          "allowed": true,
+          "permission_key": "people.import"
+        },
+        {
+          "role": "support",
+          "allowed": false,
+          "permission_key": "people.import"
+        }
+      ]
+    },
+    "selected_definition_hashes": {
+      "my_app_bootstrap_v27": "c51a50c592fea67aa6ad40c280f61e002d88532b76a9275ccdffe3175297a431",
+      "admin_people_directory": "1a5e955d8fd7ccd41762df9754cd1576199f88469502ddc926a915578f8a6f2a",
+      "my_app_bootstrap_v2": "3a63dd624219a7d7ab77cde787549b70eb73299caa1c5a781fb023b148b3fc53",
+      "private.staff_has_permission": "d107b8e704a622f395cfab988f7ef7519cb420b9c86ed935aeee5e56406cd30f",
+      "public.log_people_export": "b6219ebe12f7072f74671ff2f5caafc92802242041fb415ea227064918359304",
+      "private.staff_can_access_contact": "fa491b97552a28a38fed400528a7c702cd330859d3c2ddb0b76e6f357f9020bb",
+      "public.sync_my_mobile_health_batch": "773f83708a843fa0777e49d1b7d93b41aa87ac0aa4531741496dd1a8c66f4a06",
+      "public.prepare_privacy_export": "1f2f43b8a2ea432330112dd32bb143c5e9f67e60532e2c3a5ed2faf1edd7b7be",
+      "public.sign_my_client_agreement": "0d5c41f23a082053cb29fb2bb49cde81ab313537dd9e86274d40b88b076b8037",
+      "public.sign_my_staff_agreement": "9aa604fb85ece5d76ba2ec82bdc39fefb2409b4664fe5279196d04d4aa39b2a2"
+    }
+  },
+  "deployment_reads": [
+    {
+      "url": "https://revitalizedacademy.netlify.app/index.html",
+      "final_url": "https://revitalizedacademy.netlify.app/index.html",
+      "status": 200,
+      "server": "Netlify",
+      "sha256": "8d4a383566dee7bfabe2cf317d2d58adbe252048a28bcb5fc118db25f44d5506",
+      "matches_repository": false
+    },
+    {
+      "url": "https://revitalizedacademy.netlify.app/consult.html",
+      "final_url": "https://revitalizedacademy.netlify.app/consult.html",
+      "status": 200,
+      "server": "Netlify",
+      "sha256": "2b343f1c7883e7aeaff5a54f9ef0e40cf346a4d4466ea1e689687128f6dff0e8",
+      "matches_repository": false
+    },
+    {
+      "url": "https://revitalizedacademy.netlify.app/enroll.html",
+      "final_url": "https://revitalizedacademy.netlify.app/enroll.html",
+      "status": 200,
+      "server": "Netlify",
+      "sha256": "fcda51e936cb59a372f85b01f3cd817796e70682d18227e28987c6ed7e74b6df",
+      "matches_repository": false
+    },
+    {
+      "url": "https://revitalizedacademy.netlify.app/webinar.html",
+      "final_url": "https://revitalizedacademy.netlify.app/webinar.html",
+      "status": 200,
+      "server": "Netlify",
+      "sha256": "3f2b1f0295c145d14c528c36f4d2d883be458d95315489ed4cb38eb0b1c1241e",
+      "matches_repository": false
+    },
+    {
+      "url": "https://revitalizedacademy.netlify.app/portal/index.html",
+      "final_url": "https://revitalizedacademy.netlify.app/portal/index.html",
+      "status": 200,
+      "server": "Netlify",
+      "sha256": "db9aa7eb0aa25115496a410fd217488cae30b882a36c4417710ba5df708ccf02",
+      "matches_repository": false
+    },
+    {
+      "url": "https://revitalizedacademy.netlify.app/member/index.html",
+      "final_url": "https://revitalizedacademy.netlify.app/member/index.html",
+      "status": 200,
+      "server": "Netlify",
+      "sha256": "17305a1fdbbac8fc710afca3fb01c4403b1f12eb834de134295225e9b12e3c8d",
+      "matches_repository": true
+    },
+    {
+      "url": "https://revitalizedacademy.netlify.app/member/member110.js",
+      "final_url": "https://revitalizedacademy.netlify.app/member/member110.js",
+      "status": 200,
+      "server": "Netlify",
+      "sha256": "e0d2c83772234788c59675f72b516cfe30e0d13388c6a5001b338160c950a5bb",
+      "matches_repository": true
+    },
+    {
+      "url": "https://revitalizedacademy.netlify.app/js/revitalized-data.js",
+      "final_url": "https://revitalizedacademy.netlify.app/js/revitalized-data.js",
+      "status": 200,
+      "server": "Netlify",
+      "sha256": "ef48430ea5a619c3a86eb44c09a785c057e03a4fead1d283d8f5916994fc6769",
+      "matches_repository": true
+    },
+    {
+      "url": "https://revitalizedacademy.netlify.app/js/vitality55.js",
+      "final_url": "https://revitalizedacademy.netlify.app/js/vitality55.js",
+      "status": 200,
+      "server": "Netlify",
+      "sha256": "ff4a920719bf29fd12593feb016c03399e9cceb92524d52dd1ba564d9cf4ce9d",
+      "matches_repository": true
+    },
+    {
+      "url": "https://revitalizedacademy.netlify.app/js/vitality-child.js",
+      "final_url": "https://revitalizedacademy.netlify.app/js/vitality-child.js",
+      "status": 200,
+      "server": "Netlify",
+      "sha256": "ef6c024bdb5abc96d2d7dd3affc5f2c4326ff8b366c85b0717f751619babaee2",
+      "matches_repository": true
+    },
+    {
+      "url": "https://revitalizedacademy.com/index.html",
+      "final_url": "https://revitalizedacademy.com/index.html",
+      "status": 200,
+      "server": "Netlify",
+      "sha256": "8d4a383566dee7bfabe2cf317d2d58adbe252048a28bcb5fc118db25f44d5506",
+      "matches_repository": false
+    },
+    {
+      "url": "https://revitalizedacademy.com/consult.html",
+      "final_url": "https://revitalizedacademy.com/consult.html",
+      "status": 200,
+      "server": "Netlify",
+      "sha256": "2b343f1c7883e7aeaff5a54f9ef0e40cf346a4d4466ea1e689687128f6dff0e8",
+      "matches_repository": false
+    },
+    {
+      "url": "https://revitalizedacademy.com/enroll.html",
+      "final_url": "https://revitalizedacademy.com/enroll.html",
+      "status": 200,
+      "server": "Netlify",
+      "sha256": "fcda51e936cb59a372f85b01f3cd817796e70682d18227e28987c6ed7e74b6df",
+      "matches_repository": false
+    },
+    {
+      "url": "https://revitalizedacademy.com/webinar.html",
+      "final_url": "https://revitalizedacademy.com/webinar.html",
+      "status": 200,
+      "server": "Netlify",
+      "sha256": "3f2b1f0295c145d14c528c36f4d2d883be458d95315489ed4cb38eb0b1c1241e",
+      "matches_repository": false
+    },
+    {
+      "url": "https://revitalizedacademy.com/portal/index.html",
+      "final_url": "https://revitalizedacademy.com/portal/index.html",
+      "status": 200,
+      "server": "Netlify",
+      "sha256": "db9aa7eb0aa25115496a410fd217488cae30b882a36c4417710ba5df708ccf02",
+      "matches_repository": false
+    },
+    {
+      "url": "https://revitalizedacademy.com/member/index.html",
+      "final_url": "https://revitalizedacademy.com/member/index.html",
+      "status": 200,
+      "server": "Netlify",
+      "sha256": "17305a1fdbbac8fc710afca3fb01c4403b1f12eb834de134295225e9b12e3c8d",
+      "matches_repository": true
+    },
+    {
+      "url": "https://revitalizedacademy.com/member/member110.js",
+      "final_url": "https://revitalizedacademy.com/member/member110.js",
+      "status": 200,
+      "server": "Netlify",
+      "sha256": "e0d2c83772234788c59675f72b516cfe30e0d13388c6a5001b338160c950a5bb",
+      "matches_repository": true
+    },
+    {
+      "url": "https://revitalizedacademy.com/js/revitalized-data.js",
+      "final_url": "https://revitalizedacademy.com/js/revitalized-data.js",
+      "status": 200,
+      "server": "Netlify",
+      "sha256": "ef48430ea5a619c3a86eb44c09a785c057e03a4fead1d283d8f5916994fc6769",
+      "matches_repository": true
+    },
+    {
+      "url": "https://revitalizedacademy.com/js/vitality55.js",
+      "final_url": "https://revitalizedacademy.com/js/vitality55.js",
+      "status": 200,
+      "server": "Netlify",
+      "sha256": "ff4a920719bf29fd12593feb016c03399e9cceb92524d52dd1ba564d9cf4ce9d",
+      "matches_repository": true
+    },
+    {
+      "url": "https://revitalizedacademy.com/js/vitality-child.js",
+      "final_url": "https://revitalizedacademy.com/js/vitality-child.js",
+      "status": 200,
+      "server": "Netlify",
+      "sha256": "ef6c024bdb5abc96d2d7dd3affc5f2c4326ff8b366c85b0717f751619babaee2",
+      "matches_repository": true
+    },
+    {
+      "url": "https://api.github.com/repos/eaglevisiondigital/revitalizedacademy/deployments?per_page=5",
+      "final_url": "https://api.github.com/repos/eaglevisiondigital/revitalizedacademy/deployments?per_page=5",
+      "status": 200,
+      "server": "github.com",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "url": "https://api.github.com/repos/eaglevisiondigital/revitalizedacademy/commits/main/status",
+      "final_url": "https://api.github.com/repos/eaglevisiondigital/revitalizedacademy/commits/main/status",
+      "status": 200,
+      "server": "github.com",
+      "sha256": "d74938978f24af8079eec1c211d1a4067ab601ea11205b07a5af8daa6fd5d822"
+    },
+    {
+      "url": "https://api.github.com/repos/eaglevisiondigital/revitalizedacademy/actions/runs?per_page=5",
+      "final_url": "https://api.github.com/repos/eaglevisiondigital/revitalizedacademy/actions/runs?per_page=5",
+      "status": 200,
+      "server": "github.com",
+      "sha256": "77b5dc1aa35f532122b7dd083dbaf220f3b448504225a134e9a8ad87f3771491"
+    },
+    {
+      "url": "https://api.github.com/repos/eaglevisiondigital/revitalizedroadmap/deployments?per_page=5",
+      "final_url": "https://api.github.com/repos/eaglevisiondigital/revitalizedroadmap/deployments?per_page=5",
+      "status": 200,
+      "server": "github.com",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "url": "https://api.github.com/repos/eaglevisiondigital/revitalizedroadmap/commits/main/status",
+      "final_url": "https://api.github.com/repos/eaglevisiondigital/revitalizedroadmap/commits/main/status",
+      "status": 200,
+      "server": "github.com",
+      "sha256": "94a2e136afcc117f7ed4454143e0b6a65e8a78c7d28e95ec3b51d833b8707054"
+    },
+    {
+      "url": "https://api.github.com/repos/eaglevisiondigital/revitalizedroadmap/actions/runs?per_page=5",
+      "final_url": "https://api.github.com/repos/eaglevisiondigital/revitalizedroadmap/actions/runs?per_page=5",
+      "status": 200,
+      "server": "github.com",
+      "sha256": "a2790a384d7d281e7395679000c35d27768d89dbd7052f725b8f4688beb59915"
+    },
+    {
+      "url": "https://api.github.com/repos/eaglevisiondigital/revitalized-digital-blueprint/deployments?per_page=5",
+      "final_url": "https://api.github.com/repos/eaglevisiondigital/revitalized-digital-blueprint/deployments?per_page=5",
+      "status": 200,
+      "server": "github.com",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "url": "https://api.github.com/repos/eaglevisiondigital/revitalized-digital-blueprint/commits/main/status",
+      "final_url": "https://api.github.com/repos/eaglevisiondigital/revitalized-digital-blueprint/commits/main/status",
+      "status": 200,
+      "server": "github.com",
+      "sha256": "057652e550f03edaabf00f769f29dbf777d342499b296f7f77a535168ae1191b"
+    },
+    {
+      "url": "https://api.github.com/repos/eaglevisiondigital/revitalized-digital-blueprint/actions/runs?per_page=5",
+      "final_url": "https://api.github.com/repos/eaglevisiondigital/revitalized-digital-blueprint/actions/runs?per_page=5",
+      "status": 200,
+      "server": "github.com",
+      "sha256": "a2790a384d7d281e7395679000c35d27768d89dbd7052f725b8f4688beb59915"
+    }
+  ],
+  "tests": {
+    "command": "NODE_PATH=/private/tmp/rva-baseline-testdeps/node_modules node --test tests/*.cjs",
+    "node_version": "v24.20.0",
+    "jsdom_version": "26.1.0",
+    "pass": 44,
+    "fail": 28,
+    "total": 72,
+    "assessment_pass": 20,
+    "javascript_syntax_checked": 60,
+    "javascript_syntax_failures": 0,
+    "network_submissions": false
+  },
+  "mockups": {
+    "dashboard.webp": "e2d3dab561178184a2b8d96a456b6dfcc0e4bfec1afdb37b3e8df559dc6c76da",
+    "progress.webp": "3d71d59e0b9841724b14defa1bae4733c9405b9a934e52077f2a3f74c837adb6",
+    "family-hub.webp": "0d0cadd2a78ee9fddaf13a618fa14d93dc9b123a1829d737afa19b311429db3f",
+    "coach-dashboard.webp": "ebc7075a809ad3d200f23e8cace67fbaea62335ffdcfefe5db65674f92a24658",
+    "app-overview.webp": "ff104088ca9710aea7a2cbd7d5f62c6db25304cd34272cc7aac68ce35e70c3c5"
+  }
+}
