@@ -2382,6 +2382,92 @@
     });
   }
 
+  function renderMembershipOverview(row){
+    const target=el("rm-membership-overview");target.replaceChildren();
+    if(!row){
+      target.innerHTML='<div class="rm112-empty">Membership details are still being prepared.</div>';
+      return;
+    }
+    el("rm-membership-overview-status").textContent=title(row.membership_status||row.access_status||"active");
+    const amount=row.amount_cents!==null&&row.amount_cents!==undefined
+      ?moneyFromCents(row.amount_cents,row.currency)
+      :"Personalized";
+    const items=[
+      ["Program",row.program_name||"ReVitalized"],
+      ["Program Type",title(row.program_type||"membership")],
+      ["Billing",row.billing_choice?title(row.billing_choice):amount],
+      ["Active Benefits",row.active_entitlements||0],
+      ["Learning",String(Number(row.course_count||0))+" Courses · "+String(Number(row.resource_count||0))+" Resources"]
+    ];
+    items.forEach(([label,value])=>{
+      const card=document.createElement("div");
+      const s=document.createElement("span");s.textContent=label;
+      const v=document.createElement("strong");v.textContent=String(value);
+      card.append(s,v);target.append(card);
+    });
+  }
+
+  function renderJourneyMilestones(row){
+    const target=el("rm-journey-milestones");target.replaceChildren();
+    if(!row){
+      target.innerHTML='<div class="rm112-empty">Your journey milestones will appear as your ReVitalized path progresses.</div>';
+      return;
+    }
+    el("rm-journey-stage-chip").textContent=title(row.lifecycle_stage||"active");
+    const milestones=[
+      ["Vitality Assessment",row.vitality_status,row.vitality_completion],
+      ["Enrollment",row.enrollment_status,row.enrollment_completion],
+      ["Webinar",row.webinar_status,row.webinar_status==="attended"?100:(row.webinar_status?50:0)],
+      ["Membership",row.lifecycle_stage==="active_client"||row.lifecycle_stage==="member"?"complete":row.lifecycle_stage,row.lifecycle_stage==="active_client"||row.lifecycle_stage==="member"?100:50]
+    ];
+    milestones.forEach(([label,state,progress])=>{
+      const pct=Math.max(0,Math.min(100,Number(progress||0)));
+      const card=document.createElement("div");
+      card.className="rm188-milestone "+(pct>=100?"complete":pct>0?"in-progress":"");
+      const h=document.createElement("strong");h.textContent=label;
+      const s=document.createElement("span");s.textContent=state?title(state):"Not Started";
+      const b=document.createElement("b");b.textContent=pct+"%";
+      card.append(h,s,b);target.append(card);
+    });
+  }
+
+  function renderFamilyHubSummary(row){
+    const target=el("rm-family-summary");target.replaceChildren();
+    if(!row){return;}
+    const items=[
+      ["Active Members",row.active_members||0],
+      ["Additional Members",row.additional_members||0],
+      ["Children / Minors",row.minors||0],
+      ["Family Goals",row.active_family_goals||0]
+    ];
+    items.forEach(([label,value])=>{
+      const card=document.createElement("div");
+      const s=document.createElement("span");s.textContent=label;
+      const v=document.createElement("strong");v.textContent=String(value);
+      card.append(s,v);target.append(card);
+    });
+  }
+
+  function renderCompanionSummary(row){
+    const target=el("rm-ask-activity-summary");target.replaceChildren();
+    if(!row){
+      target.innerHTML='<div class="rm112-empty">Ask ReVitalized activity will appear here after your first question.</div>';
+      return;
+    }
+    const items=[
+      ["Questions",row.total_questions||0],
+      ["Processing",row.processing_count||0],
+      ["Coach Review",row.coach_review_count||0],
+      ["Answered",row.answered_count||0]
+    ];
+    items.forEach(([label,value])=>{
+      const card=document.createElement("div");
+      const s=document.createElement("span");s.textContent=label;
+      const v=document.createElement("strong");v.textContent=String(value);
+      card.append(s,v);target.append(card);
+    });
+  }
+
   function renderAppHome(row){
     const metrics=el("rm-app-home-metrics");
     const focus=el("rm-app-home-focus");
@@ -2601,7 +2687,11 @@
       coachingSessionsResult,
       courseProgressResult,
       invoicesResult,
-      paymentHistoryResult
+      paymentHistoryResult,
+      journeyStatusResult,
+      familyHubSummaryResult,
+      companionSummaryResult,
+      membershipOverviewResult
     ] = await Promise.all([
       client.from("my_member_dashboard").select("*").maybeSingle(),
       client.from("my_member_entitlements").select("*").order("label"),
@@ -2652,10 +2742,14 @@
       client.from("my_coaching_sessions").select("*").order("scheduled_start",{ascending:false}).limit(8),
       client.from("my_course_progress_summary").select("*").order("last_lesson_activity_at",{ascending:false}).limit(12),
       client.from("my_invoices").select("*").order("created_at",{ascending:false}).limit(12),
-      client.from("my_payment_history").select("*").order("occurred_at",{ascending:false}).limit(20)
+      client.from("my_payment_history").select("*").order("occurred_at",{ascending:false}).limit(20),
+      client.from("my_journey_status").select("*").maybeSingle(),
+      client.from("my_family_hub_summary").select("*").maybeSingle(),
+      client.from("my_companion_summary").select("*").maybeSingle(),
+      client.from("my_membership_overview").select("*").maybeSingle()
     ]);
 
-    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult,notificationPrefsResult,healthConnectionsResult,challengesResult,communitySpacesResult,communityFeedResult,refuelResult,ambassadorResult,referralActivityResult,coachingRequestsResult,assignmentSummaryResult,coachingHubResult,documentsResult,billingResult,agreementsResult,coachingEntitlementsResult,companionTypesResult,companionRequestsResult,dailyActionsResult,weeklySummaryResult,activityTimelineResult,familyRequestsResult,memberProfileResult,appHomeResult,appAccessResult,progressSnapshotResult,coachingSessionsResult,courseProgressResult,invoicesResult,paymentHistoryResult].find((r) => r.error);
+    const failed = [dashboardResult,entitlementsResult,householdResult,journeyResult,appointmentResult,goalsResult,habitsResult,assignmentsResult,coachResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,workoutsResult,groceryResult,coursesResult,resourcesResult,conversationsResult,notificationsResult,notificationPrefsResult,healthConnectionsResult,challengesResult,communitySpacesResult,communityFeedResult,refuelResult,ambassadorResult,referralActivityResult,coachingRequestsResult,assignmentSummaryResult,coachingHubResult,documentsResult,billingResult,agreementsResult,coachingEntitlementsResult,companionTypesResult,companionRequestsResult,dailyActionsResult,weeklySummaryResult,activityTimelineResult,familyRequestsResult,memberProfileResult,appHomeResult,appAccessResult,progressSnapshotResult,coachingSessionsResult,courseProgressResult,invoicesResult,paymentHistoryResult,journeyStatusResult,familyHubSummaryResult,companionSummaryResult,membershipOverviewResult].find((r) => r.error);
     if (failed?.error) throw failed.error;
 
     const member = dashboardResult.data;
@@ -2706,6 +2800,10 @@
     renderResources(resourcesResult.data||[]);
     renderMealPlan(mealPlanResult.data||null,mealsResult.data||[],groceryResult.data||[]);
     renderFitnessPlan(fitnessPlanResult.data||null,workoutsResult.data||[]);
+    renderMembershipOverview(membershipOverviewResult.data||null);
+    renderJourneyMilestones(journeyStatusResult.data||null);
+    renderFamilyHubSummary(familyHubSummaryResult.data||null);
+    renderCompanionSummary(companionSummaryResult.data||null);
     renderProgramHub(appAccessResult.data||null);
     renderAttentionCenter({
       agreements:agreementsResult.data||[],

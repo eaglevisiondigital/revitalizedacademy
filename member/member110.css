@@ -1408,3 +1408,84 @@
 }
 @media(max-width:900px){.rm187-program-hub{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.rm187-program-hub{grid-template-columns:1fr}.rm187-attention-item{grid-template-columns:auto 1fr}}
+
+
+/* Build 188: membership overview, journey milestones, family snapshot, Ask ReVitalized summary */
+.rm188-membership-overview{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:9px;
+  margin-top:10px;
+}
+.rm188-membership-overview>div,
+.rm188-family-summary>div,
+.rm188-ask-summary>div{
+  padding:13px;
+  border:1px solid #dce6e0;
+  border-radius:12px;
+  background:#fff;
+}
+.rm188-membership-overview span,
+.rm188-family-summary span,
+.rm188-ask-summary span{
+  display:block;
+  color:#74847b;
+  font-size:9px;
+  font-weight:850;
+}
+.rm188-membership-overview strong,
+.rm188-family-summary strong,
+.rm188-ask-summary strong{
+  display:block;
+  margin-top:4px;
+  color:#214b39;
+  font-size:17px;
+}
+.rm188-journey-milestones{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:10px;
+  margin-top:10px;
+}
+.rm188-milestone{
+  position:relative;
+  min-height:112px;
+  padding:14px;
+  border:1px solid #dde7e1;
+  border-radius:13px;
+  background:#fff;
+}
+.rm188-milestone::before{
+  content:"";
+  position:absolute;
+  top:15px;right:15px;
+  width:9px;height:9px;border-radius:999px;
+  background:#c9d5ce;
+}
+.rm188-milestone.complete::before{background:#154734}
+.rm188-milestone.in-progress::before{background:#b18845}
+.rm188-milestone strong{display:block;color:#24493a;font-size:11.5px;padding-right:18px}
+.rm188-milestone span{display:block;margin-top:6px;color:#74847b;font-size:9.5px;line-height:1.45}
+.rm188-milestone b{display:block;margin-top:9px;color:#154734;font-size:9px}
+.rm188-family-summary{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:9px;
+  margin:10px 0 14px;
+}
+.rm188-ask-summary{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:9px;
+  margin:13px 0 15px;
+}
+@media(max-width:900px){
+  .rm188-membership-overview{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rm188-journey-milestones{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:620px){
+  .rm188-membership-overview,
+  .rm188-family-summary,
+  .rm188-ask-summary,
+  .rm188-journey-milestones{grid-template-columns:1fr 1fr}
+}
