@@ -13,7 +13,7 @@
   <link rel="shortcut icon" type="image/png" href="../assets/images/revitalized-icon-approved.png">
   <link rel="apple-touch-icon" href="../assets/images/revitalized-icon-approved.png">
   <link rel="manifest" href="manifest.webmanifest?v=171">
-  <link rel="stylesheet" href="member110.css?v=191">
+  <link rel="stylesheet" href="member110.css?v=192">
 </head>
 <body>
   <main class="rm112-page">
@@ -1017,13 +1017,40 @@
         <div class="rm112-card-head">
           <div>
             <p class="rm112-kicker">HEALTH CONNECTIONS</p>
-            <h2>Connected health &amp; wearable data</h2>
+            <h2>Connected Health &amp; Wearable Data</h2>
           </div>
-          <span id="rm-health-connection-count" class="rm112-chip">0 connected</span>
+          <span id="rm-health-connection-count" class="rm112-chip">0 Connected</span>
         </div>
-        <p class="rm123-health-note">ReVitalized can normalize approved health and wearable data into your Progress dashboard. Provider setup will appear here as integrations are enabled.</p>
-        <div id="rm-health-connections" class="rm114-stack"></div>
+        <p class="rm123-health-note">Choose what ReVitalized may receive from supported health platforms. Apple Health and Android Health Connect will connect through the native ReVitalized mobile app when that bridge is released.</p>
+        <div id="rm-health-connections" class="rm192-health-provider-grid"></div>
+
+        <div class="rm192-health-data-head">
+          <div>
+            <strong>Latest Health Data</strong>
+            <span>Only approved metrics received through an active connection appear here.</span>
+          </div>
+          <span id="rm-health-data-count" class="rm112-chip">0 Metrics</span>
+        </div>
+        <div id="rm-health-data-snapshot" class="rm192-health-data-grid"></div>
       </section>
+
+      <div id="rm-health-permissions-modal" class="rm119-modal hidden" aria-hidden="true">
+        <div class="rm119-modal-backdrop" data-health-permissions-close></div>
+        <section class="rm119-dialog rm192-health-dialog" role="dialog" aria-modal="true" aria-labelledby="rm-health-permissions-title">
+          <button class="rm119-close" type="button" data-health-permissions-close aria-label="Close health data permissions">×</button>
+          <p class="rm112-kicker">HEALTH DATA PERMISSIONS</p>
+          <h2 id="rm-health-permissions-title">Choose Health Data</h2>
+          <p id="rm-health-permissions-copy" class="rm192-health-permissions-copy"></p>
+          <form id="rm-health-permissions-form">
+            <div id="rm-health-permission-list" class="rm192-health-permission-list"></div>
+            <div class="rm192-health-permission-actions">
+              <button class="secondary" type="button" data-health-permissions-close>Cancel</button>
+              <button type="submit">Save Data Preferences</button>
+            </div>
+            <p id="rm-health-permissions-status" class="rm112-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
 
       <footer class="rm112-footer">ReVitalized Academy · Educational coaching platform · Not medical diagnosis or treatment.</footer>
     </section>
@@ -1039,6 +1066,6 @@
   </main>
 
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
-  <script defer src="member110.js?v=191"></script>
+  <script defer src="member110.js?v=192"></script>
 </body>
 </html>

@@ -462,6 +462,8 @@
 
   let currentMember = null;
   let activeSessionPrep = null;
+  let activeHealthProvider = null;
+  let healthPermissionRows = [];
   let latestHouseholdRows = [];
   let familyHubEnabled = false;
   let currentFamilyTarget = null;
@@ -1153,35 +1155,173 @@
     });
   }
 
-  function renderHealthConnections(rows){
+  function healthModeCopy(row){
+    if(row.connection_mode==="mobile_bridge"){
+      return row.provider_key==="apple_health"
+        ?"Connects through the native ReVitalized iPhone app and Apple Health."
+        :"Connects through the native ReVitalized Android app and Health Connect.";
+    }
+    if(row.connection_mode==="oauth"){
+      return "Direct provider connection is prepared for the upcoming OAuth integration phase.";
+    }
+    if(row.connection_mode==="file_import"){
+      return "Manual health-data import support is prepared for a later release.";
+    }
+    return "Health-data connection support is being prepared.";
+  }
+
+  function renderHealthConnections(rows,permissions=[],snapshot=[]){
+    healthPermissionRows=permissions;
     const list=el("rm-health-connections");
     list.replaceChildren();
     const connected=rows.filter((row)=>row.status==="connected").length;
-    el("rm-health-connection-count").textContent=connected+" connected";
-
-    if(!rows.length){
-      list.innerHTML='<div class="rm112-empty">No health or wearable source is connected yet. This section is ready for provider setup when ReVitalized enables integrations.</div>';
-      return;
-    }
+    el("rm-health-connection-count").textContent=connected+" Connected";
 
     rows.forEach((row)=>{
       const item=document.createElement("div");
-      item.className="rm123-health-connection";
+      item.className="rm192-health-provider";
+
+      const top=document.createElement("div");
+      top.className="rm192-health-provider-top";
       const copy=document.createElement("div");
       const heading=document.createElement("strong");
       heading.textContent=row.provider_name;
       const meta=document.createElement("span");
-      meta.textContent=[
-        title(row.status),
-        row.last_successful_sync_at?"Last synced "+formatDate(row.last_successful_sync_at,true):""
-      ].filter(Boolean).join(" · ");
+      meta.className="meta";
+      meta.textContent=healthModeCopy(row);
       copy.append(heading,meta);
+
       const state=document.createElement("span");
-      state.className="rm112-chip";
-      state.textContent=title(row.status);
-      item.append(copy,state);
+      state.className="status "+(row.status==="connected"?"connected":row.last_error?"attention":"");
+      state.textContent=title(row.status==="not_connected"?"not connected":row.status);
+      top.append(copy,state);
+      item.append(top);
+
+      const stats=document.createElement("div");
+      stats.className="rm192-health-provider-stats";
+      const supported=Array.isArray(row.supported_metrics)?row.supported_metrics.length:0;
+      const a=document.createElement("span");a.textContent=supported+" Supported Metrics";
+      const b=document.createElement("span");b.textContent=Number(row.allowed_metric_count||0)+" Approved";
+      stats.append(a,b);item.append(stats);
+
+      if(row.last_successful_sync_at){
+        const synced=document.createElement("span");
+        synced.className="meta";
+        synced.textContent="Last synced "+formatDate(row.last_successful_sync_at,true);
+        item.append(synced);
+      }
+      if(row.last_error){
+        const err=document.createElement("span");
+        err.className="meta";
+        err.textContent="Connection needs attention: "+row.last_error;
+        item.append(err);
+      }
+
+      const actions=document.createElement("div");
+      actions.className="rm192-health-provider-actions";
+      const perms=document.createElement("button");
+      perms.type="button";
+      perms.textContent="Data Preferences";
+      perms.addEventListener("click",()=>openHealthPermissions(row));
+      actions.append(perms);
+
+      const connect=document.createElement("button");
+      connect.type="button";
+      connect.className="secondary";
+      if(row.status==="connected"){
+        connect.textContent="Connected";
+        connect.disabled=true;
+      }else if(row.connection_mode==="mobile_bridge"){
+        connect.textContent="Mobile App Required";
+        connect.disabled=true;
+      }else if(row.connection_mode==="oauth"){
+        connect.textContent="Provider Connect Coming Soon";
+        connect.disabled=true;
+      }else{
+        connect.textContent="Import Coming Soon";
+        connect.disabled=true;
+      }
+      actions.append(connect);
+      item.append(actions);
       list.append(item);
     });
+
+    renderHealthSnapshot(snapshot);
+  }
+
+  function renderHealthSnapshot(rows){
+    const target=el("rm-health-data-snapshot");
+    target.replaceChildren();
+    el("rm-health-data-count").textContent=rows.length+" Metric"+(rows.length===1?"":"s");
+    if(!rows.length){
+      target.innerHTML='<div class="rm112-empty">No synchronized wearable or device data yet. Once a native health connection is active, approved metrics will populate here automatically.</div>';
+      return;
+    }
+
+    rows.slice(0,12).forEach(row=>{
+      const card=document.createElement("div");
+      card.className="rm192-health-data-card";
+      const label=document.createElement("span");label.textContent=row.label||title(row.metric_key);
+      const value=document.createElement("strong");
+      const raw=row.value_numeric!==null&&row.value_numeric!==undefined
+        ?row.value_numeric
+        :(row.value_boolean===true?"Yes":row.value_boolean===false?"No":"—");
+      value.textContent=String(raw)+(row.unit?" "+row.unit:"");
+      const meta=document.createElement("small");
+      meta.textContent=[row.provider_name,row.observed_at?formatDate(row.observed_at,true):null].filter(Boolean).join(" · ");
+      card.append(label,value,meta);target.append(card);
+    });
+  }
+
+  function openHealthPermissions(provider){
+    activeHealthProvider=provider;
+    el("rm-health-permissions-title").textContent=provider.provider_name+" Data Preferences";
+    el("rm-health-permissions-copy").textContent="Choose the health metrics you are comfortable allowing ReVitalized to receive when this provider is connected. You can change these preferences later.";
+    showStatus(el("rm-health-permissions-status"),"");
+
+    const target=el("rm-health-permission-list");
+    target.replaceChildren();
+    const rows=healthPermissionRows.filter(r=>r.provider_key===provider.provider_key);
+    rows.forEach(row=>{
+      const label=document.createElement("label");
+      label.className="rm192-health-permission";
+      const check=document.createElement("input");
+      check.type="checkbox";
+      check.checked=Boolean(row.allowed);
+      check.value=row.metric_key;
+      const copy=document.createElement("div");
+      const h=document.createElement("strong");h.textContent=row.label;
+      const detail=document.createElement("span");
+      detail.textContent=[title(row.category),row.unit,row.coaching_use].filter(Boolean).join(" · ");
+      copy.append(h,detail);
+      label.append(check,copy);target.append(label);
+    });
+
+    el("rm-health-permissions-modal").classList.remove("hidden");
+    el("rm-health-permissions-modal").setAttribute("aria-hidden","false");
+  }
+
+  function closeHealthPermissions(){
+    activeHealthProvider=null;
+    el("rm-health-permissions-modal").classList.add("hidden");
+    el("rm-health-permissions-modal").setAttribute("aria-hidden","true");
+    showStatus(el("rm-health-permissions-status"),"");
+  }
+
+  async function saveHealthPermissions(event){
+    event.preventDefault();
+    if(!activeHealthProvider)return;
+    const status=el("rm-health-permissions-status");
+    const allowed=[...el("rm-health-permission-list").querySelectorAll('input[type="checkbox"]:checked')].map(x=>x.value);
+    showStatus(status,"Saving health data preferences...");
+    const {error}=await client.rpc("set_my_health_metric_consents",{
+      p_provider_key:activeHealthProvider.provider_key,
+      p_allowed_metric_keys:allowed
+    });
+    if(error){showStatus(status,error.message,"error");return;}
+    showStatus(status,"Health data preferences saved.","success");
+    await loadDashboard();
+    window.setTimeout(closeHealthPermissions,500);
   }
 
   function renderNotificationPreferences(row){
@@ -2871,7 +3011,9 @@
       documentsResult,
       coachingEntitlementsResult,
       companionTypesResult,
-      companionRequestsResult
+      companionRequestsResult,
+      healthPermissionsResult,
+      healthSnapshotResult
     ] = await Promise.all([
       client.from("my_app_bootstrap_v2").select("*").single(),
       client.from("my_member_dashboard").select("*").maybeSingle(),
@@ -2891,7 +3033,7 @@
       client.from("my_grocery_list").select("*"),
       client.from("my_courses").select("*"),
       client.from("my_resources").select("*"),
-      client.from("my_health_connections").select("*").order("provider_name"),
+      client.from("my_health_connection_center").select("*").order("provider_name"),
       client.from("my_challenges").select("*"),
       client.from("my_community_spaces").select("*"),
       client.from("my_community_feed").select("*"),
@@ -2899,7 +3041,9 @@
       client.from("my_documents").select("*"),
       client.from("my_coaching_entitlements").select("*"),
       client.from("my_companion_question_types").select("*").order("sort_order"),
-      client.from("my_companion_requests").select("*").limit(20)
+      client.from("my_companion_requests").select("*").limit(20),
+      client.from("my_health_metric_permissions").select("*").order("provider_name").order("display_order"),
+      client.from("my_health_data_snapshot").select("*").order("label")
     ]);
 
     const failed=[
@@ -2907,7 +3051,7 @@
       assignmentsResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,
       workoutsResult,groceryResult,coursesResult,resourcesResult,healthConnectionsResult,challengesResult,
       communitySpacesResult,communityFeedResult,refuelResult,documentsResult,coachingEntitlementsResult,
-      companionTypesResult,companionRequestsResult
+      companionTypesResult,companionRequestsResult,healthPermissionsResult,healthSnapshotResult
     ].find((r)=>r.error);
     if(failed?.error) throw failed.error;
 
@@ -2984,7 +3128,11 @@
     renderRefuel(refuelResult.data||null);
     renderCommunity(communitySpacesResult.data||[],communityFeedResult.data||[]);
     renderChallenges(challengesResult.data||[]);
-    renderHealthConnections(healthConnectionsResult.data||[]);
+    renderHealthConnections(
+      healthConnectionsResult.data||[],
+      healthPermissionsResult.data||[],
+      healthSnapshotResult.data||[]
+    );
     renderNotificationPreferences(notificationPrefsResult.data||null);
     renderConversations(conversationsResult.data||[]);
     renderNotifications(notificationsResult.data||[]);
@@ -3107,6 +3255,9 @@
   document.querySelectorAll("[data-community-thread-close]").forEach((node)=>node.addEventListener("click",closeCommunityThread));
 
   el("rm-ask-form").addEventListener("submit",submitAskReVitalized);
+
+  el("rm-health-permissions-form").addEventListener("submit",saveHealthPermissions);
+  document.querySelectorAll("[data-health-permissions-close]").forEach((node)=>node.addEventListener("click",closeHealthPermissions));
 
   el("rm-notification-form").addEventListener("submit",saveNotificationPreferences);
   el("rm-notifications-mark-all").addEventListener("click",markAllNotificationsRead);
