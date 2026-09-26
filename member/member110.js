@@ -461,6 +461,7 @@
   }
 
   let currentMember = null;
+  let activeSessionPrep = null;
   let latestHouseholdRows = [];
   let familyHubEnabled = false;
   let currentFamilyTarget = null;
@@ -2316,6 +2317,71 @@
     },700);
   }
 
+  function renderAttentionCenter(context){
+    const list=el("rm-attention-list");list.replaceChildren();
+    const items=[];
+    const agreements=(context.agreements||[]).filter(r=>!["signed","waived"].includes(r.status));
+    const unread=(context.conversations||[]).reduce((sum,r)=>sum+Number(r.unread_count||0),0);
+    const overdue=Number(context.assignmentSummary?.overdue_count||0);
+    const family=(context.familyRequests||[]).filter(r=>["submitted","in_review"].includes(r.status)).length;
+    const billing=context.billing||null;
+    const unreadNotifications=(context.notifications||[]).filter(r=>r.status==="unread").length;
+
+    if(agreements.length)items.push({title:"Agreement Action Needed",detail:agreements.length+" agreement"+(agreements.length===1?"":"s")+" waiting for your review or signature.",target:".rm139-agreements-card",urgent:true});
+    if(billing&&(billing.status==="past_due"||Number(billing.failed_payment_count||0)>0))items.push({title:"Billing Needs Attention",detail:"There is a billing item that needs to be reviewed.",target:"#rm-billing-card",urgent:true});
+    if(overdue)items.push({title:"Overdue Coach Assignment",detail:overdue+" assignment"+(overdue===1?" is":"s are")+" overdue.",target:"#rm-assignments",urgent:true});
+    if(unread)items.push({title:"Unread Coaching Messages",detail:unread+" unread message"+(unread===1?"":"s")+" from your ReVitalized conversations.",target:".rm120-message-grid"});
+    if(family)items.push({title:"Family Hub Request",detail:family+" household request"+(family===1?" is":"s are")+" currently being reviewed.",target:"#rm-family-hub-card"});
+    if(unreadNotifications)items.push({title:"New Notifications",detail:unreadNotifications+" notification"+(unreadNotifications===1?"":"s")+" need your attention.",target:".rm120-message-grid"});
+
+    el("rm-attention-count").textContent=items.length+" Item"+(items.length===1?"":"s");
+    if(!items.length){
+      list.innerHTML='<div class="rm187-attention-clear">You are caught up. No urgent member actions are waiting right now.</div>';
+      return;
+    }
+    items.slice(0,6).forEach(entry=>{
+      const button=document.createElement("button");button.type="button";button.className="rm187-attention-item"+(entry.urgent?" urgent":"");
+      button.dataset.memberJump=entry.target;
+      const dot=document.createElement("span");dot.className="dot";
+      const copy=document.createElement("div");
+      const h=document.createElement("strong");h.textContent=entry.title;
+      const p=document.createElement("span");p.textContent=entry.detail;
+      copy.append(h,p);
+      const open=document.createElement("b");open.textContent="Open →";
+      button.append(dot,copy,open);list.append(button);
+    });
+  }
+
+  function renderProgramHub(access){
+    const target=el("rm-program-hub");target.replaceChildren();
+    const features=[
+      ["Coaching",Boolean(access?.private_coaching_enabled||access?.group_coaching_enabled),".rm183-coaching-hub-card","Sessions, assignments and direct coaching support"],
+      ["Community",Boolean(access?.community_enabled),".rm126-community-card","Member spaces, encouragement and shared wins"],
+      ["Courses",Boolean(access?.courses_enabled),".rm185-learning-progress-card","Courses, lessons and learning progress"],
+      ["Nutrition",Boolean(access?.nutrition_enabled),".rm116-wellness-grid","Meal plans, meals and grocery support"],
+      ["Fitness",Boolean(access?.fitness_enabled),".rm116-wellness-grid","Workout plans and fitness assignments"],
+      ["Challenges",Boolean(access?.challenges_enabled),".rm124-challenges-card","Accountability challenges and points"],
+      ["Ask ReVitalized",Boolean(access?.ask_revitalized_enabled),"#rm-ask-revitalized-card","Program guidance and coaching escalation"],
+      ["Family Hub",Boolean(access?.family_hub_enabled),"#rm-family-hub-card","Household profiles and family requests"],
+      ["ReFuel",Boolean(access?.refuel_enabled),"#rm-refuel-card","Your ReFuel program access"],
+      ["Ambassador Center",Boolean(access?.ambassador_center_enabled),"#rm-referral-card","Referrals, impact and rewards"],
+      ["Biometrics",Boolean(access?.biometrics_enabled),".rm123-health-card","Connected health and wearable progress"]
+    ].filter(item=>item[1]);
+
+    el("rm-program-hub-count").textContent=features.length+" Feature"+(features.length===1?"":"s");
+    if(!features.length){
+      target.innerHTML='<div class="rm112-empty">Your active program features will appear here as access is activated.</div>';
+      return;
+    }
+    features.forEach(([name,_enabled,selector,detail])=>{
+      const card=document.createElement("button");card.type="button";card.className="rm187-program-feature";card.dataset.memberJump=selector;
+      const tag=document.createElement("span");tag.textContent="Included";
+      const h=document.createElement("strong");h.textContent=name;
+      const p=document.createElement("small");p.textContent=detail;
+      card.append(tag,h,p);target.append(card);
+    });
+  }
+
   function renderAppHome(row){
     const metrics=el("rm-app-home-metrics");
     const focus=el("rm-app-home-focus");
@@ -2376,6 +2442,46 @@
       :"Progress Ready";
   }
 
+  function openSessionPrep(row){
+    activeSessionPrep=row;
+    el("rm-session-prep-title").textContent="Prepare for Session "+(row.session_number||"");
+    el("rm-session-prep-meta").textContent=[
+      row.coach_name?"With "+row.coach_name:null,
+      row.scheduled_start?formatDate(row.scheduled_start,true):null,
+      row.format?title(row.format):null
+    ].filter(Boolean).join(" · ");
+    el("rm-session-agenda").value=row.client_agenda||"";
+    showStatus(el("rm-session-prep-status"),"");
+    el("rm-session-prep-modal").classList.remove("hidden");
+    el("rm-session-prep-modal").setAttribute("aria-hidden","false");
+    el("rm-session-agenda").focus();
+  }
+
+  function closeSessionPrep(){
+    activeSessionPrep=null;
+    el("rm-session-prep-modal").classList.add("hidden");
+    el("rm-session-prep-modal").setAttribute("aria-hidden","true");
+    showStatus(el("rm-session-prep-status"),"");
+  }
+
+  async function saveSessionPrep(event){
+    event.preventDefault();
+    if(!activeSessionPrep)return;
+    const status=el("rm-session-prep-status");
+    showStatus(status,"Saving your session agenda...");
+    const {data,error}=await client.rpc("update_my_session_agenda",{
+      p_session_id:activeSessionPrep.session_id,
+      p_client_agenda:el("rm-session-agenda").value.trim()||null
+    });
+    if(error||data!==true){
+      showStatus(status,error?.message||"Your session agenda could not be saved.","error");
+      return;
+    }
+    showStatus(status,"Session agenda saved for your coach.","success");
+    await loadDashboard();
+    window.setTimeout(closeSessionPrep,500);
+  }
+
   function renderSessionHistory(rows){
     const target=el("rm-session-history");target.replaceChildren();
     el("rm-session-history-count").textContent=rows.length+" Sessions";
@@ -2392,7 +2498,11 @@
       meta.textContent=[row.scheduled_start?formatDate(row.scheduled_start,true):null,row.format?title(row.format):null].filter(Boolean).join(" · ");
       main.append(titleEl,meta);
       const state=document.createElement("span");state.textContent=title(row.status||"scheduled");
-      const action=document.createElement("div");
+      const action=document.createElement("div");action.className="rm187-session-row-actions";
+      if(["scheduled","confirmed","requested"].includes(row.status)){
+        const prep=document.createElement("button");prep.type="button";prep.textContent=row.client_agenda?"Edit Agenda":"Prepare";
+        prep.addEventListener("click",()=>openSessionPrep(row));action.append(prep);
+      }
       if(row.location_url&&["scheduled","confirmed"].includes(row.status)){
         const link=document.createElement("a");link.href=row.location_url;link.target="_blank";link.rel="noopener noreferrer";link.textContent="Join Session";action.append(link);
       }
@@ -2429,7 +2539,10 @@
     const rules=[
       ['[data-member-jump=".rm116-wellness-grid"]',Boolean(access?.nutrition_enabled||access?.fitness_enabled)],
       ['[data-member-jump=".rm119-learning-grid"]',Boolean(access?.courses_enabled)],
+      ['[data-member-jump=".rm126-community-card"]',Boolean(access?.community_enabled)],
+      ['[data-member-jump="#rm-ask-revitalized-card"]',Boolean(access?.ask_revitalized_enabled)],
       ['[data-member-jump="#rm-family-hub-card"]',Boolean(access?.family_hub_enabled)],
+      ['[data-member-jump="#rm-refuel-card"]',Boolean(access?.refuel_enabled)],
       ['[data-member-jump="#rm-referral-card"]',Boolean(access?.ambassador_center_enabled)]
     ];
     rules.forEach(([selector,allowed])=>{
@@ -2593,6 +2706,15 @@
     renderResources(resourcesResult.data||[]);
     renderMealPlan(mealPlanResult.data||null,mealsResult.data||[],groceryResult.data||[]);
     renderFitnessPlan(fitnessPlanResult.data||null,workoutsResult.data||[]);
+    renderProgramHub(appAccessResult.data||null);
+    renderAttentionCenter({
+      agreements:agreementsResult.data||[],
+      conversations:conversationsResult.data||[],
+      assignmentSummary:assignmentSummaryResult.data||null,
+      familyRequests:familyRequestsResult.data||[],
+      billing:billingResult.data||null,
+      notifications:notificationsResult.data||[]
+    });
 
     const journey = journeyResult.data;
     if (journey) {
@@ -2764,6 +2886,8 @@
   el("rm-family-form").addEventListener("submit",submitFamilyRequest);
   el("rm-family-remove").addEventListener("click",requestFamilyRemoval);
   document.querySelectorAll("[data-family-close]").forEach((node)=>node.addEventListener("click",closeFamilyRequest));
+  el("rm-session-prep-form").addEventListener("submit",saveSessionPrep);
+  document.querySelectorAll("[data-session-prep-close]").forEach((node)=>node.addEventListener("click",closeSessionPrep));
 
   function jumpToMemberSection(selector){
     const target=document.querySelector(selector);

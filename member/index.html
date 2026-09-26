@@ -13,7 +13,7 @@
   <link rel="shortcut icon" type="image/png" href="../assets/images/revitalized-icon-approved.png">
   <link rel="apple-touch-icon" href="../assets/images/revitalized-icon-approved.png">
   <link rel="manifest" href="manifest.webmanifest?v=171">
-  <link rel="stylesheet" href="member110.css?v=186">
+  <link rel="stylesheet" href="member110.css?v=187">
 </head>
 <body>
   <main class="rm112-page">
@@ -64,8 +64,12 @@
         <button type="button" data-member-jump=".rm116-wellness-grid">Wellness</button>
         <button type="button" data-member-jump=".rm119-learning-grid">Learning</button>
         <button type="button" data-member-jump=".rm120-message-grid">Messages</button>
+        <button type="button" data-member-jump=".rm126-community-card">Community</button>
+        <button type="button" data-member-jump="#rm-ask-revitalized-card">Ask ReVitalized</button>
         <button type="button" data-member-jump="#rm-family-hub-card">Family Hub</button>
+        <button type="button" data-member-jump="#rm-refuel-card">ReFuel</button>
         <button type="button" data-member-jump="#rm-referral-card">Ambassador</button>
+        <button type="button" data-member-jump="#rm-billing-card">Billing</button>
         <button type="button" data-member-jump="#rm-member-account-card">Account</button>
       </nav>
 
@@ -80,6 +84,17 @@
           <strong id="rm-program-name">ReVitalized Academy</strong>
           <small id="rm-membership-status">Active membership</small>
         </div>
+      </section>
+
+      <section id="rm-attention-card" class="rm112-card rm187-attention-card">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">NEEDS YOUR ATTENTION</p>
+            <h2>Your Next Important Actions</h2>
+          </div>
+          <span id="rm-attention-count" class="rm112-chip">0 Items</span>
+        </div>
+        <div id="rm-attention-list" class="rm187-attention-list"></div>
       </section>
 
       <section class="rm112-card rm170-today-card">
@@ -120,6 +135,17 @@
         </div>
         <div id="rm-app-home-metrics" class="rm185-home-metrics"></div>
         <div id="rm-app-home-focus" class="rm185-home-focus"></div>
+      </section>
+
+      <section class="rm112-card rm187-program-hub-card">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">YOUR PROGRAM HUB</p>
+            <h2>Everything Included With Your Membership</h2>
+          </div>
+          <span id="rm-program-hub-count" class="rm112-chip">0 Features</span>
+        </div>
+        <div id="rm-program-hub" class="rm187-program-hub"></div>
       </section>
 
       <div class="rm112-grid rm170-week-grid">
@@ -242,6 +268,27 @@
         </div>
         <div id="rm-session-history" class="rm185-session-history"></div>
       </section>
+
+      <div id="rm-session-prep-modal" class="rm119-modal hidden" aria-hidden="true">
+        <div class="rm119-modal-backdrop" data-session-prep-close></div>
+        <section class="rm119-dialog rm187-session-prep-dialog" role="dialog" aria-modal="true" aria-labelledby="rm-session-prep-title">
+          <button class="rm119-close" type="button" data-session-prep-close aria-label="Close session preparation">×</button>
+          <p class="rm112-kicker">SESSION PREP</p>
+          <h2 id="rm-session-prep-title">Prepare for Your Coaching Session</h2>
+          <p id="rm-session-prep-meta" class="rm187-session-prep-meta"></p>
+          <form id="rm-session-prep-form" class="rm187-session-prep-form">
+            <label>
+              <span>What would you like to make sure you cover?</span>
+              <textarea id="rm-session-agenda" rows="6" maxlength="4000" placeholder="Questions, wins, roadblocks, decisions or anything you want your coach to know before the session..."></textarea>
+            </label>
+            <div class="rm187-session-prep-actions">
+              <button class="secondary" type="button" data-session-prep-close>Cancel</button>
+              <button type="submit">Save Session Agenda</button>
+            </div>
+            <p id="rm-session-prep-status" class="rm112-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
 
       <div class="rm112-grid rm114-coaching-grid">
         <section class="rm112-card">
@@ -881,6 +928,6 @@
   </main>
 
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
-  <script defer src="member110.js?v=186"></script>
+  <script defer src="member110.js?v=187"></script>
 </body>
 </html>
