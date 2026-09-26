@@ -1693,7 +1693,7 @@
     list.replaceChildren();
     const active = rows.filter((row) => row.status === "active");
     if (!active.length) {
-      list.innerHTML = '<div class="rm112-empty">Your active goals will appear here as you and your coach define them.</div>';
+      list.innerHTML = '<div class="rm112-empty">No active goals yet. Add one when you are ready to define your next target.</div>';
       return;
     }
     active.forEach((row) => {
@@ -1704,7 +1704,7 @@
       const titleEl = document.createElement("strong");
       titleEl.textContent = row.title;
       const due = document.createElement("small");
-      due.textContent = row.target_date ? "Target " + formatDate(row.target_date) : "Active goal";
+      due.textContent = row.target_date ? "Target " + formatDate(row.target_date) : "Active Goal";
       top.append(titleEl, due);
       item.append(top);
       if (row.description) {
@@ -1712,6 +1712,17 @@
         p.textContent = row.description;
         item.append(p);
       }
+      if(row.target_value!==null&&row.target_value!==undefined){
+        const target=document.createElement("span");target.className="rm190-goal-target";
+        target.textContent="Target: "+row.target_value+(row.target_unit?" "+row.target_unit:"");
+        item.append(target);
+      }
+      const actions=document.createElement("div");actions.className="rm190-item-actions";
+      const complete=document.createElement("button");complete.type="button";complete.className="primary";complete.textContent="Complete Goal";
+      complete.addEventListener("click",()=>updateGoalStatus(row,"completed"));
+      const pause=document.createElement("button");pause.type="button";pause.className="muted";pause.textContent="Pause";
+      pause.addEventListener("click",()=>updateGoalStatus(row,"paused"));
+      actions.append(complete,pause);item.append(actions);
       list.append(item);
     });
   }
@@ -1757,6 +1768,10 @@
       button.disabled = doneToday;
       button.addEventListener("click", () => markHabit(row));
       actions.append(button);
+      const pause=document.createElement("button");
+      pause.type="button";pause.className="muted";pause.textContent="Pause";
+      pause.addEventListener("click",()=>updateHabitStatus(row,"paused"));
+      actions.append(pause);
       item.append(actions);
       list.append(item);
     });
@@ -1957,21 +1972,93 @@
   }
 
   async function markHabit(row) {
-    if (!currentMember) return;
-    const { data: { user } } = await client.auth.getUser();
-    const { error } = await client.from("habit_checkins").insert({
-      habit_id: row.id,
-      contact_id: currentMember.contact_id,
-      checkin_date: new Date().toISOString().slice(0,10),
-      value: 1,
-      source: "member",
-      created_by: user?.id || null
+    const {error}=await client.rpc("check_in_my_habit",{
+      p_habit_id:row.id,
+      p_value:1,
+      p_note:null,
+      p_checkin_date:new Date().toISOString().slice(0,10)
     });
-    if (error) {
-      window.alert("Could not log this habit: " + error.message);
+    if(error){
+      window.alert("Could not log this habit: "+error.message);
       return;
     }
     await loadDashboard();
+  }
+
+  async function updateGoalStatus(row,status){
+    const {error}=await client.rpc("update_my_goal_status",{p_goal_id:row.id,p_status:status});
+    if(error){window.alert(error.message);return;}
+    await loadDashboard();
+  }
+
+  async function updateHabitStatus(row,status){
+    const {error}=await client.rpc("update_my_habit_status",{p_habit_id:row.id,p_status:status});
+    if(error){window.alert(error.message);return;}
+    await loadDashboard();
+  }
+
+  function openGoalModal(){
+    el("rm-goal-form").reset();
+    el("rm-goal-priority").value="2";
+    showStatus(el("rm-goal-form-status"),"");
+    el("rm-goal-modal").classList.remove("hidden");
+    el("rm-goal-modal").setAttribute("aria-hidden","false");
+    el("rm-goal-title").focus();
+  }
+  function closeGoalModal(){
+    el("rm-goal-modal").classList.add("hidden");
+    el("rm-goal-modal").setAttribute("aria-hidden","true");
+  }
+  async function createGoal(event){
+    event.preventDefault();
+    const status=el("rm-goal-form-status");
+    showStatus(status,"Creating goal...");
+    const value=el("rm-goal-target-value").value;
+    const {error}=await client.rpc("create_my_goal",{
+      p_title:el("rm-goal-title").value.trim(),
+      p_description:el("rm-goal-description").value.trim()||null,
+      p_target_value:value===""?null:Number(value),
+      p_target_unit:el("rm-goal-target-unit").value.trim()||null,
+      p_target_date:el("rm-goal-target-date").value||null,
+      p_priority:Number(el("rm-goal-priority").value||2)
+    });
+    if(error){showStatus(status,error.message,"error");return;}
+    showStatus(status,"Goal created.","success");
+    await loadDashboard();
+    window.setTimeout(closeGoalModal,450);
+  }
+
+  function openHabitModal(){
+    el("rm-habit-form").reset();
+    el("rm-habit-target").value="1";
+    el("rm-habit-frequency").value="daily";
+    el("rm-habit-category").value="general";
+    el("rm-habit-start-date").value=new Date().toISOString().slice(0,10);
+    showStatus(el("rm-habit-form-status"),"");
+    el("rm-habit-modal").classList.remove("hidden");
+    el("rm-habit-modal").setAttribute("aria-hidden","false");
+    el("rm-habit-title").focus();
+  }
+  function closeHabitModal(){
+    el("rm-habit-modal").classList.add("hidden");
+    el("rm-habit-modal").setAttribute("aria-hidden","true");
+  }
+  async function createHabit(event){
+    event.preventDefault();
+    const status=el("rm-habit-form-status");
+    showStatus(status,"Creating habit...");
+    const {error}=await client.rpc("create_my_habit",{
+      p_title:el("rm-habit-title").value.trim(),
+      p_category:el("rm-habit-category").value,
+      p_frequency:el("rm-habit-frequency").value,
+      p_target_per_period:Number(el("rm-habit-target").value||1),
+      p_unit:el("rm-habit-unit").value.trim()||null,
+      p_starts_on:el("rm-habit-start-date").value||new Date().toISOString().slice(0,10)
+    });
+    if(error){showStatus(status,error.message,"error");return;}
+    showStatus(status,"Habit created.","success");
+    await loadDashboard();
+    window.setTimeout(closeHabitModal,450);
   }
 
   async function updateAssignmentStatus(row,status){
@@ -2987,6 +3074,14 @@
     event.preventDefault();
     jumpToMemberSection(button.dataset.memberJump);
   });
+
+  el("rm-add-goal").addEventListener("click",openGoalModal);
+  el("rm-goal-form").addEventListener("submit",createGoal);
+  document.querySelectorAll("[data-goal-close]").forEach((node)=>node.addEventListener("click",closeGoalModal));
+
+  el("rm-add-habit").addEventListener("click",openHabitModal);
+  el("rm-habit-form").addEventListener("submit",createHabit);
+  document.querySelectorAll("[data-habit-close]").forEach((node)=>node.addEventListener("click",closeHabitModal));
 
   el("rm-member-profile-form").addEventListener("submit",saveMemberProfile);
   el("rm-member-change-password").addEventListener("click",()=>{

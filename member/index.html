@@ -13,7 +13,7 @@
   <link rel="shortcut icon" type="image/png" href="../assets/images/revitalized-icon-approved.png">
   <link rel="apple-touch-icon" href="../assets/images/revitalized-icon-approved.png">
   <link rel="manifest" href="manifest.webmanifest?v=171">
-  <link rel="stylesheet" href="member110.css?v=188">
+  <link rel="stylesheet" href="member110.css?v=190">
 </head>
 <body>
   <main class="rm112-page">
@@ -340,8 +340,9 @@
           <div class="rm112-card-head">
             <div>
               <p class="rm112-kicker">YOUR GOALS</p>
-              <h2>What you’re working toward</h2>
+              <h2>What You’re Working Toward</h2>
             </div>
+            <button id="rm-add-goal" class="rm190-mini-action" type="button">Add Goal</button>
           </div>
           <div id="rm-goals" class="rm114-stack"></div>
         </section>
@@ -350,8 +351,9 @@
           <div class="rm112-card-head">
             <div>
               <p class="rm112-kicker">HABITS</p>
-              <h2>Daily and weekly rhythms</h2>
+              <h2>Daily &amp; Weekly Rhythms</h2>
             </div>
+            <button id="rm-add-habit" class="rm190-mini-action" type="button">Add Habit</button>
           </div>
           <div id="rm-habits" class="rm114-stack"></div>
         </section>
@@ -401,6 +403,77 @@
         </section>
       </div>
 
+
+      <div id="rm-goal-modal" class="rm119-modal hidden" aria-hidden="true">
+        <div class="rm119-modal-backdrop" data-goal-close></div>
+        <section class="rm119-dialog rm190-dialog" role="dialog" aria-modal="true" aria-labelledby="rm-goal-modal-title">
+          <button class="rm119-close" type="button" data-goal-close aria-label="Close goal form">×</button>
+          <p class="rm112-kicker">GOALS</p>
+          <h2 id="rm-goal-modal-title">Add a Personal Goal</h2>
+          <p class="rm190-dialog-copy">Create something meaningful to work toward. Your coaching team can see active goals and support your progress.</p>
+          <form id="rm-goal-form" class="rm190-form">
+            <label class="wide"><span>Goal</span><input id="rm-goal-title" type="text" maxlength="180" required placeholder="Example: Walk 8,000 steps at least 5 days each week"></label>
+            <label class="wide"><span>Description</span><textarea id="rm-goal-description" rows="3" maxlength="1200"></textarea></label>
+            <div class="rm190-form-grid">
+              <label><span>Target Value</span><input id="rm-goal-target-value" type="number" step="0.01" min="0"></label>
+              <label><span>Unit</span><input id="rm-goal-target-unit" type="text" maxlength="60" placeholder="steps, lbs, days..."></label>
+              <label><span>Target Date</span><input id="rm-goal-target-date" type="date"></label>
+              <label><span>Priority</span>
+                <select id="rm-goal-priority">
+                  <option value="1">High</option>
+                  <option value="2" selected>Normal</option>
+                  <option value="3">Lower</option>
+                </select>
+              </label>
+            </div>
+            <div class="rm190-form-actions">
+              <button class="secondary" type="button" data-goal-close>Cancel</button>
+              <button type="submit">Create Goal</button>
+            </div>
+            <p id="rm-goal-form-status" class="rm112-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
+      <div id="rm-habit-modal" class="rm119-modal hidden" aria-hidden="true">
+        <div class="rm119-modal-backdrop" data-habit-close></div>
+        <section class="rm119-dialog rm190-dialog" role="dialog" aria-modal="true" aria-labelledby="rm-habit-modal-title">
+          <button class="rm119-close" type="button" data-habit-close aria-label="Close habit form">×</button>
+          <p class="rm112-kicker">HABITS</p>
+          <h2 id="rm-habit-modal-title">Build a New Rhythm</h2>
+          <p class="rm190-dialog-copy">Add a simple behavior you want to practice consistently and track inside ReVitalized.</p>
+          <form id="rm-habit-form" class="rm190-form">
+            <label class="wide"><span>Habit</span><input id="rm-habit-title" type="text" maxlength="180" required placeholder="Example: Drink water before coffee"></label>
+            <div class="rm190-form-grid">
+              <label><span>Category</span>
+                <select id="rm-habit-category">
+                  <option value="nutrition">Nutrition</option>
+                  <option value="fitness">Fitness</option>
+                  <option value="sleep">Sleep</option>
+                  <option value="hydration">Hydration</option>
+                  <option value="mindset">Mindset</option>
+                  <option value="recovery">Recovery</option>
+                  <option value="general">General</option>
+                </select>
+              </label>
+              <label><span>Frequency</span>
+                <select id="rm-habit-frequency">
+                  <option value="daily">Daily</option>
+                  <option value="weekly">Weekly</option>
+                </select>
+              </label>
+              <label><span>Target Per Period</span><input id="rm-habit-target" type="number" min="1" step="1" value="1" required></label>
+              <label><span>Unit</span><input id="rm-habit-unit" type="text" maxlength="60" placeholder="times, cups, minutes..."></label>
+              <label class="wide"><span>Start Date</span><input id="rm-habit-start-date" type="date"></label>
+            </div>
+            <div class="rm190-form-actions">
+              <button class="secondary" type="button" data-habit-close>Cancel</button>
+              <button type="submit">Create Habit</button>
+            </div>
+            <p id="rm-habit-form-status" class="rm112-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
 
       <section class="rm112-card rm185-progress-center">
         <div class="rm112-card-head">
@@ -952,6 +1025,6 @@
   </main>
 
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
-  <script defer src="member110.js?v=189"></script>
+  <script defer src="member110.js?v=190"></script>
 </body>
 </html>

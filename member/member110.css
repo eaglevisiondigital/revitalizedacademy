@@ -1489,3 +1489,61 @@
   .rm188-ask-summary,
   .rm188-journey-milestones{grid-template-columns:1fr 1fr}
 }
+
+
+/* Build 190: self-service goals and habits */
+.rm190-mini-action{
+  min-height:34px;
+  padding:0 10px;
+  border:1px solid #cbdad1;
+  border-radius:8px;
+  background:#fff;
+  color:#154734;
+  font-size:9px;
+  font-weight:900;
+  cursor:pointer;
+}
+.rm190-dialog-copy{
+  margin:0 0 14px;
+  color:#6f7f76;
+  font-size:11px;
+  line-height:1.5;
+}
+.rm190-form{display:grid;gap:12px}
+.rm190-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rm190-form label{display:grid;gap:6px}
+.rm190-form label.wide{grid-column:1/-1}
+.rm190-form label>span{color:#536d5f;font-size:9.5px;font-weight:900}
+.rm190-form input,.rm190-form select,.rm190-form textarea{
+  width:100%;
+  border:1px solid #cad8d0;
+  border-radius:9px;
+  background:#fff;
+  padding:0 10px;
+  color:#2d473a;
+  font:inherit;
+}
+.rm190-form input,.rm190-form select{height:42px}
+.rm190-form textarea{padding:10px;resize:vertical}
+.rm190-form-actions{display:flex;justify-content:flex-end;gap:8px}
+.rm190-form-actions button{
+  min-height:40px;padding:0 12px;border:1px solid #154734;border-radius:9px;background:#154734;color:#fff;font-size:9.5px;font-weight:900
+}
+.rm190-form-actions button.secondary{background:#fff;color:#154734;border-color:#cbdad1}
+.rm190-item-actions{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-top:10px}
+.rm190-item-actions button{
+  min-height:31px;padding:0 9px;border:1px solid #cbdad1;border-radius:8px;background:#fff;color:#154734;font-size:8.5px;font-weight:900
+}
+.rm190-item-actions button.primary{background:#154734;color:#fff;border-color:#154734}
+.rm190-item-actions button.muted{color:#6f7f76}
+.rm190-goal-target{
+  display:inline-flex;
+  margin-top:7px;
+  padding:4px 7px;
+  border-radius:999px;
+  background:#f1f6f3;
+  color:#456153;
+  font-size:8.5px;
+  font-weight:850;
+}
+@media(max-width:560px){.rm190-form-grid{grid-template-columns:1fr}.rm190-form label.wide{grid-column:auto}}
