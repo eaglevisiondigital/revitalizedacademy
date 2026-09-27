@@ -726,6 +726,7 @@
   let familyVNextEnabled = false;
   let privacyCenterEnabled = false;
   let progressPhotosVNextEnabled = false;
+  let progressPhotoUploadEnabled = false;
   let calendarVNextEnabled = false;
   let healthTrendsVNextEnabled = false;
   let calendarFilter = "all";
@@ -3469,8 +3470,24 @@
     if(loadSequence!==dashboardLoadSequence)return;
     progressPhotosVNextEnabled=Boolean(!flagResult.error&&flagResult.data?.config_value===true);
     if(!progressPhotosVNextEnabled){
+      progressPhotoUploadEnabled=false;
+      el("rm-progress-photo-upload")?.classList.add("hidden");
       renderProgressPhotos([]);
       return;
+    }
+
+    const uploadFlagResult=await client
+      .from("app_runtime_config")
+      .select("config_value")
+      .eq("config_key","feature_member_progress_photo_uploads")
+      .eq("active",true)
+      .maybeSingle();
+    progressPhotoUploadEnabled=Boolean(!uploadFlagResult.error&&uploadFlagResult.data?.config_value===true);
+    const uploadForm=el("rm-progress-photo-upload");
+    if(uploadForm){
+      uploadForm.classList.toggle("hidden",!progressPhotoUploadEnabled);
+      const captured=el("rm-progress-photo-date");
+      if(progressPhotoUploadEnabled&&captured&&!captured.value)captured.value=new Date().toISOString().slice(0,10);
     }
 
     const [setsResult,photosResult]=await Promise.all([
@@ -3508,6 +3525,69 @@
 
     if(loadSequence!==dashboardLoadSequence)return;
     renderProgressPhotos(signed);
+  }
+
+  async function submitProgressPhotoSet(event){
+    event.preventDefault();
+    if(!progressPhotoUploadEnabled)return;
+
+    const status=el("rm-progress-photo-upload-status");
+    const files=[
+      ["front",el("rm-progress-photo-front").files?.[0]||null],
+      ["side",el("rm-progress-photo-side").files?.[0]||null],
+      ["back",el("rm-progress-photo-back").files?.[0]||null],
+      ["other",el("rm-progress-photo-other").files?.[0]||null]
+    ].filter(([,file])=>Boolean(file));
+
+    if(!files.length){
+      showStatus(status,"Choose at least one progress photo.","error");
+      return;
+    }
+
+    const allowed=new Set(["image/jpeg","image/png","image/webp"]);
+    for(const [,file] of files){
+      if(!allowed.has(file.type)){
+        showStatus(status,"Progress photos must be JPEG, PNG or WebP.","error");
+        return;
+      }
+      if(file.size>15728640){
+        showStatus(status,"Each progress photo must be 15 MB or smaller.","error");
+        return;
+      }
+    }
+
+    const {data:{session}}=await client.auth.getSession();
+    if(!session){
+      showStatus(status,"Please sign in again before uploading photos.","error");
+      return;
+    }
+
+    const body=new FormData();
+    body.set("label",el("rm-progress-photo-label").value.trim());
+    body.set("captured_on",el("rm-progress-photo-date").value);
+    body.set("notes",el("rm-progress-photo-notes").value.trim());
+    files.forEach(([angle,file])=>body.set(angle,file,file.name));
+
+    showStatus(status,"Uploading private progress photos...");
+    const response=await fetch(window.RVA_ENV.edgeBaseUrl+"/progress-photo-upload",{
+      method:"POST",
+      headers:{
+        Authorization:"Bearer "+session.access_token,
+        apikey:PUBLISHABLE_KEY
+      },
+      body
+    });
+    let payload={};
+    try{payload=await response.json();}catch{}
+    if(!response.ok){
+      showStatus(status,payload.error||"Progress photos could not be uploaded.","error");
+      return;
+    }
+
+    el("rm-progress-photo-upload").reset();
+    el("rm-progress-photo-date").value=new Date().toISOString().slice(0,10);
+    showStatus(status,"Progress photos saved privately.","success");
+    await loadDashboard();
   }
 
   function updatePrivacyProviderScope(){
@@ -4356,6 +4436,7 @@
     familyVNextEnabled=false;
     privacyCenterEnabled=false;
     progressPhotosVNextEnabled=false;
+    progressPhotoUploadEnabled=false;
     calendarVNextEnabled=false;
     healthTrendsVNextEnabled=false;
     calendarFilter="all";
@@ -4694,6 +4775,7 @@
   });
 
 
+  el("rm-progress-photo-upload").addEventListener("submit",submitProgressPhotoSet);
   el("rm-progress-metric").addEventListener("change", updateProgressUnit);
 
   el("rm-progress-form").addEventListener("submit", async (event) => {
