@@ -3,14 +3,17 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const js=fs.readFileSync('member/member110.js','utf8');
 
-test('low-priority member modules are deferred until after the dashboard is visible',()=>{
+test('secondary member modules load only after the dashboard is visible',()=>{
   const loadStart=js.indexOf('async function loadDashboard()');
   const show=js.indexOf('showOnly("rm-dashboard")',loadStart);
-  const deferredCall=js.indexOf('loadDeferredMemberModules(loadSequence,askEnabled)',show);
+  const deferredCall=js.indexOf('loadDeferredMemberModules(loadSequence,{',show);
   assert(loadStart>=0&&show>loadStart&&deferredCall>show);
 
   const initial=js.slice(loadStart,js.indexOf('const requiredResults=[',loadStart));
   for(const view of [
+    'my_household','my_goals','my_habits','my_client_assignments','my_recent_progress',
+    'my_active_meal_plan','my_upcoming_meals','my_active_fitness_plan','my_upcoming_workouts',
+    'my_grocery_list','my_courses','my_resources','my_challenges',
     'my_health_connection_center','my_community_spaces','my_community_feed',
     'my_refuel_access','my_documents','my_coaching_entitlements',
     'my_companion_question_types','my_companion_requests',
@@ -18,13 +21,13 @@ test('low-priority member modules are deferred until after the dashboard is visi
   ])assert(!initial.includes('from("'+view+'")'),view+' should not block first screen');
 });
 
-test('deferred member modules retain per-module failure isolation',()=>{
+test('deferred member modules retain per-module failure isolation and stale-response protection',()=>{
   const start=js.indexOf('async function loadDeferredMemberModules');
   const end=js.indexOf('async function loadDashboard()',start);
   const block=js.slice(start,end);
   assert.match(block,/Deferred member module unavailable:/);
-  assert.match(block,/loadSequence!==dashboardLoadSequence/);
-  for(const view of ['my_community_feed','my_documents','my_companion_requests','my_health_data_snapshot'])assert(block.includes(view),view);
+  assert((block.match(/loadSequence!==dashboardLoadSequence/g)||[]).length>=2);
+  for(const view of ['my_household','my_courses','my_community_feed','my_documents','my_companion_requests','my_health_data_snapshot'])assert(block.includes(view),view);
 });
 
 test('paid access and core reads still fail closed before deferred features',()=>{
