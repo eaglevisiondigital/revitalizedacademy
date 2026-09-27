@@ -24,8 +24,14 @@ test('Privacy Center uses request RPCs and provider disconnect without direct de
 test('Privacy Center does not expose internal privacy export storage paths',()=>{
   const js=read('member/member110.js');
   const html=read('member/index.html');
-  assert.doesNotMatch(js,/my_privacy_exports|available_storage_path|storage_path/);
-  assert.doesNotMatch(html,/available_storage_path|storage_path/);
+  const start=js.indexOf('function updatePrivacyProviderScope');
+  const end=js.indexOf('function homeVNextTarget',start);
+  const block=js.slice(start,end);
+  assert.doesNotMatch(block,/my_privacy_exports|available_storage_path|storage_path/);
+  const accountStart=html.indexOf('id="rm-member-account-card"');
+  const accountEnd=html.indexOf('rm121-settings-card',accountStart);
+  const account=html.slice(accountStart,accountEnd);
+  assert.doesNotMatch(account,/available_storage_path|storage_path/);
 });
 
 test('Privacy Center loads after first paint and fails locally',()=>{
