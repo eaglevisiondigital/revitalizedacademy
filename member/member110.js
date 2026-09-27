@@ -1932,7 +1932,7 @@
       today:".rm170-today-card",
       coaching:".rm183-coaching-hub-card",
       messages:".rm120-message-grid",
-      notifications:".rm120-notifications-card",
+      notifications:"#rm-notifications",
       courses:".rm185-learning-progress-card",
       family_hub:"#rm-family-hub-card",
       health:".rm123-health-card",
