@@ -216,3 +216,12 @@ These decisions resolve the earlier three-question Chat handoff. The old success
 - **D77 APPROVED:** member upload categories remain limited to `general` and `progress`; file limit remains 25 MB and supported MIME/file signatures must be validated server-side.
 - **D78 APPROVED:** member document upload retries use a client-generated UUID as the document primary key so successful retries are idempotent rather than duplicative.
 - **D79 APPROVED:** partial upload failures must compensate by removing any newly uploaded Storage object and deleting the newly created document row. The browser must never leave archived placeholder rows as its normal rollback mechanism.
+
+
+## 2026-09-27 - Lifecycle-safe member support
+
+- **D80 APPROVED:** ReVitalized support uses the existing private messaging system with `member_conversations.conversation_type='support'`; no parallel ticket database is introduced.
+- **D81 APPROVED:** authenticated support access is allowed for client-access states `ready`, `invited`, `onboarding`, `active`, and `payment_suspended`. Manual `suspended` and `inactive` states do not receive this in-app support channel by default.
+- **D82 APPROVED:** support access is independent from `member_paid_access_allowed()`. It must not unlock coaching content, health data, community, courses, Family Hub, AI, or other paid benefits.
+- **D83 APPROVED:** support is available from both Enrollment & Signature Center and the active member Messages area, backed by the same support conversation.
+- **D84 APPROVED:** support-message retries use client-generated UUID message IDs, and support conversation creation uses a deterministic contact-scoped UUID to avoid duplicate support threads under concurrent requests.
