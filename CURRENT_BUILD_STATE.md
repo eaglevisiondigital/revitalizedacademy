@@ -284,3 +284,22 @@ This endpoint intentionally does not call `member_paid_access_allowed()`; suppor
 The Enrollment & Signature Center now contains a private Support Center for eligible restricted/active users, and the active member Messages area has a Contact Support action. Both use the same contact-scoped support conversation.
 
 Support conversation creation is deterministic/idempotent and support-message sends use idempotent request UUIDs.
+
+
+## Message attachment upload hardening
+
+**IMPLEMENTED on `codex/staging`, NOT DEPLOYED.**
+
+Private message attachments now write through required Edge function `member-message-attachment-upload`.
+
+The handler:
+- validates environment/origin and caller authentication
+- verifies the caller owns the target message
+- verifies active conversation participation
+- enforces the existing 10 MB private-bucket limit
+- validates the existing MIME allowlist and file signatures
+- uses conversation/message scoped private Storage paths
+- uses client-generated UUID attachment IDs for idempotency
+- removes a newly uploaded object if the attachment database row fails
+
+The browser no longer writes message attachments directly to Storage/database and retries one transient failure with the same attachment UUID.
