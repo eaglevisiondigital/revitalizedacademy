@@ -208,3 +208,11 @@ These decisions resolve the earlier three-question Chat handoff. The old success
 
 
 - **D75 APPROVED:** ready Privacy Center data exports may be downloaded only through authenticated, 5-minute signed URLs from the private `privacy-exports` bucket. Raw `available_storage_path` values must remain internal and must never be rendered as member-facing links or text.
+
+
+## 2026-09-27 - Member document upload hardening
+
+- **D76 APPROVED:** member document uploads use a dedicated authenticated Edge Function rather than direct browser table + Storage mutation.
+- **D77 APPROVED:** member upload categories remain limited to `general` and `progress`; file limit remains 25 MB and supported MIME/file signatures must be validated server-side.
+- **D78 APPROVED:** member document upload retries use a client-generated UUID as the document primary key so successful retries are idempotent rather than duplicative.
+- **D79 APPROVED:** partial upload failures must compensate by removing any newly uploaded Storage object and deleting the newly created document row. The browser must never leave archived placeholder rows as its normal rollback mechanism.
