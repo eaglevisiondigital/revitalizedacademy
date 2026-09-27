@@ -1078,6 +1078,7 @@
   }
 
   function closeDocumentUpload(){
+    pendingDocumentUploadId=null;
     el("rm-document-upload-modal").classList.add("hidden");
     el("rm-document-upload-modal").setAttribute("aria-hidden","true");
   }
@@ -1089,43 +1090,54 @@
     showStatus(el("rm-document-upload-status"),"");
   }
 
+  let pendingDocumentUploadId=null;
+
   async function uploadMemberDocument(event){
     event.preventDefault();
     if(!currentMember)return;
-    const file=el("rm-document-file").files?.[0];
-    if(!file)return;
-    if(file.size>26214400){showStatus(el("rm-document-upload-status"),"File must be 25 MB or smaller.","error");return;}
 
-    const {data:{user}}=await client.auth.getUser();
-    const id=crypto.randomUUID();
-    const path=currentMember.contact_id+"/"+id+"/"+safeDocumentFilename(file.name);
-    const category=el("rm-document-category").value;
+    const file=el("rm-document-file").files?.[0]||null;
+    const status=el("rm-document-upload-status");
+    if(!file){showStatus(status,"Choose a file to upload.","error");return;}
+    if(file.size>26214400){showStatus(status,"File must be 25 MB or smaller.","error");return;}
 
-    showStatus(el("rm-document-upload-status"),"Preparing secure upload...");
-    const {error:rowError}=await client.from("client_documents").insert({
-      id,
-      contact_id:currentMember.contact_id,
-      membership_id:currentMember.membership_id||null,
-      category,
-      title:el("rm-document-title").value.trim(),
-      description:el("rm-document-description").value.trim()||null,
-      storage_path:path,
-      original_filename:file.name,
-      content_type:file.type||null,
-      size_bytes:file.size,
-      member_visible:true,
-      uploaded_by_user_id:user.id,
-      uploaded_by_contact_id:currentMember.contact_id
+    const allowed=new Set([
+      "application/pdf","image/jpeg","image/png","image/webp","text/plain",
+      "application/msword","application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "application/vnd.ms-excel","application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    ]);
+    if(!allowed.has(file.type)){showStatus(status,"That file type is not supported.","error");return;}
+
+    const {data:{session}}=await client.auth.getSession();
+    if(!session){showStatus(status,"Please sign in again before uploading a document.","error");return;}
+
+    if(!pendingDocumentUploadId)pendingDocumentUploadId=crypto.randomUUID();
+
+    const body=new FormData();
+    body.set("request_id",pendingDocumentUploadId);
+    body.set("title",el("rm-document-title").value.trim());
+    body.set("category",el("rm-document-category").value);
+    body.set("description",el("rm-document-description").value.trim());
+    body.set("file",file,file.name);
+
+    showStatus(status,"Uploading securely...");
+    const response=await fetch(window.RVA_ENV.edgeBaseUrl+"/member-document-upload",{
+      method:"POST",
+      headers:{
+        Authorization:"Bearer "+session.access_token,
+        apikey:PUBLISHABLE_KEY
+      },
+      body
     });
-    if(rowError){showStatus(el("rm-document-upload-status"),rowError.message,"error");return;}
-
-    const {error:uploadError}=await client.storage.from("client-documents").upload(path,file,{contentType:file.type||"application/octet-stream",upsert:false});
-    if(uploadError){
-      await client.from("client_documents").update({status:"archived"}).eq("id",id);
-      showStatus(el("rm-document-upload-status"),uploadError.message,"error");return;
+    let payload={};
+    try{payload=await response.json();}catch{}
+    if(!response.ok){
+      showStatus(status,payload.error||"Document could not be uploaded.","error");
+      return;
     }
 
-    showStatus(el("rm-document-upload-status"),"Document uploaded securely.","success");
+    pendingDocumentUploadId=null;
+    showStatus(status,"Document uploaded securely.","success");
     await loadDashboard();
     window.setTimeout(closeDocumentUpload,500);
   }
