@@ -186,3 +186,12 @@ These decisions resolve the earlier three-question Chat handoff. The old success
 - **D63 APPROVED:** trend UI may display latest value, unit, absolute 30-day change and time-series shape, but must not characterize movement as good/bad, healthy/unhealthy, improving/worsening, diagnostic, or treatment-relevant.
 - **D64 APPROVED:** Health Trends vNext requires Biometrics member access, is independently reversible behind `feature_member_health_trends_vnext`, defaults false, and loads post-first-paint with local failure degradation.
 - **D65 APPROVED:** Health Score, Family Health Score, AI health interpretation, cross-adult health sharing, and provider/native connection activation remain outside this slice. See `docs/HEALTH_TRENDS_VNEXT.md`.
+
+
+## 2026-09-27 - Progress Photo uploads
+
+- **D66 APPROVED:** member Progress Photo uploads use a dedicated authenticated Edge Function rather than direct browser Storage/database mutation.
+- **D67 APPROVED:** one submission creates one photo set and supports front, side, back and/or other angles; at least one valid image is required.
+- **D68 APPROVED:** JPEG/PNG/WebP only, 15 MB maximum per image, with server-side magic-byte validation in addition to MIME validation.
+- **D69 APPROVED:** if any upload/database step fails after a set is created, the function performs compensating cleanup by removing all newly uploaded Storage objects and deleting the new set/rows.
+- **D70 APPROVED:** uploads are independently controlled by `feature_member_progress_photo_uploads`, default false. Private viewing may be enabled without enabling writes. See `docs/PROGRESS_PHOTOS_VNEXT.md`.
