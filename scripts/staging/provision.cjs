@@ -60,6 +60,7 @@ async function prepare(db,c,legal){
   await db.query("UPDATE public.app_runtime_config SET active=true,config_value=jsonb_build_object('origin',$1::text) WHERE config_key='client_onboarding'",[c.appOrigin]);
   await insert(db,'app_runtime_config',{config_key:'deployment_environment',config_value:{environment:'staging',origin:c.appOrigin,supabase_ref:c.projectRef,payment_mode:'synthetic'},description:'Isolated staging identity; recreate to change origin',member_visible:false,active:true});
   await db.query("INSERT INTO public.app_runtime_config(config_key,config_value,description,member_visible,active) VALUES('feature_member_home_vnext','false'::jsonb,'Feature flag for additive Home / Today vNext member integration',true,true) ON CONFLICT(config_key) DO UPDATE SET config_value='false'::jsonb,member_visible=true,active=true,updated_at=now()");
+  await db.query("INSERT INTO public.app_runtime_config(config_key,config_value,description,member_visible,active) VALUES('feature_member_progress_vnext','false'::jsonb,'Feature flag for additive Progress vNext member integration',true,true) ON CONFLICT(config_key) DO UPDATE SET config_value='false'::jsonb,member_visible=true,active=true,updated_at=now()");
   // Stage-only safeguards, never part of the production migration ledger.
   const lit="'"+c.appOrigin.replaceAll("'","''")+"'";
   await db.query(`ALTER TABLE public.app_runtime_config ADD CONSTRAINT staging_onboarding_origin CHECK (config_key<>'client_onboarding' OR (active AND config_value->>'origin'=${lit}));
