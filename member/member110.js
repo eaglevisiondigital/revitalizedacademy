@@ -329,6 +329,7 @@
     progressVNextEnabled=Boolean(!flagResult.error&&flagResult.data?.config_value===true);
     if(!progressVNextEnabled){
       goalProgressById=new Map();
+      if(latestGoalRows.length)renderGoals(latestGoalRows);
       renderAchievements([]);
       renderProgressInsights([]);
       return;
@@ -3430,6 +3431,9 @@
     if(lifecycleError)throw lifecycleError;
     if(lifecycle!==true){window.location.replace("/member/onboarding/");return;}
     const loadSequence=++dashboardLoadSequence;
+    homeVNextEnabled=false;
+    progressVNextEnabled=false;
+    goalProgressById=new Map();
     const homeVNextFlagPromise=client
       .from("app_runtime_config")
       .select("config_value")
