@@ -726,6 +726,9 @@
   let familyVNextEnabled = false;
   let privacyCenterEnabled = false;
   let progressPhotosVNextEnabled = false;
+  let calendarVNextEnabled = false;
+  let calendarFilter = "all";
+  let latestCalendarRows = [];
   let dashboardLoadSequence = 0;
   let latestGoalRows = [];
   let goalProgressById = new Map();
@@ -2966,6 +2969,124 @@
     },700);
   }
 
+  function calendarCategory(itemType){
+    if(["appointment","coaching_session"].includes(itemType))return "coaching";
+    if(itemType==="workout")return "workouts";
+    if(itemType==="meal")return "meals";
+    if(itemType==="goal_due")return "goals";
+    if(itemType==="challenge_end")return "challenges";
+    return "other";
+  }
+
+  function renderMemberCalendar(){
+    const card=el("rm-calendar-card");
+    const list=el("rm-calendar-list");
+    const count=el("rm-calendar-count");
+    if(!card||!list||!count)return;
+
+    if(!calendarVNextEnabled){
+      card.classList.add("hidden");
+      list.replaceChildren();
+      count.textContent="0 Items";
+      return;
+    }
+
+    card.classList.remove("hidden");
+    const rows=latestCalendarRows.filter((row)=>calendarFilter==="all"||calendarCategory(row.item_type)===calendarFilter);
+    count.textContent=rows.length+" Item"+(rows.length===1?"":"s");
+    list.replaceChildren();
+
+    document.querySelectorAll("[data-calendar-filter]").forEach((button)=>{
+      button.classList.toggle("active",button.dataset.calendarFilter===calendarFilter);
+    });
+
+    if(!rows.length){
+      list.innerHTML='<div class="rm112-empty">No calendar items match this view in the next 30 days.</div>';
+      return;
+    }
+
+    let currentDate="";
+    rows.forEach((row)=>{
+      if(row.item_date!==currentDate){
+        currentDate=row.item_date;
+        const heading=document.createElement("div");
+        heading.className="rm199-calendar-date";
+        heading.textContent=formatDate(row.item_date);
+        list.append(heading);
+      }
+
+      const item=document.createElement("div");
+      item.className="rm199-calendar-item";
+
+      const type=document.createElement("span");
+      type.className="rm199-calendar-type";
+      type.textContent=title(calendarCategory(row.item_type));
+
+      const copy=document.createElement("div");
+      const h=document.createElement("strong");
+      h.textContent=row.title||title(row.item_type);
+      const meta=document.createElement("small");
+      meta.textContent=[
+        row.starts_at?formatDate(row.starts_at,true):"All Day",
+        row.status?title(row.status):null
+      ].filter(Boolean).join(" · ");
+      copy.append(h,meta);
+
+      item.append(type,copy);
+      if(row.location_url){
+        const link=document.createElement("a");
+        link.href=row.location_url;
+        link.target="_blank";
+        link.rel="noopener noreferrer";
+        link.textContent="Open →";
+        item.append(link);
+      }
+      list.append(item);
+    });
+  }
+
+  async function loadCalendarVNext(loadSequence){
+    const flagResult=await client
+      .from("app_runtime_config")
+      .select("config_value")
+      .eq("config_key","feature_member_calendar_vnext")
+      .eq("active",true)
+      .maybeSingle();
+
+    if(loadSequence!==dashboardLoadSequence)return;
+    calendarVNextEnabled=Boolean(!flagResult.error&&flagResult.data?.config_value===true);
+    if(!calendarVNextEnabled){
+      latestCalendarRows=[];
+      renderMemberCalendar();
+      return;
+    }
+
+    const today=new Date();
+    const end=new Date(today);
+    end.setDate(end.getDate()+29);
+    const iso=(date)=>date.toISOString().slice(0,10);
+
+    const result=await client
+      .from("my_calendar_feed_60d")
+      .select("source_id,item_type,title,status,starts_at,ends_at,item_date,all_day,location_url")
+      .gte("item_date",iso(today))
+      .lte("item_date",iso(end))
+      .order("item_date")
+      .order("starts_at")
+      .limit(100);
+
+    if(loadSequence!==dashboardLoadSequence)return;
+    if(result.error){
+      console.warn("Calendar vNext optional read unavailable:","my_calendar_feed_60d",result.error.message);
+      latestCalendarRows=[];
+      renderMemberCalendar();
+      return;
+    }
+
+    latestCalendarRows=result.data||[];
+    renderMemberCalendar();
+  }
+
   function renderProgressPhotos(items){
     const card=el("rm-progress-photos-card");
     const list=el("rm-progress-photos-list");
@@ -3913,6 +4034,9 @@
     familyVNextEnabled=false;
     privacyCenterEnabled=false;
     progressPhotosVNextEnabled=false;
+    calendarVNextEnabled=false;
+    calendarFilter="all";
+    latestCalendarRows=[];
     goalProgressById=new Map();
     latestGoalRows=[];
     const [
@@ -4045,6 +4169,7 @@
     void loadFamilyVNextEnhancement(loadSequence,hasFamilyHub);
     void loadPrivacyCenterEnhancement(loadSequence);
     void loadProgressPhotosVNext(loadSequence);
+    void loadCalendarVNext(loadSequence);
     void loadDeferredMemberModules(loadSequence,{
       askEnabled,
       hasFamilyHub,
@@ -4198,6 +4323,11 @@
   el("rm-add-habit").addEventListener("click",openHabitModal);
   el("rm-habit-form").addEventListener("submit",createHabit);
   document.querySelectorAll("[data-habit-close]").forEach((node)=>node.addEventListener("click",closeHabitModal));
+
+  document.querySelectorAll("[data-calendar-filter]").forEach((button)=>button.addEventListener("click",()=>{
+    calendarFilter=button.dataset.calendarFilter||"all";
+    renderMemberCalendar();
+  }));
 
   el("rm-privacy-request-type").addEventListener("change",updatePrivacyProviderScope);
   el("rm-privacy-request-form").addEventListener("submit",submitPrivacyRequest);

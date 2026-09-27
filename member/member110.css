@@ -2314,3 +2314,76 @@
 @media(max-width:620px){
   .rm198-progress-photos-list{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
+
+
+/* My Calendar vNext */
+.rm199-calendar-filters{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:10px;
+}
+.rm199-calendar-filters button{
+  min-height:30px;
+  padding:0 10px;
+  border:1px solid #d1ddd5;
+  border-radius:999px;
+  background:#fff;
+  color:#526d5f;
+  font-size:8px;
+  font-weight:900;
+}
+.rm199-calendar-filters button.active{
+  background:#154734;
+  color:#fff;
+  border-color:#154734;
+}
+.rm199-calendar-list{
+  display:grid;
+  gap:8px;
+  margin-top:12px;
+}
+.rm199-calendar-date{
+  margin-top:6px;
+  color:#315b45;
+  font-size:9px;
+  font-weight:950;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+.rm199-calendar-item{
+  display:grid;
+  grid-template-columns:88px minmax(0,1fr) auto;
+  gap:10px;
+  align-items:center;
+  padding:10px 11px;
+  border:1px solid #e1e9e4;
+  border-radius:10px;
+  background:#fbfcfb;
+}
+.rm199-calendar-type{
+  color:#6b7d73;
+  font-size:8px;
+  font-weight:900;
+}
+.rm199-calendar-item strong{
+  display:block;
+  color:#284f3d;
+  font-size:9.8px;
+}
+.rm199-calendar-item small{
+  display:block;
+  margin-top:3px;
+  color:#78877f;
+  font-size:8.2px;
+}
+.rm199-calendar-item a{
+  color:#154734;
+  font-size:8.5px;
+  font-weight:900;
+  text-decoration:none;
+}
+@media(max-width:620px){
+  .rm199-calendar-item{grid-template-columns:1fr auto}
+  .rm199-calendar-type{grid-column:1 / -1}
+}

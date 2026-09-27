@@ -155,3 +155,11 @@ These decisions resolve the earlier three-question Chat handoff. The old success
 - **D48 APPROVED:** browser upload is deferred until an atomic or compensating Storage+database workflow is implemented and tested. Phase 1 must not create orphan-file risk.
 - **D49 APPROVED:** Progress Photos Phase 1 is independently reversible behind `feature_member_progress_photos_vnext`, defaults false, loads post-first-paint, limits the first view to 12 recent photos, and degrades locally.
 - **D50 APPROVED:** photo analysis, AI inference, health scoring, cross-adult sharing, and Family Hub photo sharing are out of scope. See `docs/PROGRESS_PHOTOS_VNEXT.md`.
+
+
+## 2026-09-27 - My Calendar vNext
+
+- **D51 APPROVED:** My Calendar vNext uses existing `my_calendar_feed_60d` and shows only the next 30 days inside the member dashboard.
+- **D52 APPROVED:** first calendar slice exposes only item type, title, status, date/time, and safe location URL. Embedded metadata such as adherence, target values, points, or internal IDs is not member-facing in this slice.
+- **D53 APPROVED:** client-side filters are All, Coaching, Workouts, Meals, Goals, and Challenges. Journey appointments and coaching sessions both map to Coaching.
+- **D54 APPROVED:** Calendar vNext is independently reversible behind `feature_member_calendar_vnext`, defaults false, loads post-first-paint, is nonfatal/sequence-guarded, and is capped at 100 items. See `docs/CALENDAR_VNEXT.md`.
