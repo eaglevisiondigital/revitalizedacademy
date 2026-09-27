@@ -205,3 +205,6 @@ These decisions resolve the earlier three-question Chat handoff. The old success
 - **D72 APPROVED:** web member notifications use `my_notification_routes.route_key` only as a controlled in-page navigation key. The browser must not follow arbitrary notification `resolved_link_url` values in this first slice.
 - **D73 APPROVED:** only known existing dashboard sections may be opened from a notification. Unknown route keys remain non-navigable.
 - **D74 APPROVED:** Notification Routing vNext is independently reversible behind `feature_member_notification_routing_vnext`, defaults false, loads after first paint, and preserves Read/Dismiss behavior if routing is unavailable.
+
+
+- **D75 APPROVED:** ready Privacy Center data exports may be downloaded only through authenticated, 5-minute signed URLs from the private `privacy-exports` bucket. Raw `available_storage_path` values must remain internal and must never be rendered as member-facing links or text.
