@@ -725,6 +725,48 @@
             <p id="rm-member-password-status" class="rm112-status" aria-live="polite"></p>
           </form>
         </div>
+
+        <div id="rm-privacy-center" class="rm197-privacy-center hidden">
+          <div class="rm197-privacy-head">
+            <div>
+              <p class="rm112-kicker">PRIVACY &amp; DATA</p>
+              <h3>Your Privacy Center</h3>
+              <span>Manage connected health providers and submit data/privacy requests. Destructive requests are reviewed before action is taken.</span>
+            </div>
+          </div>
+
+          <div id="rm-privacy-health-summary" class="rm197-privacy-summary"></div>
+
+          <div class="rm197-privacy-section">
+            <strong>Connected Health Providers</strong>
+            <p>Disconnecting stops future sync and revokes current metric consent for that provider. It does not erase previously stored history.</p>
+            <div id="rm-privacy-connections" class="rm197-privacy-list"></div>
+          </div>
+
+          <form id="rm-privacy-request-form" class="rm197-privacy-form">
+            <strong>Submit a Privacy or Data Request</strong>
+            <label><span>Request Type</span>
+              <select id="rm-privacy-request-type" required>
+                <option value="data_export">Data Export</option>
+                <option value="health_data_delete">Health Data Removal</option>
+                <option value="account_delete">Account Deletion</option>
+                <option value="correction">Data Correction</option>
+                <option value="other">Other Privacy Request</option>
+              </select>
+            </label>
+            <label id="rm-privacy-provider-field" class="hidden"><span>Health Provider Scope</span>
+              <select id="rm-privacy-provider"></select>
+            </label>
+            <label><span>Notes</span><textarea id="rm-privacy-note" rows="3" maxlength="4000" placeholder="Add any details that will help the ReVitalized team process your request."></textarea></label>
+            <button type="submit">Submit Request</button>
+            <p id="rm-privacy-status" class="rm112-status" aria-live="polite"></p>
+          </form>
+
+          <div class="rm197-privacy-section">
+            <strong>Request History</strong>
+            <div id="rm-privacy-requests" class="rm197-privacy-list"></div>
+          </div>
+        </div>
       </section>
 
       <section class="rm112-card rm121-settings-card">

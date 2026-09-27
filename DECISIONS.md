@@ -136,3 +136,13 @@ These decisions resolve the earlier three-question Chat handoff. The old success
 - **D37 APPROVED:** Family Hub vNext must not use `my_family_progress_dashboard`, `my_family_dashboard_summary_v2`, `my_family_wellness_summary`, family/member health scores, or raw adult health data in this slice.
 - **D38 APPROVED:** the family schedule may show only non-health counts for coaching sessions, workouts, meals, goals due, and challenges ending.
 - **D39 APPROVED:** Family Hub vNext is entitlement-gated, independently reversible behind `feature_member_family_vnext`, defaults false, and loads post-first-paint with local failure degradation. See `docs/FAMILY_VNEXT.md`.
+
+
+## 2026-09-27 - Account Privacy Center vNext
+
+- **D40 APPROVED:** first Privacy Center UI is embedded inside My Account and uses existing member-scoped privacy workflows rather than creating a parallel privacy system.
+- **D41 APPROVED:** provider disconnect stops future sync and revokes current provider metric consent but does not represent deletion of stored history.
+- **D42 APPROVED:** health-data deletion and account deletion remain review/approval workflows. The browser may submit requests but must not execute destructive deletion directly.
+- **D43 APPROVED:** data-export request/status may be shown, but internal `available_storage_path` or other private Storage paths must not be surfaced as user download URLs. Controlled signed delivery is a later phase.
+- **D44 APPROVED:** this first Privacy Center slice preserves the current backend active-member authorization boundary. Access for payment-suspended/onboarding/former members is a future explicit lifecycle decision, not a frontend bypass.
+- **D45 APPROVED:** Privacy Center vNext is independently reversible behind `feature_member_privacy_center`, default false, and loads after first paint with local failure degradation. See `docs/PRIVACY_CENTER_VNEXT.md`.

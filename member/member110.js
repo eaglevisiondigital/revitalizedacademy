@@ -724,6 +724,7 @@
   let progressVNextEnabled = false;
   let coachingVNextEnabled = false;
   let familyVNextEnabled = false;
+  let privacyCenterEnabled = false;
   let dashboardLoadSequence = 0;
   let latestGoalRows = [];
   let goalProgressById = new Map();
@@ -2964,6 +2965,170 @@
     },700);
   }
 
+  function updatePrivacyProviderScope(){
+    const type=el("rm-privacy-request-type")?.value||"";
+    const field=el("rm-privacy-provider-field");
+    if(field)field.classList.toggle("hidden",type!=="health_data_delete");
+  }
+
+  function renderPrivacyCenter(row){
+    const section=el("rm-privacy-center");
+    if(!section)return;
+
+    if(!privacyCenterEnabled){
+      section.classList.add("hidden");
+      return;
+    }
+    section.classList.remove("hidden");
+
+    const connections=Array.isArray(row?.health_connections)?row.health_connections:[];
+    const requests=Array.isArray(row?.privacy_requests)?row.privacy_requests:[];
+
+    const summary=el("rm-privacy-health-summary");
+    summary.replaceChildren();
+    [
+      ["Stored Health Records",Number(row?.stored_health_observation_count||0)],
+      ["Latest Health Record",row?.latest_health_observation_at?formatDate(row.latest_health_observation_at,true):"None"]
+    ].forEach(([label,value])=>{
+      const item=document.createElement("div");
+      const s=document.createElement("span");s.textContent=label;
+      const b=document.createElement("strong");b.textContent=String(value);
+      item.append(s,b);summary.append(item);
+    });
+
+    const providerSelect=el("rm-privacy-provider");
+    providerSelect.replaceChildren();
+    const all=document.createElement("option");
+    all.value="";all.textContent="All connected providers";
+    providerSelect.append(all);
+
+    const providerList=el("rm-privacy-connections");
+    providerList.replaceChildren();
+    if(!connections.length){
+      providerList.innerHTML='<div class="rm112-empty">No connected health providers are associated with this account.</div>';
+    }else{
+      connections.forEach((row)=>{
+        const option=document.createElement("option");
+        option.value=row.provider_key;
+        option.textContent=row.provider_name||title(row.provider_key);
+        providerSelect.append(option);
+
+        const item=document.createElement("div");
+        item.className="rm197-privacy-provider";
+        const copy=document.createElement("div");
+        const h=document.createElement("strong");h.textContent=row.provider_name||title(row.provider_key);
+        const meta=document.createElement("span");
+        meta.textContent=[
+          title(row.status||"unknown"),
+          row.last_successful_sync_at?"Last sync "+formatDate(row.last_successful_sync_at,true):null
+        ].filter(Boolean).join(" · ");
+        copy.append(h,meta);
+        item.append(copy);
+
+        if(row.status==="connected"){
+          const button=document.createElement("button");
+          button.type="button";
+          button.className="secondary";
+          button.textContent="Disconnect";
+          button.addEventListener("click",()=>disconnectPrivacyProvider(row.provider_key,row.provider_name||row.provider_key));
+          item.append(button);
+        }
+        providerList.append(item);
+      });
+    }
+
+    const requestList=el("rm-privacy-requests");
+    requestList.replaceChildren();
+    if(!requests.length){
+      requestList.innerHTML='<div class="rm112-empty">No privacy or data requests have been submitted.</div>';
+    }else{
+      requests.slice(0,12).forEach((row)=>{
+        const item=document.createElement("div");
+        item.className="rm197-privacy-request";
+        const copy=document.createElement("div");
+        const h=document.createElement("strong");h.textContent=title(row.request_type);
+        const meta=document.createElement("span");
+        meta.textContent=[
+          title(row.status),
+          row.requested_at?"Requested "+formatDate(row.requested_at,true):null,
+          row.completed_at?"Completed "+formatDate(row.completed_at,true):null
+        ].filter(Boolean).join(" · ");
+        copy.append(h,meta);item.append(copy);requestList.append(item);
+      });
+    }
+    updatePrivacyProviderScope();
+  }
+
+  async function loadPrivacyCenterEnhancement(loadSequence){
+    const flagResult=await client
+      .from("app_runtime_config")
+      .select("config_value")
+      .eq("config_key","feature_member_privacy_center")
+      .eq("active",true)
+      .maybeSingle();
+
+    if(loadSequence!==dashboardLoadSequence)return;
+    privacyCenterEnabled=Boolean(!flagResult.error&&flagResult.data?.config_value===true);
+    if(!privacyCenterEnabled){
+      renderPrivacyCenter(null);
+      return;
+    }
+
+    const result=await client.from("my_privacy_center").select("*").maybeSingle();
+    if(loadSequence!==dashboardLoadSequence)return;
+    if(result.error){
+      console.warn("Privacy Center optional read unavailable:","my_privacy_center",result.error.message);
+      renderPrivacyCenter(null);
+      return;
+    }
+    renderPrivacyCenter(result.data||null);
+  }
+
+  async function submitPrivacyRequest(event){
+    event.preventDefault();
+    if(!privacyCenterEnabled)return;
+
+    const type=el("rm-privacy-request-type").value;
+    const provider=el("rm-privacy-provider").value;
+    const note=el("rm-privacy-note").value.trim();
+    const status=el("rm-privacy-status");
+
+    if(type==="account_delete"&&!window.confirm("Submit an account deletion request for staff review? This does not delete your account immediately."))return;
+    if(type==="health_data_delete"&&!window.confirm("Submit a health-data removal request for staff review? Disconnecting a provider and deleting stored history are separate actions."))return;
+
+    const scope=type==="health_data_delete"&&provider?{provider_key:provider}:{};
+    showStatus(status,"Submitting request...");
+    const {error}=await client.rpc("submit_my_privacy_request",{
+      p_request_type:type,
+      p_scope:scope,
+      p_member_note:note||null
+    });
+    if(error){
+      showStatus(status,error.message||"Your request could not be submitted.","error");
+      return;
+    }
+
+    el("rm-privacy-note").value="";
+    showStatus(status,"Request submitted for review.","success");
+    await loadPrivacyCenterEnhancement(dashboardLoadSequence);
+  }
+
+  async function disconnectPrivacyProvider(providerKey,providerName){
+    if(!window.confirm("Disconnect "+providerName+"? Future sync will stop and current metric consent for this provider will be revoked. Stored history is not deleted by this action."))return;
+    const status=el("rm-privacy-status");
+    showStatus(status,"Disconnecting provider...");
+    const {error}=await client.rpc("disconnect_my_health_provider",{
+      p_provider_key:providerKey,
+      p_revoke_all_metric_consents:true
+    });
+    if(error){
+      showStatus(status,error.message||"Provider could not be disconnected.","error");
+      return;
+    }
+    showStatus(status,"Provider disconnected. Existing stored history remains unless a separate removal request is approved.","success");
+    await loadDashboard();
+  }
+
   function homeVNextTarget(actionType){
     return ({
       assignment_overdue:"#rm-assignments",
@@ -3637,6 +3802,7 @@
     progressVNextEnabled=false;
     coachingVNextEnabled=false;
     familyVNextEnabled=false;
+    privacyCenterEnabled=false;
     goalProgressById=new Map();
     latestGoalRows=[];
     const [
@@ -3767,6 +3933,7 @@
     void loadProgressVNextEnhancements(loadSequence);
     void loadCoachingVNextEnhancement(loadSequence);
     void loadFamilyVNextEnhancement(loadSequence,hasFamilyHub);
+    void loadPrivacyCenterEnhancement(loadSequence);
     void loadDeferredMemberModules(loadSequence,{
       askEnabled,
       hasFamilyHub,
@@ -3920,6 +4087,9 @@
   el("rm-add-habit").addEventListener("click",openHabitModal);
   el("rm-habit-form").addEventListener("submit",createHabit);
   document.querySelectorAll("[data-habit-close]").forEach((node)=>node.addEventListener("click",closeHabitModal));
+
+  el("rm-privacy-request-type").addEventListener("change",updatePrivacyProviderScope);
+  el("rm-privacy-request-form").addEventListener("submit",submitPrivacyRequest);
 
   el("rm-member-profile-form").addEventListener("submit",saveMemberProfile);
   el("rm-member-change-password").addEventListener("click",()=>{
