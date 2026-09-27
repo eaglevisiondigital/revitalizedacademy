@@ -16,6 +16,13 @@ function cors(origin:string|null){
 function json(origin:string|null,data:unknown,status=200){
   return new Response(JSON.stringify(data),{status,headers:{...cors(origin),"Content-Type":"application/json","Cache-Control":"no-store"}});
 }
+async function supportConversationId(contactId:string){
+  const digest=new Uint8Array(await crypto.subtle.digest("SHA-256",new TextEncoder().encode("revitalized-support:"+contactId)));
+  digest[6]=(digest[6]&0x0f)|0x50;
+  digest[8]=(digest[8]&0x3f)|0x80;
+  const hex=[...digest.slice(0,16)].map(b=>b.toString(16).padStart(2,"0")).join("");
+  return hex.slice(0,8)+"-"+hex.slice(8,12)+"-"+hex.slice(12,16)+"-"+hex.slice(16,20)+"-"+hex.slice(20,32);
+}
 
 export async function handleRequest(req:Request){
   const configError=configurationError();if(configError)return configError;
@@ -60,7 +67,9 @@ export async function handleRequest(req:Request){
 
     let conversation=existing;
     if(!conversation){
-      const {data:created,error:createError}=await admin.from("member_conversations").insert({
+      const deterministicId=await supportConversationId(access.contact_id);
+      const {error:createError}=await admin.from("member_conversations").upsert({
+        id:deterministicId,
         conversation_type:"support",
         contact_id:access.contact_id,
         household_id:access.household_id||null,
@@ -68,8 +77,14 @@ export async function handleRequest(req:Request){
         title:"ReVitalized Support",
         status:"active",
         created_by:user.id
-      }).select("id,title,status,last_message_at").single();
-      if(createError||!created)throw createError||new Error("Support conversation could not be created.");
+      },{onConflict:"id",ignoreDuplicates:true});
+      if(createError)throw createError;
+      const {data:created,error:readError}=await admin.from("member_conversations")
+        .select("id,title,status,last_message_at")
+        .eq("id",deterministicId)
+        .eq("contact_id",access.contact_id)
+        .maybeSingle();
+      if(readError||!created)throw readError||new Error("Support conversation could not be created.");
       conversation=created;
     }
 
