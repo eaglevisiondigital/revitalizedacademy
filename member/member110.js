@@ -323,8 +323,13 @@
     });
   }
 
-  async function loadProgressVNextEnhancements(loadSequence,flagPromise){
-    const flagResult=await flagPromise;
+  async function loadProgressVNextEnhancements(loadSequence){
+    const flagResult=await client
+      .from("app_runtime_config")
+      .select("config_value")
+      .eq("config_key","feature_member_progress_vnext")
+      .eq("active",true)
+      .maybeSingle();
     if(loadSequence!==dashboardLoadSequence)return;
     progressVNextEnabled=Boolean(!flagResult.error&&flagResult.data?.config_value===true);
     if(!progressVNextEnabled){
@@ -3284,8 +3289,13 @@
     renderJourneyCard(result.data||null);
   }
 
-  async function loadHomeVNextEnhancements(loadSequence,flagPromise,attentionContext,weeklyFallback){
-    const flagResult=await flagPromise;
+  async function loadHomeVNextEnhancements(loadSequence,attentionContext,weeklyFallback){
+    const flagResult=await client
+      .from("app_runtime_config")
+      .select("config_value")
+      .eq("config_key","feature_member_home_vnext")
+      .eq("active",true)
+      .maybeSingle();
     if(loadSequence!==dashboardLoadSequence)return;
     homeVNextEnabled=Boolean(!flagResult.error&&flagResult.data?.config_value===true);
     if(!homeVNextEnabled){
@@ -3472,18 +3482,6 @@
     progressVNextEnabled=false;
     goalProgressById=new Map();
     latestGoalRows=[];
-    const homeVNextFlagPromise=client
-      .from("app_runtime_config")
-      .select("config_value")
-      .eq("config_key","feature_member_home_vnext")
-      .eq("active",true)
-      .maybeSingle();
-    const progressVNextFlagPromise=client
-      .from("app_runtime_config")
-      .select("config_value")
-      .eq("config_key","feature_member_progress_vnext")
-      .eq("active",true)
-      .maybeSingle();
     const [
       bootstrapResult,
       dashboardResult,
@@ -3608,8 +3606,8 @@
       notifications:notificationsResult.data||[]
     };
     void loadJourneyEnhancement(loadSequence);
-    void loadHomeVNextEnhancements(loadSequence,homeVNextFlagPromise,attentionContext,weeklySummaryResult.data||null);
-    void loadProgressVNextEnhancements(loadSequence,progressVNextFlagPromise);
+    void loadHomeVNextEnhancements(loadSequence,attentionContext,weeklySummaryResult.data||null);
+    void loadProgressVNextEnhancements(loadSequence);
     void loadDeferredMemberModules(loadSequence,{
       askEnabled,
       hasFamilyHub,

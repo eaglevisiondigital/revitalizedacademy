@@ -10,7 +10,7 @@ test('Progress vNext is additive, post-first-paint and feature flagged',()=>{
   for(const view of ['my_goal_progress','my_achievements','my_progress_insights'])assert(js.includes(view),view);
   const load=js.indexOf('async function loadDashboard()');
   const show=js.indexOf('showOnly("rm-dashboard")',load);
-  const launch=js.indexOf('loadProgressVNextEnhancements(loadSequence,progressVNextFlagPromise)',show);
+  const launch=js.indexOf('loadProgressVNextEnhancements(loadSequence)',show);
   assert(show>load&&launch>show);
   assert.match(html,/id="rm-progress-achievements-card"[^>]*hidden/);
   assert.match(html,/id="rm-progress-trends-card"[^>]*hidden/);
