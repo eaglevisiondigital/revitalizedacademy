@@ -225,3 +225,12 @@ These decisions resolve the earlier three-question Chat handoff. The old success
 - **D82 APPROVED:** support access is independent from `member_paid_access_allowed()`. It must not unlock coaching content, health data, community, courses, Family Hub, AI, or other paid benefits.
 - **D83 APPROVED:** support is available from both Enrollment & Signature Center and the active member Messages area, backed by the same support conversation.
 - **D84 APPROVED:** support-message retries use client-generated UUID message IDs, and support conversation creation uses a deterministic contact-scoped UUID to avoid duplicate support threads under concurrent requests.
+
+
+## 2026-09-27 - Message attachment upload hardening
+
+- **D85 APPROVED:** member message attachments use a dedicated authenticated Edge Function rather than direct browser Storage + attachment-row mutation.
+- **D86 APPROVED:** attachments remain limited to the existing private-bucket policy: PDF, JPEG, PNG, WebP, MP3/MPEG, MP4/M4A audio and WAV, maximum 10 MB, with server-side file-signature validation.
+- **D87 APPROVED:** the server verifies that the authenticated user owns the message and is an active participant in its conversation before accepting an attachment.
+- **D88 APPROVED:** attachment uploads use client-generated UUID idempotency and compensating Storage cleanup if the database attachment record cannot be written.
+- **D89 APPROVED:** the browser may retry a transient attachment failure once using the same attachment UUID, allowing a lost successful response to resolve as an idempotent replay instead of creating a duplicate.
