@@ -73,3 +73,171 @@ Current implementation commits:
 - `9a413efd63bc8480578dc55ff759531c577ef0d2` optional-module dashboard resilience
 
 Hosted staging acceptance remains the release gate.
+
+
+## 2026-09-27 — member experience vNext build wave
+
+**IMPLEMENTED on `codex/staging`, NOT DEPLOYED, production unchanged.**
+
+Current member app still preserves `my_app_bootstrap_v2` as the core contract/fallback.
+
+### Loading / resilience
+
+- paid-access preflight remains first
+- critical first-screen database wave is reduced to three reads:
+  - `my_app_bootstrap_v2`
+  - `my_member_dashboard`
+  - `my_member_entitlements`
+- journey and feature enrichments load after first paint
+- lower-priority modules load through sequence-guarded deferred reads
+- optional feature failures degrade locally rather than denying the entire dashboard
+- signout reloads the member page to clear rendered private state between users
+
+### Home / Today vNext
+
+Default-off runtime flag:
+`feature_member_home_vnext`
+
+Adds:
+- backend-driven priorities via `my_next_best_actions`
+- compact Up Next via `my_up_next`
+- richer weekly progress story via `my_weekly_progress_story`
+
+The existing v2 Today and attention behavior remains the fallback.
+
+### Progress vNext
+
+Default-off runtime flag:
+`feature_member_progress_vnext`
+
+Adds:
+- deterministic goal progress
+- achievements
+- descriptive 30-day progress insights
+
+No Health Score, medical interpretation, or invented completion is introduced.
+
+### Progress Photos vNext Phase 1
+
+Default-off runtime flag:
+`feature_member_progress_photos_vnext`
+
+Viewing only:
+- member-scoped photo sets/photos
+- private `progress-photos` bucket
+- 5-minute signed URLs
+- no `getPublicUrl`
+- no raw Storage path rendered to the member
+- no upload/delete flow yet
+
+Upload remains intentionally deferred until Storage + database writes have an atomic or compensating workflow.
+
+### Coaching Hub vNext
+
+Default-off runtime flag:
+`feature_member_coaching_vnext`
+
+Enriches the existing Coaching Hub with deterministic `my_coaching_momentum` context:
+- 7-day plan completion
+- planned/full days
+- last check-in/progress timestamps
+- active/overdue goals
+- momentum state
+
+No duplicate coaching dashboard and no medical/AI interpretation.
+
+### Family Hub vNext
+
+Default-off runtime flag:
+`feature_member_family_vnext`
+
+Adds the 14-day non-health family schedule from `my_family_calendar_summary`.
+
+Explicitly excludes:
+- family/member health scores
+- `my_family_progress_dashboard`
+- `my_family_dashboard_summary_v2`
+- `my_family_wellness_summary`
+- raw adult health data
+
+### Privacy Center vNext
+
+Default-off runtime flag:
+`feature_member_privacy_center`
+
+Inside My Account:
+- connected provider visibility
+- provider disconnect
+- data-export request
+- health-data removal request
+- account-deletion request
+- correction/other privacy request
+- request history/status
+
+No direct destructive browser action and no private export Storage path exposure.
+
+Current backend privacy request access is active-member scoped. Restricted/former-member privacy access remains a future explicit lifecycle decision.
+
+### My Calendar vNext
+
+Default-off runtime flag:
+`feature_member_calendar_vnext`
+
+Adds a unified next-30-day member calendar using `my_calendar_feed_60d`.
+
+Member-facing fields are limited to:
+- type
+- title
+- status
+- date/time
+- safe location URL
+
+Embedded backend metadata is not surfaced.
+
+### Notification Settings vNext
+
+Upgrades the existing settings form in place:
+- quiet hours
+- quiet-hour start/end
+- member IANA time zone
+- save via `update_my_notification_preferences` RPC
+
+Existing in-app/email/SMS controls remain.
+
+Push preference UI remains intentionally hidden until the push update contract and hosted delivery are proven.
+
+### Ask ReVitalized member feedback
+
+Connects the existing feedback backend to answered/resolved responses:
+- Helpful
+- Needs Review
+- backend-approved reason
+- optional comment
+
+Uses `my_companion_feedback` and `submit_my_companion_feedback`.
+
+Negative feedback continues into the existing quality/human-review workflow. Generation/safety behavior is unchanged.
+
+### Health Trends vNext
+
+Default-off runtime flag:
+`feature_member_health_trends_vnext`
+
+Biometrics-gated descriptive trend visualization:
+- up to four recent numeric metrics
+- latest value/unit
+- 30-day sparkline
+- absolute change
+- latest timestamp
+
+Uses `my_health_dashboard_cards_30d` and `get_my_health_metric_trend`.
+
+No Health Score, Family Health Score, diagnosis, treatment language, or good/bad interpretation.
+
+### Current release posture
+
+All work above remains staging-branch implementation only.
+
+Do not enable any default-off vNext flag in production before isolated hosted staging acceptance.
+
+The production lifecycle/security migrations remain unapplied and production remains Build 192.
