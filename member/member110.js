@@ -3102,6 +3102,82 @@
         item.append(note);
       }
 
+      if(["answered","resolved"].includes(row.status)&&row.final_answer){
+        const existing=feedbackByRequest.get(row.request_id)||null;
+        const feedback=document.createElement("div");
+        feedback.className="rm201-ask-feedback";
+
+        const prompt=document.createElement("span");
+        prompt.textContent=existing
+          ?(existing.helpful?"You marked this response helpful.":"You asked for additional review.")
+          :"Was this response helpful?";
+
+        const actions=document.createElement("div");
+        actions.className="rm201-feedback-actions";
+
+        const helpful=document.createElement("button");
+        helpful.type="button";
+        helpful.textContent="Helpful";
+        helpful.classList.toggle("active",existing?.helpful===true);
+        helpful.addEventListener("click",()=>submitAskFeedback(row.request_id,true,null,null));
+
+        const review=document.createElement("button");
+        review.type="button";
+        review.textContent="Needs Review";
+        review.classList.toggle("active",existing?.helpful===false);
+
+        const form=document.createElement("form");
+        form.className="rm201-feedback-form hidden";
+
+        const reason=document.createElement("select");
+        [
+          ["not_relevant","Not Relevant"],
+          ["unclear","Unclear"],
+          ["incorrect","Incorrect"],
+          ["missing_context","Missing Context"],
+          ["too_generic","Too Generic"],
+          ["needs_coach","I Need My Coach"],
+          ["other","Other"]
+        ].forEach(([value,label])=>{
+          const option=document.createElement("option");
+          option.value=value;
+          option.textContent=label;
+          reason.append(option);
+        });
+        reason.value=existing?.helpful===false&&existing.feedback_reason
+          ?existing.feedback_reason
+          :"needs_coach";
+
+        const comment=document.createElement("textarea");
+        comment.rows=2;
+        comment.maxLength=2000;
+        comment.placeholder="Optional note for the ReVitalized team";
+        comment.value=existing?.helpful===false&&existing.comment?existing.comment:"";
+
+        const submit=document.createElement("button");
+        submit.type="submit";
+        submit.textContent="Send for Review";
+
+        const note=document.createElement("small");
+        note.textContent="Negative feedback can route this response to human review.";
+
+        form.append(reason,comment,submit,note);
+        form.addEventListener("submit",async(event)=>{
+          event.preventDefault();
+          await submitAskFeedback(
+            row.request_id,
+            false,
+            reason.value,
+            comment.value.trim()||null
+          );
+        });
+
+        review.addEventListener("click",()=>form.classList.toggle("hidden"));
+        actions.append(helpful,review);
+        feedback.append(prompt,actions,form);
+        item.append(feedback);
+      }
+
       const meta=document.createElement("small");
       meta.textContent=[
         row.assigned_coach_name?"Coach: "+row.assigned_coach_name:null,
