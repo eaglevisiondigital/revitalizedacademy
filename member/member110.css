@@ -2627,3 +2627,11 @@
   .rm203-photo-meta,.rm203-photo-files{grid-template-columns:1fr}
   .rm203-photo-meta .wide{grid-column:auto}
 }
+
+
+.rm204-message-head-actions{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
