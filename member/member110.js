@@ -548,8 +548,12 @@
     el("rm-agreement-signer-name").value=row.merge_values?.client_name||"";
     el("rm-agreement-secondary-signer-name").value=row.merge_values?.secondary_client_name||"";
     const needsSecondary=Number(row.required_client_signatures||1)===2;
-    el("rm-agreement-secondary-signer-field").classList.toggle("hidden",!needsSecondary);
-    el("rm-agreement-secondary-signer-name").required=needsSecondary;
+    el("rm-agreement-secondary-signer-field").classList.add("hidden");
+    let invitationLink=el("rm-independent-signers");
+    if(!invitationLink){invitationLink=document.createElement("a");invitationLink.id="rm-independent-signers";invitationLink.href="/member/onboarding/";el("rm-agreement-sign-form").before(invitationLink);}
+    invitationLink.textContent="Manage the second adult’s invitation in the Signature Center";
+    invitationLink.classList.toggle("hidden",!needsSecondary);
+    el("rm-agreement-secondary-signer-name").required=false;
     el("rm-agreement-accept").checked=false;
     showStatus(el("rm-agreement-sign-status"),"");
 
@@ -578,12 +582,7 @@
       signer_role:"primary_client",
       signer_name:el("rm-agreement-signer-name").value.trim()
     }];
-    if(Number(activeAgreement.required_client_signatures||1)===2){
-      signatures.push({
-        signer_role:"secondary_client",
-        signer_name:el("rm-agreement-secondary-signer-name").value.trim()
-      });
-    }
+
 
     const {data,error}=await client.functions.invoke("agreement-sign",{
       body:{
@@ -2985,6 +2984,9 @@
   }
 
   async function loadDashboard() {
+    const {data:lifecycle,error:lifecycleError}=await client.rpc("member_paid_access_allowed");
+    if(lifecycleError)throw lifecycleError;
+    if(lifecycle!==true){window.location.replace("/member/onboarding/");return;}
     const [
       bootstrapResult,
       dashboardResult,

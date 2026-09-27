@@ -291,3 +291,11 @@ Read supabase/SOURCE_RECOVERY.md before database work. The historical snapshot i
 Run npm test, npm run check:js, npm run test:backend and frozen Deno check/test as applicable. The backend test runner only creates disposable databases on loopback. Preserve explicit retired-test classifications; do not renew whole-page historical hashes as a shortcut.
 
 Current branch: codex/backend-security-gate. Baseline docs are committed as 562db3f. Current code fixes are not deployed. For this authorized branch push, use [skip netlify] in the latest commit message to prevent Netlify deploys. No deployment workflow belongs in this package. Preserve the existing v2 consumer; use docs/BOOTSTRAP_COMPATIBILITY.md for staged integration.
+
+CLIENT LIFECYCLE PACKAGE — approved 2026-09-26
+
+Current branch: codex/client-access-lifecycle, based on verified backend-security-gate commit 018c7441e318b6bde72d8001b796c7d587de7b61. This package explicitly builds on that security work rather than origin/main alone. The user authorizes code/local-staging implementation, tests and existing normal codex/* branch publication; no merge, deployment or remote migrations. Use [skip netlify] on branch commits.
+
+Read docs/CLIENT_ACCESS_LIFECYCLE.md and docs/engineering/LIFECYCLE_TEST_RESULTS.md. Limited onboarding, independently authenticated secondary adults, and payment suspension/restoration are approved, not open policy questions. Preserve the existing client_access/membership/activation/ledger/agreement architecture and v2 bootstrap. Never restore same-account two-slot signatures. Do not invent scoring or broaden adult health sharing.
+
+Treat invitation delivery copies as secrets: the private durable table stores only hashes; delivery rows containing invitation links are unavailable to authenticated clients and redacted by the dispatcher. Verify recipient email, expiry, revocation, hash and caller identity. Restrictive RLS must accompany any future paid-member table. Preserve the read-only release boundary and require a real staging acceptance report before production authorization.

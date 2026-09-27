@@ -139,6 +139,13 @@ Deno.serve(async(req:Request)=>{
     const results:any[]=[];
 
     for(const job of jobs||[]){
+      if(job.signer_invitation_id){
+        const {data:deliverable,error}=await admin.rpc("signer_invitation_deliverable",{p_invitation_id:job.signer_invitation_id});
+        if(error||deliverable!==true){
+          await admin.from("notification_delivery_jobs").update({status:"cancelled",body:"Invitation unavailable."}).eq("id",job.id);
+          continue;
+        }
+      }
       const now=new Date().toISOString();
       await admin.from("notification_delivery_jobs").update({
         status:"processing",
@@ -157,6 +164,7 @@ Deno.serve(async(req:Request)=>{
       if(result.ok){
         await admin.from("notification_delivery_jobs").update({
           status:"sent",
+          ...(job.signer_invitation_id?{body:"Agreement invitation delivered; secret removed."}:{}),
           provider_message_id:result.provider_message_id||null,
           sent_at:new Date().toISOString(),
           error_message:null,

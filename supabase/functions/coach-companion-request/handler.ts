@@ -71,6 +71,8 @@ export async function handleRequest(req:Request){
         .select("membership_id").eq("contact_id",contactId).maybeSingle();
       membershipId=access?.membership_id||null;
     }else{
+      const {data:paid,error:paidError}=await caller.rpc("member_paid_access_allowed");
+      if(paidError||paid!==true)return json(origin,{error:"Full member access is required."},403);
       const {data:access,error:accessError}=await admin.from("client_access")
         .select("contact_id,membership_id,status").eq("user_id",user.id).maybeSingle();
       if(accessError)throw accessError;

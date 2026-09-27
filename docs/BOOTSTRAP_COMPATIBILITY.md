@@ -27,3 +27,5 @@ Health connections/permissions/wearable snapshot/dashboard cards; progress photo
 5. Work validates authenticated desktop/mobile flows in an approved staging origin, including slow/failed responses and expired sessions. Promote only after release approval, observability and rollback review.
 
 **UNKNOWN:** production-shaped performance, comprehensive cross-household/minor policy acceptance, original assessment source documents and the approved staging/Netlify environment. These remain release/integration prerequisites; this package does not claim them complete.
+
+Client lifecycle extension: member/member110.js now calls `member_paid_access_allowed` before its existing v2 reads. Restricted identities go to `/member/onboarding/`, which uses `my_onboarding_context` and scoped signing/invitation RPCs. This is a prerequisite access check, not a v27 migration. The database/RLS/API layers also deny paid access independently of navigation.

@@ -556,6 +556,10 @@
       return;
     }
 
+    if(el("override-agreement-status").value==="waived"){
+      status("override-agreement-message","Open this client’s Agreements section and waive each required agreement individually, with a reason.","error");
+      return;
+    }
     status("override-agreement-message", "Saving agreement status...");
 
     try {

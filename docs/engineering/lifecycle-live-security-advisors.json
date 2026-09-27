@@ -1,0 +1,14 @@
+{
+  "environment": "live production; read-only; this branch is NOT applied",
+  "project": "voalfpxiyznnqfcqcymd",
+  "retrieved_at": "2026-09-27T02:18Z",
+  "type": "security",
+  "findings": [
+    {
+      "name": "auth_leaked_password_protection",
+      "level": "WARN",
+      "count": 1,
+      "remediation": "https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection"
+    }
+  ]
+}

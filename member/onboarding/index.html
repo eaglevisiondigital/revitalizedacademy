@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive"><meta name="referrer" content="no-referrer">
+<title>Enrollment & Signature Center | ReVitalized Academy</title>
+<link rel="icon" href="../../assets/images/revitalized-logo-dark-approved-v69.png">
+<link rel="stylesheet" href="onboarding.css">
+</head>
+<body>
+<main>
+<header><a href="../../"><img src="../../assets/images/revitalized-logo-dark-approved-v69.png" alt="ReVitalized Academy"></a><h1>Enrollment & Signature Center</h1></header>
+<p id="status" role="status" aria-live="polite">Loading your account…</p>
+<section id="auth" hidden>
+<h2>Sign in with your own account</h2>
+<p>Each adult must use their own verified email and sign for themselves. An agreement invitation does not grant access to another adult’s private information.</p>
+<form id="login">
+<label>Email <input id="email" type="email" autocomplete="email" required></label>
+<label>Password <input id="password" type="password" autocomplete="current-password" minlength="10" maxlength="128" required></label>
+<div class="actions"><button type="submit">Sign in</button><button id="signup" type="button">Create my account</button></div>
+</form>
+<p>When creating an account, verify your email, then reopen your original enrollment or agreement invitation.</p>
+</section>
+<section id="account" hidden>
+<div class="actions"><p id="account-email"></p><button id="signout" type="button">Sign out</button><a id="member-link" href="../" hidden>Open member dashboard</a></div>
+<h2 id="state-title">Your enrollment</h2><p id="state-description"></p>
+<div id="enrollments"></div>
+<h2>Required agreements</h2><div id="agreements"></div>
+<h2>Account notices</h2><div id="notices"></div>
+<button id="refresh" type="button">Refresh payment and agreement status</button>
+</section>
+<footer><h2>Need help?</h2><p>For billing, an invitation, an agreement, or access to your account, <a href="mailto:contact@revitalizedacademy.com">contact ReVitalized Academy</a>.</p><p>Your account and historical information are preserved during payment restriction.</p></footer>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.js"></script>
+<script src="onboarding.js"></script>
+</body></html>

@@ -1,0 +1,90 @@
+Check tests/edge/authorization_test.ts
+------- pre-test output -------
+(node:16657) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+----- pre-test output end -----
+running 16 tests from ./tests/edge/authorization_test.ts
+staff companion denies missing permission before any privileged write ...
+------- output -------
+Error: Active staff permission and contact access required.
+    at assertStaffAction (file://<repo>/supabase/functions/_shared/authorization.ts:18:25)
+    at async handleRequest (file://<repo>/supabase/functions/coach-companion-request/handler.ts:69:7)
+    at async run (file://<repo>/tests/edge/authorization_test.ts:42:22)
+    at async file://<repo>/tests/edge/authorization_test.ts:46:25
+    at async innerWrapped (ext:cli/40_test.js:300:5)
+    at async exitSanitizer (ext:cli/40_test.js:201:27)
+    at async outerWrapped (ext:cli/40_test.js:239:22) {
+  status: 403
+}
+----- output end -----
+staff companion denies missing permission before any privileged write ... ok (17ms)
+staff companion denies cross contact before any privileged write ...
+------- output -------
+Error: Active staff permission and contact access required.
+    at assertStaffAction (file://<repo>/supabase/functions/_shared/authorization.ts:18:25)
+    at async handleRequest (file://<repo>/supabase/functions/coach-companion-request/handler.ts:69:7)
+    at async run (file://<repo>/tests/edge/authorization_test.ts:42:22)
+    at async file://<repo>/tests/edge/authorization_test.ts:46:25
+    at async innerWrapped (ext:cli/40_test.js:300:5)
+    at async exitSanitizer (ext:cli/40_test.js:201:27)
+    at async outerWrapped (ext:cli/40_test.js:239:22) {
+  status: 403
+}
+----- output end -----
+staff companion denies cross contact before any privileged write ... ok (2ms)
+authorized staff companion request succeeds and uses own scoped contact ... ok (4ms)
+member self-service remains own-contact only despite supplied contact ID ... ok (1ms)
+knowledge requires central active-staff permission before data access ...
+------- output -------
+Error: Active staff permission and contact access required.
+    at assertStaffAction (file://<repo>/supabase/functions/_shared/authorization.ts:18:25)
+    at async handleRequest (file://<repo>/supabase/functions/coach-companion-knowledge/handler.ts:77:5)
+    at async run (file://<repo>/tests/edge/authorization_test.ts:42:22)
+    at async file://<repo>/tests/edge/authorization_test.ts:50:193
+    at async innerWrapped (ext:cli/40_test.js:300:5)
+    at async exitSanitizer (ext:cli/40_test.js:201:27)
+    at async outerWrapped (ext:cli/40_test.js:239:22) {
+  status: 403
+}
+----- output end -----
+knowledge requires central active-staff permission before data access ... ok (1ms)
+review requires central active-staff permission before data access ...
+------- output -------
+Error: Active staff permission and contact access required.
+    at assertStaffAction (file://<repo>/supabase/functions/_shared/authorization.ts:18:25)
+    at async handleRequest (file://<repo>/supabase/functions/coach-companion-review/handler.ts:53:5)
+    at async run (file://<repo>/tests/edge/authorization_test.ts:42:22)
+    at async file://<repo>/tests/edge/authorization_test.ts:50:193
+    at async innerWrapped (ext:cli/40_test.js:300:5)
+    at async exitSanitizer (ext:cli/40_test.js:201:27)
+    at async outerWrapped (ext:cli/40_test.js:239:22) {
+  status: 403
+}
+----- output end -----
+review requires central active-staff permission before data access ... ok (1ms)
+financial access override rejects cross-contact before update or audit ...
+------- output -------
+Error: Active staff permission and contact access required.
+    at assertStaffAction (file://<repo>/supabase/functions/_shared/authorization.ts:18:25)
+    at async requirePermission (file://<repo>/supabase/functions/journey-override/handler.ts:74:5)
+    at async handleRequest (file://<repo>/supabase/functions/journey-override/handler.ts:898:7)
+    at async run (file://<repo>/tests/edge/authorization_test.ts:42:22)
+    at async file://<repo>/tests/edge/authorization_test.ts:51:117
+    at async innerWrapped (ext:cli/40_test.js:300:5)
+    at async exitSanitizer (ext:cli/40_test.js:201:27)
+    at async outerWrapped (ext:cli/40_test.js:239:22) {
+  status: 403
+}
+----- output end -----
+financial access override rejects cross-contact before update or audit ... ok (3ms)
+client signing forwards displayed hash and caller JWT to atomic SQL; stale rejection cannot write ... ok (466µs)
+staff signing forwards displayed hash and caller JWT to atomic SQL; stale rejection cannot write ... ok (486µs)
+invalid authentication stops before data lookup ... ok (569µs)
+payment-restricted member companion request is denied before any privileged write ... ok (488µs)
+client cannot send both signature roles through Edge ... ok (225µs)
+restricted coaching API stops before looking up assignments ... ok (453µs)
+onboarding claim forwards caller identity and never creates or changes Auth users ... ok (408µs)
+wrong onboarding recipient remains denied and cannot activate an account ... ok (265µs)
+recording a partial payment preserves the contracted amount and currency ... ok (1ms)
+
+ok | 16 passed | 0 failed (43ms)
+

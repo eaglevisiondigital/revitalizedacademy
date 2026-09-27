@@ -41,7 +41,6 @@ export async function handleRequest(req:Request){
   const bearer=(req.headers.get("authorization")||"").replace(/^Bearer\s+/i,"");
   const {data:userData,error:userError}=await admin.auth.getUser(bearer);
   if(userError||!userData.user)return json(origin,{error:"Authentication required"},401);
-  const user=userData.user;
   const caller=callerClient(supabaseUrl,secretKey,bearer);
 
   try{
@@ -49,68 +48,23 @@ export async function handleRequest(req:Request){
     const action=String(body.action||"");
     const agreementId=String(body.client_agreement_id||"");
 
-    const {data:agreement,error:agreementError}=await admin.from("client_agreements")
-      .select("*,agreement_templates:agreement_template_id(name,version,content_hash,status)")
-      .eq("id",agreementId).maybeSingle();
-    if(agreementError)throw agreementError;
-    if(!agreement)return json(origin,{error:"Agreement not found."},404);
-
-    const {data:access,error:accessError}=await admin.from("client_access")
-      .select("contact_id,status").eq("user_id",user.id).eq("contact_id",agreement.contact_id).maybeSingle();
-    if(accessError)throw accessError;
-    if(!access||access.status!=="active")return json(origin,{error:"You do not have access to this agreement."},403);
-
-    if(action==="view"){
-      if(agreement.status==="not_sent"||agreement.status==="sent"){
-        const now=new Date().toISOString();
-        const {data:updated,error}=await admin.from("client_agreements").update({
-          status:"viewed",
-          viewed_at:agreement.viewed_at||now,
-          updated_at:now
-        }).eq("id",agreement.id).select("*").single();
-        if(error)throw error;
-        return json(origin,{ok:true,agreement:updated});
-      }
-      return json(origin,{ok:true,agreement});
-    }
-
     if(action==="sign"){
       if(body.accepted_terms!==true)return json(origin,{error:"You must accept the agreement terms before signing."},400);
       const signatures=Array.isArray(body.signatures)?body.signatures:[{signer_role:"primary_client",signer_name:body.signer_name}];
-      if(signatures.length<Number(agreement.required_client_signatures||1))return json(origin,{error:"All required client signatures are required."},400);
+      if(signatures.length!==1)return json(origin,{error:"Each adult must sign using their own account."},400);
       const {error}=await caller.rpc("sign_client_agreement_atomic",{
-        p_client_agreement_id:agreement.id,p_signatures:signatures,
+        p_client_agreement_id:agreementId,p_signatures:signatures,
         p_expected_content_hash:body.expected_content_hash||null,p_user_agent:clean(req.headers.get("user-agent"),1000)||null
       });
       if(error)return json(origin,{error:error.message},409);
-      const {data:updated,error:readError}=await caller.from("client_agreements").select("*").eq("id",agreement.id).single();
-      if(readError)throw readError;
-      return json(origin,{ok:true,agreement:updated,complete:updated.status==="signed"});
-    }
-
-    if(action==="decline"){
-      if(["signed","waived"].includes(agreement.status))return json(origin,{error:"Completed agreements cannot be declined."},409);
-      const now=new Date().toISOString();
-      const {data:updated,error}=await admin.from("client_agreements").update({
-        status:"declined",
-        declined_at:now,
-        updated_at:now
-      }).eq("id",agreement.id).select("*").single();
-      if(error)throw error;
-
-      await admin.from("contact_activity").insert({
-        contact_id:agreement.contact_id,
-        activity_type:"agreement_declined",
-        title:"Membership agreement declined",
-        detail:agreement.agreement_key+" · v"+agreement.template_version,
-        actor_user_id:user.id,
-        metadata:{client_agreement_id:agreement.id}
-      });
-
-      return json(origin,{ok:true,agreement:updated});
-    }
-
-    return json(origin,{error:"Invalid agreement action."},400);
+    }else if(action==="view"||action==="decline"){
+      const {error}=await caller.rpc("client_agreement_action",{p_client_agreement_id:agreementId,p_action:action});
+      if(error)return json(origin,{error:error.message},403);
+    }else return json(origin,{error:"Invalid agreement action."},400);
+    const {data:context,error:readError}=await caller.rpc("my_onboarding_context");
+    if(readError)throw readError;
+    const agreement=context?.agreements?.find((a:{client_agreement_id:string})=>a.client_agreement_id===agreementId);
+    return json(origin,{ok:true,agreement,complete:agreement?.status==="signed"});
   }catch(error){
     console.error(error);
     return json(origin,{error:error instanceof Error?error.message:"Agreement operation failed."},500);

@@ -1,0 +1,32 @@
+{
+  "environment": "live production; read-only; this branch is NOT applied",
+  "project": "voalfpxiyznnqfcqcymd",
+  "retrieved_at": "2026-09-27T02:18Z",
+  "type": "performance",
+  "findings": [
+    {
+      "name": "unused_index",
+      "level": "INFO",
+      "count": 303,
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0005_unused_index"
+    },
+    {
+      "name": "multiple_permissive_policies",
+      "level": "WARN",
+      "count": 5,
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0006_multiple_permissive_policies"
+    },
+    {
+      "name": "duplicate_index",
+      "level": "WARN",
+      "count": 3,
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0009_duplicate_index"
+    },
+    {
+      "name": "auth_db_connections_absolute",
+      "level": "INFO",
+      "count": 1,
+      "remediation": "https://supabase.com/docs/guides/deployment/going-into-prod"
+    }
+  ]
+}

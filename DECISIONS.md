@@ -60,7 +60,7 @@ UNKNOWN / requiring primary Chat or Work resolution before the relevant release:
 2. Native app vendor/release path, after preserving owned GitHub/Supabase architecture and optional shell boundaries.
 3. Hosted staging origin, Netlify binding, real provider/payment/webinar readiness and coordinated release acceptance.
 4. Original assessment source materials; detailed answers/scoring/resume stay in Netlify until a later explicit change.
-5. Onboarding access sequencing for unsigned clients, independently authenticated secondary signatures, and post-activation payment reversal/access lifecycle. Current implementation does not invent new rules for these cases or rewrite existing records.
+5. RESOLVED by the approved client lifecycle assignment below: onboarding sequencing, independent secondary signatures and post-activation payment reversal/access lifecycle. Current implementation does not invent new rules for these cases or rewrite existing records.
 6. Any stronger restriction on bulk copying beyond explicit CSV permission and least-privilege readable rows.
 
 ## Approved engineering-package decisions — 2026-09-26
@@ -84,3 +84,11 @@ APPROVED by the user’s attached orchestration instructions:
 15. Preserve the approved 50-seat priority webinar behavior.
 
 The confirmed implementation repository is `eaglevisiondigital/revitalizedacademy`. Continue on an isolated `codex/*` branch based on refreshed `origin/main`; source baseline remains `df8aba33cd8bac16e54aded92a4c99439f74f1d5`. Preserve the v2 frontend contract during backend recovery.
+
+## Approved lifecycle decisions — user assignment, 2026-09-26
+
+- **D18 APPROVED:** authenticated onboarding is limited to enrollment/program/payment/agreement/basic-account/notices/support surfaces. Full membership requires both independent payment and agreement gates. Implemented on codex/client-access-lifecycle; not deployed.
+- **D19 APPROVED:** a two-signature contract requires two distinct authenticated adult identities. Secondary invitations are recipient-bound, expiring, replay-safe and scoped to the exact rendered agreement. Co-signing never implicitly grants household or adult health access.
+- **D20 APPROVED:** confirmed refunds/reversals that reduce net paid amount below the requirement restrict paid benefits while preserving account/history and resolution surfaces. Partial refunds above the threshold do not suspend. Restoration requires both gates; administrative revocation is not automatically reversed. All transitions and waivers are audited.
+
+These decisions resolve the earlier three-question Chat handoff. The old successful two-name/single-account test expectation is explicitly superseded; approved terms, assessment content and scoring are unchanged. Technical implementation details and compatibility limits are recorded in docs/CLIENT_ACCESS_LIFECYCLE.md. Work's external validation assignment remains outstanding.

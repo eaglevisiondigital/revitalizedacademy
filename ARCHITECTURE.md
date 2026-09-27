@@ -91,3 +91,9 @@ Privileged companion and journey operations ask a JWT-scoped permission RPC befo
 Database changes precede compatible Edge/frontend releases. Member bootstrap remains v2, with additive signing hashes in the existing agreement views. [Compatibility plan](docs/BOOTSTRAP_COMPATIBILITY.md) specifies consumed fields, privacy/auth checks, performance measurement and gradual upgrades.
 
 APPROVED: ReVitalized owns the system of record; GoodBarber can be a shell; Mighty Networks does not own core data; unfinished Global Propel work is not a runtime dependency. Adult health is private by default and guardian/minor access is relationship-aware. Score methodology requires Justyn/Elle approval. Payment and required agreements are independent gates, each complete or explicitly waived. The assessment's Netlify flow remains in place.
+
+## Approved client lifecycle extension (implemented, not deployed)
+
+The user approved restricted authenticated onboarding, independently authenticated secondary adults and payment suspension/restoration. The existing membership/access/activation/ledger/agreement system remains authoritative. `client_access` adds `onboarding` and `payment_suspended`; membership and enrollment statuses map to the same state machine. Payment totals and per-agreement distinct-account signatures remain independent gates.
+
+`/member/onboarding/` consumes a narrow authenticated RPC; the paid dashboard checks access before the existing v2 bootstrap. The secondary signer relationship is a private, expiring agreement invitation, not household/member access. Invitation delivery extends the existing outbox to support not-yet-registered recipients; no parallel notification service exists. Financial reconciliation updates current access without deleting historical data. [Full state machine and rollout contract](docs/CLIENT_ACCESS_LIFECYCLE.md). Statements above about unimplemented lifecycle behavior describe the earlier security branch.

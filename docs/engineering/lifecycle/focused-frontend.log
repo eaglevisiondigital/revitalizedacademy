@@ -1,0 +1,28 @@
+✔ protected baseline unchanged: consult.html (1.852333ms)
+✔ protected baseline unchanged: js/vitality55.js (0.607042ms)
+✔ protected baseline unchanged: js/vitality-child.js (0.490917ms)
+✔ protected baseline unchanged: css/vitality55.css (0.433125ms)
+✔ protected baseline unchanged: js/revitalized-data.js (0.496333ms)
+✔ protected baseline unchanged: webinar.html (0.475541ms)
+✔ homepage routes assessment and webinar visitors to existing protected flows (74.745042ms)
+✔ priority webinar retains fifty-seat copy, free priority form and required contact/consent (22.573166ms)
+✔ member bootstrap stays v2 while signing submits displayed hash (1.536542ms)
+✔ CSV uses atomic export RPC; independent audit-call race is gone (0.81325ms)
+✔ CSV quoting neutralizes formula prefixes and preserves ordinary names (1.2765ms)
+✔ restricted onboarding renders billing, six-month commitment, support and signing without paid navigation (79.473583ms)
+✔ rendered contract uses text and cannot inject HTML (13.567958ms)
+✔ primary_client submits only its own identity slot and exact displayed hash (13.869125ms)
+✔ secondary_client submits only its own identity slot and exact displayed hash (9.306916ms)
+✔ stale signing fails visibly and does not report success (8.475917ms)
+✔ invitation token leaves URL immediately, is redeemed under authentication and never persists (7.735042ms)
+✔ anonymous invitation page waits for sign-in before protected RPC (6.997792ms)
+✔ payment suspension preserves agreement/support surfaces and hides full dashboard link (6.630125ms)
+✔ active account may return to the existing dashboard (9.384375ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 572.737458

@@ -472,6 +472,13 @@ export async function handleRequest(req: Request) {
         .limit(1)
         .maybeSingle();
       if (activationError) throw activationError;
+      if(waived){
+        if(!activation)return json(origin,{error:"Prepare the enrollment before recording a payment waiver."},409);
+        const {error:waiverError}=await caller.rpc("set_enrollment_waiver",{p_activation_id:activation.id,p_agreement_id:null,p_gate:"payment",p_waived:true,p_reason:reason});
+        if(waiverError)return json(origin,{error:waiverError.message},403);
+        return json(origin,{ok:true,activation_id:activation.id,waived:true});
+      }
+      if(activation&&activation.currency!==currency)return json(origin,{error:"Payment currency must match the enrollment."},400);
 
       if (!activation) {
         let programCode = null;
@@ -533,9 +540,7 @@ export async function handleRequest(req: Request) {
         const { data: updatedActivation, error } = await admin
           .from("journey_enrollment_activations")
           .update({
-            amount_cents: amountCents,
-            currency,
-            payment_status: waived ? "waived" : "paid",
+            payment_status: "paid",
             payment_completion_method: paymentMethod,
             payment_reference: reference,
             paid_at: waived ? activation.paid_at : receivedAt,
@@ -789,6 +794,13 @@ export async function handleRequest(req: Request) {
         .single();
       if (error) throw error;
       await requirePermission("agreement.override", activation.contact_id);
+      if(targetStatus==="waived"){
+        const agreementId=String(body.client_agreement_id||"");
+        if(!validUuid(agreementId))return json(origin,{error:"Select the individual required agreement to waive."},400);
+        const {error:waiverError}=await caller.rpc("set_enrollment_waiver",{p_activation_id:activation.id,p_agreement_id:agreementId,p_gate:"agreement",p_waived:true,p_reason:reason});
+        if(waiverError)return json(origin,{error:waiverError.message},403);
+        return json(origin,{ok:true,activation_id:activation.id,waived:true});
+      }
 
       const previous = {
         agreement_status: activation.agreement_status,

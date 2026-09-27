@@ -1,3 +1,5 @@
+import { handleRequest as memberAccount } from "../../supabase/functions/member-account/handler.ts";
+import { handleRequest as memberCoaching } from "../../supabase/functions/member-coaching/handler.ts";
 import { handleRequest as request } from "../../supabase/functions/coach-companion-request/handler.ts";
 import { handleRequest as knowledge } from "../../supabase/functions/coach-companion-knowledge/handler.ts";
 import { handleRequest as review } from "../../supabase/functions/coach-companion-review/handler.ts";
@@ -9,7 +11,7 @@ const own="20000000-0000-4000-8000-000000000001";
 const cross="20000000-0000-4000-8000-000000000002";
 function assert(ok:unknown,message="Assertion failed"):asserts ok {if(!ok)throw Error(message);}
 type Call={path:string;method:string;body:Record<string,unknown>|null;auth:string|null};
-async function run(handler:(r:Request)=>Promise<Response>,body:unknown,options:{staff?:boolean;allowed?:boolean;auth?:boolean;signError?:boolean}={}) {
+async function run(handler:(r:Request)=>Promise<Response>,body:unknown,options:{staff?:boolean;allowed?:boolean;auth?:boolean;signError?:boolean;paid?:boolean;claimError?:boolean;paymentFixture?:boolean}={}) {
  const originalFetch=globalThis.fetch,originalEnv=Deno.env.get;
  const calls:Call[]=[];
  Deno.env.get=(key:string)=>({SUPABASE_URL:"https://synthetic.invalid",SUPABASE_SERVICE_ROLE_KEY:"synthetic-service-key"}[key]);
@@ -19,6 +21,8 @@ async function run(handler:(r:Request)=>Promise<Response>,body:unknown,options:{
   calls.push({path:url.pathname,method:req.method,body:data,auth:req.headers.get('authorization')});
   let result:unknown=null;let status=200;
   if(url.pathname==='/auth/v1/user') {result=options.auth===false?{message:'invalid token'}:{id:uid,email:'synthetic@example.invalid'};if(options.auth===false)status=401;}
+  else if(url.pathname.endsWith('/rpc/claim_onboarding_enrollment')){result=options.claimError?{message:'Invitation unavailable',code:'42501'}:'enrollment';if(options.claimError)status=400;}
+  else if(url.pathname.endsWith('/rpc/member_paid_access_allowed'))result=options.paid!==false;
   else if(url.pathname.endsWith('/rpc/staff_action_allowed')){assert(req.headers.get('authorization')==='Bearer synthetic-caller-token','Permission RPC lost caller identity');result=options.allowed!==false&&(!data.p_contact_id||data.p_contact_id===own);}
   else if(url.pathname.includes('/rpc/sign_')){result=options.signError?{message:'Agreement content changed',code:'P0001'}:'acceptance';if(options.signError)status=400;}
   else if(url.pathname.endsWith('/staff_access'))result=options.staff===false?null:{role:'admin',display_name:'Synthetic',status:'active',onboarding_status:'complete'};
@@ -27,7 +31,10 @@ async function run(handler:(r:Request)=>Promise<Response>,body:unknown,options:{
   else if(url.pathname.endsWith('/coach_companion_requests'))result={id:'request',...data};
   else if(url.pathname.endsWith('/coach_companion_reviews'))result={id:'review',...data};
   else if(url.pathname.endsWith('/follow_up_tasks'))result=[];
-  else if(url.pathname.endsWith('/journey_enrollment_activations'))result={id:own,contact_id:cross};
+  else if(url.pathname.endsWith('/contact_journeys'))result={id:own,contact_id:own,journey_key:'synthetic'};
+  else if(url.pathname.endsWith('/contact_journey_steps'))result={id:own,status:'pending'};
+  else if(url.pathname.endsWith('/payment_records'))result={id:own,...data};
+  else if(url.pathname.endsWith('/journey_enrollment_activations'))result=options.paymentFixture?{id:own,contact_id:own,amount_cents:10000,currency:'USD',payment_status:'pending',...data}:{id:own,contact_id:cross};
   else if(url.pathname.endsWith('/client_agreements'))result={id:own,contact_id:own,status:'sent',required_client_signatures:1,agreement_templates:{status:'published'}};
   else if(url.pathname.endsWith('/staff_agreements'))result={id:own,staff_user_id:uid,status:'sent'};
   return new Response(JSON.stringify(result),{status,headers:{'content-type':'application/json'}});
@@ -46,3 +53,18 @@ for(const [name,handler,idKey] of [['client',clientSign,'client_agreement_id'],[
  const {response,calls}=await run(handler,{action:'sign',[idKey]:own,signer_name:'Synthetic Signer',accepted_terms:true,expected_content_hash:'displayed-hash'},{signError:true});assert(response.status===409);const rpc=calls.find(c=>c.path.includes('/rpc/sign_'));assert(rpc?.body?.p_expected_content_hash==='displayed-hash');assert(rpc.auth==='Bearer synthetic-caller-token');assert(!calls.some(c=>c.method==='PATCH'||c.path.endsWith('/agreement_acceptances')||c.path.endsWith('/staff_agreement_acceptances')));
 });
 Deno.test('invalid authentication stops before data lookup',async()=>{const {response,calls}=await run(request,{question:'Synthetic'},{auth:false});assert(response.status===401);assert(calls.length===1);});
+
+Deno.test('payment-restricted member companion request is denied before any privileged write',async()=>{const {response,calls}=await run(request,{question:'Synthetic question'},{staff:false,paid:false});assert(response.status===403);assert(!calls.some(c=>c.path.endsWith('/coach_companion_requests')&&c.method==='POST'));});
+Deno.test('client cannot send both signature roles through Edge',async()=>{const {response,calls}=await run(clientSign,{action:'sign',client_agreement_id:own,accepted_terms:true,signatures:[{signer_role:'primary_client',signer_name:'One'},{signer_role:'secondary_client',signer_name:'Two'}]});assert(response.status===400);assert(!calls.some(c=>c.path.includes('/rpc/sign_')));});
+
+Deno.test('restricted coaching API stops before looking up assignments',async()=>{const {response,calls}=await run(memberCoaching,{action:'complete_assignment',assignment_id:own},{paid:false});assert(response.status===403);assert(!calls.some(c=>c.path.endsWith('/client_assignments')));});
+Deno.test('onboarding claim forwards caller identity and never creates or changes Auth users',async()=>{const {response,calls}=await run(memberAccount,{token:'a'.repeat(64)});assert(response.status===200);const call=calls.find(c=>c.path.endsWith('/rpc/claim_onboarding_enrollment'));assert(call?.auth==='Bearer synthetic-caller-token');assert(!calls.some(c=>c.path.includes('/admin/users')||c.path.endsWith('/profiles')||c.path.endsWith('/client_access')));});
+Deno.test('wrong onboarding recipient remains denied and cannot activate an account',async()=>{const {response,calls}=await run(memberAccount,{token:'a'.repeat(64)},{claimError:true});assert(response.status===403);assert(!calls.some(c=>c.method==='PATCH'||c.path.includes('/admin/users')));});
+
+Deno.test('recording a partial payment preserves the contracted amount and currency',async()=>{
+ const {response,calls}=await run(override,{action:'record_payment',journey_id:own,payment_method:'cash',amount_cents:100,currency:'USD',reason:'Synthetic partial payment'},{paymentFixture:true});
+ assert(response.status===200,await response.text());
+ const updates=calls.filter(c=>c.path.endsWith('/journey_enrollment_activations')&&c.method==='PATCH');assert(updates.length>0);
+ assert(updates.every(c=>!Object.hasOwn(c.body||{},'amount_cents')&&!Object.hasOwn(c.body||{},'currency')),'Payment receipt must not reset contract price');
+ assert(calls.some(c=>c.path.endsWith('/payment_records')&&c.body?.amount_cents===100));
+});

@@ -19,7 +19,7 @@ const root=path.resolve(__dirname,'../..');
   const restore=spawnSync('psql',['-X','-v','ON_ERROR_STOP=1',...files.flatMap(f=>['-f',f])],{cwd:root,env,encoding:'utf8',maxBuffer:32*1024*1024});
   if(restore.status!==0)throw Error(restore.stderr||restore.stdout);
   console.log('Restored live baseline + forward migrations into an empty local database.');
-  const test=spawnSync(process.execPath,['--test',...fs.readdirSync(path.join(root,'tests/backend')).filter(f=>f.endsWith('.test.cjs')).map(f=>'tests/backend/'+f)],{cwd:root,env,stdio:'inherit'});
+  const test=spawnSync(process.execPath,['--test','--test-concurrency=1',...fs.readdirSync(path.join(root,'tests/backend')).filter(f=>f.endsWith('.test.cjs')).map(f=>'tests/backend/'+f)],{cwd:root,env,stdio:'inherit'});
   process.exitCode=test.status||0;
  } finally {if(created)await admin.query(`DROP DATABASE "${database}" WITH (FORCE)`);await admin.end();}
 })().catch(e=>{console.error(e);process.exitCode=1});

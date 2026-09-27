@@ -1,0 +1,5 @@
+
+> check:js
+> node scripts/check-js.cjs
+
+61 JavaScript files pass syntax checks.
