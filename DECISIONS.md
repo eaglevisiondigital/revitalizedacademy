@@ -110,3 +110,13 @@ These decisions resolve the earlier three-question Chat handoff. The old success
 - **D23 APPROVED:** add a compact `my_up_next` presentation and progressively enhance Weekly Momentum with `my_weekly_progress_story`, with existing v2 data as fallback.
 - **D24 APPROVED:** Home vNext must be independently reversible behind a dedicated runtime flag (recommended `member_home_vnext`) and additive read failures must degrade to the existing v2 dashboard rather than fail the entire member app.
 - **D25 APPROVED:** this first slice explicitly excludes Health Score/Family Score formulas, AI generation, native HealthKit/Health Connect, push-provider activation, GoodBarber integration, assessment scoring, and broader Family Hub health sharing. See `docs/HOME_VNEXT.md`.
+
+
+## 2026-09-27 — Progress vNext integration
+
+- **D26 APPROVED:** the first Progress vNext slice enhances the existing member Progress experience with `my_goal_progress`, `my_achievements`, and `my_progress_insights`; it does not replace the v2 progress fallback.
+- **D27 APPROVED:** Progress vNext must remain independently reversible behind `feature_member_progress_vnext`, default false, and its reads are nonfatal/post-first-paint.
+- **D28 APPROVED:** goal progress may show deterministic completion/state only when supported by stored baseline/target/current data. Null progress must remain null/descriptive rather than invented.
+- **D29 APPROVED:** progress insights remain descriptive only. Up/down/stable does not automatically mean better/worse, healthy/unhealthy, or medical improvement.
+- **D30 APPROVED:** progress photos are excluded from the first Progress vNext slice. Raw private Storage paths must never be surfaced as usable public URLs. A later photo phase requires controlled private delivery/signing, access, upload and retention behavior.
+- **D31 APPROVED:** Progress vNext explicitly excludes Health Score, Family Health Score, AI-generated medical interpretation, assessment scoring, cross-adult health sharing, native wearable work and GoodBarber integration. See `docs/PROGRESS_VNEXT.md`.
