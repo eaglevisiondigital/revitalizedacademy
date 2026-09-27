@@ -195,3 +195,6 @@ These decisions resolve the earlier three-question Chat handoff. The old success
 - **D68 APPROVED:** JPEG/PNG/WebP only, 15 MB maximum per image, with server-side magic-byte validation in addition to MIME validation.
 - **D69 APPROVED:** if any upload/database step fails after a set is created, the function performs compensating cleanup by removing all newly uploaded Storage objects and deleting the new set/rows.
 - **D70 APPROVED:** uploads are independently controlled by `feature_member_progress_photo_uploads`, default false. Private viewing may be enabled without enabling writes. See `docs/PROGRESS_PHOTOS_VNEXT.md`.
+
+
+- **D71 APPROVED:** Progress Photo upload idempotency uses a client-generated UUID as the photo-set primary key. Retries with the same UUID return the completed existing set rather than creating duplicates; incomplete/conflicting reuse returns 409.
