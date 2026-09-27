@@ -2436,3 +2436,62 @@
 @media(max-width:620px){
   .rm200-quiet-hours-fields{grid-template-columns:1fr}
 }
+
+
+/* Ask ReVitalized member feedback */
+.rm201-ask-feedback{
+  display:grid;
+  gap:8px;
+  margin-top:10px;
+  padding-top:10px;
+  border-top:1px solid #e1e9e4;
+}
+.rm201-ask-feedback>span{
+  color:#667970;
+  font-size:8.7px;
+  font-weight:800;
+}
+.rm201-feedback-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+}
+.rm201-feedback-actions button,
+.rm201-feedback-form button{
+  min-height:31px;
+  padding:0 10px;
+  border:1px solid #ccd9d1;
+  border-radius:8px;
+  background:#fff;
+  color:#315b45;
+  font-size:8px;
+  font-weight:900;
+}
+.rm201-feedback-actions button.active,
+.rm201-feedback-form button{
+  background:#154734;
+  color:#fff;
+  border-color:#154734;
+}
+.rm201-feedback-form{
+  display:grid;
+  gap:7px;
+  padding:9px;
+  border:1px solid #dfe8e2;
+  border-radius:9px;
+  background:#fbfcfb;
+}
+.rm201-feedback-form select,
+.rm201-feedback-form textarea{
+  width:100%;
+  border:1px solid #ccd9d1;
+  border-radius:8px;
+  padding:8px;
+  background:#fff;
+  color:#29483b;
+  font:inherit;
+}
+.rm201-feedback-form small{
+  color:#77867e;
+  font-size:8px;
+}

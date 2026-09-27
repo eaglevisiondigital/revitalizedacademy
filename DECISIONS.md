@@ -171,3 +171,10 @@ These decisions resolve the earlier three-question Chat handoff. The old success
 - **D56 APPROVED:** member preference saves use `public.update_my_notification_preferences` instead of direct browser table upsert.
 - **D57 APPROVED:** push toggles remain hidden until hosted push delivery is configured/tested and the authenticated preference update contract explicitly supports push fields.
 - **D58 APPROVED:** when quiet hours are enabled, start/end and a valid IANA time zone are required. Browser-resolved time zone may be used as the member default. See `docs/NOTIFICATION_SETTINGS_VNEXT.md`.
+
+
+## 2026-09-27 - Ask ReVitalized member feedback
+
+- **D59 APPROVED:** answered/resolved Ask ReVitalized responses expose member Helpful / Needs Review feedback using the existing `submit_my_companion_feedback` RPC and `my_companion_feedback` view.
+- **D60 APPROVED:** Needs Review uses the existing approved feedback reasons and optional comment, allowing the existing backend quality/human-review workflow to decide escalation.
+- **D61 APPROVED:** member feedback does not change AI generation, medical safety classification, confidence thresholds, source governance, or coach authorization. It evaluates an answer after it has already reached answered/resolved state. See `docs/ASK_REVITALIZED_FEEDBACK.md`.

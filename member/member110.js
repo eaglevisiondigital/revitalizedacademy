@@ -733,6 +733,9 @@
   let latestGoalRows = [];
   let goalProgressById = new Map();
   let currentFamilyTarget = null;
+  let latestCompanionQuestionTypes = [];
+  let latestCompanionRequests = [];
+  let latestCompanionFeedback = [];
 
   function renderCoachingEntitlements(rows){
     const target=el("rm-coaching-entitlements");
@@ -790,6 +793,74 @@
       const chip=document.createElement("span");chip.className="rm112-chip";chip.textContent=title(row.status);
       top.append(heading,chip);item.append(top);
       if(row.description){const p=document.createElement("p");p.textContent=row.description;item.append(p);}
+      if(["answered","resolved"].includes(row.status)&&row.final_answer){
+        const existing=feedbackByRequest.get(row.request_id)||null;
+        const feedback=document.createElement("div");
+        feedback.className="rm201-ask-feedback";
+
+        const prompt=document.createElement("span");
+        prompt.textContent=existing
+          ?(existing.helpful?"You marked this response helpful.":"You asked for additional review.")
+          :"Was this response helpful?";
+
+        const actions=document.createElement("div");
+        actions.className="rm201-feedback-actions";
+
+        const helpful=document.createElement("button");
+        helpful.type="button";
+        helpful.textContent="Helpful";
+        helpful.classList.toggle("active",existing?.helpful===true);
+        helpful.addEventListener("click",()=>submitAskFeedback(row.request_id,true,null,null));
+
+        const review=document.createElement("button");
+        review.type="button";
+        review.textContent="Needs Review";
+        review.classList.toggle("active",existing?.helpful===false);
+
+        const form=document.createElement("form");
+        form.className="rm201-feedback-form hidden";
+
+        const reason=document.createElement("select");
+        [
+          ["not_relevant","Not Relevant"],
+          ["unclear","Unclear"],
+          ["incorrect","Incorrect"],
+          ["missing_context","Missing Context"],
+          ["too_generic","Too Generic"],
+          ["needs_coach","I Need My Coach"],
+          ["other","Other"]
+        ].forEach(([value,label])=>{
+          const option=document.createElement("option");
+          option.value=value;option.textContent=label;
+          reason.append(option);
+        });
+        reason.value=existing?.helpful===false&&existing.feedback_reason?existing.feedback_reason:"needs_coach";
+
+        const comment=document.createElement("textarea");
+        comment.rows=2;
+        comment.maxLength=2000;
+        comment.placeholder="Optional note for the ReVitalized team";
+        comment.value=existing?.helpful===false&&existing.comment?existing.comment:"";
+
+        const submit=document.createElement("button");
+        submit.type="submit";
+        submit.textContent="Send for Review";
+
+        const note=document.createElement("small");
+        note.textContent="Negative feedback can route the response to human review.";
+
+        form.append(reason,comment,submit,note);
+        form.addEventListener("submit",async(event)=>{
+          event.preventDefault();
+          await submitAskFeedback(row.request_id,false,reason.value,comment.value.trim()||null);
+        });
+        review.addEventListener("click",()=>form.classList.toggle("hidden"));
+
+        actions.append(helpful,review);
+        feedback.append(prompt,actions,form);
+        item.append(feedback);
+      }
+
       const meta=document.createElement("small");
       meta.textContent=["Version "+row.template_version,row.signed_at?"Signed "+formatDate(row.signed_at,true):""].filter(Boolean).join(" · ");
       item.append(meta);
@@ -2825,7 +2896,7 @@
   }
 
 
-  function renderAskReVitalized(questionTypes,requests,enabled){
+  function renderAskReVitalized(questionTypes,requests,enabled,feedbackRows=[]){
     const card=el("rm-ask-revitalized-card");
     if(!card)return;
     card.classList.toggle("hidden",!enabled);
@@ -2846,6 +2917,7 @@
     const history=el("rm-ask-history");
     history.replaceChildren();
     const rows=requests||[];
+    const feedbackByRequest=new Map((feedbackRows||[]).map((row)=>[row.request_id,row]));
     const open=rows.filter(r=>!["answered","resolved","cancelled"].includes(r.status)).length;
     el("rm-ask-summary").textContent=rows.length
       ? open+" Open · "+rows.filter(r=>["answered","resolved"].includes(r.status)).length+" Answered"
@@ -2913,6 +2985,20 @@
       item.append(meta);
       history.append(item);
     });
+  }
+
+  async function submitAskFeedback(requestId,helpful,reason=null,comment=null){
+    const {error}=await client.rpc("submit_my_companion_feedback",{
+      p_request_id:requestId,
+      p_helpful:helpful,
+      p_feedback_reason:helpful?null:reason,
+      p_comment:helpful?null:comment
+    });
+    if(error){
+      window.alert(error.message||"Feedback could not be saved.");
+      return;
+    }
+    await loadDashboard();
   }
 
   async function submitAskReVitalized(event){
@@ -3932,6 +4018,7 @@
       coachingEntitlementsResult,
       companionTypesResult,
       companionRequestsResult,
+      companionFeedbackResult,
       healthPermissionsResult,
       healthSnapshotResult
     ]=await Promise.all([
@@ -3958,6 +4045,7 @@
       client.from("my_coaching_entitlements").select("*"),
       client.from("my_companion_question_types").select("*").order("sort_order"),
       client.from("my_companion_requests").select("*").limit(20),
+      client.from("my_companion_feedback").select("*").limit(20),
       client.from("my_health_metric_permissions").select("*").order("provider_name").order("display_order"),
       client.from("my_health_data_snapshot").select("*").order("label")
     ]);
@@ -3986,6 +4074,7 @@
       ["my_coaching_entitlements",coachingEntitlementsResult],
       ["my_companion_question_types",companionTypesResult],
       ["my_companion_requests",companionRequestsResult],
+      ["my_companion_feedback",companionFeedbackResult],
       ["my_health_metric_permissions",healthPermissionsResult],
       ["my_health_data_snapshot",healthSnapshotResult]
     ];
@@ -4023,10 +4112,14 @@
       healthPermissionsResult.error?[]:(healthPermissionsResult.data||[]),
       healthSnapshotResult.error?[]:(healthSnapshotResult.data||[])
     );
+    latestCompanionQuestionTypes=companionTypesResult.error?[]:(companionTypesResult.data||[]);
+    latestCompanionRequests=companionRequestsResult.error?[]:(companionRequestsResult.data||[]);
+    latestCompanionFeedback=companionFeedbackResult.error?[]:(companionFeedbackResult.data||[]);
     renderAskReVitalized(
-      companionTypesResult.error?[]:(companionTypesResult.data||[]),
-      companionRequestsResult.error?[]:(companionRequestsResult.data||[]),
-      context.askEnabled
+      latestCompanionQuestionTypes,
+      latestCompanionRequests,
+      context.askEnabled,
+      latestCompanionFeedback
     );
 
     metricCatalog=metricsResult.error?[]:(metricsResult.data||[]);
@@ -4067,6 +4160,9 @@
     latestCalendarRows=[];
     goalProgressById=new Map();
     latestGoalRows=[];
+    latestCompanionQuestionTypes=[];
+    latestCompanionRequests=[];
+    latestCompanionFeedback=[];
     const [
       bootstrapResult,
       dashboardResult,
