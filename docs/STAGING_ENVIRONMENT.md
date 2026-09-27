@@ -74,6 +74,7 @@ All 15 recovered sources remain tracked; all now check environment and CORS befo
 | staff-password-reset | Branded recovery |
 | notification-delivery | Recipient-restricted signer/NDA notices |
 | member-coaching | Paid-access API boundary regression |
+| member-document-upload | Private member document writes with rollback/idempotency |
 
 Optional: `video-message-view` (private video), `coach-companion-knowledge`, `coach-companion-request`, `coach-companion-review` (retrieval/review Ask ReVitalized smoke tests), and `progress-photo-upload` (private member Progress Photo writes). Deploy these too when their existing features enter acceptance; they share the same guard. No AI generation provider is newly connected. No native app, wearable sync, APNs/FCM or GoodBarber integration is certified here.
 
