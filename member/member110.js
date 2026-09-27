@@ -3114,6 +3114,41 @@
     });
   }
 
+  async function loadHomeVNextEnhancements(loadSequence,flagPromise,attentionContext,weeklyFallback){
+    const flagResult=await flagPromise;
+    if(loadSequence!==dashboardLoadSequence)return;
+    homeVNextEnabled=Boolean(!flagResult.error&&flagResult.data?.config_value===true);
+    if(!homeVNextEnabled){
+      renderUpNext([]);
+      return;
+    }
+
+    const [nextBestResult,upNextResult,weeklyStoryResult]=await Promise.all([
+      client.from("my_next_best_actions").select("*").order("action_order"),
+      client.from("my_up_next").select("*").limit(5),
+      client.from("my_weekly_progress_story").select("*").maybeSingle()
+    ]);
+    [
+      ["my_next_best_actions",nextBestResult],
+      ["my_up_next",upNextResult],
+      ["my_weekly_progress_story",weeklyStoryResult]
+    ].forEach(([name,result])=>{
+      if(result.error)console.warn("Home vNext optional read unavailable:",name,result.error.message);
+    });
+
+    if(loadSequence!==dashboardLoadSequence)return;
+
+    renderAttentionCenter({
+      ...attentionContext,
+      nextBestActions:nextBestResult.error?[]:(nextBestResult.data||[])
+    });
+    renderUpNext(upNextResult.error?[]:(upNextResult.data||[]));
+    renderWeeklyProgressStory(
+      weeklyStoryResult.error?null:(weeklyStoryResult.data||null),
+      weeklyFallback
+    );
+  }
+
   async function loadDeferredMemberModules(loadSequence,askEnabled){
     const [
     ]=await Promise.all([
@@ -3258,31 +3293,6 @@
       if(result.error)console.warn("Optional member module unavailable:",name,result.error.message);
     });
 
-    const homeFlagResult=await homeVNextFlagPromise;
-    homeVNextEnabled=Boolean(!homeFlagResult.error&&homeFlagResult.data?.config_value===true);
-    const homeVNext={
-      nextBestActions:[],
-      upNext:[],
-      weeklyStory:null
-    };
-    if(homeVNextEnabled){
-      const [nextBestResult,upNextResult,weeklyStoryResult]=await Promise.all([
-        client.from("my_next_best_actions").select("*").order("action_order"),
-        client.from("my_up_next").select("*").limit(5),
-        client.from("my_weekly_progress_story").select("*").maybeSingle()
-      ]);
-      [
-        ["my_next_best_actions",nextBestResult],
-        ["my_up_next",upNextResult],
-        ["my_weekly_progress_story",weeklyStoryResult]
-      ].forEach(([name,result])=>{
-        if(result.error)console.warn("Home vNext optional read unavailable:",name,result.error.message);
-      });
-      homeVNext.nextBestActions=nextBestResult.error?[]:(nextBestResult.data||[]);
-      homeVNext.upNext=upNextResult.error?[]:(upNextResult.data||[]);
-      homeVNext.weeklyStory=weeklyStoryResult.error?null:(weeklyStoryResult.data||null);
-    }
-
     const boot=bootstrapResult.data||{};
     const packed=(data)=>({data:data??null,error:null});
     const packedList=(data)=>({data:Array.isArray(data)?data:[],error:null});
@@ -3370,8 +3380,7 @@
       assignmentSummary:assignmentSummaryResult.data||null,
       familyRequests:familyRequestsResult.data||[],
       billing:billingResult.data||null,
-      notifications:notificationsResult.data||[],
-      nextBestActions:homeVNext.nextBestActions
+      notifications:notificationsResult.data||[]
     });
 
     const journey = journeyResult.data;
@@ -3399,8 +3408,8 @@
     renderHousehold(householdResult.data || [], member.household_type,hasFamilyHub);
     renderFamilyRequests(familyRequestsResult.data||[]);
     renderDailyActions(dailyActionsResult.data||null);
-    renderUpNext(homeVNext.upNext);
-    renderWeeklyProgressStory(homeVNext.weeklyStory,weeklySummaryResult.data||null);
+    renderUpNext([]);
+    renderWeeklySummary(weeklySummaryResult.data||null);
     renderActivityTimeline(activityTimelineResult.data||[]);
     renderCoach(coachResult.data);
     renderGoals(goalsResult.data || []);
@@ -3428,6 +3437,15 @@
     await renderCheckinForm();
 
     showOnly("rm-dashboard");
+    const attentionContext={
+      agreements:agreementsResult.data||[],
+      conversations:conversationsResult.data||[],
+      assignmentSummary:assignmentSummaryResult.data||null,
+      familyRequests:familyRequestsResult.data||[],
+      billing:billingResult.data||null,
+      notifications:notificationsResult.data||[]
+    };
+    void loadHomeVNextEnhancements(loadSequence,homeVNextFlagPromise,attentionContext,weeklySummaryResult.data||null);
     void loadDeferredMemberModules(loadSequence,askEnabled);
   }
 
