@@ -67,9 +67,11 @@ export async function handleRequest(req:Request){
   let form:FormData;
   try{form=await req.formData();}catch{return json(origin,{error:"Multipart form data required."},400);}
 
+  const requestId=String(form.get("request_id")||"").trim();
   const label=String(form.get("label")||"").trim();
   const capturedOn=String(form.get("captured_on")||"").trim();
   const notes=String(form.get("notes")||"").trim();
+  if(!/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(requestId))return json(origin,{error:"Valid upload request ID required."},400);
   if(label.length>120)return json(origin,{error:"Photo set label must be 120 characters or fewer."},400);
   if(notes.length>2000)return json(origin,{error:"Photo set notes must be 2000 characters or fewer."},400);
   if(!validDate(capturedOn))return json(origin,{error:"A valid captured date is required."},400);
@@ -86,6 +88,28 @@ export async function handleRequest(req:Request){
   }
   if(!files.length)return json(origin,{error:"At least one progress photo is required."},400);
 
+  const requestedAngles=files.map((entry)=>entry.angle).sort();
+  const {data:existingSet,error:existingSetError}=await admin
+    .from("progress_photo_sets")
+    .select("id,contact_id")
+    .eq("id",requestId)
+    .maybeSingle();
+  if(existingSetError)return json(origin,{error:"Unable to verify upload request."},500);
+  if(existingSet){
+    if(existingSet.contact_id!==access.contact_id)return json(origin,{error:"Upload request ID is already in use."},409);
+    const {data:existingPhotos,error:existingPhotosError}=await admin
+      .from("progress_photos")
+      .select("angle")
+      .eq("set_id",requestId)
+      .eq("contact_id",access.contact_id);
+    if(existingPhotosError)return json(origin,{error:"Unable to verify existing photo set."},500);
+    const existingAngles=(existingPhotos||[]).map((row)=>row.angle).sort();
+    if(existingAngles.length===requestedAngles.length&&existingAngles.every((value,index)=>value===requestedAngles[index])){
+      return json(origin,{ok:true,set_id:requestId,photo_count:existingAngles.length,replayed:true},200);
+    }
+    return json(origin,{error:"This upload request is still incomplete. Retry shortly with the same files."},409);
+  }
+
   let setId:string|null=null;
   const uploadedPaths:string[]=[];
   async function cleanup(){
@@ -101,6 +125,7 @@ export async function handleRequest(req:Request){
 
   try{
     const {data:set,error:setError}=await admin.from("progress_photo_sets").insert({
+      id:requestId,
       contact_id:access.contact_id,
       membership_id:access.membership_id||null,
       label:label||null,
