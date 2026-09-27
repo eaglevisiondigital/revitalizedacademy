@@ -21,13 +21,18 @@ test('Privacy Center uses request RPCs and provider disconnect without direct de
   assert.doesNotMatch(block,/\.delete\(|execute_health_data_delete_request|auth\.admin\.deleteUser/);
 });
 
-test('Privacy Center does not expose internal privacy export storage paths',()=>{
+test('Privacy Center keeps export storage paths internal and uses signed delivery only',()=>{
   const js=read('member/member110.js');
   const html=read('member/index.html');
-  const start=js.indexOf('function updatePrivacyProviderScope');
-  const end=js.indexOf('function homeVNextTarget',start);
+  const start=js.indexOf('function renderPrivacyCenter');
+  const end=js.indexOf('async function submitPrivacyRequest',start);
   const block=js.slice(start,end);
-  assert.doesNotMatch(block,/my_privacy_exports|available_storage_path|storage_path/);
+  assert.match(block,/my_privacy_exports/);
+  assert.match(block,/available_storage_path/);
+  assert.match(block,/createSignedUrl\(storagePath,300\)/);
+  assert.doesNotMatch(block,/textContent\s*=\s*row\.available_storage_path/);
+  assert.doesNotMatch(block,/href\s*=\s*row\.available_storage_path/);
+  assert.doesNotMatch(block,/getPublicUrl/);
   const accountStart=html.indexOf('id="rm-member-account-card"');
   const accountEnd=html.indexOf('rm121-settings-card',accountStart);
   const account=html.slice(accountStart,accountEnd);
