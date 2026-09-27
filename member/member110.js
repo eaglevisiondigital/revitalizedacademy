@@ -467,6 +467,7 @@
   let latestHouseholdRows = [];
   let familyHubEnabled = false;
   let homeVNextEnabled = false;
+  let dashboardLoadSequence = 0;
   let currentFamilyTarget = null;
 
   function renderCoachingEntitlements(rows){
@@ -3113,10 +3114,63 @@
     });
   }
 
+  async function loadDeferredMemberModules(loadSequence,askEnabled){
+    const [
+    ]=await Promise.all([
+      client.from("my_health_connection_center").select("*").order("provider_name"),
+      client.from("my_community_spaces").select("*"),
+      client.from("my_community_feed").select("*"),
+      client.from("my_refuel_access").select("*").limit(1).maybeSingle(),
+      client.from("my_documents").select("*"),
+      client.from("my_coaching_entitlements").select("*"),
+      client.from("my_companion_question_types").select("*").order("sort_order"),
+      client.from("my_companion_requests").select("*").limit(20),
+      client.from("my_health_metric_permissions").select("*").order("provider_name").order("display_order"),
+      client.from("my_health_data_snapshot").select("*").order("label")
+    ]);
+
+    const results=[
+      ["my_health_connection_center",healthConnectionsResult],
+      ["my_community_spaces",communitySpacesResult],
+      ["my_community_feed",communityFeedResult],
+      ["my_refuel_access",refuelResult],
+      ["my_documents",documentsResult],
+      ["my_coaching_entitlements",coachingEntitlementsResult],
+      ["my_companion_question_types",companionTypesResult],
+      ["my_companion_requests",companionRequestsResult],
+      ["my_health_metric_permissions",healthPermissionsResult],
+      ["my_health_data_snapshot",healthSnapshotResult]
+    ];
+    results.forEach(([name,result])=>{
+      if(result.error)console.warn("Deferred member module unavailable:",name,result.error.message);
+    });
+
+    if(loadSequence!==dashboardLoadSequence)return;
+
+    renderCoachingEntitlements(coachingEntitlementsResult.error?[]:(coachingEntitlementsResult.data||[]));
+    renderDocuments(documentsResult.error?[]:(documentsResult.data||[]));
+    renderRefuel(refuelResult.error?null:(refuelResult.data||null));
+    renderCommunity(
+      communitySpacesResult.error?[]:(communitySpacesResult.data||[]),
+      communityFeedResult.error?[]:(communityFeedResult.data||[])
+    );
+    renderHealthConnections(
+      healthConnectionsResult.error?[]:(healthConnectionsResult.data||[]),
+      healthPermissionsResult.error?[]:(healthPermissionsResult.data||[]),
+      healthSnapshotResult.error?[]:(healthSnapshotResult.data||[])
+    );
+    renderAskReVitalized(
+      companionTypesResult.error?[]:(companionTypesResult.data||[]),
+      companionRequestsResult.error?[]:(companionRequestsResult.data||[]),
+      askEnabled
+    );
+  }
+
   async function loadDashboard() {
     const {data:lifecycle,error:lifecycleError}=await client.rpc("member_paid_access_allowed");
     if(lifecycleError)throw lifecycleError;
     if(lifecycle!==true){window.location.replace("/member/onboarding/");return;}
+    const loadSequence=++dashboardLoadSequence;
     const homeVNextFlagPromise=client
       .from("app_runtime_config")
       .select("config_value")
@@ -3172,17 +3226,7 @@
       client.from("my_grocery_list").select("*"),
       client.from("my_courses").select("*"),
       client.from("my_resources").select("*"),
-      client.from("my_health_connection_center").select("*").order("provider_name"),
-      client.from("my_challenges").select("*"),
-      client.from("my_community_spaces").select("*"),
-      client.from("my_community_feed").select("*"),
-      client.from("my_refuel_access").select("*").limit(1).maybeSingle(),
-      client.from("my_documents").select("*"),
-      client.from("my_coaching_entitlements").select("*"),
-      client.from("my_companion_question_types").select("*").order("sort_order"),
-      client.from("my_companion_requests").select("*").limit(20),
-      client.from("my_health_metric_permissions").select("*").order("provider_name").order("display_order"),
-      client.from("my_health_data_snapshot").select("*").order("label")
+      client.from("my_challenges").select("*")
     ]);
 
     const requiredResults=[
@@ -3209,17 +3253,7 @@
       ["my_grocery_list",groceryResult],
       ["my_courses",coursesResult],
       ["my_resources",resourcesResult],
-      ["my_health_connection_center",healthConnectionsResult],
-      ["my_challenges",challengesResult],
-      ["my_community_spaces",communitySpacesResult],
-      ["my_community_feed",communityFeedResult],
-      ["my_refuel_access",refuelResult],
-      ["my_documents",documentsResult],
-      ["my_coaching_entitlements",coachingEntitlementsResult],
-      ["my_companion_question_types",companionTypesResult],
-      ["my_companion_requests",companionRequestsResult],
-      ["my_health_metric_permissions",healthPermissionsResult],
-      ["my_health_data_snapshot",healthSnapshotResult]
+      ["my_challenges",challengesResult]
     ].forEach(([name,result])=>{
       if(result.error)console.warn("Optional member module unavailable:",name,result.error.message);
     });
@@ -3314,19 +3348,10 @@
     renderCourseProgress(courseProgressResult.data||[]);
     renderCoachingRequests(coachingRequestsResult.data||[]);
     renderCoachingHub(assignmentSummaryResult.data||null,coachingHubResult.data||null);
-    renderCoachingEntitlements(coachingEntitlementsResult.data||[]);
     renderAgreements(agreementsResult.data||[]);
     renderBilling(billingResult.data||null,invoicesResult.data||[],paymentHistoryResult.data||[]);
-    renderDocuments(documentsResult.data||[]);
     renderReferralSummary(ambassadorResult.data||null,referralActivityResult.data||[]);
-    renderRefuel(refuelResult.data||null);
-    renderCommunity(communitySpacesResult.data||[],communityFeedResult.data||[]);
     renderChallenges(challengesResult.data||[]);
-    renderHealthConnections(
-      healthConnectionsResult.data||[],
-      healthPermissionsResult.data||[],
-      healthSnapshotResult.data||[]
-    );
     renderNotificationPreferences(notificationPrefsResult.data||null);
     renderConversations(conversationsResult.data||[]);
     renderNotifications(notificationsResult.data||[]);
@@ -3369,6 +3394,7 @@
     renderAppointment(appointmentResult.data);
     const activeEntitlements=entitlementsResult.data||[];
     const hasFamilyHub=activeEntitlements.some((row)=>row.entitlement_key==="family_profiles"&&row.status==="active");
+    const askEnabled=activeEntitlements.some((row)=>row.entitlement_key==="ai_advisor"&&row.status==="active");
     renderEntitlements(activeEntitlements);
     renderHousehold(householdResult.data || [], member.household_type,hasFamilyHub);
     renderFamilyRequests(familyRequestsResult.data||[]);
@@ -3380,8 +3406,6 @@
     renderGoals(goalsResult.data || []);
     renderHabits(habitsResult.data || []);
     renderAssignments(assignmentsResult.data || []);
-    const askEnabled=(entitlementsResult.data||[]).some((row)=>row.entitlement_key==="ai_advisor"&&row.status==="active");
-    renderAskReVitalized(companionTypesResult.data||[],companionRequestsResult.data||[],askEnabled);
     metricCatalog = metricsResult.data || [];
     renderMetricOptions();
     renderRecentProgress(progressResult.data || []);
@@ -3404,6 +3428,7 @@
     await renderCheckinForm();
 
     showOnly("rm-dashboard");
+    void loadDeferredMemberModules(loadSequence,askEnabled);
   }
 
   async function resolveSession() {
