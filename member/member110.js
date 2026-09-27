@@ -3151,6 +3151,16 @@
 
   async function loadDeferredMemberModules(loadSequence,askEnabled){
     const [
+      healthConnectionsResult,
+      communitySpacesResult,
+      communityFeedResult,
+      refuelResult,
+      documentsResult,
+      coachingEntitlementsResult,
+      companionTypesResult,
+      companionRequestsResult,
+      healthPermissionsResult,
+      healthSnapshotResult
     ]=await Promise.all([
       client.from("my_health_connection_center").select("*").order("provider_name"),
       client.from("my_community_spaces").select("*"),
@@ -3231,17 +3241,7 @@
       groceryResult,
       coursesResult,
       resourcesResult,
-      healthConnectionsResult,
-      challengesResult,
-      communitySpacesResult,
-      communityFeedResult,
-      refuelResult,
-      documentsResult,
-      coachingEntitlementsResult,
-      companionTypesResult,
-      companionRequestsResult,
-      healthPermissionsResult,
-      healthSnapshotResult
+      challengesResult
     ] = await Promise.all([
       client.from("my_app_bootstrap_v2").select("*").single(),
       client.from("my_member_dashboard").select("*").maybeSingle(),
