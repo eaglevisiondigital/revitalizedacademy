@@ -466,6 +466,7 @@
   let healthPermissionRows = [];
   let latestHouseholdRows = [];
   let familyHubEnabled = false;
+  let homeVNextEnabled = false;
   let currentFamilyTarget = null;
 
   function renderCoachingEntitlements(rows){
@@ -2664,38 +2665,162 @@
     },700);
   }
 
+  function homeVNextTarget(actionType){
+    return ({
+      assignment_overdue:"#rm-assignments",
+      appointment_upcoming:"#rm-appointment",
+      workout_today:".rm170-today-card",
+      meal_today:".rm170-today-card",
+      habit_today:".rm170-today-card",
+      goal_follow_up:"#rm-goals",
+      continue_course:"#rm-courses",
+      ask_revitalized_follow_up:"#rm-ask-revitalized-card"
+    })[actionType]||".rm170-today-card";
+  }
+
+  function renderUpNext(rows){
+    const card=el("rm-up-next-card");
+    const list=el("rm-up-next-list");
+    const count=el("rm-up-next-count");
+    if(!card||!list||!count)return;
+
+    if(!homeVNextEnabled){
+      card.classList.add("hidden");
+      list.replaceChildren();
+      count.textContent="0 Upcoming";
+      return;
+    }
+
+    const items=Array.isArray(rows)?rows.slice(0,5):[];
+    card.classList.remove("hidden");
+    count.textContent=items.length+" Upcoming";
+    list.replaceChildren();
+
+    if(!items.length){
+      list.innerHTML='<div class="rm112-empty">Nothing is scheduled next yet. Upcoming coaching, workouts, meals and goals will appear here.</div>';
+      return;
+    }
+
+    items.forEach((row)=>{
+      const item=document.createElement("div");
+      item.className="rm193-up-next-item";
+
+      const when=document.createElement("div");
+      when.className="rm193-up-next-when";
+      const date=row.starts_at||row.item_date;
+      when.textContent=date?formatDate(date,Boolean(row.starts_at)):"Upcoming";
+
+      const copy=document.createElement("div");
+      const h=document.createElement("strong");
+      h.textContent=row.title||title(row.item_type||"upcoming");
+      const meta=document.createElement("span");
+      meta.textContent=title(row.item_type||"item");
+      copy.append(h,meta);
+
+      item.append(when,copy);
+      if(row.location_url){
+        const a=document.createElement("a");
+        a.href=row.location_url;
+        a.target="_blank";
+        a.rel="noopener noreferrer";
+        a.textContent="Open →";
+        item.append(a);
+      }
+      list.append(item);
+    });
+  }
+
+  function renderWeeklyProgressStory(story,fallback){
+    if(!homeVNextEnabled||!story){
+      renderWeeklySummary(fallback);
+      return;
+    }
+
+    const target=el("rm-weekly-summary");
+    target.replaceChildren();
+
+    const headline=document.createElement("div");
+    headline.className="rm193-week-story";
+    const h=document.createElement("strong");
+    h.textContent=story.summary_headline||"Your week at a glance.";
+    const p=document.createElement("span");
+    p.textContent=story.comparison_text||"Keep building consistency one action at a time.";
+    headline.append(h,p);
+    target.append(headline);
+
+    [
+      ["Plan Completion",story.plan_completion_7d===null||story.plan_completion_7d===undefined?"—":Math.round(Number(story.plan_completion_7d))+"%"],
+      ["Habit Check-Ins",story.habit_checkins||0],
+      ["Workouts",story.workouts_completed||0],
+      ["Meals",story.meals_completed||0],
+      ["Goals Completed",story.goals_completed||0],
+      ["Achievements",story.achievements_unlocked||0]
+    ].forEach(([label,value])=>{
+      const item=document.createElement("div");
+      item.className="rm170-week-stat";
+      const s=document.createElement("span");
+      s.textContent=label;
+      const b=document.createElement("strong");
+      b.textContent=String(value);
+      item.append(s,b);
+      target.append(item);
+    });
+  }
+
   function renderAttentionCenter(context){
-    const list=el("rm-attention-list");list.replaceChildren();
+    const list=el("rm-attention-list");
+    list.replaceChildren();
     const items=[];
-    const agreements=(context.agreements||[]).filter(r=>!["signed","waived"].includes(r.status));
+    const nextBest=homeVNextEnabled&&Array.isArray(context.nextBestActions)?context.nextBestActions:[];
+    const nextTypes=new Set(nextBest.map((row)=>row.action_type));
+    const agreements=(context.agreements||[]).filter((r)=>!["signed","waived"].includes(r.status));
     const unread=(context.conversations||[]).reduce((sum,r)=>sum+Number(r.unread_count||0),0);
     const overdue=Number(context.assignmentSummary?.overdue_count||0);
-    const family=(context.familyRequests||[]).filter(r=>["submitted","in_review"].includes(r.status)).length;
+    const family=(context.familyRequests||[]).filter((r)=>["submitted","in_review"].includes(r.status)).length;
     const billing=context.billing||null;
-    const unreadNotifications=(context.notifications||[]).filter(r=>r.status==="unread").length;
+    const unreadNotifications=(context.notifications||[]).filter((r)=>r.status==="unread").length;
 
-    if(agreements.length)items.push({title:"Agreement Action Needed",detail:agreements.length+" agreement"+(agreements.length===1?"":"s")+" waiting for your review or signature.",target:".rm139-agreements-card",urgent:true});
-    if(billing&&(billing.status==="past_due"||Number(billing.failed_payment_count||0)>0))items.push({title:"Billing Needs Attention",detail:"There is a billing item that needs to be reviewed.",target:"#rm-billing-card",urgent:true});
-    if(overdue)items.push({title:"Overdue Coach Assignment",detail:overdue+" assignment"+(overdue===1?" is":"s are")+" overdue.",target:"#rm-assignments",urgent:true});
-    if(unread)items.push({title:"Unread Coaching Messages",detail:unread+" unread message"+(unread===1?"":"s")+" from your ReVitalized conversations.",target:".rm120-message-grid"});
-    if(family)items.push({title:"Family Hub Request",detail:family+" household request"+(family===1?" is":"s are")+" currently being reviewed.",target:"#rm-family-hub-card"});
-    if(unreadNotifications)items.push({title:"New Notifications",detail:unreadNotifications+" notification"+(unreadNotifications===1?"":"s")+" need your attention.",target:".rm120-message-grid"});
+    if(agreements.length)items.push({priority:1,title:"Agreement Action Needed",detail:agreements.length+" agreement"+(agreements.length===1?"":"s")+" waiting for your review or signature.",target:".rm139-agreements-card",urgent:true});
+    if(billing&&(billing.status==="past_due"||Number(billing.failed_payment_count||0)>0))items.push({priority:2,title:"Billing Needs Attention",detail:"There is a billing item that needs to be reviewed.",target:"#rm-billing-card",urgent:true});
 
+    nextBest.forEach((row)=>items.push({
+      priority:10+Number(row.priority_rank||100),
+      title:row.title||"Next Action",
+      detail:row.description||"A ReVitalized action is ready for you.",
+      target:homeVNextTarget(row.action_type),
+      urgent:Number(row.priority_rank||100)<=20
+    }));
+
+    if(overdue&&!nextTypes.has("assignment_overdue"))items.push({priority:25,title:"Overdue Coach Assignment",detail:overdue+" assignment"+(overdue===1?" is":"s are")+" overdue.",target:"#rm-assignments",urgent:true});
+    if(unread)items.push({priority:90,title:"Unread Coaching Messages",detail:unread+" unread message"+(unread===1?"":"s")+" from your ReVitalized conversations.",target:".rm120-message-grid"});
+    if(family)items.push({priority:95,title:"Family Hub Request",detail:family+" household request"+(family===1?" is":"s are")+" currently being reviewed.",target:"#rm-family-hub-card"});
+    if(unreadNotifications)items.push({priority:100,title:"New Notifications",detail:unreadNotifications+" notification"+(unreadNotifications===1?"":"s")+" need your attention.",target:".rm120-message-grid"});
+
+    items.sort((a,b)=>a.priority-b.priority||a.title.localeCompare(b.title));
     el("rm-attention-count").textContent=items.length+" Item"+(items.length===1?"":"s");
+
     if(!items.length){
       list.innerHTML='<div class="rm187-attention-clear">You are caught up. No urgent member actions are waiting right now.</div>';
       return;
     }
-    items.slice(0,6).forEach(entry=>{
-      const button=document.createElement("button");button.type="button";button.className="rm187-attention-item"+(entry.urgent?" urgent":"");
+
+    items.slice(0,8).forEach((entry)=>{
+      const button=document.createElement("button");
+      button.type="button";
+      button.className="rm187-attention-item"+(entry.urgent?" urgent":"");
       button.dataset.memberJump=entry.target;
-      const dot=document.createElement("span");dot.className="dot";
+      const dot=document.createElement("span");
+      dot.className="dot";
       const copy=document.createElement("div");
-      const h=document.createElement("strong");h.textContent=entry.title;
-      const p=document.createElement("span");p.textContent=entry.detail;
+      const h=document.createElement("strong");
+      h.textContent=entry.title;
+      const p=document.createElement("span");
+      p.textContent=entry.detail;
       copy.append(h,p);
-      const open=document.createElement("b");open.textContent="Open →";
-      button.append(dot,copy,open);list.append(button);
+      const open=document.createElement("b");
+      open.textContent="Open →";
+      button.append(dot,copy,open);
+      list.append(button);
     });
   }
 
@@ -2987,6 +3112,12 @@
     const {data:lifecycle,error:lifecycleError}=await client.rpc("member_paid_access_allowed");
     if(lifecycleError)throw lifecycleError;
     if(lifecycle!==true){window.location.replace("/member/onboarding/");return;}
+    const homeVNextFlagPromise=client
+      .from("app_runtime_config")
+      .select("config_value")
+      .eq("config_key","feature_member_home_vnext")
+      .eq("active",true)
+      .maybeSingle();
     const [
       bootstrapResult,
       dashboardResult,
@@ -3057,6 +3188,35 @@
       companionTypesResult,companionRequestsResult,healthPermissionsResult,healthSnapshotResult
     ].find((r)=>r.error);
     if(failed?.error) throw failed.error;
+
+    const homeFlagResult=await homeVNextFlagPromise;
+    homeVNextEnabled=Boolean(!homeFlagResult.error&&homeFlagResult.data?.config_value===true);
+    const homeVNext={
+      nextBestActions:[],
+      prioritySummary:null,
+      upNext:[],
+      weeklyStory:null
+    };
+    if(homeVNextEnabled){
+      const [nextBestResult,priorityResult,upNextResult,weeklyStoryResult]=await Promise.all([
+        client.from("my_next_best_actions").select("*").order("action_order"),
+        client.from("my_home_priority_summary").select("*").maybeSingle(),
+        client.from("my_up_next").select("*").limit(5),
+        client.from("my_weekly_progress_story").select("*").maybeSingle()
+      ]);
+      [
+        ["my_next_best_actions",nextBestResult],
+        ["my_home_priority_summary",priorityResult],
+        ["my_up_next",upNextResult],
+        ["my_weekly_progress_story",weeklyStoryResult]
+      ].forEach(([name,result])=>{
+        if(result.error)console.warn("Home vNext optional read unavailable:",name,result.error.message);
+      });
+      homeVNext.nextBestActions=nextBestResult.error?[]:(nextBestResult.data||[]);
+      homeVNext.prioritySummary=priorityResult.error?null:(priorityResult.data||null);
+      homeVNext.upNext=upNextResult.error?[]:(upNextResult.data||[]);
+      homeVNext.weeklyStory=weeklyStoryResult.error?null:(weeklyStoryResult.data||null);
+    }
 
     const boot=bootstrapResult.data||{};
     const packed=(data)=>({data:data??null,error:null});
@@ -3154,7 +3314,9 @@
       assignmentSummary:assignmentSummaryResult.data||null,
       familyRequests:familyRequestsResult.data||[],
       billing:billingResult.data||null,
-      notifications:notificationsResult.data||[]
+      notifications:notificationsResult.data||[],
+      nextBestActions:homeVNext.nextBestActions,
+      prioritySummary:homeVNext.prioritySummary
     });
 
     const journey = journeyResult.data;
@@ -3181,7 +3343,8 @@
     renderHousehold(householdResult.data || [], member.household_type,hasFamilyHub);
     renderFamilyRequests(familyRequestsResult.data||[]);
     renderDailyActions(dailyActionsResult.data||null);
-    renderWeeklySummary(weeklySummaryResult.data||null);
+    renderUpNext(homeVNext.upNext);
+    renderWeeklyProgressStory(homeVNext.weeklyStory,weeklySummaryResult.data||null);
     renderActivityTimeline(activityTimelineResult.data||[]);
     renderCoach(coachResult.data);
     renderGoals(goalsResult.data || []);
