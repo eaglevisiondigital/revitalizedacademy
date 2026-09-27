@@ -3247,6 +3247,43 @@
     });
   }
 
+  function renderJourneyCard(journey,error=null){
+    if(error){
+      el("rm-progress-chip").textContent="—";
+      el("rm-progress-bar").style.width="0%";
+      el("rm-next-step").textContent="Journey details are temporarily unavailable.";
+      el("rm-next-due").textContent="Your other member features are still available.";
+      el("rm-continue-journey").disabled=true;
+      return;
+    }
+    if(journey){
+      el("rm-progress-chip").textContent=Number(journey.progress_percent||0)+"%";
+      el("rm-progress-bar").style.width=Math.max(0,Math.min(100,Number(journey.progress_percent||0)))+"%";
+      el("rm-next-step").textContent=journey.current_step_name||"Journey complete";
+      el("rm-next-due").textContent=journey.current_step_due_at
+        ?"Due "+formatDate(journey.current_step_due_at,true)
+        :title(journey.journey_status);
+      el("rm-continue-journey").disabled=false;
+      return;
+    }
+    el("rm-progress-chip").textContent="Complete";
+    el("rm-progress-bar").style.width="100%";
+    el("rm-next-step").textContent="Your current onboarding journey is complete.";
+    el("rm-next-due").textContent="";
+    el("rm-continue-journey").disabled=true;
+  }
+
+  async function loadJourneyEnhancement(loadSequence){
+    const result=await client.from("my_member_journey").select("*").maybeSingle();
+    if(loadSequence!==dashboardLoadSequence)return;
+    if(result.error){
+      console.warn("Optional member module unavailable:","my_member_journey",result.error.message);
+      renderJourneyCard(null,result.error);
+      return;
+    }
+    renderJourneyCard(result.data||null);
+  }
+
   async function loadHomeVNextEnhancements(loadSequence,flagPromise,attentionContext,weeklyFallback){
     const flagResult=await flagPromise;
     if(loadSequence!==dashboardLoadSequence)return;
@@ -3450,13 +3487,11 @@
     const [
       bootstrapResult,
       dashboardResult,
-      entitlementsResult,
-      journeyResult
+      entitlementsResult
     ]=await Promise.all([
       client.from("my_app_bootstrap_v2").select("*").single(),
       client.from("my_member_dashboard").select("*").maybeSingle(),
-      client.from("my_member_entitlements").select("*").order("label"),
-      client.from("my_member_journey").select("*").maybeSingle()
+      client.from("my_member_entitlements").select("*").order("label")
     ]);
 
     const requiredResults=[
@@ -3466,7 +3501,6 @@
     ];
     const failed=requiredResults.find(([,result])=>result.error);
     if(failed?.[1]?.error)throw failed[1].error;
-    if(journeyResult.error)console.warn("Optional member module unavailable:","my_member_journey",journeyResult.error.message);
 
     const boot=bootstrapResult.data||{};
     const packed=(data)=>({data:data??null,error:null});
@@ -3553,29 +3587,6 @@
       notifications:notificationsResult.data||[]
     });
 
-    const journey=journeyResult.error?null:journeyResult.data;
-    if(journeyResult.error){
-      el("rm-progress-chip").textContent="—";
-      el("rm-progress-bar").style.width="0%";
-      el("rm-next-step").textContent="Journey details are temporarily unavailable.";
-      el("rm-next-due").textContent="Your other member features are still available.";
-      el("rm-continue-journey").disabled=true;
-    }else if(journey){
-      el("rm-progress-chip").textContent=Number(journey.progress_percent||0)+"%";
-      el("rm-progress-bar").style.width=Math.max(0,Math.min(100,Number(journey.progress_percent||0)))+"%";
-      el("rm-next-step").textContent=journey.current_step_name||"Journey complete";
-      el("rm-next-due").textContent=journey.current_step_due_at
-        ?"Due "+formatDate(journey.current_step_due_at,true)
-        :title(journey.journey_status);
-      el("rm-continue-journey").disabled=false;
-    }else{
-      el("rm-progress-chip").textContent="Complete";
-      el("rm-progress-bar").style.width="100%";
-      el("rm-next-step").textContent="Your current onboarding journey is complete.";
-      el("rm-next-due").textContent="";
-      el("rm-continue-journey").disabled=true;
-    }
-
     renderAppointment(appointmentResult.data);
     const activeEntitlements=entitlementsResult.data||[];
     const hasFamilyHub=activeEntitlements.some((row)=>row.entitlement_key==="family_profiles"&&row.status==="active");
@@ -3596,6 +3607,7 @@
       billing:billingResult.data||null,
       notifications:notificationsResult.data||[]
     };
+    void loadJourneyEnhancement(loadSequence);
     void loadHomeVNextEnhancements(loadSequence,homeVNextFlagPromise,attentionContext,weeklySummaryResult.data||null);
     void loadProgressVNextEnhancements(loadSequence,progressVNextFlagPromise);
     void loadDeferredMemberModules(loadSequence,{
