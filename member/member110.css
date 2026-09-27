@@ -2260,3 +2260,57 @@
   .rm197-privacy-provider,
   .rm197-privacy-request{align-items:flex-start;flex-direction:column}
 }
+
+
+/* Progress Photos vNext Phase 1: private viewing only */
+.rm198-progress-photos-list{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:10px;
+  margin-top:12px;
+}
+.rm198-progress-photo{
+  margin:0;
+  overflow:hidden;
+  border:1px solid #dfe8e2;
+  border-radius:12px;
+  background:#fbfcfb;
+}
+.rm198-progress-photo img,
+.rm198-progress-photo-unavailable{
+  width:100%;
+  aspect-ratio:3/4;
+  display:block;
+}
+.rm198-progress-photo img{
+  object-fit:cover;
+  background:#edf2ef;
+}
+.rm198-progress-photo-unavailable{
+  display:grid;
+  place-items:center;
+  color:#7a8981;
+  background:#eef3f0;
+  font-size:9px;
+  font-weight:800;
+}
+.rm198-progress-photo figcaption{
+  padding:9px 10px 10px;
+}
+.rm198-progress-photo strong{
+  display:block;
+  color:#274f3c;
+  font-size:9.7px;
+}
+.rm198-progress-photo span{
+  display:block;
+  margin-top:3px;
+  color:#78877f;
+  font-size:8.2px;
+}
+@media(max-width:900px){
+  .rm198-progress-photos-list{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:620px){
+  .rm198-progress-photos-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+}

@@ -146,3 +146,12 @@ These decisions resolve the earlier three-question Chat handoff. The old success
 - **D43 APPROVED:** data-export request/status may be shown, but internal `available_storage_path` or other private Storage paths must not be surfaced as user download URLs. Controlled signed delivery is a later phase.
 - **D44 APPROVED:** this first Privacy Center slice preserves the current backend active-member authorization boundary. Access for payment-suspended/onboarding/former members is a future explicit lifecycle decision, not a frontend bypass.
 - **D45 APPROVED:** Privacy Center vNext is independently reversible behind `feature_member_privacy_center`, default false, and loads after first paint with local failure degradation. See `docs/PRIVACY_CENTER_VNEXT.md`.
+
+
+## 2026-09-27 - Progress Photos vNext Phase 1
+
+- **D46 APPROVED:** Progress Photos vNext Phase 1 is private viewing only. It uses existing member-scoped photo views and private `progress-photos` Storage with 5-minute signed URLs.
+- **D47 APPROVED:** progress photo Storage paths must not be exposed as public URLs or visible member-facing paths. The bucket remains private and `getPublicUrl` is prohibited for this feature.
+- **D48 APPROVED:** browser upload is deferred until an atomic or compensating Storage+database workflow is implemented and tested. Phase 1 must not create orphan-file risk.
+- **D49 APPROVED:** Progress Photos Phase 1 is independently reversible behind `feature_member_progress_photos_vnext`, defaults false, loads post-first-paint, limits the first view to 12 recent photos, and degrades locally.
+- **D50 APPROVED:** photo analysis, AI inference, health scoring, cross-adult sharing, and Family Hub photo sharing are out of scope. See `docs/PROGRESS_PHOTOS_VNEXT.md`.

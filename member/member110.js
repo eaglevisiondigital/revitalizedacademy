@@ -725,6 +725,7 @@
   let coachingVNextEnabled = false;
   let familyVNextEnabled = false;
   let privacyCenterEnabled = false;
+  let progressPhotosVNextEnabled = false;
   let dashboardLoadSequence = 0;
   let latestGoalRows = [];
   let goalProgressById = new Map();
@@ -2965,6 +2966,114 @@
     },700);
   }
 
+  function renderProgressPhotos(items){
+    const card=el("rm-progress-photos-card");
+    const list=el("rm-progress-photos-list");
+    const count=el("rm-progress-photos-count");
+    if(!card||!list||!count)return;
+
+    list.replaceChildren();
+
+    if(!progressPhotosVNextEnabled){
+      card.classList.add("hidden");
+      count.textContent="0 Photos";
+      return;
+    }
+
+    const rows=Array.isArray(items)?items:[];
+    card.classList.remove("hidden");
+    count.textContent=rows.length+" Photo"+(rows.length===1?"":"s");
+
+    if(!rows.length){
+      list.innerHTML='<div class="rm112-empty">No progress photos have been added yet.</div>';
+      return;
+    }
+
+    rows.forEach((row)=>{
+      const figure=document.createElement("figure");
+      figure.className="rm198-progress-photo";
+
+      if(row.signed_url){
+        const img=document.createElement("img");
+        img.src=row.signed_url;
+        img.alt=[row.set_label,row.angle?title(row.angle):null].filter(Boolean).join(" · ")||"Private progress photo";
+        img.loading="lazy";
+        img.decoding="async";
+        img.referrerPolicy="no-referrer";
+        figure.append(img);
+      }else{
+        const unavailable=document.createElement("div");
+        unavailable.className="rm198-progress-photo-unavailable";
+        unavailable.textContent="Preview unavailable";
+        figure.append(unavailable);
+      }
+
+      const caption=document.createElement("figcaption");
+      const h=document.createElement("strong");
+      h.textContent=row.set_label||"Progress Photo";
+      const meta=document.createElement("span");
+      meta.textContent=[
+        row.angle?title(row.angle):null,
+        row.captured_at?formatDate(row.captured_at,true):row.captured_on?formatDate(row.captured_on):null
+      ].filter(Boolean).join(" · ");
+      caption.append(h,meta);
+      figure.append(caption);
+      list.append(figure);
+    });
+  }
+
+  async function loadProgressPhotosVNext(loadSequence){
+    const flagResult=await client
+      .from("app_runtime_config")
+      .select("config_value")
+      .eq("config_key","feature_member_progress_photos_vnext")
+      .eq("active",true)
+      .maybeSingle();
+
+    if(loadSequence!==dashboardLoadSequence)return;
+    progressPhotosVNextEnabled=Boolean(!flagResult.error&&flagResult.data?.config_value===true);
+    if(!progressPhotosVNextEnabled){
+      renderProgressPhotos([]);
+      return;
+    }
+
+    const [setsResult,photosResult]=await Promise.all([
+      client.from("my_progress_photo_sets").select("set_id,label,captured_on,notes,photo_count").limit(12),
+      client.from("my_progress_photos").select("photo_id,set_id,angle,storage_path,captured_at").limit(12)
+    ]);
+
+    if(loadSequence!==dashboardLoadSequence)return;
+
+    if(setsResult.error||photosResult.error){
+      console.warn(
+        "Progress Photos vNext optional read unavailable:",
+        setsResult.error?.message||photosResult.error?.message
+      );
+      renderProgressPhotos([]);
+      return;
+    }
+
+    const labels=new Map((setsResult.data||[]).map((row)=>[row.set_id,row]));
+    const photos=photosResult.data||[];
+    const signed=await Promise.all(photos.map(async(row)=>{
+      const {data,error}=await client.storage
+        .from("progress-photos")
+        .createSignedUrl(row.storage_path,300);
+      return {
+        photo_id:row.photo_id,
+        set_id:row.set_id,
+        angle:row.angle,
+        captured_at:row.captured_at,
+        set_label:labels.get(row.set_id)?.label||"Progress Photo",
+        captured_on:labels.get(row.set_id)?.captured_on||null,
+        signed_url:error?null:(data?.signedUrl||null)
+      };
+    }));
+
+    if(loadSequence!==dashboardLoadSequence)return;
+    renderProgressPhotos(signed);
+  }
+
   function updatePrivacyProviderScope(){
     const type=el("rm-privacy-request-type")?.value||"";
     const field=el("rm-privacy-provider-field");
@@ -3803,6 +3912,7 @@
     coachingVNextEnabled=false;
     familyVNextEnabled=false;
     privacyCenterEnabled=false;
+    progressPhotosVNextEnabled=false;
     goalProgressById=new Map();
     latestGoalRows=[];
     const [
@@ -3934,6 +4044,7 @@
     void loadCoachingVNextEnhancement(loadSequence);
     void loadFamilyVNextEnhancement(loadSequence,hasFamilyHub);
     void loadPrivacyCenterEnhancement(loadSequence);
+    void loadProgressPhotosVNext(loadSequence);
     void loadDeferredMemberModules(loadSequence,{
       askEnabled,
       hasFamilyHub,
