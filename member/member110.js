@@ -727,6 +727,7 @@
   let privacyCenterEnabled = false;
   let progressPhotosVNextEnabled = false;
   let progressPhotoUploadEnabled = false;
+  let progressPhotoPendingRequestId = null;
   let calendarVNextEnabled = false;
   let healthTrendsVNextEnabled = false;
   let calendarFilter = "all";
@@ -3562,7 +3563,9 @@
       return;
     }
 
+    if(!progressPhotoPendingRequestId)progressPhotoPendingRequestId=crypto.randomUUID();
     const body=new FormData();
+    body.set("request_id",progressPhotoPendingRequestId);
     body.set("label",el("rm-progress-photo-label").value.trim());
     body.set("captured_on",el("rm-progress-photo-date").value);
     body.set("notes",el("rm-progress-photo-notes").value.trim());
@@ -3584,6 +3587,7 @@
       return;
     }
 
+    progressPhotoPendingRequestId=null;
     el("rm-progress-photo-upload").reset();
     el("rm-progress-photo-date").value=new Date().toISOString().slice(0,10);
     showStatus(status,"Progress photos saved privately.","success");
@@ -4437,6 +4441,7 @@
     privacyCenterEnabled=false;
     progressPhotosVNextEnabled=false;
     progressPhotoUploadEnabled=false;
+    progressPhotoPendingRequestId=null;
     calendarVNextEnabled=false;
     healthTrendsVNextEnabled=false;
     calendarFilter="all";
