@@ -3,14 +3,14 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const js=fs.readFileSync('member/member110.js','utf8');
 
-test('first-screen blocking member batch is reduced to four reads',()=>{
+test('first-screen blocking member batch is reduced to three reads',()=>{
   const start=js.indexOf('async function loadDashboard()');
   const open=js.indexOf('const [',start);
   const end=js.indexOf(']);',open);
   const block=js.slice(open,end);
   const reads=(block.match(/client\.from\(/g)||[]).length;
-  assert.equal(reads,4);
-  for(const view of ['my_app_bootstrap_v2','my_member_dashboard','my_member_entitlements','my_member_journey'])assert(block.includes(view),view);
+  assert.equal(reads,3);
+  for(const view of ['my_app_bootstrap_v2','my_member_dashboard','my_member_entitlements'])assert(block.includes(view),view);
 });
 
 test('secondary program, wellness and community modules load after first render',()=>{
