@@ -727,6 +727,7 @@
   let privacyCenterEnabled = false;
   let progressPhotosVNextEnabled = false;
   let calendarVNextEnabled = false;
+  let healthTrendsVNextEnabled = false;
   let calendarFilter = "all";
   let latestCalendarRows = [];
   let dashboardLoadSequence = 0;
@@ -1505,6 +1506,130 @@
       return "Manual health-data import support is prepared for a later release.";
     }
     return "Health-data connection support is being prepared.";
+  }
+
+  function sparklinePoints(values,width=180,height=54){
+    if(!values.length)return "";
+    const min=Math.min(...values);
+    const max=Math.max(...values);
+    const range=max-min;
+    return values.map((value,index)=>{
+      const x=values.length===1?width/2:(index/(values.length-1))*width;
+      const y=range===0?height/2:height-((value-min)/range)*height;
+      return x.toFixed(1)+","+y.toFixed(1);
+    }).join(" ");
+  }
+
+  function renderHealthTrends(cards){
+    const section=el("rm-health-trends");
+    const target=el("rm-health-trends-grid");
+    const count=el("rm-health-trends-count");
+    if(!section||!target||!count)return;
+
+    target.replaceChildren();
+
+    if(!healthTrendsVNextEnabled){
+      section.classList.add("hidden");
+      count.textContent="0 Trends";
+      return;
+    }
+
+    const rows=Array.isArray(cards)?cards:[];
+    section.classList.remove("hidden");
+    count.textContent=rows.length+" Trend"+(rows.length===1?"":"s");
+
+    if(!rows.length){
+      target.innerHTML='<div class="rm112-empty">More approved health data is needed before trend charts can appear.</div>';
+      return;
+    }
+
+    rows.forEach((row)=>{
+      const card=document.createElement("div");
+      card.className="rm202-health-trend";
+
+      const top=document.createElement("div");
+      const label=document.createElement("strong");
+      label.textContent=row.metric_label||title(row.metric_key);
+      const value=document.createElement("span");
+      value.textContent=(row.current_value===null||row.current_value===undefined)
+        ?"—"
+        :String(row.current_value)+(row.unit?" "+row.unit:"");
+      top.append(label,value);
+
+      const svg=document.createElementNS("http://www.w3.org/2000/svg","svg");
+      svg.setAttribute("viewBox","0 0 180 54");
+      svg.setAttribute("role","img");
+      svg.setAttribute("aria-label",(row.metric_label||row.metric_key)+" 30-day trend");
+      const line=document.createElementNS("http://www.w3.org/2000/svg","polyline");
+      line.setAttribute("points",sparklinePoints(row.trend_values||[]));
+      line.setAttribute("class","rm202-health-sparkline");
+      line.setAttribute("fill","none");
+      line.setAttribute("vector-effect","non-scaling-stroke");
+      svg.append(line);
+
+      const meta=document.createElement("small");
+      const change=row.absolute_change===null||row.absolute_change===undefined
+        ?"30-day comparison unavailable"
+        :"30-day change "+(Number(row.absolute_change)>0?"+":"")+row.absolute_change+(row.unit?" "+row.unit:"");
+      meta.textContent=[
+        change,
+        row.current_recorded_at?"Latest "+formatDate(row.current_recorded_at,true):null
+      ].filter(Boolean).join(" · ");
+
+      card.append(top,svg,meta);
+      target.append(card);
+    });
+  }
+
+  async function loadHealthTrendsVNext(loadSequence,biometricsEnabled){
+    if(!biometricsEnabled||!currentMember){
+      healthTrendsVNextEnabled=false;
+      renderHealthTrends([]);
+      return;
+    }
+
+    const flagResult=await client
+      .from("app_runtime_config")
+      .select("config_value")
+      .eq("config_key","feature_member_health_trends_vnext")
+      .eq("active",true)
+      .maybeSingle();
+
+    if(loadSequence!==dashboardLoadSequence)return;
+    healthTrendsVNextEnabled=Boolean(!flagResult.error&&flagResult.data?.config_value===true);
+    if(!healthTrendsVNextEnabled){
+      renderHealthTrends([]);
+      return;
+    }
+
+    const cardsResult=await client
+      .from("my_health_dashboard_cards_30d")
+      .select("metric_key,metric_label,unit,current_value,current_recorded_at,absolute_change")
+      .order("current_recorded_at",{ascending:false})
+      .limit(4);
+
+    if(loadSequence!==dashboardLoadSequence)return;
+    if(cardsResult.error){
+      console.warn("Health Trends vNext optional read unavailable:","my_health_dashboard_cards_30d",cardsResult.error.message);
+      renderHealthTrends([]);
+      return;
+    }
+
+    const cards=cardsResult.data||[];
+    const withTrends=await Promise.all(cards.map(async(row)=>{
+      const {data,error}=await client.rpc("get_my_health_metric_trend",{
+        p_contact_id:currentMember.contact_id,
+        p_metric_key:row.metric_key,
+        p_days:30
+      });
+      return {
+        ...row,
+        trend_values:error?[]:(data||[]).map((point)=>Number(point.value_numeric)).filter(Number.isFinite)
+      };
+    }));
+
+    if(loadSequence!==dashboardLoadSequence)return;
+    renderHealthTrends(withTrends);
   }
 
   function renderHealthConnections(rows,permissions=[],snapshot=[]){
@@ -4156,6 +4281,7 @@
     privacyCenterEnabled=false;
     progressPhotosVNextEnabled=false;
     calendarVNextEnabled=false;
+    healthTrendsVNextEnabled=false;
     calendarFilter="all";
     latestCalendarRows=[];
     goalProgressById=new Map();
@@ -4270,6 +4396,7 @@
     const activeEntitlements=entitlementsResult.data||[];
     const hasFamilyHub=activeEntitlements.some((row)=>row.entitlement_key==="family_profiles"&&row.status==="active");
     const askEnabled=activeEntitlements.some((row)=>row.entitlement_key==="ai_advisor"&&row.status==="active");
+    const biometricsEnabled=Boolean(appAccessResult.data?.biometrics_enabled);
     renderEntitlements(activeEntitlements);
     renderFamilyRequests(familyRequestsResult.data||[]);
     renderDailyActions(dailyActionsResult.data||null);
@@ -4294,6 +4421,7 @@
     void loadPrivacyCenterEnhancement(loadSequence);
     void loadProgressPhotosVNext(loadSequence);
     void loadCalendarVNext(loadSequence);
+    void loadHealthTrendsVNext(loadSequence,biometricsEnabled);
     void loadDeferredMemberModules(loadSequence,{
       askEnabled,
       hasFamilyHub,

@@ -2495,3 +2495,60 @@
   color:#77867e;
   font-size:8px;
 }
+
+
+/* Health Trends vNext */
+.rm202-health-trends{
+  margin-top:16px;
+  padding-top:14px;
+  border-top:1px solid #e0e8e3;
+}
+.rm202-health-trends-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  margin-top:10px;
+}
+.rm202-health-trend{
+  padding:11px;
+  border:1px solid #dfe8e2;
+  border-radius:12px;
+  background:#fbfcfb;
+}
+.rm202-health-trend>div{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items:center;
+}
+.rm202-health-trend strong{
+  color:#294f3d;
+  font-size:9.8px;
+}
+.rm202-health-trend span{
+  color:#154734;
+  font-size:10px;
+  font-weight:900;
+}
+.rm202-health-trend svg{
+  width:100%;
+  height:58px;
+  margin-top:8px;
+  overflow:visible;
+}
+.rm202-health-sparkline{
+  stroke:#154734;
+  stroke-width:2.3;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.rm202-health-trend small{
+  display:block;
+  margin-top:6px;
+  color:#78877f;
+  font-size:8.2px;
+  line-height:1.4;
+}
+@media(max-width:620px){
+  .rm202-health-trends-grid{grid-template-columns:1fr}
+}

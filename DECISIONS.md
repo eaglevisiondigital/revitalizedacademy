@@ -178,3 +178,11 @@ These decisions resolve the earlier three-question Chat handoff. The old success
 - **D59 APPROVED:** answered/resolved Ask ReVitalized responses expose member Helpful / Needs Review feedback using the existing `submit_my_companion_feedback` RPC and `my_companion_feedback` view.
 - **D60 APPROVED:** Needs Review uses the existing approved feedback reasons and optional comment, allowing the existing backend quality/human-review workflow to decide escalation.
 - **D61 APPROVED:** member feedback does not change AI generation, medical safety classification, confidence thresholds, source governance, or coach authorization. It evaluates an answer after it has already reached answered/resolved state. See `docs/ASK_REVITALIZED_FEEDBACK.md`.
+
+
+## 2026-09-27 - Health Trends vNext
+
+- **D62 APPROVED:** Health Trends vNext enriches the existing Biometrics card with up to four 30-day descriptive sparklines using `my_health_dashboard_cards_30d` and `get_my_health_metric_trend`.
+- **D63 APPROVED:** trend UI may display latest value, unit, absolute 30-day change and time-series shape, but must not characterize movement as good/bad, healthy/unhealthy, improving/worsening, diagnostic, or treatment-relevant.
+- **D64 APPROVED:** Health Trends vNext requires Biometrics member access, is independently reversible behind `feature_member_health_trends_vnext`, defaults false, and loads post-first-paint with local failure degradation.
+- **D65 APPROVED:** Health Score, Family Health Score, AI health interpretation, cross-adult health sharing, and provider/native connection activation remain outside this slice. See `docs/HEALTH_TRENDS_VNEXT.md`.
