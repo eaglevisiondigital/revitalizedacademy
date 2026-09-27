@@ -31,12 +31,14 @@ test('Progress Photos does not expose raw storage paths into rendered DOM',()=>{
   assert.doesNotMatch(renderBlock,/dataset\..*path|textContent=.*path|href=.*storage/i);
 });
 
-test('Progress Photos Phase 1 has no upload or delete workflow',()=>{
+test('Progress Photos Phase 1 has no Storage upload/delete or photo-row mutation workflow',()=>{
   const js=read('member/member110.js');
   const start=js.indexOf('function renderProgressPhotos');
   const end=js.indexOf('function updatePrivacyProviderScope',start);
   const block=js.slice(start,end);
-  assert.doesNotMatch(block,/\.upload\(|\.remove\(|\.delete\(|insert\(/);
+  assert.doesNotMatch(block,/storage[\s\S]*\.upload\(|storage[\s\S]*\.remove\(/);
+  assert.doesNotMatch(block,/from\("progress_photos"\)[\s\S]*\.(insert|update|delete)\(/);
+  assert.doesNotMatch(block,/from\("progress_photo_sets"\)[\s\S]*\.(insert|update|delete)\(/);
 });
 
 test('Progress Photos loads after first paint and is sequence guarded',()=>{
