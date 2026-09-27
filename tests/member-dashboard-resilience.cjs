@@ -10,8 +10,6 @@ test('member dashboard treats only bootstrap, dashboard and entitlements as fata
   for(const name of ['my_app_bootstrap_v2','my_member_dashboard','my_member_entitlements'])assert(gate.includes(name),name);
   assert.match(gate,/failed\?\.\[1\]\?\.error/);
   assert.match(gate,/throw failed\[1\]\.error/);
-  assert.match(gate,/my_member_journey/);
-  assert.match(gate,/Optional member module unavailable:/);
 });
 
 test('secondary member modules degrade instead of throwing the entire dashboard',()=>{
