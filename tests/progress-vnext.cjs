@@ -35,10 +35,21 @@ test('Progress vNext enriches existing goals without inventing missing completio
   assert.match(block,/awaiting_data/);
 });
 
-test('Progress vNext does not expose progress-photo storage paths',()=>{
+test('Progress vNext keeps Progress Photos on the separate private-viewing path',()=>{
   const js=read('member/member110.js');
   const html=read('member/index.html');
-  assert.doesNotMatch(js,/from\("my_progress_photos"\)|from\("my_progress_photo_sets"\)/);
+  const progressStart=js.indexOf('async function loadProgressVNextEnhancements');
+  const progressEnd=js.indexOf('function renderFamilyRequests',progressStart);
+  const progressBlock=js.slice(progressStart,progressEnd);
+  assert.doesNotMatch(progressBlock,/my_progress_photos|my_progress_photo_sets|storage_path/);
+
+  const photoStart=js.indexOf('async function loadProgressPhotosVNext');
+  const photoEnd=js.indexOf('function updatePrivacyProviderScope',photoStart);
+  const photoBlock=js.slice(photoStart,photoEnd);
+  assert.match(photoBlock,/my_progress_photos/);
+  assert.match(photoBlock,/my_progress_photo_sets/);
+  assert.match(photoBlock,/createSignedUrl\(row\.storage_path,300\)/);
+  assert.doesNotMatch(photoBlock,/getPublicUrl/);
   assert.doesNotMatch(html,/storage_path/i);
 });
 
