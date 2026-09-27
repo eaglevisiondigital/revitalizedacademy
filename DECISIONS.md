@@ -128,3 +128,11 @@ These decisions resolve the earlier three-question Chat handoff. The old success
 - **D33 APPROVED:** allowed member-facing momentum data is limited to deterministic operational context: momentum state, 7-day plan completion/planned/full days, last check-in/progress timestamps, active goals and overdue goals.
 - **D34 APPROVED:** coaching momentum is not a health score, diagnosis, motivation score, compliance judgment, or AI-generated conclusion.
 - **D35 APPROVED:** Coaching Hub vNext is independently reversible behind `feature_member_coaching_vnext`, default false, and must load after first paint with local failure degradation. See `docs/COACHING_VNEXT.md`.
+
+
+## 2026-09-27 - Family Hub vNext first slice
+
+- **D36 APPROVED:** Family Hub vNext first slice is limited to the member-scoped `my_family_calendar_summary` 14-day shared schedule and enriches the existing Family Hub rather than creating a duplicate.
+- **D37 APPROVED:** Family Hub vNext must not use `my_family_progress_dashboard`, `my_family_dashboard_summary_v2`, `my_family_wellness_summary`, family/member health scores, or raw adult health data in this slice.
+- **D38 APPROVED:** the family schedule may show only non-health counts for coaching sessions, workouts, meals, goals due, and challenges ending.
+- **D39 APPROVED:** Family Hub vNext is entitlement-gated, independently reversible behind `feature_member_family_vnext`, defaults false, and loads post-first-paint with local failure degradation. See `docs/FAMILY_VNEXT.md`.

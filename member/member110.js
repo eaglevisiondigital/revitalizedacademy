@@ -361,6 +361,96 @@
     renderProgressInsights(insightsResult.error?[]:(insightsResult.data||[]));
   }
 
+  function renderFamilyCalendar(rows){
+    const section=el("rm-family-calendar");
+    const list=el("rm-family-calendar-list");
+    const count=el("rm-family-calendar-count");
+    if(!section||!list||!count)return;
+
+    if(!familyVNextEnabled){
+      section.classList.add("hidden");
+      list.replaceChildren();
+      count.textContent="0 Days";
+      return;
+    }
+
+    const items=Array.isArray(rows)?rows:[];
+    section.classList.remove("hidden");
+    count.textContent=items.length+" Day"+(items.length===1?"":"s");
+    list.replaceChildren();
+
+    if(!items.length){
+      list.innerHTML='<div class="rm112-empty">No shared family schedule items are coming up in the next 14 days.</div>';
+      return;
+    }
+
+    items.forEach((row)=>{
+      const item=document.createElement("div");
+      item.className="rm196-family-calendar-day";
+
+      const date=document.createElement("strong");
+      date.textContent=formatDate(row.item_date);
+
+      const total=document.createElement("span");
+      total.textContent=String(Number(row.item_count||0))+" Item"+(Number(row.item_count||0)===1?"":"s");
+
+      const detail=document.createElement("small");
+      detail.textContent=[
+        Number(row.coaching_sessions||0)?"Coaching "+Number(row.coaching_sessions):null,
+        Number(row.workouts||0)?"Workouts "+Number(row.workouts):null,
+        Number(row.meals||0)?"Meals "+Number(row.meals):null,
+        Number(row.goals_due||0)?"Goals Due "+Number(row.goals_due):null,
+        Number(row.challenges_ending||0)?"Challenges "+Number(row.challenges_ending):null
+      ].filter(Boolean).join(" · ")||"Shared schedule";
+
+      item.append(date,total,detail);
+      list.append(item);
+    });
+  }
+
+  async function loadFamilyVNextEnhancement(loadSequence,hasFamilyHub){
+    if(!hasFamilyHub){
+      familyVNextEnabled=false;
+      renderFamilyCalendar([]);
+      return;
+    }
+
+    const flagResult=await client
+      .from("app_runtime_config")
+      .select("config_value")
+      .eq("config_key","feature_member_family_vnext")
+      .eq("active",true)
+      .maybeSingle();
+
+    if(loadSequence!==dashboardLoadSequence)return;
+    familyVNextEnabled=Boolean(!flagResult.error&&flagResult.data?.config_value===true);
+    if(!familyVNextEnabled){
+      renderFamilyCalendar([]);
+      return;
+    }
+
+    const today=new Date();
+    const end=new Date(today);
+    end.setDate(end.getDate()+13);
+    const iso=(date)=>date.toISOString().slice(0,10);
+
+    const result=await client
+      .from("my_family_calendar_summary")
+      .select("item_date,item_count,coaching_sessions,workouts,meals,goals_due,challenges_ending")
+      .gte("item_date",iso(today))
+      .lte("item_date",iso(end))
+      .order("item_date")
+      .limit(14);
+
+    if(loadSequence!==dashboardLoadSequence)return;
+    if(result.error){
+      console.warn("Family Hub vNext optional read unavailable:","my_family_calendar_summary",result.error.message);
+      renderFamilyCalendar([]);
+      return;
+    }
+    renderFamilyCalendar(result.data||[]);
+  }
+
   function renderFamilyRequests(rows){
     const target=el("rm-family-requests");target.replaceChildren();
     if(!familyHubEnabled){
@@ -633,6 +723,7 @@
   let homeVNextEnabled = false;
   let progressVNextEnabled = false;
   let coachingVNextEnabled = false;
+  let familyVNextEnabled = false;
   let dashboardLoadSequence = 0;
   let latestGoalRows = [];
   let goalProgressById = new Map();
@@ -3545,6 +3636,7 @@
     homeVNextEnabled=false;
     progressVNextEnabled=false;
     coachingVNextEnabled=false;
+    familyVNextEnabled=false;
     goalProgressById=new Map();
     latestGoalRows=[];
     const [
@@ -3674,6 +3766,7 @@
     void loadHomeVNextEnhancements(loadSequence,attentionContext,weeklySummaryResult.data||null);
     void loadProgressVNextEnhancements(loadSequence);
     void loadCoachingVNextEnhancement(loadSequence);
+    void loadFamilyVNextEnhancement(loadSequence,hasFamilyHub);
     void loadDeferredMemberModules(loadSequence,{
       askEnabled,
       hasFamilyHub,
