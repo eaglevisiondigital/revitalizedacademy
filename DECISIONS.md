@@ -101,3 +101,12 @@ These decisions resolve the earlier three-question Chat handoff. The old success
 - **Recovered:** original MK7 and MK.1 PDFs; exact existing published template text/hashes/merge schemas; safe program/journey/permission configuration. No legal wording changes or client-data export. Private seeds stay outside public repo/artifact.
 - **Engineering test fixture:** Foundations→MK7 required relation exists only in new staging because read-only production had zero program requirement rows. This is not an approved production mapping/backfill. Primary Chat prompt in docs/STAGING_ACCEPTANCE.md requests the missing production decision.
 - **Pending external work:** actual new resource creation, hosted baseline/Auth/SMTP/Edge/Forms verification, synthetic end-to-end acceptance and existing Netlify provenance. No production merge/deploy/DDL/config write has occurred.
+
+
+## 2026-09-27 — Home / Today vNext integration
+
+- **D21 APPROVED:** the first post-staging member integration slice is Home / Today vNext. Preserve `my_app_bootstrap_v2` as the paid-member fallback and do not switch wholesale to v27.
+- **D22 APPROVED:** evolve the existing “Needs Your Attention” card using `my_next_best_actions` / `my_home_priority_summary`; do not add a competing duplicate priority card. Preserve legal/payment/message/family-request attention items not represented by the backend action view.
+- **D23 APPROVED:** add a compact `my_up_next` presentation and progressively enhance Weekly Momentum with `my_weekly_progress_story`, with existing v2 data as fallback.
+- **D24 APPROVED:** Home vNext must be independently reversible behind a dedicated runtime flag (recommended `member_home_vnext`) and additive read failures must degrade to the existing v2 dashboard rather than fail the entire member app.
+- **D25 APPROVED:** this first slice explicitly excludes Health Score/Family Score formulas, AI generation, native HealthKit/Health Connect, push-provider activation, GoodBarber integration, assessment scoring, and broader Family Hub health sharing. See `docs/HOME_VNEXT.md`.
