@@ -51,3 +51,25 @@ Local verification now totals **208 active cases** (90 frontend, 85 existing DB,
 **Unresolved:** no hosted staging project/site/Auth/SMTP configured; exact Netlify production provenance still unknown. Fresh hosted baseline compatibility and full business/entitlement/content/provider setup remain unverified. Seven outreach assets already missing. Read-only live program_agreement_requirements is empty; staging's Foundations→MK7 relation is a synthetic test fixture only. Primary Chat must confirm actual production mapping/legacy review before a production release.
 
 **Next:** create the separate staging resources and follow docs/STAGING_RELEASE_RUNBOOK.md; Work executes docs/STAGING_ACCEPTANCE.md with synthetic accounts. No production release or merge is authorized. Earlier next-package paragraphs above describe the lifecycle handoff and are superseded by this staging preparation status.
+
+
+## Home / Today vNext and dashboard resilience
+
+**IMPLEMENTED on `codex/staging`, feature disabled by default; NOT DEPLOYED.**
+
+- Home / Today vNext preserves `my_app_bootstrap_v2` and adds a reversible runtime flag: `feature_member_home_vnext`.
+- Staging provisioning seeds the flag `false`. Production has no required activation change from this work.
+- When enabled, the existing Needs Your Attention card incorporates `my_next_best_actions` rather than adding a duplicate priority module.
+- A compact Up Next card uses `my_up_next`.
+- Weekly Momentum can use `my_weekly_progress_story` with the existing v2 weekly summary as fallback.
+- The additive vNext reads are explicitly nonfatal.
+- Initial member-dashboard failures are now classified: only bootstrap, member dashboard identity/access, and entitlements are fatal. Optional feature modules log/degrade to their existing empty states.
+- Weekly check-in supporting reads also fail locally rather than denying the whole dashboard.
+- Health Score/Family Score formulas, AI generation, native wearable code, push-provider activation and assessment scoring remain excluded.
+- See `docs/HOME_VNEXT.md`.
+
+Current implementation commits:
+- `9b058c9c25fecd614e815ad9f255e703d85a4e5b` Home / Today vNext
+- `9a413efd63bc8480578dc55ff759531c577ef0d2` optional-module dashboard resilience
+
+Hosted staging acceptance remains the release gate.
