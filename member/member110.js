@@ -730,6 +730,7 @@
   let progressPhotoPendingRequestId = null;
   let calendarVNextEnabled = false;
   let healthTrendsVNextEnabled = false;
+  let notificationRoutingVNextEnabled = false;
   let calendarFilter = "all";
   let latestCalendarRows = [];
   let dashboardLoadSequence = 0;
@@ -1925,6 +1926,64 @@
     });
   }
 
+  function notificationRouteTarget(routeKey){
+    return ({
+      home:".rm185-app-home-card",
+      today:".rm170-today-card",
+      coaching:".rm183-coaching-hub-card",
+      messages:".rm120-message-grid",
+      notifications:".rm120-notifications-card",
+      courses:".rm185-learning-progress-card",
+      family_hub:"#rm-family-hub-card",
+      health:".rm123-health-card",
+      progress:".rm185-progress-center",
+      progress_photos:"#rm-progress-photos-card",
+      settings:".rm121-settings-card",
+      billing:"#rm-billing-card",
+      ask_revitalized:"#rm-ask-revitalized-card",
+      challenges:".rm124-challenges-card"
+    })[routeKey]||null;
+  }
+
+  async function openNotificationRoute(row){
+    const target=notificationRouteTarget(row.route_key);
+    if(!target)return;
+    if(row.status==="unread"){
+      await client.rpc("update_my_notification",{p_notification_id:row.id,p_action:"read"});
+    }
+    document.querySelector(target)?.scrollIntoView({behavior:"smooth",block:"start"});
+  }
+
+  async function loadNotificationRoutingVNext(loadSequence){
+    const flagResult=await client
+      .from("app_runtime_config")
+      .select("config_value")
+      .eq("config_key","feature_member_notification_routing_vnext")
+      .eq("active",true)
+      .maybeSingle();
+
+    if(loadSequence!==dashboardLoadSequence)return;
+    notificationRoutingVNextEnabled=Boolean(!flagResult.error&&flagResult.data?.config_value===true);
+    if(!notificationRoutingVNextEnabled)return;
+
+    const result=await client
+      .from("my_notification_routes")
+      .select("notification_id,notification_type,title,body,status,created_at,route_key,screen_name,feature_key")
+      .limit(100);
+
+    if(loadSequence!==dashboardLoadSequence)return;
+    if(result.error){
+      console.warn("Notification routing vNext optional read unavailable:",result.error.message);
+      return;
+    }
+
+    const rows=(result.data||[]).map((row)=>({
+      ...row,
+      id:row.notification_id
+    }));
+    renderNotifications(rows);
+  }
+
   function renderNotifications(rows){
     const list=el("rm-notifications");
     list.replaceChildren();
@@ -1958,6 +2017,16 @@
 
       const actions=document.createElement("div");
       actions.className="rm186-notification-actions";
+      if(notificationRoutingVNextEnabled&&row.route_key&&notificationRouteTarget(row.route_key)){
+        const open=document.createElement("button");
+        open.type="button";
+        open.textContent=row.screen_name?"Open "+row.screen_name:"Open";
+        open.addEventListener("click",async(event)=>{
+          event.stopPropagation();
+          await openNotificationRoute(row);
+        });
+        actions.append(open);
+      }
       if(row.status==="unread"){
         const read=document.createElement("button");read.type="button";read.textContent="Mark Read";
         read.addEventListener("click",async(event)=>{
@@ -4444,6 +4513,7 @@
     progressPhotoPendingRequestId=null;
     calendarVNextEnabled=false;
     healthTrendsVNextEnabled=false;
+    notificationRoutingVNextEnabled=false;
     calendarFilter="all";
     latestCalendarRows=[];
     goalProgressById=new Map();
@@ -4584,6 +4654,7 @@
     void loadProgressPhotosVNext(loadSequence);
     void loadCalendarVNext(loadSequence);
     void loadHealthTrendsVNext(loadSequence,biometricsEnabled);
+    void loadNotificationRoutingVNext(loadSequence);
     void loadDeferredMemberModules(loadSequence,{
       askEnabled,
       hasFamilyHub,
