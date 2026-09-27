@@ -75,3 +75,42 @@ Phase 1 is complete when:
 - feature defaults off
 - signed-URL failure degrades per image
 - staging privacy/authorization acceptance passes before production enablement
+
+
+## Phase 2 - server-mediated upload
+
+Implemented on the staging branch, disabled by default.
+
+Upload is controlled separately by:
+`feature_member_progress_photo_uploads`
+
+A member may submit one photo set containing any combination of:
+- front
+- side
+- back
+- other
+
+Rules:
+- at least one image
+- JPEG, PNG or WebP only
+- 15 MB maximum per image
+- actual server-side magic bytes must match the declared MIME type
+- captured date is required
+- label maximum 120 characters
+- notes maximum 2000 characters
+
+The browser never writes Storage or photo rows directly.
+
+The `progress-photo-upload` Edge Function:
+1. validates environment/origin/authentication
+2. requires full paid member access
+3. resolves the authenticated member's active contact/membership
+4. validates metadata/files
+5. creates one progress photo set
+6. uploads each object under the authenticated contact-ID folder
+7. inserts the matching progress photo row
+8. removes all newly uploaded objects and deletes the new set if any later step fails
+
+This is compensating transaction behavior across Postgres and Storage.
+
+The feature remains disabled until the new Edge Function is deployed and synthetic staging acceptance passes.
