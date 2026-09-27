@@ -3669,7 +3669,7 @@
     if(field)field.classList.toggle("hidden",type!=="health_data_delete");
   }
 
-  function renderPrivacyCenter(row){
+  function renderPrivacyCenter(row,exports=[]){
     const section=el("rm-privacy-center");
     if(!section)return;
 
@@ -3735,6 +3735,41 @@
       });
     }
 
+    const exportList=el("rm-privacy-exports");
+    exportList.replaceChildren();
+    const exportRows=Array.isArray(exports)?exports:[];
+    if(!exportRows.length){
+      exportList.innerHTML='<div class="rm112-empty">No data export packages are available yet.</div>';
+    }else{
+      exportRows.slice(0,8).forEach((row)=>{
+        const item=document.createElement("div");
+        item.className="rm197-privacy-request";
+
+        const copy=document.createElement("div");
+        const h=document.createElement("strong");
+        h.textContent="Data Export";
+        const meta=document.createElement("span");
+        meta.textContent=[
+          title(row.status),
+          row.file_size_bytes?Math.max(1,Math.round(Number(row.file_size_bytes)/1024))+" KB":null,
+          row.ready_at?"Ready "+formatDate(row.ready_at,true):row.created_at?"Requested "+formatDate(row.created_at,true):null,
+          row.expires_at?"Expires "+formatDate(row.expires_at,true):null
+        ].filter(Boolean).join(" · ");
+        copy.append(h,meta);
+        item.append(copy);
+
+        if(row.status==="ready"&&row.available_storage_path){
+          const button=document.createElement("button");
+          button.type="button";
+          button.className="secondary";
+          button.textContent="Download Export";
+          button.addEventListener("click",()=>downloadPrivacyExport(row.available_storage_path));
+          item.append(button);
+        }
+        exportList.append(item);
+      });
+    }
+
     const requestList=el("rm-privacy-requests");
     requestList.replaceChildren();
     if(!requests.length){
@@ -3757,6 +3792,18 @@
     updatePrivacyProviderScope();
   }
 
+  async function downloadPrivacyExport(storagePath){
+    if(!storagePath)return;
+    const {data,error}=await client.storage
+      .from("privacy-exports")
+      .createSignedUrl(storagePath,300);
+    if(error||!data?.signedUrl){
+      showStatus(el("rm-privacy-status"),error?.message||"Your export download could not be prepared.","error");
+      return;
+    }
+    window.open(data.signedUrl,"_blank","noopener,noreferrer");
+  }
+
   async function loadPrivacyCenterEnhancement(loadSequence){
     const flagResult=await client
       .from("app_runtime_config")
@@ -3768,18 +3815,22 @@
     if(loadSequence!==dashboardLoadSequence)return;
     privacyCenterEnabled=Boolean(!flagResult.error&&flagResult.data?.config_value===true);
     if(!privacyCenterEnabled){
-      renderPrivacyCenter(null);
+      renderPrivacyCenter(null,[]);
       return;
     }
 
-    const result=await client.from("my_privacy_center").select("*").maybeSingle();
+    const [result,exportsResult]=await Promise.all([
+      client.from("my_privacy_center").select("*").maybeSingle(),
+      client.from("my_privacy_exports").select("export_id,status,file_size_bytes,expires_at,created_at,ready_at,available_storage_path").limit(8)
+    ]);
     if(loadSequence!==dashboardLoadSequence)return;
     if(result.error){
       console.warn("Privacy Center optional read unavailable:","my_privacy_center",result.error.message);
-      renderPrivacyCenter(null);
+      renderPrivacyCenter(null,[]);
       return;
     }
-    renderPrivacyCenter(result.data||null);
+    if(exportsResult.error)console.warn("Privacy exports optional read unavailable:",exportsResult.error.message);
+    renderPrivacyCenter(result.data||null,exportsResult.error?[]:(exportsResult.data||[]));
   }
 
   async function submitPrivacyRequest(event){
