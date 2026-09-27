@@ -75,7 +75,7 @@ All 15 recovered sources remain tracked; all now check environment and CORS befo
 | notification-delivery | Recipient-restricted signer/NDA notices |
 | member-coaching | Paid-access API boundary regression |
 
-Optional: `video-message-view` (private video), `coach-companion-knowledge`, `coach-companion-request`, `coach-companion-review` (retrieval/review Ask ReVitalized smoke tests). Deploy these too when their existing features enter acceptance; they share the same guard. No AI generation provider is newly connected. No native app, wearable sync, APNs/FCM or GoodBarber integration is certified here.
+Optional: `video-message-view` (private video), `coach-companion-knowledge`, `coach-companion-request`, `coach-companion-review` (retrieval/review Ask ReVitalized smoke tests), and `progress-photo-upload` (private member Progress Photo writes). Deploy these too when their existing features enter acceptance; they share the same guard. No AI generation provider is newly connected. No native app, wearable sync, APNs/FCM or GoodBarber integration is certified here.
 
 Secondary signer outbox jobs retain only their existing service-accessible delivery copy until sent/redeemed/revoked; durable invitation records remain hashed. Dispatcher refuses non-allowlisted recipients, non-staging URLs and SMS in staging. Preserve its deliverability check and token redaction. Provider keys present does not prove a delivered message.
 
