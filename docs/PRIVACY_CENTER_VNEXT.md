@@ -71,3 +71,19 @@ Default false.
 - request history visible
 - default off
 - staging acceptance before production enablement
+
+
+## Secure export downloads
+
+Ready privacy export packages are now listed inside the Privacy Center.
+
+The browser reads `my_privacy_exports`, which only returns `available_storage_path` when:
+- the export belongs to the authenticated user,
+- status is `ready`,
+- and the export is not expired.
+
+The member never sees or links directly to that path.
+
+When the member selects **Download Export**, the authenticated Supabase client requests a 5-minute signed URL from the private `privacy-exports` bucket. Storage RLS independently verifies that the ready export belongs to that user.
+
+No service-role key, public URL, or permanent download URL is used.
