@@ -260,6 +260,101 @@
     });
   }
 
+  function renderAchievements(rows){
+    const card=el("rm-progress-achievements-card");
+    const target=el("rm-progress-achievements");
+    const count=el("rm-progress-achievement-count");
+    if(!card||!target||!count)return;
+    if(!progressVNextEnabled){
+      card.classList.add("hidden");
+      target.replaceChildren();
+      count.textContent="0 Wins";
+      return;
+    }
+    const items=Array.isArray(rows)?rows.slice(0,8):[];
+    card.classList.remove("hidden");
+    count.textContent=items.length+" Win"+(items.length===1?"":"s");
+    target.replaceChildren();
+    if(!items.length){
+      target.innerHTML='<div class="rm112-empty">Your achievements will appear here as you complete ReVitalized milestones.</div>';
+      return;
+    }
+    items.forEach((row)=>{
+      const item=document.createElement("div");item.className="rm194-achievement";
+      const icon=document.createElement("div");icon.className="rm194-achievement-icon";icon.textContent=row.icon_key==="check"?"✓":"★";
+      const copy=document.createElement("div");
+      const h=document.createElement("strong");h.textContent=row.title||"Achievement";
+      const p=document.createElement("span");p.textContent=row.description||"Milestone completed.";
+      const meta=document.createElement("small");meta.textContent=row.unlocked_at?"Unlocked "+formatDate(row.unlocked_at,true):title(row.category||"progress");
+      copy.append(h,p,meta);item.append(icon,copy);target.append(item);
+    });
+  }
+
+  function renderProgressInsights(rows){
+    const card=el("rm-progress-trends-card");
+    const target=el("rm-progress-trends");
+    const count=el("rm-progress-trend-count");
+    if(!card||!target||!count)return;
+    if(!progressVNextEnabled){
+      card.classList.add("hidden");
+      target.replaceChildren();
+      count.textContent="0 Trends";
+      return;
+    }
+    const items=Array.isArray(rows)?rows.slice(0,8):[];
+    card.classList.remove("hidden");
+    count.textContent=items.length+" Trend"+(items.length===1?"":"s");
+    target.replaceChildren();
+    if(!items.length){
+      target.innerHTML='<div class="rm112-empty">More tracked data is needed before 30-day comparisons can appear.</div>';
+      return;
+    }
+    items.forEach((row)=>{
+      const item=document.createElement("div");item.className="rm194-trend";
+      const top=document.createElement("div");
+      const h=document.createElement("strong");h.textContent=row.metric_label||title(row.metric_key);
+      const dir=document.createElement("span");dir.className="rm194-trend-direction";dir.textContent=title(row.direction||"insufficient_data");
+      top.append(h,dir);
+      const value=document.createElement("b");
+      value.textContent=(row.current_value===null||row.current_value===undefined)?"—":String(row.current_value)+(row.unit?" "+row.unit:"");
+      const p=document.createElement("small");
+      p.textContent=row.insight_text||"More data is needed to show a 30-day comparison.";
+      item.append(top,value,p);target.append(item);
+    });
+  }
+
+  async function loadProgressVNextEnhancements(loadSequence,flagPromise){
+    const flagResult=await flagPromise;
+    if(loadSequence!==dashboardLoadSequence)return;
+    progressVNextEnabled=Boolean(!flagResult.error&&flagResult.data?.config_value===true);
+    if(!progressVNextEnabled){
+      goalProgressById=new Map();
+      renderAchievements([]);
+      renderProgressInsights([]);
+      return;
+    }
+
+    const [goalProgressResult,achievementsResult,insightsResult]=await Promise.all([
+      client.from("my_goal_progress").select("*"),
+      client.from("my_achievements").select("*").limit(12),
+      client.from("my_progress_insights").select("*").limit(12)
+    ]);
+
+    [
+      ["my_goal_progress",goalProgressResult],
+      ["my_achievements",achievementsResult],
+      ["my_progress_insights",insightsResult]
+    ].forEach(([name,result])=>{
+      if(result.error)console.warn("Progress vNext optional read unavailable:",name,result.error.message);
+    });
+
+    if(loadSequence!==dashboardLoadSequence)return;
+    goalProgressById=new Map((goalProgressResult.error?[]:(goalProgressResult.data||[])).map((row)=>[row.goal_id,row]));
+    if(latestGoalRows.length)renderGoals(latestGoalRows);
+    renderAchievements(achievementsResult.error?[]:(achievementsResult.data||[]));
+    renderProgressInsights(insightsResult.error?[]:(insightsResult.data||[]));
+  }
+
   function renderFamilyRequests(rows){
     const target=el("rm-family-requests");target.replaceChildren();
     if(!familyHubEnabled){
@@ -467,7 +562,10 @@
   let latestHouseholdRows = [];
   let familyHubEnabled = false;
   let homeVNextEnabled = false;
+  let progressVNextEnabled = false;
   let dashboardLoadSequence = 0;
+  let latestGoalRows = [];
+  let goalProgressById = new Map();
   let currentFamilyTarget = null;
 
   function renderCoachingEntitlements(rows){
@@ -1831,6 +1929,7 @@
   }
 
   function renderGoals(rows) {
+    latestGoalRows=Array.isArray(rows)?rows:[];
     const list = el("rm-goals");
     const history = el("rm-goal-history");
     list.replaceChildren();
@@ -1869,6 +1968,39 @@
         target.className="rm190-goal-target";
         target.textContent="Target: "+row.target_value+(row.target_unit?" "+row.target_unit:"");
         item.append(target);
+      }
+
+      const goalProgress=progressVNextEnabled?goalProgressById.get(row.id):null;
+      if(goalProgress){
+        const panel=document.createElement("div");
+        panel.className="rm194-goal-progress";
+
+        const state=document.createElement("span");
+        state.className="rm194-goal-state";
+        state.textContent=title(goalProgress.progress_state||"in_progress");
+        panel.append(state);
+
+        const detail=document.createElement("small");
+        if(goalProgress.current_value!==null&&goalProgress.current_value!==undefined){
+          detail.textContent="Current: "+goalProgress.current_value+(goalProgress.target_unit?" "+goalProgress.target_unit:"");
+        }else if(goalProgress.progress_state==="awaiting_data"){
+          detail.textContent="Add progress data to begin tracking this goal.";
+        }else{
+          detail.textContent="Progress is being tracked from your approved data.";
+        }
+        panel.append(detail);
+
+        if(goalProgress.completion_percent!==null&&goalProgress.completion_percent!==undefined){
+          const wrap=document.createElement("div");
+          wrap.className="rm194-goal-progressbar";
+          const fill=document.createElement("i");
+          fill.style.width=Math.max(0,Math.min(100,Number(goalProgress.completion_percent)))+"%";
+          wrap.append(fill);
+          const pct=document.createElement("b");
+          pct.textContent=Math.round(Number(goalProgress.completion_percent))+"%";
+          panel.append(wrap,pct);
+        }
+        item.append(panel);
       }
 
       const actions=document.createElement("div");
@@ -3304,6 +3436,12 @@
       .eq("config_key","feature_member_home_vnext")
       .eq("active",true)
       .maybeSingle();
+    const progressVNextFlagPromise=client
+      .from("app_runtime_config")
+      .select("config_value")
+      .eq("config_key","feature_member_progress_vnext")
+      .eq("active",true)
+      .maybeSingle();
     const [
       bootstrapResult,
       dashboardResult,
@@ -3454,6 +3592,7 @@
       notifications:notificationsResult.data||[]
     };
     void loadHomeVNextEnhancements(loadSequence,homeVNextFlagPromise,attentionContext,weeklySummaryResult.data||null);
+    void loadProgressVNextEnhancements(loadSequence,progressVNextFlagPromise);
     void loadDeferredMemberModules(loadSequence,{
       askEnabled,
       hasFamilyHub,
