@@ -2023,3 +2023,44 @@
     grid-column:1 / -1;
   }
 }
+
+
+/* Coaching Hub vNext: feature-flagged additive momentum context */
+.rm195-coaching-momentum{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:8px;
+  margin-top:12px;
+  padding-top:12px;
+  border-top:1px solid #e2eae5;
+}
+.rm195-momentum-state,
+.rm195-momentum-stat{
+  padding:10px 11px;
+  border:1px solid #dfe8e2;
+  border-radius:10px;
+  background:#fbfcfb;
+}
+.rm195-momentum-state{
+  background:#f3f7f4;
+}
+.rm195-momentum-state span,
+.rm195-momentum-stat span{
+  display:block;
+  color:#73837a;
+  font-size:8px;
+  font-weight:850;
+}
+.rm195-momentum-state strong,
+.rm195-momentum-stat strong{
+  display:block;
+  margin-top:4px;
+  color:#234a39;
+  font-size:11px;
+}
+@media(max-width:850px){
+  .rm195-coaching-momentum{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:500px){
+  .rm195-coaching-momentum{grid-template-columns:1fr}
+}

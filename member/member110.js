@@ -468,6 +468,69 @@
     el("rm-coaching-hub-unread").textContent=String(Number(hub?.unread_messages||0))+" Unread";
   }
 
+  function renderCoachingMomentum(row){
+    const target=el("rm-coaching-momentum");
+    if(!target)return;
+    target.replaceChildren();
+    target.classList.toggle("hidden",!coachingVNextEnabled);
+    if(!coachingVNextEnabled)return;
+
+    if(!row){
+      target.innerHTML='<div class="rm112-empty">Your coaching momentum will appear as you begin using your plan.</div>';
+      return;
+    }
+
+    const state=document.createElement("div");
+    state.className="rm195-momentum-state";
+    const label=document.createElement("span");
+    label.textContent="Momentum";
+    const value=document.createElement("strong");
+    value.textContent=title(row.momentum_state||"steady");
+    state.append(label,value);
+    target.append(state);
+
+    [
+      ["Plan Completion · 7 Days",row.plan_completion_7d===null||row.plan_completion_7d===undefined?"—":Math.round(Number(row.plan_completion_7d))+"%"],
+      ["Planned Days",row.planned_days_7d||0],
+      ["Fully Completed Days",row.full_days_7d||0],
+      ["Active Goals",row.active_goals||0],
+      ["Overdue Goals",row.overdue_goals||0],
+      ["Last Check-In",row.last_checkin_at?formatDate(row.last_checkin_at,true):"Not Yet"],
+      ["Last Progress Update",row.last_progress_at?formatDate(row.last_progress_at,true):"Not Yet"]
+    ].forEach(([name,val])=>{
+      const item=document.createElement("div");
+      item.className="rm195-momentum-stat";
+      const s=document.createElement("span");s.textContent=name;
+      const b=document.createElement("strong");b.textContent=String(val);
+      item.append(s,b);target.append(item);
+    });
+  }
+
+  async function loadCoachingVNextEnhancement(loadSequence){
+    const flagResult=await client
+      .from("app_runtime_config")
+      .select("config_value")
+      .eq("config_key","feature_member_coaching_vnext")
+      .eq("active",true)
+      .maybeSingle();
+
+    if(loadSequence!==dashboardLoadSequence)return;
+    coachingVNextEnabled=Boolean(!flagResult.error&&flagResult.data?.config_value===true);
+    if(!coachingVNextEnabled){
+      renderCoachingMomentum(null);
+      return;
+    }
+
+    const result=await client.from("my_coaching_momentum").select("*").maybeSingle();
+    if(loadSequence!==dashboardLoadSequence)return;
+    if(result.error){
+      console.warn("Coaching vNext optional read unavailable:","my_coaching_momentum",result.error.message);
+      renderCoachingMomentum(null);
+      return;
+    }
+    renderCoachingMomentum(result.data||null);
+  }
+
   function renderCoachingRequests(rows){
     const list=el("rm-coaching-requests");list.replaceChildren();
     const open=rows.filter(r=>["requested","scheduled"].includes(r.status));
@@ -569,6 +632,7 @@
   let familyHubEnabled = false;
   let homeVNextEnabled = false;
   let progressVNextEnabled = false;
+  let coachingVNextEnabled = false;
   let dashboardLoadSequence = 0;
   let latestGoalRows = [];
   let goalProgressById = new Map();
@@ -3480,6 +3544,7 @@
     const loadSequence=++dashboardLoadSequence;
     homeVNextEnabled=false;
     progressVNextEnabled=false;
+    coachingVNextEnabled=false;
     goalProgressById=new Map();
     latestGoalRows=[];
     const [
@@ -3608,6 +3673,7 @@
     void loadJourneyEnhancement(loadSequence);
     void loadHomeVNextEnhancements(loadSequence,attentionContext,weeklySummaryResult.data||null);
     void loadProgressVNextEnhancements(loadSequence);
+    void loadCoachingVNextEnhancement(loadSequence);
     void loadDeferredMemberModules(loadSequence,{
       askEnabled,
       hasFamilyHub,

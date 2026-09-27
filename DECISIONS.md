@@ -120,3 +120,11 @@ These decisions resolve the earlier three-question Chat handoff. The old success
 - **D29 APPROVED:** progress insights remain descriptive only. Up/down/stable does not automatically mean better/worse, healthy/unhealthy, or medical improvement.
 - **D30 APPROVED:** progress photos are excluded from the first Progress vNext slice. Raw private Storage paths must never be surfaced as usable public URLs. A later photo phase requires controlled private delivery/signing, access, upload and retention behavior.
 - **D31 APPROVED:** Progress vNext explicitly excludes Health Score, Family Health Score, AI-generated medical interpretation, assessment scoring, cross-adult health sharing, native wearable work and GoodBarber integration. See `docs/PROGRESS_VNEXT.md`.
+
+
+## 2026-09-27 — Coaching Hub vNext integration
+
+- **D32 APPROVED:** Coaching Hub vNext enriches the existing member Coaching Hub with `my_coaching_momentum`; it does not create a second coaching dashboard.
+- **D33 APPROVED:** allowed member-facing momentum data is limited to deterministic operational context: momentum state, 7-day plan completion/planned/full days, last check-in/progress timestamps, active goals and overdue goals.
+- **D34 APPROVED:** coaching momentum is not a health score, diagnosis, motivation score, compliance judgment, or AI-generated conclusion.
+- **D35 APPROVED:** Coaching Hub vNext is independently reversible behind `feature_member_coaching_vnext`, default false, and must load after first paint with local failure degradation. See `docs/COACHING_VNEXT.md`.
