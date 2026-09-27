@@ -2069,6 +2069,26 @@
     await loadDashboard();
   }
 
+  async function openSupportConversation(){
+    const button=el("rm-support-open");
+    const old=button.textContent;
+    button.disabled=true;
+    button.textContent="Opening Support...";
+    try{
+      const {data,error}=await client.functions.invoke("member-support",{body:{action:"context"}});
+      if(error||!data?.ok)throw error||new Error(data?.error||"Support is temporarily unavailable.");
+      await openConversation({
+        conversation_id:data.conversation.id,
+        title:data.conversation.title||"ReVitalized Support"
+      });
+    }catch(error){
+      window.alert(error.message||"Support is temporarily unavailable.");
+    }finally{
+      button.disabled=false;
+      button.textContent=old;
+    }
+  }
+
   async function openConversation(row){
     activeConversationId=row.conversation_id;
     el("rm-message-title").textContent=row.title||"ReVitalized Conversation";
@@ -4894,6 +4914,7 @@
   });
   el("rm-member-password-form").addEventListener("submit",saveMemberPassword);
 
+  el("rm-support-open").addEventListener("click",openSupportConversation);
   el("rm-signout").addEventListener("click", signOut);
   el("rm-denied-signout").addEventListener("click", signOut);
 
