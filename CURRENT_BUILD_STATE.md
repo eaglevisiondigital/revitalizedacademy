@@ -262,3 +262,25 @@ The Edge function:
 - cleans up both Storage and the database row on partial failure
 
 Because the member frontend now depends on this Edge function, it is part of required staging deployment sequencing before member acceptance.
+
+
+## Lifecycle-safe member support
+
+**IMPLEMENTED on `codex/staging`, NOT DEPLOYED.**
+
+A new required Edge function `member-support` reuses the existing private messaging tables and `support` conversation type.
+
+Support is available to authenticated client-access states:
+- ready
+- invited
+- onboarding
+- active
+- payment_suspended
+
+It is not enabled by default for manually suspended or inactive accounts.
+
+This endpoint intentionally does not call `member_paid_access_allowed()`; support remains available without reopening paid member features.
+
+The Enrollment & Signature Center now contains a private Support Center for eligible restricted/active users, and the active member Messages area has a Contact Support action. Both use the same contact-scoped support conversation.
+
+Support conversation creation is deterministic/idempotent and support-message sends use idempotent request UUIDs.
