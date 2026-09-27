@@ -1,6 +1,6 @@
 (() => {
-  const ENDPOINT = 'https://voalfpxiyznnqfcqcymd.supabase.co/functions/v1/public-intake';
-  const API_KEY = 'sb_publishable_09WCwErmz_KpKsI7AtlHyg_SQtHWmZd';
+  const ENDPOINT = (window.RVA_ENV.edgeBaseUrl + "/public-intake");
+  const API_KEY = window.RVA_ENV.supabaseKey;
 
   const updateWebinarCounter = (count) => {
     document.querySelectorAll('[data-webinar-priority-count]').forEach(el => el.textContent = String(count));

@@ -1,9 +1,9 @@
 (() => {
   "use strict";
 
-  const JOURNEY_FUNCTION = "https://voalfpxiyznnqfcqcymd.supabase.co/functions/v1/journey-link";
-  const PROFILE_FUNCTION = "https://voalfpxiyznnqfcqcymd.supabase.co/functions/v1/health-profile-intake";
-  const API_KEY = "sb_publishable_09WCwErmz_KpKsI7AtlHyg_SQtHWmZd";
+  const JOURNEY_FUNCTION = (window.RVA_ENV.edgeBaseUrl + "/journey-link");
+  const PROFILE_FUNCTION = (window.RVA_ENV.edgeBaseUrl + "/health-profile-intake");
+  const API_KEY = window.RVA_ENV.supabaseKey;
   const token = (new URLSearchParams(window.location.search).get("journey_token") || "").trim();
 
   function loadEngine() {

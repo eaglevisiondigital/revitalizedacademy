@@ -1,0 +1,7 @@
+{
+  "environment": "production",
+  "supabaseUrl": "https://voalfpxiyznnqfcqcymd.supabase.co",
+  "supabaseKey": "sb_publishable_09WCwErmz_KpKsI7AtlHyg_SQtHWmZd",
+  "appOrigin": "https://revitalizedacademy.com",
+  "paymentMode": "existing"
+}

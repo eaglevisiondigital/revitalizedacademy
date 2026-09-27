@@ -216,7 +216,7 @@
       return;
     }
 
-    const activationUrl = "https://revitalizedacademy.com/member/activate/?token=" + encodeURIComponent(token);
+    const activationUrl = (window.RVA_ENV.onboardingUrl + "#enroll=") + encodeURIComponent(token);
     await navigator.clipboard.writeText(activationUrl);
 
     const button = el("client-copy-activation");

@@ -1,15 +1,11 @@
+import { allowedOrigins, edgeEnvironment, configurationError } from "../_shared/environment.ts";
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "npm:@supabase/supabase-js@2.57.4";
-
-const allowedOrigins = new Set([
-  "https://revitalizedacademy.com",
-  "https://www.revitalizedacademy.com"
-]);
 
 function cors(req: Request) {
   const origin = req.headers.get("origin") || "";
   return {
-    "Access-Control-Allow-Origin": allowedOrigins.has(origin) ? origin : "https://revitalizedacademy.com",
+    "Access-Control-Allow-Origin": allowedOrigins.has(origin) ? origin : edgeEnvironment().appOrigin,
     "Access-Control-Allow-Methods": "GET, OPTIONS",
     "Access-Control-Allow-Headers": "content-type, apikey",
     "Vary": "Origin",
@@ -28,6 +24,8 @@ function json(req: Request, data: unknown, status = 200) {
 }
 
 Deno.serve(async (req: Request) => {
+  const configError=configurationError();if(configError)return configError;
+  const origin=req.headers.get("origin");if(origin&&!allowedOrigins.has(origin))return json(req,{error:"Origin not allowed"},403);
   if (req.method === "OPTIONS") return new Response("ok", { headers: cors(req) });
   if (req.method !== "GET") return json(req, { error: "Method not allowed" }, 405);
 

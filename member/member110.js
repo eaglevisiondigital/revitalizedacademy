@@ -1,8 +1,8 @@
 (() => {
   "use strict";
 
-  const SUPABASE_URL = "https://voalfpxiyznnqfcqcymd.supabase.co";
-  const PUBLISHABLE_KEY = "sb_publishable_09WCwErmz_KpKsI7AtlHyg_SQtHWmZd";
+  const SUPABASE_URL = window.RVA_ENV.supabaseUrl;
+  const PUBLISHABLE_KEY = window.RVA_ENV.supabaseKey;
   const client = window.supabase.createClient(SUPABASE_URL, PUBLISHABLE_KEY, {
     auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
   });
@@ -815,7 +815,7 @@
 
     card.classList.remove("hidden");
     currentReferralCode=row.referral_code;
-    currentReferralShareUrl=row.share_url||("https://revitalizedacademy.com/enroll?ref="+encodeURIComponent(row.referral_code));
+    currentReferralShareUrl=row.share_url||((window.RVA_ENV.publicSiteOrigin + "/enroll?ref=")+encodeURIComponent(row.referral_code));
     currentReferralShareMessage=row.share_message||("I wanted to share ReVitalized Academy with you: "+currentReferralShareUrl);
 
     el("rm-referral-code").textContent=row.referral_code;

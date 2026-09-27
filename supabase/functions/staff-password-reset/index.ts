@@ -1,15 +1,9 @@
+import { allowedOrigins, edgeEnvironment, configurationError, assertSyntheticRecipient } from "../_shared/environment.ts";
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "npm:@supabase/supabase-js@2.57.4";
 
-const allowedOrigins=new Set([
-  "https://revitalizedacademy.com",
-  "https://www.revitalizedacademy.com",
-  "http://localhost:3000",
-  "http://localhost:5173"
-]);
-
 function cors(origin:string|null){
-  const safe=origin&&allowedOrigins.has(origin)?origin:"https://revitalizedacademy.com";
+  const safe=origin&&allowedOrigins.has(origin)?origin:edgeEnvironment().appOrigin;
   return {
     "Access-Control-Allow-Origin":safe,
     "Access-Control-Allow-Headers":"authorization, x-client-info, apikey, content-type",
@@ -26,6 +20,7 @@ function json(origin:string|null,data:unknown,status=200){
 function clean(v:unknown,max=500){return String(v||"").trim().slice(0,max);}
 
 Deno.serve(async(req:Request)=>{
+  const configError=configurationError();if(configError)return configError;
   const origin=req.headers.get("origin");
   if(req.method==="OPTIONS")return new Response("ok",{headers:cors(origin)});
   if(req.method!=="POST")return json(origin,{error:"Method not allowed"},405);
@@ -58,6 +53,7 @@ Deno.serve(async(req:Request)=>{
       return json(origin,{ok:true,message:generic});
     }
 
+    assertSyntheticRecipient(email);
     const {data:linkData,error:linkError}=await admin.auth.admin.generateLink({
       type:"recovery",
       email
@@ -71,7 +67,7 @@ Deno.serve(async(req:Request)=>{
     const tokenHash=actionUrl.searchParams.get("token");
     if(!tokenHash)throw new Error("Password reset token was missing.");
 
-    const safeLanding="https://revitalizedacademy.com/portal/password-reset.html?token_hash="+encodeURIComponent(tokenHash);
+    const safeLanding=(edgeEnvironment().recoveryRedirect+"?token_hash=")+encodeURIComponent(tokenHash);
 
     const apiKey=Deno.env.get("RESEND_API_KEY");
     const from=Deno.env.get("REVITALIZED_EMAIL_FROM")||"ReVitalized Academy <noreply@auth.revitalizedacademy.com>";

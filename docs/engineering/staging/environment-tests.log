@@ -1,0 +1,33 @@
+✔ production mapping resolves to the known publishable project and branded recovery (1.346333ms)
+✔ staging rejects unsafe project (0.262292ms)
+✔ staging rejects unsafe origin (0.081166ms)
+✔ staging rejects unsafe www (0.069208ms)
+✔ staging rejects unsafe alias (0.096708ms)
+✔ staging rejects unsafe edge (0.113542ms)
+✔ staging rejects unsafe callback (6.2595ms)
+✔ staging rejects unsafe recovery (0.142166ms)
+✔ staging rejects unsafe secret (0.494125ms)
+✔ staging rejects unsafe money (0.188833ms)
+✔ staging rejects unsafe incomplete (0.077666ms)
+✔ service-role JWT is rejected while matching legacy anon JWT is allowed (0.651625ms)
+✔ all staging callbacks, signer invitations and recovery remain on its approved origin (0.133042ms)
+✔ dedicated temporary Netlify hostname needs only config (0.081292ms)
+✔ synthetic payments never expose a checkout endpoint; production retains HTTPS behavior (0.423333ms)
+✔ Netlify wrong site, branch, preview context and origin all fail before build (0.258208ms)
+✔ staging database target refuses production, wrong ref, unverified TLS and existing generic hosts (0.507583ms)
+✔ runtime rejects staging config on an unapproved hostname and never initializes a client (35.591375ms)
+✔ artifact is an exact public allowlist and never contains backend/private/secret artifacts (496.191792ms)
+✔ artifact preserves local script/style/image dependencies referenced by public pages (350.530583ms)
+✔ no production bindings remain in application callers (6.323459ms)
+✔ legal manifest records exact recovered hashes and protected seed input is never deployable (0.797334ms)
+✔ first-step bridge uses staging endpoint and cannot cancel independent Netlify capture on mirror failure (22.84125ms)
+✔ invalid legal bytes fail before a database connection (2.468083ms)
+✔ unknown config fields cannot enter the public resolved object (0.1255ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1367.731459

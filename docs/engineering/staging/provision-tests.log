@@ -1,0 +1,16 @@
+✔ new staging bootstrap applies baseline and both forward components without fabricated migration history (1684.992417ms)
+✔ staging callback config is active and production replacement is refused (0.843417ms)
+✔ six recovered Storage buckets remain private and carry restrictive lifecycle policies (1.383916ms)
+✔ MK7 and MK.1 retain version/content hash relationships without public text access (0.952583ms)
+✔ synthetic Foundations contract relation and six-month term are seeded with no real pricing (0.652875ms)
+✔ webinar capacity remains fifty and no live accounts/data are copied (1.054667ms)
+✔ staging payment endpoints are prohibited and referral links cannot target production (1.139417ms)
+✔ bootstrap refuses existing application objects instead of replaying baseline (0.892375ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1848.769084

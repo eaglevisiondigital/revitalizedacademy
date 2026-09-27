@@ -1,0 +1,52 @@
+[
+  {
+    "agreement_key": "revitalized-academy-client-contract",
+    "name": "ReVitalized Academy New Client Agreement",
+    "version": "MK7",
+    "audience": "client",
+    "document_type": "client_contract",
+    "source_filename": "ReVitalized Academy Contract MK7.pdf",
+    "content_hash": "3a470c6508760ba4a61475d6a9f310e1456a094a906b7499d261ad285492820d",
+    "merge_schema": {
+      "optional": [
+        "secondary_client_name",
+        "secondary_client_clause",
+        "special_conditions"
+      ],
+      "required": [
+        "effective_date",
+        "client_name",
+        "program_level",
+        "monthly_fee",
+        "term_duration",
+        "good_faith_deposit",
+        "adjusted_monthly_payment",
+        "company_approver_name",
+        "company_approval_date",
+        "appendix_a_plan_structure"
+      ]
+    },
+    "pdf_file": "client-contract-mk7.pdf",
+    "pdf_sha256": "a6ba92eed01ed939a8ba8987bb46590825ce99992eb1ae582f2caf0db0ac393b"
+  },
+  {
+    "agreement_key": "revitalized-nation-coach-nda",
+    "name": "The ReVitalized Nation Nondisclosure Agreement",
+    "version": "MK.1",
+    "audience": "staff",
+    "document_type": "coach_nda",
+    "source_filename": "The ReVitalized Nation Nondisclosure Agreement MK.1.pdf",
+    "content_hash": "b03655e75ad93f126240b3b4be6640d694289cd87f505188309b8d628a60773a",
+    "merge_schema": {
+      "optional": [
+        "recipient_email"
+      ],
+      "required": [
+        "effective_date",
+        "recipient_name"
+      ]
+    },
+    "pdf_file": "coach-nda-mk1.pdf",
+    "pdf_sha256": "2d1bd581da33af73db54d2669bd636d43de84bb7bd964865ada8e850d5e2cd2c"
+  }
+]

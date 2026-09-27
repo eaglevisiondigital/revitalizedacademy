@@ -33,5 +33,6 @@ jobs:
       - run: npm test
       - run: npm run check:js
       - run: npm run test:backend
+      - run: node --test tests/staging/*.test.cjs
       - run: npx --yes --package=deno@2.9.6 deno check --frozen --config supabase/functions/deno.json supabase/functions/*/index.ts
       - run: npx --yes --package=deno@2.9.6 deno test --frozen --config supabase/functions/deno.json tests/edge/

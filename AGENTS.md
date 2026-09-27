@@ -7,7 +7,7 @@ REPOSITORY:
 eaglevisiondigital/revitalizedacademy (confirmed implementation repository).
 
 PRIMARY DEVELOPMENT BRANCH:
-Base new work on verified origin/main. Use isolated codex/* branches. The baseline documentation branch is codex/verified-baseline. No direct production push, merge, deployment or migration is authorized by the baseline task.
+Current approved staging work extends lifecycle feef92e1c0809cbd035edf35ebc70050d958b46b on codex/staging. Preserve this ancestry; do not restart from main for this package. Use isolated codex/* branches. The baseline documentation branch is codex/verified-baseline. No direct production push, merge, deployment or migration is authorized by the baseline task.
 
 Your responsibility is to implement the approved architecture safely, completely, and cleanly.
 
@@ -299,3 +299,8 @@ Current branch: codex/client-access-lifecycle, based on verified backend-securit
 Read docs/CLIENT_ACCESS_LIFECYCLE.md and docs/engineering/LIFECYCLE_TEST_RESULTS.md. Limited onboarding, independently authenticated secondary adults, and payment suspension/restoration are approved, not open policy questions. Preserve the existing client_access/membership/activation/ledger/agreement architecture and v2 bootstrap. Never restore same-account two-slot signatures. Do not invent scoring or broaden adult health sharing.
 
 Treat invitation delivery copies as secrets: the private durable table stores only hashes; delivery rows containing invitation links are unavailable to authenticated clients and redacted by the dispatcher. Verify recipient email, expiry, revocation, hash and caller identity. Restrictive RLS must accompany any future paid-member table. Preserve the read-only release boundary and require a real staging acceptance report before production authorization.
+
+
+STAGING PACKAGE RULES
+
+Read docs/STAGING_ENVIRONMENT.md, docs/STAGING_RELEASE_RUNBOOK.md and docs/STAGING_ACCEPTANCE.md before release work. Build and serve dist only; config/public-files.json is the explicit deployment allowlist. Never publish the repository root. All application/Edge environment values must be explicit and staging must reject production targets. Keep legal inputs under ignored .staging-private, verify approved hashes, and never copy customer data or credentials into seeds. scripts/staging/provision.cjs is NEW staging only, not a production/history-repair tool. Preserve the private receipt and both genuine forward migrations; never invent ledger entries. Hosted creation/acceptance remains outstanding. Production program/agreement mapping requires the documented primary Chat decision before any backfill.

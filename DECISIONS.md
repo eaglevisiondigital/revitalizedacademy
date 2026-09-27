@@ -92,3 +92,12 @@ The confirmed implementation repository is `eaglevisiondigital/revitalizedacadem
 - **D20 APPROVED:** confirmed refunds/reversals that reduce net paid amount below the requirement restrict paid benefits while preserving account/history and resolution surfaces. Partial refunds above the threshold do not suspend. Restoration requires both gates; administrative revocation is not automatically reversed. All transitions and waivers are audited.
 
 These decisions resolve the earlier three-question Chat handoff. The old successful two-name/single-account test expectation is explicitly superseded; approved terms, assessment content and scoring are unchanged. Technical implementation details and compatibility limits are recorded in docs/CLIENT_ACCESS_LIFECYCLE.md. Work's external validation assignment remains outstanding.
+
+
+## 2026-09-27 — approved isolated staging preparation
+
+- **Approved by assignment:** separate codex/staging branch, separate Netlify site and separate Supabase project; preferred staging.revitalizedacademy.com, dedicated Netlify hostname acceptable. Production untouched.
+- **Implemented:** explicit shared environment configuration, fail-closed staging targeting, dist allowlist, all 15 Edge environment guards, synthetic payment/email boundaries, new-project bootstrap and release/rollback/acceptance docs. No v27 upgrade or assessment scoring.
+- **Recovered:** original MK7 and MK.1 PDFs; exact existing published template text/hashes/merge schemas; safe program/journey/permission configuration. No legal wording changes or client-data export. Private seeds stay outside public repo/artifact.
+- **Engineering test fixture:** Foundations→MK7 required relation exists only in new staging because read-only production had zero program requirement rows. This is not an approved production mapping/backfill. Primary Chat prompt in docs/STAGING_ACCEPTANCE.md requests the missing production decision.
+- **Pending external work:** actual new resource creation, hosted baseline/Auth/SMTP/Edge/Forms verification, synthetic end-to-end acceptance and existing Netlify provenance. No production merge/deploy/DDL/config write has occurred.

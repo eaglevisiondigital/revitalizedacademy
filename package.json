@@ -6,7 +6,8 @@
     "test:backend": "node scripts/backend/run-tests.cjs",
     "check:js": "node scripts/check-js.cjs",
     "check:edge": "deno check --config supabase/functions/deno.json supabase/functions/*/index.ts",
-    "test:edge": "deno test --config supabase/functions/deno.json tests/edge/"
+    "test:edge": "deno test --config supabase/functions/deno.json tests/edge/",
+    "build": "node scripts/build-site.cjs"
   },
   "devDependencies": {
     "jsdom": "26.1.0",

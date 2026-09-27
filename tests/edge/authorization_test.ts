@@ -14,7 +14,7 @@ type Call={path:string;method:string;body:Record<string,unknown>|null;auth:strin
 async function run(handler:(r:Request)=>Promise<Response>,body:unknown,options:{staff?:boolean;allowed?:boolean;auth?:boolean;signError?:boolean;paid?:boolean;claimError?:boolean;paymentFixture?:boolean}={}) {
  const originalFetch=globalThis.fetch,originalEnv=Deno.env.get;
  const calls:Call[]=[];
- Deno.env.get=(key:string)=>({SUPABASE_URL:"https://synthetic.invalid",SUPABASE_SERVICE_ROLE_KEY:"synthetic-service-key"}[key]);
+ Deno.env.get=(key:string)=>({RVA_ENVIRONMENT:"local",RVA_APP_ORIGIN:"https://synthetic.invalid",RVA_PAYMENT_MODE:"synthetic",SUPABASE_URL:"https://synthetic.invalid",SUPABASE_SERVICE_ROLE_KEY:"synthetic-service-key"}[key]);
  globalThis.fetch=async(input:Request|string|URL,init?:RequestInit)=>{
   const req=new Request(input,init);const url=new URL(req.url);
   const text=await req.text();const data=text?JSON.parse(text):null;

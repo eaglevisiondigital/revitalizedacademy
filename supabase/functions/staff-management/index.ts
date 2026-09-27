@@ -1,17 +1,12 @@
+import { allowedOrigins, edgeEnvironment, configurationError, assertSyntheticRecipient } from "../_shared/environment.ts";
 import { callerClient } from "../_shared/authorization.ts";
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "npm:@supabase/supabase-js@2.57.4";
 
-const allowedOrigins=new Set([
-  "https://revitalizedacademy.com",
-  "https://www.revitalizedacademy.com",
-  "http://localhost:3000",
-  "http://localhost:5173"
-]);
 const roles=new Set(["owner","admin","coach","financial","support"]);
 
 function cors(origin:string|null){
-  const safe=origin&&allowedOrigins.has(origin)?origin:"https://revitalizedacademy.com";
+  const safe=origin&&allowedOrigins.has(origin)?origin:edgeEnvironment().appOrigin;
   return {
     "Access-Control-Allow-Origin":safe,
     "Access-Control-Allow-Headers":"authorization, x-client-info, apikey, content-type",
@@ -32,6 +27,7 @@ function splitName(name:string){
 }
 
 Deno.serve(async(req:Request)=>{
+  const configError=configurationError();if(configError)return configError;
   const origin=req.headers.get("origin");
   if(req.method==="OPTIONS")return new Response("ok",{headers:cors(origin)});
   if(req.method!=="POST")return json(origin,{error:"Method not allowed"},405);
@@ -143,7 +139,8 @@ Deno.serve(async(req:Request)=>{
       if(!new Set(["all","assigned","none"]).has(contactScope))return json(origin,{error:"Invalid People data scope."},400);
       if(role==="owner"&&actorStaff.role!=="owner")return json(origin,{error:"Only an Owner can invite another Owner."},403);
 
-      const redirectTo="https://revitalizedacademy.com/portal/";
+      assertSyntheticRecipient(email);
+      const redirectTo=edgeEnvironment().staffRedirect;
 
       let existingAuthUser=null;
       let page=1;

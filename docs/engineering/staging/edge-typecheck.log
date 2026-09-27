@@ -1,0 +1,15 @@
+Check supabase/functions/agreement-sign/index.ts
+Check supabase/functions/coach-companion-knowledge/index.ts
+Check supabase/functions/coach-companion-request/index.ts
+Check supabase/functions/coach-companion-review/index.ts
+Check supabase/functions/health-profile-intake/index.ts
+Check supabase/functions/journey-link/index.ts
+Check supabase/functions/journey-override/index.ts
+Check supabase/functions/member-account/index.ts
+Check supabase/functions/member-coaching/index.ts
+Check supabase/functions/notification-delivery/index.ts
+Check supabase/functions/public-intake/index.ts
+Check supabase/functions/staff-agreement-sign/index.ts
+Check supabase/functions/staff-management/index.ts
+Check supabase/functions/staff-password-reset/index.ts
+Check supabase/functions/video-message-view/index.ts

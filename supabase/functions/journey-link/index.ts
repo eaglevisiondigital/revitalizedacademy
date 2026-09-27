@@ -1,18 +1,12 @@
+import { allowedOrigins, edgeEnvironment, configurationError } from "../_shared/environment.ts";
 import { callerClient, assertStaffAction } from "../_shared/authorization.ts";
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "npm:@supabase/supabase-js@2.57.4";
 
-const allowedOrigins = new Set([
-  "https://revitalizedacademy.com",
-  "https://www.revitalizedacademy.com",
-  "http://localhost:3000",
-  "http://localhost:5173"
-]);
-
-const JOURNEY_BASE = "https://revitalizedacademy.com/journey/?token=";
+const journeyBase = () => edgeEnvironment().appOrigin + "/journey/?token=";
 
 function cors(origin: string | null) {
-  const safe = origin && allowedOrigins.has(origin) ? origin : "https://revitalizedacademy.com";
+  const safe = origin && allowedOrigins.has(origin) ? origin : edgeEnvironment().appOrigin;
   return {
     "Access-Control-Allow-Origin": safe,
     "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
@@ -164,6 +158,7 @@ function safeAction(stepKey: string | null, appointment: any, activation: any, r
 }
 
 Deno.serve(async (req: Request) => {
+  const configError=configurationError();if(configError)return configError;
   const origin = req.headers.get("origin");
   if (req.method === "OPTIONS") return new Response("ok", { headers: cors(origin) });
   if (!["GET","POST"].includes(req.method)) return json(origin, { error: "Method not allowed" }, 405);
@@ -356,10 +351,10 @@ Deno.serve(async (req: Request) => {
         ready_at: memberAccess.ready_at || null,
         activated_at: memberAccess.activated_at || null,
         activation_url: !memberAccess.user_id && memberAccess.status === "ready"
-          ? "https://revitalizedacademy.com/member/activate/?token=" + encodeURIComponent(rawToken)
+          ? (edgeEnvironment().onboardingUrl+"#enroll=") + encodeURIComponent(rawToken)
           : null,
         dashboard_url: memberAccess.user_id && memberAccess.status === "active"
-          ? "https://revitalizedacademy.com/member/"
+          ? (edgeEnvironment().appOrigin+"/member/")
           : null
       } : null,
       action: safeAction(journey.current_step_key, appointment, activation, rawToken)
@@ -450,7 +445,7 @@ Deno.serve(async (req: Request) => {
       return json(origin, {
         ok: true,
         link_id: link.id,
-        url: JOURNEY_BASE + rawToken,
+        url: journeyBase() + rawToken,
         expires_at: link.expires_at
       });
     }
@@ -494,7 +489,7 @@ Deno.serve(async (req: Request) => {
       return json(origin, {
         ok: true,
         link_id: link.id,
-        url: JOURNEY_BASE + rawToken,
+        url: journeyBase() + rawToken,
         expires_at: link.expires_at
       });
     }

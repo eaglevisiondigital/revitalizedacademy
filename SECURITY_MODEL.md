@@ -73,3 +73,12 @@ Restricted onboarding and payment-suspended identities fail the shared paid pred
 Payment/individual-agreement waivers require active scoped owner/admin authority, reasons and recorded audit. Database transitions audit suspension/reactivation and preserve historical health/progress/coaching data. Local tests include direct bypasses, co-signer privacy, negative permissions and two-connection financial contention. [Boundary details](docs/CLIENT_ACCESS_LIFECYCLE.md), [166-case evidence and advisor results](docs/engineering/LIFECYCLE_TEST_RESULTS.md). These checks do not replace hosted Auth/provider acceptance or the wider household/minor privacy review. No live security setting changed.
 
 New client foundations require an explicit enrollment-invitation claim before exposing enrollment or agreement data, independently of automatic Auth email/profile linkage. Invitation delivery fails closed until an approved HTTPS origin is configured in the existing runtime config; staging has no automatic production-domain fallback.
+
+
+## Staging isolation and deploy artifact controls
+
+The staging package introduces explicit runtime/build environment validation before any Edge database/provider request or browser client initialization. Staging rejects production ref/origin/callbacks and incomplete configuration; build checks dedicated site identity/context/branch. Browser output contains only public config; service/provider keys stay server-side. Root publishing is replaced in tracked configuration by a reviewed 306-file artifact. This does not claim existing live production artifacts were removed.
+
+Provisioning requires a new empty application/Auth state, a matching non-production ref/verified-TLS connection and explicit apply acknowledgement. Staging origin/payment constraints, all existing RLS/signing/paid gates, private buckets and export defaults remain. Raw legal PDFs/template text are ignored private inputs with pinned hashes. No live user/client data is seeded.
+
+Staging email dispatch is restricted to exact controlled inboxes and same-origin callback URLs; SMS is disabled and no checkout endpoints are allowed. Hosted Auth SMTP is a separate boundary requiring a restricted test transport before account creation. Local seeded advisors: zero security findings, eight existing performance warnings, no indexes removed. No hosted Auth setting or production configuration changed. See docs/STAGING_ACCEPTANCE.md for the remaining hosted gate.

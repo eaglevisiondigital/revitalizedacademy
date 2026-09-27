@@ -1,5 +1,9 @@
 [build]
-  publish = "."
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "24"
 
 [[headers]]
   for = "/*"
@@ -63,3 +67,8 @@
     Cache-Control = "no-store"
     Referrer-Policy = "no-referrer"
     X-Robots-Tag = "noindex, nofollow, noarchive"
+
+[[headers]]
+  for = "/runtime-config.js"
+  [headers.values]
+    Cache-Control = "no-store"

@@ -1,5 +1,5 @@
 (() => {
-  const sb=window.supabase.createClient('https://voalfpxiyznnqfcqcymd.supabase.co','sb_publishable_09WCwErmz_KpKsI7AtlHyg_SQtHWmZd');
+  const sb=window.supabase.createClient(window.RVA_ENV.supabaseUrl,window.RVA_ENV.supabaseKey);
   const auth=document.getElementById('account-auth'),dash=document.getElementById('account-dashboard'),status=document.getElementById('account-status');
   let mode='login';
 

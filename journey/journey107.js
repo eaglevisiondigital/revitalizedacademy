@@ -1,8 +1,8 @@
 (() => {
   "use strict";
 
-  const FUNCTION_URL = "https://voalfpxiyznnqfcqcymd.supabase.co/functions/v1/journey-link";
-  const API_KEY = "sb_publishable_09WCwErmz_KpKsI7AtlHyg_SQtHWmZd";
+  const FUNCTION_URL = (window.RVA_ENV.edgeBaseUrl + "/journey-link");
+  const API_KEY = window.RVA_ENV.supabaseKey;
   const token = new URLSearchParams(window.location.search).get("token") || "";
 
   const loading = document.getElementById("cj-loading");
@@ -93,7 +93,7 @@
       if (action.agreement_url && action.agreement_status !== "signed") {
         area.append(actionLink(action.agreement_url, "Review & Sign Agreement", true));
       }
-      if (action.payment_url && action.payment_status !== "paid") {
+      if (window.RVA_PAYMENT_URL(action.payment_url) && action.payment_status !== "paid") {
         area.append(actionLink(action.payment_url, "Complete Payment", true));
       }
       return;

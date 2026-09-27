@@ -5,6 +5,7 @@ const base={access_state:'onboarding',full_access:false,email:'adult@example.inv
 async function harness(context=base,{token='',session=true,rejectSign=false}={}){
  const dom=new JSDOM(html,{url:'https://synthetic.invalid/member/onboarding/'+token,runScripts:'outside-only'}),calls=[];let current=session?{user:{email:'adult@example.invalid'}}:null;
  dom.window.supabase={createClient:()=>({auth:{getSession:async()=>({data:{session:current}}),signInWithPassword:async()=>{current={user:{email:'adult@example.invalid'}};return {};},signUp:async()=>({data:{session:null}}),signOut:async()=>{current=null;return {};}},rpc:async(name,args)=>{calls.push({name,args});if(name==='sign_client_agreement_atomic'&&rejectSign)return {error:{message:'Agreement content changed'}};return {data:name==='my_onboarding_context'?context:'ok'};}})};
+ dom.window.RVA_ENV={supabaseUrl:"https://synthetic.invalid",supabaseKey:"sb_publishable_synthetic",signupRedirect:"https://synthetic.invalid/member/onboarding/"};dom.window.RVA_PAYMENT_URL=()=>null;
  dom.window.eval(script);await tick();return {dom,document:dom.window.document,calls};
 }
 const tick=()=>new Promise(resolve=>setImmediate(resolve));

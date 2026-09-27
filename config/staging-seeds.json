@@ -1,0 +1,340 @@
+{
+  "steps": [
+    {
+      "name": "Initial application",
+      "required": true,
+      "step_key": "application_capture",
+      "step_type": "form",
+      "step_order": 1,
+      "journey_key": "coaching_application",
+      "staff_label": "Application received",
+      "client_label": "Application received",
+      "default_due_hours": null
+    },
+    {
+      "name": "Vitality Assessment",
+      "required": true,
+      "step_key": "vitality_assessment",
+      "step_type": "assessment",
+      "step_order": 2,
+      "journey_key": "coaching_application",
+      "staff_label": "Await Vitality Assessment",
+      "client_label": "Complete your Vitality Assessment",
+      "default_due_hours": 24
+    },
+    {
+      "name": "Schedule application interview",
+      "required": true,
+      "step_key": "application_interview_schedule",
+      "step_type": "scheduling",
+      "step_order": 3,
+      "journey_key": "coaching_application",
+      "staff_label": "Get interview scheduled",
+      "client_label": "Schedule your application interview",
+      "default_due_hours": 24
+    },
+    {
+      "name": "Application interview",
+      "required": true,
+      "step_key": "application_interview",
+      "step_type": "coach_action",
+      "step_order": 5,
+      "journey_key": "coaching_application",
+      "staff_label": "Application interview",
+      "client_label": "Attend your application interview",
+      "default_due_hours": null
+    },
+    {
+      "name": "Choose coaching plan",
+      "required": true,
+      "step_key": "plan_selection",
+      "step_type": "coach_action",
+      "step_order": 6,
+      "journey_key": "coaching_application",
+      "staff_label": "Confirm plan",
+      "client_label": "Choose your ReVitalized plan",
+      "default_due_hours": null
+    },
+    {
+      "name": "Payment and agreement",
+      "required": true,
+      "step_key": "payment_agreement",
+      "step_type": "payment",
+      "step_order": 7,
+      "journey_key": "coaching_application",
+      "staff_label": "Payment / agreement",
+      "client_label": "Complete enrollment and payment",
+      "default_due_hours": 24
+    },
+    {
+      "name": "New Client Enrollment Health Questionnaire",
+      "required": true,
+      "step_key": "onboarding_health_questionnaire",
+      "step_type": "onboarding",
+      "step_order": 8,
+      "journey_key": "coaching_application",
+      "staff_label": "Onboarding questionnaire",
+      "client_label": "Complete your onboarding health questionnaire",
+      "default_due_hours": 48
+    },
+    {
+      "name": "Coach setup and first session",
+      "required": true,
+      "step_key": "coach_setup",
+      "step_type": "onboarding",
+      "step_order": 9,
+      "journey_key": "coaching_application",
+      "staff_label": "Coach setup",
+      "client_label": "Prepare for your first coaching session",
+      "default_due_hours": 48
+    },
+    {
+      "name": "Initial application",
+      "required": true,
+      "step_key": "application_capture",
+      "step_type": "form",
+      "step_order": 1,
+      "journey_key": "direct_membership",
+      "staff_label": "Application received",
+      "client_label": "Application received",
+      "default_due_hours": null
+    },
+    {
+      "name": "Activate membership and payment",
+      "required": true,
+      "step_key": "payment_agreement",
+      "step_type": "payment",
+      "step_order": 2,
+      "journey_key": "direct_membership",
+      "staff_label": "Payment / commitment",
+      "client_label": "Activate Holistic Foundations",
+      "default_due_hours": 24
+    },
+    {
+      "name": "Vitality Assessment",
+      "required": true,
+      "step_key": "vitality_assessment",
+      "step_type": "assessment",
+      "step_order": 3,
+      "journey_key": "direct_membership",
+      "staff_label": "Await Vitality Assessment",
+      "client_label": "Complete your Vitality Assessment",
+      "default_due_hours": 24
+    },
+    {
+      "name": "Member backend activation",
+      "required": true,
+      "step_key": "backend_activation",
+      "step_type": "system",
+      "step_order": 4,
+      "journey_key": "direct_membership",
+      "staff_label": "Activate member access",
+      "client_label": "Unlock your ReVitalized member access",
+      "default_due_hours": null
+    },
+    {
+      "name": "New Client Enrollment Health Questionnaire",
+      "required": true,
+      "step_key": "onboarding_health_questionnaire",
+      "step_type": "onboarding",
+      "step_order": 5,
+      "journey_key": "direct_membership",
+      "staff_label": "Onboarding questionnaire",
+      "client_label": "Complete your onboarding health questionnaire",
+      "default_due_hours": 48
+    },
+    {
+      "name": "Coaching invitation / first next step",
+      "required": false,
+      "step_key": "coaching_invitation",
+      "step_type": "onboarding",
+      "step_order": 6,
+      "journey_key": "direct_membership",
+      "staff_label": "Offer coaching next step",
+      "client_label": "Choose your next coaching step",
+      "default_due_hours": 48
+    },
+    {
+      "name": "Vitality Assessment",
+      "required": true,
+      "step_key": "vitality_assessment",
+      "step_type": "assessment",
+      "step_order": 1,
+      "journey_key": "assessment_first",
+      "staff_label": "Await Vitality Assessment",
+      "client_label": "Complete your Vitality Assessment",
+      "default_due_hours": 24
+    },
+    {
+      "name": "Coach reviews Vitality report",
+      "required": true,
+      "step_key": "report_review",
+      "step_type": "coach_action",
+      "step_order": 3,
+      "journey_key": "assessment_first",
+      "staff_label": "Approve Vitality report",
+      "client_label": "Your report is being reviewed",
+      "default_due_hours": 24
+    },
+    {
+      "name": "Send approved report",
+      "required": true,
+      "step_key": "report_send",
+      "step_type": "coach_action",
+      "step_order": 4,
+      "journey_key": "assessment_first",
+      "staff_label": "Send approved report",
+      "client_label": "Receive your Vitality report",
+      "default_due_hours": 24
+    },
+    {
+      "name": "Personal coach follow-up call",
+      "required": true,
+      "step_key": "outbound_call",
+      "step_type": "coach_action",
+      "step_order": 5,
+      "journey_key": "assessment_first",
+      "staff_label": "Outbound coach call",
+      "client_label": "Connect with a ReVitalized coach",
+      "default_due_hours": 48
+    },
+    {
+      "name": "Schedule consultation",
+      "required": true,
+      "step_key": "consultation_schedule",
+      "step_type": "scheduling",
+      "step_order": 6,
+      "journey_key": "assessment_first",
+      "staff_label": "Schedule consultation",
+      "client_label": "Schedule your consultation",
+      "default_due_hours": 48
+    },
+    {
+      "name": "Review pre-consultation material",
+      "required": true,
+      "step_key": "preconsultation_doc",
+      "step_type": "content",
+      "step_order": 7,
+      "journey_key": "assessment_first",
+      "staff_label": "Pre-consult material",
+      "client_label": "Review your consultation preparation",
+      "default_due_hours": 24
+    },
+    {
+      "name": "Consultation",
+      "required": true,
+      "step_key": "consultation",
+      "step_type": "coach_action",
+      "step_order": 8,
+      "journey_key": "assessment_first",
+      "staff_label": "Consultation",
+      "client_label": "Attend your consultation",
+      "default_due_hours": null
+    },
+    {
+      "name": "Choose ReVitalized plan",
+      "required": true,
+      "step_key": "plan_selection",
+      "step_type": "coach_action",
+      "step_order": 9,
+      "journey_key": "assessment_first",
+      "staff_label": "Confirm plan",
+      "client_label": "Choose your ReVitalized plan",
+      "default_due_hours": null
+    },
+    {
+      "name": "Payment and agreement",
+      "required": true,
+      "step_key": "payment_agreement",
+      "step_type": "payment",
+      "step_order": 10,
+      "journey_key": "assessment_first",
+      "staff_label": "Payment / agreement",
+      "client_label": "Complete enrollment and payment",
+      "default_due_hours": 24
+    },
+    {
+      "name": "New Client Enrollment Health Questionnaire",
+      "required": true,
+      "step_key": "onboarding_health_questionnaire",
+      "step_type": "onboarding",
+      "step_order": 11,
+      "journey_key": "assessment_first",
+      "staff_label": "Onboarding questionnaire",
+      "client_label": "Complete your onboarding health questionnaire",
+      "default_due_hours": 48
+    },
+    {
+      "name": "Watch Longevity Matrix video",
+      "required": true,
+      "step_key": "longevity_vsl",
+      "step_type": "content",
+      "step_order": 2,
+      "journey_key": "assessment_first",
+      "staff_label": "Longevity Matrix VSL",
+      "client_label": "Watch the Longevity Matrix",
+      "default_due_hours": null
+    },
+    {
+      "name": "Watch Longevity Matrix video",
+      "required": true,
+      "step_key": "longevity_vsl",
+      "step_type": "content",
+      "step_order": 4,
+      "journey_key": "coaching_application",
+      "staff_label": "Longevity Matrix VSL",
+      "client_label": "Watch the Longevity Matrix",
+      "default_due_hours": null
+    }
+  ],
+  "journeys": [
+    {
+      "name": "Coaching Application",
+      "audience": "High-intent coaching applicant",
+      "journey_key": "coaching_application"
+    },
+    {
+      "name": "Holistic Foundations Direct Enrollment",
+      "audience": "Direct-entry membership",
+      "journey_key": "direct_membership"
+    },
+    {
+      "name": "Vitality Assessment First",
+      "audience": "Warm / cold lead",
+      "journey_key": "assessment_first"
+    }
+  ],
+  "programs": [
+    {
+      "name": "Holistic Foundations",
+      "program_code": "holistic-foundations",
+      "program_type": "membership",
+      "default_commitment_months": 6
+    },
+    {
+      "name": "Vitality Accelerator Cohort",
+      "program_code": "vitality-accelerator-cohort",
+      "program_type": "cohort",
+      "default_commitment_months": null
+    },
+    {
+      "name": "Vitality Accelerator",
+      "program_code": "vitality-accelerator",
+      "program_type": "coaching",
+      "default_commitment_months": null
+    },
+    {
+      "name": "6-Month Intensive",
+      "program_code": "total-wellness-6",
+      "program_type": "coaching",
+      "default_commitment_months": 6
+    },
+    {
+      "name": "12-Month Intensive",
+      "program_code": "total-wellness-12",
+      "program_type": "coaching",
+      "default_commitment_months": 12
+    }
+  ],
+  "requirements": null
+}

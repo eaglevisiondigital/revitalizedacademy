@@ -1,9 +1,9 @@
 (() => {
   "use strict";
 
-  const SUPABASE_URL = "https://voalfpxiyznnqfcqcymd.supabase.co";
-  const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_09WCwErmz_KpKsI7AtlHyg_SQtHWmZd";
-  const PORTAL_URL = "https://revitalizedacademy.com/portal/";
+  const SUPABASE_URL = window.RVA_ENV.supabaseUrl;
+  const SUPABASE_PUBLISHABLE_KEY = window.RVA_ENV.supabaseKey;
+  const PORTAL_URL = window.RVA_ENV.staffRedirect;
   const RA_AUTH_BUILD = "181-custom-reset-v2";
 
   const initialHash = new URLSearchParams(window.location.hash.replace(/^#/, ""));
@@ -770,7 +770,7 @@
 
     showStatus(loginStatus, "Sending password reset email...");
     const { error } = await authClient.auth.resetPasswordForEmail(email, {
-      redirectTo: "https://revitalizedacademy.com/portal/password-reset.html"
+      redirectTo: window.RVA_ENV.recoveryRedirect
     });
     if (error) {
       showStatus(loginStatus, error.message || "We could not send the reset email right now.", "error");

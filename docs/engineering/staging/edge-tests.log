@@ -1,0 +1,103 @@
+Check tests/edge/authorization_test.ts
+Check tests/edge/environment_test.ts
+------- pre-test output -------
+(node:27411) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+----- pre-test output end -----
+running 16 tests from ./tests/edge/authorization_test.ts
+staff companion denies missing permission before any privileged write ...
+------- output -------
+Error: Active staff permission and contact access required.
+    at assertStaffAction (file:///Users/davesmacbookpro/Documents/ChatGPT/revitalized%20academy/revitalizedacademy/supabase/functions/_shared/authorization.ts:18:25)
+    at async handleRequest (file:///Users/davesmacbookpro/Documents/ChatGPT/revitalized%20academy/revitalizedacademy/supabase/functions/coach-companion-request/handler.ts:64:7)
+    at async run (file:///Users/davesmacbookpro/Documents/ChatGPT/revitalized%20academy/revitalizedacademy/tests/edge/authorization_test.ts:42:22)
+    at async file:///Users/davesmacbookpro/Documents/ChatGPT/revitalized%20academy/revitalizedacademy/tests/edge/authorization_test.ts:46:25
+    at async innerWrapped (ext:cli/40_test.js:300:5)
+    at async exitSanitizer (ext:cli/40_test.js:201:27)
+    at async outerWrapped (ext:cli/40_test.js:239:22) {
+  status: 403
+}
+----- output end -----
+staff companion denies missing permission before any privileged write ... ok (15ms)
+staff companion denies cross contact before any privileged write ...
+------- output -------
+Error: Active staff permission and contact access required.
+    at assertStaffAction (file:///Users/davesmacbookpro/Documents/ChatGPT/revitalized%20academy/revitalizedacademy/supabase/functions/_shared/authorization.ts:18:25)
+    at async handleRequest (file:///Users/davesmacbookpro/Documents/ChatGPT/revitalized%20academy/revitalizedacademy/supabase/functions/coach-companion-request/handler.ts:64:7)
+    at async run (file:///Users/davesmacbookpro/Documents/ChatGPT/revitalized%20academy/revitalizedacademy/tests/edge/authorization_test.ts:42:22)
+    at async file:///Users/davesmacbookpro/Documents/ChatGPT/revitalized%20academy/revitalizedacademy/tests/edge/authorization_test.ts:46:25
+    at async innerWrapped (ext:cli/40_test.js:300:5)
+    at async exitSanitizer (ext:cli/40_test.js:201:27)
+    at async outerWrapped (ext:cli/40_test.js:239:22) {
+  status: 403
+}
+----- output end -----
+staff companion denies cross contact before any privileged write ... ok (2ms)
+authorized staff companion request succeeds and uses own scoped contact ... ok (4ms)
+member self-service remains own-contact only despite supplied contact ID ... ok (1ms)
+knowledge requires central active-staff permission before data access ...
+------- output -------
+Error: Active staff permission and contact access required.
+    at assertStaffAction (file:///Users/davesmacbookpro/Documents/ChatGPT/revitalized%20academy/revitalizedacademy/supabase/functions/_shared/authorization.ts:18:25)
+    at async handleRequest (file:///Users/davesmacbookpro/Documents/ChatGPT/revitalized%20academy/revitalizedacademy/supabase/functions/coach-companion-knowledge/handler.ts:72:5)
+    at async run (file:///Users/davesmacbookpro/Documents/ChatGPT/revitalized%20academy/revitalizedacademy/tests/edge/authorization_test.ts:42:22)
+    at async file:///Users/davesmacbookpro/Documents/ChatGPT/revitalized%20academy/revitalizedacademy/tests/edge/authorization_test.ts:50:193
+    at async innerWrapped (ext:cli/40_test.js:300:5)
+    at async exitSanitizer (ext:cli/40_test.js:201:27)
+    at async outerWrapped (ext:cli/40_test.js:239:22) {
+  status: 403
+}
+----- output end -----
+knowledge requires central active-staff permission before data access ... ok (2ms)
+review requires central active-staff permission before data access ...
+------- output -------
+Error: Active staff permission and contact access required.
+    at assertStaffAction (file:///Users/davesmacbookpro/Documents/ChatGPT/revitalized%20academy/revitalizedacademy/supabase/functions/_shared/authorization.ts:18:25)
+    at async handleRequest (file:///Users/davesmacbookpro/Documents/ChatGPT/revitalized%20academy/revitalizedacademy/supabase/functions/coach-companion-review/handler.ts:48:5)
+    at async run (file:///Users/davesmacbookpro/Documents/ChatGPT/revitalized%20academy/revitalizedacademy/tests/edge/authorization_test.ts:42:22)
+    at async file:///Users/davesmacbookpro/Documents/ChatGPT/revitalized%20academy/revitalizedacademy/tests/edge/authorization_test.ts:50:193
+    at async innerWrapped (ext:cli/40_test.js:300:5)
+    at async exitSanitizer (ext:cli/40_test.js:201:27)
+    at async outerWrapped (ext:cli/40_test.js:239:22) {
+  status: 403
+}
+----- output end -----
+review requires central active-staff permission before data access ... ok (2ms)
+financial access override rejects cross-contact before update or audit ...
+------- output -------
+Error: Active staff permission and contact access required.
+    at assertStaffAction (file:///Users/davesmacbookpro/Documents/ChatGPT/revitalized%20academy/revitalizedacademy/supabase/functions/_shared/authorization.ts:18:25)
+    at async requirePermission (file:///Users/davesmacbookpro/Documents/ChatGPT/revitalized%20academy/revitalizedacademy/supabase/functions/journey-override/handler.ts:69:5)
+    at async handleRequest (file:///Users/davesmacbookpro/Documents/ChatGPT/revitalized%20academy/revitalizedacademy/supabase/functions/journey-override/handler.ts:893:7)
+    at async run (file:///Users/davesmacbookpro/Documents/ChatGPT/revitalized%20academy/revitalizedacademy/tests/edge/authorization_test.ts:42:22)
+    at async file:///Users/davesmacbookpro/Documents/ChatGPT/revitalized%20academy/revitalizedacademy/tests/edge/authorization_test.ts:51:117
+    at async innerWrapped (ext:cli/40_test.js:300:5)
+    at async exitSanitizer (ext:cli/40_test.js:201:27)
+    at async outerWrapped (ext:cli/40_test.js:239:22) {
+  status: 403
+}
+----- output end -----
+financial access override rejects cross-contact before update or audit ... ok (6ms)
+client signing forwards displayed hash and caller JWT to atomic SQL; stale rejection cannot write ... ok (707µs)
+staff signing forwards displayed hash and caller JWT to atomic SQL; stale rejection cannot write ... ok (658µs)
+invalid authentication stops before data lookup ... ok (393µs)
+payment-restricted member companion request is denied before any privileged write ... ok (435µs)
+client cannot send both signature roles through Edge ... ok (249µs)
+restricted coaching API stops before looking up assignments ... ok (472µs)
+onboarding claim forwards caller identity and never creates or changes Auth users ... ok (429µs)
+wrong onboarding recipient remains denied and cannot activate an account ... ok (325µs)
+recording a partial payment preserves the contracted amount and currency ... ok (1ms)
+------- post-test output -------
+(node:27411) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+----- post-test output end -----
+running 9 tests from ./tests/edge/environment_test.ts
+Edge explicit staging origins, invitations and recovery use staging configuration ... ok (359µs)
+Edge refuses missing ... ok (187µs)
+Edge refuses project ... ok (82µs)
+Edge refuses origin ... ok (32µs)
+Edge refuses runtime ... ok (70µs)
+Edge refuses payments ... ok (81µs)
+Edge rejects wrong configuration before any Supabase request ... ok (3ms)
+staging delivery rejects real recipients, foreign callback origins and SMS ... ok (415µs)
+production origin mapping stays explicit ... ok (42µs)
+
+ok | 25 passed | 0 failed (131ms)

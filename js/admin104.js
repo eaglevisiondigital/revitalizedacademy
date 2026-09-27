@@ -1,6 +1,6 @@
 (() => {
-  const URL='https://voalfpxiyznnqfcqcymd.supabase.co';
-  const KEY='sb_publishable_09WCwErmz_KpKsI7AtlHyg_SQtHWmZd';
+  const URL=window.RVA_ENV.supabaseUrl;
+  const KEY=window.RVA_ENV.supabaseKey;
   const sb=window.supabase.createClient(URL,KEY);
   const authView=document.getElementById('admin-auth');
   const app=document.getElementById('admin-app');

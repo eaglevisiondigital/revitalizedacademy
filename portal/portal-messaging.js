@@ -5,9 +5,9 @@
   if (!portal) return;
 
   const client = portal.authClient;
-  const PROJECT_REF = "voalfpxiyznnqfcqcymd";
-  const PUBLISHABLE_KEY = "sb_publishable_09WCwErmz_KpKsI7AtlHyg_SQtHWmZd";
-  const VIDEO_PAGE_BASE = "https://revitalizedacademy.com/v/?token=";
+  const PROJECT_REF = window.RVA_ENV.projectRef;
+  const PUBLISHABLE_KEY = window.RVA_ENV.supabaseKey;
+  const VIDEO_PAGE_BASE = (window.RVA_ENV.publicSiteOrigin + "/v/?token=");
 
   let contact = null;
   let smsPreference = null;

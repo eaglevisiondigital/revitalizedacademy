@@ -1,16 +1,10 @@
+import { allowedOrigins, edgeEnvironment, configurationError } from "../_shared/environment.ts";
 import { callerClient } from "../_shared/authorization.ts";
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "npm:@supabase/supabase-js@2.57.4";
 
-const allowedOrigins = new Set([
-  "https://revitalizedacademy.com",
-  "https://www.revitalizedacademy.com",
-  "http://localhost:3000",
-  "http://localhost:5173"
-]);
-
 function cors(origin: string | null) {
-  const safe = origin && allowedOrigins.has(origin) ? origin : "https://revitalizedacademy.com";
+  const safe = origin && allowedOrigins.has(origin) ? origin : edgeEnvironment().appOrigin;
   return {
     "Access-Control-Allow-Origin": safe,
     "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
@@ -27,6 +21,7 @@ function json(origin: string | null, data: unknown, status = 200) {
 }
 
 export async function handleRequest(req:Request){
+  const configError=configurationError();if(configError)return configError;
   const origin = req.headers.get("origin");
   if (req.method === "OPTIONS") return new Response("ok", { headers: cors(origin) });
   if (req.method !== "POST") return json(origin, { error: "Method not allowed" }, 405);

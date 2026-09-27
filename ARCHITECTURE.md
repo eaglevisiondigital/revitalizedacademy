@@ -97,3 +97,12 @@ APPROVED: ReVitalized owns the system of record; GoodBarber can be a shell; Migh
 The user approved restricted authenticated onboarding, independently authenticated secondary adults and payment suspension/restoration. The existing membership/access/activation/ledger/agreement system remains authoritative. `client_access` adds `onboarding` and `payment_suspended`; membership and enrollment statuses map to the same state machine. Payment totals and per-agreement distinct-account signatures remain independent gates.
 
 `/member/onboarding/` consumes a narrow authenticated RPC; the paid dashboard checks access before the existing v2 bootstrap. The secondary signer relationship is a private, expiring agreement invitation, not household/member access. Invitation delivery extends the existing outbox to support not-yet-registered recipients; no parallel notification service exists. Financial reconciliation updates current access without deleting historical data. [Full state machine and rollout contract](docs/CLIENT_ACCESS_LIFECYCLE.md). Statements above about unimplemented lifecycle behavior describe the earlier security branch.
+
+
+## Isolated staging configuration (implemented, not hosted)
+
+The lifecycle branch is extended by codex/staging. Browser environment resolution is in js/environment.js; production public mapping lives in config/production.json; build-time staging values are explicit. Every active frontend caller uses the resolved environment. Edge runtime isolation/CORS/callback and synthetic-recipient checks live in supabase/functions/_shared/environment.ts. Public/member/onboarding/Auth/notification origins derive from one explicit environment origin; v2 stays unchanged.
+
+netlify.toml now builds dist through scripts/build-site.cjs and the exact config/public-files.json manifest. Backend, engineering evidence, private legal inputs and dev tools cannot enter that artifact. The observed live root publish configuration above is historical production evidence, not the new branch configuration.
+
+Fresh staging uses the catalog baseline and two original forward files, followed by safe configuration/legal seeds and staging-only constraints. A private hash receipt tracks actual components without pretending to recover managed schemas or historical migrations. Hosted resources/settings are separate and still need validation. See docs/STAGING_ENVIRONMENT.md and docs/STAGING_RELEASE_RUNBOOK.md.

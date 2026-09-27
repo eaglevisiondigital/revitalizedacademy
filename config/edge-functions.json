@@ -1,0 +1,21 @@
+{
+  "required": [
+    "public-intake",
+    "journey-link",
+    "health-profile-intake",
+    "member-account",
+    "journey-override",
+    "agreement-sign",
+    "staff-agreement-sign",
+    "staff-management",
+    "staff-password-reset",
+    "notification-delivery",
+    "member-coaching"
+  ],
+  "optional": [
+    "video-message-view",
+    "coach-companion-knowledge",
+    "coach-companion-request",
+    "coach-companion-review"
+  ]
+}

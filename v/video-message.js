@@ -1,8 +1,8 @@
 (() => {
   "use strict";
 
-  const FUNCTION_URL = "https://voalfpxiyznnqfcqcymd.supabase.co/functions/v1/video-message-view";
-  const PUBLISHABLE_KEY = "sb_publishable_09WCwErmz_KpKsI7AtlHyg_SQtHWmZd";
+  const FUNCTION_URL = (window.RVA_ENV.edgeBaseUrl + "/video-message-view");
+  const PUBLISHABLE_KEY = window.RVA_ENV.supabaseKey;
   const params = new URLSearchParams(window.location.search);
   const token = (params.get("token") || "").trim();
 
