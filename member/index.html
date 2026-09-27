@@ -438,6 +438,30 @@
           <span id="rm-progress-photos-count" class="rm112-chip">0 Photos</span>
         </div>
         <p class="rm170-section-intro">Private images from your ReVitalized progress history. Photo previews use short-lived secure links.</p>
+
+        <form id="rm-progress-photo-upload" class="rm203-photo-upload hidden">
+          <div class="rm203-photo-upload-head">
+            <div>
+              <strong>Add a Progress Photo Set</strong>
+              <span>Add one or more angles from the same date. Images remain private.</span>
+            </div>
+          </div>
+          <div class="rm203-photo-meta">
+            <label><span>Label</span><input id="rm-progress-photo-label" type="text" maxlength="120" placeholder="Example: Month 2"></label>
+            <label><span>Date</span><input id="rm-progress-photo-date" type="date" required></label>
+            <label class="wide"><span>Optional Notes</span><textarea id="rm-progress-photo-notes" rows="2" maxlength="2000"></textarea></label>
+          </div>
+          <div class="rm203-photo-files">
+            <label><span>Front</span><input id="rm-progress-photo-front" type="file" accept="image/jpeg,image/png,image/webp"></label>
+            <label><span>Side</span><input id="rm-progress-photo-side" type="file" accept="image/jpeg,image/png,image/webp"></label>
+            <label><span>Back</span><input id="rm-progress-photo-back" type="file" accept="image/jpeg,image/png,image/webp"></label>
+            <label><span>Other</span><input id="rm-progress-photo-other" type="file" accept="image/jpeg,image/png,image/webp"></label>
+          </div>
+          <p class="rm203-photo-help">JPEG, PNG or WebP. Maximum 15 MB per image. At least one image is required.</p>
+          <button type="submit">Save Private Photo Set</button>
+          <p id="rm-progress-photo-upload-status" class="rm112-status" aria-live="polite"></p>
+        </form>
+
         <div id="rm-progress-photos-list" class="rm198-progress-photos-list"></div>
       </section>
 
