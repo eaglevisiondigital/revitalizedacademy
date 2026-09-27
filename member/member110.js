@@ -3149,8 +3149,23 @@
     );
   }
 
-  async function loadDeferredMemberModules(loadSequence,askEnabled){
+  async function loadDeferredMemberModules(loadSequence,context){
     const [
+      householdResult,
+      goalsResult,
+      habitsResult,
+      assignmentsResult,
+      progressResult,
+      metricsResult,
+      templateResult,
+      mealPlanResult,
+      mealsResult,
+      fitnessPlanResult,
+      workoutsResult,
+      groceryResult,
+      coursesResult,
+      resourcesResult,
+      challengesResult,
       healthConnectionsResult,
       communitySpacesResult,
       communityFeedResult,
@@ -3162,6 +3177,21 @@
       healthPermissionsResult,
       healthSnapshotResult
     ]=await Promise.all([
+      client.from("my_household").select("*").order("is_primary",{ascending:false}),
+      client.from("my_goals").select("*"),
+      client.from("my_habits").select("*"),
+      client.from("my_client_assignments").select("*"),
+      client.from("my_recent_progress").select("*").limit(8),
+      client.from("progress_metric_catalog").select("*").eq("active",true).eq("member_trackable",true).order("display_order"),
+      client.from("checkin_templates").select("*").eq("template_key","weekly-revitalized-checkin").eq("active",true).maybeSingle(),
+      client.from("my_active_meal_plan").select("*").maybeSingle(),
+      client.from("my_upcoming_meals").select("*"),
+      client.from("my_active_fitness_plan").select("*").maybeSingle(),
+      client.from("my_upcoming_workouts").select("*"),
+      client.from("my_grocery_list").select("*"),
+      client.from("my_courses").select("*"),
+      client.from("my_resources").select("*"),
+      client.from("my_challenges").select("*"),
       client.from("my_health_connection_center").select("*").order("provider_name"),
       client.from("my_community_spaces").select("*"),
       client.from("my_community_feed").select("*"),
@@ -3175,6 +3205,21 @@
     ]);
 
     const results=[
+      ["my_household",householdResult],
+      ["my_goals",goalsResult],
+      ["my_habits",habitsResult],
+      ["my_client_assignments",assignmentsResult],
+      ["my_recent_progress",progressResult],
+      ["progress_metric_catalog",metricsResult],
+      ["checkin_templates",templateResult],
+      ["my_active_meal_plan",mealPlanResult],
+      ["my_upcoming_meals",mealsResult],
+      ["my_active_fitness_plan",fitnessPlanResult],
+      ["my_upcoming_workouts",workoutsResult],
+      ["my_grocery_list",groceryResult],
+      ["my_courses",coursesResult],
+      ["my_resources",resourcesResult],
+      ["my_challenges",challengesResult],
       ["my_health_connection_center",healthConnectionsResult],
       ["my_community_spaces",communitySpacesResult],
       ["my_community_feed",communityFeedResult],
@@ -3192,6 +3237,22 @@
 
     if(loadSequence!==dashboardLoadSequence)return;
 
+    renderHousehold(householdResult.error?[]:(householdResult.data||[]),context.householdType,context.hasFamilyHub);
+    renderGoals(goalsResult.error?[]:(goalsResult.data||[]));
+    renderHabits(habitsResult.error?[]:(habitsResult.data||[]));
+    renderAssignments(assignmentsResult.error?[]:(assignmentsResult.data||[]));
+    renderChallenges(challengesResult.error?[]:(challengesResult.data||[]));
+    renderCourses(coursesResult.error?[]:(coursesResult.data||[]));
+    renderResources(resourcesResult.error?[]:(resourcesResult.data||[]));
+    renderMealPlan(
+      mealPlanResult.error?null:(mealPlanResult.data||null),
+      mealsResult.error?[]:(mealsResult.data||[]),
+      groceryResult.error?[]:(groceryResult.data||[])
+    );
+    renderFitnessPlan(
+      fitnessPlanResult.error?null:(fitnessPlanResult.data||null),
+      workoutsResult.error?[]:(workoutsResult.data||[])
+    );
     renderCoachingEntitlements(coachingEntitlementsResult.error?[]:(coachingEntitlementsResult.data||[]));
     renderDocuments(documentsResult.error?[]:(documentsResult.data||[]));
     renderRefuel(refuelResult.error?null:(refuelResult.data||null));
@@ -3207,8 +3268,29 @@
     renderAskReVitalized(
       companionTypesResult.error?[]:(companionTypesResult.data||[]),
       companionRequestsResult.error?[]:(companionRequestsResult.data||[]),
-      askEnabled
+      context.askEnabled
     );
+
+    metricCatalog=metricsResult.error?[]:(metricsResult.data||[]);
+    renderMetricOptions();
+    renderRecentProgress(progressResult.error?[]:(progressResult.data||[]));
+
+    checkinTemplate=templateResult.error?null:(templateResult.data||null);
+    checkinFields=[];
+    if(checkinTemplate?.id){
+      const {data:fields,error:fieldError}=await client
+        .from("checkin_template_fields")
+        .select("*")
+        .eq("template_id",checkinTemplate.id)
+        .order("display_order");
+      if(fieldError){
+        console.warn("Optional weekly check-in fields unavailable:",fieldError.message);
+      }else{
+        checkinFields=fields||[];
+      }
+    }
+    if(loadSequence!==dashboardLoadSequence)return;
+    await renderCheckinForm();
   }
 
   async function loadDashboard() {
@@ -3226,42 +3308,12 @@
       bootstrapResult,
       dashboardResult,
       entitlementsResult,
-      householdResult,
-      journeyResult,
-      goalsResult,
-      habitsResult,
-      assignmentsResult,
-      progressResult,
-      metricsResult,
-      templateResult,
-      mealPlanResult,
-      mealsResult,
-      fitnessPlanResult,
-      workoutsResult,
-      groceryResult,
-      coursesResult,
-      resourcesResult,
-      challengesResult
-    ] = await Promise.all([
+      journeyResult
+    ]=await Promise.all([
       client.from("my_app_bootstrap_v2").select("*").single(),
       client.from("my_member_dashboard").select("*").maybeSingle(),
       client.from("my_member_entitlements").select("*").order("label"),
-      client.from("my_household").select("*").order("is_primary",{ascending:false}),
-      client.from("my_member_journey").select("*").maybeSingle(),
-      client.from("my_goals").select("*"),
-      client.from("my_habits").select("*"),
-      client.from("my_client_assignments").select("*"),
-      client.from("my_recent_progress").select("*").limit(8),
-      client.from("progress_metric_catalog").select("*").eq("active",true).eq("member_trackable",true).order("display_order"),
-      client.from("checkin_templates").select("*").eq("template_key","weekly-revitalized-checkin").eq("active",true).maybeSingle(),
-      client.from("my_active_meal_plan").select("*").maybeSingle(),
-      client.from("my_upcoming_meals").select("*"),
-      client.from("my_active_fitness_plan").select("*").maybeSingle(),
-      client.from("my_upcoming_workouts").select("*"),
-      client.from("my_grocery_list").select("*"),
-      client.from("my_courses").select("*"),
-      client.from("my_resources").select("*"),
-      client.from("my_challenges").select("*")
+      client.from("my_member_journey").select("*").maybeSingle()
     ]);
 
     const requiredResults=[
@@ -3270,28 +3322,8 @@
       ["my_member_entitlements",entitlementsResult]
     ];
     const failed=requiredResults.find(([,result])=>result.error);
-    if(failed?.[1]?.error) throw failed[1].error;
-
-    [
-      ["my_household",householdResult],
-      ["my_member_journey",journeyResult],
-      ["my_goals",goalsResult],
-      ["my_habits",habitsResult],
-      ["my_client_assignments",assignmentsResult],
-      ["my_recent_progress",progressResult],
-      ["progress_metric_catalog",metricsResult],
-      ["checkin_templates",templateResult],
-      ["my_active_meal_plan",mealPlanResult],
-      ["my_upcoming_meals",mealsResult],
-      ["my_active_fitness_plan",fitnessPlanResult],
-      ["my_upcoming_workouts",workoutsResult],
-      ["my_grocery_list",groceryResult],
-      ["my_courses",coursesResult],
-      ["my_resources",resourcesResult],
-      ["my_challenges",challengesResult]
-    ].forEach(([name,result])=>{
-      if(result.error)console.warn("Optional member module unavailable:",name,result.error.message);
-    });
+    if(failed?.[1]?.error)throw failed[1].error;
+    if(journeyResult.error)console.warn("Optional member module unavailable:","my_member_journey",journeyResult.error.message);
 
     const boot=bootstrapResult.data||{};
     const packed=(data)=>({data:data??null,error:null});
@@ -3361,14 +3393,9 @@
     renderAgreements(agreementsResult.data||[]);
     renderBilling(billingResult.data||null,invoicesResult.data||[],paymentHistoryResult.data||[]);
     renderReferralSummary(ambassadorResult.data||null,referralActivityResult.data||[]);
-    renderChallenges(challengesResult.data||[]);
     renderNotificationPreferences(notificationPrefsResult.data||null);
     renderConversations(conversationsResult.data||[]);
     renderNotifications(notificationsResult.data||[]);
-    renderCourses(coursesResult.data||[]);
-    renderResources(resourcesResult.data||[]);
-    renderMealPlan(mealPlanResult.data||null,mealsResult.data||[],groceryResult.data||[]);
-    renderFitnessPlan(fitnessPlanResult.data||null,workoutsResult.data||[]);
     renderMembershipOverview(membershipOverviewResult.data||null);
     renderJourneyMilestones(journeyStatusResult.data||null);
     renderFamilyHubSummary(familyHubSummaryResult.data||null);
@@ -3383,21 +3410,27 @@
       notifications:notificationsResult.data||[]
     });
 
-    const journey = journeyResult.data;
-    if (journey) {
-      el("rm-progress-chip").textContent = Number(journey.progress_percent || 0) + "%";
-      el("rm-progress-bar").style.width = Math.max(0,Math.min(100,Number(journey.progress_percent || 0))) + "%";
-      el("rm-next-step").textContent = journey.current_step_name || "Journey complete";
-      el("rm-next-due").textContent = journey.current_step_due_at
-        ? "Due " + formatDate(journey.current_step_due_at, true)
-        : title(journey.journey_status);
-      el("rm-continue-journey").disabled = false;
-    } else {
-      el("rm-progress-chip").textContent = "Complete";
-      el("rm-progress-bar").style.width = "100%";
-      el("rm-next-step").textContent = "Your current onboarding journey is complete.";
-      el("rm-next-due").textContent = "";
-      el("rm-continue-journey").disabled = true;
+    const journey=journeyResult.error?null:journeyResult.data;
+    if(journeyResult.error){
+      el("rm-progress-chip").textContent="—";
+      el("rm-progress-bar").style.width="0%";
+      el("rm-next-step").textContent="Journey details are temporarily unavailable.";
+      el("rm-next-due").textContent="Your other member features are still available.";
+      el("rm-continue-journey").disabled=true;
+    }else if(journey){
+      el("rm-progress-chip").textContent=Number(journey.progress_percent||0)+"%";
+      el("rm-progress-bar").style.width=Math.max(0,Math.min(100,Number(journey.progress_percent||0)))+"%";
+      el("rm-next-step").textContent=journey.current_step_name||"Journey complete";
+      el("rm-next-due").textContent=journey.current_step_due_at
+        ?"Due "+formatDate(journey.current_step_due_at,true)
+        :title(journey.journey_status);
+      el("rm-continue-journey").disabled=false;
+    }else{
+      el("rm-progress-chip").textContent="Complete";
+      el("rm-progress-bar").style.width="100%";
+      el("rm-next-step").textContent="Your current onboarding journey is complete.";
+      el("rm-next-due").textContent="";
+      el("rm-continue-journey").disabled=true;
     }
 
     renderAppointment(appointmentResult.data);
@@ -3405,37 +3438,12 @@
     const hasFamilyHub=activeEntitlements.some((row)=>row.entitlement_key==="family_profiles"&&row.status==="active");
     const askEnabled=activeEntitlements.some((row)=>row.entitlement_key==="ai_advisor"&&row.status==="active");
     renderEntitlements(activeEntitlements);
-    renderHousehold(householdResult.data || [], member.household_type,hasFamilyHub);
     renderFamilyRequests(familyRequestsResult.data||[]);
     renderDailyActions(dailyActionsResult.data||null);
     renderUpNext([]);
     renderWeeklySummary(weeklySummaryResult.data||null);
     renderActivityTimeline(activityTimelineResult.data||[]);
     renderCoach(coachResult.data);
-    renderGoals(goalsResult.data || []);
-    renderHabits(habitsResult.data || []);
-    renderAssignments(assignmentsResult.data || []);
-    metricCatalog = metricsResult.data || [];
-    renderMetricOptions();
-    renderRecentProgress(progressResult.data || []);
-
-    checkinTemplate = templateResult.data || null;
-    checkinFields = [];
-    if (checkinTemplate?.id) {
-      const { data: fields, error: fieldError } = await client
-        .from("checkin_template_fields")
-        .select("*")
-        .eq("template_id", checkinTemplate.id)
-        .order("display_order");
-      if(fieldError){
-        console.warn("Optional weekly check-in fields unavailable:",fieldError.message);
-        checkinFields=[];
-      }else{
-        checkinFields=fields||[];
-      }
-    }
-    await renderCheckinForm();
-
     showOnly("rm-dashboard");
     const attentionContext={
       agreements:agreementsResult.data||[],
@@ -3446,7 +3454,11 @@
       notifications:notificationsResult.data||[]
     };
     void loadHomeVNextEnhancements(loadSequence,homeVNextFlagPromise,attentionContext,weeklySummaryResult.data||null);
-    void loadDeferredMemberModules(loadSequence,askEnabled);
+    void loadDeferredMemberModules(loadSequence,{
+      askEnabled,
+      hasFamilyHub,
+      householdType:member.household_type
+    });
   }
 
   async function resolveSession() {
