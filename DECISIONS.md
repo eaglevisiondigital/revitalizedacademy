@@ -198,3 +198,10 @@ These decisions resolve the earlier three-question Chat handoff. The old success
 
 
 - **D71 APPROVED:** Progress Photo upload idempotency uses a client-generated UUID as the photo-set primary key. Retries with the same UUID return the completed existing set rather than creating duplicates; incomplete/conflicting reuse returns 409.
+
+
+## 2026-09-27 - Notification routing vNext
+
+- **D72 APPROVED:** web member notifications use `my_notification_routes.route_key` only as a controlled in-page navigation key. The browser must not follow arbitrary notification `resolved_link_url` values in this first slice.
+- **D73 APPROVED:** only known existing dashboard sections may be opened from a notification. Unknown route keys remain non-navigable.
+- **D74 APPROVED:** Notification Routing vNext is independently reversible behind `feature_member_notification_routing_vnext`, defaults false, loads after first paint, and preserves Read/Dismiss behavior if routing is unavailable.
