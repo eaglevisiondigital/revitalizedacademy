@@ -33,7 +33,7 @@ test('Home vNext loads progressively after the core dashboard is visible',()=>{
   const js=read('member/member110.js');
   const load=js.indexOf('async function loadDashboard()');
   const show=js.indexOf('showOnly("rm-dashboard")',load);
-  const launch=js.indexOf('loadHomeVNextEnhancements(loadSequence,homeVNextFlagPromise',show);
+  const launch=js.indexOf('loadHomeVNextEnhancements(loadSequence,attentionContext',show);
   assert(load>=0&&show>load&&launch>show);
 });
 

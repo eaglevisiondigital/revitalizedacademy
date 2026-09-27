@@ -29,5 +29,9 @@ test('secondary program, wellness and community modules load after first render'
 
 test('journey read failure no longer falsely reports journey complete',()=>{
   assert.match(js,/Journey details are temporarily unavailable/);
-  assert.match(js,/journeyResult\.error/);
+  const start=js.indexOf('async function loadJourneyEnhancement');
+  const end=js.indexOf('async function loadHomeVNextEnhancements',start);
+  const block=js.slice(start,end);
+  assert.match(block,/result\.error/);
+  assert.match(block,/renderJourneyCard\(null,result\.error\)/);
 });
