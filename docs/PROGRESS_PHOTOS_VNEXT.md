@@ -114,3 +114,16 @@ The `progress-photo-upload` Edge Function:
 This is compensating transaction behavior across Postgres and Storage.
 
 The feature remains disabled until the new Edge Function is deployed and synthetic staging acceptance passes.
+
+
+## Retry / idempotency
+
+The browser generates one UUID per pending photo-set submission and sends it as `request_id`.
+
+The Edge Function uses that UUID as the actual `progress_photo_sets.id`.
+
+This means:
+- a lost HTTP response does not create a duplicate set on retry
+- an already completed retry returns the existing set as `replayed:true`
+- a conflicting/incomplete request returns 409 rather than silently creating a second set
+- no additional migration or idempotency table is required
