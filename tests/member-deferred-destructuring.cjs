@@ -13,7 +13,7 @@ function namesBetween(startMarker,endMarker){
 test('deferred query result destructuring matches secondary module set',()=>{
   const block=namesBetween('async function loadDeferredMemberModules',']=await Promise.all([');
   for(const name of [
-    'householdResult','goalsResult','habitsResult','assignmentsResult','progressResult',
+    'journeyResult','householdResult','goalsResult','habitsResult','assignmentsResult','progressResult',
     'metricsResult','templateResult','mealPlanResult','mealsResult','fitnessPlanResult',
     'workoutsResult','groceryResult','coursesResult','resourcesResult','challengesResult',
     'healthConnectionsResult','communitySpacesResult','communityFeedResult','refuelResult',
@@ -22,9 +22,9 @@ test('deferred query result destructuring matches secondary module set',()=>{
   ])assert(block.includes(name),name);
 });
 
-test('initial dashboard destructuring contains only the four first-screen results',()=>{
+test('initial dashboard destructuring contains only the three first-screen results',()=>{
   const block=namesBetween('async function loadDashboard()',']=await Promise.all([');
-  for(const name of ['bootstrapResult','dashboardResult','entitlementsResult','journeyResult'])assert(block.includes(name),name);
+  for(const name of ['bootstrapResult','dashboardResult','entitlementsResult'])assert(block.includes(name),name);
   for(const deferred of [
     'householdResult','goalsResult','habitsResult','assignmentsResult','progressResult','metricsResult',
     'mealPlanResult','mealsResult','fitnessPlanResult','workoutsResult','groceryResult','coursesResult',
