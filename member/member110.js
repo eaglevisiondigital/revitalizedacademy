@@ -1590,6 +1590,13 @@
     window.setTimeout(closeHealthPermissions,500);
   }
 
+  function updateQuietHoursUi(){
+    const enabled=el("pref-quiet-enabled").checked;
+    const fields=el("rm-quiet-hours-fields");
+    fields.classList.toggle("disabled",!enabled);
+    fields.querySelectorAll("input").forEach((input)=>{input.disabled=!enabled;});
+  }
+
   function renderNotificationPreferences(row){
     const values=row||{};
     el("pref-in-app-messages").checked=values.in_app_messages!==false;
@@ -1601,16 +1608,34 @@
     el("pref-sms-program").checked=Boolean(values.sms_program_updates);
     el("pref-email-billing").checked=values.email_billing_alerts!==false;
     el("pref-sms-billing").checked=Boolean(values.sms_billing_alerts);
+    el("pref-quiet-enabled").checked=Boolean(values.quiet_hours_enabled);
+    el("pref-quiet-start").value=values.quiet_hours_start?String(values.quiet_hours_start).slice(0,5):"21:00";
+    el("pref-quiet-end").value=values.quiet_hours_end?String(values.quiet_hours_end).slice(0,5):"07:00";
+    const browserTz=Intl.DateTimeFormat().resolvedOptions().timeZone||"";
+    el("pref-time-zone").value=values.time_zone||browserTz;
+    updateQuietHoursUi();
   }
 
   async function saveNotificationPreferences(event){
     event.preventDefault();
-    const {data:{user}}=await client.auth.getUser();
-    if(!user)return;
     const status=el("rm-notification-status");
+    const quietEnabled=el("pref-quiet-enabled").checked;
+    const quietStart=el("pref-quiet-start").value;
+    const quietEnd=el("pref-quiet-end").value;
+    const browserTz=Intl.DateTimeFormat().resolvedOptions().timeZone||"";
+    const timeZone=el("pref-time-zone").value.trim()||browserTz;
+
+    if(quietEnabled&&(!quietStart||!quietEnd)){
+      showStatus(status,"Choose both a quiet-hours start and end time.","error");
+      return;
+    }
+    if(!timeZone){
+      showStatus(status,"Add your time zone so reminders can respect local time.","error");
+      return;
+    }
+
     showStatus(status,"Saving...");
     const payload={
-      user_id:user.id,
       in_app_messages:el("pref-in-app-messages").checked,
       email_messages:el("pref-email-messages").checked,
       sms_messages:el("pref-sms-messages").checked,
@@ -1620,9 +1645,12 @@
       sms_program_updates:el("pref-sms-program").checked,
       email_billing_alerts:el("pref-email-billing").checked,
       sms_billing_alerts:el("pref-sms-billing").checked,
-      updated_at:new Date().toISOString()
+      quiet_hours_enabled:quietEnabled,
+      quiet_hours_start:quietEnabled?quietStart:"",
+      quiet_hours_end:quietEnabled?quietEnd:"",
+      time_zone:timeZone
     };
-    const {error}=await client.from("notification_preferences").upsert(payload,{onConflict:"user_id"});
+    const {error}=await client.rpc("update_my_notification_preferences",{p_preferences:payload});
     if(error){showStatus(status,error.message,"error");return;}
     showStatus(status,"Notification preferences saved.","success");
   }
@@ -4229,6 +4257,7 @@
   el("rm-health-permissions-form").addEventListener("submit",saveHealthPermissions);
   document.querySelectorAll("[data-health-permissions-close]").forEach((node)=>node.addEventListener("click",closeHealthPermissions));
 
+  el("pref-quiet-enabled").addEventListener("change",updateQuietHoursUi);
   el("rm-notification-form").addEventListener("submit",saveNotificationPreferences);
   el("rm-notifications-mark-all").addEventListener("click",markAllNotificationsRead);
 

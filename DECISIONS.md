@@ -163,3 +163,11 @@ These decisions resolve the earlier three-question Chat handoff. The old success
 - **D52 APPROVED:** first calendar slice exposes only item type, title, status, date/time, and safe location URL. Embedded metadata such as adherence, target values, points, or internal IDs is not member-facing in this slice.
 - **D53 APPROVED:** client-side filters are All, Coaching, Workouts, Meals, Goals, and Challenges. Journey appointments and coaching sessions both map to Coaching.
 - **D54 APPROVED:** Calendar vNext is independently reversible behind `feature_member_calendar_vnext`, defaults false, loads post-first-paint, is nonfatal/sequence-guarded, and is capped at 100 items. See `docs/CALENDAR_VNEXT.md`.
+
+
+## 2026-09-27 - Notification Settings vNext
+
+- **D55 APPROVED:** existing member notification settings are upgraded in place with quiet hours and time zone rather than creating a second reminder-settings surface.
+- **D56 APPROVED:** member preference saves use `public.update_my_notification_preferences` instead of direct browser table upsert.
+- **D57 APPROVED:** push toggles remain hidden until hosted push delivery is configured/tested and the authenticated preference update contract explicitly supports push fields.
+- **D58 APPROVED:** when quiet hours are enabled, start/end and a valid IANA time zone are required. Browser-resolved time zone may be used as the member default. See `docs/NOTIFICATION_SETTINGS_VNEXT.md`.

@@ -2387,3 +2387,52 @@
   .rm199-calendar-item{grid-template-columns:1fr auto}
   .rm199-calendar-type{grid-column:1 / -1}
 }
+
+
+/* Notification Settings vNext */
+.rm200-notification-schedule{
+  display:grid;
+  gap:10px;
+  margin:12px 0;
+  padding:12px;
+  border:1px solid #dfe8e2;
+  border-radius:12px;
+  background:#fbfcfb;
+}
+.rm200-quiet-toggle{
+  display:flex !important;
+  align-items:center;
+  gap:8px;
+}
+.rm200-quiet-hours-fields{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+}
+.rm200-quiet-hours-fields.disabled{
+  opacity:.55;
+}
+.rm200-quiet-hours-fields label,
+.rm200-time-zone{
+  display:grid !important;
+  gap:5px;
+}
+.rm200-quiet-hours-fields input,
+.rm200-time-zone input{
+  min-height:38px;
+  padding:0 10px;
+  border:1px solid #ccd9d1;
+  border-radius:9px;
+  background:#fff;
+  color:#29483b;
+  font:inherit;
+}
+.rm200-notification-schedule p{
+  margin:0;
+  color:#78877f;
+  font-size:8.5px;
+  line-height:1.45;
+}
+@media(max-width:620px){
+  .rm200-quiet-hours-fields{grid-template-columns:1fr}
+}

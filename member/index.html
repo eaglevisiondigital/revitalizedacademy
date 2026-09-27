@@ -817,6 +817,17 @@
           <label><input id="pref-sms-program" type="checkbox"><span>Text program updates</span></label>
           <label><input id="pref-email-billing" type="checkbox"><span>Email membership billing alerts</span></label>
           <label><input id="pref-sms-billing" type="checkbox"><span>Text membership billing alerts</span></label>
+
+          <div class="rm200-notification-schedule">
+            <label class="rm200-quiet-toggle"><input id="pref-quiet-enabled" type="checkbox"><span>Use quiet hours</span></label>
+            <div id="rm-quiet-hours-fields" class="rm200-quiet-hours-fields disabled">
+              <label><span>Quiet Hours Start</span><input id="pref-quiet-start" type="time" value="21:00"></label>
+              <label><span>Quiet Hours End</span><input id="pref-quiet-end" type="time" value="07:00"></label>
+            </div>
+            <label class="rm200-time-zone"><span>Time Zone</span><input id="pref-time-zone" type="text" maxlength="80" placeholder="America/Chicago" autocomplete="off"></label>
+            <p>Quiet hours help delay non-urgent reminder delivery until your preferred local window. Push controls will be added only after mobile push delivery is activated and verified.</p>
+          </div>
+
           <button type="submit">Save Notification Preferences</button>
           <p id="rm-notification-status" class="rm112-status" aria-live="polite"></p>
         </form>
