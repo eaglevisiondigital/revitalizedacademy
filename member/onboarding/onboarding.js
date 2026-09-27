@@ -33,6 +33,68 @@
     }
     return card;
   }
+  function supportStatus(message,error=false){
+    const target=el('support-status');
+    if(!target)return;
+    target.textContent=message||'';
+    target.className=error?'error':'';
+  }
+
+  function renderSupportMessages(messages=[]){
+    const thread=el('support-thread');
+    thread.replaceChildren();
+    if(!messages.length){
+      thread.append(node('p','No support messages yet. Send us a message whenever you need help.'));
+      return;
+    }
+    for(const message of messages){
+      const item=node('article');
+      item.className=message.mine?'support-message mine':'support-message';
+      item.append(node('p',message.body||''));
+      const meta=node('small',(message.mine?'You':'ReVitalized Support')+' · '+new Date(message.created_at).toLocaleString());
+      item.append(meta);
+      thread.append(item);
+    }
+    thread.scrollTop=thread.scrollHeight;
+  }
+
+  async function loadSupport(){
+    const section=el('support-center');
+    try{
+      const {data,error}=await client.functions.invoke('member-support',{body:{action:'context'}});
+      if(error||!data?.ok){
+        section.hidden=true;
+        return;
+      }
+      section.hidden=false;
+      renderSupportMessages(data.messages||[]);
+    }catch{
+      section.hidden=true;
+    }
+  }
+
+  async function sendSupportMessage(event){
+    event.preventDefault();
+    const message=el('support-message').value.trim();
+    if(!message)return;
+    const button=el('support-form').querySelector('button');
+    button.disabled=true;
+    supportStatus('Sending securely...');
+    try{
+      const {data,error}=await client.functions.invoke('member-support',{
+        body:{action:'send',message,request_id:crypto.randomUUID()}
+      });
+      if(error||!data?.ok)throw error||new Error(data?.error||'Support message could not be sent.');
+      el('support-message').value='';
+      renderSupportMessages(data.messages||[]);
+      supportStatus('Message sent to ReVitalized Support.');
+    }catch(error){
+      supportStatus(error.message||'Support message could not be sent.',true);
+    }finally{
+      button.disabled=false;
+    }
+  }
+
   async function load(){
     const {data:{session}}=await client.auth.getSession();el('auth').hidden=!!session;el('account').hidden=!session;
     if(!session){status('Sign in or create your own account to continue.');return;}
@@ -45,11 +107,13 @@
       if(a.payment_url){try{const safeUrl=window.RVA_PAYMENT_URL(a.payment_url);const url=safeUrl?new URL(safeUrl):null;if(url){const link=node('a','Open secure payment page');link.href=url.href;link.target='_blank';link.rel='noopener noreferrer';card.append(link);}}catch{/* Invalid payment links stay unavailable. */}}return card;}));
     el('agreements').replaceChildren(...c.agreements.map(renderAgreement));if(!c.agreements.length)el('agreements').append(node('p','No issued agreements are available for this account. If you received an invitation, reopen its link after verifying your email.'));
     el('notices').replaceChildren(...c.notifications.map(n=>{const item=node('article');item.append(node('h3',n.title),node('p',n.body||''));return item;}));
+    await loadSupport();
     status('Your account status is up to date.');
   }
   el('login').addEventListener('submit',event=>{event.preventDefault();action(el('login').querySelector('button'),async()=>{const {error}=await client.auth.signInWithPassword({email:el('email').value.trim(),password:el('password').value});if(error)throw error;await load();});});
   el('signup').addEventListener('click',()=>action(el('signup'),async()=>{if(!el('login').reportValidity())return;const {data,error}=await client.auth.signUp({email:el('email').value.trim(),password:el('password').value,options:{emailRedirectTo:window.RVA_ENV.signupRedirect}});if(error)throw error;if(data.session)await load();else status('Check your email to verify your account, then reopen your original invitation.');}));
-  el('signout').addEventListener('click',()=>action(el('signout'),async()=>{const {error}=await client.auth.signOut();if(error)throw error;load.invitationClaimed=false;load.enrollmentClaimed=false;el('agreements').replaceChildren();el('enrollments').replaceChildren();el('notices').replaceChildren();await load();}));
+  el('signout').addEventListener('click',()=>action(el('signout'),async()=>{const {error}=await client.auth.signOut();if(error)throw error;load.invitationClaimed=false;load.enrollmentClaimed=false;el('agreements').replaceChildren();el('enrollments').replaceChildren();el('notices').replaceChildren();el('support-thread').replaceChildren();el('support-center').hidden=true;await load();}));
+  el('support-form').addEventListener('submit',sendSupportMessage);
   el('refresh').addEventListener('click',()=>action(el('refresh'),load));
   load().catch(error=>status(error.message||'Unable to load your account.',true));
 })();
