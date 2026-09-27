@@ -1873,23 +1873,47 @@
   async function uploadMessageAttachment(conversationId,messageId,file){
     if(!file)return null;
     if(file.size>10485760)throw new Error("Attachment must be 10 MB or smaller.");
-    const path=conversationId+"/"+messageId+"/"+safeFilename(file.name);
-    const {error:uploadError}=await client.storage.from("member-message-attachments").upload(path,file,{
-      contentType:file.type||"application/octet-stream",
-      upsert:false,
-      cacheControl:"3600"
-    });
-    if(uploadError)throw uploadError;
 
-    const {data,error}=await client.from("member_message_attachments").insert({
-      message_id:messageId,
-      storage_path:path,
-      original_filename:file.name,
-      content_type:file.type||null,
-      size_bytes:file.size
-    }).select("*").single();
-    if(error)throw error;
-    return data;
+    const allowed=new Set([
+      "application/pdf","image/jpeg","image/png","image/webp",
+      "audio/mpeg","audio/mp4","audio/x-m4a","audio/wav"
+    ]);
+    if(!allowed.has(file.type))throw new Error("That attachment type is not supported.");
+
+    const {data:{session}}=await client.auth.getSession();
+    if(!session)throw new Error("Please sign in again before uploading an attachment.");
+
+    const requestId=crypto.randomUUID();
+    const body=()=> {
+      const form=new FormData();
+      form.set("request_id",requestId);
+      form.set("conversation_id",conversationId);
+      form.set("message_id",messageId);
+      form.set("file",file,file.name);
+      return form;
+    };
+
+    let lastError=null;
+    for(let attempt=0;attempt<2;attempt++){
+      try{
+        const response=await fetch(window.RVA_ENV.edgeBaseUrl+"/member-message-attachment-upload",{
+          method:"POST",
+          headers:{
+            Authorization:"Bearer "+session.access_token,
+            apikey:PUBLISHABLE_KEY
+          },
+          body:body()
+        });
+        let payload={};
+        try{payload=await response.json();}catch{}
+        if(response.ok)return payload;
+        lastError=new Error(payload.error||"Attachment could not be uploaded.");
+        if(response.status<500)break;
+      }catch(error){
+        lastError=error;
+      }
+    }
+    throw lastError||new Error("Attachment could not be uploaded.");
   }
 
   async function signedAttachmentUrl(path){
