@@ -8,7 +8,8 @@ test('Home vNext remains additive behind a runtime flag and keeps bootstrap v2',
   assert.match(js,/from\("my_app_bootstrap_v2"\)/);
   assert.doesNotMatch(js,/from\("my_app_bootstrap_v27"\)/);
   assert.match(js,/feature_member_home_vnext/);
-  for(const view of ['my_next_best_actions','my_home_priority_summary','my_up_next','my_weekly_progress_story'])assert(js.includes(view),view);
+  for(const view of ['my_next_best_actions','my_up_next','my_weekly_progress_story'])assert(js.includes(view),view);
+  assert.doesNotMatch(js,/from\("my_home_priority_summary"\)/);
   assert(js.indexOf('if(failed?.error) throw failed.error;')<js.indexOf('my_next_best_actions'));
   assert.match(js,/console\.warn\("Home vNext optional read unavailable:"/);
 });

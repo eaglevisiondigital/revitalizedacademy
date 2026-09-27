@@ -132,11 +132,11 @@ Do not surface:
 
 Progress-insight text may only be used if it remains deterministic/descriptive and non-medical.
 
-### 5. Home Priority Summary
+### 5. Priority counts
 
-public.my_home_priority_summary may power counts/chips for the merged priority card.
+Do not add a separate `my_home_priority_summary` request in the first slice. The current card can derive its visible count from the merged action list, avoiding an unnecessary network read.
 
-Do not expose internal priority_rank numbers to the member.
+Do not expose internal `priority_rank` numbers to the member.
 
 ## Feature flag / rollout
 
@@ -164,7 +164,6 @@ Do not replace my_app_bootstrap_v2 with my_app_bootstrap_v27.
 
 For the first slice, add only the minimum extra reads required for Home vNext:
 - my_next_best_actions
-- my_home_priority_summary
 - my_up_next
 - my_weekly_progress_story
 

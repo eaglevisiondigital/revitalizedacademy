@@ -3228,27 +3228,23 @@
     homeVNextEnabled=Boolean(!homeFlagResult.error&&homeFlagResult.data?.config_value===true);
     const homeVNext={
       nextBestActions:[],
-      prioritySummary:null,
       upNext:[],
       weeklyStory:null
     };
     if(homeVNextEnabled){
-      const [nextBestResult,priorityResult,upNextResult,weeklyStoryResult]=await Promise.all([
+      const [nextBestResult,upNextResult,weeklyStoryResult]=await Promise.all([
         client.from("my_next_best_actions").select("*").order("action_order"),
-        client.from("my_home_priority_summary").select("*").maybeSingle(),
         client.from("my_up_next").select("*").limit(5),
         client.from("my_weekly_progress_story").select("*").maybeSingle()
       ]);
       [
         ["my_next_best_actions",nextBestResult],
-        ["my_home_priority_summary",priorityResult],
         ["my_up_next",upNextResult],
         ["my_weekly_progress_story",weeklyStoryResult]
       ].forEach(([name,result])=>{
         if(result.error)console.warn("Home vNext optional read unavailable:",name,result.error.message);
       });
       homeVNext.nextBestActions=nextBestResult.error?[]:(nextBestResult.data||[]);
-      homeVNext.prioritySummary=priorityResult.error?null:(priorityResult.data||null);
       homeVNext.upNext=upNextResult.error?[]:(upNextResult.data||[]);
       homeVNext.weeklyStory=weeklyStoryResult.error?null:(weeklyStoryResult.data||null);
     }
@@ -3350,8 +3346,7 @@
       familyRequests:familyRequestsResult.data||[],
       billing:billingResult.data||null,
       notifications:notificationsResult.data||[],
-      nextBestActions:homeVNext.nextBestActions,
-      prioritySummary:homeVNext.prioritySummary
+      nextBestActions:homeVNext.nextBestActions
     });
 
     const journey = journeyResult.data;
