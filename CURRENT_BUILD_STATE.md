@@ -241,3 +241,24 @@ All work above remains staging-branch implementation only.
 Do not enable any default-off vNext flag in production before isolated hosted staging acceptance.
 
 The production lifecycle/security migrations remain unapplied and production remains Build 192.
+
+
+## Member document upload hardening
+
+**IMPLEMENTED on `codex/staging`, NOT DEPLOYED.**
+
+The existing secure document vault UI now writes through `member-document-upload` instead of performing browser-side database-first + Storage upload.
+
+The Edge function:
+- validates environment/origin
+- authenticates the caller
+- requires full paid member access
+- resolves the member contact/membership server-side
+- limits member categories to general/progress
+- validates 25 MB maximum
+- validates supported MIME/file signatures
+- uses contact-scoped private Storage paths
+- uses client-generated UUID idempotency
+- cleans up both Storage and the database row on partial failure
+
+Because the member frontend now depends on this Edge function, it is part of required staging deployment sequencing before member acceptance.
