@@ -3434,6 +3434,7 @@
     homeVNextEnabled=false;
     progressVNextEnabled=false;
     goalProgressById=new Map();
+    latestGoalRows=[];
     const homeVNextFlagPromise=client
       .from("app_runtime_config")
       .select("config_value")
@@ -3640,8 +3641,7 @@
 
   async function signOut() {
     await client.auth.signOut();
-    showOnly("rm-auth");
-    el("rm-password").value = "";
+    window.location.replace("/member/");
   }
 
 
