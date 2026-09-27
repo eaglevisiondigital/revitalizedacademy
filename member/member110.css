@@ -1895,3 +1895,131 @@
     justify-self:start;
   }
 }
+
+
+/* Progress vNext: feature-flagged additive member progress */
+.rm194-achievements,
+.rm194-trends{
+  display:grid;
+  gap:9px;
+  margin-top:12px;
+}
+.rm194-achievement{
+  display:grid;
+  grid-template-columns:38px minmax(0,1fr);
+  gap:11px;
+  align-items:start;
+  padding:12px;
+  border:1px solid #dde7e1;
+  border-radius:12px;
+  background:#fbfcfb;
+}
+.rm194-achievement-icon{
+  display:grid;
+  place-items:center;
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background:#f2ead9;
+  color:#8a6b2d;
+  font-weight:900;
+}
+.rm194-achievement strong,
+.rm194-trend strong{
+  display:block;
+  color:#234a39;
+  font-size:10.5px;
+}
+.rm194-achievement span{
+  display:block;
+  margin-top:3px;
+  color:#687a70;
+  font-size:9px;
+  line-height:1.4;
+}
+.rm194-achievement small{
+  display:block;
+  margin-top:5px;
+  color:#839087;
+  font-size:8px;
+}
+.rm194-trend{
+  padding:12px;
+  border:1px solid #dde7e1;
+  border-radius:12px;
+  background:#fbfcfb;
+}
+.rm194-trend>div{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items:center;
+}
+.rm194-trend-direction{
+  padding:4px 7px;
+  border-radius:999px;
+  background:#eef4f0;
+  color:#526d5f;
+  font-size:7.8px;
+  font-weight:900;
+}
+.rm194-trend>b{
+  display:block;
+  margin-top:7px;
+  color:#154734;
+  font-size:18px;
+}
+.rm194-trend>small{
+  display:block;
+  margin-top:5px;
+  color:#6f7e75;
+  font-size:8.8px;
+  line-height:1.45;
+}
+.rm194-goal-progress{
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr) auto;
+  gap:8px;
+  align-items:center;
+  margin-top:9px;
+  padding-top:9px;
+  border-top:1px solid #e6ece8;
+}
+.rm194-goal-state{
+  padding:4px 7px;
+  border-radius:999px;
+  background:#eef4f0;
+  color:#496556;
+  font-size:7.8px;
+  font-weight:900;
+}
+.rm194-goal-progress small{
+  color:#6e7f76;
+  font-size:8.4px;
+}
+.rm194-goal-progressbar{
+  grid-column:1 / -1;
+  height:6px;
+  overflow:hidden;
+  border-radius:999px;
+  background:#e7eeea;
+}
+.rm194-goal-progressbar i{
+  display:block;
+  height:100%;
+  border-radius:999px;
+  background:#154734;
+}
+.rm194-goal-progress>b{
+  color:#315b45;
+  font-size:8px;
+  justify-self:end;
+}
+@media(max-width:620px){
+  .rm194-goal-progress{
+    grid-template-columns:1fr auto;
+  }
+  .rm194-goal-progress small{
+    grid-column:1 / -1;
+  }
+}
