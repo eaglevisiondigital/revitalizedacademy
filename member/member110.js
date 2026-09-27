@@ -2152,7 +2152,12 @@
       .eq("period_start", period.start)
       .maybeSingle();
 
-    if (error) throw error;
+    if(error){
+      console.warn("Optional weekly check-in state unavailable:",error.message);
+      container.innerHTML='<div class="rm112-empty">Weekly check-in is temporarily unavailable. Your dashboard is still available.</div>';
+      el("rm-checkin-submit").disabled=true;
+      return;
+    }
 
     if (existing && existing.status !== "draft") {
       el("rm-checkin-state").textContent = "Submitted";
@@ -3180,14 +3185,44 @@
       client.from("my_health_data_snapshot").select("*").order("label")
     ]);
 
-    const failed=[
-      bootstrapResult,dashboardResult,entitlementsResult,householdResult,journeyResult,goalsResult,habitsResult,
-      assignmentsResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,
-      workoutsResult,groceryResult,coursesResult,resourcesResult,healthConnectionsResult,challengesResult,
-      communitySpacesResult,communityFeedResult,refuelResult,documentsResult,coachingEntitlementsResult,
-      companionTypesResult,companionRequestsResult,healthPermissionsResult,healthSnapshotResult
-    ].find((r)=>r.error);
-    if(failed?.error) throw failed.error;
+    const requiredResults=[
+      ["my_app_bootstrap_v2",bootstrapResult],
+      ["my_member_dashboard",dashboardResult],
+      ["my_member_entitlements",entitlementsResult]
+    ];
+    const failed=requiredResults.find(([,result])=>result.error);
+    if(failed?.[1]?.error) throw failed[1].error;
+
+    [
+      ["my_household",householdResult],
+      ["my_member_journey",journeyResult],
+      ["my_goals",goalsResult],
+      ["my_habits",habitsResult],
+      ["my_client_assignments",assignmentsResult],
+      ["my_recent_progress",progressResult],
+      ["progress_metric_catalog",metricsResult],
+      ["checkin_templates",templateResult],
+      ["my_active_meal_plan",mealPlanResult],
+      ["my_upcoming_meals",mealsResult],
+      ["my_active_fitness_plan",fitnessPlanResult],
+      ["my_upcoming_workouts",workoutsResult],
+      ["my_grocery_list",groceryResult],
+      ["my_courses",coursesResult],
+      ["my_resources",resourcesResult],
+      ["my_health_connection_center",healthConnectionsResult],
+      ["my_challenges",challengesResult],
+      ["my_community_spaces",communitySpacesResult],
+      ["my_community_feed",communityFeedResult],
+      ["my_refuel_access",refuelResult],
+      ["my_documents",documentsResult],
+      ["my_coaching_entitlements",coachingEntitlementsResult],
+      ["my_companion_question_types",companionTypesResult],
+      ["my_companion_requests",companionRequestsResult],
+      ["my_health_metric_permissions",healthPermissionsResult],
+      ["my_health_data_snapshot",healthSnapshotResult]
+    ].forEach(([name,result])=>{
+      if(result.error)console.warn("Optional member module unavailable:",name,result.error.message);
+    });
 
     const homeFlagResult=await homeVNextFlagPromise;
     homeVNextEnabled=Boolean(!homeFlagResult.error&&homeFlagResult.data?.config_value===true);
@@ -3364,8 +3399,12 @@
         .select("*")
         .eq("template_id", checkinTemplate.id)
         .order("display_order");
-      if (fieldError) throw fieldError;
-      checkinFields = fields || [];
+      if(fieldError){
+        console.warn("Optional weekly check-in fields unavailable:",fieldError.message);
+        checkinFields=[];
+      }else{
+        checkinFields=fields||[];
+      }
     }
     await renderCheckinForm();
 
