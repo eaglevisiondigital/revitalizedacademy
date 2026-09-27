@@ -25,3 +25,12 @@ test('progress photo upload compensates storage and database on partial failure'
   assert.match(handler,/progress_photo_sets"\)\.delete\(\)/);
   assert.match(handler,/await cleanup\(\)/);
 });
+
+
+test('progress photo upload is idempotent by client-generated set UUID',()=>{
+  assert.match(handler,/requestId/);
+  assert.match(handler,/\.eq\("id",requestId\)/);
+  assert.match(handler,/id:requestId/);
+  assert.match(handler,/replayed:true/);
+  assert.match(handler,/existingAngles\.length===requestedAngles\.length/);
+});
