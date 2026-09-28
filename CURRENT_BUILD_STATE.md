@@ -333,3 +333,23 @@ Enrollment & Signature Center now exposes a restricted Privacy & Data section fo
 Provider disconnect remains excluded from the restricted surface pending separate hardening of the health-connection/consent write path.
 
 Lifecycle regression coverage verifies onboarding and payment-suspended privacy access while paid features stay denied, and verifies manually inactive accounts cannot open the Privacy Center or submit new privacy requests.
+
+
+## Health provider disconnect hardening
+
+**IMPLEMENTED on `codex/staging`, NOT DEPLOYED.**
+
+Forward migration:
+`20260928071500_health_provider_disconnect_hardening.sql`
+
+The existing full-member provider disconnect RPC is now a narrowly scoped `SECURITY DEFINER` function that:
+- requires authenticated full member access
+- resolves only the caller's own active contact
+- clears credential reference and granted scopes only for the selected own provider
+- revokes only the caller's metric consents for that provider
+- leaves stored historical health observations intact
+- denies payment-suspended and unrelated identities
+
+Backend regression coverage verifies active own-provider disconnect, consent revocation, payment-suspended denial, and cross-user denial.
+
+This hardening does not certify or activate native HealthKit, Health Connect, Fitbit, Garmin, Oura, Withings or other provider connectivity.
