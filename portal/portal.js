@@ -1048,28 +1048,58 @@
   });
   el("pending-password").addEventListener("click", showPasswordSetup);
 
+  let sessionRestoreTimer = null;
+
+  function resolveRestoredStaffSession(session) {
+    if (!session?.user) return;
+    if (!portalView.classList.contains("hidden") || !passwordCard.classList.contains("hidden")) return;
+    window.setTimeout(() => resolveStaff(session), 0);
+  }
+
   authClient.auth.onAuthStateChange((event, session) => {
     if (event === "SIGNED_OUT") {
       showLogin();
     } else if (event === "PASSWORD_RECOVERY") {
       showPasswordSetup();
-    } else if (event === "SIGNED_IN" && portalView.classList.contains("hidden") && passwordCard.classList.contains("hidden")) {
-      window.setTimeout(() => resolveStaff(session), 0);
+    } else if (["INITIAL_SESSION","SIGNED_IN","TOKEN_REFRESHED"].includes(event) && session?.user) {
+      resolveRestoredStaffSession(session);
     }
   });
 
   (async function init() {
     const { data, error } = await authClient.auth.getSession();
+
     if (initialAuthError && !data?.session) {
       showLogin();
       showStatus(loginStatus, "That invitation link has already been used or has expired. Use Forgot your password? to finish setting up access, or ask an owner to resend access.", "error");
       return;
     }
+
     if (error) {
       showLogin();
       showStatus(loginStatus, "Unable to restore your session. Please sign in.", "error");
       return;
     }
-    await resolveStaff(data.session);
+
+    if (data?.session?.user) {
+      await resolveStaff(data.session);
+      return;
+    }
+
+    // Supabase can emit INITIAL_SESSION just after page initialization. Give that
+    // persisted-session event a brief chance to arrive before showing login.
+    sessionRestoreTimer = window.setTimeout(async () => {
+      const { data: retryData, error: retryError } = await authClient.auth.getSession();
+      if (retryError) {
+        showLogin();
+        showStatus(loginStatus, "Unable to restore your session. Please sign in.", "error");
+        return;
+      }
+      if (retryData?.session?.user) {
+        await resolveStaff(retryData.session);
+        return;
+      }
+      showLogin();
+    }, 350);
   })();
 })();
