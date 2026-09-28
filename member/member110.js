@@ -743,6 +743,10 @@
   let pendingProgressRequestId = null;
   let pendingProgressPayloadKey = null;
   let pendingProgressRecordedAt = null;
+  let pendingGoalRequestId = null;
+  let pendingGoalPayloadKey = null;
+  let pendingHabitRequestId = null;
+  let pendingHabitPayloadKey = null;
 
   function renderCoachingEntitlements(rows){
     const target=el("rm-coaching-entitlements");
@@ -2923,6 +2927,8 @@
   }
 
   function openGoalModal(){
+    pendingGoalRequestId=null;
+    pendingGoalPayloadKey=null;
     el("rm-goal-form").reset();
     el("rm-goal-priority").value="2";
     showStatus(el("rm-goal-form-status"),"");
@@ -2931,29 +2937,54 @@
     el("rm-goal-title").focus();
   }
   function closeGoalModal(){
+    pendingGoalRequestId=null;
+    pendingGoalPayloadKey=null;
     el("rm-goal-modal").classList.add("hidden");
     el("rm-goal-modal").setAttribute("aria-hidden","true");
   }
   async function createGoal(event){
     event.preventDefault();
+    const form=event.currentTarget;
+    const submit=form.querySelector('button[type="submit"]');
     const status=el("rm-goal-form-status");
-    showStatus(status,"Creating goal...");
-    const value=el("rm-goal-target-value").value;
-    const {error}=await client.rpc("create_my_goal",{
+    const rawValue=el("rm-goal-target-value").value;
+    const payload={
       p_title:el("rm-goal-title").value.trim(),
       p_description:el("rm-goal-description").value.trim()||null,
-      p_target_value:value===""?null:Number(value),
+      p_target_value:rawValue===""?null:Number(rawValue),
       p_target_unit:el("rm-goal-target-unit").value.trim()||null,
       p_target_date:el("rm-goal-target-date").value||null,
       p_priority:Number(el("rm-goal-priority").value||2)
-    });
-    if(error){showStatus(status,error.message,"error");return;}
-    showStatus(status,"Goal created.","success");
-    await loadDashboard();
-    window.setTimeout(closeGoalModal,450);
+    };
+    const payloadKey=JSON.stringify(payload);
+    if(!pendingGoalRequestId||pendingGoalPayloadKey!==payloadKey){
+      pendingGoalRequestId=crypto.randomUUID();
+      pendingGoalPayloadKey=payloadKey;
+    }
+
+    submit.disabled=true;
+    showStatus(status,"Creating goal...");
+    try{
+      const {error}=await client.rpc("create_my_goal_idempotent",{
+        p_request_id:pendingGoalRequestId,
+        ...payload
+      });
+      if(error)throw error;
+      pendingGoalRequestId=null;
+      pendingGoalPayloadKey=null;
+      showStatus(status,"Goal created.","success");
+      await loadDashboard();
+      window.setTimeout(closeGoalModal,450);
+    }catch(error){
+      showStatus(status,error?.message||"Goal could not be created.","error");
+    }finally{
+      submit.disabled=false;
+    }
   }
 
   function openHabitModal(){
+    pendingHabitRequestId=null;
+    pendingHabitPayloadKey=null;
     el("rm-habit-form").reset();
     el("rm-habit-target").value="1";
     el("rm-habit-frequency").value="daily";
@@ -2965,25 +2996,48 @@
     el("rm-habit-title").focus();
   }
   function closeHabitModal(){
+    pendingHabitRequestId=null;
+    pendingHabitPayloadKey=null;
     el("rm-habit-modal").classList.add("hidden");
     el("rm-habit-modal").setAttribute("aria-hidden","true");
   }
   async function createHabit(event){
     event.preventDefault();
+    const form=event.currentTarget;
+    const submit=form.querySelector('button[type="submit"]');
     const status=el("rm-habit-form-status");
-    showStatus(status,"Creating habit...");
-    const {error}=await client.rpc("create_my_habit",{
+    const payload={
       p_title:el("rm-habit-title").value.trim(),
       p_category:el("rm-habit-category").value,
       p_frequency:el("rm-habit-frequency").value,
       p_target_per_period:Number(el("rm-habit-target").value||1),
       p_unit:el("rm-habit-unit").value.trim()||null,
       p_starts_on:el("rm-habit-start-date").value||new Date().toISOString().slice(0,10)
-    });
-    if(error){showStatus(status,error.message,"error");return;}
-    showStatus(status,"Habit created.","success");
-    await loadDashboard();
-    window.setTimeout(closeHabitModal,450);
+    };
+    const payloadKey=JSON.stringify(payload);
+    if(!pendingHabitRequestId||pendingHabitPayloadKey!==payloadKey){
+      pendingHabitRequestId=crypto.randomUUID();
+      pendingHabitPayloadKey=payloadKey;
+    }
+
+    submit.disabled=true;
+    showStatus(status,"Creating habit...");
+    try{
+      const {error}=await client.rpc("create_my_habit_idempotent",{
+        p_request_id:pendingHabitRequestId,
+        ...payload
+      });
+      if(error)throw error;
+      pendingHabitRequestId=null;
+      pendingHabitPayloadKey=null;
+      showStatus(status,"Habit created.","success");
+      await loadDashboard();
+      window.setTimeout(closeHabitModal,450);
+    }catch(error){
+      showStatus(status,error?.message||"Habit could not be created.","error");
+    }finally{
+      submit.disabled=false;
+    }
   }
 
   async function updateAssignmentStatus(row,status){
