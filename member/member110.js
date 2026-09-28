@@ -4637,6 +4637,9 @@
     latestCompanionQuestionTypes=[];
     latestCompanionRequests=[];
     latestCompanionFeedback=[];
+    pendingProgressRequestId=null;
+    pendingProgressPayloadKey=null;
+    pendingProgressRecordedAt=null;
     const [
       bootstrapResult,
       dashboardResult,
@@ -5163,7 +5166,10 @@
           .maybeSingle();
         if(existingError)throw existingError;
 
-        const sameResponses=JSON.stringify(existing?.responses||{})===JSON.stringify(responses);
+        const normalizeResponses=(value)=>JSON.stringify(
+          Object.keys(value||{}).sort().map((key)=>[key,value[key]])
+        );
+        const sameResponses=normalizeResponses(existing?.responses)===normalizeResponses(responses);
         if(!existing||existing.status!=="submitted"||!sameResponses){
           throw new Error("This week’s check-in has already been submitted with different answers.");
         }
