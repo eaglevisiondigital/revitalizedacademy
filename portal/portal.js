@@ -516,13 +516,17 @@
   }
 
   function showPortal(staff) {
+    if (sessionRestoreTimer) {
+      window.clearTimeout(sessionRestoreTimer);
+      sessionRestoreTimer = null;
+    }
     authView.classList.add("hidden");
     portalView.classList.remove("hidden");
     el("staff-name").textContent = staff.display_name || "";
     el("staff-role").textContent = titleCase(staff.role);
   }
 
-  async function resolveStaff(session) {
+  async function resolveStaff(session, allowRefreshRetry = true) {
     if (!session?.user) {
       showLogin();
       return;
@@ -540,6 +544,13 @@
     const staff = Array.isArray(staffRows) ? (staffRows[0] || null) : staffRows;
 
     if (error) {
+      if (allowRefreshRetry) {
+        const refreshed = await authClient.auth.refreshSession();
+        if (!refreshed.error && refreshed.data?.session?.user) {
+          await resolveStaff(refreshed.data.session, false);
+          return;
+        }
+      }
       showLogin();
       showStatus(loginStatus, "Your login worked, but staff access could not be checked. Please try again.", "error");
       return;
@@ -1052,6 +1063,10 @@
 
   function resolveRestoredStaffSession(session) {
     if (!session?.user) return;
+    if (sessionRestoreTimer) {
+      window.clearTimeout(sessionRestoreTimer);
+      sessionRestoreTimer = null;
+    }
     if (!portalView.classList.contains("hidden") || !passwordCard.classList.contains("hidden")) return;
     window.setTimeout(() => resolveStaff(session), 0);
   }
@@ -1099,7 +1114,14 @@
         await resolveStaff(retryData.session);
         return;
       }
+
+      const refreshed = await authClient.auth.refreshSession();
+      if (!refreshed.error && refreshed.data?.session?.user) {
+        await resolveStaff(refreshed.data.session, false);
+        return;
+      }
+
       showLogin();
-    }, 350);
+    }, 1000);
   })();
 })();
