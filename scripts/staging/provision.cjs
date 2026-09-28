@@ -3,7 +3,7 @@ const fs=require('node:fs'),path=require('node:path'),{createHash}=require('node
 const {config}=require('./config.cjs');
 const root=path.resolve(__dirname,'../..');
 const hash=value=>createHash('sha256').update(value).digest('hex');
-const sourceFiles=['supabase/baselines/2026-09-26/schema.sql','supabase/migrations/20260926212638_authorization_and_enrollment_gate.sql','supabase/migrations/20260927020040_client_access_lifecycle.sql'];
+const sourceFiles=['supabase/baselines/2026-09-26/schema.sql','supabase/migrations/20260926212638_authorization_and_enrollment_gate.sql','supabase/migrations/20260927020040_client_access_lifecycle.sql','supabase/migrations/20260928064500_privacy_lifecycle_access.sql','supabase/migrations/20260928071500_health_provider_disconnect_hardening.sql'];
 function validateTarget(env,c){
  if(c.environment!=='staging')throw Error('Provisioning requires staging configuration');
  if(env.RVA_STAGING_PROJECT_REF!==c.projectRef)throw Error('Explicit staging ref must match browser/Edge project');
