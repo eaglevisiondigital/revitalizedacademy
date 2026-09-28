@@ -370,3 +370,19 @@ Retry behavior:
 - the Send button is disabled during the active send
 
 This complements the existing `member-message-attachment-upload` hardening so both the text message and optional attachment are retry-safe without duplicate records/files.
+
+
+## Progress and weekly check-in retry safety
+
+**IMPLEMENTED on `codex/staging`, NOT DEPLOYED.**
+
+Manual progress entry now:
+- generates an explicit UUID row ID
+- preserves that ID and recorded timestamp across retry of the same metric/value/note payload
+- verifies any duplicate UUID belongs to the same member data before treating it as replay success
+- rejects retry identity conflicts visibly
+- clears pending retry state after success or fresh dashboard load
+
+Weekly check-in keeps the existing database unique index on contact/template/period as its duplicate guard. A duplicate-week retry is now treated as success only when the existing submitted response set matches the current response set after deterministic key normalization. Different answers remain a visible already-submitted conflict.
+
+Both forms disable submit while the write is active.
