@@ -8,10 +8,11 @@ This document records the isolated hosted staging checkpoint only. It does **not
 
 - GitHub: `eaglevisiondigital/revitalizedacademy`, branch `codex/staging`
 - Supabase staging: `bvooallokgfktssadsrv`
-- Supabase production remains `voalfpxiyznnqfcqcymd` and was used only for read-only configuration parity checks
+- Supabase production remains `voalfpxiyznnqfcqcymd` and has not been changed by staging work
 - Netlify staging site: `071b252e-a922-4846-a784-8dca1edad377`
-- Staging origin: `https://revitalizedacademy-staging.netlify.app`
+- Live staging origin: `https://revitalizedacademy-staging.netlify.app`
 - Payments: synthetic only
+- SMS/Twilio: disabled / not configured
 
 ## Hosted database checkpoint
 
@@ -19,7 +20,7 @@ The observed 2026-09-26 baseline was replayed into the previously empty isolated
 
 Forward-reference prerequisites were installed using the exact later baseline definitions before their callers. The later health timeline view was replayed with `CREATE OR REPLACE VIEW` only because that exact view had been pre-created to satisfy an earlier SQL-language function dependency.
 
-The final baseline tail was applied except for 12 `ALTER DEFAULT PRIVILEGES FOR ROLE supabase_admin` statements. Hosted Supabase rejected changing the managed `supabase_admin` role's default privileges. The remaining 467 statements in that tail were applied.
+The final baseline tail was applied except for 12 `ALTER DEFAULT PRIVILEGES FOR ROLE supabase_admin` statements. Hosted Supabase rejected changing the managed `supabase_admin` role's default privileges. The remaining supported statements were applied.
 
 The five reviewed forward migrations were then applied in branch order:
 
@@ -29,13 +30,16 @@ The five reviewed forward migrations were then applied in branch order:
 4. `20260928071500_health_provider_disconnect_hardening.sql`
 5. `20260928084500_goal_habit_idempotency.sql`
 
-Latest hosted staging object counts after those migrations:
+Latest verified hosted staging structure:
 
 - 180 public tables
 - 204 public views
 - 578 public RLS policies
 - 123 public non-internal triggers
-- 0 Auth users at this checkpoint
+- all 180 public tables have RLS enabled
+- 0 Auth users before acceptance
+- 6 private Storage buckets
+- 0 Storage objects before acceptance
 
 ## Non-customer staging configuration
 
@@ -55,7 +59,7 @@ Seeded and verified:
 - MK7 client agreement template and MK.1 coach NDA template using locked manifest filenames/content hashes
 - Holistic Foundations agreement requirement
 
-Staging-only DB guardrails now enforce:
+Staging-only DB guardrails enforce:
 
 - exact staging onboarding origin
 - `journey_enrollment_activations.payment_url IS NULL`
@@ -64,44 +68,126 @@ Staging-only DB guardrails now enforce:
 
 No production customer/auth/storage objects were copied.
 
+## Security reconciliation
+
+Staging execute grants for these `SECURITY DEFINER` functions were reconciled to the established production ACLs:
+
+- `coach_companion_match_chunks`: service role only; no anon/authenticated execute
+- `handle_new_user`: trigger/auth-admin path retained; no anon/authenticated execute
+- `my_staff_permissions`: no anon/authenticated execute
+- `disconnect_my_health_provider`: authenticated execute intentionally retained because the function validates `auth.uid()`, full member access, active contact ownership and provider ownership
+
+The remaining Security Advisor warning is the intentional authenticated `disconnect_my_health_provider` RPC. The informational `private.agreement_signer_invitations` notice remains closed by table privileges; anon/authenticated have no table access.
+
 ## Hosted Edge Functions
 
-ACTIVE:
+All 15 core hosted functions are ACTIVE v1:
 
-- `public-intake` (`verify_jwt=false`)
-- `journey-link` (`verify_jwt=false`)
-- `health-profile-intake` (`verify_jwt=false`)
-- `member-account` (`verify_jwt=false`)
-- `journey-override` (`verify_jwt=false`)
-- `member-coaching` (`verify_jwt=false`)
-- `staff-management` (`verify_jwt=false`)
-- `staff-password-reset` (`verify_jwt=false`)
-- `notification-delivery` (`verify_jwt=false`)
-- `member-document-upload` (`verify_jwt=true`)
-- `member-message-attachment-upload` (`verify_jwt=true`)
-- `member-support` (`verify_jwt=true`)
-- `progress-photo-upload` (`verify_jwt=true`)
-
-All deployed bundles include their tracked shared environment/auth dependencies.
-
-Not yet deployed from this chat because the platform blocked those deployment actions before execution:
-
+- `public-intake`
+- `journey-link`
+- `health-profile-intake`
+- `member-account`
+- `journey-override`
+- `member-coaching`
+- `staff-management`
+- `staff-password-reset`
+- `notification-delivery`
 - `agreement-sign`
 - `staff-agreement-sign`
-- optional `video-message-view`
+- `member-document-upload`
+- `member-message-attachment-upload`
+- `member-support`
+- `progress-photo-upload`
 
-The remaining optional Coach Companion functions have not yet been promoted to hosted acceptance.
+Optional `video-message-view` and Coach Companion hosted functions remain outside the baseline acceptance requirement.
 
-## Remaining hosted blockers
+## Netlify staging
 
-Before synthetic user acceptance:
+The exact tracked source from `codex/staging` checkpoint `3b696d0e886ed3c7d336a259fb436cf9f9630b9c` is live on the dedicated staging site.
 
-1. Configure Edge secrets/config required by `_shared/environment.ts`: staging environment, exact app origin, synthetic payment mode, and controlled synthetic recipient allowlist. Do not add Twilio.
-2. Configure hosted Auth Site URL and exact redirect allowlist for the staging origin.
-3. Configure a dedicated test SMTP/sink for Supabase Auth before creating synthetic accounts.
-4. Publish the built `codex/staging` site to the dedicated Netlify staging site. The Netlify connector confirms deployment requires an actual checked-out repository directory.
-5. Resolve/deploy the two core signing functions without bypassing their existing authorization/environment guards.
-6. Run the approved synthetic hosted acceptance matrix.
-7. Keep all vNext flags OFF until baseline acceptance passes.
+Verified:
+
+- live URL: `https://revitalizedacademy-staging.netlify.app/`
+- 306-file public build
+- private/source paths excluded
+- synthetic-payment runtime mapping
+- Netlify Forms enabled on the staging site
+
+## Hosted Auth configuration
+
+Verified manually in the staging Supabase dashboard on 2026-09-28:
+
+Site URL:
+
+`https://revitalizedacademy-staging.netlify.app/member/onboarding/`
+
+Allowed redirect URLs are exactly:
+
+- `https://revitalizedacademy-staging.netlify.app/member/onboarding/`
+- `https://revitalizedacademy-staging.netlify.app/portal/`
+- `https://revitalizedacademy-staging.netlify.app/portal/password-reset.html`
+
+Authentication settings verified:
+
+- Email provider enabled
+- Confirm email enabled
+- Anonymous sign-ins disabled
+- Phone sign-in disabled
+
+## Auth SMTP
+
+Staging Supabase Auth SMTP is now configured and saved using the existing Revitalized Academy Resend setup.
+
+Verified non-secret settings:
+
+- sender: `noreply@auth.revitalizedacademy.com`
+- sender name: `ReVitalized Academy`
+- host: `smtp.resend.com`
+- port: `465`
+- username: `resend`
+- minimum interval per user: 60 seconds
+- password remains stored/masked and is not recorded in Git/chat
+
+Approved controlled staging inboxes:
+
+- `dave@theboss.biz`
+- `dave@eaglevision.biz`
+
+## Edge environment secrets
+
+The following custom Edge Function secrets were manually created and saved in the staging project on 2026-09-28:
+
+- `RVA_ENVIRONMENT=staging`
+- `RVA_APP_ORIGIN=https://revitalizedacademy-staging.netlify.app`
+- `RVA_PAYMENT_MODE=synthetic`
+- `RVA_SYNTHETIC_EMAIL_ALLOWLIST=dave@theboss.biz,dave@eaglevision.biz`
+
+Supabase-managed default secrets were not modified.
+
+## Current pre-acceptance gate
+
+Completed:
+
+- staging site live
+- Netlify Forms enabled
+- Auth Site URL verified
+- exact redirect allowlist verified
+- email confirmation enabled
+- Resend SMTP configured and saved
+- controlled synthetic inboxes approved
+- four required Edge environment secrets saved
+- real payment endpoints blocked by staging DB guardrail
+- SMS disabled
+- production unchanged
+
+Still required before synthetic accounts are created:
+
+1. Live invoke one staging Edge Function and verify the environment guard no longer returns `Environment configuration unavailable; connections disabled`.
+2. If the guard passes, enable staging user signup for acceptance if it remains disabled.
+3. Create synthetic accounts only with the approved inboxes.
+4. Run the hosted synthetic acceptance matrix.
+5. Keep all vNext flags OFF until baseline acceptance passes.
+
+No implementation defect is currently established. Codex is not required unless hosted acceptance reveals one.
 
 Production remains unchanged and release remains blocked.
