@@ -386,3 +386,26 @@ Manual progress entry now:
 Weekly check-in keeps the existing database unique index on contact/template/period as its duplicate guard. A duplicate-week retry is now treated as success only when the existing submitted response set matches the current response set after deterministic key normalization. Different answers remain a visible already-submitted conflict.
 
 Both forms disable submit while the write is active.
+
+
+## Idempotent goal and habit creation
+
+**IMPLEMENTED on `codex/staging`, NOT DEPLOYED.**
+
+Forward migration:
+`20260928084500_goal_habit_idempotency.sql`
+
+New RPCs:
+- `create_my_goal_idempotent`
+- `create_my_habit_idempotent`
+
+Both:
+- require full paid member access
+- accept a client-generated request UUID used as the row primary key
+- return the existing row on exact replay
+- reject UUID reuse with changed payload
+- preserve the existing validation/contact/membership behavior
+
+The member Goal and Habit forms now retain request UUIDs through failed retries, generate a new UUID when the payload changes, disable submit while active, and clear retry state on success/modal close.
+
+The original legacy goal/habit RPCs remain present for compatibility.
