@@ -50,7 +50,7 @@ export async function handleRequest(req:Request){
     .limit(1)
     .maybeSingle();
   if(accessError)return json(origin,{error:"Unable to resolve account access."},500);
-  if(!access||!SUPPORT_STATUSES.has(String(accessRecord.status))){
+  if(!access||!SUPPORT_STATUSES.has(String(access.status))){
     return json(origin,{error:"Support messaging is not available for this account state."},403);
   }
   const accessRecord=access;
