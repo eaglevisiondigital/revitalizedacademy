@@ -2,6 +2,93 @@
 -- This does not grant paid member access or alter paid-domain RLS.
 BEGIN;
 
+
+DROP POLICY IF EXISTS lifecycle_paid_access ON public.member_privacy_requests;
+DROP POLICY IF EXISTS lifecycle_paid_access ON public.member_privacy_exports;
+
+DROP POLICY IF EXISTS privacy_request_lifecycle_access ON public.member_privacy_requests;
+CREATE POLICY privacy_request_lifecycle_access
+ON public.member_privacy_requests
+AS RESTRICTIVE
+FOR ALL
+TO authenticated
+USING (
+  (SELECT private.active_staff_session())
+  OR (
+    user_id=(SELECT auth.uid())
+    AND EXISTS (
+      SELECT 1
+      FROM public.client_access ca
+      WHERE ca.user_id=(SELECT auth.uid())
+        AND ca.contact_id=member_privacy_requests.contact_id
+        AND ca.status IN ('ready','invited','onboarding','active','payment_suspended')
+    )
+  )
+)
+WITH CHECK (
+  (SELECT private.active_staff_session())
+  OR (
+    user_id=(SELECT auth.uid())
+    AND EXISTS (
+      SELECT 1
+      FROM public.client_access ca
+      WHERE ca.user_id=(SELECT auth.uid())
+        AND ca.contact_id=member_privacy_requests.contact_id
+        AND ca.status IN ('ready','invited','onboarding','active','payment_suspended')
+    )
+  )
+);
+
+DROP POLICY IF EXISTS privacy_export_lifecycle_access ON public.member_privacy_exports;
+CREATE POLICY privacy_export_lifecycle_access
+ON public.member_privacy_exports
+AS RESTRICTIVE
+FOR SELECT
+TO authenticated
+USING (
+  (SELECT private.active_staff_session())
+  OR (
+    user_id=(SELECT auth.uid())
+    AND EXISTS (
+      SELECT 1
+      FROM public.client_access ca
+      WHERE ca.user_id=(SELECT auth.uid())
+        AND ca.contact_id=member_privacy_exports.contact_id
+        AND ca.status IN ('ready','invited','onboarding','active','payment_suspended')
+    )
+  )
+);
+
+DROP POLICY IF EXISTS lifecycle_storage ON storage.objects;
+CREATE POLICY lifecycle_storage
+ON storage.objects
+AS RESTRICTIVE
+FOR ALL
+TO authenticated
+USING (
+  (SELECT private.active_staff_session())
+  OR (SELECT private.full_member_access())
+  OR (
+    bucket_id='privacy-exports'
+    AND EXISTS (
+      SELECT 1
+      FROM public.member_privacy_exports e
+      JOIN public.client_access ca
+        ON ca.contact_id=e.contact_id
+       AND ca.user_id=(SELECT auth.uid())
+      WHERE e.user_id=(SELECT auth.uid())
+        AND e.storage_path=objects.name
+        AND e.status='ready'
+        AND (e.expires_at IS NULL OR e.expires_at>now())
+        AND ca.status IN ('ready','invited','onboarding','active','payment_suspended')
+    )
+  )
+)
+WITH CHECK (
+  (SELECT private.active_staff_session())
+  OR (SELECT private.full_member_access())
+);
+
 CREATE OR REPLACE VIEW public.my_privacy_center
 WITH (security_invoker=true)
 AS
