@@ -50,14 +50,15 @@ export async function handleRequest(req:Request){
     .limit(1)
     .maybeSingle();
   if(accessError)return json(origin,{error:"Unable to resolve account access."},500);
-  if(!access||!SUPPORT_STATUSES.has(String(access.status))){
+  if(!access||!SUPPORT_STATUSES.has(String(accessRecord.status))){
     return json(origin,{error:"Support messaging is not available for this account state."},403);
   }
+  const accessRecord=access;
 
   async function ensureConversation(){
     const {data:existing,error:existingError}=await admin.from("member_conversations")
       .select("id,title,status,last_message_at")
-      .eq("contact_id",access.contact_id)
+      .eq("contact_id",accessRecord.contact_id)
       .eq("conversation_type","support")
       .eq("status","active")
       .order("created_at",{ascending:false})
@@ -67,13 +68,13 @@ export async function handleRequest(req:Request){
 
     let conversation=existing;
     if(!conversation){
-      const deterministicId=await supportConversationId(access.contact_id);
+      const deterministicId=await supportConversationId(accessRecord.contact_id);
       const {error:createError}=await admin.from("member_conversations").upsert({
         id:deterministicId,
         conversation_type:"support",
-        contact_id:access.contact_id,
-        household_id:access.household_id||null,
-        membership_id:access.membership_id||null,
+        contact_id:accessRecord.contact_id,
+        household_id:accessRecord.household_id||null,
+        membership_id:accessRecord.membership_id||null,
         title:"ReVitalized Support",
         status:"active",
         created_by:user.id
@@ -82,7 +83,7 @@ export async function handleRequest(req:Request){
       const {data:created,error:readError}=await admin.from("member_conversations")
         .select("id,title,status,last_message_at")
         .eq("id",deterministicId)
-        .eq("contact_id",access.contact_id)
+        .eq("contact_id",accessRecord.contact_id)
         .maybeSingle();
       if(readError||!created)throw readError||new Error("Support conversation could not be created.");
       conversation=created;
@@ -92,7 +93,7 @@ export async function handleRequest(req:Request){
       conversation_id:conversation.id,
       user_id:user.id,
       participant_type:"member",
-      contact_id:access.contact_id,
+      contact_id:accessRecord.contact_id,
       left_at:null
     },{onConflict:"conversation_id,user_id"});
     if(participantError)throw participantError;
@@ -125,7 +126,7 @@ export async function handleRequest(req:Request){
         id:requestId,
         conversation_id:conversation.id,
         sender_user_id:user.id,
-        sender_contact_id:access.contact_id,
+        sender_contact_id:accessRecord.contact_id,
         body:message,
         message_type:"text"
       }).select("id").single();
@@ -152,7 +153,7 @@ export async function handleRequest(req:Request){
       conversation:{
         id:conversation.id,
         title:conversation.title||"ReVitalized Support",
-        access_status:access.status
+        access_status:accessRecord.status
       },
       messages:(messages||[]).map((message)=>({
         id:message.id,
