@@ -699,6 +699,42 @@
     });
   }
 
+  function renderNoJourneyActionState(message = "No active journey is assigned to this person yet.") {
+    summary = null;
+    step = null;
+    templates = [];
+    openActions = [];
+    journeyLink = "";
+    appointment = null;
+    activation = null;
+    report = null;
+    programTag = "";
+
+    el("action-center-step-name").textContent = "No active journey assigned";
+    el("action-center-due").value = "";
+    el("action-center-subject").value = "";
+    el("action-center-body").value = "";
+    el("action-center-instructions").value = "";
+    el("action-center-link").value = "";
+    el("action-center-link-box").classList.add("hidden");
+    el("action-center-operational").classList.add("hidden");
+
+    ["action-center-type","action-center-assignee","action-center-template"].forEach((id) => {
+      const select = el(id);
+      select.replaceChildren();
+      const option = document.createElement("option");
+      option.value = "";
+      option.textContent = id === "action-center-assignee" ? "No assignee available" : "No journey step available";
+      select.append(option);
+      select.disabled = true;
+    });
+
+    el("action-center-assign").disabled = true;
+    el("action-center-do-now").disabled = true;
+    renderOpenActions();
+    setStatus(message);
+  }
+
   async function loadActionData() {
     if (!contact?.id) return false;
 
@@ -708,8 +744,11 @@
       .eq("contact_id", contact.id)
       .maybeSingle();
 
-    if (summaryError || !journeySummary) {
-      setStatus(summaryError?.message || "No active journey for this contact.", "error");
+    if (summaryError || !journeySummary?.journey_id || !journeySummary?.current_step_key) {
+      renderNoJourneyActionState(
+        summaryError?.message ||
+        "No active journey is assigned yet. Assign or start a journey before taking a next-step action."
+      );
       return false;
     }
 
@@ -767,10 +806,14 @@
 
     const loadError = stepResult.error || templateResult.error || actionResult.error || appointmentResult.error || activationResult.error || programTagResult.error || reportResult.error;
     if (loadError || !stepResult.data) {
-      setStatus(loadError?.message || "Current journey step could not be loaded.", "error");
+      renderNoJourneyActionState(loadError?.message || "The current journey step could not be loaded.");
       return false;
     }
 
+    ["action-center-type","action-center-assignee","action-center-template"].forEach((id) => {
+      el(id).disabled = false;
+    });
+    el("action-center-assign").disabled = false;
     step = stepResult.data;
     templates = templateResult.data || [];
     openActions = (actionResult.data || []).filter((action) => action.journey_step_id === step.id);
