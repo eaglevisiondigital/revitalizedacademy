@@ -134,6 +134,43 @@ test('anonymous protected lifecycle RPCs are denied',async()=>{for(const sql of 
 test('verified primary can claim its enrollment link; another identity cannot',async()=>{const token=randomBytes(32).toString('hex');await q('INSERT INTO public.journey_access_links(contact_id,journey_id,token_hash) VALUES($1,$2,$3)',[contact,activation.journey_id,hash(token)]);await assert.rejects(act(other,'SELECT public.claim_onboarding_enrollment($1)',[token]),/unavailable/);await act(member,'SELECT public.claim_onboarding_enrollment($1)',[token]);assert.equal((await state()).status,'onboarding');assert.equal(await full(),false);});
 
 test('refund preserves stored health and coaching history but RLS denies both',async()=>{await active();await q("INSERT INTO public.health_integration_providers(provider_key,name,provider_type,connection_mode) VALUES('synthetic-history','Synthetic','manual_import','manual')");await q("INSERT INTO public.health_observations(contact_id,provider_key,metric_key,observed_at,value_numeric) VALUES($1,'synthetic-history','synthetic',now(),123)",[contact]);await q("INSERT INTO public.coaching_sessions(contact_id,coach_user_id,status) VALUES($1,$2,'completed')",[contact,owner]);await pay(1,'refund');for(const table of ['health_observations','coaching_sessions']){assert.equal(await val(`SELECT count(*)::int FROM public.${table} WHERE contact_id=$1`,[contact]),1);assert.equal((await act(member,`SELECT count(*)::int n FROM public.${table}`)).rows[0].n,0);}});
+
+test('active member can disconnect only their own health provider and revoke its consents',async()=>{
+ await active();
+ const provider='disconnect-'+randomUUID();
+ await q("INSERT INTO public.health_integration_providers(provider_key,name,provider_type,connection_mode) VALUES($1,'Synthetic Disconnect','manual_import','manual')",[provider]);
+ await q("INSERT INTO public.health_integration_connections(contact_id,membership_id,user_id,provider_key,status,credential_reference,granted_scopes) VALUES($1,$2,$3,$4,'connected','secret-ref','[\"steps\"]'::jsonb)",[contact,membership,member,provider]);
+ const metric=await val('SELECT metric_key FROM public.health_metric_catalog ORDER BY metric_key LIMIT 1');
+ await q("INSERT INTO public.health_metric_consents(user_id,contact_id,provider_key,metric_key,allowed,consented_at) VALUES($1,$2,$3,$4,true,now())",[member,contact,provider,metric]);
+ await act(member,'SELECT public.disconnect_my_health_provider($1,true)',[provider]);
+ const connection=await one('SELECT status,credential_reference,granted_scopes FROM public.health_integration_connections WHERE contact_id=$1 AND provider_key=$2',[contact,provider]);
+ assert.equal(connection.status,'disconnected');
+ assert.equal(connection.credential_reference,null);
+ assert.deepEqual(connection.granted_scopes,[]);
+ const consent=await one('SELECT allowed,revoked_at FROM public.health_metric_consents WHERE user_id=$1 AND provider_key=$2',[member,provider]);
+ assert.equal(consent.allowed,false);
+ assert(consent.revoked_at);
+});
+
+test('payment-suspended account cannot use full-member provider disconnect',async()=>{
+ await active();
+ const provider='disconnect-suspended-'+randomUUID();
+ await q("INSERT INTO public.health_integration_providers(provider_key,name,provider_type,connection_mode) VALUES($1,'Synthetic Disconnect','manual_import','manual')",[provider]);
+ await q("INSERT INTO public.health_integration_connections(contact_id,membership_id,user_id,provider_key,status) VALUES($1,$2,$3,$4,'connected')",[contact,membership,member,provider]);
+ await pay(1,'refund');
+ await assert.rejects(act(member,'SELECT public.disconnect_my_health_provider($1,true)',[provider]),/Full member access is required/);
+ assert.equal(await val('SELECT status FROM public.health_integration_connections WHERE contact_id=$1 AND provider_key=$2',[contact,provider]),'connected');
+});
+
+test('unrelated identity cannot disconnect another members provider',async()=>{
+ await active();
+ const provider='disconnect-other-'+randomUUID();
+ await q("INSERT INTO public.health_integration_providers(provider_key,name,provider_type,connection_mode) VALUES($1,'Synthetic Disconnect','manual_import','manual')",[provider]);
+ await q("INSERT INTO public.health_integration_connections(contact_id,membership_id,user_id,provider_key,status) VALUES($1,$2,$3,$4,'connected')",[contact,membership,member,provider]);
+ await assert.rejects(act(other,'SELECT public.disconnect_my_health_provider($1,true)',[provider]),/Full member access is required/);
+ assert.equal(await val('SELECT status FROM public.health_integration_connections WHERE contact_id=$1 AND provider_key=$2',[contact,provider]),'connected');
+});
+
 test('existing individual agreement waiver API delegates to the audited lifecycle',async()=>{await act(owner,'SELECT public.waive_client_agreement($1,$2)',[agreement.id,'Synthetic valid reason']);assert.equal(await val('SELECT status FROM public.client_agreements WHERE id=$1',[agreement.id]),'waived');assert.equal(await val("SELECT count(*)::int FROM public.manual_override_audit WHERE action='lifecycle_waiver_recorded'"),1);});
 test('revocation after redemption prevents a new secondary signature',async()=>{await two();const i=await invite();await redeem(i.token);await act(member,'SELECT public.revoke_secondary_signer_invitation($1)',[i.id]);await assert.rejects(sign(secondary,'secondary_client'),/not found/);});
 test('cross-enrollment or wrong-currency payment records are rejected',async()=>{await assert.rejects(act(null,"INSERT INTO public.payment_records(contact_id,activation_id,amount_cents,payment_method,recorded_by,currency) VALUES($1,$2,10000,'cash',$3,'CAD')",[contact,activation.id,owner],'service_role'),/currency mismatch/);});
