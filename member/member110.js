@@ -740,6 +740,9 @@
   let latestCompanionQuestionTypes = [];
   let latestCompanionRequests = [];
   let latestCompanionFeedback = [];
+  let pendingProgressRequestId = null;
+  let pendingProgressPayloadKey = null;
+  let pendingProgressRecordedAt = null;
 
   function renderCoachingEntitlements(rows){
     const target=el("rm-coaching-entitlements");
@@ -5015,103 +5018,164 @@
     event.preventDefault();
     if (!currentMember) return;
 
-    const status = el("rm-progress-status");
-    showStatus(status, "Saving progress...");
+    const form=event.currentTarget;
+    const submit=form.querySelector('button[type="submit"]');
+    const status=el("rm-progress-status");
+    const metric=metricCatalog.find((row)=>row.metric_key===el("rm-progress-metric").value);
+    const value=Number(el("rm-progress-value").value);
+    const note=el("rm-progress-note").value.trim()||null;
 
-    const metric = metricCatalog.find((row) => row.metric_key === el("rm-progress-metric").value);
-    const value = Number(el("rm-progress-value").value);
-
-    if (!metric || !Number.isFinite(value)) {
-      showStatus(status, "Enter a valid progress value.", "error");
+    if(!metric||!Number.isFinite(value)){
+      showStatus(status,"Enter a valid progress value.","error");
+      return;
+    }
+    if(metric.minimum_value!==null&&value<Number(metric.minimum_value)){
+      showStatus(status,"That value is below the expected range for this metric.","error");
+      return;
+    }
+    if(metric.maximum_value!==null&&value>Number(metric.maximum_value)){
+      showStatus(status,"That value is above the expected range for this metric.","error");
       return;
     }
 
-    if (metric.minimum_value !== null && value < Number(metric.minimum_value)) {
-      showStatus(status, "That value is below the expected range for this metric.", "error");
-      return;
+    const payloadKey=JSON.stringify([metric.metric_key,value,note]);
+    if(!pendingProgressRequestId||pendingProgressPayloadKey!==payloadKey){
+      pendingProgressRequestId=crypto.randomUUID();
+      pendingProgressPayloadKey=payloadKey;
+      pendingProgressRecordedAt=new Date().toISOString();
     }
 
-    if (metric.maximum_value !== null && value > Number(metric.maximum_value)) {
-      showStatus(status, "That value is above the expected range for this metric.", "error");
-      return;
+    submit.disabled=true;
+    showStatus(status,"Saving progress...");
+    try{
+      const {data:{user}}=await client.auth.getUser();
+      if(!user)throw new Error("Please sign in again before saving progress.");
+
+      const row={
+        id:pendingProgressRequestId,
+        contact_id:currentMember.contact_id,
+        membership_id:currentMember.membership_id,
+        metric_key:metric.metric_key,
+        value_numeric:value,
+        recorded_at:pendingProgressRecordedAt,
+        source:"member",
+        created_by:user.id,
+        note
+      };
+
+      const {error}=await client.from("progress_entries").insert(row);
+      if(error){
+        if(error.code!=="23505")throw error;
+        const {data:existing,error:existingError}=await client.from("progress_entries")
+          .select("id,contact_id,metric_key,value_numeric,recorded_at,source,created_by,note")
+          .eq("id",pendingProgressRequestId)
+          .maybeSingle();
+        if(existingError)throw existingError;
+        const replayMatches=
+          existing?.id===row.id
+          &&existing.contact_id===row.contact_id
+          &&existing.metric_key===row.metric_key
+          &&Number(existing.value_numeric)===Number(row.value_numeric)
+          &&existing.recorded_at===row.recorded_at
+          &&existing.source==="member"
+          &&existing.created_by===user.id
+          &&(existing.note||null)===(row.note||null);
+        if(!replayMatches)throw new Error("Progress retry identity conflict. Refresh before retrying.");
+      }
+
+      pendingProgressRequestId=null;
+      pendingProgressPayloadKey=null;
+      pendingProgressRecordedAt=null;
+      el("rm-progress-value").value="";
+      el("rm-progress-note").value="";
+      showStatus(status,"Progress saved.","success");
+      await loadDashboard();
+    }catch(error){
+      showStatus(status,error?.message||"Progress could not be saved.","error");
+    }finally{
+      submit.disabled=false;
     }
-
-    const { data: { user } } = await client.auth.getUser();
-    const { error } = await client.from("progress_entries").insert({
-      contact_id: currentMember.contact_id,
-      membership_id: currentMember.membership_id,
-      metric_key: metric.metric_key,
-      value_numeric: value,
-      recorded_at: new Date().toISOString(),
-      source: "member",
-      created_by: user?.id || null,
-      note: el("rm-progress-note").value.trim() || null
-    });
-
-    if (error) {
-      showStatus(status, error.message, "error");
-      return;
-    }
-
-    el("rm-progress-value").value = "";
-    el("rm-progress-note").value = "";
-    showStatus(status, "Progress saved.", "success");
-    await loadDashboard();
   });
 
   el("rm-checkin-form").addEventListener("submit", async (event) => {
     event.preventDefault();
-    if (!currentMember || !checkinTemplate) return;
+    if(!currentMember||!checkinTemplate)return;
 
-    const status = el("rm-checkin-status");
-    showStatus(status, "Submitting your check-in...");
+    const form=event.currentTarget;
+    const submit=el("rm-checkin-submit");
+    const status=el("rm-checkin-status");
+    const responses={};
 
-    const responses = {};
-    for (const field of checkinFields) {
-      const name = "checkin_" + field.field_key;
-      const inputs = [...event.currentTarget.querySelectorAll('[name="' + CSS.escape(name) + '"]')];
-      if (!inputs.length) continue;
+    for(const field of checkinFields){
+      const name="checkin_"+field.field_key;
+      const inputs=[...form.querySelectorAll('[name="'+CSS.escape(name)+'"]')];
+      if(!inputs.length)continue;
 
-      let value = "";
-      if (inputs[0].type === "radio") {
-        value = inputs.find((input) => input.checked)?.value || "";
-      } else {
-        value = inputs[0].value.trim();
+      let value="";
+      if(inputs[0].type==="radio"){
+        value=inputs.find((input)=>input.checked)?.value||"";
+      }else{
+        value=inputs[0].value.trim();
       }
 
-      if (field.required && !value) {
-        showStatus(status, "Please complete all required check-in questions.", "error");
+      if(field.required&&!value){
+        showStatus(status,"Please complete all required check-in questions.","error");
         return;
       }
 
-      responses[field.field_key] =
-        ["rating","number","percent"].includes(field.field_type) && value !== ""
-          ? Number(value)
-          : value;
+      responses[field.field_key]=
+        ["rating","number","percent"].includes(field.field_type)&&value!==""
+          ?Number(value)
+          :value;
     }
 
-    const period = weekPeriod();
-    const { data: { user } } = await client.auth.getUser();
+    const period=weekPeriod();
+    submit.disabled=true;
+    showStatus(status,"Submitting your check-in...");
 
-    const { error } = await client.from("client_checkins").insert({
-      contact_id: currentMember.contact_id,
-      membership_id: currentMember.membership_id,
-      template_id: checkinTemplate.id,
-      period_start: period.start,
-      period_end: period.end,
-      status: "submitted",
-      responses,
-      submitted_at: new Date().toISOString(),
-      created_by: user?.id || null
-    });
+    try{
+      const {data:{user}}=await client.auth.getUser();
+      if(!user)throw new Error("Please sign in again before submitting your check-in.");
 
-    if (error) {
-      showStatus(status, error.code === "23505" ? "This week’s check-in has already been submitted." : error.message, "error");
-      return;
+      const row={
+        id:crypto.randomUUID(),
+        contact_id:currentMember.contact_id,
+        membership_id:currentMember.membership_id,
+        template_id:checkinTemplate.id,
+        period_start:period.start,
+        period_end:period.end,
+        status:"submitted",
+        responses,
+        submitted_at:new Date().toISOString(),
+        created_by:user.id
+      };
+
+      const {error}=await client.from("client_checkins").insert(row);
+      if(error){
+        if(error.code!=="23505")throw error;
+
+        const {data:existing,error:existingError}=await client.from("client_checkins")
+          .select("id,contact_id,template_id,period_start,status,responses")
+          .eq("contact_id",currentMember.contact_id)
+          .eq("template_id",checkinTemplate.id)
+          .eq("period_start",period.start)
+          .neq("status","draft")
+          .maybeSingle();
+        if(existingError)throw existingError;
+
+        const sameResponses=JSON.stringify(existing?.responses||{})===JSON.stringify(responses);
+        if(!existing||existing.status!=="submitted"||!sameResponses){
+          throw new Error("This week’s check-in has already been submitted with different answers.");
+        }
+      }
+
+      showStatus(status,"Check-in submitted to your coaching team.","success");
+      await loadDashboard();
+    }catch(error){
+      showStatus(status,error?.message||"Check-in could not be submitted.","error");
+    }finally{
+      submit.disabled=false;
     }
-
-    showStatus(status, "Check-in submitted to your coaching team.", "success");
-    await loadDashboard();
   });
 
   client.auth.onAuthStateChange((_event, session) => {
