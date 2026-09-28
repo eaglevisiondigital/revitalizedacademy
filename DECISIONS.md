@@ -234,3 +234,12 @@ These decisions resolve the earlier three-question Chat handoff. The old success
 - **D87 APPROVED:** the server verifies that the authenticated user owns the message and is an active participant in its conversation before accepting an attachment.
 - **D88 APPROVED:** attachment uploads use client-generated UUID idempotency and compensating Storage cleanup if the database attachment record cannot be written.
 - **D89 APPROVED:** the browser may retry a transient attachment failure once using the same attachment UUID, allowing a lost successful response to resolve as an idempotent replay instead of creating a duplicate.
+
+
+## 2026-09-28 - Restricted Privacy Center lifecycle access
+
+- **D90 APPROVED:** Privacy Center access is preserved for authenticated client-access states `ready`, `invited`, `onboarding`, `active`, and `payment_suspended`; this does not grant paid member access.
+- **D91 APPROVED:** manually `suspended` and `inactive` accounts do not receive the restricted in-app Privacy Center by default.
+- **D92 APPROVED:** Enrollment & Signature Center exposes privacy request submission, request history, ready export downloads, and read-only connected-provider context for eligible restricted states.
+- **D93 APPROVED:** provider disconnect is intentionally omitted from the restricted Privacy Center until the health-connection write path is separately hardened for restricted lifecycle states.
+- **D94 APPROVED:** ready privacy export downloads use authenticated 5-minute signed URLs from the private `privacy-exports` bucket. Raw Storage paths remain internal.
