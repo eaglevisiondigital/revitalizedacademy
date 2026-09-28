@@ -26,6 +26,7 @@ On another checkout, transfer these three inputs securely from the private packa
    - `20260927020040_client_access_lifecycle.sql`;
    - `20260928064500_privacy_lifecycle_access.sql`;
    - `20260928071500_health_provider_disconnect_hardening.sql`;
+   - `20260928084500_goal_habit_idempotency.sql`;
    - recovered permission catalog/defaults and six private Storage buckets; original and restrictive storage policies come from baseline/migrations;
    - safe program/journey configuration, 26 journey steps and synthetic 50-capacity webinar; no live prices, records, users, checkout URLs, external integration metadata or scheduled sends copied;
    - exact private MK7/MK.1 template rows, plus **synthetic acceptance-only** Foundations→MK7 requirement;
