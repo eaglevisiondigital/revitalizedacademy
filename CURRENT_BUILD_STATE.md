@@ -353,3 +353,20 @@ The existing full-member provider disconnect RPC is now a narrowly scoped `SECUR
 Backend regression coverage verifies active own-provider disconnect, consent revocation, payment-suspended denial, and cross-user denial.
 
 This hardening does not certify or activate native HealthKit, Health Connect, Fitbit, Garmin, Oura, Withings or other provider connectivity.
+
+
+## Idempotent member message sending
+
+**IMPLEMENTED on `codex/staging`, NOT DEPLOYED.**
+
+The active member messaging composer now uses client-generated UUID message IDs.
+
+Retry behavior:
+- the same pending message UUID is reused after a transient/lost response
+- a duplicate UUID is accepted only if sender, conversation and body match exactly
+- body edits generate a new message UUID
+- an optional attachment preserves its own stable UUID across retries
+- pending message/attachment identities clear only after full success or modal close
+- the Send button is disabled during the active send
+
+This complements the existing `member-message-attachment-upload` hardening so both the text message and optional attachment are retry-safe without duplicate records/files.
