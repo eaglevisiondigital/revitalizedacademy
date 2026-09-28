@@ -251,3 +251,11 @@ These decisions resolve the earlier three-question Chat handoff. The old success
 - **D96 APPROVED:** `disconnect_my_health_provider` requires `private.full_member_access()`, resolves only the authenticated user's own active contact, clears only that user's provider credential/scopes, and revokes only that user's consents for the selected provider.
 - **D97 APPROVED:** onboarding, payment-suspended, manually suspended, inactive, and unrelated users cannot use the full-member provider-disconnect RPC.
 - **D98 APPROVED:** restricted Privacy Center continues to show provider context read-only and does not expose provider disconnect.
+
+
+## 2026-09-28 - Idempotent member message sending
+
+- **D99 APPROVED:** member text messages use a client-generated UUID as the message primary key so retries cannot silently create duplicate text messages.
+- **D100 APPROVED:** a duplicate message UUID is treated as a successful replay only when the existing row matches the same authenticated sender, conversation, and exact body; otherwise the retry fails visibly.
+- **D101 APPROVED:** optional message attachments preserve a separate pending attachment UUID across a failed/retried composition so the hardened attachment endpoint also resolves a lost response idempotently.
+- **D102 APPROVED:** editing the message body after a failed attempt creates a new message request identity, and all pending identities clear only after full success or when the conversation modal closes.
