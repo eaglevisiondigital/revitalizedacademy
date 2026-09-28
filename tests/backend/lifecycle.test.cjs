@@ -130,6 +130,49 @@ test('repayment never resurrects manually inactive access',async()=>{await activ
 test('restricted account cannot relink its profile or promote client access',async()=>{await assert.rejects(act(member,'UPDATE public.profiles SET contact_id=$1 WHERE user_id=$2',[contact,secondary]),/permission denied/);assert.equal((await act(member,"UPDATE public.client_access SET status='active' WHERE contact_id=$1 RETURNING *",[contact])).rowCount,0);});
 test('restricted direct RLS scans return no paid-domain rows, including catalog/resource tables',async()=>{const tables=(await q("SELECT tablename FROM pg_policies WHERE schemaname='public' AND policyname='lifecycle_paid_access' ORDER BY tablename")).rows;assert(tables.length>140);for(const {tablename}of tables){try{assert.equal((await act(member,'SELECT count(*)::int n FROM public."'+tablename+'"')).rows[0].n,0,tablename);}catch(e){if(!/permission denied/.test(e.message))throw e;}}});
 test('active member can read owned goals; restricted member paid RPCs fail',async()=>{await q("INSERT INTO public.client_goals(contact_id,title) VALUES($1,'Synthetic goal')",[contact]);await active();assert.equal((await act(member,'SELECT count(*)::int n FROM public.client_goals')).rows[0].n,1);await pay(1,'refund');await assert.rejects(act(member,"SELECT public.create_my_goal('Bypass',null,null,null,null,3)"),/active|permission|row.level/i);await assert.rejects(act(member,"SELECT private.submit_member_companion_question($1,'other','Synthetic question')",[member]),/Active member access/);await assert.rejects(act(member,"SELECT private.create_member_coaching_request($1,'[]',null)",[other]),/Active member access/);});
+
+test('goal creation is idempotent for exact retry and rejects request-id payload reuse',async()=>{
+ await active();
+ const requestId=randomUUID();
+ const sql="SELECT public.create_my_goal_idempotent($1::uuid,$2::text,NULL::text,100::numeric,'units'::text,(current_date+30)::date,2::integer) id";
+ const first=(await act(member,sql,[requestId,'Retry Safe Goal'])).rows[0].id;
+ const second=(await act(member,sql,[requestId,'Retry Safe Goal'])).rows[0].id;
+ assert.equal(first,requestId);
+ assert.equal(second,requestId);
+ assert.equal(await val('SELECT count(*)::int FROM public.client_goals WHERE id=$1',[requestId]),1);
+ await assert.rejects(
+   act(member,"SELECT public.create_my_goal_idempotent($1::uuid,$2::text,NULL::text,100::numeric,'units'::text,(current_date+30)::date,2::integer)",[requestId,'Changed Goal']),
+   /Goal request identity conflict/
+ );
+});
+
+test('habit creation is idempotent for exact retry and rejects request-id payload reuse',async()=>{
+ await active();
+ const requestId=randomUUID();
+ const sql="SELECT public.create_my_habit_idempotent($1::uuid,$2::text,'general'::text,'daily'::text,1::numeric,'time'::text,current_date) id";
+ const first=(await act(member,sql,[requestId,'Retry Safe Habit'])).rows[0].id;
+ const second=(await act(member,sql,[requestId,'Retry Safe Habit'])).rows[0].id;
+ assert.equal(first,requestId);
+ assert.equal(second,requestId);
+ assert.equal(await val('SELECT count(*)::int FROM public.client_habits WHERE id=$1',[requestId]),1);
+ await assert.rejects(
+   act(member,"SELECT public.create_my_habit_idempotent($1::uuid,$2::text,'general'::text,'daily'::text,1::numeric,'time'::text,current_date)",[requestId,'Changed Habit']),
+   /Habit request identity conflict/
+ );
+});
+
+test('payment-suspended member cannot use idempotent goal or habit creation RPCs',async()=>{
+ await active();
+ await pay(1,'refund');
+ await assert.rejects(
+   act(member,"SELECT public.create_my_goal_idempotent($1::uuid,'Blocked Goal'::text,NULL::text,NULL::numeric,NULL::text,NULL::date,2::integer)",[randomUUID()]),
+   /Full member access is required/
+ );
+ await assert.rejects(
+   act(member,"SELECT public.create_my_habit_idempotent($1::uuid,'Blocked Habit'::text,'general'::text,'daily'::text,1::numeric,NULL::text,current_date)",[randomUUID()]),
+   /Full member access is required/
+ );
+});
 test('anonymous protected lifecycle RPCs are denied',async()=>{for(const sql of ["SELECT public.my_onboarding_context()","SELECT public.redeem_secondary_signer_invitation('invalid')","SELECT public.invite_secondary_signer(null,'x@example.invalid')","SELECT public.claim_onboarding_enrollment('invalid')","SELECT public.set_enrollment_waiver(null,null,'payment',true,'reason')"])await assert.rejects(act(null,sql,[],'anon'),/permission denied/);});
 test('verified primary can claim its enrollment link; another identity cannot',async()=>{const token=randomBytes(32).toString('hex');await q('INSERT INTO public.journey_access_links(contact_id,journey_id,token_hash) VALUES($1,$2,$3)',[contact,activation.journey_id,hash(token)]);await assert.rejects(act(other,'SELECT public.claim_onboarding_enrollment($1)',[token]),/unavailable/);await act(member,'SELECT public.claim_onboarding_enrollment($1)',[token]);assert.equal((await state()).status,'onboarding');assert.equal(await full(),false);});
 
