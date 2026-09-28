@@ -243,3 +243,11 @@ These decisions resolve the earlier three-question Chat handoff. The old success
 - **D92 APPROVED:** Enrollment & Signature Center exposes privacy request submission, request history, ready export downloads, and read-only connected-provider context for eligible restricted states.
 - **D93 APPROVED:** provider disconnect is intentionally omitted from the restricted Privacy Center until the health-connection write path is separately hardened for restricted lifecycle states.
 - **D94 APPROVED:** ready privacy export downloads use authenticated 5-minute signed URLs from the private `privacy-exports` bucket. Raw Storage paths remain internal.
+
+
+## 2026-09-28 - Health provider disconnect hardening
+
+- **D95 APPROVED:** full-member provider disconnect uses a tightly scoped `SECURITY DEFINER` RPC rather than relying on broad client UPDATE policies.
+- **D96 APPROVED:** `disconnect_my_health_provider` requires `private.full_member_access()`, resolves only the authenticated user's own active contact, clears only that user's provider credential/scopes, and revokes only that user's consents for the selected provider.
+- **D97 APPROVED:** onboarding, payment-suspended, manually suspended, inactive, and unrelated users cannot use the full-member provider-disconnect RPC.
+- **D98 APPROVED:** restricted Privacy Center continues to show provider context read-only and does not expose provider disconnect.
