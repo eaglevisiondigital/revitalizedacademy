@@ -8,13 +8,26 @@
   const el=(id)=>document.getElementById(id);
   let submitting=false;
 
+  function resetPersonForm(){
+    const form=el("people-add-form");
+    form.reset();
+    el("people-stage").value="lead";
+    el("people-source").value="manual_referral";
+    el("people-country").value="";
+    el("people-assigned-to").value="";
+    el("people-journey").value="";
+    syncReferralField();
+  }
+
   function closeModal(){
     el("people-modal").classList.add("hidden");
     el("people-modal").setAttribute("aria-hidden","true");
     portal.showStatus(el("people-form-status"),"");
+    resetPersonForm();
   }
 
   async function openModal(){
+    resetPersonForm();
     populateStaff();
     await populateReferrers();
     syncReferralField();
