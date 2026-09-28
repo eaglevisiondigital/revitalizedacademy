@@ -95,6 +95,34 @@ test('manually inactive account cannot open privacy center or submit a new priva
  );
 });
 
+test('payment-suspended account can read its ready privacy export metadata but not paid data',async()=>{
+ await active();
+ await pay(1,'refund');
+ const requestId=await val("INSERT INTO public.member_privacy_requests(user_id,contact_id,request_type,status) VALUES($1,$2,'data_export','submitted') RETURNING id",[member,contact]);
+ await q("INSERT INTO public.member_privacy_exports(privacy_request_id,user_id,contact_id,status,storage_path,ready_at,expires_at) VALUES($1,$2,$3,'ready',$4,now(),now()+interval '1 hour')",[requestId,member,contact,contact+'/synthetic-export.zip']);
+ const rows=(await act(member,'SELECT export_id,status,available_storage_path FROM public.my_privacy_exports')).rows;
+ assert.equal(rows.length,1);
+ assert.equal(rows[0].status,'ready');
+ assert.equal(rows[0].available_storage_path,contact+'/synthetic-export.zip');
+ assert.equal((await act(member,'SELECT count(*)::int n FROM public.client_goals')).rows[0].n,0);
+});
+
+test('manually inactive account cannot read privacy export metadata through the restricted view',async()=>{
+ const requestId=await val("INSERT INTO public.member_privacy_requests(user_id,contact_id,request_type,status) VALUES($1,$2,'data_export','submitted') RETURNING id",[member,contact]);
+ await q("INSERT INTO public.member_privacy_exports(privacy_request_id,user_id,contact_id,status,storage_path,ready_at,expires_at) VALUES($1,$2,$3,'ready',$4,now(),now()+interval '1 hour')",[requestId,member,contact,contact+'/inactive-export.zip']);
+ await q("UPDATE public.client_access SET status='inactive' WHERE contact_id=$1",[contact]);
+ assert.equal((await act(member,'SELECT count(*)::int n FROM public.my_privacy_exports')).rows[0].n,0);
+});
+
+test('privacy lifecycle migration keeps Storage globally gated with only owner ready-export exception',async()=>{
+ const definition=await val("SELECT qual FROM pg_policies WHERE schemaname='storage' AND tablename='objects' AND policyname='lifecycle_storage'");
+ assert.match(definition,/privacy-exports/);
+ assert.match(definition,/member_privacy_exports/);
+ assert.match(definition,/payment_suspended/);
+ assert.match(definition,/full_member_access/);
+});
+
+
 test('repayment cannot bypass a newly required unsigned agreement',async()=>{await active();await pay(100,'refund');const template=await val("INSERT INTO public.agreement_templates(agreement_key,name,version,content_text,content_hash,status,audience,document_type) VALUES('extra-'||gen_random_uuid(),'Extra','1','Synthetic','hash','published','client','general') RETURNING id");await q("INSERT INTO public.client_agreements(contact_id,activation_id,agreement_template_id,agreement_key,template_version,content_hash,status) VALUES($1,$2,$3,'extra','1','hash','sent')",[contact,activation.id,template]);await pay(100);assert.equal(await full(),false);assert.equal((await state()).status,'onboarding');});
 test('recorded payment waiver prevents refund suspension; removing it reconciles again',async()=>{await active();await waived('payment');await pay(10000,'refund');assert.equal(await full(),true);await waived('payment',null,false);assert.equal(await full(),false);assert.equal((await state()).status,'payment_suspended');});
 test('voided refund has no effect; reversing a recorded payment restricts access',async()=>{await active();await pay(10000,'refund','voided');assert.equal(await full(),true);await q("UPDATE public.payment_records SET status='reversed' WHERE activation_id=$1 AND transaction_type='payment'",[activation.id]);assert.equal((await state()).status,'payment_suspended');});
