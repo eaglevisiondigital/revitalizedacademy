@@ -127,24 +127,124 @@
     portal.showStatus(el("people-form-status"),"Checking for an existing person...");
 
     try{
-      const existing=await findExisting(email,phone);
-      if(existing){
-        portal.showStatus(
-          el("people-form-status"),
-          "This person already exists in ReVitalized. Opening the existing record instead of creating a duplicate.",
-          "success"
-        );
-        window.setTimeout(async()=>{
-          closeModal();
-          await portal.openContact(existing.id);
-        },500);
-        return;
-      }
-
       const source=el("people-source").value||"manual_staff_entry";
       const followUp=el("people-follow-up").value
         ? new Date(el("people-follow-up").value).toISOString()
         : null;
+      const journeyKey=el("people-journey").value;
+      const note=el("people-note").value.trim();
+      const tags=el("people-tags").value
+        .split(",")
+        .map((tag)=>tag.trim().toLowerCase())
+        .filter(Boolean)
+        .filter((tag,index,array)=>array.indexOf(tag)===index);
+      const referrerContactId=el("people-referrer").value||null;
+
+      const existing=await findExisting(email,phone);
+      if(existing){
+        portal.showStatus(
+          el("people-form-status"),
+          "This person already exists. Updating the existing ReVitalized record with the information you entered..."
+        );
+
+        const updates={
+          first_name:first,
+          last_name:last,
+          lifecycle_stage:el("people-stage").value,
+          last_source:source,
+          updated_at:new Date().toISOString()
+        };
+        if(email)updates.email=email;
+        if(phone)updates.phone=phone;
+
+        const city=el("people-city").value.trim();
+        const state=el("people-state").value.trim();
+        const country=el("people-country").value;
+        const assignedTo=el("people-assigned-to").value;
+        if(city)updates.city=city;
+        if(state)updates.state=state;
+        if(country)updates.country=country;
+        if(assignedTo)updates.assigned_to=assignedTo;
+        if(followUp)updates.next_follow_up_at=followUp;
+
+        const {error:updateError}=await client.from("contacts").update(updates).eq("id",existing.id);
+        if(updateError)throw updateError;
+
+        if(note){
+          const {error}=await client.from("contact_notes").insert({
+            contact_id:existing.id,
+            note,
+            author_user_id:portal.currentUserId()
+          });
+          if(error)throw error;
+        }
+
+        if(tags.length){
+          const {error}=await client.from("contact_tags").upsert(
+            tags.map((tag)=>({
+              contact_id:existing.id,
+              tag,
+              source:"manual",
+              rule_key:"manual-entry",
+              updated_at:new Date().toISOString()
+            })),
+            {onConflict:"contact_id,tag"}
+          );
+          if(error)throw error;
+        }
+
+        if(source==="manual_referral"&&referrerContactId){
+          const {data:profile}=await client.from("referral_profiles")
+            .select("referral_code").eq("contact_id",referrerContactId).maybeSingle();
+          const {data:priorReferral,error:priorReferralError}=await client.from("referrals")
+            .select("id")
+            .eq("referrer_contact_id",referrerContactId)
+            .eq("referred_contact_id",existing.id)
+            .limit(1)
+            .maybeSingle();
+          if(priorReferralError)throw priorReferralError;
+          if(!priorReferral){
+            const {error:referralError}=await client.from("referrals").insert({
+              referrer_contact_id:referrerContactId,
+              referred_contact_id:existing.id,
+              referral_code:profile?.referral_code||null,
+              source_channel:"staff_manual",
+              status:"referred",
+              notes:note||null
+            });
+            if(referralError)throw referralError;
+          }
+        }
+
+        if(journeyKey){
+          const {error}=await client.rpc("ensure_contact_journey",{
+            p_contact_id:existing.id,
+            p_journey_key:journeyKey,
+            p_metadata:{source:"manual_staff_entry",existing_contact:true}
+          });
+          if(error)throw error;
+        }
+
+        await portal.logActivity(
+          existing.id,
+          "manual_contact_updated",
+          "Existing contact updated manually",
+          "Staff-entered People information was merged into the existing ReVitalized record.",
+          {source,tags,referrer_contact_id:referrerContactId,journey_key:journeyKey||null}
+        );
+
+        portal.showStatus(
+          el("people-form-status"),
+          "Existing person updated. No duplicate was created.",
+          "success"
+        );
+        await portal.loadDashboard();
+        window.setTimeout(async()=>{
+          closeModal();
+          await portal.openContact(existing.id);
+        },450);
+        return;
+      }
 
       portal.showStatus(el("people-form-status"),"Adding person...");
 
@@ -168,12 +268,6 @@
       if(contactError)throw contactError;
 
       const contactId=contact.id;
-      const note=el("people-note").value.trim();
-      const tags=el("people-tags").value
-        .split(",")
-        .map((tag)=>tag.trim().toLowerCase())
-        .filter(Boolean)
-        .filter((tag,index,array)=>array.indexOf(tag)===index);
 
       if(note){
         const {error}=await client.from("contact_notes").insert({
@@ -198,7 +292,6 @@
         if(error)throw error;
       }
 
-      const referrerContactId=el("people-referrer").value||null;
       if(source==="manual_referral"&&referrerContactId){
         const {data:profile}=await client.from("referral_profiles")
           .select("referral_code").eq("contact_id",referrerContactId).maybeSingle();
@@ -222,7 +315,6 @@
         {source,tags,referrer_contact_id:referrerContactId}
       );
 
-      const journeyKey=el("people-journey").value;
       if(journeyKey){
         const {error}=await client.rpc("ensure_contact_journey",{
           p_contact_id:contactId,
