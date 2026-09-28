@@ -268,3 +268,12 @@ These decisions resolve the earlier three-question Chat handoff. The old success
 - **D105 APPROVED:** the existing weekly check-in unique index remains the semantic duplicate guard for one submitted check-in per contact/template/week.
 - **D106 APPROVED:** a weekly check-in unique conflict is treated as a successful retry only when the already-submitted answers match the current answers after normalized key ordering; changed answers remain a visible conflict.
 - **D107 APPROVED:** progress/check-in submit controls remain disabled while their writes are active, and pending progress retry state resets on a fresh dashboard load.
+
+
+## 2026-09-28 - Idempotent goal and habit creation
+
+- **D108 APPROVED:** new member goal/habit creation uses dedicated idempotent RPCs rather than changing the existing legacy RPC signatures.
+- **D109 APPROVED:** `create_my_goal_idempotent` and `create_my_habit_idempotent` require full paid member access and use a client-generated UUID as the row primary key.
+- **D110 APPROVED:** exact replay with the same request UUID and payload returns the existing row ID; reuse of the same UUID with different payload fails with an identity-conflict error.
+- **D111 APPROVED:** the member goal/habit forms preserve request UUIDs across failed retries, generate a new UUID when the form payload changes, disable submit while active, and clear retry identity on success or modal close.
+- **D112 APPROVED:** the legacy `create_my_goal` and `create_my_habit` RPCs remain unchanged for backward compatibility; the current member frontend moves to the idempotent RPCs.
