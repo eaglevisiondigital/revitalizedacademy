@@ -53,3 +53,19 @@ RECOMMENDED THINKING LEVEL: HIGH
 CHAT DECISION NEEDED
 
 Current read-only production configuration has published MK7 and MK.1 templates but no program_agreement_requirements rows. The staging package includes a clearly labeled synthetic Foundations→MK7 requirement to exercise the already-approved contract gate. Confirm the intended production program-to-required-agreement mapping before any production release/backfill. Options: require the approved MK7 for each relevant program, or explicitly define program-specific required templates/exceptions with reasons. Existing lifecycle code enforces issued required agreements and independent payment gates; an absent mapping may leave the intended requirement unissued. Preserve existing signed records and approved contract text; do not invent new wording, grandfather clients or perform a bulk update. Identify exactly which programs require which approved version and how legacy enrollments should be reviewed. Codex will implement only the resulting approved production mapping in a separate package.
+
+
+## Restricted privacy and health-provider acceptance additions
+
+The current staging branch adds two forward migrations after the lifecycle migration. Hosted staging acceptance must also prove:
+
+- an onboarding authenticated client can open the restricted Privacy Center and submit a privacy/data request while `member_paid_access_allowed()` remains false;
+- a payment-suspended authenticated client can open the restricted Privacy Center, submit a privacy/data request and see their own ready privacy export metadata while paid-domain API/RLS remains denied;
+- a manually inactive client cannot open the restricted Privacy Center or submit a new privacy request;
+- ready privacy exports are delivered only through authenticated short-lived signed URLs from the private `privacy-exports` bucket; raw Storage paths are not displayed;
+- the restricted Privacy Center does not offer provider disconnect;
+- an active full-access member can disconnect only their own health provider and revoke only their own provider metric consents;
+- a payment-suspended or unrelated user cannot use the full-member provider-disconnect RPC;
+- provider disconnect clears stored credential reference and granted scopes without deleting historical health observations.
+
+Record these outcomes separately from paid-member health/wearable-provider connectivity. Passing provider disconnect does not certify native HealthKit, Health Connect, Fitbit, Garmin, Oura, Withings or push delivery.
