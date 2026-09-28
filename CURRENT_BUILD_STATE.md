@@ -303,3 +303,33 @@ The handler:
 - removes a newly uploaded object if the attachment database row fails
 
 The browser no longer writes message attachments directly to Storage/database and retries one transient failure with the same attachment UUID.
+
+
+## Restricted Privacy Center lifecycle access
+
+**IMPLEMENTED on `codex/staging`, NOT DEPLOYED.**
+
+Forward migration:
+`20260928064500_privacy_lifecycle_access.sql`
+
+The Privacy Center database/view/RPC access boundary now includes:
+- ready
+- invited
+- onboarding
+- active
+- payment_suspended
+
+This does not alter `member_paid_access_allowed()` and does not relax paid-domain RLS.
+
+Enrollment & Signature Center now exposes a restricted Privacy & Data section for eligible authenticated accounts:
+- data-export request
+- health-data removal request
+- account-deletion request
+- correction/other privacy request
+- request history
+- read-only connected-provider context
+- ready export download through a 5-minute signed URL
+
+Provider disconnect remains excluded from the restricted surface pending separate hardening of the health-connection/consent write path.
+
+Lifecycle regression coverage verifies onboarding and payment-suspended privacy access while paid features stay denied, and verifies manually inactive accounts cannot open the Privacy Center or submit new privacy requests.
