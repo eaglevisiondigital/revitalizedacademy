@@ -39,6 +39,50 @@
   <p id="support-status" role="status" aria-live="polite"></p>
 </section>
 
+<section id="restricted-privacy-center" class="restricted-privacy-center" hidden>
+  <h2>Privacy &amp; Data</h2>
+  <p>You can review your privacy requests and request an export, correction, health-data removal, or account deletion even while paid member features are restricted.</p>
+
+  <div id="restricted-privacy-summary" class="restricted-privacy-summary"></div>
+
+  <div class="restricted-privacy-block">
+    <h3>Connected Health Providers</h3>
+    <p class="privacy-note">Shown for reference. Provider disconnect remains available from the full member Privacy Center when full member access is active.</p>
+    <div id="restricted-privacy-connections"></div>
+  </div>
+
+  <form id="restricted-privacy-form" class="restricted-privacy-form">
+    <h3>Submit a Privacy or Data Request</h3>
+    <label>Request Type
+      <select id="restricted-privacy-type" required>
+        <option value="data_export">Data Export</option>
+        <option value="health_data_delete">Health Data Removal</option>
+        <option value="account_delete">Account Deletion</option>
+        <option value="correction">Data Correction</option>
+        <option value="other">Other Privacy Request</option>
+      </select>
+    </label>
+    <label id="restricted-privacy-provider-field" hidden>Health Provider Scope
+      <select id="restricted-privacy-provider"></select>
+    </label>
+    <label>Notes
+      <textarea id="restricted-privacy-note" rows="3" maxlength="4000" placeholder="Add any details that will help the ReVitalized team process your request."></textarea>
+    </label>
+    <button type="submit">Submit Privacy Request</button>
+    <p id="restricted-privacy-status" role="status" aria-live="polite"></p>
+  </form>
+
+  <div class="restricted-privacy-block">
+    <h3>Data Exports</h3>
+    <div id="restricted-privacy-exports"></div>
+  </div>
+
+  <div class="restricted-privacy-block">
+    <h3>Request History</h3>
+    <div id="restricted-privacy-requests"></div>
+  </div>
+</section>
+
 <button id="refresh" type="button">Refresh payment and agreement status</button>
 </section>
 <footer><h2>Need help?</h2><p>For billing, an invitation, an agreement, or access to your account, <a href="mailto:contact@revitalizedacademy.com">contact ReVitalized Academy</a>.</p><p>Your account and historical information are preserved during payment restriction.</p></footer>
