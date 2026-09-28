@@ -140,7 +140,8 @@ test('active member can disconnect only their own health provider and revoke its
  const provider='disconnect-'+randomUUID();
  await q("INSERT INTO public.health_integration_providers(provider_key,name,provider_type,connection_mode) VALUES($1,'Synthetic Disconnect','manual_import','manual')",[provider]);
  await q("INSERT INTO public.health_integration_connections(contact_id,membership_id,user_id,provider_key,status,credential_reference,granted_scopes) VALUES($1,$2,$3,$4,'connected','secret-ref','[\"steps\"]'::jsonb)",[contact,membership,member,provider]);
- const metric=await val('SELECT metric_key FROM public.health_metric_catalog ORDER BY metric_key LIMIT 1');
+ const metric='disconnect-metric-'+randomUUID();
+ await q("INSERT INTO public.health_metric_catalog(metric_key,label,category,sensitive,active) VALUES($1,'Synthetic Disconnect Metric','synthetic',true,true)",[metric]);
  await q("INSERT INTO public.health_metric_consents(user_id,contact_id,provider_key,metric_key,allowed,consented_at) VALUES($1,$2,$3,$4,true,now())",[member,contact,provider,metric]);
  await act(member,'SELECT public.disconnect_my_health_provider($1,true)',[provider]);
  const connection=await one('SELECT status,credential_reference,granted_scopes FROM public.health_integration_connections WHERE contact_id=$1 AND provider_key=$2',[contact,provider]);
