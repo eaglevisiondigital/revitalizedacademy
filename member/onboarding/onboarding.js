@@ -95,6 +95,149 @@
     }
   }
 
+  function privacyStatus(message,error=false){
+    const target=el('restricted-privacy-status');
+    if(!target)return;
+    target.textContent=message||'';
+    target.className=error?'error':'';
+  }
+
+  function updateRestrictedPrivacyProviderScope(){
+    const field=el('restricted-privacy-provider-field');
+    field.hidden=el('restricted-privacy-type').value!=='health_data_delete';
+  }
+
+  async function downloadRestrictedPrivacyExport(storagePath){
+    if(!storagePath)return;
+    const {data,error}=await client.storage.from('privacy-exports').createSignedUrl(storagePath,300);
+    if(error||!data?.signedUrl){
+      privacyStatus(error?.message||'Your export download could not be prepared.',true);
+      return;
+    }
+    window.open(data.signedUrl,'_blank','noopener,noreferrer');
+  }
+
+  function renderRestrictedPrivacy(center,exports=[]){
+    const section=el('restricted-privacy-center');
+    if(!center){
+      section.hidden=true;
+      return;
+    }
+    section.hidden=false;
+
+    const summary=el('restricted-privacy-summary');
+    summary.replaceChildren();
+    [
+      ['Stored Health Records',Number(center.stored_health_observation_count||0)],
+      ['Latest Health Record',center.latest_health_observation_at?new Date(center.latest_health_observation_at).toLocaleString():'None']
+    ].forEach(([label,value])=>{
+      const item=node('div');
+      item.append(node('span',label),node('strong',String(value)));
+      summary.append(item);
+    });
+
+    const providerSelect=el('restricted-privacy-provider');
+    providerSelect.replaceChildren();
+    const all=node('option','All connected providers');all.value='';providerSelect.append(all);
+
+    const connections=el('restricted-privacy-connections');
+    connections.replaceChildren();
+    const providers=Array.isArray(center.health_connections)?center.health_connections:[];
+    if(!providers.length){
+      connections.append(node('p','No connected health providers are associated with this account.'));
+    }else{
+      for(const row of providers){
+        const item=node('article');
+        item.append(node('strong',row.provider_name||row.provider_key),node('p',[row.status,row.last_successful_sync_at?'Last sync '+new Date(row.last_successful_sync_at).toLocaleString():null].filter(Boolean).join(' · ')));
+        connections.append(item);
+        const option=node('option',row.provider_name||row.provider_key);option.value=row.provider_key;providerSelect.append(option);
+      }
+    }
+
+    const exportList=el('restricted-privacy-exports');
+    exportList.replaceChildren();
+    const exportRows=Array.isArray(exports)?exports:[];
+    if(!exportRows.length){
+      exportList.append(node('p','No data export packages are available yet.'));
+    }else{
+      for(const row of exportRows.slice(0,8)){
+        const item=node('article');
+        item.append(node('strong','Data Export'),node('p',[
+          row.status,
+          row.ready_at?'Ready '+new Date(row.ready_at).toLocaleString():row.created_at?'Requested '+new Date(row.created_at).toLocaleString():null,
+          row.expires_at?'Expires '+new Date(row.expires_at).toLocaleString():null
+        ].filter(Boolean).join(' · ')));
+        if(row.status==='ready'&&row.available_storage_path){
+          item.append(button('Download Export',()=>downloadRestrictedPrivacyExport(row.available_storage_path)));
+        }
+        exportList.append(item);
+      }
+    }
+
+    const requests=el('restricted-privacy-requests');
+    requests.replaceChildren();
+    const requestRows=Array.isArray(center.privacy_requests)?center.privacy_requests:[];
+    if(!requestRows.length){
+      requests.append(node('p','No privacy or data requests have been submitted.'));
+    }else{
+      for(const row of requestRows.slice(0,12)){
+        const item=node('article');
+        item.append(node('strong',String(row.request_type||'privacy request').replaceAll('_',' ')),node('p',[
+          row.status,
+          row.requested_at?'Requested '+new Date(row.requested_at).toLocaleString():null,
+          row.completed_at?'Completed '+new Date(row.completed_at).toLocaleString():null
+        ].filter(Boolean).join(' · ')));
+        requests.append(item);
+      }
+    }
+    updateRestrictedPrivacyProviderScope();
+  }
+
+  async function loadRestrictedPrivacy(){
+    try{
+      const [centerResult,exportsResult]=await Promise.all([
+        client.from('my_privacy_center').select('*').maybeSingle(),
+        client.from('my_privacy_exports').select('export_id,status,file_size_bytes,expires_at,created_at,ready_at,available_storage_path').limit(8)
+      ]);
+      if(centerResult.error||!centerResult.data){
+        renderRestrictedPrivacy(null,[]);
+        return;
+      }
+      renderRestrictedPrivacy(centerResult.data,exportsResult.error?[]:(exportsResult.data||[]));
+    }catch{
+      renderRestrictedPrivacy(null,[]);
+    }
+  }
+
+  async function submitRestrictedPrivacyRequest(event){
+    event.preventDefault();
+    const type=el('restricted-privacy-type').value;
+    const provider=el('restricted-privacy-provider').value;
+    const note=el('restricted-privacy-note').value.trim();
+
+    if(type==='account_delete'&&!window.confirm('Submit an account deletion request for staff review? This does not delete your account immediately.'))return;
+    if(type==='health_data_delete'&&!window.confirm('Submit a health-data removal request for staff review? This is separate from provider disconnect.'))return;
+
+    const button=el('restricted-privacy-form').querySelector('button');
+    button.disabled=true;
+    privacyStatus('Submitting request...');
+    try{
+      const requestId=await rpc('submit_my_privacy_request',{
+        p_request_type:type,
+        p_scope:type==='health_data_delete'&&provider?{provider_key:provider}:{},
+        p_member_note:note||null
+      });
+      if(!requestId)throw new Error('Privacy request could not be created.');
+      el('restricted-privacy-note').value='';
+      privacyStatus('Privacy request submitted.');
+      await loadRestrictedPrivacy();
+    }catch(error){
+      privacyStatus(error.message||'Privacy request could not be submitted.',true);
+    }finally{
+      button.disabled=false;
+    }
+  }
+
   async function load(){
     const {data:{session}}=await client.auth.getSession();el('auth').hidden=!!session;el('account').hidden=!session;
     if(!session){status('Sign in or create your own account to continue.');return;}
@@ -107,13 +250,15 @@
       if(a.payment_url){try{const safeUrl=window.RVA_PAYMENT_URL(a.payment_url);const url=safeUrl?new URL(safeUrl):null;if(url){const link=node('a','Open secure payment page');link.href=url.href;link.target='_blank';link.rel='noopener noreferrer';card.append(link);}}catch{/* Invalid payment links stay unavailable. */}}return card;}));
     el('agreements').replaceChildren(...c.agreements.map(renderAgreement));if(!c.agreements.length)el('agreements').append(node('p','No issued agreements are available for this account. If you received an invitation, reopen its link after verifying your email.'));
     el('notices').replaceChildren(...c.notifications.map(n=>{const item=node('article');item.append(node('h3',n.title),node('p',n.body||''));return item;}));
-    await loadSupport();
+    await Promise.all([loadSupport(),loadRestrictedPrivacy()]);
     status('Your account status is up to date.');
   }
   el('login').addEventListener('submit',event=>{event.preventDefault();action(el('login').querySelector('button'),async()=>{const {error}=await client.auth.signInWithPassword({email:el('email').value.trim(),password:el('password').value});if(error)throw error;await load();});});
   el('signup').addEventListener('click',()=>action(el('signup'),async()=>{if(!el('login').reportValidity())return;const {data,error}=await client.auth.signUp({email:el('email').value.trim(),password:el('password').value,options:{emailRedirectTo:window.RVA_ENV.signupRedirect}});if(error)throw error;if(data.session)await load();else status('Check your email to verify your account, then reopen your original invitation.');}));
-  el('signout').addEventListener('click',()=>action(el('signout'),async()=>{const {error}=await client.auth.signOut();if(error)throw error;load.invitationClaimed=false;load.enrollmentClaimed=false;el('agreements').replaceChildren();el('enrollments').replaceChildren();el('notices').replaceChildren();el('support-thread').replaceChildren();el('support-center').hidden=true;await load();}));
+  el('signout').addEventListener('click',()=>action(el('signout'),async()=>{const {error}=await client.auth.signOut();if(error)throw error;load.invitationClaimed=false;load.enrollmentClaimed=false;el('agreements').replaceChildren();el('enrollments').replaceChildren();el('notices').replaceChildren();el('support-thread').replaceChildren();el('support-center').hidden=true;el('restricted-privacy-center').hidden=true;await load();}));
   el('support-form').addEventListener('submit',sendSupportMessage);
+  el('restricted-privacy-type').addEventListener('change',updateRestrictedPrivacyProviderScope);
+  el('restricted-privacy-form').addEventListener('submit',submitRestrictedPrivacyRequest);
   el('refresh').addEventListener('click',()=>action(el('refresh'),load));
   load().catch(error=>status(error.message||'Unable to load your account.',true));
 })();
