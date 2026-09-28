@@ -259,3 +259,12 @@ These decisions resolve the earlier three-question Chat handoff. The old success
 - **D100 APPROVED:** a duplicate message UUID is treated as a successful replay only when the existing row matches the same authenticated sender, conversation, and exact body; otherwise the retry fails visibly.
 - **D101 APPROVED:** optional message attachments preserve a separate pending attachment UUID across a failed/retried composition so the hardened attachment endpoint also resolves a lost response idempotently.
 - **D102 APPROVED:** editing the message body after a failed attempt creates a new message request identity, and all pending identities clear only after full success or when the conversation modal closes.
+
+
+## 2026-09-28 - Progress and weekly check-in retry safety
+
+- **D103 APPROVED:** manual member progress entries use client-generated UUID row IDs and preserve the same ID/timestamp across retries of the same metric/value/note payload.
+- **D104 APPROVED:** a duplicate progress UUID is accepted as a successful replay only when the existing row matches the same contact, metric, value, timestamp, source, creator, and note.
+- **D105 APPROVED:** the existing weekly check-in unique index remains the semantic duplicate guard for one submitted check-in per contact/template/week.
+- **D106 APPROVED:** a weekly check-in unique conflict is treated as a successful retry only when the already-submitted answers match the current answers after normalized key ordering; changed answers remain a visible conflict.
+- **D107 APPROVED:** progress/check-in submit controls remain disabled while their writes are active, and pending progress retry state resets on a fresh dashboard load.
