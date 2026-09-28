@@ -56,9 +56,13 @@
     });
 
     const financial=document.getElementById("action-center-operational");
-    if(financial && !has("finance.view")){
-      financial.classList.add("permission-hidden");
-      financial.setAttribute("aria-hidden","true");
+    if(financial){
+      const financialAllowed =
+        has("finance.view") ||
+        ["owner","admin","financial"].includes(portal.currentStaffRole?.() || "");
+      financial.classList.toggle("permission-hidden",!financialAllowed);
+      if(!financialAllowed)financial.setAttribute("aria-hidden","true");
+      else financial.removeAttribute("aria-hidden");
     }
   }
 
