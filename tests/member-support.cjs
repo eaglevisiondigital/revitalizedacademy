@@ -28,7 +28,7 @@ test('support send is idempotent and constrained',()=>{
 test('member support authenticates and scopes by current user client_access',()=>{
   assert.match(handler,/auth\.getUser\(bearer\)/);
   assert.match(handler,/\.eq\("user_id",user\.id\)/);
-  assert.match(handler,/contact_id:access\.contact_id/);
+  assert.match(handler,/contact_id:accessRecord\.contact_id/);
 });
 
 
