@@ -63,6 +63,38 @@ test('known minor cannot redeem an adult invitation',async()=>{await two();const
 test('partial refund above required threshold retains full access',async()=>{await pay(15000);await sign();await pay(3000,'refund');assert.equal(await full(),true);assert.equal((await state()).status,'active');});
 for(const kind of ['refund','reversal'])test(kind+' below required amount suspends active access and preserves account and goals',async()=>{await active();await q("INSERT INTO public.client_goals(contact_id,title) VALUES($1,'Preserved synthetic progress')",[contact]);await pay(1,kind);assert.equal((await state()).status,'payment_suspended');assert.equal(await full(),false);assert.equal(await val('SELECT count(*)::int FROM public.client_goals WHERE contact_id=$1',[contact]),1);assert.equal(await val('SELECT count(*)::int FROM auth.users WHERE id=$1',[member]),1);const c=await context();assert.equal(c.agreements.length,1);assert.equal(c.enrollments.length,1);assert(c.notifications.some(n=>n.title==='Payment resolution needed'));assert.equal((await act(member,'SELECT count(*)::int n FROM public.client_goals')).rows[0].n,0);});
 test('repayment restores only when independent agreement gate remains satisfied',async()=>{await active();await pay(100,'refund');await pay(100);assert.equal(await full(),true);assert((await context()).notifications.some(n=>n.title==='Your member access is ready'));});
+test('onboarding account retains privacy center and privacy-request access without paid benefits',async()=>{
+ assert.equal((await state()).status,'onboarding');
+ assert.equal(await full(),false);
+ const privacy=(await act(member,'SELECT * FROM public.my_privacy_center')).rows;
+ assert.equal(privacy.length,1);
+ assert.equal(privacy[0].contact_id,contact);
+ const requestId=(await act(member,"SELECT public.submit_my_privacy_request('data_export','{}'::jsonb,'Synthetic onboarding privacy request') id")).rows[0].id;
+ assert.equal(await val('SELECT count(*)::int FROM public.member_privacy_requests WHERE id=$1 AND contact_id=$2',[requestId,contact]),1);
+});
+
+test('payment-suspended account retains privacy center and request access while paid access stays denied',async()=>{
+ await active();
+ await pay(1,'refund');
+ assert.equal((await state()).status,'payment_suspended');
+ assert.equal(await full(),false);
+ const privacy=(await act(member,'SELECT * FROM public.my_privacy_center')).rows;
+ assert.equal(privacy.length,1);
+ const requestId=(await act(member,"SELECT public.submit_my_privacy_request('correction','{}'::jsonb,'Synthetic suspended privacy request') id")).rows[0].id;
+ assert.equal(await val('SELECT count(*)::int FROM public.member_privacy_requests WHERE id=$1',[requestId]),1);
+ assert.equal((await act(member,'SELECT count(*)::int n FROM public.client_goals')).rows[0].n,0);
+});
+
+test('manually inactive account cannot open privacy center or submit a new privacy request',async()=>{
+ await q("UPDATE public.client_access SET status='inactive' WHERE contact_id=$1",[contact]);
+ assert.equal(await full(),false);
+ assert.equal((await act(member,'SELECT count(*)::int n FROM public.my_privacy_center')).rows[0].n,0);
+ await assert.rejects(
+   act(member,"SELECT public.submit_my_privacy_request('other','{}'::jsonb,'Synthetic inactive request')"),
+   /Eligible account access is required/
+ );
+});
+
 test('repayment cannot bypass a newly required unsigned agreement',async()=>{await active();await pay(100,'refund');const template=await val("INSERT INTO public.agreement_templates(agreement_key,name,version,content_text,content_hash,status,audience,document_type) VALUES('extra-'||gen_random_uuid(),'Extra','1','Synthetic','hash','published','client','general') RETURNING id");await q("INSERT INTO public.client_agreements(contact_id,activation_id,agreement_template_id,agreement_key,template_version,content_hash,status) VALUES($1,$2,$3,'extra','1','hash','sent')",[contact,activation.id,template]);await pay(100);assert.equal(await full(),false);assert.equal((await state()).status,'onboarding');});
 test('recorded payment waiver prevents refund suspension; removing it reconciles again',async()=>{await active();await waived('payment');await pay(10000,'refund');assert.equal(await full(),true);await waived('payment',null,false);assert.equal(await full(),false);assert.equal((await state()).status,'payment_suspended');});
 test('voided refund has no effect; reversing a recorded payment restricts access',async()=>{await active();await pay(10000,'refund','voided');assert.equal(await full(),true);await q("UPDATE public.payment_records SET status='reversed' WHERE activation_id=$1 AND transaction_type='payment'",[activation.id]);assert.equal((await state()).status,'payment_suspended');});
