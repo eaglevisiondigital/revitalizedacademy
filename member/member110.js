@@ -1456,6 +1456,9 @@
 
 
   let activeConversationId = null;
+  let pendingMessageRequestId = null;
+  let pendingMessageAttachmentRequestId = null;
+  let pendingMessageBody = null;
 
 
 
@@ -1870,7 +1873,7 @@
     return String(name||"attachment").replace(/[^A-Za-z0-9._-]+/g,"-").replace(/-+/g,"-").replace(/^-|-$/g,"")||"attachment";
   }
 
-  async function uploadMessageAttachment(conversationId,messageId,file){
+  async function uploadMessageAttachment(conversationId,messageId,file,requestId=crypto.randomUUID()){
     if(!file)return null;
     if(file.size>10485760)throw new Error("Attachment must be 10 MB or smaller.");
 
@@ -1883,7 +1886,6 @@
     const {data:{session}}=await client.auth.getSession();
     if(!session)throw new Error("Please sign in again before uploading an attachment.");
 
-    const requestId=crypto.randomUUID();
     const body=()=> {
       const form=new FormData();
       form.set("request_id",requestId);
@@ -2184,9 +2186,13 @@
 
   function closeConversation(){
     activeConversationId=null;
+    pendingMessageRequestId=null;
+    pendingMessageAttachmentRequestId=null;
+    pendingMessageBody=null;
     el("rm-message-modal").classList.add("hidden");
     el("rm-message-modal").setAttribute("aria-hidden","true");
     el("rm-message-body").value="";
+    el("rm-message-file").value="";
   }
 
 
@@ -4825,45 +4831,88 @@
   el("rm-notification-form").addEventListener("submit",saveNotificationPreferences);
   el("rm-notifications-mark-all").addEventListener("click",markAllNotificationsRead);
 
-  el("rm-message-form").addEventListener("submit",async(event)=>{
-    event.preventDefault();
-    if(!activeConversationId||!currentMember)return;
-    const body=el("rm-message-body").value.trim();
-    if(!body)return;
-
-    const status=el("rm-message-status");
-    showStatus(status,"Sending...");
+  async function createMemberMessageIdempotent(conversationId,body,requestId){
     const {data:{user}}=await client.auth.getUser();
+    if(!user)throw new Error("Please sign in again before sending a message.");
+
     const {data:message,error}=await client.from("member_messages").insert({
-      conversation_id:activeConversationId,
+      id:requestId,
+      conversation_id:conversationId,
       sender_user_id:user.id,
       sender_contact_id:currentMember.contact_id,
       body,
       message_type:"text"
     }).select("id").single();
 
-    if(error){
-      showStatus(status,error.message,"error");
-      return;
+    if(!error&&message?.id)return message.id;
+    if(error?.code!=="23505")throw error||new Error("Message could not be sent.");
+
+    const {data:existing,error:existingError}=await client.from("member_messages")
+      .select("id,conversation_id,sender_user_id,body")
+      .eq("id",requestId)
+      .maybeSingle();
+    if(existingError)throw existingError;
+    if(
+      existing?.id===requestId
+      &&existing.conversation_id===conversationId
+      &&existing.sender_user_id===user.id
+      &&existing.body===body
+    )return existing.id;
+
+    throw new Error("Message retry identity conflict. Refresh the conversation before retrying.");
+  }
+
+  el("rm-message-form").addEventListener("submit",async(event)=>{
+    event.preventDefault();
+    if(!activeConversationId||!currentMember)return;
+
+    const body=el("rm-message-body").value.trim();
+    if(!body)return;
+
+    if(!pendingMessageRequestId||pendingMessageBody!==body){
+      pendingMessageRequestId=crypto.randomUUID();
+      pendingMessageAttachmentRequestId=null;
+      pendingMessageBody=body;
     }
 
-    const file=el("rm-message-file").files?.[0]||null;
-    if(file){
-      try{
+    const status=el("rm-message-status");
+    const submit=event.currentTarget.querySelector('button[type="submit"]');
+    submit.disabled=true;
+
+    try{
+      showStatus(status,"Sending...");
+      const messageId=await createMemberMessageIdempotent(activeConversationId,body,pendingMessageRequestId);
+
+      const file=el("rm-message-file").files?.[0]||null;
+      if(file){
+        if(!pendingMessageAttachmentRequestId)pendingMessageAttachmentRequestId=crypto.randomUUID();
         showStatus(status,"Uploading attachment...");
-        await uploadMessageAttachment(activeConversationId,message.id,file);
-      }catch(uploadError){
-        showStatus(status,"Message sent, but attachment failed: "+uploadError.message,"error");
-        return;
+        await uploadMessageAttachment(
+          activeConversationId,
+          messageId,
+          file,
+          pendingMessageAttachmentRequestId
+        );
       }
-    }
 
-    el("rm-message-body").value="";
-    el("rm-message-file").value="";
-    showStatus(status,"Sent.","success");
-    const conversation={conversation_id:activeConversationId,title:el("rm-message-title").textContent};
-    await openConversation(conversation);
-    await loadDashboard();
+      el("rm-message-body").value="";
+      el("rm-message-file").value="";
+      pendingMessageRequestId=null;
+      pendingMessageAttachmentRequestId=null;
+      pendingMessageBody=null;
+      showStatus(status,"Sent.","success");
+
+      const conversation={
+        conversation_id:activeConversationId,
+        title:el("rm-message-title").textContent
+      };
+      await openConversation(conversation);
+      await loadDashboard();
+    }catch(error){
+      showStatus(status,error?.message||"Message could not be sent.","error");
+    }finally{
+      submit.disabled=false;
+    }
   });
 
   document.querySelectorAll("[data-message-close]").forEach((node)=>node.addEventListener("click",closeConversation));
