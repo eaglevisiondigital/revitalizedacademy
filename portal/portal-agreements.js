@@ -79,9 +79,29 @@
     const months=billing?.commitment_months||membership?.commitment_months;
     if(months)el("contract-term-duration").value=months+" months";
 
-    const programName=billing?.program_name||programs.find(p=>p.program_code===membership?.program_code)?.name||"";
+    const programCode=billing?.program_code||membership?.program_code||"";
+    const programConfig=programs.find(p=>p.program_code===programCode)||null;
+    const programName=billing?.program_name||programConfig?.name||"";
+    const contractLevel=String(programConfig?.metadata?.contract_level||"").trim();
+
     if(programName){
       el("contract-appendix-a").value="Program: "+programName;
+    }
+
+    if(["Level 1","Level 2","Level 3"].includes(contractLevel)){
+      el("contract-program-level").value=contractLevel;
+      el("contract-program-level").disabled=true;
+      portal.showStatus(el("client-agreement-assign-status"),"Program level loaded from the approved program configuration.","success");
+    }else{
+      el("contract-program-level").value="";
+      el("contract-program-level").disabled=false;
+      portal.showStatus(
+        el("client-agreement-assign-status"),
+        programName
+          ? "Contract level is not configured for "+programName+". Do not guess Level 1, 2, or 3. Configure the approved contract level before assigning this agreement."
+          : "Contract level could not be determined. Configure the approved Level 1, 2, or 3 mapping before assigning this agreement.",
+        "error"
+      );
     }
 
     if(access?.household_id){
@@ -207,7 +227,7 @@
     const [templatesResult,requirementsResult,programsResult,agreementsResult]=await Promise.all([
       client.from("agreement_templates").select("*").eq("audience","client").order("created_at",{ascending:false}),
       client.from("program_agreement_requirements").select("*"),
-      client.from("program_catalog").select("program_code,name,active").eq("active",true).order("name"),
+      client.from("program_catalog").select("program_code,name,active,metadata").eq("active",true).order("name"),
       client.from("admin_client_agreements").select("id,status").limit(5000)
     ]);
 
@@ -401,6 +421,14 @@
     let error=null;
     if(template?.document_type==="client_contract"){
       const values=contractMergeValues();
+      if(!["Level 1","Level 2","Level 3"].includes(values.program_level)){
+        portal.showStatus(
+          el("client-agreement-assign-status"),
+          "This program does not yet have an approved contract Level 1, Level 2, or Level 3 mapping. Configure that mapping before assigning the agreement.",
+          "error"
+        );
+        return;
+      }
       const result=await client.rpc("prepare_client_contract",{
         p_contact_id:activeContact.id,
         p_agreement_template_id:templateId,
