@@ -42,7 +42,17 @@
 
   async function invoke(body){
     const {data,error}=await client.functions.invoke("staff-management",{body});
-    if(error)throw new Error(error.message||"Staff management request failed.");
+    if(error){
+      let message=error.message||"Staff management request failed.";
+      try{
+        const response=error.context;
+        if(response&&typeof response.clone==="function"){
+          const payload=await response.clone().json();
+          if(payload?.error)message=payload.error;
+        }
+      }catch(_error){}
+      throw new Error(message);
+    }
     if(!data?.ok)throw new Error(data?.error||"Staff management request failed.");
     return data;
   }
