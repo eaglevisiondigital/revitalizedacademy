@@ -1,4 +1,5 @@
 import { allowedOrigins, edgeEnvironment, configurationError, assertNotification } from "../_shared/environment.ts";
+import { callerClient } from "../_shared/authorization.ts";
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "npm:@supabase/supabase-js@2.57.4";
 
@@ -98,13 +99,19 @@ Deno.serve(async(req:Request)=>{
   const {data:staff,error:staffError}=await admin.from("staff_access")
     .select("role,display_name,status").eq("user_id",userData.user.id).maybeSingle();
   if(staffError||!staff||staff.status!=="active")return json(origin,{error:"Staff access required"},403);
-  if(!["owner","admin"].includes(staff.role))return json(origin,{error:"Owner/Admin access required."},403);
+  const caller=callerClient(supabaseUrl,secretKey,bearer);
 
   try{
     const body=await req.json();
     const action=String(body.action||"");
 
+    async function hasPermission(permissionKey:string){
+      const {data,error}=await caller.rpc("staff_action_allowed",{p_permission_key:permissionKey,p_contact_id:null});
+      return !error&&data===true;
+    }
+
     if(action==="provider_status"){
+      if(!["owner","admin"].includes(staff.role))return json(origin,{error:"Owner/Admin access required."},403);
       return json(origin,{
         ok:true,
         email:{
@@ -122,15 +129,28 @@ Deno.serve(async(req:Request)=>{
       });
     }
 
-    if(action!=="process")return json(origin,{error:"Invalid delivery action."},400);
+    if(!["process","process_agreement"].includes(action))return json(origin,{error:"Invalid delivery action."},400);
 
     const limit=Math.min(100,Math.max(1,Number(body.limit||25)));
-    const {data:jobs,error:jobsError}=await admin.from("notification_delivery_jobs")
+    let jobsQuery=admin.from("notification_delivery_jobs")
       .select("*")
       .eq("status","queued")
       .lte("scheduled_for",new Date().toISOString())
       .order("scheduled_for")
       .limit(limit);
+
+    if(action==="process_agreement"){
+      if(!(await hasPermission("finance.manage")))return json(origin,{error:"Financial management permission required."},403);
+      const agreementId=String(body.client_agreement_id||"");
+      if(!/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(agreementId)){
+        return json(origin,{error:"Valid client agreement ID required."},400);
+      }
+      jobsQuery=jobsQuery.eq("client_agreement_id",agreementId);
+    }else if(!["owner","admin"].includes(staff.role)){
+      return json(origin,{error:"Owner/Admin access required."},403);
+    }
+
+    const {data:jobs,error:jobsError}=await jobsQuery;
     if(jobsError)throw jobsError;
 
     const results:any[]=[];
