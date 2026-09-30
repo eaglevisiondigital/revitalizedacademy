@@ -82,6 +82,10 @@
     const programCode=billing?.program_code||membership?.program_code||"";
     const programConfig=programs.find(p=>p.program_code===programCode)||null;
     const programName=billing?.program_name||programConfig?.name||"";
+    const depositCents=programConfig?.metadata?.good_faith_deposit_cents;
+    if(Number.isFinite(depositCents)){
+      el("contract-good-faith-deposit").value=moneyInput(depositCents,billing?.currency||membership?.currency||"USD");
+    }
 
     el("contract-program-name").value=programName;
     if(programName){
