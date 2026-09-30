@@ -488,6 +488,7 @@
       window.alert("This agreement version has been retired. Assign the current published agreement instead.");
       return;
     }
+
     const result=template?.document_type==="client_contract"
       ?await client.rpc("prepare_client_contract",{
           p_contact_id:activeContact.id,
@@ -500,8 +501,31 @@
           p_agreement_template_id:row.agreement_template_id,
           p_send:true
         });
+
     const {error}=result;
     if(error){window.alert(error.message);return;}
+
+    const agreementId=result.data||row.id;
+    if(template?.document_type==="client_contract"&&agreementId){
+      const delivery=await client.functions.invoke("notification-delivery",{
+        body:{action:"process_agreement",client_agreement_id:agreementId,limit:5}
+      });
+
+      if(delivery.error){
+        window.alert("Agreement queued, but email delivery could not be started: "+(delivery.error.message||"delivery error"));
+      }else if(delivery.data?.sent>0){
+        window.alert("Agreement email sent.");
+      }else if(delivery.data?.blocked>0){
+        const reason=delivery.data?.results?.[0]?.reason||"email provider unavailable";
+        window.alert("Agreement queued, but email delivery is blocked: "+portal.titleCase(reason));
+      }else if(delivery.data?.failed>0){
+        const reason=delivery.data?.results?.[0]?.reason||"email delivery failed";
+        window.alert("Agreement queued, but email delivery failed: "+reason);
+      }else{
+        window.alert("Agreement email is queued for delivery.");
+      }
+    }
+
     await loadClientAgreements(activeContact.id);
   }
 
