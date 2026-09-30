@@ -410,6 +410,9 @@
     portal.showStatus(el("client-agreement-assign-status"),template?.document_type==="client_contract"?"Preparing personalized contract...":"Assigning agreement...");
 
     let error=null;
+    let agreementId=null;
+    const sendNow=el("client-agreement-send-now").checked;
+
     if(template?.document_type==="client_contract"){
       const values=contractMergeValues();
       if(!values.program_name){
@@ -424,21 +427,49 @@
         p_contact_id:activeContact.id,
         p_agreement_template_id:templateId,
         p_merge_values:values,
-        p_send:el("client-agreement-send-now").checked
+        p_send:sendNow
       });
       error=result.error;
+      agreementId=result.data||null;
     }else{
       const result=await client.rpc("issue_client_agreement",{
         p_contact_id:activeContact.id,
         p_agreement_template_id:templateId,
-        p_send:el("client-agreement-send-now").checked
+        p_send:sendNow
       });
       error=result.error;
+      agreementId=result.data||null;
     }
     if(error){portal.showStatus(el("client-agreement-assign-status"),error.message,"error");return;}
-    portal.showStatus(el("client-agreement-assign-status"),"Agreement assigned.","success");
+
+    let deliveryMessage="Agreement assigned.";
+    if(sendNow&&agreementId&&template?.document_type==="client_contract"){
+      portal.showStatus(el("client-agreement-assign-status"),"Agreement assigned. Sending email...");
+      const delivery=await client.functions.invoke("notification-delivery",{
+        body:{action:"process_agreement",client_agreement_id:agreementId,limit:5}
+      });
+      if(delivery.error){
+        deliveryMessage="Agreement assigned, but email delivery could not be started: "+(delivery.error.message||"delivery error");
+      }else if(delivery.data?.sent>0){
+        deliveryMessage="Agreement assigned and email sent.";
+      }else if(delivery.data?.blocked>0){
+        const reason=delivery.data?.results?.[0]?.reason||"email provider unavailable";
+        deliveryMessage="Agreement assigned, but email delivery is blocked: "+portal.titleCase(reason);
+      }else if(delivery.data?.failed>0){
+        const reason=delivery.data?.results?.[0]?.reason||"email delivery failed";
+        deliveryMessage="Agreement assigned, but email delivery failed: "+reason;
+      }else{
+        deliveryMessage="Agreement assigned. Email is queued for delivery.";
+      }
+    }
+
+    portal.showStatus(
+      el("client-agreement-assign-status"),
+      deliveryMessage,
+      /blocked|failed|could not/i.test(deliveryMessage)?"error":"success"
+    );
     await Promise.all([loadClientAgreements(activeContact.id),portal.loadDashboard()]);
-    window.setTimeout(closeClientModal,500);
+    if(!/blocked|failed|could not/i.test(deliveryMessage))window.setTimeout(closeClientModal,900);
   }
 
   async function sendAgreement(row){
