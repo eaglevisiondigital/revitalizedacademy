@@ -46,7 +46,7 @@
     el("contract-effective-date").value=todayLocal();
     el("contract-client-name").value=portal.personName(activeContact);
     el("contract-secondary-client-name").value="";
-    el("contract-program-level").value="";
+    el("contract-program-name").value="";
     el("contract-monthly-fee").value="";
     el("contract-term-duration").value="";
     el("contract-good-faith-deposit").value="";
@@ -82,24 +82,15 @@
     const programCode=billing?.program_code||membership?.program_code||"";
     const programConfig=programs.find(p=>p.program_code===programCode)||null;
     const programName=billing?.program_name||programConfig?.name||"";
-    const contractLevel=String(programConfig?.metadata?.contract_level||"").trim();
 
+    el("contract-program-name").value=programName;
     if(programName){
       el("contract-appendix-a").value="Program: "+programName;
-    }
-
-    if(["Level 1","Level 2","Level 3"].includes(contractLevel)){
-      el("contract-program-level").value=contractLevel;
-      el("contract-program-level").disabled=true;
-      portal.showStatus(el("client-agreement-assign-status"),"Program level loaded from the approved program configuration.","success");
+      portal.showStatus(el("client-agreement-assign-status"),"Program loaded from the client’s active enrollment.","success");
     }else{
-      el("contract-program-level").value="";
-      el("contract-program-level").disabled=false;
       portal.showStatus(
         el("client-agreement-assign-status"),
-        programName
-          ? "Contract level is not configured for "+programName+". Do not guess Level 1, 2, or 3. Configure the approved contract level before assigning this agreement."
-          : "Contract level could not be determined. Configure the approved Level 1, 2, or 3 mapping before assigning this agreement.",
+        "Program could not be determined from this client’s enrollment. Confirm the program before assigning the agreement.",
         "error"
       );
     }
@@ -123,7 +114,7 @@
       client_name:el("contract-client-name").value.trim(),
       secondary_client_name:secondary,
       secondary_client_clause:secondary?" and "+secondary:"",
-      program_level:el("contract-program-level").value,
+      program_name:el("contract-program-name").value.trim(),
       monthly_fee:currencyText(el("contract-monthly-fee").value,currency),
       term_duration:el("contract-term-duration").value.trim(),
       good_faith_deposit:currencyText(el("contract-good-faith-deposit").value,currency),
@@ -421,10 +412,10 @@
     let error=null;
     if(template?.document_type==="client_contract"){
       const values=contractMergeValues();
-      if(!["Level 1","Level 2","Level 3"].includes(values.program_level)){
+      if(!values.program_name){
         portal.showStatus(
           el("client-agreement-assign-status"),
-          "This program does not yet have an approved contract Level 1, Level 2, or Level 3 mapping. Configure that mapping before assigning the agreement.",
+          "This client does not have a program name available for the contract. Confirm the enrollment program before assigning the agreement.",
           "error"
         );
         return;
