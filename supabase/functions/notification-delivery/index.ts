@@ -181,7 +181,7 @@ Deno.serve(async(req:Request)=>{
       if(result.ok){
         await admin.from("notification_delivery_jobs").update({
           status:"sent",
-          ...(job.signer_invitation_id?{body:"Agreement invitation delivered; secret removed."}:{}),
+          ...((job.signer_invitation_id||job.client_agreement_id)?{body:"Agreement delivery completed; secret removed."}:{}),
           provider_message_id:result.provider_message_id||null,
           sent_at:new Date().toISOString(),
           error_message:null,
