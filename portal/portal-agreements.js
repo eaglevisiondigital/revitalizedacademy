@@ -248,6 +248,7 @@
     );
 
     renderLibrary();
+    if(activeContact)renderClientAgreements();
   }
 
   function openTemplateModal(){
@@ -337,18 +338,23 @@
     }
 
     section.classList.remove("hidden");
-    el("client-agreements-chip").textContent=clientAgreements.length+" Agreement"+(clientAgreements.length===1?"":"s");
+    const visibleAgreements=clientAgreements.filter((row)=>{
+      const template=templates.find(t=>t.id===row.agreement_template_id);
+      return !(row.status==="not_sent"&&template?.status==="retired");
+    });
+
+    el("client-agreements-chip").textContent=visibleAgreements.length+" Agreement"+(visibleAgreements.length===1?"":"s");
     el("client-agreement-assign").disabled=!(portal.hasPermission?.("finance.manage")??false);
 
     const list=el("client-agreements-list");
     list.replaceChildren();
 
-    if(!clientAgreements.length){
-      list.innerHTML='<div class="drawer-empty">No agreements assigned yet.</div>';
+    if(!visibleAgreements.length){
+      list.innerHTML='<div class="drawer-empty">No current agreements assigned yet.</div>';
       return;
     }
 
-    clientAgreements.forEach((row)=>{
+    visibleAgreements.forEach((row)=>{
       const item=document.createElement("div");
       item.className="client-agreement-item";
 
@@ -474,6 +480,10 @@
 
   async function sendAgreement(row){
     const template=templates.find(t=>t.id===row.agreement_template_id);
+    if(template?.status==="retired"){
+      window.alert("This agreement version has been retired. Assign the current published agreement instead.");
+      return;
+    }
     const result=template?.document_type==="client_contract"
       ?await client.rpc("prepare_client_contract",{
           p_contact_id:activeContact.id,
