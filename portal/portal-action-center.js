@@ -612,7 +612,7 @@
       currency: el("activation-currency").value || "USD",
       payment_provider: activation?.payment_provider || (el("activation-payment-url").value.trim() ? "external_link" : null),
       payment_url: el("activation-payment-url").value.trim() || null,
-      payment_status: paymentStatus,
+      payment_status: paymentStatus === "paid" ? (activation?.payment_status === "paid" ? "paid" : "pending") : paymentStatus,
       agreement_status: agreementStatus,
       agreement_url: el("activation-agreement-url").value.trim() || null,
       agreement_signed_at: agreementStatus === "signed" ? (activation?.agreement_signed_at || now) : null,
@@ -639,6 +639,31 @@
     }
 
     activation = result.data;
+
+    if(paymentStatus==="paid"){
+      const paymentResult=await client.rpc("record_enrollment_payment",{
+        p_activation_id:activation.id,
+        p_amount_cents:null,
+        p_payment_method:"other",
+        p_reference_number:null,
+        p_notes:"Recorded from Enrollment Activation by authorized staff."
+      });
+      if(paymentResult.error){
+        setOperationalStatus(
+          "activation-status-message",
+          "Enrollment saved, but payment could not be recorded: "+paymentResult.error.message,
+          "error"
+        );
+        return;
+      }
+      const refreshed=await client.from("journey_enrollment_activations")
+        .select("*").eq("id",activation.id).single();
+      if(refreshed.error){
+        setOperationalStatus("activation-status-message",refreshed.error.message,"error");
+        return;
+      }
+      activation=refreshed.data;
+    }
 
     await portal.logActivity(
       contact.id,
