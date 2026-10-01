@@ -13,7 +13,7 @@
   <link rel="shortcut icon" type="image/png" href="../assets/images/revitalized-icon-approved.png">
   <link rel="apple-touch-icon" href="../assets/images/revitalized-icon-approved.png">
   <link rel="manifest" href="manifest.webmanifest?v=171">
-  <link rel="stylesheet" href="member110.css?v=195">
+  <link rel="stylesheet" href="member110.css?v=196">
 </head>
 <body>
   <main class="rm112-page">
@@ -104,6 +104,38 @@
           <span>Current program</span>
           <strong id="rm-program-name">ReVitalized Academy</strong>
           <small id="rm-membership-status">Active membership</small>
+        </div>
+      </section>
+
+      <section id="rm-home-health-overview" class="rm112-card rm212-health-overview">
+        <div class="rm112-card-head rm212-health-head">
+          <div>
+            <p class="rm112-kicker">YOUR IMPROVEMENT AT A GLANCE</p>
+            <h2>Your Vitality Dashboard</h2>
+            <p class="rm212-health-intro">Live health, habit and progress data will populate here as you track activity and connect approved devices.</p>
+          </div>
+          <button type="button" class="rm212-health-link" data-member-screen="health">View Health &amp; Progress</button>
+        </div>
+        <div class="rm212-health-layout">
+          <div class="rm212-score-card">
+            <div class="rm212-score-ring" id="rm-home-health-ring" aria-label="Health data readiness">
+              <div>
+                <strong id="rm-home-health-score">—</strong>
+                <span>Health Score</span>
+              </div>
+            </div>
+            <div class="rm212-score-copy">
+              <strong id="rm-home-health-status">Building your baseline</strong>
+              <span id="rm-home-health-source">Connect health data and log progress to begin.</span>
+            </div>
+          </div>
+          <div id="rm-home-health-metrics" class="rm212-health-metrics"></div>
+        </div>
+        <div class="rm212-quick-actions" aria-label="Member quick actions">
+          <button type="button" data-member-screen="health"><span>♡</span><strong>Health &amp; Progress</strong><small>Metrics, trends &amp; goals</small></button>
+          <button type="button" data-member-screen="coaching"><span>◉</span><strong>Coaching</strong><small>Sessions &amp; support</small></button>
+          <button type="button" data-member-screen="nutrition"><span>◌</span><strong>Nutrition</strong><small>Meals &amp; hydration</small></button>
+          <button type="button" data-member-screen="fitness"><span>↗</span><strong>Workouts</strong><small>Fitness &amp; activity</small></button>
         </div>
       </section>
 
@@ -1265,6 +1297,6 @@
   </main>
 
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
-  <script defer src="member110.js?v=197"></script>
+  <script defer src="member110.js?v=198"></script>
 </body>
 </html>
