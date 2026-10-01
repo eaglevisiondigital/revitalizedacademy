@@ -4433,11 +4433,23 @@
       ['[data-member-jump="#rm-ask-revitalized-card"]',Boolean(access?.ask_revitalized_enabled)],
       ['[data-member-jump="#rm-family-hub-card"]',Boolean(access?.family_hub_enabled)],
       ['[data-member-jump="#rm-refuel-card"]',Boolean(access?.refuel_enabled)],
-      ['[data-member-jump="#rm-referral-card"]',Boolean(access?.ambassador_center_enabled)]
+      ['[data-member-jump="#rm-referral-card"]',Boolean(access?.ambassador_center_enabled)],
+      ['[data-member-screen="nutrition"]',Boolean(access?.nutrition_enabled)],
+      ['[data-member-screen="fitness"]',Boolean(access?.fitness_enabled)],
+      ['[data-member-screen="learning"]',Boolean(access?.courses_enabled)],
+      ['[data-member-screen="community"]',Boolean(access?.community_enabled)],
+      ['[data-member-screen="ask"]',Boolean(access?.ask_revitalized_enabled)],
+      ['[data-member-screen="family"]',Boolean(access?.family_hub_enabled)],
+      ['[data-member-screen="refuel"]',Boolean(access?.refuel_enabled)],
+      ['[data-member-screen="ambassador"]',Boolean(access?.ambassador_center_enabled)]
     ];
     rules.forEach(([selector,allowed])=>{
       document.querySelectorAll(selector).forEach(node=>node.classList.toggle("rm185-feature-hidden",!allowed));
     });
+
+    if(document.querySelector('.rm210-sidebar-nav [data-member-screen].active.rm185-feature-hidden')){
+      setMemberScreen("home",{scroll:false});
+    }
   }
 
   function renderJourneyCard(journey,error=null){
@@ -4755,6 +4767,7 @@
     el("rm-member-name").textContent = [member.first_name,member.last_name].filter(Boolean).join(" ");
     el("rm-first-name").textContent = member.first_name || "there";
     el("rm-program-name").textContent = member.program_name || "ReVitalized Academy";
+    if(el("rm-sidebar-program"))el("rm-sidebar-program").textContent=member.program_name || "ReVitalized Academy";
     el("rm-membership-status").textContent =
       title(member.membership_status || "active") +
       (member.commitment_ends_at ? " · Initial commitment through " + formatDate(member.commitment_ends_at) : "");
@@ -5029,13 +5042,13 @@
       kicker:"NUTRITION",
       title:"Your Nutrition Plan",
       context:"Fuel",
-      selectors:["#rm-meal-plan-summary","#rm-upcoming-meals","#rm-grocery-list"]
+      selectors:["#rm-nutrition-card"]
     },
     fitness:{
       kicker:"FITNESS",
       title:"Your Workout Plan",
       context:"Move",
-      selectors:["#rm-fitness-plan-summary","#rm-upcoming-workouts"]
+      selectors:["#rm-fitness-card"]
     },
     learning:{
       kicker:"LEARNING",
