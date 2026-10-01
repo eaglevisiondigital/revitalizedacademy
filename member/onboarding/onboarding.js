@@ -14,9 +14,14 @@
   function renderAgreement(a){
     const card=node('article'),title=node('h3',a.name+' · version '+a.template_version);
     card.append(title,node('p',`${a.accepted_signatures} of ${a.required_client_signatures} adult signatures recorded · ${a.status}`));
-    const details=node('details'),summary=node('summary','Read the complete agreement'),copy=node('div',a.content_text);
-    copy.className='agreement-copy';copy.tabIndex=0;details.append(summary,copy);card.append(details);
+    const details=node('details'),summary=node('summary','Review Full Agreement'),copy=node('div',a.content_text);
+    details.className='agreement-review';summary.className='agreement-review-toggle';summary.setAttribute('role','button');
+    copy.className='agreement-copy';copy.tabIndex=0;
+    details.addEventListener('toggle',()=>{summary.textContent=details.open?'Hide Full Agreement':'Review Full Agreement';});
+    details.append(summary,copy);card.append(details);
     if(a.signer_role&&!a.already_signed&&!['signed','waived','declined'].includes(a.status)){
+      const guide=node('div');guide.className='agreement-signing-guide';
+      guide.append(node('strong','Complete these steps to sign'),node('span','1. Review the full agreement above.'),node('span','2. Enter your full legal name.'),node('span','3. Check the acceptance box.'),node('span','4. Sign the agreement.'));card.append(guide);
       const form=node('form'),nameLabel=node('label','Your full legal name'),name=node('input');name.type='text';name.autocomplete='name';name.required=true;name.minLength=2;name.maxLength=240;nameLabel.append(name);
       const acceptLabel=node('label'),accept=node('input');accept.type='checkbox';accept.required=true;acceptLabel.append(accept,document.createTextNode('I am an adult, have read this agreement, accept its terms, and am signing for myself.'));
       const submit=node('button','Sign as '+(a.signer_role==='secondary_client'?'the second adult':'the primary adult'));submit.type='submit';form.append(nameLabel,acceptLabel,submit);
