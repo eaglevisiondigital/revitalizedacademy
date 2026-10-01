@@ -5176,12 +5176,23 @@
   function screenForTarget(selector){
     const target=document.querySelector(selector);
     if(!target)return null;
+
+    // Prefer an exact/card-specific selector match before considering shared
+    // layout containers such as the wellness grid.
     for(const [name,config] of Object.entries(MEMBER_SCREENS)){
       if(config.selectors.some((candidate)=>{
         const match=document.querySelector(candidate);
-        return match&&(match===target||match.contains(target)||target.contains(match));
+        return match===target;
       }))return name;
     }
+
+    for(const [name,config] of Object.entries(MEMBER_SCREENS)){
+      if(config.selectors.some((candidate)=>{
+        const match=document.querySelector(candidate);
+        return match&&(match.contains(target)||target.contains(match));
+      }))return name;
+    }
+
     return null;
   }
 
