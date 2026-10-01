@@ -5021,9 +5021,12 @@
       title:"Your Health at a Glance",
       context:"Today",
       selectors:[
-        ".rm112-hero","#rm-attention-card",".rm170-today-card","#rm-up-next-card","#rm-calendar-card",
-        ".rm185-app-home-card",".rm187-program-hub-card",".rm188-membership-overview-card",
-        ".rm170-week-grid",".rm112-journey-card",".rm188-journey-milestones-card"
+        ".rm112-hero",
+        "#rm-attention-card",
+        ".rm170-today-card",
+        ".rm185-progress-center",
+        ".rm112-journey-card",
+        "#rm-appointment"
       ]
     },
     coaching:{
@@ -5129,6 +5132,8 @@
   function setMemberScreen(name,{scroll=true}={}){
     const config=MEMBER_SCREENS[name]||MEMBER_SCREENS.home;
     activeMemberScreen=MEMBER_SCREENS[name]?name:"home";
+    const content=el("rm-member-content");
+    if(content)content.dataset.activeScreen=activeMemberScreen;
 
     const allowed=new Set();
     for(const selector of config.selectors){
