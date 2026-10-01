@@ -1265,6 +1265,7 @@
 
   let homeHealthSnapshot=[];
   let homeRecentProgress=[];
+  let homeHealthTrendSeries=new Map();
 
   let communitySpaces=[];
   let communityFeed=[];
@@ -1657,6 +1658,11 @@
     }));
 
     if(loadSequence!==dashboardLoadSequence)return;
+    homeHealthTrendSeries=new Map(withTrends.map((row)=>[
+      String(row.metric_key||"").toLowerCase(),
+      Array.isArray(row.trend_values)?row.trend_values.filter(Number.isFinite):[]
+    ]));
+    renderHomeHealthOverview();
     renderHealthTrends(withTrends);
   }
 
@@ -1739,6 +1745,42 @@
     renderHealthSnapshot(snapshot);
   }
 
+  function homeProgressSeries(keys){
+    const rows=(Array.isArray(homeRecentProgress)?homeRecentProgress:[])
+      .filter((row)=>keys.includes(String(row.metric_key||"").toLowerCase()))
+      .slice()
+      .sort((a,b)=>new Date(a.recorded_at||0)-new Date(b.recorded_at||0));
+    return rows
+      .map((row)=>Number(row.value_numeric))
+      .filter(Number.isFinite);
+  }
+
+  function renderMeasuredMiniChart(values,label){
+    const wrap=document.createElement("div");
+    wrap.className="rm212-mini-chart";
+    const series=Array.isArray(values)?values.filter(Number.isFinite):[];
+    if(series.length<2){
+      wrap.classList.add("empty");
+      const note=document.createElement("span");
+      note.textContent="Trend appears after more data";
+      wrap.append(note);
+      return wrap;
+    }
+
+    const svg=document.createElementNS("http://www.w3.org/2000/svg","svg");
+    svg.setAttribute("viewBox","0 0 180 46");
+    svg.setAttribute("role","img");
+    svg.setAttribute("aria-label",label+" measured trend");
+    const line=document.createElementNS("http://www.w3.org/2000/svg","polyline");
+    line.setAttribute("points",sparklinePoints(series,180,46));
+    line.setAttribute("class","rm212-measured-sparkline");
+    line.setAttribute("fill","none");
+    line.setAttribute("vector-effect","non-scaling-stroke");
+    svg.append(line);
+    wrap.append(svg);
+    return wrap;
+  }
+
   function renderHomeHealthOverview(){
     const target=el("rm-home-health-metrics");
     if(!target)return;
@@ -1777,9 +1819,13 @@
         value.textContent="Awaiting data";
       }
 
-      const spark=document.createElement("div");
-      spark.className="rm212-mini-chart";
-      spark.innerHTML='<i></i><i></i><i></i><i></i><i></i><i></i>';
+      let trend=[];
+      for(const key of item.keys){
+        const healthTrend=homeHealthTrendSeries.get(key);
+        if(Array.isArray(healthTrend)&&healthTrend.length>trend.length)trend=healthTrend;
+      }
+      if(trend.length<2)trend=homeProgressSeries(item.keys);
+      const spark=renderMeasuredMiniChart(trend,item.label);
 
       const meta=document.createElement("small");
       meta.textContent=row
@@ -1791,12 +1837,12 @@
     });
 
     const hasLiveData=snapshot.length>0||progress.length>0;
-    el("rm-home-health-score").textContent=hasLiveData?"Live":"—";
-    el("rm-home-health-status").textContent=hasLiveData?"Your health data is active":"Building your baseline";
+    el("rm-home-health-score").textContent="—";
+    el("rm-home-health-status").textContent=hasLiveData?"Live health data available":"Building your baseline";
     el("rm-home-health-source").textContent=hasLiveData
-      ?"Showing the latest approved health and progress data."
-      :"Connect health data and log progress to begin.";
-    el("rm-home-health-ring").classList.toggle("live",hasLiveData);
+      ?"Your approved measurements are updating this dashboard. A composite vitality score will appear only after a scoring model is defined."
+      :"Connect health data and log progress to begin. No vitality score is calculated yet.";
+    el("rm-home-health-ring").classList.toggle("live-data",hasLiveData);
   }
 
   function renderHealthSnapshot(rows){
