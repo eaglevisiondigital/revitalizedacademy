@@ -5002,21 +5002,184 @@
   el("rm-session-prep-form").addEventListener("submit",saveSessionPrep);
   document.querySelectorAll("[data-session-prep-close]").forEach((node)=>node.addEventListener("click",closeSessionPrep));
 
-  function jumpToMemberSection(selector){
-    const target=document.querySelector(selector);
-    if(!target||target.classList.contains("hidden"))return;
-    target.scrollIntoView({behavior:"smooth",block:"start"});
-    document.querySelectorAll(".rm183-member-nav [data-member-jump]").forEach((button)=>{
-      button.classList.toggle("active",button.dataset.memberJump===selector);
+  const MEMBER_SCREENS={
+    home:{
+      kicker:"YOUR REVITALIZED DASHBOARD",
+      title:"Your Health at a Glance",
+      context:"Today",
+      selectors:[
+        ".rm112-hero","#rm-attention-card",".rm170-today-card","#rm-up-next-card","#rm-calendar-card",
+        ".rm185-app-home-card",".rm187-program-hub-card",".rm188-membership-overview-card",
+        ".rm170-week-grid",".rm112-journey-card",".rm188-journey-milestones-card"
+      ]
+    },
+    coaching:{
+      kicker:"COACHING",
+      title:"Your Coaching Command Center",
+      context:"Support",
+      selectors:[".rm183-coaching-hub-card",".rm172-coaching-request-card",".rm185-session-history-card","#rm-coach","#rm-assignments"]
+    },
+    health:{
+      kicker:"HEALTH & PROGRESS",
+      title:"Your Vitality & Momentum",
+      context:"Progress",
+      selectors:[".rm185-progress-center","#rm-progress-achievements-card","#rm-progress-trends-card","#rm-progress-photos-card","#rm-recent-progress","#rm-checkin-fields","#rm-goals","#rm-habits",".rm124-challenges-card",".rm123-health-card"]
+    },
+    nutrition:{
+      kicker:"NUTRITION",
+      title:"Your Nutrition Plan",
+      context:"Fuel",
+      selectors:["#rm-meal-plan-summary","#rm-upcoming-meals","#rm-grocery-list"]
+    },
+    fitness:{
+      kicker:"FITNESS",
+      title:"Your Workout Plan",
+      context:"Move",
+      selectors:["#rm-fitness-plan-summary","#rm-upcoming-workouts"]
+    },
+    learning:{
+      kicker:"LEARNING",
+      title:"Courses & Resources",
+      context:"Grow",
+      selectors:[".rm185-learning-progress-card","#rm-courses","#rm-resources"]
+    },
+    messages:{
+      kicker:"MESSAGES",
+      title:"Your ReVitalized Conversations",
+      context:"Connect",
+      selectors:["#rm-conversations","#rm-notifications"]
+    },
+    community:{
+      kicker:"COMMUNITY",
+      title:"Encouragement, Wins & Connection",
+      context:"Together",
+      selectors:[".rm126-community-card"]
+    },
+    family:{
+      kicker:"FAMILY HUB",
+      title:"Your ReVitalized Household",
+      context:"Family",
+      selectors:["#rm-family-hub-card"]
+    },
+    ask:{
+      kicker:"ASK REVITALIZED",
+      title:"Guidance When You Need It",
+      context:"Ask",
+      selectors:["#rm-ask-revitalized-card"]
+    },
+    ambassador:{
+      kicker:"AMBASSADOR CENTER",
+      title:"Share ReVitalized & Track Your Impact",
+      context:"Impact",
+      selectors:["#rm-referral-card"]
+    },
+    refuel:{
+      kicker:"REFUEL",
+      title:"Your ReFuel Store",
+      context:"Coming 2027",
+      selectors:["#rm-refuel-card"]
+    },
+    billing:{
+      kicker:"BILLING & AGREEMENTS",
+      title:"Your Membership & Documents",
+      context:"Account",
+      selectors:["#rm-billing-card",".rm139-agreements-card",".rm136-documents-card"]
+    },
+    account:{
+      kicker:"ACCOUNT & SETTINGS",
+      title:"Profile, Security & Preferences",
+      context:"Settings",
+      selectors:["#rm-member-account-card",".rm121-settings-card",".rm112-access-card"]
+    }
+  };
+
+  let activeMemberScreen="home";
+
+  function memberScreenRoots(){
+    const content=el("rm-member-content");
+    if(!content)return[];
+    return Array.from(content.children).filter((node)=>{
+      if(node.classList.contains("rm210-screen-heading"))return false;
+      if(node.matches(".rm119-modal,.rm120-modal,.rm126-modal"))return false;
+      return node.tagName==="SECTION"||node.classList.contains("rm112-grid");
     });
   }
 
+  function screenRootFor(node){
+    const content=el("rm-member-content");
+    if(!node||!content)return null;
+    let current=node;
+    while(current&&current.parentElement!==content)current=current.parentElement;
+    return current?.parentElement===content?current:null;
+  }
+
+  function setMemberScreen(name,{scroll=true}={}){
+    const config=MEMBER_SCREENS[name]||MEMBER_SCREENS.home;
+    activeMemberScreen=MEMBER_SCREENS[name]?name:"home";
+
+    const allowed=new Set();
+    for(const selector of config.selectors){
+      document.querySelectorAll(selector).forEach((node)=>{
+        const root=screenRootFor(node);
+        if(root)allowed.add(root);
+      });
+    }
+
+    memberScreenRoots().forEach((root)=>{
+      root.classList.toggle("rm210-screen-hidden",!allowed.has(root));
+    });
+
+    document.querySelectorAll(".rm210-sidebar-nav [data-member-screen]").forEach((button)=>{
+      button.classList.toggle("active",button.dataset.memberScreen===activeMemberScreen);
+    });
+
+    if(el("rm-screen-kicker"))el("rm-screen-kicker").textContent=config.kicker;
+    if(el("rm-screen-title"))el("rm-screen-title").textContent=config.title;
+    if(el("rm-screen-context"))el("rm-screen-context").textContent=config.context;
+
+    const program=el("rm-program-name")?.textContent?.trim();
+    if(program&&el("rm-sidebar-program"))el("rm-sidebar-program").textContent=program;
+
+    if(scroll){
+      el("rm-member-content")?.scrollIntoView({behavior:"smooth",block:"start"});
+    }
+  }
+
+  function screenForTarget(selector){
+    const target=document.querySelector(selector);
+    if(!target)return null;
+    for(const [name,config] of Object.entries(MEMBER_SCREENS)){
+      if(config.selectors.some((candidate)=>{
+        const match=document.querySelector(candidate);
+        return match&&(match===target||match.contains(target)||target.contains(match));
+      }))return name;
+    }
+    return null;
+  }
+
+  function jumpToMemberSection(selector){
+    const target=document.querySelector(selector);
+    if(!target||target.classList.contains("hidden"))return;
+    const screen=screenForTarget(selector);
+    if(screen)setMemberScreen(screen,{scroll:false});
+    window.setTimeout(()=>target.scrollIntoView({behavior:"smooth",block:"start"}),40);
+  }
+
   document.addEventListener("click",(event)=>{
+    const screenButton=event.target.closest("[data-member-screen]");
+    if(screenButton){
+      event.preventDefault();
+      setMemberScreen(screenButton.dataset.memberScreen);
+      return;
+    }
+
     const button=event.target.closest("[data-member-jump]");
     if(!button)return;
     event.preventDefault();
     jumpToMemberSection(button.dataset.memberJump);
   });
+
+  document.addEventListener("ra:member-dashboard-loaded",()=>setMemberScreen(activeMemberScreen,{scroll:false}));
 
   el("rm-add-goal").addEventListener("click",openGoalModal);
   el("rm-goal-form").addEventListener("submit",createGoal);
@@ -5070,6 +5233,8 @@
 
   el("rm-progress-photo-upload").addEventListener("submit",submitProgressPhotoSet);
   el("rm-progress-metric").addEventListener("change", updateProgressUnit);
+
+  window.setTimeout(()=>setMemberScreen("home",{scroll:false}),80);
 
   el("rm-progress-form").addEventListener("submit", async (event) => {
     event.preventDefault();
