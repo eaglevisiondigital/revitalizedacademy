@@ -1263,6 +1263,9 @@
   }
 
 
+  let homeHealthSnapshot=[];
+  let homeRecentProgress=[];
+
   let communitySpaces=[];
   let communityFeed=[];
   let activeCommunityPost=null;
@@ -1736,7 +1739,69 @@
     renderHealthSnapshot(snapshot);
   }
 
+  function renderHomeHealthOverview(){
+    const target=el("rm-home-health-metrics");
+    if(!target)return;
+    target.replaceChildren();
+
+    const snapshot=Array.isArray(homeHealthSnapshot)?homeHealthSnapshot:[];
+    const progress=Array.isArray(homeRecentProgress)?homeRecentProgress:[];
+
+    const preferred=[
+      {keys:["weight"],label:"Weight",icon:"↘"},
+      {keys:["steps","step_count"],label:"Steps",icon:"↗"},
+      {keys:["sleep","sleep_duration","sleep_hours"],label:"Sleep",icon:"◔"},
+      {keys:["water","water_intake","hydration"],label:"Water",icon:"◌"}
+    ];
+
+    const findSnapshot=(keys)=>snapshot.find((row)=>keys.includes(String(row.metric_key||"").toLowerCase()));
+    const findProgress=(keys)=>progress.find((row)=>keys.includes(String(row.metric_key||"").toLowerCase()));
+
+    preferred.forEach((item)=>{
+      const row=findSnapshot(item.keys)||findProgress(item.keys)||null;
+      const card=document.createElement("div");
+      card.className="rm212-health-metric"+(row?" has-data":" awaiting");
+
+      const top=document.createElement("div");
+      const label=document.createElement("span");label.textContent=item.label;
+      const icon=document.createElement("b");icon.textContent=item.icon;
+      top.append(label,icon);
+
+      const value=document.createElement("strong");
+      if(row){
+        const raw=row.value_numeric!==null&&row.value_numeric!==undefined
+          ?row.value_numeric
+          :(row.value_boolean===true?"Yes":row.value_boolean===false?"No":"—");
+        value.textContent=String(raw)+(row.unit?" "+row.unit:"");
+      }else{
+        value.textContent="Awaiting data";
+      }
+
+      const spark=document.createElement("div");
+      spark.className="rm212-mini-chart";
+      spark.innerHTML='<i></i><i></i><i></i><i></i><i></i><i></i>';
+
+      const meta=document.createElement("small");
+      meta.textContent=row
+        ?([row.provider_name,row.observed_at?formatDate(row.observed_at,true):row.recorded_at?formatDate(row.recorded_at,true):null].filter(Boolean).join(" · ")||"Latest recorded value")
+        :"Will update automatically when data is available.";
+
+      card.append(top,value,spark,meta);
+      target.append(card);
+    });
+
+    const hasLiveData=snapshot.length>0||progress.length>0;
+    el("rm-home-health-score").textContent=hasLiveData?"Live":"—";
+    el("rm-home-health-status").textContent=hasLiveData?"Your health data is active":"Building your baseline";
+    el("rm-home-health-source").textContent=hasLiveData
+      ?"Showing the latest approved health and progress data."
+      :"Connect health data and log progress to begin.";
+    el("rm-home-health-ring").classList.toggle("live",hasLiveData);
+  }
+
   function renderHealthSnapshot(rows){
+    homeHealthSnapshot=Array.isArray(rows)?rows:[];
+    renderHomeHealthOverview();
     const target=el("rm-health-data-snapshot");
     target.replaceChildren();
     el("rm-health-data-count").textContent=rows.length+" Metric"+(rows.length===1?"":"s");
@@ -2777,6 +2842,8 @@
   }
 
   function renderRecentProgress(rows) {
+    homeRecentProgress=Array.isArray(rows)?rows:[];
+    renderHomeHealthOverview();
     const list = el("rm-recent-progress");
     list.replaceChildren();
     if (!rows.length) return;
@@ -4441,7 +4508,9 @@
       ['[data-member-screen="ask"]',Boolean(access?.ask_revitalized_enabled)],
       ['[data-member-screen="family"]',Boolean(access?.family_hub_enabled)],
       ['[data-member-screen="refuel"]',Boolean(access?.refuel_enabled)],
-      ['[data-member-screen="ambassador"]',Boolean(access?.ambassador_center_enabled)]
+      ['[data-member-screen="ambassador"]',Boolean(access?.ambassador_center_enabled)],
+      ['#rm-home-health-overview [data-member-screen="nutrition"]',Boolean(access?.nutrition_enabled)],
+      ['#rm-home-health-overview [data-member-screen="fitness"]',Boolean(access?.fitness_enabled)]
     ];
     rules.forEach(([selector,allowed])=>{
       document.querySelectorAll(selector).forEach(node=>node.classList.toggle("rm185-feature-hidden",!allowed));
@@ -5022,9 +5091,9 @@
       context:"Today",
       selectors:[
         ".rm112-hero",
+        "#rm-home-health-overview",
         "#rm-attention-card",
         ".rm170-today-card",
-        ".rm185-progress-center",
         ".rm112-journey-card",
         "#rm-appointment"
       ]
