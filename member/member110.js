@@ -4162,8 +4162,8 @@
       ["Coaching",Boolean(access?.private_coaching_enabled||access?.group_coaching_enabled),".rm183-coaching-hub-card","Sessions, assignments and direct coaching support"],
       ["Community",Boolean(access?.community_enabled),".rm126-community-card","Member spaces, encouragement and shared wins"],
       ["Courses",Boolean(access?.courses_enabled),".rm185-learning-progress-card","Courses, lessons and learning progress"],
-      ["Nutrition",Boolean(access?.nutrition_enabled),".rm116-wellness-grid","Meal plans, meals and grocery support"],
-      ["Fitness",Boolean(access?.fitness_enabled),".rm116-wellness-grid","Workout plans and fitness assignments"],
+      ["Nutrition",Boolean(access?.nutrition_enabled),"#rm-nutrition-card","Meal plans, meals and grocery support"],
+      ["Fitness",Boolean(access?.fitness_enabled),"#rm-fitness-card","Workout plans and fitness assignments"],
       ["Challenges",Boolean(access?.challenges_enabled),".rm124-challenges-card","Accountability challenges and points"],
       ["Ask ReVitalized",Boolean(access?.ask_revitalized_enabled),"#rm-ask-revitalized-card","Program guidance and coaching escalation"],
       ["Family Hub",Boolean(access?.family_hub_enabled),"#rm-family-hub-card","Household profiles and family requests"],
@@ -5042,13 +5042,13 @@
       kicker:"NUTRITION",
       title:"Your Nutrition Plan",
       context:"Fuel",
-      selectors:["#rm-nutrition-card"]
+      selectors:[".rm116-wellness-grid","#rm-nutrition-card"]
     },
     fitness:{
       kicker:"FITNESS",
       title:"Your Workout Plan",
       context:"Move",
-      selectors:["#rm-fitness-card"]
+      selectors:[".rm116-wellness-grid","#rm-fitness-card"]
     },
     learning:{
       kicker:"LEARNING",
@@ -5141,6 +5141,21 @@
     memberScreenRoots().forEach((root)=>{
       root.classList.toggle("rm210-screen-hidden",!allowed.has(root));
     });
+
+    const nutritionCard=el("rm-nutrition-card");
+    const fitnessCard=el("rm-fitness-card");
+    if(nutritionCard&&fitnessCard){
+      if(activeMemberScreen==="nutrition"){
+        nutritionCard.classList.remove("rm210-screen-hidden");
+        fitnessCard.classList.add("rm210-screen-hidden");
+      }else if(activeMemberScreen==="fitness"){
+        fitnessCard.classList.remove("rm210-screen-hidden");
+        nutritionCard.classList.add("rm210-screen-hidden");
+      }else{
+        nutritionCard.classList.remove("rm210-screen-hidden");
+        fitnessCard.classList.remove("rm210-screen-hidden");
+      }
+    }
 
     document.querySelectorAll(".rm210-sidebar-nav [data-member-screen]").forEach((button)=>{
       button.classList.toggle("active",button.dataset.memberScreen===activeMemberScreen);
