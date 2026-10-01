@@ -13,7 +13,7 @@
   <link rel="shortcut icon" type="image/png" href="../assets/images/revitalized-icon-approved.png">
   <link rel="apple-touch-icon" href="../assets/images/revitalized-icon-approved.png">
   <link rel="manifest" href="manifest.webmanifest?v=171">
-  <link rel="stylesheet" href="member110.css?v=192">
+  <link rel="stylesheet" href="member110.css?v=193">
 </head>
 <body>
   <main class="rm112-page">
@@ -58,20 +58,41 @@
         </div>
       </header>
 
-      <nav class="rm183-member-nav" aria-label="Member dashboard sections">
-        <button type="button" class="active" data-member-jump=".rm112-hero">Dashboard</button>
-        <button type="button" data-member-jump=".rm172-coaching-request-card">Coaching</button>
-        <button type="button" data-member-jump=".rm116-wellness-grid">Wellness</button>
-        <button type="button" data-member-jump=".rm119-learning-grid">Learning</button>
-        <button type="button" data-member-jump=".rm120-message-grid">Messages</button>
-        <button type="button" data-member-jump=".rm126-community-card">Community</button>
-        <button type="button" data-member-jump="#rm-ask-revitalized-card">Ask ReVitalized</button>
-        <button type="button" data-member-jump="#rm-family-hub-card">Family Hub</button>
-        <button type="button" data-member-jump="#rm-refuel-card">ReFuel</button>
-        <button type="button" data-member-jump="#rm-referral-card">Ambassador</button>
-        <button type="button" data-member-jump="#rm-billing-card">Billing</button>
-        <button type="button" data-member-jump="#rm-member-account-card">Account</button>
-      </nav>
+      <div class="rm210-shell">
+        <aside class="rm210-sidebar" aria-label="Member dashboard sections">
+          <div class="rm210-sidebar-brand">
+            <span>MY REVITALIZED</span>
+            <strong>Member Hub</strong>
+          </div>
+          <nav class="rm210-sidebar-nav">
+            <button type="button" class="active" data-member-screen="home"><span>⌂</span>Dashboard</button>
+            <button type="button" data-member-screen="coaching"><span>◉</span>Coaching</button>
+            <button type="button" data-member-screen="health"><span>♡</span>Health &amp; Progress</button>
+            <button type="button" data-member-screen="nutrition"><span>◌</span>Nutrition</button>
+            <button type="button" data-member-screen="fitness"><span>↗</span>Workouts</button>
+            <button type="button" data-member-screen="learning"><span>▤</span>Courses &amp; Resources</button>
+            <button type="button" data-member-screen="messages"><span>✉</span>Messages</button>
+            <button type="button" data-member-screen="community"><span>◎</span>Community</button>
+            <button type="button" data-member-screen="family"><span>⌂</span>Family Hub</button>
+            <button type="button" data-member-screen="ask"><span>✦</span>Ask ReVitalized</button>
+            <button type="button" data-member-screen="ambassador"><span>◇</span>Ambassador Center</button>
+            <button type="button" data-member-screen="refuel"><span>◆</span>ReFuel</button>
+            <button type="button" data-member-screen="billing"><span>$</span>Billing &amp; Agreements</button>
+            <button type="button" data-member-screen="account"><span>⚙</span>Account &amp; Settings</button>
+          </nav>
+          <div class="rm210-sidebar-foot">
+            <small>YOUR PROGRAM</small>
+            <strong id="rm-sidebar-program">Holistic Foundations</strong>
+          </div>
+        </aside>
+        <div id="rm-member-content" class="rm210-content">
+          <div class="rm210-screen-heading">
+            <div>
+              <p id="rm-screen-kicker" class="rm112-kicker">YOUR REVITALIZED DASHBOARD</p>
+              <h2 id="rm-screen-title">Your Health at a Glance</h2>
+            </div>
+            <span id="rm-screen-context" class="rm210-screen-context">Today</span>
+          </div>
 
       <section class="rm112-hero">
         <div>
@@ -1227,6 +1248,9 @@
         </section>
       </div>
 
+        </div>
+      </div>
+
       <footer class="rm112-footer">ReVitalized Academy · Educational coaching platform · Not medical diagnosis or treatment.</footer>
     </section>
 
@@ -1241,6 +1265,6 @@
   </main>
 
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
-  <script defer src="member110.js?v=192"></script>
+  <script defer src="member110.js?v=193"></script>
 </body>
 </html>
