@@ -23,3 +23,30 @@
 .restricted-privacy-form select,.restricted-privacy-form textarea{display:block;width:100%;padding:12px;border:1px solid #839b8e;border-radius:6px;font:inherit}
 .privacy-note{color:#5b6d63;font-size:.9rem}
 @media(max-width:520px){.restricted-privacy-summary{grid-template-columns:1fr}}
+
+.member-dashboard-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  min-height:46px;padding:0 18px;
+  border-radius:8px;background:#154734;color:#fff!important;
+  text-decoration:none;font-weight:800;
+  box-shadow:0 8px 20px rgba(21,71,52,.16)
+}
+.member-dashboard-cta:hover{background:#103d2d}
+.member-dashboard-cta span{font-size:1.1rem}
+.agreement-review{margin:16px 0 18px}
+.agreement-review-toggle{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 14px;border:1px solid #285c44;border-radius:7px;
+  background:#f7fbf8;color:#214d3a;font-weight:700;
+  cursor:pointer;list-style:none
+}
+.agreement-review-toggle::-webkit-details-marker{display:none}
+.agreement-review-toggle::after{content:"›";font-size:1.25rem;line-height:1;transform:rotate(90deg)}
+.agreement-review[open] .agreement-review-toggle::after{transform:rotate(-90deg)}
+.agreement-review-toggle:hover{background:#eef6f1}
+.agreement-signing-guide{
+  display:grid;gap:4px;margin:14px 0 18px;padding:14px 16px;
+  border-left:4px solid #b18845;border-radius:6px;background:#fcf8f0
+}
+.agreement-signing-guide strong{margin-bottom:3px}
+.agreement-signing-guide span{display:block;color:#465b50;font-size:.94rem}
