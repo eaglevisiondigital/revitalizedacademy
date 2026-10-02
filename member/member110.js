@@ -552,7 +552,11 @@
             ));
             const text=document.createElement("span");
             const adultName=[adult.first_name,adult.last_name].filter(Boolean).join(" ")||"Household Adult";
-            text.innerHTML="<strong>Share Health & Progress with "+adultName+"</strong><small>This adult must remain consented to Family Hub. You can change this later.</small>";
+            const titleEl=document.createElement("strong");
+            titleEl.textContent="Share Health & Progress with "+adultName;
+            const help=document.createElement("small");
+            help.textContent="This adult must remain consented to Family Hub. You can change this later.";
+            text.append(titleEl,help);
             label.append(check,text);
             body.append(label);
           });
