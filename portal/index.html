@@ -26,7 +26,7 @@
   <link rel="stylesheet" href="portal-learning.css?v=119">
   <link rel="stylesheet" href="portal-member-messaging.css?v=121">
   <link rel="stylesheet" href="portal-companion.css?v=122">
-  <link rel="stylesheet" href="portal-health-integrations.css?v=123">
+  <link rel="stylesheet" href="portal-health-integrations.css?v=124">
   <link rel="stylesheet" href="portal-challenges.css?v=124">
   <link rel="stylesheet" href="portal-executive.css?v=156">
   <link rel="stylesheet" href="portal-community.css?v=126">
@@ -414,6 +414,25 @@
                 <div><span>Needs attention</span><strong id="client-health-attention">0</strong></div>
                 <div><span>Last successful sync</span><strong id="client-health-last-sync">None</strong></div>
                 <div><span>Observations · 24h</span><strong id="client-health-observations">0</strong></div>
+              </div>
+
+              <div class="client-health-metric-manager-head">
+                <div>
+                  <strong>Health &amp; Progress Metrics</strong>
+                  <span>Choose what this client sees and can manually track. Program defaults stay intact unless you create a client override.</span>
+                </div>
+                <button id="client-health-metrics-toggle" class="primary-button compact-action" type="button">Manage Health Metrics</button>
+              </div>
+
+              <div id="client-health-metrics-panel" class="client-health-metrics-panel hidden">
+                <div class="client-health-metrics-legend">
+                  <span><b>Highlighted</b> featured prominently</span>
+                  <span><b>Available</b> visible in Health &amp; Progress</span>
+                  <span><b>Hidden</b> not shown to the client</span>
+                </div>
+                <div id="client-health-metrics-summary" class="client-health-metrics-summary"></div>
+                <div id="client-health-metrics-list" class="client-health-metrics-list"></div>
+                <p id="client-health-metrics-status" class="form-status" aria-live="polite"></p>
               </div>
             </section>
 
@@ -2958,7 +2977,7 @@
   <script defer src="portal-learning.js?v=119"></script>
   <script defer src="portal-member-messaging.js?v=166"></script>
   <script defer src="portal-companion.js?v=122"></script>
-  <script defer src="portal-health-integrations.js?v=123"></script>
+  <script defer src="portal-health-integrations.js?v=124"></script>
   <script defer src="portal-challenges.js?v=124"></script>
   <script defer src="portal-executive.js?v=166"></script>
   <script defer src="portal-community.js?v=166"></script>
