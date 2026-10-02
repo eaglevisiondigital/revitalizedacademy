@@ -1266,6 +1266,7 @@
   let homeHealthSnapshot=[];
   let homeRecentProgress=[];
   let homeHealthTrendSeries=new Map();
+  let memberHealthMetricConfig=[];
 
   let communitySpaces=[];
   let communityFeed=[];
@@ -1847,18 +1848,66 @@
     const featureChart=el("rm-health-feature-chart");
     if(!metricTarget||!featureChart)return;
 
-    const metricDefs=[
-      {keys:["weight"],label:"Weight",icon:"↘"},
-      {keys:["body_fat","body_fat_percent","body_fat_percentage"],label:"Body Fat",icon:"◌"},
-      {keys:["steps","step_count"],label:"Steps",icon:"↗"},
-      {keys:["sleep","sleep_duration","sleep_hours"],label:"Sleep",icon:"◔"},
-      {keys:["water","water_intake","hydration"],label:"Water",icon:"◌"},
-      {keys:["energy","energy_level"],label:"Energy",icon:"✦"},
-      {keys:["mood","mood_score"],label:"Mood",icon:"◇"}
-    ];
+    const aliases={
+      weight:["weight"],
+      body_fat_percent:["body_fat_percent","body_fat","body_fat_percentage"],
+      steps:["steps","step_count"],
+      resting_heart_rate:["resting_heart_rate","resting_hr","heart_rate_resting"],
+      sleep_duration:["sleep_duration","sleep","sleep_hours"],
+      active_minutes:["active_minutes","exercise_minutes"],
+      active_energy:["active_energy","active_calories"],
+      water_intake:["water_intake","water","hydration"],
+      energy_level:["energy_level","energy"],
+      mood_score:["mood_score","mood"],
+      heart_rate_variability:["heart_rate_variability","hrv"],
+      respiratory_rate:["respiratory_rate"],
+      oxygen_saturation:["oxygen_saturation","spo2"],
+      vo2_max:["vo2_max","cardio_fitness"],
+      blood_pressure_systolic:["blood_pressure_systolic","systolic"],
+      blood_pressure_diastolic:["blood_pressure_diastolic","diastolic"],
+      blood_glucose:["blood_glucose","glucose"],
+      waist_circumference:["waist_circumference","waist"],
+      lean_body_mass:["lean_body_mass"],
+      protein_intake:["protein_intake","protein"],
+      fiber_intake:["fiber_intake","fiber"],
+      stress_level:["stress_level","stress"],
+      brain_fog:["brain_fog"],
+      digestion_score:["digestion_score","digestion"],
+      cravings_level:["cravings_level","cravings"],
+      pain_level:["pain_level","pain"]
+    };
+    const icons={
+      weight:"↘",body_fat_percent:"◌",steps:"↗",resting_heart_rate:"♥",
+      sleep_duration:"◔",active_minutes:"◷",active_energy:"✦",water_intake:"◌",
+      energy_level:"✦",mood_score:"◇",heart_rate_variability:"⌁",respiratory_rate:"≈",
+      oxygen_saturation:"○",vo2_max:"△",blood_pressure_systolic:"♥",blood_pressure_diastolic:"♥",
+      blood_glucose:"◆",waist_circumference:"◫",lean_body_mass:"◇",protein_intake:"P",
+      fiber_intake:"F",stress_level:"~",brain_fog:"◌",digestion_score:"◎",cravings_level:"◇",pain_level:"!"
+    };
+    const configured=(Array.isArray(memberHealthMetricConfig)?memberHealthMetricConfig:[])
+      .filter((row)=>row.tracking_mode!=="hidden")
+      .sort((a,b)=>Number(a.display_order||100)-Number(b.display_order||100));
+    const metricDefs=(configured.length?configured:[
+      {metric_key:"weight",label:"Weight",tracking_mode:"highlighted",display_order:10},
+      {metric_key:"steps",label:"Steps",tracking_mode:"available",display_order:20},
+      {metric_key:"resting_heart_rate",label:"Resting Heart Rate",tracking_mode:"available",display_order:30},
+      {metric_key:"sleep_duration",label:"Sleep Duration",tracking_mode:"highlighted",display_order:40},
+      {metric_key:"water_intake",label:"Water / Hydration",tracking_mode:"highlighted",display_order:70},
+      {metric_key:"energy_level",label:"Energy",tracking_mode:"highlighted",display_order:80},
+      {metric_key:"mood_score",label:"Mood",tracking_mode:"available",display_order:90}
+    ]).map((row)=>({
+      ...row,
+      keys:aliases[row.metric_key]||[row.metric_key],
+      icon:icons[row.metric_key]||"•"
+    }));
+
+    const featureDef=metricDefs.find((row)=>row.metric_key==="weight")
+      ||metricDefs.find((row)=>row.tracking_mode==="highlighted")
+      ||metricDefs[0]
+      ||{metric_key:"weight",label:"Weight",keys:["weight"],icon:"↘"};
 
     metricTarget.replaceChildren();
-    metricDefs.slice(1).forEach((def)=>{
+    metricDefs.filter((def)=>def.metric_key!==featureDef.metric_key).slice(0,8).forEach((def)=>{
       const row=healthMetricRow(def.keys);
       const series=healthMetricSeries(def.keys);
       const card=document.createElement("div");
@@ -1884,14 +1933,13 @@
       metricTarget.append(card);
     });
 
-    const featureDef=metricDefs[0];
     const featureRow=healthMetricRow(featureDef.keys);
     const featureSeries=healthMetricSeries(featureDef.keys);
 
     const featureValue=measuredNumber(featureRow?.value_numeric);
     const validWeightReadings=Math.max(featureSeries.length,featureValue!==null?1:0);
 
-    el("rm-health-feature-label").textContent="Weight Trend";
+    el("rm-health-feature-label").textContent=(featureDef.label||title(featureDef.metric_key))+" Trend";
     el("rm-health-feature-value").textContent=formatTrackedMetric(featureRow);
     el("rm-health-feature-meta").textContent=validWeightReadings>=2
       ?validWeightReadings+" measured readings"
@@ -1903,14 +1951,14 @@
       const empty=document.createElement("div");
       empty.className="rm214-chart-empty";
       empty.textContent=validWeightReadings===1
-        ?"Add another valid Weight reading to begin the trend."
-        :"Your measured Weight trend will appear here after at least two valid readings.";
+        ?"Add another valid "+(featureDef.label||title(featureDef.metric_key))+" reading to begin the trend."
+        :"Your measured "+(featureDef.label||title(featureDef.metric_key))+" trend will appear here after at least two valid readings.";
       featureChart.append(empty);
     }else{
       const svg=document.createElementNS("http://www.w3.org/2000/svg","svg");
       svg.setAttribute("viewBox","0 0 640 190");
       svg.setAttribute("role","img");
-      svg.setAttribute("aria-label","Weight measured trend");
+      svg.setAttribute("aria-label",(featureDef.label||title(featureDef.metric_key))+" measured trend");
       const grid=document.createElementNS("http://www.w3.org/2000/svg","path");
       grid.setAttribute("d","M0 38 H640 M0 76 H640 M0 114 H640 M0 152 H640");
       grid.setAttribute("class","rm214-chart-grid");
@@ -3015,7 +3063,16 @@
     const select = el("rm-progress-metric");
     select.replaceChildren();
 
-    if(!metricCatalog.length){
+    const configuredManual=new Set(
+      (Array.isArray(memberHealthMetricConfig)?memberHealthMetricConfig:[])
+        .filter((row)=>row.tracking_mode!=="hidden"&&row.allow_manual)
+        .map((row)=>row.metric_key)
+    );
+    const availableMetrics=metricCatalog.filter((metric)=>
+      configuredManual.size?configuredManual.has(metric.metric_key):metric.member_trackable!==false
+    );
+
+    if(!availableMetrics.length){
       const option=document.createElement("option");
       option.value="";
       option.textContent="No trackable progress metrics are available yet";
@@ -3035,7 +3092,7 @@
     el("rm-progress-note").disabled=false;
     el("rm-progress-form").querySelector('button[type="submit"]').disabled=false;
 
-    metricCatalog.forEach((metric) => {
+    availableMetrics.forEach((metric) => {
       const option = document.createElement("option");
       option.value = metric.metric_key;
       option.textContent = metric.label;
@@ -4840,14 +4897,15 @@
       companionRequestsResult,
       companionFeedbackResult,
       healthPermissionsResult,
-      healthSnapshotResult
+      healthSnapshotResult,
+      healthMetricConfigResult
     ]=await Promise.all([
       client.from("my_household").select("*").order("is_primary",{ascending:false}),
       client.from("my_goals").select("*"),
       client.from("my_habits").select("*"),
       client.from("my_client_assignments").select("*"),
       client.from("my_recent_progress").select("*").limit(8),
-      client.from("progress_metric_catalog").select("*").eq("active",true).eq("member_trackable",true).order("display_order"),
+      client.from("progress_metric_catalog").select("*").eq("active",true).order("display_order"),
       client.from("checkin_templates").select("*").eq("template_key","weekly-revitalized-checkin").eq("active",true).maybeSingle(),
       client.from("my_active_meal_plan").select("*").maybeSingle(),
       client.from("my_upcoming_meals").select("*"),
@@ -4867,7 +4925,8 @@
       client.from("my_companion_requests").select("*").limit(20),
       client.from("my_companion_feedback").select("*").limit(20),
       client.from("my_health_metric_permissions").select("*").order("provider_name").order("display_order"),
-      client.from("my_health_data_snapshot").select("*").order("label")
+      client.from("my_health_data_snapshot").select("*").order("label"),
+      client.rpc("get_my_health_metric_configuration")
     ]);
 
     const results=[
@@ -4896,7 +4955,8 @@
       ["my_companion_requests",companionRequestsResult],
       ["my_companion_feedback",companionFeedbackResult],
       ["my_health_metric_permissions",healthPermissionsResult],
-      ["my_health_data_snapshot",healthSnapshotResult]
+      ["my_health_data_snapshot",healthSnapshotResult],
+      ["get_my_health_metric_configuration",healthMetricConfigResult]
     ];
     results.forEach(([name,result])=>{
       if(result.error)console.warn("Deferred member module unavailable:",name,result.error.message);
@@ -4942,9 +5002,11 @@
       latestCompanionFeedback
     );
 
+    memberHealthMetricConfig=healthMetricConfigResult.error?[]:(healthMetricConfigResult.data||[]);
     metricCatalog=metricsResult.error?[]:(metricsResult.data||[]);
     renderMetricOptions();
     renderRecentProgress(progressResult.error?[]:(progressResult.data||[]));
+    renderHealthProgressOverview();
 
     checkinTemplate=templateResult.error?null:(templateResult.data||null);
     checkinFields=[];
