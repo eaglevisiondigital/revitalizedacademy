@@ -13,7 +13,7 @@
   <link rel="shortcut icon" type="image/png" href="../assets/images/revitalized-icon-approved.png">
   <link rel="apple-touch-icon" href="../assets/images/revitalized-icon-approved.png">
   <link rel="manifest" href="manifest.webmanifest?v=171">
-  <link rel="stylesheet" href="member110.css?v=199">
+  <link rel="stylesheet" href="member110.css?v=200">
 </head>
 <body>
   <main class="rm112-page">
@@ -995,6 +995,19 @@
           <div id="rm-family-calendar-list" class="rm196-family-calendar-list"></div>
         </div>
         <div id="rm-household" class="rm112-household"></div>
+
+        <section id="rm-family-privacy" class="rm216-family-privacy">
+          <div class="rm216-family-privacy-head">
+            <div>
+              <strong>Family Privacy &amp; Sharing</strong>
+              <span>Adults control their own data. A guardian/head of household controls sharing for children and dependents.</span>
+            </div>
+            <span id="rm-family-consent-state" class="rm112-chip">Private by default</span>
+          </div>
+          <div id="rm-family-consent-list" class="rm216-family-consent-list"></div>
+          <p id="rm-family-consent-status" class="rm112-status" aria-live="polite"></p>
+        </section>
+
         <div class="rm170-family-requests-head">
           <strong>Family Requests</strong>
           <span>Changes are reviewed by the ReVitalized team before they are applied.</span>
@@ -1340,6 +1353,6 @@
   </main>
 
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
-  <script defer src="member110.js?v=205"></script>
+  <script defer src="member110.js?v=206"></script>
 </body>
 </html>
