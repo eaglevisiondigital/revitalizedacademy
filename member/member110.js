@@ -1613,6 +1613,8 @@
   async function loadHealthTrendsVNext(loadSequence,biometricsEnabled){
     if(!biometricsEnabled||!currentMember){
       healthTrendsVNextEnabled=false;
+      homeHealthTrendSeries=new Map();
+      renderHomeHealthOverview();
       renderHealthTrends([]);
       return;
     }
@@ -1627,6 +1629,8 @@
     if(loadSequence!==dashboardLoadSequence)return;
     healthTrendsVNextEnabled=Boolean(!flagResult.error&&flagResult.data?.config_value===true);
     if(!healthTrendsVNextEnabled){
+      homeHealthTrendSeries=new Map();
+      renderHomeHealthOverview();
       renderHealthTrends([]);
       return;
     }
@@ -1640,6 +1644,8 @@
     if(loadSequence!==dashboardLoadSequence)return;
     if(cardsResult.error){
       console.warn("Health Trends vNext optional read unavailable:","my_health_dashboard_cards_30d",cardsResult.error.message);
+      homeHealthTrendSeries=new Map();
+      renderHomeHealthOverview();
       renderHealthTrends([]);
       return;
     }
@@ -1653,7 +1659,9 @@
       });
       return {
         ...row,
-        trend_values:error?[]:(data||[]).map((point)=>Number(point.value_numeric)).filter(Number.isFinite)
+        trend_values:error?[]:(data||[])
+          .map((point)=>measuredNumber(point.value_numeric))
+          .filter((value)=>value!==null)
       };
     }));
 
@@ -1745,14 +1753,21 @@
     renderHealthSnapshot(snapshot);
   }
 
+  function measuredNumber(value){
+    if(value===null||value===undefined)return null;
+    if(typeof value==="string"&&value.trim()==="")return null;
+    const numeric=Number(value);
+    return Number.isFinite(numeric)?numeric:null;
+  }
+
   function homeProgressSeries(keys){
     const rows=(Array.isArray(homeRecentProgress)?homeRecentProgress:[])
       .filter((row)=>keys.includes(String(row.metric_key||"").toLowerCase()))
       .slice()
       .sort((a,b)=>new Date(a.recorded_at||0)-new Date(b.recorded_at||0));
     return rows
-      .map((row)=>Number(row.value_numeric))
-      .filter(Number.isFinite);
+      .map((row)=>measuredNumber(row.value_numeric))
+      .filter((value)=>value!==null);
   }
 
   function renderMeasuredMiniChart(values,label){
@@ -4810,6 +4825,7 @@
     progressPhotoPendingRequestId=null;
     calendarVNextEnabled=false;
     healthTrendsVNextEnabled=false;
+    homeHealthTrendSeries=new Map();
     notificationRoutingVNextEnabled=false;
     calendarFilter="all";
     latestCalendarRows=[];
