@@ -138,3 +138,28 @@
 @media(max-width:520px){
   .client-health-review-summary,.client-health-review-list{grid-template-columns:1fr}
 }
+
+
+/* Build 126: drawer-width-safe Health metric controls */
+.client-health-metric-row{
+  grid-template-columns:minmax(0,1fr);
+  align-items:stretch;
+}
+.client-health-metric-controls{
+  grid-template-columns:minmax(0,1fr) minmax(0,1.3fr) 72px minmax(120px,.9fr);
+}
+.client-health-metric-actions{
+  flex-direction:row;
+  min-width:0;
+}
+.client-health-metric-actions button{
+  flex:0 1 auto;
+  min-width:0;
+}
+@media(max-width:700px){
+  .client-health-metric-controls{grid-template-columns:1fr 1fr}
+}
+@media(max-width:430px){
+  .client-health-metric-controls{grid-template-columns:1fr}
+  .client-health-metric-actions{flex-direction:column}
+}
