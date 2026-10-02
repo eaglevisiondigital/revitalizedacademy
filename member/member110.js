@@ -411,6 +411,8 @@
   async function loadFamilyVNextEnhancement(loadSequence,hasFamilyHub){
     if(!hasFamilyHub){
       familyVNextEnabled=false;
+    familyConsentRows=[];
+    familySharingRows=[];
       renderFamilyCalendar([]);
       return;
     }
@@ -449,6 +451,176 @@
       return;
     }
     renderFamilyCalendar(result.data||[]);
+  }
+
+  function familyGrantKey(subjectContactId,granteeType,granteeContactId,scope){
+    return [subjectContactId,granteeType,granteeContactId||"",scope].join("|");
+  }
+
+  function familyGrantAllowed(subjectContactId,granteeType,granteeContactId,scope){
+    return familySharingRows.some((row)=>
+      row.subject_contact_id===subjectContactId
+      && row.grantee_type===granteeType
+      && (row.grantee_contact_id||null)===(granteeContactId||null)
+      && row.data_scope===scope
+      && row.allowed===true
+    );
+  }
+
+  function renderFamilyConsentCenter(){
+    const target=el("rm-family-consent-list");
+    const state=el("rm-family-consent-state");
+    if(!target||!state)return;
+    target.replaceChildren();
+
+    if(!familyHubEnabled){
+      state.textContent="Not available";
+      target.innerHTML='<div class="rm112-empty">Family privacy controls appear when Family Hub is included.</div>';
+      return;
+    }
+
+    if(!familyConsentRows.length){
+      state.textContent="Private by default";
+      target.innerHTML='<div class="rm112-empty">Family privacy settings are being prepared.</div>';
+      return;
+    }
+
+    const self=familyConsentRows.find((row)=>row.is_self);
+    const acceptedAdults=familyConsentRows.filter((row)=>!row.is_minor&&row.adult_consent_status==="accepted");
+    state.textContent=self?.adult_consent_status==="accepted"||self?.is_minor?"Sharing controls ready":"Consent required";
+
+    familyConsentRows.forEach((row)=>{
+      if(!row.is_self&&!row.can_manage_subject)return;
+
+      const card=document.createElement("article");
+      card.className="rm216-family-consent-card";
+
+      const head=document.createElement("div");
+      head.className="rm216-family-consent-card-head";
+      const copy=document.createElement("div");
+      const name=document.createElement("strong");
+      name.textContent=[row.first_name,row.last_name].filter(Boolean).join(" ")||"Family Member";
+      const meta=document.createElement("span");
+      meta.textContent=[
+        row.is_self?"You":title(row.relationship_type),
+        row.is_minor?"Child / Dependent":"Adult",
+        row.is_minor?"Guardian-managed":title(row.adult_consent_status||"pending")
+      ].filter(Boolean).join(" · ");
+      copy.append(name,meta);
+      head.append(copy);
+
+      if(row.is_self&&!row.is_minor&&row.adult_consent_status!=="accepted"){
+        const accept=document.createElement("button");
+        accept.type="button";
+        accept.textContent="Accept Family Hub";
+        accept.addEventListener("click",acceptFamilyHubConsent);
+        head.append(accept);
+      }
+
+      card.append(head);
+
+      const body=document.createElement("div");
+      body.className="rm216-family-consent-options";
+
+      if(row.is_minor&&row.current_user_is_guardian){
+        const coaching=document.createElement("label");
+        coaching.className="rm216-sharing-toggle";
+        const check=document.createElement("input");
+        check.type="checkbox";
+        check.checked=familyGrantAllowed(row.contact_id,"coaching_team",null,"health_progress");
+        check.addEventListener("change",()=>setFamilySharing(row.contact_id,"coaching_team",null,"health_progress",check.checked,check));
+        const text=document.createElement("span");
+        text.innerHTML="<strong>Share Health & Progress with coaching team</strong><small>Allows approved ReVitalized coaches assigned to this child to review configured health and progress information.</small>";
+        coaching.append(check,text);
+        body.append(coaching);
+      }
+
+      const canShareOwn=!row.is_minor&&row.is_self&&row.adult_consent_status==="accepted";
+      const canShareChild=row.is_minor&&row.current_user_is_guardian;
+
+      if(canShareOwn||canShareChild){
+        acceptedAdults
+          .filter((adult)=>adult.contact_id!==row.contact_id)
+          .forEach((adult)=>{
+            const label=document.createElement("label");
+            label.className="rm216-sharing-toggle";
+            const check=document.createElement("input");
+            check.type="checkbox";
+            check.checked=familyGrantAllowed(row.contact_id,"household_member",adult.contact_id,"health_progress");
+            check.addEventListener("change",()=>setFamilySharing(
+              row.contact_id,"household_member",adult.contact_id,"health_progress",check.checked,check
+            ));
+            const text=document.createElement("span");
+            const adultName=[adult.first_name,adult.last_name].filter(Boolean).join(" ")||"Household Adult";
+            text.innerHTML="<strong>Share Health & Progress with "+adultName+"</strong><small>This adult must remain consented to Family Hub. You can change this later.</small>";
+            label.append(check,text);
+            body.append(label);
+          });
+      }
+
+      if(!body.children.length){
+        const note=document.createElement("div");
+        note.className="rm216-family-consent-note";
+        note.textContent=row.is_self&&!row.is_minor&&row.adult_consent_status!=="accepted"
+          ?"Accept Family Hub before choosing what another adult may see."
+          :"No sharing options are available for this family member right now.";
+        body.append(note);
+      }
+
+      card.append(body);
+      target.append(card);
+    });
+  }
+
+  async function loadFamilyConsentCenter(){
+    if(!familyHubEnabled){
+      familyConsentRows=[];familySharingRows=[];renderFamilyConsentCenter();return;
+    }
+    const [consentResult,sharingResult]=await Promise.all([
+      client.rpc("get_my_family_consent_center"),
+      client.rpc("get_my_family_sharing_grants")
+    ]);
+    if(consentResult.error||sharingResult.error){
+      console.warn("Family privacy center unavailable:",consentResult.error?.message||sharingResult.error?.message);
+      familyConsentRows=[];familySharingRows=[];renderFamilyConsentCenter();
+      return;
+    }
+    familyConsentRows=consentResult.data||[];
+    familySharingRows=sharingResult.data||[];
+    renderFamilyConsentCenter();
+  }
+
+  async function acceptFamilyHubConsent(event){
+    const button=event.currentTarget;
+    button.disabled=true;
+    showStatus(el("rm-family-consent-status"),"Saving Family Hub consent...");
+    const {error}=await client.rpc("accept_my_family_hub_membership");
+    button.disabled=false;
+    if(error){showStatus(el("rm-family-consent-status"),error.message,"error");return;}
+    showStatus(el("rm-family-consent-status"),"Family Hub consent accepted.","success");
+    await loadFamilyConsentCenter();
+    await loadDashboard();
+  }
+
+  async function setFamilySharing(subjectContactId,granteeType,granteeContactId,scope,allowed,control){
+    control.disabled=true;
+    showStatus(el("rm-family-consent-status"),"Updating family sharing...");
+    const {error}=await client.rpc("set_my_family_data_sharing",{
+      p_subject_contact_id:subjectContactId,
+      p_grantee_type:granteeType,
+      p_grantee_contact_id:granteeContactId,
+      p_data_scope:scope,
+      p_allowed:allowed
+    });
+    control.disabled=false;
+    if(error){
+      control.checked=!allowed;
+      showStatus(el("rm-family-consent-status"),error.message,"error");
+      return;
+    }
+    showStatus(el("rm-family-consent-status"),allowed?"Sharing enabled.":"Sharing removed.","success");
+    await loadFamilyConsentCenter();
+    await loadDashboard();
   }
 
   function renderFamilyRequests(rows){
@@ -737,6 +909,8 @@
   let latestGoalRows = [];
   let goalProgressById = new Map();
   let currentFamilyTarget = null;
+  let familyConsentRows = [];
+  let familySharingRows = [];
   let latestCompanionQuestionTypes = [];
   let latestCompanionRequests = [];
   let latestCompanionFeedback = [];
@@ -4983,6 +5157,7 @@
     if(loadSequence!==dashboardLoadSequence)return;
 
     renderHousehold(householdResult.error?[]:(householdResult.data||[]),context.householdType,context.hasFamilyHub);
+    void loadFamilyConsentCenter();
     renderGoals(goalsResult.error?[]:(goalsResult.data||[]));
     renderHabits(habitsResult.error?[]:(habitsResult.data||[]));
     renderAssignments(assignmentsResult.error?[]:(assignmentsResult.data||[]));
