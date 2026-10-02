@@ -7,7 +7,9 @@
 
   let activeContactId=null;
   let metricRows=[];
+  let healthReviewRows=[];
   let metricsOpen=false;
+  let healthReviewOpen=false;
 
   function title(value){
     return String(value||"").replaceAll("_"," ").replace(/\b\w/g,(m)=>m.toUpperCase());
@@ -45,6 +47,163 @@
       ? portal.formatDate(data.last_successful_sync_at,true)
       : "None";
     el("client-health-observations").textContent=String(data.observations_24h||0);
+  }
+
+  function reviewValue(row){
+    if(row.latest_value!==null&&row.latest_value!==undefined){
+      return String(row.latest_value)+(row.latest_unit?" "+row.latest_unit:"");
+    }
+    if(row.latest_boolean===true)return "Yes";
+    if(row.latest_boolean===false)return "No";
+    return "No data yet";
+  }
+
+  function reviewChange(row){
+    if(row.absolute_change===null||row.absolute_change===undefined)return "No 30-day comparison";
+    const n=Number(row.absolute_change);
+    const prefix=n>0?"+":"";
+    return "30-day change "+prefix+String(row.absolute_change)+(row.latest_unit?" "+row.latest_unit:"");
+  }
+
+  function renderHealthReview(){
+    const summary=el("client-health-review-summary");
+    const list=el("client-health-review-list");
+    summary.replaceChildren();
+    list.replaceChildren();
+
+    const visible=healthReviewRows.length;
+    const withData=healthReviewRows.filter((row)=>row.latest_value!==null&&row.latest_value!==undefined||row.latest_boolean!==null&&row.latest_boolean!==undefined).length;
+    const highlighted=healthReviewRows.filter((row)=>row.tracking_mode==="highlighted").length;
+    const readings=healthReviewRows.reduce((sum,row)=>sum+Number(row.reading_count||0),0);
+
+    [
+      ["Visible Metrics",visible],
+      ["With Data",withData],
+      ["Highlighted",highlighted],
+      ["30-Day Readings",readings]
+    ].forEach(([label,value])=>{
+      const card=document.createElement("div");
+      const s=document.createElement("span");s.textContent=label;
+      const b=document.createElement("strong");b.textContent=String(value);
+      card.append(s,b);summary.append(card);
+    });
+
+    if(!healthReviewRows.length){
+      list.innerHTML='<div class="drawer-empty">No Health & Progress metrics are visible for this client.</div>';
+      return;
+    }
+
+    healthReviewRows.forEach((row)=>{
+      const card=document.createElement("article");
+      card.className="client-health-review-card"+(row.tracking_mode==="highlighted"?" highlighted":"");
+
+      const top=document.createElement("div");
+      top.className="client-health-review-card-top";
+      const copy=document.createElement("div");
+      const label=document.createElement("strong");label.textContent=row.label;
+      const meta=document.createElement("span");
+      meta.textContent=[title(row.category),row.tracking_mode==="highlighted"?"Highlighted":"Available"].join(" · ");
+      copy.append(label,meta);
+      const value=document.createElement("b");value.textContent=reviewValue(row);
+      top.append(copy,value);
+
+      const detail=document.createElement("div");
+      detail.className="client-health-review-detail";
+      const change=document.createElement("span");change.textContent=reviewChange(row);
+      const source=document.createElement("span");
+      source.textContent=row.latest_at
+        ?[title(row.latest_source||"recorded"),portal.formatDate(row.latest_at,true)].join(" · ")
+        :"Awaiting first measurement";
+      const count=document.createElement("span");
+      count.textContent=Number(row.reading_count||0)+" reading"+(Number(row.reading_count||0)===1?"":"s")+" in 30 days";
+      detail.append(change,source,count);
+
+      const actions=document.createElement("div");
+      actions.className="client-health-review-actions";
+      const trend=document.createElement("button");
+      trend.type="button";trend.className="secondary-button compact-action";
+      trend.textContent="View 30-Day History";
+      trend.disabled=Number(row.reading_count||0)<1;
+      trend.addEventListener("click",()=>openHealthTrend(row,trend));
+      actions.append(trend);
+
+      const history=document.createElement("div");
+      history.className="client-health-review-history hidden";
+      history.dataset.historyMetric=row.metric_key;
+
+      card.append(top,detail,actions,history);
+      list.append(card);
+    });
+  }
+
+  async function loadHealthReview(){
+    if(!activeContactId)return;
+    portal.showStatus(el("client-health-review-status"),"Loading client Health & Progress...");
+    const {data,error}=await client.rpc("admin_get_client_health_progress_review",{
+      p_contact_id:activeContactId,
+      p_days:30
+    });
+    if(error){
+      healthReviewRows=[];
+      renderHealthReview();
+      portal.showStatus(el("client-health-review-status"),error.message,"error");
+      return;
+    }
+    healthReviewRows=data||[];
+    renderHealthReview();
+    portal.showStatus(el("client-health-review-status"),"30-day descriptive review ready.","success");
+  }
+
+  async function openHealthTrend(row,button){
+    if(!activeContactId)return;
+    const history=document.querySelector('[data-history-metric="'+row.metric_key+'"]');
+    if(!history)return;
+
+    if(!history.classList.contains("hidden")){
+      history.classList.add("hidden");
+      button.textContent="View 30-Day History";
+      return;
+    }
+
+    const old=button.textContent;button.disabled=true;button.textContent="Loading...";
+    const {data,error}=await client.rpc("admin_get_client_health_metric_trend",{
+      p_contact_id:activeContactId,
+      p_metric_key:row.metric_key,
+      p_days:30
+    });
+    button.disabled=false;button.textContent=old;
+
+    if(error){
+      portal.showStatus(el("client-health-review-status"),error.message,"error");
+      return;
+    }
+
+    history.replaceChildren();
+    const rows=data||[];
+    if(!rows.length){
+      history.innerHTML='<div class="drawer-empty">No readings in the last 30 days.</div>';
+    }else{
+      rows.forEach((point)=>{
+        const item=document.createElement("div");
+        item.className="client-health-history-row";
+        const when=document.createElement("span");when.textContent=portal.formatDate(point.measured_at,true);
+        const value=document.createElement("strong");
+        value.textContent=point.value_numeric!==null&&point.value_numeric!==undefined
+          ?String(point.value_numeric)+(point.unit?" "+point.unit:"")
+          :(point.value_boolean===true?"Yes":point.value_boolean===false?"No":"—");
+        const source=document.createElement("small");source.textContent=title(point.source||"recorded");
+        item.append(when,value,source);history.append(item);
+      });
+    }
+    history.classList.remove("hidden");
+    button.textContent="Hide 30-Day History";
+  }
+
+  async function toggleHealthReview(){
+    healthReviewOpen=!healthReviewOpen;
+    el("client-health-review-panel").classList.toggle("hidden",!healthReviewOpen);
+    el("client-health-review-toggle").textContent=healthReviewOpen?"Hide Progress Review":"Review Progress";
+    if(healthReviewOpen)await loadHealthReview();
   }
 
   function metricGroup(row){
@@ -292,20 +451,29 @@
   document.addEventListener("ra:contact-opened",(event)=>{
     activeContactId=event.detail.contactId;
     metricsOpen=false;
+    healthReviewOpen=false;
     el("client-health-metrics-panel").classList.add("hidden");
+    el("client-health-review-panel").classList.add("hidden");
     el("client-health-metrics-toggle").textContent="Manage Health Metrics";
+    el("client-health-review-toggle").textContent="Review Progress";
     loadSummary(activeContactId);
   });
 
   document.addEventListener("ra:contact-closed",()=>{
     activeContactId=null;
     metricRows=[];
+    healthReviewRows=[];
     metricsOpen=false;
+    healthReviewOpen=false;
     el("client-health-integrations-section").classList.add("hidden");
     el("client-health-metrics-panel").classList.add("hidden");
+    el("client-health-review-panel").classList.add("hidden");
     el("client-health-metrics-list").replaceChildren();
+    el("client-health-review-list").replaceChildren();
     setMetricStatus("");
+    portal.showStatus(el("client-health-review-status"),"");
   });
 
   el("client-health-metrics-toggle").addEventListener("click",toggleMetrics);
+  el("client-health-review-toggle").addEventListener("click",toggleHealthReview);
 })();
