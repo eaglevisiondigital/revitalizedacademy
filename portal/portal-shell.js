@@ -72,15 +72,14 @@
   const settings = document.createElement("button");
   settings.className="ra-nav-item"; settings.type="button";
   settings.innerHTML='<span class="ra-nav-icon">'+icon("settings")+'</span><span class="ra-nav-text">Account & Settings</span>';
-  settings.addEventListener("click",async(event)=>{
-    event.preventDefault();
+  settings.addEventListener("click",(event)=>{
     document.body.classList.remove("ra-mobile-nav-open");
 
-    if(window.RA_ACCOUNT?.open){
-      await window.RA_ACCOUNT.open();
-      return;
-    }
+    // portal-account.js owns Account & Settings once its current module is bound.
+    // Do not invoke the same async flow a second time from the shell.
+    if(window.RA_ACCOUNT?.open)return;
 
+    event.preventDefault();
     const accountButton=document.getElementById("account-button");
     if(accountButton){
       accountButton.click();
