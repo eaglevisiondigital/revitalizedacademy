@@ -179,12 +179,13 @@
       client.from("progress_metric_catalog").select("*").eq("active", true).order("display_order"),
       client.from("checkin_template_fields").select("field_key,label,display_order").order("display_order"),
       client.from("coaching_sessions").select("*").eq("contact_id", contactId).order("scheduled_start", { ascending: false }).limit(15),
-      client.from("coaching_session_notes").select("*").eq("contact_id", contactId).order("created_at", { ascending: false }).limit(20)
+      client.from("coaching_session_notes").select("*").eq("contact_id", contactId).order("created_at", { ascending: false }).limit(20),
+      client.from("admin_coach_capacity").select("*")
     ]);
 
     const failed = [
       membershipResult,summaryResult,goalsResult,habitsResult,assignmentsResult,
-      checkinsResult,progressResult,metricResult,fieldResult,sessionsResult,notesResult
+      checkinsResult,progressResult,metricResult,fieldResult,sessionsResult,notesResult,capacityResult
     ].find((result) => result.error);
 
     if (failed?.error) throw failed.error;
