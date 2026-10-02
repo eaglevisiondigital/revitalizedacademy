@@ -1003,7 +1003,7 @@
   el("refresh-button").addEventListener("click", loadDashboard);
   el("account-button").addEventListener("click", openAccount);
   el("account-close").addEventListener("click", closeAccount);
-  el("account-done").addEventListener("click", closeAccount);
+  el("account-done")?.addEventListener("click", closeAccount);
   document.querySelectorAll("[data-account-close]").forEach((node) => node.addEventListener("click", closeAccount));
   el("account-change-password").addEventListener("click", showAccountPassword);
   el("account-password-cancel").addEventListener("click", () => {
