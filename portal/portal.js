@@ -1001,7 +1001,11 @@
   el("logout-button").addEventListener("click", signOut);
   el("pending-logout").addEventListener("click", signOut);
   el("refresh-button").addEventListener("click", loadDashboard);
-  el("account-button").addEventListener("click", openAccount);
+  el("account-button").addEventListener("click", (event) => {
+    if (window.RA_ACCOUNT?.open) return;
+    event.preventDefault();
+    openAccount();
+  });
   el("account-close").addEventListener("click", closeAccount);
   el("account-done")?.addEventListener("click", closeAccount);
   document.querySelectorAll("[data-account-close]").forEach((node) => node.addEventListener("click", closeAccount));
