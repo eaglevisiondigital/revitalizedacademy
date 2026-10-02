@@ -3200,3 +3200,92 @@
   .rm214-health-nav{grid-template-columns:1fr}
   .rm214-health-nav button{border-right:0;border-top:1px solid #e7ede9}
 }
+
+
+/* Build 215: Health workspace visual refinement */
+.rm210-content[data-active-screen="health"]>.rm185-progress-center{
+  padding:20px 22px;
+  border:1px solid #dbe6df;
+  background:linear-gradient(180deg,#fffdfa,#fbfdfb);
+  box-shadow:0 10px 26px rgba(21,71,52,.045);
+}
+.rm210-content[data-active-screen="health"]>.rm185-progress-center .rm112-card-head{
+  margin-bottom:12px;
+}
+.rm210-content[data-active-screen="health"]>.rm185-progress-center .rm112-card-head h2{
+  font-size:clamp(25px,2.1vw,34px);
+}
+.rm210-content[data-active-screen="health"]>.rm185-progress-center .rm185-progress-snapshot{
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:10px;
+}
+.rm210-content[data-active-screen="health"]>.rm185-progress-center .rm185-progress-snapshot>div{
+  min-height:88px;
+  padding:13px 14px;
+  border-radius:13px;
+  background:#fff;
+}
+.rm210-content[data-active-screen="health"]>.rm185-progress-center .rm185-progress-snapshot span{
+  font-size:8px;
+  letter-spacing:.05em;
+}
+.rm210-content[data-active-screen="health"]>.rm185-progress-center .rm185-progress-snapshot strong{
+  margin-top:5px;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:23px;
+  font-weight:500;
+  color:#154734;
+}
+
+.rm214-health-progress-overview{box-shadow:0 16px 38px rgba(21,71,52,.06)}
+.rm214-progress-layout{gap:18px;padding:22px}
+.rm214-feature-chart{min-height:318px}
+.rm214-feature-chart-body{min-height:195px}
+.rm214-metric-card{min-height:142px}
+.rm214-metric-card>strong{font-size:20px;line-height:1.05}
+.rm214-metric-card small{line-height:1.35}
+.rm214-health-nav button{min-height:68px}
+
+.rm214-connection-empty{
+  display:grid;
+  gap:5px;
+  margin:8px 0 16px;
+  padding:16px 18px;
+  border:1px dashed #d5e2da;
+  border-radius:13px;
+  background:#f8fbf9;
+}
+.rm214-connection-empty strong{color:#214b39;font-size:11px}
+.rm214-connection-empty span{max-width:760px;color:#73837a;font-size:9px;line-height:1.5}
+
+.rm210-content[data-active-screen="health"] #rm-progress-form-card,
+.rm210-content[data-active-screen="health"] #rm-checkin-form{
+  background:#fff;
+}
+.rm210-content[data-active-screen="health"] #rm-progress-form-card{
+  border-top:3px solid #b18845;
+}
+.rm210-content[data-active-screen="health"] #rm-progress-form-card select:disabled,
+.rm210-content[data-active-screen="health"] #rm-progress-form-card input:disabled{
+  background:#f3f6f4;
+  color:#8a978f;
+}
+.rm210-content[data-active-screen="health"] #rm-progress-form-card button:disabled,
+.rm210-content[data-active-screen="health"] #rm-checkin-submit:disabled{
+  background:#dfe8e2;
+  color:#7c8c82;
+  box-shadow:none;
+  cursor:not-allowed;
+}
+
+@media(max-width:980px){
+  .rm210-content[data-active-screen="health"]>.rm185-progress-center .rm185-progress-snapshot{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+@media(max-width:520px){
+  .rm210-content[data-active-screen="health"]>.rm185-progress-center .rm185-progress-snapshot{
+    grid-template-columns:1fr 1fr;
+  }
+  .rm214-progress-layout{padding:12px}
+}
