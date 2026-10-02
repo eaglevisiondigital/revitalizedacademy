@@ -26,7 +26,7 @@
   <link rel="stylesheet" href="portal-learning.css?v=119">
   <link rel="stylesheet" href="portal-member-messaging.css?v=121">
   <link rel="stylesheet" href="portal-companion.css?v=122">
-  <link rel="stylesheet" href="portal-health-integrations.css?v=124">
+  <link rel="stylesheet" href="portal-health-integrations.css?v=125">
   <link rel="stylesheet" href="portal-challenges.css?v=124">
   <link rel="stylesheet" href="portal-executive.css?v=156">
   <link rel="stylesheet" href="portal-community.css?v=126">
@@ -414,6 +414,19 @@
                 <div><span>Needs attention</span><strong id="client-health-attention">0</strong></div>
                 <div><span>Last successful sync</span><strong id="client-health-last-sync">None</strong></div>
                 <div><span>Observations · 24h</span><strong id="client-health-observations">0</strong></div>
+              </div>
+
+              <div class="client-health-review-head">
+                <div>
+                  <strong>Client Health &amp; Progress</strong>
+                  <span>Review the same configured measurements the client sees, with latest readings and descriptive 30-day change.</span>
+                </div>
+                <button id="client-health-review-toggle" class="secondary-button compact-action" type="button">Review Progress</button>
+              </div>
+              <div id="client-health-review-panel" class="client-health-review-panel hidden">
+                <div id="client-health-review-summary" class="client-health-review-summary"></div>
+                <div id="client-health-review-list" class="client-health-review-list"></div>
+                <p id="client-health-review-status" class="form-status" aria-live="polite"></p>
               </div>
 
               <div class="client-health-metric-manager-head">
@@ -2977,7 +2990,7 @@
   <script defer src="portal-learning.js?v=119"></script>
   <script defer src="portal-member-messaging.js?v=166"></script>
   <script defer src="portal-companion.js?v=122"></script>
-  <script defer src="portal-health-integrations.js?v=124"></script>
+  <script defer src="portal-health-integrations.js?v=125"></script>
   <script defer src="portal-challenges.js?v=124"></script>
   <script defer src="portal-executive.js?v=166"></script>
   <script defer src="portal-community.js?v=166"></script>
