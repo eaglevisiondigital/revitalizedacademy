@@ -1615,6 +1615,7 @@
       healthTrendsVNextEnabled=false;
       homeHealthTrendSeries=new Map();
       renderHomeHealthOverview();
+      renderHealthProgressOverview();
       renderHealthTrends([]);
       return;
     }
@@ -1631,6 +1632,7 @@
     if(!healthTrendsVNextEnabled){
       homeHealthTrendSeries=new Map();
       renderHomeHealthOverview();
+      renderHealthProgressOverview();
       renderHealthTrends([]);
       return;
     }
@@ -1646,6 +1648,7 @@
       console.warn("Health Trends vNext optional read unavailable:","my_health_dashboard_cards_30d",cardsResult.error.message);
       homeHealthTrendSeries=new Map();
       renderHomeHealthOverview();
+      renderHealthProgressOverview();
       renderHealthTrends([]);
       return;
     }
@@ -1671,6 +1674,7 @@
       Array.isArray(row.trend_values)?row.trend_values.filter(Number.isFinite):[]
     ]));
     renderHomeHealthOverview();
+    renderHealthProgressOverview();
     renderHealthTrends(withTrends);
   }
 
@@ -1796,6 +1800,116 @@
     return wrap;
   }
 
+  function healthMetricRow(keys){
+    const snapshot=(Array.isArray(homeHealthSnapshot)?homeHealthSnapshot:[])
+      .find((row)=>keys.includes(String(row.metric_key||"").toLowerCase()));
+    if(snapshot)return snapshot;
+
+    const progress=(Array.isArray(homeRecentProgress)?homeRecentProgress:[])
+      .filter((row)=>keys.includes(String(row.metric_key||"").toLowerCase()))
+      .slice()
+      .sort((a,b)=>new Date(b.recorded_at||0)-new Date(a.recorded_at||0))[0];
+    return progress||null;
+  }
+
+  function healthMetricSeries(keys){
+    let best=[];
+    for(const key of keys){
+      const wearable=homeHealthTrendSeries.get(key);
+      if(Array.isArray(wearable)&&wearable.length>best.length)best=wearable;
+    }
+    if(best.length>=2)return best;
+    return homeProgressSeries(keys);
+  }
+
+  function formatTrackedMetric(row){
+    if(!row)return "Awaiting data";
+    const raw=measuredNumber(row.value_numeric);
+    if(raw!==null)return String(raw)+(row.unit?" "+row.unit:"");
+    if(row.value_boolean===true)return "Yes";
+    if(row.value_boolean===false)return "No";
+    return "Awaiting data";
+  }
+
+  function renderHealthProgressOverview(){
+    const metricTarget=el("rm-health-progress-metrics");
+    const featureChart=el("rm-health-feature-chart");
+    if(!metricTarget||!featureChart)return;
+
+    const metricDefs=[
+      {keys:["weight"],label:"Weight",icon:"↘"},
+      {keys:["body_fat","body_fat_percent","body_fat_percentage"],label:"Body Fat",icon:"◌"},
+      {keys:["steps","step_count"],label:"Steps",icon:"↗"},
+      {keys:["sleep","sleep_duration","sleep_hours"],label:"Sleep",icon:"◔"},
+      {keys:["water","water_intake","hydration"],label:"Water",icon:"◌"},
+      {keys:["energy","energy_level"],label:"Energy",icon:"✦"},
+      {keys:["mood","mood_score"],label:"Mood",icon:"◇"}
+    ];
+
+    metricTarget.replaceChildren();
+    metricDefs.slice(1).forEach((def)=>{
+      const row=healthMetricRow(def.keys);
+      const series=healthMetricSeries(def.keys);
+      const card=document.createElement("div");
+      card.className="rm214-metric-card"+(row?" has-data":" awaiting");
+
+      const top=document.createElement("div");
+      const label=document.createElement("span");label.textContent=def.label;
+      const icon=document.createElement("b");icon.textContent=def.icon;
+      top.append(label,icon);
+
+      const value=document.createElement("strong");
+      value.textContent=formatTrackedMetric(row);
+
+      const chart=renderMeasuredMiniChart(series,def.label);
+      chart.classList.add("rm214-card-chart");
+
+      const meta=document.createElement("small");
+      meta.textContent=row
+        ?([row.provider_name,row.observed_at?formatDate(row.observed_at,true):row.recorded_at?formatDate(row.recorded_at,true):null].filter(Boolean).join(" · ")||"Latest recorded value")
+        :"No recorded value yet.";
+
+      card.append(top,value,chart,meta);
+      metricTarget.append(card);
+    });
+
+    const featureDef=metricDefs[0];
+    const featureRow=healthMetricRow(featureDef.keys);
+    const featureSeries=healthMetricSeries(featureDef.keys);
+
+    el("rm-health-feature-label").textContent="Weight Trend";
+    el("rm-health-feature-value").textContent=formatTrackedMetric(featureRow);
+    el("rm-health-feature-meta").textContent=featureSeries.length>=2
+      ?featureSeries.length+" measured readings"
+      :(featureRow?"1 measured reading":"Building baseline");
+    el("rm-health-feature-period").textContent=featureSeries.length>=2?"Measured history":"Recent history";
+
+    featureChart.replaceChildren();
+    if(featureSeries.length<2){
+      const empty=document.createElement("div");
+      empty.className="rm214-chart-empty";
+      empty.textContent=featureRow
+        ?"Add another valid Weight reading to begin the trend."
+        :"Your measured Weight trend will appear here after at least two valid readings.";
+      featureChart.append(empty);
+    }else{
+      const svg=document.createElementNS("http://www.w3.org/2000/svg","svg");
+      svg.setAttribute("viewBox","0 0 640 190");
+      svg.setAttribute("role","img");
+      svg.setAttribute("aria-label","Weight measured trend");
+      const grid=document.createElementNS("http://www.w3.org/2000/svg","path");
+      grid.setAttribute("d","M0 38 H640 M0 76 H640 M0 114 H640 M0 152 H640");
+      grid.setAttribute("class","rm214-chart-grid");
+      const line=document.createElementNS("http://www.w3.org/2000/svg","polyline");
+      line.setAttribute("points",sparklinePoints(featureSeries,640,170));
+      line.setAttribute("class","rm214-chart-line");
+      line.setAttribute("fill","none");
+      line.setAttribute("vector-effect","non-scaling-stroke");
+      svg.append(grid,line);
+      featureChart.append(svg);
+    }
+  }
+
   function renderHomeHealthOverview(){
     const target=el("rm-home-health-metrics");
     if(!target)return;
@@ -1863,6 +1977,7 @@
   function renderHealthSnapshot(rows){
     homeHealthSnapshot=Array.isArray(rows)?rows:[];
     renderHomeHealthOverview();
+    renderHealthProgressOverview();
     const target=el("rm-health-data-snapshot");
     target.replaceChildren();
     el("rm-health-data-count").textContent=rows.length+" Metric"+(rows.length===1?"":"s");
@@ -2905,6 +3020,7 @@
   function renderRecentProgress(rows) {
     homeRecentProgress=Array.isArray(rows)?rows:[];
     renderHomeHealthOverview();
+    renderHealthProgressOverview();
     const list = el("rm-recent-progress");
     list.replaceChildren();
     if (!rows.length) return;
@@ -5170,7 +5286,7 @@
       kicker:"HEALTH & PROGRESS",
       title:"Your Vitality & Momentum",
       context:"Progress",
-      selectors:[".rm185-progress-center","#rm-progress-achievements-card","#rm-progress-trends-card","#rm-progress-photos-card","#rm-recent-progress","#rm-checkin-fields","#rm-goals","#rm-habits",".rm124-challenges-card",".rm123-health-card"]
+      selectors:["#rm-health-progress-overview",".rm185-progress-center","#rm-progress-achievements-card","#rm-progress-trends-card","#rm-progress-photos-card","#rm-progress-form-card","#rm-checkin-fields","#rm-goals","#rm-habits",".rm124-challenges-card",".rm123-health-card"]
     },
     nutrition:{
       kicker:"NUTRITION",
