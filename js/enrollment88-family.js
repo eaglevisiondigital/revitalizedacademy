@@ -142,14 +142,6 @@
       bullets: ['Family access for up to 5 profiles','ReVitalized Academy platform access','Private like-minded community','Educational content + monthly community Q&A','AI advisor and signature nutrition/fitness plans','Tracking, habit builder, challenges and Family Health Hub']
     },
     {
-      code: 'vitality-accelerator-cohort',
-      label: 'Group experience',
-      name: 'Vitality Accelerator Cohort',
-      price: '$1,000 · 40 days',
-      best: 'Someone who wants the focused 40-day Accelerator structure in a more affordable group-coaching format.',
-      bullets: ['40-day structured coaching experience','Group coaching format','Individual or couple enrollment','Up to 2 participants','No ongoing one-on-one coaching except emergencies']
-    },
-    {
       code: 'vitality-accelerator',
       label: 'Focused coaching',
       name: 'Vitality Accelerator',
