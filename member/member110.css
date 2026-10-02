@@ -3289,3 +3289,48 @@
   }
   .rm214-progress-layout{padding:12px}
 }
+
+
+/* Build 216: Family Hub consent and scoped sharing */
+.rm216-family-privacy{
+  margin-top:16px;
+  padding:16px;
+  border:1px solid #dce7e0;
+  border-radius:14px;
+  background:linear-gradient(180deg,#fbfdfb,#fff);
+}
+.rm216-family-privacy-head{
+  display:flex;align-items:flex-start;justify-content:space-between;gap:16px
+}
+.rm216-family-privacy-head strong{display:block;color:#214b39;font-size:12px}
+.rm216-family-privacy-head span:not(.rm112-chip){
+  display:block;max-width:760px;margin-top:3px;color:#74847b;font-size:9px;line-height:1.5
+}
+.rm216-family-consent-list{display:grid;gap:10px;margin-top:12px}
+.rm216-family-consent-card{
+  padding:13px;border:1px solid #dfe8e3;border-radius:12px;background:#fff
+}
+.rm216-family-consent-card-head{
+  display:flex;align-items:flex-start;justify-content:space-between;gap:12px
+}
+.rm216-family-consent-card-head strong{display:block;color:#294d3c;font-size:10.5px}
+.rm216-family-consent-card-head span{display:block;margin-top:2px;color:#7b8981;font-size:8px}
+.rm216-family-consent-card-head button{
+  min-height:36px;padding:0 11px;border:1px solid #154734;border-radius:8px;
+  background:#154734;color:#fff;font-size:8.5px;font-weight:900
+}
+.rm216-family-consent-options{display:grid;gap:8px;margin-top:10px}
+.rm216-sharing-toggle{
+  display:grid!important;grid-template-columns:auto 1fr;gap:9px;align-items:flex-start;
+  margin:0!important;padding:10px 11px;border:1px solid #e2e9e5;border-radius:10px;background:#f9fbfa
+}
+.rm216-sharing-toggle input{margin:2px 0 0}
+.rm216-sharing-toggle strong{display:block;color:#315543;font-size:9px}
+.rm216-sharing-toggle small{display:block;margin-top:2px;color:#7b8981;font-size:8px;line-height:1.45}
+.rm216-family-consent-note{
+  padding:10px 11px;border:1px dashed #d8e3dc;border-radius:10px;background:#fbfcfb;
+  color:#7d8a82;font-size:8.5px
+}
+@media(max-width:620px){
+  .rm216-family-privacy-head{display:grid}
+}
