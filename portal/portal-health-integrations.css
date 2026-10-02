@@ -15,3 +15,91 @@
   .client-health-integrations-grid>div{border-right:0!important;border-bottom:1px solid #e3eae6}
   .client-health-integrations-grid>div:last-child{border-bottom:0}
 }
+
+
+.client-health-metric-manager-head{
+  display:flex;align-items:flex-start;justify-content:space-between;gap:16px;
+  margin-top:16px;padding-top:14px;border-top:1px solid #e3ebe6
+}
+.client-health-metric-manager-head>div{min-width:0}
+.client-health-metric-manager-head strong{display:block;color:#244a39;font-size:12px}
+.client-health-metric-manager-head span{
+  display:block;max-width:720px;margin-top:3px;color:#77877e;font-size:9px;line-height:1.45
+}
+.client-health-metrics-panel{
+  margin-top:12px;padding:14px;border:1px solid #dce7e0;border-radius:14px;background:#f9fbfa
+}
+.client-health-metrics-legend{
+  display:flex;flex-wrap:wrap;gap:8px 14px;padding:10px 12px;
+  border:1px solid #e2eae5;border-radius:10px;background:#fff
+}
+.client-health-metrics-legend span{font-size:8.5px;color:#708078}
+.client-health-metrics-legend b{color:#315743}
+.client-health-metrics-summary{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:10px
+}
+.client-health-metrics-summary>div{
+  padding:10px 11px;border:1px solid #e0e8e3;border-radius:10px;background:#fff
+}
+.client-health-metrics-summary span{
+  display:block;color:#7a8880;font-size:8px;font-weight:850;text-transform:uppercase;letter-spacing:.06em
+}
+.client-health-metrics-summary strong{display:block;margin-top:3px;color:#214b39;font-size:18px}
+.client-health-metrics-list{display:grid;gap:12px;margin-top:12px}
+.client-health-metric-group{
+  border:1px solid #dce7e0;border-radius:12px;background:#fff;overflow:hidden
+}
+.client-health-metric-group-head{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:10px 12px;background:#f2f7f4;border-bottom:1px solid #e1e9e4
+}
+.client-health-metric-group-head strong{color:#214b39;font-size:10px}
+.client-health-metric-group-head span{color:#839087;font-size:8px;font-weight:800}
+.client-health-metric-row{
+  display:grid;grid-template-columns:minmax(180px,1.2fr) minmax(360px,1.8fr) auto;
+  gap:12px;align-items:center;padding:12px;border-bottom:1px solid #edf1ee
+}
+.client-health-metric-row:last-child{border-bottom:0}
+.client-health-metric-identity{min-width:0}
+.client-health-metric-identity strong{display:block;color:#284b3a;font-size:10.5px}
+.client-health-metric-identity span{
+  display:block;margin-top:2px;color:#77857d;font-size:8px;font-weight:800
+}
+.client-health-metric-identity small{
+  display:block;margin-top:5px;color:#8b9790;font-size:8px;line-height:1.4
+}
+.client-health-metric-controls{
+  display:grid;grid-template-columns:1fr 1.4fr 78px minmax(135px,.9fr);gap:8px;align-items:end
+}
+.client-health-metric-controls label{display:grid;gap:4px;margin:0}
+.client-health-metric-controls label>span{
+  color:#687970;font-size:7.5px;font-weight:900;text-transform:uppercase;letter-spacing:.05em
+}
+.client-health-metric-controls select,
+.client-health-metric-controls input[type="number"]{
+  width:100%;min-height:34px;border:1px solid #cfdcd4;border-radius:8px;
+  background:#fff;padding:0 8px;color:#314c3e;font:inherit;font-size:9px
+}
+.client-health-manual-toggle{
+  display:flex!important;grid-template-columns:auto 1fr!important;align-items:center!important;
+  gap:7px!important;min-height:34px;padding:0 8px;border:1px solid #dbe5df;border-radius:8px;background:#fbfcfb
+}
+.client-health-manual-toggle input{margin:0}
+.client-health-manual-toggle span{font-size:8px!important;text-transform:none!important;letter-spacing:0!important}
+.client-health-metric-actions{display:flex;flex-direction:column;gap:6px;min-width:118px}
+.client-health-metric-actions button{white-space:nowrap}
+.client-health-metric-controls :disabled,
+.client-health-metric-actions button:disabled{opacity:.55;cursor:not-allowed}
+
+@media(max-width:1050px){
+  .client-health-metric-row{grid-template-columns:1fr}
+  .client-health-metric-actions{flex-direction:row}
+}
+@media(max-width:760px){
+  .client-health-metric-manager-head{display:grid}
+  .client-health-metrics-summary{grid-template-columns:1fr 1fr}
+  .client-health-metric-controls{grid-template-columns:1fr 1fr}
+}
+@media(max-width:520px){
+  .client-health-metrics-summary,.client-health-metric-controls{grid-template-columns:1fr}
+}
