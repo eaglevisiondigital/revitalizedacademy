@@ -10,7 +10,7 @@ test('Health Trends vNext enriches the existing health card behind a default-off
   assert.match(js,/from\("my_health_dashboard_cards_30d"\)/);
   assert.match(js,/rpc\("get_my_health_metric_trend"/);
   assert.match(html,/id="rm-health-trends"[^>]*hidden/);
-  assert.equal((html.match(/rm123-health-card/g)||[]).length,1);
+  assert.equal((html.match(/<section[^>]*class="[^"]*rm123-health-card[^"]*"/g)||[]).length,1);
 });
 
 test('Health Trends is biometrics-gated, post-first-paint, and limited to four cards',()=>{
