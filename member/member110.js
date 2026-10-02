@@ -1877,18 +1877,21 @@
     const featureRow=healthMetricRow(featureDef.keys);
     const featureSeries=healthMetricSeries(featureDef.keys);
 
+    const featureValue=measuredNumber(featureRow?.value_numeric);
+    const validWeightReadings=Math.max(featureSeries.length,featureValue!==null?1:0);
+
     el("rm-health-feature-label").textContent="Weight Trend";
     el("rm-health-feature-value").textContent=formatTrackedMetric(featureRow);
-    el("rm-health-feature-meta").textContent=featureSeries.length>=2
-      ?featureSeries.length+" measured readings"
-      :(featureRow?"1 measured reading":"Building baseline");
-    el("rm-health-feature-period").textContent=featureSeries.length>=2?"Measured history":"Recent history";
+    el("rm-health-feature-meta").textContent=validWeightReadings>=2
+      ?validWeightReadings+" measured readings"
+      :(validWeightReadings===1?"1 measured reading":"Building baseline");
+    el("rm-health-feature-period").textContent=validWeightReadings>=2?"Measured history":"Recent history";
 
     featureChart.replaceChildren();
     if(featureSeries.length<2){
       const empty=document.createElement("div");
       empty.className="rm214-chart-empty";
-      empty.textContent=featureRow
+      empty.textContent=validWeightReadings===1
         ?"Add another valid Weight reading to begin the trend."
         :"Your measured Weight trend will appear here after at least two valid readings.";
       featureChart.append(empty);
@@ -3902,6 +3905,9 @@
 
     if(loadSequence!==dashboardLoadSequence)return;
     progressPhotosVNextEnabled=Boolean(!flagResult.error&&flagResult.data?.config_value===true);
+    const photoShortcut=el("rm-health-photos-shortcut");
+    if(photoShortcut)photoShortcut.classList.toggle("rm185-feature-hidden",!progressPhotosVNextEnabled);
+
     if(!progressPhotosVNextEnabled){
       progressPhotoUploadEnabled=false;
       el("rm-progress-photo-upload")?.classList.add("hidden");
