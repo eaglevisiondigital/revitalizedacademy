@@ -1685,6 +1685,17 @@
     const connected=rows.filter((row)=>row.status==="connected").length;
     el("rm-health-connection-count").textContent=connected+" Connected";
 
+    if(!rows.length){
+      const empty=document.createElement("div");
+      empty.className="rm214-connection-empty";
+      const titleEl=document.createElement("strong");
+      titleEl.textContent="No health provider connected yet";
+      const copy=document.createElement("span");
+      copy.textContent="When Apple Health, Android Health Connect or another approved source is connected, supported measurements will appear here automatically.";
+      empty.append(titleEl,copy);
+      list.append(empty);
+    }
+
     rows.forEach((row)=>{
       const item=document.createElement("div");
       item.className="rm192-health-provider";
@@ -3003,6 +3014,27 @@
   function renderMetricOptions() {
     const select = el("rm-progress-metric");
     select.replaceChildren();
+
+    if(!metricCatalog.length){
+      const option=document.createElement("option");
+      option.value="";
+      option.textContent="No trackable progress metrics are available yet";
+      option.disabled=true;
+      option.selected=true;
+      select.append(option);
+      select.disabled=true;
+      el("rm-progress-value").disabled=true;
+      el("rm-progress-note").disabled=true;
+      el("rm-progress-form").querySelector('button[type="submit"]').disabled=true;
+      el("rm-progress-unit").textContent="Your ReVitalized team can enable manual tracking metrics for this program.";
+      return;
+    }
+
+    select.disabled=false;
+    el("rm-progress-value").disabled=false;
+    el("rm-progress-note").disabled=false;
+    el("rm-progress-form").querySelector('button[type="submit"]').disabled=false;
+
     metricCatalog.forEach((metric) => {
       const option = document.createElement("option");
       option.value = metric.metric_key;
