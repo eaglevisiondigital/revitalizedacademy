@@ -21,7 +21,6 @@
   const params = new URLSearchParams(window.location.search);
   const allowedPlans = new Set([
     'holistic-foundations',
-    'vitality-accelerator-cohort',
     'vitality-accelerator',
     'total-wellness-6',
     'total-wellness-12',
