@@ -1267,6 +1267,7 @@
   let homeRecentProgress=[];
   let homeHealthTrendSeries=new Map();
   let memberHealthMetricConfig=[];
+  let memberHealthMetricConfigLoaded=false;
 
   let communitySpaces=[];
   let communityFeed=[];
@@ -1886,8 +1887,8 @@
     };
     const configured=(Array.isArray(memberHealthMetricConfig)?memberHealthMetricConfig:[])
       .filter((row)=>row.tracking_mode!=="hidden")
-      .sort((a,b)=>Number(a.display_order||100)-Number(b.display_order||100));
-    const metricDefs=(configured.length?configured:[
+      .sort((a,b)=>Number(a.display_order??100)-Number(b.display_order??100));
+    const fallbackMetricDefs=[
       {metric_key:"weight",label:"Weight",tracking_mode:"highlighted",display_order:10},
       {metric_key:"steps",label:"Steps",tracking_mode:"available",display_order:20},
       {metric_key:"resting_heart_rate",label:"Resting Heart Rate",tracking_mode:"available",display_order:30},
@@ -1895,7 +1896,8 @@
       {metric_key:"water_intake",label:"Water / Hydration",tracking_mode:"highlighted",display_order:70},
       {metric_key:"energy_level",label:"Energy",tracking_mode:"highlighted",display_order:80},
       {metric_key:"mood_score",label:"Mood",tracking_mode:"available",display_order:90}
-    ]).map((row)=>({
+    ];
+    const metricDefs=(memberHealthMetricConfigLoaded?configured:fallbackMetricDefs).map((row)=>({
       ...row,
       keys:aliases[row.metric_key]||[row.metric_key],
       icon:icons[row.metric_key]||"•"
@@ -1904,10 +1906,24 @@
     const featureDef=metricDefs.find((row)=>row.metric_key==="weight")
       ||metricDefs.find((row)=>row.tracking_mode==="highlighted")
       ||metricDefs[0]
-      ||{metric_key:"weight",label:"Weight",keys:["weight"],icon:"↘"};
+      ||null;
 
     metricTarget.replaceChildren();
-    metricDefs.filter((def)=>def.metric_key!==featureDef.metric_key).slice(0,8).forEach((def)=>{
+
+    if(!featureDef){
+      el("rm-health-feature-label").textContent="Health Metrics";
+      el("rm-health-feature-value").textContent="No metrics selected";
+      el("rm-health-feature-meta").textContent="Configuration ready";
+      el("rm-health-feature-period").textContent="No active metrics";
+      featureChart.replaceChildren();
+      const empty=document.createElement("div");
+      empty.className="rm214-chart-empty";
+      empty.textContent="Your ReVitalized team has not enabled any Health & Progress metrics for this account.";
+      featureChart.append(empty);
+      return;
+    }
+
+    metricDefs.filter((def)=>def.metric_key!==featureDef.metric_key).forEach((def)=>{
       const row=healthMetricRow(def.keys);
       const series=healthMetricSeries(def.keys);
       const card=document.createElement("div");
@@ -3069,7 +3085,9 @@
         .map((row)=>row.metric_key)
     );
     const availableMetrics=metricCatalog.filter((metric)=>
-      configuredManual.size?configuredManual.has(metric.metric_key):metric.member_trackable!==false
+      memberHealthMetricConfigLoaded
+        ? configuredManual.has(metric.metric_key)
+        : metric.member_trackable!==false
     );
 
     if(!availableMetrics.length){
@@ -5003,6 +5021,7 @@
     );
 
     memberHealthMetricConfig=healthMetricConfigResult.error?[]:(healthMetricConfigResult.data||[]);
+    memberHealthMetricConfigLoaded=!healthMetricConfigResult.error;
     metricCatalog=metricsResult.error?[]:(metricsResult.data||[]);
     renderMetricOptions();
     renderRecentProgress(progressResult.error?[]:(progressResult.data||[]));
@@ -5032,6 +5051,8 @@
     if(lifecycle!==true){window.location.replace("/member/onboarding/");return;}
     const loadSequence=++dashboardLoadSequence;
     homeVNextEnabled=false;
+    memberHealthMetricConfig=[];
+    memberHealthMetricConfigLoaded=false;
     progressVNextEnabled=false;
     coachingVNextEnabled=false;
     familyVNextEnabled=false;
