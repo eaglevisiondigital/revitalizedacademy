@@ -13,7 +13,7 @@
   <link rel="shortcut icon" type="image/png" href="../assets/images/revitalized-icon-approved.png">
   <link rel="apple-touch-icon" href="../assets/images/revitalized-icon-approved.png">
   <link rel="manifest" href="manifest.webmanifest?v=171">
-  <link rel="stylesheet" href="member110.css?v=197">
+  <link rel="stylesheet" href="member110.css?v=198">
 </head>
 <body>
   <main class="rm112-page">
@@ -519,7 +519,7 @@
       </section>
 
       <div class="rm112-grid rm114-coaching-grid">
-        <section class="rm112-card">
+        <section id="rm-progress-form-card" class="rm112-card">
           <div class="rm112-card-head">
             <div>
               <p class="rm112-kicker">PROGRESS</p>
@@ -633,6 +633,49 @@
           </form>
         </section>
       </div>
+
+      <section id="rm-health-progress-overview" class="rm112-card rm214-health-progress-overview">
+        <div class="rm214-progress-hero">
+          <div>
+            <p class="rm112-kicker">YOUR PROGRESS STORY</p>
+            <h2>Health &amp; Progress</h2>
+            <p>Your tracked measurements, wearable data, habits and coaching progress in one private view.</p>
+          </div>
+          <div class="rm214-progress-actions">
+            <button type="button" data-member-jump="#rm-progress-form-card">Log Progress</button>
+            <button type="button" class="secondary" data-member-jump=".rm123-health-card">Health Connections</button>
+          </div>
+        </div>
+
+        <div class="rm214-progress-layout">
+          <section class="rm214-feature-chart">
+            <div class="rm214-feature-chart-head">
+              <div>
+                <span id="rm-health-feature-label">Weight Trend</span>
+                <strong id="rm-health-feature-value">Awaiting data</strong>
+              </div>
+              <span id="rm-health-feature-meta" class="rm214-data-state">Building baseline</span>
+            </div>
+            <div id="rm-health-feature-chart" class="rm214-feature-chart-body">
+              <div class="rm214-chart-empty">Your measured trend will appear here after at least two valid readings.</div>
+            </div>
+            <div class="rm214-chart-footer">
+              <span>Measured data only</span>
+              <span id="rm-health-feature-period">Recent history</span>
+            </div>
+          </section>
+
+          <div id="rm-health-progress-metrics" class="rm214-metric-grid"></div>
+        </div>
+
+        <div class="rm214-health-nav">
+          <button type="button" data-health-focus="overview" class="active"><span>◎</span><strong>Overview</strong><small>Current measurements</small></button>
+          <button type="button" data-member-jump="#rm-goals"><span>◇</span><strong>Goals</strong><small>Targets &amp; milestones</small></button>
+          <button type="button" data-member-jump="#rm-habits"><span>✓</span><strong>Habits</strong><small>Daily rhythms</small></button>
+          <button type="button" data-member-jump="#rm-progress-photos-card"><span>▣</span><strong>Photos</strong><small>Private progress history</small></button>
+          <button type="button" data-member-jump=".rm123-health-card"><span>♡</span><strong>Devices</strong><small>Wearables &amp; permissions</small></button>
+        </div>
+      </section>
 
       <section class="rm112-card rm185-progress-center">
         <div class="rm112-card-head">
@@ -1297,6 +1340,6 @@
   </main>
 
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
-  <script defer src="member110.js?v=200"></script>
+  <script defer src="member110.js?v=201"></script>
 </body>
 </html>
