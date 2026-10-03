@@ -478,9 +478,11 @@
     courses:{table:"learning_courses",label:"Courses",select:"id,title,description,status,estimated_minutes,version",order:"title"},
     challenges:{table:"wellness_challenges",label:"Challenges",select:"id,title,description,status,scope,starts_on,ends_on",order:"title"},
     "meal-plans":{table:"meal_plan_templates",label:"Meal Plans",select:"id,title,description,status,days_count",order:"title"},
-    recipes:{table:"recipes",label:"Recipes",select:"id,title,status,meal_type,prep_minutes,cook_minutes",order:"title"},
-    fitness:{table:"fitness_programs",label:"Fitness Programs",select:"id,title,description,status,difficulty,environment,weeks",order:"title"},
-    workouts:{table:"workout_templates",label:"Workouts",select:"id,title,description,status,category,difficulty,environment,duration_minutes",order:"title"},
+    recipes:{table:"recipes",label:"Recipes",select:"id,title,status,meal_type,prep_minutes,cook_minutes,image_url,image_alt,nutrition",order:"title"},
+    foods:{table:"food_catalog",label:"Foods & Ingredients",select:"id,name,category,guidance_status,serving_guidance,image_url,image_alt,nutrition,active",order:"name",nameField:"name"},
+    fitness:{table:"fitness_programs",label:"Fitness Programs",select:"id,title,description,status,difficulty,environment,weeks,image_url,image_alt",order:"title"},
+    workouts:{table:"workout_templates",label:"Workouts",select:"id,title,description,status,category,difficulty,environment,duration_minutes,image_url,image_alt,workout_type,muscle_groups,equipment",order:"title"},
+    exercises:{table:"exercise_catalog",label:"Exercises",select:"id,name,category,status,difficulty,environment,equipment,instructions,restriction_notes,video_url,tags,image_url,image_alt,primary_muscle_group,secondary_muscle_groups,movement_type,low_impact",order:"name",nameField:"name"},
     resources:{table:"resource_library",label:"Resources",select:"id,title,description,status,resource_type,resource_url,category",order:"title"}
   };
   let contentCache={};
@@ -494,9 +496,11 @@
     if(key==="courses")return [row.version?"Version "+row.version:null,row.estimated_minutes?row.estimated_minutes+" min":null].filter(Boolean).join(" · ")||"Course Content";
     if(key==="challenges")return [row.scope?portal.titleCase(row.scope):null,row.starts_on&&row.ends_on?row.starts_on+" to "+row.ends_on:null].filter(Boolean).join(" · ")||"Wellness Challenge";
     if(key==="meal-plans")return row.days_count?row.days_count+" day plan":"Meal Plan Template";
-    if(key==="recipes")return [row.meal_type?portal.titleCase(row.meal_type):null,row.prep_minutes?row.prep_minutes+" min prep":null,row.cook_minutes?row.cook_minutes+" min cook":null].filter(Boolean).join(" · ")||"Recipe";
+    if(key==="recipes")return [row.meal_type?portal.titleCase(row.meal_type):null,row.nutrition?.protein_g!==undefined?row.nutrition.protein_g+"g protein":null,row.prep_minutes?row.prep_minutes+" min prep":null,row.cook_minutes?row.cook_minutes+" min cook":null].filter(Boolean).join(" · ")||"Recipe";
+    if(key==="foods")return [row.category?portal.titleCase(row.category):null,row.serving_guidance||null,row.nutrition?.protein_g!==undefined?row.nutrition.protein_g+"g protein":null].filter(Boolean).join(" · ")||"Food / Ingredient";
     if(key==="fitness")return [row.difficulty?portal.titleCase(row.difficulty):null,row.environment?portal.titleCase(row.environment):null,row.weeks?row.weeks+" weeks":null].filter(Boolean).join(" · ")||"Fitness Program";
-    if(key==="workouts")return [row.category?portal.titleCase(row.category):null,row.difficulty?portal.titleCase(row.difficulty):null,row.environment?portal.titleCase(row.environment):null,row.duration_minutes?row.duration_minutes+" min":null].filter(Boolean).join(" · ")||"Workout";
+    if(key==="workouts")return [row.workout_type?portal.titleCase(row.workout_type):row.category?portal.titleCase(row.category):null,Array.isArray(row.muscle_groups)&&row.muscle_groups.length?row.muscle_groups.map(portal.titleCase).join(", "):null,row.difficulty?portal.titleCase(row.difficulty):null,row.duration_minutes?row.duration_minutes+" min":null].filter(Boolean).join(" · ")||"Workout";
+    if(key==="exercises")return [row.primary_muscle_group?portal.titleCase(row.primary_muscle_group):null,row.movement_type?portal.titleCase(row.movement_type):row.category?portal.titleCase(row.category):null,row.difficulty?portal.titleCase(row.difficulty):null,row.low_impact?"Low Impact":null].filter(Boolean).join(" · ")||"Exercise";
     if(key==="resources")return [row.resource_type?portal.titleCase(row.resource_type):null,row.category||null].filter(Boolean).join(" · ")||"Resource";
     return "";
   };
@@ -516,11 +520,15 @@
     }else if(type==="meal-plans"){
       dynamicFields.innerHTML='<label class="wide"><span>Nutrition methodology</span><select id="content-methodology" required>'+methodologyOptions(nutritionMethodologies)+'</select></label><label><span>Days in plan</span><input id="content-days" type="number" min="1" max="90" step="1" value="7"></label>';
     }else if(type==="recipes"){
-      dynamicFields.innerHTML='<label class="wide"><span>Nutrition methodology</span><select id="content-methodology" required>'+methodologyOptions(nutritionMethodologies)+'</select></label><label><span>Meal type</span><select id="content-meal-type"><option value="breakfast">Breakfast</option><option value="lunch">Lunch</option><option value="dinner">Dinner</option><option value="snack">Snack</option><option value="beverage">Beverage</option><option value="other">Other</option></select></label><label><span>Servings</span><input id="content-servings" type="number" min="0.1" step="0.1"></label><label><span>Prep minutes</span><input id="content-prep" type="number" min="0" step="1"></label><label><span>Cook minutes</span><input id="content-cook" type="number" min="0" step="1"></label><label class="wide"><span>Instructions</span><textarea id="content-instructions" rows="5"></textarea></label>';
+      dynamicFields.innerHTML='<label class="wide"><span>Nutrition methodology</span><select id="content-methodology" required>'+methodologyOptions(nutritionMethodologies)+'</select></label><label><span>Meal type</span><select id="content-meal-type"><option value="breakfast">Breakfast</option><option value="lunch">Lunch</option><option value="dinner">Dinner</option><option value="snack">Snack</option><option value="beverage">Beverage</option><option value="other">Other</option></select></label><label><span>Servings</span><input id="content-servings" type="number" min="0.1" step="0.1"></label><label><span>Prep minutes</span><input id="content-prep" type="number" min="0" step="1"></label><label><span>Cook minutes</span><input id="content-cook" type="number" min="0" step="1"></label><label class="wide"><span>Main image URL</span><input id="content-image-url" type="url" maxlength="1200" placeholder="https://..."></label><label class="wide"><span>Image alt text</span><input id="content-image-alt" type="text" maxlength="240" placeholder="Grilled chicken bowl"></label><label><span>Calories / serving</span><input id="content-calories" type="number" min="0" step="1"></label><label><span>Protein (g)</span><input id="content-protein" type="number" min="0" step="0.1"></label><label><span>Carbs (g)</span><input id="content-carbs" type="number" min="0" step="0.1"></label><label><span>Fat (g)</span><input id="content-fat" type="number" min="0" step="0.1"></label><label><span>Fiber (g)</span><input id="content-fiber" type="number" min="0" step="0.1"></label><label><span>Sugar (g)</span><input id="content-sugar" type="number" min="0" step="0.1"></label><label><span>Sodium (mg)</span><input id="content-sodium" type="number" min="0" step="1"></label><label class="wide"><span>Instructions</span><textarea id="content-instructions" rows="5"></textarea></label>';
+    }else if(type==="foods"){
+      dynamicFields.innerHTML='<label class="wide"><span>Nutrition methodology</span><select id="content-methodology" required>'+methodologyOptions(nutritionMethodologies)+'</select></label><label><span>Category</span><input id="content-category" type="text" maxlength="80" placeholder="Protein, Produce, Grain..."></label><label><span>Serving guidance</span><input id="content-serving-guidance" type="text" maxlength="240" placeholder="3 oz cooked, 1 cup..."></label><label class="wide"><span>Ingredient image URL (optional)</span><input id="content-image-url" type="url" maxlength="1200" placeholder="https://..."></label><label class="wide"><span>Image alt text</span><input id="content-image-alt" type="text" maxlength="240"></label><label><span>Calories / serving</span><input id="content-calories" type="number" min="0" step="1"></label><label><span>Protein (g)</span><input id="content-protein" type="number" min="0" step="0.1"></label><label><span>Carbs (g)</span><input id="content-carbs" type="number" min="0" step="0.1"></label><label><span>Fat (g)</span><input id="content-fat" type="number" min="0" step="0.1"></label><label><span>Fiber (g)</span><input id="content-fiber" type="number" min="0" step="0.1"></label><label><span>Sugar (g)</span><input id="content-sugar" type="number" min="0" step="0.1"></label><label><span>Sodium (mg)</span><input id="content-sodium" type="number" min="0" step="1"></label>';
     }else if(type==="fitness"){
-      dynamicFields.innerHTML='<label class="wide"><span>Fitness methodology</span><select id="content-methodology" required>'+methodologyOptions(fitnessMethodologies)+'</select></label><label><span>Difficulty</span><select id="content-difficulty"><option value="beginner">Beginner</option><option value="intermediate">Intermediate</option><option value="advanced">Advanced</option></select></label><label><span>Environment</span><select id="content-environment"><option value="either">Home or Gym</option><option value="home">Home</option><option value="gym">Gym</option></select></label><label><span>Weeks</span><input id="content-weeks" type="number" min="1" step="1"></label>';
+      dynamicFields.innerHTML='<label class="wide"><span>Fitness methodology</span><select id="content-methodology" required>'+methodologyOptions(fitnessMethodologies)+'</select></label><label><span>Difficulty</span><select id="content-difficulty"><option value="beginner">Beginner</option><option value="intermediate">Intermediate</option><option value="advanced">Advanced</option></select></label><label><span>Environment</span><select id="content-environment"><option value="either">Home or Gym</option><option value="home">Home</option><option value="gym">Gym</option></select></label><label><span>Weeks</span><input id="content-weeks" type="number" min="1" step="1"></label><label class="wide"><span>Program image URL</span><input id="content-image-url" type="url" maxlength="1200" placeholder="https://..."></label><label class="wide"><span>Image alt text</span><input id="content-image-alt" type="text" maxlength="240"></label>';
     }else if(type==="workouts"){
-      dynamicFields.innerHTML='<label class="wide"><span>Fitness methodology</span><select id="content-methodology" required>'+methodologyOptions(fitnessMethodologies)+'</select></label><label><span>Category</span><input id="content-category" type="text" maxlength="80" placeholder="Strength, Mobility, HIIT..."></label><label><span>Difficulty</span><select id="content-difficulty"><option value="beginner">Beginner</option><option value="intermediate">Intermediate</option><option value="advanced">Advanced</option></select></label><label><span>Environment</span><select id="content-environment"><option value="either">Home or Gym</option><option value="home">Home</option><option value="gym">Gym</option></select></label><label><span>Duration minutes</span><input id="content-duration" type="number" min="1" step="1"></label>';
+      dynamicFields.innerHTML='<label class="wide"><span>Fitness methodology</span><select id="content-methodology" required>'+methodologyOptions(fitnessMethodologies)+'</select></label><label><span>Workout type</span><select id="content-workout-type"><option value="strength">Strength / Weights</option><option value="cardio">Cardio</option><option value="hiit">HIIT</option><option value="mobility">Mobility</option><option value="stretching">Stretching</option><option value="core">Core</option><option value="bodyweight">Bodyweight</option><option value="bands">Resistance Bands</option><option value="recovery">Recovery / Low Impact</option><option value="circuit">Circuit Training</option><option value="conditioning">Conditioning</option><option value="aquatic">Pool / Aquatic</option></select></label><label><span>Category</span><input id="content-category" type="text" maxlength="80" placeholder="Upper Body, Lower Body, Full Body..."></label><label class="wide"><span>Muscle groups</span><input id="content-muscle-groups" type="text" maxlength="500" placeholder="chest, back, shoulders"></label><label class="wide"><span>Equipment</span><input id="content-equipment" type="text" maxlength="500" placeholder="dumbbells, bench, resistance bands"></label><label><span>Difficulty</span><select id="content-difficulty"><option value="beginner">Beginner</option><option value="intermediate">Intermediate</option><option value="advanced">Advanced</option></select></label><label><span>Environment</span><select id="content-environment"><option value="either">Home or Gym</option><option value="home">Home</option><option value="gym">Gym</option><option value="pool">Pool</option></select></label><label><span>Duration minutes</span><input id="content-duration" type="number" min="1" step="1"></label><label class="wide"><span>Workout image URL</span><input id="content-image-url" type="url" maxlength="1200" placeholder="https://..."></label><label class="wide"><span>Image alt text</span><input id="content-image-alt" type="text" maxlength="240"></label>';
+    }else if(type==="exercises"){
+      dynamicFields.innerHTML='<label class="wide"><span>Fitness methodology</span><select id="content-methodology" required>'+methodologyOptions(fitnessMethodologies)+'</select></label><label><span>Exercise type</span><select id="content-movement-type"><option value="strength">Strength / Weights</option><option value="cardio">Cardio</option><option value="hiit">HIIT</option><option value="mobility">Mobility</option><option value="stretching">Stretching</option><option value="core">Core</option><option value="bodyweight">Bodyweight</option><option value="bands">Resistance Bands</option><option value="recovery">Recovery / Low Impact</option><option value="aquatic">Pool / Aquatic</option></select></label><label><span>Primary muscle group</span><select id="content-primary-muscle"><option value="chest">Chest</option><option value="back">Back</option><option value="shoulders">Shoulders</option><option value="biceps">Biceps</option><option value="triceps">Triceps</option><option value="forearms">Forearms</option><option value="core">Core / Abs</option><option value="glutes">Glutes</option><option value="quadriceps">Quadriceps</option><option value="hamstrings">Hamstrings</option><option value="calves">Calves</option><option value="full_body">Full Body</option></select></label><label class="wide"><span>Secondary muscle groups</span><input id="content-secondary-muscles" type="text" maxlength="500" placeholder="triceps, shoulders"></label><label class="wide"><span>Equipment</span><input id="content-equipment" type="text" maxlength="500" placeholder="dumbbells, barbell, cable"></label><label><span>Difficulty</span><select id="content-difficulty"><option value="all">All Levels</option><option value="beginner">Beginner</option><option value="intermediate">Intermediate</option><option value="advanced">Advanced</option></select></label><label><span>Environment</span><select id="content-environment"><option value="either">Home or Gym</option><option value="home">Home</option><option value="gym">Gym</option><option value="pool">Pool</option></select></label><label class="wide"><span>Exercise image URL</span><input id="content-image-url" type="url" maxlength="1200" placeholder="https://..."></label><label class="wide"><span>Demo video URL (optional)</span><input id="content-video-url" type="url" maxlength="1200" placeholder="https://..."></label><label class="wide"><span>Image alt text</span><input id="content-image-alt" type="text" maxlength="240"></label><label class="wide"><span>Instructions / coaching cues</span><textarea id="content-instructions" rows="4"></textarea></label><label class="wide"><span>Restrictions / modifications</span><textarea id="content-restrictions" rows="3" placeholder="Low knee impact, no jumping, seated option..."></textarea></label><label class="program-content-check"><input id="content-low-impact" type="checkbox"><span>Low-impact option</span></label>';
     }else{
       dynamicFields.innerHTML='<label><span>Resource type</span><select id="content-resource-type"><option value="pdf">PDF</option><option value="video">Video</option><option value="audio">Audio</option><option value="worksheet">Worksheet</option><option value="link">Link</option><option value="guide">Guide</option><option value="other">Other</option></select></label><label><span>Category</span><input id="content-resource-category" type="text" maxlength="80" placeholder="Getting Started, Nutrition, Coaching..."></label><label class="wide"><span>Resource URL</span><input id="content-resource-url" type="url" maxlength="1000" placeholder="https://..." required></label>';
     }
@@ -841,9 +849,18 @@
     rows.forEach(row=>{
       const item=document.createElement("article");item.className="program-content-row";
       const copy=document.createElement("div");copy.className="program-content-copy";
-      const name=document.createElement("strong");name.textContent=row.title||"Untitled";
+      if(row.image_url){
+        const image=document.createElement("img");
+        image.className="program-content-thumb";
+        image.src=row.image_url;
+        image.alt=row.image_alt||row.title||row.name||"Content image";
+        image.loading="lazy";
+        copy.append(image);
+      }
+      const text=document.createElement("div");text.className="program-content-copy-text";
+      const name=document.createElement("strong");name.textContent=row.title||row.name||"Untitled";
       const desc=document.createElement("span");desc.textContent=row.description||contentDetail(activeContent,row);
-      copy.append(name,desc);
+      text.append(name,desc);copy.append(text);
       const detail=document.createElement("span");detail.textContent=contentDetail(activeContent,row);
       const status=document.createElement("span");status.className="program-content-status "+String(row.status||"draft").toLowerCase();status.textContent=portal.titleCase(row.status||"draft");
       const actions=document.createElement("div");actions.className="program-content-row-actions";
@@ -894,6 +911,33 @@
     syncContentManagementAccess();
   }
 
+  function contentNumber(id){
+    const value=document.getElementById(id)?.value;
+    return value!==undefined&&value!==null&&value!==""?Number(value):null;
+  }
+
+  function contentListValues(id){
+    return String(document.getElementById(id)?.value||"")
+      .split(",")
+      .map((value)=>value.trim().toLowerCase().replace(/\s+/g,"_"))
+      .filter(Boolean);
+  }
+
+  function nutritionPayload(){
+    const pairs=[
+      ["calories","content-calories"],
+      ["protein_g","content-protein"],
+      ["carbs_g","content-carbs"],
+      ["fat_g","content-fat"],
+      ["fiber_g","content-fiber"],
+      ["sugar_g","content-sugar"],
+      ["sodium_mg","content-sodium"]
+    ];
+    return Object.fromEntries(
+      pairs.map(([key,id])=>[key,contentNumber(id)]).filter(([,value])=>value!==null)
+    );
+  }
+
   async function createContent(event){
     event.preventDefault();
     if(!contentType||!contentTitle)return;
@@ -901,7 +945,10 @@
     const source=contentSources[key];
     const title=contentTitle.value.trim();
     if(!title)return;
-    const common={title,description:contentDescription?.value.trim()||null,status:"draft",created_by:portal.currentUserId()};
+    const usesName=Boolean(source.nameField);
+    const common=usesName
+      ?{name:title,created_by:portal.currentUserId()}
+      :{title,description:contentDescription?.value.trim()||null,status:"draft",created_by:portal.currentUserId()};
     let payload={...common};
 
     if(key==="courses"){
@@ -933,26 +980,57 @@
     }else if(key==="recipes"){
       payload.methodology_id=document.getElementById("content-methodology")?.value||null;
       payload.meal_type=document.getElementById("content-meal-type")?.value||"other";
-      const servings=document.getElementById("content-servings")?.value;
-      const prep=document.getElementById("content-prep")?.value;
-      const cook=document.getElementById("content-cook")?.value;
-      payload.servings=servings?Number(servings):null;
-      payload.prep_minutes=prep?Number(prep):null;
-      payload.cook_minutes=cook?Number(cook):null;
+      payload.servings=contentNumber("content-servings");
+      payload.prep_minutes=contentNumber("content-prep");
+      payload.cook_minutes=contentNumber("content-cook");
       payload.instructions=document.getElementById("content-instructions")?.value.trim()||null;
+      payload.image_url=document.getElementById("content-image-url")?.value.trim()||null;
+      payload.image_alt=document.getElementById("content-image-alt")?.value.trim()||null;
+      payload.nutrition=nutritionPayload();
+    }else if(key==="foods"){
+      payload.methodology_id=document.getElementById("content-methodology")?.value||null;
+      payload.category=document.getElementById("content-category")?.value.trim()||null;
+      payload.serving_guidance=document.getElementById("content-serving-guidance")?.value.trim()||null;
+      payload.image_url=document.getElementById("content-image-url")?.value.trim()||null;
+      payload.image_alt=document.getElementById("content-image-alt")?.value.trim()||null;
+      payload.nutrition=nutritionPayload();
+      payload.guidance_status="approved";
+      payload.active=true;
     }else if(key==="fitness"){
       payload.methodology_id=document.getElementById("content-methodology")?.value||null;
       payload.difficulty=document.getElementById("content-difficulty")?.value||"beginner";
       payload.environment=document.getElementById("content-environment")?.value||"either";
-      const weeks=document.getElementById("content-weeks")?.value;
-      payload.weeks=weeks?Number(weeks):null;
+      payload.weeks=contentNumber("content-weeks");
+      payload.image_url=document.getElementById("content-image-url")?.value.trim()||null;
+      payload.image_alt=document.getElementById("content-image-alt")?.value.trim()||null;
     }else if(key==="workouts"){
       payload.methodology_id=document.getElementById("content-methodology")?.value||null;
+      payload.workout_type=document.getElementById("content-workout-type")?.value||"strength";
       payload.category=document.getElementById("content-category")?.value.trim()||null;
+      payload.muscle_groups=contentListValues("content-muscle-groups");
+      payload.equipment=contentListValues("content-equipment");
       payload.difficulty=document.getElementById("content-difficulty")?.value||"beginner";
       payload.environment=document.getElementById("content-environment")?.value||"either";
-      const duration=document.getElementById("content-duration")?.value;
-      payload.duration_minutes=duration?Number(duration):null;
+      payload.duration_minutes=contentNumber("content-duration");
+      payload.image_url=document.getElementById("content-image-url")?.value.trim()||null;
+      payload.image_alt=document.getElementById("content-image-alt")?.value.trim()||null;
+    }else if(key==="exercises"){
+      payload.methodology_id=document.getElementById("content-methodology")?.value||null;
+      payload.category=document.getElementById("content-movement-type")?.value||"strength";
+      payload.movement_type=document.getElementById("content-movement-type")?.value||"strength";
+      payload.primary_muscle_group=document.getElementById("content-primary-muscle")?.value||"full_body";
+      payload.secondary_muscle_groups=contentListValues("content-secondary-muscles");
+      payload.equipment=contentListValues("content-equipment");
+      payload.difficulty=document.getElementById("content-difficulty")?.value||"all";
+      payload.environment=document.getElementById("content-environment")?.value||"either";
+      payload.image_url=document.getElementById("content-image-url")?.value.trim()||null;
+      payload.image_alt=document.getElementById("content-image-alt")?.value.trim()||null;
+      payload.video_url=document.getElementById("content-video-url")?.value.trim()||null;
+      payload.instructions=document.getElementById("content-instructions")?.value.trim()||null;
+      payload.restriction_notes=document.getElementById("content-restrictions")?.value.trim()||null;
+      payload.low_impact=Boolean(document.getElementById("content-low-impact")?.checked);
+      payload.tags=[];
+      payload.status="draft";
     }else{
       payload.resource_key=slugify(title);
       payload.resource_type=document.getElementById("content-resource-type")?.value||"other";
@@ -964,7 +1042,7 @@
       }
     }
 
-    if(["meal-plans","recipes","fitness","workouts"].includes(key)&&!payload.methodology_id){
+    if(["meal-plans","recipes","foods","fitness","workouts","exercises"].includes(key)&&!payload.methodology_id){
       portal.showStatus(formStatus,"A ReVitalized methodology must be configured before creating this content type.","error");return;
     }
 
