@@ -46,3 +46,32 @@ test('migration adds media to recipes foods exercises workouts and programs',()=
   }
   assert.match(sql,/image_url text/);
 });
+
+
+test('recipe and food payloads match existing schemas',()=>{
+  const js=read('portal/portal-programs.js');
+  assert.match(js,/descriptionField:false/);
+  assert.match(js,/createdBy:false/);
+  assert.match(js,/payload\.active=false/);
+});
+
+test('exercise types map into compatible legacy categories',()=>{
+  const js=read('portal/portal-programs.js');
+  assert.match(js,/function legacyExerciseCategory/);
+  assert.match(js,/\["strength","core","bodyweight","bands"\]/);
+  assert.match(js,/\["cardio","hiit","aquatic"\]/);
+  assert.match(js,/\["mobility","stretching"\]/);
+  assert.match(js,/payload\.category=legacyExerciseCategory\(payload\.movement_type\)/);
+});
+
+test('food lifecycle uses active controls rather than publish fields',()=>{
+  const js=read('portal/portal-programs.js');
+  assert.match(js,/row\.active\?"Deactivate":"Activate"/);
+  assert.match(js,/payload=\{active:nextStatus==="active"/);
+});
+
+test('pool is not offered as legacy environment',()=>{
+  const js=read('portal/portal-programs.js');
+  assert.doesNotMatch(js,/<option value="pool">Pool<\/option>/);
+  assert.match(js,/<option value="aquatic">Pool \/ Aquatic<\/option>/);
+});
