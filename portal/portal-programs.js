@@ -478,8 +478,8 @@
     courses:{table:"learning_courses",label:"Courses",select:"id,title,description,status,estimated_minutes,version",order:"title"},
     challenges:{table:"wellness_challenges",label:"Challenges",select:"id,title,description,status,scope,starts_on,ends_on",order:"title"},
     "meal-plans":{table:"meal_plan_templates",label:"Meal Plans",select:"id,title,description,status,days_count",order:"title"},
-    recipes:{table:"recipes",label:"Recipes",select:"id,title,status,meal_type,prep_minutes,cook_minutes,image_url,image_alt,nutrition",order:"title"},
-    foods:{table:"food_catalog",label:"Foods & Ingredients",select:"id,name,category,guidance_status,serving_guidance,image_url,image_alt,nutrition,active",order:"name",nameField:"name"},
+    recipes:{table:"recipes",label:"Recipes",select:"id,title,status,meal_type,prep_minutes,cook_minutes,image_url,image_alt,nutrition",order:"title",descriptionField:false},
+    foods:{table:"food_catalog",label:"Foods & Ingredients",select:"id,name,category,guidance_status,serving_guidance,image_url,image_alt,nutrition,active",order:"name",nameField:"name",createdBy:false},
     fitness:{table:"fitness_programs",label:"Fitness Programs",select:"id,title,description,status,difficulty,environment,weeks,image_url,image_alt",order:"title"},
     workouts:{table:"workout_templates",label:"Workouts",select:"id,title,description,status,category,difficulty,environment,duration_minutes,image_url,image_alt,workout_type,muscle_groups,equipment",order:"title"},
     exercises:{table:"exercise_catalog",label:"Exercises",select:"id,name,category,status,difficulty,environment,equipment,instructions,restriction_notes,video_url,tags,image_url,image_alt,primary_muscle_group,secondary_muscle_groups,movement_type,low_impact",order:"name",nameField:"name"},
@@ -526,7 +526,7 @@
     }else if(type==="fitness"){
       dynamicFields.innerHTML='<label class="wide"><span>Fitness methodology</span><select id="content-methodology" required>'+methodologyOptions(fitnessMethodologies)+'</select></label><label><span>Difficulty</span><select id="content-difficulty"><option value="beginner">Beginner</option><option value="intermediate">Intermediate</option><option value="advanced">Advanced</option></select></label><label><span>Environment</span><select id="content-environment"><option value="either">Home or Gym</option><option value="home">Home</option><option value="gym">Gym</option></select></label><label><span>Weeks</span><input id="content-weeks" type="number" min="1" step="1"></label><label class="wide"><span>Program image URL</span><input id="content-image-url" type="url" maxlength="1200" placeholder="https://..."></label><label class="wide"><span>Image alt text</span><input id="content-image-alt" type="text" maxlength="240"></label>';
     }else if(type==="workouts"){
-      dynamicFields.innerHTML='<label class="wide"><span>Fitness methodology</span><select id="content-methodology" required>'+methodologyOptions(fitnessMethodologies)+'</select></label><label><span>Workout type</span><select id="content-workout-type"><option value="strength">Strength / Weights</option><option value="cardio">Cardio</option><option value="hiit">HIIT</option><option value="mobility">Mobility</option><option value="stretching">Stretching</option><option value="core">Core</option><option value="bodyweight">Bodyweight</option><option value="bands">Resistance Bands</option><option value="recovery">Recovery / Low Impact</option><option value="circuit">Circuit Training</option><option value="conditioning">Conditioning</option><option value="aquatic">Pool / Aquatic</option></select></label><label><span>Category</span><input id="content-category" type="text" maxlength="80" placeholder="Upper Body, Lower Body, Full Body..."></label><label class="wide"><span>Muscle groups</span><input id="content-muscle-groups" type="text" maxlength="500" placeholder="chest, back, shoulders"></label><label class="wide"><span>Equipment</span><input id="content-equipment" type="text" maxlength="500" placeholder="dumbbells, bench, resistance bands"></label><label><span>Difficulty</span><select id="content-difficulty"><option value="beginner">Beginner</option><option value="intermediate">Intermediate</option><option value="advanced">Advanced</option></select></label><label><span>Environment</span><select id="content-environment"><option value="either">Home or Gym</option><option value="home">Home</option><option value="gym">Gym</option><option value="pool">Pool</option></select></label><label><span>Duration minutes</span><input id="content-duration" type="number" min="1" step="1"></label><label class="wide"><span>Workout image URL</span><input id="content-image-url" type="url" maxlength="1200" placeholder="https://..."></label><label class="wide"><span>Image alt text</span><input id="content-image-alt" type="text" maxlength="240"></label>';
+      dynamicFields.innerHTML='<label class="wide"><span>Fitness methodology</span><select id="content-methodology" required>'+methodologyOptions(fitnessMethodologies)+'</select></label><label><span>Workout type</span><select id="content-workout-type"><option value="strength">Strength / Weights</option><option value="cardio">Cardio</option><option value="hiit">HIIT</option><option value="mobility">Mobility</option><option value="stretching">Stretching</option><option value="core">Core</option><option value="bodyweight">Bodyweight</option><option value="bands">Resistance Bands</option><option value="recovery">Recovery / Low Impact</option><option value="circuit">Circuit Training</option><option value="conditioning">Conditioning</option><option value="aquatic">Pool / Aquatic</option></select></label><label><span>Category</span><input id="content-category" type="text" maxlength="80" placeholder="Upper Body, Lower Body, Full Body..."></label><label class="wide"><span>Muscle groups</span><input id="content-muscle-groups" type="text" maxlength="500" placeholder="chest, back, shoulders"></label><label class="wide"><span>Equipment</span><input id="content-equipment" type="text" maxlength="500" placeholder="dumbbells, bench, resistance bands"></label><label><span>Difficulty</span><select id="content-difficulty"><option value="beginner">Beginner</option><option value="intermediate">Intermediate</option><option value="advanced">Advanced</option></select></label><label><span>Environment</span><select id="content-environment"><option value="either">Home or Gym</option><option value="home">Home</option><option value="gym">Gym</option></select></label><label><span>Duration minutes</span><input id="content-duration" type="number" min="1" step="1"></label><label class="wide"><span>Workout image URL</span><input id="content-image-url" type="url" maxlength="1200" placeholder="https://..."></label><label class="wide"><span>Image alt text</span><input id="content-image-alt" type="text" maxlength="240"></label>';
     }else if(type==="exercises"){
       dynamicFields.innerHTML='<label class="wide"><span>Fitness methodology</span><select id="content-methodology" required>'+methodologyOptions(fitnessMethodologies)+'</select></label><label><span>Exercise type</span><select id="content-movement-type"><option value="strength">Strength / Weights</option><option value="cardio">Cardio</option><option value="hiit">HIIT</option><option value="mobility">Mobility</option><option value="stretching">Stretching</option><option value="core">Core</option><option value="bodyweight">Bodyweight</option><option value="bands">Resistance Bands</option><option value="recovery">Recovery / Low Impact</option><option value="aquatic">Pool / Aquatic</option></select></label><label><span>Primary muscle group</span><select id="content-primary-muscle"><option value="chest">Chest</option><option value="back">Back</option><option value="shoulders">Shoulders</option><option value="biceps">Biceps</option><option value="triceps">Triceps</option><option value="forearms">Forearms</option><option value="core">Core / Abs</option><option value="glutes">Glutes</option><option value="quadriceps">Quadriceps</option><option value="hamstrings">Hamstrings</option><option value="calves">Calves</option><option value="full_body">Full Body</option></select></label><label class="wide"><span>Secondary muscle groups</span><input id="content-secondary-muscles" type="text" maxlength="500" placeholder="triceps, shoulders"></label><label class="wide"><span>Equipment</span><input id="content-equipment" type="text" maxlength="500" placeholder="dumbbells, barbell, cable"></label><label><span>Difficulty</span><select id="content-difficulty"><option value="all">All Levels</option><option value="beginner">Beginner</option><option value="intermediate">Intermediate</option><option value="advanced">Advanced</option></select></label><label><span>Environment</span><select id="content-environment"><option value="either">Home or Gym</option><option value="home">Home</option><option value="gym">Gym</option><option value="pool">Pool</option></select></label><label class="wide"><span>Exercise image URL</span><input id="content-image-url" type="url" maxlength="1200" placeholder="https://..."></label><label class="wide"><span>Demo video URL (optional)</span><input id="content-video-url" type="url" maxlength="1200" placeholder="https://..."></label><label class="wide"><span>Image alt text</span><input id="content-image-alt" type="text" maxlength="240"></label><label class="wide"><span>Instructions / coaching cues</span><textarea id="content-instructions" rows="4"></textarea></label><label class="wide"><span>Restrictions / modifications</span><textarea id="content-restrictions" rows="3" placeholder="Low knee impact, no jumping, seated option..."></textarea></label><label class="program-content-check"><input id="content-low-impact" type="checkbox"><span>Low-impact option</span></label>';
     }else{
@@ -558,8 +558,13 @@
 
   async function updateContentStatus(key,row,nextStatus){
     const source=contentSources[key];
-    const payload={status:nextStatus,updated_at:new Date().toISOString()};
-    if(nextStatus==="published")payload.published_at=new Date().toISOString();
+    let payload;
+    if(key==="foods"){
+      payload={active:nextStatus==="active",updated_at:new Date().toISOString()};
+    }else{
+      payload={status:nextStatus,updated_at:new Date().toISOString()};
+      if(nextStatus==="published")payload.published_at=new Date().toISOString();
+    }
     const {error}=await client.from(source.table).update(payload).eq("id",row.id);
     if(error){window.alert(error.message);return;}
     await loadContent();
@@ -862,22 +867,32 @@
       const desc=document.createElement("span");desc.textContent=row.description||contentDetail(activeContent,row);
       text.append(name,desc);copy.append(text);
       const detail=document.createElement("span");detail.textContent=contentDetail(activeContent,row);
-      const status=document.createElement("span");status.className="program-content-status "+String(row.status||"draft").toLowerCase();status.textContent=portal.titleCase(row.status||"draft");
+      const rowState=activeContent==="foods"?(row.active?"active":"inactive"):String(row.status||"draft").toLowerCase();
+      const status=document.createElement("span");status.className="program-content-status "+rowState;status.textContent=portal.titleCase(rowState);
       const actions=document.createElement("div");actions.className="program-content-row-actions";
       if(activeContent==="courses"&&canManagePrograms()){
         const build=document.createElement("button");build.type="button";build.className="edit";build.textContent="Build Course";
         build.addEventListener("click",()=>openCourseBuilder(row));
         actions.append(build);
       }
-      const statusValue=String(row.status||"draft").toLowerCase();
-      if(statusValue!=="published"&&statusValue!=="active"){
-        const publish=document.createElement("button");publish.type="button";publish.className="publish";publish.textContent="Publish";
-        publish.addEventListener("click",()=>updateContentStatus(activeContent,row,"published"));
-        actions.append(publish);
+      if(activeContent==="foods"){
+        const toggle=document.createElement("button");
+        toggle.type="button";
+        toggle.className=row.active?"archive":"publish";
+        toggle.textContent=row.active?"Deactivate":"Activate";
+        toggle.addEventListener("click",()=>updateContentStatus(activeContent,row,row.active?"inactive":"active"));
+        actions.append(toggle);
       }else{
-        const archive=document.createElement("button");archive.type="button";archive.className="archive";archive.textContent="Archive";
-        archive.addEventListener("click",()=>updateContentStatus(activeContent,row,"archived"));
-        actions.append(archive);
+        const statusValue=String(row.status||"draft").toLowerCase();
+        if(statusValue!=="published"&&statusValue!=="active"){
+          const publish=document.createElement("button");publish.type="button";publish.className="publish";publish.textContent="Publish";
+          publish.addEventListener("click",()=>updateContentStatus(activeContent,row,"published"));
+          actions.append(publish);
+        }else{
+          const archive=document.createElement("button");archive.type="button";archive.className="archive";archive.textContent="Archive";
+          archive.addEventListener("click",()=>updateContentStatus(activeContent,row,"archived"));
+          actions.append(archive);
+        }
       }
       item.append(copy,detail,status,actions);
       contentList.append(item);
@@ -909,6 +924,14 @@
     renderContent();
     renderDynamicFields();
     syncContentManagementAccess();
+  }
+
+  function legacyExerciseCategory(type){
+    if(["strength","core","bodyweight","bands"].includes(type))return "strength";
+    if(["cardio","hiit","aquatic"].includes(type))return "cardio";
+    if(["mobility","stretching"].includes(type))return "mobility";
+    if(type==="recovery")return "recovery";
+    return "other";
   }
 
   function contentNumber(id){
@@ -947,8 +970,10 @@
     if(!title)return;
     const usesName=Boolean(source.nameField);
     const common=usesName
-      ?{name:title,created_by:portal.currentUserId()}
-      :{title,description:contentDescription?.value.trim()||null,status:"draft",created_by:portal.currentUserId()};
+      ?{name:title}
+      :{title,status:"draft"};
+    if(!usesName&&source.descriptionField!==false)common.description=contentDescription?.value.trim()||null;
+    if(source.createdBy!==false)common.created_by=portal.currentUserId();
     let payload={...common};
 
     if(key==="courses"){
@@ -995,7 +1020,7 @@
       payload.image_alt=document.getElementById("content-image-alt")?.value.trim()||null;
       payload.nutrition=nutritionPayload();
       payload.guidance_status="approved";
-      payload.active=true;
+      payload.active=false;
     }else if(key==="fitness"){
       payload.methodology_id=document.getElementById("content-methodology")?.value||null;
       payload.difficulty=document.getElementById("content-difficulty")?.value||"beginner";
@@ -1016,8 +1041,8 @@
       payload.image_alt=document.getElementById("content-image-alt")?.value.trim()||null;
     }else if(key==="exercises"){
       payload.methodology_id=document.getElementById("content-methodology")?.value||null;
-      payload.category=document.getElementById("content-movement-type")?.value||"strength";
       payload.movement_type=document.getElementById("content-movement-type")?.value||"strength";
+      payload.category=legacyExerciseCategory(payload.movement_type);
       payload.primary_muscle_group=document.getElementById("content-primary-muscle")?.value||"full_body";
       payload.secondary_muscle_groups=contentListValues("content-secondary-muscles");
       payload.equipment=contentListValues("content-equipment");
