@@ -6,6 +6,7 @@
   const client = window.supabase.createClient(SUPABASE_URL, PUBLISHABLE_KEY, {
     auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
   });
+  window.RA_MEMBER_CLIENT = client;
 
   const el = (id) => document.getElementById(id);
 
@@ -5592,7 +5593,7 @@
       kicker:"NUTRITION",
       title:"Your Nutrition Plan",
       context:"Fuel",
-      selectors:[".rm116-wellness-grid","#rm-nutrition-card"]
+      selectors:["#rm-nutrition-diary-card",".rm116-wellness-grid","#rm-nutrition-card"]
     },
     fitness:{
       kicker:"FITNESS",
