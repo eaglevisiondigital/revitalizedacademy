@@ -489,6 +489,7 @@
   let activeContent="courses";
   let nutritionMethodologies=[];
   let fitnessMethodologies=[];
+  let nutritionNutrients=[];
 
   const slugify=(value)=>String(value||"").trim().toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"").slice(0,100);
 
@@ -510,6 +511,34 @@
     return rows.map(row=>'<option value="'+row.id+'">'+String(row.name||"Methodology").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;")+'</option>').join("");
   }
 
+  const escapeHtml=(value)=>String(value??"")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#39;");
+
+  function nutritionField(row){
+    const step=row.unit==="kcal"||row.unit==="mg"||row.unit==="µg"?"0.1":"0.01";
+    return '<label><span>'+escapeHtml(row.name)+' ('+escapeHtml(row.unit)+')</span><input type="number" min="0" step="'+step+'" data-nutrient-key="'+escapeHtml(row.nutrient_key)+'"></label>';
+  }
+
+  function nutritionFieldsMarkup(){
+    if(!nutritionNutrients.length){
+      return '<div class="program-content-nutrient-empty">Nutrient catalog is unavailable.</div>';
+    }
+    const core=nutritionNutrients.filter((row)=>row.default_visible);
+    const advanced=nutritionNutrients.filter((row)=>!row.default_visible);
+    const categories=[...new Set(advanced.map((row)=>row.category))];
+    const groups=categories.map((category)=>{
+      const label=portal.titleCase(String(category).replaceAll("_"," "));
+      const fields=advanced.filter((row)=>row.category===category).map(nutritionField).join("");
+      return '<section class="program-content-nutrient-group"><strong>'+escapeHtml(label)+'</strong><div class="program-content-nutrient-grid">'+fields+'</div></section>';
+    }).join("");
+    return '<section class="program-content-nutrient-core wide"><div class="program-content-nutrient-head"><strong>Core Nutrition</strong><span>Common nutrition facts shown first.</span></div><div class="program-content-nutrient-grid">'+core.map(nutritionField).join("")+'</div></section>'+
+      '<details class="program-content-nutrient-details wide"><summary>Full Nutrient Profile ('+nutritionNutrients.length+' tracked nutrients & compounds)</summary><p>Use any fields available from the source food, label, laboratory database or ReVitalized recipe calculation. Blank values stay unknown rather than being treated as zero.</p>'+groups+'</details>';
+  }
+
   function renderDynamicFields(){
     if(!dynamicFields||!contentType)return;
     const type=contentType.value;
@@ -520,9 +549,9 @@
     }else if(type==="meal-plans"){
       dynamicFields.innerHTML='<label class="wide"><span>Nutrition methodology</span><select id="content-methodology" required>'+methodologyOptions(nutritionMethodologies)+'</select></label><label><span>Days in plan</span><input id="content-days" type="number" min="1" max="90" step="1" value="7"></label>';
     }else if(type==="recipes"){
-      dynamicFields.innerHTML='<label class="wide"><span>Nutrition methodology</span><select id="content-methodology" required>'+methodologyOptions(nutritionMethodologies)+'</select></label><label><span>Meal type</span><select id="content-meal-type"><option value="breakfast">Breakfast</option><option value="lunch">Lunch</option><option value="dinner">Dinner</option><option value="snack">Snack</option><option value="beverage">Beverage</option><option value="other">Other</option></select></label><label><span>Servings</span><input id="content-servings" type="number" min="0.1" step="0.1"></label><label><span>Prep minutes</span><input id="content-prep" type="number" min="0" step="1"></label><label><span>Cook minutes</span><input id="content-cook" type="number" min="0" step="1"></label><label class="wide"><span>Main image URL</span><input id="content-image-url" type="url" maxlength="1200" placeholder="https://..."></label><label class="wide"><span>Image alt text</span><input id="content-image-alt" type="text" maxlength="240" placeholder="Grilled chicken bowl"></label><label><span>Calories / serving</span><input id="content-calories" type="number" min="0" step="1"></label><label><span>Protein (g)</span><input id="content-protein" type="number" min="0" step="0.1"></label><label><span>Carbs (g)</span><input id="content-carbs" type="number" min="0" step="0.1"></label><label><span>Fat (g)</span><input id="content-fat" type="number" min="0" step="0.1"></label><label><span>Fiber (g)</span><input id="content-fiber" type="number" min="0" step="0.1"></label><label><span>Sugar (g)</span><input id="content-sugar" type="number" min="0" step="0.1"></label><label><span>Sodium (mg)</span><input id="content-sodium" type="number" min="0" step="1"></label><label class="wide"><span>Instructions</span><textarea id="content-instructions" rows="5"></textarea></label>';
+      dynamicFields.innerHTML='<label class="wide"><span>Nutrition methodology</span><select id="content-methodology" required>'+methodologyOptions(nutritionMethodologies)+'</select></label><label><span>Meal type</span><select id="content-meal-type"><option value="breakfast">Breakfast</option><option value="lunch">Lunch</option><option value="dinner">Dinner</option><option value="snack">Snack</option><option value="beverage">Beverage</option><option value="other">Other</option></select></label><label><span>Servings</span><input id="content-servings" type="number" min="0.1" step="0.1"></label><label><span>Prep minutes</span><input id="content-prep" type="number" min="0" step="1"></label><label><span>Cook minutes</span><input id="content-cook" type="number" min="0" step="1"></label><label class="wide"><span>Main image URL</span><input id="content-image-url" type="url" maxlength="1200" placeholder="https://..."></label><label class="wide"><span>Image alt text</span><input id="content-image-alt" type="text" maxlength="240" placeholder="Grilled chicken bowl"></label>'+nutritionFieldsMarkup()+'<label class="wide"><span>Instructions</span><textarea id="content-instructions" rows="5"></textarea></label>';
     }else if(type==="foods"){
-      dynamicFields.innerHTML='<label class="wide"><span>Nutrition methodology</span><select id="content-methodology" required>'+methodologyOptions(nutritionMethodologies)+'</select></label><label><span>Category</span><input id="content-category" type="text" maxlength="80" placeholder="Protein, Produce, Grain..."></label><label><span>Serving guidance</span><input id="content-serving-guidance" type="text" maxlength="240" placeholder="3 oz cooked, 1 cup..."></label><label class="wide"><span>Ingredient image URL (optional)</span><input id="content-image-url" type="url" maxlength="1200" placeholder="https://..."></label><label class="wide"><span>Image alt text</span><input id="content-image-alt" type="text" maxlength="240"></label><label><span>Calories / serving</span><input id="content-calories" type="number" min="0" step="1"></label><label><span>Protein (g)</span><input id="content-protein" type="number" min="0" step="0.1"></label><label><span>Carbs (g)</span><input id="content-carbs" type="number" min="0" step="0.1"></label><label><span>Fat (g)</span><input id="content-fat" type="number" min="0" step="0.1"></label><label><span>Fiber (g)</span><input id="content-fiber" type="number" min="0" step="0.1"></label><label><span>Sugar (g)</span><input id="content-sugar" type="number" min="0" step="0.1"></label><label><span>Sodium (mg)</span><input id="content-sodium" type="number" min="0" step="1"></label>';
+      dynamicFields.innerHTML='<label class="wide"><span>Nutrition methodology</span><select id="content-methodology" required>'+methodologyOptions(nutritionMethodologies)+'</select></label><label><span>Category</span><input id="content-category" type="text" maxlength="80" placeholder="Protein, Produce, Grain..."></label><label><span>Serving guidance</span><input id="content-serving-guidance" type="text" maxlength="240" placeholder="3 oz cooked, 1 cup..."></label><label class="wide"><span>Ingredient image URL (optional)</span><input id="content-image-url" type="url" maxlength="1200" placeholder="https://..."></label><label class="wide"><span>Image alt text</span><input id="content-image-alt" type="text" maxlength="240"></label>'+nutritionFieldsMarkup();
     }else if(type==="fitness"){
       dynamicFields.innerHTML='<label class="wide"><span>Fitness methodology</span><select id="content-methodology" required>'+methodologyOptions(fitnessMethodologies)+'</select></label><label><span>Difficulty</span><select id="content-difficulty"><option value="beginner">Beginner</option><option value="intermediate">Intermediate</option><option value="advanced">Advanced</option></select></label><label><span>Environment</span><select id="content-environment"><option value="either">Home or Gym</option><option value="home">Home</option><option value="gym">Gym</option></select></label><label><span>Weeks</span><input id="content-weeks" type="number" min="1" step="1"></label><label class="wide"><span>Program image URL</span><input id="content-image-url" type="url" maxlength="1200" placeholder="https://..."></label><label class="wide"><span>Image alt text</span><input id="content-image-alt" type="text" maxlength="240"></label>';
     }else if(type==="workouts"){
@@ -902,16 +931,18 @@
   async function loadContent(){
     if(!contentSummary||!contentList)return;
     const entries=Object.entries(contentSources);
-    const [contentResults,nutritionResult,fitnessResult]=await Promise.all([
+    const [contentResults,nutritionResult,fitnessResult,nutrientResult]=await Promise.all([
       Promise.all(entries.map(async([key,source])=>{
         const {data,error}=await client.from(source.table).select(source.select).order(source.order,{ascending:true});
         return {key,data:data||[],error};
       })),
       client.from("nutrition_methodologies").select("id,name,status").order("name"),
-      client.from("fitness_methodologies").select("id,name,status").order("name")
+      client.from("fitness_methodologies").select("id,name,status").order("name"),
+      client.from("nutrition_nutrient_catalog").select("nutrient_key,name,category,unit,default_visible,sort_order").eq("active",true).order("sort_order")
     ]);
     nutritionMethodologies=nutritionResult.error?[]:(nutritionResult.data||[]);
     fitnessMethodologies=fitnessResult.error?[]:(fitnessResult.data||[]);
+    nutritionNutrients=nutrientResult.error?[]:(nutrientResult.data||[]);
     contentCache={};
     contentSummary.replaceChildren();
     contentResults.forEach(({key,data,error})=>{
@@ -947,18 +978,13 @@
   }
 
   function nutritionPayload(){
-    const pairs=[
-      ["calories","content-calories"],
-      ["protein_g","content-protein"],
-      ["carbs_g","content-carbs"],
-      ["fat_g","content-fat"],
-      ["fiber_g","content-fiber"],
-      ["sugar_g","content-sugar"],
-      ["sodium_mg","content-sodium"]
-    ];
-    return Object.fromEntries(
-      pairs.map(([key,id])=>[key,contentNumber(id)]).filter(([,value])=>value!==null)
-    );
+    const values={};
+    dynamicFields?.querySelectorAll("[data-nutrient-key]").forEach((input)=>{
+      if(input.value==="")return;
+      const amount=Number(input.value);
+      if(Number.isFinite(amount))values[input.dataset.nutrientKey]=amount;
+    });
+    return values;
   }
 
   async function createContent(event){
