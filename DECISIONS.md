@@ -1,5 +1,9 @@
 # ReVitalized Academy decisions and unresolved questions
 
+## Approved Coach Nutrition Review access rule — 2026-10-04
+
+The user's repair instruction resolves the Wellness-wrapper question: Nutrition Review is a private-health read feature, gated by `health.private.view` and server-enforced contact scope, independent of Wellness/plan-management access. Existing management controls keep their own permissions. Complete the stale-client/date, local-date, strict numeric and long-text frontend repairs; preserve Chat patches where correct; add maintained regressions; deploy to existing staging only after scoped checks pass. No backend/RLS contract changes, hosted permission grants or migration replay. See [implementation](docs/COACH_NUTRITION_REVIEW.md).
+
 ## Nutrition Diary package authorization — 2026-10-04
 
 The user approved completion, one reviewed new migration application and deployment to existing staging only. Preserve all four committed package foundations, Recipe Builder and Nutrition Engine. Use full numeric snapshots, actual data only, published member-facing sources and coach-over-program target precedence. Keep draft methodology unpublished and existing permissions/entitlements intact. No hosted diary/content writes are authorized for acceptance; use disposable local identities. The secure staff read RPC is required; coach drawer UI may be deferred to avoid portal risk. Production, main merge, unrelated grants, provider changes and prior migration replay remain excluded. See [implementation and acceptance limits](docs/NUTRITION_DIARY.md).

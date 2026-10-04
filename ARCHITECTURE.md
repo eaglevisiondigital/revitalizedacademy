@@ -1,5 +1,7 @@
 # ReVitalized Academy architecture
 
+Coach Nutrition Review update (2026-10-04): the [read-only drawer module](docs/COACH_NUTRITION_REVIEW.md) is now implemented as an independent private-health section using the existing scoped admin RPC. It does not depend on Wellness-plan membership or management controls. Request generation/contact/date checks isolate asynchronous renders; no backend contract changed. This supersedes the earlier drawer-UI deferral below.
+
 Current staging addition (2026-10-04): [Nutrition Diary contract](docs/NUTRITION_DIARY.md) adds a shared-client member module and six checked RPCs over existing diary, catalog and target tables. It preserves bootstrap v2 and Nutrition entitlement visibility. Full numeric snapshots, local-calendar trends and coach/program target precedence are implemented; the coach drawer UI remains a separate next package. Earlier sections retain their original dated scope.
 
 Status: observed production architecture plus IMPLEMENTED, undeployed engineering changes, 2026-09-26. This document does not authorize a redesign.

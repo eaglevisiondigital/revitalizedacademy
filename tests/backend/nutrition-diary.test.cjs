@@ -123,6 +123,10 @@ test('nutrition: inactive private staff denied', async () => {
   await permissions({ 'health.private.view': true }); await q("UPDATE public.staff_access SET status='inactive' WHERE user_id=$1", [staff]);
   await assert.rejects(rpc(staff, 'SELECT public.admin_get_client_nutrition_day($1,$2)', [contact, today]), /Not authorized/);
 });
+test('nutrition: wellness management alone never grants private review', async () => {
+  await permissions({ 'health.progress.manage': true }); await log();
+  await assert.rejects(rpc(staff, 'SELECT public.admin_get_client_nutrition_day($1,$2)', [contact, today]), /Not authorized/);
+});
 test('nutrition: all 101 catalog nutrients snapshot, multiply and aggregate', async () => {
   const keys = (await q('SELECT nutrient_key FROM public.nutrition_nutrient_catalog WHERE active ORDER BY sort_order')).rows.map(r => r.nutrient_key);
   assert.equal(keys.length, 101);

@@ -1,5 +1,13 @@
 # ReVitalized Academy — current build state
 
+## Current package — Coach Nutrition Review repair, 2026-10-04
+
+The approved repair preserves the original five commits and the Chat date/null patches. [Coach Review contract and validation](docs/COACH_NUTRITION_REVIEW.md) supersedes the earlier coach-UI deferral below. Nutrition Review is now an independent private-health read section; existing Wellness management gates are unchanged. Client/date request ownership, immediate private DOM clearing, local-calendar controls, strict numeric display and full long-text wrapping are implemented.
+
+Review source/exact-built tests22/22 and the original supplemental suite10/10 pass. The12 responsive normal/empty/denied/long-text checks pass at all three requested sizes with a clean console. Native tests also cover Wellness-management-only denial without changing the backend. Assets: Review JS101, Wellness CSS119 and unchanged Wellness JS118;309-file build. No migration or hosted nutrition write is included. Final release SHA/deploy ID/full regression totals and hosted staff limitation are recorded in the workspace `STAGING_COACH_NUTRITION_REPAIR_2026-10-04.md`, separately from source completion. Production remains outside scope.
+
+Final local regression totals: frontend265 pass/0 fail/27 historical skips; native PostgreSQL17 backend117 pass/nine known agreement-origin fixture failures; Edge25 pass and19 entry points typechecked;72 JavaScript syntax checks pass.
+
 ## Current package — 2026-10-04 UTC
 
 Nutrition Diary + Daily Targets v1 is implemented and validated on `codex/staging`, preserving the four approved commits through `15a247cba5f9fa3dca25490b2474cea0b3215b29` and the prior Recipe Builder release. See [package contract and verification](docs/NUTRITION_DIARY.md).

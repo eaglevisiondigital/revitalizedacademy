@@ -1,5 +1,7 @@
 # ReVitalized Academy security model
 
+Coach Nutrition Review repair (2026-10-04): the UI checks existing private-health permission and uses only the unchanged contact-scoped admin RPC. Contact/date/panel/permission transitions invalidate requests and erase rendered private content; delayed success or denial cannot contaminate another review. Management-only and override-only staff are denied private reads in native fixtures. No roles, grants, RLS or migration changes. See [repair contract](docs/COACH_NUTRITION_REVIEW.md).
+
 Current staging addition (2026-10-04): [Nutrition Diary security and tests](docs/NUTRITION_DIARY.md) documents paid/claimed self access, lifecycle-restrictive diary/target RLS, qualified empty-search-path definer functions, explicit anonymous revocation and private helper ACLs. Staff review requires private-health permission plus contact scope; target writes retain their independent override gate. Hosted role/default/override fingerprints are unchanged. Twenty-eight new native PostgreSQL tests validate these boundaries; no production security change was made.
 
 Observed production baseline and IMPLEMENTED undeployed fixes, 2026-09-26. This is a scoped review, not a penetration test or security certification.

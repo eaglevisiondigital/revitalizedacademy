@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="portal-work-desk.css?v=146">
   <link rel="stylesheet" href="portal-client-foundation.css?v=113">
   <link rel="stylesheet" href="portal-coaching.css?v=115">
-  <link rel="stylesheet" href="portal-wellness.css?v=118">
+  <link rel="stylesheet" href="portal-wellness.css?v=119">
   <link rel="stylesheet" href="portal-overrides.css?v=118">
   <link rel="stylesheet" href="portal-learning.css?v=119">
   <link rel="stylesheet" href="portal-member-messaging.css?v=121">
@@ -351,18 +351,25 @@
                 <div><span>Grocery list</span><strong id="client-grocery-status">Not generated</strong></div>
               </div>
 
+              <div class="client-wellness-actions">
+                <button id="client-manage-wellness" class="primary-button compact-action" type="button">Manage Nutrition &amp; Fitness</button>
+              </div>
+              <p id="client-wellness-status" class="form-status" aria-live="polite"></p>
+            </section>
+
+            <section id="client-nutrition-review-section" class="contact-section client-nutrition-review-section hidden">
               <div class="client-nutrition-review-head">
                 <div>
                   <strong>Nutrition Review</strong>
                   <span>Read-only view of the client's logged nutrition and full nutrient totals for the selected day.</span>
                 </div>
-                <button id="client-nutrition-review-toggle" class="secondary-button compact-action" type="button">Review Nutrition</button>
+                <button id="client-nutrition-review-toggle" class="secondary-button compact-action" type="button" aria-controls="client-nutrition-review-panel" aria-expanded="false">Review Nutrition</button>
               </div>
 
               <div id="client-nutrition-review-panel" class="client-nutrition-review-panel hidden">
                 <div class="client-nutrition-review-toolbar">
                   <button id="client-nutrition-prev" class="secondary-button compact-action" type="button" aria-label="Previous day">‹</button>
-                  <input id="client-nutrition-date" type="date">
+                  <input id="client-nutrition-date" type="date" aria-label="Nutrition review date">
                   <button id="client-nutrition-next" class="secondary-button compact-action" type="button" aria-label="Next day">›</button>
                   <button id="client-nutrition-today" class="secondary-button compact-action" type="button">Today</button>
                 </div>
@@ -371,10 +378,6 @@
                 <p id="client-nutrition-review-status" class="form-status" aria-live="polite"></p>
               </div>
 
-              <div class="client-wellness-actions">
-                <button id="client-manage-wellness" class="primary-button compact-action" type="button">Manage Nutrition &amp; Fitness</button>
-              </div>
-              <p id="client-wellness-status" class="form-status" aria-live="polite"></p>
             </section>
 
 
@@ -3010,7 +3013,7 @@
   <script defer src="portal-client-foundation.js?v=113"></script>
   <script defer src="portal-coaching.js?v=116"></script>
   <script defer src="portal-wellness.js?v=118"></script>
-  <script defer src="portal-nutrition-review.js?v=100"></script>
+  <script defer src="portal-nutrition-review.js?v=101"></script>
   <script defer src="portal-overrides.js?v=118"></script>
   <script defer src="portal-learning.js?v=119"></script>
   <script defer src="portal-member-messaging.js?v=166"></script>

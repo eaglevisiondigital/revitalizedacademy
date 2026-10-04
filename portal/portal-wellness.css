@@ -39,6 +39,11 @@
 
 
 /* Coach Nutrition Review */
+.client-nutrition-review-section{min-width:0}
+.client-nutrition-review-section .client-nutrition-review-head{margin-top:0;padding-top:0;border-top:0}
+.client-nutrition-review-head>div,.client-nutrition-review-panel,.client-nutrition-review-summary>div,
+.client-nutrition-review-items,.client-nutrition-review-group,.client-nutrition-review-row,.client-nutrition-review-row>div{min-width:0;max-width:100%;overflow-wrap:anywhere;word-break:break-word}
+.client-nutrition-review-toolbar input{min-width:0;max-width:100%}
 .client-nutrition-review-head{
   display:flex;align-items:flex-start;justify-content:space-between;gap:14px;
   margin-top:16px;padding-top:14px;border-top:1px solid #e3ebe6
