@@ -7,7 +7,14 @@
 
   let contactId=null;
   let open=false;
-  let date=new Date().toISOString().slice(0,10);
+  let requestSequence=0;
+  const localDateIso=(d=new Date())=>{
+    const y=d.getFullYear();
+    const m=String(d.getMonth()+1).padStart(2,"0");
+    const day=String(d.getDate()).padStart(2,"0");
+    return y+"-"+m+"-"+day;
+  };
+  let date=localDateIso();
   let data={items:[],totals:{}};
 
   const title=(v)=>String(v||"").replaceAll("_"," ").replace(/\b\w/g,(m)=>m.toUpperCase());
