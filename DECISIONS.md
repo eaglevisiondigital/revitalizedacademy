@@ -1,5 +1,9 @@
 # ReVitalized Academy decisions and unresolved questions
 
+## 2026-10-04 — Remaining beta acceptance decisions approved
+
+The latest explicit user attachment approves synthetic membership-only `nutrition_plans` (Meal Plans) and `fitness_plans` (Workout Plans) in existing Holistic Foundations with neutral supported NULL limit/none cadence. No tracking, blanket program grant or existing-member reconciliation. Fresh Client A/B/scoped staff aliases are `dave+rva-client-a@eaglevision.biz`, `dave+rva-client-b@eaglevision.biz`, `dave+rva-beta-staff@eaglevision.biz`. Exact staging recipient-allowlist additions are authorized, preserving originals; actual invitation/recovery delivery remains mandatory. Failed alias delivery requires three fresh inboxes, not token extraction. The allowlist is saved; identities/benefits and hosted acceptance await normal owner sign-in. Payment/agreement/claim gates and production protections remain. [Continuation evidence](docs/BETA_REMAINING_ACCEPTANCE_2026-10-04.md).
+
 ## 2026-10-04 — Hosted beta acceptance, release and narrow observed repair
 
 The user obtained normal approved owner access and explicitly authorized the coordinated staging release after review. Applied the one new forward migration and deployed the existing candidate. Hosted acceptance exposed a nullable-duration mismatch; the authorized narrow repair changes only the frontend default/minimum and adds three regressions. No backend constraint change. Content fixtures were archived/deactivated. Inbox aliases/allowlist additions remain pending approval; existing owner/member accounts were preserved. Zero program/member entitlement rows are a configuration blocker requiring approved benefit mapping, not authority to invent grants. BETA NOT READY pending actual lifecycle, member assignment and isolation proof. [Full evidence and decision prompt](docs/BETA_HOSTED_ACCEPTANCE_2026-10-04.md).

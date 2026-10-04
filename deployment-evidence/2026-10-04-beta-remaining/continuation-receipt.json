@@ -1,0 +1,25 @@
+{
+  "stagingProject": "bvooallokgfktssadsrv",
+  "setting": "RVA_SYNTHETIC_EMAIL_ALLOWLIST",
+  "appliedAt": "2026-10-04T22:33:58Z",
+  "method": "Existing staging Supabase dashboard; saved digest observed",
+  "recipients": [
+    "dave@theboss.biz",
+    "dave@eaglevision.biz",
+    "dave+rva-client-a@eaglevision.biz",
+    "dave+rva-client-b@eaglevision.biz",
+    "dave+rva-beta-staff@eaglevision.biz"
+  ],
+  "sha256Before": "68a584bda0aeaab2f2e7f0723b086391db2ce8de925c71bb0dac2bf7aff52752",
+  "sha256After": "9642867372ec8b16d549d313fb88772080557260a2fc7744a0ddf80a1595e820",
+  "originalRecipientsPreserved": true,
+  "wildcard": false,
+  "externalDeliveryProven": false,
+  "state": "Retained for pending approved acceptance",
+  "stagingDeploy": "6ac2cd1a0ce4124aafbdf39d",
+  "productionDeploy": "6ac036d3b48eac0008568e00",
+  "newAccounts": 0,
+  "newBusinessRecords": 0,
+  "benefitsCreated": 0,
+  "applicationSourceChanged": false
+}

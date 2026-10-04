@@ -160,7 +160,7 @@ The following custom Edge Function secrets were manually created and saved in th
 - `RVA_ENVIRONMENT=staging`
 - `RVA_APP_ORIGIN=https://revitalizedacademy-staging.netlify.app`
 - `RVA_PAYMENT_MODE=synthetic`
-- `RVA_SYNTHETIC_EMAIL_ALLOWLIST=dave@theboss.biz,dave@eaglevision.biz`
+- `RVA_SYNTHETIC_EMAIL_ALLOWLIST=dave@theboss.biz,dave@eaglevision.biz,dave+rva-client-a@eaglevision.biz,dave+rva-client-b@eaglevision.biz,dave+rva-beta-staff@eaglevision.biz` — updated 2026-10-04 with explicit approval for remaining synthetic beta acceptance, preserving the original two recipients. Saved SHA-256 `9642867372ec8b16d549d313fb88772080557260a2fc7744a0ddf80a1595e820`. Actual alias delivery is still unproven; entries retained for the unfinished acceptance window. See [continuation receipt](BETA_REMAINING_ACCEPTANCE_2026-10-04.md).
 
 Supabase-managed default secrets were not modified.
 

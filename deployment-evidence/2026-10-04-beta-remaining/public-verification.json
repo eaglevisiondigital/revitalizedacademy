@@ -1,0 +1,266 @@
+{
+  "timestamp": "2026-10-04T22:35:08.557Z",
+  "releaseSha": "86a0bf34fff4f08ef19567fd00172346adb095da",
+  "staging": [
+    {
+      "path": "/portal/portal-content-composition.js?v=2",
+      "status": 200,
+      "sha256": "50fa70cf2eb7b841df1e9b73c4160eee551171e453125036860f1c50a6ea23fc",
+      "unchanged": true
+    },
+    {
+      "path": "/portal/portal-people.js?v=136",
+      "status": 200,
+      "sha256": "6b3156843635def33986fddca6c4bf463486b5e30825e72162eed70929706e27",
+      "unchanged": true
+    },
+    {
+      "path": "/portal/portal-permissions.js?v=132",
+      "status": 200,
+      "sha256": "12d0975abefc617946f615643bd49b5fbb193fa28064ca00a54500e3d3963bbd",
+      "unchanged": true
+    },
+    {
+      "path": "/portal/portal-wellness.js?v=119",
+      "status": 200,
+      "sha256": "1a5621bac47e7d5ec56beaea7f2b67448f3b7e1acf2788e5ea192bfa4e31f242",
+      "unchanged": true
+    },
+    {
+      "path": "/portal/portal-wellness.css?v=120",
+      "status": 200,
+      "sha256": "e37fc4185fef7c9b6d9d89498a3b45fbdb7753f013857c0faeab1ab68a2b4777",
+      "unchanged": true
+    },
+    {
+      "path": "/portal/portal-nutrition-review.js?v=103",
+      "status": 200,
+      "sha256": "fec54023b70bc55892dccb356437d97c8d267461c5aa24afa725ebc9e2511502",
+      "unchanged": true
+    },
+    {
+      "path": "/portal/portal-programs.js?v=174",
+      "status": 200,
+      "sha256": "eb833db0b81a59024a7c659e5d7fd101291c55ea720f568858c9b6eab5b055bc",
+      "unchanged": true
+    },
+    {
+      "path": "/portal/portal-programs.css?v=166",
+      "status": 200,
+      "sha256": "f720ea4627f8f42bd7bc9061ddd0f0ca136d62e6578fbc9933ec4f49785f76b5",
+      "unchanged": true
+    },
+    {
+      "path": "/portal/portal-recipe-builder.js?v=102",
+      "status": 200,
+      "sha256": "a770df2c01994f37556e3b3043f6eee6ae18f3acde15f9488dd8c741f48ed4f1",
+      "unchanged": true
+    },
+    {
+      "path": "/portal/portal-shell.js?v=161",
+      "status": 200,
+      "sha256": "3c6fae44524f5d47cba2468437142164f19e9799904b468bab699f310dc28b7e",
+      "unchanged": true
+    },
+    {
+      "path": "/portal/portal.js?v=188",
+      "status": 200,
+      "sha256": "7c4a4ed69a46646a7b09d563ab808dd41735434ae443a892ab9f934201a31ad4",
+      "unchanged": true
+    },
+    {
+      "path": "/portal/portal-coaching.js?v=116",
+      "status": 200,
+      "sha256": "9e8af76ddb35e2e4677e297acab09708bc4b9b1bfae83c625c2cf48ae98d13f7",
+      "unchanged": true
+    },
+    {
+      "path": "/portal/portal-health-integrations.js?v=125",
+      "status": 200,
+      "sha256": "773c4f0f2e92a0f8c2a0f5338e704a19eec2371029d79221f25f37115a182dd4",
+      "unchanged": true
+    },
+    {
+      "path": "/portal/portal-health-integrations.css?v=126",
+      "status": 200,
+      "sha256": "7055657cf33f0d273d8d11721e6385c3b72468aed1f1f440b4fd1522e14b9ab6",
+      "unchanged": true
+    },
+    {
+      "path": "/member/member-assigned-content.js?v=1",
+      "status": 200,
+      "sha256": "4ecd1edd22bc7b147229be44b5b6da5afe550f7612a4a9bd099a2d96a1d14efe",
+      "unchanged": true
+    },
+    {
+      "path": "/member/member110.js?v=210",
+      "status": 200,
+      "sha256": "ee8fa6bd64d73163f10e8dd51aa3b2c62df8c8203d46534d3e3c013b0df249b7",
+      "unchanged": true
+    },
+    {
+      "path": "/member/member110.css?v=202",
+      "status": 200,
+      "sha256": "64f72c3bf40f7a3ea4023623bf342cbc37343acf29902a3a427c92456999da09",
+      "unchanged": true
+    },
+    {
+      "path": "/member/member-nutrition.js?v=1",
+      "status": 200,
+      "sha256": "4e039af489fdf7d031715639d30f1fdb10ba42c6e6ebb894a709fb1665c10e26",
+      "unchanged": true
+    },
+    {
+      "path": "/member/member-health-progress.js?v=1",
+      "status": 200,
+      "sha256": "adad63c642c4543511bc80e4b47c44283d27033a9819a364d2b0b754c21252a5",
+      "unchanged": true
+    },
+    {
+      "path": "/member/member-health-progress.css?v=1",
+      "status": 200,
+      "sha256": "73eebd10d0f5c2c625ebe1829add25886da000a4035118bd48b91ef63811c2e1",
+      "unchanged": true
+    },
+    {
+      "path": "/member/onboarding/onboarding.js?v=2",
+      "status": 200,
+      "sha256": "bdef744917474ad762568358d07e956f8b3618b0ab08af9ff434ea98ec9b45aa",
+      "unchanged": true
+    },
+    {
+      "path": "/member/onboarding/onboarding.css?v=2",
+      "status": 200,
+      "sha256": "e7132aac32bf92847424581bc72ced876fd23508dbffbdcef019b5a01b00c51c",
+      "unchanged": true
+    },
+    {
+      "path": "/runtime-config.js",
+      "status": 200,
+      "sha256": "b87e0084cb8409221384331c629744ce4fe855dd013be4280d0e94f060d23257",
+      "unchanged": true
+    }
+  ],
+  "production": [
+    {
+      "path": "/portal/portal-programs.js",
+      "status": 200,
+      "sha256": "b4c3da6794aaddcb40268310bd7f59100e8829dde8826472ae312dafb896e457",
+      "unchanged": true
+    },
+    {
+      "path": "/portal/portal-programs.css",
+      "status": 200,
+      "sha256": "c9691058a1e90819f6fdc4b8f0e828da2f6f21466915f257ff033af0b0838f7c",
+      "unchanged": true
+    },
+    {
+      "path": "/portal/portal-shell.js",
+      "status": 200,
+      "sha256": "ee7f630c584b92d597a352b5f09d6e45861b0d26662b78677c0fe73d75155352",
+      "unchanged": true
+    },
+    {
+      "path": "/portal/portal-health-integrations.js",
+      "status": 200,
+      "sha256": "7dfe6a50954234e09dc9068a33bd5124270f9a60afb6f08aca42c6f8a38d1b7a",
+      "unchanged": true
+    },
+    {
+      "path": "/portal/portal-health-integrations.css",
+      "status": 200,
+      "sha256": "27ea910dba40b08b2464dbfd4ab2a1585885436293a19c60a1e8ec7b67c9e296",
+      "unchanged": true
+    },
+    {
+      "path": "/member/",
+      "status": 200,
+      "sha256": "17305a1fdbbac8fc710afca3fb01c4403b1f12eb834de134295225e9b12e3c8d",
+      "unchanged": true
+    },
+    {
+      "path": "/member/member110.js",
+      "status": 200,
+      "sha256": "e0d2c83772234788c59675f72b516cfe30e0d13388c6a5001b338160c950a5bb",
+      "unchanged": true
+    },
+    {
+      "path": "/member/member110.css",
+      "status": 200,
+      "sha256": "aef6cd75a1068ab4a381201a46903e3ea9b13f77dd9f90461742300f481774dc",
+      "unchanged": true
+    },
+    {
+      "path": "/member/onboarding/",
+      "status": 404,
+      "sha256": "8514f0009a58c6e0acb5468f88037732b59b70af5e524f452e3bef8fb33effc5",
+      "unchanged": true
+    },
+    {
+      "path": "/member/onboarding/onboarding.js",
+      "status": 404,
+      "sha256": "8514f0009a58c6e0acb5468f88037732b59b70af5e524f452e3bef8fb33effc5",
+      "unchanged": true
+    },
+    {
+      "path": "/member/onboarding/onboarding.css",
+      "status": 404,
+      "sha256": "8514f0009a58c6e0acb5468f88037732b59b70af5e524f452e3bef8fb33effc5",
+      "unchanged": true
+    },
+    {
+      "path": "/portal/portal-agreements.js",
+      "status": 200,
+      "sha256": "71b8a7b3c56c6551b89630b14d727acdd1d84271860152c1666c0d8ec37d1076",
+      "unchanged": true
+    },
+    {
+      "path": "/portal/portal-staff-access.js",
+      "status": 200,
+      "sha256": "f637d68ec2e2260f11c616dd0c6dfce119616a043f71d21d727af192c58ad944",
+      "unchanged": true
+    },
+    {
+      "path": "/portal/portal.js",
+      "status": 200,
+      "sha256": "9ab655ba4c301e239fa04101cbbfa3495936c93ee154e144b2206683a5c64663",
+      "unchanged": true
+    },
+    {
+      "path": "/",
+      "status": 200,
+      "sha256": "8d4a383566dee7bfabe2cf317d2d58adbe252048a28bcb5fc118db25f44d5506",
+      "unchanged": true
+    },
+    {
+      "path": "/portal/",
+      "status": 200,
+      "sha256": "db9aa7eb0aa25115496a410fd217488cae30b882a36c4417710ba5df708ccf02",
+      "unchanged": true
+    },
+    {
+      "path": "/portal/portal-people.js",
+      "status": 200,
+      "sha256": "dc52e427e6e16bd115e1f14fc6e52f6336295cf205b54f5541d41b201e221030",
+      "unchanged": true
+    },
+    {
+      "path": "/portal/portal-action-center.js",
+      "status": 200,
+      "sha256": "743981b4e6cd88109a012a7073773eed7c3435bc88a101395473c020a31fcebe",
+      "unchanged": true
+    },
+    {
+      "path": "/portal/portal-permissions.js",
+      "status": 200,
+      "sha256": "65211ba80261b97ff124d45da99e51ac3dd7887953b38747f96a59624942cbf9",
+      "unchanged": true
+    },
+    {
+      "path": "/runtime-config.js",
+      "status": 404,
+      "sha256": "8514f0009a58c6e0acb5468f88037732b59b70af5e524f452e3bef8fb33effc5",
+      "unchanged": true
+    }
+  ]
+}
