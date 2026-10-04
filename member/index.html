@@ -13,7 +13,7 @@
   <link rel="shortcut icon" type="image/png" href="../assets/images/revitalized-icon-approved.png">
   <link rel="apple-touch-icon" href="../assets/images/revitalized-icon-approved.png">
   <link rel="manifest" href="manifest.webmanifest?v=171">
-  <link rel="stylesheet" href="member110.css?v=200">
+  <link rel="stylesheet" href="member110.css?v=201">
 </head>
 <body>
   <main class="rm112-page">
@@ -697,7 +697,7 @@
           </div>
           <div class="rm218-date-nav">
             <button id="rm-nutrition-prev" type="button" aria-label="Previous day">‹</button>
-            <input id="rm-nutrition-date" type="date">
+            <input id="rm-nutrition-date" type="date" aria-label="Diary date">
             <button id="rm-nutrition-next" type="button" aria-label="Next day">›</button>
             <button id="rm-nutrition-today" type="button">Today</button>
           </div>
@@ -729,8 +729,8 @@
                   <option value="breakfast">Breakfast</option>
                   <option value="lunch">Lunch</option>
                   <option value="dinner">Dinner</option>
-                  <option value="snack">Snack</option>
-                  <option value="supplement">Supplement</option>
+                  <option value="snack">Snacks</option>
+                  <option value="supplement">Supplements</option>
                   <option value="water">Water / Hydration</option>
                   <option value="other">Other</option>
                 </select>
@@ -738,7 +738,8 @@
               <label><span>Food or Recipe</span><select id="rm-nutrition-source"></select></label>
               <label><span>Servings</span><input id="rm-nutrition-quantity" type="number" min="0.01" step="0.01" value="1"></label>
               <label class="wide"><span>Note</span><input id="rm-nutrition-note" type="text" maxlength="240" placeholder="Optional"></label>
-              <button type="submit">Add to Diary</button>
+              <p id="rm-nutrition-source-state" class="rm218-source-state wide" aria-live="polite"></p>
+              <button type="submit" disabled>Add to Diary</button>
             </form>
           </section>
         </div>
@@ -753,6 +754,15 @@
           <div id="rm-nutrition-targets" class="rm218-target-list"></div>
         </section>
 
+        <section class="rm218-panel rm218-targets-panel">
+          <div class="rm218-panel-head"><div><strong>Last 7 Days</strong><span>Actual logged intake through today. Days without entries remain unlogged.</span></div></div>
+          <div id="rm-nutrition-trends" class="rm218-trends"></div>
+        </section>
+        <details class="rm218-panel rm218-targets-panel">
+          <summary>Full Daily Nutrient Profile</summary>
+          <div id="rm-nutrition-full-profile" class="rm218-target-list"></div>
+        </details>
+        <button id="rm-nutrition-retry" class="rm112-secondary rm218-retry" type="button" hidden>Retry Nutrition</button>
         <p id="rm-nutrition-diary-status" class="rm112-status" aria-live="polite"></p>
       </section>
 
@@ -1421,6 +1431,7 @@
   </main>
 
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
-  <script defer src="member110.js?v=207"></script>
+  <script defer src="member110.js?v=208"></script>
+  <script defer src="member-nutrition.js?v=1"></script>
 </body>
 </html>

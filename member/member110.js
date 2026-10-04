@@ -7,6 +7,7 @@
     auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
   });
   window.RA_MEMBER_CLIENT = client;
+  window.RA_MEMBER_NUTRITION_ENABLED = false;
 
   const el = (id) => document.getElementById(id);
 
@@ -29,6 +30,10 @@
   }
 
   function showOnly(view) {
+    if(view!=="rm-dashboard"){
+      window.RA_MEMBER_NUTRITION_ENABLED=false;
+      document.dispatchEvent(new CustomEvent("ra:member-access-reset"));
+    }
     ["rm-auth","rm-dashboard","rm-denied"].forEach((id) => el(id).classList.add("hidden"));
     el(view).classList.remove("hidden");
   }
@@ -5226,6 +5231,8 @@
   }
 
   async function loadDashboard() {
+    window.RA_MEMBER_NUTRITION_ENABLED=false;
+    document.dispatchEvent(new CustomEvent("ra:member-access-reset"));
     const {data:lifecycle,error:lifecycleError}=await client.rpc("member_paid_access_allowed");
     if(lifecycleError)throw lifecycleError;
     if(lifecycle!==true){window.location.replace("/member/onboarding/");return;}
@@ -5379,6 +5386,8 @@
       billing:billingResult.data||null,
       notifications:notificationsResult.data||[]
     };
+    window.RA_MEMBER_NUTRITION_ENABLED=Boolean(appAccessResult.data?.nutrition_enabled);
+    document.dispatchEvent(new CustomEvent("ra:member-dashboard-loaded",{detail:{nutritionEnabled:Boolean(appAccessResult.data?.nutrition_enabled)}}));
     void loadJourneyEnhancement(loadSequence);
     void loadHomeVNextEnhancements(loadSequence,attentionContext,weeklySummaryResult.data||null);
     void loadProgressVNextEnhancements(loadSequence);
@@ -5718,6 +5727,7 @@
     if(el("rm-screen-title"))el("rm-screen-title").textContent=config.title;
     if(el("rm-screen-context"))el("rm-screen-context").textContent=config.context;
 
+    document.dispatchEvent(new CustomEvent("ra:member-screen-changed",{detail:{screen:activeMemberScreen}}));
     const program=el("rm-program-name")?.textContent?.trim();
     if(program&&el("rm-sidebar-program"))el("rm-sidebar-program").textContent=program;
 

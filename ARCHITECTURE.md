@@ -1,5 +1,7 @@
 # ReVitalized Academy architecture
 
+Current staging addition (2026-10-04): [Nutrition Diary contract](docs/NUTRITION_DIARY.md) adds a shared-client member module and six checked RPCs over existing diary, catalog and target tables. It preserves bootstrap v2 and Nutrition entitlement visibility. Full numeric snapshots, local-calendar trends and coach/program target precedence are implemented; the coach drawer UI remains a separate next package. Earlier sections retain their original dated scope.
+
 Status: observed production architecture plus IMPLEMENTED, undeployed engineering changes, 2026-09-26. This document does not authorize a redesign.
 
 ## Product target

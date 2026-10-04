@@ -1,5 +1,20 @@
 # ReVitalized Academy — current build state
 
+## Current package — 2026-10-04 UTC
+
+Nutrition Diary + Daily Targets v1 is implemented and validated on `codex/staging`, preserving the four approved commits through `15a247cba5f9fa3dca25490b2474cea0b3215b29` and the prior Recipe Builder release. See [package contract and verification](docs/NUTRITION_DIARY.md).
+
+- **Applied database:** reviewed `20261004043000_nutrition_diary_daily_targets.sql` applied once to staging `bvooallokgfktssadsrv`; actual ledger version `20261004044342`. Stored SQL MD5 equals the reviewed file: `36c05958cffc0c4d3f75e816079949a6`. No earlier migration replayed.
+- **Implemented:** shared-client Nutrition module, date navigation, seven meal groups, full numeric nutrient snapshots/totals, target hierarchy, published-only sources and seven-day actual intake. Existing Nutrition entitlement visibility preserved. Member JS 208, CSS 201, Nutrition module 1; 308-file build.
+- **Tested:** 71 JS syntax checks; frontend 243 passed / 27 existing skips / zero failures; native PostgreSQL 17 backend 116 passed / nine known agreement onboarding-origin fixture failures; Edge 25 passed / 19 entry points typechecked. Diary: 28 database + 18 UI passed. Nutrition Engine / Content Builder / Recipe Builder + integrity: 26 passed (included in frontend totals).
+- **Responsive fixture:** exact-built full member shell, empty and populated diaries at 1440×1000, 768×1024 and 390×844; no horizontal overflow or console warnings/errors. Navigation and bottom controls work.
+- **Acceptance limits:** existing paid member's Nutrition entitlement is unavailable; no access was manufactured. Source inventory is empty and The Living Diet remains draft. Staff read RPC is complete; coach Nutrition Review drawer UI is deferred to a narrow follow-up.
+- **Release boundary:** existing Netlify staging site `071b252e-a922-4846-a784-8dca1edad377` only. The workspace `STAGING_NUTRITION_DIARY_2026-10-04.md` records the deployment receipt, exact live hashes and final hosted acceptance separately. Source/test completion is not deployment evidence. Production is outside this authorization.
+
+The dated sections below are historical snapshots; their original unknown-environment and “not deployed” statements do not supersede current staging release receipts. Next narrow package: read-only coach Nutrition Review UI, then hosted member acceptance once approved source publication and existing entitlement/session prerequisites are available without widening permissions.
+
+## Historical build record
+
 Updated 2026-09-27 UTC. **Staging preparation IMPLEMENTED and locally tested on `codex/staging`, based on lifecycle `feef92e1c0809cbd035edf35ebc70050d958b46b`; NOT DEPLOYED.**
 
 ## Repository and baseline

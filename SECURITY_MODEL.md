@@ -1,5 +1,7 @@
 # ReVitalized Academy security model
 
+Current staging addition (2026-10-04): [Nutrition Diary security and tests](docs/NUTRITION_DIARY.md) documents paid/claimed self access, lifecycle-restrictive diary/target RLS, qualified empty-search-path definer functions, explicit anonymous revocation and private helper ACLs. Staff review requires private-health permission plus contact scope; target writes retain their independent override gate. Hosted role/default/override fingerprints are unchanged. Twenty-eight new native PostgreSQL tests validate these boundaries; no production security change was made.
+
 Observed production baseline and IMPLEMENTED undeployed fixes, 2026-09-26. This is a scoped review, not a penetration test or security certification.
 
 ## Required boundaries

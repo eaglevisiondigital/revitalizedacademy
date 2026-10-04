@@ -1,5 +1,9 @@
 # ReVitalized Academy decisions and unresolved questions
 
+## Nutrition Diary package authorization — 2026-10-04
+
+The user approved completion, one reviewed new migration application and deployment to existing staging only. Preserve all four committed package foundations, Recipe Builder and Nutrition Engine. Use full numeric snapshots, actual data only, published member-facing sources and coach-over-program target precedence. Keep draft methodology unpublished and existing permissions/entitlements intact. No hosted diary/content writes are authorized for acceptance; use disposable local identities. The secure staff read RPC is required; coach drawer UI may be deferred to avoid portal risk. Production, main merge, unrelated grants, provider changes and prior migration replay remain excluded. See [implementation and acceptance limits](docs/NUTRITION_DIARY.md).
+
 Baseline: 2026-09-26. A newer build report does not supersede an earlier approved requirement unless an explicit change can be traced. Assistant suggestions and completion claims are not equivalent to user approval or verified implementation.
 
 ## Authority and evidence
