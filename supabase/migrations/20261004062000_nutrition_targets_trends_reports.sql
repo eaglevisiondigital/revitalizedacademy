@@ -268,10 +268,14 @@ begin
         from day_totals dt
         cross join lateral jsonb_each(dt.totals) e
         where jsonb_typeof(e.value)='number'
+      ),
+      averaged as (
+        select key,avg(amount) amount
+        from values
+        group by key
       )
-      select jsonb_object_agg(key,to_jsonb(avg(amount)))
-      from values
-      group by true
+      select jsonb_object_agg(key,to_jsonb(amount))
+      from averaged
     ),'{}'::jsonb)
   );
 end;
