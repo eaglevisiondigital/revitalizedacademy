@@ -1,5 +1,16 @@
 # ReVitalized Academy decisions and unresolved questions
 
+## 2026-10-04 — Authorized narrow Nutrition Targets + Trends frontend repair
+
+The latest user instruction authorizes D1–D5 frontend repairs, maintained runtime coverage and staging-only deployment after scoped blockers pass. Preserve candidate `8c030118...`, the previously uncommitted validation docs/tests and accepted migration ledger `20261004055612`; do not replay it. Implementation uses one all-or-nothing UI load for day/targets/trends and captured mutation ownership, preserving the existing secure RPCs and permissions. No target caps, fabricated numeric defaults or global timestamp changes. The complete regression gate passes apart from the nine explicitly separated existing onboarding-origin fixtures. Pending staff access remains a reported acceptance limit, not authorization to grant access. Final deployment evidence lives in workspace `STAGING_NUTRITION_TARGETS_REPAIR_2026-10-04.md`. Earlier hold decisions remain historical evidence.
+
+
+## 2026-10-04 — Nutrition Targets + Trends validation
+
+- Approved scope: methodology defaults, scoped coach overrides, Coach Override → Program Default precedence, and actual logged-day 7/30-day reporting. Member values must not supersede coach/program targets.
+- Private reads require health.private.view plus contact scope; target writes require plan.override plus contact scope. Test grants and target values are isolated fixtures only. The Living Diet remains an unpublished draft shell.
+- The user requires scoped tests to pass before staging deployment. Validation found frontend loading/private-DOM/race/date/cap defects, so release is held without replaying the applied migration or changing hosted permissions/data. See [validation](docs/NUTRITION_TARGETS_TRENDS_VALIDATION.md). No new product policy was invented.
+
 ## Approved Coach Nutrition Review access rule — 2026-10-04
 
 The user's repair instruction resolves the Wellness-wrapper question: Nutrition Review is a private-health read feature, gated by `health.private.view` and server-enforced contact scope, independent of Wellness/plan-management access. Existing management controls keep their own permissions. Complete the stale-client/date, local-date, strict numeric and long-text frontend repairs; preserve Chat patches where correct; add maintained regressions; deploy to existing staging only after scoped checks pass. No backend/RLS contract changes, hosted permission grants or migration replay. See [implementation](docs/COACH_NUTRITION_REVIEW.md).

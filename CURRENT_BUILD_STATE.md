@@ -1,5 +1,26 @@
 # ReVitalized Academy — current build state
 
+## Latest package — Nutrition Targets + Trends frontend repair, 2026-10-04
+
+The authorized D1–D5 repair extends candidate `8c030118239528cd2ddbfccbfe32edc31c5dc245` and preserves its six upstream commits. Day, effective targets and selected 7/30-day report now load together through normal Review open/reload/date/range controls. All private DOM clears on context changes or failure. Generation/contact/date/range/open/permission ownership applies to reads and target mutation completions. SQL dates render locally without timestamp conversion. All configured targets remain accessible, including null-valued overrides; numeric zero stays distinct from unknown.
+
+**Verified before release:** build 309 files; syntax 72/72; full frontend 398 total: 371 passed, zero failed, 27 historical skips. New normal-flow runtime suite 102/102; Coach Review 22/22; target source 4/4; Nutrition Engine 6/6; Content Builder 9/9; Member Nutrition 18/18. Native PostgreSQL 17: 163 total, 154 passed, the same nine unrelated agreement onboarding-origin fixtures failed; all 37 accepted target/trend and 29 existing nutrition database tests pass. Frozen Edge 25/25 and 19 entrypoints typechecked. Exact-built browser checks cover 101 targets/202 actions, read-only/editable, empty and long text at 1440×1000, 768×1024 and 390×844 without overflow or console warnings/errors.
+
+Release assets: Review JS103 / Wellness CSS120 / Wellness JS118. This source package is authorized only for existing staging site `071b252e-a922-4846-a784-8dca1edad377`. The final deployed SHA, deploy ID and exact public hashes are recorded separately in workspace `STAGING_NUTRITION_TARGETS_REPAIR_2026-10-04.md`; source completion alone is not deployment evidence. Hosted authenticated acceptance remains blocked by **Account Active / Staff access is pending**. No access was manufactured.
+
+Migration ledger `20261004055612` and accepted SQL are unchanged; no replay. The prior uncommitted 37-test database suite is preserved byte-for-byte and incorporated with its validation documents. The Living Diet remains draft; no hosted target/diary/client or permission writes are authorized. [Repair details and historical failed-candidate evidence](docs/NUTRITION_TARGETS_TRENDS_VALIDATION.md).
+
+Next: obtain a normally approved working staff session through the established access process for read-only hosted acceptance. Do not change roles or grants merely to complete this test. No additional Nutrition Targets + Trends code repair is indicated by the maintained checks.
+
+
+## Historical held validation — Nutrition Targets + Trends/Reports v1, 2026-10-04
+
+Candidate `codex/staging` SHA `8c030118239528cd2ddbfccbfe32edc31c5dc245` contains all six requested commits. **Deployment held:** targets/trends are not loaded on open/date changes, private target/trend DOM is not cleared on client transitions, stale trend responses can replace current/closed views, date labels shift a day in Central time, and configured targets are silently capped at24. See [complete validation and reproduction contract](docs/NUTRITION_TARGETS_TRENDS_VALIDATION.md).
+
+New maintained database tests37/37 pass. Full backend154pass +nine known agreement-origin fixture failures; frontend267pass/2stale Coach Review assertions/27historical skips; build309/syntax72; Edge25pass/19typechecks. Supplemental exact-built UI4pass/10fail; separate instrumented component diagnostics2pass/1cap failure. Nine responsive checks pass, with target rendering explicitly diagnostic because the normal loader is unreachable. Hosted staff remains pending.
+
+Migration already applied to staging at ledger `20261004055612`, source/stored SQL MD5 `40f46ce425e50f9fca8131e12a6cdce4`; no replay. Methodology targets, client targets and diary rows all remain zero; The Living Diet stays draft. Scoped reads/writes, coach precedence, clear fallback and logged-day averages pass in isolated PostgreSQL17. Staging remains deploy `6ac1e6fd3020fcfb080bf7b7` with Review JS101/CSS119/Wellness JS118. Production deploy and20public fingerprints unchanged. Local changes are validation tests/docs only; no new commit/push or application/backend implementation changes. Next: narrow frontend repair before staging release.
+
 ## Current package — Coach Nutrition Review repair, 2026-10-04
 
 The approved repair preserves the original five commits and the Chat date/null patches. [Coach Review contract and validation](docs/COACH_NUTRITION_REVIEW.md) supersedes the earlier coach-UI deferral below. Nutrition Review is now an independent private-health read section; existing Wellness management gates are unchanged. Client/date request ownership, immediate private DOM clearing, local-calendar controls, strict numeric display and full long-text wrapping are implemented.

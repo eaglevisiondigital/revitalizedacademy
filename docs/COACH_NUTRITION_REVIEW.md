@@ -1,4 +1,18 @@
-# Coach Nutrition Review — repaired staging package
+# Coach Nutrition Review — current target/trend repair and release history
+
+## Current JS103 target/trend repair
+
+The current repair extends the original read-only review with approved, secure nutrient target set/clear controls. Private reads are limited to `admin_get_client_nutrition_day`, `admin_get_client_nutrition_targets` and `admin_get_client_nutrition_trends`; mutations are limited to `admin_set_client_nutrient_target` and `admin_clear_client_nutrient_target`. No direct table reads or writes exist. Private-health permission and contact scope remain required by the database; editing also requires scoped `plan.override`.
+
+Normal open/reload and date/range changes load all three reads together. Only a complete current snapshot renders. Every response and mutation completion must still own the same generation/contact/date/range/open/permission context. Transition, denial and transport failure clear day items, targets, source labels, trend cards/rows and status. All configured targets render; zero remains numeric and unknown remains blank. SQL date-only labels avoid the unrelated timestamp formatter.
+
+Maintained Coach Review tests22/22 and new runtime tests102/102 pass against both source and exact-built output. Existing target source tests4/4 pass. The102 runtime cases cover the held candidate reproductions, read success/error/exception races, same-context cycles, save/clear late completions, 101 configured targets, explicit null overrides and calendar labels across timezones. Browser fixture uses the real built module and permission script through normal UI flow, without diagnostic function exports. All requested widths pass. Hosted staff access remains pending; no hosted mutation or permission change was made. See [full repair evidence](NUTRITION_TARGETS_TRENDS_VALIDATION.md).
+
+Assets: Review JS103, Wellness CSS120, Wellness JS118. The final deployment receipt is workspace `STAGING_NUTRITION_TARGETS_REPAIR_2026-10-04.md`.
+
+## Historical JS101 release / JS102 held validation
+
+This document describes the released JS101 package. The later JS102 Nutrition Targets + Trends candidate is **not deployed** and does not yet meet the same private-data clearing/request ownership guarantees. Its approved scoped writes also supersede the original read-only module contract. See [current validation](NUTRITION_TARGETS_TRENDS_VALIDATION.md) before continuing development.
 
 The 2026-10-04 user authorization approves the frontend repairs and staging-only release. No backend/RLS, migration, permission grant or provider change is part of this package.
 
