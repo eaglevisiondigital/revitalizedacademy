@@ -187,7 +187,7 @@ with check ((select private.staff_has_permission((select auth.uid()), 'plan.over
 create table if not exists public.nutrition_diary_items (
   id uuid primary key default gen_random_uuid(),
   contact_id uuid not null references public.contacts(id) on delete cascade,
-  membership_id uuid references public.memberships(id) on delete set null,
+  membership_id uuid references public.client_memberships(id) on delete set null,
   log_date date not null default current_date,
   meal_slot text,
   food_id uuid references public.food_catalog(id) on delete set null,
