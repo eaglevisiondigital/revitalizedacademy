@@ -9,6 +9,8 @@
   let open=false;
   let requestSequence=0;
   let permissionsRefreshing=false;
+  let loadedContext=null;
+  let pendingMutation=null;
   const localDateIso=(d=new Date())=>{
     const y=d.getFullYear();
     const m=String(d.getMonth()+1).padStart(2,"0");
@@ -25,6 +27,24 @@
   const fmt=(v,d=1)=>Number(v).toLocaleString(undefined,{maximumFractionDigits:d});
   const hasValue=(v)=>typeof v==="number"&&Number.isFinite(v);
   const canReview=()=>Boolean(contactId&&!permissionsRefreshing&&portal.hasPermission?.("health.private.view"));
+
+  function currentContext(context,needsOverride=false){
+    if(!canReview()){updateVisibility();return false;}
+    const current=context&&context.sequence===requestSequence&&context.contact===contactId&&
+      context.date===date&&context.days===trendDays&&open;
+    if(current&&needsOverride&&!portal.hasPermission?.("plan.override")){
+      clearReview();
+      return false;
+    }
+    return Boolean(current);
+  }
+
+  function formatDateOnly(value){
+    if(typeof value!=="string"||!/^\d{4}-\d{2}-\d{2}$/.test(value))return "Date unavailable";
+    const local=new Date(value+"T12:00:00");
+    if(localDateIso(local)!==value)return "Date unavailable";
+    return new Intl.DateTimeFormat("en-US",{month:"short",day:"numeric",year:"numeric"}).format(local);
+  }
 
   function status(message,type=""){
     const node=el("client-nutrition-review-status");
@@ -110,19 +130,20 @@
     const root=el("client-nutrition-targets");
     if(!root)return;
     root.replaceChildren();
-    const canEdit=Boolean(portal.hasPermission?.("plan.override"));
+    const context=loadedContext;
+    const canEdit=Boolean(currentContext(context)&&portal.hasPermission?.("plan.override"));
     const access=el("client-nutrition-target-access");
     if(access)access.textContent=canEdit?"Coach Override Enabled":"Read Only";
 
     const rows=(Array.isArray(targetRows)?targetRows:[]).filter((row)=>
-      row.default_visible||row.minimum!==null||row.target!==null||row.maximum!==null
+      row.default_visible||row.source||hasValue(row.minimum)||hasValue(row.target)||hasValue(row.maximum)
     );
     if(!rows.length){
       root.innerHTML='<div class="drawer-empty">No nutrition targets are configured for this client yet.</div>';
       return;
     }
 
-    rows.slice(0,24).forEach((row)=>{
+    rows.forEach((row)=>{
       const item=document.createElement("article");
       item.className="client-nutrition-target-row";
       const copy=document.createElement("div");
@@ -137,7 +158,7 @@
         const s=document.createElement("span");s.textContent=label;
         const input=document.createElement("input");
         input.type="number";input.min="0";input.step="0.01";
-        input.value=row[key]??"";
+        input.value=hasValue(row[key])?row[key]:"";
         input.dataset.targetKey=key;
         input.disabled=!canEdit;
         wrap.append(s,input);fields.append(wrap);
@@ -145,44 +166,62 @@
 
       const actions=document.createElement("div");actions.className="client-nutrition-target-actions";
       const save=document.createElement("button");save.type="button";save.className="primary-button compact-action";save.textContent="Save Override";save.disabled=!canEdit;
-      save.addEventListener("click",()=>saveTarget(row,item));
+      save.addEventListener("click",()=>saveTarget(row,item,context));
       const clear=document.createElement("button");clear.type="button";clear.className="secondary-button compact-action";clear.textContent="Use Program Default";clear.disabled=!canEdit||row.source!=="coach";
-      clear.addEventListener("click",()=>clearTarget(row));
+      clear.addEventListener("click",()=>clearTarget(row,context));
       actions.append(save,clear);
       item.append(copy,fields,actions);root.append(item);
     });
   }
 
-  async function saveTarget(row,item){
-    if(!contactId||!portal.hasPermission?.("plan.override"))return;
+  async function saveTarget(row,item,context){
+    if(!currentContext(context,true)||pendingMutation)return;
+    const inputs=[...item.querySelectorAll("input")];
+    if(inputs.some(input=>!input.checkValidity())){
+      status("Enter a non-negative number or leave the target blank.","error");
+      return;
+    }
     const value=(key)=>{
       const raw=item.querySelector('[data-target-key="'+key+'"]')?.value;
       if(raw===undefined||raw==="")return null;
       const n=Number(raw);return Number.isFinite(n)&&n>=0?n:null;
     };
-    status("Saving nutrient target...");
-    const {error}=await client.rpc("admin_set_client_nutrient_target",{
-      p_contact_id:contactId,
+    const payload={
+      p_contact_id:context.contact,
       p_nutrient_key:row.nutrient_key,
       p_minimum:value("minimum"),
       p_target:value("target"),
       p_maximum:value("maximum")
-    });
-    if(error){status(error.message,"error");return;}
-    await loadTargets();
-    status("Coach target saved.","success");
+    };
+    await mutateTarget(context,()=>client.rpc("admin_set_client_nutrient_target",payload),
+      "Saving nutrient target...","Coach target saved.");
   }
 
-  async function clearTarget(row){
-    if(!contactId||!portal.hasPermission?.("plan.override"))return;
-    status("Restoring program default...");
-    const {error}=await client.rpc("admin_clear_client_nutrient_target",{
-      p_contact_id:contactId,
+  async function clearTarget(row,context){
+    if(!currentContext(context,true)||pendingMutation)return;
+    await mutateTarget(context,()=>client.rpc("admin_clear_client_nutrient_target",{
+      p_contact_id:context.contact,
       p_nutrient_key:row.nutrient_key
-    });
-    if(error){status(error.message,"error");return;}
-    await loadTargets();
-    status("Program default restored.","success");
+    }),"Restoring program default...","Program default restored.");
+  }
+
+  async function mutateTarget(context,request,loadingMessage,successMessage){
+    if(!currentContext(context,true)||pendingMutation)return;
+    pendingMutation=context;
+    el("client-nutrition-targets")?.querySelectorAll("input,button").forEach(node=>{node.disabled=true;});
+    status(loadingMessage);
+    try{
+      const {error}=await request();
+      if(!currentContext(context,true))return;
+      if(error)throw error;
+      await load(successMessage);
+    }catch(error){
+      if(!currentContext(context,true))return;
+      clearReview();
+      status(error.message||"The nutrient target could not be updated. Please reload the review.","error");
+    }finally{
+      if(pendingMutation===context)pendingMutation=null;
+    }
   }
 
   function renderTrends(){
@@ -193,7 +232,7 @@
 
     const averages=trendData?.averages||{};
     const cards=[
-      ["Logged Days",trendData?.logged_days??0,""],
+      ["Logged Days",trendData?.logged_days,""],
       ["Calories",averages.energy_kcal,"kcal"],
       ["Protein",averages.protein_g,"g"],
       ["Fiber",averages.fiber_g,"g"]
@@ -202,7 +241,7 @@
       const card=document.createElement("div");
       const s=document.createElement("span");s.textContent=label;
       const b=document.createElement("strong");
-      b.textContent=value===undefined||value===null?"—":fmt(value,label==="Calories"?0:1)+(unit?" "+unit:"");
+      b.textContent=hasValue(value)?fmt(value,label==="Calories"?0:1)+(unit?" "+unit:""):"—";
       card.append(s,b);summary.append(card);
     });
 
@@ -213,7 +252,7 @@
     }
     series.forEach((point)=>{
       const row=document.createElement("div");row.className="client-nutrition-trend-row";
-      const when=document.createElement("span");when.textContent=portal.formatDate(point.date);
+      const when=document.createElement("span");when.textContent=formatDateOnly(point.date);
       const totals=point.totals||{};
       const detail=document.createElement("strong");
       detail.textContent=[
@@ -225,31 +264,6 @@
     });
   }
 
-  async function loadTargets(){
-    if(!contactId||!canReview())return;
-    const requestedContact=contactId;
-    const {data:result,error}=await client.rpc("admin_get_client_nutrition_targets",{p_contact_id:requestedContact});
-    if(requestedContact!==contactId||!canReview())return;
-    if(error){targetRows=[];renderTargets();status(error.message,"error");return;}
-    targetRows=Array.isArray(result)?result:[];
-    renderTargets();
-  }
-
-  async function loadTrends(){
-    if(!contactId||!canReview())return;
-    const requestedContact=contactId;
-    const requestedDays=trendDays;
-    const {data:result,error}=await client.rpc("admin_get_client_nutrition_trends",{
-      p_contact_id:requestedContact,
-      p_days:requestedDays,
-      p_end_date:date
-    });
-    if(requestedContact!==contactId||requestedDays!==trendDays||!canReview())return;
-    if(error){trendData={days:requestedDays,logged_days:0,series:[],averages:{}};renderTrends();status(error.message,"error");return;}
-    trendData=result||{days:requestedDays,logged_days:0,series:[],averages:{}};
-    renderTrends();
-  }
-
   function render(){
     if(el("client-nutrition-date"))el("client-nutrition-date").value=date;
     renderSummary();
@@ -259,11 +273,17 @@
   }
 
   function clearReview(){
+    loadedContext=null;
+    pendingMutation=null;
     data={items:[],totals:{}};
     targetRows=[];
     trendData={days:trendDays,logged_days:0,series:[],averages:{}};
     el("client-nutrition-review-summary")?.replaceChildren();
     el("client-nutrition-review-items")?.replaceChildren();
+    el("client-nutrition-targets")?.replaceChildren();
+    el("client-nutrition-target-access")?.replaceChildren();
+    el("client-nutrition-trends-summary")?.replaceChildren();
+    el("client-nutrition-trends")?.replaceChildren();
     el("client-nutrition-review-panel")?.setAttribute("aria-busy","false");
     if(el("client-nutrition-date"))el("client-nutrition-date").value=date;
     status("");
@@ -285,31 +305,41 @@
     if(el("client-nutrition-review-toggle"))el("client-nutrition-review-toggle").disabled=!allowed;
   }
 
-  async function load(){
+  async function load(successMessage="Nutrition review ready."){
     if(!canReview()||!open)return;
-    const sequence=++requestSequence;
-    const requestedContact=contactId;
-    const requestedDate=date;
-    const current=()=>sequence===requestSequence&&requestedContact===contactId&&requestedDate===date&&open&&canReview();
+    const context={sequence:++requestSequence,contact:contactId,date,days:trendDays};
     clearReview();
     el("client-nutrition-review-panel")?.setAttribute("aria-busy","true");
     status("Loading client nutrition...");
     try{
-      const {data:result,error}=await client.rpc("admin_get_client_nutrition_day",{
-        p_contact_id:requestedContact,
-        p_log_date:requestedDate
-      });
-      if(!current())return;
-      if(error)throw error;
-      data=result||{items:[],totals:{}};
+      // One review snapshot: no partial private result is rendered before all
+      // three authorized reads succeed for the same client/date/range.
+      const read=async(request)=>{
+        const {data:result,error}=await request();
+        if(error)throw error;
+        return result;
+      };
+      const [dayResult,targetsResult,trendsResult]=await Promise.all([
+        read(()=>client.rpc("admin_get_client_nutrition_day",{p_contact_id:context.contact,p_log_date:context.date})),
+        read(()=>client.rpc("admin_get_client_nutrition_targets",{p_contact_id:context.contact})),
+        read(()=>client.rpc("admin_get_client_nutrition_trends",{p_contact_id:context.contact,p_days:context.days,p_end_date:context.date}))
+      ]);
+      if(!currentContext(context))return;
+      if(!dayResult||!Array.isArray(targetsResult)||!trendsResult||!Array.isArray(trendsResult.series)){
+        throw Error("The nutrition review response was incomplete. Please reload the review.");
+      }
+      data=dayResult;
+      targetRows=targetsResult;
+      trendData=trendsResult;
+      loadedContext=context;
       render();
-      status("Nutrition review ready.","success");
+      status(successMessage,"success");
     }catch(error){
-      if(!current())return;
+      if(!currentContext(context))return;
       clearReview();
       status(error.message||"Nutrition review could not be loaded. Please try again.","error");
     }finally{
-      if(current())el("client-nutrition-review-panel")?.setAttribute("aria-busy","false");
+      if(currentContext(context))el("client-nutrition-review-panel")?.setAttribute("aria-busy","false");
     }
   }
 
@@ -369,7 +399,7 @@
   document.querySelectorAll("[data-nutrition-days]").forEach((button)=>button.addEventListener("click",()=>{
     trendDays=Number(button.dataset.nutritionDays)||7;
     document.querySelectorAll("[data-nutrition-days]").forEach((b)=>b.classList.toggle("active",b===button));
-    void loadTrends();
+    void load();
   }));
   updateVisibility();
 })();
