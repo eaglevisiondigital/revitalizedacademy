@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="portal-work-desk.css?v=146">
   <link rel="stylesheet" href="portal-client-foundation.css?v=113">
   <link rel="stylesheet" href="portal-coaching.css?v=115">
-  <link rel="stylesheet" href="portal-wellness.css?v=119">
+  <link rel="stylesheet" href="portal-wellness.css?v=120">
   <link rel="stylesheet" href="portal-overrides.css?v=118">
   <link rel="stylesheet" href="portal-learning.css?v=119">
   <link rel="stylesheet" href="portal-member-messaging.css?v=121">
@@ -375,6 +375,29 @@
                 </div>
                 <div id="client-nutrition-review-summary" class="client-nutrition-review-summary"></div>
                 <div id="client-nutrition-review-items" class="client-nutrition-review-items"></div>
+
+                <div class="client-nutrition-subsection-head">
+                  <div>
+                    <strong>Nutrient Targets</strong>
+                    <span>Program defaults and client-specific coach overrides.</span>
+                  </div>
+                  <span id="client-nutrition-target-access" class="status-badge">Read Only</span>
+                </div>
+                <div id="client-nutrition-targets" class="client-nutrition-targets"></div>
+
+                <div class="client-nutrition-subsection-head">
+                  <div>
+                    <strong>Nutrition Trends</strong>
+                    <span>Actual logged-day averages and trends only.</span>
+                  </div>
+                  <div class="client-nutrition-range-actions">
+                    <button type="button" class="secondary-button compact-action active" data-nutrition-days="7">7 Days</button>
+                    <button type="button" class="secondary-button compact-action" data-nutrition-days="30">30 Days</button>
+                  </div>
+                </div>
+                <div id="client-nutrition-trends-summary" class="client-nutrition-trends-summary"></div>
+                <div id="client-nutrition-trends" class="client-nutrition-trends"></div>
+
                 <p id="client-nutrition-review-status" class="form-status" aria-live="polite"></p>
               </div>
 
@@ -3013,7 +3036,7 @@
   <script defer src="portal-client-foundation.js?v=113"></script>
   <script defer src="portal-coaching.js?v=116"></script>
   <script defer src="portal-wellness.js?v=118"></script>
-  <script defer src="portal-nutrition-review.js?v=101"></script>
+  <script defer src="portal-nutrition-review.js?v=102"></script>
   <script defer src="portal-overrides.js?v=118"></script>
   <script defer src="portal-learning.js?v=119"></script>
   <script defer src="portal-member-messaging.js?v=166"></script>
