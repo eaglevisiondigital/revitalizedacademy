@@ -40,10 +40,10 @@ function fixture(options = {}) {
 }
 test('Nutrition module is allowlisted, cache-versioned and uses the shared client', () => {
   assert(JSON.parse(fs.readFileSync(path.join(root, 'config/public-files.json'))).includes('member/member-nutrition.js'));
-  assert.match(html, /member-nutrition\.js\?v=1/); assert.match(html, /member110\.js\?v=208/); assert.match(html, /member110\.css\?v=201/);
+  assert.match(html, /member-nutrition\.js\?v=1/); assert.match(html, /member110\.js\?v=209/); assert.match(html, /member110\.css\?v=201/);
   assert.match(source, /window\.RA_MEMBER_CLIENT/); assert.doesNotMatch(source, /createClient/);
   const controller = fs.readFileSync(path.join(root, 'member/member110.js'), 'utf8');
-  assert.match(controller, /dispatchEvent\(new CustomEvent\("ra:member-dashboard-loaded",\{detail:\{nutritionEnabled:Boolean\(appAccessResult.data\?\.nutrition_enabled\)/);
+  assert.match(controller, /dispatchEvent\(new CustomEvent\("ra:member-dashboard-loaded",\{detail:\{\s*nutritionEnabled:Boolean\(appAccessResult.data\?\.nutrition_enabled\)/);
   assert.match(controller, /selectors:\["#rm-nutrition-diary-card"/);
 });
 test('Nutrition waits for authenticated dashboard access and enabled workspace', async () => {

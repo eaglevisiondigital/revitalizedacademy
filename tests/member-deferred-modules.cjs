@@ -31,6 +31,8 @@ test('deferred member modules retain per-module failure isolation and stale-resp
 });
 
 test('paid access and core reads still fail closed before deferred features',()=>{
-  assert(js.indexOf('rpc("member_paid_access_allowed")')<js.indexOf('const loadSequence=++dashboardLoadSequence'));
+  const start=js.indexOf('async function loadDashboard()');
+  assert(js.indexOf('const loadSequence=clearMemberPrivateState()',start)<js.indexOf('rpc("member_paid_access_allowed")',start));
+  assert(js.indexOf('rpc("member_paid_access_allowed")',start)<js.indexOf('from("my_app_bootstrap_v2")',start));
   assert.match(js,/const requiredResults=\[[\s\S]*my_app_bootstrap_v2[\s\S]*my_member_dashboard[\s\S]*my_member_entitlements/);
 });
