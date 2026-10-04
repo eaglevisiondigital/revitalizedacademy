@@ -1,0 +1,77 @@
+{
+  "contact_tags": [
+    {
+      "id": "657ac079-169e-43d3-a4a4-e5046ffe65d6",
+      "tag": "synthetic-beta-qa-20261004"
+    }
+  ],
+  "contact_notes": [
+    "1c549f76-30f6-4066-be95-cad297650a87"
+  ],
+  "journey_steps": [
+    {
+      "id": "e2b2c6e3-7b51-472f-ac16-0c42673d72dc",
+      "key": "application_capture",
+      "status": "completed"
+    },
+    {
+      "id": "00a817da-d0c2-45e6-bab1-bf3cfed00678",
+      "key": "payment_agreement",
+      "status": "in_progress"
+    },
+    {
+      "id": "ad0a68b0-2fe9-4493-ab2a-df673b976f27",
+      "key": "vitality_assessment",
+      "status": "pending"
+    },
+    {
+      "id": "ba16047a-0293-4758-889e-58b5d6c52bb0",
+      "key": "backend_activation",
+      "status": "pending"
+    },
+    {
+      "id": "b126d0ce-19c6-4c5f-a03f-82edf085ef19",
+      "key": "onboarding_health_questionnaire",
+      "status": "pending"
+    },
+    {
+      "id": "2bdcee01-4ee8-401b-be9e-7e67aa4c9418",
+      "key": "coaching_invitation",
+      "status": "pending"
+    }
+  ],
+  "follow_up_tasks": null,
+  "contact_activity": [
+    {
+      "id": "ecec0d0b-467a-4347-a7b2-98a41956f3c6",
+      "type": "manual_contact_created"
+    },
+    {
+      "id": "ecb16f18-8714-4a7c-b191-029b657ae499",
+      "type": "client_access_transition"
+    },
+    {
+      "id": "4ff7be10-a5cd-4786-a601-40aff20c05a0",
+      "type": "client_foundation_ready"
+    },
+    {
+      "id": "590d5258-e317-4a48-9ef0-5475090da214",
+      "type": "enrollment_activation_updated"
+    },
+    {
+      "id": "1f49d9bb-188f-4576-bb5a-eb4eca952541",
+      "type": "client_contract_sent"
+    }
+  ],
+  "workflow_records": null,
+  "household_members": [
+    "63c83366-3b72-49f6-a0b9-e11f749ebd62"
+  ],
+  "journey_access_links": [
+    {
+      "id": "cc9bd539-0759-41f6-ba5c-fbec07c1b7f6",
+      "active": true,
+      "expires_at": "2026-11-03T23:00:51.665403+00:00"
+    }
+  ]
+}

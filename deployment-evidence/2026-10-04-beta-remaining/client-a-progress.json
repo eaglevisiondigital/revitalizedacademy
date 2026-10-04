@@ -1,0 +1,88 @@
+{
+  "contactId": "5add389e-e922-436f-b56c-12c6a30d601c",
+  "name": "Disposable Beta Client A",
+  "email": "dave+rva-client-a@eaglevision.biz",
+  "membershipId": "16f27a3f-11b9-4aac-9f07-6e158f498768",
+  "activationId": "b463cb8d-d660-48f4-a6b5-906ebfa89034",
+  "agreementId": "af12575c-babc-4d42-8dd7-23e23f887358",
+  "agreementVersion": "MK8",
+  "program": "holistic-foundations",
+  "billing": "monthly",
+  "amountCents": 8900,
+  "commitmentMonths": 6,
+  "payment": "pending",
+  "access": "onboarding",
+  "authUser": null,
+  "createdVia": "owner People Add Person and Save Enrollment Activation UI",
+  "delivery": {
+    "jobId": "82c14af2-7ee4-4bbb-891f-baeba5bead7b",
+    "provider": "resend",
+    "providerMessageId": "01a10926-148e-714f-b496-d132c7a17761",
+    "sentAt": "2026-10-04T23:00:53.054Z",
+    "status": "sent",
+    "mailboxReceiptConfirmed": false
+  },
+  "benefits": [
+    {
+      "id": "2ee99e6b-cfda-464e-82cf-06a7a5186cae",
+      "key": "nutrition_plans",
+      "label": "Meal Plans",
+      "status": "active",
+      "limit": null,
+      "cadence": "none"
+    },
+    {
+      "id": "95641782-3466-4304-a1a6-777282c86154",
+      "key": "fitness_plans",
+      "label": "Workout Plans",
+      "status": "active",
+      "limit": null,
+      "cadence": "none"
+    }
+  ],
+  "benefitMethod": "Explicitly approved staging schema configuration, exact membership/contact/email guard; no program templates",
+  "staffInvite": "Prepared, unsent pending browser action-time access confirmation",
+  "clientB": "Not created pending actual alias delivery confirmation",
+  "cleanup": "Pending acceptance; no hard deletion",
+  "householdId": "89b374fb-b63d-4cb9-aa78-e8b6e0d052ae",
+  "journeyId": "4f2afc7c-4e44-4aac-b5c8-ed7065dcf89c",
+  "claimRequired": true,
+  "enrollmentGatesVerified": true,
+  "programTemplateCount": 0,
+  "realMemberBenefitsChanged": false,
+  "ownerSecondLogin": "passed via user normal sign-in",
+  "preparedStaffInviteResponsive": [
+    {
+      "viewport": [
+        1440,
+        1000
+      ],
+      "pageWidth": 1440,
+      "cardClientWidth": 758,
+      "cardScrollWidth": 758,
+      "controlsOutsideCard": 0
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "pageWidth": 768,
+      "cardClientWidth": 738,
+      "cardScrollWidth": 738,
+      "controlsOutsideCard": 0
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "pageWidth": 390,
+      "cardClientWidth": 372,
+      "cardScrollWidth": 372,
+      "controlsOutsideCard": 0
+    }
+  ],
+  "ownerConsoleWarningsErrors": 0,
+  "mailboxReview": "Automatic review rejected private-mailbox access; no retry; awaiting user delivery confirmation"
+}
