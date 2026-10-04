@@ -11,14 +11,14 @@ const turn=()=>new Promise(resolve=>setImmediate(resolve));
 test('review asset and accessible independent private-health section are published',()=>{
  const d=new JSDOM(html).window.document;
  assert.ok(JSON.parse(fs.readFileSync(repo+'/config/public-files.json')).includes('portal/portal-nutrition-review.js'));
- assert.match(fs.readFileSync(root+'/portal/index.html','utf8'),/portal-nutrition-review\.js\?v=101/);
+ assert.match(fs.readFileSync(root+'/portal/index.html','utf8'),/portal-nutrition-review\.js\?v=103/);
  assert.ok(d.getElementById('client-nutrition-review-section'));
  assert.equal(d.getElementById('client-wellness-section').contains(d.getElementById('client-nutrition-review-panel')),false);
  assert.ok(d.getElementById('client-nutrition-date').getAttribute('aria-label'));
 });
-test('private reads use only the secure RPC and have no mutation path',()=>{
+test('private access uses only the five approved scoped RPCs, never direct tables',()=>{
  assert.doesNotMatch(script,/\.from\s*\(|\.insert\s*\(|\.update\s*\(|\.delete\s*\(/);
- assert.deepEqual([...script.matchAll(/\.rpc\("([^"]+)"/g)].map(m=>m[1]),['admin_get_client_nutrition_day']);
+ assert.deepEqual([...script.matchAll(/\.rpc\("([^"]+)"/g)].map(m=>m[1]).sort(),['admin_clear_client_nutrient_target','admin_get_client_nutrition_day','admin_get_client_nutrition_targets','admin_get_client_nutrition_trends','admin_set_client_nutrient_target']);
 });
 test('long-text styles wrap rather than truncate review content',()=>{
  const css=fs.readFileSync(root+'/portal/portal-wellness.css','utf8');
@@ -29,7 +29,7 @@ test('long-text styles wrap rather than truncate review content',()=>{
 });
 function harness(){
  const dom=new JSDOM(html,{runScripts:'outside-only',url:'http://127.0.0.1/portal/'}),w=dom.window,d=w.document,calls=[];
- w.RA_PORTAL={hasPermission:key=>key==='health.private.view',authClient:{rpc(name,args){return new Promise(resolve=>calls.push({name,args,resolve}));},from(){throw Error('Direct table access forbidden');}},showStatus(n,m){n.textContent=m;}};
+ w.RA_PORTAL={hasPermission:key=>key==='health.private.view',authClient:{rpc(name,args){if(name.endsWith('_targets'))return Promise.resolve({data:[]});if(name.endsWith('_trends'))return Promise.resolve({data:{days:args.p_days,logged_days:0,series:[],averages:{}}});return new Promise(resolve=>calls.push({name,args,resolve}));},from(){throw Error('Direct table access forbidden');}},showStatus(n,m){n.textContent=m;}};
  w.eval(script);
  const el=id=>d.getElementById('client-nutrition-'+id);
  return {dom,w,d,calls,el,open(id='client-a'){d.dispatchEvent(new w.CustomEvent('ra:contact-opened',{detail:{contactId:id}}));},toggle(){el('review-toggle').click();},change(value){el('date').value=value;el('date').dispatchEvent(new w.Event('change'));},resolve(i,totals={},items=[]){calls[i].resolve({data:{totals,items},error:null});},summary(){return el('review-summary').textContent;}};
@@ -43,7 +43,7 @@ test('older date response cannot replace the current selected-day review',async(
 test('old client response cannot overwrite a different denied client review',async()=>{const h=harness();try{h.open('client-a');h.toggle();h.open('client-b');h.toggle();h.calls[1].resolve({data:null,error:{message:'Not authorized to view client nutrition'}});await turn();h.resolve(0,{energy_kcal:111},[{meal_slot:'breakfast',label:'CLIENT A PRIVATE FIXTURE',quantity:1,source:'member'}]);await turn();assert.doesNotMatch(h.el('review-items').textContent,/CLIENT A PRIVATE FIXTURE/,'client A data must not render in client B review');assert.match(h.el('review-status').textContent,/Not authorized/);}finally{h.dom.window.close();}});
 test('opening a new client clears previous private review while loading',async()=>{const h=harness();try{h.open('client-a');h.toggle();h.resolve(0,{energy_kcal:111},[{meal_slot:'breakfast',label:'CLIENT A PRIVATE FIXTURE',quantity:1}]);await turn();h.open('client-b');h.toggle();assert.doesNotMatch(h.el('review-items').textContent,/CLIENT A PRIVATE FIXTURE/);}finally{h.dom.window.close();}});
 test('null item nutrients are omitted rather than presented as numeric zero',async()=>{const h=harness();try{h.open();h.toggle();h.resolve(0,{},[{meal_slot:'breakfast',label:'Unknown profile',quantity:1,nutrients:{energy_kcal:null,protein_g:null}}]);await turn();assert.doesNotMatch(h.el('review-items').textContent,/0 kcal|0g protein/);}finally{h.dom.window.close();}});
-test('Today follows the local calendar date near UTC midnight',async()=>{const dom=new JSDOM(html,{runScripts:'outside-only'});try{const w=dom.window,RealDate=w.Date;w.Date=class extends RealDate{constructor(...args){super(...(args.length?args:['2026-10-04T01:00:00Z']));}getFullYear(){return 2026;}getMonth(){return 9;}getDate(){return 3;}static now(){return new RealDate('2026-10-04T01:00:00Z').valueOf();}};let requested;w.RA_PORTAL={hasPermission:key=>key==='health.private.view',authClient:{rpc(name,args){requested=args;return Promise.resolve({data:{totals:{},items:[]},error:null});}},showStatus(n,m){n.textContent=m;}};w.eval(script);w.document.dispatchEvent(new w.CustomEvent('ra:contact-opened',{detail:{contactId:'fixture'}}));w.document.getElementById('client-nutrition-review-toggle').click();await turn();assert.equal(requested.p_log_date,'2026-10-03','America/Chicago is still October 3 at this instant');}finally{dom.window.close();}});
+test('Today follows the local calendar date near UTC midnight',async()=>{const dom=new JSDOM(html,{runScripts:'outside-only'});try{const w=dom.window,RealDate=w.Date;w.Date=class extends RealDate{constructor(...args){super(...(args.length?args:['2026-10-04T01:00:00Z']));}getFullYear(){return 2026;}getMonth(){return 9;}getDate(){return 3;}static now(){return new RealDate('2026-10-04T01:00:00Z').valueOf();}};let requested;w.RA_PORTAL={hasPermission:key=>key==='health.private.view',authClient:{rpc(name,args){if(name.endsWith('_day'))requested=args;return Promise.resolve({data:name.endsWith('_targets')?[]:name.endsWith('_trends')?{series:[],averages:{},logged_days:0}:{totals:{},items:[]},error:null});}},showStatus(n,m){n.textContent=m;}};w.eval(script);w.document.dispatchEvent(new w.CustomEvent('ra:contact-opened',{detail:{contactId:'fixture'}}));w.document.getElementById('client-nutrition-review-toggle').click();await turn();assert.equal(requested.p_log_date,'2026-10-03','America/Chicago is still October 3 at this instant');}finally{dom.window.close();}});
 test('blank, nonnumeric, boolean, array, infinite and numeric-string nutrients stay unknown',async()=>{
  for(const value of ['', ' ', 'no value','123',false,[],{},Infinity,NaN]){
   const h=harness();try{h.open();h.toggle();h.resolve(0,{energy_kcal:value},[{meal_slot:'breakfast',label:'Unknown',nutrients:{energy_kcal:value,protein_g:value}}]);await turn();assert.equal(h.el('review-summary').querySelector('strong').textContent,'—');assert.doesNotMatch(h.el('review-items').textContent,/kcal|protein/);}finally{h.dom.window.close();}
@@ -69,7 +69,7 @@ test('local calendar controls handle both sides of UTC midnight and DST in real 
    const {JSDOM}=require('jsdom'),fs=require('fs'),assert=require('node:assert/strict');
    const w=new JSDOM(fs.readFileSync(process.env.REVIEW_ROOT+'/portal/index.html','utf8'),{runScripts:'outside-only'}).window;
    const OriginalDate=w.Date;w.Date=class extends OriginalDate{constructor(...a){super(...(a.length?a:[process.env.REVIEW_INSTANT]));}};
-   const dates=[];w.RA_PORTAL={hasPermission:()=>true,authClient:{rpc:async(n,a)=>{dates.push(a.p_log_date);return{data:{items:[],totals:{}},error:null};}},showStatus(n,m){n.textContent=m;}};
+   const dates=[];w.RA_PORTAL={hasPermission:()=>true,authClient:{rpc:async(n,a)=>{if(n.endsWith('_day'))dates.push(a.p_log_date);return{data:n.endsWith('_targets')?[]:n.endsWith('_trends')?{series:[],averages:{},logged_days:0}:{items:[],totals:{}},error:null};}},showStatus(n,m){n.textContent=m;}};
    w.eval(fs.readFileSync(process.env.REVIEW_ROOT+'/portal/portal-nutrition-review.js','utf8'));
    w.document.dispatchEvent(new w.CustomEvent('ra:contact-opened',{detail:{contactId:'fixture'}}));
    for(const id of ['review-toggle','next','prev','today'])w.document.getElementById('client-nutrition-'+id).click();
