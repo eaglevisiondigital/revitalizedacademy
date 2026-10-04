@@ -1,5 +1,14 @@
 # ReVitalized Academy — current build state
 
+## Member Health & Progress Dashboard v1 — 2026-10-04
+
+Implemented on `codex/staging`, preserving accepted Nutrition Targets + Trends baseline `b726fdbd062f1e419a70380119c5ae75fe8854b6`. [Contract inventory, behavior, flags, privacy and acceptance boundaries](docs/MEMBER_HEALTH_PROGRESS_V1.md). Existing premium Health overview now combines configured real measurements/7–30-day trends with compact goals, habits, nutrition, coaching and source summaries. Core session/request ownership and private-DOM clearing are hardened. No backend contract, hosted migration, grant or feature activation was introduced.
+
+Member core JS 209 / CSS 201; Health JS 1 / CSS 1; build 311 files. The new maintained suites contain 52 frontend/runtime and 16 native database cases. All native scoped cases pass; the nine known unrelated agreement fixtures remain separate. Browser normal/empty/partial/long-label cases pass at 1440×1000, 768×1024, 390×844. Existing staging member page shows sign-in and optional hosted data is empty, so authenticated/populated hosted acceptance is not claimed.
+
+**Release evidence:** the workspace `STAGING_MEMBER_HEALTH_PROGRESS_2026-10-04.md` and `deployment-evidence/2026-10-04-member-health/` record the final tested SHA, complete suite totals, staging deploy ID, live hash verification and unchanged production evidence. Consult that receipt for current deployment; this implementation record alone is not a deployment assertion. Existing staging site only: `071b252e-a922-4846-a784-8dca1edad377`; production remains outside scope. The accepted Nutrition release and historical records below are preserved. No unrelated next build has begun.
+
+
 ## Latest package — Nutrition Targets + Trends frontend repair, 2026-10-04
 
 The authorized D1–D5 repair extends candidate `8c030118239528cd2ddbfccbfe32edc31c5dc245` and preserves its six upstream commits. Day, effective targets and selected 7/30-day report now load together through normal Review open/reload/date/range controls. All private DOM clears on context changes or failure. Generation/contact/date/range/open/permission ownership applies to reads and target mutation completions. SQL dates render locally without timestamp conversion. All configured targets remain accessible, including null-valued overrides; numeric zero stays distinct from unknown.

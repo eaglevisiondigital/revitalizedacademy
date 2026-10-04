@@ -1,5 +1,8 @@
 # ReVitalized Academy security model
 
+Member Health & Progress v1 (2026-10-04): [privacy boundaries and tests](docs/MEMBER_HEALTH_PROGRESS_V1.md). Own-contact secure views/RPCs and current paid/entitlement access remain authoritative; no RLS, grant, guardian or household rule changed. The new read-only composition clears private health/progress DOM/caches/forms/dialogs immediately on logout, identity transition, access loss and failed bootstrap; stale successes and errors cannot repaint a new context.16 native boundary cases and52 UI/runtime cases supplement existing coverage. Hosted member acceptance is limited by sign-in and empty optional data; local fixtures are explicitly distinguished.
+
+
 Nutrition Targets + Trends frontend repair (2026-10-04): all day/target/trend DOM and source/status labels clear immediately on client/date/range, close and permission transitions, denial or transport error. Read success/error and target-write completions require matching generation/contact/date/range, an open panel and current private-health access; edits additionally recheck `plan.override` before dispatch and completion. Request arguments capture the original client. The UI never directly selects private tables. The unchanged database remains authoritative for `health.private.view` plus contact scope on reads and `plan.override` plus contact scope on writes. All 37 database boundary tests and 102 frontend race/ownership tests pass; no grants were added. Hosted access remains pending, so successful authenticated hosted operation is not claimed. Earlier held-candidate findings below describe the pre-repair state.
 
 

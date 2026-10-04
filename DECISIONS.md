@@ -1,5 +1,10 @@
 # ReVitalized Academy decisions and unresolved questions
 
+## 2026-10-04 — Authorized Member Health & Progress Dashboard v1
+
+Build one focused integration within the existing premium member shell, preserving accepted Nutrition baseline `b726fdb...`. Reuse bootstrap v2 and existing self-scoped health/progress/goals/habits/nutrition/coaching contracts; no new backend contract is necessary. Effective metric configuration controls visibility/order/source; existing health-trend and goal-progress flags remain unchanged and no extra flag is created. No proprietary score, medical classification, provider activation or household expansion is authorized. Fix the context ownership, startup ordering and local-calendar/long-label integration defects required for this package. Deployment is authorized only to the dedicated staging site after scoped privacy gates pass. Source/test implementation and actual release evidence remain separately identified in [the package record](docs/MEMBER_HEALTH_PROGRESS_V1.md) and the workspace release receipt. Stop after this package.
+
+
 ## 2026-10-04 — Authorized narrow Nutrition Targets + Trends frontend repair
 
 The latest user instruction authorizes D1–D5 frontend repairs, maintained runtime coverage and staging-only deployment after scoped blockers pass. Preserve candidate `8c030118...`, the previously uncommitted validation docs/tests and accepted migration ledger `20261004055612`; do not replay it. Implementation uses one all-or-nothing UI load for day/targets/trends and captured mutation ownership, preserving the existing secure RPCs and permissions. No target caps, fabricated numeric defaults or global timestamp changes. The complete regression gate passes apart from the nine explicitly separated existing onboarding-origin fixtures. Pending staff access remains a reported acceptance limit, not authorization to grant access. Final deployment evidence lives in workspace `STAGING_NUTRITION_TARGETS_REPAIR_2026-10-04.md`. Earlier hold decisions remain historical evidence.

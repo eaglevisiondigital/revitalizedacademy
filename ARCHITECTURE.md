@@ -1,5 +1,8 @@
 # ReVitalized Academy architecture
 
+Member Health & Progress v1 (2026-10-04): [contract inventory and module ownership](docs/MEMBER_HEALTH_PROGRESS_V1.md). The base Health workspace composes existing self-scoped contracts without replacing bootstrap v2 or adding database objects. A shared-client lazy module owns the premium overview, reads optional sections independently, honors configured visibility/source order and existing vNext flags, and handshakes safely if it loads after core bootstrap. Core preflight/results and optional section callbacks use context generations. No accepted staff Nutrition architecture changed.
+
+
 Nutrition Targets + Trends frontend repair (2026-10-04): the three unchanged secure read RPCs run concurrently as one context-owned UI snapshot. Rendering waits for all three valid responses; any failure clears the entire private view. Context includes generation, contact, date, range and panel/permission state. Target set/clear callbacks capture the rendered context and cannot reload another review. Successful mutations reload the complete snapshot. Date-only labels are local to this module; target rendering has no numeric cap. No database, RPC signature, provider or unrelated architecture changed. See [validation history and repair](docs/NUTRITION_TARGETS_TRENDS_VALIDATION.md). The following held-candidate note is historical.
 
 
