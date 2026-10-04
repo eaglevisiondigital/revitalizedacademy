@@ -70,3 +70,38 @@
 @media(max-width:430px){
   .client-nutrition-review-summary{grid-template-columns:1fr}
 }
+
+
+/* Nutrition Targets + Trends */
+.client-nutrition-subsection-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-top:16px;padding-top:14px;border-top:1px solid #e5ece8}
+.client-nutrition-subsection-head strong{display:block;color:#274b3a;font-size:11px}
+.client-nutrition-subsection-head span{display:block;margin-top:2px;color:#7b8981;font-size:8.5px}
+.client-nutrition-targets{display:grid;gap:8px;margin-top:10px}
+.client-nutrition-target-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(250px,.8fr) auto;gap:10px;align-items:end;padding:10px;border:1px solid #e1e9e4;border-radius:11px;background:#fff}
+.client-nutrition-target-row>div:first-child{min-width:0}
+.client-nutrition-target-row strong{display:block;color:#2d4b3c;font-size:10px}
+.client-nutrition-target-row span{display:block;margin-top:2px;color:#7a8981;font-size:8px}
+.client-nutrition-target-fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.client-nutrition-target-fields label{display:grid;gap:3px}
+.client-nutrition-target-fields label>span{font-size:7px;font-weight:900;text-transform:uppercase}
+.client-nutrition-target-fields input{width:100%;min-height:32px;border:1px solid #d2ddd6;border-radius:7px;padding:0 7px}
+.client-nutrition-target-actions{display:flex;gap:6px;flex-wrap:wrap}
+.client-nutrition-range-actions{display:flex;gap:5px}
+.client-nutrition-range-actions .active{background:#154734;color:#fff;border-color:#154734}
+.client-nutrition-trends-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:10px}
+.client-nutrition-trends-summary>div{padding:10px;border:1px solid #e1e9e4;border-radius:10px;background:#fff}
+.client-nutrition-trends-summary span{display:block;color:#7b8981;font-size:7.5px;font-weight:900;text-transform:uppercase}
+.client-nutrition-trends-summary strong{display:block;margin-top:3px;color:#244a39;font-size:16px}
+.client-nutrition-trends{display:grid;gap:6px;margin-top:10px}
+.client-nutrition-trend-row{display:grid;grid-template-columns:110px minmax(0,1fr);gap:10px;padding:8px 10px;border:1px solid #e5ece8;border-radius:9px;background:#fff}
+.client-nutrition-trend-row span{color:#7b8981;font-size:8px}
+.client-nutrition-trend-row strong{color:#294b3a;font-size:8.5px;overflow-wrap:anywhere}
+@media(max-width:760px){
+  .client-nutrition-target-row{grid-template-columns:1fr}
+  .client-nutrition-trends-summary{grid-template-columns:1fr 1fr}
+}
+@media(max-width:430px){
+  .client-nutrition-subsection-head{display:grid}
+  .client-nutrition-target-fields,.client-nutrition-trends-summary{grid-template-columns:1fr}
+  .client-nutrition-trend-row{grid-template-columns:1fr}
+}
