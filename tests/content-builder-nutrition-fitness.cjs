@@ -11,15 +11,16 @@ test('content builder exposes Foods and Exercises tabs',()=>{
   assert.match(html,/<option value="exercises">Exercise<\/option>/);
 });
 
-test('content builder supports recipe macros and media',()=>{
+test('content builder supports catalog-driven recipe nutrition and media',()=>{
   const js=read('portal/portal-programs.js');
-  assert.match(js,/content-calories/);
-  assert.match(js,/content-protein/);
-  assert.match(js,/content-carbs/);
-  assert.match(js,/content-fat/);
-  assert.match(js,/content-fiber/);
+  assert.match(js,/nutrition_nutrient_catalog/);
+  assert.match(js,/nutritionFieldsMarkup\(\)/);
+  assert.match(js,/data-nutrient-key/);
+  assert.match(js,/Full Nutrient Profile/);
   assert.match(js,/content-image-url/);
   assert.match(js,/nutritionPayload\(\)/);
+  assert.doesNotMatch(js,/id="content-calories"/);
+  assert.doesNotMatch(js,/id="content-protein"/);
 });
 
 test('content builder supports exercise classification and media',()=>{
