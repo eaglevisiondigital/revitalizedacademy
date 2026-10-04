@@ -4,7 +4,7 @@
   const db=portal.authClient;
   const configs={
     'meal-plans':{title:'Build Meal Plan',table:'meal_plan_template_items',parent:'meal_plan_templates',fk:'template_id',catalog:'recipes',child:'recipe_id',fields:[['day_number','Day','number',1],['meal_slot','Meal','select','breakfast,lunch,dinner,snack,other'],['sort_order','Order','number',0]]},
-    workouts:{title:'Build Workout',table:'workout_template_exercises',parent:'workout_templates',fk:'workout_id',catalog:'exercise_catalog',child:'exercise_id',fields:[['sets','Sets','number',1],['reps','Repetitions','text'],['duration_seconds','Duration (seconds)','number',0],['rest_seconds','Rest (seconds)','number',0],['sort_order','Order','number',0]]},
+    workouts:{title:'Build Workout',table:'workout_template_exercises',parent:'workout_templates',fk:'workout_id',catalog:'exercise_catalog',child:'exercise_id',fields:[['sets','Sets','number',1],['reps','Repetitions','text'],['duration_seconds','Duration (seconds)','number','',1],['rest_seconds','Rest (seconds)','number',0],['sort_order','Order','number',0]]},
     fitness:{title:'Schedule Workouts',table:'fitness_program_workouts',parent:'fitness_programs',fk:'program_id',catalog:'workout_templates',child:'workout_id',fields:[['week_number','Week','number',1],['day_number','Day of week (1–7)','number',1]]}
   };
   let dialog=null, context=null, epoch=0, busy=false, editing=null, rows=[], choices=[];
@@ -37,8 +37,8 @@
     const form=dialog.querySelector('form');form.replaceChildren();
     const selectField=field(cfg.child,'Published content','select','');const select=selectField.querySelector('select');select.required=true;select.replaceChildren(new Option('Choose content',''));
     choices.forEach(choice=>select.append(new Option(choice.title||choice.name,choice.id)));form.append(selectField);
-    cfg.fields.forEach(([key,label,type,options])=>{
-      const wrapper=field(key,label,type,type==='select'?options:type==='number'?key==='sort_order'?rows.length+1:options:'',typeof options==='number'?options:undefined);
+    cfg.fields.forEach(([key,label,type,options,minimum])=>{
+      const wrapper=field(key,label,type,type==='select'?options:type==='number'?key==='sort_order'?rows.length+1:options:'',minimum??(typeof options==='number'?options:undefined));
       const input=wrapper.querySelector('input,select');if(['day_number','week_number'].includes(key))input.required=true;
       if(key==='day_number')input.max=String(cfg.table==='meal_plan_template_items'?parent.days_count:7);
       if(key==='week_number'&&parent.weeks)input.max=String(parent.weeks);

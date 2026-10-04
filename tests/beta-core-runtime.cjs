@@ -5,6 +5,30 @@ const html=fs.readFileSync(root+'/portal/index.html','utf8').replace(/<script\b[
 const tick=()=>new Promise(r=>setImmediate(r));
 function harness(t,scripts){const dom=new JSDOM(html,{runScripts:'outside-only',url:'http://localhost/portal/'}),w=dom.window;w.HTMLDialogElement.prototype.showModal=function(){this.open=true;};const f=installBetaFixture(w);for(const name of scripts)w.eval(fs.readFileSync(root+'/'+name,'utf8'));t.after(()=>w.close());return{...f,w,d:w.document,event:(name,detail)=>w.document.dispatchEvent(new w.CustomEvent(name,{detail}))};}
 const composition='portal/portal-content-composition.js';
+test('beta workout optional duration defaults to null while zero rest is preserved',async t=>{
+ const h=harness(t,[composition]);await h.w.RA_CONTENT_COMPOSITION.open('workouts',{id:'workout-a'});
+ const form=h.d.querySelector('.beta-composition form');form.querySelector('select').selectedIndex=1;
+ assert.equal(form.elements.duration_seconds.value,'');assert(form.checkValidity());
+ form.requestSubmit();await tick();await tick();
+ assert.equal(h.state.tables.workout_template_exercises[0].duration_seconds,null);
+ assert.equal(h.state.tables.workout_template_exercises[0].rest_seconds,0);
+});
+test('beta workout rejects zero duration and permits an empty optional duration',async t=>{
+ const h=harness(t,[composition]);await h.w.RA_CONTENT_COMPOSITION.open('workouts',{id:'workout-a'});
+ const form=h.d.querySelector('.beta-composition form');form.querySelector('select').selectedIndex=1;
+ form.elements.duration_seconds.value='0';assert.equal(form.checkValidity(),false);form.requestSubmit();await tick();
+ assert.equal(h.state.tables.workout_template_exercises.length,0);
+ form.elements.duration_seconds.value='';assert.equal(form.checkValidity(),true);
+});
+test('beta workout positive duration survives editing and can be cleared to null',async t=>{
+ const h=harness(t,[composition]);await h.w.RA_CONTENT_COMPOSITION.open('workouts',{id:'workout-a'});
+ const form=h.d.querySelector('.beta-composition form');form.querySelector('select').selectedIndex=1;
+ form.elements.duration_seconds.value='45';form.requestSubmit();await tick();await tick();
+ assert.equal(h.state.tables.workout_template_exercises[0].duration_seconds,45);
+ h.d.querySelector('.beta-composition-list button').click();assert.equal(form.elements.duration_seconds.value,'45');
+ form.elements.duration_seconds.value='';form.requestSubmit();await tick();await tick();
+ assert.equal(h.state.tables.workout_template_exercises[0].duration_seconds,null);
+});
 for(const [kind,id,table,child]of [['meal-plans','meals-a','meal_plan_template_items','recipe_id'],['workouts','workout-a','workout_template_exercises','exercise_id'],['fitness','fitness-a','fitness_program_workouts','workout_id']])test('beta composition create/edit/remove through existing '+table,async t=>{
  const h=harness(t,[composition]);await h.w.RA_CONTENT_COMPOSITION.open(kind,{id,title:'Fixture'});const form=h.d.querySelector('.beta-composition form');form.querySelector('select').selectedIndex=1;
  form.dispatchEvent(new h.w.Event('submit',{cancelable:true}));await tick();await tick();assert.equal(h.state.tables[table].length,1);assert(h.state.tables[table][0][child]);
