@@ -104,7 +104,7 @@
         .eq("active",true)
         .order("sort_order"),
       client.from("recipes")
-        .select("id,title,servings,nutrition,nutrition_calculated_at,nutrition_calculation_meta")
+        .select("id,methodology_id,title,servings,nutrition,nutrition_calculated_at,nutrition_calculation_meta")
         .eq("id",activeRecipe.id)
         .single()
     ]);
