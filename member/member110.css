@@ -3334,3 +3334,60 @@
 @media(max-width:620px){
   .rm216-family-privacy-head{display:grid}
 }
+
+
+/* Build 218: Nutrition Diary + Daily Targets */
+.rm218-nutrition-diary{padding:0!important;overflow:hidden;background:#fff}
+.rm218-nutrition-head{padding:24px 26px 18px;margin:0!important;background:linear-gradient(135deg,#103f31,#154734 58%,#235f49);color:#fff}
+.rm218-nutrition-head h2{color:#fff!important}
+.rm218-nutrition-head .rm112-kicker{color:#e7d3a0}
+.rm218-intro{margin:5px 0 0;color:rgba(255,255,255,.72);font-size:10.5px}
+.rm218-date-nav{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.rm218-date-nav button,.rm218-date-nav input{min-height:36px;border:1px solid rgba(255,255,255,.28);border-radius:9px;background:rgba(255,255,255,.09);color:#fff;padding:0 10px;font:inherit}
+.rm218-date-nav input{color-scheme:dark}
+.rm218-date-nav button{font-weight:850;cursor:pointer}
+.rm218-summary-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:9px;padding:18px 20px 4px}
+.rm218-summary-card{padding:12px;border:1px solid #dce7e0;border-radius:13px;background:#fbfcfb}
+.rm218-summary-card span{display:block;color:#6f8077;font-size:8px;font-weight:900;letter-spacing:.06em;text-transform:uppercase}
+.rm218-summary-card strong{display:block;margin-top:5px;color:#154734;font-family:Georgia,"Times New Roman",serif;font-size:20px;font-weight:500}
+.rm218-summary-card small{display:block;margin-top:4px;color:#87938c;font-size:7.8px}
+.rm218-target-bar{height:5px;margin-top:8px;border-radius:999px;background:#e7eee9;overflow:hidden}
+.rm218-target-bar i{display:block;height:100%;border-radius:999px;background:#b18845}
+.rm218-diary-layout{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);gap:12px;padding:16px 20px}
+.rm218-panel{padding:14px;border:1px solid #dfe8e2;border-radius:14px;background:#fff}
+.rm218-panel-head{display:flex;justify-content:space-between;gap:12px;margin-bottom:10px}
+.rm218-panel-head strong{display:block;color:#294538;font-size:12px}
+.rm218-panel-head span{display:block;margin-top:2px;color:#7a8880;font-size:8.8px}
+.rm218-log-form{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.rm218-log-form .wide{grid-column:1/-1}
+.rm218-log-form label{display:grid;gap:5px}
+.rm218-log-form label>span{color:#586961;font-size:8.5px;font-weight:850}
+.rm218-log-form input,.rm218-log-form select{width:100%;height:40px;padding:0 9px;border:1px solid #ced9d2;border-radius:9px;background:#fff;color:#2f4338}
+.rm218-log-form button{grid-column:1/-1;justify-self:start;min-height:38px;padding:0 13px;border:0;border-radius:9px;background:#154734;color:#fff;font-weight:900}
+.rm218-diary-list{display:grid;gap:10px}
+.rm218-meal-group{display:grid;gap:7px}
+.rm218-meal-group h3{margin:0;color:#6a7a71;font-size:8.5px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+.rm218-diary-item{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:10px;border:1px solid #e4ebe7;border-radius:10px;background:#fbfcfb}
+.rm218-diary-item strong{display:block;color:#30463a;font-size:10.5px}
+.rm218-diary-item span,.rm218-diary-item small{display:block;margin-top:2px;color:#7c8982;font-size:8.4px}
+.rm218-diary-item button{min-height:30px;padding:0 8px;border:1px solid #decfbd;border-radius:8px;background:#fff;color:#895c2e;font-size:8px;font-weight:850}
+.rm218-targets-panel{margin:0 20px 18px}
+.rm218-target-list{display:grid;gap:7px}
+.rm218-target-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;padding:9px 10px;border:1px solid #e5ece8;border-radius:10px;background:#fbfcfb}
+.rm218-target-row strong{display:block;color:#30463a;font-size:10px}
+.rm218-target-row span{display:block;margin-top:2px;color:#7b8981;font-size:8.2px}
+.rm218-target-row b{color:#154734;font-size:9px}
+.rm218-empty{padding:13px;border:1px dashed #d9e4dd;border-radius:10px;background:#fcfdfc;color:#75837b;font-size:9.5px}
+#rm-nutrition-diary-status{margin:0 20px 18px}
+@media(max-width:1120px){.rm218-summary-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:850px){.rm218-diary-layout{grid-template-columns:1fr}.rm218-summary-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){
+  .rm218-nutrition-head{padding:20px 16px;display:block}
+  .rm218-date-nav{margin-top:12px}
+  .rm218-summary-grid,.rm218-diary-layout{padding-left:12px;padding-right:12px}
+  .rm218-summary-grid{grid-template-columns:1fr 1fr}
+  .rm218-log-form{grid-template-columns:1fr}
+  .rm218-log-form .wide,.rm218-log-form button{grid-column:auto}
+  .rm218-targets-panel{margin-left:12px;margin-right:12px}
+  .rm218-diary-item{align-items:flex-start;flex-direction:column}
+}
