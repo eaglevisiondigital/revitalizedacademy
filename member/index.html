@@ -688,6 +688,74 @@
         </section>
       </div>
 
+      <section id="rm-nutrition-diary-card" class="rm112-card rm218-nutrition-diary">
+        <div class="rm112-card-head rm218-nutrition-head">
+          <div>
+            <p class="rm112-kicker">NUTRITION DIARY</p>
+            <h2>Daily Nutrition &amp; Targets</h2>
+            <p class="rm218-intro">Track meals, recipes and nutrients against your personalized ReVitalized targets.</p>
+          </div>
+          <div class="rm218-date-nav">
+            <button id="rm-nutrition-prev" type="button" aria-label="Previous day">‹</button>
+            <input id="rm-nutrition-date" type="date">
+            <button id="rm-nutrition-next" type="button" aria-label="Next day">›</button>
+            <button id="rm-nutrition-today" type="button">Today</button>
+          </div>
+        </div>
+
+        <div id="rm-nutrition-summary" class="rm218-summary-grid"></div>
+
+        <div class="rm218-diary-layout">
+          <section class="rm218-panel">
+            <div class="rm218-panel-head">
+              <div>
+                <strong>Food Diary</strong>
+                <span>Breakfast, lunch, dinner, snacks, supplements and hydration.</span>
+              </div>
+            </div>
+            <div id="rm-nutrition-diary-list" class="rm218-diary-list"></div>
+          </section>
+
+          <section class="rm218-panel">
+            <div class="rm218-panel-head">
+              <div>
+                <strong>Add Food or Recipe</strong>
+                <span>Nutrition totals update from the full nutrient profile.</span>
+              </div>
+            </div>
+            <form id="rm-nutrition-log-form" class="rm218-log-form">
+              <label><span>Meal</span>
+                <select id="rm-nutrition-slot">
+                  <option value="breakfast">Breakfast</option>
+                  <option value="lunch">Lunch</option>
+                  <option value="dinner">Dinner</option>
+                  <option value="snack">Snack</option>
+                  <option value="supplement">Supplement</option>
+                  <option value="water">Water / Hydration</option>
+                  <option value="other">Other</option>
+                </select>
+              </label>
+              <label><span>Food or Recipe</span><select id="rm-nutrition-source"></select></label>
+              <label><span>Servings</span><input id="rm-nutrition-quantity" type="number" min="0.01" step="0.01" value="1"></label>
+              <label class="wide"><span>Note</span><input id="rm-nutrition-note" type="text" maxlength="240" placeholder="Optional"></label>
+              <button type="submit">Add to Diary</button>
+            </form>
+          </section>
+        </div>
+
+        <section class="rm218-panel rm218-targets-panel">
+          <div class="rm218-panel-head">
+            <div>
+              <strong>Daily Nutrient Targets</strong>
+              <span>Program and coach targets compared with your logged intake.</span>
+            </div>
+          </div>
+          <div id="rm-nutrition-targets" class="rm218-target-list"></div>
+        </section>
+
+        <p id="rm-nutrition-diary-status" class="rm112-status" aria-live="polite"></p>
+      </section>
+
       <div class="rm112-grid rm116-wellness-grid">
         <section id="rm-nutrition-card" class="rm112-card">
           <div class="rm112-card-head">
