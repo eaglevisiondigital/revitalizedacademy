@@ -18,7 +18,8 @@
   let data={items:[],totals:{}};
 
   const title=(v)=>String(v||"").replaceAll("_"," ").replace(/\b\w/g,(m)=>m.toUpperCase());
-  const fmt=(v,d=1)=>Number(v||0).toLocaleString(undefined,{maximumFractionDigits:d});
+  const fmt=(v,d=1)=>Number(v).toLocaleString(undefined,{maximumFractionDigits:d});
+  const hasValue=(v)=>v!==undefined&&v!==null&&Number.isFinite(Number(v));
 
   function status(message,type=""){
     const node=el("client-nutrition-review-status");
@@ -83,8 +84,8 @@
         const meta=document.createElement("span");
         meta.textContent=[
           row.quantity?fmt(row.quantity,2)+" serving"+(Number(row.quantity)===1?"":"s"):null,
-          row.nutrients?.energy_kcal!==undefined?fmt(row.nutrients.energy_kcal,0)+" kcal":null,
-          row.nutrients?.protein_g!==undefined?fmt(row.nutrients.protein_g,1)+"g protein":null,
+          hasValue(row.nutrients?.energy_kcal)?fmt(row.nutrients.energy_kcal,0)+" kcal":null,
+          hasValue(row.nutrients?.protein_g)?fmt(row.nutrients.protein_g,1)+"g protein":null,
           row.source?title(row.source):null
         ].filter(Boolean).join(" · ");
         copy.append(name,meta);
