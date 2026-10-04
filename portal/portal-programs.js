@@ -904,6 +904,11 @@
         build.addEventListener("click",()=>openCourseBuilder(row));
         actions.append(build);
       }
+      if(activeContent==="recipes"&&canManagePrograms()){
+        const buildRecipe=document.createElement("button");buildRecipe.type="button";buildRecipe.className="edit";buildRecipe.textContent="Build Recipe";
+        buildRecipe.addEventListener("click",()=>window.RA_RECIPE_BUILDER?.open(row));
+        actions.append(buildRecipe);
+      }
       if(activeContent==="foods"){
         const toggle=document.createElement("button");
         toggle.type="button";
