@@ -1,0 +1,87 @@
+[
+  {
+    "cleanup_receipt": {
+      "foods": [
+        {
+          "id": "c36fdb17-f4f9-48bf-8b12-0e5c136e249e",
+          "active": false,
+          "nutrition": {
+            "fat_g": 0,
+            "protein_g": 10,
+            "energy_kcal": 100
+          }
+        }
+      ],
+      "counts": {
+        "staff": 1,
+        "auth_users": 2,
+        "invitations": 0,
+        "client_access": 1,
+        "meal_assignments": 0,
+        "workout_assignments": 0,
+        "program_entitlements": 0,
+        "membership_entitlements": 0
+      },
+      "fitness": [
+        {
+          "id": "c629f0dd-d12a-466d-bae8-3a475e10ca2f",
+          "status": "archived"
+        }
+      ],
+      "recipes": [
+        {
+          "id": "766f614f-8e5f-4c44-b5a9-f9e7f65611e6",
+          "status": "archived",
+          "servings": 4,
+          "nutrition": {
+            "fat_g": 0,
+            "protein_g": 5,
+            "energy_kcal": 50
+          },
+          "calculation_complete": true
+        }
+      ],
+      "workouts": [
+        {
+          "id": "a348bbd2-83d0-488c-a622-0de04b390513",
+          "status": "archived"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "1c65a14a-7f21-4ef8-859f-e60e95dda494",
+          "status": "archived"
+        }
+      ],
+      "meal_rows": [
+        {
+          "id": "d597a116-e67a-4dac-a70f-fa7c20981aa7",
+          "meal_slot": "breakfast",
+          "day_number": 1
+        }
+      ],
+      "meal_plans": [
+        {
+          "id": "a3cfe890-13f0-40d3-84a5-691098d167b7",
+          "status": "archived"
+        }
+      ],
+      "workout_rows": [
+        {
+          "id": "c697bd59-0c3a-41a2-8ced-a3cc641f688b",
+          "reps": "6",
+          "sets": 2,
+          "rest_seconds": 30,
+          "duration_seconds": null
+        }
+      ],
+      "schedule_rows": [
+        {
+          "id": "5a711385-bbc7-4096-9ae4-c8b22234fa5d",
+          "day_number": 1,
+          "week_number": 1
+        }
+      ]
+    }
+  }
+]

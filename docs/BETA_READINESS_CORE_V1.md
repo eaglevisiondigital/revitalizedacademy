@@ -1,5 +1,7 @@
 # Beta Readiness Core v1 — 2026-10-04
 
+Historical snapshot. Superseded by [the later hosted release/acceptance record](BETA_HOSTED_ACCEPTANCE_2026-10-04.md); retain the original evidence below.
+
 **Decision: BETA NOT READY. Candidate implementation is local; staging deployment is held.**
 
 Starting/accepted SHA: `1462b34b49716f19fb0db55d4bc11098edfe2b9d`, branch `codex/staging`, repository `eaglevisiondigital/revitalizedacademy`. The candidate descends from this baseline. The final commit is recorded in the workspace completion receipt to avoid a self-referential commit identifier.

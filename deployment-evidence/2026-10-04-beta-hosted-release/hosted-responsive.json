@@ -1,0 +1,214 @@
+{
+  "method": "CUA read-only DOM geometry on actual staging UI; synthetic content only",
+  "viewports": [
+    [
+      1440,
+      1000
+    ],
+    [
+      768,
+      1024
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "checks": [
+    {
+      "workspace": "recipe editor",
+      "width": 1440,
+      "height": 1000,
+      "pageHorizontalOverflow": false,
+      "dialogHorizontalOverflow": false
+    },
+    {
+      "workspace": "recipe editor",
+      "width": 768,
+      "height": 1024,
+      "pageHorizontalOverflow": false,
+      "dialogHorizontalOverflow": false
+    },
+    {
+      "workspace": "recipe editor",
+      "width": 390,
+      "height": 844,
+      "pageHorizontalOverflow": false,
+      "dialogHorizontalOverflow": false
+    },
+    {
+      "workspace": "recipe builder",
+      "width": 1440,
+      "height": 1000,
+      "pageHorizontalOverflow": false,
+      "dialogHorizontalOverflow": false
+    },
+    {
+      "workspace": "recipe builder",
+      "width": 768,
+      "height": 1024,
+      "pageHorizontalOverflow": false,
+      "dialogHorizontalOverflow": false
+    },
+    {
+      "workspace": "recipe builder",
+      "width": 390,
+      "height": 844,
+      "pageHorizontalOverflow": false,
+      "dialogHorizontalOverflow": false
+    },
+    {
+      "workspace": "meal composition",
+      "width": 1440,
+      "height": 1000,
+      "pageHorizontalOverflow": false,
+      "dialogHorizontalOverflow": false
+    },
+    {
+      "workspace": "meal composition",
+      "width": 768,
+      "height": 1024,
+      "pageHorizontalOverflow": false,
+      "dialogHorizontalOverflow": false
+    },
+    {
+      "workspace": "meal composition",
+      "width": 390,
+      "height": 844,
+      "pageHorizontalOverflow": false,
+      "dialogHorizontalOverflow": false
+    },
+    {
+      "workspace": "exercise form",
+      "width": 1440,
+      "height": 1000,
+      "pageHorizontalOverflow": false,
+      "dialogHorizontalOverflow": false
+    },
+    {
+      "workspace": "exercise form",
+      "width": 768,
+      "height": 1024,
+      "pageHorizontalOverflow": false,
+      "dialogHorizontalOverflow": false
+    },
+    {
+      "workspace": "exercise form",
+      "width": 390,
+      "height": 844,
+      "pageHorizontalOverflow": false,
+      "dialogHorizontalOverflow": false
+    },
+    {
+      "workspace": "workout form",
+      "width": 1440,
+      "height": 1000,
+      "pageHorizontalOverflow": false,
+      "dialogHorizontalOverflow": false
+    },
+    {
+      "workspace": "workout form",
+      "width": 768,
+      "height": 1024,
+      "pageHorizontalOverflow": false,
+      "dialogHorizontalOverflow": false
+    },
+    {
+      "workspace": "workout form",
+      "width": 390,
+      "height": 844,
+      "pageHorizontalOverflow": false,
+      "dialogHorizontalOverflow": false
+    },
+    {
+      "workspace": "staff invitation",
+      "width": 1440,
+      "height": 1000,
+      "pageHorizontalOverflow": false,
+      "dialogHorizontalOverflow": false
+    },
+    {
+      "workspace": "staff invitation",
+      "width": 768,
+      "height": 1024,
+      "pageHorizontalOverflow": false,
+      "dialogHorizontalOverflow": false
+    },
+    {
+      "workspace": "staff invitation",
+      "width": 390,
+      "height": 844,
+      "pageHorizontalOverflow": false,
+      "dialogHorizontalOverflow": false
+    },
+    {
+      "workspace": "client entry",
+      "width": 1440,
+      "height": 1000,
+      "pageHorizontalOverflow": false,
+      "dialogHorizontalOverflow": false
+    },
+    {
+      "workspace": "client entry",
+      "width": 768,
+      "height": 1024,
+      "pageHorizontalOverflow": false,
+      "dialogHorizontalOverflow": false
+    },
+    {
+      "workspace": "client entry",
+      "width": 390,
+      "height": 844,
+      "pageHorizontalOverflow": false,
+      "dialogHorizontalOverflow": false
+    },
+    {
+      "workspace": "workout composition",
+      "width": 1440,
+      "height": 1000,
+      "pageHorizontalOverflow": false,
+      "dialogHorizontalOverflow": false
+    },
+    {
+      "workspace": "workout composition",
+      "width": 768,
+      "height": 1024,
+      "pageHorizontalOverflow": false,
+      "dialogHorizontalOverflow": false
+    },
+    {
+      "workspace": "workout composition",
+      "width": 390,
+      "height": 844,
+      "pageHorizontalOverflow": false,
+      "dialogHorizontalOverflow": false
+    },
+    {
+      "workspace": "workout schedule",
+      "width": 1440,
+      "height": 1000,
+      "pageHorizontalOverflow": false,
+      "dialogHorizontalOverflow": false
+    },
+    {
+      "workspace": "workout schedule",
+      "width": 768,
+      "height": 1024,
+      "pageHorizontalOverflow": false,
+      "dialogHorizontalOverflow": false
+    },
+    {
+      "workspace": "workout schedule",
+      "width": 390,
+      "height": 844,
+      "pageHorizontalOverflow": false,
+      "dialogHorizontalOverflow": false
+    }
+  ],
+  "unexecuted": [
+    "assignment workflow",
+    "member meal details",
+    "member workout details",
+    "activated synthetic staff/member screens"
+  ]
+}

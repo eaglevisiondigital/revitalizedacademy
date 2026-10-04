@@ -1,5 +1,7 @@
 # Beta Readiness Core v1 — hosted owner preflight — 2026-10-04
 
+Historical snapshot. Superseded by [the later hosted release/acceptance record](BETA_HOSTED_ACCEPTANCE_2026-10-04.md); retain the original evidence below.
+
 **BETA NOT READY. Step1 has not passed; deployment and transactional acceptance remain blocked.**
 
 ## Exact owner finding

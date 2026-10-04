@@ -1,5 +1,9 @@
 # ReVitalized Academy decisions and unresolved questions
 
+## 2026-10-04 — Hosted beta acceptance, release and narrow observed repair
+
+The user obtained normal approved owner access and explicitly authorized the coordinated staging release after review. Applied the one new forward migration and deployed the existing candidate. Hosted acceptance exposed a nullable-duration mismatch; the authorized narrow repair changes only the frontend default/minimum and adds three regressions. No backend constraint change. Content fixtures were archived/deactivated. Inbox aliases/allowlist additions remain pending approval; existing owner/member accounts were preserved. Zero program/member entitlement rows are a configuration blocker requiring approved benefit mapping, not authority to invent grants. BETA NOT READY pending actual lifecycle, member assignment and isolation proof. [Full evidence and decision prompt](docs/BETA_HOSTED_ACCEPTANCE_2026-10-04.md).
+
 ## 2026-10-04 — Beta Readiness Core v1 held candidate
 
 User authorizes the narrow client/staff/meal/workout beta package and requires actual staging acceptance before greenlighting. Reuse existing Content Library, composition/assignment tables, calculator, paid enrollment/claim gates and permission keys. Shared published content remains reusable; client-specific assignments are private. Repair scope and stale-data defects without new roles, broad grants, methodology guidance, real beta clients or production changes. A new forward migration is prepared locally; do not replay historical migrations or publish an incomplete frontend-only package. Required owner/scoped-staff/multi-member hosted acceptance is blocked by the available pending staff session. **BETA NOT READY; deployment withheld.** [Evidence and complete Chat/Work handoffs](docs/BETA_READINESS_CORE_V1.md). Primary Chat owns the final green flag.

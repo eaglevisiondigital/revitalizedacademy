@@ -1,0 +1,102 @@
+{
+  "timestamp": "2026-10-04T22:17:26.666Z",
+  "projectRef": "bvooallokgfktssadsrv",
+  "migrationSource": "20261004124537_beta_core_assignment_boundaries.sql",
+  "ledger": "20261004214656",
+  "appliedOnce": true,
+  "migrationResponse": {
+    "success": true
+  },
+  "edge": {
+    "id": "88b6d8c9-9c86-48a7-9f62-6f8340d8cf82",
+    "slug": "staff-management",
+    "name": "staff-management",
+    "status": "ACTIVE",
+    "version": 5,
+    "created_at": 1790602354969,
+    "updated_at": 1791150426757,
+    "verify_jwt": false,
+    "import_map": true,
+    "entrypoint_path": "file:///tmp/user_fn_bvooallokgfktssadsrv_88b6d8c9-9c86-48a7-9f62-6f8340d8cf82_5/source/staff-management/index.ts",
+    "import_map_path": "file:///tmp/user_fn_bvooallokgfktssadsrv_88b6d8c9-9c86-48a7-9f62-6f8340d8cf82_5/source/deno.json",
+    "ezbr_sha256": "534727807b593281e3993d0e058b1c6ead5f262e48e2a3e93c3fb728ca547392"
+  },
+  "beforeAdvisors": [
+    {
+      "name": "rls_enabled_no_policy",
+      "level": "INFO",
+      "count": 5,
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy"
+    },
+    {
+      "name": "security_definer_view",
+      "level": "ERROR",
+      "count": 4,
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0010_security_definer_view"
+    },
+    {
+      "name": "anon_security_definer_function_executable",
+      "level": "WARN",
+      "count": 2,
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0028_anon_security_definer_function_executable"
+    },
+    {
+      "name": "authenticated_security_definer_function_executable",
+      "level": "WARN",
+      "count": 24,
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0029_authenticated_security_definer_function_executable"
+    },
+    {
+      "name": "auth_leaked_password_protection",
+      "level": "WARN",
+      "count": 1,
+      "remediation": "https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection"
+    }
+  ],
+  "afterAdvisors": [
+    {
+      "name": "rls_enabled_no_policy",
+      "level": "INFO",
+      "count": 5,
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy"
+    },
+    {
+      "name": "security_definer_view",
+      "level": "ERROR",
+      "count": 4,
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0010_security_definer_view"
+    },
+    {
+      "name": "anon_security_definer_function_executable",
+      "level": "WARN",
+      "count": 2,
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0028_anon_security_definer_function_executable"
+    },
+    {
+      "name": "authenticated_security_definer_function_executable",
+      "level": "WARN",
+      "count": 24,
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0029_authenticated_security_definer_function_executable"
+    },
+    {
+      "name": "auth_leaked_password_protection",
+      "level": "WARN",
+      "count": 1,
+      "remediation": "https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection"
+    }
+  ],
+  "releaseGates": {
+    "ownerNormalSignIn": true,
+    "ownerRefresh": true,
+    "coordinatedReview": true,
+    "forwardMigrationReview": true,
+    "newPrivacyBlocker": false,
+    "priorLocalSuitesGreen": true
+  },
+  "finalAcceptance": "BETA NOT READY",
+  "limitations": [
+    "Unused synthetic inbox / minimal recipient allowlist approval pending",
+    "Program and membership entitlement tables empty; approved mapping required",
+    "Multi-account invitation, activation, email delivery, recovery, revocation, member assignments and cross-client hosted isolation unproven"
+  ]
+}
