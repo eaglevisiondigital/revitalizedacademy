@@ -1,5 +1,13 @@
 # ReVitalized Academy — current build state
 
+## Beta Readiness Core v1 — HELD / BETA NOT READY — 2026-10-04
+
+Local candidate extends accepted `1462b34b49716f19fb0db55d4bc11098edfe2b9d` on `codex/staging`. [Implementation, security, tests, operator paths and required acceptance](docs/BETA_READINESS_CORE_V1.md). Adds existing-library edit/composition workflows, scoped client meal/workout assignments and member detail, duplicate-safe staff invitation, repeated Add Person and staff/session privacy repairs. No parallel content model or new access grants.
+
+Build313, syntax77, frontend470 total/443pass/27historical skips, native PostgreSQL17.11 215/215, Edge30/30 with19entrypoints checked. New beta20runtime/36database/5Edge tests pass. Exact-built synthetic browser33responsive checks pass at desktop/tablet/mobile. The historical nine agreement fixture failures are corrected by supplying their missing explicit synthetic onboarding origin, without weakening application gates. Accepted Health and Nutrition suites stay green locally.
+
+**Not deployed:** staging remains deploy `6ac1fec19f756106b6a84964`. Migration `20261004124537_beta_core_assignment_boundaries.sql` is a new unapplied candidate; staff-management Edge changes are unpublished. Existing staff login still reaches **Account Active / Staff access is pending**. Mandatory hosted invitation/login/recovery, scoped staff and two-member meal/workout acceptance remain blocked. No hosted content/accounts/permissions changed; no real beta clients added. Production deploy `6ac036d3b48eac0008568e00` and20sampled fingerprints remain unchanged. Local success does not authorize beta use. Next: normal approved-owner sign-in, then coordinated candidate rollout/required synthetic hosted acceptance under the documented gate. Final primary Chat green flag withheld.
+
 ## Member Health & Progress Dashboard v1 — 2026-10-04
 
 Implemented on `codex/staging`, preserving accepted Nutrition Targets + Trends baseline `b726fdbd062f1e419a70380119c5ae75fe8854b6`. [Contract inventory, behavior, flags, privacy and acceptance boundaries](docs/MEMBER_HEALTH_PROGRESS_V1.md). Existing premium Health overview now combines configured real measurements/7–30-day trends with compact goals, habits, nutrition, coaching and source summaries. Core session/request ownership and private-DOM clearing are hardened. No backend contract, hosted migration, grant or feature activation was introduced.

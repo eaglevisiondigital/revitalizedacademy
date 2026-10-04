@@ -8,6 +8,17 @@
   const el = (id) => document.getElementById(id);
 
   let contact = null;
+  let epoch=0,busy=false;
+  const canWrite=()=>portal.hasPermission?.("health.progress.manage")===true;
+  const current=(token)=>token===epoch&&contact;
+  function clearWellness(){
+    epoch++;busy=false;contact=null;access=null;membership=null;summary=null;activeMealPlan=null;activeFitnessPlan=null;
+    mealTemplates=[];fitnessPrograms=[];mealItems=[];workoutItems=[];groceryRows=[];
+    ["client-meal-plan-name","client-fitness-plan-name","client-wellness-status","wellness-meal-items","wellness-workout-items","wellness-grocery-items","wellness-active-meal","wellness-active-fitness","client-upcoming-meals","client-upcoming-workouts","client-nutrition-adherence","client-grocery-status","wellness-meal-status","wellness-fitness-status"].forEach(id=>el(id)?.replaceChildren());
+    el("client-wellness-section")?.classList.add("hidden");
+    el("wellness-meal-form")?.reset();el("wellness-fitness-form")?.reset();closeModal();
+  }
+
   let access = null;
   let membership = null;
   let summary = null;
@@ -49,16 +60,18 @@
   }
 
   async function loadWellness(contactId, contactRecord = contact) {
-    contact = contactRecord || contact;
+    const record=contactRecord||contact;clearWellness();contact=record;
+    const token=epoch;
     if (!contactId) return;
 
     const [accessResult, summaryResult, nutritionMethodResult, fitnessMethodResult] = await Promise.all([
       client.from("client_access").select("*").eq("contact_id", contactId).maybeSingle(),
       client.from("admin_client_wellness_summary").select("*").eq("contact_id", contactId).maybeSingle(),
-      client.from("nutrition_methodologies").select("*").eq("methodology_key","revitalized-nutrition").maybeSingle(),
-      client.from("fitness_methodologies").select("*").eq("methodology_key","revitalized-fitness").maybeSingle()
+      client.from("nutrition_methodologies").select("*").eq("methodology_key","the-living-diet").maybeSingle(),
+      client.from("fitness_methodologies").select("*").eq("methodology_key","functional-fitness").maybeSingle()
     ]);
 
+    if(!current(token))return;
     const failed = [accessResult,summaryResult,nutritionMethodResult,fitnessMethodResult].find((r)=>r.error);
     if (failed?.error) throw failed.error;
 
@@ -94,6 +107,7 @@
       client.from("fitness_programs").select("id,title,difficulty,environment,weeks,status").eq("status","published").order("title")
     ]);
 
+    if(!current(token))return;
     const failed2=[membershipResult,mealPlanResult,fitnessPlanResult,mealTemplateResult,fitnessProgramResult].find((r)=>r.error);
     if(failed2?.error) throw failed2.error;
 
@@ -118,6 +132,7 @@
     );
 
     const [mealItemResult,groceryListResult,workoutResult]=await Promise.all(q);
+    if(!current(token))return;
     const failed3=[mealItemResult,groceryListResult,workoutResult].find((r)=>r.error);
     if(failed3?.error) throw failed3.error;
 
@@ -126,11 +141,12 @@
 
     if(groceryListResult.data?.id){
       const {data,error}=await client.from("grocery_list_items").select("*").eq("grocery_list_id",groceryListResult.data.id).order("checked").order("sort_order");
+      if(!current(token))return;
       if(error) throw error;
       groceryRows=data||[];
     }
 
-    renderSummary();
+    if(current(token))renderSummary();
   }
 
   function renderSummary() {
@@ -280,19 +296,24 @@
 
   function openModal(){
     if(!membership)return;
+    ["wellness-meal-form","wellness-fitness-form"].forEach(id=>el(id)?.querySelectorAll("input,select,textarea,button").forEach(input=>input.disabled=!canWrite()));
     renderModal();
     el("wellness-modal").classList.remove("hidden");
     el("wellness-modal").setAttribute("aria-hidden","false");
   }
 
   async function refreshAll(){
-    await loadWellness(contact.id,contact);
+    const selected=contact;if(!selected)return;
+    await loadWellness(selected.id,selected);
+    if(contact?.id!==selected.id)return;
     renderModal();
     await portal.loadDashboard();
   }
 
   async function assignMealPlan(event){
     event.preventDefault();
+    if(!contact||busy||!canWrite())return;
+    const token=epoch;
     const templateId=el("wellness-meal-template").value;
     if(!templateId){
       setStatus("wellness-meal-status","Choose a published meal-plan template.","error");
@@ -300,6 +321,7 @@
     }
 
     setStatus("wellness-meal-status","Assigning meal plan...");
+    busy=true;
     const {data,error}=await client.rpc("assign_meal_plan_template",{
       p_contact_id:contact.id,
       p_template_id:templateId,
@@ -307,34 +329,38 @@
       p_title:el("wellness-meal-title").value.trim()||null,
       p_notes:el("wellness-meal-notes").value.trim()||null
     });
+    if(!current(token))return;busy=false;
     if(error){
       setStatus("wellness-meal-status",error.message,"error");
       return;
     }
 
     setStatus("wellness-meal-status","Meal plan assigned.","success");
-    await portal.logActivity(contact.id,"meal_plan_assigned","Meal plan assigned",null,{meal_plan_id:data});
     await refreshAll();
   }
 
   async function generateGrocery(){
-    if(!activeMealPlan)return;
+    if(!activeMealPlan||busy||!canWrite())return;
+    const token=epoch;
     setStatus("wellness-meal-status","Generating grocery list...");
+    busy=true;
     const {data,error}=await client.rpc("generate_grocery_list_for_meal_plan",{
       p_meal_plan_id:activeMealPlan.id,
       p_title:null
     });
+    if(!current(token))return;busy=false;
     if(error){
       setStatus("wellness-meal-status",error.message,"error");
       return;
     }
     setStatus("wellness-meal-status","Grocery list generated.","success");
-    await portal.logActivity(contact.id,"grocery_list_generated","Grocery list generated",activeMealPlan.title,{grocery_list_id:data});
     await refreshAll();
   }
 
   async function assignFitness(event){
     event.preventDefault();
+    if(!contact||busy||!canWrite())return;
+    const token=epoch;
     const programId=el("wellness-fitness-program").value;
     if(!programId){
       setStatus("wellness-fitness-status","Choose a published fitness program.","error");
@@ -342,6 +368,7 @@
     }
 
     setStatus("wellness-fitness-status","Assigning fitness program...");
+    busy=true;
     const {data,error}=await client.rpc("assign_fitness_program",{
       p_contact_id:contact.id,
       p_program_id:programId,
@@ -349,29 +376,27 @@
       p_title:el("wellness-fitness-title").value.trim()||null,
       p_notes:el("wellness-fitness-notes").value.trim()||null
     });
+    if(!current(token))return;busy=false;
     if(error){
       setStatus("wellness-fitness-status",error.message,"error");
       return;
     }
 
     setStatus("wellness-fitness-status","Fitness program assigned.","success");
-    await portal.logActivity(contact.id,"fitness_program_assigned","Fitness program assigned",null,{fitness_plan_id:data});
     await refreshAll();
   }
 
   document.addEventListener("ra:contact-opened",(event)=>{
-    loadWellness(event.detail.contactId,event.detail.contact).catch((error)=>{
+    const selectedId=event.detail.contactId;
+    loadWellness(selectedId,event.detail.contact).catch((error)=>{
+      if(contact?.id!==selectedId)return;
       console.error("Wellness workspace load failed",error);
       setStatus("client-wellness-status",error.message||"Wellness data could not be loaded.","error");
     });
   });
 
-  document.addEventListener("ra:contact-closed",()=>{
-    contact=null;access=null;membership=null;summary=null;activeMealPlan=null;activeFitnessPlan=null;
-    mealTemplates=[];fitnessPrograms=[];mealItems=[];workoutItems=[];groceryRows=[];
-    el("client-wellness-section").classList.add("hidden");
-    closeModal();
-  });
+  document.addEventListener("ra:contact-closed",clearWellness);
+  document.addEventListener("ra:staff-access-reset",clearWellness);
 
   el("client-manage-wellness").addEventListener("click",openModal);
   el("wellness-meal-form").addEventListener("submit",assignMealPlan);

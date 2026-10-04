@@ -6,6 +6,7 @@
   const client=portal.authClient;
 
   let permissions={};
+  let permissionEpoch=0, loadedPermissions=null;
 
   function has(key){
     return Boolean(permissions[key]);
@@ -67,18 +68,24 @@
   }
 
   async function loadPermissions(){
+    const epoch=++permissionEpoch;
     const {data,error}=await client.from("my_staff_permissions_view").select("*");
+    if(epoch!==permissionEpoch)return;
     if(error){
       console.error("Staff permissions failed",error);
       permissions={};
+      if(loadedPermissions!==null){portal.invalidateSession?.();return;}
       applyVisibility();
       return;
     }
 
-    permissions=Object.fromEntries((data||[]).map((row)=>[
+    const nextPermissions=Object.fromEntries((data||[]).map((row)=>[
       row.permission_key,Boolean(row.allowed)
     ]));
 
+    const signature=JSON.stringify(Object.entries(nextPermissions).sort());
+    if(loadedPermissions!==null&&signature!==loadedPermissions){portal.invalidateSession?.();return;}
+    loadedPermissions=signature;permissions=nextPermissions;
     applyVisibility();
     document.dispatchEvent(new CustomEvent("ra:permissions-loaded",{
       detail:{permissions:{...permissions}}
@@ -92,5 +99,6 @@
   document.addEventListener("ra:dashboard-loaded",applyVisibility);
   document.addEventListener("ra:permissions-refresh",loadPermissions);
 
+  document.addEventListener("ra:staff-access-reset",()=>{permissionEpoch++;permissions={};loadedPermissions=null;applyVisibility();});
   window.setTimeout(loadPermissions,250);
 })();

@@ -905,3 +905,14 @@
   .recipe-builder-nutrition-grid{grid-template-columns:1fr 1fr}
   .recipe-builder-ingredient{align-items:flex-start;flex-direction:column}
 }
+
+/* Beta content composition reuses the existing template tables. */
+.beta-composition{box-sizing:border-box;width:min(860px,calc(100vw - 32px));max-height:calc(100dvh - 32px);padding:24px;border:1px solid #dbe4df;border-radius:18px;color:#233b32;background:#fff;overflow:auto;overflow-wrap:anywhere}
+.beta-composition::backdrop{background:rgba(10,30,22,.55)}
+.beta-composition form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.beta-composition label{display:flex;flex-direction:column;gap:6px;min-width:0}
+.beta-composition input,.beta-composition select,.beta-composition textarea{box-sizing:border-box;min-width:0;max-width:100%;width:100%;padding:10px;border:1px solid #bfcec5;border-radius:8px;font:inherit}
+.beta-composition button{min-height:44px;padding:8px 14px;white-space:normal;cursor:pointer}
+.beta-composition-list article{display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid #e0e8e3}
+.beta-composition-list article>div{min-width:0}.beta-composition-list article>div:last-child{display:flex;align-items:start;gap:8px}
+@media(max-width:600px){.beta-composition{padding:16px}.beta-composition form{grid-template-columns:minmax(0,1fr)}.beta-composition-list article{flex-direction:column}}

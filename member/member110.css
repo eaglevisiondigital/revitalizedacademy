@@ -3413,3 +3413,7 @@
   .rm218-targets-panel{margin-left:12px;margin-right:12px}
   .rm218-diary-item{align-items:flex-start;flex-direction:column}
 }
+
+.rm-assigned-detail{box-sizing:border-box;width:min(720px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto;border:1px solid #dbe4df;border-radius:18px;background:#fff;color:#213b32;padding:24px;overflow-wrap:anywhere}
+.rm-assigned-detail::backdrop{background:rgba(10,30,22,.55)}.rm-assigned-detail p{white-space:pre-wrap}.rm-assigned-detail article{border-top:1px solid #dbe4df;padding:12px 0}.rm-assigned-detail button{min-height:44px;padding:10px 18px}.rm116-meal-row>button,.rm116-workout-row>button{min-height:44px;max-width:100%;white-space:normal}
+@media(max-width:600px){.rm-assigned-detail{padding:16px}}

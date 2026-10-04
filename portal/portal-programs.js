@@ -486,6 +486,7 @@
     resources:{table:"resource_library",label:"Resources",select:"id,title,description,status,resource_type,resource_url,category",order:"title"}
   };
   let contentCache={};
+  let contentEdit=null, contentEpoch=0, contentBusy=false, contentReadEpoch=0;
   let activeContent="courses";
   let nutritionMethodologies=[];
   let fitnessMethodologies=[];
@@ -542,6 +543,7 @@
   function renderDynamicFields(){
     if(!dynamicFields||!contentType)return;
     const type=contentType.value;
+    contentDescription?.closest("label")?.classList.toggle("hidden",["recipes","foods","exercises"].includes(type));
     if(type==="courses"){
       dynamicFields.innerHTML='<label><span>Estimated minutes</span><input id="content-estimated-minutes" type="number" min="0" step="1"></label><label><span>Version</span><input id="content-version" type="text" value="1.0" maxlength="30"></label>';
     }else if(type==="challenges"){
@@ -564,7 +566,10 @@
   }
 
   function openContentModal(){
-    if(!contentModal)return;
+    if(!contentModal||!canManagePrograms())return;
+    contentEpoch++; contentEdit=null; contentBusy=false; contentType.disabled=false;
+    document.getElementById("program-content-modal-title").textContent="Create new content";
+    contentForm.querySelector('[type="submit"]').textContent="Save Draft";
     if(contentType)contentType.value=activeContent;
     if(contentTitle)contentTitle.value="";
     if(contentDescription)contentDescription.value="";
@@ -576,7 +581,9 @@
   }
 
   function closeContentModal(){
+    contentEpoch++; contentEdit=null; contentBusy=false;
     if(!contentModal)return;
+    contentType.disabled=false;
     contentModal.classList.add("hidden");
     contentModal.setAttribute("aria-hidden","true");
     contentForm?.reset();
@@ -585,7 +592,32 @@
     if(formStatus)portal.showStatus(formStatus,"");
   }
 
+  async function editContent(key,row){
+    if(!canManagePrograms())return;
+    activeContent=key;openContentModal();
+    const epoch=contentEpoch;
+    const {data,error}=await client.from(contentSources[key].table).select("*").eq("id",row.id).single();
+    if(epoch!==contentEpoch)return;
+    if(error){portal.showStatus(formStatus,error.message,"error");return;}
+    contentEdit=data;contentType.disabled=true;
+    document.getElementById("program-content-modal-title").textContent="Edit "+(data.title||data.name||"content");
+    contentTitle.value=data.title||data.name||"";contentDescription.value=data.description||"";
+    contentForm.querySelector('[type="submit"]').textContent="Save Changes";
+    const aliases={methodology:"methodology_id",days:"days_count",prep:"prep_minutes",cook:"cook_minutes",duration:"duration_minutes",primary_muscle:"primary_muscle_group",secondary_muscles:"secondary_muscle_groups",restrictions:"restriction_notes",grams_serving:"grams_per_serving"};
+    dynamicFields.querySelectorAll("input,select,textarea").forEach(input=>{
+      const field=input.id.replace(/^content-/,"").replaceAll("-","_");
+      const value=input.dataset.nutrientKey?data.nutrition?.[input.dataset.nutrientKey]:data[aliases[field]||field];
+      if(key==="recipes"&&data.nutrition_calculated_at&&input.dataset.nutrientKey)input.disabled=true;
+      if(input.type==="checkbox")input.checked=value===true;
+      else input.value=Array.isArray(value)?value.join(", "):value??"";
+    });
+    // Composition remains bound to its original methodology.
+    const methodology=document.getElementById("content-methodology");if(methodology)methodology.disabled=true;
+  }
+
   async function updateContentStatus(key,row,nextStatus){
+    if(!canManagePrograms())return;
+    const epoch=contentEpoch;
     const source=contentSources[key];
     let payload;
     if(key==="foods"){
@@ -595,6 +627,7 @@
       if(nextStatus==="published")payload.published_at=new Date().toISOString();
     }
     const {error}=await client.from(source.table).update(payload).eq("id",row.id);
+    if(epoch!==contentEpoch)return;
     if(error){window.alert(error.message);return;}
     await loadContent();
   }
@@ -899,6 +932,16 @@
       const rowState=activeContent==="foods"?(row.active?"active":"inactive"):String(row.status||"draft").toLowerCase();
       const status=document.createElement("span");status.className="program-content-status "+rowState;status.textContent=portal.titleCase(rowState);
       const actions=document.createElement("div");actions.className="program-content-row-actions";
+      if(["meal-plans","recipes","foods","fitness","workouts","exercises"].includes(activeContent)&&canManagePrograms()){
+        const key=activeContent;
+        const edit=document.createElement("button");edit.type="button";edit.className="edit";edit.textContent="Edit";
+        edit.addEventListener("click",()=>editContent(key,row));actions.append(edit);
+        if(["meal-plans","workouts","fitness"].includes(key)){
+          const build=document.createElement("button");build.type="button";build.className="edit";
+          build.textContent=key==="meal-plans"?"Build Meal Plan":key==="workouts"?"Build Workout":"Schedule Workouts";
+          build.addEventListener("click",()=>window.RA_CONTENT_COMPOSITION?.open(key,row));actions.append(build);
+        }
+      }
       if(activeContent==="courses"&&canManagePrograms()){
         const build=document.createElement("button");build.type="button";build.className="edit";build.textContent="Build Course";
         build.addEventListener("click",()=>openCourseBuilder(row));
@@ -934,6 +977,7 @@
   }
 
   async function loadContent(){
+    const readEpoch=++contentReadEpoch;
     if(!contentSummary||!contentList)return;
     const entries=Object.entries(contentSources);
     const [contentResults,nutritionResult,fitnessResult,nutrientResult]=await Promise.all([
@@ -945,6 +989,7 @@
       client.from("fitness_methodologies").select("id,name,status").order("name"),
       client.from("nutrition_nutrient_catalog").select("nutrient_key,name,category,unit,default_visible,sort_order").eq("active",true).order("sort_order")
     ]);
+    if(readEpoch!==contentReadEpoch)return;
     nutritionMethodologies=nutritionResult.error?[]:(nutritionResult.data||[]);
     fitnessMethodologies=fitnessResult.error?[]:(fitnessResult.data||[]);
     nutritionNutrients=nutrientResult.error?[]:(nutrientResult.data||[]);
@@ -958,7 +1003,7 @@
       stat.append(l,v);contentSummary.append(stat);
     });
     renderContent();
-    renderDynamicFields();
+    if(!contentEdit&&contentModal?.classList.contains("hidden"))renderDynamicFields();
     syncContentManagementAccess();
   }
 
@@ -983,9 +1028,9 @@
   }
 
   function nutritionPayload(){
-    const values={};
+    const values={...(contentEdit?.nutrition||{})};
     dynamicFields?.querySelectorAll("[data-nutrient-key]").forEach((input)=>{
-      if(input.value==="")return;
+      if(input.value===""){delete values[input.dataset.nutrientKey];return;}
       const amount=Number(input.value);
       if(Number.isFinite(amount))values[input.dataset.nutrientKey]=amount;
     });
@@ -994,7 +1039,8 @@
 
   async function createContent(event){
     event.preventDefault();
-    if(!contentType||!contentTitle)return;
+    if(!contentType||!contentTitle||contentBusy||!canManagePrograms())return;
+    const epoch=contentEpoch;
     const key=contentType.value;
     const source=contentSources[key];
     const title=contentTitle.value.trim();
@@ -1110,9 +1156,28 @@
       portal.showStatus(formStatus,"A ReVitalized methodology must be configured before creating this content type.","error");return;
     }
 
-    portal.showStatus(formStatus,"Saving draft...");
-    const {error}=await client.from(source.table).insert(payload);
-    if(error){portal.showStatus(formStatus,error.message,"error");return;}
+    const calculatedRecipe=key==="recipes"&&contentEdit?.nutrition_calculated_at;
+    if(contentEdit){
+      payload.updated_at=new Date().toISOString();
+      if(calculatedRecipe)delete payload.nutrition;
+      delete payload.status;delete payload.active;delete payload.created_by;delete payload.guidance_status;delete payload.tags;
+      delete payload.methodology_id;
+    }
+    contentBusy=true;
+    portal.showStatus(formStatus,contentEdit?"Saving changes...":"Saving draft...");
+    try{
+      let query=contentEdit?client.from(source.table).update(payload).eq("id",contentEdit.id).eq("updated_at",contentEdit.updated_at):client.from(source.table).insert(payload);
+      const {data,error}=await query.select("id");
+      if(epoch!==contentEpoch)return;
+      if(error)throw error;
+      if(!data?.length)throw new Error("This content changed or access was removed. Reopen it before saving.");
+      if(calculatedRecipe){
+        const calculation=await client.rpc("recalculate_recipe_nutrition",{p_recipe_id:contentEdit.id});
+        if(epoch!==contentEpoch)return;
+        if(calculation.error)throw new Error("Recipe saved, but nutrition needs recalculation: "+calculation.error.message);
+      }
+    }catch(error){if(epoch===contentEpoch)portal.showStatus(formStatus,error.message,"error");return;}
+    finally{if(epoch===contentEpoch)contentBusy=false;}
     activeContent=key;
     closeContentModal();
     await loadContent();
@@ -1136,6 +1201,7 @@
   document.querySelectorAll("[data-program-content-close]").forEach(node=>node.addEventListener("click",closeContentModal));
   document.addEventListener("ra:dashboard-loaded",syncContentManagementAccess);
 
+  document.addEventListener("ra:staff-access-reset",()=>{contentReadEpoch++;closeContentModal();contentCache={};contentList?.replaceChildren();contentSummary?.replaceChildren();});
   load();
   loadProgramAccess();
   loadContent();

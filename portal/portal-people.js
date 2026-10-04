@@ -6,7 +6,8 @@
 
   const client=portal.authClient;
   const el=(id)=>document.getElementById(id);
-  let submitting=false;
+  let submitting=false, personEpoch=0;
+  const current=(token)=>token===personEpoch&&portal.hasPermission?.("crm.manage")===true;
 
   function resetPersonForm(){
     const form=el("people-add-form");
@@ -20,6 +21,7 @@
   }
 
   function closeModal(){
+    personEpoch++;submitting=false;
     el("people-modal").classList.add("hidden");
     el("people-modal").setAttribute("aria-hidden","true");
     portal.showStatus(el("people-form-status"),"");
@@ -27,9 +29,12 @@
   }
 
   async function openModal(){
+    if(portal.hasPermission?.("crm.manage")!==true)return;
+    const token=++personEpoch;submitting=false;
     resetPersonForm();
     populateStaff();
     await populateReferrers();
+    if(!current(token))return;
     syncReferralField();
     el("people-modal").classList.remove("hidden");
     el("people-modal").setAttribute("aria-hidden","false");
@@ -95,7 +100,7 @@
     if(email){
       const {data,error}=await client.from("contacts")
         .select("id,first_name,last_name,email,phone")
-        .ilike("email",email)
+        .ilike("email",email.replace(/[\\%_]/g,"\\$&"))
         .limit(1)
         .maybeSingle();
       if(error)throw error;
@@ -111,6 +116,7 @@
           .limit(500);
         if(error)throw error;
         const match=(data||[]).find((row)=>normalizedPhone(row.phone)===digits);
+        if(match&&email&&match.email&&match.email.toLowerCase()!==email)throw Error("This phone matches a different email. Review the existing person before changing their identity.");
         if(match)return match;
       }
     }
@@ -120,7 +126,8 @@
 
   async function createPerson(event){
     event.preventDefault();
-    if(submitting)return;
+    if(submitting||portal.hasPermission?.("crm.manage")!==true)return;
+    const token=personEpoch,form=event.currentTarget;
 
     const first=el("people-first-name").value.trim();
     const last=el("people-last-name").value.trim();
@@ -154,6 +161,7 @@
       const referrerContactId=el("people-referrer").value||null;
 
       const existing=await findExisting(email,phone);
+      if(!current(token))return;
       if(existing){
         portal.showStatus(
           el("people-form-status"),
@@ -182,6 +190,7 @@
 
         const {error:updateError}=await client.from("contacts").update(updates).eq("id",existing.id);
         if(updateError)throw updateError;
+        if(!current(token))return;
 
         if(note){
           const {error}=await client.from("contact_notes").insert({
@@ -190,6 +199,7 @@
             author_user_id:portal.currentUserId()
           });
           if(error)throw error;
+        if(!current(token))return;
         }
 
         if(tags.length){
@@ -204,6 +214,7 @@
             {onConflict:"contact_id,tag"}
           );
           if(error)throw error;
+        if(!current(token))return;
         }
 
         if(source==="manual_referral"&&referrerContactId){
@@ -236,6 +247,7 @@
             p_metadata:{source:"manual_staff_entry",existing_contact:true}
           });
           if(error)throw error;
+        if(!current(token))return;
         }
 
         await portal.logActivity(
@@ -253,6 +265,7 @@
         );
         await portal.loadDashboard();
         window.setTimeout(async()=>{
+          if(!current(token))return;
           closeModal();
           await portal.openContact(existing.id);
         },450);
@@ -280,6 +293,7 @@
 
       if(contactError)throw contactError;
 
+      if(!current(token))return;
       const contactId=contact.id;
 
       if(note){
@@ -289,6 +303,7 @@
           author_user_id:portal.currentUserId()
         });
         if(error)throw error;
+        if(!current(token))return;
       }
 
       if(tags.length){
@@ -303,6 +318,7 @@
           {onConflict:"contact_id,tag"}
         );
         if(error)throw error;
+        if(!current(token))return;
       }
 
       if(source==="manual_referral"&&referrerContactId){
@@ -335,10 +351,11 @@
           p_metadata:{source:"manual_staff_entry"}
         });
         if(error)throw error;
+        if(!current(token))return;
       }
 
       portal.showStatus(el("people-form-status"),"Person added to ReVitalized.","success");
-      event.currentTarget.reset();
+      form.reset();
       el("people-stage").value="lead";
       el("people-source").value="manual_referral";
       el("people-country").value="";
@@ -347,17 +364,19 @@
       await portal.loadDashboard();
 
       window.setTimeout(async()=>{
+        if(!current(token))return;
         closeModal();
         await portal.openContact(contactId);
       },450);
     }catch(error){
+      if(!current(token))return;
       portal.showStatus(
         el("people-form-status"),
         error?.message||"This person could not be added.",
         "error"
       );
     }finally{
-      submitting=false;
+      if(token===personEpoch)submitting=false;
     }
   }
 
@@ -370,6 +389,7 @@
     });
   }
 
+  document.addEventListener("ra:staff-access-reset",closeModal);
   el("people-add-button").addEventListener("click",openModal);
   el("people-source").addEventListener("change",syncReferralField);
   el("people-add-form").addEventListener("submit",createPerson);

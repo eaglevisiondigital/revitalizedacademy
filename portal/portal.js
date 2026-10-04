@@ -38,6 +38,21 @@
   let activeContactId = null;
   let currentUserId = null;
   let staffDirectory = [];
+  let sessionEpoch=0, resolvingUser=null, terminatingSession=false;
+  function resetStaffAccess(){
+    sessionEpoch++;resolvingUser=null;currentUserId=null;staffDirectory=[];activeContactId=null;
+    document.dispatchEvent(new CustomEvent("ra:staff-access-reset"));
+    document.dispatchEvent(new CustomEvent("ra:contact-closed"));
+  }
+  function endStaffDocument(){
+    if(terminatingSession)return;
+    terminatingSession=true;resetStaffAccess();
+    // A fresh document prevents closures in every portal module retaining another account's data.
+    const notice=document.createElement("p");notice.textContent="Refreshing secure staff access…";
+    document.body.replaceChildren(notice);
+    window.location.replace(window.location.pathname);
+  }
+
 
 
   const metricDefinitions = [
@@ -140,10 +155,12 @@
   }
 
   async function loadStaffDirectory() {
+    const epoch=sessionEpoch;
     const { data, error } = await authClient
       .from("staff_directory")
       .select("user_id,display_name,role")
       .order("display_name");
+    if(epoch!==sessionEpoch||terminatingSession)return;
     if (error) {
       staffDirectory = [];
       return;
@@ -323,6 +340,7 @@
 
   async function openContact(contactId) {
     if (!contactId) return;
+    const epoch=sessionEpoch;
     activeContactId = contactId;
     contactDrawer.classList.remove("hidden");
     contactDrawer.setAttribute("aria-hidden", "false");
@@ -352,6 +370,7 @@
       authClient.from("contact_activity").select("id,activity_type,title,detail,actor_user_id,metadata,created_at").eq("contact_id", contactId).order("created_at", { ascending: false }).limit(40)
     ]);
 
+    if(epoch!==sessionEpoch||activeContactId!==contactId||terminatingSession)return;
     const failed = [contactResult, workflowsResult, webinarResult, refuelResult, notesResult, tasksResult, tagsResult, activityResult].find((result) => result.error);
     if (failed?.error) {
       contactLoading.textContent = "This contact record could not be loaded. " + failed.error.message;
@@ -491,6 +510,8 @@
   });
 
   function showPasswordSetup() {
+    if(currentUserId){endStaffDocument();return;}
+    resetStaffAccess();
     authView.classList.remove("hidden");
     portalView.classList.add("hidden");
     loginForm.classList.add("hidden");
@@ -500,6 +521,8 @@
   }
 
   function showLogin() {
+    if(currentUserId){endStaffDocument();return;}
+    resetStaffAccess();
     authView.classList.remove("hidden");
     portalView.classList.add("hidden");
     loginForm.classList.remove("hidden");
@@ -508,6 +531,8 @@
   }
 
   function showPending() {
+    if(currentUserId){endStaffDocument();return;}
+    resetStaffAccess();
     authView.classList.remove("hidden");
     portalView.classList.add("hidden");
     loginForm.classList.add("hidden");
@@ -523,6 +548,9 @@
   }
 
   async function resolveStaff(session) {
+    if(terminatingSession)return;
+    if(currentUserId&&currentUserId!==session?.user?.id){endStaffDocument();return;}
+    const epoch=++sessionEpoch;resolvingUser=session?.user?.id||null;
     if (!session?.user) {
       showLogin();
       return;
@@ -537,6 +565,7 @@
     }
 
     const { data: staffRows, error } = await authClient.rpc("get_my_staff_access");
+    if(epoch!==sessionEpoch||terminatingSession)return;
     const staff = Array.isArray(staffRows) ? (staffRows[0] || null) : staffRows;
 
     if (error) {
@@ -565,11 +594,15 @@
 
     currentUserId = session.user.id;
     await loadStaffDirectory();
+    if(epoch!==sessionEpoch||terminatingSession)return;
     showPortal(staff);
+    document.dispatchEvent(new CustomEvent("ra:permissions-refresh"));
     await loadDashboard();
   }
 
   async function loadDashboard() {
+    const epoch=sessionEpoch;
+    if(terminatingSession)return;
     showStatus(portalStatus, "Loading current data...");
 
     const [metricsResult, followupResult, tasksResult, contactsResult] = await Promise.all([
@@ -579,6 +612,7 @@
       authClient.from("admin_contact_overview").select("*").order("created_at", { ascending: false }).limit(100)
     ]);
 
+    if(epoch!==sessionEpoch||terminatingSession)return;
     const firstError = [metricsResult, followupResult, tasksResult, contactsResult].find((result) => result.error);
     if (firstError?.error) {
       showStatus(portalStatus, "Some dashboard data could not be loaded. " + firstError.error.message, "error");
@@ -857,9 +891,12 @@
   }
 
   async function signOut() {
-    await authClient.auth.signOut();
-    showLogin();
-    showStatus(loginStatus, "Signed out.", "success");
+    if(terminatingSession)return;
+    terminatingSession=true;resetStaffAccess();
+    const notice=document.createElement("p");notice.textContent="Signing out…";document.body.replaceChildren(notice);
+    const {error}=await authClient.auth.signOut();
+    if(error){notice.textContent="Sign-out could not finish. Please reload and try again.";return;}
+    window.location.replace(window.location.pathname);
   }
 
 
@@ -868,6 +905,8 @@
     openAccount,
     closeAccount,
     currentUserId: () => currentUserId,
+    sessionEpoch: () => sessionEpoch,
+    invalidateSession: endStaffDocument,
     openContact,
     loadDashboard,
     logActivity,
@@ -1061,11 +1100,15 @@
   }
 
   authClient.auth.onAuthStateChange((event, session) => {
+    if(terminatingSession)return;
     if (event === "SIGNED_OUT") {
+      if(currentUserId||resolvingUser){endStaffDocument();return;}
       showLogin();
     } else if (event === "PASSWORD_RECOVERY") {
       showPasswordSetup();
     } else if (["INITIAL_SESSION","SIGNED_IN","TOKEN_REFRESHED"].includes(event) && session?.user) {
+      if(currentUserId&&currentUserId!==session.user.id){endStaffDocument();return;}
+      if(event==="TOKEN_REFRESHED"&&currentUserId){window.setTimeout(()=>resolveStaff(session),0);return;}
       resolveRestoredStaffSession(session);
     }
   });

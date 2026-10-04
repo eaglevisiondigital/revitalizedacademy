@@ -308,5 +308,7 @@
   "webinar-priority.html",
   "webinar.html",
   "member/member-health-progress.js",
-  "member/member-health-progress.css"
+  "member/member-health-progress.css",
+  "portal/portal-content-composition.js",
+  "member/member-assigned-content.js"
 ]

@@ -3635,6 +3635,8 @@
       const when=document.createElement("small");
       when.textContent=formatDate(row.scheduled_date)+" · "+title(row.status);
       item.append(when);
+      const details=document.createElement("button");details.type="button";details.textContent="View Meal";
+      details.addEventListener("click",()=>document.dispatchEvent(new CustomEvent("ra:member-assignment-open",{detail:{kind:"meal",id:row.meal_item_id}})));item.append(details);
 
       if(row.status==="planned"){
         const actions=document.createElement("div");
@@ -3703,6 +3705,8 @@
       const metaEl=document.createElement("small");
       metaEl.textContent=[formatDate(row.scheduled_date),row.duration_minutes?row.duration_minutes+" min":"",title(row.environment)].filter(Boolean).join(" · ");
       item.append(metaEl);
+      const details=document.createElement("button");details.type="button";details.textContent="View Workout";
+      details.addEventListener("click",()=>document.dispatchEvent(new CustomEvent("ra:member-assignment-open",{detail:{kind:"workout",id:row.workout_assignment_id}})));item.append(details);
 
       if(row.status==="assigned"){
         const actions=document.createElement("div");
@@ -3732,6 +3736,7 @@
 
   async function completeWorkout(row){
     if(!currentMember)return;
+    const owner=currentMember;
     const duration=window.prompt("How many minutes did you spend on this workout?",row.duration_minutes||"");
     if(duration===null)return;
     const minutes=Number(duration);
@@ -3740,15 +3745,17 @@
     const effort=window.prompt("Optional: effort from 1-10?","");
     const effortValue=effort?Number(effort):null;
     const {data:{user}}=await client.auth.getUser();
+    if(currentMember!==owner||!user)return;
     const {error}=await client.from("workout_completions").insert({
       assignment_id:row.workout_assignment_id,
-      contact_id:currentMember.contact_id,
+      contact_id:owner.contact_id,
       completed_at:new Date().toISOString(),
       duration_minutes:Math.round(minutes),
       effort_rating:Number.isFinite(effortValue)?Math.max(1,Math.min(10,Math.round(effortValue))):null,
       source:"member",
       created_by:user?.id||null
     });
+    if(currentMember!==owner)return;
     if(error){window.alert("Could not complete workout: "+error.message);return;}
     await loadDashboard();
   }

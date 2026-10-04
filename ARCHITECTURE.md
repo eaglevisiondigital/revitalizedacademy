@@ -1,5 +1,7 @@
 # ReVitalized Academy architecture
 
+Beta Readiness Core v1 (2026-10-04), **local candidate / release held**: [package contract](docs/BETA_READINESS_CORE_V1.md). Existing reusable library content → meal template/workout composition → client assignment → own member detail. New frontend modules use `meal_plan_template_items`, `workout_template_exercises`, `fitness_program_workouts` and existing assignment RPCs; no parallel tables/services. Two own-assignment invoker RPCs expose safe member instructions. Existing calculator remains authoritative. Staff-management handler extraction enables isolated Edge request tests. Staff account/permission transitions restart a cleared document, while individual content/client reads use request generations. The forward migration and Edge/frontend form one undeployed package; hosted acceptance is required.
+
 Member Health & Progress v1 (2026-10-04): [contract inventory and module ownership](docs/MEMBER_HEALTH_PROGRESS_V1.md). The base Health workspace composes existing self-scoped contracts without replacing bootstrap v2 or adding database objects. A shared-client lazy module owns the premium overview, reads optional sections independently, honors configured visibility/source order and existing vNext flags, and handshakes safely if it loads after core bootstrap. Core preflight/results and optional section callbacks use context generations. No accepted staff Nutrition architecture changed.
 
 

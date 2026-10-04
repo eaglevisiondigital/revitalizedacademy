@@ -51,6 +51,14 @@ test('Recipe and Food forms are catalog driven instead of seven hard coded nutri
 
 test('blank nutrient values stay unknown rather than zero',()=>{
   const js=read('portal/portal-programs.js');
-  assert.match(js,/if\(input\.value===""\)return;/);
-  assert.match(js,/Number\.isFinite\(amount\)/);
+  const source=js.slice(js.indexOf('  function nutritionPayload(){'),js.indexOf('  async function createContent('));
+  const serialize=new Function('contentEdit','dynamicFields',source+';return nutritionPayload();');
+  const fields={querySelectorAll:()=>[
+    {dataset:{nutrientKey:'energy_kcal'},value:''},
+    {dataset:{nutrientKey:'protein_g'},value:'0'},
+    {dataset:{nutrientKey:'fiber_g'},value:'3.5'},
+    {dataset:{nutrientKey:'sodium_mg'},value:'unknown'}
+  ]};
+  assert.deepEqual(serialize(null,fields),{protein_g:0,fiber_g:3.5});
+  assert.deepEqual(serialize({nutrition:{energy_kcal:250,protein_g:12,retired_key:4}},fields),{protein_g:0,fiber_g:3.5,retired_key:4});
 });

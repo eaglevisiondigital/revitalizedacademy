@@ -10,6 +10,8 @@
   let ingredients=[];
   let foods=[];
   let nutrients=[];
+  let epoch=0,busy=false;
+  const current=(token)=>token===epoch&&activeRecipe&&portal.hasPermission?.("learning.manage")===true;
 
   const esc=(value)=>String(value??"")
     .replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;")
@@ -69,9 +71,9 @@
     modal.querySelector("[data-recipe-builder-close]")?.addEventListener("click",close);
     modal.querySelector(".recipe-builder-close")?.addEventListener("click",close);
     modal.querySelector("#recipe-builder-food")?.addEventListener("change",renderFoodHint);
-    modal.querySelector("#recipe-builder-add")?.addEventListener("click",addIngredient);
-    modal.querySelector("#recipe-builder-recalculate")?.addEventListener("click",recalculate);
-    modal.querySelector("#recipe-builder-save-servings")?.addEventListener("click",saveServings);
+    modal.querySelector("#recipe-builder-add")?.addEventListener("click",()=>mutate(addIngredient));
+    modal.querySelector("#recipe-builder-recalculate")?.addEventListener("click",()=>mutate(recalculate));
+    modal.querySelector("#recipe-builder-save-servings")?.addEventListener("click",()=>mutate(saveServings));
     return modal;
   }
 
@@ -81,15 +83,15 @@
   }
 
   function close(){
+    epoch++;busy=false;foods=[];nutrients=[];
     if(!modal)return;
-    modal.classList.add("hidden");
-    modal.setAttribute("aria-hidden","true");
-    activeRecipe=null;
-    ingredients=[];
+    modal.remove();modal=null;
+    activeRecipe=null;ingredients=[];
   }
 
   async function load(){
     if(!activeRecipe)return;
+    const token=epoch;
     const [ingredientResult,foodResult,nutrientResult,recipeResult]=await Promise.all([
       client.from("recipe_ingredients")
         .select("id,recipe_id,ingredient,quantity,unit,note,sort_order,food_id,weight_grams,calculation_basis,nutrition_multiplier,nutrition_snapshot")
@@ -108,6 +110,7 @@
         .eq("id",activeRecipe.id)
         .single()
     ]);
+    if(!current(token))return;
     if(ingredientResult.error)throw ingredientResult.error;
     if(foodResult.error)throw foodResult.error;
     if(nutrientResult.error)throw nutrientResult.error;
@@ -202,7 +205,7 @@
       const remove=document.createElement("button");
       remove.type="button";
       remove.textContent="Remove";
-      remove.addEventListener("click",()=>removeIngredient(row.id));
+      remove.addEventListener("click",()=>mutate(()=>removeIngredient(row.id)));
       actions.append(remove);
       card.append(copy,actions);
       root.append(card);
@@ -259,17 +262,20 @@
   }
 
   async function refresh(){
+    const token=epoch;
     try{
       await load();
+      if(!current(token))return;
       render();
       status("");
     }catch(error){
-      status(error.message||String(error),"error");
+      if(current(token))status(error.message||String(error),"error");
     }
   }
 
   async function addIngredient(){
     if(!activeRecipe)return;
+    const token=epoch;
     const food=foods.find((row)=>row.id===modal.querySelector("#recipe-builder-food").value);
     if(!food){status("Choose a Food Library ingredient first.","error");return;}
     const quantity=numberOrNull(modal.querySelector("#recipe-builder-quantity").value);
@@ -293,6 +299,7 @@
       note,
       sort_order:sortOrder
     });
+    if(!current(token))return;
     if(error){status(error.message,"error");return;}
 
     modal.querySelector("#recipe-builder-quantity").value="";
@@ -303,18 +310,22 @@
 
   async function removeIngredient(id){
     if(!activeRecipe)return;
+    const token=epoch;
     status("Removing ingredient...");
     const {error}=await client.from("recipe_ingredients").delete().eq("id",id).eq("recipe_id",activeRecipe.id);
+    if(!current(token))return;
     if(error){status(error.message,"error");return;}
     await recalculate(true);
   }
 
   async function saveServings(){
     if(!activeRecipe)return;
+    const token=epoch;
     const servings=numberOrNull(modal.querySelector("#recipe-builder-servings").value);
     if(servings===null||servings<=0){status("Enter a recipe serving count greater than zero.","error");return;}
     status("Saving servings...");
     const {error}=await client.from("recipes").update({servings,updated_at:new Date().toISOString()}).eq("id",activeRecipe.id);
+    if(!current(token))return;
     if(error){status(error.message,"error");return;}
     activeRecipe.servings=servings;
     await recalculate(true);
@@ -322,10 +333,13 @@
 
   async function recalculate(quiet=false){
     if(!activeRecipe)return;
+    const token=epoch;
     if(!quiet)status("Calculating full recipe nutrition...");
     const {data,error}=await client.rpc("recalculate_recipe_nutrition",{p_recipe_id:activeRecipe.id});
+    if(!current(token))return;
     if(error){status(error.message,"error");return;}
     await refresh();
+    if(!current(token))return;
     const incomplete=Number(data?.ingredients_incomplete||0);
     status(
       incomplete
@@ -336,7 +350,8 @@
   }
 
   async function open(recipe){
-    if(!recipe?.id)return;
+    if(!recipe?.id||portal.hasPermission?.("learning.manage")!==true)return;
+    close();
     activeRecipe=recipe;
     ensureModal();
     modal.classList.remove("hidden");
@@ -347,5 +362,10 @@
     await refresh();
   }
 
+  async function mutate(action){
+    if(busy||!current(epoch))return;const token=epoch;busy=true;
+    try{await action();}catch(error){if(current(token))status(error.message,"error");}finally{if(token===epoch)busy=false;}
+  }
+  document.addEventListener("ra:staff-access-reset",close);
   window.RA_RECIPE_BUILDER={open,close,refresh};
 })();
