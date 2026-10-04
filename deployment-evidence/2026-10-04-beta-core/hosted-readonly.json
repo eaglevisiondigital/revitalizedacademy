@@ -1,0 +1,45 @@
+{
+  "observedAt": "2026-10-04T14:09:07.682Z",
+  "sites": [
+    {
+      "id": "071b252e-a922-4846-a784-8dca1edad377",
+      "name": "revitalizedacademy-staging",
+      "deploy": {
+        "id": "6ac1fec19f756106b6a84964",
+        "state": "ready"
+      }
+    },
+    {
+      "id": "ece0f6f3-6c3d-46e6-bb51-95ce1ccefb06",
+      "name": "revitalizedacademy",
+      "deploy": {
+        "id": "6ac036d3b48eac0008568e00",
+        "state": "ready"
+      }
+    }
+  ],
+  "stagingInventory": {
+    "foods": 0,
+    "recipes": 0,
+    "workouts": 0,
+    "active_staff": 1,
+    "methodologies": [
+      {
+        "key": "the-living-diet",
+        "status": "draft"
+      },
+      {
+        "key": "functional-fitness",
+        "status": "draft"
+      }
+    ],
+    "active_members": 1,
+    "meal_assignments": 0,
+    "fitness_assignments": 0,
+    "beta_migration_applied": false,
+    "pending_staff_invitations": 0
+  },
+  "hostedWrites": 0,
+  "staffUi": "Account Active / Staff access is pending",
+  "deploymentHeld": true
+}

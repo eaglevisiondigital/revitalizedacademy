@@ -28,6 +28,8 @@ Starting/accepted SHA: `1462b34b49716f19fb0db55d4bc11098edfe2b9d`, branch `codex
 
 Major files: `portal/portal.js`, `portal-permissions.js`, `portal-people.js`, `portal-programs.js/.css`, `portal-recipe-builder.js`, `portal-wellness.js`, new `portal-content-composition.js`; `member/member110.js/.css`, new `member-assigned-content.js`; HTML/allowlist; `supabase/functions/staff-management/{index,handler}.ts`; the forward migration and tests below.
 
+Candidate cache references (not deployed): portal JS188, permissions JS132, People JS136, Programs JS174/CSS166, Recipe Builder JS102, Wellness JS119/CSS120, new Content Composition JS1; member JS210/CSS202, new Assigned Content JS1. Accepted Health JS1/CSS1, Member Nutrition JS1 and Coach Nutrition Review JS103 are unchanged.
+
 ## Intended operator workflow and current limits
 
 | Workflow | Existing architecture / candidate path | Acceptance state |
@@ -68,7 +70,7 @@ No roles, defaults, overrides, `plan.override` grants, household/guardian rules 
 
 Responsive checks include Recipe Edit, Recipe Builder, meal composition, Workout Edit/composition, fitness schedule, Add Person, Invite Staff, client assignment controls, assigned Meal and assigned Workout. Long uninterrupted exercise text wraps; controls remain in the dialog. This is exact-built UI with a clearly labeled synthetic in-memory transport, not a hosted account or proof of invitation delivery. It is not a complete accessibility certification.
 
-The previously separated nine agreement/onboarding-origin backend fixture failures now pass after adding the fixture's missing explicit synthetic onboarding origin, matching the existing lifecycle fixture contract. No application agreement/payment rule was loosened. The old blank-nutrient source-text assertion was replaced with stronger payload behavior checks covering create/edit blank removal, zero, invalid input and hidden-key preservation. Twenty-seven historical frontend skips remain skips, not passes. A temporary fixture-server restart and JSDOM observer teardown diagnostic were resolved in the local harness; neither is reported as a hosted application success or failure.
+The previously separated nine agreement/onboarding-origin backend fixture failures now pass after adding the fixture's missing explicit synthetic onboarding origin, matching the existing lifecycle fixture contract. No application agreement/payment rule was loosened. The old blank-nutrient source-text assertion was replaced with stronger payload behavior checks covering create/edit blank removal, zero, invalid input and hidden-key preservation. Twenty-seven historical frontend skips remain skips, not passes. Edge logs retain expected denied-request diagnostics and the existing Node punycode deprecation warning; the 30 tests and typechecks pass. A temporary fixture-server restart and JSDOM observer teardown diagnostic were resolved in the local harness; neither is reported as a hosted application success or failure.
 
 Member Health & Progress and Nutrition Targets + Trends remain green in the maintained local suites. Their accepted deployed baseline is unchanged. This does not claim fresh hosted populated-data acceptance for this candidate.
 

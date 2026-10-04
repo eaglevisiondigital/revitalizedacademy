@@ -1,0 +1,28 @@
+✔ beta composition create/edit/remove through existing meal_plan_template_items (170.793041ms)
+✔ beta composition create/edit/remove through existing workout_template_exercises (104.733458ms)
+✔ beta composition create/edit/remove through existing fitness_program_workouts (90.168417ms)
+✔ beta composition delayed read cannot repopulate a closed dialog (91.235958ms)
+✔ beta composition requires content permission and clears on staff reset (64.359875ms)
+✔ beta Recipe edit hydrates zero nutrition and preserves lifecycle fields (108.854625ms)
+✔ beta Recipe ingredient delayed load cannot restore closed private DOM (74.1495ms)
+✔ beta member meal detail is usable, text-safe and cleared on reset (67.985584ms)
+✔ beta member workout detail is usable, text-safe and cleared on reset (68.688083ms)
+✔ beta member delayed assignment response cannot cross account transition (69.612ms)
+✔ beta intended Add Person form supports six distinct clients and resets without duplicate creation (83.256458ms)
+✔ beta Add Person blocks mismatched email/phone merge and literal wildcard email stays literal (66.129667ms)
+✔ beta staff logout clears identity and all private DOM before document restart (89.573541ms)
+✔ beta staff account switch cannot reuse the previous portal document (73.155834ms)
+✔ beta delayed staff dashboard response cannot restore data after logout (75.905084ms)
+✔ beta delayed staff access response is ignored after sign-out (100.322375ms)
+✔ beta normal Sign Out button clears once and ignores the Auth callback during restart (68.718958ms)
+✔ beta calculated recipe edit recalculates per-serving nutrition and preserves hidden catalog keys (91.595375ms)
+✔ beta Wellness clears client plan names and rejects stale cross-client reads (65.964334ms)
+✔ beta permission refresh failure clears the previous authenticated staff document (115.085042ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2008.999083

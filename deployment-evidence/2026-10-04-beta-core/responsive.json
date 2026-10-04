@@ -1,0 +1,590 @@
+[
+  {
+    "flow": "recipe-edit",
+    "height": 844,
+    "pageWidth": 390,
+    "panels": [
+      {
+        "clientWidth": 372,
+        "label": "program-content-modal-title",
+        "left": 8,
+        "overflow": [],
+        "right": 382,
+        "scrollWidth": 372,
+        "width": 374
+      }
+    ],
+    "width": 390
+  },
+  {
+    "flow": "recipe-builder",
+    "height": 844,
+    "pageWidth": 390,
+    "panels": [
+      {
+        "clientWidth": 374,
+        "label": "recipe-builder-title",
+        "left": 7,
+        "overflow": [],
+        "right": 383,
+        "scrollWidth": 374,
+        "width": 376
+      }
+    ],
+    "width": 390
+  },
+  {
+    "flow": "meal-composition",
+    "height": 844,
+    "pageWidth": 390,
+    "panels": [
+      {
+        "clientWidth": 350,
+        "label": "Build Meal Plan",
+        "left": 19,
+        "overflow": [],
+        "right": 371,
+        "scrollWidth": 350,
+        "width": 352
+      }
+    ],
+    "width": 390
+  },
+  {
+    "flow": "workout-editor",
+    "height": 844,
+    "pageWidth": 390,
+    "panels": [
+      {
+        "clientWidth": 372,
+        "label": "program-content-modal-title",
+        "left": 8,
+        "overflow": [],
+        "right": 382,
+        "scrollWidth": 372,
+        "width": 374
+      }
+    ],
+    "width": 390
+  },
+  {
+    "flow": "workout-composition",
+    "height": 844,
+    "pageWidth": 390,
+    "panels": [
+      {
+        "clientWidth": 350,
+        "label": "Build Workout",
+        "left": 19,
+        "overflow": [],
+        "right": 371,
+        "scrollWidth": 350,
+        "width": 352
+      }
+    ],
+    "width": 390
+  },
+  {
+    "flow": "fitness-schedule",
+    "height": 844,
+    "pageWidth": 390,
+    "panels": [
+      {
+        "clientWidth": 350,
+        "label": "Schedule Workouts",
+        "left": 19,
+        "overflow": [],
+        "right": 371,
+        "scrollWidth": 350,
+        "width": 352
+      }
+    ],
+    "width": 390
+  },
+  {
+    "flow": "person-create",
+    "height": 844,
+    "pageWidth": 390,
+    "panels": [
+      {
+        "clientWidth": 372,
+        "label": "people-modal-title",
+        "left": 8,
+        "overflow": [],
+        "right": 382,
+        "scrollWidth": 372,
+        "width": 374
+      }
+    ],
+    "width": 390
+  },
+  {
+    "flow": "staff-invite",
+    "height": 844,
+    "pageWidth": 390,
+    "panels": [
+      {
+        "clientWidth": 372,
+        "label": "staff-invite-title",
+        "left": 8,
+        "overflow": [],
+        "right": 382,
+        "scrollWidth": 372,
+        "width": 374
+      }
+    ],
+    "width": 390
+  },
+  {
+    "flow": "member-meal",
+    "height": 844,
+    "pageWidth": 390,
+    "panels": [
+      {
+        "clientWidth": 350,
+        "label": "Assigned meal",
+        "left": 19,
+        "overflow": [],
+        "right": 371,
+        "scrollWidth": 350,
+        "width": 352
+      }
+    ],
+    "width": 390
+  },
+  {
+    "flow": "member-workout",
+    "height": 844,
+    "pageWidth": 390,
+    "panels": [
+      {
+        "clientWidth": 350,
+        "label": "Assigned workout",
+        "left": 19,
+        "overflow": [],
+        "right": 371,
+        "scrollWidth": 350,
+        "width": 352
+      }
+    ],
+    "width": 390
+  },
+  {
+    "flow": "assignment-controls",
+    "height": 844,
+    "pageWidth": 390,
+    "panels": [
+      {
+        "clientWidth": 389,
+        "label": "contact-title",
+        "left": 0,
+        "overflow": [],
+        "right": 390,
+        "scrollWidth": 389,
+        "width": 390
+      },
+      {
+        "clientWidth": 372,
+        "label": "wellness-title",
+        "left": 8,
+        "overflow": [],
+        "right": 382,
+        "scrollWidth": 372,
+        "width": 374
+      }
+    ],
+    "width": 390
+  },
+  {
+    "flow": "recipe-edit",
+    "height": 1024,
+    "pageWidth": 768,
+    "panels": [
+      {
+        "clientWidth": 734,
+        "label": "program-content-modal-title",
+        "left": 16,
+        "overflow": [],
+        "right": 752,
+        "scrollWidth": 734,
+        "width": 736
+      }
+    ],
+    "width": 768
+  },
+  {
+    "flow": "recipe-builder",
+    "height": 1024,
+    "pageWidth": 768,
+    "panels": [
+      {
+        "clientWidth": 738,
+        "label": "recipe-builder-title",
+        "left": 14,
+        "overflow": [],
+        "right": 754,
+        "scrollWidth": 738,
+        "width": 740
+      }
+    ],
+    "width": 768
+  },
+  {
+    "flow": "meal-composition",
+    "height": 1024,
+    "pageWidth": 768,
+    "panels": [
+      {
+        "clientWidth": 728,
+        "label": "Build Meal Plan",
+        "left": 19,
+        "overflow": [],
+        "right": 749,
+        "scrollWidth": 728,
+        "width": 730
+      }
+    ],
+    "width": 768
+  },
+  {
+    "flow": "workout-editor",
+    "height": 1024,
+    "pageWidth": 768,
+    "panels": [
+      {
+        "clientWidth": 734,
+        "label": "program-content-modal-title",
+        "left": 16,
+        "overflow": [],
+        "right": 752,
+        "scrollWidth": 734,
+        "width": 736
+      }
+    ],
+    "width": 768
+  },
+  {
+    "flow": "workout-composition",
+    "height": 1024,
+    "pageWidth": 768,
+    "panels": [
+      {
+        "clientWidth": 728,
+        "label": "Build Workout",
+        "left": 19,
+        "overflow": [],
+        "right": 749,
+        "scrollWidth": 728,
+        "width": 730
+      }
+    ],
+    "width": 768
+  },
+  {
+    "flow": "fitness-schedule",
+    "height": 1024,
+    "pageWidth": 768,
+    "panels": [
+      {
+        "clientWidth": 728,
+        "label": "Schedule Workouts",
+        "left": 19,
+        "overflow": [],
+        "right": 749,
+        "scrollWidth": 728,
+        "width": 730
+      }
+    ],
+    "width": 768
+  },
+  {
+    "flow": "person-create",
+    "height": 1024,
+    "pageWidth": 768,
+    "panels": [
+      {
+        "clientWidth": 734,
+        "label": "people-modal-title",
+        "left": 16,
+        "overflow": [],
+        "right": 752,
+        "scrollWidth": 734,
+        "width": 736
+      }
+    ],
+    "width": 768
+  },
+  {
+    "flow": "staff-invite",
+    "height": 1024,
+    "pageWidth": 768,
+    "panels": [
+      {
+        "clientWidth": 738,
+        "label": "staff-invite-title",
+        "left": 14,
+        "overflow": [],
+        "right": 754,
+        "scrollWidth": 738,
+        "width": 740
+      }
+    ],
+    "width": 768
+  },
+  {
+    "flow": "member-meal",
+    "height": 1024,
+    "pageWidth": 768,
+    "panels": [
+      {
+        "clientWidth": 718,
+        "label": "Assigned meal",
+        "left": 24,
+        "overflow": [],
+        "right": 744,
+        "scrollWidth": 718,
+        "width": 720
+      }
+    ],
+    "width": 768
+  },
+  {
+    "flow": "member-workout",
+    "height": 1024,
+    "pageWidth": 768,
+    "panels": [
+      {
+        "clientWidth": 718,
+        "label": "Assigned workout",
+        "left": 24,
+        "overflow": [],
+        "right": 744,
+        "scrollWidth": 718,
+        "width": 720
+      }
+    ],
+    "width": 768
+  },
+  {
+    "flow": "assignment-controls",
+    "height": 1024,
+    "pageWidth": 768,
+    "panels": [
+      {
+        "clientWidth": 721,
+        "label": "contact-title",
+        "left": 46.0859375,
+        "overflow": [],
+        "right": 768,
+        "scrollWidth": 721,
+        "width": 721.9140625
+      },
+      {
+        "clientWidth": 730,
+        "label": "wellness-title",
+        "left": 18,
+        "overflow": [],
+        "right": 750,
+        "scrollWidth": 730,
+        "width": 732
+      }
+    ],
+    "width": 768
+  },
+  {
+    "flow": "recipe-edit",
+    "height": 1000,
+    "pageWidth": 1440,
+    "panels": [
+      {
+        "clientWidth": 758,
+        "label": "program-content-modal-title",
+        "left": 340,
+        "overflow": [],
+        "right": 1100,
+        "scrollWidth": 758,
+        "width": 760
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "flow": "recipe-builder",
+    "height": 1000,
+    "pageWidth": 1440,
+    "panels": [
+      {
+        "clientWidth": 1078,
+        "label": "recipe-builder-title",
+        "left": 180,
+        "overflow": [],
+        "right": 1260,
+        "scrollWidth": 1078,
+        "width": 1080
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "flow": "meal-composition",
+    "height": 1000,
+    "pageWidth": 1440,
+    "panels": [
+      {
+        "clientWidth": 858,
+        "label": "Build Meal Plan",
+        "left": 290,
+        "overflow": [],
+        "right": 1150,
+        "scrollWidth": 858,
+        "width": 860
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "flow": "workout-editor",
+    "height": 1000,
+    "pageWidth": 1440,
+    "panels": [
+      {
+        "clientWidth": 758,
+        "label": "program-content-modal-title",
+        "left": 340,
+        "overflow": [],
+        "right": 1100,
+        "scrollWidth": 758,
+        "width": 760
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "flow": "workout-composition",
+    "height": 1000,
+    "pageWidth": 1440,
+    "panels": [
+      {
+        "clientWidth": 858,
+        "label": "Build Workout",
+        "left": 290,
+        "overflow": [],
+        "right": 1150,
+        "scrollWidth": 858,
+        "width": 860
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "flow": "fitness-schedule",
+    "height": 1000,
+    "pageWidth": 1440,
+    "panels": [
+      {
+        "clientWidth": 858,
+        "label": "Schedule Workouts",
+        "left": 290,
+        "overflow": [],
+        "right": 1150,
+        "scrollWidth": 858,
+        "width": 860
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "flow": "person-create",
+    "height": 1000,
+    "pageWidth": 1440,
+    "panels": [
+      {
+        "clientWidth": 898,
+        "label": "people-modal-title",
+        "left": 270,
+        "overflow": [],
+        "right": 1170,
+        "scrollWidth": 898,
+        "width": 900
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "flow": "staff-invite",
+    "height": 1000,
+    "pageWidth": 1440,
+    "panels": [
+      {
+        "clientWidth": 758,
+        "label": "staff-invite-title",
+        "left": 340,
+        "overflow": [],
+        "right": 1100,
+        "scrollWidth": 758,
+        "width": 760
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "flow": "member-meal",
+    "height": 1000,
+    "pageWidth": 1440,
+    "panels": [
+      {
+        "clientWidth": 718,
+        "label": "Assigned meal",
+        "left": 360,
+        "overflow": [],
+        "right": 1080,
+        "scrollWidth": 718,
+        "width": 720
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "flow": "member-workout",
+    "height": 1000,
+    "pageWidth": 1440,
+    "panels": [
+      {
+        "clientWidth": 718,
+        "label": "Assigned workout",
+        "left": 360,
+        "overflow": [],
+        "right": 1080,
+        "scrollWidth": 718,
+        "width": 720
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "flow": "assignment-controls",
+    "height": 1000,
+    "pageWidth": 1440,
+    "panels": [
+      {
+        "clientWidth": 759,
+        "label": "contact-title",
+        "left": 680,
+        "overflow": [],
+        "right": 1440,
+        "scrollWidth": 759,
+        "width": 760
+      },
+      {
+        "clientWidth": 998,
+        "label": "wellness-title",
+        "left": 220,
+        "overflow": [],
+        "right": 1220,
+        "scrollWidth": 998,
+        "width": 1000
+      }
+    ],
+    "width": 1440
+  }
+]
