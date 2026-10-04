@@ -14,6 +14,7 @@
   <link rel="apple-touch-icon" href="../assets/images/revitalized-icon-approved.png">
   <link rel="manifest" href="manifest.webmanifest?v=171">
   <link rel="stylesheet" href="member110.css?v=201">
+  <link rel="stylesheet" href="member-health-progress.css?v=1">
 </head>
 <body>
   <main class="rm112-page">
@@ -432,6 +433,12 @@
           </div>
         </div>
 
+        <div class="rm220-period-controls" aria-label="Health trend period">
+          <span>Measured history</span>
+          <div><button type="button" data-health-days="7" aria-pressed="true">7 days</button><button type="button" data-health-days="30" aria-pressed="false">30 days</button></div>
+          <button id="rm-health-refresh" type="button">Refresh overview</button>
+        </div>
+        <p id="rm-health-overview-status" class="rm220-status" role="status"></p>
         <div class="rm214-progress-layout">
           <section class="rm214-feature-chart">
             <div class="rm214-feature-chart-head">
@@ -471,6 +478,35 @@
           <span id="rm-progress-last-updated" class="rm112-chip">Progress Ready</span>
         </div>
         <div id="rm-progress-snapshot" class="rm185-progress-snapshot"></div>
+      </section>
+
+      <section id="rm-health-life" class="rm220-life-grid" aria-label="Your health and progress context">
+        <article class="rm112-card rm220-context-card">
+          <p class="rm112-kicker">YOUR DIRECTION</p><h2>Goals in focus</h2>
+          <div id="rm-health-goal-summary" class="rm220-list" aria-live="polite"></div>
+          <button type="button" data-member-jump="#rm-goals">View all goals</button>
+        </article>
+        <article class="rm112-card rm220-context-card">
+          <p class="rm112-kicker">YOUR RHYTHM</p><h2>Habits, day by day</h2>
+          <div id="rm-health-habit-summary" class="rm220-list" aria-live="polite"></div>
+          <button type="button" data-member-jump="#rm-habits">View all habits</button>
+        </article>
+        <article class="rm112-card rm220-context-card rm220-wide">
+          <div class="rm220-card-heading"><div><p class="rm112-kicker">NOURISHMENT</p><h2>Nutrition at a glance</h2></div>
+            <label class="rm220-date-label">Review day<input id="rm-health-nutrition-date" type="date"></label></div>
+          <div id="rm-health-nutrition-summary" aria-live="polite"></div>
+          <button id="rm-health-nutrition-link" type="button" data-member-screen="nutrition">Open Nutrition</button>
+        </article>
+        <article class="rm112-card rm220-context-card">
+          <p class="rm112-kicker">YOUR NEXT CONVERSATION</p><h2>Coaching context</h2>
+          <div id="rm-health-coaching-summary" class="rm220-list" aria-live="polite"></div>
+          <button type="button" data-member-screen="coaching">Open Coaching</button>
+        </article>
+        <article class="rm112-card rm220-context-card">
+          <p class="rm112-kicker">YOUR DATA, YOUR CHOICE</p><h2>Health sources</h2>
+          <div id="rm-health-source-summary" class="rm220-list" aria-live="polite"></div>
+          <button type="button" data-member-jump=".rm123-health-card">Health Connections &amp; Privacy</button>
+        </article>
       </section>
 
       <div class="rm112-grid rm114-coaching-grid">
@@ -1431,7 +1467,8 @@
   </main>
 
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
-  <script defer src="member110.js?v=208"></script>
+  <script defer src="member110.js?v=209"></script>
   <script defer src="member-nutrition.js?v=1"></script>
+  <script defer src="member-health-progress.js?v=1"></script>
 </body>
 </html>

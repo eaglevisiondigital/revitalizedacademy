@@ -22,7 +22,7 @@
 
   function formatDate(value, withTime = false) {
     if (!value) return "";
-    const date = new Date(value);
+    const date = new Date(/^\d{4}-\d{2}-\d{2}$/.test(String(value)) ? value+"T12:00:00" : value);
     if (Number.isNaN(date.getTime())) return "";
     return date.toLocaleString([], withTime
       ? { dateStyle: "medium", timeStyle: "short" }
@@ -31,8 +31,7 @@
 
   function showOnly(view) {
     if(view!=="rm-dashboard"){
-      window.RA_MEMBER_NUTRITION_ENABLED=false;
-      document.dispatchEvent(new CustomEvent("ra:member-access-reset"));
+      clearMemberPrivateState();
     }
     ["rm-auth","rm-dashboard","rm-denied"].forEach((id) => el(id).classList.add("hidden"));
     el(view).classList.remove("hidden");
@@ -583,6 +582,7 @@
   }
 
   async function loadFamilyConsentCenter(){
+    const loadSequence=dashboardLoadSequence;
     if(!familyHubEnabled){
       familyConsentRows=[];familySharingRows=[];renderFamilyConsentCenter();return;
     }
@@ -590,8 +590,8 @@
       client.rpc("get_my_family_consent_center"),
       client.rpc("get_my_family_sharing_grants")
     ]);
+    if(loadSequence!==dashboardLoadSequence)return;
     if(consentResult.error||sharingResult.error){
-      console.warn("Family privacy center unavailable:",consentResult.error?.message||sharingResult.error?.message);
       familyConsentRows=[];familySharingRows=[];renderFamilyConsentCenter();
       return;
     }
@@ -897,6 +897,8 @@
   }
 
   let currentMember = null;
+  let memberAuthUserId = null;
+  let currentHealthContext = null;
   let activeSessionPrep = null;
   let activeHealthProvider = null;
   let healthPermissionRows = [];
@@ -2029,6 +2031,7 @@
   }
 
   function renderHealthProgressOverview(){
+    if(window.RA_MEMBER_HEALTH_PROGRESS_ACTIVE)return;
     const metricTarget=el("rm-health-progress-metrics");
     const featureChart=el("rm-health-feature-chart");
     if(!metricTarget||!featureChart)return;
@@ -3335,6 +3338,7 @@
   }
 
   async function renderCheckinForm() {
+    const loadSequence=dashboardLoadSequence;
     const container = el("rm-checkin-fields");
     container.replaceChildren();
 
@@ -3353,8 +3357,9 @@
       .eq("period_start", period.start)
       .maybeSingle();
 
+    if(loadSequence!==dashboardLoadSequence)return;
     if(error){
-      console.warn("Optional weekly check-in state unavailable:",error.message);
+      // Optional weekly check-in state unavailable: show a nonfatal empty state.
       container.innerHTML='<div class="rm112-empty">Weekly check-in is temporarily unavailable. Your dashboard is still available.</div>';
       el("rm-checkin-submit").disabled=true;
       return;
@@ -5129,7 +5134,7 @@
       client.from("my_health_metric_permissions").select("*").order("provider_name").order("display_order"),
       client.from("my_health_data_snapshot").select("*").order("label"),
       client.rpc("get_my_health_metric_configuration")
-    ]);
+    ].map(request=>Promise.resolve(request).catch(()=>({data:null,error:{message:"Temporarily unavailable"}}))));
 
     const results=[
       ["my_household",householdResult],
@@ -5160,14 +5165,17 @@
       ["my_health_data_snapshot",healthSnapshotResult],
       ["get_my_health_metric_configuration",healthMetricConfigResult]
     ];
-    results.forEach(([name,result])=>{
-      if(result.error)console.warn("Deferred member module unavailable:",name,result.error.message);
-    });
+    // Deferred member module unavailable: retain section-local empty states,
+    // without putting private backend errors or identifiers in the console.
+    if(results.some(([,r])=>["401","PGRST301","PGRST303"].includes(String(r.error?.status||r.error?.code)))){
+      if(loadSequence===dashboardLoadSequence)showOnly("rm-denied");
+      return;
+    }
 
     if(loadSequence!==dashboardLoadSequence)return;
 
     renderHousehold(householdResult.error?[]:(householdResult.data||[]),context.householdType,context.hasFamilyHub);
-    void loadFamilyConsentCenter();
+    void loadFamilyConsentCenter().catch(()=>{});
     renderGoals(goalsResult.error?[]:(goalsResult.data||[]));
     renderHabits(habitsResult.error?[]:(habitsResult.data||[]));
     renderAssignments(assignmentsResult.error?[]:(assignmentsResult.data||[]));
@@ -5220,8 +5228,9 @@
         .select("*")
         .eq("template_id",checkinTemplate.id)
         .order("display_order");
+      if(loadSequence!==dashboardLoadSequence)return;
       if(fieldError){
-        console.warn("Optional weekly check-in fields unavailable:",fieldError.message);
+        // Optional weekly check-in fields unavailable: leave the form disabled.
       }else{
         checkinFields=fields||[];
       }
@@ -5230,13 +5239,58 @@
     await renderCheckinForm();
   }
 
-  async function loadDashboard() {
+  // Invalidate ownership before any asynchronous access check. Optional loaders
+  // use the same generation, so an old account cannot repopulate private DOM.
+  function clearMemberPrivateState(){
+    const sequence=++dashboardLoadSequence;
+    currentMember=null;currentHealthContext=null;
     window.RA_MEMBER_NUTRITION_ENABLED=false;
     document.dispatchEvent(new CustomEvent("ra:member-access-reset"));
+    homeHealthSnapshot=[];homeRecentProgress=[];homeHealthTrendSeries=new Map();
+    latestGoalRows=[];goalProgressById=new Map();metricCatalog=[];
+    memberHealthMetricConfig=[];memberHealthMetricConfigLoaded=false;
+    healthPermissionRows=[];activeHealthProvider=null;activeSessionPrep=null;
+    latestHouseholdRows=[];familyConsentRows=[];familySharingRows=[];familyHubEnabled=false;
+    checkinTemplate=null;checkinFields=[];
+    currentFamilyTarget=null;pendingProgressRequestId=null;pendingProgressPayloadKey=null;pendingProgressRecordedAt=null;
+    pendingGoalRequestId=null;pendingGoalPayloadKey=null;pendingHabitRequestId=null;pendingHabitPayloadKey=null;
+    latestCalendarRows=[];latestCompanionRequests=[];latestCompanionFeedback=[];
+    for(const id of [
+      "rm-member-name","rm-first-name","rm-program-name","rm-sidebar-program",
+      "rm-goals","rm-habits","rm-goal-history","rm-habit-history","rm-recent-progress","rm-progress-snapshot",
+      "rm-progress-achievements","rm-progress-trends","rm-progress-photos-list",
+      "rm-health-connections","rm-health-data-snapshot","rm-health-trends-grid",
+      "rm-health-permission-list","rm-health-permissions-copy","rm-checkin-fields",
+      "rm-health-progress-metrics","rm-health-feature-chart","rm-health-feature-value",
+      "rm-health-feature-meta","rm-health-feature-period","rm-home-health-metrics",
+      "rm-session-history","rm-session-prep-meta","rm-coach","rm-assignments",
+      "rm-coaching-momentum","rm-coaching-requests","rm-appointment",
+      "rm-household","rm-family-consent-list","rm-family-sharing-list",
+      "rm-family-summary","rm-family-calendar-list","rm-family-requests",
+      "rm-hub-coach","rm-hub-open-assignments","rm-hub-due-soon","rm-hub-overdue",
+      "rm-progress-last-updated","rm-goal-active-count","rm-habit-active-count",
+      "rm-progress-metric","rm-progress-unit","rm-progress-status","rm-checkin-state",
+      "rm-health-permissions-status","rm-goal-status","rm-habit-status",
+      "rm-today-habits","rm-today-focus","rm-home-health-status","rm-home-health-source"
+    ])el(id)?.replaceChildren();
+    el("rm-dashboard").classList.add("hidden");
+    document.querySelectorAll('#rm-dashboard input:not([type="button"]):not([type="submit"]), #rm-dashboard textarea').forEach(input=>{
+      if(input.type==="checkbox"||input.type==="radio")input.checked=false;
+      else input.value="";
+    });
+    document.querySelectorAll('#rm-dashboard [id$="-modal"]').forEach(modal=>{
+      modal.classList.add("hidden");modal.setAttribute("aria-hidden","true");
+    });
+    return sequence;
+  }
+
+  async function loadDashboard() {
+    const loadSequence=clearMemberPrivateState();
+    try {
     const {data:lifecycle,error:lifecycleError}=await client.rpc("member_paid_access_allowed");
+    if(loadSequence!==dashboardLoadSequence)return;
     if(lifecycleError)throw lifecycleError;
     if(lifecycle!==true){window.location.replace("/member/onboarding/");return;}
-    const loadSequence=++dashboardLoadSequence;
     homeVNextEnabled=false;
     memberHealthMetricConfig=[];
     memberHealthMetricConfigLoaded=false;
@@ -5271,6 +5325,7 @@
       client.from("my_member_entitlements").select("*").order("label")
     ]);
 
+    if(loadSequence!==dashboardLoadSequence)return;
     const requiredResults=[
       ["my_app_bootstrap_v2",bootstrapResult],
       ["my_member_dashboard",dashboardResult],
@@ -5387,36 +5442,41 @@
       notifications:notificationsResult.data||[]
     };
     window.RA_MEMBER_NUTRITION_ENABLED=Boolean(appAccessResult.data?.nutrition_enabled);
-    document.dispatchEvent(new CustomEvent("ra:member-dashboard-loaded",{detail:{nutritionEnabled:Boolean(appAccessResult.data?.nutrition_enabled)}}));
-    void loadJourneyEnhancement(loadSequence);
-    void loadHomeVNextEnhancements(loadSequence,attentionContext,weeklySummaryResult.data||null);
-    void loadProgressVNextEnhancements(loadSequence);
-    void loadCoachingVNextEnhancement(loadSequence);
-    void loadFamilyVNextEnhancement(loadSequence,hasFamilyHub);
-    void loadPrivacyCenterEnhancement(loadSequence);
-    void loadProgressPhotosVNext(loadSequence);
-    void loadCalendarVNext(loadSequence);
-    void loadHealthTrendsVNext(loadSequence,biometricsEnabled);
-    void loadNotificationRoutingVNext(loadSequence);
+    currentHealthContext={contactId:member.contact_id,userId:memberAuthUserId,biometricsEnabled,
+      nutritionEnabled:Boolean(appAccessResult.data?.nutrition_enabled)};
+    document.dispatchEvent(new CustomEvent("ra:member-dashboard-loaded",{detail:{
+      nutritionEnabled:Boolean(appAccessResult.data?.nutrition_enabled),healthContext:currentHealthContext
+    }}));
+    void loadJourneyEnhancement(loadSequence).catch(()=>{/* Optional transport failure; core remains usable. */});
+    void loadHomeVNextEnhancements(loadSequence,attentionContext,weeklySummaryResult.data||null).catch(()=>{/* Optional transport failure; core remains usable. */});
+    void loadProgressVNextEnhancements(loadSequence).catch(()=>{/* Optional transport failure; core remains usable. */});
+    void loadCoachingVNextEnhancement(loadSequence).catch(()=>{/* Optional transport failure; core remains usable. */});
+    void loadFamilyVNextEnhancement(loadSequence,hasFamilyHub).catch(()=>{/* Optional transport failure; core remains usable. */});
+    void loadPrivacyCenterEnhancement(loadSequence).catch(()=>{/* Optional transport failure; core remains usable. */});
+    void loadProgressPhotosVNext(loadSequence).catch(()=>{/* Optional transport failure; core remains usable. */});
+    void loadCalendarVNext(loadSequence).catch(()=>{/* Optional transport failure; core remains usable. */});
+    void loadHealthTrendsVNext(loadSequence,biometricsEnabled).catch(()=>{/* Optional transport failure; core remains usable. */});
+    void loadNotificationRoutingVNext(loadSequence).catch(()=>{/* Optional transport failure; core remains usable. */});
     void loadDeferredMemberModules(loadSequence,{
       askEnabled,
       hasFamilyHub,
       householdType:member.household_type
-    });
+    }).catch(()=>{/* Optional transport failures never deny the core dashboard. */});
+    }catch{
+      if(loadSequence===dashboardLoadSequence)showOnly("rm-denied");
+    }
   }
 
   async function resolveSession() {
-    const { data: { session } } = await client.auth.getSession();
-    if (!session) {
-      showOnly("rm-auth");
-      return;
-    }
-
-    try {
+    const sequence=dashboardLoadSequence;
+    try{
+      const {data:{session},error}=await client.auth.getSession();
+      if(sequence!==dashboardLoadSequence)return;
+      if(error||!session){showOnly("rm-auth");return;}
+      memberAuthUserId=session.user.id;
       await loadDashboard();
-    } catch (error) {
-      showOnly("rm-denied");
-      console.error(error);
+    }catch{
+      if(sequence===dashboardLoadSequence)showOnly("rm-denied");
     }
   }
 
@@ -5440,6 +5500,7 @@
   });
 
   async function signOut() {
+    clearMemberPrivateState();
     await client.auth.signOut();
     window.location.replace("/member/");
   }
@@ -5596,7 +5657,7 @@
       kicker:"HEALTH & PROGRESS",
       title:"Your Vitality & Momentum",
       context:"Progress",
-      selectors:["#rm-health-progress-overview",".rm185-progress-center","#rm-progress-achievements-card","#rm-progress-trends-card","#rm-progress-photos-card","#rm-progress-form-card","#rm-checkin-fields","#rm-goals","#rm-habits",".rm124-challenges-card",".rm123-health-card"]
+      selectors:["#rm-health-progress-overview",".rm185-progress-center","#rm-health-life","#rm-progress-achievements-card","#rm-progress-trends-card","#rm-progress-photos-card","#rm-progress-form-card","#rm-checkin-fields","#rm-goals","#rm-habits",".rm124-challenges-card",".rm123-health-card"]
     },
     nutrition:{
       kicker:"NUTRITION",
@@ -5836,7 +5897,7 @@
   el("rm-progress-photo-upload").addEventListener("submit",submitProgressPhotoSet);
   el("rm-progress-metric").addEventListener("change", updateProgressUnit);
 
-  window.setTimeout(()=>setMemberScreen("home",{scroll:false}),80);
+  setMemberScreen("home",{scroll:false});
 
   el("rm-progress-form").addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -6005,8 +6066,20 @@
     }
   });
 
-  client.auth.onAuthStateChange((_event, session) => {
-    if (!session) showOnly("rm-auth");
+  document.addEventListener("ra:member-health-ready",()=>{
+    if(currentMember&&currentHealthContext)document.dispatchEvent(new CustomEvent("ra:member-health-context",{detail:{healthContext:currentHealthContext}}));
+  });
+  document.addEventListener("ra:member-access-lost",()=>showOnly("rm-denied"));
+  client.auth.onAuthStateChange((event, session) => {
+    const nextUser=session?.user?.id||null;
+    const changed=memberAuthUserId!==null&&nextUser!==memberAuthUserId;
+    if(!nextUser)showOnly("rm-auth");
+    else if(changed||event==="TOKEN_REFRESHED"){
+      clearMemberPrivateState();
+      // Supabase auth callbacks must stay synchronous. Revalidate outside its lock.
+      setTimeout(()=>{if(memberAuthUserId===nextUser)void resolveSession();},0);
+    }
+    memberAuthUserId=nextUser;
   });
 
   resolveSession();
