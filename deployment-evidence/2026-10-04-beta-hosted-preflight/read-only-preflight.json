@@ -1,0 +1,501 @@
+{
+  "checkedAt": "2026-10-04T15:09:16.966Z",
+  "candidateSha": "3996379487554aecf571a5efa1f5457cccf9195e",
+  "ownerEligibility": [
+    {
+      "role": "owner",
+      "status": "active",
+      "onboarding_status": "complete",
+      "permission": "crm.manage",
+      "permitted": true
+    },
+    {
+      "role": "owner",
+      "status": "active",
+      "onboarding_status": "complete",
+      "permission": "health.private.view",
+      "permitted": true
+    },
+    {
+      "role": "owner",
+      "status": "active",
+      "onboarding_status": "complete",
+      "permission": "health.progress.manage",
+      "permitted": true
+    },
+    {
+      "role": "owner",
+      "status": "active",
+      "onboarding_status": "complete",
+      "permission": "learning.manage",
+      "permitted": true
+    },
+    {
+      "role": "owner",
+      "status": "active",
+      "onboarding_status": "complete",
+      "permission": "staff.manage",
+      "permitted": true
+    },
+    {
+      "role": "owner",
+      "status": "active",
+      "onboarding_status": "complete",
+      "permission": "staff.view",
+      "permitted": true
+    }
+  ],
+  "migrationPreconditions": {
+    "latest_version": "20261004055612",
+    "nutrition_logs": 0,
+    "client_meal_plans": 0,
+    "grocery_list_items": 0,
+    "workout_completions": 0,
+    "client_fitness_plans": 0,
+    "client_grocery_lists": 0,
+    "beta_migration_applied": false,
+    "client_meal_plan_items": 0,
+    "fitness_program_workouts": 0,
+    "meal_plan_template_items": 0,
+    "plan_override_role_grants": 2,
+    "client_workout_assignments": 0,
+    "workout_template_exercises": 0,
+    "client_exercise_restrictions": 0
+  },
+  "policies": [
+    {
+      "tablename": "client_exercise_restrictions",
+      "policyname": "exercise_restrictions_staff_insert",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "INSERT",
+      "qual": null,
+      "with_check": "(EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid))))"
+    },
+    {
+      "tablename": "client_exercise_restrictions",
+      "policyname": "exercise_restrictions_staff_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "(EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid))))",
+      "with_check": null
+    },
+    {
+      "tablename": "client_exercise_restrictions",
+      "policyname": "exercise_restrictions_staff_update",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "UPDATE",
+      "qual": "(EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid))))",
+      "with_check": "(EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid))))"
+    },
+    {
+      "tablename": "client_exercise_restrictions",
+      "policyname": "lifecycle_paid_access",
+      "permissive": "RESTRICTIVE",
+      "roles": "{authenticated}",
+      "cmd": "ALL",
+      "qual": "(( SELECT private.active_staff_session() AS active_staff_session) OR ( SELECT private.full_member_access() AS full_member_access))",
+      "with_check": "(( SELECT private.active_staff_session() AS active_staff_session) OR ( SELECT private.full_member_access() AS full_member_access))"
+    },
+    {
+      "tablename": "client_fitness_plans",
+      "policyname": "client_fitness_plans_access",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "((EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid)))) OR (contact_id IN ( SELECT ca.contact_id\n   FROM client_access ca\n  WHERE (ca.user_id = ( SELECT auth.uid() AS uid)))))",
+      "with_check": null
+    },
+    {
+      "tablename": "client_fitness_plans",
+      "policyname": "client_fitness_plans_staff_insert",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "INSERT",
+      "qual": null,
+      "with_check": "(EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid))))"
+    },
+    {
+      "tablename": "client_fitness_plans",
+      "policyname": "client_fitness_plans_staff_update",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "UPDATE",
+      "qual": "(EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid))))",
+      "with_check": "(EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid))))"
+    },
+    {
+      "tablename": "client_fitness_plans",
+      "policyname": "lifecycle_paid_access",
+      "permissive": "RESTRICTIVE",
+      "roles": "{authenticated}",
+      "cmd": "ALL",
+      "qual": "(( SELECT private.active_staff_session() AS active_staff_session) OR ( SELECT private.full_member_access() AS full_member_access))",
+      "with_check": "(( SELECT private.active_staff_session() AS active_staff_session) OR ( SELECT private.full_member_access() AS full_member_access))"
+    },
+    {
+      "tablename": "client_grocery_lists",
+      "policyname": "grocery_lists_access",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "((EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid)))) OR (contact_id IN ( SELECT ca.contact_id\n   FROM client_access ca\n  WHERE (ca.user_id = ( SELECT auth.uid() AS uid)))))",
+      "with_check": null
+    },
+    {
+      "tablename": "client_grocery_lists",
+      "policyname": "grocery_lists_staff_insert",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "INSERT",
+      "qual": null,
+      "with_check": "(EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid))))"
+    },
+    {
+      "tablename": "client_grocery_lists",
+      "policyname": "grocery_lists_update",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "UPDATE",
+      "qual": "((EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid)))) OR (contact_id IN ( SELECT ca.contact_id\n   FROM client_access ca\n  WHERE (ca.user_id = ( SELECT auth.uid() AS uid)))))",
+      "with_check": "((EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid)))) OR (contact_id IN ( SELECT ca.contact_id\n   FROM client_access ca\n  WHERE (ca.user_id = ( SELECT auth.uid() AS uid)))))"
+    },
+    {
+      "tablename": "client_grocery_lists",
+      "policyname": "lifecycle_paid_access",
+      "permissive": "RESTRICTIVE",
+      "roles": "{authenticated}",
+      "cmd": "ALL",
+      "qual": "(( SELECT private.active_staff_session() AS active_staff_session) OR ( SELECT private.full_member_access() AS full_member_access))",
+      "with_check": "(( SELECT private.active_staff_session() AS active_staff_session) OR ( SELECT private.full_member_access() AS full_member_access))"
+    },
+    {
+      "tablename": "client_meal_plan_items",
+      "policyname": "client_meal_plan_items_access",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "((EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid)))) OR (contact_id IN ( SELECT ca.contact_id\n   FROM client_access ca\n  WHERE (ca.user_id = ( SELECT auth.uid() AS uid)))))",
+      "with_check": null
+    },
+    {
+      "tablename": "client_meal_plan_items",
+      "policyname": "client_meal_plan_items_staff_insert",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "INSERT",
+      "qual": null,
+      "with_check": "(EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid))))"
+    },
+    {
+      "tablename": "client_meal_plan_items",
+      "policyname": "client_meal_plan_items_update",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "UPDATE",
+      "qual": "((EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid)))) OR (contact_id IN ( SELECT ca.contact_id\n   FROM client_access ca\n  WHERE (ca.user_id = ( SELECT auth.uid() AS uid)))))",
+      "with_check": "((EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid)))) OR (contact_id IN ( SELECT ca.contact_id\n   FROM client_access ca\n  WHERE (ca.user_id = ( SELECT auth.uid() AS uid)))))"
+    },
+    {
+      "tablename": "client_meal_plan_items",
+      "policyname": "lifecycle_paid_access",
+      "permissive": "RESTRICTIVE",
+      "roles": "{authenticated}",
+      "cmd": "ALL",
+      "qual": "(( SELECT private.active_staff_session() AS active_staff_session) OR ( SELECT private.full_member_access() AS full_member_access))",
+      "with_check": "(( SELECT private.active_staff_session() AS active_staff_session) OR ( SELECT private.full_member_access() AS full_member_access))"
+    },
+    {
+      "tablename": "client_meal_plans",
+      "policyname": "client_meal_plans_access",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "((EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid)))) OR (contact_id IN ( SELECT ca.contact_id\n   FROM client_access ca\n  WHERE (ca.user_id = ( SELECT auth.uid() AS uid)))))",
+      "with_check": null
+    },
+    {
+      "tablename": "client_meal_plans",
+      "policyname": "client_meal_plans_staff_insert",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "INSERT",
+      "qual": null,
+      "with_check": "(EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid))))"
+    },
+    {
+      "tablename": "client_meal_plans",
+      "policyname": "client_meal_plans_staff_update",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "UPDATE",
+      "qual": "(EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid))))",
+      "with_check": "(EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid))))"
+    },
+    {
+      "tablename": "client_meal_plans",
+      "policyname": "lifecycle_paid_access",
+      "permissive": "RESTRICTIVE",
+      "roles": "{authenticated}",
+      "cmd": "ALL",
+      "qual": "(( SELECT private.active_staff_session() AS active_staff_session) OR ( SELECT private.full_member_access() AS full_member_access))",
+      "with_check": "(( SELECT private.active_staff_session() AS active_staff_session) OR ( SELECT private.full_member_access() AS full_member_access))"
+    },
+    {
+      "tablename": "client_workout_assignments",
+      "policyname": "lifecycle_paid_access",
+      "permissive": "RESTRICTIVE",
+      "roles": "{authenticated}",
+      "cmd": "ALL",
+      "qual": "(( SELECT private.active_staff_session() AS active_staff_session) OR ( SELECT private.full_member_access() AS full_member_access))",
+      "with_check": "(( SELECT private.active_staff_session() AS active_staff_session) OR ( SELECT private.full_member_access() AS full_member_access))"
+    },
+    {
+      "tablename": "client_workout_assignments",
+      "policyname": "workout_assignments_access",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "((EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid)))) OR (contact_id IN ( SELECT ca.contact_id\n   FROM client_access ca\n  WHERE (ca.user_id = ( SELECT auth.uid() AS uid)))))",
+      "with_check": null
+    },
+    {
+      "tablename": "client_workout_assignments",
+      "policyname": "workout_assignments_staff_insert",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "INSERT",
+      "qual": null,
+      "with_check": "(EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid))))"
+    },
+    {
+      "tablename": "client_workout_assignments",
+      "policyname": "workout_assignments_update",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "UPDATE",
+      "qual": "((EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid)))) OR (contact_id IN ( SELECT ca.contact_id\n   FROM client_access ca\n  WHERE (ca.user_id = ( SELECT auth.uid() AS uid)))))",
+      "with_check": "((EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid)))) OR (contact_id IN ( SELECT ca.contact_id\n   FROM client_access ca\n  WHERE (ca.user_id = ( SELECT auth.uid() AS uid)))))"
+    },
+    {
+      "tablename": "fitness_program_workouts",
+      "policyname": "fitness_program_workouts_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "((EXISTS ( SELECT 1\n   FROM fitness_programs p\n  WHERE ((p.id = fitness_program_workouts.program_id) AND (p.status = 'published'::text)))) OR (EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid)))))",
+      "with_check": null
+    },
+    {
+      "tablename": "fitness_program_workouts",
+      "policyname": "fitness_program_workouts_staff_insert",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "INSERT",
+      "qual": null,
+      "with_check": "(EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid))))"
+    },
+    {
+      "tablename": "fitness_program_workouts",
+      "policyname": "fitness_program_workouts_staff_update",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "UPDATE",
+      "qual": "(EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid))))",
+      "with_check": "(EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid))))"
+    },
+    {
+      "tablename": "fitness_program_workouts",
+      "policyname": "lifecycle_paid_access",
+      "permissive": "RESTRICTIVE",
+      "roles": "{authenticated}",
+      "cmd": "ALL",
+      "qual": "(( SELECT private.active_staff_session() AS active_staff_session) OR ( SELECT private.full_member_access() AS full_member_access))",
+      "with_check": "(( SELECT private.active_staff_session() AS active_staff_session) OR ( SELECT private.full_member_access() AS full_member_access))"
+    },
+    {
+      "tablename": "grocery_list_items",
+      "policyname": "grocery_list_items_access",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "((EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid)))) OR (grocery_list_id IN ( SELECT gl.id\n   FROM (client_grocery_lists gl\n     JOIN client_access ca ON ((ca.contact_id = gl.contact_id)))\n  WHERE (ca.user_id = ( SELECT auth.uid() AS uid)))))",
+      "with_check": null
+    },
+    {
+      "tablename": "grocery_list_items",
+      "policyname": "grocery_list_items_staff_insert",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "INSERT",
+      "qual": null,
+      "with_check": "(EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid))))"
+    },
+    {
+      "tablename": "grocery_list_items",
+      "policyname": "grocery_list_items_update",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "UPDATE",
+      "qual": "((EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid)))) OR (grocery_list_id IN ( SELECT gl.id\n   FROM (client_grocery_lists gl\n     JOIN client_access ca ON ((ca.contact_id = gl.contact_id)))\n  WHERE (ca.user_id = ( SELECT auth.uid() AS uid)))))",
+      "with_check": "((EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid)))) OR (grocery_list_id IN ( SELECT gl.id\n   FROM (client_grocery_lists gl\n     JOIN client_access ca ON ((ca.contact_id = gl.contact_id)))\n  WHERE (ca.user_id = ( SELECT auth.uid() AS uid)))))"
+    },
+    {
+      "tablename": "grocery_list_items",
+      "policyname": "lifecycle_paid_access",
+      "permissive": "RESTRICTIVE",
+      "roles": "{authenticated}",
+      "cmd": "ALL",
+      "qual": "(( SELECT private.active_staff_session() AS active_staff_session) OR ( SELECT private.full_member_access() AS full_member_access))",
+      "with_check": "(( SELECT private.active_staff_session() AS active_staff_session) OR ( SELECT private.full_member_access() AS full_member_access))"
+    },
+    {
+      "tablename": "meal_plan_template_items",
+      "policyname": "lifecycle_paid_access",
+      "permissive": "RESTRICTIVE",
+      "roles": "{authenticated}",
+      "cmd": "ALL",
+      "qual": "(( SELECT private.active_staff_session() AS active_staff_session) OR ( SELECT private.full_member_access() AS full_member_access))",
+      "with_check": "(( SELECT private.active_staff_session() AS active_staff_session) OR ( SELECT private.full_member_access() AS full_member_access))"
+    },
+    {
+      "tablename": "meal_plan_template_items",
+      "policyname": "meal_plan_template_items_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "((EXISTS ( SELECT 1\n   FROM meal_plan_templates t\n  WHERE ((t.id = meal_plan_template_items.template_id) AND (t.status = 'published'::text)))) OR (EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid)))))",
+      "with_check": null
+    },
+    {
+      "tablename": "meal_plan_template_items",
+      "policyname": "meal_plan_template_items_staff_insert",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "INSERT",
+      "qual": null,
+      "with_check": "(EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid))))"
+    },
+    {
+      "tablename": "meal_plan_template_items",
+      "policyname": "meal_plan_template_items_staff_update",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "UPDATE",
+      "qual": "(EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid))))",
+      "with_check": "(EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid))))"
+    },
+    {
+      "tablename": "nutrition_logs",
+      "policyname": "lifecycle_paid_access",
+      "permissive": "RESTRICTIVE",
+      "roles": "{authenticated}",
+      "cmd": "ALL",
+      "qual": "(( SELECT private.active_staff_session() AS active_staff_session) OR ( SELECT private.full_member_access() AS full_member_access))",
+      "with_check": "(( SELECT private.active_staff_session() AS active_staff_session) OR ( SELECT private.full_member_access() AS full_member_access))"
+    },
+    {
+      "tablename": "nutrition_logs",
+      "policyname": "nutrition_logs_access",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "((EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid)))) OR (contact_id IN ( SELECT ca.contact_id\n   FROM client_access ca\n  WHERE (ca.user_id = ( SELECT auth.uid() AS uid)))))",
+      "with_check": null
+    },
+    {
+      "tablename": "nutrition_logs",
+      "policyname": "nutrition_logs_insert",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "INSERT",
+      "qual": null,
+      "with_check": "((EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid)))) OR (contact_id IN ( SELECT ca.contact_id\n   FROM client_access ca\n  WHERE (ca.user_id = ( SELECT auth.uid() AS uid)))))"
+    },
+    {
+      "tablename": "workout_completions",
+      "policyname": "lifecycle_paid_access",
+      "permissive": "RESTRICTIVE",
+      "roles": "{authenticated}",
+      "cmd": "ALL",
+      "qual": "(( SELECT private.active_staff_session() AS active_staff_session) OR ( SELECT private.full_member_access() AS full_member_access))",
+      "with_check": "(( SELECT private.active_staff_session() AS active_staff_session) OR ( SELECT private.full_member_access() AS full_member_access))"
+    },
+    {
+      "tablename": "workout_completions",
+      "policyname": "workout_completions_access",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "((EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid)))) OR (contact_id IN ( SELECT ca.contact_id\n   FROM client_access ca\n  WHERE (ca.user_id = ( SELECT auth.uid() AS uid)))))",
+      "with_check": null
+    },
+    {
+      "tablename": "workout_completions",
+      "policyname": "workout_completions_insert",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "INSERT",
+      "qual": null,
+      "with_check": "((EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid)))) OR (contact_id IN ( SELECT ca.contact_id\n   FROM client_access ca\n  WHERE (ca.user_id = ( SELECT auth.uid() AS uid)))))"
+    },
+    {
+      "tablename": "workout_template_exercises",
+      "policyname": "lifecycle_paid_access",
+      "permissive": "RESTRICTIVE",
+      "roles": "{authenticated}",
+      "cmd": "ALL",
+      "qual": "(( SELECT private.active_staff_session() AS active_staff_session) OR ( SELECT private.full_member_access() AS full_member_access))",
+      "with_check": "(( SELECT private.active_staff_session() AS active_staff_session) OR ( SELECT private.full_member_access() AS full_member_access))"
+    },
+    {
+      "tablename": "workout_template_exercises",
+      "policyname": "workout_template_exercises_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "((EXISTS ( SELECT 1\n   FROM workout_templates w\n  WHERE ((w.id = workout_template_exercises.workout_id) AND (w.status = 'published'::text)))) OR (EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid)))))",
+      "with_check": null
+    },
+    {
+      "tablename": "workout_template_exercises",
+      "policyname": "workout_template_exercises_staff_insert",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "INSERT",
+      "qual": null,
+      "with_check": "(EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid))))"
+    },
+    {
+      "tablename": "workout_template_exercises",
+      "policyname": "workout_template_exercises_staff_update",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "UPDATE",
+      "qual": "(EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid))))",
+      "with_check": "(EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid))))"
+    }
+  ],
+  "sites": [
+    {
+      "id": "071b252e-a922-4846-a784-8dca1edad377",
+      "name": "revitalizedacademy-staging",
+      "deploy": {
+        "id": "6ac1fec19f756106b6a84964",
+        "state": "ready"
+      }
+    },
+    {
+      "id": "ece0f6f3-6c3d-46e6-bb51-95ce1ccefb06",
+      "name": "revitalizedacademy",
+      "deploy": {
+        "id": "6ac036d3b48eac0008568e00",
+        "state": "ready"
+      }
+    }
+  ],
+  "mutations": [],
+  "normalOwnerLogin": "AWAITING_USER_SIGN_IN"
+}

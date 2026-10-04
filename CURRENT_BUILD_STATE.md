@@ -1,5 +1,9 @@
 # ReVitalized Academy — current build state
 
+## Hosted owner preflight — BETA NOT READY — 2026-10-04
+
+[Fresh owner/session diagnosis, migration preconditions, live hashes and acceptance limits](docs/BETA_HOSTED_PREFLIGHT_2026-10-04.md). The existing staging owner is already active, confirmed, fully onboarded and has all six required operator permissions. The available browser account had no staff record; normal logout and owner-email preparation completed, but owner sign-in awaits user password entry. No manual grant or activation is needed. No release or synthetic transaction was performed. Candidate3996379 is unchanged; migration20261004124537 remains unapplied; staging deploy6ac1fec19f756106b6a84964 and production6ac036d3b48eac0008568e00 remain unchanged.14live baseline assets match accepted source and20production fingerprints are unchanged. Existing local test results are retained, not rerun or misrepresented as hosted acceptance. The latest user authorizes the coordinated release only after legitimate owner access and all security/regression gates pass.
+
 ## Beta Readiness Core v1 — HELD / BETA NOT READY — 2026-10-04
 
 Local candidate extends accepted `1462b34b49716f19fb0db55d4bc11098edfe2b9d` on `codex/staging`. [Implementation, security, tests, operator paths and required acceptance](docs/BETA_READINESS_CORE_V1.md). Adds existing-library edit/composition workflows, scoped client meal/workout assignments and member detail, duplicate-safe staff invitation, repeated Add Person and staff/session privacy repairs. No parallel content model or new access grants.
