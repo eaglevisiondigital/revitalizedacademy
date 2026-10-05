@@ -1,5 +1,9 @@
 # Staging acceptance gate
 
+## Mandatory additional green-flag gate — 2026-10-05
+
+Free/pre-client Vitality Assessment **full answer save/resume** is required in addition to the ongoing client/staff/meal/workout gate. Use [the audited 22-case matrix and hosted procedure](VITALITY_RESUME_BETA_GATE.md). Prove same-contact secure cross-session recovery, all answer/pathway/current-section restoration, failure recovery, idempotent final submission, 100% completion and closed unfinished state with synthetic data. No email-only answer lookup or paid-member-only shortcut. Until implementation and hosted proof pass, report **VITALITY RESUME NOT READY** and overall **BETA NOT READY**, even if the original gate passes. The dated historical checklist below does not supersede this requirement.
+
 **Not yet executed against hosted staging.** Local automated verification is in [STAGING_TEST_RESULTS](engineering/STAGING_TEST_RESULTS.md). The original 166 active tests remain, with environment/artifact/provisioning cases added. This plan is not a production transaction authorization.
 
 ## Entry conditions

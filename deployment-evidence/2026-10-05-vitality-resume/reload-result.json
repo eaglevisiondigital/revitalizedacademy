@@ -1,0 +1,12 @@
+{
+  "audit": "exact-built mocked-network reload",
+  "leadPostsAcrossRestart": 2,
+  "sectionBeforeClose": 1,
+  "sectionAfterRestart": 0,
+  "answerRestored": false,
+  "partialAnswerRequest": false,
+  "progressMetadataObserved": true,
+  "serverResumeRequest": false,
+  "hostedWrites": 0,
+  "readiness": "VITALITY RESUME NOT READY"
+}

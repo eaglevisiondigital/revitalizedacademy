@@ -1,5 +1,10 @@
 # ReVitalized Academy decisions and unresolved questions
 
+## 2026-10-05 — Free Vitality save/resume required before beta green flag
+
+The user's additional requirement explicitly authorizes this capability as a new required beta gate, superseding historical package exclusions of assessment resume. Preserve immediate independent contact capture, approved adult/child questions, final coach summary and Journey behavior. Full server-backed typed answer persistence, secure free-user recovery, no duplicates and all 22 specified tests plus hosted proof are required. Progress percentage alone is insufficient. [Audited gaps and exact Chat identity/storage-policy handoff](docs/VITALITY_RESUME_BETA_GATE.md). The new public recovery identity choice is pending; existing staff/active-member Journey issuance does not establish a free-user health-draft contract. This does not interrupt the ongoing client/staff/meal/workout acceptance or authorize production changes.
+
+
 ## 2026-10-04 — Remaining beta acceptance decisions approved
 
 The latest explicit user attachment approves synthetic membership-only `nutrition_plans` (Meal Plans) and `fitness_plans` (Workout Plans) in existing Holistic Foundations with neutral supported NULL limit/none cadence. No tracking, blanket program grant or existing-member reconciliation. Fresh Client A/B/scoped staff aliases are `dave+rva-client-a@eaglevision.biz`, `dave+rva-client-b@eaglevision.biz`, `dave+rva-beta-staff@eaglevision.biz`. Exact staging recipient-allowlist additions are authorized, preserving originals; actual invitation/recovery delivery remains mandatory. Failed alias delivery requires three fresh inboxes, not token extraction. The allowlist is saved; identities/benefits and hosted acceptance await normal owner sign-in. Payment/agreement/claim gates and production protections remain. [Continuation evidence](docs/BETA_REMAINING_ACCEPTANCE_2026-10-04.md).

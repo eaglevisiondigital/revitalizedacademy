@@ -1,0 +1,29 @@
+{
+  "observedAt": "2026-10-05T10:34:41.478Z",
+  "results": [
+    {
+      "path": "/consult.html",
+      "status": 200,
+      "sha256": "ffe2792d13016e638a53b711a40b9556f7da763f7d30289f56d0f8d1a0a35976",
+      "matchesBuilt": false
+    },
+    {
+      "path": "/js/vitality55.js",
+      "status": 200,
+      "sha256": "ff4a920719bf29fd12593feb016c03399e9cceb92524d52dd1ba564d9cf4ce9d",
+      "matchesBuilt": true
+    },
+    {
+      "path": "/js/vitality-child.js",
+      "status": 200,
+      "sha256": "ef6c024bdb5abc96d2d7dd3affc5f2c4326ff8b366c85b0717f751619babaee2",
+      "matchesBuilt": true
+    },
+    {
+      "path": "/js/revitalized-data.js",
+      "status": 200,
+      "sha256": "7349a8cf2b308b35f33778d97d325b48ba8b7e27ca5c2d49e9a90e45bff7b4df",
+      "matchesBuilt": true
+    }
+  ]
+}

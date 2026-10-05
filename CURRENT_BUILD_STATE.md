@@ -1,5 +1,9 @@
 # ReVitalized Academy — current build state
 
+## Additional mandatory beta gate — free Vitality save/resume — 2026-10-05
+
+The user adds full free/pre-client assessment answer persistence and secure resume to the final green flag, without replacing pending client/staff/meal/workout acceptance. [Audit, 22-case matrix and decision handoff](docs/VITALITY_RESUME_BETA_GATE.md). Current frontend loses unfinished answers on close/reload; Supabase mirrors progress metadata, not Vitality answers. Existing Journey links restart `/consult.html`. Exact-built synthetic reload reproduction confirms lost answer/section and no answer-save or resume request. Secure free-user recovery identity and draft storage/privacy policy require primary Chat resolution; no schema/access model was invented. No application/backend/hosted change. **VITALITY RESUME NOT READY. BETA NOT READY.**
+
 ## Beta invitation delivery verified by Resend — 2026-10-05
 
 Connected Resend now reports **delivered** for both exact approved Client A and synthetic staff invitations. Neither address has a suppression entry. This confirms receiving-server delivery; user receipt/inbox placement and normal activation are still unverified. [Provider receipt](deployment-evidence/2026-10-05-beta-delivery/resend-receipt.json) and [updated acceptance report](docs/BETA_STAFF_INVITATION_ACCEPTANCE_2026-10-04.md). User action requested in the mailbox receiving the eaglevision.biz aliases; no email body/token retrieval or bypass. No resend, hosted-data change, source change or deployment occurred. Client B and the later lifecycle/assignment/isolation gates remain pending. **BETA NOT READY.** Earlier delivery-unknown/provider-disconnected statements below are historical.

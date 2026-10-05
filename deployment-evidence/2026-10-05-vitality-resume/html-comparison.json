@@ -1,0 +1,7 @@
+{
+  "formsAndControlsMatch": true,
+  "assessmentTextMatches": true,
+  "scriptSourcesMatch": true,
+  "htmlRawHashMatch": false,
+  "htmlDifference": "Netlify clean-link rewrites and Forms attribute processing observed"
+}
