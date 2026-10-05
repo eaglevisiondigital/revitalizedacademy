@@ -1,0 +1,12 @@
+{
+  "projectRef": "bvooallokgfktssadsrv",
+  "method": "Deployed staging RPC; two temporary synthetic identities and drafts in a rolled-back subtransaction; no email sent and no persistent fixture records",
+  "checksPassed": 18,
+  "crossPersonReadWriteBothDirections": "denied",
+  "randomModifiedEmailOnly": "denied",
+  "consumedMailReplacedSessionExpiredMailAndSession": "denied",
+  "anonymousAuthenticatedDirectRpcAndTable": "denied",
+  "fixtureRecordsRemaining": 0,
+  "actualAssessmentUnchanged": true,
+  "normalEmailedRecoveryAcceptance": "pending; this proof does not replace the required normal emailed lifecycle"
+}

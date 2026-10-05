@@ -1,0 +1,32 @@
+{
+  "draftId": "efaf06be-b305-4278-92db-be6a97fdb1b9",
+  "status": "draft",
+  "section": 0,
+  "percent": 0,
+  "revision": 0,
+  "emailVerified": false,
+  "hasSessionDigest": false,
+  "hasPendingMailDigest": true,
+  "matchingContacts": 1,
+  "matchingWorkflows": 1,
+  "completionEvents": 0,
+  "rollbackFixtureContacts": 0,
+  "hostedDatabaseBoundaryChecksPassed": 18,
+  "actualExternalEmailReceiptAndOpen": "pending user normal flow",
+  "consoleWarnings": 0,
+  "consoleErrors": 0,
+  "responsiveAttempts": {
+    "requested": [[1440,1000],[768,1024],[390,844]],
+    "observedOriginalTab": [1920,936],
+    "observedFreshTab": [1512,805],
+    "result": "not accepted: requested viewport did not apply",
+    "temporaryOverrideReset": true
+  },
+  "applicationSourceChanged": false,
+  "migrationReplayed": false,
+  "edgeRedeployed": false,
+  "frontendRedeployed": false,
+  "newFeaturePackageStarted": false,
+  "vitalityStatus": "VITALITY RESUME NOT READY",
+  "overallBetaStatus": "BETA NOT READY"
+}

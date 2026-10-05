@@ -2,7 +2,7 @@
 
 Updated 2026-10-05. Authority: latest approved verified-email implementation request. It supersedes the earlier unresolved identity/storage handoff. This gate is additional to client/staff/meal/workout acceptance.
 
-**VITALITY RESUME NOT READY. BETA NOT READY.** Implementation and local security/functionality checks are complete; hosted email lifecycle acceptance is pending. Deployment receipts under `deployment-evidence/2026-10-05-vitality-resume/` distinguish applied, deployed, tested and unverified states.
+**VITALITY RESUME NOT READY. BETA NOT READY.** Implementation and local security/functionality checks are complete; hosted email lifecycle acceptance is pending. The dedicated alias is now explicitly approved, added to staging recipient controls, and used for one captured lead/contact/draft/workflow. Resend reports delivered, but actual receipt/open is unverified. Eighteen hosted RPC boundary checks pass using fully rolled-back synthetic fixtures. See [current hosted checkpoint](VITALITY_HOSTED_ACCEPTANCE_2026-10-05.md). Deployment receipts under `deployment-evidence/2026-10-05-vitality-resume/` and hosted receipts under `deployment-evidence/2026-10-05-vitality-hosted/` distinguish applied, deployed, tested and unverified states.
 
 ## Implemented contract
 
@@ -21,7 +21,7 @@ Updated 2026-10-05. Authority: latest approved verified-email implementation req
 - One reviewed migration applied once: **20261005110245_vitality_assessment_secure_resume**. Local filename reconciled to actual hosted ledger version. Historical migrations were not replayed.
 - New Edge `vitality-resume` **version 1**, ACTIVE. `verify_jwt=false` because free participants use the handler's assessment-scoped opaque credentials, not member JWTs. Public callers cannot execute the private storage RPC directly.
 - Frontend release: consult integration, `js/vitality-resume.js?v=1`, `js/vitality55.js?v=resume-1`, `css/vitality55.css?v=86`, bridge `js/revitalized-data.js?v=20261005`; child asset unchanged. Source SHA **e51b04545c5eba5f33d7b3a3aafca3b2cca854a8**, deploy **6ac38599ba35bc77a266d41c**. Six live assets exactly match the build; production deployment and nine public fingerprints unchanged.
-- No production, existing roles, permissions, flags, payments, SMS/Twilio, SMTP or existing Edge functions changed. Recipient allowlist has not changed for this assessment task. No hosted assessment/contact/answer record has been created by these checks.
+- No production, existing roles, permissions, flags, payments, SMS/Twilio, SMTP or existing Edge functions changed. The subsequent explicitly approved hosted continuation added only the dedicated assessment alias to staging recipients and created one synthetic contact/draft/workflow through the normal UI. No health answers or completed assessment have been submitted. The earlier zero-record security smoke remains historical release evidence.
 
 ## Validation
 
@@ -40,8 +40,8 @@ Local results below are isolated runtime/native tests, not claims of completed h
 
 | # | Case | Current evidence | Hosted status |
 |---|---|---|---|
-| 1 | Start assessment | Runtime start/email gate and native stable draft | Pending approved inbox |
-| 2 | Immediate contact save | Existing independent lead/failure test + new start contract | Pending |
+| 1 | Start assessment | Runtime start/email gate and native stable draft | Hosted one draft; verification email provider-delivered; actual receipt/open pending |
+| 2 | Immediate contact save | Existing independent lead/failure test + new start contract | One actual Netlify lead plus one hosted contact/workflow captured |
 | 3 | Answer autosave | Debounce, server acknowledgment, outstanding-save serialization pass | Pending |
 | 4 | Radio restoration | New document/server fixture restores checked selection | Pending |
 | 5 | Checkbox/multi-select | Checked states preserved; array controls supported | Pending |
@@ -54,9 +54,9 @@ Local results below are isolated runtime/native tests, not claims of completed h
 | 12 | Progress percent | Saved percent restored; completion 100% | Pending |
 | 13 | Same-browser reopen | New document/session loads server snapshot | Pending emailed lifecycle |
 | 14 | Cross-device recovery | New mail exchange restores same native draft, rotates session | Pending actual email link |
-| 15 | Duplicate contacts/drafts | Exact normalized email, wildcard-safe lookup, advisory lock and unique draft/workflow pass | Pending |
-| 16 | Wrong-person denial | A token with B draft ID cannot read or write; direct browser role bypass denied | Random-token hosted smoke passes; two-person hosted pending |
-| 17 | Expired/stale/replaced | Expired mail/session and replaced session denied; completed locked | Pending hosted lifecycle |
+| 15 | Duplicate contacts/drafts | Exact normalized email, wildcard-safe lookup, advisory lock and unique draft/workflow pass | Initial exact counts are one each; resume/completion duplicate checks pending |
+| 16 | Wrong-person denial | A token with B draft ID cannot read or write; direct browser role bypass denied | Hosted deployed RPC passes both directions read/write and anon/authenticated bypass; two synthetic fixtures fully rolled back |
+| 17 | Expired/stale/replaced | Expired mail/session and replaced session denied; completed locked | Hosted deployed RPC expiry/consumed/replaced denial passes in rolled-back fixtures; actual emailed recovery/completed lifecycle pending |
 | 18 | Save failure/retry | Current input retained, error truthful, retry persists | Local browser failure/retry/reload passes at all three sizes |
 | 19 | Final after resume | Normal form navigation yields full coach summary and completed state | Actual Netlify record pending |
 | 20 | No duplicate final | One dispatch permit; repeated final/completion event idempotent | Pending |
@@ -65,8 +65,8 @@ Local results below are isolated runtime/native tests, not claims of completed h
 
 ## Important limits and next actions
 
-1. Await explicit approval for proposed separate alias `dave+rva-assessment@eaglevision.biz`, or another controlled address. Add only the approved exact address to staging recipient safety controls. Existing Client A/B/staff aliases remain reserved. Do not infer approval from a generic “resume.”
-2. Run actual synthetic START → answer multiple sections → Saved → request Continue Later → leave/close → open delivered email → restore answers/section → complete. Inspect the exact Netlify final record, stable contact/draft/workflow and one Journey completion. Repeat email recovery and wrong-person/stale denial. No raw tokens in evidence/logs.
+1. Alias `dave+rva-assessment@eaglevision.biz` is explicitly approved and added to the staging allowlist. Preserve the five original recipients and do not repurpose existing Client A/B/staff aliases.
+2. Resume from the already-started synthetic draft after the user opens its actual delivered email through the normal flow. Continue → answer multiple sections → Saved → Continue Later → leave/close → open delivered email → restore answers/section → complete. Inspect the exact Netlify final record, stable contact/draft/workflow and one Journey completion. Repeat actual email recovery/stale-session denial. No raw tokens in evidence/logs; no duplicate start or unnecessary resend.
 3. Check all required responsive states and normal console after real hosted email restoration. Local fixture checks do not replace hosted proof.
 4. The Netlify write and PostgreSQL transaction are not atomically coupled. Ambiguous transport sets `delivery_uncertain`; interrupted dispatch may remain `submitting`. Answers and final payload remain private and locked. Reconcile the correlation ID against actual Netlify capture before manually completing/retrying through a separately reviewed operator procedure. No automatic resend and no claim of external exactly-once delivery.
 5. Existing workflow uniqueness permits one non-abandoned assessment per contact, including completed assessments. Preserve it; repeated start after completion returns neutral and does not invent a new assessment lifecycle. Future intentional reassessments require a separate approved model.
