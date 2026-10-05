@@ -1,10 +1,10 @@
 # ReVitalized Academy — current build state
 
-## Beta member benefit and session repair candidate — 2026-10-05
+## Beta member benefit and session repair deployed; hosted acceptance pending — 2026-10-05
 
 The two Client A blockers have narrow, tested repair candidates. `membership_entitlements.provisioning_source` distinguishes existing/template-managed rows from deliberately authorized `membership_override` rows; reconciliation continues to remove unbacked template benefits and all benefits for inactive memberships, while active/pending membership overrides retain their intentional status. The member shell now consumes Supabase `INITIAL_SESSION`, handles refresh events outside the auth callback lock, retries one early-empty restore, deduplicates same-session loads, and clears private state on logout, invalid sessions and account transitions. Member JS is cache version 211.
 
-Local verification passes: frontend **482 passed / 0 failed / 27 established skips**, PostgreSQL 17 **240/240**, JavaScript syntax **78/78**, exact-built session runtime **6/6**, staging build **314 files**. No staging migration, Client A entitlement repair or frontend deploy has yet been applied at this source-candidate checkpoint. [Implementation and release gate](docs/BETA_MEMBER_ACCESS_REPAIR_2026-10-05.md). **BETA NOT READY** pending coordinated staging application and hosted Client A acceptance.
+Local verification passes: frontend **482 passed / 0 failed / 27 established skips**, PostgreSQL 17 **240/240**, JavaScript syntax **78/78**, exact-built session runtime **6/6**, staging build **314 files**. Migration ledger **20261005221655** was applied once to staging. A guarded repair changed exactly Client A's two previously approved rows to active membership overrides; both survive a fresh reconciliation and authenticated `my_app_access` returns Nutrition/Fitness true with entitlement count 2. Source **abf2af690bc85387df4b4932b628bcf858a21875** is live as staging deploy **6ac42226bb66bc2171b9946e**. Live member JS v211, CSS v202 and runtime config match the exact build. Production remains deploy **6ac3eee5383ccf92be4d7a58** and three public fingerprints are unchanged. [Implementation and release gate](docs/BETA_MEMBER_ACCESS_REPAIR_2026-10-05.md). **BETA NOT READY** pending normal hosted Client A Nutrition, Workouts, refresh, two-tab, logout and re-login acceptance.
 
 ## Client A member dashboard acceptance exposed two blockers — 2026-10-05
 

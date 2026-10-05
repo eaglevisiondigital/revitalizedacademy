@@ -2,7 +2,7 @@
 
 Date: 2026-10-05  
 Environment: dedicated staging only  
-Status: local candidate verified; hosted release and acceptance pending
+Status: deployed to staging; hosted Client A acceptance pending
 
 ## Scope
 
@@ -49,4 +49,8 @@ No second session store or auth system was added.
 
 ## Release and hosted gate
 
-Apply the one reviewed migration to staging once, update only Client A's two previously approved rows, run Supabase security/performance advisors, publish the exact staging build, and verify exact live assets. Then use the normal Client A login to test Nutrition, Workouts, refresh, two tabs, logout/private clearing and re-login. Any remaining failure keeps `BETA NOT READY`.
+Applied the reviewed migration once as staging ledger `20261005221655`. A guarded update changed exactly Client A's two approved inactive rows to active `membership_override` rows. Re-running reconciliation left their status and timestamps intact. An authenticated Client A view of `my_app_access` returns `nutrition_enabled=true`, `fitness_enabled=true` and entitlement count 2. Supabase advisors reported the established project-wide findings; no new finding identifies this column/function change or permission broadening.
+
+Source `abf2af690bc85387df4b4932b628bcf858a21875` was published only to staging as Netlify deploy `6ac42226bb66bc2171b9946e`. Live member JS v211, CSS v202 and runtime config match the exact build hashes. Production stayed on `6ac3eee5383ccf92be4d7a58`, and its member HTML, member JS and runtime config fingerprints were identical before and after staging publication.
+
+Remaining gate: use the normal Client A login to test Nutrition, Workouts, refresh, two tabs, logout/private clearing and re-login. Any remaining failure keeps `BETA NOT READY`.

@@ -1,0 +1,46 @@
+{
+  "observedAtUtc": "2026-10-05T22:18:20.698Z",
+  "environment": "staging",
+  "sourceSha": "abf2af690bc85387df4b4932b628bcf858a21875",
+  "migrationLedger": "20261005221655",
+  "netlifySiteId": "071b252e-a922-4846-a784-8dca1edad377",
+  "deployId": "6ac42226bb66bc2171b9946e",
+  "liveUrl": "https://revitalizedacademy-staging.netlify.app/member/",
+  "assets": {
+    "memberJsVersion": 211,
+    "memberJsSha256": "a99acea1a435ce1149c5579dd7cdfadf11db93dd1d7172b58e419715bb4f3a9d",
+    "memberCssVersion": 202,
+    "memberCssSha256": "64f72c3bf40f7a3ea4023623bf342cbc37343acf29902a3a427c92456999da09",
+    "runtimeConfigSha256": "b87e0084cb8409221384331c629744ce4fe855dd013be4280d0e94f060d23257"
+  },
+  "clientA": {
+    "membershipId": "16f27a3f-11b9-4aac-9f07-6e158f498768",
+    "nutritionEntitlementId": "2ee99e6b-cfda-464e-82cf-06a7a5186cae",
+    "fitnessEntitlementId": "95641782-3466-4304-a1a6-777282c86154",
+    "changedRowCount": 2,
+    "postReconciliationStatuses": {
+      "nutrition_plans": "active",
+      "fitness_plans": "active"
+    },
+    "provisioningSource": "membership_override",
+    "myAppAccess": {
+      "nutritionEnabled": true,
+      "fitnessEnabled": true,
+      "entitlementCount": 2
+    }
+  },
+  "verification": {
+    "frontend": { "passed": 482, "failed": 0, "skipped": 27 },
+    "backend": { "passed": 240, "failed": 0 },
+    "javascriptSyntax": { "passedFiles": 78 },
+    "exactBuiltMemberSession": { "passed": 6, "failed": 0 },
+    "buildFiles": 314
+  },
+  "production": {
+    "siteId": "ece0f6f3-6c3d-46e6-bb51-95ce1ccefb06",
+    "deployId": "6ac3eee5383ccf92be4d7a58",
+    "unchanged": true
+  },
+  "hostedClientAcceptance": "pending",
+  "betaStatus": "NOT READY"
+}
