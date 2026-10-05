@@ -1,5 +1,11 @@
 # ReVitalized Academy architecture
 
+## Membership entitlement origin and member session restore — 2026-10-05
+
+`membership_entitlements` remains the single entitlement model. A constrained `provisioning_source` identifies rows reconciled from `program_entitlement_templates` versus explicitly authorized membership-level overrides. Program-template changes retain their existing reconciliation behavior; overrides are scoped to one membership and are never copied to another membership. Inactive memberships still deactivate every entitlement.
+
+The member app continues to use the one Supabase Auth client with persistent sessions. Startup accepts the SDK's `INITIAL_SESSION` event as authoritative, retries one early empty storage read, and resolves auth events asynchronously outside the SDK callback. Dashboard loads are keyed to user and access token. Refresh, invalid session, logout and account transition invalidate prior request generations and private DOM. [Repair contract](docs/BETA_MEMBER_ACCESS_REPAIR_2026-10-05.md).
+
 ## Final Vitality entry/completion presentation — 2026-10-05
 
 Dedicated staging release adds a two-path Start/Resume chooser and shared completed-stage presenter to the existing static assessment. Recovery still uses the single original verified-email endpoint; drafts, typed snapshots, sessionStorage credential, final dispatch and Journey models are unchanged. No migration or Edge release. VITALITY RESUME READY per Primary Chat's accepted capture decision and focused/staging UI verification; BETA NOT READY remains independent. [Release evidence](docs/VITALITY_ENTRY_CLEANUP_2026-10-05.md).

@@ -1,5 +1,11 @@
 # ReVitalized Academy — current build state
 
+## Beta member benefit and session repair candidate — 2026-10-05
+
+The two Client A blockers have narrow, tested repair candidates. `membership_entitlements.provisioning_source` distinguishes existing/template-managed rows from deliberately authorized `membership_override` rows; reconciliation continues to remove unbacked template benefits and all benefits for inactive memberships, while active/pending membership overrides retain their intentional status. The member shell now consumes Supabase `INITIAL_SESSION`, handles refresh events outside the auth callback lock, retries one early-empty restore, deduplicates same-session loads, and clears private state on logout, invalid sessions and account transitions. Member JS is cache version 211.
+
+Local verification passes: frontend **482 passed / 0 failed / 27 established skips**, PostgreSQL 17 **240/240**, JavaScript syntax **78/78**, exact-built session runtime **6/6**, staging build **314 files**. No staging migration, Client A entitlement repair or frontend deploy has yet been applied at this source-candidate checkpoint. [Implementation and release gate](docs/BETA_MEMBER_ACCESS_REPAIR_2026-10-05.md). **BETA NOT READY** pending coordinated staging application and hosted Client A acceptance.
+
 ## Client A member dashboard acceptance exposed two blockers — 2026-10-05
 
 Fresh normal Client A sign-in to the staging member dashboard succeeded. Home identified **Disposable Beta Client A**, active **Holistic Foundations**, 50% journey progress and current Vitality Assessment step. Health & Progress opened and rendered all ten configured standard metrics with neutral **Awaiting data / Building baseline** states, no fabricated Health Score, and no Family/household permission warning.

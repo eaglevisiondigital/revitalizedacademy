@@ -40,7 +40,7 @@ function fixture(options = {}) {
 }
 test('Nutrition module is allowlisted, cache-versioned and uses the shared client', () => {
   assert(JSON.parse(fs.readFileSync(path.join(root, 'config/public-files.json'))).includes('member/member-nutrition.js'));
-  assert.match(html, /member-nutrition\.js\?v=1/); assert.match(html, /member110\.js\?v=210/); assert.match(html, /member110\.css\?v=202/);
+  assert.match(html, /member-nutrition\.js\?v=1/); assert.match(html, /member110\.js\?v=211/); assert.match(html, /member110\.css\?v=202/);
   assert.match(source, /window\.RA_MEMBER_CLIENT/); assert.doesNotMatch(source, /createClient/);
   const controller = fs.readFileSync(path.join(root, 'member/member110.js'), 'utf8');
   assert.match(controller, /dispatchEvent\(new CustomEvent\("ra:member-dashboard-loaded",\{detail:\{\s*nutritionEnabled:Boolean\(appAccessResult.data\?\.nutrition_enabled\)/);

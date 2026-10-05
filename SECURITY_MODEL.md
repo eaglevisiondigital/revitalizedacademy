@@ -1,5 +1,11 @@
 # ReVitalized Academy security model
 
+## Membership override and session isolation repair — 2026-10-05
+
+Membership-level benefits require an explicit privileged `membership_override` origin; existing rows default to template-managed behavior. Reconciliation never derives or spreads an override, and all benefits still deactivate when a membership leaves active/pending lifecycle states. Existing RLS remains authoritative. Native tests deny member insert/reactivation/reclassification and prove no cross-membership inheritance.
+
+Member session recovery adds no credential store and exposes no token. The existing Supabase client remains configured for persistent storage and auto refresh. Auth callbacks schedule data work outside the callback lock; logout, invalid session and identity changes synchronously clear private DOM and cancel stale asynchronous ownership. Exact-runtime tests cover delayed restoration, two tabs, logout propagation, invalid sessions and cross-account response isolation. [Repair evidence](docs/BETA_MEMBER_ACCESS_REPAIR_2026-10-05.md).
+
 ## Vitality UI cleanup security continuity — 2026-10-05
 
 The dedicated staging entry/completion frontend release preserves all original draft/token/origin/expiry/access/locking boundaries. Email-only recovery remains neutral and cannot restore answers directly or expose identifiers; new duplicate-click suppression sends at most one in-flight request. No schema, policy, permission, token storage or Edge change. Hosted completed record hashes/timestamps/counts and accepted synthetic Netlify Spam capture are unchanged; no hosted form/email was submitted during this package. Completed UI was validated in an isolated exact-built fixture rather than reopening the hosted record. [Release evidence](docs/VITALITY_ENTRY_CLEANUP_2026-10-05.md).

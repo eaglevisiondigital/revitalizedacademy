@@ -898,6 +898,9 @@
 
   let currentMember = null;
   let memberAuthUserId = null;
+  let memberSessionRestoreTimer = null;
+  let memberSessionLoadKey = null;
+  let memberSessionLoadPromise = null;
   let currentHealthContext = null;
   let activeSessionPrep = null;
   let activeHealthProvider = null;
@@ -5474,16 +5477,48 @@
     }
   }
 
-  async function resolveSession() {
+  function memberSessionKey(session){
+    return session?.user?.id+":"+(session?.access_token||"current");
+  }
+
+  async function resolveSession(restoredSession=null,{force=false}={}) {
     const sequence=dashboardLoadSequence;
     try{
-      const {data:{session},error}=await client.auth.getSession();
-      if(sequence!==dashboardLoadSequence)return;
-      if(error||!session){showOnly("rm-auth");return;}
-      memberAuthUserId=session.user.id;
-      await loadDashboard();
+      let session=restoredSession,error=null;
+      if(!session){
+        const result=await client.auth.getSession();
+        session=result.data?.session||null;error=result.error||null;
+      }
+      if(sequence!==dashboardLoadSequence)return false;
+      if(error||!session?.user){
+        memberAuthUserId=null;memberSessionLoadKey=null;memberSessionLoadPromise=null;
+        showOnly("rm-auth");
+        if(error)showStatus(el("rm-login-status"),"Your session could not be restored. Please sign in again.","error");
+        return false;
+      }
+
+      const nextUser=session.user.id;
+      if(memberAuthUserId&&memberAuthUserId!==nextUser)clearMemberPrivateState();
+      memberAuthUserId=nextUser;
+      const key=memberSessionKey(session);
+      if(!force&&memberSessionLoadKey===key&&currentMember)return true;
+      if(memberSessionLoadKey===key&&memberSessionLoadPromise){
+        await memberSessionLoadPromise;
+        return memberAuthUserId===nextUser&&Boolean(currentMember);
+      }
+
+      memberSessionLoadKey=key;
+      memberSessionLoadPromise=loadDashboard();
+      await memberSessionLoadPromise;
+      if(memberSessionLoadKey===key)memberSessionLoadPromise=null;
+      return memberAuthUserId===nextUser&&Boolean(currentMember);
     }catch{
-      if(sequence===dashboardLoadSequence)showOnly("rm-denied");
+      if(sequence===dashboardLoadSequence){
+        memberAuthUserId=null;memberSessionLoadKey=null;memberSessionLoadPromise=null;
+        showOnly("rm-auth");
+        showStatus(el("rm-login-status"),"Your session could not be restored. Please sign in again.","error");
+      }
+      return false;
     }
   }
 
@@ -5492,7 +5527,7 @@
     const status = el("rm-login-status");
     showStatus(status, "Signing in...");
 
-    const { error } = await client.auth.signInWithPassword({
+    const { data, error } = await client.auth.signInWithPassword({
       email: el("rm-email").value.trim(),
       password: el("rm-password").value
     });
@@ -5503,10 +5538,11 @@
     }
 
     showStatus(status, "Signed in.", "success");
-    await resolveSession();
+    await resolveSession(data?.session||null);
   });
 
   async function signOut() {
+    memberAuthUserId=null;memberSessionLoadKey=null;memberSessionLoadPromise=null;
     clearMemberPrivateState();
     await client.auth.signOut();
     window.location.replace("/member/");
@@ -6078,16 +6114,27 @@
   });
   document.addEventListener("ra:member-access-lost",()=>showOnly("rm-denied"));
   client.auth.onAuthStateChange((event, session) => {
-    const nextUser=session?.user?.id||null;
-    const changed=memberAuthUserId!==null&&nextUser!==memberAuthUserId;
-    if(!nextUser)showOnly("rm-auth");
-    else if(changed||event==="TOKEN_REFRESHED"){
-      clearMemberPrivateState();
-      // Supabase auth callbacks must stay synchronous. Revalidate outside its lock.
-      setTimeout(()=>{if(memberAuthUserId===nextUser)void resolveSession();},0);
+    if(event==="SIGNED_OUT"){
+      memberAuthUserId=null;memberSessionLoadKey=null;memberSessionLoadPromise=null;
+      if(memberSessionRestoreTimer!==null){window.clearTimeout(memberSessionRestoreTimer);memberSessionRestoreTimer=null;}
+      showOnly("rm-auth");
+      return;
     }
-    memberAuthUserId=nextUser;
+    if(!["INITIAL_SESSION","SIGNED_IN","TOKEN_REFRESHED"].includes(event)||!session?.user)return;
+    if(memberSessionRestoreTimer!==null){window.clearTimeout(memberSessionRestoreTimer);memberSessionRestoreTimer=null;}
+    if(event==="TOKEN_REFRESHED")clearMemberPrivateState();
+    // Supabase auth callbacks must stay synchronous. Revalidate outside its lock.
+    window.setTimeout(()=>void resolveSession(session,{force:event==="TOKEN_REFRESHED"}),0);
   });
 
-  resolveSession();
+  (async function initMemberSession(){
+    const restored=await resolveSession();
+    if(restored||memberAuthUserId)return;
+    // INITIAL_SESSION can arrive just after page initialization. Retry once so a
+    // valid persisted session never remains stranded on the sign-in screen.
+    memberSessionRestoreTimer=window.setTimeout(async()=>{
+      memberSessionRestoreTimer=null;
+      if(!memberAuthUserId)await resolveSession();
+    },350);
+  })();
 })();
