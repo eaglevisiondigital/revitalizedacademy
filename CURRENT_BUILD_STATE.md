@@ -1,5 +1,9 @@
 # ReVitalized Academy — current build state
 
+## Beta invitation delivery verified by Resend — 2026-10-05
+
+Connected Resend now reports **delivered** for both exact approved Client A and synthetic staff invitations. Neither address has a suppression entry. This confirms receiving-server delivery; user receipt/inbox placement and normal activation are still unverified. [Provider receipt](deployment-evidence/2026-10-05-beta-delivery/resend-receipt.json) and [updated acceptance report](docs/BETA_STAFF_INVITATION_ACCEPTANCE_2026-10-04.md). User action requested in the mailbox receiving the eaglevision.biz aliases; no email body/token retrieval or bypass. No resend, hosted-data change, source change or deployment occurred. Client B and the later lifecycle/assignment/isolation gates remain pending. **BETA NOT READY.** Earlier delivery-unknown/provider-disconnected statements below are historical.
+
 ## Final beta continuation — scoped staff invitation sent — 2026-10-04
 
 [Latest acceptance record](docs/BETA_STAFF_INVITATION_ACCEPTANCE_2026-10-04.md). The approved synthetic staff invitation was sent through the normal owner UI after the user supplied the required phone. Exact alias `dave+rva-beta-staff@eaglevision.biz`; Coach / Assigned People Only; NDA pending, zero assigned clients, zero individual permission overrides. Current private-health/progress/plan-override/staff-management/export checks and unassigned contact access all return false. Actual mail receipt, activation and post-activation scope remain unverified. Client A remains onboarding/unclaimed: Resend accepted its exact invitation, but Primary Chat found no message in connected Gmail. Downstream delivery/bounce/suppression is unverified; Resend integration suggested but not yet connected. No token bypass or rejected-mailbox workaround.

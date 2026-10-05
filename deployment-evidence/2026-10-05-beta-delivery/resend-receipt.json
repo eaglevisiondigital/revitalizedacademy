@@ -1,0 +1,30 @@
+{
+  "observedAt": "2026-10-05T10:13:05Z",
+  "source": "Connected Resend list-emails and get-suppression tools",
+  "clientA": {
+    "recipient": "dave+rva-client-a@eaglevision.biz",
+    "subject": "Your ReVitalized Academy agreement is ready",
+    "providerId": "01a10926-148e-714f-b496-d132c7a17761",
+    "sentAt": "2026-10-04T23:00:53.177Z",
+    "providerStatus": "delivered",
+    "suppressionLookup": "404 Suppression not found",
+    "inboxPlacement": "unverified",
+    "userReceipt": "unverified",
+    "activation": "unverified"
+  },
+  "staff": {
+    "recipient": "dave+rva-beta-staff@eaglevision.biz",
+    "subject": "You've been invited",
+    "providerId": "01a10976-5fde-70ce-95d6-01acb1c0f41e",
+    "sentAt": "2026-10-05T00:28:35.321Z",
+    "providerStatus": "delivered",
+    "suppressionLookup": "404 Suppression not found",
+    "inboxPlacement": "unverified",
+    "userReceipt": "unverified",
+    "activation": "unverified"
+  },
+  "emailBodiesOrTokensRetrieved": false,
+  "messagesSentOrResent": false,
+  "hostedChanges": false,
+  "productionChanges": false
+}

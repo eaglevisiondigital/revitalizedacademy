@@ -1,6 +1,14 @@
 # Final hosted beta continuation — staff invitation sent
 
-**BETA NOT READY.** The approved synthetic Coach invitation was sent through the intended staging UI. External delivery and account activation remain unverified. This record supersedes the unsent-staff status in [the Client A report](BETA_CLIENT_A_ACCEPTANCE_2026-10-04.md); prior accepted tests remain valid.
+## Delivery update — 2026-10-05
+
+The newly connected Resend integration reports **delivered** for both Client A message `01a10926-148e-714f-b496-d132c7a17761` and staff message `01a10976-5fde-70ce-95d6-01acb1c0f41e`, to their exact approved aliases. Both exact-address suppression lookups returned `404 Suppression not found`. This supersedes the earlier unavailable-provider-evidence statements below: receiving-server delivery is now verified; inbox/spam placement, user receipt and activation are still unverified. No bounce/rejection status was reported for these messages. [Sanitized provider receipt](../deployment-evidence/2026-10-05-beta-delivery/resend-receipt.json).
+
+The user was asked to check the mailbox receiving `dave@eaglevision.biz` and open Client A's delivered link normally. No private mailbox was accessed, email body/token retrieved, resend performed or hosted record changed. Client B remains uncreated pending Client A's normal activation path. No suite rerun or new deployment was needed. The prior final production fingerprint receipt is retained; this read-only provider check introduced no new release/configuration change. Remaining hosted gates below are unchanged. **BETA NOT READY.**
+
+## Historical snapshot — 2026-10-04
+
+**BETA NOT READY.** At this snapshot, the approved synthetic Coach invitation had been sent through the intended staging UI, but external delivery and activation were unverified. The October 5 update above supersedes its delivery limitation. This record superseded the unsent-staff status in [the Client A report](BETA_CLIENT_A_ACCEPTANCE_2026-10-04.md); prior accepted tests remain valid.
 
 ## Release and safety
 
