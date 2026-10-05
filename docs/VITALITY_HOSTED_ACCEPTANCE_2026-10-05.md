@@ -8,7 +8,7 @@ This is an incomplete hosted acceptance receipt, not a readiness declaration. La
 - Staging Netlify: site `071b252e-a922-4846-a784-8dca1edad377`, deploy `6ac38599ba35bc77a266d41c`.
 - Staging Supabase: `bvooallokgfktssadsrv`.
 - Migration `20261005110245_vitality_assessment_secure_resume` was already applied; no replay.
-- Edge `vitality-resume` v1 remains unchanged; no redeployment.
+- Initial Edge `vitality-resume` release was v1. Current read-only metadata reports v3; its bundle SHA-256 `62730d1ed9ae75f251ef1e38a61f199d4e191dc7b1189d732f766fd9cdd75ae3` matches the original v1 receipt. No Edge code redeployment occurred in this investigation.
 - No production mutation. Current read-only release comparison is in `deployment-evidence/2026-10-05-vitality-hosted/release-receipt.json`.
 
 ## Exact approved recipient change
@@ -36,7 +36,34 @@ Normal hosted Save & Continue used Synthetic / Vitality Alias, `rva-assessment@e
 
 Provider “delivered” was not counted as receipt; the user's independent inbox confirmation establishes actual arrival. The user opened Continue normally. The resulting hosted page has no URL fragment, displays the Introduction at 0% with Saved state, and has zero console warnings/errors. Database state confirms the same draft is verified with an opaque session digest and no pending mail digest; exact contact/draft/workflow counts remain one. No provider email body or raw resume token was retrieved. No answer was entered and no final submission occurred. The earlier plus-address synthetic draft remains untouched as historical evidence and is excluded from continuation.
 
-## Actual hosted start and mail
+## Unavailable-link investigation
+
+The user's unavailable-link screenshot is a real hosted failure of that page opening; it is not dismissed or converted into a completed lifecycle pass. It is reconciled with the separate successful first opening rather than overwriting either observation. Investigation uses only the same synthetic draft and narrowly bounded function logs, without retrieving any email body, raw mail/session token, request body, IP address or browser storage credential.
+
+| Evidence | Finding |
+|---|---|
+| Function POST at 2026-10-05 12:27:59 UTC | HTTP 200; database verification timestamp is 12:27:59.548111 UTC |
+| Function POST at 2026-10-05 12:32:34 UTC | HTTP 401; second tab shows the exact reported unavailable-link error and Contact step |
+| Same draft | `1d66c0f6-c6ad-4cd6-ab8f-5fc778e87ce2`, status draft, revision 0; original contact/workflow/journey IDs retained |
+| Mail lifecycle | Recovery digest and expiry are NULL after successful one-time exchange |
+| Session lifecycle | Session digest present, verified, expires 2026-11-04 12:27:59.548111 UTC |
+| Original browser tab | Normal reload finishes with Contact Saved / Introduction / 0% / Saved; no answer entry, recovery or final submission |
+| Logs retained | Only function path, HTTP method/status, response timestamp and version; window 12:27:45–12:35:00 UTC |
+| Current Edge metadata | ACTIVE v3; bundle hash identical to the original v1 release receipt |
+
+**Diagnosis:** the original email credential was successfully consumed before the later rejection. Reopening that single-use credential is the evidence-backed explanation for the second-tab error. Expiration or replacement does not explain the original first-open result; forwarding did not prevent that successful exchange. The existing session remains functional, demonstrated by a fresh server-backed reload rather than stale visible DOM. Minimal logs do not record the POST action/body, so they do not independently prove the identity or bytes of the rejected credential; we deliberately did not retrieve it to compare. No implementation repair is needed for the demonstrated consumed-link sequence. The generic rejection message remains unchanged and does not disclose credential state to an unauthenticated caller.
+
+**Changed and tested:** only maintained tests and documentation. The browser fixture now enforces one-time mail redemption. Added browser/runtime replay coverage, native database replay/state-preservation coverage and Edge generic-denial/no-resend coverage. All focused suites pass: runtime **21/21**, native PostgreSQL **17.11, 20/20**, Edge **18/18**, total **59/59**. Native tests use a newly created loopback-only cluster and disposable database, then remove both; no hosted migrations or test records. Earlier broad release totals remain historical and were not rerun or incremented without evidence.
+
+**Security and preservation:** no new contact, draft, workflow, email or hosted health data; no token exposure; no credential reset/bypass; no role, permission, flag, schema, SMTP, payment or production mutation. No Netlify or Edge redeployment. The existing opaque session and single-use mail rule are preserved.
+
+**Exact next user action:** return to the already-open Chrome assessment tab showing **✓ Contact Saved**, **Introduction**, **0%** and **Saved**, with **Who is this assessment for?** visible, and reply that this screen is visible. Do not click the email Continue button again, submit the Contact step again or request another link yet. Keep this tab open. If it is no longer available, report that before any separately authorized recovery; no duplicate identity is needed.
+
+**Unresolved / next acceptance:** actual answer saving and restoration, fresh recovery email/open, stale-session denial, completion/final correlation and responsive lifecycle coverage remain pending. No readiness green flag follows from this investigation.
+
+**Primary Chat handoff:** Hosted link error investigated against the existing real-alias draft. First exchange succeeded at 12:27:59 UTC and consumed the mail credential; a later POST returned 401 at 12:32:34. Original session reload restores Introduction/Saved. Evidence supports consumed-link replay; raw rejected credential deliberately not retrieved. Added three maintained regression cases, 59 focused checks passing. No application repair, resend, new identity, hosted write, migration or deployment; production untouched. Continue from the existing verified browser tab, then complete the still-pending hosted lifecycle gates. VITALITY RESUME NOT READY / BETA NOT READY.
+
+## Historical plus-address start and mail
 
 Normal staging `/consult.html` Save & Continue used Synthetic / Vitality Acceptance, the dedicated alias and synthetic phone `0000000000`. No real health data or existing client identity was used.
 
@@ -79,7 +106,7 @@ Earlier exact-built responsive checks remain passing release evidence, but do no
 
 ## Remaining required acceptance
 
-Actual inbox receipt and verification → synthetic radio/checkbox/select/textarea/range/conditional/symptom controls → Saving/Saved acknowledgment and server revision → Continue Later → fully leave → actual emailed resumption and server-backed restoration → further answers and fresh recovery → stale-session denial → normal full completion → reconcile exact Netlify `assessment_resume_id` with the draft → one Journey completion → completed lock → all required hosted responsive states and clean console.
+Initial real-alias receipt, first verification and original-session reload are confirmed. After the user identifies the preserved verified tab, remaining acceptance is synthetic radio/checkbox/select/textarea/range/conditional/symptom controls → Saving/Saved acknowledgment and server revision → Continue Later → fully leave → fresh actual emailed resumption and server-backed restoration → further answers and fresh recovery → stale-session denial → normal full completion → reconcile exact Netlify `assessment_resume_id` with the draft → one Journey completion → completed lock → all required hosted responsive states and clean console. The current investigation sends no recovery email.
 
 Do not resend automatically or manually force completion. If final transport is ambiguous, preserve `submitting` / `delivery_uncertain` and inspect the correlation against captured Netlify data before any separately reviewed procedure.
 

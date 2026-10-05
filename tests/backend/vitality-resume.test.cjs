@@ -13,6 +13,17 @@ beforeEach(async()=>{await q('begin');await q("insert into public.journey_defini
 afterEach(()=>q('rollback'));
 test('start captures one contact, one unfinished draft and a workflow; email-only request exposes no answers',async()=>{const h=hash();const data=await cmd('start',null,h,identity('a@example.invalid'));assert.deepEqual(Object.keys(data),['recipient']);assert.equal(await val('select count(*) from private.vitality_assessment_drafts'),1);assert.equal(await val("select count(*) from public.contacts where email='a@example.invalid'"),1);});
 test('request throttles repeat mail and leaves active credential intact',async()=>{const a=await start();assert.deepEqual(await cmd('recover',null,hash(),{email:'a@example.invalid'}),{});assert.equal((await cmd('read',a.session)).draft_id,a.draft.draft_id);});
+test('replaying consumed email credential cannot replace the valid session or mutate existing draft/workflow',async()=>{
+ const a=await start();await cmd('save',a.session,null,{revision:0,snapshot});
+ const before=(await q('select id,contact_id,workflow_id,status,revision,snapshot,session_hash,session_expires_at,verified_at,recovery_hash,recovery_expires_at from private.vitality_assessment_drafts')).rows;
+ assert.equal(before[0].recovery_hash,null);assert.equal(before[0].recovery_expires_at,null);
+ await rejected('select public.vitality_resume_command($1,$2,$3)',['redeem',a.mail,hash()],/Resume unavailable/);
+ assert.deepEqual((await q('select id,contact_id,workflow_id,status,revision,snapshot,session_hash,session_expires_at,verified_at,recovery_hash,recovery_expires_at from private.vitality_assessment_drafts')).rows,before);
+ const restored=await cmd('read',a.session);assert.equal(restored.draft_id,a.draft.draft_id);assert.deepEqual(restored.snapshot,snapshot);
+ assert.equal(await val('select count(*) from private.vitality_assessment_drafts'),1);
+ assert.equal(await val("select count(*) from public.contacts where email='a@example.invalid'"),1);
+ assert.equal(await val('select count(*) from public.workflow_records'),1);
+});
 test('normalization reuses contact and unfinished draft without email wildcard matching',async()=>{const a=await start('a_b@example.invalid');await q('delete from private.vitality_resume_rate_limits');await cmd('start',null,hash(),identity(' A_B@example.invalid '));assert.equal(await val('select count(*) from private.vitality_assessment_drafts'),1);await start('axb@example.invalid');assert.equal(await val('select count(*) from private.vitality_assessment_drafts'),2);assert(a.draft.draft_id);});
 test('save persists typed values, current section and percentage',async()=>{const a=await start();const r=await cmd('save',a.session,null,{revision:0,snapshot});assert.deepEqual(r.snapshot,snapshot);assert.equal(r.revision,1);assert.equal(await val('select completion_percent from public.workflow_records where id=(select workflow_id from private.vitality_assessment_drafts where id=$1)',[a.draft.draft_id]),13);});
 test('cross-device mail redemption returns same draft and replaces old session',async()=>{const a=await start();await cmd('save',a.session,null,{revision:0,snapshot});await q('delete from private.vitality_resume_rate_limits');const mail=hash(),session=hash();await cmd('recover',null,mail,{email:'a@example.invalid'});const r=await cmd('redeem',mail,session);assert.equal(r.draft_id,a.draft.draft_id);assert.deepEqual(r.snapshot,snapshot);await rejected('select public.vitality_resume_command($1,$2)', ['read',a.session],/Resume unavailable/);});

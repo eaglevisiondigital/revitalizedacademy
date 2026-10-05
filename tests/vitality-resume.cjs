@@ -1,6 +1,6 @@
 const {test}=require('node:test');const assert=require('node:assert/strict');const fs=require('node:fs');const path=require('node:path');const {JSDOM}=require('jsdom');
 const root=path.resolve(__dirname,'..'),sleep=ms=>new Promise(r=>setTimeout(r,ms));
-function server(){return {snapshot:{version:1,fields:{},section:0,section_label:'Introduction',percent:0,pathway:'Adult'},revision:0,status:'draft',requests:[],fail:false,delay:0,finals:0};}
+function server(){return {snapshot:{version:1,fields:{},section:0,section_label:'Introduction',percent:0,pathway:'Adult'},revision:0,status:'draft',requests:[],fail:false,delay:0,finals:0,mailConsumed:false};}
 async function page(s,mode='mail'){
  const d=new JSDOM(fs.readFileSync(path.join(root,'consult.html'),'utf8'),{url:'https://assessment.invalid/consult.html',runScripts:'outside-only'}),w=d.window,doc=w.document;
  w.scrollTo=()=>{};w.HTMLElement.prototype.scrollIntoView=()=>{};w.CSS={escape:v=>String(v).replace(/[^a-zA-Z0-9_-]/g,c=>'\\'+c)};
@@ -12,7 +12,10 @@ async function page(s,mode='mail'){
   const body=JSON.parse(opt.body);s.requests.push(body);if(s.delay)await sleep(s.delay);
   let data={status:s.status,draft_id:'synthetic-draft',identity,snapshot:structuredClone(s.snapshot),revision:s.revision};
   if(body.action==='start'||body.action==='recover')data={ok:true,message:'If an unfinished assessment is available, we’ll email a secure link.'};
-  if(body.action==='redeem')data.token='b'.repeat(64);
+  if(body.action==='redeem'){
+   if(s.mailConsumed)return {ok:false,status:401,json:async()=>({error:'This link is unavailable. Request another email link.'})};
+   s.mailConsumed=true;data.token='b'.repeat(64);
+  }
   if(body.action==='save'){
    if(s.fail)return {ok:false,json:async()=>({error:'We couldn’t save your latest changes. Please try again.'})};
    if(body.revision!==s.revision)return {ok:false,json:async()=>({error:'Revision conflict'})};
@@ -29,6 +32,24 @@ async function page(s,mode='mail'){
 }
 test('first contact capture remains independent and health entry waits for verified email',async()=>{const s=server(),p=await page(s,'none');const lead=p.doc.querySelector('[data-vitality-lead-form]');for(const[k,v]of Object.entries({first_name:'Synthetic',last_name:'Lead',email:'test@example.invalid',phone:'0000000000'}))lead.elements[k].value=v;lead.dispatchEvent(new p.w.Event('submit',{bubbles:true,cancelable:true}));await sleep(5);assert.deepEqual(s.requests.map(r=>r.action),['lead','start']);assert.equal(p.doc.querySelector('[data-assessment-step]').hidden,true);assert.match(p.doc.querySelector('[data-resume-notice]').textContent,/verify your email/);p.close();});
 test('no raw answers are written to browser storage',async()=>{const p=await page(server());p.set('additional_context','Synthetic private context');await p.flush();assert.equal(p.w.localStorage.length,0);assert.equal(p.w.sessionStorage.length,1);assert.equal(p.w.sessionStorage.getItem('rva_vitality_session_v1'),'b'.repeat(64));p.close();});
+test('a second email-link open fails closed without replacing the draft or invalidating its original session',async()=>{
+ const s=server(),first=await page(s);first.set('additional_context','Synthetic saved answer');await first.flush();
+ const before={snapshot:structuredClone(s.snapshot),revision:s.revision,status:s.status};
+ const second=await page(s);
+ assert.equal(second.w.RVA_RESUME.canEdit(),false);
+ assert.equal(second.doc.querySelector('[data-assessment-step]').hidden,true);
+ assert.match(second.doc.querySelector('[data-resume-status]').textContent,/This link is unavailable/);
+ assert.equal(second.w.sessionStorage.length,0);
+ assert.deepEqual({snapshot:s.snapshot,revision:s.revision,status:s.status},before);
+ assert.equal(s.requests.filter(r=>['lead','start','recover','finalize'].includes(r.action)).length,0);
+ assert.equal(first.w.RVA_RESUME.canEdit(),true);
+ second.close();first.close();
+ const restored=await page(s,'session');
+ assert.equal(restored.w.RVA_RESUME.canEdit(),true);
+ assert.equal(restored.form.elements.additional_context.value,'Synthetic saved answer');
+ assert.equal(restored.doc.querySelector('[data-resume-status]').textContent,'Saved');
+ assert.deepEqual(s.requests.map(r=>r.action),['redeem','save','redeem','read']);restored.close();
+});
 test('debounce coalesces repeated text input and only acknowledges a server save',async()=>{const s=server(),p=await page(s);p.set('additional_context','S');p.set('additional_context','Synthetic');assert.match(p.doc.querySelector('[data-resume-status]').textContent,/Saving/);assert.equal(s.requests.filter(r=>r.action==='save').length,0);await sleep(750);assert.equal(s.requests.filter(r=>r.action==='save').length,1);assert.equal(p.doc.querySelector('[data-resume-status]').textContent,'Saved');p.close();});
 for(const [label,name,value,choice]of [['radio','assessment_for',true,'Myself'],['checkbox','primary_goals',true,'Energy'],['text','additional_context','Synthetic text'],['range-zero','overall_quality_of_life','0']])test(label+' restores after a new document using server state',async()=>{const s=server(),a=await page(s);const control=a.set(name,value,choice);const expected=control.type==='checkbox'||control.type==='radio'?control.checked:control.value;await a.flush();a.close();const b=await page(s,'session');const c=choice?Array.from(b.form.querySelectorAll(`[name="${name}"]`)).find(c=>c.value===choice):b.form.elements[name];assert.equal(['checkbox','radio'].includes(c.type)?c.checked:c.value,expected);b.close();});
 test('numeric zero remains numeric and blank numeric remains blank',async()=>{const s=server(),p=await page(s);p.set('assessment_for',true,'My child');p.set('assessed_age','0');await p.flush();assert.equal(s.snapshot.fields.assessed_age[0].value,0);p.set('assessed_age','');await p.flush();assert.equal(s.snapshot.fields.assessed_age[0].value,'');p.close();});

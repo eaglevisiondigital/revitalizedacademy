@@ -1,0 +1,43 @@
+{
+  "observedAt": "2026-10-05T12:39:56Z",
+  "stagingProject": "bvooallokgfktssadsrv",
+  "contactId": "667aec53-0fe2-453b-b47a-8b3012777411",
+  "draftId": "1d66c0f6-c6ad-4cd6-ab8f-5fc778e87ce2",
+  "workflowId": "7d17430a-1e9e-4ba7-aacd-570d48cdf66d",
+  "journeyId": "409cdfcb-9aae-462b-9d49-abb3ac2ba2b4",
+  "logsWindow": {"start":"2026-10-05T12:27:45Z","end":"2026-10-05T12:35:00Z"},
+  "exchanges": [
+    {"responseAt":"2026-10-05T12:27:59Z","method":"POST","path":"/functions/v1/vitality-resume","status":200,"version":3},
+    {"responseAt":"2026-10-05T12:32:34Z","method":"POST","path":"/functions/v1/vitality-resume","status":401,"version":3}
+  ],
+  "draftState": {
+    "status":"draft","revision":0,
+    "verifiedAt":"2026-10-05T12:27:59.548111Z",
+    "updatedAt":"2026-10-05T12:18:50.954028Z",
+    "hasSessionDigest":true,
+    "sessionExpiresAt":"2026-11-04T12:27:59.548111Z",
+    "hasPendingMailDigest":false,
+    "recoveryExpiresAt":null,"completedAt":null
+  },
+  "browser": {
+    "firstTabNormalReload":"Contact Saved / Introduction / 0% / Saved",
+    "secondTab":"Contact screen; This link is unavailable. Request another email link.",
+    "rawCredentialRetrieved":false,
+    "hostedAnswersEntered":false
+  },
+  "diagnosis":"Email credential was successfully consumed before the later rejection. Evidence supports replay of that single-use link; original session remains usable.",
+  "limitation":"Minimal logs contain no POST action/body, so rejected credential bytes/identity were not independently compared.",
+  "edgeMetadata":{"version":3,"status":"ACTIVE","bundleSha256":"62730d1ed9ae75f251ef1e38a61f199d4e191dc7b1189d732f766fd9cdd75ae3","matchesInitialVersion1Bundle":true},
+  "focusedRegressions":{"runtime":{"pass":21,"fail":0},"nativePostgres":{"version":"17.11","pass":20,"fail":0},"edge":{"pass":18,"fail":0}},
+  "applicationSourceChanged":false,
+  "backendChanged":false,
+  "resendPerformed":false,
+  "newIdentityCreated":false,
+  "hostedWritesPerformed":false,
+  "migrationReplayed":false,
+  "edgeRedeployed":false,
+  "netlifyRedeployed":false,
+  "productionChanged":false,
+  "nextAction":"Return to existing tab showing Contact Saved / Introduction / Saved and confirm it is visible; keep it open. No email reopen, contact resubmit or resend yet.",
+  "status":["VITALITY RESUME NOT READY","BETA NOT READY"]
+}
