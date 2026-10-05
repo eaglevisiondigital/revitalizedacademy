@@ -1,0 +1,13 @@
+{
+  "sourceSha": "e51b04545c5eba5f33d7b3a3aafca3b2cca854a8",
+  "netlifyDeployId": "6ac38599ba35bc77a266d41c",
+  "stagingUrl": "https://revitalizedacademy-staging.netlify.app/consult.html",
+  "migrationVersion": "20261005110245",
+  "edgeFunction": "vitality-resume",
+  "edgeVersion": 1,
+  "productionUnchanged": true,
+  "hostedAssessmentCreated": false,
+  "hostedLifecycleAcceptance": "pending approved disposable inbox and actual email verification",
+  "readiness": "VITALITY RESUME NOT READY",
+  "overallBeta": "BETA NOT READY"
+}

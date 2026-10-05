@@ -20,7 +20,7 @@ Updated 2026-10-05. Authority: latest approved verified-email implementation req
 - Staging Supabase: `bvooallokgfktssadsrv` (PostgreSQL 17.6).
 - One reviewed migration applied once: **20261005110245_vitality_assessment_secure_resume**. Local filename reconciled to actual hosted ledger version. Historical migrations were not replayed.
 - New Edge `vitality-resume` **version 1**, ACTIVE. `verify_jwt=false` because free participants use the handler's assessment-scoped opaque credentials, not member JWTs. Public callers cannot execute the private storage RPC directly.
-- Frontend release: consult integration, `js/vitality-resume.js?v=1`, `js/vitality55.js?v=resume-1`, `css/vitality55.css?v=86`, bridge `js/revitalized-data.js?v=20261005`; child asset unchanged. See deployment receipt for final SHA/deploy ID and live hashes.
+- Frontend release: consult integration, `js/vitality-resume.js?v=1`, `js/vitality55.js?v=resume-1`, `css/vitality55.css?v=86`, bridge `js/revitalized-data.js?v=20261005`; child asset unchanged. Source SHA **e51b04545c5eba5f33d7b3a3aafca3b2cca854a8**, deploy **6ac38599ba35bc77a266d41c**. Six live assets exactly match the build; production deployment and nine public fingerprints unchanged.
 - No production, existing roles, permissions, flags, payments, SMS/Twilio, SMTP or existing Edge functions changed. Recipient allowlist has not changed for this assessment task. No hosted assessment/contact/answer record has been created by these checks.
 
 ## Validation
@@ -61,7 +61,7 @@ Local results below are isolated runtime/native tests, not claims of completed h
 | 19 | Final after resume | Normal form navigation yields full coach summary and completed state | Actual Netlify record pending |
 | 20 | No duplicate final | One dispatch permit; repeated final/completion event idempotent | Pending |
 | 21 | Completed not unfinished | Completed state inaccessible for edit; no duplicate restart | Pending |
-| 22 | Responsive resume UX | 1440×1000, 768×1024, 390×844 Saved/section/actions fit with no horizontal overflow | Hosted resume/error/completion pending |
+| 22 | Responsive resume UX | 1440×1000, 768×1024, 390×844 Saved/section/actions/error/recovery/completion fit with no horizontal overflow; live entry also fits with clean console | Hosted resume/error/completion pending |
 
 ## Important limits and next actions
 

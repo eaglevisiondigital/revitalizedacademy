@@ -1,0 +1,22 @@
+{
+  "url": "https://revitalizedacademy-staging.netlify.app/consult.html",
+  "scope": "Read-only unauthenticated entry page; no form submission",
+  "sizes": [
+    {
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "scrollWidth": 768
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390
+    }
+  ],
+  "consoleWarningsOrErrors": []
+}

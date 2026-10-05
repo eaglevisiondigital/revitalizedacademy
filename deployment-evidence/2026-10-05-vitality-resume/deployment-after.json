@@ -1,0 +1,64 @@
+{
+  "at": "2026-10-05T11:11:12.927Z",
+  "staging": {
+    "id": "071b252e-a922-4846-a784-8dca1edad377",
+    "name": "revitalizedacademy-staging",
+    "url": "https://revitalizedacademy-staging.netlify.app",
+    "deploy": "6ac38599ba35bc77a266d41c",
+    "commit": null,
+    "repo": "eaglevisiondigital/revitalizedacademy",
+    "branch": "codex/staging",
+    "build": "npm run build",
+    "publish": "dist"
+  },
+  "production": {
+    "id": "ece0f6f3-6c3d-46e6-bb51-95ce1ccefb06",
+    "name": "revitalizedacademy",
+    "url": "https://revitalizedacademy.com",
+    "deploy": "6ac036d3b48eac0008568e00",
+    "commit": "d9eb428866ccf7b6338999f6aecb020721b17540",
+    "repo": "eaglevisiondigital/revitalizedacademy",
+    "branch": "main",
+    "build": null,
+    "publish": "."
+  },
+  "productionUnchanged": true,
+  "assets": [
+    {
+      "path": "/js/vitality55.js?v=resume-1",
+      "status": 200,
+      "sha256": "d5e1445244af2ea3818f0199f418e35b2a2bfcd9881659f1ceb60e256918b2ac",
+      "exactBuild": true
+    },
+    {
+      "path": "/js/vitality-resume.js?v=1",
+      "status": 200,
+      "sha256": "752ade6d7b513a6db06a8bae852e633d5ec56aa4372010d3c85ec7d30de82642",
+      "exactBuild": true
+    },
+    {
+      "path": "/js/revitalized-data.js?v=20261005",
+      "status": 200,
+      "sha256": "91916c7341c91316d0053d0550531531b6c71b1e65ef8f11f64de535d20d3c79",
+      "exactBuild": true
+    },
+    {
+      "path": "/css/vitality55.css?v=86",
+      "status": 200,
+      "sha256": "1158a0d3c79ad8f568ba62e4758f6f9c18064efa55568ee54e0c01ad96343da6",
+      "exactBuild": true
+    },
+    {
+      "path": "/js/vitality-child.js?v=nodash-20260921",
+      "status": 200,
+      "sha256": "ef6c024bdb5abc96d2d7dd3affc5f2c4326ff8b366c85b0717f751619babaee2",
+      "exactBuild": true
+    },
+    {
+      "path": "/runtime-config.js",
+      "status": 200,
+      "sha256": "b87e0084cb8409221384331c629744ce4fe855dd013be4280d0e94f060d23257",
+      "exactBuild": true
+    }
+  ]
+}

@@ -39,7 +39,12 @@
   },
   "consoleAfterFixtureConfigurationCorrected": [],
   "limitations": [
-    "Actual hosted emailed-link lifecycle remains pending",
-    "Completion and email-request responsive checks not yet complete"
-  ]
+    "Actual hosted emailed-link lifecycle remains pending"
+  ],
+  "recoveryControlsContainedAtAllSizes": true,
+  "completionAtAllSizes": {
+    "locked": true,
+    "progress": "100%",
+    "noHorizontalOverflow": true
+  }
 }
