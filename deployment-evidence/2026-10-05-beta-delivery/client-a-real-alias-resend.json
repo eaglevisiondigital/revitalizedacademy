@@ -44,7 +44,23 @@
   },
   "userMailboxReceipt": "confirmed",
   "userMailboxReceiptConfirmedAtUtc": "2026-10-05T20:10:54Z",
-  "linkOpened": false,
+  "linkOpened": true,
+  "authSignup": {
+    "userId": "b308daf6-69a8-4d76-9c71-8c5b9e4183d9",
+    "createdAtUtc": "2026-10-05T20:19:03Z",
+    "confirmationSentAtUtc": "2026-10-05T20:19:03.408739Z",
+    "confirmedAt": null,
+    "lastSignedInAt": null,
+    "duplicateAuthUsers": false
+  },
+  "confirmationEmail": {
+    "subject": "Confirm your email address",
+    "providerMessageId": "01a10db8-49b6-7c44-a1ca-de6840196208",
+    "providerStatus": "delivered",
+    "sentAtUtc": "2026-10-05T20:19:03.908Z",
+    "userMailboxReceipt": "pending_confirmation"
+  },
+  "enrollmentClaimed": false,
   "agreementSigned": false,
   "privateLinkHandling": "No raw link or token is stored in this receipt, exposed in chat, or used outside the normal recipient flow.",
   "authorizedHostedChanges": "Existing Client A contact email reconciled in place, prior journey link deactivated, existing agreement resent, and audited activity recorded.",
