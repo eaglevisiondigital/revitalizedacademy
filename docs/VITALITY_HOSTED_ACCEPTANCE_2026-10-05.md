@@ -15,6 +15,27 @@ This is an incomplete hosted acceptance receipt, not a readiness declaration. La
 
 Added only `dave+rva-assessment@eaglevision.biz` to `RVA_SYNTHETIC_EMAIL_ALLOWLIST` through the authenticated staging dashboard. Saved 2026-10-05 11:17:59 UTC. Preserved `dave@theboss.biz`, `dave@eaglevision.biz`, `dave+rva-client-a@eaglevision.biz`, `dave+rva-client-b@eaglevision.biz`, `dave+rva-beta-staff@eaglevision.biz`; no domain wildcard. Final six-address SHA-256: `82e27fce504a8a5ca56c78283825cf3b6b036b881a8bc21b62b95d46aa2a498e`. No SMTP/provider, role, permission or feature-flag change.
 
+Latest authority supersedes that testing identity: the plus-address was never confirmed as a receiving mailbox and must not be used. The user configured real alias `rva-assessment@eaglevision.biz` to forward to `dave@eaglevision.biz`. Added only that exact alias to the staging secret, preserving the six prior recipients and adding no wildcard. Dashboard-confirmed digest: `58168025c8e9fca07db5d30970c7eb1713daed8fe98d560f443f87db0256dcd3`, updated 2026-10-05 11:59:53 UTC. Supabase states updated Edge secrets are read immediately; no Edge redeploy occurred.
+
+## Real-alias delivery checkpoint
+
+Normal hosted Save & Continue used Synthetic / Vitality Alias, `rva-assessment@eaglevision.biz` and synthetic phone `0000000000`. Pre-start counts were zero contact/draft/workflow. The result is one each:
+
+| Evidence | Result |
+|---|---|
+| Netlify lead | `6ac395a92a1105478a7ad04c`, captured 2026-10-05T12:18:49.605Z |
+| Contact | `667aec53-0fe2-453b-b47a-8b3012777411` |
+| Draft | `1d66c0f6-c6ad-4cd6-ab8f-5fc778e87ce2` |
+| Workflow | `7d17430a-1e9e-4ba7-aacd-570d48cdf66d` |
+| Journey | `409cdfcb-9aae-462b-9d49-abb3ac2ba2b4` |
+| Draft state | Draft, revision 0, section 0, percent 0, unverified, no session, pending mail digest |
+| Provider receipt | Resend `01a10c00-a40f-79b1-bc16-d6b2bcbe84f5`, sent 2026-10-05T12:18:51.165Z, status delivered |
+| Actual external receipt | Unverified; connected Gmail exact-subject searches returned no message |
+| Available business webmail | Confirmed `dave@theboss.biz`, not the forwarded destination; exact subject absent from Inbox and Spam |
+| Local Mail app | Only a Google mailbox is configured and it has no matching message |
+
+Provider “delivered” is not counted as receipt. No provider email body or raw resume token was retrieved. The new assessment remains preserved for normal user opening after actual inbox arrival. The earlier plus-address synthetic draft remains untouched as historical evidence and is excluded from continuation.
+
 ## Actual hosted start and mail
 
 Normal staging `/consult.html` Save & Continue used Synthetic / Vitality Acceptance, the dedicated alias and synthetic phone `0000000000`. No real health data or existing client identity was used.

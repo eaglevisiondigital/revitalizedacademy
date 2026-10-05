@@ -1,0 +1,30 @@
+{
+  "approvedAlias": "rva-assessment@eaglevision.biz",
+  "forwardingDestination": "dave@eaglevision.biz",
+  "allowlistDigest": "58168025c8e9fca07db5d30970c7eb1713daed8fe98d560f443f87db0256dcd3",
+  "allowlistUpdatedAt": "2026-10-05T11:59:53Z",
+  "existingRecipientsPreserved": true,
+  "domainWildcardAdded": false,
+  "netlifyLeadId": "6ac395a92a1105478a7ad04c",
+  "contactId": "667aec53-0fe2-453b-b47a-8b3012777411",
+  "draftId": "1d66c0f6-c6ad-4cd6-ab8f-5fc778e87ce2",
+  "workflowId": "7d17430a-1e9e-4ba7-aacd-570d48cdf66d",
+  "journeyId": "409cdfcb-9aae-462b-9d49-abb3ac2ba2b4",
+  "counts": {"contacts":1,"drafts":1,"workflows":1},
+  "draftState": {"status":"draft","revision":0,"section":0,"percent":0,"emailVerified":false,"hasSession":false,"hasPendingMail":true},
+  "provider": {"name":"Resend","messageId":"01a10c00-a40f-79b1-bc16-d6b2bcbe84f5","sentAt":"2026-10-05T12:18:51.165Z","status":"delivered"},
+  "actualExternalReceipt": "unverified",
+  "receivingChecks": {
+    "connectedGmailExactSubject": "no result",
+    "openBusinessWebmail": "different account (dave@theboss.biz); no result in Inbox or Spam",
+    "localMail": "receiving business mailbox not configured"
+  },
+  "rawEmailBodyRetrieved": false,
+  "rawResumeTokenRetrieved": false,
+  "migrationReplayed": false,
+  "edgeRedeployed": false,
+  "smtpProviderChanged": false,
+  "productionChanged": false,
+  "sourceChanged": false,
+  "status": ["VITALITY RESUME NOT READY","BETA NOT READY"]
+}
