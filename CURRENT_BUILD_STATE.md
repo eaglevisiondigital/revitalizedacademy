@@ -6,11 +6,11 @@ Updated: 2026-10-05
 
 - Source baseline: `d9eb428866ccf7b6338999f6aecb020721b17540`
 - Netlify site: `ece0f6f3-6c3d-46e6-bb51-95ce1ccefb06`
-- Published deploy: `6ac036d3b48eac0008568e00`
+- Published deploy: `6ac3ccee3eda881a1fdf1ead`
 - Public domain: `https://revitalizedacademy.com`
 - Supabase project: `voalfpxiyznnqfcqcymd`
 
-Production has not yet received the accepted secure Vitality save/resume release. The existing site, database schema, and Edge Functions remain unchanged.
+Production now serves the accepted secure Vitality save/resume release from isolated candidate `df611af833ff4c25a51928ffd399ca0178bced47`.
 
 ## Accepted Vitality release
 
@@ -29,12 +29,17 @@ Production has not yet received the accepted secure Vitality save/resume release
 - JavaScript syntax: passed for all changed and added production files.
 - Production schema compatibility: required tables, columns, helper function, extensions, and unique indexes are present.
 - Environment isolation: candidate contains the production Supabase project and production domain; staging project, staging URL, synthetic recipient allowlist, and test addresses are absent from the public build.
+- Production migration ledger: `20261005161329 vitality_assessment_secure_resume`.
+- Production Edge Function: `vitality-resume` version 1, active, bundle SHA-256 `62730d1ed9ae75f251ef1e38a61f199d4e191dc7b1189d732f766fd9cdd75ae3`.
+- Exact live hashes match the candidate for `runtime-config.js`, `js/environment.js`, `js/vitality55.js`, `js/vitality-resume.js`, `js/revitalized-data.js`, and `css/vitality55.css`.
+- Start New and Resume Existing render and switch correctly at 1280, 768, and 390 pixel widths without horizontal overflow or browser console errors.
+- Home, portal, member, enrollment, and webinar pages remain byte-identical to the prior deploy.
 
-## Release blocker
+## Remaining production acceptance
 
-Production Supabase has no `vitality-resume` function and no custom Edge secrets. `RVA_ENVIRONMENT`, `RVA_APP_ORIGIN`, and `RESEND_API_KEY` are required by the accepted function. `REVITALIZED_EMAIL_FROM` is optional because the accepted function has the approved production sender fallback. Production Netlify has no environment values to reuse.
+The configured production environment passes a non-writing preflight, rejects a foreign origin, and returns the approved neutral response for a malformed email. No production contact, draft, workflow, rate-limit record, or email was created.
 
-No migration, Edge Function, Netlify deploy, provider configuration, or production data was changed after this blocker was found. The release may resume after the approved production Resend credential is configured directly in the production Supabase project together with the known production environment and origin values. Do not place credentials in chat or repository files.
+Actual provider acceptance and external email delivery remain unverified because that test requires a specifically authorized real production address and creates a production contact/draft/workflow. Until that narrow smoke is authorized and passes, the final state remains `VITALITY PRODUCTION NOT READY`.
 
 ## Rollback target
 
