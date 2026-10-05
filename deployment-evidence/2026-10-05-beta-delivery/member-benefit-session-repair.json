@@ -41,6 +41,17 @@
     "deployId": "6ac3eee5383ccf92be4d7a58",
     "unchanged": true
   },
-  "hostedClientAcceptance": "pending",
-  "betaStatus": "NOT READY"
+  "hostedClientAcceptance": {
+    "dashboard": "pass",
+    "nutrition": "pass; real empty diary and targets loaded; no write",
+    "workouts": "pass; real unassigned-plan state loaded; no write",
+    "refresh": "pass; restored without credential entry",
+    "secondTab": "pass; both tabs authenticated",
+    "refreshIsolation": "pass; tab B remained authenticated after tab A refresh",
+    "logout": "pass; both tabs signed out and private identity cleared",
+    "relogin": "pass",
+    "consoleWarningsOrErrors": 0
+  },
+  "hostedContentChanged": false,
+  "betaStatus": "READY"
 }

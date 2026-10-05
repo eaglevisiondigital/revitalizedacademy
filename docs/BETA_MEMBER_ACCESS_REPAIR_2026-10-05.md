@@ -2,7 +2,7 @@
 
 Date: 2026-10-05  
 Environment: dedicated staging only  
-Status: deployed to staging; hosted Client A acceptance pending
+Status: deployed and accepted on staging — BETA READY
 
 ## Scope
 
@@ -53,4 +53,20 @@ Applied the reviewed migration once as staging ledger `20261005221655`. A guarde
 
 Source `abf2af690bc85387df4b4932b628bcf858a21875` was published only to staging as Netlify deploy `6ac42226bb66bc2171b9946e`. Live member JS v211, CSS v202 and runtime config match the exact build hashes. Production stayed on `6ac3eee5383ccf92be4d7a58`, and its member HTML, member JS and runtime config fingerprints were identical before and after staging publication.
 
-Remaining gate: use the normal Client A login to test Nutrition, Workouts, refresh, two tabs, logout/private clearing and re-login. Any remaining failure keeps `BETA NOT READY`.
+## Hosted Client A acceptance
+
+The user signed in normally as Client A through the staging member page after the repair was ready.
+
+- Dashboard: loaded the correct Disposable Beta Client A / Holistic Foundations identity.
+- Nutrition: visible and usable; loaded the real empty diary, six nutrient summary cards, seven-day actual-entry series and neutral no-target/no-published-source states. No diary write was attempted.
+- Workouts: visible and usable; loaded the real neutral unassigned-plan state. No workout write was attempted.
+- Refresh: the persisted session restored after the SDK's asynchronous startup without credential entry.
+- Second tab: restored the same Client A session.
+- One-tab refresh: both tabs remained authenticated.
+- Logout: propagated to both tabs; both returned to sign-in and the Client A name/private dashboard disappeared from both DOMs.
+- Re-login: normal Client A sign-in succeeded; Dashboard, Nutrition and Workouts were present.
+- Console: no warnings or errors in either tab during refresh, two-tab or logout checks, and none after re-login.
+
+Post-acceptance database verification still shows active membership/access and exactly the two approved active `membership_override` benefits with the unchanged repair timestamp. No hosted nutrition, workout, health, payment, agreement, role, permission, flag, provider or unrelated data was changed. Production stayed on deploy `6ac3eee5383ccf92be4d7a58`; its three checked public fingerprints remained unchanged.
+
+**BETA READY.**
