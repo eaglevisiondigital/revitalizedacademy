@@ -1,83 +1,76 @@
-# Free Vitality Assessment save/resume — required beta gate
+# Free Vitality Assessment save/resume — beta acceptance
 
-Date: 2026-10-05. User authority: attached additional beta green-flag requirement. This is additive to the client/staff/meal/workout hosted acceptance, not a replacement. Primary Chat retains the Justin/Elle green flag.
+Updated 2026-10-05. Authority: latest approved verified-email implementation request. It supersedes the earlier unresolved identity/storage handoff. This gate is additional to client/staff/meal/workout acceptance.
 
-**VITALITY RESUME NOT READY. BETA NOT READY.** Current progress tracking is not answer persistence. The audit is complete; the new save/resume implementation and hosted acceptance are not complete.
+**VITALITY RESUME NOT READY. BETA NOT READY.** Implementation and local security/functionality checks are complete; hosted email lifecycle acceptance is pending. Deployment receipts under `deployment-evidence/2026-10-05-vitality-resume/` distinguish applied, deployed, tested and unverified states.
 
-## Evidence-backed implementation audit
+## Implemented contract
 
-| Area | Actual implementation and implication |
-|---|---|
-| Initial contact capture | `js/vitality55.js` posts `vitality-lead` to Netlify before entering health questions. Preserve this independent first action. |
-| Answers and current section | Controls and `currentSection` remain in the current document. `showSection` computes section percentage. No partial-answer save/restore API is called. |
-| User-facing statement | `consult.html` explicitly states that unfinished answers are not saved on reload/close. Keep this truthful until implementation and acceptance succeed. |
-| Final submission | The full form and generated coach summary post to the separate Netlify assessment form. This is final capture, not partial persistence. There is no observed end-to-end durable finalization idempotency key. |
-| Supabase mirror | `js/revitalized-data.js` sends initial identity, progress percentage/current label and completion/derived tags. Its 350ms debounce observes progress labels, not answer changes. Errors are swallowed; a progress request is not a successful answer save. |
-| Backend answers | `public-intake/index.ts` writes `workflow_answers` only for the allowlisted `enrollment_start` fields. Vitality paths create/update workflow metadata and Journey events, not the full adult/child answer bank. |
-| Existing secure Journey links | Random 32-byte tokens, stored hashes, active/expiry checks are reusable security patterns. But the Vitality action simply links to `/consult.html`. Staff issue links; self-issuance requires active member access. This does not provide free-user draft recovery. |
-| Contact matching | Current public intake uses email `ilike` and a separate lookup/insert sequence. Do not use that unverified lookup as authority to read private answers. Escape wildcard semantics, handle ambiguous matches and concurrent retries deterministically in the eventual contract. No live duplicate-contact failure was induced. |
-| Completion/retry | In-memory flags and selecting the latest non-abandoned workflow do not establish cross-device final-submit idempotency or completed-draft immutability. These need transactional tests. |
-| Browser storage | No authoritative answer draft is present. The separate post-completion session identity used for VSL tracking is not resume. |
+- No full/free member account. Initial contact is captured in the existing independent Netlify lead form. The Edge start command creates/reuses the exact normalized contact and one unfinished draft. Participant verifies email before health entry or restoration.
+- Private authoritative PostgreSQL draft stores identity linkage, typed active answer controls, pathway/proxy/guardian state, section, percent, revision, timestamps and lifecycle. The browser holds answers in memory only; sessionStorage contains an opaque credential, not the answer payload.
+- Random 32-byte mail/session credentials; SHA-256 digests only in the database. URL fragment is stripped before analytics/navigation. Single-use emailed link exchanges for a session credential and invalidates an older session. Recovery issues a fresh email link with a neutral response; failed delivery revokes the pending mail hash without invalidating a live session. One request/minute and three/hour per normalized email.
+- Thirty-day credential lifetime; successful authenticated saves refresh the session's 30-day inactivity window. Expired credentials are denied; eligible drafts can recover by email. No destructive retention policy was invented. An already-used mail link requires a fresh recovery email if its session was lost.
+- Autosave debounces 650 ms and also flushes on section navigation, visibility and Continue Later. Server revision acknowledgment controls Saved; failed saves preserve current input and expose Retry. Concurrent edits are serialized and stale revisions cannot overwrite newer answers.
+- Restoration uses existing pathway, conditional and symptom-detail helpers. Existing required validation remains active. No question wording, scoring or child questionnaire change.
+- Finalization first stores/locks the exact generated coach-summary form and a unique dispatch ticket, then sends the existing Netlify assessment form once. Success closes draft/workflow, reaches 100%, records the existing completion Journey event and approved concern/goal tags. Completed credentials cannot return editable answers. Repeated completion cannot duplicate dispatch/events.
 
-The reproducible [exact-built audit](../deployment-evidence/2026-10-05-vitality-resume/audit.cjs) loads `dist/consult.html` and its three actual scripts with a synthetic in-memory network transport. It enters an answer, advances to section 1, closes/recreates the browser-style document, and preserves any browser storage. [Result](../deployment-evidence/2026-10-05-vitality-resume/reload-result.json): answer not restored, initial lead step shown, restart at section 0, two lead POST attempts across restart, progress metadata observed but no answer payload or resume request. This proves a missing capability, not duplicate hosted records, a hosted final submission, or a working cross-device flow. No real health data was used.
+## Applied/deployed state
 
-## Required implementation contract
+- Repository/branch: `eaglevisiondigital/revitalizedacademy`, `codex/staging`.
+- Staging Supabase: `bvooallokgfktssadsrv` (PostgreSQL 17.6).
+- One reviewed migration applied once: **20261005110245_vitality_assessment_secure_resume**. Local filename reconciled to actual hosted ledger version. Historical migrations were not replayed.
+- New Edge `vitality-resume` **version 1**, ACTIVE. `verify_jwt=false` because free participants use the handler's assessment-scoped opaque credentials, not member JWTs. Public callers cannot execute the private storage RPC directly.
+- Frontend release: consult integration, `js/vitality-resume.js?v=1`, `js/vitality55.js?v=resume-1`, `css/vitality55.css?v=86`, bridge `js/revitalized-data.js?v=20261005`; child asset unchanged. See deployment receipt for final SHA/deploy ID and live hashes.
+- No production, existing roles, permissions, flags, payments, SMS/Twilio, SMTP or existing Edge functions changed. Recipient allowlist has not changed for this assessment task. No hosted assessment/contact/answer record has been created by these checks.
 
-Audit validation: `node --test tests/assessment-person.cjs` passed **20/20**, zero failures/skips (106.3 seconds), covering existing capture/routing/conditional/final behavior. This is not a resume suite. All three live staging script hashes match the audited built assets. `consult.html` has a different raw hash because of observed Netlify clean-link/Form-attribute processing; its assessment text, complete form/control contract and script references match. See [asset hashes](../deployment-evidence/2026-10-05-vitality-resume/live-assets.json) and [DOM comparison](../deployment-evidence/2026-10-05-vitality-resume/html-comparison.json). No source rebuild, full-suite rerun or hosted submission occurred.
+## Validation
 
-- Preserve independent initial first/last/email/phone capture, approved question content and adult/child/proxy authorization behavior. Starting or saving must not require paid membership.
-- Use a durable assessment identity bound to the verified recovery identity/contact and assessed-person/pathway identity. Email lookup alone must never return answers. Repeated start/resume must not create another contact or implicitly merge two assessed people sharing a respondent email.
-- Persist a versioned typed answer snapshot, current section, percentage, pathway, timestamps and revision. Explicit checkbox/radio selection and numeric zero must remain distinct from absent/unanswered values. Define deterministic conditional-field clearing and adult/child switching consistent with current behavior.
-- Debounce answer changes; flush at section navigation/Continue and safely on visibility changes. Treat unload flushing as best effort, not a persistence guarantee. Show Saving/Saved only from matching successful server acknowledgments. Preserve entered answers and retry after failures; reject stale revisions instead of overwriting newer work.
-- Protect private drafts behind narrowly scoped server APIs and least-privilege storage. No broad anonymous reads, browser service-role secrets, raw answers in URLs/logs, or local-storage-only recovery. Redact delivery copies containing credentials after use/delivery.
-- Bind secure resume access to exactly one draft/verified recipient and purpose; enforce expiry, revocation and completed-state denial. Existing Journey tokens must not automatically acquire health-answer access.
-- Finalization must be idempotent across retries/devices, preserve existing final coach summary and Journey events, reach 100%, and atomically close the unfinished state. Coordinate the Netlify final submission and authoritative draft state explicitly; do not report complete when only one system succeeded.
-- No invented assessment score, changed question set, paid-member gate, household-sharing grant or production change.
+- Build: 314 allowlisted public files, exact existing staging environment; no service credentials in output.
+- JavaScript syntax: 78/78.
+- Native PostgreSQL 17.11: 234/234 maintained tests, including 19 new resume tests. All restores happen in a newly named disposable loopback database, never hosted.
+- Edge: 47/47, including 17 new resume tests; new entrypoint frozen type-check passes.
+- New browser-runtime resume tests: 20/20, including normal final submission through the restored form, generated coach summary and lock.
+- Existing assessment regression: 20/20 in the broad run. The approved adult/child/proxy pathways remain covered.
+- Full frontend release rerun: **466 passed, 0 failed, 27 skipped (493 total)**; recorded in `tests-summary.json`. Earlier broad run had four expected protected-file hash failures for this authorized implementation; the four diffs were reviewed and fingerprints updated. Existing HTML assessment controls are identical except the new hidden final correlation ID; child questions unchanged. No test was removed or skipped to accommodate a defect.
+- Hosted non-writing security smoke: random token 401; foreign origin 403; unapproved recipient neutral 200; none returns private payloads. Hosted grants verified: RLS enabled; anon/authenticated cannot execute RPC or SELECT draft table; service role can execute the RPC. Draft count remains zero.
 
-## Identity/product decision still required
+## 22-case acceptance matrix
 
-No existing public health-answer recovery contract was found. The user has been asked to choose **email-verified resume links without an account** or **a free verified account**. This changes the free-participant UX and identity authority, not merely implementation syntax. Engineering recommendation: email-verified, assessment-scoped recovery without requiring paid membership; never expose an existing draft just because someone enters its email. The storage/privacy review must identify server authority, draft retention and access expiry; these are not silently borrowed from a different token purpose.
+Local results below are isolated runtime/native tests, not claims of completed hosted email acceptance.
 
-RECOMMENDED THINKING LEVEL: HIGH
+| # | Case | Current evidence | Hosted status |
+|---|---|---|---|
+| 1 | Start assessment | Runtime start/email gate and native stable draft | Pending approved inbox |
+| 2 | Immediate contact save | Existing independent lead/failure test + new start contract | Pending |
+| 3 | Answer autosave | Debounce, server acknowledgment, outstanding-save serialization pass | Pending |
+| 4 | Radio restoration | New document/server fixture restores checked selection | Pending |
+| 5 | Checkbox/multi-select | Checked states preserved; array controls supported | Pending |
+| 6 | Text/textarea | New document restores saved text; no answer storage | Pending |
+| 7 | Conditional answers | Adult proxy/guardian/child conditional restoration pass | Pending |
+| 8 | Symptom details | Controlling selection recreates detail controls before restoring | Pending |
+| 9 | Adult pathway | Self/adult proxy restoration and normal completion pass | Pending |
+| 10 | Child pathway | Child age/guardian/pathway restoration pass; existing child completions pass | Pending |
+| 11 | Current section | Section 1 restored after leave/reopen | Pending |
+| 12 | Progress percent | Saved percent restored; completion 100% | Pending |
+| 13 | Same-browser reopen | New document/session loads server snapshot | Pending emailed lifecycle |
+| 14 | Cross-device recovery | New mail exchange restores same native draft, rotates session | Pending actual email link |
+| 15 | Duplicate contacts/drafts | Exact normalized email, wildcard-safe lookup, advisory lock and unique draft/workflow pass | Pending |
+| 16 | Wrong-person denial | A token with B draft ID cannot read or write; direct browser role bypass denied | Random-token hosted smoke passes; two-person hosted pending |
+| 17 | Expired/stale/replaced | Expired mail/session and replaced session denied; completed locked | Pending hosted lifecycle |
+| 18 | Save failure/retry | Current input retained, error truthful, retry persists | Local browser failure/retry/reload passes at all three sizes |
+| 19 | Final after resume | Normal form navigation yields full coach summary and completed state | Actual Netlify record pending |
+| 20 | No duplicate final | One dispatch permit; repeated final/completion event idempotent | Pending |
+| 21 | Completed not unfinished | Completed state inaccessible for edit; no duplicate restart | Pending |
+| 22 | Responsive resume UX | 1440×1000, 768×1024, 390×844 Saved/section/actions fit with no horizontal overflow | Hosted resume/error/completion pending |
 
-CHAT DECISION NEEDED
+## Important limits and next actions
 
-Approve the recovery identity and private draft storage policy for the newly required free Vitality save/resume capability. Current code independently captures contact details and final assessment in Netlify Forms; Supabase stores Journey/progress metadata, not the full Vitality answer set. Existing Journey links open a fresh assessment and cannot recover drafts. Choose (A) verified-email, assessment-scoped resume links without an account, recommended for the free flow, or (B) a free verified account for recovery. Confirm private server-backed draft storage alongside the existing final Netlify submission, the intended unfinished-draft retention/access expiry, and who may read unfinished health answers. Recommendation: participant-only recovery initially, with no automatic broadening of staff/household access; retain existing final coach-review permissions. Both options must preserve immediate lead capture, adult/child pathways, no unverified-email reads, cross-person isolation and idempotent final submission. This decision gates the new secure recovery design, not the already-authorized client/staff/meal/workout acceptance. No production change is requested.
-
-## Maintained test and hosted acceptance matrix
-
-The following are mandatory before this gate can pass. Existing form coverage is identified separately; none is a claim that resume currently works.
-
-| # | Required case | Current evidence / missing work |
-|---|---|---|
-| 1 | Start assessment | Existing form regression; add stable draft identity coverage |
-| 2 | First contact save | Existing independent-save/failure regression; add retry/concurrency and mirror integration |
-| 3 | Answer autosave | Missing; cover debounce, flush, acknowledgments and revisions |
-| 4 | Radio restore | Missing |
-| 5 | Checkbox/multi-select restore | Missing |
-| 6 | Text/textarea restore | Reload audit proves absent |
-| 7 | Conditional answer restore | Existing conditional behavior only; resume case missing |
-| 8 | Symptom-detail restore | Existing validation only; resume case missing |
-| 9 | Adult pathway restore | Existing completion only; resume case missing |
-| 10 | Child pathway restore | Existing ages 0/8/18 and switch tests only; resume case missing |
-| 11 | Current section restore | Reload audit restarts at 0 instead of 1 |
-| 12 | Percentage restore | Metadata exists; no restore contract |
-| 13 | Close/reopen | Audit demonstrates lost answer/current section |
-| 14 | Cross-device server-backed resume | No endpoint/identity flow implemented |
-| 15 | Duplicate email/contact handling | Deterministic draft/subject matching and concurrency tests required |
-| 16 | Wrong-person denial | New private-answer contract required; test wrong token, ID and verified recipient |
-| 17 | Stale/expired/revoked access | New purpose-scoped contract required; existing Journey checks insufficient |
-| 18 | Autosave failure recovery | No answer autosave; test offline retry without false Saved or answer loss |
-| 19 | Final submission after resume | No resume; preserve existing coach summary and downstream events |
-| 20 | No duplicate final submission | Durable finalization/retry tests required |
-| 21 | Completed not unfinished | Require server closed state and stale-token write denial |
-| 22 | Desktop/tablet/mobile resume UX | Hosted and isolated checks required at 1440×1000, 768×1024, 390×844 |
-
-Hosted gate: use a separately approved disposable assessment identity and synthetic health responses. Start → several sections → leave → return through verified recovery → restore → continue → submit. Record stable contact/draft/final IDs, no duplicate lead, correct final answer set/summary, 100% complete and closed partial state. Verify wrong-person and stale/completed access denial without reading real records. Existing approved Client A/B/staff identities remain reserved for their pending lifecycle work; do not repurpose them silently. No hosted assessment test was run during this audit because the required recovery flow does not exist.
-
-## Release and continuation
-
-No application/backend source, schema, migration, Edge Function, permissions, feature flags or deployment changed. Current client/staff/meal/workout work remains authorized and pending normal activation. Add this gate to every subsequent beta report, even if those other gates pass. The next coherent assessment package is the approved identity/private-draft contract, then backend/frontend implementation and maintained tests, followed by controlled staging rollout and complete hosted proof. Existing progress-only behavior must never be labeled save/resume.
+1. Await explicit approval for proposed separate alias `dave+rva-assessment@eaglevision.biz`, or another controlled address. Add only the approved exact address to staging recipient safety controls. Existing Client A/B/staff aliases remain reserved. Do not infer approval from a generic “resume.”
+2. Run actual synthetic START → answer multiple sections → Saved → request Continue Later → leave/close → open delivered email → restore answers/section → complete. Inspect the exact Netlify final record, stable contact/draft/workflow and one Journey completion. Repeat email recovery and wrong-person/stale denial. No raw tokens in evidence/logs.
+3. Check all required responsive states and normal console after real hosted email restoration. Local fixture checks do not replace hosted proof.
+4. The Netlify write and PostgreSQL transaction are not atomically coupled. Ambiguous transport sets `delivery_uncertain`; interrupted dispatch may remain `submitting`. Answers and final payload remain private and locked. Reconcile the correlation ID against actual Netlify capture before manually completing/retrying through a separately reviewed operator procedure. No automatic resend and no claim of external exactly-once delivery.
+5. Existing workflow uniqueness permits one non-abandoned assessment per contact, including completed assessments. Preserve it; repeated start after completion returns neutral and does not invent a new assessment lifecycle. Future intentional reassessments require a separate approved model.
+6. Separate beta track remains incomplete: Client A and staff emails show provider delivery but normal activation/receipt, Client B, scoped staff lifecycle and meal/workout acceptance remain pending. Do not claim the Justin/Elle green flag.
 
 VITALITY RESUME NOT READY
 

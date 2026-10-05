@@ -1,0 +1,39 @@
+✔ protected baseline unchanged: consult.html (0.90575ms)
+✔ protected baseline unchanged: js/vitality55.js (0.168625ms)
+✔ protected baseline unchanged: js/vitality-child.js (0.126916ms)
+✔ protected baseline unchanged: css/vitality55.css (0.530125ms)
+✔ protected baseline unchanged: js/revitalized-data.js (0.221667ms)
+✔ protected baseline unchanged: webinar.html (0.511042ms)
+✔ homepage routes assessment and webinar visitors to existing protected flows (81.821792ms)
+✔ priority webinar retains fifty-seat copy, free priority form and required contact/consent (23.063875ms)
+✔ member bootstrap stays v2 while signing submits displayed hash (0.743208ms)
+✔ CSV uses atomic export RPC; independent audit-call race is gone (0.249333ms)
+✔ CSV quoting neutralizes formula prefixes and preserves ordinary names (0.934625ms)
+✔ first contact capture remains independent and health entry waits for verified email (323.705125ms)
+✔ no raw answers are written to browser storage (684.216375ms)
+✔ debounce coalesces repeated text input and only acknowledges a server save (2553.107208ms)
+✔ radio restores after a new document using server state (2349.832875ms)
+✔ checkbox restores after a new document using server state (2445.914167ms)
+✔ text restores after a new document using server state (1648.198875ms)
+✔ range-zero restores after a new document using server state (1622.255708ms)
+✔ numeric zero remains numeric and blank numeric remains blank (1536.291875ms)
+✔ child pathway, guardian permission and conditional proxy details restore (1613.935875ms)
+✔ adult proxy and permission restore without requiring paid membership (2887.602541ms)
+✔ dynamic symptom detail restores after its controlling checkbox creates the fields (1934.637958ms)
+✔ section and progress restore after Continue and browser-style close (2177.1995ms)
+✔ failed autosave retains current answers and Retry succeeds without false Saved (698.794042ms)
+✔ edits during an outstanding save are serialized and latest content is persisted (878.402958ms)
+✔ continue later flushes before sending recovery request (798.660625ms)
+✔ email-only recovery never restores answers directly (227.498833ms)
+✔ required fields still block section navigation after resume (538.998958ms)
+✔ completed state cannot reopen editable fields and shows 100 percent (232.519042ms)
+✔ final submission is routed through the secure contract and locks the form (555.187083ms)
+✔ normal final submission after server restoration retains coach summary and completes once (13256.801209ms)
+ℹ tests 31
+ℹ suites 0
+ℹ pass 31
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 39456.982416

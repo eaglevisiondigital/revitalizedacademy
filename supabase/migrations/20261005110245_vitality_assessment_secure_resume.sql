@@ -1,0 +1,145 @@
+-- Private free-assessment drafts. Only the reviewed Edge handler may call this RPC.
+-- No raw credentials, no anonymous/authenticated table grants, no staff draft access.
+CREATE TABLE private.vitality_assessment_drafts (
+ id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+ contact_id uuid NOT NULL REFERENCES public.contacts(id),
+ workflow_id uuid NOT NULL UNIQUE REFERENCES public.workflow_records(id),
+ journey_id uuid REFERENCES public.contact_journeys(id),
+ recipient text NOT NULL CHECK(recipient=lower(trim(recipient))),
+ identity jsonb NOT NULL,
+ snapshot jsonb NOT NULL DEFAULT '{"version":1,"section":0,"percent":0,"pathway":"Adult","fields":{}}',
+ revision integer NOT NULL DEFAULT 0,
+ status text NOT NULL DEFAULT 'draft' CHECK(status IN ('draft','submitting','delivery_uncertain','completed')),
+ session_hash text UNIQUE CHECK(session_hash ~ '^[a-f0-9]{64}$'),
+ recovery_hash text UNIQUE CHECK(recovery_hash ~ '^[a-f0-9]{64}$'),
+ session_expires_at timestamptz,
+ recovery_expires_at timestamptz,
+ verified_at timestamptz,
+ created_at timestamptz NOT NULL DEFAULT now(),
+ updated_at timestamptz NOT NULL DEFAULT now(),
+ completed_at timestamptz,
+ final_form text,
+ dispatch_hash text,
+ dispatched_at timestamptz
+);
+CREATE UNIQUE INDEX vitality_one_unfinished ON private.vitality_assessment_drafts(contact_id) WHERE status <> 'completed';
+CREATE TABLE private.vitality_resume_rate_limits (
+ bucket text PRIMARY KEY, window_start timestamptz NOT NULL, attempts integer NOT NULL, last_request timestamptz NOT NULL
+);
+ALTER TABLE private.vitality_assessment_drafts ENABLE ROW LEVEL SECURITY;
+ALTER TABLE private.vitality_resume_rate_limits ENABLE ROW LEVEL SECURITY;
+REVOKE ALL ON private.vitality_assessment_drafts,private.vitality_resume_rate_limits FROM PUBLIC,anon,authenticated,service_role;
+
+CREATE FUNCTION private.vitality_resume_command(p_action text,p_hash text,p_next_hash text,p_payload jsonb)
+RETURNS jsonb LANGUAGE plpgsql SECURITY DEFINER SET search_path='' AS $$
+DECLARE d private.vitality_assessment_drafts%rowtype; c uuid; w uuid; j uuid; e text; n integer; s jsonb; r integer; b text; lim private.vitality_resume_rate_limits%rowtype;
+BEGIN
+ IF p_action IN ('start','recover') THEN
+  e:=lower(trim(p_payload->>'email'));
+  IF e IS NULL OR length(e)>254 OR e !~ '^[^[:space:]@]+@[^[:space:]@]+\.[^[:space:]@]+$' OR p_next_hash IS NULL OR p_next_hash !~ '^[a-f0-9]{64}$' THEN RAISE EXCEPTION 'Invalid request' USING ERRCODE='22023'; END IF;
+  -- Serialize exact normalized-email matching and rate limiting; never ILIKE a user email.
+  PERFORM pg_advisory_xact_lock(hashtextextended('vitality:'||e,0));
+  b:=encode(extensions.digest(e,'sha256'),'hex');
+  SELECT * INTO lim FROM private.vitality_resume_rate_limits WHERE bucket=b FOR UPDATE;
+  IF FOUND AND (lim.last_request>now()-interval '60 seconds' OR (lim.window_start>now()-interval '1 hour' AND lim.attempts>=3)) THEN RETURN '{}'::jsonb; END IF;
+  INSERT INTO private.vitality_resume_rate_limits VALUES(b,now(),1,now())
+   ON CONFLICT(bucket) DO UPDATE SET attempts=CASE WHEN private.vitality_resume_rate_limits.window_start>now()-interval '1 hour' THEN private.vitality_resume_rate_limits.attempts+1 ELSE 1 END,
+    window_start=CASE WHEN private.vitality_resume_rate_limits.window_start>now()-interval '1 hour' THEN private.vitality_resume_rate_limits.window_start ELSE now() END,last_request=now();
+  SELECT count(*),min(id::text)::uuid INTO n,c FROM public.contacts WHERE lower(trim(email))=e;
+  IF n>1 THEN RETURN '{}'::jsonb; END IF; -- Ambiguous historical identity fails closed.
+  IF c IS NULL AND p_action='start' THEN
+   BEGIN
+    INSERT INTO public.contacts(first_name,last_name,email,phone,lifecycle_stage,first_source,last_source)
+     VALUES(left(p_payload->>'first_name',100),left(p_payload->>'last_name',100),e,left(p_payload->>'phone',40),'assessment_lead','website_vitality_assessment','website_vitality_assessment') RETURNING id INTO c;
+   EXCEPTION WHEN unique_violation THEN
+    SELECT id INTO c FROM public.contacts WHERE lower(email)=e;
+   END;
+  END IF;
+  IF c IS NULL THEN RETURN '{}'::jsonb; END IF;
+  SELECT * INTO d FROM private.vitality_assessment_drafts WHERE contact_id=c AND status<>'completed' FOR UPDATE;
+  IF NOT FOUND AND p_action='start' THEN
+   IF EXISTS(SELECT 1 FROM public.workflow_records WHERE contact_id=c AND workflow_type='vitality_assessment' AND status='completed') THEN RETURN '{}'::jsonb; END IF;
+   SELECT id INTO w FROM public.workflow_records WHERE contact_id=c AND workflow_type='vitality_assessment' AND status='in_progress' ORDER BY created_at DESC,id LIMIT 1;
+   IF w IS NULL THEN
+    INSERT INTO public.workflow_records(contact_id,workflow_type,status,current_step,completion_percent,started_at,last_activity_at)
+     VALUES(c,'vitality_assessment','in_progress','lead_capture',0,now(),now()) RETURNING id INTO w;
+   END IF;
+   SELECT id INTO j FROM public.contact_journeys WHERE contact_id=c AND status IN ('active','paused','nurture') ORDER BY created_at DESC,id LIMIT 1;
+   IF j IS NULL THEN j:=public.ensure_contact_journey(c,'assessment_first','{"source":"website_vitality_assessment"}'); END IF;
+   INSERT INTO private.vitality_assessment_drafts(contact_id,workflow_id,journey_id,recipient,identity)
+    VALUES(c,w,j,e,jsonb_build_object('first_name',left(p_payload->>'first_name',100),'last_name',left(p_payload->>'last_name',100),'email',e,'phone',left(p_payload->>'phone',40))) RETURNING * INTO d;
+   INSERT INTO public.journey_events(contact_id,journey_id,event_type,source,metadata,dedupe_key)
+    VALUES(c,j,'vitality_started','website_vitality_assessment','{}','vitality_started:'||w) ON CONFLICT(dedupe_key) DO NOTHING;
+   UPDATE public.contact_journey_steps SET status='in_progress',started_at=coalesce(started_at,now()),updated_at=now() WHERE journey_id=j AND step_key='vitality_assessment' AND status='pending';
+  END IF;
+  IF d.id IS NULL OR d.status<>'draft' THEN RETURN '{}'::jsonb; END IF;
+  -- Recovery requests replace only an unredeemed mail credential, never a live session.
+  UPDATE private.vitality_assessment_drafts SET recovery_hash=p_next_hash,recovery_expires_at=now()+interval '30 days' WHERE id=d.id;
+  RETURN jsonb_build_object('recipient',d.recipient);
+ END IF;
+ IF p_action='cancel_mail' THEN
+  UPDATE private.vitality_assessment_drafts SET recovery_hash=NULL,recovery_expires_at=NULL WHERE recovery_hash=p_hash;
+  RETURN '{}'::jsonb;
+ END IF;
+ IF p_hash IS NULL OR p_hash !~ '^[a-f0-9]{64}$' THEN RAISE EXCEPTION 'Resume unavailable' USING ERRCODE='42501'; END IF;
+ IF p_action='redeem' THEN
+  SELECT * INTO d FROM private.vitality_assessment_drafts WHERE recovery_hash=p_hash FOR UPDATE;
+  IF d.id IS NULL OR d.recovery_expires_at<=now() OR p_next_hash IS NULL OR p_next_hash !~ '^[a-f0-9]{64}$' THEN RAISE EXCEPTION 'Resume unavailable' USING ERRCODE='42501'; END IF;
+  IF d.status='completed' THEN RETURN jsonb_build_object('status','completed'); END IF;
+  IF d.status<>'draft' THEN RETURN jsonb_build_object('status',d.status); END IF;
+  UPDATE private.vitality_assessment_drafts SET session_hash=p_next_hash,session_expires_at=now()+interval '30 days',recovery_hash=NULL,recovery_expires_at=NULL,verified_at=now() WHERE id=d.id RETURNING * INTO d;
+ ELSE
+  SELECT * INTO d FROM private.vitality_assessment_drafts WHERE session_hash=p_hash FOR UPDATE;
+  IF d.id IS NULL OR d.session_expires_at<=now() OR d.verified_at IS NULL THEN RAISE EXCEPTION 'Resume unavailable' USING ERRCODE='42501'; END IF;
+ END IF;
+ IF p_payload ? 'draft_id' AND p_payload->>'draft_id' IS DISTINCT FROM d.id::text THEN RAISE EXCEPTION 'Resume unavailable' USING ERRCODE='42501'; END IF;
+ IF d.status='completed' THEN RETURN jsonb_build_object('status','completed','draft_id',d.id); END IF;
+ IF p_action='save' THEN
+  IF d.status<>'draft' THEN RAISE EXCEPTION 'Assessment is locked' USING ERRCODE='55000'; END IF;
+  s:=p_payload->'snapshot'; r:=(p_payload->>'revision')::integer;
+  IF r IS DISTINCT FROM d.revision THEN RAISE EXCEPTION 'Revision conflict' USING ERRCODE='40001'; END IF;
+  IF s IS NULL OR jsonb_typeof(s)<>'object' OR (s->>'version') IS DISTINCT FROM '1' OR jsonb_typeof(s->'fields') IS DISTINCT FROM 'object'
+   OR length(s::text)>250000 OR NOT coalesce((s->>'section')::integer BETWEEN 0 AND 30,false) OR NOT coalesce((s->>'percent')::integer BETWEEN 0 AND 99,false)
+   OR NOT coalesce(s->>'pathway' IN ('Adult','Child (ages 0–18)'),false) THEN RAISE EXCEPTION 'Invalid snapshot' USING ERRCODE='22023'; END IF;
+  UPDATE private.vitality_assessment_drafts SET snapshot=s,revision=revision+1,updated_at=now(),session_expires_at=now()+interval '30 days' WHERE id=d.id RETURNING * INTO d;
+  UPDATE public.workflow_records SET current_step=left(coalesce(s->>'section_label','assessment'),160),completion_percent=(s->>'percent')::integer,last_activity_at=now(),updated_at=now() WHERE id=d.workflow_id AND status<>'completed';
+  UPDATE public.contact_journeys SET last_activity_at=now(),updated_at=now() WHERE id=d.journey_id;
+ ELSIF p_action='prepare_final' THEN
+  IF d.status<>'draft' THEN RETURN jsonb_build_object('status',d.status,'draft_id',d.id); END IF;
+  IF (p_payload->>'revision')::integer IS DISTINCT FROM d.revision OR NOT coalesce(length(p_payload->>'form') BETWEEN 1 AND 500000,false) OR p_next_hash IS NULL OR p_next_hash !~ '^[a-f0-9]{64}$' THEN RAISE EXCEPTION 'Invalid finalization' USING ERRCODE='22023'; END IF;
+  UPDATE private.vitality_assessment_drafts SET status='submitting',final_form=p_payload->>'form',dispatch_hash=p_next_hash,dispatched_at=now(),updated_at=now() WHERE id=d.id;
+  -- Only this transaction returns permission to send. A retry never issues it twice.
+  RETURN jsonb_build_object('status','dispatch','draft_id',d.id,'identity',d.identity);
+ ELSIF p_action IN ('finish_final','uncertain_final') THEN
+  IF d.status<>'submitting' OR d.dispatch_hash IS DISTINCT FROM p_next_hash THEN RAISE EXCEPTION 'Invalid finalization' USING ERRCODE='42501'; END IF;
+  IF p_action='uncertain_final' THEN
+   UPDATE private.vitality_assessment_drafts SET status='delivery_uncertain',updated_at=now() WHERE id=d.id;
+   RETURN jsonb_build_object('status','delivery_uncertain');
+  END IF;
+  UPDATE private.vitality_assessment_drafts SET status='completed',completed_at=now(),updated_at=now(),snapshot=jsonb_set(snapshot,'{percent}','100'),dispatch_hash=NULL WHERE id=d.id;
+  UPDATE public.workflow_records SET status='completed',current_step='complete',completion_percent=100,completed_at=now(),last_activity_at=now(),updated_at=now() WHERE id=d.workflow_id;
+  UPDATE public.contact_journey_steps SET status='completed',completion_source='website_assessment',completed_at=now(),updated_at=now() WHERE journey_id=d.journey_id AND step_key='vitality_assessment' AND status<>'completed';
+  INSERT INTO public.journey_events(contact_id,journey_id,event_type,source,metadata,dedupe_key)
+   VALUES(d.contact_id,d.journey_id,'vitality_completed','website_vitality_assessment',jsonb_build_object('assessment_id',d.id),'vitality_completed:'||d.workflow_id) ON CONFLICT(dedupe_key) DO NOTHING;
+  -- Preserve the existing assessment-derived tags, never accept arbitrary CRM tags.
+  INSERT INTO public.contact_tags(contact_id,tag,source,rule_key,updated_at)
+   SELECT d.contact_id,tag,'automatic','assessment-derived',now()
+   FROM jsonb_array_elements_text(coalesce(p_payload->'derived_tags','[]'::jsonb)) AS tags(tag)
+   WHERE tag IN ('concern:low-energy','concern:fatigue','concern:pain','concern:sleep','concern:stress','concern:digestion','concern:chronic-condition','goal:energy','goal:weight','goal:strength','goal:mobility','goal:longevity','goal:family-health')
+   ON CONFLICT(contact_id,tag) DO NOTHING;
+  INSERT INTO public.contact_activity(contact_id,activity_type,title,detail,metadata)
+   VALUES(d.contact_id,'vitality_completed','Vitality Assessment completed','The Vitality Assessment was completed on the website.',jsonb_build_object('workflow_id',d.workflow_id,'journey_id',d.journey_id));
+  RETURN jsonb_build_object('status','completed','draft_id',d.id);
+ ELSIF p_action NOT IN ('read','redeem') THEN RAISE EXCEPTION 'Invalid action' USING ERRCODE='22023';
+ END IF;
+ IF d.status<>'draft' THEN RETURN jsonb_build_object('status',d.status,'draft_id',d.id); END IF;
+ RETURN jsonb_build_object('status','draft','draft_id',d.id,'identity',d.identity,'snapshot',d.snapshot,'revision',d.revision,'expires_at',d.session_expires_at);
+END;
+$$;
+REVOKE ALL ON FUNCTION private.vitality_resume_command(text,text,text,jsonb) FROM PUBLIC,anon,authenticated;
+GRANT USAGE ON SCHEMA private TO service_role;
+GRANT EXECUTE ON FUNCTION private.vitality_resume_command(text,text,text,jsonb) TO service_role;
+CREATE FUNCTION public.vitality_resume_command(p_action text,p_hash text DEFAULT NULL,p_next_hash text DEFAULT NULL,p_payload jsonb DEFAULT '{}')
+RETURNS jsonb LANGUAGE sql SECURITY INVOKER SET search_path='' AS $$SELECT private.vitality_resume_command(p_action,p_hash,p_next_hash,p_payload)$$;
+REVOKE ALL ON FUNCTION public.vitality_resume_command(text,text,text,jsonb) FROM PUBLIC,anon,authenticated;
+GRANT EXECUTE ON FUNCTION public.vitality_resume_command(text,text,text,jsonb) TO service_role;

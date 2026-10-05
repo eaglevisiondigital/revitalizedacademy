@@ -1,5 +1,12 @@
 # ReVitalized Academy decisions and unresolved questions
 
+## 2026-10-05 — Approved free-assessment identity and storage
+
+Latest user request supersedes the earlier unresolved Chat handoff: use secure verified-email links, not mandatory free-member accounts. Private server-side drafts hold incomplete health answers; server stores credential digests only. Thirty-day inactivity access, neutral email recovery, completed-state locking, no duplicate contact/draft/final/Journey completion, unchanged adult/child/proxy questions and all 22 acceptance cases are required. Implementation and controlled staging deployment are authorized, including one reviewed forward migration and reviewed Edge code. No production release.
+
+A separate synthetic assessment inbox is still awaiting explicit approval; existing approved beta identities must not be repurposed. Data access expiry is defined; no destructive draft-retention cleanup policy was invented. The existing non-abandoned assessment workflow uniqueness is preserved: completed assessments cannot be restarted as new editable drafts through this feature. Any future repeat-assessment product model needs a separate approved change.
+
+
 ## 2026-10-05 — Free Vitality save/resume required before beta green flag
 
 The user's additional requirement explicitly authorizes this capability as a new required beta gate, superseding historical package exclusions of assessment resume. Preserve immediate independent contact capture, approved adult/child questions, final coach summary and Journey behavior. Full server-backed typed answer persistence, secure free-user recovery, no duplicates and all 22 specified tests plus hosted proof are required. Progress percentage alone is insufficient. [Audited gaps and exact Chat identity/storage-policy handoff](docs/VITALITY_RESUME_BETA_GATE.md). The new public recovery identity choice is pending; existing staff/active-member Journey issuance does not establish a free-user health-draft contract. This does not interrupt the ongoing client/staff/meal/workout acceptance or authorize production changes.

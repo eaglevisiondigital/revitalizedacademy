@@ -1,0 +1,39 @@
+{
+  "frontend": {
+    "tests": 493,
+    "pass": 466,
+    "fail": 0,
+    "skipped": 27
+  },
+  "backend": {
+    "tests": 234,
+    "pass": 234,
+    "fail": 0,
+    "skipped": 0
+  },
+  "focused": {
+    "tests": 31,
+    "pass": 31,
+    "fail": 0,
+    "skipped": 0
+  },
+  "syntax": {
+    "pass": 78,
+    "fail": 0
+  },
+  "edge": {
+    "pass": 47,
+    "fail": 0,
+    "newResumeTests": 17
+  },
+  "resumeRuntime": {
+    "pass": 20,
+    "fail": 0
+  },
+  "existingAssessment": {
+    "pass": 20,
+    "fail": 0
+  },
+  "nativePostgres": "17.11",
+  "buildFiles": 314
+}

@@ -1,0 +1,11 @@
+{
+  "projectRef": "bvooallokgfktssadsrv",
+  "migration": "20261005110245_vitality_assessment_secure_resume",
+  "appliedOnce": true,
+  "historicalMigrationsReplayed": false,
+  "edge": {"name": "vitality-resume", "version": 1, "status": "ACTIVE", "verifyJwt": false, "authentication": "Purpose-scoped 256-bit opaque credentials verified against private SHA-256 digests through a service-role-only RPC", "bundleSha256": "62730d1ed9ae75f251ef1e38a61f199d4e191dc7b1189d732f766fd9cdd75ae3"},
+  "hostedSchemaChecks": {"rls": true,"anonRpcExecute":false,"authenticatedRpcExecute":false,"serviceRoleRpcExecute":true,"anonTableRead":false,"authenticatedTableRead":false,"draftCount":0},
+  "recipientsChanged": false,
+  "hostedAssessmentCreated": false,
+  "productionModified": false
+}

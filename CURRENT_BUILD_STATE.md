@@ -1,5 +1,12 @@
 # ReVitalized Academy — current build state
 
+## Secure free Vitality resume implementation — 2026-10-05
+
+Latest user authority resolves the earlier identity questions: verified-email resume without a member account, private server drafts and 30-day inactivity credentials. Implemented debounced typed-answer autosave, restoration, recovery, revision protection and locked completion. One forward migration applied once to staging as **20261005110245**; new `vitality-resume` Edge function **v1** deployed. Frontend release verification is in progress. Native PostgreSQL 17.11 **234/234**, Edge **47/47**, new resume **20/20**, existing assessment **20/20**, JavaScript syntax **78/78**. The four intentionally changed protected hashes were reviewed and updated; unchanged form controls and child questionnaire remain protected. [Current implementation and 22-case acceptance](docs/VITALITY_RESUME_BETA_GATE.md).
+
+Hosted email START→LEAVE→RESUME→COMPLETE remains pending approval of a separate disposable assessment inbox, normal email receipt and browser acceptance. Do not infer approval from “resume.” Existing A/B/staff identities remain reserved. External Netlify final dispatch is at-most-once; ambiguous delivery preserves answers and requires reconciliation rather than an automatic duplicate. **VITALITY RESUME NOT READY. BETA NOT READY.** The older progress-only audit below is historical, not current source behavior.
+
+
 ## Additional mandatory beta gate — free Vitality save/resume — 2026-10-05
 
 The user adds full free/pre-client assessment answer persistence and secure resume to the final green flag, without replacing pending client/staff/meal/workout acceptance. [Audit, 22-case matrix and decision handoff](docs/VITALITY_RESUME_BETA_GATE.md). Current frontend loses unfinished answers on close/reload; Supabase mirrors progress metadata, not Vitality answers. Existing Journey links restart `/consult.html`. Exact-built synthetic reload reproduction confirms lost answer/section and no answer-save or resume request. Secure free-user recovery identity and draft storage/privacy policy require primary Chat resolution; no schema/access model was invented. No application/backend/hosted change. **VITALITY RESUME NOT READY. BETA NOT READY.**

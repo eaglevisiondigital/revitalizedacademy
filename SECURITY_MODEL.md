@@ -1,5 +1,14 @@
 # ReVitalized Academy security model
 
+## Private free-assessment resume — 2026-10-05
+
+Approved participant-only verified-email recovery; no staff/household access broadening. Opaque 256-bit random credentials are SHA-256 hashed before RPC/storage. Mail tokens are single-use, rotate to session tokens, and replaced sessions are denied. Successful authenticated saves extend session expiry by 30 days. A new neutral email recovery flow can issue a fresh link after expiry. Email knowledge alone returns no answers or draft identifiers. Completed tokens return a locked state, not editable answers.
+
+`private.vitality_assessment_drafts` and rate-limit table have RLS enabled and no direct anon/authenticated/service-role table grants. Fixed-empty-search-path private SECURITY DEFINER RPC is executable only by service_role through the public invoker wrapper. Edge has custom purpose-scoped credential authentication (`verify_jwt=false`) and exact origin/environment/recipient controls. Browser fragment is removed before analytics; request/provider errors are sanitized, tokens and payloads are never logged by the new code. No service key reaches public output. Per-email mail throttling, exact normalized contact matching, advisory locks, revision CAS, private final payload, unique workflow/draft/event and dispatch permit protect identity/data integrity.
+
+Native tests prove cross-draft read/write denial, random/expired/replaced access denial, direct role bypass denial and completion locking. Hosted schema grants were verified after migration; hosted email/browser lifecycle proof remains pending. Existing invitation and client/staff gates remain open.
+
+
 2026-10-05: Free Vitality resume is an additional required beta gate, currently **not ready**. New private answer recovery must not trust the public intake email lookup, inherit broad Journey-token authority, or require paid membership. Identity verification, one-draft scope, expiry/revocation, completed-state immutability, exact contact matching, least-privilege draft access and log/URL redaction require implementation and maintained tests. No new health-data storage/access policy has been applied. [Audit and pending identity/privacy contract](docs/VITALITY_RESUME_BETA_GATE.md).
 
 Current staging beta boundary package is deployed: source20261004124537 applied once as ledger20261004214656, staff-managementv5 and frontend86a0bf3. [Hosted security review and limitations](docs/BETA_HOSTED_ACCEPTANCE_2026-10-04.md). No permission/role/entitlement grants. Existing advisor findings remain unchanged and explicitly guarded definer views/functions were reviewed. Required hosted cross-account/member proof is still incomplete, so BETA NOT READY. Previous undeployed descriptions below are historical.

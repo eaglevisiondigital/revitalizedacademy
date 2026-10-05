@@ -1,0 +1,45 @@
+{
+  "scope": "Exact built application assets with isolated in-memory API and local-only runtime config; not hosted acceptance",
+  "sizes": [
+    {
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "savedVisible": true,
+      "continueAndContinueLaterContained": true,
+      "saveErrorVisible": true,
+      "failedInputRetained": true,
+      "retryVisible": true
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "scrollWidth": 768,
+      "savedVisible": true,
+      "continueAndContinueLaterContained": true,
+      "saveErrorVisible": true,
+      "failedInputRetained": true,
+      "retryVisible": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "savedVisible": true,
+      "continueAndContinueLaterContained": true,
+      "saveErrorVisible": true,
+      "failedInputRetained": true,
+      "retryVisible": true
+    }
+  ],
+  "retryThenReload": {
+    "state": "Saved",
+    "section": "Whole-Person Snapshot",
+    "syntheticAnswerRestored": true
+  },
+  "consoleAfterFixtureConfigurationCorrected": [],
+  "limitations": [
+    "Actual hosted emailed-link lifecycle remains pending",
+    "Completion and email-request responsive checks not yet complete"
+  ]
+}

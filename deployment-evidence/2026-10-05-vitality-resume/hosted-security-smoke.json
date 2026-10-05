@@ -1,0 +1,17 @@
+[
+  {
+    "label": "random-token-denied",
+    "status": 401,
+    "noPrivatePayload": true
+  },
+  {
+    "label": "foreign-origin-denied",
+    "status": 403,
+    "noPrivatePayload": true
+  },
+  {
+    "label": "unapproved-recipient-neutral",
+    "status": 200,
+    "noPrivatePayload": true
+  }
+]

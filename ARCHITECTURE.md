@@ -1,5 +1,14 @@
 # ReVitalized Academy architecture
 
+## Free assessment verified-email drafts — 2026-10-05
+
+`consult.html` uses `vitality-resume.js` and the existing assessment adapter. First contact capture remains independent; email ownership is verified before exposing health questions or restoring answers. `vitality-resume` Edge mediates a service-role-only RPC over private RLS-enabled draft/rate-limit tables. No new member accounts. Snapshot includes typed active controls, pathway, conditional/symptom state, section, percentage and revision. Only the opaque session credential is stored in sessionStorage; answers are authoritative on the server.
+
+Completion locks a durable final payload and unique dispatch ticket before sending the existing Netlify form/coach summary. The backend transaction then closes the draft/workflow and records existing Journey events and approved derived tags. External HTTP delivery and PostgreSQL cannot share a transaction: ambiguous delivery locks `delivery_uncertain`, or leaves `submitting` if interrupted, and must be reconciled without automatic resend. Do not equate a successful HTTP response with verified Netlify form capture; hosted acceptance must inspect the actual synthetic form record.
+
+[Full contract, limitations and acceptance matrix](docs/VITALITY_RESUME_BETA_GATE.md).
+
+
 2026-10-05 additional beta requirement: secure free Vitality answer save/resume is now required, but **not implemented**. Current architecture remains separate initial/final Netlify Forms plus Supabase progress/Journey metadata. No existing free-user answer restore contract was found. [Audit, proposed constraints and pending identity/private-storage decision](docs/VITALITY_RESUME_BETA_GATE.md). Do not mistake this approved capability requirement for an applied schema, new endpoint or deployed feature.
 
 Beta Readiness Core is now coordinated on existing staging: scoped assignment policies/RPCs and triggers, staff-managementv5 and frontend86a0bf3. Existing models and APIs are retained. A real hosted optional workout-duration defect was repaired by sending NULL for unspecified duration, preserving the database constraint. [Release evidence and remaining configuration/acceptance blockers](docs/BETA_HOSTED_ACCEPTANCE_2026-10-04.md).

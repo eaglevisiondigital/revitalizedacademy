@@ -465,6 +465,7 @@
  if (usesChildQuestions() && childAssessment) childAssessment.update(assessmentForm);
  updateAssessmentPerson();
  window.scrollTo({ top: 0, behavior: 'smooth' });
+ if(window.RVA_RESUME)window.RVA_RESUME.changed();
  }
 
  function validateCurrentSection() {
@@ -525,10 +526,10 @@
  return true;
  }
 
- if (backButton) backButton.addEventListener('click', () => showSection(currentSection - 1));
+ if (backButton) backButton.addEventListener('click', async () => {showSection(currentSection - 1);if(window.RVA_RESUME)await window.RVA_RESUME.flush();});
  if (nextButton) nextButton.addEventListener('click', async () => {
  if (!validateCurrentSection()) return;
- if (currentSection < sections.length - 1) return showSection(currentSection + 1);
+ if (currentSection < sections.length - 1) {showSection(currentSection + 1);if(window.RVA_RESUME)await window.RVA_RESUME.flush();return;}
  const original = nextButton.innerHTML;
  nextButton.disabled = true;
  nextButton.textContent = 'Submitting…';
@@ -540,7 +541,8 @@
  if (assessmentForm.elements.self_harm_safety_flag && assessmentForm.elements.self_harm_safety_flag.value === 'Yes') flags.push('SELF-HARM / IMMEDIATE SAFETY RESPONSE');
  assessmentForm.querySelector('[data-coach-review-flags]').value = flags.length ? flags.join(' | ') : 'None reported';
  assessmentForm.querySelector('[data-assessment-summary]').value = buildAssessmentSummary();
- await postForm(assessmentForm);
+ if(window.RVA_RESUME)await window.RVA_RESUME.finalize(encodeForm(assessmentForm));
+ else await postForm(assessmentForm);
  document.querySelector('[data-assessment-step]').hidden = true;
  document.querySelector('[data-complete-step]').hidden = false;
  document.querySelector('[data-progress-assessment]').classList.remove('active');
@@ -550,7 +552,7 @@
  document.querySelector('[data-complete-name]').textContent = firstName || 'your assessment is complete';
  window.scrollTo({ top: 0, behavior: 'smooth' });
  } catch (error) {
- assessmentError.textContent = 'We couldn’t submit your assessment. Your contact information is already saved. Please check your connection and try again.';
+ assessmentError.textContent = window.RVA_RESUME ? error.message : 'We couldn’t submit your assessment. Your contact information is already saved. Please check your connection and try again.';
  assessmentError.classList.add('show');
  nextButton.disabled = false;
  nextButton.innerHTML = original;
@@ -568,6 +570,12 @@
  button.textContent = 'Saving…';
  try {
  await postForm(leadForm);
+ if(window.RVA_RESUME){
+  const identity=Object.fromEntries(['first_name','last_name','email','phone'].map(name=>[name,leadForm.elements[name].value]));
+  await window.RVA_RESUME.start(identity);
+  button.disabled=false;button.innerHTML=original;
+  return;
+ }
  ['first_name','last_name','email','phone'].forEach((name) => {
  assessmentForm.querySelector(`[data-copy-field="${name}"]`).value = leadForm.elements[name].value;
  });
@@ -587,6 +595,46 @@
 
  updateConditionalFields();
  updateAssessmentPerson();
+
+ // Narrow adapter: restore through the same pathway/conditional helpers as normal entry.
+ if(assessmentForm)window.RVA_VITALITY={form:assessmentForm,section:()=>currentSection,
+  complete:()=>{
+   document.querySelector('[data-lead-step]').hidden=true;
+   document.querySelector('[data-assessment-step]').hidden=true;
+   document.querySelector('[data-complete-step]').hidden=false;
+   document.querySelector('[data-progress-assessment]').classList.remove('active');
+   document.querySelector('[data-progress-complete]').classList.add('active');
+   document.querySelector('[data-progress-complete]').classList.remove('future');
+   document.querySelector('[data-progress-percent]').textContent='100%';
+   document.querySelector('[data-complete-name]').textContent=assessmentForm.elements.first_name.value||'your assessment is complete';
+  },
+  restore:(identity,snapshot)=>{
+   for(const name of ['first_name','last_name','email','phone'])assessmentForm.querySelector(`[data-copy-field="${name}"]`).value=identity[name]||'';
+   const fields=snapshot.fields||{};
+   const set=(name,rows)=>{
+    const controls=Array.from(assessmentForm.querySelectorAll(`[name="${CSS.escape(name)}"]`));
+    controls.forEach((c,index)=>{const row=rows[index];if(!row||row.type!==c.type||c.type==='hidden')return;
+     if(['radio','checkbox'].includes(c.type))c.checked=row.checked===true&&(c.value===String(row.value)||name==='assessment_authorization');
+     else if(c.type==='select-multiple')Array.from(c.options).forEach(o=>o.selected=Array.isArray(row.value)&&row.value.includes(o.value));
+     else c.value=String(row.value);
+    });
+   };
+   for(const name of ['assessment_for','assessed_first_name','assessed_last_name','assessed_age','assessed_relationship'])if(fields[name])set(name,fields[name]);
+   updateAssessmentPathway();updateConditionalFields();updateAssessmentPerson();
+   for(const [name,rows]of Object.entries(fields))set(name,rows);
+   assessmentForm.querySelectorAll('[data-symptom-screen]').forEach(updateSymptomScreen);
+   if(usesChildQuestions()&&childAssessment)childAssessment.update(assessmentForm);
+   // Dynamic symptom-detail controls are created by the first pass.
+   for(const [name,rows]of Object.entries(fields))set(name,rows);
+   updateConditionalFields();if(usesChildQuestions()&&childAssessment)childAssessment.update(assessmentForm);updateAssessmentPerson();
+   assessmentForm.querySelectorAll('[data-range]').forEach(c=>{c.nextElementSibling.value=c.value;});
+   document.querySelector('[data-lead-step]').hidden=true;document.querySelector('[data-assessment-step]').hidden=false;
+   document.querySelector('[data-progress-contact]').textContent='✓ Contact Saved';
+   document.querySelector('[data-progress-assessment]').classList.add('active');
+   document.querySelector('[data-progress-assessment]').classList.remove('future');
+   showSection(Number(snapshot.section)||0);
+  }
+ };
 
  // Site-wide assessment invitation popup retained for pages that include it.
  const popup = document.querySelector('.vitality-popup-backdrop');

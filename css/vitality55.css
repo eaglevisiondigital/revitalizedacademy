@@ -175,3 +175,12 @@ a.hero54-btn.journey-secondary-cta{
   .vitality-detail-grid label{grid-template-rows:auto 46px}
   .vitality-detail-grid select{height:46px}
 }
+
+/* Secure resume controls use the established assessment palette. */
+.vitality-resume-panel{background:#fff;border:1px solid #d6e0d8;border-radius:16px;padding:20px;margin:20px 0;overflow-wrap:anywhere;min-width:0}
+.vitality-resume-panel [role=status]{font-weight:600;color:#214837}
+.vitality-resume-panel .is-error{color:#9a3412}
+.vitality-resume-panel form{display:grid;gap:12px;margin-top:16px}
+.vitality-resume-panel input{box-sizing:border-box;min-width:0;width:100%;padding:12px;border:1px solid #a4b5a9;border-radius:8px;font:inherit}
+.vitality-resume-panel button,[data-continue-later]{max-width:100%;white-space:normal;min-height:44px;overflow-wrap:anywhere}
+.vitality-resume-panel summary{cursor:pointer;padding:12px 0;min-height:44px;box-sizing:border-box}

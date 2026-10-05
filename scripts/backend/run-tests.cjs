@@ -10,6 +10,8 @@ const root=path.resolve(__dirname,'../..');
  const port=Number(process.env.RVA_TEST_PGPORT||55439);
  const user=process.env.RVA_TEST_PGUSER||'postgres';
  const database='rva_gate_'+process.pid+'_'+Date.now();
+ const selected=fs.readdirSync(path.join(root,'tests/backend')).filter(f=>f.endsWith('.test.cjs')&&(!process.env.RVA_TEST_FILE||f===process.env.RVA_TEST_FILE));
+ if(!selected.length)throw Error('No matching backend tests');
  const admin=new Client({host,port,user,database:'postgres'});await admin.connect();
  let created=false;
  try {
@@ -19,7 +21,7 @@ const root=path.resolve(__dirname,'../..');
   const restore=spawnSync('psql',['-X','-v','ON_ERROR_STOP=1',...files.flatMap(f=>['-f',f])],{cwd:root,env,encoding:'utf8',maxBuffer:32*1024*1024});
   if(restore.status!==0)throw Error(restore.stderr||restore.stdout);
   console.log('Restored live baseline + forward migrations into an empty local database.');
-  const test=spawnSync(process.execPath,['--test','--test-concurrency=1',...fs.readdirSync(path.join(root,'tests/backend')).filter(f=>f.endsWith('.test.cjs')).map(f=>'tests/backend/'+f)],{cwd:root,env,stdio:'inherit'});
+  const test=spawnSync(process.execPath,['--test','--test-concurrency=1',...selected.map(f=>'tests/backend/'+f)],{cwd:root,env,stdio:'inherit'});
   process.exitCode=test.status||0;
  } finally {if(created)await admin.query(`DROP DATABASE "${database}" WITH (FORCE)`);await admin.end();}
 })().catch(e=>{console.error(e);process.exitCode=1});

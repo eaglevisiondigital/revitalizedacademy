@@ -1,0 +1,26 @@
+{
+  "reason": "User-authorized secure assessment save/resume; existing question controls unchanged, child questionnaire unchanged.",
+  "assessmentControlsCompared": 24,
+  "changes": [
+    {
+      "file": "consult.html",
+      "before": "c533699b1d07d3215da41e9fb6bbed477f190da7ebe3c68f0c99404d2fad0613",
+      "after": "89dc0d3af8dfde20b3c8f43c76e90e235a56192d230916b3368142466e6b0b58"
+    },
+    {
+      "file": "js/vitality55.js",
+      "before": "ff4a920719bf29fd12593feb016c03399e9cceb92524d52dd1ba564d9cf4ce9d",
+      "after": "d5e1445244af2ea3818f0199f418e35b2a2bfcd9881659f1ceb60e256918b2ac"
+    },
+    {
+      "file": "css/vitality55.css",
+      "before": "ab3ea9eaf3f788c265ecd5640271672e0bd4e300b05359764e77cc76ba8a3111",
+      "after": "1158a0d3c79ad8f568ba62e4758f6f9c18064efa55568ee54e0c01ad96343da6"
+    },
+    {
+      "file": "js/revitalized-data.js",
+      "before": "ef48430ea5a619c3a86eb44c09a785c057e03a4fead1d283d8f5916994fc6769",
+      "after": "cca3930b7b996e7bf81e46b2be1fd102568383543ced55a0ade1fe5bb9b703e1"
+    }
+  ]
+}
