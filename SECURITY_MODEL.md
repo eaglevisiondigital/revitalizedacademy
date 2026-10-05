@@ -1,5 +1,9 @@
 # ReVitalized Academy security model
 
+## Vitality UI cleanup security continuity — 2026-10-05
+
+The dedicated staging entry/completion frontend release preserves all original draft/token/origin/expiry/access/locking boundaries. Email-only recovery remains neutral and cannot restore answers directly or expose identifiers; new duplicate-click suppression sends at most one in-flight request. No schema, policy, permission, token storage or Edge change. Hosted completed record hashes/timestamps/counts and accepted synthetic Netlify Spam capture are unchanged; no hosted form/email was submitted during this package. Completed UI was validated in an isolated exact-built fixture rather than reopening the hosted record. [Release evidence](docs/VITALITY_ENTRY_CLEANUP_2026-10-05.md).
+
 ## Private free-assessment resume — 2026-10-05
 
 Approved participant-only verified-email recovery; no staff/household access broadening. Opaque 256-bit random credentials are SHA-256 hashed before RPC/storage. Mail tokens are single-use, rotate to session tokens, and replaced sessions are denied. Successful authenticated saves extend session expiry by 30 days. A new neutral email recovery flow can issue a fresh link after expiry. Email knowledge alone returns no answers or draft identifiers. Completed tokens return a locked state, not editable answers.

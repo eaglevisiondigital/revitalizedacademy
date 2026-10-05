@@ -1,0 +1,81 @@
+{
+  "status": "VITALITY RESUME READY",
+  "overallStatus": "BETA NOT READY",
+  "sourceCommit": "1d649c60abf580f9f696428ff2540a47ee1bf9eb",
+  "deployId": "6ac3bbaeecd0a269b0a5eef6",
+  "url": "https://revitalizedacademy-staging.netlify.app/consult.html",
+  "assets": [
+    {
+      "path": "/js/vitality55.js?v=resume-2",
+      "status": 200,
+      "sha256": "51f12f417260398f419501451528adeb52e7cf506c3fe9272bebc37372f1b21d"
+    },
+    {
+      "path": "/js/vitality-resume.js?v=2",
+      "status": 200,
+      "sha256": "fac2f7b986bd04172f7593ede2ee05f1d36b69864b8cd3136e2b982ea4071686"
+    },
+    {
+      "path": "/css/vitality55.css?v=87",
+      "status": 200,
+      "sha256": "3b06468b61ac9863f3cd0ececdfc54dc5fdeaaa314e41b1a8ef26d1656f75260"
+    },
+    {
+      "path": "/runtime-config.js",
+      "status": 200,
+      "sha256": "b87e0084cb8409221384331c629744ce4fe855dd013be4280d0e94f060d23257"
+    }
+  ],
+  "html": {
+    "status": 200,
+    "formsAndControlsMatch": true,
+    "scriptSourcesAndInlineCodeMatch": true,
+    "mainTextMatches": true,
+    "rawHashMatch": false,
+    "difference": "Existing Netlify clean-link and Forms attribute processing; application text, fields and scripts match"
+  },
+  "tests": {
+    "vitalityRuntime": {
+      "passed": 30,
+      "failed": 0
+    },
+    "assessmentAdultChildProxy": {
+      "passed": 20,
+      "failed": 0
+    },
+    "environmentAndProtectedContent": {
+      "passed": 36,
+      "failed": 0
+    },
+    "javascriptSyntax": 78,
+    "buildFiles": 314
+  },
+  "responsive": {
+    "sizes": [
+      [
+        1440,
+        1000
+      ],
+      [
+        768,
+        1024
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "liveEntryOverflow": false,
+    "isolatedCompletedOverflow": false,
+    "consoleWarningsErrors": 0
+  },
+  "completedHostedRecordReopened": false,
+  "completedHostedRecordUnchanged": true,
+  "syntheticSpamCapturePreserved": true,
+  "hostedFormsSubmitted": false,
+  "hostedMailSent": false,
+  "schemaEdgeRolesFlagsProvidersChanged": false,
+  "productionDeploy": "6ac036d3b48eac0008568e00",
+  "productionFingerprintsUnchanged": 9,
+  "productionUnchanged": true
+}

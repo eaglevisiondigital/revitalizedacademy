@@ -1,5 +1,9 @@
 # ReVitalized Academy architecture
 
+## Final Vitality entry/completion presentation — 2026-10-05
+
+Dedicated staging release adds a two-path Start/Resume chooser and shared completed-stage presenter to the existing static assessment. Recovery still uses the single original verified-email endpoint; drafts, typed snapshots, sessionStorage credential, final dispatch and Journey models are unchanged. No migration or Edge release. VITALITY RESUME READY per Primary Chat's accepted capture decision and focused/staging UI verification; BETA NOT READY remains independent. [Release evidence](docs/VITALITY_ENTRY_CLEANUP_2026-10-05.md).
+
 ## Free assessment verified-email drafts — 2026-10-05
 
 `consult.html` uses `vitality-resume.js` and the existing assessment adapter. First contact capture remains independent; email ownership is verified before exposing health questions or restoring answers. `vitality-resume` Edge mediates a service-role-only RPC over private RLS-enabled draft/rate-limit tables. No new member accounts. Snapshot includes typed active controls, pathway, conditional/symptom state, section, percentage and revision. Only the opaque session credential is stored in sessionStorage; answers are authoritative on the server.

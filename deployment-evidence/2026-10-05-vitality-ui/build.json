@@ -1,9 +1,9 @@
 {
-  "at": "2026-10-05T14:55:43.531Z",
+  "at": "2026-10-05T14:59:49.746Z",
   "site": "071b252e-a922-4846-a784-8dca1edad377",
   "branch": "codex/staging",
-  "commit": "41dcec80a3f2992ba49e02caa03cf49a9321d22a",
-  "workingTree": "modified",
+  "commit": "1d649c60abf580f9f696428ff2540a47ee1bf9eb",
+  "workingTree": "clean",
   "files": [
     {
       "file": "about-our-founders-hero-approved.png",

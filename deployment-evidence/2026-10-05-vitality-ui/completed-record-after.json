@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-10-05T15:01:15.951Z",
+  "unchanged": true,
+  "record": {
+    "id": "1d66c0f6-c6ad-4cd6-ab8f-5fc778e87ce2",
+    "contact_id": "667aec53-0fe2-453b-b47a-8b3012777411",
+    "workflow_id": "7d17430a-1e9e-4ba7-aacd-570d48cdf66d",
+    "journey_id": "409cdfcb-9aae-462b-9d49-abb3ac2ba2b4",
+    "status": "completed",
+    "revision": 33,
+    "completed_at": "2026-10-05 14:41:25.339743+00",
+    "dispatched_at": "2026-10-05 14:41:24.899158+00",
+    "updated_at": "2026-10-05 14:41:25.339743+00",
+    "snapshot_hash": "a023b63055e9d7f284b1b90bb9e4a1ce0ee37a2a87133dcf1f3298a3a29903a0",
+    "final_form_hash": "6e7343cad9756f570734e0bbe611d3aa4ff77ea617a677258571267a1e39320b",
+    "draft_count": 1,
+    "workflow_count": 1,
+    "completion_event_count": 1,
+    "completion_activity_count": 1
+  }
+}

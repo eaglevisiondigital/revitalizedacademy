@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-10-05T15:03:22.776Z",
+  "submissionId": "6ac3b715e156348257058d67",
+  "capturedAt": "2026-10-05T14:41:25.209Z",
+  "classification": "spam",
+  "targetCount": 1,
+  "correlationMatches": true,
+  "emailMatches": true,
+  "summaryHashMatches": true,
+  "rawSummarySha256": "b33909325f0bfc4fd578a50d61995f4c90800f6edeac495a210a3a6549c48274",
+  "reclassified": false,
+  "resent": false,
+  "deleted": false
+}
