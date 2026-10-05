@@ -42,7 +42,10 @@
     "journeyLinkId": "ab14758d-23d7-4818-99b4-14e98f77a230",
     "priorJourneyLinkDeactivated": true
   },
-  "userMailboxReceipt": "pending_confirmation",
+  "userMailboxReceipt": "confirmed",
+  "userMailboxReceiptConfirmedAtUtc": "2026-10-05T20:10:54Z",
+  "linkOpened": false,
+  "agreementSigned": false,
   "privateLinkHandling": "No raw link or token is stored in this receipt, exposed in chat, or used outside the normal recipient flow.",
   "authorizedHostedChanges": "Existing Client A contact email reconciled in place, prior journey link deactivated, existing agreement resent, and audited activity recorded.",
   "unauthorizedHostedContentCreated": false,
