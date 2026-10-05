@@ -37,7 +37,7 @@ function fixture(leadFails = false, childLoads = true) {
   const next = async () => { d.querySelector('[data-next]').click(); await settle(); };
   async function start() {
     const lead = d.querySelector('[data-vitality-lead-form]');
-    for (const [name, value] of Object.entries({first_name:'Synthetic',last_name:'Respondent',email:'synthetic@example.invalid',phone:'0000000000'})) {
+    for (const [name, value] of Object.entries({first_name:'Synthetic',last_name:'Respondent',email:'synthetic@example.invalid',phone:'0000000000',referral_source:'Google Search'})) {
       input(lead.elements.namedItem(name), value);
     }
     lead.dispatchEvent(new w.Event('submit', { bubbles: true, cancelable: true }));

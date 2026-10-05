@@ -199,4 +199,5 @@ a.hero54-btn.journey-secondary-cta{
 .vitality-recovery input{box-sizing:border-box;min-width:0;width:100%;padding:15px 16px;border:1px solid #a4b5a9;border-radius:12px;font:inherit}
 .vitality-recovery button{max-width:100%;min-height:48px;white-space:normal;line-height:1.4;justify-self:start}
 .vitality-progress .done{color:#154734}
+.vitality-referral-source{grid-column:1/-1}.vitality-referral-detail{grid-column:1/-1}.vitality-referral-detail input{max-width:560px}
 @media(max-width:700px){.vitality-entry{grid-template-columns:1fr;padding:24px 23px}.vitality-recovery{padding:0 23px 28px}.vitality-recovery h2{font-size:26px}.vitality-recovery button{width:100%;justify-self:stretch}}

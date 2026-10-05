@@ -11,7 +11,7 @@
   <meta name="description" content="Complete the ReVitalized Academy Free Vitality Assessment to identify patterns across the 12 Drivers of Health and prepare for your Vitality Roadmap Consultation.">
   <title>Free Vitality Assessment | ReVitalized Academy</title>
   <link rel="stylesheet" href="css/styles.css?v=71">
-  <link rel="stylesheet" href="css/vitality55.css?v=87">
+  <link rel="stylesheet" href="css/vitality55.css?v=88">
   <link rel="stylesheet" href="css/header-glass.css?v=20260910-3">
 </head>
 <body>
@@ -65,6 +65,9 @@
               <div class="vitality-field"><label for="lead-last">Last name</label><input id="lead-last" name="last_name" autocomplete="family-name" required></div>
               <div class="vitality-field"><label for="lead-email">Email</label><input id="lead-email" name="email" type="email" autocomplete="email" aria-describedby="lead-email-help" required><span class="vitality-field-help" id="lead-email-help">So we can send your results and a few helpful next steps straight to you.</span></div>
               <div class="vitality-field"><label for="lead-phone">Cell phone</label><input id="lead-phone" name="phone" type="tel" autocomplete="tel" aria-describedby="lead-phone-help" required><span class="vitality-field-help" id="lead-phone-help">So we can personally check in and help you make sense of your results.</span></div>
+              <div class="vitality-field vitality-referral-source"><label for="lead-referral-source">How did you hear about ReVitalized Academy?</label><select id="lead-referral-source" name="referral_source" required><option value="">Select one</option><option>Facebook</option><option>Instagram</option><option>Google Search</option><option>YouTube</option><option>LinkedIn</option><option>TikTok</option><option>Friend / Family</option><option>Existing Client</option><option>Event / Webinar</option><option>Church / Community</option><option>Podcast</option><option>Email</option><option>Sales Rep</option><option>Other</option></select></div>
+              <div class="vitality-field vitality-referral-detail" data-sales-rep-field hidden><label for="lead-sales-rep">Sales Rep Name</label><input id="lead-sales-rep" name="sales_rep_name" maxlength="160" disabled></div>
+              <div class="vitality-field vitality-referral-detail" data-referral-other-field hidden><label for="lead-referral-other">Please tell us how you heard about us</label><input id="lead-referral-other" name="referral_source_other" maxlength="240" disabled></div>
             </div>
             <div class="vitality-actions"><button class="vitality-next" type="submit">Save &amp; Continue <span aria-hidden="true">→</span></button><span class="vitality-assurance"><strong>Your information saves at this step.</strong><br>Then verify your email with a private link. No member account is required.</span></div>
             <div class="vitality-error" role="alert">We couldn’t save your information. Please check your connection and try again.</div>
@@ -78,7 +81,7 @@
           <p class="vitality-person-context" data-person-context hidden></p>
           <form name="vitality-assessment" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-assessment-form autocomplete="off">
             <input type="hidden" name="form-name" value="vitality-assessment"><input type="hidden" name="assessment_resume_id" value=""><input type="hidden" name="lead_source" value="Free Vitality Assessment"><input type="hidden" name="assessment_pathway" value="Adult"><input type="hidden" name="assessment_version" value="Vitality Roadmap PDF - September 2026">
-            <input type="hidden" name="first_name" data-copy-field="first_name"><input type="hidden" name="last_name" data-copy-field="last_name"><input type="hidden" name="email" data-copy-field="email"><input type="hidden" name="phone" data-copy-field="phone">
+            <input type="hidden" name="first_name" data-copy-field="first_name"><input type="hidden" name="last_name" data-copy-field="last_name"><input type="hidden" name="email" data-copy-field="email"><input type="hidden" name="phone" data-copy-field="phone"><input type="hidden" name="referral_source" data-copy-field="referral_source"><input type="hidden" name="sales_rep_name" data-copy-field="sales_rep_name"><input type="hidden" name="referral_source_other" data-copy-field="referral_source_other">
             <input type="hidden" name="completed_by" data-completed-by><input type="hidden" name="assessment_for_name" data-assessment-for-name>
             <input type="hidden" name="assessment_status" value="Complete - coach review requested"><input type="hidden" name="submitted_at" data-submitted-at><input type="hidden" name="coach_review_flags" data-coach-review-flags value="None reported">
             <textarea name="assessment_summary" data-assessment-summary hidden></textarea>
@@ -150,7 +153,7 @@
     })();
   </script>
   <script src="js/vitality-child.js?v=nodash-20260921"></script>
-  <script src="js/vitality55.js?v=resume-2"></script>
+  <script src="js/vitality55.js?v=referral-1"></script>
   <script src="js/vitality-resume.js?v=2"></script>
   <script src="js/revitalized-data.js?v=20261005" defer></script>
 </body>

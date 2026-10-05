@@ -239,6 +239,7 @@
  const leadForm = document.querySelector('[data-vitality-lead-form]');
  const assessmentForm = document.querySelector('[data-assessment-form]');
  const assessmentStage = document.querySelector('[data-assessment-stage]');
+ const contactIdentityFields=['first_name','last_name','email','phone','referral_source','sales_rep_name','referral_source_other'];
  const entry = document.querySelector('[data-assessment-entry]');
  const recoveryPanel = document.querySelector('[data-recovery-panel]');
  const progress = document.querySelector('[data-assessment-progress]');
@@ -597,6 +598,17 @@
  if (leadForm) {
  const button = leadForm.querySelector('button[type="submit"]');
  const error = leadForm.querySelector('.vitality-error');
+ const referralSource=leadForm.elements.referral_source;
+ const referralDetails=[
+  {value:'Sales Rep',container:leadForm.querySelector('[data-sales-rep-field]'),input:leadForm.elements.sales_rep_name},
+  {value:'Other',container:leadForm.querySelector('[data-referral-other-field]'),input:leadForm.elements.referral_source_other}
+ ];
+ const updateReferralFields=()=>referralDetails.forEach(detail=>{
+  const active=referralSource.value===detail.value;
+  detail.container.hidden=!active;detail.input.disabled=!active;detail.input.required=active;
+  if(!active)detail.input.value='';
+ });
+ referralSource.addEventListener('change',updateReferralFields);updateReferralFields();
  leadForm.addEventListener('submit', async (event) => {
  event.preventDefault();
  if (!leadForm.reportValidity()) return;
@@ -606,12 +618,12 @@
  try {
  await postForm(leadForm);
  if(window.RVA_RESUME){
-  const identity=Object.fromEntries(['first_name','last_name','email','phone'].map(name=>[name,leadForm.elements[name].value]));
+  const identity=Object.fromEntries(contactIdentityFields.map(name=>[name,leadForm.elements[name].value]));
   await window.RVA_RESUME.start(identity);
   button.disabled=false;button.innerHTML=original;
   return;
  }
- ['first_name','last_name','email','phone'].forEach((name) => {
+ contactIdentityFields.forEach((name) => {
  assessmentForm.querySelector(`[data-copy-field="${name}"]`).value = leadForm.elements[name].value;
  });
  hideEntry();
@@ -637,7 +649,7 @@
   complete:showCompleted,
   restore:(identity,snapshot)=>{
    hideEntry();
-   for(const name of ['first_name','last_name','email','phone'])assessmentForm.querySelector(`[data-copy-field="${name}"]`).value=identity[name]||'';
+   for(const name of contactIdentityFields)assessmentForm.querySelector(`[data-copy-field="${name}"]`).value=identity[name]||'';
    const fields=snapshot.fields||{};
    const set=(name,rows)=>{
     const controls=Array.from(assessmentForm.querySelectorAll(`[name="${CSS.escape(name)}"]`));

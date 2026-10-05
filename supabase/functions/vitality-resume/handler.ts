@@ -4,6 +4,7 @@ export type Dependencies={rpc:RPC;mail:(recipient:string,url:string)=>Promise<vo
 export const opaque=()=>Array.from(crypto.getRandomValues(new Uint8Array(32)),b=>b.toString(16).padStart(2,'0')).join('');
 export async function digest(value:string){return Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(value))),b=>b.toString(16).padStart(2,'0')).join('');}
 const neutral={ok:true,message:'If an unfinished assessment is available, we’ll email a secure link. Please check your inbox and spam folder.'};
+const referralSources=new Set(['Facebook','Instagram','Google Search','YouTube','LinkedIn','TikTok','Friend / Family','Existing Client','Event / Webinar','Church / Community','Podcast','Email','Sales Rep','Other']);
 export function validSnapshot(s:any){
  if(!s||s.version!==1||!Number.isInteger(s.section)||s.section<0||s.section>30||!Number.isInteger(s.percent)||s.percent<0||s.percent>99||!['Adult','Child (ages 0–18)'].includes(s.pathway)||typeof s.section_label!=='string'||s.section_label.length>160||!s.fields||Array.isArray(s.fields)||typeof s.fields!=='object')return false;
  if(Object.keys(s.fields).length>1600)return false;
@@ -35,9 +36,13 @@ export function createHandler(deps:Dependencies){return async(req:Request)=>{
    const email=String(body.email||'').trim().toLowerCase();
    if(body.website||!/^\S+@[^\s@]+\.[^\s@]+$/.test(email)||email.length>254)return reply(neutral);
    if(action==='start'&&(!String(body.first_name||'').trim()||!String(body.last_name||'').trim()||!String(body.phone||'').trim()))return reply({error:'Contact details are required'},400);
+   const referralSource=String(body.referral_source||'').trim();
+   const salesRepName=referralSource==='Sales Rep'?String(body.sales_rep_name||'').trim():'';
+   const referralSourceOther=referralSource==='Other'?String(body.referral_source_other||'').trim():'';
+   if(action==='start'&&(!referralSources.has(referralSource)||(referralSource==='Sales Rep'&&!salesRepName)||(referralSource==='Other'&&!referralSourceOther)||salesRepName.length>160||referralSourceOther.length>240))return reply({error:'Referral details are required'},400);
    try{assertSyntheticRecipient(email);}catch{return reply(neutral);}
    const token=opaque(),hash=await digest(token);
-   const data=await deps.rpc(action,null,hash,{email,first_name:String(body.first_name||'').slice(0,100),last_name:String(body.last_name||'').slice(0,100),phone:String(body.phone||'').slice(0,40)});
+   const data=await deps.rpc(action,null,hash,{email,first_name:String(body.first_name||'').slice(0,100),last_name:String(body.last_name||'').slice(0,100),phone:String(body.phone||'').slice(0,40),referral_source:referralSource,sales_rep_name:salesRepName,referral_source_other:referralSourceOther});
    if(data.recipient){
     try{await deps.mail(data.recipient,env.appOrigin+'/consult.html#resume='+token);}
     catch{await deps.rpc('cancel_mail',hash,null,{});return reply(neutral);}

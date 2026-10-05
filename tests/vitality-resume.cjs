@@ -1,15 +1,16 @@
 const {test}=require('node:test');const assert=require('node:assert/strict');const fs=require('node:fs');const path=require('node:path');const {JSDOM}=require('jsdom');
 const root=path.resolve(__dirname,'..'),sleep=ms=>new Promise(r=>setTimeout(r,ms));
-function server(){return {snapshot:{version:1,fields:{},section:0,section_label:'Introduction',percent:0,pathway:'Adult'},revision:0,status:'draft',requests:[],fail:false,delay:0,finals:0,mailConsumed:false};}
+function server(){return {snapshot:{version:1,fields:{},section:0,section_label:'Introduction',percent:0,pathway:'Adult'},identity:null,revision:0,status:'draft',requests:[],leads:[],fail:false,delay:0,finals:0,mailConsumed:false};}
 async function page(s,mode='mail'){
  const d=new JSDOM(fs.readFileSync(path.join(root,'consult.html'),'utf8'),{url:'https://assessment.invalid/consult.html',runScripts:'outside-only'}),w=d.window,doc=w.document;
  w.scrollTo=()=>{};w.HTMLElement.prototype.scrollIntoView=()=>{};w.CSS={escape:v=>String(v).replace(/[^a-zA-Z0-9_-]/g,c=>'\\'+c)};
  w.RVA_ENV={edgeBaseUrl:'https://edge.invalid',supabaseKey:'public-test'};
- const identity={first_name:'Synthetic',last_name:'Participant',email:'test@example.invalid',phone:'0000000000'};
+ const identity=s.identity||(s.identity={first_name:'Synthetic',last_name:'Participant',email:'test@example.invalid',phone:'0000000000',referral_source:'Google Search',sales_rep_name:'',referral_source_other:''});
  if(mode==='mail')w.RVA_RESUME_LINK='a'.repeat(64);if(mode==='session')w.sessionStorage.setItem('rva_vitality_session_v1','b'.repeat(64));
  w.fetch=async(url,opt)=>{
-  if(url==='/'){s.requests.push({action:'lead'});return {ok:true,status:200};}
+  if(url==='/'){s.leads.push(Object.fromEntries(new URLSearchParams(opt.body)));s.requests.push({action:'lead'});return {ok:true,status:200};}
   const body=JSON.parse(opt.body);s.requests.push(body);if(s.delay)await sleep(s.delay);
+  if(body.action==='start')for(const name of ['first_name','last_name','email','phone','referral_source','sales_rep_name','referral_source_other'])identity[name]=body[name]||'';
   if(body.action==='recover'&&s.recoveryFail)return {ok:false,status:503,json:async()=>({error:'Please try again.'})};
   let data={status:s.status,draft_id:'synthetic-draft',identity,snapshot:structuredClone(s.snapshot),revision:s.revision};
   if(body.action==='start'||body.action==='recover')data={ok:true,message:s.recoveryMessage||'If an unfinished assessment is available, we’ll email a secure link.'};
@@ -31,7 +32,18 @@ async function page(s,mode='mail'){
  function set(name,value,choice){const list=Array.from(form.querySelectorAll(`[name="${name}"]`));const c=choice?list.find(c=>c.value===choice):list[0];assert(c,name);if(['checkbox','radio'].includes(c.type))c.checked=Boolean(value);else c.value=value;c.dispatchEvent(new w.Event('input',{bubbles:true}));c.dispatchEvent(new w.Event('change',{bubbles:true}));return c;}
  return {d,w,doc,form,set,flush:()=>w.RVA_RESUME.flush(),close:()=>d.window.close()};
 }
-test('first contact capture remains independent and health entry waits for verified email',async()=>{const s=server(),p=await page(s,'none');const lead=p.doc.querySelector('[data-vitality-lead-form]');for(const[k,v]of Object.entries({first_name:'Synthetic',last_name:'Lead',email:'test@example.invalid',phone:'0000000000'}))lead.elements[k].value=v;lead.dispatchEvent(new p.w.Event('submit',{bubbles:true,cancelable:true}));await sleep(5);assert.deepEqual(s.requests.map(r=>r.action),['lead','start']);assert.equal(p.doc.querySelector('[data-assessment-step]').hidden,true);assert.match(p.doc.querySelector('[data-resume-notice]').textContent,/verify your email/);p.close();});
+test('first contact capture remains independent and health entry waits for verified email',async()=>{const s=server(),p=await page(s,'none');const lead=p.doc.querySelector('[data-vitality-lead-form]');for(const[k,v]of Object.entries({first_name:'Synthetic',last_name:'Lead',email:'test@example.invalid',phone:'0000000000',referral_source:'Google Search'}))lead.elements[k].value=v;lead.dispatchEvent(new p.w.Event('submit',{bubbles:true,cancelable:true}));await sleep(5);assert.deepEqual(s.requests.map(r=>r.action),['lead','start']);assert.equal(s.requests[1].referral_source,'Google Search');assert.equal(s.leads[0].referral_source,'Google Search');assert.equal(p.doc.querySelector('[data-assessment-step]').hidden,true);assert.match(p.doc.querySelector('[data-resume-notice]').textContent,/verify your email/);p.close();});
+test('referral source is required and exposes only the selected conditional detail',async()=>{
+ const s=server(),p=await page(s,'none');p.doc.querySelector('[data-start-new]').click();const lead=p.doc.querySelector('[data-vitality-lead-form]'),source=lead.elements.referral_source;
+ assert.equal(source.required,true);assert.equal(source.value,'');assert.deepEqual(Array.from(source.options).map(o=>o.textContent),['Select one','Facebook','Instagram','Google Search','YouTube','LinkedIn','TikTok','Friend / Family','Existing Client','Event / Webinar','Church / Community','Podcast','Email','Sales Rep','Other']);
+ source.value='Sales Rep';source.dispatchEvent(new p.w.Event('change',{bubbles:true}));assert.equal(lead.elements.sales_rep_name.required,true);assert.equal(lead.elements.sales_rep_name.disabled,false);assert.equal(lead.elements.referral_source_other.disabled,true);
+ lead.elements.sales_rep_name.value='Synthetic Rep';source.value='Other';source.dispatchEvent(new p.w.Event('change',{bubbles:true}));assert.equal(lead.elements.sales_rep_name.value,'');assert.equal(lead.elements.sales_rep_name.required,false);assert.equal(lead.elements.sales_rep_name.disabled,true);assert.equal(lead.elements.referral_source_other.required,true);
+ lead.elements.referral_source_other.value='Synthetic source';source.value='Facebook';source.dispatchEvent(new p.w.Event('change',{bubbles:true}));assert.equal(lead.elements.referral_source_other.value,'');assert.equal(lead.elements.referral_source_other.disabled,true);p.close();
+});
+test('Sales Rep referral is included in the initial secure payload and restored identity',async()=>{
+ const s=server(),p=await page(s,'none'),lead=p.doc.querySelector('[data-vitality-lead-form]');for(const[k,v]of Object.entries({first_name:'Synthetic',last_name:'Lead',email:'test@example.invalid',phone:'0000000000',referral_source:'Sales Rep'}))lead.elements[k].value=v;lead.elements.referral_source.dispatchEvent(new p.w.Event('change',{bubbles:true}));lead.elements.sales_rep_name.value='Synthetic Rep';lead.dispatchEvent(new p.w.Event('submit',{bubbles:true,cancelable:true}));await sleep(5);assert.equal(s.requests[1].sales_rep_name,'Synthetic Rep');assert.equal(s.requests[1].referral_source_other,'');assert.equal(s.leads[0].sales_rep_name,'Synthetic Rep');p.close();
+ s.mailConsumed=false;const restored=await page(s,'mail');assert.equal(restored.form.elements.referral_source.value,'Sales Rep');assert.equal(restored.form.elements.sales_rep_name.value,'Synthetic Rep');restored.close();
+});
 test('no raw answers are written to browser storage',async()=>{const p=await page(server());p.set('additional_context','Synthetic private context');await p.flush();assert.equal(p.w.localStorage.length,0);assert.equal(p.w.sessionStorage.length,1);assert.equal(p.w.sessionStorage.getItem('rva_vitality_session_v1'),'b'.repeat(64));p.close();});
 test('closing a tab loses its credential; plain new tab needs fresh email recovery without resetting the server draft',async()=>{
  const s=server(),original=await page(s);
