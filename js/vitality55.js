@@ -239,6 +239,47 @@
  const leadForm = document.querySelector('[data-vitality-lead-form]');
  const assessmentForm = document.querySelector('[data-assessment-form]');
  const assessmentStage = document.querySelector('[data-assessment-stage]');
+ const entry = document.querySelector('[data-assessment-entry]');
+ const recoveryPanel = document.querySelector('[data-recovery-panel]');
+ const progress = document.querySelector('[data-assessment-progress]');
+ function hideEntry() {
+  if (entry) entry.hidden = true;
+  if (recoveryPanel) recoveryPanel.hidden = true;
+  if (progress) progress.hidden = false;
+ }
+ if (entry) {
+  const start = entry.querySelector('[data-start-new]');
+  const resume = entry.querySelector('[data-open-resume]');
+  function chooseEntry(recover) {
+   document.querySelector('[data-lead-step]').hidden = recover;
+   recoveryPanel.hidden = !recover;
+   progress.hidden = recover;
+   start.setAttribute('aria-expanded', String(!recover));
+   resume.setAttribute('aria-expanded', String(recover));
+   (recover ? recoveryPanel.querySelector('input') : leadForm.elements.first_name).focus();
+  }
+  start.addEventListener('click', () => chooseEntry(false));
+  resume.addEventListener('click', () => chooseEntry(true));
+ }
+ function showCompleted() {
+  hideEntry();
+  document.querySelector('[data-lead-step]').hidden = true;
+  document.querySelector('[data-assessment-step]').hidden = true;
+  document.querySelector('[data-complete-step]').hidden = false;
+  const stages = ['contact', 'assessment', 'complete'];
+  const labels = ['✓ Contact Saved', '✓ Assessment Complete', '✓ Complete'];
+  stages.forEach((stage, index) => {
+   const item = document.querySelector(`[data-progress-${stage}]`);
+   item.textContent = labels[index];
+   item.classList.remove('active', 'future');
+   item.classList.add('done');
+   item.removeAttribute('aria-current');
+   if (stage === 'complete') { item.classList.add('active'); item.setAttribute('aria-current', 'step'); }
+  });
+  document.querySelector('[data-progress-percent]').textContent = '100%';
+  document.querySelector('[data-complete-name]').textContent = assessmentForm.elements.first_name.value || 'your assessment is complete';
+ }
+
  if (assessmentForm && assessmentStage) {
  assessmentStage.innerHTML = sections.map((section, index) => `<section class="vitality-panel" data-panel="${index}" ${index ? 'hidden' : ''}>${section.html()}</section>`).join('');
  // Keep person fields in the static Netlify form, then place them in Introduction.
@@ -543,13 +584,7 @@
  assessmentForm.querySelector('[data-assessment-summary]').value = buildAssessmentSummary();
  if(window.RVA_RESUME)await window.RVA_RESUME.finalize(encodeForm(assessmentForm));
  else await postForm(assessmentForm);
- document.querySelector('[data-assessment-step]').hidden = true;
- document.querySelector('[data-complete-step]').hidden = false;
- document.querySelector('[data-progress-assessment]').classList.remove('active');
- document.querySelector('[data-progress-complete]').classList.add('active');
- document.querySelector('[data-progress-complete]').classList.remove('future');
- const firstName = assessmentForm.querySelector('[data-copy-field="first_name"]').value;
- document.querySelector('[data-complete-name]').textContent = firstName || 'your assessment is complete';
+ showCompleted();
  window.scrollTo({ top: 0, behavior: 'smooth' });
  } catch (error) {
  assessmentError.textContent = window.RVA_RESUME ? error.message : 'We couldn’t submit your assessment. Your contact information is already saved. Please check your connection and try again.';
@@ -579,6 +614,7 @@
  ['first_name','last_name','email','phone'].forEach((name) => {
  assessmentForm.querySelector(`[data-copy-field="${name}"]`).value = leadForm.elements[name].value;
  });
+ hideEntry();
  document.querySelector('[data-lead-step]').hidden = true;
  document.querySelector('[data-assessment-step]').hidden = false;
  document.querySelector('[data-progress-contact]').textContent = '✓ Contact Saved';
@@ -598,17 +634,9 @@
 
  // Narrow adapter: restore through the same pathway/conditional helpers as normal entry.
  if(assessmentForm)window.RVA_VITALITY={form:assessmentForm,section:()=>currentSection,
-  complete:()=>{
-   document.querySelector('[data-lead-step]').hidden=true;
-   document.querySelector('[data-assessment-step]').hidden=true;
-   document.querySelector('[data-complete-step]').hidden=false;
-   document.querySelector('[data-progress-assessment]').classList.remove('active');
-   document.querySelector('[data-progress-complete]').classList.add('active');
-   document.querySelector('[data-progress-complete]').classList.remove('future');
-   document.querySelector('[data-progress-percent]').textContent='100%';
-   document.querySelector('[data-complete-name]').textContent=assessmentForm.elements.first_name.value||'your assessment is complete';
-  },
+  complete:showCompleted,
   restore:(identity,snapshot)=>{
+   hideEntry();
    for(const name of ['first_name','last_name','email','phone'])assessmentForm.querySelector(`[data-copy-field="${name}"]`).value=identity[name]||'';
    const fields=snapshot.fields||{};
    const set=(name,rows)=>{

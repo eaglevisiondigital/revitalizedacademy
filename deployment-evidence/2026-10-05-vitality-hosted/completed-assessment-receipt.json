@@ -1,0 +1,21 @@
+{
+ "date":"2026-10-05",
+ "draftId":"1d66c0f6-c6ad-4cd6-ab8f-5fc778e87ce2",
+ "contactId":"667aec53-0fe2-453b-b47a-8b3012777411",
+ "workflowId":"7d17430a-1e9e-4ba7-aacd-570d48cdf66d",
+ "journeyId":"409cdfcb-9aae-462b-9d49-abb3ac2ba2b4",
+ "freshFinalResume":{"userNormalOpen":true,"verifiedAt":"2026-10-05T14:38:59.864214Z","revision":31,"percent":93,"nineOriginalChecksPass":true,"eighteenFunctionalControlsPass":true,"finalSyntheticMarkerPass":true,"oldBrowserTabAvailable":false},
+ "final":{"normalSubmitClickedOnce":true,"status":"completed","revision":33,"percent":100,"dispatchedAt":"2026-10-05T14:41:24.899158Z","completedAt":"2026-10-05T14:41:25.339743Z","workflowStatus":"completed","counts":{"contacts":1,"drafts":1,"workflows":1,"journeyCompletionEvents":1,"completedJourneySteps":1,"completionActivities":1}},
+ "netlify":{"formId":"6abaa9ef8424f60009aaa4eb","submissionId":"6ac3b715e156348257058d67","capturedAt":"2026-10-05T14:41:25.209Z","classification":"spam","spamTargetCount":1,"verifiedTargetCount":0,"correctCorrelation":true,"correctSyntheticEmail":true,"encodedSummarySha256":"619dd576a76601ef2a2fd698cec44bff17cf9b06c4c330223176cda60b871bcb","preservedSummaryHashMatches":true,"resent":false,"reclassified":false,"rawPayloadExported":false},
+ "completedReload":{"completeVisible":true,"assessmentHidden":true,"allAssessmentControlsDisabled":true,"percent":100,"consoleWarningsErrors":0,"duplicateCountsUnchanged":true},
+ "responsive":[{"width":1440,"height":1000,"actualMatched":true,"pageOverflow":false,"completionOverflow":false},{"width":768,"height":1024,"actualMatched":true,"pageOverflow":false,"completionOverflow":false},{"width":390,"height":844,"actualMatched":true,"pageOverflow":false,"completionOverflow":false}],
+ "limitations":["Older live browser tab unavailable for stale reload denial","Hosted transient save failure/Retry not exercised","Completion progress strip displays Contact after reload","Capture remains Spam; verified downstream workflow not proven"],
+ "securityFixtureProof":{"deployedRpcChecksPassed":18,"wrongPersonAndReplacedExpiredDenied":true,"fixturesFullyRolledBack":true,"earlierEvidenceNotRerun":true},
+ "applicationBackendChanges":false,
+ "migrationReplayed":false,
+ "edgeRedeployed":false,
+ "siteRedeployed":false,
+ "rawCredentialAccess":false,
+ "productionChanged":false,
+ "status":["VITALITY RESUME NOT READY","BETA NOT READY"]
+}

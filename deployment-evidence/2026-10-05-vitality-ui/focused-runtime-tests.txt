@@ -1,0 +1,38 @@
+✔ first contact capture remains independent and health entry waits for verified email (339.23025ms)
+✔ no raw answers are written to browser storage (684.158792ms)
+✔ closing a tab loses its credential; plain new tab needs fresh email recovery without resetting the server draft (2493.688125ms)
+✔ a second email-link open fails closed without replacing the draft or invalidating its original session (2290.917959ms)
+✔ debounce coalesces repeated text input and only acknowledges a server save (1400.522ms)
+✔ radio restores after a new document using server state (1671.901333ms)
+✔ checkbox restores after a new document using server state (1485.810291ms)
+✔ text restores after a new document using server state (1512.877542ms)
+✔ range-zero restores after a new document using server state (1697.095625ms)
+✔ numeric zero remains numeric and blank numeric remains blank (892.128041ms)
+✔ child pathway, guardian permission and conditional proxy details restore (1799.1335ms)
+✔ adult proxy and permission restore without requiring paid membership (2446.149417ms)
+✔ dynamic symptom detail restores after its controlling checkbox creates the fields (4645.27725ms)
+✔ section and progress restore with a retained session credential after document reload (2105.789708ms)
+✔ failed autosave retains current answers and Retry succeeds without false Saved (725.816209ms)
+✔ edits during an outstanding save are serialized and latest content is persisted (883.857834ms)
+✔ continue later flushes before sending recovery request (763.215208ms)
+✔ email-only recovery never restores answers directly (232.961208ms)
+✔ required fields still block section navigation after resume (564.804417ms)
+✔ completed state cannot reopen editable fields and shows 100 percent (245.503375ms)
+✔ final submission is routed through the secure contract and locks the form (683.891084ms)
+✔ normal final submission after server restoration retains coach summary and completes once (14427.628375ms)
+✔ entry offers Start and Resume without requests or creating an identity (229.58775ms)
+✔ Resume opens the one existing recovery form and switching preserves unsent contact fields (249.502083ms)
+✔ invalid recovery email sends no request (204.587583ms)
+✔ recovery uses the existing endpoint with email only and a fixed neutral confirmation (436.080042ms)
+✔ duplicate recovery submission is suppressed while one request is pending (254.062875ms)
+✔ recovery transport failure keeps form retryable without a success confirmation (198.196792ms)
+✔ verified restoration hides entry/recovery choices and preserves the active assessment stage (470.239625ms)
+✔ completed reload marks all three stages complete, keeps 100%, and cannot expose entry controls (246.007375ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 46930.010542

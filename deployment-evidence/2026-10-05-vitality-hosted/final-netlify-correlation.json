@@ -1,0 +1,26 @@
+{
+  "checkedAt": "2026-10-05T14:46:32.779Z",
+  "correlation": "1d66c0f6-c6ad-4cd6-ab8f-5fc778e87ce2",
+  "spamTargetCount": 1,
+  "verifiedTargetCount": 0,
+  "targetSubmissionIds": [
+    "6ac3b715e156348257058d67"
+  ],
+  "staging": {
+    "siteId": "071b252e-a922-4846-a784-8dca1edad377",
+    "name": "revitalizedacademy-staging",
+    "publishedDeployId": "6ac38599ba35bc77a266d41c",
+    "publishedDeployCreatedAt": "2026-10-05T11:10:17.320Z",
+    "unchanged": true
+  },
+  "production": {
+    "siteId": "ece0f6f3-6c3d-46e6-bb51-95ce1ccefb06",
+    "name": "revitalizedacademy",
+    "publishedDeployId": "6ac036d3b48eac0008568e00",
+    "publishedDeployCreatedAt": "2026-10-02T22:57:23.745Z",
+    "unchanged": true
+  },
+  "noResend": true,
+  "noReclassification": true,
+  "rawPayloadExported": false
+}

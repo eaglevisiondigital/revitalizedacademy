@@ -1,0 +1,44 @@
+✔ protected baseline unchanged: consult.html (1.507916ms)
+✔ protected baseline unchanged: js/vitality55.js (0.508833ms)
+✔ protected baseline unchanged: js/vitality-child.js (0.317084ms)
+✔ protected baseline unchanged: css/vitality55.css (0.47125ms)
+✔ protected baseline unchanged: js/revitalized-data.js (0.393417ms)
+✔ protected baseline unchanged: webinar.html (0.360333ms)
+✔ homepage routes assessment and webinar visitors to existing protected flows (75.086458ms)
+✔ priority webinar retains fifty-seat copy, free priority form and required contact/consent (22.194833ms)
+✔ member bootstrap stays v2 while signing submits displayed hash (1.612334ms)
+✔ CSV uses atomic export RPC; independent audit-call race is gone (1.011292ms)
+✔ CSV quoting neutralizes formula prefixes and preserves ordinary names (2.265958ms)
+✔ production mapping resolves to the known publishable project and branded recovery (1.314958ms)
+✔ staging rejects unsafe project (0.251083ms)
+✔ staging rejects unsafe origin (0.081083ms)
+✔ staging rejects unsafe www (0.066791ms)
+✔ staging rejects unsafe alias (0.100291ms)
+✔ staging rejects unsafe edge (0.120166ms)
+✔ staging rejects unsafe callback (0.100833ms)
+✔ staging rejects unsafe recovery (0.077625ms)
+✔ staging rejects unsafe secret (0.155166ms)
+✔ staging rejects unsafe money (0.128ms)
+✔ staging rejects unsafe incomplete (0.062667ms)
+✔ service-role JWT is rejected while matching legacy anon JWT is allowed (0.47075ms)
+✔ all staging callbacks, signer invitations and recovery remain on its approved origin (0.297708ms)
+✔ dedicated temporary Netlify hostname needs only config (0.07825ms)
+✔ synthetic payments never expose a checkout endpoint; production retains HTTPS behavior (0.491458ms)
+✔ Netlify wrong site, branch, preview context and origin all fail before build (0.260583ms)
+✔ staging database target refuses production, wrong ref, unverified TLS and existing generic hosts (0.276291ms)
+✔ runtime rejects staging config on an unapproved hostname and never initializes a client (35.119417ms)
+✔ artifact is an exact public allowlist and never contains backend/private/secret artifacts (463.17975ms)
+✔ artifact preserves local script/style/image dependencies referenced by public pages (371.800667ms)
+✔ no production bindings remain in application callers (4.30575ms)
+✔ legal manifest records exact recovered hashes and protected seed input is never deployable (0.823417ms)
+✔ first-step bridge uses staging endpoint and cannot cancel independent Netlify capture on mirror failure (12.075042ms)
+✔ invalid legal bytes fail before a database connection (1.615875ms)
+✔ unknown config fields cannot enter the public resolved object (0.114375ms)
+ℹ tests 36
+ℹ suites 0
+ℹ pass 36
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1317.16975

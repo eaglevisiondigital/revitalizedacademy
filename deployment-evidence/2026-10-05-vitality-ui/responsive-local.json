@@ -1,0 +1,50 @@
+[
+  {
+    "cardOverflow": false,
+    "height": 1000,
+    "pageOverflow": false,
+    "path": "Start New Vitality Assessment",
+    "visibleControlsContained": true,
+    "width": 1440
+  },
+  {
+    "cardOverflow": false,
+    "height": 1000,
+    "pageOverflow": false,
+    "path": "Resume Existing Vitality Assessment",
+    "visibleControlsContained": true,
+    "width": 1440
+  },
+  {
+    "cardOverflow": false,
+    "height": 1024,
+    "pageOverflow": false,
+    "path": "Start New Vitality Assessment",
+    "visibleControlsContained": true,
+    "width": 768
+  },
+  {
+    "cardOverflow": false,
+    "height": 1024,
+    "pageOverflow": false,
+    "path": "Resume Existing Vitality Assessment",
+    "visibleControlsContained": true,
+    "width": 768
+  },
+  {
+    "cardOverflow": false,
+    "height": 844,
+    "pageOverflow": false,
+    "path": "Start New Vitality Assessment",
+    "visibleControlsContained": true,
+    "width": 390
+  },
+  {
+    "cardOverflow": false,
+    "height": 844,
+    "pageOverflow": false,
+    "path": "Resume Existing Vitality Assessment",
+    "visibleControlsContained": true,
+    "width": 390
+  }
+]

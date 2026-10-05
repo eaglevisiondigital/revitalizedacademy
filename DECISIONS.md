@@ -1,5 +1,9 @@
 # ReVitalized Academy decisions and unresolved questions
 
+## 2026-10-05 — Accepted synthetic capture and final narrow Vitality UI cleanup
+
+Latest explicit Primary Chat instruction accepts the existing synthetic Netlify Spam capture as sufficient CAPTURE evidence: exact correlation/email/summary hash, one submission, Journey completion/activity/step, no duplicate identity, completed locking. Do not reclassify/delete/resend it or weaken filtering. Real downstream coach/notification delivery remains separate future acceptance. Authorizes only completed-progress presentation repair plus the already approved prominent Start New / Resume Existing entry paths using the unchanged verified-email recovery architecture. Focused affected tests and three viewport checks, then dedicated staging-only deploy and production verification. After those pass, report VITALITY RESUME READY; overall BETA NOT READY until the separate client/staff/meal/workout hosted acceptance completes. No reset/reopen of the completed synthetic record. [Package](docs/VITALITY_ENTRY_CLEANUP_2026-10-05.md).
+
 ## 2026-10-05 — Approved free-assessment identity and storage
 
 Latest user request supersedes the earlier unresolved Chat handoff: use secure verified-email links, not mandatory free-member accounts. Private server-side drafts hold incomplete health answers; server stores credential digests only. Thirty-day inactivity access, neutral email recovery, completed-state locking, no duplicate contact/draft/final/Journey completion, unchanged adult/child/proxy questions and all 22 acceptance cases are required. Implementation and controlled staging deployment are authorized, including one reviewed forward migration and reviewed Edge code. No production release.

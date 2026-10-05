@@ -83,8 +83,9 @@
  });
  document.querySelector('[data-resume-request]').addEventListener('submit',async event=>{
   event.preventDefault();const form=event.currentTarget;if(!form.reportValidity())return;
-  const button=form.querySelector('button');button.disabled=true;
-  try{const result=await request('recover',{email:form.elements.resume_email.value});notice.hidden=false;notice.textContent=result.message;message('Link request received.');}
+  const button=form.querySelector('button');if(button.disabled)return;button.disabled=true;
+  const confirmation=form.querySelector('[data-recovery-confirmation]');confirmation.hidden=true;
+  try{await request('recover',{email:form.elements.resume_email.value});confirmation.hidden=false;confirmation.textContent='If there’s an unfinished assessment connected to that email, we’ll send you a secure link to continue.';notice.hidden=true;message('Link request received.');}
   catch(error){message(error.message,true);}finally{button.disabled=false;}
  });
  const resume=window.RVA_RESUME_LINK||'';delete window.RVA_RESUME_LINK;

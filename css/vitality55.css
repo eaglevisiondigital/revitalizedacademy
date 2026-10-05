@@ -184,3 +184,19 @@ a.hero54-btn.journey-secondary-cta{
 .vitality-resume-panel input{box-sizing:border-box;min-width:0;width:100%;padding:12px;border:1px solid #a4b5a9;border-radius:8px;font:inherit}
 .vitality-resume-panel button,[data-continue-later]{max-width:100%;white-space:normal;min-height:44px;overflow-wrap:anywhere}
 .vitality-resume-panel summary{cursor:pointer;padding:12px 0;min-height:44px;box-sizing:border-box}
+
+/* Entry choices reuse the existing assessment colors and secure recovery form. */
+.vitality-entry{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:28px 42px}
+.vitality-entry button{min-width:0;min-height:52px;white-space:normal;line-height:1.4}
+.vitality-entry-secondary{border:1px solid #154734;border-radius:12px;padding:15px 20px;background:#fffaf4;color:#154734;font:inherit;font-weight:800;cursor:pointer}
+.vitality-entry-secondary:hover{background:#ecf5ef}
+.vitality-entry button:focus-visible,.vitality-recovery input:focus-visible,.vitality-recovery button:focus-visible{outline:3px solid #154734;outline-offset:3px}
+.vitality-recovery{padding:0 42px 34px;min-width:0;overflow-wrap:anywhere}
+.vitality-recovery h2{font-family:Georgia,"Times New Roman",serif;font-size:30px;color:#154734;margin:0 0 12px}
+.vitality-recovery p{line-height:1.6;color:#52645b}
+.vitality-recovery form{display:grid;gap:12px;max-width:560px;min-width:0}
+.vitality-recovery label{font-weight:800}
+.vitality-recovery input{box-sizing:border-box;min-width:0;width:100%;padding:15px 16px;border:1px solid #a4b5a9;border-radius:12px;font:inherit}
+.vitality-recovery button{max-width:100%;min-height:48px;white-space:normal;line-height:1.4;justify-self:start}
+.vitality-progress .done{color:#154734}
+@media(max-width:700px){.vitality-entry{grid-template-columns:1fr;padding:24px 23px}.vitality-recovery{padding:0 23px 28px}.vitality-recovery h2{font-size:26px}.vitality-recovery button{width:100%;justify-self:stretch}}

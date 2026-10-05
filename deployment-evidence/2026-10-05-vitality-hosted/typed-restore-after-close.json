@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-05",
+  "draftId": "1d66c0f6-c6ad-4cd6-ab8f-5fc778e87ce2",
+  "contactId": "667aec53-0fe2-453b-b47a-8b3012777411",
+  "workflowId": "7d17430a-1e9e-4ba7-aacd-570d48cdf66d",
+  "journeyId": "409cdfcb-9aae-462b-9d49-abb3ac2ba2b4",
+  "fullCloseEmailRestore": {
+    "priorAssessmentTabsClosed": true,
+    "userNormalNewestEmailOpen": true,
+    "emailId": "01a10c5c-6c40-791b-a430-6ba73225ca52",
+    "verifiedAt": "2026-10-05T14:01:21.907168Z",
+    "pendingMailConsumed": true,
+    "revision": 10,
+    "section": 2,
+    "sectionLabel": "Cellular Hydration",
+    "percent": 13,
+    "saveState": "Saved",
+    "adultSelfPathway": true,
+    "checkboxes": true,
+    "text": true,
+    "numericRange": true,
+    "radio": true,
+    "conditional": true,
+    "textarea": true,
+    "select": true,
+    "symptomDetails": true,
+    "hydrationNote": true,
+    "urlFragmentAbsent": true,
+    "consoleWarningsErrors": 0
+  },
+  "responsive": [
+    {
+      "width": 1440,
+      "height": 1000,
+      "actualDimensionsMatched": true,
+      "restoredSavedOverflow": false,
+      "laterRecoveryOverflow": false
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "actualDimensionsMatched": true,
+      "restoredSavedOverflow": false,
+      "laterRecoveryOverflow": false
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "actualDimensionsMatched": true,
+      "restoredSavedOverflow": false,
+      "laterRecoveryOverflow": false
+    }
+  ],
+  "subsequentSave": {
+    "revision": 21,
+    "section": 6,
+    "sectionLabel": "Functional Training",
+    "percent": 40,
+    "updatedAt": "2026-10-05T14:06:25.239775Z",
+    "originalNineSnapshotChecksPass": true,
+    "counts": {
+      "contacts": 1,
+      "drafts": 1,
+      "workflows": 1
+    }
+  },
+  "laterRecovery": {
+    "normalContinueLaterUsedOnce": true,
+    "emailId": "01a10c63-2255-79eb-9399-2e1309bb8346",
+    "sentAt": "2026-10-05T14:06:26.029Z",
+    "providerStatus": "delivered",
+    "userReceiptOpen": "pending",
+    "olderSessionTabPreservedForRotationCheck": true
+  },
+  "finalSubmissionPerformed": false,
+  "newIdentityCreated": false,
+  "rawCredentialAccess": false,
+  "directSqlAnswerWrites": false,
+  "sourceBackendConfigChanged": false,
+  "migrationReplayed": false,
+  "deploymentPerformed": false,
+  "productionChanged": false,
+  "status": [
+    "VITALITY RESUME NOT READY",
+    "BETA NOT READY"
+  ]
+}

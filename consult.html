@@ -11,7 +11,7 @@
   <meta name="description" content="Complete the ReVitalized Academy Free Vitality Assessment to identify patterns across the 12 Drivers of Health and prepare for your Vitality Roadmap Consultation.">
   <title>Free Vitality Assessment | ReVitalized Academy</title>
   <link rel="stylesheet" href="css/styles.css?v=71">
-  <link rel="stylesheet" href="css/vitality55.css?v=86">
+  <link rel="stylesheet" href="css/vitality55.css?v=87">
   <link rel="stylesheet" href="css/header-glass.css?v=20260910-3">
 </head>
 <body>
@@ -38,10 +38,24 @@
           <h1>Start with <span>clarity.</span></h1>
           <p>Discover what your body may be telling you and which areas of your lifestyle deserve a closer look.</p>
         </header>
-        <div class="vitality-progress" aria-label="Assessment progress">
+        <div class="vitality-entry" data-assessment-entry aria-label="Choose how to begin">
+          <button class="vitality-next" type="button" data-start-new aria-controls="vitality-contact" aria-expanded="false">Start New Vitality Assessment</button>
+          <button class="vitality-entry-secondary" type="button" data-open-resume aria-controls="vitality-recovery" aria-expanded="false">Resume Existing Vitality Assessment</button>
+        </div>
+        <section class="vitality-recovery" id="vitality-recovery" data-recovery-panel aria-labelledby="resume-heading" hidden>
+          <h2 id="resume-heading">Resume Your Vitality Assessment</h2>
+          <p id="resume-help">Enter the email address you used when you started. We’ll send you a private link to continue where you left off.</p>
+          <form data-resume-request>
+            <label for="resume-email">Email address</label>
+            <input id="resume-email" name="resume_email" type="email" autocomplete="email" aria-describedby="resume-help" maxlength="254" required>
+            <button class="vitality-next" type="submit">Email My Resume Link</button>
+            <p data-recovery-confirmation role="status" aria-live="polite" hidden></p>
+          </form>
+        </section>
+        <div class="vitality-progress" data-assessment-progress aria-label="Assessment progress" hidden>
           <div class="active" data-progress-contact>1 · Contact</div><div class="future" data-progress-assessment>2 · Assessment</div><div class="future" data-progress-complete>3 · Complete</div>
         </div>
-        <div class="vitality-body" data-lead-step>
+        <div class="vitality-body" id="vitality-contact" data-lead-step hidden>
           <div class="vitality-step-heading"><span class="vitality-step-count">STEP 1 OF 3</span><h2>Where should we contact you?</h2><p>Enter <strong>your own contact information</strong>, even if you are completing this for someone else. When you select <strong>Save &amp; Continue</strong>, your contact information is saved immediately. You will choose who the assessment is for next.</p></div>
           <form name="vitality-lead" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-vitality-lead-form>
             <input type="hidden" name="form-name" value="vitality-lead"><input type="hidden" name="lead_source" value="Free Vitality Assessment"><input type="hidden" name="assessment_status" value="Lead captured - assessment not yet completed">
@@ -115,12 +129,7 @@
         <p data-resume-status role="status" aria-live="polite">A private email link protects your saved answers.</p>
         <p data-resume-notice hidden></p>
         <button class="vitality-back" type="button" data-resume-retry hidden>Try saving again</button>
-        <details><summary>Returning to an unfinished assessment?</summary>
-          <form data-resume-request>
-            <label for="resume-email">Email</label><input id="resume-email" name="resume_email" type="email" autocomplete="email" required>
-            <button class="vitality-next" type="submit">Email my secure resume link</button>
-          </form>
-        </details>
+
       </section>
       <p class="vitality-footer-note"><span data-adult-spectrum-note>Your Health Spectrum stage is a ReVitalized Academy coaching classification, not a medical diagnosis.</span><span data-child-spectrum-note hidden>This is an educational coaching assessment, not a medical diagnosis or a developmental screening tool.</span> <a href="disclaimer.html" target="_blank" rel="noopener">Read the Health &amp; Results Disclaimer.</a></p>
     </div>
@@ -141,8 +150,8 @@
     })();
   </script>
   <script src="js/vitality-child.js?v=nodash-20260921"></script>
-  <script src="js/vitality55.js?v=resume-1"></script>
-  <script src="js/vitality-resume.js?v=1"></script>
+  <script src="js/vitality55.js?v=resume-2"></script>
+  <script src="js/vitality-resume.js?v=2"></script>
   <script src="js/revitalized-data.js?v=20261005" defer></script>
 </body>
 </html>

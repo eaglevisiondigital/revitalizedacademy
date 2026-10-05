@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-05",
+  "draftId": "1d66c0f6-c6ad-4cd6-ab8f-5fc778e87ce2",
+  "contactId": "667aec53-0fe2-453b-b47a-8b3012777411",
+  "workflowId": "7d17430a-1e9e-4ba7-aacd-570d48cdf66d",
+  "journeyId": "409cdfcb-9aae-462b-9d49-abb3ac2ba2b4",
+  "fullCloseRecovery40": {
+    "userNormalEmailOpen": true,
+    "verifiedAt": "2026-10-05T14:31:20.536036Z",
+    "revision": 21,
+    "section": 6,
+    "percent": 40,
+    "nineEarlierDomChecksPass": true,
+    "eighteenFunctionalControlsPass": true,
+    "noRestart": true
+  },
+  "finalReview": {
+    "status": "draft",
+    "revision": 31,
+    "section": 14,
+    "sectionLabel": "Final Thoughts & Submit",
+    "percent": 93,
+    "updatedAt": "2026-10-05T14:34:35.845618Z",
+    "nineStoredChecksPass": true,
+    "syntheticOnlyNoteSaved": true,
+    "counts": {
+      "contacts": 1,
+      "drafts": 1,
+      "workflows": 1
+    },
+    "finalSubmitClicked": false,
+    "dispatchTimestamp": null,
+    "completedTimestamp": null,
+    "completionEventCount": 0,
+    "consoleWarningsErrors": 0
+  },
+  "responsive": [
+    {
+      "width": 1440,
+      "height": 1000,
+      "actualMatched": true,
+      "pageOverflow": false,
+      "formOverflow": false,
+      "submitReachable": true
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "actualMatched": true,
+      "pageOverflow": false,
+      "formOverflow": false,
+      "submitReachable": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "actualMatched": true,
+      "pageOverflow": false,
+      "formOverflow": false,
+      "submitReachable": true
+    }
+  ],
+  "sessionRotationRecovery": {
+    "emailId": "01a10c7c-ef1d-7ae8-9574-c52850f92068",
+    "sentAt": "2026-10-05T14:34:36.851Z",
+    "providerStatus": "delivered",
+    "actualUserOpen": "pending",
+    "olderSessionTabRetained": true,
+    "staleDenial": "pending"
+  },
+  "applicationBackendChanges": false,
+  "rawCredentialAccess": false,
+  "directSqlAnswerWrites": false,
+  "migrationReplayed": false,
+  "deploymentPerformed": false,
+  "productionChanged": false,
+  "status": [
+    "VITALITY RESUME NOT READY",
+    "BETA NOT READY"
+  ],
+  "netlifyPreFinal": {
+    "formId": "6abaa9ef8424f60009aaa4eb",
+    "capturePageCount": 0,
+    "targetCorrelationCount": 0,
+    "rawPayloadExported": false
+  }
+}

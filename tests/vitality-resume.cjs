@@ -10,8 +10,9 @@ async function page(s,mode='mail'){
  w.fetch=async(url,opt)=>{
   if(url==='/'){s.requests.push({action:'lead'});return {ok:true,status:200};}
   const body=JSON.parse(opt.body);s.requests.push(body);if(s.delay)await sleep(s.delay);
+  if(body.action==='recover'&&s.recoveryFail)return {ok:false,status:503,json:async()=>({error:'Please try again.'})};
   let data={status:s.status,draft_id:'synthetic-draft',identity,snapshot:structuredClone(s.snapshot),revision:s.revision};
-  if(body.action==='start'||body.action==='recover')data={ok:true,message:'If an unfinished assessment is available, we’ll email a secure link.'};
+  if(body.action==='start'||body.action==='recover')data={ok:true,message:s.recoveryMessage||'If an unfinished assessment is available, we’ll email a secure link.'};
   if(body.action==='redeem'){
    if(s.mailConsumed)return {ok:false,status:401,json:async()=>({error:'This link is unavailable. Request another email link.'})};
    s.mailConsumed=true;data.token='b'.repeat(64);
@@ -32,6 +33,27 @@ async function page(s,mode='mail'){
 }
 test('first contact capture remains independent and health entry waits for verified email',async()=>{const s=server(),p=await page(s,'none');const lead=p.doc.querySelector('[data-vitality-lead-form]');for(const[k,v]of Object.entries({first_name:'Synthetic',last_name:'Lead',email:'test@example.invalid',phone:'0000000000'}))lead.elements[k].value=v;lead.dispatchEvent(new p.w.Event('submit',{bubbles:true,cancelable:true}));await sleep(5);assert.deepEqual(s.requests.map(r=>r.action),['lead','start']);assert.equal(p.doc.querySelector('[data-assessment-step]').hidden,true);assert.match(p.doc.querySelector('[data-resume-notice]').textContent,/verify your email/);p.close();});
 test('no raw answers are written to browser storage',async()=>{const p=await page(server());p.set('additional_context','Synthetic private context');await p.flush();assert.equal(p.w.localStorage.length,0);assert.equal(p.w.sessionStorage.length,1);assert.equal(p.w.sessionStorage.getItem('rva_vitality_session_v1'),'b'.repeat(64));p.close();});
+test('closing a tab loses its credential; plain new tab needs fresh email recovery without resetting the server draft',async()=>{
+ const s=server(),original=await page(s);
+ original.set('assessment_for',true,'Myself');original.set('assessment_consent',true);original.set('disclaimer_acknowledgment',true);
+ original.doc.querySelector('[data-next]').click();await sleep(10);
+ original.set('additional_context','Synthetic answer survives a closed tab');original.set('primary_goals',true,'Energy');await original.flush();
+ const before={snapshot:structuredClone(s.snapshot),revision:s.revision,status:s.status},requestCount=s.requests.length;original.close();
+ const blank=await page(s,'none');
+ assert.equal(blank.w.sessionStorage.length,0);assert.equal(blank.w.localStorage.length,0);
+ assert.equal(blank.w.RVA_RESUME.canEdit(),false);assert.equal(blank.doc.querySelector('[data-assessment-step]').hidden,true);
+ assert.equal(s.requests.length,requestCount);assert.deepEqual({snapshot:s.snapshot,revision:s.revision,status:s.status},before);
+ const recovery=blank.doc.querySelector('[data-resume-request]');recovery.elements.resume_email.value='test@example.invalid';
+ recovery.dispatchEvent(new blank.w.Event('submit',{bubbles:true,cancelable:true}));await sleep(5);
+ assert.deepEqual(s.requests.slice(requestCount).map(r=>r.action),['recover']);
+ assert.deepEqual({snapshot:s.snapshot,revision:s.revision,status:s.status},before);blank.close();
+ // Model receipt of a newly issued mail credential, not replay of the consumed original.
+ s.mailConsumed=false;const restored=await page(s,'mail');
+ assert.equal(restored.w.RVA_RESUME.canEdit(),true);assert.equal(restored.form.elements.additional_context.value,'Synthetic answer survives a closed tab');
+ assert.equal(Array.from(restored.form.querySelectorAll('[name="primary_goals"]')).find(c=>c.value==='Energy').checked,true);
+ assert.equal(restored.w.RVA_VITALITY.section(),before.snapshot.section);assert.equal(restored.doc.querySelector('[data-progress-percent]').textContent,before.snapshot.percent+'%');
+ assert.equal(s.revision,before.revision);assert.deepEqual(s.requests.slice(requestCount).map(r=>r.action),['recover','redeem']);restored.close();
+});
 test('a second email-link open fails closed without replacing the draft or invalidating its original session',async()=>{
  const s=server(),first=await page(s);first.set('additional_context','Synthetic saved answer');await first.flush();
  const before={snapshot:structuredClone(s.snapshot),revision:s.revision,status:s.status};
@@ -56,7 +78,7 @@ test('numeric zero remains numeric and blank numeric remains blank',async()=>{co
 test('child pathway, guardian permission and conditional proxy details restore',async()=>{const s=server(),p=await page(s);p.set('assessment_for',true,'My child');p.set('assessed_first_name','Synthetic');p.set('assessed_last_name','Child');p.set('assessed_age','8');p.set('assessment_authorization',true);await p.flush();assert.equal(s.snapshot.pathway,'Child (ages 0–18)');p.close();const b=await page(s,'session');assert.equal(b.form.elements.assessment_pathway.value,'Child (ages 0–18)');assert.equal(b.form.elements.assessment_authorization.checked,true);assert.equal(b.form.elements.assessed_first_name.value,'Synthetic');b.close();});
 test('adult proxy and permission restore without requiring paid membership',async()=>{const s=server(),a=await page(s);a.set('assessment_for',true,'Someone else');a.set('assessed_age','45');a.set('assessed_first_name','Synthetic');a.set('assessed_last_name','Adult');a.set('assessed_relationship','Sibling');a.set('assessment_authorization',true);await a.flush();a.close();const b=await page(s,'session');assert.equal(b.form.elements.assessed_relationship.value,'Sibling');assert.equal(b.form.elements.assessment_authorization.checked,true);assert.equal(b.form.elements.assessment_pathway.value,'Adult');b.close();});
 test('dynamic symptom detail restores after its controlling checkbox creates the fields',async()=>{const s=server(),a=await page(s);a.set('assessment_for',true,'Myself');const screen=a.form.querySelector('[data-symptom-screen]'),box=Array.from(screen.querySelectorAll('input[type=checkbox]')).find(c=>c.value!=='None of these');a.set(box.name,true,box.value);const detail=screen.querySelector('[data-symptom-details] select');a.set(detail.name,detail.options[1].value);const name=detail.name,value=detail.value;await a.flush();a.close();const b=await page(s,'session');assert.equal(b.form.elements[name].value,value);b.close();});
-test('section and progress restore after Continue and browser-style close',async()=>{const s=server(),a=await page(s);a.set('assessment_for',true,'Myself');a.set('assessment_consent',true);a.set('disclaimer_acknowledgment',true);a.doc.querySelector('[data-next]').click();await sleep(10);await a.flush();assert.equal(s.snapshot.section,1);assert(s.snapshot.percent>0);a.close();const b=await page(s,'session');assert.equal(b.w.RVA_VITALITY.section(),1);assert.equal(b.doc.querySelector('[data-progress-percent]').textContent,s.snapshot.percent+'%');b.close();});
+test('section and progress restore with a retained session credential after document reload',async()=>{const s=server(),a=await page(s);a.set('assessment_for',true,'Myself');a.set('assessment_consent',true);a.set('disclaimer_acknowledgment',true);a.doc.querySelector('[data-next]').click();await sleep(10);await a.flush();assert.equal(s.snapshot.section,1);assert(s.snapshot.percent>0);a.close();const b=await page(s,'session');assert.equal(b.w.RVA_VITALITY.section(),1);assert.equal(b.doc.querySelector('[data-progress-percent]').textContent,s.snapshot.percent+'%');b.close();});
 test('failed autosave retains current answers and Retry succeeds without false Saved',async()=>{const s=server(),a=await page(s);s.fail=true;a.set('additional_context','Keep this synthetic answer');assert.equal(await a.flush(),false);assert.match(a.doc.querySelector('[data-resume-status]').textContent,/couldn’t save/);assert.equal(a.form.elements.additional_context.value,'Keep this synthetic answer');s.fail=false;assert.equal(await a.flush(),true);assert.equal(a.doc.querySelector('[data-resume-status]').textContent,'Saved');a.close();});
 test('edits during an outstanding save are serialized and latest content is persisted',async()=>{const s=server(),a=await page(s);s.delay=30;a.set('additional_context','First');const pending=a.flush();a.set('additional_context','Second');await pending;assert.equal(s.snapshot.fields.additional_context[0].value,'Second');assert.equal(s.revision,2);a.close();});
 test('continue later flushes before sending recovery request',async()=>{const s=server(),a=await page(s);a.set('additional_context','Later');a.doc.querySelector('[data-continue-later]').click();await sleep(15);assert.deepEqual(s.requests.slice(-2).map(r=>r.action),['save','recover']);a.close();});
@@ -79,4 +101,84 @@ test('normal final submission after server restoration retains coach summary and
   assert(p.w.RVA_VITALITY.section()!==before||!p.doc.querySelector('[data-complete-step]').hidden,p.doc.querySelector('[data-assessment-error]').textContent);
  }
  assert.equal(s.finals,1);const final=s.requests.find(r=>r.action==='finalize'),data=new URLSearchParams(final.form);assert.match(data.get('assessment_summary'),/Synthetic/);assert.equal(data.get('form-name'),'vitality-assessment');assert.equal(data.get('assessment_for'),'Myself');assert.equal(p.doc.querySelector('[data-progress-percent]').textContent,'100%');p.close();
+});
+
+test('entry offers Start and Resume without requests or creating an identity',async()=>{
+ const s=server(),p=await page(s,'none');
+ assert.equal(p.doc.querySelector('[data-assessment-entry]').hidden,false);
+ assert.equal(p.doc.querySelector('[data-lead-step]').hidden,true);
+ assert.equal(p.doc.querySelector('[data-recovery-panel]').hidden,true);
+ assert.deepEqual(s.requests,[]);
+ p.doc.querySelector('[data-start-new]').click();
+ assert.equal(p.doc.querySelector('[data-lead-step]').hidden,false);
+ assert.equal(p.doc.querySelector('[data-assessment-progress]').hidden,false);
+ assert.equal(p.doc.activeElement,p.doc.querySelector('#lead-first'));
+ assert.deepEqual(s.requests,[]);p.close();
+});
+test('Resume opens the one existing recovery form and switching preserves unsent contact fields',async()=>{
+ const s=server(),p=await page(s,'none');p.doc.querySelector('[data-start-new]').click();
+ p.doc.querySelector('#lead-first').value='Unsent synthetic';p.doc.querySelector('[data-open-resume]').click();
+ assert.equal(p.doc.querySelector('[data-lead-step]').hidden,true);
+ assert.equal(p.doc.querySelector('[data-recovery-panel]').hidden,false);
+ assert.equal(p.doc.querySelector('[data-assessment-progress]').hidden,true);
+ assert.equal(p.doc.activeElement,p.doc.querySelector('#resume-email'));
+ assert.equal(p.doc.querySelector('[data-open-resume]').getAttribute('aria-expanded'),'true');
+ assert.equal(p.doc.querySelectorAll('[data-resume-request]').length,1);
+ p.doc.querySelector('[data-start-new]').click();
+ assert.equal(p.doc.querySelector('#lead-first').value,'Unsent synthetic');assert.deepEqual(s.requests,[]);p.close();
+});
+test('invalid recovery email sends no request',async()=>{
+ const s=server(),p=await page(s,'none');p.doc.querySelector('[data-open-resume]').click();
+ const f=p.doc.querySelector('[data-resume-request]');f.elements.resume_email.value='invalid';
+ f.dispatchEvent(new p.w.Event('submit',{bubbles:true,cancelable:true}));await sleep(5);
+ assert.deepEqual(s.requests,[]);p.close();
+});
+test('recovery uses the existing endpoint with email only and a fixed neutral confirmation',async()=>{
+ for(const email of ['test@example.invalid','unknown@example.invalid']){
+  const s=server(),p=await page(s,'none');p.doc.querySelector('[data-open-resume]').click();
+  const f=p.doc.querySelector('[data-resume-request]');f.elements.resume_email.value=email;
+  f.dispatchEvent(new p.w.Event('submit',{bubbles:true,cancelable:true}));await sleep(5);
+  assert.deepEqual(s.requests,[{action:'recover',email}]);
+  assert.equal(p.doc.querySelector('[data-recovery-confirmation]').textContent,'If there’s an unfinished assessment connected to that email, we’ll send you a secure link to continue.');
+  assert.equal(p.doc.querySelector('[data-assessment-step]').hidden,true);
+  assert.equal(p.w.sessionStorage.length,0);assert.equal(p.w.localStorage.length,0);p.close();
+ }
+});
+test('duplicate recovery submission is suppressed while one request is pending',async()=>{
+ const s=server(),p=await page(s,'none');s.delay=30;
+ const f=p.doc.querySelector('[data-resume-request]');f.elements.resume_email.value='test@example.invalid';
+ for(let i=0;i<2;i++)f.dispatchEvent(new p.w.Event('submit',{bubbles:true,cancelable:true}));
+ assert.equal(f.querySelector('button').disabled,true);await sleep(45);
+ assert.equal(s.requests.length,1);assert.equal(f.querySelector('button').disabled,false);p.close();
+});
+test('recovery transport failure keeps form retryable without a success confirmation',async()=>{
+ const s=server(),p=await page(s,'none');s.recoveryFail=true;
+ const f=p.doc.querySelector('[data-resume-request]');f.elements.resume_email.value='test@example.invalid';
+ f.dispatchEvent(new p.w.Event('submit',{bubbles:true,cancelable:true}));await sleep(5);
+ assert.equal(p.doc.querySelector('[data-recovery-confirmation]').hidden,true);
+ assert.equal(f.querySelector('button').disabled,false);assert.match(p.doc.querySelector('[data-resume-status]').textContent,/try again/);
+ s.recoveryFail=false;f.dispatchEvent(new p.w.Event('submit',{bubbles:true,cancelable:true}));await sleep(5);
+ assert.equal(p.doc.querySelector('[data-recovery-confirmation]').hidden,false);p.close();
+});
+test('verified restoration hides entry/recovery choices and preserves the active assessment stage',async()=>{
+ const p=await page(server());assert.equal(p.doc.querySelector('[data-assessment-entry]').hidden,true);
+ assert.equal(p.doc.querySelector('[data-recovery-panel]').hidden,true);
+ assert.equal(p.doc.querySelector('[data-assessment-progress]').hidden,false);
+ assert.equal(p.doc.querySelector('[data-progress-contact]').textContent,'✓ Contact Saved');
+ assert.equal(p.doc.querySelector('[data-progress-assessment]').classList.contains('active'),true);p.close();
+});
+test('completed reload marks all three stages complete, keeps 100%, and cannot expose entry controls',async()=>{
+ const s=server();s.status='completed';const p=await page(s,'session');
+ assert.deepEqual(['contact','assessment','complete'].map(stage=>p.doc.querySelector(`[data-progress-${stage}]`).textContent),['✓ Contact Saved','✓ Assessment Complete','✓ Complete']);
+ assert.equal(p.doc.querySelector('[data-progress-contact]').classList.contains('active'),false);
+ assert.equal(p.doc.querySelector('[data-progress-complete]').getAttribute('aria-current'),'step');
+ assert.equal(p.doc.querySelectorAll('[data-assessment-progress] .future').length,0);
+ assert.equal(p.doc.querySelector('[data-assessment-entry]').hidden,true);
+ assert.equal(p.doc.querySelector('[data-recovery-panel]').hidden,true);
+ assert.equal(p.doc.querySelector('[data-lead-step]').hidden,true);
+ assert.equal(p.doc.querySelector('[data-assessment-step]').hidden,true);
+ assert.equal(p.doc.querySelector('[data-complete-step]').hidden,false);
+ assert.equal(p.doc.querySelector('[data-progress-percent]').textContent,'100%');
+ assert.equal(p.form.querySelectorAll('input:not(:disabled),select:not(:disabled),textarea:not(:disabled),button:not(:disabled)').length,0);
+ assert.deepEqual(s.requests.map(r=>r.action),['read']);p.close();
 });

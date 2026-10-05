@@ -1,0 +1,50 @@
+[
+  {
+    "assessmentHidden": true,
+    "completeVisible": true,
+    "enabledAssessmentControls": 0,
+    "entryHidden": true,
+    "height": 1000,
+    "pageOverflow": false,
+    "percent": "100%",
+    "progressOverflow": false,
+    "stages": [
+      "✓ Contact Saved",
+      "✓ Assessment Complete",
+      "✓ Complete"
+    ],
+    "width": 1440
+  },
+  {
+    "assessmentHidden": true,
+    "completeVisible": true,
+    "enabledAssessmentControls": 0,
+    "entryHidden": true,
+    "height": 1024,
+    "pageOverflow": false,
+    "percent": "100%",
+    "progressOverflow": false,
+    "stages": [
+      "✓ Contact Saved",
+      "✓ Assessment Complete",
+      "✓ Complete"
+    ],
+    "width": 768
+  },
+  {
+    "assessmentHidden": true,
+    "completeVisible": true,
+    "enabledAssessmentControls": 0,
+    "entryHidden": true,
+    "height": 844,
+    "pageOverflow": false,
+    "percent": "100%",
+    "progressOverflow": false,
+    "stages": [
+      "✓ Contact Saved",
+      "✓ Assessment Complete",
+      "✓ Complete"
+    ],
+    "width": 390
+  }
+]
