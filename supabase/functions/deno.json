@@ -1,0 +1,4 @@
+{
+  "compilerOptions":{"strict":true,"types":["./_shared/runtime.d.ts"]},
+  "lock":"./deno.lock"
+}

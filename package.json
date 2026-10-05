@@ -1,0 +1,14 @@
+{
+  "name": "revitalized-academy-verification",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/vitality-resume.cjs tests/assessment-person.cjs",
+    "check:edge": "deno check --config supabase/functions/deno.json supabase/functions/vitality-resume/index.ts",
+    "test:edge": "deno test --config supabase/functions/deno.json tests/edge/vitality_resume_test.ts",
+    "build:production-vitality": "node scripts/build-production-vitality.cjs"
+  },
+  "devDependencies": {
+    "jsdom": "26.1.0",
+    "pg": "8.16.3"
+  }
+}

@@ -239,6 +239,47 @@
  const leadForm = document.querySelector('[data-vitality-lead-form]');
  const assessmentForm = document.querySelector('[data-assessment-form]');
  const assessmentStage = document.querySelector('[data-assessment-stage]');
+ const entry = document.querySelector('[data-assessment-entry]');
+ const recoveryPanel = document.querySelector('[data-recovery-panel]');
+ const progress = document.querySelector('[data-assessment-progress]');
+ function hideEntry() {
+  if (entry) entry.hidden = true;
+  if (recoveryPanel) recoveryPanel.hidden = true;
+  if (progress) progress.hidden = false;
+ }
+ if (entry) {
+  const start = entry.querySelector('[data-start-new]');
+  const resume = entry.querySelector('[data-open-resume]');
+  function chooseEntry(recover) {
+   document.querySelector('[data-lead-step]').hidden = recover;
+   recoveryPanel.hidden = !recover;
+   progress.hidden = recover;
+   start.setAttribute('aria-expanded', String(!recover));
+   resume.setAttribute('aria-expanded', String(recover));
+   (recover ? recoveryPanel.querySelector('input') : leadForm.elements.first_name).focus();
+  }
+  start.addEventListener('click', () => chooseEntry(false));
+  resume.addEventListener('click', () => chooseEntry(true));
+ }
+ function showCompleted() {
+  hideEntry();
+  document.querySelector('[data-lead-step]').hidden = true;
+  document.querySelector('[data-assessment-step]').hidden = true;
+  document.querySelector('[data-complete-step]').hidden = false;
+  const stages = ['contact', 'assessment', 'complete'];
+  const labels = ['✓ Contact Saved', '✓ Assessment Complete', '✓ Complete'];
+  stages.forEach((stage, index) => {
+   const item = document.querySelector(`[data-progress-${stage}]`);
+   item.textContent = labels[index];
+   item.classList.remove('active', 'future');
+   item.classList.add('done');
+   item.removeAttribute('aria-current');
+   if (stage === 'complete') { item.classList.add('active'); item.setAttribute('aria-current', 'step'); }
+  });
+  document.querySelector('[data-progress-percent]').textContent = '100%';
+  document.querySelector('[data-complete-name]').textContent = assessmentForm.elements.first_name.value || 'your assessment is complete';
+ }
+
  if (assessmentForm && assessmentStage) {
  assessmentStage.innerHTML = sections.map((section, index) => `<section class="vitality-panel" data-panel="${index}" ${index ? 'hidden' : ''}>${section.html()}</section>`).join('');
  // Keep person fields in the static Netlify form, then place them in Introduction.
@@ -465,6 +506,7 @@
  if (usesChildQuestions() && childAssessment) childAssessment.update(assessmentForm);
  updateAssessmentPerson();
  window.scrollTo({ top: 0, behavior: 'smooth' });
+ if(window.RVA_RESUME)window.RVA_RESUME.changed();
  }
 
  function validateCurrentSection() {
@@ -525,10 +567,10 @@
  return true;
  }
 
- if (backButton) backButton.addEventListener('click', () => showSection(currentSection - 1));
+ if (backButton) backButton.addEventListener('click', async () => {showSection(currentSection - 1);if(window.RVA_RESUME)await window.RVA_RESUME.flush();});
  if (nextButton) nextButton.addEventListener('click', async () => {
  if (!validateCurrentSection()) return;
- if (currentSection < sections.length - 1) return showSection(currentSection + 1);
+ if (currentSection < sections.length - 1) {showSection(currentSection + 1);if(window.RVA_RESUME)await window.RVA_RESUME.flush();return;}
  const original = nextButton.innerHTML;
  nextButton.disabled = true;
  nextButton.textContent = 'Submitting…';
@@ -540,17 +582,12 @@
  if (assessmentForm.elements.self_harm_safety_flag && assessmentForm.elements.self_harm_safety_flag.value === 'Yes') flags.push('SELF-HARM / IMMEDIATE SAFETY RESPONSE');
  assessmentForm.querySelector('[data-coach-review-flags]').value = flags.length ? flags.join(' | ') : 'None reported';
  assessmentForm.querySelector('[data-assessment-summary]').value = buildAssessmentSummary();
- await postForm(assessmentForm);
- document.querySelector('[data-assessment-step]').hidden = true;
- document.querySelector('[data-complete-step]').hidden = false;
- document.querySelector('[data-progress-assessment]').classList.remove('active');
- document.querySelector('[data-progress-complete]').classList.add('active');
- document.querySelector('[data-progress-complete]').classList.remove('future');
- const firstName = assessmentForm.querySelector('[data-copy-field="first_name"]').value;
- document.querySelector('[data-complete-name]').textContent = firstName || 'your assessment is complete';
+ if(window.RVA_RESUME)await window.RVA_RESUME.finalize(encodeForm(assessmentForm));
+ else await postForm(assessmentForm);
+ showCompleted();
  window.scrollTo({ top: 0, behavior: 'smooth' });
  } catch (error) {
- assessmentError.textContent = 'We couldn’t submit your assessment. Your contact information is already saved. Please check your connection and try again.';
+ assessmentError.textContent = window.RVA_RESUME ? error.message : 'We couldn’t submit your assessment. Your contact information is already saved. Please check your connection and try again.';
  assessmentError.classList.add('show');
  nextButton.disabled = false;
  nextButton.innerHTML = original;
@@ -568,9 +605,16 @@
  button.textContent = 'Saving…';
  try {
  await postForm(leadForm);
+ if(window.RVA_RESUME){
+  const identity=Object.fromEntries(['first_name','last_name','email','phone'].map(name=>[name,leadForm.elements[name].value]));
+  await window.RVA_RESUME.start(identity);
+  button.disabled=false;button.innerHTML=original;
+  return;
+ }
  ['first_name','last_name','email','phone'].forEach((name) => {
  assessmentForm.querySelector(`[data-copy-field="${name}"]`).value = leadForm.elements[name].value;
  });
+ hideEntry();
  document.querySelector('[data-lead-step]').hidden = true;
  document.querySelector('[data-assessment-step]').hidden = false;
  document.querySelector('[data-progress-contact]').textContent = '✓ Contact Saved';
@@ -587,6 +631,38 @@
 
  updateConditionalFields();
  updateAssessmentPerson();
+
+ // Narrow adapter: restore through the same pathway/conditional helpers as normal entry.
+ if(assessmentForm)window.RVA_VITALITY={form:assessmentForm,section:()=>currentSection,
+  complete:showCompleted,
+  restore:(identity,snapshot)=>{
+   hideEntry();
+   for(const name of ['first_name','last_name','email','phone'])assessmentForm.querySelector(`[data-copy-field="${name}"]`).value=identity[name]||'';
+   const fields=snapshot.fields||{};
+   const set=(name,rows)=>{
+    const controls=Array.from(assessmentForm.querySelectorAll(`[name="${CSS.escape(name)}"]`));
+    controls.forEach((c,index)=>{const row=rows[index];if(!row||row.type!==c.type||c.type==='hidden')return;
+     if(['radio','checkbox'].includes(c.type))c.checked=row.checked===true&&(c.value===String(row.value)||name==='assessment_authorization');
+     else if(c.type==='select-multiple')Array.from(c.options).forEach(o=>o.selected=Array.isArray(row.value)&&row.value.includes(o.value));
+     else c.value=String(row.value);
+    });
+   };
+   for(const name of ['assessment_for','assessed_first_name','assessed_last_name','assessed_age','assessed_relationship'])if(fields[name])set(name,fields[name]);
+   updateAssessmentPathway();updateConditionalFields();updateAssessmentPerson();
+   for(const [name,rows]of Object.entries(fields))set(name,rows);
+   assessmentForm.querySelectorAll('[data-symptom-screen]').forEach(updateSymptomScreen);
+   if(usesChildQuestions()&&childAssessment)childAssessment.update(assessmentForm);
+   // Dynamic symptom-detail controls are created by the first pass.
+   for(const [name,rows]of Object.entries(fields))set(name,rows);
+   updateConditionalFields();if(usesChildQuestions()&&childAssessment)childAssessment.update(assessmentForm);updateAssessmentPerson();
+   assessmentForm.querySelectorAll('[data-range]').forEach(c=>{c.nextElementSibling.value=c.value;});
+   document.querySelector('[data-lead-step]').hidden=true;document.querySelector('[data-assessment-step]').hidden=false;
+   document.querySelector('[data-progress-contact]').textContent='✓ Contact Saved';
+   document.querySelector('[data-progress-assessment]').classList.add('active');
+   document.querySelector('[data-progress-assessment]').classList.remove('future');
+   showSection(Number(snapshot.section)||0);
+  }
+ };
 
  // Site-wide assessment invitation popup retained for pages that include it.
  const popup = document.querySelector('.vitality-popup-backdrop');

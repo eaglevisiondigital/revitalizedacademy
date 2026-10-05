@@ -72,6 +72,7 @@
     }
 
     if (form.matches('[data-vitality-lead-form]')) {
+      if (window.RVA_RESUME) return; // Secure verified-draft flow owns contact/workflow creation.
       const fd = new FormData(form);
       send({
         type: 'vitality_start',
@@ -202,6 +203,7 @@
     }
 
     const sendProgress = () => {
+      if (window.RVA_RESUME) return;
       const person = identity();
       if (!person.email) return;
 
@@ -239,6 +241,7 @@
         sessionStorage.setItem('ra_vitality_identity_v1', JSON.stringify(person));
       } catch (_) {}
 
+      if (window.RVA_RESUME) return;
       send({
         type: 'vitality_complete',
         source: 'website_vitality_assessment',
