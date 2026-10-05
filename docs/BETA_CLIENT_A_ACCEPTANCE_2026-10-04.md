@@ -1,4 +1,14 @@
-# Hosted beta acceptance — Client A created, plus-address routing failed acceptance
+# Hosted beta acceptance — Client A reconciled to real alias; mailbox receipt pending
+
+## Real-alias reconciliation and resend — 2026-10-05
+
+The user approved `rva-client@eaglevision.biz` as Client A's real receiving identity and prohibited further use of the unreliable `dave+...` aliases. Staging `RVA_SYNTHETIC_EMAIL_ALLOWLIST` now preserves all seven earlier exact entries and adds only the three approved identities `rva-client@eaglevision.biz`, `rva-staff@eaglevision.biz` and `dfowler4232@gmail.com`; no wildcard or mail-provider setting changed. Dashboard-confirmed ten-address digest: `57ee965ad3fcf7c5785ec5c2d021fb0c8036b65aeb417a6afebe8be965c22561`, saved `2026-10-05T19:55:35Z`.
+
+Client A's existing contact was reconciled in place from the unsupported plus-address to `rva-client@eaglevision.biz` under guarded staging-only preconditions and an owner-attributed audit activity. The existing contact, membership, agreement, activation and journey IDs remain unchanged. Post-checks show exactly one contact, one membership and one agreement, with no Auth user and no duplicate client, membership, agreement, invitation or workflow. The prior journey link was deactivated before the existing agreement was resent through the normal authenticated owner portal.
+
+The resend retained agreement `af12575c-babc-4d42-8dd7-23e23f887358`, still sent/unsigned/unwaived. Delivery job `7771fe3d-fd47-487a-b6b3-934e07335f63` completed in one attempt with no block or error. Resend message `01a10dae-85ba-7271-aa57-a8bd839739e9` reports `delivered` to the exact real alias at `2026-10-05T20:08:23.807Z` (3:08 PM Central); the exact-address suppression lookup is not found. This confirms receiving-server acceptance only. Actual arrival in the user-accessible mailbox remains pending and no signing or activation should begin until the user confirms receipt. [Sanitized reconciliation and resend receipt](../deployment-evidence/2026-10-05-beta-delivery/client-a-real-alias-resend.json).
+
+No application source, deployment, migration, Edge Function, role, permission, feature flag, payment, SMTP/provider or production change occurred. No raw invitation link or token was stored or exposed. **BETA NOT READY.**
 
 ## Delivery routing update — 2026-10-05
 

@@ -1,0 +1,50 @@
+{
+  "observedAt": "2026-10-05T15:10:00-05:00",
+  "environment": "staging",
+  "supabaseProject": "bvooallokgfktssadsrv",
+  "recipient": "rva-client@eaglevision.biz",
+  "subject": "Your ReVitalized Academy agreement is ready",
+  "recipientAllowlist": {
+    "updatedAtUtc": "2026-10-05T19:55:35Z",
+    "sha256": "57ee965ad3fcf7c5785ec5c2d021fb0c8036b65aeb417a6afebe8be965c22561",
+    "exactRecipientAdded": true,
+    "domainWildcardAdded": false,
+    "existingRecipientsPreserved": true
+  },
+  "identityReconciliation": {
+    "contactId": "5add389e-e922-436f-b56c-12c6a30d601c",
+    "membershipId": "16f27a3f-11b9-4aac-9f07-6e158f498768",
+    "agreementId": "af12575c-babc-4d42-8dd7-23e23f887358",
+    "activationId": "b463cb8d-d660-48f4-a6b5-906ebfa89034",
+    "journeyId": "4f2afc7c-4e44-4aac-b5c8-ed7065dcf89c",
+    "contactCount": 1,
+    "membershipCount": 1,
+    "agreementCount": 1,
+    "authUserCount": 0,
+    "duplicateRecordsCreated": false,
+    "auditActivityRecorded": true
+  },
+  "resend": {
+    "deliveryJobId": "7771fe3d-fd47-487a-b6b3-934e07335f63",
+    "providerMessageId": "01a10dae-85ba-7271-aa57-a8bd839739e9",
+    "providerStatus": "delivered",
+    "sentAtUtc": "2026-10-05T20:08:23.807Z",
+    "sentAtCentral": "2026-10-05T15:08:23-05:00",
+    "attempts": 1,
+    "deliveryError": null,
+    "suppressionLookup": "not_found"
+  },
+  "agreement": {
+    "status": "sent",
+    "sentAtUtc": "2026-10-05T20:08:22.437342Z",
+    "signed": false,
+    "waived": false,
+    "journeyLinkId": "ab14758d-23d7-4818-99b4-14e98f77a230",
+    "priorJourneyLinkDeactivated": true
+  },
+  "userMailboxReceipt": "pending_confirmation",
+  "privateLinkHandling": "No raw link or token is stored in this receipt, exposed in chat, or used outside the normal recipient flow.",
+  "authorizedHostedChanges": "Existing Client A contact email reconciled in place, prior journey link deactivated, existing agreement resent, and audited activity recorded.",
+  "unauthorizedHostedContentCreated": false,
+  "productionChanges": false
+}

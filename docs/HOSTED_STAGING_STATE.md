@@ -160,7 +160,7 @@ The following custom Edge Function secrets were manually created and saved in th
 - `RVA_ENVIRONMENT=staging`
 - `RVA_APP_ORIGIN=https://revitalizedacademy-staging.netlify.app`
 - `RVA_PAYMENT_MODE=synthetic`
-- `RVA_SYNTHETIC_EMAIL_ALLOWLIST=dave@theboss.biz,dave@eaglevision.biz,dave+rva-client-a@eaglevision.biz,dave+rva-client-b@eaglevision.biz,dave+rva-beta-staff@eaglevision.biz` — updated 2026-10-04 with explicit approval for remaining synthetic beta acceptance, preserving the original two recipients. Saved SHA-256 `9642867372ec8b16d549d313fb88772080557260a2fc7744a0ddf80a1595e820`. Actual alias delivery is still unproven; entries retained for the unfinished acceptance window. See [continuation receipt](BETA_REMAINING_ACCEPTANCE_2026-10-04.md).
+- `RVA_SYNTHETIC_EMAIL_ALLOWLIST` — current staging value preserves the seven earlier exact recipients and adds only approved real identities `rva-client@eaglevision.biz`, `rva-staff@eaglevision.biz` and `dfowler4232@gmail.com`. Ten-address SHA-256 `57ee965ad3fcf7c5785ec5c2d021fb0c8036b65aeb417a6afebe8be965c22561`, saved `2026-10-05T19:55:35Z`. No wildcard. Older `dave+...` entries remain preserved for historical unfinished-record reconciliation but are prohibited for further hosted acceptance because the mail server does not route them reliably. Client A was reconciled in place to the real alias and its existing agreement resent; provider delivery passed while actual mailbox receipt remains pending. See [current Client A receipt](BETA_CLIENT_A_ACCEPTANCE_2026-10-04.md).
 
 Supabase-managed default secrets were not modified.
 
