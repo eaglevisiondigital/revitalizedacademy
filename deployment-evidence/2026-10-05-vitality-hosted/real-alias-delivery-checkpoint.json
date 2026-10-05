@@ -13,11 +13,24 @@
   "counts": {"contacts":1,"drafts":1,"workflows":1},
   "draftState": {"status":"draft","revision":0,"section":0,"percent":0,"emailVerified":false,"hasSession":false,"hasPendingMail":true},
   "provider": {"name":"Resend","messageId":"01a10c00-a40f-79b1-bc16-d6b2bcbe84f5","sentAt":"2026-10-05T12:18:51.165Z","status":"delivered"},
-  "actualExternalReceipt": "unverified",
+  "actualExternalReceipt": "user confirmed received at forwarding destination",
   "receivingChecks": {
     "connectedGmailExactSubject": "no result",
     "openBusinessWebmail": "different account (dave@theboss.biz); no result in Inbox or Spam",
-    "localMail": "receiving business mailbox not configured"
+    "localMail": "receiving business mailbox not configured",
+    "userConfirmation": "received"
+  },
+  "normalEmailOpen": {
+    "userConfirmedOpened": true,
+    "urlFragmentRemoved": true,
+    "sameDraftVerified": true,
+    "hasOpaqueSessionDigest": true,
+    "pendingMailDigestConsumed": true,
+    "visibleSection": "Introduction",
+    "visiblePercent": 0,
+    "visibleSaveState": "Saved",
+    "consoleWarnings": 0,
+    "consoleErrors": 0
   },
   "rawEmailBodyRetrieved": false,
   "rawResumeTokenRetrieved": false,

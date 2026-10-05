@@ -30,11 +30,11 @@ Normal hosted Save & Continue used Synthetic / Vitality Alias, `rva-assessment@e
 | Journey | `409cdfcb-9aae-462b-9d49-abb3ac2ba2b4` |
 | Draft state | Draft, revision 0, section 0, percent 0, unverified, no session, pending mail digest |
 | Provider receipt | Resend `01a10c00-a40f-79b1-bc16-d6b2bcbe84f5`, sent 2026-10-05T12:18:51.165Z, status delivered |
-| Actual external receipt | Unverified; connected Gmail exact-subject searches returned no message |
+| Actual external receipt | User confirmed received at `dave@eaglevision.biz` through the configured forwarding alias |
 | Available business webmail | Confirmed `dave@theboss.biz`, not the forwarded destination; exact subject absent from Inbox and Spam |
 | Local Mail app | Only a Google mailbox is configured and it has no matching message |
 
-Provider “delivered” is not counted as receipt. No provider email body or raw resume token was retrieved. The new assessment remains preserved for normal user opening after actual inbox arrival. The earlier plus-address synthetic draft remains untouched as historical evidence and is excluded from continuation.
+Provider “delivered” was not counted as receipt; the user's independent inbox confirmation establishes actual arrival. The user opened Continue normally. The resulting hosted page has no URL fragment, displays the Introduction at 0% with Saved state, and has zero console warnings/errors. Database state confirms the same draft is verified with an opaque session digest and no pending mail digest; exact contact/draft/workflow counts remain one. No provider email body or raw resume token was retrieved. No answer was entered and no final submission occurred. The earlier plus-address synthetic draft remains untouched as historical evidence and is excluded from continuation.
 
 ## Actual hosted start and mail
 
