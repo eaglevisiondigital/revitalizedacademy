@@ -35,11 +35,13 @@ Production now serves the accepted secure Vitality save/resume release from isol
 - Start New and Resume Existing render and switch correctly at 1280, 768, and 390 pixel widths without horizontal overflow or browser console errors.
 - Home, portal, member, enrollment, and webinar pages remain byte-identical to the prior deploy.
 
-## Remaining production acceptance
+## Production acceptance
 
-The configured production environment passes a non-writing preflight, rejects a foreign origin, and returns the approved neutral response for a malformed email. No production contact, draft, workflow, rate-limit record, or email was created.
+The configured production environment passes a non-writing preflight, rejects a foreign origin, and returns the approved neutral response for a malformed email.
 
-Actual provider acceptance and external email delivery remain unverified because that test requires a specifically authorized real production address and creates a production contact/draft/workflow. Until that narrow smoke is authorized and passes, the final state remains `VITALITY PRODUCTION NOT READY`.
+The authorized production smoke used `rva-assessment@eaglevision.biz`. It created exactly one contact, one unfinished draft, one Vitality workflow, one active journey, and one `vitality_started` event. External delivery was confirmed by the user. Opening the link consumed and cleared the single-use emailed credential, verified the email, and created one active session on the same draft without duplicates. The unfinished draft remains at Whole-Person Snapshot, 7%, revision 4; it was not completed.
+
+Final state: `VITALITY PRODUCTION READY`.
 
 ## Rollback target
 
