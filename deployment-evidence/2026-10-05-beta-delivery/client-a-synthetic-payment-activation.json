@@ -1,0 +1,58 @@
+{
+  "observedAtUtc": "2026-10-05T21:41:31Z",
+  "environment": "staging",
+  "supabaseProject": "bvooallokgfktssadsrv",
+  "recipient": "rva-client@eaglevision.biz",
+  "contactId": "5add389e-e922-436f-b56c-12c6a30d601c",
+  "authUserId": "b308daf6-69a8-4d76-9c71-8c5b9e4183d9",
+  "membershipId": "16f27a3f-11b9-4aac-9f07-6e158f498768",
+  "agreementId": "af12575c-babc-4d42-8dd7-23e23f887358",
+  "activationId": "b463cb8d-d660-48f4-a6b5-906ebfa89034",
+  "journeyId": "4f2afc7c-4e44-4aac-b5c8-ed7065dcf89c",
+  "payment": {
+    "paymentId": "6f34ccd8-303b-4b32-a71f-b34b8be78e53",
+    "transactionType": "payment",
+    "status": "recorded",
+    "amountCents": 8900,
+    "currency": "USD",
+    "paymentMethod": "other",
+    "provider": "Staging synthetic ledger",
+    "referenceNumber": "RVA-BETA-CLIENT-A-20261005",
+    "receivedAtUtc": "2026-10-05T21:33:00Z",
+    "reason": "Approved synthetic beta acceptance payment for disposable Client A; no real funds.",
+    "realFundsMoved": false,
+    "recordCount": 1
+  },
+  "activation": {
+    "paymentStatus": "paid",
+    "agreementStatus": "signed",
+    "accessStatus": "active",
+    "clientAccessStatus": "active",
+    "membershipStatus": "active",
+    "needsOnboardingClaim": false
+  },
+  "journey": {
+    "status": "active",
+    "currentStepKey": "vitality_assessment",
+    "progressPercent": 50,
+    "paymentAgreementStep": "completed",
+    "backendActivationStep": "completed",
+    "vitalityAssessmentStep": "in_progress",
+    "onboardingHealthQuestionnaireStep": "pending",
+    "coachingInvitationStep": "pending"
+  },
+  "liveEnrollmentUi": {
+    "refreshedAfterPayment": true,
+    "paymentRequirementSatisfied": true,
+    "memberAccessReady": true,
+    "programAccessActive": "Holistic Foundations",
+    "openMemberDashboardCtaVisible": true,
+    "dashboardDestination": "/member/",
+    "freshDashboardSignInRequired": true
+  },
+  "recordedThroughNormalOwnerPortal": true,
+  "directSqlWriteUsed": false,
+  "duplicateClientOrAgreementCreated": false,
+  "hostedProfilePasswordMetricOrHouseholdDataChanged": false,
+  "productionChanges": false
+}
