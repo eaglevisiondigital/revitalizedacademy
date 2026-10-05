@@ -1,5 +1,13 @@
 # Hosted beta acceptance — Client A agreement, payment and activation passed
 
+## Member dashboard acceptance blockers — 2026-10-05
+
+Fresh normal member sign-in succeeded. Dashboard Home loaded the correct synthetic member and active Holistic Foundations program, 50% journey progress, current Vitality Assessment step, no fabricated score and no Family/household permission warning. Health & Progress opened and rendered all ten configured standard metrics with neutral measured-data states.
+
+Nutrition and Workouts access failed. Neither sidebar destination renders, and Health & Progress reports that Nutrition is not included. Read-only database verification shows both approved membership-level benefit rows changed to `inactive` at the membership activation timestamp. The authenticated `my_app_access` result is `nutrition_enabled=false`, `fitness_enabled=false`, entitlement count 0. The membership status transition fired the existing entitlement reconciliation trigger, whose current function deactivates any benefit not backed by an active program-level template. The prior explicit approval required these two benefits to remain membership-level and prohibited a program template, so creating a template or merely forcing the rows active would evade the underlying lifecycle defect.
+
+A normal dashboard reload also returned to the member sign-in screen; the second open member tab showed signed out as well. This fails the required refresh persistence check even though the current source constructs the Supabase client with `persistSession:true`. Logout/re-login and benefits cannot be accepted until the refresh and reconciliation defects are repaired and redeployed. No repair, template, hosted data mutation or production change occurred during this read-only validation. [Sanitized receipt](../deployment-evidence/2026-10-05-beta-delivery/client-a-member-dashboard-acceptance.json). **BETA NOT READY.**
+
 ## Real-alias reconciliation and resend — 2026-10-05
 
 The user approved `rva-client@eaglevision.biz` as Client A's real receiving identity and prohibited further use of the unreliable `dave+...` aliases. Staging `RVA_SYNTHETIC_EMAIL_ALLOWLIST` now preserves all seven earlier exact entries and adds only the three approved identities `rva-client@eaglevision.biz`, `rva-staff@eaglevision.biz` and `dfowler4232@gmail.com`; no wildcard or mail-provider setting changed. Dashboard-confirmed ten-address digest: `57ee965ad3fcf7c5785ec5c2d021fb0c8036b65aeb417a6afebe8be965c22561`, saved `2026-10-05T19:55:35Z`.
@@ -74,7 +82,7 @@ The allowlist retains both originals plus the three exact approved aliases, dige
 
 ## Remaining gates and limitations
 
-- Client A external receipt, normal signup/email confirmation, enrollment claim, agreement acceptance, one approved synthetic payment and resulting activation now pass. The accepted primary signature matches the claimed Auth user and frozen agreement hash. Live enrollment UI confirms payment and active Holistic Foundations access. Fresh member dashboard login/refresh/logout/re-login and benefit access remain unproven.
+- Client A external receipt, normal signup/email confirmation, enrollment claim, agreement acceptance, one approved synthetic payment and resulting activation now pass. Fresh dashboard sign-in, Home and Health & Progress load. Refresh persistence fails, and activation deactivated the two explicitly approved membership-only benefits, so Nutrition/Workouts, logout/re-login and benefit access remain blocked.
 - Client B and scoped staff full lifecycle, actual delivery, recovery, revocation/deactivation, private-health scope and wrong-client denial remain unexecuted.
 - Meal/workout assignment→Client A view, Client B denial, five requested account transitions, private-DOM clearing and delayed-response isolation remain unexecuted.
 - Fresh hosted member/scoped-staff/assignment/activation responsive checks remain pending. The prepared owner Invite Staff form passes at1440×1000,768×1024,390×844: page widths match viewports, actual dialog scroll/client widths match758/738/372px, no control extends horizontally outside the dialog. Viewport restored afterward. Current owner-tab warning/error log is empty. These three form checks do not substitute for scoped-staff/member acceptance; prior owner/content27checks are retained.
@@ -83,6 +91,6 @@ The allowlist retains both originals plus the three exact approved aliases, dige
 
 ## Immediate continuation
 
-Use the existing Client A account for a fresh normal member-dashboard sign-in, then verify dashboard refresh/logout/re-login and the two configured benefit surfaces without changing member data. Continue the approved Client B and scoped-staff lifecycle, delivery, assignment and isolation checklist using only the approved real identities and preserving all audit/cleanup requirements. Primary Chat alone owns the Justin/Elle green flag.
+Authorize a narrow repair package that preserves explicit membership-level benefits across membership status reconciliation without creating a program template, and diagnose/fix member-session persistence across reload. Add regressions for activation-time membership-only entitlements and real reload/session restoration, deploy only to staging, then repeat Client A dashboard refresh/logout/re-login and Nutrition/Workouts acceptance before continuing Client B/scoped-staff assignment and isolation gates. Primary Chat alone owns the Justin/Elle green flag.
 
 BETA NOT READY

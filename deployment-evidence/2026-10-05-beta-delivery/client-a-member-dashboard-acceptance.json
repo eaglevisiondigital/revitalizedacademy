@@ -1,0 +1,54 @@
+{
+  "observedAtUtc": "2026-10-05T21:50:00Z",
+  "environment": "staging",
+  "supabaseProject": "bvooallokgfktssadsrv",
+  "member": {
+    "recipient": "rva-client@eaglevision.biz",
+    "userId": "b308daf6-69a8-4d76-9c71-8c5b9e4183d9",
+    "contactId": "5add389e-e922-436f-b56c-12c6a30d601c",
+    "membershipId": "16f27a3f-11b9-4aac-9f07-6e158f498768",
+    "programCode": "holistic-foundations",
+    "programName": "Holistic Foundations"
+  },
+  "liveDashboard": {
+    "normalSignInSucceeded": true,
+    "homeLoaded": true,
+    "activeProgramDisplayed": true,
+    "journeyProgressPercent": 50,
+    "currentJourneyStep": "Vitality Assessment",
+    "healthAndProgressLoaded": true,
+    "configuredHealthMetricCount": 10,
+    "neutralMeasuredDataStates": true,
+    "fabricatedHealthScoreObserved": false,
+    "familyHouseholdPermissionWarningObserved": false
+  },
+  "entitlementDefect": {
+    "nutritionSidebarVisible": false,
+    "workoutsSidebarVisible": false,
+    "nutritionHealthSummary": "Nutrition is not included in your current access.",
+    "myAppAccessNutritionEnabled": false,
+    "myAppAccessFitnessEnabled": false,
+    "myAppAccessEntitlementCount": 0,
+    "nutritionEntitlementStatus": "inactive",
+    "fitnessEntitlementStatus": "inactive",
+    "entitlementsUpdatedAtUtc": "2026-10-05T21:41:30.698614Z",
+    "rootCause": "Membership activation changed client_memberships.status, firing sync_membership_entitlements_trigger. private.reconcile_membership_entitlements deactivates every membership entitlement not backed by an active program_entitlement_templates row. The two explicitly approved membership-only benefits therefore became inactive at activation time.",
+    "programTemplateCreationApproved": false,
+    "repairApplied": false
+  },
+  "sessionRefreshDefect": {
+    "signedInDashboardObservedBeforeRefresh": true,
+    "normalReloadPerformed": true,
+    "sessionPreservedAfterRefresh": false,
+    "postRefreshScreen": "Member sign-in",
+    "secondOpenMemberTabAlsoSignedOut": true,
+    "sourceConfigPersistSession": true,
+    "rootCauseConfirmed": false,
+    "repairApplied": false
+  },
+  "hostedMemberDataChanged": false,
+  "sourceChanged": false,
+  "migrationApplied": false,
+  "productionChanges": false,
+  "betaStatus": "NOT READY"
+}
