@@ -1,0 +1,32 @@
+{
+  "observedAt": "2026-10-05T14:39:45-05:00",
+  "environment": "staging",
+  "recipient": "dave+rva-client-a@eaglevision.biz",
+  "subject": "Your ReVitalized Academy agreement is ready",
+  "provider": "Resend",
+  "providerMessageId": "01a10926-148e-714f-b496-d132c7a17761",
+  "providerStatus": "delivered",
+  "metrics": {
+    "sent": 1,
+    "delivered": 1,
+    "bounced": 0,
+    "bouncedTransient": 0,
+    "bouncedPermanent": 0,
+    "bouncedUndetermined": 0,
+    "suppressed": 0,
+    "failed": 0,
+    "deliveryDelayed": 0,
+    "opened": 0,
+    "clicked": 0
+  },
+  "suppressionLookup": "not_found",
+  "userMailboxReceipt": "not_received",
+  "routingConclusion": "The receiving server accepted the exact plus-address, but delivery into the user's accessible mailbox cannot be verified and the user reports the message is absent. Treat this plus-address as unreliable for hosted acceptance.",
+  "resendRecommendation": "Do not resend to the same plus-address. Configure a real mailbox alias that forwards to a confirmed accessible inbox, update the existing synthetic record through the supported workflow, then resend the existing agreement without creating a duplicate identity or agreement.",
+  "recommendedAlias": "rva-client-a@eaglevision.biz",
+  "privateLinkHandling": "Provider detail response included the message body. The private link was not copied into this receipt, exposed to the user, or used.",
+  "recordsCreated": false,
+  "messagesResent": false,
+  "hostedChanges": false,
+  "productionChanges": false
+}

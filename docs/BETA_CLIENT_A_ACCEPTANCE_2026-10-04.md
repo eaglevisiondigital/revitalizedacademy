@@ -1,4 +1,10 @@
-# Hosted beta acceptance — Client A created, delivery confirmation pending
+# Hosted beta acceptance — Client A created, plus-address routing failed acceptance
+
+## Delivery routing update — 2026-10-05
+
+Resend confirms the exact recipient `dave+rva-client-a@eaglevision.biz` reached provider status `delivered`. The focused event totals are sent 1, delivered 1, bounced 0, suppressed 0, failed 0, delayed 0, opened 0 and clicked 0. The exact-address suppression lookup returned not found. The user reports that the message is absent from the mailbox they can access; only the unrelated Vitality Assessment email is present.
+
+This proves receiving-server acceptance, not routing into the accessible mailbox. Treat the plus-address as unreliable for hosted acceptance. Do not resend to the same plus-address and do not recreate the client, agreement, invitation or Auth identity. Configure the real alias `rva-client-a@eaglevision.biz` to forward to a confirmed accessible inbox, then update the existing synthetic Client A email through the supported owner workflow and resend the existing agreement. [Sanitized investigation receipt](../deployment-evidence/2026-10-05-beta-delivery/client-a-plus-routing-investigation.json). No message was resent and no hosted or production state changed during this investigation.
 
 **BETA NOT READY.** Normal owner second sign-in passed. Client A was created through the intended UI and its agreement email was accepted by Resend. Actual mailbox delivery, activation and remaining multi-account acceptance are still pending.
 
