@@ -35,9 +35,15 @@
     "suppressionLookup": "not_found"
   },
   "agreement": {
-    "status": "sent",
+    "status": "signed",
     "sentAtUtc": "2026-10-05T20:08:22.437342Z",
-    "signed": false,
+    "signed": true,
+    "signedAtUtc": "2026-10-05T21:04:57.341512Z",
+    "signatureCount": 1,
+    "requiredSignatureCount": 1,
+    "primarySignatureAccepted": true,
+    "primarySignatureUserMatchesClaimedAccount": true,
+    "signatureHashMatchesAgreement": true,
     "waived": false,
     "journeyLinkId": "ab14758d-23d7-4818-99b4-14e98f77a230",
     "priorJourneyLinkDeactivated": true
@@ -70,24 +76,24 @@
     "membershipId": "16f27a3f-11b9-4aac-9f07-6e158f498768",
     "membershipStatus": "pending",
     "agreementId": "af12575c-babc-4d42-8dd7-23e23f887358",
-    "agreementStatus": "sent",
+    "agreementStatus": "signed",
     "agreementCount": 1,
     "membershipCount": 1,
     "contactCount": 1,
     "authUserCount": 1,
-    "signatureCount": 0
+    "signatureCount": 1
   },
   "activationGate": {
     "activationId": "b463cb8d-d660-48f4-a6b5-906ebfa89034",
     "paymentStatus": "pending",
-    "agreementStatus": "sent",
+    "agreementStatus": "signed",
     "accessStatus": "pending",
     "amountCents": 8900,
     "currency": "USD",
     "billingChoice": "monthly",
     "commitmentMonths": 6
   },
-  "agreementSigned": false,
+  "agreementSigned": true,
   "privateLinkHandling": "No raw link or token is stored in this receipt, exposed in chat, or used outside the normal recipient flow.",
   "authorizedHostedChanges": "Existing Client A contact email reconciled in place, prior journey link deactivated, existing agreement resent, and audited activity recorded.",
   "unauthorizedHostedContentCreated": false,
