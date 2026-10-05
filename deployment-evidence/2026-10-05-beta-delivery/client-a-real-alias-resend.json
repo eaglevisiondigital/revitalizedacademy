@@ -49,8 +49,8 @@
     "userId": "b308daf6-69a8-4d76-9c71-8c5b9e4183d9",
     "createdAtUtc": "2026-10-05T20:19:03Z",
     "confirmationSentAtUtc": "2026-10-05T20:19:03.408739Z",
-    "confirmedAt": null,
-    "lastSignedInAt": null,
+    "confirmedAtUtc": "2026-10-05T20:47:32.562935Z",
+    "lastSignedInAtUtc": "2026-10-05T20:47:32.569341Z",
     "duplicateAuthUsers": false
   },
   "confirmationEmail": {
@@ -58,9 +58,35 @@
     "providerMessageId": "01a10db8-49b6-7c44-a1ca-de6840196208",
     "providerStatus": "delivered",
     "sentAtUtc": "2026-10-05T20:19:03.908Z",
-    "userMailboxReceipt": "pending_confirmation"
+    "userMailboxReceipt": "confirmed"
   },
-  "enrollmentClaimed": false,
+  "enrollmentClaim": {
+    "claimed": true,
+    "verifiedAtUtc": "2026-10-05T20:54:51Z",
+    "contactId": "5add389e-e922-436f-b56c-12c6a30d601c",
+    "userId": "b308daf6-69a8-4d76-9c71-8c5b9e4183d9",
+    "accessStatus": "onboarding",
+    "needsOnboardingClaim": false,
+    "membershipId": "16f27a3f-11b9-4aac-9f07-6e158f498768",
+    "membershipStatus": "pending",
+    "agreementId": "af12575c-babc-4d42-8dd7-23e23f887358",
+    "agreementStatus": "sent",
+    "agreementCount": 1,
+    "membershipCount": 1,
+    "contactCount": 1,
+    "authUserCount": 1,
+    "signatureCount": 0
+  },
+  "activationGate": {
+    "activationId": "b463cb8d-d660-48f4-a6b5-906ebfa89034",
+    "paymentStatus": "pending",
+    "agreementStatus": "sent",
+    "accessStatus": "pending",
+    "amountCents": 8900,
+    "currency": "USD",
+    "billingChoice": "monthly",
+    "commitmentMonths": 6
+  },
   "agreementSigned": false,
   "privateLinkHandling": "No raw link or token is stored in this receipt, exposed in chat, or used outside the normal recipient flow.",
   "authorizedHostedChanges": "Existing Client A contact email reconciled in place, prior journey link deactivated, existing agreement resent, and audited activity recorded.",
