@@ -37,7 +37,9 @@
     "private_health_review": "Ten configured metrics visible with neutral no-data states.",
     "health_metric_controls": "All 26 catalog rows visible; all edit, Save and Use Program Default controls disabled under plan.override=false.",
     "console_warnings_or_errors": 0,
-    "staff_to_member_clear": "Staff sign-out produced a clean member sign-in DOM with no prior staff or Client A private data."
+    "staff_to_member_clear": "Staff sign-out produced a clean member sign-in DOM with no prior staff or Client A private data.",
+    "staff_to_client_a_transition": "Pass: Client A identity and assigned meal/workout restored; scoped-staff and Client B identities absent; zero console warnings/errors.",
+    "client_a_sign_out": "Pass: member private DOM cleared and clean owner portal sign-in opened for the next transition."
   },
   "production_changed": false,
   "beta_status": "NOT READY"
