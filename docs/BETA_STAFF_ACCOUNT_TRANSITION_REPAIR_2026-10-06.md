@@ -2,7 +2,7 @@
 
 Date: 2026-10-06  
 Environment: dedicated ReVitalized Academy staging only  
-Status: final stale-auth-runtime repair verified locally; staging v190 release pending
+Status: v190 deployed and hosted Client B refresh persistence accepted
 
 ## Observed failure
 
@@ -43,6 +43,12 @@ The query marker contains no user, contact, session or credential data and grant
 | Retired auto-refresh stop count | 1 |
 | Intermediate source SHA | `aeec4e053baa4e33ea783046da44defcb7fe6885` |
 | Intermediate Netlify deploy | `6ac4b468875ac7a4504cb4fd` — ready; v189 navigation passed, credential persistence failed |
+| Final source SHA | `648f0a619544f6372fc85f175aa9478c39b0c96e` |
+| Final Netlify deploy | `6ac4b5d58967a57b74321138` — ready |
+| Live portal asset | `portal.js?v=190` — exact built hash matched |
+| Client B explicit logout and normal re-login | Passed; dashboard identified **Disposable Beta Client B** |
+| Client B visible-browser refresh persistence | Passed; dashboard remained open |
+| Fresh server Auth login evidence | `2026-10-06 09:22:29.94778+00`; one current session |
 | Production | `6ac3eee5383ccf92be4d7a58` — unchanged |
 
 ## Hosted-data and environment safety
@@ -51,6 +57,6 @@ The repair changes only staff portal frontend code, cache version, tests and doc
 
 ## Remaining acceptance
 
-Deploy v190, sign Client B in once through the normal member flow, reload the portal and then reload the member page. The portal must reach a stable non-staff access state and the member dashboard must survive its reload. Continue the remaining scoped-staff, assignment, recovery, revocation and full cross-account gates only after this check passes.
+The v190 release and Client B logout/re-login/refresh persistence gate pass. Continue the remaining Client A assignment visibility versus Client B denial, scoped-staff lifecycle and contact/private-health boundaries, Client B and staff recovery, staff revocation, supported Client B deactivation, and remaining cross-account transitions. Do not reopen this portal-transition repair unless new evidence reproduces a defect.
 
 `BETA NOT READY`
