@@ -1,6 +1,16 @@
 # ReVitalized Academy Current Build State
 
-Updated: 2026-10-05
+Updated: 2026-10-06
+
+## Pending production Vitality Assessment Review
+
+- Local release commit: `e1e14d3` on `codex/vitality-production`.
+- Scope: a production-only staff Vitality Assessments workspace, two narrow secured read RPCs, the approved Adult/Child question catalog, focused browser/backend regressions, and production build allowlist entries.
+- Authoritative source: `private.vitality_assessment_drafts` plus the existing production contact and staff-scope model. No Netlify Forms runtime scraping or cross-environment data bridge was introduced.
+- Permission boundary: both RPCs require `health.private.view` and `staff_can_access_contact`; unfinished assessments expose status metadata only, while completed assessments expose a sanitized submitted answer set, existing coach summary, existing coach-review flags, and existing assessment-derived tags. Direct private-table reads remain denied.
+- Verification: production build generated 376 files; focused browser regressions passed 62/62; PostgreSQL 17 authorization regressions passed 10/10; JavaScript syntax passed; responsive review passed at 1440×1000, 768×1024, and 390×844 without horizontal overflow.
+- Isolation: the production artifact contains the production Supabase/project origin only and does not contain staging project references, beta URLs, synthetic beta identities, or staging fixtures.
+- Release status: migration, production Netlify deploy, and GitHub push are pending explicit mutation approval after automatic approval review. Production remains on deploy `6ac3eee5383ccf92be4d7a58`, and the migration ledger still ends at `20261005184407 vitality_referral_rollout_compatibility`.
 
 ## Production
 
