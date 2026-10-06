@@ -1,0 +1,36 @@
+{
+  "project": "ReVitalized Academy",
+  "environment": "staging",
+  "staff": {
+    "auth_user_id": "aa5d1bdd-e85e-4141-8a16-3fc409d3e827",
+    "email": "dfowler4200@gmail.com",
+    "role": "Coach",
+    "contact_scope": "assigned",
+    "fresh_session_created_at": "2026-10-06T11:38:04.866172Z"
+  },
+  "visible_beta_contacts_under_authenticated_rls": [
+    {
+      "contact_id": "5add389e-e922-436f-b56c-12c6a30d601c",
+      "name": "Disposable Beta Client A",
+      "email": "rva-client@eaglevision.biz"
+    }
+  ],
+  "authorization_results": {
+    "client_a": {
+      "crm_view": true,
+      "health_private_view": true,
+      "health_progress_manage": true,
+      "plan_override": false
+    },
+    "client_b": {
+      "crm_view": false,
+      "health_private_view": false,
+      "health_progress_manage": false,
+      "plan_override": false
+    }
+  },
+  "mutation": "none; authorization query executed inside a rolled-back transaction",
+  "hosted_ui_status": "Fresh sign-in confirmed and staff dashboard open; final visible People/drawer acceptance pending because the existing in-app tab temporarily refused automation inspection.",
+  "production_changed": false,
+  "beta_status": "NOT READY"
+}

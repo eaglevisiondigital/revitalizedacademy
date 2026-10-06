@@ -1,5 +1,11 @@
 # ReVitalized Academy — current build state
 
+## Scoped Coach sign-in and authoritative boundary check — 2026-10-06
+
+The user completed a fresh normal sign-in as the preserved scoped Coach `dfowler4200@gmail.com`. Staging Auth records a new session for existing Auth user `aa5d1bdd-e85e-4141-8a16-3fc409d3e827` at `2026-10-06T11:38:04.866172Z`; no identity, role, scope or permission changed.
+
+A rolled-back authenticated-role check against the live staging policies returns only Client A from the two synthetic beta clients. `crm.view`, `health.private.view` and `health.progress.manage` are true for assigned Client A and false for unassigned Client B. `plan.override` remains false for both. This independently confirms the intended assigned-only contact and private-health boundary. The signed-in browser tab is open on the staff dashboard, but final visible People/drawer acceptance remains pending because the existing in-app tab temporarily refused automation inspection after sign-in. [Boundary receipt](deployment-evidence/2026-10-06-beta-assignments/scoped-staff-boundary.json). **BETA NOT READY.**
+
 ## Client A synthetic meal and workout assignment — 2026-10-06
 
 The user explicitly approved publishing and assigning the existing disposable Nutrition/Fitness QA fixtures to Client A only. On staging, the existing synthetic Recipe, Meal Plan, Exercise, Workout and Fitness Program were changed from archived to published; the synthetic Food/Ingredient record remains inactive and unchanged. No new content record was created.
