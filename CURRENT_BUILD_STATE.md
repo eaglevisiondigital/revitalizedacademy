@@ -1,5 +1,13 @@
 # ReVitalized Academy — current build state
 
+## Deployed scoped-staff recovery-link repair — 2026-10-06
+
+Fresh hosted onboarding exposed a second setup defect: the branded reset email was delivered, but **Change My Password** could not establish the Supabase recovery session. The custom sender had discarded Supabase's verified recovery action URL and linked directly to the branded page with only `token_hash`; the page correctly requires an authenticated recovery session before allowing a password change.
+
+The staging-only `staff-password-reset` function now generates a recovery action with the approved branded redirect, validates that the provider URL belongs to the configured staging Supabase origin and exact `/auth/v1/verify` recovery endpoint, requires its one-time token, and forcibly normalizes `redirect_to` to the dedicated staging password page before HTML escaping the link. No raw token is logged, returned by the public endpoint or exposed in validation evidence. The public request remains non-enumerating and the exact synthetic-recipient allowlist remains enforced.
+
+Focused setup/recovery regressions pass **7/7**, JavaScript syntax **78/78**, full frontend **490 passed / 0 failed / 27 established skips**, and the staging build remains **314 files**. Source `f096741` is pushed on `codex/staging`; staging `staff-password-reset` v11 is active with verify-JWT behavior unchanged. One replacement recovery message was accepted and reports delivered at `2026-10-06T10:24:16.878Z`. An intermediate v10 validation attempt failed closed before sending and was superseded. No schema, migration, identity, role, scope, permission, agreement, content, Netlify or production change occurred. Fresh normal click/password completion and subsequent NDA onboarding remain pending. **BETA NOT READY.**
+
 ## Deployed scoped-staff first-login guidance repair — 2026-10-06
 
 Hosted beta acceptance preserved the existing scoped Coach while reconciling its rejected recipient to the approved distinct inbox `dfowler4200@gmail.com`. Authoritative staging state still uses Auth user `aa5d1bdd-e85e-4141-8a16-3fc409d3e827`, contact `15cd0173-83d0-4c24-9c20-0c37d1fada69` and invitation `bdf265b3-8363-4d55-8f63-bab1c416d600`; role remains Coach, status active, scope assigned-only and onboarding pending. Resend accepted and delivered the setup message. The user then reproduced a real first-login UX defect: email verification landed on the generic staff sign-in form without setup instructions, password recovery required an unexplained second step, and the unmatched-account fallback incorrectly suggested the approved role was missing.

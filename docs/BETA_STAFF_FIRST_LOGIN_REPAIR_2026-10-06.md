@@ -48,3 +48,7 @@ The approved existing scoped Coach identity was reconciled from the bounced stag
 ## Hosted acceptance still required
 
 After staging deployment, use the existing scoped Coach identity only. Reissue at most one setup message if needed, open it normally, confirm the guided setup landing, create the password without sharing it, and verify the required NDA/onboarding path. Do not change the role, assigned-only scope, permission defaults, agreement, or production.
+
+## Recovery-link follow-up
+
+The first hosted branded password email exposed an additional handoff defect: its button used the branded page with a raw `token_hash` query value, but the branded page requires the authenticated recovery session normally established by Supabase's action endpoint. Source `f096741` repairs the handoff without changing the password page or account lifecycle. Staging `staff-password-reset` v11 validates the configured Supabase recovery action and fixes its redirect to the branded staging password page before sending. Focused recovery coverage is now 7/7; full frontend is 490 passed, zero failed and 27 established skips. The corrected replacement message reports delivered at `2026-10-06T10:24:16.878Z`; normal user open and password completion remain pending. No production, migration, role, permission, identity or hosted application-data change was made.
