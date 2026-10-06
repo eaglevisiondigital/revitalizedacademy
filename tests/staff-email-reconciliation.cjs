@@ -9,6 +9,7 @@ const html=fs.readFileSync(path.join(root,'portal/index.html'),'utf8');
 const source=fs.readFileSync(path.join(root,'portal/portal-staff-access.js'),'utf8');
 const core=fs.readFileSync(path.join(root,'portal/portal.js'),'utf8');
 const reset=fs.readFileSync(path.join(root,'portal/password-reset.html'),'utf8');
+const resetFunction=fs.readFileSync(path.join(root,'supabase/functions/staff-password-reset/index.ts'),'utf8');
 const staffHandler=fs.existsSync(path.join(root,'supabase/functions/staff-management/handler.ts'))
   ?fs.readFileSync(path.join(root,'supabase/functions/staff-management/handler.ts'),'utf8')
   :'';
@@ -41,6 +42,15 @@ test('dedicated reset completion closes staff invitation metadata',()=>{
   assert.match(reset,/staff_invite:false/);
   assert.match(reset,/staff_invite_completed:true/);
   assert.match(reset,/complete_my_staff_invitation/);
+});
+
+test('staff reset email uses the verified recovery action before the branded password page',()=>{
+  assert.match(resetFunction,/redirectTo:recoveryRedirect/);
+  assert.match(resetFunction,/actionUrl\.pathname!=="\/auth\/v1\/verify"/);
+  assert.match(resetFunction,/actionUrl\.searchParams\.get\("type"\)!=="recovery"/);
+  assert.match(resetFunction,/actionUrl\.searchParams\.get\("redirect_to"\)!==recoveryRedirect/);
+  assert.match(resetFunction,/href="'\+safeActionLink\+'/);
+  assert.doesNotMatch(resetFunction,/recoveryRedirect\+"\?token_hash="/);
 });
 
 test('normal sign-in does not loop on stale invitation metadata',()=>{
