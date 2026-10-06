@@ -13,7 +13,7 @@
   <link rel="shortcut icon" type="image/png" href="../assets/images/revitalized-icon-approved.png">
   <link rel="apple-touch-icon" href="../assets/images/revitalized-icon-approved.png">
   <link rel="manifest" href="manifest.webmanifest?v=171">
-  <link rel="stylesheet" href="member110.css?v=202">
+  <link rel="stylesheet" href="member110.css?v=203">
   <link rel="stylesheet" href="member-health-progress.css?v=1">
 </head>
 <body>
@@ -43,7 +43,22 @@
             <input id="rm-password" type="password" autocomplete="current-password" required>
           </label>
           <button type="submit">Sign In</button>
+          <button id="rm-member-recovery-open" class="rm112-link-button" type="button">Forgot your password?</button>
           <p id="rm-login-status" class="rm112-status" aria-live="polite"></p>
+        </form>
+
+        <form id="rm-member-recovery-form" class="rm112-form hidden" aria-labelledby="rm-member-recovery-title">
+          <div class="rm112-recovery-heading">
+            <h2 id="rm-member-recovery-title">Reset Your Password</h2>
+            <p>Enter your member email. We’ll send a private link to choose a new password.</p>
+          </div>
+          <label>
+            <span>Email</span>
+            <input id="rm-member-recovery-email" type="email" autocomplete="email" required>
+          </label>
+          <button type="submit">Email My Reset Link</button>
+          <button id="rm-member-recovery-back" class="rm112-link-button" type="button">Back to sign in</button>
+          <p id="rm-member-recovery-status" class="rm112-status" aria-live="polite"></p>
         </form>
 
         <p class="rm112-auth-note">New client? Use your private enrollment link to create your account, review agreements and complete payment before full member access.</p>
@@ -1467,7 +1482,7 @@
   </main>
 
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
-  <script defer src="member110.js?v=211"></script>
+  <script defer src="member110.js?v=212"></script>
   <script defer src="member-nutrition.js?v=1"></script>
   <script defer src="member-health-progress.js?v=1"></script>
   <script defer src="member-assigned-content.js?v=1"></script>

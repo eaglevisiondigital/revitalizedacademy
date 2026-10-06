@@ -1,5 +1,9 @@
 # ReVitalized Academy architecture
 
+## Member password recovery
+
+Member Access uses a dedicated recovery boundary rather than the staff invitation/recovery flow. The browser sends only a normalized email to the public, non-enumerating `member-password-reset` Edge Function. The server requires a unique exact-email contact, one eligible member access row with an Auth user, and an Auth email matching that contact before generating a recovery credential. Staging additionally enforces the exact synthetic-recipient allowlist. The branded `/member/password-reset.html` page exchanges the one-time credential with Supabase, removes it from browser history, permits only the authenticated user's password update, and returns to Member Access. It does not alter contacts, memberships, entitlements, staff roles, invitations or permissions.
+
 ## Membership entitlement origin and member session restore — 2026-10-05
 
 `membership_entitlements` remains the single entitlement model. A constrained `provisioning_source` identifies rows reconciled from `program_entitlement_templates` versus explicitly authorized membership-level overrides. Program-template changes retain their existing reconciliation behavior; overrides are scoped to one membership and are never copied to another membership. Inactive memberships still deactivate every entitlement.

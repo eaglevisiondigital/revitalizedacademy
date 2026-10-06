@@ -1,5 +1,13 @@
 # ReVitalized Academy — current build state
 
+## Member password recovery candidate — 2026-10-06
+
+Final hosted beta acceptance exposed a real Client B lifecycle gap: the member sign-in page had no password-recovery entry point. The existing branded recovery implementation was staff-specific and could not safely be reused because its eligibility lookup and completion behavior are tied to staff access and invitation metadata.
+
+A narrow staging candidate now adds **Forgot your password?** to Member Access, a dedicated branded member reset page, and the public non-enumerating `member-password-reset` Edge Function. The function sends only for one exact contact linked to one eligible `client_access` row whose Auth user has the same normalized email. Staging delivery remains restricted by the exact synthetic-recipient allowlist. Generated recovery links are checked against the configured Supabase origin and recovery endpoint; the one-time credential is removed from browser history before `verifyOtp`; the reset page contains no staff-role, invitation or permission mutation.
+
+Local verification passes: focused source **4/4**, focused exact-built **4/4**, JavaScript syntax **78/78**, full frontend **494 passed / 0 failed / 27 established skips**, and staging build **315 files**. Native Edge typecheck is unavailable because Deno is not installed locally; the staging Edge deployment compile remains required before release. No migration is required. The candidate is not yet deployed and Client B external delivery/reset acceptance, scoped-staff revocation and Client B restriction remain final beta gates. Production is untouched. **BETA NOT READY.**
+
 ## Five-account transition matrix accepted — 2026-10-06
 
 All required same-browser hosted transitions now pass: Owner → Client A, Client A → Client B, Client B → scoped Staff, scoped Staff → Client A and Client A → Owner. Each destination loaded the correct identity and authorized workspace. Client B retained zero Client A-only meal/workout assignments; the scoped Coach retained only assigned Client A and read-only private-health access; Client A restored its own assignments after leaving the staff portal; the final owner dashboard contained no Member Hub, member Vitality Dashboard or scoped-client health drawer. The final two transitions produced zero console warnings/errors.

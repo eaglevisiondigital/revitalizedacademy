@@ -1,5 +1,11 @@
 # ReVitalized Academy security model
 
+## Member password recovery boundary — 2026-10-06
+
+Member recovery is deliberately separate from staff recovery. The public request is non-enumerating for invalid, missing, ambiguous and ineligible identities. Delivery requires exact normalized-email agreement across one contact, one eligible `client_access` row and its linked Supabase Auth user. The staging function also applies the existing exact-recipient allowlist; no domain wildcard is introduced. The generated action link must use the configured Supabase origin, `/auth/v1/verify`, recovery type and a non-empty credential before the branded application link is sent.
+
+The browser reset page uses `no-referrer`, immediately removes the one-time credential from the URL, exchanges it through `verifyOtp`, and updates only the current Auth user's password. It contains no service-role key, direct database write, staff invitation completion, role grant, entitlement change or account-association path. Existing client access and RLS checks still decide whether the resulting user may load Member Access. Provider delivery and hosted password completion must be verified separately; local tests do not establish receipt.
+
 ## Pending staff email reconciliation
 
 The Staff & Access manager may reconcile an uncompleted staff invitation to a corrected synthetic recipient only through the `staff-management` Edge Function. The operation requires an authenticated active actor with `staff.manage` and separately requires the actor's staff role to be Owner. It refuses Owner targets, completed/waived onboarding, invalid or unallowlisted recipients, existing Auth-user collisions, existing contact collisions and missing profile/contact bindings. It preserves the target Auth user, profile/contact, staff-access and pending invitation identities; it does not create a second account or change role, status, scope, permission overrides or agreements. Auth email and linked public records are synchronized with best-effort rollback, both reconciliation and setup-message resend are audited, and the reissued setup uses the existing approved staging redirect. Focused Edge tests cover identity preservation, one setup message, no invite/delete path, owner-only denial, completed-onboarding denial and collision denial.

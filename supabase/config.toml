@@ -458,5 +458,8 @@ verify_jwt = false
 [functions.staff-password-reset]
 verify_jwt = false
 
+[functions.member-password-reset]
+verify_jwt = false
+
 [functions.video-message-view]
 verify_jwt = false

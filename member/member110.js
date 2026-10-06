@@ -5541,6 +5541,34 @@
     await resolveSession(data?.session||null);
   });
 
+  function showMemberRecovery(show){
+    const login=el("rm-login-form");
+    const recovery=el("rm-member-recovery-form");
+    login.classList.toggle("hidden",show);
+    recovery.classList.toggle("hidden",!show);
+    showStatus(el("rm-login-status"),"");
+    showStatus(el("rm-member-recovery-status"),"");
+    if(show){
+      el("rm-member-recovery-email").value=el("rm-email").value.trim();
+      el("rm-member-recovery-email").focus();
+    }else el("rm-email").focus();
+  }
+
+  el("rm-member-recovery-open").addEventListener("click",()=>showMemberRecovery(true));
+  el("rm-member-recovery-back").addEventListener("click",()=>showMemberRecovery(false));
+  el("rm-member-recovery-form").addEventListener("submit",async(event)=>{
+    event.preventDefault();
+    const status=el("rm-member-recovery-status");
+    const email=el("rm-member-recovery-email").value.trim().toLowerCase();
+    showStatus(status,"Requesting your secure reset link...");
+    const {data,error}=await client.functions.invoke("member-password-reset",{body:{email}});
+    if(error){
+      showStatus(status,"We could not send a reset link right now. Please try again.","error");
+      return;
+    }
+    showStatus(status,data?.message||"If that email belongs to an eligible member account, a password reset email will be sent.","success");
+  });
+
   async function signOut() {
     memberAuthUserId=null;memberSessionLoadKey=null;memberSessionLoadPromise=null;
     clearMemberPrivateState();
