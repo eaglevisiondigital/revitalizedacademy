@@ -2,7 +2,7 @@
 
 Date: 2026-10-06  
 Environment: dedicated ReVitalized Academy staging only  
-Status: implementation verified locally; staging release pending
+Status: deployed to staging; hosted cross-tab acceptance pending
 
 ## Observed failure
 
@@ -36,6 +36,10 @@ The query marker contains no user, contact, session or credential data and grant
 | Full frontend | 483 passed / 0 failed / 27 established skips |
 | Staging build | 314 files |
 | Built portal JS hash | `4d07c97f595c5a594fa4ff9fc492f5db58b057451d1e200c3c307f5c3af118f5` |
+| Source SHA | `aeec4e053baa4e33ea783046da44defcb7fe6885` |
+| Netlify staging deploy | `6ac4b468875ac7a4504cb4fd` — ready |
+| Live portal asset | `portal.js?v=189` — exact built hash match |
+| Production | `6ac3eee5383ccf92be4d7a58` — unchanged |
 
 ## Hosted-data and environment safety
 
@@ -43,6 +47,6 @@ The repair changes only staff portal frontend code, cache version, tests and doc
 
 ## Remaining acceptance
 
-Deploy v189 to the dedicated staging site, verify exact live hash, then switch between the preserved Client B member session and portal. The portal must reach a stable non-staff access state without logging Client B out. Continue the remaining scoped-staff, assignment, recovery, revocation and full cross-account gates only after this check passes.
+Switch between the preserved Client B member session and the newly deployed portal. The portal must reach a stable non-staff access state without logging Client B out. Continue the remaining scoped-staff, assignment, recovery, revocation and full cross-account gates only after this check passes.
 
 `BETA NOT READY`
