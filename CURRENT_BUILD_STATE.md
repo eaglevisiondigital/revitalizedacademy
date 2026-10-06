@@ -1,5 +1,15 @@
 # ReVitalized Academy — current build state
 
+## Branded beta domain deployed — 2026-10-06
+
+`beta.revitalizedacademy.com` is the primary domain for Netlify staging site `071b252e-a922-4846-a784-8dca1edad377`. DNS resolves to the existing `revitalizedacademy-staging.netlify.app` site and Netlify-managed Let's Encrypt HTTPS is active. The original Netlify hostname remains an exact emergency fallback.
+
+Staging remains isolated on Supabase project `bvooallokgfktssadsrv`. Supabase Auth now uses `https://beta.revitalizedacademy.com/member/onboarding/` as its Site URL and retains six exact redirect URLs: member onboarding, staff portal and staff password reset on both the branded domain and the Netlify fallback. Edge secrets use the branded origin plus the single exact fallback origin. All 17 currently deployed origin-aware staging Edge Functions were rebuilt with the same verification settings and the exact two-origin allowlist. Hosted non-transactional checks accept the branded and fallback origins and reject the production origin.
+
+Source commits `db2320c` and `babb5e3` add the explicit fallback contract and preserve it through the generated public runtime artifact. The first hosted validation found and repaired a serialization mismatch that made only the fallback show the environment-disabled state. Focused environment regressions pass **28/28**, JavaScript syntax passes **78/78**, and the staging build contains **315 files**. Netlify deploy `6ac51ea45410d9a0d4b7b514` serves the exact tested runtime, environment, member and JavaScript asset hashes on both hostnames; Netlify's existing Pretty URLs post-processing continues to normalize one relative Programs link in served portal HTML. Branded staff/member sign-in pages, member recovery entry and enrollment landing load without configuration or console errors. Fresh credential-based login/recovery/invitation acceptance on the branded hostname remains a hosted user check because sessions are origin-scoped and do not transfer from the fallback hostname.
+
+The two source commits are local and remain ahead of `origin/codex/staging` because automatic approval review rejected the GitHub push. Production code, database and deployment remain unchanged.
+
 ## Final beta acceptance passed — 2026-10-06
 
 Hosted final-beta acceptance now confirms the scoped Coach revocation boundary: after the owner set the synthetic Coach inactive, normal authentication returned the explicit inactive-staff message, no portal/client data rendered and the browser console remained clean. Client B's owner-audited enrollment access override was also saved as `suspended`; an authenticated database check returns `member_paid_access_allowed=false`, so the private member dashboard remains denied.
