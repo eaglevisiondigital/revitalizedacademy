@@ -43,6 +43,7 @@
         if (productionOrigins.includes(value) || new URL(value).hostname.endsWith('.supabase.co')) throw Error('Isolated environment refuses unsafe fallback origin');
       }
     } else if (c.projectRef !== productionRef || !productionOrigins.includes(c.appOrigin) || c.paymentMode !== 'existing') throw Error('Production configuration does not match the known mapping');
+    c.fallbackOrigins = Object.freeze([...fallbackOrigins]);
     c.allowedOrigins = Object.freeze(c.environment === 'production' ? [...productionOrigins] : [...new Set([c.appOrigin, ...fallbackOrigins])]);
     return Object.freeze(c);
   }
