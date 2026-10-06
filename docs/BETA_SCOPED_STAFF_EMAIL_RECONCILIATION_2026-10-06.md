@@ -2,7 +2,7 @@
 
 Date: 2026-10-06  
 Environment: dedicated ReVitalized Academy staging only  
-Status: implementation verified; staging release and hosted action pending
+Status: staging release verified; hosted action pending
 
 ## Problem
 
@@ -35,6 +35,15 @@ The preserved synthetic Coach record uses `dave+rva-beta-staff@eaglevision.biz`,
 | Owner-only enforcement | Passed |
 | Completed-onboarding denial | Passed |
 | Auth/contact collision denial | Passed |
+
+## Staging release
+
+- Source: `da6ad68ff0f5c5784dc8d6a42a9ec055b5f1336e`
+- Netlify staging deploy: `6ac4c18b42169f9430d6bd2d`
+- Live asset: `portal-staff-access.js?v=183`
+- Exact build/live SHA-256: `13018d5887e72312ec836ed5394ca6678e08be6d5a7cbde8f1c72ca28e841d2d`
+- Staging `staff-management` Edge Function: version 10, active
+- Production deploy remains `6ac3eee5383ccf92be4d7a58`
 
 ## Hosted action boundary
 
