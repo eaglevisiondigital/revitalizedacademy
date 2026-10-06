@@ -1,5 +1,11 @@
 # ReVitalized Academy — current build state
 
+## Five-account transition matrix accepted — 2026-10-06
+
+All required same-browser hosted transitions now pass: Owner → Client A, Client A → Client B, Client B → scoped Staff, scoped Staff → Client A and Client A → Owner. Each destination loaded the correct identity and authorized workspace. Client B retained zero Client A-only meal/workout assignments; the scoped Coach retained only assigned Client A and read-only private-health access; Client A restored its own assignments after leaving the staff portal; the final owner dashboard contained no Member Hub, member Vitality Dashboard or scoped-client health drawer. The final two transitions produced zero console warnings/errors.
+
+The secure Client B → Staff account-change checkpoint required its visible **Continue securely** fallback once; after that user action it reached the intended Coach portal without retaining Client B private DOM. No hosted data changed during transition validation. Scoped-staff password recovery already passed through the delivered branded recovery email and normal password completion during staff setup. Remaining final gates are Client B password recovery, scoped-staff revocation and Client B deactivation where supported. [Transition receipt](deployment-evidence/2026-10-06-beta-assignments/account-transition-matrix.json). **BETA NOT READY.**
+
 ## Scoped Coach sign-in and authoritative boundary check — 2026-10-06
 
 The user completed a fresh normal sign-in as the preserved scoped Coach `dfowler4200@gmail.com`. Staging Auth records a new session for existing Auth user `aa5d1bdd-e85e-4141-8a16-3fc409d3e827` at `2026-10-06T11:38:04.866172Z`; no identity, role, scope or permission changed.

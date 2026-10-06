@@ -1,0 +1,41 @@
+{
+  "project": "ReVitalized Academy",
+  "environment": "staging",
+  "recorded_at_utc": "2026-10-06T12:06:34Z",
+  "matrix": [
+    {
+      "transition": "Owner to Client A",
+      "result": "pass",
+      "evidence": "Client A member dashboard loaded under its own identity with only its assigned meal and workout and no prior owner workspace."
+    },
+    {
+      "transition": "Client A to Client B",
+      "result": "pass",
+      "evidence": "Client B member dashboard loaded under its own identity with zero meal/workout assignments and no Client A identity or assignment text."
+    },
+    {
+      "transition": "Client B to scoped Staff",
+      "result": "pass",
+      "evidence": "The secure account-change document cleared the Client B member workspace; Continue securely reached the scoped Coach portal with no Client B private member workspace retained."
+    },
+    {
+      "transition": "Scoped Staff to Client A",
+      "result": "pass",
+      "evidence": "After normal staff sign-out, Client A loaded with its own identity and assignments; no scoped-staff or Client B identity remained and the console was clean."
+    },
+    {
+      "transition": "Client A to Owner",
+      "result": "pass",
+      "evidence": "After normal Client A sign-out, the owner dashboard loaded as Dave Fowler - Staging Owner; no Member Hub, Vitality Dashboard or scoped-client health drawer remained and the console was clean."
+    }
+  ],
+  "console_warnings_or_errors_in_final_two_transitions": 0,
+  "hosted_data_changed": false,
+  "production_changed": false,
+  "remaining_gates": [
+    "Client B password recovery",
+    "scoped Staff revocation",
+    "Client B deactivation where supported"
+  ],
+  "beta_status": "NOT READY"
+}
