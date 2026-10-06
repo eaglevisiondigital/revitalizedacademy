@@ -2,7 +2,8 @@ const {resolve}=require('../../js/environment.js');
 function config(env=process.env){
  const environment=env.RVA_ENVIRONMENT;
  if(environment==='production')return resolve(require('../../config/production.json'));
- return resolve({environment,supabaseUrl:env.RVA_SUPABASE_URL,supabaseKey:env.RVA_SUPABASE_PUBLISHABLE_KEY,appOrigin:env.RVA_APP_ORIGIN,paymentMode:env.RVA_PAYMENT_MODE});
+ const fallbackOrigins=(env.RVA_FALLBACK_ORIGINS||'').split(',').map(value=>value.trim()).filter(Boolean);
+ return resolve({environment,supabaseUrl:env.RVA_SUPABASE_URL,supabaseKey:env.RVA_SUPABASE_PUBLISHABLE_KEY,appOrigin:env.RVA_APP_ORIGIN,paymentMode:env.RVA_PAYMENT_MODE,fallbackOrigins});
 }
 function deploymentGuard(c,env=process.env){
  if(!env.NETLIFY)return;

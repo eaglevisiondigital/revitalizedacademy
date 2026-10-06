@@ -1,4 +1,4 @@
-import {edgeEnvironment,configurationError,assertSyntheticRecipient} from '../_shared/environment.ts';
+import {edgeEnvironment,allowedOrigins,configurationError,assertSyntheticRecipient} from '../_shared/environment.ts';
 type RPC=(action:string,hash:string|null,next:string|null,payload:Record<string,unknown>)=>Promise<any>;
 export type Dependencies={rpc:RPC;mail:(recipient:string,url:string)=>Promise<void>;final:(form:string)=>Promise<void>};
 export const opaque=()=>Array.from(crypto.getRandomValues(new Uint8Array(32)),b=>b.toString(16).padStart(2,'0')).join('');
@@ -23,9 +23,10 @@ export function assessmentTags(snapshot:any):string[]{
 export function createHandler(deps:Dependencies){return async(req:Request)=>{
  const bad=configurationError();if(bad)return bad;
  const env=edgeEnvironment(),origin=req.headers.get('origin');
- const headers={'Access-Control-Allow-Origin':env.appOrigin,'Access-Control-Allow-Headers':'content-type,apikey','Access-Control-Allow-Methods':'POST,OPTIONS','Content-Type':'application/json','Cache-Control':'no-store','Referrer-Policy':'no-referrer','Vary':'Origin'};
+ const safeOrigin=origin&&allowedOrigins.has(origin)?origin:env.appOrigin;
+ const headers={'Access-Control-Allow-Origin':safeOrigin,'Access-Control-Allow-Headers':'content-type,apikey','Access-Control-Allow-Methods':'POST,OPTIONS','Content-Type':'application/json','Cache-Control':'no-store','Referrer-Policy':'no-referrer','Vary':'Origin'};
  const reply=(body:unknown,status=200)=>new Response(JSON.stringify(body),{status,headers});
- if(origin!==env.appOrigin)return reply({error:'Origin not allowed'},403);
+ if(!origin||!allowedOrigins.has(origin))return reply({error:'Origin not allowed'},403);
  if(req.method==='OPTIONS')return reply({});
  if(req.method!=='POST')return reply({error:'Method not allowed'},405);
  try{

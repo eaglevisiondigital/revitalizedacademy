@@ -7,6 +7,8 @@
     if (!input || !['production', 'staging', 'local'].includes(input.environment)) throw Error('RVA environment must be explicitly configured');
     const c = {};
     for (const k of ['environment','supabaseUrl','supabaseKey','appOrigin','paymentMode','publicSiteOrigin','onboardingOrigin','authOrigin','recoveryOrigin','signupOrigin','signerOrigin','notificationOrigin','edgeBaseUrl']) if (input[k] !== undefined) c[k] = input[k];
+    const fallbackOrigins = Array.isArray(input.fallbackOrigins) ? input.fallbackOrigins : [];
+    if (fallbackOrigins.length > 3 || fallbackOrigins.some(value => typeof value !== 'string')) throw Error('Invalid RVA fallback origins');
     for (const k of ['supabaseUrl', 'supabaseKey', 'appOrigin', 'paymentMode']) if (!c[k]) throw Error('Missing RVA configuration: ' + k);
     const local = c.environment === 'local';
     function origin(value) {
@@ -36,8 +38,12 @@
     if (c.environment !== 'production') {
       if (c.projectRef === productionRef || productionOrigins.includes(c.appOrigin)) throw Error('Isolated environment refuses production bindings');
       if (c.paymentMode !== 'synthetic') throw Error('Only synthetic payments are approved outside production');
+      for (const value of fallbackOrigins) {
+        origin(value);
+        if (productionOrigins.includes(value) || new URL(value).hostname.endsWith('.supabase.co')) throw Error('Isolated environment refuses unsafe fallback origin');
+      }
     } else if (c.projectRef !== productionRef || !productionOrigins.includes(c.appOrigin) || c.paymentMode !== 'existing') throw Error('Production configuration does not match the known mapping');
-    c.allowedOrigins = c.environment === 'production' ? productionOrigins : [c.appOrigin];
+    c.allowedOrigins = Object.freeze(c.environment === 'production' ? [...productionOrigins] : [...new Set([c.appOrigin, ...fallbackOrigins])]);
     return Object.freeze(c);
   }
   function paymentUrl(value, c) {

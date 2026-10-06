@@ -14,9 +14,15 @@ export function edgeEnvironment(get=(key:string)=>Deno.env.get(key)){
  if(environment!=='production'&&(host.split('.')[0]===productionRef||productionOrigins.includes(appOrigin)))throw Error('Staging/local refuses production bindings');
  if(environment==='production'&&(host!==productionRef+'.supabase.co'||!productionOrigins.includes(appOrigin)))throw Error('Production mapping mismatch');
  if(environment!=='production'&&get('RVA_PAYMENT_MODE')!=='synthetic')throw Error('Staging/local payments must be synthetic');
+ const fallbackOrigins=(get('RVA_FALLBACK_ORIGINS')||'').split(',').map(value=>value.trim()).filter(Boolean);
+ if(fallbackOrigins.length>3)throw Error('Too many fallback origins');
+ if(environment!=='production')for(const value of fallbackOrigins){
+  const u=new URL(value);
+  if(u.origin!==value||u.username||u.password||u.protocol!=='https:'||productionOrigins.includes(value)||u.hostname.endsWith('.supabase.co'))throw Error('Unsafe fallback origin');
+ }
  const deployment=get('DENO_DEPLOYMENT_ID');
  if(deployment&&!deployment.startsWith(host.split('.')[0]+'_'))throw Error('Edge runtime project does not match configured project');
- return {environment,supabaseUrl,appOrigin,allowedOrigins:environment==='production'?productionOrigins:[appOrigin],
+ return {environment,supabaseUrl,appOrigin,allowedOrigins:environment==='production'?productionOrigins:[...new Set([appOrigin,...fallbackOrigins])],
   onboardingUrl:appOrigin+'/member/onboarding/',signerUrl:appOrigin+'/member/onboarding/',recoveryRedirect:appOrigin+'/portal/password-reset.html',staffRedirect:appOrigin+'/portal/'};
 }
 export const allowedOrigins={has:(origin:string)=>edgeEnvironment().allowedOrigins.includes(origin)};
