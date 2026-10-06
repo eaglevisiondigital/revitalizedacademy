@@ -116,6 +116,110 @@ export async function handleRequest(req:Request){
     const action=String(body.action||"");
     const reason=clean(body.reason,2000)||null;
 
+    if(action==="reconcile_pending_email"){
+      const userId=clean(body.user_id,80);
+      const email=clean(body.email,320).toLowerCase();
+      if(actorStaff.role!=="owner")return json(origin,{error:"Only an Owner can reconcile a pending staff email."},403);
+      if(!userId||!email||!/^\S+@\S+\.\S+$/.test(email))return json(origin,{error:"A valid staff email is required."},400);
+      if(!reason)return json(origin,{error:"Enter a reason before changing a staff email."},400);
+      assertSyntheticRecipient(email);
+
+      const {data:target,error:targetError}=await admin.from("staff_access")
+        .select("user_id,role,display_name,status,onboarding_status,contact_scope")
+        .eq("user_id",userId).maybeSingle();
+      if(targetError)throw targetError;
+      if(!target)return json(origin,{error:"Staff member not found."},404);
+      if(target.role==="owner")return json(origin,{error:"Owner email changes are not available from this recovery workflow."},409);
+      if(target.onboarding_status==="complete"||target.onboarding_status==="waived"){
+        return json(origin,{error:"This staff account already completed onboarding. Use the staff member's Account settings instead."},409);
+      }
+
+      const {data:userResult,error:userReadError}=await admin.auth.admin.getUserById(userId);
+      if(userReadError||!userResult.user)throw userReadError||new Error("Staff Auth account was not found.");
+      const previousEmail=String(userResult.user.email||"").trim().toLowerCase();
+
+      let page=1;
+      let conflictingUser=null;
+      for(let i=0;i<10&&!conflictingUser;i++){
+        const {data:listData,error:listError}=await admin.auth.admin.listUsers({page,perPage:100});
+        if(listError)throw listError;
+        conflictingUser=(listData.users||[]).find((candidate)=>
+          candidate.id!==userId&&String(candidate.email||"").toLowerCase()===email
+        )||null;
+        if((listData.users||[]).length<100)break;
+        page+=1;
+      }
+      if(conflictingUser)return json(origin,{error:"That email already belongs to another ReVitalized account."},409);
+
+      const {data:profile,error:profileError}=await admin.from("profiles")
+        .select("contact_id").eq("user_id",userId).maybeSingle();
+      if(profileError)throw profileError;
+      if(!profile?.contact_id)return json(origin,{error:"The staff account is missing its linked contact."},409);
+
+      const exactEmail=email.replace(/[\\%_]/g,"\\$&");
+      const {data:contactConflicts,error:contactConflictError}=await admin.from("contacts")
+        .select("id").ilike("email",exactEmail).neq("id",profile.contact_id).limit(1);
+      if(contactConflictError)throw contactConflictError;
+      if((contactConflicts||[]).length)return json(origin,{error:"That email already belongs to another contact."},409);
+
+      if(previousEmail!==email){
+        const {error:authUpdateError}=await admin.auth.admin.updateUserById(userId,{
+          email,
+          email_confirm:false
+        });
+        if(authUpdateError)throw authUpdateError;
+
+        try{
+          const {error:contactError}=await admin.from("contacts")
+            .update({email,updated_at:new Date().toISOString()})
+            .eq("id",profile.contact_id);
+          if(contactError)throw contactError;
+
+          const {error:inviteError}=await admin.from("staff_invitations")
+            .update({email,updated_at:new Date().toISOString()})
+            .eq("auth_user_id",userId)
+            .in("status",["invited","pending"]);
+          if(inviteError)throw inviteError;
+
+          await audit(userId,"staff_email_reconciled",{
+            email:previousEmail,
+            contact_id:profile.contact_id
+          },{
+            email,
+            contact_id:profile.contact_id,
+            preserved_user_id:userId
+          },reason);
+        }catch(error){
+          await admin.auth.admin.updateUserById(userId,{
+            email:previousEmail,
+            email_confirm:Boolean(userResult.user.email_confirmed_at)
+          });
+          await admin.from("contacts").update({email:previousEmail}).eq("id",profile.contact_id);
+          await admin.from("staff_invitations").update({email:previousEmail})
+            .eq("auth_user_id",userId).in("status",["invited","pending"]);
+          throw error;
+        }
+      }
+
+      const {error:resendError}=await admin.auth.resend({
+        type:"signup",
+        email,
+        options:{emailRedirectTo:edgeEnvironment().staffRedirect}
+      });
+      if(resendError)throw resendError;
+
+      await audit(userId,"staff_invitation_resent",{},
+        {email,contact_id:profile.contact_id,preserved_user_id:userId},reason);
+      return json(origin,{
+        ok:true,
+        user_id:userId,
+        contact_id:profile.contact_id,
+        email,
+        invitation_sent:true,
+        email_changed:previousEmail!==email
+      });
+    }
+
     if(action==="invite"){
       const email=clean(body.email,320).toLowerCase();
       const displayName=clean(body.display_name,240);

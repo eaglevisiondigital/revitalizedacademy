@@ -2114,6 +2114,10 @@
                   <option value="none">No People Access</option>
                 </select>
               </label>
+              <label>
+                <span>Pending staff email</span>
+                <input id="staff-edit-email" type="email" maxlength="320" autocomplete="off">
+              </label>
               <label class="staff-admin-wide">
                 <span>Reason for role/status change</span>
                 <input id="staff-edit-reason" type="text" maxlength="2000" placeholder="Required when changing access">
@@ -2123,6 +2127,7 @@
               <button id="staff-save-role" class="secondary-button" type="button">Save Role</button>
               <button id="staff-save-status" class="secondary-button" type="button">Save Status</button>
               <button id="staff-save-contact-scope" class="secondary-button" type="button">Save People Scope</button>
+              <button id="staff-reconcile-email" class="secondary-button" type="button">Update Email &amp; Reissue Setup</button>
             </div>
             <p id="staff-account-status" class="form-status" aria-live="polite"></p>
           </section>
@@ -3051,7 +3056,7 @@
   <script defer src="portal-content-composition.js?v=2"></script>
   <script defer src="portal-people.js?v=136"></script>
   <script defer src="portal-people-directory.js?v=144"></script>
-  <script defer src="portal-staff-access.js?v=182"></script>
+  <script defer src="portal-staff-access.js?v=183"></script>
   <script defer src="portal-permissions.js?v=132"></script>
   <script defer src="portal-referrals.js?v=166"></script>
   <script defer src="portal-family-requests.js?v=166"></script>

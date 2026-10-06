@@ -407,6 +407,7 @@
     el("staff-edit-role").value=row.role;
     el("staff-edit-status").value=row.status;
     el("staff-edit-contact-scope").value=row.contact_scope||"assigned";
+    el("staff-edit-email").value=row.email||"";
     el("staff-edit-reason").value="";
     el("staff-permission-list").innerHTML='<div class="empty-state">Loading permissions...</div>';
     el("staff-agreement-file-list").innerHTML='<div class="empty-state">Loading staff agreements...</div>';
@@ -582,11 +583,49 @@
     }
   }
 
+  async function reconcilePendingEmail(){
+    if(!activeStaff)return;
+    const email=el("staff-edit-email").value.trim().toLowerCase();
+    const reason=el("staff-edit-reason").value.trim();
+    if(!email||!/^\S+@\S+\.\S+$/.test(email)){
+      setStatus("staff-account-status","Enter a valid staff email address.","error");
+      return;
+    }
+    if(!reason){
+      setStatus("staff-account-status","Enter a reason before changing a staff email.","error");
+      return;
+    }
+    const button=el("staff-reconcile-email");
+    button.disabled=true;
+    setStatus("staff-account-status","Updating the pending staff identity and reissuing secure setup...");
+    try{
+      const data=await invoke({
+        action:"reconcile_pending_email",
+        user_id:activeStaff.user_id,
+        email,
+        reason
+      });
+      activeStaff={...activeStaff,email:data.email};
+      el("staff-permissions-meta").textContent=[
+        data.email||"",
+        title(activeStaff.role),
+        portal.titleCase(activeStaff.status)
+      ].filter(Boolean).join(" · ");
+      setStatus("staff-account-status","Email updated and a fresh secure setup message was sent.","success");
+      await Promise.all([load(),loadMatrix(activeStaff.user_id)]);
+    }catch(error){
+      setStatus("staff-account-status",error.message,"error");
+    }finally{
+      button.disabled=false;
+    }
+  }
+
   el("staff-invite-button").addEventListener("click",openInvite);
   el("staff-invite-form").addEventListener("submit",inviteStaff);
   el("staff-save-role").addEventListener("click",saveRole);
   el("staff-save-status").addEventListener("click",saveStatus);
   el("staff-save-contact-scope").addEventListener("click",saveContactScope);
+  el("staff-reconcile-email").addEventListener("click",reconcilePendingEmail);
 
   document.querySelectorAll("[data-staff-invite-close]").forEach((node)=>node.addEventListener("click",closeInvite));
   document.querySelectorAll("[data-staff-permissions-close]").forEach((node)=>node.addEventListener("click",closePermissions));

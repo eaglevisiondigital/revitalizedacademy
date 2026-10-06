@@ -1,5 +1,13 @@
 # ReVitalized Academy — current build state
 
+## Pending scoped-staff email reconciliation repair — 2026-10-06
+
+Final beta acceptance confirmed that the preserved scoped Coach record still points to the rejected plus-address `dave+rva-beta-staff@eaglevision.biz`. The owner portal previously had no supported way to replace an uncompleted staff invitation email without creating another Auth user, contact, invitation or staff-access row.
+
+A narrow staging candidate adds an owner-only **Pending staff email** recovery action to the existing Staff & Access manager. It is limited to staff whose onboarding is not complete/waived, enforces the synthetic recipient allowlist, refuses Auth/contact collisions and Owner targets, preserves the existing Auth user/contact/staff/invitation IDs, synchronizes the pending invitation email, records both reconciliation and resend audits, and reissues one normal Auth setup confirmation. It does not alter role, status, contact scope, permissions or agreements. Failed public-record synchronization attempts restore the prior email association before returning an error. Portal staff-access cache advances to v183.
+
+Validation: JavaScript syntax **78/78**, focused browser contract **2/2**, staff-management Edge **8/8**, full Edge **51/51**, full frontend **485 passed / 0 failed / 27 established skips**, and staging build **314 files**. Deployment and the owner-authorized hosted reconciliation/send remain pending. Existing staff record, archived content fixtures and Client A/B assignments are unchanged. Production remains untouched. [Implementation report](docs/BETA_SCOPED_STAFF_EMAIL_RECONCILIATION_2026-10-06.md). **BETA NOT READY.**
+
 ## Staff portal account-transition restart repair — 2026-10-06
 
 Final hosted beta acceptance reproduced a cross-account browser defect after the owner session changed to Client B. The already-open staff portal synchronously removed its private staff DOM, but its same-URL `location.replace()` could leave the temporary **Refreshing secure staff access…** document visible indefinitely. The valid Client B member session itself remained active and now passes hosted dashboard acceptance: **Disposable Beta Client B**, active Holistic Foundations membership, 50% journey progress, and no Client A meal or workout assignments displayed.
