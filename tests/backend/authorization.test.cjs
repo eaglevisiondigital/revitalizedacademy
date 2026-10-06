@@ -77,6 +77,16 @@ test('declined required NDA blocks onboarding',async()=>{const {coach,nda}=await
 test('inactive staff cannot sign to regain privileges',async()=>{const {coach,nda}=await coachFixture();await override(coach,'companion.manage');await q("UPDATE public.staff_access SET status='inactive' WHERE user_id=$1",[coach]);await assert.rejects(staffSign(coach,nda),/Active staff access required/);assert.equal(await scalar('SELECT status FROM public.staff_access WHERE user_id=$1',[coach]),'inactive');});
 test('stale staff content hash is rejected',async()=>{const {coach,nda}=await coachFixture();await assert.rejects(staffSign(coach,nda,'outdated'),/content changed/);});
 test('reactivating coach with completed NDA does not unnecessarily lock them out',async()=>{const {coach,nda}=await coachFixture();await staffSign(coach,nda);await q("UPDATE public.staff_access SET status='inactive' WHERE user_id=$1",[coach]);await q("UPDATE public.staff_access SET status='active' WHERE user_id=$1",[coach]);assert.equal(await scalar('SELECT onboarding_status FROM public.staff_access WHERE user_id=$1',[coach]),'complete');});
+test('staff invitation completion securely updates only the authenticated staff invitation',async()=>{
+ const coach=await staff('invited-coach','coach');
+ const invitation=await scalar("INSERT INTO public.staff_invitations(email,display_name,role,status,auth_user_id,invited_by,expires_at) VALUES('invited-coach@example.invalid','Invited Coach','coach','invited',$1,$2,now()+interval '7 days') RETURNING id",[coach,owner]);
+ assert.equal((await act(member,'SELECT public.complete_my_staff_invitation() accepted')).rows[0].accepted,false);
+ assert.equal(await scalar('SELECT status FROM public.staff_invitations WHERE id=$1',[invitation]),'invited');
+ assert.equal((await act(coach,'SELECT public.complete_my_staff_invitation() accepted')).rows[0].accepted,true);
+ const accepted=(await q('SELECT status,accepted_at,expires_at FROM public.staff_invitations WHERE id=$1',[invitation])).rows[0];
+ assert.equal(accepted.status,'accepted');assert(accepted.accepted_at);assert.equal(accepted.expires_at,null);
+ await assert.rejects(actor(null,'SELECT public.complete_my_staff_invitation()',[],'anon'),/permission denied/);
+});
 
 test('inactive and pending staff cannot satisfy legacy raw staff-row RLS, but self status remains readable',async()=>{
  await q("UPDATE public.staff_access SET status='inactive' WHERE user_id=$1",[admin]);

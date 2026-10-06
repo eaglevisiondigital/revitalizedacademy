@@ -45,6 +45,7 @@ test('dedicated reset completion closes staff invitation metadata',()=>{
   assert.match(reset,/staff_invite:false/);
   assert.match(reset,/staff_invite_completed:true/);
   assert.match(reset,/complete_my_staff_invitation/);
+  assert.match(reset,/if\(invitationError\|\|completed!==true\)/);
 });
 
 test('staff reset email sends a branded one-time token that the password page exchanges',()=>{
