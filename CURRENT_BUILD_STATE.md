@@ -2,21 +2,24 @@
 
 Updated: 2026-10-06
 
-## Pending production Vitality Assessment Review
+## Production Vitality Assessment Review released
 
-- Local release commit: `e1e14d3` on `codex/vitality-production`.
+- Deployed application source: `4a2d293` on `codex/vitality-production`; feature implementation commit: `e1e14d3`.
 - Scope: a production-only staff Vitality Assessments workspace, two narrow secured read RPCs, the approved Adult/Child question catalog, focused browser/backend regressions, and production build allowlist entries.
 - Authoritative source: `private.vitality_assessment_drafts` plus the existing production contact and staff-scope model. No Netlify Forms runtime scraping or cross-environment data bridge was introduced.
 - Permission boundary: both RPCs require `health.private.view` and `staff_can_access_contact`; unfinished assessments expose status metadata only, while completed assessments expose a sanitized submitted answer set, existing coach summary, existing coach-review flags, and existing assessment-derived tags. Direct private-table reads remain denied.
 - Verification: production build generated 376 files; focused browser regressions passed 62/62; PostgreSQL 17 authorization regressions passed 10/10; JavaScript syntax passed; responsive review passed at 1440×1000, 768×1024, and 390×844 without horizontal overflow.
 - Isolation: the production artifact contains the production Supabase/project origin only and does not contain staging project references, beta URLs, synthetic beta identities, or staging fixtures.
-- Release status: migration, production Netlify deploy, and GitHub push are pending explicit mutation approval after automatic approval review. Production remains on deploy `6ac3eee5383ccf92be4d7a58`, and the migration ledger still ends at `20261005184407 vitality_referral_rollout_compatibility`.
+- Release status: GitHub branch pushed, migration `20261006162255 vitality_assessment_staff_review` applied to production Supabase, and Netlify production deploy `6ac520ad289a6b34347af163` published on 2026-10-06.
+- Exact live asset hashes match the reviewed production artifact for `portal-vitality-assessments.js`, `portal-vitality-assessments.css`, and `vitality-question-catalog.js`.
+- Supabase verification: both RPCs are `SECURITY DEFINER` with a fixed empty search path, authenticated execution only, and anonymous execution revoked. The intentional authenticated SECURITY DEFINER advisor findings correspond to the two guarded RPC entry points; no unrelated schema or permission changes were made.
+- Hosted limitation: the signed-out production portal loads the current sign-in screen and the new assets without module-specific errors. Its existing baseline scripts still emit unauthenticated initialization errors from `portal.js?v=182` and permission-dependent panels; these files were not changed by this release.
 
 ## Production
 
-- Source baseline: `d9eb428866ccf7b6338999f6aecb020721b17540`
+- Deployed application source: `4a2d293`
 - Netlify site: `ece0f6f3-6c3d-46e6-bb51-95ce1ccefb06`
-- Published deploy: `6ac3eee5383ccf92be4d7a58`
+- Published deploy: `6ac520ad289a6b34347af163`
 - Public domain: `https://revitalizedacademy.com`
 - Supabase project: `voalfpxiyznnqfcqcymd`
 
@@ -49,7 +52,7 @@ Production now serves the accepted secure Vitality save/resume release with requ
 - JavaScript syntax: passed for all changed and added production files.
 - Production schema compatibility: required tables, columns, helper function, extensions, and unique indexes are present.
 - Environment isolation: candidate contains the production Supabase project and production domain; staging project, staging URL, synthetic recipient allowlist, and test addresses are absent from the public build.
-- Production migration ledger now ends at `20261005184407 vitality_referral_rollout_compatibility`.
+- Production migration ledger now ends at `20261006162255 vitality_assessment_staff_review`.
 - Production Edge Function: `vitality-resume` version 2, active, bundle SHA-256 `93f44b2c69dd8ef7272c5df56b7b49fa8272c115fdc4a3be5723759c818ae3d8`.
 - Exact live hashes match the candidate for `runtime-config.js`, `js/environment.js`, `js/vitality55.js`, `js/vitality-resume.js`, `js/revitalized-data.js`, and `css/vitality55.css`.
 - Start New and Resume Existing render and switch correctly at 1280, 768, and 390 pixel widths without horizontal overflow or browser console errors.
