@@ -1,0 +1,68 @@
+{
+  "project": "ReVitalized Academy",
+  "environment": "staging",
+  "recorded_at_utc": "2026-10-06T11:31:41Z",
+  "authorization": "User explicitly approved publishing and assigning the existing synthetic QA fixtures to Client A only.",
+  "client_a": {
+    "contact_id": "5add389e-e922-436f-b56c-12c6a30d601c",
+    "email": "rva-client@eaglevision.biz",
+    "meal_plan": {
+      "assignment_id": "8c74d968-c53e-4dc0-b393-df354f191b25",
+      "template_id": "a3cfe890-13f0-40d3-84a5-691098d167b7",
+      "title": "Disposable Beta QA 20261004 — Meal Plan",
+      "status": "active",
+      "starts_on": "2026-10-06",
+      "copied_items": 1
+    },
+    "fitness_plan": {
+      "assignment_id": "440dfd6e-c527-4b05-a699-2be527bcd063",
+      "program_id": "c629f0dd-d12a-466d-bae8-3a475e10ca2f",
+      "title": "Disposable Beta QA 20261004 — Fitness Program",
+      "status": "active",
+      "starts_on": "2026-10-06",
+      "copied_workouts": 1
+    }
+  },
+  "client_b": {
+    "contact_id": "b387cb18-e8e1-463b-a706-7fcc547c665e",
+    "email": "dfowler4232@gmail.com",
+    "active_meal_plans": 0,
+    "active_fitness_plans": 0,
+    "meal_items": 0,
+    "workout_items": 0
+  },
+  "fixture_publication": {
+    "published_existing_records": [
+      "recipe",
+      "meal_plan_template",
+      "exercise",
+      "workout_template",
+      "fitness_program"
+    ],
+    "food_catalog_record_changed": false,
+    "new_content_records_created": 0
+  },
+  "ui_evidence": {
+    "owner_portal": "Both assigned plans show Active with one upcoming meal and one upcoming workout."
+  },
+  "unchanged": [
+    "production",
+    "schema",
+    "migrations",
+    "edge_functions",
+    "feature_flags",
+    "permissions",
+    "payments",
+    "mail_configuration",
+    "application_source",
+    "netlify_deployments"
+  ],
+  "remaining": [
+    "Client A member UI visibility",
+    "Client B member UI isolation",
+    "scoped Coach hosted access boundaries",
+    "recovery and revocation gates",
+    "remaining cross-account transition matrix"
+  ],
+  "beta_status": "NOT READY"
+}

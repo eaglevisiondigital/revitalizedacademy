@@ -1,5 +1,13 @@
 # ReVitalized Academy — current build state
 
+## Client A synthetic meal and workout assignment — 2026-10-06
+
+The user explicitly approved publishing and assigning the existing disposable Nutrition/Fitness QA fixtures to Client A only. On staging, the existing synthetic Recipe, Meal Plan, Exercise, Workout and Fitness Program were changed from archived to published; the synthetic Food/Ingredient record remains inactive and unchanged. No new content record was created.
+
+The normal owner portal flow assigned the one-day meal-plan template `a3cfe890-13f0-40d3-84a5-691098d167b7` and fitness program `c629f0dd-d12a-466d-bae8-3a475e10ca2f` to Client A contact `5add389e-e922-436f-b56c-12c6a30d601c`, effective 2026-10-06. The owner UI now shows both plans active with one upcoming meal and one upcoming workout. Authoritative staging verification shows exactly one active meal plan, one active fitness plan, one copied meal item and one copied workout assignment for Client A. Client B contact `b387cb18-e8e1-463b-a706-7fcc547c665e` still has zero meal plans, fitness plans, meal items and workout assignments.
+
+No migration, schema, Edge Function, feature flag, permission, payment, mail setting, application source, deployment or production system changed. Fresh member UI visibility for Client A and isolation for Client B remain pending, along with scoped Coach hosted access, recovery/revocation and the remaining cross-account transition matrix. [Hosted receipt](deployment-evidence/2026-10-06-beta-assignments/client-a-assignment.json). **BETA NOT READY.**
+
 ## Scoped-staff setup and NDA accepted — 2026-10-06
 
 The user completed the final branded password setup through the normal delivered email, signed in as the preserved synthetic Coach, and accepted the required MK.1 Coach NDA. Read-only authoritative staging verification shows the same Auth user `aa5d1bdd-e85e-4141-8a16-3fc409d3e827`, invitation `bdf265b3-8363-4d55-8f63-bab1c416d600`, email `dfowler4200@gmail.com`, Coach role, active staff status and assigned-only contact scope. Auth is confirmed with `staff_invite=false` and `staff_invite_completed=true`; staff onboarding is complete; agreement `2bdb3ff6-6354-424c-9638-66c7de44d23b` is signed at `2026-10-06T10:45:26.534167Z`.
