@@ -48,7 +48,7 @@ test('staff reset email uses the verified recovery action before the branded pas
   assert.match(resetFunction,/redirectTo:recoveryRedirect/);
   assert.match(resetFunction,/actionUrl\.pathname!=="\/auth\/v1\/verify"/);
   assert.match(resetFunction,/actionUrl\.searchParams\.get\("type"\)!=="recovery"/);
-  assert.match(resetFunction,/actionUrl\.searchParams\.get\("redirect_to"\)!==recoveryRedirect/);
+  assert.match(resetFunction,/actionUrl\.searchParams\.set\("redirect_to",recoveryRedirect\)/);
   assert.match(resetFunction,/href="'\+safeActionLink\+'/);
   assert.doesNotMatch(resetFunction,/recoveryRedirect\+"\?token_hash="/);
 });

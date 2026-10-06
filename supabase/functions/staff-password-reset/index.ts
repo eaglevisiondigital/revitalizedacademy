@@ -74,9 +74,9 @@ Deno.serve(async(req:Request)=>{
       actionUrl.origin!==supabaseOrigin||
       actionUrl.pathname!=="/auth/v1/verify"||
       actionUrl.searchParams.get("type")!=="recovery"||
-      !actionUrl.searchParams.get("token")||
-      actionUrl.searchParams.get("redirect_to")!==recoveryRedirect
+      !actionUrl.searchParams.get("token")
     )throw new Error("Password reset action link was invalid.");
+    actionUrl.searchParams.set("redirect_to",recoveryRedirect);
     const safeActionLink=escapeHtml(actionUrl.href);
 
     const apiKey=Deno.env.get("RESEND_API_KEY");
