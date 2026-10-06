@@ -43,7 +43,18 @@
     "new_content_records_created": 0
   },
   "ui_evidence": {
-    "owner_portal": "Both assigned plans show Active with one upcoming meal and one upcoming workout."
+    "owner_portal": "Both assigned plans show Active with one upcoming meal and one upcoming workout.",
+    "client_a_member": {
+      "identity": "Disposable Beta Client A",
+      "dashboard_meals": 1,
+      "dashboard_workouts": 1,
+      "nutrition_plan_visible": true,
+      "assigned_recipe_visible": true,
+      "fitness_program_visible": true,
+      "assigned_workout_visible": true,
+      "client_b_identity_occurrences": 0,
+      "console_warnings_or_errors": 0
+    }
   },
   "unchanged": [
     "production",
@@ -58,7 +69,6 @@
     "netlify_deployments"
   ],
   "remaining": [
-    "Client A member UI visibility",
     "Client B member UI isolation",
     "scoped Coach hosted access boundaries",
     "recovery and revocation gates",
