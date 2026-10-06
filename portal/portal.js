@@ -38,7 +38,7 @@
   let activeContactId = null;
   let currentUserId = null;
   let staffDirectory = [];
-  let sessionEpoch=0, resolvingUser=null, terminatingSession=false;
+  let sessionEpoch=0, resolvingUser=null, terminatingSession=false, authStateSubscription=null;
   function resetStaffAccess(){
     sessionEpoch++;resolvingUser=null;currentUserId=null;staffDirectory=[];activeContactId=null;
     document.dispatchEvent(new CustomEvent("ra:staff-access-reset"));
@@ -46,7 +46,13 @@
   }
   function endStaffDocument(){
     if(terminatingSession)return;
-    terminatingSession=true;resetStaffAccess();
+    terminatingSession=true;
+    // A document that cannot finish navigation must not keep refreshing the prior
+    // staff session or listening to shared auth changes in another member tab.
+    try{authStateSubscription?.unsubscribe();}catch{}
+    authStateSubscription=null;
+    try{authClient.auth.stopAutoRefresh?.();}catch{}
+    resetStaffAccess();
     // A fresh document prevents closures in every portal module retaining another account's data.
     // Use a unique URL so browsers cannot optimize a same-URL replace into a no-op and leave the
     // user stranded on the temporary security notice during an account transition.
@@ -1108,7 +1114,7 @@
     window.setTimeout(() => resolveStaff(session), 0);
   }
 
-  authClient.auth.onAuthStateChange((event, session) => {
+  const {data:authStateData}=authClient.auth.onAuthStateChange((event, session) => {
     if(terminatingSession)return;
     if (event === "SIGNED_OUT") {
       if(currentUserId||resolvingUser){endStaffDocument();return;}
@@ -1121,6 +1127,7 @@
       resolveRestoredStaffSession(session);
     }
   });
+  authStateSubscription=authStateData?.subscription||null;
 
   (async function init() {
     const { data, error } = await authClient.auth.getSession();
