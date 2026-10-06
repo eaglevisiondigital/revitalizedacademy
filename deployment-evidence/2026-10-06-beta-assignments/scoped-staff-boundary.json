@@ -30,7 +30,15 @@
     }
   },
   "mutation": "none; authorization query executed inside a rolled-back transaction",
-  "hosted_ui_status": "Fresh sign-in confirmed and staff dashboard open; final visible People/drawer acceptance pending because the existing in-app tab temporarily refused automation inspection.",
+  "hosted_ui_status": {
+    "result": "pass",
+    "people_directory": "Scoped staff contact and assigned Client A visible; Client B absent.",
+    "client_a_wellness": "Assigned synthetic meal plan and fitness program visible with one upcoming meal and one upcoming workout.",
+    "private_health_review": "Ten configured metrics visible with neutral no-data states.",
+    "health_metric_controls": "All 26 catalog rows visible; all edit, Save and Use Program Default controls disabled under plan.override=false.",
+    "console_warnings_or_errors": 0,
+    "staff_to_member_clear": "Staff sign-out produced a clean member sign-in DOM with no prior staff or Client A private data."
+  },
   "production_changed": false,
   "beta_status": "NOT READY"
 }
