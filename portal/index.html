@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta name="ra-build" content="182">
+  <meta name="ra-build" content="183">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow,noarchive">
@@ -33,6 +33,7 @@
   <link rel="stylesheet" href="portal-refuel.css?v=127">
   <link rel="stylesheet" href="portal-programs.css?v=162">
   <link rel="stylesheet" href="portal-people.css?v=154">
+  <link rel="stylesheet" href="portal-vitality-assessments.css?v=100">
   <link rel="stylesheet" href="portal-staff-access.css?v=154">
   <link rel="stylesheet" href="portal-referrals.css?v=130">
   <link rel="stylesheet" href="portal-family-requests.css?v=159">
@@ -717,6 +718,21 @@
               <div id="contact-activity-list" class="activity-list"></div>
             </section>
           </div>
+        </aside>
+      </div>
+
+
+      <div id="vitality-review-drawer" class="vitality-review-drawer hidden" aria-hidden="true">
+        <div class="vitality-review-backdrop" data-vitality-review-close></div>
+        <aside class="vitality-review-dialog" role="dialog" aria-modal="true" aria-labelledby="vitality-review-title">
+          <div class="vitality-review-topbar">
+            <div>
+              <p class="eyebrow">PRIVATE HEALTH REVIEW</p>
+              <h2 id="vitality-review-title">Vitality Assessment</h2>
+            </div>
+            <button class="vitality-review-close" type="button" data-vitality-review-close aria-label="Close Vitality Assessment review">×</button>
+          </div>
+          <div id="vitality-review-content" class="vitality-review-content"></div>
         </aside>
       </div>
 
@@ -2807,6 +2823,27 @@
           </div>
         </section>
 
+        <section id="vitality-assessments-panel" class="panel vitality-assessments-panel" aria-labelledby="vitality-assessments-title">
+          <div class="panel-heading vitality-assessments-heading">
+            <div>
+              <p class="section-kicker">PRIVATE HEALTH REVIEW</p>
+              <h2 id="vitality-assessments-title">Vitality Assessments</h2>
+              <p class="panel-note">Review completed public Vitality Assessments and monitor unfinished assessment status within your approved contact scope.</p>
+            </div>
+            <button id="vitality-assessments-refresh" class="secondary-button compact" type="button">Refresh</button>
+          </div>
+          <div class="vitality-assessments-controls" role="group" aria-label="Filter Vitality Assessments">
+            <button class="vitality-filter active" type="button" data-vitality-filter="all">All</button>
+            <button class="vitality-filter" type="button" data-vitality-filter="in_progress">In Progress</button>
+            <button class="vitality-filter" type="button" data-vitality-filter="completed">Completed</button>
+            <button class="vitality-filter" type="button" data-vitality-filter="needs_review">Needs Review</button>
+          </div>
+          <p id="vitality-assessments-status" class="form-status vitality-assessments-status" aria-live="polite"></p>
+          <div id="vitality-assessments-list" class="vitality-assessments-list">
+            <div class="empty-state">Open this workspace to load secure Vitality Assessment records.</div>
+          </div>
+        </section>
+
         <section class="panel contacts-panel" aria-labelledby="contacts-title">
           <div class="panel-heading contacts-heading">
             <div>
@@ -2973,6 +3010,8 @@
   <script defer src="portal-programs.js?v=167"></script>
   <script defer src="portal-people.js?v=133"></script>
   <script defer src="portal-people-directory.js?v=144"></script>
+  <script defer src="vitality-question-catalog.js?v=100"></script>
+  <script defer src="portal-vitality-assessments.js?v=100"></script>
   <script defer src="portal-staff-access.js?v=181"></script>
   <script defer src="portal-permissions.js?v=130"></script>
   <script defer src="portal-referrals.js?v=166"></script>
@@ -2984,6 +3023,7 @@
   <script defer src="portal-agreements.js?v=144"></script>
   <script defer src="portal-coach-capacity.js?v=140"></script>
   <script defer src="portal-staff-onboarding.js?v=144"></script>
-  <script defer src="portal-shell.js?v=159"></script>\n  <script defer src="portal-account.js?v=181"></script>
+  <script defer src="portal-shell.js?v=160"></script>
+  <script defer src="portal-account.js?v=181"></script>
 </body>
 </html>
