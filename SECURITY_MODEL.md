@@ -1,5 +1,9 @@
 # ReVitalized Academy security model
 
+## Staff-to-member browser identity transition — 2026-10-06
+
+An account change invalidates the staff epoch, closes contact/private modules through `ra:staff-access-reset`, removes the complete prior portal document and forces a unique same-origin restart. The transition path never calls global Supabase sign-out, preserving the newly authenticated identity in other tabs. A safe restart link remains after DOM destruction if browser navigation is interrupted. Explicit user Sign Out remains the only portal path that intentionally calls `auth.signOut()`. Exact-runtime coverage proves the prior staff identity and private DOM are removed, delayed responses cannot repopulate them, the new identity is not signed out, and explicit sign-out still occurs once.
+
 ## Membership override and session isolation repair — 2026-10-05
 
 Membership-level benefits require an explicit privileged `membership_override` origin; existing rows default to template-managed behavior. Reconciliation never derives or spreads an override, and all benefits still deactivate when a membership leaves active/pending lifecycle states. Existing RLS remains authoritative. Native tests deny member insert/reactivation/reclassification and prove no cross-membership inheritance.

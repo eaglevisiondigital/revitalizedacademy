@@ -48,9 +48,18 @@
     if(terminatingSession)return;
     terminatingSession=true;resetStaffAccess();
     // A fresh document prevents closures in every portal module retaining another account's data.
-    const notice=document.createElement("p");notice.textContent="Refreshing secure staff access…";
+    // Use a unique URL so browsers cannot optimize a same-URL replace into a no-op and leave the
+    // user stranded on the temporary security notice during an account transition.
+    const restartUrl=new URL(window.location.pathname,window.location.origin);
+    restartUrl.searchParams.set("staff_session",String(Date.now()));
+    const notice=document.createElement("main");
+    notice.className="auth-card secure-session-restart";
+    const heading=document.createElement("h1");heading.textContent="Securing your account change";
+    const copy=document.createElement("p");copy.textContent="Your previous staff workspace has been cleared. Continue to refresh access for the account that is now signed in.";
+    const link=document.createElement("a");link.className="primary-button";link.href=restartUrl.href;link.textContent="Continue securely";
+    notice.append(heading,copy,link);
     document.body.replaceChildren(notice);
-    window.location.replace(window.location.pathname);
+    window.location.replace(restartUrl.href);
   }
 
 

@@ -1,5 +1,11 @@
 # ReVitalized Academy — current build state
 
+## Staff portal account-transition restart repair — 2026-10-06
+
+Final hosted beta acceptance reproduced a cross-account browser defect after the owner session changed to Client B. The already-open staff portal synchronously removed its private staff DOM, but its same-URL `location.replace()` could leave the temporary **Refreshing secure staff access…** document visible indefinitely. The valid Client B member session itself remained active and now passes hosted dashboard acceptance: **Disposable Beta Client B**, active Holistic Foundations membership, 50% journey progress, and no Client A meal or workout assignments displayed.
+
+The portal now restarts on a unique same-origin `staff_session` URL after clearing staff state, preventing same-URL navigation coalescing. The cleared document presents a safe **Continue securely** recovery link if automatic navigation is interrupted. Account transition does not call Supabase sign-out, so it cannot destroy the newly selected member identity; explicit portal Sign Out still signs out exactly once. Portal core asset cache advances to `portal.js?v=189`. Focused beta-core runtime **23/23**, full frontend **483 passed / 0 failed / 27 established skips**, JavaScript syntax **78/78**, staging build **314 files**. [Repair report](docs/BETA_STAFF_ACCOUNT_TRANSITION_REPAIR_2026-10-06.md). Staging deployment and post-deploy cross-tab acceptance remain pending; production is unchanged. **BETA NOT READY.**
+
 ## Enrollment account-creation confirmation repair — 2026-10-06
 
 Hosted Client B acceptance reproduced a real mobile UX defect: Supabase created the account and sent verification immediately, but the enrollment page left the user on the unchanged form. The existing success text was written only to the page-level status above the mobile viewport, so the action appeared to do nothing.
