@@ -2,7 +2,7 @@
 
 Date: 2026-10-06  
 Environment: dedicated ReVitalized Academy staging only  
-Status: implemented and locally verified; hosted deployment/acceptance pending
+Status: deployed to staging; fresh hosted onboarding acceptance pending
 
 ## Hosted defect
 
@@ -35,6 +35,15 @@ The approved existing scoped Coach identity was reconciled from the bounced stag
 - Full frontend: 489 passed, 0 failed, 27 established skips.
 - Staging build: 314 files; runtime configuration byte-identical to the accepted staging runtime.
 - Local Deno was unavailable in this desktop runtime. The maintained Edge test was updated to assert `setup=staff`; deployment compilation or a Deno-capable runner must cover it before hosted acceptance.
+
+## Staging release
+
+- Source: `1d650e5eab98cfa99638c951e16e15c6450c020f`
+- Netlify staging deploy: `6ac4c8e0b424fa9229d0451e`
+- `portal.js?v=191`: live/build SHA-256 `48019ae9018fc5d6a55682bd200518c610ea6faed929b67d3eef86a20be87b26`
+- `portal/password-reset.html`: live/build SHA-256 `66632fc0d9da488868328ed7e4aecf6b0a99429c7f1e2f3025b3ad42d9555e79`
+- Staging `staff-management`: version 12 active; both invite and reconciliation callbacks include `?setup=staff`.
+- Production Netlify deploy remains `6ac3eee5383ccf92be4d7a58` and was not touched.
 
 ## Hosted acceptance still required
 
