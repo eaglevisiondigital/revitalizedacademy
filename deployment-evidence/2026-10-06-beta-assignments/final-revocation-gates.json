@@ -1,6 +1,14 @@
 {
   "environment": "staging",
-  "recorded_at": "2026-10-06T12:45:00Z",
+  "recorded_at": "2026-10-06T13:15:15Z",
+  "application_release": {
+    "source_sha": "8a1d89e18a6bb4adb3c2c6cc233bef794104a210",
+    "staging_site_id": "071b252e-a922-4846-a784-8dca1edad377",
+    "staging_deploy_id": "6ac4f3c733ec96aa8b21816b",
+    "member_asset": "member110.js?v=214",
+    "member_asset_sha256": "53ce41fc07bb2fc9e9e6729b41a4472f1a8b9be8be1731db23830cac49c49459",
+    "member_html_sha256": "7c8ab25874d3df186b67bd73abc116cebbc2eb941e45b1a0a834039cd47ac2b7"
+  },
   "scoped_staff": {
     "identity": "dfowler4200@gmail.com",
     "staff_status": "inactive",
@@ -13,12 +21,29 @@
     "activation_access_status": "suspended",
     "authenticated_full_member_access": false,
     "private_dashboard_authorized": false,
-    "hosted_observation": "sign_in_succeeded_but_restriction_explanation_did_not_render",
-    "repair_candidate": "render_local_restricted_access_view_before_any_private_bootstrap"
+    "hosted_observation": "sign_in_succeeded_and_rendered_local_restricted_access_view",
+    "restricted_heading": "Your member access is not active.",
+    "review_enrollment_status_available": true,
+    "sign_out_available": true,
+    "private_dashboard_rendered": false,
+    "console_warnings_or_errors": 0
+  },
+  "verification": {
+    "focused_member_access": "22/22",
+    "broader_health_access": "56/56",
+    "javascript_syntax": "78/78",
+    "frontend": "495 passed / 0 failed / 27 established skips",
+    "build_files": 315,
+    "final_beta_acceptance": "pass"
   },
   "hosted_data_changes": [
     "scoped staff status changed to inactive through owner portal",
     "Client B enrollment activation access changed to suspended through audited owner override"
   ],
-  "production_changed": false
+  "production": {
+    "site_id": "ece0f6f3-6c3d-46e6-bb51-95ce1ccefb06",
+    "deploy_id": "6ac3eee5383ccf92be4d7a58",
+    "state": "ready",
+    "changed": false
+  }
 }

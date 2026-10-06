@@ -2,7 +2,7 @@
 
 ## Restricted member sign-in boundary — 2026-10-06
 
-Member authentication is not paid authorization. `/member/` calls `member_paid_access_allowed()` before any dashboard bootstrap or private module read. A false result now clears all dashboard-private state and renders the local restricted-access view immediately; it does not reuse a previous member's DOM and does not expose lifecycle details beyond the neutral restriction message. The user may open the existing authenticated Enrollment & Signature Center for permitted lifecycle/support functions or sign out. Hosted Client B verification returned `full_member_access=false` after the audited enrollment access suspension. No RLS, permission, role or database policy changed.
+Member authentication is not paid authorization. `/member/` calls `member_paid_access_allowed()` before any dashboard bootstrap or private module read. A false result now clears all dashboard-private state and renders the local restricted-access view immediately; it does not reuse a previous member's DOM and does not expose lifecycle details beyond the neutral restriction message. The user may open the existing authenticated Enrollment & Signature Center for permitted lifecycle/support functions or sign out. Hosted Client B verification returned `full_member_access=false` after the audited enrollment access suspension, and the exact deployed browser path rendered only the restricted-access view with a clean console. No RLS, permission, role or database policy changed.
 
 ## Member password recovery boundary — 2026-10-06
 
