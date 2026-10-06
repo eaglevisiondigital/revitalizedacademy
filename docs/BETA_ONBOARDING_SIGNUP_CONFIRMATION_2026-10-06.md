@@ -33,4 +33,18 @@ No enrollment, agreement, payment, invitation-token, membership, Supabase schema
 
 Client B `dfowler4232@gmail.com` already created and verified its single account through the normal flow before this repair. Preserve that identity and continue by reopening the original agreement invitation. Do not create a second account.
 
-Deployment SHA, Netlify deploy ID, exact live hashes and responsive results will be added after the staging-only release.
+## Staging release
+
+- Source: `3cb8ba4e18f73179e2de9ee7fdf88e516225fe2a`
+- Netlify staging site: `071b252e-a922-4846-a784-8dca1edad377`
+- Deploy: `6ac4ad32ad37f1281a60f6e8` (`ready`)
+- Branch/context: `codex/staging` / the dedicated staging site's production context
+- Published: `2026-10-06T08:11:34.028Z`
+- Live HTML requests `onboarding.js?v=3` and `onboarding.css?v=3` and contains the new confirmation heading.
+- Live JS SHA-256: `1714b1cb780160445b5122b3b25a855a2a7dc1328ac8abe3c83d3986cea6cc9a`
+- Live CSS SHA-256: `649d1bfef6b78f9c7d32d983d4487a13d1b62cbc155ef67a058c20789589056b`
+- Both live hashes match the exact staging build.
+
+Netlify reports only the onboarding page and its two assets changed. No Functions or Edge Functions deployed. Production remains published deploy `6ac3eee5383ccf92be4d7a58` and was not touched.
+
+The repaired confirmation state is covered in the exact source/build regression. A second hosted signup was intentionally not performed because Client B's account already exists and duplicate identity creation is prohibited. The next hosted step is reopening Client B's original agreement invitation while the newly verified Client B account remains signed in.
