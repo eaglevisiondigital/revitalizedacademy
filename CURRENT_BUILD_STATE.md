@@ -2,6 +2,18 @@
 
 Updated: 2026-10-06
 
+## Production durable content candidate — approval pending
+
+- Branch: `codex/production-durable-content`, based on the released production branch (`c72e328` documentation / `4a2d293` deployed application source). No staging merge or customer-data transfer.
+- Prepared migration: `20261006164158_production_durable_content.sql`; **not applied remotely**. It adds content media/food provenance/serving metadata, a 101-entry reference nutrient catalog, repaired recipe calculations and content-only authoring policies. No client diary/targets, role grants, payment/provider configuration or methodology seed is included.
+- Prepared frontend: Foods/Recipes/Exercises/Workouts/Meal Plans/Fitness Programs, recipe/composition builders, edit/lifecycle controls, methodology philosophy/version editing, sidebar shortcuts, and the narrow legacy Account initialization repair.
+- Authoring requires active approved staff plus `learning.manage`; existing permission defaults/overrides are preserved. Food uses Activate/Deactivate; other reusable content uses draft/publish/archive.
+- Local validation: production build 378 files; 67 JS syntax checks; 62 existing frontend checks plus 11 candidate checks; 50 PostgreSQL 17 database checks; 36 exact-built Chrome responsive/runtime cases at 1440×1000, 768×1024 and 390×844. No live data was written.
+- Production control plane still reports deploy `6ac520ad289a6b34347af163`; latest production migration remains Vitality Review `20261006162255`. Production content hosted acceptance is pending release approval.
+- Justin/Elle already have active production Owner records; fresh production login/authoring remains unaccepted until the candidate is deployed.
+- Status: **PRODUCTION DURABLE CONTENT BLOCKED** — remote migration/deployment approval and subsequent focused hosted acceptance outstanding.
+- [Full release boundary, module classifications and acceptance plan](docs/PRODUCTION_DURABLE_CONTENT_RELEASE_2026-10-06.md).
+
 ## Production Vitality Assessment Review released
 
 - Deployed application source: `4a2d293` on `codex/vitality-production`; feature implementation commit: `e1e14d3`.

@@ -6,6 +6,7 @@
   const client=portal.authClient;
 
   let permissions={};
+  let permissionEpoch=0;
 
   function has(key){
     return Boolean(permissions[key]);
@@ -63,7 +64,9 @@
   }
 
   async function loadPermissions(){
+    const epoch=++permissionEpoch;
     const {data,error}=await client.from("my_staff_permissions_view").select("*");
+    if(epoch!==permissionEpoch)return;
     if(error){
       console.error("Staff permissions failed",error);
       permissions={};
@@ -88,5 +91,7 @@
   document.addEventListener("ra:dashboard-loaded",applyVisibility);
   document.addEventListener("ra:permissions-refresh",loadPermissions);
 
+  document.addEventListener("ra:staff-access-reset",()=>{permissionEpoch++;permissions={};applyVisibility();});
+  document.addEventListener("ra:dashboard-loaded",loadPermissions);
   window.setTimeout(loadPermissions,250);
 })();

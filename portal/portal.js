@@ -500,6 +500,8 @@
   }
 
   function showLogin() {
+    currentUserId=null;
+    document.dispatchEvent(new CustomEvent("ra:staff-access-reset"));
     authView.classList.remove("hidden");
     portalView.classList.add("hidden");
     loginForm.classList.remove("hidden");
@@ -818,44 +820,6 @@
     await resolveStaff(session || (data.user ? { user:data.user } : null));
   });
 
-  async function openAccount() {
-    const [{ data: userData, error: userError }, { data: staff, error: staffError }] = await Promise.all([
-      authClient.auth.getUser(),
-      authClient.from("staff_access").select("role, display_name, status").maybeSingle()
-    ]);
-
-    if (userError || staffError || !userData?.user) {
-      showStatus(portalStatus, "Account details could not be loaded. Please refresh and try again.", "error");
-      return;
-    }
-
-    el("account-name").textContent = staff?.display_name || "Staff member";
-    el("account-email").textContent = userData.user.email || "Not available";
-    el("account-role").textContent = titleCase(staff?.role || "staff");
-    accountOverview.classList.remove("hidden");
-    accountPasswordPanel.classList.add("hidden");
-    showStatus(accountPasswordStatus, "");
-    accountModal.classList.remove("hidden");
-    accountModal.setAttribute("aria-hidden", "false");
-  }
-
-  function closeAccount() {
-    accountModal.classList.add("hidden");
-    accountModal.setAttribute("aria-hidden", "true");
-    accountOverview.classList.remove("hidden");
-    accountPasswordPanel.classList.add("hidden");
-    el("account-new-password").value = "";
-    el("account-confirm-password").value = "";
-    showStatus(accountPasswordStatus, "");
-  }
-
-  function showAccountPassword() {
-    accountOverview.classList.add("hidden");
-    accountPasswordPanel.classList.remove("hidden");
-    showStatus(accountPasswordStatus, "");
-    el("account-new-password").focus();
-  }
-
   async function signOut() {
     await authClient.auth.signOut();
     showLogin();
@@ -865,8 +829,6 @@
 
   window.RA_PORTAL = {
     authClient,
-    openAccount,
-    closeAccount,
     currentUserId: () => currentUserId,
     openContact,
     loadDashboard,
@@ -1001,50 +963,13 @@
   el("logout-button").addEventListener("click", signOut);
   el("pending-logout").addEventListener("click", signOut);
   el("refresh-button").addEventListener("click", loadDashboard);
-  el("account-button").addEventListener("click", openAccount);
-  el("account-close").addEventListener("click", closeAccount);
-  el("account-done").addEventListener("click", closeAccount);
-  document.querySelectorAll("[data-account-close]").forEach((node) => node.addEventListener("click", closeAccount));
-  el("account-change-password").addEventListener("click", showAccountPassword);
-  el("account-password-cancel").addEventListener("click", () => {
-    accountPasswordPanel.classList.add("hidden");
-    accountOverview.classList.remove("hidden");
-    showStatus(accountPasswordStatus, "");
-  });
-
-  el("account-password-form").addEventListener("submit", async (event) => {
-    event.preventDefault();
-    const password = el("account-new-password").value;
-    const confirm = el("account-confirm-password").value;
-
-    if (password !== confirm) {
-      showStatus(accountPasswordStatus, "The passwords do not match.", "error");
-      return;
-    }
-
-    showStatus(accountPasswordStatus, "Saving your new password...");
-    const { error } = await authClient.auth.updateUser({ password });
-
-    if (error) {
-      showStatus(accountPasswordStatus, error.message, "error");
-      return;
-    }
-
-    el("account-new-password").value = "";
-    el("account-confirm-password").value = "";
-    showStatus(accountPasswordStatus, "Password updated successfully.", "success");
-    window.setTimeout(() => {
-      accountPasswordPanel.classList.add("hidden");
-      accountOverview.classList.remove("hidden");
-      showStatus(accountPasswordStatus, "");
-    }, 900);
-  });
+  // portal-account.js owns all Account entry and profile/password interactions.
 
   document.addEventListener("keydown", (event) => {
     if (event.key !== "Escape") return;
     if (document.querySelector(".message-modal:not(.hidden)")) return;
     if (!contactDrawer.classList.contains("hidden")) closeContact();
-    else if (!accountModal.classList.contains("hidden")) closeAccount();
+
   });
   el("pending-password").addEventListener("click", showPasswordSetup);
 

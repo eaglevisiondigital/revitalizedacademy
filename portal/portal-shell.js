@@ -68,21 +68,35 @@
     navEl.append(group);
   });
 
+  const contentNavigation=document.createElement("div");
+  contentNavigation.className="ra-nav-group";
+  const libraryHeading=document.createElement("div");libraryHeading.className="ra-sidebar-label";libraryHeading.textContent="Reusable Content";
+  contentNavigation.append(libraryHeading);
+  for(const [label,key] of [["Nutrition","nutrition-methodology"],["Foods","foods"],["Recipes","recipes"],["Meal Plans","meal-plans"],["Fitness","fitness-methodology"],["Exercises","exercises"],["Workouts","workouts"],["Fitness Programs","fitness"]]){
+    const shortcut=document.createElement("button");shortcut.type="button";shortcut.className="ra-nav-item";shortcut.dataset.workspace="programs";shortcut.dataset.target="#program-content-panel";shortcut.textContent=label;
+    shortcut.addEventListener("click",()=>document.querySelector('[data-program-content="'+key+'"]')?.click());
+    contentNavigation.append(shortcut);
+  }
+  navEl.append(contentNavigation);
+
   const footer = aside.querySelector(".ra-sidebar-footer");
   const settings = document.createElement("button");
   settings.className="ra-nav-item"; settings.type="button";
   settings.innerHTML='<span class="ra-nav-icon">'+icon("settings")+'</span><span class="ra-nav-text">Account & Settings</span>';
-  settings.addEventListener("click",async()=>{
+  settings.addEventListener("click",(event)=>{
     document.body.classList.remove("ra-mobile-nav-open");
-    if(window.RA_PORTAL?.openAccount){
-      await window.RA_PORTAL.openAccount();
-      return;
-    }
+
+    // portal-account.js owns Account & Settings once its current module is bound.
+    // Do not invoke the same async flow a second time from the shell.
+    if(window.RA_ACCOUNT?.open)return;
+
+    event.preventDefault();
     const accountButton=document.getElementById("account-button");
     if(accountButton){
       accountButton.click();
       return;
     }
+
     const modal=document.getElementById("account-modal");
     if(modal){
       modal.classList.remove("hidden");

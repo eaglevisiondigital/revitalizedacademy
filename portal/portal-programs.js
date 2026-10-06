@@ -5,7 +5,7 @@
   const summary=document.getElementById("program-catalog-summary");
   if(!portal||!root||!summary)return;
   const client=portal.authClient;
-  const canManagePrograms=()=>portal.hasPermission?.("learning.manage") ?? ["owner","admin","coach"].includes(String(portal.currentStaffRole?.()||"").toLowerCase());
+  const canManagePrograms=()=>portal.hasPermission?.("learning.manage")===true;
 
   const describe=(row)=>{
     const code=row.program_code;
@@ -475,18 +475,24 @@
   const dynamicFields=document.getElementById("program-content-dynamic-fields");
   const formStatus=document.getElementById("program-content-form-status");
   const contentSources={
+    "nutrition-methodology":{table:"nutrition_methodologies",label:"Nutrition Methodology",select:"id,name,version,status,philosophy",order:"name",nameField:"name",descriptionField:false},
+    "fitness-methodology":{table:"fitness_methodologies",label:"Fitness Methodology",select:"id,name,version,status,philosophy",order:"name",nameField:"name",descriptionField:false},
     courses:{table:"learning_courses",label:"Courses",select:"id,title,description,status,estimated_minutes,version",order:"title"},
     challenges:{table:"wellness_challenges",label:"Challenges",select:"id,title,description,status,scope,starts_on,ends_on",order:"title"},
     "meal-plans":{table:"meal_plan_templates",label:"Meal Plans",select:"id,title,description,status,days_count",order:"title"},
-    recipes:{table:"recipes",label:"Recipes",select:"id,title,status,meal_type,prep_minutes,cook_minutes",order:"title"},
-    fitness:{table:"fitness_programs",label:"Fitness Programs",select:"id,title,description,status,difficulty,environment,weeks",order:"title"},
-    workouts:{table:"workout_templates",label:"Workouts",select:"id,title,description,status,category,difficulty,environment,duration_minutes",order:"title"},
+    recipes:{table:"recipes",label:"Recipes",select:"id,methodology_id,title,status,meal_type,servings,prep_minutes,cook_minutes,image_url,image_alt,nutrition,nutrition_calculated_at,nutrition_calculation_meta",order:"title",descriptionField:false},
+    foods:{table:"food_catalog",label:"Foods & Ingredients",select:"id,name,category,guidance_status,serving_guidance,image_url,image_alt,nutrition,active",order:"name",nameField:"name",createdBy:false},
+    fitness:{table:"fitness_programs",label:"Fitness Programs",select:"id,title,description,status,difficulty,environment,weeks,image_url,image_alt",order:"title"},
+    workouts:{table:"workout_templates",label:"Workouts",select:"id,title,description,status,category,difficulty,environment,duration_minutes,image_url,image_alt,workout_type,muscle_groups,equipment",order:"title"},
+    exercises:{table:"exercise_catalog",label:"Exercises",select:"id,name,category,status,difficulty,environment,equipment,instructions,restriction_notes,video_url,tags,image_url,image_alt,primary_muscle_group,secondary_muscle_groups,movement_type,low_impact",order:"name",nameField:"name"},
     resources:{table:"resource_library",label:"Resources",select:"id,title,description,status,resource_type,resource_url,category",order:"title"}
   };
   let contentCache={};
+  let contentEdit=null, contentEpoch=0, contentBusy=false, contentReadEpoch=0;
   let activeContent="courses";
   let nutritionMethodologies=[];
   let fitnessMethodologies=[];
+  let nutritionNutrients=[];
 
   const slugify=(value)=>String(value||"").trim().toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"").slice(0,100);
 
@@ -494,9 +500,11 @@
     if(key==="courses")return [row.version?"Version "+row.version:null,row.estimated_minutes?row.estimated_minutes+" min":null].filter(Boolean).join(" · ")||"Course Content";
     if(key==="challenges")return [row.scope?portal.titleCase(row.scope):null,row.starts_on&&row.ends_on?row.starts_on+" to "+row.ends_on:null].filter(Boolean).join(" · ")||"Wellness Challenge";
     if(key==="meal-plans")return row.days_count?row.days_count+" day plan":"Meal Plan Template";
-    if(key==="recipes")return [row.meal_type?portal.titleCase(row.meal_type):null,row.prep_minutes?row.prep_minutes+" min prep":null,row.cook_minutes?row.cook_minutes+" min cook":null].filter(Boolean).join(" · ")||"Recipe";
+    if(key==="recipes")return [row.meal_type?portal.titleCase(row.meal_type):null,row.nutrition?.protein_g!==undefined?row.nutrition.protein_g+"g protein":null,row.prep_minutes?row.prep_minutes+" min prep":null,row.cook_minutes?row.cook_minutes+" min cook":null].filter(Boolean).join(" · ")||"Recipe";
+    if(key==="foods")return [row.category?portal.titleCase(row.category):null,row.serving_guidance||null,row.nutrition?.protein_g!==undefined?row.nutrition.protein_g+"g protein":null].filter(Boolean).join(" · ")||"Food / Ingredient";
     if(key==="fitness")return [row.difficulty?portal.titleCase(row.difficulty):null,row.environment?portal.titleCase(row.environment):null,row.weeks?row.weeks+" weeks":null].filter(Boolean).join(" · ")||"Fitness Program";
-    if(key==="workouts")return [row.category?portal.titleCase(row.category):null,row.difficulty?portal.titleCase(row.difficulty):null,row.environment?portal.titleCase(row.environment):null,row.duration_minutes?row.duration_minutes+" min":null].filter(Boolean).join(" · ")||"Workout";
+    if(key==="workouts")return [row.workout_type?portal.titleCase(row.workout_type):row.category?portal.titleCase(row.category):null,Array.isArray(row.muscle_groups)&&row.muscle_groups.length?row.muscle_groups.map(portal.titleCase).join(", "):null,row.difficulty?portal.titleCase(row.difficulty):null,row.duration_minutes?row.duration_minutes+" min":null].filter(Boolean).join(" · ")||"Workout";
+    if(key==="exercises")return [row.primary_muscle_group?portal.titleCase(row.primary_muscle_group):null,row.movement_type?portal.titleCase(row.movement_type):row.category?portal.titleCase(row.category):null,row.difficulty?portal.titleCase(row.difficulty):null,row.low_impact?"Low Impact":null].filter(Boolean).join(" · ")||"Exercise";
     if(key==="resources")return [row.resource_type?portal.titleCase(row.resource_type):null,row.category||null].filter(Boolean).join(" · ")||"Resource";
     return "";
   };
@@ -506,28 +514,66 @@
     return rows.map(row=>'<option value="'+row.id+'">'+String(row.name||"Methodology").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;")+'</option>').join("");
   }
 
+  const escapeHtml=(value)=>String(value??"")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#39;");
+
+  function nutritionField(row){
+    const step=row.unit==="kcal"||row.unit==="mg"||row.unit==="µg"?"0.1":"0.01";
+    return '<label><span>'+escapeHtml(row.name)+' ('+escapeHtml(row.unit)+')</span><input type="number" min="0" step="'+step+'" data-nutrient-key="'+escapeHtml(row.nutrient_key)+'"></label>';
+  }
+
+  function nutritionFieldsMarkup(){
+    if(!nutritionNutrients.length){
+      return '<div class="program-content-nutrient-empty">Nutrient catalog is unavailable.</div>';
+    }
+    const core=nutritionNutrients.filter((row)=>row.default_visible);
+    const advanced=nutritionNutrients.filter((row)=>!row.default_visible);
+    const categories=[...new Set(advanced.map((row)=>row.category))];
+    const groups=categories.map((category)=>{
+      const label=portal.titleCase(String(category).replaceAll("_"," "));
+      const fields=advanced.filter((row)=>row.category===category).map(nutritionField).join("");
+      return '<section class="program-content-nutrient-group"><strong>'+escapeHtml(label)+'</strong><div class="program-content-nutrient-grid">'+fields+'</div></section>';
+    }).join("");
+    return '<section class="program-content-nutrient-core wide"><div class="program-content-nutrient-head"><strong>Core Nutrition</strong><span>Common nutrition facts shown first.</span></div><div class="program-content-nutrient-grid">'+core.map(nutritionField).join("")+'</div></section>'+
+      '<details class="program-content-nutrient-details wide"><summary>Full Nutrient Profile ('+nutritionNutrients.length+' tracked nutrients & compounds)</summary><p>Use any fields available from the source food, label, laboratory database or ReVitalized recipe calculation. Blank values stay unknown rather than being treated as zero.</p>'+groups+'</details>';
+  }
+
   function renderDynamicFields(){
     if(!dynamicFields||!contentType)return;
     const type=contentType.value;
-    if(type==="courses"){
+    contentDescription?.closest("label")?.classList.toggle("hidden",["recipes","foods","exercises","nutrition-methodology","fitness-methodology"].includes(type));
+    if(type==="nutrition-methodology"||type==="fitness-methodology"){
+      dynamicFields.innerHTML='<label><span>Version</span><input id="content-version" type="text" value="1.0" maxlength="30" required></label><label class="wide"><span>Philosophy / reusable guidance</span><textarea id="content-philosophy" rows="8" maxlength="20000"></textarea></label>';
+    }else if(type==="courses"){
       dynamicFields.innerHTML='<label><span>Estimated minutes</span><input id="content-estimated-minutes" type="number" min="0" step="1"></label><label><span>Version</span><input id="content-version" type="text" value="1.0" maxlength="30"></label>';
     }else if(type==="challenges"){
       dynamicFields.innerHTML='<label><span>Scope</span><select id="content-scope"><option value="individual">Individual</option><option value="household">Household</option><option value="both">Individual + Household</option></select></label><label><span>Goal type</span><select id="content-goal-type"><option value="custom">Custom</option><option value="metric">Metric</option></select></label><label><span>Starts on</span><input id="content-starts-on" type="date" required></label><label><span>Ends on</span><input id="content-ends-on" type="date" required></label><label><span>Target metric key</span><input id="content-target-key" type="text" maxlength="80" placeholder="steps, water_oz, workouts..."></label><label><span>Target value</span><input id="content-target-value" type="number" min="0" step="0.01"></label><label><span>Unit</span><input id="content-unit" type="text" maxlength="40"></label><label><span>Points available</span><input id="content-points" type="number" min="0" step="1" value="100"></label>';
     }else if(type==="meal-plans"){
       dynamicFields.innerHTML='<label class="wide"><span>Nutrition methodology</span><select id="content-methodology" required>'+methodologyOptions(nutritionMethodologies)+'</select></label><label><span>Days in plan</span><input id="content-days" type="number" min="1" max="90" step="1" value="7"></label>';
     }else if(type==="recipes"){
-      dynamicFields.innerHTML='<label class="wide"><span>Nutrition methodology</span><select id="content-methodology" required>'+methodologyOptions(nutritionMethodologies)+'</select></label><label><span>Meal type</span><select id="content-meal-type"><option value="breakfast">Breakfast</option><option value="lunch">Lunch</option><option value="dinner">Dinner</option><option value="snack">Snack</option><option value="beverage">Beverage</option><option value="other">Other</option></select></label><label><span>Servings</span><input id="content-servings" type="number" min="0.1" step="0.1"></label><label><span>Prep minutes</span><input id="content-prep" type="number" min="0" step="1"></label><label><span>Cook minutes</span><input id="content-cook" type="number" min="0" step="1"></label><label class="wide"><span>Instructions</span><textarea id="content-instructions" rows="5"></textarea></label>';
+      dynamicFields.innerHTML='<label class="wide"><span>Nutrition methodology</span><select id="content-methodology" required>'+methodologyOptions(nutritionMethodologies)+'</select></label><label><span>Meal type</span><select id="content-meal-type"><option value="breakfast">Breakfast</option><option value="lunch">Lunch</option><option value="dinner">Dinner</option><option value="snack">Snack</option><option value="beverage">Beverage</option><option value="other">Other</option></select></label><label><span>Servings</span><input id="content-servings" type="number" min="0.1" step="0.1"></label><label><span>Prep minutes</span><input id="content-prep" type="number" min="0" step="1"></label><label><span>Cook minutes</span><input id="content-cook" type="number" min="0" step="1"></label><label class="wide"><span>Main image URL</span><input id="content-image-url" type="url" maxlength="1200" placeholder="https://..."></label><label class="wide"><span>Image alt text</span><input id="content-image-alt" type="text" maxlength="240" placeholder="Grilled chicken bowl"></label>'+nutritionFieldsMarkup()+'<label class="wide"><span>Instructions</span><textarea id="content-instructions" rows="5"></textarea></label>';
+    }else if(type==="foods"){
+      dynamicFields.innerHTML='<label class="wide"><span>Nutrition methodology</span><select id="content-methodology" required>'+methodologyOptions(nutritionMethodologies)+'</select></label><label><span>Brand (optional)</span><input id="content-brand" type="text" maxlength="160"></label><label><span>Category</span><input id="content-category" type="text" maxlength="80" placeholder="Protein, Produce, Grain..."></label><label><span>Barcode / UPC</span><input id="content-barcode" type="text" maxlength="80"></label><label><span>Serving size</span><input id="content-serving-size" type="number" min="0" step="0.01" placeholder="1"></label><label><span>Serving unit</span><input id="content-serving-unit" type="text" maxlength="40" placeholder="cup, tbsp, oz..."></label><label><span>Grams per serving</span><input id="content-grams-serving" type="number" min="0" step="0.01" placeholder="Preferred for recipe calculation"></label><label class="wide"><span>Serving guidance</span><input id="content-serving-guidance" type="text" maxlength="240" placeholder="3 oz cooked, 1 cup..."></label><label><span>Nutrition data source</span><input id="content-data-source" type="text" maxlength="120" placeholder="USDA, manufacturer label, ReVitalized custom"></label><label><span>Source record ID</span><input id="content-source-record-id" type="text" maxlength="180"></label><label class="program-content-check"><input id="content-source-verified" type="checkbox"><span>Source verified</span></label><label class="wide"><span>Ingredient image URL (optional)</span><input id="content-image-url" type="url" maxlength="1200" placeholder="https://..."></label><label class="wide"><span>Image alt text</span><input id="content-image-alt" type="text" maxlength="240"></label>'+nutritionFieldsMarkup();
     }else if(type==="fitness"){
-      dynamicFields.innerHTML='<label class="wide"><span>Fitness methodology</span><select id="content-methodology" required>'+methodologyOptions(fitnessMethodologies)+'</select></label><label><span>Difficulty</span><select id="content-difficulty"><option value="beginner">Beginner</option><option value="intermediate">Intermediate</option><option value="advanced">Advanced</option></select></label><label><span>Environment</span><select id="content-environment"><option value="either">Home or Gym</option><option value="home">Home</option><option value="gym">Gym</option></select></label><label><span>Weeks</span><input id="content-weeks" type="number" min="1" step="1"></label>';
+      dynamicFields.innerHTML='<label class="wide"><span>Fitness methodology</span><select id="content-methodology" required>'+methodologyOptions(fitnessMethodologies)+'</select></label><label><span>Difficulty</span><select id="content-difficulty"><option value="beginner">Beginner</option><option value="intermediate">Intermediate</option><option value="advanced">Advanced</option></select></label><label><span>Environment</span><select id="content-environment"><option value="either">Home or Gym</option><option value="home">Home</option><option value="gym">Gym</option></select></label><label><span>Weeks</span><input id="content-weeks" type="number" min="1" step="1"></label><label class="wide"><span>Program image URL</span><input id="content-image-url" type="url" maxlength="1200" placeholder="https://..."></label><label class="wide"><span>Image alt text</span><input id="content-image-alt" type="text" maxlength="240"></label>';
     }else if(type==="workouts"){
-      dynamicFields.innerHTML='<label class="wide"><span>Fitness methodology</span><select id="content-methodology" required>'+methodologyOptions(fitnessMethodologies)+'</select></label><label><span>Category</span><input id="content-category" type="text" maxlength="80" placeholder="Strength, Mobility, HIIT..."></label><label><span>Difficulty</span><select id="content-difficulty"><option value="beginner">Beginner</option><option value="intermediate">Intermediate</option><option value="advanced">Advanced</option></select></label><label><span>Environment</span><select id="content-environment"><option value="either">Home or Gym</option><option value="home">Home</option><option value="gym">Gym</option></select></label><label><span>Duration minutes</span><input id="content-duration" type="number" min="1" step="1"></label>';
+      dynamicFields.innerHTML='<label class="wide"><span>Fitness methodology</span><select id="content-methodology" required>'+methodologyOptions(fitnessMethodologies)+'</select></label><label><span>Workout type</span><select id="content-workout-type"><option value="strength">Strength / Weights</option><option value="cardio">Cardio</option><option value="hiit">HIIT</option><option value="mobility">Mobility</option><option value="stretching">Stretching</option><option value="core">Core</option><option value="bodyweight">Bodyweight</option><option value="bands">Resistance Bands</option><option value="recovery">Recovery / Low Impact</option><option value="circuit">Circuit Training</option><option value="conditioning">Conditioning</option><option value="aquatic">Pool / Aquatic</option></select></label><label><span>Category</span><input id="content-category" type="text" maxlength="80" placeholder="Upper Body, Lower Body, Full Body..."></label><label class="wide"><span>Muscle groups</span><input id="content-muscle-groups" type="text" maxlength="500" placeholder="chest, back, shoulders"></label><label class="wide"><span>Equipment</span><input id="content-equipment" type="text" maxlength="500" placeholder="dumbbells, bench, resistance bands"></label><label><span>Difficulty</span><select id="content-difficulty"><option value="beginner">Beginner</option><option value="intermediate">Intermediate</option><option value="advanced">Advanced</option></select></label><label><span>Environment</span><select id="content-environment"><option value="either">Home or Gym</option><option value="home">Home</option><option value="gym">Gym</option></select></label><label><span>Duration minutes</span><input id="content-duration" type="number" min="1" step="1"></label><label class="wide"><span>Workout image URL</span><input id="content-image-url" type="url" maxlength="1200" placeholder="https://..."></label><label class="wide"><span>Image alt text</span><input id="content-image-alt" type="text" maxlength="240"></label>';
+    }else if(type==="exercises"){
+      dynamicFields.innerHTML='<label class="wide"><span>Fitness methodology</span><select id="content-methodology" required>'+methodologyOptions(fitnessMethodologies)+'</select></label><label><span>Exercise type</span><select id="content-movement-type"><option value="strength">Strength / Weights</option><option value="cardio">Cardio</option><option value="hiit">HIIT</option><option value="mobility">Mobility</option><option value="stretching">Stretching</option><option value="core">Core</option><option value="bodyweight">Bodyweight</option><option value="bands">Resistance Bands</option><option value="recovery">Recovery / Low Impact</option><option value="aquatic">Pool / Aquatic</option></select></label><label><span>Primary muscle group</span><select id="content-primary-muscle"><option value="chest">Chest</option><option value="back">Back</option><option value="shoulders">Shoulders</option><option value="biceps">Biceps</option><option value="triceps">Triceps</option><option value="forearms">Forearms</option><option value="core">Core / Abs</option><option value="glutes">Glutes</option><option value="quadriceps">Quadriceps</option><option value="hamstrings">Hamstrings</option><option value="calves">Calves</option><option value="full_body">Full Body</option></select></label><label class="wide"><span>Secondary muscle groups</span><input id="content-secondary-muscles" type="text" maxlength="500" placeholder="triceps, shoulders"></label><label class="wide"><span>Equipment</span><input id="content-equipment" type="text" maxlength="500" placeholder="dumbbells, barbell, cable"></label><label><span>Difficulty</span><select id="content-difficulty"><option value="all">All Levels</option><option value="beginner">Beginner</option><option value="intermediate">Intermediate</option><option value="advanced">Advanced</option></select></label><label><span>Environment</span><select id="content-environment"><option value="either">Home or Gym</option><option value="home">Home</option><option value="gym">Gym</option></select></label><label class="wide"><span>Exercise image URL</span><input id="content-image-url" type="url" maxlength="1200" placeholder="https://..."></label><label class="wide"><span>Demo video URL (optional)</span><input id="content-video-url" type="url" maxlength="1200" placeholder="https://..."></label><label class="wide"><span>Image alt text</span><input id="content-image-alt" type="text" maxlength="240"></label><label class="wide"><span>Instructions / coaching cues</span><textarea id="content-instructions" rows="4"></textarea></label><label class="wide"><span>Restrictions / modifications</span><textarea id="content-restrictions" rows="3" placeholder="Low knee impact, no jumping, seated option..."></textarea></label><label class="program-content-check"><input id="content-low-impact" type="checkbox"><span>Low-impact option</span></label>';
     }else{
       dynamicFields.innerHTML='<label><span>Resource type</span><select id="content-resource-type"><option value="pdf">PDF</option><option value="video">Video</option><option value="audio">Audio</option><option value="worksheet">Worksheet</option><option value="link">Link</option><option value="guide">Guide</option><option value="other">Other</option></select></label><label><span>Category</span><input id="content-resource-category" type="text" maxlength="80" placeholder="Getting Started, Nutrition, Coaching..."></label><label class="wide"><span>Resource URL</span><input id="content-resource-url" type="url" maxlength="1000" placeholder="https://..." required></label>';
     }
   }
 
   function openContentModal(){
-    if(!contentModal)return;
+    if(!contentModal||!canManagePrograms())return;
+    contentEpoch++; contentEdit=null; contentBusy=false; contentType.disabled=false;
+    document.getElementById("program-content-modal-title").textContent="Create new content";
+    contentForm.querySelector('[type="submit"]').textContent="Save Draft";
     if(contentType)contentType.value=activeContent;
     if(contentTitle)contentTitle.value="";
     if(contentDescription)contentDescription.value="";
@@ -539,7 +585,9 @@
   }
 
   function closeContentModal(){
+    contentEpoch++; contentEdit=null; contentBusy=false;
     if(!contentModal)return;
+    contentType.disabled=false;
     contentModal.classList.add("hidden");
     contentModal.setAttribute("aria-hidden","true");
     contentForm?.reset();
@@ -548,11 +596,42 @@
     if(formStatus)portal.showStatus(formStatus,"");
   }
 
+  async function editContent(key,row){
+    if(!canManagePrograms())return;
+    activeContent=key;openContentModal();
+    const epoch=contentEpoch;
+    const {data,error}=await client.from(contentSources[key].table).select("*").eq("id",row.id).single();
+    if(epoch!==contentEpoch)return;
+    if(error){portal.showStatus(formStatus,error.message,"error");return;}
+    contentEdit=data;contentType.disabled=true;
+    document.getElementById("program-content-modal-title").textContent="Edit "+(data.title||data.name||"content");
+    contentTitle.value=data.title||data.name||"";contentDescription.value=data.description||"";
+    contentForm.querySelector('[type="submit"]').textContent="Save Changes";
+    const aliases={methodology:"methodology_id",days:"days_count",prep:"prep_minutes",cook:"cook_minutes",duration:"duration_minutes",primary_muscle:"primary_muscle_group",secondary_muscles:"secondary_muscle_groups",restrictions:"restriction_notes",grams_serving:"grams_per_serving"};
+    dynamicFields.querySelectorAll("input,select,textarea").forEach(input=>{
+      const field=input.id.replace(/^content-/,"").replaceAll("-","_");
+      const value=input.dataset.nutrientKey?data.nutrition?.[input.dataset.nutrientKey]:data[aliases[field]||field];
+      if(key==="recipes"&&data.nutrition_calculated_at&&input.dataset.nutrientKey)input.disabled=true;
+      if(input.type==="checkbox")input.checked=value===true;
+      else input.value=Array.isArray(value)?value.join(", "):value??"";
+    });
+    // Composition remains bound to its original methodology.
+    const methodology=document.getElementById("content-methodology");if(methodology)methodology.disabled=true;
+  }
+
   async function updateContentStatus(key,row,nextStatus){
+    if(!canManagePrograms())return;
+    const epoch=contentEpoch;
     const source=contentSources[key];
-    const payload={status:nextStatus,updated_at:new Date().toISOString()};
-    if(nextStatus==="published")payload.published_at=new Date().toISOString();
+    let payload;
+    if(key==="foods"){
+      payload={active:nextStatus==="active",updated_at:new Date().toISOString()};
+    }else{
+      payload={status:nextStatus,updated_at:new Date().toISOString()};
+      if(nextStatus==="published")payload.published_at=new Date().toISOString();
+    }
     const {error}=await client.from(source.table).update(payload).eq("id",row.id);
+    if(epoch!==contentEpoch)return;
     if(error){window.alert(error.message);return;}
     await loadContent();
   }
@@ -841,26 +920,60 @@
     rows.forEach(row=>{
       const item=document.createElement("article");item.className="program-content-row";
       const copy=document.createElement("div");copy.className="program-content-copy";
-      const name=document.createElement("strong");name.textContent=row.title||"Untitled";
+      if(row.image_url){
+        const image=document.createElement("img");
+        image.className="program-content-thumb";
+        image.src=row.image_url;
+        image.alt=row.image_alt||row.title||row.name||"Content image";
+        image.loading="lazy";
+        copy.append(image);
+      }
+      const text=document.createElement("div");text.className="program-content-copy-text";
+      const name=document.createElement("strong");name.textContent=row.title||row.name||"Untitled";
       const desc=document.createElement("span");desc.textContent=row.description||contentDetail(activeContent,row);
-      copy.append(name,desc);
+      text.append(name,desc);copy.append(text);
       const detail=document.createElement("span");detail.textContent=contentDetail(activeContent,row);
-      const status=document.createElement("span");status.className="program-content-status "+String(row.status||"draft").toLowerCase();status.textContent=portal.titleCase(row.status||"draft");
+      const rowState=activeContent==="foods"?(row.active?"active":"inactive"):String(row.status||"draft").toLowerCase();
+      const status=document.createElement("span");status.className="program-content-status "+rowState;status.textContent=portal.titleCase(rowState);
       const actions=document.createElement("div");actions.className="program-content-row-actions";
+      if(["meal-plans","recipes","foods","fitness","workouts","exercises","nutrition-methodology","fitness-methodology"].includes(activeContent)&&canManagePrograms()){
+        const key=activeContent;
+        const edit=document.createElement("button");edit.type="button";edit.className="edit";edit.textContent="Edit";
+        edit.addEventListener("click",()=>editContent(key,row));actions.append(edit);
+        if(["meal-plans","workouts","fitness"].includes(key)){
+          const build=document.createElement("button");build.type="button";build.className="edit";
+          build.textContent=key==="meal-plans"?"Build Meal Plan":key==="workouts"?"Build Workout":"Schedule Workouts";
+          build.addEventListener("click",()=>window.RA_CONTENT_COMPOSITION?.open(key,row));actions.append(build);
+        }
+      }
       if(activeContent==="courses"&&canManagePrograms()){
         const build=document.createElement("button");build.type="button";build.className="edit";build.textContent="Build Course";
         build.addEventListener("click",()=>openCourseBuilder(row));
         actions.append(build);
       }
-      const statusValue=String(row.status||"draft").toLowerCase();
-      if(statusValue!=="published"&&statusValue!=="active"){
-        const publish=document.createElement("button");publish.type="button";publish.className="publish";publish.textContent="Publish";
-        publish.addEventListener("click",()=>updateContentStatus(activeContent,row,"published"));
-        actions.append(publish);
+      if(activeContent==="recipes"&&canManagePrograms()){
+        const buildRecipe=document.createElement("button");buildRecipe.type="button";buildRecipe.className="edit";buildRecipe.textContent="Build Recipe";
+        buildRecipe.addEventListener("click",()=>window.RA_RECIPE_BUILDER?.open(row));
+        actions.append(buildRecipe);
+      }
+      if(activeContent==="foods"){
+        const toggle=document.createElement("button");
+        toggle.type="button";
+        toggle.className=row.active?"archive":"publish";
+        toggle.textContent=row.active?"Deactivate":"Activate";
+        toggle.addEventListener("click",()=>updateContentStatus(activeContent,row,row.active?"inactive":"active"));
+        actions.append(toggle);
       }else{
-        const archive=document.createElement("button");archive.type="button";archive.className="archive";archive.textContent="Archive";
-        archive.addEventListener("click",()=>updateContentStatus(activeContent,row,"archived"));
-        actions.append(archive);
+        const statusValue=String(row.status||"draft").toLowerCase();
+        if(statusValue!=="published"&&statusValue!=="active"){
+          const publish=document.createElement("button");publish.type="button";publish.className="publish";publish.textContent="Publish";
+          publish.addEventListener("click",()=>updateContentStatus(activeContent,row,"published"));
+          actions.append(publish);
+        }else{
+          const archive=document.createElement("button");archive.type="button";archive.className="archive";archive.textContent="Archive";
+          archive.addEventListener("click",()=>updateContentStatus(activeContent,row,"archived"));
+          actions.append(archive);
+        }
       }
       item.append(copy,detail,status,actions);
       contentList.append(item);
@@ -868,18 +981,22 @@
   }
 
   async function loadContent(){
+    const readEpoch=++contentReadEpoch;
     if(!contentSummary||!contentList)return;
     const entries=Object.entries(contentSources);
-    const [contentResults,nutritionResult,fitnessResult]=await Promise.all([
+    const [contentResults,nutritionResult,fitnessResult,nutrientResult]=await Promise.all([
       Promise.all(entries.map(async([key,source])=>{
         const {data,error}=await client.from(source.table).select(source.select).order(source.order,{ascending:true});
         return {key,data:data||[],error};
       })),
       client.from("nutrition_methodologies").select("id,name,status").order("name"),
-      client.from("fitness_methodologies").select("id,name,status").order("name")
+      client.from("fitness_methodologies").select("id,name,status").order("name"),
+      client.from("nutrition_nutrient_catalog").select("nutrient_key,name,category,unit,default_visible,sort_order").eq("active",true).order("sort_order")
     ]);
+    if(readEpoch!==contentReadEpoch)return;
     nutritionMethodologies=nutritionResult.error?[]:(nutritionResult.data||[]);
     fitnessMethodologies=fitnessResult.error?[]:(fitnessResult.data||[]);
+    nutritionNutrients=nutrientResult.error?[]:(nutrientResult.data||[]);
     contentCache={};
     contentSummary.replaceChildren();
     contentResults.forEach(({key,data,error})=>{
@@ -890,21 +1007,62 @@
       stat.append(l,v);contentSummary.append(stat);
     });
     renderContent();
-    renderDynamicFields();
+    if(!contentEdit&&contentModal?.classList.contains("hidden"))renderDynamicFields();
     syncContentManagementAccess();
+  }
+
+  function legacyExerciseCategory(type){
+    if(["strength","core","bodyweight","bands"].includes(type))return "strength";
+    if(["cardio","hiit","aquatic"].includes(type))return "cardio";
+    if(["mobility","stretching"].includes(type))return "mobility";
+    if(type==="recovery")return "recovery";
+    return "other";
+  }
+
+  function contentNumber(id){
+    const value=document.getElementById(id)?.value;
+    return value!==undefined&&value!==null&&value!==""?Number(value):null;
+  }
+
+  function contentListValues(id){
+    return String(document.getElementById(id)?.value||"")
+      .split(",")
+      .map((value)=>value.trim().toLowerCase().replace(/\s+/g,"_"))
+      .filter(Boolean);
+  }
+
+  function nutritionPayload(){
+    const values={...(contentEdit?.nutrition||{})};
+    dynamicFields?.querySelectorAll("[data-nutrient-key]").forEach((input)=>{
+      if(input.value===""){delete values[input.dataset.nutrientKey];return;}
+      const amount=Number(input.value);
+      if(Number.isFinite(amount))values[input.dataset.nutrientKey]=amount;
+    });
+    return values;
   }
 
   async function createContent(event){
     event.preventDefault();
-    if(!contentType||!contentTitle)return;
+    if(!contentType||!contentTitle||contentBusy||!canManagePrograms())return;
+    const epoch=contentEpoch;
     const key=contentType.value;
     const source=contentSources[key];
     const title=contentTitle.value.trim();
     if(!title)return;
-    const common={title,description:contentDescription?.value.trim()||null,status:"draft",created_by:portal.currentUserId()};
+    const usesName=Boolean(source.nameField);
+    const common=usesName
+      ?{name:title}
+      :{title,status:"draft"};
+    if(!usesName&&source.descriptionField!==false)common.description=contentDescription?.value.trim()||null;
+    if(source.createdBy!==false)common.created_by=portal.currentUserId();
     let payload={...common};
 
-    if(key==="courses"){
+    if(key==="nutrition-methodology"||key==="fitness-methodology"){
+      payload.methodology_key=contentEdit?.methodology_key||slugify(title);
+      payload.version=document.getElementById("content-version")?.value.trim()||"1.0";
+      payload.philosophy=document.getElementById("content-philosophy")?.value.trim()||null;
+      payload.status="draft";
+    }else if(key==="courses"){
       payload.course_key=slugify(title);
       payload.version=document.getElementById("content-version")?.value.trim()||"1.0";
       const minutes=document.getElementById("content-estimated-minutes")?.value;
@@ -933,26 +1091,65 @@
     }else if(key==="recipes"){
       payload.methodology_id=document.getElementById("content-methodology")?.value||null;
       payload.meal_type=document.getElementById("content-meal-type")?.value||"other";
-      const servings=document.getElementById("content-servings")?.value;
-      const prep=document.getElementById("content-prep")?.value;
-      const cook=document.getElementById("content-cook")?.value;
-      payload.servings=servings?Number(servings):null;
-      payload.prep_minutes=prep?Number(prep):null;
-      payload.cook_minutes=cook?Number(cook):null;
+      payload.servings=contentNumber("content-servings");
+      payload.prep_minutes=contentNumber("content-prep");
+      payload.cook_minutes=contentNumber("content-cook");
       payload.instructions=document.getElementById("content-instructions")?.value.trim()||null;
+      payload.image_url=document.getElementById("content-image-url")?.value.trim()||null;
+      payload.image_alt=document.getElementById("content-image-alt")?.value.trim()||null;
+      payload.nutrition=nutritionPayload();
+    }else if(key==="foods"){
+      payload.methodology_id=document.getElementById("content-methodology")?.value||null;
+      payload.brand=document.getElementById("content-brand")?.value.trim()||null;
+      payload.category=document.getElementById("content-category")?.value.trim()||null;
+      payload.barcode=document.getElementById("content-barcode")?.value.trim()||null;
+      payload.serving_size=contentNumber("content-serving-size");
+      payload.serving_unit=document.getElementById("content-serving-unit")?.value.trim()||null;
+      payload.grams_per_serving=contentNumber("content-grams-serving");
+      payload.serving_guidance=document.getElementById("content-serving-guidance")?.value.trim()||null;
+      payload.data_source=document.getElementById("content-data-source")?.value.trim()||null;
+      payload.source_record_id=document.getElementById("content-source-record-id")?.value.trim()||null;
+      payload.source_verified=Boolean(document.getElementById("content-source-verified")?.checked);
+      payload.image_url=document.getElementById("content-image-url")?.value.trim()||null;
+      payload.image_alt=document.getElementById("content-image-alt")?.value.trim()||null;
+      payload.nutrition=nutritionPayload();
+      payload.guidance_status="approved";
+      payload.active=false;
     }else if(key==="fitness"){
       payload.methodology_id=document.getElementById("content-methodology")?.value||null;
       payload.difficulty=document.getElementById("content-difficulty")?.value||"beginner";
       payload.environment=document.getElementById("content-environment")?.value||"either";
-      const weeks=document.getElementById("content-weeks")?.value;
-      payload.weeks=weeks?Number(weeks):null;
+      payload.weeks=contentNumber("content-weeks");
+      payload.image_url=document.getElementById("content-image-url")?.value.trim()||null;
+      payload.image_alt=document.getElementById("content-image-alt")?.value.trim()||null;
     }else if(key==="workouts"){
       payload.methodology_id=document.getElementById("content-methodology")?.value||null;
+      payload.workout_type=document.getElementById("content-workout-type")?.value||"strength";
       payload.category=document.getElementById("content-category")?.value.trim()||null;
+      payload.muscle_groups=contentListValues("content-muscle-groups");
+      payload.equipment=contentListValues("content-equipment");
       payload.difficulty=document.getElementById("content-difficulty")?.value||"beginner";
       payload.environment=document.getElementById("content-environment")?.value||"either";
-      const duration=document.getElementById("content-duration")?.value;
-      payload.duration_minutes=duration?Number(duration):null;
+      payload.duration_minutes=contentNumber("content-duration");
+      payload.image_url=document.getElementById("content-image-url")?.value.trim()||null;
+      payload.image_alt=document.getElementById("content-image-alt")?.value.trim()||null;
+    }else if(key==="exercises"){
+      payload.methodology_id=document.getElementById("content-methodology")?.value||null;
+      payload.movement_type=document.getElementById("content-movement-type")?.value||"strength";
+      payload.category=legacyExerciseCategory(payload.movement_type);
+      payload.primary_muscle_group=document.getElementById("content-primary-muscle")?.value||"full_body";
+      payload.secondary_muscle_groups=contentListValues("content-secondary-muscles");
+      payload.equipment=contentListValues("content-equipment");
+      payload.difficulty=document.getElementById("content-difficulty")?.value||"all";
+      payload.environment=document.getElementById("content-environment")?.value||"either";
+      payload.image_url=document.getElementById("content-image-url")?.value.trim()||null;
+      payload.image_alt=document.getElementById("content-image-alt")?.value.trim()||null;
+      payload.video_url=document.getElementById("content-video-url")?.value.trim()||null;
+      payload.instructions=document.getElementById("content-instructions")?.value.trim()||null;
+      payload.restriction_notes=document.getElementById("content-restrictions")?.value.trim()||null;
+      payload.low_impact=Boolean(document.getElementById("content-low-impact")?.checked);
+      payload.tags=[];
+      payload.status="draft";
     }else{
       payload.resource_key=slugify(title);
       payload.resource_type=document.getElementById("content-resource-type")?.value||"other";
@@ -964,13 +1161,32 @@
       }
     }
 
-    if(["meal-plans","recipes","fitness","workouts"].includes(key)&&!payload.methodology_id){
+    if(["meal-plans","recipes","foods","fitness","workouts","exercises"].includes(key)&&!payload.methodology_id){
       portal.showStatus(formStatus,"A ReVitalized methodology must be configured before creating this content type.","error");return;
     }
 
-    portal.showStatus(formStatus,"Saving draft...");
-    const {error}=await client.from(source.table).insert(payload);
-    if(error){portal.showStatus(formStatus,error.message,"error");return;}
+    const calculatedRecipe=key==="recipes"&&contentEdit?.nutrition_calculated_at;
+    if(contentEdit){
+      payload.updated_at=new Date().toISOString();
+      if(calculatedRecipe)delete payload.nutrition;
+      delete payload.status;delete payload.active;delete payload.created_by;delete payload.guidance_status;delete payload.tags;
+      delete payload.methodology_id;
+    }
+    contentBusy=true;
+    portal.showStatus(formStatus,contentEdit?"Saving changes...":"Saving draft...");
+    try{
+      let query=contentEdit?client.from(source.table).update(payload).eq("id",contentEdit.id).eq("updated_at",contentEdit.updated_at):client.from(source.table).insert(payload);
+      const {data,error}=await query.select("id");
+      if(epoch!==contentEpoch)return;
+      if(error)throw error;
+      if(!data?.length)throw new Error("This content changed or access was removed. Reopen it before saving.");
+      if(calculatedRecipe){
+        const calculation=await client.rpc("recalculate_recipe_nutrition",{p_recipe_id:contentEdit.id});
+        if(epoch!==contentEpoch)return;
+        if(calculation.error)throw new Error("Recipe saved, but nutrition needs recalculation: "+calculation.error.message);
+      }
+    }catch(error){if(epoch===contentEpoch)portal.showStatus(formStatus,error.message,"error");return;}
+    finally{if(epoch===contentEpoch)contentBusy=false;}
     activeContent=key;
     closeContentModal();
     await loadContent();
@@ -992,8 +1208,10 @@
   document.getElementById("program-content-close")?.addEventListener("click",closeContentModal);
   document.getElementById("program-content-cancel")?.addEventListener("click",closeContentModal);
   document.querySelectorAll("[data-program-content-close]").forEach(node=>node.addEventListener("click",closeContentModal));
-  document.addEventListener("ra:dashboard-loaded",syncContentManagementAccess);
+  document.addEventListener("ra:dashboard-loaded",()=>{syncContentManagementAccess();loadContent();});
+  document.addEventListener("ra:permissions-loaded",()=>{syncContentManagementAccess();loadContent();});
 
+  document.addEventListener("ra:staff-access-reset",()=>{contentReadEpoch++;nutritionMethodologies=[];fitnessMethodologies=[];nutritionNutrients=[];closeContentModal();contentCache={};contentList?.replaceChildren();contentSummary?.replaceChildren();});
   load();
   loadProgramAccess();
   loadContent();

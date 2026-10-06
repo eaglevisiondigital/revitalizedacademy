@@ -1,0 +1,13 @@
+# Production security release notes
+
+Pending content authoring requires `private.can_author_durable_content()`: the authenticated user has an active staff record, Coach onboarding is complete, and the existing effective `learning.manage` permission is allowed. Explicit permission denial remains authoritative. This independently blocks inactive staff with residual overrides without globally changing other permission helpers.
+
+RLS remains enabled on all promoted content tables. Parent insert/update and composition insert/update/delete require the helper. Draft reads require it; published reusable-library reads retain the existing authenticated-public-library semantics. Food visibility additionally retains the published-methodology rule. The nutrient reference catalog allows authenticated active-entry reads and no browser mutation policy. Anonymous mutation and draft reads are denied.
+
+Recipe recalculation is an authenticated-only SECURITY DEFINER RPC with an empty fixed search path, explicit author gate, qualified table names, and same-recipe row locking. It processes JSON numbers only; incomplete ingredients clear stale snapshots, zero remains numeric, and missing serving counts never invent per-serving totals. Empty ingredient recipes are incomplete. Calculated snapshots record provenance/time. Anonymous/PUBLIC execution is revoked.
+
+No staff defaults, role grants, client-private policies, diary/target permissions, feature flags or provider settings change. A scoped Coach's library permission concerns reusable global content; it does not grant access to any additional client record. Vitality Review still requires private-health read permission AND contact scope; unfinished answers and direct private-table reads remain denied.
+
+Current audit support is existing created_by/updated_at where available and recipe calculation snapshots. Foods lack created_by in the existing schema; no immutable cross-library change history is claimed.
+
+The production legacy client lifecycle/private-data policies require their own coordinated release and cross-account acceptance. This candidate does not certify or broaden those workflows. No staging synthetic data, grants, identities or mail allowlists are copied. Remote application and hosted acceptance are pending explicit approval.
