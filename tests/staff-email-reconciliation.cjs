@@ -39,18 +39,20 @@ test('staff invitation landing provides a guided password-setup recovery path',(
 });
 
 test('dedicated reset completion closes staff invitation metadata',()=>{
+  assert.match(reset,/name="referrer" content="no-referrer"/);
+  assert.match(reset,/auth\.verifyOtp\(\{token_hash:tokenHash,type:"recovery"\}\)/);
+  assert.match(reset,/history\.replaceState\(\{\},document\.title,location\.pathname\);\s*const \{data,error\}=await client\.auth\.verifyOtp/);
   assert.match(reset,/staff_invite:false/);
   assert.match(reset,/staff_invite_completed:true/);
   assert.match(reset,/complete_my_staff_invitation/);
 });
 
-test('staff reset email uses the verified recovery action before the branded password page',()=>{
-  assert.match(resetFunction,/redirectTo:recoveryRedirect/);
+test('staff reset email sends a branded one-time token that the password page exchanges',()=>{
   assert.match(resetFunction,/actionUrl\.pathname!=="\/auth\/v1\/verify"/);
   assert.match(resetFunction,/actionUrl\.searchParams\.get\("type"\)!=="recovery"/);
-  assert.match(resetFunction,/actionUrl\.searchParams\.set\("redirect_to",recoveryRedirect\)/);
-  assert.match(resetFunction,/href="'\+safeActionLink\+'/);
-  assert.doesNotMatch(resetFunction,/recoveryRedirect\+"\?token_hash="/);
+  assert.match(resetFunction,/recoveryRedirect\+"\?token_hash="\+encodeURIComponent/);
+  assert.match(resetFunction,/href="'\+safeHtmlLanding\+'/);
+  assert.doesNotMatch(resetFunction,/href="'\+actionUrl\.href\+'/);
 });
 
 test('normal sign-in does not loop on stale invitation metadata',()=>{

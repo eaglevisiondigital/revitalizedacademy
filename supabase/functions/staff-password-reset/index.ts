@@ -57,11 +57,9 @@ Deno.serve(async(req:Request)=>{
     }
 
     assertSyntheticRecipient(email);
-    const recoveryRedirect=edgeEnvironment().recoveryRedirect;
     const {data:linkData,error:linkError}=await admin.auth.admin.generateLink({
       type:"recovery",
-      email,
-      redirectTo:recoveryRedirect
+      email
     });
     if(linkError)throw linkError;
 
@@ -76,8 +74,8 @@ Deno.serve(async(req:Request)=>{
       actionUrl.searchParams.get("type")!=="recovery"||
       !actionUrl.searchParams.get("token")
     )throw new Error("Password reset action link was invalid.");
-    actionUrl.searchParams.set("redirect_to",recoveryRedirect);
-    const safeActionLink=escapeHtml(actionUrl.href);
+    const safeLanding=edgeEnvironment().recoveryRedirect+"?token_hash="+encodeURIComponent(actionUrl.searchParams.get("token")||"");
+    const safeHtmlLanding=escapeHtml(safeLanding);
 
     const apiKey=Deno.env.get("RESEND_API_KEY");
     const from=Deno.env.get("REVITALIZED_EMAIL_FROM")||"ReVitalized Academy <noreply@auth.revitalizedacademy.com>";
@@ -95,13 +93,13 @@ Deno.serve(async(req:Request)=>{
         subject:"Reset your ReVitalized Academy staff password",
         text:
           "A password reset was requested for your ReVitalized Academy staff account.\n\n"+
-          "Use this secure page to choose a new password:\n"+actionUrl.href+
+          "Use this secure page to choose a new password:\n"+safeLanding+
           "\n\nIf you did not request this, you can ignore this email.",
         html:
           '<div style="font-family:Arial,sans-serif;line-height:1.55;color:#1f3f32;max-width:620px;margin:auto">'+
           '<h2 style="color:#154734">Reset your ReVitalized Academy password</h2>'+
           '<p>A password reset was requested for your staff account.</p>'+
-          '<p><a href="'+safeActionLink+'" style="display:inline-block;background:#154734;color:#fff;text-decoration:none;padding:12px 18px;border-radius:8px;font-weight:700">Change My Password</a></p>'+
+          '<p><a href="'+safeHtmlLanding+'" style="display:inline-block;background:#154734;color:#fff;text-decoration:none;padding:12px 18px;border-radius:8px;font-weight:700">Change My Password</a></p>'+
           '<p style="color:#687b70;font-size:13px">This link opens a secure ReVitalized password page. It does not send you back to the login form.</p>'+
           '<p style="color:#687b70;font-size:13px">If you did not request this, you can ignore this email.</p>'+
           '</div>'
