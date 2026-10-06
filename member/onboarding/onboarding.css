@@ -50,3 +50,18 @@
 }
 .agreement-signing-guide strong{margin-bottom:3px}
 .agreement-signing-guide span{display:block;color:#465b50;font-size:.94rem}
+.signup-confirmation{
+  display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;
+  margin-top:18px;padding:18px;border:1px solid #8db29c;border-radius:10px;
+  background:#f1f8f3;box-shadow:0 8px 24px rgba(21,71,52,.08)
+}
+.signup-confirmation:focus{outline:3px solid #c58c33;outline-offset:3px}
+.signup-confirmation-mark{
+  display:grid;place-items:center;width:34px;height:34px;border-radius:999px;
+  background:#216037;color:#fff;font-size:1.15rem;font-weight:800
+}
+.signup-confirmation h3{margin:0 0 8px;font-size:1.2rem;line-height:1.3}
+.signup-confirmation p{margin:7px 0}
+.signup-confirmation-note{color:#4a5e52;font-size:.92rem}
+.signup-confirmation button{margin-top:8px;background:#fff;color:#285c44;border:1px solid #285c44}
+@media(max-width:520px){.signup-confirmation{grid-template-columns:1fr}.signup-confirmation-mark{width:38px;height:38px}}

@@ -1,5 +1,13 @@
 # ReVitalized Academy — current build state
 
+## Enrollment account-creation confirmation repair — 2026-10-06
+
+Hosted Client B acceptance reproduced a real mobile UX defect: Supabase created the account and sent verification immediately, but the enrollment page left the user on the unchanged form. The existing success text was written only to the page-level status above the mobile viewport, so the action appeared to do nothing.
+
+The restricted Enrollment & Signature Center now replaces the sign-in/create form in place with a focused **Check your email to finish creating your account** panel after successful signup without an immediate session. It identifies the submitted address, explains email verification and the separate need to reopen the original private invitation, moves focus to the panel, scrolls it into view, and offers a safe return to sign-in. The existing Supabase signup, redirect, invitation claim, agreement, payment and lifecycle architecture is unchanged. Public onboarding JS/CSS cache versions advance from v2 to v3.
+
+Validation: focused onboarding lifecycle **10/10**, JavaScript syntax **78/78**, full frontend **483 passed / 0 failed / 27 established skips**, staging build **314 files**. Deployment and live responsive acceptance are recorded in [the repair report](docs/BETA_ONBOARDING_SIGNUP_CONFIRMATION_2026-10-06.md). Client B's already-created account is preserved; no duplicate signup or hosted data mutation is needed.
+
 ## Beta member benefit and session repair accepted — 2026-10-05
 
 The two Client A blockers have narrow, tested repair candidates. `membership_entitlements.provisioning_source` distinguishes existing/template-managed rows from deliberately authorized `membership_override` rows; reconciliation continues to remove unbacked template benefits and all benefits for inactive memberships, while active/pending membership overrides retain their intentional status. The member shell now consumes Supabase `INITIAL_SESSION`, handles refresh events outside the auth callback lock, retries one early-empty restore, deduplicates same-session loads, and clears private state on logout, invalid sessions and account transitions. Member JS is cache version 211.

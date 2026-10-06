@@ -11,6 +11,26 @@
   async function rpc(name,args){const {data,error}=await client.rpc(name,args);if(error)throw error;return data;}
   async function action(button,fn){button.disabled=true;try{await fn();}catch(error){status(error.message||'Unable to complete this action.',true);}finally{button.disabled=false;}}
   function button(label,fn){const b=node('button',label);b.type='button';b.addEventListener('click',()=>action(b,fn));return b;}
+  function showSignupConfirmation(email){
+    el('login').hidden=true;
+    el('auth-intro').hidden=true;
+    el('signup-help').hidden=true;
+    el('signup-confirmation-email').textContent=email;
+    const confirmation=el('signup-confirmation');
+    confirmation.hidden=false;
+    status('Check your email to finish creating your account.');
+    confirmation.focus({preventScroll:true});
+    confirmation.scrollIntoView?.({behavior:'smooth',block:'center'});
+  }
+  function showAuthForm(){
+    el('signup-confirmation').hidden=true;
+    el('signup-confirmation-email').textContent='';
+    el('auth-intro').hidden=false;
+    el('login').hidden=false;
+    el('signup-help').hidden=false;
+    status('Sign in or create your own account to continue.');
+    el('email').focus();
+  }
   function renderAgreement(a){
     const card=node('article'),title=node('h3',a.name+' · version '+a.template_version);
     card.append(title,node('p',`${a.accepted_signatures} of ${a.required_client_signatures} adult signatures recorded · ${a.status}`));
@@ -259,7 +279,8 @@
     status('Your account status is up to date.');
   }
   el('login').addEventListener('submit',event=>{event.preventDefault();action(el('login').querySelector('button'),async()=>{const {error}=await client.auth.signInWithPassword({email:el('email').value.trim(),password:el('password').value});if(error)throw error;await load();});});
-  el('signup').addEventListener('click',()=>action(el('signup'),async()=>{if(!el('login').reportValidity())return;const {data,error}=await client.auth.signUp({email:el('email').value.trim(),password:el('password').value,options:{emailRedirectTo:window.RVA_ENV.signupRedirect}});if(error)throw error;if(data.session)await load();else status('Check your email to verify your account, then reopen your original invitation.');}));
+  el('signup').addEventListener('click',()=>action(el('signup'),async()=>{if(!el('login').reportValidity())return;const email=el('email').value.trim();const {data,error}=await client.auth.signUp({email,password:el('password').value,options:{emailRedirectTo:window.RVA_ENV.signupRedirect}});if(error)throw error;if(data.session)await load();else showSignupConfirmation(email);}));
+  el('signup-back').addEventListener('click',showAuthForm);
   el('signout').addEventListener('click',()=>action(el('signout'),async()=>{const {error}=await client.auth.signOut();if(error)throw error;load.invitationClaimed=false;load.enrollmentClaimed=false;el('agreements').replaceChildren();el('enrollments').replaceChildren();el('notices').replaceChildren();el('support-thread').replaceChildren();el('support-center').hidden=true;el('restricted-privacy-center').hidden=true;await load();}));
   el('support-form').addEventListener('submit',sendSupportMessage);
   el('restricted-privacy-type').addEventListener('change',updateRestrictedPrivacyProviderScope);
