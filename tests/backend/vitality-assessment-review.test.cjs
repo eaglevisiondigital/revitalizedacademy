@@ -136,3 +136,33 @@ test('form decoder preserves UTF-8, line breaks and malformed encoding safely', 
   assert.equal(await value("select private.vitality_form_value('assessment_summary=Hello+%E2%80%94+world%0Aagain','assessment_summary')"), 'Hello — world\nagain');
   assert.equal(await value("select private.vitality_form_value('x=%ZZliteral','x')"), '%ZZliteral');
 });
+
+test('decoder preserves literal and escaped Unicode, plus, malformed escapes and empty/null input', async () => {
+  for (const [encoded, expected] of [
+    ['', ''], [null, null], ['literal été 😀', 'literal été 😀'],
+    ['a%2Bb+c%26d%3De%25', 'a+b c&d=e%'],
+    ['%E2%80%94%F0%9F%98%80', '—😀'], ['%ZZ%2%tail', '%ZZ%2%tail'],
+    ['%FF', null], ['%E2%80', null], ['%00', null]
+  ]) assert.equal(await value('select private.vitality_url_decode_component($1)', [encoded]), expected);
+});
+
+test('long completed review succeeds for two separate default Owners within the API timeout', async () => {
+  // Match observed production Owner defaults in this disposable historical baseline.
+  await q("insert into public.staff_role_permission_defaults(role,permission_key,allowed) values('owner','crm.view',true),('owner','health.private.view',true) on conflict(role,permission_key) do update set allowed=excluded.allowed");
+  const secondOwner = await staff('Second Separate Owner', 'owner', 'all');
+  await q('delete from public.staff_permission_overrides where user_id=$1', [owner]);
+  const summary = 'Measured progress — énergie and hydration.\n'.repeat(900);
+  const form = new URLSearchParams({assessment_summary: summary, coach_review_flags: 'None reported'}).toString();
+  await q('update private.vitality_assessment_drafts set final_form=$1 where contact_id=$2', [form, assignedContact]);
+  await q("set local statement_timeout='2s'");
+  for (const uid of [owner, secondOwner]) {
+    const permissions = (await act(uid, 'select * from public.my_staff_permissions_view')).rows;
+    assert.equal(permissions.find(p => p.permission_key === 'health.private.view').allowed, true);
+    const review = (await act(uid, 'select public.get_vitality_assessment_review($1) review', [assignedContact])).rows[0].review;
+    assert.equal(review.coach_summary, summary);
+    assert.equal(review.answers.hydration_strong_thirst_frequency[0].value, 'Often');
+    assert.equal(review.sales_rep_name, 'Synthetic Rep');
+    assert.equal(review.status, 'completed');
+  }
+  assert.equal(await value('select count(*)::int from public.staff_permission_overrides where user_id=any($1::uuid[])', [[owner, secondOwner]]), 0);
+});

@@ -87,3 +87,18 @@ Final state: `VITALITY PRODUCTION READY`.
 - Source: `df611af833ff4c25a51928ffd399ca0178bced47`
 - Edge: restore `vitality-resume` version 1 source if the prior frontend is restored.
 - Database: additive nullable columns may remain. Migration `20261005184407` keeps the prior service-only start payload compatible, so no destructive database rollback is required.
+
+
+## Owner access reconciliation — 2026-10-06
+
+Production completed Vitality Review had a server timeout misreported by the UI as a permission/contact-scope denial. The existing decoder made a representative completed review take 12,681.643 ms, above the authenticated API 8-second statement timeout. A single private decoder optimization was applied as production migration `20261006211025 vitality_review_decoder_performance`. The same completed review now executes in 15.285 ms. Neither API timeout nor review authorization was broadened.
+
+Both real production owners retain separate confirmed Auth users, active Owner roles, completed onboarding, all-contact scope, and all 19 current Owner permissions. Authenticated-role checks for each owner return the identical completed-review hash before/after the repair. Review, permission and contact-scope function definitions, all role defaults, all overrides, and the private helper ACL were verified unchanged. No contact, answer, summary, or workflow data was changed.
+
+The hosted production review now opens normally in the existing Dave Owner session: 299 answer elements, stored Coach Summary, and referral/source presentation render with a clean warning/error console. This proves the hosted repair, not fresh login acceptance for Justyn or Elle.
+
+Tests: 52/52 PostgreSQL 17 content/review/resume tests; 10/10 Vitality Review frontend tests. New fixtures cover separate default Owners, long Unicode summaries under a 2-second timeout, malformed encoding and invalid UTF-8. Existing scope/private-health/member/anonymous denials pass.
+
+Production frontend remains Netlify deploy `6ac52af350af344e34bcfa31`, source `77dbe985c4132503696915b34523dede68beee66`. No frontend deployment or Edge redeployment was needed. Isolated repair branch: `codex/owner-access-reconciliation`.
+
+Pending: normal fresh production sign-in acceptance for each real owner; beta Owner invitations/setup and independent acceptance. Exact owner emails are absent from staging Auth/invitations. Beta provisioning awaits an existing beta Owner session and approved staging invitation phone numbers; no invitation sent yet. Production Vitality Review is not currently released in beta, so beta Vitality acceptance cannot be claimed. Do not copy production health/profile data to obtain staging coverage or reuse synthetic identities.
