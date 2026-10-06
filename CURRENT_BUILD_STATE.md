@@ -1,5 +1,13 @@
 # ReVitalized Academy — current build state
 
+## Scoped-staff setup and NDA accepted — 2026-10-06
+
+The user completed the final branded password setup through the normal delivered email, signed in as the preserved synthetic Coach, and accepted the required MK.1 Coach NDA. Read-only authoritative staging verification shows the same Auth user `aa5d1bdd-e85e-4141-8a16-3fc409d3e827`, invitation `bdf265b3-8363-4d55-8f63-bab1c416d600`, email `dfowler4200@gmail.com`, Coach role, active staff status and assigned-only contact scope. Auth is confirmed with `staff_invite=false` and `staff_invite_completed=true`; staff onboarding is complete; agreement `2bdb3ff6-6354-424c-9638-66c7de44d23b` is signed at `2026-10-06T10:45:26.534167Z`.
+
+Hosted acceptance exposed one record-finalization defect: password setup completed successfully, but `complete_my_staff_invitation()` was a security-invoker function attempting an RLS-blocked invitation update, and the password page ignored that error. Migration `20261006105000_secure_staff_invitation_completion.sql` was applied once to staging under ledger `20261006105238`. The function is now security definer with a fixed `pg_catalog, public` search path, derives the target only from `auth.uid()`, updates only that caller's pending/invited row, and is executable only by `authenticated` plus the database owner. A guarded repair accepted the already-completed synthetic invitation without changing its Auth identity, staff role, status, scope or NDA. The invitation is now accepted with `accepted_at=2026-10-06T10:52:38.627358Z` and no expiry.
+
+Verification passes: focused staff setup/recovery **7/7**, JavaScript syntax **78/78**, full frontend **490 passed / 0 failed / 27 established skips**, PostgreSQL 17 focused authorization **41/41**, full backend **241/241**, and staging build **314 files**. Source `b91f94f` is live on staging Netlify deploy `6ac4d313b6bda0eb1699b68d`; the public password page matches the exact build SHA-256 `2fa8e1f069155bb2c713ebabba21ce6c483db5d8868fa2a54eaffcff1358d028`. Production remains deploy `6ac3eee5383ccf92be4d7a58`. Scoped-staff setup/recovery/NDA now pass. Meal/workout assignment isolation, scoped-client access boundaries, Client B recovery/deactivation, scoped-staff revocation and the remaining cross-account transition matrix are still pending. **BETA NOT READY.**
+
 ## Deployed scoped-staff recovery-link repair — 2026-10-06
 
 Fresh hosted onboarding exposed a second setup defect: the branded reset email was delivered, but **Change My Password** could not establish the Supabase recovery session. The custom sender had linked directly to the branded page with a one-time `token_hash`, while the branded page only checked for an already-established recovery session.

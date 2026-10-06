@@ -2,7 +2,7 @@
 
 Date: 2026-10-06  
 Environment: dedicated ReVitalized Academy staging only  
-Status: deployed to staging; fresh hosted onboarding acceptance pending
+Status: deployed to staging; hosted setup, sign-in and NDA acceptance passed
 
 ## Hosted defect
 
@@ -51,4 +51,33 @@ After staging deployment, use the existing scoped Coach identity only. Reissue a
 
 ## Recovery-link follow-up
 
-The first hosted branded password email exposed an additional handoff defect: its button used the branded page with a one-time `token_hash`, but the page did not exchange it for a recovery session. An attempted standard provider action-link email reached the inbox with an empty rendered body and is superseded. Final source `c308578` retains the short branded link and makes the dedicated password page remove the query credential immediately, exchange it through Supabase `verifyOtp` with recovery type, and expose the form only after a real session exists. A no-referrer policy protects the landing. Staging `staff-password-reset` v12 and Netlify deploy `6ac4ce9bc09a60aa0f25b817` are active; the live password page exactly matches the tested build. Focused recovery coverage is 7/7; full frontend is 490 passed, zero failed and 27 established skips. The final replacement message reports delivered at `2026-10-06T10:34:34.899Z`; normal user open and password completion remain pending. Production remains deploy `6ac3eee5383ccf92be4d7a58`. No migration, role, permission, identity or hosted application-data change was made.
+The first hosted branded password email exposed an additional handoff defect: its button used the branded page with a one-time `token_hash`, but the page did not exchange it for a recovery session. An attempted standard provider action-link email reached the inbox with an empty rendered body and is superseded. Final source `c308578` retains the short branded link and makes the dedicated password page remove the query credential immediately, exchange it through Supabase `verifyOtp` with recovery type, and expose the form only after a real session exists. A no-referrer policy protects the landing. Staging `staff-password-reset` v12 and Netlify deploy `6ac4ce9bc09a60aa0f25b817` were the recovery checkpoint; the live password page matched the tested build. Focused recovery coverage was 7/7; full frontend was 490 passed, zero failed and 27 established skips. The final replacement message reports delivered at `2026-10-06T10:34:34.899Z`. At that checkpoint, normal user open and password completion were pending; the final acceptance below supersedes that status. Production remained deploy `6ac3eee5383ccf92be4d7a58`.
+
+## Final hosted acceptance and invitation consistency repair
+
+The user opened the final branded message normally, completed password setup, signed in, and signed the required Coach NDA. Authoritative staging state confirms:
+
+- Auth user `aa5d1bdd-e85e-4141-8a16-3fc409d3e827` and email `dfowler4200@gmail.com` are unchanged and confirmed.
+- Auth invitation metadata is complete (`staff_invite=false`, `staff_invite_completed=true`).
+- The same staff row remains Coach, active, assigned-only, with onboarding complete.
+- Agreement `2bdb3ff6-6354-424c-9638-66c7de44d23b` for `revitalized-nation-coach-nda` MK.1 was viewed and signed normally.
+
+The successful flow also revealed that the invitation record itself remained `invited`: the existing completion RPC ran as the caller and RLS permitted reading, but not updating, `staff_invitations`; the password page did not surface the failed RPC. The narrow repair in `20261006105000_secure_staff_invitation_completion.sql` changes only this self-completion RPC to security definer with fixed search path, derives the row exclusively from `auth.uid()`, accepts only pending/invited rows belonging to that caller, and grants execution only to `authenticated` plus the database owner. The page now requires a true result for staff-invite setup and displays a bounded support message if finalization fails. A guarded migration repair accepted the already-completed synthetic invitation without changing its role, scope, permissions, Auth identity or agreement.
+
+Final evidence:
+
+- Migration ledger: `20261006105238` (`secure_staff_invitation_completion`), applied once to staging.
+- Invitation `bdf265b3-8363-4d55-8f63-bab1c416d600`: accepted at `2026-10-06T10:52:38.627358Z`, expiry cleared.
+- Function ACL: database owner and `authenticated` only; `anon`, `PUBLIC` and `service_role` have no execute grant.
+- Focused staff setup/recovery: 7/7.
+- JavaScript syntax: 78/78.
+- Full frontend: 490 passed, 0 failed, 27 established skips.
+- PostgreSQL 17 focused authorization: 41/41.
+- Full backend: 241/241.
+- Staging build: 314 files.
+- Source: `b91f94f`.
+- Netlify staging deploy: `6ac4d313b6bda0eb1699b68d`.
+- Live/build password page SHA-256: `2fa8e1f069155bb2c713ebabba21ce6c483db5d8868fa2a54eaffcff1358d028`.
+- Production Netlify deploy remains `6ac3eee5383ccf92be4d7a58`.
+
+Scoped-staff setup, recovery and NDA acceptance now pass. Final beta acceptance still requires the assignment-isolation, scoped-access, remaining recovery/revocation and cross-account-transition gates.
