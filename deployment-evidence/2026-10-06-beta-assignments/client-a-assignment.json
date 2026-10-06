@@ -54,6 +54,16 @@
       "assigned_workout_visible": true,
       "client_b_identity_occurrences": 0,
       "console_warnings_or_errors": 0
+    },
+    "client_b_member": {
+      "identity": "Disposable Beta Client B",
+      "dashboard_meals": 0,
+      "dashboard_workouts": 0,
+      "nutrition_navigation_visible": false,
+      "workouts_navigation_visible": false,
+      "client_a_identity_occurrences": 0,
+      "synthetic_assignment_occurrences": 0,
+      "console_warnings_or_errors": 0
     }
   },
   "unchanged": [
@@ -69,7 +79,6 @@
     "netlify_deployments"
   ],
   "remaining": [
-    "Client B member UI isolation",
     "scoped Coach hosted access boundaries",
     "recovery and revocation gates",
     "remaining cross-account transition matrix"

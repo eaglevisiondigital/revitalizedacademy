@@ -8,7 +8,9 @@ The normal owner portal flow assigned the one-day meal-plan template `a3cfe890-1
 
 Fresh authenticated Client A member acceptance passes. Dashboard identifies **Disposable Beta Client A** and shows one current meal plus one current workout. Nutrition shows the active synthetic meal plan and the assigned synthetic recipe. Workouts shows the active synthetic fitness program and assigned synthetic workout. No Client B identity appears in the Client A DOM and the captured member console has zero warnings/errors.
 
-No migration, schema, Edge Function, feature flag, permission, payment, mail setting, application source, deployment or production system changed. Fresh member UI isolation for Client B remains pending, along with scoped Coach hosted access, recovery/revocation and the remaining cross-account transition matrix. [Hosted receipt](deployment-evidence/2026-10-06-beta-assignments/client-a-assignment.json). **BETA NOT READY.**
+Fresh authenticated Client B isolation also passes. Dashboard identifies **Disposable Beta Client B**, shows zero meals and zero workouts, and exposes neither Nutrition nor Workouts because Client B has no corresponding entitlements. The DOM contains no Client A identity and no synthetic assignment title; the captured console has zero warnings/errors. This is consistent with the authoritative zero-assignment database result.
+
+No migration, schema, Edge Function, feature flag, permission, payment, mail setting, application source, deployment or production system changed. Client A visibility and Client B isolation now pass. Scoped Coach hosted access, recovery/revocation and the remaining cross-account transition matrix remain pending. [Hosted receipt](deployment-evidence/2026-10-06-beta-assignments/client-a-assignment.json). **BETA NOT READY.**
 
 ## Scoped-staff setup and NDA accepted — 2026-10-06
 
