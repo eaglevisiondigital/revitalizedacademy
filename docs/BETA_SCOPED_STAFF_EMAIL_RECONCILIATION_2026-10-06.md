@@ -2,7 +2,7 @@
 
 Date: 2026-10-06  
 Environment: dedicated ReVitalized Academy staging only  
-Status: staging release verified; hosted action pending
+Status: staging release verified; hosted identity preserved; recipient bounced
 
 ## Problem
 
@@ -50,5 +50,11 @@ The preserved synthetic Coach record uses `dave+rva-beta-staff@eaglevision.biz`,
 The candidate does not change hosted data merely by being deployed. The existing owner must explicitly submit the corrected email and reason. That submission changes the existing staff account recipient and sends one external setup message, so hosted execution remains pending action-time authorization. The existing meal plan and fitness program also remain archived and unassigned pending authorization for their separate synthetic assignment check.
 
 Production, payments, SMS/Twilio, feature flags, Supabase schema and migrations are unchanged.
+
+## Hosted reconciliation result
+
+The owner submitted the approved recovery action once. Read-only verification confirms the existing Auth user, contact, `staff_access` row and invitation IDs were retained. The corrected email is synchronized across Auth, contact and invitation; the role remains Coach, scope remains Assigned People Only, status remains active and onboarding remains pending.
+
+The setup message was submitted to the mail provider at `2026-10-06T09:42:53Z`, then marked **bounced**. Resend automatically added the recipient to the bounce suppression list at `09:42:56Z`. The user independently reported that no email arrived. No resend and no suppression removal occurred. Repair the receiving alias or select another approved real inbox before explicitly authorizing suppression removal and one guarded resend.
 
 `BETA NOT READY`
