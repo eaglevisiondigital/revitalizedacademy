@@ -5544,8 +5544,10 @@
   function showMemberRecovery(show){
     const login=el("rm-login-form");
     const recovery=el("rm-member-recovery-form");
+    const confirmation=el("rm-member-recovery-confirmation");
     login.classList.toggle("hidden",show);
     recovery.classList.toggle("hidden",!show);
+    confirmation.classList.add("hidden");
     showStatus(el("rm-login-status"),"");
     showStatus(el("rm-member-recovery-status"),"");
     if(show){
@@ -5556,17 +5558,26 @@
 
   el("rm-member-recovery-open").addEventListener("click",()=>showMemberRecovery(true));
   el("rm-member-recovery-back").addEventListener("click",()=>showMemberRecovery(false));
+  el("rm-member-recovery-confirmation-back").addEventListener("click",()=>showMemberRecovery(false));
+  let memberRecoveryPending=false;
   el("rm-member-recovery-form").addEventListener("submit",async(event)=>{
     event.preventDefault();
+    if(memberRecoveryPending)return;
     const status=el("rm-member-recovery-status");
+    const form=el("rm-member-recovery-form"),submit=form.querySelector('button[type="submit"]');
     const email=el("rm-member-recovery-email").value.trim().toLowerCase();
+    memberRecoveryPending=true;submit.disabled=true;
     showStatus(status,"Requesting your secure reset link...");
     const {data,error}=await client.functions.invoke("member-password-reset",{body:{email}});
     if(error){
       showStatus(status,"We could not send a reset link right now. Please try again.","error");
+      memberRecoveryPending=false;submit.disabled=false;
       return;
     }
     showStatus(status,data?.message||"If that email belongs to an eligible member account, a password reset email will be sent.","success");
+    form.classList.add("hidden");
+    el("rm-member-recovery-confirmation").classList.remove("hidden");
+    memberRecoveryPending=false;submit.disabled=false;
   });
 
   async function signOut() {

@@ -16,6 +16,8 @@ test('member login exposes branded non-enumerating password recovery',()=>{
   assert.match(html,/id="rm-member-recovery-open"[^>]*>Forgot your password\?/);
   assert.match(html,/id="rm-member-recovery-form"[^>]*hidden/);
   assert.match(html,/Email My Reset Link/);
+  assert.match(html,/id="rm-member-recovery-confirmation"[^>]*hidden/);
+  assert.match(html,/Check Your Email/);
   assert.match(source,/functions\.invoke\("member-password-reset",\{body:\{email\}\}\)/);
   assert.match(source,/If that email belongs to an eligible member account/);
   assert.doesNotMatch(source,/auth\.resetPasswordForEmail/);
@@ -37,13 +39,17 @@ test('member recovery toggles cleanly and sends only the entered email',async(t)
   await new Promise(resolve=>setImmediate(resolve));
   assert.equal(JSON.stringify(calls),JSON.stringify([{name:'member-password-reset',options:{body:{email:'member@example.invalid'}}}]));
   assert.match(dom.window.document.getElementById('rm-member-recovery-status').textContent,/eligible member account/);
+  assert(dom.window.document.getElementById('rm-member-recovery-form').classList.contains('hidden'));
+  assert(!dom.window.document.getElementById('rm-member-recovery-confirmation').classList.contains('hidden'));
 });
 
 test('member reset page exchanges and scrubs the one-time recovery credential',()=>{
   assert(manifest.includes('member/password-reset.html'));
   assert.match(reset,/name="referrer" content="no-referrer"/);
+  assert.match(reset,/persistSession:false,autoRefreshToken:false,detectSessionInUrl:false,storageKey:"rva-member-password-recovery"/);
   assert.match(reset,/history\.replaceState\(\{\},document\.title,location\.pathname\);\s*const \{data,error\}=await client\.auth\.verifyOtp/);
   assert.match(reset,/verifyOtp\(\{token_hash:tokenHash,type:"recovery"\}\)/);
+  assert.doesNotMatch(reset,/auth\.getSession\(\)/);
   assert.match(reset,/auth\.updateUser\(\{password\}\)/);
   assert.match(reset,/location\.replace\("\/member\/"\)/);
   assert.doesNotMatch(reset,/staff_invite|complete_my_staff_invitation/);

@@ -13,7 +13,7 @@
   <link rel="shortcut icon" type="image/png" href="../assets/images/revitalized-icon-approved.png">
   <link rel="apple-touch-icon" href="../assets/images/revitalized-icon-approved.png">
   <link rel="manifest" href="manifest.webmanifest?v=171">
-  <link rel="stylesheet" href="member110.css?v=203">
+  <link rel="stylesheet" href="member110.css?v=204">
   <link rel="stylesheet" href="member-health-progress.css?v=1">
 </head>
 <body>
@@ -60,6 +60,15 @@
           <button id="rm-member-recovery-back" class="rm112-link-button" type="button">Back to sign in</button>
           <p id="rm-member-recovery-status" class="rm112-status" aria-live="polite"></p>
         </form>
+
+        <section id="rm-member-recovery-confirmation" class="rm112-form hidden" aria-labelledby="rm-member-recovery-confirmation-title">
+          <div class="rm112-recovery-heading">
+            <h2 id="rm-member-recovery-confirmation-title">Check Your Email</h2>
+            <p>Your reset request was received. If that email belongs to an eligible member account, a secure link is on its way.</p>
+          </div>
+          <p class="rm112-recovery-next">Open the newest ReVitalized Academy password email and use its <strong>Change My Password</strong> button once.</p>
+          <button id="rm-member-recovery-confirmation-back" class="rm112-link-button" type="button">Back to sign in</button>
+        </section>
 
         <p class="rm112-auth-note">New client? Use your private enrollment link to create your account, review agreements and complete payment before full member access.</p>
       </div>
@@ -1482,7 +1491,7 @@
   </main>
 
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
-  <script defer src="member110.js?v=212"></script>
+  <script defer src="member110.js?v=213"></script>
   <script defer src="member-nutrition.js?v=1"></script>
   <script defer src="member-health-progress.js?v=1"></script>
   <script defer src="member-assigned-content.js?v=1"></script>
