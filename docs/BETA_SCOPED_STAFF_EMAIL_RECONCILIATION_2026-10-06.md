@@ -57,4 +57,6 @@ The owner submitted the approved recovery action once. Read-only verification co
 
 The setup message was submitted to the mail provider at `2026-10-06T09:42:53Z`, then marked **bounced** with the receiving-server diagnosis **Recipient not found**. Resend automatically added the recipient to the bounce suppression list at `09:42:56Z`. Public MX records correctly point `eaglevision.biz` to Network Solutions/Open-Xchange, and other real aliases on the domain have delivered; the failure is isolated to this recipient's inbound alias/mailbox activation. The user independently reported that no email arrived. No resend and no suppression removal occurred. Repair the receiving alias or select another approved real inbox before explicitly authorizing suppression removal and one guarded resend.
 
+The user subsequently selected the distinct real inbox `dfowler4200@gmail.com`. It has no existing staging Auth/contact/invitation record and no Resend suppression. The exact address was appended to the staging synthetic-recipient allowlist while preserving the ten existing entries; dashboard digest `e7d5bd0f6002b14ede00f7985ed36e48105c3b9d367dce6eee33c49b06fff932`, saved `2026-10-06T09:54:21Z`. No wildcard was added. The existing staff record remains on the bounced address until the user confirms the final account change and external setup send.
+
 `BETA NOT READY`
