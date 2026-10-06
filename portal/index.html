@@ -109,14 +109,30 @@
         </form>
       </div>
 
+      <div id="staff-setup-card" class="auth-card password-card hidden">
+        <div class="auth-copy">
+          <p class="eyebrow">STAFF ACCOUNT SETUP</p>
+          <h2>Finish setting up your staff account.</h2>
+          <p>Your email link was accepted. If the password screen did not open automatically, request one secure password setup email below.</p>
+        </div>
+        <form id="staff-setup-form" class="portal-form">
+          <label>
+            <span>Invited email address</span>
+            <input id="staff-setup-email" type="email" autocomplete="email" required>
+          </label>
+          <button class="primary-button" type="submit">Email My Password Setup Link</button>
+          <button id="staff-setup-back" class="text-button" type="button">Return to Sign In</button>
+          <p id="staff-setup-status" class="form-status" aria-live="polite"></p>
+        </form>
+      </div>
+
       <div id="pending-card" class="auth-card hidden">
         <div class="auth-copy">
           <p class="eyebrow">ACCOUNT ACTIVE</p>
-          <h2>Staff access is pending.</h2>
-          <p>Your login is working, but this account has not yet been assigned an approved ReVitalized staff role.</p>
+          <h2>We could not match this account to staff access.</h2>
+          <p>You are signed in, but this email is not connected to an active ReVitalized staff profile. Reopen the newest staff invitation or ask an owner to verify the invited email.</p>
         </div>
         <div class="pending-actions">
-          <button id="pending-password" class="secondary-button" type="button">Set or Change Password</button>
           <button id="pending-logout" class="text-button" type="button">Sign Out</button>
         </div>
       </div>
@@ -3032,7 +3048,7 @@
   <noscript>This portal requires JavaScript.</noscript>
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/tus-js-client@4.3.1/dist/tus.min.js"></script>
-  <script defer src="portal.js?v=190"></script>
+  <script defer src="portal.js?v=191"></script>
   <script defer src="portal-messaging.js?v=107"></script>
   <script defer src="portal-journey.js?v=118"></script>
   <script defer src="portal-pipeline.js?v=167"></script>

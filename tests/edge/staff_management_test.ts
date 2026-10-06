@@ -63,6 +63,8 @@ Deno.test('pending staff email reconciliation preserves identity and reissues on
  assert(calls.some(c=>c.path.endsWith('/contacts')&&['PUT','PATCH'].includes(c.method)));
  assert(calls.some(c=>c.path.endsWith('/staff_invitations')&&['PUT','PATCH'].includes(c.method)));
  assert(calls.filter(c=>c.path==='/auth/v1/resend').length===1);
+ const resend=calls.find(c=>c.path==='/auth/v1/resend');
+ assert(String(resend?.body?.redirect_to||resend?.body?.options?.emailRedirectTo||'').includes('setup=staff'));
  assert(!calls.some(c=>c.path==='/auth/v1/invite'||c.method==='DELETE'));
 });
 Deno.test('pending staff email reconciliation is owner-only',async()=>{

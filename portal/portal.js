@@ -9,6 +9,7 @@
   const initialHash = new URLSearchParams(window.location.hash.replace(/^#/, ""));
   const initialQuery = new URLSearchParams(window.location.search);
   let initialFlowType = initialHash.get("type") || initialQuery.get("type") || "";
+  let staffSetupRequested = initialQuery.get("setup") === "staff";
   const initialAuthError = initialHash.get("error_description") || initialQuery.get("error_description") || "";
   const authClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
     auth: {
@@ -23,9 +24,11 @@
   const portalView = el("portal-view");
   const loginForm = el("login-form");
   const passwordCard = el("password-card");
+  const staffSetupCard = el("staff-setup-card");
   const pendingCard = el("pending-card");
   const loginStatus = el("login-status");
   const passwordStatus = el("password-status");
+  const staffSetupStatus = el("staff-setup-status");
   const portalStatus = el("portal-status");
   const accountModal = el("account-modal");
   const accountOverview = el("account-overview");
@@ -530,9 +533,23 @@
     authView.classList.remove("hidden");
     portalView.classList.add("hidden");
     loginForm.classList.add("hidden");
+    staffSetupCard.classList.add("hidden");
     pendingCard.classList.add("hidden");
     passwordCard.classList.remove("hidden");
     el("new-password").focus();
+  }
+
+  function showStaffSetupRecovery(message="") {
+    if(currentUserId){endStaffDocument();return;}
+    resetStaffAccess();
+    authView.classList.remove("hidden");
+    portalView.classList.add("hidden");
+    loginForm.classList.add("hidden");
+    passwordCard.classList.add("hidden");
+    pendingCard.classList.add("hidden");
+    staffSetupCard.classList.remove("hidden");
+    showStatus(staffSetupStatus,message);
+    el("staff-setup-email").focus();
   }
 
   function showLogin() {
@@ -541,6 +558,7 @@
     authView.classList.remove("hidden");
     portalView.classList.add("hidden");
     loginForm.classList.remove("hidden");
+    staffSetupCard.classList.add("hidden");
     passwordCard.classList.add("hidden");
     pendingCard.classList.add("hidden");
   }
@@ -551,6 +569,7 @@
     authView.classList.remove("hidden");
     portalView.classList.add("hidden");
     loginForm.classList.add("hidden");
+    staffSetupCard.classList.add("hidden");
     passwordCard.classList.add("hidden");
     pendingCard.classList.remove("hidden");
   }
@@ -571,10 +590,7 @@
       return;
     }
 
-    const metadata=session.user.user_metadata||{};
-    const invitedUser=metadata.staff_invite===true && metadata.staff_invite_completed!==true;
-
-    if (initialFlowType === "invite" || initialFlowType === "recovery" || invitedUser) {
+    if (initialFlowType === "invite" || initialFlowType === "recovery" || staffSetupRequested) {
       showPasswordSetup();
       return;
     }
@@ -809,6 +825,23 @@
     await resolveStaff(data.session);
   });
 
+  async function requestStaffPasswordEmail(email,statusTarget){
+    showStatus(statusTarget, "Sending a secure password setup email...");
+    const { data, error } = await authClient.functions.invoke("staff-password-reset", {
+      body:{email}
+    });
+    if (error) {
+      showStatus(statusTarget, "We could not send the password setup email right now. Please try again.", "error");
+      return false;
+    }
+    showStatus(
+      statusTarget,
+      data?.message || "If that email belongs to a staff account, a secure password setup email will be sent.",
+      "success"
+    );
+    return true;
+  }
+
   el("forgot-password").addEventListener("click", async () => {
     const email = el("login-email").value.trim().toLowerCase();
     if (!email) {
@@ -817,19 +850,21 @@
       return;
     }
 
-    showStatus(loginStatus, "Sending password reset email...");
-    const { error } = await authClient.auth.resetPasswordForEmail(email, {
-      redirectTo: window.RVA_ENV.recoveryRedirect
-    });
-    if (error) {
-      showStatus(loginStatus, error.message || "We could not send the reset email right now.", "error");
-      return;
-    }
-    showStatus(
-      loginStatus,
-      "Check your inbox. The reset link will open a dedicated page where you can choose a new password.",
-      "success"
-    );
+    await requestStaffPasswordEmail(email,loginStatus);
+  });
+
+  el("staff-setup-form").addEventListener("submit",async(event)=>{
+    event.preventDefault();
+    const email=el("staff-setup-email").value.trim().toLowerCase();
+    if(!email){showStatus(staffSetupStatus,"Enter the email address that received the staff invitation.","error");return;}
+    await requestStaffPasswordEmail(email,staffSetupStatus);
+  });
+  el("staff-setup-back").addEventListener("click",()=>{
+    staffSetupRequested=false;
+    const cleanUrl=new URL(window.location.href);
+    cleanUrl.searchParams.delete("setup");
+    window.history.replaceState({},document.title,cleanUrl.pathname+cleanUrl.search+cleanUrl.hash);
+    showLogin();
   });
 
   el("password-form").addEventListener("submit", async (event) => {
@@ -861,6 +896,7 @@
     await authClient.rpc("complete_my_staff_invitation");
 
     initialFlowType = "";
+    staffSetupRequested = false;
     window.history.replaceState({}, document.title, window.location.pathname);
     showStatus(passwordStatus, "Password saved. Opening your dashboard...", "success");
     const session=(await authClient.auth.getSession()).data.session;
@@ -1104,8 +1140,6 @@
     if (!contactDrawer.classList.contains("hidden")) closeContact();
     else if (!accountModal.classList.contains("hidden")) closeAccount();
   });
-  el("pending-password").addEventListener("click", showPasswordSetup);
-
   let sessionRestoreTimer = null;
 
   function resolveRestoredStaffSession(session) {
@@ -1133,14 +1167,22 @@
     const { data, error } = await authClient.auth.getSession();
 
     if (initialAuthError && !data?.session) {
-      showLogin();
-      showStatus(loginStatus, "That invitation link has already been used or has expired. Use Forgot your password? to finish setting up access, or ask an owner to resend access.", "error");
+      if(staffSetupRequested){
+        showStaffSetupRecovery("That invitation link could not open a password screen. Request one secure password setup email below.");
+      }else{
+        showLogin();
+        showStatus(loginStatus, "That invitation link has already been used or has expired. Use Forgot your password? to finish setting up access, or ask an owner to resend access.", "error");
+      }
       return;
     }
 
     if (error) {
-      showLogin();
-      showStatus(loginStatus, "Unable to restore your session. Please sign in.", "error");
+      if(staffSetupRequested){
+        showStaffSetupRecovery("The secure setup session could not be restored. Request one password setup email below.");
+      }else{
+        showLogin();
+        showStatus(loginStatus, "Unable to restore your session. Please sign in.", "error");
+      }
       return;
     }
 
@@ -1162,7 +1204,8 @@
         await resolveStaff(retryData.session);
         return;
       }
-      showLogin();
+      if(staffSetupRequested)showStaffSetupRecovery();
+      else showLogin();
     }, 350);
   })();
 })();

@@ -201,10 +201,11 @@ export async function handleRequest(req:Request){
         }
       }
 
+      const staffSetupRedirect=edgeEnvironment().staffRedirect+"?setup=staff";
       const {error:resendError}=await admin.auth.resend({
         type:"signup",
         email,
-        options:{emailRedirectTo:edgeEnvironment().staffRedirect}
+        options:{emailRedirectTo:staffSetupRedirect}
       });
       if(resendError)throw resendError;
 
@@ -231,7 +232,7 @@ export async function handleRequest(req:Request){
       if(role==="owner"&&actorStaff.role!=="owner")return json(origin,{error:"Only an Owner can invite another Owner."},403);
 
       assertSyntheticRecipient(email);
-      const redirectTo=edgeEnvironment().staffRedirect;
+      const redirectTo=edgeEnvironment().staffRedirect+"?setup=staff";
 
       let existingAuthUser=null;
       let page=1;
