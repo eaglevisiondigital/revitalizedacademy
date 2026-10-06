@@ -5300,7 +5300,7 @@
     const {data:lifecycle,error:lifecycleError}=await client.rpc("member_paid_access_allowed");
     if(loadSequence!==dashboardLoadSequence)return;
     if(lifecycleError)throw lifecycleError;
-    if(lifecycle!==true){window.location.replace("/member/onboarding/");return;}
+    if(lifecycle!==true){showOnly("rm-denied");return;}
     homeVNextEnabled=false;
     memberHealthMetricConfig=[];
     memberHealthMetricConfigLoaded=false;

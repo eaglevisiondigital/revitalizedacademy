@@ -1,5 +1,9 @@
 # ReVitalized Academy security model
 
+## Restricted member sign-in boundary — 2026-10-06
+
+Member authentication is not paid authorization. `/member/` calls `member_paid_access_allowed()` before any dashboard bootstrap or private module read. A false result now clears all dashboard-private state and renders the local restricted-access view immediately; it does not reuse a previous member's DOM and does not expose lifecycle details beyond the neutral restriction message. The user may open the existing authenticated Enrollment & Signature Center for permitted lifecycle/support functions or sign out. Hosted Client B verification returned `full_member_access=false` after the audited enrollment access suspension. No RLS, permission, role or database policy changed.
+
 ## Member password recovery boundary — 2026-10-06
 
 Member recovery is deliberately separate from staff recovery. The public request is non-enumerating for invalid, missing, ambiguous and ineligible identities. Delivery requires exact normalized-email agreement across one contact, one eligible `client_access` row and its linked Supabase Auth user. The staging function also applies the existing exact-recipient allowlist; no domain wildcard is introduced. The generated action link must use the configured Supabase origin, `/auth/v1/verify`, recovery type and a non-empty credential before the branded application link is sent.

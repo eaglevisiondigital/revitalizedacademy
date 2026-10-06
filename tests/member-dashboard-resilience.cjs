@@ -26,3 +26,11 @@ test('paid access preflight remains ahead of member data loading',()=>{
   const bootstrap=js.indexOf('from("my_app_bootstrap_v2")');
   assert(preflight>=0&&bootstrap>preflight);
 });
+
+test('signed-in members without full access receive an immediate restricted-access view',()=>{
+  assert.match(js,/if\(lifecycle!==true\)\{showOnly\("rm-denied"\);return;\}/);
+  assert.doesNotMatch(js,/if\(lifecycle!==true\)\{window\.location\.replace\("\/member\/onboarding\/"\);return;\}/);
+  const html=fs.readFileSync('member/index.html','utf8');
+  assert.match(html,/Your member access is not active\./);
+  assert.match(html,/href="\/member\/onboarding\/">Review Enrollment Status<\/a>/);
+});

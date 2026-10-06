@@ -1,5 +1,13 @@
 # ReVitalized Academy — current build state
 
+## Final-beta revocation UX repair candidate — 2026-10-06
+
+Hosted final-beta acceptance now confirms the scoped Coach revocation boundary: after the owner set the synthetic Coach inactive, normal authentication returned the explicit inactive-staff message, no portal/client data rendered and the browser console remained clean. Client B's owner-audited enrollment access override was also saved as `suspended`; an authenticated database check returns `member_paid_access_allowed=false`, so the private member dashboard remains denied.
+
+The Client B sign-in exposed a presentation defect after that successful denial. Authentication reported **Signed in.** but the member page depended on a navigation to the Enrollment & Signature Center and could remain on the sign-in surface without explaining the restriction. The staging candidate now renders the existing local denied view immediately when the paid-access preflight is false, clears private dashboard state through the existing `showOnly` boundary, states that sign-in succeeded but full access is unavailable, and offers **Review Enrollment Status** plus **Sign Out**. It does not change Auth, lifecycle rules, RLS, the secure recovery flow or hosted data.
+
+Verification passes: focused member/access **22/22** plus the broader health/access package **56/56**, JavaScript syntax **78/78**, full frontend **495 passed / 0 failed / 27 established skips**, and staging build **315 files**. Expected public asset is `member110.js?v=214`; CSS remains v204. Staging deployment and the final hosted Client B denial recheck remain pending. Production is untouched. **BETA NOT READY.**
+
 ## Member password recovery candidate — 2026-10-06
 
 Final hosted beta acceptance exposed a real Client B lifecycle gap: the member sign-in page had no password-recovery entry point. The existing branded recovery implementation was staff-specific and could not safely be reused because its eligibility lookup and completion behavior are tied to staff access and invitation metadata.

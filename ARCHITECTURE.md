@@ -139,6 +139,8 @@ The user approved restricted authenticated onboarding, independently authenticat
 
 `/member/onboarding/` consumes a narrow authenticated RPC; the paid dashboard checks access before the existing v2 bootstrap. The secondary signer relationship is a private, expiring agreement invitation, not household/member access. Invitation delivery extends the existing outbox to support not-yet-registered recipients; no parallel notification service exists. Financial reconciliation updates current access without deleting historical data. [Full state machine and rollout contract](docs/CLIENT_ACCESS_LIFECYCLE.md). Statements above about unimplemented lifecycle behavior describe the earlier security branch.
 
+The paid dashboard's preflight is also the rendering boundary for restricted accounts. When `member_paid_access_allowed()` is not exactly true, the dashboard clears all member-private DOM and renders a local restricted-access view with an Enrollment & Signature Center link and Sign Out. This avoids relying on a cross-page redirect to explain a successful authentication that does not grant paid access; `/member/onboarding/` remains the lifecycle detail and support surface.
+
 
 ## Isolated staging configuration (implemented, not hosted)
 
