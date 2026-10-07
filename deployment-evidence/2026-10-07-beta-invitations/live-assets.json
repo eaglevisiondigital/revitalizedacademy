@@ -1,0 +1,42 @@
+[
+  {
+    "path": "portal/portal-staff-access.js",
+    "version": "186",
+    "status": 200,
+    "built_sha256": "3cf29f5f9daff69004175d0c5c1fd887960a8cc7013807777216e227c4ab61f6",
+    "live_sha256": "3cf29f5f9daff69004175d0c5c1fd887960a8cc7013807777216e227c4ab61f6",
+    "match": true
+  },
+  {
+    "path": "portal/portal-action-center.js",
+    "version": "134",
+    "status": 200,
+    "built_sha256": "0a71e1324a81fd87ce76f0a7b319819a35fbf337494a567f65d45510b2e676a7",
+    "live_sha256": "0a71e1324a81fd87ce76f0a7b319819a35fbf337494a567f65d45510b2e676a7",
+    "match": true
+  },
+  {
+    "path": "member/onboarding/onboarding.js",
+    "version": "4",
+    "status": 200,
+    "built_sha256": "63a0eb051e7a88c8d36f8207a7a2156434f5d4917e2861f3222450df5a28c4a8",
+    "live_sha256": "63a0eb051e7a88c8d36f8207a7a2156434f5d4917e2861f3222450df5a28c4a8",
+    "match": true
+  },
+  {
+    "path": "runtime-config.js",
+    "version": "",
+    "status": 200,
+    "built_sha256": "b73e3491854a7d379b446cf128172af44275fae91431894ca055a3360d49adea",
+    "live_sha256": "b73e3491854a7d379b446cf128172af44275fae91431894ca055a3360d49adea",
+    "match": true
+  },
+  {
+    "path": "js/environment.js",
+    "version": "",
+    "status": 200,
+    "built_sha256": "ee9c80a19a1afda8b5dd6fca492112c07f583d906b9ea22762dcbfa05d501b83",
+    "live_sha256": "ee9c80a19a1afda8b5dd6fca492112c07f583d906b9ea22762dcbfa05d501b83",
+    "match": true
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "site_id": "071b252e-a922-4846-a784-8dca1edad377",
+  "site_name": "revitalizedacademy-staging",
+  "deploy_id": "6ac652f5ef350e486b80df26",
+  "deploy_url": "https://6ac652f5ef350e486b80df26--revitalizedacademy-staging.netlify.app",
+  "logs": "https://app.netlify.com/projects/revitalizedacademy-staging/deploys/6ac652f5ef350e486b80df26",
+  "function_logs": "https://app.netlify.com/projects/revitalizedacademy-staging/logs/functions",
+  "edge_function_logs": "https://app.netlify.com/projects/revitalizedacademy-staging/logs/edge-functions",
+  "url": "https://beta.revitalizedacademy.com"
+}

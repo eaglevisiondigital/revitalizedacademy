@@ -1,0 +1,26 @@
+[
+  {
+    "clientFormOverflow": false,
+    "clientNextVisible": true,
+    "pageOverflow": false,
+    "staffFormOverflow": false,
+    "staffNextVisible": true,
+    "width": 1440
+  },
+  {
+    "clientFormOverflow": false,
+    "clientNextVisible": true,
+    "pageOverflow": false,
+    "staffFormOverflow": false,
+    "staffNextVisible": true,
+    "width": 768
+  },
+  {
+    "clientFormOverflow": false,
+    "clientNextVisible": true,
+    "pageOverflow": false,
+    "staffFormOverflow": false,
+    "staffNextVisible": true,
+    "width": 390
+  }
+]

@@ -30,7 +30,7 @@ The existing agreement invite was not regenerated. Four lifecycle notices remain
 
 ## Validation
 
-- Build: 319 public files, isolated beta configuration, synthetic payment mode, exact beta primary/fallback origins.
+- Build: 318 public files, isolated beta configuration, synthetic payment mode, exact beta primary/fallback origins.
 - Syntax: 80/80 JavaScript.
 - Frontend: 544 passed, zero failed, 27 established skips (571 total). Includes normalization, single submission, no approval auto-invite, navigation without duplicate identities, cross-account reset/late-response suppression, every selected staff role/scope payload, and explicit onboarding gate explanations. Updated the old cache/copy snapshot assertions to the new acknowledged semantics.
 - Native PostgreSQL 17.11: 268/268 backend checks. Includes exact recipient approval, Owner/Admin eligibility, contact binding, scope restrictions, RLS and ledger-derived access. No agreement-origin fixture failures in this current baseline.
@@ -39,6 +39,35 @@ The existing agreement invite was not regenerated. Four lifecycle notices remain
 
 ## Release and remaining hosted acceptance
 
-Pending beta deployment/live hash verification and read-only responsive checks. Fresh Justyn personal-Gmail member login requested separately. William's correct receiving address, actual delivery and setup/login remain unverified. Isabelle needs approved enrollment/program issuance before invitation acceptance can be tested. Do not claim full flow acceptance while these checks remain outstanding.
+Application commit `6c5a31eac8415e81a4775eb2675830f045495aca` pushed on `codex/beta-invitation-onboarding-repair`. Existing beta Netlify site deployed as `6ac652f5ef350e486b80df26`, primary https://beta.revitalizedacademy.com. All three changed JavaScript assets, runtime configuration and environment helper return HTTP 200 and match the exact built SHA-256 hashes. No production deployment or branch merge. [Deploy receipt](../deployment-evidence/2026-10-07-beta-invitations/deploy.json) and [asset receipt](../deployment-evidence/2026-10-07-beta-invitations/live-assets.json).
+
+Hosted Owner session restored normally after the release. Re-saving the same already-approved Justyn/Drew recipients records audit reasons only, leaves permission/identity scope unchanged and sends no new invitation. The exact acknowledgement and next actions render; client action opens the existing contact; Drew action detects the existing staff account and advises its setup action rather than creating a duplicate. Current Justyn drawer shows signed agreement, active membership/access and zero included features. Staff invite form preserves Administrator/Assigned People selection; it was closed without submission. Owner UI console has no warning/error. Approval forms and invitation modal have no page/form horizontal overflow at 1440×1000, 768×1024 and 390×844. Viewport restored.
+
+Hosted exact recipient checkers accept normalized approved client/staff addresses, reject an unrelated unapproved test address and reject using a client approval for staff mail. Existing static allowlist and production mail configuration unchanged.
+
+Fresh Justyn personal-Gmail member login remains unaccepted: last sign-in still predates this repair. William's .me email remains unverified with no login; correct receiving address, actual delivery and setup/login remain unverified. Isabelle needs approved enrollment/program issuance before invitation acceptance can be tested. No duplicate invitation, contact, agreement, membership or Auth identity was created. Justyn has exactly one contact, Auth user, agreement, membership and synthetic payment.
+
+**BETA INVITATION + ONBOARDING FLOW BLOCKED — pending Justyn fresh member login, William delivery/setup, and approved enrollment issuance for the additional client.**
 
 Production baseline: Netlify `6ac5fda10ae8b03a2ddf176e` ready. No production code, database, identity, health/private data, recipient permissions, secrets, payment settings or configuration changed.
+
+
+## Exact next user actions
+
+1. Justyn: sign in through https://beta.revitalizedacademy.com/member/ with `justynjamesoliver@gmail.com`. Confirm Dashboard opens. His existing agreement is signed and his synthetic gate is now satisfied; do not create another account or sign another agreement.
+2. William: confirm whether `.me` is the real receiving address and whether the latest confirmation email arrived. If received, open it normally, follow staff setup, complete his own password/setup and sign in. Do not disclose links/passwords. If not received, resolve the exact receiving address before any resend; the original `.com` bounce/suppression is preserved.
+3. Additional client Isabelle: an approved program/enrollment must be issued through the existing workflow; approval alone did not send mail. No program choice was invented.
+
+## Chat decision needed: program entitlements
+
+RECOMMENDED THINKING LEVEL: HIGH
+
+CHAT DECISION NEEDED
+
+ReVitalized Academy beta has an active Holistic Foundations catalog entry but zero program entitlement template rows. Justyn's personal-Gmail test enrollment now has a signed agreement and authorized synthetic ledger payment; membership and client access are active. His member authorization succeeds, but the staff drawer reports zero included features. Existing explicitly approved Client A feature overrides are preserved and have not been copied to this account.
+
+Confirm whether Holistic Foundations beta should retain its current base dashboard access or receive a defined standard program entitlement set. Supply the exact approved entitlement keys/limits/cadences, including Nutrition, Fitness, tracking/coaching/family only where intended. A program-default change affects every membership on that program; a membership override affects only the specified test account and must be audited. Do not treat active payment/access as authority to enable unapproved modules. Engineering will use the supported program/entitlement workflow and preserve RLS, existing overrides and production isolation.
+
+## Completion handoff
+
+Completed: narrow beta UI/scope repair deployed; exact recipient and provider traces audited; Justyn's existing first unmet gate satisfied using the approved synthetic mechanism. Changed: portal staff-access/action-center, onboarding HTML/JS, focused regressions, state/evidence documentation. No new backend/config/schema package. Tested: 544 frontend pass/27 skips, 268 native backend pass, 55 Edge pass, 80 syntax pass; live hashes and read-only Owner responsive acceptance pass. Security: exact recipient controls, origin/project isolation, financial/contact checks, no arbitrary grants, no live charge, no duplicate identities, no token exposure. Unresolved: fresh Justyn login, William valid mailbox/delivery/setup and additional client's issued enrollment; absent program entitlements and queued follow-up notices disclosed. Next package: complete only these beta hosted acceptance checks after the necessary user/Chat decisions. Production remains on `6ac5fda10ae8b03a2ddf176e`, rechecked before and after beta release.

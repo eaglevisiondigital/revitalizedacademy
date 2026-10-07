@@ -1,0 +1,23 @@
+[
+  {
+    "formOverflow": false,
+    "pageOverflow": false,
+    "role": "admin",
+    "scope": "assigned",
+    "width": 1440
+  },
+  {
+    "formOverflow": false,
+    "pageOverflow": false,
+    "role": "admin",
+    "scope": "assigned",
+    "width": 768
+  },
+  {
+    "formOverflow": false,
+    "pageOverflow": false,
+    "role": "admin",
+    "scope": "assigned",
+    "width": 390
+  }
+]
