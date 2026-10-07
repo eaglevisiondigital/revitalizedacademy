@@ -166,3 +166,88 @@ test('long completed review succeeds for two separate default Owners within the 
   }
   assert.equal(await value('select count(*)::int from public.staff_permission_overrides where user_id=any($1::uuid[])', [[owner, secondOwner]]), 0);
 });
+
+async function legacyCompleted() {
+ await q('delete from private.vitality_assessment_drafts where contact_id=$1',[assignedContact]);
+ return (await q("select id,completed_at from public.workflow_records where contact_id=$1 and workflow_type='vitality_assessment'",[assignedContact])).rows[0];
+}
+async function importLegacy(w,summary='Original submitted summary',flags='Original flag') {
+ return value('select private.reconcile_vitality_history($1,$2,$3,$4,$4,$5,$6,$7,$8)',
+ [w.id,assignedContact,'assigned@example.invalid',w.completed_at,summary,flags,'Adult','Myself']);
+}
+test('historical completed and incomplete workflows appear without fake drafts or duplicates',async()=>{
+ await legacyCompleted();
+ await q('delete from private.vitality_assessment_drafts where contact_id=$1',[otherContact]);
+ const list=(await act(owner,"select public.list_vitality_assessment_reviews('all') review")).rows.map(x=>x.review);
+ assert.equal(list.length,2);assert(list.every(x=>x.historical_record===true));
+ assert.equal(list.filter(x=>x.status==='completed').length,1);
+ assert(list.every(x=>!('coach_summary' in x)&&!('answers' in x)));
+});
+test('secure draft takes precedence over historical metadata for the same workflow',async()=>{
+ const w=(await q("select id from public.workflow_records where contact_id=$1 and workflow_type='vitality_assessment'",[assignedContact])).rows[0];
+ await q("insert into private.vitality_historical_reviews(workflow_id,contact_id,source_key,source_received_at,assessment_summary,source_digest) values($1,$2,'synthetic-source',now(),'Older summary',repeat('a',64))",[w.id,assignedContact]);
+ const list=(await act(owner,"select public.list_vitality_assessment_reviews('all') review")).rows.map(x=>x.review);
+ assert.equal(list.filter(x=>x.contact_id===assignedContact).length,1);
+ assert.equal('historical_record' in list.find(x=>x.contact_id===assignedContact),false);
+ const review=(await act(owner,'select public.get_vitality_assessment_review($1) review',[assignedContact])).rows[0].review;
+ assert.equal(review.coach_summary,'Stored coach summary\nSecond line');
+});
+test('controlled import preserves original records, summary, flags, timestamps and identity',async()=>{
+ const w=await legacyCompleted();
+ const before=await value('select to_jsonb(w) from public.workflow_records w where id=$1',[w.id]);
+ assert.equal(await importLegacy(w),'reconciled');
+ assert.equal(await importLegacy(w),'already_reconciled');
+ assert.deepEqual(await value('select to_jsonb(w) from public.workflow_records w where id=$1',[w.id]),before);
+ const review=(await act(scoped,'select public.get_vitality_assessment_review($1) review',[assignedContact])).rows[0].review;
+ assert.equal(review.coach_summary,'Original submitted summary');assert.deepEqual(review.coach_review_flags,['Original flag']);
+ assert.equal(new Date(review.completed_at).getTime(),new Date(w.completed_at).getTime());
+ assert.equal(review.referral_source,'Sales Rep');assert.equal(review.sales_rep_name,'Synthetic Rep');
+ assert.deepEqual(review.answers,{});assert.equal(review.historical_summary_available,true);
+});
+test('historical archive conflicts are rejected rather than overwriting',async()=>{
+ const w=await legacyCompleted();await importLegacy(w);
+ await assert.rejects(importLegacy(w,'Replacement invented summary'),/Conflicting historical source/);
+});
+test('historical source requires matching contact, email, completed status and timestamp',async()=>{
+ const w=await legacyCompleted();
+ await assert.rejects(q('select private.reconcile_vitality_history($1,$2,$3,$4,$4,$5,$6,$7,$8)',[w.id,otherContact,'assigned@example.invalid',w.completed_at,'Summary','None reported','Adult','Myself']),/does not match/);
+});
+test('historical import is inaccessible to browser and service roles',async()=>{
+ const w=await legacyCompleted();
+ for(const role of ['authenticated','anon','service_role']) {
+ await assert.rejects(act(owner,'select private.reconcile_vitality_history($1,$2,$3,$4,$4,$5,$6,$7,$8)',[w.id,assignedContact,'assigned@example.invalid',w.completed_at,'Summary','None reported','Adult','Myself'],role),/permission denied/);
+ }
+});
+test('historical out-of-scope and health permission denial remain enforced',async()=>{
+ await legacyCompleted();
+ await assert.rejects(act(noHealth,'select public.get_vitality_assessment_review($1)',[assignedContact]),/unavailable/);
+ await q('delete from private.vitality_assessment_drafts where contact_id=$1',[otherContact]);
+ await assert.rejects(act(scoped,'select public.get_vitality_assessment_review($1)',[otherContact]),/unavailable/);
+});
+test('incomplete historical workflows withhold summaries and original answer data',async()=>{
+ await q('delete from private.vitality_assessment_drafts where contact_id=$1',[otherContact]);
+ const review=(await act(owner,'select public.get_vitality_assessment_review($1) review',[otherContact])).rows[0].review;
+ assert.equal(review.status,'in_progress');assert.equal('answers' in review,false);assert.equal('coach_summary' in review,false);
+});
+const unlinkedSource=()=>({email:'historical-new@example.invalid',first_name:'Historical',last_name:'Participant',phone:'5551230987',status:'Complete - coach review requested',received_at:'2026-09-18T19:56:14Z',submitted_at:'2026-09-18T19:56:15Z',first_lead_at:'2026-09-18T14:00:00Z',summary:'Original historical answers',flags:'None reported',pathway:'Adult',assessment_for:'Myself',referral_source:'Other',referral_source_other:'Original source'});
+test('verified unlinked historical source imports once with original timestamps',async()=>{
+ const src=unlinkedSource();const r=await value('select private.reconcile_unlinked_vitality_source($1)',[src]);
+ const again=await value('select private.reconcile_unlinked_vitality_source($1)',[src]);assert.equal(again.result,'already_reconciled');assert.equal(again.contact_id,r.contact_id);
+ const w=(await q('select * from public.workflow_records where id=$1',[r.workflow_id])).rows[0];assert.equal(w.status,'completed');assert.equal(w.completion_percent,100);assert.equal(new Date(w.created_at).getTime(),Date.parse(src.first_lead_at));
+ const c=(await q('select * from public.contacts where id=$1',[r.contact_id])).rows[0];assert.equal(c.referral_source_other,'Original source');
+ assert.equal(await value('select count(*)::int from private.vitality_assessment_drafts where contact_id=$1',[r.contact_id]),0);
+});
+test('ambiguous unlinked historical identity refuses duplicate contact creation',async()=>{
+ await q("insert into public.contacts(first_name,last_name,email) values('Historical','Participant','alternate@example.invalid')");
+ await assert.rejects(q('select private.reconcile_unlinked_vitality_source($1)',[unlinkedSource()]),/Existing identity/);
+});
+test('confirmed alternate-email association retains existing contact identity',async()=>{
+ const id=await value("insert into public.contacts(first_name,last_name,email) values('Historical','Participant','alternate@example.invalid') returning id");
+ const before=await value('select to_jsonb(c) from public.contacts c where id=$1',[id]);
+ const r=await value('select private.reconcile_unlinked_vitality_source($1,$2,$3)',[unlinkedSource(),id,'Owner confirmed original personal-email association']);assert.equal(r.contact_id,id);
+ assert.deepEqual(await value('select to_jsonb(c) from public.contacts c where id=$1',[id]),before);
+ assert.equal(await value('select source_email from private.vitality_historical_reviews where contact_id=$1',[id]),'historical-new@example.invalid');
+});
+test('unlinked import is inaccessible to members, staff and service role',async()=>{
+ for(const role of ['authenticated','anon','service_role'])await assert.rejects(act(owner,'select private.reconcile_unlinked_vitality_source($1)',[unlinkedSource()],role),/permission denied/);
+});

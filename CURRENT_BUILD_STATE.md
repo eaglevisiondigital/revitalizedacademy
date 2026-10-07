@@ -1,5 +1,19 @@
 # ReVitalized Academy Current Build State
 
+## Historical Vitality reconciliation — 2026-10-06
+
+This current entry supersedes older pending-release descriptions below. Production frontend remains deploy `6ac52af350af344e34bcfa31`, source `77dbe985c4132503696915b34523dede68beee66`; no Netlify release was needed for this database-only repair.
+
+- Root cause: staff review RPCs selected only the secure draft system introduced Oct. 5. Eight older production workflows were omitted. Two completed workflow/report records also lacked their original Netlify summaries.
+- Applied ledger: `20261007030224 vitality_historical_review` (source migration `20261007010000`), `20261007030817 vitality_unlinked_source_reconciliation` (source `20261007012000`). Do not replay.
+- Restored all eight existing historical workflow contacts to the secured review list. Preserved original workflows, contact identity, report flags/status/timestamps and source attribution. Added an inaccessible-to-browser historical source archive and operator-only idempotent import functions.
+- Restored two matching completed summaries/coach flags. Imported two verified missing completed sources: Brandy into one new assessment-lead contact, and Sept. 5 Justyn into his existing contact with explicit user approval. Existing Justyn contact checksum remains unchanged; original submitted email remains separately preserved in the private archive. No Auth identity, resume draft/token, enrollment, invitation or client payment created.
+- Netlify audit: 4 verified completed submissions plus 3 spam-index submissions. Two spam-index entries match legitimate existing completed workflows; no spam status was changed. One Oct. 5 source already belongs to the secure system. Two verified old sources (David Fowler/Forest Gump) appear to be test records and remain held pending classification. Pre-Oct. 5 lead metadata: 24 submissions across 12 normalized emails; retries are not duplicated into contacts.
+- Result: 10 pre-Oct. 5 workflows visible (4 completed, 6 unfinished); 13 total current review entries including 3 secure records. Four original completed summaries archived. Existing incomplete records remain status-only; their unsaved answers cannot be invented.
+- Validation: 64/64 PostgreSQL 17 production backend checks, 10/10 Vitality frontend checks. Health-private permission and contact scope enforced; operator import calls denied to browser and service roles. Production Owner portal refreshed to 13 review entries.
+- Historical private payloads remain outside Git. Beta recipient registry is a separate staging-only branch and migration; no cross-environment data copy.
+
+
 Updated: 2026-10-06
 
 ## Production durable content candidate — approval pending
