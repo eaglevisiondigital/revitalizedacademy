@@ -1,3 +1,9 @@
+# Accepted production-authoritative reusable content — 2026-10-07
+
+The user-approved production → beta content sync is now live and accepted. Only deliberate single/selected reusable content and dependency trees transfer. Production wins later conflicts; beta cannot write back. Audit retained after disposable test cleanup. No client/Auth/staff/health/assignment/payment/message transfer or unrelated promotion.
+
+[Final hosted acceptance report](docs/FOODDATA_BETA_SYNC_ACCEPTANCE_2026-10-07.md). Earlier candidate entries below are historical.
+
 # Production release decisions
 
 2026-10-07: Implement the user-approved FoodData Central authoring package in an isolated production-content branch, without merging Payments v1 or staging. Prefer matched generic records over branded noise, preserve source-specific analytical definitions/portions, never substitute unknown with zero, reuse canonical FDC IDs, and preserve source versions. Only authorized Owner/Admin controls independent approval and explicit source refresh. Recipe title/image edits do not consume changed source nutrition. Production release is gated on a dedicated protected USDA key, matching server configuration, explicit single-migration/function+static approval and subsequent hosted acceptance. DRI/coach target architecture is prepared as a separate explicit contract; no targets or clinical guidance are invented. [Evidence and remaining gates](docs/FOODDATA_CENTRAL_V1_2026-10-07.md).

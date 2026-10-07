@@ -1,3 +1,9 @@
+# Live content sync security acceptance — 2026-10-07
+
+Active Owner/Admin plus effective learning.manage, exact production origin/site/project, fresh bearer identity, service-only SQL ACLs, content field/JSON whitelist, private audited jobs and atomic beta receive were tested. Coach/member/anonymous/reverse actions denied. Credentials remain server Functions-only; beta has no production credential. No existing grants, private-data policies or feature flags changed.
+
+[Final hosted acceptance report](docs/FOODDATA_BETA_SYNC_ACCEPTANCE_2026-10-07.md). Earlier candidate entries below are historical.
+
 # Production security release notes
 
 2026-10-07 local FDC candidate: bearer identity is verified by environment-specific Supabase Auth; the server-only RPC independently rechecks active/approved staff and effective `learning.manage` on every action. Approval and source refresh additionally require Owner/Admin. Canonical source/approval fields reject ordinary browser forgery or overwrite; custom composition follows existing content RLS. API keys/service credentials stay Functions-scoped server secrets. New private cache, quota and immutable source/approval history tables are RLS-enabled without browser grants/policies. Definer functions use fixed empty search paths with explicit execution ACLs. Source nutrient/ID/unit bounds, atomic provider budgets, cache expiry, request deadlines and sanitized errors are enforced. PostgreSQL 17 fixtures prove browser/member/inactive/denied-Coach boundaries. No role/default grants or private-client policy changes. Full details and release gates: [package report](docs/FOODDATA_CENTRAL_V1_2026-10-07.md).

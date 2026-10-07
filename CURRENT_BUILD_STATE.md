@@ -1,5 +1,20 @@
 # ReVitalized Academy Current Build State
 
+## LIVE ACCEPTED — FoodData + one-way beta content sync — 2026-10-07
+
+**FOOD DATABASE + BETA SYNC FULLY ACCEPTED.** This entry supersedes older local/pending checkpoints below for this package; those are historical.
+
+Production application source `f5eabc1d7427ca6198957f42b46c329ef462baa0`, deploy `6ac5fda10ae8b03a2ddf176e`. Beta source `888ae5ad74c872464260437be5eeb1c069fe5d9e`, deploy `6ac5fcfa32ab22338c0799a3`. Both ready; released assets JS/CSS 178/168, Recipe Builder 104, Food Database JS/CSS 101/100, Sync 100 match exact built bytes.
+
+Applied (do not replay): production FoodData ledger `20261007062854`, unchanged-refresh audit `20261007072537`, sync export `20261007080049`; beta compatible FoodData `20261007073128`, sync receive `20261007080053`.
+
+Mobile 1440/768/390, hosted audited USDA refresh and beta FoodData passed. Single/selected dependency sync passed all twelve requested cases: 9 jobs, 56 record audits per environment, 15 stable beta targets, production-wins resync and no beta writeback. All disposable acceptance content removed; immutable audit retained. Auth/staff/contact/Vitality/workflow fingerprints unchanged, no private-data/identity/assignment/payment transfer. Server-only USDA/receiver credentials, Owner/Admin authorization, Coach/member/anonymous/reverse denial validated. Production remains authoritative.
+
+Tests: relevant production frontend 81/81; beta frontend 537 pass, zero fail, 27 expected skips; native PG17 production 73/73, beta 268/268, dual-sync 6/6; Edge 19/19; sync 8/8; isolated responsive browser 66 checks; syntax 96/96 production, 80/80 beta. Inherited obsolete production snapshot failures remain separately documented.
+
+[Complete release, security, acceptance and cleanup evidence](docs/FOODDATA_BETA_SYNC_ACCEPTANCE_2026-10-07.md). Justyn/Elle can author in production and use Sync to Beta. Preserve these changes during later Git integration; manual deploys are not a substitute for integrating accepted branches. No unrelated work begun.
+
+
 ## FoodData Central authoring candidate — 2026-10-07
 
 Implemented locally on isolated `codex/fooddata-central`, based on `e6aa1b0`. Protected USDA search/details/multi-ID imports reuse canonical FDC foods, preserve nutrient/portion provenance and source versions, and support independent Owner/Admin ReVitalized Approved classification and explicit source refresh. Recipe calculation v3 uses local measured composition, mass/source portions, whole/per-serving totals, recipe weight and per-nutrient coverage. Unknown stays unknown; custom foods remain supported. Source refresh and title/image-only edits preserve stored recipe snapshots.
