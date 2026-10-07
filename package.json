@@ -7,7 +7,9 @@
     "check:js": "node scripts/check-js.cjs",
     "check:edge": "deno check --config supabase/functions/deno.json supabase/functions/*/index.ts",
     "test:edge": "deno test --config supabase/functions/deno.json tests/edge/",
-    "build": "node scripts/build-site.cjs"
+    "build": "node scripts/build-site.cjs",
+    "test:repdb": "node scripts/prepare-repdb.cjs && node --test tests/repdb-exercise-library.cjs",
+    "test:repdb:browser": "node tests/browser/repdb-exercise.cjs"
   },
   "devDependencies": {
     "jsdom": "26.1.0",

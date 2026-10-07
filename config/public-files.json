@@ -316,5 +316,7 @@
   "portal/portal-food-database.js",
   "portal/portal-food-database.css",
   "portal/portal-content-sync.js",
-  "portal/portal-enrollment.js"
+  "portal/portal-enrollment.js",
+  "portal/portal-exercise-library.js",
+  "portal/portal-exercise-library.css"
 ]

@@ -117,7 +117,16 @@
       "primary_muscle_group",
       "secondary_muscle_groups",
       "movement_type",
-      "low_impact"
+      "low_impact",
+      "exercise_provider",
+      "provider_exercise_id",
+      "exercise_source_version",
+      "exercise_source",
+      "exercise_imported_at",
+      "revitalized_approved",
+      "rva_muscles",
+      "functional_movement",
+      "coaching_cues"
     ],
     "refs": {
       "methodology_id": "fitness_methodologies"

@@ -1,3 +1,7 @@
+# RepDB Exercise Library local candidate — 2026-10-07
+
+RepDB is a hash-pinned build-time private dataset and protected in-app Netlify adapter, not a live provider-key dependency. Durable exercise source envelopes and immutable slug identity are separate from local coaching/taxonomy/approval fields. Explicit source refresh preserves canonical workout/program references. The beta receiver accepts the complete previous exercise export format, rejects partial new provenance and preserves unrelated custom/provider rows with colliding names, enabling schema-first beta compatibility without interrupting current production exports. Forward content-sync export/receive contracts include only reviewed exercise fields and reuse an existing beta RepDB slug. Separate environment builds and migrations preserve production authority. [Release report](docs/REPDB_EXERCISE_LIBRARY_V1_2026-10-07.md). Not deployed.
+
 # Live content sync architecture — 2026-10-07
 
 Production-only protected Function/export RPC → beta-only atomic receive RPC. Reviewed 13-table reusable-content contract, dependency remapping, stable UUID mapping, version checks and immutable job retry. Production portal bootstrap now supplies the same public environment configuration as its built runtime. Production wins beta conflicts; no reverse or operational/private-data sync.

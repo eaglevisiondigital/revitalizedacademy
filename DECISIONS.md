@@ -1,3 +1,7 @@
+# RepDB Exercise Library local candidate — 2026-10-07
+
+User-directed RepDB pivot replaces blocked MuscleWiki/API Ninjas source selection. Use Free Tier v1.0, pinned commit/hash/count609, visible publisher credit and free flat WebP references only. Preserve unknown source values, original muscle identifiers and separate local overrides; do not infer functional movement. Imported records are published into an existing methodology for immediate workouts, while approval remains separate. Preserve name uniqueness with explicit source-slug disambiguation. Hold hosted migration/deployment for explicit approval of this new candidate. [Release report](docs/REPDB_EXERCISE_LIBRARY_V1_2026-10-07.md). Not deployed.
+
 # Accepted production-authoritative reusable content — 2026-10-07
 
 The user-approved production → beta content sync is now live and accepted. Only deliberate single/selected reusable content and dependency trees transfer. Production wins later conflicts; beta cannot write back. Audit retained after disposable test cleanup. No client/Auth/staff/health/assignment/payment/message transfer or unrelated promotion.

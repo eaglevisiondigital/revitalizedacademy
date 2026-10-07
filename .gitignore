@@ -6,3 +6,5 @@ node_modules/
 
 dist/
 .staging-private/
+
+/netlify/private-repdb/
