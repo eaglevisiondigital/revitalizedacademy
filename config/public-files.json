@@ -315,5 +315,6 @@
   "member/member-assigned-content.js",
   "portal/portal-food-database.js",
   "portal/portal-food-database.css",
-  "portal/portal-content-sync.js"
+  "portal/portal-content-sync.js",
+  "portal/portal-enrollment.js"
 ]

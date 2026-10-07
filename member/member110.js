@@ -35,6 +35,12 @@
     }
     ["rm-auth","rm-dashboard","rm-denied"].forEach((id) => el(id).classList.add("hidden"));
     el(view).classList.remove("hidden");
+    if(view==="rm-denied"){
+      el("rm-access-heading").textContent="Your member access is not active.";
+      el("rm-access-copy").textContent="Your sign-in worked, but full ReVitalized member access is currently unavailable. Review your enrollment status for details or contact the ReVitalized Academy team if you believe this is an error.";
+      el("rm-access-retry").classList.add("hidden");
+      el("rm-denied").dataset.reason="access_inactive";
+    }
   }
 
   function renderEntitlements(rows) {
@@ -5472,8 +5478,15 @@
       hasFamilyHub,
       householdType:member.household_type
     }).catch(()=>{/* Optional transport failures never deny the core dashboard. */});
-    }catch{
-      if(loadSequence===dashboardLoadSequence)showOnly("rm-denied");
+    }catch(error){
+      if(loadSequence===dashboardLoadSequence){
+        showOnly("rm-denied");
+        el("rm-access-heading").textContent="We couldn’t load your member dashboard.";
+        el("rm-access-copy").textContent="Your sign-in worked, but we couldn’t finish checking or loading your dashboard. This does not mean your membership is inactive. Retry, or review your enrollment status if the problem continues.";
+        el("rm-access-retry").classList.remove("hidden");
+        el("rm-denied").dataset.reason="dashboard_load_failed";
+        el("rm-denied").dataset.errorCode=/^[A-Z0-9_-]{1,30}$/i.test(String(error?.code||""))?String(error.code):"LOAD_ERROR";
+      }
     }
   }
 
@@ -5540,6 +5553,8 @@
     showStatus(status, "Signed in.", "success");
     await resolveSession(data?.session||null);
   });
+
+  el("rm-access-retry").addEventListener("click",()=>void resolveSession(null,{force:true}));
 
   function showMemberRecovery(show){
     const login=el("rm-login-form");

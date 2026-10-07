@@ -1,5 +1,10 @@
 # Live content sync security acceptance — 2026-10-07
 
+## Beta enrollment control boundary — 2026-10-07
+
+The new public invoker RPC wrappers call private, empty-search-path definer implementations. Every entry checks the exact beta environment/project/origin/synthetic mode, an active fully onboarded Owner/Admin, effective `finance.manage`, and contact scope. Anonymous/service-role entry execution is revoked; no role/default/override grant or table policy changed. A contact lock serializes new enrollment retries. Existing issued agreement/payment/membership terms cannot be replaced by this UI. Saves do not approve recipients, create Auth identities, send mail, record payment or grant paid access. Summaries return only the scoped lifecycle status, not credentials, raw notification bodies or private health answers. Prior-client responses and DOM are cleared on close/account/permission transitions. Eight native PostgreSQL 17 cases cover these gates; existing full-member RLS remains authoritative.
+
+
 Active Owner/Admin plus effective learning.manage, exact production origin/site/project, fresh bearer identity, service-only SQL ACLs, content field/JSON whitelist, private audited jobs and atomic beta receive were tested. Coach/member/anonymous/reverse actions denied. Credentials remain server Functions-only; beta has no production credential. No existing grants, private-data policies or feature flags changed.
 
 [Final hosted acceptance report](docs/FOODDATA_BETA_SYNC_ACCEPTANCE_2026-10-07.md). Earlier candidate entries below are historical.

@@ -1483,16 +1483,17 @@
     <section id="rm-denied" class="rm112-auth hidden">
       <div class="rm112-auth-card">
         <p class="rm112-kicker">MEMBER ACCESS</p>
-        <h1>Your member access is not active.</h1>
-        <p>Your sign-in worked, but full ReVitalized member access is currently unavailable. Review your enrollment status for details or contact the ReVitalized Academy team if you believe this is an error.</p>
+        <h1 id="rm-access-heading">Your member access is not active.</h1>
+        <p id="rm-access-copy">Your sign-in worked, but full ReVitalized member access is currently unavailable. Review your enrollment status for details or contact the ReVitalized Academy team if you believe this is an error.</p>
         <a class="rm112-secondary" href="/member/onboarding/">Review Enrollment Status</a>
+        <button id="rm-access-retry" class="rm112-secondary hidden" type="button">Retry Dashboard</button>
         <button id="rm-denied-signout" class="rm112-secondary" type="button">Sign Out</button>
       </div>
     </section>
   </main>
 
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
-  <script defer src="member110.js?v=214"></script>
+  <script defer src="member110.js?v=215"></script>
   <script defer src="member-nutrition.js?v=1"></script>
   <script defer src="member-health-progress.js?v=1"></script>
   <script defer src="member-assigned-content.js?v=1"></script>

@@ -1,5 +1,15 @@
 # ReVitalized Academy — current build state
 
+## Beta client enrollment controls — 2026-10-07 (release candidate; acceptance pending)
+
+Implemented an Owner/Admin contact-drawer enrollment hub with explicit approval, program, invitation, agreement, payment, access and next-action states. A staging-only, contact-scoped, audited RPC serializes enrollment saves and reuses the existing journey/activation; issued terms are locked. Save never sends an invitation or substitutes for signature/payment gates. Contract preparation can read the configured activation before a member account exists. Payment/access review is reachable independently of the current journey step.
+
+Justyn’s exact existing identity passes the hosted paid-access RPC, dashboard view and bootstrap reads; his hosted bootstrap also renders in the isolated runtime. No duplicate account/payment or arbitrary access override was made. Fresh hosted acceptance remains pending. Loading failures now have a distinct retryable message instead of claiming the membership is inactive. No program entitlements were invented.
+
+William’s existing staff account currently targets `williambk83@protonmail.me`; its latest provider message is delivery_delayed and DNS returns NXDOMAIN for that domain. The previous `.com` recipient bounced/suppressed. Exact working address confirmation is required before correction/resend; no new invitation/account was created. Isabelle is approved but has no enrollment or invitation. Program selection and hosted issuance await the Owner’s choice.
+
+Migration `20261007154421_beta_client_enrollment_controls` is applied only to beta `bvooallokgfktssadsrv` (local filename aligned with the MCP-generated ledger timestamp; not a second migration). Production untouched. Validation: 553 maintained frontend pass/27 skip plus 2 focused action tests pass; 276 PostgreSQL 17 backend pass, including 8 new enrollment boundary cases; 55 Edge pass; 81 JS syntax pass; 319-file beta build. Hosted release/acceptance details will be recorded below.
+
 ## Beta invitation/onboarding repair — 2026-10-07 (deployed; hosted acceptance blocked)
 
 Exact recipient approvals are recognized. Isabelle is approved but has no enrollment/invitation; William's .com staff mail bounced and .me confirmation mail is still sent/unconfirmed. Fixed missing staff invitation `contact_scope`, approval next actions and explicit no-mail acknowledgement, provider-request wording and onboarding unmet-gate guidance. Assets staff-access 186, action-center 134, onboarding 4. No migration, Edge/config/allowlist or role change.

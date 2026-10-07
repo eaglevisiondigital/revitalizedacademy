@@ -63,8 +63,12 @@
       membership=data||null;
     }
 
-    const {data:billing}=await client.from("admin_billing_overview")
+    const {data:billingRow}=await client.from("admin_billing_overview")
       .select("*").eq("contact_id",activeContact.id).order("started_at",{ascending:false}).limit(1).maybeSingle();
+    const {data:configuredEnrollment}=await client.from("journey_enrollment_activations")
+      .select("program_code,program_name,amount_cents,currency,commitment_months")
+      .eq("contact_id",activeContact.id).order("created_at",{ascending:false}).limit(1).maybeSingle();
+    const billing=billingRow||configuredEnrollment;
 
     if(billing?.amount_cents!==null&&billing?.amount_cents!==undefined){
       const amount=moneyInput(billing.amount_cents,billing.currency);
@@ -549,6 +553,13 @@
     el("client-agreements-section").classList.add("hidden");
     closeClientModal();
   });
+
+  document.addEventListener("ra:open-client-invitation",event=>{
+    if(activeContact?.id!==event.detail?.contactId||!(portal.hasPermission?.("finance.manage")??false))return;
+    const existing=clientAgreements.find(row=>row.contact_id===activeContact.id&&templates.find(t=>t.id===row.agreement_template_id)?.document_type==="client_contract"&&!["signed","waived"].includes(row.status));
+    if(existing)void sendAgreement(existing);else void openClientAssign();
+  });
+  document.addEventListener("ra:enrollment-configured",event=>{if(activeContact?.id===event.detail?.contactId)void loadClientAgreements(activeContact.id);});
 
   el("agreement-new-template").addEventListener("click",openTemplateModal);
   el("agreement-template-form").addEventListener("submit",createTemplate);

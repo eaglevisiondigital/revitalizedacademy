@@ -17,6 +17,7 @@
   let activation = null;
   let report = null;
   let programTag = "";
+  let enrollmentMode = false;
 
   const PROGRAMS = {
     "holistic-foundations": { name: "Holistic Foundations", commitment: 6, weekly: 25, monthly: 89 },
@@ -769,7 +770,7 @@
       .eq("contact_id", contact.id)
       .maybeSingle();
 
-    if (summaryError || !journeySummary?.journey_id || !journeySummary?.current_step_key) {
+    if (summaryError || !journeySummary?.journey_id || (!journeySummary?.current_step_key && !enrollmentMode)) {
       renderNoJourneyActionState(
         summaryError?.message ||
         "No active journey is assigned yet. Assign or start a journey before taking a next-step action."
@@ -778,18 +779,19 @@
     }
 
     summary = journeySummary;
+    const selectedStepKey = enrollmentMode ? "payment_agreement" : summary.current_step_key;
 
     const [stepResult, templateResult, actionResult, appointmentResult, activationResult, programTagResult, reportResult] = await Promise.all([
       client
         .from("contact_journey_steps")
         .select("*")
         .eq("journey_id", summary.journey_id)
-        .eq("step_key", summary.current_step_key)
+        .eq("step_key", selectedStepKey)
         .maybeSingle(),
       client
         .from("journey_action_templates")
         .select("*")
-        .eq("step_key", summary.current_step_key)
+        .eq("step_key", selectedStepKey)
         .eq("active", true)
         .order("priority"),
       client
@@ -858,7 +860,8 @@
     return true;
   }
 
-  async function openActionCenter() {
+  async function openActionCenter(event) {
+    enrollmentMode = Boolean(event?.detail?.enrollment);
     if (!contact?.id) return;
     journeyLink = "";
     appointment = null;
