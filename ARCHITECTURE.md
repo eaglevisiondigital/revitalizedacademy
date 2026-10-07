@@ -6,6 +6,12 @@ The prominent Contact confirmation and controlled recovery use the existing endp
 
 # Historical RepDB Exercise Library local candidate — 2026-10-07
 
+# Applied RepDB DELETE contract repair — 2026-10-07
+
+The enabled BEFORE ROW INSERT/UPDATE/DELETE source guard now returns OLD for every DELETE, including privileged cleanup; INSERT/UPDATE still return NEW with existing provenance checks. No trigger or dependency changes. Audit FK retention and workout RESTRICT remain enforced; polymorphic beta sync mappings require deliberate bounded cleanup. Normal UI lifecycle remains Archive, not DELETE. Production and beta applied once; no frontend redeploy. [Verified acceptance](docs/REPDB_DELETE_GUARD_REPAIR_2026-10-07.md). Earlier local/pending notes below are historical.
+
+# RepDB Exercise Library local candidate — 2026-10-07
+
 RepDB is a hash-pinned build-time private dataset and protected in-app Netlify adapter, not a live provider-key dependency. Durable exercise source envelopes and immutable slug identity are separate from local coaching/taxonomy/approval fields. Explicit source refresh preserves canonical workout/program references. The beta receiver accepts the complete previous exercise export format, rejects partial new provenance and preserves unrelated custom/provider rows with colliding names, enabling schema-first beta compatibility without interrupting current production exports. Forward content-sync export/receive contracts include only reviewed exercise fields and reuse an existing beta RepDB slug. Separate environment builds and migrations preserve production authority. [Release report](docs/REPDB_EXERCISE_LIBRARY_V1_2026-10-07.md). Not deployed.
 
 # Live content sync architecture — 2026-10-07
@@ -31,3 +37,8 @@ Authoring uses the shared authenticated production Supabase client. The build ma
 Vitality Review is already released. Its read RPCs operate on the production secure assessment store and retain private-health/contact-scope gates. The production member/client lifecycle remains an older release and requires a separate coordinated acceptance package. See the current release report for actual deployed versus pending status.
 
 One-way reusable-content sync: production Netlify `reusable-content-sync` verifies the caller and production site, obtains an immutable dependency export, sends it to the fixed beta receiver, then confirms the production audit. The beta receive transaction validates the field contract, remaps foreign keys and cached composition references, uses stable source mappings, and commits content/audit together. Identical job retries return the stored result; stale batches are rejected. The separate environment migration paths must never be applied to the opposite project.
+
+
+## 2026-10-07 — Production lifecycle preparation (not released)
+
+Production lifecycle draft reuses secure verified invitation claim/signing and pre-payment enrollment foundation. It is NOT applied. Full paid member access is held false until a separate approved payment integration; UI/Edge assembly remains pending. See docs/PRODUCTION_CLIENT_LIFECYCLE_V1_2026-10-07.md.

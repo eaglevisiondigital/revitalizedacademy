@@ -12,6 +12,30 @@ Local validation: production build383; exact public-build JavaScript syntax70/70
 
 Earlier local RepDB checkpoints below are historical: RepDB is now deployed; its DELETE guard forward repair is applied. This entry is the current local package only.
 
+## NOT DEPLOYED — Production Client Lifecycle v1 preparation — 2026-10-07
+
+**PRODUCTION CLIENT LIFECYCLE BLOCKED.** New isolated branch `codex/production-client-lifecycle-v1` contains an unapplied database candidate `20261007224150_production_client_lifecycle_v1.sql`. Native PostgreSQL17 **107/107** tests, existing public build383 and syntax106 pass. This does not establish a complete release: frontend/Edge integration, overlapping concurrency, responsive and genuine hosted setup/sign/recovery/scoped acceptance remain unfinished.
+
+Production publishes MK7 with no required Holistic Foundations agreement mapping. Primary Chat production mapping decision and disposable production receiving-inbox confirmation are pending. No synthetic payment, paid member module or assignment promotion. Current production deploy `6ac6b471ac8ed68bec8bd8d6`, ledger `20261007221345`, zero client activations/access/agreements/payments remain unchanged. No migration replay, hosted data creation, mail or deployment occurred. [Detailed readiness table, evidence and full Chat decision prompt](docs/PRODUCTION_CLIENT_LIFECYCLE_V1_2026-10-07.md).
+
+## LIVE ACCEPTED — RepDB DELETE guard repair — 2026-10-07
+
+**EXERCISE LIBRARY + BETA SYNC FULLY ACCEPTED.** This supersedes the historical cleanup blocker below. Forward source migration `20261007220506_repdb_delete_guard_return_contract.sql` applied once: production ledger `20261007221345`, beta `20261007221355`. Never replay original RepDB migrations. Privileged BEFORE DELETE now returns OLD; INSERT/UPDATE, RLS, ACLs, Archive and FKs unchanged. No frontend deployment: production `6ac6b471ac8ed68bec8bd8d6`, beta `6ac6b620e735903c2285ec3f` remain current.
+
+Native PG17.11 production93/93, beta296/296; 9 new focused delete/dependency/security cases each; source/API16/16 each. One hosted disposable import/delete each passed with normal triggers; exact source audit exported before bounded cleanup. Staff/member/anonymous/Owner browser DELETE denied; hosted Archive passed with rollback. All original content, 176 protected table/identity fingerprints each, 9 production/14 beta private tables and beta mapping fingerprints unchanged. No unrelated/Auth/client/payment/config changes. [Full repair acceptance and evidence](docs/REPDB_DELETE_GUARD_REPAIR_2026-10-07.md).
+
+## DEPLOYED — RepDB Exercise Library — hosted gates passed; DELETE defect remains — 2026-10-07
+
+This supersedes the historical local/pending checkpoint below. Exact production `862f4b6e2edb9b6af5332a389c0081fefec6adae`, deploy `6ac6b471ac8ed68bec8bd8d6`; exact beta `0eea05af0c05c4b46dbf79d9f5adcabc0d1c2a6e`, deploy `6ac6b620e735903c2285ec3f`. Source migration `20261007201539_repdb_exercise_library.sql` applied once each: production ledger `20261007210608`, beta `20261007210558`. Do not replay.
+
+All requested hosted import/variation/duplicate/taxonomy/movement/approval/custom/refresh/workout/program/one-way-sync/security/responsive gates passed. Exact live Programs JS179/CSS168 and Exercise Library JS/CSS100 match build hashes. Four sync jobs and 18 record audits each retained; beta edits isolated and production-wins resync passed. Free Tier attribution visible, only pinned free media, no provider key/public raw dataset.
+
+All disposable acceptance content removed. Existing content row hashes and 176 protected table/identity fingerprints per environment unchanged. QA source audit archived before removal; immutable sync audits stay hosted. No client/private/payment/identity/role/permission changes.
+
+**Full acceptance withheld:** `private.guard_exercise_source()` returns NEW on privileged DELETE and silently suppresses it. Normal Archive UI passes. Guarded transaction-local cleanup completed without permanent protection changes; zero remaining QA rows/orphans. Required next package is a new forward trigger-only repair with privileged delete/cascade native regressions; preserve existing RLS/provenance guards. No additional source/backend repair applied to these exact approved candidates.
+
+[Full deployed acceptance, evidence, cleanup and exact blocker](docs/REPDB_HOSTED_RELEASE_2026-10-07.md).
+
 ## HISTORICAL LOCAL READY — RepDB Exercise Library v1 — 2026-10-07
 
 **EXERCISE LIBRARY READY FOR RELEASE; NOT DEPLOYED.** This supersedes the earlier MuscleWiki/API Ninjas provider-blocker for this package. Reviewed RepDB Free Tier v1.0 permits the requested in-app durable use with visible attribution. Pinned schema-3 snapshot `a360f87f9064de42a9c90228cfebae941a5016d5` has 609 exercises; source/license hashes verified; raw dataset is server-only, ignored and excluded from public manifests. No provider secret.

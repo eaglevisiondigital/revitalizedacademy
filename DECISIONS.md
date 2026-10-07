@@ -6,6 +6,12 @@ Prefer visible, focused Check Your Email confirmation, masked recipient, do-not-
 
 # Historical RepDB Exercise Library local candidate — 2026-10-07
 
+# Accepted narrow RepDB forward repair — 2026-10-07
+
+User explicitly approved the new DELETE-contract migration, once to each environment, plus disposable hosted import/delete acceptance and cleanup. Applied production ledger20261007221345 / beta20261007221355; source filename20261007220506. Preserve original20261007201539 migration, existing Archive/RLS/provenance/FKs, one-way production-authoritative sync, Auth/client/payment/config isolation. No new DELETE UI or frontend deployment. All requested repair gates accepted; no remaining package blocker or unrelated follow-on work. [Evidence](docs/REPDB_DELETE_GUARD_REPAIR_2026-10-07.md).
+
+# RepDB Exercise Library local candidate — 2026-10-07
+
 User-directed RepDB pivot replaces blocked MuscleWiki/API Ninjas source selection. Use Free Tier v1.0, pinned commit/hash/count609, visible publisher credit and free flat WebP references only. Preserve unknown source values, original muscle identifiers and separate local overrides; do not infer functional movement. Imported records are published into an existing methodology for immediate workouts, while approval remains separate. Preserve name uniqueness with explicit source-slug disambiguation. Hold hosted migration/deployment for explicit approval of this new candidate. [Release report](docs/REPDB_EXERCISE_LIBRARY_V1_2026-10-07.md). Not deployed.
 
 # Accepted production-authoritative reusable content — 2026-10-07
@@ -33,3 +39,8 @@ Publish only after the reviewed GitHub source, single production migration and e
 Preserve separate U.S. merchant/U.S. settlement and Canadian merchant/Canadian settlement checkout architecture. USD versus CAD pricing remains unresolved. Payments/checkout/affiliate/provider/AI/wearable promotion is excluded.
 
 2026-10-07: User approved production → beta reusable-content sync only. Production wins over beta edits on later sync; dependency trees and stable mappings are required. Explicitly excluded are people/Auth/staff/permissions/health/Vitality/assignments/payments/agreements/messages/operational records. V1 covers nutrition and fitness content definitions, without automatic wholesale promotion or reverse synchronization.
+
+
+## 2026-10-07 — Production lifecycle preparation (not released)
+
+Production Client Lifecycle v1: user requested safe pre-payment promotion only, excluding live/synthetic production payments and unaccepted paid modules. Production MK7 versus approved beta MK8 and the missing Holistic Foundations mapping require explicit Primary Chat resolution; no mapping or production financial defaults were invented. Disposable production inbox approval remains pending.

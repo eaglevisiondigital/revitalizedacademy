@@ -55,9 +55,9 @@ for(const [table,field,kind]of [['food_catalog','name','nutrition'],['recipes','
   await assert.rejects(actor(null,`insert into public.${table}(methodology_id,${field}${extra}) values($1,'Bad'${extraValue})`,[kind==='nutrition'?nutrition:fitness],'anon'),/permission denied|row-level security/);
  });
 }
-test('member can read published reusable library but not drafts or authoring mutations',async()=>{
+test('unactivated member cannot read published reusable library or authoring mutations',async()=>{
  const id=await insertRecipe();await actor(owner,"update public.recipes set status='published' where id=$1",[id]);
- assert.equal((await actor(member,'select * from public.recipes where id=$1',[id])).rowCount,1);
+ assert.equal((await actor(member,'select * from public.recipes where id=$1',[id])).rowCount,0);
  assert.equal((await actor(member,"update public.recipes set title='Bad' where id=$1 returning id",[id])).rowCount,0);
 });
 test('methodology philosophy edits retain existing keys/guidance and no guidance is seeded',async()=>{

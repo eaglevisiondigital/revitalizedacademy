@@ -8,6 +8,12 @@ Native PostgreSQL17 permission/completion/revision tests96/96, eight-session rac
 
 # Historical RepDB Exercise Library local candidate — 2026-10-07
 
+# Verified RepDB cleanup authorization — 2026-10-07
+
+The new forward repair changes only the privileged DELETE row return. Guard remains security invoker with empty search_path, original owner/ACL, and all source/approval checks. No browser permissive DELETE policy, role, permission or grant added. Actual hosted staff/member/anonymous/Owner browser deletion denied; authorized privileged QA cleanup succeeds only after retained audit evidence and dependency checks. Original policies/grants/other functions and private-data fingerprints unchanged. Archive remains normal UI behavior. [Acceptance and remaining unrelated advisor findings](docs/REPDB_DELETE_GUARD_REPAIR_2026-10-07.md).
+
+# RepDB Exercise Library local candidate — 2026-10-07
+
 New exercise-library requests require the exact Netlify site/project/custom origin, matching Auth identity and active Owner/Admin plus learning.manage. Service-only RPC rechecks authority; unchanged RLS plus provenance trigger prevent browser spoofing/imported-global mutations. No permission grants or private-health-policy changes. Raw licensed dataset and service secrets stay private; public/bulk/actor override and reverse sync are denied. Beta source import uses only beta Auth/project secrets. [Release report](docs/REPDB_EXERCISE_LIBRARY_V1_2026-10-07.md). Not deployed.
 
 # Live content sync security acceptance — 2026-10-07
@@ -33,3 +39,8 @@ Current audit support is existing created_by/updated_at where available and reci
 The production legacy client lifecycle/private-data policies require their own coordinated release and cross-account acceptance. This candidate does not certify or broaden those workflows. No staging synthetic data, grants, identities or mail allowlists are copied. Remote application and hosted acceptance are pending explicit approval.
 
 Content sync security: service-role-only export/receive RPCs, empty definer search paths, reviewed content table/field whitelist, active Owner/Admin plus effective `learning.manage` rechecked for each production job action. Browser actor/destination fields are rejected. No creator Auth identities or unrestricted metadata are copied. Beta cannot invoke an export/reverse endpoint and never holds a production service key. Source and target audits are private; browser labels expose reusable-content provenance only through existing authoring RLS. No role grants, feature flags, payment or private-health policies change.
+
+
+## 2026-10-07 — Production lifecycle preparation (not released)
+
+Unapplied production lifecycle candidate tests exact caller role/permission/contact scope, hashed verified invitation claim, immutable/idempotent signing and no browser signature forgery. Production-only mail origin and unpaid access/payment-record holds are tested locally. Existing RLS/scope is preserved; no production role grants or data changes. Hosted and account-transition acceptance remain required.
