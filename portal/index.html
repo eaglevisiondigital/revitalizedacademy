@@ -14,7 +14,7 @@
   <link rel="shortcut icon" type="image/png" href="../assets/images/revitalized-icon-approved.png">
   <link rel="apple-touch-icon" href="../assets/images/revitalized-icon-approved.png">
   <link rel="manifest" href="manifest.webmanifest?v=171">
-  <link rel="stylesheet" href="portal.css?v=174">
+  <link rel="stylesheet" href="portal.css?v=175">
   <link rel="stylesheet" href="portal-messaging.css?v=105">
   <link rel="stylesheet" href="portal-journey.css?v=118">
   <link rel="stylesheet" href="portal-action-center.css?v=109">
@@ -250,7 +250,7 @@
               <p class="section-kicker">CLIENT ENROLLMENT</p><h3>Program, invitation &amp; member access</h3>
               <div id="client-enrollment-summary" class="journey-summary-grid"></div>
               <p id="client-enrollment-next" class="panel-note"></p>
-              <div class="journey-action-row">
+              <div class="client-enrollment-actions">
                 <button id="client-enrollment-start" class="primary" type="button">Start Enrollment / Choose Program</button>
                 <button id="client-enrollment-invite" type="button" disabled>Send Invitation</button>
                 <button id="client-enrollment-access" type="button" disabled>Review Payment &amp; Access</button>
@@ -264,7 +264,7 @@
                   <label><span>Currency</span><select id="client-enrollment-currency"><option value="USD">USD</option><option value="CAD">CAD</option></select></label>
                 </div>
                 <p class="panel-note">Save configures the existing enrollment. It does not send mail, sign an agreement, record payment, or grant member access.</p>
-                <button id="client-enrollment-save" class="primary" type="submit">Save Enrollment</button>
+                <button id="client-enrollment-save" class="primary-button" type="submit">Save Enrollment</button>
               </form>
               <p id="client-enrollment-status" class="form-status" aria-live="polite"></p>
             </section>
