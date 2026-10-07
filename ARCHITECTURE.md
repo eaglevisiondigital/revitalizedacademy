@@ -149,3 +149,8 @@ The lifecycle branch is extended by codex/staging. Browser environment resolutio
 netlify.toml now builds dist through scripts/build-site.cjs and the exact config/public-files.json manifest. Backend, engineering evidence, private legal inputs and dev tools cannot enter that artifact. The observed live root publish configuration above is historical production evidence, not the new branch configuration.
 
 Fresh staging uses the catalog baseline and two original forward files, followed by safe configuration/legal seeds and staging-only constraints. A private hash receipt tracks actual components without pretending to recover managed schemas or historical migrations. Hosted resources/settings are separate and still need validation. See docs/STAGING_ENVIRONMENT.md and docs/STAGING_RELEASE_RUNBOOK.md.
+
+
+## 2026-10-06 — Beta staff recipient approval
+
+Beta staff invitation and password setup accept the unchanged static allowlist or a separate audited staff-specific exact-email registry. The existing client registry is not consulted. Approval permits mail only and cannot grant a staff role; normal staff management retains role/identity validation.

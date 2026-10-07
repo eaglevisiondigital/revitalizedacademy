@@ -137,3 +137,8 @@ The staging package introduces explicit runtime/build environment validation bef
 Provisioning requires a new empty application/Auth state, a matching non-production ref/verified-TLS connection and explicit apply acknowledgement. Staging origin/payment constraints, all existing RLS/signing/paid gates, private buckets and export defaults remain. Raw legal PDFs/template text are ignored private inputs with pinned hashes. No live user/client data is seeded.
 
 Staging email dispatch is restricted to exact controlled inboxes and same-origin callback URLs; SMS is disabled and no checkout endpoints are allowed. Hosted Auth SMTP is a separate boundary requiring a restricted test transport before account creation. Local seeded advisors: zero security findings, eight existing performance warnings, no indexes removed. No hosted Auth setting or production configuration changed. See docs/STAGING_ACCEPTANCE.md for the remaining hosted gate.
+
+
+## 2026-10-06 — Beta staff recipient approval
+
+Beta staff email approval requires active completed Owner/Admin and staff.manage; exact address/reason/actor are audited. Service-only checkers are purpose-specific. Client and staff approvals never substitute for each other. Dynamic staff exceptions require the isolated beta project and branded beta origin. Direct registry access and anonymous approval are denied; production never consults the registry.

@@ -249,6 +249,7 @@
 
   async function load(){
     await loadMyPermissions();
+    renderBetaStaffRecipientApproval();
 
     const panel=el("staff-access-panel");
     if(!myPermissions["staff.view"]){
@@ -664,4 +665,29 @@
       finally{betaRecipientBusy=false;button.disabled=false;}
     });
   }
+  const betaStaffRecipientForm=el('beta-staff-recipient-form');
+  let betaStaffRecipientBusy=false;
+  function canApproveBetaStaffRecipient(){
+    return window.RVA_PUBLIC_CONFIG?.environment==='staging'&&['owner','admin'].includes(portal.currentStaffRole?.())&&myPermissions['staff.manage']===true;
+  }
+  function renderBetaStaffRecipientApproval(){betaStaffRecipientForm?.classList.toggle('hidden',!canApproveBetaStaffRecipient());}
+  document.addEventListener('ra:staff-access-reset',()=>{
+    betaStaffRecipientForm?.reset();betaStaffRecipientForm?.classList.add('hidden');setStatus('beta-staff-recipient-status','');
+  });
+  betaStaffRecipientForm?.addEventListener('submit',async(event)=>{
+    event.preventDefault();if(betaStaffRecipientBusy||!canApproveBetaStaffRecipient())return;
+    const actor=portal.currentUserId();betaStaffRecipientBusy=true;
+    const button=betaStaffRecipientForm.querySelector('button[type="submit"]');button.disabled=true;
+    setStatus('beta-staff-recipient-status','Saving exact staff recipient approval…');
+    try{
+      const {data,error}=await client.rpc('set_beta_staff_test_recipient',{
+        p_email:el('beta-staff-recipient-email').value.trim().toLowerCase(),
+        p_approved:el('beta-staff-recipient-approved').value==='true',p_reason:el('beta-staff-recipient-reason').value.trim()
+      });
+      if(actor!==portal.currentUserId())return;if(error)throw error;
+      setStatus('beta-staff-recipient-status',data.approved?'Beta staff recipient approved. Use Invite Staff, or the existing staff record to reissue setup.':'Staff recipient approval revoked. Existing protected staging recipients remain allowed.','success');
+    }catch(error){if(actor===portal.currentUserId())setStatus('beta-staff-recipient-status',error.message||'Staff recipient approval failed.','error');}
+    finally{betaStaffRecipientBusy=false;button.disabled=false;}
+  });
+
 })();

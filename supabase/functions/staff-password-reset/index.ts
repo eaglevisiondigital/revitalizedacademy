@@ -1,4 +1,5 @@
-import { allowedOrigins, edgeEnvironment, configurationError, assertSyntheticRecipient } from "../_shared/environment.ts";
+import { assertApprovedBetaStaffRecipient } from "../_shared/beta-recipient.ts";
+import { allowedOrigins, edgeEnvironment, configurationError } from "../_shared/environment.ts";
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "npm:@supabase/supabase-js@2.57.4";
 
@@ -56,7 +57,7 @@ Deno.serve(async(req:Request)=>{
       return json(origin,{ok:true,message:generic});
     }
 
-    assertSyntheticRecipient(email);
+    await assertApprovedBetaStaffRecipient(email,admin);
     const {data:linkData,error:linkError}=await admin.auth.admin.generateLink({
       type:"recovery",
       email

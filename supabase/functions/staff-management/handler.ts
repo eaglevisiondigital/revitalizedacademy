@@ -1,4 +1,5 @@
-import { allowedOrigins, edgeEnvironment, configurationError, assertSyntheticRecipient } from "../_shared/environment.ts";
+import { assertApprovedBetaStaffRecipient } from "../_shared/beta-recipient.ts";
+import { allowedOrigins, edgeEnvironment, configurationError } from "../_shared/environment.ts";
 import { callerClient } from "../_shared/authorization.ts";
 import { createClient } from "npm:@supabase/supabase-js@2.57.4";
 
@@ -122,7 +123,7 @@ export async function handleRequest(req:Request){
       if(actorStaff.role!=="owner")return json(origin,{error:"Only an Owner can reconcile a pending staff email."},403);
       if(!userId||!email||!/^\S+@\S+\.\S+$/.test(email))return json(origin,{error:"A valid staff email is required."},400);
       if(!reason)return json(origin,{error:"Enter a reason before changing a staff email."},400);
-      assertSyntheticRecipient(email);
+      await assertApprovedBetaStaffRecipient(email,admin);
 
       const {data:target,error:targetError}=await admin.from("staff_access")
         .select("user_id,role,display_name,status,onboarding_status,contact_scope")
@@ -231,7 +232,7 @@ export async function handleRequest(req:Request){
       if(!new Set(["all","assigned","none"]).has(contactScope))return json(origin,{error:"Invalid People data scope."},400);
       if(role==="owner"&&actorStaff.role!=="owner")return json(origin,{error:"Only an Owner can invite another Owner."},403);
 
-      assertSyntheticRecipient(email);
+      await assertApprovedBetaStaffRecipient(email,admin);
       const redirectTo=edgeEnvironment().staffRedirect+"?setup=staff";
 
       let existingAuthUser=null;

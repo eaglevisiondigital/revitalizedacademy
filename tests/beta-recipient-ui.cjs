@@ -3,7 +3,7 @@ const root=process.env.RVA_BETA_ASSET_ROOT||'.';const html=fs.readFileSync(root+
 function runtime(t,environment='staging',role='owner'){
  const form=html.match(/<form id="beta-recipient-form"[\s\S]*?<\/form>/)[0];const dom=new JSDOM(form,{runScripts:'outside-only'});t.after(()=>dom.window.close());const w=dom.window,calls=[];let uid='first-owner',resolve;
  w.RVA_PUBLIC_CONFIG={environment};w.portal={currentStaffRole:()=>role,currentUserId:()=>uid};w.client={rpc:(name,args)=>{calls.push({name,args});return new Promise(r=>resolve=r);}};w.el=id=>w.document.getElementById(id);w.setStatus=(id,text)=>w.el(id).textContent=text;
- const block=source.slice(source.indexOf('  const betaRecipientForm='),source.lastIndexOf('})();'));w.eval(block);
+ const block=source.slice(source.indexOf('  const betaRecipientForm='),source.indexOf('  const betaStaffRecipientForm='));w.eval(block);
  const event=name=>w.document.dispatchEvent(new w.Event(name));const send=()=>w.el('beta-recipient-form').dispatchEvent(new w.Event('submit',{cancelable:true}));
  return {w,calls,event,send,changeUser:()=>uid='different-account',complete:()=>resolve({data:{approved:true},error:null})};
 }

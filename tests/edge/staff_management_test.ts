@@ -1,14 +1,15 @@
 import { handleRequest } from '../../supabase/functions/staff-management/handler.ts';
 function assert(value:unknown,message='Assertion failed'):asserts value{if(!value)throw Error(message);}
 const actor='10000000-0000-4000-8000-000000000001',target='10000000-0000-4000-8000-000000000002';
-async function run(options:{existingStaff?:boolean;permission?:boolean;active?:boolean;bound?:boolean;role?:string;newUser?:boolean}={}){
+async function run(options:{existingStaff?:boolean;permission?:boolean;active?:boolean;bound?:boolean;role?:string;newUser?:boolean;dynamic?:boolean;approved?:boolean}={}){
  const env=Deno.env.get,fetch=globalThis.fetch;const calls:Array<{path:string;method:string;body:any;search:string}>=[];
- Deno.env.get=k=>({RVA_ENVIRONMENT:'local',RVA_APP_ORIGIN:'https://synthetic.invalid',RVA_PAYMENT_MODE:'synthetic',RVA_SYNTHETIC_EMAIL_ALLOWLIST:'beta@example.invalid',SUPABASE_URL:'https://synthetic.invalid',SUPABASE_SERVICE_ROLE_KEY:'test-key'}[k]);
+ Deno.env.get=k=>({RVA_ENVIRONMENT:options.dynamic?'staging':'local',RVA_APP_ORIGIN:options.dynamic?'https://beta.revitalizedacademy.com':'https://synthetic.invalid',RVA_PAYMENT_MODE:'synthetic',RVA_SYNTHETIC_EMAIL_ALLOWLIST:options.dynamic?'existing@example.invalid':'beta@example.invalid',SUPABASE_URL:options.dynamic?'https://bvooallokgfktssadsrv.supabase.co':'https://synthetic.invalid',SUPABASE_SERVICE_ROLE_KEY:'test-key'}[k]);
  globalThis.fetch=async(input,init)=>{
   const request=new Request(input,init),url=new URL(request.url),text=await request.text(),body=text?JSON.parse(text):null;calls.push({path:url.pathname,method:request.method,body,search:url.search});
   let data:any=null;
   if(url.pathname==='/auth/v1/user')data={id:actor,email:'operator@example.invalid'};
   else if(url.pathname.endsWith('/rpc/staff_action_allowed')){assert(request.headers.get('authorization')==='Bearer caller');data=options.permission!==false;}
+  else if(url.pathname.endsWith('/rpc/beta_staff_test_recipient_approved'))data=options.approved===true;
   else if(url.pathname==='/auth/v1/admin/users')data={users:options.newUser?[]:[{id:target,email:'beta@example.invalid'}]};
   else if(url.pathname==='/auth/v1/invite')data={id:target,email:'beta@example.invalid'};
   else if(url.pathname.endsWith('/staff_access'))data=request.method==='GET'?(url.search.includes(actor)?{user_id:actor,role:options.role||'admin',status:options.active===false?'inactive':'active'}:options.existingStaff?{user_id:target,role:'owner',status:'active'}:null):null;
@@ -64,7 +65,7 @@ Deno.test('pending staff email reconciliation preserves identity and reissues on
  assert(calls.some(c=>c.path.endsWith('/staff_invitations')&&['PUT','PATCH'].includes(c.method)));
  assert(calls.filter(c=>c.path==='/auth/v1/resend').length===1);
  const resend=calls.find(c=>c.path==='/auth/v1/resend');
- assert(String(resend?.body?.redirect_to||resend?.body?.options?.emailRedirectTo||'').includes('setup=staff'));
+ assert(new URL(resend?.search||'', 'https://placeholder.invalid').searchParams.get('redirect_to')?.includes('setup=staff'));
  assert(!calls.some(c=>c.path==='/auth/v1/invite'||c.method==='DELETE'));
 });
 Deno.test('pending staff email reconciliation is owner-only',async()=>{
@@ -77,4 +78,14 @@ Deno.test('pending staff email reconciliation refuses completed onboarding and c
   assert(!calls.some(c=>c.path===`/auth/v1/admin/users/${target}`&&['PUT','PATCH'].includes(c.method)));
   assert(!calls.some(c=>c.path==='/auth/v1/resend'));
  }
+});
+
+Deno.test('dynamically approved staff receives one Auth invite with exact beta redirect',async()=>{
+ const {response,calls}=await run({dynamic:true,approved:true,newUser:true});assert(response.status===200,await response.text());
+ const sends=calls.filter(c=>c.path==='/auth/v1/invite');assert(sends.length===1);assert(new URL(sends[0].search,'https://placeholder.invalid').searchParams.get('redirect_to')==='https://beta.revitalizedacademy.com/portal/?setup=staff');
+ assert(calls.some(c=>c.path.endsWith('/rpc/beta_staff_test_recipient_approved')));
+});
+Deno.test('unapproved dynamic staff cannot send or create any staff identity',async()=>{
+ const {response,calls}=await run({dynamic:true,approved:false,newUser:true});assert(response.status>=400);
+ assert(!calls.some(c=>c.path==='/auth/v1/invite'||c.path==='/auth/v1/admin/users'||c.method==='PATCH'||c.method==='POST'&&!c.path.includes('/rpc/')));
 });

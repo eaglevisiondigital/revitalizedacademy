@@ -1,5 +1,15 @@
 # ReVitalized Academy — current build state
 
+## Beta staff recipient approval repair — 2026-10-06
+
+Staff invitations and staff password setup previously used only the static synthetic recipient allowlist; client recipient approval did not cover either. Added separate private exact-email staff approval/audit tables and authenticated `set_beta_staff_test_recipient`, requiring active onboarding-complete Owner/Admin plus `staff.manage`. Service-only checking is purpose-specific and fails closed. Client approvals cannot authorize staff mail, and staff approvals cannot authorize client mail. No role or Auth identity is created by approval. Production mapping/configuration and existing static allowlist remain unchanged.
+
+Applied staging migration ledger `20261007040620` (`beta_staff_recipient_approval`; source `20261007040256_beta_staff_recipient_approval.sql`). Beta-only `staff-management` and `staff-password-reset` are version 17, retaining existing authentication, active staff eligibility, role restrictions and custom-auth JWT configuration. Staff redirects/recovery use `https://beta.revitalizedacademy.com`. Portal Team Permissions exposes separate staff-email approval/revocation; `portal-staff-access.js?v=185`.
+
+Verification: PostgreSQL 17 staff policy 9/9; existing client approval suite scheduled; native Deno Edge 53/53; both affected Edge entrypoints typecheck; 78 JS syntax checks; exact-built client/staff approval UI 6/6; actual staff password-reset runtime 4/4; full frontend running. Hosted delivery to user-approved `drewgdavies@protonmail.com`, Administrator/All People, awaits required name/phone and normal approved invitation. No contact/Auth/staff record exists for this recipient yet. No production changes.
+
+Security advisors: new private registry/audit RLS has no direct policies intentionally (all direct access revoked); authenticated approval RPC has explicit role/permission/environment checks. Existing unrelated family-view and other security advisories were not changed by this narrow package.
+
 ## Holistic Foundations Gmail invitation issued — 2026-10-06
 
 User selected Holistic Foundations. Normal Owner UI merged the same Gmail CRM contact and attached `direct_membership`; no duplicate identity. Journey `b432b394-c7da-4f9e-8cff-6c3b4e5c0fde`, activation `58e5f230-0521-44ea-8929-25b5205ee22f` retain existing monthly 8900 USD/six-month defaults with payment/access pending. Current MK8 agreement `2eaff98e-6779-4f34-b6d9-22f74994b86a` was prepared and sent through the normal contract/notification workflow. One contact, journey, activation, agreement, secure link and delivery job; no Auth identity yet.
