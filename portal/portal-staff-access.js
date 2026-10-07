@@ -638,4 +638,30 @@
     if(!el("staff-invite-modal").classList.contains("hidden"))closeInvite();
     if(!el("staff-permissions-modal").classList.contains("hidden"))closePermissions();
   });
+
+  const betaRecipientForm=el('beta-recipient-form');
+  let betaRecipientBusy=false;
+  document.addEventListener('ra:dashboard-loaded',()=>{
+    betaRecipientForm?.classList.toggle('hidden',!(window.RVA_PUBLIC_CONFIG?.environment==='staging'&&portal.currentStaffRole?.()==='owner'));
+  });
+  document.addEventListener('ra:staff-access-reset',()=>{betaRecipientForm?.reset();betaRecipientForm?.classList.add('hidden');setStatus('beta-recipient-status','');});
+  if(betaRecipientForm){
+    betaRecipientForm.addEventListener('submit',async(event)=>{
+      event.preventDefault();
+      if(betaRecipientBusy||window.RVA_PUBLIC_CONFIG?.environment!=='staging'||portal.currentStaffRole?.()!=='owner')return;
+      const actor=portal.currentUserId();betaRecipientBusy=true;
+      const button=betaRecipientForm.querySelector('button[type="submit"]');button.disabled=true;
+      setStatus('beta-recipient-status','Saving exact recipient approval…');
+      try{
+        const {data,error}=await client.rpc('set_beta_test_recipient',{
+          p_email:el('beta-recipient-email').value.trim().toLowerCase(),
+          p_approved:el('beta-recipient-approved').value==='true',p_reason:el('beta-recipient-reason').value.trim()
+        });
+        if(actor!==portal.currentUserId())return;
+        if(error)throw error;
+        setStatus('beta-recipient-status',data.approved?'Beta recipient approved. Issue or resend the existing client invitation through the enrollment workflow.':'Owner approval revoked. Existing protected staging recipients remain allowed.','success');
+      }catch(error){if(actor===portal.currentUserId())setStatus('beta-recipient-status',error.message||'Recipient approval failed.','error');}
+      finally{betaRecipientBusy=false;button.disabled=false;}
+    });
+  }
 })();

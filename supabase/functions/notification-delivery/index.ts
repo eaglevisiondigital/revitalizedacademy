@@ -1,3 +1,4 @@
+import { assertApprovedBetaNotification } from '../_shared/beta-recipient.ts';
 import { allowedOrigins, edgeEnvironment, configurationError, assertNotification } from "../_shared/environment.ts";
 import { callerClient } from "../_shared/authorization.ts";
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
@@ -19,8 +20,8 @@ function json(origin:string|null,data:unknown,status=200){
   });
 }
 
-async function sendResend(job:any){
-  assertNotification(job);
+async function sendResend(job:any,admin:any){
+  await assertApprovedBetaNotification(job,admin);
   const apiKey=Deno.env.get("RESEND_API_KEY");
   const from=Deno.env.get("REVITALIZED_EMAIL_FROM")||"ReVitalized Academy <noreply@auth.revitalizedacademy.com>";
   if(!apiKey)return {ok:false,blocked:true,reason:"resend_not_configured"};
@@ -173,7 +174,7 @@ Deno.serve(async(req:Request)=>{
 
       let result:any;
       try{
-        result=job.channel==="email"?await sendResend(job):await sendTwilio(job);
+        result=job.channel==="email"?await sendResend(job,admin):await sendTwilio(job);
       }catch(error){
         result={ok:false,reason:error instanceof Error?error.message:"provider_exception"};
       }

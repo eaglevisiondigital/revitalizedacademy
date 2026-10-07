@@ -2650,6 +2650,15 @@
             </div>
             <button id="staff-invite-button" class="primary-button compact" type="button">Invite Staff</button>
           </div>
+          <form id="beta-recipient-form" class="people-form hidden">
+            <h3>Approve a Beta Test Recipient</h3>
+            <p class="panel-note">Owner approval for one existing beta client. This permits staging invitation delivery only; it does not create an enrollment or grant client access.</p>
+            <label>Email address<input id="beta-recipient-email" type="email" required autocomplete="off"></label>
+            <label>Approval reason<input id="beta-recipient-reason" type="text" required minlength="3" maxlength="500"></label>
+            <label>Recipient approval<select id="beta-recipient-approved"><option value="true">Approve</option><option value="false">Revoke approval</option></select></label>
+            <button class="secondary-button compact" type="submit">Save Recipient Approval</button>
+            <p id="beta-recipient-status" class="form-status" role="status" aria-live="polite"></p>
+          </form>
           <div id="staff-access-summary" class="staff-access-summary"></div>
           <div id="staff-access-list" class="staff-access-list">
             <div class="empty-state">Loading staff access...</div>
@@ -3072,7 +3081,7 @@
   <script defer src="portal-content-composition.js?v=2"></script>
   <script defer src="portal-people.js?v=136"></script>
   <script defer src="portal-people-directory.js?v=144"></script>
-  <script defer src="portal-staff-access.js?v=183"></script>
+  <script defer src="portal-staff-access.js?v=184"></script>
   <script defer src="portal-permissions.js?v=132"></script>
   <script defer src="portal-referrals.js?v=166"></script>
   <script defer src="portal-family-requests.js?v=166"></script>
