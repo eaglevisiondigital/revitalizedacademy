@@ -142,3 +142,5 @@ Staging email dispatch is restricted to exact controlled inboxes and same-origin
 ## 2026-10-06 — Beta staff recipient approval
 
 Beta staff email approval requires active completed Owner/Admin and staff.manage; exact address/reason/actor are audited. Service-only checkers are purpose-specific. Client and staff approvals never substitute for each other. Dynamic staff exceptions require the isolated beta project and branded beta origin. Direct registry access and anonymous approval are denied; production never consults the registry.
+
+Content sync security: service-role-only export/receive RPCs, empty definer search paths, reviewed content table/field whitelist, active Owner/Admin plus effective `learning.manage` rechecked for each production job action. Browser actor/destination fields are rejected. No creator Auth identities or unrestricted metadata are copied. Beta cannot invoke an export/reverse endpoint and never holds a production service key. Source and target audits are private; browser labels expose reusable-content provenance only through existing authoring RLS. No role grants, feature flags, payment or private-health policies change.

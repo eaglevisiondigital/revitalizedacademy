@@ -1,0 +1,295 @@
+{
+  "nutrition_methodologies": {
+    "fields": [
+      "methodology_key",
+      "name",
+      "version",
+      "status",
+      "philosophy",
+      "meal_frequency_guidance",
+      "portion_guidance",
+      "protein_guidance",
+      "carbohydrate_guidance",
+      "fat_guidance",
+      "beverage_guidance",
+      "snack_guidance",
+      "supplement_guidance",
+      "restaurant_travel_guidance",
+      "exceptions_guidance",
+      "published_at"
+    ],
+    "refs": {},
+    "children": {
+      "nutrition_phases": "methodology_id"
+    },
+    "updated": true
+  },
+  "fitness_methodologies": {
+    "fields": [
+      "methodology_key",
+      "name",
+      "version",
+      "status",
+      "philosophy",
+      "progression_guidance",
+      "frequency_guidance",
+      "duration_guidance",
+      "recovery_guidance",
+      "walking_cardio_guidance",
+      "strength_guidance",
+      "mobility_guidance",
+      "restrictions_guidance",
+      "published_at"
+    ],
+    "refs": {},
+    "children": {},
+    "updated": true
+  },
+  "nutrition_phases": {
+    "fields": [
+      "methodology_id",
+      "phase_key",
+      "name",
+      "phase_order",
+      "description",
+      "active"
+    ],
+    "refs": {
+      "methodology_id": "nutrition_methodologies"
+    },
+    "children": {},
+    "updated": false
+  },
+  "food_catalog": {
+    "fields": [
+      "methodology_id",
+      "phase_id",
+      "name",
+      "category",
+      "guidance_status",
+      "serving_guidance",
+      "notes",
+      "tags",
+      "active",
+      "image_url",
+      "image_alt",
+      "nutrition",
+      "brand",
+      "barcode",
+      "serving_size",
+      "serving_unit",
+      "grams_per_serving",
+      "data_source",
+      "source_record_id",
+      "source_verified",
+      "provider",
+      "fdc_id",
+      "source_data_type",
+      "source_portions",
+      "source_metadata",
+      "source_version",
+      "source_imported_at",
+      "revitalized_approved"
+    ],
+    "refs": {
+      "methodology_id": "nutrition_methodologies",
+      "phase_id": "nutrition_phases"
+    },
+    "children": {},
+    "updated": true
+  },
+  "exercise_catalog": {
+    "fields": [
+      "methodology_id",
+      "name",
+      "category",
+      "environment",
+      "difficulty",
+      "equipment",
+      "instructions",
+      "restriction_notes",
+      "video_url",
+      "tags",
+      "status",
+      "published_at",
+      "image_url",
+      "image_alt",
+      "primary_muscle_group",
+      "secondary_muscle_groups",
+      "movement_type",
+      "low_impact"
+    ],
+    "refs": {
+      "methodology_id": "fitness_methodologies"
+    },
+    "children": {},
+    "updated": true
+  },
+  "recipes": {
+    "fields": [
+      "methodology_id",
+      "phase_id",
+      "title",
+      "meal_type",
+      "servings",
+      "prep_minutes",
+      "cook_minutes",
+      "instructions",
+      "nutrition",
+      "tags",
+      "meal_prep_friendly",
+      "freezer_friendly",
+      "status",
+      "published_at",
+      "image_url",
+      "image_alt",
+      "nutrition_calculated_at",
+      "nutrition_calculation_meta"
+    ],
+    "refs": {
+      "methodology_id": "nutrition_methodologies",
+      "phase_id": "nutrition_phases"
+    },
+    "children": {
+      "recipe_ingredients": "recipe_id"
+    },
+    "updated": true
+  },
+  "recipe_ingredients": {
+    "fields": [
+      "recipe_id",
+      "ingredient",
+      "quantity",
+      "unit",
+      "note",
+      "sort_order",
+      "food_id",
+      "weight_grams",
+      "calculation_basis",
+      "nutrition_multiplier",
+      "nutrition_snapshot",
+      "source_portion_id"
+    ],
+    "refs": {
+      "recipe_id": "recipes",
+      "food_id": "food_catalog"
+    },
+    "children": {},
+    "updated": false
+  },
+  "meal_plan_templates": {
+    "fields": [
+      "methodology_id",
+      "phase_id",
+      "title",
+      "description",
+      "days_count",
+      "status",
+      "published_at"
+    ],
+    "refs": {
+      "methodology_id": "nutrition_methodologies",
+      "phase_id": "nutrition_phases"
+    },
+    "children": {
+      "meal_plan_template_items": "template_id"
+    },
+    "updated": true
+  },
+  "meal_plan_template_items": {
+    "fields": [
+      "template_id",
+      "day_number",
+      "meal_slot",
+      "recipe_id",
+      "custom_title",
+      "notes",
+      "sort_order"
+    ],
+    "refs": {
+      "template_id": "meal_plan_templates",
+      "recipe_id": "recipes"
+    },
+    "children": {},
+    "updated": false
+  },
+  "workout_templates": {
+    "fields": [
+      "methodology_id",
+      "title",
+      "description",
+      "category",
+      "difficulty",
+      "environment",
+      "duration_minutes",
+      "status",
+      "published_at",
+      "image_url",
+      "image_alt",
+      "workout_type",
+      "muscle_groups",
+      "equipment"
+    ],
+    "refs": {
+      "methodology_id": "fitness_methodologies"
+    },
+    "children": {
+      "workout_template_exercises": "workout_id"
+    },
+    "updated": true
+  },
+  "workout_template_exercises": {
+    "fields": [
+      "workout_id",
+      "exercise_id",
+      "sort_order",
+      "sets",
+      "reps",
+      "duration_seconds",
+      "rest_seconds",
+      "notes"
+    ],
+    "refs": {
+      "workout_id": "workout_templates",
+      "exercise_id": "exercise_catalog"
+    },
+    "children": {},
+    "updated": false
+  },
+  "fitness_programs": {
+    "fields": [
+      "methodology_id",
+      "title",
+      "description",
+      "difficulty",
+      "environment",
+      "weeks",
+      "status",
+      "published_at",
+      "image_url",
+      "image_alt"
+    ],
+    "refs": {
+      "methodology_id": "fitness_methodologies"
+    },
+    "children": {
+      "fitness_program_workouts": "program_id"
+    },
+    "updated": true
+  },
+  "fitness_program_workouts": {
+    "fields": [
+      "program_id",
+      "week_number",
+      "day_number",
+      "workout_id",
+      "notes"
+    ],
+    "refs": {
+      "program_id": "fitness_programs",
+      "workout_id": "workout_templates"
+    },
+    "children": {},
+    "updated": false
+  }
+}

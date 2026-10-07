@@ -154,3 +154,5 @@ Fresh staging uses the catalog baseline and two original forward files, followed
 ## 2026-10-06 — Beta staff recipient approval
 
 Beta staff invitation and password setup accept the unchanged static allowlist or a separate audited staff-specific exact-email registry. The existing client registry is not consulted. Approval permits mail only and cannot grant a staff role; normal staff management retains role/identity validation.
+
+One-way reusable-content sync: production Netlify `reusable-content-sync` verifies the caller and production site, obtains an immutable dependency export, sends it to the fixed beta receiver, then confirms the production audit. The beta receive transaction validates the field contract, remaps foreign keys and cached composition references, uses stable source mappings, and commits content/audit together. Identical job retries return the stored result; stale batches are rejected. The separate environment migration paths must never be applied to the opposite project.

@@ -333,3 +333,5 @@ These decisions resolve the earlier three-question Chat handoff. The old success
 - **D110 APPROVED:** exact replay with the same request UUID and payload returns the existing row ID; reuse of the same UUID with different payload fails with an identity-conflict error.
 - **D111 APPROVED:** the member goal/habit forms preserve request UUIDs across failed retries, generate a new UUID when the form payload changes, disable submit while active, and clear retry identity on success or modal close.
 - **D112 APPROVED:** the legacy `create_my_goal` and `create_my_habit` RPCs remain unchanged for backward compatibility; the current member frontend moves to the idempotent RPCs.
+
+2026-10-07: User approved production → beta reusable-content sync only. Production wins over beta edits on later sync; dependency trees and stable mappings are required. Explicitly excluded are people/Auth/staff/permissions/health/Vitality/assignments/payments/agreements/messages/operational records. V1 covers nutrition and fitness content definitions, without automatic wholesale promotion or reverse synchronization.
