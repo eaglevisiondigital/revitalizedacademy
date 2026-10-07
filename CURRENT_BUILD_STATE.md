@@ -1,5 +1,14 @@
 # ReVitalized Academy — current build state
 
+## William + Isabelle beta invitations — 2026-10-07 (delivered; recipient acceptance pending)
+
+Application `0c5ac4063d197aca35e238dc85ce1aa87e2f1b75`, beta deploy `6ac6a15f82e024f3429710bf`, Agreements JS152. Narrow repair routes unsent/unprepared contracts through existing preparation instead of invalid resend. Build319, syntax81, frontend557 pass/27 skip/0fail, focused runtime10/10; exact live assets match. No new migration/Edge release.
+
+William's confirmed `williambk83@proton.me` was approved and reconciled through normal Owner UI, preserving his Auth/invitation, Administrator/assigned/active state. Provider reports delivered; beta Auth verification redirects only to beta staff setup. Isabelle's existing Holistic Foundations $89USD/month enrollment and MK8 agreement are preserved; Owner prepared/sent the same contract and provider reports delivered. No real charge or synthetic payment yet: supported beta payment instruction requires her actual signature first. Both recipients' setup and Isabelle's dashboard acceptance remain pending. Unapproved staff recipients remain blocked, no duplicates or production changes. Production remains `6ac5fda10ae8b03a2ddf176e`.
+
+This supersedes older William address/Isabelle no-enrollment checkpoints below. [Detailed report](docs/WILLIAM_ISABELLE_BETA_ACCEPTANCE_2026-10-07.md).
+
+
 ## Beta client enrollment controls — 2026-10-07 (deployed; final hosted acceptance blocked)
 
 Implemented an Owner/Admin contact-drawer enrollment hub with explicit approval, program, invitation, agreement, payment, access and next-action states. A staging-only, contact-scoped, audited RPC serializes enrollment saves and reuses the existing journey/activation; issued terms are locked. Save never sends an invitation or substitutes for signature/payment gates. Contract preparation can read the configured activation before a member account exists. Payment/access review is reachable independently of the current journey step.
