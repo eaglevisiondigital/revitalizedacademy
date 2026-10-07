@@ -910,6 +910,7 @@
   function renderContent(){
     if(!contentList)return;
     window.RA_FOOD_DATABASE?.tools(activeContent);
+    window.RA_CONTENT_SYNC?.tools();
     const rows=(contentCache[activeContent]||[]).filter(row=>activeContent!=="foods"||!window.RA_FOOD_DATABASE||window.RA_FOOD_DATABASE.matches(row));
     contentTabs.forEach(b=>b.classList.toggle("active",b.dataset.programContent===activeContent));
     contentList.replaceChildren();
@@ -979,6 +980,7 @@
           actions.append(archive);
         }
       }
+      window.RA_CONTENT_SYNC?.decorate(activeContent,row,copy,actions);
       item.append(copy,detail,status,actions);
       contentList.append(item);
     });

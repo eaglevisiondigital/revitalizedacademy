@@ -15,3 +15,5 @@ Fix the legacy Account event bindings that throw before production auth initiali
 Publish only after the reviewed GitHub source, single production migration and explicit production Netlify release are approved. Then use focused disposable-content acceptance and remove exactly those QA records. The release remains blocked until hosted durability, login and authoring pass.
 
 Preserve separate U.S. merchant/U.S. settlement and Canadian merchant/Canadian settlement checkout architecture. USD versus CAD pricing remains unresolved. Payments/checkout/affiliate/provider/AI/wearable promotion is excluded.
+
+2026-10-07: User approved production → beta reusable-content sync only. Production wins over beta edits on later sync; dependency trees and stable mappings are required. Explicitly excluded are people/Auth/staff/permissions/health/Vitality/assignments/payments/agreements/messages/operational records. V1 covers nutrition and fitness content definitions, without automatic wholesale promotion or reverse synchronization.

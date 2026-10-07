@@ -377,5 +377,6 @@
   "webinar-priority.html",
   "webinar-seat-card-change.patch",
   "webinar-seat-card-override.css",
-  "webinar.html"
+  "webinar.html",
+  "portal/portal-content-sync.js"
 ]
