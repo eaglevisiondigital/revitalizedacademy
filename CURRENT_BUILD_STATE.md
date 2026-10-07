@@ -759,3 +759,9 @@ Both:
 The member Goal and Habit forms now retain request UUIDs through failed retries, generate a new UUID when the payload changes, disable submit while active, and clear retry state on success/modal close.
 
 The original legacy goal/habit RPCs remain present for compatibility.
+
+## Beta FoodData release — 2026-10-07 (in progress)
+
+Production mobile width and hosted source refresh passed first. Beta-compatible FoodData migration source `20261007072948` applied to `bvooallokgfktssadsrv` only, including an authorization helper reflecting existing active/approved `learning.manage` semantics, no grants. USDA functions remain server-only and bound to beta; source-refresh audit records unchanged successful checks. Existing beta client/member/permission/payment modules preserved.
+
+Disposable native PostgreSQL 17 baseline plus all beta forward migrations: 268/268 backend tests. First frontend run had two integration-fixture failures from copied production test paths and previous Recipe Builder cache expectation; focused corrected tests are being rerun. Hosted beta acceptance and one-way content sync are still pending; no sync functionality deployed.

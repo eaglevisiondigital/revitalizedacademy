@@ -49,10 +49,11 @@
           '<section class="recipe-builder-panel recipe-builder-add">'+
             '<div class="recipe-builder-panel-head"><div><strong>Add Ingredient</strong><span>Use grams when possible for the most accurate calculation.</span></div></div>'+
             '<label><span>Food / ingredient</span><select id="recipe-builder-food"></select></label>'+
+            '<button id="recipe-builder-search" type="button" class="secondary-button">Search Food Database</button>'+
             '<div id="recipe-builder-food-hint" class="recipe-builder-food-hint"></div>'+
             '<div class="recipe-builder-grid">'+
               '<label><span>Quantity</span><input id="recipe-builder-quantity" type="number" min="0" step="0.01" placeholder="1"></label>'+
-              '<label><span>Unit</span><input id="recipe-builder-unit" type="text" maxlength="40" placeholder="serving, cup, tbsp..."></label>'+
+              '<label><span>Unit / source portion</span><select id="recipe-builder-unit"></select></label>'+
               '<label><span>Weight (grams)</span><input id="recipe-builder-weight" type="number" min="0" step="0.01" placeholder="Preferred"></label>'+
               '<label><span>Order</span><input id="recipe-builder-order" type="number" min="1" step="1"></label>'+
             '</div>'+
@@ -71,6 +72,7 @@
     modal.querySelector("[data-recipe-builder-close]")?.addEventListener("click",close);
     modal.querySelector(".recipe-builder-close")?.addEventListener("click",close);
     modal.querySelector("#recipe-builder-food")?.addEventListener("change",renderFoodHint);
+    modal.querySelector("#recipe-builder-search")?.addEventListener("click",()=>window.RA_FOOD_DATABASE?.open({methodologyId:activeRecipe.methodology_id,onSelect:async food=>{const token=epoch;await refresh();if(!current(token))return;modal.querySelector('#recipe-builder-food').value=food.id;renderFoodHint();}}));
     modal.querySelector("#recipe-builder-add")?.addEventListener("click",()=>mutate(addIngredient));
     modal.querySelector("#recipe-builder-recalculate")?.addEventListener("click",()=>mutate(recalculate));
     modal.querySelector("#recipe-builder-save-servings")?.addEventListener("click",()=>mutate(saveServings));
@@ -94,12 +96,11 @@
     const token=epoch;
     const [ingredientResult,foodResult,nutrientResult,recipeResult]=await Promise.all([
       client.from("recipe_ingredients")
-        .select("id,recipe_id,ingredient,quantity,unit,note,sort_order,food_id,weight_grams,calculation_basis,nutrition_multiplier,nutrition_snapshot")
+        .select("id,recipe_id,ingredient,quantity,unit,note,sort_order,food_id,weight_grams,source_portion_id,calculation_basis,nutrition_multiplier,nutrition_snapshot")
         .eq("recipe_id",activeRecipe.id)
         .order("sort_order"),
       client.from("food_catalog")
-        .select("id,name,brand,category,active,image_url,nutrition,serving_size,serving_unit,grams_per_serving,data_source,source_record_id,source_verified")
-        .eq("methodology_id",activeRecipe.methodology_id)
+        .select("id,name,brand,category,active,image_url,nutrition,serving_size,serving_unit,grams_per_serving,data_source,source_record_id,source_verified,provider,source_data_type,source_version,source_portions,revitalized_approved")
         .order("name"),
       client.from("nutrition_nutrient_catalog")
         .select("nutrient_key,name,category,unit,default_visible,sort_order")
@@ -132,7 +133,7 @@
     foods.forEach((food)=>{
       const option=document.createElement("option");
       option.value=food.id;
-      option.textContent=(food.brand?food.brand+" · ":"")+food.name+(food.active?"":" · Inactive");
+      option.textContent=(food.revitalized_approved?'★ ':'')+(food.brand?food.brand+" · ":"")+food.name+' · '+(window.RA_FOOD_DATABASE?.source(food)||food.data_source||'Custom')+(food.active?"":" · Inactive");
       select.append(option);
     });
     modal.querySelector("#recipe-builder-order").value=String(ingredients.length+1);
@@ -143,6 +144,11 @@
     const food=foods.find((row)=>row.id===modal?.querySelector("#recipe-builder-food")?.value);
     const hint=modal?.querySelector("#recipe-builder-food-hint");
     if(!hint)return;
+    const units=modal.querySelector('#recipe-builder-unit');units.replaceChildren();
+    const choices=[['g','Grams'],['oz','Ounces']];
+    if(food&&!food.provider){choices.push(['servings','Configured servings']);if(food.serving_unit&&!['g','oz'].includes(food.serving_unit))choices.push([food.serving_unit,food.serving_unit]);}
+    for(const p of food?.source_portions||[])choices.push(['portion:'+p.id,p.amount+' '+p.description+' ('+p.gram_weight+' g)']);
+    for(const [value,name]of choices){const o=document.createElement('option');o.value=value;o.textContent=name;units.append(o);}
     if(!food){
       hint.textContent="Choose a Food Library item to see its serving basis and nutrition source.";
       return;
@@ -207,6 +213,9 @@
       remove.textContent="Remove";
       remove.addEventListener("click",()=>mutate(()=>removeIngredient(row.id)));
       actions.append(remove);
+      const quantity=document.createElement('input');quantity.type='number';quantity.min='0.01';quantity.step='0.01';quantity.value=row.weight_grams??row.quantity??'';quantity.setAttribute('aria-label','Quantity for '+row.ingredient);
+      const save=document.createElement('button');save.type='button';save.textContent=row.weight_grams?'Save grams':'Save quantity';
+      save.addEventListener('click',()=>mutate(async()=>{const token=epoch;const amount=numberOrNull(quantity.value);if(amount===null||amount<=0){status('Enter a positive quantity.','error');return;}const result=await client.from('recipe_ingredients').update(row.weight_grams?{weight_grams:amount}:{quantity:amount}).eq('id',row.id).eq('recipe_id',activeRecipe.id);if(!current(token))return;if(result.error)throw result.error;await recalculate(true);}));actions.prepend(quantity,save);
       card.append(copy,actions);
       root.append(card);
     });
@@ -224,7 +233,7 @@
     const complete=Boolean(meta.complete);
     state.className="recipe-builder-calculation-state "+(complete?"complete":"incomplete");
     state.innerHTML='<strong>'+(complete?"Complete calculation":"Calculation needs attention")+'</strong>'+
-      '<span>'+Number(meta.ingredients_used||0)+' ingredient(s) calculated · '+Number(meta.ingredients_incomplete||0)+' incomplete · '+new Date(calculated).toLocaleString()+'</span>';
+      '<span>'+Number(meta.ingredients_used||0)+' ingredient(s) calculated · '+Number(meta.ingredients_incomplete||0)+' incomplete · '+(meta.total_recipe_weight_grams==null?'Weight unknown':Number(meta.total_recipe_weight_grams).toFixed(2)+' g total weight')+' · '+new Date(calculated).toLocaleString()+'</span>';
   }
 
   function renderNutrition(){
@@ -247,6 +256,7 @@
       const numeric=Number(data[row.nutrient_key]);
       value.textContent=(Number.isFinite(numeric)?numeric.toLocaleString(undefined,{maximumFractionDigits:4}):String(data[row.nutrient_key]))+" "+row.unit;
       item.append(name,value);
+      const total=document.createElement('small');const amount=activeRecipe.nutrition_calculation_meta?.recipe_total?.[row.nutrient_key];total.textContent='Whole recipe: '+(amount==null?'Unknown':Number(amount).toLocaleString(undefined,{maximumFractionDigits:4})+' '+row.unit);item.append(total);
       root.append(item);
     });
   }
@@ -279,7 +289,9 @@
     const food=foods.find((row)=>row.id===modal.querySelector("#recipe-builder-food").value);
     if(!food){status("Choose a Food Library ingredient first.","error");return;}
     const quantity=numberOrNull(modal.querySelector("#recipe-builder-quantity").value);
-    const unit=modal.querySelector("#recipe-builder-unit").value.trim()||null;
+    const selectedUnit=modal.querySelector("#recipe-builder-unit").value;
+    const portion=selectedUnit.startsWith('portion:')?selectedUnit.slice(8):null;
+    const unit=portion?'source portion':selectedUnit||null;
     const weight=numberOrNull(modal.querySelector("#recipe-builder-weight").value);
     const sortOrder=Math.max(1,Number(modal.querySelector("#recipe-builder-order").value||ingredients.length+1));
     const note=modal.querySelector("#recipe-builder-note").value.trim()||null;
@@ -295,6 +307,7 @@
       ingredient:food.name,
       quantity:quantity&&quantity>0?quantity:null,
       unit,
+      source_portion_id:portion,
       weight_grams:weight&&weight>0?weight:null,
       note,
       sort_order:sortOrder
@@ -341,11 +354,12 @@
     await refresh();
     if(!current(token))return;
     const incomplete=Number(data?.ingredients_incomplete||0);
+    const needsAttention=data?.complete!==true;
     status(
-      incomplete
-        ?"Nutrition calculated with "+incomplete+" ingredient(s) needing serving/weight information."
-        :"Full nutrition calculated per serving.",
-      incomplete?"error":"success"
+      needsAttention
+        ?"Calculation needs attention: check recipe servings and "+incomplete+" incomplete ingredient(s)."
+        :"Nutrition calculated for the whole recipe and per serving. Only nutrients known for every ingredient appear; missing values stay unknown.",
+      needsAttention?"error":"success"
     );
   }
 

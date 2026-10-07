@@ -312,5 +312,7 @@
   "member/member-health-progress.js",
   "member/member-health-progress.css",
   "portal/portal-content-composition.js",
-  "member/member-assigned-content.js"
+  "member/member-assigned-content.js",
+  "portal/portal-food-database.js",
+  "portal/portal-food-database.css"
 ]

@@ -7,7 +7,7 @@ test('Recipe Builder asset is in public deployment manifest',()=>{
   const files=JSON.parse(read('config/public-files.json'));
   assert.ok(files.includes('portal/portal-recipe-builder.js'));
   const html=read('portal/index.html');
-  assert.match(html,/portal-recipe-builder\.js\?v=102/);
+  assert.match(html,/portal-recipe-builder\.js\?v=104/);
 });
 
 test('recipe calculator accepts numeric JSON only',()=>{

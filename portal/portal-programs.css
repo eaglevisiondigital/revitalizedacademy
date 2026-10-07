@@ -916,3 +916,13 @@
 .beta-composition-list article{display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid #e0e8e3}
 .beta-composition-list article>div{min-width:0}.beta-composition-list article>div:last-child{display:flex;align-items:start;gap:8px}
 @media(max-width:600px){.beta-composition{padding:16px}.beta-composition form{grid-template-columns:minmax(0,1fr)}.beta-composition-list article{flex-direction:column}}
+
+/* Keep Program Access grid children within the available document width. */
+.program-access-list{grid-template-columns:minmax(0,1fr)}
+.program-access-card,.program-access-block,.program-access-card-head>div{min-width:0}
+.program-access-chip{max-width:100%;overflow-wrap:anywhere}
+.program-access-block-head{flex-wrap:wrap}
+@media(max-width:760px){
+  .program-access-card-head{flex-direction:column}
+  .program-access-card-head .program-access-counts{max-width:100%}
+}
