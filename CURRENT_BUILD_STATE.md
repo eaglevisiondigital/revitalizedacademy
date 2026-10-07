@@ -1,5 +1,17 @@
 # ReVitalized Academy — current build state
 
+## Beta exact-recipient approval — 2026-10-06
+
+- Branch `codex/beta-recipient-approval`, application source `f5d8b9f5fe4f1c8626191dae008bdf1a282b9435`, based on accepted staging `88ee646`. No production changes from this beta package.
+- Staging migration ledger `20261007031341 beta_test_recipient_approval` applied (source `20261007011000`); do not replay. Private registry/audit, exact email, one existing CRM contact, reason required, active onboarded Owner with full scope and `staff.manage` only. No roles or Auth identities created.
+- New invitations use `https://beta.revitalizedacademy.com`. The old dedicated-site CHECK constraint was replaced with the exact branded beta origin; production URL remains rejected.
+- Staging notification-delivery v16 deployed. The original static recipient allowlist is preserved. Dynamic approvals extend only beta client notification delivery in the isolated staging project; unapproved recipients, SMS and foreign URLs remain blocked. Production never queries this registry. Other mail paths retain static restrictions.
+- Team Permissions exposes Owner-only recipient approval/revocation; cross-account reset hides and clears the form. Portal staff-access cache v184. Revocation affects dynamic approval; protected static recipients remain allowed.
+- Tests: 504 frontend passed, zero failed, 27 skipped; 78 syntax checks; 9 PostgreSQL 17 permission/origin checks; 6 actual-source delivery-helper checks. Native Deno suite unavailable locally; hosted deployment compilation succeeded.
+- Existing Justyn Gmail contact has no enrollment activation, agreement, Auth identity, invitation or notification job. Add Person creates only the CRM record. The email was absent from the static allowlist, but no job exists to prove an actual delivery rejection. Program selection is required before supported enrollment/invitation issuance; do not create duplicates.
+- Netlify release, exact asset checks, hosted approval and actual email/member setup results are recorded in the task report. Until invitation receipt and setup pass, beta invite acceptance remains pending.
+
+
 ## Branded beta domain deployed — 2026-10-06
 
 `beta.revitalizedacademy.com` is the primary domain for Netlify staging site `071b252e-a922-4846-a784-8dca1edad377`. DNS resolves to the existing `revitalizedacademy-staging.netlify.app` site and Netlify-managed Let's Encrypt HTTPS is active. The original Netlify hostname remains an exact emergency fallback.
