@@ -1,5 +1,13 @@
 # ReVitalized Academy Current Build State
 
+## FoodData Central authoring candidate — 2026-10-07
+
+Implemented locally on isolated `codex/fooddata-central`, based on `e6aa1b0`. Protected USDA search/details/multi-ID imports reuse canonical FDC foods, preserve nutrient/portion provenance and source versions, and support independent Owner/Admin ReVitalized Approved classification and explicit source refresh. Recipe calculation v3 uses local measured composition, mass/source portions, whole/per-serving totals, recipe weight and per-nutrient coverage. Unknown stays unknown; custom foods remain supported. Source refresh and title/image-only edits preserve stored recipe snapshots.
+
+New migration `20261007050706_fooddata_central_recipe_nutrition.sql` is local only. No push, remote migration/deploy, hosted content, assignment, private-data, Payments v1 or Authorize.Net change. Local checks: build 380 files; syntax 93/93; assessment/content frontend 63/63; Vitality frontend 10/10; FDC adapter/server/contract 10/10; PostgreSQL 17 72/72; Edge 19/19; existing responsive UI 36/36; FDC UI 51/51 at all three requested sizes, no runtime errors/warnings or horizontal overflow. Legacy snapshot tests retain 28 failures, reproduced identically on untouched `e6aa1b0`. Beta agreement-origin fixtures remain separate.
+
+Next gate: protected Netlify Functions/Production `USDA_FDC_API_KEY` and matching server Supabase configuration, then explicit single-migration/function+static release approval and disposable hosted acceptance/cleanup. No credentials in chat. `FOOD DATABASE PACKAGE BLOCKED` until those gates pass. [Full implementation and release report](docs/FOODDATA_CENTRAL_V1_2026-10-07.md).
+
 ## Historical Vitality reconciliation — 2026-10-06
 
 This current entry supersedes older pending-release descriptions below. Production frontend remains deploy `6ac52af350af344e34bcfa31`, source `77dbe985c4132503696915b34523dede68beee66`; no Netlify release was needed for this database-only repair.

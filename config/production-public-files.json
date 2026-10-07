@@ -298,6 +298,8 @@
   "portal/portal-programs.css",
   "portal/portal-programs.js",
   "portal/portal-recipe-builder.js",
+  "portal/portal-food-database.js",
+  "portal/portal-food-database.css",
   "portal/portal-referrals.css",
   "portal/portal-referrals.js",
   "portal/portal-refuel.css",

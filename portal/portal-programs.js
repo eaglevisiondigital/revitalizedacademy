@@ -481,7 +481,7 @@
     challenges:{table:"wellness_challenges",label:"Challenges",select:"id,title,description,status,scope,starts_on,ends_on",order:"title"},
     "meal-plans":{table:"meal_plan_templates",label:"Meal Plans",select:"id,title,description,status,days_count",order:"title"},
     recipes:{table:"recipes",label:"Recipes",select:"id,methodology_id,title,status,meal_type,servings,prep_minutes,cook_minutes,image_url,image_alt,nutrition,nutrition_calculated_at,nutrition_calculation_meta",order:"title",descriptionField:false},
-    foods:{table:"food_catalog",label:"Foods & Ingredients",select:"id,name,category,guidance_status,serving_guidance,image_url,image_alt,nutrition,active",order:"name",nameField:"name",createdBy:false},
+    foods:{table:"food_catalog",label:"Foods & Ingredients",select:"id,methodology_id,name,category,guidance_status,serving_guidance,image_url,image_alt,nutrition,active,provider,fdc_id,source_data_type,source_version,revitalized_approved",order:"name",nameField:"name",createdBy:false},
     fitness:{table:"fitness_programs",label:"Fitness Programs",select:"id,title,description,status,difficulty,environment,weeks,image_url,image_alt",order:"title"},
     workouts:{table:"workout_templates",label:"Workouts",select:"id,title,description,status,category,difficulty,environment,duration_minutes,image_url,image_alt,workout_type,muscle_groups,equipment",order:"title"},
     exercises:{table:"exercise_catalog",label:"Exercises",select:"id,name,category,status,difficulty,environment,equipment,instructions,restriction_notes,video_url,tags,image_url,image_alt,primary_muscle_group,secondary_muscle_groups,movement_type,low_impact",order:"name",nameField:"name"},
@@ -571,7 +571,7 @@
 
   function openContentModal(){
     if(!contentModal||!canManagePrograms())return;
-    contentEpoch++; contentEdit=null; contentBusy=false; contentType.disabled=false;
+    contentEpoch++; contentEdit=null; contentBusy=false; contentType.disabled=false;contentTitle.disabled=false;
     document.getElementById("program-content-modal-title").textContent="Create new content";
     contentForm.querySelector('[type="submit"]').textContent="Save Draft";
     if(contentType)contentType.value=activeContent;
@@ -587,7 +587,7 @@
   function closeContentModal(){
     contentEpoch++; contentEdit=null; contentBusy=false;
     if(!contentModal)return;
-    contentType.disabled=false;
+    contentType.disabled=false;contentTitle.disabled=false;
     contentModal.classList.add("hidden");
     contentModal.setAttribute("aria-hidden","true");
     contentForm?.reset();
@@ -614,9 +614,11 @@
       if(key==="recipes"&&data.nutrition_calculated_at&&input.dataset.nutrientKey)input.disabled=true;
       if(input.type==="checkbox")input.checked=value===true;
       else input.value=Array.isArray(value)?value.join(", "):value??"";
+      if(key==="foods"&&data.provider==='usda_fdc'&&(input.dataset.nutrientKey||["content-brand","content-barcode","content-serving-size","content-serving-unit","content-grams-serving","content-data-source","content-source-record-id","content-source-verified"].includes(input.id)))input.disabled=true;
     });
     // Composition remains bound to its original methodology.
     const methodology=document.getElementById("content-methodology");if(methodology)methodology.disabled=true;
+    if(key==="foods"&&data.provider==='usda_fdc'){contentTitle.disabled=true;portal.showStatus(formStatus,"USDA composition is read-only. Use Refresh from Source to update it.");}
   }
 
   async function updateContentStatus(key,row,nextStatus){
@@ -907,7 +909,8 @@
 
   function renderContent(){
     if(!contentList)return;
-    const rows=contentCache[activeContent]||[];
+    window.RA_FOOD_DATABASE?.tools(activeContent);
+    const rows=(contentCache[activeContent]||[]).filter(row=>activeContent!=="foods"||!window.RA_FOOD_DATABASE||window.RA_FOOD_DATABASE.matches(row));
     contentTabs.forEach(b=>b.classList.toggle("active",b.dataset.programContent===activeContent));
     contentList.replaceChildren();
     if(!rows.length){
@@ -936,6 +939,7 @@
       const rowState=activeContent==="foods"?(row.active?"active":"inactive"):String(row.status||"draft").toLowerCase();
       const status=document.createElement("span");status.className="program-content-status "+rowState;status.textContent=portal.titleCase(rowState);
       const actions=document.createElement("div");actions.className="program-content-row-actions";
+      if(activeContent==="foods")window.RA_FOOD_DATABASE?.decorate(row,text,actions);
       if(["meal-plans","recipes","foods","fitness","workouts","exercises","nutrition-methodology","fitness-methodology"].includes(activeContent)&&canManagePrograms()){
         const key=activeContent;
         const edit=document.createElement("button");edit.type="button";edit.className="edit";edit.textContent="Edit";
@@ -1166,11 +1170,13 @@
     }
 
     const calculatedRecipe=key==="recipes"&&contentEdit?.nutrition_calculated_at;
+    const recalculateEditedRecipe=calculatedRecipe&&Number(payload.servings)!==Number(contentEdit.servings);
     if(contentEdit){
       payload.updated_at=new Date().toISOString();
       if(calculatedRecipe)delete payload.nutrition;
       delete payload.status;delete payload.active;delete payload.created_by;delete payload.guidance_status;delete payload.tags;
       delete payload.methodology_id;
+      if(key==="foods"&&contentEdit.provider==='usda_fdc')for(const field of ['name','brand','barcode','nutrition','serving_size','serving_unit','grams_per_serving','data_source','source_record_id','source_verified'])delete payload[field];
     }
     contentBusy=true;
     portal.showStatus(formStatus,contentEdit?"Saving changes...":"Saving draft...");
@@ -1180,7 +1186,7 @@
       if(epoch!==contentEpoch)return;
       if(error)throw error;
       if(!data?.length)throw new Error("This content changed or access was removed. Reopen it before saving.");
-      if(calculatedRecipe){
+      if(recalculateEditedRecipe){
         const calculation=await client.rpc("recalculate_recipe_nutrition",{p_recipe_id:contentEdit.id});
         if(epoch!==contentEpoch)return;
         if(calculation.error)throw new Error("Recipe saved, but nutrition needs recalculation: "+calculation.error.message);
@@ -1212,6 +1218,7 @@
   document.addEventListener("ra:permissions-loaded",()=>{syncContentManagementAccess();loadContent();});
 
   document.addEventListener("ra:staff-access-reset",()=>{contentReadEpoch++;nutritionMethodologies=[];fitnessMethodologies=[];nutritionNutrients=[];closeContentModal();contentCache={};contentList?.replaceChildren();contentSummary?.replaceChildren();});
+  window.RA_PROGRAM_CONTENT={reload:loadContent,render:renderContent};
   load();
   loadProgramAccess();
   loadContent();

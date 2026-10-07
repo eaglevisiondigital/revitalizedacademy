@@ -1,0 +1,35 @@
+{
+  "source": "Official USDA FDC development API search: apple, Foundation, pageSize 12; fetched 2026-10-07",
+  "foods": [
+    {
+      "fdcId": 1750340,
+      "description": "Apples, fuji, with skin, raw",
+      "dataType": "Foundation"
+    },
+    {
+      "fdcId": 1750341,
+      "description": "Apples, gala, with skin, raw",
+      "dataType": "Foundation"
+    },
+    {
+      "fdcId": 1750343,
+      "description": "Apples, honeycrisp, with skin, raw",
+      "dataType": "Foundation"
+    },
+    {
+      "fdcId": 1750342,
+      "description": "Apples, granny smith, with skin, raw",
+      "dataType": "Foundation"
+    },
+    {
+      "fdcId": 1750339,
+      "description": "Apples, red delicious, with skin, raw",
+      "dataType": "Foundation"
+    },
+    {
+      "fdcId": 2003590,
+      "description": "Apple juice, with added vitamin C, from concentrate, shelf stable",
+      "dataType": "Foundation"
+    }
+  ]
+}

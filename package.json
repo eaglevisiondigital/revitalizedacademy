@@ -8,7 +8,9 @@
     "build:production-vitality": "node scripts/build-production-vitality.cjs",
     "test:production-content": "node --test tests/production-durable-content.cjs",
     "test:production-content:database": "node scripts/test-production-durable-content.cjs",
-    "test:production-content:browser": "node tests/production-durable-content-browser.cjs"
+    "test:production-content:browser": "node tests/production-durable-content-browser.cjs",
+    "test:fooddata": "node --test tests/fooddata.cjs",
+    "test:fooddata:browser": "node tests/fooddata-browser.cjs"
   },
   "devDependencies": {
     "jsdom": "26.1.0",

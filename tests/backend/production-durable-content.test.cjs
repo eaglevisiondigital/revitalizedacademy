@@ -69,7 +69,7 @@ test('recipe sums only measured numeric JSON; JSON null and non-numeric cannot e
  const recipe=await insertRecipe(),first=await insertFood(),second=await insertFood({energy_kcal:null,protein_g:0,fiber_g:'bad',sugars_g:true});
  for(const f of [first,second])await actor(owner,"insert into public.recipe_ingredients(recipe_id,food_id,ingredient,quantity,unit) values($1,$2,'Ingredient',2,'servings')",[recipe,f]);
  const result=(await actor(owner,'select public.recalculate_recipe_nutrition($1) result',[recipe])).rows[0].result;
- assert.deepEqual(result.recipe_total,{energy_kcal:200,protein_g:20});assert.deepEqual(result.nutrition_per_serving,{energy_kcal:100,protein_g:10});assert.equal(result.complete,true);
+ assert.deepEqual(result.recipe_total,{protein_g:20});assert.deepEqual(result.nutrition_per_serving,{protein_g:10});assert.equal(result.partial_recipe_total.energy_kcal,200);assert.equal(result.nutrient_coverage.energy_kcal,1);assert.equal(result.complete,true);
 });
 test('incomplete ingredient clears prior snapshot/multiplier and calculation is incomplete',async()=>{
  const recipe=await insertRecipe(),food=await insertFood();

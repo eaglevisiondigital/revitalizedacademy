@@ -17,7 +17,7 @@ const {Client}=require('pg');const fs=require('node:fs');const path=require('nod
   const restore=spawnSync('/opt/homebrew/opt/postgresql@17/bin/psql',['-X','-v','ON_ERROR_STOP=1',...files.flatMap(f=>['-f',f])],{env,encoding:'utf8',maxBuffer:64*1024*1024});
   if(restore.status!==0)throw Error(restore.stderr.slice(-5000));
   console.log(`Isolated PostgreSQL 17 restore: baseline + ${files.length-2} production migrations; no staging migrations`);
-  const result=spawnSync(process.execPath,['--test','--test-concurrency=1','tests/backend/production-durable-content.test.cjs','tests/backend/vitality-assessment-review.test.cjs','tests/backend/vitality-resume.test.cjs'],{env,encoding:'utf8',maxBuffer:32*1024*1024});
+  const result=spawnSync(process.execPath,['--test','--test-concurrency=1','tests/backend/production-durable-content.test.cjs','tests/backend/vitality-assessment-review.test.cjs','tests/backend/vitality-resume.test.cjs','tests/backend/fooddata.test.cjs'],{env,encoding:'utf8',maxBuffer:32*1024*1024});
   process.stdout.write(result.stdout);process.stderr.write(result.stderr);process.exitCode=result.status||0;
  }finally{if(created)await admin.query(`drop database "${database}" with (force)`);await admin.end();}
 })().catch(e=>{console.error(e.message);process.exitCode=1;});

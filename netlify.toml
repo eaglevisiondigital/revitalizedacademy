@@ -1,5 +1,10 @@
 [build]
-  publish = "."
+  command = "node scripts/build-production-vitality.cjs"
+  publish = "production-dist"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
 
 [[headers]]
   for = "/*"
