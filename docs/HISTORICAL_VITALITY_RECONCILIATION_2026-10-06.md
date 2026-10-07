@@ -15,3 +15,5 @@ Both operator functions revoke execution from anonymous, authenticated and servi
 Applied production ledger versions: 20261007030224 and 20261007030817. These correspond to repository source migrations 20261007010000 and 20261007012000; do not replay. Existing secure resume architecture and optimized decoder are preserved.
 
 Known limitations: David Fowler and Forest Gump completed sources are held for test/real classification. Older incomplete leads have no completed answer summary and cannot be reconstructed. Original summaries contain original submitted wording; no fabricated normalized answers or composite score is introduced.
+
+Lead-only coverage after reconciliation: 12 distinct pre-Oct. 5 submitted emails; 9 map to an existing workflow or a reviewed alternate-email source. Three remain unrepresented: two held test-like completed sources, and one David-owned lead-only inbox with no completed submission evidence. No completion, private answers or workflow is invented for that lead-only record.
