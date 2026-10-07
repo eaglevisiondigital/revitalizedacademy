@@ -557,7 +557,10 @@
   document.addEventListener("ra:open-client-invitation",event=>{
     if(activeContact?.id!==event.detail?.contactId||!(portal.hasPermission?.("finance.manage")??false))return;
     const existing=clientAgreements.find(row=>row.contact_id===activeContact.id&&templates.find(t=>t.id===row.agreement_template_id)?.document_type==="client_contract"&&!["signed","waived"].includes(row.status));
-    if(existing)void sendAgreement(existing);else void openClientAssign();
+    const template=templates.find(t=>t.id===existing?.agreement_template_id);
+    const required=template?.merge_schema?.required||[];
+    const prepared=existing&&existing.status!=="not_sent"&&existing.rendered_content_hash&&required.every(key=>String(existing.merge_values?.[key]??"").trim());
+    if(prepared)void sendAgreement(existing);else void openClientAssign();
   });
   document.addEventListener("ra:enrollment-configured",event=>{if(activeContact?.id===event.detail?.contactId)void loadClientAgreements(activeContact.id);});
 
