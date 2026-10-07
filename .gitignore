@@ -2,3 +2,5 @@
 /.netlify/
 /node_modules/
 /supabase/.temp/
+
+/netlify/private-repdb/

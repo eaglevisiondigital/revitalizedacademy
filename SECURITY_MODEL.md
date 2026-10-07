@@ -1,3 +1,7 @@
+# RepDB Exercise Library local candidate — 2026-10-07
+
+New exercise-library requests require the exact Netlify site/project/custom origin, matching Auth identity and active Owner/Admin plus learning.manage. Service-only RPC rechecks authority; unchanged RLS plus provenance trigger prevent browser spoofing/imported-global mutations. No permission grants or private-health-policy changes. Raw licensed dataset and service secrets stay private; public/bulk/actor override and reverse sync are denied. Beta source import uses only beta Auth/project secrets. [Release report](docs/REPDB_EXERCISE_LIBRARY_V1_2026-10-07.md). Not deployed.
+
 # Live content sync security acceptance — 2026-10-07
 
 Active Owner/Admin plus effective learning.manage, exact production origin/site/project, fresh bearer identity, service-only SQL ACLs, content field/JSON whitelist, private audited jobs and atomic beta receive were tested. Coach/member/anonymous/reverse actions denied. Credentials remain server Functions-only; beta has no production credential. No existing grants, private-data policies or feature flags changed.

@@ -484,7 +484,7 @@
     foods:{table:"food_catalog",label:"Foods & Ingredients",select:"id,methodology_id,name,category,guidance_status,serving_guidance,image_url,image_alt,nutrition,active,provider,fdc_id,source_data_type,source_version,revitalized_approved",order:"name",nameField:"name",createdBy:false},
     fitness:{table:"fitness_programs",label:"Fitness Programs",select:"id,title,description,status,difficulty,environment,weeks,image_url,image_alt",order:"title"},
     workouts:{table:"workout_templates",label:"Workouts",select:"id,title,description,status,category,difficulty,environment,duration_minutes,image_url,image_alt,workout_type,muscle_groups,equipment",order:"title"},
-    exercises:{table:"exercise_catalog",label:"Exercises",select:"id,name,category,status,difficulty,environment,equipment,instructions,restriction_notes,video_url,tags,image_url,image_alt,primary_muscle_group,secondary_muscle_groups,movement_type,low_impact",order:"name",nameField:"name"},
+    exercises:{table:"exercise_catalog",label:"Exercises",select:"id,name,category,status,difficulty,environment,equipment,instructions,restriction_notes,video_url,tags,image_url,image_alt,primary_muscle_group,secondary_muscle_groups,movement_type,low_impact,exercise_provider,provider_exercise_id,exercise_source_version,exercise_source,revitalized_approved,rva_muscles,functional_movement,coaching_cues",order:"name",nameField:"name"},
     resources:{table:"resource_library",label:"Resources",select:"id,title,description,status,resource_type,resource_url,category",order:"title"}
   };
   let contentCache={};
@@ -567,6 +567,7 @@
     }else{
       dynamicFields.innerHTML='<label><span>Resource type</span><select id="content-resource-type"><option value="pdf">PDF</option><option value="video">Video</option><option value="audio">Audio</option><option value="worksheet">Worksheet</option><option value="link">Link</option><option value="guide">Guide</option><option value="other">Other</option></select></label><label><span>Category</span><input id="content-resource-category" type="text" maxlength="80" placeholder="Getting Started, Nutrition, Coaching..."></label><label class="wide"><span>Resource URL</span><input id="content-resource-url" type="url" maxlength="1000" placeholder="https://..." required></label>';
     }
+    if(type==="exercises")window.RA_EXERCISE_LIBRARY?.fields(dynamicFields);
   }
 
   function openContentModal(){
@@ -616,6 +617,7 @@
       else input.value=Array.isArray(value)?value.join(", "):value??"";
       if(key==="foods"&&data.provider==='usda_fdc'&&(input.dataset.nutrientKey||["content-brand","content-barcode","content-serving-size","content-serving-unit","content-grams-serving","content-data-source","content-source-record-id","content-source-verified"].includes(input.id)))input.disabled=true;
     });
+    if(key==="exercises"){dynamicFields.querySelector(".exercise-local-fields")?.remove();window.RA_EXERCISE_LIBRARY?.fields(dynamicFields,data);}
     // Composition remains bound to its original methodology.
     const methodology=document.getElementById("content-methodology");if(methodology)methodology.disabled=true;
     if(key==="foods"&&data.provider==='usda_fdc'){contentTitle.disabled=true;portal.showStatus(formStatus,"USDA composition is read-only. Use Refresh from Source to update it.");}
@@ -910,8 +912,9 @@
   function renderContent(){
     if(!contentList)return;
     window.RA_FOOD_DATABASE?.tools(activeContent);
+    window.RA_EXERCISE_LIBRARY?.tools(activeContent);
     window.RA_CONTENT_SYNC?.tools();
-    const rows=(contentCache[activeContent]||[]).filter(row=>activeContent!=="foods"||!window.RA_FOOD_DATABASE||window.RA_FOOD_DATABASE.matches(row));
+    const rows=(contentCache[activeContent]||[]).filter(row=>activeContent!=="foods"||!window.RA_FOOD_DATABASE||window.RA_FOOD_DATABASE.matches(row)).filter(row=>activeContent!=="exercises"||!window.RA_EXERCISE_LIBRARY||window.RA_EXERCISE_LIBRARY.matches(row));
     contentTabs.forEach(b=>b.classList.toggle("active",b.dataset.programContent===activeContent));
     contentList.replaceChildren();
     if(!rows.length){
@@ -924,10 +927,11 @@
     rows.forEach(row=>{
       const item=document.createElement("article");item.className="program-content-row";
       const copy=document.createElement("div");copy.className="program-content-copy";
-      if(row.image_url){
+      const imageUrl=row.image_url||(activeContent==="exercises"?row.exercise_source?.images?.[0]:null);
+      if(imageUrl){
         const image=document.createElement("img");
         image.className="program-content-thumb";
-        image.src=row.image_url;
+        image.src=imageUrl;
         image.alt=row.image_alt||row.title||row.name||"Content image";
         image.loading="lazy";
         copy.append(image);
@@ -941,7 +945,8 @@
       const status=document.createElement("span");status.className="program-content-status "+rowState;status.textContent=portal.titleCase(rowState);
       const actions=document.createElement("div");actions.className="program-content-row-actions";
       if(activeContent==="foods")window.RA_FOOD_DATABASE?.decorate(row,text,actions);
-      if(["meal-plans","recipes","foods","fitness","workouts","exercises","nutrition-methodology","fitness-methodology"].includes(activeContent)&&canManagePrograms()){
+      if(activeContent==="exercises")window.RA_EXERCISE_LIBRARY?.decorate(row,text,actions);
+      if(["meal-plans","recipes","foods","fitness","workouts","exercises","nutrition-methodology","fitness-methodology"].includes(activeContent)&&canManagePrograms()&&(activeContent!=="exercises"||window.RA_EXERCISE_LIBRARY?.canManage(row))){
         const key=activeContent;
         const edit=document.createElement("button");edit.type="button";edit.className="edit";edit.textContent="Edit";
         edit.addEventListener("click",()=>editContent(key,row));actions.append(edit);
@@ -968,7 +973,7 @@
         toggle.textContent=row.active?"Deactivate":"Activate";
         toggle.addEventListener("click",()=>updateContentStatus(activeContent,row,row.active?"inactive":"active"));
         actions.append(toggle);
-      }else{
+      }else if(activeContent!=="exercises"||window.RA_EXERCISE_LIBRARY?.canManage(row)){
         const statusValue=String(row.status||"draft").toLowerCase();
         if(statusValue!=="published"&&statusValue!=="active"){
           const publish=document.createElement("button");publish.type="button";publish.className="publish";publish.textContent="Publish";
@@ -1141,6 +1146,7 @@
       payload.image_alt=document.getElementById("content-image-alt")?.value.trim()||null;
     }else if(key==="exercises"){
       payload.methodology_id=document.getElementById("content-methodology")?.value||null;
+      Object.assign(payload,window.RA_EXERCISE_LIBRARY?.payload()||{});
       payload.movement_type=document.getElementById("content-movement-type")?.value||"strength";
       payload.category=legacyExerciseCategory(payload.movement_type);
       payload.primary_muscle_group=document.getElementById("content-primary-muscle")?.value||"full_body";

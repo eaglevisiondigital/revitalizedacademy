@@ -10,7 +10,9 @@
     "test:production-content:database": "node scripts/test-production-durable-content.cjs",
     "test:production-content:browser": "node tests/production-durable-content-browser.cjs",
     "test:fooddata": "node --test tests/fooddata.cjs",
-    "test:fooddata:browser": "node tests/fooddata-browser.cjs"
+    "test:fooddata:browser": "node tests/fooddata-browser.cjs",
+    "test:repdb": "node scripts/prepare-repdb.cjs && node --test tests/repdb-exercise-library.cjs",
+    "test:repdb:browser": "node tests/repdb-exercise-browser.cjs"
   },
   "devDependencies": {
     "jsdom": "26.1.0",

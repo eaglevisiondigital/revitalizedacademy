@@ -1,3 +1,13 @@
+## LOCAL READY — RepDB Exercise Library v1 — 2026-10-07
+
+**EXERCISE LIBRARY READY FOR RELEASE; NOT DEPLOYED.** This supersedes the earlier MuscleWiki/API Ninjas provider-blocker for this package. Reviewed RepDB Free Tier v1.0 permits the requested in-app durable use with visible attribution. Pinned schema-3 snapshot `a360f87f9064de42a9c90228cfebae941a5016d5` has 609 exercises; source/license hashes verified; raw dataset is server-only, ignored and excluded from public manifests. No provider secret.
+
+Implemented separate production/beta candidates: source search/import, unique slug + canonical UUID, exact RVA muscle/movement taxonomies, approval/filter/custom workflow, local-field-preserving source refresh/audit, workout/program integration and forward one-way sync contract/receiver updates. All remote systems and original checkouts preserved. **Unapplied** new environment-specific migration `20261007201539_repdb_exercise_library.sql`; never replay older export/receive/FoodData/Vitality migrations.
+
+Local verification: production PG17 84/84, beta PG17 287/287, dual sync 11/11, source/API/DOM 16/16 per environment, Edge 19/19, exact-built browser 46 checks per environment at desktop/tablet/mobile with clean runtime/no overflow. Production build383 / beta321; syntax108 production /83 beta. The same 28 obsolete production snapshot failures reproduce on unchanged baseline; no new failure. Current production frontend107/107; full beta frontend573 passed, zero failed, 27 expected skips. Normal hosted acceptance/deploy and cleanup remain pending approval.
+
+Prepared assets: Programs JS179/CSS168; Exercise Library JS/CSS100. [Complete licensing, architecture, security, test evidence and exact release gate](docs/REPDB_EXERCISE_LIBRARY_V1_2026-10-07.md).
+
 # ReVitalized Academy Current Build State
 
 ## LIVE ACCEPTED — FoodData + one-way beta content sync — 2026-10-07

@@ -202,3 +202,7 @@ Key updates:
 - Raises and rebalances the homepage family photo.
 - Rebuilds the founders-page hero using the same untouched founder PNG as a live layer.
 - Improves footer contrast and finish.
+
+## Exercise content attribution
+
+[Exercise data by RepDB (repdb.co)](https://repdb.co). ReVitalized uses the reviewed free dataset for in-app exercise search and durable authoring only. The publisher license is verified at build time and retained privately with the server bundle. No bulk dataset is published.

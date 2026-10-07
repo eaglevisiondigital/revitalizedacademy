@@ -1,5 +1,5 @@
 [build]
-  command = "node scripts/build-production-vitality.cjs"
+  command = "node scripts/prepare-repdb.cjs && node scripts/build-production-vitality.cjs"
   publish = "production-dist"
 
 [functions]
@@ -68,3 +68,6 @@
     Cache-Control = "no-store"
     Referrer-Policy = "no-referrer"
     X-Robots-Tag = "noindex, nofollow, noarchive"
+
+[functions."exercise-library"]
+  included_files = ["netlify/private-repdb/exercises.json", "netlify/private-repdb/LICENSE-DATA.md"]

@@ -378,5 +378,7 @@
   "webinar-seat-card-change.patch",
   "webinar-seat-card-override.css",
   "webinar.html",
-  "portal/portal-content-sync.js"
+  "portal/portal-content-sync.js",
+  "portal/portal-exercise-library.js",
+  "portal/portal-exercise-library.css"
 ]
