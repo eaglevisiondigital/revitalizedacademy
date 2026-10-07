@@ -26,15 +26,16 @@ for(const option of [{permission:false},{active:false}])Deno.test('beta staff in
 Deno.test('beta existing account invitation preserves profile binding and client lifecycle',async()=>{const {response,calls}=await run();assert(response.status===200,await response.text());assert(!calls.some(c=>['PATCH','POST'].includes(c.method)&&(/\/(profiles|contacts)$/.test(c.path))));const staff=calls.find(c=>c.path.endsWith('/staff_access')&&c.method==='POST');assert(staff?.body.role==='coach'&&staff?.body.contact_scope==='assigned');assert(!calls.some(c=>c.path==='/auth/v1/invite'));});
 Deno.test('beta new staff invitation uses the normal Auth invitation and narrow staff insertion',async()=>{const {response,calls}=await run({newUser:true});assert(response.status===200,await response.text());assert(calls.filter(c=>c.path==='/auth/v1/invite').length===1);assert(calls.filter(c=>c.path.endsWith('/staff_access')&&c.method==='POST').length===1);assert(!calls.some(c=>c.method==='PATCH'));});
 
-async function runReconcile(options:{role?:string;onboarding?:string;collision?:boolean;email?:string}={}){
+async function runReconcile(options:{role?:string;onboarding?:string;collision?:boolean;email?:string;dynamic?:boolean;approved?:boolean}={}){
  const env=Deno.env.get,fetch=globalThis.fetch;const calls:Array<{path:string;method:string;body:any;search:string}>=[];
  const nextEmail=options.email||'beta@example.invalid',oldEmail='old-beta@example.invalid';
- Deno.env.get=k=>({RVA_ENVIRONMENT:'local',RVA_APP_ORIGIN:'https://synthetic.invalid',RVA_PAYMENT_MODE:'synthetic',RVA_SYNTHETIC_EMAIL_ALLOWLIST:'beta@example.invalid',SUPABASE_URL:'https://synthetic.invalid',SUPABASE_SERVICE_ROLE_KEY:'test-key'}[k]);
+ Deno.env.get=k=>({RVA_ENVIRONMENT:options.dynamic?'staging':'local',RVA_APP_ORIGIN:options.dynamic?'https://beta.revitalizedacademy.com':'https://synthetic.invalid',RVA_PAYMENT_MODE:'synthetic',RVA_SYNTHETIC_EMAIL_ALLOWLIST:options.dynamic?'existing@example.invalid':'beta@example.invalid',SUPABASE_URL:options.dynamic?'https://bvooallokgfktssadsrv.supabase.co':'https://synthetic.invalid',SUPABASE_SERVICE_ROLE_KEY:'test-key'}[k]);
  globalThis.fetch=async(input,init)=>{
   const request=new Request(input,init),url=new URL(request.url),text=await request.text(),body=text?JSON.parse(text):null;calls.push({path:url.pathname,method:request.method,body,search:url.search});
   let data:any=null;
   if(url.pathname==='/auth/v1/user')data={id:actor,email:'operator@example.invalid'};
   else if(url.pathname.endsWith('/rpc/staff_action_allowed'))data=true;
+  else if(url.pathname.endsWith('/rpc/beta_staff_test_recipient_approved'))data=options.approved===true;
   else if(url.pathname.endsWith('/staff_access')){
    data=url.search.includes(actor)
     ?{user_id:actor,role:options.role||'owner',status:'active'}
@@ -88,4 +89,15 @@ Deno.test('dynamically approved staff receives one Auth invite with exact beta r
 Deno.test('unapproved dynamic staff cannot send or create any staff identity',async()=>{
  const {response,calls}=await run({dynamic:true,approved:false,newUser:true});assert(response.status>=400);
  assert(!calls.some(c=>c.path==='/auth/v1/invite'||c.path==='/auth/v1/admin/users'||c.method==='PATCH'||c.method==='POST'&&!c.path.includes('/rpc/')));
+});
+
+Deno.test('dynamic approved pending staff reissue preserves Auth identity and stays on beta',async()=>{
+ const {response,calls}=await runReconcile({dynamic:true,approved:true});assert(response.status===200,await response.text());
+ assert(calls.filter(c=>c.path==='/auth/v1/resend').length===1);
+ const resend=calls.find(c=>c.path==='/auth/v1/resend');assert(new URL(resend?.search||'', 'https://placeholder.invalid').searchParams.get('redirect_to')==='https://beta.revitalizedacademy.com/portal/?setup=staff');
+ assert(!calls.some(c=>c.path==='/auth/v1/invite'||c.method==='DELETE'));
+});
+Deno.test('unapproved pending staff reissue denies before identity changes or sending',async()=>{
+ const {response,calls}=await runReconcile({dynamic:true,approved:false});assert(response.status>=400);
+ assert(!calls.some(c=>c.path.startsWith('/auth/v1/admin/users')||c.path==='/auth/v1/resend'||c.method==='PATCH'));
 });
