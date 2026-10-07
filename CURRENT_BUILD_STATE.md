@@ -124,3 +124,11 @@ Tests: 52/52 PostgreSQL 17 content/review/resume tests; 10/10 Vitality Review fr
 Production frontend remains Netlify deploy `6ac52af350af344e34bcfa31`, source `77dbe985c4132503696915b34523dede68beee66`. No frontend deployment or Edge redeployment was needed. Isolated repair branch: `codex/owner-access-reconciliation`.
 
 Pending: normal fresh production sign-in acceptance for each real owner; beta Owner invitations/setup and independent acceptance. Exact owner emails are absent from staging Auth/invitations. Beta provisioning awaits an existing beta Owner session and approved staging invitation phone numbers; no invitation sent yet. Production Vitality Review is not currently released in beta, so beta Vitality acceptance cannot be claimed. Do not copy production health/profile data to obtain staging coverage or reuse synthetic identities.
+
+## FoodData acceptance follow-up — 2026-10-07 (in progress)
+
+Authorized package closes mobile overflow and USDA refresh acceptance before beta release and one-way reusable-content sync. The production FoodData migration is already applied as ledger `20261007062854`; do not replay it.
+
+Program Access grid children now permit shrinking within the available document width. USDA refresh uses a keyboard-accessible in-page confirmation and reports success; the authenticated server API and source audit behavior are unchanged. Exact production-built isolated browser coverage includes real representative Program Access cards, cancel-without-request and single confirmed refresh at 1440×1000, 768×1024 and 390×844: 63 checks, no runtime errors and no document/modal overflow. Core frontend regressions: 73/73.
+
+Hosted proof, beta FoodData rollout and production-to-beta content sync remain pending. No sync functionality is deployed yet. Production remains authoritative; private/person/operational data is excluded from the planned sync.

@@ -51,6 +51,32 @@
    const token=epoch;query.focus();
    if(!methodology){const r=await client.from('nutrition_methodologies').select('id,name').order('name');if(token!==epoch)return;if(r.error){status(r.error.message);return;}for(const m of r.data||[]){const o=el('option',m.name);o.value=m.id;method.append(o);}}
  }
+ function confirmSourceRefresh(row){
+   if(!admin()||busy)return;
+   const origin=document.activeElement;close();returnFocus=origin;
+   modal=el('div');modal.className='food-database-modal';
+   const backdrop=el('div');backdrop.className='food-database-backdrop';backdrop.addEventListener('click',close);
+   const dialog=el('section');dialog.className='food-database-dialog';dialog.setAttribute('role','dialog');dialog.setAttribute('aria-modal','true');dialog.setAttribute('aria-labelledby','food-refresh-heading');
+   const heading=el('h2','Refresh USDA Source Data');heading.id='food-refresh-heading';
+   const cancel=button('Cancel',close);
+   const confirm=button('Confirm Source Refresh',()=>operation(async token=>{
+     if(!admin())throw Error('Owner/Admin required to refresh');
+     confirm.disabled=true;status('Refreshing USDA source data…');
+     try{
+       await api({action:'refresh',fdcId:row.fdc_id,methodologyId:row.methodology_id});
+       if(token!==epoch)return;
+       close();await window.RA_PROGRAM_CONTENT?.reload();
+       portal.showStatus(document.getElementById('food-library-status'),'USDA source refreshed. Existing recipe snapshots are unchanged.','success');
+     }finally{confirm.disabled=false;}
+   }));
+   const message=el('p');message.setAttribute('data-food-status','');message.setAttribute('aria-live','polite');
+   dialog.append(heading,el('p',row.name),el('p','Refresh this food from USDA? Recipe snapshots remain unchanged until explicitly recalculated.'),cancel,confirm,message);
+   modal.append(backdrop,dialog);document.body.append(modal);
+   modal.addEventListener('keydown',e=>{
+     if(e.key==='Escape')close();
+     if(e.key==='Tab'){const nodes=[...dialog.querySelectorAll('button')].filter(n=>!n.disabled);if(e.shiftKey&&document.activeElement===nodes[0]){e.preventDefault();nodes.at(-1)?.focus();}else if(!e.shiftKey&&document.activeElement===nodes.at(-1)){e.preventDefault();nodes[0]?.focus();}}
+   });cancel.focus();
+ }
  function matches(food){return filter==='all'||filter==='approved'&&food.revitalized_approved||filter==='usda'&&food.provider==='usda_fdc'&&food.source_data_type!=='Branded'||filter==='branded'&&food.source_data_type==='Branded'||filter==='custom'&&!food.provider;}
  function tools(active){
    let root=document.getElementById('food-database-tools');if(!root){root=el('div');root.id='food-database-tools';root.className='food-database-tools';document.getElementById('program-content-list')?.before(root);}
@@ -64,10 +90,7 @@
    if(!admin())return;
    const report=e=>portal.showStatus(document.getElementById('food-library-status'),e.message,'error');
    actions.append(button(row.revitalized_approved?'Unmark Approved':'★ Mark ReVitalized Approved',async()=>{try{const r=await client.rpc('set_food_revitalized_approved',{p_food:row.id,p_approved:!row.revitalized_approved});if(r.error)throw r.error;await window.RA_PROGRAM_CONTENT?.reload();}catch(e){report(e);}}));
-   if(row.provider==='usda_fdc')actions.append(button('Refresh from Source',async()=>{
-     if(!window.confirm('Refresh this food from USDA? Recipe snapshots remain unchanged until explicitly recalculated.'))return;
-     try{await api({action:'refresh',fdcId:row.fdc_id,methodologyId:row.methodology_id});await window.RA_PROGRAM_CONTENT?.reload();}catch(e){report(e);}
-   }));
+   if(row.provider==='usda_fdc')actions.append(button('Refresh from Source',()=>confirmSourceRefresh(row)));
  }
  document.addEventListener('ra:staff-access-reset',()=>{close();filter='all';document.getElementById('food-database-tools')?.remove();});
  window.RA_FOOD_DATABASE={open,close,source,matches,tools,decorate};window.RA_PROGRAM_CONTENT?.render();
