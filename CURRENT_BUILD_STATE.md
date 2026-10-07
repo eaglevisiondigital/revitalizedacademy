@@ -1,5 +1,14 @@
 # ReVitalized Academy — current build state
 
+## Holistic Foundations Gmail invitation issued — 2026-10-06
+
+User selected Holistic Foundations. Normal Owner UI merged the same Gmail CRM contact and attached `direct_membership`; no duplicate identity. Journey `b432b394-c7da-4f9e-8cff-6c3b4e5c0fde`, activation `58e5f230-0521-44ea-8929-25b5205ee22f` retain existing monthly 8900 USD/six-month defaults with payment/access pending. Current MK8 agreement `2eaff98e-6779-4f34-b6d9-22f74994b86a` was prepared and sent through the normal contract/notification workflow. One contact, journey, activation, agreement, secure link and delivery job; no Auth identity yet.
+
+Resend reports delivered for invitation to `justynjamesoliver@gmail.com` (provider message `01a11473-779b-7b91-82d1-b0ef799b1cca`). The queue uses configured beta origin and Edge v16 rejects non-beta URLs before sending. Private link/token was not retrieved or displayed. Actual recipient receipt/open, normal own-account creation/verification, enrollment claim and member login remain pending recipient action. Full private member access remains subject to existing agreement/payment gates; no waiver, synthetic payment or live charge was performed.
+
+Production deployment remains `6ac52af350af344e34bcfa31` and no production data/configuration was changed during this continuation. No source/schema/Edge deployment was needed. Stop unrelated work while recipient completes normal setup.
+
+
 ## Beta invitation recipient accepted — 2026-10-06
 
 The user explicitly approved the exact Gmail address. Normal hosted Owner flow saved `justynjamesoliver@gmail.com` as an approved beta recipient with one audit event. Existing CRM contact `b06bc862-1e7b-489c-bad9-6da7f7321d6d` (display name Maximus Oliver) is preserved. Service-only hosted lookup returns true for the Gmail and false for an unrelated unapproved address. Static allowlist and production email settings are unchanged.
