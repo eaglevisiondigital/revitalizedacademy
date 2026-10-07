@@ -20,7 +20,7 @@ for (const file of files) {
   if (!fs.existsSync(source) || fs.lstatSync(source).isSymbolicLink()) throw new Error(`Invalid public source: ${file}`);
   fs.mkdirSync(path.dirname(target), { recursive: true });
   let bytes = fs.readFileSync(source);
-  if (file === 'consult.html') {
+  if (file === 'consult.html' || file === 'portal/index.html') {
     bytes = Buffer.from(bytes.toString().replace(/<head([^>]*)>/i, '<head$1>\n<script src="/runtime-config.js"></script>\n<script src="/js/environment.js"></script>'));
   }
   fs.writeFileSync(target, bytes);
