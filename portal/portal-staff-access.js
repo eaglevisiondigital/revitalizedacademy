@@ -313,6 +313,7 @@
         email,
         phone,
         role,
+        contact_scope:el("staff-invite-contact-scope").value,
         reason
       });
 
@@ -325,7 +326,7 @@
         "staff-invite-status",
         data.existing_auth_user
           ?"Existing ReVitalized login found. Staff access has been applied to that account."
-          :"Staff invitation sent. Their account is already assigned the selected access role.",
+          :"Staff setup email request accepted. Delivery is not yet confirmed. Their account is assigned the selected role and People scope.",
         "success"
       );
       await load();
@@ -612,7 +613,7 @@
         title(activeStaff.role),
         portal.titleCase(activeStaff.status)
       ].filter(Boolean).join(" · ");
-      setStatus("staff-account-status","Email updated and a fresh secure setup message was sent.","success");
+      setStatus("staff-account-status","Email updated. Secure setup email request accepted; recipient delivery is not yet confirmed.","success");
       await Promise.all([load(),loadMatrix(activeStaff.user_id)]);
     }catch(error){
       setStatus("staff-account-status",error.message,"error");
@@ -642,16 +643,23 @@
 
   const betaRecipientForm=el('beta-recipient-form');
   let betaRecipientBusy=false;
+  let approvedClientNext=null;
+  const clientNext=el("beta-recipient-next");
+  clientNext?.addEventListener("click",async()=>{
+    if(!approvedClientNext||approvedClientNext.actor!==portal.currentUserId()||window.RVA_PUBLIC_CONFIG?.environment!=="staging"||portal.currentStaffRole?.()!=="owner")return;
+    try{await portal.openContact(approvedClientNext.contactId);}catch(error){setStatus("beta-recipient-status",error.message||"Client could not be opened.","error");}
+  });
   document.addEventListener('ra:dashboard-loaded',()=>{
     betaRecipientForm?.classList.toggle('hidden',!(window.RVA_PUBLIC_CONFIG?.environment==='staging'&&portal.currentStaffRole?.()==='owner'));
   });
-  document.addEventListener('ra:staff-access-reset',()=>{betaRecipientForm?.reset();betaRecipientForm?.classList.add('hidden');setStatus('beta-recipient-status','');});
+  document.addEventListener('ra:staff-access-reset',()=>{approvedClientNext=null;clientNext?.classList.add('hidden');betaRecipientForm?.reset();betaRecipientForm?.classList.add('hidden');setStatus('beta-recipient-status','');});
   if(betaRecipientForm){
     betaRecipientForm.addEventListener('submit',async(event)=>{
       event.preventDefault();
       if(betaRecipientBusy||window.RVA_PUBLIC_CONFIG?.environment!=='staging'||portal.currentStaffRole?.()!=='owner')return;
       const actor=portal.currentUserId();betaRecipientBusy=true;
       const button=betaRecipientForm.querySelector('button[type="submit"]');button.disabled=true;
+      approvedClientNext=null;clientNext?.classList.add('hidden');
       setStatus('beta-recipient-status','Saving exact recipient approval…');
       try{
         const {data,error}=await client.rpc('set_beta_test_recipient',{
@@ -660,32 +668,43 @@
         });
         if(actor!==portal.currentUserId())return;
         if(error)throw error;
-        setStatus('beta-recipient-status',data.approved?'Beta recipient approved. Issue or resend the existing client invitation through the enrollment workflow.':'Owner approval revoked. Existing protected staging recipients remain allowed.','success');
+        if(data.approved&&data.contact_id){approvedClientNext={actor,contactId:data.contact_id};clientNext?.classList.remove('hidden');}
+        setStatus('beta-recipient-status',data.approved?'Recipient approved. No invitation has been sent yet. Open Client Enrollment, configure Enrollment Activation, then assign/send the client contract from Agreements. For an already issued agreement, use its Resend action.':'Owner approval revoked. Existing protected staging recipients remain allowed.','success');
       }catch(error){if(actor===portal.currentUserId())setStatus('beta-recipient-status',error.message||'Recipient approval failed.','error');}
       finally{betaRecipientBusy=false;button.disabled=false;}
     });
   }
   const betaStaffRecipientForm=el('beta-staff-recipient-form');
   let betaStaffRecipientBusy=false;
+  let approvedStaffNext=null;
+  const staffNext=el("beta-staff-recipient-next");
+  staffNext?.addEventListener("click",()=>{
+    if(!approvedStaffNext||approvedStaffNext.actor!==portal.currentUserId()||!canApproveBetaStaffRecipient())return;
+    const existing=staffRows.find(row=>String(row.email||" ").trim().toLowerCase()===approvedStaffNext.email);
+    if(existing){setStatus("beta-staff-recipient-status","This email already has a staff record. Use that record’s Set / Change Password or pending-email setup action; do not create another account.");return;}
+    openInvite();el("staff-invite-email").value=approvedStaffNext.email;
+  });
   function canApproveBetaStaffRecipient(){
     return window.RVA_PUBLIC_CONFIG?.environment==='staging'&&['owner','admin'].includes(portal.currentStaffRole?.())&&myPermissions['staff.manage']===true;
   }
   function renderBetaStaffRecipientApproval(){betaStaffRecipientForm?.classList.toggle('hidden',!canApproveBetaStaffRecipient());}
   document.addEventListener('ra:staff-access-reset',()=>{
-    betaStaffRecipientForm?.reset();betaStaffRecipientForm?.classList.add('hidden');setStatus('beta-staff-recipient-status','');
+    approvedStaffNext=null;staffNext?.classList.add('hidden');betaStaffRecipientForm?.reset();betaStaffRecipientForm?.classList.add('hidden');setStatus('beta-staff-recipient-status','');
   });
   betaStaffRecipientForm?.addEventListener('submit',async(event)=>{
     event.preventDefault();if(betaStaffRecipientBusy||!canApproveBetaStaffRecipient())return;
-    const actor=portal.currentUserId();betaStaffRecipientBusy=true;
+    const actor=portal.currentUserId(),recipientEmail=el('beta-staff-recipient-email').value.trim().toLowerCase();betaStaffRecipientBusy=true;
     const button=betaStaffRecipientForm.querySelector('button[type="submit"]');button.disabled=true;
+    approvedStaffNext=null;staffNext?.classList.add('hidden');
     setStatus('beta-staff-recipient-status','Saving exact staff recipient approval…');
     try{
       const {data,error}=await client.rpc('set_beta_staff_test_recipient',{
-        p_email:el('beta-staff-recipient-email').value.trim().toLowerCase(),
+        p_email:recipientEmail,
         p_approved:el('beta-staff-recipient-approved').value==='true',p_reason:el('beta-staff-recipient-reason').value.trim()
       });
       if(actor!==portal.currentUserId())return;if(error)throw error;
-      setStatus('beta-staff-recipient-status',data.approved?'Beta staff recipient approved. Use Invite Staff, or the existing staff record to reissue setup.':'Staff recipient approval revoked. Existing protected staging recipients remain allowed.','success');
+      if(data.approved){approvedStaffNext={actor,email:recipientEmail};staffNext?.classList.remove('hidden');}
+      setStatus('beta-staff-recipient-status',data.approved?'Recipient approved. No invitation has been sent yet. Open Staff Invitation and confirm the intended role and People scope. For an existing staff account, use its setup action instead.':'Staff recipient approval revoked. Existing protected staging recipients remain allowed.','success');
     }catch(error){if(actor===portal.currentUserId())setStatus('beta-staff-recipient-status',error.message||'Staff recipient approval failed.','error');}
     finally{betaStaffRecipientBusy=false;button.disabled=false;}
   });

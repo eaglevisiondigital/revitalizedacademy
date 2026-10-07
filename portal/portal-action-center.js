@@ -500,7 +500,7 @@
         }
       }
 
-      setOperationalStatus("activation-status-message", "");
+      setOperationalStatus("activation-status-message",window.RVA_PUBLIC_CONFIG?.environment==="staging"&&window.RVA_PUBLIC_CONFIG?.paymentMode==="synthetic"&&activation?.payment_status!=="paid"?"Beta test: after the required agreement is signed, an authorized Owner can select Paid and save to record the approved synthetic payment in the ledger. This does not charge a card.":"");
     }
 
     renderReportOperational();

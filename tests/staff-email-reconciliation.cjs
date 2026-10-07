@@ -17,11 +17,11 @@ const staffHandler=fs.existsSync(path.join(root,'supabase/functions/staff-manage
 test('pending staff email recovery is exposed through the current staff manager',()=>{
   assert.match(html,/id="staff-edit-email"[^>]*type="email"/);
   assert.match(html,/id="staff-reconcile-email"/);
-  assert.match(html,/portal-staff-access\.js\?v=185/);
+  assert.match(html,/portal-staff-access\.js\?v=186/);
   assert.match(source,/action:"reconcile_pending_email"/);
   assert.match(source,/user_id:activeStaff\.user_id/);
   assert.match(source,/Enter a reason before changing a staff email/);
-  assert.match(source,/Email updated and a fresh secure setup message was sent/);
+  assert.match(source,/Email updated\. Secure setup email request accepted; recipient delivery is not yet confirmed/);
 });
 
 test('staff invitation landing provides a guided password-setup recovery path',()=>{

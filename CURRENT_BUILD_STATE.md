@@ -1,5 +1,13 @@
 # ReVitalized Academy — current build state
 
+## Beta invitation/onboarding repair — 2026-10-07 (release prepared)
+
+Exact recipient approvals are recognized. Isabelle is approved but has no enrollment/invitation; William's .com staff mail bounced and .me confirmation mail is still sent/unconfirmed. Fixed missing staff invitation `contact_scope`, approval next actions and explicit no-mail acknowledgement, provider-request wording and onboarding unmet-gate guidance. Assets staff-access 186, action-center 134, onboarding 4. No migration, Edge/config/allowlist or role change.
+
+Justyn's existing verified, signed Holistic Foundations enrollment was waiting on its authoritative payment ledger. The approved synthetic beta ledger RPC now makes access/membership active; no real charge, duplicate identity/enrollment/agreement or direct access override. Fresh hosted member login remains separate. Program entitlement defaults are absent in beta; no speculative feature grant was made. Four lifecycle follow-up notices remain queued, distinct from the delivered agreement invitation.
+
+Build and syntax pass; frontend 544 pass/0 fail/27 skips, PostgreSQL 17 backend 268/268, Edge 55/55. Deployment/live acceptance pending. Production remains deploy `6ac5fda10ae8b03a2ddf176e`. [Evidence and remaining acceptance](docs/BETA_INVITATION_ONBOARDING_REPAIR_2026-10-07.md).
+
 ## LIVE ACCEPTED — FoodData + one-way beta content sync — 2026-10-07
 
 **FOOD DATABASE + BETA SYNC FULLY ACCEPTED.** This entry supersedes older local/pending checkpoints below for this package; those are historical.

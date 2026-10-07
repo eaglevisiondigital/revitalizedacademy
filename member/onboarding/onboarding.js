@@ -263,12 +263,36 @@
     }
   }
 
+  function renderNextSteps(c){
+    const box=el('onboarding-next-steps');if(!box)return;
+    box.replaceChildren();box.hidden=c.full_access||!['onboarding','invitation_required'].includes(c.access_state);
+    if(box.hidden)return;
+    box.append(node('h3','What remains before your dashboard opens'));
+    if(c.access_state==='invitation_required'){box.append(node('p','Open your original enrollment invitation after verifying your email. If it is unavailable, ask an Owner to resend the existing invitation.'));return;}
+    const agreements=c.agreements||[],enrollments=c.enrollments||[];
+    const missingAgreement=!agreements.length;
+    const pendingAgreement=agreements.some(a=>!['signed','waived'].includes(a.status));
+    if(missingAgreement)box.append(node('p','An Owner needs to issue your required agreement. No agreement is available to sign yet.'));
+    else if(pendingAgreement)box.append(node('p','Review and sign your required agreement below. Each required adult must sign with their own verified account.'));
+    else box.append(node('p','Your required agreement is complete.'));
+    const unpaid=enrollments.filter(a=>!a.payment_satisfied);
+    if(unpaid.length){
+      let validPaymentLink=false;
+      for(const a of unpaid)try{if(a.payment_url&&window.RVA_PAYMENT_URL(a.payment_url))validPaymentLink=true;}catch{}
+      if(validPaymentLink)box.append(node('p','Complete the payment requirement using the secure payment link below.'));
+      else if(window.RVA_PUBLIC_CONFIG?.environment==='staging'&&window.RVA_PUBLIC_CONFIG?.paymentMode==='synthetic')box.append(node('p','Beta access is waiting on an Owner. Ask the beta Owner to open your Enrollment Activation and record the approved synthetic beta payment. Do not make a real payment for this test.'));
+      else box.append(node('p','The payment requirement is still pending, and no secure payment link is available. Contact ReVitalized Academy to arrange the next step.'));
+    }else if(!enrollments.length)box.append(node('p','An Owner needs to configure your enrollment before member access can be activated.'));
+    else if(!missingAgreement&&!pendingAgreement)box.append(node('p','Your requirements are complete. An Owner needs to confirm enrollment access activation.'));
+    box.append(node('p','After the next step is completed, use Refresh payment and agreement status below.'));
+  }
+
   async function load(){
     const {data:{session}}=await client.auth.getSession();el('auth').hidden=!!session;el('account').hidden=!session;
-    if(!session){status('Sign in or create your own account to continue.');return;}
+    if(!session){el('onboarding-next-steps')?.replaceChildren();status('Sign in or create your own account to continue.');return;}
     if(invitation&&!load.invitationClaimed){await rpc('redeem_secondary_signer_invitation',{p_token:invitation});load.invitationClaimed=true;}
     if(enrollment&&!load.enrollmentClaimed){await rpc('claim_onboarding_enrollment',{p_token:enrollment});load.enrollmentClaimed=true;}
-    const c=await rpc('my_onboarding_context');el('account-email').textContent=c.email||session.user.email;el('member-link').hidden=!c.full_access;
+    const c=await rpc('my_onboarding_context');renderNextSteps(c);el('account-email').textContent=c.email||session.user.email;el('member-link').hidden=!c.full_access;
     const descriptions={invitation_required:['Open your enrollment invitation','Reopen the private enrollment link from ReVitalized to confirm access to your enrollment. Contact support if you need a new link.'],onboarding:['Complete your enrollment','Your account is ready for payments and agreements. Full member access starts when both requirements are satisfied.'],payment_suspended:['Payment resolution needed','Paid member features are paused. You can review billing and agreements and contact support.'],active:['Your membership','Review your agreements and payment status below.'],signer_only:['Your agreement invitation','You can review and sign the agreement you were invited to. This does not grant membership or household access.'],inactive:['Account access inactive','Contact ReVitalized Academy for help with your access.'],suspended:['Account access restricted','Contact ReVitalized Academy for help with your access.']};
     const description=descriptions[c.access_state]||descriptions.onboarding;el('state-title').textContent=description[0];el('state-description').textContent=description[1];
     el('enrollments').replaceChildren(...c.enrollments.map(a=>{const card=node('article');const amount=new Intl.NumberFormat(undefined,{style:'currency',currency:a.currency}).format((a.amount_cents||0)/100);card.append(node('h3',a.program_name||'Enrollment'),node('p',amount+' · '+(a.billing_choice||'Your agreed plan')),node('p',a.commitment_months?a.commitment_months+'-month commitment':''),node('p',a.payment_satisfied?'Payment requirement satisfied':'Payment required'));
