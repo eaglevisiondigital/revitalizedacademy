@@ -27,4 +27,32 @@ Beta migration applied once under MCP ledger 20261007154421; CLI-created local c
 
 Justyn must sign in normally in the test browser; prove dashboard/refresh/logout/relogin and capture any load diagnostic. Confirm William’s exact working recipient before using supported pending-email reconciliation and resend; provider delivery and actual setup remain unaccepted. Owner must select Isabelle’s program/terms before hosted enrollment and invitation issuance. Do not label any of these complete from local fixtures.
 
-Release SHA/deploy and hosted UI evidence to follow.
+## Released package and hosted evidence
+
+Application SHA `d44b27564ff32f77abc2db7ace4c2e5844528341` is pushed on isolated branch `codex/beta-client-enrollment-repair`; no merge/main/staging branch overwrite. Netlify beta site `071b252e-a922-4846-a784-8dca1edad377` is serving deploy `6ac66993ea29c01f0a1eef6a` at https://beta.revitalizedacademy.com. This primary-site deployment is on the beta site only. A future Git-triggered beta build can supersede the manual release; no deploy lock or Git configuration was changed.
+
+Exact live/built SHA-256 matches:
+
+| Asset | Version | SHA-256 |
+| --- | --- | --- |
+| portal-enrollment.js | 100 | 32b81cb890dd123bd74a82d9643862f7c2e0efa7ef3df4e13f4fc18a4db2955e |
+| portal-action-center.js | 135 | 44e21fb3e5ccea9c320a1a2ddfbfa51a40ed2c5e828464ee5569000c550c28d8 |
+| portal-agreements.js | 151 | 6159eb4b4c2afc94a09845219d3f7fd3f7cfe2c3b97bb3cdd856a7a49e46c7ad |
+| member110.js | 215 | 7104faf6d2491a55420825f24a3303a458ae188cccf3b3c0978f8dbfdc96429b |
+| member110.css | 204 | c00ebb070ae91666069c2a73a8f3b7662c3f239435fa84ebf87e22fdda209572 |
+
+All return HTTP200; beta runtime configuration also matches the guarded build exactly. Production control plane still reports deploy `6ac5fda10ae8b03a2ddf176e`; no production release/configuration/database mutation was performed.
+
+Normal hosted Owner acceptance: Isabelle's drawer shows approval, no enrollment/program, not-sent invitation and exact next action. Start Enrollment opens the active existing catalog plus billing/amount/currency; no program or billing is preselected. Send Invitation and payment review remain disabled until enrollment is configured. At 1440×1000, 768×1024, and 390×844, page widths equal viewport widths and enrollment controls stay within the drawer without internal horizontal overflow. Desktop screenshot is retained in the parent workspace's `deployment-evidence/2026-10-07-beta-client-enrollment/isabelle-enrollment-desktop.jpg`.
+
+Justyn's Owner-visible summary shows existing Holistic Foundations, signed agreement, paid ledger, active access. Review Payment & Access opens the existing payment/agreement activation panel without changing the current assessment step or submitting anything. Console warnings/errors: zero observed during these checks. Owner sign-out followed by navigation displays the normal member login, now prepared for Justyn's own password entry. This does not prove Justyn's fresh member session; actual dashboard/refresh/logout/relogin remain pending.
+
+Post-release preservation: Justyn Auth/contact/activation/agreement/payment/membership counts each remain one. William retains the existing Auth identity. Isabelle has zero activation/agreement/Auth records, as before. No acceptance mail was sent, no arbitrary recipient allowed, and no hosted identity/enrollment/payment/role/permission/flag/content data changed. Only the beta function migration and frontend/functions build release were applied.
+
+## Exact next user actions / Primary Chat handoff
+
+- Justyn: sign in at https://beta.revitalizedacademy.com/member/ as `justynjamesoliver@gmail.com` using his existing password. Then verify dashboard, refresh, sign out and sign back in. If denied, report the exact new message; do not recreate his identity or synthetic payment. His reported failure's actual root cause is not yet proven, although the misleading inactive-access error handling is repaired.
+- William: confirm the exact working receiving email. Current `williambk83@protonmail.me` cannot receive mail; original `.com` bounced. Once confirmed, reconcile/reissue the existing staff setup invitation through the supported audited beta approval workflow, retaining the same identity/role/scope. No guessed address, suppression removal or resend was performed.
+- Isabelle: Owner opens People → Isabelle Davies → Start Enrollment / Choose Program, selects the existing approved program and agreed billing/amount/currency, then Save Enrollment → Send Invitation. The latter opens the existing agreement preparation workflow. Program/financial terms must be supplied before hosted save/issuance; no manual database step is required.
+
+**BETA CLIENT ENROLLMENT FLOW BLOCKED** — pending fresh Justyn hosted session, William's confirmed deliverable address/setup, and Isabelle's program/terms/save/send acceptance. Production remains unchanged. Do not interpret local fixtures or provider request acceptance as external receipt or completed user setup. Do not begin unrelated work.

@@ -1,6 +1,6 @@
 # ReVitalized Academy — current build state
 
-## Beta client enrollment controls — 2026-10-07 (release candidate; acceptance pending)
+## Beta client enrollment controls — 2026-10-07 (deployed; final hosted acceptance blocked)
 
 Implemented an Owner/Admin contact-drawer enrollment hub with explicit approval, program, invitation, agreement, payment, access and next-action states. A staging-only, contact-scoped, audited RPC serializes enrollment saves and reuses the existing journey/activation; issued terms are locked. Save never sends an invitation or substitutes for signature/payment gates. Contract preparation can read the configured activation before a member account exists. Payment/access review is reachable independently of the current journey step.
 
@@ -8,7 +8,11 @@ Justyn’s exact existing identity passes the hosted paid-access RPC, dashboard 
 
 William’s existing staff account currently targets `williambk83@protonmail.me`; its latest provider message is delivery_delayed and DNS returns NXDOMAIN for that domain. The previous `.com` recipient bounced/suppressed. Exact working address confirmation is required before correction/resend; no new invitation/account was created. Isabelle is approved but has no enrollment or invitation. Program selection and hosted issuance await the Owner’s choice.
 
-Migration `20261007154421_beta_client_enrollment_controls` is applied only to beta `bvooallokgfktssadsrv` (local filename aligned with the MCP-generated ledger timestamp; not a second migration). Production untouched. Validation: 553 maintained frontend pass/27 skip plus 2 focused action tests pass; 276 PostgreSQL 17 backend pass, including 8 new enrollment boundary cases; 55 Edge pass; 81 JS syntax pass; 319-file beta build. Hosted release/acceptance details will be recorded below.
+Migration `20261007154421_beta_client_enrollment_controls` is applied only to beta `bvooallokgfktssadsrv` (local filename aligned with the MCP-generated ledger timestamp; not a second migration). Application source `d44b27564ff32f77abc2db7ace4c2e5844528341`, branch `codex/beta-client-enrollment-repair`, beta deploy `6ac66993ea29c01f0a1eef6a`. Exact public hashes match built Enrollment JS100, Action Center JS135, Agreements JS151, Member JS215/CSS204 and beta runtime configuration. Production remains deploy `6ac5fda10ae8b03a2ddf176e`.
+
+Validation: 553 maintained frontend pass/27 skip plus 2 focused action tests pass; 276 PostgreSQL 17 backend pass, including 8 new enrollment boundary cases; 55 Edge pass; 81 JS syntax pass; 319-file beta build. Exact-built enrollment DOM 6/6; existing Health/Progress 52/52. Normal Owner hosted checks show Isabelle's empty enrollment state and program/billing/amount form, no preselected program or billing; all controls fit 1440/768/390 without horizontal overflow. Justyn's drawer shows signed/paid/active and Review Payment & Access opens the existing activation panel independently of the current assessment step. No console warnings/errors observed. No hosted enrollment, invitation, payment, identity, role, permission, flag or content records were changed by acceptance.
+
+Preservation check: Justyn still has one Auth/contact/activation/agreement/payment/membership; William's existing Auth retained; Isabelle still has zero activation/agreement/Auth until approved program/terms are saved. Fresh Justyn sign-in and session acceptance, William's confirmed working address plus delivery/setup, and Isabelle's program/terms plus save/send remain required. The normal beta member sign-in is prepared for Justyn; no password requested or manufactured session used. This is not final beta acceptance. [Full findings and handoff](docs/BETA_CLIENT_ENROLLMENT_REPAIR_2026-10-07.md).
 
 ## Beta invitation/onboarding repair — 2026-10-07 (deployed; hosted acceptance blocked)
 
