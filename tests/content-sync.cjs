@@ -39,4 +39,5 @@ test('sync module is included in the public allowlist and deferred portal load',
  const fs=require('node:fs');const manifest=fs.existsSync('config/production-public-files.json')?'config/production-public-files.json':'config/public-files.json';
  assert(JSON.parse(fs.readFileSync(manifest,'utf8')).includes('portal/portal-content-sync.js'));
  assert.match(fs.readFileSync('portal/index.html','utf8'),/<script defer src="portal-content-sync\.js\?v=100"><\/script>/);
+ const dir=manifest.includes('production')?'production-dist':'dist';const built=fs.readFileSync(dir+'/portal/index.html','utf8');assert(built.includes('<script src="/runtime-config.js"></script>'));assert(built.indexOf('/runtime-config.js')<built.indexOf('portal-content-sync.js'));assert(fs.readFileSync(dir+'/portal/portal-content-sync.js').equals(fs.readFileSync('portal/portal-content-sync.js')));
 });

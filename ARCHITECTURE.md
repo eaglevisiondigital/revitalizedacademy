@@ -1,3 +1,9 @@
+# Live content sync architecture — 2026-10-07
+
+Production-only protected Function/export RPC → beta-only atomic receive RPC. Reviewed 13-table reusable-content contract, dependency remapping, stable UUID mapping, version checks and immutable job retry. Production portal bootstrap now supplies the same public environment configuration as its built runtime. Production wins beta conflicts; no reverse or operational/private-data sync.
+
+[Final hosted acceptance report](docs/FOODDATA_BETA_SYNC_ACCEPTANCE_2026-10-07.md). Earlier candidate entries below are historical.
+
 # ReVitalized Academy architecture
 
 ## Member password recovery

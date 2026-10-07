@@ -1,3 +1,9 @@
+# Live content sync security acceptance — 2026-10-07
+
+Active Owner/Admin plus effective learning.manage, exact production origin/site/project, fresh bearer identity, service-only SQL ACLs, content field/JSON whitelist, private audited jobs and atomic beta receive were tested. Coach/member/anonymous/reverse actions denied. Credentials remain server Functions-only; beta has no production credential. No existing grants, private-data policies or feature flags changed.
+
+[Final hosted acceptance report](docs/FOODDATA_BETA_SYNC_ACCEPTANCE_2026-10-07.md). Earlier candidate entries below are historical.
+
 # ReVitalized Academy security model
 
 ## Restricted member sign-in boundary — 2026-10-06

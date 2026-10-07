@@ -1,3 +1,9 @@
+# Accepted production-authoritative reusable content — 2026-10-07
+
+The user-approved production → beta content sync is now live and accepted. Only deliberate single/selected reusable content and dependency trees transfer. Production wins later conflicts; beta cannot write back. Audit retained after disposable test cleanup. No client/Auth/staff/health/assignment/payment/message transfer or unrelated promotion.
+
+[Final hosted acceptance report](docs/FOODDATA_BETA_SYNC_ACCEPTANCE_2026-10-07.md). Earlier candidate entries below are historical.
+
 # ReVitalized Academy decisions and unresolved questions
 
 ## 2026-10-05 — Narrow beta member benefit/session repair authorized
