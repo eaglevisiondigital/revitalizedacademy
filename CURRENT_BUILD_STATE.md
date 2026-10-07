@@ -9,7 +9,7 @@
 - Team Permissions exposes Owner-only recipient approval/revocation; cross-account reset hides and clears the form. Portal staff-access cache v184. Revocation affects dynamic approval; protected static recipients remain allowed.
 - Tests: 504 frontend passed, zero failed, 27 skipped; 78 syntax checks; 9 PostgreSQL 17 permission/origin checks; 6 actual-source delivery-helper checks. Native Deno suite unavailable locally; hosted deployment compilation succeeded.
 - Existing Justyn Gmail contact has no enrollment activation, agreement, Auth identity, invitation or notification job. Add Person creates only the CRM record. The email was absent from the static allowlist, but no job exists to prove an actual delivery rejection. Program selection is required before supported enrollment/invitation issuance; do not create duplicates.
-- Netlify release, exact asset checks, hosted approval and actual email/member setup results are recorded in the task report. Until invitation receipt and setup pass, beta invite acceptance remains pending.
+- Netlify deploy `6ac5b971662634aaa6a5e4cc` is live at the branded beta domain. Asset `portal-staff-access.js?v=184` matches the build SHA-256 `c1e4dca8f922d4d8c73267ad962c69f267b2ab05e19fa9524a0f329a9170af64` via the same-site fallback hostname (local shell custom-domain DNS unavailable). Three supplemental exact-built UI checks passed for Owner gating, single submission and clearing/suppressing prior-account DOM/responses. Hosted approval, actual invitation receipt and member setup remain pending Owner sign-in and program selection.
 
 
 ## Branded beta domain deployed — 2026-10-06
