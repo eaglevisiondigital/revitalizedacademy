@@ -1,5 +1,12 @@
 # ReVitalized Academy — current build state
 
+## Beta invitation recipient accepted — 2026-10-06
+
+The user explicitly approved the exact Gmail address. Normal hosted Owner flow saved `justynjamesoliver@gmail.com` as an approved beta recipient with one audit event. Existing CRM contact `b06bc862-1e7b-489c-bad9-6da7f7321d6d` (display name Maximus Oliver) is preserved. Service-only hosted lookup returns true for the Gmail and false for an unrelated unapproved address. Static allowlist and production email settings are unchanged.
+
+The active catalog has no DIY or generic beta program. It contains Holistic Foundations (membership, six-month commitment), Vitality Accelerator, Vitality Accelerator Cohort, 6-Month Intensive and 12-Month Intensive. No enrollment activation or invitation exists for this contact. Required specific program selection is pending; do not invent business terms, create a second contact or manufacture member access. Invitation delivery, setup and login acceptance remain untested until supported enrollment issuance occurs. No source, schema, Edge or production changes were needed in this continuation. Approval screenshot is stored in the parent task workspace.
+
+
 ## Beta exact-recipient approval — 2026-10-06
 
 - Branch `codex/beta-recipient-approval`, application source `f5d8b9f5fe4f1c8626191dae008bdf1a282b9435`, based on accepted staging `88ee646`. No production changes from this beta package.
