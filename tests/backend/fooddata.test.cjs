@@ -55,3 +55,16 @@ test('malformed import IDs/nutrients/units, private-cache reads denied and serve
  await server('cache_put',{a:1},'test');assert.deepEqual(await server('cache_get',null,'test'),{a:1});for(let i=0;i<60;i++)await server('budget');await assert.rejects(server('budget'),/limit/);
  assert.equal(Number(await val('select count(*) from pg_tables where schemaname=$1 and tablename=any($2) and rowsecurity',['private',['food_source_history','food_database_cache','food_database_usage']])),3);
 });
+
+test('unchanged source refresh records verification without mutating food or recipe snapshots',async()=>{
+ const f=await importFood(),r=await recipe();await ingredient(r,f.id);await calculate(r);
+ const priorFood=await val('select to_jsonb(f) from public.food_catalog f where id=$1',[f.id]);
+ const priorRecipe=await val('select to_jsonb(r) from public.recipes r where id=$1',[r]);
+ const priorIngredients=(await q('select to_jsonb(i) v from public.recipe_ingredients i where recipe_id=$1',[r])).rows;
+ for(let i=0;i<2;i++){const fresh=await server('refresh',normalize(source[0]));assert.equal(fresh.id,f.id);assert.equal(fresh.source_version,f.source_version);}
+ assert.equal(Number(await val('select count(*) from public.food_catalog')),1);
+ assert.deepEqual(await val('select to_jsonb(f) from public.food_catalog f where id=$1',[f.id]),priorFood);
+ assert.deepEqual(await val('select to_jsonb(r) from public.recipes r where id=$1',[r]),priorRecipe);
+ assert.deepEqual((await q('select to_jsonb(i) v from public.recipe_ingredients i where recipe_id=$1',[r])).rows,priorIngredients);
+ assert.equal(Number(await val("select count(*) from private.food_source_history where food_id=$1 and action='refresh_unchanged' and actor_id=$2 and source_version=$3",[f.id,owner,f.source_version])),2);
+});
