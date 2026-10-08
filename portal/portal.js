@@ -974,6 +974,12 @@
   el("pending-password").addEventListener("click", showPasswordSetup);
 
   authClient.auth.onAuthStateChange((event, session) => {
+    if(currentUserId && (event === "SIGNED_OUT" || (session?.user?.id && session.user.id !== currentUserId))){
+      document.dispatchEvent(new CustomEvent("ra:staff-access-reset"));
+      document.body.replaceChildren();
+      const notice=document.createElement("p");notice.textContent="Refreshing secure access for the current account…";document.body.append(notice);
+      window.location.replace("/portal/");return;
+    }
     if (event === "SIGNED_OUT") {
       showLogin();
     } else if (event === "PASSWORD_RECOVERY") {

@@ -6,6 +6,10 @@ Prefer visible, focused Check Your Email confirmation, masked recipient, do-not-
 
 # Historical RepDB Exercise Library local candidate — 2026-10-07
 
+## 2026-10-07 — Client lifecycle integrated candidate (NOT RELEASED)
+
+User approved exactly six HF production template defaults: platform_access, nutrition_plans, fitness_plans, tracking, biometrics, habit_builder. Candidate deactivates five extra defaults; no hosted edit yet. Production pre-payment signup/agreement/recovery is prepared; payment/paid workspaces and assignments held. Primary Chat must choose exact MK7/MK8 production HF mapping and monthly/pay-in-full contract presentation; $960 cannot be autofilled as a monthly fee. Production disposable inbox approval and final complete-candidate migration/Edge/Netlify release approval remain pending. No beta operational data promoted. [Exact decision prompt](docs/PRODUCTION_CLIENT_LIFECYCLE_V1_2026-10-07.md).
+
 # Accepted narrow RepDB forward repair — 2026-10-07
 
 User explicitly approved the new DELETE-contract migration, once to each environment, plus disposable hosted import/delete acceptance and cleanup. Applied production ledger20261007221345 / beta20261007221355; source filename20261007220506. Preserve original20261007201539 migration, existing Archive/RLS/provenance/FKs, one-way production-authoritative sync, Auth/client/payment/config isolation. No new DELETE UI or frontend deployment. All requested repair gates accepted; no remaining package blocker or unrelated follow-on work. [Evidence](docs/REPDB_DELETE_GUARD_REPAIR_2026-10-07.md).

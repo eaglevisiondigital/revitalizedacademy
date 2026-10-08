@@ -1,89 +1,93 @@
-# Production Client Lifecycle v1 — preparation checkpoint
+# Production Client Lifecycle v1 — integrated candidate, NOT RELEASED
 
-**PRODUCTION CLIENT LIFECYCLE BLOCKED. No release was performed.**
+**PRODUCTION CLIENT LIFECYCLE BLOCKED.** Local frontend, database and Edge integration is implemented and tested. No push, migration application, Edge deployment, Netlify deployment, mail, hosted identity creation or hosted cleanup was performed. This is an engineering review candidate, not production acceptance.
 
-The database candidate is tested locally; this is not a deployable, accepted end-to-end package. Production contract selection/mapping and disposable receiving-inbox confirmation are pending. Frontend/Edge integration, genuine hosted acceptance and responsive acceptance remain required. Do not onboard real clients using this candidate yet.
+## Current authoritative state
 
-## Authoritative baseline
+Isolated branch `codex/production-client-lifecycle-v1` in `revitalizedacademy-client-lifecycle`, based on accepted production source `862f4b6e2edb9b6af5332a389c0081fefec6adae`, resumes database draft `2dff74fe5b51fc1980960a36dbee54efb31677cc`. The final local commit printed in the handoff identifies the exact reviewed source; no remote release commit exists for this package yet.
 
-- Production repository: `eaglevisiondigital/revitalizedacademy`; isolated branch `codex/production-client-lifecycle-v1` starts from accepted production source `862f4b6e2edb9b6af5332a389c0081fefec6adae`.
-- Production site: `ece0f6f3-6c3d-46e6-bb51-95ce1ccefb06`; current deploy remains `6ac6b471ac8ed68bec8bd8d6`.
-- Production Supabase: `voalfpxiyznnqfcqcymd`; latest migration ledger remains `20261007221345` (already accepted RepDB DELETE repair).
-- Beta source audited: `0eea05af0c05c4b46dbf79d9f5adcabc0d1c2a6e`; beta project `bvooallokgfktssadsrv`; deploy `6ac6b620e735903c2285ec3f`.
-- Production currently has zero enrollment activations, client-access rows, memberships, client agreements/acceptances and payment records. Final read reverified zero activations, access, agreements and payments and absence of the candidate enrollment API.
-- Production publishes client contract MK7. Beta publishes MK8 with actual program-name language. Production has **zero active required Holistic Foundations agreement mappings**. The precise MK8 text-replacement anchor exists in production MK7; no legal content was changed.
-- Active production programs include Holistic Foundations, Vitality Accelerator/Cohort and six/twelve-month Total Wellness. No beta pricing, deposit, contract terms, identities or operational records were promoted.
+Production remains Netlify `ece0f6f3-6c3d-46e6-bb51-95ce1ccefb06`, deploy `6ac6b471ac8ed68bec8bd8d6`, Supabase `voalfpxiyznnqfcqcymd`, latest ledger `20261007221345`. Read-only recheck found zero client memberships/access/agreements/payment records and no candidate client-creation API. Beta remains site `071b252e-a922-4846-a784-8dca1edad377`, deploy `6ac6b620e735903c2285ec3f`, project `bvooallokgfktssadsrv`. Neither environment was modified.
 
-Evidence: `PRODUCTION_CLIENT_LIFECYCLE_AUDIT_2026-10-07.json`; existing beta `CLIENT_ACCESS_LIFECYCLE.md`, `BETA_READINESS_CORE_V1.md`, final beta acceptance entry in `CURRENT_BUILD_STATE.md`, and later individual-client acceptance documents. The older core multi-account acceptance passed; later recipient setup/fresh-login gates must not be described as passed merely because their server state is active.
+Production publishes MK7, with **no required active Holistic Foundations agreement mapping**. Beta has the approved MK8 program-name revision. This candidate neither publishes a legal revision nor invents a mapping. There are eleven current active production Holistic Foundations defaults; the unapplied candidate retains exactly the six user-approved defaults, deactivating the other five.
 
-## Module classification
+## Module status
 
-| Lifecycle module | Production status | Evidence / remaining gate |
+| Module | Production status | Candidate / remaining gate |
 | --- | --- | --- |
-| Client creation | NEEDS NARROW REPAIR/ACCEPTANCE | Atomic normalized, idempotent, attribution-preserving database API prepared. Staff form still needs integration and hosted/concurrency acceptance. |
-| Enrollment | NEEDS NARROW REPAIR/ACCEPTANCE | Owner/Admin + permission + contact-scope contract prepared; pending membership/access foundation; no synthetic payment. UI integration required. |
-| Program selection | NEEDS NARROW REPAIR/ACCEPTANCE | Existing active production catalog and billing/amount/currency validated locally. No price/currency inferred from beta. |
-| Agreements | NEEDS NARROW REPAIR/ACCEPTANCE | Secure preparation/signing/claim/outbox contracts prepared and locally tested. Required production template mapping decision outstanding; mail dispatcher/UI integration and actual signature acceptance outstanding. |
-| Account setup | NEEDS NARROW REPAIR/ACCEPTANCE | Reuse normal verified Auth and accepted invitation claim. Current production member-account Edge is older; integrate accepted secure version and prove real email setup. |
-| Member access | NEEDS NARROW REPAIR/ACCEPTANCE | Candidate holds full access false, blocks manual paid/waived states and payment URLs/ledger writes. Hosted unpaid denial must be proven. |
-| Member dashboard | KEEP BETA ONLY | No independently accepted production payment entitlement; do not promote the full dashboard yet. |
-| Nutrition | KEEP BETA ONLY | Reusable food/recipe authoring remains accepted production functionality; client Nutrition workspace is a separate paid feature. |
-| Workouts | KEEP BETA ONLY | Reusable exercise/workout/program authoring remains accepted; paid member workspace is not released by this preparation. |
-| Health & Progress | KEEP BETA ONLY | Configurable metrics/private health workspace needs production schema, scope and entitled hosted acceptance separately. |
-| Meal assignment | KEEP BETA ONLY | Content templates already live; no staging assignments copied. Production A/B assignment acceptance not performed. |
-| Fitness assignment | KEEP BETA ONLY | Content templates already live; no production assignment promotion or acceptance. |
-| Coach scope | NEEDS NARROW REPAIR/ACCEPTANCE | Existing production permission/scope retained; local existing Vitality denial regressions pass. New lifecycle hosted assigned/unassigned proof outstanding. |
-| Password recovery | NEEDS NARROW REPAIR/ACCEPTANCE | Accepted beta recovery architecture identified; production lacks member-password-reset Edge. No recovery implementation deployed. |
-| Payments integration | KEEP BETA ONLY / separate release | No live Authorize.Net, synthetic production payment, recurring/installment charges or payment links introduced. Payments v1 needs its own acceptance. |
+| Client creation | NOT RELEASED | Atomic normalized/idempotent Owner/Admin Add Client form and API; original source attribution preserved. Hosted creation pending. |
+| Enrollment | NOT RELEASED | Visible client-drawer Start Enrollment / Choose Program, authenticated atomic save, clear status and next action. |
+| Holistic Foundations billing | NOT RELEASED | $89/month or $960 pay in full; explicit USD/CAD selection, six-month enrollment; no payment processing. Future custom/installment schema retained without exposing unaccepted choices. |
+| Agreements | BLOCKED | Mapped published contract only; immutable hash, verified self-signature, idempotence, service-only delivery lease. Production legal revision/mapping decision, pay-in-full wording and genuine hosted signature acceptance pending. |
+| Account setup | NOT RELEASED | Normal verified-email signup; separate confirmation screen, normal login, invitation reopen and claim. No privileged account creation or auto-verification. |
+| Password recovery | NOT RELEASED | Branded neutral request confirmation and isolated one-time recovery exchange/password form. Actual receipt/open/reset acceptance pending. |
+| Member access gate | NOT RELEASED | Clear Agreement/Payment Required/Awaiting Payment; full access false; no synthetic/waived/zero-price/payment-URL/ledger bypass. |
+| Member Dashboard | BETA ONLY | Compact pre-payment account/agreement center is prepared. Full paid dashboard not promoted. |
+| Nutrition | BETA ONLY for members | Existing production food/recipe authoring remains accepted. Client paid workspace remains held. |
+| Workouts | BETA ONLY for members | Existing production exercise/workout/program authoring remains accepted. Client paid workspace remains held. |
+| Health & Progress | BETA ONLY | Configurable/private member workspace not promoted. |
+| Meal assignment | BETA ONLY | No assignment UI release or production client assignment writes. |
+| Fitness assignment | BETA ONLY | No assignment UI release or production client assignment writes. |
+| Coach scope | LOCAL SECURITY PASS; HOSTED PENDING | Existing assigned-contact/private-health gates tested; no role grants. Lifecycle creation/enrollment/preparation remains Owner/Admin. |
+| Payment integration | SEPARATE RELEASE / BLOCKED | No real or synthetic production payment. Authorize.Net Payments v1 requires its own approval/acceptance. |
 
-## Completed / changed
+Approved defaults prepared in the migration: `platform_access`, `nutrition_plans`, `fitness_plans`, `tracking`, `biometrics`, `habit_builder`. These are pending membership template configuration, not paid-access grants. Messaging/resources/basic check-in workflows are not rewritten or promoted by this package.
 
-Prepared **unapplied** forward migration `20261007224150_production_client_lifecycle_v1.sql`. It reuses the accepted beta secure lifecycle definitions in a production-only candidate, without restoring beta history or data. Includes pre-payment foundation, hashed verified invitation claim, one-adult authenticated signing, immutable rendered agreement protection, role/scope-restricted preparation, canonical production mail origin and explicit production payment hold.
+## Implemented changes
 
-Added server-side contact creation with normalized email/phone, deterministic transaction locks, exact identity matching, ambiguous/different-email collision rejection, request-ID/payload-bound retry handling and preservation of original referral/Sales Rep attribution. Added production enrollment APIs from the accepted beta enrollment pattern, removing beta recipient/synthetic-payment dependence.
+- Updated **unapplied** migration `20261007224150_production_client_lifecycle_v1.sql`. This is still the original draft filename, not a replay of any applied migration. One atomic transaction with function-body validation enabled; signing wrapper defined after its implementation.
+- Production-only normalized client creation and duplicate prevention, attribution retention, HF billing intent and enrollment foundation. No beta recipient approval restrictions or operational records copied.
+- Existing deferred household membership trigger exposed a genuine COMMIT failure: after a definer enrollment API returned, the authenticated transaction could not call the private validator. The same existing trigger now runs as a narrowly scoped definer with fixed `pg_catalog` search path and qualified validator call. Private helper execution remains revoked to browser/service roles; no household validity rule relaxed.
+- Private agreement mail jobs hidden from browser roles. Service-only Owner/Admin/contact-scoped claim/finish APIs, one-minute lease, bounded attempts, provider idempotency and secret-body redaction. Legacy notification dispatcher excludes client/signer invitation jobs to prevent competing dispatch.
+- Staff `portal-client-lifecycle.js/css`, Add Client and drawer Program & Next Steps. Existing agreement module uses mapped templates, current enrollment values, one-request submission, contact/user/modal epochs and cleared private fields. The program-name merge control supports a subsequently approved MK8 mapping. A pay-in-full total is **never autofilled as a monthly fee**; approved pay-in-full contract terms remain a legal/product gate.
+- Replaced unused production member entry with compact pre-payment onboarding; legacy activation entry redirects to this same verified flow. No full beta member bundle/assignments/configurable health UI promoted.
+- Normal email verification/signup, neutral signup confirmation, neutral recovery request confirmation, one-adult current-hash signing, immediate logout/private DOM clearing and delayed prior-account response guards.
+- Isolated member password reset uses memory-only recovery Auth, credential URL removal, one exchange despite repeated Auth callbacks, duplicate-submit guard and local recovery-session signout. Passwords/tokens are not logged.
+- Prepared five production Edge entrypoints: `member-account`, `agreement-sign`, `notification-delivery`, `client-lifecycle-delivery`, `member-password-reset`. Old production member-account auto-verified privileged account creation and old agreement-sign service upsert paths were identified and replaced in the candidate with authenticated caller-scoped database contracts. No hosted Edge was redeployed.
 
-Closed legacy unrendered agreement issuance and browser acceptance-write paths in the candidate. Invitation-bearing outbox jobs are withheld from browser roles. Existing production permissions/defaults are not granted or broadened. Existing accepted RepDB repair source/docs were carried into the isolated checkout because its migration is already applied; it must not be replayed.
+## Validation evidence
 
-## Tested
+See `docs/deployment-evidence/2026-10-07-production-client-lifecycle/`.
 
-- Disposable native PostgreSQL 17.11 restore: recovered schema baseline plus production forward migrations and this candidate. **107/107 database tests pass**, including **14 new lifecycle/security tests**.
-- Cases include normalized/idempotent contact reuse; source/Sales Rep preservation; phone/email conflict denial; role/scope/inactive/anonymous denial; atomic enrollment retry; payment URL/manual paid/waived/ledger holds; verified/wrong-account invitation claim; production-only origin; signature idempotence; stale hash, duplicate adult signature and unverified-signature denial; immutable signed contract; browser acceptance forgery denial; missing mapping denial; tampered beta-origin denial.
-- Existing Vitality Review/resume, durable content, USDA calculation and RepDB delete/dependency/security regressions remain passing. The published-library member test now explicitly expects denial for an unactivated account under the new paid gate; this is an intentional access-contract change, not a skipped failure.
-- Existing production public build passes: **383 files**. **106 JavaScript syntax checks pass**. No new lifecycle frontend was added to the public build; these results do not establish frontend lifecycle acceptance.
+- Native **PostgreSQL 17.11** disposable schema restore: **112/112** maintained database checks, plus **1/1** concurrency test covering four true race groups. Eight independent sessions, distinct backend IDs and server barrier establish actual overlap: one contact, one enrollment, one immutable signature and one delivery lease. All disposable local databases dropped.
+- Existing durable-content/Vitality/resume/USDA/RepDB database regressions pass. Role, contact scope, unverified/wrong-account/anonymous/member denial, browser signature forgery, exact hash, signed immutability, pending access, six defaults, strict prices and payment bypass denial covered. Do not equate native fixture results with live GoTrue/PostgREST acceptance.
+- Maintained frontend suites and final focused lifecycle regressions: **121/121 pass, zero skipped**, including **14 lifecycle checks**; final output in `frontend-tests.txt`; no skipped failure used to claim acceptance. Focused tests exercise actual portal core account clearing, actual agreement module delayed prefill/submit, current member signup/reset/signing and stale responses.
+- Edge: **35/35** tests pass, including retained Vitality tests. Five lifecycle Edge entrypoints type-check with pinned Supabase SDK 2.57.4.
+- Public build: **389 files**, production project/origin validated. New browser assets explicitly allowlisted; database/Edge server source and private datasets excluded.
+- JavaScript syntax: **111/111** files; inline reset behavior additionally executed by maintained tests.
+- Exact-built isolated browser: **34 checks**, no page errors. Add Client, conditional referral fields, enrollment, actual agreement form, pre-payment member center and private field clearing tested at **1440×1000, 768×1024, 390×844**; no page/dialog/card overflow. All browser external requests blocked; this is not hosted device acceptance.
 - `git diff --check` passes.
-- Maintained beta/Edge suites were not rerun or claimed as current production acceptance. True overlapping contact-creation concurrency, current GoTrue/PostgREST integration, live email/setup/sign/recovery, cross-account DOM clearing and 1440/768/390 responsive lifecycle checks remain outstanding.
-- Disposable local test databases were dropped by the runner. No hosted acceptance identities or records were created; no hosted cleanup was necessary.
 
-## Required decisions / next action
+No production/staging test content, identities, measurements, payment state, invitations or mail were created. No hosted cleanup was needed. No beta private data was copied. Current public assessment/content/sync deploy and migration ledger remain unchanged.
+
+## Required Primary Chat decision
 
 **RECOMMENDED THINKING LEVEL: HIGH — CHAT DECISION NEEDED**
 
-> Project: ReVitalized Academy — Production Client Lifecycle v1.
+> Project: ReVitalized Academy — Production Client Lifecycle v1. The local engineering candidate is tested; production release is blocked by the approved legal document/mapping. Production has published MK7 and no required Holistic Foundations mapping. Beta has approved MK8 with actual enrolled-program wording. Confirm which exact published revision to use for new production HF enrollments: adopt MK8 while retaining MK7 history, retain MK7 with explicit approved program-level mapping, or hold for review. Recommendation: adopt the existing approved MK8 program-name revision if approved for production. Do not alter old issued documents.
 >
-> Production publishes MK7 and has no Holistic Foundations program/agreement mapping. Beta uses the previously approved MK8 revision, replacing generic program level with the actual enrolled program name. Repository instructions explicitly require a Primary Chat production mapping decision before any backfill or issuance.
+> Also confirm approved contract presentation for both $89/month and $960 pay in full. Existing contract merge fields contain monthly fee/adjusted monthly payment; $960 must not be represented as a monthly fee. Confirm deposit/Appendix A/commitment/currency and any separate pay-in-full clause required, without guessing new legal terms. The enrollment UI saves explicit currency and amount; no charge or paid access occurs.
 >
-> Please choose: (1) use approved MK8 for new production Holistic Foundations enrollments, preserving MK7 history; (2) keep MK7 for those new enrollments; or (3) hold the release pending legal/product review. Recommendation: MK8 aligns with the approved program-name workflow, provided Primary Chat confirms its production use.
+> Confirm whether `rva-client@eaglevision.biz` and `dfowler4232@gmail.com` are approved controlled receiving inboxes for two fresh disposable **production** acceptance identities, or provide alternatives. Their previous staging use does not itself authorize new production identities. The recipient must open verification/recovery emails and sign their own disposable agreement normally.
 >
-> Confirm the exact production program/template mapping. Do not infer production prices, currency, deposit, Appendix A wording or co-signer requirements from synthetic beta records. Owner-entered approved agreement terms must remain explicit. Other unmapped programs must not silently receive a guessed contract.
->
-> Payments v1 remains unreleased. Enrollment/agreement/account setup can proceed only with Payment Pending / Payment Link Coming Soon and no paid access or synthetic production payment.
+> Payment integration and full paid member/assignment modules remain held for separate accepted Payments v1. No synthetic production payment or access bypass is proposed.
 
-Pending inbox clarification: whether `rva-client@eaglevision.biz` and `dfowler4232@gmail.com` may be used as the two controlled disposable **production** acceptance inboxes. Read-only audit found neither as an existing production Auth/contact identity. User must receive/open verification/recovery emails and sign their own disposable agreement normally; credentials/signatures will not be manufactured.
+These questions were presented during implementation and remain unanswered. Elapsed time is not approval.
 
-## Remaining implementation and release work
+## Release and hosted acceptance plan — NOT AUTHORIZED/APPLIED YET
 
-After decisions, finish the production staff form/enrollment/agreement wiring and compact onboarding/recovery UI, update only required production member-account/agreement/notification/recovery Edges, and run their maintained tests. Preserve current staff portal/Vitality/content/one-way-sync behavior. Do not copy the full beta application or expose held modules.
+1. Resolve the production template/terms decision; add only its approved forward template/mapping changes, preserving history. Validate actual mapped $89/month and $960 terms and signing security locally. Finalize and report a complete exact release SHA and migration/Edge manifest.
+2. Obtain explicit approval for that final exact candidate's GitHub push, production migration(s), the five required production Edges and production Netlify deploy. Do not approve/deploy this intermediate checkpoint as if legal and hosted gates had passed. Targets: production Supabase `voalfpxiyznnqfcqcymd`, Netlify `ece0f6f3-6c3d-46e6-bb51-95ce1ccefb06`; do not change beta.
+3. Recheck ledger and hosted drift; apply each previously unapplied approved migration once. Confirm production Auth redirect allowlist, branded verification template/provider and normal setup/recovery path before issuing mail; no SMTP/secret/role configuration changes without concrete scope and approval.
+4. Deploy coordinated Edges/frontend from the approved candidate; verify exact public hashes, production-only origin and no server secret disclosure. Read-only regression for Owner/staff/current content/Vitality/sync.
+5. With separately approved disposable inboxes, use normal Owner UI to create/normalize/retry client, save HF billing intent, prepare/send approved agreement. Verify actual external receipt, normal verification/password/login/invitation reopen/self-signature, immutable duplicate retry and no wrong-account signing. Use two distinct identities for cross-client/private DOM boundary acceptance. Owner and assigned/unassigned Coach checks must preserve independent private-health permission.
+6. Verify Payment Required/Awaiting Payment and full paid access denial; no synthetic ledger/activation or assignment acceptance fabricated. Verify actual recovery receipt/open/password change, refresh/logout/relogin, responsive hosted layouts and no stale account state.
+7. Document/cancel disposable mail/jobs where safe; remove only bounded disposable production artifacts/identities through supported privileged cleanup, preserving necessary immutable signature/audit evidence. Obtain legal retention disposition if signed acceptance cannot safely be deleted; never claim immutable audit evidence erased. Report exact cleanup/retained audit IDs. Leave unrelated production state unchanged.
 
-Produce a complete exact candidate, run frontend/Edge/environment and responsive tests, perform drift preflight, apply only its approved new forward migration(s) once, deploy exact assets/functions, then complete minimum hosted disposable client/claim/sign/unpaid-denial/recovery/scoped and cross-account acceptance. Preserve audit/signature evidence securely and remove only disposable acceptance records. Do not claim acceptance based on HTTP 200, provider acceptance alone, historical completion statements or fixture-only Auth.
+## URLs
 
-## URLs / hosted state
+Current accepted Owner portal: `https://revitalizedacademy.com/portal/`.
+Proposed normal member entry: `https://revitalizedacademy.com/member/`.
+Proposed agreement/account center: `https://revitalizedacademy.com/member/onboarding/`.
+Proposed emailed recovery landing: `https://revitalizedacademy.com/member/password-reset.html` (requires the recipient's valid private recovery credential).
 
-- Existing released Owner portal: https://revitalizedacademy.com/portal/
-- Intended future client enrollment/signing route: https://revitalizedacademy.com/member/onboarding/ — **not released by this task checkpoint**.
-- Intended member recovery route: https://revitalizedacademy.com/member/password-reset.html — **not released by this checkpoint**.
-- Beta remains https://beta.revitalizedacademy.com; no beta records/configuration were modified.
-- No lifecycle production source was pushed, migration applied, Edge deployed, Netlify deployment performed, mail sent, identity created or payment recorded.
-
-## Chat handoff
-
-Production Client Lifecycle v1 is blocked pending explicit production contract mapping and controlled disposable receiving inboxes. The database draft passes 107 native PostgreSQL 17 regressions, but frontend/Edge integration and genuine hosted lifecycle acceptance remain unfinished. Current production deploy and ledger are unchanged. Full paid member modules/assignments remain beta-only; no synthetic production payment or payment link is enabled. Resolve the mapping/inbox questions, then complete this same release package and its hosted acceptance; do not begin unrelated work.
+The proposed new client pages/behavior are **not deployed**. Do not direct real clients to this candidate yet. Existing production deploy remains `6ac6b471ac8ed68bec8bd8d6`.

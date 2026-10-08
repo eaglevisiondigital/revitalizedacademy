@@ -47,6 +47,7 @@
   <link rel="stylesheet" href="portal-staff-onboarding.css?v=144">
   <link rel="stylesheet" href="portal-shell.css?v=166">
   <link rel="stylesheet" href="portal-polish.css?v=171">
+<link rel="stylesheet" href="portal-client-lifecycle.css?v=100">
 </head>
 <body>
   <main class="portal-page">
@@ -454,6 +455,7 @@
               <div id="client-coaching-entitlement-list" class="client-coaching-entitlement-list"></div>
             </section>
 
+            <section id="client-lifecycle-section" class="contact-section" hidden><div class="contact-section-heading"><div><p class="section-kicker">CLIENT ENROLLMENT</p><h3>Program &amp; Next Steps</h3></div></div><dl id="lifecycle-state" class="lifecycle-summary"></dl><p id="lifecycle-next" class="lifecycle-next"></p><div class="lifecycle-actions"><button id="lifecycle-choose-program" class="primary-button" type="button">Start Enrollment / Choose Program</button><button id="lifecycle-prepare-agreement" class="secondary-button" type="button" disabled>Prepare / Send Agreement</button></div><form id="lifecycle-enrollment-form" hidden><h4>Holistic Foundations</h4><div class="lifecycle-grid"><label>Billing selection<select id="lifecycle-billing" required><option value="monthly">$89/month</option><option value="one_time">$960 pay in full</option></select></label><label>Currency<select id="lifecycle-currency" required><option value="">Choose currency</option><option value="USD">USD</option><option value="CAD">CAD</option></select></label></div><p>This saves billing intent only. No charge or paid access activation occurs.</p><button id="lifecycle-save-enrollment" class="primary-button" type="submit">Save Enrollment</button></form><p id="lifecycle-status" role="status" aria-live="polite"></p></section>
             <section id="client-agreements-section" class="contact-section client-agreements-section hidden">
               <div class="contact-section-heading">
                 <div>
@@ -2285,6 +2287,7 @@
                       <option value="Level 3">Level 3</option>
                     </select>
                   </label>
+                  <label class="hidden"><span>Enrolled program</span><input id="contract-program-name" readonly></label>
                   <label><span>Monthly fee</span><input id="contract-monthly-fee" type="number" min="0" step="0.01"></label>
                   <label><span>Term / duration</span><input id="contract-term-duration" type="text" maxlength="120" placeholder="Example: 6 months"></label>
                   <label><span>Good Faith deposit</span><input id="contract-good-faith-deposit" type="number" min="0" step="0.01"></label>
@@ -2866,6 +2869,7 @@
                 <span class="sr-only">Search people</span>
                 <input id="people-search-input" type="search" placeholder="Search name, email or phone...">
               </label>
+              <button id="people-add-client" class="primary-button compact" type="button" hidden>Add Client</button>
               <button id="people-add-button" class="primary-button compact" type="button">Add Person</button>
             </div>
           </div>
@@ -2996,10 +3000,11 @@
         </section>
       </div>
 
+<div id="lifecycle-create-modal" class="lifecycle-modal" hidden><section class="lifecycle-dialog" role="dialog" aria-modal="true" aria-labelledby="lifecycle-create-title"><h2 id="lifecycle-create-title">Add Client</h2><p>Create or reuse the matching contact, then choose a program. Invitations and billing are separate steps.</p><form id="lifecycle-create-form"><div class="lifecycle-grid"><label>First name<input id="lifecycle-first-name" autocomplete="given-name" maxlength="100" required></label><label>Last name<input id="lifecycle-last-name" autocomplete="family-name" maxlength="100" required></label><label>Email address<input id="lifecycle-email" type="email" autocomplete="email" maxlength="254" required></label><label>Phone<input id="lifecycle-phone" type="tel" autocomplete="tel" maxlength="32" required></label><label class="lifecycle-wide">How did you hear about ReVitalized Academy?<select id="lifecycle-referral" required><option value="">Select one</option><option>Facebook</option><option>Instagram</option><option>Google Search</option><option>YouTube</option><option>LinkedIn</option><option>TikTok</option><option>Friend / Family</option><option>Existing Client</option><option>Event / Webinar</option><option>Church / Community</option><option>Podcast</option><option>Email</option><option>Sales Rep</option><option>Other</option></select></label><label class="lifecycle-wide" hidden>Sales Rep Name<input id="lifecycle-sales-rep" maxlength="160"></label><label class="lifecycle-wide" hidden>Please tell us how you heard about us<input id="lifecycle-other-source" maxlength="240"></label></div><div class="lifecycle-actions"><button id="lifecycle-create-save" type="submit" class="primary-button">Save Client</button><button id="lifecycle-create-close" type="button" class="secondary-button">Cancel</button></div><p id="lifecycle-create-status" role="status" aria-live="polite"></p></form></section></div>
   <noscript>This portal requires JavaScript.</noscript>
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/tus-js-client@4.3.1/dist/tus.min.js"></script>
-  <script defer src="portal.js?v=190"></script>
+  <script defer src="portal.js?v=191"></script>
   <script defer src="portal-messaging.js?v=107"></script>
   <script defer src="portal-journey.js?v=118"></script>
   <script defer src="portal-pipeline.js?v=167"></script>
@@ -3033,7 +3038,8 @@
   <script defer src="portal-documents.js?v=136"></script>
   <script defer src="portal-billing.js?v=137"></script>
   <script defer src="portal-client-billing.js?v=138"></script>
-  <script defer src="portal-agreements.js?v=144"></script>
+  <script defer src="portal-agreements.js?v=145"></script>
+  <script defer src="portal-client-lifecycle.js?v=100"></script>
   <script defer src="portal-coach-capacity.js?v=140"></script>
   <script defer src="portal-staff-onboarding.js?v=144"></script>
   <script defer src="portal-shell.js?v=162"></script>

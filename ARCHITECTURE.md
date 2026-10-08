@@ -6,6 +6,10 @@ The prominent Contact confirmation and controlled recovery use the existing endp
 
 # Historical RepDB Exercise Library local candidate — 2026-10-07
 
+## 2026-10-07 — Client lifecycle integrated candidate (NOT RELEASED)
+
+Production-only lifecycle integration is locally prepared, not deployed. Authoritative atomic creation/enrollment/signing RPCs feed a compact pre-payment center. Separate private service-only leased outbox delivery and normal verified Auth/recovery replace legacy privileged identity/signature writes. Existing deferred household validation runs through its existing qualified definer trigger at authenticated COMMIT. Full paid access is held false and full beta member modules/assignments remain excluded. [Current release boundary](docs/PRODUCTION_CLIENT_LIFECYCLE_V1_2026-10-07.md).
+
 # Applied RepDB DELETE contract repair — 2026-10-07
 
 The enabled BEFORE ROW INSERT/UPDATE/DELETE source guard now returns OLD for every DELETE, including privileged cleanup; INSERT/UPDATE still return NEW with existing provenance checks. No trigger or dependency changes. Audit FK retention and workout RESTRICT remain enforced; polymorphic beta sync mappings require deliberate bounded cleanup. Normal UI lifecycle remains Archive, not DELETE. Production and beta applied once; no frontend redeploy. [Verified acceptance](docs/REPDB_DELETE_GUARD_REPAIR_2026-10-07.md). Earlier local/pending notes below are historical.

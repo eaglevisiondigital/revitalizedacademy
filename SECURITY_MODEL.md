@@ -8,6 +8,10 @@ Native PostgreSQL17 permission/completion/revision tests96/96, eight-session rac
 
 # Historical RepDB Exercise Library local candidate — 2026-10-07
 
+## 2026-10-07 — Client lifecycle integrated candidate (NOT RELEASED)
+
+Unapplied candidate closes auto-verified privileged member-account creation, service-role signature upsert and browser outbox payload paths. Caller JWT, verified email, contact/role/private-health scope, current immutable hash, idempotence and leases are enforced. Browser state clears on logout/account changes and stale responses are ignored. Recovery credentials are hashed/rate-limited server-side and removed from URL before one exchange in isolated memory Auth. No role grants or SMTP/secret changes; no synthetic/waived/zero-price production paid bypass. PG17/RLS and exact-built tests pass; live GoTrue/PostgREST/mail/account boundary acceptance remains pending. [Evidence](docs/PRODUCTION_CLIENT_LIFECYCLE_V1_2026-10-07.md).
+
 # Verified RepDB cleanup authorization — 2026-10-07
 
 The new forward repair changes only the privileged DELETE row return. Guard remains security invoker with empty search_path, original owner/ACL, and all source/approval checks. No browser permissive DELETE policy, role, permission or grant added. Actual hosted staff/member/anonymous/Owner browser deletion denied; authorized privileged QA cleanup succeeds only after retained audit evidence and dependency checks. Original policies/grants/other functions and private-data fingerprints unchanged. Archive remains normal UI behavior. [Acceptance and remaining unrelated advisor findings](docs/REPDB_DELETE_GUARD_REPAIR_2026-10-07.md).

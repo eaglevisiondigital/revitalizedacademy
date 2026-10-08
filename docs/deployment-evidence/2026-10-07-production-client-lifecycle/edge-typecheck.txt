@@ -1,0 +1,5 @@
+Check supabase/functions/member-account/index.ts
+Check supabase/functions/agreement-sign/index.ts
+Check supabase/functions/member-password-reset/index.ts
+Check supabase/functions/client-lifecycle-delivery/index.ts
+Check supabase/functions/notification-delivery/index.ts

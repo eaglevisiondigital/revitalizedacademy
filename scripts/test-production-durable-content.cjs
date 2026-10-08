@@ -19,6 +19,10 @@ const {Client}=require('pg');const fs=require('node:fs');const path=require('nod
   const hasPostgres=(await admin.query("select exists(select 1 from pg_roles where rolname='postgres') ok")).rows[0].ok;
   const quotedAdmin='\"'+env.PGUSER.replaceAll('\"','\"\"')+'\"';
   for(const file of files){
+   if(file.endsWith('20261007224150_production_client_lifecycle_v1.sql')){
+    const seed=spawnSync('/opt/homebrew/opt/postgresql@17/bin/psql',['-X','-v','ON_ERROR_STOP=1','-c',"insert into public.program_catalog(program_code,name,program_type,default_commitment_months) values('holistic-foundations','Holistic Foundations','membership',6) on conflict do nothing"],{env,encoding:'utf8'});
+    if(seed.status!==0)throw Error(seed.stderr);
+   }
    let sql=fs.readFileSync(file,'utf8');
    if(file===baseline&&!hasPostgres)sql=sql.replaceAll('TO "postgres";', 'TO '+quotedAdmin+';').replaceAll('FOR ROLE "postgres"','FOR ROLE '+quotedAdmin);
    const restore=spawnSync('/opt/homebrew/opt/postgresql@17/bin/psql',['-X','-v','ON_ERROR_STOP=1'],{env,input:sql,encoding:'utf8',maxBuffer:64*1024*1024});
@@ -27,7 +31,12 @@ const {Client}=require('pg');const fs=require('node:fs');const path=require('nod
   console.log(`Isolated PostgreSQL 17 restore: baseline + ${files.length-2} production migrations; no staging migrations`);
   const result=spawnSync(process.execPath,['--test','--test-concurrency=1','tests/backend/production-durable-content.test.cjs','tests/backend/vitality-assessment-review.test.cjs','tests/backend/vitality-resume.test.cjs','tests/backend/fooddata.test.cjs','tests/backend/repdb-exercise.test.cjs','tests/backend/vitality-reliability.test.cjs','tests/backend/production-client-lifecycle.test.cjs'],{env,encoding:'utf8',maxBuffer:32*1024*1024});
   process.stdout.write(result.stdout);process.stderr.write(result.stderr);process.exitCode=result.status||0;
-  if(result.status===0){const races=spawnSync(process.execPath,['--test','tests/backend/vitality-reliability-concurrency.test.cjs'],{env,encoding:'utf8',maxBuffer:8*1024*1024});process.stdout.write(races.stdout);process.stderr.write(races.stderr);process.exitCode=races.status||0;}
-
+  if(result.status===0){
+   for(const test of ['tests/backend/vitality-reliability-concurrency.test.cjs','tests/backend/production-client-lifecycle-concurrency.test.cjs']){
+    const races=spawnSync(process.execPath,['--test',test],{env,encoding:'utf8',maxBuffer:8*1024*1024});
+    process.stdout.write(races.stdout);process.stderr.write(races.stderr);
+    if(races.status!==0){process.exitCode=races.status||1;break;}
+   }
+  }
  }finally{if(created)await admin.query(`drop database "${database}" with (force)`);await admin.end();}
 })().catch(e=>{console.error(e.message);process.exitCode=1;});

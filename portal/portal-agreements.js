@@ -11,6 +11,11 @@
   let programs=[];
   let activeContact=null;
   let clientAgreements=[];
+  let agreementEpoch=0;
+  let modalEpoch=0;
+  let prefillEpoch=0;
+  let assignmentBusy=false;
+  const current=(epoch,contactId,user)=>epoch===agreementEpoch&&contactId===activeContact?.id&&user===portal.currentUserId();
 
   function moneyInput(cents,currency){
     if(cents===null||cents===undefined)return "";
@@ -38,60 +43,34 @@
   }
 
   async function prefillClientContract(){
-    const template=templates.find(t=>t.id===el("client-agreement-template-select").value);
+    const templateId=el("client-agreement-template-select").value;
+    const template=templates.find(t=>t.id===templateId);
     const isContract=template?.document_type==="client_contract";
     el("client-contract-fields").classList.toggle("hidden",!isContract);
+    const usesProgramName=(template?.merge_schema?.required||[]).includes("program_name");
+    el("contract-program-name").closest("label").classList.toggle("hidden",!usesProgramName);
+    el("contract-program-level").closest("label").classList.toggle("hidden",usesProgramName);
     if(!isContract||!activeContact)return;
-
+    const run=agreementEpoch,id=activeContact.id,user=portal.currentUserId(),modal=modalEpoch,prefill=++prefillEpoch;
     el("contract-effective-date").value=todayLocal();
     el("contract-client-name").value=portal.personName(activeContact);
-    el("contract-secondary-client-name").value="";
-    el("contract-program-level").value="";
-    el("contract-monthly-fee").value="";
-    el("contract-term-duration").value="";
-    el("contract-good-faith-deposit").value="";
-    el("contract-adjusted-monthly-payment").value="";
-    el("contract-special-conditions").value="";
-    el("contract-appendix-a").value="";
-
-    const {data:access}=await client.from("client_access")
-      .select("membership_id,household_id").eq("contact_id",activeContact.id).maybeSingle();
-
-    let membership=null;
-    if(access?.membership_id){
-      const {data}=await client.from("client_memberships").select("*").eq("id",access.membership_id).maybeSingle();
-      membership=data||null;
-    }
-
-    const {data:billing}=await client.from("admin_billing_overview")
-      .select("*").eq("contact_id",activeContact.id).order("started_at",{ascending:false}).limit(1).maybeSingle();
-
-    if(billing?.amount_cents!==null&&billing?.amount_cents!==undefined){
-      const amount=moneyInput(billing.amount_cents,billing.currency);
-      el("contract-monthly-fee").value=amount;
-      el("contract-adjusted-monthly-payment").value=amount;
-    }else if(membership?.amount_cents!==null&&membership?.amount_cents!==undefined){
-      const amount=moneyInput(membership.amount_cents,membership.currency);
-      el("contract-monthly-fee").value=amount;
-      el("contract-adjusted-monthly-payment").value=amount;
-    }
-
-    const months=billing?.commitment_months||membership?.commitment_months;
-    if(months)el("contract-term-duration").value=months+" months";
-
-    const programName=billing?.program_name||programs.find(p=>p.program_code===membership?.program_code)?.name||"";
-    if(programName){
-      el("contract-appendix-a").value="Program: "+programName;
-    }
-
-    if(access?.household_id){
-      const {data:members}=await client.from("household_members")
-        .select("contact_id,relationship_type,status").eq("household_id",access.household_id).eq("status","active");
-      const spouse=(members||[]).find(m=>["husband","wife"].includes(m.relationship_type)&&m.contact_id!==activeContact.id);
-      if(spouse){
-        const {data:person}=await client.from("contacts").select("first_name,last_name").eq("id",spouse.contact_id).maybeSingle();
-        if(person)el("contract-secondary-client-name").value=[person.first_name,person.last_name].filter(Boolean).join(" ");
+    el("contract-program-name").value="";
+    for(const field of ["secondary-client-name","program-level","monthly-fee","term-duration","good-faith-deposit","adjusted-monthly-payment","special-conditions","appendix-a"])el("contract-"+field).value="";
+    const enrollment=await client.rpc("production_client_enrollment_state",{p_contact_id:id});
+    if(!current(run,id,user)||modal!==modalEpoch||prefill!==prefillEpoch||templateId!==el("client-agreement-template-select").value)return;
+    if(enrollment.error){portal.showStatus(el("client-agreement-assign-status"),"Could not load the current enrollment. Try again.","error");return;}
+    const intent=enrollment.data;
+    if(intent?.enrollment_created){
+      subscriptionsCurrencyCache=intent.currency;
+      el("contract-program-name").value=intent.program_name;
+      if(intent.billing_choice==="monthly"){
+        el("contract-monthly-fee").value=moneyInput(intent.amount_cents,intent.currency);
+        el("contract-adjusted-monthly-payment").value=moneyInput(intent.amount_cents,intent.currency);
+      }else{
+        portal.showStatus(el("client-agreement-assign-status"),"Pay-in-full enrollment saved. Use approved pay-in-full agreement terms; do not enter the total as a monthly fee.");
       }
+      el("contract-term-duration").value="6 months";
+      el("contract-appendix-a").value="Program: "+intent.program_name+"\nBilling: "+intent.billing_choice+"\nSelected amount: "+currencyText(moneyInput(intent.amount_cents,intent.currency),intent.currency);
     }
   }
 
@@ -104,6 +83,7 @@
       secondary_client_name:secondary,
       secondary_client_clause:secondary?" and "+secondary:"",
       program_level:el("contract-program-level").value,
+      program_name:el("contract-program-name").value,
       monthly_fee:currencyText(el("contract-monthly-fee").value,currency),
       term_duration:el("contract-term-duration").value.trim(),
       good_faith_deposit:currencyText(el("contract-good-faith-deposit").value,currency),
@@ -133,6 +113,10 @@
   }
 
   function closeClientModal(){
+    modalEpoch++;prefillEpoch++;
+    el("client-agreement-assign-form").reset();
+    el("client-contract-fields").classList.add("hidden");
+    subscriptionsCurrencyCache="USD";
     el("client-agreement-assign-modal").classList.add("hidden");
     el("client-agreement-assign-modal").setAttribute("aria-hidden","true");
     portal.showStatus(el("client-agreement-assign-status"),"");
@@ -202,6 +186,7 @@
   }
 
   async function loadLibrary(){
+    const user=portal.currentUserId(),run=agreementEpoch;
     if(!(portal.hasPermission?.("finance.view")??false))return;
 
     const [templatesResult,requirementsResult,programsResult,agreementsResult]=await Promise.all([
@@ -211,9 +196,10 @@
       client.from("admin_client_agreements").select("id,status").limit(5000)
     ]);
 
+    if(user!==portal.currentUserId()||run!==agreementEpoch)return;
     const failed=[templatesResult,requirementsResult,programsResult,agreementsResult].find(r=>r.error);
     if(failed?.error){
-      el("agreement-library-list").innerHTML='<div class="empty-state">Agreement library could not be loaded. '+failed.error.message+'</div>';
+      el("agreement-library-list").textContent="Agreement library could not be loaded. Try again.";
       return;
     }
 
@@ -302,6 +288,7 @@
   }
 
   async function loadClientAgreements(contactId){
+    const run=agreementEpoch,user=portal.currentUserId();
     if(!(portal.hasPermission?.("finance.view")??false)){
       el("client-agreements-section").classList.add("hidden");
       return;
@@ -309,11 +296,13 @@
 
     const {data,error}=await client.from("admin_client_agreements")
       .select("*").eq("contact_id",contactId).order("created_at",{ascending:false});
+    if(!current(run,contactId,user))return;
     if(error){
       portal.showStatus(el("client-agreements-status"),error.message,"error");
       return;
     }
 
+    if(run!==agreementEpoch||activeContact?.id!==contactId||portal.currentUserId()!==user)return;
     clientAgreements=data||[];
     renderClientAgreements();
   }
@@ -372,10 +361,14 @@
   }
 
   async function openClientAssign(){
+    const run=agreementEpoch,id=activeContact?.id,user=portal.currentUserId(),modal=++modalEpoch;
     if(!activeContact||!(portal.hasPermission?.("finance.manage")??false))return;
     const select=el("client-agreement-template-select");
     select.replaceChildren();
-    const available=templates.filter(t=>t.status==="published");
+    const enrollment=await client.rpc("production_client_enrollment_state",{p_contact_id:activeContact.id});
+    if(!current(run,id,user)||modal!==modalEpoch)return;
+    const mapped=programRequirements.filter(r=>r.program_code===enrollment.data?.program_code&&r.active&&r.required).map(r=>r.agreement_template_id);
+    const available=templates.filter(t=>t.status==="published"&&mapped.includes(t.id));
     const blank=document.createElement("option");blank.value="";blank.textContent=available.length?"Select published agreement":"No published agreements available";select.append(blank);
     available.forEach((row)=>{
       const o=document.createElement("option");o.value=row.id;o.textContent=row.name+" · v"+row.version;select.append(o);
@@ -383,62 +376,65 @@
     el("client-agreement-send-now").checked=true;
     el("client-contract-fields").classList.add("hidden");
 
-    const {data:billing}=await client.from("admin_billing_overview")
-      .select("currency").eq("contact_id",activeContact.id).order("started_at",{ascending:false}).limit(1).maybeSingle();
-    subscriptionsCurrencyCache=billing?.currency||"USD";
-
+    subscriptionsCurrencyCache=enrollment.data?.currency||"USD";
+    if(enrollment.error){portal.showStatus(el("client-agreements-status"),"Enrollment could not be loaded.","error");return;}
     el("client-agreement-assign-modal").classList.remove("hidden");
     el("client-agreement-assign-modal").setAttribute("aria-hidden","false");
   }
 
   async function assignAgreement(event){
     event.preventDefault();
-    const templateId=el("client-agreement-template-select").value;
+    if(assignmentBusy||!activeContact)return;
+    const run=agreementEpoch,id=activeContact.id,user=portal.currentUserId(),modal=modalEpoch;
+    const templateId=el("client-agreement-template-select").value,sendNow=el("client-agreement-send-now").checked;
     if(!templateId){portal.showStatus(el("client-agreement-assign-status"),"Choose an agreement.","error");return;}
     const template=templates.find(t=>t.id===templateId);
-    portal.showStatus(el("client-agreement-assign-status"),template?.document_type==="client_contract"?"Preparing personalized contract...":"Assigning agreement...");
-
-    let error=null;
-    if(template?.document_type==="client_contract"){
-      const values=contractMergeValues();
-      const result=await client.rpc("prepare_client_contract",{
-        p_contact_id:activeContact.id,
-        p_agreement_template_id:templateId,
-        p_merge_values:values,
-        p_send:el("client-agreement-send-now").checked
-      });
-      error=result.error;
-    }else{
-      const result=await client.rpc("issue_client_agreement",{
-        p_contact_id:activeContact.id,
-        p_agreement_template_id:templateId,
-        p_send:el("client-agreement-send-now").checked
-      });
-      error=result.error;
-    }
-    if(error){portal.showStatus(el("client-agreement-assign-status"),error.message,"error");return;}
-    portal.showStatus(el("client-agreement-assign-status"),"Agreement assigned.","success");
-    await Promise.all([loadClientAgreements(activeContact.id),portal.loadDashboard()]);
-    window.setTimeout(closeClientModal,500);
+    assignmentBusy=true;
+    const submit=el("client-agreement-assign-form").querySelector('[type="submit"]');if(submit)submit.disabled=true;
+    try{
+      portal.showStatus(el("client-agreement-assign-status"),"Preparing agreement...");
+      const args={p_contact_id:id,p_agreement_template_id:templateId,p_send:sendNow};
+      if(template?.document_type==="client_contract")args.p_merge_values=contractMergeValues();
+      const result=await client.rpc(template?.document_type==="client_contract"?"prepare_client_contract":"issue_client_agreement",args);
+      if(!current(run,id,user)||modal!==modalEpoch)return;
+      if(result.error)throw result.error;
+      if(sendNow&&result.data){
+        const delivery=await client.functions.invoke("client-lifecycle-delivery",{body:{client_agreement_id:result.data}});
+        if(!current(run,id,user)||modal!==modalEpoch)return;
+        if(delivery.error||!delivery.data?.ok)throw Error("Agreement prepared; email delivery failed. Review delivery status before retrying.");
+      }
+      document.dispatchEvent(new CustomEvent("ra:lifecycle-agreement-updated"));
+      portal.showStatus(el("client-agreement-assign-status"),"Agreement prepared. Email status is shown in Program & Next Steps.","success");
+      await Promise.all([loadClientAgreements(id),portal.loadDashboard()]);
+      window.setTimeout(()=>{if(current(run,id,user)&&modal===modalEpoch)closeClientModal();},500);
+    }catch(error){if(current(run,id,user)&&modal===modalEpoch)portal.showStatus(el("client-agreement-assign-status"),error.message,"error");}
+    finally{assignmentBusy=false;if(submit)submit.disabled=false;}
   }
 
   async function sendAgreement(row){
+    if(!activeContact||row.contact_id&&row.contact_id!==activeContact.id)return;
+    const run=agreementEpoch,id=activeContact.id,user=portal.currentUserId();
     const template=templates.find(t=>t.id===row.agreement_template_id);
     const result=template?.document_type==="client_contract"
       ?await client.rpc("prepare_client_contract",{
-          p_contact_id:activeContact.id,
+          p_contact_id:id,
           p_agreement_template_id:row.agreement_template_id,
           p_merge_values:row.merge_values||{},
           p_send:true
         })
       :await client.rpc("issue_client_agreement",{
-          p_contact_id:activeContact.id,
+          p_contact_id:id,
           p_agreement_template_id:row.agreement_template_id,
           p_send:true
         });
+    if(!current(run,id,user))return;
     const {error}=result;
     if(error){window.alert(error.message);return;}
-    await loadClientAgreements(activeContact.id);
+    const delivery=await client.functions.invoke("client-lifecycle-delivery",{body:{client_agreement_id:result.data}});
+    if(!current(run,id,user))return;
+    if(delivery.error||!delivery.data?.ok){window.alert("Agreement queued; delivery was not accepted. Review the enrollment email status.");}
+    document.dispatchEvent(new CustomEvent("ra:lifecycle-agreement-updated"));
+    await loadClientAgreements(id);
   }
 
   async function waiveAgreement(row){
@@ -453,15 +449,17 @@
   }
 
   document.addEventListener("ra:contact-opened",(event)=>{
-    activeContact=event.detail.contact;
+    agreementEpoch++;activeContact=event.detail.contact;closeClientModal();
     loadClientAgreements(event.detail.contactId);
   });
   document.addEventListener("ra:contact-closed",()=>{
-    activeContact=null;clientAgreements=[];
+    agreementEpoch++;activeContact=null;clientAgreements=[];el("client-agreements-list").replaceChildren();
     el("client-agreements-section").classList.add("hidden");
     closeClientModal();
   });
 
+  document.addEventListener("ra:staff-access-reset",()=>{agreementEpoch++;activeContact=null;clientAgreements=[];el("client-agreements-list").replaceChildren();closeClientModal();});
+  document.addEventListener("ra:lifecycle-enrollment-saved",()=>{if(activeContact)loadClientAgreements(activeContact.id);});
   el("agreement-new-template").addEventListener("click",openTemplateModal);
   el("agreement-template-form").addEventListener("submit",createTemplate);
   el("client-agreement-assign").addEventListener("click",openClientAssign);

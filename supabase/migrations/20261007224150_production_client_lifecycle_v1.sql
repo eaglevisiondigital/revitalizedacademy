@@ -3,6 +3,13 @@
 -- The production payment contract remains unreleased: no paid access or payment links.
 -- Program/template mapping is deliberately excluded pending the required Chat decision.
 BEGIN;
+SET LOCAL check_function_bodies=true;
+-- Deferred validation executes at the authenticated transaction's COMMIT, after
+-- the enrollment definer has returned. Keep private validation inaccessible to
+-- browsers; let only the existing constraint trigger validate its row.
+ALTER FUNCTION private.validate_active_household_after_member_change() SECURITY DEFINER;
+ALTER FUNCTION private.validate_active_household_after_member_change() SET search_path='pg_catalog';
+REVOKE ALL ON FUNCTION private.validate_active_household_after_member_change() FROM PUBLIC,anon,authenticated,service_role;
 -- Retain legacy action-specific role limits, while honoring the newer permission overrides.
 CREATE OR REPLACE FUNCTION private.staff_action_allowed(p_user_id uuid,p_permission_key text,p_contact_id uuid DEFAULT NULL)
 RETURNS boolean LANGUAGE sql STABLE SECURITY DEFINER SET search_path=pg_catalog,public,private AS $$
@@ -23,10 +30,6 @@ REVOKE ALL ON FUNCTION public.staff_action_allowed(text,uuid) FROM PUBLIC, anon,
 GRANT EXECUTE ON FUNCTION public.staff_action_allowed(text,uuid) TO authenticated;
 
 
-CREATE FUNCTION public.sign_client_agreement_atomic(p_client_agreement_id uuid,p_signatures jsonb,p_expected_content_hash text,p_user_agent text DEFAULT NULL)
-RETURNS uuid LANGUAGE sql SECURITY INVOKER SET search_path=pg_catalog,private AS $$ SELECT private.sign_client_agreement(p_client_agreement_id,p_signatures,p_expected_content_hash,p_user_agent); $$;
-REVOKE ALL ON FUNCTION public.sign_client_agreement_atomic(uuid,jsonb,text,text) FROM PUBLIC, anon, service_role;
-GRANT EXECUTE ON FUNCTION public.sign_client_agreement_atomic(uuid,jsonb,text,text) TO authenticated;
 CREATE OR REPLACE FUNCTION public.sign_my_client_agreement(p_client_agreement_id uuid,p_signer_name text,p_signature_type text DEFAULT 'typed',p_user_agent text DEFAULT NULL,p_expected_content_hash text DEFAULT NULL)
 RETURNS uuid LANGUAGE plpgsql SECURITY INVOKER SET search_path=pg_catalog,private AS $$ BEGIN
  IF p_signature_type<>'typed' THEN RAISE EXCEPTION 'Typed signature required'; END IF;
@@ -512,6 +515,11 @@ BEGIN
  INSERT INTO public.contact_activity(contact_id,activity_type,title,actor_user_id,metadata) VALUES(a.contact_id,'agreement_signed','Authenticated adult signature recorded',auth.uid(),jsonb_build_object('agreement_id',a.id,'signer_role',v_role,'content_hash',v_hash));
  RETURN v_id;
 END; $$;
+
+CREATE FUNCTION public.sign_client_agreement_atomic(p_client_agreement_id uuid,p_signatures jsonb,p_expected_content_hash text,p_user_agent text DEFAULT NULL)
+RETURNS uuid LANGUAGE sql SECURITY INVOKER SET search_path=pg_catalog,private AS $$ SELECT private.sign_client_agreement(p_client_agreement_id,p_signatures,p_expected_content_hash,p_user_agent); $$;
+REVOKE ALL ON FUNCTION public.sign_client_agreement_atomic(uuid,jsonb,text,text) FROM PUBLIC, anon, service_role;
+GRANT EXECUTE ON FUNCTION public.sign_client_agreement_atomic(uuid,jsonb,text,text) TO authenticated;
 
 CREATE FUNCTION private.client_onboarding_context() RETURNS jsonb LANGUAGE plpgsql STABLE SECURITY DEFINER SET search_path=pg_catalog,public,private AS $$
 DECLARE ca public.client_access%rowtype; v_enrollments jsonb; v_agreements jsonb; v_notices jsonb;
@@ -1595,7 +1603,7 @@ begin
  -- Contact lock serializes retries, even before an activation exists.
  perform 1 from public.contacts where id=p_contact_id for update;
  select * into p from public.program_catalog where program_code=p_program_code and active;
- if not found or p_amount_cents is null or p_amount_cents<0 or p_currency not in ('USD','CAD') or p_currency is null or p_billing_choice not in ('weekly','monthly','one_time','custom') or p_billing_choice is null then raise exception 'Active program, billing, nonnegative amount and supported currency required' using errcode='22023'; end if;
+ if not found or p_program_code<>'holistic-foundations' or (p_billing_choice,p_amount_cents) not in (('monthly',8900),('one_time',96000)) or p_amount_cents is null or p_amount_cents<0 or p_currency not in ('USD','CAD') or p_currency is null or p_billing_choice not in ('weekly','monthly','one_time','custom') or p_billing_choice is null then raise exception 'Holistic Foundations requires 89/month or 960 pay-in-full billing intent and supported currency' using errcode='22023'; end if;
  select * into a from public.journey_enrollment_activations where contact_id=p_contact_id order by created_at desc limit 1 for update;
  if a.id is not null then
   if (a.program_code,a.billing_choice,a.amount_cents,a.currency) is not distinct from (p_program_code,p_billing_choice,p_amount_cents,p_currency) then return private.production_client_enrollment_state(p_contact_id); end if;
@@ -1826,4 +1834,82 @@ USING (signer_invitation_id IS NULL AND client_agreement_id IS NULL)
 WITH CHECK (signer_invitation_id IS NULL AND client_agreement_id IS NULL);
 -- Legacy unrendered issuance must not bypass production template mapping/merge validation.
 REVOKE ALL ON FUNCTION public.issue_client_agreement(uuid,uuid,boolean) FROM PUBLIC,anon,authenticated,service_role;
+
+DO $$ BEGIN IF NOT EXISTS(SELECT 1 FROM public.program_catalog WHERE program_code='holistic-foundations' AND active) THEN RAISE EXCEPTION 'Active production Holistic Foundations catalog entry required'; END IF; END $$;
+-- Only the six approved production benefits. No beta template/record is copied.
+UPDATE public.program_entitlement_templates SET active=false
+WHERE program_code='holistic-foundations' AND entitlement_key NOT IN
+ ('platform_access','nutrition_plans','fitness_plans','tracking','biometrics','habit_builder');
+INSERT INTO public.program_entitlement_templates(program_code,entitlement_key,label,limit_value,reset_cadence,active,metadata)
+SELECT 'holistic-foundations',v.key,v.label,NULL,'none',true,'{}'::jsonb FROM (VALUES
+ ('platform_access','Member Dashboard'),('nutrition_plans','Nutrition'),('fitness_plans','Workouts'),
+ ('tracking','Nutrition/workout tracking'),('biometrics','Personal biometric recording'),('habit_builder','Habit building')) v(key,label)
+WHERE EXISTS(SELECT 1 FROM public.program_catalog WHERE program_code='holistic-foundations' AND active)
+ON CONFLICT(program_code,entitlement_key) DO UPDATE SET label=excluded.label,limit_value=NULL,reset_cadence='none',active=true,metadata='{}'::jsonb;
+
+-- Service-only delivery functions. Edge verifies Auth identity before passing p_actor.
+CREATE FUNCTION private.require_production_delivery_actor(p_actor uuid,p_contact uuid) RETURNS void
+LANGUAGE plpgsql SECURITY DEFINER SET search_path='' AS $$
+BEGIN
+ IF p_actor IS NULL OR NOT EXISTS(SELECT 1 FROM public.staff_access WHERE user_id=p_actor AND role IN ('owner','admin') AND status='active' AND onboarding_status='complete')
+ OR NOT private.staff_action_allowed(p_actor,'finance.manage',p_contact) THEN RAISE EXCEPTION 'Owner/Admin finance permission and contact scope required' USING ERRCODE='42501'; END IF;
+END $$;
+CREATE FUNCTION private.claim_production_agreement_delivery(p_actor uuid,p_agreement_id uuid) RETURNS jsonb
+LANGUAGE plpgsql SECURITY DEFINER SET search_path='' AS $$
+DECLARE c uuid; job public.notification_delivery_jobs%rowtype;
+BEGIN
+ SELECT contact_id INTO c FROM public.client_agreements WHERE id=p_agreement_id;
+ IF c IS NULL THEN RAISE EXCEPTION 'Agreement unavailable' USING ERRCODE='42501'; END IF;
+ PERFORM private.require_production_delivery_actor(p_actor,c);
+ SELECT * INTO job FROM public.notification_delivery_jobs WHERE client_agreement_id=p_agreement_id AND channel='email'
+ AND (status IN ('queued','failed','blocked') OR (status='processing' AND last_attempt_at<now()-interval '1 minute' AND last_attempt_at>now()-interval '23 hours')) AND attempt_count<5 AND scheduled_for<=now()
+ ORDER BY created_at DESC LIMIT 1 FOR UPDATE SKIP LOCKED;
+ IF job.id IS NULL THEN RETURN NULL; END IF;
+ UPDATE public.notification_delivery_jobs SET status='processing',attempt_count=attempt_count+1,last_attempt_at=now(),updated_at=now() WHERE id=job.id;
+ RETURN jsonb_build_object('id',job.id,'recipient',job.recipient,'subject',job.subject,'body',job.body);
+END $$;
+CREATE FUNCTION private.finish_production_agreement_delivery(p_actor uuid,p_job_id uuid,p_message_id text) RETURNS void
+LANGUAGE plpgsql SECURITY DEFINER SET search_path='' AS $$
+DECLARE job public.notification_delivery_jobs%rowtype;
+BEGIN
+ SELECT * INTO job FROM public.notification_delivery_jobs WHERE id=p_job_id AND client_agreement_id IS NOT NULL FOR UPDATE;
+ IF job.id IS NULL THEN RAISE EXCEPTION 'Delivery unavailable'; END IF;
+ PERFORM private.require_production_delivery_actor(p_actor,job.contact_id);
+ IF job.status<>'processing' THEN RAISE EXCEPTION 'Delivery lease unavailable'; END IF;
+ UPDATE public.notification_delivery_jobs SET status=CASE WHEN nullif(p_message_id,'') IS NULL THEN 'failed' ELSE 'sent' END,
+ provider_message_id=nullif(p_message_id,''),sent_at=CASE WHEN nullif(p_message_id,'') IS NOT NULL THEN now() END,
+ body=CASE WHEN nullif(p_message_id,'') IS NOT NULL THEN 'Agreement delivery accepted; private link removed.' ELSE body END,
+ error_message=CASE WHEN nullif(p_message_id,'') IS NULL THEN 'Provider acceptance not confirmed' END,block_reason=NULL,updated_at=now()
+ WHERE id=p_job_id;
+END $$;
+CREATE FUNCTION public.claim_production_agreement_delivery(p_actor uuid,p_agreement_id uuid) RETURNS jsonb
+LANGUAGE sql SECURITY INVOKER SET search_path='' AS $$ SELECT private.claim_production_agreement_delivery(p_actor,p_agreement_id) $$;
+CREATE FUNCTION public.finish_production_agreement_delivery(p_actor uuid,p_job_id uuid,p_message_id text) RETURNS void
+LANGUAGE sql SECURITY INVOKER SET search_path='' AS $$ SELECT private.finish_production_agreement_delivery(p_actor,p_job_id,p_message_id) $$;
+REVOKE ALL ON FUNCTION private.require_production_delivery_actor(uuid,uuid),private.claim_production_agreement_delivery(uuid,uuid),private.finish_production_agreement_delivery(uuid,uuid,text),public.claim_production_agreement_delivery(uuid,uuid),public.finish_production_agreement_delivery(uuid,uuid,text) FROM PUBLIC,anon,authenticated;
+GRANT EXECUTE ON FUNCTION private.require_production_delivery_actor(uuid,uuid),private.claim_production_agreement_delivery(uuid,uuid),private.finish_production_agreement_delivery(uuid,uuid,text),public.claim_production_agreement_delivery(uuid,uuid),public.finish_production_agreement_delivery(uuid,uuid,text) TO service_role;
+
+-- Recovery rate limits store digests, never addresses/tokens, and run before lookup.
+CREATE TABLE private.production_member_recovery_limits(key_hash text PRIMARY KEY,last_requested timestamptz NOT NULL,window_start timestamptz NOT NULL,attempts integer NOT NULL);
+ALTER TABLE private.production_member_recovery_limits ENABLE ROW LEVEL SECURITY;
+REVOKE ALL ON private.production_member_recovery_limits FROM PUBLIC,anon,authenticated,service_role;
+CREATE FUNCTION private.reserve_production_member_recovery(p_email text) RETURNS boolean
+LANGUAGE plpgsql SECURITY DEFINER SET search_path='' AS $$
+DECLARE key text:=encode(extensions.digest(lower(trim(p_email)),'sha256'),'hex');lim private.production_member_recovery_limits%rowtype;
+BEGIN
+ IF p_email IS NULL OR length(p_email)>254 THEN RETURN false; END IF;
+ PERFORM pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtextextended('production-member-recovery',0));
+ DELETE FROM private.production_member_recovery_limits WHERE last_requested<now()-interval '1 day';
+ IF (SELECT coalesce(sum(attempts),0) FROM private.production_member_recovery_limits WHERE window_start>now()-interval '1 hour')>=100 THEN RETURN false; END IF;
+ SELECT * INTO lim FROM private.production_member_recovery_limits WHERE key_hash=key;
+ IF lim.key_hash IS NOT NULL AND (lim.last_requested>now()-interval '1 minute' OR (lim.window_start>now()-interval '1 hour' AND lim.attempts>=6)) THEN RETURN false; END IF;
+ INSERT INTO private.production_member_recovery_limits VALUES(key,now(),now(),1)
+ ON CONFLICT(key_hash) DO UPDATE SET last_requested=now(),window_start=CASE WHEN private.production_member_recovery_limits.window_start<now()-interval '1 hour' THEN now() ELSE private.production_member_recovery_limits.window_start END,
+ attempts=CASE WHEN private.production_member_recovery_limits.window_start<now()-interval '1 hour' THEN 1 ELSE private.production_member_recovery_limits.attempts+1 END;
+ RETURN true;
+END $$;
+CREATE FUNCTION public.reserve_production_member_recovery(p_email text) RETURNS boolean LANGUAGE sql SECURITY INVOKER SET search_path='' AS $$ SELECT private.reserve_production_member_recovery(p_email) $$;
+REVOKE ALL ON FUNCTION private.reserve_production_member_recovery(text),public.reserve_production_member_recovery(text) FROM PUBLIC,anon,authenticated;
+GRANT EXECUTE ON FUNCTION private.reserve_production_member_recovery(text),public.reserve_production_member_recovery(text) TO service_role;
+
 COMMIT;

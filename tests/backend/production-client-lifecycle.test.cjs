@@ -11,7 +11,7 @@ async function actor(uid,sql,args=[],role='authenticated'){
 async function user(role,email){const id=randomUUID();await q('insert into auth.users(id,email,email_confirmed_at) values($1,$2,now())',[id,email||id+'@example.invalid']);if(role){await q("insert into staff_access(user_id,role,status,onboarding_status,contact_scope) values($1,$2,'active','complete',$3)",[id,role,role==='coach'?'assigned':'all']);await q("update staff_access set onboarding_status='complete' where user_id=$1",[id]);}return id;}
 async function seedPermissions(){const m=require('../../../revitalizedacademy/supabase/baselines/2026-09-26/metadata.json');for(const r of m.permission_catalog){const k=Object.keys(r);await q('insert into staff_permission_catalog('+k.join(',')+') values('+k.map((_,i)=>'$'+(i+1)).join(',')+') on conflict do nothing',Object.values(r));}for(const r of m.permission_defaults)await q('insert into staff_role_permission_defaults(role,permission_key,allowed) values($1,$2,$3) on conflict do nothing',[r.role,r.permission_key,r.allowed]);}
 before(()=>db.connect());
-after(()=>db.end());beforeEach(async()=>{await q('begin');await seedPermissions();owner=await user('owner');admin=await user('admin');coach=await user('coach');member=await user();other=await user();contact=await value("insert into contacts(first_name,last_name,email) values('Local','Client',$1) returning id",['client-'+randomUUID()+'@example.invalid']);program='local-'+randomUUID();await q("insert into program_catalog(program_code,name,program_type,default_commitment_months) values($1,'Local Foundations','membership',6)",[program]);await q("insert into journey_definitions(journey_key,name,audience) values('direct_membership','Local membership','client') on conflict do nothing");await q("insert into journey_step_definitions(journey_key,step_key,step_order,name,step_type,required) values('direct_membership','application_capture',1,'Contact','form',true),('direct_membership','payment_agreement',2,'Agreement','form',true) on conflict do nothing");});afterEach(()=>q('rollback'));
+after(()=>db.end());beforeEach(async()=>{await q('begin');await seedPermissions();owner=await user('owner');admin=await user('admin');coach=await user('coach');member=await user();other=await user();contact=await value("insert into contacts(first_name,last_name,email) values('Local','Client',$1) returning id",['client-'+randomUUID()+'@example.invalid']);program='holistic-foundations';await q("insert into program_catalog(program_code,name,program_type,default_commitment_months) values($1,'Local Foundations','membership',6) on conflict(program_code) do nothing",[program]);await q("insert into journey_definitions(journey_key,name,audience) values('direct_membership','Local membership','client') on conflict do nothing");await q("insert into journey_step_definitions(journey_key,step_key,step_order,name,step_type,required) values('direct_membership','application_capture',1,'Contact','form',true),('direct_membership','payment_agreement',2,'Agreement','form',true) on conflict do nothing");});afterEach(()=>q('rollback'));
 const create='select public.create_production_client($1,$2) id',save='select public.save_production_client_enrollment($1,$2,$3,$4,$5) state';
 const payload=()=>({first_name:'Local',last_name:'Client',email:'MixedCase-'+randomUUID()+'@EXAMPLE.INVALID',phone:'+1 (819) 598-3893',source:'manual_staff_entry',referral_source:'Sales Rep',sales_rep_name:'Local Rep'});
 async function saveEnrollment(){return (await actor(owner,save,[contact,program,'monthly',8900,'CAD'])).rows[0].state;}
@@ -61,4 +61,44 @@ test('contract preparation denies Coach/member/out-of-scope Admin and missing ma
 test('tampered beta onboarding origin cannot issue production invitation',async()=>{
  const {a}=await agreementFixture();await q("update app_runtime_config set config_value='{\"origin\":\"https://beta.revitalizedacademy.com\"}' where config_key='client_onboarding'");
  await assert.rejects(actor(owner,"update client_agreements set sent_at=now()+interval '1 second' where id=$1",[a.id]),/approved HTTPS/);
+});
+
+test('only approved Holistic Foundations billing intent is accepted; future custom architecture stays held',async()=>{
+ for(const args of [[contact,program,'monthly',0,'CAD'],[contact,program,'monthly',8901,'CAD'],[contact,program,'custom',8900,'CAD'],[contact,'unknown','monthly',8900,'CAD']])await assert.rejects(actor(owner,save,args),/Holistic Foundations/);
+ await actor(owner,save,[contact,program,'one_time',96000,'USD']);const s=(await actor(owner,'select public.production_client_enrollment_state($1) s',[contact])).rows[0].s;assert.equal(s.amount_cents,96000);assert.equal(s.payment_status,'pending');
+});
+test('service-only agreement dispatch preserves contact scope, leases once, redacts private link after provider acceptance',async()=>{
+ const {a}=await agreementFixture();const claim='select public.claim_production_agreement_delivery($1,$2) job';
+ for(const role of ['anon','authenticated'])await assert.rejects(actor(owner,claim,[owner,a.id],role),/permission denied/);
+ await assert.rejects(actor(null,claim,[member,a.id],'service_role'),/Owner\/Admin/);
+ await q("update staff_access set contact_scope='assigned' where user_id=$1",[admin]);await assert.rejects(actor(null,claim,[admin,a.id],'service_role'),/scope/);
+ const job=(await actor(null,claim,[owner,a.id],'service_role')).rows[0].job;assert.ok(job.body.includes('https://revitalizedacademy.com'));
+ assert.equal((await actor(null,claim,[owner,a.id],'service_role')).rows[0].job,null);
+ await actor(null,'select public.finish_production_agreement_delivery($1,$2,$3)',[owner,job.id,'local-message-id'],'service_role');
+ const row=(await q('select * from notification_delivery_jobs where id=$1',[job.id])).rows[0];assert.equal(row.status,'sent');assert.equal(row.provider_message_id,'local-message-id');assert.ok(!row.body.includes('https://'));assert.equal(row.attempt_count,1);
+});
+test('recovery reservations are service-only, normalized, persistent, non-enumerating and minute/hour limited',async()=>{
+ const call='select public.reserve_production_member_recovery($1) ok',email='Local-Recovery@example.invalid';
+ for(const role of ['anon','authenticated'])await assert.rejects(actor(member,call,[email],role),/permission denied/);
+ assert.equal((await actor(null,call,[email],'service_role')).rows[0].ok,true);
+ assert.equal((await actor(null,call,[email.toLowerCase()],'service_role')).rows[0].ok,false);
+ assert.equal(await value('select count(*)::int from private.production_member_recovery_limits'),1);
+ for(let i=1;i<6;i++){await q("update private.production_member_recovery_limits set last_requested=now()-interval '2 minutes'");assert.equal((await actor(null,call,[email],'service_role')).rows[0].ok,true);}
+ await q("update private.production_member_recovery_limits set last_requested=now()-interval '2 minutes'");assert.equal((await actor(null,call,[email],'service_role')).rows[0].ok,false);
+ await assert.rejects(actor(null,'select * from private.production_member_recovery_limits',[],'service_role'),/permission denied/);
+});
+test('assigned Coach scope and private-health permission remain independent; member/anonymous admin mutation denied',async()=>{
+ await q('update contacts set assigned_to=$2 where id=$1',[contact,coach]);const unseen=await value("insert into contacts(first_name,last_name,email) values('Other','Client',$1) returning id",['other-'+randomUUID()+'@example.invalid']);
+ assert.equal((await actor(coach,'select public.staff_action_allowed($1,$2) ok',['health.private.view',contact])).rows[0].ok,true);
+ assert.equal((await actor(coach,'select public.staff_action_allowed($1,$2) ok',['health.private.view',unseen])).rows[0].ok,false);
+ await q("insert into staff_permission_overrides(user_id,permission_key,allowed,updated_by) values($1,'health.private.view',false,$1) on conflict(user_id,permission_key) do update set allowed=false",[coach]);
+ assert.equal((await actor(coach,'select public.staff_action_allowed($1,$2) ok',['health.private.view',contact])).rows[0].ok,false);
+ await assert.rejects(actor(member,save,[contact,program,'monthly',8900,'CAD']),/Authorized/);
+});
+test('exact approved six program defaults are inherited without granting paid access or enabling unfinished modules',async()=>{
+ const keys=['biometrics','fitness_plans','habit_builder','nutrition_plans','platform_access','tracking'];
+ assert.deepEqual((await q("select entitlement_key from program_entitlement_templates where program_code=$1 and active order by entitlement_key",[program])).rows.map(r=>r.entitlement_key),keys);
+ await saveEnrollment();const id=await value('select membership_id from client_access where contact_id=$1',[contact]);
+ assert.deepEqual((await q("select entitlement_key from membership_entitlements where membership_id=$1 and status='active' order by entitlement_key",[id])).rows.map(r=>r.entitlement_key),keys);
+ assert.equal(await value('select private.full_member_access()'),false);
 });

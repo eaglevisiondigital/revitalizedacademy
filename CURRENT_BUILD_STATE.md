@@ -14,9 +14,17 @@ Earlier local RepDB checkpoints below are historical: RepDB is now deployed; its
 
 ## NOT DEPLOYED — Production Client Lifecycle v1 preparation — 2026-10-07
 
-**PRODUCTION CLIENT LIFECYCLE BLOCKED.** New isolated branch `codex/production-client-lifecycle-v1` contains an unapplied database candidate `20261007224150_production_client_lifecycle_v1.sql`. Native PostgreSQL17 **107/107** tests, existing public build383 and syntax106 pass. This does not establish a complete release: frontend/Edge integration, overlapping concurrency, responsive and genuine hosted setup/sign/recovery/scoped acceptance remain unfinished.
+## NOT DEPLOYED — Production Client Lifecycle v1 integrated candidate — 2026-10-07
 
-Production publishes MK7 with no required Holistic Foundations agreement mapping. Primary Chat production mapping decision and disposable production receiving-inbox confirmation are pending. No synthetic payment, paid member module or assignment promotion. Current production deploy `6ac6b471ac8ed68bec8bd8d6`, ledger `20261007221345`, zero client activations/access/agreements/payments remain unchanged. No migration replay, hosted data creation, mail or deployment occurred. [Detailed readiness table, evidence and full Chat decision prompt](docs/PRODUCTION_CLIENT_LIFECYCLE_V1_2026-10-07.md).
+**PRODUCTION CLIENT LIFECYCLE BLOCKED.** Local staff Add Client/enrollment/agreement UI, compact verified account/signing/recovery flow, five coordinated Edge candidates and unapplied migration `20261007224150_production_client_lifecycle_v1.sql` are implemented. Native PG17 112 checks plus four eight-session race groups pass; Frontend121, Edge35, build389, syntax111 and responsive34 pass; evidence is in the detailed report. Production legal revision/HF mapping/pay-in-full terms, disposable production inbox approval, exact final release approval and genuine hosted acceptance remain required.
+
+Production deploy `6ac6b471ac8ed68bec8bd8d6`, ledger `20261007221345`; beta deploy `6ac6b620e735903c2285ec3f`, unchanged. No remote push/deploy/migration/mail/identity/content/payment change. Payments and full member dashboard/Nutrition/Workouts/Health/assignments are held; no synthetic production activation. [Current candidate, module table, evidence and exact remaining decisions](revitalizedacademy-client-lifecycle/docs/PRODUCTION_CLIENT_LIFECYCLE_V1_2026-10-07.md).
+
+## NOT DEPLOYED — Production Client Lifecycle v1 integrated candidate — 2026-10-07
+
+**PRODUCTION CLIENT LIFECYCLE BLOCKED.** Local staff Add Client/enrollment/agreement UI, compact verified account/signing/recovery flow, five coordinated Edge candidates and unapplied migration `20261007224150_production_client_lifecycle_v1.sql` are implemented. Native PG17 112 checks plus four eight-session race groups pass; Frontend121, Edge35, build389, syntax111 and responsive34 pass; evidence is in the detailed report. Production legal revision/HF mapping/pay-in-full terms, disposable production inbox approval, exact final release approval and genuine hosted acceptance remain required.
+
+Production deploy `6ac6b471ac8ed68bec8bd8d6`, ledger `20261007221345`; beta deploy `6ac6b620e735903c2285ec3f`, unchanged. No remote push/deploy/migration/mail/identity/content/payment change. Payments and full member dashboard/Nutrition/Workouts/Health/assignments are held; no synthetic production activation. [Current candidate, module table, evidence and exact remaining decisions](docs/PRODUCTION_CLIENT_LIFECYCLE_V1_2026-10-07.md).
 
 ## LIVE ACCEPTED — RepDB DELETE guard repair — 2026-10-07
 

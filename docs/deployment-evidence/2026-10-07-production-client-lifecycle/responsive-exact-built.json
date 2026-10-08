@@ -1,0 +1,96 @@
+{
+  "checks": 34,
+  "errors": [],
+  "layouts": [
+    {
+      "size": {
+        "width": 1440,
+        "height": 1000
+      },
+      "portal": {
+        "card": true,
+        "page": true
+      }
+    },
+    {
+      "size": {
+        "width": 1440,
+        "height": 1000
+      },
+      "agreement": {
+        "modal": true,
+        "page": true
+      }
+    },
+    {
+      "size": {
+        "width": 1440,
+        "height": 1000
+      },
+      "member": {
+        "page": true,
+        "cards": true
+      }
+    },
+    {
+      "size": {
+        "width": 768,
+        "height": 1024
+      },
+      "portal": {
+        "card": true,
+        "page": true
+      }
+    },
+    {
+      "size": {
+        "width": 768,
+        "height": 1024
+      },
+      "agreement": {
+        "modal": true,
+        "page": true
+      }
+    },
+    {
+      "size": {
+        "width": 768,
+        "height": 1024
+      },
+      "member": {
+        "page": true,
+        "cards": true
+      }
+    },
+    {
+      "size": {
+        "width": 390,
+        "height": 844
+      },
+      "portal": {
+        "card": true,
+        "page": true
+      }
+    },
+    {
+      "size": {
+        "width": 390,
+        "height": 844
+      },
+      "agreement": {
+        "modal": true,
+        "page": true
+      }
+    },
+    {
+      "size": {
+        "width": 390,
+        "height": 844
+      },
+      "member": {
+        "page": true,
+        "cards": true
+      }
+    }
+  ]
+}

@@ -12,7 +12,11 @@
     "test:fooddata": "node --test tests/fooddata.cjs",
     "test:fooddata:browser": "node tests/fooddata-browser.cjs",
     "test:repdb": "node scripts/prepare-repdb.cjs && node --test tests/repdb-exercise-library.cjs",
-    "test:repdb:browser": "node tests/repdb-exercise-browser.cjs"
+    "test:repdb:browser": "node tests/repdb-exercise-browser.cjs",
+    "test:client-lifecycle": "node --test tests/production-client-lifecycle.cjs",
+    "test:client-lifecycle:browser": "node tests/production-client-lifecycle-browser.cjs",
+    "check:client-lifecycle:edge": "deno check --config supabase/functions/deno.json supabase/functions/member-account/index.ts supabase/functions/agreement-sign/index.ts supabase/functions/member-password-reset/index.ts supabase/functions/client-lifecycle-delivery/index.ts supabase/functions/notification-delivery/index.ts",
+    "test:client-lifecycle:edge": "deno test --allow-env --config supabase/functions/deno.json tests/edge/production_client_lifecycle_test.ts"
   },
   "devDependencies": {
     "jsdom": "26.1.0",
