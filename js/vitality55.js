@@ -598,6 +598,7 @@
  if (leadForm) {
  const button = leadForm.querySelector('button[type="submit"]');
  const error = leadForm.querySelector('.vitality-error');
+ let submittingLead=false,leadAccepted=false;
  const referralSource=leadForm.elements.referral_source;
  const referralDetails=[
   {value:'Sales Rep',container:leadForm.querySelector('[data-sales-rep-field]'),input:leadForm.elements.sales_rep_name},
@@ -611,18 +612,19 @@
  referralSource.addEventListener('change',updateReferralFields);updateReferralFields();
  leadForm.addEventListener('submit', async (event) => {
  event.preventDefault();
- if (!leadForm.reportValidity()) return;
+ if (submittingLead||leadAccepted||!leadForm.reportValidity()) return;
+ submittingLead=true;error.classList.remove('show');
  button.disabled = true;
  const original = button.innerHTML;
- button.textContent = 'Saving…';
+ button.textContent = 'Saving your assessment…';
  try {
- await postForm(leadForm);
  if(window.RVA_RESUME){
   const identity=Object.fromEntries(contactIdentityFields.map(name=>[name,leadForm.elements[name].value]));
   await window.RVA_RESUME.start(identity);
-  button.disabled=false;button.innerHTML=original;
+  leadAccepted=true;
   return;
  }
+ await postForm(leadForm);
  contactIdentityFields.forEach((name) => {
  assessmentForm.querySelector(`[data-copy-field="${name}"]`).value = leadForm.elements[name].value;
  });
@@ -635,6 +637,7 @@
  showSection(0);
  } catch (submissionError) {
  error.classList.add('show');
+ submittingLead=false;
  button.disabled = false;
  button.innerHTML = original;
  }

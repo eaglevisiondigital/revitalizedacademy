@@ -1,9 +1,10 @@
 import {edgeEnvironment,configurationError,assertSyntheticRecipient} from '../_shared/environment.ts';
 type RPC=(action:string,hash:string|null,next:string|null,payload:Record<string,unknown>)=>Promise<any>;
-export type Dependencies={rpc:RPC;mail:(recipient:string,url:string)=>Promise<void>;final:(form:string)=>Promise<void>};
+export type Delivery={state:'accepted'|'failed'|'uncertain';provider_id?:string;provider_status?:number};
+export type Dependencies={rpc:RPC;mail:(recipient:string,url:string,key:string)=>Promise<Delivery>;lead:(identity:Record<string,string>)=>Promise<Delivery>;final:(form:string)=>Promise<void>};
 export const opaque=()=>Array.from(crypto.getRandomValues(new Uint8Array(32)),b=>b.toString(16).padStart(2,'0')).join('');
 export async function digest(value:string){return Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(value))),b=>b.toString(16).padStart(2,'0')).join('');}
-const neutral={ok:true,message:'If an unfinished assessment is available, we’ll email a secure link. Please check your inbox and spam folder.'};
+const neutral={ok:true,retry_after:60,message:'If an unfinished assessment is available, we’ll email a secure link. Please check your inbox and spam folder.'};
 const referralSources=new Set(['Facebook','Instagram','Google Search','YouTube','LinkedIn','TikTok','Friend / Family','Existing Client','Event / Webinar','Church / Community','Podcast','Email','Sales Rep','Other']);
 export function validSnapshot(s:any){
  if(!s||s.version!==1||!Number.isInteger(s.section)||s.section<0||s.section>30||!Number.isInteger(s.percent)||s.percent<0||s.percent>99||!['Adult','Child (ages 0–18)'].includes(s.pathway)||typeof s.section_label!=='string'||s.section_label.length>160||!s.fields||Array.isArray(s.fields)||typeof s.fields!=='object')return false;
@@ -42,15 +43,24 @@ export function createHandler(deps:Dependencies){return async(req:Request)=>{
    if(action==='start'&&(!referralSources.has(referralSource)||(referralSource==='Sales Rep'&&!salesRepName)||(referralSource==='Other'&&!referralSourceOther)||salesRepName.length>160||referralSourceOther.length>240))return reply({error:'Referral details are required'},400);
    try{assertSyntheticRecipient(email);}catch{return reply(neutral);}
    const token=opaque(),hash=await digest(token);
-   const data=await deps.rpc(action,null,hash,{email,first_name:String(body.first_name||'').slice(0,100),last_name:String(body.last_name||'').slice(0,100),phone:String(body.phone||'').slice(0,40),referral_source:referralSource,sales_rep_name:salesRepName,referral_source_other:referralSourceOther});
+   const requestId=body.request_id;
+   if(requestId!==undefined&&(typeof requestId!=='string'||!/^[a-f0-9-]{36}$/.test(requestId)))return reply({error:'Invalid request'},400);
+   const data=await deps.rpc(action,null,hash,{...(requestId?{request_id:requestId}:{}),lead_owner:body.intake_version===2?'edge':'legacy_browser',email,first_name:String(body.first_name||'').slice(0,100),last_name:String(body.last_name||'').slice(0,100),phone:String(body.phone||'').slice(0,40),referral_source:referralSource,sales_rep_name:salesRepName,referral_source_other:referralSourceOther});
    if(data.recipient){
-    try{await deps.mail(data.recipient,env.appOrigin+'/consult.html#resume='+token);}
-    catch{await deps.rpc('cancel_mail',hash,null,{});return reply(neutral);}
+    const record=async(action:string,send:()=>Promise<Delivery>)=>{
+     let result:Delivery;try{result=await send();}catch{result={state:'uncertain'};}
+     // A recording failure must never retry the external side effect or leak details.
+     try{await deps.rpc(action,hash,null,result);}catch{}
+    };
+    await Promise.all([
+     record('mail_result',()=>deps.mail(data.recipient,env.appOrigin+'/consult.html#resume='+token,'vitality-resume-'+env.environment+'-'+new URL(env.supabaseUrl).hostname+'-'+data.mail_id)),
+     ...(data.start_identity?[record('lead_result',()=>deps.lead(data.start_identity))]:[])
+    ]);
    }
    return reply(neutral);
   }
   if(!['redeem','read','save','finalize'].includes(action))return reply({error:'Invalid action'},400);
-  if(typeof body.token!=='string'||!/^[a-f0-9]{64}$/.test(body.token))return reply({error:'This link is unavailable. Request another email link.'},401);
+  if(typeof body.token!=='string'||!/^[a-f0-9]{64}$/.test(body.token))return reply({error:'This link is unavailable, already used, or replaced. Use the most recent email, or request a new secure link.'},401);
   const hash=await digest(body.token);
   if(action==='redeem'){
    const token=opaque(),data=await deps.rpc('redeem',hash,await digest(token),{});
@@ -80,6 +90,6 @@ export function createHandler(deps:Dependencies){return async(req:Request)=>{
  }catch(error){
   // Never serialize/log database/provider errors, request bodies, tokens or answers.
   const code=(error as {code?:string})?.code;
-  return reply({error:code==='40001'?'Your assessment changed in another session. Reopen your secure link before continuing.':code==='42501'?'This link is unavailable. Request another email link.':'We couldn’t save your latest changes. Please try again.'},code==='40001'?409:code==='42501'?401:503);
+  return reply({error:code==='40001'?'Your assessment changed in another session. Reopen your secure link before continuing.':code==='42501'?'This link is unavailable, already used, or replaced. Use the most recent email, or request a new secure link.':'We couldn’t save your latest changes. Please try again.'},code==='40001'?409:code==='42501'?401:503);
  }
 };}

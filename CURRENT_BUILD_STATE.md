@@ -1,4 +1,18 @@
-## LOCAL READY — RepDB Exercise Library v1 — 2026-10-07
+## LOCAL VERIFIED — Production Vitality reliability repair — 2026-10-08
+
+**VITALITY SAVE/RESUME FLOW BLOCKED — explicit release approval and fresh hosted iPhone/external-inbox acceptance pending.** Isolated branch `codex/vitality-resume-reliability`, based on deployed production source `862f4b6e2edb9b6af5332a389c0081fefec6adae`. Production deploy remains `6ac6b471ac8ed68bec8bd8d6`; beta, real participant records and the parked client-lifecycle package were not modified.
+
+Read-only incident trace found five initial Netlify lead submissions but one contact/workflow/draft/start event; three participant emails have provider-delivered status. Individual staff delivery and actual inbox timing are not proven. Local repair deduplicates server-owned initial lead dispatch, captures provider outcomes with bounded same-key retries, locks initial submission, presents a focused Check Your Email panel and controlled recovery, and handles WebKit same-document email-link navigation/interrupted startup. No second verification email is required. Existing answers, completion locks, stale revisions and private-health gates are preserved.
+
+Only new release migration: `20261008192530_vitality_start_delivery_reliability.sql` (**unapplied**). Update only Edge `vitality-resume` and assessment frontend. Already-applied RepDB parity source `20261007220506_repdb_delete_guard_return_contract.sql` corresponds to existing production ledger `20261007221345`; never replay it or use unfiltered production `db push`.
+
+Local validation: production build383; exact public-build JavaScript syntax70/70; maintained frontend109/109 (existing55, secure resume34, questionnaire20); restored native PostgreSQL17 96/96 plus one eight-session overlap race; Edge24/24 plus type check; exact-built WebKit75/75 across1440/768/390 including older Safari UUID fallback. No hosted writes, emails, push or deployment. Nine parked agreement-origin fixtures remain separate and are not claimed repaired. Assets: Vitality55 JS `reliability-1`, Resume JS3, Vitality55 CSS89.
+
+[Full redacted trace, implementation, security, limitations and exact release gate](docs/VITALITY_SAVE_RESUME_RELIABILITY_2026-10-08.md). Next: approve the immutable candidate returned in the completion report, then single-migration/Edge/frontend release and controlled existing-synthetic-draft hosted acceptance.
+
+Earlier local RepDB checkpoints below are historical: RepDB is now deployed; its DELETE guard forward repair is applied. This entry is the current local package only.
+
+## HISTORICAL LOCAL READY — RepDB Exercise Library v1 — 2026-10-07
 
 **EXERCISE LIBRARY READY FOR RELEASE; NOT DEPLOYED.** This supersedes the earlier MuscleWiki/API Ninjas provider-blocker for this package. Reviewed RepDB Free Tier v1.0 permits the requested in-app durable use with visible attribution. Pinned schema-3 snapshot `a360f87f9064de42a9c90228cfebae941a5016d5` has 609 exercises; source/license hashes verified; raw dataset is server-only, ignored and excluded from public manifests. No provider secret.
 

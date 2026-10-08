@@ -1,4 +1,12 @@
-# RepDB Exercise Library local candidate — 2026-10-07
+# Vitality reliability local candidate — 2026-10-08
+
+Preserve opaque hashed single-use mail/session credentials, 30-day inactivity, completion locking, stale revision rejection, neutral recovery and existing staff health-private/contact-scope gates. The new private delivery journal is RLS-enabled; PUBLIC/anon/authenticated/service-role direct table and sequence access are revoked. Internal mail/lead-result commands are reachable only through the existing service-only command boundary; public Edge actions cannot invoke them. No raw credentials, private answers, recipient addresses or provider bodies are logged/persisted in the journal.
+
+Same-document resume links reload through the existing exchange instead of merging a previous participant's form. Malformed links do not display an earlier stored private session. Pending opaque credentials are removed after exchange/denial; history stripping remains in place. Provider acknowledgement cannot reactivate consumed/superseded credentials. A definite rejection preserves a previous accepted link; uncertain acceptance preserves the possibly delivered newest link. Request replay and rate limits remain server-enforced.
+
+Native PostgreSQL17 permission/completion/revision tests96/96, eight-session race, Edge24/24 and isolated WebKit75/75 pass. Real records were inspected only as minimal metadata; no answers or raw provider links were retrieved. No remote writes, permission grants, provider configuration, Auth, payments or beta changes. [Full evidence and limitations](docs/VITALITY_SAVE_RESUME_RELIABILITY_2026-10-08.md). Release/hosted acceptance remain blocked pending explicit approval.
+
+# Historical RepDB Exercise Library local candidate — 2026-10-07
 
 New exercise-library requests require the exact Netlify site/project/custom origin, matching Auth identity and active Owner/Admin plus learning.manage. Service-only RPC rechecks authority; unchanged RLS plus provenance trigger prevent browser spoofing/imported-global mutations. No permission grants or private-health-policy changes. Raw licensed dataset and service secrets stay private; public/bulk/actor override and reverse sync are denied. Beta source import uses only beta Auth/project secrets. [Release report](docs/REPDB_EXERCISE_LIBRARY_V1_2026-10-07.md). Not deployed.
 

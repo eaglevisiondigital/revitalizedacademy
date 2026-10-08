@@ -32,7 +32,7 @@ async function page(s,mode='mail'){
  function set(name,value,choice){const list=Array.from(form.querySelectorAll(`[name="${name}"]`));const c=choice?list.find(c=>c.value===choice):list[0];assert(c,name);if(['checkbox','radio'].includes(c.type))c.checked=Boolean(value);else c.value=value;c.dispatchEvent(new w.Event('input',{bubbles:true}));c.dispatchEvent(new w.Event('change',{bubbles:true}));return c;}
  return {d,w,doc,form,set,flush:()=>w.RVA_RESUME.flush(),close:()=>d.window.close()};
 }
-test('first contact capture remains independent and health entry waits for verified email',async()=>{const s=server(),p=await page(s,'none');const lead=p.doc.querySelector('[data-vitality-lead-form]');for(const[k,v]of Object.entries({first_name:'Synthetic',last_name:'Lead',email:'test@example.invalid',phone:'0000000000',referral_source:'Google Search'}))lead.elements[k].value=v;lead.dispatchEvent(new p.w.Event('submit',{bubbles:true,cancelable:true}));await sleep(5);assert.deepEqual(s.requests.map(r=>r.action),['lead','start']);assert.equal(s.requests[1].referral_source,'Google Search');assert.equal(s.leads[0].referral_source,'Google Search');assert.equal(p.doc.querySelector('[data-assessment-step]').hidden,true);assert.match(p.doc.querySelector('[data-resume-notice]').textContent,/verify your email/);p.close();});
+test('first contact capture remains independent and health entry waits for verified email',async()=>{const s=server(),p=await page(s,'none');const lead=p.doc.querySelector('[data-vitality-lead-form]');for(const[k,v]of Object.entries({first_name:'Synthetic',last_name:'Lead',email:'test@example.invalid',phone:'0000000000',referral_source:'Google Search'}))lead.elements[k].value=v;lead.dispatchEvent(new p.w.Event('submit',{bubbles:true,cancelable:true}));await sleep(5);assert.deepEqual(s.requests.map(r=>r.action),['start']);assert.equal(s.requests[0].referral_source,'Google Search');assert.equal(s.leads.length,0);assert.equal(p.doc.querySelector('[data-assessment-step]').hidden,true);assert.match(p.doc.querySelector('[data-start-confirmation]').textContent,/Check Your Email/);p.close();});
 test('referral source is required and exposes only the selected conditional detail',async()=>{
  const s=server(),p=await page(s,'none');p.doc.querySelector('[data-start-new]').click();const lead=p.doc.querySelector('[data-vitality-lead-form]'),source=lead.elements.referral_source;
  assert.equal(source.required,true);assert.equal(source.value,'');assert.deepEqual(Array.from(source.options).map(o=>o.textContent),['Select one','Facebook','Instagram','Google Search','YouTube','LinkedIn','TikTok','Friend / Family','Existing Client','Event / Webinar','Church / Community','Podcast','Email','Sales Rep','Other']);
@@ -41,7 +41,7 @@ test('referral source is required and exposes only the selected conditional deta
  lead.elements.referral_source_other.value='Synthetic source';source.value='Facebook';source.dispatchEvent(new p.w.Event('change',{bubbles:true}));assert.equal(lead.elements.referral_source_other.value,'');assert.equal(lead.elements.referral_source_other.disabled,true);p.close();
 });
 test('Sales Rep referral is included in the initial secure payload and restored identity',async()=>{
- const s=server(),p=await page(s,'none'),lead=p.doc.querySelector('[data-vitality-lead-form]');for(const[k,v]of Object.entries({first_name:'Synthetic',last_name:'Lead',email:'test@example.invalid',phone:'0000000000',referral_source:'Sales Rep'}))lead.elements[k].value=v;lead.elements.referral_source.dispatchEvent(new p.w.Event('change',{bubbles:true}));lead.elements.sales_rep_name.value='Synthetic Rep';lead.dispatchEvent(new p.w.Event('submit',{bubbles:true,cancelable:true}));await sleep(5);assert.equal(s.requests[1].sales_rep_name,'Synthetic Rep');assert.equal(s.requests[1].referral_source_other,'');assert.equal(s.leads[0].sales_rep_name,'Synthetic Rep');p.close();
+ const s=server(),p=await page(s,'none'),lead=p.doc.querySelector('[data-vitality-lead-form]');for(const[k,v]of Object.entries({first_name:'Synthetic',last_name:'Lead',email:'test@example.invalid',phone:'0000000000',referral_source:'Sales Rep'}))lead.elements[k].value=v;lead.elements.referral_source.dispatchEvent(new p.w.Event('change',{bubbles:true}));lead.elements.sales_rep_name.value='Synthetic Rep';lead.dispatchEvent(new p.w.Event('submit',{bubbles:true,cancelable:true}));await sleep(5);assert.equal(s.requests[0].sales_rep_name,'Synthetic Rep');assert.equal(s.requests[0].referral_source_other,'');assert.equal(s.leads.length,0);p.close();
  s.mailConsumed=false;const restored=await page(s,'mail');assert.equal(restored.form.elements.referral_source.value,'Sales Rep');assert.equal(restored.form.elements.sales_rep_name.value,'Synthetic Rep');restored.close();
 });
 test('no raw answers are written to browser storage',async()=>{const p=await page(server());p.set('additional_context','Synthetic private context');await p.flush();assert.equal(p.w.localStorage.length,0);assert.equal(p.w.sessionStorage.length,1);assert.equal(p.w.sessionStorage.getItem('rva_vitality_session_v1'),'b'.repeat(64));p.close();});
@@ -150,8 +150,8 @@ test('recovery uses the existing endpoint with email only and a fixed neutral co
   const s=server(),p=await page(s,'none');p.doc.querySelector('[data-open-resume]').click();
   const f=p.doc.querySelector('[data-resume-request]');f.elements.resume_email.value=email;
   f.dispatchEvent(new p.w.Event('submit',{bubbles:true,cancelable:true}));await sleep(5);
-  assert.deepEqual(s.requests,[{action:'recover',email}]);
-  assert.equal(p.doc.querySelector('[data-recovery-confirmation]').textContent,'If there’s an unfinished assessment connected to that email, we’ll send you a secure link to continue.');
+  assert.equal(s.requests.length,1);assert.equal(s.requests[0].action,'recover');assert.equal(s.requests[0].email,email);assert.match(s.requests[0].request_id,/^[a-f0-9-]{36}$/);
+  assert.match(p.doc.querySelector('[data-recovery-confirmation]').textContent,/If there’s an unfinished assessment connected to that email/);assert.match(p.doc.querySelector('[data-recovery-confirmation]').textContent,/Use the most recent email/);
   assert.equal(p.doc.querySelector('[data-assessment-step]').hidden,true);
   assert.equal(p.w.sessionStorage.length,0);assert.equal(p.w.localStorage.length,0);p.close();
  }
@@ -161,7 +161,7 @@ test('duplicate recovery submission is suppressed while one request is pending',
  const f=p.doc.querySelector('[data-resume-request]');f.elements.resume_email.value='test@example.invalid';
  for(let i=0;i<2;i++)f.dispatchEvent(new p.w.Event('submit',{bubbles:true,cancelable:true}));
  assert.equal(f.querySelector('button').disabled,true);await sleep(45);
- assert.equal(s.requests.length,1);assert.equal(f.querySelector('button').disabled,false);p.close();
+ assert.equal(s.requests.length,1);assert.equal(f.querySelector('button').disabled,true);p.close();
 });
 test('recovery transport failure keeps form retryable without a success confirmation',async()=>{
  const s=server(),p=await page(s,'none');s.recoveryFail=true;
@@ -193,4 +193,14 @@ test('completed reload marks all three stages complete, keeps 100%, and cannot e
  assert.equal(p.doc.querySelector('[data-progress-percent]').textContent,'100%');
  assert.equal(p.form.querySelectorAll('input:not(:disabled),select:not(:disabled),textarea:not(:disabled),button:not(:disabled)').length,0);
  assert.deepEqual(s.requests.map(r=>r.action),['read']);p.close();
+});
+
+test('five rapid contact submits lock immediately, make one secure start and no browser Netlify posts',async()=>{
+ const s=server(),p=await page(s,'none');p.doc.querySelector('[data-start-new]').click();const f=p.doc.querySelector('[data-vitality-lead-form]');for(const [k,v]of Object.entries(s.identity))if(f.elements[k])f.elements[k].value=v;s.delay=25;
+ for(let i=0;i<5;i++)f.dispatchEvent(new p.w.Event('submit',{bubbles:true,cancelable:true}));assert.equal(f.querySelector('button').disabled,true);assert.match(f.querySelector('button').textContent,/Saving your assessment/);await sleep(45);
+ assert.equal(s.requests.length,1);assert.equal(s.requests[0].action,'start');assert.equal(s.leads.length,0);assert.equal(f.hidden,true);assert.equal(p.doc.querySelector('[data-start-confirmation]').hidden,false);assert.match(p.doc.querySelector('[data-start-confirmation]').textContent,/do not start a new assessment/);assert.match(p.doc.querySelector('[data-start-email-copy]').textContent,/t•••@example.invalid/);assert.equal(p.doc.activeElement,p.doc.querySelector('[data-start-confirmation]'));assert.equal(p.doc.querySelector('[data-start-resend]').disabled,true);
+ for(let i=0;i<5;i++)f.dispatchEvent(new p.w.Event('submit',{bubbles:true,cancelable:true}));await sleep(5);assert.equal(s.requests.length,1);p.close();
+});
+test('pending opaque mail credential survives script-loading reload and clears after direct resume',async()=>{
+ const s=server(),p=await page(s,'none');p.w.sessionStorage.setItem('rva_vitality_pending_link_v1','a'.repeat(64));p.w.eval(fs.readFileSync(path.join(root,'js/vitality-resume.js'),'utf8'));await sleep(5);assert.equal(p.doc.querySelector('[data-assessment-step]').hidden,false);assert.equal(s.requests.filter(r=>r.action==='redeem').length,1);assert.equal(s.requests.filter(r=>r.action==='recover').length,0);assert.equal(p.w.sessionStorage.getItem('rva_vitality_pending_link_v1'),null);p.close();
 });

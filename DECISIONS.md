@@ -1,4 +1,10 @@
-# RepDB Exercise Library local candidate — 2026-10-07
+# Vitality reliability repair decisions — 2026-10-08
+
+User authorized investigation and narrow local implementation of the real iPhone/Safari incident, with an exact-SHA production approval gate. Preserve all real participant records and the secure architecture. Do not combine the parked client-lifecycle/contracts package or replay migrations. Initial staff notifications require durable server ownership in the new protocol; explicit recovery never sends another staff-start notification. Provider-delivered status is distinct from actual external receipt. Old logs cannot prove the exact failed credential's historical cause without exposing tokens; report that limit.
+
+Prefer visible, focused Check Your Email confirmation, masked recipient, do-not-restart/latest-email copy and controlled resend. No second verification email is required. Use stable idempotent provider retries and a private result journal; uncertain non-idempotent Netlify submission is retained for operator review rather than retried. Apply only new forward migration `20261008192530_vitality_start_delivery_reliability.sql`, one Edge update and matching frontend after explicit approval. Physical iPhone Mail and actual inbox receipt remain hosted gates. [Full report and approval template](docs/VITALITY_SAVE_RESUME_RELIABILITY_2026-10-08.md).
+
+# Historical RepDB Exercise Library local candidate — 2026-10-07
 
 User-directed RepDB pivot replaces blocked MuscleWiki/API Ninjas source selection. Use Free Tier v1.0, pinned commit/hash/count609, visible publisher credit and free flat WebP references only. Preserve unknown source values, original muscle identifiers and separate local overrides; do not infer functional movement. Imported records are published into an existing methodology for immediate workouts, while approval remains separate. Preserve name uniqueness with explicit source-slug disambiguation. Hold hosted migration/deployment for explicit approval of this new candidate. [Release report](docs/REPDB_EXERCISE_LIBRARY_V1_2026-10-07.md). Not deployed.
 

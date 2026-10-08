@@ -1,4 +1,10 @@
-# RepDB Exercise Library local candidate — 2026-10-07
+# Vitality reliability local candidate — 2026-10-08
+
+The existing secure Edge/private-command architecture remains authoritative. New browser protocol `intake_version=2` delegates the initial Netlify lead mirror to a durable new-draft reservation; old browser protocol preserves its existing ownership during rollout. Exact-email advisory serialization, unique initial-start claim and request-key digest suppress concurrent/replayed notifications and email sends. The private attempt journal stores credential digests, result states and provider IDs. Identical-byte provider retries use an environment-specific idempotency key; uncertain Netlify POST is not blindly retried. This is an at-most-one dispatch design, not a guarantee of delivery after process/network failure.
+
+The prominent Contact confirmation and controlled recovery use the existing endpoint. Latest emailed credentials enter the existing exchange directly, including WebKit same-document fragment navigation. Only an opaque pending credential survives reload during startup; answers and identity never enter browser storage. Read/save/finalization SQL remains byte-identical. No member Auth, second verification API, plaintext mail queue, content/client promotion or provider configuration change. [Full local report and hosted release gate](docs/VITALITY_SAVE_RESUME_RELIABILITY_2026-10-08.md). Not deployed.
+
+# Historical RepDB Exercise Library local candidate — 2026-10-07
 
 RepDB is a hash-pinned build-time private dataset and protected in-app Netlify adapter, not a live provider-key dependency. Durable exercise source envelopes and immutable slug identity are separate from local coaching/taxonomy/approval fields. Explicit source refresh preserves canonical workout/program references. The beta receiver accepts the complete previous exercise export format, rejects partial new provenance and preserves unrelated custom/provider rows with colliding names, enabling schema-first beta compatibility without interrupting current production exports. Forward content-sync export/receive contracts include only reviewed exercise fields and reuse an existing beta RepDB slug. Separate environment builds and migrations preserve production authority. [Release report](docs/REPDB_EXERCISE_LIBRARY_V1_2026-10-07.md). Not deployed.
 

@@ -14,10 +14,20 @@ const {Client}=require('pg');const fs=require('node:fs');const path=require('nod
   const baseline=path.resolve('../revitalizedacademy/supabase/baselines/2026-09-26/schema.sql');
   const platform=path.resolve('../revitalizedacademy/tests/backend/platform.sql');
   const files=[platform,baseline,...fs.readdirSync('supabase/migrations').filter(f=>f.endsWith('.sql')).sort().map(f=>path.resolve('supabase/migrations',f))];
-  const restore=spawnSync('/opt/homebrew/opt/postgresql@17/bin/psql',['-X','-v','ON_ERROR_STOP=1',...files.flatMap(f=>['-f',f])],{env,encoding:'utf8',maxBuffer:64*1024*1024});
-  if(restore.status!==0)throw Error(restore.stderr.slice(-5000));
+  // A developer-owned PG17 cluster may use a differently named superuser.
+  // Remap only baseline grants in this disposable database; never create global roles.
+  const hasPostgres=(await admin.query("select exists(select 1 from pg_roles where rolname='postgres') ok")).rows[0].ok;
+  const quotedAdmin='\"'+env.PGUSER.replaceAll('\"','\"\"')+'\"';
+  for(const file of files){
+   let sql=fs.readFileSync(file,'utf8');
+   if(file===baseline&&!hasPostgres)sql=sql.replaceAll('TO "postgres";', 'TO '+quotedAdmin+';').replaceAll('FOR ROLE "postgres"','FOR ROLE '+quotedAdmin);
+   const restore=spawnSync('/opt/homebrew/opt/postgresql@17/bin/psql',['-X','-v','ON_ERROR_STOP=1'],{env,input:sql,encoding:'utf8',maxBuffer:64*1024*1024});
+   if(restore.status!==0)throw Error(file+'\n'+restore.stderr.slice(-5000));
+  }
   console.log(`Isolated PostgreSQL 17 restore: baseline + ${files.length-2} production migrations; no staging migrations`);
-  const result=spawnSync(process.execPath,['--test','--test-concurrency=1','tests/backend/production-durable-content.test.cjs','tests/backend/vitality-assessment-review.test.cjs','tests/backend/vitality-resume.test.cjs','tests/backend/fooddata.test.cjs','tests/backend/repdb-exercise.test.cjs'],{env,encoding:'utf8',maxBuffer:32*1024*1024});
+  const result=spawnSync(process.execPath,['--test','--test-concurrency=1','tests/backend/production-durable-content.test.cjs','tests/backend/vitality-assessment-review.test.cjs','tests/backend/vitality-resume.test.cjs','tests/backend/fooddata.test.cjs','tests/backend/repdb-exercise.test.cjs','tests/backend/vitality-reliability.test.cjs'],{env,encoding:'utf8',maxBuffer:32*1024*1024});
   process.stdout.write(result.stdout);process.stderr.write(result.stderr);process.exitCode=result.status||0;
+  if(result.status===0){const races=spawnSync(process.execPath,['--test','tests/backend/vitality-reliability-concurrency.test.cjs'],{env,encoding:'utf8',maxBuffer:8*1024*1024});process.stdout.write(races.stdout);process.stderr.write(races.stderr);process.exitCode=races.status||0;}
+
  }finally{if(created)await admin.query(`drop database "${database}" with (force)`);await admin.end();}
 })().catch(e=>{console.error(e.message);process.exitCode=1;});

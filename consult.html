@@ -3,7 +3,17 @@
 <head>
   <script>
     // Remove the credential before analytics, error reporting or navigation.
-    (() => { const m = location.hash.match(/^#resume=([a-f0-9]{64})$/); if (m) window.RVA_RESUME_LINK = m[1]; if (location.hash.startsWith('#resume=')) history.replaceState(null, '', location.pathname + location.search); })();
+    (() => {
+      const m = location.hash.match(/^#resume=([a-f0-9]{64})$/);
+      if (m) {
+        window.RVA_RESUME_LINK = m[1];
+        // Opaque credential only: preserve across a reload during script loading/exchange.
+        // No identity or answers enter browser storage. Clear after exchange or denial.
+        try { sessionStorage.setItem('rva_vitality_pending_link_v1', m[1]); } catch (_) {}
+      }
+      if (location.hash.startsWith('#resume=') && !m) window.RVA_RESUME_INVALID_LINK = true;
+      if (location.hash.startsWith('#resume=')) history.replaceState(null, '', location.pathname + location.search);
+    })();
   </script>
   <meta name="referrer" content="no-referrer">
   <meta charset="utf-8">
@@ -11,7 +21,7 @@
   <meta name="description" content="Complete the ReVitalized Academy Free Vitality Assessment to identify patterns across the 12 Drivers of Health and prepare for your Vitality Roadmap Consultation.">
   <title>Free Vitality Assessment | ReVitalized Academy</title>
   <link rel="stylesheet" href="css/styles.css?v=71">
-  <link rel="stylesheet" href="css/vitality55.css?v=88">
+  <link rel="stylesheet" href="css/vitality55.css?v=89">
   <link rel="stylesheet" href="css/header-glass.css?v=20260910-3">
 </head>
 <body>
@@ -56,7 +66,7 @@
           <div class="active" data-progress-contact>1 · Contact</div><div class="future" data-progress-assessment>2 · Assessment</div><div class="future" data-progress-complete>3 · Complete</div>
         </div>
         <div class="vitality-body" id="vitality-contact" data-lead-step hidden>
-          <div class="vitality-step-heading"><span class="vitality-step-count">STEP 1 OF 3</span><h2>Where should we contact you?</h2><p>Enter <strong>your own contact information</strong>, even if you are completing this for someone else. When you select <strong>Save &amp; Continue</strong>, your contact information is saved immediately. You will choose who the assessment is for next.</p></div>
+          <div class="vitality-step-heading"><span class="vitality-step-count">STEP 1 OF 3</span><h2>Where should we contact you?</h2><p>Enter <strong>your own contact information</strong>, even if you are completing this for someone else. When you select <strong>Save &amp; Continue</strong>, your contact information is saved immediately. Check your email and open your private link to choose who the assessment is for next.</p></div>
           <form name="vitality-lead" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-vitality-lead-form>
             <input type="hidden" name="form-name" value="vitality-lead"><input type="hidden" name="lead_source" value="Free Vitality Assessment"><input type="hidden" name="assessment_status" value="Lead captured - assessment not yet completed">
             <p hidden><label>Don’t fill this out: <input name="bot-field"></label></p>
@@ -72,6 +82,14 @@
             <div class="vitality-actions"><button class="vitality-next" type="submit">Save &amp; Continue <span aria-hidden="true">→</span></button><span class="vitality-assurance"><strong>Your information saves at this step.</strong><br>Then verify your email with a private link. No member account is required.</span></div>
             <div class="vitality-error" role="alert">We couldn’t save your information. Please check your connection and try again.</div>
           </form>
+          <section class="vitality-email-confirmation" data-start-confirmation tabindex="-1" aria-labelledby="check-email-heading" hidden>
+            <h2 id="check-email-heading">Check Your Email</h2>
+            <p data-start-email-copy></p>
+            <p>It may take a minute to arrive. Check your inbox and spam folder. <strong>Please do not start a new assessment.</strong></p>
+            <p>Use the most recent email. Older links are no longer valid after a replacement is sent. For your security, requests are limited to three links per hour.</p>
+            <button class="vitality-next" type="button" data-start-resend disabled>Resend Secure Link</button>
+            <p data-start-resend-status role="status" aria-live="polite"></p>
+          </section>
         </div>
         <div class="vitality-assessment" data-assessment-step hidden>
           <div class="vitality-assessment-toolbar">
@@ -153,8 +171,8 @@
     })();
   </script>
   <script src="js/vitality-child.js?v=nodash-20260921"></script>
-  <script src="js/vitality55.js?v=referral-1"></script>
-  <script src="js/vitality-resume.js?v=2"></script>
+  <script src="js/vitality55.js?v=reliability-1"></script>
+  <script src="js/vitality-resume.js?v=3"></script>
   <script src="js/revitalized-data.js?v=20261005" defer></script>
 </body>
 </html>
