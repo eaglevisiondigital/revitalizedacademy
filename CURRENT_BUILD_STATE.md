@@ -14,9 +14,13 @@ Earlier local RepDB checkpoints below are historical: RepDB is now deployed; its
 
 ## NOT DEPLOYED — Production Client Lifecycle v1 preparation — 2026-10-07
 
+## Production Client Lifecycle business terms approved; legal publication held — 2026-10-08
+
+Primary Chat approved CAD $89/month for a six-month minimum and CAD $960 one-time for 12 months, both ending without automatic renewal, with seven-day failed-payment grace, portal-or-email cancellation, and the final-sale rule subject to non-waivable law. Québec classification/payment review remains unresolved, so neither agreement may be published, mapped, activated, or sent. The local lifecycle candidate now enforces that hold in the database and UI, requires billing-specific CAD mappings, persists six-/12-month intent correctly, and prevents legacy/wrong-path fallback. Build389, PostgreSQL 17 114/114 plus four eight-session race groups, lifecycle DOM15/15, responsive37, and JavaScript syntax pass. No push, migration, deployment, email, identity, or hosted record occurred. [Exact technical boundary and release sequence](docs/PRODUCTION_CLIENT_LIFECYCLE_LEGAL_GATE_2026-10-08.md).
+
 ## NOT DEPLOYED — Production Client Lifecycle v1 integrated candidate — 2026-10-07
 
-**PRODUCTION CLIENT LIFECYCLE BLOCKED.** Local staff Add Client/enrollment/agreement UI, compact verified account/signing/recovery flow, five coordinated Edge candidates and unapplied migration `20261007224150_production_client_lifecycle_v1.sql` are implemented. Native PG17 112 checks plus four eight-session race groups pass; Frontend121, Edge35, build389, syntax111 and responsive34 pass; evidence is in the detailed report. Production legal revision/HF mapping/pay-in-full terms, disposable production inbox approval, exact final release approval and genuine hosted acceptance remain required.
+**PRODUCTION CLIENT LIFECYCLE LEGAL RELEASE HELD.** Local staff Add Client/enrollment/agreement UI, compact verified account/signing/recovery flow, five coordinated Edge candidates and unapplied migration `20261007224150_production_client_lifecycle_v1.sql` are implemented. Business terms and disposable production inboxes are approved. The remaining legal gate is qualified resolution of the Québec classification/payment issue followed by one controlled publication/mapping migration. Payments v1 and paid access remain separately unreleased by design. Exact final release approval and genuine hosted acceptance remain required.
 
 Production deploy `6ac6b471ac8ed68bec8bd8d6`, ledger `20261007221345`; beta deploy `6ac6b620e735903c2285ec3f`, unchanged. No remote push/deploy/migration/mail/identity/content/payment change. Payments and full member dashboard/Nutrition/Workouts/Health/assignments are held; no synthetic production activation. [Current candidate, module table, evidence and exact remaining decisions](revitalizedacademy-client-lifecycle/docs/PRODUCTION_CLIENT_LIFECYCLE_V1_2026-10-07.md).
 

@@ -29,9 +29,10 @@ test('wrong/unverified/modified invitation cannot claim existing enrollment; ver
 async function agreementFixture(){
  await saveEnrollment();const email=await value('select email from contacts where id=$1',[contact]);const client=await user(null,email);
  await q('update client_access set user_id=$2,needs_onboarding_claim=false where contact_id=$1',[contact,client]);
+ await q("update app_runtime_config set config_value='{\"status\":\"released\",\"reason\":\"local_test_only\"}' where config_key='production_client_agreement_publication'");
  const text='Local disposable contract for {{client_name}}',h=createHash('sha256').update(text).digest('hex');
  const template=await value("insert into agreement_templates(agreement_key,name,version,content_text,content_hash,status,audience,document_type,merge_schema) values($1,'Local contract','local',$2,$3,'published','client','client_contract','{\"required\":[\"client_name\"],\"optional\":[]}') returning id",['local-'+randomUUID(),text,h]);
- await q('insert into program_agreement_requirements(program_code,agreement_template_id,required,active) values($1,$2,true,true)',[program,template]);
+ await q("insert into program_agreement_requirements(program_code,agreement_template_id,required,active,billing_choice,currency) values($1,$2,true,true,'monthly','CAD')",[program,template]);
  const id=(await actor(owner,'select public.prepare_client_contract($1,$2,$3,true) id',[contact,template,{client_name:'Local Adult'}])).rows[0].id;
  const a=(await q('select * from client_agreements where id=$1',[id])).rows[0];return {client,a,template};
 }
@@ -64,8 +65,26 @@ test('tampered beta onboarding origin cannot issue production invitation',async(
 });
 
 test('only approved Holistic Foundations billing intent is accepted; future custom architecture stays held',async()=>{
- for(const args of [[contact,program,'monthly',0,'CAD'],[contact,program,'monthly',8901,'CAD'],[contact,program,'custom',8900,'CAD'],[contact,'unknown','monthly',8900,'CAD']])await assert.rejects(actor(owner,save,args),/Holistic Foundations/);
- await actor(owner,save,[contact,program,'one_time',96000,'USD']);const s=(await actor(owner,'select public.production_client_enrollment_state($1) s',[contact])).rows[0].s;assert.equal(s.amount_cents,96000);assert.equal(s.payment_status,'pending');
+ for(const args of [[contact,program,'monthly',0,'CAD'],[contact,program,'monthly',8901,'CAD'],[contact,program,'custom',8900,'CAD'],[contact,program,'monthly',8900,'USD'],[contact,'unknown','monthly',8900,'CAD']])await assert.rejects(actor(owner,save,args),/Holistic Foundations/);
+ await actor(owner,save,[contact,program,'one_time',96000,'CAD']);const s=(await actor(owner,'select public.production_client_enrollment_state($1) s',[contact])).rows[0].s;assert.equal(s.amount_cents,96000);assert.equal(s.currency,'CAD');assert.equal(s.payment_status,'pending');assert.equal(await value('select commitment_months from journey_enrollment_activations where contact_id=$1',[contact]),12);
+});
+test('legal gate stores enrollment but blocks publication, mapping, preparation and delivery fail closed',async()=>{
+ const s=await saveEnrollment();assert.equal(s.agreement_publication_status,'held');assert.equal(s.agreement_mapping_ready,false);assert.equal(s.agreement_count,0);
+ const text='Held local contract for {{client_name}}',h=createHash('sha256').update(text).digest('hex');
+ const draft=await value("insert into agreement_templates(agreement_key,name,version,content_text,content_hash,status,audience,document_type,merge_schema) values($1,'Held contract','local',$2,$3,'draft','client','client_contract','{\"required\":[\"client_name\"],\"optional\":[]}') returning id",['held-'+randomUUID(),text,h]);
+ await assert.rejects(actor(owner,"update agreement_templates set status='published' where id=$1",[draft]),/publication is held/);
+ await assert.rejects(actor(owner,"insert into program_agreement_requirements(program_code,agreement_template_id,required,active,billing_choice,currency) values($1,$2,true,true,'monthly','CAD')",[program,draft]),/publication is held/);
+ await assert.rejects(actor(owner,'select public.prepare_client_contract($1,$2,$3,true)',[contact,draft,{client_name:'Local Adult'}]),/publication is held/);
+ assert.equal(await value('select count(*)::int from notification_delivery_jobs'),0);
+});
+test('billing-specific agreement mapping cannot cross monthly and pay-in-full enrollments',async()=>{
+ await q("update app_runtime_config set config_value='{\"status\":\"released\",\"reason\":\"local_test_only\"}' where config_key='production_client_agreement_publication'");
+ await actor(owner,save,[contact,program,'one_time',96000,'CAD']);
+ const text='Monthly-only local contract for {{client_name}}',h=createHash('sha256').update(text).digest('hex');
+ const template=await value("insert into agreement_templates(agreement_key,name,version,content_text,content_hash,status,audience,document_type,merge_schema) values($1,'Monthly contract','local',$2,$3,'published','client','client_contract','{\"required\":[\"client_name\"],\"optional\":[]}') returning id",['monthly-'+randomUUID(),text,h]);
+ await q("insert into program_agreement_requirements(program_code,agreement_template_id,required,active,billing_choice,currency) values($1,$2,true,true,'monthly','CAD')",[program,template]);
+ const state=(await actor(owner,'select public.production_client_enrollment_state($1) s',[contact])).rows[0].s;assert.equal(state.agreement_mapping_ready,false);assert.equal(state.agreement_count,0);
+ await assert.rejects(actor(owner,'select public.prepare_client_contract($1,$2,$3,false)',[contact,template,{client_name:'Local Adult'}]),/billing-specific/);
 });
 test('service-only agreement dispatch preserves contact scope, leases once, redacts private link after provider acceptance',async()=>{
  const {a}=await agreementFixture();const claim='select public.claim_production_agreement_delivery($1,$2) job';

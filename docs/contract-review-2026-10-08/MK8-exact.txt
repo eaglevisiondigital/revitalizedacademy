@@ -1,0 +1,113 @@
+
+NEW CLIENT AGREEMENT
+
+1. THE PARTIES.
+This Agreement (“Agreement”) is entered into and made effective as of {{effective_date}} by and between The ReVitalized Nation Inc. (“Company”), and {{client_name}}{{secondary_client_clause}} (“Client”), collectively referred to as the “Parties.”
+
+2. PURPOSE.
+This Agreement will only work if there is honor and integrity from the Parties. The Company agrees to provide coaching services to train and guide the Client in achieving their health, fitness, wellness, and/or entrepreneurial goals through participation in the ReVitalized Academy Program (“Program”). The Client agrees to follow the Program in good faith to the best of their ability.
+
+3. SERVICES & FEES.
+The Client(s) will enroll in the {{program_name}} program as described in Appendix A. The Client(s) agrees to pay a monthly fee of {{monthly_fee}}.
+
+3.1 Term and Termination.
+This Agreement is effective from the Effective Date and shall remain in effect for the duration of {{term_duration}}, unless terminated in accordance with the the Refund and Cancellation Policy.
+
+3.2 Good Faith Deposit.
+The Client(s) agrees to pay {{good_faith_deposit}} down, followed by adjusted monthly payments of {{adjusted_monthly_payment}}.
+
+3.3 Special Conditions.
+{{special_conditions}}
+
+4. REFUND AND CANCELLATION POLICY
+By enrolling in the Program and signing this Agreement, you acknowledge and accept the following terms regarding payments, cancellations, and refunds:
+
+4.1 Monthly Payment Refund Period
+The Client(s) may request a refund within 3 days of making a monthly payment. After 3 days no refunds are guaranteed for any reason. This policy exists due to the sensitive and customized nature of our program, and the significant time, resources, and planning committed from our team to each Client from the moment of enrollment.
+
+4.2 Non-Refundable Good Faith Deposit
+The Good Faith deposit paid at the time of enrollment is non-refundable under any circumstances. This deposit secures your place in the Program and covers the upfront preparation, planning, and customization of your experience.
+
+4.3 Agreement Cancellations After 30 Days
+If the Client cancels after the first 30-day period, they are not eligible for a full refund, including for any unused portion of the Program. Partial refunds may be issued for advance payments covering services not yet rendered, excluding the Good Faith deposit. Refunds are at the Company’s discretion based on services delivered to date.
+
+4.4 Installment Plans
+Client(s) who cancel after 30 days remain financially responsible for all services already rendered. No future payments will be added for services not yet delivered.
+
+5. DISCLAIMER.
+The Client(s) acknowledges that the Company’s services are educational and coaching-based and do not constitute medical advice, diagnosis, or treatment. Individual results will vary. Testimonials and success stories represent individual experiences and are not a guarantee of results for every participant. The Program is not intended to replace the care or advice of a licensed healthcare professional. The Company makes no guarantees regarding any specific results. The strategies, advice, programs, technologies, and therapies presented are for educational purposes only. They are not intended to diagnose, treat, cure, or prevent any disease and should not be considered a substitute for professional medical advice, diagnosis, or treatment. The Client(s) acknowledges that all health, fitness, and lifestyle changes carry inherent risks. The Client(s) are encouraged to consult a licensed healthcare provider before starting any health or fitness program. The Company disclaims liability for actions taken by the Client based on Program content.
+
+6. LIMITATION OF LIABILITY.
+The Company makes no guarantees or warranties, expressed or implied, regarding results from participation in the Program. The Client(s) assumes full responsibility for their participation and agrees that the Company shall not be liable for any injuries, illnesses, losses, damages, or expenses incurred in connection with the Program. In no event shall the Company be liable for any indirect, special, incidental, consequential, or punitive damages, even if advised of the possibility of such damages. Nothing in this Agreement shall exclude or limit any liability that cannot be legally excluded or limited under applicable Canadian law.
+
+7. INDEMNITY.
+The Client(s) agrees to indemnify, defend, and hold harmless the Company, its directors, officers, employees, contractors, affiliates, agents, successors, and assigns (collectively, the “Indemnified Parties”) from and against any and all claims, liabilities, damages, losses, costs, and expenses (including legal fees) arising out of or related to:
+• The Client’s participation in the Program;
+• Any breach of this Agreement by the Client;
+• The Client(s) failure to follow any instructions provided by the Company;
+• The Client’s negligence, misconduct, or violation of any applicable law;
+• Any injuries, health complications, or adverse outcomes experienced by the Client(s) as a result of engaging in activities related to the Program.
+This clause shall survive the termination of this Agreement.
+
+8. FORCE MAJEURE.
+The Company shall not be liable for delays or failure to perform due to causes beyond its control, including illness, natural disasters, Internet outages, public health emergency, pandemic or government restrictions.
+
+NON-DISCLOSURE NON-COMPETE CLAUSE
+
+9. BILATERAL AGREEMENT.
+This Agreement shall be bilateral, whereas, the Parties are prohibited from disclosing confidential and proprietary information to any 3rd party without written consent. The Company shall retain sole ownership of the Confidential Information with the Client(s) being prohibited from disclosing any confidential and proprietary information without the written consent of the Company.
+
+10. CONFIDENTIALITY.
+For this Agreement, the term “Confidential Information” shall include, but not be limited to, documents, records, information and data (whether verbal, electronic or written), drawings, models, apparatus, sketches, designs, schedules, product plans, marketing plans, technical procedures, manufacturing processes, analyses, compilations, studies, software, prototypes, samples, formulas, methodologies, formulations, product developments, patent applications, know-how, experimental results, specifications and other business information, relating to The Company, assets, operations or contracts, furnished to the Client(s) and/or the Client(s) affiliates, employees, officers, owners, agents, consultants or representatives, in the course of their work contemplated in this Agreement, regardless of whether such Confidential Information has been expressly designated as confidential or proprietary. Confidential Information also includes any and all, work products, studies and other material prepared by or in the possession or control of the other Party, which contain, include, refer to or otherwise reflect or are generated from any Confidential Information.
+
+However, Confidential Information does not include:
+• Information generally available to the public;
+• Information rightfully in the possession of the Parties prior to signing this Agreement;
+• Information independently developed without the use of any of the provided Confidential Information.
+
+11. OBLIGATIONS.
+The obligations of the Parties shall be to hold and maintain the Confidential Information in the strictest of confidence at all times and to their agents, employees, representatives, affiliates, and any other individual or entity that is on a “need to know” basis. If any such Confidential Information shall reach a third (3rd) party, or become public, all liability will be on the Party that is responsible. Neither Party shall, without the written approval of the other Party, publish, copy, modify, or use the Confidential Information for their sole benefit. If requested, the Client shall be bound to return any and all materials to the Company within seven days.
+
+12. NON-DISCLOSURE TERM.
+Obligations of confidentiality remain in effect until the information becomes public or the Company provides written release.
+
+13. ENFORCEMENT.
+The Parties acknowledge and agree that due to the unique and sensitive nature of the Confidential Information, any breach of this Agreement would cause irreparable harm for which damages and/or equitable relief may be sought. The harmed Party in this Agreement shall be entitled to all remedies available at law.
+
+14. NON-COMPETE CLAUSE.
+During the term of the participation of the Client(s) with the Company and for the [3] year period following the conclusion of the Program. the Client(s) shall not:
+
+14.1 Business Practices
+Provide the same or similar industry products, services, or engage in any other way representation of any other business of a similar nature to the business of the Company without written consent. It is understood that the Client(s) will be representing the Company exclusively during their tenure unless written notice has been provided from the Company.
+
+14.2 Client(s)/Customers
+Directly or indirectly engage in any similar business practice of the Company while being in contact with the Company’s current or former Client(s). Nor shall the Client(s) solicit any Client(s) of the Company for the benefit of a third party that is engaged in a similar business to that of the Company.
+
+14.3 General Competitor(s)
+Engage in business activity, whether paid or non-paid, with a competitor of the Company that provides a similar product or service.
+
+14.4 Employees
+Hire, work alongside, or partner with any current employees, sales staff, or former employees or sales staff of Company.
+
+15. INTEGRATION AND AMENDMENT.
+This Agreement expresses the complete understanding of the Parties and supersedes all prior discussions or agreements. This Agreement may be amended only by written agreement signed by both Parties.
+
+16. SEVERABILITY.
+If any provision is found unenforceable, the remainder of the Agreement shall remain in effect.
+
+MUTUAL AGREEMENT
+This Agreement may be executed in counterparts and signed electronically, each of which shall be deemed an original.
+
+THE COMPANY. Confirmation of agreement.
+Approved for The ReVitalized Nation Inc. by: {{company_approver_name}}
+Date: {{company_approval_date}}
+
+THE CLIENT(S). Confirmation of agreement.
+Primary Client: {{client_name}}
+Secondary Client (if applicable): {{secondary_client_name}}
+
+ATTACHMENTS:
+• Appendix A – Plan Structure
+
+APPENDIX A – PLAN STRUCTURE
+{{appendix_a_plan_structure}}

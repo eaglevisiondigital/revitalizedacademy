@@ -6,6 +6,10 @@ Prefer visible, focused Check Your Email confirmation, masked recipient, do-not-
 
 # Historical RepDB Exercise Library local candidate — 2026-10-07
 
+## 2026-10-08 — Lifecycle business terms approved; agreement publication remains legally held
+
+User approves Holistic Foundations Monthly at CAD $89/month with a six-month minimum and no automatic renewal; Pay in Full at CAD $960 for 12 months with no automatic renewal; seven-day failed-payment grace; portal or email cancellation; and final-sale language subject to non-waivable law. Publication and mapping remain held until qualified review resolves the Québec classification/payment issue. The candidate must fail closed: CAD billing only, distinct monthly/pay-in-full mappings, MK7 historical only, no legacy fallback, no agreement publication/issuance/email while held, and no payment or paid-access activation. Approved disposable inboxes remain rva-client@eaglevision.biz and dfowler4232@gmail.com for later controlled acceptance only; no records created. [Technical gate](docs/PRODUCTION_CLIENT_LIFECYCLE_LEGAL_GATE_2026-10-08.md).
+
 ## 2026-10-07 — Client lifecycle integrated candidate (NOT RELEASED)
 
 User approved exactly six HF production template defaults: platform_access, nutrition_plans, fitness_plans, tracking, biometrics, habit_builder. Candidate deactivates five extra defaults; no hosted edit yet. Production pre-payment signup/agreement/recovery is prepared; payment/paid workspaces and assignments held. Primary Chat must choose exact MK7/MK8 production HF mapping and monthly/pay-in-full contract presentation; $960 cannot be autofilled as a monthly fee. Production disposable inbox approval and final complete-candidate migration/Edge/Netlify release approval remain pending. No beta operational data promoted. [Exact decision prompt](docs/PRODUCTION_CLIENT_LIFECYCLE_V1_2026-10-07.md).

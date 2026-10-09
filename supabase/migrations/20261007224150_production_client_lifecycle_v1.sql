@@ -47,6 +47,193 @@ INSERT INTO public.app_runtime_config(config_key,config_value,description,member
 VALUES('client_onboarding','{"origin":null}'::jsonb,'Approved origin for client onboarding invitation links',false,false)
 ON CONFLICT(config_key) DO NOTHING;
 
+-- Agreement publication is a separate, explicit legal release gate. The lifecycle
+-- can store a billing intent while this hold is active, but it cannot map, prepare,
+-- issue, or send a Holistic Foundations agreement.
+ALTER TABLE public.program_agreement_requirements
+  ADD COLUMN billing_choice text,
+  ADD COLUMN currency text;
+ALTER TABLE public.program_agreement_requirements
+  ADD CONSTRAINT program_agreement_requirements_billing_choice_check
+    CHECK (billing_choice IS NULL OR billing_choice IN ('weekly','monthly','one_time','custom')),
+  ADD CONSTRAINT program_agreement_requirements_currency_check
+    CHECK (currency IS NULL OR currency ~ '^[A-Z]{3}$');
+CREATE INDEX program_agreement_requirements_billing_lookup
+  ON public.program_agreement_requirements(program_code,billing_choice,currency,agreement_template_id)
+  WHERE active AND required;
+
+INSERT INTO public.app_runtime_config(config_key,config_value,description,member_visible,active)
+VALUES(
+  'production_client_agreement_publication',
+  '{"status":"held","reason":"quebec_regulatory_classification_pending"}'::jsonb,
+  'Fail-closed legal publication gate for production client agreements',
+  false,
+  true
+)
+ON CONFLICT(config_key) DO UPDATE
+SET config_value=excluded.config_value,
+    description=excluded.description,
+    member_visible=false,
+    active=true;
+
+CREATE FUNCTION private.production_client_agreement_publication_released()
+RETURNS boolean LANGUAGE sql STABLE SECURITY DEFINER SET search_path='' AS $$
+ SELECT EXISTS(
+   SELECT 1
+   FROM public.app_runtime_config c
+   WHERE c.config_key='production_client_agreement_publication'
+     AND c.active
+     AND c.config_value->>'status'='released'
+ );
+$$;
+REVOKE ALL ON FUNCTION private.production_client_agreement_publication_released() FROM PUBLIC,anon,authenticated,service_role;
+
+CREATE FUNCTION private.guard_production_agreement_requirement()
+RETURNS trigger LANGUAGE plpgsql SECURITY DEFINER SET search_path='' AS $$
+DECLARE v_template public.agreement_templates%rowtype;
+BEGIN
+ IF NEW.program_code<>'holistic-foundations' OR NOT NEW.active OR NOT NEW.required THEN
+   RETURN NEW;
+ END IF;
+ IF NEW.billing_choice NOT IN ('monthly','one_time') OR NEW.currency IS DISTINCT FROM 'CAD' THEN
+   RAISE EXCEPTION 'Holistic Foundations agreement requirements must identify monthly or pay-in-full CAD billing' USING ERRCODE='22023';
+ END IF;
+ IF NOT private.production_client_agreement_publication_released() THEN
+   RAISE EXCEPTION 'Holistic Foundations agreement publication is held pending legal approval' USING ERRCODE='42501';
+ END IF;
+ SELECT * INTO v_template
+ FROM public.agreement_templates
+ WHERE id=NEW.agreement_template_id;
+ IF v_template.id IS NULL OR v_template.status<>'published' OR v_template.audience<>'client' OR v_template.document_type<>'client_contract' THEN
+   RAISE EXCEPTION 'A published client contract is required for this billing path' USING ERRCODE='22023';
+ END IF;
+ RETURN NEW;
+END;
+$$;
+REVOKE ALL ON FUNCTION private.guard_production_agreement_requirement() FROM PUBLIC,anon,authenticated,service_role;
+CREATE TRIGGER guard_production_agreement_requirement
+BEFORE INSERT OR UPDATE OF program_code,agreement_template_id,required,active,billing_choice,currency
+ON public.program_agreement_requirements
+FOR EACH ROW EXECUTE FUNCTION private.guard_production_agreement_requirement();
+
+CREATE FUNCTION private.guard_production_client_contract_publication()
+RETURNS trigger LANGUAGE plpgsql SECURITY DEFINER SET search_path='' AS $$
+BEGIN
+ IF NEW.status='published'
+    AND NEW.audience='client'
+    AND NEW.document_type='client_contract'
+    AND (TG_OP='INSERT' OR OLD.status IS DISTINCT FROM NEW.status)
+    AND NOT private.production_client_agreement_publication_released() THEN
+   RAISE EXCEPTION 'Production client contract publication is held pending legal approval' USING ERRCODE='42501';
+ END IF;
+ RETURN NEW;
+END;
+$$;
+REVOKE ALL ON FUNCTION private.guard_production_client_contract_publication() FROM PUBLIC,anon,authenticated,service_role;
+CREATE TRIGGER guard_production_client_contract_publication
+BEFORE INSERT OR UPDATE OF status ON public.agreement_templates
+FOR EACH ROW EXECUTE FUNCTION private.guard_production_client_contract_publication();
+
+-- Preserve the existing automatic issuance/backfill behavior while binding each
+-- billing-specific requirement to the matching enrollment only.
+CREATE OR REPLACE FUNCTION private.issue_required_agreements_for_membership()
+RETURNS trigger LANGUAGE plpgsql SECURITY DEFINER SET search_path='pg_catalog','public','private' AS $$
+DECLARE r record;
+BEGIN
+ IF NEW.status NOT IN ('pending','active') THEN RETURN NEW; END IF;
+ FOR r IN
+   SELECT at.id,at.agreement_key,at.version,at.content_hash
+   FROM public.program_agreement_requirements par
+   JOIN public.agreement_templates at ON at.id=par.agreement_template_id
+   LEFT JOIN public.journey_enrollment_activations a ON a.id=NEW.activation_id
+   WHERE par.program_code=NEW.program_code
+     AND (par.billing_choice IS NULL OR par.billing_choice=a.billing_choice)
+     AND (par.currency IS NULL OR par.currency=a.currency)
+     AND par.active AND par.required AND at.status='published'
+   ORDER BY par.sort_order
+ LOOP
+   INSERT INTO public.client_agreements(
+     contact_id,membership_id,activation_id,agreement_template_id,
+     agreement_key,template_version,content_hash,status,created_by
+   ) VALUES(
+     NEW.primary_contact_id,NEW.id,NEW.activation_id,r.id,
+     r.agreement_key,r.version,r.content_hash,'not_sent',NEW.created_by
+   )
+   ON CONFLICT(contact_id,agreement_template_id) DO UPDATE
+   SET membership_id=excluded.membership_id,
+       activation_id=coalesce(excluded.activation_id,public.client_agreements.activation_id),
+       updated_at=now();
+ END LOOP;
+ RETURN NEW;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION private.backfill_program_agreement_requirement()
+RETURNS trigger LANGUAGE plpgsql SECURITY DEFINER SET search_path='pg_catalog','public','private' AS $$
+DECLARE m record; t public.agreement_templates%rowtype;
+BEGIN
+ IF NOT NEW.active OR NOT NEW.required THEN RETURN NEW; END IF;
+ SELECT * INTO t FROM public.agreement_templates
+ WHERE id=NEW.agreement_template_id AND status='published';
+ IF t.id IS NULL THEN RETURN NEW; END IF;
+ FOR m IN
+   SELECT cm.*
+   FROM public.client_memberships cm
+   LEFT JOIN public.journey_enrollment_activations a ON a.id=cm.activation_id
+   WHERE cm.program_code=NEW.program_code
+     AND cm.status IN ('pending','active')
+     AND (NEW.billing_choice IS NULL OR NEW.billing_choice=a.billing_choice)
+     AND (NEW.currency IS NULL OR NEW.currency=a.currency)
+ LOOP
+   INSERT INTO public.client_agreements(
+     contact_id,membership_id,activation_id,agreement_template_id,
+     agreement_key,template_version,content_hash,status,created_by
+   ) VALUES(
+     m.primary_contact_id,m.id,m.activation_id,t.id,
+     t.agreement_key,t.version,t.content_hash,'not_sent',m.created_by
+   )
+   ON CONFLICT(contact_id,agreement_template_id) DO UPDATE
+   SET membership_id=excluded.membership_id,
+       activation_id=coalesce(excluded.activation_id,public.client_agreements.activation_id),
+       updated_at=now();
+ END LOOP;
+ RETURN NEW;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION private.backfill_agreement_requirement_record(p_requirement_id uuid)
+RETURNS void LANGUAGE plpgsql SECURITY DEFINER SET search_path='pg_catalog','public','private' AS $$
+DECLARE r public.program_agreement_requirements%rowtype; t public.agreement_templates%rowtype; m record;
+BEGIN
+ SELECT * INTO r FROM public.program_agreement_requirements WHERE id=p_requirement_id;
+ IF r.id IS NULL OR NOT r.active OR NOT r.required THEN RETURN; END IF;
+ SELECT * INTO t FROM public.agreement_templates
+ WHERE id=r.agreement_template_id AND status='published';
+ IF t.id IS NULL THEN RETURN; END IF;
+ FOR m IN
+   SELECT cm.*
+   FROM public.client_memberships cm
+   LEFT JOIN public.journey_enrollment_activations a ON a.id=cm.activation_id
+   WHERE cm.program_code=r.program_code
+     AND cm.status IN ('pending','active')
+     AND (r.billing_choice IS NULL OR r.billing_choice=a.billing_choice)
+     AND (r.currency IS NULL OR r.currency=a.currency)
+ LOOP
+   INSERT INTO public.client_agreements(
+     contact_id,membership_id,activation_id,agreement_template_id,
+     agreement_key,template_version,content_hash,status,created_by
+   ) VALUES(
+     m.primary_contact_id,m.id,m.activation_id,t.id,
+     t.agreement_key,t.version,t.content_hash,'not_sent',m.created_by
+   )
+   ON CONFLICT(contact_id,agreement_template_id) DO UPDATE
+   SET membership_id=excluded.membership_id,
+       activation_id=coalesce(excluded.activation_id,public.client_agreements.activation_id),
+       updated_at=now();
+ END LOOP;
+END;
+$$;
+
 -- This is an agreement capability, not another membership or household relationship.
 CREATE TABLE private.agreement_signer_invitations(
  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -1392,10 +1579,15 @@ as $$
   select private.enrollment_payment_satisfied(a)
   and (
     case
+      when a.program_code='holistic-foundations'
+        and not private.production_client_agreement_publication_released()
+      then false
       when exists (
         select 1
         from public.program_agreement_requirements par
         where par.program_code=a.program_code
+          and (par.billing_choice is null or par.billing_choice=a.billing_choice)
+          and (par.currency is null or par.currency=a.currency)
           and par.active
           and par.required
       ) then
@@ -1403,6 +1595,8 @@ as $$
           select 1
           from public.program_agreement_requirements par
           where par.program_code=a.program_code
+            and (par.billing_choice is null or par.billing_choice=a.billing_choice)
+            and (par.currency is null or par.currency=a.currency)
             and par.active
             and par.required
             and not exists (
@@ -1413,6 +1607,7 @@ as $$
                 and private.agreement_signatures_satisfied(ca)
             )
         )
+      when a.program_code='holistic-foundations' then false
       else
         (
           exists (
@@ -1452,7 +1647,7 @@ security definer
 set search_path to 'pg_catalog','public','private'
 as $$
 declare
-  v_program_code text;
+  v_activation public.journey_enrollment_activations%rowtype;
   v_required integer:=0;
   v_satisfied integer:=0;
   v_declined integer:=0;
@@ -1460,15 +1655,17 @@ declare
 begin
   if NEW.activation_id is null then return NEW; end if;
 
-  select a.program_code
-  into v_program_code
+  select a.*
+  into v_activation
   from public.journey_enrollment_activations a
   where a.id=NEW.activation_id;
 
   select count(*)
   into v_required
   from public.program_agreement_requirements par
-  where par.program_code=v_program_code
+  where par.program_code=v_activation.program_code
+    and (par.billing_choice is null or par.billing_choice=v_activation.billing_choice)
+    and (par.currency is null or par.currency=v_activation.currency)
     and par.active
     and par.required;
 
@@ -1503,9 +1700,18 @@ begin
       )
     into v_satisfied,v_declined,v_sent
     from public.program_agreement_requirements par
-    where par.program_code=v_program_code
+    where par.program_code=v_activation.program_code
+      and (par.billing_choice is null or par.billing_choice=v_activation.billing_choice)
+      and (par.currency is null or par.currency=v_activation.currency)
       and par.active
       and par.required;
+  elsif v_activation.program_code='holistic-foundations' then
+    -- Missing or mismatched legal mapping is an unsatisfied required agreement,
+    -- never a reason to accept a legacy agreement as a fallback.
+    v_required:=1;
+    v_satisfied:=0;
+    v_declined:=0;
+    v_sent:=0;
   else
     select
       count(*) filter (where private.agreement_signatures_satisfied(ca)),
@@ -1588,7 +1794,9 @@ begin
  'enrollment_created',a.id is not null,'program_code',a.program_code,'program_name',a.program_name,
  'billing_choice',a.billing_choice,'amount_cents',a.amount_cents,'currency',a.currency,
  'agreement_status',a.agreement_status,'payment_status',a.payment_status,'activation_status',a.access_status,
- 'agreement_mapping_ready',exists(select 1 from public.program_agreement_requirements r join public.agreement_templates t on t.id=r.agreement_template_id where r.program_code=a.program_code and r.active and r.required and t.status='published'),'agreement_count',(select count(*) from public.client_agreements where activation_id=a.id),
+ 'agreement_publication_status',(select config_value->>'status' from public.app_runtime_config where config_key='production_client_agreement_publication' and active),
+ 'agreement_publication_reason',(select config_value->>'reason' from public.app_runtime_config where config_key='production_client_agreement_publication' and active),
+ 'agreement_mapping_ready',private.production_client_agreement_publication_released() and exists(select 1 from public.program_agreement_requirements r join public.agreement_templates t on t.id=r.agreement_template_id where r.program_code=a.program_code and (r.billing_choice is null or r.billing_choice=a.billing_choice) and (r.currency is null or r.currency=a.currency) and r.active and r.required and t.status='published' and t.audience='client' and t.document_type='client_contract'),'agreement_count',(select count(*) from public.client_agreements where activation_id=a.id),
  'invitation',delivery,'ready_for_access',case when a.id is not null then private.enrollment_gates_complete(a) else false end,
  'member_access',(select status from public.client_access where contact_id=p_contact_id),
  'account_claimed',(select user_id is not null and not needs_onboarding_claim from public.client_access where contact_id=p_contact_id),
@@ -1603,19 +1811,19 @@ begin
  -- Contact lock serializes retries, even before an activation exists.
  perform 1 from public.contacts where id=p_contact_id for update;
  select * into p from public.program_catalog where program_code=p_program_code and active;
- if not found or p_program_code<>'holistic-foundations' or (p_billing_choice,p_amount_cents) not in (('monthly',8900),('one_time',96000)) or p_amount_cents is null or p_amount_cents<0 or p_currency not in ('USD','CAD') or p_currency is null or p_billing_choice not in ('weekly','monthly','one_time','custom') or p_billing_choice is null then raise exception 'Holistic Foundations requires 89/month or 960 pay-in-full billing intent and supported currency' using errcode='22023'; end if;
+ if not found or p_program_code<>'holistic-foundations' or (p_billing_choice,p_amount_cents) not in (('monthly',8900),('one_time',96000)) or p_amount_cents is null or p_amount_cents<0 or p_currency is distinct from 'CAD' or p_billing_choice not in ('monthly','one_time') or p_billing_choice is null then raise exception 'Holistic Foundations requires CAD 89/month or CAD 960 pay-in-full billing intent' using errcode='22023'; end if;
  select * into a from public.journey_enrollment_activations where contact_id=p_contact_id order by created_at desc limit 1 for update;
  if a.id is not null then
   if (a.program_code,a.billing_choice,a.amount_cents,a.currency) is not distinct from (p_program_code,p_billing_choice,p_amount_cents,p_currency) then return private.production_client_enrollment_state(p_contact_id); end if;
   if exists(select 1 from public.client_agreements where activation_id=a.id) or exists(select 1 from public.payment_records where activation_id=a.id) or exists(select 1 from public.client_memberships where activation_id=a.id) then raise exception 'Issued enrollment terms are locked. Review the existing agreement/payment workflow instead of replacing it.' using errcode='22023'; end if;
-  update public.journey_enrollment_activations set program_code=p.program_code,program_name=p.name,billing_choice=p_billing_choice,amount_cents=p_amount_cents,currency=p_currency,commitment_months=p.default_commitment_months,updated_at=now() where id=a.id;
+  update public.journey_enrollment_activations set program_code=p.program_code,program_name=p.name,billing_choice=p_billing_choice,amount_cents=p_amount_cents,currency=p_currency,commitment_months=case when p_billing_choice='monthly' then 6 else 12 end,updated_at=now() where id=a.id;
  else
   select cj.id into j from public.contact_journeys cj where cj.contact_id=p_contact_id and cj.status in ('active','paused','nurture') and exists(select 1 from public.contact_journey_steps where journey_id=cj.id and step_key='payment_agreement') order by cj.created_at desc limit 1;
   if j is null then j:=public.ensure_contact_journey(p_contact_id,'direct_membership',jsonb_build_object('source','production_owner_enrollment')); end if;
   select id into s from public.contact_journey_steps where journey_id=j and step_key='payment_agreement';
   if s is null then raise exception 'Existing enrollment journey has no payment/agreement step' using errcode='22023'; end if;
   insert into public.journey_enrollment_activations(contact_id,journey_id,journey_step_id,program_code,program_name,billing_choice,amount_cents,currency,commitment_months,created_by)
-  values(p_contact_id,j,s,p.program_code,p.name,p_billing_choice,p_amount_cents,p_currency,p.default_commitment_months,auth.uid());
+  values(p_contact_id,j,s,p.program_code,p.name,p_billing_choice,p_amount_cents,p_currency,case when p_billing_choice='monthly' then 6 else 12 end,auth.uid());
  end if;
  insert into public.contact_activity(contact_id,activity_type,title,actor_user_id,metadata) values(p_contact_id,'production_enrollment_configured','Production enrollment configured; invitation not sent',auth.uid(),jsonb_build_object('program_code',p_program_code));
  return private.production_client_enrollment_state(p_contact_id);
@@ -1711,7 +1919,8 @@ declare
 begin
   perform private.require_production_enrollment_owner(p_contact_id);
   perform 1 from public.contacts where id=p_contact_id for update;
-  if not exists(select 1 from public.journey_enrollment_activations enrollment_row join public.program_agreement_requirements requirement_row on requirement_row.program_code=enrollment_row.program_code where enrollment_row.contact_id=p_contact_id and requirement_row.agreement_template_id=p_agreement_template_id and requirement_row.active and requirement_row.required) then raise exception 'Approved production program/agreement mapping required'; end if;
+  if not private.production_client_agreement_publication_released() then raise exception 'Production client agreement publication is held pending legal approval' using errcode='42501'; end if;
+  if not exists(select 1 from public.journey_enrollment_activations enrollment_row join public.program_agreement_requirements requirement_row on requirement_row.program_code=enrollment_row.program_code and (requirement_row.billing_choice is null or requirement_row.billing_choice=enrollment_row.billing_choice) and (requirement_row.currency is null or requirement_row.currency=enrollment_row.currency) where enrollment_row.contact_id=p_contact_id and requirement_row.agreement_template_id=p_agreement_template_id and requirement_row.active and requirement_row.required) then raise exception 'Approved production billing-specific program/agreement mapping required'; end if;
   if not private.staff_has_permission((select auth.uid()),'finance.manage') then
     raise exception 'Financial management permission required';
   end if;

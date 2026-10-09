@@ -69,7 +69,7 @@
       }else{
         portal.showStatus(el("client-agreement-assign-status"),"Pay-in-full enrollment saved. Use approved pay-in-full agreement terms; do not enter the total as a monthly fee.");
       }
-      el("contract-term-duration").value="6 months";
+      el("contract-term-duration").value=intent.billing_choice==="one_time"?"12 months":"6-month minimum term";
       el("contract-appendix-a").value="Program: "+intent.program_name+"\nBilling: "+intent.billing_choice+"\nSelected amount: "+currencyText(moneyInput(intent.amount_cents,intent.currency),intent.currency);
     }
   }
@@ -165,7 +165,10 @@
       meta.textContent=[
         row.agreement_key,
         "v"+row.version,
-        requirements.length?requirements.map(r=>programs.find(p=>p.program_code===r.program_code)?.name||r.program_code).join(", "):"No program requirement"
+        requirements.length?requirements.map(r=>{
+          const program=programs.find(p=>p.program_code===r.program_code)?.name||r.program_code;
+          return [program,r.billing_choice?portal.titleCase(r.billing_choice):null,r.currency].filter(Boolean).join(" · ");
+        }).join(", "):"No program requirement"
       ].join(" · ");
       copy.append(name,meta);
 
@@ -243,6 +246,11 @@
 
   async function createTemplate(event){
     event.preventDefault();
+    const programCode=el("agreement-template-program").value;
+    if(programCode==="holistic-foundations"){
+      portal.showStatus(el("agreement-template-status"),"Holistic Foundations agreement publication is held pending legal approval. Use the controlled legal-release migration after approval.","error");
+      return;
+    }
     portal.showStatus(el("agreement-template-status"),"Publishing agreement...");
 
     const {data:template,error}=await client.from("agreement_templates").insert({
@@ -261,7 +269,6 @@
 
     if(error){portal.showStatus(el("agreement-template-status"),error.message,"error");return;}
 
-    const programCode=el("agreement-template-program").value;
     if(programCode){
       const {error:reqError}=await client.from("program_agreement_requirements").insert({
         program_code:programCode,
@@ -367,9 +374,14 @@
     select.replaceChildren();
     const enrollment=await client.rpc("production_client_enrollment_state",{p_contact_id:activeContact.id});
     if(!current(run,id,user)||modal!==modalEpoch)return;
-    const mapped=programRequirements.filter(r=>r.program_code===enrollment.data?.program_code&&r.active&&r.required).map(r=>r.agreement_template_id);
+    const mapped=programRequirements.filter(r=>
+      r.program_code===enrollment.data?.program_code&&
+      (r.billing_choice==null||r.billing_choice===enrollment.data?.billing_choice)&&
+      (r.currency==null||r.currency===enrollment.data?.currency)&&
+      r.active&&r.required
+    ).map(r=>r.agreement_template_id);
     const available=templates.filter(t=>t.status==="published"&&mapped.includes(t.id));
-    const blank=document.createElement("option");blank.value="";blank.textContent=available.length?"Select published agreement":"No published agreements available";select.append(blank);
+    const blank=document.createElement("option");blank.value="";blank.textContent=available.length?"Select published agreement":enrollment.data?.agreement_publication_status==="held"?"Agreement publication pending legal review":"No billing-specific published agreement available";select.append(blank);
     available.forEach((row)=>{
       const o=document.createElement("option");o.value=row.id;o.textContent=row.name+" · v"+row.version;select.append(o);
     });
