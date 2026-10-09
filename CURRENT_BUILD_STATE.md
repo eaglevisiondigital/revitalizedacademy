@@ -1,3 +1,13 @@
+## LIVE ACCEPTED — Production Client Lifecycle technical foundation — 2026-10-08
+
+**PRODUCTION CLIENT LIFECYCLE TECHNICAL FOUNDATION ACCEPTED — AGREEMENT PUBLICATION HELD.** Exact release source `4fe1e812e007c840b0211cc61989f7b66fd28ba8` was pushed and deployed to production Netlify as `6ac870e0a8239709a2ab5d23`. Production migration `20261007224150_production_client_lifecycle_v1.sql` applied once as ledger `20261009043913`. Five active Edge versions: `member-account` v6, `agreement-sign` v7, `member-password-reset` v1, `client-lifecycle-delivery` v1 and `notification-delivery` v5. The existing USDA, RepDB and reusable-content-sync Netlify Functions remain deployed.
+
+Hosted rollback-only acceptance passed contact normalization/reuse and duplicate prevention; CAD $89 monthly/six-month and CAD $960 one-time/12-month intent; CAD enforcement; Owner authorization plus the deployed Admin permission contract; scoped Coach/member/anonymous denial; session isolation; neutral recovery/origin boundaries; MK7/legal-gate denial; browser and privileged payment denials; and paid-access denial. Fresh-browser signed-out isolation and horizontal-overflow checks passed at 1440×1000, 768×1024 and 390×844. The signed-out portal continues to log its established 401/RLS-denial noise while exposing no private workspace; there were no unexpected runtime errors.
+
+The legal gate remains `held` with reason `quebec_regulatory_classification_pending`. Active Holistic Foundations agreement mappings, client agreements, agreement delivery jobs, payment records, memberships and client-access rows remain zero. Rollback acceptance left zero disposable contacts. No enrollment/agreement email was sent, no payment recorded and no paid access enabled. Vitality assets remained exact and `vitality-resume` remains v3. Beta remains unchanged at deploy `6ac6b620e735903c2285ec3f`. The only remaining lifecycle release is a separately authorized forward agreement publication/mapping package after qualified Québec legal determination; never replay the technical foundation migration.
+
+[Full production release and hosted acceptance evidence](docs/PRODUCTION_CLIENT_LIFECYCLE_TECHNICAL_FOUNDATION_RELEASE_2026-10-08.md).
+
 ## RECONCILED / VALIDATED — Production Client Lifecycle technical foundation — 2026-10-08
 
 The lifecycle candidate is reconciled onto the exact current production application source `2748528dfc0ec72aef7fdcc1eb2d71725c01ec76` (Netlify deploy `6ac8236336cbba557f2f8cd3`). Every Vitality reliability application, migration, Edge and regression file remains byte-identical to that deployed source. The resulting local branch is `codex/production-client-lifecycle-v1-reconciled`; its exact release SHA is reported from Git after this documentation commit.

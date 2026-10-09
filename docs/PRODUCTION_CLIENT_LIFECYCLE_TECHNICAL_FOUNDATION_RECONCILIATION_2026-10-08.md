@@ -73,3 +73,7 @@ After approval, the controlled technical release is limited to:
 7. verify the publication hold and zero active Holistic Foundations mappings remain in effect.
 
 The later legal release requires a separate qualified determination, approved final agreement text, a forward publication/mapping migration, and explicit authorization. It must not modify this technical foundation migration after application.
+
+## Release outcome
+
+Primary Chat approved exact SHA `4fe1e812e007c840b0211cc61989f7b66fd28ba8`. It was pushed and deployed to production Netlify as `6ac870e0a8239709a2ab5d23`. The lifecycle migration applied once as production ledger `20261009043913`, and the five prepared Edge Functions were deployed. The held legal boundary and zero active Holistic Foundations mappings were reverified after rollback-only hosted acceptance. See [the release report](PRODUCTION_CLIENT_LIFECYCLE_TECHNICAL_FOUNDATION_RELEASE_2026-10-08.md).
