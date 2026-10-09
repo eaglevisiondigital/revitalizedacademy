@@ -1,3 +1,7 @@
+# Production Client Lifecycle technical foundation release gate — 2026-10-08
+
+The user approved the technical foundation only, with agreement publication legally held. Reconcile onto exact live production source, preserve Vitality reliability, apply only lifecycle migration `20261007224150_production_client_lifecycle_v1.sql`, deploy only five named lifecycle Edge updates and the matching frontend, and never create agreements, mappings, emails, payments, clients or paid access during this gate. Because reconciliation changed the source SHA, stop before all remote mutation and return the exact reconciled SHA for review. Production read-only checks are permitted; beta and unrelated systems remain untouched. [Evidence](docs/PRODUCTION_CLIENT_LIFECYCLE_TECHNICAL_FOUNDATION_RECONCILIATION_2026-10-08.md).
+
 # Vitality reliability repair decisions — 2026-10-08
 
 User authorized investigation and narrow local implementation of the real iPhone/Safari incident, with an exact-SHA production approval gate. Preserve all real participant records and the secure architecture. Do not combine the parked client-lifecycle/contracts package or replay migrations. Initial staff notifications require durable server ownership in the new protocol; explicit recovery never sends another staff-start notification. Provider-delivered status is distinct from actual external receipt. Old logs cannot prove the exact failed credential's historical cause without exposing tokens; report that limit.

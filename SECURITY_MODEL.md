@@ -1,3 +1,7 @@
+# Production Client Lifecycle technical foundation — reconciled 2026-10-08
+
+The reconciled candidate preserves current production RLS, private-health/contact-scope gates and Vitality single-use credential behavior. New lifecycle writes require authenticated Owner/Admin authority as defined by the candidate, with scoped staff/member/anonymous denials covered in restored PostgreSQL 17 tests. Agreement delivery and password recovery use service-only claims with bounded leases, neutral responses and production-only origins. The legal hold blocks required Holistic Foundations mappings, contract preparation/delivery, payment recording and paid activation. No browser role gains service credentials or direct private-table access. [Security and validation evidence](docs/PRODUCTION_CLIENT_LIFECYCLE_TECHNICAL_FOUNDATION_RECONCILIATION_2026-10-08.md).
+
 # Vitality reliability local candidate — 2026-10-08
 
 Preserve opaque hashed single-use mail/session credentials, 30-day inactivity, completion locking, stale revision rejection, neutral recovery and existing staff health-private/contact-scope gates. The new private delivery journal is RLS-enabled; PUBLIC/anon/authenticated/service-role direct table and sequence access are revoked. Internal mail/lead-result commands are reachable only through the existing service-only command boundary; public Edge actions cannot invoke them. No raw credentials, private answers, recipient addresses or provider bodies are logged/persisted in the journal.
