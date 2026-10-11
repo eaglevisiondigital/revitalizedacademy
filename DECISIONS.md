@@ -61,3 +61,13 @@ Production Client Lifecycle v1: user requested safe pre-payment promotion only, 
 - **APPROVED IMPLEMENTATION:** wait for the Supabase initial-session boundary before showing signed-out UI after an empty startup read.
 - **APPROVED IMPLEMENTATION:** preserve an authorized same-user workspace while token refresh is reauthorized; clear immediately when authoritative access is lost.
 - **UNCHANGED:** explicit logout, revocation, role/scope authorization, account-switch document teardown and production/beta project isolation remain fail closed.
+
+# 2026-10-10 — Holistic Foundations pricing/billing v2
+
+- Supersede the former 89/month six-month and 960/12-month plan assumptions.
+- Use three stable plan codes: `holistic_foundations_monthly_flex`, `holistic_foundations_3_month`, and `holistic_foundations_annual_established`.
+- Keep product identity separate from market-specific prices. CA uses CAD, US uses USD, and GB uses GBP; do not perform automatic FX conversion.
+- Preserve separate merchant routes. GBP checkout remains configuration pending until an approved route exists.
+- Calculate annual eligibility from authoritative membership history; allow only an audited Owner/Admin override.
+- Keep MK7 historical and published MK8 immutable. Existing MK8 exactly matches none of the new plans; prepare three plan-specific future agreement revisions.
+- Keep `production_client_agreement_publication` held, zero active Holistic Foundations mappings, and Payments v1 disabled pending separate legal/provider release gates.
