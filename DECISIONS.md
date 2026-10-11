@@ -345,3 +345,8 @@ These decisions resolve the earlier three-question Chat handoff. The old success
 - **D112 APPROVED:** the legacy `create_my_goal` and `create_my_habit` RPCs remain unchanged for backward compatibility; the current member frontend moves to the idempotent RPCs.
 
 2026-10-07: User approved production → beta reusable-content sync only. Production wins over beta edits on later sync; dependency trees and stable mappings are required. Explicitly excluded are people/Auth/staff/permissions/health/Vitality/assignments/payments/agreements/messages/operational records. V1 covers nutrition and fitness content definitions, without automatic wholesale promotion or reverse synchronization.
+## 2026-10-11 — Session restoration
+
+- **APPROVED IMPLEMENTATION:** wait for the Supabase initial-session boundary before showing signed-out UI after an empty startup read.
+- **APPROVED IMPLEMENTATION:** preserve an authorized same-user workspace while token refresh is reauthorized; clear immediately when authoritative access is lost.
+- **UNCHANGED:** explicit logout, revocation, role/scope authorization, account-switch cleanup and production/beta project isolation remain fail closed.

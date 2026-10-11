@@ -28,7 +28,7 @@ test('staff invitation landing provides a guided password-setup recovery path',(
   assert.match(html,/id="staff-setup-card"/);
   assert.match(html,/Finish setting up your staff account/);
   assert.match(html,/Email My Password Setup Link/);
-  assert.match(html,/portal\.js\?v=191/);
+  assert.match(html,/portal\.js\?v=192/);
   assert.match(core,/initialQuery\.get\("setup"\) === "staff"/);
   assert.match(core,/functions\.invoke\("staff-password-reset"/);
   assert.doesNotMatch(core,/auth\.resetPasswordForEmail/);

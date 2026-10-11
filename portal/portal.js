@@ -22,6 +22,8 @@
   const el = (id) => document.getElementById(id);
   const authView = el("auth-view");
   const portalView = el("portal-view");
+  const sessionRestoreCard = el("session-restore-card");
+  const loginCard = el("login-card");
   const loginForm = el("login-form");
   const passwordCard = el("password-card");
   const staffSetupCard = el("staff-setup-card");
@@ -42,8 +44,12 @@
   let currentUserId = null;
   let staffDirectory = [];
   let sessionEpoch=0, resolvingUser=null, terminatingSession=false, authStateSubscription=null;
+  let initialSessionSettled=false,settleInitialSession;
+  const initialSessionReady=new Promise((resolve)=>{settleInitialSession=(session)=>{if(initialSessionSettled)return;initialSessionSettled=true;resolve(session||null);};});
+  let staffSessionLoadKey=null,staffSessionLoadPromise=null;
   function resetStaffAccess(){
     sessionEpoch++;resolvingUser=null;currentUserId=null;staffDirectory=[];activeContactId=null;
+    staffSessionLoadKey=null;staffSessionLoadPromise=null;
     document.dispatchEvent(new CustomEvent("ra:staff-access-reset"));
     document.dispatchEvent(new CustomEvent("ra:contact-closed"));
   }
@@ -532,6 +538,8 @@
     resetStaffAccess();
     authView.classList.remove("hidden");
     portalView.classList.add("hidden");
+    sessionRestoreCard.classList.add("hidden");
+    loginCard.classList.add("hidden");
     loginForm.classList.add("hidden");
     staffSetupCard.classList.add("hidden");
     pendingCard.classList.add("hidden");
@@ -544,6 +552,8 @@
     resetStaffAccess();
     authView.classList.remove("hidden");
     portalView.classList.add("hidden");
+    sessionRestoreCard.classList.add("hidden");
+    loginCard.classList.add("hidden");
     loginForm.classList.add("hidden");
     passwordCard.classList.add("hidden");
     pendingCard.classList.add("hidden");
@@ -557,6 +567,8 @@
     resetStaffAccess();
     authView.classList.remove("hidden");
     portalView.classList.add("hidden");
+    sessionRestoreCard.classList.add("hidden");
+    loginCard.classList.remove("hidden");
     loginForm.classList.remove("hidden");
     staffSetupCard.classList.add("hidden");
     passwordCard.classList.add("hidden");
@@ -568,6 +580,8 @@
     resetStaffAccess();
     authView.classList.remove("hidden");
     portalView.classList.add("hidden");
+    sessionRestoreCard.classList.add("hidden");
+    loginCard.classList.add("hidden");
     loginForm.classList.add("hidden");
     staffSetupCard.classList.add("hidden");
     passwordCard.classList.add("hidden");
@@ -629,6 +643,23 @@
     showPortal(staff);
     document.dispatchEvent(new CustomEvent("ra:permissions-refresh"));
     await loadDashboard();
+  }
+
+  function staffSessionKey(session){
+    return session?.user?.id+":"+(session?.access_token||"current");
+  }
+
+  function restoreStaffSession(session,{force=false}={}){
+    if(!session?.user)return Promise.resolve(false);
+    const key=staffSessionKey(session);
+    if(!force&&currentUserId===session.user.id&&!portalView.classList.contains("hidden"))return Promise.resolve(true);
+    if(staffSessionLoadKey===key&&staffSessionLoadPromise)return staffSessionLoadPromise;
+    staffSessionLoadKey=key;
+    const pending=resolveStaff(session).then(()=>currentUserId===session.user.id);
+    staffSessionLoadPromise=pending.finally(()=>{
+      if(staffSessionLoadKey===key)staffSessionLoadPromise=null;
+    });
+    return staffSessionLoadPromise;
   }
 
   async function loadDashboard() {
@@ -822,7 +853,7 @@
     }
 
     showStatus(loginStatus, "");
-    await resolveStaff(data.session);
+    await restoreStaffSession(data.session);
   });
 
   async function requestStaffPasswordEmail(email,statusTarget){
@@ -900,7 +931,7 @@
     window.history.replaceState({}, document.title, window.location.pathname);
     showStatus(passwordStatus, "Password saved. Opening your dashboard...", "success");
     const session=(await authClient.auth.getSession()).data.session;
-    await resolveStaff(session || (data.user ? { user:data.user } : null));
+    await restoreStaffSession(session || (data.user ? { user:data.user } : null));
   });
 
   async function openAccount() {
@@ -1140,30 +1171,26 @@
     if (!contactDrawer.classList.contains("hidden")) closeContact();
     else if (!accountModal.classList.contains("hidden")) closeAccount();
   });
-  let sessionRestoreTimer = null;
-
-  function resolveRestoredStaffSession(session) {
-    if (!session?.user) return;
-    if (!portalView.classList.contains("hidden") || !passwordCard.classList.contains("hidden")) return;
-    window.setTimeout(() => resolveStaff(session), 0);
-  }
-
-  const {data:authStateData}=authClient.auth.onAuthStateChange((event, session) => {
+  const authStateResult=authClient.auth.onAuthStateChange((event, session) => {
     if(terminatingSession)return;
+    if(event==="INITIAL_SESSION")settleInitialSession(session);
     if (event === "SIGNED_OUT") {
+      settleInitialSession(null);
       if(currentUserId||resolvingUser){endStaffDocument();return;}
       showLogin();
     } else if (event === "PASSWORD_RECOVERY") {
       showPasswordSetup();
     } else if (["INITIAL_SESSION","SIGNED_IN","TOKEN_REFRESHED"].includes(event) && session?.user) {
       if(currentUserId&&currentUserId!==session.user.id){endStaffDocument();return;}
-      if(event==="TOKEN_REFRESHED"&&currentUserId){window.setTimeout(()=>resolveStaff(session),0);return;}
-      resolveRestoredStaffSession(session);
+      if(!portalView.classList.contains("hidden")&&event!=="TOKEN_REFRESHED")return;
+      window.setTimeout(()=>void restoreStaffSession(session,{force:event==="TOKEN_REFRESHED"}),0);
     }
   });
-  authStateSubscription=authStateData?.subscription||null;
+  authStateSubscription=authStateResult?.data?.subscription||null;
 
   (async function init() {
+    sessionRestoreCard.classList.remove("hidden");
+    loginCard.classList.add("hidden");
     const { data, error } = await authClient.auth.getSession();
 
     if (initialAuthError && !data?.session) {
@@ -1187,25 +1214,41 @@
     }
 
     if (data?.session?.user) {
-      await resolveStaff(data.session);
+      settleInitialSession(data.session);
+      await restoreStaffSession(data.session);
       return;
     }
 
-    // Supabase can emit INITIAL_SESSION just after page initialization. Give that
-    // persisted-session event a brief chance to arrive before showing login.
-    sessionRestoreTimer = window.setTimeout(async () => {
-      const { data: retryData, error: retryError } = await authClient.auth.getSession();
-      if (retryError) {
-        showLogin();
-        showStatus(loginStatus, "Unable to restore your session. Please sign in.", "error");
-        return;
-      }
-      if (retryData?.session?.user) {
-        await resolveStaff(retryData.session);
-        return;
-      }
-      if(staffSetupRequested)showStaffSetupRecovery();
-      else showLogin();
-    }, 350);
+    // A staff setup callback with no browser session is an explicit recovery
+    // route, so it should not wait behind the normal persisted-session probe.
+    if(staffSetupRequested){
+      showStaffSetupRecovery();
+      return;
+    }
+
+    const initialSession=await Promise.race([
+      initialSessionReady,
+      new Promise((resolve)=>window.setTimeout(()=>resolve(null),2000))
+    ]);
+    if(initialSession?.user){
+      await restoreStaffSession(initialSession);
+      return;
+    }
+
+    // Re-read after the authoritative INITIAL_SESSION boundary (or a bounded
+    // fallback for older browsers) so a temporary empty startup read cannot
+    // strand a valid persisted session on the sign-in screen.
+    const {data:retryData,error:retryError}=await authClient.auth.getSession();
+    if(retryError){
+      showLogin();
+      showStatus(loginStatus,"Unable to restore your session. Please sign in.","error");
+      return;
+    }
+    if(retryData?.session?.user){
+      await restoreStaffSession(retryData.session);
+      return;
+    }
+    if(staffSetupRequested)showStaffSetupRecovery();
+    else showLogin();
   })();
 })();

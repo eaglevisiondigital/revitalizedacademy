@@ -33,7 +33,7 @@
     if(view!=="rm-dashboard"){
       clearMemberPrivateState();
     }
-    ["rm-auth","rm-dashboard","rm-denied"].forEach((id) => el(id).classList.add("hidden"));
+    ["rm-session-restoring","rm-auth","rm-dashboard","rm-denied"].forEach((id) => el(id).classList.add("hidden"));
     el(view).classList.remove("hidden");
     if(view==="rm-denied"){
       el("rm-access-heading").textContent="Your member access is not active.";
@@ -904,9 +904,16 @@
 
   let currentMember = null;
   let memberAuthUserId = null;
-  let memberSessionRestoreTimer = null;
   let memberSessionLoadKey = null;
   let memberSessionLoadPromise = null;
+  let initialMemberSessionSettled=false,settleInitialMemberSession;
+  const initialMemberSessionReady=new Promise((resolve)=>{
+    settleInitialMemberSession=(session)=>{
+      if(initialMemberSessionSettled)return;
+      initialMemberSessionSettled=true;
+      resolve(session||null);
+    };
+  });
   let currentHealthContext = null;
   let activeSessionPrep = null;
   let activeHealthProvider = null;
@@ -5301,7 +5308,8 @@
   }
 
   async function loadDashboard() {
-    const loadSequence=clearMemberPrivateState();
+    const preserveVisible=arguments[0]?.preserveVisible===true;
+    const loadSequence=preserveVisible?++dashboardLoadSequence:clearMemberPrivateState();
     try {
     const {data:lifecycle,error:lifecycleError}=await client.rpc("member_paid_access_allowed");
     if(loadSequence!==dashboardLoadSequence)return;
@@ -5521,7 +5529,7 @@
       }
 
       memberSessionLoadKey=key;
-      memberSessionLoadPromise=loadDashboard();
+      memberSessionLoadPromise=loadDashboard({preserveVisible:force&&Boolean(currentMember)});
       await memberSessionLoadPromise;
       if(memberSessionLoadKey===key)memberSessionLoadPromise=null;
       return memberAuthUserId===nextUser&&Boolean(currentMember);
@@ -6168,27 +6176,52 @@
   });
   document.addEventListener("ra:member-access-lost",()=>showOnly("rm-denied"));
   client.auth.onAuthStateChange((event, session) => {
+    if(event==="INITIAL_SESSION")settleInitialMemberSession(session);
     if(event==="SIGNED_OUT"){
+      settleInitialMemberSession(null);
       memberAuthUserId=null;memberSessionLoadKey=null;memberSessionLoadPromise=null;
-      if(memberSessionRestoreTimer!==null){window.clearTimeout(memberSessionRestoreTimer);memberSessionRestoreTimer=null;}
       showOnly("rm-auth");
       return;
     }
     if(!["INITIAL_SESSION","SIGNED_IN","TOKEN_REFRESHED"].includes(event)||!session?.user)return;
-    if(memberSessionRestoreTimer!==null){window.clearTimeout(memberSessionRestoreTimer);memberSessionRestoreTimer=null;}
-    if(event==="TOKEN_REFRESHED")clearMemberPrivateState();
     // Supabase auth callbacks must stay synchronous. Revalidate outside its lock.
     window.setTimeout(()=>void resolveSession(session,{force:event==="TOKEN_REFRESHED"}),0);
   });
 
   (async function initMemberSession(){
-    const restored=await resolveSession();
-    if(restored||memberAuthUserId)return;
-    // INITIAL_SESSION can arrive just after page initialization. Retry once so a
-    // valid persisted session never remains stranded on the sign-in screen.
-    memberSessionRestoreTimer=window.setTimeout(async()=>{
-      memberSessionRestoreTimer=null;
-      if(!memberAuthUserId)await resolveSession();
-    },350);
+    const first=await client.auth.getSession();
+    if(first.error){
+      showOnly("rm-auth");
+      showStatus(el("rm-login-status"),"Your session could not be restored. Please sign in again.","error");
+      return;
+    }
+    if(first.data?.session?.user){
+      settleInitialMemberSession(first.data.session);
+      await resolveSession(first.data.session);
+      return;
+    }
+
+    const initialSession=await Promise.race([
+      initialMemberSessionReady,
+      new Promise((resolve)=>window.setTimeout(()=>resolve(null),2000))
+    ]);
+    if(initialSession?.user){
+      await resolveSession(initialSession);
+      return;
+    }
+
+    // INITIAL_SESSION is authoritative. A final read also covers older WebKit
+    // scheduling where the callback can arrive after the first storage read.
+    const retry=await client.auth.getSession();
+    if(retry.error){
+      showOnly("rm-auth");
+      showStatus(el("rm-login-status"),"Your session could not be restored. Please sign in again.","error");
+      return;
+    }
+    if(retry.data?.session?.user){
+      await resolveSession(retry.data.session);
+      return;
+    }
+    showOnly("rm-auth");
   })();
 })();

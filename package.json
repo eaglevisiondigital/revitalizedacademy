@@ -8,6 +8,8 @@
     "check:edge": "deno check --config supabase/functions/deno.json supabase/functions/*/index.ts",
     "test:edge": "deno test --config supabase/functions/deno.json tests/edge/",
     "build": "node scripts/build-site.cjs",
+    "test:session": "node --test tests/staff-session-runtime.cjs tests/member-session-runtime.cjs tests/member-state-isolation.cjs",
+    "test:session:browser": "node tests/browser/session-refresh.cjs",
     "test:repdb": "node scripts/prepare-repdb.cjs && node --test tests/repdb-exercise-library.cjs",
     "test:repdb:browser": "node tests/browser/repdb-exercise.cjs"
   },

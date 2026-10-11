@@ -1,3 +1,7 @@
+## LOCAL VERIFIED — Beta staff/member session refresh persistence — 2026-10-11
+
+Beta staff/member refresh persistence repair is implemented on `codex/session-refresh-persistence-beta` and remains local only. Startup now waits for the storage-backed Auth initialization boundary behind neutral restoring states, coalesces duplicate bootstrap events, preserves authorized UI during token refresh, and retains fail-closed revocation/account-change cleanup. Build 321, syntax 83, maintained suite 581 passed with 27 expected skips, focused staff/member session 16/16, and exact-built Chrome/WebKit 24/24 per browser pass. No migration, Edge, hosted data, push, or deployment. Hosted signed-in acceptance remains required. [Evidence and release boundary](docs/SESSION_REFRESH_PERSISTENCE_REPAIR_2026-10-11.md).
+
 ## LOCAL READY — RepDB Exercise Library v1 — 2026-10-07
 
 **EXERCISE LIBRARY READY FOR RELEASE; NOT DEPLOYED.** This supersedes the earlier MuscleWiki/API Ninjas provider-blocker for this package. Reviewed RepDB Free Tier v1.0 permits the requested in-app durable use with visible attribution. Pinned schema-3 snapshot `a360f87f9064de42a9c90228cfebae941a5016d5` has 609 exercises; source/license hashes verified; raw dataset is server-only, ignored and excluded from public manifests. No provider secret.

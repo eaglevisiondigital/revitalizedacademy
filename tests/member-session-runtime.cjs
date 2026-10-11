@@ -45,6 +45,7 @@ function harness(t,shared,options={}){
   };
   mock.client.auth.signOut=()=>shared.signOut();
   if(options.dashboardOverride)mock.state.overrides.my_member_dashboard=options.dashboardOverride;
+  if(options.paidOverride)mock.state.overrides.member_paid_access_allowed=options.paidOverride;
   w.eval(source);
   t.after(()=>{shared.clients.delete(entry);w.close();});
   return {dom,w,d,mock,emit:(event,user)=>{mock.state.user=user;listener?.(event,session(user));},getSessionCalls:()=>getSessionCalls};
@@ -53,7 +54,8 @@ function harness(t,shared,options={}){
 test('persisted INITIAL_SESSION restores the member after an early empty session read',async t=>{
   const shared=hub(),h=harness(t,shared,{initialNull:true});
   await tick();
-  assert(!h.d.getElementById('rm-auth').classList.contains('hidden'));
+  assert(!h.d.getElementById('rm-session-restoring').classList.contains('hidden'));
+  assert(h.d.getElementById('rm-auth').classList.contains('hidden'));
   h.emit('INITIAL_SESSION','member-a');
   await tick();
   assert(!h.d.getElementById('rm-dashboard').classList.contains('hidden'));
@@ -110,4 +112,29 @@ test('account transition cancels prior responses and loads only the new member',
   await tick();
   assert.equal(h.d.getElementById('rm-member-name').textContent,'PRIVATE B');
   assert(!h.d.body.textContent.includes('PRIVATE A'));
+});
+
+test('token refresh preserves the current member view while reauthorizing and clears it on revocation',async t=>{
+  let finishRefresh;
+  let paidCalls=0;
+  let revoked=false;
+  const shared=hub('member-a');
+  const h=harness(t,shared,{paidOverride:()=>{
+    paidCalls++;
+    if(paidCalls===2)return new Promise(resolve=>{finishRefresh=resolve;});
+    return {data:!revoked,error:null};
+  }});
+  await tick();
+  h.d.getElementById('rm-member-name').textContent='PRIVATE MEMBER A';
+  h.emit('TOKEN_REFRESHED','member-a');
+  await tick();
+  assert(!h.d.getElementById('rm-dashboard').classList.contains('hidden'));
+  assert.equal(h.d.getElementById('rm-member-name').textContent,'PRIVATE MEMBER A');
+  finishRefresh({data:true,error:null});
+  await tick();
+  revoked=true;
+  h.emit('TOKEN_REFRESHED','member-a');
+  await tick();
+  assert(!h.d.getElementById('rm-denied').classList.contains('hidden'));
+  assert(!h.d.body.textContent.includes('PRIVATE MEMBER A'));
 });
