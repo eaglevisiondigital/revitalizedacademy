@@ -6,10 +6,23 @@
   const node=(tag,text)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;return n;};
   const allowed=key=>['owner','admin'].includes(portal.currentStaffRole?.())&&portal.hasPermission?.(key)===true;
   let epoch=0,contact=null,state=null,creationRequest=null,creationPayload=null;
-  const status=(id,message)=>{el(id).textContent=message||'';};
+  const status=(id,message)=>{const target=el(id);if(target)target.textContent=message||'';};
   async function rpc(name,args){const r=await client.rpc(name,args);if(r.error)throw r.error;return r.data;}
-  function close(){epoch++;el('lifecycle-create-modal').hidden=true;el('lifecycle-create-form').reset();conditional();creationRequest=null;creationPayload=null;status('lifecycle-create-status','');}
-  function reset(){close();contact=null;state=null;el('client-lifecycle-section').hidden=true;el('lifecycle-state').replaceChildren();el('lifecycle-enrollment-form').hidden=true;}
+  function close(){
+    epoch++;
+    const modal=el('lifecycle-create-modal'),form=el('lifecycle-create-form');
+    if(modal)modal.hidden=true;
+    if(form)form.reset();
+    if(el('lifecycle-referral'))conditional();
+    creationRequest=null;creationPayload=null;status('lifecycle-create-status','');
+  }
+  function reset(){
+    close();contact=null;state=null;
+    const section=el('client-lifecycle-section'),summary=el('lifecycle-state'),form=el('lifecycle-enrollment-form');
+    if(section)section.hidden=true;
+    if(summary)summary.replaceChildren();
+    if(form)form.hidden=true;
+  }
   function valid(run,id,user){return run===epoch&&contact?.id===id&&portal.currentUserId()===user&&allowed('finance.manage');}
   function render(){
     if(!state||!contact)return;
