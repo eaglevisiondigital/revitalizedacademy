@@ -52,3 +52,6 @@ Content sync security: service-role-only export/receive RPCs, empty definer sear
 ## 2026-10-07 — Production lifecycle preparation (not released)
 
 Unapplied production lifecycle candidate tests exact caller role/permission/contact scope, hashed verified invitation claim, immutable/idempotent signing and no browser signature forgery. Production-only mail origin and unpaid access/payment-record holds are tested locally. Existing RLS/scope is preserved; no production role grants or data changes. Hosted and account-transition acceptance remain required.
+## Session restoration continuity — 2026-10-11
+
+Persisted browser Auth may restore asynchronously. The portal must not interpret a temporary empty startup read as a completed logout, but restoration never bypasses `get_my_staff_access`. Rendered staff data remains document-local; account changes, logout, inactive/revoked access and stale ownership destroy or clear private state. Production and beta keep separate Supabase project-scoped storage keys and origins.

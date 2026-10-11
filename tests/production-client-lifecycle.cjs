@@ -51,7 +51,8 @@ test('actual portal core clears private DOM synchronously on logout or a differe
   const errors=[];const {VirtualConsole}=require('jsdom');const vc=new VirtualConsole();vc.on('jsdomError',e=>{if(!e.message.includes('navigation'))errors.push(e.message);});
   const dom=new JSDOM(read('portal/index.html'),{url:'https://revitalizedacademy.com/portal/',runScripts:'outside-only',virtualConsole:vc}),w=dom.window;let callback,resets=0;
   const db={from:table=>{const q={};for(const name of ['select','eq','order','limit','single'])q[name]=()=>q;q.then=(resolve,reject)=>Promise.resolve({data:table==='staff_directory'?[{user_id:'owner-a',display_name:'Owner A',role:'owner'}]:table==='admin_dashboard_metrics'?{}:[],error:null}).then(resolve,reject);return q;},rpc:async()=>({data:{status:'active',display_name:'Owner A',role:'owner'},error:null}),auth:{getSession:async()=>({data:{session:{user:{id:'owner-a',user_metadata:{}}}},error:null}),onAuthStateChange:fn=>{callback=fn;},signOut:async()=>({error:null})}};
-  w.supabase={createClient:()=>db};w.document.addEventListener('ra:staff-access-reset',()=>resets++);
+ db.auth.stopAutoRefresh=()=>{};db.auth.onAuthStateChange=fn=>{callback=fn;return {data:{subscription:{unsubscribe(){}}}};};
+ w.supabase={createClient:()=>db};w.document.addEventListener('ra:staff-access-reset',()=>resets++);
   try{w.eval(read('portal/portal.js'));await tick();assert.equal(w.RA_PORTAL.currentUserId(),'owner-a');const privateNode=w.document.createElement('div');privateNode.textContent='PRIVATE-OWNER-A';w.document.body.append(privateNode);callback(event,event==='SIGNED_IN'?{user:{id:'owner-b'}}:null);assert.equal(w.document.body.textContent.includes('PRIVATE-OWNER-A'),false);assert.equal(w.document.getElementById('portal-view'),null);assert.equal(resets,1);assert.deepEqual(errors,[]);}finally{dom.window.close();}
  }
 });

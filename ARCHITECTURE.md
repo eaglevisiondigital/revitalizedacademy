@@ -50,3 +50,6 @@ One-way reusable-content sync: production Netlify `reusable-content-sync` verifi
 ## 2026-10-07 — Production lifecycle preparation (not released)
 
 Production lifecycle draft reuses secure verified invitation claim/signing and pre-payment enrollment foundation. It is NOT applied. Full paid member access is held false until a separate approved payment integration; UI/Edge assembly remains pending. See docs/PRODUCTION_CLIENT_LIFECYCLE_V1_2026-10-07.md.
+## Browser Auth initialization boundary — 2026-10-11
+
+The staff portal treats Supabase `INITIAL_SESSION` as the storage-restoration boundary. The initial `getSession()` read is an optimization, not a final signed-out decision; an empty early read stays in a neutral restore view until the Auth event or bounded final read resolves. Bootstrap work is keyed by user/access token and guarded by a session epoch. Same-user token refresh reauthorizes without blanking the authorized workspace. A different user, logout, inactive staff state, or revocation invalidates pending work and uses the existing fresh-document privacy boundary.

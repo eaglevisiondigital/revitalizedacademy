@@ -1,3 +1,7 @@
+## LOCAL VERIFIED — Production staff session refresh persistence — 2026-10-11
+
+Production staff refresh persistence repair is implemented on `codex/session-refresh-persistence-production` and remains local only. Startup now waits for the storage-backed Auth initialization boundary behind a neutral restoring state, coalesces duplicate bootstrap events, preserves authorized UI during token refresh, and retains fail-closed document teardown for revocation and account changes. Build 389, syntax 116, maintained runtime 113/113, focused session 7/7, and exact-built Chrome/WebKit 12/12 per browser pass. No migration, Edge, hosted data, push, or deployment. Hosted signed-in acceptance remains required. [Evidence and release boundary](docs/SESSION_REFRESH_PERSISTENCE_REPAIR_2026-10-11.md).
+
 ## LIVE ACCEPTED — Production Client Lifecycle technical foundation — 2026-10-08
 
 **PRODUCTION CLIENT LIFECYCLE TECHNICAL FOUNDATION ACCEPTED — AGREEMENT PUBLICATION HELD.** Exact release source `4fe1e812e007c840b0211cc61989f7b66fd28ba8` was pushed and deployed to production Netlify as `6ac870e0a8239709a2ab5d23`. Production migration `20261007224150_production_client_lifecycle_v1.sql` applied once as ledger `20261009043913`. Five active Edge versions: `member-account` v6, `agreement-sign` v7, `member-password-reset` v1, `client-lifecycle-delivery` v1 and `notification-delivery` v5. The existing USDA, RepDB and reusable-content-sync Netlify Functions remain deployed.

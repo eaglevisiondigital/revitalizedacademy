@@ -56,3 +56,8 @@ Preserve separate U.S. merchant/U.S. settlement and Canadian merchant/Canadian s
 ## 2026-10-07 — Production lifecycle preparation (not released)
 
 Production Client Lifecycle v1: user requested safe pre-payment promotion only, excluding live/synthetic production payments and unaccepted paid modules. Production MK7 versus approved beta MK8 and the missing Holistic Foundations mapping require explicit Primary Chat resolution; no mapping or production financial defaults were invented. Disposable production inbox approval remains pending.
+## 2026-10-11 — Session restoration
+
+- **APPROVED IMPLEMENTATION:** wait for the Supabase initial-session boundary before showing signed-out UI after an empty startup read.
+- **APPROVED IMPLEMENTATION:** preserve an authorized same-user workspace while token refresh is reauthorized; clear immediately when authoritative access is lost.
+- **UNCHANGED:** explicit logout, revocation, role/scope authorization, account-switch document teardown and production/beta project isolation remain fail closed.

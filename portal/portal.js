@@ -21,6 +21,8 @@
   const el = (id) => document.getElementById(id);
   const authView = el("auth-view");
   const portalView = el("portal-view");
+  const sessionRestoreCard = el("session-restore-card");
+  const loginCard = el("login-card");
   const loginForm = el("login-form");
   const passwordCard = el("password-card");
   const pendingCard = el("pending-card");
@@ -38,6 +40,36 @@
   let activeContactId = null;
   let currentUserId = null;
   let staffDirectory = [];
+  let sessionEpoch=0,resolvingUser=null,terminatingSession=false,authStateSubscription=null;
+  let initialSessionSettled=false,settleInitialSession;
+  const initialSessionReady=new Promise((resolve)=>{settleInitialSession=(session)=>{if(initialSessionSettled)return;initialSessionSettled=true;resolve(session||null);};});
+  let staffSessionLoadKey=null,staffSessionLoadPromise=null;
+
+  function resetStaffAccess(){
+    sessionEpoch++;resolvingUser=null;currentUserId=null;staffDirectory=[];activeContactId=null;
+    staffSessionLoadKey=null;staffSessionLoadPromise=null;
+    document.dispatchEvent(new CustomEvent("ra:staff-access-reset"));
+    document.dispatchEvent(new CustomEvent("ra:contact-closed"));
+  }
+
+  function endStaffDocument(){
+    if(terminatingSession)return;
+    terminatingSession=true;
+    try{authStateSubscription?.unsubscribe();}catch{}
+    authStateSubscription=null;
+    try{authClient.auth.stopAutoRefresh?.();}catch{}
+    resetStaffAccess();
+    const restartUrl=new URL(window.location.pathname,window.location.origin);
+    restartUrl.searchParams.set("staff_session",String(Date.now()));
+    const notice=document.createElement("main");
+    notice.className="auth-card secure-session-restart";
+    const heading=document.createElement("h1");heading.textContent="Securing your account change";
+    const copy=document.createElement("p");copy.textContent="Your previous staff workspace has been cleared. Continue to refresh access for the account that is now signed in.";
+    const link=document.createElement("a");link.className="primary-button";link.href=restartUrl.href;link.textContent="Continue securely";
+    notice.append(heading,copy,link);
+    document.body.replaceChildren(notice);
+    window.location.replace(restartUrl.href);
+  }
 
 
   const metricDefinitions = [
@@ -491,8 +523,12 @@
   });
 
   function showPasswordSetup() {
+    if(currentUserId){endStaffDocument();return;}
+    resetStaffAccess();
     authView.classList.remove("hidden");
     portalView.classList.add("hidden");
+    sessionRestoreCard.classList.add("hidden");
+    loginCard.classList.add("hidden");
     loginForm.classList.add("hidden");
     pendingCard.classList.add("hidden");
     passwordCard.classList.remove("hidden");
@@ -500,18 +536,24 @@
   }
 
   function showLogin() {
-    currentUserId=null;
-    document.dispatchEvent(new CustomEvent("ra:staff-access-reset"));
+    if(currentUserId){endStaffDocument();return;}
+    resetStaffAccess();
     authView.classList.remove("hidden");
     portalView.classList.add("hidden");
+    sessionRestoreCard.classList.add("hidden");
+    loginCard.classList.remove("hidden");
     loginForm.classList.remove("hidden");
     passwordCard.classList.add("hidden");
     pendingCard.classList.add("hidden");
   }
 
   function showPending() {
+    if(currentUserId){endStaffDocument();return;}
+    resetStaffAccess();
     authView.classList.remove("hidden");
     portalView.classList.add("hidden");
+    sessionRestoreCard.classList.add("hidden");
+    loginCard.classList.add("hidden");
     loginForm.classList.add("hidden");
     passwordCard.classList.add("hidden");
     pendingCard.classList.remove("hidden");
@@ -525,6 +567,9 @@
   }
 
   async function resolveStaff(session) {
+    if(terminatingSession)return;
+    if(currentUserId&&currentUserId!==session?.user?.id){endStaffDocument();return;}
+    const epoch=++sessionEpoch;resolvingUser=session?.user?.id||null;
     if (!session?.user) {
       showLogin();
       return;
@@ -539,6 +584,7 @@
     }
 
     const { data: staffRows, error } = await authClient.rpc("get_my_staff_access");
+    if(epoch!==sessionEpoch||terminatingSession)return;
     const staff = Array.isArray(staffRows) ? (staffRows[0] || null) : staffRows;
 
     if (error) {
@@ -567,11 +613,31 @@
 
     currentUserId = session.user.id;
     await loadStaffDirectory();
+    if(epoch!==sessionEpoch||terminatingSession)return;
     showPortal(staff);
     await loadDashboard();
   }
 
+  function staffSessionKey(session){
+    return session?.user?.id+":"+(session?.access_token||"current");
+  }
+
+  function restoreStaffSession(session,{force=false}={}){
+    if(!session?.user)return Promise.resolve(false);
+    const key=staffSessionKey(session);
+    if(!force&&currentUserId===session.user.id&&!portalView.classList.contains("hidden"))return Promise.resolve(true);
+    if(staffSessionLoadKey===key&&staffSessionLoadPromise)return staffSessionLoadPromise;
+    staffSessionLoadKey=key;
+    const pending=resolveStaff(session).then(()=>currentUserId===session.user.id);
+    staffSessionLoadPromise=pending.finally(()=>{
+      if(staffSessionLoadKey===key)staffSessionLoadPromise=null;
+    });
+    return staffSessionLoadPromise;
+  }
+
   async function loadDashboard() {
+    const epoch=sessionEpoch;
+    if(terminatingSession)return;
     showStatus(portalStatus, "Loading current data...");
 
     const [metricsResult, followupResult, tasksResult, contactsResult] = await Promise.all([
@@ -580,6 +646,7 @@
       authClient.from("admin_due_tasks").select("*").limit(12),
       authClient.from("admin_contact_overview").select("*").order("created_at", { ascending: false }).limit(100)
     ]);
+    if(epoch!==sessionEpoch||terminatingSession)return;
 
     const firstError = [metricsResult, followupResult, tasksResult, contactsResult].find((result) => result.error);
     if (firstError?.error) {
@@ -759,7 +826,7 @@
     }
 
     showStatus(loginStatus, "");
-    await resolveStaff(data.session);
+    await restoreStaffSession(data.session);
   });
 
   el("forgot-password").addEventListener("click", async () => {
@@ -817,19 +884,24 @@
     window.history.replaceState({}, document.title, window.location.pathname);
     showStatus(passwordStatus, "Password saved. Opening your dashboard...", "success");
     const session=(await authClient.auth.getSession()).data.session;
-    await resolveStaff(session || (data.user ? { user:data.user } : null));
+    await restoreStaffSession(session || (data.user ? { user:data.user } : null));
   });
 
   async function signOut() {
-    await authClient.auth.signOut();
-    showLogin();
-    showStatus(loginStatus, "Signed out.", "success");
+    if(terminatingSession)return;
+    terminatingSession=true;resetStaffAccess();
+    const notice=document.createElement("p");notice.textContent="Signing out…";document.body.replaceChildren(notice);
+    const {error}=await authClient.auth.signOut();
+    if(error){notice.textContent="Sign-out could not finish. Please reload and try again.";return;}
+    window.location.replace(window.location.pathname);
   }
 
 
   window.RA_PORTAL = {
     authClient,
     currentUserId: () => currentUserId,
+    sessionEpoch: () => sessionEpoch,
+    invalidateSession: endStaffDocument,
     openContact,
     loadDashboard,
     logActivity,
@@ -973,23 +1045,26 @@
   });
   el("pending-password").addEventListener("click", showPasswordSetup);
 
-  authClient.auth.onAuthStateChange((event, session) => {
-    if(currentUserId && (event === "SIGNED_OUT" || (session?.user?.id && session.user.id !== currentUserId))){
-      document.dispatchEvent(new CustomEvent("ra:staff-access-reset"));
-      document.body.replaceChildren();
-      const notice=document.createElement("p");notice.textContent="Refreshing secure access for the current account…";document.body.append(notice);
-      window.location.replace("/portal/");return;
-    }
+  const authStateResult=authClient.auth.onAuthStateChange((event, session) => {
+    if(terminatingSession)return;
+    if(event==="INITIAL_SESSION")settleInitialSession(session);
     if (event === "SIGNED_OUT") {
+      settleInitialSession(null);
+      if(currentUserId||resolvingUser){endStaffDocument();return;}
       showLogin();
     } else if (event === "PASSWORD_RECOVERY") {
       showPasswordSetup();
-    } else if (event === "SIGNED_IN" && portalView.classList.contains("hidden") && passwordCard.classList.contains("hidden")) {
-      window.setTimeout(() => resolveStaff(session), 0);
+    } else if (["INITIAL_SESSION","SIGNED_IN","TOKEN_REFRESHED"].includes(event) && session?.user) {
+      if(currentUserId&&currentUserId!==session.user.id){endStaffDocument();return;}
+      if(!portalView.classList.contains("hidden")&&event!=="TOKEN_REFRESHED")return;
+      window.setTimeout(()=>void restoreStaffSession(session,{force:event==="TOKEN_REFRESHED"}),0);
     }
   });
+  authStateSubscription=authStateResult?.data?.subscription||null;
 
   (async function init() {
+    sessionRestoreCard.classList.remove("hidden");
+    loginCard.classList.add("hidden");
     const { data, error } = await authClient.auth.getSession();
     if (initialAuthError && !data?.session) {
       showLogin();
@@ -1001,6 +1076,31 @@
       showStatus(loginStatus, "Unable to restore your session. Please sign in.", "error");
       return;
     }
-    await resolveStaff(data.session);
+    if(data?.session?.user){
+      settleInitialSession(data.session);
+      await restoreStaffSession(data.session);
+      return;
+    }
+
+    const initialSession=await Promise.race([
+      initialSessionReady,
+      new Promise((resolve)=>window.setTimeout(()=>resolve(null),2000))
+    ]);
+    if(initialSession?.user){
+      await restoreStaffSession(initialSession);
+      return;
+    }
+
+    const {data:retryData,error:retryError}=await authClient.auth.getSession();
+    if(retryError){
+      showLogin();
+      showStatus(loginStatus,"Unable to restore your session. Please sign in.","error");
+      return;
+    }
+    if(retryData?.session?.user){
+      await restoreStaffSession(retryData.session);
+      return;
+    }
+    showLogin();
   })();
 })();
