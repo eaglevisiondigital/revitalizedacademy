@@ -18,7 +18,11 @@
     "test:session": "node --test tests/staff-session-runtime.cjs",
     "test:session:browser": "node tests/session-refresh-browser.cjs",
     "check:client-lifecycle:edge": "deno check --config supabase/functions/deno.json supabase/functions/member-account/index.ts supabase/functions/agreement-sign/index.ts supabase/functions/member-password-reset/index.ts supabase/functions/client-lifecycle-delivery/index.ts supabase/functions/notification-delivery/index.ts",
-    "test:client-lifecycle:edge": "deno test --allow-env --config supabase/functions/deno.json tests/edge/production_client_lifecycle_test.ts"
+    "test:client-lifecycle:edge": "deno test --allow-env --config supabase/functions/deno.json tests/edge/production_client_lifecycle_test.ts",
+    "test:pricing-v2": "node --test tests/holistic-foundations-pricing-v2.cjs",
+    "test:payments": "node --test tests/payments-v1.test.mjs",
+    "test:payments:browser": "node tests/payments-browser.cjs",
+    "test:pricing-v2:database": "node scripts/test-holistic-foundations-pricing-v2.cjs"
   },
   "devDependencies": {
     "jsdom": "26.1.0",

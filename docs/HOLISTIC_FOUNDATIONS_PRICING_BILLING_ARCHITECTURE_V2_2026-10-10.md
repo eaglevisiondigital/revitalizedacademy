@@ -2,13 +2,13 @@
 
 Date: 2026-10-10 (America/Los_Angeles)
 
-Status: architecture approved for engineering preparation; agreement publication and all live payment processing remain held.
+Status: architecture implemented in a locally verified, unapplied candidate; agreement publication and all live payment processing remain held. See `HOLISTIC_FOUNDATIONS_PRICING_V2_IMPLEMENTATION_2026-10-10.md` for the exact schema, runtime and test result.
 
 ## Superseded assumptions
 
 The former CAD 89/month six-month plan and CAD 960/12-month pay-in-full plan are no longer valid product choices. The deployed production lifecycle foundation still contains those values in `portal/portal-client-lifecycle.js`, `portal/index.html`, `portal/portal-agreements.js`, and the applied `20261007224150_production_client_lifecycle_v1.sql`. The unreleased Payments v1 candidate also hard-codes those two products in `20261006191218_payments_v1.sql`.
 
-The applied lifecycle migration must not be edited or replayed. A future implementation must use forward migrations and replace the obsolete UI/RPC path before staff can save new Holistic Foundations billing intent.
+The applied lifecycle migration is not edited or replayed. Forward migrations `20261010120000_holistic_foundations_pricing_v2.sql` and `20261010121000_payments_v1.sql` now implement the replacement schema and runtime locally; both remain unapplied pending separate release authorization.
 
 The production legal switch remains:
 

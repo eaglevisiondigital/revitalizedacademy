@@ -69,8 +69,8 @@
       }else{
         portal.showStatus(el("client-agreement-assign-status"),"Pay-in-full enrollment saved. Use approved pay-in-full agreement terms; do not enter the total as a monthly fee.");
       }
-      el("contract-term-duration").value=intent.billing_choice==="one_time"?"12 months":"6-month minimum term";
-      el("contract-appendix-a").value="Program: "+intent.program_name+"\nBilling: "+intent.billing_choice+"\nSelected amount: "+currencyText(moneyInput(intent.amount_cents,intent.currency),intent.currency);
+      el("contract-term-duration").value=intent.plan_code==="holistic_foundations_annual_established"?"12-month paid term":intent.plan_code==="holistic_foundations_3_month"?"3-month minimum; month-to-month afterward":"Flexible monthly; no multi-month minimum";
+      el("contract-appendix-a").value="Program: "+intent.program_name+"\nPlan: "+intent.plan_code+"\nBilling cadence: "+intent.billing_cadence+"\nSelected amount: "+currencyText(moneyInput(intent.amount_cents,intent.currency),intent.currency);
     }
   }
 
@@ -376,7 +376,7 @@
     if(!current(run,id,user)||modal!==modalEpoch)return;
     const mapped=programRequirements.filter(r=>
       r.program_code===enrollment.data?.program_code&&
-      (r.billing_choice==null||r.billing_choice===enrollment.data?.billing_choice)&&
+      r.plan_code===enrollment.data?.plan_code&&
       (r.currency==null||r.currency===enrollment.data?.currency)&&
       r.active&&r.required
     ).map(r=>r.agreement_template_id);

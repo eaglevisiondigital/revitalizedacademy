@@ -386,5 +386,10 @@
   "webinar-priority.html",
   "webinar-seat-card-change.patch",
   "webinar-seat-card-override.css",
-  "webinar.html"
+  "webinar.html",
+  "pay/index.html",
+  "pay/payment.css",
+  "pay/payment.js",
+  "portal/portal-payment-requests.css",
+  "portal/portal-payment-requests.js"
 ]
