@@ -4,7 +4,7 @@ Date: 2026-10-11
 
 Branch: `codex/session-refresh-persistence-production`
 
-Release state: initial candidate deployed; replacement logout repair candidate pending approval
+Release state: refresh/logout foundation deployed; post-logout console repair locally verified and pending exact-SHA approval
 
 ## Incident and root cause
 
@@ -41,7 +41,7 @@ No database, migration, RLS, Edge Function, secret, or Supabase project configur
 - Covered normal refresh, hard bootstrap, second tab, delayed initial restoration, duplicate event coalescing, token refresh, revocation, logout persistence, account transition, Owner and scoped-Coach resolution.
 - `git diff --check`: passed.
 
-The exact-built browser fixtures are isolated and use no credentials or hosted data. A hosted reproduction could not be performed because the available production and beta tabs were signed out. Hosted acceptance therefore remains a release gate and is not claimed here.
+The exact-built browser fixtures are isolated and use no credentials or hosted data. Hosted acceptance was subsequently completed with an authenticated production Owner session as recorded below.
 
 ## Hosted acceptance follow-up
 
@@ -59,8 +59,47 @@ Replacement validation:
 - Exact-built staff-session Chrome + WebKit: 23 checks passed.
 - Historical Build76–82 immutable-baseline tests remain separate from the maintained current-baseline suite; their known stale snapshot failures were not caused by this repair.
 
+The approved replacement source `d4c34653bde9d1a7dce62a31f97e305f95c0a666` was pushed and deployed only to production as Netlify deploy `6acbe82d68f1fde80c369183`. The exact-built and live `portal-client-lifecycle.js?v=102` SHA-256 is `21bf611da1fdbe80ae81997dfa510215c7e8d600d141022dc580aaa8ffbfa5f0`.
+
+Authenticated production Owner acceptance passed:
+
+- normal refresh restored the same Owner dashboard;
+- hard refresh restored the same Owner dashboard;
+- a second tab restored the same Owner session;
+- logout completed without the prior **Signing out…** dead end;
+- logout propagated to the second tab;
+- refresh after logout remained on the sign-in screen;
+- the Owner name, Operations Dashboard, and private People navigation were absent after logout;
+- no `portal-client-lifecycle.js?v=102` warning or error was captured.
+
+That acceptance also exposed the final release blocker: Executive Pulse, Community, ReFuel, staff-permission, and staff-onboarding continued issuing startup or in-flight requests after session invalidation. Their late authorization failures produced console errors after the private portal shell had been removed.
+
+## Post-logout console repair
+
+The production-only follow-up candidate:
+
+- adds `captureStaffSession()`, `isStaffSessionCurrent()`, and `createAuthenticatedTaskGuard()` to the portal core;
+- binds every affected async load or mutation to the current staff user and session epoch;
+- invalidates pending work on `ra:staff-access-reset` before the private shell is removed;
+- clears startup, close, and reload timers during teardown;
+- disconnects the permissions `MutationObserver` during teardown;
+- prevents signed-out and inactive-session bootstrap queries;
+- ignores stale results without logging or rendering; and
+- permits a fresh valid account to initialize from clean module state.
+
+Published cache candidates are `portal.js?v=193`, `portal-permissions.js?v=133`, `portal-staff-onboarding.js?v=145`, and `portal-executive.js`, `portal-community.js`, and `portal-refuel.js` at `v=167`.
+
+Local verification:
+
+- production build: 389 files;
+- JavaScript syntax: 117/117;
+- focused module, session, and lifecycle unit/runtime tests: 28/28;
+- exact-built Chromium/WebKit session and module matrix: 39/39;
+- zero warning/error console events in Chromium and WebKit;
+- `git diff --check`: passed.
+
+The tests cover valid initialization, logout teardown, stale async completion after logout, refresh while logged out, inactive/revoked access, account transition, clean new-account initialization, private-DOM removal, and timer/observer cancellation.
+
 ## Release boundary
 
-Expected production assets: `portal/portal.js?v=192` and `portal/portal-client-lifecycle.js?v=102`.
-
-After explicit approval, push the exact candidate and deploy only to production Netlify site `ece0f6f3-6c3d-46e6-bb51-95ce1ccefb06`. Do not apply migrations or deploy Edge Functions. Then perform separate signed-in Owner refresh, hard-refresh, second-tab, token-refresh, logout, and revocation acceptance.
+Live production remains on Netlify deploy `6acbe82d68f1fde80c369183` with `portal/portal.js?v=192` and `portal/portal-client-lifecycle.js?v=102`. The post-logout console candidate is local and unpushed. After exact-SHA approval, deploy only the matching production build to Netlify site `ece0f6f3-6c3d-46e6-bb51-95ce1ccefb06`. Do not apply migrations, deploy Edge Functions, or modify beta.

@@ -4,9 +4,11 @@
   const portal=window.RA_PORTAL;
   if(!portal)return;
   const client=portal.authClient;
+  const tasks=portal.createAuthenticatedTaskGuard();
 
   let permissions={};
-  let permissionEpoch=0;
+  let observing=false;
+  let startupTimer=null;
 
   function has(key){
     return Boolean(permissions[key]);
@@ -32,6 +34,7 @@
   ];
 
   function applyVisibility(){
+    if(!portal.captureStaffSession())return;
     selectorMap.forEach(([selector,key])=>{
       document.querySelectorAll(selector).forEach((node)=>{
         const allowed=has(key);
@@ -64,9 +67,10 @@
   }
 
   async function loadPermissions(){
-    const epoch=++permissionEpoch;
+    const task=tasks.begin();
+    if(!task)return;
     const {data,error}=await client.from("my_staff_permissions_view").select("*");
-    if(epoch!==permissionEpoch)return;
+    if(!tasks.current(task))return;
     if(error){
       console.error("Staff permissions failed",error);
       permissions={};
@@ -85,13 +89,32 @@
   }
 
   const observer=new MutationObserver(()=>applyVisibility());
-  observer.observe(document.body,{subtree:true,childList:true});
+  function startObserver(){
+    if(observing||!portal.captureStaffSession())return;
+    observer.observe(document.body,{subtree:true,childList:true});
+    observing=true;
+  }
+  function teardown(){
+    tasks.cancel();
+    permissions={};
+    observer.disconnect();
+    observing=false;
+    if(startupTimer!==null)window.clearTimeout(startupTimer);
+    startupTimer=null;
+  }
+
+  function initialize(){
+    if(startupTimer!==null)window.clearTimeout(startupTimer);
+    startupTimer=null;
+    if(!portal.captureStaffSession())return;
+    startObserver();
+    applyVisibility();
+    loadPermissions();
+  }
 
   document.addEventListener("ra:contact-opened",applyVisibility);
-  document.addEventListener("ra:dashboard-loaded",applyVisibility);
   document.addEventListener("ra:permissions-refresh",loadPermissions);
-
-  document.addEventListener("ra:staff-access-reset",()=>{permissionEpoch++;permissions={};applyVisibility();});
-  document.addEventListener("ra:dashboard-loaded",loadPermissions);
-  window.setTimeout(loadPermissions,250);
+  document.addEventListener("ra:staff-access-reset",teardown);
+  document.addEventListener("ra:dashboard-loaded",initialize);
+  startupTimer=window.setTimeout(initialize,250);
 })();

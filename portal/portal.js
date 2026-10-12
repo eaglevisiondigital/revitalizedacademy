@@ -52,6 +52,37 @@
     document.dispatchEvent(new CustomEvent("ra:contact-closed"));
   }
 
+  function captureStaffSession(){
+    if(terminatingSession||!currentUserId||!portalView?.isConnected||portalView.classList.contains("hidden"))return null;
+    return Object.freeze({epoch:sessionEpoch,userId:currentUserId});
+  }
+
+  function isStaffSessionCurrent(token){
+    return Boolean(
+      token&&
+      !terminatingSession&&
+      currentUserId&&
+      token.epoch===sessionEpoch&&
+      token.userId===currentUserId&&
+      portalView?.isConnected&&
+      !portalView.classList.contains("hidden")
+    );
+  }
+
+  function createAuthenticatedTaskGuard(){
+    let taskEpoch=0;
+    return {
+      begin(){
+        const session=captureStaffSession();
+        return session?Object.freeze({taskEpoch:++taskEpoch,session}):null;
+      },
+      current(task){
+        return Boolean(task&&task.taskEpoch===taskEpoch&&isStaffSessionCurrent(task.session));
+      },
+      cancel(){taskEpoch++;}
+    };
+  }
+
   function endStaffDocument(){
     if(terminatingSession)return;
     terminatingSession=true;
@@ -901,6 +932,9 @@
     authClient,
     currentUserId: () => currentUserId,
     sessionEpoch: () => sessionEpoch,
+    captureStaffSession,
+    isStaffSessionCurrent,
+    createAuthenticatedTaskGuard,
     invalidateSession: endStaffDocument,
     openContact,
     loadDashboard,

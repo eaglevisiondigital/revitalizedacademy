@@ -4,24 +4,33 @@
   if(!portal)return;
 
   const client=portal.authClient;
+  const tasks=portal.createAuthenticatedTaskGuard();
   const el=(id)=>document.getElementById(id);
   let rows=[];
   let active=null;
+  let reloadTimer=null;
+  let startupTimer=null;
 
   function setStatus(message,type=""){
-    portal.showStatus(el("staff-onboarding-status"),message,type);
+    const target=el("staff-onboarding-status");
+    if(target)portal.showStatus(target,message,type);
   }
 
   function hide(){
-    el("staff-onboarding-modal").classList.add("hidden");
-    el("staff-onboarding-modal").setAttribute("aria-hidden","true");
+    const modal=el("staff-onboarding-modal");
+    if(!modal)return;
+    modal.classList.add("hidden");
+    modal.setAttribute("aria-hidden","true");
   }
 
   function showList(){
+    if(!portal.captureStaffSession())return;
     active=null;
-    el("staff-onboarding-document").classList.add("hidden");
-    el("staff-onboarding-list").classList.remove("hidden");
+    const documentPanel=el("staff-onboarding-document");
     const list=el("staff-onboarding-list");
+    if(!documentPanel||!list)return;
+    documentPanel.classList.add("hidden");
+    list.classList.remove("hidden");
     list.replaceChildren();
 
     const pending=rows.filter(r=>r.required&&!["signed","waived"].includes(r.status));
@@ -48,9 +57,14 @@
   }
 
   async function openAgreement(row){
+    const task=tasks.begin();
+    if(!task)return;
+    const list=el("staff-onboarding-list");
+    const documentPanel=el("staff-onboarding-document");
+    if(!list||!documentPanel)return;
     active=row;
-    el("staff-onboarding-list").classList.add("hidden");
-    el("staff-onboarding-document").classList.remove("hidden");
+    list.classList.add("hidden");
+    documentPanel.classList.remove("hidden");
     el("staff-onboarding-document-title").textContent=row.name;
     el("staff-onboarding-document-meta").textContent="Version "+row.template_version+" · Required for coach onboarding";
     el("staff-onboarding-document-content").textContent=row.content_text||"";
@@ -61,11 +75,14 @@
     const {error}=await client.functions.invoke("staff-agreement-sign",{
       body:{action:"view",staff_agreement_id:row.staff_agreement_id}
     });
-    if(error)console.error("Staff agreement view update failed",error);
+    if(tasks.current(task)&&error)console.error("Staff agreement view update failed",error);
   }
 
   async function load(){
+    const task=tasks.begin();
+    if(!task)return;
     const {data,error}=await client.from("my_staff_agreements").select("*");
+    if(!tasks.current(task))return;
     if(error){
       console.error("Staff onboarding agreements failed",error);
       return;
@@ -81,6 +98,8 @@
   async function sign(event){
     event.preventDefault();
     if(!active)return;
+    const task=tasks.begin();
+    if(!task)return;
 
     setStatus("Signing agreement...");
     const {data,error}=await client.functions.invoke("staff-agreement-sign",{
@@ -92,18 +111,40 @@
       }
     });
 
+    if(!tasks.current(task))return;
+
     if(error||!data?.ok){
       setStatus(error?.message||data?.error||"Agreement could not be signed.","error");
       return;
     }
 
     setStatus("Agreement signed. Activating your staff access...","success");
-    window.setTimeout(()=>window.location.reload(),700);
+    reloadTimer=window.setTimeout(()=>{
+      if(tasks.current(task))window.location.reload();
+    },700);
+  }
+
+  function teardown(){
+    tasks.cancel();
+    rows=[];
+    active=null;
+    if(reloadTimer!==null)window.clearTimeout(reloadTimer);
+    reloadTimer=null;
+    if(startupTimer!==null)window.clearTimeout(startupTimer);
+    startupTimer=null;
+    hide();
+  }
+
+  function initialize(){
+    if(startupTimer!==null)window.clearTimeout(startupTimer);
+    startupTimer=null;
+    load();
   }
 
   el("staff-onboarding-back").addEventListener("click",showList);
   el("staff-onboarding-sign-form").addEventListener("submit",sign);
 
-  document.addEventListener("ra:dashboard-loaded",load);
-  window.setTimeout(load,450);
+  document.addEventListener("ra:staff-access-reset",teardown);
+  document.addEventListener("ra:dashboard-loaded",initialize);
+  startupTimer=window.setTimeout(initialize,450);
 })();

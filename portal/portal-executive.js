@@ -4,8 +4,10 @@
   const portal=window.RA_PORTAL;
   if(!portal)return;
   const client=portal.authClient;
+  const tasks=portal.createAuthenticatedTaskGuard();
   const el=(id)=>document.getElementById(id);
   let loading=false;
+  let startupTimer=null;
 
   function metricCard(label,value,className=""){
     const card=document.createElement("div");
@@ -20,6 +22,7 @@
 
   function renderMetrics(row){
     const target=el("executive-pulse-metrics");
+    if(!target||!portal.captureStaffSession())return;
     target.replaceChildren(
       metricCard("Active Members",row.active_memberships||0),
       metricCard("Paid Enrollments",row.paid_enrollments||0),
@@ -36,6 +39,7 @@
 
   function renderFunnel(rows){
     const target=el("executive-funnel");
+    if(!target||!portal.captureStaffSession())return;
     target.replaceChildren();
     if(!rows.length){
       target.innerHTML='<div class="empty-state">No funnel data yet.</div>';
@@ -62,6 +66,7 @@
 
   function renderPrograms(rows){
     const target=el("executive-programs");
+    if(!target||!portal.captureStaffSession())return;
     target.replaceChildren();
 
     if(!rows.length){
@@ -95,6 +100,8 @@
 
   async function load(){
     if(loading)return;
+    const task=tasks.begin();
+    if(!task)return;
     loading=true;
 
     const [metricsResult,funnelResult,programResult]=await Promise.all([
@@ -103,6 +110,7 @@
       client.from("admin_program_performance").select("*").order("program_name")
     ]);
 
+    if(!tasks.current(task))return;
     loading=false;
 
     const failed=[metricsResult,funnelResult,programResult].find((r)=>r.error);
@@ -116,7 +124,21 @@
     renderPrograms(programResult.data||[]);
   }
 
-  el("executive-pulse-refresh").addEventListener("click",load);
-  document.addEventListener("ra:dashboard-loaded",load);
-  window.setTimeout(load,900);
+  function teardown(){
+    tasks.cancel();
+    loading=false;
+    if(startupTimer!==null)window.clearTimeout(startupTimer);
+    startupTimer=null;
+  }
+
+  function initialize(){
+    if(startupTimer!==null)window.clearTimeout(startupTimer);
+    startupTimer=null;
+    load();
+  }
+
+  el("executive-pulse-refresh")?.addEventListener("click",load);
+  document.addEventListener("ra:staff-access-reset",teardown);
+  document.addEventListener("ra:dashboard-loaded",initialize);
+  startupTimer=window.setTimeout(initialize,900);
 })();
