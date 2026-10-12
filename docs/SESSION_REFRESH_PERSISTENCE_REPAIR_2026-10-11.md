@@ -43,10 +43,23 @@ No database, migration, RLS, Edge Function, secret, feature flag, or Supabase pr
 - Covered beta Owner, scoped Coach, member, normal refresh, hard bootstrap, second tab, delayed initial restoration, duplicate events, token refresh, revocation, logout persistence, account transition, and setup-link recovery.
 - `git diff --check`: passed.
 
-The exact-built browser fixtures are isolated and use no credentials or hosted data. A hosted reproduction could not be performed because the available production and beta tabs were signed out. Hosted acceptance therefore remains a release gate and is not claimed here.
+The exact-built browser fixtures are isolated and use no credentials or hosted data.
+
+## Hosted acceptance follow-up
+
+The approved source `16a80b3437604e5335bdb8dae8bfd31d6873769c` is the current beta Netlify deploy `6acb87b38aa94a8b39cf8d10`. Its `portal.js?v=192`, `member110.js?v=216`, and `member110.css?v=204` assets match the exact built artifacts. Authenticated Owner normal refresh, hard refresh, and second-tab restoration passed.
+
+Logout exposed two pre-existing cleanup defects outside the original bootstrap repair. Enrollment received the Auth reset after the portal core removed its DOM, and a delayed Work Desk load attempted to render after the same teardown. The replacement candidate:
+
+- makes Enrollment status and clear operations tolerate an already-removed shell;
+- invalidates delayed Work Desk reads on staff reset and skips rendering when the shell is gone;
+- adds exact source and built regression coverage for both cases;
+- publishes `portal-work-desk.js?v=161` and `portal-enrollment.js?v=101`.
+
+Replacement validation passes: build 321; JavaScript syntax 83; maintained suite 583 passed, 0 failed, 27 expected skips; focused source and exact-built cleanup/session sets 15/15 each; exact-built Chrome/WebKit session checks 46/46.
 
 ## Release boundary
 
-Expected beta assets: `portal/portal.js?v=192` and `member/member110.js?v=216`; member CSS remains `member110.css?v=204`.
+Expected beta assets: `portal/portal.js?v=192`, `portal/portal-work-desk.js?v=161`, `portal/portal-enrollment.js?v=101`, and `member/member110.js?v=216`; member CSS remains `member110.css?v=204`.
 
-After explicit approval, push the exact candidate and deploy only to beta Netlify site `071b252e-a922-4846-a784-8dca1edad377`. Do not apply migrations or deploy Edge Functions. Then perform separate signed-in beta Owner, scoped Coach, and member refresh/hard-refresh/second-tab/logout/revocation acceptance.
+Push the exact replacement candidate and deploy only to beta Netlify site `071b252e-a922-4846-a784-8dca1edad377`. Do not apply migrations or deploy Edge Functions. Then resume separate signed-in beta Owner, scoped Coach, and member refresh/hard-refresh/second-tab/logout/revocation acceptance.

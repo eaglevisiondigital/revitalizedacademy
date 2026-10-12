@@ -1,6 +1,8 @@
-## LOCAL VERIFIED — Beta staff/member session refresh persistence — 2026-10-11
+## REPLACEMENT VALIDATED — Beta staff/member session refresh persistence — 2026-10-11
 
-Beta staff/member refresh persistence repair is implemented on `codex/session-refresh-persistence-beta` and remains local only. Startup now waits for the storage-backed Auth initialization boundary behind neutral restoring states, coalesces duplicate bootstrap events, preserves authorized UI during token refresh, and retains fail-closed revocation/account-change cleanup. Build 321, syntax 83, maintained suite 581 passed with 27 expected skips, focused staff/member session 16/16, and exact-built Chrome/WebKit 24/24 per browser pass. No migration, Edge, hosted data, push, or deployment. Hosted signed-in acceptance remains required. [Evidence and release boundary](docs/SESSION_REFRESH_PERSISTENCE_REPAIR_2026-10-11.md).
+Beta staff/member refresh persistence source `16a80b3437604e5335bdb8dae8bfd31d6873769c` was deployed to beta as Netlify deploy `6acb87b38aa94a8b39cf8d10`. Owner normal refresh, hard refresh, and second-tab restoration passed. Logout then exposed two pre-existing module cleanup defects: Enrollment and Work Desk could receive reset/late-load work after the core removed the private portal shell, leaving the primary tab on **Signing out…**.
+
+The replacement candidate adds null-safe Enrollment teardown, generation-guards delayed Work Desk reads, clears Work Desk state on staff reset, and publishes `portal-work-desk.js?v=161` plus `portal-enrollment.js?v=101`. Build 321, syntax 83, maintained suite 583 passed with 27 expected skips, focused source/exact-built cleanup and session checks 15/15 per pass, and exact-built Chrome/WebKit session checks 46/46 pass. No migration, Edge, permission, RLS, secret, hosted client, payment, or production state changed. Replacement beta deployment and continuation of hosted Owner/Coach/member acceptance remain required. [Evidence and release boundary](docs/SESSION_REFRESH_PERSISTENCE_REPAIR_2026-10-11.md).
 
 ## LOCAL READY — RepDB Exercise Library v1 — 2026-10-07
 

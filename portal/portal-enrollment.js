@@ -5,9 +5,20 @@
   const client=portal.authClient;
   let contact=null,state=null,programs=[],generation=0,busy=false;
   const permitted=()=>window.RVA_PUBLIC_CONFIG?.environment==="staging"&&["owner","admin"].includes(portal.currentStaffRole?.())&&portal.hasPermission("finance.manage");
-  const status=(copy)=>{el("client-enrollment-status").textContent=copy;};
+  const status=(copy)=>{const target=el("client-enrollment-status");if(target)target.textContent=copy;};
   const title=value=>portal.titleCase(value||"Not started");
-  function clear(){generation++;contact=null;state=null;programs=[];busy=false;el("client-enrollment-section").classList.add("hidden");el("client-enrollment-form").classList.add("hidden");el("client-enrollment-summary").replaceChildren();status("");el("client-enrollment-program").replaceChildren();el("client-enrollment-amount").value="";el("client-enrollment-billing").value="";el("client-enrollment-currency").value="USD";}
+  function clear(){
+    generation++;contact=null;state=null;programs=[];busy=false;
+    el("client-enrollment-section")?.classList.add("hidden");
+    el("client-enrollment-form")?.classList.add("hidden");
+    el("client-enrollment-summary")?.replaceChildren();
+    status("");
+    el("client-enrollment-program")?.replaceChildren();
+    const amount=el("client-enrollment-amount"),billing=el("client-enrollment-billing"),currency=el("client-enrollment-currency");
+    if(amount)amount.value="";
+    if(billing)billing.value="";
+    if(currency)currency.value="USD";
+  }
   function render(){
     const accessActive=state.member_access==="active"&&state.membership_status==="active"&&state.ready_for_access&&state.account_claimed;
     const rows=[

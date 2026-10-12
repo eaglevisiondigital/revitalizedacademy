@@ -10,6 +10,13 @@
   let mode = "mine";
   let rows = [];
   let loading = false;
+  let generation = 0;
+
+  function clear() {
+    generation++;
+    rows = [];
+    loading = false;
+  }
 
   function currentUserId() {
     return portal.currentUserId();
@@ -32,8 +39,8 @@
       filtered = filtered.filter((row) => row.assigned_to === currentUserId());
     }
 
-    const category = el("work-category-filter").value;
-    const due = el("work-due-filter").value;
+    const category = el("work-category-filter")?.value || "";
+    const due = el("work-due-filter")?.value || "";
 
     if (category) filtered = filtered.filter((row) => row.work_category === category);
     if (due) filtered = filtered.filter((row) => row.due_bucket === due);
@@ -58,6 +65,7 @@
       : rows;
 
     const stats = el("work-desk-stats");
+    if (!stats) return;
     stats.replaceChildren(
       statCard("Open", source.length),
       statCard("Overdue", source.filter((row) => row.overdue).length, "overdue"),
@@ -73,6 +81,7 @@
     renderStats();
 
     const list = el("work-desk-list");
+    if (!list) return;
     list.replaceChildren();
 
     const filtered = workRows();
@@ -162,9 +171,14 @@
 
   async function load() {
     if (loading) return;
+    const sequence = generation;
     loading = true;
 
     const list = el("work-desk-list");
+    if (!list) {
+      loading = false;
+      return;
+    }
     if (!rows.length) {
       list.innerHTML = '<div class="empty-state">Loading work queue...</div>';
     }
@@ -176,6 +190,7 @@
       .order("due_at", { ascending: true, nullsFirst: false })
       .limit(100);
 
+    if (sequence !== generation || !el("work-desk-list")) return;
     loading = false;
 
     if (error) {
@@ -270,6 +285,7 @@
   function updateTabs() {
     const mine = el("work-tab-mine");
     const team = el("work-tab-team");
+    if (!mine || !team) return;
     const mineActive = mode === "mine";
 
     mine.classList.toggle("active", mineActive);
@@ -296,6 +312,7 @@
   document.addEventListener("ra:dashboard-loaded", load);
   document.addEventListener("ra:contact-opened", () => {});
   document.addEventListener("ra:contact-closed", load);
+  document.addEventListener("ra:staff-access-reset", clear);
 
   window.setTimeout(() => {
     if (!document.getElementById("portal-view")?.classList.contains("hidden")) load();
