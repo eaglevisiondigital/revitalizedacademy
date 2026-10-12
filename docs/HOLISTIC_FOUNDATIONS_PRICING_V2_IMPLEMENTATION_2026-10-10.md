@@ -2,7 +2,7 @@
 
 Date: 2026-10-10 (America/Los_Angeles)
 
-Status: local implementation verified. No Git push, hosted migration, Edge deployment, Netlify deployment, agreement publication, payment enablement, charge, or paid-access change occurred.
+Status: reconciled and locally verified on 2026-10-12 against accepted production source `83ad058c1514846a9978dc0132e7b94b060545a8`. No Git push, hosted migration, Edge deployment, Netlify deployment, agreement publication, payment enablement, charge, or paid-access change occurred.
 
 ## Result
 
@@ -14,6 +14,8 @@ Two unapplied forward migrations comprise the package, in order:
 2. `20261010121000_payments_v1.sql`
 
 The existing applied lifecycle migration is unchanged and must not be replayed. Both new migrations restored successfully with the complete candidate migration sequence in disposable PostgreSQL 17.
+
+The accepted session-restoration and post-logout module files remain byte-identical to production. Pricing v2 retains the null-safe lifecycle teardown and publishes the changed lifecycle module under `portal-client-lifecycle.js?v=103` so production's existing `v=102` response cannot be reused.
 
 ## Product-plan catalog
 
@@ -80,12 +82,13 @@ The staff payment UI selects “Current approved enrollment plan” and reads th
 ## Validation
 
 - Production build: 394 files, production project `voalfpxiyznnqfcqcymd`.
-- JavaScript syntax: 127 source/test files plus eight runtime entrypoints passed.
-- Pricing/Payments/lifecycle unit and DOM tests: 40/40 passed.
+- JavaScript syntax: 130 source/test files plus three Netlify TypeScript entrypoints passed.
+- Pricing/Payments/lifecycle/session unit and DOM tests: 53/53 passed.
 - Disposable PostgreSQL 17 restore: 17 candidate migrations applied in order.
 - PostgreSQL authorization, plan, market, payment and lifecycle regressions: 55/55 passed.
 - PostgreSQL concurrency: one race group, eight overlapping workers, eight distinct backend PIDs; one contact, one enrollment, one signature and one dispatch lease.
-- Existing Vitality/assessment frontend regressions: 54/54 passed.
+- Existing Vitality/assessment frontend regressions: 64/64 passed.
+- Exact-built production session regression: 40/40 across Chromium and WebKit with zero console warnings/errors.
 - Exact-built lifecycle browser: 37 checks passed at 1440×1000, 768×1024 and 390×844; no runtime errors or overflow.
 - Exact-built payment browser: 39 checks passed at the same widths; no runtime errors, provider calls or hosted writes.
 - Required payment/lifecycle build artifacts present; obsolete plan/product identifiers absent from application/runtime migrations.
