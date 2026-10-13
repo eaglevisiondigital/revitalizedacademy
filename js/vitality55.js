@@ -318,7 +318,7 @@
  const routeNote = assessmentForm.querySelector('[data-child-route-note]');
  routeNote.hidden = assessmentPerson().choice !== 'My child';
  routeNote.textContent = isChild
- ? 'Children’s Vitality Assessment · ages 0–18. Answer for your child’s age and development; not applicable and prefer not to answer are available. Changing between child and adult questions clears answers from the previous question set.'
+ ? 'Children’s Vitality Roadmap · ages 0–18. Answer for your child’s age and development; not applicable and prefer not to answer are available. Changing between child and adult questions clears answers from the previous question set.'
  : 'Children ages 0–18 use the children’s questions. Adult children ages 19 and older use the adult assessment. Enter their age to select the question set.';
  if (isChild && !childAssessment) return; // Never silently fall back to adult questions.
  if (nextPathway !== activePathway) {
