@@ -75,7 +75,7 @@
   initialEmail=email;
   const form=document.querySelector('[data-vitality-lead-form]'),panel=document.querySelector('[data-start-confirmation]');
   form.hidden=true;panel.hidden=false;document.querySelector('[data-assessment-entry]').hidden=true;
-  document.querySelector('[data-start-email-copy]').textContent='If an unfinished assessment is available, a private link will be sent to '+mask(email)+'. Open that link to continue your Vitality Assessment.';
+  document.querySelector('[data-start-email-copy]').textContent='If an unfinished assessment is available, a private link will be sent to '+mask(email)+'. Open that link to continue Step 1 of your Vitality Roadmap.';
   panel.focus({preventScroll:true});panel.scrollIntoView({behavior:'smooth',block:'start'});
  }
  function cooldown(seconds=60){
