@@ -460,7 +460,7 @@
 
     const journeyGrid = el("contact-journey-grid");
     journeyGrid.replaceChildren(
-      makeJourneyCard("Vitality assessment", vitality?.status, vitality ? (vitality.completion_percent || 0) + "% complete" + (vitality.current_step ? " · " + vitality.current_step : "") : "Not started"),
+      makeJourneyCard("Vitality roadmap", vitality?.status, vitality ? (vitality.completion_percent || 0) + "% complete" + (vitality.current_step ? " · " + vitality.current_step : "") : "Not started"),
       makeJourneyCard("Enrollment", enrollment?.status, enrollment ? (enrollment.completion_percent || 0) + "% complete" + (enrollment.current_step ? " · " + enrollment.current_step : "") : "Not started"),
       makeJourneyCard("Webinar", webinar?.status, webinar ? "Payment: " + titleCase(webinar.payment_status) : "No registration"),
       makeJourneyCard("ReFuel", refuel?.status, refuel ? "Joined " + formatDate(refuel.created_at) : "No interest record")
