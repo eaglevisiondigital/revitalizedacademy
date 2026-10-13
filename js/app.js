@@ -317,11 +317,11 @@ faqItems.forEach((item) => {
   document.head.appendChild(link);
 })();
 
-// Build 88: make the sitewide header CTA the Free Vitality Assessment lead action.
+// Build 88: make the sitewide header CTA the Free Vitality Roadmap lead action.
 (() => {
   const cta = document.querySelector('.site-header .header-cta');
   if (!cta) return;
-  cta.textContent = 'Free Vitality Assessment';
+  cta.textContent = 'Free Vitality Roadmap';
   cta.setAttribute('href', '/consult.html');
   cta.classList.remove('journey-secondary-cta');
   cta.classList.add('vitality-primary-cta');
