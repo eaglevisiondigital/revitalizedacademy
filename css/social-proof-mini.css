@@ -31,3 +31,12 @@
 .stories-proof-archive .rva-proof-mini-grid{grid-template-columns:repeat(6,minmax(0,1fr))}
 @media(max-width:850px){.stories-proof-archive .rva-proof-mini-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:520px){.stories-proof-archive .rva-proof-mini-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* Full legacy testimonials belong on Stories; the homepage remains compact. */
+.rva-proof-mini--library{max-width:1200px;margin:34px auto 48px;padding:0 4px;scroll-margin-top:110px}
+.rva-proof-mini--library .rva-proof-mini-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.rva-proof-mini--library .rva-proof-mini-card img{height:265px}
+.rva-proof-mini--library .rva-proof-mini-heading h2{font-family:Georgia,serif;font-weight:600;color:#154734;font-size:clamp(24px,3vw,34px);margin:4px 0 0}
+.rva-proof-mini-eyebrow{font-size:10px;font-weight:800;letter-spacing:.17em;color:#b18845}
+.rva-proof-mini-heading a{color:#154734;text-decoration:underline;text-underline-offset:3px;font-weight:700}
+@media(max-width:900px){.rva-proof-mini--library .rva-proof-mini-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.rva-proof-mini--library .rva-proof-mini-card img{height:220px}}
+@media(max-width:560px){.rva-proof-mini--library .rva-proof-mini-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.rva-proof-mini--library .rva-proof-mini-card img{height:170px}}
