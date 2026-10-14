@@ -37,7 +37,7 @@
   const eligible = item => Boolean(item && typeof item.name === 'string' &&
     item.name.trim() && item.name.length <= 120 &&
     typeof item.image === 'string' &&
-    /^assets\/images\/social-proof\/IMG_\d{4}\.svg$/.test(item.image));
+    /^assets\/images\/social-proof\/(?:IMG_\d{4}|claudia-emerald-testimonial|rodney-emerald-testimonial)\.svg$/.test(item.image));
 
   function showCard(item, grid, root, index, limit) {
     const card = document.createElement('button');
