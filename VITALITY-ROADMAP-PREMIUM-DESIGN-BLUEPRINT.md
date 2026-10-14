@@ -1,5 +1,5 @@
 # REVitALIZED ACADEMY — VITALITY ROADMAP PREMIUM EDITORIAL UX BLUEPRINT
-Product/art direction v1, 2026-10-14. Source references: founder's six-page "Vitality Roadmap Results" visual, Justyn's HTML interactive demo, October 12 developer handoff v0.14, approved Academy website branding. This is a visual/experience specification, not an approval of demo scores or clinical scoring.
+Product/art direction v2, 2026-10-14, reconciled with the founder's latest scope. Source references: founder's six-page "Vitality Roadmap Results" visual, Justyn's HTML interactive demo, October 12 developer handoff v0.14, approved Academy website branding. This is a visual/experience specification, not an approval of demo scores or clinical scoring.
 
 ## North star
 
@@ -32,7 +32,7 @@ Keep three direct navigation tabs in the founder HTML: **My Overview** / **My 12
 ### 2. Executive Summary (PDF page 2)
 - Large editorial overall score ring and explicit denominator plus an APPROVED/ILLUSTRATIVE state label. Spectrum strip if official stage available.
 - Three concise icon-led summary facts: existing strengths, useful opportunities and achievable first actions. Preserve founder priorities ranking but do not solely rank by lowest numerical score unless approved.
-- The overall score is determined only by the validated adult scoring configuration. Wise Budgeting is separate from health-stage aggregation per handoff. Any uncertainty or incomplete evidence must be visible.
+- The overall score is determined only by a validated adult configuration, with Wise Budgeting separate from health-stage aggregation. Founder now requests **a stage for each Driver**, but this mapping is unapproved and unimplemented; never infer it from the Driver color.
 - In preview, retain Justyn's fictional 68/100 with prominent fictional label; do not mix it with the separate six-page PDF's illustrative 72/100.
 
 ### 3. Whole-Person Snapshot (PDF page 3)
@@ -45,7 +45,7 @@ Keep three direct navigation tabs in the founder HTML: **My Overview** / **My 12
 ### 4. Top Areas of Focus (PDF page 4)
 - Present three ranked concern/priority cards styled as cream/paper editorial modules: gold round number, tailored outline icon, short headline, "what your answer suggests", optionally approved score and next-step deep-link.
 - Include context explaining why this concern matters and uncertainty; each links to the corresponding actual Driver accordion.
-- In the free report, users see all three recommendations with no coaching paywall. A coach may review, correct and approve copy before release.
+- All three priorities and recommendations are free, without a coaching paywall. Justyn and Elle approve initial releases and can clarify answers, correct interpretations, override recommended ranking and regenerate with audit history.
 - If a recommendation is not supported/approved, show "Pending review" rather than an invented explanation.
 
 ### 5. Nutrition & Lifestyle Insights (PDF page 5)
@@ -61,8 +61,8 @@ Keep three direct navigation tabs in the founder HTML: **My Overview** / **My 12
 ### 7. Your First Action Steps and My Action Plan (PDF page 6 + founder demo)
 - Show numbered, individual action rows with thin gold connector and relevant icon, rather than generic application tasks. Preserve add/remove/check, "actions tried" progress, reset and cross-links to Drivers.
 - The action tracker counts actions tried, not a new measured health outcome. No algorithm recalc due to checking a box.
-- Add the 7-day observation, 30-day consistency, 90-day review journey to give context, not unsupported prescriptions.
-- Free tier: foundational checklist and report access remain available after coaching cancellation; premium tiers: co-created plans, coaching messages, accountability and progress comparisons.
+- Replace the 7/30/90 demo cadence with ReVitalized Academy's **40-day milestone cycles** for coaching. The free Roadmap is generally a one-time assessment.
+- Free tier: all 12 Drivers, approved report, static first actions and downloadable PDF continue after membership ends. **Saved completion, reflection notes and custom habit plans are Holistic Foundations-only.** Demo interactions illustrate the optional paid capability.
 - Future persistent storage must be authenticated, tenant/person scoped and guarded by RLS; public fictional preview must not store private notes in browser localStorage.
 
 ## Coach approval and delivery contract
@@ -70,6 +70,10 @@ Keep three direct navigation tabs in the founder HTML: **My Overview** / **My 12
 Assessment completion -> normalized preliminary calculation (with trace and completeness) -> coach review + clarification -> senior authorization -> immutable approved report snapshot -> secure free member account access + matching PDF. No client sees preliminary unapproved results. Later coaching builds on the same snapshot.
 
 Scoring handoff v0.14 still has incomplete actual raw answer joins, several unapproved Driver rubrics and some unimplemented Hydration gates. PDF/HTML are presentation references, never numerical evidence. Child/proxy pathways require separate approved rubrics.
+
+## Business and knowledge-base model
+
+The free Roadmap is generally one-time, valuable and lasting. Holistic Foundations adds saved habits/reflections, coach planning and 40-day goal cycles. Optional $250 paid consultation and an eligible $50 affiliate discount are planned, but never display working checkout/booking until ready. Justyn and Elle initially approve reports. Future knowledge-base suggestions require consent, editorial approval, versioning and validation; they do not automatically train a model or publish for other people.
 
 ## Engineering/visual review acceptance
 
