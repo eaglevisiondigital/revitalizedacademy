@@ -42,7 +42,7 @@
     const grid = root.querySelector('[data-rva-proof-mini-grid]');
     if (!grid) return;
     const full = root.dataset.rvaProofMode === 'all';
-    const entries = full ? all : all.filter(item => item.homepage).slice(0, 12);
+    const entries = full ? all : all.filter(item => item.homepage).slice(0, 24);
     if (!entries.length) return;
     let good = 0;
     for (const item of entries) {
@@ -77,6 +77,40 @@
       good += 1;
     }
     root.hidden = !good;
+    if (!full && good > 6) {
+      const cards = [...grid.children];
+      const perPage = 6;
+      const pageCount = Math.ceil(cards.length / perPage);
+      let active = 0;
+      let timer = null;
+      const controls = document.createElement('div');
+      controls.className = 'rva-proof-carousel-controls';
+      controls.innerHTML = '<button type="button" class="rva-proof-carousel-arrow" data-prev aria-label="Previous testimonial group">←</button><span class="rva-proof-carousel-status" role="status" aria-live="polite"></span><button type="button" class="rva-proof-carousel-arrow" data-next aria-label="Next testimonial group">→</button>';
+      const status = controls.querySelector('.rva-proof-carousel-status');
+      const show = page => {
+        active = (page + pageCount) % pageCount;
+        cards.forEach((card, index) => { card.hidden = Math.floor(index / perPage) !== active; });
+        status.textContent = 'Stories ' + (active * perPage + 1) + '–' + Math.min((active + 1) * perPage, cards.length) + ' of ' + cards.length;
+      };
+      const stop = () => { if (timer) clearInterval(timer); timer = null; };
+      const start = () => {
+        stop();
+        if (document.hidden || dialog.open || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        timer = setInterval(() => show(active + 1), 10000);
+      };
+      controls.querySelector('[data-prev]').addEventListener('click', () => { stop(); show(active - 1); });
+      controls.querySelector('[data-next]').addEventListener('click', () => { stop(); show(active + 1); });
+      root.addEventListener('mouseenter', stop);
+      root.addEventListener('mouseleave', start);
+      root.addEventListener('focusin', stop);
+      root.addEventListener('focusout', event => { if (!root.contains(event.relatedTarget)) start(); });
+      root.addEventListener('touchstart', stop, {passive:true});
+      document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); else start(); });
+      dialog.addEventListener('close', start);
+      grid.insertAdjacentElement('afterend', controls);
+      show(0);
+      start();
+    }
   }
   fetch('assets/data/social-proof-mini.json', {cache:'no-cache'})
     .then(response => { if (!response.ok) throw Error('Proof gallery unavailable'); return response.json(); })
