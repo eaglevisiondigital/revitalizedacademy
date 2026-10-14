@@ -84,6 +84,7 @@
       progress.className = 'vitality-assessment-progress';
       const badge = text('span', `vitality-status ${row.status === 'completed' ? 'is-complete' : 'is-progress'}`, row.status === 'completed' ? 'Completed' : 'In Progress');
       progress.append(badge, text('strong', '', `${Number(row.completion_percent) || 0}%`), text('span', '', row.current_section || 'Not started'));
+      if (row.status === 'completed') progress.append(text('span', 'vitality-roadmap-queue-note', 'Report preparation pending'));
 
       const details = document.createElement('dl');
       details.className = 'vitality-assessment-meta';
@@ -240,6 +241,31 @@
       signals.append(tagList);
     }
     content.append(signals);
+
+    // This release-readiness notice is deliberately informational. It does not
+    // calculate a score, write to reports, approve, or publish client health data.
+    const roadmapGate = document.createElement('section');
+    roadmapGate.className = 'vitality-review-section vitality-roadmap-release-gate';
+    roadmapGate.append(text('h3', '', 'Interactive Roadmap Preparation'));
+    const notice = text('p', 'vitality-roadmap-gate-notice',
+      'Completed questionnaire answers are available for authorized review. Personalized Roadmap scoring and delivery are not active yet.');
+    roadmapGate.append(notice);
+    const checks = document.createElement('ul');
+    checks.className = 'vitality-roadmap-gate-checklist';
+    [
+      ['Questionnaire source', 'Available for private review in this drawer'],
+      ['Scoring and Driver stages', 'Requires founder-approved scoring rules and the adult answer mappings'],
+      ['Priorities and recommendations', 'Requires sourced draft explanations and Justyn/Elle review'],
+      ['Release to member and email', 'Blocked until final authorized approval, secure account access, and matching PDF are verified']
+    ].forEach(([label, value]) => {
+      const row = document.createElement('li');
+      row.append(text('strong', '', label), text('span', '', value));
+      checks.append(row);
+    });
+    roadmapGate.append(checks);
+    roadmapGate.append(text('p', 'vitality-roadmap-gate-foot',
+      'No score, report, approval, or email is created by opening this review. Historical and child responses may need additional interpretation or missing information.'));
+    content.append(roadmapGate);
 
     const summary = document.createElement('section');
     summary.className = 'vitality-review-section';
