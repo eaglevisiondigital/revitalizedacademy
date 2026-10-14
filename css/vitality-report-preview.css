@@ -145,3 +145,8 @@
   height: 24px;
   font-size: 16px;
 }
+
+/* Popup link contains text only, with no smiley or other decorative icon. */
+.rva-report-preview-trigger { appearance:none; font-family:inherit; }
+.rva-report-preview-trigger-icon { display:none!important; }
+.rva-report-preview-image-error { padding:35px 20px;text-align:center;color:#154734; }
