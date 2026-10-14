@@ -2,7 +2,7 @@
    Marketing-only UI: no assessment inputs, credentials, storage, or network calls. */
 (() => {
   'use strict';
-  const imagePath = 'assets/images/vitality-roadmap-results-sample-v2.svg';
+  const imagePath = '/assets/images/vitality-roadmap-results-sample-v2.svg';
   const buttonText = 'Click to Preview Vitality Roadmap';
   const page = location.pathname.split('/').pop() || 'index.html';
   if (!['index.html', 'consult.html', 'free-help.html', 'stories.html', 'founders.html', 'plans.html', 'webinar.html'].includes(page)) return;
@@ -13,13 +13,9 @@
     button.type = 'button';
     button.className = `rva-report-preview-trigger ${variant}`.trim();
     button.setAttribute('data-rva-report-preview-open', '');
-    const symbol = document.createElement('span');
-    symbol.className = 'rva-report-preview-trigger-icon';
-    symbol.textContent = '☺';
-    symbol.setAttribute('aria-hidden', 'true');
     const label = document.createElement('span');
     label.textContent = buttonText;
-    button.append(symbol, label);
+    button.append(label);
     return button;
   };
 
@@ -87,6 +83,15 @@
       </div>
     </section>`;
   document.body.append(overlay);
+  // If the file ever fails to load, keep the dialog open with a useful error.
+  const sampleImage = overlay.querySelector('.rva-report-preview-figure img');
+  sampleImage.addEventListener('error', () => {
+    sampleImage.hidden = true;
+    const message = document.createElement('p');
+    message.className = 'rva-report-preview-image-error';
+    message.textContent = 'The sample image is temporarily unavailable. Please try again later.';
+    sampleImage.insertAdjacentElement('afterend', message);
+  }, {once:true});
 
   let opener = null;
   let priorOverflow = '';
