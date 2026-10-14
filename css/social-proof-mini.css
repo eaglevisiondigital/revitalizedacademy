@@ -40,3 +40,14 @@
 .rva-proof-mini-heading a{color:#154734;text-decoration:underline;text-underline-offset:3px;font-weight:700}
 @media(max-width:900px){.rva-proof-mini--library .rva-proof-mini-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.rva-proof-mini--library .rva-proof-mini-card img{height:220px}}
 @media(max-width:560px){.rva-proof-mini--library .rva-proof-mini-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.rva-proof-mini--library .rva-proof-mini-card img{height:170px}}
+
+/* Six at once on desktop, manual group controls, pause on reader interaction. */
+.rva-proof-mini-card[hidden]{display:none!important}
+.rva-proof-carousel-controls{display:flex;align-items:center;justify-content:center;gap:22px;margin-top:18px}
+.rva-proof-carousel-arrow{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;background:#154734;border:1px solid #154734;color:#fff;font-size:23px;line-height:1;cursor:pointer}
+.rva-proof-carousel-arrow:hover{background:#216247}
+.rva-proof-carousel-arrow:focus-visible{outline:3px solid #b18845;outline-offset:3px}
+.rva-proof-carousel-status{color:#154734;font-size:13px;font-weight:700;min-width:135px;text-align:center}
+.rva-proof-mini--library .rva-proof-mini-grid{grid-template-columns:repeat(5,minmax(0,1fr))}
+@media(max-width:850px){.rva-proof-mini--library .rva-proof-mini-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:520px){.rva-proof-mini--library .rva-proof-mini-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
