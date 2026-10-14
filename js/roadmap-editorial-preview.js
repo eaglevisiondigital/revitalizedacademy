@@ -24,6 +24,12 @@ if(drivers.length!==12)return;
 function data(i){var d=drivers[i];return {name:d.querySelector(".driver-name strong").textContent,score:Number.parseInt(d.querySelector(".value").textContent,10),tone:d.dataset.status,driver:d}}
 function openDriver(i){doc.getElementById("tab-drivers").click();var d=drivers[i];d.open=true;window.requestAnimationFrame(function(){d.scrollIntoView({block:"center",behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"instant":"smooth"});d.querySelector("summary").focus({preventScroll:true})})}
 drivers.forEach(function(d,i){var idx=d.querySelector(".index"),emblem=node("span","rva-driver-emblem");emblem.append(icon(i));idx.insertAdjacentElement("afterend",emblem)});
+/* Numbered, icon-led editorial priority cards. */
+Array.from(doc.querySelectorAll(".priority")).forEach(function(card,i){
+ var num=card.querySelector(".num");if(!num)return;
+ var top=node("div","rva-priority-top"),iconSlot=icon([6,5,0][i]||0);
+ top.append(num,iconSlot);card.prepend(top);
+});
 var snapshot=doc.getElementById("roadmap-featured-rings");
 [0,3,4,5,6,9,10,11].forEach(function(i){var d=data(i),button=node("button","rva-snapshot-item"),dial=node("span","rva-dial"),mid=node("span","rva-dial-center"),tone=d.tone==="red"?"#a65747":d.tone==="yellow"?"#c79e49":"#23724c";button.type="button";button.setAttribute("aria-label","Explore "+d.name+", illustrative "+d.score+" out of 100");dial.style.setProperty("--dial-value",String(d.score));dial.style.setProperty("--dial-color",tone);mid.append(icon(i),node("strong","",String(d.score)),node("small","","out of 100"));dial.append(mid);button.append(dial,node("b","",d.name),node("small","",d.tone==="green"?"Example strength":d.tone==="red"?"Priority":"Needs attention"));button.addEventListener("click",function(){openDriver(i)});snapshot.append(button)});
 var insights=[
