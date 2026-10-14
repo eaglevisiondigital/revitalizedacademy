@@ -392,5 +392,7 @@
   "pay/payment.css",
   "pay/payment.js",
   "portal/portal-payment-requests.css",
-  "portal/portal-payment-requests.js"
+  "portal/portal-payment-requests.js",
+  "css/roadmap-editorial-preview.css",
+  "js/roadmap-editorial-preview.js"
 ]
