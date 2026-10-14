@@ -1,6 +1,16 @@
 # Vitality Roadmap: Free Foundation + Coach-Enhanced Experience
 
-Status: Product direction confirmed by project owner, October 14, 2026. Implementation specification, not an assertion that features exist in production.
+Status: Updated to reflect Justyn's October 14 founder answers. Supersedes preliminary free tracking and 7/30/90 assumptions. Specification only; no assertion these features are in production.
+
+## October 14 founder clarification
+
+- **Free**: full approved report, all 12 Drivers, overall + independently defined individual stages once validated, explanations, priorities/strengths/opportunities, static starter advice, secure account access and PDF.
+- **Holistic Foundations**: persistent checklists, reflections, habit tracking and coach plans. Fictional demo interactions do not promise that these are free.
+- **Consultation**: separately paid $250 Roadmap review/explanation; eligible affiliates may offer $50 off. Checkout/calendar are not enabled until verified.
+- **Cadence**: one-time Roadmap by default, coached 40-day milestone cycles within repeat 40-day, six-month or twelve-month programs.
+- **Review and learning**: Justyn and Elle initially approve; reviewers can correct/request clarification/regenerate/override with reasons and propose versioned knowledge-base improvements.
+- **Pending**: detailed Driver rubrics, score settings, each Driver's Spectrum-stage mapping, questionnaire additions, child scoring and independent expected cases.
+- **Answers**: read-only historical answer review is desirable if feasible and secure, not guaranteed.
 
 ## Product promise
 
@@ -22,11 +32,11 @@ Avoid confusing a public **fictional interactive sample** with an individual's a
 | Three verified priorities, opportunities and starter actions | Included | Included |
 | Interactive navigation, radar/compass, filters and readable accessibility alternatives | Included | Included |
 | Downloadable/printable approved PDF snapshot | Included | Included |
-| Basic first-step checklist and individual reflections | Included after secure implementation, subject to privacy and storage policy | Included |
+| Static starter actions and educational guidance | Included; no saved progress | Included |\n| Saved checklist, completion tracking and personal reflections | Not included in free Roadmap | Holistic Foundations only |
 | Original questionnaire response corrections/clarifications before approval | Supported through controlled review workflow | Supported |
 | Personalized coach-designed action plan and revisions | Not included unless explicitly granted | Included |
 | Coach notes, feedback, accountability, scheduled check-ins and messaging | Not included by default | Included subject to plan |
-| Longitudinal assessment comparisons and coaching-led re-evaluation | Not promised as part of one free report | Supported when new valid approved data exists |
+| Reassessment and historical report comparisons | Typically a one-time Roadmap; exceptions require policy | Guided plan progression; exceptional reassessment only if authorized |
 | Advanced trackers, connected health/progress modules and coaching features | Not included by default | Included according to package |
 
 No misleading locks or empty sections: clearly distinguish **included for free**, **included with coaching**, **coming later**. Do not show premium features as delivered until operational and enabled.
@@ -41,8 +51,8 @@ No misleading locks or empty sections: clearly distinguish **included for free**
 6. Coach and designated senior reviewer resolve needed clarifications, approve score interpretation and recommendation wording, then release one immutable version.
 7. Send a minimal-content notification that a Roadmap is available. Use an expiring, one-time account-claim or login link as appropriate; **do not email health scores or sensitive findings**.
 8. After authentication, the person accesses the released interactive Roadmap and downloadable PDF at no charge. Show release/review date and clear provenance of the figures.
-9. Member may revisit the same Roadmap and any supported personal checklist/reflections over time. Changes to non-scoring checklist state must not mutate an approved result.
-10. Optional tasteful CTA: **Want personalized guidance with your Roadmap? Explore Coaching.** Never interrupt free access with a payment gate.
+9. Member may revisit the same approved free Roadmap and static starting recommendations over time. Saved tracking and reflections belong to Holistic Foundations; those actions do not change an approved score.
+10. Optional, non-blocking CTA for a personalized $250 coach consultation, with authorized $50 affiliate reduction where eligible. Do not provide working checkout/booking until payment and calendar are ready. Never interrupt free access with a payment gate.
 
 ## Coach/membership journey
 
@@ -95,8 +105,8 @@ Before any schema work, inventory existing Supabase entities and reusable portal
 
 **C. Validated scoring:** map actual questionnaire IDs to approved rules; run independent complete-case calibration with the founders; finish Hydration and other Driver definitions and flags.
 
-**D. Launch:** invite free recipients to persistent account access, implement durable free checklist if approved, monitor duplicate/failure metrics, verify secure PDF delivery.
+**D. Launch:** invite free recipients to persistent account access, provide secure free report and PDF, monitor duplicate/failure metrics, verify secure PDF delivery.
 
-**E. Coaching extension:** add guided longitudinal tools and coach collaboration without modifying the free-report promise.
+**E. Coaching extension:** add saved Holistic Foundations habit tracking/reflections, coach assignments and 40-day milestones across repeated 40-day programs and six- or twelve-month coaching. Preserve free-report promise.
 
-Unresolved for founder signoff: specific free checklist persistence and notes retention, exact family/child launch pathways, report access/retention period and account deletion behavior, expected review turnaround, report notification wording, member coaching package-level entitlements, and automatic publication acceptance criteria.
+Unresolved for founder signoff: child/teen launch routing and age-18 boundary, report retention and account deletion behavior, delivery turnaround, notification copy, consultation/affiliate terms, per-Driver stages, scoring and auto-publication gates.
