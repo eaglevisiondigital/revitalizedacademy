@@ -10,6 +10,14 @@ Prepared 2026-10-14. Applies to ReVitalized Academy production project `voalfpxi
 - Existing staff UI: `/portal/` -> Vitality Roadmaps, accessible through `list_vitality_assessment_reviews(p_filter)` and `get_vitality_assessment_review(p_contact_id)` which delegate to security-definer private functions. Original answers and coach summary can already be reviewed by staff with appropriate scope. Existing RLS is enabled on workflow, answers, contacts, and vitality_reports.
 - User report of ~12 people filling questionnaires on Oct 14 is unconfirmed as ~12 *completed*. Confirm via staff review workspace; do not publish or email incomplete records.
 
+## Staging foundation verification, October 14
+- Applied the repository's `design/sql/vitality_roadmap_release_foundation_STAGING_ONLY.sql` **only to Supabase staging** `bvooallokgfktssadsrv` through a named migration. Production SQL and all 15 completed records remain unchanged.
+- Created three RLS-enabled, direct-access-denied structures: private versioned report contents, private reviewer audit, and an account-to-contact entitlement registry distinct from paid membership.
+- Created read-only `get_my_released_vitality_roadmaps()`, callable by authenticated sessions only, with an exact `auth.uid()` and verified recipient check and a released+approved gate.
+- Verified anonymous EXECUTE=false; authenticated EXECUTE=true; no direct SELECT grant to anon/authenticated; empty released result `[]`; 0 staged report versions and 0 claimed recipient access rows.
+- Still untested: synthetic authenticated user, cross-contact leakage, reviewer write permissions, immutable versions, one-time claim, PDF/email parity. These tests must pass before production rollout.
+- Do not equate this schema foundation with working delivery or generated scoring. Both remain blocked pending implementation and founder scoring approvals.
+
 ## Target workflow (adult-first)
 1. Person completes free questionnaire, email/identity linked to one `contact_id` and `workflow_id`, with assessed-person identity preserved separately for any proxy family pathway.
 2. Secure source-only intake loads the protected snapshot via existing authorized backend reviewer read, not by copying answers into public assets. Capture questionnaire version and completion/coverage.
