@@ -31,3 +31,10 @@
 .stories-proof-archive .rva-proof-mini-grid{grid-template-columns:repeat(6,minmax(0,1fr))}
 @media(max-width:850px){.stories-proof-archive .rva-proof-mini-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:520px){.stories-proof-archive .rva-proof-mini-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* Approved emerald testimonial gallery carousel */
+.rva-proof-mini-card[hidden]{display:none!important}
+.rva-proof-carousel-controls{display:flex;gap:20px;align-items:center;justify-content:center;margin:16px 0 6px}
+.rva-proof-carousel-arrow{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid #154734;border-radius:50%;background:#154734;color:#fff;font-size:23px;cursor:pointer}
+.rva-proof-carousel-arrow:hover{background:#206248}
+.rva-proof-carousel-arrow:focus-visible{outline:3px solid #b18845;outline-offset:3px}
+.rva-proof-carousel-indicator{font-size:13px;font-weight:700;color:#154734;min-width:140px;text-align:center}
