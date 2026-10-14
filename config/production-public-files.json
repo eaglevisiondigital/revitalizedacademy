@@ -391,5 +391,6 @@
   "pay/payment.css",
   "pay/payment.js",
   "portal/portal-payment-requests.css",
-  "portal/portal-payment-requests.js"
+  "portal/portal-payment-requests.js",
+  "assets/images/vitality-roadmap-results-sample-v2.svg"
 ]
