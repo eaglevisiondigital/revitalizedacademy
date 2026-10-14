@@ -84,20 +84,53 @@
         const limit = root.dataset.rvaProofLimit === 'all' ? entries.length : 6;
         entries.forEach((item, index) => showCard(item, grid, root, index, limit));
         if (entries.length > limit) {
-          const more = document.createElement('button');
-          more.className = 'rva-proof-mini-more';
-          more.type = 'button';
-          more.textContent = `View All ${entries.length} Member Stories ↓`;
-          more.setAttribute('aria-expanded','false');
-          more.addEventListener('click', () => {
-            const expanded = more.getAttribute('aria-expanded') === 'true';
-            grid.querySelectorAll('.rva-proof-mini-card').forEach((card, index) => {
-              card.hidden = expanded && index >= limit;
-            });
-            more.setAttribute('aria-expanded', String(!expanded));
-            more.textContent = expanded ? `View All ${entries.length} Member Stories ↓` : 'Show Fewer Stories ↑';
-          });
-          grid.insertAdjacentElement('afterend', more);
+          const cards = [...grid.querySelectorAll('.rva-proof-mini-card')];
+          const pageCount = Math.ceil(cards.length / limit);
+          let activePage = 0;
+          let timer = null;
+          const controls = document.createElement('nav');
+          controls.className = 'rva-proof-carousel-controls';
+          controls.setAttribute('aria-label', 'Testimonial gallery navigation');
+          const prev = document.createElement('button');
+          prev.type = 'button';
+          prev.className = 'rva-proof-carousel-arrow';
+          prev.textContent = '←';
+          prev.setAttribute('aria-label','Previous testimonial group');
+          const indicator = document.createElement('span');
+          indicator.className = 'rva-proof-carousel-indicator';
+          indicator.setAttribute('role','status');
+          indicator.setAttribute('aria-live','polite');
+          const next = document.createElement('button');
+          next.type = 'button';
+          next.className = 'rva-proof-carousel-arrow';
+          next.textContent = '→';
+          next.setAttribute('aria-label','Next testimonial group');
+          const showPage = page => {
+            activePage = (page + pageCount) % pageCount;
+            cards.forEach((card, index) => { card.hidden = Math.floor(index / limit) !== activePage; });
+            const first = activePage * limit + 1;
+            const last = Math.min(first + limit - 1, cards.length);
+            indicator.textContent = 'Showing ' + first + '–' + last + ' of ' + cards.length;
+          };
+          const stop = () => { if (timer !== null) clearInterval(timer); timer = null; };
+          const start = () => {
+            stop();
+            if (document.hidden || dialog.open || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            timer = setInterval(() => showPage(activePage + 1), 10000);
+          };
+          prev.addEventListener('click', () => { stop(); showPage(activePage - 1); });
+          next.addEventListener('click', () => { stop(); showPage(activePage + 1); });
+          root.addEventListener('mouseenter', stop);
+          root.addEventListener('mouseleave', start);
+          root.addEventListener('focusin', stop);
+          root.addEventListener('focusout', event => { if (!root.contains(event.relatedTarget)) start(); });
+          root.addEventListener('touchstart', stop, {passive:true});
+          document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
+          dialog.addEventListener('close', start);
+          controls.append(prev,indicator,next);
+          grid.insertAdjacentElement('afterend', controls);
+          showPage(0);
+          start();
         }
         const count = root.querySelector('[data-rva-proof-count]');
         if (count) count.textContent = `${entries.length} original member stories`;
