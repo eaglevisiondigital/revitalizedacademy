@@ -7,7 +7,7 @@
  <title>Programs | ReVitalized Academy</title>
  <link rel="stylesheet" href="css/enrollment82.css?v=82">
  <link rel="stylesheet" href="css/plans85-premium.css?v=85">
-  <link rel="stylesheet" href="css/vitality-report-preview.css?v=3">
+  <link rel="stylesheet" href="css/vitality-report-preview.css?v=4">
 </head>
 <body class="ra-journey ra85-plans" data-programs-build="89">
  <a class="ra-skip" href="#programs">Skip to programs</a>
@@ -101,6 +101,6 @@
  <footer class="ra-journey-footer"><div class="ra-journey-footer-inner"><a href="index.html"><img src="assets/images/revitalized-logo-light-approved.png" alt="ReVitalized Academy"></a><div class="ra-footer-copy">Program availability, coach availability, billing terms, cancellation terms and refund terms are confirmed before enrollment and governed by the final coaching agreement.</div><div class="ra-footer-links"><a href="consult.html">Free Vitality Roadmap</a><a href="disclaimer.html">Health &amp; Results Disclaimer</a><a href="#questions">Contact</a></div><div class="ra-footer-disclaimer">ReVitalized Academy provides educational and coaching services. Content is not intended to diagnose, treat, cure or prevent disease and is not a substitute for professional medical advice. Results vary.</div></div></footer>
 
  <script>(()=>{const b=document.querySelector('.ra-menu-toggle'),n=document.querySelector('.ra-nav');if(b&&n)b.addEventListener('click',()=>{const o=n.classList.toggle('is-open');b.setAttribute('aria-expanded',String(o));});const form=document.getElementById('program-question-form'),success=document.getElementById('program-question-success');if(form&&success){form.addEventListener('submit',async(e)=>{e.preventDefault();const submit=form.querySelector('button[type="submit"]'),original=submit.innerHTML;submit.disabled=true;submit.textContent='Sending…';try{const body=new URLSearchParams(new FormData(form)).toString();const response=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body});if(!response.ok)throw new Error('Submission failed');form.reset();success.hidden=false;submit.innerHTML='Sent <span aria-hidden="true">✓</span>';}catch(err){submit.disabled=false;submit.innerHTML=original;success.hidden=false;success.textContent='We could not send that just now. Please try again, or email contact@revitalizedacademy.com.';}});}})();</script>
-  <script defer src="js/vitality-report-preview.js?v=3"></script>
+  <script defer src="js/vitality-report-preview.js?v=4"></script>
 </body>
 </html>
