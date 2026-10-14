@@ -29,8 +29,7 @@
     '.hero54-actions', '.matrix-focus-actions', '.future-actions',
     '.journey-actions', '.video-cta-row', '.founders-cta-actions',
     '.fh80-hero-actions', '.fh80-next-action', '.vitality-popup-actions',
-    '.stories-cta > div', '.faq-answer p', '.ra85-question-note',
-    '.matrix-cta-card'
+    '.stories-cta > div', '.faq-answer p'
   ].join(',');
 
   const destinations = [...document.querySelectorAll('a[href]')].filter(a => {
