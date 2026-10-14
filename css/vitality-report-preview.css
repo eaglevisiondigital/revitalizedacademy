@@ -68,3 +68,57 @@
   .vitality-card > .rva-report-preview-trigger { margin:.7rem 1rem; }
 }
 @media (prefers-reduced-motion: reduce) { .rva-report-preview-overlay { backdrop-filter:none; } }
+/* October 14: explicitly visible preview text directly beneath every free Roadmap CTA. */
+.rva-report-preview-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: fit-content;
+  max-width: min(100%, 670px);
+  min-height: 44px;
+  color: #154734;
+  font-size: clamp(13px, 1.05vw, 15px);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: #B18845;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+  background: none;
+  padding: 9px 4px;
+  margin: 7px 0 14px;
+  position: relative;
+  isolation: isolate;
+  z-index: 2;
+}
+.rva-report-preview-trigger:hover { color: #996918; text-decoration-thickness: 2px; }
+.rva-report-preview-trigger-icon { flex: 0 0 30px; width: 30px; height: 30px; font-size: 18px; }
+.hero54-copy > .rva-report-preview-trigger { margin-top: 12px; }
+.matrix-focus-footer > .rva-report-preview-trigger,
+.vitality-popup-body > .rva-report-preview-trigger { color: #154734; }
+.vitality-popup-body > .rva-report-preview-trigger { justify-content: center; margin: 8px auto 12px; text-align:center; }
+.vitality-popup-body > .rva-report-preview-trigger:hover { color: #966e32; }
+.vitality-page .rva-report-preview-trigger--assessment { margin: 12px auto 18px; }
+.fh80-next-action + .rva-report-preview-trigger { margin: 8px auto 18px; }
+.stories-cta > .rva-report-preview-trigger,
+.founders-cta-actions + .rva-report-preview-trigger,
+.video-cta-row + .rva-report-preview-trigger,
+.journey-actions + .rva-report-preview-trigger,
+.fh80-hero-actions + .rva-report-preview-trigger,
+.future-actions + .rva-report-preview-trigger { margin: 9px auto 17px; }
+/* A framed report rather than a floating thumbnail. */
+.rva-report-preview-modal { width: min(100%, 1180px); border-radius: 18px; padding: clamp(14px, 2vw, 28px); }
+.rva-report-preview-figure {
+  padding: clamp(8px, 1.5vw, 18px);
+  border: 1px solid #dbcfbb;
+  border-radius: 13px;
+  background: #fffdfa;
+  box-shadow: inset 0 0 0 1px rgba(177,136,69,.12), 0 12px 24px rgba(17,48,34,.07);
+}
+.rva-report-preview-figure img { display: block; width: 100%; height: auto; object-fit: contain; }
+.rva-report-preview-close { width: 45px; height: 45px; font-size: 28px; border: 1px solid #d7c5a5; }
+.rva-report-preview-footer { gap: 18px; }
+@media (max-width: 650px) {
+  .rva-report-preview-trigger { width: auto; font-size: 13px; line-height: 1.5; }
+  .rva-report-preview-figure { padding: 5px; }
+  .rva-report-preview-heading { margin-top: 1.8rem; }
+}
