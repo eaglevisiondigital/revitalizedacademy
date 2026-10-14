@@ -1,98 +1,170 @@
 [
   {
-    "name": "Tonya",
-    "image": "assets/images/social-proof/IMG_6983.svg"
-  },
-  {
-    "name": "Roxanne",
-    "image": "assets/images/social-proof/IMG_6984.svg"
-  },
-  {
-    "name": "Rodney",
-    "image": "assets/images/social-proof/IMG_6996.svg"
-  },
-  {
-    "name": "William",
-    "image": "assets/images/social-proof/IMG_6982.svg"
-  },
-  {
-    "name": "Drew",
-    "image": "assets/images/social-proof/IMG_6985.svg"
-  },
-  {
-    "name": "Eric & Nathalie",
-    "image": "assets/images/social-proof/IMG_7001.svg"
-  },
-  {
+    "id": "img-6979",
     "name": "Julien",
-    "image": "assets/images/social-proof/IMG_6979.svg"
+    "image": "assets/images/social-proof/IMG_6979.svg",
+    "homepage": false,
+    "alt": "Julien's original ReVitalized Academy testimonial graphic"
   },
   {
+    "id": "img-6980",
     "name": "Brandy",
-    "image": "assets/images/social-proof/IMG_6980.svg"
+    "image": "assets/images/social-proof/IMG_6980.svg",
+    "homepage": true,
+    "alt": "Brandy's original ReVitalized Academy testimonial graphic"
   },
   {
+    "id": "img-6981",
     "name": "Dan",
-    "image": "assets/images/social-proof/IMG_6981.svg"
+    "image": "assets/images/social-proof/IMG_6981.svg",
+    "homepage": true,
+    "alt": "Dan's original ReVitalized Academy testimonial graphic"
   },
   {
+    "id": "img-6982",
+    "name": "William",
+    "image": "assets/images/social-proof/IMG_6982.svg",
+    "homepage": false,
+    "alt": "William's original ReVitalized Academy testimonial graphic"
+  },
+  {
+    "id": "img-6983",
+    "name": "Tonya",
+    "image": "assets/images/social-proof/IMG_6983.svg",
+    "homepage": false,
+    "alt": "Tonya's original ReVitalized Academy testimonial graphic"
+  },
+  {
+    "id": "img-6984",
+    "name": "Roxanne",
+    "image": "assets/images/social-proof/IMG_6984.svg",
+    "homepage": false,
+    "alt": "Roxanne's original ReVitalized Academy testimonial graphic"
+  },
+  {
+    "id": "img-6985",
+    "name": "Drew",
+    "image": "assets/images/social-proof/IMG_6985.svg",
+    "homepage": true,
+    "alt": "Drew's original ReVitalized Academy testimonial graphic"
+  },
+  {
+    "id": "img-6986",
     "name": "Claudia",
-    "image": "assets/images/social-proof/IMG_6986.svg"
+    "image": "assets/images/social-proof/claudia-emerald-testimonial.svg",
+    "homepage": false,
+    "alt": "Claudia's original ReVitalized Academy testimonial graphic"
   },
   {
+    "id": "img-6987",
     "name": "Isaac",
-    "image": "assets/images/social-proof/IMG_6987.svg"
+    "image": "assets/images/social-proof/IMG_6987.svg",
+    "homepage": true,
+    "alt": "Isaac's original ReVitalized Academy testimonial graphic"
   },
   {
+    "id": "img-6988",
     "name": "Kristin",
-    "image": "assets/images/social-proof/IMG_6988.svg"
+    "image": "assets/images/social-proof/IMG_6988.svg",
+    "homepage": true,
+    "alt": "Kristin's original ReVitalized Academy testimonial graphic"
   },
   {
+    "id": "img-6989",
     "name": "Melanie",
-    "image": "assets/images/social-proof/IMG_6989.svg"
+    "image": "assets/images/social-proof/IMG_6989.svg",
+    "homepage": false,
+    "alt": "Melanie's original ReVitalized Academy testimonial graphic"
   },
   {
+    "id": "img-6990",
     "name": "Vincent",
-    "image": "assets/images/social-proof/IMG_6990.svg"
+    "image": "assets/images/social-proof/IMG_6990.svg",
+    "homepage": true,
+    "alt": "Vincent's original ReVitalized Academy testimonial graphic"
   },
   {
+    "id": "img-6991",
     "name": "Laura",
-    "image": "assets/images/social-proof/IMG_6991.svg"
+    "image": "assets/images/social-proof/IMG_6991.svg",
+    "homepage": true,
+    "alt": "Laura's original ReVitalized Academy testimonial graphic"
   },
   {
+    "id": "img-6992",
     "name": "Mark",
-    "image": "assets/images/social-proof/IMG_6992.svg"
+    "image": "assets/images/social-proof/IMG_6992.svg",
+    "homepage": true,
+    "alt": "Mark's original ReVitalized Academy testimonial graphic"
   },
   {
+    "id": "img-6993",
     "name": "Marilynne",
-    "image": "assets/images/social-proof/IMG_6993.svg"
+    "image": "assets/images/social-proof/IMG_6993.svg",
+    "homepage": false,
+    "alt": "Marilynne's original ReVitalized Academy testimonial graphic"
   },
   {
+    "id": "img-6994",
     "name": "Kenneth",
-    "image": "assets/images/social-proof/IMG_6994.svg"
+    "image": "assets/images/social-proof/IMG_6994.svg",
+    "homepage": true,
+    "alt": "Kenneth's original ReVitalized Academy testimonial graphic"
   },
   {
+    "id": "img-6995",
     "name": "Janet",
-    "image": "assets/images/social-proof/IMG_6995.svg"
+    "image": "assets/images/social-proof/IMG_6995.svg",
+    "homepage": false,
+    "alt": "Janet's original ReVitalized Academy testimonial graphic"
   },
   {
+    "id": "img-6996",
+    "name": "Rodney",
+    "image": "assets/images/social-proof/rodney-emerald-testimonial.svg",
+    "homepage": true,
+    "alt": "Rodney's original ReVitalized Academy testimonial graphic"
+  },
+  {
+    "id": "img-6997",
     "name": "Paula",
-    "image": "assets/images/social-proof/IMG_6997.svg"
+    "image": "assets/images/social-proof/IMG_6997.svg",
+    "homepage": true,
+    "alt": "Paula's original ReVitalized Academy testimonial graphic"
   },
   {
+    "id": "img-6998",
     "name": "Logan",
-    "image": "assets/images/social-proof/IMG_6998.svg"
+    "image": "assets/images/social-proof/IMG_6998.svg",
+    "homepage": false,
+    "alt": "Logan's original ReVitalized Academy testimonial graphic"
   },
   {
+    "id": "img-6999",
     "name": "Izolda",
-    "image": "assets/images/social-proof/IMG_6999.svg"
+    "image": "assets/images/social-proof/IMG_6999.svg",
+    "homepage": false,
+    "alt": "Izolda's original ReVitalized Academy testimonial graphic"
   },
   {
+    "id": "img-7001",
+    "name": "Eric",
+    "image": "assets/images/social-proof/IMG_7001.svg",
+    "homepage": true,
+    "alt": "Eric's original ReVitalized Academy testimonial graphic"
+  },
+  {
+    "id": "img-7002",
     "name": "Nikki",
-    "image": "assets/images/social-proof/IMG_7002.svg"
+    "image": "assets/images/social-proof/IMG_7002.svg",
+    "homepage": false,
+    "alt": "Nikki's original ReVitalized Academy testimonial graphic"
   },
   {
+    "id": "img-7003",
     "name": "Marie",
-    "image": "assets/images/social-proof/IMG_7003.svg"
+    "image": "assets/images/social-proof/IMG_7003.svg",
+    "homepage": false,
+    "alt": "Marie's original ReVitalized Academy testimonial graphic"
   }
 ]
