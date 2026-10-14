@@ -79,3 +79,54 @@
 @media print{.rva-cover-image{height:105px}.rva-score-ring{width:115px;height:115px}.rva-score-ring>div{width:100px;height:100px}.rva-score-ring .score-num{font-size:46px}.rva-snapshot{break-inside:avoid;box-shadow:none}.rva-snapshot-grid{grid-template-columns:repeat(4,1fr);gap:2px}.rva-dial{width:72px;height:72px}.rva-dial-center{width:63px;height:63px}.rva-dial-center strong{font-size:17px}.rva-mini-icon{width:13px;height:13px}.rva-snapshot-item>b{font-size:11px}.rva-snapshot-item>small{font-size:8px}.rva-insight-grid{grid-template-columns:1fr 1fr}.rva-insight-item{min-height:60px;padding:8px;grid-template-columns:24px 1fr 40px}.rva-insight-icon{width:22px;height:22px}.rva-insight-icon .rva-mini-icon{width:14px;height:14px}.rva-insight-info>strong{font-size:11px}.rva-insight-bar{display:none}.rva-insight-value{font-size:14px}.rva-question-dialog{display:none!important}}
 
 .rva-action-add{display:flex;width:100%;justify-content:space-between;text-align:left;align-items:center;margin-top:9px;min-height:48px;padding:11px 13px;background:#fffefa;border-color:#d8cbbb;font-weight:650;white-space:normal;line-height:1.4}.rva-action-add:hover{background:#f5f0e6;border-color:#b18845}
+
+/* Premium family photograph treatment, approved visual direction Oct 14:
+   taller viewport keeps full faces in frame, no artificial green veil over the photo.
+   Photo remains an image element with its original natural aspect ratio. */
+.rva-cover-image {
+  height: clamp(310px, 30vw, 390px);
+  min-height: 310px;
+  margin-top: 8px;
+  overflow: hidden;
+  isolation: isolate;
+  background: #315141;
+}
+.rva-cover-image > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  filter: none;
+  transform: none;
+  opacity: 1;
+}
+.rva-cover-image::before {
+  display: none;
+  content: none;
+}
+.rva-cover-image::after {
+  bottom: -36px;
+  height: 70px;
+  left: -4%;
+  width: 108%;
+  border-radius: 52% 52% 0 0 / 75% 75% 0 0;
+  box-shadow: 0 -3px 0 #cba45f;
+}
+.rva-cover-image figcaption {
+  bottom: 14px;
+  font-size: clamp(8px, .85vw, 10px);
+  letter-spacing: .12em;
+  line-height: 1.35;
+}
+@media (max-width: 930px) {
+  .rva-cover-image {height: clamp(280px, 36vw, 370px);}
+}
+@media (max-width: 680px) {
+  .rva-cover-image {height: 295px; min-height: 295px;}
+  .rva-cover-image > img {object-position: center 28%;}
+  .rva-cover-image figcaption {bottom: 12px; font-size: 8px;}
+}
+@media print {
+  .rva-cover-image {height: 190px; min-height: 190px;}
+}
