@@ -18,14 +18,14 @@
     "name": "Dan & Liam",
     "image": "assets/images/social-proof/IMG_6981.svg",
     "alt": "Dan & Liam — original ReVitalized Academy client testimonial graphic",
-    "homepage": false
+    "homepage": true
   },
   {
     "id": "proof-6982",
     "name": "William",
     "image": "assets/images/social-proof/IMG_6982.svg",
     "alt": "William — original ReVitalized Academy client testimonial graphic",
-    "homepage": false
+    "homepage": true
   },
   {
     "id": "proof-6983",
@@ -46,7 +46,7 @@
     "name": "Drew",
     "image": "assets/images/social-proof/IMG_6985.svg",
     "alt": "Drew — original ReVitalized Academy client testimonial graphic",
-    "homepage": false
+    "homepage": true
   },
   {
     "id": "proof-6986",
@@ -60,7 +60,7 @@
     "name": "Isaac",
     "image": "assets/images/social-proof/IMG_6987.svg",
     "alt": "Isaac — original ReVitalized Academy client testimonial graphic",
-    "homepage": false
+    "homepage": true
   },
   {
     "id": "proof-6988",
@@ -81,7 +81,7 @@
     "name": "Vincent",
     "image": "assets/images/social-proof/IMG_6990.svg",
     "alt": "Vincent — original ReVitalized Academy client testimonial graphic",
-    "homepage": false
+    "homepage": true
   },
   {
     "id": "proof-6991",
@@ -102,14 +102,14 @@
     "name": "Marilynne",
     "image": "assets/images/social-proof/IMG_6993.svg",
     "alt": "Marilynne — original ReVitalized Academy client testimonial graphic",
-    "homepage": false
+    "homepage": true
   },
   {
     "id": "proof-6994",
     "name": "Kenneth",
     "image": "assets/images/social-proof/IMG_6994.svg",
     "alt": "Kenneth — original ReVitalized Academy client testimonial graphic",
-    "homepage": false
+    "homepage": true
   },
   {
     "id": "proof-6995",
@@ -130,28 +130,28 @@
     "name": "Paula",
     "image": "assets/images/social-proof/IMG_6997.svg",
     "alt": "Paula — original ReVitalized Academy client testimonial graphic",
-    "homepage": false
+    "homepage": true
   },
   {
     "id": "proof-6998",
     "name": "Logan",
     "image": "assets/images/social-proof/IMG_6998.svg",
     "alt": "Logan — original ReVitalized Academy client testimonial graphic",
-    "homepage": false
+    "homepage": true
   },
   {
     "id": "proof-6999",
     "name": "Izolda",
     "image": "assets/images/social-proof/IMG_6999.svg",
     "alt": "Izolda — original ReVitalized Academy client testimonial graphic",
-    "homepage": false
+    "homepage": true
   },
   {
     "id": "proof-7001",
     "name": "Eric & Nathalie",
     "image": "assets/images/social-proof/IMG_7001.svg",
     "alt": "Eric & Nathalie — original ReVitalized Academy client testimonial graphic",
-    "homepage": false
+    "homepage": true
   },
   {
     "id": "proof-7002",
@@ -165,6 +165,6 @@
     "name": "Marie",
     "image": "assets/images/social-proof/IMG_7003.svg",
     "alt": "Marie — original ReVitalized Academy client testimonial graphic",
-    "homepage": false
+    "homepage": true
   }
 ]
