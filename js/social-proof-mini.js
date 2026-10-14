@@ -1,21 +1,22 @@
-/* ReVitalized Academy: historical emerald social-proof graphics.
-   All member photographs and pre-existing source captions stay untouched. */
+/* ReVitalized Academy: archival member proof library.
+ * Approved original media remains unaltered; the JS only renders the files as provided.
+ * Homepage uses 12 compact entries; Stories page shows all 24.
+ */
 (() => {
   'use strict';
   const roots = [...document.querySelectorAll('[data-rva-proof-mini]')];
   if (!roots.length) return;
-  const path = 'assets/data/social-proof-mini.json';
 
   const dialog = document.createElement('dialog');
   dialog.className = 'rva-proof-mini-dialog';
-  dialog.setAttribute('aria-label', 'Enlarged ReVitalized member testimonial');
+  dialog.setAttribute('aria-label', 'Enlarged ReVitalized Academy member story');
   const frame = document.createElement('div');
   frame.className = 'rva-proof-mini-dialog-inner';
   const close = document.createElement('button');
   close.type = 'button';
   close.className = 'rva-proof-mini-close';
   close.textContent = 'Close ×';
-  close.setAttribute('aria-label', 'Close enlarged testimonial');
+  close.setAttribute('aria-label', 'Close enlarged member story');
   const enlarged = document.createElement('img');
   enlarged.alt = '';
   enlarged.className = 'rva-proof-mini-enlarged';
@@ -24,85 +25,65 @@
   frame.append(close, enlarged, caption);
   dialog.append(frame);
   document.body.append(dialog);
-  close.addEventListener('click', () => dialog.close());
-  dialog.addEventListener('click', (event) => {
-    if (event.target === dialog) dialog.close();
-  });
   let lastFocus = null;
-  dialog.addEventListener('close', () => {
-    enlarged.removeAttribute('src');
-    lastFocus?.focus?.();
-  });
 
-  const eligible = item => Boolean(item && typeof item.name === 'string' &&
-    item.name.trim() && item.name.length <= 120 &&
-    typeof item.image === 'string' &&
-    /^assets\/images\/social-proof\/IMG_\d{4}\.svg$/.test(item.image));
-
-  function showCard(item, grid, root, index, limit) {
-    const card = document.createElement('button');
-    card.className = 'rva-proof-mini-card';
-    card.type = 'button';
-    card.setAttribute('aria-label', `Enlarge original testimonial graphic for ${item.name}`);
-    card.hidden = index >= limit;
-    const image = document.createElement('img');
-    image.src = item.image;
-    image.alt = `Original ReVitalized Academy member testimonial graphic: ${item.name}`;
-    image.loading = index < limit ? 'eager' : 'lazy';
-    image.decoding = 'async';
-    image.width = 1320;
-    image.height = 1320;
-    const name = document.createElement('strong');
-    name.textContent = item.name;
-    const hint = document.createElement('span');
-    hint.textContent = 'View larger +';
-    card.append(image, name, hint);
-    image.addEventListener('error', () => {
-      card.remove();
-      if (!grid.children.length) root.hidden = true;
-    });
-    card.addEventListener('click', () => {
-      lastFocus = document.activeElement;
-      enlarged.src = item.image;
-      enlarged.alt = image.alt;
-      caption.textContent = `${item.name} · Original member-provided testimonial. Individual results vary.`;
-      dialog.showModal();
-      close.focus();
-    });
-    grid.append(card);
+  const closeDialog = () => { if (dialog.open) dialog.close(); };
+  close.addEventListener('click', closeDialog);
+  dialog.addEventListener('click', e => { if (e.target === dialog) closeDialog(); });
+  dialog.addEventListener('close', () => { enlarged.removeAttribute('src'); lastFocus?.focus?.(); lastFocus = null; });
+  function eligible(item) {
+    return !!item &&
+      typeof item === 'object' &&
+      typeof item.name === 'string' && !!item.name.trim() && item.name.length <= 120 &&
+      typeof item.image === 'string' &&
+      /^assets\/images\/social-proof\/[a-zA-Z0-9_.-]+\.(?:jpe?g|png|webp|svg)$/i.test(item.image);
   }
-
-  fetch(path, {cache:'no-cache'})
-    .then(res => {if (!res.ok) throw new Error('Gallery unavailable'); return res.json();})
-    .then(data => {
-      if (!Array.isArray(data)) return;
-      const entries = data.filter(eligible);
-      if (!entries.length) return;
-      roots.forEach(root => {
-        const grid = root.querySelector('[data-rva-proof-mini-grid]');
-        if (!grid) return;
-        const limit = root.dataset.rvaProofLimit === 'all' ? entries.length : 6;
-        entries.forEach((item, index) => showCard(item, grid, root, index, limit));
-        if (entries.length > limit) {
-          const more = document.createElement('button');
-          more.className = 'rva-proof-mini-more';
-          more.type = 'button';
-          more.textContent = `View All ${entries.length} Member Stories ↓`;
-          more.setAttribute('aria-expanded','false');
-          more.addEventListener('click', () => {
-            const expanded = more.getAttribute('aria-expanded') === 'true';
-            grid.querySelectorAll('.rva-proof-mini-card').forEach((card, index) => {
-              card.hidden = expanded && index >= limit;
-            });
-            more.setAttribute('aria-expanded', String(!expanded));
-            more.textContent = expanded ? `View All ${entries.length} Member Stories ↓` : 'Show Fewer Stories ↑';
-          });
-          grid.insertAdjacentElement('afterend', more);
-        }
-        const count = root.querySelector('[data-rva-proof-count]');
-        if (count) count.textContent = `${entries.length} original member stories`;
-        root.hidden = false;
+  function render(root, all) {
+    const grid = root.querySelector('[data-rva-proof-mini-grid]');
+    if (!grid) return;
+    const full = root.dataset.rvaProofMode === 'all';
+    const entries = full ? all : all.filter(item => item.homepage).slice(0, 12);
+    if (!entries.length) return;
+    let good = 0;
+    for (const item of entries) {
+      const card = document.createElement('button');
+      card.className = 'rva-proof-mini-card';
+      card.type = 'button';
+      card.setAttribute('aria-label', 'Enlarge ' + item.name + ' original testimonial graphic');
+      const image = document.createElement('img');
+      image.src = item.image;
+      image.alt = item.alt || item.name + ', original ReVitalized Academy client testimonial graphic';
+      image.loading = 'lazy';
+      image.decoding = 'async';
+      const name = document.createElement('strong');
+      name.textContent = item.name;
+      const hint = document.createElement('span');
+      hint.textContent = 'View larger +';
+      card.append(image, name, hint);
+      image.addEventListener('error', () => {
+        card.remove();
+        good -= 1;
+        if (good <= 0) root.hidden = true;
       });
+      card.addEventListener('click', () => {
+        lastFocus = document.activeElement;
+        enlarged.src = item.image;
+        enlarged.alt = image.alt;
+        caption.textContent = item.name + ' · Original client-provided testimonial graphic. Individual results vary.';
+        dialog.showModal();
+        close.focus();
+      });
+      grid.append(card);
+      good += 1;
+    }
+    root.hidden = !good;
+  }
+  fetch('assets/data/social-proof-mini.json', {cache:'no-cache'})
+    .then(response => { if (!response.ok) throw Error('Proof gallery unavailable'); return response.json(); })
+    .then(raw => {
+      if (!Array.isArray(raw)) return;
+      const all = raw.filter(eligible);
+      for (const root of roots) render(root, all);
     })
-    .catch(() => {roots.forEach(root => {root.hidden = true;});});
+    .catch(() => { for (const root of roots) root.hidden = true; });
 })();
