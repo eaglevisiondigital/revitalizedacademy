@@ -1,3 +1,7 @@
+## 2026-10-15 — Vitality Roadmap B2 private review safety
+
+B2 adds no server mutation endpoint. It reuses B1 verified-session/private-health/contact-scope read guards, clears source and private DOM on denial/logout/account reset, suppresses stale responses and renders source text without HTML. Session-only comparison/review choices do not enter browser storage. The minimal downloadable handoff excludes automatically copied participant answers and identifiers. Synthetic provenance labels and policy flags are not security authorities; the existing B1 database trigger/approval endpoint still blocks release. No real assessment receives scores/stages. Production and beta primary, RLS, roles, migrations, Edge, emails and payment state remain untouched. [Security evidence and limits](VITALITY-ROADMAP-B2-IMPLEMENTATION-20261015.md).
+
 # Holistic Foundations Pricing v2 security — 2026-10-10
 
 ## 2026-10-15 — Vitality Roadmap Phase B1 (staging only)

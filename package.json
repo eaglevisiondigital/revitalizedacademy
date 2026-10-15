@@ -26,7 +26,11 @@
     "build:roadmap-b1:staging": "node scripts/build-vitality-roadmap-b1-staging.cjs",
     "test:roadmap-b1": "node --test tests/vitality-roadmap-b1.cjs",
     "test:roadmap-b1:database": "node scripts/test-vitality-roadmap-b1.cjs",
-    "test:roadmap-b1:browser": "node tests/vitality-roadmap-b1-browser.cjs"
+    "test:roadmap-b1:browser": "node tests/vitality-roadmap-b1-browser.cjs",
+    "build:roadmap-b2:staging": "node scripts/generate-roadmap-b2-source-map.cjs --check && node scripts/build-vitality-roadmap-b2-staging.cjs",
+    "test:roadmap-b2": "node --test tests/vitality-roadmap-b2.cjs",
+    "test:roadmap-b2:browser": "node tests/vitality-roadmap-b2-browser.cjs",
+    "check:roadmap-b2:source-map": "node scripts/generate-roadmap-b2-source-map.cjs --check"
   },
   "devDependencies": {
     "jsdom": "26.1.0",

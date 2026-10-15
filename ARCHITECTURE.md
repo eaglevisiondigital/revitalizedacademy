@@ -1,3 +1,7 @@
+## 2026-10-15 — Vitality Roadmap B2 comparison boundary
+
+The B2 preview extends B1 in a stacked branch. A pure Node/browser engine evaluates explicit hypothetical inputs; fixed scenarios and per-Driver comparison cards expose numerical traces and assumptions. A generated registry describes current questionnaire controls and source coverage. Existing private B1 read RPCs supply source review only; real answers never automatically populate candidate calculations or handoff exports. No production build allowlist, questionnaire, save/resume protocol, schema or report release path changes. Parameters/reasoned review choices are document-session state, not persisted policy or authenticated founder signoff. [Implementation](VITALITY-ROADMAP-B2-IMPLEMENTATION-20261015.md).
+
 # Holistic Foundations Pricing v2 implementation — 2026-10-10
 
 ## 2026-10-15 — Vitality Roadmap Phase B1 (staging only)

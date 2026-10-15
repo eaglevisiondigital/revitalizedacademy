@@ -1,3 +1,7 @@
+## 2026-10-15 — B2 starts from B1; candidate comparisons precede policy approval
+
+User requires B2 to start from B1 / PR #26, not current production main. Implement concrete arithmetic/source coverage/workbench/expected-output comparisons while distinguishing confirmed shared scales from unapproved formulas and interpretations. Common alpha 0.5, complete breadth expressions and tie ordering are disclosed engineering comparisons. Do not invent factual proficiency, primary symptom ownership, knowledge-base advice, per-Driver stages or founder approval. Missing/unmatched source evidence stays unknown; actual scoring/release stays held. Isolated staging preview and stacked draft PR are review artifacts, not a production rollout. Next: founder calibration before authoritative scoring. [Founder decision packet](VITALITY-ROADMAP-B2-FOUNDER-REVIEW-PACK.md).
+
 # Holistic Foundations Pricing v2 implementation boundary — 2026-10-10
 
 ## 2026-10-15 — Vitality Roadmap Phase B1 (staging only)

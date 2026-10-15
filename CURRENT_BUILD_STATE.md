@@ -1,3 +1,9 @@
+## 2026-10-15 — Vitality Roadmap B2 candidate workbench (isolated staging preview)
+
+B2 is built from B1 / PR #26 at `3c1c6d3258b9e78abb85dd0f43879622d5e005b7`, not production main. It supplies disclosed candidate math, 743 source field mappings, 190 symptom observations, 30 fixed expected-output scenarios, 36 per-Driver comparisons and a founder review workbench. Actual participant scoring, policy approval, report release and emails remain held. No migrations, Edge updates or hosted data writes. Production and beta primary remain unchanged.
+
+Validation: 146 B2 checks, 116 Chromium/WebKit integration checks at desktop/tablet/mobile, 79 preserved frontend/session/B1 regressions and 47 PostgreSQL 17 checks passed; 90 JavaScript syntax checks and source-map drift checks passed. The production build remains 395/395 files byte-identical to B1. [Implementation, preview and limitations](VITALITY-ROADMAP-B2-IMPLEMENTATION-20261015.md); [founder review pack](VITALITY-ROADMAP-B2-FOUNDER-REVIEW-PACK.md). Next: independent Justyn/Elle calibration and a versioned approved measurement/scoring/interpretation contract before any real-source scoring adapter.
+
 ## RECONCILED / VALIDATED — Holistic Foundations Pricing v2 technical release — 2026-10-12
 
 ## 2026-10-15 — Vitality Roadmap Phase B1 (staging only)
