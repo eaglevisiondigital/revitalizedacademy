@@ -36,10 +36,14 @@ Commands: `npm run build:roadmap-b2:staging`, `npm run test:roadmap-b2`, `npm ru
 ## Isolated review deployment
 
 - B2 manual staging draft: `6ad0e3dcf991aad2c3c2d21a`.
-- Review URL: https://roadmap-b2--revitalizedacademy-staging.netlify.app/portal/ . After normal beta Owner sign-in, open Vitality Roadmaps → Founder calculation workbench · Candidate only.
+- Review URL: https://roadmap-b2--revitalizedacademy-staging.netlify.app/portal/ . After normal beta Owner sign-in, open People → Vitality Assessments (workspace heading: Vitality Roadmaps) → Founder calculation workbench · Candidate only.
 - All five new JS/CSS assets use `v=100`; each returned HTTP 200 and matched the exact built SHA-256. Portal HTML and `/runtime-config.js` also matched. Runtime remains staging-only. No Functions were deployed.
 - Production primary remained `6ad0027282b2138262e70154`; beta primary remained `6acc33161511aa93c289bbcc` after the preview upload.
-- Authenticated hosted B2 Owner acceptance is pending a normal sign-in on this new preview origin. Exact-built Chromium/WebKit coverage passed; it does not replace that live session check.
+- Authenticated hosted B2 Owner acceptance passed on 2026-10-15 using the existing Staging Owner through normal sign-in. All six sections opened; 12 definition cards and 30 expected cases rendered. Mixed-evidence comparison yielded H=J=70 and overall 70. The asymmetric comparison changed from 74.27756 to 72.73892 after session-only exponent changes; its Driver changed from 59 to 57. Unknown proficiency withheld the overall instead of becoming zero. Explicit zero water remained zero.
+- The existing Synthetic Vitality Alias loaded through the B1 secure read path. All 12 source Driver cards remained Needs information; the overall stayed not calculated. No source answers were copied to simulation or exported; no review decisions were submitted or downloaded.
+- Eighteen hosted section/viewport combinations (all six sections at 1440×1000, 768×1024 and 390×844) had no horizontal page/dialog overflow. The viewport override was reset afterward. Chromium/WebKit automated coverage remains the separate cross-engine evidence; hosted checks used the in-app browser.
+- Closing removed the private dialog. Normal refresh restored the same Owner and discarded candidate changes (common alpha 0.5 / overall exponent 0.55 restored). Reopening succeeded with no console warnings/errors captured. The workbench was left open for founder review with reference settings and a fixed synthetic example; no hosted data was changed.
+- Draft PR #28: https://github.com/eaglevisiondigital/revitalizedacademy/pull/28 . It targets the B1 branch, remains unmerged and contains no production release authorization. Application source/build is `6e2d945357ca12c5ed5831946f9d04133009eb61`; subsequent acceptance documentation does not change deployed assets.
 
 ## Founder review / exact next package
 
