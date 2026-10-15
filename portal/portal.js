@@ -646,6 +646,11 @@
     await loadStaffDirectory();
     if(epoch!==sessionEpoch||terminatingSession)return;
     showPortal(staff);
+    // The required staff agreement must be available before operational data
+    // queries succeed: pending coaches are intentionally denied dashboard reads.
+    document.dispatchEvent(new CustomEvent("ra:staff-session-ready", {
+      detail: { ndaRequired: staff.role === "coach" && staff.onboarding_status === "pending" }
+    }));
     await loadDashboard();
   }
 
