@@ -291,6 +291,7 @@
       return;
     }
     renderReview(data);
+    document.dispatchEvent(new CustomEvent('ra:vitality-review-opened', { detail: { contactId } }));
   }
 
   function closeReview() {

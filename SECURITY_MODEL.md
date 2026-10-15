@@ -1,5 +1,10 @@
 # Holistic Foundations Pricing v2 security — 2026-10-10
 
+## 2026-10-15 — Vitality Roadmap Phase B1 (staging only)
+
+Implemented the secure review queue/editor, append-only draft/audit history, verified free-account claim/read boundary, unscored interactive/print preview and held email model. See [B1 acceptance](VITALITY-ROADMAP-B1-ACCEPTANCE-20261015.md) for migrations, deployment, tests and blockers. Production was read-only. Final approval, release and emails remain server-blocked. Next: founder-approved adult scoring/coverage and interpretation contract; no production rollout yet.
+
+
 New plan, price, route and eligibility-override tables have RLS enabled with direct table access revoked. Guarded server functions recheck active Owner/Admin authority, effective finance permission and contact scope. The browser cannot select amount, currency or route; exact SQL constraints prevent cross-market fallback, and all routes seed disabled. Annual override requires a reason and contact-activity audit. Exact plan/currency agreement guards reject missing or cross-plan mappings while the legal publication switch remains held. Direct ledger/payment/access bypasses remain blocked. PostgreSQL tests cover Owner/Admin success, Coach/member/anonymous/out-of-scope denial, catalog privacy, payment hold, mapping isolation and concurrency. [Full security result](docs/HOLISTIC_FOUNDATIONS_PRICING_V2_IMPLEMENTATION_2026-10-10.md).
 
 # Production Client Lifecycle technical foundation — reconciled 2026-10-08

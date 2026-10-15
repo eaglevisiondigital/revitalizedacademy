@@ -22,7 +22,11 @@
     "test:pricing-v2": "node --test tests/holistic-foundations-pricing-v2.cjs",
     "test:payments": "node --test tests/payments-v1.test.mjs",
     "test:payments:browser": "node tests/payments-browser.cjs",
-    "test:pricing-v2:database": "node scripts/test-holistic-foundations-pricing-v2.cjs"
+    "test:pricing-v2:database": "node scripts/test-holistic-foundations-pricing-v2.cjs",
+    "build:roadmap-b1:staging": "node scripts/build-vitality-roadmap-b1-staging.cjs",
+    "test:roadmap-b1": "node --test tests/vitality-roadmap-b1.cjs",
+    "test:roadmap-b1:database": "node scripts/test-vitality-roadmap-b1.cjs",
+    "test:roadmap-b1:browser": "node tests/vitality-roadmap-b1-browser.cjs"
   },
   "devDependencies": {
     "jsdom": "26.1.0",

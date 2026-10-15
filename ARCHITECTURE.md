@@ -1,5 +1,10 @@
 # Holistic Foundations Pricing v2 implementation — 2026-10-10
 
+## 2026-10-15 — Vitality Roadmap Phase B1 (staging only)
+
+Implemented the secure review queue/editor, append-only draft/audit history, verified free-account claim/read boundary, unscored interactive/print preview and held email model. See [B1 acceptance](VITALITY-ROADMAP-B1-ACCEPTANCE-20261015.md) for migrations, deployment, tests and blockers. Production was read-only. Final approval, release and emails remain server-blocked. Next: founder-approved adult scoring/coverage and interpretation contract; no production rollout yet.
+
+
 The approved normalized architecture is now represented by an unapplied forward candidate: `program_product_plans` holds stable product structure, `program_plan_prices` holds market/currency/amount/route, and `payment_merchant_routes` holds isolated provider readiness without secrets. Enrollment stores immutable plan/price/market/route/commitment snapshots and accepts only contact plus plan code from staff. Annual eligibility is derived from authoritative membership history with a separately audited override. Agreement lookup is exact-plan/currency and Payments v1 re-resolves the catalog server-side. All agreement and payment switches remain held. [Detailed implementation](docs/HOLISTIC_FOUNDATIONS_PRICING_V2_IMPLEMENTATION_2026-10-10.md).
 
 # Production Client Lifecycle technical foundation — reconciled 2026-10-08
