@@ -10,6 +10,7 @@
   let active=null;
   let reloadTimer=null;
   let startupTimer=null;
+  let ndaRequired=false;
 
   function setStatus(message,type=""){
     const target=el("staff-onboarding-status");
@@ -85,6 +86,27 @@
     if(!tasks.current(task))return;
     if(error){
       console.error("Staff onboarding agreements failed",error);
+      if(ndaRequired){
+        const modal=el("staff-onboarding-modal");
+        const list=el("staff-onboarding-list");
+        const documentPanel=el("staff-onboarding-document");
+        if(modal&&list&&documentPanel){
+          documentPanel.classList.add("hidden");
+          list.classList.remove("hidden");
+          list.replaceChildren();
+          const warning=document.createElement("p");
+          warning.setAttribute("role","alert");
+          warning.textContent="Your required NDA could not load. Please retry, or contact a ReVitalized Academy owner for assistance.";
+          const retry=document.createElement("button");
+          retry.type="button";
+          retry.className="secondary-button";
+          retry.textContent="Retry NDA";
+          retry.addEventListener("click",initialize);
+          list.append(warning,retry);
+          modal.classList.remove("hidden");
+          modal.setAttribute("aria-hidden","false");
+        }
+      }
       return;
     }
     rows=data||[];
@@ -128,6 +150,7 @@
     tasks.cancel();
     rows=[];
     active=null;
+    ndaRequired=false;
     if(reloadTimer!==null)window.clearTimeout(reloadTimer);
     reloadTimer=null;
     if(startupTimer!==null)window.clearTimeout(startupTimer);
@@ -135,7 +158,10 @@
     hide();
   }
 
-  function initialize(){
+  function initialize(event){
+    if(event?.type==="ra:staff-session-ready"){
+      ndaRequired=event.detail?.ndaRequired===true;
+    }
     if(startupTimer!==null)window.clearTimeout(startupTimer);
     startupTimer=null;
     load();
@@ -145,6 +171,9 @@
   el("staff-onboarding-sign-form").addEventListener("submit",sign);
 
   document.addEventListener("ra:staff-access-reset",teardown);
+  // Fire when the verified staff session opens, even if data dashboard RPCs
+  // are blocked until the NDA is signed. The dashboard refresh is secondary.
+  document.addEventListener("ra:staff-session-ready",initialize);
   document.addEventListener("ra:dashboard-loaded",initialize);
   startupTimer=window.setTimeout(initialize,450);
 })();
