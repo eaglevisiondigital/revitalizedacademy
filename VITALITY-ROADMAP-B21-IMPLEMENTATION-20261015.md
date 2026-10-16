@@ -41,7 +41,26 @@ Every candidate retains `policyApproved=false`, `releaseEligible=false`, `client
 
 ## Deployment and hosted acceptance
 
-Only the existing `roadmap-b2` alias on staging site `071b252e-a922-4846-a784-8dca1edad377` is in scope. No Functions upload. Primary production and beta published-deploy IDs are checked before/after; they must remain unchanged. Final source/deploy/hash and hosted Owner acceptance evidence is added after the isolated upload.
+Deployed application source: `3fb981342ab8b92d2d0114891c614384235e147c`. Isolated Netlify deploy: `6ad1a1f220c056de87f1fc75`, only the existing `roadmap-b2` alias on staging site `071b252e-a922-4846-a784-8dca1edad377`. No Functions upload. Preview: https://roadmap-b2--revitalizedacademy-staging.netlify.app/portal/ . PR #28 remains draft/unmerged on `codex/vitality-roadmap-b2-candidate-workbench`, based on B1. Later documentation commits do not change the deployed application bytes.
+
+Production primary remained `6ad137d38d394a5c89beedc4` before/after this continuation. Primary beta remained `6acc33161511aa93c289bbcc`. The earlier B2 report's production ID is historical; this task did not replace the newer production publish.
+
+All four B2.1 assets at `v=100`, portal HTML and runtime config returned HTTP 200 and exactly matched built bytes. SHA-256:
+
+| Asset | SHA-256 |
+| --- | --- |
+| `js/vitality-roadmap-b21-engine.js` | `bb22e6a87b00489b5d4b6770b8d6ab56ae9427ac70862ace6dd6e4c4bc67b463` |
+| `js/vitality-roadmap-b21-scenarios.js` | `81f3902b576ea28b25c2c18324de3f13cc707291baa15cb753f2f563765d87e4` |
+| `portal/portal-roadmap-b21-workbench.js` | `d76ad089584a0116d2297ab7aeef041aee93708e38b239e8e12c84c90069aa73` |
+| `css/vitality-roadmap-b21-workbench.css` | `b611a35faae407c7037fdc198e172694bfaf8a3bc8f1b1513b65144b37fbb473` |
+| `portal/index.html` | `64d91cc9b50cf9eb68cef017f0c31e0d19e00511d2137f609b2f1eb7a0b99bc1` |
+| `runtime-config.js` | `41414e3bf49ab8a29c3c94fb0687a88036796b9d58babe7f1c156974aed657bf` |
+
+Hosted read-only Owner acceptance passed through the existing Staging Owner's normal session: launch; 50 fictional choices; twelve Drivers; A/B/C actual values matching the independent arithmetic; budget hardship leaves health 100 while Budget is 0; incomplete proficiency withholds output; reasoned comparison revision 1; existing Synthetic Vitality Alias loads through the secure B1 path with all twelve Drivers and overall unscored. No real-source calculation, review submission or downloaded actual data.
+
+All four sections at 1440×1000, 768×1024 and 390×844 passed page/dialog overflow checks (12 combinations). Close removed the dialog. Normal refresh restored the same Owner and reset the session-only candidate revision to 0. Zero hosted warnings/errors captured. The temporary viewport override was reset; reference fictional overview was left open for founders. Logout/stale-response/account-switch/denial checks are covered by the isolated Chromium/WebKit harness and PostgreSQL tests, not falsely represented as separate live human-account transitions in this continuation.
+
+No hosted participant/source/configuration records changed. The local disposable database was dropped and PostgreSQL cluster stopped. No production/private data was copied into staging.
 
 ## Next package
 
