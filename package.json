@@ -25,7 +25,10 @@
     "test:pricing-v2:database": "node scripts/test-holistic-foundations-pricing-v2.cjs",
     "test:roadmap-b4": "node --test tests/vitality-roadmap-b4.cjs",
     "test:roadmap-b4:database": "RVA_ROADMAP_B4_LOCAL=1 node scripts/test-vitality-roadmap-b4.cjs",
-    "check:roadmap-b4:source-map": "node scripts/generate-roadmap-b4-source-map.cjs --check"
+    "check:roadmap-b4:source-map": "node scripts/generate-roadmap-b4-source-map.cjs --check",
+    "test:roadmap-b42": "node --test tests/vitality-roadmap-b42.cjs",
+    "test:roadmap-b42:database": "RVA_ROADMAP_B4_LOCAL=1 node scripts/test-vitality-roadmap-b42.cjs",
+    "preview:roadmap-b42": "node scripts/preview-roadmap-b42.cjs"
   },
   "devDependencies": {
     "jsdom": "26.1.0",

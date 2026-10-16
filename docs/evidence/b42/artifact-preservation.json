@@ -1,0 +1,35 @@
+{
+  "base_source": "0ae7726e8e60718af0ab8f674c058e6c50227d01",
+  "production_deploy_unchanged": "6ad2320001df1be7217aca20",
+  "beta_deploy_unchanged": "6acc33161511aa93c289bbcc",
+  "build_files": 431,
+  "existing_public_paths_preserved": 428,
+  "changed_existing_public_paths": [
+    "portal/index.html",
+    "portal/portal-vitality-assessments.js"
+  ],
+  "new_public_paths": [
+    "portal/portal-roadmap-verification.css",
+    "portal/portal-roadmap-verification.js"
+  ],
+  "existing_function_library_source_files_preserved": 18,
+  "existing_function_entrypoints_preserved": 7,
+  "new_function_entrypoint": "roadmap-verification",
+  "artifact_sha256": {
+    "supabase/environment-migrations/production/20261016195245_vitality_roadmap_b42_identity_verification.sql": "784e7ce94b47154da0b2821c9764e2c1306d86544e2d38f477c537dd52d0abe1",
+    "netlify/functions/roadmap-verification.mjs": "db141c07aba1661789edacb34348af6db084299092b0094d71b58a0ada2ebe69",
+    "netlify/lib/roadmap-verification.cjs": "f0aa245bbaafbef3a07f51a3be1db555342b4bc1efd488ae70acba05bb9c2a2c",
+    "portal/portal-roadmap-verification.js": "8bc60acaac8e43abe6911e14d30f226d2b79b434fec5885da827987ce491f1da",
+    "portal/portal-roadmap-verification.css": "96a8df11a260ef50047d0f6c94cc095df75bcc3a954c2b5855c66bdd9b0c3f5a",
+    "portal/portal-vitality-assessments.js": "54c497b9b149af86955133523cd8efbd31d9b9e27e148f3648bc46e771cf40b4",
+    "production-dist/portal/index.html": "9e82cf6839fb1df35e15adcf53a28b1902a35855d01a399899f4699c22389ca6",
+    "config/roadmap-b4/source-map.json": "2f67c193c2e69b54d61a44599bf9308ca27d317f2bdb748adbeaedfdabe92ced",
+    "design/sql/roadmap_b42_cohort_REVIEW_ONLY.sql": "ebe9bde95517e1fcf3354cf81cc4e9003499f79408186b2c7139e0fab97f3790"
+  },
+  "hosted_mutations": false,
+  "real_candidate_eligibility": "not evaluated; actual private founder verification remains separately gated",
+  "cohort_events": 0,
+  "b4_draft_versions": 0,
+  "b42_rpc_installed": false,
+  "participant_data_exported": false
+}

@@ -1,0 +1,225 @@
+{
+  "status": "candidate passed; no deployment authorized",
+  "synthetic_only": true,
+  "build_files": 431,
+  "javascript_syntax_passed": 156,
+  "unit_frontend_regressions": {
+    "passed": 185,
+    "failed": 0,
+    "new_b42_transport_unit_subset": 11
+  },
+  "postgresql_17": {
+    "passed": 192,
+    "failed": 0,
+    "new_b42_subset": 24
+  },
+  "retained_b4_browser": {
+    "checks": 168,
+    "runs": 6,
+    "results": [
+      {
+        "engine": "chromium",
+        "width": 1440,
+        "height": 1000,
+        "versions": 3,
+        "readOnlyAndDrafts": true,
+        "sourceUnchanged": true,
+        "revocation": true,
+        "staleResponse": true,
+        "accountTransition": true,
+        "overflow": false,
+        "consoleWarningsErrors": 0
+      },
+      {
+        "engine": "chromium",
+        "width": 768,
+        "height": 1024,
+        "versions": 3,
+        "readOnlyAndDrafts": true,
+        "sourceUnchanged": true,
+        "revocation": true,
+        "staleResponse": true,
+        "accountTransition": true,
+        "overflow": false,
+        "consoleWarningsErrors": 0
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "height": 844,
+        "versions": 3,
+        "readOnlyAndDrafts": true,
+        "sourceUnchanged": true,
+        "revocation": true,
+        "staleResponse": true,
+        "accountTransition": true,
+        "overflow": false,
+        "consoleWarningsErrors": 0
+      },
+      {
+        "engine": "webkit",
+        "width": 1440,
+        "height": 1000,
+        "versions": 3,
+        "readOnlyAndDrafts": true,
+        "sourceUnchanged": true,
+        "revocation": true,
+        "staleResponse": true,
+        "accountTransition": true,
+        "overflow": false,
+        "consoleWarningsErrors": 0
+      },
+      {
+        "engine": "webkit",
+        "width": 768,
+        "height": 1024,
+        "versions": 3,
+        "readOnlyAndDrafts": true,
+        "sourceUnchanged": true,
+        "revocation": true,
+        "staleResponse": true,
+        "accountTransition": true,
+        "overflow": false,
+        "consoleWarningsErrors": 0
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "height": 844,
+        "versions": 3,
+        "readOnlyAndDrafts": true,
+        "sourceUnchanged": true,
+        "revocation": true,
+        "staleResponse": true,
+        "accountTransition": true,
+        "overflow": false,
+        "consoleWarningsErrors": 0
+      }
+    ]
+  },
+  "b42_browser": {
+    "checks": 186,
+    "runs": [
+      {
+        "engine": "chromium",
+        "width": 1440,
+        "height": 1000,
+        "checks": true,
+        "consoleErrorsWarnings": 0,
+        "overflow": false,
+        "noCohort": true
+      },
+      {
+        "engine": "chromium",
+        "width": 768,
+        "height": 1024,
+        "checks": true,
+        "consoleErrorsWarnings": 0,
+        "overflow": false,
+        "noCohort": true
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "height": 844,
+        "checks": true,
+        "consoleErrorsWarnings": 0,
+        "overflow": false,
+        "noCohort": true
+      },
+      {
+        "engine": "webkit",
+        "width": 1440,
+        "height": 1000,
+        "checks": true,
+        "consoleErrorsWarnings": 0,
+        "overflow": false,
+        "noCohort": true
+      },
+      {
+        "engine": "webkit",
+        "width": 768,
+        "height": 1024,
+        "checks": true,
+        "consoleErrorsWarnings": 0,
+        "overflow": false,
+        "noCohort": true
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "height": 844,
+        "checks": true,
+        "consoleErrorsWarnings": 0,
+        "overflow": false,
+        "noCohort": true
+      }
+    ]
+  },
+  "session_chromium_webkit": {
+    "passed": 39,
+    "failed": 0
+  },
+  "maintained_mocked_edge": {
+    "passed": 40,
+    "failed": 0,
+    "retained_entrypoints_typechecked": 6
+  },
+  "b42_concurrency": {
+    "b42RaceGroups": 4,
+    "results": [
+      {
+        "group": "competing_decisions",
+        "workers": 8,
+        "overlapping": 8,
+        "successes": 1,
+        "safeDenials": 7
+      },
+      {
+        "group": "identical_retry",
+        "workers": 8,
+        "overlapping": 8,
+        "successes": 8,
+        "safeDenials": 0
+      },
+      {
+        "group": "source_change",
+        "workers": 8,
+        "overlapping": 8,
+        "successes": 0,
+        "safeDenials": 8
+      },
+      {
+        "group": "session_revocation",
+        "workers": 8,
+        "overlapping": 8,
+        "successes": 0,
+        "safeDenials": 8
+      }
+    ]
+  },
+  "retained_concurrency_groups": {
+    "b4": 4,
+    "vitality_reliability": 1,
+    "client_lifecycle": 4,
+    "workers_per_group": 8
+  },
+  "fictional_search_examples": {
+    "detailed_eligible": 1,
+    "historical_ineligible": 1,
+    "same_name_staff_contact_without_report": 1
+  },
+  "actual_alternative_candidate_eligibility": "not evaluated; founder-only production verification requires separate release authorization",
+  "local_disposable_databases_remaining": 0,
+  "local_pg_test_cluster_stopped": true,
+  "production_deploy_unchanged": "6ad2320001df1be7217aca20",
+  "beta_deploy_unchanged": "6acc33161511aa93c289bbcc",
+  "production_cohort_events": 0,
+  "production_b4_versions": 0,
+  "b42_installed": false,
+  "hosted_migrations_executed": 0,
+  "hosted_deployments_executed": 0,
+  "hosted_verifications_or_enrollments_executed": 0,
+  "all_draft_scoring_approval_delivery_email_gates": "held",
+  "b42_browser_sop_dates": "rolling future local dates, validated after final test-maintenance change"
+}

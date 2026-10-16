@@ -1,3 +1,9 @@
+# B4.2 founder identity verification candidate — not deployed
+
+The production B4.1 baseline is preserved. An additive same-origin `roadmap-verification` Function forwards the caller JWT to one bounded metadata/attestation RPC. Four private append-only tables pin founder identity, issued lookup handles, separate SOP attestations and verification decisions. Detailed sources remain in place; only source/identity fingerprints and approval provenance are retained privately. Exact full-name/email lookup can narrow by UTC completion date. The existing Contact/historical review owns full identifier access. Operator preflight and the reviewed cohort procedure remain separate from the browser and release.
+
+No cohort activation, source mutation, Roadmap draft, scoring, approval, release or email is added. All seven existing Functions and the PR #29 NDA correction are preserved. [Full candidate and architecture](docs/VITALITY_ROADMAP_B42_CANDIDATE.md). Older candidate notes below are historical; B4/B4.1 are live, B4.2 is not.
+
 # B4 production founder workspace candidate — 2026-10-16
 
 Production-main standalone review package reuses B1 document/rendering concepts and B3 pinned coverage without merging staging schema or scoring engines. Primary-origin Netlify transport forwards only the caller's JWT to one guarded RPC; private cohort/version/audit tables are append-only, source records remain in place, cohort defaults empty, draft authorization is separate. No PHI snapshots are duplicated in derivative tables, public release or mail endpoints added. [Exact candidate architecture and release boundary](docs/VITALITY_ROADMAP_B4_PRODUCTION_CANDIDATE_2026-10-16.md). NOT DEPLOYED.
