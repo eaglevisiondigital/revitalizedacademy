@@ -28,7 +28,15 @@
   }finally{controllers.delete(controller);}
  }
  function notice(host,text){const p=n('p',text,'roadmap-notice');p.setAttribute('role','status');host.append(p);}
- function failClosed(message){close();panel.querySelector('[data-founder-queue]')?.remove();const host=n('section');host.dataset.founderQueue='';notice(host,message);panel.append(host);}
+ // The secure assessment list can contain dozens of cards. Keep all founder
+ // feedback adjacent to its launch control, not after the entire list.
+ function showFounderQueue(host){
+  host.tabIndex=-1;
+  launch.after(host);
+  host.focus({preventScroll:true});
+  host.scrollIntoView({block:'nearest'});
+ }
+ function failClosed(message){close();panel.querySelector('[data-founder-queue]')?.remove();const host=n('section');host.dataset.founderQueue='';notice(host,message);showFounderQueue(host);}
  async function initialize(){
   if(!portal.captureStaffSession()||portal.currentStaffRole?.()!=='owner'||!portal.hasPermission?.('health.private.view')||!portal.hasPermission?.('crm.view'))return;
   if(initTask&&guard.current(initTask))return;const task=guard.begin();initTask=task;try{const r=await api('authorize',null,{},task);if(r)launch.hidden=false;}catch{if(guard.current(task))launch.hidden=true;}
@@ -39,7 +47,7 @@
   try{const rows=await api('list',null,{},task);if(!rows)return;panel.querySelector('[data-founder-queue]')?.remove();
    const list=n('section',undefined,'roadmap-workspace roadmap-queue');list.dataset.founderQueue='';list.append(n('h3','Explicit founder review cohort'));
    if(!rows.length)notice(list,'No submissions are approved for founder review. The cohort starts empty. A separate data-use and cohort authorization is required.');
-   for(const row of rows){const card=n('article');card.append(n('strong',row.label),n('p',row.allow_drafts?'Private draft writes explicitly authorized':'Read-only source and coverage review'),button('Review approved source',()=>open(row.report_id)));list.append(card);}panel.append(list);
+   for(const row of rows){const card=n('article');card.append(n('strong',row.label),n('p',row.allow_drafts?'Private draft writes explicitly authorized':'Read-only source and coverage review'),button('Review approved source',()=>open(row.report_id)));list.append(card);}showFounderQueue(list);
   }catch{if(guard.current(task))failClosed('Founder review unavailable. No private source has been loaded.');}
  }
  async function open(report){
