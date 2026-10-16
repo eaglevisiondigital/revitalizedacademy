@@ -63,4 +63,30 @@ Production does not gain that route or B1/B3 schema from this task. A future bou
 - Fictional print-to-PDF used the shared B1 renderer, included all twelve Drivers, and was rendered/visually inspected. Private raw source answers/correction editor are excluded from print. No actual report/PDF was generated.
 - The first browser runs identified missing explicit select labels and conflict counts hidden in collapsed details; both were repaired and all six final runs passed. Initial database assertions were scoped to their fictional report to exclude the intentionally pre-B1 released baseline fixture; no gate was weakened.
 
-Native durable persistence acceptance and the session-only browser rehearsal are reported separately. No production/primary-beta mutation or real participant scoring is permitted by a passing test. Isolated deployment/source/hash and hosted rehearsal evidence follows after upload.
+Native durable persistence acceptance and the session-only browser rehearsal are reported separately. No production/primary-beta mutation or real participant scoring is permitted by a passing test.
+
+## Isolated deployment / hosted acceptance
+
+- Application source: **`4abdb66c89fdbab6ae3d7cabebf56a5890f8b7c7`**. Branch: `codex/vitality-roadmap-b2-candidate-workbench`, draft [PR #28](https://github.com/eaglevisiondigital/revitalizedacademy/pull/28), still based on B1 and unmerged. Later acceptance-documentation commits do not change deployed bytes.
+- Isolated Netlify deploy: **`6ad1beadae6cfe951dd0182d`** on the existing `roadmap-b2` alias, staging site `071b252e-a922-4846-a784-8dca1edad377`. [Open preview](https://roadmap-b2--revitalizedacademy-staging.netlify.app/portal/#people) → **B3 pilot readiness · Synthetic rehearsal**. B1/B2/B2.1 remain available.
+- All four B3 JS/CSS assets at **v100**, portal HTML and staging runtime config returned HTTP 200 and byte-matched the exact built artifact. No Functions or SQL were deployed.
+- Hosted existing Staging Owner acceptance passed: launch, twelve Drivers, source-backed fictional correction, session-only versions 1/2 and comparison, restored version-1 preview, three report tabs at all three viewports (nine combinations) without page/modal overflow, explicit conflicts and historical withholding, disabled real-pilot/approval/delivery control, close removal and refresh restoring the same session with fictional revision 0. Zero captured warnings/errors. Viewport override reset; reference fictional source left open. No hosted save occurred.
+- This was an existing staging Owner's **fictional rehearsal**. It does not claim new live human sign-ins as Justyn and Elle or a live founder-only production workspace. Separate founder authorization and durable versioning were validated with synthetic local PostgreSQL sessions, and production founder configuration was checked read-only as described above.
+- Production primary remained **`6ad137d38d394a5c89beedc4`** before/after; primary beta remained **`6acc33161511aa93c289bbcc`**. PR #29's production NDA correction, Auth, roles/permissions, assessment records, client/private data, payments, agreements, Edge and mail configuration were not changed. No production health data was copied into staging.
+
+| Live B3 asset | SHA-256 |
+| --- | --- |
+| `js/vitality-roadmap-b3-adapter.js?v=100` | `b7d10df9ef1ded2c58ec85bf046d57d0d865e488dc844e756bcbc851a8f51b28` |
+| `js/vitality-roadmap-b3-fixtures.js?v=100` | `0681abeff56376c2746e1ee053b3285d6cbc87c522fd35c39ad1fcfa4e509dea` |
+| `portal/portal-roadmap-b3-workbench.js?v=100` | `ef37d3edba9f22e9e0cc80bc2b33efd6664c61e4dd7f619bd15354e6ae04576e` |
+| `css/vitality-roadmap-b3-workbench.css?v=100` | `83b756c60b1fc4910ccdb8c7059f470e1279c4322fe13486002b8f919d202745` |
+
+## Copy/paste Primary Chat decision handoff
+
+**RECOMMENDED THINKING LEVEL: HIGH — CHAT DECISION NEEDED**
+
+ReVitalized Academy B3 readiness is implemented and tested in draft PR #28. There are 12 completed Adult/Myself secure-snapshot-v1 sources with some context for all twelve Drivers, plus four historical summary-only sources. No actual participant scoring, PHI transfer, release or email occurred. The hosted preview is explicitly a fictional session rehearsal; durable B1 persistence/founder-only guards pass local PostgreSQL/browser tests.
+
+Please obtain Justyn/Elle's independent A/B/C ranges/spread and the exact Spectrum/measurement decisions in `VITALITY-ROADMAP-B3-FOUNDER-DECISIONS.md`. Current A/B/C 70.66/35.48/70.00 and B's numeric Chaos result remain unapproved. Missing measurements and historical provenance cannot be invented.
+
+Please confirm the real-pilot data-use/cohort/retention SOP and preferred architecture: **in-place production same-origin founder-only review** (recommended; avoids PHI copies), or a separately justified and explicitly authorized transfer (adds privacy, storage and access risks; no transfer implemented). The next engineering package should prepare an exact production-only candidate reconciled onto current production including PR #29, with private cohort/session/permission/contact guards, pinned provenance and immutable non-releasable drafts. Return its exact release approval request before hosted mutation. Pilot execution requires separate explicit authorization after the measurement contract is approved. Keep all approval, client release and notification gates held.
