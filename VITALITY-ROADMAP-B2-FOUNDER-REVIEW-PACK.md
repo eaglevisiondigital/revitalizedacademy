@@ -12,6 +12,8 @@ Current health weights: Hydration/Neural/Detox/GI **1.4**; Hormone/Diet/Recovery
 
 The sections below preserve the original B2 profile and 30 cases for historical comparison. The six-Driver 1.3 weight proposal, ten-point budget deduction and unconfigured Driver stages below are superseded in **B2.1**, not current policy. [Current implementation, tests and release boundary](VITALITY-ROADMAP-B21-IMPLEMENTATION-20261015.md).
 
+**B3 readiness continuation:** use [the independent decision worksheet](VITALITY-ROADMAP-B3-FOUNDER-DECISIONS.md) and [the source/data-boundary report](VITALITY-ROADMAP-B3-READINESS-20261016.md). No live scoring or pilot execution is authorized.
+
 ## How Justyn and Elle can review
 
 1. Open the isolated B2 staff preview and sign in with an existing beta Owner account.

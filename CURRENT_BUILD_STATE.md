@@ -1,3 +1,7 @@
+## 2026-10-16 — B3 secure adult pilot readiness (real pilot held)
+
+B3 adds a version-pinned source-coverage adapter, fictional source/revision/report rehearsal, a founder decision worksheet and a local-only founder/fixture guard around B1 immutable persistence. Read-only production aggregates found 12 completed Adult/Myself saved sources (secure-snapshot-v1; context in all twelve Drivers) and 4 historical summary-only records. These counts do not prove scoring readiness or authorized pilot use. No production answers/identities were exported, scored or transferred. No hosted SQL/Edge or production/primary-beta change. The recommended real-data route stays in production under a separately authorized founder-only deployment, preserving PR #29. [Implementation, validation and exact remaining gates](VITALITY-ROADMAP-B3-READINESS-20261016.md).
+
 ## 2026-10-15 — B2.1 founder calibration candidate (isolated preview only)
 
 B2.1 extends draft PR #28 / B1 with a separately versioned 1.4/1.3/1.2/1.1 health-weight configuration, Wise Budgeting 1.0 reported separately with zero health deduction, configurable provisional Spectrum bands/ceilings, and 50 fictional cases (the original 30 plus 20). The founder workbench shows fictional answers, twelve Driver traces, explicit WHY, editable candidate definitions, reasoned corrections and fictional-only proposal exports. Actual source review remains read-only and unscored; no extra consent checkbox is added. B2 and B1 are preserved.
