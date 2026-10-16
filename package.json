@@ -28,7 +28,11 @@
     "check:roadmap-b4:source-map": "node scripts/generate-roadmap-b4-source-map.cjs --check",
     "test:roadmap-b42": "node --test tests/vitality-roadmap-b42.cjs",
     "test:roadmap-b42:database": "RVA_ROADMAP_B4_LOCAL=1 node scripts/test-vitality-roadmap-b42.cjs",
-    "preview:roadmap-b42": "node scripts/preview-roadmap-b42.cjs"
+    "preview:roadmap-b42": "node scripts/preview-roadmap-b42.cjs",
+    "test:roadmap-b5": "node --test tests/vitality-roadmap-b5.cjs tests/vitality-roadmap-b21.cjs",
+    "test:roadmap-b5:database": "RVA_ROADMAP_B4_LOCAL=1 node scripts/test-vitality-roadmap-b5.cjs",
+    "build:roadmap-b5:preview": "node scripts/build-roadmap-b5-preview.cjs",
+    "preview:roadmap-b5": "node scripts/preview-roadmap-b5.cjs"
   },
   "devDependencies": {
     "jsdom": "26.1.0",

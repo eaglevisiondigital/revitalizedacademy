@@ -1,0 +1,193 @@
+{
+  "base_source": "4247e33322c9117b92f68718ed9408070b7b03e2",
+  "base_deploy": "6ad29658dd8a8c0932b4d6d0",
+  "preserved_functions": [
+    {
+      "n": "exercise-library",
+      "d": "7afffe944b6e4f9390354813cad0f8ff281184360f5f7131f8ecd697dc8f134f",
+      "id": "5d7238ffa8f3670a6704cc826f7c0d487dbd07afe514e0de010934f3c55eb6c7",
+      "r": "nodejs22.x",
+      "im": "stream"
+    },
+    {
+      "n": "food-database",
+      "d": "e8a1772c271a05ea357c4b59c8c804541bc187587822e60bfba9d7e8911cdda0",
+      "id": "0b1820cbec8d6853ee739c014f9657b910e77848cb23f3a47a7a601f61e2941b",
+      "r": "nodejs22.x",
+      "im": "stream"
+    },
+    {
+      "n": "payment-webhook",
+      "d": "ca4aa97da4f298adac82adb8851f055c21aa360b6c819a3b8fb2497e87ff05e2",
+      "id": "df04cfeefadb800c512fd5c55d1392799692169d6d72adddb5722a026e29fa64",
+      "r": "nodejs22.x",
+      "im": "stream"
+    },
+    {
+      "n": "payment-worker",
+      "d": "2d2c440bb8ff85049a820f90d969b6c986685646a4ec55214e8a1ddc8fa74a32",
+      "id": "ea40f9266373bc29f1f0d66df6245e61834ddbf257667d0ad56103cd8fbe8e55",
+      "r": "nodejs22.x",
+      "im": "stream"
+    },
+    {
+      "n": "payments",
+      "d": "f0469725112b4f3b878b67dad311a530441e613ba4fac1a0580b167651d55ded",
+      "id": "5010a067e847fa4952be5e6c9990538b469018c88902494d818a61cf20a24d1b",
+      "r": "nodejs22.x",
+      "im": "stream"
+    },
+    {
+      "n": "reusable-content-sync",
+      "d": "17551800e6a1c26506147e99bf4f48783b69cc1f96daed52e08998288780b930",
+      "id": "a574aac3c25952704ed86c9849cec28c3cb356f65566c2dbe4a21bc01d7faaa4",
+      "r": "nodejs22.x",
+      "im": "stream"
+    },
+    {
+      "n": "roadmap-founder",
+      "d": "525a80737e5000e4ae0b5e4b76704f58eb0e0566541042ee0fda1e26b96fb079",
+      "id": "a7e3416ac3b6d5322724df76ebd6ed00f0f9f42ed3319c3480e5e44f6d8acc3f",
+      "r": "nodejs22.x",
+      "im": "stream"
+    },
+    {
+      "n": "roadmap-verification",
+      "d": "9d29f707e514df7626e8513283a9bed3834680260a8b87d5c58d5138d23180a6",
+      "id": "d4655cae9eaa09201a4281f84d3abd5e95b7701c42a85706129fcedc532bacd8",
+      "r": "nodejs22.x",
+      "im": "stream"
+    }
+  ],
+  "preserved_schedule": [
+    {
+      "name": "payment-worker",
+      "cron": "* * * * *"
+    }
+  ],
+  "source_files": {
+    "netlify/functions/_shared/authorize-net.mjs": {
+      "sha256": "de4332127c269ab42517551cd9da69460b2c6c27564ce96b528f12ecc3764f51",
+      "unchanged": true
+    },
+    "netlify/functions/_shared/payment-domain.mjs": {
+      "sha256": "5c653a76ef7e7eb6ea495615a73e6cbad5a9a1f70d234b5d6fbea60c910a540b",
+      "unchanged": true
+    },
+    "netlify/functions/_shared/payments.mjs": {
+      "sha256": "b893a58f750b8058b899e6c261c2d9dcbc4cb96cc47f12e94211c41f4edde2a5",
+      "unchanged": true
+    },
+    "netlify/functions/exercise-library.mjs": {
+      "sha256": "c505cfc59c3230666a01d4b9012a29804eed89760b67c4b6fd2baf9dc365d6ce",
+      "unchanged": true
+    },
+    "netlify/functions/food-database.mjs": {
+      "sha256": "7ad9d5b47d63c49308057feb8d7c24c198dafa8fabf491962dc9d1e5579aecd3",
+      "unchanged": true
+    },
+    "netlify/functions/payment-webhook.mts": {
+      "sha256": "86e863024c007af1f992b044a6fdfac85cbab564be82a54aced37ff594396f37",
+      "unchanged": true
+    },
+    "netlify/functions/payment-worker.mts": {
+      "sha256": "eaf9963c53fb56bcae242925c7848ff892e8e8f938057f9a6fec9e687a4d0868",
+      "unchanged": true
+    },
+    "netlify/functions/payments.mts": {
+      "sha256": "dd9c30fe9d8a0690eb43a20c44c659e4150d19490e0ef77dea82588e4bd5bb64",
+      "unchanged": true
+    },
+    "netlify/functions/reusable-content-sync.mjs": {
+      "sha256": "2c4d64c15794c378df003457ed0926b448fedf6d3a4eb272ce8696277dfe9b05",
+      "unchanged": true
+    },
+    "netlify/functions/roadmap-founder.mjs": {
+      "sha256": "ef9bdc21aef6402bc63058dacb1703ff8fe423c07471e792def4c00577af0c51",
+      "unchanged": true
+    },
+    "netlify/functions/roadmap-verification.mjs": {
+      "sha256": "db141c07aba1661789edacb34348af6db084299092b0094d71b58a0ada2ebe69",
+      "unchanged": true
+    },
+    "netlify/lib/content-sync-contract.json": {
+      "sha256": "3c9130a7862c392f1804c17ec1f00138470204c303b9b0f0adbf9594e840dca9",
+      "unchanged": true
+    },
+    "netlify/lib/content-sync-service.cjs": {
+      "sha256": "152de6359cc8144c06fb2eab96ccf6ef64348b641eea76217bb53a73112c1fd7",
+      "unchanged": true
+    },
+    "netlify/lib/exercise-library-service.cjs": {
+      "sha256": "6c8301030822d9d0e20ae0d2452c86af825f2891037c86821a01c2b047158b31",
+      "unchanged": true
+    },
+    "netlify/lib/food-database-service.cjs": {
+      "sha256": "9d5c74bf3caf4487bb879a1e95ec77c91ad506e0ff774d4fd126d06155cadcfd",
+      "unchanged": true
+    },
+    "netlify/lib/fooddata.cjs": {
+      "sha256": "4377c9df3eae2cc280dc3c2187ccc5b7b25c82baf75a29a07f248b9bc92dce0e",
+      "unchanged": true
+    },
+    "netlify/lib/nutrient-target-contract.cjs": {
+      "sha256": "750257e1ee97b0af5e167c323f93f65a5293a5be373be29befc5b4144fbfb302",
+      "unchanged": true
+    },
+    "netlify/lib/repdb.cjs": {
+      "sha256": "32da76635d9b2e4c9a84b229e49781ffc1106ed6d74c254b561a3695eacab2a5",
+      "unchanged": true
+    },
+    "netlify/lib/roadmap-founder.cjs": {
+      "sha256": "237fe6968a319536f4e87e8555c4adef5c92223959d85a21e880580a469f7a33",
+      "unchanged": true
+    },
+    "netlify/lib/roadmap-verification.cjs": {
+      "sha256": "f0aa245bbaafbef3a07f51a3be1db555342b4bc1efd488ae70acba05bb9c2a2c",
+      "unchanged": true
+    },
+    "portal/portal.js": {
+      "sha256": "8e16923552511459bc4695a4e1d1755c5a562bae3d3057face6d87ef231374cf",
+      "unchanged": true
+    },
+    "portal/portal-staff-onboarding.js": {
+      "sha256": "322bf8c68ae84de2ce7e7b53659ebbcfe78ae2de9c139755ddfea54037acc25e",
+      "unchanged": true
+    },
+    "portal/portal-roadmap-founder.js": {
+      "sha256": "d2672b7441d207067588e91ee88a9204fc2f886cb82ab40266f646181b27dcb6",
+      "unchanged": true
+    },
+    "portal/portal-roadmap-verification.js": {
+      "sha256": "8bc60acaac8e43abe6911e14d30f226d2b79b434fec5885da827987ce491f1da",
+      "unchanged": true
+    },
+    "consult.html": {
+      "sha256": "aa2cebc36132f32e6f0b7f4032d0dcfc6b91e2ff0ff0bb137b28557667f643f4",
+      "unchanged": true
+    },
+    "js/vitality55.js": {
+      "sha256": "f37245fe91407b8e2b02fbbebf91cf4af32f468ef67e321753f8d91ce0c4af59",
+      "unchanged": true
+    },
+    "js/vitality-resume.js": {
+      "sha256": "d98aeda66801a89d8791345ba0990dcfe9fc6cd17dfca745c78eec25ff30e84b",
+      "unchanged": true
+    },
+    "config/production.json": {
+      "sha256": "f041acc7a8d8ba0c71590b1e9475ff42953a57f73d899d5b4f428f8f896274a4",
+      "unchanged": true
+    }
+  },
+  "new_function_bundle": {
+    "name": "roadmap-scoring-lab",
+    "runtime": "nodejs22.x",
+    "api_version": 2,
+    "sha256": "b56be86402df7e23b2b5bb2a12e49f92981804cc9a4b78607061cac1d337f3ea"
+  },
+  "new_live_candidate_assets": {
+    "portal/portal-roadmap-scoring-lab.js": "f7e9e7fff9a004992d50a67fa929a66e8217fd7bb9461217a5ae60145889d8ac",
+    "portal/portal-roadmap-scoring-lab-bootstrap.js": "e7ed0a1ac6252dec3f64a5333f25cd7d8776591b4d6c445cebbaf218e2c8be16",
+    "portal/portal-roadmap-scoring-lab.css": "b3435a96deb65d3074ab691dab5047885d4856d6c4f3d1c9dc1d18d0917e55ad"
+  }
+}

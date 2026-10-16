@@ -1,0 +1,73 @@
+{
+  "deploy": "6ad2a2d865d717272f0cd8b1",
+  "url": "https://roadmap-b5-lab--revitalizedacademy-staging.netlify.app",
+  "assets": {
+    "/": "a7595f8ab4fe1c0795347ddc3e609501df0fb8dfd342d5c72349c8a8c282f197",
+    "/demo.js": "2369f3179e5c614980bf506dd6454d202fa246014632fdbc385701a3e57aee80",
+    "/portal/portal-roadmap-scoring-lab.css": "b3435a96deb65d3074ab691dab5047885d4856d6c4f3d1c9dc1d18d0917e55ad"
+  },
+  "results": [
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "height": 1000,
+      "cases": 50,
+      "drivers": 12,
+      "overflow": false,
+      "consoleWarningsErrors": 0,
+      "backendRequests": 0
+    },
+    {
+      "engine": "chromium",
+      "width": 768,
+      "height": 1024,
+      "cases": 50,
+      "drivers": 12,
+      "overflow": false,
+      "consoleWarningsErrors": 0,
+      "backendRequests": 0
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "height": 844,
+      "cases": 50,
+      "drivers": 12,
+      "overflow": false,
+      "consoleWarningsErrors": 0,
+      "backendRequests": 0
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "height": 1000,
+      "cases": 50,
+      "drivers": 12,
+      "overflow": false,
+      "consoleWarningsErrors": 0,
+      "backendRequests": 0
+    },
+    {
+      "engine": "webkit",
+      "width": 768,
+      "height": 1024,
+      "cases": 50,
+      "drivers": 12,
+      "overflow": false,
+      "consoleWarningsErrors": 0,
+      "backendRequests": 0
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "height": 844,
+      "cases": 50,
+      "drivers": 12,
+      "overflow": false,
+      "consoleWarningsErrors": 0,
+      "backendRequests": 0
+    }
+  ],
+  "functions": 0,
+  "production_connection": false
+}

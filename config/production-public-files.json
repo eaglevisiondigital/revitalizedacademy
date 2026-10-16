@@ -428,5 +428,8 @@
   "assets/images/social-proof/IMG_7002.svg",
   "assets/images/social-proof/IMG_7003.svg",
   "portal/portal-roadmap-verification.js",
-  "portal/portal-roadmap-verification.css"
+  "portal/portal-roadmap-verification.css",
+  "portal/portal-roadmap-scoring-lab.js",
+  "portal/portal-roadmap-scoring-lab.css",
+  "portal/portal-roadmap-scoring-lab-bootstrap.js"
 ]

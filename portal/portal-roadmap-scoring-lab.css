@@ -1,0 +1,36 @@
+/* Additive private founder workspace. No public-page or existing portal redesign. */
+.rv5-launch { margin: .7rem 0; }
+.rv5-dialog { position:fixed; inset:0; z-index:12000; overflow:auto; background:#f3f7f5; color:#173b30; padding:clamp(12px,2.5vw,32px); }
+.rv5-dialog * { box-sizing:border-box; min-width:0; }
+.rv5-dialog main { max-width:1400px; margin:auto; }
+.rv5-dialog h1 { font-size:clamp(1.6rem,3vw,2.5rem); }
+.rv5-dialog button,.rv5-dialog input,.rv5-dialog select,.rv5-dialog textarea { font:inherit; max-width:100%; }
+.rv5-dialog button { border:1px solid #306b55; border-radius:9px; padding:10px 14px; background:#245e49; color:white; cursor:pointer; min-height:44px; }
+.rv5-dialog button:disabled { opacity:.55; cursor:default; }
+.rv5-dialog :focus-visible { outline:3px solid #8b5a13; outline-offset:3px; }
+.rv5-dialog label { display:flex; flex-direction:column; gap:6px; margin:10px 0; font-weight:600; }
+.rv5-dialog input,.rv5-dialog select,.rv5-dialog textarea { border:1px solid #859e93; border-radius:8px; padding:10px; background:white; color:#173b30; width:100%; }
+.rv5-dialog textarea { min-height:90px; }
+.rv5-banner { padding:16px; background:#fff5df; border-left:4px solid #936a20; border-radius:8px; margin:14px 0; }
+.rv5-layout { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.4fr); gap:20px; align-items:start; }
+.rv5-card { background:white; padding:18px; border:1px solid #d1dfd7; border-radius:14px; margin:14px 0; overflow-wrap:anywhere; }
+.rv5-controls { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr)); gap:12px; }
+.rv5-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,255px),1fr)); gap:12px; }
+.rv5-driver { border:1px solid #d1dfd7; border-radius:12px; padding:14px; background:white; overflow-wrap:anywhere; }
+.rv5-driver h3 { margin-top:0; font-size:1.15rem; }
+.rv5-dialog details { margin:10px 0; }
+.rv5-dialog summary { cursor:pointer; padding:10px 0; font-weight:700; }
+.rv5-dialog pre { white-space:pre-wrap; overflow-wrap:anywhere; font-size:.85rem; }
+.rv5-dialog dt { font-weight:700; margin-top:12px; }
+.rv5-dialog dd { margin:4px 0 12px; white-space:pre-wrap; }
+.rv5-actions { display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+.rv5-pill { display:inline-block; background:#e8f1ec; padding:6px 9px; border-radius:8px; }
+.rv5-score { font-size:1.6rem; font-weight:800; }
+.rv5-print { display:none; }
+@media(max-width:800px) { .rv5-layout { grid-template-columns:1fr; } }
+@media print { body > *:not(.rv5-dialog) { display:none!important; } .rv5-dialog { position:static; padding:0; overflow:visible; background:white; } .rv5-dialog main > *:not(.rv5-print) { display:none!important; } .rv5-dialog .rv5-print { display:block; } .rv5-dialog[data-private-source] { display:none!important; } }
+/* Portal-wide label styles must not force a long what-if label onto one line. */
+.rv5-dialog label { white-space:normal; overflow-wrap:anywhere; width:100%; }
+.rv5-dialog button { white-space:normal; overflow-wrap:anywhere; }
+/* WebKit paints long selected option text outside an otherwise correctly sized select. */
+.rv5-dialog select { text-overflow:ellipsis; overflow:hidden; }
