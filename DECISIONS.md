@@ -1,3 +1,9 @@
+# 2026-10-16 — B4.2 exact identity/SOP verification, no enrollment
+
+Issue #32 authorizes a candidate built from the exact deployed B4.1 source, with synthetic-only testing and a draft PR stacked on PR #31. Exact full name/email plus an optional UTC date supports private alternative-candidate verification. Founder confirmation records separate immutable identity/SOP evidence and never changes B4 eligibility or enrolls anyone. Historical-only sources remain ineligible; missing snapshots are never fabricated.
+
+Retain the existing manual revocation architecture: named founder owner/backup, a maximum 14-day UTC plan and a separately tracked privileged operator appointment. Technical release, genuine founder signoff and exact operator enrollment approval are distinct gates. No production migration/deploy, beta mutation, actual candidate lookup, scoring, drafts, approval, delivery or email is authorized here. [Review packet and exact future release sequence](docs/VITALITY_ROADMAP_B42_CANDIDATE.md).
+
 # 2026-10-16 — B4 candidate only; separate release and cohort gates
 
 User authorizes a production-reconciled founder workspace candidate from main, not a deployment, hosted migration, PHI transfer, stacked merge or pilot. Use fictional local fixtures; preserve NDA and all accepted production changes. First real feature is source-plus-unscored coverage/clarification, with no invented measurements or participant scores/stages. Keep all B3 founder scoring decisions pending. Separate explicit approval is required for the exact release; later selected cohort/data-use/retention and read-only versus draft permission require another authorization. [Review packet](docs/VITALITY_ROADMAP_B4_PRODUCTION_CANDIDATE_2026-10-16.md).
