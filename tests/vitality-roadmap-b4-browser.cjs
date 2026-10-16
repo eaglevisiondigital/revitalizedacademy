@@ -19,7 +19,7 @@ try{for(const [width,height]of [[1440,1000],[768,1024],[390,844]]){
    const response=await handler(req,context);if(response.status!==200)console.error('LOCAL API STATUS',body.action,response.status,req.headers.get('origin'));return route.fulfill({status:response.status,headers:Object.fromEntries(response.headers),body:await response.text()});
   }
   if(url.pathname==='/portal/'){
-   return route.fulfill({contentType:'text/html',body:`<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Fictional B4 local fixture</title><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="/css/vitality-roadmap-workspace.css"></head><body><section id="vitality-assessments-panel"></section><script>
+   return route.fulfill({contentType:'text/html',body:`<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Fictional B4 local fixture</title><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="/css/vitality-roadmap-workspace.css"></head><body><section id="vitality-assessments-panel"><div id="vitality-assessments-list">${Array.from({length:35},(_,i)=>`<article class="vitality-assessment-row">Synthetic assessment ${i+1}</article>`).join("")}</div></section><script>
 window.active=${authorized};window.identity='${identity}';window.authEpoch=0;window.RVA_ENV={environment:'production',projectRef:'voalfpxiyznnqfcqcymd'};
 window.RA_PORTAL={captureStaffSession:()=>window.active?{user:window.identity,epoch:window.authEpoch}:null,currentStaffRole:()=> 'owner',hasPermission:()=>true,createAuthenticatedTaskGuard(){let task=0;return{begin(){return window.active?{task:++task,user:window.identity,epoch:window.authEpoch}:null},current(t){const ok=!!t&&window.active&&t.task===task&&t.user===window.identity&&t.epoch===window.authEpoch;return ok},cancel(){task++}}},authClient:{auth:{getSession:async()=>({data:{session:window.active?{access_token:'fictional.'+window.identity+'.token'}:null}})}}};
 </script>${['/js/vitality-roadmap-view.js','/js/vitality-roadmap-b4-source-map.js','/js/vitality-roadmap-b4-coverage.js','/portal/portal-roadmap-founder.js'].map(f=>'<script defer src="'+f+'"></script>').join('')}</body></html>`});
@@ -30,6 +30,22 @@ window.RA_PORTAL={captureStaffSession:()=>window.active?{user:window.identity,ep
  try{
   await page.goto('https://revitalizedacademy.com/portal/');await page.getByRole('button',{name:'Founder Roadmap review · Unscored'}).waitFor();
   await page.getByRole('button',{name:'Founder Roadmap review · Unscored'}).click();await page.getByText(/No submissions are approved/).waitFor();checks++;
+  // Regression: a 35-record assessment list previously pushed the empty-cohort
+  // notice below the fold even though the authorized RPC returned successfully.
+  const placement=await page.evaluate(()=>{
+   const launch=document.querySelector('[data-roadmap-founder="launch"]');
+   const queue=document.querySelector('[data-founder-queue]');
+   const assessments=document.querySelector('#vitality-assessments-list');
+   return {ordered:Boolean(queue.compareDocumentPosition(assessments)&Node.DOCUMENT_POSITION_FOLLOWING),
+    gap:queue.getBoundingClientRect().top-launch.getBoundingClientRect().bottom,
+    onScreen:queue.getBoundingClientRect().top<innerHeight,
+    focused:document.activeElement===queue};
+  });
+  assert.equal(placement.ordered,true);
+  assert.ok(placement.gap>=-2&&placement.gap<50,'Founder feedback must be adjacent to button');
+  assert.equal(placement.onScreen,true);
+  assert.equal(placement.focused,true);
+  checks+=4;
   await f.enroll();await open();assert.equal(await page.locator('.roadmap-preview .roadmap-driver').count(),12);assert.ok(await page.getByLabel('Provisional overview',{exact:true}).isDisabled());assert.equal(await page.locator('.roadmap-print').count(),0);checks+=3;await page.screenshot({path:'/private/tmp/rva-b4-'+engine+'-'+width+'.png'});
   assert.equal(await page.locator('.roadmap-private-source img').count(),0);assert.ok((await page.locator('.roadmap-private-source').innerText()).includes('FICTIONAL_RAW_SOURCE_ONLY'));checks++;
   await page.emulateMedia({media:'print'});assert.equal(await page.locator('.roadmap-private-source').evaluate(n=>getComputedStyle(n).display),'none');assert.equal(await page.locator('.roadmap-editor').evaluate(n=>getComputedStyle(n).display),'none');await page.emulateMedia({media:'screen'});checks+=2;
