@@ -1,5 +1,10 @@
 ## RECONCILED / VALIDATED — Holistic Foundations Pricing v2 technical release — 2026-10-12
 
+## 2026-10-15 — Vitality Roadmap Phase B1 (staging only)
+
+Implemented the secure review queue/editor, append-only draft/audit history, verified free-account claim/read boundary, unscored interactive/print preview and held email model. See [B1 acceptance](VITALITY-ROADMAP-B1-ACCEPTANCE-20261015.md) for migrations, deployment, tests and blockers. Production was read-only. Final approval, release and emails remain server-blocked. Next: founder-approved adult scoring/coverage and interpretation contract; no production rollout yet.
+
+
 The Pricing v2 candidate is reconciled onto exact accepted production source `83ad058c1514846a9978dc0132e7b94b060545a8` (Netlify deploy `6acd526473b23c9fbbbb5c6f`). The accepted session-restoration and post-logout files remain byte-identical. The catalog-driven lifecycle integration preserves the null-safe logout cleanup and advances only the changed lifecycle asset to `portal-client-lifecycle.js?v=103`.
 
 The two forward migrations remain unapplied: `20261010120000_holistic_foundations_pricing_v2.sql`, then `20261010121000_payments_v1.sql`. Agreement publication remains held, zero active Holistic Foundations agreement mappings are created, every merchant route is disabled, provider execution is disabled, and no paid access can be granted. No push, migration, deployment, email, agreement, payment, identity, beta, or hosted-data mutation occurred. Validation: production build 394 files; JavaScript syntax 130 source/test files plus three Netlify TypeScript entrypoints; focused unit/DOM 53/53; PostgreSQL 17 restore plus 55/55 and one eight-worker overlap race; existing Vitality/assessment frontend 64/64; exact-built Chromium/WebKit session checks 40/40; lifecycle responsive 37/37 and Payments responsive 39/39 at 1440/768/390 with zero browser errors, provider calls, hosted writes, or horizontal overflow. The exact candidate SHA is reported after the final documentation commit. [Implementation and release gates](docs/HOLISTIC_FOUNDATIONS_PRICING_V2_IMPLEMENTATION_2026-10-10.md).

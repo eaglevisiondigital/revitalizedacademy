@@ -1,0 +1,21 @@
+/* One text-only renderer for reviewer preview, recipient interactive view and print/PDF. */
+(function(root){'use strict';
+ const drivers=[['cellular_hydration','Cellular Hydration'],['systemic_detoxification','Systemic Detoxification'],['electrobiology_rhythms','Electrobiology Rhythms'],['the_living_diet','The Living Diet'],['functional_training','Functional Training'],['holistic_recovery','Holistic Recovery'],['gastrointestinal_renovation','Gastrointestinal Renovation'],['hormone_balancing','Hormone Balancing'],['neural_repatterning','Neural Repatterning'],['momentum_regimens','Momentum Regimens'],['mentality_realignment','Mentality Realignment'],['wise_budgeting','Wise Budgeting']];
+ const node=(tag,text,className)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;};
+ function render(host,doc={},meta={}){
+ host.replaceChildren();host.classList.add('roadmap-report');
+ const cover=node('header',undefined,'roadmap-cover');cover.append(node('p','REVITALIZED ACADEMY','roadmap-eyebrow'),node('h1','Your Vitality Roadmap'),node('p','A thoughtful starting point for your whole-person journey.'),node('p',meta.preview?'Private preview · Unscored · Not approved for delivery':`Report version ${meta.version} · Approved ${new Date(meta.approved_at).toLocaleDateString()}`));host.append(cover);
+ if(meta.preview)host.append(node('p','Scores, Spectrum stages and automated priorities are not available until founder rules are approved. Empty sections mean information is still needed.','roadmap-notice'));
+ const tabs=node('nav',undefined,'roadmap-tabs');tabs.setAttribute('aria-label','Roadmap sections');
+ const sections=[node('section'),node('section'),node('section')],labels=['My Overview','My 12 Drivers','My Action Plan'];
+ labels.forEach((label,i)=>{const button=node('button',label);button.type='button';button.setAttribute('aria-pressed',String(i===0));button.onclick=()=>{sections.forEach((s,j)=>s.hidden=i!==j);[...tabs.children].forEach((b,j)=>b.setAttribute('aria-pressed',String(i===j)));};tabs.append(button);sections[i].hidden=i!==0;sections[i].setAttribute('aria-label',label);});host.append(tabs);
+ sections[0].append(node('h2','Your whole-person overview'),node('p',doc.summary||'Summary awaiting authorized review.'));
+ function list(parent,title,items){parent.append(node('h3',title));if(!items?.length){parent.append(node('p','Not yet prepared.'));return;}const ul=node('ol');for(const item of items){const li=node('li');li.append(node('strong',item.summary||'Not yet prepared.'),node('p',item.reason||''));ul.append(li);}parent.append(ul);}
+ for(const [key,label]of [['strengths','Strengths'],['priorities','Priorities'],['opportunities','Opportunities']])list(sections[0],label,doc[key]);
+ sections[1].append(node('h2','My 12 Drivers'));const searchLabel=node('label','Find a Driver');const search=node('input');search.type='search';search.placeholder='Search by Driver name';searchLabel.append(search);sections[1].append(searchLabel);const cards=[];
+ drivers.forEach(([key,name])=>{const card=node('details',undefined,'roadmap-driver');card.open=true;const summary=node('summary',name);const entry=doc.drivers?.[key]||{};card.append(summary,node('p','Not scored · Stage not assigned','roadmap-unscored'),node('p',entry.summary||'Awaiting source-backed review.'),node('p',entry.reason||''));sections[1].append(card);cards.push([card,name]);});search.oninput=()=>cards.forEach(([c,name])=>c.hidden=!name.toLowerCase().includes(search.value.trim().toLowerCase()));
+ sections[2].append(node('h2','My Action Plan'),node('p','Starter guidance for consideration. This free report does not include saved coaching checklists or tracking.'));list(sections[2],'Recommended starting actions',doc.actions);
+ host.append(...sections);const print=node('button',meta.preview?'Print unscored preview / Save PDF':'Print report / Save PDF');print.type='button';print.className='roadmap-print';print.onclick=()=>{cards.forEach(([c])=>{c.open=true;});root.print();};host.append(print,node('p',meta.checksum?`Immutable version checksum: ${meta.checksum}`:'Private draft · Educational context only · Not a diagnosis','roadmap-footnote'));return host;
+ }
+ root.RVA_ROADMAP_VIEW=Object.freeze({drivers,node,render});
+})(window);

@@ -1,5 +1,10 @@
 # Holistic Foundations Pricing v2 implementation boundary — 2026-10-10
 
+## 2026-10-15 — Vitality Roadmap Phase B1 (staging only)
+
+Implemented the secure review queue/editor, append-only draft/audit history, verified free-account claim/read boundary, unscored interactive/print preview and held email model. See [B1 acceptance](VITALITY-ROADMAP-B1-ACCEPTANCE-20261015.md) for migrations, deployment, tests and blockers. Production was read-only. Final approval, release and emails remain server-blocked. Next: founder-approved adult scoring/coverage and interpretation contract; no production rollout yet.
+
+
 Implement three stable product plans and separate market-price/merchant-route catalogs. The browser selects only `plan_code`; server functions resolve and snapshot all commercial terms. Annual eligibility uses authoritative membership history and only a reasoned/audited Owner/Admin override. Preserve exact CA/CAD, US/USD and GB/GBP routing without FX or Canadian fallback. Keep all routes disabled, GB configuration pending, agreement publication held and zero active Holistic Foundations mappings. MK7 is historical; MK8 is editorial source only. Agreement drafting/publication, route enablement, live payments, charges and paid access require separate approvals. [Implementation evidence](docs/HOLISTIC_FOUNDATIONS_PRICING_V2_IMPLEMENTATION_2026-10-10.md).
 
 # Production Client Lifecycle technical foundation release gate — 2026-10-08
