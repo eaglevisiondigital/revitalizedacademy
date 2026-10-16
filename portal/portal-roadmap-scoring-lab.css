@@ -28,7 +28,7 @@
 .rv5-score { font-size:1.6rem; font-weight:800; }
 .rv5-print { display:none; }
 @media(max-width:800px) { .rv5-layout { grid-template-columns:1fr; } }
-@media print { body > *:not(.rv5-dialog) { display:none!important; } .rv5-dialog { position:static; padding:0; overflow:visible; background:white; } .rv5-dialog main > *:not(.rv5-print) { display:none!important; } .rv5-dialog .rv5-print { display:block; } .rv5-dialog[data-private-source] { display:none!important; } }
+@media print { body.rv5-open > *:not(.rv5-dialog) { display:none!important; } .rv5-dialog { position:static; padding:0; overflow:visible; background:white; } .rv5-dialog main > *:not(.rv5-print) { display:none!important; } .rv5-dialog .rv5-print { display:block; } .rv5-dialog[data-private-source] { display:none!important; } }
 /* Portal-wide label styles must not force a long what-if label onto one line. */
 .rv5-dialog label { white-space:normal; overflow-wrap:anywhere; width:100%; }
 .rv5-dialog button { white-space:normal; overflow-wrap:anywhere; }

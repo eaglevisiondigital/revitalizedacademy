@@ -5,8 +5,8 @@
   "javascript_syntax": 170,
   "unit_frontend": {
     "maintained": 185,
-    "b5_and_retained_b21": 52,
-    "distinct_total": 237,
+    "b5_and_retained_b21": 53,
+    "distinct_total": 238,
     "failed": 0
   },
   "postgresql17": {
@@ -37,7 +37,7 @@
   "hosted_migrations": 0,
   "production_deployments": 0,
   "browser": {
-    "total_checks": 528,
+    "total_checks": 534,
     "b4": {
       "checks": 168,
       "runs": 6,
@@ -182,13 +182,13 @@
       ]
     },
     "b5": {
-      "b5BrowserChecks": 174,
+      "b5BrowserChecks": 180,
       "results": [
         {
           "engine": "chromium",
           "width": 1440,
           "height": 1000,
-          "checks": 29,
+          "checks": 30,
           "cases": 50,
           "drivers": 12,
           "localDatabase": true,
@@ -200,7 +200,7 @@
           "engine": "chromium",
           "width": 768,
           "height": 1024,
-          "checks": 29,
+          "checks": 30,
           "cases": 50,
           "drivers": 12,
           "localDatabase": true,
@@ -212,7 +212,7 @@
           "engine": "chromium",
           "width": 390,
           "height": 844,
-          "checks": 29,
+          "checks": 30,
           "cases": 50,
           "drivers": 12,
           "localDatabase": true,
@@ -224,7 +224,7 @@
           "engine": "webkit",
           "width": 1440,
           "height": 1000,
-          "checks": 29,
+          "checks": 30,
           "cases": 50,
           "drivers": 12,
           "localDatabase": true,
@@ -236,7 +236,7 @@
           "engine": "webkit",
           "width": 768,
           "height": 1024,
-          "checks": 29,
+          "checks": 30,
           "cases": 50,
           "drivers": 12,
           "localDatabase": true,
@@ -248,7 +248,7 @@
           "engine": "webkit",
           "width": 390,
           "height": 844,
-          "checks": 29,
+          "checks": 30,
           "cases": 50,
           "drivers": 12,
           "localDatabase": true,
@@ -379,7 +379,7 @@
   ],
   "hosted_preview": {
     "url": "https://roadmap-b5-lab--revitalizedacademy-staging.netlify.app",
-    "deploy_id": "6ad2a2d865d717272f0cd8b1",
+    "deploy_id": "6ad2a4fee37965a1606af688",
     "synthetic_only": true,
     "functions": 0,
     "cases": 50,
@@ -391,5 +391,6 @@
     "local_fixture_databases": 0,
     "task_postgres_stopped": true,
     "hosted_participant_fixtures_created": 0
-  }
+  },
+  "closed_lab_print_regression": true
 }
