@@ -1,3 +1,7 @@
+# B5 Founder Scoring Lab candidate — production and all real-data gates held
+
+Prepared from exact live B4.2 `4247e33322c9117b92f68718ed9408070b7b03e2`, preserving PR #29 and all eight existing Functions. Reuses unchanged B2/B2.1 mathematics and 50 fictional cases, deployed B4 coverage, B4.2 identity/SOP/pinned founders, current-session/scope checks and append-only patterns. Adds a versioned independent mapping contract, founder-only scenario/trace/comparison/preview/proposal UI, same-origin `roadmap-scoring-lab` Function, and unapplied forward migration `20261016215456_vitality_roadmap_b5_scoring_lab.sql`. No production migration/deploy, source lookup, participant scoring, cohort enrollment or derivative-write activation. Beta unchanged. Actual scores remain withheld; missing measurements and A/B/C calibration are explicit blockers. [Candidate, security, founder workflow, estimates and exact separate release/rollback gates](docs/VITALITY_ROADMAP_B5_CANDIDATE.md). Prior deployment notes below describe historical checkpoints.
+
 # 2026-10-16 — B4.2 exact identity/SOP verification, no enrollment
 
 Issue #32 authorizes a candidate built from the exact deployed B4.1 source, with synthetic-only testing and a draft PR stacked on PR #31. Exact full name/email plus an optional UTC date supports private alternative-candidate verification. Founder confirmation records separate immutable identity/SOP evidence and never changes B4 eligibility or enrolls anyone. Historical-only sources remain ineligible; missing snapshots are never fabricated.
