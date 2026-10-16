@@ -26,7 +26,19 @@
     "build:roadmap-b1:staging": "node scripts/build-vitality-roadmap-b1-staging.cjs",
     "test:roadmap-b1": "node --test tests/vitality-roadmap-b1.cjs",
     "test:roadmap-b1:database": "node scripts/test-vitality-roadmap-b1.cjs",
-    "test:roadmap-b1:browser": "node tests/vitality-roadmap-b1-browser.cjs"
+    "test:roadmap-b1:browser": "node tests/vitality-roadmap-b1-browser.cjs",
+    "build:roadmap-b2:staging": "node scripts/generate-roadmap-b2-source-map.cjs --check && node scripts/build-vitality-roadmap-b2-staging.cjs",
+    "test:roadmap-b2": "node --test tests/vitality-roadmap-b2.cjs",
+    "test:roadmap-b2:browser": "node tests/vitality-roadmap-b2-browser.cjs",
+    "check:roadmap-b2:source-map": "node scripts/generate-roadmap-b2-source-map.cjs --check",
+    "build:roadmap-b21:staging": "node scripts/generate-roadmap-b2-source-map.cjs --check && node scripts/build-vitality-roadmap-b21-staging.cjs",
+    "test:roadmap-b21": "node --test tests/vitality-roadmap-b21.cjs",
+    "test:roadmap-b21:browser": "node tests/vitality-roadmap-b21-browser.cjs",
+    "build:roadmap-b3:staging": "node scripts/generate-roadmap-b2-source-map.cjs --check && node scripts/build-vitality-roadmap-b3-staging.cjs",
+    "test:roadmap-b3": "node --test tests/vitality-roadmap-b3.cjs",
+    "test:roadmap-b3:database": "RVA_ROADMAP_B3_LOCAL=1 node scripts/test-vitality-roadmap-b1.cjs",
+    "test:roadmap-b3:browser": "node tests/vitality-roadmap-b3-browser.cjs",
+    "test:roadmap-b3:durable-browser": "RVA_ROADMAP_B3_LOCAL=1 RVA_ROADMAP_B3_BROWSER=1 node scripts/test-vitality-roadmap-b1.cjs"
   },
   "devDependencies": {
     "jsdom": "26.1.0",

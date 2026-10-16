@@ -1,3 +1,15 @@
+## 2026-10-16 — B3 prepares a real pilot without executing one
+
+Continue draft PR #28 from B1/B2/B2.1. Read-only production aggregates and fictional/local database tests are authorized; real participant scoring, transfer, approval, release and email are not. Prefer in-place production Owner-only private review under a separate exact deployment/data-use approval, preserving PR #29. Do not publish a staging bridge or merge the stacked branch to main. Preserve A/B/C discrepancy and request independent ranges plus stage/measurement definitions; historical summaries remain insufficient. No new quality-improvement checkbox. [Founder worksheet](VITALITY-ROADMAP-B3-FOUNDER-DECISIONS.md); [next gates](VITALITY-ROADMAP-B3-READINESS-20261016.md).
+
+## 2026-10-15 — B2.1 latest founder direction supersedes prior candidate assumptions
+
+Preserve B2/B1 and implement a new candidate version with founder weights and zero Wise Budgeting health deduction. Spectrum gates, qualifying symptom definitions, condition grouping, daily-impact interpretation and 90-versus-95 Peace thresholds remain explicit provisional comparisons. No automatic diagnosis or causal knowledge-base advice is approved. Preserve the observed A/B/C calibration discrepancy rather than force scores into invented ranges. The later B2.1 task supersedes the historical quality-improvement-checkbox suggestion: add no checkbox. Founder corrections can propose separately versioned KB changes but never automatically change scoring. Keep the draft PR/isolated preview and all participant scoring/approval/release/email holds. [Open decisions](VITALITY-ROADMAP-B21-IMPLEMENTATION-20261015.md).
+
+## 2026-10-15 — B2 starts from B1; candidate comparisons precede policy approval
+
+User requires B2 to start from B1 / PR #26, not current production main. Implement concrete arithmetic/source coverage/workbench/expected-output comparisons while distinguishing confirmed shared scales from unapproved formulas and interpretations. Common alpha 0.5, complete breadth expressions and tie ordering are disclosed engineering comparisons. Do not invent factual proficiency, primary symptom ownership, knowledge-base advice, per-Driver stages or founder approval. Missing/unmatched source evidence stays unknown; actual scoring/release stays held. Isolated staging preview and stacked draft PR are review artifacts, not a production rollout. Next: founder calibration before authoritative scoring. [Founder decision packet](VITALITY-ROADMAP-B2-FOUNDER-REVIEW-PACK.md).
+
 # Holistic Foundations Pricing v2 implementation boundary — 2026-10-10
 
 ## 2026-10-15 — Vitality Roadmap Phase B1 (staging only)

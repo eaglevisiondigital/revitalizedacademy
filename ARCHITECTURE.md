@@ -1,3 +1,15 @@
+## 2026-10-16 — B3 source readiness and synthetic pilot preparation
+
+The additive B3 adapter represents source evidence states without participant calculations. The public isolated preview contains only purpose-built fictional fixtures and explicitly ephemeral rehearsal history. Native tests exercise existing B1 append/audit plus an uninstalled local-only founder/fixture boundary and immutable adapter/source provenance sidecar. No second persisted assessment system, scoring switch or production bridge. A future separately approved production same-origin founder workspace is preferred to copying PHI into staging; reconcile onto current production including PR #29 instead of merging the stacked branch wholesale. [Design](VITALITY-ROADMAP-B3-READINESS-20261016.md).
+
+## 2026-10-15 — B2.1 versioned fictional calibration
+
+An additive pure engine preserves the original B2 configuration and introduces explicit Driver weights, a budget-independent weighted health composite and provisional Spectrum eligibility/ceilings. A separate scenario library preserves all 30 original cases and adds 20 fictional cases. The isolated preview workbench exposes comparison revisions, definitions, independent expectations and proposed knowledge-base corrections without changing server policy. Existing B1 read RPCs remain the only private-data path. Actual answers never enter B2.1 calculation or export. Production build inputs, questionnaire, save/resume and database/Edge contracts are unchanged. [Details](VITALITY-ROADMAP-B21-IMPLEMENTATION-20261015.md).
+
+## 2026-10-15 — Vitality Roadmap B2 comparison boundary
+
+The B2 preview extends B1 in a stacked branch. A pure Node/browser engine evaluates explicit hypothetical inputs; fixed scenarios and per-Driver comparison cards expose numerical traces and assumptions. A generated registry describes current questionnaire controls and source coverage. Existing private B1 read RPCs supply source review only; real answers never automatically populate candidate calculations or handoff exports. No production build allowlist, questionnaire, save/resume protocol, schema or report release path changes. Parameters/reasoned review choices are document-session state, not persisted policy or authenticated founder signoff. [Implementation](VITALITY-ROADMAP-B2-IMPLEMENTATION-20261015.md).
+
 # Holistic Foundations Pricing v2 implementation — 2026-10-10
 
 ## 2026-10-15 — Vitality Roadmap Phase B1 (staging only)
