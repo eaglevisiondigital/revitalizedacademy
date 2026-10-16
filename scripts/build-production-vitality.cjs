@@ -6,6 +6,16 @@ const root = path.resolve(__dirname, '..');
 const output = path.join(root, 'production-dist');
 const files = require('../config/production-public-files.json');
 const config = resolve(require('../config/production.json'));
+// Fail closed on source/coverage drift; B4 labels are metadata, never scoring policy.
+const { createHash } = require('node:crypto');
+const registry = require('../config/roadmap-b4/source-map.json');
+const adapter = require('../js/vitality-roadmap-b4-coverage.js');
+const sha = bytes => createHash('sha256').update(bytes).digest('hex');
+if (sha(fs.readFileSync(path.join(root,'config/roadmap-b4/source-map.json'))) !== adapter.fingerprint) throw Error('B4 registry fingerprint drift');
+for (const [file, expected] of Object.entries(registry.sourceFiles)) {
+  if (sha(fs.readFileSync(path.join(root,file))) !== expected) throw Error('B4 questionnaire reference drift: '+file);
+}
+
 
 if (config.environment !== 'production' || config.projectRef !== 'voalfpxiyznnqfcqcymd' || config.appOrigin !== 'https://revitalizedacademy.com') {
   throw new Error('Production public configuration mismatch');

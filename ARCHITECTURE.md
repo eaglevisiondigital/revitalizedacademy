@@ -1,3 +1,7 @@
+# B4 production founder workspace candidate — 2026-10-16
+
+Production-main standalone review package reuses B1 document/rendering concepts and B3 pinned coverage without merging staging schema or scoring engines. Primary-origin Netlify transport forwards only the caller's JWT to one guarded RPC; private cohort/version/audit tables are append-only, source records remain in place, cohort defaults empty, draft authorization is separate. No PHI snapshots are duplicated in derivative tables, public release or mail endpoints added. [Exact candidate architecture and release boundary](docs/VITALITY_ROADMAP_B4_PRODUCTION_CANDIDATE_2026-10-16.md). NOT DEPLOYED.
+
 # Holistic Foundations Pricing v2 implementation — 2026-10-10
 
 The approved normalized architecture is now represented by an unapplied forward candidate: `program_product_plans` holds stable product structure, `program_plan_prices` holds market/currency/amount/route, and `payment_merchant_routes` holds isolated provider readiness without secrets. Enrollment stores immutable plan/price/market/route/commitment snapshots and accepts only contact plus plan code from staff. Annual eligibility is derived from authoritative membership history with a separately audited override. Agreement lookup is exact-plan/currency and Payments v1 re-resolves the catalog server-side. All agreement and payment switches remain held. [Detailed implementation](docs/HOLISTIC_FOUNDATIONS_PRICING_V2_IMPLEMENTATION_2026-10-10.md).
