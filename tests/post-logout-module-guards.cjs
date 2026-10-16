@@ -127,11 +127,11 @@ test('account transition tears down the old module epoch and a fresh account ini
 test('cache versions publish the guarded core and all five repaired modules',()=>{
   const source=read('portal/index.html');
   for(const expected of [
-    /portal\.js\?v=193/,
+    /portal\.js\?v=nda-onboarding-20261015/,
     /portal-executive\.js\?v=167/,
     /portal-community\.js\?v=167/,
     /portal-refuel\.js\?v=167/,
     /portal-permissions\.js\?v=133/,
-    /portal-staff-onboarding\.js\?v=145/
+    /portal-staff-onboarding\.js\?v=146/
   ])assert.match(source,expected);
 });

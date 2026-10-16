@@ -1,3 +1,7 @@
+# 2026-10-16 — B4 candidate only; separate release and cohort gates
+
+User authorizes a production-reconciled founder workspace candidate from main, not a deployment, hosted migration, PHI transfer, stacked merge or pilot. Use fictional local fixtures; preserve NDA and all accepted production changes. First real feature is source-plus-unscored coverage/clarification, with no invented measurements or participant scores/stages. Keep all B3 founder scoring decisions pending. Separate explicit approval is required for the exact release; later selected cohort/data-use/retention and read-only versus draft permission require another authorization. [Review packet](docs/VITALITY_ROADMAP_B4_PRODUCTION_CANDIDATE_2026-10-16.md).
+
 # Holistic Foundations Pricing v2 implementation boundary — 2026-10-10
 
 Implement three stable product plans and separate market-price/merchant-route catalogs. The browser selects only `plan_code`; server functions resolve and snapshot all commercial terms. Annual eligibility uses authoritative membership history and only a reasoned/audited Owner/Admin override. Preserve exact CA/CAD, US/USD and GB/GBP routing without FX or Canadian fallback. Keep all routes disabled, GB configuration pending, agreement publication held and zero active Holistic Foundations mappings. MK7 is historical; MK8 is editorial source only. Agreement drafting/publication, route enablement, live payments, charges and paid access require separate approvals. [Implementation evidence](docs/HOLISTIC_FOUNDATIONS_PRICING_V2_IMPLEMENTATION_2026-10-10.md).
