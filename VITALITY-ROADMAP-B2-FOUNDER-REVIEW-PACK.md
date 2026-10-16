@@ -2,6 +2,16 @@
 
 Built from B1 PR #26, not production main. No rule/stage approval, real-source score, medical interpretation or client release is implied.
 
+## B2.1 is the current calibration profile
+
+Open **B2.1 founder calibration · Candidate / Not Approved** in the isolated Roadmap workspace. Select one of 50 fictional cases; compare the purpose-built answer sheet and provisional Roadmap, expand all twelve Drivers and the WHY/trace, then use **Candidate rules & definitions** for reasoned session-only revisions. **Corrections & review packet** records Agree/Disagree/Need more information and independent expected scores/stages. Downloads contain fictional comparison proposals only, not approved policy or authenticated signoff. Do not enter actual participant information into correction fields. Actual-source review is a separate read-only, unscored tab.
+
+Current health weights: Hydration/Neural/Detox/GI **1.4**; Hormone/Diet/Recovery/Mentality **1.3**; Electrobiology/Functional **1.2**; Momentum **1.1**. Budget **1.0 separate, zero health deduction**. Five provisional bands start at **95/80/60/40/0**, with explicit Peace/current symptoms/impact, cognitive, GI, persistent-condition and daily-effect rules. These definitions remain candidate settings, not approved diagnostic classifications.
+
+**Unresolved calibration:** fictional A=70.65972, B=35.48134, C=70.00000. A is slightly above C but far above B; the current formula does not satisfy the founder's close-score direction. Founders must supply independent expected ranges/spread and confirm the answer sheets before formula changes. Other exact decisions: qualifying intensity/frequency/impact; conditions versus diagnoses versus symptoms; distinct-group deduplication; Chaos each-group versus any-group impact; persistent infrequent Driver-local ceiling; Peace 90 versus 95 and habit/function minimums; overlapping rules; remaining factual rubrics, source conversions and curated symptom–habit links.
+
+The sections below preserve the original B2 profile and 30 cases for historical comparison. The six-Driver 1.3 weight proposal, ten-point budget deduction and unconfigured Driver stages below are superseded in **B2.1**, not current policy. [Current implementation, tests and release boundary](VITALITY-ROADMAP-B21-IMPLEMENTATION-20261015.md).
+
 ## How Justyn and Elle can review
 
 1. Open the isolated B2 staff preview and sign in with an existing beta Owner account.

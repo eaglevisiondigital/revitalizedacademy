@@ -1,3 +1,9 @@
+## 2026-10-15 — B2.1 founder calibration candidate (isolated preview only)
+
+B2.1 extends draft PR #28 / B1 with a separately versioned 1.4/1.3/1.2/1.1 health-weight configuration, Wise Budgeting 1.0 reported separately with zero health deduction, configurable provisional Spectrum bands/ceilings, and 50 fictional cases (the original 30 plus 20). The founder workbench shows fictional answers, twelve Driver traces, explicit WHY, editable candidate definitions, reasoned corrections and fictional-only proposal exports. Actual source review remains read-only and unscored; no extra consent checkbox is added. B2 and B1 are preserved.
+
+**Calibration decision remains open:** A/B/C currently calculate about 70.66/35.48/70.00, which does not meet the founder expectation that all three scores be close. No arbitrary tuning or approved classification is claimed. The next package is secure adult provisional-review pilot preparation, subject to approved definitions, independent calibration expectations and separately authorized data handling; the pilot has not begun. [B2.1 implementation and validation](VITALITY-ROADMAP-B21-IMPLEMENTATION-20261015.md).
+
 ## 2026-10-15 — Vitality Roadmap B2 candidate workbench (isolated staging preview)
 
 B2 is built from B1 / PR #26 at `3c1c6d3258b9e78abb85dd0f43879622d5e005b7`, not production main. It supplies disclosed candidate math, 743 source field mappings, 190 symptom observations, 30 fixed expected-output scenarios, 36 per-Driver comparisons and a founder review workbench. Actual participant scoring, policy approval, report release and emails remain held. No migrations, Edge updates or hosted data writes. Production and beta primary remain unchanged. Hosted Owner acceptance now passes: all six sections, synthetic recalculation/unknown handling, read-only unscored source review, 18 responsive combinations, close/refresh/reset and zero captured warnings/errors. Draft PR #28 is stacked on B1.

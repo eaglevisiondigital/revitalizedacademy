@@ -1,5 +1,7 @@
 # B2 — Candidate calculations, source mapping and founder workbench
 
+**Current continuation:** [Phase B2.1 implementation and founder calibration](VITALITY-ROADMAP-B21-IMPLEMENTATION-20261015.md). B2.1 adds a versioned profile without overwriting this preserved B2 baseline. Its weights/budget and candidate stage controls supersede the old defaults for new founder comparisons. No participant score or policy approval is implied.
+
 Built on B1 commit `3c1c6d3258b9e78abb85dd0f43879622d5e005b7`, branch `codex/vitality-roadmap-b1-review-delivery`, PR #26. B2 does not start from production main and does not merge B1 into production.
 
 ## Completed
