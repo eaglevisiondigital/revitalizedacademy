@@ -162,6 +162,8 @@
 
   async function load() {
     if (loading) return;
+    const session=portal.captureStaffSession();
+    if(!session)return;
     loading = true;
 
     const list = el("work-desk-list");
@@ -176,6 +178,7 @@
       .order("due_at", { ascending: true, nullsFirst: false })
       .limit(100);
 
+    if(!portal.isStaffSessionCurrent(session))return;
     loading = false;
 
     if (error) {
@@ -293,6 +296,7 @@
   el("work-due-filter").addEventListener("change", render);
   el("work-refresh").addEventListener("click", load);
 
+  document.addEventListener("ra:staff-access-reset",()=>{loading=false;rows=[];el("work-desk-list").replaceChildren();el("work-desk-stats").replaceChildren();});
   document.addEventListener("ra:dashboard-loaded", load);
   document.addEventListener("ra:contact-opened", () => {});
   document.addEventListener("ra:contact-closed", load);

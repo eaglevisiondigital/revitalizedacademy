@@ -117,8 +117,11 @@
   }
 
   async function load(){
+    const session=portal.captureStaffSession();
+    if(!session)return;
     list.innerHTML='<div class="family-request-empty">Loading Family Hub requests...</div>';
     const {data,error}=await client.from("admin_family_requests").select("*");
+    if(!portal.isStaffSessionCurrent(session))return;
     if(error){
       list.innerHTML='<div class="family-request-empty">Family Hub requests could not be loaded.</div>';
       summary.replaceChildren();
@@ -130,6 +133,7 @@
 
   filter?.addEventListener("change",render);
   refresh?.addEventListener("click",load);
+  document.addEventListener("ra:staff-access-reset",()=>{rows=[];list.replaceChildren();summary.replaceChildren();});
   document.addEventListener("ra:dashboard-loaded",load);
   load();
 })();

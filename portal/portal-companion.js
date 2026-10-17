@@ -125,10 +125,13 @@
   }
 
   async function loadReviews(){
+    const session=portal.captureStaffSession();
+    if(!session)return;
     const {data,error}=await client.from("admin_companion_review_queue")
       .select("*")
       .order("created_at",{ascending:true});
 
+    if(!portal.isStaffSessionCurrent(session))return;
     if(error){
       el("companion-review-list").innerHTML='<div class="empty-state">Coach Companion reviews could not be loaded. '+error.message+'</div>';
       return;
@@ -428,6 +431,7 @@
   document.querySelectorAll("[data-companion-review-close]").forEach((node)=>node.addEventListener("click",closeReview));
   document.querySelectorAll("[data-companion-knowledge-close]").forEach((node)=>node.addEventListener("click",closeKnowledge));
 
+  document.addEventListener("ra:staff-access-reset",()=>{reviewRows=[];knowledgeRows=[];el("companion-review-list").replaceChildren();closeReview();closeKnowledge();});
   document.addEventListener("ra:dashboard-loaded",loadReviews);
   window.setTimeout(loadReviews,850);
 

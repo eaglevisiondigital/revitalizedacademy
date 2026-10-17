@@ -146,10 +146,13 @@
   }
 
   async function loadInbox(){
+    const session=portal.captureStaffSession();
+    if(!session)return;
     const {data,error}=await client
       .from("admin_staff_inbox")
       .select("*")
       .order("last_message_at",{ascending:false,nullsFirst:false});
+    if(!portal.isStaffSessionCurrent(session))return;
     if(error){
       el("staff-inbox-list").innerHTML='<div class="empty-state">Coach Inbox could not be loaded. '+error.message+'</div>';
       return;
@@ -357,12 +360,14 @@
   });
 
   document.addEventListener("ra:contact-closed",()=>{
+    if(!portal.captureStaffSession())return;
     activeContact=null;
     contactConversation=null;
     el("client-messaging-section").classList.add("hidden");
     closeModal();
   });
 
+  document.addEventListener("ra:staff-access-reset",()=>{inboxRows=[];el("staff-inbox-list").replaceChildren();closeModal();});
   document.addEventListener("ra:dashboard-loaded",loadInbox);
   window.setTimeout(()=>loadInbox(),700);
 

@@ -68,7 +68,10 @@
   }
 
   async function load(){
+    const session=portal.captureStaffSession();
+    if(!session)return;
     const {data,error}=await client.from("program_catalog").select("program_code,name,program_type,default_commitment_months,pricing,active,metadata").order("created_at",{ascending:true});
+    if(!portal.isStaffSessionCurrent(session))return;
     if(error){root.innerHTML='<div class="empty-state">Program catalog could not be loaded. '+error.message+'</div>';return;}
     const rows=(data||[]).filter(r=>r.active);
     const memberships=rows.filter(r=>r.program_type==="membership").length;
@@ -437,6 +440,8 @@
   }
 
   async function loadProgramAccess(){
+    const session=portal.captureStaffSession();
+    if(!session)return;
     if(!accessRoot)return;
     const [programs,entitlements,courses,access,resources,resourceAccess,challenges,challengeAccess]=await Promise.all([
       client.from("program_catalog").select("program_code,name,program_type,active,metadata").order("name"),
@@ -448,6 +453,7 @@
       client.from("wellness_challenges").select("id,title,scope,starts_on,ends_on,status").order("title"),
       client.from("program_challenge_access").select("id,program_code,challenge_id,active")
     ]);
+    if(!portal.isStaffSessionCurrent(session))return;
     if(programs.error||entitlements.error||courses.error||access.error||resources.error||resourceAccess.error||challenges.error||challengeAccess.error){
       accessRoot.innerHTML='<div class="empty-state">Program access rules could not be loaded.</div>';
       return;
@@ -992,6 +998,8 @@
   }
 
   async function loadContent(){
+    const session=portal.captureStaffSession();
+    if(!session)return;
     const readEpoch=++contentReadEpoch;
     if(!contentSummary||!contentList)return;
     const entries=Object.entries(contentSources);
@@ -1004,7 +1012,7 @@
       client.from("fitness_methodologies").select("id,name,status").order("name"),
       client.from("nutrition_nutrient_catalog").select("nutrient_key,name,category,unit,default_visible,sort_order").eq("active",true).order("sort_order")
     ]);
-    if(readEpoch!==contentReadEpoch)return;
+    if(readEpoch!==contentReadEpoch||!portal.isStaffSessionCurrent(session))return;
     nutritionMethodologies=nutritionResult.error?[]:(nutritionResult.data||[]);
     fitnessMethodologies=fitnessResult.error?[]:(fitnessResult.data||[]);
     nutritionNutrients=nutrientResult.error?[]:(nutrientResult.data||[]);
@@ -1222,10 +1230,10 @@
   document.getElementById("program-content-close")?.addEventListener("click",closeContentModal);
   document.getElementById("program-content-cancel")?.addEventListener("click",closeContentModal);
   document.querySelectorAll("[data-program-content-close]").forEach(node=>node.addEventListener("click",closeContentModal));
-  document.addEventListener("ra:dashboard-loaded",()=>{syncContentManagementAccess();loadContent();});
+  document.addEventListener("ra:dashboard-loaded",()=>{syncContentManagementAccess();load();loadProgramAccess();loadContent();});
   document.addEventListener("ra:permissions-loaded",()=>{syncContentManagementAccess();loadContent();});
 
-  document.addEventListener("ra:staff-access-reset",()=>{contentReadEpoch++;nutritionMethodologies=[];fitnessMethodologies=[];nutritionNutrients=[];closeContentModal();contentCache={};contentList?.replaceChildren();contentSummary?.replaceChildren();});
+  document.addEventListener("ra:staff-access-reset",()=>{contentReadEpoch++;programRows=[];entitlementRows=[];courseRows=[];courseAccessRows=[];resourceRows=[];resourceAccessRows=[];challengeRows=[];challengeAccessRows=[];root.replaceChildren();summary.replaceChildren();accessRoot?.replaceChildren();closeBenefitModal();closeCourseBuilder();nutritionMethodologies=[];fitnessMethodologies=[];nutritionNutrients=[];closeContentModal();contentCache={};contentList?.replaceChildren();contentSummary?.replaceChildren();});
   window.RA_PROGRAM_CONTENT={reload:loadContent,render:renderContent};
   load();
   loadProgramAccess();

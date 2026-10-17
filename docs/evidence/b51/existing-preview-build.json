@@ -1,0 +1,69 @@
+{
+  "deploy": "6ad2cd0f3df5f6796b7aad95",
+  "created_at": "2026-10-17T01:19:11.983Z",
+  "context": "deploy-preview",
+  "source": "e02f35267de3159d7b3b2a5e989ccb8edb7e9f7d",
+  "functions": [
+    {
+      "name": "exercise-library",
+      "exact_bundle": false,
+      "runtime": "nodejs24.x",
+      "preview_sha256": "2884aa4e919862e67c1f0129c34e354d344c4efc120ed731143031b13c4e973f"
+    },
+    {
+      "name": "food-database",
+      "exact_bundle": false,
+      "runtime": "nodejs24.x",
+      "preview_sha256": "5f4fea0e65b1b4bdfad3732b49b279b310fa9fe0da68e7efbd8eb90ea256593f"
+    },
+    {
+      "name": "payment-webhook",
+      "exact_bundle": false,
+      "runtime": "nodejs24.x",
+      "preview_sha256": "118d2e0bd404d21ab1035c363903c7fe22a7d5cfd1bb7e17b94230b5dc50fbf9"
+    },
+    {
+      "name": "payment-worker",
+      "exact_bundle": false,
+      "runtime": "nodejs24.x",
+      "preview_sha256": "126662a769ac67acd38252f5ee4560bd0a9163dc4c1d9fd2ab1920f55e36b8e8"
+    },
+    {
+      "name": "payments",
+      "exact_bundle": false,
+      "runtime": "nodejs24.x",
+      "preview_sha256": "d2f6ac651ffb4ec88e42208cf03a62d49df3e7181bf51139ca59809e284eff20"
+    },
+    {
+      "name": "reusable-content-sync",
+      "exact_bundle": false,
+      "runtime": "nodejs24.x",
+      "preview_sha256": "42ccf66d2a44b49819322d64010d7bdfef03641fde57a8c6ddef603cec11572e"
+    },
+    {
+      "name": "roadmap-founder",
+      "exact_bundle": false,
+      "runtime": "nodejs24.x",
+      "preview_sha256": "67253f8f2f778ce7c1377250ee7770de292c25ba4280b6799c751b8d470992c6"
+    },
+    {
+      "name": "roadmap-scoring-lab",
+      "exact_bundle": false,
+      "runtime": "nodejs24.x",
+      "preview_sha256": "dd98382269a5e704f41c27d119672e449aefa5c37047aa0f3ba8c69851f0873f"
+    },
+    {
+      "name": "roadmap-verification",
+      "exact_bundle": false,
+      "runtime": "nodejs24.x",
+      "preview_sha256": "dcd1f1d6599f27211d2101d533b83ca4df436299780d45f76be7d2da6034d6f1"
+    }
+  ],
+  "schedules": [
+    {
+      "cron": "* * * * *",
+      "name": "payment-worker"
+    }
+  ],
+  "pre_existing_preview": true
+}

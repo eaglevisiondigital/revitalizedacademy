@@ -1,0 +1,21 @@
+{
+  "production_ledger_entries": 205,
+  "matched_b4_b42_b5": [
+    {
+      "version": "20261016074754",
+      "name": "vitality_roadmap_b4_founder_workspace",
+      "sql_sha256": "0ace9e12e706b302cc6523103fd986cc3470a624cc9756cd338ac59cc38111f2"
+    },
+    {
+      "version": "20261016212348",
+      "name": "vitality_roadmap_b42_identity_verification",
+      "sql_sha256": "784e7ce94b47154da0b2821c9764e2c1306d86544e2d38f477c537dd52d0abe1"
+    },
+    {
+      "version": "20261016230019",
+      "name": "vitality_roadmap_b5_scoring_lab",
+      "sql_sha256": "af9c2c9808a180f7a5c9ee8e6d1d5577f5fac64b7796a27228a580bbed055803"
+    }
+  ],
+  "note": "Read-only full ledger inventory; no migrations applied. Source filename timestamps differ from these installed versions. Do not run db push/replay."
+}

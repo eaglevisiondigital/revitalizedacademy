@@ -1,4 +1,8 @@
-# B5 Founder Scoring Lab candidate — production and all real-data gates held
+# B5.1 current engineering boundary — no hosted release
+
+B5 is installed at production deploy `6ad2acb16d6d38c15ce3e489`. This B5.1 branch is a separate unshipped seven-module startup/session repair plus read-only source audit. All server security, nine live Functions, source/scoring and real-data release gates remain unchanged. See `docs/B51_ENGINEERING_VALIDATION.md` and the current build-state header. Earlier candidate checkpoints below are historical.
+
+# B5 candidate — historical pre-release checkpoint
 
 Prepared from exact live B4.2 `4247e33322c9117b92f68718ed9408070b7b03e2`, preserving PR #29 and all eight existing Functions. Reuses unchanged B2/B2.1 mathematics and 50 fictional cases, deployed B4 coverage, B4.2 identity/SOP/pinned founders, current-session/scope checks and append-only patterns. Adds a versioned independent mapping contract, founder-only scenario/trace/comparison/preview/proposal UI, same-origin `roadmap-scoring-lab` Function, and unapplied forward migration `20261016215456_vitality_roadmap_b5_scoring_lab.sql`. No production migration/deploy, source lookup, participant scoring, cohort enrollment or derivative-write activation. Beta unchanged. Actual scores remain withheld; missing measurements and A/B/C calibration are explicit blockers. [Candidate, security, founder workflow, estimates and exact separate release/rollback gates](docs/VITALITY_ROADMAP_B5_CANDIDATE.md). Prior deployment notes below describe historical checkpoints.
 
@@ -89,3 +93,6 @@ Production Client Lifecycle v1: user requested safe pre-payment promotion only, 
 - Calculate annual eligibility from authoritative membership history; allow only an audited Owner/Admin override.
 - Keep MK7 historical and published MK8 immutable. Existing MK8 exactly matches none of the new plans; prepare three plan-specific future agreement revisions.
 - Keep `production_client_agreement_publication` held, zero active Holistic Foundations mappings, and Payments v1 disabled pending separate legal/provider release gates.
+# B5.1 — preserve deployed artifacts; source reconciliation is not a release
+
+Preserve existing PR37 exact-source reconciliation and PR38 measurement workbook. Keep the signed-out startup repair in an independent draft stacked on PR37. Do not change RLS or hide genuine denials to clear resource errors. Production Node22 Functions must not silently become Node24 through an automatic main/preview build. Existing archive parity is incomplete: controlled source sync and any static-only production release require separate exact approval and preserved Function pins/configs/schedule. Founder worksheet proposals remain unapproved; no hosted data/scoring/pilot/draft/client-release mutation is authorized.

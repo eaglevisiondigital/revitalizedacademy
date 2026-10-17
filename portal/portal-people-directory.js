@@ -94,6 +94,8 @@
   }
 
   async function load(){
+    const session=portal.captureStaffSession();
+    if(!session)return;
     const search=el("people-search-input").value.trim();
     let q=client.from("admin_people_directory").select("*",{count:"exact"});
 
@@ -138,6 +140,8 @@
     }
 
     const {data,error,count}=await q;
+    if(!portal.isStaffSessionCurrent(session))return;
+
     if(error){
       el("people-result-count").textContent="People could not be loaded.";
       return;
@@ -152,19 +156,28 @@
   }
 
   async function populateFilters(){
+    const session=portal.captureStaffSession();
+    if(!session)return;
     const staff=portal.staffDirectory();
     const assigned=el("people-assigned-filter");
+    const previousAssigned=assigned.value;
+    assigned.replaceChildren(...Array.from(assigned.options).slice(0,2).map(o=>o.cloneNode(true)));
     staff.forEach((row)=>{
       const o=document.createElement("option");
       o.value=row.user_id;o.textContent=row.display_name;
       assigned.append(o);
     });
 
+    assigned.value=previousAssigned;
     const {data}=await client.from("admin_people_directory").select("first_source").not("first_source","is",null).limit(1000);
+    if(!portal.isStaffSessionCurrent(session))return;
     const source=el("people-source-filter");
+    const previousSource=source.value;
+    source.replaceChildren(source.options[0].cloneNode(true));
     [...new Set((data||[]).map(r=>r.first_source).filter(Boolean))].sort().forEach((v)=>{
       const o=document.createElement("option");o.value=v;o.textContent=portal.titleCase(v);source.append(o);
     });
+    source.value=previousSource;
   }
 
 
@@ -405,6 +418,7 @@
   }
 
   function applyDataPermissions(){
+    if(!portal.captureStaffSession())return;
     const canExport=portal.hasPermission?.("people.export")??false;
     const canImport=portal.hasPermission?.("people.import")??false;
     el("people-export").classList.toggle("hidden",!canExport);
@@ -444,10 +458,14 @@
   }
 
   async function loadSavedViews(){
+    const session=portal.captureStaffSession();
+    if(!session)return;
     const {data,error}=await client.from("people_saved_views").select("*").order("name");
+    if(!portal.isStaffSessionCurrent(session))return;
     if(error)return;
     savedViews=data||[];
     const select=el("people-saved-view");
+    const previousView=select.value;
     select.innerHTML='<option value="">Choose saved view...</option>';
     savedViews.forEach((row)=>{
       const option=document.createElement("option");
@@ -455,6 +473,7 @@
       option.textContent=row.name+(row.shared?" · Shared":"");
       select.append(option);
     });
+    select.value=previousView;
     el("people-delete-view").disabled=!select.value;
   }
 
@@ -545,11 +564,17 @@
     page=0;load();
   });
 
-  document.addEventListener("ra:dashboard-loaded",load);
-
-  applyDataPermissions();
-  populateFilters().then(async()=>{
+  async function initialize(){
+    const session=portal.captureStaffSession();
+    if(!session)return;
+    await populateFilters();
+    if(!portal.isStaffSessionCurrent(session))return;
     await loadSavedViews();
+    if(!portal.isStaffSessionCurrent(session))return;
     await load();
-  });
+  }
+  document.addEventListener("ra:dashboard-loaded",initialize);
+  document.addEventListener("ra:staff-access-reset",()=>{clearTimeout(timer);timer=null;currentRows=[];savedViews=[];selectedIds.clear();importRows=[];el("contacts-body").replaceChildren();closeImport();});
+  applyDataPermissions();
+  initialize();
 })();
