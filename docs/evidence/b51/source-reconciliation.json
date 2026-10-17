@@ -1,0 +1,260 @@
+{
+  "pr37_sha": "e02f35267de3159d7b3b2a5e989ccb8edb7e9f7d",
+  "main_sha": "79debed92925b920f9052d9c522a796bbf929223",
+  "ahead_behind": "0\t7",
+  "production_deploy": "6ad2acb16d6d38c15ce3e489",
+  "beta_deploy": "6acc33161511aa93c289bbcc",
+  "manifest_files": 434,
+  "exact_public_bytes": 433,
+  "different": [
+    "netlify.toml: retained historical Netlify-normalized non-runtime configuration artifact"
+  ],
+  "functions": [
+    {
+      "name": "exercise-library",
+      "bundle_sha256": "f4d1eb5876c89546443881c3d175d9b0fedd4defe5eb05d3caf319988409ba7b",
+      "live_bundle_sha256": "7afffe944b6e4f9390354813cad0f8ff281184360f5f7131f8ecd697dc8f134f",
+      "byte_identical": false,
+      "live_id": "5d7238ffa8f3670a6704cc826f7c0d487dbd07afe514e0de010934f3c55eb6c7",
+      "runtime": "nodejs22.x",
+      "api": 2,
+      "schedule": null,
+      "routes": [],
+      "excluded_routes": [],
+      "live_routes": [],
+      "live_config_preserved": true
+    },
+    {
+      "name": "food-database",
+      "bundle_sha256": "aaffb59b9c039db88f00b1a6b1ef0896b8c9d68459b6d6cf557d767b74a5c8c4",
+      "live_bundle_sha256": "e8a1772c271a05ea357c4b59c8c804541bc187587822e60bfba9d7e8911cdda0",
+      "byte_identical": false,
+      "live_id": "0b1820cbec8d6853ee739c014f9657b910e77848cb23f3a47a7a601f61e2941b",
+      "runtime": "nodejs22.x",
+      "api": 2,
+      "schedule": null,
+      "routes": [],
+      "excluded_routes": [],
+      "live_routes": [],
+      "live_config_preserved": true
+    },
+    {
+      "name": "payment-webhook",
+      "bundle_sha256": "0173fddfbd4b8803529f6f101591c61d7a5601d40e434b72b2aa31cd5df35020",
+      "live_bundle_sha256": "ca4aa97da4f298adac82adb8851f055c21aa360b6c819a3b8fb2497e87ff05e2",
+      "byte_identical": false,
+      "live_id": "df04cfeefadb800c512fd5c55d1392799692169d6d72adddb5722a026e29fa64",
+      "runtime": "nodejs22.x",
+      "api": 2,
+      "schedule": null,
+      "routes": [
+        {
+          "pattern": "/api/payments/webhook",
+          "literal": "/api/payments/webhook",
+          "methods": []
+        }
+      ],
+      "excluded_routes": [],
+      "live_routes": [
+        {
+          "p": "/api/payments/webhook",
+          "l": "/api/payments/webhook",
+          "e": null,
+          "m": null,
+          "ps": false
+        }
+      ],
+      "live_config_preserved": true
+    },
+    {
+      "name": "payment-worker",
+      "bundle_sha256": "86c2949aaec9d7754017552f1d584440eb5d7af953a451319015335ac53a56f3",
+      "live_bundle_sha256": "2d2c440bb8ff85049a820f90d969b6c986685646a4ec55214e8a1ddc8fa74a32",
+      "byte_identical": false,
+      "live_id": "ea40f9266373bc29f1f0d66df6245e61834ddbf257667d0ad56103cd8fbe8e55",
+      "runtime": "nodejs22.x",
+      "api": 2,
+      "schedule": "* * * * *",
+      "routes": [],
+      "excluded_routes": [],
+      "live_routes": [],
+      "live_config_preserved": true
+    },
+    {
+      "name": "payments",
+      "bundle_sha256": "1f171dfcc26a7ff618ef6a4c45c493fc07aed8d76cb66d7d4e4c4db03848dc9a",
+      "live_bundle_sha256": "f0469725112b4f3b878b67dad311a530441e613ba4fac1a0580b167651d55ded",
+      "byte_identical": false,
+      "live_id": "5010a067e847fa4952be5e6c9990538b469018c88902494d818a61cf20a24d1b",
+      "runtime": "nodejs22.x",
+      "api": 2,
+      "schedule": null,
+      "routes": [
+        {
+          "pattern": "/api/payments/summary",
+          "literal": "/api/payments/summary",
+          "methods": []
+        },
+        {
+          "pattern": "/api/payments/staff-list",
+          "literal": "/api/payments/staff-list",
+          "methods": []
+        },
+        {
+          "pattern": "/api/payments/staff-create",
+          "literal": "/api/payments/staff-create",
+          "methods": []
+        },
+        {
+          "pattern": "/api/payments/webinar-start",
+          "literal": "/api/payments/webinar-start",
+          "methods": []
+        },
+        {
+          "pattern": "/api/payments/begin",
+          "literal": "/api/payments/begin",
+          "methods": []
+        },
+        {
+          "pattern": "/api/payments/refresh",
+          "literal": "/api/payments/refresh",
+          "methods": []
+        },
+        {
+          "pattern": "/api/payments/update-card",
+          "literal": "/api/payments/update-card",
+          "methods": []
+        }
+      ],
+      "excluded_routes": [],
+      "live_routes": [
+        {
+          "p": "/api/payments/summary",
+          "l": "/api/payments/summary",
+          "e": null,
+          "m": null,
+          "ps": false
+        },
+        {
+          "p": "/api/payments/staff-list",
+          "l": "/api/payments/staff-list",
+          "e": null,
+          "m": null,
+          "ps": false
+        },
+        {
+          "p": "/api/payments/staff-create",
+          "l": "/api/payments/staff-create",
+          "e": null,
+          "m": null,
+          "ps": false
+        },
+        {
+          "p": "/api/payments/webinar-start",
+          "l": "/api/payments/webinar-start",
+          "e": null,
+          "m": null,
+          "ps": false
+        },
+        {
+          "p": "/api/payments/begin",
+          "l": "/api/payments/begin",
+          "e": null,
+          "m": null,
+          "ps": false
+        },
+        {
+          "p": "/api/payments/refresh",
+          "l": "/api/payments/refresh",
+          "e": null,
+          "m": null,
+          "ps": false
+        },
+        {
+          "p": "/api/payments/update-card",
+          "l": "/api/payments/update-card",
+          "e": null,
+          "m": null,
+          "ps": false
+        }
+      ],
+      "live_config_preserved": true
+    },
+    {
+      "name": "reusable-content-sync",
+      "bundle_sha256": "77d4032df9f7e5f54b5f2d696f65ba6c45550206770a85fbdf31df4508109d80",
+      "live_bundle_sha256": "17551800e6a1c26506147e99bf4f48783b69cc1f96daed52e08998288780b930",
+      "byte_identical": false,
+      "live_id": "a574aac3c25952704ed86c9849cec28c3cb356f65566c2dbe4a21bc01d7faaa4",
+      "runtime": "nodejs22.x",
+      "api": 2,
+      "schedule": null,
+      "routes": [],
+      "excluded_routes": [],
+      "live_routes": [],
+      "live_config_preserved": true
+    },
+    {
+      "name": "roadmap-founder",
+      "bundle_sha256": "602753cb9e09a2b67580a2431bc4a6940eee33afc21c58aba031973937bf3107",
+      "live_bundle_sha256": "525a80737e5000e4ae0b5e4b76704f58eb0e0566541042ee0fda1e26b96fb079",
+      "byte_identical": false,
+      "live_id": "a7e3416ac3b6d5322724df76ebd6ed00f0f9f42ed3319c3480e5e44f6d8acc3f",
+      "runtime": "nodejs22.x",
+      "api": 2,
+      "schedule": null,
+      "routes": [],
+      "excluded_routes": [],
+      "live_routes": [],
+      "live_config_preserved": true
+    },
+    {
+      "name": "roadmap-scoring-lab",
+      "bundle_sha256": "b56be86402df7e23b2b5bb2a12e49f92981804cc9a4b78607061cac1d337f3ea",
+      "live_bundle_sha256": "b56be86402df7e23b2b5bb2a12e49f92981804cc9a4b78607061cac1d337f3ea",
+      "byte_identical": true,
+      "live_id": "77c9b0efc90dd80546abe13159016b52f5e931f8916c43513ee8af4c7d4f7dad",
+      "runtime": "nodejs22.x",
+      "api": 2,
+      "schedule": null,
+      "routes": [],
+      "excluded_routes": [],
+      "live_routes": [],
+      "live_config_preserved": true
+    },
+    {
+      "name": "roadmap-verification",
+      "bundle_sha256": "9d29f707e514df7626e8513283a9bed3834680260a8b87d5c58d5138d23180a6",
+      "live_bundle_sha256": "9d29f707e514df7626e8513283a9bed3834680260a8b87d5c58d5138d23180a6",
+      "byte_identical": true,
+      "live_id": "d4655cae9eaa09201a4281f84d3abd5e95b7701c42a85706129fcedc532bacd8",
+      "runtime": "nodejs22.x",
+      "api": 2,
+      "schedule": null,
+      "routes": [],
+      "excluded_routes": [],
+      "live_routes": [],
+      "live_config_preserved": true
+    }
+  ],
+  "schedule": [
+    {
+      "name": "payment-worker",
+      "cron": "* * * * *"
+    }
+  ],
+  "automatic_deployment": {
+    "provider": "github",
+    "repo_branch": "main",
+    "allowed_branches": [
+      "main"
+    ],
+    "stop_builds": false,
+    "skip_automatic_builds": null,
+    "skip_prs": null,
+    "locked": null,
+    "repository_toml_command": "node scripts/prepare-repdb.cjs && node scripts/build-production-vitality.cjs",
+    "hosted_setting_publish": "."
+  },
+  "no_hosted_writes": true
+}

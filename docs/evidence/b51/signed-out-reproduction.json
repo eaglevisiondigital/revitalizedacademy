@@ -1,0 +1,162 @@
+{
+  "baseline": "production-dist",
+  "unnecessary_401": 31,
+  "calls": [
+    {
+      "table": "admin_work_queue",
+      "initiator": "portal-work-desk.js?v=160:173:8)",
+      "signedOut": true
+    },
+    {
+      "table": "program_catalog",
+      "initiator": "portal-programs.js?v=179:71:37)",
+      "signedOut": true
+    },
+    {
+      "table": "program_catalog",
+      "initiator": "portal-programs.js?v=179:442:14)",
+      "signedOut": true
+    },
+    {
+      "table": "program_entitlement_templates",
+      "initiator": "portal-programs.js?v=179:443:14)",
+      "signedOut": true
+    },
+    {
+      "table": "learning_courses",
+      "initiator": "portal-programs.js?v=179:444:14)",
+      "signedOut": true
+    },
+    {
+      "table": "program_course_access",
+      "initiator": "portal-programs.js?v=179:445:14)",
+      "signedOut": true
+    },
+    {
+      "table": "resource_library",
+      "initiator": "portal-programs.js?v=179:446:14)",
+      "signedOut": true
+    },
+    {
+      "table": "program_resource_access",
+      "initiator": "portal-programs.js?v=179:447:14)",
+      "signedOut": true
+    },
+    {
+      "table": "wellness_challenges",
+      "initiator": "portal-programs.js?v=179:448:14)",
+      "signedOut": true
+    },
+    {
+      "table": "program_challenge_access",
+      "initiator": "portal-programs.js?v=179:449:14)",
+      "signedOut": true
+    },
+    {
+      "table": "nutrition_methodologies",
+      "initiator": "portal-programs.js?v=179:1000:41",
+      "signedOut": true
+    },
+    {
+      "table": "fitness_methodologies",
+      "initiator": "portal-programs.js?v=179:1000:41",
+      "signedOut": true
+    },
+    {
+      "table": "learning_courses",
+      "initiator": "portal-programs.js?v=179:1000:41",
+      "signedOut": true
+    },
+    {
+      "table": "wellness_challenges",
+      "initiator": "portal-programs.js?v=179:1000:41",
+      "signedOut": true
+    },
+    {
+      "table": "meal_plan_templates",
+      "initiator": "portal-programs.js?v=179:1000:41",
+      "signedOut": true
+    },
+    {
+      "table": "recipes",
+      "initiator": "portal-programs.js?v=179:1000:41",
+      "signedOut": true
+    },
+    {
+      "table": "food_catalog",
+      "initiator": "portal-programs.js?v=179:1000:41",
+      "signedOut": true
+    },
+    {
+      "table": "fitness_programs",
+      "initiator": "portal-programs.js?v=179:1000:41",
+      "signedOut": true
+    },
+    {
+      "table": "workout_templates",
+      "initiator": "portal-programs.js?v=179:1000:41",
+      "signedOut": true
+    },
+    {
+      "table": "exercise_catalog",
+      "initiator": "portal-programs.js?v=179:1000:41",
+      "signedOut": true
+    },
+    {
+      "table": "resource_library",
+      "initiator": "portal-programs.js?v=179:1000:41",
+      "signedOut": true
+    },
+    {
+      "table": "nutrition_methodologies",
+      "initiator": "portal-programs.js?v=179:1003:14)",
+      "signedOut": true
+    },
+    {
+      "table": "fitness_methodologies",
+      "initiator": "portal-programs.js?v=179:1004:14)",
+      "signedOut": true
+    },
+    {
+      "table": "nutrition_nutrient_catalog",
+      "initiator": "portal-programs.js?v=179:1005:14)",
+      "signedOut": true
+    },
+    {
+      "table": "admin_people_directory",
+      "initiator": "portal-people-directory.js?v=144:163:31)",
+      "signedOut": true
+    },
+    {
+      "table": "admin_family_requests",
+      "initiator": "portal-family-requests.js?v=166:121:37)",
+      "signedOut": true
+    },
+    {
+      "table": "people_saved_views",
+      "initiator": "portal-people-directory.js?v=144:447:37)",
+      "signedOut": true
+    },
+    {
+      "table": "admin_people_directory",
+      "initiator": "portal-people-directory.js?v=144:98:18)",
+      "signedOut": true
+    },
+    {
+      "table": "my_staff_permissions_view",
+      "initiator": "portal-staff-access.js?v=181:51:37)",
+      "signedOut": true
+    },
+    {
+      "table": "admin_staff_inbox",
+      "initiator": "portal-member-messaging.js?v=166:150:8)",
+      "signedOut": true
+    },
+    {
+      "table": "admin_companion_review_queue",
+      "initiator": "portal-companion.js?v=122:128:37)",
+      "signedOut": true
+    }
+  ],
+  "console_errors": 31
+}

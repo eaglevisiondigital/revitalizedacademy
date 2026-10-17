@@ -1,0 +1,65 @@
+{
+  "results": [
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "height": 1000,
+      "checks": 21,
+      "unnecessary_signed_out_requests": 0,
+      "expected_negative_probe": 401,
+      "baseline_console_clean": true,
+      "participant_requests": 0
+    },
+    {
+      "engine": "chromium",
+      "width": 768,
+      "height": 1024,
+      "checks": 21,
+      "unnecessary_signed_out_requests": 0,
+      "expected_negative_probe": 401,
+      "baseline_console_clean": true,
+      "participant_requests": 0
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "height": 844,
+      "checks": 21,
+      "unnecessary_signed_out_requests": 0,
+      "expected_negative_probe": 401,
+      "baseline_console_clean": true,
+      "participant_requests": 0
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "height": 1000,
+      "checks": 21,
+      "unnecessary_signed_out_requests": 0,
+      "expected_negative_probe": 401,
+      "baseline_console_clean": true,
+      "participant_requests": 0
+    },
+    {
+      "engine": "webkit",
+      "width": 768,
+      "height": 1024,
+      "checks": 21,
+      "unnecessary_signed_out_requests": 0,
+      "expected_negative_probe": 401,
+      "baseline_console_clean": true,
+      "participant_requests": 0
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "height": 844,
+      "checks": 21,
+      "unnecessary_signed_out_requests": 0,
+      "expected_negative_probe": 401,
+      "baseline_console_clean": true,
+      "participant_requests": 0
+    }
+  ],
+  "total": 126
+}

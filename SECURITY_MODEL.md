@@ -1,4 +1,8 @@
-# B5 Founder Scoring Lab candidate — production and all real-data gates held
+# B5.1 current engineering boundary — no hosted release
+
+B5 is installed at production deploy `6ad2acb16d6d38c15ce3e489`. This B5.1 branch is a separate unshipped seven-module startup/session repair plus read-only source audit. All server security, nine live Functions, source/scoring and real-data release gates remain unchanged. See `docs/B51_ENGINEERING_VALIDATION.md` and the current build-state header. Earlier candidate checkpoints below are historical.
+
+# B5 candidate — historical pre-release checkpoint
 
 Prepared from exact live B4.2 `4247e33322c9117b92f68718ed9408070b7b03e2`, preserving PR #29 and all eight existing Functions. Reuses unchanged B2/B2.1 mathematics and 50 fictional cases, deployed B4 coverage, B4.2 identity/SOP/pinned founders, current-session/scope checks and append-only patterns. Adds a versioned independent mapping contract, founder-only scenario/trace/comparison/preview/proposal UI, same-origin `roadmap-scoring-lab` Function, and unapplied forward migration `20261016215456_vitality_roadmap_b5_scoring_lab.sql`. No production migration/deploy, source lookup, participant scoring, cohort enrollment or derivative-write activation. Beta unchanged. Actual scores remain withheld; missing measurements and A/B/C calibration are explicit blockers. [Candidate, security, founder workflow, estimates and exact separate release/rollback gates](docs/VITALITY_ROADMAP_B5_CANDIDATE.md). Prior deployment notes below describe historical checkpoints.
 
@@ -73,3 +77,6 @@ Unapplied production lifecycle candidate tests exact caller role/permission/cont
 ## Session restoration continuity — 2026-10-11
 
 Persisted browser Auth may restore asynchronously. The portal must not interpret a temporary empty startup read as a completed logout, but restoration never bypasses `get_my_staff_access`. Rendered staff data remains document-local; account changes, logout, inactive/revoked access and stale ownership destroy or clear private state. Production and beta keep separate Supabase project-scoped storage keys and origins.
+# B5.1 signed-out request boundary — candidate only
+
+Seven legacy startup loaders now require the existing captured staff-session epoch before any operational read and recheck it after awaited responses. Dependent chains stop on logout/account change; caches and private module state clear on reset. This is client-side lifecycle hygiene, not server authorization. RLS, RPC ACLs, verified founder/current-session/scope/NDA checks and legitimate401/403 denials are unchanged. Only fictional local fixtures are used. No cohort/pilot/draft/report-release/email/AI authorization is implied. See docs/B51_ENGINEERING_VALIDATION.md.

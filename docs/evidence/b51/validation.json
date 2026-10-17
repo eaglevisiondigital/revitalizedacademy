@@ -1,0 +1,64 @@
+{
+  "production_deploy_unchanged": "6ad2acb16d6d38c15ce3e489",
+  "beta_deploy_unchanged": "6acc33161511aa93c289bbcc",
+  "build_files": 434,
+  "javascript_syntax": 178,
+  "maintained_full_run": {
+    "passed": 260,
+    "failed": 0
+  },
+  "focused_guard_tests": {
+    "passed": 23,
+    "failed": 0,
+    "overlap_with_full": 22,
+    "additional": 1
+  },
+  "distinct_unit_tests": 261,
+  "postgresql17_rls": {
+    "passed": 201,
+    "failed": 0
+  },
+  "session_browser_checks": 39,
+  "startup_browser_checks": 126,
+  "chromium_webkit_viewports": [
+    [
+      1440,
+      1000
+    ],
+    [
+      768,
+      1024
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "content_browser": {
+    "fooddata": 66,
+    "repdb": 46,
+    "durable_content": 36,
+    "failed": 0
+  },
+  "mocked_edge": {
+    "passed": 40,
+    "failed": 0
+  },
+  "readiness_pr38_tests": 10,
+  "reconciliation": {
+    "public_bytes_exact": 433,
+    "manifest_files": 434,
+    "functions_packaged": 9,
+    "local_node22_archives_exact": 2,
+    "existing_automatic_preview_runtime": "nodejs24.x",
+    "production_runtime": "nodejs22.x",
+    "main_sync_authorized": false
+  },
+  "no_hosted_writes": true,
+  "no_real_participant_reads": true,
+  "cohort_events": 0,
+  "pilot_events": 0,
+  "proposals": 0,
+  "local_disposable_databases": 0,
+  "task_postgresql_stopped": true
+}
