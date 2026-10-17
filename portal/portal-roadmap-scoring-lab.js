@@ -7,8 +7,8 @@
   const launch=button('Founder Scoring Lab',open);launch.hidden=true;launch.className='rv5-launch secondary-button compact';launch.dataset.scoringLab='launch';
   (panel.querySelector('.panel-heading')||panel).append(launch);
   const controllers=new Set();let dialog,main,catalog,source=null,comparison=null,caseSelect,output,sourceHost,preview,printView,status,selectedDriver,consistency,proficiency,fnInput,proposalForm,historyHost;
-  let timer,initTask,focusBack,busy=false,proposalItems=[],parameters={},overrides={},generation=0;
-  function clear(){generation++;guard.cancel();for(const c of controllers)c.abort();controllers.clear();win.clearTimeout(timer);timer=null;dialog?.remove();dialog=null;main=null;source=null;comparison=null;catalog=null;sourceHost=null;output=null;preview=null;printView=null;status=null;caseSelect=null;proposalForm=null;historyHost=null;selectedDriver=null;consistency=null;proficiency=null;fnInput=null;proposalItems=[];parameters={};overrides={};busy=false;doc.body.classList.remove('rv5-open');if(portal.captureStaffSession())focusBack?.focus();focusBack=null;}
+  let timer,initTask,focusBack,busy=false,proposalItems=[],parameters={},overrides={},generation=0,caseButtons=[];
+  function clear(){generation++;guard.cancel();for(const c of controllers)c.abort();controllers.clear();win.clearTimeout(timer);timer=null;dialog?.remove();dialog=null;main=null;source=null;comparison=null;catalog=null;sourceHost=null;output=null;preview=null;printView=null;status=null;caseSelect=null;caseButtons=[];proposalForm=null;historyHost=null;selectedDriver=null;consistency=null;proficiency=null;fnInput=null;proposalItems=[];parameters={};overrides={};busy=false;doc.body.classList.remove('rv5-open');if(portal.captureStaffSession())focusBack?.focus();focusBack=null;}
   function reset(){clear();launch.hidden=true;initTask=null;}
   function note(text,host=status){if(host){host.textContent=text;host.setAttribute('role','status');}}
   function fail(){reset();const p=n('p','Founder Scoring Lab unavailable. Private state cleared; use a fresh authorized session.');p.dataset.rv5Failure='';panel.querySelector('[data-rv5-failure]')?.remove();launch.after(p);}
@@ -23,6 +23,27 @@
   function schedule(){win.clearTimeout(timer);if(dialog)timer=win.setTimeout(check,15000);}
   async function check(){if(!dialog)return;if(busy){schedule();return;}if(!portal.captureStaffSession()){reset();return;}const task=guard.begin();try{const r=await call(source?'check':'authorize',source?.report_id||null,{},task);if(!r)return;if(source&&(r.pilot_sequence!==source.pilot_sequence||r.can_edit!==source.can_edit))throw Error('Changed');}catch{if(guard.current(task))fail();}finally{schedule();}}
   function render(rows){
+   // Put the three founder calibration priorities above the cohort and measurement details.
+   // These are shortcuts for fictional cases only, never participant or source IDs.
+   const firstCases=[['abc_a','Person A','Strong habits · ongoing concern'],['abc_b','Person B','Poor habits · few symptoms'],['abc_c','Person C','Moderate habits · moderate concerns']];
+   const featured=firstCases.filter(([id])=>catalog.cases.some(c=>c.id===id));
+   if(featured.length){
+    const start=n('section',null,'rv5-card rv5-case-picker');
+    start.append(n('h2','Start here: Persons A, B and C'),n('p','Choose a fictional person below to see the candidate scores and all 12 Driver explanations. Other cases remain in the dropdown.'));
+    const shortcuts=n('div',null,'rv5-case-shortcuts');
+    for(const [id,name,description] of featured){
+     const choose=button(name,()=>{
+      if(!caseSelect||busy)return;
+      caseSelect.value=id;caseSelect.onchange();
+      output?.scrollIntoView?.({block:'start',behavior:'smooth'});
+     });
+     choose.dataset.rv5CaseShortcut=id;
+     choose.setAttribute('aria-pressed',String(id===featured[0][0]));
+     choose.append(n('small',description));
+     caseButtons.push(choose);shortcuts.append(choose);
+    }
+    start.append(shortcuts);main.append(start);
+   }
    banner(main,'Private calibration only · NOT approved scoring policy, diagnosis, client report or medical advice. Original answers stay read-only. Report approval, release and email remain held.');
    banner(main,'Calibration blockers: A ≈70.66 / B ≈35.48 / C ≈70.00 conflicts with founder direction. Symptom-free B numeric Chaos is suspect. Independent expected ranges, acceptable spread and Spectrum prerequisites remain unresolved. No arbitrary tuning has been applied.');
    const gate=n('section',null,'rv5-card');gate.append(n('h2','Identity → SOP → read-only cohort → separate scoring pilot'));
@@ -31,7 +52,10 @@
    for(const row of rows)gate.append(button('Open '+row.label,()=>openSource(row.report_id)));main.append(gate);
    const layout=n('div',null,'rv5-layout');sourceHost=n('section',null,'rv5-card');sourceHost.dataset.rv5Source='';sourceHost.append(n('h2','Read-only original answers'),n('p','No participant source loaded. All 50 cases below are fictional measurement sheets; they are never matched to a participant.'));
    const work=n('section',null,'rv5-card');work.append(n('h2','Detached fictional scenario'));layout.append(sourceHost,work);main.append(layout);
-   caseSelect=select(work,'Fictional calibration case',catalog.cases.map(c=>[c.id,c.title]));caseSelect.onchange=()=>{overrides={};parameters={};run();};
+   const priorityIds=featured.map(([id])=>id);
+   const orderedCases=[...priorityIds.map(id=>catalog.cases.find(c=>c.id===id)),...catalog.cases.filter(c=>!priorityIds.includes(c.id))];
+   caseSelect=select(work,'Fictional calibration case',orderedCases.map(c=>[c.id,c.title]));
+   caseSelect.onchange=()=>{overrides={};parameters={};for(const choose of caseButtons)choose.setAttribute('aria-pressed',String(choose.dataset.rv5CaseShortcut===caseSelect.value));run();};
    const params=n('details');params.append(n('summary','Proposed formula parameters · never adopted automatically'));const controls=n('div',null,'rv5-controls');for(const [key,spec]of Object.entries(catalog.parameters)){const input=spec.choices?select(controls,key,spec.choices.map(v=>[String(v),String(v)])):field(controls,key,'input');if(!spec.choices){input.type='number';input.min=spec.min;input.max=spec.max;input.step=spec.step;}input.value=spec.value;input.onchange=()=>{parameters[key]=typeof spec.value==='number'?Number(input.value):input.value;};}params.append(controls);work.append(params);
    const assume=n('details');assume.append(n('summary','Explicit what-if measurements'));banner(assume,'These edits are entered assumptions on the selected fictional case. They do not replace source answers or fill missing participant measurements.');
    selectedDriver=select(assume,'Hypothetical Driver',catalog.drivers.filter(([k])=>k!=='wise_budgeting'));consistency=select(assume,'Assumed habit consistency',[['','Keep fictional case'],...['Never','Rarely','Sometimes','Often','Almost always'].map(x=>[x,x])]);proficiency=select(assume,'Assumed factual proficiency',[['','Keep fictional case'],...['Not established','Basic','Developing','Strong','Baseline met'].map(x=>[x,x])]);fnInput=field(assume,'Assumed independent function burden (0–100)','input');fnInput.type='number';fnInput.min=0;fnInput.max=100;
@@ -40,7 +64,7 @@
    preview=n('section',null,'rv5-card');preview.append(n('h2','Interactive Roadmap preview · provisional'));main.append(preview);printView=n('section',null,'rv5-print');main.append(printView);
    const print=button('Print fictional preview',()=>{if(!source&&comparison)win.print();});print.dataset.rv5Print='';main.append(print);renderProposal();run();
   }
-  async function run(){if(busy||!dialog||!catalog)return;busy=true;const task=guard.begin();try{const r=await call('simulate',null,{case_id:caseSelect.value,patch:parameters,overrides},task);if(!r)return;comparison=r;renderComparison();note('Comparison calculated. Conditional fictional results only; no policy adopted or source answers changed.');}catch(e){if(guard.current(task)){if(e.kind==='invalid')note('Invalid hypothetical inputs. No result saved.');else fail();}}finally{busy=false;schedule();}}
+  async function run(){if(busy||!dialog||!catalog)return;busy=true;if(caseSelect)caseSelect.disabled=true;for(const choose of caseButtons)choose.disabled=true;const task=guard.begin();try{const r=await call('simulate',null,{case_id:caseSelect.value,patch:parameters,overrides},task);if(!r)return;comparison=r;renderComparison();note('Comparison calculated. Conditional fictional results only; no policy adopted or source answers changed.');}catch(e){if(guard.current(task)){if(e.kind==='invalid')note('Invalid hypothetical inputs. No result saved.');else fail();}}finally{busy=false;if(caseSelect)caseSelect.disabled=false;for(const choose of caseButtons)choose.disabled=false;schedule();}}
   const score=v=>v==null?'Withheld':Number(v).toFixed(2);
   function renderComparison(){if(!comparison||!output)return;output.replaceChildren();const {before,after,assumptions}=comparison;
    output.append(n('h3','Official candidate configuration vs experimental proposal'),n('p','“Official candidate” identifies the pinned engineering comparison, not approved participant scoring policy.'),n('p',`Health score: ${score(before.overall?.raw)} → ${score(after.overall?.raw)} · delta ${before.overall&&after.overall?score(after.overall.raw-before.overall.raw):'withheld'}`,'rv5-score'),n('p',`Candidate Spectrum: ${before.overall?.candidateBand||'Withheld'} → ${after.overall?.candidateBand||'Withheld'} · all stages unapproved`),n('p',`Wise Budgeting: ${score(after.budget?.index)} · separate indicator · health deduction 0`));
