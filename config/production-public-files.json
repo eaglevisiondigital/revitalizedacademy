@@ -431,5 +431,7 @@
   "portal/portal-roadmap-verification.css",
   "portal/portal-roadmap-scoring-lab.js",
   "portal/portal-roadmap-scoring-lab.css",
-  "portal/portal-roadmap-scoring-lab-bootstrap.js"
+  "portal/portal-roadmap-scoring-lab-bootstrap.js",
+  "portal/portal-roadmap-scoring-lab-reference.js",
+  "portal/portal-roadmap-scoring-lab-view.js"
 ]

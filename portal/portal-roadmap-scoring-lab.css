@@ -47,3 +47,21 @@
 .rv5-dialog button { white-space:normal; overflow-wrap:anywhere; }
 /* WebKit paints long selected option text outside an otherwise correctly sized select. */
 .rv5-dialog select { text-overflow:ellipsis; overflow:hidden; }
+/* B5.3: readable evidence, scoring explanations and fictional Roadmap; no outside layout changes. */
+.rv5-dialog { background:#f7f7f0; line-height:1.6; }
+.rv5-dialog h1,.rv5-dialog h2 { color:#123e30; letter-spacing:-.025em; }
+.rv5-dialog h2 { font-size:clamp(1.3rem,2.2vw,1.8rem); }
+.rv5-dialog h4 { margin:14px 0 6px; }
+.rv5-card { padding:clamp(16px,2.2vw,28px); box-shadow:0 3px 15px #153b3006; }
+.rv5-guide ol { display:grid; grid-template-columns:repeat(auto-fit,minmax(155px,1fr)); gap:12px; padding-left:24px; }
+.rv5-guide li { padding:6px 10px; }
+.rv5-source-held { border-left:4px solid #b18845; background:#faf7ee; }
+.rv5-driver { background:#fcfdfb; }
+.rv5-question,.rv5-roadmap-item { border-top:1px solid #d1dfd7; padding:16px 0; }
+.rv5-question h3 { font-size:1.05rem; }
+.rv5-dialog dd { margin-left:0; }
+.rv5-dialog details { border-top:1px solid #dce5df; }
+.rv5-dialog summary { min-height:44px; }
+.rv5-dialog [role="status"] { min-height:1.6em; }
+@media(prefers-reduced-motion:reduce) { .rv5-dialog * { scroll-behavior:auto!important; } }
+@media(max-width:600px) { .rv5-guide ol { grid-template-columns:1fr; } .rv5-score { font-size:1.3rem; } }
