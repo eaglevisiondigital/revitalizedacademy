@@ -6,6 +6,7 @@ const root = path.resolve(__dirname, '..');
 const output = path.join(root, 'production-dist');
 const files = require('../config/production-public-files.json');
 const config = resolve(require('../config/production.json'));
+require('node:child_process').execFileSync(process.execPath,[path.join(root,'scripts/generate-roadmap-b53-reference.cjs'),'--check'],{cwd:root});
 // Fail closed on source/coverage drift; B4 labels are metadata, never scoring policy.
 const { createHash } = require('node:crypto');
 const registry = require('../config/roadmap-b4/source-map.json');

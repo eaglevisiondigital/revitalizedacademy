@@ -1,0 +1,81 @@
+{
+  "status": "B5.3 candidate validated; production/beta release and all real-data gates held",
+  "synthetic_only": true,
+  "build_files": 436,
+  "static_changes_from_live": 5,
+  "unchanged_live_paths": 431,
+  "syntax": {
+    "passed": 182,
+    "failed": 0
+  },
+  "unit": {
+    "maintained": 185,
+    "b5_b21_b53": 108,
+    "distinct_total": 293,
+    "failed": 0
+  },
+  "postgresql17_rls": {
+    "passed": 201,
+    "failed": 0
+  },
+  "native_browser": {
+    "B4": 168,
+    "B42": 186,
+    "B5": 234,
+    "B53_preview": 216,
+    "session": 39,
+    "engines": [
+      "Chromium",
+      "WebKit"
+    ],
+    "viewports": [
+      [
+        1440,
+        1000
+      ],
+      [
+        768,
+        1024
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "console_warnings_errors": 0,
+    "horizontal_overflow": false
+  },
+  "concurrency": {
+    "groups": 18,
+    "workers_per_group": 8,
+    "all_pass": true
+  },
+  "content": {
+    "fictional_cases": 50,
+    "drivers": 12,
+    "public_question_contexts": 707,
+    "actual_answers_in_preview": 0,
+    "budget_health_deduction": 0
+  },
+  "held": [
+    "production/beta deployment",
+    "hosted migration",
+    "actual participant reads/scoring",
+    "cohort/pilot enrollment",
+    "draft activation",
+    "policy adoption",
+    "report approval/release",
+    "email",
+    "external AI"
+  ],
+  "known_limitations": [
+    "A/B/C calibration discrepancy unresolved",
+    "symptom-free B numeric Chaos unresolved",
+    "current questionnaire does not provide approved complete measurement rubrics",
+    "PR39 legacy signed-out requests remains separate and unreleased"
+  ],
+  "cleanup": {
+    "disposable_hosted_participants": 0,
+    "hosted_writes_except_independent_fictional_preview": 0
+  }
+}
