@@ -1,0 +1,7 @@
+// Test-only proposed form semantics, not a live questionnaire or scoring adapter.
+const known=v=>typeof v==='number'&&Number.isFinite(v);
+function value(v,min,max,integer=false){if(v==null||v===''||v==='not_sure'||v==='prefer_not')return{state:v==='prefer_not'?'declined':'unknown',value:null};if(!known(v)||v<min||v>max||(integer&&!Number.isInteger(v)))throw Error('Out-of-range proposed answer');return{state:'known',value:v};}
+function branches({pathway,assessment_for,selected,current}){return pathway==='Adult'&&assessment_for==='Myself'&&selected===true&&current===true?['unique_days','intensity','daily_impact','duration_exact_days','still_occurring']:[];}
+function habit(applicable,performed){const a=value(applicable,0,7,true),p=value(performed,0,7,true);if(a.state==='known'&&p.state==='known'&&p.value>a.value)throw Error('Performed exceeds applicable');return{applicable:a,performed:p,ratio:a.state==='known'&&a.value===0?null:a.state==='known'&&p.state==='known'?p.value/a.value:null,state:a.state==='known'&&a.value===0?'inapplicable':'not_scored'};}
+function water(amount,unit){const v=value(amount,0,Number.MAX_SAFE_INTEGER);if(v.state!=='known')return{...v,unit:null,ml:null};const factors={mL:1,L:1000,'US fl oz':29.5735295625,'Imperial fl oz':28.4130625};if(!Object.hasOwn(factors,unit))throw Error('Explicit unambiguous unit required');const ml=v.value*factors[unit];if(!Number.isFinite(ml)||ml>Number.MAX_SAFE_INTEGER)throw Error('Arithmetic limit');return{...v,unit,ml,target:null};}
+module.exports={value,branches,habit,water};

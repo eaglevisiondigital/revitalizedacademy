@@ -88,3 +88,69 @@ Existing founder-proposed weights to preserve unless explicitly changed by signe
 5. Independently approve any future clinical claims or client-release workflow. Never send actual source data to staging, Github, third-party AI, client email or analytics.
 
 **Independent engineering can prepare all of the above, but Justyn and Elle must supply normative scoring and questionnaire decisions.**
+
+## B5.1 engineering review addendum — exact source contracts, no new questionnaire
+
+The original workbook above is preserved. The generated [field-level matrix](evidence/b51/measurement-matrix.json) expands its examples using the exact unchanged B5 `crosswalk()` and pinned reference registry. It covers **707 Driver-specific reference fields, 36 shared/other fields and all 190 symptom observations**. Every row retains the original question ID, label, kind, options and conditional paths. Field presence does not prove an individual answered it or establish measurement sufficiency. No participant record was queried.
+
+| Driver | Reference fields | Health weight | Complete actual score now |
+|---|---:|---:|---|
+| Cellular Hydration |53|1.4|Withheld|
+| Systemic Detoxification |163|1.4|Withheld|
+| Electrobiology Rhythms |34|1.2|Withheld|
+| The Living Diet |47|1.3|Withheld|
+| Functional Training |51|1.2|Withheld|
+| Holistic Recovery |79|1.3|Withheld|
+| Gastrointestinal Renovation |50|1.4|Withheld|
+| Hormone Balancing |130|1.3|Withheld|
+| Neural Repatterning |47|1.4|Withheld|
+| Momentum Regimens |5|1.1|Withheld|
+| Mentality Realignment |40|1.3|Withheld|
+| Wise Budgeting |8|Separate1.0|Separate planning rubric unresolved; health deduction0|
+
+Reproduce with `node scripts/generate-b51-readiness.cjs --check` and `node --test tests/b51-measurement-readiness.cjs`. The validator is test-only and absent from every public/runtime allowlist. It exercises proposed answer semantics, not adopted policy or clinical validity. No B5 contract, live question, source mapping, formula or weight changed.
+
+### Exact follow-up implementation proposal for founder review
+
+All proposed field names below are **future names**, not existing questionnaire fields. No choice is preselected. Each optional numeric answer has explicit “Not sure” and “Prefer not to answer” states; blank is unknown, never zero. Existing historical sources remain on their original immutable questionnaire version. Do not retrofit defaults or populate follow-ups from ordinal responses.
+
+| Proposed item | Wording / answer choices | Placement, validation and compatibility |
+|---|---|---|
+| `b51_symptom_unique_days` | “During the past 30 days, on how many different days did you experience [selected symptom]?” Integer0–30 | After an individually selected, current symptom in Adult/Myself only. No follow-up for None, unselected, child/proxy or historical-only branches. Zero is explicit zero for this observation. |
+| `b51_symptom_intensity` | “On days when it occurred, how intense was [selected symptom] typically?” Mild / Moderate / Severe / Not sure / Prefer not to answer | Show only when days>0. Unknown days do not imply current intensity. These labels have **no approved numerical weights**. |
+| `b51_symptom_daily_impact` | “On those days, how much did [selected symptom] interfere with activities important to you?” Not at all / A little / Moderately / A lot / Unable to do those activities / Not sure / Prefer not to answer | Separate from intensity. No automatic clinical interpretation, impairment gate or diagnosis. Founder threshold approval required. |
+| `b51_symptom_duration_exact_days` | “If you know, for how many days has this concern been recurring?” Integer0–36500 / Not sure / Prefer not to answer; “Is it still occurring?” Yes / No / Not sure | Exact recalled days only; no midpoint from “more than12 weeks.” Founder must decide whether reliable exact start date is preferred and how unknown duration affects provisional classification. Resolved findings cannot silently count as current burden. |
+| `b51_habit_applicable_days`, `b51_habit_performed_days` | “On how many days in the past7 days was [approved specific behavior] applicable to your circumstances?” Then “On how many of those days did you do it?” | Integers0–7; performed≤applicable. Zero opportunities means inapplicable and no ratio; it is not failure. Missing either answer gives no ratio. Founders must define each behavior, role and limitation exceptions. |
+| `b51_water_amount`, `b51_water_unit` | “Approximately how much plain water did you drink on a typical day over the past7 days?” Number≥0, then mL / L / US fluid ounces / Imperial fluid ounces | Unit required only for a known amount. “Ounces” or “cups” alone is ambiguous. Normalize only for comparison; **no hydration target or intake-adequacy label is approved**. No intake-adequacy threshold or unit-specific plausibility bound has been adopted. Founders must approve justified unit-aware validation before release. |
+| `b51_optional_weight`, `b51_weight_unit` | “If you would like to provide it, what is your current body weight?” Number>0 + kg / lb / Not sure / Prefer not to answer | Optional and separately justified. No unit default; no requirement to weigh oneself. Founders must first decide whether weight is necessary at all. No weight-based hydration formula is approved. |
+| `b51_budget_plan` | “Do you have a comfortable plan for optional health-related expenses?” Yes / Working on one / No / Prefer not to answer | Budget branch only; no income requirement, client eligibility gate or health/Spectrum deduction. Factual planning criteria remain unresolved. |
+
+**Overlap decision still needed:** per-symptom unique-day counts do not identify the union of days across symptoms. They cannot prove that two observations happened on the same day or belong to one condition. Do not sum them as unique days or deduplicate them with an invented max/min rule. Founders must choose a justified primary-owner model, explicit grouping evidence and, only if required, a low-burden day selection/calendar. A professional diagnosis cannot be inferred from symptom descriptions.
+
+### Independent function and factual proficiency remain founder-authored
+
+Proposed common stem: “During the past30 days, how much did concerns with [specific function below] interfere with activities important to you?” Answer choices: Not at all / A little / Moderately / A lot / Unable / Not sure / Prefer not to answer. These are **eleven separate proposed observations**, not eleven copies of `body_allows_activities`; attribution and score conversion remain unapproved.
+
+| Driver | Proposed function wording to edit/approve | Factual proficiency check still required |
+|---|---|---|
+| Hydration | maintaining comfortable drinking and usual daily hydration routines | Founder-authored observable skill/check; no self-confidence substitution |
+| Detoxification | carrying out the specific everyday elimination/movement functions the founders select | Same; avoid implying measured toxin clearance |
+| Electrobiology | maintaining a sleep–wake rhythm compatible with daily responsibilities | Same; no invented circadian diagnosis |
+| Living Diet | planning, obtaining and preparing food compatible with one's circumstances | Same; no inferred nutrient adequacy |
+| Training | performing the specific daily movements relevant to one's abilities | Same; accommodate limitation and applicability |
+| Recovery | recovering enough between usual demands to resume chosen activities | Same; no clinical recovery claim |
+| GI | carrying out usual activities without interference from digestive/bowel concerns | Same; stool type is not a diagnosis |
+| Hormone | the specific daily functions affected by the selected pathway's reported concerns | Same; branch-aware and not a hormone-level measurement |
+| Neural | concentrating, learning or remembering for personally relevant daily tasks | Same; self-rated confidence is not cognitive performance |
+| Momentum | planning, beginning and returning to personally chosen routines | Same; distinguish opportunities from compliance |
+| Mentality | engaging with personally important activities during emotional/stress-related concerns | Same; no psychiatric diagnosis or causal inference |
+
+### Founder response procedure and explicit unresolved decisions
+
+1. Justyn and Elle independently review the **fictional input sheets first** and fill their own expected ranges, classifications, reasons and maximum A/B/C spread before comparing against the candidate outputs. Record disagreement; do not tune formulas merely to reproduce a preferred number.
+2. Review B's symptom-free numeric Chaos separately: distinguish current symptoms/function, habits/readiness and unsupported prediction. No interpretation is adopted by viewing a what-if result.
+3. Complete every decision row above, including Peace90/95, cognitive/GI qualifications, Chronic grouping/exact persistence, multiple-condition Chaos impact, Driver-specific gates, exponent/breadth definitions, ownership and Budget's separate factual rubric. Blank means unresolved.
+4. Approve exact proposed wording/branches/units and burden limits; define evidence needed for complete/partial/withheld outputs. Decide how incomplete historical versions remain withheld rather than backfilled.
+5. Joint record template: reviewer(s) `___`; independent responses `___`; agreed decision version `___`; questionnaire/registry/adapter/config versions `___`; expected-output fixture IDs/ranges/reasons `___`; unresolved exclusions `___`; authenticated approval reference `___`. This static workbook is **not authenticated signoff**.
+
+Actual-person scoring, source reads, cohort/pilot grants, proposal/draft activation, client report approval/release and email remain separately held. No external AI processing, additional consent checkbox or production/beta mutation is part of this package.

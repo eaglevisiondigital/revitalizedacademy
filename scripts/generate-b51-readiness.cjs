@@ -1,0 +1,11 @@
+// Static engineering proposal only; never reads participant records or changes intake.
+const fs=require('fs'),crypto=require('crypto'),assert=require('assert/strict');
+const contract=require('../js/vitality-roadmap-b5-contract.js'),registry=require('../config/roadmap-b4/source-map.json');
+const sha=crypto.createHash('sha256').update(fs.readFileSync('config/roadmap-b4/source-map.json')).digest('hex');assert.equal(sha,contract.pins.registry);
+const map=contract.crosswalk(registry),mapped=new Set();
+const drivers=Object.entries(map).map(([key,d])=>({key,name:d.name,weight:d.weight,health:d.health,actual_score:null,status:'WITHHELD_PENDING_MEASUREMENTS_AND_APPROVED_RUBRIC',required:d.required,fields:d.fields.map(f=>{mapped.add(f.id);const source=registry.fields[f.id];return{question_id:f.id,label:f.label,source_kind:source.kind,required_in_reference:source.required,options:source.options,conditions:source.conditions,dynamic:source.dynamic,evidence_role:f.role,numeric_health_score:null,exact_measurement_sufficiency:'not_established_by_field_presence'};})}));
+const report={status:'PROPOSAL_ONLY_NOT_ACTIVE_QUESTIONNAIRE',pins:contract.pins,reference_fields:registry.fieldCount,reference_symptoms:registry.symptomCount,mapped_driver_fields:mapped.size,shared_or_other_reference_fields:Object.keys(registry.fields).filter(id=>!mapped.has(id)),budget_health_deduction:0,drivers,symptom_ownership:registry.symptoms.map(s=>({screen:s.screenId,observation:s.id,frequency:s.frequency,disruption:s.disruption,duration:s.duration,ownership:s.ownership,approved_primary_owner:null,exact_days:null,exact_duration_days:null,diagnosis_inferred:false}))};
+const target='docs/evidence/b51/measurement-matrix.json',bytes=JSON.stringify(report,null,2)+'\n';
+if(require.main===module){if(process.argv.includes('--check'))assert.equal(fs.readFileSync(target,'utf8'),bytes,'Readiness matrix drift');else{fs.mkdirSync('docs/evidence/b51',{recursive:true});fs.writeFileSync(target,bytes);}
+console.log(JSON.stringify({drivers:drivers.length,mapped_fields:mapped.size,shared_fields:report.shared_or_other_reference_fields.length,symptom_observations:report.symptom_ownership.length,actual_scores:0,questionnaire_changes:0}));}
+module.exports={report};
