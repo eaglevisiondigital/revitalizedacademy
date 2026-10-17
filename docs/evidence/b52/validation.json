@@ -1,0 +1,53 @@
+{
+  "new_checks": {
+    "offline_contracts_node22": 38,
+    "offline_contracts_node24": 38,
+    "new_js_syntax": 5,
+    "python_parse": 1,
+    "static_host_byte_parity": 434,
+    "archive_exact_live_matches": 9,
+    "decompressed_host_comparisons": 18,
+    "deploy_queue_records_inspected": 911,
+    "queue_unfinished": 0,
+    "disposable_git_fast_forward": true
+  },
+  "retained_unchanged_runtime_evidence": {
+    "source": "cf590b576388e61100cc1b88222723fb016a0381",
+    "maintained": 260,
+    "guards": 23,
+    "guard_overlap": 22,
+    "postgres17_rls": 201,
+    "session": 39,
+    "startup_browser_security_nda": 126,
+    "fooddata_browser": 66,
+    "repdb_browser": 46,
+    "content_browser": 36,
+    "mocked_edge": 40,
+    "fictional_scoring_cases": 50,
+    "browser_engines": [
+      "Chromium",
+      "WebKit"
+    ],
+    "viewports": [
+      [
+        1440,
+        1000
+      ],
+      [
+        768,
+        1024
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "rerun_without_runtime_change": false
+  },
+  "hosted_writes": 0,
+  "deployment_executed": false,
+  "approval_required": [
+    "A no-publish source synchronization",
+    "B exact PR39 static release"
+  ]
+}

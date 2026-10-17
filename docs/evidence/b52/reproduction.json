@@ -1,0 +1,187 @@
+{
+  "host": {
+    "node": "v24.20.0",
+    "zlib": "1.2.12",
+    "executable_sha256": "c8eedc7651a438fb7d2ceb36fd70032676c855586a36c950ba5a662f0b7853bd"
+  },
+  "target": "nodejs22.x",
+  "config": "esbuild requested; APIv2 selects nft; esm; pinned RepDB included files",
+  "results": {
+    "zisi14": {
+      "tool_version": "14.1.13",
+      "tool_package_sha256": "595be183377b1a367419aa70bf2dee1fd37d3278253e537bb65d6dd440a76892",
+      "functions": [
+        {
+          "name": "exercise-library",
+          "sha256": "7afffe944b6e4f9390354813cad0f8ff281184360f5f7131f8ecd697dc8f134f",
+          "bootstrap": "2.7.1",
+          "runtime": "nodejs22.x",
+          "runtime_api": 2,
+          "bundler": "nft",
+          "exact_live_match": true
+        },
+        {
+          "name": "food-database",
+          "sha256": "e8a1772c271a05ea357c4b59c8c804541bc187587822e60bfba9d7e8911cdda0",
+          "bootstrap": "2.7.1",
+          "runtime": "nodejs22.x",
+          "runtime_api": 2,
+          "bundler": "nft",
+          "exact_live_match": true
+        },
+        {
+          "name": "payment-webhook",
+          "sha256": "ca4aa97da4f298adac82adb8851f055c21aa360b6c819a3b8fb2497e87ff05e2",
+          "bootstrap": "2.7.1",
+          "runtime": "nodejs22.x",
+          "runtime_api": 2,
+          "bundler": "nft",
+          "exact_live_match": true
+        },
+        {
+          "name": "payment-worker",
+          "sha256": "2d2c440bb8ff85049a820f90d969b6c986685646a4ec55214e8a1ddc8fa74a32",
+          "bootstrap": "2.7.1",
+          "runtime": "nodejs22.x",
+          "runtime_api": 2,
+          "bundler": "nft",
+          "exact_live_match": true
+        },
+        {
+          "name": "payments",
+          "sha256": "f0469725112b4f3b878b67dad311a530441e613ba4fac1a0580b167651d55ded",
+          "bootstrap": "2.7.1",
+          "runtime": "nodejs22.x",
+          "runtime_api": 2,
+          "bundler": "nft",
+          "exact_live_match": true
+        },
+        {
+          "name": "reusable-content-sync",
+          "sha256": "17551800e6a1c26506147e99bf4f48783b69cc1f96daed52e08998288780b930",
+          "bootstrap": "2.7.1",
+          "runtime": "nodejs22.x",
+          "runtime_api": 2,
+          "bundler": "nft",
+          "exact_live_match": true
+        },
+        {
+          "name": "roadmap-founder",
+          "sha256": "525a80737e5000e4ae0b5e4b76704f58eb0e0566541042ee0fda1e26b96fb079",
+          "bootstrap": "2.7.1",
+          "runtime": "nodejs22.x",
+          "runtime_api": 2,
+          "bundler": "nft",
+          "exact_live_match": true
+        },
+        {
+          "name": "roadmap-scoring-lab",
+          "sha256": "d84abd0991ab506b92c972036f66231bb26a32b795ef10cd66910db88cd99a79",
+          "bootstrap": "2.7.1",
+          "runtime": "nodejs22.x",
+          "runtime_api": 2,
+          "bundler": "nft",
+          "exact_live_match": false
+        },
+        {
+          "name": "roadmap-verification",
+          "sha256": "584813a626bed5257e99836690f026f3176e85da96ef29090e754a3b67f8da5f",
+          "bootstrap": "2.7.1",
+          "runtime": "nodejs22.x",
+          "runtime_api": 2,
+          "bundler": "nft",
+          "exact_live_match": false
+        }
+      ]
+    },
+    "zisi16": {
+      "tool_version": "16.3.0",
+      "tool_package_sha256": "8742c4677655220d5d08f553fefa1ca1e790dca9cadcc63b32cbbaba76dab7a2",
+      "functions": [
+        {
+          "name": "exercise-library",
+          "sha256": "f4d1eb5876c89546443881c3d175d9b0fedd4defe5eb05d3caf319988409ba7b",
+          "bootstrap": "2.24.0",
+          "runtime": "nodejs22.x",
+          "runtime_api": 2,
+          "bundler": "nft",
+          "exact_live_match": false
+        },
+        {
+          "name": "food-database",
+          "sha256": "aaffb59b9c039db88f00b1a6b1ef0896b8c9d68459b6d6cf557d767b74a5c8c4",
+          "bootstrap": "2.24.0",
+          "runtime": "nodejs22.x",
+          "runtime_api": 2,
+          "bundler": "nft",
+          "exact_live_match": false
+        },
+        {
+          "name": "payment-webhook",
+          "sha256": "0173fddfbd4b8803529f6f101591c61d7a5601d40e434b72b2aa31cd5df35020",
+          "bootstrap": "2.24.0",
+          "runtime": "nodejs22.x",
+          "runtime_api": 2,
+          "bundler": "nft",
+          "exact_live_match": false
+        },
+        {
+          "name": "payment-worker",
+          "sha256": "86c2949aaec9d7754017552f1d584440eb5d7af953a451319015335ac53a56f3",
+          "bootstrap": "2.24.0",
+          "runtime": "nodejs22.x",
+          "runtime_api": 2,
+          "bundler": "nft",
+          "exact_live_match": false
+        },
+        {
+          "name": "payments",
+          "sha256": "1f171dfcc26a7ff618ef6a4c45c493fc07aed8d76cb66d7d4e4c4db03848dc9a",
+          "bootstrap": "2.24.0",
+          "runtime": "nodejs22.x",
+          "runtime_api": 2,
+          "bundler": "nft",
+          "exact_live_match": false
+        },
+        {
+          "name": "reusable-content-sync",
+          "sha256": "77d4032df9f7e5f54b5f2d696f65ba6c45550206770a85fbdf31df4508109d80",
+          "bootstrap": "2.24.0",
+          "runtime": "nodejs22.x",
+          "runtime_api": 2,
+          "bundler": "nft",
+          "exact_live_match": false
+        },
+        {
+          "name": "roadmap-founder",
+          "sha256": "602753cb9e09a2b67580a2431bc4a6940eee33afc21c58aba031973937bf3107",
+          "bootstrap": "2.24.0",
+          "runtime": "nodejs22.x",
+          "runtime_api": 2,
+          "bundler": "nft",
+          "exact_live_match": false
+        },
+        {
+          "name": "roadmap-scoring-lab",
+          "sha256": "b56be86402df7e23b2b5bb2a12e49f92981804cc9a4b78607061cac1d337f3ea",
+          "bootstrap": "2.24.0",
+          "runtime": "nodejs22.x",
+          "runtime_api": 2,
+          "bundler": "nft",
+          "exact_live_match": true
+        },
+        {
+          "name": "roadmap-verification",
+          "sha256": "9d29f707e514df7626e8513283a9bed3834680260a8b87d5c58d5138d23180a6",
+          "bootstrap": "2.24.0",
+          "runtime": "nodejs22.x",
+          "runtime_api": 2,
+          "bundler": "nft",
+          "exact_live_match": true
+        }
+      ]
+    }
+  },
+  "exact_live_archives": 9,
+  "no_publish": true
+}

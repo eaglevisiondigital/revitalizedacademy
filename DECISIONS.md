@@ -1,3 +1,7 @@
+# B5.2 release provenance boundary — review only
+
+Offline/read-only B5.2 tooling is separate from unchanged PR39 application source. Main reconciliation needs an explicit verified production build-stop and publish lock before a normal exact fast-forward; static repair release must reuse nine existing Function artifacts/config/routes/schedule and change only eight reviewed paths. No uniform rebundle, hosted write, participant/scoring/draft/release activation or beta change is authorized. [Exact contracts, evidence, limitations and separate authorization gates](docs/B52_RELEASE_REVIEW.md). Earlier checkpoints below are historical.
+
 # B5.1 current engineering boundary — no hosted release
 
 B5 is installed at production deploy `6ad2acb16d6d38c15ce3e489`. This B5.1 branch is a separate unshipped seven-module startup/session repair plus read-only source audit. All server security, nine live Functions, source/scoring and real-data release gates remain unchanged. See `docs/B51_ENGINEERING_VALIDATION.md` and the current build-state header. Earlier candidate checkpoints below are historical.

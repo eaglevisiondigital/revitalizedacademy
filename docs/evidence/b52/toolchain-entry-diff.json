@@ -1,0 +1,1562 @@
+{
+  "exercise-library": {
+    "left_sha256": "7afffe944b6e4f9390354813cad0f8ff281184360f5f7131f8ecd697dc8f134f",
+    "right_sha256": "f4d1eb5876c89546443881c3d175d9b0fedd4defe5eb05d3caf319988409ba7b",
+    "left_entries": {
+      "___netlify-entry-point.mjs": {
+        "sha256": "e226dc53ed1e46bd8d23391407cf17a2051db1f84b12bedfa5d55d4d91359f6d",
+        "size": 141,
+        "compressed_size": 110,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-telemetry.mjs": {
+        "sha256": "ed02ba34cfd9c6b94d1077823d63c15bf0734e573123f0ea54caaf7419b80b06",
+        "size": 955838,
+        "compressed_size": 285460,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-metadata.json": {
+        "sha256": "dacd2fbc17f263440b612a03b174d3752cbb54bc6dbc16b0dac3654cacd98783",
+        "size": 41,
+        "compressed_size": 36,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "functions/exercise-library.mjs": {
+        "sha256": "759aed261c23de6dae462ea73964d7c8cf62a2ab027ef0f10ed8c4c7930e02e8",
+        "size": 2132721,
+        "compressed_size": 632914,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "private-repdb/LICENSE-DATA.md": {
+        "sha256": "aefa9845c43a82630047e1b69c1929b885e09308be557d0d04047432dd6f6edb",
+        "size": 3735,
+        "compressed_size": 1819,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "private-repdb/exercises.json": {
+        "sha256": "b651511287cd7e9261158598bf0263c56c19d2403ad8b57f68426c9c99d17421",
+        "size": 2131341,
+        "compressed_size": 626098,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-bootstrap.mjs": {
+        "sha256": "71184879fae95df358d7541d36a400aaf9b78ed384f07b85ce43d855cb3a4051",
+        "size": 218882,
+        "compressed_size": 79063,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      }
+    },
+    "right_entries": {
+      "___netlify-entry-point.mjs": {
+        "sha256": "e226dc53ed1e46bd8d23391407cf17a2051db1f84b12bedfa5d55d4d91359f6d",
+        "size": 141,
+        "compressed_size": 110,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-telemetry.mjs": {
+        "sha256": "2b2738932833db8ed4370cb7e9125fb61c5bcad3f2922da8a3b8665b94e7b2ba",
+        "size": 956427,
+        "compressed_size": 286346,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-metadata.json": {
+        "sha256": "53095c239803ae1f5f0a9d8d431d93aadcfb45a0a9b3b99381c3130ef7165b3e",
+        "size": 42,
+        "compressed_size": 37,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "functions/exercise-library.mjs": {
+        "sha256": "9ed7c71a771383c399d2d9e871231f88101926fa07f624ec0133a2e48fe7b97a",
+        "size": 2132773,
+        "compressed_size": 632930,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "private-repdb/LICENSE-DATA.md": {
+        "sha256": "aefa9845c43a82630047e1b69c1929b885e09308be557d0d04047432dd6f6edb",
+        "size": 3735,
+        "compressed_size": 1819,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "private-repdb/exercises.json": {
+        "sha256": "b651511287cd7e9261158598bf0263c56c19d2403ad8b57f68426c9c99d17421",
+        "size": 2131341,
+        "compressed_size": 626098,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-bootstrap.mjs": {
+        "sha256": "d0a7166bbc0a4c664dccb3446e4c0358de247ced3214c1e7b944f34f467a4894",
+        "size": 173831,
+        "compressed_size": 61282,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      }
+    },
+    "added": [],
+    "removed": [],
+    "changed_contents": [
+      "___netlify-bootstrap.mjs",
+      "___netlify-metadata.json",
+      "___netlify-telemetry.mjs",
+      "functions/exercise-library.mjs"
+    ],
+    "compression_only": false
+  },
+  "food-database": {
+    "left_sha256": "e8a1772c271a05ea357c4b59c8c804541bc187587822e60bfba9d7e8911cdda0",
+    "right_sha256": "aaffb59b9c039db88f00b1a6b1ef0896b8c9d68459b6d6cf557d767b74a5c8c4",
+    "left_entries": {
+      "___netlify-entry-point.mjs": {
+        "sha256": "3c6ca127b7c25c6997cbbb95199536b630188d76cb20d77ecdc20c55f31af27b",
+        "size": 128,
+        "compressed_size": 101,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-telemetry.mjs": {
+        "sha256": "ed02ba34cfd9c6b94d1077823d63c15bf0734e573123f0ea54caaf7419b80b06",
+        "size": 955838,
+        "compressed_size": 285460,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-metadata.json": {
+        "sha256": "dacd2fbc17f263440b612a03b174d3752cbb54bc6dbc16b0dac3654cacd98783",
+        "size": 41,
+        "compressed_size": 36,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "food-database.mjs": {
+        "sha256": "5e880fc676d0326769d3a6c0819a89ddb92a6ca88f6c0bf14e10b0304c9f6d50",
+        "size": 17398,
+        "compressed_size": 6130,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-bootstrap.mjs": {
+        "sha256": "71184879fae95df358d7541d36a400aaf9b78ed384f07b85ce43d855cb3a4051",
+        "size": 218882,
+        "compressed_size": 79063,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      }
+    },
+    "right_entries": {
+      "___netlify-entry-point.mjs": {
+        "sha256": "3c6ca127b7c25c6997cbbb95199536b630188d76cb20d77ecdc20c55f31af27b",
+        "size": 128,
+        "compressed_size": 101,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-telemetry.mjs": {
+        "sha256": "2b2738932833db8ed4370cb7e9125fb61c5bcad3f2922da8a3b8665b94e7b2ba",
+        "size": 956427,
+        "compressed_size": 286346,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-metadata.json": {
+        "sha256": "53095c239803ae1f5f0a9d8d431d93aadcfb45a0a9b3b99381c3130ef7165b3e",
+        "size": 42,
+        "compressed_size": 37,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "food-database.mjs": {
+        "sha256": "6a2c1018941f0c4cc9e74f0ca5d9b149b9d59bc5b2484856be5a1cfa59204eeb",
+        "size": 17450,
+        "compressed_size": 6137,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-bootstrap.mjs": {
+        "sha256": "d0a7166bbc0a4c664dccb3446e4c0358de247ced3214c1e7b944f34f467a4894",
+        "size": 173831,
+        "compressed_size": 61282,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      }
+    },
+    "added": [],
+    "removed": [],
+    "changed_contents": [
+      "___netlify-bootstrap.mjs",
+      "___netlify-metadata.json",
+      "___netlify-telemetry.mjs",
+      "food-database.mjs"
+    ],
+    "compression_only": false
+  },
+  "payment-webhook": {
+    "left_sha256": "ca4aa97da4f298adac82adb8851f055c21aa360b6c819a3b8fb2497e87ff05e2",
+    "right_sha256": "0173fddfbd4b8803529f6f101591c61d7a5601d40e434b72b2aa31cd5df35020",
+    "left_entries": {
+      "___netlify-entry-point.mjs": {
+        "sha256": "591e77ac177995cb1120faa3c5f8707e63ca56434221f858e4e538053b4409bc",
+        "size": 130,
+        "compressed_size": 103,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-telemetry.mjs": {
+        "sha256": "ed02ba34cfd9c6b94d1077823d63c15bf0734e573123f0ea54caaf7419b80b06",
+        "size": 955838,
+        "compressed_size": 285460,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-metadata.json": {
+        "sha256": "dacd2fbc17f263440b612a03b174d3752cbb54bc6dbc16b0dac3654cacd98783",
+        "size": 41,
+        "compressed_size": 36,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "payment-webhook.mjs": {
+        "sha256": "fb0dcd577ee5e5a4a3c889d757b7210042e516682b8147c98177b4ff8f89c887",
+        "size": 28047,
+        "compressed_size": 8977,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-bootstrap.mjs": {
+        "sha256": "71184879fae95df358d7541d36a400aaf9b78ed384f07b85ce43d855cb3a4051",
+        "size": 218882,
+        "compressed_size": 79063,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      }
+    },
+    "right_entries": {
+      "___netlify-entry-point.mjs": {
+        "sha256": "591e77ac177995cb1120faa3c5f8707e63ca56434221f858e4e538053b4409bc",
+        "size": 130,
+        "compressed_size": 103,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-telemetry.mjs": {
+        "sha256": "2b2738932833db8ed4370cb7e9125fb61c5bcad3f2922da8a3b8665b94e7b2ba",
+        "size": 956427,
+        "compressed_size": 286346,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-metadata.json": {
+        "sha256": "53095c239803ae1f5f0a9d8d431d93aadcfb45a0a9b3b99381c3130ef7165b3e",
+        "size": 42,
+        "compressed_size": 37,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "payment-webhook.mjs": {
+        "sha256": "fb0dcd577ee5e5a4a3c889d757b7210042e516682b8147c98177b4ff8f89c887",
+        "size": 28047,
+        "compressed_size": 8977,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-bootstrap.mjs": {
+        "sha256": "d0a7166bbc0a4c664dccb3446e4c0358de247ced3214c1e7b944f34f467a4894",
+        "size": 173831,
+        "compressed_size": 61282,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      }
+    },
+    "added": [],
+    "removed": [],
+    "changed_contents": [
+      "___netlify-bootstrap.mjs",
+      "___netlify-metadata.json",
+      "___netlify-telemetry.mjs"
+    ],
+    "compression_only": false
+  },
+  "payment-worker": {
+    "left_sha256": "2d2c440bb8ff85049a820f90d969b6c986685646a4ec55214e8a1ddc8fa74a32",
+    "right_sha256": "86c2949aaec9d7754017552f1d584440eb5d7af953a451319015335ac53a56f3",
+    "left_entries": {
+      "___netlify-entry-point.mjs": {
+        "sha256": "a6f12752c6d5f0d213253db16feddcdc9134e7297d231cbf5b344f2f09d2be61",
+        "size": 129,
+        "compressed_size": 102,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-telemetry.mjs": {
+        "sha256": "ed02ba34cfd9c6b94d1077823d63c15bf0734e573123f0ea54caaf7419b80b06",
+        "size": 955838,
+        "compressed_size": 285460,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-metadata.json": {
+        "sha256": "dacd2fbc17f263440b612a03b174d3752cbb54bc6dbc16b0dac3654cacd98783",
+        "size": 41,
+        "compressed_size": 36,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "payment-worker.mjs": {
+        "sha256": "133073b03663bf253303645b3c7e7dd2285ccdf80d184393856daa5619cb674c",
+        "size": 28105,
+        "compressed_size": 8985,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-bootstrap.mjs": {
+        "sha256": "71184879fae95df358d7541d36a400aaf9b78ed384f07b85ce43d855cb3a4051",
+        "size": 218882,
+        "compressed_size": 79063,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      }
+    },
+    "right_entries": {
+      "___netlify-entry-point.mjs": {
+        "sha256": "a6f12752c6d5f0d213253db16feddcdc9134e7297d231cbf5b344f2f09d2be61",
+        "size": 129,
+        "compressed_size": 102,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-telemetry.mjs": {
+        "sha256": "2b2738932833db8ed4370cb7e9125fb61c5bcad3f2922da8a3b8665b94e7b2ba",
+        "size": 956427,
+        "compressed_size": 286346,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-metadata.json": {
+        "sha256": "53095c239803ae1f5f0a9d8d431d93aadcfb45a0a9b3b99381c3130ef7165b3e",
+        "size": 42,
+        "compressed_size": 37,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "payment-worker.mjs": {
+        "sha256": "133073b03663bf253303645b3c7e7dd2285ccdf80d184393856daa5619cb674c",
+        "size": 28105,
+        "compressed_size": 8985,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-bootstrap.mjs": {
+        "sha256": "d0a7166bbc0a4c664dccb3446e4c0358de247ced3214c1e7b944f34f467a4894",
+        "size": 173831,
+        "compressed_size": 61282,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      }
+    },
+    "added": [],
+    "removed": [],
+    "changed_contents": [
+      "___netlify-bootstrap.mjs",
+      "___netlify-metadata.json",
+      "___netlify-telemetry.mjs"
+    ],
+    "compression_only": false
+  },
+  "payments": {
+    "left_sha256": "f0469725112b4f3b878b67dad311a530441e613ba4fac1a0580b167651d55ded",
+    "right_sha256": "1f171dfcc26a7ff618ef6a4c45c493fc07aed8d76cb66d7d4e4c4db03848dc9a",
+    "left_entries": {
+      "___netlify-entry-point.mjs": {
+        "sha256": "cadeebecc8b4312a4aab25a444080d4876519e31a7e95c32a412a2942f7f0e68",
+        "size": 123,
+        "compressed_size": 99,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-telemetry.mjs": {
+        "sha256": "ed02ba34cfd9c6b94d1077823d63c15bf0734e573123f0ea54caaf7419b80b06",
+        "size": 955838,
+        "compressed_size": 285460,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-metadata.json": {
+        "sha256": "dacd2fbc17f263440b612a03b174d3752cbb54bc6dbc16b0dac3654cacd98783",
+        "size": 41,
+        "compressed_size": 36,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "payments.mjs": {
+        "sha256": "261b032cbe4f127e3206027b2ce5e3ac66d526e5451c0ac3cf82deb40173d989",
+        "size": 28391,
+        "compressed_size": 9059,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-bootstrap.mjs": {
+        "sha256": "71184879fae95df358d7541d36a400aaf9b78ed384f07b85ce43d855cb3a4051",
+        "size": 218882,
+        "compressed_size": 79063,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      }
+    },
+    "right_entries": {
+      "___netlify-entry-point.mjs": {
+        "sha256": "cadeebecc8b4312a4aab25a444080d4876519e31a7e95c32a412a2942f7f0e68",
+        "size": 123,
+        "compressed_size": 99,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-telemetry.mjs": {
+        "sha256": "2b2738932833db8ed4370cb7e9125fb61c5bcad3f2922da8a3b8665b94e7b2ba",
+        "size": 956427,
+        "compressed_size": 286346,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-metadata.json": {
+        "sha256": "53095c239803ae1f5f0a9d8d431d93aadcfb45a0a9b3b99381c3130ef7165b3e",
+        "size": 42,
+        "compressed_size": 37,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "payments.mjs": {
+        "sha256": "261b032cbe4f127e3206027b2ce5e3ac66d526e5451c0ac3cf82deb40173d989",
+        "size": 28391,
+        "compressed_size": 9059,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-bootstrap.mjs": {
+        "sha256": "d0a7166bbc0a4c664dccb3446e4c0358de247ced3214c1e7b944f34f467a4894",
+        "size": 173831,
+        "compressed_size": 61282,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      }
+    },
+    "added": [],
+    "removed": [],
+    "changed_contents": [
+      "___netlify-bootstrap.mjs",
+      "___netlify-metadata.json",
+      "___netlify-telemetry.mjs"
+    ],
+    "compression_only": false
+  },
+  "reusable-content-sync": {
+    "left_sha256": "17551800e6a1c26506147e99bf4f48783b69cc1f96daed52e08998288780b930",
+    "right_sha256": "77d4032df9f7e5f54b5f2d696f65ba6c45550206770a85fbdf31df4508109d80",
+    "left_entries": {
+      "___netlify-entry-point.mjs": {
+        "sha256": "ded78fea655363550fbf4f58beda583a653d203c1b884af17faf4676717008b8",
+        "size": 136,
+        "compressed_size": 106,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-telemetry.mjs": {
+        "sha256": "ed02ba34cfd9c6b94d1077823d63c15bf0734e573123f0ea54caaf7419b80b06",
+        "size": 955838,
+        "compressed_size": 285460,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-metadata.json": {
+        "sha256": "dacd2fbc17f263440b612a03b174d3752cbb54bc6dbc16b0dac3654cacd98783",
+        "size": 41,
+        "compressed_size": 36,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "reusable-content-sync.mjs": {
+        "sha256": "fe90dbda114d970d7eca523cef66f52419baf58baaeaa21ef371835016a36e9b",
+        "size": 14905,
+        "compressed_size": 4388,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-bootstrap.mjs": {
+        "sha256": "71184879fae95df358d7541d36a400aaf9b78ed384f07b85ce43d855cb3a4051",
+        "size": 218882,
+        "compressed_size": 79063,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      }
+    },
+    "right_entries": {
+      "___netlify-entry-point.mjs": {
+        "sha256": "ded78fea655363550fbf4f58beda583a653d203c1b884af17faf4676717008b8",
+        "size": 136,
+        "compressed_size": 106,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-telemetry.mjs": {
+        "sha256": "2b2738932833db8ed4370cb7e9125fb61c5bcad3f2922da8a3b8665b94e7b2ba",
+        "size": 956427,
+        "compressed_size": 286346,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-metadata.json": {
+        "sha256": "53095c239803ae1f5f0a9d8d431d93aadcfb45a0a9b3b99381c3130ef7165b3e",
+        "size": 42,
+        "compressed_size": 37,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "reusable-content-sync.mjs": {
+        "sha256": "a2264702fac66c6a2b20107ab3cd4799666bc910b6440c67615887ea5ff0f168",
+        "size": 14957,
+        "compressed_size": 4411,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-bootstrap.mjs": {
+        "sha256": "d0a7166bbc0a4c664dccb3446e4c0358de247ced3214c1e7b944f34f467a4894",
+        "size": 173831,
+        "compressed_size": 61282,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      }
+    },
+    "added": [],
+    "removed": [],
+    "changed_contents": [
+      "___netlify-bootstrap.mjs",
+      "___netlify-metadata.json",
+      "___netlify-telemetry.mjs",
+      "reusable-content-sync.mjs"
+    ],
+    "compression_only": false
+  },
+  "roadmap-founder": {
+    "left_sha256": "525a80737e5000e4ae0b5e4b76704f58eb0e0566541042ee0fda1e26b96fb079",
+    "right_sha256": "602753cb9e09a2b67580a2431bc4a6940eee33afc21c58aba031973937bf3107",
+    "left_entries": {
+      "___netlify-entry-point.mjs": {
+        "sha256": "e611b7bf9326755d331e8b56a4070f8a46e40c6f31e165283208e6872ea848eb",
+        "size": 130,
+        "compressed_size": 103,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-telemetry.mjs": {
+        "sha256": "ed02ba34cfd9c6b94d1077823d63c15bf0734e573123f0ea54caaf7419b80b06",
+        "size": 955838,
+        "compressed_size": 285460,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-metadata.json": {
+        "sha256": "dacd2fbc17f263440b612a03b174d3752cbb54bc6dbc16b0dac3654cacd98783",
+        "size": 41,
+        "compressed_size": 36,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "roadmap-founder.mjs": {
+        "sha256": "9a4a40ae11cd44d377f504f5751aa63d2ede1efd7170113727f4e9d09caba8d5",
+        "size": 5171,
+        "compressed_size": 2252,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-bootstrap.mjs": {
+        "sha256": "71184879fae95df358d7541d36a400aaf9b78ed384f07b85ce43d855cb3a4051",
+        "size": 218882,
+        "compressed_size": 79063,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      }
+    },
+    "right_entries": {
+      "___netlify-entry-point.mjs": {
+        "sha256": "e611b7bf9326755d331e8b56a4070f8a46e40c6f31e165283208e6872ea848eb",
+        "size": 130,
+        "compressed_size": 103,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-telemetry.mjs": {
+        "sha256": "2b2738932833db8ed4370cb7e9125fb61c5bcad3f2922da8a3b8665b94e7b2ba",
+        "size": 956427,
+        "compressed_size": 286346,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-metadata.json": {
+        "sha256": "53095c239803ae1f5f0a9d8d431d93aadcfb45a0a9b3b99381c3130ef7165b3e",
+        "size": 42,
+        "compressed_size": 37,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "roadmap-founder.mjs": {
+        "sha256": "44eb0065d5d380ceebc94f486b7c52ef8fbed9d90259ea97277c352b35533238",
+        "size": 5223,
+        "compressed_size": 2275,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-bootstrap.mjs": {
+        "sha256": "d0a7166bbc0a4c664dccb3446e4c0358de247ced3214c1e7b944f34f467a4894",
+        "size": 173831,
+        "compressed_size": 61282,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      }
+    },
+    "added": [],
+    "removed": [],
+    "changed_contents": [
+      "___netlify-bootstrap.mjs",
+      "___netlify-metadata.json",
+      "___netlify-telemetry.mjs",
+      "roadmap-founder.mjs"
+    ],
+    "compression_only": false
+  },
+  "roadmap-scoring-lab": {
+    "left_sha256": "d84abd0991ab506b92c972036f66231bb26a32b795ef10cd66910db88cd99a79",
+    "right_sha256": "b56be86402df7e23b2b5bb2a12e49f92981804cc9a4b78607061cac1d337f3ea",
+    "left_entries": {
+      "___netlify-entry-point.mjs": {
+        "sha256": "080329eb38a6806c5e89dbf2817a50217ddddeed152aa065929056cdcaf63fff",
+        "size": 134,
+        "compressed_size": 105,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-telemetry.mjs": {
+        "sha256": "ed02ba34cfd9c6b94d1077823d63c15bf0734e573123f0ea54caaf7419b80b06",
+        "size": 955838,
+        "compressed_size": 285460,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-metadata.json": {
+        "sha256": "dacd2fbc17f263440b612a03b174d3752cbb54bc6dbc16b0dac3654cacd98783",
+        "size": 41,
+        "compressed_size": 36,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "roadmap-scoring-lab.mjs": {
+        "sha256": "7db3f1f9f89d1866d64956614fe3b91d44b50c4340d75aa0b52ce0cf975fb300",
+        "size": 541164,
+        "compressed_size": 62799,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-bootstrap.mjs": {
+        "sha256": "71184879fae95df358d7541d36a400aaf9b78ed384f07b85ce43d855cb3a4051",
+        "size": 218882,
+        "compressed_size": 79063,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      }
+    },
+    "right_entries": {
+      "___netlify-entry-point.mjs": {
+        "sha256": "080329eb38a6806c5e89dbf2817a50217ddddeed152aa065929056cdcaf63fff",
+        "size": 134,
+        "compressed_size": 105,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-telemetry.mjs": {
+        "sha256": "2b2738932833db8ed4370cb7e9125fb61c5bcad3f2922da8a3b8665b94e7b2ba",
+        "size": 956427,
+        "compressed_size": 286346,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-metadata.json": {
+        "sha256": "53095c239803ae1f5f0a9d8d431d93aadcfb45a0a9b3b99381c3130ef7165b3e",
+        "size": 42,
+        "compressed_size": 37,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "roadmap-scoring-lab.mjs": {
+        "sha256": "bff8dfcd28f1eff78d5749a9e9442c653ce7186122eaec9c96828616b5f5a7c7",
+        "size": 541216,
+        "compressed_size": 62830,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-bootstrap.mjs": {
+        "sha256": "d0a7166bbc0a4c664dccb3446e4c0358de247ced3214c1e7b944f34f467a4894",
+        "size": 173831,
+        "compressed_size": 61282,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      }
+    },
+    "added": [],
+    "removed": [],
+    "changed_contents": [
+      "___netlify-bootstrap.mjs",
+      "___netlify-metadata.json",
+      "___netlify-telemetry.mjs",
+      "roadmap-scoring-lab.mjs"
+    ],
+    "compression_only": false
+  },
+  "roadmap-verification": {
+    "left_sha256": "584813a626bed5257e99836690f026f3176e85da96ef29090e754a3b67f8da5f",
+    "right_sha256": "9d29f707e514df7626e8513283a9bed3834680260a8b87d5c58d5138d23180a6",
+    "left_entries": {
+      "___netlify-entry-point.mjs": {
+        "sha256": "4014a2cba04542a7294da763b9fcea599037f395c8bdd2a1f93fad948754aae8",
+        "size": 135,
+        "compressed_size": 106,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-telemetry.mjs": {
+        "sha256": "ed02ba34cfd9c6b94d1077823d63c15bf0734e573123f0ea54caaf7419b80b06",
+        "size": 955838,
+        "compressed_size": 285460,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-metadata.json": {
+        "sha256": "dacd2fbc17f263440b612a03b174d3752cbb54bc6dbc16b0dac3654cacd98783",
+        "size": 41,
+        "compressed_size": 36,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "roadmap-verification.mjs": {
+        "sha256": "f4f91509e43d8bcee3dc92f2b8ffe5e41e1a4c25ca488e81037e218ecaab7a7f",
+        "size": 4938,
+        "compressed_size": 2063,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-bootstrap.mjs": {
+        "sha256": "71184879fae95df358d7541d36a400aaf9b78ed384f07b85ce43d855cb3a4051",
+        "size": 218882,
+        "compressed_size": 79063,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      }
+    },
+    "right_entries": {
+      "___netlify-entry-point.mjs": {
+        "sha256": "4014a2cba04542a7294da763b9fcea599037f395c8bdd2a1f93fad948754aae8",
+        "size": 135,
+        "compressed_size": 106,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-telemetry.mjs": {
+        "sha256": "2b2738932833db8ed4370cb7e9125fb61c5bcad3f2922da8a3b8665b94e7b2ba",
+        "size": 956427,
+        "compressed_size": 286346,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-metadata.json": {
+        "sha256": "53095c239803ae1f5f0a9d8d431d93aadcfb45a0a9b3b99381c3130ef7165b3e",
+        "size": 42,
+        "compressed_size": 37,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "roadmap-verification.mjs": {
+        "sha256": "f9a20bd2b7f785649d2ca5049fc01424da9e7b13aee2b84757b9992f9a1fa1fa",
+        "size": 4990,
+        "compressed_size": 2090,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      },
+      "___netlify-bootstrap.mjs": {
+        "sha256": "d0a7166bbc0a4c664dccb3446e4c0358de247ced3214c1e7b944f34f467a4894",
+        "size": 173831,
+        "compressed_size": 61282,
+        "date": [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mode": 33188,
+        "compression": 8
+      }
+    },
+    "added": [],
+    "removed": [],
+    "changed_contents": [
+      "___netlify-bootstrap.mjs",
+      "___netlify-metadata.json",
+      "___netlify-telemetry.mjs",
+      "roadmap-verification.mjs"
+    ],
+    "compression_only": false
+  }
+}
