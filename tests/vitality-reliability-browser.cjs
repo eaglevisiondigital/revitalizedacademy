@@ -24,7 +24,7 @@ try{for(const size of [{width:1440,height:1000},{width:768,height:1024},{width:3
   if(url.origin!==origin)return route.abort();
   if(req.method()==='POST'){state.netlify++;return route.fulfill({status:200,body:'Synthetic'});}
   if(url.pathname==='/blank')return route.fulfill({status:200,contentType:'text/html',body:'<html><body>Mail-return fixture</body></html>'});
-  const relative=url.pathname.replace(/^\//,''),file=path.resolve(root,relative);if(!file.startsWith(root+path.sep)||!fs.existsSync(file))return route.fulfill({status:404,body:'Missing fixture'});
+  const relative=decodeURIComponent(url.pathname).replace(/^\//,''),file=path.resolve(root,relative);if(!file.startsWith(root+path.sep)||!fs.existsSync(file))return route.fulfill({status:404,body:'Missing fixture'});
   if(relative==='js/vitality-resume.js'&&state.scriptDelay)await new Promise(r=>setTimeout(r,state.scriptDelay));
   const type={'.html':'text/html','.js':'text/javascript','.css':'text/css','.png':'image/png','.svg':'image/svg+xml','.woff2':'font/woff2'}[path.extname(file)]||'application/octet-stream';return route.fulfill({status:200,contentType:type,body:fs.readFileSync(file)});
  });

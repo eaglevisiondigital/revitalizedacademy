@@ -293,6 +293,11 @@
     renderReview(data);
   }
 
+  // Same-session bridge from the founder metadata verifier; existing RPC reauthorizes.
+  document.addEventListener('ra:open-vitality-review', (event) => {
+    if (portal.captureStaffSession?.() && portal.hasPermission?.('health.private.view') && event.detail?.contactId) openReview(event.detail.contactId);
+  });
+
   function closeReview() {
     reviewRequest += 1;
     drawer.classList.add('hidden');

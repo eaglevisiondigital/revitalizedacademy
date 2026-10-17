@@ -1,0 +1,7 @@
+/* Exact production-only authenticated transport. No preview environment fallback. */
+(function(root){'use strict';
+
+ const env=root.RVA_ENV,portal=root.RA_PORTAL,panel=document.getElementById('vitality-assessments-panel');
+ if(env?.environment!=='production'||env.projectRef!=='voalfpxiyznnqfcqcymd'||location.origin!=='https://revitalizedacademy.com'||!portal?.authClient||!panel)return;
+ root.RVA_SCORING_LAB.createApp({portal,panel,api:async(action,report,payload,task)=>{const {data,error}=await portal.authClient.auth.getSession();if(!task.current())return null;if(error||!data?.session?.access_token)throw Error('Unavailable');const r=await fetch('/.netlify/functions/roadmap-scoring-lab',{method:'POST',headers:{Authorization:'Bearer '+data.session.access_token,'Content-Type':'application/json'},body:JSON.stringify({action,report,payload}),signal:task.signal,cache:'no-store',credentials:'same-origin'});if(!task.current())return null;return r.json();}});
+})(typeof window==='object'?window:globalThis);

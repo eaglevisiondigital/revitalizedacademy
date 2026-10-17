@@ -88,7 +88,7 @@ async function matrix(type,name){
 }
 
 (async()=>{
-  assert.match(read('portal/index.html'),/portal\.js\?v=193/);let total=1;
+  assert.match(read('portal/index.html'),/portal\.js\?v=nda-onboarding-20261015/);let total=1;
   const requested=process.env.RVA_BROWSER||'';
   for(const [name,type] of [['chromium',playwright.chromium],['webkit',playwright.webkit]].filter(([name])=>!requested||name===requested)){
     total+=await matrix(type,name);console.log(name+' production staff session restore: passed');

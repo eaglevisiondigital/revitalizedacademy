@@ -1,0 +1,79 @@
+{
+  "deploy": "6ad2a4fee37965a1606af688",
+  "url": "https://roadmap-b5-lab--revitalizedacademy-staging.netlify.app",
+  "assets": {
+    "/": "a7595f8ab4fe1c0795347ddc3e609501df0fb8dfd342d5c72349c8a8c282f197",
+    "/demo.js": "2369f3179e5c614980bf506dd6454d202fa246014632fdbc385701a3e57aee80",
+    "/portal/portal-roadmap-scoring-lab.css": "997bc974477c2fd84290d5a04e37d394c01f777ee471f3740cee61eaf67ec8cd"
+  },
+  "results": [
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "height": 1000,
+      "cases": 50,
+      "drivers": 12,
+      "closedLabPrintPreserved": true,
+      "overflow": false,
+      "consoleWarningsErrors": 0,
+      "backendRequests": 0
+    },
+    {
+      "engine": "chromium",
+      "width": 768,
+      "height": 1024,
+      "cases": 50,
+      "drivers": 12,
+      "closedLabPrintPreserved": true,
+      "overflow": false,
+      "consoleWarningsErrors": 0,
+      "backendRequests": 0
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "height": 844,
+      "cases": 50,
+      "drivers": 12,
+      "closedLabPrintPreserved": true,
+      "overflow": false,
+      "consoleWarningsErrors": 0,
+      "backendRequests": 0
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "height": 1000,
+      "cases": 50,
+      "drivers": 12,
+      "closedLabPrintPreserved": true,
+      "overflow": false,
+      "consoleWarningsErrors": 0,
+      "backendRequests": 0
+    },
+    {
+      "engine": "webkit",
+      "width": 768,
+      "height": 1024,
+      "cases": 50,
+      "drivers": 12,
+      "closedLabPrintPreserved": true,
+      "overflow": false,
+      "consoleWarningsErrors": 0,
+      "backendRequests": 0
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "height": 844,
+      "cases": 50,
+      "drivers": 12,
+      "closedLabPrintPreserved": true,
+      "overflow": false,
+      "consoleWarningsErrors": 0,
+      "backendRequests": 0
+    }
+  ],
+  "functions": 0,
+  "production_connection": false
+}

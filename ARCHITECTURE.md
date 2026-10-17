@@ -1,3 +1,17 @@
+# B5 Founder Scoring Lab candidate — production and all real-data gates held
+
+Prepared from exact live B4.2 `4247e33322c9117b92f68718ed9408070b7b03e2`, preserving PR #29 and all eight existing Functions. Reuses unchanged B2/B2.1 mathematics and 50 fictional cases, deployed B4 coverage, B4.2 identity/SOP/pinned founders, current-session/scope checks and append-only patterns. Adds a versioned independent mapping contract, founder-only scenario/trace/comparison/preview/proposal UI, same-origin `roadmap-scoring-lab` Function, and unapplied forward migration `20261016215456_vitality_roadmap_b5_scoring_lab.sql`. No production migration/deploy, source lookup, participant scoring, cohort enrollment or derivative-write activation. Beta unchanged. Actual scores remain withheld; missing measurements and A/B/C calibration are explicit blockers. [Candidate, security, founder workflow, estimates and exact separate release/rollback gates](docs/VITALITY_ROADMAP_B5_CANDIDATE.md). Prior deployment notes below describe historical checkpoints.
+
+# B4.2 founder identity verification candidate — not deployed
+
+The production B4.1 baseline is preserved. An additive same-origin `roadmap-verification` Function forwards the caller JWT to one bounded metadata/attestation RPC. Four private append-only tables pin founder identity, issued lookup handles, separate SOP attestations and verification decisions. Detailed sources remain in place; only source/identity fingerprints and approval provenance are retained privately. Exact full-name/email lookup can narrow by UTC completion date. The existing Contact/historical review owns full identifier access. Operator preflight and the reviewed cohort procedure remain separate from the browser and release.
+
+No cohort activation, source mutation, Roadmap draft, scoring, approval, release or email is added. All seven existing Functions and the PR #29 NDA correction are preserved. [Full candidate and architecture](docs/VITALITY_ROADMAP_B42_CANDIDATE.md). Older candidate notes below are historical; B4/B4.1 are live, B4.2 is not.
+
+# B4 production founder workspace candidate — 2026-10-16
+
+Production-main standalone review package reuses B1 document/rendering concepts and B3 pinned coverage without merging staging schema or scoring engines. Primary-origin Netlify transport forwards only the caller's JWT to one guarded RPC; private cohort/version/audit tables are append-only, source records remain in place, cohort defaults empty, draft authorization is separate. No PHI snapshots are duplicated in derivative tables, public release or mail endpoints added. [Exact candidate architecture and release boundary](docs/VITALITY_ROADMAP_B4_PRODUCTION_CANDIDATE_2026-10-16.md). NOT DEPLOYED.
+
 # Holistic Foundations Pricing v2 implementation — 2026-10-10
 
 The approved normalized architecture is now represented by an unapplied forward candidate: `program_product_plans` holds stable product structure, `program_plan_prices` holds market/currency/amount/route, and `payment_merchant_routes` holds isolated provider readiness without secrets. Enrollment stores immutable plan/price/market/route/commitment snapshots and accepts only contact plus plan code from staff. Annual eligibility is derived from authoritative membership history with a separately audited override. Agreement lookup is exact-plan/currency and Payments v1 re-resolves the catalog server-side. All agreement and payment switches remain held. [Detailed implementation](docs/HOLISTIC_FOUNDATIONS_PRICING_V2_IMPLEMENTATION_2026-10-10.md).
