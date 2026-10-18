@@ -11,12 +11,12 @@
   },
   "build_files": 439,
   "syntax": {
-    "passed": 200,
+    "passed": 202,
     "failed": 0
   },
   "unit": {
-    "maintained_distinct": 315,
-    "b6_subset": 22,
+    "maintained_distinct": 321,
+    "b6_subset": 28,
     "failed": 0
   },
   "postgresql17_rls": {
@@ -43,8 +43,8 @@
         844
       ]
     ],
-    "b6_native": 174,
-    "b6_structural_preview": 186,
+    "b6_native": 192,
+    "b6_structural_preview": 198,
     "retained_b4": 168,
     "retained_b42": 186,
     "retained_b5": 234,
@@ -99,5 +99,12 @@
     "Expected manual score/classification/priority calibration ranges",
     "Separate experimental-purpose/privacy/SOP authority",
     "Exact technical installation approval, then individually authorized first source, then optional feedback-write approval"
-  ]
+  ],
+  "preserved_pr46_preflight_tests": 3,
+  "controlled_version_comparison": {
+    "current_session_revision": true,
+    "private_saved_source_review": true,
+    "historical_code_execution": false,
+    "missing_numeric_results_inferred": false
+  }
 }

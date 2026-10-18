@@ -18,7 +18,7 @@
     "api": 2
   },
   "candidate": {
-    "sha256": "779071326db553b2132529c97b7c15875db4fc0f959ab883ebe5624c35e1e04c",
+    "sha256": "cfd2f74e2c5887fff743832638563a73e120abe92af8737d01e4ec2b9c18bb34",
     "runtime": "nodejs22.x",
     "bundler": "nft",
     "api": 2

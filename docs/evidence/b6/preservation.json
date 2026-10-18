@@ -66,5 +66,13 @@
   ],
   "actual_participant_reads": 0,
   "hosted_database_reads_or_writes": 0,
-  "hosted_deployments": 0
+  "hosted_deployments": 0,
+  "requested_start_sha": "94be23a9b07f3825fed3b5c31c4091f5d7977b63",
+  "preserved_preflight_files": {
+    "js/vitality-roadmap-b6-private-comparison.cjs": "d3cc7f5b0f9811310dad5b5b3980e2ab748312bcde012dd5211b5af31bca6753",
+    "tests/vitality-roadmap-b6-private-comparison.cjs": "742ad2194bba947b6ef65c2dad91c01ba723c6f76545ddcbc44927d9f1d00c25",
+    "docs/B6_REAL_INTAKE_CALIBRATION_IMPLEMENTATION_CHECKPOINT.md": "3aad89de100c025369c0e671d1c27901d971ace6cab877f42e960e3a3150346e"
+  },
+  "reused_candidate_commit": "1107b2fe1aaf6fbc5063d9dae9a30636b71bd2e3",
+  "separate_pr47_unchanged": true
 }
