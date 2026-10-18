@@ -5,6 +5,8 @@ const B5=require('./vitality-roadmap-b5-contract.js');
 const VERSION='b6-private-comparison-preflight-v1';
 const allowedStages=new Set(['Peace','Impaired','Dysregulated','Chronic','Chaos']);
 function projectAuthorizedSource(source,registry,options={}){
+ // Must be supplied only by an independently verified private server RPC, never from the browser.
+ if(options.accessVerifiedByServer!==true)throw Error('Private source authorization required');
  if(!source||typeof source!=='object'||Array.isArray(source)||!source.answers||typeof source.answers!=='object'||Array.isArray(source.answers))
   throw Error('Invalid submitted answer source');
  if(options.registryFingerprint!==B5.pins.registry||registry?.fieldCount!==743||
