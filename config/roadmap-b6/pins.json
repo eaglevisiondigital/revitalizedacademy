@@ -1,0 +1,18 @@
+{
+  "adapter": "b6-strict-source-20261018-v1",
+  "registry": "2f67c193c2e69b54d61a44599bf9308ca27d317f2bdb748adbeaedfdabe92ced",
+  "engine": "b2.1-founder-20261015-v1",
+  "contract": "b5-measurements-20261016-v1",
+  "ruleSet": "b6-observed-components-unapproved-v1",
+  "sop": "RVA-B6-EXPERIMENTAL-CALIBRATION-v1-2026-10-18",
+  "artifacts": {
+    "js/vitality-roadmap-b6-adapter.cjs": "295128e878ef7c9ccc2ab795181eee820266e1002024d27e09f4b32a179c2b2f",
+    "js/vitality-roadmap-b2-engine.js": "2e81397373e098af9647f1f81acc7f75741cc602237cdc4b526913090c670f69",
+    "js/vitality-roadmap-b21-engine.js": "bb22e6a87b00489b5d4b6770b8d6ab56ae9427ac70862ace6dd6e4c4bc67b463",
+    "js/vitality-roadmap-b5-contract.js": "9faa311cdd6ba999d089d57338e64c6068130c9b669d01a5b07f7e5e3ea7cd78",
+    "js/vitality-roadmap-b4-coverage.js": "2fe30c8bfc9a39da7e96394ecca897b87e05035c9fea9b0ba3e14ded91864781",
+    "config/roadmap-b4/source-map.json": "2f67c193c2e69b54d61a44599bf9308ca27d317f2bdb748adbeaedfdabe92ced",
+    "netlify/lib/roadmap-calibration.cjs": "aab0a885a3000cb2898754c396a5de84cdb807589476d6f2ae1f82ea4b143a10",
+    "netlify/lib/roadmap-scoring-lab.cjs": "a852e398eecc4c5855de1b9c3a50103014fc1418fa6cd92e5feae73f7e38222b"
+  }
+}

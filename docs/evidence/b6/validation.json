@@ -1,0 +1,103 @@
+{
+  "status": "B6 engineering candidate only; technical release and all real participant processing held",
+  "feasibility": {
+    "questionnaire_fields": 743,
+    "symptom_contexts": 190,
+    "complete_numeric_drivers": 0,
+    "withheld_drivers": 12,
+    "complete_numeric_overall": false,
+    "historical_wording_revision": "not captured; current wording is reference only",
+    "actual_population_counts": "not queried; engineering-only authorization"
+  },
+  "build_files": 439,
+  "syntax": {
+    "passed": 200,
+    "failed": 0
+  },
+  "unit": {
+    "maintained_distinct": 315,
+    "b6_subset": 22,
+    "failed": 0
+  },
+  "postgresql17_rls": {
+    "passed": 214,
+    "b6_subset": 13,
+    "failed": 0
+  },
+  "browser": {
+    "engines": [
+      "Chromium",
+      "WebKit"
+    ],
+    "viewports": [
+      [
+        1440,
+        1000
+      ],
+      [
+        768,
+        1024
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "b6_native": 174,
+    "b6_structural_preview": 186,
+    "retained_b4": 168,
+    "retained_b42": 186,
+    "retained_b5": 234,
+    "session_refresh": 39,
+    "warnings_errors": 0,
+    "overflow": false,
+    "stale_read_discarded": true,
+    "private_print_blocked": true,
+    "actual_source_immutability_tested_with_fictional_records": true
+  },
+  "concurrency": {
+    "total_groups": 24,
+    "new_b6_groups": 6,
+    "workers_per_group": 8,
+    "server_barrier_overlap": 8,
+    "slot_race": {
+      "allowed": 4,
+      "safe_denials": 4
+    }
+  },
+  "function_artifact": {
+    "inventory": 9,
+    "candidate_updates": 1,
+    "other_archives_retained": 8,
+    "baseline_reproduced_exactly": true,
+    "candidate_repeated_byte_identical": true,
+    "cold_start_node22": true,
+    "retained_fictional_catalog": 50,
+    "abc_arithmetic_unchanged": true
+  },
+  "security": {
+    "new_private_rls_tables": 4,
+    "new_role_grants": 0,
+    "new_feedback_permission_granted": 0,
+    "cohort_grants_seeded": 0,
+    "client_release_email_paths": 0,
+    "external_ai_or_exports": 0,
+    "exact_source_scoped_feedback_history": true,
+    "scope": "only two existing pinned verified founders; current session and B4/B42/B5 chain plus separate B6 purpose/operator grant"
+  },
+  "hosted_operations": {
+    "production_deploys": 0,
+    "beta_deploys": 0,
+    "migrations_applied": 0,
+    "participant_reads_or_calculations": 0,
+    "cohort_or_grants_activated": 0,
+    "feedback_or_drafts_activated": 0
+  },
+  "remaining_decisions": [
+    "Missing factual/independent measurements and approved Driver rubrics",
+    "Verifiable historical questionnaire semantic/wording provenance",
+    "Expected manual score/classification/priority calibration ranges",
+    "Separate experimental-purpose/privacy/SOP authority",
+    "Exact technical installation approval, then individually authorized first source, then optional feedback-write approval"
+  ]
+}
