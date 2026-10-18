@@ -1,3 +1,11 @@
+B6 continuation reconciles exact PR #46 `94be23a9b07f3825fed3b5c31c4091f5d7977b63` with the existing PR #47 implementation. Its three original preflight files remain byte-identical; the guarded runtime reuses that contract. Controlled session-local recalculation and same-source saved review comparison show exact candidate pins and changed founder judgments without historical code execution or inferred missing numeric scores. All technical and real-participant release gates remain held. See [B6 continuation](docs/B6_PR46_CONTINUATION.md).
+
+# B6 candidate architecture — not installed
+
+Reuses B4.2 identity/SOP, B4 read-only source pins, B5 independent compute/session infrastructure and unchanged B2/B2.1 mathematics. Adds a versioned private incomplete source-to-measurement projection; four private append-only purpose/grant/feedback/audit tables; bounded B6 actions on the existing ninth Function; and a manual-first comparison UI. Exact code/registry/transport pins are stored with private approvals and feedback. Original question wording is reference-only unless independently verifiable; complete actual scores remain withheld.
+
+[Feasibility](docs/B6_FEASIBILITY.md) · [Candidate, SOP, security, tests and exact release boundary](docs/B6_CALIBRATION_CANDIDATE.md). Earlier entries below are historical.
+
 # B5 Founder Scoring Lab candidate — production and all real-data gates held
 
 Prepared from exact live B4.2 `4247e33322c9117b92f68718ed9408070b7b03e2`, preserving PR #29 and all eight existing Functions. Reuses unchanged B2/B2.1 mathematics and 50 fictional cases, deployed B4 coverage, B4.2 identity/SOP/pinned founders, current-session/scope checks and append-only patterns. Adds a versioned independent mapping contract, founder-only scenario/trace/comparison/preview/proposal UI, same-origin `roadmap-scoring-lab` Function, and unapplied forward migration `20261016215456_vitality_roadmap_b5_scoring_lab.sql`. No production migration/deploy, source lookup, participant scoring, cohort enrollment or derivative-write activation. Beta unchanged. Actual scores remain withheld; missing measurements and A/B/C calibration are explicit blockers. [Candidate, security, founder workflow, estimates and exact separate release/rollback gates](docs/VITALITY_ROADMAP_B5_CANDIDATE.md). Prior deployment notes below describe historical checkpoints.

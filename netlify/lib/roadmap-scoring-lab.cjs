@@ -3,6 +3,7 @@
 const config=require('../../config/production.json'),contract=require('../../js/vitality-roadmap-b5-contract.js'),registry=require('../../config/roadmap-b4/source-map.json');
 // Scenario modules use the existing UMD global contract. Load them in a closed context.
 const base=require('../../js/vitality-roadmap-b2-engine.js'),engine=require('../../js/vitality-roadmap-b21-engine.js');
+const calibration=require('./roadmap-calibration.cjs');
 const cases=require('../../js/vitality-roadmap-b5-cases.cjs');
 function createHandler({fetch:request=fetch}={}){return async(req,context)=>{
  const reply=(status,body)=>Response.json(body,{status,headers:{'Cache-Control':'private, no-store, max-age=0','Netlify-CDN-Cache-Control':'no-store','Referrer-Policy':'no-referrer','X-Content-Type-Options':'nosniff','Vary':'Authorization, Origin'}});
@@ -12,8 +13,12 @@ function createHandler({fetch:request=fetch}={}){return async(req,context)=>{
  if(!req.headers.get('content-type')?.startsWith('application/json'))return reply(415,{unavailable:true});
  try{
  const raw=await req.text();if(raw.length>24000)return reply(413,{unavailable:true});const b=JSON.parse(raw);
- if(!b||Array.isArray(b)||Object.keys(b).some(k=>!['action','report','payload'].includes(k))||!['authorize','catalog','simulate','list','read','check','history','save'].includes(b.action))return reply(400,{unavailable:true});
+ if(!b||Array.isArray(b)||Object.keys(b).some(k=>!['action','report','payload'].includes(k))||!['authorize','catalog','simulate','list','read','check','history','save',...calibration.actions.map(a=>'b6_'+a)].includes(b.action))return reply(400,{unavailable:true});
  const rpc=async(action,report=null,payload={})=>{const r=await request(config.supabaseUrl+'/rest/v1/rpc/roadmap_b5',{method:'POST',headers:{apikey:config.supabaseKey,Authorization:jwt,'Content-Type':'application/json'},body:JSON.stringify({p_action:action,p_report:report,p_payload:payload}),redirect:'error',signal:AbortSignal.timeout(12000)});if(!r.ok){const e=await r.json().catch(()=>({}));throw Object.assign(Error('unavailable'),{conflict:e.code==='40001',invalid:e.code==='22023'});}return r.json();};
+ if(b.action.startsWith('b6_')){
+ const b6rpc=async(action,report=null,payload={})=>{const r=await request(config.supabaseUrl+'/rest/v1/rpc/roadmap_b6',{method:'POST',headers:{apikey:config.supabaseKey,Authorization:jwt,'Content-Type':'application/json'},body:JSON.stringify({p_action:action,p_report:report,p_payload:payload}),redirect:'error',signal:AbortSignal.timeout(12000)});if(!r.ok){const e=await r.json().catch(()=>({}));throw Object.assign(Error('unavailable'),{conflict:e.code==='40001',invalid:e.code==='22023'});}return r.json();};
+ return reply(200,await calibration.handle(b,b6rpc));
+ }
  if(['catalog','simulate'].includes(b.action)){
  if(b.report!=null) return reply(400,{unavailable:true});
  await rpc('authorize');

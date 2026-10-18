@@ -1,0 +1,78 @@
+{
+  "base_pr44": "d8435d15e6c3da6a8809124836c01194143ff82b",
+  "protected_existing_files_identical": 97,
+  "old_function_entrypoints": 9,
+  "modified_existing_implementation": "netlify/lib/roadmap-scoring-lab.cjs only",
+  "preserved_prs": {
+    "39": "cf590b576388e61100cc1b88222723fb016a0381",
+    "42": "e142c394750720a8c39dffc62db31a7726c7b225",
+    "44": "d8435d15e6c3da6a8809124836c01194143ff82b"
+  },
+  "nda_core_and_b53_assets_identical": true,
+  "production": "6ad2acb16d6d38c15ce3e489",
+  "beta": "6acc33161511aa93c289bbcc",
+  "live_functions": [
+    {
+      "name": "exercise-library",
+      "sha256": "7afffe944b6e4f9390354813cad0f8ff281184360f5f7131f8ecd697dc8f134f",
+      "runtime": "nodejs22.x"
+    },
+    {
+      "name": "food-database",
+      "sha256": "e8a1772c271a05ea357c4b59c8c804541bc187587822e60bfba9d7e8911cdda0",
+      "runtime": "nodejs22.x"
+    },
+    {
+      "name": "payment-webhook",
+      "sha256": "ca4aa97da4f298adac82adb8851f055c21aa360b6c819a3b8fb2497e87ff05e2",
+      "runtime": "nodejs22.x"
+    },
+    {
+      "name": "payment-worker",
+      "sha256": "2d2c440bb8ff85049a820f90d969b6c986685646a4ec55214e8a1ddc8fa74a32",
+      "runtime": "nodejs22.x"
+    },
+    {
+      "name": "payments",
+      "sha256": "f0469725112b4f3b878b67dad311a530441e613ba4fac1a0580b167651d55ded",
+      "runtime": "nodejs22.x"
+    },
+    {
+      "name": "reusable-content-sync",
+      "sha256": "17551800e6a1c26506147e99bf4f48783b69cc1f96daed52e08998288780b930",
+      "runtime": "nodejs22.x"
+    },
+    {
+      "name": "roadmap-founder",
+      "sha256": "525a80737e5000e4ae0b5e4b76704f58eb0e0566541042ee0fda1e26b96fb079",
+      "runtime": "nodejs22.x"
+    },
+    {
+      "name": "roadmap-verification",
+      "sha256": "9d29f707e514df7626e8513283a9bed3834680260a8b87d5c58d5138d23180a6",
+      "runtime": "nodejs22.x"
+    },
+    {
+      "name": "roadmap-scoring-lab",
+      "sha256": "b56be86402df7e23b2b5bb2a12e49f92981804cc9a4b78607061cac1d337f3ea",
+      "runtime": "nodejs22.x"
+    }
+  ],
+  "schedule": [
+    {
+      "name": "payment-worker",
+      "cron": "* * * * *"
+    }
+  ],
+  "actual_participant_reads": 0,
+  "hosted_database_reads_or_writes": 0,
+  "hosted_deployments": 0,
+  "requested_start_sha": "94be23a9b07f3825fed3b5c31c4091f5d7977b63",
+  "preserved_preflight_files": {
+    "js/vitality-roadmap-b6-private-comparison.cjs": "d3cc7f5b0f9811310dad5b5b3980e2ab748312bcde012dd5211b5af31bca6753",
+    "tests/vitality-roadmap-b6-private-comparison.cjs": "742ad2194bba947b6ef65c2dad91c01ba723c6f76545ddcbc44927d9f1d00c25",
+    "docs/B6_REAL_INTAKE_CALIBRATION_IMPLEMENTATION_CHECKPOINT.md": "3aad89de100c025369c0e671d1c27901d971ace6cab877f42e960e3a3150346e"
+  },
+  "reused_candidate_commit": "1107b2fe1aaf6fbc5063d9dae9a30636b71bd2e3",
+  "separate_pr47_unchanged": true
+}
