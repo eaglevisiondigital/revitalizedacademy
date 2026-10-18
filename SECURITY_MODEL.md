@@ -1,3 +1,9 @@
+# B6 candidate security — all real-data gates held
+
+Every B6 source request requires the existing live two-founder/session/Owner/All People/health-private/CRM/contact/source/B4/B5 chain plus personal current-session B6 purpose acknowledgment and separate operator grant. Four distinct participant contacts/14-day maximum are serialized; feedback-write is separately authorized and requires health-progress permission while B4 drafts remain false. Direct tables/helpers deny browser/service roles. Original answers are immutable; stale responses, revocation and logout clear private DOM. No browser persistence, print/export, outside AI, policy adoption, client release or email.
+
+[Feasibility](docs/B6_FEASIBILITY.md) · [Candidate, SOP, security, tests and exact release boundary](docs/B6_CALIBRATION_CANDIDATE.md). Earlier entries below are historical.
+
 # B5 Founder Scoring Lab candidate — production and all real-data gates held
 
 Prepared from exact live B4.2 `4247e33322c9117b92f68718ed9408070b7b03e2`, preserving PR #29 and all eight existing Functions. Reuses unchanged B2/B2.1 mathematics and 50 fictional cases, deployed B4 coverage, B4.2 identity/SOP/pinned founders, current-session/scope checks and append-only patterns. Adds a versioned independent mapping contract, founder-only scenario/trace/comparison/preview/proposal UI, same-origin `roadmap-scoring-lab` Function, and unapplied forward migration `20261016215456_vitality_roadmap_b5_scoring_lab.sql`. No production migration/deploy, source lookup, participant scoring, cohort enrollment or derivative-write activation. Beta unchanged. Actual scores remain withheld; missing measurements and A/B/C calibration are explicit blockers. [Candidate, security, founder workflow, estimates and exact separate release/rollback gates](docs/VITALITY_ROADMAP_B5_CANDIDATE.md). Prior deployment notes below describe historical checkpoints.

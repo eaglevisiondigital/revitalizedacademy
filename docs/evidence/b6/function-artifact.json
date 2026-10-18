@@ -1,0 +1,27 @@
+{
+  "NOT_DEPLOYED": true,
+  "changed_function": "roadmap-scoring-lab",
+  "existing_inventory": 9,
+  "other_functions_to_retain_exactly": 8,
+  "host": {
+    "node": "v24.20.0",
+    "zlib": "1.2.12"
+  },
+  "tool": {
+    "zisi": "16.3.0",
+    "package_sha256": "8742c4677655220d5d08f553fefa1ca1e790dca9cadcc63b32cbbaba76dab7a2"
+  },
+  "baseline": {
+    "sha256": "b56be86402df7e23b2b5bb2a12e49f92981804cc9a4b78607061cac1d337f3ea",
+    "runtime": "nodejs22.x",
+    "bundler": "nft",
+    "api": 2
+  },
+  "candidate": {
+    "sha256": "779071326db553b2132529c97b7c15875db4fc0f959ab883ebe5624c35e1e04c",
+    "runtime": "nodejs22.x",
+    "bundler": "nft",
+    "api": 2
+  },
+  "repeated_identical": true
+}
