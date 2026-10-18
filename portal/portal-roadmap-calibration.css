@@ -1,0 +1,15 @@
+/* B6 scope only: retain the accepted Lab/portal palette and unrelated layouts. */
+.rv6-dialog .rv6-compare { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:20px; }
+.rv6-dialog .rv6-compare article { border:1px solid #d1dfd7; background:#fcfdfb; border-radius:12px; padding:16px; }
+.rv6-dialog input[type=checkbox] { width:24px; min-height:24px; align-self:flex-start; }
+.rv6-dialog select[multiple] { min-height:160px; }
+.rv6-dialog .rv6-source,.rv6-dialog .rv6-result { scroll-margin-top:20px; }
+@media(max-width:800px) { .rv6-dialog .rv6-compare { grid-template-columns:1fr; } }
+@media print { .rv6-dialog { display:none!important; } }
+
+.rv6-workspace { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.4fr); gap:20px; align-items:start; }
+.rv6-source { max-height:calc(100vh - 90px); overflow:auto; position:sticky; top:12px; }
+.rv6-dialog .rv6-result,.rv6-dialog .rv6-manual { grid-column:2; grid-row:1; }
+@media(max-width:800px) { .rv6-workspace { grid-template-columns:1fr; } .rv6-source { max-height:420px; position:static; } .rv6-dialog .rv6-result,.rv6-dialog .rv6-manual { grid-column:auto; grid-row:auto; } }
+/* Preserve submitted answer line breaks and spacing; never rewrite stored values. */
+.rv6-dialog .rv6-source p { white-space:pre-wrap; }
