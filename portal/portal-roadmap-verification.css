@@ -12,3 +12,16 @@
 @media(max-width:700px){.rv42-search{grid-template-columns:minmax(0,1fr)}}
 
 .rv42-date-group{display:flex;align-items:flex-end;gap:7px;min-width:0}.rv42-date-group label{flex:1;min-width:0}.rv42-clear-date{min-height:46px;min-width:44px;padding:9px;border:1px solid #b9cbbf;border-radius:9px;background:#fff;color:#245a43;font:inherit;font-size:13px;cursor:pointer}.rv42-clear-date:disabled{opacity:.6;cursor:default}
+
+/* Clarify B4.2 source eligibility versus a genuine recorded founder identity decision. */
+.rv42-guide{border:1px solid #cadbcf;background:#f0f6f1;border-radius:14px;padding:16px 18px;margin:12px 0 18px}
+.rv42-guide h3{margin:0 0 7px;font-size:18px}.rv42-guide p{margin:0 0 10px;color:#344f40;font-size:14px;line-height:1.55}
+.rv42-status-jump{border:1px solid #245a43;background:#fff;color:#245a43;border-radius:9px;font:inherit;font-weight:700;padding:9px 12px;cursor:pointer}
+.rv42-candidate-state,.rv42-verification-state{display:block;border-radius:9px;border:1px solid #d9e3dd;padding:10px 12px;font-size:13px;font-weight:750;line-height:1.45;background:#f3f6f4;color:#324c40;margin:12px 0}
+.rv42-candidate-state.is-pending,.rv42-verification-state.is-pending{border-color:#e7d9ba;background:#fbf6ea;color:#705729}
+.rv42-candidate-state.is-confirmed,.rv42-verification-state.is-confirmed{border-color:#b7d8c4;background:#eaf5ed;color:#205c39}
+.rv42-candidate-state.is-held,.rv42-verification-state.is-held{border-color:#e7d5b5;background:#faf1e6;color:#765227}
+.rv42-next-step,.rv42-status-explainer{font-size:14px;line-height:1.5;color:#476356}
+.rv42-status{scroll-margin-top:16px}.rv42-status:focus{outline:none}
+.rv42-status-card>.rv42-verification-state{margin-bottom:8px}.rv42-status-card>.rv42-verification-state+p{margin-top:5px}
+@media(max-width:700px){.rv42-guide{padding:14px}.rv42-status-jump{width:100%;min-height:44px}}
