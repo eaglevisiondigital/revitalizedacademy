@@ -436,5 +436,8 @@
   "portal/portal-roadmap-scoring-lab-view.js",
   "portal/portal-roadmap-calibration.js",
   "portal/portal-roadmap-calibration-bootstrap.js",
-  "portal/portal-roadmap-calibration.css"
+  "portal/portal-roadmap-calibration.css",
+  "portal/portal-roadmap-processing.js",
+  "portal/portal-roadmap-processing-bootstrap.js",
+  "portal/portal-roadmap-processing.css"
 ]

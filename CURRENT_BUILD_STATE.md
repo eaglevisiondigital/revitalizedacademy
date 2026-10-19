@@ -312,3 +312,12 @@ Validation: current engine28/28, focused B2.1/B5.3/B6 111/111, maintained native
 Read-only protected metadata audit reconfirmed all3 owner-designated consultation sources have genuine founder confirmation, seven SOP acknowledgments, eligible unchanged source/identity pins and one active readonly cohort each. Existing fourth source remains. No health answers extracted. B4versions/B5pilot/B6purpose/grants/feedback remain0; ledger207/latest20261019013356 unchanged. Existing Oct22 08:45 Central manual revocation ceiling remains. Available local browser is supervising Owner, not a founder; a founder’s remote session cannot be reused here. No new blanket privacy approval is requested.
 
 Production remains locked deploy6ad591a42c055bca5df5c2d4;439 published paths, nine exact Node22 Function digests/configuration/routes/payment-worker schedule and beta preserved. Remaining gates: obtain exact original prototype package, resolve approved factual source rubrics/revision evidence and independent expected cases, then separately authorize any exact-source B5/B6 compute or controlled export. See docs/V014_REFERENCE_RECONCILIATION_2026-10-19.md and tools/calibration-preview/README.md.
+
+## 2026-10-19 — isolated internal Roadmap processing implementation
+
+- Branch `codex/roadmap-internal-processing-v1`, preserving deployed PR51/B6 source and local audit work.
+- Implemented metadata completion queue, authenticated source-scoped worker, server-sealed immutable all-12-Driver evidence versions, append-only founder proposals, idempotent regeneration and exact-version internal approval.
+- Candidate-only forward SQL `20261019180611_roadmap_internal_processing_v1.sql`; no hosted migration, deployment, push, participant processing, grants, exports or delivery.
+- Reused the existing B2.1/B6 adapter, coverage matrix, auth/SOP/source controls and approved renderer. All real-source complete numerical Driver results remain withheld; missing mapping/provenance/rubric requirements are explicit.
+- Existing nine Function sources, runtime configuration, NDA, payments, source data and beta remain unchanged. New additive Function is not deployed. All five new controls default false.
+- See `docs/ROADMAP_INTERNAL_PROCESSING_V1.md` and sanitized `docs/evidence/roadmap-processing-v1/` for implementation, test evidence, preservation, limitations and separate technical-release/source-write gates.

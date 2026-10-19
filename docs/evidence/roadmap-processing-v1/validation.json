@@ -1,0 +1,118 @@
+{
+  "scope": "local/synthetic only; no hosted mutation or actual answers",
+  "database": {
+    "engine": "PostgreSQL 17",
+    "tests": 233,
+    "passed": 233,
+    "failed": 0,
+    "processingTests": 19,
+    "existingPlatformTests": 214,
+    "originalCompletionWithCandidateTrigger": true,
+    "existingFunctionsOwnersAclPreserved": true
+  },
+  "node": {
+    "tests": 122,
+    "passed": 122,
+    "failed": 0,
+    "includes": [
+      "B2.1 numerical cases",
+      "B5.3",
+      "B6",
+      "session runtime",
+      "new processing and bootstrap"
+    ]
+  },
+  "browser": [
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "drivers": 12,
+      "flow": "queue\u2192authenticated worker\u2192draft\u2192review\u2192regenerate\u2192internal approval",
+      "consoleWarningsErrors": 0,
+      "overflow": false,
+      "downloads": 0,
+      "logoutPrivateDomCleared": true
+    },
+    {
+      "engine": "chromium",
+      "width": 768,
+      "drivers": 12,
+      "flow": "queue\u2192authenticated worker\u2192draft\u2192review\u2192regenerate\u2192internal approval",
+      "consoleWarningsErrors": 0,
+      "overflow": false,
+      "downloads": 0,
+      "logoutPrivateDomCleared": true
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "drivers": 12,
+      "flow": "queue\u2192authenticated worker\u2192draft\u2192review\u2192regenerate\u2192internal approval",
+      "consoleWarningsErrors": 0,
+      "overflow": false,
+      "downloads": 0,
+      "logoutPrivateDomCleared": true
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "drivers": 12,
+      "flow": "queue\u2192authenticated worker\u2192draft\u2192review\u2192regenerate\u2192internal approval",
+      "consoleWarningsErrors": 0,
+      "overflow": false,
+      "downloads": 0,
+      "logoutPrivateDomCleared": true
+    },
+    {
+      "engine": "webkit",
+      "width": 768,
+      "drivers": 12,
+      "flow": "queue\u2192authenticated worker\u2192draft\u2192review\u2192regenerate\u2192internal approval",
+      "consoleWarningsErrors": 0,
+      "overflow": false,
+      "downloads": 0,
+      "logoutPrivateDomCleared": true
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "drivers": 12,
+      "flow": "queue\u2192authenticated worker\u2192draft\u2192review\u2192regenerate\u2192internal approval",
+      "consoleWarningsErrors": 0,
+      "overflow": false,
+      "downloads": 0,
+      "logoutPrivateDomCleared": true
+    }
+  ],
+  "concurrency": {
+    "workers": 8,
+    "distinctBackends": 8,
+    "serverBarrier": true,
+    "oneLease": true,
+    "oneVersion": true,
+    "reviewSuccesses": 1,
+    "safeReviewConflicts": 7,
+    "idempotentRegeneration": true
+  },
+  "build": {
+    "publicPaths": 442,
+    "pins": "B6 source hashes unchanged"
+  },
+  "pdf": {
+    "data": "fictional only",
+    "rendered": true,
+    "realSourceRenderer": "unconfigured/held",
+    "allPagesVisualQA": "passed"
+  },
+  "hosted": {
+    "deployed": false,
+    "migrated": false,
+    "actualSourcesRead": false,
+    "actualSourcesProcessed": 0,
+    "fourthSourceChanged": false,
+    "betaChanged": false,
+    "realPdfExport": false,
+    "emails": false,
+    "approvalToDeliver": false
+  }
+}

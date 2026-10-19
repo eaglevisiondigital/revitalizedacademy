@@ -1,0 +1,55 @@
+{
+  "comparison": "local source against deployed PR51 source; not a new hosted preflight",
+  "baselineSource": "a0e4692c5954ec21c1de7517ed706cf71b86a15c",
+  "expectedPublishedDeploy": "6ad591a42c055bca5df5c2d4",
+  "liveRechecked": false,
+  "publicPaths": {
+    "before": 439,
+    "after": 442,
+    "unchanged": 437,
+    "sourceFileUnchanged": 436,
+    "generatedRuntimeUnchanged": 1,
+    "changed": [
+      "portal/index.html",
+      "portal/portal-roadmap-calibration.js"
+    ],
+    "added": [
+      "portal/portal-roadmap-processing.js",
+      "portal/portal-roadmap-processing-bootstrap.js",
+      "portal/portal-roadmap-processing.css"
+    ]
+  },
+  "existingFunctionSources": {
+    "count": 9,
+    "sharedModules": 3,
+    "sha256": {
+      "netlify/functions/_shared/authorize-net.mjs": "de4332127c269ab42517551cd9da69460b2c6c27564ce96b528f12ecc3764f51",
+      "netlify/functions/_shared/payment-domain.mjs": "5c653a76ef7e7eb6ea495615a73e6cbad5a9a1f70d234b5d6fbea60c910a540b",
+      "netlify/functions/_shared/payments.mjs": "b893a58f750b8058b899e6c261c2d9dcbc4cb96cc47f12e94211c41f4edde2a5",
+      "netlify/functions/exercise-library.mjs": "c505cfc59c3230666a01d4b9012a29804eed89760b67c4b6fd2baf9dc365d6ce",
+      "netlify/functions/food-database.mjs": "7ad9d5b47d63c49308057feb8d7c24c198dafa8fabf491962dc9d1e5579aecd3",
+      "netlify/functions/payment-webhook.mts": "86e863024c007af1f992b044a6fdfac85cbab564be82a54aced37ff594396f37",
+      "netlify/functions/payment-worker.mts": "eaf9963c53fb56bcae242925c7848ff892e8e8f938057f9a6fec9e687a4d0868",
+      "netlify/functions/payments.mts": "dd9c30fe9d8a0690eb43a20c44c659e4150d19490e0ef77dea82588e4bd5bb64",
+      "netlify/functions/reusable-content-sync.mjs": "2c4d64c15794c378df003457ed0926b448fedf6d3a4eb272ce8696277dfe9b05",
+      "netlify/functions/roadmap-founder.mjs": "ef9bdc21aef6402bc63058dacb1703ff8fe423c07471e792def4c00577af0c51",
+      "netlify/functions/roadmap-scoring-lab.mjs": "c95b14cf7c57afa0591ed460ead19e4ce0b537255203a54905dbbe67c6c8907b",
+      "netlify/functions/roadmap-verification.mjs": "db141c07aba1661789edacb34348af6db084299092b0094d71b58a0ada2ebe69"
+    },
+    "byteIdentical": true
+  },
+  "newFunction": "netlify/functions/roadmap-processing.mjs",
+  "productionConfigurationUnchanged": true,
+  "b6PinsUnchanged": true,
+  "migration": {
+    "path": "supabase/environment-migrations/production/20261019180611_roadmap_internal_processing_v1.sql",
+    "sha256": "dde1ac92ceb3b8385b2f8a899237185f769b6d176c85cf2d4fcfd14497c84b2e"
+  },
+  "changedSourceHashes": {
+    "portal/index.html": "e6f6bedd4fc22237df3f670224b2639786f97282c7f8c212288ae521fef8f7fe",
+    "portal/portal-roadmap-calibration.js": "f6004bf7a0542e7956925229e795d3bbb7b100bef3cefa73f6a69471d90316d9",
+    "portal/portal-roadmap-processing.js": "e4eae738dd7f2eba9e1f9ebbb1fa8b267764c419ed92c3252300dd996e916c73",
+    "portal/portal-roadmap-processing-bootstrap.js": "1883be74d07ab97a681e92ae38813b81a29ea4d5467a8cff7fa95b33148a51f2",
+    "portal/portal-roadmap-processing.css": "ee689c0b234f1d0b58707f0cee0b06aecd49d789156640f7f748d9642bdee345"
+  }
+}

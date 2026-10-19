@@ -97,3 +97,11 @@ Production Client Lifecycle v1: user requested safe pre-payment promotion only, 
 - Calculate annual eligibility from authoritative membership history; allow only an audited Owner/Admin override.
 - Keep MK7 historical and published MK8 immutable. Existing MK8 exactly matches none of the new plans; prepare three plan-specific future agreement revisions.
 - Keep `production_client_agreement_publication` held, zero active Holistic Foundations mappings, and Payments v1 disabled pending separate legal/provider release gates.
+
+### 2026-10-19 — internal processing engineering candidate
+
+- Advance the current platform additively; reuse the current B2.1 engine and strict B6 source adapter. Do not wait for or substitute the old v0.14 prototype.
+- Queue metadata automatically at completion; retrieve answers only through a current founder's backend authorization. No stored founder JWT, impersonation or new unattended processing privilege.
+- Keep raw evidence/arithmetic immutable and corrections attributed/versioned. No automatic learning or scoring-rule adoption.
+- Preserve zero complete real-source numerical Driver scores until historical semantics and approved measurement mappings exist; produce useful all-12-Driver evidence drafts instead of fabricated numbers.
+- Persisted internal drafts/reviews need explicit new source-specific authorization; existing read-only pilot permissions alone do not allow those writes. All runtime controls are held by default; no hosted mutation authorized by this engineering package.

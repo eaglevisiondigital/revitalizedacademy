@@ -79,3 +79,7 @@ Production lifecycle draft reuses secure verified invitation claim/signing and p
 ## Browser Auth initialization boundary — 2026-10-11
 
 The staff portal treats Supabase `INITIAL_SESSION` as the storage-restoration boundary. The initial `getSession()` read is an optimization, not a final signed-out decision; an empty early read stays in a neutral restore view until the Auth event or bounded final read resolves. Bootstrap work is keyed by user/access token and guarded by a session epoch. Same-user token refresh reauthorizes without blanking the authorized workspace. A different user, logout, inactive staff state, or revocation invalidates pending work and uses the existing fresh-document privacy boundary.
+
+### Candidate: source-pinned internal Roadmap processing (2026-10-19)
+
+The isolated candidate adds a metadata-only completion outbox and genuinely authenticated founder worker above existing B4/B4.2/B5/B6 access. Separate private immutable versions/proposals/approvals preserve the read-only B4 source contract. The trusted backend seals exact computed JSON before caller-authorized commit. Existing completion/storage, source fingerprints, nine Functions, schedules and scoring engine remain unchanged. This is not hosted; all controls default off. See `docs/ROADMAP_INTERNAL_PROCESSING_V1.md`.

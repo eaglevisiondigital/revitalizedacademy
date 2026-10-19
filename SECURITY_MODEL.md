@@ -81,3 +81,7 @@ Unapplied production lifecycle candidate tests exact caller role/permission/cont
 ## Session restoration continuity — 2026-10-11
 
 Persisted browser Auth may restore asynchronously. The portal must not interpret a temporary empty startup read as a completed logout, but restoration never bypasses `get_my_staff_access`. Rendered staff data remains document-local; account changes, logout, inactive/revoked access and stale ownership destroy or clear private state. Production and beta keep separate Supabase project-scoped storage keys and origins.
+
+### Candidate internal processing boundary (not deployed)
+
+New source-specific private draft-storage purpose/operator grants never substitute for B4/B4.2/B5/B6. Browser/service direct table DML remains revoked; only a backend-only seal can attest server arithmetic, and only a current founder source lease can commit it. Review and approval require independent controls; current B6 feedback authority is still required. Internal approval never exposes a client report. PDF, export, email, delivery and unsupported numerical conversions remain held. No real-source data enters local tests. See the processing implementation/runbook and RLS/concurrency evidence.
