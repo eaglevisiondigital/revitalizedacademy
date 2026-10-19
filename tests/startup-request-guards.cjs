@@ -28,11 +28,20 @@ for(const name of modules){
  test(name+': account transition cancels earlier responses, permits a fresh account, and clears on reset',async t=>{const h=fixture(t,name,{delayed:true});await wait();h.reset();h.activate('fictional-account-b');const before=h.calls.length;h.finish();await wait();assert(h.calls.length>=before);assert.deepEqual(h.messages,[]);h.reset();const stopped=h.calls.length;h.finish();for(const event of ['ra:dashboard-loaded','ra:permissions-loaded','ra:contact-closed'])h.w.document.dispatchEvent(new h.w.Event(event));await wait();assert.equal(h.calls.length,stopped);assert.deepEqual(h.messages,[]);});
  test(name+': denied feature permission never starts its protected feature query',async t=>{const h=fixture(t,name,{allowed:false});for(const event of ['ra:dashboard-loaded','ra:permissions-loaded'])h.w.document.dispatchEvent(new h.w.Event(event));await wait();if(name==='staff-access')assert(h.calls.every(x=>x==='my_staff_permissions_view'));else if(name==='programs')assert(!h.calls.includes('admin_staff_access_directory'));else assert.deepEqual(h.calls,[]);assert.deepEqual(h.messages,[]);});
 }
-test('only seven loader scripts and their cache references change in the production runtime',()=>{
+test('preserved loader package contains only its original seven scripts and cache references',()=>{
  const {execFileSync}=require('node:child_process'),git='/Library/Developer/CommandLineTools/usr/bin/git',base=require('./fixtures/protected-loader-baseline.json').source;
- const changed=execFileSync(git,['diff',base,'--name-only','--','portal','netlify','js','config','supabase','member'],{cwd:root,encoding:'utf8'}).trim().split('\n').filter(Boolean);assert.deepEqual(changed.sort(),['portal/index.html',...modules.map(n=>'portal/portal-'+n+'.js')].sort());
- const original=execFileSync(git,['show',base+':portal/index.html'],{cwd:root,encoding:'utf8'});let expected=original;for(const n of modules)expected=expected.replace(new RegExp('(portal-'+n+'\\.js\\?v=)([0-9]+)'),(_,a,b)=>a+(Number(b)+1));assert.equal(read('portal/index.html'),expected);
+ const preserved='748ed0c0ceb98bf1687c60874fa4611e1bff3e19';const changed=execFileSync(git,['diff',base,preserved,'--name-only','--','portal','netlify','js','config','supabase','member'],{cwd:root,encoding:'utf8'}).trim().split('\n').filter(Boolean);assert.deepEqual(changed.sort(),['portal/index.html',...modules.map(n=>'portal/portal-'+n+'.js')].sort());
+ const original=execFileSync(git,['show',base+':portal/index.html'],{cwd:root,encoding:'utf8'});let expected=original;for(const n of modules)expected=expected.replace(new RegExp('(portal-'+n+'\\.js\\?v=)([0-9]+)'),(_,a,b)=>a+(Number(b)+1));assert.equal(execFileSync(git,['show',preserved+':portal/index.html'],{cwd:root,encoding:'utf8'}),expected);
  for(const n of modules){const file='portal/portal-'+n+'.js',a=execFileSync(git,['show',base+':'+file],{cwd:root}),b=execFileSync(git,['show','c618dd30cd4979e3f7916fcc7cbc9d4612ae4cf9:'+file],{cwd:root});assert(a.equals(b),'Loader baseline differs from Roadmap source: '+n);}
+});
+
+test('B6 consent repair preserves all loaders, Functions, engines and unrelated runtime files',()=>{
+ const {execFileSync}=require('node:child_process'),git='/Library/Developer/CommandLineTools/usr/bin/git',base='748ed0c0ceb98bf1687c60874fa4611e1bff3e19';
+ const changed=execFileSync(git,['diff',base,'--name-only','--','portal','netlify','js','config','supabase','member'],{cwd:root,encoding:'utf8'}).trim().split('\n').filter(Boolean);
+ const migration='supabase/environment-migrations/production/20261019213244_b6_purpose_acknowledgment_feedback.sql';
+ assert.deepEqual(changed.filter(p=>p!==migration).sort(),['portal/index.html','portal/portal-roadmap-calibration.js','portal/portal-roadmap-calibration-bootstrap.js'].sort());
+ assert(fs.existsSync(path.join(root,migration)));
+ const previous=execFileSync(git,['show',base+':portal/index.html'],{cwd:root,encoding:'utf8'});assert.equal(read('portal/index.html'),previous.replace('portal-roadmap-calibration.js?v=101','portal-roadmap-calibration.js?v=102').replace('portal-roadmap-calibration-bootstrap.js?v=100','portal-roadmap-calibration-bootstrap.js?v=101'));
 });
 
 test('work queue restarts after same-user session epoch refresh with an earlier request still pending',async t=>{
