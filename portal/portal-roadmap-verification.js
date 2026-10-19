@@ -61,13 +61,23 @@
       if (row.decision === 'pending' && row.same_name_contacts > 1) return 'Ambiguous · Exact identity verification pending';
       return {confirmed: 'Confirmed · Operator authorization still required', not_intended: 'Not the intended record', needs_clarification: 'Needs clarification', pending: 'Pending founder verification'}[row.decision] || 'Pending';
     }
+    function recordedState(row) {
+      if (row.source_changed) return ['SOURCE CHANGED · VERIFY AGAIN', 'is-held'];
+      if (row.decision === 'confirmed') return ['IDENTITY VERIFIED', 'is-confirmed'];
+      if (row.decision === 'needs_clarification') return ['NEEDS CLARIFICATION', 'is-held'];
+      if (row.decision === 'not_intended') return ['NOT THE INTENDED RECORD', 'is-held'];
+      return ['IDENTITY NOT VERIFIED', 'is-pending'];
+    }
     async function loadStatus(task) {
       const rows = await call('status', {}, task); if (!rows || !dialog) return;
-      statusHost.replaceChildren(n('h3', 'Protected verification status'));
+      statusHost.replaceChildren(n('h3', 'Protected verification status'), n('p', 'These are recorded decisions for protected source records, not automatic matches based on names. Compare the separate identifier and completion date. Search results alone never confirm an identity.', 'rv42-status-explainer'));
       if (!rows.length) notice('No verification requests yet. Search for an exact full name or email to begin.', statusHost);
       for (const row of rows) {
-        const card = n('article', null, 'rv42-status-card'); card.append(n('strong', row.name), n('span', row.second_identifier), n('p', statusText(row)));
+        const [state, tone] = recordedState(row);
+        const card = n('article', null, 'rv42-status-card'); card.append(n('strong', row.name), n('span', row.second_identifier),
+          n('p', state, 'rv42-verification-state ' + tone), n('p', statusText(row)));
         if (row.same_name_contacts > 1) card.append(n('p', 'Similar names exist. Contact records remain separate.'));
+        if (row.decision === 'confirmed' && !row.source_changed) card.append(n('p', row.eligible ? 'Founder identity confirmation and SOP recorded. Private review still requires separate operator authorization.' : 'Identity confirmation recorded, but this source is not eligible for the detailed pilot.'));
         if (row.revoke_by) card.append(n('p', `Proposed manual revocation: ${date(row.revoke_by)} · Owner ${row.revocation_owner}. ${new Date(row.revoke_by) <= new Date() ? 'Plan expired; renew verification.' : 'Operator appointment required before enrollment.'}`));
         if (row.reviewer) card.append(n('small', `Recorded by ${row.reviewer} · Revision ${row.revision}`));
         card.append(n('small', 'No enrollment, draft, score or delivery enabled.')); statusHost.append(card);
@@ -96,7 +106,12 @@
       const submit = n('button', 'Find existing records', 'rv42-button'); submit.type = 'submit'; search.append(label, dateGroup, submit);
       feedback = n('p', '', 'rv42-feedback'); feedback.setAttribute('role', 'status'); feedback.setAttribute('aria-live', 'polite');
       results = n('section', null, 'rv42-results'); results.setAttribute('aria-label', 'Assessment candidates'); statusHost = n('section', null, 'rv42-status');
-      surface.append(search, feedback, results, statusHost); dialog.focus();
+      statusHost.setAttribute('aria-label', 'Recorded identity verification decisions');
+      const guide = n('div', null, 'rv42-guide'); guide.append(n('h3', 'Assessment candidates'),
+        n('p', 'A completed, eligible source is NOT the same as a verified identity. Compare each separate contact and open the verification form only after checking the full identifier and completion date.'));
+      guide.append(btn('View recorded verification status', () => {statusHost.scrollIntoView({block:'start'}); statusHost.focus({preventScroll:true});}, 'rv42-status-jump'));
+      statusHost.tabIndex = -1;
+      surface.append(search, feedback, guide, results, statusHost); dialog.focus();
       search.onsubmit = async e => {
         e.preventDefault(); if (pending || !search.reportValidity()) return;
         setPending(true); selected = null; surface.querySelector('.rv42-attestation')?.remove(); submit.disabled = true; results.replaceChildren(); feedback.textContent = 'Checking existing records securely…'; const current = guard.begin();
@@ -113,6 +128,13 @@
       const card = n('article', null, 'rv42-card'); card.append(n('span', `Candidate ${i + 1} · Separate contact record`, 'rv42-eyebrow'), n('h3', row.name), n('p', row.second_identifier, 'rv42-identifier'),
         n('p', `Assessment completed: ${date(row.completed_at)}`), n('p', kinds[row.kind] || 'Source requires clarification', row.eligible ? 'rv42-badge' : 'rv42-badge is-held'));
       if (row.workflow_completed_at && row.workflow_completed_at !== row.completed_at) card.append(n('p', `Linked workflow completed: ${date(row.workflow_completed_at)}`));
+      const candidateState = row.revision === 0 ? 'IDENTITY NOT VERIFIED · No founder decision recorded' :
+        Number.isInteger(row.revision) && row.revision > 0 ? 'Founder decision already recorded · Check protected status below' :
+        'Identity status unknown · Check protected status below';
+      card.append(n('p', candidateState, 'rv42-candidate-state' + (row.revision === 0 ? ' is-pending' : '')));
+      if (row.kind === 'no_report') card.append(n('p', 'No completed report on this contact. Do not use it as an eligible detailed source.', 'rv42-next-step'));
+      else if (row.eligible) card.append(n('p', 'Next: independently check the full contact identifier and completion date, then use Verify Pilot Assessment to record the founder decision and SOP. This does not open answers.', 'rv42-next-step'));
+      else card.append(n('p', 'Source eligibility is held. You may record clarification, but confirming an identity cannot make an ineligible source eligible.', 'rv42-next-step'));
       if (row.same_name_contacts > 1) notice(`${row.same_name_contacts} contacts share this full name. They are not automatically the same person.`, card);
       if (row.staff_contact_warning) notice('A similarly named staff contact is a different record from this assessment contact. Verify independently; no identity equivalence is assumed.', card);
       const actions = n('div', null, 'rv42-actions'); actions.append(btn('Check full identifier in Contact', () => bridge(row, 'contact')));
@@ -131,6 +153,7 @@
         selected = row; surface.querySelector('.rv42-attestation')?.remove(); const form = n('form', null, 'rv42-attestation');
         form.append(n('h3', 'Confirm this exact assessment'), n('p', 'Check the full name, an independent second identifier and the assessment completion date before confirming.'), n('p', `${row.name} · ${row.second_identifier} · ${date(row.completed_at)}`));
         if (row.identity_confirmable === false) notice('Full identity, an independent email/phone and completion date are required. Choose Needs clarification until the existing record can be verified.', form);
+        if (Number.isInteger(row.revision) && row.revision > 0) notice('A founder decision already exists for this source. Review the protected status before recording another revision; do not reconfirm solely because the name matches.', form);
         notice(row.eligible ? 'Eligible source candidate. A confirmation still does not enroll this person.' : 'This record is not eligible for detailed B4 review. Confirming identity cannot change source eligibility.', form);
         const decisionLabel = n('label', 'Your decision'), decision = n('select'); decision.setAttribute('aria-label', 'Your decision'); decision.required = true;
         [['', 'Choose a decision'], ['confirmed', 'Confirm this exact assessment'], ['not_intended', 'Not the intended record'], ['needs_clarification', 'Needs clarification']].forEach(([v, t]) => {const o = n('option', t); o.value = v; decision.append(o);});
@@ -161,7 +184,12 @@
             starts_at: plan.hidden ? null : new Date(start.value).toISOString(), revoke_by: plan.hidden ? null : new Date(end.value).toISOString()};
           if (lastBody !== JSON.stringify(body)) {requestKey = win.crypto.randomUUID(); lastBody = JSON.stringify(body);} body.request_key = requestKey;
           const current = guard.begin(); setPending(true); save.disabled = true; feedback.textContent = 'Recording private append-only verification…';
-          try {const saved = await call('attest', body, current); if (!saved || !dialog) return; selected = null; form.remove(); feedback.textContent = 'Verification and SOP recorded. Nobody was enrolled. Operator authorization remains required.'; feedback.tabIndex = -1; feedback.focus({preventScroll: true}); feedback.scrollIntoView({block: 'nearest'}); await loadStatus(current);}
+          try {const saved = await call('attest', body, current); if (!saved || !dialog) return; selected = null; form.remove(); feedback.textContent = 'Verification and SOP recorded. Nobody was enrolled. Operator authorization remains required.';
+            const state = card.querySelector('.rv42-candidate-state');
+            if (state) {state.textContent = decision.value === 'confirmed' ? 'IDENTITY VERIFIED · Founder confirmation recorded; operator authorization pending' :
+              decision.value === 'needs_clarification' ? 'NEEDS CLARIFICATION · Founder decision recorded' : 'NOT THE INTENDED RECORD · Founder decision recorded';
+              state.className = 'rv42-candidate-state ' + (decision.value === 'confirmed' ? 'is-confirmed' : 'is-held');}
+            feedback.tabIndex = -1; feedback.focus({preventScroll: true}); feedback.scrollIntoView({block: 'nearest'}); await loadStatus(current);}
           catch (e) {if (guard.current(current)) {if (e.kind === 'invalid') feedback.textContent = notices.invalid; else fail(e.kind);}}
           finally {if (dialog && guard.current(current)) {setPending(false); save.disabled = false; schedule();}}
         };
