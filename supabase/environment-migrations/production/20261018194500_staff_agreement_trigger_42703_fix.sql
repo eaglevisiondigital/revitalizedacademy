@@ -8,6 +8,10 @@ begin
  if to_regprocedure('private.sync_staff_onboarding_from_agreements()') is null then
   raise exception 'Expected agreement onboarding trigger function missing';
  end if;
+ if (select encode(extensions.digest(prosrc,'sha256'),'hex') from pg_proc where oid='private.sync_staff_onboarding_from_agreements()'::regprocedure)
+    is distinct from '46703cca16ab2bb8e6b4302b0838479a2ce067ded19f2118f5cbb8ead53d0c3f' then
+  raise exception 'Reviewed onboarding trigger baseline changed or repair already installed';
+ end if;
  select count(*) into attached
  from pg_trigger t
  join pg_class c on c.oid=t.tgrelid
@@ -69,7 +73,8 @@ begin
   update public.staff_access
      set onboarding_status=case
       when status <> 'active' then onboarding_status
-      when coalesce(v_declined,0)>0 then 'blocked'
+      -- Existing constraint permits pending/complete/waived only. Pending denies Coach access.
+      when coalesce(v_declined,0)>0 then 'pending'
       when coalesce(v_required,0)=0 then 'complete'
       when coalesce(v_incomplete,0)=0 then 'complete'
       else 'pending'

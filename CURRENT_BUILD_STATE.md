@@ -1,3 +1,11 @@
+# NDA trigger repair — 2026-10-18; production actions held
+
+PR #50 continues exact `02278e8a03f3d5b4d138ee07ea7b89abd3f4bcac`. Native PostgreSQL 17.11 reproduces 42703 and validates the trigger-only forward repair (23/23), including both tables' INSERT/UPDATE/DELETE, declined/multiple/inactive agreement states, RLS and preserved metadata. Eight overlapping workers produce one recovery/seven safe denials with one audit and unchanged signature. Maintained regressions pass 108/108, including eight exact live-v5 Edge source mocks, after generating the required local build.
+
+Read-only private checks confirm one existing genuine acceptance can be reconciled without another signature. Recovery is a protected operator library with private evidence pins, verified Owner/Admin audit actor, exact row/advisory locks and atomic postcondition/audit checks. Existing live Edge v5's unconditional Complete/retry-upsert limitation is documented, not changed. Required declined agreements use existing pending because blocked is not a valid production state.
+
+Migration and one-record recovery remain separately owner-gated and **unexecuted**. B6 deploy `6ad4e3b0952dc55ce5f6657c`, publication lock, nine Functions/configuration/schedule and beta are unchanged. Next: approve A, then separately B; normal Coach login and genuine non-founder Calibration denial remain pending. [Repair/recovery plan](docs/NDA_SIGNING_42703_FIX_AND_RECOVERY.md). Earlier candidate notes below are historical.
+
 B6 continuation reconciles exact PR #46 `94be23a9b07f3825fed3b5c31c4091f5d7977b63` with the existing PR #47 implementation. Its three original preflight files remain byte-identical; the guarded runtime reuses that contract. Controlled session-local recalculation and same-source saved review comparison show exact candidate pins and changed founder judgments without historical code execution or inferred missing numeric scores. All technical and real-participant release gates remain held. See [B6 continuation](docs/B6_PR46_CONTINUATION.md).
 
 # B6 source-backed calibration candidate — engineering only
