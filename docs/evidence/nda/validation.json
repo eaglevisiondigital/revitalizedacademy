@@ -1,0 +1,37 @@
+{
+  "scope": "existing PR50 trigger repair and separate guarded recovery; production actions held",
+  "starting_sha": "02278e8a03f3d5b4d138ee07ea7b89abd3f4bcac",
+  "migration": "supabase/environment-migrations/production/20261018194500_staff_agreement_trigger_42703_fix.sql",
+  "migration_sha256": "c78a502c0cac7b2cc4277bff467e0d6b331dce5b20bbba64997093545530bf61",
+  "repaired_function_body_sha256": "5adb9b593dd4f0540ff281a73020501b5e3ee020d4b41d891427825df36e0363",
+  "native_postgres": "17.11",
+  "database_tests": {
+    "passed": 23,
+    "failed": 0,
+    "production_connections": 0
+  },
+  "concurrency": {
+    "independent_overlapping_workers": 8,
+    "successful_recovery": 1,
+    "safe_denials": 7,
+    "new_recovery_audits": 1,
+    "original_signature_unchanged": true
+  },
+  "maintained_regressions": {
+    "passed_distinct": 108,
+    "failed_final": 0,
+    "includes_live_v5_edge_source_mock_tests": 8,
+    "initial_missing_local_build_resolved": true,
+    "affected_b4_rerun_passed": 12
+  },
+  "local_static_build_paths": 439,
+  "live_deploy_preserved": "6ad4e3b0952dc55ce5f6657c",
+  "publication_lock": "on",
+  "existing_functions": 9,
+  "production_writes": 0,
+  "production_migration": "held",
+  "existing_acceptance_recovery": "held",
+  "genuine_staff_login": "pending after separately approved execution",
+  "genuine_non_founder_denial": "pending after separately approved execution",
+  "known_unchanged_edge_v5_limit": "unconditional onboarding Complete and retry acceptance upsert; not repaired or deployed"
+}

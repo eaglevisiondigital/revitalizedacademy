@@ -1,0 +1,8 @@
+{
+  "version": 5,
+  "status": "ACTIVE",
+  "verify_jwt": false,
+  "source_sha256": "b4d27ebcd4fe97907be64f1b79d2b6999cd1675a3c36c1ad63d1189e5482ebbd",
+  "source_bytes": 6560,
+  "scope": "Observed deployed source snapshot for isolated synthetic tests only; never a deployment input"
+}
