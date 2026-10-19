@@ -5,6 +5,7 @@
   if(!portal)return;
 
   const client=portal.authClient;
+  const staffTasks=portal.createAuthenticatedTaskGuard();
   const el=(id)=>document.getElementById(id);
 
   let staffRows=[];
@@ -47,8 +48,10 @@
     return data;
   }
 
-  async function loadMyPermissions(){
+  async function loadMyPermissions(task){
+    if(!staffTasks.current(task))return;
     const {data,error}=await client.from("my_staff_permissions_view").select("*");
+    if(!staffTasks.current(task))return;
     if(error){
       myPermissions={};
       return;
@@ -184,13 +187,15 @@
     });
   }
 
-  async function loadWorkload(){
+  async function loadWorkload(task){
+    if(!staffTasks.current(task))return;
     if(!myPermissions["staff.view"]){
       el("team-workload-panel").classList.add("hidden");
       return;
     }
 
     const {data,error}=await client.from("admin_staff_workload").select("*");
+    if(!staffTasks.current(task))return;
     if(error){
       el("team-workload-list").innerHTML='<div class="empty-state">Team workload could not be loaded. '+error.message+'</div>';
       return;
@@ -238,7 +243,11 @@
   }
 
   async function load(){
-    await loadMyPermissions();
+    const task=staffTasks.begin();
+    if(!task)return;
+    await loadMyPermissions(task);
+    if(!staffTasks.current(task))return;
+
 
     const panel=el("staff-access-panel");
     if(!myPermissions["staff.view"]){
@@ -253,6 +262,7 @@
       client.from("staff_invitations").select("*").order("created_at",{ascending:false}).limit(50)
     ]);
 
+    if(!staffTasks.current(task))return;
     if(staffResult.error){
       el("staff-access-list").innerHTML='<div class="empty-state">Staff directory could not be loaded. '+staffResult.error.message+'</div>';
       return;
@@ -261,7 +271,7 @@
     staffRows=staffResult.data||[];
     inviteRows=inviteResult.error?[]:(inviteResult.data||[]);
     renderStaff();
-    await loadWorkload();
+    await loadWorkload(task);
   }
 
   function openInvite(){
@@ -581,8 +591,9 @@
   document.querySelectorAll("[data-staff-invite-close]").forEach((node)=>node.addEventListener("click",closeInvite));
   document.querySelectorAll("[data-staff-permissions-close]").forEach((node)=>node.addEventListener("click",closePermissions));
 
+  document.addEventListener("ra:staff-access-reset",()=>{staffTasks.cancel();window.clearTimeout(startupTimer);myPermissions={};matrixRows=[];staffRows=[];inviteRows=[];el("staff-access-list").replaceChildren();closeInvite();closePermissions();});
   document.addEventListener("ra:dashboard-loaded",load);
-  window.setTimeout(load,500);
+  const startupTimer=window.setTimeout(load,500);
 
   document.addEventListener("keydown",(event)=>{
     if(event.key!=="Escape")return;

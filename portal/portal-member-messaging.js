@@ -5,6 +5,7 @@
   if(!portal)return;
 
   const client=portal.authClient;
+  const inboxTasks=portal.createAuthenticatedTaskGuard(),contactTasks=portal.createAuthenticatedTaskGuard();
   const el=(id)=>document.getElementById(id);
 
   let inboxMode="mine";
@@ -146,10 +147,13 @@
   }
 
   async function loadInbox(){
+    const task=inboxTasks.begin();
+    if(!task||portal.hasPermission?.("messaging.manage")!==true)return;
     const {data,error}=await client
       .from("admin_staff_inbox")
       .select("*")
       .order("last_message_at",{ascending:false,nullsFirst:false});
+    if(!inboxTasks.current(task)||portal.hasPermission?.("messaging.manage")!==true)return;
     if(error){
       el("staff-inbox-list").innerHTML='<div class="empty-state">Coach Inbox could not be loaded. '+error.message+'</div>';
       return;
@@ -236,11 +240,14 @@
   }
 
   async function loadContactConversation(contactId){
+    const task=contactTasks.begin();
+    if(!task||portal.hasPermission?.("messaging.manage")!==true)return;
     const {data,error}=await client.from("admin_contact_conversations")
       .select("*")
       .eq("contact_id",contactId)
       .eq("conversation_type","coach_client")
       .maybeSingle();
+    if(!contactTasks.current(task)||portal.hasPermission?.("messaging.manage")!==true)return;
 
     if(error){
       setStatus("client-message-status",error.message,"error");
@@ -351,20 +358,27 @@
   });
 
   document.addEventListener("ra:contact-opened",async(event)=>{
+    const session=portal.captureStaffSession();
+    if(!session||portal.hasPermission?.("messaging.manage")!==true)return;
     activeContact=event.detail.contact;
     if(!inboxRows.length)await loadInbox();
+    if(!portal.isStaffSessionCurrent(session))return;
     await loadContactConversation(event.detail.contactId);
   });
 
   document.addEventListener("ra:contact-closed",()=>{
+    if(!portal.captureStaffSession())return;
+    contactTasks.cancel();
     activeContact=null;
     contactConversation=null;
     el("client-messaging-section").classList.add("hidden");
     closeModal();
   });
 
+  document.addEventListener("ra:staff-access-reset",()=>{inboxTasks.cancel();contactTasks.cancel();window.clearTimeout(startupTimer);activeContact=null;contactConversation=null;inboxRows=[];el("staff-inbox-list").replaceChildren();closeModal();});
   document.addEventListener("ra:dashboard-loaded",loadInbox);
-  window.setTimeout(()=>loadInbox(),700);
+  document.addEventListener("ra:permissions-loaded",loadInbox);
+  const startupTimer=window.setTimeout(()=>loadInbox(),700);
 
   document.addEventListener("keydown",(event)=>{
     if(event.key==="Escape"&&!el("staff-message-modal").classList.contains("hidden"))closeModal();

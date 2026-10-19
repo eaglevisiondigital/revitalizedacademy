@@ -5,6 +5,7 @@
   if(!portal)return;
 
   const client=portal.authClient;
+  const reviewTasks=portal.createAuthenticatedTaskGuard();
   const el=(id)=>document.getElementById(id);
 
   let reviewRows=[];
@@ -125,10 +126,13 @@
   }
 
   async function loadReviews(){
+    const task=reviewTasks.begin();
+    if(!task||portal.hasPermission?.("companion.manage")!==true)return;
     const {data,error}=await client.from("admin_companion_review_queue")
       .select("*")
       .order("created_at",{ascending:true});
 
+    if(!reviewTasks.current(task)||portal.hasPermission?.("companion.manage")!==true)return;
     if(error){
       el("companion-review-list").innerHTML='<div class="empty-state">Coach Companion reviews could not be loaded. '+error.message+'</div>';
       return;
@@ -428,8 +432,10 @@
   document.querySelectorAll("[data-companion-review-close]").forEach((node)=>node.addEventListener("click",closeReview));
   document.querySelectorAll("[data-companion-knowledge-close]").forEach((node)=>node.addEventListener("click",closeKnowledge));
 
+  document.addEventListener("ra:staff-access-reset",()=>{reviewTasks.cancel();window.clearTimeout(startupTimer);reviewRows=[];knowledgeRows=[];el("companion-review-list").replaceChildren();closeReview();closeKnowledge();});
   document.addEventListener("ra:dashboard-loaded",loadReviews);
-  window.setTimeout(loadReviews,850);
+  document.addEventListener("ra:permissions-loaded",loadReviews);
+  const startupTimer=window.setTimeout(loadReviews,850);
 
   document.addEventListener("keydown",(event)=>{
     if(event.key!=="Escape")return;

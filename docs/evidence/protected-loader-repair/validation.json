@@ -1,0 +1,171 @@
+{
+  "checkedAt": "2026-10-19T20:50:44.683Z",
+  "engineeringOnly": true,
+  "productionBaseline": "6ad591a42c055bca5df5c2d4",
+  "roadmapSource": "c618dd30cd4979e3f7916fcc7cbc9d4612ae4cf9",
+  "runtimeFiles": 8,
+  "legacyAnonymousRequests": 31,
+  "legacyDeniedRequestsAndConsoleErrors": 30,
+  "repairedAnonymousRequests": 0,
+  "repairedPositiveConsoleErrors": 0,
+  "guardUnitTests": 45,
+  "maintainedCoreAndAssessmentTests": 77,
+  "roadmapIdentityPricingPaymentTests": 147,
+  "additionalProcessingContractTests": 7,
+  "combinedGuardAndProcessingTests": 52,
+  "uniqueNodeAndDomTests": 276,
+  "contentBrowserChecks": {
+    "usda": 66,
+    "repdb": 46,
+    "durableContent": 36
+  },
+  "nativeBrowserConfigurations": 12,
+  "nativeBrowserChecks": 372,
+  "productionBrowser": {
+    "results": [
+      {
+        "engine": "chromium",
+        "width": 1440,
+        "height": 1000,
+        "checks": 31,
+        "unnecessary_signed_out_requests": 0,
+        "expected_negative_probe": 401,
+        "baseline_console_clean": true,
+        "participant_requests": 0
+      },
+      {
+        "engine": "chromium",
+        "width": 768,
+        "height": 1024,
+        "checks": 31,
+        "unnecessary_signed_out_requests": 0,
+        "expected_negative_probe": 401,
+        "baseline_console_clean": true,
+        "participant_requests": 0
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "height": 844,
+        "checks": 31,
+        "unnecessary_signed_out_requests": 0,
+        "expected_negative_probe": 401,
+        "baseline_console_clean": true,
+        "participant_requests": 0
+      },
+      {
+        "engine": "webkit",
+        "width": 1440,
+        "height": 1000,
+        "checks": 31,
+        "unnecessary_signed_out_requests": 0,
+        "expected_negative_probe": 401,
+        "baseline_console_clean": true,
+        "participant_requests": 0
+      },
+      {
+        "engine": "webkit",
+        "width": 768,
+        "height": 1024,
+        "checks": 31,
+        "unnecessary_signed_out_requests": 0,
+        "expected_negative_probe": 401,
+        "baseline_console_clean": true,
+        "participant_requests": 0
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "height": 844,
+        "checks": 31,
+        "unnecessary_signed_out_requests": 0,
+        "expected_negative_probe": 401,
+        "baseline_console_clean": true,
+        "participant_requests": 0
+      }
+    ],
+    "total": 186
+  },
+  "roadmapBrowser": {
+    "results": [
+      {
+        "engine": "chromium",
+        "width": 1440,
+        "height": 1000,
+        "checks": 31,
+        "unnecessary_signed_out_requests": 0,
+        "expected_negative_probe": 401,
+        "baseline_console_clean": true,
+        "participant_requests": 0
+      },
+      {
+        "engine": "chromium",
+        "width": 768,
+        "height": 1024,
+        "checks": 31,
+        "unnecessary_signed_out_requests": 0,
+        "expected_negative_probe": 401,
+        "baseline_console_clean": true,
+        "participant_requests": 0
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "height": 844,
+        "checks": 31,
+        "unnecessary_signed_out_requests": 0,
+        "expected_negative_probe": 401,
+        "baseline_console_clean": true,
+        "participant_requests": 0
+      },
+      {
+        "engine": "webkit",
+        "width": 1440,
+        "height": 1000,
+        "checks": 31,
+        "unnecessary_signed_out_requests": 0,
+        "expected_negative_probe": 401,
+        "baseline_console_clean": true,
+        "participant_requests": 0
+      },
+      {
+        "engine": "webkit",
+        "width": 768,
+        "height": 1024,
+        "checks": 31,
+        "unnecessary_signed_out_requests": 0,
+        "expected_negative_probe": 401,
+        "baseline_console_clean": true,
+        "participant_requests": 0
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "height": 844,
+        "checks": 31,
+        "unnecessary_signed_out_requests": 0,
+        "expected_negative_probe": 401,
+        "baseline_console_clean": true,
+        "participant_requests": 0
+      }
+    ],
+    "total": 186
+  },
+  "preserved": {
+    "coreAuth": true,
+    "nda": true,
+    "questionnaire": true,
+    "scoring": true,
+    "sql": true,
+    "nineOriginalArchives": true,
+    "roadmapAdditiveArchive": true,
+    "existingPilot": true,
+    "paymentSchedule": true,
+    "beta": true,
+    "fiveControlsFalse": true
+  },
+  "noHostedWrites": true,
+  "noParticipantAccess": true,
+  "noPush": true,
+  "noDeploy": true
+}

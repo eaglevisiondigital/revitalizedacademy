@@ -9,6 +9,7 @@
   if(!portal||!panel||!summary||!list)return;
 
   const client=portal.authClient;
+  const requestTasks=portal.createAuthenticatedTaskGuard();
   let rows=[];
 
   const titleCase=(v)=>portal.titleCase?portal.titleCase(v):String(v||"").replaceAll("_"," ");
@@ -117,8 +118,11 @@
   }
 
   async function load(){
+    const task=requestTasks.begin();
+    if(!task||portal.hasPermission?.("crm.view")!==true)return;
     list.innerHTML='<div class="family-request-empty">Loading Family Hub requests...</div>';
     const {data,error}=await client.from("admin_family_requests").select("*");
+    if(!requestTasks.current(task)||portal.hasPermission?.("crm.view")!==true)return;
     if(error){
       list.innerHTML='<div class="family-request-empty">Family Hub requests could not be loaded.</div>';
       summary.replaceChildren();
@@ -130,6 +134,8 @@
 
   filter?.addEventListener("change",render);
   refresh?.addEventListener("click",load);
+  document.addEventListener("ra:staff-access-reset",()=>{requestTasks.cancel();rows=[];list.replaceChildren();summary.replaceChildren();});
   document.addEventListener("ra:dashboard-loaded",load);
+  document.addEventListener("ra:permissions-loaded",load);
   load();
 })();

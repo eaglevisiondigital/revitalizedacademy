@@ -5,11 +5,12 @@
   if (!portal) return;
 
   const client = portal.authClient;
+  const queueTasks=portal.createAuthenticatedTaskGuard();
   const el = (id) => document.getElementById(id);
 
   let mode = "mine";
   let rows = [];
-  let loading = false;
+  let loadingTask = null;
 
   function currentUserId() {
     return portal.currentUserId();
@@ -161,8 +162,11 @@
   }
 
   async function load() {
-    if (loading) return;
-    loading = true;
+    if(!portal.captureStaffSession()||portal.hasPermission?.("crm.view")!==true){queueTasks.cancel();loadingTask=null;return;}
+    if (queueTasks.current(loadingTask)) return;
+    const task=queueTasks.begin();
+    if(!task)return;
+    loadingTask = task;
 
     const list = el("work-desk-list");
     if (!rows.length) {
@@ -176,7 +180,8 @@
       .order("due_at", { ascending: true, nullsFirst: false })
       .limit(100);
 
-    loading = false;
+    if(!queueTasks.current(task)||portal.hasPermission?.("crm.view")!==true)return;
+    loadingTask = null;
 
     if (error) {
       list.innerHTML = "";
@@ -293,11 +298,13 @@
   el("work-due-filter").addEventListener("change", render);
   el("work-refresh").addEventListener("click", load);
 
+  document.addEventListener("ra:staff-access-reset",()=>{queueTasks.cancel();window.clearTimeout(startupTimer);loadingTask=null;rows=[];el("work-desk-list").replaceChildren();el("work-desk-stats").replaceChildren();});
   document.addEventListener("ra:dashboard-loaded", load);
+  document.addEventListener("ra:permissions-loaded", load);
   document.addEventListener("ra:contact-opened", () => {});
   document.addEventListener("ra:contact-closed", load);
 
-  window.setTimeout(() => {
+  const startupTimer=window.setTimeout(() => {
     if (!document.getElementById("portal-view")?.classList.contains("hidden")) load();
   }, 650);
 })();
