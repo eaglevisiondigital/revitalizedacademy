@@ -1,3 +1,9 @@
+## Health & Hope Live — manual evidence and bounded acceptance candidate, 2026-10-20
+
+The fourth additive event migration preserves native contacts/guest stages and existing retention. Authorized manual evidence writes to existing private attendance/audit records, with session/run/identity checks and an explicit manual history annotation. A nullable private settings case and server-matching scope pin a maximum thirty-minute, one-operator/recipient/session/revision/request acceptance path through the existing registration handler and contracts; only its confirmation job can be claimed. Public registration remains held, the expired/disabled acceptance delivery latch prevents broad sends, and privacy maintenance clears expired case identifiers. No new identity store, role, RLS policy or client-access path. [Implementation, evidence and exact hosted procedure](docs/HEALTH_HOPE_LIVE_FINAL_ACTIVATION_PREPARATION_2026-10-20.md).
+
+The separate owner-requested popup refinement is presentation only: scoped HHL CSS, homepage Title Case labels and one marketing preview string. [Visual review](docs/HEALTH_HOPE_LIVE_POPUP_REFINEMENT_2026-10-20.md). All changes remain unpublished.
+
 ## Health & Hope Live supplied shared meeting — local follow-up, 2026-10-20
 
 Owner-provided meet-anytime Zoom metadata lives in a server-only module. Existing authorized/audited draft commands use the shared link when no override is supplied; publication/editing does not inject links. The website owns distinct weekly session identities and Registered Guest deduplication. Manager setup excludes the joining URL; existing scoped audited access/delivery paths remain. Shared-link messages use per-session Eastern dates, while fixed-occurrence Zoom registration continues rejecting no-fixed-time meetings. No SQL/permission change. [Current configuration and account/integration acceptance](docs/HEALTH_HOPE_LIVE_ZOOM_MEETING_2026-10-20.md).

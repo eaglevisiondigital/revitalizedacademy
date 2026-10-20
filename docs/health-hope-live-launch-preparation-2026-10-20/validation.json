@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-20",
+  "branch": "codex/health-hope-live",
+  "base": "f6db6b64a18967c1591e5e0f01ef809e8c78a05d",
+  "primary": "fa1f490012507319bb93cca64d6cbaf039ceaec3",
+  "apiNew": 8,
+  "scopeAndReconciliation": 13,
+  "apiScopePass": 21,
+  "databaseNewPass": 13,
+  "privateUiPass": 40,
+  "privateUiWidths": [
+    1440,
+    390
+  ],
+  "productionBuildFiles": 448,
+  "sharedFunctionDefinitionsPreserved": 319,
+  "existingRlsPoliciesAclsOwnersRolesPreserved": true,
+  "advisors": {
+    "baseline": 25,
+    "expectedDenyDirectInfo": 11,
+    "newWarningOrError": 0,
+    "unexpected": 0
+  },
+  "productionDeployments": 0,
+  "productionSqlWrites": 0,
+  "emailSends": 0,
+  "zoomSettingChanges": 0,
+  "realParticipantDeletions": 0,
+  "publicRegistration": "held",
+  "automatedZoomAttendance": "optional-disabled-unverified",
+  "testInbox": "dave@theboss.biz",
+  "inboxDesignatedOnly": true,
+  "hostedAcceptanceExecuted": false,
+  "providerVerification": {
+    "resendAuthDomain": "verified-sending-enabled",
+    "actualSenderAndDelivery": "not-tested",
+    "zoomAccount": "blocked-at-sign-in",
+    "externalProviderRetentionEvidence": "required"
+  },
+  "previousAcknowledgedSuitesRepeated": false
+}

@@ -3,12 +3,12 @@
   "results": [
     {
       "width": 1440,
-      "checks": 11,
+      "checks": 10,
       "pageErrors": []
     },
     {
       "width": 390,
-      "checks": 11,
+      "checks": 10,
       "pageErrors": [],
       "underlyingHomepageOverflow": {
         "pixels": 8,

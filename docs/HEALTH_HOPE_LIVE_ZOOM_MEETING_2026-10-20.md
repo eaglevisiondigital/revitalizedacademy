@@ -1,3 +1,5 @@
+**Later preparation addendum:** [Final activation preparation](HEALTH_HOPE_LIVE_FINAL_ACTIVATION_PREPARATION_2026-10-20.md) adds verified manual attendance without a webhook observation, a fourth unapplied forward migration and bounded one-inbox acceptance. Automated attendance is optional at launch. This document remains the historical supplied-meeting configuration record; essential Zoom security/full invitation and actual joining still require verification.
+
 # Health & Hope Live — supplied Zoom meeting
 
 2026-10-20 · isolated `codex/health-hope-live`, continuing `fda1ace`. This is the current meeting configuration addendum to [activation readiness](HEALTH_HOPE_LIVE_ACTIVATION_READINESS_2026-10-20.md). No production setting, meeting setting, migration, deployment, credential or activation changed.

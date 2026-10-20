@@ -65,14 +65,15 @@ async function securitySnapshot(db){
    const receipt={baseline:flatten(advisorBefore).length,after:current.length,acknowledged,unexpected};fs.writeFileSync('/private/tmp/rva-hhl-guests-advisors-summary.json',JSON.stringify(receipt,null,2));if(unexpected.length)throw Error('Unexpected local security advisor findings: '+JSON.stringify(unexpected));console.log('Local Supabase security advisors: '+flatten(advisorBefore).length+' baseline findings retained; '+acknowledged.length+' expected private deny-by-default INFO findings; zero new warnings/errors or unexpected findings.');
   }
   console.log(`PostgreSQL 17: historical schema plus ${migrations.length} production migration files restored in disposable local database.`);
-  const run=spawnSync(process.execPath,['--test','--test-concurrency=1','tests/backend/health-hope-live.test.cjs'],{env,encoding:'utf8',maxBuffer:16*1024*1024,timeout:120000});process.stdout.write(run.stdout||'');process.stderr.write(run.stderr||'');if(run.status!==0)throw Error('Event database tests failed');
+  const launchOnly=process.env.RVA_HHL_LAUNCH_TESTS_ONLY==='1';
+  const run=spawnSync(process.execPath,['--test','--test-concurrency=1',...(launchOnly?['--test-name-pattern=^launch preparation:']:[]),'tests/backend/health-hope-live.test.cjs'],{env,encoding:'utf8',maxBuffer:16*1024*1024,timeout:120000});process.stdout.write(run.stdout||'');process.stderr.write(run.stderr||'');if(run.status!==0)throw Error('Event database tests failed');
   const db=new Client({host:'127.0.0.1',port,user,database});await db.connect();
   const existing=existingFunctions;
   for(const row of existing){const current=(await db.query('select md5(pg_get_functiondef($1::regprocedure::oid)) hash',[row.name])).rows[0].hash;if(current!==row.hash)throw Error('Unrelated function changed: '+row.name);}
   if(await securitySnapshot(db)!==existingSecurity)throw Error('Existing table RLS, policies, ACLs or function ownership/ACLs changed');
   console.log('Existing table RLS/policies/ACLs and function ownership/ACLs preserved.');
   await db.end();console.log(`Preserved all ${existing.length} pre-existing application function definitions.`);
-  const concurrent=spawnSync(process.execPath,['--test','tests/backend/health-hope-live-concurrency.cjs'],{env,encoding:'utf8',maxBuffer:8*1024*1024,timeout:60000});process.stdout.write(concurrent.stdout||'');process.stderr.write(concurrent.stderr||'');if(concurrent.status!==0)throw Error('Event concurrency tests failed');
+  if(!launchOnly){const concurrent=spawnSync(process.execPath,['--test','tests/backend/health-hope-live-concurrency.cjs'],{env,encoding:'utf8',maxBuffer:8*1024*1024,timeout:60000});process.stdout.write(concurrent.stdout||'');process.stderr.write(concurrent.stderr||'');if(concurrent.status!==0)throw Error('Event concurrency tests failed');}
  }finally{
   if(created)await admin.query(`drop database "${database}" with(force)`);
   const rolesAfter=(await admin.query('select rolname,rolsuper,rolbypassrls,rolcanlogin from pg_roles order by rolname')).rows;await admin.end();

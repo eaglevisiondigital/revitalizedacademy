@@ -12,7 +12,7 @@
 
 ## TESTED / SECURITY
 
-Production static build and existing feature scope/reconciliation checks pass. Desktop/mobile local review exercises the preview, its close button, Maybe Later and both unchanged destinations, with no participant submissions or provider sends. Popup width and scrolling are checked at 1440 and 390 pixels (22 local checks, zero browser errors). The existing unrelated homepage family-photo section extends 8 pixels beyond the 390-pixel viewport; the popup stays within bounds. Its underlying section source/styles are unchanged and that separate layout issue was left out of this narrow refinement. The visual review uses local production-build files with public font GETs only; all other external services are intercepted.
+Production static build and existing feature scope/reconciliation checks pass. Desktop/mobile local review exercises the preview, its close button, Maybe Later and both unchanged destinations, with no participant submissions or provider sends. Popup width and scrolling are checked at 1440 and 390 pixels (20 local checks, zero browser errors). The existing unrelated homepage family-photo section extends 8 pixels beyond the 390-pixel viewport; the popup stays within bounds. Its underlying section source/styles are unchanged and that separate layout issue was left out of this narrow refinement. The visual review uses local production-build files with public font GETs only; all other external services are intercepted.
 
 [Desktop screenshot](health-hope-live-popup-refinement-2026-10-20/desktop.png) · [Mobile screenshot](health-hope-live-popup-refinement-2026-10-20/mobile.png) · [Visual validation](health-hope-live-popup-refinement-2026-10-20/visual-validation.json).
 

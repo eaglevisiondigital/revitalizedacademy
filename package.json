@@ -33,7 +33,7 @@
     "test:roadmap-b5:database": "RVA_ROADMAP_B4_LOCAL=1 node scripts/test-vitality-roadmap-b5.cjs",
     "build:roadmap-b5:preview": "node scripts/build-roadmap-b5-preview.cjs",
     "preview:roadmap-b5": "node scripts/preview-roadmap-b5.cjs",
-    "test:health-hope-live": "node --test tests/health-hope-live.test.mjs tests/health-hope-live-meeting.test.mjs tests/health-hope-live-scope.cjs",
+    "test:health-hope-live": "node --test tests/health-hope-live.test.mjs tests/health-hope-live-meeting.test.mjs tests/health-hope-live-launch.test.mjs tests/health-hope-live-scope.cjs",
     "test:health-hope-live:database": "node scripts/test-health-hope-live-database.cjs",
     "test:health-hope-live:browser": "node scripts/build-production-vitality.cjs && node tests/health-hope-live-browser.cjs",
     "preview:health-hope-live": "node scripts/build-production-vitality.cjs && node scripts/preview-health-hope-live.cjs"

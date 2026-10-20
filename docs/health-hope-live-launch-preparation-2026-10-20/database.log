@@ -1,0 +1,28 @@
+New server guest contract rejected by the original event schema before any participant write.
+New privacy server contract rejected by guest-only schema before participant writes.
+Local Supabase security advisors: 25 baseline findings retained; 11 expected private deny-by-default INFO findings; zero new warnings/errors or unexpected findings.
+PostgreSQL 17: historical schema plus 21 production migration files restored in disposable local database.
+✔ launch preparation: manual attendance works with Zoom disabled, audits evidence, deduplicates and preserves CRM (66.075375ms)
+✔ launch preparation: manual attendance denies member coach inactive pending service and out-of-scope staff (20.081083ms)
+✔ launch preparation: manual attendance rejects unverified evidence, wrong date, canceled/expired/held sessions and stale decisions (22.62125ms)
+✔ launch preparation: manual run UUID cannot cross Thursdays; repeated evidence cannot change a credited observation (19.000667ms)
+✔ launch preparation: manual attendance is exported as verified participation and erased by existing privacy workflow (26.183541ms)
+✔ launch preparation: manual attendance expires through the same 12-month maintenance boundary (16.885542ms)
+✔ launch preparation: controlled claim selects only its exact request recipient session and confirmation (21.08975ms)
+✔ launch preparation: controlled claim rejects expired unbounded disabled and stale-retention cases (10.950875ms)
+✔ launch preparation: acceptance and manual helpers are not directly callable by browser/service roles (9.137916ms)
+✔ launch preparation: acceptance creation is actor-bound, CRM-scoped and audited atomically on the existing guest contract (22.956833ms)
+✔ launch preparation: expired case metadata is hidden immediately and maintenance clears its identifiers (8.644416ms)
+✔ launch preparation: a controlled guest matching an existing staff Auth email cannot change that account or its permissions (10.576041ms)
+✔ launch preparation: invalid case metadata cannot interrupt maintenance and revoked operator stops its confirmation claim (10.087208ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 348.437333
+Existing table RLS/policies/ACLs and function ownership/ACLs preserved.
+Preserved all 319 pre-existing application function definitions.
+Disposable database removed; existing global roles unchanged.

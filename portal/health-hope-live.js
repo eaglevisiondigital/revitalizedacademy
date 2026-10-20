@@ -8,14 +8,15 @@
   let epoch = 0, currentUser = null, contact = null, historyGeneration = 0, busy = false, allowed = false;
   function clear() {
     epoch++; historyGeneration++;overviewGeneration++; currentUser = null; contact = null; allowed = false; workspace.hidden = true; management.hidden = true;
-    for (const id of ['hhl-staff-sessions','hhl-staff-people','hhl-staff-history','hhl-private-join','hhl-reviews','hhl-privacy-queue','hhl-meeting-setup']) el(id).replaceChildren();
+    for (const id of ['hhl-staff-sessions','hhl-staff-people','hhl-staff-history','hhl-private-join','hhl-reviews','hhl-privacy-queue','hhl-meeting-setup','hhl-acceptance-case']) el(id).replaceChildren();
+    el('hhl-acceptance-panel').hidden=true;
     el('hhl-private-join').hidden = true; el('hhl-history-panel').hidden = true;
     el('hhl-session-form').reset(); el('hhl-settings-form').reset();el('hhl-weekly-form').reset();el('hhl-people-search').reset();
   }
-  async function api(action, data = {}) {
+  async function api(action, data = {}, route = 'staff') {
     const captured = epoch, user = currentUser, session = (await client.auth.getSession()).data.session;
     if (!session || session.user.id !== user || !user) {clear(); throw Error('Sign in through the staff portal.');}
-    const response = await fetch('/api/health-hope-live/staff', {method: 'POST', headers: {'Content-Type':'application/json', Authorization: 'Bearer ' + session.access_token}, body: JSON.stringify({action, data}), cache: 'no-store', signal: AbortSignal.timeout(15000)});
+    const response = await fetch('/api/health-hope-live/'+route, {method: 'POST', headers: {'Content-Type':'application/json', Authorization: 'Bearer ' + session.access_token}, body: JSON.stringify(route==='staff'?{action,data}:data), cache: 'no-store', signal: AbortSignal.timeout(15000)});
     if (captured !== epoch || user !== currentUser) throw Error('Staff session changed.');
     const result = await response.json();
     if (!response.ok) {
@@ -36,6 +37,27 @@
   function easternInput(value) {const parts = Object.fromEntries(new Intl.DateTimeFormat('en-CA', {timeZone:'America/New_York', year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date(value)).filter(p=>p.type!=='literal').map(p=>[p.type,p.value]));return `${parts.year}-${parts.month}-${parts.day}T${parts.hour}:${parts.minute}`;}
   function downloadEventData(data,name) {
     const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));const link=node('a','Download event data');link.href=url;link.download=name;link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  }
+  function manualAttendanceForm(row,person) {
+    const section=node('details','');section.append(node('summary','Record verified manual attendance'),node('p','Use direct host observation or a verified Zoom report. This is manual attendance. Verify the person and selected session; do not enter health details.'));
+    const form=node('form','');form.className='hhl-form-card';form.dataset.hhlAction='manual-attendance';
+    const source=node('select','');source.setAttribute('aria-label','Manual attendance evidence');for(const[value,label]of [['host_observed','Host personally observed attendance'],['verified_zoom_report','Reviewed Zoom attendance report']]){const option=node('option',label);option.value=value;source.append(option);}
+    const timeLabel=node('label','Observed attendance time (Eastern)'),time=node('input','');time.type='datetime-local';time.required=true;timeLabel.append(time);
+    const uuidLabel=node('label','Actual Zoom run UUID, if available (optional)'),instance=node('input','');instance.maxLength=200;uuidLabel.append(instance);
+    const verifiedLabel=node('label','I verified this person attended this session '),verified=node('input','');verified.type='checkbox';verified.required=true;verifiedLabel.prepend(verified);
+    const reasonLabel=node('label','Brief evidence reference; no health details'),reason=node('input','');reason.required=true;reason.minLength=5;reason.maxLength=500;reasonLabel.append(reason);
+    const save=node('button','Save verified manual attendance');save.type='submit';form.append(source,timeLabel,uuidLabel,verifiedLabel,reasonLabel,save);section.append(form);const requestId=crypto.randomUUID(),generation=historyGeneration;
+    form.onsubmit=async event=>{event.preventDefault();if(busy||!allowed||!form.reportValidity())return;busy=true;save.disabled=true;const captured=epoch;try{await api('manual-attendance',{request_id:requestId,registration_id:row.registration_id,expected_attended_at:row.attended_at,eastern_observed_at:time.value,instance_uuid:instance.value||null,evidence_source:source.value,identity_verified:verified.checked,reason:reason.value});if(captured===epoch&&generation===historyGeneration&&contact===person.contact_id)await history(person);}catch(error){if(captured===epoch)notice.textContent=error.message;}finally{busy=false;save.disabled=false;}};
+    return section;
+  }
+  function acceptanceForm(scope,sessions) {
+    const section=el('hhl-acceptance-case');section.replaceChildren(node('p',`One synthetic case: ${scope.email}. Window ends ${when(scope.expires_at)}. Public registration stays held. This uses the website registration handler; a saved registration is not a delivery receipt.`));
+    const selected=sessions.find(row=>row.id===scope.session_id);
+    if(!selected||selected.status!=='published'||selected.join_mode!=='manual'||selected.revision!==scope.revision){section.append(node('p','The configured test session is unavailable or changed. Review the session and test pins before submitting.'));return;}
+    section.append(node('p','Selected Thursday session: '+when(selected.starts_at)+' · Shared Zoom link'));
+    const form=node('form','');form.className='hhl-form-card';form.dataset.hhlAction='acceptance-register';const first=node('input',''),last=node('input','');first.required=last.required=true;first.maxLength=last.maxLength=100;first.value='HHL';last.value='Acceptance Test';first.setAttribute('aria-label','Synthetic first name');last.setAttribute('aria-label','Synthetic last name');
+    const consentLabel=node('label','I authorize the confirmation for this controlled test '),consent=node('input','');consent.type='checkbox';consent.required=true;consentLabel.prepend(consent);const save=node('button','Submit synthetic registration');save.type='submit';form.append(first,last,consentLabel,node('p','Optional marketing: off. This test does not subscribe the inbox to marketing.'),save);section.append(form);
+    form.onsubmit=async event=>{event.preventDefault();if(busy||!allowed||!form.reportValidity())return;busy=true;save.disabled=true;const captured=epoch;try{await api('register',{request_id:scope.request_id,session_id:scope.session_id,first_name:first.value,last_name:last.value,email:scope.email,event_notifications:consent.checked,marketing_requested:false,source:'health_hope_live_website',company_website:''},'register');if(captured===epoch)notice.textContent='Synthetic request accepted. Verify the saved CRM record, confirmation delivery and joining details before accepting the test.';}catch(error){if(captured===epoch)notice.textContent=error.message;}finally{busy=false;save.disabled=false;}};
   }
   function privacyForm(person) {
     const section=node('details','');section.append(node('summary','Verified event export or deletion'));
@@ -58,7 +80,9 @@
     if (captured !== epoch || generation !== historyGeneration || contact !== person.contact_id) return;
     for (const row of rows) {
       const card = node('article', ''); card.className = 'hhl-staff-card'; card.append(node('p', 'Registration reference: ' + row.registration_id),node('h3', when(row.starts_at)), node('p', row.status + ' · ' + (row.attendance_status || 'unreviewed') + ' · Registered: ' + when(row.registered_at) + ' · Attended: ' + (row.attended_at ? when(row.attended_at) : 'Not credited')));
+      if (row.attendance_method === 'manual') card.append(node('p', 'Attendance recorded manually from verified evidence.'));
       if (!management.hidden && row.can_review_no_show) {
+        card.append(manualAttendanceForm(row,person));
         const target=row.attendance_status==='no_show'?'unreviewed':'no_show';
         card.append(node('p','Confirm attendance evidence before recording a no-show. Unmatched participants must be resolved first.'),reviewForm(target==='no_show'?'Record reviewed no-show':'Clear no-show for review','attendance-status',{registration_id:row.registration_id,attendance_status:target,expected_status:row.attendance_status},()=>history(person)));
       }
@@ -79,6 +103,8 @@
     const captured = epoch, requestGeneration=++overviewGeneration; notice.textContent = 'Loading event history…'; historyGeneration++;contact=null;el('hhl-staff-sessions').replaceChildren();el('hhl-staff-people').replaceChildren();el('hhl-staff-history').replaceChildren();el('hhl-private-join').replaceChildren();el('hhl-private-join').hidden=true;el('hhl-history-panel').hidden=true;
     const data = await api('overview',{query:el('hhl-people-query').value.trim()}); if (captured !== epoch || requestGeneration!==overviewGeneration) return;
     allowed = true; workspace.hidden=false; management.hidden=!data.can_manage; notice.textContent='Event history loaded.'; el('hhl-sign-in').hidden=true;
+    el('hhl-acceptance-case').replaceChildren();el('hhl-acceptance-panel').hidden=!(data.can_manage&&data.acceptance_case);
+    if(data.can_manage&&data.acceptance_case)acceptanceForm(data.acceptance_case,data.sessions);
     el('hhl-meeting-setup').replaceChildren();
     if (data.can_manage && data.meeting_setup) {
       const setup=data.meeting_setup;
