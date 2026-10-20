@@ -1,4 +1,5 @@
 import {createHash, createHmac, timingSafeEqual} from 'node:crypto';
+import {HEALTH_HOPE_MEETING} from './health-hope-live-meeting.mjs';
 
 export class EventError extends Error {
   constructor(code, status = 503, retryable = false) {super(code); this.code = code; this.status = status; this.retryable = retryable;}
@@ -104,7 +105,8 @@ export function emailForJob(job) {
   const when = new Intl.DateTimeFormat('en-US', {timeZone: 'America/New_York', weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit', timeZoneName: 'short'}).format(new Date(job.starts_at));
   if (job.kind !== 'cancellation' && !validJoinUrl(job.join_url)) throw new EventError('joining_info_requires_review');
   const subject = job.kind === 'cancellation' ? 'Health & Hope Live — session canceled' : job.kind === 'update' ? 'Health & Hope Live — your session has changed' : job.kind === 'reminder' ? 'Your Health & Hope Live session starts soon' : 'Your Health & Hope Live registration is confirmed';
-  const text = job.kind === 'cancellation' ? `ReVitalized Academy\n\nYour Health & Hope Live session scheduled for ${when} has been canceled.\n\nYou can choose another free session at https://revitalizedacademy.com/health-hope-live.\n\nJustyn & Elle Oliver` : `ReVitalized Academy\n\nHealth & Hope Live\n${when}\n30 minutes · Free · Zoom\n\nYour private joining link:\n${job.join_url}\n\nPlease keep this joining information private.\n\nJustyn & Elle Oliver`;
+  const joining = job.join_mode === 'manual' ? `Zoom joining link for this session:\n${job.join_url}\n\nThis is a shared recurring Zoom link. Your website registration is for the session above. Please do not share the joining information.` : `Your private joining link:\n${job.join_url}\n\nPlease keep this joining information private.`;
+  const text = job.kind === 'cancellation' ? `ReVitalized Academy\n\nYour Health & Hope Live session scheduled for ${when} has been canceled.\n\nYou can choose another free session at https://revitalizedacademy.com/health-hope-live.\n\nJustyn & Elle Oliver` : `ReVitalized Academy\n\nHealth & Hope Live\n${when}\n30 minutes · Free · Zoom\n\n${joining}\n\nJustyn & Elle Oliver`;
   return {subject, text};
 }
 export function createHealthHopeApp(env, {fetcher = fetch, context = {}, now = () => Date.now()} = {}) {
@@ -206,7 +208,22 @@ export function createHealthHopeApp(env, {fetcher = fetch, context = {}, now = (
           }
           const allowed = ['overview','history','join-info','settings','session-save','review-list','identity-resolve','bind-instance','attendance-resolve','attendance-status','guest-stage','privacy-overview','privacy-open','privacy-export','privacy-delete','privacy-provider-manifest','privacy-provider-attest','withdraw-consent','prepare-weekly'];
           if (!allowed.includes(body.action)) throw new EventError('invalid_request', 400);
-          return json(await staff(jwt, body.action, body.data));
+          const data = {...body.data};
+          const blankLink = data.manual_join_url == null || data.manual_join_url === '';
+          // Existing staff commands still authorize/audit every draft write.
+          // Never fill a joining link during publication or editing of a session.
+          if (blankLink && (body.action === 'prepare-weekly' || body.action === 'session-save' && !data.id && data.status === 'draft' && data.join_mode === 'manual' && (!data.zoom_meeting_id || data.zoom_meeting_id === HEALTH_HOPE_MEETING.meeting_id))) {
+            data.manual_join_url = HEALTH_HOPE_MEETING.join_url;
+            if (body.action === 'session-save') data.zoom_meeting_id = HEALTH_HOPE_MEETING.meeting_id;
+          }
+          const result = await staff(jwt, body.action, data);
+          // Setup metadata follows successful current manager authorization.
+          // Public/session/registration responses never gain the joining link.
+          if (body.action === 'overview' && result.can_manage === true) {
+            const {join_url, ...setup} = HEALTH_HOPE_MEETING;
+            return json({...result, meeting_setup: setup});
+          }
+          return json(result);
         }
         return json({error: 'not_found'}, 404);
       } catch (error) {return json({error: error instanceof EventError ? error.code : 'event_unavailable'}, error instanceof EventError ? error.status : 503);}

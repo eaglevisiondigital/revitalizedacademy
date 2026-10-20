@@ -1,3 +1,5 @@
+**Current meeting update, 2026-10-20:** [Owner-supplied meet-anytime shared-link configuration and current acceptance gates](HEALTH_HOPE_LIVE_ZOOM_MEETING_2026-10-20.md) supersede the earlier unprovided/fixed-time meeting setup assumption below. The existing shared-link mode preserves separate website Thursday registrations; fixed-time/per-occurrence settings apply only to the separate Zoom-native registration adapter. Actual Zoom account/security/reporting remains unverified, and all activation gates remain. The newer primary website publication is deploy6ad7cd0111dae0b60c7d9656/sourcefa1f490; older source/deploy snapshots below are historical.
+
 # Health & Hope Live — current release handoff
 
 Updated 2026-10-20. [Complete activation readiness, exact migration hashes, tests, configuration, rollback and copy-ready Work/Chat handoff](HEALTH_HOPE_LIVE_ACTIVATION_READINESS_2026-10-20.md).

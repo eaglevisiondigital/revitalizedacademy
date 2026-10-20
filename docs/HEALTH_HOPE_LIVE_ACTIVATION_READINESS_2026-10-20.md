@@ -1,3 +1,5 @@
+**Current meeting update, 2026-10-20:** [Owner-supplied meet-anytime shared-link configuration and current acceptance gates](HEALTH_HOPE_LIVE_ZOOM_MEETING_2026-10-20.md) supersede the earlier unprovided/fixed-time meeting setup assumption below. The existing shared-link mode preserves separate website Thursday registrations; fixed-time/per-occurrence settings apply only to the separate Zoom-native registration adapter. Actual Zoom account/security/reporting remains unverified, and all activation gates remain. The newer primary website publication is deploy6ad7cd0111dae0b60c7d9656/sourcefa1f490; older source/deploy snapshots below are historical.
+
 # Health & Hope Live — registration activation readiness
 
 2026-10-20. Local engineering candidate on `codex/health-hope-live`, continuing approved guest commit `0966099`. No production SQL, deployment, configuration change, provider operation or real notification was performed. The [approved public website](https://revitalizedacademy.com/health-hope-live) remains published with registration held. This report supersedes older statements that the approved retention policy still needs implementation.

@@ -8,7 +8,7 @@
   let epoch = 0, currentUser = null, contact = null, historyGeneration = 0, busy = false, allowed = false;
   function clear() {
     epoch++; historyGeneration++;overviewGeneration++; currentUser = null; contact = null; allowed = false; workspace.hidden = true; management.hidden = true;
-    for (const id of ['hhl-staff-sessions','hhl-staff-people','hhl-staff-history','hhl-private-join','hhl-reviews','hhl-privacy-queue']) el(id).replaceChildren();
+    for (const id of ['hhl-staff-sessions','hhl-staff-people','hhl-staff-history','hhl-private-join','hhl-reviews','hhl-privacy-queue','hhl-meeting-setup']) el(id).replaceChildren();
     el('hhl-private-join').hidden = true; el('hhl-history-panel').hidden = true;
     el('hhl-session-form').reset(); el('hhl-settings-form').reset();el('hhl-weekly-form').reset();el('hhl-people-search').reset();
   }
@@ -79,6 +79,15 @@
     const captured = epoch, requestGeneration=++overviewGeneration; notice.textContent = 'Loading event history…'; historyGeneration++;contact=null;el('hhl-staff-sessions').replaceChildren();el('hhl-staff-people').replaceChildren();el('hhl-staff-history').replaceChildren();el('hhl-private-join').replaceChildren();el('hhl-private-join').hidden=true;el('hhl-history-panel').hidden=true;
     const data = await api('overview',{query:el('hhl-people-query').value.trim()}); if (captured !== epoch || requestGeneration!==overviewGeneration) return;
     allowed = true; workspace.hidden=false; management.hidden=!data.can_manage; notice.textContent='Event history loaded.'; el('hhl-sign-in').hidden=true;
+    el('hhl-meeting-setup').replaceChildren();
+    if (data.can_manage && data.meeting_setup) {
+      const setup=data.meeting_setup;
+      el('hhl-meeting-setup').textContent=`Provided by Justyn: ${setup.topic} (${setup.meeting_id}). Leave the optional override blank to use this meeting for new drafts. Shared-link setup; security and joining still need verification. The website controls each Thursday session. Automatic Zoom registration and attendance remain unverified/held.`;
+      const session=el('hhl-session-form');
+      if(!session.elements.id.value){
+        if(!session.elements.zoom_meeting_id.value)session.elements.zoom_meeting_id.value=setup.meeting_id;
+      }
+    } else if (!data.can_manage) {el('hhl-weekly-form').reset();el('hhl-session-form').reset();}
     for (const key of ['registration_enabled','zoom_enabled','notifications_enabled']) el('hhl-settings-form').elements[key].checked = data.settings[key] === true;
     el('hhl-review-count').textContent = data.can_manage ? data.review_count + ' items need review.' : '';
     el('hhl-staff-sessions').replaceChildren(); el('hhl-staff-people').replaceChildren();

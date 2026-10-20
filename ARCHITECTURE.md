@@ -1,3 +1,7 @@
+## Health & Hope Live supplied shared meeting — local follow-up, 2026-10-20
+
+Owner-provided meet-anytime Zoom metadata lives in a server-only module. Existing authorized/audited draft commands use the shared link when no override is supplied; publication/editing does not inject links. The website owns distinct weekly session identities and Registered Guest deduplication. Manager setup excludes the joining URL; existing scoped audited access/delivery paths remain. Shared-link messages use per-session Eastern dates, while fixed-occurrence Zoom registration continues rejecting no-fixed-time meetings. No SQL/permission change. [Current configuration and account/integration acceptance](docs/HEALTH_HOPE_LIVE_ZOOM_MEETING_2026-10-20.md).
+
 ## Health & Hope Live event privacy and delivery readiness — local candidate, 2026-10-20
 
 Approved Registered Guest/master-contact architecture is unchanged. An additive third event migration implements New York twelve-calendar-month expiry, security-invoker live/deliverable views, private anonymous totals, ephemeral actor-bound privacy cases and participant-free operator audit. Existing command RPCs enter guarded wrappers; core helpers are not directly callable. Event-only advisory locking serializes privacy/maintenance/provider writes before row locks. A separate minutely maintenance Function plus fresh-heartbeat/provider-readiness gates prevents collection without operational retention. Signed Resend delivery feedback correlates event-tagged jobs and suppresses unsafe event delivery; no marketing activation.

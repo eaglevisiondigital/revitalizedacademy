@@ -1,3 +1,7 @@
+## 2026-10-20 — owner supplies Health & Hope Live recurring Zoom meeting
+
+Owner relayed Justyn's topic ReVitalized Health & Hope Livestream, meeting82516112925 and supplied joining URL; Zoom setting recurring meet anytime. Preserve website-based Thursday18:30 America/New_York/30minute selected-session registration and existing Registered Guest architecture. Implement locally using the already-supported manual shared-link mode; do not change the production meeting or weaken fixed-occurrence validation. Retain twelve-month retention and all release gates; actual account permissions/security/reporting and delivery must be verified before capability claims or activation. [Implementation and exact next action](docs/HEALTH_HOPE_LIVE_ZOOM_MEETING_2026-10-20.md).
+
 ## 2026-10-20 — event retention implementation and sender/account clarification
 
 The approved twelve-month event policy is implemented locally in the third forward event migration; no duration or guest-architecture reapproval is required. Identifiers expire after each thirty-minute session ends, preserving independently governed master contacts/client/health/financial/consent records. Staff-verified scoped export/deletion and external provider cleanup review are included. Actual provider retention evidence and separately authorized hosted acceptance remain required before collection; no live activation/migration/deploy is authorized by preparation.

@@ -1,0 +1,10 @@
+{
+  "deployId": "6ad7cd0111dae0b60c7d9656",
+  "source": "fa1f490012507319bb93cca64d6cbaf039ceaec3",
+  "locked": true,
+  "state": "ready",
+  "publishedAt": "2026-10-20T20:41:17.347Z",
+  "inspection": "Read-only Netlify metadata; no production change by this task.",
+  "zoomAccountInspection": "Account profile redirects to Zoom sign-in; no authenticated settings available.",
+  "zoomAccountSettingsVerified": false
+}

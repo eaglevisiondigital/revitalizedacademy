@@ -4,7 +4,8 @@ const primary='fa1f490012507319bb93cca64d6cbaf039ceaec3',published='7403a4ff2089
 const run=args=>execFileSync(git,args,{maxBuffer:8*1024*1024}),read=file=>fs.readFileSync(file);
 test('reconciliation changes only HHL files and additive shared documentation relative to committed primary',()=>{
  const names=run(['diff','--name-only',primary]).toString().trim().split('\n').filter(Boolean);
- for(const name of names)assert(/^(?:ARCHITECTURE\.md|CURRENT_BUILD_STATE\.md|DECISIONS\.md|SECURITY_MODEL\.md|portal\/index\.html)$/.test(name)||/^(?:docs\/(?:HEALTH_HOPE_LIVE_|health-hope-live-)|(?:netlify\/functions\/(?:_shared\/)?|portal\/|scripts\/(?:test-)?|tests\/(?:backend\/)?|supabase\/migrations\/\d+_)health-hope-live)/.test(name)||/^supabase\/migrations\/\d+_health_hope_live/.test(name),name);
+ for(const name of names)assert(/^(?:ARCHITECTURE\.md|CURRENT_BUILD_STATE\.md|DECISIONS\.md|SECURITY_MODEL\.md|portal\/index\.html|package\.json)$/.test(name)||/^(?:docs\/(?:HEALTH_HOPE_LIVE_|health-hope-live-)|(?:netlify\/functions\/(?:_shared\/)?|portal\/|scripts\/(?:test-)?|tests\/(?:backend\/)?|supabase\/migrations\/\d+_)health-hope-live)/.test(name)||/^supabase\/migrations\/\d+_health_hope_live/.test(name),name);
+ const pkg=JSON.parse(read('package.json')),original=JSON.parse(run(['show',primary+':package.json']));pkg.scripts['test:health-hope-live']=pkg.scripts['test:health-hope-live'].replace(' tests/health-hope-live-meeting.test.mjs','');assert.deepEqual(pkg,original,'Only the HHL meeting test may extend the package script');
 });
 test('every committed primary continuity application, SQL, test and evidence file is preserved exactly',()=>{
  const files=run(['diff','--name-only',published,primary]).toString().trim().split('\n').filter(p=>p!=='CURRENT_BUILD_STATE.md'&&p!=='portal/index.html');
