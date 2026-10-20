@@ -1,3 +1,9 @@
+## 2026-10-20 — owner-approved Registered Guest classification
+
+The owner explicitly requires Health & Hope Live registrations to create/associate one existing master CRM contact as a Registered Guest, rather than automatically creating a Client or qualified Client Lead. No client profile, assessment, coaching enrollment or portal access follows registration. Event/session history, verified attendance, cancellations/no-shows/repeats and distinct consent remain separate from private health data.
+
+Approved progression is Registered Guest → Engaged Guest → Prospective Client → Active Client. Registration or attendance alone never advances it. Prospective Client requires meaningful interest or an authorized staff decision; Active Client uses existing approved onboarding. Existing client/prospect relationships must not be downgraded by event participation. Implementation reuses native contact lifecycle values plus event guest membership in existing tags, scoped audited manager commands and private session history. The owner explicitly keeps migrations/public registration held until release gates pass. The 12-month duration is already approved; its enforcement/export/deletion and actual integrations remain gates. [Complete implemented mapping and tests](docs/HEALTH_HOPE_LIVE_REGISTERED_GUESTS_2026-10-20.md).
+
 ## 2026-10-20 — owner-approved gold website release and event retention
 
 Owner approved the reviewed design and requested gold primary event CTAs (`#B18845` / `#D8A62A`), the exact Thursday/6:30 PM Eastern/free 30-minute homepage copy, “RESERVE MY FREE SEAT” linking to registration, and production website publication after relevant checks. Public website publication is separable from registration activation; failed integration/data gates must remain held. No scoring/founder-tool changes or bypass of readiness is authorized.

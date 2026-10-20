@@ -13,9 +13,10 @@ for(const[name,engine]of [['chromium',chromium],['webkit',webkit]]){
  for(const width of [1440,768,390]){
   const context=await browser.newContext({viewport:{width,height:1000},timezoneId:'America/Chicago'}),page=await context.newPage();page.setDefaultTimeout(8000);
   await page.clock.install({time:new Date('2026-10-20T15:00:00Z')});
-  let current=rows,posted=[],failNext=false,delayedHistory=null,simulateRegistration=false,availabilityRequests=0;const errors=[],external=[],assetRequests=[];page.on('pageerror',error=>errors.push(error.message));
-  const person={contact_id:'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',name:'Fictional Visitor',email:'fictional@example.invalid',registered:2,attended:1};
+  let current=rows,posted=[],failNext=false,delayedHistory=null,simulateRegistration=false,availabilityRequests=0,deferHistory=false;const staffActions=[];const errors=[],external=[],assetRequests=[];page.on('pageerror',error=>errors.push(error.message));
+  const person={contact_id:'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',name:'Fictional Visitor',email:'fictional@example.invalid',registered:2,attended:1,relationship_stage:'registered_guest',guest_classification:'registered_guest',active_client:false,can_progress:true};
   const overview={can_manage:true,settings:{registration_enabled:false,zoom_enabled:false,notifications_enabled:false},sessions:[{...rows[0],regular_date:'2026-10-22',revision:1,registered:1,attended:0,join_mode:'manual',zoom_ready:false}],people:[person],review_count:0};
+  const historyRows=[{registration_id:'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb',session_id:rows[0].id,starts_at:'2026-10-15T22:30:00Z',registered_at:'2026-10-14T12:00:00Z',status:'confirmed',session_status:'published',attendance_status:'unreviewed',can_review_no_show:true,attended_at:null,event_notifications:true,marketing_requested:false}];
   await context.route('**/*',async route=>{
    const url=new URL(route.request().url());
    if(url.origin!==base){external.push(url.host);if(publicAssets&&route.request().method()==='GET'&&approvedAsset(url)){assetRequests.push(url.href);return route.continue();}if(url.host==='cdn.jsdelivr.net')return route.fulfill({contentType:'application/javascript',body:`window.fixtureSession={access_token:'fictional-local-jwt',user:{id:'fictional-owner'}};window.supabase={createClient:()=>({auth:{getSession:async()=>({data:{session:window.fixtureSession}}),onAuthStateChange:fn=>{window.fixtureAuthChange=fn}}})};`});return route.fulfill({status:200,body:'',contentType:'text/css'});}
@@ -24,7 +25,9 @@ for(const[name,engine]of [['chromium',chromium],['webkit',webkit]]){
    if(url.pathname==='/api/health-hope-live/staff'){
     const body=route.request().postDataJSON();
     if(body.action==='overview')return route.fulfill({json:overview});
-    if(body.action==='history'){delayedHistory=route;return;}
+    if(body.action==='history'){if(deferHistory){delayedHistory=route;return;}return route.fulfill({json:historyRows});}
+    if(body.action==='guest-stage'){staffActions.push(body);person.relationship_stage=body.data.stage;person.can_progress=person.relationship_stage==='engaged_guest';return route.fulfill({json:{saved:true}});}
+    if(body.action==='attendance-status'){staffActions.push(body);historyRows[0].attendance_status=body.data.attendance_status;return route.fulfill({json:{saved:true}});}
     return route.fulfill({json:{saved:true}});
    }
    if(url.pathname==='/runtime-config.js')return route.fulfill({body:'window.RVA_PUBLIC_CONFIG={supabaseUrl:"https://fixture.invalid",supabaseKey:"fictional-public-key"};',contentType:'application/javascript'});
@@ -67,6 +70,13 @@ for(const[name,engine]of [['chromium',chromium],['webkit',webkit]]){
   if(name==='chromium'&&[1440,390].includes(width))await page.locator('.hhl-promo').screenshot({path:path.join(out,width===1440?'desktop-home-promotion.png':'mobile-home-promotion.png')});
   await page.goto(base+'/portal/health-hope-live.html');await page.locator('#hhl-staff-people').getByText(person.name).waitFor();assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));checks++;
   await page.getByRole('button',{name:'Edit session',exact:true}).click();assert.equal(await page.locator('#hhl-session-form [name=id]').inputValue(),rows[0].id);checks++;
+  assert.match(await page.locator('#hhl-staff-people').textContent(),/Event classification: Registered Guest/);checks++;
+  let advance=page.locator('#hhl-staff-people form');await advance.getByRole('textbox').fill('Staff reviewed a direct conversation with this guest');await advance.getByRole('button',{name:'Mark Engaged Guest',exact:true}).click();await page.getByRole('button',{name:'Mark Prospective Client',exact:true}).waitFor();assert.equal(staffActions.at(-1).data.expected_stage,'registered_guest');checks++;
+  advance=page.locator('#hhl-staff-people form');await advance.getByRole('textbox').fill('Guest explicitly asked to discuss becoming a client');await advance.getByRole('button',{name:'Mark Prospective Client',exact:true}).click();await page.waitForFunction(()=>document.querySelector('#hhl-staff-people').textContent.includes('CRM relationship: Prospective Client'));assert.equal(await page.locator('#hhl-staff-people form').count(),0);assert.equal(staffActions.at(-1).data.expected_stage,'engaged_guest');checks+=2;
+  await page.getByRole('button',{name:'View session history',exact:true}).click();await page.getByRole('button',{name:'Record reviewed no-show',exact:true}).waitFor();let outcome=page.locator('#hhl-staff-history form').first();await outcome.getByRole('textbox').fill('Staff reconciled the completed meeting attendance report');await outcome.getByRole('button',{name:'Record reviewed no-show',exact:true}).click();await page.getByRole('button',{name:'Clear no-show for review',exact:true}).waitFor();assert.match(await page.locator('#hhl-staff-history').textContent(),/no_show/);assert.equal(staffActions.at(-1).data.attendance_status,'no_show');checks+=2;
+  if(name==='chromium'&&[1440,390].includes(width))await page.screenshot({path:path.join(out,width===1440?'desktop-guest-history.png':'mobile-guest-history.png'),fullPage:true});
+  overview.can_manage=false;person.can_progress=false;historyRows[0].can_review_no_show=false;await page.goto(base+'/portal/health-hope-live.html');await page.locator('#hhl-staff-people').getByText(person.name).waitFor();assert(await page.locator('#hhl-staff-management').isHidden());assert.equal(await page.locator('#hhl-staff-people form').count(),0);await page.getByRole('button',{name:'View session history',exact:true}).click();await page.waitForFunction(()=>document.querySelector('#hhl-staff-history').textContent.includes('no_show'));assert.equal(await page.locator('#hhl-staff-history form').count(),0);checks+=3;
+  overview.can_manage=true;await page.goto(base+'/portal/health-hope-live.html');await page.locator('#hhl-staff-people').getByText(person.name).waitFor();deferHistory=true;
   await page.getByRole('button',{name:'View session history',exact:true}).click();await page.waitForFunction(()=>document.querySelector('#hhl-history-panel').hidden===false);
   await page.evaluate(()=>{window.fixtureSession=null;window.fixtureAuthChange('SIGNED_OUT',null);});
   if(delayedHistory){await delayedHistory.fulfill({json:[{registration_id:'fictional-registration',starts_at:rows[0].starts_at,registered_at:'2026-10-20T12:00:00Z',status:'confirmed',attended_at:null}]}).catch(()=>{});}

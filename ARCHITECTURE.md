@@ -1,3 +1,7 @@
+## Health & Hope Live guest-aware CRM candidate — local only, 2026-10-20
+
+Reuse `public.contacts` and existing `contact_tags`; no second identity/marketing database. A new event contact is `registered_guest` with HHL source; linked existing relationships retain their original lifecycle. The contact constraint gains `registered_guest`, `engaged_guest`, `prospective_client` while preserving all legacy values. Private per-session event registrations remain separate. Explicit scoped manager commands with expected stages/reasons advance only Registered → Engaged → Prospective; event code cannot enroll/activate clients. The existing onboarding system is unchanged. A required server guest contract prevents deployment against the older lead-based event SQL. Reviewed no-shows are separate from registration state and verified attendance; missing attendance never implies a no-show or qualification. All new SQL remains unapplied. [Contract, schema, tests and launch gates](docs/HEALTH_HOPE_LIVE_REGISTERED_GUESTS_2026-10-20.md).
+
 ## Health & Hope Live — website-only publication boundary, 2026-10-20
 
 This boundary is live in deploy `6ad7baf2e7b6f17c96d9dc78`, application source `7403a4ff20895200e2655745181f37b5ef7d5c7b`. [Canonical verification and remaining activation gates](docs/HEALTH_HOPE_LIVE_WEBSITE_RELEASE_2026-10-20.md).

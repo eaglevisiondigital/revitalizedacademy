@@ -166,7 +166,7 @@ export function createHealthHopeApp(env, {fetcher = fetch, context = {}, now = (
           if (body.company_website) return json({received: true}, 202);
           const secret = env.get('RVA_HHL_RATE_SECRET'); if (!secret || !context.ip) throw new EventError('registration_protection_unavailable');
           const {company_website, ...input} = body;
-          return json(await service('register', {...input, ip_hash: createHmac('sha256', secret).update(context.ip).digest('hex')}), 202);
+          return json(await service('register', {...input, guest_model_version: 'hhl-guest-v1', ip_hash: createHmac('sha256', secret).update(context.ip).digest('hex')}), 202);
         }
         if (action === 'staff') {
           const authorization = request.headers.get('authorization') || '';
@@ -183,7 +183,7 @@ export function createHealthHopeApp(env, {fetcher = fetch, context = {}, now = (
             const input = {session_id: session.id, meeting_id: session.zoom_meeting_id, occurrence_id: session.zoom_occurrence_id, starts_at: session.starts_at};
             await zoom.validateSession(input); return json(await service('zoom-sync', input));
           }
-          const allowed = ['overview','history','join-info','settings','session-save','review-list','identity-resolve','bind-instance','attendance-resolve','withdraw-consent','prepare-weekly'];
+          const allowed = ['overview','history','join-info','settings','session-save','review-list','identity-resolve','bind-instance','attendance-resolve','attendance-status','guest-stage','withdraw-consent','prepare-weekly'];
           if (!allowed.includes(body.action)) throw new EventError('invalid_request', 400);
           return json(await staff(jwt, body.action, body.data));
         }

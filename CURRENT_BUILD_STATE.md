@@ -1,3 +1,11 @@
+## Health & Hope Live — Registered Guest candidate complete, registration still HELD — 2026-10-20
+
+On isolated `codex/health-hope-live`, new event identities now explicitly use the existing master contacts' `registered_guest` lifecycle and Health & Hope Live source; no client/account/enrollment/assessment is created. Existing CRM relationships are preserved and gain event guest membership. Added audited deliberate manager progression to Engaged Guest then Prospective Client, reviewed no-show history with verified-attendance corrections, CRM stage display/filters and a fail-closed API/schema guest contract. Active Client remains the existing approved onboarding process. No new person table or permission change.
+
+CLI-generated forward candidate `20261020193400_health_hope_live_registered_guests.sql` is local/unapplied, following the exact unchanged original event migration. 35 feature/scope tests, 48 PG17 cases + eight-request race, 106 regressions and 336 responsive browser checks pass; all 319 pre-existing function definitions and existing RLS/policies/ACLs/ownership/global roles preserved. Static build 448. Production catalog confirms no event tables or either migration. No production write, deployment, provider action, participant notification or primary-worktree change. Approved public website remains live; registration held.
+
+[Implementation, migration hashes, screenshots, tests and required five-answer report](docs/HEALTH_HOPE_LIVE_REGISTERED_GUESTS_2026-10-20.md). Next: implement the approved 12-month expiry/export/deletion against this guest-aware model, validate Zoom/email/joining details and complete separately authorized hosted acceptance/current-source reconciliation. No guest-policy decision or repeat website approval is needed.
+
 ## LIVE — Health & Hope Live public website; REGISTRATION HELD, 2026-10-20
 
 Published once as production deploy `6ad7baf2e7b6f17c96d9dc78`, application source `7403a4ff20895200e2655745181f37b5ef7d5c7b` / isolated `codex/health-hope-live`. [Public event page](https://revitalizedacademy.com/health-hope-live) and homepage now show the approved Health & Hope Live promotion and gold CTAs; four old webinar URL forms redirect. Explicit held client mode disables all form controls and makes zero event API requests; no unvalidated session date/countdown or joining details are published.

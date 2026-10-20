@@ -1,0 +1,112 @@
+{
+  "date": "2026-10-20",
+  "branch": "codex/health-hope-live",
+  "startingCommit": "42bfbd0",
+  "status": "LOCAL_ONLY_REGISTRATION_HELD",
+  "migrationApplied": false,
+  "deployment": false,
+  "productionSqlWrites": 0,
+  "participantMessages": 0,
+  "privateHealthRecordsAccessed": 0,
+  "protectedTrackedFilesCompared": 336,
+  "changedProtectedFiles": [],
+  "migrations": [
+    {
+      "file": "supabase/migrations/20261020141529_health_hope_live.sql",
+      "bytes": 37800,
+      "sha256": "3c34381dbb2add5bde325e5a932edac977980404b3ae38d848f8a1077a1c79aa",
+      "remoteApplied": false
+    },
+    {
+      "file": "supabase/migrations/20261020193400_health_hope_live_registered_guests.sql",
+      "bytes": 37417,
+      "sha256": "4bfafeb108713436c2aaf46283bdfb008a4089dd28bfd7bf3ad6750a9d530b24",
+      "remoteApplied": false
+    }
+  ],
+  "featureTests": {
+    "pass": 35,
+    "fail": 0
+  },
+  "databaseTests": {
+    "pass": 48,
+    "fail": 0,
+    "concurrencyRequests": 8,
+    "concurrencyTestsPass": 1,
+    "preexistingFunctionDefinitionsPreserved": 319,
+    "existingRlsPoliciesAclsFunctionOwnershipPreserved": true,
+    "globalRoleMetadataUnchanged": true,
+    "disposableDatabaseRemoved": true
+  },
+  "regressions": {
+    "pass": 106,
+    "fail": 0
+  },
+  "browsers": {
+    "checks": 336,
+    "runs": [
+      {
+        "engine": "chromium",
+        "width": 1440,
+        "pageErrors": 0,
+        "horizontalOverflow": false
+      },
+      {
+        "engine": "chromium",
+        "width": 768,
+        "pageErrors": 0,
+        "horizontalOverflow": false
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "pageErrors": 0,
+        "horizontalOverflow": false
+      },
+      {
+        "engine": "webkit",
+        "width": 1440,
+        "pageErrors": 0,
+        "horizontalOverflow": false
+      },
+      {
+        "engine": "webkit",
+        "width": 768,
+        "pageErrors": 0,
+        "horizontalOverflow": false
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "pageErrors": 0,
+        "horizontalOverflow": false
+      }
+    ],
+    "hostedWrites": 0,
+    "providerCalls": 0,
+    "externalAssetRequests": 0,
+    "fictionalDataOnly": true
+  },
+  "staticBuild": {
+    "files": 448,
+    "deployed": false
+  },
+  "productionMetadata": {
+    "eventTablesAbsent": true,
+    "initialEventMigrationApplied": false,
+    "guestMigrationApplied": false
+  },
+  "securityAdvisors": {
+    "baselineFindings": 25,
+    "candidateFindings": 33,
+    "expectedPrivateDenyByDefaultInfo": 8,
+    "newWarningsOrErrors": 0,
+    "unexpectedFindings": 0,
+    "scope": "Disposable local PostgreSQL schema only"
+  },
+  "notes": [
+    "Only current task files changed in the separate worktree.",
+    "Public website promotion/event assets unchanged by this package.",
+    "Guest activation requires both matched server/database contracts and the remaining retention/vendor/release gates."
+  ]
+}

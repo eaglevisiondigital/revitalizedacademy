@@ -26,6 +26,12 @@
   }
   function node(tag, text) {const element = document.createElement(tag); element.textContent = text; return element;}
   function button(label, action) {const element = node('button', label); element.type = 'button'; element.onclick = async () => {element.disabled = true; const captured = epoch; try {await action();} catch (error) {if (captured === epoch) notice.textContent = error.message;} finally {element.disabled = false;}}; return element;}
+  const stageLabel = stage => ({registered_guest:'Registered Guest',engaged_guest:'Engaged Guest',prospective_client:'Prospective Client',client:'Client (existing onboarding)',lead:'Lead (existing relationship)',assessment_lead:'Assessment Lead (existing relationship)',webinar_lead:'Webinar Lead (existing relationship)',applicant:'Applicant (existing relationship)',inactive:'Inactive (existing relationship)'})[stage] || 'Existing CRM relationship';
+  function reviewForm(label, action, data, after) {
+    const form=node('form','');form.className='hhl-review-form';const reason=node('input','');reason.required=true;reason.minLength=5;reason.maxLength=500;reason.placeholder='Reason / evidence for this staff action';reason.setAttribute('aria-label',reason.placeholder);const save=node('button',label);save.type='submit';form.append(reason,save);
+    form.onsubmit=async event=>{event.preventDefault();if(!form.reportValidity()||busy||!allowed)return;busy=true;save.disabled=true;const captured=epoch;try{await api(action,{...data,reason:reason.value});if(captured===epoch)await after();}catch(error){if(captured===epoch)notice.textContent=error.message;}finally{busy=false;save.disabled=false;}};
+    return form;
+  }
   const when = value => new Intl.DateTimeFormat('en-US', {timeZone:'America/New_York', dateStyle:'medium', timeStyle:'short'}).format(new Date(value)) + ' Eastern';
   function easternInput(value) {const parts = Object.fromEntries(new Intl.DateTimeFormat('en-CA', {timeZone:'America/New_York', year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date(value)).filter(p=>p.type!=='literal').map(p=>[p.type,p.value]));return `${parts.year}-${parts.month}-${parts.day}T${parts.hour}:${parts.minute}`;}
   async function history(person) {
@@ -34,8 +40,12 @@
     const rows = await api('history', {contact_id: person.contact_id});
     if (captured !== epoch || generation !== historyGeneration || contact !== person.contact_id) return;
     for (const row of rows) {
-      const card = node('article', ''); card.className = 'hhl-staff-card'; card.append(node('p', 'Registration reference: ' + row.registration_id),node('h3', when(row.starts_at)), node('p', row.status + ' · Registered: ' + when(row.registered_at) + ' · Attended: ' + (row.attended_at ? when(row.attended_at) : 'Not credited')));
-      if (row.status === 'confirmed') card.append(button('Show private joining info', async () => {
+      const card = node('article', ''); card.className = 'hhl-staff-card'; card.append(node('p', 'Registration reference: ' + row.registration_id),node('h3', when(row.starts_at)), node('p', row.status + ' · ' + (row.attendance_status || 'unreviewed') + ' · Registered: ' + when(row.registered_at) + ' · Attended: ' + (row.attended_at ? when(row.attended_at) : 'Not credited')));
+      if (!management.hidden && row.can_review_no_show) {
+        const target=row.attendance_status==='no_show'?'unreviewed':'no_show';
+        card.append(node('p','Confirm attendance evidence before recording a no-show. Unmatched participants must be resolved first.'),reviewForm(target==='no_show'?'Record reviewed no-show':'Clear no-show for review','attendance-status',{registration_id:row.registration_id,attendance_status:target,expected_status:row.attendance_status},()=>history(person)));
+      }
+      if (row.status === 'confirmed' && !row.can_review_no_show) card.append(button('Show private joining info', async () => {
         el('hhl-private-join').replaceChildren(); el('hhl-private-join').hidden = true;
         const info = await api('join-info', {registration_id:row.registration_id});
         if (captured !== epoch || generation !== historyGeneration || contact !== person.contact_id) return;
@@ -67,7 +77,14 @@
       el('hhl-staff-sessions').append(card);
     }
     if(!data.sessions.length)el('hhl-staff-sessions').append(node('p','No event sessions have been configured.'));
-    for(const person of data.people){const card=node('article','');card.className='hhl-staff-card';card.append(node('h3',person.name),node('p',person.email),node('p',`${person.registered} sessions registered · ${person.attended} sessions attended`),button('View session history',()=>history(person)));el('hhl-staff-people').append(card);}
+    for(const person of data.people){
+      const card=node('article','');card.className='hhl-staff-card';card.append(node('h3',person.name),node('p',person.email),node('p','Event classification: Registered Guest'),node('p','CRM relationship: '+(person.active_client?'Active Client (approved onboarding)':stageLabel(person.relationship_stage))),node('p',`${person.registered} sessions registered · ${person.attended} sessions attended`),button('View session history',()=>history(person)));
+      if(data.can_manage && person.can_progress && ['registered_guest','engaged_guest'].includes(person.relationship_stage)){
+        const next=person.relationship_stage==='registered_guest'?'engaged_guest':'prospective_client';
+        card.append(node('p',next==='engaged_guest'?'Record a deliberate staff review of engagement. Attendance alone does not advance the relationship.':'Record an expression of client interest or a deliberate staff qualification decision. Enrollment and access remain separate.'),reviewForm('Mark '+stageLabel(next),'guest-stage',{contact_id:person.contact_id,stage:next,expected_stage:person.relationship_stage},load));
+      }
+      el('hhl-staff-people').append(card);
+    }
   }
   async function boot() {
     clear();const captured=epoch;
