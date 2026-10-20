@@ -1,0 +1,361 @@
+{
+  "scope": "Local synthetic engineering only; no real participants, hosted queries/writes, secrets or deployments",
+  "baseline": {
+    "deploy": "6ad69bcb11fe6d27fa5d8390",
+    "source": "1511211068b1c5259162125b951cd8cf4f88edad",
+    "freshHostedPreflightRequired": true
+  },
+  "uiRepair": {
+    "source": "ea550adccdf511305c703e0cc703f7feddc84f0c",
+    "byteIdentical": true,
+    "checks": 750,
+    "runs": 6
+  },
+  "node": {
+    "passed": 125,
+    "failed": 0,
+    "obsoletePriorSnapshotAssertions": 2,
+    "disclosed": "Two pre-B6 whole-snapshot assertions already fail on unchanged151 due to later approved assets; current-baseline preservation replaces them for this package."
+  },
+  "postgresql": {
+    "version": "17.11",
+    "passed": 260,
+    "failed": 0,
+    "noHostedMigration": true,
+    "remainingDisposableDatabases": 0
+  },
+  "scopeBrowser": {
+    "scopeNativeBrowser": [
+      {
+        "engine": "chromium",
+        "width": 1440,
+        "sources": 3,
+        "personalAcknowledgments": 3,
+        "jobs": 3,
+        "immutableDrafts": 3,
+        "driversPerDraft": 12,
+        "feedbackRecords": 3,
+        "ingest": false,
+        "approve": false,
+        "internal_pdf": false,
+        "unsupportedNumericDrivers": 0,
+        "consoleWarningsErrors": 0,
+        "overflow": false,
+        "downloads": 0,
+        "logoutClearsPrivateDom": true,
+        "nonFounderDenied": true
+      },
+      {
+        "engine": "chromium",
+        "width": 768,
+        "sources": 3,
+        "personalAcknowledgments": 3,
+        "jobs": 3,
+        "immutableDrafts": 3,
+        "driversPerDraft": 12,
+        "feedbackRecords": 3,
+        "ingest": false,
+        "approve": false,
+        "internal_pdf": false,
+        "unsupportedNumericDrivers": 0,
+        "consoleWarningsErrors": 0,
+        "overflow": false,
+        "downloads": 0,
+        "logoutClearsPrivateDom": true,
+        "nonFounderDenied": true
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "sources": 3,
+        "personalAcknowledgments": 3,
+        "jobs": 3,
+        "immutableDrafts": 3,
+        "driversPerDraft": 12,
+        "feedbackRecords": 3,
+        "ingest": false,
+        "approve": false,
+        "internal_pdf": false,
+        "unsupportedNumericDrivers": 0,
+        "consoleWarningsErrors": 0,
+        "overflow": false,
+        "downloads": 0,
+        "logoutClearsPrivateDom": true,
+        "nonFounderDenied": true
+      },
+      {
+        "engine": "webkit",
+        "width": 1440,
+        "sources": 3,
+        "personalAcknowledgments": 3,
+        "jobs": 3,
+        "immutableDrafts": 3,
+        "driversPerDraft": 12,
+        "feedbackRecords": 3,
+        "ingest": false,
+        "approve": false,
+        "internal_pdf": false,
+        "unsupportedNumericDrivers": 0,
+        "consoleWarningsErrors": 0,
+        "overflow": false,
+        "downloads": 0,
+        "logoutClearsPrivateDom": true,
+        "nonFounderDenied": true
+      },
+      {
+        "engine": "webkit",
+        "width": 768,
+        "sources": 3,
+        "personalAcknowledgments": 3,
+        "jobs": 3,
+        "immutableDrafts": 3,
+        "driversPerDraft": 12,
+        "feedbackRecords": 3,
+        "ingest": false,
+        "approve": false,
+        "internal_pdf": false,
+        "unsupportedNumericDrivers": 0,
+        "consoleWarningsErrors": 0,
+        "overflow": false,
+        "downloads": 0,
+        "logoutClearsPrivateDom": true,
+        "nonFounderDenied": true
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "sources": 3,
+        "personalAcknowledgments": 3,
+        "jobs": 3,
+        "immutableDrafts": 3,
+        "driversPerDraft": 12,
+        "feedbackRecords": 3,
+        "ingest": false,
+        "approve": false,
+        "internal_pdf": false,
+        "unsupportedNumericDrivers": 0,
+        "consoleWarningsErrors": 0,
+        "overflow": false,
+        "downloads": 0,
+        "logoutClearsPrivateDom": true,
+        "nonFounderDenied": true
+      }
+    ]
+  },
+  "b6Browser": {
+    "b6BrowserChecks": 192,
+    "results": [
+      {
+        "engine": "chromium",
+        "width": 1440,
+        "height": 1000,
+        "checks": 32,
+        "sourceUnchanged": true,
+        "blindReview": true,
+        "revocation": true,
+        "accountTransition": true,
+        "consoleWarningsErrors": 0,
+        "overflow": false,
+        "downloads": 0
+      },
+      {
+        "engine": "chromium",
+        "width": 768,
+        "height": 1024,
+        "checks": 32,
+        "sourceUnchanged": true,
+        "blindReview": true,
+        "revocation": true,
+        "accountTransition": true,
+        "consoleWarningsErrors": 0,
+        "overflow": false,
+        "downloads": 0
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "height": 844,
+        "checks": 32,
+        "sourceUnchanged": true,
+        "blindReview": true,
+        "revocation": true,
+        "accountTransition": true,
+        "consoleWarningsErrors": 0,
+        "overflow": false,
+        "downloads": 0
+      },
+      {
+        "engine": "webkit",
+        "width": 1440,
+        "height": 1000,
+        "checks": 32,
+        "sourceUnchanged": true,
+        "blindReview": true,
+        "revocation": true,
+        "accountTransition": true,
+        "consoleWarningsErrors": 0,
+        "overflow": false,
+        "downloads": 0
+      },
+      {
+        "engine": "webkit",
+        "width": 768,
+        "height": 1024,
+        "checks": 32,
+        "sourceUnchanged": true,
+        "blindReview": true,
+        "revocation": true,
+        "accountTransition": true,
+        "consoleWarningsErrors": 0,
+        "overflow": false,
+        "downloads": 0
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "height": 844,
+        "checks": 32,
+        "sourceUnchanged": true,
+        "blindReview": true,
+        "revocation": true,
+        "accountTransition": true,
+        "consoleWarningsErrors": 0,
+        "overflow": false,
+        "downloads": 0
+      }
+    ]
+  },
+  "concurrency": {
+    "b6": {
+      "b6RaceGroups": 7,
+      "results": [
+        {
+          "group": "purpose_retry",
+          "workers": 8,
+          "overlap": 8,
+          "successes": 8,
+          "safeDenials": 0
+        },
+        {
+          "group": "competing_feedback",
+          "workers": 8,
+          "overlap": 8,
+          "successes": 1,
+          "safeDenials": 7
+        },
+        {
+          "group": "identical_retry",
+          "workers": 8,
+          "overlap": 8,
+          "successes": 8,
+          "safeDenials": 0
+        },
+        {
+          "group": "source_change",
+          "workers": 8,
+          "overlap": 8,
+          "successes": 0,
+          "safeDenials": 8
+        },
+        {
+          "group": "b6_revocation",
+          "workers": 8,
+          "overlap": 8,
+          "successes": 0,
+          "safeDenials": 8
+        },
+        {
+          "group": "purpose_withdrawal",
+          "workers": 8,
+          "overlap": 8,
+          "successes": 0,
+          "safeDenials": 8
+        },
+        {
+          "group": "maximum_four_slots",
+          "workers": 8,
+          "overlap": 8,
+          "successes": 4,
+          "safeDenials": 4
+        }
+      ]
+    },
+    "processing": {
+      "processingConcurrency": {
+        "workers": 8,
+        "distinctBackends": 8,
+        "serverBarrier": true,
+        "oneLease": true,
+        "oneVersion": true,
+        "reviewSuccesses": 1,
+        "safeReviewConflicts": 7,
+        "idempotentRegeneration": true
+      }
+    },
+    "scope": {
+      "scopeConcurrency": {
+        "groups": 4,
+        "workers": 8,
+        "distinctBackendIds": 8,
+        "overlapBarrier": true,
+        "canonicalEnqueue": 1,
+        "canonicalEnqueueAudit": 1,
+        "stableSeal": 1,
+        "canonicalSealAudit": 1,
+        "canonicalActivation": 1,
+        "immutableVersion": 1,
+        "ingest": false
+      }
+    },
+    "totalGroups": 15,
+    "workersPerGroup": 8
+  },
+  "archive": {
+    "sha256": "b06c9e5e0215f78524d92afb172bb1fe36fd7c34cb8224c251484b7ab58b6ec6",
+    "bytes": 399423,
+    "node": "22",
+    "reproducible": true,
+    "retainedFunctionBundlesRebuilt": 0,
+    "coldStart": {
+      "node": "v22.23.3",
+      "coldStart": true,
+      "heldDenial": true,
+      "syntheticTwelveDriverDraft": true,
+      "narrowProofVerified": true,
+      "callerJwtRetained": true,
+      "broadCredentialUsed": false,
+      "anonymousDenied": true,
+      "previewDenied": true,
+      "externalRequests": 0
+    }
+  },
+  "migration": {
+    "file": "supabase/environment-migrations/production/20261020004206_roadmap_three_source_processing_scope.sql",
+    "sha256": "c623974c5fb7f488da44abc7368e9517e56facf89acf017452c027a657f6abc9",
+    "bytes": 44195,
+    "hostedApplied": false
+  },
+  "manifest": {
+    "total": 442,
+    "changed": 2,
+    "unchanged": 440,
+    "removed": 0,
+    "retainedArchives": 9,
+    "replacementArchives": 1,
+    "oldMigrationFilesUnchanged": true,
+    "originalSourceAndScoringUnchanged": true
+  },
+  "releaseState": {
+    "pushed": false,
+    "deployed": false,
+    "configuredSecrets": false,
+    "allProductionControlsUntouched": true,
+    "participantReads": 0,
+    "realDrafts": 0,
+    "realNumericalDrivers": 0,
+    "privateFeedbackWrites": 0,
+    "fourthSourceUntouched": true,
+    "betaUntouched": true
+  },
+  "nextGate": "Exact-SHA technical release approval; protected inactive key staging; own source purposes/B6 feedback/grants; exact batch activation approval before process/review"
+}

@@ -1,3 +1,7 @@
+## Complete three-source draft package — local only, release/activation held — 2026-10-19
+
+Branch codex/roadmap-three-source-draft-package starts at exact validated UI repair ea550adccdf511305c703e0cc703f7feddc84f0c. That UI is byte-identical. Adds a single forward migration for fixed three-source scope, private explicit enqueue, staged purpose-restricted sealing identity, atomic activation/revocation and live finish checks. Worker no longer uses a service-role key; new key alone cannot read sources/bypass RLS. Nine retained archives and all existing scoring/coverage/questionnaires/consents remain unchanged. All production gates remain held; no remote activity, secret handling or real source processing. [Complete implementation, release package, tests and precise approvals](docs/ROADMAP_THREE_SOURCE_DRAFT_PACKAGE.md). Earlier entries below are historical.
+
 ## Storage-purpose confirmation repair — local candidate, all hosted gates held — 2026-10-19
 
 Isolated from exact deployed1511211068b1c5259162125b951cd8cf4f88edad on codex/roadmap-storage-purpose-confirmation. Fixed HTTP200/unavailable false confirmation with strict persisted acknowledgment, visible states, idempotent retry and source/session/SDK-user teardown guards. Two public assets only; no SQL/Function/backend change. Current-baseline preservation, synthetic native browser, PG17/RLS and concurrency results are linked below; two obsolete historical snapshot assertions fail identically on the unchanged baseline and are disclosed.

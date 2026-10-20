@@ -1,3 +1,7 @@
+## Three-source internal draft capability — unreleased local follow-up
+
+Reuses the existing pipeline and exact storage-purpose UI. A fixed three-source operator batch authorizes metadata enqueue with ingest=false. A private staged HMAC identity binds only to that batch/current founder/job/document lease; it replaces service-role sealing without new Auth/database roles or Functions. Private atomic activation/stop controls leave approval/PDF/delivery closed. See [architecture, protected configuration and release plan](docs/ROADMAP_THREE_SOURCE_DRAFT_PACKAGE.md). No hosted installation or activation.
+
 ## Storage-purpose confirmation boundary — local patch, 2026-10-19
 
 Retains existing founder JWT RPC, private idempotent purpose storage and service-only seal. Only launcher confirmation/lifecycle and its version reference change; no new API/database behavior. Historical source enqueue currently depends on ingest=true, so keeping ingest=false requires a separately reviewed narrow operator enqueue path before actual draft activation. [Configuration and activation plan](docs/ROADMAP_STORAGE_PURPOSE_READINESS.md).

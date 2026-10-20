@@ -1,3 +1,5 @@
+> Current unreleased local follow-up: [three-source package](ROADMAP_THREE_SOURCE_DRAFT_PACKAGE.md) preserves this pipeline and replaces its original broad sealing credential design. Historical implementation notes below are retained; no production change is implied.
+
 # Vitality Roadmap internal processing v1 — local engineering candidate
 
 ## Outcome and scope

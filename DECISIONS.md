@@ -1,3 +1,7 @@
+## 2026-10-19 — Local three-source draft package direction
+
+Prefer a purpose-restricted server proof over a broad service-role key or new SQL/Auth login. Scope is fixed by the first privately authorized three-source batch; no fourth-source expansion or first-window extension. Explicit operator enqueue leaves ingest=false, and source activation is atomic/revocable. Inactive credential staging allows a held technical release before personal/source activation. Production release, configuration, B6 feedback/storage grants and process/review activation remain separate approvals. No scoring policy/rubric change. [Implementation and approval gates](docs/ROADMAP_THREE_SOURCE_DRAFT_PACKAGE.md).
+
 ## 2026-10-19 — Storage consent is not HTTP success; ingestion stays held
 
 Engineering authority repairs UI locally only. Recorded requires explicit persisted acknowledgment from the existing RPC. Existing valid B6 consent must not be repeated unnecessarily; separate storage-purpose consent remains mandatory. No transient ingest toggle, manual source touch, generic credential substitution, secret configuration or real-source activation is authorized by this package. Historical enqueue and credential alternatives are explicit future review gates. [Readiness and decision handoff](docs/ROADMAP_STORAGE_PURPOSE_READINESS.md).

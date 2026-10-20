@@ -1,3 +1,7 @@
+## Narrow sealing and source-bound explicit enqueue — local candidate only
+
+Adds private ACL/RLS scope/key/audit records; strict existing founder/source/B4/B5/B6/personal purpose/operator/expiry chain; fixed source set; explicit idempotent enqueue; canonical HMAC challenge binding; fixed-length proof check; stable finish capabilities; live key checks and revocation erasure/cancellation. No broad service-role fallback, Auth identity/role grants, weakened RLS, automatic ingest, approval/PDF/client release. The key is an application sealing capability, not per-Function environment isolation or a general database credential. All original function owners/ACLs are preserved except one reviewed old seal EXECUTE revocation and two reviewed body extensions. [Security, tests, operator gates and rollback](docs/ROADMAP_THREE_SOURCE_DRAFT_PACKAGE.md).
+
 ## Storage-purpose confirmation safety — local only, 2026-10-19
 
 Bootstrap now accepts only strict persisted server acknowledgment, rejects neutral unavailable, binds selected source and SDK user to the captured staff session, aborts on teardown and ignores late JSON. Existing SQL/RLS/founder/session/seal contracts unchanged. A site Functions-only secret is still broadly privileged, not a seal-only credential; configuration and narrower-role changes require separate approval. No actual source access or mutation. [Review and held gates](docs/ROADMAP_STORAGE_PURPOSE_READINESS.md).
