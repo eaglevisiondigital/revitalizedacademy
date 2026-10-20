@@ -1,0 +1,38 @@
+{
+  "at": "2026-10-20T22:38:22.131Z",
+  "site": "ece0f6f3-6c3d-46e6-bb51-95ce1ccefb06",
+  "baseline": "6ad7cd0111dae0b60c7d9656",
+  "baselineSource": "fa1f490012507319bb93cca64d6cbaf039ceaec3",
+  "popupSource": "73b29621db5e74e0d9f42caa7555a0933f1c3994",
+  "changed": [
+    {
+      "path": "/index.html",
+      "sha1": "d54b56cda97a2ece78b0fa4ead8b85fb227f96b8",
+      "sha256": "652f00254a2501664b36909f5e884e243350e4c30adb783bc6b1a70f10395fb8",
+      "bytes": 38427
+    },
+    {
+      "path": "/css/health-hope-live.css",
+      "sha1": "b107ed899ed87ac9698156db24f9fc061643a8dd",
+      "sha256": "4ec0abd2158e676b11be6d4e57bf0e629e50c742949367650edc0e9ffff54501",
+      "bytes": 17433
+    },
+    {
+      "path": "/js/vitality-report-preview.js",
+      "sha1": "e114517c78b54cda56b03bbcf01453f4730b760f",
+      "sha256": "b7a23457b7320ead885dc5aa4db06c8d01a60cb290b8b95e96cc305b3b60a1fd",
+      "bytes": 7539
+    }
+  ],
+  "files": 447,
+  "retained": 444,
+  "added": 0,
+  "removed": 0,
+  "functions": 10,
+  "functionsConfigAndSchedulePreserved": true,
+  "heldBackendExcluded": true,
+  "registration": "held",
+  "zoomEmail": "unchanged",
+  "sqlWrites": 0,
+  "bodySha256": "fb89a07f471ae93a027095df615cec1697495dfd3503df13e978f3e8f2dcc38a"
+}
