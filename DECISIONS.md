@@ -1,3 +1,11 @@
+## 2026-10-20 — founder-approved Health & Hope Live
+
+Owner relayed Justyn Oliver's approval: **Health & Hope Live**, presented by ReVitalized Academy, free on Zoom every Thursday at 6:30 PM Eastern for 30 minutes. Purpose: introduce the mission, educate about holistic health and interview clients about their experiences/progress. This supersedes the previous Founders Webinar's active public promotion and reservation pricing for the new event only. Historical webinar/payment records and protected payment infrastructure remain unchanged.
+
+Visitors register for a particular upcoming session and may return in later weeks. Existing master contacts are reused; session registration/attendance history stays separate. Founders/staff need scoped participation history and appropriate private manual joining information. Use America/New_York, explicit availability, exceptions and cancellations; no false scarcity or fabricated sessions. Preserve approved imagery and published client stories. Event operational notifications and optional marketing consent are distinct.
+
+Approved engineering scope is isolated implementation/local validation. Live Zoom requires validated access and explicit authority. Production migrations/deployment, live integrations and real participant notifications require a separate release authorization. Retention duration and integration with existing erasure/export workflows remain unresolved; no destructive policy was invented. Local implementation/release details: [review report](docs/HEALTH_HOPE_LIVE_REVIEW_2026-10-20.md), [full Chat/Work prompts and release text](docs/HEALTH_HOPE_LIVE_RELEASE_HANDOFF.md).
+
 ## 2026-10-19 — Local three-source draft package direction
 
 Prefer a purpose-restricted server proof over a broad service-role key or new SQL/Auth login. Scope is fixed by the first privately authorized three-source batch; no fourth-source expansion or first-window extension. Explicit operator enqueue leaves ingest=false, and source activation is atomic/revocable. Inactive credential staging allows a held technical release before personal/source activation. Production release, configuration, B6 feedback/storage grants and process/review activation remain separate approvals. No scoring policy/rubric change. [Implementation and approval gates](docs/ROADMAP_THREE_SOURCE_DRAFT_PACKAGE.md).

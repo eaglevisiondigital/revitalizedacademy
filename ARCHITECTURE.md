@@ -1,3 +1,11 @@
+## Health & Hope Live — additive local candidate, 2026-10-20
+
+Permanent static event page and a separate staff event view reuse established branding, master contacts, Supabase Auth and existing CRM authorization. Two additive Netlify Functions provide a same-origin API and bounded, held scheduled worker. Eight private `hhl_*` tables separate session, participation, consent, job, rate and audit metadata from assessments/private health. Two invoker command RPCs reach private fixed-search-path helpers; there is no parallel contact store, paid event workflow or new permission key.
+
+New York time constructs regular Thursday 18:30 sessions. Explicit published/open/readiness state owns availability; weekly preparation creates drafts. Provider changes hold/cancel affected sessions. Zoom availability requires fresh occurrence validation; uncertain identity/provider outcomes require review. Transactional notification leases use stable provider idempotency keys and bounded retries. All activation controls default off and the forward migration remains unapplied remotely. No approved Roadmap mathematics, founder tools, payment configuration or legacy webinar history changes.
+
+[Files, scheduling, tests and boundaries](docs/HEALTH_HOPE_LIVE_REVIEW_2026-10-20.md) · [configuration and held release authority](docs/HEALTH_HOPE_LIVE_RELEASE_HANDOFF.md).
+
 ## Three-source internal draft capability — unreleased local follow-up
 
 Reuses the existing pipeline and exact storage-purpose UI. A fixed three-source operator batch authorizes metadata enqueue with ingest=false. A private staged HMAC identity binds only to that batch/current founder/job/document lease; it replaces service-role sealing without new Auth/database roles or Functions. Private atomic activation/stop controls leave approval/PDF/delivery closed. See [architecture, protected configuration and release plan](docs/ROADMAP_THREE_SOURCE_DRAFT_PACKAGE.md). No hosted installation or activation.
