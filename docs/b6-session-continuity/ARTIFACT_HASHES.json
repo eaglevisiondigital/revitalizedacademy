@@ -1,0 +1,177 @@
+{
+  "sourceSha": "Final commit recorded externally after local commit.",
+  "branch": "codex/b6-session-continuity-reconciled",
+  "baseSha": "7403a4ff20895200e2655745181f37b5ef7d5c7b",
+  "baselineDeploy": "6ad7baf2e7b6f17c96d9dc78",
+  "reusedRepair": "1b305bd03ee849c6da6aabd218c641f61fe70a4b",
+  "freshHostedRecheckRequired": true,
+  "hostedMutations": 0,
+  "migration": {
+    "file": "supabase/environment-migrations/production/20261020184635_roadmap_b6_session_continuity.sql",
+    "sha256": "2d4b5d1a306d699f2c325c8e7844f801f92cec5336fab196fe41921e7f0f072d",
+    "applied": false,
+    "controlsChanged": false,
+    "existingConsentWrites": 0
+  },
+  "static": {
+    "total": 447,
+    "changed": [
+      {
+        "path": "/portal/index.html",
+        "bytes": 180520,
+        "sha1": "150a4139e2ff93f57eec309b534e8a811048a778",
+        "sha256": "1d4b9a6179e9a04cf1b9d235928a49745db47f1526038bff5c029e9f68eff5e5"
+      },
+      {
+        "path": "/portal/portal-roadmap-calibration.js",
+        "bytes": 30109,
+        "sha1": "9df5351e8d9553bbef25d18351644142176ab712",
+        "sha256": "eb570ecf36d404776295b97ecb434a8ca163ec8977b359003953771c59f86aab"
+      }
+    ],
+    "unchanged": 445,
+    "added": 0,
+    "removed": 0,
+    "healthHopePathsPreserved": [
+      {
+        "path": "/index.html",
+        "sha1": "43b4d74aa4296aadb6fce658a9d7cd1e316496a2"
+      },
+      {
+        "path": "/account.html",
+        "sha1": "0af588078a79835edcd67619a3d80d2bbc1d1f0c"
+      },
+      {
+        "path": "/js/account104.js",
+        "sha1": "b7cdb86f4bb93edc5454b073c3a08e1093bb7cbe"
+      },
+      {
+        "path": "/webinar.html",
+        "sha1": "eb80c3e5762c94c78be219bf37dad04df0c83bab"
+      },
+      {
+        "path": "/webinar-priority.html",
+        "sha1": "eb80c3e5762c94c78be219bf37dad04df0c83bab"
+      },
+      {
+        "path": "/health-hope-live.html",
+        "sha1": "26c855eda7a565ba01295a39bd0b166bf9c15c5d"
+      },
+      {
+        "path": "/css/health-hope-live.css",
+        "sha1": "2b60f38902f16c521ead6b14b5c488d687c91088"
+      },
+      {
+        "path": "/js/health-hope-live.js",
+        "sha1": "96de989c7df8e6b2184edf0c37cce38800b87855"
+      },
+      {
+        "path": "/_redirects",
+        "sha1": "72290e962fcb7bf6dc63fe4c0810ae1a83680b09"
+      },
+      {
+        "path": "/_headers",
+        "sha1": "7b043ea5a9d4c337ff2bd7e778588f18ced58217"
+      }
+    ],
+    "opaqueConfigurationPreserved": true,
+    "heldEventStaffLinkExcluded": true
+  },
+  "functions": [
+    {
+      "name": "exercise-library",
+      "sha256": "7afffe944b6e4f9390354813cad0f8ff281184360f5f7131f8ecd697dc8f134f",
+      "bytes": 1626536,
+      "runtime": "nodejs22.x",
+      "unchanged": true
+    },
+    {
+      "name": "food-database",
+      "sha256": "e8a1772c271a05ea357c4b59c8c804541bc187587822e60bfba9d7e8911cdda0",
+      "bytes": 371502,
+      "runtime": "nodejs22.x",
+      "unchanged": true
+    },
+    {
+      "name": "payment-webhook",
+      "sha256": "ca4aa97da4f298adac82adb8851f055c21aa360b6c819a3b8fb2497e87ff05e2",
+      "bytes": 374355,
+      "runtime": "nodejs22.x",
+      "unchanged": true
+    },
+    {
+      "name": "payment-worker",
+      "sha256": "2d2c440bb8ff85049a820f90d969b6c986685646a4ec55214e8a1ddc8fa74a32",
+      "bytes": 374360,
+      "runtime": "nodejs22.x",
+      "unchanged": true
+    },
+    {
+      "name": "payments",
+      "sha256": "f0469725112b4f3b878b67dad311a530441e613ba4fac1a0580b167651d55ded",
+      "bytes": 374419,
+      "runtime": "nodejs22.x",
+      "unchanged": true
+    },
+    {
+      "name": "reusable-content-sync",
+      "sha256": "17551800e6a1c26506147e99bf4f48783b69cc1f96daed52e08998288780b930",
+      "bytes": 369781,
+      "runtime": "nodejs22.x",
+      "unchanged": true
+    },
+    {
+      "name": "roadmap-founder",
+      "sha256": "525a80737e5000e4ae0b5e4b76704f58eb0e0566541042ee0fda1e26b96fb079",
+      "bytes": 367630,
+      "runtime": "nodejs22.x",
+      "unchanged": true
+    },
+    {
+      "name": "roadmap-verification",
+      "sha256": "9d29f707e514df7626e8513283a9bed3834680260a8b87d5c58d5138d23180a6",
+      "bytes": 350587,
+      "runtime": "nodejs22.x",
+      "unchanged": true
+    },
+    {
+      "name": "roadmap-scoring-lab",
+      "sha256": "cfd2f74e2c5887fff743832638563a73e120abe92af8737d01e4ec2b9c18bb34",
+      "bytes": 418241,
+      "runtime": "nodejs22.x",
+      "unchanged": true
+    },
+    {
+      "name": "roadmap-processing",
+      "sha256": "b06c9e5e0215f78524d92afb172bb1fe36fd7c34cb8224c251484b7ab58b6ec6",
+      "bytes": 399423,
+      "runtime": "nodejs22.x",
+      "unchanged": true
+    }
+  ],
+  "allTenRetained": true,
+  "configurationAndSchedulePreserved": true,
+  "schedule": [
+    {
+      "name": "payment-worker",
+      "cron": "* * * * *"
+    }
+  ],
+  "rollback": {
+    "file": "docs/b6-session-continuity/rollback-functions.sql",
+    "sha256": "851c151f426d406b5f3b6bdf347dcabbd2134ea811d4ddbaa6f4fe17811c446f",
+    "restoreOriginalFiveDefinitions": true,
+    "retainNewPrivateAuditTable": true,
+    "deleteOrRewriteConsent": false,
+    "baselineDigestSha256": "3c3670f18323d60632f2644b30c2adbdc802fcc8f7e56b7e104307a629c2eb4b",
+    "restoreOnlyTwoStaticAssets": true,
+    "preserveHealthHope": true
+  },
+  "excludedHostedChanges": [
+    "Health & Hope event migration",
+    "two unreleased event Functions",
+    "three held staff-portal assets",
+    "unreleased staff navigation link"
+  ],
+  "activation": "held; all five controls false; no participant processing, consent, feedback or export mutation"
+}

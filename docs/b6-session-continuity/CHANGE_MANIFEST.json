@@ -1,0 +1,121 @@
+{
+  "base": "7403a4ff20895200e2655745181f37b5ef7d5c7b",
+  "reviewedRepair": "1b305bd03ee849c6da6aabd218c641f61fe70a4b",
+  "branch": "codex/b6-session-continuity-reconciled",
+  "self": "This file is listed separately to avoid circular hashing.",
+  "files": [
+    {
+      "file": "CURRENT_BUILD_STATE.md",
+      "sha256": "9038e49a23d05b96ee24404bd8dea428d40485c8065d1dbf50ff1823ac4ef39a",
+      "kind": "documentation"
+    },
+    {
+      "file": "docs/b6-session-continuity/ARTIFACT_HASHES.json",
+      "sha256": "c23c3059f938a97d8de1c65b99b5767f7e51154a0fd6cab732a20f19bb90d637",
+      "kind": "documentation"
+    },
+    {
+      "file": "docs/b6-session-continuity/FUNCTION_HASHES.json",
+      "sha256": "0dc716781efd5a645614aaacf79c316cbff031169a1c2cdc133f8a5356e51065",
+      "kind": "documentation"
+    },
+    {
+      "file": "docs/b6-session-continuity/LIVE_BASELINE.json",
+      "sha256": "a41e3e9375519d71803b5227dd4a3e9ae175cefb58e5e62f462ffbecec0756da",
+      "kind": "documentation"
+    },
+    {
+      "file": "docs/b6-session-continuity/POSTFLIGHT.sql",
+      "sha256": "8b898008bd380dba719b25265795111b6c70868e3a119c55c42a7bdf40996512",
+      "kind": "documentation"
+    },
+    {
+      "file": "docs/b6-session-continuity/RECONCILIATION.md",
+      "sha256": "5e6ac0555aec0cb9486bcf580577c2ee57603b162d45c33d3a1489e98494df7a",
+      "kind": "documentation"
+    },
+    {
+      "file": "docs/b6-session-continuity/RELEASE_REVIEW.md",
+      "sha256": "6714e0a4256c106a4e89e074afcc19ebad3419a1dc6b2f405853190dfc362024",
+      "kind": "documentation"
+    },
+    {
+      "file": "docs/b6-session-continuity/rollback-functions.sql",
+      "sha256": "851c151f426d406b5f3b6bdf347dcabbd2134ea811d4ddbaa6f4fe17811c446f",
+      "kind": "documentation"
+    },
+    {
+      "file": "portal/index.html",
+      "sha256": "ea6b2298494b03ffe362971b28c4a32066533dd40ad295c5f78f6d8ed41e411b",
+      "kind": "runtime"
+    },
+    {
+      "file": "portal/portal-roadmap-calibration.js",
+      "sha256": "eb570ecf36d404776295b97ecb434a8ca163ec8977b359003953771c59f86aab",
+      "kind": "runtime"
+    },
+    {
+      "file": "scripts/prepare-b6-session-continuity-release.cjs",
+      "sha256": "34afc9effdb0de571ffd8a4572caebbaebadefd2012f8eae58bb9dacc719a0f4",
+      "kind": "local_release_or_test_tool"
+    },
+    {
+      "file": "scripts/prepare-b6-session-continuity.cjs",
+      "sha256": "3590f69a49a2df41bd49ec59b5c3a016a22969294a71ef51e307df313101dd31",
+      "kind": "local_release_or_test_tool"
+    },
+    {
+      "file": "scripts/test-b6-session-continuity.cjs",
+      "sha256": "297f6e7f805537b9dd59049eee295828ca3d5743be517dba186644a600ef5d54",
+      "kind": "local_release_or_test_tool"
+    },
+    {
+      "file": "supabase/environment-migrations/production/20261020184635_roadmap_b6_session_continuity.sql",
+      "sha256": "2d4b5d1a306d699f2c325c8e7844f801f92cec5336fab196fe41921e7f0f072d",
+      "kind": "pending_migration"
+    },
+    {
+      "file": "tests/b6-production-reconciliation.cjs",
+      "sha256": "1926c83da1b244a2d94c7a10ea766a2959cb5e77e1ed525968c00d6c47c34e26",
+      "kind": "test"
+    },
+    {
+      "file": "tests/b6-purpose-feedback-browser.cjs",
+      "sha256": "3c64f5ee21b1f141650bac4b298579c36d012f147ab5fe1b8f6838cd1f4aa131",
+      "kind": "test"
+    },
+    {
+      "file": "tests/b6-session-continuity-browser.cjs",
+      "sha256": "5fbd98c589fc3bffda63f0ebcf5539a33009bb8d8932d8a6a08ac9f1a9157a58",
+      "kind": "test"
+    },
+    {
+      "file": "tests/backend/b6-session-continuity-concurrency.cjs",
+      "sha256": "217e6344e07d2071ede0b7cb87dc4841f372704670fa8c048c1cc463b08cbf3f",
+      "kind": "test"
+    },
+    {
+      "file": "tests/backend/b6-session-continuity.test.cjs",
+      "sha256": "be97ecb4b5f9140e24d8089215e828d584e7b6e82f805a5a54a0c7e82b1c89a6",
+      "kind": "test"
+    },
+    {
+      "file": "tests/fixtures/b6-session-continuity.cjs",
+      "sha256": "93bbd2c5ae66ee36c501a82ba205c33dceeb2e6f8edbe2e8bffad7592b8e6d0b",
+      "kind": "test"
+    },
+    {
+      "file": "tests/vitality-roadmap-b6-browser.cjs",
+      "sha256": "60af0c4f122b3866644de84c6895041a115283d471451922746bb06f2b0c49d0",
+      "kind": "test"
+    }
+  ],
+  "sourceRuntimeDelta": [
+    "portal/index.html",
+    "portal/portal-roadmap-calibration.js"
+  ],
+  "healthHopeSourceChanged": [],
+  "functionSourceChanged": [],
+  "scoringSourceChanged": [],
+  "sourceDataMutations": 0
+}
