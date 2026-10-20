@@ -1,0 +1,39 @@
+{
+  "reviewDate": "2026-10-20",
+  "projectRef": "voalfpxiyznnqfcqcymd",
+  "productionReadOnlyQuery": {
+    "eventSessionsInstalled": false,
+    "eventRegistrationsInstalled": false,
+    "candidateMigrationApplied": false,
+    "participantRowsRead": 0,
+    "hostedWrites": 0
+  },
+  "email": {
+    "provider": "Resend",
+    "domain": "auth.revitalizedacademy.com",
+    "domainVerified": true,
+    "sendingEnabled": true,
+    "openTracking": false,
+    "clickTracking": false,
+    "eventFromAddressValidated": false,
+    "eventCredentialConfigured": false,
+    "deliveryAcceptancePerformed": false,
+    "messagesSent": 0
+  },
+  "zoom": {
+    "eventEnvironmentKeysFound": 0,
+    "accountMeetingScopesValidated": false,
+    "registrationAttendanceAndWebhookAcceptancePerformed": false,
+    "providerCalls": 0
+  },
+  "retention": {
+    "approval": "Owner task reply: Approve 12 months",
+    "duration": "12 months after each session",
+    "expiry": "Remove participant identifiers; retain anonymous aggregate counts only",
+    "masterContactsAndConsent": "Separate approved policies",
+    "exportDeletionWorkflow": "Authenticated and audited; required before activation",
+    "implementationReady": false
+  },
+  "registrationActivation": "held",
+  "websitePublicationIndependent": true
+}

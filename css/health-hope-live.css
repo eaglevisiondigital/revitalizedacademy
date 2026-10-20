@@ -77,3 +77,10 @@
   .hhl-page .hhl-registration{padding-block:50px}
   .hhl-page .hhl-register-grid{gap:25px}
 }
+
+/* Owner-approved public gold CTAs. Dark emerald text passes on both golds. */
+.hhl-public .hhl-button,.hhl-promo .hhl-button,.vitality-popup-webinar .vitality-popup-webinar-cta{background:#D8A62A;color:#0d201b!important;border:1px solid #B18845;box-shadow:0 5px 15px #b1884526}
+.hhl-public .hhl-button:hover,.hhl-promo .hhl-button:hover,.vitality-popup-webinar .vitality-popup-webinar-cta:hover{background:#B18845;color:#0d201b!important}
+.hhl-public .hhl-button:focus-visible,.hhl-promo .hhl-button:focus-visible,.vitality-popup-webinar .vitality-popup-webinar-cta:focus-visible{outline:3px solid var(--hhl-ink);outline-offset:4px}
+.hhl-public .hhl-button:disabled{background:#B18845;color:#0d201b!important;opacity:.6;box-shadow:none;cursor:not-allowed}
+.hhl-public .hhl-form-card input:disabled,.hhl-public .hhl-form-card select:disabled{background:#eeece4;color:var(--hhl-muted);cursor:not-allowed}

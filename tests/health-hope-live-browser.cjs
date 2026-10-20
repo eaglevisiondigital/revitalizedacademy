@@ -13,13 +13,13 @@ for(const[name,engine]of [['chromium',chromium],['webkit',webkit]]){
  for(const width of [1440,768,390]){
   const context=await browser.newContext({viewport:{width,height:1000},timezoneId:'America/Chicago'}),page=await context.newPage();page.setDefaultTimeout(8000);
   await page.clock.install({time:new Date('2026-10-20T15:00:00Z')});
-  let current=rows,posted=[],failNext=false,delayedHistory=null;const errors=[],external=[],assetRequests=[];page.on('pageerror',error=>errors.push(error.message));
+  let current=rows,posted=[],failNext=false,delayedHistory=null,simulateRegistration=false,availabilityRequests=0;const errors=[],external=[],assetRequests=[];page.on('pageerror',error=>errors.push(error.message));
   const person={contact_id:'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',name:'Fictional Visitor',email:'fictional@example.invalid',registered:2,attended:1};
   const overview={can_manage:true,settings:{registration_enabled:false,zoom_enabled:false,notifications_enabled:false},sessions:[{...rows[0],regular_date:'2026-10-22',revision:1,registered:1,attended:0,join_mode:'manual',zoom_ready:false}],people:[person],review_count:0};
   await context.route('**/*',async route=>{
    const url=new URL(route.request().url());
    if(url.origin!==base){external.push(url.host);if(publicAssets&&route.request().method()==='GET'&&approvedAsset(url)){assetRequests.push(url.href);return route.continue();}if(url.host==='cdn.jsdelivr.net')return route.fulfill({contentType:'application/javascript',body:`window.fixtureSession={access_token:'fictional-local-jwt',user:{id:'fictional-owner'}};window.supabase={createClient:()=>({auth:{getSession:async()=>({data:{session:window.fixtureSession}}),onAuthStateChange:fn=>{window.fixtureAuthChange=fn}}})};`});return route.fulfill({status:200,body:'',contentType:'text/css'});}
-   if(url.pathname==='/api/health-hope-live/sessions')return route.fulfill({json:{sessions:current}});
+   if(url.pathname==='/api/health-hope-live/sessions'){availabilityRequests++;return route.fulfill({json:{sessions:current}});}
    if(url.pathname==='/api/health-hope-live/register'){posted.push(route.request().postDataJSON());if(failNext){failNext=false;return route.fulfill({status:503,json:{error:'temporary'}});}return route.fulfill({status:202,json:{received:true}});}
    if(url.pathname==='/api/health-hope-live/staff'){
     const body=route.request().postDataJSON();
@@ -31,12 +31,23 @@ for(const[name,engine]of [['chromium',chromium],['webkit',webkit]]){
    const file=url.pathname==='/health-hope-live'? 'health-hope-live.html':url.pathname==='/'?'index.html':url.pathname.slice(1),full=path.join(root,file);
    if(!full.startsWith(root+path.sep)||!fs.existsSync(full)||!fs.statSync(full).isFile())return route.fulfill({status:404,body:'Not found'});
    let bytes=fs.readFileSync(full);
+   // Explicit fixture-only activation. The first visit always checks exact held
+   // production bytes; no application traffic is allowed in that public mode.
+   if(file==='health-hope-live.html'&&simulateRegistration)bytes=Buffer.from(bytes.toString().replace('data-hhl-registration="held"','data-hhl-registration="enabled"'));
    // Render the homepage event promotion with its built CSS; unrelated homepage
    // application scripts are outside this event component's visual check.
    if(file==='index.html')bytes=Buffer.from(bytes.toString().replace(/<script\b[\s\S]*?<\/script>/gi,''));
    return route.fulfill({body:bytes,contentType:mime(full)});
   });
-  await page.goto(base+'/health-hope-live');await page.waitForFunction(()=>!document.querySelector('#hhl-session').disabled);
+  await page.goto(base+'/health-hope-live');await page.waitForFunction(()=>document.querySelector('#hhl-availability').textContent.includes('currently unavailable'));
+  assert(await page.locator('[data-hhl-countdown]').isHidden());assert(await page.locator('#hhl-registration-form').evaluate(form=>[...form.elements].every(field=>field.disabled)));assert.equal(availabilityRequests,0);assert.equal(posted.length,0);assert.equal(await page.locator('[data-hhl-next]').textContent(),'Session details are being confirmed.');checks+=5;
+  const cta=page.locator('.hhl-hero .hhl-event-cta');
+  for(const hover of [false,true]){if(hover)await cta.hover();const colors=await cta.evaluate(button=>{const s=getComputedStyle(button);return{foreground:s.color,background:s.backgroundColor};});const luminance=color=>color.match(/[\d.]+/g).slice(0,3).map(Number).map(x=>x/255).map(x=>x<=.04045?x/12.92:((x+.055)/1.055)**2.4).reduce((sum,x,i)=>sum+x*[.2126,.7152,.0722][i],0);const ratio=(luminance(colors.background)+.05)/(luminance(colors.foreground)+.05);assert(ratio>=4.5);checks++;}
+  await cta.focus();assert.notEqual(await cta.evaluate(button=>getComputedStyle(button).outlineStyle),'none');checks++;
+  if(publicAssets){for(const img of await page.locator('.hhl-stories img').all())await img.scrollIntoViewIfNeeded();await page.waitForFunction(()=>[...document.querySelectorAll('.hhl-stories img')].every(image=>image.complete&&image.naturalWidth>0));await page.evaluate(()=>document.fonts.ready);await page.evaluate(()=>scrollTo(0,0));}
+  assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));checks++;
+  if(name==='chromium'&&[1440,390].includes(width)){const size=width===1440?'desktop':'mobile';await page.screenshot({path:path.join(out,`${size}.png`),fullPage:true});for(const[selector,label]of [['.hhl-hero','hero'],['.hhl-stories','stories'],['.hhl-form-card','registration']])await page.locator(selector).screenshot({path:path.join(out,`${size}-${label}.png`)});}
+  simulateRegistration=true;await page.goto(base+'/health-hope-live');await page.waitForFunction(()=>!document.querySelector('#hhl-session').disabled);
   assert.equal(await page.locator('#hhl-session option').count(),3);checks++;
   assert.match(await page.locator('[data-hhl-next]').textContent(),/Thursday.*6:30 PM/);checks++;
   assert.equal(await page.locator('[data-hhl-countdown]').count(),1);assert.equal(await page.locator('.hhl-hero [data-hhl-countdown]').count(),1);checks+=2;
@@ -46,14 +57,13 @@ for(const[name,engine]of [['chromium',chromium],['webkit',webkit]]){
   assert(await page.locator('[name=event_notifications]').getAttribute('required')!==null);assert.equal(await page.locator('[name=marketing_requested]').getAttribute('required'),null);assert.equal(await page.locator('[name=marketing_requested]').isChecked(),false);checks+=3;
   if(publicAssets){for(const img of await page.locator('.hhl-stories img').all())await img.scrollIntoViewIfNeeded();await page.waitForFunction(()=>[...document.querySelectorAll('.hhl-stories img')].every(image=>image.complete&&image.naturalWidth>0));await page.evaluate(()=>document.fonts.ready);assert(await page.evaluate(()=>document.fonts.check('16px "DM Sans"')&&document.fonts.check('16px "Playfair Display"')));checks++;await page.evaluate(()=>scrollTo(0,0));}
   assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));checks++;
-  if(name==='chromium'&&[1440,390].includes(width)){const size=width===1440?'desktop':'mobile';await page.screenshot({path:path.join(out,`${size}.png`),fullPage:true});await page.locator('.hhl-hero').screenshot({path:path.join(out,`${size}-hero.png`)});await page.locator('.hhl-stories').screenshot({path:path.join(out,`${size}-stories.png`)});await page.locator('.hhl-form-card').screenshot({path:path.join(out,`${size}-registration.png`)});}
   await page.locator('#hhl-session').selectOption(rows[0].id);await page.locator('#hhl-first').fill('Fictional');await page.locator('#hhl-last').fill('Visitor');await page.locator('#hhl-email').fill('fictional@example.invalid');await page.locator('[name=event_notifications]').check();
   failNext=true;await page.locator('#hhl-registration-form [type=submit]').click();await page.waitForFunction(()=>document.querySelector('#hhl-form-status').textContent.includes('couldn’t'));assert.equal(posted.length,1);checks++;
   await page.locator('#hhl-registration-form [type=submit]').click();await page.locator('#hhl-confirmation').waitFor({state:'visible'});assert.equal(posted.length,2);assert.equal(posted[0].request_id,posted[1].request_id);assert.equal(posted[1].marketing_requested,false);checks+=3;
   assert.equal(await page.locator('#hhl-email').inputValue(),'');assert.deepEqual(await page.evaluate(()=>({local:Object.keys(localStorage),session:Object.keys(sessionStorage)})),{local:[],session:[]});checks+=2;
   await page.locator('#hhl-register-another').click();await page.locator('#hhl-session').selectOption(rows[1].id);await page.locator('#hhl-first').fill('Fictional');await page.locator('#hhl-last').fill('Visitor');await page.locator('#hhl-email').fill('fictional@example.invalid');await page.locator('[name=event_notifications]').check();await page.locator('#hhl-registration-form [type=submit]').click();await page.locator('#hhl-confirmation').waitFor({state:'visible'});assert.equal(posted.length,3);assert.equal(posted[2].session_id,rows[1].id);assert.notEqual(posted[2].request_id,posted[1].request_id);checks+=3;
   current=[];await page.locator('#hhl-register-another').click();await page.waitForFunction(()=>document.querySelector('#hhl-session').disabled);assert(await page.locator('[data-hhl-countdown]').isHidden());assert(await page.locator('#hhl-registration-form [type=submit]').isDisabled());checks+=2;
-  await page.goto(base+'/');const homeCta=page.locator('.hhl-promo .hhl-event-cta');await homeCta.scrollIntoViewIfNeeded();if(publicAssets)await page.evaluate(()=>document.fonts.ready);assert.match(await homeCta.textContent(),/SAVE MY SEAT FOR THURSDAY/);assert.equal(await homeCta.getAttribute('href'),'/health-hope-live');assert(await homeCta.evaluate(button=>{const rect=button.getBoundingClientRect();return rect.left>=0&&rect.right<=innerWidth+1;}));checks+=3;
+  await page.goto(base+'/');const homeCta=page.locator('.hhl-promo .hhl-event-cta');await homeCta.scrollIntoViewIfNeeded();if(publicAssets)await page.evaluate(()=>document.fonts.ready);assert.match(await homeCta.textContent(),/RESERVE MY FREE SEAT/);assert.equal(await homeCta.getAttribute('href'),'/health-hope-live#register');assert(await homeCta.evaluate(button=>{const rect=button.getBoundingClientRect();return rect.left>=0&&rect.right<=innerWidth+1;}));checks+=3;
   if(name==='chromium'&&[1440,390].includes(width))await page.locator('.hhl-promo').screenshot({path:path.join(out,width===1440?'desktop-home-promotion.png':'mobile-home-promotion.png')});
   await page.goto(base+'/portal/health-hope-live.html');await page.locator('#hhl-staff-people').getByText(person.name).waitFor();assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));checks++;
   await page.getByRole('button',{name:'Edit session',exact:true}).click();assert.equal(await page.locator('#hhl-session-form [name=id]').inputValue(),rows[0].id);checks++;

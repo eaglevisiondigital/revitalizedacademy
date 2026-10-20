@@ -22,6 +22,16 @@
     if (!form) return;
     const select = form.elements.session_id, submit = form.querySelector('[type=submit]'), status = doc.getElementById('hhl-form-status');
     const availability = doc.getElementById('hhl-availability'), clock = doc.querySelector('[data-hhl-countdown]');
+    // Website publication is independent of participant collection. An enabled
+    // client mode is a separate release gate; server/database gates still apply.
+    if (doc.body.dataset.hhlRegistration !== 'enabled') {
+      for (const field of form.elements) field.disabled = true;
+      availability.textContent = 'Registration is currently unavailable. Please check back for confirmed session details.';
+      doc.querySelector('[data-hhl-next]').textContent = 'Session details are being confirmed.';
+      doc.querySelector('[data-hhl-schedule-note]').textContent = 'Registration is currently unavailable.';
+      clock.hidden = true;
+      return;
+    }
     let sessions = [], sending = false, requestKey = null, payloadKey = null, requestGeneration = 0, disposed = false, checking = false;
     const setStatus = text => {status.textContent = text;};
     function render() {

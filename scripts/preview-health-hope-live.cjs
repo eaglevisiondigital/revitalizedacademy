@@ -19,7 +19,7 @@ http.createServer(async(req,res)=>{
  // Deliberately exclude staff/member pages and all server/test/config sources.
  if(!allowed.has(file)||/^(portal|member|pay|tests|scripts|config|supabase|netlify|admin|account)/.test(file)||!fs.existsSync(path.join(root,file))){res.writeHead(404);return res.end('Not available in this local public design preview.');}
  let bytes=fs.readFileSync(path.join(root,file));
- if(file.endsWith('.html')){bytes=Buffer.from(bytes.toString().replace(/(<body[^>]*>)/i,'$1<div style="background:#f2d79a;color:#243c30;padding:12px 20px;text-align:center;font:600 13px/1.5 Arial,sans-serif">Local design preview · Fictional sessions · Registration is not saved · Use review@example.invalid</div>'));res.setHeader('Content-Type','text/html');}
+ if(file.endsWith('.html')){bytes=Buffer.from(bytes.toString().replace('data-hhl-registration="held"','data-hhl-registration="enabled"').replace(/(<body[^>]*>)/i,'$1<div style="background:#f2d79a;color:#243c30;padding:12px 20px;text-align:center;font:600 13px/1.5 Arial,sans-serif">Local design preview · Fictional sessions · Registration is not saved · Use review@example.invalid</div>'));res.setHeader('Content-Type','text/html');}
  else res.setHeader('Content-Type',file.endsWith('.css')?'text/css':file.endsWith('.js')?'application/javascript':file.endsWith('.svg')?'image/svg+xml':file.endsWith('.webp')?'image/webp':file.endsWith('.png')?'image/png':file.endsWith('.jpg')?'image/jpeg':'application/octet-stream');
  res.end(bytes);
 }).listen(port,'127.0.0.1',()=>console.log('Health & Hope Live local design preview: http://127.0.0.1:'+port+'/health-hope-live'));

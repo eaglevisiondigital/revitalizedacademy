@@ -1,3 +1,9 @@
+## 2026-10-20 — owner-approved gold website release and event retention
+
+Owner approved the reviewed design and requested gold primary event CTAs (`#B18845` / `#D8A62A`), the exact Thursday/6:30 PM Eastern/free 30-minute homepage copy, “RESERVE MY FREE SEAT” linking to registration, and production website publication after relevant checks. Public website publication is separable from registration activation; failed integration/data gates must remain held. No scoring/founder-tool changes or bypass of readiness is authorized.
+
+In a direct follow-up the owner answered **“Approve 12 months”** to 12 months of identifiable event history after each session, then removal of identifiers with anonymous aggregate counts. Master contacts/consent follow separate approved policies; authenticated audited event deletion/export remains required before collection. [Exact approval and implementation gate](docs/HEALTH_HOPE_LIVE_RETENTION_APPROVAL_2026-10-20.md). This supersedes the earlier unresolved-duration statement below. No retention job or event migration is applied by the website-only release.
+
 ## 2026-10-20 — founder-approved Health & Hope Live
 
 Owner relayed Justyn Oliver's approval: **Health & Hope Live**, presented by ReVitalized Academy, free on Zoom every Thursday at 6:30 PM Eastern for 30 minutes. Purpose: introduce the mission, educate about holistic health and interview clients about their experiences/progress. This supersedes the previous Founders Webinar's active public promotion and reservation pricing for the new event only. Historical webinar/payment records and protected payment infrastructure remain unchanged.

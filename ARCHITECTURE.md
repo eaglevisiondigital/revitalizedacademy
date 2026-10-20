@@ -1,3 +1,9 @@
+## Health & Hope Live — website-only publication boundary, 2026-10-20
+
+Website publication is independent of participant collection. The public event page defaults `data-hhl-registration="held"`; its client disables all form controls and performs no event API requests or countdown until a separately reviewed enabled mode is published. Existing session-selection/registration behavior is retained for that later activation. This client mode is a UX/release control, not authorization; the existing server/database controls still enforce the actual boundary.
+
+The website-only digest reuses the exact current published manifest/opaque runtime configuration, all ten existing Function archives/configs/schedules and unchanged private portal/assessment assets. Only the five existing event-related public files, three new event page assets and explicit redirect/header files enter this release. Event Functions, staff event assets and the unapplied event migration are excluded. Retention policy is now approved at 12 months per session; expiry/de-identification and audited export/deletion remain required before live collection.
+
 ## Health & Hope Live — additive local candidate, 2026-10-20
 
 Permanent static event page and a separate staff event view reuse established branding, master contacts, Supabase Auth and existing CRM authorization. Two additive Netlify Functions provide a same-origin API and bounded, held scheduled worker. Eight private `hhl_*` tables separate session, participation, consent, job, rate and audit metadata from assessments/private health. Two invoker command RPCs reach private fixed-search-path helpers; there is no parallel contact store, paid event workflow or new permission key.

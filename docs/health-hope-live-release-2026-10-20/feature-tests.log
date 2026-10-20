@@ -1,0 +1,44 @@
+
+> test:health-hope-live
+> node --test tests/health-hope-live.test.mjs tests/health-hope-live-scope.cjs
+
+✔ protected assessment, health bridge and shared assets remain exact published-base bytes (4.632208ms)
+✔ active public promotions are free and legacy event pages cannot collect payments or registrations (104.917459ms)
+✔ event page has separate optional marketing consent, accessible labels and no payment/health fields (35.09225ms)
+✔ only the six new public/staff assets enter the deployment allowlist; backend, credentials and tests stay excluded (2.759667ms)
+✔ permanent event URL and both obsolete URL forms are explicitly routed without changing payment routes (0.700959ms)
+✔ the event migration has one atomic forward transaction and no repeated command definitions (1.913833ms)
+✔ next session skips closed, canceled, draft and invalid sessions (1.456ms)
+✔ registration closes at its exact instant and advances to next available Thursday (0.15125ms)
+✔ Eastern labels honor fall and spring daylight transitions (101.968167ms)
+✔ countdown is nonnegative with correct day/hour/minute boundaries (0.194125ms)
+✔ held public availability returns empty without database or provider requests (14.178625ms)
+✔ registration, worker and Zoom activation default held (2.085792ms)
+✔ a wrong environment tuple or site never reaches a database (2.046125ms)
+✔ cross-origin, GET registration and non-JSON registration are rejected (0.735417ms)
+✔ registration validates all identity/consent fields and rejects private or privileged fields (2.541291ms)
+✔ oversized and malformed bodies are rejected before RPC (1.131083ms)
+✔ honeypot does not create a registration or reveal abuse detection (0.207792ms)
+✔ valid registration hashes IP, preserves request identity, and exposes no contact or join secrets (0.664167ms)
+✔ staff commands forward caller JWT with publishable key; members cannot spoof an actor (0.444209ms)
+✔ database authorization denials stay denials and provider details never leak (0.206417ms)
+✔ Zoom signatures are constant-time checked, timestamp bounded and body bound (0.252333ms)
+✔ Zoom endpoint challenge requires signature and activation and does not touch database (0.528667ms)
+✔ verified attendance stores only reduced identity metadata and rejects wrong accounts (0.74075ms)
+✔ private Zoom links reject host links, lookalike domains and arbitrary URLs (0.15675ms)
+✔ transactional emails are specific, Eastern-aware and exclude marketing and health content (1.115291ms)
+✔ Zoom validates fixed weekly Thursday recurrence, individual-occurrence registration and disabled provider emails (3.104709ms)
+✔ uncertain non-idempotent Zoom POST is held for review (0.3235ms)
+✔ notification retries keep the same provider idempotency key and exact mail bytes (1.227042ms)
+✔ a Zoom POST server error stays uncertain and is not treated as an automatic retry (0.379625ms)
+✔ modern scheduled Function returns a Response while held (1.473041ms)
+✔ verified Zoom schedule changes are routed to the idempotent hold/cancel command (0.663541ms)
+✔ Zoom reconciliation holds a shared-email identity whose recorded names conflict (0.442416ms)
+ℹ tests 32
+ℹ suites 0
+ℹ pass 32
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 567.643416
