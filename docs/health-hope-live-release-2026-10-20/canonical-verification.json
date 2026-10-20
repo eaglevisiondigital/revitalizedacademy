@@ -1,0 +1,884 @@
+{
+  "at": "2026-10-20T19:12:17.793Z",
+  "id": "6ad7baf2e7b6f17c96d9dc78",
+  "origin": "https://revitalizedacademy.com",
+  "static": [
+    {
+      "path": "/index.html",
+      "status": 200,
+      "sha256": "9f0044ddb0c3995f2302b3dfdae95337742e94728dcbc49598207e8c5232cf37",
+      "uploadedSha256": "5ee4bbb71a73e4bcf1bf5da337f47e493ad61f2c8dd0a8b23645d3ff810eab31",
+      "prettyUrlSerialization": true
+    },
+    {
+      "path": "/account.html",
+      "status": 200,
+      "sha256": "623a828e3dcf62ae058760c10e69004fda8c8266626c861421d423791f3a1579",
+      "uploadedSha256": "1039edaf42b02ddd66d5e3b7421f43d1bafb24c59d07740981eb233360b2a33a",
+      "prettyUrlSerialization": true
+    },
+    {
+      "path": "/js/account104.js",
+      "status": 200,
+      "sha256": "07e0df21538527c1dd5029f04da1fd6b7d9ec8312fcb189a27536b788910b713",
+      "uploadedSha256": "07e0df21538527c1dd5029f04da1fd6b7d9ec8312fcb189a27536b788910b713",
+      "prettyUrlSerialization": false
+    },
+    {
+      "path": "/health-hope-live.html",
+      "status": 200,
+      "sha256": "1d73cf7db9f8dbfa7a3fb366f1414275b64e68bc50d1c6c39ce27e9edb16ab9e",
+      "uploadedSha256": "292b0df4b10e865132e93e577df14345932d310adbc430cdf5ae1eba76082565",
+      "prettyUrlSerialization": true
+    },
+    {
+      "path": "/css/health-hope-live.css",
+      "status": 200,
+      "sha256": "9951830fbec10cc25e5bfe9cd2ea1d45f17f3a5d77eb1c7d7397507624c1dda9",
+      "uploadedSha256": "9951830fbec10cc25e5bfe9cd2ea1d45f17f3a5d77eb1c7d7397507624c1dda9",
+      "prettyUrlSerialization": false
+    },
+    {
+      "path": "/js/health-hope-live.js",
+      "status": 200,
+      "sha256": "37cc394004c5817cd4db7a6969537d5c47a7233caa0b473c235aebe37040b8a7",
+      "uploadedSha256": "37cc394004c5817cd4db7a6969537d5c47a7233caa0b473c235aebe37040b8a7",
+      "prettyUrlSerialization": false
+    },
+    {
+      "path": "/consult.html",
+      "protected": true,
+      "sha256": "59a0c77e646f5d461d5128b411eea0cf13f2532d6e02261f5b55fa6e08fc2e2f",
+      "match": true
+    },
+    {
+      "path": "/health-profile.html",
+      "protected": true,
+      "sha256": "fb8a1439d7d45ba0846ef265ddc1d582e2fe3236bfa44c4f75a9ebdd747a1986",
+      "match": true
+    },
+    {
+      "path": "/js/admin104.js",
+      "protected": true,
+      "sha256": "e2417079de931c30bf3c2cc8e414478a9532416ec4126a0bb8a6c6aa2a8cbecd",
+      "match": true
+    },
+    {
+      "path": "/js/app.js",
+      "protected": true,
+      "sha256": "1c19cab1cae9e68b6f45ce24f4fe2a29bec00155ea72674e36c269eb463a29a4",
+      "match": true
+    },
+    {
+      "path": "/js/coaching-path94.js",
+      "protected": true,
+      "sha256": "c314bf0d15f8624aee8a0bffea0d0156d5bdc5b50cd3828e57b737641815bd13",
+      "match": true
+    },
+    {
+      "path": "/js/enrollment-health90-bridge.js",
+      "protected": true,
+      "sha256": "32d2e4c277f5a4cbc3c5e40b19b5c19595b826bf5af660a394758a06cef1d054",
+      "match": true
+    },
+    {
+      "path": "/js/enrollment82.js",
+      "protected": true,
+      "sha256": "bdac10920d9d8a68d14168d474cf8d207f026bee6bc67ed378e0be45d20ea153",
+      "match": true
+    },
+    {
+      "path": "/js/enrollment83-bridge.js",
+      "protected": true,
+      "sha256": "ece1e06bc85b097a75dd14f46814095ec41d26f6507234202211f218c5eee0ad",
+      "match": true
+    },
+    {
+      "path": "/js/enrollment88-family.js",
+      "protected": true,
+      "sha256": "2ab03c0ef8f08ac25ee13279ee5a7ade6c8908d601f9d5fe30083f3368f48c3b",
+      "match": true
+    },
+    {
+      "path": "/js/environment.js",
+      "protected": true,
+      "sha256": "b87d45e9ae09946e218ac3856aad0d0d0de692e87518e4ed07a5119b1c2d9b25",
+      "match": true
+    },
+    {
+      "path": "/js/family-health77.js",
+      "protected": true,
+      "sha256": "75f9921d1630bab6552c1a1a5d2aa2a74eb4efa8473d891aefebf20766b72b27",
+      "match": true
+    },
+    {
+      "path": "/js/family-health79.js",
+      "protected": true,
+      "sha256": "81487b2bde2d5ff193cf110d23fe1180a486f8af5fc87934ac616117620b2782",
+      "match": true
+    },
+    {
+      "path": "/js/free-help80.js",
+      "protected": true,
+      "sha256": "bf2f2117ef31d94684c951ca1cf7bf742fdfb7ea09f5f78478b1144a08c33d7b",
+      "match": true
+    },
+    {
+      "path": "/js/health-profile107-bridge.js",
+      "protected": true,
+      "sha256": "73dc0b27ee13a847bd08ff69ee63bdc23809aa20003da44a21ddba43d5766610",
+      "match": true
+    },
+    {
+      "path": "/js/health-profile91-data-1.js",
+      "protected": true,
+      "sha256": "53ebc17348db2fd60bc2a0d1e55fe639cbd43ab8b02ffc02d834479cf7036d82",
+      "match": true
+    },
+    {
+      "path": "/js/health-profile91-data-2.js",
+      "protected": true,
+      "sha256": "72ceb8ef69ca1b48477f213cd732b64a183c2179d05397aca02ada9969e96b92",
+      "match": true
+    },
+    {
+      "path": "/js/health-profile91-data-3.js",
+      "protected": true,
+      "sha256": "7a8a0f496c90c2fcc30db80eafb05f8d7004b648d7fd877ea0e31487c06b9cf2",
+      "match": true
+    },
+    {
+      "path": "/js/health-profile91-data-4.js",
+      "protected": true,
+      "sha256": "6de5b415b57042821f988c7380974f32f4a942458626fe1d5397f7aff8d87dfe",
+      "match": true
+    },
+    {
+      "path": "/js/health-profile91-engine.js",
+      "protected": true,
+      "sha256": "226225cc0b1170dab3546f4237e6121bedb3e11b49669cf4c5b55e691da3cd5f",
+      "match": true
+    },
+    {
+      "path": "/js/revitalized-data.js",
+      "protected": true,
+      "sha256": "8a908ae7260d31519c6f32921a5960d4139265da6c8bab00c041f48c6b949f3b",
+      "match": true
+    },
+    {
+      "path": "/js/social-proof-mini.js",
+      "protected": true,
+      "sha256": "ab2d457bf5e0d475c7093f66778f3d15d0054a193ac7d7af4b8da09c34f69dc0",
+      "match": true
+    },
+    {
+      "path": "/js/transformation-stories.js",
+      "protected": true,
+      "sha256": "43f7d129b69b02a7d00b92ffd2792cd1a5afbdb16a44552575051f2d6a211c62",
+      "match": true
+    },
+    {
+      "path": "/js/vitality-child.js",
+      "protected": true,
+      "sha256": "ef6c024bdb5abc96d2d7dd3affc5f2c4326ff8b366c85b0717f751619babaee2",
+      "match": true
+    },
+    {
+      "path": "/js/vitality-next106.js",
+      "protected": true,
+      "sha256": "92d57f18b9bd3a42a9b5947aad90bf7d1062f04e467f331b369a495e881a4f64",
+      "match": true
+    },
+    {
+      "path": "/js/vitality-report-preview.js",
+      "protected": true,
+      "sha256": "fad5c9fb96b7b82b27c3b3a8bc84ac8336c92bba9c970805f0eba04e101bafda",
+      "match": true
+    },
+    {
+      "path": "/js/vitality-resume.js",
+      "protected": true,
+      "sha256": "d98aeda66801a89d8791345ba0990dcfe9fc6cd17dfca745c78eec25ff30e84b",
+      "match": true
+    },
+    {
+      "path": "/js/vitality-roadmap-b4-coverage.js",
+      "protected": true,
+      "sha256": "2fe30c8bfc9a39da7e96394ecca897b87e05035c9fea9b0ba3e14ded91864781",
+      "match": true
+    },
+    {
+      "path": "/js/vitality-roadmap-b4-source-map.js",
+      "protected": true,
+      "sha256": "cbeab7a1c4a9efaa783da1d9f6a2d4ccdc21f3d7fd89d4e4a4f354bf623ff289",
+      "match": true
+    },
+    {
+      "path": "/js/vitality-roadmap-view.js",
+      "protected": true,
+      "sha256": "946e63a7fb1f5912943c454d2aee1cf0254976baea792d4e5a56f8fa5faf446a",
+      "match": true
+    },
+    {
+      "path": "/js/vitality55.js",
+      "protected": true,
+      "sha256": "f37245fe91407b8e2b02fbbebf91cf4af32f468ef67e321753f8d91ce0c4af59",
+      "match": true
+    },
+    {
+      "path": "/member/activate/activate112.css",
+      "protected": true,
+      "sha256": "0773a583a9be5ecdd0feee53bb87d3805ae86ceb2d11337903c0cb49d3873618",
+      "match": true
+    },
+    {
+      "path": "/member/activate/activate112.js",
+      "protected": true,
+      "sha256": "df9ab6306d05963d317238e944b60a2c927f07da27a224d1ceee068e3aa245dc",
+      "match": true
+    },
+    {
+      "path": "/member/activate/index.html",
+      "protected": true,
+      "sha256": "4a83114fb2e2f1520a625f8f54016bc71cb3a9d556bdc75ff0916ede00412160",
+      "match": true
+    },
+    {
+      "path": "/member/index.html",
+      "protected": true,
+      "sha256": "bf672eb1bb5f936a6fc34e7b76517bc3f21efb89dbfb8d96a13347e07dcbf423",
+      "match": true
+    },
+    {
+      "path": "/member/member110.css",
+      "protected": true,
+      "sha256": "aef6cd75a1068ab4a381201a46903e3ea9b13f77dd9f90461742300f481774dc",
+      "match": true
+    },
+    {
+      "path": "/member/member110.js",
+      "protected": true,
+      "sha256": "e0d2c83772234788c59675f72b516cfe30e0d13388c6a5001b338160c950a5bb",
+      "match": true
+    },
+    {
+      "path": "/member/onboarding/index.html",
+      "protected": true,
+      "sha256": "bf672eb1bb5f936a6fc34e7b76517bc3f21efb89dbfb8d96a13347e07dcbf423",
+      "match": true
+    },
+    {
+      "path": "/member/onboarding/onboarding.css",
+      "protected": true,
+      "sha256": "b1127c54d2522c1a47262697a4c8b67d2d7bbf5ca95e7e22d989c44ee1a12cbe",
+      "match": true
+    },
+    {
+      "path": "/member/onboarding/onboarding.js",
+      "protected": true,
+      "sha256": "c04581828dca9eca3f497d1c8168e47c933a0ebd9e91fb4f3597f4edbb13d1c5",
+      "match": true
+    },
+    {
+      "path": "/member/password-reset.html",
+      "protected": true,
+      "sha256": "12c72012777aafc606bedef928189da53cf8143d9611605c31eeac216f8b4fe1",
+      "match": true
+    },
+    {
+      "path": "/portal/index.html",
+      "protected": true,
+      "sha256": "c22959f82e88aa1be89f4812fa545f737bef7c67871193d3bd6f9cb3fad61fba",
+      "match": true
+    },
+    {
+      "path": "/portal/password-reset.html",
+      "protected": true,
+      "sha256": "636025926be2ddeeb26577da88320d75bc1626f568ed167129ac73a8e1c6b2b7",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-account.js",
+      "protected": true,
+      "sha256": "e4eaf37f075fcf45fe416cb3cc7117a00d206f677ecf04043714b89eb0171594",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-action-center.css",
+      "protected": true,
+      "sha256": "ddd0aa1756c532d067a4fbd1d960fb4527c00747445b7f70ffb99d60953cc7bf",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-action-center.js",
+      "protected": true,
+      "sha256": "743981b4e6cd88109a012a7073773eed7c3435bc88a101395473c020a31fcebe",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-agreements.css",
+      "protected": true,
+      "sha256": "0c85e2182a60e63a5cffd3eef3a3b277be45f7b91d4d8495e340e19b722325c0",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-agreements.js",
+      "protected": true,
+      "sha256": "77adde499919f00629ad688b569b24f1ab3ed19245e42689edcba08fa4497047",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-billing.css",
+      "protected": true,
+      "sha256": "5f952ecd104917b9499b868b886bfb56cb14da16b4c2884f5a9db2305319cfb4",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-billing.js",
+      "protected": true,
+      "sha256": "f402a20ef82c1ca893f82cb6dbae30ca60cf904f8458f7d8a3e3907f38eab111",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-challenges.css",
+      "protected": true,
+      "sha256": "ea091db8d79eaf126e450122be383e0d4cbd4efbca4bb69d9a1d51a84c5cae1d",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-challenges.js",
+      "protected": true,
+      "sha256": "9b2232a53793085f27be8630c51740686de046f06d53807c15443cc5358f05da",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-client-billing.js",
+      "protected": true,
+      "sha256": "2a5eedd4ae641790552a5969e38c0391f2d25b83a3243b02b6500b7ffb5a40c9",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-client-foundation.css",
+      "protected": true,
+      "sha256": "c81f5221365095eaf395dfcf04497aacff3d1350875848a8247a8aa264b864b6",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-client-foundation.js",
+      "protected": true,
+      "sha256": "04d97b4567ae0c08513f7e0571cec42f4ec39216a3174b24f8ba5067361ac0cd",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-client-lifecycle.css",
+      "protected": true,
+      "sha256": "13784ba6ba6519268983fef92669a98a0997c503253ec85f6f8cc92bf1a9cf14",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-client-lifecycle.js",
+      "protected": true,
+      "sha256": "604f6f94a528921b1a3c4485e74bf23d6e7af363da7a679c58cd72f1c3f28a6e",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-coach-capacity.css",
+      "protected": true,
+      "sha256": "c18df3c3d73efaba6740fb3d1d080b3c77e67ae22d5e3a384f1c90a2fa2b418c",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-coach-capacity.js",
+      "protected": true,
+      "sha256": "5149342f6cc5b54f60cd8e4f334a7db553379cdb5093901b4a7274658dcaa178",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-coaching.css",
+      "protected": true,
+      "sha256": "77e44d74f9847d417f7a14bfdfecd52efea4813f813dc24e3fc897478b8427b5",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-coaching.js",
+      "protected": true,
+      "sha256": "166be79c0490b425c02795bfd8755ff2b311031af22f1078c23080a6b907577b",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-community.css",
+      "protected": true,
+      "sha256": "d9ebae90b94cabcfbe783bace74b113c046594739e22a1d0e00bf08420539a34",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-community.js",
+      "protected": true,
+      "sha256": "10f0362dc6ffd3ab19c7567b88475b9c7581df95650aa9ebb5663f16f8892f56",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-companion.css",
+      "protected": true,
+      "sha256": "cda9041c649bd1c51fb0c027fe6b804aa384750e6d9e939aeb230809ba02c9ff",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-companion.js",
+      "protected": true,
+      "sha256": "31c950f85f533cb7e3a710fa74542c377e7cc2eb6f8612f69598efc59eb4d658",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-content-composition.js",
+      "protected": true,
+      "sha256": "50fa70cf2eb7b841df1e9b73c4160eee551171e453125036860f1c50a6ea23fc",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-content-sync.js",
+      "protected": true,
+      "sha256": "dd87460725510780fe91f3c29e2b24b02ae878532be128b73199a12064a74574",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-documents.css",
+      "protected": true,
+      "sha256": "0787e97a6753238035933b5c2a5b545d8783d84cda9347821bf7f9484c483a77",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-documents.js",
+      "protected": true,
+      "sha256": "10f90ee19ce3882a677e8c0b103c99bf575d7dae55179ad18bf2309cc017f46d",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-executive.css",
+      "protected": true,
+      "sha256": "f478a47cc7eaae898c913752fd880052ec12e9415d67bd50c9e751f4dc26d7e8",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-executive.js",
+      "protected": true,
+      "sha256": "d32b57a1813909b4386181470a07cdfedabf0b668f053cecba039d8aa034eb86",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-exercise-library.css",
+      "protected": true,
+      "sha256": "8707d06435c38ebd061da37a1c7cbcce367f17d9fcc44b82d289e55beb1e99d8",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-exercise-library.js",
+      "protected": true,
+      "sha256": "1d33279da6fe1739bb6e6d076aa4b589865018111155c91fe78d0ed0e04a26eb",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-family-requests.css",
+      "protected": true,
+      "sha256": "34a553118c4cd924baced3d917107d26d6a107e7783dda22fa16abd571090891",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-family-requests.js",
+      "protected": true,
+      "sha256": "4a34af53c74d71278d2b8eb2caf2813dc269ec701dc76055ad6dd1fa4b040f31",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-food-database.css",
+      "protected": true,
+      "sha256": "a374ec3058dbea7d6ab1ba3a5d64704ac9c7302c793da30e9aab87a88ca6eecd",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-food-database.js",
+      "protected": true,
+      "sha256": "c4a5e67b4cfab146eccb4ad517f2e6b968197a570b390ffa84674155374fb1a6",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-health-integrations.css",
+      "protected": true,
+      "sha256": "27ea910dba40b08b2464dbfd4ab2a1585885436293a19c60a1e8ec7b67c9e296",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-health-integrations.js",
+      "protected": true,
+      "sha256": "7dfe6a50954234e09dc9068a33bd5124270f9a60afb6f08aca42c6f8a38d1b7a",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-journey.css",
+      "protected": true,
+      "sha256": "be8b3167c2a9d892a1238308a7f5cee5c40663ae7e48d26fa31ae3e0615b87e9",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-journey.js",
+      "protected": true,
+      "sha256": "ea0e5c7a74292621517a14003567ae691bf7dc3cd4acb9b14483dc9a13cadff6",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-learning.css",
+      "protected": true,
+      "sha256": "278cd74f618c3da10bb8f09b70bb14a7e85d29b3a5701aa03e997d10f3c762fb",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-learning.js",
+      "protected": true,
+      "sha256": "4e95ab475f4c05251a4ecbfcb975b41b5d9d01c93338561365df33adfc00ae2d",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-member-messaging.css",
+      "protected": true,
+      "sha256": "4314731bed815232a589b167fe277a76db0cf4f599049467682302eef4fd0d25",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-member-messaging.js",
+      "protected": true,
+      "sha256": "c1b9c932450f06528ff24eb54ab18aa83702c67c62a75edc2a84e59777990f41",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-messaging.css",
+      "protected": true,
+      "sha256": "76ddd4b5bd38e9c31aef4183e18dc4aede6a16e3dcda674f425d51acef462ebf",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-messaging.js",
+      "protected": true,
+      "sha256": "700b1d90bc9f07afb07c7fe88f2075d492ff621ff21fa00b61807e379daec7b8",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-overrides.css",
+      "protected": true,
+      "sha256": "f496bd958fbf2e83aa5098bcfb0df42062888ddbf39f567e2277d1892e69cd1c",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-overrides.js",
+      "protected": true,
+      "sha256": "9356c3ed9e3ec14b04d7ebe634978ae59ac5a4480b8045f0c42e81d80069b132",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-payment-requests.css",
+      "protected": true,
+      "sha256": "8bd3df1ea2f26c96073a904cde75c6839532bbdc17f89f29b2037362a95de14c",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-payment-requests.js",
+      "protected": true,
+      "sha256": "9322f93115e4a433ef5ec000cce86e5f51824938097712b9573747ef099735a8",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-people-directory.js",
+      "protected": true,
+      "sha256": "3da97eedb1bed844505059228db9cd610626a4bdcde30f685a8c4e1571b40390",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-people.css",
+      "protected": true,
+      "sha256": "3ef35257fba72df4db22a74e073580099d8e5653fafbe3398657b1eab7198f55",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-people.js",
+      "protected": true,
+      "sha256": "dc52e427e6e16bd115e1f14fc6e52f6336295cf205b54f5541d41b201e221030",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-permissions.js",
+      "protected": true,
+      "sha256": "21325f97921872cb0f200215e02916cd06e92cb2e15b23b471eed63989b104aa",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-pipeline.js",
+      "protected": true,
+      "sha256": "0c9ad7c58dd4f6783a65023776816830d8405b020973711b5a0c3af0c9050247",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-polish.css",
+      "protected": true,
+      "sha256": "b0412fb64d2ddd917e077567c684dc2ddc6b18b9bcef8d0a26c70df2606e81df",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-programs.css",
+      "protected": true,
+      "sha256": "8f922ca59115bbc4b31b078bfb5f42846a4d61ac9168137498e88c2244054e33",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-programs.js",
+      "protected": true,
+      "sha256": "b5cb13ded9638e4844504f4c982b8efefee3d40cf077a561c80607181c006f83",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-recipe-builder.js",
+      "protected": true,
+      "sha256": "04662c483568b01a847b4a126daf11aa2d1938ee607f8bf5eedef9d56f6660db",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-referrals.css",
+      "protected": true,
+      "sha256": "33f8037968f5352e82d99d64e531d491e11d807b5fa75428bc267f35c4cd7fde",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-referrals.js",
+      "protected": true,
+      "sha256": "6fd68faa430fa0f0636b00d83e52113039dabe4bc93398c2451be188bb9d86f8",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-refuel.css",
+      "protected": true,
+      "sha256": "e9be1c79a9a416275410f93e0545fed6adb90247039729f833eb9b303999200c",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-refuel.js",
+      "protected": true,
+      "sha256": "c41139c792720d8a415837740f59c580c82679aa8e17316aad5583bf70bf54ad",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-roadmap-calibration-bootstrap.js",
+      "protected": true,
+      "sha256": "fa391b53cd430eb016893c87c34745fcb58b78751cb5d89d9619aa6b6e324743",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-roadmap-calibration.css",
+      "protected": true,
+      "sha256": "fcb65460cf03ccc3ff3944d56f2e1aa1f6f416c17aedc3aa51040c952fd670b2",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-roadmap-calibration.js",
+      "protected": true,
+      "sha256": "e95bf7e7f894a22a7c301b75f485e7ea0d24952f8eb58f14235c3d31561c3b59",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-roadmap-founder.js",
+      "protected": true,
+      "sha256": "d2672b7441d207067588e91ee88a9204fc2f886cb82ab40266f646181b27dcb6",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-roadmap-processing-bootstrap.js",
+      "protected": true,
+      "sha256": "3d046d749ee5215d4c03a3dcf4d694245f0e92c7650a6b45ed07fc705dc4e327",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-roadmap-processing.css",
+      "protected": true,
+      "sha256": "ee689c0b234f1d0b58707f0cee0b06aecd49d789156640f7f748d9642bdee345",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-roadmap-processing.js",
+      "protected": true,
+      "sha256": "e4eae738dd7f2eba9e1f9ebbb1fa8b267764c419ed92c3252300dd996e916c73",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-roadmap-scoring-lab-bootstrap.js",
+      "protected": true,
+      "sha256": "e7ed0a1ac6252dec3f64a5333f25cd7d8776591b4d6c445cebbaf218e2c8be16",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-roadmap-scoring-lab-reference.js",
+      "protected": true,
+      "sha256": "61fbd4bba66d268af876dee55f176099e44291ff25e129c31e448b878e8bb5ce",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-roadmap-scoring-lab-view.js",
+      "protected": true,
+      "sha256": "8cd8555e428ef423376936c5bb36f17ebc9bc3bbefeaf58eca9c57c7c4f74e7c",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-roadmap-scoring-lab.css",
+      "protected": true,
+      "sha256": "bc3a2cd5aa3c1aca647141e1f422bdc0196c4773bf8d926a76b9357001694087",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-roadmap-scoring-lab.js",
+      "protected": true,
+      "sha256": "bd3f886bc5ecc1ebe21f86601a4db972992b7a4e0edf77dae1d47fb03581499e",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-roadmap-verification.css",
+      "protected": true,
+      "sha256": "1dbef6614938d1c61d79d16f3182635e060fa423393a1541e8ffdbdea3224f89",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-roadmap-verification.js",
+      "protected": true,
+      "sha256": "fa7eb3f433bba5bfb73f20df435d7fbea936f3f8c3f120839eff387c5197c61d",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-shell.css",
+      "protected": true,
+      "sha256": "c175f9f74beb0a8db08efb0ef4c6f45cb78e94d1363b453ad2149471e29c15d8",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-shell.js",
+      "protected": true,
+      "sha256": "c58c6f43c13aa7eee75f11d060415ccf54eb122e585e4b3daeb2f1fa5ddd67ac",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-staff-access.css",
+      "protected": true,
+      "sha256": "cd19a4f0f40ecc1ff11ee171afb70f453181be4f0d48c9b420ec680abd1ccfe4",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-staff-access.js",
+      "protected": true,
+      "sha256": "9bc672424d00f08d6a58f427f20f46df323a5729eee6b9bf389a9c205783f596",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-staff-onboarding.css",
+      "protected": true,
+      "sha256": "dff20e4e1da5e09b366205743be617783d7246d22be71555656a7c175c64ddef",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-staff-onboarding.js",
+      "protected": true,
+      "sha256": "322bf8c68ae84de2ce7e7b53659ebbcfe78ae2de9c139755ddfea54037acc25e",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-team-calendar.css",
+      "protected": true,
+      "sha256": "ecc41e7ebdf31fb6f1f718c2301e941880c219a7b44d40ee153fdcd06032cd8a",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-team-calendar.js",
+      "protected": true,
+      "sha256": "0823785373f6a1fb196522534cddc09408b5552efe659b9e52849f83a426e1f8",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-vitality-assessments.css",
+      "protected": true,
+      "sha256": "473d64f7ef9bda60b35fc36e629bbee8096bb8759249f96c1a64e53f08f066b7",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-vitality-assessments.js",
+      "protected": true,
+      "sha256": "54c497b9b149af86955133523cd8efbd31d9b9e27e148f3648bc46e771cf40b4",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-wellness.css",
+      "protected": true,
+      "sha256": "a4dccb6de7c786032bd56e11e239ad979d16993b459488e86d2ed2b9c1c70cc2",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-wellness.js",
+      "protected": true,
+      "sha256": "da3d073361414c0c1e694a8ae96a14834ac69d34d2512f5ad03322cfa84bfd37",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-work-desk.css",
+      "protected": true,
+      "sha256": "3e7f19d53b335d8e63fed969a7c5e1099deaaabf94b2d9f07aebb5847e18d3c2",
+      "match": true
+    },
+    {
+      "path": "/portal/portal-work-desk.js",
+      "protected": true,
+      "sha256": "4e6ef3cb23d8d5d9b10cf49614a89b458a244180bb272fe401b2dfb2faeb21a7",
+      "match": true
+    },
+    {
+      "path": "/portal/portal.css",
+      "protected": true,
+      "sha256": "e4db5d0a52fad0a484b0cb44a669d8e2de7305ef49162e0cd42c936bebc29134",
+      "match": true
+    },
+    {
+      "path": "/portal/portal.js",
+      "protected": true,
+      "sha256": "8e16923552511459bc4695a4e1d1755c5a562bae3d3057face6d87ef231374cf",
+      "match": true
+    },
+    {
+      "path": "/portal/vitality-question-catalog.js",
+      "protected": true,
+      "sha256": "66daae2e5d086bbaeb7626515baa3723c22198f9ee448b8524d264c8c95965e5",
+      "match": true
+    },
+    {
+      "path": "/vitality-next.html",
+      "protected": true,
+      "sha256": "20becc153622d32882093bd78885b985509d1de8056f696865f812f64e2ffcdc",
+      "match": true
+    }
+  ],
+  "routes": [
+    {
+      "path": "/webinar",
+      "status": 301,
+      "to": "/health-hope-live"
+    },
+    {
+      "path": "/webinar.html",
+      "status": 301,
+      "to": "/health-hope-live"
+    },
+    {
+      "path": "/webinar-priority",
+      "status": 301,
+      "to": "/health-hope-live"
+    },
+    {
+      "path": "/webinar-priority.html",
+      "status": 301,
+      "to": "/health-hope-live"
+    }
+  ],
+  "passed": true,
+  "functionsRetained": 10,
+  "registration": "held"
+}

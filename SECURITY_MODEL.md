@@ -1,5 +1,7 @@
 ## Health & Hope Live — website-only release safeguards, 2026-10-20
 
+Website boundary published and canonically verified at deploy `6ad7baf2e7b6f17c96d9dc78`: all135 protected served assets and ten existing Function hashes/config/schedule exact; zero event requests/submissions/provider operations or SQL writes. [Release evidence](docs/HEALTH_HOPE_LIVE_WEBSITE_RELEASE_2026-10-20.md).
+
 Public registration defaults held without any event availability, identity, submission or provider traffic. Every input is disabled and unconfirmed availability/countdowns remain hidden. Enabling a DOM attribute alone cannot authorize server/database operations; production website publication does not install event Functions/schema or change any live credential/activation setting. The existing ten Function archives, private-health permissions and protected assessment/founder assets must remain exact to the current production baseline.
 
 Owner approved the 12-month per-session event retention policy with identifier removal and anonymous aggregate counts, retaining separate master-contact/consent policies. [Policy and required expiry/export/deletion implementation](docs/HEALTH_HOPE_LIVE_RETENTION_APPROVAL_2026-10-20.md). This is a resolved policy decision and an unresolved implementation gate. Registration/Zoom/notification activation requires that implementation plus actual provider readiness and synthetic hosted acceptance; no participant data is collected by the website-only release.

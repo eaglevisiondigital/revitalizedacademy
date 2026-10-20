@@ -45,10 +45,14 @@
       "sha256": "4c4cef0103e1483e73f478217fa882db013b49fe5723f388e72d3ccc7dcf6f1d"
     }
   ],
-  "published": false,
+  "published": true,
   "id": "6ad7baf2e7b6f17c96d9dc78",
   "digestFinalized": true,
   "state": "ready",
   "origin": "https://6ad7baf2e7b6f17c96d9dc78--revitalizedacademy.netlify.app",
-  "finishedAt": "2026-10-20T19:03:25.443Z"
+  "finishedAt": "2026-10-20T19:11:27.207Z",
+  "publishRequests": 1,
+  "verificationToolCommit": "79a18148ed1cac28f457026646a522fb9d58a631",
+  "verificationToolSha256": "25f4d8501ec72cd7dfbb2a7051c40ed6dfade5a028988d685427707736dc380b",
+  "normalizerSha256": "76f2191a9dc57b161b376396ef56dc12104b2f20343e0066321338d5b3342bfc"
 }

@@ -1,5 +1,7 @@
 ## Health & Hope Live — website-only publication boundary, 2026-10-20
 
+This boundary is live in deploy `6ad7baf2e7b6f17c96d9dc78`, application source `7403a4ff20895200e2655745181f37b5ef7d5c7b`. [Canonical verification and remaining activation gates](docs/HEALTH_HOPE_LIVE_WEBSITE_RELEASE_2026-10-20.md).
+
 Website publication is independent of participant collection. The public event page defaults `data-hhl-registration="held"`; its client disables all form controls and performs no event API requests or countdown until a separately reviewed enabled mode is published. Existing session-selection/registration behavior is retained for that later activation. This client mode is a UX/release control, not authorization; the existing server/database controls still enforce the actual boundary.
 
 The website-only digest reuses the exact current published manifest/opaque runtime configuration, all ten existing Function archives/configs/schedules and unchanged private portal/assessment assets. Only the five existing event-related public files, three new event page assets and explicit redirect/header files enter this release. Event Functions, staff event assets and the unapplied event migration are excluded. Retention policy is now approved at 12 months per session; expiry/de-identification and audited export/deletion remain required before live collection.
