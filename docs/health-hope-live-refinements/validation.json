@@ -1,0 +1,105 @@
+{
+  "reviewDate": "2026-10-20",
+  "repository": "eaglevisiondigital/revitalizedacademy",
+  "branch": "codex/health-hope-live",
+  "preRefinementCommit": "aea9211d0cc7891c4fbbfc207ad6ecfec5f4989b",
+  "scope": "Public Health & Hope Live design and matching homepage event promotion; no backend changes",
+  "sourceHashes": {
+    "health-hope-live.html": "f9efbd02047e82c1c4d21fac42d271f6bcbdabe00021f964334fac5ac66fa9a7",
+    "css/health-hope-live.css": "86156e60fde20cb74467e080d100313f11ea43bc9fc599e0f06efed18d5f5631",
+    "index.html": "2158da49d48774dfb85b670b2fa8483b06d1a30981bc088b58245ed5033de88e",
+    "tests/health-hope-live-browser.cjs": "87716c16d467d844e293519b48b6330dc2b0a8ac722233bb611ca1b3d1ed1c11"
+  },
+  "protectedTrackedFilesUnchangedFromPreRefinement": 337,
+  "protectedPaths": [
+    "netlify",
+    "supabase",
+    "js",
+    "portal",
+    "config",
+    "assets",
+    "package.json",
+    "package-lock.json",
+    "netlify.toml"
+  ],
+  "migration": {
+    "file": "supabase/migrations/20261020141529_health_hope_live.sql",
+    "sha256": "3c34381dbb2add5bde325e5a932edac977980404b3ae38d848f8a1077a1c79aa",
+    "changed": false,
+    "appliedRemotely": false
+  },
+  "tests": {
+    "featureAndScope": 32,
+    "existingRegressions": 106,
+    "browserAssertions": 234,
+    "browserRuns": 6,
+    "widths": [
+      1440,
+      768,
+      390
+    ],
+    "browsers": [
+      "Chromium",
+      "WebKit"
+    ],
+    "pageErrors": 0,
+    "horizontalOverflow": 0,
+    "syntheticApplicationTraffic": true,
+    "ordinaryPublicFontAndThumbnailGetRequests": 99,
+    "publicAssetHosts": [
+      "fonts.googleapis.com",
+      "fonts.gstatic.com",
+      "img.youtube.com"
+    ],
+    "homepagePromotionCheck": "Exact built HTML/CSS with unrelated scripts removed"
+  },
+  "staticBuild": {
+    "files": 448,
+    "allowlistChanged": false,
+    "reviewedPublicSourcesMatchBuiltBytes": true,
+    "allowlistedSourceFiles": 447,
+    "generatedRuntimeConfigFiles": 1
+  },
+  "screenshots": {
+    "clock": "2026-10-20T15:00:00Z",
+    "sessions": "Fictional October 22 and October 29 sessions; not published availability",
+    "fullPages": [
+      "desktop.png",
+      "mobile.png"
+    ]
+  },
+  "ctaContrast": {
+    "foreground": "#ffffff",
+    "background": "#154f40",
+    "ratio": 9.44
+  },
+  "artifactHashes": {
+    "browser-tests.json": "dea43f1ed9e7c88e5355c5e5b5f8e2ecb47ea2fe67b4d0fe8e7793c01fe1d131",
+    "desktop-hero.png": "3655159ee9d1b175c2940802f87eb14b88ca21c1f7dfba16def66aeb6ca689aa",
+    "desktop-home-promotion.png": "62fdb09a795cd87f58f4989d58a7c67a2caa3b447221545845fbd6545f3a1d5f",
+    "desktop-registration.png": "bd83da466ac75325cfcf73b626513a963941ec8651b372c0e5c536770c89e644",
+    "desktop-stories.png": "5593c4871f00f9194176a942a17cfa956d82e84285df826644b0a02d29946f22",
+    "desktop.png": "2e8b4f737b09b8f1d9463a0446ab0ac7fe71a619fa77bef82cd138ea6020a2d5",
+    "existing-regression-tests.log": "887880b16666759152008752501056bb848c386109463cd01f077446e8789ffd",
+    "feature-tests.log": "622a45e1011e4ac8e19f954fcbfadbad223c815af0a60cd651c2da51581114f6",
+    "mobile-hero.png": "bcd52c7d6558fb969bd9fd0cb22213c1984d88c2ebc719066d4ad5f49e12268a",
+    "mobile-home-promotion.png": "3c813df9404f5b819bbb9955b5b5eee43fc6d5577453ca622d1e267be07e2f92",
+    "mobile-registration.png": "492de97b3af82a23efa877aaf1ba0717089a78d5d0a10746d4f0541d224ed9e0",
+    "mobile-stories.png": "68f3a8245caefb4f94c2fcb62cef6e3b4aab18c9f9d52bfffb906ae920caf11c",
+    "mobile.png": "ecbfca534d55e9b73e39f70250e90ee56830fc5b3a4480dd32d570420ef6d55b",
+    "build.json": "a604b01d16e887cba0eba9a38db504b02c99683f7d82f578de577a10d377e1fa"
+  },
+  "productionChanges": 0,
+  "deploys": 0,
+  "hostedWrites": 0,
+  "zoomCalls": 0,
+  "participantNotificationsSent": 0,
+  "activationControls": "Unchanged; held",
+  "blockers": [
+    "Refreshed visual approval",
+    "Existing retention/erasure/export policy and implementation",
+    "Actual masked Zoom account/scopes and transactional sender readiness",
+    "Separately authorized synthetic hosted acceptance",
+    "Primary release-source reconciliation and explicit publication/activation authorization"
+  ]
+}
