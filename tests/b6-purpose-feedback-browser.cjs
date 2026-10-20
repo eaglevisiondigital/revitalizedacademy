@@ -37,7 +37,7 @@ async function scenario(browser,width,height){
   window.RA_PORTAL={captureStaffSession:()=>active?{actor,epoch}:null,currentStaffRole:()=>role,hasPermission:()=>true,createAuthenticatedTaskGuard(){let seq=0;return{begin:()=>active?{seq:++seq,actor,epoch}:null,current:t=>!!t&&active&&t.seq===seq&&t.actor===actor&&t.epoch===epoch,cancel:()=>seq++}},authClient:{auth:{getSession:async()=>({data:{session:active&&sessionAvailable?{access_token:'fictional.test.token'}:null}})}}};
   </script><script src="/portal/portal-roadmap-calibration.js"></script><script src="/portal/portal-roadmap-calibration-bootstrap.js"></script></body></html>`});
  });
- const open=async(index=0)=>{await page.getByRole('button',{name:'Assessment Calibration',exact:true}).click();await page.getByRole('button',{name:'Review experimental purpose / SOP',exact:true}).nth(index).click();if(!baseline)await page.getByText('Not yet recorded for this source and current session.',{exact:false}).waitFor();};
+ const open=async(index=0)=>{await page.getByRole('button',{name:'Assessment Calibration',exact:true}).click();await page.getByRole('button',{name:'Review experimental purpose / SOP',exact:true}).nth(index).click();if(!baseline)await page.getByText('No valid retained B6 acknowledgment was confirmed',{exact:false}).waitFor();};
  const checkAll=async()=>{for(const box of await page.locator('[type=checkbox]').all())await box.check();};
  const close=()=>page.getByRole('button',{name:'Close Assessment Calibration',exact:true}).click();
  try{

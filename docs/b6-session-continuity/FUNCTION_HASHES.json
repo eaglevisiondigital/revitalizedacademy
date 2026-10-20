@@ -1,0 +1,23 @@
+{
+  "before": {
+    "private.roadmap_b42_operator_plan": "72b3abadebd0c70af60cc2193c9f79c674a63ace51c9e1aa49fca57d2cba8c94",
+    "private.roadmap_b6_set_pilot": "19563e31b98c2825bb37643e7c193e5fccc37e634641c447cfcf1f0b6477944c",
+    "private.roadmap_b6_context": "81ceea23bfcce6913457ef269e7365c78ff4eff492d6a32fa9821fe60ae31731",
+    "public.roadmap_b6": "0a79110531443fe7a58a685cb0e37a32ce509adebfb98fe40335039947223089",
+    "private.roadmap_processing_set_grant": "82a98a45cfc7ccc26dad6e0fdf5b8f245492b3edc799da390affd0f52df544ba"
+  },
+  "after": {
+    "private.roadmap_b6_live_session": "137c00f786b828f78e74cbd25045f0723b793f5455141806b2bc148adc25a54b",
+    "private.roadmap_b6_check_consent": "86b500c9394ca5b5cdc5b5759383721a1584e9bc6b6290265ab05fb7118389f6",
+    "private.roadmap_b6_confirm_session": "51d1846f8043f441d24e85d6b3a9410354e508933c535fffa971534de556bcf9",
+    "private.roadmap_b6_confirmed_session": "b037a7afd2728686839c1d414d6f1dc960a4c1b1a89af6c8bad11fb841cd3135",
+    "private.roadmap_b42_operator_plan": "c370a99ebc16f7b065f40bded4042176d79682b331e335c7cff8d24d854ef3e7",
+    "private.roadmap_b6_set_pilot": "6ec8b3916736f8bbe37a3739ab421a57b1b1466893b62bf400e538a217ecaad8",
+    "private.roadmap_b6_context": "3f0d6d9d4e7b53bc96609791353fce49ceaa5355631ea3572cb513bdf3c41f82",
+    "public.roadmap_b6": "04e043ee3417070b02408fd01e41c1ff7cd71732439b767c78c53454bf751ca6",
+    "private.roadmap_processing_set_grant": "e48752ae4413b2ba603538f474f85d524560308abe37057d9c08ee41d7e5f8b9"
+  },
+  "unchangedDependency": {
+    "private.roadmap_processing_context": "e29b747feb17792c5a53043371286ab1402e76730c7daf12bddf155db2b891ed"
+  }
+}
