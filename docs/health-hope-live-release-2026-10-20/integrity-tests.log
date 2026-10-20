@@ -1,0 +1,12 @@
+✔ only known Pretty URL anchor rewriting, quote style and attribute ordering are equivalent (11.050625ms)
+✔ content, script, attributes and navigation changes remain integrity failures (0.299ms)
+✔ external destinations, query parameters and hashes are preserved (0.093584ms)
+✔ duplicate anchor attributes fail closed (1.716958ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 76.181125

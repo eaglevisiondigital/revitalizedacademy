@@ -1,0 +1,54 @@
+{
+  "startedAt": "2026-10-20T19:03:14.289Z",
+  "source": "7403a4ff20895200e2655745181f37b5ef7d5c7b",
+  "baseline": "6ad765fd237458b0eb9d8f18",
+  "candidateCreations": 1,
+  "uploads": [
+    {
+      "path": "/index.html",
+      "sha256": "5ee4bbb71a73e4bcf1bf5da337f47e493ad61f2c8dd0a8b23645d3ff810eab31"
+    },
+    {
+      "path": "/account.html",
+      "sha256": "1039edaf42b02ddd66d5e3b7421f43d1bafb24c59d07740981eb233360b2a33a"
+    },
+    {
+      "path": "/js/account104.js",
+      "sha256": "07e0df21538527c1dd5029f04da1fd6b7d9ec8312fcb189a27536b788910b713"
+    },
+    {
+      "path": "/webinar.html",
+      "sha256": "8941174c3c2e593ec9ed521d334324480914be2305431936ecef81a08059cb67"
+    },
+    {
+      "path": "/webinar-priority.html",
+      "sha256": "8941174c3c2e593ec9ed521d334324480914be2305431936ecef81a08059cb67"
+    },
+    {
+      "path": "/health-hope-live.html",
+      "sha256": "292b0df4b10e865132e93e577df14345932d310adbc430cdf5ae1eba76082565"
+    },
+    {
+      "path": "/css/health-hope-live.css",
+      "sha256": "9951830fbec10cc25e5bfe9cd2ea1d45f17f3a5d77eb1c7d7397507624c1dda9"
+    },
+    {
+      "path": "/js/health-hope-live.js",
+      "sha256": "37cc394004c5817cd4db7a6969537d5c47a7233caa0b473c235aebe37040b8a7"
+    },
+    {
+      "path": "/_redirects",
+      "sha256": "f04e726ce5887ca0d8ef8a79f5ad82b15081afb1bb4a88588dd4a6b9b0a2949f"
+    },
+    {
+      "path": "/_headers",
+      "sha256": "4c4cef0103e1483e73f478217fa882db013b49fe5723f388e72d3ccc7dcf6f1d"
+    }
+  ],
+  "published": false,
+  "id": "6ad7baf2e7b6f17c96d9dc78",
+  "digestFinalized": true,
+  "state": "ready",
+  "origin": "https://6ad7baf2e7b6f17c96d9dc78--revitalizedacademy.netlify.app",
+  "finishedAt": "2026-10-20T19:03:25.443Z"
+}

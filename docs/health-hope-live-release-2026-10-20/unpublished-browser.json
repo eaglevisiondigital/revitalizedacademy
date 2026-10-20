@@ -1,0 +1,71 @@
+{
+  "at": "2026-10-20T19:04:40.902Z",
+  "stage": "unpublished",
+  "origin": "https://6ad7baf2e7b6f17c96d9dc78--revitalizedacademy.netlify.app",
+  "deploy": "6ad7baf2e7b6f17c96d9dc78",
+  "passed": true,
+  "checks": 114,
+  "runs": [
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "homepageErrors": [],
+      "landingErrors": [],
+      "overflow": false,
+      "registrationRequests": 0,
+      "blockedNonReadRequests": []
+    },
+    {
+      "engine": "chromium",
+      "width": 768,
+      "homepageErrors": [],
+      "landingErrors": [],
+      "overflow": false,
+      "registrationRequests": 0,
+      "blockedNonReadRequests": []
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "homepageErrors": [],
+      "landingErrors": [],
+      "overflow": false,
+      "registrationRequests": 0,
+      "blockedNonReadRequests": []
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "homepageErrors": [],
+      "landingErrors": [],
+      "overflow": false,
+      "registrationRequests": 0,
+      "blockedNonReadRequests": []
+    },
+    {
+      "engine": "webkit",
+      "width": 768,
+      "homepageErrors": [],
+      "landingErrors": [],
+      "overflow": false,
+      "registrationRequests": 0,
+      "blockedNonReadRequests": []
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "homepageErrors": [],
+      "landingErrors": [],
+      "overflow": false,
+      "registrationRequests": 0,
+      "blockedNonReadRequests": []
+    }
+  ],
+  "baselineHomepageErrors": {
+    "chromium": [],
+    "webkit": []
+  },
+  "participantSubmissions": 0,
+  "providerCalls": 0,
+  "hostedWrites": 0
+}

@@ -1,0 +1,139 @@
+{
+  "at": "2026-10-20T19:02:03.360Z",
+  "site": "ece0f6f3-6c3d-46e6-bb51-95ce1ccefb06",
+  "baseline": "6ad765fd237458b0eb9d8f18",
+  "baselineSource": "17fa5533856138ecdf853f23955a5b1f19fc2aa9",
+  "source": "7403a4ff20895200e2655745181f37b5ef7d5c7b",
+  "branch": "codex/health-hope-live",
+  "websiteOnly": true,
+  "registration": "held",
+  "sqlChanges": 0,
+  "newFunctions": 0,
+  "changed": [
+    {
+      "path": "/index.html",
+      "sha1": "43b4d74aa4296aadb6fce658a9d7cd1e316496a2",
+      "sha256": "5ee4bbb71a73e4bcf1bf5da337f47e493ad61f2c8dd0a8b23645d3ff810eab31",
+      "added": false
+    },
+    {
+      "path": "/account.html",
+      "sha1": "0af588078a79835edcd67619a3d80d2bbc1d1f0c",
+      "sha256": "1039edaf42b02ddd66d5e3b7421f43d1bafb24c59d07740981eb233360b2a33a",
+      "added": false
+    },
+    {
+      "path": "/js/account104.js",
+      "sha1": "b7cdb86f4bb93edc5454b073c3a08e1093bb7cbe",
+      "sha256": "07e0df21538527c1dd5029f04da1fd6b7d9ec8312fcb189a27536b788910b713",
+      "added": false
+    },
+    {
+      "path": "/webinar.html",
+      "sha1": "eb80c3e5762c94c78be219bf37dad04df0c83bab",
+      "sha256": "8941174c3c2e593ec9ed521d334324480914be2305431936ecef81a08059cb67",
+      "added": false
+    },
+    {
+      "path": "/webinar-priority.html",
+      "sha1": "eb80c3e5762c94c78be219bf37dad04df0c83bab",
+      "sha256": "8941174c3c2e593ec9ed521d334324480914be2305431936ecef81a08059cb67",
+      "added": false
+    },
+    {
+      "path": "/health-hope-live.html",
+      "sha1": "26c855eda7a565ba01295a39bd0b166bf9c15c5d",
+      "sha256": "292b0df4b10e865132e93e577df14345932d310adbc430cdf5ae1eba76082565",
+      "added": true
+    },
+    {
+      "path": "/css/health-hope-live.css",
+      "sha1": "2b60f38902f16c521ead6b14b5c488d687c91088",
+      "sha256": "9951830fbec10cc25e5bfe9cd2ea1d45f17f3a5d77eb1c7d7397507624c1dda9",
+      "added": true
+    },
+    {
+      "path": "/js/health-hope-live.js",
+      "sha1": "96de989c7df8e6b2184edf0c37cce38800b87855",
+      "sha256": "37cc394004c5817cd4db7a6969537d5c47a7233caa0b473c235aebe37040b8a7",
+      "added": true
+    },
+    {
+      "path": "/_redirects",
+      "sha1": "72290e962fcb7bf6dc63fe4c0810ae1a83680b09",
+      "sha256": "f04e726ce5887ca0d8ef8a79f5ad82b15081afb1bb4a88588dd4a6b9b0a2949f",
+      "added": true
+    },
+    {
+      "path": "/_headers",
+      "sha1": "7b043ea5a9d4c337ff2bd7e778588f18ced58217",
+      "sha256": "4c4cef0103e1483e73f478217fa882db013b49fe5723f388e72d3ccc7dcf6f1d",
+      "added": true
+    }
+  ],
+  "retainedFiles": 437,
+  "addedFiles": 5,
+  "removedFiles": 0,
+  "files": 447,
+  "bodySha256": "3c3670f18323d60632f2644b30c2adbdc802fcc8f7e56b7e104307a629c2eb4b",
+  "functions": [
+    {
+      "name": "exercise-library",
+      "sha256": "7afffe944b6e4f9390354813cad0f8ff281184360f5f7131f8ecd697dc8f134f",
+      "bytes": 1626536
+    },
+    {
+      "name": "food-database",
+      "sha256": "e8a1772c271a05ea357c4b59c8c804541bc187587822e60bfba9d7e8911cdda0",
+      "bytes": 371502
+    },
+    {
+      "name": "payment-webhook",
+      "sha256": "ca4aa97da4f298adac82adb8851f055c21aa360b6c819a3b8fb2497e87ff05e2",
+      "bytes": 374355
+    },
+    {
+      "name": "payment-worker",
+      "sha256": "2d2c440bb8ff85049a820f90d969b6c986685646a4ec55214e8a1ddc8fa74a32",
+      "bytes": 374360
+    },
+    {
+      "name": "payments",
+      "sha256": "f0469725112b4f3b878b67dad311a530441e613ba4fac1a0580b167651d55ded",
+      "bytes": 374419
+    },
+    {
+      "name": "reusable-content-sync",
+      "sha256": "17551800e6a1c26506147e99bf4f48783b69cc1f96daed52e08998288780b930",
+      "bytes": 369781
+    },
+    {
+      "name": "roadmap-founder",
+      "sha256": "525a80737e5000e4ae0b5e4b76704f58eb0e0566541042ee0fda1e26b96fb079",
+      "bytes": 367630
+    },
+    {
+      "name": "roadmap-verification",
+      "sha256": "9d29f707e514df7626e8513283a9bed3834680260a8b87d5c58d5138d23180a6",
+      "bytes": 350587
+    },
+    {
+      "name": "roadmap-scoring-lab",
+      "sha256": "cfd2f74e2c5887fff743832638563a73e120abe92af8737d01e4ec2b9c18bb34",
+      "bytes": 418241
+    },
+    {
+      "name": "roadmap-processing",
+      "sha256": "b06c9e5e0215f78524d92afb172bb1fe36fd7c34cb8224c251484b7ab58b6ec6",
+      "bytes": 399423
+    }
+  ],
+  "retention": {
+    "approvedBy": "Owner in task reply on 2026-10-20",
+    "identifiedHistory": "12 months after each session",
+    "expiry": "Remove participant identifiers; retain only anonymous aggregate counts",
+    "masterContactsAndConsent": "Separate approved policies",
+    "deletionExport": "Authenticated audited workflow required before activation",
+    "implemented": false
+  }
+}

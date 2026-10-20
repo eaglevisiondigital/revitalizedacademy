@@ -1,0 +1,86 @@
+{
+  "at": "2026-10-20T19:08:42.286Z",
+  "rows": [
+    {
+      "path": "/portal/index.html",
+      "production": {
+        "status": 200,
+        "bytes": 180513,
+        "sha256": "c22959f82e88aa1be89f4812fa545f737bef7c67871193d3bd6f9cb3fad61fba",
+        "etag": "\"e41c51e27f677e59c7113156f7c814f2-ssl\""
+      },
+      "candidate": {
+        "status": 200,
+        "bytes": 180513,
+        "sha256": "c22959f82e88aa1be89f4812fa545f737bef7c67871193d3bd6f9cb3fad61fba",
+        "etag": "\"e514f5f73571d910571dae0f7120f13a-ssl\""
+      },
+      "same": true
+    },
+    {
+      "path": "/consult.html",
+      "production": {
+        "status": 200,
+        "bytes": 18275,
+        "sha256": "59a0c77e646f5d461d5128b411eea0cf13f2532d6e02261f5b55fa6e08fc2e2f",
+        "etag": "\"89e47e5961f87b043ef899ab6fbc6bfe-ssl\""
+      },
+      "candidate": {
+        "status": 200,
+        "bytes": 18275,
+        "sha256": "59a0c77e646f5d461d5128b411eea0cf13f2532d6e02261f5b55fa6e08fc2e2f",
+        "etag": "\"95222ff71613a371d17d801ba811bda3-ssl\""
+      },
+      "same": true
+    },
+    {
+      "path": "/js/vitality55.js",
+      "production": {
+        "status": 200,
+        "bytes": 61399,
+        "sha256": "f37245fe91407b8e2b02fbbebf91cf4af32f468ef67e321753f8d91ce0c4af59",
+        "etag": "\"35cc54523380fafaaef167f6e070d9f9-ssl\""
+      },
+      "candidate": {
+        "status": 200,
+        "bytes": 61399,
+        "sha256": "f37245fe91407b8e2b02fbbebf91cf4af32f468ef67e321753f8d91ce0c4af59",
+        "etag": "\"684c8680794449cfb400f1f561a04bdd-ssl\""
+      },
+      "same": true
+    },
+    {
+      "path": "/js/vitality-resume.js",
+      "production": {
+        "status": 200,
+        "bytes": 10065,
+        "sha256": "d98aeda66801a89d8791345ba0990dcfe9fc6cd17dfca745c78eec25ff30e84b",
+        "etag": "\"49769b2bced954451bc4ed677eaae6e3-ssl\""
+      },
+      "candidate": {
+        "status": 200,
+        "bytes": 10065,
+        "sha256": "d98aeda66801a89d8791345ba0990dcfe9fc6cd17dfca745c78eec25ff30e84b",
+        "etag": "\"e4a97ff18c872dd6939730f83967efa7-ssl\""
+      },
+      "same": true
+    },
+    {
+      "path": "/portal/portal-roadmap-processing-bootstrap.js",
+      "production": {
+        "status": 200,
+        "bytes": 5594,
+        "sha256": "3d046d749ee5215d4c03a3dcf4d694245f0e92c7650a6b45ed07fc705dc4e327",
+        "etag": "\"278987e5fea9093429519c29a8b2568f-ssl\""
+      },
+      "candidate": {
+        "status": 200,
+        "bytes": 5594,
+        "sha256": "3d046d749ee5215d4c03a3dcf4d694245f0e92c7650a6b45ed07fc705dc4e327",
+        "etag": "\"18ce8cdef39e40776f2c9685855942ad-ssl\""
+      },
+      "same": true
+    }
+  ],
+  "allMatch": true
+}
