@@ -1,0 +1,72 @@
+{
+  "files": [
+    {
+      "file": "baseline-request.json",
+      "sha256": "6b08f8a7b965446ca61b48afb735cde3c42cbe48b26648668a3232f6b6433e8e"
+    },
+    {
+      "file": "baseline.json",
+      "sha256": "6186a044433c33319bbec3b166d5e3168603d6c76d922104e788eb37c908eb7e"
+    },
+    {
+      "file": "candidate-request.json",
+      "sha256": "0cebab1e283fa3bd05570964be750be4ac682722886e13b16fc794015675d542"
+    },
+    {
+      "file": "canonical-1440-popup.png",
+      "sha256": "38c0e1731a634919267498cd35913c65de1699a8eb19abc28c2439d89e1caf01"
+    },
+    {
+      "file": "canonical-390-popup.png",
+      "sha256": "ca354d7e93a80133e74ce049e1b962988631000d42213c570132d3627d4f42ae"
+    },
+    {
+      "file": "canonical-browser.json",
+      "sha256": "08b80b87141eeff6437c8356cd42d37a553c5323756982422b819c9f133677e5"
+    },
+    {
+      "file": "canonical-verification.json",
+      "sha256": "2a515b7f7bb9af283539fe76da8b0ccc6b2fcd5e810cc93d7fe42950bf31302c"
+    },
+    {
+      "file": "completion.json",
+      "sha256": "dd2c89a753e5f30613b082b8b5c0ed02181a7c503d30d730934724b393a0ef2b"
+    },
+    {
+      "file": "operation-journal.json",
+      "sha256": "cd7792505e48a9bedf87397caf4a85c4a35096f6c692ac1b6f73ba2ce7b8a7c8"
+    },
+    {
+      "file": "release-package.json",
+      "sha256": "f48e5aa6a95df6e26fd2c6e8ca1b4cdbdb7b2a2b952a886967111930f6482e3b"
+    },
+    {
+      "file": "unpublished-1440-popup.png",
+      "sha256": "38c0e1731a634919267498cd35913c65de1699a8eb19abc28c2439d89e1caf01"
+    },
+    {
+      "file": "unpublished-390-popup.png",
+      "sha256": "ffd7eee2c1b7a6c2e24b7b17a0dde11ebf34d44f34d3aa81ac6ad900c876ebd0"
+    },
+    {
+      "file": "unpublished-browser.json",
+      "sha256": "187a10ebc11c2c5d5946a9c5b47b847c90f6c845dbf6369d5cbb884c15ae613a"
+    },
+    {
+      "file": "unpublished-verification.json",
+      "sha256": "6058412796787ff05f2e2a22809e1940bf433f9a0fdc22e1b4214cfba6cb13d9"
+    },
+    {
+      "file": "static/index.html",
+      "sha256": "652f00254a2501664b36909f5e884e243350e4c30adb783bc6b1a70f10395fb8"
+    },
+    {
+      "file": "static/css/health-hope-live.css",
+      "sha256": "4ec0abd2158e676b11be6d4e57bf0e629e50c742949367650edc0e9ffff54501"
+    },
+    {
+      "file": "static/js/vitality-report-preview.js",
+      "sha256": "b7a23457b7320ead885dc5aa4db06c8d01a60cb290b8b95e96cc305b3b60a1fd"
+    }
+  ]
+}

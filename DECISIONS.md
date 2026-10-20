@@ -1,3 +1,7 @@
+## 2026-10-20 — owner authorizes reviewed popup publication only
+
+Owner: “Looks good. Publish the popup changes to the live site. Keep registration held and leave Vitality Roadmap functionality and Zoom/email integrations unchanged.” Authority covers the reviewed three static popup assets; it does not activate or publish the held registration backend, migrations, notifications or providers. Applied as a bounded overlay on current primary production with all protected assets and publication lock retained. [Published release and evidence](docs/HEALTH_HOPE_LIVE_POPUP_RELEASE_2026-10-20.md).
+
 ## 2026-10-20 — essential manual-mode launch, nominated QA inbox and popup labels
 
 Owner explicitly separates essential registration/sender/Zoom invitation/security/retention/consent/hosted acceptance from optional automated Zoom attendance. Prepare authorized manual evidence without claiming automation. Owner nominates dave@theboss.biz for one synthetic confirmation; the question explicitly reserves separate send/hosted-test approval. No public activation, migration or notification authorization is inferred. Existing Registered Guest and twelve-month retention decisions remain final. [Prepared bounded acceptance and remaining essential gates](docs/HEALTH_HOPE_LIVE_FINAL_ACTIVATION_PREPARATION_2026-10-20.md).

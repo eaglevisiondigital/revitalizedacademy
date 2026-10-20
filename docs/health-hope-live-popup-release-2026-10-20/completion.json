@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-20",
+  "productionUrl": "https://revitalizedacademy.com/",
+  "deployment": "6ad7ed9be0bd165b997e0be1",
+  "popupSource": "73b29621db5e74e0d9f42caa7555a0933f1c3994",
+  "releaseToolCommit": "e61aec6a8ac343c26d066c4dd1c310c52c38e62b",
+  "baseline": "6ad7cd0111dae0b60c7d9656",
+  "candidateCreations": 1,
+  "publishRequests": 1,
+  "staticUploads": 3,
+  "functionUploads": 0,
+  "changedPaths": [
+    "/index.html",
+    "/css/health-hope-live.css",
+    "/js/vitality-report-preview.js"
+  ],
+  "manifestFiles": 447,
+  "retainedFileDigests": 444,
+  "protectedServedAssets": 137,
+  "functionsPreserved": 10,
+  "browserRuns": {
+    "unpublished": 6,
+    "canonical": 6
+  },
+  "pageErrors": 0,
+  "registration": "held",
+  "vitalityRoadmapFunctionality": "unchanged",
+  "zoomEmailIntegration": "unchanged",
+  "environmentChanges": 0,
+  "databaseWrites": 0,
+  "participantSubmissions": 0,
+  "realMessagesSent": 0,
+  "productionLocked": true,
+  "primaryWorktreeUntouched": true,
+  "passed": true
+}

@@ -1,3 +1,9 @@
+## LIVE — approved homepage popup; REGISTRATION HELD — 2026-10-20
+
+Published popup-only deploy `6ad7ed9be0bd165b997e0be1` at [revitalizedacademy.com](https://revitalizedacademy.com/), using reviewed public assets from `73b2962` over exact primary publication `6ad7cd0111dae0b60c7d9656` / source `fa1f490`. The popup now has a clearer gold divider, an emerald-tinted event panel and Title Case non-sentence labels. Three static paths updated, 444 unchanged file digests retained, 447 total, no additions/removals. The separate `8df6f32` registration-readiness backend and all four event migrations remain unreleased.
+
+Candidate/canonical integrity preserve 137 checked protected served assets and all ten Function hashes/runtimes/config/schedule, current primary continuity repair, opaque runtime configuration, site/beta settings and publication lock. Registration remains held; no Zoom/email/environment, SQL, founder permission or Roadmap functionality changed. [Release report, actual served browser results and live desktop/mobile screenshots](docs/HEALTH_HOPE_LIVE_POPUP_RELEASE_2026-10-20.md). The primary worktree is untouched. Earlier unpublished popup entries below are historical.
+
 ## Health & Hope Live — popup refinement and controlled acceptance prepared; NOT PUBLISHED — 2026-10-20
 
 On isolated `codex/health-hope-live`, popup commit `73b2962` implements the owner-requested homepage popup, which now uses a stronger gold divider and an emerald-tinted event panel to distinguish the two choices. Non-sentence labels use Title Case, including Maybe Later and Click To Preview Vitality Roadmap; sentence copy and existing actions are preserved. Only the marketing preview label string changes in its script. [Review and desktop/mobile screenshots](docs/HEALTH_HOPE_LIVE_POPUP_REFINEMENT_2026-10-20.md). No deployment occurred.

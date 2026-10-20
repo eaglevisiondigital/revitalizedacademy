@@ -1,0 +1,35 @@
+{
+  "startedAt": "2026-10-20T22:39:22.847Z",
+  "baseline": "6ad7cd0111dae0b60c7d9656",
+  "source": "73b29621db5e74e0d9f42caa7555a0933f1c3994",
+  "candidateCreations": 1,
+  "uploads": [
+    {
+      "path": "/index.html",
+      "sha1": "d54b56cda97a2ece78b0fa4ead8b85fb227f96b8",
+      "sha256": "652f00254a2501664b36909f5e884e243350e4c30adb783bc6b1a70f10395fb8",
+      "bytes": 38427
+    },
+    {
+      "path": "/css/health-hope-live.css",
+      "sha1": "b107ed899ed87ac9698156db24f9fc061643a8dd",
+      "sha256": "4ec0abd2158e676b11be6d4e57bf0e629e50c742949367650edc0e9ffff54501",
+      "bytes": 17433
+    },
+    {
+      "path": "/js/vitality-report-preview.js",
+      "sha1": "e114517c78b54cda56b03bbcf01453f4730b760f",
+      "sha256": "b7a23457b7320ead885dc5aa4db06c8d01a60cb290b8b95e96cc305b3b60a1fd",
+      "bytes": 7539
+    }
+  ],
+  "publishRequests": 1,
+  "published": true,
+  "id": "6ad7ed9be0bd165b997e0be1",
+  "digestFinalized": true,
+  "origin": "https://6ad7ed9be0bd165b997e0be1--revitalizedacademy.netlify.app",
+  "state": "ready",
+  "toolCommit": "e61aec6a8ac343c26d066c4dd1c310c52c38e62b",
+  "toolSha256": "faf3e9c63e629214d964b2de5af9b7ea9817fa94d2ab3c15b5d40f49888c6ae5",
+  "finishedAt": "2026-10-20T22:40:37.786Z"
+}

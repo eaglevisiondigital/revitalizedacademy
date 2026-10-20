@@ -1,3 +1,5 @@
+**Publication update, October 20, 2026:** The separately authorized popup-only update is now live as deploy `6ad7ed9be0bd165b997e0be1`; three public assets over the exact current primary manifest, with registration held and Roadmap/Zoom/email unchanged. [Release report and live verification](HEALTH_HOPE_LIVE_POPUP_RELEASE_2026-10-20.md). All registration-readiness backend changes and four event migrations remain unreleased. Earlier local/unpublished website status below is historical.
+
 # Homepage popup — clearer choices and Title Case
 
 2026-10-20 · local `codex/health-hope-live` candidate. The owner requested more defined separation between the two popup options and initial capitals for non-sentence labels, using “Maybe Later” as the example.

@@ -1,0 +1,84 @@
+{
+  "at": "2026-10-20T22:40:18.103Z",
+  "stage": "unpublished",
+  "id": "6ad7ed9be0bd165b997e0be1",
+  "origin": "https://6ad7ed9be0bd165b997e0be1--revitalizedacademy.netlify.app",
+  "passed": true,
+  "runs": [
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "height": 1000,
+      "popupFits": true,
+      "previewAndDismissal": true,
+      "titleCase": true,
+      "registration": "held",
+      "eventRequests": 0,
+      "blockedNonReadRequests": 0,
+      "pageErrors": 0
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "height": 1000,
+      "popupFits": true,
+      "previewAndDismissal": true,
+      "titleCase": true,
+      "registration": "held",
+      "eventRequests": 0,
+      "blockedNonReadRequests": 0,
+      "pageErrors": 0
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "height": 700,
+      "popupFits": true,
+      "previewAndDismissal": true,
+      "titleCase": true,
+      "registration": "held",
+      "eventRequests": 0,
+      "blockedNonReadRequests": 0,
+      "pageErrors": 0
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "height": 1000,
+      "popupFits": true,
+      "previewAndDismissal": true,
+      "titleCase": true,
+      "registration": "held",
+      "eventRequests": 0,
+      "blockedNonReadRequests": 0,
+      "pageErrors": 0
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "height": 1000,
+      "popupFits": true,
+      "previewAndDismissal": true,
+      "titleCase": true,
+      "registration": "held",
+      "eventRequests": 0,
+      "blockedNonReadRequests": 0,
+      "pageErrors": 0
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "height": 700,
+      "popupFits": true,
+      "previewAndDismissal": true,
+      "titleCase": true,
+      "registration": "held",
+      "eventRequests": 0,
+      "blockedNonReadRequests": 0,
+      "pageErrors": 0
+    }
+  ],
+  "participantSubmissions": 0,
+  "providerOperations": 0,
+  "productionWrites": 0
+}

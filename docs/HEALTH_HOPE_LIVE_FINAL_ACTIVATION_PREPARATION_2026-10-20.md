@@ -1,3 +1,5 @@
+**Publication update, October 20, 2026:** The separately authorized popup-only update is now live as deploy `6ad7ed9be0bd165b997e0be1`; three public assets over the exact current primary manifest, with registration held and Roadmap/Zoom/email unchanged. [Release report and live verification](HEALTH_HOPE_LIVE_POPUP_RELEASE_2026-10-20.md). All registration-readiness backend changes and four event migrations remain unreleased. Earlier local/unpublished website status below is historical.
+
 # Health & Hope Live — final registration activation preparation
 
 2026-10-20 · `codex/health-hope-live` · continuing acknowledged `f6db6b6`.

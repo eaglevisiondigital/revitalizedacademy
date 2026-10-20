@@ -1,3 +1,7 @@
+## Health & Hope Live — popup-only publication, 2026-10-20
+
+Deploy `6ad7ed9be0bd165b997e0be1` overlays three reviewed public popup assets on the current primary publication, preserving 444 other file digests and all ten existing Functions/config/schedule. No held event backend/staff assets or migration were published. Registration mode, Roadmap runtime, Zoom/email settings and architecture remain unchanged. [Publication and preservation evidence](docs/HEALTH_HOPE_LIVE_POPUP_RELEASE_2026-10-20.md). The manual attendance/bounded acceptance candidate below remains local only.
+
 ## Health & Hope Live — manual evidence and bounded acceptance candidate, 2026-10-20
 
 The fourth additive event migration preserves native contacts/guest stages and existing retention. Authorized manual evidence writes to existing private attendance/audit records, with session/run/identity checks and an explicit manual history annotation. A nullable private settings case and server-matching scope pin a maximum thirty-minute, one-operator/recipient/session/revision/request acceptance path through the existing registration handler and contracts; only its confirmation job can be claimed. Public registration remains held, the expired/disabled acceptance delivery latch prevents broad sends, and privacy maintenance clears expired case identifiers. No new identity store, role, RLS policy or client-access path. [Implementation, evidence and exact hosted procedure](docs/HEALTH_HOPE_LIVE_FINAL_ACTIVATION_PREPARATION_2026-10-20.md).

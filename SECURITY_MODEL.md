@@ -1,3 +1,7 @@
+## Popup-only website publication — 2026-10-20
+
+Owner explicitly authorized popup publication with registration held and Roadmap/Zoom/email unchanged. Deploy `6ad7ed9be0bd165b997e0be1` changes only three reviewed static assets. All other 444 digest references, 137 checked protected served assets and ten Functions/config/schedule are retained; publication lock and beta preserved. No environment/credential, SQL/RLS, health record, founder/staff permission, provider activation or communication changed. Event backend and four migrations remain unreleased. [Release evidence](docs/HEALTH_HOPE_LIVE_POPUP_RELEASE_2026-10-20.md).
+
 ## Health & Hope Live — held acceptance and manual evidence, local only, 2026-10-20
 
 Manual attendance reuses active/onboarded Owner/Admin, CRM manage and per-contact scope. Identity verification, completed/published/unexpired session, observed Eastern time, evidence source/reference, expected value and request key are mandatory; guessed/future/canceled/held/conflicting evidence is rejected. It uses existing event expiry/export/deletion and clearly labels manual provenance without promoting a guest. Controlled hosted acceptance additionally requires an existing All People operator, valid normal JWT, exact private/server case match and a maximum thirty-minute window. Same public registration handler, one pinned confirmation, no reminders/other recipients/Zoom operations; worker scope and delivery latch fail closed. No secrets enter public source or cases.
