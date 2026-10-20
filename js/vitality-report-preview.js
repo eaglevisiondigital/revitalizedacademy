@@ -3,7 +3,7 @@
 (() => {
   'use strict';
   const imagePath = '/assets/images/vitality-roadmap-results-sample-v2.svg';
-  const buttonText = 'Click to Preview Vitality Roadmap';
+  const buttonText = 'Click To Preview Vitality Roadmap';
   const page = location.pathname.split('/').pop() || 'index.html';
   if (!['index.html', 'consult.html', 'free-help.html', 'stories.html', 'founders.html', 'plans.html', 'webinar.html'].includes(page)) return;
   if (document.getElementById('rva-report-preview-dialog')) return;

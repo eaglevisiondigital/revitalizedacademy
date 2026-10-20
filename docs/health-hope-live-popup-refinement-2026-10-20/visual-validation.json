@@ -1,0 +1,23 @@
+{
+  "scope": "Local production-build popup; font GET requests only; other external services intercepted",
+  "results": [
+    {
+      "width": 1440,
+      "checks": 11,
+      "pageErrors": []
+    },
+    {
+      "width": 390,
+      "checks": 11,
+      "pageErrors": [],
+      "underlyingHomepageOverflow": {
+        "pixels": 8,
+        "element": ".family-home-family-photo",
+        "scope": "Existing unrelated homepage section; popup bounds x18..372 within the 390px viewport. Its source and styles were not changed."
+      }
+    }
+  ],
+  "productionWrites": 0,
+  "providerSends": 0,
+  "popupHorizontalOverflow": false
+}

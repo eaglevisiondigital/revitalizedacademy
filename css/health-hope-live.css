@@ -84,3 +84,11 @@
 .hhl-public .hhl-button:focus-visible,.hhl-promo .hhl-button:focus-visible,.vitality-popup-webinar .vitality-popup-webinar-cta:focus-visible{outline:3px solid var(--hhl-ink);outline-offset:4px}
 .hhl-public .hhl-button:disabled{background:#B18845;color:#0d201b!important;opacity:.6;box-shadow:none;cursor:not-allowed}
 .hhl-public .hhl-form-card input:disabled,.hhl-public .hhl-form-card select:disabled{background:#eeece4;color:var(--hhl-muted);cursor:not-allowed}
+/* Owner-requested popup refinement: distinguish the two next-step options. */
+.vitality-popup-dual{max-height:calc(100dvh - 36px);overflow-y:auto}
+.vitality-popup-dual .vitality-popup-or{margin:20px 0;gap:14px}
+.vitality-popup-dual .vitality-popup-or span{height:2px;background:rgba(177,136,69,.55)}
+.vitality-popup-dual .vitality-popup-or b{border-color:#B18845;background:#f7edda;color:#6f5528}
+.vitality-popup-dual .vitality-popup-webinar{padding:18px 20px 20px;border:1px solid #b8cabc;border-radius:16px;background:#eef3ed;box-shadow:inset 0 1px 0 #fff}
+.vitality-popup-dual .vitality-popup-webinar-badge{letter-spacing:.04em}
+@media(max-width:640px){.vitality-popup-dual .vitality-popup-webinar{padding:16px 14px}.vitality-popup-dual .vitality-popup-path-label{letter-spacing:.04em}}

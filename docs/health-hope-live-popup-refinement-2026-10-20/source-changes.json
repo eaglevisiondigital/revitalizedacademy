@@ -1,0 +1,21 @@
+{
+  "base": "f6db6b64a18967c1591e5e0f01ef809e8c78a05d",
+  "scope": "Owner-requested homepage popup option separation and Title Case labels only; no assessment behavior change",
+  "files": [
+    {
+      "file": "index.html",
+      "before": "5ee4bbb71a73e4bcf1bf5da337f47e493ad61f2c8dd0a8b23645d3ff810eab31",
+      "after": "652f00254a2501664b36909f5e884e243350e4c30adb783bc6b1a70f10395fb8"
+    },
+    {
+      "file": "css/health-hope-live.css",
+      "before": "9951830fbec10cc25e5bfe9cd2ea1d45f17f3a5d77eb1c7d7397507624c1dda9",
+      "after": "4ec0abd2158e676b11be6d4e57bf0e629e50c742949367650edc0e9ffff54501"
+    },
+    {
+      "file": "js/vitality-report-preview.js",
+      "before": "fad5c9fb96b7b82b27c3b3a8bc84ac8336c92bba9c970805f0eba04e101bafda",
+      "after": "b7a23457b7320ead885dc5aa4db06c8d01a60cb290b8b95e96cc305b3b60a1fd"
+    }
+  ]
+}
