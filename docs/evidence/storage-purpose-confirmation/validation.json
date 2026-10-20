@@ -1,0 +1,229 @@
+{
+  "baseline": {
+    "deploy": "6ad69bcb11fe6d27fa5d8390",
+    "source": "1511211068b1c5259162125b951cd8cf4f88edad",
+    "reverifiedHostedThisTask": false
+  },
+  "scope": "Local synthetic engineering only; no push/configuration/deployment/hosted mutation",
+  "node": {
+    "passed": 117,
+    "failed": 0,
+    "obsoleteHistoricalAssertions": 2,
+    "baselineReproduction": "The same two failures occur on unchanged baseline151; retained and replaced by actual-baseline preservation checks, not reported as passes"
+  },
+  "storageUi": {
+    "results": [
+      {
+        "engine": "chromium",
+        "width": 1440,
+        "checks": 125,
+        "passed": true,
+        "canonicalSyntheticRecords": 2,
+        "hostedRequests": 0,
+        "privateData": false,
+        "consoleWarningsErrors": 0,
+        "overflow": false,
+        "externalRequests": 0
+      },
+      {
+        "engine": "chromium",
+        "width": 768,
+        "checks": 125,
+        "passed": true,
+        "canonicalSyntheticRecords": 2,
+        "hostedRequests": 0,
+        "privateData": false,
+        "consoleWarningsErrors": 0,
+        "overflow": false,
+        "externalRequests": 0
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "checks": 125,
+        "passed": true,
+        "canonicalSyntheticRecords": 2,
+        "hostedRequests": 0,
+        "privateData": false,
+        "consoleWarningsErrors": 0,
+        "overflow": false,
+        "externalRequests": 0
+      },
+      {
+        "engine": "webkit",
+        "width": 1440,
+        "checks": 125,
+        "passed": true,
+        "canonicalSyntheticRecords": 2,
+        "hostedRequests": 0,
+        "privateData": false,
+        "consoleWarningsErrors": 0,
+        "overflow": false,
+        "externalRequests": 0
+      },
+      {
+        "engine": "webkit",
+        "width": 768,
+        "checks": 125,
+        "passed": true,
+        "canonicalSyntheticRecords": 2,
+        "hostedRequests": 0,
+        "privateData": false,
+        "consoleWarningsErrors": 0,
+        "overflow": false,
+        "externalRequests": 0
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "checks": 125,
+        "passed": true,
+        "canonicalSyntheticRecords": 2,
+        "hostedRequests": 0,
+        "privateData": false,
+        "consoleWarningsErrors": 0,
+        "overflow": false,
+        "externalRequests": 0
+      }
+    ],
+    "checks": 750
+  },
+  "sessionBrowser": {
+    "runs": 6,
+    "checks": 186,
+    "assetRoot": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/roadmap-storage-purpose-confirmation/production-dist",
+    "syntheticOnly": true,
+    "positiveConsoleErrors": 0
+  },
+  "b6Purpose": {
+    "checks": 186,
+    "passed": true,
+    "intentionalTransportDiagnostics": [
+      {
+        "engine": "chromium",
+        "width": 1440,
+        "count": 2
+      },
+      {
+        "engine": "chromium",
+        "width": 768,
+        "count": 2
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "count": 2
+      },
+      {
+        "engine": "webkit",
+        "width": 1440,
+        "count": 1
+      },
+      {
+        "engine": "webkit",
+        "width": 768,
+        "count": 1
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "count": 1
+      }
+    ],
+    "unexpectedErrors": 0
+  },
+  "native": {
+    "passed": 238,
+    "postgresql": "17.11",
+    "b6BrowserChecks": 192,
+    "processingBrowserRuns": 6,
+    "b6RaceGroups": 7,
+    "processingRaceProperties": 4,
+    "workers": 8
+  },
+  "preservation": {
+    "removed": 0,
+    "functions": 10,
+    "unchangedSources": true,
+    "cachedArchiveHashesVerified": true,
+    "noHostedOperation": true,
+    "changedManifestPaths": 2,
+    "unchangedManifestPaths": 440,
+    "servedPublicPaths": 441,
+    "opaqueConfigEntries": 1
+  },
+  "publicArtifacts": {
+    "portal/index.html": {
+      "sourceSha256": "0f8e328fdcd9cf8cc182ed635b36ac2034d8100da95ca27d9ec9897cfda83998",
+      "builtSha256": "3c0a15b1ea323db169af48d86a80388ca0d6be56cc6ace3cc98b1d9292f05973"
+    },
+    "portal/portal-roadmap-processing-bootstrap.js": {
+      "sourceSha256": "3d046d749ee5215d4c03a3dcf4d694245f0e92c7650a6b45ed07fc705dc4e327",
+      "builtSha256": "3d046d749ee5215d4c03a3dcf4d694245f0e92c7650a6b45ed07fc705dc4e327"
+    }
+  },
+  "controls": {
+    "ingest": "held false; no write",
+    "process": "held false; no write",
+    "review": "held false; no write",
+    "approve": "held false; no write",
+    "internal_pdf": "held false; no write"
+  },
+  "credentials": {
+    "valuesRetrieved": false,
+    "configured": false,
+    "currentImplementation": "legacy service_role JWT in SUPABASE_SERVICE_ROLE_KEY",
+    "narrowerRole": "separate reviewed backend change required"
+  },
+  "realSources": {
+    "processed": 0,
+    "answersRead": 0,
+    "grantsCreated": 0,
+    "consentsCreated": 0,
+    "numericDriversSupported": 0,
+    "fourthUnchanged": true
+  },
+  "logIndex": [
+    {
+      "file": "b6-purpose.log",
+      "sha256": "18ca7123163bc93c16184cfe61a4f8375759e99a4cb224059952e1b2ad2b62af"
+    },
+    {
+      "file": "browser.log",
+      "sha256": "e84619c7592d4f20d162466e717d101fc32caae5f6727f38420552758f59c09c"
+    },
+    {
+      "file": "build.log",
+      "sha256": "75d5d57f1f56eeca66ecff6c8d4eea6bc1963f44062aaff901ccda3fbe38c14a"
+    },
+    {
+      "file": "historical-baseline.log",
+      "sha256": "343b2c8c2022a71c9e4010ef6756d4d3fa974dabf939b2a93ca8c9e440ec2212"
+    },
+    {
+      "file": "native.log",
+      "sha256": "0fe318c5e62fecd0669931e1f37ef13b6359ac2413a1e5b7a7853976e66f8c44"
+    },
+    {
+      "file": "node-current-baseline.log",
+      "sha256": "327ffda6f7b184eaf11eddd224a00218b25a15247237de8f0cdd3d76b616b15f"
+    },
+    {
+      "file": "node.log",
+      "sha256": "71ca0e463ee54c5e9349eb2c47aa8f256734cb643e838b628fbbc5bf48634a7b"
+    },
+    {
+      "file": "preservation.log",
+      "sha256": "52bb4244c65cef44d64923f22b34632133361c26a981906eca90a6d8459a62c5"
+    },
+    {
+      "file": "session.log",
+      "sha256": "bdc85284098c1d0b50a2e52920190d792a14f91ea6b0e6301f5c7f3bc950695c"
+    },
+    {
+      "file": "unit.log",
+      "sha256": "ae73d83b9d9f48e66a85072597b6495a3699d8d12ba76dabd922d1e2b61ee1b9"
+    }
+  ],
+  "remainingGate": "Exact UI release approval, separate secret/config deployment approval, own storage purposes/B6 feedback/source grants, narrow historical enqueue preserving ingest=false, exact process/review activation approval"
+}

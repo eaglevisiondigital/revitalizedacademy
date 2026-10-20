@@ -1,0 +1,77 @@
+{
+  "results": [
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "checks": 125,
+      "passed": true,
+      "canonicalSyntheticRecords": 2,
+      "hostedRequests": 0,
+      "privateData": false,
+      "consoleWarningsErrors": 0,
+      "overflow": false,
+      "externalRequests": 0
+    },
+    {
+      "engine": "chromium",
+      "width": 768,
+      "checks": 125,
+      "passed": true,
+      "canonicalSyntheticRecords": 2,
+      "hostedRequests": 0,
+      "privateData": false,
+      "consoleWarningsErrors": 0,
+      "overflow": false,
+      "externalRequests": 0
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "checks": 125,
+      "passed": true,
+      "canonicalSyntheticRecords": 2,
+      "hostedRequests": 0,
+      "privateData": false,
+      "consoleWarningsErrors": 0,
+      "overflow": false,
+      "externalRequests": 0
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "checks": 125,
+      "passed": true,
+      "canonicalSyntheticRecords": 2,
+      "hostedRequests": 0,
+      "privateData": false,
+      "consoleWarningsErrors": 0,
+      "overflow": false,
+      "externalRequests": 0
+    },
+    {
+      "engine": "webkit",
+      "width": 768,
+      "checks": 125,
+      "passed": true,
+      "canonicalSyntheticRecords": 2,
+      "hostedRequests": 0,
+      "privateData": false,
+      "consoleWarningsErrors": 0,
+      "overflow": false,
+      "externalRequests": 0
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "checks": 125,
+      "passed": true,
+      "canonicalSyntheticRecords": 2,
+      "hostedRequests": 0,
+      "privateData": false,
+      "consoleWarningsErrors": 0,
+      "overflow": false,
+      "externalRequests": 0
+    }
+  ],
+  "checks": 750
+}

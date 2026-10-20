@@ -1,0 +1,56 @@
+{
+  "scope": "Local cached archives compared with prior verified published package; no hosted access",
+  "count": 10,
+  "results": [
+    {
+      "name": "exercise-library",
+      "sha256": "7afffe944b6e4f9390354813cad0f8ff281184360f5f7131f8ecd697dc8f134f",
+      "preserved": true
+    },
+    {
+      "name": "food-database",
+      "sha256": "e8a1772c271a05ea357c4b59c8c804541bc187587822e60bfba9d7e8911cdda0",
+      "preserved": true
+    },
+    {
+      "name": "payment-webhook",
+      "sha256": "ca4aa97da4f298adac82adb8851f055c21aa360b6c819a3b8fb2497e87ff05e2",
+      "preserved": true
+    },
+    {
+      "name": "payment-worker",
+      "sha256": "2d2c440bb8ff85049a820f90d969b6c986685646a4ec55214e8a1ddc8fa74a32",
+      "preserved": true
+    },
+    {
+      "name": "payments",
+      "sha256": "f0469725112b4f3b878b67dad311a530441e613ba4fac1a0580b167651d55ded",
+      "preserved": true
+    },
+    {
+      "name": "reusable-content-sync",
+      "sha256": "17551800e6a1c26506147e99bf4f48783b69cc1f96daed52e08998288780b930",
+      "preserved": true
+    },
+    {
+      "name": "roadmap-founder",
+      "sha256": "525a80737e5000e4ae0b5e4b76704f58eb0e0566541042ee0fda1e26b96fb079",
+      "preserved": true
+    },
+    {
+      "name": "roadmap-verification",
+      "sha256": "9d29f707e514df7626e8513283a9bed3834680260a8b87d5c58d5138d23180a6",
+      "preserved": true
+    },
+    {
+      "name": "roadmap-scoring-lab",
+      "sha256": "cfd2f74e2c5887fff743832638563a73e120abe92af8737d01e4ec2b9c18bb34",
+      "preserved": true
+    },
+    {
+      "name": "roadmap-processing",
+      "sha256": "cc0b39b7219ceaa3fd92a30755fe28342cc8dec7cee71cdd4e5de85a9146e8bc",
+      "preserved": true
+    }
+  ]
+}

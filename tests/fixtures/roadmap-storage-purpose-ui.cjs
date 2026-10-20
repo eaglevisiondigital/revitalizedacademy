@@ -1,0 +1,34 @@
+// Synthetic transport/identities; actual bootstrap in DOM and native browsers.
+module.exports=async function exercise(w,source){
+ let checks=0;const ok=(value,message)=>{checks++;if(!value)throw Error(message);},tick=()=>new Promise(r=>w.setTimeout(r,0));
+ const s={active:true,role:'owner',epoch:0,session:true,sdkUser:'fictional-founder',calls:0,records:new Map(),mode:'ok',stops:0,controllerCalls:0};
+ const report='00000000-0000-4000-8000-000000000001',other='00000000-0000-4000-8000-000000000002';let api;
+ w.document.body.innerHTML='<main><section id="source"></section></main>';
+ w.RA_PORTAL={captureStaffSession:()=>s.active?{epoch:s.epoch,userId:'fictional-founder'}:null,currentStaffRole:()=>s.role,createAuthenticatedTaskGuard(){let cancelled=false;return{begin:()=>({epoch:s.epoch}),current:t=>!cancelled&&s.active&&t.epoch===s.epoch,cancel:()=>cancelled=true};},authClient:{auth:{getSession:async()=>({data:{session:s.session?{access_token:'fictional.token',user:{id:s.sdkUser}}:null}})}}};
+ w.fetch=async(url,options)=>{s.calls++;ok(url==='/.netlify/functions/roadmap-processing','same-origin only');const b=JSON.parse(options.body);ok(b.report===report||b.report===other,'exact synthetic source');ok(b.action==='attest','no implicit processing');ok(b.payload.acknowledgment==='private_internal_draft_storage_review_separate_from_read_only_pilot_v1'&&b.payload.active===true,'unchanged explicit statement');
+ const mode=s.mode;if(mode==='network')throw Error('Synthetic transport failure');if(mode==='delay')await new Promise(r=>s.release=r);if(mode==='lost'){s.records.set(b.report,true);throw Error('Synthetic lost response');}
+ const status=mode==='expired'?401:mode==='denied'?403:mode==='http-unavailable'?503:mode==='http-failed'?500:200;
+ const body=mode==='unavailable'?{unavailable:true,acknowledged:true}:mode==='missing'?{}:mode==='false'?{acknowledged:false}:mode==='string'?{acknowledged:'true'}:mode==='array'?[]:mode==='null'?null:{acknowledged:true,idempotent:s.records.has(b.report)};
+ if(mode==='ok'||mode==='delay')s.records.set(b.report,true);
+ return{ok:status===200,status,json:async()=>{if(mode==='malformed')throw Error('Invalid JSON');if(mode==='json-delay')await new Promise(r=>s.release=r);return body;}};
+ };
+ w.RVA_ROADMAP_PROCESSING={mount(_host,options){api=options;return{start:async()=>{s.controllerCalls++;if(s.holdStart)await new Promise((_resolve,reject)=>s.failStart=reject);},stop(){s.stops++;}};}};w.eval(source);
+ const open=(id=report)=>w.document.dispatchEvent(new w.CustomEvent('ra:roadmap-source-opened',{detail:{report:id,host:w.document.getElementById('source')}}));
+ const reset=()=>w.document.dispatchEvent(new w.Event('ra:staff-access-reset'));
+ const launch=async(id=report)=>{open(id);w.document.querySelector('button').click();await tick();};
+ const status=()=>w.document.querySelector('[role=status]'),button=()=>w.document.querySelectorAll('button')[1],box=()=>w.document.querySelector('input');
+ const check=()=>{box().checked=true;box().dispatchEvent(new w.Event('change'));};
+ ok(s.calls===0,'no eager requests');open();w.document.dispatchEvent(new w.Event('ra:roadmap-source-closed'));ok(!w.document.querySelector('.roadmap-processing'),'close before launch');
+ await launch();ok(status().dataset.state==='pending'&&button().disabled,'pending unchecked');button().dispatchEvent(new w.MouseEvent('click'));await tick();ok(s.calls===0,'unchecked cannot send');
+ check();s.mode='delay';button().click();await tick();ok(status().dataset.state==='recording','visible loading');const before=s.calls;for(let i=0;i<8;i++)button().dispatchEvent(new w.MouseEvent('click'));ok(s.calls===before,'one in-flight request');s.release();await tick();await tick();ok(status().dataset.state==='recorded'&&button().disabled,'strict server confirmation');ok(s.records.size===1,'canonical source record');
+ for(const [mode,state]of [['unavailable','unavailable'],['http-unavailable','unavailable'],['denied','denied'],['expired','expired'],['http-failed','failed'],['missing','failed'],['false','failed'],['string','failed'],['array','failed'],['null','failed'],['malformed','failed'],['network','failed']]){await launch();check();s.mode=mode;button().click();await tick();await tick();ok(status().dataset.state===state,mode+' state');ok(!status().textContent.startsWith('Recorded:'),mode+' never false recorded');}
+ await launch();check();s.mode='lost';button().click();await tick();await tick();ok(status().dataset.state==='failed','lost response unconfirmed');s.mode='ok';button().click();await tick();await tick();ok(status().dataset.state==='recorded'&&s.records.size===1,'idempotent retry canonical record');
+ s.holdStart=true;await launch();s.holdStart=false;check();s.mode='ok';button().click();await tick();await tick();s.failStart(Error('Synthetic late workflow failure'));await tick();ok(status().dataset.state==='recorded','late workflow failure cannot overwrite genuine consent');
+ await launch(other);ok(status().dataset.state==='pending','source change does not inherit success');const count=s.calls;try{await api.request({action:'attest',report,payload:{}});throw Error('cross source accepted');}catch(e){ok(e.state==='denied','cross-source request rejected');}ok(s.calls===count,'cross-source denied before network');
+ await launch();check();s.session=false;button().click();await tick();await tick();ok(status().dataset.state==='expired'&&s.calls===count,'missing auth no network');s.session=true;
+ await launch();check();s.sdkUser='fictional-other-founder';button().click();await tick();await tick();ok(status().dataset.state==='expired'&&s.calls===count,'SDK account transition denied before network');s.sdkUser='fictional-founder';
+ for(const mode of ['delay','json-delay']){await launch();check();s.mode=mode;button().click();await tick();s.epoch++;reset();s.release();await tick();await tick();ok(!w.document.querySelector('.roadmap-processing'),'stale '+mode+' cannot repaint');}
+ s.active=false;open();ok(!w.document.querySelector('.roadmap-processing'),'invalid/revoked session inert');s.active=true;s.role='coach';open();ok(!w.document.querySelector('.roadmap-processing'),'coach denied');s.role='admin';open();ok(!w.document.querySelector('.roadmap-processing'),'non-founder role not widened');s.role='owner';s.epoch++;s.mode='ok';await launch(other);check();button().click();await tick();await tick();ok(status().dataset.state==='recorded'&&s.records.size===2,'new session/source reinitializes');
+ w.dispatchEvent(new w.Event('pagehide'));ok(!w.document.querySelector('.roadmap-processing'),'pagehide teardown');const end=s.calls;w.dispatchEvent(new w.Event('focus'));await tick();ok(s.calls===end,'no post-teardown polling');ok(s.controllerCalls>0&&s.stops>0,'controller lifecycle');
+ return{checks,passed:true,canonicalSyntheticRecords:s.records.size,hostedRequests:0,privateData:false};
+};

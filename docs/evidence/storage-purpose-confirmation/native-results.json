@@ -1,0 +1,219 @@
+{
+  "postgresql": "17.11",
+  "databaseTests": 238,
+  "failed": 0,
+  "b6Browser": {
+    "b6BrowserChecks": 192,
+    "results": [
+      {
+        "engine": "chromium",
+        "width": 1440,
+        "height": 1000,
+        "checks": 32,
+        "sourceUnchanged": true,
+        "blindReview": true,
+        "revocation": true,
+        "accountTransition": true,
+        "consoleWarningsErrors": 0,
+        "overflow": false,
+        "downloads": 0
+      },
+      {
+        "engine": "chromium",
+        "width": 768,
+        "height": 1024,
+        "checks": 32,
+        "sourceUnchanged": true,
+        "blindReview": true,
+        "revocation": true,
+        "accountTransition": true,
+        "consoleWarningsErrors": 0,
+        "overflow": false,
+        "downloads": 0
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "height": 844,
+        "checks": 32,
+        "sourceUnchanged": true,
+        "blindReview": true,
+        "revocation": true,
+        "accountTransition": true,
+        "consoleWarningsErrors": 0,
+        "overflow": false,
+        "downloads": 0
+      },
+      {
+        "engine": "webkit",
+        "width": 1440,
+        "height": 1000,
+        "checks": 32,
+        "sourceUnchanged": true,
+        "blindReview": true,
+        "revocation": true,
+        "accountTransition": true,
+        "consoleWarningsErrors": 0,
+        "overflow": false,
+        "downloads": 0
+      },
+      {
+        "engine": "webkit",
+        "width": 768,
+        "height": 1024,
+        "checks": 32,
+        "sourceUnchanged": true,
+        "blindReview": true,
+        "revocation": true,
+        "accountTransition": true,
+        "consoleWarningsErrors": 0,
+        "overflow": false,
+        "downloads": 0
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "height": 844,
+        "checks": 32,
+        "sourceUnchanged": true,
+        "blindReview": true,
+        "revocation": true,
+        "accountTransition": true,
+        "consoleWarningsErrors": 0,
+        "overflow": false,
+        "downloads": 0
+      }
+    ]
+  },
+  "processingBrowser": {
+    "processingNativeBrowser": [
+      {
+        "engine": "chromium",
+        "width": 1440,
+        "drivers": 12,
+        "flow": "queue→authenticated worker→draft→review→regenerate→internal approval",
+        "consoleWarningsErrors": 0,
+        "overflow": false,
+        "downloads": 0,
+        "logoutPrivateDomCleared": true
+      },
+      {
+        "engine": "chromium",
+        "width": 768,
+        "drivers": 12,
+        "flow": "queue→authenticated worker→draft→review→regenerate→internal approval",
+        "consoleWarningsErrors": 0,
+        "overflow": false,
+        "downloads": 0,
+        "logoutPrivateDomCleared": true
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "drivers": 12,
+        "flow": "queue→authenticated worker→draft→review→regenerate→internal approval",
+        "consoleWarningsErrors": 0,
+        "overflow": false,
+        "downloads": 0,
+        "logoutPrivateDomCleared": true
+      },
+      {
+        "engine": "webkit",
+        "width": 1440,
+        "drivers": 12,
+        "flow": "queue→authenticated worker→draft→review→regenerate→internal approval",
+        "consoleWarningsErrors": 0,
+        "overflow": false,
+        "downloads": 0,
+        "logoutPrivateDomCleared": true
+      },
+      {
+        "engine": "webkit",
+        "width": 768,
+        "drivers": 12,
+        "flow": "queue→authenticated worker→draft→review→regenerate→internal approval",
+        "consoleWarningsErrors": 0,
+        "overflow": false,
+        "downloads": 0,
+        "logoutPrivateDomCleared": true
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "drivers": 12,
+        "flow": "queue→authenticated worker→draft→review→regenerate→internal approval",
+        "consoleWarningsErrors": 0,
+        "overflow": false,
+        "downloads": 0,
+        "logoutPrivateDomCleared": true
+      }
+    ]
+  },
+  "b6Concurrency": {
+    "b6RaceGroups": 7,
+    "results": [
+      {
+        "group": "purpose_retry",
+        "workers": 8,
+        "overlap": 8,
+        "successes": 8,
+        "safeDenials": 0
+      },
+      {
+        "group": "competing_feedback",
+        "workers": 8,
+        "overlap": 8,
+        "successes": 1,
+        "safeDenials": 7
+      },
+      {
+        "group": "identical_retry",
+        "workers": 8,
+        "overlap": 8,
+        "successes": 8,
+        "safeDenials": 0
+      },
+      {
+        "group": "source_change",
+        "workers": 8,
+        "overlap": 8,
+        "successes": 0,
+        "safeDenials": 8
+      },
+      {
+        "group": "b6_revocation",
+        "workers": 8,
+        "overlap": 8,
+        "successes": 0,
+        "safeDenials": 8
+      },
+      {
+        "group": "purpose_withdrawal",
+        "workers": 8,
+        "overlap": 8,
+        "successes": 0,
+        "safeDenials": 8
+      },
+      {
+        "group": "maximum_four_slots",
+        "workers": 8,
+        "overlap": 8,
+        "successes": 4,
+        "safeDenials": 4
+      }
+    ]
+  },
+  "processingConcurrency": {
+    "processingConcurrency": {
+      "workers": 8,
+      "distinctBackends": 8,
+      "serverBarrier": true,
+      "oneLease": true,
+      "oneVersion": true,
+      "reviewSuccesses": 1,
+      "safeReviewConflicts": 7,
+      "idempotentRegeneration": true
+    }
+  },
+  "remainingTaskDatabases": 0
+}

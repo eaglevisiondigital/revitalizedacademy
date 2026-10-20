@@ -40,3 +40,18 @@ test('real completion/resume command queues once with candidate installed, prior
  assert.equal(await f.v('select count(*)from private.roadmap_processing_versions'),'0');
 });
 test('duplicate purpose acknowledgment is idempotent and never invalidates the operator grant',async()=>{await f.enable();const before=await f.v('select count(*)from private.roadmap_processing_purposes');assert.equal((await rpc('attest',f.report,{active:true,acknowledgment:'private_internal_draft_storage_review_separate_from_read_only_pilot_v1'})).idempotent,true);assert.equal(await f.v('select count(*)from private.roadmap_processing_purposes'),before);assert.equal((await runDraft()).client_visible,false);});
+test('source grants with ingest held false do not queue historical sources or produce a draft',async()=>{
+ await f.grant6({feedback:true});
+ await f.q("insert into public.staff_permission_overrides(user_id,permission_key,allowed,updated_by)values($1,'staff.manage',true,$1)on conflict(user_id,permission_key)do update set allowed=true",[f.owner]);
+ const payload={active:true,acknowledgment:'private_internal_draft_storage_review_separate_from_read_only_pilot_v1'};
+ const first=await rpc('attest',f.report,payload),again=await rpc('attest',f.report,payload);
+ assert.equal(first.acknowledged,true);assert.equal(again.idempotent,true);
+ assert.equal(await f.v('select count(*)from private.roadmap_processing_purposes'),'1');
+ const purpose=await f.v('select max(sequence)from private.roadmap_processing_purposes');
+ await f.v('select private.roadmap_processing_set_grant($1,$2,$3,$4,$5,true,false,false)',[purpose,new Date(Date.now()+300000).toISOString(),f.owner,f.sessions.get(f.owner),'LOCAL FICTIONAL explicit three-source private review authority']);
+ assert.equal(await f.v('select ingest from private.roadmap_processing_controls'),false);
+ assert.equal(await f.v('select count(*)from private.roadmap_processing_jobs'),'0');
+ await f.q('update private.roadmap_processing_controls set process=true,review=true');
+ const claim=await rpc('claim',f.report,{});assert.equal(claim.claimed,false);
+ assert.equal(await f.v('select count(*)from private.roadmap_processing_versions'),'0');
+});

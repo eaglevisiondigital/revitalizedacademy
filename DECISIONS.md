@@ -1,3 +1,7 @@
+## 2026-10-19 — Storage consent is not HTTP success; ingestion stays held
+
+Engineering authority repairs UI locally only. Recorded requires explicit persisted acknowledgment from the existing RPC. Existing valid B6 consent must not be repeated unnecessarily; separate storage-purpose consent remains mandatory. No transient ingest toggle, manual source touch, generic credential substitution, secret configuration or real-source activation is authorized by this package. Historical enqueue and credential alternatives are explicit future review gates. [Readiness and decision handoff](docs/ROADMAP_STORAGE_PURPOSE_READINESS.md).
+
 B6 continuation reconciles exact PR #46 `94be23a9b07f3825fed3b5c31c4091f5d7977b63` with the existing PR #47 implementation. Its three original preflight files remain byte-identical; the guarded runtime reuses that contract. Controlled session-local recalculation and same-source saved review comparison show exact candidate pins and changed founder judgments without historical code execution or inferred missing numeric scores. All technical and real-participant release gates remain held. See [B6 continuation](docs/B6_PR46_CONTINUATION.md).
 
 # 2026-10-18 — B6 engineering direction, not scoring-policy approval

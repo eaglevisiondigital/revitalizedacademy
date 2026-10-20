@@ -1,0 +1,2 @@
+const {test}=require('node:test'),fs=require('node:fs'),{JSDOM}=require('jsdom'),exercise=require('./fixtures/roadmap-storage-purpose-ui.cjs');
+test('storage confirmation, denial, lost response, duplicate and session contract',async()=>{const dom=new JSDOM('<main></main>',{url:'https://revitalizedacademy.com/portal/',runScripts:'outside-only'});try{console.log(JSON.stringify(await exercise(dom.window,fs.readFileSync('portal/portal-roadmap-processing-bootstrap.js','utf8'))));}finally{dom.window.close();}});

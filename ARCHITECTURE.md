@@ -1,3 +1,7 @@
+## Storage-purpose confirmation boundary — local patch, 2026-10-19
+
+Retains existing founder JWT RPC, private idempotent purpose storage and service-only seal. Only launcher confirmation/lifecycle and its version reference change; no new API/database behavior. Historical source enqueue currently depends on ingest=true, so keeping ingest=false requires a separately reviewed narrow operator enqueue path before actual draft activation. [Configuration and activation plan](docs/ROADMAP_STORAGE_PURPOSE_READINESS.md).
+
 B6 continuation reconciles exact PR #46 `94be23a9b07f3825fed3b5c31c4091f5d7977b63` with the existing PR #47 implementation. Its three original preflight files remain byte-identical; the guarded runtime reuses that contract. Controlled session-local recalculation and same-source saved review comparison show exact candidate pins and changed founder judgments without historical code execution or inferred missing numeric scores. All technical and real-participant release gates remain held. See [B6 continuation](docs/B6_PR46_CONTINUATION.md).
 
 # B6 candidate architecture — not installed

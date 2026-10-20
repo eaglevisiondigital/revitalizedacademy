@@ -1,3 +1,7 @@
+## Storage-purpose confirmation safety — local only, 2026-10-19
+
+Bootstrap now accepts only strict persisted server acknowledgment, rejects neutral unavailable, binds selected source and SDK user to the captured staff session, aborts on teardown and ignores late JSON. Existing SQL/RLS/founder/session/seal contracts unchanged. A site Functions-only secret is still broadly privileged, not a seal-only credential; configuration and narrower-role changes require separate approval. No actual source access or mutation. [Review and held gates](docs/ROADMAP_STORAGE_PURPOSE_READINESS.md).
+
 B6 continuation reconciles exact PR #46 `94be23a9b07f3825fed3b5c31c4091f5d7977b63` with the existing PR #47 implementation. Its three original preflight files remain byte-identical; the guarded runtime reuses that contract. Controlled session-local recalculation and same-source saved review comparison show exact candidate pins and changed founder judgments without historical code execution or inferred missing numeric scores. All technical and real-participant release gates remain held. See [B6 continuation](docs/B6_PR46_CONTINUATION.md).
 
 # B6 candidate security — all real-data gates held
