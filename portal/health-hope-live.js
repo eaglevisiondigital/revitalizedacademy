@@ -8,7 +8,7 @@
   let epoch = 0, currentUser = null, contact = null, historyGeneration = 0, busy = false, allowed = false;
   function clear() {
     epoch++; historyGeneration++;overviewGeneration++; currentUser = null; contact = null; allowed = false; workspace.hidden = true; management.hidden = true;
-    for (const id of ['hhl-staff-sessions','hhl-staff-people','hhl-staff-history','hhl-private-join','hhl-reviews']) el(id).replaceChildren();
+    for (const id of ['hhl-staff-sessions','hhl-staff-people','hhl-staff-history','hhl-private-join','hhl-reviews','hhl-privacy-queue']) el(id).replaceChildren();
     el('hhl-private-join').hidden = true; el('hhl-history-panel').hidden = true;
     el('hhl-session-form').reset(); el('hhl-settings-form').reset();el('hhl-weekly-form').reset();el('hhl-people-search').reset();
   }
@@ -28,12 +28,29 @@
   function button(label, action) {const element = node('button', label); element.type = 'button'; element.onclick = async () => {element.disabled = true; const captured = epoch; try {await action();} catch (error) {if (captured === epoch) notice.textContent = error.message;} finally {element.disabled = false;}}; return element;}
   const stageLabel = stage => ({registered_guest:'Registered Guest',engaged_guest:'Engaged Guest',prospective_client:'Prospective Client',client:'Client (existing onboarding)',lead:'Lead (existing relationship)',assessment_lead:'Assessment Lead (existing relationship)',webinar_lead:'Webinar Lead (existing relationship)',applicant:'Applicant (existing relationship)',inactive:'Inactive (existing relationship)'})[stage] || 'Existing CRM relationship';
   function reviewForm(label, action, data, after) {
-    const form=node('form','');form.className='hhl-review-form';const reason=node('input','');reason.required=true;reason.minLength=5;reason.maxLength=500;reason.placeholder='Reason / evidence for this staff action';reason.setAttribute('aria-label',reason.placeholder);const save=node('button',label);save.type='submit';form.append(reason,save);
+    const form=node('form','');form.className='hhl-review-form';form.dataset.hhlAction=action;const reason=node('input','');reason.required=true;reason.minLength=5;reason.maxLength=500;reason.placeholder='Reason / evidence for this staff action';reason.setAttribute('aria-label',reason.placeholder);const save=node('button',label);save.type='submit';form.append(reason,save);
     form.onsubmit=async event=>{event.preventDefault();if(!form.reportValidity()||busy||!allowed)return;busy=true;save.disabled=true;const captured=epoch;try{await api(action,{...data,reason:reason.value});if(captured===epoch)await after();}catch(error){if(captured===epoch)notice.textContent=error.message;}finally{busy=false;save.disabled=false;}};
     return form;
   }
   const when = value => new Intl.DateTimeFormat('en-US', {timeZone:'America/New_York', dateStyle:'medium', timeStyle:'short'}).format(new Date(value)) + ' Eastern';
   function easternInput(value) {const parts = Object.fromEntries(new Intl.DateTimeFormat('en-CA', {timeZone:'America/New_York', year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date(value)).filter(p=>p.type!=='literal').map(p=>[p.type,p.value]));return `${parts.year}-${parts.month}-${parts.day}T${parts.hour}:${parts.minute}`;}
+  function downloadEventData(data,name) {
+    const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));const link=node('a','Download event data');link.href=url;link.download=name;link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  }
+  function privacyForm(person) {
+    const section=node('details','');section.append(node('summary','Verified event export or deletion'));
+    section.append(node('p','Verify the requester through an approved contact channel. This covers event data only; shared CRM, client, health, financial and independently governed consent records remain separate. Do not enter health details.'));
+    const form=node('form','');form.className='hhl-review-form';const kind=node('select','');kind.setAttribute('aria-label','Event privacy request type');for(const [value,label]of [['export','Export event data'],['delete','Delete event data']]){const option=node('option',label);option.value=value;kind.append(option);}
+    const verifiedLabel=node('label','I verified the requester’s identity and request '),verified=node('input','');verified.type='checkbox';verified.required=true;verifiedLabel.prepend(verified);const save=node('button','Open verified request');save.type='submit';const result=node('div','');form.append(kind,verifiedLabel,save);section.append(form,result);
+    form.onsubmit=async event=>{event.preventDefault();if(busy||!allowed||!form.reportValidity())return;busy=true;save.disabled=true;const captured=epoch;
+      try{const data=await api('privacy-open',{request_id:crypto.randomUUID(),contact_id:person.contact_id,kind:kind.value,identity_verified:verified.checked,verification:'verified_contact_request'});if(captured!==epoch)return;
+        result.replaceChildren(node('p','Verified request expires in 15 minutes. Export files contain event data only; transfer them through an approved secure channel.'));
+        if(kind.value==='export'){result.append(button('Download verified event export',async()=>{const data=await api('privacy-export',{case_id:dataCase});if(captured===epoch&&data.registrations)downloadEventData(data,'health-hope-live-event-export.json');}));const dataCase=data.case_id;}
+        else{result.append(node('p','Event delivery is now on hold. Complete provider cleanup and wait until '+when(data.safe_after)+' before deletion. Shared contacts are preserved.'));
+          const label=node('label','Any required Zoom/email provider cleanup has been completed or verified under its approved retention policy '),box=node('input','');box.type='checkbox';label.prepend(box);result.append(label,button('Complete verified event deletion',async()=>{await api('privacy-delete',{case_id:data.case_id,provider_cleanup_confirmed:box.checked});if(captured===epoch)await load();}));}
+      }catch(error){if(captured===epoch)notice.textContent=error.message;}finally{busy=false;save.disabled=false;}
+    };return section;
+  }
   async function history(person) {
     const captured = epoch, generation = ++historyGeneration; contact = person.contact_id;
     el('hhl-private-join').replaceChildren(); el('hhl-private-join').hidden = true; el('hhl-staff-history').replaceChildren(); el('hhl-history-panel').hidden = false;
@@ -83,6 +100,7 @@
         const next=person.relationship_stage==='registered_guest'?'engaged_guest':'prospective_client';
         card.append(node('p',next==='engaged_guest'?'Record a deliberate staff review of engagement. Attendance alone does not advance the relationship.':'Record an expression of client interest or a deliberate staff qualification decision. Enrollment and access remain separate.'),reviewForm('Mark '+stageLabel(next),'guest-stage',{contact_id:person.contact_id,stage:next,expected_stage:person.relationship_stage},load));
       }
+      if(data.can_manage)card.append(privacyForm(person));
       el('hhl-staff-people').append(card);
     }
   }
@@ -99,6 +117,13 @@
   el('hhl-people-search').addEventListener('submit',event=>{event.preventDefault();const captured=epoch;load().catch(error=>{if(captured===epoch)notice.textContent=error.message;});});
   el('hhl-staff-refresh').onclick=()=>{const captured=epoch;load().catch(error=>{if(captured===epoch)notice.textContent=error.message;});};
   el('hhl-history-close').onclick=()=>{historyGeneration++;contact=null;el('hhl-history-panel').hidden=true;el('hhl-staff-history').replaceChildren();el('hhl-private-join').replaceChildren();el('hhl-private-join').hidden=true;};
+  el('hhl-privacy-refresh').onclick=async()=>{
+    const captured=epoch;el('hhl-privacy-queue').replaceChildren();
+    try{const data=await api('privacy-overview');if(captured!==epoch)return;const target=el('hhl-privacy-queue');target.append(node('p','Retention worker: '+(data.retention.enabled?'enabled':'held')+' · Provider policy: '+(data.retention.provider_ready?'verified':'pending')+' · Last heartbeat: '+(data.retention.healthy_at?when(data.retention.healthy_at):'not recorded')));
+      if(!data.can_manage_all){target.append(node('p','Provider manifests require existing All People management scope.'));return;}
+      for(const row of data.sessions){const card=node('article','');card.className='hhl-staff-card';card.append(node('h3',when(row.starts_at)),node('p','Retention deadline: '+when(row.expires_at)+' · Provider cleanup: '+(row.provider_cleanup_ready?'attested':'pending')),button('Download private provider cleanup manifest',async()=>{const manifest=await api('privacy-provider-manifest',{session_id:row.session_id});if(captured===epoch)downloadEventData(manifest,'health-hope-live-provider-cleanup.json');}));const label=node('label','External provider cleanup or approved provider retention has been verified '),box=node('input','');box.type='checkbox';label.prepend(box);card.append(label,button('Record provider cleanup attestation',async()=>{if(!box.checked)throw Error('Verify provider cleanup before attesting.');await api('privacy-provider-attest',{session_id:row.session_id,provider_cleanup_confirmed:box.checked});if(captured===epoch)el('hhl-privacy-refresh').click();}));target.append(card);}
+    }catch(error){if(captured===epoch)notice.textContent=error.message;}
+  };
   el('hhl-load-reviews').onclick=async()=>{
     const captured=epoch;el('hhl-reviews').replaceChildren();
     try{const data=await api('review-list',{reason:'Staff requested event review queue'});if(captured!==epoch)return;

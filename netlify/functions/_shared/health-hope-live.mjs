@@ -25,6 +25,18 @@ export function verifyZoom(raw, headers, secret, now = Date.now()) {
   const expected = 'v0=' + createHmac('sha256', secret).update('v0:' + timestamp + ':' + raw).digest('hex');
   return timingSafeEqual(Buffer.from(signature), Buffer.from(expected));
 }
+export function verifyResend(raw,headers,secret,now=Date.now()) {
+  if(typeof secret!=='string'||!/^whsec_[A-Za-z0-9+/]+={0,2}$/.test(secret))return false;
+  const id=headers.get('svix-id')||'',stamp=headers.get('svix-timestamp')||'',signatures=headers.get('svix-signature')||'';
+  if(!/^[A-Za-z0-9_-]{1,200}$/.test(id)||!/^\d{10}$/.test(stamp)||Math.abs(now/1000-Number(stamp))>300||signatures.length>2048)return false;
+  const key=Buffer.from(secret.slice(6),'base64');if(key.length<16)return false;
+  const expected=createHmac('sha256',key).update(id+'.'+stamp+'.'+raw).digest();
+  return signatures.split(' ').some(value=>{if(!/^v1,[A-Za-z0-9+/]{43}=$/.test(value))return false;const actual=Buffer.from(value.slice(3),'base64');return actual.length===expected.length&&timingSafeEqual(actual,expected);});
+}
+export function eventSender(from,replyTo) {
+  return typeof from==='string'&&!/[\x00-\x1f\x7f]/.test(from)&&/^ReVitalized Academy <[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@auth\.revitalizedacademy\.com>$/i.test(from)
+    && typeof replyTo==='string'&&/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(replyTo)&&replyTo.length<=254;
+}
 export function zoomClient(env, fetcher = fetch) {
   let token = null, until = 0;
   async function accessToken() {
@@ -130,7 +142,16 @@ export function createHealthHopeApp(env, {fetcher = fetch, context = {}, now = (
           return json(await service('sessions'));
         }
         if (request.method !== 'POST') return json({error: 'method_not_allowed'}, 405);
-        const {raw, body} = await readBody(request, action === 'zoom-webhook' ? 64000 : 16000);
+        const {raw, body} = await readBody(request, ['zoom-webhook','email-webhook'].includes(action) ? 64000 : 16000);
+        if(action==='email-webhook') {
+          configured();if(!enabled(env,'RVA_HHL_NOTIFICATIONS_ENABLED'))throw new EventError('notifications_held');
+          if(!verifyResend(raw,request.headers,env.get('RVA_HHL_RESEND_WEBHOOK_SECRET'),now()))throw new EventError('invalid_webhook',401);
+          const status=({'email.delivered':'delivered','email.bounced':'bounced','email.complained':'complained','email.failed':'failed','email.suppressed':'suppressed'})[body.type];
+          const tags=Array.isArray(body.data?.tags)?Object.fromEntries(body.data.tags.filter(t=>t&&typeof t.name==='string').map(t=>[t.name,t.value])):body.data?.tags;
+          if(!status||tags?.event!=='health_hope_live')return json({received:true});
+          if(!uuid(body.data?.email_id)||!uuid(tags.job_id))throw new EventError('invalid_webhook',400);
+          return json(await service('mail-status',{event_key:hash('resend:'+request.headers.get('svix-id')),provider_id:body.data.email_id,job_id:tags.job_id,status}));
+        }
         if (action === 'zoom-webhook') {
           configured();
           if (!enabled(env, 'RVA_HHL_ZOOM_ENABLED')) throw new EventError('zoom_held');
@@ -166,7 +187,7 @@ export function createHealthHopeApp(env, {fetcher = fetch, context = {}, now = (
           if (body.company_website) return json({received: true}, 202);
           const secret = env.get('RVA_HHL_RATE_SECRET'); if (!secret || !context.ip) throw new EventError('registration_protection_unavailable');
           const {company_website, ...input} = body;
-          return json(await service('register', {...input, guest_model_version: 'hhl-guest-v1', ip_hash: createHmac('sha256', secret).update(context.ip).digest('hex')}), 202);
+          return json(await service('register', {...input, guest_model_version: 'hhl-guest-v1', privacy_model_version: 'hhl-privacy-v1', ip_hash: createHmac('sha256', secret).update(context.ip).digest('hex')}), 202);
         }
         if (action === 'staff') {
           const authorization = request.headers.get('authorization') || '';
@@ -183,12 +204,16 @@ export function createHealthHopeApp(env, {fetcher = fetch, context = {}, now = (
             const input = {session_id: session.id, meeting_id: session.zoom_meeting_id, occurrence_id: session.zoom_occurrence_id, starts_at: session.starts_at};
             await zoom.validateSession(input); return json(await service('zoom-sync', input));
           }
-          const allowed = ['overview','history','join-info','settings','session-save','review-list','identity-resolve','bind-instance','attendance-resolve','attendance-status','guest-stage','withdraw-consent','prepare-weekly'];
+          const allowed = ['overview','history','join-info','settings','session-save','review-list','identity-resolve','bind-instance','attendance-resolve','attendance-status','guest-stage','privacy-overview','privacy-open','privacy-export','privacy-delete','privacy-provider-manifest','privacy-provider-attest','withdraw-consent','prepare-weekly'];
           if (!allowed.includes(body.action)) throw new EventError('invalid_request', 400);
           return json(await staff(jwt, body.action, body.data));
         }
         return json({error: 'not_found'}, 404);
       } catch (error) {return json({error: error instanceof EventError ? error.code : 'event_unavailable'}, error instanceof EventError ? error.status : 503);}
+    },
+    async retention() {
+      if (!enabled(env,'RVA_HHL_RETENTION_ENABLED')) return {held:true};
+      return service('privacy-maintain',{allow_retention:true});
     },
     async worker() {
       if (!enabled(env, 'RVA_HHL_WORKER_ENABLED') || (!enabled(env, 'RVA_HHL_ZOOM_ENABLED') && !enabled(env, 'RVA_HHL_NOTIFICATIONS_ENABLED'))) return {held: true, processed: 0};
@@ -212,16 +237,17 @@ export function createHealthHopeApp(env, {fetcher = fetch, context = {}, now = (
         const lease = await service('claim', {allow_zoom: enabled(env, 'RVA_HHL_ZOOM_ENABLED'), allow_notifications: enabled(env, 'RVA_HHL_NOTIFICATIONS_ENABLED')}); if (!lease) break;
         try {
           const job = await service('job', lease);
+          if (!Number.isFinite(Date.parse(job.expires_at)) || Date.parse(job.expires_at)<=now()) throw new EventError('event_retention_expired');
           if (job.kind === 'zoom') {
             if (!enabled(env, 'RVA_HHL_ZOOM_ENABLED')) throw new EventError('zoom_held');
             const result = await zoom.register(job); await service('finish', {...lease, state: 'done', ...result});
           } else {
             if (!enabled(env, 'RVA_HHL_NOTIFICATIONS_ENABLED')) throw new EventError('notifications_held');
             if (Date.parse(job.first_attempt_at) <= now() - 23 * 3600000) throw new EventError('notification_retry_window_expired');
-            const key = env.get('RVA_HHL_RESEND_API_KEY'), from = env.get('RVA_HHL_EMAIL_FROM'); if (!key || !from) throw new EventError('notifications_not_configured');
+            const key = env.get('RVA_HHL_RESEND_API_KEY'), from = env.get('RVA_HHL_EMAIL_FROM'), replyTo=env.get('RVA_HHL_EMAIL_REPLY_TO'); if (!key || !eventSender(from,replyTo) || !env.get('RVA_HHL_RESEND_WEBHOOK_SECRET')) throw new EventError('notifications_not_configured');
             const mail = emailForJob(job);
             let response;
-            try {response = await transport('https://api.resend.com/emails', {method: 'POST', headers: {Authorization: 'Bearer ' + key, 'Content-Type': 'application/json', 'Idempotency-Key': 'hhl-' + job.id}, body: JSON.stringify({from, to: [job.email], ...mail}), signal: AbortSignal.timeout(10000), redirect: 'error'});}
+            try {response = await transport('https://api.resend.com/emails', {method: 'POST', headers: {Authorization: 'Bearer ' + key, 'Content-Type': 'application/json', 'Idempotency-Key': 'hhl-' + job.id}, body: JSON.stringify({from, reply_to:replyTo, to: [job.email], tags:[{name:'event',value:'health_hope_live'},{name:'job_id',value:job.id}], ...mail}), signal: AbortSignal.timeout(10000), redirect: 'error'});}
             catch {throw new EventError('notification_retry_pending', 503, true);}
             if (!response.ok) throw new EventError('notification_delivery_pending', 503, response.status === 429 || response.status >= 500);
             const data = await response.json(); if (typeof data.id !== 'string' || data.id.length > 200) throw new EventError('notification_retry_pending', 503, true);

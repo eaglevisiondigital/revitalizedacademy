@@ -34,6 +34,7 @@ async function securitySnapshot(db){
    if(file.endsWith('20261020141529_health_hope_live.sql')){
     const db=new Client({host:'127.0.0.1',port,user,database});await db.connect();
     const existing=(await db.query("select p.oid::regprocedure::text name,md5(pg_get_functiondef(p.oid)) hash from pg_proc p join pg_namespace n on n.oid=p.pronamespace where n.nspname in ('public','private') and p.prokind='f' order by 1")).rows;
+    fs.writeFileSync('/private/tmp/rva-hhl-dependency-functions.json',JSON.stringify(existing.filter(row=>/^(private\.staff_has_permission\(|private\.staff_can_access_contact\(|private\.sync_referral_status_from_contact\(|touch_updated_at\(|public\.touch_updated_at\()/.test(row.name)),null,2));
     existingFunctions=existing;existingSecurity=await securitySnapshot(db);await db.end();advisorBefore=advisors('before');
    }
    if(file.endsWith('20261020193400_health_hope_live_registered_guests.sql')){
@@ -43,6 +44,13 @@ async function securitySnapshot(db){
     }finally{await probe.query('rollback');await probe.end();}
     console.log('New server guest contract rejected by the original event schema before any participant write.');
    }
+   if(file.endsWith('20261020201535_health_hope_live_privacy_retention.sql')){
+    const probe=new Client({host:'127.0.0.1',port,user,database});await probe.connect();
+    try{await probe.query('begin');await probe.query('update private.hhl_settings set registration_enabled=true');await probe.query('set local role service_role');
+     try{await probe.query("select public.hhl_service_command('register',$1)",[{guest_model_version:'hhl-guest-v1',privacy_model_version:'hhl-privacy-v1'}]);throw Error('Guest-only schema accepted the new privacy contract');}catch(error){if(error.code!=='22023'||!/invalid_registration/.test(error.message))throw error;}
+    }finally{await probe.query('rollback');await probe.end();}
+    console.log('New privacy server contract rejected by guest-only schema before participant writes.');
+   }
    const restore=spawnSync('/opt/homebrew/opt/postgresql@17/bin/psql',['-X','-v','ON_ERROR_STOP=1'],{env,input:sql,encoding:'utf8',maxBuffer:64*1024*1024});if(restore.status)throw Error(path.basename(file)+'\n'+restore.stderr.slice(-5000));
   }
   if(advisorBefore){
@@ -51,7 +59,7 @@ async function securitySnapshot(db){
    // These eight private tables intentionally deny direct access: no RLS
    // allow-policy is the security boundary, alongside revoked ACLs and scoped
    // SECURITY DEFINER commands. Do not add permissive policies to silence INFO.
-   const names=['hhl_settings','hhl_sessions','hhl_registrations','hhl_requests','hhl_limits','hhl_jobs','hhl_attendance','hhl_audit'];
+   const names=['hhl_settings','hhl_sessions','hhl_registrations','hhl_requests','hhl_limits','hhl_jobs','hhl_attendance','hhl_audit','hhl_session_totals','hhl_privacy_cases','hhl_privacy_log'];
    const expected=item=>item.name==='rls_enabled_no_policy'&&item.level==='INFO'&&item.metadata?.schema==='private'&&names.includes(item.metadata?.name);
    const acknowledged=added.filter(expected),unexpected=added.filter(item=>!expected(item));
    const receipt={baseline:flatten(advisorBefore).length,after:current.length,acknowledged,unexpected};fs.writeFileSync('/private/tmp/rva-hhl-guests-advisors-summary.json',JSON.stringify(receipt,null,2));if(unexpected.length)throw Error('Unexpected local security advisor findings: '+JSON.stringify(unexpected));console.log('Local Supabase security advisors: '+flatten(advisorBefore).length+' baseline findings retained; '+acknowledged.length+' expected private deny-by-default INFO findings; zero new warnings/errors or unexpected findings.');

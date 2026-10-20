@@ -1,0 +1,18 @@
+[
+  {
+    "name": "private.staff_can_access_contact(uuid,uuid)",
+    "hash": "aa4d04cd7dec9516446b2a350b8664ac"
+  },
+  {
+    "name": "private.staff_has_permission(uuid,text)",
+    "hash": "d9a0fcfb28e77a3a27d8c3f65abd174c"
+  },
+  {
+    "name": "private.sync_referral_status_from_contact()",
+    "hash": "b19106ec9581615853f6b0deab81dcf0"
+  },
+  {
+    "name": "touch_updated_at()",
+    "hash": "6473503191acd86e9c78d4a4aecf6970"
+  }
+]

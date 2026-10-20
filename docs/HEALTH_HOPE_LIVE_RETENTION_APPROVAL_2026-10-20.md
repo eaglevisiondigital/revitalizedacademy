@@ -1,3 +1,5 @@
+**Implementation update, 2026-10-20:** The approved policy now has a locally validated forward implementation, documented in [activation readiness](HEALTH_HOPE_LIVE_ACTIVATION_READINESS_2026-10-20.md). All event SQL and collection/provider activation remain held. Actual vendor cleanup/retention and hosted acceptance are still required. The approval text below is preserved; its original implementation-status note is historical.
+
 # Health & Hope Live — owner-approved event retention policy
 
 Approval received directly from the owner in this task on October 20, 2026: **“Approve 12 months.”** The question approved was:

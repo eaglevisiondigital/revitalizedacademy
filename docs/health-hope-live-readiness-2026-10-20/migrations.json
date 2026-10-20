@@ -1,0 +1,20 @@
+[
+  {
+    "file": "20261020141529_health_hope_live.sql",
+    "bytes": 37800,
+    "sha256": "3c34381dbb2add5bde325e5a932edac977980404b3ae38d848f8a1077a1c79aa",
+    "productionApplied": false
+  },
+  {
+    "file": "20261020193400_health_hope_live_registered_guests.sql",
+    "bytes": 37417,
+    "sha256": "4bfafeb108713436c2aaf46283bdfb008a4089dd28bfd7bf3ad6750a9d530b24",
+    "productionApplied": false
+  },
+  {
+    "file": "20261020201535_health_hope_live_privacy_retention.sql",
+    "bytes": 61073,
+    "sha256": "40abdf1017f2ced902e0273bed55db35e42fa8d441ee55934eb1c4171f78909a",
+    "productionApplied": false
+  }
+]

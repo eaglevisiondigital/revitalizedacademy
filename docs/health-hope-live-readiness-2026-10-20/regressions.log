@@ -1,0 +1,31 @@
+✔ new-account action displays dedicated confirmation, clears password, preserves production-only redirect (97.957833ms)
+✔ reset request displays acknowledgement panel; client cannot enumerate accounts (44.526125ms)
+✔ authenticated account renders secure agreement, signs only current hash/actor, preserves payment hold (74.094791ms)
+✔ normal logout immediately removes all private DOM and passwords (40.522792ms)
+✔ delayed prior-account context cannot populate the next account (58.271416ms)
+✔ unverified/wrong-account invitation cannot bypass claim; raw credential stripped from address (23.831584ms)
+✔ built allowlist and cache version include the lifecycle repair without server/private source (6.087166ms)
+✔ lifecycle auth cleanup tolerates the private portal shell already being removed (94.978875ms)
+✔ secure recovery exchanges once despite repeated Auth events; strips the credential before exchange (227.962084ms)
+✔ invalid recovery does not enable password updates or expose raw provider errors (208.190709ms)
+✔ legacy dispatcher excludes private lifecycle jobs; legacy account/sign handlers contain no privileged identity/acceptance writes (2.633208ms)
+✔ current agreement module selects only mapped contracts, captures enrollment and dispatches one exact agreement (203.015417ms)
+✔ delayed staff agreement prefill cannot reinsert private values after account reset (179.137916ms)
+✔ actual portal core clears private DOM synchronously on logout or a different authenticated identity (192.4215ms)
+✔ established annual enrollment never populates its total as a monthly contract fee (147.587625ms)
+✔ agreement picker excludes a contract mapped to a different plan (127.2555ms)
+✔ staff auth client keeps persistent storage and automatic token refresh enabled (213.749042ms)
+✔ temporary empty startup session remains neutral until INITIAL_SESSION restores staff (167.109875ms)
+✔ normal refresh, hard-refresh bootstrap and a second tab restore one staff identity (326.70975ms)
+✔ duplicate restore events do not issue duplicate staff bootstrap requests (162.404084ms)
+✔ token refresh preserves visible workspace while reauthorizing, then fails closed if revoked (197.725959ms)
+✔ logout clears private state across tabs and remains logged out after a new bootstrap (332.8425ms)
+✔ different-account event destroys the prior staff document before resolving the new account (112.825917ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2137.707792

@@ -1,0 +1,89 @@
+New server guest contract rejected by the original event schema before any participant write.
+New privacy server contract rejected by guest-only schema before participant writes.
+Local Supabase security advisors: 25 baseline findings retained; 11 expected private deny-by-default INFO findings; zero new warnings/errors or unexpected findings.
+PostgreSQL 17: historical schema plus 20 production migration files restored in disposable local database.
+✔ RLS and direct ACLs protect every new private table from anonymous, member, staff and service roles (48.530417ms)
+✔ service API cannot be called by browser roles; staff API cannot be called anonymously or with service identity (7.887375ms)
+✔ ordinary members, inactive/pending staff and explicit denies cannot read or manage event history (9.741291ms)
+✔ only complete Owner/Admin CRM managers may manage the global schedule (8.21875ms)
+✔ held registration exposes no dates and creates no participation rows (8.614875ms)
+✔ public schedule contains only available confirmed sessions and no private joining details (7.712584ms)
+✔ closed, draft and canceled sessions reject registration at the database boundary (10.302959ms)
+✔ weekly default uses New York time across both Eastern DST transitions (12.494792ms)
+✔ regular dates must be Thursday; ambiguous/nonexistent exception times are rejected (7.117291ms)
+✔ same-session returning registration is deduplicated and does not overwrite existing contact or consent (9.45275ms)
+✔ a returning visitor registers separately next week on the same master contact (11.969583ms)
+✔ new email creates one Registered Guest without paid/member/assessment state (8.862375ms)
+✔ ambiguous existing email and conflicting person names are held without merging or creating contacts (8.491791ms)
+✔ request UUID replay is stable and changed payloads conflict without duplicate jobs (7.393542ms)
+✔ malformed consent, source, extra fields and unbounded names are rejected server-side (8.858208ms)
+✔ CRM contact scope filters counts and history; cross-contact requests cannot leak data (13.933208ms)
+✔ joining information requires confirmed registration, current scope and an audit (11.188792ms)
+✔ cancellation removes availability, preserves history, cancels old jobs and queues one update (9.290542ms)
+✔ rescheduling preserves original session identity and invalidates old job leases (9.047542ms)
+✔ stale session editors cannot overwrite a newer revision (6.28175ms)
+✔ provider and notification controls require database and caller release flags (9.570667ms)
+✔ lease completion is idempotent by ownership; arbitrary and stale workers are denied (9.1305ms)
+✔ Zoom session cannot be published without validated matching occurrence (5.366542ms)
+✔ unmatched Zoom identities remain reviewable and cannot create invented attendance (5.943083ms)
+✔ confirmed Zoom registrant and exact instance credit attendance once; name/email guessing is absent (11.20575ms)
+✔ identity resolution requires scoped existing email and a reason, never a new client record (9.067375ms)
+✔ expired mail leases retain one stable job identity; uncertain Zoom leases require review (7.056791ms)
+✔ mail retries stop before the provider idempotency window expires (6.316875ms)
+✔ manual joining mode can reconcile an observed Zoom instance with documented human review (15.8735ms)
+✔ limited-scope Owner cannot enumerate unresolved identities or attendance outside CRM scope (8.602042ms)
+✔ recorded event-notice withdrawal cancels queued mail and preserves attendance and consent history (16.830667ms)
+✔ weekly draft preparation follows Eastern DST and preserves canceled dates without advertising new availability (11.053375ms)
+✔ Zoom cancellation removes public availability and queues only one cancellation per webhook (11.13975ms)
+✔ Zoom schedule updates hold a published session for review without inventing a new time (7.812834ms)
+✔ Zoom availability expires without a recent provider validation (7.534333ms)
+✔ participant search reaches older event history while preserving CRM contact scope (12.159416ms)
+✔ provider changes invalidate old private Zoom joining information before new notices can run (12.40575ms)
+✔ legacy CRM relationships are never downgraded or requalified by event registration (17.610708ms)
+✔ a repeat guest keeps one master identity and Registered Guest status across weekly sessions (10.744416ms)
+✔ guest stages advance only by deliberate scoped manager actions and retain auditable reasons (21.290667ms)
+✔ guest progression cannot bypass onboarding, CRM permissions or contact scope (13.661583ms)
+✔ progression cannot reclassify an unregistered person or an existing qualified CRM relationship (9.999792ms)
+✔ public callers cannot select relationship, contact identity, attendance or client access fields (9.314625ms)
+✔ reviewed identity association uses the existing CRM record and adds event guest membership once (8.053833ms)
+✔ absence stays unreviewed until staff records a completed-session no-show; cancellations remain distinct (17.943625ms)
+✔ unmatched Zoom identities prevent guessed no-shows and late verified attendance corrects them without promotion (15.033292ms)
+✔ old and missing server guest contracts cannot register against the new database (6.4855ms)
+✔ new private trigger helpers are not executable by browser, staff or service roles (6.652625ms)
+✔ twelve calendar months use the session end in New York, including leap years and DST (4.967083ms)
+✔ registration and delivery stay held without a fresh enabled retention heartbeat and provider policy readiness (8.97275ms)
+✔ expiry removes event identifiers and dependent records once, preserving master contacts and anonymous totals (16.071041ms)
+✔ expiry boundaries do not erase a newer weekly registration or shared guest-to-client relationship (11.927291ms)
+✔ unmatched attendance, request hashes, transient rate limits and expired audit reasons are removed (6.812291ms)
+✔ event exports require a verified scoped staff case and exclude private joining links and other systems (10.760042ms)
+✔ members, inactive staff, coaches, unverified callers and cross-scope managers cannot use privacy workflows (11.597458ms)
+✔ expired or wrong-actor export authority cannot expose event data (11.200375ms)
+✔ verified deletion is idempotent, holds sends immediately, and leaves unrelated consent and CRM records intact (12.847916ms)
+✔ deletion waits for in-flight delivery drain across repeated cases and requires provider cleanup attestation (14.564417ms)
+✔ provider manifests omit joining credentials and unverified overdue cleanup stops collection while still erasing local identifiers (9.668958ms)
+✔ a provider cleanup attestation is invalidated by new identifiable provider observations (7.248417ms)
+✔ privacy authority requires boolean attestations and deletion removes unlinked observations with the exact session registrant identity only (13.71675ms)
+✔ new privacy helpers and private views cannot be invoked or read directly by browser/service roles (9.222833ms)
+✔ signed delivery correlation can precede worker finish and terminal complaints cannot be overwritten (8.270958ms)
+✔ a wrong provider/message binding cannot suppress a different registration (6.654833ms)
+✔ event deletion preserves independently governed member privacy records and unrelated contact notes (12.427208ms)
+ℹ tests 65
+ℹ suites 0
+ℹ pass 65
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 791.9415
+Existing table RLS/policies/ACLs and function ownership/ACLs preserved.
+Preserved all 319 pre-existing application function definitions.
+✔ eight simultaneous registrations produce one master contact, one session registration and one confirmation (75.831792ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 145.839958
+Disposable database removed; existing global roles unchanged.

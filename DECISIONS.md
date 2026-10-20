@@ -1,3 +1,9 @@
+## 2026-10-20 — event retention implementation and sender/account clarification
+
+The approved twelve-month event policy is implemented locally in the third forward event migration; no duration or guest-architecture reapproval is required. Identifiers expire after each thirty-minute session ends, preserving independently governed master contacts/client/health/financial/consent records. Staff-verified scoped export/deletion and external provider cleanup review are included. Actual provider retention evidence and separately authorized hosted acceptance remain required before collection; no live activation/migration/deploy is authorized by preparation.
+
+Owner identifies Justyn as Zoom account owner and approves contact@revitalizedacademy.com as monitored Reply-To, suggesting either that address or the Academy's existing Resend From. Source defaults use ReVitalized Academy <noreply@auth.revitalizedacademy.com>; the auth subdomain is already verified. Recommended minimal setup reuses that From with approved contact Reply-To. Root contact From needs separate domain verification and reviewed configuration; no DNS/provider setting changed. [Implementation and exact remaining setup](docs/HEALTH_HOPE_LIVE_ACTIVATION_READINESS_2026-10-20.md).
+
 ## 2026-10-20 — owner-approved Registered Guest classification
 
 The owner explicitly requires Health & Hope Live registrations to create/associate one existing master CRM contact as a Registered Guest, rather than automatically creating a Client or qualified Client Lead. No client profile, assessment, coaching enrollment or portal access follows registration. Event/session history, verified attendance, cancellations/no-shows/repeats and distinct consent remain separate from private health data.
