@@ -6,7 +6,9 @@
 
 Implemented the approved twelve-month event retention policy, authorized event export/deletion, provider cleanup review and signed email delivery feedback. The existing master-contact/Registered Guest architecture and deliberate progression are preserved. No client profile, enrollment, assessment, client access or automatic qualification is created. Existing active clients retain their CRM relationship when their event records expire or are deleted.
 
-Only event-specific SQL, event Functions, staff event UI, tests and documentation changed in this package. The approved public design is unchanged. The current primary Roadmap continuity work is reconciled into this isolated branch; its application bytes are protected by the reconciliation receipt/test. The primary worktree is not modified.
+Only event-specific SQL, event Functions, staff event UI, tests and documentation changed in this package. The approved public design is unchanged. Primary `codex/b6-session-continuity-reconciled` at `fa1f490012507319bb93cca64d6cbaf039ceaec3` is merged locally by `42c932b1c6ce1be5fb9fe2cc653dc2c8e82be15b`, following retention implementation `7423d5ec23cd7b24b33245f54450ae2a1e220e21`. All twenty primary continuity files are byte-identical; shared portal markup differs only by the six previously approved guest options. Four dedicated reconciliation guards pass. The primary worktree remains clean and unmodified.
+
+Latest read-only Netlify metadata still identifies public deploy `6ad7baf2e7b6f17c96d9dc78` / source `7403a4ff20895200e2655745181f37b5ef7d5c7b`, but now reports `locked=false`, differing from the earlier locked release checkpoint. This task made no lock/configuration change. Treat provider state as mutable while the primary release workstream continues; revalidate the live source, lock and manifest before any later release rather than relying on this snapshot.
 
 ## Retention and privacy behavior
 
@@ -69,10 +71,11 @@ All synthetic; no hosted writes or provider requests:
 | Shared security/catalog preservation | 319 existing function definitions and existing table RLS/policies/ACLs/ownership/global roles unchanged |
 | Local Supabase security advisors | 25 baseline findings retained; 11 expected private deny-direct INFO; zero new warnings/errors/unexpected findings |
 | Client lifecycle and session regressions | 23 passed |
+| Primary-source reconciliation | 4 preservation guards passed; all twenty continuity files exact, portal limited to six guest options |
 | Chromium/WebKit at 1440, 768, 390px | 360 checks; zero page errors/overflow; zero real external/provider requests |
 | Production static build | 448 files; this is a local candidate, not a production deployment manifest |
 
-[Receipts, exact migration hashes and reconciliation](health-hope-live-readiness-2026-10-20/) · [staff desktop](health-hope-live-readiness-2026-10-20/desktop-privacy.png) · [staff mobile](health-hope-live-readiness-2026-10-20/mobile-privacy.png). Tests cover malformed attestations, wrong actor/role/scope, deadline boundaries, returning guests, guest-to-client preservation, independent privacy records, in-flight drain, late delivery acknowledgment, provider cleanup invalidation and idempotent deletion. Existing public design screenshots remain in prior approved release evidence; no redesign or new public visual approval is needed.
+[Receipts, exact migration hashes and reconciliation](health-hope-live-readiness-2026-10-20/) · [staff desktop](health-hope-live-readiness-2026-10-20/desktop-privacy.png) · [staff mobile](health-hope-live-readiness-2026-10-20/mobile-privacy.png). The 41 feature/scope and 23 shared regressions were rerun after reconciliation; the build and all 360 responsive checks also passed against merged application bytes. Tests cover malformed attestations, wrong actor/role/scope, deadline boundaries, returning guests, guest-to-client preservation, independent privacy records, in-flight drain, late delivery acknowledgment, provider cleanup invalidation and idempotent deletion. Existing public design screenshots remain in prior approved release evidence; no redesign or new public visual approval is needed.
 
 ## Release and rollback
 

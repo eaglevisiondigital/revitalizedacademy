@@ -1,0 +1,49 @@
+{
+  "branch": "codex/health-hope-live",
+  "implementationCommit": "7423d5ec23cd7b24b33245f54450ae2a1e220e21",
+  "mergeCommit": "42c932b1c6ce1be5fb9fe2cc653dc2c8e82be15b",
+  "primaryCommit": "fa1f490012507319bb93cca64d6cbaf039ceaec3",
+  "primaryFilesPreserved": [
+    "docs/b6-session-continuity/ARTIFACT_HASHES.json",
+    "docs/b6-session-continuity/CHANGE_MANIFEST.json",
+    "docs/b6-session-continuity/FUNCTION_HASHES.json",
+    "docs/b6-session-continuity/LIVE_BASELINE.json",
+    "docs/b6-session-continuity/POSTFLIGHT.sql",
+    "docs/b6-session-continuity/RECONCILIATION.md",
+    "docs/b6-session-continuity/RELEASE_REVIEW.md",
+    "docs/b6-session-continuity/rollback-functions.sql",
+    "portal/portal-roadmap-calibration.js",
+    "scripts/prepare-b6-session-continuity-release.cjs",
+    "scripts/prepare-b6-session-continuity.cjs",
+    "scripts/test-b6-session-continuity.cjs",
+    "supabase/environment-migrations/production/20261020184635_roadmap_b6_session_continuity.sql",
+    "tests/b6-production-reconciliation.cjs",
+    "tests/b6-purpose-feedback-browser.cjs",
+    "tests/b6-session-continuity-browser.cjs",
+    "tests/backend/b6-session-continuity-concurrency.cjs",
+    "tests/backend/b6-session-continuity.test.cjs",
+    "tests/fixtures/b6-session-continuity.cjs",
+    "tests/vitality-roadmap-b6-browser.cjs"
+  ],
+  "portalDelta": "Only six previously approved Registered/Engaged/Prospective Guest display/filter options",
+  "publicDesignUnchanged": true,
+  "sharedDependencyHashesMatchProduction": true,
+  "testResults": {
+    "featureScope": 41,
+    "postgres": 65,
+    "concurrency": "8 registration contenders plus expiry/current-session overlap",
+    "sharedRegressions": 23,
+    "reconciliation": 4,
+    "responsive": 360,
+    "staticBuildFiles": 448
+  },
+  "security": {
+    "preexistingFunctionsPreserved": 319,
+    "existingRlsAclOwnerRolesUnchanged": true,
+    "baselineAdvisorFindings": 25,
+    "expectedDenyDirectPrivateInfo": 11,
+    "newWarningsOrErrors": 0
+  },
+  "hostedWrites": 0,
+  "providerCalls": 0
+}

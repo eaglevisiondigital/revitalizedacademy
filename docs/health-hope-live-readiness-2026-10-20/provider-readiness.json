@@ -1,0 +1,69 @@
+{
+  "observedOn": "2026-10-20",
+  "inspection": "Read-only metadata only; no credentials or participant records retrieved.",
+  "production": {
+    "siteId": "ece0f6f3-6c3d-46e6-bb51-95ce1ccefb06",
+    "deployId": "6ad7baf2e7b6f17c96d9dc78",
+    "sourceCommit": "7403a4ff20895200e2655745181f37b5ef7d5c7b",
+    "locked": false,
+    "state": "ready",
+    "publishedAt": "2026-10-20T19:11:25.197Z",
+    "eventTablesAbsent": true,
+    "eventMigrationsApplied": false
+  },
+  "primary": {
+    "branch": "codex/b6-session-continuity-reconciled",
+    "commit": "fa1f490012507319bb93cca64d6cbaf039ceaec3",
+    "alreadyAppliedContinuityVersion": "20261020201519",
+    "localFilenameVersion": "20261020184635",
+    "replayAuthorized": false
+  },
+  "zoom": {
+    "accountOwner": "Justyn Oliver (owner statement)",
+    "accountAccessValidated": false,
+    "credentialsInspected": false,
+    "liveMeetingValidated": false,
+    "providerCleanupValidated": false
+  },
+  "email": {
+    "sourceDefaultFrom": "ReVitalized Academy <noreply@auth.revitalizedacademy.com>",
+    "ownerApprovedReplyTo": "contact@revitalizedacademy.com",
+    "actualRuntimeFromOverrideInspected": false,
+    "resendVerifiedDomain": "auth.revitalizedacademy.com",
+    "rootDomainListed": false,
+    "sendingEnabled": true,
+    "openTracking": false,
+    "clickTracking": false,
+    "dkimAndSpf": "verified (read-only provider metadata)",
+    "rootDmarc": "v=DMARC1; p=quarantine",
+    "dedicatedEventCredentialValidated": false,
+    "webhookConfigurationValidated": false,
+    "realDeliveryTested": false
+  },
+  "activity": {
+    "hostedWrites": 0,
+    "productionMigrations": 0,
+    "deployments": 0,
+    "providerMutations": 0,
+    "realEmails": 0,
+    "productionDeletions": 0
+  },
+  "sharedFunctionHashes": [
+    {
+      "name": "private.staff_can_access_contact(uuid,uuid)",
+      "hash": "aa4d04cd7dec9516446b2a350b8664ac"
+    },
+    {
+      "name": "private.staff_has_permission(uuid,text)",
+      "hash": "d9a0fcfb28e77a3a27d8c3f65abd174c"
+    },
+    {
+      "name": "private.sync_referral_status_from_contact()",
+      "hash": "b19106ec9581615853f6b0deab81dcf0"
+    },
+    {
+      "name": "touch_updated_at()",
+      "hash": "6473503191acd86e9c78d4a4aecf6970"
+    }
+  ]
+}
