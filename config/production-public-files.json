@@ -439,5 +439,11 @@
   "portal/portal-roadmap-calibration.css",
   "portal/portal-roadmap-processing.js",
   "portal/portal-roadmap-processing-bootstrap.js",
-  "portal/portal-roadmap-processing.css"
+  "portal/portal-roadmap-processing.css",
+  "health-hope-live.html",
+  "css/health-hope-live.css",
+  "js/health-hope-live.js",
+  "portal/health-hope-live.html",
+  "portal/health-hope-live.js",
+  "portal/health-hope-live.css"
 ]

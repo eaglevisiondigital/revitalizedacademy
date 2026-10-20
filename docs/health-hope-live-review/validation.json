@@ -1,0 +1,55 @@
+{
+  "reviewDate": "2026-10-20",
+  "repository": "eaglevisiondigital/revitalizedacademy",
+  "branch": "codex/health-hope-live",
+  "base": "17fa5533856138ecdf853f23955a5b1f19fc2aa9",
+  "protectedTrackedFilesUnchanged": 765,
+  "migration": {
+    "file": "supabase/migrations/20261020141529_health_hope_live.sql",
+    "bytes": 37800,
+    "sha256": "3c34381dbb2add5bde325e5a932edac977980404b3ae38d848f8a1077a1c79aa",
+    "appliedToProduction": false
+  },
+  "tests": {
+    "featureAndScope": 32,
+    "postgresCases": 37,
+    "concurrencyGroups": 1,
+    "concurrentRegistrations": 8,
+    "result": {
+      "masterContacts": 1,
+      "sessionRegistrations": 1,
+      "confirmationJobs": 1
+    },
+    "preservedExistingDatabaseFunctions": 319,
+    "existingRegressionCases": 106,
+    "browserRuns": 6,
+    "browserAssertions": 120,
+    "browsers": [
+      "Chromium",
+      "WebKit"
+    ],
+    "widths": [
+      1440,
+      768,
+      390
+    ],
+    "browserErrors": 0,
+    "horizontalOverflow": 0
+  },
+  "staticBuild": {
+    "files": 448,
+    "newPublicFiles": 6,
+    "removedPublicFiles": 0
+  },
+  "productionCalls": 0,
+  "deploysCreated": 0,
+  "participantNotificationsSent": 0,
+  "realZoomCalls": 0,
+  "releaseControls": "runtime unset/false; database defaults false; no configuration was applied",
+  "limits": [
+    "Local Auth/HTTP fixtures do not prove hosted Auth/provider delivery.",
+    "Zoom account, app scopes, hosted credential metadata and email sender remain unvalidated.",
+    "Retention and existing erasure/export workflow integration require policy resolution before registration activation.",
+    "Primary workstream integration and exact release provenance remain separate approval gates."
+  ]
+}

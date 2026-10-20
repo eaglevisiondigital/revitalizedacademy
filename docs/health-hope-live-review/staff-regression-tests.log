@@ -1,0 +1,26 @@
+✔ production manifest contains both builders; built config uses production only (2.531917ms)
+✔ no staging fixtures, methodology seed, roles/grants or client-private policies in candidate migration (0.567ms)
+✔ all nutrition/fitness shortcuts reuse existing content workspace (391.824625ms)
+✔ recipes full nutrient form serializes blank omission, real zero, and source media metadata (193.351125ms)
+✔ foods full nutrient form serializes blank omission, real zero, and source media metadata (171.505666ms)
+✔ every detailed exercise type uses valid category; environment excludes pool (356.404166ms)
+✔ methodology editing retains existing key and exposes only schema-supported owner-authored text (147.930208ms)
+✔ Recipe Builder opens from list and image thumbnail keeps alt text (142.184ms)
+✔ unauthorized staff cannot open or submit authoring and mutation attempts remain absent (136.553542ms)
+✔ account/reset clears builder DOM and cached private authoring state (127.210875ms)
+✔ portal initialization reaches getSession with current markup; legacy Account handler absent (108.10175ms)
+✔ staff auth client keeps persistent storage and automatic token refresh enabled (223.355792ms)
+✔ temporary empty startup session remains neutral until INITIAL_SESSION restores staff (178.573917ms)
+✔ normal refresh, hard-refresh bootstrap and a second tab restore one staff identity (334.886458ms)
+✔ duplicate restore events do not issue duplicate staff bootstrap requests (152.294417ms)
+✔ token refresh preserves visible workspace while reauthorizing, then fails closed if revoked (199.290333ms)
+✔ logout clears private state across tabs and remains logged out after a new bootstrap (332.458416ms)
+✔ different-account event destroys the prior staff document before resolving the new account (113.026541ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2191.584875

@@ -29,13 +29,13 @@
     if(error||!data){status.textContent='Your ReVitalized profile is being connected. Please try again shortly.';return}
     auth.hidden=true;dash.hidden=false;
     document.getElementById('account-name').textContent=data.first_name||'there';
-    const v=data.vitality_status||'not started',e=data.enrollment_status||'not started',w=data.webinar_status||'not registered';
+    const v=data.vitality_status||'not started',e=data.enrollment_status||'not started';
     document.getElementById('account-vitality-status').textContent=v.replaceAll('_',' ');
     document.getElementById('account-vitality-bar').style.width=(data.vitality_completion||0)+'%';
     document.getElementById('account-vitality-copy').textContent=v==='completed'?'Your assessment has been completed and is connected to your profile.':'Your progress can stay connected to your ReVitalized profile.';
     document.getElementById('account-vitality-link').textContent=v==='completed'?'View Assessment Page →':'Continue Assessment →';
-    document.getElementById('account-webinar-status').textContent=w.replaceAll('_',' ');
-    document.getElementById('account-webinar-copy').textContent=w==='not registered'?'Join the priority list for the private Founders webinar.':'Your webinar registration is connected to this account.';
+    document.getElementById('account-webinar-status').textContent='Every Thursday';
+    document.getElementById('account-webinar-copy').textContent='Join Health & Hope Live, free every Thursday at 6:30 PM Eastern. Register for each session you want to attend.';
     document.getElementById('account-enrollment-status').textContent=e.replaceAll('_',' ');
     document.getElementById('account-enrollment-bar').style.width=(data.enrollment_completion||0)+'%';
     document.getElementById('account-enrollment-link').textContent=e==='not started'?'Start Enrollment →':'Continue Enrollment →';

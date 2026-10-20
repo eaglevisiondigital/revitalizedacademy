@@ -6,6 +6,40 @@
   directory = "netlify/functions"
   node_bundler = "esbuild"
 
+[[redirects]]
+  from = "/webinar.html"
+  to = "/health-hope-live"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/webinar"
+  to = "/health-hope-live"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/webinar-priority.html"
+  to = "/health-hope-live"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/webinar-priority"
+  to = "/health-hope-live"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/health-hope-live"
+  to = "/health-hope-live.html"
+  status = 200
+
+[[headers]]
+  for = "/health-hope-live*"
+  [headers.values]
+    Cache-Control = "no-cache, max-age=0, must-revalidate"
+
 [[headers]]
   for = "/*"
   [headers.values]
