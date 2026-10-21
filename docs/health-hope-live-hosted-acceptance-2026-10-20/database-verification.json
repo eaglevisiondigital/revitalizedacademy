@@ -1,0 +1,140 @@
+{
+  "at": "2026-10-21T01:55:56.804Z",
+  "migrations": 4,
+  "existingFunctions": 370,
+  "changedExistingFunctions": [],
+  "addedEventFunctions": 20,
+  "onlyEventFunctionsAdded": true,
+  "existingPoliciesPreserved": true,
+  "globalRolesPreserved": false,
+  "privateEventTables": [
+    {
+      "rls": true,
+      "table": "hhl_attendance",
+      "anon_select": false,
+      "service_select": false,
+      "authenticated_select": false
+    },
+    {
+      "rls": true,
+      "table": "hhl_audit",
+      "anon_select": false,
+      "service_select": false,
+      "authenticated_select": false
+    },
+    {
+      "rls": true,
+      "table": "hhl_jobs",
+      "anon_select": false,
+      "service_select": false,
+      "authenticated_select": false
+    },
+    {
+      "rls": true,
+      "table": "hhl_limits",
+      "anon_select": false,
+      "service_select": false,
+      "authenticated_select": false
+    },
+    {
+      "rls": true,
+      "table": "hhl_privacy_cases",
+      "anon_select": false,
+      "service_select": false,
+      "authenticated_select": false
+    },
+    {
+      "rls": true,
+      "table": "hhl_privacy_log",
+      "anon_select": false,
+      "service_select": false,
+      "authenticated_select": false
+    },
+    {
+      "rls": true,
+      "table": "hhl_registrations",
+      "anon_select": false,
+      "service_select": false,
+      "authenticated_select": false
+    },
+    {
+      "rls": true,
+      "table": "hhl_requests",
+      "anon_select": false,
+      "service_select": false,
+      "authenticated_select": false
+    },
+    {
+      "rls": true,
+      "table": "hhl_session_totals",
+      "anon_select": false,
+      "service_select": false,
+      "authenticated_select": false
+    },
+    {
+      "rls": true,
+      "table": "hhl_sessions",
+      "anon_select": false,
+      "service_select": false,
+      "authenticated_select": false
+    },
+    {
+      "rls": true,
+      "table": "hhl_settings",
+      "anon_select": false,
+      "service_select": false,
+      "authenticated_select": false
+    }
+  ],
+  "eventRPCs": [
+    {
+      "anon": false,
+      "name": "hhl_service_command",
+      "service": true,
+      "authenticated": false
+    },
+    {
+      "anon": false,
+      "name": "hhl_staff_command",
+      "service": false,
+      "authenticated": true
+    }
+  ],
+  "flags": {
+    "singleton": true,
+    "zoom_enabled": false,
+    "acceptance_case": null,
+    "retention_enabled": false,
+    "registration_enabled": false,
+    "retention_healthy_at": null,
+    "notifications_enabled": false,
+    "provider_retention_ready": false
+  },
+  "counts": {
+    "jobs": 0,
+    "sessions": 0,
+    "registrations": 0
+  },
+  "existingGlobalRolesPreserved": true,
+  "providerManagedTemporaryAuthentication": {
+    "name": "cli_login_postgres",
+    "memberships": [
+      {
+        "set": true,
+        "role": "postgres",
+        "inherit": false,
+        "admin_option": false
+      }
+    ],
+    "valid_until": "2026-10-21T01:59:39.287648+00:00",
+    "finite_expiry": true,
+    "active_connections": 0
+  },
+  "securityGate": "PASS; existing application roles unchanged; separately recorded short-lived CLI authentication",
+  "advisors": {
+    "baseline": 3,
+    "total": 3,
+    "new": [],
+    "newWarningsOrErrors": 0
+  }
+}

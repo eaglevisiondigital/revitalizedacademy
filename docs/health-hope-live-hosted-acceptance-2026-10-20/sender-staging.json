@@ -1,0 +1,56 @@
+{
+  "at": "2026-10-21T02:02:40.830Z",
+  "provider": "Resend",
+  "credential": {
+    "name": "ReVitalized Academy Health & Hope Live (held acceptance)",
+    "id": "22688129-5ba1-4718-8c19-0e052c2eed78",
+    "permission": "sending_access",
+    "domainId": "7c4abebc-98d3-4a8f-b769-dcec628f4a3a",
+    "stagedAs": "RVA_HHL_RESEND_API_KEY",
+    "secret": true,
+    "context": "production",
+    "scopes": [
+      "functions"
+    ]
+  },
+  "webhook": {
+    "id": "49fade9b-2bc3-4cf0-909f-6c99bf02d280",
+    "endpoint": "https://revitalizedacademy.com/api/health-hope-live/email-webhook",
+    "events": [
+      "email.delivered",
+      "email.bounced",
+      "email.complained",
+      "email.failed",
+      "email.suppressed"
+    ],
+    "signingSecretStagedAs": "RVA_HHL_RESEND_WEBHOOK_SECRET",
+    "secret": true,
+    "context": "production",
+    "scopes": [
+      "functions"
+    ],
+    "status": "disabled",
+    "statusIndependentlyRetrieved": true
+  },
+  "approvedFrom": "ReVitalized Academy <noreply@auth.revitalizedacademy.com>",
+  "replyTo": "contact@revitalizedacademy.com",
+  "domainVerified": true,
+  "retentionAccountSpecificEvidence": "OWNER_CONFIRMED_STANDARD_30_DAYS_NO_CUSTOM_EXTENSION",
+  "actualEmailsSent": 0,
+  "secretValuesIncluded": false,
+  "providerCapacity": {
+    "dailyLimit": 100,
+    "monthlyLimit": 3000,
+    "planNameConfirmed": false
+  },
+  "retentionEvidence": {
+    "standardPolicy": "https://resend.com/security",
+    "standardDays": 30,
+    "backupDays": 7,
+    "actualAccountTerms": "Owner explicitly confirmed standard 30-day email/log retention and no custom extension on 2026-10-20",
+    "zoomStandard": "https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0074786",
+    "zoomDiagnosticMonths": 15,
+    "zoomAccountSettings": "PENDING",
+    "independentlyInspectedAccountTerms": false
+  }
+}

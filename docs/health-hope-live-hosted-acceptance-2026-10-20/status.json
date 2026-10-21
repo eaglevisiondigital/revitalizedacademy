@@ -1,0 +1,28 @@
+{
+  "at": "2026-10-21T02:29:05.132Z",
+  "approvedSource": "760ef11edae1f92b37cbdc135e02c4a0f44d1526",
+  "published": "6ad81d507dce8c34a1e56c2d",
+  "publicRegistration": false,
+  "automatedZoom": false,
+  "controlledStageAuthorized": true,
+  "publicActivationAuthorized": false,
+  "results": {
+    "hostedMigrationsAndFunctions": "PASS",
+    "registrationToCRM": "BLOCKED",
+    "actualConfirmationDelivery": "BLOCKED",
+    "zoomJoiningAndAdmission": "BLOCKED",
+    "syntheticCleanup": "BLOCKED_NOT_EXERCISED",
+    "existingSystemProtections": "PASS"
+  },
+  "resendRetention": "OWNER_CONFIRMED_30_DAYS_NO_CUSTOM_EXTENSION",
+  "operator": "WILL_SIGN_IN_NOT_YET_READY",
+  "host": "UNAVAILABLE",
+  "recordsCreated": 0,
+  "emailsSent": 0,
+  "nextActions": [
+    "Genuine operator sign-in and readiness",
+    "Applicable provider cleanup/Zoom retention evidence",
+    "Host availability",
+    "Complete already-authorized bounded acceptance before requesting separate public activation"
+  ]
+}

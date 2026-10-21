@@ -1,0 +1,190 @@
+{
+  "at": "2026-10-21T02:21:22.091Z",
+  "published": "6ad81d507dce8c34a1e56c2d",
+  "source": "760ef11edae1f92b37cbdc135e02c4a0f44d1526",
+  "branch": "codex-health-hope-live",
+  "files": 450,
+  "functions": 13,
+  "existingFunctionsRetained": 10,
+  "publicFilesRetained": 446,
+  "publicRegistration": "held",
+  "locked": true,
+  "betaUnchanged": true,
+  "siteSettingsUnchanged": true,
+  "activeDeploys": 0,
+  "environmentMetadata": [
+    {
+      "key": "RVA_HHL_NOTIFICATIONS_ENABLED",
+      "isSecret": false,
+      "scopes": [
+        "functions"
+      ],
+      "contexts": [
+        "production"
+      ],
+      "value": "false"
+    },
+    {
+      "key": "RVA_HHL_RATE_SECRET",
+      "isSecret": true,
+      "scopes": [
+        "functions"
+      ],
+      "contexts": [
+        "production"
+      ]
+    },
+    {
+      "key": "RVA_HHL_SUPABASE_SERVICE_ROLE_KEY",
+      "isSecret": true,
+      "scopes": [
+        "functions"
+      ],
+      "contexts": [
+        "production"
+      ]
+    },
+    {
+      "key": "RVA_HHL_SUPABASE_URL",
+      "isSecret": false,
+      "scopes": [
+        "functions"
+      ],
+      "contexts": [
+        "production"
+      ],
+      "value": "https://voalfpxiyznnqfcqcymd.supabase.co"
+    },
+    {
+      "key": "RVA_HHL_EMAIL_REPLY_TO",
+      "isSecret": false,
+      "scopes": [
+        "functions"
+      ],
+      "contexts": [
+        "production"
+      ],
+      "value": "contact@revitalizedacademy.com"
+    },
+    {
+      "key": "RVA_HHL_REGISTRATION_ENABLED",
+      "isSecret": false,
+      "scopes": [
+        "functions"
+      ],
+      "contexts": [
+        "production"
+      ],
+      "value": "false"
+    },
+    {
+      "key": "RVA_HHL_WORKER_ENABLED",
+      "isSecret": false,
+      "scopes": [
+        "functions"
+      ],
+      "contexts": [
+        "production"
+      ],
+      "value": "false"
+    },
+    {
+      "key": "RVA_HHL_ACCEPTANCE_ENABLED",
+      "isSecret": false,
+      "scopes": [
+        "functions"
+      ],
+      "contexts": [
+        "production"
+      ],
+      "value": "false"
+    },
+    {
+      "key": "RVA_HHL_RESEND_API_KEY",
+      "isSecret": true,
+      "scopes": [
+        "functions"
+      ],
+      "contexts": [
+        "production"
+      ]
+    },
+    {
+      "key": "RVA_HHL_RETENTION_ENABLED",
+      "isSecret": false,
+      "scopes": [
+        "functions"
+      ],
+      "contexts": [
+        "production"
+      ],
+      "value": "false"
+    },
+    {
+      "key": "RVA_HHL_SUPABASE_ANON_KEY",
+      "isSecret": true,
+      "scopes": [
+        "functions"
+      ],
+      "contexts": [
+        "production"
+      ]
+    },
+    {
+      "key": "RVA_HHL_ZOOM_ENABLED",
+      "isSecret": false,
+      "scopes": [
+        "functions"
+      ],
+      "contexts": [
+        "production"
+      ],
+      "value": "false"
+    },
+    {
+      "key": "RVA_HHL_DELIVERY_MODE",
+      "isSecret": false,
+      "scopes": [
+        "functions"
+      ],
+      "contexts": [
+        "production"
+      ],
+      "value": "acceptance"
+    },
+    {
+      "key": "RVA_HHL_EMAIL_FROM",
+      "isSecret": false,
+      "scopes": [
+        "functions"
+      ],
+      "contexts": [
+        "production"
+      ],
+      "value": "ReVitalized Academy <noreply@auth.revitalizedacademy.com>"
+    },
+    {
+      "key": "RVA_HHL_ORIGIN",
+      "isSecret": false,
+      "scopes": [
+        "functions"
+      ],
+      "contexts": [
+        "production"
+      ],
+      "value": "https://revitalizedacademy.com"
+    },
+    {
+      "key": "RVA_HHL_RESEND_WEBHOOK_SECRET",
+      "isSecret": true,
+      "scopes": [
+        "functions"
+      ],
+      "contexts": [
+        "production"
+      ]
+    }
+  ],
+  "secretValuesIncluded": false,
+  "passed": true
+}

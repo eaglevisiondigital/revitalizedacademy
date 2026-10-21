@@ -1,0 +1,26 @@
+{
+  "at": "2026-10-21T02:17:21.297Z",
+  "checks": [
+    {
+      "rpc": "hhl_service_command",
+      "role": "anon",
+      "status": 401,
+      "permissionDenied": true
+    },
+    {
+      "rpc": "hhl_staff_command",
+      "role": "anon",
+      "status": 401,
+      "permissionDenied": true
+    },
+    {
+      "rpc": "hhl_service_command",
+      "role": "service_role",
+      "status": 200,
+      "maintenanceHeld": true
+    }
+  ],
+  "contactsCreated": 0,
+  "notificationsSent": 0,
+  "passed": true
+}

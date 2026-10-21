@@ -1,0 +1,101 @@
+{
+  "at": "2026-10-21T02:29:57.234Z",
+  "secretValuesIncluded": false,
+  "files": [
+    {
+      "file": "candidate-verification.json",
+      "bytes": 980,
+      "sha256": "a3f56dc8caae13ca43256b4a7379b21d78db4bea08dac7337980ea5995373cdb"
+    },
+    {
+      "file": "canonical-verification.json",
+      "bytes": 946,
+      "sha256": "13a82f928e26a6243596b5da2d63cfcf14f49701623f1aa50fab6103cc2ac21a"
+    },
+    {
+      "file": "cli-workspace.json",
+      "bytes": 223,
+      "sha256": "2600bc6b92db8a4cbd408fb8b41a4cf897e8aaec5cfb8ace9e3eae2f7ad0d0d1"
+    },
+    {
+      "file": "confirmation-preview.json",
+      "bytes": 789,
+      "sha256": "306ddc2368712cc2528f47ace7b37f35c7dc416f9badf0338b7f640e384e8045"
+    },
+    {
+      "file": "database-verification.json",
+      "bytes": 3247,
+      "sha256": "08e0dc62feeeb73dfb1f40f58c6595e39ec0626c7e7816ca28b774f0ce6940f3"
+    },
+    {
+      "file": "deploy.cjs",
+      "bytes": 10833,
+      "sha256": "2cec124ad7787ee1ad6d05f7608c2b5e9a2dd4a01494aad89e834cefc63deacd"
+    },
+    {
+      "file": "deployment-operation.json",
+      "bytes": 3407,
+      "sha256": "90cb5596e59847003f559ae041121cba81e1a9ff11756192538d535b14122086"
+    },
+    {
+      "file": "executed-deploy-request.json",
+      "bytes": 42599,
+      "sha256": "5e25845b321138e2f37cdcc97912d6f2b8bf4f7940a40ee1c768fd383f1c7a77"
+    },
+    {
+      "file": "final-database-hold.json",
+      "bytes": 800,
+      "sha256": "cc3c2cf8fc116fe6f788d5d74754dcc89bf4d2305128c2d8da2e4808d6fe60aa"
+    },
+    {
+      "file": "final-production-state.json",
+      "bytes": 3678,
+      "sha256": "9e6cf00d0660fa972eb3aa0ab23739770eaf211593e39ea7d32e6657e5cf2604"
+    },
+    {
+      "file": "held-staff-sign-in.png",
+      "bytes": 39531,
+      "sha256": "461322ac8d9da08624b3936b5867c8fe831436c5d0fb66bbe3e3198b3c9ce53b"
+    },
+    {
+      "file": "hosted-boundaries.json",
+      "bytes": 499,
+      "sha256": "013879875247e39bb0efbbf26275aa984324f1bf9f2228619bed87e39e269a68"
+    },
+    {
+      "file": "migration-dry-run.json",
+      "bytes": 494,
+      "sha256": "72e7a788c5dda241cfd948be41ba1a85a6d8f31d385551a14de01b1bed554761"
+    },
+    {
+      "file": "migration-operation.json",
+      "bytes": 1593,
+      "sha256": "818fcc6b49af2e6fe5c740b503d458af07eba3e390804e14ac56ae0ade516351"
+    },
+    {
+      "file": "preflight.cjs",
+      "bytes": 5494,
+      "sha256": "6cac3aa2713e1c9cf4cfc69c903ce36b52020536080106baf9901ecab0fda32e"
+    },
+    {
+      "file": "production-preflight.json",
+      "bytes": 2731,
+      "sha256": "496b57ca3e88f33df65ba36aa03e8af84e11b272058bcf76a0654e837381a1f7"
+    },
+    {
+      "file": "runtime-operation.json",
+      "bytes": 2457,
+      "sha256": "f2fc15c2c7f82b3071621c5beaac0d48711655105f7f4392044be2e0d4f7311d"
+    },
+    {
+      "file": "sender-staging.json",
+      "bytes": 1835,
+      "sha256": "25eac1396a26e84bf6142c8b54cd164fa11b981005d69645741916d3b92b48e7"
+    },
+    {
+      "file": "status.json",
+      "bytes": 986,
+      "sha256": "0207e410ac04a8f6134566382d69a0d90c9447923f3aeff1e1b28a7387d9cb54"
+    }
+  ]
+}

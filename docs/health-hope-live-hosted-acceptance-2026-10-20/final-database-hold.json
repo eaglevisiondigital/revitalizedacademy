@@ -1,0 +1,23 @@
+{
+  "at": "2026-10-21T02:21:21.292Z",
+  "jobs": 0,
+  "sessions": 0,
+  "settings": {
+    "singleton": true,
+    "zoom_enabled": false,
+    "acceptance_case": null,
+    "retention_enabled": false,
+    "registration_enabled": false,
+    "retention_healthy_at": null,
+    "notifications_enabled": false,
+    "provider_retention_ready": false
+  },
+  "attendance": 0,
+  "privacy_cases": 0,
+  "registrations": 0,
+  "qa_crm_contacts": 0,
+  "guest_stage_constraint": "CHECK ((lifecycle_stage = ANY (ARRAY['lead'::text, 'assessment_lead'::text, 'webinar_lead'::text, 'applicant'::text, 'client'::text, 'inactive'::text, 'registered_guest'::text, 'engaged_guest'::text, 'prospective_client'::text])))",
+  "provider_cli_auth_expired": true,
+  "provider_cli_auth_active_connections": 0,
+  "actualEmailsSent": 0
+}

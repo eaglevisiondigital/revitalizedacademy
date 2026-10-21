@@ -1,0 +1,124 @@
+{
+  "startedAt": "2026-10-21T01:59:06.214Z",
+  "keys": [
+    {
+      "key": "RVA_HHL_REGISTRATION_ENABLED",
+      "isSecret": false,
+      "scopes": [
+        "functions"
+      ],
+      "context": "production"
+    },
+    {
+      "key": "RVA_HHL_WORKER_ENABLED",
+      "isSecret": false,
+      "scopes": [
+        "functions"
+      ],
+      "context": "production"
+    },
+    {
+      "key": "RVA_HHL_NOTIFICATIONS_ENABLED",
+      "isSecret": false,
+      "scopes": [
+        "functions"
+      ],
+      "context": "production"
+    },
+    {
+      "key": "RVA_HHL_ZOOM_ENABLED",
+      "isSecret": false,
+      "scopes": [
+        "functions"
+      ],
+      "context": "production"
+    },
+    {
+      "key": "RVA_HHL_RETENTION_ENABLED",
+      "isSecret": false,
+      "scopes": [
+        "functions"
+      ],
+      "context": "production"
+    },
+    {
+      "key": "RVA_HHL_ACCEPTANCE_ENABLED",
+      "isSecret": false,
+      "scopes": [
+        "functions"
+      ],
+      "context": "production"
+    },
+    {
+      "key": "RVA_HHL_DELIVERY_MODE",
+      "isSecret": false,
+      "scopes": [
+        "functions"
+      ],
+      "context": "production"
+    },
+    {
+      "key": "RVA_HHL_ORIGIN",
+      "isSecret": false,
+      "scopes": [
+        "functions"
+      ],
+      "context": "production"
+    },
+    {
+      "key": "RVA_HHL_SUPABASE_URL",
+      "isSecret": false,
+      "scopes": [
+        "functions"
+      ],
+      "context": "production"
+    },
+    {
+      "key": "RVA_HHL_EMAIL_FROM",
+      "isSecret": false,
+      "scopes": [
+        "functions"
+      ],
+      "context": "production"
+    },
+    {
+      "key": "RVA_HHL_EMAIL_REPLY_TO",
+      "isSecret": false,
+      "scopes": [
+        "functions"
+      ],
+      "context": "production"
+    },
+    {
+      "key": "RVA_HHL_SUPABASE_SERVICE_ROLE_KEY",
+      "isSecret": true,
+      "scopes": [
+        "functions"
+      ],
+      "context": "production"
+    },
+    {
+      "key": "RVA_HHL_SUPABASE_ANON_KEY",
+      "isSecret": true,
+      "scopes": [
+        "functions"
+      ],
+      "context": "production"
+    },
+    {
+      "key": "RVA_HHL_RATE_SECRET",
+      "isSecret": true,
+      "scopes": [
+        "functions"
+      ],
+      "context": "production"
+    }
+  ],
+  "attempts": 1,
+  "completed": true,
+  "allActivationFlagsHeld": true,
+  "secretValuesPrinted": false,
+  "secretValuesPersistedLocally": false,
+  "finishedAt": "2026-10-21T01:59:09.296Z",
+  "unrelatedVariablesPreserved": true
+}

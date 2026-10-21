@@ -1,0 +1,33 @@
+{
+  "at": "2026-10-21T02:06:54.385Z",
+  "id": "6ad81d507dce8c34a1e56c2d",
+  "origin": "https://revitalizedacademy.com",
+  "served": [
+    {
+      "path": "/portal/index.html",
+      "sha256": "0b257a0f4b2d8f85dc2d90dd49fd02d0afd578e3302e6ee1b39677bd820b4dfc",
+      "match": true
+    },
+    {
+      "path": "/portal/health-hope-live.html",
+      "sha256": "0188446e26de312d05882f37342853adc6f031ff9b89147f0282de74bf6d1bee",
+      "match": true
+    },
+    {
+      "path": "/portal/health-hope-live.css",
+      "sha256": "64b9b039d4a7f72ec20a6e27a8c2d94f124700ed0fd9e81ad3876fa20dfba66a",
+      "match": true
+    },
+    {
+      "path": "/portal/health-hope-live.js",
+      "sha256": "cc8aa5d08289ddfaff10f83efa6a7148314dec6ea933fb22a6929cb12de61a77",
+      "match": true
+    }
+  ],
+  "publicRegistration": false,
+  "realEmailsSent": 0,
+  "publicSessionsHeld": true,
+  "staffDeniedWithoutAuthentication": true,
+  "functions": 13,
+  "passed": true
+}

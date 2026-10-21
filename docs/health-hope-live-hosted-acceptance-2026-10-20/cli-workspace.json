@@ -1,0 +1,9 @@
+{
+  "project": "voalfpxiyznnqfcqcymd",
+  "isolated": true,
+  "productionSQLExecuted": true,
+  "cleaned": true,
+  "cleanedAt": "2026-10-21T02:04:22.519Z",
+  "containsCredentials": false,
+  "exactEventMigrationsApplied": 4
+}

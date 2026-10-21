@@ -1,0 +1,107 @@
+{
+  "startedAt": "2026-10-21T02:02:56.210Z",
+  "source": "760ef11edae1f92b37cbdc135e02c4a0f44d1526",
+  "baseline": "6ad7ed9be0bd165b997e0be1",
+  "candidateCreations": 1,
+  "uploads": [
+    {
+      "function": "health-hope-live",
+      "new": true,
+      "sha256": "d6ef1c1c637013e5150fc1f608579635ea358ca3e72860fb925257ed87f8f8e2"
+    },
+    {
+      "function": "health-hope-live-worker",
+      "new": true,
+      "sha256": "643c9c7b85c9ddceee042a0f411931107e874d0378e053f67a5a048542b49dd9"
+    },
+    {
+      "function": "health-hope-live-retention",
+      "new": true,
+      "sha256": "a00db57f900db2061b893c0e2af89c219edf0fd2de5bfa8591e86cf77af2a3e5"
+    },
+    {
+      "function": "exercise-library",
+      "new": false,
+      "sha256": "7afffe944b6e4f9390354813cad0f8ff281184360f5f7131f8ecd697dc8f134f"
+    },
+    {
+      "function": "food-database",
+      "new": false,
+      "sha256": "e8a1772c271a05ea357c4b59c8c804541bc187587822e60bfba9d7e8911cdda0"
+    },
+    {
+      "function": "payment-webhook",
+      "new": false,
+      "sha256": "ca4aa97da4f298adac82adb8851f055c21aa360b6c819a3b8fb2497e87ff05e2"
+    },
+    {
+      "function": "payment-worker",
+      "new": false,
+      "sha256": "2d2c440bb8ff85049a820f90d969b6c986685646a4ec55214e8a1ddc8fa74a32"
+    },
+    {
+      "function": "payments",
+      "new": false,
+      "sha256": "f0469725112b4f3b878b67dad311a530441e613ba4fac1a0580b167651d55ded"
+    },
+    {
+      "function": "reusable-content-sync",
+      "new": false,
+      "sha256": "17551800e6a1c26506147e99bf4f48783b69cc1f96daed52e08998288780b930"
+    },
+    {
+      "function": "roadmap-founder",
+      "new": false,
+      "sha256": "525a80737e5000e4ae0b5e4b76704f58eb0e0566541042ee0fda1e26b96fb079"
+    },
+    {
+      "function": "roadmap-verification",
+      "new": false,
+      "sha256": "9d29f707e514df7626e8513283a9bed3834680260a8b87d5c58d5138d23180a6"
+    },
+    {
+      "function": "roadmap-scoring-lab",
+      "new": false,
+      "sha256": "cfd2f74e2c5887fff743832638563a73e120abe92af8737d01e4ec2b9c18bb34"
+    },
+    {
+      "function": "roadmap-processing",
+      "new": false,
+      "sha256": "b06c9e5e0215f78524d92afb172bb1fe36fd7c34cb8224c251484b7ab58b6ec6"
+    },
+    {
+      "path": "/portal/index.html",
+      "sha1": "b0945d8ddee943e1ec1b4e23503d37a263165413",
+      "sha256": "e3f03252e8c06647ef7a12519eb3a38ec63759e4e9738b7e6768250f6240d9a4",
+      "added": false
+    },
+    {
+      "path": "/portal/health-hope-live.html",
+      "sha1": "27286ce7f36b272909a20664964f5b4ac6ea0267",
+      "sha256": "0188446e26de312d05882f37342853adc6f031ff9b89147f0282de74bf6d1bee",
+      "added": true
+    },
+    {
+      "path": "/portal/health-hope-live.css",
+      "sha1": "1f0cdddcfb253e0bb64dadf19cd22b63d48b3080",
+      "sha256": "64b9b039d4a7f72ec20a6e27a8c2d94f124700ed0fd9e81ad3876fa20dfba66a",
+      "added": true
+    },
+    {
+      "path": "/portal/health-hope-live.js",
+      "sha1": "593376548b15c0a10777c7909fd671d745b0ed50",
+      "sha256": "cc8aa5d08289ddfaff10f83efa6a7148314dec6ea933fb22a6929cb12de61a77",
+      "added": true
+    }
+  ],
+  "publishRequests": 1,
+  "published": true,
+  "publicRegistration": false,
+  "automatedZoom": false,
+  "id": "6ad81d507dce8c34a1e56c2d",
+  "digestFinalized": true,
+  "origin": "https://6ad81d507dce8c34a1e56c2d--revitalizedacademy.netlify.app",
+  "state": "ready",
+  "finishedAt": "2026-10-21T02:06:43.665Z",
+  "locked": true
+}

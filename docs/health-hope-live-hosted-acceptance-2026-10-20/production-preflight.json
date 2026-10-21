@@ -1,0 +1,76 @@
+{
+  "at": "2026-10-21T00:31:39.316Z",
+  "commit": "760ef11edae1f92b37cbdc135e02c4a0f44d1526",
+  "branch": "codex/health-hope-live",
+  "migrations": [
+    {
+      "file": "20261020141529_health_hope_live.sql",
+      "sha256": "3c34381dbb2add5bde325e5a932edac977980404b3ae38d848f8a1077a1c79aa"
+    },
+    {
+      "file": "20261020193400_health_hope_live_registered_guests.sql",
+      "sha256": "4bfafeb108713436c2aaf46283bdfb008a4089dd28bfd7bf3ad6750a9d530b24"
+    },
+    {
+      "file": "20261020201535_health_hope_live_privacy_retention.sql",
+      "sha256": "40abdf1017f2ced902e0273bed55db35e42fa8d441ee55934eb1c4171f78909a"
+    },
+    {
+      "file": "20261020215108_health_hope_live_launch_acceptance.sql",
+      "sha256": "284a7dbd0ac72e05475641c0b068255240a491ff993e1010315351cff692e92a"
+    }
+  ],
+  "newFunctions": [
+    {
+      "name": "health-hope-live",
+      "sha256": "d6ef1c1c637013e5150fc1f608579635ea358ca3e72860fb925257ed87f8f8e2"
+    },
+    {
+      "name": "health-hope-live-worker",
+      "sha256": "643c9c7b85c9ddceee042a0f411931107e874d0378e053f67a5a048542b49dd9"
+    },
+    {
+      "name": "health-hope-live-retention",
+      "sha256": "a00db57f900db2061b893c0e2af89c219edf0fd2de5bfa8591e86cf77af2a3e5"
+    }
+  ],
+  "staffChanges": [
+    {
+      "path": "/portal/index.html",
+      "sha1": "b0945d8ddee943e1ec1b4e23503d37a263165413",
+      "sha256": "e3f03252e8c06647ef7a12519eb3a38ec63759e4e9738b7e6768250f6240d9a4",
+      "added": false
+    },
+    {
+      "path": "/portal/health-hope-live.html",
+      "sha1": "27286ce7f36b272909a20664964f5b4ac6ea0267",
+      "sha256": "0188446e26de312d05882f37342853adc6f031ff9b89147f0282de74bf6d1bee",
+      "added": true
+    },
+    {
+      "path": "/portal/health-hope-live.css",
+      "sha1": "1f0cdddcfb253e0bb64dadf19cd22b63d48b3080",
+      "sha256": "64b9b039d4a7f72ec20a6e27a8c2d94f124700ed0fd9e81ad3876fa20dfba66a",
+      "added": true
+    },
+    {
+      "path": "/portal/health-hope-live.js",
+      "sha1": "593376548b15c0a10777c7909fd671d745b0ed50",
+      "sha256": "cc8aa5d08289ddfaff10f83efa6a7148314dec6ea933fb22a6929cb12de61a77",
+      "added": true
+    }
+  ],
+  "baselineDeploy": "6ad7ed9be0bd165b997e0be1",
+  "baselineSource": "73b29621db5e74e0d9f42caa7555a0933f1c3994",
+  "publishedPaths": 447,
+  "retainedFunctions": 10,
+  "functionsConfigurationEvidence": "immutable accepted deployment request; provider GET omits field",
+  "settingsUnchanged": true,
+  "betaUnchanged": true,
+  "locked": true,
+  "activeDeploys": 0,
+  "requestCanonicalSha256": "10adb40f1968d31f8b3b44fda067953bef56cbfa7e6b26a39f4212407786a991",
+  "sourceFingerprint": "d5d5fabd893da28b877473edbec054e7f0f93fc62b923cfeb85f809b20abb1ec",
+  "preflight": "PASS",
+  "productionWrites": 0
+}
