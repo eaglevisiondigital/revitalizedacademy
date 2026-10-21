@@ -1,0 +1,49 @@
+{
+  "localOnly": true,
+  "files": [
+    {
+      "file": "browser-regression.json",
+      "sha256": "6f77331648e74b63eb294f7d15965852bec850d1fd922902f6d5ca3c026c2e5c"
+    },
+    {
+      "file": "change-scope.json",
+      "sha256": "b190f55e2877b34c1d360572e218ff4bbb94801667e4bb2bb0708c121914ab6a"
+    },
+    {
+      "file": "desktop-controls.png",
+      "sha256": "7da2b7f9f02eb414bbb3d4535732116eece2846d8b4baeea84d9b045cd0a1ed6"
+    },
+    {
+      "file": "desktop.png",
+      "sha256": "5bc87a8802d1f2dd889a5dc2557248822fd49f35949718e1827e0ab6c42e4126"
+    },
+    {
+      "file": "mobile-controls.png",
+      "sha256": "48ba10ae0f04f95b610a0965c928d422bf6da78a33a850b8e958507c2ba7a8bd"
+    },
+    {
+      "file": "mobile.png",
+      "sha256": "9cabc6f0acbb598791e237fe78a79bd812dfe170ed7195b8932748c300edf979"
+    },
+    {
+      "file": "preservation.json",
+      "sha256": "e36cf47523dc421a331bc8e242364f9ef22e115da92ef4842a903d8166db9d59"
+    },
+    {
+      "file": "preview-address.json",
+      "sha256": "4de80aaa4a79663cb8dd48a9463f5537852d5defd3467759e6aea159074313d3"
+    },
+    {
+      "file": "preview.cjs",
+      "sha256": "450a18fd380f281f0143ec6ff36c76c70f0ae0680fcfa8c622bc4dd473897d2d"
+    },
+    {
+      "file": "review.cjs",
+      "sha256": "9ee6e06a8e8ff2603b39145ad154ba47e7dbcd21b082ce0064ac982be24b667c"
+    },
+    {
+      "file": "visual-validation.json",
+      "sha256": "704ca90005ef5d86ca92b635f493f977bc81c5f2df322589507fd53f971513f2"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "existingFormsAndControlAttributesPreserved": true,
+  "existingDomHooksPreserved": true,
+  "authApiAndNonSessionRenderCodeUnchanged": true,
+  "changedApplicationFiles": [
+    "portal/health-hope-live.html",
+    "portal/health-hope-live.css",
+    "portal/health-hope-live.js"
+  ],
+  "backendOrProviderChanges": 0,
+  "comparedAgainst": "d96273c75e6f7d91691fb8e220d98be65697c31a"
+}

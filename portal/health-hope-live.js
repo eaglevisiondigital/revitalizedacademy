@@ -117,14 +117,29 @@
     for (const key of ['registration_enabled','zoom_enabled','notifications_enabled']) el('hhl-settings-form').elements[key].checked = data.settings[key] === true;
     el('hhl-review-count').textContent = data.can_manage ? data.review_count + ' items need review.' : '';
     el('hhl-staff-sessions').replaceChildren(); el('hhl-staff-people').replaceChildren();
-    for (const session of data.sessions) {
-      const card=node('article',''); card.className='hhl-staff-card'; card.append(node('h3',when(session.starts_at)),node('p',`${session.status} · ${session.registered} registered · ${session.attended} attended · ${session.join_mode === 'zoom' ? (session.zoom_ready ? 'Zoom validated' : 'Zoom validation pending') : 'Staff-managed joining link'}`));
+    // Presentation order only: retain the received objects and all existing actions.
+    const rank=status=>status==='published'?0:status==='draft'?1:2;
+    const sessions=[...data.sessions].sort((a,b)=>rank(a.status)-rank(b.status)||Date.parse(a.starts_at)-Date.parse(b.starts_at));
+    const nextSession=sessions.find(row=>row.status==='published'&&Date.parse(row.starts_at)>Date.now());
+    const displayedSessions=nextSession?[nextSession,...sessions.filter(row=>row!==nextSession)]:sessions;
+    let previousGroup=null;
+    for (const session of displayedSessions) {
+      const group=session.status==='published'?'Published Sessions':session.status==='draft'?'Draft Sessions':'Other Sessions';
+      if(group!==previousGroup){const title=node('h3',group);title.className='hhl-session-group';el('hhl-staff-sessions').append(title);previousGroup=group;}
+      const card=node('article','');card.className='hhl-staff-card hhl-session-card';card.dataset.status=session.status;
+      const calendar=node('div','');calendar.className='hhl-session-calendar';calendar.setAttribute('aria-hidden','true');calendar.append(node('span',new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',month:'short'}).format(new Date(session.starts_at)).toUpperCase()),node('strong',new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',day:'numeric'}).format(new Date(session.starts_at))));
+      const copy=node('div',''),badges=node('div',''),badge=node('span',({published:'Published',draft:'Draft',cancelled:'Canceled'})[session.status]||session.status);copy.className='hhl-session-copy';badges.className='hhl-session-badges';badge.className='hhl-session-badge';badges.append(badge);
+      if(session===nextSession){const next=node('span','Next Scheduled');next.className='hhl-session-next';badges.append(next);}
+      if(session.join_mode==='zoom'&&!session.zoom_ready){const held=node('span','Joining Held');held.className='hhl-session-badge hhl-session-held';badges.append(held);}
+      const joining=node('p',session.join_mode==='zoom'?(session.zoom_ready?'Zoom validated':'Zoom validation pending'):'Staff-managed joining link');joining.className='hhl-session-joining';copy.append(badges,node('h3',when(session.starts_at)),joining);
+      const stats=node('dl','');stats.className='hhl-session-stats';for(const[label,value]of [['Registered',session.registered],['Attended',session.attended]]){const metric=node('div','');metric.append(node('dt',label),node('dd',value));stats.append(metric);}
+      const actions=node('div','');actions.className='hhl-session-actions';card.append(calendar,copy,stats,actions);
       if (data.can_manage) {
-        card.append(button('Edit session', () => {
+        actions.append(button('Edit session', () => {
           const form=el('hhl-session-form');form.reset();for(const key of ['id','revision','regular_date','status','join_mode','zoom_meeting_id','zoom_occurrence_id','public_note'])form.elements[key].value=session[key]??'';
           form.elements.eastern_start.value=easternInput(session.starts_at);form.elements.eastern_close.value=session.closes_at===session.starts_at?'':easternInput(session.closes_at);form.elements.regular_date.readOnly=true;form.closest('details').open=true;form.scrollIntoView({block:'center'});
         }));
-        if (session.join_mode==='zoom') card.append(button('Validate Zoom occurrence',async()=>{await api('zoom-validate',{session_id:session.id});await load();}));
+        if (session.join_mode==='zoom') actions.append(button('Validate Zoom occurrence',async()=>{await api('zoom-validate',{session_id:session.id});await load();}));
       }
       el('hhl-staff-sessions').append(card);
     }

@@ -1,0 +1,51 @@
+{
+  "runs": [
+    {
+      "width": 1440,
+      "timezone": "America/Vancouver",
+      "horizontalOverflow": false,
+      "expandedFormsFit": true,
+      "defaultReleaseControlsHeld": true,
+      "nextPublishedSessionFirst": true,
+      "statusGroupsVisible": true,
+      "errors": 0,
+      "productionOrProviderConnections": 0
+    },
+    {
+      "width": 768,
+      "timezone": "America/Vancouver",
+      "horizontalOverflow": false,
+      "expandedFormsFit": true,
+      "defaultReleaseControlsHeld": true,
+      "nextPublishedSessionFirst": true,
+      "statusGroupsVisible": true,
+      "errors": 0,
+      "productionOrProviderConnections": 0
+    },
+    {
+      "width": 390,
+      "timezone": "America/Vancouver",
+      "horizontalOverflow": false,
+      "expandedFormsFit": true,
+      "defaultReleaseControlsHeld": true,
+      "nextPublishedSessionFirst": true,
+      "statusGroupsVisible": true,
+      "errors": 0,
+      "productionOrProviderConnections": 0
+    },
+    {
+      "width": 320,
+      "timezone": "America/Vancouver",
+      "horizontalOverflow": false,
+      "expandedFormsFit": true,
+      "defaultReleaseControlsHeld": true,
+      "nextPublishedSessionFirst": true,
+      "statusGroupsVisible": true,
+      "errors": 0,
+      "productionOrProviderConnections": 0
+    }
+  ],
+  "syntheticOnly": true,
+  "hostedWrites": 0,
+  "providerCalls": 0
+}

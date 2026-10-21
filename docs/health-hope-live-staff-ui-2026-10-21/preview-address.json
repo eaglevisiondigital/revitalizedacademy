@@ -1,0 +1,6 @@
+{
+  "url": "http://127.0.0.1:54503/portal/health-hope-live",
+  "synthetic": true,
+  "readOnly": true,
+  "productionConnections": 0
+}

@@ -1,3 +1,9 @@
+## Health & Hope Live — premium staff UI ready for review; not published — 2026-10-21
+
+Local refinement changes only the three HHL staff assets: emerald title panel/navigation, polished operation accordions, published/draft/held session presentation, next scheduled published session first and a framed participant search. All existing form/control attributes and DOM hooks are preserved; Auth/API code, manager checks, callbacks, privacy/CRM/retention/release behavior and server/database/provider code are unchanged. No production deployment, migration or real notification occurred.
+
+57 existing feature/scope tests and 408 Chromium/WebKit workflow checks pass. Focused visual review at 1440/768/390/320 pixels in a Canadian timezone shows no overflow or clipped expanded form controls. Synthetic desktop/mobile screenshots and a read-only local preview are ready. [Review report and screenshots](docs/HEALTH_HOPE_LIVE_STAFF_UI_2026-10-21.md). This three-path UI candidate is separate from the earlier four-path public activation packet; publication needs fresh production reconciliation. Existing registration and integration holds are unaffected. The completed controlled acceptance below remains valid; its evidence is unchanged.
+
 ## Health & Hope Live — controlled hosted acceptance and cleanup PASS; ready for public approval — 2026-10-21
 
 Owner approved the exact fifth migration from 272aed8. Version 20261021144712 is installed once after an isolated ledger fetch and one-file dry run; all other migration statements, shared functions, RLS/policies/ACLs and original role attributes are preserved. The actual scheduled retention worker now returns 200 and advances its heartbeat.

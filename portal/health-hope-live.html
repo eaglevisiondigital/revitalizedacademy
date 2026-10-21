@@ -9,36 +9,40 @@
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.js" defer>
 </script>
-<script src="/portal/health-hope-live.js?v=5" defer>
+<script src="/portal/health-hope-live.js?v=6" defer>
 </script>
 <link rel="stylesheet" href="/css/health-hope-live.css?v=1">
-<link rel="stylesheet" href="/portal/health-hope-live.css?v=1">
+<link rel="stylesheet" href="/portal/health-hope-live.css?v=2">
 </head>
-<body class="hhl-page">
-<header class="hhl-header hhl-shell">
+<body class="hhl-page hhl-staff-page">
+<a class="hhl-skip" href="#hhl-staff-main">Skip to event workspace</a>
+<header class="hhl-header hhl-shell hhl-staff-nav">
 <a href="/portal/">
 <img src="/assets/images/revitalized-logo-dark-approved-v69.png" alt="ReVitalized Academy" width="210">
 </a>
-<nav>
-<a href="/portal/">Staff portal</a>
-<a href="/health-hope-live">Public event page ↗</a>
+<nav aria-label="Staff navigation">
+<a href="/portal/">← Staff Portal</a>
+<a class="hhl-public-page-link" href="/health-hope-live">Public Event Page <span aria-hidden="true">↗</span></a>
 </nav>
 </header>
-<main class="hhl-shell hhl-staff">
-<h1>Health &amp; Hope Live</h1>
-<p>Thursday · 6:30 PM Eastern · Free · 30 minutes</p>
-<p>Registrants are Registered Guests. Registration and attendance never enroll someone as a client or grant client access. Relationship progression requires a deliberate authorized action.</p>
+<main id="hhl-staff-main" class="hhl-shell hhl-staff">
+<section class="hhl-staff-intro" aria-labelledby="hhl-staff-title">
+<div><p class="hhl-staff-kicker">ReVitalized Academy · Internal Workspace</p>
+<h1 id="hhl-staff-title">Health <span>&amp;</span> Hope Live</h1>
+<p class="hhl-staff-subtitle">A welcoming experience. Thoughtfully managed.</p>
+<p class="hhl-staff-schedule">Every Thursday <span aria-hidden="true">·</span> 6:30 PM Eastern <span aria-hidden="true">·</span> 30 Minutes <span aria-hidden="true">·</span> Free on Zoom</p></div>
+<div class="hhl-staff-principles"><span>Registered Guests</span><span>Verified Attendance</span><span>Private Staff Workspace</span></div>
+</section>
+<p class="hhl-staff-boundary">Registrants are Registered Guests. Registration and attendance never enroll someone as a client or grant client access. Relationship progression requires a deliberate authorized action.</p>
 <p id="hhl-staff-status" role="status">Checking staff access…</p>
 <a id="hhl-sign-in" href="/portal/" hidden>Sign in through the staff portal</a>
 <section id="hhl-staff-workspace" hidden>
-<button id="hhl-staff-refresh" class="hhl-button" type="button">Refresh</button>
-<p id="hhl-review-count">
-</p>
+<div class="hhl-workspace-toolbar"><div><p class="hhl-staff-kicker">Your Event Workspace</p><h2>Event Operations</h2></div><div class="hhl-workspace-actions"><p id="hhl-review-count"></p><button id="hhl-staff-refresh" type="button"><span aria-hidden="true">↻</span> Refresh</button></div></div>
 <section id="hhl-staff-management" hidden>
-<details id="hhl-acceptance-panel" hidden><summary>Controlled registration acceptance</summary><div id="hhl-acceptance-case"></div></details>
-<details><summary>Event retention and provider cleanup</summary><p>Identifiable session history expires 12 months after the session. Provider cleanup must be verified before the deadline; an overdue item holds new registrations and delivery.</p><button id="hhl-privacy-refresh" type="button">Review retention readiness</button><div id="hhl-privacy-queue"></div></details>
+<details id="hhl-acceptance-panel" hidden><summary><span class="hhl-control-icon" aria-hidden="true">◇</span><span class="hhl-control-copy"><span class="hhl-control-title">Controlled registration acceptance</span><span class="hhl-control-description">One protected synthetic test. Public registration stays held.</span></span></summary><div id="hhl-acceptance-case"></div></details>
+<details><summary><span class="hhl-control-icon" aria-hidden="true">◈</span><span class="hhl-control-copy"><span class="hhl-control-title">Event retention and provider cleanup</span><span class="hhl-control-description">Review the twelve-month policy, maintenance and provider records.</span></span></summary><p>Identifiable session history expires 12 months after the session. Provider cleanup must be verified before the deadline; an overdue item holds new registrations and delivery.</p><button id="hhl-privacy-refresh" type="button">Review retention readiness</button><div id="hhl-privacy-queue"></div></details>
 <details>
-<summary>Prepare upcoming Thursday drafts</summary>
+<summary><span class="hhl-control-icon" aria-hidden="true">+</span><span class="hhl-control-copy"><span class="hhl-control-title">Prepare upcoming Thursday drafts</span><span class="hhl-control-description">Create upcoming sessions for review before publication.</span></span></summary>
 <p id="hhl-meeting-setup"></p>
 <form id="hhl-weekly-form" class="hhl-form-card">
 <label>First Thursday (Eastern)<input name="first_thursday" type="date" required>
@@ -54,7 +58,7 @@
 <p>Existing dates, including canceled sessions, are preserved. New sessions stay in draft until reviewed and published.</p>
 </details>
 <details>
-<summary>Schedule a session or exception</summary>
+<summary><span class="hhl-control-icon" aria-hidden="true">▦</span><span class="hhl-control-copy"><span class="hhl-control-title">Schedule a session or exception</span><span class="hhl-control-description">Review dates, joining details and schedule changes.</span></span></summary>
 <form id="hhl-session-form" class="hhl-form-card">
 <input name="id" type="hidden">
 <input name="revision" type="hidden">
@@ -91,7 +95,7 @@
 <p>New sessions begin in draft. Zoom sessions must pass validation before publication. Changes create a new revision and replace pending notifications.</p>
 </details>
 <details>
-<summary>Event release controls</summary>
+<summary><span class="hhl-control-icon" aria-hidden="true">≡</span><span class="hhl-control-copy"><span class="hhl-control-title">Event release controls</span><span class="hhl-control-description">Review independent registration and integration controls.</span></span></summary>
 <p>Runtime release flags independently hold registration, Zoom and notifications. Changing these database controls alone cannot activate a held integration.</p>
 <form id="hhl-settings-form" class="hhl-form-card">
 <label class="hhl-checkbox">
@@ -106,16 +110,16 @@
 </form>
 </details>
 <details>
-<summary>Attendance and identity review</summary>
+<summary><span class="hhl-control-icon" aria-hidden="true">✓</span><span class="hhl-control-copy"><span class="hhl-control-title">Attendance and identity review</span><span class="hhl-control-description">Reconcile participation from verified evidence.</span></span></summary>
 <button type="button" id="hhl-load-reviews">Load review queue</button>
 <div id="hhl-reviews">
 </div>
 </details>
 </section>
-<h2>Sessions</h2>
+<section class="hhl-session-section" aria-labelledby="hhl-sessions-title"><div class="hhl-section-heading"><div><p class="hhl-staff-kicker">The Weekly Calendar</p><h2 id="hhl-sessions-title">Sessions</h2></div><p>Session publication is separate from public registration and integration release controls.</p></div>
 <div id="hhl-staff-sessions">
-</div>
-<h2>Participation history</h2>
+</div></section>
+<section class="hhl-participation-section" aria-labelledby="hhl-participation-title"><p class="hhl-staff-kicker">People &amp; Participation</p><h2 id="hhl-participation-title">Participation History</h2>
 <p>Registration counts represent separate sessions. Attendance is credited only from a matched Zoom identity or a documented staff review. Up to 100 matching people are shown. Search by name, email or contact reference to find older history.</p>
 <form id="hhl-people-search" class="hhl-review-form">
 <label for="hhl-people-query">Find a participant</label>
@@ -123,7 +127,7 @@
 <button type="submit">Search history</button>
 </form>
 <div id="hhl-staff-people">
-</div>
+</div></section>
 <section id="hhl-history-panel" hidden>
 <h2>Selected person’s event history</h2>
 <div id="hhl-staff-history">

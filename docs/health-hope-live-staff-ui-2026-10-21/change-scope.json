@@ -1,0 +1,25 @@
+{
+  "sourceBase": "d96273c75e6f7d91691fb8e220d98be65697c31a",
+  "applicationChanges": [
+    {
+      "file": "portal/health-hope-live.html",
+      "beforeSha256": "0188446e26de312d05882f37342853adc6f031ff9b89147f0282de74bf6d1bee",
+      "afterSha256": "4e0534f51cfe523590e723a75ef9a53734919d24503dde8dfb4b2624e4ad6142"
+    },
+    {
+      "file": "portal/health-hope-live.css",
+      "beforeSha256": "64b9b039d4a7f72ec20a6e27a8c2d94f124700ed0fd9e81ad3876fa20dfba66a",
+      "afterSha256": "29bd1fe55594cedc47c46c3b1a1a2eb4cde38e61c55b0fafcf8b3a4adb092a9f"
+    },
+    {
+      "file": "portal/health-hope-live.js",
+      "beforeSha256": "cc8aa5d08289ddfaff10f83efa6a7148314dec6ea933fb22a6929cb12de61a77",
+      "afterSha256": "b94061472ecd8e6cb039bac9cbb63bfe9f1c5f2376235b59b630f490547f51e6"
+    }
+  ],
+  "productionWrites": 0,
+  "migrations": 0,
+  "providerChanges": 0,
+  "workflowChanges": 0,
+  "localPreviewOnly": true
+}
