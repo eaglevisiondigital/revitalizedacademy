@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_NOT_AUTHORIZED",
+  "status": "AUTHORIZED_HELD_PENDING_PREREQUISITES",
   "recipient": "dave@theboss.biz",
   "first_name": "HHL",
   "last_name": "Acceptance Test",
@@ -10,7 +10,7 @@
   "starts_at": null,
   "expires_at": null,
   "maximum_window_minutes": 30,
-  "expected_thursday": "2026-10-22",
+  "expected_thursday": "2026-10-29",
   "expected_local_time": "18:30",
   "timezone": "America/New_York",
   "duration_minutes": 30,

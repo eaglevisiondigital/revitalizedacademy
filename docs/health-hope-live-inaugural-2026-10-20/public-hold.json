@@ -1,0 +1,11 @@
+{
+  "verifiedAt": "2026-10-21T02:53:40.674Z",
+  "method": "GET",
+  "path": "/api/health-hope-live/sessions",
+  "status": 200,
+  "sessions": [],
+  "timezone": "America/New_York",
+  "privateDraftsAdvertised": false,
+  "registrationsSubmitted": 0,
+  "emailsSent": 0
+}

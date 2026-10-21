@@ -92,3 +92,8 @@
 .vitality-popup-dual .vitality-popup-webinar{padding:18px 20px 20px;border:1px solid #b8cabc;border-radius:16px;background:#eef3ed;box-shadow:inset 0 1px 0 #fff}
 .vitality-popup-dual .vitality-popup-webinar-badge{letter-spacing:.04em}
 @media(max-width:640px){.vitality-popup-dual .vitality-popup-webinar{padding:16px 14px}.vitality-popup-dual .vitality-popup-path-label{letter-spacing:.04em}}
+.hhl-promo [hidden]{display:none!important}
+.hhl-promo [data-hhl-promo-date]{font-weight:700;color:var(--hhl-green);margin:14px auto 8px}
+.hhl-promo .hhl-countdown{justify-content:center;gap:10px;margin:12px 0 20px}
+.hhl-promo .hhl-countdown div{min-width:34px}
+.hhl-promo .hhl-countdown strong{font-size:clamp(1.6rem,4vw,2rem);font-variant-numeric:tabular-nums}

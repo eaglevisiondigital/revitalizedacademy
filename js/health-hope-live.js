@@ -6,9 +6,15 @@
 })(typeof window === 'object' ? window : globalThis, function () {
   'use strict';
   const zone = 'America/New_York';
+  const firstSessionDate = '2026-10-29';
+  const easternDate = new Intl.DateTimeFormat('en-CA', {timeZone: zone, year: 'numeric', month: '2-digit', day: '2-digit'});
+  function onOrAfterFirstDate(startsAt) {
+    const parts = Object.fromEntries(easternDate.formatToParts(new Date(startsAt)).map(part => [part.type, part.value]));
+    return parts.year + '-' + parts.month + '-' + parts.day >= firstSessionDate;
+  }
   const valid = row => row && typeof row.id === 'string' && Number.isFinite(Date.parse(row.starts_at)) && Number.isFinite(Date.parse(row.closes_at));
   function available(rows, now = Date.now()) {
-    return (Array.isArray(rows) ? rows : []).filter(row => valid(row) && row.status === 'published' && Date.parse(row.starts_at) > now && Date.parse(row.closes_at) > now).sort((a, b) => Date.parse(a.starts_at) - Date.parse(b.starts_at));
+    return (Array.isArray(rows) ? rows : []).filter(row => valid(row) && row.status === 'published' && onOrAfterFirstDate(row.starts_at) && Date.parse(row.starts_at) > now && Date.parse(row.closes_at) > now).sort((a, b) => Date.parse(a.starts_at) - Date.parse(b.starts_at));
   }
   function label(row) {
     return new Intl.DateTimeFormat('en-US', {timeZone: zone, weekday: 'long', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZoneName: 'short'}).format(new Date(row.starts_at));
@@ -18,6 +24,7 @@
     return {days: Math.floor(total / 86400), hours: Math.floor(total / 3600) % 24, minutes: Math.floor(total / 60) % 60, seconds: total % 60};
   }
   function mount(doc) {
+    mountPromo(doc);
     const form = doc.getElementById('hhl-registration-form');
     if (!form) return;
     const select = form.elements.session_id, submit = form.querySelector('[type=submit]'), status = doc.getElementById('hhl-form-status');
@@ -96,5 +103,35 @@
     window.addEventListener('pagehide', () => {disposed = true; requestGeneration++; clearInterval(timer); clearInterval(poll);});
     refresh();
   }
-  return {zone, available, label, countdown, mount};
+  function mountPromo(doc) {
+    const promo = doc.querySelector('[data-hhl-promo]');
+    if (!promo || promo.dataset.hhlPromo !== 'enabled') return;
+    const date = promo.querySelector('[data-hhl-promo-date]'), clock = promo.querySelector('[data-hhl-promo-countdown]');
+    if (!date || !clock) return;
+    let sessions = [], disposed = false, checking = false;
+    function render() {
+      const next = available(sessions)[0], text = next ? label(next) : 'Session details are being confirmed.';
+      if (date.textContent !== text) date.textContent = text;
+      date.hidden = false; clock.hidden = !next;
+      if (next) for (const [key, value] of Object.entries(countdown(next))) {
+        const digit = promo.querySelector('[data-hhl-promo-' + key + ']');
+        if (digit) digit.textContent = String(value).padStart(2, '0');
+      }
+    }
+    async function refresh() {
+      if (checking || disposed) return;
+      checking = true;
+      try {
+        const response = await fetch('/api/health-hope-live/sessions', {cache: 'no-store', signal: AbortSignal.timeout(10000)});
+        if (!response.ok) throw Error();
+        const data = await response.json();
+        if (!disposed) {sessions = Array.isArray(data.sessions) ? data.sessions : []; render();}
+      } catch {if (!disposed) {sessions = []; render();}}
+      finally {checking = false;}
+    }
+    const timer = setInterval(render, 1000), poll = setInterval(refresh, 30000);
+    window.addEventListener('pagehide', () => {disposed = true; clearInterval(timer); clearInterval(poll);});
+    refresh();
+  }
+  return {zone, firstSessionDate, available, label, countdown, mount, mountPromo};
 });

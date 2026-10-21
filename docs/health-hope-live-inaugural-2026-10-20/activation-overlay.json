@@ -1,0 +1,83 @@
+{
+  "status": "PREPARED_ONLY_NOT_AUTHORIZED_FOR_PUBLICATION",
+  "baseline": "6ad81d507dce8c34a1e56c2d",
+  "baselineSource": "760ef11edae1f92b37cbdc135e02c4a0f44d1526",
+  "sourceCommit": null,
+  "freshProductionReconciliationRequired": true,
+  "approvalRequiredAfterHostedAcceptance": true,
+  "requiredDatabasePreflight": {
+    "noSessionsBefore": "2026-10-29",
+    "firstRegularDate": "2026-10-29",
+    "firstEasternTime": "18:30",
+    "firstSessionRequiresNormalStaffPublication": true,
+    "hostedAcceptanceAndCleanupRequired": true
+  },
+  "retainedPaths": 446,
+  "totalPaths": 450,
+  "addedPaths": 0,
+  "removedPaths": 0,
+  "changed": [
+    {
+      "path": "/index.html",
+      "bytes": 39052,
+      "previousSha1": "d54b56cda97a2ece78b0fa4ead8b85fb227f96b8",
+      "sha1": "0cb19d8025c88313ebc1702acc70cba5ad62e569",
+      "sha256": "cecd718dd8921ee17e24575449173b25877c993889b6b4c1e315d0ca71267d3b"
+    },
+    {
+      "path": "/health-hope-live.html",
+      "bytes": 13431,
+      "previousSha1": "26c855eda7a565ba01295a39bd0b166bf9c15c5d",
+      "sha1": "a824852752d9f0de934b40561cf61e13e7adc2c9",
+      "sha256": "68fc086b0a5116fc6fce2f8d09938f3e774f703b8b65c7f18e9e2b04be8bb8d3"
+    },
+    {
+      "path": "/js/health-hope-live.js",
+      "bytes": 9998,
+      "previousSha1": "96de989c7df8e6b2184edf0c37cce38800b87855",
+      "sha1": "c01dcbead88b18b59e3b4a13e45f605456d44d47",
+      "sha256": "f01a0e2c13dd04e5a9cc8cdc137b74a4e2239a6cc6687fa277a41d530bf4061c"
+    },
+    {
+      "path": "/css/health-hope-live.css",
+      "bytes": 17796,
+      "previousSha1": "b107ed899ed87ac9698156db24f9fc061643a8dd",
+      "sha1": "db9f40ad2548c85b49915eee8ab5691106bdcae1",
+      "sha256": "f92d375ff9e0c0b952975c88477c87f62247b0f981823126d800812e7da42846"
+    }
+  ],
+  "functionsRetainedExactly": {
+    "exercise-library": "7afffe944b6e4f9390354813cad0f8ff281184360f5f7131f8ecd697dc8f134f",
+    "food-database": "e8a1772c271a05ea357c4b59c8c804541bc187587822e60bfba9d7e8911cdda0",
+    "payment-webhook": "ca4aa97da4f298adac82adb8851f055c21aa360b6c819a3b8fb2497e87ff05e2",
+    "payment-worker": "2d2c440bb8ff85049a820f90d969b6c986685646a4ec55214e8a1ddc8fa74a32",
+    "payments": "f0469725112b4f3b878b67dad311a530441e613ba4fac1a0580b167651d55ded",
+    "reusable-content-sync": "17551800e6a1c26506147e99bf4f48783b69cc1f96daed52e08998288780b930",
+    "roadmap-founder": "525a80737e5000e4ae0b5e4b76704f58eb0e0566541042ee0fda1e26b96fb079",
+    "roadmap-verification": "9d29f707e514df7626e8513283a9bed3834680260a8b87d5c58d5138d23180a6",
+    "roadmap-scoring-lab": "cfd2f74e2c5887fff743832638563a73e120abe92af8737d01e4ec2b9c18bb34",
+    "roadmap-processing": "b06c9e5e0215f78524d92afb172bb1fe36fd7c34cb8224c251484b7ab58b6ec6",
+    "health-hope-live": "d6ef1c1c637013e5150fc1f608579635ea358ca3e72860fb925257ed87f8f8e2",
+    "health-hope-live-worker": "643c9c7b85c9ddceee042a0f411931107e874d0378e053f67a5a048542b49dd9",
+    "health-hope-live-retention": "a00db57f900db2061b893c0e2af89c219edf0fd2de5bfa8591e86cf77af2a3e5"
+  },
+  "functionSchedulesRetainedExactly": [
+    {
+      "name": "payment-worker",
+      "cron": "* * * * *"
+    },
+    {
+      "name": "health-hope-live-worker",
+      "cron": "* * * * *"
+    },
+    {
+      "name": "health-hope-live-retention",
+      "cron": "* * * * *"
+    }
+  ],
+  "functionsConfigurationSha256": "a914d9be5e72bed104ebdb158e6016d0a783ec8788a66bf362e4cd21c200818e",
+  "frozenMigrationAndFunctionInputsUnchanged": true,
+  "sourceGatesRemainHeld": true,
+  "hostedGatesRemainHeld": true,
+  "note": "An offline future overlay, not an executable deployment request. Bind a reviewed source commit and reconcile current production before later public activation. Never replay installed migrations."
+}

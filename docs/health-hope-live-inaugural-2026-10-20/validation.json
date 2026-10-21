@@ -1,0 +1,40 @@
+{
+  "recordedAt": "2026-10-21T02:56:20.117Z",
+  "branch": "codex/health-hope-live",
+  "test": "tests/health-hope-live-inaugural.cjs",
+  "results": {
+    "tests": 5,
+    "passed": 5,
+    "failed": 0,
+    "skipped": 0
+  },
+  "browser": {
+    "engine": "Chromium",
+    "widths": [
+      1440,
+      390
+    ],
+    "timezone": "America/Vancouver",
+    "syntheticOnly": true,
+    "externalProviderCalls": 0,
+    "positiveRuntimeErrors": 0,
+    "overflow": false
+  },
+  "checks": [
+    "Eastern first-date floor",
+    "Cancellation/draft/empty availability",
+    "EDT to EST and real elapsed countdown",
+    "Source registration gates held; acceptance targets October 29",
+    "Homepage held network silence, date, ticking countdown, cancellation and responsive behavior"
+  ],
+  "syntaxChecks": "PASS",
+  "whitespaceCheck": "PASS",
+  "completedRegressionSuitesRepeated": false,
+  "sourceSha256": {
+    "js/health-hope-live.js": "f01a0e2c13dd04e5a9cc8cdc137b74a4e2239a6cc6687fa277a41d530bf4061c",
+    "tests/health-hope-live-inaugural.cjs": "5923c849da6b9a63466962b6a696c66cab2426041960ad10ef716e7d85b08ebf",
+    "index.html": "7691724093f94d097f496ff65d4e017e2499e0ef968c33a12e94426d63213ce5",
+    "health-hope-live.html": "addbe883447f05039b03cc7c652900cef9e983807af41c68fdb341c3e318568e",
+    "css/health-hope-live.css": "f92d375ff9e0c0b952975c88477c87f62247b0f981823126d800812e7da42846"
+  }
+}

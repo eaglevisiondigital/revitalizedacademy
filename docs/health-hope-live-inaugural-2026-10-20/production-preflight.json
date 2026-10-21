@@ -1,0 +1,12 @@
+{
+  "verifiedAt": "2026-10-21T02:51:35.289Z",
+  "deployment": "6ad81d507dce8c34a1e56c2d",
+  "source": "760ef11edae1f92b37cbdc135e02c4a0f44d1526",
+  "branch": "codex-health-hope-live",
+  "locked": true,
+  "paths": 450,
+  "functions": 13,
+  "exactCurrentManifest": true,
+  "functionsAndSchedulesUnchanged": true,
+  "writes": 0
+}
