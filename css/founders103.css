@@ -1,3 +1,5 @@
+/* Locally hosted reference-matching live script; license: assets/fonts/OFL-OoohBaby.txt. */
+@font-face{font-family:"Founders Handwritten";src:url("../assets/fonts/OoohBaby-Regular.ttf") format("truetype");font-weight:400;font-style:normal;font-display:swap}
 /* Founders hero: live reconstruction of the owner-supplied October 21 reference.
    Decorations are separate vector layers; the approved portrait bytes are untouched.
    These selectors are confined to the hero, leaving the surrounding page intact. */
@@ -21,9 +23,9 @@
 .copy118 .tagline118{margin:1.8vw 0 0;color:#3d7370;font:500 1.01vw/1.4 Arial,Helvetica,sans-serif;letter-spacing:.21em;white-space:nowrap}
 .portrait-wrap118{position:absolute;inset:0;z-index:2;pointer-events:none}
 .portrait118{position:absolute;left:45.1%;bottom:0;display:block;width:54.2%;max-width:none;height:auto;object-fit:contain;opacity:1;filter:none;transform:none;clip-path:none;mask:none}
-.script118{position:absolute;z-index:3;top:22%;left:42.5%;width:10.1%;display:flex;flex-direction:column;align-items:center;color:#b68021;font:400 2.3vw/.99 "Snell Roundhand","Segoe Script","Brush Script MT",cursive;transform:rotate(-12deg);pointer-events:none}
+.script118{position:absolute;z-index:3;top:22%;left:42.5%;width:10.1%;display:flex;flex-direction:column;align-items:center;color:#c59a47;font:400 2.3vw/.99 "Founders Handwritten","Segoe Script",cursive;transform:rotate(-12deg);pointer-events:none}
 .script118 span:nth-child(2){padding-left:.9vw}.script118 span:nth-child(3){padding-left:.3vw}
-.script118 i{display:block;width:5.1vw;height:2px;margin:.65vw 0 0;background:#bd891f;transform:rotate(-9deg)}
+.script118 i{display:block;width:5.1vw;height:2px;margin:.65vw 0 0;background:#c59a47;transform:rotate(-9deg)}
 .right-copy118{position:absolute;z-index:3;left:92.5%;top:63.7%;display:flex;flex-direction:column;gap:.38vw;color:#4e7c76;font:600 .86vw/1.3 Arial,Helvetica,sans-serif;letter-spacing:.17em;pointer-events:none}
 .right-copy118 i{display:block;width:2vw;height:2px;margin-top:.5vw;background:#c99935}
 
@@ -44,7 +46,7 @@
   .copy118 .tagline118{font-size:12px;line-height:1.6;letter-spacing:.18em;white-space:normal;margin-top:25px;max-width:590px}
   .portrait-wrap118{position:relative;inset:auto;width:100%;margin-top:28px;padding-top:10px}
   .portrait118{position:relative;left:auto;bottom:auto;width:90%;margin:0 0 0 10%;height:auto}
-  .script118{top:0;bottom:auto;left:5%;width:20%;font-size:clamp(23px,4.1vw,37px);color:#97661a;line-height:1.03;z-index:3}
+  .script118{top:0;bottom:auto;left:5%;width:20%;font-size:clamp(23px,4.1vw,37px);color:#c59a47;line-height:1.03;z-index:3}
   .script118 i{width:70px;margin-top:10px}
   .right-copy118{top:auto;bottom:3%;left:5%;gap:6px;font-size:10px;letter-spacing:.16em}
   .right-copy118 i{width:27px;margin-top:5px}
