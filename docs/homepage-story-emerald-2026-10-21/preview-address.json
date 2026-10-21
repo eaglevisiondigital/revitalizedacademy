@@ -1,0 +1,7 @@
+{
+  "origin": "http://127.0.0.1:61403",
+  "before": "http://127.0.0.1:61403/before/",
+  "after": "http://127.0.0.1:61403/after/",
+  "readOnly": true,
+  "productionWrites": 0
+}

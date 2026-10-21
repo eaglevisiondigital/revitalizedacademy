@@ -1,0 +1,678 @@
+[
+  {
+    "name": "Tonya",
+    "file": "assets/images/social-proof/IMG_6983.svg",
+    "width": 1320,
+    "height": 1307,
+    "panelStart": 926,
+    "nearStart": [
+      0,
+      0,
+      0.127,
+      0.799,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "bottomColors": [
+      [
+        "29,168,82",
+        25968
+      ],
+      [
+        "27,167,80",
+        23
+      ],
+      [
+        "31,169,83",
+        9
+      ]
+    ]
+  },
+  {
+    "name": "Roxanne",
+    "file": "assets/images/social-proof/IMG_6984.svg",
+    "width": 1320,
+    "height": 1310,
+    "panelStart": 928,
+    "nearStart": [
+      0,
+      0.002,
+      0.611,
+      0.841,
+      0.971,
+      1,
+      1,
+      1,
+      1
+    ],
+    "bottomColors": [
+      [
+        "29,168,82",
+        26000
+      ]
+    ]
+  },
+  {
+    "name": "Rodney",
+    "file": "assets/images/social-proof/rodney-emerald-testimonial.svg",
+    "width": 1320,
+    "height": 1315,
+    "panelStart": 940,
+    "nearStart": [
+      0,
+      0,
+      0.41,
+      0.788,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "bottomColors": [
+      [
+        "21,71,52",
+        26000
+      ]
+    ]
+  },
+  {
+    "name": "William",
+    "file": "assets/images/social-proof/IMG_6982.svg",
+    "width": 1320,
+    "height": 1320,
+    "panelStart": 934,
+    "nearStart": [
+      0,
+      0,
+      0.308,
+      0.597,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "bottomColors": [
+      [
+        "29,168,82",
+        26000
+      ]
+    ]
+  },
+  {
+    "name": "Drew",
+    "file": "assets/images/social-proof/IMG_6985.svg",
+    "width": 1320,
+    "height": 1318,
+    "panelStart": 932,
+    "nearStart": [
+      0,
+      0,
+      0.453,
+      0.895,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "bottomColors": [
+      [
+        "28,169,78",
+        26000
+      ]
+    ]
+  },
+  {
+    "name": "Eric & Nathalie",
+    "file": "assets/images/social-proof/IMG_7001.svg",
+    "width": 1320,
+    "height": 1318,
+    "panelStart": 929,
+    "nearStart": [
+      0,
+      0,
+      0.059,
+      0.655,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "bottomColors": [
+      [
+        "29,168,82",
+        16900
+      ],
+      [
+        "59,161,92",
+        1300
+      ],
+      [
+        "85,155,106",
+        1300
+      ]
+    ]
+  },
+  {
+    "name": "Julien",
+    "file": "assets/images/social-proof/IMG_6979.svg",
+    "width": 1320,
+    "height": 1320,
+    "panelStart": 933,
+    "nearStart": [
+      0,
+      0,
+      0.164,
+      0.93,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "bottomColors": [
+      [
+        "29,168,82",
+        14950
+      ],
+      [
+        "36,168,81",
+        1300
+      ],
+      [
+        "38,169,83",
+        1300
+      ]
+    ]
+  },
+  {
+    "name": "Brandy",
+    "file": "assets/images/social-proof/IMG_6980.svg",
+    "width": 1320,
+    "height": 1310,
+    "panelStart": 931,
+    "nearStart": [
+      0,
+      0.001,
+      0.231,
+      0.486,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "bottomColors": [
+      [
+        "29,168,82",
+        26000
+      ]
+    ]
+  },
+  {
+    "name": "Dan",
+    "file": "assets/images/social-proof/IMG_6981.svg",
+    "width": 1320,
+    "height": 1307,
+    "panelStart": 928,
+    "nearStart": [
+      0,
+      0,
+      0,
+      0.048,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "bottomColors": [
+      [
+        "29,168,82",
+        24976
+      ],
+      [
+        "31,169,83",
+        180
+      ],
+      [
+        "27,167,80",
+        141
+      ]
+    ]
+  },
+  {
+    "name": "Claudia",
+    "file": "assets/images/social-proof/claudia-emerald-testimonial.svg",
+    "width": 1320,
+    "height": 1317,
+    "panelStart": 932,
+    "nearStart": [
+      0,
+      0,
+      0.075,
+      0.784,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "bottomColors": [
+      [
+        "21,71,52",
+        26000
+      ]
+    ]
+  },
+  {
+    "name": "Isaac",
+    "file": "assets/images/social-proof/IMG_6987.svg",
+    "width": 1320,
+    "height": 1304,
+    "panelStart": 929,
+    "nearStart": [
+      0,
+      0.058,
+      0.31,
+      0.762,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "bottomColors": [
+      [
+        "29,168,82",
+        26000
+      ]
+    ]
+  },
+  {
+    "name": "Kristin",
+    "file": "assets/images/social-proof/IMG_6988.svg",
+    "width": 1320,
+    "height": 1291,
+    "panelStart": 920,
+    "nearStart": [
+      0,
+      0,
+      0.217,
+      0.491,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "bottomColors": [
+      [
+        "29,168,82",
+        26000
+      ]
+    ]
+  },
+  {
+    "name": "Melanie",
+    "file": "assets/images/social-proof/IMG_6989.svg",
+    "width": 1320,
+    "height": 1307,
+    "panelStart": 928,
+    "nearStart": [
+      0,
+      0,
+      0.322,
+      0.698,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "bottomColors": [
+      [
+        "29,168,82",
+        25996
+      ],
+      [
+        "27,167,80",
+        4
+      ]
+    ]
+  },
+  {
+    "name": "Vincent",
+    "file": "assets/images/social-proof/IMG_6990.svg",
+    "width": 1320,
+    "height": 1318,
+    "panelStart": 931,
+    "nearStart": [
+      0,
+      0,
+      0.117,
+      0.618,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "bottomColors": [
+      [
+        "29,168,82",
+        17550
+      ],
+      [
+        "28,169,79",
+        1300
+      ],
+      [
+        "220,255,230",
+        1300
+      ]
+    ]
+  },
+  {
+    "name": "Laura",
+    "file": "assets/images/social-proof/IMG_6991.svg",
+    "width": 1320,
+    "height": 1303,
+    "panelStart": 926,
+    "nearStart": [
+      0,
+      0,
+      0.079,
+      0.743,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "bottomColors": [
+      [
+        "29,168,82",
+        26000
+      ]
+    ]
+  },
+  {
+    "name": "Mark",
+    "file": "assets/images/social-proof/IMG_6992.svg",
+    "width": 1320,
+    "height": 1309,
+    "panelStart": 931,
+    "nearStart": [
+      0,
+      0.002,
+      0.167,
+      0.767,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "bottomColors": [
+      [
+        "29,168,82",
+        25311
+      ],
+      [
+        "31,169,83",
+        328
+      ],
+      [
+        "27,167,80",
+        141
+      ]
+    ]
+  },
+  {
+    "name": "Marilynne",
+    "file": "assets/images/social-proof/IMG_6993.svg",
+    "width": 1320,
+    "height": 1306,
+    "panelStart": 926,
+    "nearStart": [
+      0,
+      0,
+      0.542,
+      0.948,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "bottomColors": [
+      [
+        "29,168,82",
+        25841
+      ],
+      [
+        "24,169,79",
+        75
+      ],
+      [
+        "37,167,84",
+        51
+      ]
+    ]
+  },
+  {
+    "name": "Kenneth",
+    "file": "assets/images/social-proof/IMG_6994.svg",
+    "width": 1320,
+    "height": 1306,
+    "panelStart": 931,
+    "nearStart": [
+      0,
+      0,
+      0,
+      0.783,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "bottomColors": [
+      [
+        "29,168,82",
+        22240
+      ],
+      [
+        "31,169,83",
+        1616
+      ],
+      [
+        "36,168,81",
+        672
+      ]
+    ]
+  },
+  {
+    "name": "Janet",
+    "file": "assets/images/social-proof/IMG_6995.svg",
+    "width": 1320,
+    "height": 1312,
+    "panelStart": 934,
+    "nearStart": [
+      0,
+      0,
+      0.28,
+      0.661,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "bottomColors": [
+      [
+        "29,168,82",
+        25922
+      ],
+      [
+        "24,169,81",
+        64
+      ],
+      [
+        "36,168,81",
+        8
+      ]
+    ]
+  },
+  {
+    "name": "Paula",
+    "file": "assets/images/social-proof/IMG_6997.svg",
+    "width": 1320,
+    "height": 1310,
+    "panelStart": 932,
+    "nearStart": [
+      0,
+      0,
+      0.007,
+      0.689,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "bottomColors": [
+      [
+        "29,168,82",
+        26000
+      ]
+    ]
+  },
+  {
+    "name": "Logan",
+    "file": "assets/images/social-proof/IMG_6998.svg",
+    "width": 1320,
+    "height": 1310,
+    "panelStart": 929,
+    "nearStart": [
+      0.014,
+      0.015,
+      0.09,
+      0.641,
+      0.996,
+      1,
+      1,
+      1,
+      1
+    ],
+    "bottomColors": [
+      [
+        "29,168,82",
+        26000
+      ]
+    ]
+  },
+  {
+    "name": "Izolda",
+    "file": "assets/images/social-proof/IMG_6999.svg",
+    "width": 1320,
+    "height": 1309,
+    "panelStart": 930,
+    "nearStart": [
+      0,
+      0,
+      0.001,
+      0.226,
+      0.988,
+      1,
+      1,
+      1,
+      1
+    ],
+    "bottomColors": [
+      [
+        "29,168,82",
+        25511
+      ],
+      [
+        "31,169,83",
+        281
+      ],
+      [
+        "24,169,81",
+        120
+      ]
+    ]
+  },
+  {
+    "name": "Nikki",
+    "file": "assets/images/social-proof/IMG_7002.svg",
+    "width": 1320,
+    "height": 1304,
+    "panelStart": 929,
+    "nearStart": [
+      0,
+      0,
+      0,
+      0.19,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "bottomColors": [
+      [
+        "29,168,82",
+        24683
+      ],
+      [
+        "36,168,81",
+        842
+      ],
+      [
+        "31,169,83",
+        152
+      ]
+    ]
+  },
+  {
+    "name": "Marie",
+    "file": "assets/images/social-proof/IMG_7003.svg",
+    "width": 1320,
+    "height": 1306,
+    "panelStart": 925,
+    "nearStart": [
+      0.01,
+      0.015,
+      0.037,
+      0.204,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "bottomColors": [
+      [
+        "29,168,82",
+        25964
+      ],
+      [
+        "27,167,80",
+        29
+      ],
+      [
+        "31,169,83",
+        7
+      ]
+    ]
+  }
+]

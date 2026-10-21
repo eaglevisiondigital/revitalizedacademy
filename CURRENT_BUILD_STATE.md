@@ -1,3 +1,9 @@
+## Homepage member stories — emerald consistency ready for review; NOT PUBLISHED — 2026-10-21
+
+Isolated `codex/homepage-story-emerald`, based on clean e0bade8. Only 22 existing story SVG wrappers change: a clipped emerald background and original-lettering mask match the untouched approved Rodney/Claudia panels. All embedded photo/lettering bytes, native dimensions and all carousel HTML/CSS/JS/data remain exact. No image regeneration/recompression, content/cropping/layout/navigation/order/count change. Native pixel checks on all 24 graphics in Chromium and WebKit preserve every photo/logo/Before-After pixel outside the panel; every group at desktop1440/mobile390 has identical geometry, content and behavior. Zero unexpected script errors/hosted writes. White text contrast 10.63:1. Original embedded Display P3 profile accounted for using the actual approved rendered color.
+
+Before/after desktop/mobile screenshots for all four groups and a read-only preview are ready. No production deployment, Git push, database/provider operation or change to HHL/Founders/Roadmap/CRM/portal/permissions/release controls. The live HHL activation described below remains unchanged. [Exact change, screenshots, evidence and 22-asset-only later release boundary](docs/HOMEPAGE_STORY_EMERALD_2026-10-21.md). Next: visual review, then separately authorized production reconciliation/publication.
+
 ## Health & Hope Live — staff UI/icons LIVE; public registration OPEN — 2026-10-21
 
 Published **6ad8e7abb84355bc9d97b39a**, source **0c2c406aed5dfc5033c11033e5bade0743a73b61**. Premium staff UI and final matching 14px chevron/external-link icons are live. Seven existing static paths updated, 445 retained, 452 total; all thirteen exact Function archives/configuration/schedules, current Founders, Roadmap, beta, build settings and publication lock preserved. No migration, Function rebuild, permission change or Git push.

@@ -1,0 +1,1069 @@
+{
+  "results": [
+    {
+      "engine": "chromium",
+      "pixels": [
+        {
+          "name": "Tonya",
+          "naturalBefore": [
+            1320,
+            1307
+          ],
+          "naturalAfter": [
+            1320,
+            1307
+          ],
+          "panelStart": 926,
+          "outsideDifferences": 0,
+          "panelDifferences": 502607,
+          "whiteBefore": 137,
+          "whiteRetained": 137,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Roxanne",
+          "naturalBefore": [
+            1320,
+            1310
+          ],
+          "naturalAfter": [
+            1320,
+            1310
+          ],
+          "panelStart": 928,
+          "outsideDifferences": 0,
+          "panelDifferences": 503632,
+          "whiteBefore": 307,
+          "whiteRetained": 307,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Rodney",
+          "naturalBefore": [
+            1320,
+            1315
+          ],
+          "naturalAfter": [
+            1320,
+            1315
+          ],
+          "panelStart": 940,
+          "outsideDifferences": 0,
+          "panelDifferences": 0,
+          "whiteBefore": 62224,
+          "whiteRetained": 62224,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "William",
+          "naturalBefore": [
+            1320,
+            1320
+          ],
+          "naturalAfter": [
+            1320,
+            1320
+          ],
+          "panelStart": 934,
+          "outsideDifferences": 0,
+          "panelDifferences": 509210,
+          "whiteBefore": 142,
+          "whiteRetained": 142,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Drew",
+          "naturalBefore": [
+            1320,
+            1318
+          ],
+          "naturalAfter": [
+            1320,
+            1318
+          ],
+          "panelStart": 932,
+          "outsideDifferences": 0,
+          "panelDifferences": 509384,
+          "whiteBefore": 73,
+          "whiteRetained": 73,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Eric & Nathalie",
+          "naturalBefore": [
+            1320,
+            1318
+          ],
+          "naturalAfter": [
+            1320,
+            1318
+          ],
+          "panelStart": 929,
+          "outsideDifferences": 0,
+          "panelDifferences": 512858,
+          "whiteBefore": 309,
+          "whiteRetained": 309,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Julien",
+          "naturalBefore": [
+            1320,
+            1320
+          ],
+          "naturalAfter": [
+            1320,
+            1320
+          ],
+          "panelStart": 933,
+          "outsideDifferences": 0,
+          "panelDifferences": 510265,
+          "whiteBefore": 272,
+          "whiteRetained": 272,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Brandy",
+          "naturalBefore": [
+            1320,
+            1310
+          ],
+          "naturalAfter": [
+            1320,
+            1310
+          ],
+          "panelStart": 931,
+          "outsideDifferences": 0,
+          "panelDifferences": 499987,
+          "whiteBefore": 137,
+          "whiteRetained": 137,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Dan",
+          "naturalBefore": [
+            1320,
+            1307
+          ],
+          "naturalAfter": [
+            1320,
+            1307
+          ],
+          "panelStart": 928,
+          "outsideDifferences": 0,
+          "panelDifferences": 499825,
+          "whiteBefore": 208,
+          "whiteRetained": 208,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Claudia",
+          "naturalBefore": [
+            1320,
+            1317
+          ],
+          "naturalAfter": [
+            1320,
+            1317
+          ],
+          "panelStart": 932,
+          "outsideDifferences": 0,
+          "panelDifferences": 0,
+          "whiteBefore": 60872,
+          "whiteRetained": 60872,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Isaac",
+          "naturalBefore": [
+            1320,
+            1304
+          ],
+          "naturalAfter": [
+            1320,
+            1304
+          ],
+          "panelStart": 929,
+          "outsideDifferences": 0,
+          "panelDifferences": 493958,
+          "whiteBefore": 577,
+          "whiteRetained": 577,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Kristin",
+          "naturalBefore": [
+            1320,
+            1291
+          ],
+          "naturalAfter": [
+            1320,
+            1291
+          ],
+          "panelStart": 920,
+          "outsideDifferences": 0,
+          "panelDifferences": 489067,
+          "whiteBefore": 305,
+          "whiteRetained": 305,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Melanie",
+          "naturalBefore": [
+            1320,
+            1307
+          ],
+          "naturalAfter": [
+            1320,
+            1307
+          ],
+          "panelStart": 928,
+          "outsideDifferences": 0,
+          "panelDifferences": 499523,
+          "whiteBefore": 342,
+          "whiteRetained": 342,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Vincent",
+          "naturalBefore": [
+            1320,
+            1318
+          ],
+          "naturalAfter": [
+            1320,
+            1318
+          ],
+          "panelStart": 931,
+          "outsideDifferences": 0,
+          "panelDifferences": 510283,
+          "whiteBefore": 284,
+          "whiteRetained": 284,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Laura",
+          "naturalBefore": [
+            1320,
+            1303
+          ],
+          "naturalAfter": [
+            1320,
+            1303
+          ],
+          "panelStart": 926,
+          "outsideDifferences": 0,
+          "panelDifferences": 497213,
+          "whiteBefore": 181,
+          "whiteRetained": 181,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Mark",
+          "naturalBefore": [
+            1320,
+            1309
+          ],
+          "naturalAfter": [
+            1320,
+            1309
+          ],
+          "panelStart": 931,
+          "outsideDifferences": 0,
+          "panelDifferences": 498063,
+          "whiteBefore": 445,
+          "whiteRetained": 445,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Marilynne",
+          "naturalBefore": [
+            1320,
+            1306
+          ],
+          "naturalAfter": [
+            1320,
+            1306
+          ],
+          "panelStart": 926,
+          "outsideDifferences": 0,
+          "panelDifferences": 501260,
+          "whiteBefore": 183,
+          "whiteRetained": 183,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Kenneth",
+          "naturalBefore": [
+            1320,
+            1306
+          ],
+          "naturalAfter": [
+            1320,
+            1306
+          ],
+          "panelStart": 931,
+          "outsideDifferences": 0,
+          "panelDifferences": 494816,
+          "whiteBefore": 98,
+          "whiteRetained": 98,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Janet",
+          "naturalBefore": [
+            1320,
+            1312
+          ],
+          "naturalAfter": [
+            1320,
+            1312
+          ],
+          "panelStart": 934,
+          "outsideDifferences": 0,
+          "panelDifferences": 498276,
+          "whiteBefore": 361,
+          "whiteRetained": 361,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Paula",
+          "naturalBefore": [
+            1320,
+            1310
+          ],
+          "naturalAfter": [
+            1320,
+            1310
+          ],
+          "panelStart": 932,
+          "outsideDifferences": 0,
+          "panelDifferences": 498540,
+          "whiteBefore": 213,
+          "whiteRetained": 213,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Logan",
+          "naturalBefore": [
+            1320,
+            1310
+          ],
+          "naturalAfter": [
+            1320,
+            1310
+          ],
+          "panelStart": 929,
+          "outsideDifferences": 0,
+          "panelDifferences": 502615,
+          "whiteBefore": 165,
+          "whiteRetained": 165,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Izolda",
+          "naturalBefore": [
+            1320,
+            1309
+          ],
+          "naturalAfter": [
+            1320,
+            1309
+          ],
+          "panelStart": 930,
+          "outsideDifferences": 0,
+          "panelDifferences": 499977,
+          "whiteBefore": 141,
+          "whiteRetained": 141,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Nikki",
+          "naturalBefore": [
+            1320,
+            1304
+          ],
+          "naturalAfter": [
+            1320,
+            1304
+          ],
+          "panelStart": 929,
+          "outsideDifferences": 0,
+          "panelDifferences": 494093,
+          "whiteBefore": 432,
+          "whiteRetained": 432,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Marie",
+          "naturalBefore": [
+            1320,
+            1306
+          ],
+          "naturalAfter": [
+            1320,
+            1306
+          ],
+          "panelStart": 925,
+          "outsideDifferences": 0,
+          "panelDifferences": 502630,
+          "whiteBefore": 135,
+          "whiteRetained": 135,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        }
+      ],
+      "layouts": [
+        {
+          "width": 1440,
+          "all24CardsCompared": true,
+          "allFourGroupsVisited": true,
+          "geometryAndCroppingIdentical": true,
+          "contentAndOrderIdentical": true,
+          "arrowsCountsAndModalUnchanged": true,
+          "unexpectedScriptErrors": 0,
+          "hostedWrites": 0
+        },
+        {
+          "width": 390,
+          "all24CardsCompared": true,
+          "allFourGroupsVisited": true,
+          "geometryAndCroppingIdentical": true,
+          "contentAndOrderIdentical": true,
+          "arrowsCountsAndModalUnchanged": true,
+          "unexpectedScriptErrors": 0,
+          "hostedWrites": 0
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "pixels": [
+        {
+          "name": "Tonya",
+          "naturalBefore": [
+            1320,
+            1307
+          ],
+          "naturalAfter": [
+            1320,
+            1307
+          ],
+          "panelStart": 926,
+          "outsideDifferences": 0,
+          "panelDifferences": 502166,
+          "whiteBefore": 126,
+          "whiteRetained": 126,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Roxanne",
+          "naturalBefore": [
+            1320,
+            1310
+          ],
+          "naturalAfter": [
+            1320,
+            1310
+          ],
+          "panelStart": 928,
+          "outsideDifferences": 0,
+          "panelDifferences": 503006,
+          "whiteBefore": 300,
+          "whiteRetained": 300,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Rodney",
+          "naturalBefore": [
+            1320,
+            1315
+          ],
+          "naturalAfter": [
+            1320,
+            1315
+          ],
+          "panelStart": 940,
+          "outsideDifferences": 0,
+          "panelDifferences": 0,
+          "whiteBefore": 62024,
+          "whiteRetained": 62024,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "William",
+          "naturalBefore": [
+            1320,
+            1320
+          ],
+          "naturalAfter": [
+            1320,
+            1320
+          ],
+          "panelStart": 934,
+          "outsideDifferences": 0,
+          "panelDifferences": 508703,
+          "whiteBefore": 135,
+          "whiteRetained": 135,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Drew",
+          "naturalBefore": [
+            1320,
+            1318
+          ],
+          "naturalAfter": [
+            1320,
+            1318
+          ],
+          "panelStart": 932,
+          "outsideDifferences": 0,
+          "panelDifferences": 509166,
+          "whiteBefore": 63,
+          "whiteRetained": 63,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Eric & Nathalie",
+          "naturalBefore": [
+            1320,
+            1318
+          ],
+          "naturalAfter": [
+            1320,
+            1318
+          ],
+          "panelStart": 929,
+          "outsideDifferences": 0,
+          "panelDifferences": 512068,
+          "whiteBefore": 311,
+          "whiteRetained": 311,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Julien",
+          "naturalBefore": [
+            1320,
+            1320
+          ],
+          "naturalAfter": [
+            1320,
+            1320
+          ],
+          "panelStart": 933,
+          "outsideDifferences": 0,
+          "panelDifferences": 509423,
+          "whiteBefore": 251,
+          "whiteRetained": 251,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Brandy",
+          "naturalBefore": [
+            1320,
+            1310
+          ],
+          "naturalAfter": [
+            1320,
+            1310
+          ],
+          "panelStart": 931,
+          "outsideDifferences": 0,
+          "panelDifferences": 499491,
+          "whiteBefore": 140,
+          "whiteRetained": 140,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Dan",
+          "naturalBefore": [
+            1320,
+            1307
+          ],
+          "naturalAfter": [
+            1320,
+            1307
+          ],
+          "panelStart": 928,
+          "outsideDifferences": 0,
+          "panelDifferences": 499201,
+          "whiteBefore": 203,
+          "whiteRetained": 203,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Claudia",
+          "naturalBefore": [
+            1320,
+            1317
+          ],
+          "naturalAfter": [
+            1320,
+            1317
+          ],
+          "panelStart": 932,
+          "outsideDifferences": 0,
+          "panelDifferences": 0,
+          "whiteBefore": 60721,
+          "whiteRetained": 60721,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Isaac",
+          "naturalBefore": [
+            1320,
+            1304
+          ],
+          "naturalAfter": [
+            1320,
+            1304
+          ],
+          "panelStart": 929,
+          "outsideDifferences": 0,
+          "panelDifferences": 493269,
+          "whiteBefore": 532,
+          "whiteRetained": 532,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Kristin",
+          "naturalBefore": [
+            1320,
+            1291
+          ],
+          "naturalAfter": [
+            1320,
+            1291
+          ],
+          "panelStart": 920,
+          "outsideDifferences": 0,
+          "panelDifferences": 488178,
+          "whiteBefore": 301,
+          "whiteRetained": 301,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Melanie",
+          "naturalBefore": [
+            1320,
+            1307
+          ],
+          "naturalAfter": [
+            1320,
+            1307
+          ],
+          "panelStart": 928,
+          "outsideDifferences": 0,
+          "panelDifferences": 498695,
+          "whiteBefore": 335,
+          "whiteRetained": 335,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Vincent",
+          "naturalBefore": [
+            1320,
+            1318
+          ],
+          "naturalAfter": [
+            1320,
+            1318
+          ],
+          "panelStart": 931,
+          "outsideDifferences": 0,
+          "panelDifferences": 509573,
+          "whiteBefore": 300,
+          "whiteRetained": 300,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Laura",
+          "naturalBefore": [
+            1320,
+            1303
+          ],
+          "naturalAfter": [
+            1320,
+            1303
+          ],
+          "panelStart": 926,
+          "outsideDifferences": 0,
+          "panelDifferences": 496626,
+          "whiteBefore": 182,
+          "whiteRetained": 182,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Mark",
+          "naturalBefore": [
+            1320,
+            1309
+          ],
+          "naturalAfter": [
+            1320,
+            1309
+          ],
+          "panelStart": 931,
+          "outsideDifferences": 0,
+          "panelDifferences": 497190,
+          "whiteBefore": 427,
+          "whiteRetained": 427,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Marilynne",
+          "naturalBefore": [
+            1320,
+            1306
+          ],
+          "naturalAfter": [
+            1320,
+            1306
+          ],
+          "panelStart": 926,
+          "outsideDifferences": 0,
+          "panelDifferences": 500665,
+          "whiteBefore": 191,
+          "whiteRetained": 191,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Kenneth",
+          "naturalBefore": [
+            1320,
+            1306
+          ],
+          "naturalAfter": [
+            1320,
+            1306
+          ],
+          "panelStart": 931,
+          "outsideDifferences": 0,
+          "panelDifferences": 494495,
+          "whiteBefore": 109,
+          "whiteRetained": 109,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Janet",
+          "naturalBefore": [
+            1320,
+            1312
+          ],
+          "naturalAfter": [
+            1320,
+            1312
+          ],
+          "panelStart": 934,
+          "outsideDifferences": 0,
+          "panelDifferences": 497531,
+          "whiteBefore": 360,
+          "whiteRetained": 360,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Paula",
+          "naturalBefore": [
+            1320,
+            1310
+          ],
+          "naturalAfter": [
+            1320,
+            1310
+          ],
+          "panelStart": 932,
+          "outsideDifferences": 0,
+          "panelDifferences": 497938,
+          "whiteBefore": 201,
+          "whiteRetained": 201,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Logan",
+          "naturalBefore": [
+            1320,
+            1310
+          ],
+          "naturalAfter": [
+            1320,
+            1310
+          ],
+          "panelStart": 929,
+          "outsideDifferences": 0,
+          "panelDifferences": 502077,
+          "whiteBefore": 145,
+          "whiteRetained": 145,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Izolda",
+          "naturalBefore": [
+            1320,
+            1309
+          ],
+          "naturalAfter": [
+            1320,
+            1309
+          ],
+          "panelStart": 930,
+          "outsideDifferences": 0,
+          "panelDifferences": 499456,
+          "whiteBefore": 151,
+          "whiteRetained": 151,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Nikki",
+          "naturalBefore": [
+            1320,
+            1304
+          ],
+          "naturalAfter": [
+            1320,
+            1304
+          ],
+          "panelStart": 929,
+          "outsideDifferences": 0,
+          "panelDifferences": 493111,
+          "whiteBefore": 405,
+          "whiteRetained": 405,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        },
+        {
+          "name": "Marie",
+          "naturalBefore": [
+            1320,
+            1306
+          ],
+          "naturalAfter": [
+            1320,
+            1306
+          ],
+          "panelStart": 925,
+          "outsideDifferences": 0,
+          "panelDifferences": 502125,
+          "whiteBefore": 145,
+          "whiteRetained": 145,
+          "panelMode": [
+            0,
+            72,
+            51
+          ]
+        }
+      ],
+      "layouts": [
+        {
+          "width": 1440,
+          "all24CardsCompared": true,
+          "allFourGroupsVisited": true,
+          "geometryAndCroppingIdentical": true,
+          "contentAndOrderIdentical": true,
+          "arrowsCountsAndModalUnchanged": true,
+          "unexpectedScriptErrors": 0,
+          "hostedWrites": 0
+        },
+        {
+          "width": 390,
+          "all24CardsCompared": true,
+          "allFourGroupsVisited": true,
+          "geometryAndCroppingIdentical": true,
+          "contentAndOrderIdentical": true,
+          "arrowsCountsAndModalUnchanged": true,
+          "unexpectedScriptErrors": 0,
+          "hostedWrites": 0
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "passed": true
+}

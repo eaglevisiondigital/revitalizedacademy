@@ -1,0 +1,529 @@
+{
+  "base": "e0bade816ece540981ab8edd61a1386b40554047",
+  "changed": 22,
+  "alreadyApproved": 2,
+  "results": [
+    {
+      "name": "Tonya",
+      "path": "assets/images/social-proof/IMG_6983.svg",
+      "alreadyApproved": false,
+      "width": 1320,
+      "height": 1307,
+      "panelStart": 926,
+      "originalBackground": [
+        29,
+        168,
+        82
+      ],
+      "approvedBackground": [
+        21,
+        71,
+        52
+      ],
+      "originalSha256": "315bc3736565be293367be1a693b5e25f30ac8c06639587cb44bdfcaef817d76",
+      "afterSha256": "33c03a2be51dc2364f66e63bf930586b4c562abebc8bcf7c132c5c62d740c5c7",
+      "embeddedImageSha256": "bfafeab7114533192a3d5b60d700b33b7414acff33c8ee41779e55c89fcc4596",
+      "embeddedImageBytesUnchanged": true,
+      "photoRegionUnfiltered": true
+    },
+    {
+      "name": "Roxanne",
+      "path": "assets/images/social-proof/IMG_6984.svg",
+      "alreadyApproved": false,
+      "width": 1320,
+      "height": 1310,
+      "panelStart": 928,
+      "originalBackground": [
+        29,
+        168,
+        82
+      ],
+      "approvedBackground": [
+        21,
+        71,
+        52
+      ],
+      "originalSha256": "961b09faebb6d7676db8ae4d88a84d15569e7554494fa7791de193d054cf0723",
+      "afterSha256": "2c0aa8899704ba5387ae87bf896d16b87c2994dba45832be043337d7f0dd35c0",
+      "embeddedImageSha256": "b78c7d0f1ab126517bb5a21ece9c27011db596ac66d5eeb8cb841185f3034aa7",
+      "embeddedImageBytesUnchanged": true,
+      "photoRegionUnfiltered": true
+    },
+    {
+      "name": "Rodney",
+      "path": "assets/images/social-proof/rodney-emerald-testimonial.svg",
+      "alreadyApproved": true,
+      "originalSha256": "8bdc386b75cb70eaf4bbe495f2bc038ead5a45bf583a71bba6eddb08943a21c2",
+      "afterSha256": "8bdc386b75cb70eaf4bbe495f2bc038ead5a45bf583a71bba6eddb08943a21c2",
+      "embeddedImageSha256": "3e41140c32e2d255296d7bbcd877ad567011e96e8e87f89d9183a21a1f882a7f"
+    },
+    {
+      "name": "William",
+      "path": "assets/images/social-proof/IMG_6982.svg",
+      "alreadyApproved": false,
+      "width": 1320,
+      "height": 1320,
+      "panelStart": 934,
+      "originalBackground": [
+        29,
+        168,
+        82
+      ],
+      "approvedBackground": [
+        21,
+        71,
+        52
+      ],
+      "originalSha256": "ea712b9fd8c202403f87a1952227cf23c17bb947b591c3029e5e08907d0b38d4",
+      "afterSha256": "3af1ac847e0ae35d9dfa93feaad7ec01c9ffbef124d743b2217549903130fb85",
+      "embeddedImageSha256": "b53fbdd47fdf0e28cfe2feb9a98f581e2a6ccf31c21160b0bc86d417b87f2ea6",
+      "embeddedImageBytesUnchanged": true,
+      "photoRegionUnfiltered": true
+    },
+    {
+      "name": "Drew",
+      "path": "assets/images/social-proof/IMG_6985.svg",
+      "alreadyApproved": false,
+      "width": 1320,
+      "height": 1318,
+      "panelStart": 932,
+      "originalBackground": [
+        28,
+        169,
+        78
+      ],
+      "approvedBackground": [
+        21,
+        71,
+        52
+      ],
+      "originalSha256": "f1e31ebb40acae2995ddf542e1bc266a7dd84674ee77c0b004561abfb581ffd0",
+      "afterSha256": "6f9e61a04001da5b414249f4bf99fb55fb7158d1f068223c96fe7740d5a5769c",
+      "embeddedImageSha256": "c8c96eb01da16c70f7b49eb119a057944a5db1fb42e191cc9a19e03b4057a018",
+      "embeddedImageBytesUnchanged": true,
+      "photoRegionUnfiltered": true
+    },
+    {
+      "name": "Eric & Nathalie",
+      "path": "assets/images/social-proof/IMG_7001.svg",
+      "alreadyApproved": false,
+      "width": 1320,
+      "height": 1318,
+      "panelStart": 929,
+      "originalBackground": [
+        29,
+        168,
+        82
+      ],
+      "approvedBackground": [
+        21,
+        71,
+        52
+      ],
+      "originalSha256": "bf1390591d8ae5c91062eada31dff9d05e01a79402b8615c29e86e216fcb2e5e",
+      "afterSha256": "3bcca0aeeb7bbe1346b2cd1cca1a387453f7bba2fe79af368a9c09b8c114efe1",
+      "embeddedImageSha256": "67745d2eac1d1d32dfc7943fcf0cf3be43b942ca7cfb17131ab967b0b84851c6",
+      "embeddedImageBytesUnchanged": true,
+      "photoRegionUnfiltered": true
+    },
+    {
+      "name": "Julien",
+      "path": "assets/images/social-proof/IMG_6979.svg",
+      "alreadyApproved": false,
+      "width": 1320,
+      "height": 1320,
+      "panelStart": 933,
+      "originalBackground": [
+        29,
+        168,
+        82
+      ],
+      "approvedBackground": [
+        21,
+        71,
+        52
+      ],
+      "originalSha256": "de90b8a24caa1ba3ed190915e5d7a53b65fe46d9d9d4bdc38309eaf1e5824e26",
+      "afterSha256": "3eb3bb7f76f9800172093a9d63fb9083b8b2dc34986448652c72cd3d23125224",
+      "embeddedImageSha256": "dcf24dccba7e09413b0218fa8c101b14c302703a3347416128687f61b92fb6f4",
+      "embeddedImageBytesUnchanged": true,
+      "photoRegionUnfiltered": true
+    },
+    {
+      "name": "Brandy",
+      "path": "assets/images/social-proof/IMG_6980.svg",
+      "alreadyApproved": false,
+      "width": 1320,
+      "height": 1310,
+      "panelStart": 931,
+      "originalBackground": [
+        29,
+        168,
+        82
+      ],
+      "approvedBackground": [
+        21,
+        71,
+        52
+      ],
+      "originalSha256": "55bbc43344c37237effea269c4394ed8fe891babe479a8013587fe3608e31af9",
+      "afterSha256": "82651487d85137eb8e7a263b0a4d4e0cf1b01e8ac2b6db902ef60916a2845f14",
+      "embeddedImageSha256": "5203432f49e592b2159847aacb303af060c5f901f3db14bcdd4f133cb53ca840",
+      "embeddedImageBytesUnchanged": true,
+      "photoRegionUnfiltered": true
+    },
+    {
+      "name": "Dan",
+      "path": "assets/images/social-proof/IMG_6981.svg",
+      "alreadyApproved": false,
+      "width": 1320,
+      "height": 1307,
+      "panelStart": 928,
+      "originalBackground": [
+        29,
+        168,
+        82
+      ],
+      "approvedBackground": [
+        21,
+        71,
+        52
+      ],
+      "originalSha256": "eb9ec5f2145e606b144cef2a4afa2352736066c8db1a4ae432d96ea973ae0086",
+      "afterSha256": "8849ba53e001a7f6c546248e48ca57a50618f87d71b3f59e1dde6ec5a04a7862",
+      "embeddedImageSha256": "58d1a9e6e937228de375c2a04c748a4bd98222834f4bbaf939c3d647c99eb25c",
+      "embeddedImageBytesUnchanged": true,
+      "photoRegionUnfiltered": true
+    },
+    {
+      "name": "Claudia",
+      "path": "assets/images/social-proof/claudia-emerald-testimonial.svg",
+      "alreadyApproved": true,
+      "originalSha256": "db5719cbe1c0a033b3b23e55a6bb5c0b5b6c9aacb83cabce5346d30fb91ac32f",
+      "afterSha256": "db5719cbe1c0a033b3b23e55a6bb5c0b5b6c9aacb83cabce5346d30fb91ac32f",
+      "embeddedImageSha256": "a0bb16e17300822481e60037b15567f21c9818c427a0fad590274e776d597f4a"
+    },
+    {
+      "name": "Isaac",
+      "path": "assets/images/social-proof/IMG_6987.svg",
+      "alreadyApproved": false,
+      "width": 1320,
+      "height": 1304,
+      "panelStart": 929,
+      "originalBackground": [
+        29,
+        168,
+        82
+      ],
+      "approvedBackground": [
+        21,
+        71,
+        52
+      ],
+      "originalSha256": "47080c04dc7db05b11325795bf9be2dbc33db3f943aa92e751047adf711bb853",
+      "afterSha256": "4715aaf4f337a1ed4cb369481b80814228fc27bd498b9761069fe250dc661f09",
+      "embeddedImageSha256": "e2b9be58b8249d5f42dc47dc0d7d0c642ba85f8e5029b9281fe9efb431230beb",
+      "embeddedImageBytesUnchanged": true,
+      "photoRegionUnfiltered": true
+    },
+    {
+      "name": "Kristin",
+      "path": "assets/images/social-proof/IMG_6988.svg",
+      "alreadyApproved": false,
+      "width": 1320,
+      "height": 1291,
+      "panelStart": 920,
+      "originalBackground": [
+        29,
+        168,
+        82
+      ],
+      "approvedBackground": [
+        21,
+        71,
+        52
+      ],
+      "originalSha256": "1c1569f06203257a67c1aea0e1aa64e97651b1c03ed9a4409b9518199f3efbad",
+      "afterSha256": "f096cfa02092df4e24dbe5dd07334366eefd86e4a2c6efce8c52e37421b023f8",
+      "embeddedImageSha256": "47aca54e682fe0d733773bf0710b8650434065cbaf87f6ba03636affc46856b0",
+      "embeddedImageBytesUnchanged": true,
+      "photoRegionUnfiltered": true
+    },
+    {
+      "name": "Melanie",
+      "path": "assets/images/social-proof/IMG_6989.svg",
+      "alreadyApproved": false,
+      "width": 1320,
+      "height": 1307,
+      "panelStart": 928,
+      "originalBackground": [
+        29,
+        168,
+        82
+      ],
+      "approvedBackground": [
+        21,
+        71,
+        52
+      ],
+      "originalSha256": "b758bd1c4ad553c6d7e6735c35ddfd57a1cc54770cdd470dd306ce79d23140a1",
+      "afterSha256": "6805e0c2758ee756eb7ce914b1c3a10df269ab35f1646ea481e8769a7569266c",
+      "embeddedImageSha256": "b4fd048d8022a63ad42d1110177ad1da260cdfcc021e5a207ed12ddcb5d5bbf1",
+      "embeddedImageBytesUnchanged": true,
+      "photoRegionUnfiltered": true
+    },
+    {
+      "name": "Vincent",
+      "path": "assets/images/social-proof/IMG_6990.svg",
+      "alreadyApproved": false,
+      "width": 1320,
+      "height": 1318,
+      "panelStart": 931,
+      "originalBackground": [
+        29,
+        168,
+        82
+      ],
+      "approvedBackground": [
+        21,
+        71,
+        52
+      ],
+      "originalSha256": "20cd79107cf862364a4d32388261af27eda89f2789c07f80bddebc2e54706b81",
+      "afterSha256": "a99949e7e43eab1c89d348778bec3e192a0081eeaf0d12518224f0ae251eb321",
+      "embeddedImageSha256": "0b6e93d798ca181f4d058a204e3281b7ab008f7263f9f389f3c95376e3dac4fd",
+      "embeddedImageBytesUnchanged": true,
+      "photoRegionUnfiltered": true
+    },
+    {
+      "name": "Laura",
+      "path": "assets/images/social-proof/IMG_6991.svg",
+      "alreadyApproved": false,
+      "width": 1320,
+      "height": 1303,
+      "panelStart": 926,
+      "originalBackground": [
+        29,
+        168,
+        82
+      ],
+      "approvedBackground": [
+        21,
+        71,
+        52
+      ],
+      "originalSha256": "72fa23af4c95ab33a64a6df605f980f0910310eaad74066a15ba1755d61b54fb",
+      "afterSha256": "d8c154d81a9b6e07f5e70f9fbdae7a6f31b54997c2cdb9a61d4551aab79c5988",
+      "embeddedImageSha256": "44f98f940f2bdad9bf584490d37d314a9c5aa4d9e793122380600339641b3363",
+      "embeddedImageBytesUnchanged": true,
+      "photoRegionUnfiltered": true
+    },
+    {
+      "name": "Mark",
+      "path": "assets/images/social-proof/IMG_6992.svg",
+      "alreadyApproved": false,
+      "width": 1320,
+      "height": 1309,
+      "panelStart": 931,
+      "originalBackground": [
+        29,
+        168,
+        82
+      ],
+      "approvedBackground": [
+        21,
+        71,
+        52
+      ],
+      "originalSha256": "5f61439407d04c134bf622b18a4a2b51e0f655faee8cbd194b4975132e2605f6",
+      "afterSha256": "285005691615fe4d21f4ac916dbaa920d167b8c12db9285bbeba0a32829cdd5a",
+      "embeddedImageSha256": "4eea52d54c692b3312890dbb2fa0883b6343a219071007b457de1a6a39ccffe3",
+      "embeddedImageBytesUnchanged": true,
+      "photoRegionUnfiltered": true
+    },
+    {
+      "name": "Marilynne",
+      "path": "assets/images/social-proof/IMG_6993.svg",
+      "alreadyApproved": false,
+      "width": 1320,
+      "height": 1306,
+      "panelStart": 926,
+      "originalBackground": [
+        29,
+        168,
+        82
+      ],
+      "approvedBackground": [
+        21,
+        71,
+        52
+      ],
+      "originalSha256": "22269a847070cf5bb8b286b93edf5f134880a27a240dc57b6b4f5d2bd530dc58",
+      "afterSha256": "e87b5808d1bdfb11eb3c8a3b900b66722e5094a8dcd4f32a561f108c0457338f",
+      "embeddedImageSha256": "4e0a2358dd2d4df63abe6156f9d2bd00b6a221c3deb2d8c72a0792931c4e408a",
+      "embeddedImageBytesUnchanged": true,
+      "photoRegionUnfiltered": true
+    },
+    {
+      "name": "Kenneth",
+      "path": "assets/images/social-proof/IMG_6994.svg",
+      "alreadyApproved": false,
+      "width": 1320,
+      "height": 1306,
+      "panelStart": 931,
+      "originalBackground": [
+        29,
+        168,
+        82
+      ],
+      "approvedBackground": [
+        21,
+        71,
+        52
+      ],
+      "originalSha256": "1cc76cebf46f643df0f5c1f77a8022c01268c0c8cddfa46b40c1d964ca92195b",
+      "afterSha256": "79c4d4b176a00f0baf5f332fec8badf4f981906e6c60c2242eb3164b608bfd89",
+      "embeddedImageSha256": "7424fe3bd85986c131b6010823be9c4eb5347b2a38630e6770a1b70bf4e19e60",
+      "embeddedImageBytesUnchanged": true,
+      "photoRegionUnfiltered": true
+    },
+    {
+      "name": "Janet",
+      "path": "assets/images/social-proof/IMG_6995.svg",
+      "alreadyApproved": false,
+      "width": 1320,
+      "height": 1312,
+      "panelStart": 934,
+      "originalBackground": [
+        29,
+        168,
+        82
+      ],
+      "approvedBackground": [
+        21,
+        71,
+        52
+      ],
+      "originalSha256": "79479e2a663215ce0af8eb7f3679810508d33b19b3c24066f0f398b4393e4d69",
+      "afterSha256": "eea75f4ae3b825c869a9eb24a7f7073260c9e4f1fd7ad5b53e68640bb136d8fe",
+      "embeddedImageSha256": "c663a883b4d2bf55a0eeb696171f8937c92fcf461a8f9f8e6e67d1887e0dd094",
+      "embeddedImageBytesUnchanged": true,
+      "photoRegionUnfiltered": true
+    },
+    {
+      "name": "Paula",
+      "path": "assets/images/social-proof/IMG_6997.svg",
+      "alreadyApproved": false,
+      "width": 1320,
+      "height": 1310,
+      "panelStart": 932,
+      "originalBackground": [
+        29,
+        168,
+        82
+      ],
+      "approvedBackground": [
+        21,
+        71,
+        52
+      ],
+      "originalSha256": "910ce381d32a566f1320f1a857c8f4a9c673de18903d41ed190720bcf0eaaa0a",
+      "afterSha256": "6c259046bb2c638f4f9785ad3b1fc3655ae1fed9db232081135bd8a314c75ebb",
+      "embeddedImageSha256": "de3afe388d3b1b35dccb42a2c4d9324be04c491e0719338ba1b6f9e6a78389f8",
+      "embeddedImageBytesUnchanged": true,
+      "photoRegionUnfiltered": true
+    },
+    {
+      "name": "Logan",
+      "path": "assets/images/social-proof/IMG_6998.svg",
+      "alreadyApproved": false,
+      "width": 1320,
+      "height": 1310,
+      "panelStart": 929,
+      "originalBackground": [
+        29,
+        168,
+        82
+      ],
+      "approvedBackground": [
+        21,
+        71,
+        52
+      ],
+      "originalSha256": "b24523df0ac6a8a4b73e228f178247c5c28c5482ce0dffe462d911e738f27616",
+      "afterSha256": "7e9d9c5d1551aa75dc7a8e9728f939e047e7ef8125529f5c880eb7306bacfbf8",
+      "embeddedImageSha256": "1bfcc34d51ca0a95bdf980280e81da6bc94e8df87443c80d072a29a6b04fb974",
+      "embeddedImageBytesUnchanged": true,
+      "photoRegionUnfiltered": true
+    },
+    {
+      "name": "Izolda",
+      "path": "assets/images/social-proof/IMG_6999.svg",
+      "alreadyApproved": false,
+      "width": 1320,
+      "height": 1309,
+      "panelStart": 930,
+      "originalBackground": [
+        29,
+        168,
+        82
+      ],
+      "approvedBackground": [
+        21,
+        71,
+        52
+      ],
+      "originalSha256": "373fa6e46faa0b9e0addfa47b2db6122ccfc6f6bf23932fc55db526a5fab19b5",
+      "afterSha256": "eebbbbb07868d08c02e49fa0aac3af5da064076e91faca03af8bc455682c596e",
+      "embeddedImageSha256": "27ee136366f1d05dc2e6ccb17b0437e43f2644bcc5ad21e4d720d8af512759ec",
+      "embeddedImageBytesUnchanged": true,
+      "photoRegionUnfiltered": true
+    },
+    {
+      "name": "Nikki",
+      "path": "assets/images/social-proof/IMG_7002.svg",
+      "alreadyApproved": false,
+      "width": 1320,
+      "height": 1304,
+      "panelStart": 929,
+      "originalBackground": [
+        29,
+        168,
+        82
+      ],
+      "approvedBackground": [
+        21,
+        71,
+        52
+      ],
+      "originalSha256": "8a9a851b6b75157b6ff951533a7091f81fdd5be881f778d8cdfe0583ee5999e0",
+      "afterSha256": "1b220a117d03c93ee79c5fff5639b52c8adbd9f57c437739ac18c51d4f7c67c5",
+      "embeddedImageSha256": "57e538c7fddbcadc91991e78cacd0be9da03694a3186f4405bed6d6c0d79611a",
+      "embeddedImageBytesUnchanged": true,
+      "photoRegionUnfiltered": true
+    },
+    {
+      "name": "Marie",
+      "path": "assets/images/social-proof/IMG_7003.svg",
+      "alreadyApproved": false,
+      "width": 1320,
+      "height": 1306,
+      "panelStart": 925,
+      "originalBackground": [
+        29,
+        168,
+        82
+      ],
+      "approvedBackground": [
+        21,
+        71,
+        52
+      ],
+      "originalSha256": "ef3f7d3293d38cc1ecce6a7067380da45c37a36b263781ba18936510d643c0a5",
+      "afterSha256": "ce2ad45cd98b80ec6f3d822ed7ff9614f2ccdfeb8698c2606c842fcde74f344c",
+      "embeddedImageSha256": "e07006026c7db8f54f698fe07ebcaf15de855ed8fb297a7ff794eb751bbd9167",
+      "embeddedImageBytesUnchanged": true,
+      "photoRegionUnfiltered": true
+    }
+  ]
+}

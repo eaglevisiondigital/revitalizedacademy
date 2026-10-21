@@ -1,0 +1,139 @@
+{
+  "evidence": [
+    {
+      "path": "after-desktop-group-1.png",
+      "bytes": 318103,
+      "sha256": "8fe1367d92b24225b127226d399440fd85d45d0fe7aae7bf38176afc47e8e542"
+    },
+    {
+      "path": "after-desktop-group-2.png",
+      "bytes": 319966,
+      "sha256": "2023f4794d3ff32c60fccdc76ada3dddbc22c15072c3756195ad073bed9f041e"
+    },
+    {
+      "path": "after-desktop-group-3.png",
+      "bytes": 314954,
+      "sha256": "6a943383355c8bc01231dc5b6950453df420759b07e5e8fc2dc1203f174d9cad"
+    },
+    {
+      "path": "after-desktop-group-4.png",
+      "bytes": 296164,
+      "sha256": "3237743ededd8f9ddffb2ac9cfb91129ed3d0b5bd3936898d11dcda26ddc9097"
+    },
+    {
+      "path": "after-mobile-group-1.png",
+      "bytes": 283310,
+      "sha256": "a3ee22ad6327cff35d0811f467a2109853f86eb283b97fb59062956aef927e84"
+    },
+    {
+      "path": "after-mobile-group-2.png",
+      "bytes": 285942,
+      "sha256": "6ceaf3cf9e0b2ccea36b56610dc7b1a2dd808e096c71d567b41d944eefa12854"
+    },
+    {
+      "path": "after-mobile-group-3.png",
+      "bytes": 282219,
+      "sha256": "3ae81cb6d2641a4d3baac7f6ca5df776887242eb452f09cd1a9c5daafde3d451"
+    },
+    {
+      "path": "after-mobile-group-4.png",
+      "bytes": 266481,
+      "sha256": "9067341b1b0a07501cec1920a3370b6c9da8f14f9e5427dc54179d164ddb1116"
+    },
+    {
+      "path": "apply-emerald.cjs",
+      "bytes": 4318,
+      "sha256": "f3adbfdd2dae209196e408dccf723709a97bf7f4ca50d778c8755fc1971b5268"
+    },
+    {
+      "path": "asset-preservation.json",
+      "bytes": 16362,
+      "sha256": "8e20ff3e9d9015c8377317c9268fdad305fd4707949e6958fdf3bf688acf6be3"
+    },
+    {
+      "path": "before-desktop-group-1.png",
+      "bytes": 332466,
+      "sha256": "c01fc267c1e8425157ac5530e9364dc19caea6db481631c305a6a614eef172e5"
+    },
+    {
+      "path": "before-desktop-group-2.png",
+      "bytes": 333716,
+      "sha256": "ea22b43dc7674f9c7a098b4c38e812df5245f23cebfb8275d0f25ef340c13372"
+    },
+    {
+      "path": "before-desktop-group-3.png",
+      "bytes": 332117,
+      "sha256": "cda9c62b7ab28e406b97b9fa071586f74c9a3301e0f1d0ac6b8487c952a5cc37"
+    },
+    {
+      "path": "before-desktop-group-4.png",
+      "bytes": 314585,
+      "sha256": "501c42d0f812c8c579c963ee3bfc6626d55fb4cea02e1fadd9d6db0308626ff3"
+    },
+    {
+      "path": "before-mobile-group-1.png",
+      "bytes": 295587,
+      "sha256": "b17ed155ea2f092ac03854b6364464875221e1f5e8a7a9874c3f0b8926cf2521"
+    },
+    {
+      "path": "before-mobile-group-2.png",
+      "bytes": 298902,
+      "sha256": "58340ee6981924fa6c3d4d2fc2eb612749f748368df2c1e11583d63a9b563d84"
+    },
+    {
+      "path": "before-mobile-group-3.png",
+      "bytes": 297135,
+      "sha256": "f4ca6e95b637ac4c98516a2b077250b4487610eabe377b9cdc82d3eeb36c085d"
+    },
+    {
+      "path": "before-mobile-group-4.png",
+      "bytes": 281471,
+      "sha256": "a3e00ec362536a0f58e1d4f92ddb113a0d765655aa42d093fe374ab1113f3f50"
+    },
+    {
+      "path": "chromium-native-pixels.json",
+      "bytes": 7753,
+      "sha256": "37c0c028a357c2fbc81b5979e8d269c532f6a294dd20d2b2bd4c6218fb2ae336"
+    },
+    {
+      "path": "panel-analysis.json",
+      "bytes": 9498,
+      "sha256": "9a41acb6f9a9b9aaee44a0bd89c1f80c98e5bebed30c4a249d2f92ce54e9422b"
+    },
+    {
+      "path": "preview-address.json",
+      "bytes": 176,
+      "sha256": "ba4525d42696e980e626016ca9cea06fecb13aaf4853aac25a4b478bb5929cd5"
+    },
+    {
+      "path": "preview.cjs",
+      "bytes": 2139,
+      "sha256": "c405b0af357f53cc477f4e0bad95045d95dbf325a68e04bd6569669e8c90fc16"
+    },
+    {
+      "path": "release-scope.json",
+      "bytes": 9624,
+      "sha256": "617e3d93ca3a75fb628bec793641175d341d1ef669485fab71b0f2b74d5f4a7c"
+    },
+    {
+      "path": "review.cjs",
+      "bytes": 7158,
+      "sha256": "412e6735573fe7d9cf87a00901019c96cf361678cf3f3daec83193e03ab97fcb"
+    },
+    {
+      "path": "scope-validation.json",
+      "bytes": 1255,
+      "sha256": "3724cf6451614380138023380fc2e4aabda5dc13c1ea32d464a084568fd90b7a"
+    },
+    {
+      "path": "validation.json",
+      "bytes": 23144,
+      "sha256": "88b43668b5ec4a0559c4851c8b20d7edcf2af224298422156ec08eace927c4b7"
+    },
+    {
+      "path": "webkit-native-pixels.json",
+      "bytes": 7755,
+      "sha256": "a2494e679aed7fdca6b2413cbcdd83395607c411d6e5d24c9fc263a4a2079292"
+    }
+  ]
+}
