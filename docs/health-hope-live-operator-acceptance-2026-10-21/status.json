@@ -1,0 +1,53 @@
+{
+  "observedAt": "2026-10-21T12:26:45.344Z",
+  "clientDate": "2026-10-21",
+  "url": "https://revitalizedacademy.com/portal/health-hope-live",
+  "branch": "codex/health-hope-live",
+  "normalExistingSession": true,
+  "operatorDisplayName": "Dave Fowler",
+  "roleDisplay": "Owner",
+  "eventManagement": "PASS",
+  "authenticatedRetentionReview": "PASS",
+  "allPeopleRestrictedBranchDisplayed": false,
+  "schedule": {
+    "first": "2026-10-29",
+    "easternTime": "18:30",
+    "timezone": "America/New_York",
+    "durationMinutes": 30,
+    "privateDraftsVisible": 12,
+    "publishedSessionsVisible": 0,
+    "earlierSessionsVisible": 0
+  },
+  "readiness": {
+    "retentionWorker": "held",
+    "providerPolicy": "pending",
+    "lastHeartbeat": "not recorded"
+  },
+  "participantsVisible": 0,
+  "acceptanceCaseEnabled": false,
+  "registrationSubmitted": false,
+  "emailsSent": 0,
+  "productionMutations": 0,
+  "deployed": false,
+  "zoomSettingsChanged": false,
+  "completedRegressionSuitesRepeated": false,
+  "consoleWarningsOrErrorsObserved": 0,
+  "resendAccountRetention": "OWNER_CONFIRMED_30_DAYS_NO_EXTENSION",
+  "providerProcedure": {
+    "earlyDeletion": "Authorized account operator requests specific message removal through Resend support; no request sent",
+    "exportAssistance": "Customer request assistance under Resend DPA section 7; no request sent",
+    "sources": [
+      "https://resend.com/security/gdpr",
+      "https://resend.com/security",
+      "https://resend.com/legal/dpa"
+    ]
+  },
+  "remaining": [
+    "Justyn applicable Zoom recording/chat/report retention and export/deletion handling",
+    "Provider-readiness attestation and controlled hosted transaction/delivery/cleanup",
+    "Host-ready signal and technical guest admission",
+    "Separate public activation approval after acceptance"
+  ],
+  "credentialsRecorded": false,
+  "unrelatedPeopleRecorded": false
+}
