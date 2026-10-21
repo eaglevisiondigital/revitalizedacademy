@@ -1,0 +1,32 @@
+{
+  "jobs": 0,
+  "settings": {
+    "singleton": true,
+    "zoom_enabled": false,
+    "acceptance_case": null,
+    "retention_enabled": true,
+    "registration_enabled": true,
+    "retention_healthy_at": "2026-10-21T16:29:04.805116+00:00",
+    "notifications_enabled": true,
+    "provider_retention_ready": true
+  },
+  "observed_at": "2026-10-21T16:29:56.747799+00:00",
+  "registrations": 0,
+  "release_audit": [
+    {
+      "action": "settings",
+      "reason": "Owner-approved public HHL registration activation after completed hosted acceptance and explicit operational delivery approval. October 29 first session; manual attendance; Zoom automation off.",
+      "actor_id": "6e1559e5-2cc9-4c13-a829-abd6d807ba3c",
+      "created_at": "2026-10-21T16:28:12.547536+00:00"
+    }
+  ],
+  "first_published": [
+    {
+      "id": "c1537c23-a601-4bbd-b67e-2e21e19ec0cf",
+      "status": "published",
+      "revision": 2,
+      "starts_at": "2026-10-29T22:30:00+00:00"
+    }
+  ],
+  "fresh_retention": true
+}

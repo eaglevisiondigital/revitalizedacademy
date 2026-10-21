@@ -1,0 +1,86 @@
+{
+  "at": "2026-10-21T16:25:12.633Z",
+  "baseline": "6ad8db4edcce97d04210f844",
+  "source": "0c2c406aed5dfc5033c11033e5bade0743a73b61",
+  "betaDeployment": "6acc33161511aa93c289bbcc",
+  "buildSettings": {
+    "base": null,
+    "dir": ".",
+    "functions_dir": null,
+    "cmd": null,
+    "repo_url": "https://github.com/eaglevisiondigital/revitalizedacademy",
+    "repo_branch": "main",
+    "provider": "github",
+    "stop_builds": false,
+    "allowed_branches": [
+      "main"
+    ],
+    "private_logs": null,
+    "ignore_command": null,
+    "base_rel_dir": true,
+    "repo_path": "eaglevisiondigital/revitalizedacademy"
+  },
+  "unrelatedBindingsDigest": "15739c81f63692a47bbfa10c5a9ea0cedc5e4e628aa054a4b58d1442f132550d",
+  "flags": {
+    "RVA_HHL_WORKER_ENABLED": "false",
+    "RVA_HHL_ZOOM_ENABLED": "false",
+    "RVA_HHL_ACCEPTANCE_ENABLED": "false",
+    "RVA_HHL_REGISTRATION_ENABLED": "false",
+    "RVA_HHL_NOTIFICATIONS_ENABLED": "false",
+    "RVA_HHL_RETENTION_ENABLED": "true",
+    "RVA_HHL_DELIVERY_MODE": "acceptance"
+  },
+  "secretMetadata": [
+    {
+      "key": "RVA_HHL_SUPABASE_SERVICE_ROLE_KEY",
+      "secret": true,
+      "scopes": [
+        "functions"
+      ],
+      "contexts": [
+        "production"
+      ]
+    },
+    {
+      "key": "RVA_HHL_SUPABASE_ANON_KEY",
+      "secret": true,
+      "scopes": [
+        "functions"
+      ],
+      "contexts": [
+        "production"
+      ]
+    },
+    {
+      "key": "RVA_HHL_RATE_SECRET",
+      "secret": true,
+      "scopes": [
+        "functions"
+      ],
+      "contexts": [
+        "production"
+      ]
+    },
+    {
+      "key": "RVA_HHL_RESEND_API_KEY",
+      "secret": true,
+      "scopes": [
+        "functions"
+      ],
+      "contexts": [
+        "production"
+      ]
+    },
+    {
+      "key": "RVA_HHL_RESEND_WEBHOOK_SECRET",
+      "secret": true,
+      "scopes": [
+        "functions"
+      ],
+      "contexts": [
+        "production"
+      ]
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,156 @@
+{
+  "source": "0c2c406aed5dfc5033c11033e5bade0743a73b61",
+  "publishedDeployment": "6ad8e7abb84355bc9d97b39a",
+  "files": [
+    {
+      "path": "docs/health-hope-live-public-release-2026-10-21/baseline-manifest.json",
+      "bytes": 42546,
+      "sha256": "bdc9a8ecdb39edc8971c7ede1f70eeb6e100d1017ed16b879aacad81f21162dd"
+    },
+    {
+      "path": "docs/health-hope-live-public-release-2026-10-21/candidate-request.json",
+      "bytes": 42790,
+      "sha256": "0308318b9c1556c01fe6d12d3ca54cec482e321e9afb11a12930b71c52221fa7"
+    },
+    {
+      "path": "docs/health-hope-live-public-release-2026-10-21/candidate-verification.json",
+      "bytes": 3762,
+      "sha256": "c7544d649ead6c531fe2198c7a925c455d6d96331022ee9e6e395eac66cf34d3"
+    },
+    {
+      "path": "docs/health-hope-live-public-release-2026-10-21/canonical-verification.json",
+      "bytes": 3728,
+      "sha256": "d2e3d37b0d7752adb5912e29bb0d062fbc69b93153ba81ce457e75c2bd2e42c3"
+    },
+    {
+      "path": "docs/health-hope-live-public-release-2026-10-21/database-activation.json",
+      "bytes": 1000,
+      "sha256": "fed1e98adc31fa3b06153395c7877cbb026fd73d91240e359895e168b504f840"
+    },
+    {
+      "path": "docs/health-hope-live-public-release-2026-10-21/database-after.json",
+      "bytes": 950,
+      "sha256": "9f4cae0d2255a89300eb4b7aad041dede3f31af9fa07ec6a1eb116cfa0028b00"
+    },
+    {
+      "path": "docs/health-hope-live-public-release-2026-10-21/database-initial.json",
+      "bytes": 4641,
+      "sha256": "641ea0385d8bca9aa78986a1d98cca193bb59fa58980ed8edad9789eeb6451cc"
+    },
+    {
+      "path": "docs/health-hope-live-public-release-2026-10-21/database-preflight.json",
+      "bytes": 803,
+      "sha256": "09ce1a3cc972fba24114b8016844fdd83d33bf5c283db3c4157aa2f5d228d5a7"
+    },
+    {
+      "path": "docs/health-hope-live-public-release-2026-10-21/delivery-approval.json",
+      "bytes": 683,
+      "sha256": "b575b3f03e90b3dfef5ec196e5e4009e67b222b1411c724773560b1c2f6df496"
+    },
+    {
+      "path": "docs/health-hope-live-public-release-2026-10-21/environment-operation.json",
+      "bytes": 300,
+      "sha256": "d1075224d6f885dccd3d5e4cffa6878958f34c8e0f0d745a94d4573dd29f53b8"
+    },
+    {
+      "path": "docs/health-hope-live-public-release-2026-10-21/icons-review/desktop-controls.png",
+      "bytes": 264353,
+      "sha256": "bc80506a8e22be9af7a9bc6121bd806a12eab254e27a3b306857f2900bbc2780"
+    },
+    {
+      "path": "docs/health-hope-live-public-release-2026-10-21/icons-review/desktop.png",
+      "bytes": 240925,
+      "sha256": "a1082301ae61d3468108af34c14bcb847391fb2de5393d7bc8ae2a0d10cc9fee"
+    },
+    {
+      "path": "docs/health-hope-live-public-release-2026-10-21/icons-review/icon-contract.json",
+      "bytes": 202,
+      "sha256": "6a6b7ebe6db0e70fbbc3b638a803f18160444003b46f06d1a9ecf82305bb2724"
+    },
+    {
+      "path": "docs/health-hope-live-public-release-2026-10-21/icons-review/mobile-controls.png",
+      "bytes": 223603,
+      "sha256": "231a67f25e8d7cb8c92e44997991d3aa796328a35f73633cb3aca6facb58c5e1"
+    },
+    {
+      "path": "docs/health-hope-live-public-release-2026-10-21/icons-review/mobile.png",
+      "bytes": 204098,
+      "sha256": "46e42b44351cbe5be6e198caac28db629e3ce6c57dbfd080c631b502cc06b40f"
+    },
+    {
+      "path": "docs/health-hope-live-public-release-2026-10-21/icons-review/visual-validation.json",
+      "bytes": 1364,
+      "sha256": "704ca90005ef5d86ca92b635f493f977bc81c5f2df322589507fd53f971513f2"
+    },
+    {
+      "path": "docs/health-hope-live-public-release-2026-10-21/live-responsive.cjs",
+      "bytes": 4129,
+      "sha256": "bb23758a48e711f3282a329a9ddf42001bf8875dcde791afcc9e13970b5130ac"
+    },
+    {
+      "path": "docs/health-hope-live-public-release-2026-10-21/live-responsive.json",
+      "bytes": 1916,
+      "sha256": "12cbdade7fd8a3adec3437cdecb3d3dafe77014be701cfd2e49186253de4ed0a"
+    },
+    {
+      "path": "docs/health-hope-live-public-release-2026-10-21/operation.json",
+      "bytes": 2888,
+      "sha256": "4c910ce1264e94838e77c5a849879898cd920bc6636277dacb721cde551b91f4"
+    },
+    {
+      "path": "docs/health-hope-live-public-release-2026-10-21/production-preflight.json",
+      "bytes": 3134,
+      "sha256": "ef79163ad40deaa64378192bdef221404ec116c1b80330e931ff0848df29c7f6"
+    },
+    {
+      "path": "docs/health-hope-live-public-release-2026-10-21/provider-preflight.json",
+      "bytes": 832,
+      "sha256": "4908b5578341134c6a11f5a247eac36142a41db667316cefcb1039a75480baac"
+    },
+    {
+      "path": "docs/health-hope-live-public-release-2026-10-21/registration-mobile-live.png",
+      "bytes": 57777,
+      "sha256": "60f1b05c7abd4f5408b3711ab0d2ad9ebedaaba9b73bbc75876035b5b35093f1"
+    },
+    {
+      "path": "docs/health-hope-live-public-release-2026-10-21/release-package.json",
+      "bytes": 2790,
+      "sha256": "fc446de0bb01db6fda602f4e5452e7745e1eb54f7518ec3227069cd857aa4b7b"
+    },
+    {
+      "path": "docs/health-hope-live-public-release-2026-10-21/release.cjs",
+      "bytes": 16621,
+      "sha256": "0fa426aaeba88d18d38d1e5d547aa9daa3bda6fe4d8aeb135537a49ae27bde35"
+    },
+    {
+      "path": "docs/health-hope-live-public-release-2026-10-21/runtime-preflight.json",
+      "bytes": 1947,
+      "sha256": "ce1706c8ee86bed3973760985044bec73e6df48ca2877a0c342398cb16ff1002"
+    },
+    {
+      "path": "docs/health-hope-live-public-release-2026-10-21/security-snapshot.sql",
+      "bytes": 1687,
+      "sha256": "61ad4a8b8afc55d19c5f0017dbc8afa3700736d2cf63bc192e0898e129ee89bb"
+    },
+    {
+      "path": "docs/health-hope-live-public-release-2026-10-21/staff-desktop-live.jpg",
+      "bytes": 67895,
+      "sha256": "c0d0953ba50378e466aa746e526715f93bb8e7671239e862e13ade34224ab983"
+    },
+    {
+      "path": "docs/health-hope-live-public-release-2026-10-21/staff-desktop-metrics.json",
+      "bytes": 334,
+      "sha256": "67c2969384bb2444e4548a0982a46bb1dce9fdbd7c9e9be4ca73b437c1217abc"
+    },
+    {
+      "path": "docs/health-hope-live-public-release-2026-10-21/staff-mobile-header-live.png",
+      "bytes": 52522,
+      "sha256": "6bf0003d207801b2b7a7b62a77c8d2d77c708dd3f7b587feb08c056baa66d7de"
+    },
+    {
+      "path": "docs/health-hope-live-public-release-2026-10-21/navigation-live.jpg",
+      "bytes": 36315,
+      "sha256": "8c611109f8664af2372cef546382753c832ef2c8aa14f2b7a9ca0b31f4470d47"
+    }
+  ]
+}

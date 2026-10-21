@@ -1,0 +1,28 @@
+{
+  "jobs": 0,
+  "settings": {
+    "singleton": true,
+    "zoom_enabled": false,
+    "acceptance_case": null,
+    "retention_enabled": true,
+    "registration_enabled": false,
+    "retention_healthy_at": "2026-10-21T16:23:05.459732+00:00",
+    "notifications_enabled": false,
+    "provider_retention_ready": true
+  },
+  "versions": [
+    "20261020141529",
+    "20261020193400",
+    "20261020201535",
+    "20261020215108",
+    "20261021144712"
+  ],
+  "attendance": 0,
+  "leased_jobs": 0,
+  "observed_at": "2026-10-21T16:23:23.058776+00:00",
+  "registrations": 0,
+  "role_fingerprint": "0f126820a85b7d76a94f17ecebb908bd",
+  "table_fingerprint": "47829dbc239bac0161735f44f88f985e",
+  "policy_fingerprint": "1793b1342258f68de58bcb19ca76dd64",
+  "functions_fingerprint": "c655ac6ab8049616f19e184f9a2dc8cf"
+}

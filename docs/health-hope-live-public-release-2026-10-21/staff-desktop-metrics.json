@@ -1,0 +1,20 @@
+{
+  "icons": [
+    {
+      "alignment": "center",
+      "height": 14,
+      "label": "Staff Portal",
+      "stroke": "1.7px",
+      "width": 14
+    },
+    {
+      "alignment": "center",
+      "height": 14,
+      "label": "Public Event Page",
+      "stroke": "1.7px",
+      "width": 14
+    }
+  ],
+  "overflow": false,
+  "width": 1280
+}

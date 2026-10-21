@@ -1,0 +1,85 @@
+{
+  "runs": [
+    {
+      "width": 1440,
+      "timezone": "America/Vancouver",
+      "publicFormEnabled": true,
+      "onlyOctober29": true,
+      "separateUncheckedConsent": true,
+      "homepageCountdown": true,
+      "icons": [
+        {
+          "width": 14,
+          "height": 14,
+          "stroke": "1.7px",
+          "alignment": "center"
+        },
+        {
+          "width": 14,
+          "height": 14,
+          "stroke": "1.7px",
+          "alignment": "center"
+        }
+      ],
+      "overflow": false,
+      "scriptErrors": 0,
+      "mutations": 0,
+      "staffHeaderAnonymousAccessOnly": true
+    },
+    {
+      "width": 390,
+      "timezone": "America/Vancouver",
+      "publicFormEnabled": true,
+      "onlyOctober29": true,
+      "separateUncheckedConsent": true,
+      "homepageCountdown": true,
+      "icons": [
+        {
+          "width": 14,
+          "height": 14,
+          "stroke": "1.7px",
+          "alignment": "center"
+        },
+        {
+          "width": 14,
+          "height": 14,
+          "stroke": "1.7px",
+          "alignment": "center"
+        }
+      ],
+      "overflow": false,
+      "scriptErrors": 0,
+      "mutations": 0,
+      "staffHeaderAnonymousAccessOnly": true
+    },
+    {
+      "width": 320,
+      "timezone": "America/Vancouver",
+      "publicFormEnabled": true,
+      "onlyOctober29": true,
+      "separateUncheckedConsent": true,
+      "homepageCountdown": true,
+      "icons": [
+        {
+          "width": 14,
+          "height": 14,
+          "stroke": "1.7px",
+          "alignment": "center"
+        },
+        {
+          "width": 14,
+          "height": 14,
+          "stroke": "1.7px",
+          "alignment": "center"
+        }
+      ],
+      "overflow": false,
+      "scriptErrors": 0,
+      "mutations": 0,
+      "staffHeaderAnonymousAccessOnly": true
+    }
+  ],
+  "realRegistrationsCreated": 0,
+  "extraEmailsSent": 0,
+  "passed": true
+}

@@ -1,0 +1,102 @@
+{
+  "at": "2026-10-21T16:29:47.656Z",
+  "id": "6ad8e7abb84355bc9d97b39a",
+  "source": "0c2c406aed5dfc5033c11033e5bade0743a73b61",
+  "origin": "https://6ad8e7abb84355bc9d97b39a--revitalizedacademy.netlify.app",
+  "checked": [
+    {
+      "path": "/index.html",
+      "sha256": "cecd718dd8921ee17e24575449173b25877c993889b6b4c1e315d0ca71267d3b",
+      "servedSha256": "82d5e90ec50b6556f3457003de500b918675fd2a4ed2d6f33b99eeabc695e432",
+      "prettyUrlNormalization": true
+    },
+    {
+      "path": "/health-hope-live.html",
+      "sha256": "68fc086b0a5116fc6fce2f8d09938f3e774f703b8b65c7f18e9e2b04be8bb8d3",
+      "servedSha256": "c89936bdc98a661bd34409a9364b697f76c3102f8550ff688908b47b356c6f45",
+      "prettyUrlNormalization": true
+    },
+    {
+      "path": "/js/health-hope-live.js",
+      "sha256": "f01a0e2c13dd04e5a9cc8cdc137b74a4e2239a6cc6687fa277a41d530bf4061c",
+      "servedSha256": "f01a0e2c13dd04e5a9cc8cdc137b74a4e2239a6cc6687fa277a41d530bf4061c",
+      "prettyUrlNormalization": false
+    },
+    {
+      "path": "/css/health-hope-live.css",
+      "sha256": "f92d375ff9e0c0b952975c88477c87f62247b0f981823126d800812e7da42846",
+      "servedSha256": "f92d375ff9e0c0b952975c88477c87f62247b0f981823126d800812e7da42846",
+      "prettyUrlNormalization": false
+    },
+    {
+      "path": "/portal/health-hope-live.html",
+      "sha256": "99d3a64268b56076269c31425bd0c14f71a218ae6259bbbd07a5a04c471d52cb",
+      "servedSha256": "99d3a64268b56076269c31425bd0c14f71a218ae6259bbbd07a5a04c471d52cb",
+      "prettyUrlNormalization": true
+    },
+    {
+      "path": "/portal/health-hope-live.css",
+      "sha256": "170cde3ed78616cdfd6026661d7e8e5adced4e8d047899c55242841321eebb00",
+      "servedSha256": "170cde3ed78616cdfd6026661d7e8e5adced4e8d047899c55242841321eebb00",
+      "prettyUrlNormalization": false
+    },
+    {
+      "path": "/portal/health-hope-live.js",
+      "sha256": "b94061472ecd8e6cb039bac9cbb63bfe9f1c5f2376235b59b630f490547f51e6",
+      "servedSha256": "b94061472ecd8e6cb039bac9cbb63bfe9f1c5f2376235b59b630f490547f51e6",
+      "prettyUrlNormalization": false
+    },
+    {
+      "path": "/founders.html",
+      "servedSha256": "f041311d071262bdb0c16d339a16f731688063e775574e5690a350f537191642",
+      "unchanged": true
+    },
+    {
+      "path": "/css/founders103.css",
+      "servedSha256": "43efe83bc2fd5b56d9fec4c13798894f435a4b2daca1ff72c040a0aba76b0034",
+      "unchanged": true
+    },
+    {
+      "path": "/assets/fonts/ooohbaby-regular.ttf",
+      "servedSha256": "904d1b79093da1ae4b7436ac2190ddf5048e3cb839b2dc0c0516d0f58a1c25ee",
+      "unchanged": true
+    },
+    {
+      "path": "/assets/fonts/ofl-ooohbaby.txt",
+      "servedSha256": "a768f4c2b04f8e960236f9854c8afeb3626fb34927f25aa66aa7f1cc8cea715e",
+      "unchanged": true
+    },
+    {
+      "path": "/portal/portal.js",
+      "servedSha256": "8e16923552511459bc4695a4e1d1755c5a562bae3d3057face6d87ef231374cf",
+      "unchanged": true
+    },
+    {
+      "path": "/portal/portal-roadmap-founder.js",
+      "servedSha256": "d2672b7441d207067588e91ee88a9204fc2f886cb82ab40266f646181b27dcb6",
+      "unchanged": true
+    },
+    {
+      "path": "/runtime-config.js",
+      "servedSha256": "e464e999fc0cc3e6ca5bc817bb5e18c4e46a862c9c87e1c9435000fc12c17b53",
+      "unchanged": true
+    }
+  ],
+  "sessions": {
+    "sessions": [
+      {
+        "id": "c1537c23-a601-4bbd-b67e-2e21e19ec0cf",
+        "status": "published",
+        "closes_at": "2026-10-29T22:30:00+00:00",
+        "starts_at": "2026-10-29T22:30:00+00:00",
+        "public_note": ""
+      }
+    ],
+    "timezone": "America/New_York"
+  },
+  "malformedRegistrationStatus": 400,
+  "malformedRegistrationError": "invalid_registration",
+  "syntheticRegistrationCreated": false,
+  "extraEmailSent": false,
+  "passed": true
+}

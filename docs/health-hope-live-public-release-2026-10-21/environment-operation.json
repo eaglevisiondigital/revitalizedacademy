@@ -1,0 +1,12 @@
+{
+  "startedAt": "2026-10-21T16:25:48.593Z",
+  "keys": [
+    "RVA_HHL_REGISTRATION_ENABLED",
+    "RVA_HHL_WORKER_ENABLED",
+    "RVA_HHL_NOTIFICATIONS_ENABLED",
+    "RVA_HHL_DELIVERY_MODE"
+  ],
+  "publicPublished": false,
+  "complete": true,
+  "credentialsSenderAndUnrelatedBindingsUnchanged": true
+}

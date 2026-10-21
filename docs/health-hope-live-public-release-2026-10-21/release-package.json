@@ -1,0 +1,69 @@
+{
+  "source": "0c2c406aed5dfc5033c11033e5bade0743a73b61",
+  "baseline": "6ad8db4edcce97d04210f844",
+  "files": [
+    {
+      "path": "/index.html",
+      "source": "docs/health-hope-live-inaugural-2026-10-20/activation-static/index.html",
+      "previousSha1": "d54b56cda97a2ece78b0fa4ead8b85fb227f96b8",
+      "sha1": "0cb19d8025c88313ebc1702acc70cba5ad62e569",
+      "sha256": "cecd718dd8921ee17e24575449173b25877c993889b6b4c1e315d0ca71267d3b",
+      "bytes": 39052
+    },
+    {
+      "path": "/health-hope-live.html",
+      "source": "docs/health-hope-live-inaugural-2026-10-20/activation-static/health-hope-live.html",
+      "previousSha1": "26c855eda7a565ba01295a39bd0b166bf9c15c5d",
+      "sha1": "a824852752d9f0de934b40561cf61e13e7adc2c9",
+      "sha256": "68fc086b0a5116fc6fce2f8d09938f3e774f703b8b65c7f18e9e2b04be8bb8d3",
+      "bytes": 13431
+    },
+    {
+      "path": "/js/health-hope-live.js",
+      "source": "docs/health-hope-live-inaugural-2026-10-20/activation-static/js/health-hope-live.js",
+      "previousSha1": "96de989c7df8e6b2184edf0c37cce38800b87855",
+      "sha1": "c01dcbead88b18b59e3b4a13e45f605456d44d47",
+      "sha256": "f01a0e2c13dd04e5a9cc8cdc137b74a4e2239a6cc6687fa277a41d530bf4061c",
+      "bytes": 9998
+    },
+    {
+      "path": "/css/health-hope-live.css",
+      "source": "docs/health-hope-live-inaugural-2026-10-20/activation-static/css/health-hope-live.css",
+      "previousSha1": "b107ed899ed87ac9698156db24f9fc061643a8dd",
+      "sha1": "db9f40ad2548c85b49915eee8ab5691106bdcae1",
+      "sha256": "f92d375ff9e0c0b952975c88477c87f62247b0f981823126d800812e7da42846",
+      "bytes": 17796
+    },
+    {
+      "path": "/portal/health-hope-live.html",
+      "source": "portal/health-hope-live.html",
+      "previousSha1": "27286ce7f36b272909a20664964f5b4ac6ea0267",
+      "sha1": "47fae4416ee5da2ab2b70b8b1922a108ab47511a",
+      "sha256": "99d3a64268b56076269c31425bd0c14f71a218ae6259bbbd07a5a04c471d52cb",
+      "bytes": 9504
+    },
+    {
+      "path": "/portal/health-hope-live.css",
+      "source": "portal/health-hope-live.css",
+      "previousSha1": "1f0cdddcfb253e0bb64dadf19cd22b63d48b3080",
+      "sha1": "27bb6510b7606c5e5d4ef85b16662450acd85073",
+      "sha256": "170cde3ed78616cdfd6026661d7e8e5adced4e8d047899c55242841321eebb00",
+      "bytes": 13502
+    },
+    {
+      "path": "/portal/health-hope-live.js",
+      "source": "portal/health-hope-live.js",
+      "previousSha1": "593376548b15c0a10777c7909fd671d745b0ed50",
+      "sha1": "fb9a31f6ad945233ecfa620d407eaaef401365a0",
+      "sha256": "b94061472ecd8e6cb039bac9cbb63bfe9f1c5f2376235b59b630f490547f51e6",
+      "bytes": 30203
+    }
+  ],
+  "retainedStatic": 445,
+  "totalStatic": 452,
+  "added": 0,
+  "removed": 0,
+  "functionsUnchanged": 13,
+  "migrations": 0,
+  "automation": false
+}

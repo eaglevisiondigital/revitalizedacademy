@@ -1,0 +1,12 @@
+{
+  "ownerClarification": "Approve Existing Event Delivery Controls",
+  "approvedScope": "Existing HHL operational confirmations, reminders and signed Resend delivery-feedback hook only",
+  "priorAutoReviewRejection": "Provider-state enablement conflicted with earlier leave-integrations-unchanged wording; stopped dependent activation and obtained explicit owner clarification before retry",
+  "senderCredentialsTemplatesAndZoomSettingsUnchanged": true,
+  "automatedAttendance": false,
+  "providerHookStatus": "enabled",
+  "endpoint": "https://revitalizedacademy.com/api/health-hope-live/email-webhook",
+  "eventsUnchanged": true,
+  "secretOmitted": true,
+  "newEmailSent": false
+}

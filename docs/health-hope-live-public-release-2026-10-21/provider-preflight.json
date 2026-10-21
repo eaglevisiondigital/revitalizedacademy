@@ -1,0 +1,21 @@
+{
+  "observedAt": "2026-10-21T16:21:00Z",
+  "sender": "ReVitalized Academy <noreply@auth.revitalizedacademy.com>",
+  "replyTo": "contact@revitalizedacademy.com",
+  "domainVerified": true,
+  "sendingEnabled": true,
+  "dkimVerified": true,
+  "spfVerified": true,
+  "openTracking": false,
+  "clickTracking": false,
+  "existingEventFeedbackHook": "49fade9b-2bc3-4cf0-909f-6c99bf02d280",
+  "endpoint": "https://revitalizedacademy.com/api/health-hope-live/email-webhook",
+  "beforeStatus": "disabled",
+  "events": ["email.delivered", "email.bounced", "email.complained", "email.failed", "email.suppressed"],
+  "signedFeedbackAlreadyAcceptanceTested": true,
+  "secretOmitted": true,
+  "priorRecipientReceiptAndCleanupUnchanged": true,
+  "additionalSyntheticEmailsPlanned": 0,
+  "zoomAutomation": false,
+  "zoomAccountSettingsChanges": 0
+}
