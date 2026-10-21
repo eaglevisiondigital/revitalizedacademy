@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "source": "Actual scheduled Netlify health-hope-live-retention invocation; no administrative maintenance substituted",
+  "request_id": "01M5FH9323AVNK4HEN8ANWQQY2",
+  "invoked_at": "2026-10-21T15:29:04.579177342Z",
+  "status": 200,
+  "database": {
+    "observed_at": "2026-10-21 15:29:45.262063+00",
+    "retention_enabled": true,
+    "provider_retention_ready": true,
+    "retention_healthy_at": "2026-10-21 15:29:05.815419+00",
+    "registration_enabled": false,
+    "notifications_enabled": false,
+    "zoom_enabled": false,
+    "registrations": 0,
+    "jobs": 0
+  }
+}

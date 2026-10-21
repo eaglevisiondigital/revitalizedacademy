@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-21",
+  "branch": "codex/health-hope-live",
+  "approvedRepairSource": "272aed83417fa5bf2f5acbdbb23ee88e3d35631b",
+  "migration": {
+    "version": "20261021144712",
+    "sha256": "4799e7565458b36a33db5fefe73958d240f76441378a130f409d4f49a7156066",
+    "appliedOnce": true,
+    "otherMigrationsReplayed": false
+  },
+  "results": {
+    "hostedMigrationsAndFunctions": "PASS",
+    "scheduledRetention": "PASS",
+    "registrationToRegisteredGuestCrm": "PASS",
+    "confirmationProviderAndSignedFeedback": "PASS",
+    "actualRecipientReceipt": "PASS",
+    "zoomJoiningAndHostAdmission": "PASS, completed in prior joining stage",
+    "authenticatedEventExport": "PASS",
+    "approvedSyntheticDeletion": "PASS",
+    "masterContactPreservation": "PASS, exact full-row hash unchanged",
+    "existingSystemProtections": "PASS",
+    "publicActivation": "HELD, separate explicit approval required"
+  },
+  "production": {
+    "deployment": "6ad8db4edcce97d04210f844",
+    "source": "3fee66773483ab3245f5efd734a26879e6a15336",
+    "staticPaths": 452,
+    "functions": 13,
+    "publicRegistration": false,
+    "automatedZoom": false,
+    "outboundWorker": false,
+    "notifications": false,
+    "eventFeedbackHook": "disabled",
+    "retentionMaintenance": true,
+    "qaPins": "blank",
+    "databaseQaCase": null
+  },
+  "acceptance": {
+    "recipient": "dave@theboss.biz",
+    "providerId": "01a15f16-64e4-7cf4-910e-90bd9822442c",
+    "sender": "ReVitalized Academy <noreply@auth.revitalizedacademy.com>",
+    "replyTo": "contact@revitalizedacademy.com",
+    "confirmations": 1,
+    "remindersSent": 0,
+    "marketing": false,
+    "firstEvent": "2026-10-29T18:30:00 America/New_York",
+    "durationMinutes": 30,
+    "zoomMeetingId": "82516112925",
+    "manualAttendanceOnly": true
+  },
+  "cleanup": {
+    "eventRegistrations": 0,
+    "eventRequests": 0,
+    "eventJobs": 0,
+    "eventAttendance": 0,
+    "masterContactsRetained": 1,
+    "anonymousAggregateRetained": 1,
+    "clientAccessGranted": 0,
+    "loginsCreated": 0,
+    "providerCopies": "Approved standard thirty-day Resend retention; no immediate erasure claim"
+  },
+  "engineeringBlockers": [],
+  "nextApproval": "Only public activation scope; four static paths, reviewed registration/operational delivery/signed feedback controls; no new migration or Function implementation"
+}

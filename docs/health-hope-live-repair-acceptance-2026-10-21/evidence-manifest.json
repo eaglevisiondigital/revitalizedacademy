@@ -1,0 +1,206 @@
+{
+  "at": "2026-10-21T15:48:30.157Z",
+  "publicActivationAuthorized": false,
+  "files": [
+    {
+      "file": "acceptance-candidate-verification.json",
+      "bytes": 1223,
+      "sha256": "90f2cc5589cd51f230030689af2367ef2bd072f72bae251f5c7d05680f8af682"
+    },
+    {
+      "file": "acceptance-canonical-verification.json",
+      "bytes": 1189,
+      "sha256": "142b57e23e2163178b4b332ce9e78d1ec20078f6509155667d5f36e2bfa649f6"
+    },
+    {
+      "file": "acceptance-environment.json",
+      "bytes": 663,
+      "sha256": "3e84f50a396037529f71fc89346afc08790b96e02a86b1c1cd293b54d5ec960c"
+    },
+    {
+      "file": "acceptance-operation.json",
+      "bytes": 2126,
+      "sha256": "169ba9bdf2a58997cc59e466156f6cf2e2231993a2c0b11a9ce0f8b41c432b92"
+    },
+    {
+      "file": "acceptance-request.json",
+      "bytes": 42783,
+      "sha256": "5f15977577e9aa7ce8f972df3b94b18b85ec0857b05ecf14a5ff18fa1a4b72ae"
+    },
+    {
+      "file": "acceptance-runtime.cjs",
+      "bytes": 14749,
+      "sha256": "27903412279e80578c26be130c03e60e5a79dcf08245c4425d8d917deb77ad1c"
+    },
+    {
+      "file": "actual-confirmation-provider.json",
+      "bytes": 925,
+      "sha256": "35b58ab625e1b48a6523e707589fdbb38b4c18a8767ebf635b5678313c642a4e"
+    },
+    {
+      "file": "case.json",
+      "bytes": 307,
+      "sha256": "6f66438a6aa1df0917f446fcf921a42786b4d626e464f9ef148ce72db222da51"
+    },
+    {
+      "file": "cleanup-complete.jpg",
+      "bytes": 47365,
+      "sha256": "8515244f46fefa68a5dfeb864f8f7027e34acd239ffe3688e282f2e144c6b583"
+    },
+    {
+      "file": "cli-cleanup.json",
+      "bytes": 162,
+      "sha256": "e46cd21256f4bbceb5de6a1b843ddc24835296bdc3e6595dce367f94c7f467eb"
+    },
+    {
+      "file": "closed-acceptance-case.json",
+      "bytes": 1143,
+      "sha256": "32da0827bfa04bea6c1ab4fd0f9f00ef6b88d5740aae8fb36fea5d3af9084992"
+    },
+    {
+      "file": "current-manifest.json",
+      "bytes": 42546,
+      "sha256": "bdc9a8ecdb39edc8971c7ede1f70eeb6e100d1017ed16b879aacad81f21162dd"
+    },
+    {
+      "file": "database-after-repair.json",
+      "bytes": 42642,
+      "sha256": "3d7644d51ca43b42b68cf348be133313e06206ac39933aace57cc9686207f401"
+    },
+    {
+      "file": "database-before.json",
+      "bytes": 42488,
+      "sha256": "3f50304bd76035c2042ffe947d0e8232aa7b46e7d12c8271db84ed9abe7f7427"
+    },
+    {
+      "file": "deletion-review.jpg",
+      "bytes": 78922,
+      "sha256": "c1c1f1471f451209b85b08176abe27ce42c738b77a69d7a504693518e8ba8f32"
+    },
+    {
+      "file": "delivery-and-hold-audit.json",
+      "bytes": 1940,
+      "sha256": "a13f1f35c5891d40917fd8a2869026c2987b63e42b29903d807269ee6cb6ce15"
+    },
+    {
+      "file": "final-cleanup.json",
+      "bytes": 2323,
+      "sha256": "27d7454367175df6405c59579db12138613a7ec0e41f72468a747c3ff2da6d9a"
+    },
+    {
+      "file": "final-production-state.json",
+      "bytes": 567,
+      "sha256": "8189bcb0a3589f939c4962cd1664531b8d53612c31c1e0841d785b75685eee9a"
+    },
+    {
+      "file": "hold-candidate-verification.json",
+      "bytes": 1223,
+      "sha256": "a12efb488e11ae247372579092734f1aa0d7521a70ef205813b3a7c83cf6cc71"
+    },
+    {
+      "file": "hold-canonical-verification.json",
+      "bytes": 1189,
+      "sha256": "476bf03b443694960ebd6a9f3a140d0a0ccd527c8d087325ece97491bb167260"
+    },
+    {
+      "file": "hold-environment.json",
+      "bytes": 657,
+      "sha256": "184bcbcf157fa3fefed75cfb4538ce71c452064668f802c766d865c0626cd4bd"
+    },
+    {
+      "file": "hold-operation.json",
+      "bytes": 2120,
+      "sha256": "d591404d61b09a4f6d60a3e82e50359b3ecc00942db3d27ae729d5004f51749c"
+    },
+    {
+      "file": "hold-request.json",
+      "bytes": 42781,
+      "sha256": "6b867c7c4b1c0ea8ec7baf48a3e821006b86cdecdbfeaf661a71ac054e1e7491"
+    },
+    {
+      "file": "migration-dry-run.json",
+      "bytes": 421,
+      "sha256": "3d4810e55ff0e8541f85a4df00dda790c5751915d9ace7b3a5febdc9e36e5ffe"
+    },
+    {
+      "file": "migration-operation.json",
+      "bytes": 536,
+      "sha256": "192abfbf4c80b85943fad1b7dd5f56d7efef906fedab27d37bf85280f6a26599"
+    },
+    {
+      "file": "operator-binding.json",
+      "bytes": 643,
+      "sha256": "a0582389e58cd66266c3d446753a3ba4f86eb9ffe7ac19f25e931da308dacadf"
+    },
+    {
+      "file": "pre-send-confirmation.json",
+      "bytes": 1452,
+      "sha256": "333802b20b739e6946731e198eb291a6253dd1411824526ed42ca3c24c28e2a1"
+    },
+    {
+      "file": "privacy-before-cleanup.json",
+      "bytes": 698,
+      "sha256": "5fe4d2ccdb057977d01f25d320d48dd6babcfd0c86bbd06cbbcf420a1ed4df7d"
+    },
+    {
+      "file": "production-preflight.json",
+      "bytes": 300,
+      "sha256": "4112b157702203c4bbef7c588754dcd8c02643821f5c731ac53a84b6fb3270ed"
+    },
+    {
+      "file": "provider-hook-final.json",
+      "bytes": 344,
+      "sha256": "3fecf8f9e68fcf33ee633118d20b4998467a767c0b0d5f5606487faf26dedadc"
+    },
+    {
+      "file": "public-activation-scope.json",
+      "bytes": 4201,
+      "sha256": "b3f0b9fd1a13eed4ef7f81e4318744d396657210aa6b6f572d6b2490863cdd0a"
+    },
+    {
+      "file": "recipient-receipt.json",
+      "bytes": 426,
+      "sha256": "bd63fe272763f072fdd7e5c4a391f0eedcb82ce3bef2bd8fd8aa3a90414cfca4"
+    },
+    {
+      "file": "registration-accepted.jpg",
+      "bytes": 58482,
+      "sha256": "46cb1d46cef9ed298fbab86ec52c81a8f8c4413e2f25be732c3dacfd0ac9f6da"
+    },
+    {
+      "file": "registration-database.json",
+      "bytes": 1831,
+      "sha256": "47c1e1eca6bfa75dbcc4eeb30eb418c0bdb36b736cf69fc853b1a5b6ed3e3832"
+    },
+    {
+      "file": "runtime-preflight.json",
+      "bytes": 805,
+      "sha256": "16a0b77f5899ea56de967b01f748fe019c94dd46b74c3b8dad796c1fa6c948c5"
+    },
+    {
+      "file": "scheduled-retention.json",
+      "bytes": 594,
+      "sha256": "ba119f49475d629d16e2549c1a48991a288544a06ce371b690b1f26ae6fbcae7"
+    },
+    {
+      "file": "security-advisors.json",
+      "bytes": 2118,
+      "sha256": "7b5a719c2066d632535710331f738e9d5dc5ee8139a37dc5af94b1fbe9f331f5"
+    },
+    {
+      "file": "source-reconciliation.json",
+      "bytes": 168,
+      "sha256": "e75922b96e08e743a78d210c659b045204f998ef9f569f16a4846200f161b09a"
+    },
+    {
+      "file": "staff-registered-guest.jpg",
+      "bytes": 55770,
+      "sha256": "8bdce0d7e8ada7b2171ffacc01814bfaea4f9e7d2e0d703e965dcb8f1c0c16da"
+    },
+    {
+      "file": "status.json",
+      "bytes": 2342,
+      "sha256": "21ccbf610157758b151196a954da53266fea9d040fa012d8478257e31e8095a7"
+    }
+  ]
+}

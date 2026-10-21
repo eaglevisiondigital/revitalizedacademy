@@ -1,0 +1,22 @@
+{
+  "at": "2026-10-21T15:47:31.707Z",
+  "deployment": "6ad8db4edcce97d04210f844",
+  "source": "3fee66773483ab3245f5efd734a26879e6a15336",
+  "locked": true,
+  "paths": 452,
+  "functions": 13,
+  "allStaticDigestsPreserved": true,
+  "allFunctionArchivesAndSchedulesPreserved": true,
+  "eventRuntimeFlags": {
+    "REGISTRATION": "false",
+    "ZOOM": "false",
+    "WORKER": "false",
+    "NOTIFICATIONS": "false",
+    "RETENTION": "true",
+    "ACCEPTANCE": "false"
+  },
+  "testPinsBlank": true,
+  "deliveryMode": "acceptance",
+  "secretsPrinted": false,
+  "passed": true
+}

@@ -1,0 +1,33 @@
+{
+  "status": "EXACT_APPROVED_PRE_SEND_PREVIEW_NOT_SENT",
+  "from": "ReVitalized Academy <noreply@auth.revitalizedacademy.com>",
+  "reply_to": "contact@revitalizedacademy.com",
+  "to": [
+    "dave@theboss.biz"
+  ],
+  "subject": "Your Health & Hope Live registration is confirmed",
+  "text": "ReVitalized Academy\n\nHealth & Hope Live\nThursday, October 29, 2026 at 6:30 PM EDT\n30 minutes · Free · Zoom\n\nZoom joining link for this session:\nhttps://us02web.zoom.us/j/82516112925\n\nThis is a shared recurring Zoom link. Your website registration is for the session above. Please do not share the joining information.\n\nJustyn & Elle Oliver",
+  "registrationPayload": {
+    "request_id": "5577813d-27f3-4a70-adae-c85a44dfc2b2",
+    "session_id": "c1537c23-a601-4bbd-b67e-2e21e19ec0cf",
+    "first_name": "HHL",
+    "last_name": "Acceptance Test",
+    "email": "dave@theboss.biz",
+    "event_notifications": true,
+    "marketing_requested": false,
+    "source": "health_hope_live_website",
+    "company_website": ""
+  },
+  "scope": {
+    "email": "dave@theboss.biz",
+    "session_id": "c1537c23-a601-4bbd-b67e-2e21e19ec0cf",
+    "request_id": "5577813d-27f3-4a70-adae-c85a44dfc2b2",
+    "operator_id": "6e1559e5-2cc9-4c13-a829-abd6d807ba3c",
+    "revision": 2,
+    "starts_at": "2026-10-21T15:25:59.699Z",
+    "expires_at": "2026-10-21T15:55:59.699Z"
+  },
+  "maximumConfirmations": 1,
+  "automatedAttendance": false,
+  "publicRegistration": false
+}

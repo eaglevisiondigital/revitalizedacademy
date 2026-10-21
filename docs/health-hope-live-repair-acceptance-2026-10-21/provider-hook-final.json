@@ -1,0 +1,14 @@
+{
+  "verifiedAt": "2026-10-21T15:41:35.304Z",
+  "endpoint": "https://revitalizedacademy.com/api/health-hope-live/email-webhook",
+  "status": "disabled",
+  "events": [
+    "email.delivered",
+    "email.bounced",
+    "email.complained",
+    "email.failed",
+    "email.suppressed"
+  ],
+  "secretPrinted": false,
+  "unrelatedHooksChanged": false
+}

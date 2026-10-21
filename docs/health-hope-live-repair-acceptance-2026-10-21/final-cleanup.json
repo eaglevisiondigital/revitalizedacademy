@@ -1,0 +1,89 @@
+{
+  "passed": true,
+  "actionTimeOwnerApproved": true,
+  "masterContactUnchanged": true,
+  "publicRegistration": false,
+  "jobs": 0,
+  "requests": 0,
+  "settings": {
+    "singleton": true,
+    "zoom_enabled": false,
+    "acceptance_case": null,
+    "retention_enabled": true,
+    "registration_enabled": false,
+    "retention_healthy_at": "2026-10-21T15:44:12.692003+00:00",
+    "notifications_enabled": false,
+    "provider_retention_ready": true
+  },
+  "attendance": 0,
+  "observed_at": "2026-10-21T15:44:32.575876+00:00",
+  "privacy_log": [
+    {
+      "action": "request_opened",
+      "actor_id": "6e1559e5-2cc9-4c13-a829-abd6d807ba3c",
+      "records_count": 0
+    },
+    {
+      "action": "exported",
+      "actor_id": "6e1559e5-2cc9-4c13-a829-abd6d807ba3c",
+      "records_count": 1
+    },
+    {
+      "action": "request_opened",
+      "actor_id": "6e1559e5-2cc9-4c13-a829-abd6d807ba3c",
+      "records_count": 0
+    },
+    {
+      "action": "deleted",
+      "actor_id": "6e1559e5-2cc9-4c13-a829-abd6d807ba3c",
+      "records_count": 1
+    }
+  ],
+  "privacy_cases": [
+    {
+      "id": "5576311c-77ad-4e73-93c4-b6bfa8c12680",
+      "kind": "export",
+      "state": "complete",
+      "contact_id": null,
+      "completed_at": "2026-10-21T15:34:40.146785+00:00",
+      "records_count": 0
+    },
+    {
+      "id": "e01347ab-f4b8-4fef-b623-e7955021b3c6",
+      "kind": "delete",
+      "state": "complete",
+      "contact_id": null,
+      "completed_at": "2026-10-21T15:43:52.78708+00:00",
+      "records_count": 1
+    }
+  ],
+  "registrations": 0,
+  "new_auth_users": 0,
+  "anonymous_totals": {
+    "erased": 1,
+    "no_show": 0,
+    "attended": 0,
+    "cancelled": 0,
+    "registered": 1,
+    "session_id": "c1537c23-a601-4bbd-b67e-2e21e19ec0cf"
+  },
+  "earlier_sessions": 0,
+  "synthetic_contact": {
+    "id": "eb6a84d4-ad0a-4235-a388-6aa7153b5b97",
+    "hash": "8ada053850ac9fe52901e9b934c284ee",
+    "last_source": "health_hope_live",
+    "first_source": "health_hope_live",
+    "lifecycle_stage": "registered_guest",
+    "client_access_records": 0
+  },
+  "published_sessions": [
+    {
+      "id": "c1537c23-a601-4bbd-b67e-2e21e19ec0cf",
+      "revision": 2,
+      "starts_at": "2026-10-29T22:30:00+00:00",
+      "regular_date": "2026-10-29"
+    }
+  ],
+  "event_owned_tag_count": 0,
+  "synthetic_contact_count": 1
+}

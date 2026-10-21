@@ -1,0 +1,14 @@
+{
+  "operator_id": "6e1559e5-2cc9-4c13-a829-abd6d807ba3c",
+  "synthetic_contact_id": "eb6a84d4-ad0a-4235-a388-6aa7153b5b97",
+  "master_contact_hash": "8ada053850ac9fe52901e9b934c284ee",
+  "export_case": "5576311c-77ad-4e73-93c4-b6bfa8c12680",
+  "export_completed_at": "2026-10-21T15:34:40.146785Z",
+  "exported_records": 1,
+  "export_scope": "health_hope_live_only",
+  "delete_case": "e01347ab-f4b8-4fef-b623-e7955021b3c6",
+  "delete_safe_after": "2026-10-21T15:35:39.244240Z",
+  "delete_expires_at": "2026-10-21T15:50:39.244240Z",
+  "in_flight_jobs": 0,
+  "provider_basis": "Existing approved standard Resend thirty-day retention, not immediate provider erasure; technical Zoom test unrecorded"
+}

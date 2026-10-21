@@ -1,0 +1,61 @@
+{
+  "jobs": [
+    {
+      "id": "f307eee1-172b-4c2f-ab2b-f886fcfbfd7a",
+      "kind": "reminder",
+      "state": "pending",
+      "attempts": 0,
+      "run_after": "2026-10-29T21:30:00+00:00",
+      "last_error": null,
+      "provider_id": null
+    },
+    {
+      "id": "d6473b4d-13a8-444b-886d-1d22ccf3a7d2",
+      "kind": "confirmation",
+      "state": "done",
+      "attempts": 1,
+      "run_after": "2026-10-21T15:33:05.707724+00:00",
+      "last_error": null,
+      "provider_id": "01a15f16-64e4-7cf4-910e-90bd9822442c"
+    }
+  ],
+  "contacts": [
+    {
+      "id": "eb6a84d4-ad0a-4235-a388-6aa7153b5b97",
+      "email": "dave@theboss.biz",
+      "last_name": "Acceptance Test",
+      "first_name": "HHL",
+      "last_source": "health_hope_live",
+      "first_source": "health_hope_live",
+      "lifecycle_stage": "registered_guest",
+      "client_access_records": 0
+    }
+  ],
+  "registrations": [
+    {
+      "id": "c96ab996-8056-4857-9da6-478b4eb966b8",
+      "state": "confirmed",
+      "source": "health_hope_live_website",
+      "starts_at": "2026-10-29T22:30:00+00:00",
+      "contact_id": "eb6a84d4-ad0a-4235-a388-6aa7153b5b97",
+      "expires_at": "2027-10-29T23:00:00+00:00",
+      "session_id": "c1537c23-a601-4bbd-b67e-2e21e19ec0cf",
+      "attended_at": null,
+      "registered_at": "2026-10-21T15:30:56.524577+00:00",
+      "attendance_status": "unreviewed",
+      "event_notifications": true,
+      "marketing_requested": false,
+      "private_join_url_matches": null
+    }
+  ],
+  "new_auth_users": 0,
+  "acceptance_audit": [
+    {
+      "id": "21e835e4-2a49-49ad-87a3-a8d6bb5b70f0",
+      "action": "acceptance_registration",
+      "actor_id": "6e1559e5-2cc9-4c13-a829-abd6d807ba3c",
+      "created_at": "2026-10-21T15:30:56.524577+00:00",
+      "subject_id": "c96ab996-8056-4857-9da6-478b4eb966b8"
+    }
+  ]
+}

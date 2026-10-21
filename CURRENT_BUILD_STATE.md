@@ -1,3 +1,11 @@
+## Health & Hope Live — controlled hosted acceptance and cleanup PASS; ready for public approval — 2026-10-21
+
+Owner approved the exact fifth migration from 272aed8. Version 20261021144712 is installed once after an isolated ledger fetch and one-file dry run; all other migration statements, shared functions, RLS/policies/ACLs and original role attributes are preserved. The actual scheduled retention worker now returns 200 and advances its heartbeat.
+
+One normal-operator synthetic request created one existing-CRM Registered Guest and the October 29, 6:30 PM Eastern session record, with event consent on, marketing off and no client access/new login/attendance. Exactly one confirmation was delivered, recorded by signed backend feedback and confirmed received with correct details by the owner. Authenticated event-only export completed for one record. The owner approved final synthetic event deletion at the action point; it completed with an actor-bound audit. Zero event registrations, requests, jobs or attendance remain. The master contact's complete hash is unchanged; one anonymous aggregate count is retained.
+
+Final forward hold deployment **6ad8db4edcce97d04210f844**, source **3fee667**, retains all 452 static paths and thirteen Function archives/configuration/schedules, current Founders, Roadmap, beta, build settings and publication lock. Public registration, test delivery, Zoom automation and the event hook are disabled; all runtime QA pins are blank and the database QA case is null. Verified independent retention remains enabled. [Execution report and exact later public activation scope](docs/HEALTH_HOPE_LIVE_CONTROLLED_ACCEPTANCE_2026-10-21.md). Ready for separate public activation approval; no new migration or further development cycle is required. Entries below are historical.
+
 ## Health & Hope Live — Zoom joining PASS; safe-update repair awaiting scope approval — 2026-10-21
 
 Live guest/account/passcode/Waiting Room/Justyn admission and separate before-host checks pass; guest exited and camera/microphone access stayed declined. Owner confirmed Justyn's HHL provider cleanup responsibility; no historical recording deleted. Genuine staff audit privately publishes October 29, revision 2; eleven later drafts, no earlier session.

@@ -1,0 +1,83 @@
+{
+  "afterApprovedRepair": true,
+  "unchangedSecurityMetadata": true,
+  "notices": [
+    {
+      "name": "rls_enabled_no_policy",
+      "level": "INFO",
+      "count": 62,
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy",
+      "affectedHhl": [
+        {
+          "name": "hhl_attendance",
+          "type": "table",
+          "schema": "private"
+        },
+        {
+          "name": "hhl_audit",
+          "type": "table",
+          "schema": "private"
+        },
+        {
+          "name": "hhl_jobs",
+          "type": "table",
+          "schema": "private"
+        },
+        {
+          "name": "hhl_limits",
+          "type": "table",
+          "schema": "private"
+        },
+        {
+          "name": "hhl_privacy_cases",
+          "type": "table",
+          "schema": "private"
+        },
+        {
+          "name": "hhl_privacy_log",
+          "type": "table",
+          "schema": "private"
+        },
+        {
+          "name": "hhl_registrations",
+          "type": "table",
+          "schema": "private"
+        },
+        {
+          "name": "hhl_requests",
+          "type": "table",
+          "schema": "private"
+        },
+        {
+          "name": "hhl_session_totals",
+          "type": "table",
+          "schema": "private"
+        },
+        {
+          "name": "hhl_sessions",
+          "type": "table",
+          "schema": "private"
+        },
+        {
+          "name": "hhl_settings",
+          "type": "table",
+          "schema": "private"
+        }
+      ]
+    },
+    {
+      "name": "authenticated_security_definer_function_executable",
+      "level": "WARN",
+      "count": 14,
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0029_authenticated_security_definer_function_executable",
+      "affectedHhl": []
+    },
+    {
+      "name": "auth_leaked_password_protection",
+      "level": "WARN",
+      "count": 1,
+      "remediation": "https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection",
+      "affectedHhl": []
+    }
+  ]
+}

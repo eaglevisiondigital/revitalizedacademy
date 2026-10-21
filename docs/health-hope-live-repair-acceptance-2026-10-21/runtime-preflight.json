@@ -1,0 +1,29 @@
+{
+  "at": "2026-10-21T15:25:59.626Z",
+  "baseline": "6ad8d01637b3964dd9501ffa",
+  "source": "3fee66773483ab3245f5efd734a26879e6a15336",
+  "buildSettings": {
+    "base": null,
+    "dir": ".",
+    "functions_dir": null,
+    "cmd": null,
+    "repo_url": "https://github.com/eaglevisiondigital/revitalizedacademy",
+    "repo_branch": "main",
+    "provider": "github",
+    "stop_builds": false,
+    "allowed_branches": [
+      "main"
+    ],
+    "private_logs": null,
+    "ignore_command": null,
+    "base_rel_dir": true,
+    "repo_path": "eaglevisiondigital/revitalizedacademy"
+  },
+  "betaDeployment": "6acc33161511aa93c289bbcc",
+  "exactStaticPaths": 452,
+  "exactFunctionArchives": 13,
+  "frozenMigrationAndInputsVerified": true,
+  "publicRegistration": false,
+  "secretsPrinted": false,
+  "passed": true
+}

@@ -1,0 +1,46 @@
+{
+  "jobs": [
+    {
+      "kind": "confirmation",
+      "state": "done",
+      "attempts": 1,
+      "delivery_status": "delivered"
+    },
+    {
+      "kind": "reminder",
+      "state": "cancelled",
+      "attempts": 0,
+      "delivery_status": null
+    }
+  ],
+  "settings": {
+    "singleton": true,
+    "zoom_enabled": false,
+    "acceptance_case": null,
+    "retention_enabled": true,
+    "registration_enabled": false,
+    "retention_healthy_at": "2026-10-21T15:41:04.295028+00:00",
+    "notifications_enabled": false,
+    "provider_retention_ready": true
+  },
+  "privacy_cases": [
+    {
+      "id": "5576311c-77ad-4e73-93c4-b6bfa8c12680",
+      "kind": "export",
+      "state": "complete",
+      "expires_at": "2026-10-21T15:49:16.681093+00:00",
+      "safe_after": "2026-10-21T15:34:16.681093+00:00"
+    },
+    {
+      "id": "e01347ab-f4b8-4fef-b623-e7955021b3c6",
+      "kind": "delete",
+      "state": "open",
+      "expires_at": "2026-10-21T15:50:39.24424+00:00",
+      "safe_after": "2026-10-21T15:35:39.24424+00:00"
+    }
+  ],
+  "provider_cli_role": {
+    "connections": 0,
+    "valid_until": "2026-10-21T15:29:24.216894+00:00"
+  }
+}

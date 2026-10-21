@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-21T15:23:08.110Z",
+  "deployment": "6ad8d01637b3964dd9501ffa",
+  "source": "3fee66773483ab3245f5efd734a26879e6a15336",
+  "branch": "codex-health-hope-live",
+  "paths": 452,
+  "functions": 13,
+  "staticManifestPreserved": true,
+  "functionHashesPreserved": true,
+  "locked": true
+}

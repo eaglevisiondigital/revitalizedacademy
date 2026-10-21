@@ -1,0 +1,10 @@
+{
+  "at": "2026-10-21T15:37:06.083Z",
+  "ownerConfirmedReceivedAndCorrect": true,
+  "recipient": "dave@theboss.biz",
+  "onlyOneConfirmation": true,
+  "providerStatus": "delivered",
+  "signedBackendFeedback": "email_delivered",
+  "approvedProviderCopyRetention": "Standard 30 days; no immediate provider erasure claimed",
+  "cloudZoomTest": "Previously passed, unrecorded technical guest test; no Thursday attendance credit"
+}

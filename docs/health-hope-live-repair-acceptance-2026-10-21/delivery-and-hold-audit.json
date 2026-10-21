@@ -1,0 +1,55 @@
+{
+  "audit": [
+    {
+      "id": "524e8bcf-3860-4aaf-bd12-51b35cfddf0b",
+      "action": "settings",
+      "actor_id": "6e1559e5-2cc9-4c13-a829-abd6d807ba3c",
+      "created_at": "2026-10-21T15:30:23.674246+00:00",
+      "subject_id": null,
+      "provider_event_key": null
+    },
+    {
+      "id": "21e835e4-2a49-49ad-87a3-a8d6bb5b70f0",
+      "action": "acceptance_registration",
+      "actor_id": "6e1559e5-2cc9-4c13-a829-abd6d807ba3c",
+      "created_at": "2026-10-21T15:30:56.524577+00:00",
+      "subject_id": "c96ab996-8056-4857-9da6-478b4eb966b8",
+      "provider_event_key": "17fd6b16a12ba9319d34336cddb92e27bcba5bb4716a418f5c3f077578d44de2"
+    },
+    {
+      "id": "6f714b74-8692-4fc7-8bd3-caabfb28a520",
+      "action": "email_delivered",
+      "actor_id": null,
+      "created_at": "2026-10-21T15:31:08.743239+00:00",
+      "subject_id": "d6473b4d-13a8-444b-886d-1d22ccf3a7d2",
+      "provider_event_key": "57d90d8e11027b0d2fe269c7730be0eaae4a0cae94dd48d76ea2c8d3e48bf9b4"
+    },
+    {
+      "id": "3b820c33-c080-461c-be86-6a5d0e9865c6",
+      "action": "settings",
+      "actor_id": "6e1559e5-2cc9-4c13-a829-abd6d807ba3c",
+      "created_at": "2026-10-21T15:32:55.157281+00:00",
+      "subject_id": null,
+      "provider_event_key": null
+    }
+  ],
+  "settings": {
+    "singleton": true,
+    "zoom_enabled": false,
+    "acceptance_case": {
+      "email": "dave@theboss.biz",
+      "revision": 2,
+      "starts_at": "2026-10-21T15:25:59.699Z",
+      "expires_at": "2026-10-21T15:55:59.699Z",
+      "request_id": "5577813d-27f3-4a70-adae-c85a44dfc2b2",
+      "session_id": "c1537c23-a601-4bbd-b67e-2e21e19ec0cf",
+      "operator_id": "6e1559e5-2cc9-4c13-a829-abd6d807ba3c"
+    },
+    "retention_enabled": true,
+    "registration_enabled": false,
+    "retention_healthy_at": "2026-10-21T15:33:05.785282+00:00",
+    "notifications_enabled": false,
+    "provider_retention_ready": true
+  },
+  "manual_session_link_matches": true
+}

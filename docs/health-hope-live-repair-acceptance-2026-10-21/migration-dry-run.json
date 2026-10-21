@@ -1,0 +1,13 @@
+{
+  "at": "2026-10-21T15:23:56.607Z",
+  "workspace": "/private/tmp/rva-hhl-repair-uEhaCy",
+  "project": "voalfpxiyznnqfcqcymd",
+  "source": "272aed83417fa5bf2f5acbdbb23ee88e3d35631b",
+  "approvedSha256": "4799e7565458b36a33db5fefe73958d240f76441378a130f409d4f49a7156066",
+  "pending": [
+    "20261021144712_health_hope_live_safe_updates.sql"
+  ],
+  "dryRun": "PASS",
+  "applied": false,
+  "rolesOrSeedsIncluded": false
+}

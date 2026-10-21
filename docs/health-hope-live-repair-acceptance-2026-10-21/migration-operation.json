@@ -1,0 +1,16 @@
+{
+  "startedAt": "2026-10-21T15:24:23.716Z",
+  "ownerApproved": true,
+  "source": "272aed83417fa5bf2f5acbdbb23ee88e3d35631b",
+  "project": "voalfpxiyznnqfcqcymd",
+  "migration": "20261021144712_health_hope_live_safe_updates.sql",
+  "sha256": "4799e7565458b36a33db5fefe73958d240f76441378a130f409d4f49a7156066",
+  "attempts": 1,
+  "publicRegistration": false,
+  "finishedAt": "2026-10-21T15:24:25.128Z",
+  "exit": 0,
+  "reportedFiles": [
+    "20261021144712_health_hope_live_safe_updates.sql"
+  ],
+  "requiresCatalogVerification": true
+}
