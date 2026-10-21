@@ -1,0 +1,27 @@
+{
+  "status": "PREPARED_NOT_INSTALLED",
+  "flags": {
+    "RVA_HHL_REGISTRATION_ENABLED": "false",
+    "RVA_HHL_WORKER_ENABLED": "false",
+    "RVA_HHL_NOTIFICATIONS_ENABLED": "false",
+    "RVA_HHL_ZOOM_ENABLED": "false",
+    "RVA_HHL_RETENTION_ENABLED": "false",
+    "RVA_HHL_ACCEPTANCE_ENABLED": "false",
+    "RVA_HHL_DELIVERY_MODE": "acceptance"
+  },
+  "nonSecret": {
+    "RVA_HHL_ORIGIN": "https://revitalizedacademy.com",
+    "RVA_HHL_SUPABASE_URL": "https://voalfpxiyznnqfcqcymd.supabase.co",
+    "RVA_HHL_EMAIL_FROM": "ReVitalized Academy <noreply@auth.revitalizedacademy.com>",
+    "RVA_HHL_EMAIL_REPLY_TO": "contact@revitalizedacademy.com"
+  },
+  "requiredSecureBindings": [
+    "RVA_HHL_SUPABASE_SERVICE_ROLE_KEY",
+    "RVA_HHL_SUPABASE_ANON_KEY",
+    "RVA_HHL_RATE_SECRET",
+    "RVA_HHL_RESEND_API_KEY",
+    "RVA_HHL_RESEND_WEBHOOK_SECRET"
+  ],
+  "secretValuesIncluded": false,
+  "doNotInstallFromThisTemplateWithoutSeparateApproval": true
+}

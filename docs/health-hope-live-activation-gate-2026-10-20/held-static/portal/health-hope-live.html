@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Health &amp; Hope Live | Staff</title>
+<script src="/runtime-config.js">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.js" defer>
+</script>
+<script src="/portal/health-hope-live.js?v=5" defer>
+</script>
+<link rel="stylesheet" href="/css/health-hope-live.css?v=1">
+<link rel="stylesheet" href="/portal/health-hope-live.css?v=1">
+</head>
+<body class="hhl-page">
+<header class="hhl-header hhl-shell">
+<a href="/portal/">
+<img src="/assets/images/revitalized-logo-dark-approved-v69.png" alt="ReVitalized Academy" width="210">
+</a>
+<nav>
+<a href="/portal/">Staff portal</a>
+<a href="/health-hope-live">Public event page ↗</a>
+</nav>
+</header>
+<main class="hhl-shell hhl-staff">
+<h1>Health &amp; Hope Live</h1>
+<p>Thursday · 6:30 PM Eastern · Free · 30 minutes</p>
+<p>Registrants are Registered Guests. Registration and attendance never enroll someone as a client or grant client access. Relationship progression requires a deliberate authorized action.</p>
+<p id="hhl-staff-status" role="status">Checking staff access…</p>
+<a id="hhl-sign-in" href="/portal/" hidden>Sign in through the staff portal</a>
+<section id="hhl-staff-workspace" hidden>
+<button id="hhl-staff-refresh" class="hhl-button" type="button">Refresh</button>
+<p id="hhl-review-count">
+</p>
+<section id="hhl-staff-management" hidden>
+<details id="hhl-acceptance-panel" hidden><summary>Controlled registration acceptance</summary><div id="hhl-acceptance-case"></div></details>
+<details><summary>Event retention and provider cleanup</summary><p>Identifiable session history expires 12 months after the session. Provider cleanup must be verified before the deadline; an overdue item holds new registrations and delivery.</p><button id="hhl-privacy-refresh" type="button">Review retention readiness</button><div id="hhl-privacy-queue"></div></details>
+<details>
+<summary>Prepare upcoming Thursday drafts</summary>
+<p id="hhl-meeting-setup"></p>
+<form id="hhl-weekly-form" class="hhl-form-card">
+<label>First Thursday (Eastern)<input name="first_thursday" type="date" required>
+</label>
+<label>Number of weeks<input name="weeks" type="number" min="1" max="12" value="12" required>
+</label>
+<label>Override provided recurring Zoom joining link (optional)<input name="manual_join_url" type="url" maxlength="2048" autocomplete="off">
+</label>
+<label>Reason<input name="reason" minlength="5" maxlength="500" required>
+</label>
+<button type="submit" class="hhl-button">Prepare drafts</button>
+</form>
+<p>Existing dates, including canceled sessions, are preserved. New sessions stay in draft until reviewed and published.</p>
+</details>
+<details>
+<summary>Schedule a session or exception</summary>
+<form id="hhl-session-form" class="hhl-form-card">
+<input name="id" type="hidden">
+<input name="revision" type="hidden">
+<label>Original Thursday date (Eastern)<input name="regular_date" type="date" required>
+</label>
+<label>Rescheduled start, if needed (Eastern)<input name="eastern_start" type="datetime-local">
+</label>
+<label>Registration closes, if earlier (Eastern)<input name="eastern_close" type="datetime-local">
+</label>
+<label>Status<select name="status">
+<option value="draft">Draft</option>
+<option value="published">Published</option>
+<option value="cancelled">Canceled</option>
+</select>
+</label>
+<label>Joining mode<select name="join_mode">
+<option value="manual">Staff-managed Zoom link</option>
+<option value="zoom">Zoom registration per occurrence</option>
+</select>
+</label>
+<label>Private Zoom joining link (manual mode)<input name="manual_join_url" type="url" maxlength="2048" autocomplete="off">
+</label>
+<label>Zoom meeting ID<input name="zoom_meeting_id" inputmode="numeric" maxlength="12">
+</label>
+<label>Zoom occurrence ID<input name="zoom_occurrence_id" maxlength="100">
+</label>
+<label>Public schedule note<input name="public_note" maxlength="200">
+</label>
+<label>Reason for this change<input name="reason" minlength="5" maxlength="500" required>
+</label>
+<button class="hhl-button" type="submit">Save session</button>
+<button type="reset">Clear form</button>
+</form>
+<p>New sessions begin in draft. Zoom sessions must pass validation before publication. Changes create a new revision and replace pending notifications.</p>
+</details>
+<details>
+<summary>Event release controls</summary>
+<p>Runtime release flags independently hold registration, Zoom and notifications. Changing these database controls alone cannot activate a held integration.</p>
+<form id="hhl-settings-form" class="hhl-form-card">
+<label class="hhl-checkbox">
+<input type="checkbox" name="registration_enabled">Registration</label>
+<label class="hhl-checkbox">
+<input type="checkbox" name="zoom_enabled">Zoom integration</label>
+<label class="hhl-checkbox">
+<input type="checkbox" name="notifications_enabled">Event notifications</label>
+<label>Reason<input name="reason" minlength="5" maxlength="500" required>
+</label>
+<button class="hhl-button" type="submit">Save controls</button>
+</form>
+</details>
+<details>
+<summary>Attendance and identity review</summary>
+<button type="button" id="hhl-load-reviews">Load review queue</button>
+<div id="hhl-reviews">
+</div>
+</details>
+</section>
+<h2>Sessions</h2>
+<div id="hhl-staff-sessions">
+</div>
+<h2>Participation history</h2>
+<p>Registration counts represent separate sessions. Attendance is credited only from a matched Zoom identity or a documented staff review. Up to 100 matching people are shown. Search by name, email or contact reference to find older history.</p>
+<form id="hhl-people-search" class="hhl-review-form">
+<label for="hhl-people-query">Find a participant</label>
+<input id="hhl-people-query" name="query" maxlength="160" autocomplete="off" placeholder="Name, email or contact reference">
+<button type="submit">Search history</button>
+</form>
+<div id="hhl-staff-people">
+</div>
+<section id="hhl-history-panel" hidden>
+<h2>Selected person’s event history</h2>
+<div id="hhl-staff-history">
+</div>
+<div id="hhl-private-join" hidden>
+</div>
+<button id="hhl-history-close" type="button">Close history</button>
+</section>
+</section>
+</main>
+</body>
+</html>

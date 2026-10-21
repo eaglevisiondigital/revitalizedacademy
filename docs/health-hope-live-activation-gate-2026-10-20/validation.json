@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-20",
+  "branch": "codex/health-hope-live",
+  "newIntegratedCasesPassed": 2,
+  "synthetic": true,
+  "actualAppAndPostgres": true,
+  "rpcTransport": "local adapter; actual SQL role/claim and approved command functions",
+  "providerTransport": "intercepted; no external delivery",
+  "newBrowserCoverage": {
+    "engine": "Chromium",
+    "widths": [
+      1440,
+      390
+    ],
+    "timezone": "America/Vancouver",
+    "actualFormHandlerAndCrm": true
+  },
+  "covered": [
+    "deduplicated Registered Guest contact",
+    "no Auth user/client access",
+    "separate returning Thursday registration",
+    "required event consent and optional marketing off",
+    "confirmation and one-hour reminder scheduling",
+    "429 retry uses same idempotency key",
+    "signed delivered feedback persistence",
+    "winter EST and summer EDT message dates",
+    "private joining URL in messages and omitted from exports",
+    "identity-verified export and idempotent deletion preserve master contact"
+  ],
+  "guardCasesPassed": 8,
+  "staticBuildFiles": 448,
+  "migrationsRestoredLocally": 21,
+  "migrationsAddedOrChanged": 0,
+  "sharedFunctionsPreserved": 319,
+  "existingRlsPoliciesAclsOwnersAndGlobalRolesPreserved": true,
+  "securityAdvisors": {
+    "baseline": 25,
+    "expectedPrivateDenyDirectInfo": 11,
+    "newWarningsOrErrors": 0
+  },
+  "functionArtifacts": {
+    "new": 3,
+    "runtime": "nodejs22.x",
+    "reproducedIdentically": true,
+    "existingTenRebuilt": 0
+  },
+  "hostedAcceptance": false,
+  "liveZoomVerification": false,
+  "actualEmailDelivery": false,
+  "productionWrites": 0,
+  "productionDeployments": 0,
+  "realMessages": 0,
+  "zoomSettingsChanges": 0,
+  "publicRegistration": "held",
+  "finalIntegratedTests": {
+    "pass": 2,
+    "fail": 0,
+    "skipped": 0
+  },
+  "testSourceSha256": "8596d1e0acbf070017c489e52a63d112f7a18b7213200b5a28af215644ededc5"
+}

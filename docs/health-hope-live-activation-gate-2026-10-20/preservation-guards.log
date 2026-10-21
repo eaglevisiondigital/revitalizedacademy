@@ -1,0 +1,16 @@
+✔ reconciliation changes only HHL files and additive shared documentation relative to committed primary (79.150333ms)
+✔ every committed primary continuity application, SQL, test and evidence file is preserved exactly (157.587042ms)
+✔ shared portal retains all primary bytes except the six approved guest display/filter options (9.1245ms)
+✔ approved popup refinement is pinned; other public HHL routing branding and Function entrypoints stay exact published-source bytes (80.543333ms)
+✔ only known Pretty URL anchor rewriting, quote style and attribute ordering are equivalent (17.673292ms)
+✔ content, script, attributes and navigation changes remain integrity failures (0.399792ms)
+✔ external destinations, query parameters and hashes are preserved (0.094792ms)
+✔ duplicate anchor attributes fail closed (1.809208ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 392.569125

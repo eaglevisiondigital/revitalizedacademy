@@ -1,0 +1,10 @@
+{
+  "source": "Read-only production catalog query in this task",
+  "project": "voalfpxiyznnqfcqcymd",
+  "postgresVersion": "17.6",
+  "hhlSchemaPresent": false,
+  "hhlMigrationsApplied": 0,
+  "primaryB6ContinuityAlreadyApplied": true,
+  "neverReplayPrimaryVersion": "20261020201519",
+  "productionSqlWrites": 0
+}

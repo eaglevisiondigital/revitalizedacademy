@@ -66,14 +66,15 @@ async function securitySnapshot(db){
   }
   console.log(`PostgreSQL 17: historical schema plus ${migrations.length} production migration files restored in disposable local database.`);
   const launchOnly=process.env.RVA_HHL_LAUNCH_TESTS_ONLY==='1';
-  const run=spawnSync(process.execPath,['--test','--test-concurrency=1',...(launchOnly?['--test-name-pattern=^launch preparation:']:[]),'tests/backend/health-hope-live.test.cjs'],{env,encoding:'utf8',maxBuffer:16*1024*1024,timeout:120000});process.stdout.write(run.stdout||'');process.stderr.write(run.stderr||'');if(run.status!==0)throw Error('Event database tests failed');
+  const activationOnly=process.env.RVA_HHL_ACTIVATION_TESTS_ONLY==='1';
+  const run=spawnSync(process.execPath,['--test','--test-concurrency=1',...(activationOnly?['--test-name-pattern=^activation acceptance:']:launchOnly?['--test-name-pattern=^launch preparation:']:[]),'tests/backend/health-hope-live.test.cjs'],{env,encoding:'utf8',maxBuffer:16*1024*1024,timeout:120000});process.stdout.write(run.stdout||'');process.stderr.write(run.stderr||'');if(run.status!==0)throw Error('Event database tests failed');
   const db=new Client({host:'127.0.0.1',port,user,database});await db.connect();
   const existing=existingFunctions;
   for(const row of existing){const current=(await db.query('select md5(pg_get_functiondef($1::regprocedure::oid)) hash',[row.name])).rows[0].hash;if(current!==row.hash)throw Error('Unrelated function changed: '+row.name);}
   if(await securitySnapshot(db)!==existingSecurity)throw Error('Existing table RLS, policies, ACLs or function ownership/ACLs changed');
   console.log('Existing table RLS/policies/ACLs and function ownership/ACLs preserved.');
   await db.end();console.log(`Preserved all ${existing.length} pre-existing application function definitions.`);
-  if(!launchOnly){const concurrent=spawnSync(process.execPath,['--test','tests/backend/health-hope-live-concurrency.cjs'],{env,encoding:'utf8',maxBuffer:8*1024*1024,timeout:60000});process.stdout.write(concurrent.stdout||'');process.stderr.write(concurrent.stderr||'');if(concurrent.status!==0)throw Error('Event concurrency tests failed');}
+  if(!launchOnly&&!activationOnly){const concurrent=spawnSync(process.execPath,['--test','tests/backend/health-hope-live-concurrency.cjs'],{env,encoding:'utf8',maxBuffer:8*1024*1024,timeout:60000});process.stdout.write(concurrent.stdout||'');process.stderr.write(concurrent.stderr||'');if(concurrent.status!==0)throw Error('Event concurrency tests failed');}
  }finally{
   if(created)await admin.query(`drop database "${database}" with(force)`);
   const rolesAfter=(await admin.query('select rolname,rolsuper,rolbypassrls,rolcanlogin from pg_roles order by rolname')).rows;await admin.end();

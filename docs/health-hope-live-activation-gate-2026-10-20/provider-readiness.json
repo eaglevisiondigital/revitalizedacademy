@@ -1,0 +1,61 @@
+{
+  "at": "2026-10-20T23:50:11.924Z",
+  "zoom": {
+    "owner": "Justyn Oliver",
+    "reviewMethod": "Owner will relay a read-only settings review from his device in Canada",
+    "accountInspection": "Sign-in required; no authenticated meeting settings available",
+    "meetingId": "82516112925",
+    "status": "provided-unverified",
+    "publicTimezone": "America/New_York",
+    "accountSettingsChanged": false,
+    "automatedAttendance": "disabled-optional",
+    "requiredReview": [
+      "supplied link completeness",
+      "passcode required yes/no; any private joining info installed securely",
+      "Waiting Room and admitting host",
+      "guest Zoom authentication restriction",
+      "join before host",
+      "actual host and Elle permissions",
+      "30-minute plan capability",
+      "provider attendance/recording retention arrangements"
+    ]
+  },
+  "email": {
+    "provider": "existing Resend",
+    "domain": "auth.revitalizedacademy.com",
+    "verified": true,
+    "sending": true,
+    "tracking": false,
+    "approvedFrom": "ReVitalized Academy <noreply@auth.revitalizedacademy.com>",
+    "approvedReplyTo": "contact@revitalizedacademy.com",
+    "existingEdgeCredentialNamePresent": "RESEND_API_KEY",
+    "keyValuesRetrieved": false,
+    "newCredentialCreated": false,
+    "netlifyEventOrSenderKeys": {
+      "site": [],
+      "shared": [],
+      "legacy": []
+    },
+    "eventRuntimeBinding": "not installed",
+    "signedFeedbackBinding": "not installed",
+    "actualConfirmationDelivery": "not tested",
+    "realMessagesSent": 0
+  },
+  "providerRetention": {
+    "resendPublishedStandard": {
+      "emailAndLogsDays": 30,
+      "backupDays": 7,
+      "source": "https://resend.com/security"
+    },
+    "actualAccountPolicyConfirmation": "required before provider readiness attestation",
+    "zoomPolicyAndExportCleanup": "awaiting host/account review",
+    "registrationPolicyMonths": 12,
+    "policyDurationResolved": true
+  },
+  "hostedAcceptance": {
+    "recipient": "dave@theboss.biz",
+    "designationOnly": true,
+    "executed": false
+  },
+  "productionChanges": 0
+}

@@ -1,0 +1,68 @@
+{
+  "at": "2026-10-20T23:50:16.288Z",
+  "site": "ece0f6f3-6c3d-46e6-bb51-95ce1ccefb06",
+  "published": "6ad7ed9be0bd165b997e0be1",
+  "source": "73b29621db5e74e0d9f42caa7555a0933f1c3994",
+  "sourceBranch": "codex-health-hope-live",
+  "productionLocked": true,
+  "staticManifestMatchesReviewedPopup": true,
+  "drift": [],
+  "functions": [
+    {
+      "name": "exercise-library",
+      "sha256": "7afffe944b6e4f9390354813cad0f8ff281184360f5f7131f8ecd697dc8f134f",
+      "unchanged": true
+    },
+    {
+      "name": "food-database",
+      "sha256": "e8a1772c271a05ea357c4b59c8c804541bc187587822e60bfba9d7e8911cdda0",
+      "unchanged": true
+    },
+    {
+      "name": "payment-webhook",
+      "sha256": "ca4aa97da4f298adac82adb8851f055c21aa360b6c819a3b8fb2497e87ff05e2",
+      "unchanged": true
+    },
+    {
+      "name": "payment-worker",
+      "sha256": "2d2c440bb8ff85049a820f90d969b6c986685646a4ec55214e8a1ddc8fa74a32",
+      "unchanged": true
+    },
+    {
+      "name": "payments",
+      "sha256": "f0469725112b4f3b878b67dad311a530441e613ba4fac1a0580b167651d55ded",
+      "unchanged": true
+    },
+    {
+      "name": "reusable-content-sync",
+      "sha256": "17551800e6a1c26506147e99bf4f48783b69cc1f96daed52e08998288780b930",
+      "unchanged": true
+    },
+    {
+      "name": "roadmap-founder",
+      "sha256": "525a80737e5000e4ae0b5e4b76704f58eb0e0566541042ee0fda1e26b96fb079",
+      "unchanged": true
+    },
+    {
+      "name": "roadmap-verification",
+      "sha256": "9d29f707e514df7626e8513283a9bed3834680260a8b87d5c58d5138d23180a6",
+      "unchanged": true
+    },
+    {
+      "name": "roadmap-scoring-lab",
+      "sha256": "cfd2f74e2c5887fff743832638563a73e120abe92af8737d01e4ec2b9c18bb34",
+      "unchanged": true
+    },
+    {
+      "name": "roadmap-processing",
+      "sha256": "b06c9e5e0215f78524d92afb172bb1fe36fd7c34cb8224c251484b7ab58b6ec6",
+      "unchanged": true
+    }
+  ],
+  "newEventFunctionsInstalled": false,
+  "sourceRepository": "https://github.com/eaglevisiondigital/revitalizedacademy.git",
+  "worktreeBranch": "codex/health-hope-live",
+  "foundersPathPreserved": true,
+  "activeDeploys": [],
+  "productionChanges": 0
+}

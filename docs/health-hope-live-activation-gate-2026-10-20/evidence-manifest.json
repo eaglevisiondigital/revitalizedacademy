@@ -1,0 +1,104 @@
+{
+  "artifacts": [
+    {
+      "file": "advisors.json",
+      "bytes": 7903,
+      "sha256": "81785891b99889d42d115041f460fa1eb3ad707b0034b02f1c2d50d824a8ec34"
+    },
+    {
+      "file": "build.json",
+      "bytes": 77,
+      "sha256": "a604b01d16e887cba0eba9a38db504b02c99683f7d82f578de577a10d377e1fa"
+    },
+    {
+      "file": "held-deploy-request.json",
+      "bytes": 42556,
+      "sha256": "ba7647eb3f67a594fc5f4dceba2f775da2c6215f3af6cda941d8d880fc244020"
+    },
+    {
+      "file": "integration.log",
+      "bytes": 1044,
+      "sha256": "8471e30f37c65bf3d60f5ab03941be4f4cd24cf1f29bf4dcfbed0b805ad351d5"
+    },
+    {
+      "file": "packaging.json",
+      "bytes": 163,
+      "sha256": "825f2e6330d822bf6b2cd1b016a72dfc89e45ed8bdb2b0b40775096ea1b6feed"
+    },
+    {
+      "file": "preservation-guards.log",
+      "bytes": 948,
+      "sha256": "0fee1c5eefed7592b5afedc5f1e5c6daef397cbad1370b23c1a766692ac34576"
+    },
+    {
+      "file": "production-preflight.json",
+      "bytes": 2144,
+      "sha256": "1049d3ba1b92315311a40a25ccd2ade5bb88394150361b0eb53b3b32d921b342"
+    },
+    {
+      "file": "provider-readiness.json",
+      "bytes": 2092,
+      "sha256": "4408705ef523f2d4af36131241ff2ffe0dcd5a4c7ed66f472f05250ab75b200f"
+    },
+    {
+      "file": "release-package.json",
+      "bytes": 11221,
+      "sha256": "0ba51a59a2b2d81044d0391db5984bfb3b1681d8a7ecf0e4b0adc195b124780a"
+    },
+    {
+      "file": "runtime-template.json",
+      "bytes": 951,
+      "sha256": "e17b6c351268308aab0afa3dc54bc46f385a87d6fd8638b88f8351a11f0f9e33"
+    },
+    {
+      "file": "schema-preflight.json",
+      "bytes": 312,
+      "sha256": "e45d62885758bda62193e0ddb4ac23334f9553319d20e811bf9fd88ca194e665"
+    },
+    {
+      "file": "validation.json",
+      "bytes": 1884,
+      "sha256": "fd3e334491d4414e1088a8e4ec475341acd51221728ee1776f4d9ed3aa4e2e32"
+    },
+    {
+      "file": "activation-static/health-hope-live.html",
+      "bytes": 13431,
+      "sha256": "fd82ed03dba3a152a8e678a277634d816abccee916638982599b769ca76d2bab"
+    },
+    {
+      "file": "bundles/health-hope-live-retention.zip",
+      "bytes": 358171,
+      "sha256": "a00db57f900db2061b893c0e2af89c219edf0fd2de5bfa8591e86cf77af2a3e5"
+    },
+    {
+      "file": "bundles/health-hope-live-worker.zip",
+      "bytes": 358160,
+      "sha256": "643c9c7b85c9ddceee042a0f411931107e874d0378e053f67a5a048542b49dd9"
+    },
+    {
+      "file": "bundles/health-hope-live.zip",
+      "bytes": 358128,
+      "sha256": "d6ef1c1c637013e5150fc1f608579635ea358ca3e72860fb925257ed87f8f8e2"
+    },
+    {
+      "file": "held-static/portal/health-hope-live.css",
+      "bytes": 1312,
+      "sha256": "64b9b039d4a7f72ec20a6e27a8c2d94f124700ed0fd9e81ad3876fa20dfba66a"
+    },
+    {
+      "file": "held-static/portal/health-hope-live.html",
+      "bytes": 6313,
+      "sha256": "0188446e26de312d05882f37342853adc6f031ff9b89147f0282de74bf6d1bee"
+    },
+    {
+      "file": "held-static/portal/health-hope-live.js",
+      "bytes": 27978,
+      "sha256": "cc8aa5d08289ddfaff10f83efa6a7148314dec6ea933fb22a6929cb12de61a77"
+    },
+    {
+      "file": "held-static/portal/index.html",
+      "bytes": 181051,
+      "sha256": "e3f03252e8c06647ef7a12519eb3a38ec63759e4e9738b7e6768250f6240d9a4"
+    }
+  ]
+}

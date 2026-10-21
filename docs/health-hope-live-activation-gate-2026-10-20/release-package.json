@@ -1,0 +1,322 @@
+{
+  "preparedOnly": true,
+  "notAuthorizedForProductionExecution": true,
+  "baselineDeploy": "6ad7ed9be0bd165b997e0be1",
+  "baselineSource": "73b29621db5e74e0d9f42caa7555a0933f1c3994",
+  "site": "ece0f6f3-6c3d-46e6-bb51-95ce1ccefb06",
+  "freshProductionReconciliationRequired": true,
+  "migrations": [
+    {
+      "file": "20261020141529_health_hope_live.sql",
+      "bytes": 37800,
+      "sha256": "3c34381dbb2add5bde325e5a932edac977980404b3ae38d848f8a1077a1c79aa",
+      "productionApplied": false
+    },
+    {
+      "file": "20261020193400_health_hope_live_registered_guests.sql",
+      "bytes": 37417,
+      "sha256": "4bfafeb108713436c2aaf46283bdfb008a4089dd28bfd7bf3ad6750a9d530b24",
+      "productionApplied": false
+    },
+    {
+      "file": "20261020201535_health_hope_live_privacy_retention.sql",
+      "bytes": 61073,
+      "sha256": "40abdf1017f2ced902e0273bed55db35e42fa8d441ee55934eb1c4171f78909a",
+      "productionApplied": false
+    },
+    {
+      "file": "20261020215108_health_hope_live_launch_acceptance.sql",
+      "bytes": 19341,
+      "sha256": "284a7dbd0ac72e05475641c0b068255240a491ff993e1010315351cff692e92a",
+      "productionApplied": false
+    }
+  ],
+  "functions": {
+    "new": [
+      {
+        "name": "health-hope-live",
+        "path": "docs/health-hope-live-activation-gate-2026-10-20/bundles/health-hope-live.zip",
+        "sha256": "d6ef1c1c637013e5150fc1f608579635ea358ca3e72860fb925257ed87f8f8e2",
+        "bytes": 358128,
+        "runtime": "nodejs22.x",
+        "routes": [
+          {
+            "pattern": "/api/health-hope-live/:action",
+            "expression": "^\\/api\\/health-hope-live(?:\\/([^\\/]+?))\\/?$",
+            "methods": []
+          }
+        ],
+        "schedule": null,
+        "buildData": {
+          "bootstrapVersion": "2.24.0",
+          "runtimeAPIVersion": 2
+        },
+        "inputs": [
+          {
+            "path": "netlify/functions/health-hope-live.mjs",
+            "sha256": "c03f09a4148c120be3dc4f1acc24ad3d868680fe4c85e7a708e077fc2d6096ee"
+          },
+          {
+            "path": "netlify/functions/_shared/health-hope-live-meeting.mjs",
+            "sha256": "bfe852be72f9fd89124299b71309707e4a0cb1ea09a99167fff7fb7331960287"
+          },
+          {
+            "path": "netlify/functions/_shared/health-hope-live-acceptance.mjs",
+            "sha256": "ddc7236e8f3eb4e92d8b08c0872f789d70dfd3e488535016664ca2e7b57f53ea"
+          },
+          {
+            "path": "netlify/functions/_shared/health-hope-live.mjs",
+            "sha256": "a7f57184d1782a570cffaeb2413f28a3bd02f4d7526af5dcf805bae28246825a"
+          }
+        ]
+      },
+      {
+        "name": "health-hope-live-worker",
+        "path": "docs/health-hope-live-activation-gate-2026-10-20/bundles/health-hope-live-worker.zip",
+        "sha256": "643c9c7b85c9ddceee042a0f411931107e874d0378e053f67a5a048542b49dd9",
+        "bytes": 358160,
+        "runtime": "nodejs22.x",
+        "routes": [],
+        "schedule": "* * * * *",
+        "buildData": {
+          "bootstrapVersion": "2.24.0",
+          "runtimeAPIVersion": 2
+        },
+        "inputs": [
+          {
+            "path": "netlify/functions/health-hope-live-worker.mjs",
+            "sha256": "7858cf638994c62ea874364de4708c9906d4c979cd320df0b493a0241d8ccc5c"
+          },
+          {
+            "path": "netlify/functions/_shared/health-hope-live-meeting.mjs",
+            "sha256": "bfe852be72f9fd89124299b71309707e4a0cb1ea09a99167fff7fb7331960287"
+          },
+          {
+            "path": "netlify/functions/_shared/health-hope-live-acceptance.mjs",
+            "sha256": "ddc7236e8f3eb4e92d8b08c0872f789d70dfd3e488535016664ca2e7b57f53ea"
+          },
+          {
+            "path": "netlify/functions/_shared/health-hope-live.mjs",
+            "sha256": "a7f57184d1782a570cffaeb2413f28a3bd02f4d7526af5dcf805bae28246825a"
+          }
+        ]
+      },
+      {
+        "name": "health-hope-live-retention",
+        "path": "docs/health-hope-live-activation-gate-2026-10-20/bundles/health-hope-live-retention.zip",
+        "sha256": "a00db57f900db2061b893c0e2af89c219edf0fd2de5bfa8591e86cf77af2a3e5",
+        "bytes": 358171,
+        "runtime": "nodejs22.x",
+        "routes": [],
+        "schedule": "* * * * *",
+        "buildData": {
+          "bootstrapVersion": "2.24.0",
+          "runtimeAPIVersion": 2
+        },
+        "inputs": [
+          {
+            "path": "netlify/functions/health-hope-live-retention.mjs",
+            "sha256": "2cbc0e0a155e8fe6bdab6467cf08f5b9da751bd34c9ba82181ec51e52d170bdb"
+          },
+          {
+            "path": "netlify/functions/_shared/health-hope-live-meeting.mjs",
+            "sha256": "bfe852be72f9fd89124299b71309707e4a0cb1ea09a99167fff7fb7331960287"
+          },
+          {
+            "path": "netlify/functions/_shared/health-hope-live-acceptance.mjs",
+            "sha256": "ddc7236e8f3eb4e92d8b08c0872f789d70dfd3e488535016664ca2e7b57f53ea"
+          },
+          {
+            "path": "netlify/functions/_shared/health-hope-live.mjs",
+            "sha256": "a7f57184d1782a570cffaeb2413f28a3bd02f4d7526af5dcf805bae28246825a"
+          }
+        ]
+      }
+    ],
+    "existingRetainedExactly": {
+      "exercise-library": "7afffe944b6e4f9390354813cad0f8ff281184360f5f7131f8ecd697dc8f134f",
+      "food-database": "e8a1772c271a05ea357c4b59c8c804541bc187587822e60bfba9d7e8911cdda0",
+      "payment-webhook": "ca4aa97da4f298adac82adb8851f055c21aa360b6c819a3b8fb2497e87ff05e2",
+      "payment-worker": "2d2c440bb8ff85049a820f90d969b6c986685646a4ec55214e8a1ddc8fa74a32",
+      "payments": "f0469725112b4f3b878b67dad311a530441e613ba4fac1a0580b167651d55ded",
+      "reusable-content-sync": "17551800e6a1c26506147e99bf4f48783b69cc1f96daed52e08998288780b930",
+      "roadmap-founder": "525a80737e5000e4ae0b5e4b76704f58eb0e0566541042ee0fda1e26b96fb079",
+      "roadmap-verification": "9d29f707e514df7626e8513283a9bed3834680260a8b87d5c58d5138d23180a6",
+      "roadmap-scoring-lab": "cfd2f74e2c5887fff743832638563a73e120abe92af8737d01e4ec2b9c18bb34",
+      "roadmap-processing": "b06c9e5e0215f78524d92afb172bb1fe36fd7c34cb8224c251484b7ab58b6ec6"
+    },
+    "existingConfiguration": {
+      "exercise-library": {
+        "priority": 10,
+        "routes": [],
+        "excluded_routes": []
+      },
+      "food-database": {
+        "priority": 10,
+        "routes": [],
+        "excluded_routes": []
+      },
+      "payment-webhook": {
+        "priority": 10,
+        "routes": [
+          {
+            "pattern": "/api/payments/webhook",
+            "literal": "/api/payments/webhook",
+            "prefer_static": false
+          }
+        ],
+        "excluded_routes": []
+      },
+      "payment-worker": {
+        "priority": 10,
+        "routes": [],
+        "excluded_routes": []
+      },
+      "payments": {
+        "priority": 10,
+        "routes": [
+          {
+            "pattern": "/api/payments/summary",
+            "literal": "/api/payments/summary",
+            "prefer_static": false
+          },
+          {
+            "pattern": "/api/payments/staff-list",
+            "literal": "/api/payments/staff-list",
+            "prefer_static": false
+          },
+          {
+            "pattern": "/api/payments/staff-create",
+            "literal": "/api/payments/staff-create",
+            "prefer_static": false
+          },
+          {
+            "pattern": "/api/payments/webinar-start",
+            "literal": "/api/payments/webinar-start",
+            "prefer_static": false
+          },
+          {
+            "pattern": "/api/payments/begin",
+            "literal": "/api/payments/begin",
+            "prefer_static": false
+          },
+          {
+            "pattern": "/api/payments/refresh",
+            "literal": "/api/payments/refresh",
+            "prefer_static": false
+          },
+          {
+            "pattern": "/api/payments/update-card",
+            "literal": "/api/payments/update-card",
+            "prefer_static": false
+          }
+        ],
+        "excluded_routes": []
+      },
+      "reusable-content-sync": {
+        "priority": 10,
+        "routes": [],
+        "excluded_routes": []
+      },
+      "roadmap-founder": {
+        "priority": 10,
+        "routes": [],
+        "excluded_routes": []
+      },
+      "roadmap-verification": {
+        "priority": 10,
+        "routes": [],
+        "excluded_routes": [],
+        "build_data": {
+          "bootstrapVersion": "2.24.0",
+          "runtimeAPIVersion": 2
+        }
+      },
+      "roadmap-scoring-lab": {
+        "priority": 10,
+        "routes": [],
+        "excluded_routes": [],
+        "build_data": {
+          "bootstrapVersion": "2.24.0",
+          "runtimeAPIVersion": 2
+        }
+      },
+      "roadmap-processing": {
+        "priority": 10,
+        "routes": [],
+        "excluded_routes": [],
+        "build_data": {
+          "bootstrapVersion": "2.24.0",
+          "runtimeAPIVersion": 2
+        }
+      }
+    },
+    "existingSchedules": [
+      {
+        "name": "payment-worker",
+        "cron": "* * * * *"
+      }
+    ],
+    "retainedArchivesRebuilt": 0,
+    "reproducible": true
+  },
+  "heldStatic": {
+    "total": 450,
+    "changed": [
+      {
+        "path": "/portal/index.html",
+        "sha1": "b0945d8ddee943e1ec1b4e23503d37a263165413",
+        "sha256": "e3f03252e8c06647ef7a12519eb3a38ec63759e4e9738b7e6768250f6240d9a4",
+        "added": false
+      },
+      {
+        "path": "/portal/health-hope-live.html",
+        "sha1": "27286ce7f36b272909a20664964f5b4ac6ea0267",
+        "sha256": "0188446e26de312d05882f37342853adc6f031ff9b89147f0282de74bf6d1bee",
+        "added": true
+      },
+      {
+        "path": "/portal/health-hope-live.css",
+        "sha1": "1f0cdddcfb253e0bb64dadf19cd22b63d48b3080",
+        "sha256": "64b9b039d4a7f72ec20a6e27a8c2d94f124700ed0fd9e81ad3876fa20dfba66a",
+        "added": true
+      },
+      {
+        "path": "/portal/health-hope-live.js",
+        "sha1": "593376548b15c0a10777c7909fd671d745b0ed50",
+        "sha256": "cc8aa5d08289ddfaff10f83efa6a7148314dec6ea933fb22a6929cb12de61a77",
+        "added": true
+      }
+    ],
+    "existingRetained": 446,
+    "removed": 0,
+    "publicRegistration": "held",
+    "foundersAndRoadmapPreserved": true,
+    "requestSha256": "10adb40f1968d31f8b3b44fda067953bef56cbfa7e6b26a39f4212407786a991"
+  },
+  "laterPublicActivation": {
+    "path": "/health-hope-live.html",
+    "sha256": "fd82ed03dba3a152a8e678a277634d816abccee916638982599b769ca76d2bab",
+    "onlyChange": "data-hhl-registration: held → enabled",
+    "requiresSeparateApprovalAfterHostedAcceptance": true
+  },
+  "hostedAcceptance": {
+    "inbox": "dave@theboss.biz",
+    "designationOnly": true,
+    "maximumConfirmations": 1,
+    "marketing": false,
+    "zoomAutomation": false,
+    "maximumMinutes": 30,
+    "packet": "../health-hope-live-launch-preparation-2026-10-20/acceptance-case.template.json"
+  },
+  "productionWrites": 0,
+  "realEmails": 0,
+  "zoomSettingChanges": 0,
+  "applicationSource": "c27989607d40393007d09a685c7b7c1471a7cca9",
+  "hostRuntime": "v24.20.0",
+  "packagingTool": {
+    "version": "16.3.0",
+    "script": "scripts/health-hope-live-activation-package.mjs",
+    "sha256": "d9c14ac0700fa86d4a2c4e587a6dddeeed64e90af4b48989369855656229ebb6"
+  }
+}

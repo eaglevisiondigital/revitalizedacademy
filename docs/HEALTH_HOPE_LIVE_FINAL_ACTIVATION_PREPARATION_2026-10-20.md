@@ -1,3 +1,5 @@
+**Final launch-gate update:** [Current integrated acceptance, deterministic held-release package and exact next approval](HEALTH_HOPE_LIVE_FINAL_LAUNCH_GATE_2026-10-20.md). Two new actual-handler/PostgreSQL end-to-end cases pass, including desktop/mobile registration and mail processing without external delivery. Justyn will provide a read-only settings review from Canada. Production remains the popup-only release; event migrations/configuration, hosted acceptance and public activation are still held. The existing controlled SOP below remains applicable.
+
 **Publication update, October 20, 2026:** The separately authorized popup-only update is now live as deploy `6ad7ed9be0bd165b997e0be1`; three public assets over the exact current primary manifest, with registration held and Roadmap/Zoom/email unchanged. [Release report and live verification](HEALTH_HOPE_LIVE_POPUP_RELEASE_2026-10-20.md). All registration-readiness backend changes and four event migrations remain unreleased. Earlier local/unpublished website status below is historical.
 
 # Health & Hope Live — final registration activation preparation

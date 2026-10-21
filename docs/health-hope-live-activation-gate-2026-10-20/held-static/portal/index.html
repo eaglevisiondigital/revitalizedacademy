@@ -1,0 +1,3085 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script src="/runtime-config.js"></script>
+<script src="/js/environment.js"></script>
+  <meta name="ra-build" content="183">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>ReVitalized Academy | Staff Portal</title>
+  <meta name="theme-color" content="#154734">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Staff Portal">
+  <link rel="icon" type="image/png" href="../assets/images/revitalized-icon-approved.png">
+  <link rel="shortcut icon" type="image/png" href="../assets/images/revitalized-icon-approved.png">
+  <link rel="apple-touch-icon" href="../assets/images/revitalized-icon-approved.png">
+  <link rel="manifest" href="manifest.webmanifest?v=171">
+  <link rel="stylesheet" href="portal.css?v=174">
+  <link rel="stylesheet" href="portal-messaging.css?v=105">
+  <link rel="stylesheet" href="portal-journey.css?v=118">
+  <link rel="stylesheet" href="portal-action-center.css?v=109">
+  <link rel="stylesheet" href="portal-work-desk.css?v=146">
+  <link rel="stylesheet" href="portal-client-foundation.css?v=113">
+  <link rel="stylesheet" href="portal-coaching.css?v=115">
+  <link rel="stylesheet" href="portal-wellness.css?v=117">
+  <link rel="stylesheet" href="portal-overrides.css?v=118">
+  <link rel="stylesheet" href="portal-learning.css?v=119">
+  <link rel="stylesheet" href="portal-member-messaging.css?v=121">
+  <link rel="stylesheet" href="portal-companion.css?v=122">
+  <link rel="stylesheet" href="portal-health-integrations.css?v=123">
+  <link rel="stylesheet" href="portal-challenges.css?v=124">
+  <link rel="stylesheet" href="portal-executive.css?v=156">
+  <link rel="stylesheet" href="portal-community.css?v=126">
+  <link rel="stylesheet" href="portal-refuel.css?v=127">
+  <link rel="stylesheet" href="portal-programs.css?v=168">
+  <link rel="stylesheet" href="portal-exercise-library.css?v=100">
+  <link rel="stylesheet" href="portal-food-database.css?v=100">
+  <link rel="stylesheet" href="portal-people.css?v=154">
+  <link rel="stylesheet" href="portal-vitality-assessments.css?v=101">
+  <link rel="stylesheet" href="portal-staff-access.css?v=154">
+  <link rel="stylesheet" href="portal-referrals.css?v=130">
+  <link rel="stylesheet" href="portal-family-requests.css?v=159">
+  <link rel="stylesheet" href="portal-team-calendar.css?v=135">
+  <link rel="stylesheet" href="portal-documents.css?v=136">
+  <link rel="stylesheet" href="portal-billing.css?v=137">
+  <link rel="stylesheet" href="portal-agreements.css?v=144">
+  <link rel="stylesheet" href="portal-coach-capacity.css?v=140">
+  <link rel="stylesheet" href="portal-staff-onboarding.css?v=144">
+  <link rel="stylesheet" href="portal-shell.css?v=166">
+  <link rel="stylesheet" href="portal-polish.css?v=171">
+<link rel="stylesheet" href="portal-client-lifecycle.css?v=101">
+<link rel="stylesheet" href="portal-payment-requests.css?v=102">
+  <link rel="stylesheet" href="/css/vitality-roadmap-workspace.css?v=100">
+</head>
+<body>
+  <main class="portal-page">
+    <section id="auth-view" class="auth-view">
+      <div class="auth-brand">
+        <a href="../" aria-label="ReVitalized Academy home">
+          <img src="../assets/images/revitalized-logo-dark-approved-v69.png" alt="ReVitalized Academy">
+        </a>
+        <span>STAFF PORTAL</span>
+      </div>
+
+      <div id="session-restore-card" class="auth-card">
+        <div class="auth-copy">
+          <p class="eyebrow">SECURE ACCESS</p>
+          <h1>Restoring your session…</h1>
+          <p>We’re securely reconnecting your ReVitalized Academy staff workspace.</p>
+        </div>
+      </div>
+
+      <div id="login-card" class="auth-card hidden">
+        <div class="auth-copy">
+          <p class="eyebrow">REVITALIZED ACADEMY</p>
+          <h1>Welcome back.</h1>
+          <p>Secure access for ReVitalized Academy owners, coaches and approved team members.</p>
+        </div>
+
+        <form id="login-form" class="portal-form">
+          <label>
+            <span>Email address</span>
+            <input id="login-email" type="email" autocomplete="email" required>
+          </label>
+          <label>
+            <span>Password</span>
+            <div class="password-input-wrap">
+              <input id="login-password" type="password" autocomplete="current-password" required>
+              <button class="password-toggle" type="button" data-password-toggle="login-password" aria-label="Show password" aria-pressed="false">
+                <svg class="eye-open" aria-hidden="true" viewBox="0 0 24 24"><path d="M2.25 12s3.5-6 9.75-6 9.75 6 9.75 6-3.5 6-9.75 6S2.25 12 2.25 12Z"/><circle cx="12" cy="12" r="2.75"/></svg>
+                <svg class="eye-closed" aria-hidden="true" viewBox="0 0 24 24"><path d="M3 3l18 18"/><path d="M10.6 6.2A10.7 10.7 0 0 1 12 6c6.25 0 9.75 6 9.75 6a17.8 17.8 0 0 1-3.1 3.7M6.2 6.2C3.7 8 2.25 12 2.25 12s3.5 6 9.75 6a10.6 10.6 0 0 0 4-.75"/><path d="M9.9 9.9A3 3 0 0 0 14.1 14.1"/></svg>
+              </button>
+            </div>
+          </label>
+          <button class="primary-button" type="submit">Sign In</button>
+          <button id="forgot-password" class="text-button" type="button">Forgot your password?</button>
+          <p id="login-status" class="form-status" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <div id="password-card" class="auth-card password-card hidden">
+        <div class="auth-copy">
+          <p class="eyebrow">ACCOUNT SETUP</p>
+          <h2>Choose your password.</h2>
+          <p>Finish setting up your secure ReVitalized Academy account.</p>
+        </div>
+        <form id="password-form" class="portal-form">
+          <label>
+            <span>New password</span>
+            <div class="password-input-wrap">
+              <input id="new-password" type="password" autocomplete="new-password" minlength="10" required>
+              <button class="password-toggle" type="button" data-password-toggle="new-password" aria-label="Show password" aria-pressed="false"><svg class="eye-open" aria-hidden="true" viewBox="0 0 24 24"><path d="M2.25 12s3.5-6 9.75-6 9.75 6 9.75 6-3.5 6-9.75 6S2.25 12 2.25 12Z"/><circle cx="12" cy="12" r="2.75"/></svg><svg class="eye-closed" aria-hidden="true" viewBox="0 0 24 24"><path d="M3 3l18 18"/><path d="M10.6 6.2A10.7 10.7 0 0 1 12 6c6.25 0 9.75 6 9.75 6a17.8 17.8 0 0 1-3.1 3.7M6.2 6.2C3.7 8 2.25 12 2.25 12s3.5 6 9.75 6a10.6 10.6 0 0 0 4-.75"/><path d="M9.9 9.9A3 3 0 0 0 14.1 14.1"/></svg></button>
+            </div>
+          </label>
+          <label>
+            <span>Confirm new password</span>
+            <div class="password-input-wrap">
+              <input id="confirm-password" type="password" autocomplete="new-password" minlength="10" required>
+              <button class="password-toggle" type="button" data-password-toggle="confirm-password" aria-label="Show password" aria-pressed="false"><svg class="eye-open" aria-hidden="true" viewBox="0 0 24 24"><path d="M2.25 12s3.5-6 9.75-6 9.75 6 9.75 6-3.5 6-9.75 6S2.25 12 2.25 12Z"/><circle cx="12" cy="12" r="2.75"/></svg><svg class="eye-closed" aria-hidden="true" viewBox="0 0 24 24"><path d="M3 3l18 18"/><path d="M10.6 6.2A10.7 10.7 0 0 1 12 6c6.25 0 9.75 6 9.75 6a17.8 17.8 0 0 1-3.1 3.7M6.2 6.2C3.7 8 2.25 12 2.25 12s3.5 6 9.75 6a10.6 10.6 0 0 0 4-.75"/><path d="M9.9 9.9A3 3 0 0 0 14.1 14.1"/></svg></button>
+            </div>
+          </label>
+          <button class="primary-button" type="submit">Save Password</button>
+          <p id="password-status" class="form-status" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <div id="pending-card" class="auth-card hidden">
+        <div class="auth-copy">
+          <p class="eyebrow">ACCOUNT ACTIVE</p>
+          <h2>Staff access is pending.</h2>
+          <p>Your login is working, but this account has not yet been assigned an approved ReVitalized staff role.</p>
+        </div>
+        <div class="pending-actions">
+          <button id="pending-password" class="secondary-button" type="button">Set or Change Password</button>
+          <button id="pending-logout" class="text-button" type="button">Sign Out</button>
+        </div>
+      </div>
+
+      <p class="auth-footer">ReVitalized Academy secure operations portal</p>
+    </section>
+
+    <section id="portal-view" class="portal-view hidden">
+      <header class="portal-header">
+        <a class="portal-logo" href="../">
+          <img src="../assets/images/revitalized-logo-dark-approved-v69.png" alt="ReVitalized Academy">
+        </a>
+        <div class="portal-header-actions">
+          <span id="staff-name" class="staff-name"></span>
+          <span id="staff-role" class="role-chip"></span>
+          <button id="account-button" class="header-link" type="button">Account</button>
+          <a class="header-link" href="/portal/health-hope-live.html">Health &amp; Hope Live</a>
+          <button id="logout-button" class="header-link" type="button">Sign Out</button>
+        </div>
+      </header>
+
+
+      <div id="account-modal" class="account-modal hidden" aria-hidden="true">
+        <div class="account-modal-backdrop" data-account-close></div>
+        <section class="account-dialog" role="dialog" aria-modal="true" aria-labelledby="account-title">
+          <button id="account-close" class="account-close" type="button" aria-label="Close account settings">×</button>
+
+          <div id="account-overview">
+            <p class="eyebrow">YOUR ACCOUNT</p>
+            <h2 id="account-title">Account settings</h2>
+            <p class="account-intro">Your secure ReVitalized Academy staff account and access level.</p>
+
+            <form id="account-profile-form" class="account-profile-form">
+              <div class="account-details account-edit-details">
+                <label class="account-detail-row">
+                  <span>Name</span>
+                  <input id="account-name-input" type="text" maxlength="240" autocomplete="name" required>
+                </label>
+                <label class="account-detail-row">
+                  <span>Email</span>
+                  <input id="account-email-input" type="email" maxlength="320" autocomplete="email" required>
+                </label>
+                <label class="account-detail-row">
+                  <span>Phone</span>
+                  <input id="account-phone-input" type="tel" maxlength="40" autocomplete="tel" placeholder="(555) 234-5678">
+                </label>
+                <div class="account-detail-row">
+                  <span>Access Level</span>
+                  <strong id="account-role">—</strong>
+                </div>
+              </div>
+              <p class="account-profile-note">Changing your email may require confirmation before the new address becomes active.</p>
+              <div class="account-actions">
+                <button id="account-change-password" class="secondary-button" type="button">Change Password</button>
+                <button class="primary-button account-done" type="submit">Save Profile</button>
+              </div>
+              <p id="account-profile-status" class="form-status" aria-live="polite"></p>
+            </form>
+          </div>
+
+          <div id="account-password-panel" class="hidden">
+            <p class="eyebrow">SECURITY</p>
+            <h2>Change Password</h2>
+            <p class="account-intro">Choose a new password for your ReVitalized Academy staff account.</p>
+
+            <form id="account-password-form" class="portal-form">
+              <label>
+                <span>New password</span>
+                <div class="password-input-wrap">
+                  <input id="account-new-password" type="password" autocomplete="new-password" minlength="10" required>
+                  <button class="password-toggle" type="button" data-password-toggle="account-new-password" aria-label="Show password" aria-pressed="false"><span aria-hidden="true">👁</span></button>
+                </div>
+              </label>
+              <label>
+                <span>Confirm new password</span>
+                <div class="password-input-wrap">
+                  <input id="account-confirm-password" type="password" autocomplete="new-password" minlength="10" required>
+                  <button class="password-toggle" type="button" data-password-toggle="account-confirm-password" aria-label="Show password" aria-pressed="false"><span aria-hidden="true">👁</span></button>
+                </div>
+              </label>
+              <div class="account-actions">
+                <button id="account-password-cancel" class="secondary-button" type="button">Back</button>
+                <button class="primary-button account-done" type="submit">Save Password</button>
+              </div>
+              <p id="account-password-status" class="form-status" aria-live="polite"></p>
+            </form>
+          </div>
+        </section>
+      </div>
+
+
+      <div id="contact-drawer" class="contact-drawer hidden" aria-hidden="true">
+        <div class="contact-drawer-backdrop" data-contact-close></div>
+        <aside class="contact-drawer-panel" role="dialog" aria-modal="true" aria-labelledby="contact-title">
+          <div class="contact-drawer-topbar">
+            <div>
+              <p class="eyebrow">CONTACT RECORD</p>
+              <h2 id="contact-title">Contact</h2>
+              <div id="contact-badges" class="contact-badges"></div>
+            </div>
+            <button id="contact-close" class="contact-close" type="button" aria-label="Close contact record">×</button>
+          </div>
+
+          <div id="contact-loading" class="contact-loading">Loading contact record...</div>
+
+          <div id="contact-content" class="hidden">
+            <div class="contact-actions">
+              <a id="contact-email-action" class="contact-action primary" href="#">Email</a>
+              <a id="contact-call-action" class="contact-action" href="#">Call</a>
+              <button id="contact-text-action" class="contact-action contact-action-button" type="button">Text</button>
+              <button id="contact-video-action" class="contact-action contact-action-button" type="button">Send Video</button>
+            </div>
+
+            <section class="contact-section journey-ops-section">
+              <div class="journey-ops-head">
+                <div>
+                  <p class="section-kicker">CLIENT JOURNEY</p>
+                  <h3>Where they are and what happens next</h3>
+                </div>
+                <span id="journey-temperature" class="journey-temp-chip">Loading</span>
+              </div>
+
+              <div class="journey-summary-grid">
+                <div class="journey-summary-card"><span>Route</span><strong id="journey-route">Loading...</strong></div>
+                <div class="journey-summary-card"><span>Intent score</span><strong id="journey-intent">—</strong></div>
+                <div class="journey-summary-card"><span>Current step</span><strong id="journey-current-step">—</strong></div>
+                <div class="journey-summary-card"><span>Journey status</span><strong id="journey-state-label">Active</strong></div>
+              </div>
+
+              <div class="journey-progress-wrap">
+                <div class="journey-progress-top">
+                  <span id="journey-progress-copy">0 of 0 steps</span>
+                  <strong id="journey-progress-percent">0%</strong>
+                </div>
+                <div class="journey-progress-track"><div id="journey-progress-bar" class="journey-progress-bar"></div></div>
+              </div>
+
+              <div id="journey-next-box" class="journey-next-box">
+                <strong id="journey-next-title">Loading next step...</strong>
+                <span id="journey-next-meta"></span>
+              </div>
+
+              <div class="journey-action-row">
+                <button id="journey-action-center" class="primary journey-action-center-button" type="button">
+                  Take / Assign Next Action <span id="journey-action-count" class="journey-action-count">0</span>
+                </button>
+                <button id="journey-complete-step" type="button">Complete &amp; Continue</button>
+                <button id="journey-skip-step" type="button">Skip Step</button>
+                <button id="journey-pause" class="warn" type="button">Pause Journey</button>
+                <button id="journey-nurture" class="warn" type="button">Long-Term Nurture</button>
+              </div>
+              <p id="journey-action-status" class="form-status" aria-live="polite"></p>
+
+              <div id="journey-steps-list" class="journey-steps"></div>
+              <div id="journey-automation-note" class="journey-automation-note">Loading automation status...</div>
+            </section>
+
+
+
+            <section id="client-foundation-section" class="contact-section client-foundation-section hidden">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">CLIENT ACCESS</p>
+                  <h3>Membership &amp; household</h3>
+                </div>
+                <span id="client-access-chip" class="status-badge">Ready</span>
+              </div>
+
+              <div class="client-foundation-grid">
+                <div><span>Program</span><strong id="client-program-name">—</strong></div>
+                <div><span>Membership</span><strong id="client-membership-status">—</strong></div>
+                <div><span>Access</span><strong id="client-access-status">—</strong></div>
+                <div><span>Household</span><strong id="client-household-summary">—</strong></div>
+                <div><span>Billing</span><strong id="client-billing-summary">—</strong></div>
+                <div><span>Assigned coach</span><strong id="client-assigned-coach">—</strong></div>
+              </div>
+
+              <div class="client-foundation-actions">
+                <button id="client-copy-activation" class="secondary-button compact-action hidden" type="button">Copy Member Activation Link</button>
+                <button id="client-manage-household" class="secondary-button compact-action" type="button">Manage Household</button>
+              </div>
+              <p id="client-foundation-status" class="form-status" aria-live="polite"></p>
+
+              <div class="client-foundation-subhead">
+                <strong>Current access</strong>
+                <span id="client-entitlement-count">0 included features</span>
+              </div>
+              <div id="client-entitlements-preview" class="client-entitlements-preview"></div>
+            </section>
+
+
+            <section id="client-coaching-section" class="contact-section client-coaching-section hidden">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">COACHING &amp; PROGRESS</p>
+                  <h3>Client coaching workspace</h3>
+                </div>
+                <span id="client-coaching-chip" class="status-badge">Active</span>
+              </div>
+
+              <div class="client-coaching-summary-grid">
+                <div><span>Primary coach</span><strong id="client-coach-name">—</strong></div>
+                <div><span>Active goals</span><strong id="client-goal-count">0</strong></div>
+                <div><span>Active habits</span><strong id="client-habit-count">0</strong></div>
+                <div><span>Open assignments</span><strong id="client-assignment-count">0</strong></div>
+                <div><span>Last check-in</span><strong id="client-last-checkin">None yet</strong></div>
+                <div><span>Last progress</span><strong id="client-last-progress">None yet</strong></div>
+              </div>
+
+              <div class="client-coaching-actions">
+                <button id="client-manage-coaching" class="primary-button compact-action" type="button">Manage Coaching</button>
+                <button id="client-schedule-session" class="secondary-button compact-action" type="button">Schedule Coaching Session</button>
+              </div>
+              <p id="client-coaching-status" class="form-status" aria-live="polite"></p>
+            </section>
+
+
+            <section id="client-wellness-section" class="contact-section client-wellness-section hidden">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">NUTRITION &amp; FITNESS</p>
+                  <h3>Wellness Plan Workspace</h3>
+                </div>
+                <span id="client-wellness-chip" class="status-badge">Not Assigned</span>
+              </div>
+
+              <div class="client-wellness-summary-grid">
+                <div><span>Meal plan</span><strong id="client-meal-plan-name">Not assigned</strong></div>
+                <div><span>Fitness plan</span><strong id="client-fitness-plan-name">Not assigned</strong></div>
+                <div><span>Upcoming meals</span><strong id="client-upcoming-meals">0</strong></div>
+                <div><span>Upcoming workouts</span><strong id="client-upcoming-workouts">0</strong></div>
+                <div><span>7-day nutrition adherence</span><strong id="client-nutrition-adherence">No data</strong></div>
+                <div><span>Grocery list</span><strong id="client-grocery-status">Not generated</strong></div>
+              </div>
+
+              <div class="client-wellness-actions">
+                <button id="client-manage-wellness" class="primary-button compact-action" type="button">Manage Nutrition &amp; Fitness</button>
+              </div>
+              <p id="client-wellness-status" class="form-status" aria-live="polite"></p>
+            </section>
+
+
+            <section id="client-learning-section" class="contact-section client-learning-section hidden">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">LEARNING &amp; RESOURCES</p>
+                  <h3>Courses &amp; Member Content</h3>
+                </div>
+                <span id="client-learning-chip" class="status-badge">0 Active</span>
+              </div>
+
+              <div class="client-learning-summary-grid">
+                <div><span>Active courses</span><strong id="client-active-courses">0</strong></div>
+                <div><span>Completed courses</span><strong id="client-completed-courses">0</strong></div>
+                <div><span>Average progress</span><strong id="client-course-progress">0%</strong></div>
+                <div><span>Assigned resources</span><strong id="client-assigned-resources">0</strong></div>
+              </div>
+
+              <div class="client-learning-actions">
+                <button id="client-manage-learning" class="primary-button compact-action" type="button">Manage Learning &amp; Resources</button>
+              </div>
+              <p id="client-learning-status" class="form-status" aria-live="polite"></p>
+            </section>
+
+
+            <section id="client-messaging-section" class="contact-section client-messaging-section hidden">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">PRIVATE MESSAGING</p>
+                  <h3>Client Conversation</h3>
+                </div>
+                <span id="client-message-chip" class="status-badge">0 Unread</span>
+              </div>
+
+              <div id="client-message-preview" class="client-message-preview">
+                <div class="drawer-empty">No private member conversation yet.</div>
+              </div>
+
+              <div class="client-message-actions">
+                <button id="client-open-conversation" class="primary-button compact-action" type="button">Open Conversation</button>
+              </div>
+              <p id="client-message-status" class="form-status" aria-live="polite"></p>
+            </section>
+
+
+            <section id="client-health-integrations-section" class="contact-section client-health-integrations-section hidden">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">HEALTH INTEGRATIONS</p>
+                  <h3>Wearables &amp; Synced Health Data</h3>
+                </div>
+                <span id="client-health-integrations-chip" class="status-badge">0 Connected</span>
+              </div>
+              <div class="client-health-integrations-grid">
+                <div><span>Connected providers</span><strong id="client-connected-providers">0</strong></div>
+                <div><span>Needs attention</span><strong id="client-health-attention">0</strong></div>
+                <div><span>Last successful sync</span><strong id="client-health-last-sync">None</strong></div>
+                <div><span>Observations · 24h</span><strong id="client-health-observations">0</strong></div>
+              </div>
+            </section>
+
+
+            <section id="client-challenges-section" class="contact-section client-challenges-section hidden">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">CHALLENGES</p>
+                  <h3>Accountability &amp; Family Challenges</h3>
+                </div>
+                <span id="client-challenges-chip" class="status-badge">0 Active</span>
+              </div>
+              <div class="client-challenges-grid">
+                <div><span>Active</span><strong id="client-active-challenges">0</strong></div>
+                <div><span>Completed</span><strong id="client-completed-challenges">0</strong></div>
+                <div><span>Points</span><strong id="client-challenge-points">0</strong></div>
+              </div>
+              <div class="client-challenges-actions">
+                <button id="client-manage-challenges" class="primary-button compact-action" type="button">Manage Challenges</button>
+              </div>
+            </section>
+
+
+
+
+
+            <section id="client-coaching-access-section" class="contact-section client-coaching-access-section hidden">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">COACHING ACCESS</p>
+                  <h3>Session entitlement usage</h3>
+                </div>
+                <span id="client-coaching-access-chip" class="status-badge">0</span>
+              </div>
+              <div id="client-coaching-entitlement-list" class="client-coaching-entitlement-list"></div>
+            </section>
+
+            <section id="client-lifecycle-section" class="contact-section" hidden><div class="contact-section-heading"><div><p class="section-kicker">CLIENT ENROLLMENT</p><h3>Program &amp; Next Steps</h3></div></div><dl id="lifecycle-state" class="lifecycle-summary"></dl><p id="lifecycle-next" class="lifecycle-next"></p><div class="lifecycle-actions"><button id="lifecycle-choose-program" class="primary-button" type="button">Start Enrollment / Choose Program</button><button id="lifecycle-prepare-agreement" class="secondary-button" type="button" disabled>Prepare / Send Agreement</button></div><form id="lifecycle-enrollment-form" hidden><h4>Holistic Foundations</h4><label>Plan<select id="lifecycle-plan" required><option value="">Choose an approved plan</option></select></label><div id="lifecycle-plan-detail" class="lifecycle-plan-detail" aria-live="polite"></div><section id="lifecycle-annual-override" class="lifecycle-override" hidden><h5>Annual eligibility override</h5><p>Owner/Admin only. Approval is audited and does not enable an agreement, payment, or access.</p><label>Reason<textarea id="lifecycle-override-reason" minlength="12" maxlength="1000"></textarea></label><button id="lifecycle-override-save" class="secondary-button" type="button">Approve Annual Eligibility</button></section><p>This saves plan intent only. Price, currency, commitment and merchant route are resolved by the server. No agreement is issued, no charge occurs and no paid access is activated while the release gates are held.</p><button id="lifecycle-save-enrollment" class="primary-button" type="submit">Save Enrollment</button></form><p id="lifecycle-status" role="status" aria-live="polite"></p></section>
+            <section id="payment-requests-section" class="contact-section hidden"><h3>Payment Requests</h3><div id="payment-requests-list"></div><button id="payment-request-create" type="button" class="primary-button">Create Payment Request</button><p id="payment-requests-status" class="form-status" aria-live="polite"></p></section>
+            <section id="client-agreements-section" class="contact-section client-agreements-section hidden">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">AGREEMENTS</p>
+                  <h3>Client agreements</h3>
+                </div>
+                <span id="client-agreements-chip" class="status-badge">0</span>
+              </div>
+              <div id="client-agreements-list" class="client-agreements-list"></div>
+              <div class="client-agreements-actions">
+                <button id="client-agreement-assign" class="primary-button compact-action" type="button">Assign / Send Agreement</button>
+              </div>
+              <p id="client-agreements-status" class="form-status" aria-live="polite"></p>
+            </section>
+
+            <section id="client-billing-section" class="contact-section client-billing-section hidden">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">MEMBERSHIP BILLING</p>
+                  <h3>Subscription &amp; commitment</h3>
+                </div>
+                <span id="client-billing-chip" class="status-badge">Not Set</span>
+              </div>
+              <div id="client-billing-summary" class="client-billing-summary"></div>
+              <div class="client-billing-actions">
+                <button id="client-billing-manage" class="primary-button compact-action" type="button">Manage Billing</button>
+              </div>
+              <p id="client-billing-status" class="form-status" aria-live="polite"></p>
+            </section>
+
+            <section id="client-documents-section" class="contact-section client-documents-section hidden">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">DOCUMENT VAULT</p>
+                  <h3>Secure client files</h3>
+                </div>
+                <span id="client-documents-chip" class="status-badge">0 Files</span>
+              </div>
+              <div id="client-documents-list" class="client-documents-list"></div>
+              <div class="client-documents-actions">
+                <button id="client-document-upload-button" class="primary-button compact-action" type="button">Upload Document</button>
+              </div>
+              <p id="client-documents-status" class="form-status" aria-live="polite"></p>
+            </section>
+
+            <section class="contact-section">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">CONTACT</p>
+                  <h3>Contact details</h3>
+                </div>
+              </div>
+              <div class="contact-info-grid">
+                <div><span>Email</span><strong id="contact-email">—</strong></div>
+                <div><span>Phone</span><strong id="contact-phone">—</strong></div>
+                <div><span>Location</span><strong id="contact-location">—</strong></div>
+                <div><span>Source</span><strong id="contact-source">—</strong></div>
+                <div><span>Created</span><strong id="contact-created">—</strong></div>
+                <div><span>Assigned to</span><strong id="contact-assigned-name">—</strong></div>
+              </div>
+            </section>
+
+
+            <section class="contact-section">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">COMMUNICATIONS</p>
+                  <h3>SMS permission</h3>
+                </div>
+                <span id="sms-consent-summary" class="status-badge">Not recorded</span>
+              </div>
+              <form id="sms-consent-form" class="sms-consent-grid">
+                <label>
+                  <span>SMS status</span>
+                  <select id="sms-consent-status">
+                    <option value="unknown">Not Recorded</option>
+                    <option value="opted_in">Opted In</option>
+                    <option value="opted_out">Opted Out</option>
+                    <option value="blocked">Blocked</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Consent source</span>
+                  <select id="sms-consent-source">
+                    <option value="">Not Recorded</option>
+                    <option value="website">Website</option>
+                    <option value="enrollment">Enrollment</option>
+                    <option value="verbal">Verbal</option>
+                    <option value="written">Written</option>
+                    <option value="other">Other</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Consent version</span>
+                  <input id="sms-consent-version" type="text" value="revitalized-sms-v1">
+                </label>
+                <label class="sms-consent-wide">
+                  <span>Internal notes</span>
+                  <textarea id="sms-consent-notes" rows="2" placeholder="Optional consent or opt-out notes"></textarea>
+                </label>
+                <div class="contact-form-actions sms-consent-wide">
+                  <button class="secondary-button compact-action" type="submit">Save SMS Permission</button>
+                  <p id="sms-consent-message" class="message-status" aria-live="polite"></p>
+                </div>
+              </form>
+              <div id="sms-provider-state" class="provider-state"></div>
+            </section>
+
+            <section class="contact-section">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">JOURNEY</p>
+                  <h3>Current Progress</h3>
+                </div>
+              </div>
+              <div id="contact-journey-grid" class="journey-grid"></div>
+            </section>
+
+            <section class="contact-section">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">FOLLOW-UP</p>
+                  <h3>Status &amp; Ownership</h3>
+                </div>
+              </div>
+              <form id="contact-status-form" class="contact-form-grid">
+                <label>
+                  <span>Lifecycle stage</span>
+                  <select id="contact-lifecycle">
+                    <option value="lead">Lead</option>
+                    <option value="assessment_lead">Assessment Lead</option>
+                    <option value="webinar_lead">Webinar Lead</option>
+                    <option value="applicant">Applicant</option>
+                    <option value="client">Client</option>
+                    <option value="inactive">Inactive</option>
+                    <option value="registered_guest" disabled>Registered Guest</option>
+                    <option value="engaged_guest" disabled>Engaged Guest</option>
+                    <option value="prospective_client" disabled>Prospective Client</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Follow-up status</span>
+                  <select id="contact-followup-status">
+                    <option value="new">New</option>
+                    <option value="needs_follow_up">Needs Follow-up</option>
+                    <option value="contacted">Contacted</option>
+                    <option value="consultation_scheduled">Consultation Scheduled</option>
+                    <option value="consultation_completed">Consultation Completed</option>
+                    <option value="nurture">Nurture</option>
+                    <option value="not_ready">Not Ready</option>
+                    <option value="closed">Closed</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Consultation</span>
+                  <select id="contact-consultation-status">
+                    <option value="not_scheduled">Not Scheduled</option>
+                    <option value="scheduled">Scheduled</option>
+                    <option value="completed">Completed</option>
+                    <option value="cancelled">Cancelled</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Assigned staff</span>
+                  <select id="contact-assigned-to">
+                    <option value="">Unassigned</option>
+                  </select>
+                </label>
+                <label class="contact-form-wide">
+                  <span>Next follow-up</span>
+                  <input id="contact-next-followup" type="datetime-local">
+                </label>
+                <div class="contact-form-actions contact-form-wide">
+                  <button class="primary-button compact-action" type="submit">Save Status</button>
+                  <p id="contact-status-message" class="form-status" aria-live="polite"></p>
+                </div>
+              </form>
+            </section>
+
+            <section class="contact-section">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">NOTES</p>
+                  <h3>Internal notes</h3>
+                </div>
+              </div>
+              <form id="contact-note-form" class="inline-create-form">
+                <textarea id="contact-note-input" rows="3" maxlength="10000" placeholder="Add an internal note..." required></textarea>
+                <button class="secondary-button compact-action" type="submit">Add Note</button>
+              </form>
+              <p id="contact-note-message" class="form-status" aria-live="polite"></p>
+              <div id="contact-notes-list" class="record-list"></div>
+            </section>
+
+            <section class="contact-section">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">TASKS</p>
+                  <h3>Follow-Up Tasks</h3>
+                </div>
+              </div>
+              <form id="contact-task-form" class="contact-form-grid compact-form">
+                <label class="contact-form-wide">
+                  <span>Task</span>
+                  <input id="contact-task-title" type="text" maxlength="240" placeholder="What Needs to Happen Next?" required>
+                </label>
+                <label>
+                  <span>Due</span>
+                  <input id="contact-task-due" type="datetime-local">
+                </label>
+                <label>
+                  <span>Priority</span>
+                  <select id="contact-task-priority">
+                    <option value="normal">Normal</option>
+                    <option value="high">High</option>
+                    <option value="urgent">Urgent</option>
+                    <option value="low">Low</option>
+                  </select>
+                </label>
+                <label class="contact-form-wide">
+                  <span>Assign to</span>
+                  <select id="contact-task-assigned">
+                    <option value="">Unassigned</option>
+                  </select>
+                </label>
+                <div class="contact-form-actions contact-form-wide">
+                  <button class="secondary-button compact-action" type="submit">Create Task</button>
+                  <p id="contact-task-message" class="form-status" aria-live="polite"></p>
+                </div>
+              </form>
+              <div id="contact-tasks-list" class="record-list"></div>
+            </section>
+
+
+            <section class="contact-section">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">MESSAGES</p>
+                  <h3>Messages &amp; Personal Videos</h3>
+                </div>
+              </div>
+              <div id="contact-messages-list" class="message-history-grid"></div>
+            </section>
+
+            <section class="contact-section">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">TAGS</p>
+                  <h3>Organization</h3>
+                </div>
+              </div>
+              <form id="contact-tag-form" class="tag-form">
+                <input id="contact-tag-input" type="text" maxlength="80" placeholder="Add a tag" required>
+                <button class="secondary-button compact-action" type="submit">Add</button>
+              </form>
+              <div id="contact-tags-list" class="tag-list"></div>
+              <p id="contact-tag-message" class="form-status" aria-live="polite"></p>
+            </section>
+
+            <section class="contact-section">
+              <div class="contact-section-heading">
+                <div>
+                  <p class="section-kicker">ACTIVITY</p>
+                  <h3>Recent timeline</h3>
+                </div>
+              </div>
+              <div id="contact-activity-list" class="activity-list"></div>
+            </section>
+          </div>
+        </aside>
+      </div>
+
+
+      <div id="vitality-review-drawer" class="vitality-review-drawer hidden" aria-hidden="true">
+        <div class="vitality-review-backdrop" data-vitality-review-close></div>
+        <aside class="vitality-review-dialog" role="dialog" aria-modal="true" aria-labelledby="vitality-review-title">
+          <div class="vitality-review-topbar">
+            <div>
+              <p class="eyebrow">PRIVATE HEALTH REVIEW</p>
+              <h2 id="vitality-review-title">Vitality Roadmap</h2>
+            </div>
+            <button class="vitality-review-close" type="button" data-vitality-review-close aria-label="Close Vitality Roadmap review">×</button>
+          </div>
+          <div id="vitality-review-content" class="vitality-review-content"></div>
+        </aside>
+      </div>
+
+
+      <div id="text-modal" class="message-modal hidden" aria-hidden="true">
+        <div class="message-modal-backdrop" data-text-close></div>
+        <section class="message-dialog" role="dialog" aria-modal="true" aria-labelledby="text-modal-title">
+          <button class="message-dialog-close" type="button" data-text-close aria-label="Close text composer">×</button>
+          <p class="eyebrow">PERSONAL OUTREACH</p>
+          <h2 id="text-modal-title">Send a text</h2>
+          <p id="text-recipient" class="message-recipient"></p>
+          <div id="text-consent-banner" class="message-consent-banner"></div>
+
+          <div class="message-form">
+            <label>
+              <span>Template</span>
+              <select id="text-template"></select>
+            </label>
+            <label>
+              <span>Message</span>
+              <textarea id="text-message-body" maxlength="1200" placeholder="Write a personal message..."></textarea>
+            </label>
+            <p class="message-help">Keep text messages free of sensitive health details. Use secure portal links for private information.</p>
+            <div class="message-warning">Automated Twilio delivery is being prepared. Until it is connected, approved texts can be handed off to the text app on this device.</div>
+            <div class="message-actions">
+              <button id="text-save-draft" class="message-button" type="button">Save Draft</button>
+              <button id="text-open-app" class="message-button primary" type="button">Open Text App</button>
+            </div>
+            <p id="text-message-status" class="message-status" aria-live="polite"></p>
+          </div>
+        </section>
+      </div>
+
+      <div id="video-modal" class="message-modal hidden" aria-hidden="true">
+        <div class="message-modal-backdrop" data-video-close></div>
+        <section class="message-dialog" role="dialog" aria-modal="true" aria-labelledby="video-modal-title">
+          <button class="message-dialog-close" type="button" data-video-close aria-label="Close video composer">×</button>
+          <p class="eyebrow">PERSONAL VIDEO</p>
+          <h2 id="video-modal-title">Send a personal video</h2>
+          <p id="video-recipient" class="message-recipient"></p>
+          <div id="video-consent-banner" class="message-consent-banner"></div>
+
+          <div class="message-form">
+            <label>
+              <span>Video title</span>
+              <input id="video-title-input" type="text" maxlength="180">
+            </label>
+            <label>
+              <span>Personal note shown above the video</span>
+              <textarea id="video-personal-message" maxlength="1200"></textarea>
+            </label>
+            <label>
+              <span>Record or upload video</span>
+              <input id="video-file" type="file" accept="video/mp4,video/quicktime,video/webm,video/x-m4v,video/*" capture="user">
+            </label>
+            <div id="video-file-summary" class="upload-file-summary">Choose a video file or record one from your phone.</div>
+            <label>
+              <span>Text message that will accompany the video link</span>
+              <textarea id="video-sms-body" maxlength="1200"></textarea>
+            </label>
+            <p class="message-help">Large videos use a resumable secure upload, so an interrupted upload can continue instead of restarting from zero.</p>
+            <div id="video-upload-progress-wrap" class="upload-progress-wrap hidden">
+              <progress id="video-upload-progress" class="upload-progress" max="100" value="0"></progress>
+              <span id="video-upload-progress-label" class="upload-progress-label">0%</span>
+            </div>
+            <div class="message-actions">
+              <button id="video-create-button" class="message-button primary" type="button">Upload and Create Link</button>
+            </div>
+            <p id="video-upload-status" class="message-status" aria-live="polite"></p>
+
+            <div id="video-ready-box" class="video-ready-box hidden">
+              <h3>Your personal video link is ready.</h3>
+              <p id="video-ready-text"></p>
+              <input id="video-share-link" class="video-ready-link" type="text" readonly>
+              <div class="video-ready-actions">
+                <button id="video-copy-link" class="message-button" type="button">Copy Link</button>
+                <button id="video-copy-text" class="message-button" type="button">Copy Text</button>
+                <button id="video-open-text" class="message-button primary" type="button">Open Text App</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+
+      <div id="journey-action-modal" class="action-center-modal hidden" aria-hidden="true">
+        <div class="action-center-backdrop" data-action-center-close></div>
+        <section class="action-center-dialog" role="dialog" aria-modal="true" aria-labelledby="action-center-title">
+          <button class="action-center-close" type="button" data-action-center-close aria-label="Close Action Center">×</button>
+          <p class="eyebrow">NEXT STEP ACTION CENTER</p>
+          <h2 id="action-center-title">Take it now or assign it.</h2>
+          <p class="action-center-intro">Choose how the next step should be handled. Approved templates can be personalized, assigned to a coach, or opened immediately.</p>
+
+          <div class="action-center-step">
+            <span>Current next step</span>
+            <strong id="action-center-step-name">Loading...</strong>
+          </div>
+
+          <div class="action-center-grid">
+            <label>
+              <span>Action</span>
+              <select id="action-center-type"></select>
+            </label>
+            <label>
+              <span>Assign to</span>
+              <select id="action-center-assignee"></select>
+            </label>
+            <label>
+              <span>Template</span>
+              <select id="action-center-template"></select>
+            </label>
+            <label>
+              <span>Due</span>
+              <input id="action-center-due" type="datetime-local">
+            </label>
+
+            <label id="action-center-subject-wrap" class="action-center-wide">
+              <span>Email subject</span>
+              <input id="action-center-subject" type="text" maxlength="220">
+            </label>
+
+            <label id="action-center-body-wrap" class="action-center-wide">
+              <span>Message</span>
+              <textarea id="action-center-body" maxlength="5000"></textarea>
+            </label>
+
+            <label id="action-center-instructions-wrap" class="action-center-wide">
+              <span>Call / task instructions</span>
+              <textarea id="action-center-instructions" maxlength="5000"></textarea>
+            </label>
+
+            <p class="action-center-template-note">Templates are starting points. Justyn, Elle or a coach can personalize the wording before sending or calling.</p>
+
+            <div id="action-center-link-box" class="action-center-link-box hidden">
+              <span>Secure client journey link</span>
+              <input id="action-center-link" type="text" readonly>
+            </div>
+          </div>
+
+          <div class="action-center-actions">
+            <button type="button" data-action-center-close>Cancel</button>
+            <button id="action-center-assign" class="gold" type="button">Assign Action</button>
+            <button id="action-center-do-now" class="primary" type="button">Do Now</button>
+          </div>
+
+          <p id="action-center-status" class="action-center-status" aria-live="polite"></p>
+
+
+          <div id="action-center-operational" class="action-center-operational hidden">
+            <div id="action-center-appointment" class="action-center-ops-card hidden">
+              <div class="action-center-ops-head">
+                <div>
+                  <span>APPOINTMENT</span>
+                  <strong id="appointment-ops-title">Confirm appointment</strong>
+                </div>
+                <span id="appointment-ops-state" class="action-center-ops-state">Requested</span>
+              </div>
+              <p id="appointment-request-copy" class="action-center-request-copy"></p>
+              <div class="action-center-grid">
+                <label>
+                  <span>Status</span>
+                  <select id="appointment-status">
+                    <option value="requested">Requested</option>
+                    <option value="scheduled">Scheduled</option>
+                    <option value="completed">Completed</option>
+                    <option value="cancelled">Cancelled</option>
+                    <option value="no_show">No Show</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Assigned coach</span>
+                  <select id="appointment-assignee"></select>
+                </label>
+                <label>
+                  <span>Start</span>
+                  <input id="appointment-start" type="datetime-local">
+                </label>
+                <label>
+                  <span>End</span>
+                  <input id="appointment-end" type="datetime-local">
+                </label>
+                <label>
+                  <span>Time zone</span>
+                  <input id="appointment-time-zone" type="text" maxlength="100" placeholder="Eastern">
+                </label>
+                <label>
+                  <span>Format</span>
+                  <select id="appointment-format">
+                    <option value="">Select format</option>
+                    <option value="Zoom / video">Zoom / video</option>
+                    <option value="Phone">Phone</option>
+                    <option value="In person">In person</option>
+                  </select>
+                </label>
+                <label class="action-center-wide">
+                  <span>Meeting / location link</span>
+                  <input id="appointment-location" type="url" maxlength="1000" placeholder="https://...">
+                </label>
+              </div>
+              <div class="action-center-ops-actions">
+                <button id="appointment-save" class="primary" type="button">Save Appointment</button>
+              </div>
+              <p id="appointment-status-message" class="action-center-status" aria-live="polite"></p>
+            </div>
+
+            <div id="action-center-activation" class="action-center-ops-card hidden">
+              <div class="action-center-ops-head">
+                <div>
+                  <span>ENROLLMENT ACTIVATION</span>
+                  <strong>Payment, agreement and access</strong>
+                </div>
+                <span id="activation-ops-state" class="action-center-ops-state">Pending</span>
+              </div>
+              <div class="action-center-grid">
+                <label>
+                  <span>Program</span>
+                  <select id="activation-program">
+                    <option value="">Select program</option>
+                    <option value="holistic-foundations">Holistic Foundations</option>
+                    <option value="vitality-accelerator-cohort">Vitality Accelerator Cohort</option>
+                    <option value="vitality-accelerator">Vitality Accelerator</option>
+                    <option value="total-wellness-6">6-Month Intensive</option>
+                    <option value="total-wellness-12">12-Month Intensive</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Billing choice</span>
+                  <select id="activation-billing">
+                    <option value="">Select billing</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="monthly">Monthly</option>
+                    <option value="one_time">One-time</option>
+                    <option value="custom">Custom</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Commitment months</span>
+                  <input id="activation-commitment" type="number" min="1" max="36" step="1">
+                </label>
+                <label>
+                  <span>Amount</span>
+                  <input id="activation-amount" type="number" min="0" step="0.01" placeholder="89.00">
+                </label>
+                <label>
+                  <span>Payment status</span>
+                  <select id="activation-payment-status">
+                    <option value="pending">Pending</option>
+                    <option value="authorized">Authorized</option>
+                    <option value="paid">Paid</option>
+                    <option value="failed">Failed</option>
+                    <option value="refunded">Refunded</option>
+                    <option value="cancelled">Cancelled</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Agreement status</span>
+                  <select id="activation-agreement-status">
+                    <option value="not_sent">Not Sent</option>
+                    <option value="sent">Sent</option>
+                    <option value="signed">Signed</option>
+                    <option value="declined">Declined</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Member access</span>
+                  <select id="activation-access-status">
+                    <option value="pending">Pending</option>
+                    <option value="ready">Ready for Access</option>
+                    <option value="active">Active</option>
+                    <option value="suspended">Suspended</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Currency</span>
+                  <select id="activation-currency">
+                    <option value="USD">USD</option>
+                    <option value="CAD">CAD</option>
+                  </select>
+                </label>
+                <label class="action-center-wide">
+                  <span>Payment URL</span>
+                  <input id="activation-payment-url" type="url" maxlength="1000" placeholder="https://...">
+                </label>
+                <label class="action-center-wide">
+                  <span>Agreement URL</span>
+                  <input id="activation-agreement-url" type="url" maxlength="1000" placeholder="https://...">
+                </label>
+              </div>
+              <div class="action-center-ops-actions">
+                <button id="activation-save" class="primary" type="button">Save Enrollment Activation</button>
+              </div>
+              <p id="activation-status-message" class="action-center-status" aria-live="polite"></p>
+            </div>
+
+            <div id="action-center-report" class="action-center-ops-card hidden">
+              <div class="action-center-ops-head">
+                <div>
+                  <span>VITALITY REPORT</span>
+                  <strong>Review, approve and prepare for delivery</strong>
+                </div>
+                <span id="report-ops-state" class="action-center-ops-state">Awaiting Review</span>
+              </div>
+
+              <div class="action-center-grid">
+                <label>
+                  <span>Report status</span>
+                  <select id="report-status">
+                    <option value="awaiting_review">Awaiting Review</option>
+                    <option value="in_review">In Review</option>
+                    <option value="revision_needed">Revision Needed</option>
+                    <option value="approved">Approved</option>
+                    <option value="sent">Sent</option>
+                    <option value="archived">Archived</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Report PDF</span>
+                  <input id="report-file" type="file" accept="application/pdf">
+                </label>
+                <label class="action-center-wide">
+                  <span>Internal coach summary</span>
+                  <textarea id="report-coach-summary" maxlength="8000" placeholder="Internal notes for the coaching team..."></textarea>
+                </label>
+                <label class="action-center-wide">
+                  <span>Client-facing note</span>
+                  <textarea id="report-client-message" maxlength="4000" placeholder="Optional note that can accompany the report..."></textarea>
+                </label>
+              </div>
+
+              <div id="report-file-state" class="action-center-request-copy"></div>
+
+              <div class="action-center-ops-actions action-center-report-actions">
+                <button id="report-preview" type="button">Preview PDF</button>
+                <button id="report-save" type="button">Save Review</button>
+                <button id="report-approve" class="primary" type="button">Approve Report</button>
+              </div>
+              <p id="report-status-message" class="action-center-status" aria-live="polite"></p>
+            </div>
+
+          </div>
+
+          <div class="action-center-open-list">
+            <div class="action-center-open-title">Assigned actions for this step</div>
+            <div id="action-center-open-list"></div>
+          </div>
+        </section>
+      </div>
+
+
+      <div id="household-modal" class="household-modal hidden" aria-hidden="true">
+        <div class="household-modal-backdrop" data-household-close></div>
+        <section class="household-dialog" role="dialog" aria-modal="true" aria-labelledby="household-title">
+          <button class="household-close" type="button" data-household-close aria-label="Close household manager">×</button>
+          <p class="eyebrow">FAMILY HEALTH HUB</p>
+          <h2 id="household-title">Manage household</h2>
+          <p class="household-intro">ReVitalized household structure is intentionally limited to an individual, a husband and wife, or a husband and wife with children/dependents.</p>
+
+          <div class="household-structure-row">
+            <label>
+              <span>Household type</span>
+              <select id="household-type-select">
+                <option value="individual">Individual</option>
+                <option value="couple">Husband + Wife</option>
+                <option value="family">Husband + Wife + Children/Dependents</option>
+              </select>
+            </label>
+            <div>
+              <span>Status</span>
+              <strong id="household-status-label">Draft</strong>
+            </div>
+            <div>
+              <span>Profiles</span>
+              <strong id="household-profile-limit">1</strong>
+            </div>
+          </div>
+
+          <div class="household-actions-top">
+            <button id="household-save-type" class="secondary-button compact-action" type="button">Save Household Type</button>
+            <button id="household-activate" class="primary-button compact-action" type="button">Activate Household</button>
+          </div>
+          <p id="household-status-message" class="form-status" aria-live="polite"></p>
+
+          <div class="household-member-heading">
+            <strong>Household members</strong>
+          </div>
+          <div id="household-member-list" class="household-member-list"></div>
+
+          <form id="household-add-form" class="household-add-form">
+            <div class="household-add-heading">
+              <strong>Add household member</strong>
+              <span id="household-add-note"></span>
+            </div>
+            <div class="household-add-grid">
+              <label><span>First name</span><input id="household-first-name" type="text" maxlength="120" required></label>
+              <label><span>Last name</span><input id="household-last-name" type="text" maxlength="120" required></label>
+              <label><span>Relationship</span><select id="household-relationship" required></select></label>
+              <label>
+                <span>Sex</span>
+                <select id="household-sex" required>
+                  <option value="">Select</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </label>
+              <label><span>Email</span><input id="household-email" type="email" maxlength="320"></label>
+              <label><span>Phone</span><input id="household-phone" type="tel" maxlength="50"></label>
+              <label class="household-add-wide"><span>Date of birth</span><input id="household-dob" type="date"></label>
+            </div>
+            <button id="household-add-button" class="primary-button compact-action" type="submit">Add Household Member</button>
+            <p id="household-add-status" class="form-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
+
+      <div id="coaching-modal" class="coaching-modal hidden" aria-hidden="true">
+        <div class="coaching-modal-backdrop" data-coaching-close></div>
+        <section class="coaching-dialog" role="dialog" aria-modal="true" aria-labelledby="coaching-title">
+          <button class="coaching-close" type="button" data-coaching-close aria-label="Close coaching manager">×</button>
+          <p class="eyebrow">CLIENT COACHING</p>
+          <h2 id="coaching-title">Coaching &amp; Progress</h2>
+          <p class="coaching-intro">Manage coach ownership, goals, habits, action items, weekly check-ins, progress and coaching sessions without leaving the client record.</p>
+
+          <section class="coaching-block">
+            <div class="coaching-block-head">
+              <div><span>COACH OWNERSHIP</span><strong>Primary coach</strong></div>
+            </div>
+            <div class="coaching-inline-row">
+              <select id="coaching-primary-coach"></select>
+              <button id="coaching-save-coach" class="primary-button compact-action" type="button">Save Coach</button>
+            </div>
+            <p id="coaching-coach-status" class="form-status" aria-live="polite"></p>
+          </section>
+
+          <div class="coaching-two-col">
+            <section class="coaching-block">
+              <div class="coaching-block-head">
+                <div><span>GOALS</span><strong>Active client goals</strong></div>
+              </div>
+              <form id="coaching-goal-form" class="coaching-form">
+                <label><span>Goal title</span><input id="coaching-goal-title" type="text" maxlength="220" required></label>
+                <label><span>Description</span><textarea id="coaching-goal-description" rows="3" maxlength="2000"></textarea></label>
+                <div class="coaching-form-grid">
+                  <label><span>Target date</span><input id="coaching-goal-date" type="date"></label>
+                  <label><span>Priority</span>
+                    <select id="coaching-goal-priority">
+                      <option value="1">High</option>
+                      <option value="2">Important</option>
+                      <option value="3" selected>Normal</option>
+                      <option value="4">Lower</option>
+                      <option value="5">Long-term</option>
+                    </select>
+                  </label>
+                </div>
+                <button class="secondary-button compact-action" type="submit">Add Goal</button>
+                <p id="coaching-goal-status" class="form-status" aria-live="polite"></p>
+              </form>
+              <div id="coaching-goal-list" class="coaching-list"></div>
+            </section>
+
+            <section class="coaching-block">
+              <div class="coaching-block-head">
+                <div><span>HABITS</span><strong>Coaching rhythms</strong></div>
+              </div>
+              <form id="coaching-habit-form" class="coaching-form">
+                <label><span>Habit</span><input id="coaching-habit-title" type="text" maxlength="220" required></label>
+                <div class="coaching-form-grid">
+                  <label><span>Category</span><input id="coaching-habit-category" type="text" maxlength="120" placeholder="Activity, Nutrition, Recovery..."></label>
+                  <label><span>Frequency</span>
+                    <select id="coaching-habit-frequency">
+                      <option value="daily">Daily</option>
+                      <option value="weekly">Weekly</option>
+                      <option value="custom">Custom</option>
+                    </select>
+                  </label>
+                  <label><span>Target</span><input id="coaching-habit-target" type="number" min="0.1" step="0.1" value="1"></label>
+                  <label><span>Unit</span><input id="coaching-habit-unit" type="text" maxlength="60" placeholder="walk, oz, servings..."></label>
+                </div>
+                <button class="secondary-button compact-action" type="submit">Add Habit</button>
+                <p id="coaching-habit-status" class="form-status" aria-live="polite"></p>
+              </form>
+              <div id="coaching-habit-list" class="coaching-list"></div>
+            </section>
+          </div>
+
+          <section class="coaching-block">
+            <div class="coaching-block-head">
+              <div><span>CLIENT ACTION ITEMS</span><strong>Assignments from the coaching team</strong></div>
+            </div>
+            <form id="coaching-assignment-form" class="coaching-form">
+              <div class="coaching-form-grid">
+                <label><span>Assignment title</span><input id="coaching-assignment-title" type="text" maxlength="220" required></label>
+                <label><span>Type</span>
+                  <select id="coaching-assignment-type">
+                    <option value="action">Action</option>
+                    <option value="resource">Resource</option>
+                    <option value="reflection">Reflection</option>
+                    <option value="workout">Workout</option>
+                    <option value="nutrition">Nutrition</option>
+                    <option value="course">Course</option>
+                  </select>
+                </label>
+                <label class="coaching-wide"><span>Instructions</span><textarea id="coaching-assignment-instructions" rows="3" maxlength="3000"></textarea></label>
+                <label><span>Due</span><input id="coaching-assignment-due" type="datetime-local"></label>
+              </div>
+              <button class="secondary-button compact-action" type="submit">Assign to Client</button>
+              <p id="coaching-assignment-status" class="form-status" aria-live="polite"></p>
+            </form>
+            <div id="coaching-assignment-list" class="coaching-list"></div>
+          </section>
+
+          <div class="coaching-two-col">
+            <section class="coaching-block">
+              <div class="coaching-block-head">
+                <div><span>WEEKLY CHECK-INS</span><strong>Coach review</strong></div>
+              </div>
+              <div id="coaching-checkin-list" class="coaching-list"></div>
+              <form id="coaching-checkin-review-form" class="coaching-form hidden">
+                <input id="coaching-review-checkin-id" type="hidden">
+                <label><span>Coach response</span><textarea id="coaching-checkin-response" rows="4" maxlength="4000" placeholder="Optional response or coaching note..."></textarea></label>
+                <div class="coaching-inline-row">
+                  <button class="primary-button compact-action" type="submit">Mark Reviewed</button>
+                  <button id="coaching-review-cancel" class="secondary-button compact-action" type="button">Cancel</button>
+                </div>
+                <p id="coaching-checkin-status" class="form-status" aria-live="polite"></p>
+              </form>
+            </section>
+
+            <section class="coaching-block">
+              <div class="coaching-block-head">
+                <div><span>PROGRESS</span><strong>Latest recorded metrics</strong></div>
+              </div>
+              <div id="coaching-progress-list" class="coaching-list"></div>
+            </section>
+          </div>
+
+          <section id="coaching-sessions-block" class="coaching-block">
+            <div class="coaching-block-head">
+              <div><span>COACHING SESSIONS</span><strong>Schedule and document sessions</strong></div>
+            </div>
+            <form id="coaching-session-form" class="coaching-form">
+              <div class="coaching-form-grid">
+                <label><span>Coach</span><select id="coaching-session-coach"></select></label>
+                <label><span>Start</span><input id="coaching-session-start" type="datetime-local" required></label>
+                <label><span>End</span><input id="coaching-session-end" type="datetime-local"></label>
+                <label><span>Format</span>
+                  <select id="coaching-session-format">
+                    <option value="Zoom / video">Zoom / video</option>
+                    <option value="Phone">Phone</option>
+                    <option value="In person">In person</option>
+                  </select>
+                </label>
+                <label class="coaching-wide"><span>Meeting / location link</span><input id="coaching-session-link" type="url" maxlength="1000" placeholder="https://..."></label>
+                <label class="coaching-wide"><span>Client agenda / focus</span><textarea id="coaching-session-agenda" rows="3" maxlength="3000"></textarea></label>
+              </div>
+              <button class="secondary-button compact-action" type="submit">Schedule Coaching Session</button>
+              <p id="coaching-session-status" class="form-status" aria-live="polite"></p>
+            </form>
+            <div id="coaching-session-list" class="coaching-list"></div>
+          </section>
+
+          <section class="coaching-block">
+            <div class="coaching-block-head">
+              <div><span>PRIVATE COACH NOTES</span><strong>Session documentation</strong></div>
+            </div>
+            <form id="coaching-note-form" class="coaching-form">
+              <div class="coaching-form-grid">
+                <label><span>Session</span><select id="coaching-note-session"></select></label>
+                <label><span>Note type</span>
+                  <select id="coaching-note-type">
+                    <option value="coach_note">Coach Note</option>
+                    <option value="session_summary">Session Summary</option>
+                    <option value="follow_up">Follow-Up</option>
+                  </select>
+                </label>
+                <label class="coaching-wide"><span>Private note</span><textarea id="coaching-note-text" rows="4" maxlength="8000" required></textarea></label>
+              </div>
+              <button class="secondary-button compact-action" type="submit">Save Private Note</button>
+              <p id="coaching-note-status" class="form-status" aria-live="polite"></p>
+            </form>
+            <div id="coaching-note-list" class="coaching-list"></div>
+          </section>
+        </section>
+      </div>
+
+
+      <div id="wellness-modal" class="wellness-modal hidden" aria-hidden="true">
+        <div class="wellness-modal-backdrop" data-wellness-close></div>
+        <section class="wellness-dialog" role="dialog" aria-modal="true" aria-labelledby="wellness-title">
+          <button class="wellness-close" type="button" data-wellness-close aria-label="Close wellness manager">×</button>
+          <p class="eyebrow">NUTRITION &amp; FITNESS</p>
+          <h2 id="wellness-title">Client Wellness Plans</h2>
+          <p class="wellness-intro">Assign only published ReVitalized methodology, meal-plan templates and fitness programs. Draft content stays unavailable to clients.</p>
+
+          <div class="wellness-two-col">
+            <section class="wellness-block">
+              <div class="wellness-block-head">
+                <div><span>NUTRITION</span><strong>Meal plan assignment</strong></div>
+                <span id="wellness-nutrition-methodology-state" class="wellness-state">Draft</span>
+              </div>
+
+              <form id="wellness-meal-form" class="wellness-form">
+                <label><span>Published meal-plan template</span><select id="wellness-meal-template"></select></label>
+                <div class="wellness-form-grid">
+                  <label><span>Start date</span><input id="wellness-meal-start" type="date"></label>
+                  <label><span>Custom title</span><input id="wellness-meal-title" type="text" maxlength="220" placeholder="Optional"></label>
+                </div>
+                <label><span>Coach notes</span><textarea id="wellness-meal-notes" rows="3" maxlength="3000"></textarea></label>
+                <div class="wellness-inline-actions">
+                  <button class="primary-button compact-action" type="submit">Assign Meal Plan</button>
+                  <button id="wellness-grocery-generate" class="secondary-button compact-action" type="button">Generate Grocery List</button>
+                </div>
+                <p id="wellness-meal-status" class="form-status" aria-live="polite"></p>
+              </form>
+
+              <div id="wellness-active-meal" class="wellness-current"></div>
+            </section>
+
+            <section class="wellness-block">
+              <div class="wellness-block-head">
+                <div><span>FITNESS</span><strong>Fitness program assignment</strong></div>
+                <span id="wellness-fitness-methodology-state" class="wellness-state">Draft</span>
+              </div>
+
+              <form id="wellness-fitness-form" class="wellness-form">
+                <label><span>Published fitness program</span><select id="wellness-fitness-program"></select></label>
+                <div class="wellness-form-grid">
+                  <label><span>Start date</span><input id="wellness-fitness-start" type="date"></label>
+                  <label><span>Custom title</span><input id="wellness-fitness-title" type="text" maxlength="220" placeholder="Optional"></label>
+                </div>
+                <label><span>Coach notes</span><textarea id="wellness-fitness-notes" rows="3" maxlength="3000"></textarea></label>
+                <button class="primary-button compact-action" type="submit">Assign Fitness Program</button>
+                <p id="wellness-fitness-status" class="form-status" aria-live="polite"></p>
+              </form>
+
+              <div id="wellness-active-fitness" class="wellness-current"></div>
+            </section>
+          </div>
+
+          <div class="wellness-two-col">
+            <section class="wellness-block">
+              <div class="wellness-block-head">
+                <div><span>THIS WEEK</span><strong>Upcoming meals</strong></div>
+              </div>
+              <div id="wellness-meal-items" class="wellness-list"></div>
+            </section>
+
+            <section class="wellness-block">
+              <div class="wellness-block-head">
+                <div><span>THIS WEEK</span><strong>Upcoming workouts</strong></div>
+              </div>
+              <div id="wellness-workout-items" class="wellness-list"></div>
+            </section>
+          </div>
+        </section>
+      </div>
+
+
+      <div id="override-modal" class="override-modal hidden" aria-hidden="true">
+        <div class="override-modal-backdrop" data-override-close></div>
+        <section class="override-dialog" role="dialog" aria-modal="true" aria-labelledby="override-title">
+          <button class="override-close" type="button" data-override-close aria-label="Close manual override">×</button>
+          <p class="eyebrow">MANUAL OVERRIDE</p>
+          <h2 id="override-title">Manage journey step</h2>
+          <p class="override-intro">Manual changes are permission-controlled and permanently audited. Use the real client data whenever possible, especially for forms and financial records.</p>
+
+          <div class="override-step-card">
+            <span>Selected step</span>
+            <strong id="override-step-name">Loading...</strong>
+            <small id="override-step-meta"></small>
+          </div>
+
+          <section id="override-standard-panel" class="override-block">
+            <div class="override-block-head">
+              <div><span>STEP STATUS</span><strong>Manual status / completion</strong></div>
+            </div>
+
+            <div class="override-grid">
+              <label>
+                <span>Status</span>
+                <select id="override-status">
+                  <option value="pending">Pending</option>
+                  <option value="in_progress">In Progress</option>
+                  <option value="waiting_client">Waiting on Client</option>
+                  <option value="waiting_revit">Waiting on ReVitalized</option>
+                  <option value="completed">Completed</option>
+                  <option value="skipped">Skipped</option>
+                  <option value="waived">Waived</option>
+                  <option value="blocked">Blocked</option>
+                  <option value="cancelled">Cancelled</option>
+                </select>
+              </label>
+
+              <label>
+                <span>Completion / update method</span>
+                <select id="override-method">
+                  <option value="manual_staff">Manual staff update</option>
+                  <option value="completed_with_client">Completed with client</option>
+                  <option value="client_confirmed">Client confirmed completion</option>
+                  <option value="watched_together">Completed / watched together</option>
+                  <option value="verified_external">Verified outside ReVitalized</option>
+                  <option value="owner_admin_override">Owner/Admin override</option>
+                  <option value="other">Other</option>
+                </select>
+              </label>
+
+              <label class="override-wide">
+                <span>Reason *</span>
+                <input id="override-reason" type="text" maxlength="2000" placeholder="Why is this being changed manually?" required>
+              </label>
+
+              <label class="override-wide">
+                <span>Internal notes</span>
+                <textarea id="override-notes" rows="3" maxlength="4000" placeholder="Optional context, verification details, or what happened with the client."></textarea>
+              </label>
+            </div>
+
+            <div class="override-actions">
+              <button id="override-open-client-form" class="secondary-button hidden" type="button">Open Client Form With Them</button>
+              <button id="override-save-step" class="primary-button" type="button">Save Manual Status</button>
+            </div>
+            <p id="override-step-status" class="form-status" aria-live="polite"></p>
+          </section>
+
+
+          <section id="override-plan-panel" class="override-block hidden">
+            <div class="override-block-head">
+              <div><span>REVITALIZED PROGRAM</span><strong>Plan / program override</strong></div>
+              <span class="override-permission-chip">Owner/Admin</span>
+            </div>
+            <div class="override-grid">
+              <label class="override-wide">
+                <span>Program</span>
+                <select id="override-program-select"></select>
+              </label>
+            </div>
+            <button id="override-save-program" class="secondary-button" type="button">Save Program Override</button>
+            <p id="override-program-message" class="form-status" aria-live="polite"></p>
+          </section>
+
+          <section id="override-financial-panel" class="override-block hidden">
+            <div class="override-block-head">
+              <div><span>PAYMENT &amp; AGREEMENT</span><strong>Financial override controls</strong></div>
+              <span id="override-financial-role" class="override-permission-chip"></span>
+            </div>
+
+            <div class="override-financial-status">
+              <div><span>Payment</span><strong id="override-current-payment">Pending</strong></div>
+              <div><span>Agreement</span><strong id="override-current-agreement">Not Sent</strong></div>
+              <div><span>Member access</span><strong id="override-current-access">Pending</strong></div>
+            </div>
+
+            <form id="override-payment-form" class="override-subform">
+              <div class="override-subhead"><strong>Record payment received</strong><span>Owner/Admin</span></div>
+              <div class="override-grid">
+                <label><span>Amount</span><input id="override-payment-amount" type="number" min="0" step="0.01"></label>
+                <label><span>Currency</span>
+                  <select id="override-payment-currency"><option value="USD">USD</option><option value="CAD">CAD</option></select>
+                </label>
+                <label><span>Payment method</span>
+                  <select id="override-payment-method">
+                    <option value="external_card">External credit/debit card</option>
+                    <option value="interac_etransfer">Interac e-Transfer</option>
+                    <option value="ach_bank_transfer">ACH / bank transfer</option>
+                    <option value="wire_transfer">Wire transfer</option>
+                    <option value="paypal">PayPal</option>
+                    <option value="cash">Cash</option>
+                    <option value="check">Check</option>
+                    <option value="integrated_processor">Integrated processor</option>
+                    <option value="other">Other</option>
+                    <option value="complimentary_waived">Complimentary / waived</option>
+                  </select>
+                </label>
+                <label><span>Date received</span><input id="override-payment-date" type="datetime-local"></label>
+                <label><span>Reference / confirmation</span><input id="override-payment-reference" type="text" maxlength="300"></label>
+                <label><span>Provider / source</span><input id="override-payment-provider" type="text" maxlength="200" placeholder="Interac, Stripe, bank, etc."></label>
+              </div>
+              <button id="override-record-payment" class="primary-button" type="submit">Record Payment</button>
+              <p id="override-payment-status" class="form-status" aria-live="polite"></p>
+            </form>
+
+            <div class="override-subform">
+              <div class="override-subhead"><strong>Agreement status</strong><span>Owner/Admin</span></div>
+              <div class="override-grid">
+                <label><span>Agreement status</span>
+                  <select id="override-agreement-status">
+                    <option value="not_sent">Not Sent</option>
+                    <option value="sent">Sent</option>
+                    <option value="signed">Signed</option>
+                    <option value="waived">Waived</option>
+                    <option value="declined">Declined</option>
+                  </select>
+                </label>
+                <label><span>Method</span>
+                  <select id="override-agreement-method">
+                    <option value="manual_owner_admin">Manual Owner/Admin</option>
+                    <option value="signed_external">Signed outside platform</option>
+                    <option value="verified_paper">Verified paper agreement</option>
+                    <option value="owner_waiver">Owner waiver</option>
+                  </select>
+                </label>
+              </div>
+              <button id="override-save-agreement" class="secondary-button" type="button">Save Agreement Status</button>
+              <p id="override-agreement-message" class="form-status" aria-live="polite"></p>
+            </div>
+
+            <div id="override-payment-history-wrap" class="override-subform">
+              <div class="override-subhead"><strong>Payment history</strong><span>Audit records</span></div>
+              <div id="override-payment-history" class="override-history-list"></div>
+            </div>
+          </section>
+
+          <section id="override-access-panel" class="override-block hidden">
+            <div class="override-block-head">
+              <div><span>MEMBER ACCESS</span><strong>Manual access status</strong></div>
+            </div>
+            <div class="override-grid">
+              <label>
+                <span>Access status</span>
+                <select id="override-access-status">
+                  <option value="pending">Pending</option>
+                  <option value="ready">Ready for Access</option>
+                  <option value="active">Active</option>
+                  <option value="suspended">Suspended</option>
+                </select>
+              </label>
+              <label>
+                <span>Method</span>
+                <select id="override-access-method">
+                  <option value="manual_owner_admin">Manual Owner/Admin</option>
+                  <option value="verified_external">Verified external activation</option>
+                  <option value="support_resolution">Support resolution</option>
+                </select>
+              </label>
+            </div>
+            <button id="override-save-access" class="secondary-button" type="button">Save Access Status</button>
+            <p id="override-access-message" class="form-status" aria-live="polite"></p>
+          </section>
+
+          <section class="override-block">
+            <div class="override-block-head">
+              <div><span>AUDIT TRAIL</span><strong>Manual changes to this step</strong></div>
+            </div>
+            <div id="override-audit-history" class="override-history-list"></div>
+          </section>
+        </section>
+      </div>
+
+
+      <div id="learning-modal" class="learning-modal hidden" aria-hidden="true">
+        <div class="learning-modal-backdrop" data-learning-close></div>
+        <section class="learning-dialog" role="dialog" aria-modal="true" aria-labelledby="learning-title">
+          <button class="learning-close" type="button" data-learning-close aria-label="Close learning manager">×</button>
+          <p class="eyebrow">LEARNING &amp; RESOURCES</p>
+          <h2 id="learning-title">Client Learning Access</h2>
+          <p class="learning-intro">Assign only published ReVitalized courses and resources. Program-included courses are added automatically.</p>
+
+          <div class="learning-two-col">
+            <section class="learning-block">
+              <div class="learning-block-head">
+                <div><span>COURSES</span><strong>Assign published course</strong></div>
+              </div>
+              <form id="learning-course-form" class="learning-form">
+                <label><span>Course</span><select id="learning-course-select"></select></label>
+                <button class="primary-button compact-action" type="submit">Assign Course</button>
+                <p id="learning-course-status" class="form-status" aria-live="polite"></p>
+              </form>
+              <div id="learning-course-list" class="learning-list"></div>
+            </section>
+
+            <section class="learning-block">
+              <div class="learning-block-head">
+                <div><span>RESOURCES</span><strong>Assign published resource</strong></div>
+              </div>
+              <form id="learning-resource-form" class="learning-form">
+                <label><span>Resource</span><select id="learning-resource-select"></select></label>
+                <label><span>Client note</span><textarea id="learning-resource-note" rows="3" maxlength="2000"></textarea></label>
+                <button class="primary-button compact-action" type="submit">Assign Resource</button>
+                <p id="learning-resource-status" class="form-status" aria-live="polite"></p>
+              </form>
+              <div id="learning-resource-list" class="learning-list"></div>
+            </section>
+          </div>
+        </section>
+      </div>
+
+
+      <div id="staff-message-modal" class="staff-message-modal hidden" aria-hidden="true">
+        <div class="staff-message-modal-backdrop" data-staff-message-close></div>
+        <section class="staff-message-dialog" role="dialog" aria-modal="true" aria-labelledby="staff-message-title">
+          <button class="staff-message-close" type="button" data-staff-message-close aria-label="Close conversation">×</button>
+          <p class="eyebrow">PRIVATE MEMBER MESSAGING</p>
+          <h2 id="staff-message-title">Conversation</h2>
+          <div id="staff-message-meta" class="staff-message-meta"></div>
+          <div id="staff-message-thread" class="staff-message-thread"></div>
+          <form id="staff-message-form" class="staff-message-compose">
+            <textarea id="staff-message-body" rows="3" maxlength="8000" placeholder="Write a private message to this member..." required></textarea>
+            <label class="staff-message-attachment-field">
+              <span>Optional attachment</span>
+              <input id="staff-message-file" type="file" accept="application/pdf,image/jpeg,image/png,image/webp,audio/mpeg,audio/mp4,audio/x-m4a,audio/wav">
+              <small>PDF, image or audio up to 10 MB.</small>
+            </label>
+            <div class="staff-message-compose-actions">
+              <button class="primary-button" type="submit">Send Message</button>
+            </div>
+            <p id="staff-message-status" class="form-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
+
+      <div id="companion-review-modal" class="companion-modal hidden" aria-hidden="true">
+        <div class="companion-modal-backdrop" data-companion-review-close></div>
+        <section class="companion-dialog" role="dialog" aria-modal="true" aria-labelledby="companion-review-title">
+          <button class="companion-close" type="button" data-companion-review-close aria-label="Close Coach Companion review">×</button>
+          <p class="eyebrow">COACH COMPANION REVIEW</p>
+          <h2 id="companion-review-title">Review member question</h2>
+
+          <div class="companion-question-card">
+            <span id="companion-question-type">Question type</span>
+            <strong id="companion-question-text">Loading...</strong>
+            <p id="companion-review-reason"></p>
+          </div>
+
+          <section class="companion-block">
+            <div class="companion-block-head">
+              <div><span>APPROVED SOURCES</span><strong>Retrieved ReVitalized knowledge</strong></div>
+              <span id="companion-confidence" class="companion-chip">No retrieval</span>
+            </div>
+            <div id="companion-source-list" class="companion-source-list"></div>
+          </section>
+
+          <section class="companion-block">
+            <div class="companion-block-head">
+              <div><span>COACH RESPONSE</span><strong>Human-reviewed answer</strong></div>
+            </div>
+            <form id="companion-review-form" class="companion-form">
+              <label>
+                <span>Response to member</span>
+                <textarea id="companion-response" rows="6" maxlength="8000" required></textarea>
+              </label>
+              <label>
+                <span>Resolution</span>
+                <select id="companion-resolution-type">
+                  <option value="coach_answered">Coach answered</option>
+                  <option value="approved_draft">Approved draft</option>
+                  <option value="redirected">Redirected / referred</option>
+                  <option value="no_response">Resolve without member response</option>
+                </select>
+              </label>
+              <label class="companion-check">
+                <input id="companion-send-member" type="checkbox" checked>
+                <span>Send response into the member’s private ReVitalized conversation</span>
+              </label>
+              <div class="companion-form-actions">
+                <button id="companion-claim-review" class="secondary-button" type="button">Claim Review</button>
+                <button class="primary-button" type="submit">Resolve Review</button>
+              </div>
+              <p id="companion-review-status" class="form-status" aria-live="polite"></p>
+            </form>
+          </section>
+        </section>
+      </div>
+
+      <div id="companion-knowledge-modal" class="companion-modal hidden" aria-hidden="true">
+        <div class="companion-modal-backdrop" data-companion-knowledge-close></div>
+        <section class="companion-dialog companion-knowledge-dialog" role="dialog" aria-modal="true" aria-labelledby="companion-knowledge-title">
+          <button class="companion-close" type="button" data-companion-knowledge-close aria-label="Close Coach Companion knowledge manager">×</button>
+          <p class="eyebrow">COACH COMPANION KNOWLEDGE</p>
+          <h2 id="companion-knowledge-title">Approved ReVitalized Knowledge</h2>
+          <p class="companion-intro">Only approved sources are eligible for Coach Companion retrieval. Draft content remains invisible to the retrieval engine.</p>
+
+          <section class="companion-block">
+            <div class="companion-block-head">
+              <div><span>ADD SOURCE</span><strong>Create or update knowledge</strong></div>
+            </div>
+            <form id="companion-knowledge-form" class="companion-form">
+              <div class="companion-grid">
+                <label><span>Source key</span><input id="companion-source-key" type="text" maxlength="160" placeholder="nutrition-foundation-v1" required></label>
+                <label><span>Title</span><input id="companion-source-title" type="text" maxlength="240" required></label>
+                <label><span>Type</span>
+                  <select id="companion-source-type">
+                    <option value="course">Course</option>
+                    <option value="lesson">Lesson</option>
+                    <option value="resource">Resource</option>
+                    <option value="methodology">Methodology</option>
+                    <option value="coach_guide">Coach Guide</option>
+                    <option value="faq">FAQ</option>
+                    <option value="policy">Policy</option>
+                    <option value="other">Other</option>
+                  </select>
+                </label>
+                <label><span>Version</span><input id="companion-source-version" type="text" value="1.0" maxlength="40"></label>
+                <label class="companion-wide"><span>Approved content</span><textarea id="companion-source-content" rows="10" maxlength="200000" required></textarea></label>
+              </div>
+              <div class="companion-form-actions">
+                <button id="companion-save-draft" class="secondary-button" type="button">Save Draft</button>
+                <button id="companion-approve-embed" class="primary-button" type="button">Approve &amp; Embed</button>
+              </div>
+              <p id="companion-knowledge-status" class="form-status" aria-live="polite"></p>
+            </form>
+          </section>
+
+          <section class="companion-block">
+            <div class="companion-block-head">
+              <div><span>KNOWLEDGE SOURCES</span><strong>Current source library</strong></div>
+            </div>
+            <div id="companion-knowledge-list" class="companion-knowledge-list"></div>
+          </section>
+        </section>
+      </div>
+
+
+      <div id="challenges-modal" class="challenges-modal hidden" aria-hidden="true">
+        <div class="challenges-modal-backdrop" data-challenges-close></div>
+        <section class="challenges-dialog" role="dialog" aria-modal="true" aria-labelledby="challenges-title">
+          <button class="challenges-close" type="button" data-challenges-close aria-label="Close challenges manager">×</button>
+          <p class="eyebrow">REVITALIZED CHALLENGES</p>
+          <h2 id="challenges-title">Challenges &amp; Accountability</h2>
+          <p class="challenges-intro">Enroll this client or their ReVitalized household in published challenges, or create a new challenge definition for future use.</p>
+
+          <div class="challenges-two-col">
+            <section class="challenges-block">
+              <div class="challenges-block-head"><div><span>ENROLLMENT</span><strong>Available challenges</strong></div></div>
+              <div id="challenges-available-list" class="challenges-list"></div>
+            </section>
+
+            <section class="challenges-block">
+              <div class="challenges-block-head"><div><span>CURRENT</span><strong>Client challenge progress</strong></div></div>
+              <div id="challenges-current-list" class="challenges-list"></div>
+            </section>
+          </div>
+
+          <section class="challenges-block">
+            <div class="challenges-block-head"><div><span>CREATE CHALLENGE</span><strong>New challenge definition</strong></div></div>
+            <form id="challenge-create-form" class="challenges-form">
+              <div class="challenges-grid">
+                <label><span>Challenge key</span><input id="challenge-key" type="text" maxlength="160" required></label>
+                <label><span>Title</span><input id="challenge-title-input" type="text" maxlength="240" required></label>
+                <label class="challenges-wide"><span>Description</span><textarea id="challenge-description" rows="3" maxlength="3000"></textarea></label>
+                <label><span>Scope</span>
+                  <select id="challenge-scope"><option value="individual">Individual</option><option value="household">Household</option><option value="both">Individual or Household</option></select>
+                </label>
+                <label><span>Progress metric</span><select id="challenge-metric"></select></label>
+                <label><span>Aggregation</span>
+                  <select id="challenge-aggregation"><option value="sum">Sum</option><option value="count">Count entries</option><option value="latest">Latest value</option><option value="average">Average</option></select>
+                </label>
+                <label><span>Target</span><input id="challenge-target" type="number" min="0.01" step="0.01" required></label>
+                <label><span>Unit</span><input id="challenge-unit" type="text" maxlength="60"></label>
+                <label><span>Starts</span><input id="challenge-start" type="date" required></label>
+                <label><span>Ends</span><input id="challenge-end" type="date" required></label>
+                <label><span>Points</span><input id="challenge-points-input" type="number" min="0" step="1" value="100"></label>
+              </div>
+              <button class="primary-button compact-action" type="submit">Publish Challenge</button>
+              <p id="challenge-create-status" class="form-status" aria-live="polite"></p>
+            </form>
+          </section>
+        </section>
+      </div>
+
+
+      <div id="community-admin-modal" class="community-admin-modal hidden" aria-hidden="true">
+        <div class="community-admin-backdrop" data-community-admin-close></div>
+        <section class="community-admin-dialog" role="dialog" aria-modal="true" aria-labelledby="community-admin-modal-title">
+          <button class="community-admin-close" type="button" data-community-admin-close aria-label="Close community manager">×</button>
+          <p class="eyebrow">COMMUNITY ANNOUNCEMENT</p>
+          <h2 id="community-admin-modal-title">Post to a ReVitalized space</h2>
+          <form id="community-admin-form" class="community-admin-form">
+            <label><span>Space</span><select id="community-admin-space" required></select></label>
+            <label><span>Post type</span>
+              <select id="community-admin-type">
+                <option value="announcement">Announcement</option>
+                <option value="encouragement">Encouragement</option>
+                <option value="resource_share">Resource Share</option>
+                <option value="challenge_update">Challenge Update</option>
+                <option value="discussion">Discussion</option>
+              </select>
+            </label>
+            <label><span>Title</span><input id="community-admin-post-title" type="text" maxlength="220"></label>
+            <label><span>Message</span><textarea id="community-admin-body" rows="6" maxlength="12000" required></textarea></label>
+            <label class="community-admin-check"><input id="community-admin-pin" type="checkbox"><span>Pin this post</span></label>
+            <button class="primary-button" type="submit">Publish Announcement</button>
+            <p id="community-admin-status" class="form-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
+
+      <div id="refuel-offer-modal" class="refuel-offer-modal hidden" aria-hidden="true">
+        <div class="refuel-offer-backdrop" data-refuel-offer-close></div>
+        <section class="refuel-offer-dialog" role="dialog" aria-modal="true" aria-labelledby="refuel-offer-title">
+          <button class="refuel-offer-close" type="button" data-refuel-offer-close aria-label="Close ReFuel offer">×</button>
+          <p class="eyebrow">REFUEL OFFER</p>
+          <h2 id="refuel-offer-title">Create ReFuel offer</h2>
+          <form id="refuel-offer-form" class="refuel-offer-form">
+            <label><span>Offer key</span><input id="refuel-offer-key" type="text" maxlength="160" required></label>
+            <label><span>Name</span><input id="refuel-offer-name" type="text" maxlength="240" required></label>
+            <label><span>Description</span><textarea id="refuel-offer-description" rows="4"></textarea></label>
+            <div class="refuel-offer-grid">
+              <label><span>Price</span><input id="refuel-offer-price" type="number" min="0" step="0.01"></label>
+              <label><span>Currency</span><select id="refuel-offer-currency"><option value="USD">USD</option><option value="CAD">CAD</option></select></label>
+              <label><span>Billing</span><select id="refuel-offer-billing"><option value="">Not set</option><option value="one_time">One-time</option><option value="monthly">Monthly</option><option value="weekly">Weekly</option><option value="included">Included</option><option value="custom">Custom</option></select></label>
+              <label><span>Capacity</span><input id="refuel-offer-capacity" type="number" min="1"></label>
+              <label><span>Starts</span><input id="refuel-offer-start" type="datetime-local"></label>
+              <label><span>Ends</span><input id="refuel-offer-end" type="datetime-local"></label>
+            </div>
+            <button class="primary-button" type="submit">Publish ReFuel Offer</button>
+            <p id="refuel-offer-status" class="form-status"></p>
+          </form>
+        </section>
+      </div>
+
+
+      <div id="people-modal" class="people-modal hidden" aria-hidden="true">
+        <div class="people-modal-backdrop" data-people-close></div>
+        <section class="people-dialog" role="dialog" aria-modal="true" aria-labelledby="people-modal-title">
+          <button class="people-close" type="button" data-people-close aria-label="Close Add Person">×</button>
+          <p class="eyebrow">PEOPLE</p>
+          <h2 id="people-modal-title">Add a person to ReVitalized</h2>
+          <p class="people-intro">Add a referral, phone lead, event contact, prospective client or other person manually. If the email or phone already exists, ReVitalized will open that record instead of creating a duplicate.</p>
+
+          <form id="people-add-form" class="people-form">
+            <div class="people-grid">
+              <label>
+                <span>First name *</span>
+                <input id="people-first-name" type="text" maxlength="120" required>
+              </label>
+              <label>
+                <span>Last name *</span>
+                <input id="people-last-name" type="text" maxlength="120" required>
+              </label>
+
+              <label>
+                <span>Email</span>
+                <input id="people-email" type="email" autocomplete="email" maxlength="320">
+              </label>
+              <label>
+                <span>Phone</span>
+                <input id="people-phone" type="tel" autocomplete="tel" maxlength="60">
+              </label>
+
+              <label>
+                <span>City</span>
+                <input id="people-city" type="text" maxlength="140">
+              </label>
+              <label>
+                <span>State / Province</span>
+                <input id="people-state" type="text" maxlength="140">
+              </label>
+              <label>
+                <span>Country</span>
+                <select id="people-country">
+                  <option value="">Not provided</option>
+                  <option value="United States">United States</option>
+                  <option value="Canada">Canada</option>
+                  <option value="Other">Other</option>
+                </select>
+              </label>
+              <label>
+                <span>Stage</span>
+                <select id="people-stage">
+                  <option value="lead">Lead</option>
+                  <option value="assessment_lead">Assessment Lead</option>
+                  <option value="webinar_lead">Webinar Lead</option>
+                  <option value="applicant">Applicant</option>
+                  <option value="client">Client</option>
+                </select>
+              </label>
+
+              <label>
+                <span>Source</span>
+                <select id="people-source">
+                  <option value="manual_referral">Referral</option>
+                  <option value="manual_phone">Phone / Direct Conversation</option>
+                  <option value="manual_event">Event / In Person</option>
+                  <option value="manual_social">Social Media</option>
+                  <option value="manual_staff_entry">Other Manual Entry</option>
+                </select>
+              </label>
+              <label id="people-referrer-field">
+                <span>Referred by</span>
+                <select id="people-referrer">
+                  <option value="">Unknown / not in ReVitalized</option>
+                </select>
+              </label>
+              <label>
+                <span>Assign to</span>
+                <select id="people-assigned-to"></select>
+              </label>
+
+              <label>
+                <span>Next follow-up</span>
+                <input id="people-follow-up" type="datetime-local">
+              </label>
+              <label>
+                <span>Journey route</span>
+                <select id="people-journey">
+                  <option value="">Lead only · no journey yet</option>
+                  <option value="assessment_first">Vitality Roadmap First</option>
+                  <option value="coaching_application">Coaching Application</option>
+                  <option value="direct_membership">Direct Membership / Enrollment</option>
+                </select>
+              </label>
+
+              <label class="people-wide">
+                <span>Tags / interests</span>
+                <input id="people-tags" type="text" maxlength="1000" placeholder="low energy, pain, fatigue, referral, interested in coaching">
+                <small>Separate tags with commas. These can be refined later from assessments and client activity.</small>
+              </label>
+
+              <label class="people-wide">
+                <span>Internal note</span>
+                <textarea id="people-note" rows="4" maxlength="5000" placeholder="How did you meet them? What are they interested in? What should the team know before follow-up?"></textarea>
+              </label>
+            </div>
+
+            <div class="people-form-actions">
+              <button class="secondary-button" type="button" data-people-close>Cancel</button>
+              <button class="primary-button" type="submit">Add Person</button>
+            </div>
+            <p id="people-form-status" class="form-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
+
+      <div id="staff-invite-modal" class="staff-admin-modal hidden" aria-hidden="true">
+        <div class="staff-admin-backdrop" data-staff-invite-close></div>
+        <section class="staff-admin-dialog" role="dialog" aria-modal="true" aria-labelledby="staff-invite-title">
+          <button class="staff-admin-close" type="button" data-staff-invite-close aria-label="Close staff invitation">×</button>
+          <p class="eyebrow">STAFF INVITATION</p>
+          <h2 id="staff-invite-title">Add a ReVitalized team member</h2>
+          <p class="staff-admin-intro">This creates a staff account directly. It does not send the person through the lead or sales journey.</p>
+
+          <form id="staff-invite-form" class="staff-admin-form">
+            <div class="staff-admin-grid">
+              <label>
+                <span>Name</span>
+                <input id="staff-invite-name" type="text" maxlength="240" required>
+              </label>
+              <label>
+                <span>Email</span>
+                <input id="staff-invite-email" type="email" maxlength="320" autocomplete="email" required>
+              </label>
+              <label>
+                <span>Phone</span>
+                <input id="staff-invite-phone" type="tel" maxlength="40" autocomplete="tel" placeholder="(555) 234-5678" required>
+              </label>
+              <label>
+                <span>Role</span>
+                <select id="staff-invite-role">
+                  <option value="coach">Coach</option>
+                  <option value="admin">Administrator</option>
+                  <option value="financial">Financial</option>
+                  <option value="support">Support</option>
+                  <option value="owner">Owner</option>
+                </select>
+              </label>
+              <label>
+                <span>People data scope</span>
+                <select id="staff-invite-contact-scope">
+                  <option value="assigned">Assigned People Only</option>
+                  <option value="all">All People</option>
+                  <option value="none">No People Access</option>
+                </select>
+              </label>
+              <label class="staff-admin-wide">
+                <span>Internal reason / note</span>
+                <textarea id="staff-invite-reason" rows="3" maxlength="2000" placeholder="Optional: why this access is being granted."></textarea>
+              </label>
+            </div>
+            <div class="staff-admin-actions">
+              <button class="secondary-button" type="button" data-staff-invite-close>Cancel</button>
+              <button class="primary-button" type="submit">Send Staff Invitation</button>
+            </div>
+            <p id="staff-invite-status" class="form-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
+      <div id="staff-permissions-modal" class="staff-admin-modal hidden" aria-hidden="true">
+        <div class="staff-admin-backdrop" data-staff-permissions-close></div>
+        <section class="staff-admin-dialog staff-permissions-dialog" role="dialog" aria-modal="true" aria-labelledby="staff-permissions-title">
+          <button class="staff-admin-close" type="button" data-staff-permissions-close aria-label="Close permissions">×</button>
+          <p class="eyebrow">STAFF ACCESS</p>
+          <h2 id="staff-permissions-title">Team member permissions</h2>
+          <p id="staff-permissions-meta" class="staff-admin-intro"></p>
+
+          <section class="staff-admin-block">
+            <div class="staff-admin-block-head">
+              <div><span>ACCOUNT</span><strong>Role &amp; status</strong></div>
+            </div>
+            <div class="staff-admin-grid">
+              <label>
+                <span>Role</span>
+                <select id="staff-edit-role">
+                  <option value="owner">Owner</option>
+                  <option value="admin">Administrator</option>
+                  <option value="coach">Coach</option>
+                  <option value="financial">Financial</option>
+                  <option value="support">Support</option>
+                </select>
+              </label>
+              <label>
+                <span>Status</span>
+                <select id="staff-edit-status">
+                  <option value="active">Active</option>
+                  <option value="suspended">Suspended</option>
+                  <option value="inactive">Inactive</option>
+                </select>
+              </label>
+              <label>
+                <span>People data scope</span>
+                <select id="staff-edit-contact-scope">
+                  <option value="all">All People</option>
+                  <option value="assigned">Assigned People Only</option>
+                  <option value="none">No People Access</option>
+                </select>
+              </label>
+              <label class="staff-admin-wide">
+                <span>Reason for role/status change</span>
+                <input id="staff-edit-reason" type="text" maxlength="2000" placeholder="Required when changing access">
+              </label>
+            </div>
+            <div class="staff-admin-actions">
+              <button id="staff-save-role" class="secondary-button" type="button">Save Role</button>
+              <button id="staff-save-status" class="secondary-button" type="button">Save Status</button>
+              <button id="staff-save-contact-scope" class="secondary-button" type="button">Save People Scope</button>
+            </div>
+            <p id="staff-account-status" class="form-status" aria-live="polite"></p>
+          </section>
+
+          <section class="staff-admin-block">
+            <div class="staff-admin-block-head">
+              <div>
+                <span>PERMISSIONS</span>
+                <strong>Role defaults + individual overrides</strong>
+              </div>
+            </div>
+            <p class="staff-permissions-help">Inherited means the person is using the default for their selected role. Override only the permissions Justyn or Elle want to customize.</p>
+            <div id="staff-permission-list" class="staff-permission-list"></div>
+            <p id="staff-permission-status" class="form-status" aria-live="polite"></p>
+          </section>
+
+          <section class="staff-admin-block">
+            <div class="staff-admin-block-head">
+              <div><span>STAFF FILE</span><strong>Required agreements</strong></div>
+            </div>
+            <div id="staff-agreement-file-list" class="staff-agreement-file-list"></div>
+          </section>
+
+          <section class="staff-admin-block">
+            <div class="staff-admin-block-head">
+              <div><span>AUDIT TRAIL</span><strong>Recent access changes</strong></div>
+            </div>
+            <div id="staff-audit-list" class="staff-audit-list"></div>
+          </section>
+        </section>
+      </div>
+
+
+      <div id="referral-program-modal" class="referral-program-modal hidden" aria-hidden="true">
+        <div class="referral-program-backdrop" data-referral-program-close></div>
+        <section class="referral-program-dialog" role="dialog" aria-modal="true" aria-labelledby="referral-program-title">
+          <button class="referral-program-close" type="button" data-referral-program-close aria-label="Close referral program">×</button>
+          <p class="eyebrow">REFERRAL PROGRAM</p>
+          <h2 id="referral-program-title">Create referral / ambassador program</h2>
+          <form id="referral-program-form" class="referral-program-form">
+            <label><span>Program key</span><input id="referral-program-key" type="text" maxlength="160" required></label>
+            <label><span>Name</span><input id="referral-program-name" type="text" maxlength="240" required></label>
+            <label><span>Description</span><textarea id="referral-program-description" rows="4"></textarea></label>
+            <div class="referral-program-grid">
+              <label><span>Reward type</span>
+                <select id="referral-program-reward-type">
+                  <option value="none">No reward</option>
+                  <option value="credit">Account credit</option>
+                  <option value="cash">Cash</option>
+                  <option value="gift">Gift</option>
+                  <option value="custom">Custom</option>
+                </select>
+              </label>
+              <label><span>Reward value</span><input id="referral-program-reward-value" type="number" min="0" step="0.01"></label>
+              <label><span>Currency</span><select id="referral-program-currency"><option value="USD">USD</option><option value="CAD">CAD</option></select></label>
+            </div>
+            <button class="primary-button" type="submit">Publish Referral Program</button>
+            <p id="referral-program-status" class="form-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
+
+      <div id="client-document-modal" class="people-modal hidden" aria-hidden="true">
+        <div class="people-modal-backdrop" data-client-document-close></div>
+        <section class="people-dialog" role="dialog" aria-modal="true" aria-labelledby="client-document-modal-title">
+          <button class="people-close" type="button" data-client-document-close aria-label="Close document upload">×</button>
+          <p class="eyebrow">SECURE DOCUMENT VAULT</p>
+          <h2 id="client-document-modal-title">Upload client document</h2>
+          <form id="client-document-form" class="people-form">
+            <div class="people-grid">
+              <label><span>Title</span><input id="client-document-title" type="text" maxlength="240" required></label>
+              <label><span>Category</span>
+                <select id="client-document-category">
+                  <option value="general">General</option>
+                  <option value="coaching">Coaching</option>
+                  <option value="health">Health</option>
+                  <option value="progress">Progress</option>
+                  <option value="financial">Financial</option>
+                  <option value="agreement">Agreement</option>
+                </select>
+              </label>
+              <label class="people-wide"><span>Description</span><textarea id="client-document-description" rows="3" maxlength="3000"></textarea></label>
+              <label class="people-wide"><span>File</span><input id="client-document-file" type="file" accept=".pdf,.jpg,.jpeg,.png,.webp,.txt,.doc,.docx,.xls,.xlsx" required></label>
+              <label class="people-wide client-document-visible"><input id="client-document-visible" type="checkbox" checked><span>Visible to member in their Document Vault</span></label>
+            </div>
+            <div class="people-form-actions">
+              <button class="secondary-button" type="button" data-client-document-close>Cancel</button>
+              <button class="primary-button" type="submit">Upload Securely</button>
+            </div>
+            <p id="client-document-form-status" class="form-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
+
+      <div id="billing-plan-modal" class="people-modal hidden" aria-hidden="true">
+        <div class="people-modal-backdrop" data-billing-plan-close></div>
+        <section class="people-dialog" role="dialog" aria-modal="true" aria-labelledby="billing-plan-modal-title">
+          <button class="people-close" type="button" data-billing-plan-close aria-label="Close billing plan">×</button>
+          <p class="eyebrow">BILLING PLAN</p>
+          <h2 id="billing-plan-modal-title">Create membership billing plan</h2>
+          <p class="people-intro">Create the billing structure only after ReVitalized approves the price, interval and commitment.</p>
+          <form id="billing-plan-form" class="people-form">
+            <div class="people-grid">
+              <label><span>Plan key</span><input id="billing-plan-key" type="text" maxlength="160" required></label>
+              <label><span>Name</span><input id="billing-plan-name" type="text" maxlength="240" required></label>
+              <label><span>Program</span><select id="billing-plan-program"><option value="">Any / not tied to one program</option></select></label>
+              <label><span>Interval</span><select id="billing-plan-interval"><option value="weekly">Weekly</option><option value="monthly">Monthly</option><option value="one_time">One-time</option><option value="custom">Custom</option></select></label>
+              <label><span>Interval count</span><input id="billing-plan-interval-count" type="number" min="1" step="1" value="1"></label>
+              <label><span>Amount</span><input id="billing-plan-amount" type="number" min="0" step="0.01" required></label>
+              <label><span>Currency</span><select id="billing-plan-currency"><option value="USD">USD</option><option value="CAD">CAD</option></select></label>
+              <label><span>Commitment months</span><input id="billing-plan-commitment" type="number" min="1" step="1"></label>
+              <label><span>Grace days</span><input id="billing-plan-grace" type="number" min="0" step="1" value="3"></label>
+              <label class="people-wide"><span>Description</span><textarea id="billing-plan-description" rows="3" maxlength="3000"></textarea></label>
+            </div>
+            <div class="people-form-actions">
+              <button class="secondary-button" type="button" data-billing-plan-close>Cancel</button>
+              <button class="primary-button" type="submit">Create Billing Plan</button>
+            </div>
+            <p id="billing-plan-status" class="form-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
+
+      <div id="client-billing-modal" class="people-modal hidden" aria-hidden="true">
+        <div class="people-modal-backdrop" data-client-billing-close></div>
+        <section class="people-dialog" role="dialog" aria-modal="true" aria-labelledby="client-billing-modal-title">
+          <button class="people-close" type="button" data-client-billing-close aria-label="Close billing manager">×</button>
+          <p class="eyebrow">MEMBERSHIP BILLING</p>
+          <h2 id="client-billing-modal-title">Manage client subscription</h2>
+          <form id="client-billing-form" class="people-form">
+            <div class="people-grid">
+              <label class="people-wide"><span>Billing plan</span><select id="client-billing-plan"></select></label>
+              <label><span>Provider</span>
+                <select id="client-billing-provider">
+                  <option value="">Not connected yet</option>
+                  <option value="authorize_net">Authorize.Net</option>
+                  <option value="stripe">Stripe</option>
+                  <option value="paypal">PayPal</option>
+                  <option value="manual">Manual / External</option>
+                </select>
+              </label>
+              <label><span>Status</span>
+                <select id="client-billing-subscription-status">
+                  <option value="pending">Pending</option>
+                  <option value="trialing">Trialing</option>
+                  <option value="active">Active</option>
+                  <option value="past_due">Past Due</option>
+                  <option value="paused">Paused</option>
+                  <option value="cancelled">Cancelled</option>
+                  <option value="completed">Completed</option>
+                </select>
+              </label>
+              <label><span>Provider customer ID</span><input id="client-billing-customer-id" type="text" maxlength="300"></label>
+              <label><span>Provider subscription ID</span><input id="client-billing-subscription-id" type="text" maxlength="300"></label>
+              <label><span>Starts</span><input id="client-billing-start" type="datetime-local"></label>
+              <label><span>Next charge</span><input id="client-billing-next-charge" type="datetime-local"></label>
+            </div>
+            <div class="people-form-actions">
+              <button class="secondary-button" type="button" data-client-billing-close>Cancel</button>
+              <button class="primary-button" type="submit">Save Subscription</button>
+            </div>
+            <p id="client-billing-form-status" class="form-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
+
+      <div id="agreement-template-modal" class="people-modal hidden" aria-hidden="true">
+        <div class="people-modal-backdrop" data-agreement-template-close></div>
+        <section class="people-dialog" role="dialog" aria-modal="true" aria-labelledby="agreement-template-modal-title">
+          <button class="people-close" type="button" data-agreement-template-close aria-label="Close agreement template">×</button>
+          <p class="eyebrow">AGREEMENT TEMPLATE</p>
+          <h2 id="agreement-template-modal-title">Create versioned agreement</h2>
+          <form id="agreement-template-form" class="people-form">
+            <div class="people-grid">
+              <label><span>Agreement key</span><input id="agreement-template-key" type="text" maxlength="160" required></label>
+              <label><span>Version</span><input id="agreement-template-version" type="text" maxlength="40" value="1.0" required></label>
+              <label class="people-wide"><span>Name</span><input id="agreement-template-name" type="text" maxlength="240" required></label>
+              <label class="people-wide"><span>Description</span><textarea id="agreement-template-description" rows="2" maxlength="2000"></textarea></label>
+              <label class="people-wide"><span>Agreement text</span><textarea id="agreement-template-content" rows="14" required></textarea></label>
+              <label><span>Program</span><select id="agreement-template-program"><option value="">Not tied to a program</option></select></label>
+              <label class="client-document-visible"><input id="agreement-template-required" type="checkbox" checked><span>Required for this program</span></label>
+            </div>
+            <div class="people-form-actions">
+              <button class="secondary-button" type="button" data-agreement-template-close>Cancel</button>
+              <button class="primary-button" type="submit">Publish Agreement</button>
+            </div>
+            <p id="agreement-template-status" class="form-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
+      <div id="client-agreement-assign-modal" class="people-modal hidden" aria-hidden="true">
+        <div class="people-modal-backdrop" data-client-agreement-close></div>
+        <section class="people-dialog" role="dialog" aria-modal="true" aria-labelledby="client-agreement-modal-title">
+          <button class="people-close" type="button" data-client-agreement-close aria-label="Close client agreement">×</button>
+          <p class="eyebrow">CLIENT AGREEMENT</p>
+          <h2 id="client-agreement-modal-title">Assign agreement</h2>
+          <form id="client-agreement-assign-form" class="people-form">
+            <div class="people-grid">
+              <label class="people-wide"><span>Published agreement</span><select id="client-agreement-template-select"></select></label>
+
+              <div id="client-contract-fields" class="people-wide client-contract-fields hidden">
+                <div class="client-contract-heading">
+                  <strong>ReVitalized Academy Contract Details</strong>
+                  <span>These values become part of the signed agreement snapshot.</span>
+                </div>
+                <div class="people-grid">
+                  <label><span>Effective date</span><input id="contract-effective-date" type="date"></label>
+                  <label><span>Primary client</span><input id="contract-client-name" type="text" maxlength="240"></label>
+                  <label><span>Secondary client · Husband/Wife only</span><input id="contract-secondary-client-name" type="text" maxlength="240" placeholder="Leave blank for individual client"></label>
+                  <label><span>Program level</span>
+                    <select id="contract-program-level">
+                      <option value="">Select level</option>
+                      <option value="Level 1">Level 1</option>
+                      <option value="Level 2">Level 2</option>
+                      <option value="Level 3">Level 3</option>
+                    </select>
+                  </label>
+                  <label class="hidden"><span>Enrolled program</span><input id="contract-program-name" readonly></label>
+                  <label><span>Monthly fee</span><input id="contract-monthly-fee" type="number" min="0" step="0.01"></label>
+                  <label><span>Term / duration</span><input id="contract-term-duration" type="text" maxlength="120" placeholder="Example: 6 months"></label>
+                  <label><span>Good Faith deposit</span><input id="contract-good-faith-deposit" type="number" min="0" step="0.01"></label>
+                  <label><span>Adjusted monthly payment</span><input id="contract-adjusted-monthly-payment" type="number" min="0" step="0.01"></label>
+                  <label class="people-wide"><span>Special conditions</span><textarea id="contract-special-conditions" rows="3" maxlength="4000" placeholder="Leave blank if none."></textarea></label>
+                  <label class="people-wide"><span>Appendix A · Plan Structure</span><textarea id="contract-appendix-a" rows="6" maxlength="8000" placeholder="Describe the approved plan structure and included services." required></textarea></label>
+                </div>
+                <div class="client-contract-approval-note">The approving staff member and approval date are recorded automatically in the contract snapshot.</div>
+              </div>
+
+              <label class="client-document-visible people-wide"><input id="client-agreement-send-now" type="checkbox" checked><span>Send to member now</span></label>
+            </div>
+            <div class="people-form-actions">
+              <button class="secondary-button" type="button" data-client-agreement-close>Cancel</button>
+              <button class="primary-button" type="submit">Assign Agreement</button>
+            </div>
+            <p id="client-agreement-assign-status" class="form-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
+
+      <div id="staff-capacity-modal" class="staff-admin-modal hidden" aria-hidden="true">
+        <div class="staff-admin-backdrop" data-staff-capacity-close></div>
+        <section class="staff-admin-dialog staff-capacity-dialog" role="dialog" aria-modal="true" aria-labelledby="staff-capacity-title">
+          <button class="staff-admin-close" type="button" data-staff-capacity-close aria-label="Close capacity settings">×</button>
+          <p class="eyebrow">COACH CAPACITY</p>
+          <h2 id="staff-capacity-title">Availability &amp; capacity</h2>
+          <p id="staff-capacity-meta" class="staff-admin-intro"></p>
+
+          <form id="staff-capacity-form" class="staff-admin-form">
+            <div class="staff-admin-grid">
+              <label><span>Max active clients</span><input id="capacity-max-clients" type="number" min="0"></label>
+              <label><span>Max sessions per day</span><input id="capacity-max-day" type="number" min="0"></label>
+              <label><span>Max sessions per week</span><input id="capacity-max-week" type="number" min="0"></label>
+              <label><span>Session buffer · minutes</span><input id="capacity-buffer" type="number" min="0" max="240" value="15"></label>
+              <label><span>Default session · minutes</span><input id="capacity-session-minutes" type="number" min="15" max="480" value="60"></label>
+              <label><span>Time zone</span><input id="capacity-timezone" type="text" maxlength="120" placeholder="America/Toronto"></label>
+              <label class="staff-admin-wide staff-capacity-check"><input id="capacity-accepting" type="checkbox" checked><span>Accepting new clients</span></label>
+              <label class="staff-admin-wide"><span>Notes</span><textarea id="capacity-notes" rows="3" maxlength="2000"></textarea></label>
+            </div>
+            <div class="staff-admin-actions"><button class="primary-button" type="submit">Save Capacity</button></div>
+            <p id="staff-capacity-status" class="form-status" aria-live="polite"></p>
+          </form>
+
+          <section class="staff-admin-block">
+            <div class="staff-admin-block-head"><div><span>WEEKLY AVAILABILITY</span><strong>Recurring availability windows</strong></div></div>
+            <form id="staff-availability-form" class="staff-admin-form">
+              <div class="staff-admin-grid">
+                <label><span>Day</span><select id="availability-day"><option value="0">Sunday</option><option value="1">Monday</option><option value="2">Tuesday</option><option value="3">Wednesday</option><option value="4">Thursday</option><option value="5">Friday</option><option value="6">Saturday</option></select></label>
+                <label><span>Time zone</span><input id="availability-timezone" type="text" maxlength="120" placeholder="America/Toronto"></label>
+                <label><span>Starts</span><input id="availability-start" type="time" required></label>
+                <label><span>Ends</span><input id="availability-end" type="time" required></label>
+              </div>
+              <div class="staff-admin-actions"><button class="secondary-button" type="submit">Add Availability</button></div>
+            </form>
+            <div id="staff-availability-list" class="staff-availability-list"></div>
+          </section>
+
+          <section class="staff-admin-block">
+            <div class="staff-admin-block-head"><div><span>TIME OFF / EXCEPTIONS</span><strong>One-time unavailable blocks</strong></div></div>
+            <form id="staff-exception-form" class="staff-admin-form">
+              <div class="staff-admin-grid">
+                <label><span>Starts</span><input id="exception-start" type="datetime-local" required></label>
+                <label><span>Ends</span><input id="exception-end" type="datetime-local" required></label>
+                <label class="staff-admin-wide"><span>Reason</span><input id="exception-reason" type="text" maxlength="500" placeholder="Vacation, travel, blocked time, etc."></label>
+              </div>
+              <div class="staff-admin-actions"><button class="secondary-button" type="submit">Add Unavailable Block</button></div>
+            </form>
+            <div id="staff-exception-list" class="staff-availability-list"></div>
+          </section>
+        </section>
+      </div>
+
+
+      <div id="people-import-modal" class="people-modal hidden" aria-hidden="true">
+        <div class="people-modal-backdrop" data-people-import-close></div>
+        <section class="people-dialog people-import-dialog" role="dialog" aria-modal="true" aria-labelledby="people-import-title">
+          <button class="people-close" type="button" data-people-import-close aria-label="Close CSV import">×</button>
+          <p class="eyebrow">PEOPLE IMPORT</p>
+          <h2 id="people-import-title">Import People from CSV</h2>
+          <p class="people-intro">Preview the file before importing. Existing records are matched by email first, then normalized phone number, to reduce duplicates.</p>
+          <div class="people-import-security">CSV import is a sensitive permission. Every import is recorded with the importing staff member, filename, row counts and errors.</div>
+          <form id="people-import-form" class="people-form">
+            <div class="people-grid">
+              <label class="people-wide">
+                <span>CSV file</span>
+                <input id="people-import-file" type="file" accept=".csv,text/csv" required>
+              </label>
+            </div>
+            <div class="people-import-template">
+              <button id="people-download-template" class="secondary-button compact" type="button">Download CSV Template</button>
+              <span>Supported: first_name, last_name, email, phone, city, state, country, lifecycle_stage, source, tags.</span>
+            </div>
+            <div id="people-import-preview" class="people-import-preview hidden"></div>
+            <div class="people-form-actions">
+              <button class="secondary-button" type="button" data-people-import-close>Cancel</button>
+              <button id="people-import-submit" class="primary-button" type="submit" disabled>Import People</button>
+            </div>
+            <p id="people-import-status" class="form-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
+
+      <div id="staff-onboarding-modal" class="staff-onboarding-modal hidden" aria-hidden="true">
+        <div class="staff-onboarding-backdrop"></div>
+        <section class="staff-onboarding-dialog" role="dialog" aria-modal="true" aria-labelledby="staff-onboarding-title">
+          <p class="eyebrow">STAFF ONBOARDING</p>
+          <h2 id="staff-onboarding-title">Required agreement</h2>
+          <p class="staff-onboarding-intro">Complete the required ReVitalized Nation agreement before staff operational access is activated.</p>
+          <div id="staff-onboarding-list" class="staff-onboarding-list"></div>
+          <div id="staff-onboarding-document" class="staff-onboarding-document hidden">
+            <div class="staff-onboarding-document-head">
+              <div>
+                <strong id="staff-onboarding-document-title">Agreement</strong>
+                <span id="staff-onboarding-document-meta"></span>
+              </div>
+              <button id="staff-onboarding-back" type="button">Back</button>
+            </div>
+            <div id="staff-onboarding-document-content" class="staff-onboarding-document-content"></div>
+            <form id="staff-onboarding-sign-form" class="staff-onboarding-sign-form">
+              <label><span>Type your legal name</span><input id="staff-onboarding-signer-name" type="text" maxlength="240" required></label>
+              <label class="staff-onboarding-check"><input id="staff-onboarding-accept" type="checkbox" required><span>I have read and agree to the agreement above.</span></label>
+              <button class="primary-button" type="submit">Sign Agreement</button>
+              <p id="staff-onboarding-status" class="form-status" aria-live="polite"></p>
+            </form>
+          </div>
+        </section>
+      </div>
+
+      <div class="portal-content">
+        <div class="portal-intro">
+          <div>
+            <p class="eyebrow">REVITALIZED ACADEMY PLATFORM • v1.0</p>
+            <h1>Operations Dashboard</h1>
+            <p>Current leads, assessments, enrollments, webinar activity and follow-up in one place.</p>
+          </div>
+          <div class="live-pill"><span></span> Live ReVitalized Academy 1.0 Data</div>
+        </div>
+
+        <section aria-labelledby="metrics-title">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">AT A GLANCE</p>
+              <h2 id="metrics-title">Today’s Operating Picture</h2>
+            </div>
+            <button id="refresh-button" class="secondary-button compact" type="button">Refresh Data</button>
+          </div>
+          <div id="metrics-grid" class="metrics-grid" aria-live="polite"></div>
+        </section>
+
+
+
+
+
+        <section id="referral-admin-panel" class="panel referral-admin-panel hidden" aria-labelledby="referral-admin-title">
+          <div class="panel-heading referral-admin-heading">
+            <div>
+              <p class="section-kicker">REFERRALS &amp; AMBASSADORS</p>
+              <h2 id="referral-admin-title">Referral Growth</h2>
+              <p class="panel-note">Track who referred whom, conversions and eligible rewards without losing original attribution.</p>
+            </div>
+            <button id="referral-admin-new-program" class="secondary-button compact" type="button">New Referral Program</button>
+          </div>
+          <div id="referral-admin-metrics" class="referral-admin-metrics"></div>
+          <div id="referral-admin-list" class="referral-admin-list">
+            <div class="empty-state">Loading referral pipeline...</div>
+          </div>
+        </section>
+
+        <section id="family-requests-panel" class="panel family-requests-panel hidden" aria-labelledby="family-requests-title">
+          <div class="panel-heading family-requests-heading">
+            <div>
+              <p class="section-kicker">FAMILY HUB</p>
+              <h2 id="family-requests-title">Family Requests</h2>
+              <p class="panel-note">Review member requests to add, update or remove household profiles while preserving membership limits and household safeguards.</p>
+            </div>
+            <button id="family-requests-refresh" class="secondary-button compact" type="button">Refresh</button>
+          </div>
+          <div id="family-requests-summary" class="family-requests-summary"></div>
+          <div class="family-request-toolbar">
+            <label><span>Show requests</span>
+              <select id="family-requests-filter">
+                <option value="open">Open requests</option>
+                <option value="submitted">New</option>
+                <option value="in_review">In review</option>
+                <option value="approved">Approved</option>
+                <option value="completed">Completed</option>
+                <option value="declined">Declined</option>
+                <option value="all">All requests</option>
+              </select>
+            </label>
+          </div>
+          <div id="family-requests-list" class="family-request-list">
+            <div class="family-request-empty">Loading Family Hub requests...</div>
+          </div>
+        </section>
+
+        <section id="program-catalog-panel" class="panel program-catalog-panel" aria-labelledby="program-catalog-title">
+          <div class="panel-heading program-catalog-heading">
+            <div>
+              <p class="section-kicker">PROGRAM CATALOG</p>
+              <h2 id="program-catalog-title">Current Programs</h2>
+              <p class="panel-note">The five coaching and membership options currently offered through ReVitalized Academy.</p>
+            </div>
+            <a class="secondary-button compact program-catalog-site-link" href="../plans.html" target="_blank" rel="noopener">View Website Programs</a>
+          </div>
+          <div id="program-catalog-summary" class="program-catalog-summary"></div>
+          <div id="program-catalog-list" class="program-catalog-list">
+            <div class="empty-state">Loading current programs...</div>
+          </div>
+        </section>
+
+        <section id="program-access-panel" class="panel program-access-panel" aria-labelledby="program-access-title">
+          <div class="panel-heading program-access-heading">
+            <div>
+              <p class="section-kicker">PROGRAM ACCESS</p>
+              <h2 id="program-access-title">Program Access</h2>
+              <p class="panel-note">See the benefits, courses, resources and challenges included with each ReVitalized program.</p>
+            </div>
+          </div>
+          <div id="program-access-list" class="program-access-list">
+            <div class="empty-state">Loading program access rules...</div>
+          </div>
+        </section>
+
+        <section id="program-content-panel" class="panel program-content-panel" aria-labelledby="program-content-title">
+          <div class="panel-heading program-content-heading">
+            <div>
+              <p class="section-kicker">CLIENT EXPERIENCE CONTENT</p>
+              <h2 id="program-content-title">Content Library</h2>
+              <p class="panel-note">Manage the courses, challenges, meal plans, recipes, fitness programs, workouts and resources used across the ReVitalized member experience.</p>
+            </div>
+            <button id="program-content-new" class="primary-button compact" type="button">New Content</button>
+          </div>
+          <div id="program-content-summary" class="program-content-summary"></div>
+          <div class="program-content-tabs" role="tablist" aria-label="Client experience content">
+            <button type="button" class="active" data-program-content="courses">Courses</button>
+            <button type="button" data-program-content="challenges">Challenges</button>
+            <button type="button" data-program-content="meal-plans">Meal Plans</button>
+            <button type="button" data-program-content="recipes">Recipes</button>
+            <button type="button" data-program-content="foods">Foods &amp; Ingredients</button>
+            <button type="button" data-program-content="nutrition-methodology">Nutrition Methodology</button>
+            <button type="button" data-program-content="fitness">Fitness Programs</button>
+            <button type="button" data-program-content="workouts">Workouts</button>
+            <button type="button" data-program-content="exercises">Exercises</button>
+            <button type="button" data-program-content="fitness-methodology">Fitness Methodology</button>
+            <button type="button" data-program-content="resources">Resources</button>
+          </div>
+          <div id="program-content-list" class="program-content-list">
+            <div class="empty-state">Loading client experience content...</div>
+          </div>
+        </section>
+
+        <section class="panel refuel-admin-panel" aria-labelledby="refuel-admin-title">
+          <div class="panel-heading refuel-admin-heading">
+            <div>
+              <p class="section-kicker">REFUEL</p>
+              <h2 id="refuel-admin-title">Interest, Invitations &amp; Enrollment</h2>
+              <p class="panel-note">ReFuel remains connected to the same ReVitalized contact/member record.</p>
+            </div>
+            <button id="refuel-admin-new-offer" class="secondary-button compact" type="button">New Offer</button>
+          </div>
+          <div id="refuel-admin-metrics" class="refuel-admin-metrics"></div>
+          <div id="refuel-admin-list" class="refuel-admin-list"><div class="empty-state">Loading ReFuel pipeline...</div></div>
+        </section>
+
+        <section class="panel community-admin-panel" aria-labelledby="community-admin-title">
+          <div class="panel-heading community-admin-heading">
+            <div>
+              <p class="section-kicker">COMMUNITY</p>
+              <h2 id="community-admin-title">Announcements &amp; Moderation</h2>
+              <p class="panel-note">Program and family community activity, separate from private coaching data.</p>
+            </div>
+            <button id="community-admin-new" class="secondary-button compact" type="button">New Announcement</button>
+          </div>
+          <div id="community-admin-metrics" class="community-admin-metrics"></div>
+          <div id="community-admin-feed" class="community-admin-feed">
+            <div class="empty-state">Loading community activity...</div>
+          </div>
+        </section>
+
+
+        <section id="staff-access-panel" class="panel staff-access-panel hidden" aria-labelledby="staff-access-title">
+          <div class="panel-heading staff-access-heading">
+            <div>
+              <p class="section-kicker">STAFF &amp; ACCESS</p>
+              <h2 id="staff-access-title">Team Permissions</h2>
+              <p class="panel-note">Invite staff directly, assign a role, and control exactly what each person can access.</p>
+            </div>
+            <button id="staff-invite-button" class="primary-button compact" type="button">Invite Staff</button>
+          </div>
+          <div id="staff-access-summary" class="staff-access-summary"></div>
+          <div id="staff-access-list" class="staff-access-list">
+            <div class="empty-state">Loading staff access...</div>
+          </div>
+        </section>
+
+
+
+
+        <section id="agreement-library-panel" class="panel agreement-library-panel hidden" aria-labelledby="agreement-library-title">
+          <div class="panel-heading agreement-library-heading">
+            <div>
+              <p class="section-kicker">AGREEMENTS</p>
+              <h2 id="agreement-library-title">Agreement Library &amp; Signatures</h2>
+              <p class="panel-note">Versioned membership agreements tied to programs and the Payment & Agreement journey step.</p>
+            </div>
+            <button id="agreement-new-template" class="secondary-button compact" type="button">New Agreement</button>
+          </div>
+          <div id="agreement-library-metrics" class="agreement-library-metrics"></div>
+          <div id="agreement-library-list" class="agreement-library-list">
+            <div class="empty-state">Loading agreement library...</div>
+          </div>
+        </section>
+
+        <section id="billing-operations-panel" class="panel billing-operations-panel hidden" aria-labelledby="billing-operations-title">
+          <div class="panel-heading billing-operations-heading">
+            <div>
+              <p class="section-kicker">BILLING OPERATIONS</p>
+              <h2 id="billing-operations-title">Membership Subscriptions</h2>
+              <p class="panel-note">Provider-neutral recurring billing, commitments, payment status and next charges.</p>
+            </div>
+            <button id="billing-new-plan" class="secondary-button compact" type="button">New Billing Plan</button>
+          </div>
+          <div id="billing-operations-metrics" class="billing-operations-metrics"></div>
+          <div id="billing-operations-list" class="billing-operations-list">
+            <div class="empty-state">Loading subscription activity...</div>
+          </div>
+        </section>
+
+        <section id="team-calendar-panel" class="panel team-calendar-panel hidden" aria-labelledby="team-calendar-title">
+          <div class="panel-heading team-calendar-heading">
+            <div>
+              <p class="section-kicker">TEAM CALENDAR</p>
+              <h2 id="team-calendar-title">Consultations &amp; Coaching Schedule</h2>
+              <p class="panel-note">One schedule for interviews, consultations and coaching sessions across the ReVitalized team.</p>
+            </div>
+            <div id="team-calendar-conflict-chip" class="team-calendar-conflict-chip">0 conflicts</div>
+          </div>
+
+          <div class="team-calendar-toolbar">
+            <div class="team-calendar-tabs">
+              <button id="calendar-view-today" class="work-tab active" type="button">Today</button>
+              <button id="calendar-view-week" class="work-tab" type="button">Next 7 Days</button>
+              <button id="calendar-view-upcoming" class="work-tab" type="button">Upcoming</button>
+            </div>
+            <label><span>Staff</span><select id="calendar-staff-filter"><option value="">All staff</option></select></label>
+            <label><span>Type</span>
+              <select id="calendar-type-filter">
+                <option value="">All types</option>
+                <option value="application_interview">Application Interview</option>
+                <option value="consultation">Consultation</option>
+                <option value="coaching_session">Coaching Session</option>
+              </select>
+            </label>
+            <label><span>Status</span>
+              <select id="calendar-status-filter">
+                <option value="">All statuses</option>
+                <option value="requested">Requested</option>
+                <option value="scheduled">Scheduled</option>
+                <option value="completed">Completed</option>
+                <option value="no_show">No Show</option>
+                <option value="cancelled">Cancelled</option>
+              </select>
+            </label>
+            <button id="calendar-refresh" class="secondary-button compact" type="button">Refresh</button>
+          </div>
+
+          <div id="team-calendar-summary" class="team-calendar-summary"></div>
+          <div id="team-calendar-list" class="team-calendar-list">
+            <div class="empty-state">Loading team schedule...</div>
+          </div>
+        </section>
+
+        <section id="team-workload-panel" class="panel team-workload-panel hidden" aria-labelledby="team-workload-title">
+          <div class="panel-heading team-workload-heading">
+            <div>
+              <p class="section-kicker">TEAM WORKLOAD</p>
+              <h2 id="team-workload-title">Ownership &amp; Active Work</h2>
+              <p class="panel-note">See where clients, tasks, messages and coaching work are concentrated across the team.</p>
+            </div>
+          </div>
+          <div id="team-workload-list" class="team-workload-list">
+            <div class="empty-state">Loading team workload...</div>
+          </div>
+        </section>
+
+        <section class="panel executive-pulse-panel" aria-labelledby="executive-pulse-title">
+          <div class="panel-heading executive-pulse-heading">
+            <div>
+              <p class="section-kicker">EXECUTIVE PULSE</p>
+              <h2 id="executive-pulse-title">Growth, Engagement &amp; Platform Health</h2>
+              <p class="panel-note">A live operating snapshot across the ReVitalized client lifecycle.</p>
+            </div>
+            <button id="executive-pulse-refresh" class="secondary-button compact" type="button">Refresh Pulse</button>
+          </div>
+
+          <div id="executive-pulse-metrics" class="executive-pulse-metrics"></div>
+
+          <div class="executive-pulse-grid">
+            <section class="executive-subpanel">
+              <div class="executive-subhead">
+                <div><span>CONVERSION FUNNEL</span><strong>From Lead to Active Member</strong></div>
+              </div>
+              <div id="executive-funnel" class="executive-funnel"></div>
+            </section>
+
+            <section class="executive-subpanel">
+              <div class="executive-subhead">
+                <div><span>PROGRAM PERFORMANCE</span><strong>Membership &amp; Engagement</strong></div>
+              </div>
+              <div id="executive-programs" class="executive-programs"></div>
+            </section>
+          </div>
+        </section>
+
+        <div class="dashboard-grid">
+          <section class="panel" aria-labelledby="followup-title">
+            <div class="panel-heading">
+              <div>
+                <p class="section-kicker">FOLLOW-UP</p>
+                <h2 id="followup-title">Needs Attention</h2>
+              </div>
+              <span id="followup-count" class="count-chip">0</span>
+            </div>
+            <div id="followup-list" class="list-stack"></div>
+          </section>
+
+          <section class="panel" aria-labelledby="tasks-title">
+            <div class="panel-heading">
+              <div>
+                <p class="section-kicker">TASKS</p>
+                <h2 id="tasks-title">Open Priorities</h2>
+              </div>
+              <span id="task-count" class="count-chip">0</span>
+            </div>
+            <div id="task-list" class="list-stack"></div>
+          </section>
+        </div>
+
+
+
+
+
+        <section class="panel companion-panel" aria-labelledby="companion-title">
+          <div class="panel-heading companion-heading">
+            <div>
+              <p class="section-kicker">COACH COMPANION</p>
+              <h2 id="companion-title">Human Review &amp; Approved Knowledge</h2>
+              <p class="panel-note">Questions that need a coach stay here until a human resolves them.</p>
+            </div>
+            <button id="companion-manage-knowledge" class="secondary-button compact" type="button">Manage Knowledge</button>
+          </div>
+
+          <div id="companion-summary" class="companion-summary"></div>
+          <div id="companion-review-list" class="companion-review-list">
+            <div class="empty-state">Loading Coach Companion review queue...</div>
+          </div>
+        </section>
+
+        <section class="panel staff-inbox-panel" aria-labelledby="staff-inbox-title">
+          <div class="panel-heading staff-inbox-heading">
+            <div>
+              <p class="section-kicker">COACH INBOX</p>
+              <h2 id="staff-inbox-title">Member Conversations</h2>
+              <p class="panel-note">Private in-platform messages from active ReVitalized members.</p>
+            </div>
+            <div class="staff-inbox-tabs">
+              <button id="inbox-tab-mine" class="work-tab active" type="button">My Inbox</button>
+              <button id="inbox-tab-team" class="work-tab" type="button">Team Inbox</button>
+            </div>
+          </div>
+          <div id="staff-inbox-summary" class="staff-inbox-summary"></div>
+          <div id="staff-inbox-list" class="staff-inbox-list">
+            <div class="empty-state">Loading member conversations...</div>
+          </div>
+        </section>
+
+        <section class="panel work-desk-panel" aria-labelledby="work-desk-title">
+          <div class="panel-heading work-desk-heading">
+            <div>
+              <p class="section-kicker">COACH WORK DESK</p>
+              <h2 id="work-desk-title">What Needs To Happen Next</h2>
+              <p class="panel-note">Assigned actions, coach tasks, scheduling, reviews and follow-up in one queue.</p>
+            </div>
+            <div class="work-desk-tabs" role="tablist" aria-label="Work queue view">
+              <button id="work-tab-mine" class="work-tab active" type="button" role="tab" aria-selected="true">My Work</button>
+              <button id="work-tab-team" class="work-tab" type="button" role="tab" aria-selected="false">Team Work</button>
+            </div>
+          </div>
+
+          <div id="work-desk-stats" class="work-desk-stats"></div>
+
+          <div class="work-desk-toolbar">
+            <label>
+              <span>Category</span>
+              <select id="work-category-filter">
+                <option value="">All categories</option>
+                <option value="Report Review">Report Review</option>
+                <option value="Check-In Review">Check-In Review</option>
+                <option value="Coaching">Coaching</option>
+                <option value="Scheduling">Scheduling</option>
+                <option value="Calls">Calls</option>
+                <option value="Email">Email</option>
+                <option value="Text">Text</option>
+                <option value="Enrollment">Enrollment</option>
+                <option value="Onboarding">Onboarding</option>
+                <option value="Reminders">Reminders</option>
+                <option value="Follow-Up">Follow-Up</option>
+              </select>
+            </label>
+            <label>
+              <span>Due</span>
+              <select id="work-due-filter">
+                <option value="">All open work</option>
+                <option value="overdue">Overdue</option>
+                <option value="today">Due today</option>
+                <option value="soon">Next 72 hours</option>
+                <option value="upcoming">Upcoming</option>
+              </select>
+            </label>
+            <button id="work-refresh" class="secondary-button compact" type="button">Refresh Work</button>
+          </div>
+
+          <div id="work-desk-list" class="work-desk-list">
+            <div class="empty-state">Loading work queue...</div>
+          </div>
+        </section>
+
+        <section class="panel journey-pipeline-panel" aria-labelledby="journey-pipeline-title">
+          <div class="panel-heading journey-pipeline-heading">
+            <div>
+              <p class="section-kicker">JOURNEY PIPELINE</p>
+              <h2 id="journey-pipeline-title">Where People Are Right Now</h2>
+            </div>
+            <div id="journey-pipeline-summary" class="journey-pipeline-summary"></div>
+          </div>
+          <div id="journey-pipeline-list" class="journey-pipeline-list">
+            <div class="empty-state">Loading active journeys...</div>
+          </div>
+        </section>
+
+        <section id="vitality-assessments-panel" class="panel vitality-assessments-panel" aria-labelledby="vitality-assessments-title">
+          <div class="panel-heading vitality-assessments-heading">
+            <div>
+              <p class="section-kicker">PRIVATE HEALTH REVIEW</p>
+              <h2 id="vitality-assessments-title">Vitality Roadmaps</h2>
+              <p class="panel-note">Review completed public Vitality Roadmaps and monitor unfinished assessment status within your approved contact scope.</p>
+            </div>
+            <button id="vitality-assessments-refresh" class="secondary-button compact" type="button">Refresh</button>
+          </div>
+          <div class="vitality-assessments-controls" role="group" aria-label="Filter Vitality Roadmaps">
+            <button class="vitality-filter active" type="button" data-vitality-filter="all">All</button>
+            <button class="vitality-filter" type="button" data-vitality-filter="in_progress">In Progress</button>
+            <button class="vitality-filter" type="button" data-vitality-filter="completed">Completed</button>
+            <button class="vitality-filter" type="button" data-vitality-filter="needs_review">Needs Review</button>
+          </div>
+          <p id="vitality-assessments-status" class="form-status vitality-assessments-status" aria-live="polite"></p>
+          <div id="vitality-assessments-list" class="vitality-assessments-list">
+            <div class="empty-state">Open this workspace to load secure Vitality Roadmap records.</div>
+          </div>
+        </section>
+
+        <section class="panel contacts-panel" aria-labelledby="contacts-title">
+          <div class="panel-heading contacts-heading">
+            <div>
+              <p class="section-kicker">PEOPLE</p>
+              <h2 id="contacts-title">People Directory</h2>
+              <p class="panel-note">Website leads, referrals, manually added people and clients in one CRM.</p>
+            </div>
+            <div class="people-toolbar">
+              <div class="people-view-tabs">
+                <button id="people-view-recent" class="people-view-tab active" type="button">Recent</button>
+                <button id="people-view-all" class="people-view-tab" type="button">All People</button>
+              </div>
+              <label class="people-search">
+                <span class="sr-only">Search people</span>
+                <input id="people-search-input" type="search" placeholder="Search name, email or phone...">
+              </label>
+              <button id="people-add-client" class="primary-button compact" type="button" hidden>Add Client</button>
+              <button id="people-add-button" class="primary-button compact" type="button">Add Person</button>
+            </div>
+          </div>
+          <div class="people-saved-views">
+            <label><span>Saved View</span><select id="people-saved-view"><option value="">Choose saved view...</option></select></label>
+            <button id="people-save-view" class="secondary-button compact" type="button">Save Current View</button>
+            <button id="people-delete-view" class="secondary-button compact" type="button" disabled>Delete View</button>
+          </div>
+          <div class="people-quick-views">
+            <button type="button" data-people-quick="all" class="active">All</button>
+            <button type="button" data-people-quick="new_leads">New Leads</button>
+            <button type="button" data-people-quick="unassigned">Unassigned</button>
+            <button type="button" data-people-quick="needs_followup">Needs Follow-Up</button>
+            <button type="button" data-people-quick="applicants">Applicants</button>
+            <button type="button" data-people-quick="clients">Clients</button>
+          </div>
+          <div class="people-directory-controls">
+            <label><span>Sort</span>
+              <select id="people-sort">
+                <option value="recent">Most Recent</option>
+                <option value="oldest">Oldest Created</option>
+                <option value="first_az">First Name A–Z</option>
+                <option value="first_za">First Name Z–A</option>
+                <option value="last_az">Last Name A–Z</option>
+                <option value="last_za">Last Name Z–A</option>
+                <option value="enrolled_recent">Recently Enrolled</option>
+                <option value="activity_recent">Recent Activity</option>
+                <option value="followup_soon">Next Follow-up</option>
+              </select>
+            </label>
+            <label><span>Type</span>
+              <select id="people-type-filter"><option value="">All people</option><option value="crm">CRM People</option><option value="staff">Staff</option><option value="system">System</option></select>
+            </label>
+            <label><span>Stage</span>
+              <select id="people-stage-filter"><option value="">All stages</option><option value="lead">Lead</option><option value="assessment_lead">Assessment Lead</option><option value="webinar_lead">Webinar Lead</option><option value="applicant">Applicant</option><option value="client">Client</option><option value="inactive">Inactive</option><option value="registered_guest">Registered Guest</option><option value="engaged_guest">Engaged Guest</option><option value="prospective_client">Prospective Client</option></select>
+            </label>
+            <label><span>Assigned</span><select id="people-assigned-filter"><option value="">All staff</option><option value="unassigned">Unassigned</option></select></label>
+            <label><span>Source</span><select id="people-source-filter"><option value="">All sources</option></select></label>
+            <label><span>Assessment</span><select id="people-assessment-filter"><option value="">Any</option><option value="not_started">Not Started</option><option value="in_progress">In Progress</option><option value="completed">Completed</option></select></label>
+            <label><span>Enrollment</span><select id="people-enrollment-filter"><option value="">Any</option><option value="not_started">Not Started</option><option value="in_progress">In Progress</option><option value="completed">Completed</option></select></label>
+            <button id="people-clear-filters" class="secondary-button compact" type="button">Clear Filters</button>
+          </div>
+          <div id="people-bulk-bar" class="people-bulk-bar hidden">
+            <span id="people-selected-count">0 selected</span>
+            <select id="people-bulk-action">
+              <option value="">Bulk action...</option>
+              <option value="assign_staff">Assign staff</option>
+              <option value="set_stage">Change stage</option>
+              <option value="set_followup_status">Change follow-up status</option>
+              <option value="add_tag">Add tag</option>
+            </select>
+            <select id="people-bulk-value"></select>
+            <button id="people-apply-bulk" class="primary-button compact" type="button">Apply</button>
+            <button id="people-clear-selection" class="secondary-button compact" type="button">Clear</button>
+          </div>
+          <div class="people-result-bar">
+            <span id="people-result-count">Loading people...</span>
+            <div class="people-result-actions">
+              <button id="people-import" class="secondary-button compact hidden" type="button">Import CSV</button>
+              <button id="people-export" class="secondary-button compact hidden" type="button">Export CSV</button>
+              <div class="people-pagination">
+              <button id="people-prev" type="button">Previous</button>
+              <span id="people-page-label">Page 1</span>
+              <button id="people-next" type="button">Next</button>
+              </div>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table class="contacts-table people-directory-table">
+              <thead>
+                <tr>
+                  <th class="people-select-col"><input id="people-select-page" type="checkbox" aria-label="Select visible people"></th>
+                  <th>Name</th>
+                  <th>Stage</th>
+                  <th>Assessment</th>
+                  <th>Enrollment</th>
+                  <th>Assigned</th>
+                  <th>Enrolled</th>
+                  <th>Last Activity</th>
+                  <th>Follow-up</th>
+                  <th>Created</th>
+                </tr>
+              </thead>
+              <tbody id="contacts-body"></tbody>
+            </table>
+          </div>
+          <p id="portal-status" class="form-status" aria-live="polite"></p>
+        </section>
+      </div>
+    </section>
+  </main>
+
+
+      <div id="program-content-modal" class="program-content-modal hidden" aria-hidden="true">
+        <div class="program-content-modal-backdrop" data-program-content-close></div>
+        <section class="program-content-dialog" role="dialog" aria-modal="true" aria-labelledby="program-content-modal-title">
+          <button id="program-content-close" class="program-content-close" type="button" aria-label="Close content editor">×</button>
+          <p class="eyebrow">CLIENT EXPERIENCE CONTENT</p>
+          <h2 id="program-content-modal-title">Create new content</h2>
+          <p class="program-content-intro">Create a draft for the member and coach experience. You can publish it when it is ready.</p>
+          <form id="program-content-form" class="program-content-form">
+            <div class="program-content-form-grid">
+              <label class="program-content-wide"><span>Content type</span>
+                <select id="program-content-type" required>
+                  <option value="courses">Course</option>
+                  <option value="challenges">Challenge</option>
+                  <option value="meal-plans">Meal Plan</option>
+                  <option value="recipes">Recipe</option>
+                  <option value="foods">Food / Ingredient</option>
+                  <option value="nutrition-methodology">Nutrition Methodology</option>
+                  <option value="fitness">Fitness Program</option>
+                  <option value="workouts">Workout</option>
+                  <option value="exercises">Exercise</option>
+                  <option value="fitness-methodology">Fitness Methodology</option>
+                  <option value="resources">Resource</option>
+                </select>
+              </label>
+              <label class="program-content-wide"><span>Title</span><input id="program-content-title-input" type="text" maxlength="180" required></label>
+              <label class="program-content-wide"><span>Description</span><textarea id="program-content-description" rows="3" maxlength="1800"></textarea></label>
+              <div id="program-content-dynamic-fields" class="program-content-dynamic-fields program-content-wide"></div>
+            </div>
+            <div class="program-content-form-actions">
+              <button id="program-content-cancel" class="secondary-button" type="button">Cancel</button>
+              <button class="primary-button" type="submit">Save Draft</button>
+            </div>
+            <p id="program-content-form-status" class="form-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
+<div id="lifecycle-create-modal" class="lifecycle-modal" hidden><section class="lifecycle-dialog" role="dialog" aria-modal="true" aria-labelledby="lifecycle-create-title"><h2 id="lifecycle-create-title">Add Client</h2><p>Create or reuse the matching contact, then choose a program. Invitations and billing are separate steps.</p><form id="lifecycle-create-form"><div class="lifecycle-grid"><label>First name<input id="lifecycle-first-name" autocomplete="given-name" maxlength="100" required></label><label>Last name<input id="lifecycle-last-name" autocomplete="family-name" maxlength="100" required></label><label>Email address<input id="lifecycle-email" type="email" autocomplete="email" maxlength="254" required></label><label>Phone<input id="lifecycle-phone" type="tel" autocomplete="tel" maxlength="32" required></label><label>Country<select id="lifecycle-country" autocomplete="country" required><option value="">Select country</option><option value="CA">Canada</option><option value="US">United States</option><option value="GB">United Kingdom</option></select></label><label class="lifecycle-wide">How did you hear about ReVitalized Academy?<select id="lifecycle-referral" required><option value="">Select one</option><option>Facebook</option><option>Instagram</option><option>Google Search</option><option>YouTube</option><option>LinkedIn</option><option>TikTok</option><option>Friend / Family</option><option>Existing Client</option><option>Event / Webinar</option><option>Church / Community</option><option>Podcast</option><option>Email</option><option>Sales Rep</option><option>Other</option></select></label><label class="lifecycle-wide" hidden>Sales Rep Name<input id="lifecycle-sales-rep" maxlength="160"></label><label class="lifecycle-wide" hidden>Please tell us how you heard about us<input id="lifecycle-other-source" maxlength="240"></label></div><div class="lifecycle-actions"><button id="lifecycle-create-save" type="submit" class="primary-button">Save Client</button><button id="lifecycle-create-close" type="button" class="secondary-button">Cancel</button></div><p id="lifecycle-create-status" role="status" aria-live="polite"></p></form></section></div>
+  <noscript>This portal requires JavaScript.</noscript>
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/tus-js-client@4.3.1/dist/tus.min.js"></script>
+  <script defer src="portal.js?v=nda-onboarding-20261015"></script>
+  <script defer src="portal-messaging.js?v=107"></script>
+  <script defer src="portal-journey.js?v=118"></script>
+  <script defer src="portal-pipeline.js?v=167"></script>
+  <script defer src="portal-action-center.js?v=130"></script>
+  <script defer src="portal-work-desk.js?v=161"></script>
+  <script defer src="portal-client-foundation.js?v=113"></script>
+  <script defer src="portal-coaching.js?v=115"></script>
+  <script defer src="portal-wellness.js?v=117"></script>
+  <script defer src="portal-overrides.js?v=118"></script>
+  <script defer src="portal-learning.js?v=119"></script>
+  <script defer src="portal-member-messaging.js?v=167"></script>
+  <script defer src="portal-companion.js?v=123"></script>
+  <script defer src="portal-health-integrations.js?v=123"></script>
+  <script defer src="portal-challenges.js?v=124"></script>
+  <script defer src="portal-executive.js?v=167"></script>
+  <script defer src="portal-community.js?v=167"></script>
+  <script defer src="portal-refuel.js?v=167"></script>
+  <script defer src="portal-exercise-library.js?v=100"></script>
+  <script defer src="portal-programs.js?v=180"></script>
+  <script defer src="portal-food-database.js?v=101"></script>
+  <script defer src="portal-content-sync.js?v=100"></script>
+  <script defer src="portal-people.js?v=133"></script>
+  <script defer src="portal-people-directory.js?v=145"></script>
+  <script defer src="vitality-question-catalog.js?v=100"></script>
+  <script defer src="portal-vitality-assessments.js?v=102"></script>
+  <script defer src="portal-staff-access.js?v=182"></script>
+  <script defer src="portal-permissions.js?v=133"></script>
+  <script defer src="portal-referrals.js?v=166"></script>
+  <script defer src="portal-family-requests.js?v=167"></script>
+  <script defer src="portal-team-calendar.js?v=166"></script>
+  <script defer src="portal-documents.js?v=136"></script>
+  <script defer src="portal-billing.js?v=137"></script>
+  <script defer src="portal-client-billing.js?v=138"></script>
+  <script defer src="portal-agreements.js?v=147"></script>
+  <script defer src="portal-client-lifecycle.js?v=103"></script>
+  <script defer src="portal-payment-requests.js?v=102"></script>
+  <script defer src="portal-coach-capacity.js?v=140"></script>
+  <script defer src="portal-staff-onboarding.js?v=146"></script>
+  <script defer src="portal-shell.js?v=162"></script>
+  <script defer src="portal-recipe-builder.js?v=104"></script>
+  <script defer src="portal-content-composition.js?v=102"></script>
+  <script defer src="portal-account.js?v=181"></script>
+  <script defer src="/js/vitality-roadmap-view.js?v=100"></script>
+  <script defer src="/js/vitality-roadmap-b4-source-map.js?v=100"></script>
+  <script defer src="/js/vitality-roadmap-b4-coverage.js?v=100"></script>
+  <script defer src="portal-roadmap-founder.js?v=101"></script>
+  <link rel="stylesheet" href="portal-roadmap-verification.css?v=101">
+  <script defer src="portal-roadmap-verification.js?v=101"></script>
+  <link rel="stylesheet" href="portal-roadmap-scoring-lab.css?v=102">
+  <script defer src="portal-roadmap-scoring-lab-reference.js?v=100"></script>
+  <script defer src="portal-roadmap-scoring-lab-view.js?v=100"></script>
+  <script defer src="portal-roadmap-scoring-lab.js?v=102"></script>
+  <script defer src="portal-roadmap-scoring-lab-bootstrap.js?v=100"></script>
+  <link rel="stylesheet" href="portal-roadmap-calibration.css?v=100">
+  <script defer src="portal-roadmap-processing.js?v=100"></script>
+  <script defer src="portal-roadmap-processing-bootstrap.js?v=101"></script>
+  <link rel="stylesheet" href="portal-roadmap-processing.css?v=100">
+  <script defer src="portal-roadmap-calibration.js?v=103"></script>
+  <script defer src="portal-roadmap-calibration-bootstrap.js?v=101"></script>
+</body>
+</html>

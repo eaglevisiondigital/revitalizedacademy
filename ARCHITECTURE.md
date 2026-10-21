@@ -1,3 +1,7 @@
+## Health & Hope Live — final integrated acceptance and offline activation packet, 2026-10-20
+
+Actual handler-to-PG17 synthetic integration now covers registration, native Registered Guest CRM identity, returning sessions, leased confirmation/reminder processing, stable retries, signed feedback, scoped export/deletion and actual desktop/mobile form submissions. Only RPC transport/JWT mapping and provider delivery are local adapters; hosted Auth/SMTP/Zoom acceptance remains separate. No application/schema architecture changes were needed. Three deterministic event Function archives and bounded held/public activation artifacts are prepared; ten current Functions, protected primary bytes, Founders page and public hold are retained. [Exact package and final gates](docs/HEALTH_HOPE_LIVE_FINAL_LAUNCH_GATE_2026-10-20.md). Nothing installed or activated.
+
 ## Health & Hope Live — popup-only publication, 2026-10-20
 
 Deploy `6ad7ed9be0bd165b997e0be1` overlays three reviewed public popup assets on the current primary publication, preserving 444 other file digests and all ten existing Functions/config/schedule. No held event backend/staff assets or migration were published. Registration mode, Roadmap runtime, Zoom/email settings and architecture remain unchanged. [Publication and preservation evidence](docs/HEALTH_HOPE_LIVE_POPUP_RELEASE_2026-10-20.md). The manual attendance/bounded acceptance candidate below remains local only.

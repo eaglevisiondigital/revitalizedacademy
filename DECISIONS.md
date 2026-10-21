@@ -1,3 +1,7 @@
+## 2026-10-20 — complete local registration readiness; host review from Canada
+
+Owner authorizes remaining implementation/validation while expressly reserving separate exact production migration/public activation/real participant email approval and prohibiting Zoom setting changes. Existing guest/retention/design decisions remain final. Justyn is in Canada and will provide a read-only settings review from his own device; no local sign-in or credential sharing is required. The public event stays Thursday18:30 America/New_York; browser local-time hints follow IANA data. Keep Founders restoration and Roadmap work separate. [Prepared release scope, local integrated evidence and remote checklist](docs/HEALTH_HOPE_LIVE_FINAL_LAUNCH_GATE_2026-10-20.md).
+
 ## 2026-10-20 — owner authorizes reviewed popup publication only
 
 Owner: “Looks good. Publish the popup changes to the live site. Keep registration held and leave Vitality Roadmap functionality and Zoom/email integrations unchanged.” Authority covers the reviewed three static popup assets; it does not activate or publish the held registration backend, migrations, notifications or providers. Applied as a bounded overlay on current primary production with all protected assets and publication lock retained. [Published release and evidence](docs/HEALTH_HOPE_LIVE_POPUP_RELEASE_2026-10-20.md).
