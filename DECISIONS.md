@@ -1,3 +1,9 @@
+## 2026-10-21 — host-assisted test and provider responsibility confirmed; extra migration not authorized
+
+The owner reports Host Ready, explicitly approves Zoom joining terms for this synthetic test, admits HHL QA – Synthetic and confirms the meeting ended for a separate before-host check. These observed joining checks pass. The owner replies done to the explicit question about Justyn's capability and responsibility for new HHL cloud and local recordings, backups, saved chat, report exports and verified privacy requests by twelve months, with the separate fifteen-month diagnostic policy disclosed. Record this as owner-confirmed operations, not inspection or deletion of historical assets.
+
+A real maintenance prerequisite failed before registration or email. The full hold is restored and the narrow forward predicate fix is prepared locally. The owner's restriction to four exact migrations and no additional scope requires separate approval for new migration 20261021144712; no public activation is inferred. [Report and copy-ready smallest approval](docs/HEALTH_HOPE_LIVE_HOSTED_ACCEPTANCE_2026-10-21.md).
+
 ## 2026-10-21 — owner reports Zoom recording practices and test availability
 
 Owner reports cloud recordings saved since early 2025, transcripts currently off, local recording downloads on the host computer, and uncertainty about participant-report storage. Record as owner-reported, not inspected or an approved HHL recording-retention exception. Owner can be available for the synthetic test and asks for timing; this is not a Host ready signal. Recommend keeping transcripts off and the technical test unrecorded. No transcription enablement, recording publication, deletion, global setting change, participant export or new retention decision is authorized. Existing host-assisted-test approval persists; await the actual host-ready signal. [Focused guidance and current test preparation](docs/HEALTH_HOPE_LIVE_OPERATOR_ACCEPTANCE_2026-10-21.md).

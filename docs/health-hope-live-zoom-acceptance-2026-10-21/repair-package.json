@@ -1,0 +1,48 @@
+{
+  "preparedOnly": true,
+  "productionApplied": false,
+  "requiresSeparateScopeApproval": true,
+  "migration": {
+    "file": "supabase/migrations/20261021144712_health_hope_live_safe_updates.sql",
+    "bytes": 2795,
+    "sha256": "4799e7565458b36a33db5fefe73958d240f76441378a130f409d4f49a7156066"
+  },
+  "onlyFunctions": [
+    "private.hhl_maintain()",
+    "private.hhl_staff_guest_core(text,jsonb)"
+  ],
+  "settingsPredicatesAdded": 3,
+  "grantsPoliciesRolesChanged": false,
+  "originalFourMigrations": [
+    {
+      "file": "20261020141529_health_hope_live.sql",
+      "sha256": "3c34381dbb2add5bde325e5a932edac977980404b3ae38d848f8a1077a1c79aa",
+      "unchanged": true
+    },
+    {
+      "file": "20261020193400_health_hope_live_registered_guests.sql",
+      "sha256": "4bfafeb108713436c2aaf46283bdfb008a4089dd28bfd7bf3ad6750a9d530b24",
+      "unchanged": true
+    },
+    {
+      "file": "20261020201535_health_hope_live_privacy_retention.sql",
+      "sha256": "40abdf1017f2ced902e0273bed55db35e42fa8d441ee55934eb1c4171f78909a",
+      "unchanged": true
+    },
+    {
+      "file": "20261020215108_health_hope_live_launch_acceptance.sql",
+      "sha256": "284a7dbd0ac72e05475641c0b068255240a491ff993e1010315351cff692e92a",
+      "unchanged": true
+    }
+  ],
+  "functionArchivesChanged": 0,
+  "publicFilesChanged": 0,
+  "tests": {
+    "actualGuardBeforeFailureReproduced": true,
+    "targetedTests": 6,
+    "passed": 6,
+    "preservedSharedFunctions": 319,
+    "existingSecurityAndGlobalRolesPreserved": true
+  },
+  "nextScope": "Apply only this one forward migration after approval; resume existing one-inbox controlled acceptance; public registration and automated Zoom remain held"
+}

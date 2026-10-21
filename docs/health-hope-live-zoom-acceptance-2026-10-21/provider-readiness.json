@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-21",
+  "source": "OWNER_CONFIRMED",
+  "resend": "Standard 30-day email/log retention, no custom extension; early-deletion and request assistance procedures documented",
+  "zoomCleanupOwner": "Justyn Oliver",
+  "confirmation": "Owner replied done to explicit responsibility/capability confirmation for HHL cloud recordings, local copies/backups, saved chat and report exports; verified export/deletion requests and 12-month deadline",
+  "zoomDiagnosticRetention": "Separate published 15-month vendor policy disclosed in the question",
+  "historicalRecordings": "Not authorized for deletion",
+  "actualProviderErasureClaimed": false
+}

@@ -1,0 +1,143 @@
+{
+  "jobs": 0,
+  "sessions": [
+    {
+      "id": "c1537c23-a601-4bbd-b67e-2e21e19ec0cf",
+      "status": "draft",
+      "revision": 1,
+      "closes_at": "2026-10-29T22:30:00+00:00",
+      "join_mode": "manual",
+      "starts_at": "2026-10-29T22:30:00+00:00",
+      "meeting_id": "82516112925",
+      "regular_date": "2026-10-29"
+    },
+    {
+      "id": "35bbc663-65c2-4548-b211-2a34568fdb1f",
+      "status": "draft",
+      "revision": 1,
+      "closes_at": "2026-11-05T23:30:00+00:00",
+      "join_mode": "manual",
+      "starts_at": "2026-11-05T23:30:00+00:00",
+      "meeting_id": "82516112925",
+      "regular_date": "2026-11-05"
+    },
+    {
+      "id": "e3246376-75c5-43af-89a5-affbdcbaf7f9",
+      "status": "draft",
+      "revision": 1,
+      "closes_at": "2026-11-12T23:30:00+00:00",
+      "join_mode": "manual",
+      "starts_at": "2026-11-12T23:30:00+00:00",
+      "meeting_id": "82516112925",
+      "regular_date": "2026-11-12"
+    },
+    {
+      "id": "24b741e6-c52f-4c0b-8be9-5be27e592b4b",
+      "status": "draft",
+      "revision": 1,
+      "closes_at": "2026-11-19T23:30:00+00:00",
+      "join_mode": "manual",
+      "starts_at": "2026-11-19T23:30:00+00:00",
+      "meeting_id": "82516112925",
+      "regular_date": "2026-11-19"
+    },
+    {
+      "id": "d03f6a9f-7a05-4f9b-b167-a5a99799e33b",
+      "status": "draft",
+      "revision": 1,
+      "closes_at": "2026-11-26T23:30:00+00:00",
+      "join_mode": "manual",
+      "starts_at": "2026-11-26T23:30:00+00:00",
+      "meeting_id": "82516112925",
+      "regular_date": "2026-11-26"
+    },
+    {
+      "id": "20cbf2d4-975a-4882-9d9b-6a3c6fccd8f2",
+      "status": "draft",
+      "revision": 1,
+      "closes_at": "2026-12-03T23:30:00+00:00",
+      "join_mode": "manual",
+      "starts_at": "2026-12-03T23:30:00+00:00",
+      "meeting_id": "82516112925",
+      "regular_date": "2026-12-03"
+    },
+    {
+      "id": "9814af3e-80b2-4342-812d-70a2bf7cea4a",
+      "status": "draft",
+      "revision": 1,
+      "closes_at": "2026-12-10T23:30:00+00:00",
+      "join_mode": "manual",
+      "starts_at": "2026-12-10T23:30:00+00:00",
+      "meeting_id": "82516112925",
+      "regular_date": "2026-12-10"
+    },
+    {
+      "id": "be6048c0-9001-49df-81c7-397a1529ecaf",
+      "status": "draft",
+      "revision": 1,
+      "closes_at": "2026-12-17T23:30:00+00:00",
+      "join_mode": "manual",
+      "starts_at": "2026-12-17T23:30:00+00:00",
+      "meeting_id": "82516112925",
+      "regular_date": "2026-12-17"
+    },
+    {
+      "id": "ad9c0a65-585e-46ec-8caf-735f732f1596",
+      "status": "draft",
+      "revision": 1,
+      "closes_at": "2026-12-24T23:30:00+00:00",
+      "join_mode": "manual",
+      "starts_at": "2026-12-24T23:30:00+00:00",
+      "meeting_id": "82516112925",
+      "regular_date": "2026-12-24"
+    },
+    {
+      "id": "2353a7c8-05ec-4936-9c05-2705ac166db2",
+      "status": "draft",
+      "revision": 1,
+      "closes_at": "2026-12-31T23:30:00+00:00",
+      "join_mode": "manual",
+      "starts_at": "2026-12-31T23:30:00+00:00",
+      "meeting_id": "82516112925",
+      "regular_date": "2026-12-31"
+    },
+    {
+      "id": "3efb699d-d18c-4099-94b6-cf11682ba33a",
+      "status": "draft",
+      "revision": 1,
+      "closes_at": "2027-01-07T23:30:00+00:00",
+      "join_mode": "manual",
+      "starts_at": "2027-01-07T23:30:00+00:00",
+      "meeting_id": "82516112925",
+      "regular_date": "2027-01-07"
+    },
+    {
+      "id": "b2eb9324-370f-4f7b-bcf6-04f84014a54a",
+      "status": "draft",
+      "revision": 1,
+      "closes_at": "2027-01-14T23:30:00+00:00",
+      "join_mode": "manual",
+      "starts_at": "2027-01-14T23:30:00+00:00",
+      "meeting_id": "82516112925",
+      "regular_date": "2027-01-14"
+    }
+  ],
+  "settings": {
+    "singleton": true,
+    "zoom_enabled": false,
+    "acceptance_case": null,
+    "retention_enabled": false,
+    "registration_enabled": false,
+    "retention_healthy_at": null,
+    "notifications_enabled": false,
+    "provider_retention_ready": false
+  },
+  "qa_contacts": 0,
+  "registrations": 0,
+  "event_migrations": [
+    "20261020141529",
+    "20261020193400",
+    "20261020201535",
+    "20261020215108"
+  ]
+}

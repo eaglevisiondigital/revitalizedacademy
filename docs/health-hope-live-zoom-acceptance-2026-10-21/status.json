@@ -1,0 +1,94 @@
+{
+  "date": "2026-10-21",
+  "branch": "codex/health-hope-live",
+  "productionDeployment": "6ad8d01637b3964dd9501ffa",
+  "productionSource": "3fee66773483ab3245f5efd734a26879e6a15336",
+  "staticPathsRetained": 452,
+  "functionsRetained": 13,
+  "publicRegistration": false,
+  "zoom": {
+    "meetingId": "82516112925",
+    "syntheticName": "HHL QA – Synthetic",
+    "accountRequired": false,
+    "passcodePrompt": false,
+    "waitingRoomObserved": true,
+    "hostAdmissionObserved": true,
+    "hostDisplayName": "Justyn Oliver",
+    "beforeHostBlocked": true,
+    "cameraPermissionGranted": false,
+    "microphonePermissionGranted": false,
+    "guestExited": true,
+    "guestTabClosed": true,
+    "settingsChanged": false,
+    "zoomNativeRegistrationEnabled": false,
+    "automatedAttendanceEnabled": false,
+    "attendanceCreditCreated": false,
+    "licenseOrReportingIndependentlyVerified": false
+  },
+  "providerReadiness": {
+    "ownerConfirmed": true,
+    "cleanupOwner": "Justyn Oliver",
+    "twelveMonthEventPolicyUnchanged": true,
+    "diagnosticVendorRetentionDisclosed": true
+  },
+  "controlledAcceptance": {
+    "operatorBoundFromActualAudit": true,
+    "sessionId": "c1537c23-a601-4bbd-b67e-2e21e19ec0cf",
+    "revision": 2,
+    "sessionDate": "2026-10-29",
+    "recipient": "dave@theboss.biz",
+    "registrationSubmitted": false,
+    "emailSent": false,
+    "blockedBeforeDependentAction": true,
+    "error": {
+      "status": 400,
+      "code": "21000",
+      "message": "UPDATE requires a WHERE clause"
+    },
+    "caseCleared": true,
+    "eventWebhookDisabled": true,
+    "allRuntimeEnablementFlagsHeld": true,
+    "caseRuntimePinsCleared": true
+  },
+  "database": {
+    "jobs": 0,
+    "settings": {
+      "singleton": true,
+      "zoom_enabled": false,
+      "acceptance_case": null,
+      "retention_enabled": false,
+      "registration_enabled": false,
+      "retention_healthy_at": null,
+      "notifications_enabled": false,
+      "provider_retention_ready": true
+    },
+    "qa_contacts": 0,
+    "registrations": 0,
+    "repair_targets": [
+      {
+        "md5": "2d011494a16059d1a692cdf970cf8fc9",
+        "name": "private.hhl_staff_guest_core(text,jsonb)"
+      },
+      {
+        "md5": "5bf2e0ce55b6679709a13d82f11dfba1",
+        "name": "private.hhl_maintain()"
+      }
+    ],
+    "repair_migration_installed": false
+  },
+  "localRepair": {
+    "migration": "20261021144712_health_hope_live_safe_updates.sql",
+    "sha256": "4799e7565458b36a33db5fefe73958d240f76441378a130f409d4f49a7156066",
+    "functions": 2,
+    "updatePredicatesAdded": 3,
+    "originalMigrationsChanged": 0,
+    "productionApplied": false,
+    "requiresNewScopeApproval": true,
+    "realGuardReproduction": true,
+    "tests": 6,
+    "passed": 6,
+    "existingFunctionsPreserved": 319,
+    "globalRolesChanged": false,
+    "temporaryDatabaseRemoved": true
+  }
+}

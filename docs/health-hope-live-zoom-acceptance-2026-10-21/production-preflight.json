@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-21T14:23:22.136Z",
+  "deployment": "6ad8bfbac855ac61228bb070",
+  "source": "3fee66773483ab3245f5efd734a26879e6a15336",
+  "locked": true,
+  "files": 452,
+  "functions": 13,
+  "manifestMatchesHeldInstallation": false,
+  "activeDeploys": [],
+  "functionsAndSchedulesUnchanged": true
+}

@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-21T14:51:55.978Z",
+  "id": "6ad8d01637b3964dd9501ffa",
+  "origin": "https://revitalizedacademy.com",
+  "checked": [
+    {
+      "path": "/founders.html",
+      "sha256": "f041311d071262bdb0c16d339a16f731688063e775574e5690a350f537191642"
+    },
+    {
+      "path": "/css/founders103.css",
+      "sha256": "43efe83bc2fd5b56d9fec4c13798894f435a4b2daca1ff72c040a0aba76b0034"
+    },
+    {
+      "path": "/assets/fonts/ooohbaby-regular.ttf",
+      "sha256": "904d1b79093da1ae4b7436ac2190ddf5048e3cb839b2dc0c0516d0f58a1c25ee"
+    },
+    {
+      "path": "/index.html",
+      "sha256": "a9d08803062f394eb5016ca0d59cf7455621ecc5adb63a19d9d8313006ab0036"
+    },
+    {
+      "path": "/health-hope-live.html",
+      "sha256": "1d73cf7db9f8dbfa7a3fb366f1414275b64e68bc50d1c6c39ce27e9edb16ab9e"
+    },
+    {
+      "path": "/portal/health-hope-live.js",
+      "sha256": "cc8aa5d08289ddfaff10f83efa6a7148314dec6ea933fb22a6929cb12de61a77"
+    },
+    {
+      "path": "/runtime-config.js",
+      "sha256": "e464e999fc0cc3e6ca5bc817bb5e18c4e46a862c9c87e1c9435000fc12c17b53"
+    }
+  ],
+  "publicSessionsHeld": true,
+  "anonymousRegistrationDenied": 503,
+  "functions": 13,
+  "passed": true
+}

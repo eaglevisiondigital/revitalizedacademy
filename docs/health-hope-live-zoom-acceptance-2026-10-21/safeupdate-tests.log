@@ -1,0 +1,21 @@
+New server guest contract rejected by the original event schema before any participant write.
+New privacy server contract rejected by guest-only schema before participant writes.
+Pre-repair service-role maintenance reproduces SQLSTATE 21000 with the actual pg-safeupdate library.
+PostgreSQL 17: historical schema plus 22 production migration files restored in disposable local database.
+✔ safe-update compatibility: real guard stays enforced while service maintenance succeeds (81.415917ms)
+✔ safe-update compatibility: genuine manager controls work without widening access (15.115708ms)
+✔ safe-update compatibility: expired provider data holds collection and preserves master contact (28.089208ms)
+✔ safe-update compatibility: controlled registration deduplicates Registered Guests and claims only confirmation (21.271875ms)
+✔ safe-update compatibility: repeating the narrow repair preserves all definitions and security (31.120333ms)
+✔ safe-update compatibility: unexpected function drift aborts the repair (11.880917ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 276.305291
+Existing table RLS/policies/ACLs and function ownership/ACLs preserved.
+Preserved all 319 pre-existing application function definitions.
+Disposable database removed; existing global roles unchanged.

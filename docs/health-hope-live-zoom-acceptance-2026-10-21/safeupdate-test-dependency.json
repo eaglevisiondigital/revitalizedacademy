@@ -1,0 +1,10 @@
+{
+  "repository": "https://github.com/eradman/pg-safeupdate",
+  "commit": "37dbc9c4acf5e2504adf2b218e9c6b41751022f3",
+  "sha256": "1351fc18b9a1e2dcc72185d349c178244458b5d9eb30007609c3d599b38aeb38",
+  "directory": "/private/tmp/rva-hhl-safeupdate-pCBmJX",
+  "scope": "Disposable local PostgreSQL test connection only; no installation or global setting change",
+  "librarySha256": "d5bc8a77788fac197650f77943b4c1f07e5160b3576c6e0be61b9fb5023fc581",
+  "compilation": "Command Line Tools clang with the macOS SDK; local bundle loaded only into test connections",
+  "temporaryWorkspaceRemoved": true
+}

@@ -1,0 +1,11 @@
+{
+  "source": "Actual service-role REST diagnostic, secret handled only in memory",
+  "status": 400,
+  "code": "21000",
+  "message": "UPDATE requires a WHERE clause",
+  "details": null,
+  "hint": null,
+  "credentialsPrinted": false,
+  "registrationSubmitted": false,
+  "emailSent": false
+}

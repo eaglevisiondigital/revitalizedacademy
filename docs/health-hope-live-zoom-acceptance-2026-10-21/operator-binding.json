@@ -1,0 +1,16 @@
+{
+  "session_id": "c1537c23-a601-4bbd-b67e-2e21e19ec0cf",
+  "revision": 2,
+  "status": "published",
+  "starts_at": "2026-10-29 22:30:00+00",
+  "zoom_meeting_id": "82516112925",
+  "audit_id": "345f9365-019f-4ec4-8da9-c2e4a08ea425",
+  "actor_id": "6e1559e5-2cc9-4c13-a829-abd6d807ba3c",
+  "action": "session-save",
+  "reason": "HHL controlled acceptance 2026-10-21: owner-approved October 29 session; guest link, Waiting Room, host admission and blocked early joining verified. Public registration remains held.",
+  "role": "owner",
+  "staff_status": "active",
+  "onboarding_status": "complete",
+  "contact_scope": "all",
+  "crm_manage": true
+}
