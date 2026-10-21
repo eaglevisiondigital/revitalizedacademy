@@ -9,7 +9,12 @@
  const staffSession=portal?.captureStaffSession();
  if(!report||!host||typeof staffSession?.userId!=='string'||portal.currentStaffRole?.()!=='owner')return;
  const section=document.createElement('section');section.className='roadmap-processing';
- const launch=document.createElement('button');launch.type='button';launch.textContent='Open authorized internal draft workflow';section.append(launch);(host.parentElement||host).append(section);
+ const launch=document.createElement('button');launch.type='button';launch.textContent='Open authorized internal draft workflow';section.append(launch);
+ // Keep actions/review outside the sticky answers + long manual-review grid.
+ const sourceWorkspace=host.closest('.rv6-workspace');
+ if(sourceWorkspace)sourceWorkspace.before(section);else(host.parentElement||host).append(section);
+ section.setAttribute('aria-label','Authorized internal draft workflow');
+ section.scrollIntoView?.({block:'start'});
  const guard=portal.createAuthenticatedTaskGuard(),sessionTask=guard.begin(),pending=new Set();let stopped=false,controller=null;
  const valid=()=>!stopped&&guard.current(sessionTask)&&portal.currentStaffRole?.()==='owner';
  const failure=state=>Object.assign(Error('Internal draft request not confirmed'),{state});

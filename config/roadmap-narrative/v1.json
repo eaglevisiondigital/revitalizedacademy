@@ -1,0 +1,209 @@
+{
+  "version": "founder-evidence-narrative-v1",
+  "status": "local_candidate_not_released",
+  "policySource": "VITALITY-ROADMAP-JUSTYN-DECISIONS-20261020.md",
+  "policyIds": [
+    "J20-C01",
+    "J20-C02",
+    "J20-C03",
+    "J20-C04",
+    "J20-C05",
+    "J20-C06",
+    "J20-C07"
+  ],
+  "contentBasis": "Approved assessment Driver scope and founder qualitative directions; coaching text below is a candidate synthesis for founder review, not an approved clinical knowledge base.",
+  "historicalMeaning": "Current pinned reference wording is not independently archived historical wording.",
+  "rules": {
+    "cellular_hydration": {
+      "topic": "Hydration routines",
+      "discussion": "Review the reported water and electrolyte routine in the person’s daily context. Agree on a feasible practice before proposing any amount or target.",
+      "goals": [
+        "Energy",
+        "Prevention",
+        "Healthy aging/longevity"
+      ],
+      "habits": [
+        "water_intake_consistency",
+        "electrolyte_consistency"
+      ],
+      "contentRef": "academy-questionnaire-743:cellular_hydration",
+      "interpretation": "The useful distinction here is routine consistency versus the reported experience: a hydration practice can be uneven even when the person understands its importance.",
+      "firstStep": "Choose one everyday transition when making water available would be practical. Check comfort, existing medical guidance and what gets in the way; agree on a routine rather than prescribing an amount."
+    },
+    "systemic_detoxification": {
+      "topic": "Movement and exposure context",
+      "discussion": "Review movement opportunities and reported exposures. Avoid interpreting these answers as a toxin measurement or prescribing a detox protocol.",
+      "goals": [
+        "Energy",
+        "Prevention",
+        "Healthy aging/longevity"
+      ],
+      "habits": [
+        "whole_body_movement",
+        "walking_regularity"
+      ],
+      "contentRef": "academy-questionnaire-743:systemic_detoxification",
+      "interpretation": "The movement and exposure answers can reveal where everyday habits are difficult to maintain. They do not measure detoxification; the coaching opportunity is a feasible change in the reported routine.",
+      "firstStep": "Choose one suitable movement opportunity in a day that currently involves prolonged sitting, or one reported exposure choice to review. Let capability and the person’s priorities determine the choice."
+    },
+    "electrobiology_rhythms": {
+      "topic": "Daily rhythm",
+      "discussion": "Explore how the reported sleep/wake pattern fits daily commitments; choose one feasible rhythm-related practice to discuss.",
+      "goals": [
+        "Sleep",
+        "Energy"
+      ],
+      "habits": [
+        "sleep_wake_consistency"
+      ],
+      "contentRef": "academy-questionnaire-743:electrobiology_rhythms",
+      "interpretation": "Timing consistency is a practical pattern to explore alongside reported energy or sleep difficulties. A regular habit may be useful to retain even when the person still reports an unsettled rhythm.",
+      "firstStep": "Compare one typical workday and rest day with the reported schedule. Choose one feasible timing cue to test and observe, rather than changing several sleep-related habits at once."
+    },
+    "the_living_diet": {
+      "topic": "Eating practices",
+      "discussion": "Choose one reported eating-practice gap to explore alongside food preferences and tolerance. Confidence is not evidence of nutrient adequacy.",
+      "goals": [
+        "Digestion",
+        "Energy",
+        "Body composition",
+        "Prevention"
+      ],
+      "habits": [
+        "eating_eat_slowly_enough_to_chew_thoroughly",
+        "eating_eat_while_relatively_relaxed",
+        "eating_eat_without_significant_distraction",
+        "eating_stop_eating_when_comfortably_satisfied",
+        "eating_consume_mostly_whole_minimally_processed_foods",
+        "eating_include_fermented_foods_if_tolerated",
+        "eating_avoid_habitual_overeating",
+        "eating_maintain_an_eating_rhythm_that_works_well_for_you"
+      ],
+      "contentRef": "academy-questionnaire-743:the_living_diet",
+      "interpretation": "The reported eating practices show where meal routines may support or frustrate the stated goal. A useful first pass focuses on how eating happens, rather than assuming a nutrient deficit from confidence ratings.",
+      "firstStep": "Choose one reported eating-practice gap at an ordinary meal, such as distraction or pace, and agree on a practical alternative that fits preferences and tolerance. Avoid a new restrictive diet."
+    },
+    "functional_training": {
+      "topic": "Movement capability and training",
+      "discussion": "Discuss the person’s desired activities and reported training structure. Any proposed practice must fit capability and professional guidance already in place.",
+      "goals": [
+        "Strength",
+        "Mobility",
+        "Athletic performance",
+        "Pain"
+      ],
+      "habits": [],
+      "contentRef": "academy-questionnaire-743:functional_training",
+      "interpretation": "Training structure and the activities the person wants to do provide a more useful coaching anchor than a generic fitness label. Reported limitations should shape the discussion even when a structured program already exists.",
+      "firstStep": "Select one personally meaningful, already appropriate activity and compare its demands with the reported routine. Agree what to observe or discuss with the person’s existing exercise or care professional before progressing it."
+    },
+    "holistic_recovery": {
+      "topic": "Recovery capacity",
+      "discussion": "Compare reported recovery practices with daily demands and reported recovery concerns. Explore an appropriate recovery opportunity without prescribing a treatment.",
+      "goals": [
+        "Sleep",
+        "Energy",
+        "Stress"
+      ],
+      "habits": [
+        "recovery_behavior_regular_sleep_schedule",
+        "recovery_behavior_relaxation_decompression",
+        "recovery_behavior_rest_days",
+        "recovery_behavior_walking_light_movement",
+        "recovery_behavior_mobility",
+        "recovery_behavior_breathwork",
+        "recovery_behavior_appropriate_recovery_after_training"
+      ],
+      "contentRef": "academy-questionnaire-743:holistic_recovery",
+      "interpretation": "Recovery should be considered relative to everyday demands. Consistent recovery practices are useful supports, but they do not cancel the person’s reported difficulty recovering or switching off.",
+      "firstStep": "Choose one reported recovery opportunity that currently gets missed. Fit an appropriate pause, rest opportunity or established recovery practice into that situation and review whether it is workable."
+    },
+    "gastrointestinal_renovation": {
+      "topic": "Digestive patterns and tolerance",
+      "discussion": "Discuss reported digestive patterns and tolerated food practices together. These answers cannot establish a microbiome condition or a food-related cause.",
+      "goals": [
+        "Digestion"
+      ],
+      "habits": [
+        "fermented_foods",
+        "fiber_whole_foods"
+      ],
+      "contentRef": "academy-questionnaire-743:gastrointestinal_renovation",
+      "interpretation": "Reported digestive experience and food-practice consistency can be discussed together without assuming a food or microbiome cause. The first useful step is to understand the pattern and tolerance, rather than prescribe a broad dietary change.",
+      "firstStep": "Keep a brief record of the reported digestive pattern and its daily-life relevance, with ordinary meal context if the person agrees. Use that record to choose a discussion point before adding exclusions or products."
+    },
+    "hormone_balancing": {
+      "topic": "Life-stage and reported changes",
+      "discussion": "Use the stated pathway and reported changes to guide questions. Do not infer hormone levels, a diagnosis or a need for supplements from this screen.",
+      "goals": [
+        "Hormones",
+        "Fertility",
+        "Mood",
+        "Body composition"
+      ],
+      "habits": [],
+      "contentRef": "academy-questionnaire-743:hormone_balancing",
+      "interpretation": "The reported life-stage context and changes give the founder a focused conversation to have. They are not a hormonal test, and an overall favorable habit pattern must not dismiss a concern the person wants addressed.",
+      "firstStep": "Organize the reported changes by when they are noticed and what they affect. Review this account with the founder and existing appropriate medical support before considering any supplement or hormone-related intervention."
+    },
+    "neural_repatterning": {
+      "topic": "Attention, learning and stress",
+      "discussion": "Explore how reported attention or stress difficulties affect a chosen daily activity. Discuss a manageable learning or attention practice without implying a neurological diagnosis.",
+      "goals": [
+        "Mental clarity",
+        "Stress",
+        "Energy"
+      ],
+      "habits": [
+        "challenging_learning",
+        "memory_skill_activities"
+      ],
+      "contentRef": "academy-questionnaire-743:neural_repatterning",
+      "interpretation": "The combination of reported attention, stress and learning habits can show where a daily task becomes difficult. This supports a practical focus conversation, without labeling the person’s neurological function.",
+      "firstStep": "Choose one important daily task and review the reported stimulation or stress context around it. Agree on one manageable attention or learning practice to observe, rather than assuming the cause of difficulty."
+    },
+    "momentum_regimens": {
+      "topic": "Follow-through and restart",
+      "discussion": "Fit a selected health practice into the reported weekly rhythm and agree on a restart strategy for disrupted days.",
+      "goals": [
+        "Prevention",
+        "Healthy aging/longevity"
+      ],
+      "habits": [
+        "daily_habit_consistency"
+      ],
+      "contentRef": "academy-questionnaire-743:momentum_regimens",
+      "interpretation": "The gap between intention, weekly structure and restarting is itself a useful coaching pattern. The practical question is how to make one chosen habit easier to resume when life interrupts it.",
+      "firstStep": "Attach one chosen practice to a reliable existing cue and agree what restarting after a disrupted day would look like. Keep the first commitment small enough for the person to judge it feasible."
+    },
+    "mentality_realignment": {
+      "topic": "Self-talk and supportive context",
+      "discussion": "Explore the person’s reported self-talk and supportive practices in relation to a stated goal. Keep this separate from diagnosis or mental-health treatment.",
+      "goals": [
+        "Stress",
+        "Mood"
+      ],
+      "habits": [
+        "gratitude",
+        "self_education"
+      ],
+      "contentRef": "academy-questionnaire-743:mentality_realignment",
+      "interpretation": "Reported self-talk and supportive practices can either support follow-through or make an ordinary setback harder to navigate. Explore the person’s own examples without turning a questionnaire pattern into a mental-health diagnosis.",
+      "firstStep": "Choose one reported constructive practice or supportive context to use around a familiar setback. Agree how the person would recognize a more helpful response, while preserving any existing professional support."
+    },
+    "wise_budgeting": {
+      "topic": "Resources and practical access",
+      "discussion": "Discuss a feasible next step within reported resources and access constraints. Budgeting remains a separate planning indicator and never reduces health scores.",
+      "goals": [],
+      "habits": [],
+      "contentRef": "academy-questionnaire-743:wise_budgeting",
+      "interpretation": "Reported planning, preparedness and access constraints affect which actions are feasible. The useful response is to match the next step to the person’s resources, not penalize health or assume that higher spending is better.",
+      "firstStep": "Review one current health-related expense or access barrier against the person’s stated priorities. Discuss a feasible option before proposing any new purchase; do not set a spending target."
+    }
+  },
+  "policySourceSha256": "49962b94080c282bc18b433ab2f36b93e362afeb39abc2a63b3d5b274b2b1478",
+  "assessmentReference": {
+    "consult.html": "aa2cebc36132f32e6f0b7f4032d0dcfc6b91e2ff0ff0bb137b28557667f643f4",
+    "js/vitality55.js": "f37245fe91407b8e2b02fbbebf91cf4af32f468ef67e321753f8d91ce0c4af59"
+  }
+}

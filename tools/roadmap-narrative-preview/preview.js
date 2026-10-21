@@ -1,0 +1,2 @@
+'use strict';
+(async()=>{const key=new URL(location.href).searchParams.get('case')||'river',host=document.getElementById('report');const request=async(body,{signal}={})=>{const r=await fetch('/review?case='+encodeURIComponent(key),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body),signal,cache:'no-store'});if(!r.ok)throw Error('Synthetic preview unavailable');return r.json();};window.controller=RVA_ROADMAP_PROCESSING.mount(host,{report:'00000000-0000-4000-8000-000000000001',request,onError:()=>{}});await controller.start();})();
