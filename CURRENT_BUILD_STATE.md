@@ -1,3 +1,9 @@
+## 2026-10-21 — Founder actions local usability repair; release held
+
+Isolated `codex/roadmap-visible-founder-actions`, parent3fee: move only existing draft-workflow section before the sticky answers/long manual-review grid and bump bootstrap v102. Two shipped paths, no CSS/handler/worker/auth/consent/source/scoring changes. Six baseline reproductions,14 synthetic Chromium/WebKit responsive/keyboard/touch/zoom/scroll/duplicate/logout/denied-role cases and48 focused regressions PASS. [Scope, evidence and release/rollback](docs/ROADMAP_FOUNDER_ACTIONS_LAYOUT_2026-10-21.md).
+
+Protected metadata: Caroline already has one source-matched12Driver draft completed15:48:42Z by Justyn's attributed session, before this repair. Alex/Johnny remain pending; no answers opened. Process/review=true; ingest/approve/internal_pdf=false; October22 08:45Central expiry unchanged. All13Functions/current Founders/HHL preserved. No push, deployment or publication. Separate HHL navigation work must not be mixed into this release.
+
 ## Founders hero — final underline-only correction, October 21, 2026
 
 Owner visually approved the latest local composition with one correction: remove the straight gold underline below the handwritten script. Only css/founders103.css changes at runtime: .script118 i background becomes none. The empty decorative box retains its dimensions so the rotated lettering and every other measured element remain exactly positioned. HTML, formal portrait, shield, font assets, all other CSS declarations/copy/buttons/backgrounds remain byte-identical to1d407498.
