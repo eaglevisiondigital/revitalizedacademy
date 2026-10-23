@@ -10,6 +10,8 @@ function createApp({portal,panel}){
  const eligible=()=>portal.captureStaffSession()&&portal.currentStaffRole?.()==='owner'&&portal.hasPermission?.('health.private.view')&&portal.hasPermission?.('crm.view')&&portal.hasPermission?.('health.progress.manage');
  const failure=kind=>{const error=Error('Saved review unavailable');error.reviewKind=kind;return error;};
  const sameAccount=()=>captured&&portal.captureStaffSession()?.userId===captured.userId;
+ const revalidating=()=>[portal.staffAccessStatus?.(),portal.permissionStatus?.()].some(s=>s&&s!=='ready');
+ const pause=event=>{if(!view||!controller)return;if(!sameAccount()){reset();return;}if(event?.type.endsWith('-unavailable')){refreshing=false;if(refreshTimer!==null)win.clearTimeout(refreshTimer);refreshTimer=null;}controller.suspend();showReconnect();};
  function close(force=false){
   if(!force&&controller?.isDirty()&&!win.confirm('Discard unsaved founder feedback and close this review?'))return false;
   epoch++;guard.cancel();controller?.stop();controller=null;view?.remove();view=null;
@@ -19,14 +21,20 @@ function createApp({portal,panel}){
  }
  function reset(){close(true);launch.hidden=true;captured=null;task=null;}
  async function request(action,report=null,payload={}){
-  if(!['list','read','review'].includes(action)||!eligible()||!captured||!sameAccount())throw failure('denied');
+  if(!['list','read','review'].includes(action)||!captured||!sameAccount())throw failure('denied');
+  if(revalidating())throw failure('temporary');
+  if(!eligible())throw failure('denied');
   if(!guard.current(task))throw failure('temporary');
   const e=epoch;let sessionResult;
   try{sessionResult=await portal.authClient.auth.getSession();}catch{throw failure('temporary');}
-  if(e!==epoch||!sameAccount()||sessionResult.data?.session?.user?.id!==captured?.userId)throw failure('denied');
-  if(sessionResult.error||!guard.current(task))throw failure('temporary');
+  if(e!==epoch||!sameAccount())throw failure('denied');
+  if(sessionResult.error)throw failure(['42501','28000'].includes(sessionResult.error.code)?'denied':'temporary');
+  if(sessionResult.data?.session?.user?.id!==captured?.userId)throw failure('denied');
+  if(revalidating()||!guard.current(task))throw failure('temporary');
   let result;try{result=await portal.authClient.rpc('roadmap_saved_review',{p_action:action,p_report:report,p_payload:payload});}catch{throw failure('temporary');}
-  if(e!==epoch||!sameAccount()||!eligible())throw failure('denied');
+  if(e!==epoch||!sameAccount())throw failure('denied');
+  if(revalidating())throw failure('temporary');
+  if(!eligible())throw failure('denied');
   if(!guard.current(task))throw failure('temporary');
   if(result.error){const code=result.error.code;throw failure(code==='22023'&&action==='review'?'validation':code==='40001'&&action==='review'?'conflict':['42501','22023','28000'].includes(code)?'denied':'temporary');}
   return result.data;
@@ -34,6 +42,17 @@ function createApp({portal,panel}){
  function showReconnect(){if(!view)return;if(resumeButton)resumeButton.hidden=false;if(status)status.textContent='Review paused for reconnection. Unsaved feedback is held only in this tab’s memory. No processing or automatic save was requested.';}
  async function reconnect(){
   if(!controller||!view||refreshing)return;if(reconnecting){if(!guard.current(task))reconnectQueued=true;return reconnecting;}
+  if(!sameAccount()){reset();return;}
+  if(revalidating()){
+   // Explicit read-only recovery of a failed staff/permission recheck. Never
+   // re-send a feedback write or treat cached permissions as authorization.
+   refreshing=true;
+   try{if(portal.staffAccessStatus?.()!=='ready'&&portal.reauthorizeStaffSession)await portal.reauthorizeStaffSession();
+    if(sameAccount()&&portal.staffAccessStatus?.()!=='temporary'&&portal.permissionStatus?.()!=='ready'&&portal.refreshPermissions)await portal.refreshPermissions();
+   }finally{refreshing=false;}
+   if(!view||!controller)return;
+   if(revalidating()){pause();return;}
+  }
   if(!sameAccount()||!eligible()){reset();return;}
   const e=epoch;task=guard.begin();if(!task){reset();return;}
   resumeButton.disabled=true;status.textContent='Rechecking your current session and exact saved report authorization…';
@@ -43,6 +62,7 @@ function createApp({portal,panel}){
   })().finally(()=>{if(e===epoch){reconnecting=null;if(resumeButton)resumeButton.disabled=false;if(reconnectQueued){reconnectQueued=false;void reconnect();}}});return reconnecting;
  }
  function initialize(){
+  if(view&&controller&&revalidating()){pause();return;}
   if(view&&controller){if(!sameAccount()||!eligible()){reset();return;}launch.hidden=false;
    if(refreshTimer!==null)win.clearTimeout(refreshTimer);refreshTimer=null;refreshing=false;controller.suspend();void reconnect();return;}
   reset();if(eligible())launch.hidden=false;
@@ -56,7 +76,7 @@ function createApp({portal,panel}){
   if(refreshTimer!==null)win.clearTimeout(refreshTimer);
   // A failed permissions reload may emit no completion event. Leave content hidden
   // and offer one explicit read-only resume, rather than retrying writes or looping.
-  refreshTimer=win.setTimeout(()=>{refreshTimer=null;refreshing=false;if(!sameAccount()||!eligible())reset();else showReconnect();},10000);
+  refreshTimer=win.setTimeout(()=>{refreshTimer=null;refreshing=false;if(!sameAccount())reset();else if(revalidating())pause();else if(!eligible())reset();else showReconnect();},10000);
  }
  async function open(){
   if(pending||!eligible())return;if(view){view.focus();return;}if(opener)return opener;
@@ -78,11 +98,13 @@ function createApp({portal,panel}){
   }catch{if(e===epoch){controller?.stop();status.textContent='Saved review unavailable. Check the current session and separate review window. No processing was requested.';}}
   finally{if(e===epoch)pending=false;opener=null;}})();return opener;
  }
- launch.onclick=open;const focus=()=>{if(!eligible())reset();};
+ launch.onclick=open;const focus=()=>{if(view&&sameAccount()&&revalidating())pause();else if(!eligible())reset();};
  const keys=e=>{if(!view)return;if(e.key==='Escape'){e.preventDefault();close();return;}if(e.key==='Tab'){const items=[...view.querySelectorAll('button:not(:disabled),input:not(:disabled),textarea,select,summary')].filter(x=>x.getClientRects().length);if(!items.length)return;const first=items[0],last=items.at(-1);if(e.shiftKey&&(doc.activeElement===first||doc.activeElement===view)){e.preventDefault();last.focus();}else if(!e.shiftKey&&doc.activeElement===last){e.preventDefault();first.focus();}}};
  const authSubscription=portal.authClient.auth.onAuthStateChange?.(renewal)?.data?.subscription;
+ const pauseEvents=['ra:staff-access-refreshing','ra:staff-access-unavailable','ra:permissions-loading','ra:permissions-unavailable'];
+ pauseEvents.forEach(event=>doc.addEventListener(event,pause));
  doc.addEventListener('ra:staff-access-reset',reset);doc.addEventListener('ra:permissions-loaded',initialize);win.addEventListener('pagehide',reset);win.addEventListener('focus',focus);doc.addEventListener('keydown',keys);initialize();
- return{open,close,reset,initialize,stop(){reset();authSubscription?.unsubscribe();launch.remove();doc.removeEventListener('ra:staff-access-reset',reset);doc.removeEventListener('ra:permissions-loaded',initialize);win.removeEventListener('pagehide',reset);win.removeEventListener('focus',focus);doc.removeEventListener('keydown',keys);}};
+ return{open,close,reset,initialize,stop(){reset();authSubscription?.unsubscribe();launch.remove();pauseEvents.forEach(event=>doc.removeEventListener(event,pause));doc.removeEventListener('ra:staff-access-reset',reset);doc.removeEventListener('ra:permissions-loaded',initialize);win.removeEventListener('pagehide',reset);win.removeEventListener('focus',focus);doc.removeEventListener('keydown',keys);}};
 }
 root.RVA_SAVED_ROADMAP_REVIEW=Object.freeze({createApp});
 const env=root.RVA_ENV,portal=root.RA_PORTAL,panel=root.document?.getElementById('vitality-assessments-panel');

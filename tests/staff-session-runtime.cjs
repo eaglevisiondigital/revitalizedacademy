@@ -197,3 +197,17 @@ test('different-account event destroys the prior staff document before resolving
   assert.equal(h.w.document.getElementById('portal-view'),null);
   assert(h.stopped());
 });
+
+test('same-account access transport failure pauses without restarting or trusting cached access',async t=>{
+  let failed=true;
+  const h=harness(t,authHub(),{staffAccess:call=>call>1&&failed?{error:{code:'503'}}:{data:{status:'active',display_name:'Synthetic Owner',role:'owner',contact_scope:'all'}}});
+  await wait();const original=h.w.document.getElementById('portal-view'),guard=h.w.RA_PORTAL.createAuthenticatedTaskGuard(),task=guard.begin();
+  h.emit('TOKEN_REFRESHED','owner-a','renewed');await wait();assert.equal(h.w.document.getElementById('portal-view'),original);assert.equal(h.w.RA_PORTAL.staffAccessStatus(),'temporary');assert.equal(guard.current(task),false);assert.equal(h.stopped(),false);
+  failed=false;assert.equal(await h.w.RA_PORTAL.reauthorizeStaffSession(),true);assert.equal(h.w.document.getElementById('portal-view'),original);assert.equal(h.w.RA_PORTAL.staffAccessStatus(),'ready');
+});
+test('a thrown same-account access request remains recoverable without an unhandled exception',async t=>{
+  const h=harness(t,authHub(),{staffAccess:call=>{if(call===2)throw Error('Fictional network failure');return {data:{status:'active',role:'owner',contact_scope:'all'}};}});await wait();h.emit('TOKEN_REFRESHED','owner-a','renewed');await wait();assert.equal(h.w.RA_PORTAL.staffAccessStatus(),'temporary');assert(h.w.document.getElementById('portal-view'));assert.deepEqual(h.errors,[]);
+});
+test('authoritative denial or changed role still destroys the old workspace',async t=>{
+  for(const change of [{error:{code:'42501'}},{data:{status:'active',role:'coach',contact_scope:'assigned'}}]){const h=harness(t,authHub(),{staffAccess:call=>call===1?{data:{status:'active',role:'owner',contact_scope:'all'}}:change});await wait();h.emit('TOKEN_REFRESHED','owner-a','changed');await wait();assert.equal(h.w.document.getElementById('portal-view'),null);assert(h.stopped());}
+});

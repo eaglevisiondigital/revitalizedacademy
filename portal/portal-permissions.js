@@ -9,9 +9,12 @@
   let permissions={};
   let observing=false;
   let startupTimer=null;
+  let state="ready";
+  portal.permissionStatus=()=>state;
+  portal.refreshPermissions=loadPermissions;
 
   function has(key){
-    return Boolean(permissions[key]);
+    return state==="ready"&&Boolean(permissions[key]);
   }
 
   portal.hasPermission=has;
@@ -68,16 +71,22 @@
 
   async function loadPermissions(){
     const task=tasks.begin();
-    if(!task)return;
-    const {data,error}=await client.from("my_staff_permissions_view").select("*");
-    if(!tasks.current(task))return;
+    if(!task)return false;
+    state="refreshing";
+    document.dispatchEvent(new CustomEvent("ra:permissions-loading"));
+    let result;try{result=await client.from("my_staff_permissions_view").select("*");}catch{result={error:{code:"NETWORK"}};}
+    if(!tasks.current(task))return false;
+    const {data,error}=result;
     if(error){
-      console.error("Staff permissions failed",error);
-      permissions={};
+      const denied=["42501","28000","PGRST301","PGRST302","PGRST303"].includes(error.code)||[401,403].includes(error.status);
+      state=denied?"ready":"temporary";
+      if(denied)permissions={};
       applyVisibility();
-      return;
+      document.dispatchEvent(new CustomEvent(denied?"ra:permissions-loaded":"ra:permissions-unavailable"));
+      return false;
     }
 
+    state="ready";
     permissions=Object.fromEntries((data||[]).map((row)=>[
       row.permission_key,Boolean(row.allowed)
     ]));
@@ -86,6 +95,7 @@
     document.dispatchEvent(new CustomEvent("ra:permissions-loaded",{
       detail:{permissions:{...permissions}}
     }));
+    return true;
   }
 
   const observer=new MutationObserver(()=>applyVisibility());
@@ -97,6 +107,7 @@
   function teardown(){
     tasks.cancel();
     permissions={};
+    state="ready";
     observer.disconnect();
     observing=false;
     if(startupTimer!==null)window.clearTimeout(startupTimer);

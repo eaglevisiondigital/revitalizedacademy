@@ -44,8 +44,11 @@
   let initialSessionSettled=false,settleInitialSession;
   const initialSessionReady=new Promise((resolve)=>{settleInitialSession=(session)=>{if(initialSessionSettled)return;initialSessionSettled=true;resolve(session||null);};});
   let staffSessionLoadKey=null,staffSessionLoadPromise=null;
+  let staffAccessState="ready",currentStaffAccess=null;
+  const accessDenied=error=>["42501","28000","PGRST301","PGRST302","PGRST303"].includes(error?.code)||[401,403].includes(error?.status);
 
   function resetStaffAccess(){
+    staffAccessState="ready";currentStaffAccess=null;
     sessionEpoch++;resolvingUser=null;currentUserId=null;staffDirectory=[];activeContactId=null;
     staffSessionLoadKey=null;staffSessionLoadPromise=null;
     document.dispatchEvent(new CustomEvent("ra:staff-access-reset"));
@@ -61,6 +64,7 @@
     return Boolean(
       token&&
       !terminatingSession&&
+      staffAccessState==="ready"&&
       currentUserId&&
       token.epoch===sessionEpoch&&
       token.userId===currentUserId&&
@@ -600,7 +604,9 @@
   async function resolveStaff(session) {
     if(terminatingSession)return;
     if(currentUserId&&currentUserId!==session?.user?.id){endStaffDocument();return;}
+    const renewing=Boolean(currentUserId&&currentUserId===session?.user?.id);
     const epoch=++sessionEpoch;resolvingUser=session?.user?.id||null;
+    if(renewing){staffAccessState="refreshing";document.dispatchEvent(new CustomEvent("ra:staff-access-refreshing"));}
     if (!session?.user) {
       showLogin();
       return;
@@ -614,11 +620,19 @@
       return;
     }
 
-    const { data: staffRows, error } = await authClient.rpc("get_my_staff_access");
+    let accessResult;
+    try{accessResult=await authClient.rpc("get_my_staff_access");}catch{accessResult={error:{code:"NETWORK"}};}
+    const { data: staffRows, error } = accessResult;
     if(epoch!==sessionEpoch||terminatingSession)return;
     const staff = Array.isArray(staffRows) ? (staffRows[0] || null) : staffRows;
 
     if (error) {
+      if(renewing&&!accessDenied(error)){
+        staffAccessState="temporary";
+        document.dispatchEvent(new CustomEvent("ra:staff-access-unavailable"));
+        showStatus(portalStatus,"Staff access could not be rechecked. Private review is paused; reconnect without refreshing this page.","error");
+        return;
+      }
       showLogin();
       showStatus(loginStatus, "Your login worked, but staff access could not be checked. Please try again.", "error");
       return;
@@ -642,7 +656,18 @@
       return;
     }
 
+    if(renewing){
+      // A token renewal is not a dashboard navigation. Authoritative changes still
+      // tear down the document; unchanged access never rebuilds private components.
+      if(!currentStaffAccess||["role","contact_scope","onboarding_status"].some(key=>staff[key]!==currentStaffAccess[key])){endStaffDocument();return;}
+      currentStaffAccess={...staff};staffAccessState="ready";
+      document.dispatchEvent(new CustomEvent("ra:staff-access-refreshed"));
+      document.dispatchEvent(new CustomEvent("ra:permissions-refresh"));
+      return;
+    }
+
     currentUserId = session.user.id;
+    currentStaffAccess={...staff};staffAccessState="ready";
     await loadStaffDirectory();
     if(epoch!==sessionEpoch||terminatingSession)return;
     showPortal(staff);
@@ -669,6 +694,16 @@
       if(staffSessionLoadKey===key)staffSessionLoadPromise=null;
     });
     return staffSessionLoadPromise;
+  }
+
+  async function reauthorizeStaffSession(){
+    const actor=currentUserId;if(!actor||terminatingSession)return false;
+    let result;try{result=await authClient.auth.getSession();}catch{return false;}
+    if(terminatingSession||currentUserId!==actor)return false;
+    if(result.error){if(accessDenied(result.error))endStaffDocument();return false;}
+    if(result.data?.session?.user?.id!==actor){endStaffDocument();return false;}
+    await restoreStaffSession(result.data.session,{force:true});
+    return !terminatingSession&&currentUserId===actor&&staffAccessState==="ready";
   }
 
   async function loadDashboard() {
@@ -940,6 +975,8 @@
     captureStaffSession,
     isStaffSessionCurrent,
     createAuthenticatedTaskGuard,
+    staffAccessStatus:()=>staffAccessState,
+    reauthorizeStaffSession,
     invalidateSession: endStaffDocument,
     openContact,
     loadDashboard,
