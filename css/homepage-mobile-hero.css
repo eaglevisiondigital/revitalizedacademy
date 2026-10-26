@@ -110,6 +110,11 @@
     text-align:center;
     color:#fffdf7!important;
   }
+  #about.hero54 .hero54-sub strong {
+    display:block;
+    white-space:nowrap;
+    color:#f2c44e;
+  }
   #about.hero54 .hero54-text {grid-row:5;margin:0 22px!important;line-height:1.6!important;}
   #about.hero54 .hero54-actions {grid-row:6;margin:22px 22px 0!important;}
   #about.hero54 .rva-report-preview-trigger {
