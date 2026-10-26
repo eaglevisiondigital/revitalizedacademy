@@ -108,12 +108,14 @@
     grid-row:4;
     margin:24px 22px 14px!important;
     text-align:center;
-    color:#fffdf7!important;
+    color:#f2c44e!important;
+    font-size:18px!important;
   }
   #about.hero54 .hero54-sub strong {
     display:block;
     white-space:nowrap;
     color:#f2c44e;
+    font-size:19px;
   }
   #about.hero54 .hero54-text {grid-row:5;margin:0 22px!important;line-height:1.6!important;}
   #about.hero54 .hero54-actions {grid-row:6;margin:22px 22px 0!important;}
