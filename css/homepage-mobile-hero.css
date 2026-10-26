@@ -1,0 +1,86 @@
+/* Homepage only. The portrait is the unchanged approved PNG, at its native ratio.
+   No rules apply at tablet/desktop widths; existing copy and handlers are reused. */
+@media (max-width:600px) {
+  body[data-build="54"] > .site-header {
+    height:78px!important;
+    min-height:78px!important;
+    padding:0 16px!important;
+    grid-template-columns:minmax(0,1fr) auto!important;
+    gap:12px!important;
+  }
+  body[data-build="54"] > .site-header .brand img {
+    width:min(66vw,272px)!important;
+    max-height:60px!important;
+  }
+  body[data-build="54"] > .site-header .menu-toggle {grid-column:2!important;min-width:48px!important;min-height:44px!important;}
+  body[data-build="54"] > .site-header .header-cta {display:none!important;}
+  body[data-build="54"] > .site-header .main-nav.open {top:78px!important;}
+
+  #about.hero54 {
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    padding:26px 0 28px!important;
+    background:linear-gradient(180deg,rgba(0,43,32,.90),rgba(0,43,32,.82) 30%,rgba(0,43,32,.35) 58%,#073f33 82%),url('../assets/images/free-help80/emerald-botanical.webp') center top/cover no-repeat,#073f33!important;
+  }
+  #about.hero54 > .hero54-bg,
+  #about.hero54::before {display:none!important;}
+  /* Flatten only the layout wrapper, retaining the original live text and links. */
+  #about.hero54 .hero54-copy {display:contents!important;}
+  #about.hero54 .hero54-eyebrow {
+    grid-row:1;
+    margin:0 20px 18px!important;
+    text-align:center;
+    font-size:0!important;
+  }
+  #about.hero54 .hero54-eyebrow::after {
+    font-size:10px;
+    line-height:1.5;
+    letter-spacing:.12em;
+    color:#f3ce71;
+  }
+  #about.hero54 h1 {
+    grid-row:2;
+    width:auto!important;
+    max-width:none!important;
+    margin:0 18px 12px!important;
+    font-size:clamp(36px,10.7vw,62px)!important;
+    line-height:1.02!important;
+    letter-spacing:-.035em!important;
+    text-align:center;
+    color:#fffdf7!important;
+  }
+  #about.hero54 h1 span {color:#f2c654!important;}
+  #about.hero54 > .hero54-founders {
+    grid-row:3;
+    position:relative!important;
+    inset:auto!important;
+    width:100%!important;
+    height:auto!important;
+    max-width:none!important;
+    max-height:none!important;
+    margin:0!important;
+    object-fit:contain!important;
+    object-position:center!important;
+    filter:none!important;
+    transform:none!important;
+    opacity:1!important;
+    /* These two backgrounds sit BEHIND the original transparent image pixels. */
+    background:radial-gradient(ellipse 68% 91% at 50% 100%,transparent 98.3%,#e5c16d 98.6%,#f7dfa0 99.2%,transparent 99.6%),radial-gradient(ellipse 65% 73% at 50% 100%,#f7edce 99.5%,transparent 100%);
+  }
+  #about.hero54 .hero54-sub {
+    grid-row:4;
+    margin:24px 22px 14px!important;
+    text-align:center;
+    color:#fffdf7!important;
+  }
+  #about.hero54 .hero54-text {grid-row:5;margin:0 22px!important;line-height:1.6!important;}
+  #about.hero54 .hero54-actions {grid-row:6;margin:22px 22px 0!important;}
+  #about.hero54 .rva-report-preview-trigger {
+    grid-row:7;
+    color:#f7dfa0!important;
+    margin:10px 22px 0!important;
+    max-width:calc(100% - 44px);
+  }
+  #about.hero54 .hero54-note {grid-row:8;margin:18px 22px 0!important;}
+  #about.hero54 :is(a,button):focus-visible {outline:3px solid #fffdf7;outline-offset:4px;}
+}
