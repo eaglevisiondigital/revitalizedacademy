@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="941" height="1280" viewBox="0 0 941 1280">
+<!-- Editable background decoration only; never contains or modifies the portrait. -->
+<defs>
+ <radialGradient id="glow"><stop stop-color="#568c50" stop-opacity=".6"/><stop offset="1" stop-color="#002e22" stop-opacity="0"/></radialGradient>
+ <linearGradient id="leaf" x2="1" y2="1"><stop stop-color="#a6b66b"/><stop offset=".35" stop-color="#628a48"/><stop offset=".7" stop-color="#285837"/><stop offset="1" stop-color="#082f26"/></linearGradient>
+ <linearGradient id="gold" x2="1"><stop stop-color="#8f913d"/><stop offset=".5" stop-color="#f1d588"/><stop offset="1" stop-color="#9e9c54"/></linearGradient>
+ <filter id="soft"><feGaussianBlur stdDeviation="15"/></filter>
+ <path id="blade" d="M0 0C-35-44-40-108 0-161C35-108 32-43 0 0Z"/>
+ <g id="sprig" fill="url(#leaf)">
+  <path d="M0 420Q45 250 4-130" fill="none" stroke="#7b9959" stroke-width="3"/>
+  <use href="#blade" transform="translate(4 280)rotate(-65)scale(1.2)"/>
+  <use href="#blade" transform="translate(12 240)rotate(57)"/>
+  <use href="#blade" transform="translate(18 170)rotate(-52)"/>
+  <use href="#blade" transform="translate(20 110)rotate(52)scale(.9)"/>
+  <use href="#blade" transform="translate(15 45)rotate(-40)scale(.82)"/>
+  <use href="#blade" transform="translate(6 -12)rotate(35)scale(.7)"/>
+  <use href="#blade" transform="translate(0 -75)rotate(15)scale(.65)"/>
+ </g>
+</defs>
+<path fill="#002e22" d="M0 0H941V1280H0Z"/>
+<ellipse cx="130" cy="680" rx="260" ry="420" fill="url(#glow)"/>
+<ellipse cx="850" cy="580" rx="240" ry="480" fill="url(#glow)"/>
+<g opacity=".8" filter="url(#soft)">
+ <use href="#sprig" transform="translate(-70 390)rotate(42)scale(1.7)"/>
+ <use href="#sprig" transform="translate(1040 660)rotate(-45)scale(1.6)"/>
+</g>
+<g opacity=".85">
+ <use href="#sprig" transform="translate(-48 830)rotate(21)scale(1.3)"/>
+ <use href="#sprig" transform="translate(1010 1050)rotate(-32)scale(1.4)"/>
+</g>
+<g fill="none" stroke="url(#gold)" stroke-width="2" opacity=".9">
+ <path d="M-36 850Q-15 545 113 405Q56 610-36 850M113 405L-12 704M113 405L-9 511M-36 850L-4 580"/>
+ <path d="M1010 1010Q900 785 815 758Q920 742 1008 800M815 758L1000 880M815 758Q905 865 962 967"/>
+</g>
+</svg>

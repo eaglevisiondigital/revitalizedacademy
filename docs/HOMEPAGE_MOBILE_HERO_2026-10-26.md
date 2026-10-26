@@ -2,7 +2,17 @@
 
 Prepared on October 26, 2026 on `codex/homepage-mobile-hero`, based on canonical source `c93d1ae0bfee91399e289255f61ca38ee937b522`, deploy `6adac7d8b359cd28fa92d960`. No push, deployment, production state change or participant access.
 
-## Narrow implementation
+## Revision after owner rejected the first preview — October 26
+
+The initial local SHA103890b was not visually approved; do not release it. The revised mobile design changes the headline to locally hosted SIL-OFL DM Serif Display, matches the compact cream header/hamburger control and coaching-label divider, tightens the five-line headline rhythm, and adds editable SVG botanical depth and smooth gold/cream framing. Both coaching phrases already exist in the current desktop source/generated caption; no headline, subheadline, body, CTA or note wording is rewritten. The image source and every image byte remain exact; no transform, filter, image cropping or AI processing. The mockup contains a longer lower-body composition than the supplied original PNG; that area is not fabricated or stretched. Match claims are limited to composition/direction pending owner visual approval.
+
+All changes remain within max-width600px. The shared header/other-page CSS and all JavaScript handlers are unchanged. New assets are the DM Serif Display font/license and a code-native botanical background SVG, containing no portrait or text. The original CSS-radial edge was replaced by a vector arch behind the portrait for smoother rendering.
+
+A separate local-only review page http://127.0.0.1:48934/mobile-preview.html frames the actual homepage at390px with320/430/600px selectors. The earlier in-app panel was685px wide and thus correctly displayed the unchanged tablet layout, which was an inadequate mobile review link. The review frame uses the same real HTML/CSS; it is not a bitmap. Its local-only fixture suppresses the existing40-second promotional popup so the visual comparison stays visible. Production JS and popup behavior are unchanged; the wrapper/fixture are not release artifacts.
+
+The updated18-case Chromium/WebKit matrix passes, including10 pixel-identical tablet/desktop comparisons,8 mobile menu/keyboard/touch/CTA/modal/source-image/ratio cases and new custom-font/hamburger checks. No hosted calls or writes. Revised evidence lives in deployment-evidence/2026-10-26-homepage-mobile-hero/revision2. Original first-preview evidence is historical. Owner approval remains pending; no push/candidate/deploy.
+
+## First-preview implementation (historical)
 
 Only runtime changes are the homepage stylesheet include and new `css/homepage-mobile-hero.css`. Both the HTML link media condition and all CSS rules are restricted to **max-width:600px**. Tablet and desktop widths above 600px retain their existing styling. The shared header stylesheet, all JavaScript/action handlers, portrait, logos and existing decorative assets are unchanged.
 
