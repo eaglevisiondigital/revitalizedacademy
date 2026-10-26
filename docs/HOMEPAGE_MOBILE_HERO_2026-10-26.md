@@ -1,3 +1,7 @@
+## Mobile hero realism correction — LOCAL VISUAL REVIEW — 2026-10-26
+
+Owner rejected the illustrated botanical treatment. Replaced that unpublished background with a generated photographic botanical layer, softly overlaid in CSS to keep the headline clear. No founders image was sent to image generation: the tool produced foliage/background only. The original approved portrait remains a separate, byte-identical PNG with natural dimensions and no filter/transform/crop. The cream/gold arch and all text/buttons remain live HTML/CSS. Removed the unused unpublished SVG. All rules remain <=600px; 18 Chromium/WebKit cases PASS, including 10 pixel-identical tablet/desktop comparisons. No other page/backend changes or hosted actions. Preview: http://127.0.0.1:48934/mobile-preview.html . Visual approval remains pending; no push/deploy. The supplied portrait ends at the waist; the mockup's longer body composition cannot be matched without inventing pixels, which was not done.
+
 # Homepage mobile hero — local visual review
 
 Prepared on October 26, 2026 on `codex/homepage-mobile-hero`, based on canonical source `c93d1ae0bfee91399e289255f61ca38ee937b522`, deploy `6adac7d8b359cd28fa92d960`. No push, deployment, production state change or participant access.

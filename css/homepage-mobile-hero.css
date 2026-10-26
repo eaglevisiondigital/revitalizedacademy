@@ -44,7 +44,7 @@
     display:grid!important;
     grid-template-columns:minmax(0,1fr)!important;
     padding:clamp(19px,5vw,30px) 0 28px!important;
-    background:linear-gradient(180deg,transparent 0 68%,#073f33 90%),url('../assets/images/home/mobile-hero-botanical.svg') center top/100% auto no-repeat,#002e22!important;
+    background:linear-gradient(180deg,#002e22 0%,rgba(0,46,34,.92) 20%,rgba(0,46,34,.7) 40%,rgba(0,46,34,.15) 72%,#002e22 100%) center top/100% 165vw no-repeat,url('../assets/images/home/mobile-hero-photographic-v3.png') center top/100% 165vw no-repeat,#002e22!important;
   }
   #about.hero54 > .hero54-bg,
   #about.hero54::before {display:none!important;}
