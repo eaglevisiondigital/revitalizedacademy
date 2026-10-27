@@ -1,0 +1,1704 @@
+{
+  "version": "founder-direction-narrative-20261027-v2-local",
+  "status": "LOCAL ONLY; explicit opt-in; no deployed caller changed",
+  "registrySha256": "2f67c193c2e69b54d61a44599bf9308ca27d317f2bdb748adbeaedfdabe92ced",
+  "founderSource": {
+    "sourceType": "founder supplementary notes",
+    "documentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+    "pages": 9,
+    "sourcePreservedUnchanged": true,
+    "portalProposalCoverage": {
+      "verifiedDrivers": 1,
+      "totalDrivers": 12,
+      "portalTextImported": false
+    },
+    "sourceCoverageMeaning": "All twelve source sections preserved in private comparison. This shared manifest contains only vetted reusable directions; case-specific interpretations/consultation facts remain private exemplars, not global rules."
+  },
+  "policies": [
+    {
+      "id": "J20-C01",
+      "direction": "Poor lifestyle habits reduce Driver scores even when no symptoms are present, but less severely than when symptoms already exist."
+    },
+    {
+      "id": "J20-C02",
+      "direction": "Symptoms have the greatest influence, especially when they negatively affect daily life. Excellent habits help but must not conceal significant impairment."
+    },
+    {
+      "id": "J20-C03",
+      "direction": "Severe concerns with meaningful quality-of-life impact take priority over favorable averages."
+    },
+    {
+      "id": "J20-C04",
+      "direction": "Symptom-to-Driver ownership and overlap rules should be expanded through controlled calibration; do not duplicate one symptom as independent burden across Drivers."
+    },
+    {
+      "id": "J20-C05",
+      "direction": "Missing information should trigger targeted clarification and potentially future questionnaire improvements, not invented scores."
+    },
+    {
+      "id": "J20-C06",
+      "direction": "Overall Health Spectrum classification prioritizes the strongest evidence of negative daily-life impact."
+    },
+    {
+      "id": "J20-C07",
+      "direction": "Action priorities balance symptom severity and ease of improvement."
+    }
+  ],
+  "rules": [
+    {
+      "driver": "cellular_hydration",
+      "actions": [
+        {
+          "id": "FD27-cellular_hydration-c9c45d86a8",
+          "text": "Establish clear daily water tracking & consistent drinking habits",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "field",
+            "field": "water_intake_consistency"
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 1,
+            "textSha256": "c9c45d86a8e1ec13f70781d06ffadebcc3db4c8b2904f2282f29c87329b48454",
+            "sourceDriver": "cellular_hydration"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        },
+        {
+          "id": "FD27-cellular_hydration-2e8f068ffa",
+          "text": "Practice drinking water during everyday habits & activities",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "field",
+            "field": "water_intake_consistency"
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 1,
+            "textSha256": "2e8f068ffa7b339f599131e342997b830c363de08d9f20bcaf2020ead295d31d",
+            "sourceDriver": "cellular_hydration"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        },
+        {
+          "id": "FD27-cellular_hydration-30d86aea3e",
+          "text": "Prioritize dietary electrolyte consumption daily",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "field",
+            "field": "electrolyte_consistency"
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 1,
+            "textSha256": "30d86aea3e8c95212aaf5f7a072ea840977454c80a559dbabfd48e81b8eb64a8",
+            "sourceDriver": "cellular_hydration"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        },
+        {
+          "id": "FD27-cellular_hydration-a6a65cc7b5",
+          "text": "Increase daily water consumption to account for increased sweating and high temperature",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "context_verification_required",
+          "ownerDecision": null,
+          "when": {
+            "op": "uncollected_context",
+            "name": "verified_increased_sweating_or_heat_exposure"
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 1,
+            "textSha256": "a6a65cc7b531448d9c04c9c2834029493a2a42cf828f0e3b5cf9e30363e5aa7b",
+            "sourceDriver": "cellular_hydration"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        }
+      ],
+      "sourceSection": {
+        "documentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+        "startPage": 1,
+        "endPage": 1
+      },
+      "caseSpecificExemplar": "Preserved only in private source comparison; never copied to another participant.",
+      "numericalRanges": "Preserved in private founder source, not adopted as score values or coefficients."
+    },
+    {
+      "driver": "systemic_detoxification",
+      "actions": [
+        {
+          "id": "FD27-systemic_detoxification-ed0b692150",
+          "text": "Reduce chemical exposures in your home where possible",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "any",
+            "items": [
+              {
+                "op": "field",
+                "field": "lung_exposures"
+              },
+              {
+                "op": "field",
+                "field": "hormone_exposure_markers"
+              }
+            ]
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 2,
+            "textSha256": "ed0b6921508733152418808946aa66054a2fb4e148c84af2ad9bfbbe03f2a281",
+            "sourceDriver": "systemic_detoxification"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        },
+        {
+          "id": "FD27-systemic_detoxification-df0bf859a7",
+          "text": "Reduce unnecessary alcohol exposure",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "uncollected_context",
+            "name": "verified_alcohol_exposure"
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 2,
+            "textSha256": "df0bf859a7933d001c88b6dc22266548d7f76319cf934b0966bb61eb994b0299",
+            "sourceDriver": "systemic_detoxification"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        },
+        {
+          "id": "FD27-systemic_detoxification-4929fa80af",
+          "text": "Review medications to potentially lower dosages",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "owner_decision_required",
+          "ownerDecision": "OD-MED-01",
+          "when": {
+            "op": "any",
+            "items": [
+              {
+                "op": "field",
+                "field": "lung_exposures"
+              },
+              {
+                "op": "field",
+                "field": "whole_body_movement"
+              },
+              {
+                "op": "field",
+                "field": "walking_regularity"
+              },
+              {
+                "op": "symptom_label_contains",
+                "text": "urination"
+              },
+              {
+                "op": "symptom_label_contains",
+                "text": "swelling"
+              }
+            ]
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 2,
+            "textSha256": "4929fa80af579b9fd3d0c42cfbcc4f55427403ba49451a654c6fc0c43f5cfdfa",
+            "sourceDriver": "systemic_detoxification"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        },
+        {
+          "id": "FD27-systemic_detoxification-9bd1c00518",
+          "text": "Improve indoor air quality",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "field",
+            "field": "lung_exposures",
+            "values": [
+              "Poor indoor ventilation",
+              "Mold/dampness concerns",
+              "Workplace dust/fumes",
+              "Secondhand smoke"
+            ]
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 2,
+            "textSha256": "9bd1c00518082179e70e7a41c19653594667a1f40ab0071725f0ce428c6bd138",
+            "sourceDriver": "systemic_detoxification"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        },
+        {
+          "id": "FD27-systemic_detoxification-9562b96c48",
+          "text": "Drink water before any other liquids or food in the morning",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "any",
+            "items": [
+              {
+                "op": "field",
+                "field": "lung_exposures"
+              },
+              {
+                "op": "field",
+                "field": "whole_body_movement"
+              },
+              {
+                "op": "field",
+                "field": "walking_regularity"
+              },
+              {
+                "op": "symptom_label_contains",
+                "text": "urination"
+              },
+              {
+                "op": "symptom_label_contains",
+                "text": "swelling"
+              }
+            ]
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 2,
+            "textSha256": "9562b96c484b9c8f2f74351b3a9a128f68b2782c95958fffaf51e5c82854d9f1",
+            "sourceDriver": "systemic_detoxification"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        }
+      ],
+      "sourceSection": {
+        "documentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+        "startPage": 1,
+        "endPage": 3
+      },
+      "caseSpecificExemplar": "Preserved only in private source comparison; never copied to another participant.",
+      "numericalRanges": "Preserved in private founder source, not adopted as score values or coefficients."
+    },
+    {
+      "driver": "electrobiology_rhythms",
+      "actions": [
+        {
+          "id": "FD27-electrobiology_rhythms-2cc33bc1f4",
+          "text": "Maintain a consistent bed time schedule.",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "any",
+            "items": [
+              {
+                "op": "field",
+                "field": "sleep_wake_consistency"
+              },
+              {
+                "op": "field",
+                "field": "morning_daylight"
+              },
+              {
+                "op": "field",
+                "field": "evening_light_exposure"
+              },
+              {
+                "op": "field",
+                "field": "device_habits"
+              }
+            ]
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 3,
+            "textSha256": "2cc33bc1f4bf47323adde1075555d0c545cef5fcc7a91c6f918ee66491fc86a3",
+            "sourceDriver": "electrobiology_rhythms"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        },
+        {
+          "id": "FD27-electrobiology_rhythms-b901c3a03d",
+          "text": "Get natural daylight on your face as soon as possible after waking",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "field",
+            "field": "morning_daylight"
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 3,
+            "textSha256": "b901c3a03d34fa177838008aa5ccd0d14bd88889e718e8b77a919b40bcd5e14b",
+            "sourceDriver": "electrobiology_rhythms"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        },
+        {
+          "id": "FD27-electrobiology_rhythms-17bf7e3465",
+          "text": "Reduce bright artificial lighting before bedtime",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "field",
+            "field": "evening_light_exposure"
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 3,
+            "textSha256": "17bf7e34650329573f7aed0abf2b3e1c1c1e4cfbe94fd7cff59be3e6c4cf0dbd",
+            "sourceDriver": "electrobiology_rhythms"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        },
+        {
+          "id": "FD27-electrobiology_rhythms-ec2a853cfe",
+          "text": "Reduce stimulating screen activities in the evening",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "field",
+            "field": "device_habits",
+            "values": [
+              "Use screens in bed",
+              "Spend most of the day around screens/electronics"
+            ]
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 3,
+            "textSha256": "ec2a853cfeec54b9d268c7aa2d6569e72eda886a1d67db3a44ad35e6fd2e8692",
+            "sourceDriver": "electrobiology_rhythms"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        },
+        {
+          "id": "FD27-electrobiology_rhythms-d2d9b77474",
+          "text": "Use natural colored warm & dim lighting at night",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "field",
+            "field": "evening_light_exposure"
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 3,
+            "textSha256": "d2d9b77474ccb19038a7d7435c747b9cb4371f65bf1bbd2aada11fd56fcb2fb7",
+            "sourceDriver": "electrobiology_rhythms"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        },
+        {
+          "id": "FD27-electrobiology_rhythms-6b62bb256a",
+          "text": "Track your natural energy highs and lows throughout the week",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "any",
+            "items": [
+              {
+                "op": "field",
+                "field": "sleep_wake_consistency"
+              },
+              {
+                "op": "field",
+                "field": "morning_daylight"
+              },
+              {
+                "op": "field",
+                "field": "evening_light_exposure"
+              },
+              {
+                "op": "field",
+                "field": "device_habits"
+              }
+            ]
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 3,
+            "textSha256": "6b62bb256a022453aac0207c3c9fa523d6d0bfa60a51f778bad8167c78dbfce4",
+            "sourceDriver": "electrobiology_rhythms"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        },
+        {
+          "id": "FD27-electrobiology_rhythms-f713f0ca0d",
+          "text": "Limit caffeine late in the day",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "field",
+            "field": "stimulation_habits",
+            "values": [
+              "Use caffeine/stimulation to overcome mental fatigue"
+            ]
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 3,
+            "textSha256": "f713f0ca0d23417529f575aaebc65c5313d72a1e19d1245f0b092c277555e127",
+            "sourceDriver": "electrobiology_rhythms"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        }
+      ],
+      "sourceSection": {
+        "documentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+        "startPage": 3,
+        "endPage": 3
+      },
+      "caseSpecificExemplar": "Preserved only in private source comparison; never copied to another participant.",
+      "numericalRanges": "Preserved in private founder source, not adopted as score values or coefficients."
+    },
+    {
+      "driver": "the_living_diet",
+      "actions": [
+        {
+          "id": "FD27-the_living_diet-7d92dc5b53",
+          "text": "Include a wholefood protein source at each main meal",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "any",
+            "items": [
+              {
+                "op": "field",
+                "field": "eating_consume_mostly_whole_minimally_processed_foods"
+              },
+              {
+                "op": "field",
+                "field": "eating_maintain_an_eating_rhythm_that_works_well_for_you"
+              },
+              {
+                "op": "field",
+                "field": "eating_eat_slowly_enough_to_chew_thoroughly"
+              },
+              {
+                "op": "field",
+                "field": "whole_food_percentage"
+              },
+              {
+                "op": "field",
+                "field": "nutrition_protein"
+              }
+            ]
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 3,
+            "textSha256": "7d92dc5b530c36da057d052681f1ad2ef4afbbef3dde6403b4376e0a8accc0b7",
+            "sourceDriver": "the_living_diet"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        },
+        {
+          "id": "FD27-the_living_diet-562d110c8c",
+          "text": "Build balanced meals",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "any",
+            "items": [
+              {
+                "op": "field",
+                "field": "eating_consume_mostly_whole_minimally_processed_foods"
+              },
+              {
+                "op": "field",
+                "field": "eating_maintain_an_eating_rhythm_that_works_well_for_you"
+              },
+              {
+                "op": "field",
+                "field": "eating_eat_slowly_enough_to_chew_thoroughly"
+              },
+              {
+                "op": "field",
+                "field": "whole_food_percentage"
+              },
+              {
+                "op": "field",
+                "field": "nutrition_protein"
+              }
+            ]
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 4,
+            "textSha256": "562d110c8c3ee3e20e4f4315d6ac269b1ebbcac75c9cd724daa3dbd6954b7a9d",
+            "sourceDriver": "the_living_diet"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        },
+        {
+          "id": "FD27-the_living_diet-090fc29fb2",
+          "text": "Prioritize minimally processed carbohydrate sources",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "any",
+            "items": [
+              {
+                "op": "field",
+                "field": "eating_consume_mostly_whole_minimally_processed_foods"
+              },
+              {
+                "op": "field",
+                "field": "eating_maintain_an_eating_rhythm_that_works_well_for_you"
+              },
+              {
+                "op": "field",
+                "field": "eating_eat_slowly_enough_to_chew_thoroughly"
+              },
+              {
+                "op": "field",
+                "field": "whole_food_percentage"
+              },
+              {
+                "op": "field",
+                "field": "nutrition_protein"
+              }
+            ]
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 4,
+            "textSha256": "090fc29fb2a7476e3e92b1f5f57b203bc50fe3123ebccedc4dcb6dcb5c529427",
+            "sourceDriver": "the_living_diet"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        },
+        {
+          "id": "FD27-the_living_diet-164aa4972f",
+          "text": "Include unsaturated fat sources (Olive Oil, avocado, wild fish, seeds, etc)",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "any",
+            "items": [
+              {
+                "op": "field",
+                "field": "eating_consume_mostly_whole_minimally_processed_foods"
+              },
+              {
+                "op": "field",
+                "field": "eating_maintain_an_eating_rhythm_that_works_well_for_you"
+              },
+              {
+                "op": "field",
+                "field": "eating_eat_slowly_enough_to_chew_thoroughly"
+              },
+              {
+                "op": "field",
+                "field": "whole_food_percentage"
+              },
+              {
+                "op": "field",
+                "field": "nutrition_protein"
+              }
+            ]
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 4,
+            "textSha256": "164aa4972f43cb15cec62c19491d401cfe249f52096632cab9ca7afb473a57f4",
+            "sourceDriver": "the_living_diet"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        },
+        {
+          "id": "FD27-the_living_diet-96e81032fa",
+          "text": "Reduce consumption of heavily fried foods",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "any",
+            "items": [
+              {
+                "op": "field",
+                "field": "eating_consume_mostly_whole_minimally_processed_foods"
+              },
+              {
+                "op": "field",
+                "field": "eating_maintain_an_eating_rhythm_that_works_well_for_you"
+              },
+              {
+                "op": "field",
+                "field": "eating_eat_slowly_enough_to_chew_thoroughly"
+              },
+              {
+                "op": "field",
+                "field": "whole_food_percentage"
+              },
+              {
+                "op": "field",
+                "field": "nutrition_protein"
+              }
+            ]
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 4,
+            "textSha256": "96e81032faa91dc068a96b3307b110829e6714ee895deed25daf7d531baed33d",
+            "sourceDriver": "the_living_diet"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        }
+      ],
+      "sourceSection": {
+        "documentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+        "startPage": 3,
+        "endPage": 4
+      },
+      "caseSpecificExemplar": "Preserved only in private source comparison; never copied to another participant.",
+      "numericalRanges": "Preserved in private founder source, not adopted as score values or coefficients."
+    },
+    {
+      "driver": "functional_training",
+      "actions": [
+        {
+          "id": "FD27-functional_training-229e62a4f9",
+          "text": "Practice full body mobility & stretching multiple times per week",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "any",
+            "items": [
+              {
+                "op": "field",
+                "field": "training_program"
+              },
+              {
+                "op": "field",
+                "field": "body_allows_activities"
+              },
+              {
+                "op": "symptom_label_contains",
+                "text": "movement"
+              },
+              {
+                "op": "symptom_label_contains",
+                "text": "stiffness"
+              }
+            ]
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 4,
+            "textSha256": "229e62a4f9d61c859981f657e93e4c14c2a54473fce97d52cd999248ca583f90",
+            "sourceDriver": "functional_training"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        }
+      ],
+      "sourceSection": {
+        "documentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+        "startPage": 4,
+        "endPage": 5
+      },
+      "caseSpecificExemplar": "Preserved only in private source comparison; never copied to another participant.",
+      "numericalRanges": "Preserved in private founder source, not adopted as score values or coefficients."
+    },
+    {
+      "driver": "holistic_recovery",
+      "actions": [
+        {
+          "id": "FD27-holistic_recovery-7b5a6a095b",
+          "text": "Improve sleep comfort with cooler temperatures and air ventaliation",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "any",
+            "items": [
+              {
+                "op": "field",
+                "field": "recovery_behavior_regular_sleep_schedule"
+              },
+              {
+                "op": "field",
+                "field": "recovery_behavior_breathwork"
+              },
+              {
+                "op": "field",
+                "field": "recovery_behavior_relaxation_decompression"
+              },
+              {
+                "op": "symptom_label_contains",
+                "text": "waking"
+              },
+              {
+                "op": "symptom_label_contains",
+                "text": "snoring"
+              }
+            ]
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 5,
+            "textSha256": "7b5a6a095bb8d499f7a165e8f2a1814e6e02d17ea8b1489032e16b5e82fe2d7d",
+            "sourceDriver": "holistic_recovery"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        },
+        {
+          "id": "FD27-holistic_recovery-5dafd2e63d",
+          "text": "Practice controlled diaphragmatic breathing before, during, and after activity",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "any",
+            "items": [
+              {
+                "op": "field",
+                "field": "recovery_behavior_regular_sleep_schedule"
+              },
+              {
+                "op": "field",
+                "field": "recovery_behavior_breathwork"
+              },
+              {
+                "op": "field",
+                "field": "recovery_behavior_relaxation_decompression"
+              },
+              {
+                "op": "symptom_label_contains",
+                "text": "waking"
+              },
+              {
+                "op": "symptom_label_contains",
+                "text": "snoring"
+              }
+            ]
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 5,
+            "textSha256": "5dafd2e63dc248f62d212546ec1bf752620b9419ae6f464d8b0ca741fe776c41",
+            "sourceDriver": "holistic_recovery"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        },
+        {
+          "id": "FD27-holistic_recovery-a5b9e40485",
+          "text": "Avoid heavy meals immediately before bedtime",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "any",
+            "items": [
+              {
+                "op": "field",
+                "field": "recovery_behavior_regular_sleep_schedule"
+              },
+              {
+                "op": "field",
+                "field": "recovery_behavior_breathwork"
+              },
+              {
+                "op": "field",
+                "field": "recovery_behavior_relaxation_decompression"
+              },
+              {
+                "op": "symptom_label_contains",
+                "text": "waking"
+              },
+              {
+                "op": "symptom_label_contains",
+                "text": "snoring"
+              }
+            ]
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 5,
+            "textSha256": "a5b9e40485bab7e9e7b20e7fd84dd3617bb5086e88bb72d3e0b3d9eed173022d",
+            "sourceDriver": "holistic_recovery"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        },
+        {
+          "id": "FD27-holistic_recovery-b549116d11",
+          "text": "Track when restless legs symptoms occur",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "symptom_label_contains",
+            "text": "restless legs"
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 5,
+            "textSha256": "b549116d11e05a409cc0c16e647fd24ea066c530caf49770b5b4382b11c21892",
+            "sourceDriver": "holistic_recovery"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        }
+      ],
+      "sourceSection": {
+        "documentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+        "startPage": 5,
+        "endPage": 5
+      },
+      "caseSpecificExemplar": "Preserved only in private source comparison; never copied to another participant.",
+      "numericalRanges": "Preserved in private founder source, not adopted as score values or coefficients."
+    },
+    {
+      "driver": "gastrointestinal_renovation",
+      "actions": [
+        {
+          "id": "FD27-gastrointestinal_renovation-c3fec9aecd",
+          "text": "Avoid delaying bowel movements",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "any",
+            "items": [
+              {
+                "op": "field",
+                "field": "bowel_movement_frequency"
+              },
+              {
+                "op": "symptom_label_contains",
+                "text": "constipation"
+              },
+              {
+                "op": "symptom_label_contains",
+                "text": "straining"
+              },
+              {
+                "op": "symptom_label_contains",
+                "text": "evacuation"
+              }
+            ]
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 6,
+            "textSha256": "c3fec9aecd99718b07b5c1219cc38c9d065d6bf34b0a9ca7ffd2167c36b28d12",
+            "sourceDriver": "gastrointestinal_renovation"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        },
+        {
+          "id": "FD27-gastrointestinal_renovation-1e116bd319",
+          "text": "Use comfortable toilet positioning with raised footstool",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "any",
+            "items": [
+              {
+                "op": "field",
+                "field": "fermented_foods"
+              },
+              {
+                "op": "field",
+                "field": "fiber_whole_foods"
+              },
+              {
+                "op": "symptom_label_contains",
+                "text": "bowel"
+              },
+              {
+                "op": "symptom_label_contains",
+                "text": "cramping"
+              },
+              {
+                "op": "symptom_label_contains",
+                "text": "straining"
+              }
+            ]
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 6,
+            "textSha256": "1e116bd319a685803a78ccdc3db46fc93db7743a189319c8f838734af67804f4",
+            "sourceDriver": "gastrointestinal_renovation"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        },
+        {
+          "id": "FD27-gastrointestinal_renovation-bdd74d7d7a",
+          "text": "Explore more smaller portions instead of fewer large meals",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "any",
+            "items": [
+              {
+                "op": "field",
+                "field": "fermented_foods"
+              },
+              {
+                "op": "field",
+                "field": "fiber_whole_foods"
+              },
+              {
+                "op": "symptom_label_contains",
+                "text": "bowel"
+              },
+              {
+                "op": "symptom_label_contains",
+                "text": "cramping"
+              },
+              {
+                "op": "symptom_label_contains",
+                "text": "straining"
+              }
+            ]
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 6,
+            "textSha256": "bdd74d7d7ac9c03b857dcb11bcff72622e3873c0fc084e86fd98b6d7da1c6738",
+            "sourceDriver": "gastrointestinal_renovation"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        },
+        {
+          "id": "FD27-gastrointestinal_renovation-b063076588",
+          "text": "Prioritize small portions of fermented foods regularly",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "field",
+            "field": "fermented_foods"
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 6,
+            "textSha256": "b063076588cc7f3d4521f4aefe70abd06be4d558a5f77417a659cfff6acc7be3",
+            "sourceDriver": "gastrointestinal_renovation"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        },
+        {
+          "id": "FD27-gastrointestinal_renovation-2a85b18413",
+          "text": "Track whether certain portions or foods consistently trigger discomfort",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "any",
+            "items": [
+              {
+                "op": "field",
+                "field": "fermented_foods"
+              },
+              {
+                "op": "field",
+                "field": "fiber_whole_foods"
+              },
+              {
+                "op": "symptom_label_contains",
+                "text": "bowel"
+              },
+              {
+                "op": "symptom_label_contains",
+                "text": "cramping"
+              },
+              {
+                "op": "symptom_label_contains",
+                "text": "straining"
+              }
+            ]
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 6,
+            "textSha256": "2a85b1841304c5c562d44173e4bee180aa4b894ba8c17960184747e37b8f3561",
+            "sourceDriver": "gastrointestinal_renovation"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        },
+        {
+          "id": "FD27-gastrointestinal_renovation-85d49026d9",
+          "text": "Track bowel movements and notable changes",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "any",
+            "items": [
+              {
+                "op": "field",
+                "field": "bowel_movement_frequency"
+              },
+              {
+                "op": "symptom_label_contains",
+                "text": "constipation"
+              },
+              {
+                "op": "symptom_label_contains",
+                "text": "straining"
+              },
+              {
+                "op": "symptom_label_contains",
+                "text": "evacuation"
+              }
+            ]
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 6,
+            "textSha256": "85d49026d9e310e79174d9dc75d9f65786c60de27b0fa1d538e10311dc596b48",
+            "sourceDriver": "gastrointestinal_renovation"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        }
+      ],
+      "sourceSection": {
+        "documentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+        "startPage": 5,
+        "endPage": 6
+      },
+      "caseSpecificExemplar": "Preserved only in private source comparison; never copied to another participant.",
+      "numericalRanges": "Preserved in private founder source, not adopted as score values or coefficients."
+    },
+    {
+      "driver": "hormone_balancing",
+      "actions": [
+        {
+          "id": "FD27-hormone_balancing-ada594965b",
+          "text": "Prioritize healthy body composition without crash dieting",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "field",
+            "field": "hormone_pathway"
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 6,
+            "textSha256": "ada594965bc61b383d2f5e770a7fb3712e076d87e0af993e60f4d0592b1a7127",
+            "sourceDriver": "hormone_balancing"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        },
+        {
+          "id": "FD27-hormone_balancing-4929fa80af",
+          "text": "Review medications to potentially lower dosages",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "owner_decision_required",
+          "ownerDecision": "OD-MED-01",
+          "when": {
+            "op": "field",
+            "field": "hormone_pathway"
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 6,
+            "textSha256": "4929fa80af579b9fd3d0c42cfbcc4f55427403ba49451a654c6fc0c43f5cfdfa",
+            "sourceDriver": "hormone_balancing"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        },
+        {
+          "id": "FD27-hormone_balancing-f5a40e546a",
+          "text": "Add in estrogen supporting foods such as flaxseed, miso, raspberries and cruciferous vegetables.",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "all",
+            "items": [
+              {
+                "op": "field",
+                "field": "hormone_pathway",
+                "values": [
+                  "Female cycling",
+                  "Perimenopause",
+                  "Menopause"
+                ]
+              },
+              {
+                "op": "driver_symptoms",
+                "driver": "hormone_balancing"
+              }
+            ]
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 6,
+            "textSha256": "f5a40e546a60eb114e203fce56a7ef42142cfbb3dbcd45cc2653ef861c5de52a",
+            "sourceDriver": "hormone_balancing"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        }
+      ],
+      "sourceSection": {
+        "documentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+        "startPage": 6,
+        "endPage": 6
+      },
+      "caseSpecificExemplar": "Preserved only in private source comparison; never copied to another participant.",
+      "numericalRanges": "Preserved in private founder source, not adopted as score values or coefficients."
+    },
+    {
+      "driver": "neural_repatterning",
+      "actions": [
+        {
+          "id": "FD27-neural_repatterning-3d8e7c9cc3",
+          "text": "Incorporate whole food antioxidants into your diet to help support the brain",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "any",
+            "items": [
+              {
+                "op": "field",
+                "field": "challenging_learning"
+              },
+              {
+                "op": "field",
+                "field": "memory_skill_activities"
+              },
+              {
+                "op": "field",
+                "field": "stress_overwhelm"
+              },
+              {
+                "op": "field",
+                "field": "cognitive_attention"
+              }
+            ]
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 7,
+            "textSha256": "3d8e7c9cc3498f5e1e0527363187f502916fd03465b5df20464ed503df00c9a1",
+            "sourceDriver": "neural_repatterning"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        }
+      ],
+      "sourceSection": {
+        "documentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+        "startPage": 7,
+        "endPage": 7
+      },
+      "caseSpecificExemplar": "Preserved only in private source comparison; never copied to another participant.",
+      "numericalRanges": "Preserved in private founder source, not adopted as score values or coefficients."
+    },
+    {
+      "driver": "momentum_regimens",
+      "actions": [
+        {
+          "id": "FD27-momentum_regimens-ce1f592749",
+          "text": "Implement one or two healthy habits each week",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "any",
+            "items": [
+              {
+                "op": "field",
+                "field": "daily_habit_consistency"
+              },
+              {
+                "op": "field",
+                "field": "routine_friction"
+              },
+              {
+                "op": "field",
+                "field": "routine_restart"
+              },
+              {
+                "op": "field",
+                "field": "weekly_rhythm"
+              }
+            ]
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 7,
+            "textSha256": "ce1f592749f9bce14726c0a14eb33db556d9d6c6bd8b9f92beb79c1de1442675",
+            "sourceDriver": "momentum_regimens"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        },
+        {
+          "id": "FD27-momentum_regimens-a48b701615",
+          "text": "Create different self expectations for low-energy and higher-energy days",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "any",
+            "items": [
+              {
+                "op": "field",
+                "field": "daily_habit_consistency"
+              },
+              {
+                "op": "field",
+                "field": "routine_friction"
+              },
+              {
+                "op": "field",
+                "field": "routine_restart"
+              },
+              {
+                "op": "field",
+                "field": "weekly_rhythm"
+              }
+            ]
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 7,
+            "textSha256": "a48b70161577a6577fd5526fb4e3415c31514e987840b733f736e1f08571c00a",
+            "sourceDriver": "momentum_regimens"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        },
+        {
+          "id": "FD27-momentum_regimens-793b30c6de",
+          "text": "Review your progress once weekly",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "any",
+            "items": [
+              {
+                "op": "field",
+                "field": "daily_habit_consistency"
+              },
+              {
+                "op": "field",
+                "field": "routine_friction"
+              },
+              {
+                "op": "field",
+                "field": "routine_restart"
+              },
+              {
+                "op": "field",
+                "field": "weekly_rhythm"
+              }
+            ]
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 7,
+            "textSha256": "793b30c6de94a4e212680f424e12abc5395408ca6144fac3028cd918aa5868e8",
+            "sourceDriver": "momentum_regimens"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        },
+        {
+          "id": "FD27-momentum_regimens-f9bc06cc70",
+          "text": "Avoid adding new habits until current ones feel manageable",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "any",
+            "items": [
+              {
+                "op": "field",
+                "field": "daily_habit_consistency"
+              },
+              {
+                "op": "field",
+                "field": "routine_friction"
+              },
+              {
+                "op": "field",
+                "field": "routine_restart"
+              },
+              {
+                "op": "field",
+                "field": "weekly_rhythm"
+              }
+            ]
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 7,
+            "textSha256": "f9bc06cc70df5d6ea6ca26e7e98f38fac53d828e721092951f8ff2ba0be7bfb1",
+            "sourceDriver": "momentum_regimens"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        }
+      ],
+      "sourceSection": {
+        "documentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+        "startPage": 7,
+        "endPage": 8
+      },
+      "caseSpecificExemplar": "Preserved only in private source comparison; never copied to another participant.",
+      "numericalRanges": "Preserved in private founder source, not adopted as score values or coefficients."
+    },
+    {
+      "driver": "mentality_realignment",
+      "actions": [
+        {
+          "id": "FD27-mentality_realignment-53ccb2e9aa",
+          "text": "Practice reframing setbacks as training rather than personal failure",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "any",
+            "items": [
+              {
+                "op": "field",
+                "field": "self_talk"
+              },
+              {
+                "op": "field",
+                "field": "gratitude"
+              },
+              {
+                "op": "field",
+                "field": "life_purpose"
+              }
+            ]
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 8,
+            "textSha256": "53ccb2e9aaab0b490ca2abbcaad720eafb136ec8e18305f2dd894d6f9cc40f52",
+            "sourceDriver": "mentality_realignment"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        },
+        {
+          "id": "FD27-mentality_realignment-37673b5882",
+          "text": "Practice one enjoyable activity every day",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "any",
+            "items": [
+              {
+                "op": "field",
+                "field": "self_talk"
+              },
+              {
+                "op": "field",
+                "field": "gratitude"
+              },
+              {
+                "op": "field",
+                "field": "life_purpose"
+              }
+            ]
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 8,
+            "textSha256": "37673b5882520a71e8166dcddd52d28f058ff9d93dd677b5ec62f52ccefe39e3",
+            "sourceDriver": "mentality_realignment"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        }
+      ],
+      "sourceSection": {
+        "documentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+        "startPage": 8,
+        "endPage": 8
+      },
+      "caseSpecificExemplar": "Preserved only in private source comparison; never copied to another participant.",
+      "numericalRanges": "Preserved in private founder source, not adopted as score values or coefficients."
+    },
+    {
+      "driver": "wise_budgeting",
+      "actions": [
+        {
+          "id": "FD27-wise_budgeting-4a252d4f0c",
+          "text": "Create a basic monthly health expense list",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "any",
+            "items": [
+              {
+                "op": "field",
+                "field": "wellness_budget"
+              },
+              {
+                "op": "field",
+                "field": "money_blocks_health"
+              },
+              {
+                "op": "field",
+                "field": "health_spending_waste"
+              },
+              {
+                "op": "field",
+                "field": "monthly_health_spending"
+              }
+            ]
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 8,
+            "textSha256": "4a252d4f0c37f7c92d478f8dca0c2208e794b706377fd3955cceb1e5c4f62e2e",
+            "sourceDriver": "wise_budgeting"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        },
+        {
+          "id": "FD27-wise_budgeting-972f1cf69a",
+          "text": "Review medications to potentially lower dosages & costs",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "owner_decision_required",
+          "ownerDecision": "OD-MED-01",
+          "when": {
+            "op": "any",
+            "items": [
+              {
+                "op": "field",
+                "field": "wellness_budget"
+              },
+              {
+                "op": "field",
+                "field": "money_blocks_health"
+              },
+              {
+                "op": "field",
+                "field": "health_spending_waste"
+              },
+              {
+                "op": "field",
+                "field": "monthly_health_spending"
+              }
+            ]
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 8,
+            "textSha256": "972f1cf69aa50b57329e2b930b85e3217945cbce6b5fb72d1592e7dafcacd720",
+            "sourceDriver": "wise_budgeting"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        },
+        {
+          "id": "FD27-wise_budgeting-8814820d10",
+          "text": "Build meals around affordable whole foods not expensive food products",
+          "attribution": "Justyn Oliver, founder-supplied coaching direction",
+          "wording": "verbatim; not an AI rewrite",
+          "status": "founder_direction_proposed_for_contextual_review",
+          "ownerDecision": null,
+          "when": {
+            "op": "any",
+            "items": [
+              {
+                "op": "field",
+                "field": "wellness_budget"
+              },
+              {
+                "op": "field",
+                "field": "money_blocks_health"
+              },
+              {
+                "op": "field",
+                "field": "health_spending_waste"
+              },
+              {
+                "op": "field",
+                "field": "monthly_health_spending"
+              }
+            ]
+          },
+          "source": {
+            "sourceType": "founder_supplied_supplement",
+            "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+            "page": 8,
+            "textSha256": "8814820d10f1b89cb09bf9ea01219dc81118dc7854f8115d3b590d727b2ab1da",
+            "sourceDriver": "wise_budgeting"
+          },
+          "evidenceUse": "Select only on a valid same-source context. This is a founder coaching proposal; the condition does not assert a diagnosis, nutrient deficit, causal mechanism or measured treatment effect."
+        }
+      ],
+      "sourceSection": {
+        "documentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+        "startPage": 8,
+        "endPage": 9
+      },
+      "caseSpecificExemplar": "Preserved only in private source comparison; never copied to another participant.",
+      "numericalRanges": "Preserved in private founder source, not adopted as score values or coefficients."
+    }
+  ],
+  "materialExceptions": [
+    {
+      "id": "FD27-systemic_detoxification-4929fa80af",
+      "exactPassage": "Review medications to potentially lower dosages",
+      "source": {
+        "sourceType": "founder_supplied_supplement",
+        "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+        "page": 2,
+        "textSha256": "4929fa80af579b9fd3d0c42cfbcc4f55427403ba49451a654c6fc0c43f5cfdfa",
+        "sourceDriver": "systemic_detoxification"
+      },
+      "concern": "Actor for possible dose reduction is unspecified; do not interpret as independent medication changes.",
+      "minimumSafeguard": "Prescriber reviews and directs any dose change; Owner approval required before adding that qualification. Source wording remains unchanged.",
+      "authorityUrl": "https://www.canada.ca/en/health-canada/services/drugs-medical-devices/using-medications-safely.html",
+      "jurisdiction": "Canadian national medication-safety guidance; provincial/service jurisdiction not established."
+    },
+    {
+      "id": "FD27-hormone_balancing-4929fa80af",
+      "exactPassage": "Review medications to potentially lower dosages",
+      "source": {
+        "sourceType": "founder_supplied_supplement",
+        "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+        "page": 6,
+        "textSha256": "4929fa80af579b9fd3d0c42cfbcc4f55427403ba49451a654c6fc0c43f5cfdfa",
+        "sourceDriver": "hormone_balancing"
+      },
+      "concern": "Actor for possible dose reduction is unspecified; do not interpret as independent medication changes.",
+      "minimumSafeguard": "Prescriber reviews and directs any dose change; Owner approval required before adding that qualification. Source wording remains unchanged.",
+      "authorityUrl": "https://www.canada.ca/en/health-canada/services/drugs-medical-devices/using-medications-safely.html",
+      "jurisdiction": "Canadian national medication-safety guidance; provincial/service jurisdiction not established."
+    },
+    {
+      "id": "FD27-wise_budgeting-972f1cf69a",
+      "exactPassage": "Review medications to potentially lower dosages & costs",
+      "source": {
+        "sourceType": "founder_supplied_supplement",
+        "sourceDocumentSha256": "7487026cdbbfbef1cf6f966aa21088e228e500946c039bad07053653d9ba301a",
+        "page": 8,
+        "textSha256": "972f1cf69aa50b57329e2b930b85e3217945cbce6b5fb72d1592e7dafcacd720",
+        "sourceDriver": "wise_budgeting"
+      },
+      "concern": "Actor for possible dose reduction is unspecified; do not interpret as independent medication changes.",
+      "minimumSafeguard": "Prescriber reviews and directs any dose change; Owner approval required before adding that qualification. Source wording remains unchanged.",
+      "authorityUrl": "https://www.canada.ca/en/health-canada/services/drugs-medical-devices/using-medications-safely.html",
+      "jurisdiction": "Canadian national medication-safety guidance; provincial/service jurisdiction not established."
+    }
+  ],
+  "numericalPolicy": {
+    "change": false,
+    "rangesAdopted": false,
+    "weightsChanged": false,
+    "unsupportedStagesWithheld": true,
+    "symptomDisruptionNotSeverityOrIndependentImpact": true
+  },
+  "selectionPolicy": "Reported habits, concerns, goals and functional interference remain distinct. Preserve strengths without averaging away concerns. Ease remains unknown unless explicitly measured. Selected directions are provisional contextual proposals, not validated personal causal conclusions."
+}

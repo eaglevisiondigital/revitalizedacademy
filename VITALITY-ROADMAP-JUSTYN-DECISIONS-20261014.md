@@ -102,3 +102,12 @@ Status keywords: CONFIRMED = founder intent, PENDING = unanswered/needs founder 
 - Exact operational eligibility for $50 affiliate discount, refunds, stacking, lead attribution and checkout/booking rules.
 - Whether the optional read-only questionnaire answer list passes effort/security review.
 - Launch benchmark cases and success metrics, beyond use of live submitted cases.
+
+
+## October 27, 2026 — Owner override and primary supplement provenance
+
+Preserve the founders' original coaching wording, intent, requested information, methodology and proposed ranges. Do not substitute generic wellness/AI philosophy or broadly soften/reinterpret their voice. Distinguish questionnaire evidence, founder interpretation and private consultation. Audit existing questions for full equivalence before additions; collect only missing qualifiers. Numerical proposals are not adopted scoring rules. Flag only specific material legal/regulatory or major safety issues with exact source and minimum proposed safeguard; never silently edit/remove them.
+
+Owner clarified that portal bugs caused most feedback after the first Driver to be supplied in the nine-page supplement. Protected metadata verifies one saved portal Driver proposal with five citations, not twelve saved portal submissions. The supplement covers all twelve Drivers. Keep both sources separate; do not require portal re-entry or repeated consent. Exact original participant-specific source remains private and excluded from shared rules.
+
+The local versioned founder-direction composer uses verbatim reusable directions and source-grounded provisional pattern analysis. Old source mappings, engine weights, saved reports, feedback and the pinned October 20 seven-principle record remain unchanged. Questionnaire changes, numerical adoption, technical release and a renewed source-specific operating window require their respective applicable approval. See docs/founder-methodology/LOCAL_PACKAGE.md and OWNER_DECISION_REGISTER.md.

@@ -2,14 +2,14 @@
 const config=require('../../config/production.json'),pipeline=require('../../js/vitality-roadmap-processing.cjs'),{workerIdentity,sealWithIdentity}=require('./roadmap-processing-seal.cjs');
 const site='ece0f6f3-6c3d-46e6-bb51-95ce1ccefb06',origin='https://revitalizedacademy.com';
 // Only this trusted server path accepts source answers, from caller-authorized RPC, never browser payloads.
-async function processOne(report,rpc,seal){
+async function processOne(report,rpc,seal,{founderDirection=false}={}){
  const claim=await rpc('claim',report,{});if(!claim.claimed)return rpc('read',report,{});
- const original=pipeline.buildDraft(claim.context),document=pipeline.applyReviews(original,claim.previous_reviews||[]);
+ const original=pipeline.buildDraft(claim.context,{founderDirection}),document=pipeline.applyReviews(original,claim.previous_reviews||[]);
  const token=await seal(claim.job,claim.lease,document);
  await rpc('finish',report,{job:claim.job,lease:claim.lease,seal:token,document});
  return rpc('read',report,{}); // Reauthorizes again, including source fingerprint, session and every grant.
 }
-function createHandler({fetch:request=fetch,identity=()=>workerIdentity(),renderPdf=null}={}){return async(req,ctx)=>{
+function createHandler({fetch:request=fetch,identity=()=>workerIdentity(),renderPdf=null,founderDirection=false}={}){return async(req,ctx)=>{
  const reply=(status,body)=>Response.json(body,{status,headers:{'Cache-Control':'private, no-store, max-age=0','Netlify-CDN-Cache-Control':'no-store','Referrer-Policy':'no-referrer','X-Content-Type-Options':'nosniff','Vary':'Authorization, Origin'}});
  if(ctx?.site?.id!==site||ctx?.deploy?.context!=='production'||new URL(req.url).origin!==origin||req.headers.get('origin')!==origin||new URL(req.url).search)return reply(403,{unavailable:true});
  if(req.method!=='POST')return reply(405,{unavailable:true});
@@ -25,7 +25,7 @@ function createHandler({fetch:request=fetch,identity=()=>workerIdentity(),render
  const rpc=(action,report,payload)=>call('roadmap_processing',{p_action:action,p_report:report,p_payload:payload},config.supabaseKey,jwt);
  if(b.action==='process'){
  await rpc('read',b.report,{});const key=identity();if(!key)return reply(503,{unavailable:true,configurationPending:true});
- return reply(200,await processOne(b.report,rpc,(job,lease,document)=>sealWithIdentity((name,args)=>call(name,args,config.supabaseKey,jwt),key,job,lease,document)));
+ return reply(200,await processOne(b.report,rpc,(job,lease,document)=>sealWithIdentity((name,args)=>call(name,args,config.supabaseKey,jwt),key,job,lease,document),{founderDirection}));
  }
  if(b.action==='pdf'){
  // Rendering is disabled in the production entrypoint until a separately reviewed runtime is configured.

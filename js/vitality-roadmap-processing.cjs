@@ -4,7 +4,7 @@ const crypto=require('node:crypto'),adapter=require('./vitality-roadmap-b6-adapt
 const narrative=require('./vitality-roadmap-narrative.cjs');
 const VERSION='roadmap-internal-processing-v1';
 const digest=x=>crypto.createHash('sha256').update(JSON.stringify(x)).digest('hex');
-function buildDraft(context,{personalized=true}={}){
+function buildDraft(context,{personalized=true,founderDirection=false}={}){
  const observed=adapter.observe(context),input=adapterProjection(observed),calculated=engine.calculate(input);
  if(calculated.overall!==null||Object.values(calculated.drivers).some(d=>d.score!==null))throw Error('Unreviewed numerical conversion');
  const drivers=Object.fromEntries(coverage.drivers.map(([key,name])=>{
@@ -29,7 +29,9 @@ function buildDraft(context,{personalized=true}={}){
   roadmap:{summary:'Private individualized evidence review. All 12 Drivers are covered; complete numerical scores and Spectrum stage remain withheld. Original answers, current reference wording, arithmetic and founder interpretation are distinct.',strengths:Object.values(drivers).flatMap(d=>d.strengths.map(e=>({summary:d.name,reason:e.text}))),priorities:[],opportunities:actions.map(a=>({summary:a.summary,reason:a.reason})),actions:actions.map(a=>({summary:a.summary,reason:a.reason})),drivers:Object.fromEntries(Object.entries(drivers).map(([k,d])=>[k,{summary:d.interpretation,reason:d.questions.join(' '),evidence:d.evidence.map(e=>e.field)}]))},
   review:{state:'unreviewed',feedback:[],clientVisible:false,export:'held',delivery:'held',email:'held'}};
  if(personalized){
-  const n=narrative.build(observed);draft.narrative={version:n.version,ruleHash:n.ruleHash,policyIds:n.policyIds,contentBasis:n.contentBasis,provisional:true};
+  // Explicit local opt-in only. No deployed worker or caller enables this version.
+  const baseline=narrative.build(observed),n=founderDirection?require('./vitality-roadmap-founder-direction.cjs').compose(observed,baseline):baseline;draft.narrative={version:n.version,ruleHash:n.ruleHash,policyIds:n.policyIds,contentBasis:n.contentBasis,provisional:true};
+  if(founderDirection)draft.narrative.founderDirection=n.founderDirection;
   draft.componentTraces={symptoms:n.symptomTraces,references:n.referenceComponents,completeSourceNumericalComponents:0};
   draft.roadmap={...draft.roadmap,...n.roadmap,narrativeVersion:n.version};
   const shared=new Map(n.sharedEvidence.map(e=>[e.id,e]));
@@ -56,7 +58,7 @@ function validateReview(review,draft){
 }
 function applyReviews(original,reviews){
  const d=JSON.parse(JSON.stringify(original));
- for(const r of reviews){validateReview(r,d);if(r.interpretation){d.roadmap.drivers[r.driver].summary=r.interpretation;d.roadmap.drivers[r.driver].reason='Attributed founder interpretation; original evidence and arithmetic remain unchanged.';}}
+ for(const r of reviews){validateReview(r,d);if(r.interpretation){d.roadmap.drivers[r.driver].summary=r.interpretation;d.roadmap.drivers[r.driver].reason='Attributed founder interpretation; original evidence and arithmetic remain unchanged.';if(d.roadmap.drivers[r.driver].sections)d.roadmap.drivers[r.driver].founderProposal={interpretation:r.interpretation,rationale:r.rationale,citations:r.citations};}}
  d.review.feedback=JSON.parse(JSON.stringify(reviews));d.review.state=reviews.length?'founder_proposals_not_global_rules':'unreviewed';return d;
 }
 module.exports={VERSION,buildDraft,coverageMatrix,validateReview,applyReviews,digest};
