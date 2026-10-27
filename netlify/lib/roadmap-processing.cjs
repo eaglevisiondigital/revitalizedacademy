@@ -1,10 +1,13 @@
 'use strict';
-const config=require('../../config/production.json'),pipeline=require('../../js/vitality-roadmap-processing.cjs'),{workerIdentity,sealWithIdentity}=require('./roadmap-processing-seal.cjs');
+const config=require('../../config/production.json'),pipeline=require('../../js/vitality-roadmap-processing.cjs'),{workerIdentity,sealWithIdentity,preflightWithIdentity}=require('./roadmap-processing-seal.cjs');
 const site='ece0f6f3-6c3d-46e6-bb51-95ce1ccefb06',origin='https://revitalizedacademy.com';
+const v2=require('../../js/vitality-roadmap-v2-gate.cjs');
 // Only this trusted server path accepts source answers, from caller-authorized RPC, never browser payloads.
 async function processOne(report,rpc,seal,{founderDirection=false}={}){
+ if(founderDirection)v2.verifyRuleset(); // Fail before claiming, never fall back to V1.
  const claim=await rpc('claim',report,{});if(!claim.claimed)return rpc('read',report,{});
  const original=pipeline.buildDraft(claim.context,{founderDirection}),document=pipeline.applyReviews(original,claim.previous_reviews||[]);
+ if(founderDirection)v2.verifyDocument(document,claim.context); // Fail before signing/sealing.
  const token=await seal(claim.job,claim.lease,document);
  await rpc('finish',report,{job:claim.job,lease:claim.lease,seal:token,document});
  return rpc('read',report,{}); // Reauthorizes again, including source fingerprint, session and every grant.
@@ -24,7 +27,10 @@ function createHandler({fetch:request=fetch,identity=()=>workerIdentity(),render
  if(!r.ok){const e=await r.json().catch(()=>({}));throw Object.assign(Error('unavailable'),{code:e.code});}return r.json();};
  const rpc=(action,report,payload)=>call('roadmap_processing',{p_action:action,p_report:report,p_payload:payload},config.supabaseKey,jwt);
  if(b.action==='process'){
+ if(founderDirection)v2.verifyRuleset();
  await rpc('read',b.report,{});const key=identity();if(!key)return reply(503,{unavailable:true,configurationPending:true});
+ // Verify the new source-bound custody authorization before any claim/attempt.
+ if(founderDirection)await preflightWithIdentity((name,args)=>call(name,args,config.supabaseKey,jwt),key,b.report);
  return reply(200,await processOne(b.report,rpc,(job,lease,document)=>sealWithIdentity((name,args)=>call(name,args,config.supabaseKey,jwt),key,job,lease,document),{founderDirection}));
  }
  if(b.action==='pdf'){

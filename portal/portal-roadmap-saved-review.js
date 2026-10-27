@@ -88,7 +88,7 @@ function createApp({portal,panel}){
   opener=(async()=>{try{
    const rows=await request('list');if(e!==epoch)return;
    if(!Array.isArray(rows))throw failure('denied');status.textContent=rows.length?'Select the separately authorized saved revision.':'No active saved-review authorization for this account.';
-   for(const row of rows){if(row.review_only!==true||row.revision!==2||typeof row.report_id!=='string')throw failure('denied');
+   for(const row of rows){if(row.review_only!==true||(!Number.isSafeInteger(row.revision)||row.revision<1)||typeof row.report_id!=='string')throw failure('denied');
     const choose=el('button','Read '+row.label);choose.type='button';main.append(choose);let loading=false;
     choose.onclick=async()=>{if(loading||e!==epoch||controller)return;loading=true;choose.disabled=true;const host=el('section');host.className='roadmap-processing';main.append(host);
      controller=root.RVA_ROADMAP_PROCESSING.mount(host,{report:row.report_id,reviewOnly:true,actorId:captured.userId,onReconnect:showReconnect,request:body=>{if(body.report!==row.report_id)throw failure('denied');return request(body.action,body.report,body.payload);},onError:()=>{if(e===epoch)status.textContent='Saved review unavailable or expired. No retry or processing was started.';}});

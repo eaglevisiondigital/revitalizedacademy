@@ -29,7 +29,7 @@ function buildDraft(context,{personalized=true,founderDirection=false}={}){
   roadmap:{summary:'Private individualized evidence review. All 12 Drivers are covered; complete numerical scores and Spectrum stage remain withheld. Original answers, current reference wording, arithmetic and founder interpretation are distinct.',strengths:Object.values(drivers).flatMap(d=>d.strengths.map(e=>({summary:d.name,reason:e.text}))),priorities:[],opportunities:actions.map(a=>({summary:a.summary,reason:a.reason})),actions:actions.map(a=>({summary:a.summary,reason:a.reason})),drivers:Object.fromEntries(Object.entries(drivers).map(([k,d])=>[k,{summary:d.interpretation,reason:d.questions.join(' '),evidence:d.evidence.map(e=>e.field)}]))},
   review:{state:'unreviewed',feedback:[],clientVisible:false,export:'held',delivery:'held',email:'held'}};
  if(personalized){
-  // Explicit local opt-in only. No deployed worker or caller enables this version.
+  // Only the trusted server entrypoint opts in; browser input cannot choose a ruleset.
   const baseline=narrative.build(observed),n=founderDirection?require('./vitality-roadmap-founder-direction.cjs').compose(observed,baseline):baseline;draft.narrative={version:n.version,ruleHash:n.ruleHash,policyIds:n.policyIds,contentBasis:n.contentBasis,provisional:true};
   if(founderDirection)draft.narrative.founderDirection=n.founderDirection;
   draft.componentTraces={symptoms:n.symptomTraces,references:n.referenceComponents,completeSourceNumericalComponents:0};
@@ -41,6 +41,7 @@ function buildDraft(context,{personalized=true,founderDirection=false}={}){
    for(const id of n.drivers[key].evidenceRefs){const e=shared.get(id);if(e&&!d.evidence.some(x=>x.field===id))d.evidence.push({field:id,question:e.label,questionProvenance:e.wording,answers:[],status:'shared_context_not_scored',reason:'Source-scoped citation reference. The exact original value is preserved in Shared submitted evidence; it is not duplicated or scored here.',scope:'shared_context_not_scored'});}
   }
  }
+ if(founderDirection)require('./vitality-roadmap-v2-gate.cjs').attest(draft,context);
  return draft;
 }
 function adapterProjection(analysis){return{pathway:'Adult',assessmentFor:'Myself',provenance:'explicit_candidate_inputs',findings:[],drivers:Object.fromEntries(coverage.drivers.filter(([k])=>k!=='wise_budgeting').map(([k])=>[k,{symptomScreen:'unknown',habits:[],function:null}])),budget:{planning:null,preparedness:null}};}

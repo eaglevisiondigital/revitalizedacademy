@@ -96,7 +96,7 @@
  }
 
  historyHost=el('section');historyHost.tabIndex=-1;historyHost.setAttribute('aria-label','Saved founder proposals');host.append(historyHost);proposals(result);
- if(reviewOnly){host.append(el('p','Review only: saved Revision 2 and source-cited proposals. Generation, scoring, approval, export and delivery are unavailable.'));return;}
+ if(reviewOnly){host.append(el('p','Review only: saved Revision '+result.revision+' and source-cited proposals. Generation, scoring, approval, export and delivery are unavailable.'));return;}
  const regenerate=el('button','Return for regeneration');regenerate.addEventListener('click',async()=>{if(terminated||generating)return;generating=true;regenerate.disabled=true;try{await call('regenerate',{version_id:result.version_id,request_key:crypto.randomUUID()});render(await call('process'));}catch{if(!terminated)onError('Regeneration requires current source and write authorization.');}finally{generating=false;}});host.append(regenerate);
  const approvalLabel=el('label','Overall internal approval rationale'),approvalReason=el('textarea');approvalReason.maxLength=2000;approvalLabel.append(approvalReason);host.append(approvalLabel);
  const approve=el('button','Approve this internal review only');approve.addEventListener('click',async()=>{approve.disabled=true;try{await call('approve',{version_id:result.version_id,expected_revision:result.reviews.length,rationale:approvalReason.value});host.append(el('p','Internal review approved. Client visibility, delivery and email remain held.'));}catch{if(!terminated)onError('Approval requires a reviewed current version and separate authorization.');}});host.append(approve);

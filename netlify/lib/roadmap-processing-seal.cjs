@@ -1,5 +1,5 @@
 'use strict';
-const {createHmac}=require('node:crypto');
+const {createHmac,randomBytes}=require('node:crypto');
 const protocol='rva-roadmap-seal-hmac-sha256-v1';
 function workerIdentity(env=process.env){
  const id=env.ROADMAP_PROCESSING_SEAL_KEY_ID,secret=env.ROADMAP_PROCESSING_SEAL_SECRET;
@@ -13,4 +13,13 @@ async function sealWithIdentity(call,identity,job,lease,document){
  const proof=createHmac('sha256',Buffer.from(identity.secret,'hex')).update(challenge.challenge,'utf8').digest('hex');
  return call('roadmap_processing_worker_seal',{...args,p_proof:proof});
 }
-module.exports={workerIdentity,sealWithIdentity,protocol};
+async function preflightWithIdentity(call,identity,report){
+ const args={p_key:identity.id,p_report:report,p_nonce:randomBytes(32).toString('hex'),p_proof:null};
+ const challenge=await call('roadmap_alex_key_preflight',args);
+ if(challenge?.protocol!=='rva-alex-key-possession-v1'||typeof challenge.challenge!=='string'||challenge.challenge.length>6000)throw Error('Worker authorization unavailable');
+ const proof=createHmac('sha256',Buffer.from(identity.secret,'hex')).update(challenge.challenge,'utf8').digest('hex');
+ const result=await call('roadmap_alex_key_preflight',{...args,p_proof:proof});
+ if(result?.ready!==true||result.processing!==false)throw Error('Worker custody verification unavailable');
+ return true;
+}
+module.exports={workerIdentity,sealWithIdentity,preflightWithIdentity,protocol};
