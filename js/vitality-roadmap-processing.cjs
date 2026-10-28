@@ -4,7 +4,8 @@ const crypto=require('node:crypto'),adapter=require('./vitality-roadmap-b6-adapt
 const narrative=require('./vitality-roadmap-narrative.cjs');
 const VERSION='roadmap-internal-processing-v1';
 const digest=x=>crypto.createHash('sha256').update(JSON.stringify(x)).digest('hex');
-function buildDraft(context,{personalized=true,founderDirection=false}={}){
+function buildDraft(context,{personalized=true,founderDirection=false,founderVoice=null}={}){
+ if(founderVoice!==null&&(!personalized||!founderDirection||founderVoice!==require('./vitality-roadmap-founder-voice.cjs').VERSION))throw Error('Coaching voice requires explicit trusted V2 opt-in');
  const observed=adapter.observe(context),input=adapterProjection(observed),calculated=engine.calculate(input);
  if(calculated.overall!==null||Object.values(calculated.drivers).some(d=>d.score!==null))throw Error('Unreviewed numerical conversion');
  const drivers=Object.fromEntries(coverage.drivers.map(([key,name])=>{
@@ -30,8 +31,9 @@ function buildDraft(context,{personalized=true,founderDirection=false}={}){
   review:{state:'unreviewed',feedback:[],clientVisible:false,export:'held',delivery:'held',email:'held'}};
  if(personalized){
   // Only the trusted server entrypoint opts in; browser input cannot choose a ruleset.
-  const baseline=narrative.build(observed),n=founderDirection?require('./vitality-roadmap-founder-direction.cjs').compose(observed,baseline):baseline;draft.narrative={version:n.version,ruleHash:n.ruleHash,policyIds:n.policyIds,contentBasis:n.contentBasis,provisional:true};
+  const baseline=narrative.build(observed),n=founderDirection?require('./vitality-roadmap-founder-direction.cjs').compose(observed,baseline,{voice:founderVoice}):baseline;draft.narrative={version:n.version,ruleHash:n.ruleHash,policyIds:n.policyIds,contentBasis:n.contentBasis,provisional:true};
   if(founderDirection)draft.narrative.founderDirection=n.founderDirection;
+  if(n.presentation)draft.narrative.presentation=n.presentation;
   draft.componentTraces={symptoms:n.symptomTraces,references:n.referenceComponents,completeSourceNumericalComponents:0};
   draft.roadmap={...draft.roadmap,...n.roadmap,narrativeVersion:n.version};
   const shared=new Map(n.sharedEvidence.map(e=>[e.id,e]));
@@ -42,6 +44,7 @@ function buildDraft(context,{personalized=true,founderDirection=false}={}){
   }
  }
  if(founderDirection)require('./vitality-roadmap-v2-gate.cjs').attest(draft,context);
+ if(founderVoice!==null)require('./vitality-roadmap-founder-voice.cjs').verifyDocument(draft);
  return draft;
 }
 function adapterProjection(analysis){return{pathway:'Adult',assessmentFor:'Myself',provenance:'explicit_candidate_inputs',findings:[],drivers:Object.fromEntries(coverage.drivers.filter(([k])=>k!=='wise_budgeting').map(([k])=>[k,{symptomScreen:'unknown',habits:[],function:null}])),budget:{planning:null,preparedness:null}};}

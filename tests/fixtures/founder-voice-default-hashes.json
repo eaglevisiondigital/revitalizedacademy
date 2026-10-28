@@ -1,0 +1,14 @@
+{
+  "baseline": "2406cec",
+  "methodology": "6d1a38382f22d45dfcaa2e831e3ae9f639ef2c8e",
+  "digests": {
+    "supporting-routines": "402a1ef9647c89d3624eb8616df4c9e4219b52dc67d04ca71745f7bd49fbc472",
+    "separate-symptom-details": "7ccbad50ec207080c3fce73c2613993999bc7484772cf87c6dde3ba553670668",
+    "high-disruption": "8d2d3e6215d7a0018f9381ed4259461f6f74c1ca29b64ccb9b9a50b018650a49",
+    "missing-evidence": "e5c6b9073e327dc506a5a2584fe3629679232209e6a25f669fd6628d63d6654a",
+    "conflicting-selections": "e6492eb64b539c03da013e497f9eb8ff61857966709317b387acd14621066fb6",
+    "existing-safety-hold": "e0502bdefc5234590c846c3ece882c4ddc183e6726cf6663c83b8c34aac2e027",
+    "cross-driver-context": "5c14deab77a2f78e32a64609ad3bfd6d7f1e2cf423551ea96006cb3e1bf0774b",
+    "conditional-and-untrusted-text": "aecf2238311baeb1a4b3f7c6745c19774452811e1475deb4f37f1596bb148f22"
+  }
+}
