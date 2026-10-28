@@ -57,7 +57,7 @@
  }finally{if(valid())attest.removeAttribute('aria-busy');}
  });
  section.append(purpose,attest,status);const reportHost=document.createElement('section');section.append(reportHost);
- try{controller=window.RVA_ROADMAP_PROCESSING.mount(reportHost,{report,request});await controller.start();}catch{if(valid())reportHost.replaceChildren(document.createTextNode('Internal draft workflow unavailable. Check its separate operator authorization; your storage-purpose status is shown above.'));}
+ try{controller=window.RVA_ROADMAP_PROCESSING.mount(reportHost,{report,request,onSavedDraft:pin=>{const detail={...pin,accepted:false};document.dispatchEvent(new CustomEvent('ra:roadmap-open-saved-review',{detail}));if(!detail.accepted&&reportHost.isConnected)reportHost.append(document.createTextNode('Close Calibration and choose Saved Roadmap review to read the same saved revision. No retry or processing was requested.'));}});await controller.start();}catch{if(valid())reportHost.replaceChildren(document.createTextNode('Internal draft workflow unavailable. Check its separate operator authorization; your storage-purpose status is shown above.'));}
  });
  });
 })();

@@ -78,7 +78,7 @@ function createApp({portal,panel}){
   // and offer one explicit read-only resume, rather than retrying writes or looping.
   refreshTimer=win.setTimeout(()=>{refreshTimer=null;refreshing=false;if(!sameAccount())reset();else if(revalidating())pause();else if(!eligible())reset();else showReconnect();},10000);
  }
- async function open(){
+ async function open(preferred=null){
   if(pending||!eligible())return;if(view){view.focus();return;}if(opener)return opener;
   close(true);returnFocus=doc.activeElement;captured=portal.captureStaffSession();task=guard.begin();const e=epoch;pending=true;
   view=el('section');view.className='rv5-dialog rv6-dialog';view.setAttribute('role','dialog');view.setAttribute('aria-modal','true');view.setAttribute('aria-label','Saved Roadmap review');view.tabIndex=-1;view.dataset.privateSource='';doc.body.classList.add('rv5-open');
@@ -87,24 +87,29 @@ function createApp({portal,panel}){
   resumeButton=el('button','Resume saved review');resumeButton.type='button';resumeButton.hidden=true;resumeButton.onclick=()=>void reconnect();main.append(resumeButton);view.append(main);doc.body.append(view);view.focus();
   opener=(async()=>{try{
    const rows=await request('list');if(e!==epoch)return;
+   const pin=preferred&&typeof preferred.report==='string'?preferred:null;
+   if(pin&&!rows?.some(row=>row.report_id===pin.report&&row.revision===pin.revision))throw failure('denied');
    if(!Array.isArray(rows))throw failure('denied');status.textContent=rows.length?'Select the separately authorized saved revision.':'No active saved-review authorization for this account.';
    for(const row of rows){if(row.review_only!==true||(!Number.isSafeInteger(row.revision)||row.revision<1)||typeof row.report_id!=='string')throw failure('denied');
     const choose=el('button','Read '+row.label);choose.type='button';main.append(choose);let loading=false;
     choose.onclick=async()=>{if(loading||e!==epoch||controller)return;loading=true;choose.disabled=true;const host=el('section');host.className='roadmap-processing';main.append(host);
-     controller=root.RVA_ROADMAP_PROCESSING.mount(host,{report:row.report_id,reviewOnly:true,actorId:captured.userId,onReconnect:showReconnect,request:body=>{if(body.report!==row.report_id)throw failure('denied');return request(body.action,body.report,body.payload);},onError:()=>{if(e===epoch)status.textContent='Saved review unavailable or expired. No retry or processing was started.';}});
+     controller=root.RVA_ROADMAP_PROCESSING.mount(host,{report:row.report_id,reviewOnly:true,actorId:captured.userId,onReconnect:showReconnect,request:body=>{if(body.report!==row.report_id)throw failure('denied');return request(body.action,body.report,body.payload).then(result=>{if(pin&&body.action==='read'&&(result?.version_id!==pin.versionId||result?.revision!==pin.revision))throw failure('denied');return result;});},onError:()=>{if(e===epoch)status.textContent='Saved review unavailable or expired. No retry or processing was started.';}});
      await controller.start();if(e===epoch)loading=false;
     };
+    if(pin&&row.report_id===pin.report)await choose.onclick();
    }
   }catch{if(e===epoch){controller?.stop();status.textContent='Saved review unavailable. Check the current session and separate review window. No processing was requested.';}}
   finally{if(e===epoch)pending=false;opener=null;}})();return opener;
  }
- launch.onclick=open;const focus=()=>{if(view&&sameAccount()&&revalidating())pause();else if(!eligible())reset();};
+ const handoff=event=>{const pin=event.detail;if(!pin||typeof pin.report!=='string'||typeof pin.versionId!=='string'||!Number.isSafeInteger(pin.revision)||pin.revision<1||!eligible()||view||pending||opener)return;pin.accepted=true;doc.dispatchEvent(new win.CustomEvent('ra:roadmap-close-calibration',{detail:{report:pin.report}}));void open(pin);};
+ doc.addEventListener('ra:roadmap-open-saved-review',handoff);
+ launch.onclick=()=>open();const focus=()=>{if(view&&sameAccount()&&revalidating())pause();else if(!eligible())reset();};
  const keys=e=>{if(!view)return;if(e.key==='Escape'){e.preventDefault();close();return;}if(e.key==='Tab'){const items=[...view.querySelectorAll('button:not(:disabled),input:not(:disabled),textarea,select,summary')].filter(x=>x.getClientRects().length);if(!items.length)return;const first=items[0],last=items.at(-1);if(e.shiftKey&&(doc.activeElement===first||doc.activeElement===view)){e.preventDefault();last.focus();}else if(!e.shiftKey&&doc.activeElement===last){e.preventDefault();first.focus();}}};
  const authSubscription=portal.authClient.auth.onAuthStateChange?.(renewal)?.data?.subscription;
  const pauseEvents=['ra:staff-access-refreshing','ra:staff-access-unavailable','ra:permissions-loading','ra:permissions-unavailable'];
  pauseEvents.forEach(event=>doc.addEventListener(event,pause));
  doc.addEventListener('ra:staff-access-reset',reset);doc.addEventListener('ra:permissions-loaded',initialize);win.addEventListener('pagehide',reset);win.addEventListener('focus',focus);doc.addEventListener('keydown',keys);initialize();
- return{open,close,reset,initialize,stop(){reset();authSubscription?.unsubscribe();launch.remove();pauseEvents.forEach(event=>doc.removeEventListener(event,pause));doc.removeEventListener('ra:staff-access-reset',reset);doc.removeEventListener('ra:permissions-loaded',initialize);win.removeEventListener('pagehide',reset);win.removeEventListener('focus',focus);doc.removeEventListener('keydown',keys);}};
+ return{open,close,reset,initialize,stop(){reset();doc.removeEventListener('ra:roadmap-open-saved-review',handoff);authSubscription?.unsubscribe();launch.remove();pauseEvents.forEach(event=>doc.removeEventListener(event,pause));doc.removeEventListener('ra:staff-access-reset',reset);doc.removeEventListener('ra:permissions-loaded',initialize);win.removeEventListener('pagehide',reset);win.removeEventListener('focus',focus);doc.removeEventListener('keydown',keys);}};
 }
 root.RVA_SAVED_ROADMAP_REVIEW=Object.freeze({createApp});
 const env=root.RVA_ENV,portal=root.RA_PORTAL,panel=root.document?.getElementById('vitality-assessments-panel');
