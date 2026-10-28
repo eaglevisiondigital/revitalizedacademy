@@ -1,6 +1,6 @@
 /* Candidate private report controller. Host supplies current authenticated session and approved source ID. */
 (function(root){'use strict';
- function mount(host,{report,request,view=root.RVA_ROADMAP_VIEW,onError=()=>{},now=()=>Date.now(),schedule=root.setTimeout,cancel=root.clearTimeout,reviewOnly=false,onReconnect=null,actorId=null}){
+ function mount(host,{report,request,view=root.RVA_ROADMAP_VIEW,onError=()=>{},now=()=>Date.now(),schedule=root.setTimeout,cancel=root.clearTimeout,reviewOnly=false,onReconnect=null,actorId=null,onSavedDraft=null}){
  let epoch=0,terminated=false,timer=null,watch=null,documentState=null,opening=null,generating=false,abort=new AbortController();
  const recoverable=reviewOnly&&typeof onReconnect==='function';let suspended=false,held=null,checking=false,pendingProposal=null,historyHost=null,historyNavigation=null,historySignature=null,heldPosition=null;const forms=new Map();
  const signature=value=>JSON.stringify(value,(_key,item)=>item&&typeof item==='object'&&!Array.isArray(item)?Object.fromEntries(Object.keys(item).sort().map(key=>[key,item[key]])):item);
@@ -32,6 +32,12 @@
  async function resume(){if(terminated)return false;const resumedEpoch=epoch;try{const result=await call('read');if(terminated)return false;if(!documentState?.document){render(result);return !terminated;}const restored=acceptRead(result);if(restored&&pendingProposal){const pending=pendingProposal,record=result.reviews.find(r=>actorId&&r.actor===actorId&&r.revision===pending.expectedRevision+1&&signature(r.proposal)===signature(pending.proposal));if(record){pending.confirmedOnResume=true;pending.form.saved=pending.value;pending.form.lastSubmitted=pending.value;pending.status.textContent='Cited founder proposal saved. Confirmed in attributed feedback after reconnection.';pending.button.disabled=false;pendingProposal=null;proposals(result);}else{pending.status.textContent='Save result is uncertain. No retry was sent. Check Attributed founder proposals before another submission.';pending.button.disabled=true;}}return restored;}catch(error){if(terminated||resumedEpoch!==epoch)return false;if(error.reviewKind==='denied')ended('Saved review access ended. Private content and unsaved feedback have been cleared.');else{suspend('Unable to reconnect yet. Unsaved feedback remains in memory while this tab stays open. Use Resume saved review after your normal session is available.');onReconnect();}return false;}}
 
  function render(result){
+ // Saved reports leave the nonrecoverable Calibration lifecycle before editing.
+ if(result?.document&&typeof onSavedDraft==='function'){
+  const valid=typeof result.version_id==='string'&&Number.isSafeInteger(result.revision)&&result.revision>0&&Date.parse(result.expires_at)>now();
+  stop();host.append(el('p','Saved report is available in Saved Roadmap review. Opening it never generates another version.'));
+  if(valid)onSavedDraft({report,versionId:result.version_id,revision:result.revision});return;
+ }
  host.replaceChildren();forms.clear();historyHost=null;historySignature=null;documentState=result;reviewOnly=reviewOnly||result.review_only===true;host.dataset.version=result.version_id||'';host.dataset.reviewRevision=String(result.reviews?.length||0);
  delete host.dataset.revision;
  const expiry=Date.parse(result.expires_at);if(!Number.isFinite(expiry)||expiry<=now()){stop();return;}
