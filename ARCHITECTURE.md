@@ -1,3 +1,7 @@
+## 2026-10-29 — Local HHL replay addition
+
+Completed-session replay approvals and a separately gated availability outbox wrap the existing HHL commands. Exact previous-week selection, optional guest permission and privacy cleanup use the existing security boundary; live Zoom operations remain independent. Scope and release ordering: docs/health-hope-live/WEEKLY_REPLAY.md. Not deployed.
+
 ## Roadmap narrative extension — local candidate — 2026-10-21
 
 A pure versioned narrative builder and source-component trace module extend the existing all12Driver document; they add no new queue/Auth/database. The pipeline version and B6pins remain unchanged; the document adds narrativeVersion/ruleHash and source-cited findings, relationships and phase actions. Existing guarded regeneration creates a separate immutable revision. Shared citations reference the same source and never count toward health arithmetic. No hosted installation.

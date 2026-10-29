@@ -9,7 +9,7 @@
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.js" defer>
 </script>
-<script src="/portal/health-hope-live.js?v=6" defer>
+<script src="/portal/health-hope-live.js?v=replay-v1-6" defer>
 </script>
 <link rel="stylesheet" href="/css/health-hope-live.css?v=1">
 <link rel="stylesheet" href="/portal/health-hope-live.css?v=3">
@@ -94,6 +94,27 @@
 </form>
 <p>New sessions begin in draft. Zoom sessions must pass validation before publication. Changes create a new revision and replace pending notifications.</p>
 </details>
+<details id="hhl-replay-panel">
+<summary><span class="hhl-control-icon" aria-hidden="true">▷</span><span class="hhl-control-copy"><span class="hhl-control-title">Previous-week replay</span><span class="hhl-control-description">Approve the completed session’s YouTube recording. This never changes the live Zoom invitation.</span></span></summary>
+<button id="hhl-replay-refresh" type="button">Load replay approvals</button><p id="hhl-replay-status" role="status"></p>
+<form id="hhl-replay-form" class="hhl-form-card" hidden>
+<label>Original Health &amp; Hope Live session<select name="session_id" required></select></label>
+<input name="expected_revision" type="hidden" value="0">
+<label>Approved YouTube replay URL<input name="url" type="url" maxlength="2048" autocomplete="off"></label>
+<label class="hhl-checkbox"><input name="available" type="checkbox">Make this approved recording available to next week’s registrants</label>
+<label class="hhl-checkbox"><input name="sharing_approved" type="checkbox">I verified this is the playable, approved recording of the selected completed session, not a draft or future premiere, and it is approved for sharing with guests</label>
+<label>Approval or withdrawal reason<input name="reason" minlength="5" maxlength="500" required></label>
+<button class="hhl-button" type="submit">Save replay approval</button>
+<p>Saving never queues additional emails. No previous-week recording means normal registration and Zoom confirmations continue without one.</p>
+</form>
+<form id="hhl-replay-notice-form" class="hhl-form-card" hidden>
+<h3>Separately approved replay-availability message</h3><p>One message per eligible guest and original replay session. Existing Zoom confirmations are not resent. Delivery and link-click events do not prove completed YouTube viewing.</p>
+<label>Upcoming published session<select name="upcoming_session_id" required></select></label>
+<label>Separate Owner approval reference<input name="approval_reference" minlength="10" maxlength="500" required></label>
+<label>Reason<input name="reason" minlength="5" maxlength="500" required></label>
+<label class="hhl-checkbox"><input name="confirm_send" type="checkbox" required>I have separate approval to queue this session’s replay-availability message</label>
+<button class="hhl-button" type="submit">Queue approved replay availability</button>
+</form></details>
 <details>
 <summary><span class="hhl-control-icon" aria-hidden="true">≡</span><span class="hhl-control-copy"><span class="hhl-control-title">Event release controls</span><span class="hhl-control-description">Review independent registration and integration controls.</span></span></summary>
 <p>Runtime release flags independently hold registration, Zoom and notifications. Changing these database controls alone cannot activate a held integration.</p>

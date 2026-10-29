@@ -23,6 +23,14 @@
     const total = Math.max(0, Math.floor((Date.parse(row.starts_at) - now) / 1000));
     return {days: Math.floor(total / 86400), hours: Math.floor(total / 3600) % 24, minutes: Math.floor(total / 60) % 60, seconds: total % 60};
   }
+  function renderReplay(doc,replay) {
+    doc.getElementById('hhl-last-week-replay')?.remove();
+    if(!replay||!/^https:\/\/www[.]youtube[.]com\/watch[?]v=[A-Za-z0-9_-]{11}$/.test(replay.url||''))return false;
+    if(!/^\d{4}-\d{2}-\d{2}$/.test(replay.source_date||'')||!/^\d{4}-\d{2}-\d{2}$/.test(replay.upcoming_date||'')||Date.parse(replay.upcoming_date+'T12:00:00Z')-Date.parse(replay.source_date+'T12:00:00Z')!==7*86400000)return false;
+    const target=doc.getElementById('hhl-confirmation');if(!target)return false;
+    const section=doc.createElement('section');section.id='hhl-last-week-replay';const a=doc.createElement('a');a.textContent="Watch Last Week's Replay";a.href=replay.url;a.target='_blank';a.rel='noopener noreferrer';a.className='hhl-button';
+    const note=doc.createElement('p');note.textContent='Recording from '+replay.source_date+'. This is separate from your upcoming live Zoom session.';section.append(a,note);target.append(section);return true;
+  }
   function mount(doc) {
     mountPromo(doc);
     const form = doc.getElementById('hhl-registration-form');
@@ -84,7 +92,7 @@
       event.preventDefault(); if (sending || !form.reportValidity()) return;
       const selected = available(sessions).find(row => row.id === select.value);
       if (!selected) { setStatus('This session is no longer available. Please choose another.'); await refresh(); return; }
-      const payload = {session_id: selected.id, first_name: form.elements.first_name.value.trim(), last_name: form.elements.last_name.value.trim(), email: form.elements.email.value.trim(), event_notifications: form.elements.event_notifications.checked, marketing_requested: form.elements.marketing_requested.checked, company_website: form.elements.company_website.value, source: 'health_hope_live_website'};
+      const payload = {session_id: selected.id, first_name: form.elements.first_name.value.trim(), last_name: form.elements.last_name.value.trim(), email: form.elements.email.value.trim(), event_notifications: form.elements.event_notifications.checked, marketing_requested: form.elements.marketing_requested.checked, replay_updates: !!form.elements.replay_updates?.checked, company_website: form.elements.company_website.value, source: 'health_hope_live_website', ...(form.elements.referral_source?.value.trim()?{referral_source:form.elements.referral_source.value.trim()}: {})};
       const identity = JSON.stringify(payload);
       if (identity !== payloadKey) { requestKey = crypto.randomUUID(); payloadKey = identity; }
       sending = true; submit.disabled = true; select.disabled = true; setStatus('Sending your registration…');
@@ -95,6 +103,7 @@
         if (disposed) return;
         form.hidden = true; doc.getElementById('hhl-confirmed-session').textContent = label(selected);
         const confirmation = doc.getElementById('hhl-confirmation'); confirmation.hidden = false; confirmation.focus();
+        renderReplay(doc,data.replay);if(!doc.getElementById('hhl-invitation-help')){const help=doc.createElement('p');help.id='hhl-invitation-help';help.textContent='If you have questions, contact the person who shared or invited you to Health & Hope Live.';confirmation.append(help);}
         form.reset(); requestKey = null; payloadKey = null; setStatus('');
       } catch (error) { if (!disposed) {setStatus(error.message === 'Failed to fetch' || error.name === 'TimeoutError' ? 'We couldn’t confirm receipt. Please retry using the same details.' : error.message); await refresh();} }
       finally { sending = false; if (!disposed) render(); }
@@ -133,5 +142,5 @@
     window.addEventListener('pagehide', () => {disposed = true; clearInterval(timer); clearInterval(poll);});
     refresh();
   }
-  return {zone, firstSessionDate, available, label, countdown, mount, mountPromo};
+  return {zone, firstSessionDate, available, label, countdown, renderReplay, mount, mountPromo};
 });

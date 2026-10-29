@@ -1,3 +1,4 @@
+import {youtubeUrl,verifyReplayAvailability,replayForJob,replayText,invitationHelp} from './health-hope-live-replay.mjs';
 import {createHash, createHmac, timingSafeEqual} from 'node:crypto';
 import {HEALTH_HOPE_MEETING} from './health-hope-live-meeting.mjs';
 import {acceptanceScope} from './health-hope-live-acceptance.mjs';
@@ -105,10 +106,15 @@ export function zoomClient(env, fetcher = fetch) {
 export function emailForJob(job) {
   const when = new Intl.DateTimeFormat('en-US', {timeZone: 'America/New_York', weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit', timeZoneName: 'short'}).format(new Date(job.starts_at));
   if (job.kind !== 'cancellation' && !validJoinUrl(job.join_url)) throw new EventError('joining_info_requires_review');
-  const subject = job.kind === 'cancellation' ? 'Health & Hope Live — session canceled' : job.kind === 'update' ? 'Health & Hope Live — your session has changed' : job.kind === 'reminder' ? 'Your Health & Hope Live session starts soon' : 'Your Health & Hope Live registration is confirmed';
+  const subject = job.kind === 'cancellation' ? 'Health & Hope Live — session canceled' : job.kind === 'update' ? 'Health & Hope Live — your session has changed' : job.kind === 'replay' ? 'Watch Last Week’s Health & Hope Live Replay' : job.kind === 'reminder' ? 'Your Health & Hope Live session starts soon' : 'Your Health & Hope Live registration is confirmed';
   const joining = job.join_mode === 'manual' ? `Zoom joining link for this session:\n${job.join_url}\n\nThis is a shared recurring Zoom link. Your website registration is for the session above. Please do not share the joining information.` : `Your private joining link:\n${job.join_url}\n\nPlease keep this joining information private.`;
   const text = job.kind === 'cancellation' ? `ReVitalized Academy\n\nYour Health & Hope Live session scheduled for ${when} has been canceled.\n\nYou can choose another free session at https://revitalizedacademy.com/health-hope-live.\n\nJustyn & Elle Oliver` : `ReVitalized Academy\n\nHealth & Hope Live\n${when}\n30 minutes · Free · Zoom\n\n${joining}\n\nJustyn & Elle Oliver`;
-  return {subject, text};
+  if(job.kind==='replay'&&!replayForJob(job))throw new EventError('replay_unavailable');
+  const body=text+(job.kind==='confirmation'||job.kind==='replay'?replayText(job)+'\n\n'+invitationHelp:'');
+  if(!['confirmation','replay'].includes(job.kind)||!replayForJob(job))return {subject,text:body};
+  const escape=value=>value.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('\"','&quot;');
+  const html=body.split('\n\n').map(paragraph=>'<p>'+paragraph.split('\n').map(line=>line===job.join_url?'<a href="'+escape(line)+'">Join the upcoming live Zoom session</a>':line===job.replay.url?'<a href="'+escape(line)+'">Watch Last Week&#39;s Replay</a>':escape(line)).join('<br>')+'</p>').join('');
+  return {subject,text:body,html:'<!doctype html><html lang="en"><body>'+html+'</body></html>'};
 }
 export function createHealthHopeApp(env, {fetcher = fetch, context = {}, now = () => Date.now()} = {}) {
   const origin = env.get('RVA_HHL_ORIGIN'), database = env.get('RVA_HHL_SUPABASE_URL');
@@ -149,11 +155,18 @@ export function createHealthHopeApp(env, {fetcher = fetch, context = {}, now = (
         if(action==='email-webhook') {
           configured();if(!enabled(env,'RVA_HHL_NOTIFICATIONS_ENABLED'))throw new EventError('notifications_held');
           if(!verifyResend(raw,request.headers,env.get('RVA_HHL_RESEND_WEBHOOK_SECRET'),now()))throw new EventError('invalid_webhook',401);
+          if(body.type==='email.clicked'){
+            const tags=Array.isArray(body.data?.tags)?Object.fromEntries(body.data.tags.filter(t=>t&&typeof t.name==='string').map(t=>[t.name,t.value])):(body.data?.tags||{});
+            const reference=tags.replay_notice_id||tags.job_id,link=youtubeUrl(body.data?.click?.link);
+            if(tags.event!=='health_hope_live'||!uuid(body.data?.email_id)||!uuid(reference)||!link)return json({received:true});
+            return json(await service('replay-click',{event_key:hash('resend:'+request.headers.get('svix-id')),provider_id:body.data.email_id,job_id:reference,notice:!!tags.replay_notice_id,url:link}));
+          }
           const status=({'email.delivered':'delivered','email.bounced':'bounced','email.complained':'complained','email.failed':'failed','email.suppressed':'suppressed'})[body.type];
           const tags=Array.isArray(body.data?.tags)?Object.fromEntries(body.data.tags.filter(t=>t&&typeof t.name==='string').map(t=>[t.name,t.value])):body.data?.tags;
           if(!status||tags?.event!=='health_hope_live')return json({received:true});
-          if(!uuid(body.data?.email_id)||!uuid(tags.job_id))throw new EventError('invalid_webhook',400);
-          return json(await service('mail-status',{event_key:hash('resend:'+request.headers.get('svix-id')),provider_id:body.data.email_id,job_id:tags.job_id,status}));
+          const notice=uuid(tags.replay_notice_id),reference=notice?tags.replay_notice_id:tags.job_id;
+          if(!uuid(body.data?.email_id)||!uuid(reference))throw new EventError('invalid_webhook',400);
+          return json(await service(notice?'replay-mail-status':'mail-status',{event_key:hash('resend:'+request.headers.get('svix-id')),provider_id:body.data.email_id,job_id:reference,status}));
         }
         if (action === 'zoom-webhook') {
           configured();
@@ -194,13 +207,15 @@ export function createHealthHopeApp(env, {fetcher = fetch, context = {}, now = (
             const scope=await staff(acceptanceJwt,'acceptance-info');
             if(!scope||Object.keys(acceptance).some(key=>scope[key]!==acceptance[key]))throw new EventError('event_access_denied',403);
           } else if (!enabled(env, 'RVA_HHL_REGISTRATION_ENABLED')) throw new EventError('registration_held');
-          const allowed = ['request_id', 'session_id', 'first_name', 'last_name', 'email', 'event_notifications', 'marketing_requested', 'company_website', 'source'];
+          const allowed = ['request_id', 'session_id', 'first_name', 'last_name', 'email', 'event_notifications', 'marketing_requested', 'company_website', 'source', 'referral_source', 'replay_updates'];
           if (Object.keys(body).some(key => !allowed.includes(key)) || !uuid(body.request_id) || !uuid(body.session_id) || !['first_name','last_name'].every(key => typeof body[key] === 'string' && body[key].trim().length >= 1 && body[key].length <= 100 && !/[\x00-\x1f\x7f]/.test(body[key])) || typeof body.email !== 'string' || body.email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email.trim()) || body.event_notifications !== true || typeof body.marketing_requested !== 'boolean' || body.source !== 'health_hope_live_website') throw new EventError('invalid_registration', 400);
           if (body.company_website) return json({received: true}, 202);
           if(acceptance&&(body.email.trim().toLowerCase()!==acceptance.email||body.session_id!==acceptance.session_id||body.request_id!==acceptance.request_id||body.marketing_requested!==false))throw new EventError('acceptance_scope_mismatch',403);
+          if(body.replay_updates!==undefined&&typeof body.replay_updates!=='boolean')throw new EventError('invalid_registration',400);
+          if(body.referral_source!==undefined&&(typeof body.referral_source!=='string'||body.referral_source.length>160||/[\x00-\x1f\x7f]/.test(body.referral_source)))throw new EventError('invalid_registration',400);
           const secret = env.get('RVA_HHL_RATE_SECRET'); if (!secret || !context.ip) throw new EventError('registration_protection_unavailable');
           const {company_website, ...input} = body;
-          const registration={...input, guest_model_version: 'hhl-guest-v1', privacy_model_version: 'hhl-privacy-v1', ip_hash: createHmac('sha256', secret).update(context.ip).digest('hex')};
+          const registration={...input, ...(body.referral_source?{referral_source:body.referral_source.trim()}:{}), guest_model_version: 'hhl-guest-v1', privacy_model_version: 'hhl-privacy-v1', ip_hash: createHmac('sha256', secret).update(context.ip).digest('hex')};
           return json(await (acceptance?staff(acceptanceJwt,'acceptance-register',registration):service('register',registration)),202);
         }
         if (action === 'staff') {
@@ -218,9 +233,15 @@ export function createHealthHopeApp(env, {fetcher = fetch, context = {}, now = (
             const input = {session_id: session.id, meeting_id: session.zoom_meeting_id, occurrence_id: session.zoom_occurrence_id, starts_at: session.starts_at};
             await zoom.validateSession(input); return json(await service('zoom-sync', input));
           }
-          const allowed = ['overview','history','join-info','settings','session-save','review-list','identity-resolve','bind-instance','attendance-resolve','attendance-status','manual-attendance','guest-stage','privacy-overview','privacy-open','privacy-export','privacy-delete','privacy-provider-manifest','privacy-provider-attest','withdraw-consent','prepare-weekly'];
+          const allowed = ['overview','history','join-info','settings','session-save','review-list','identity-resolve','bind-instance','attendance-resolve','attendance-status','manual-attendance','guest-stage','privacy-overview','privacy-open','privacy-export','privacy-delete','privacy-provider-manifest','privacy-provider-attest','withdraw-consent','prepare-weekly','replay-overview','replay-save','replay-queue','replay-control'];
           if (!allowed.includes(body.action)) throw new EventError('invalid_request', 400);
           const data = {...body.data};
+          if(body.action==='replay-save'){
+            if(data.available===true){if(data.sharing_approved!==true)throw new EventError('replay_approval_required',400);const verified=await staff(jwt,'replay-preflight',data);data.url=await verifyReplayAvailability(data.url,transport);const proof=await service('replay-verify',{actor_id:verified.actor_id,session_id:verified.session_id,expected_revision:verified.expected_revision,url:data.url});data.availability_ticket=proof.ticket;}
+            // SQL repeats authenticated staff permission, session/date, revision
+            // and approval checks. No guest can approve a recording.
+          }
+          if(['replay-queue','replay-control'].includes(body.action)&&!enabled(env,'RVA_HHL_REPLAY_FOLLOWUP_ENABLED'))throw new EventError('replay_followup_held');
           const blankLink = data.manual_join_url == null || data.manual_join_url === '';
           // Existing staff commands still authorize/audit every draft write.
           // Never fill a joining link during publication or editing of a session.
@@ -238,6 +259,7 @@ export function createHealthHopeApp(env, {fetcher = fetch, context = {}, now = (
             const mayAccept=scope&&verified&&Object.keys(scope).every(key=>verified[key]===scope[key]);
             return json({...result, meeting_setup: setup,...(mayAccept?{acceptance_case:scope}:{})});
           }
+          if(body.action==='replay-overview')return json({...result,runtime_followup_enabled:enabled(env,'RVA_HHL_REPLAY_FOLLOWUP_ENABLED')});
           return json(result);
         }
         return json({error: 'not_found'}, 404);
@@ -269,9 +291,11 @@ export function createHealthHopeApp(env, {fetcher = fetch, context = {}, now = (
       }
       for (let n = 0; n < 10 && Date.now() < deadline - 3000; n++) {
         if(acceptance&&!acceptanceScope(env,now()))break;
-        const lease = await service(acceptance?'acceptance-claim':'claim', acceptance?{...acceptance,allow_notifications:enabled(env,'RVA_HHL_NOTIFICATIONS_ENABLED')}:{allow_zoom: enabled(env, 'RVA_HHL_ZOOM_ENABLED'), allow_notifications: enabled(env, 'RVA_HHL_NOTIFICATIONS_ENABLED')}); if (!lease) break;
+        let lease = await service(acceptance?'acceptance-claim':'claim', acceptance?{...acceptance,allow_notifications:enabled(env,'RVA_HHL_NOTIFICATIONS_ENABLED')}:{allow_zoom: enabled(env, 'RVA_HHL_ZOOM_ENABLED'), allow_notifications: enabled(env, 'RVA_HHL_NOTIFICATIONS_ENABLED')});
+        if(!lease&&!acceptance&&enabled(env,'RVA_HHL_REPLAY_FOLLOWUP_ENABLED')&&enabled(env,'RVA_HHL_NOTIFICATIONS_ENABLED'))lease=await service('replay-claim',{allow_replay:true});
+        if (!lease) break;
         try {
-          const job = await service('job', lease);
+          const followup=lease.queue==='replay', job = await service(followup?'replay-job':'job', {...lease,replay_version:'hhl-previous-week-replay-v1'});
           if(acceptance&&(job.kind!=='confirmation'||job.email!==acceptance.email||job.session_id!==acceptance.session_id||job.revision!==acceptance.revision||job.join_mode!=='manual'))throw new EventError('acceptance_scope_mismatch');
           if (!Number.isFinite(Date.parse(job.expires_at)) || Date.parse(job.expires_at)<=now()) throw new EventError('event_retention_expired');
           if (job.kind === 'zoom') {
@@ -284,17 +308,17 @@ export function createHealthHopeApp(env, {fetcher = fetch, context = {}, now = (
             const mail = emailForJob(job);
             if(acceptance&&!acceptanceScope(env,now()))throw new EventError('acceptance_window_expired');
             let response;
-            try {response = await transport('https://api.resend.com/emails', {method: 'POST', headers: {Authorization: 'Bearer ' + key, 'Content-Type': 'application/json', 'Idempotency-Key': 'hhl-' + job.id}, body: JSON.stringify({from, reply_to:replyTo, to: [job.email], tags:[{name:'event',value:'health_hope_live'},{name:'job_id',value:job.id}], ...mail}), signal: AbortSignal.timeout(10000), redirect: 'error'});}
+            try {response = await transport('https://api.resend.com/emails', {method: 'POST', headers: {Authorization: 'Bearer ' + key, 'Content-Type': 'application/json', 'Idempotency-Key': (followup?'hhl-replay-':'hhl-') + job.id}, body: JSON.stringify({from, reply_to:replyTo, to: [job.email], tags:[{name:'event',value:'health_hope_live'},{name:followup?'replay_notice_id':'job_id',value:job.id}], ...mail}), signal: AbortSignal.timeout(10000), redirect: 'error'});}
             catch {throw new EventError('notification_retry_pending', 503, true);}
             if (!response.ok) throw new EventError('notification_delivery_pending', 503, response.status === 429 || response.status >= 500);
             const data = await response.json(); if (typeof data.id !== 'string' || data.id.length > 200) throw new EventError('notification_retry_pending', 503, true);
-            await service('finish', {...lease, state: 'done', provider_id: data.id});
+            await service(followup?'replay-finish':'finish', {...lease, state: 'done', provider_id: data.id});
           }
           processed++;
         } catch (error) {
           const code = error instanceof EventError ? error.code : 'event_job_requires_review';
           // Never blindly retry a Zoom registration whose response is uncertain.
-          try {await service('finish', {...lease, state: error instanceof EventError && error.retryable ? 'pending' : 'review', error: code});} catch {break;} // An expired lease is reconciled on the next claim; never re-send here.
+          try {await service(lease.queue==='replay'?'replay-finish':'finish', {...lease, state: error instanceof EventError && error.retryable ? 'pending' : 'review', error: code});} catch {break;} // An expired lease is reconciled on the next claim; never re-send here.
         }
       }
       return {processed};
