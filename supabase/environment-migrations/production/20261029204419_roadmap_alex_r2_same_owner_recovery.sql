@@ -60,7 +60,7 @@ create function public.roadmap_voice_r2_owner_recover(p_request uuid,p_confirmat
 declare a uuid;sid uuid;c private.roadmap_voice_r2_contract;w private.roadmap_voice_r2_authority;fsid uuid;begin
  perform pg_advisory_xact_lock(18062026);
  a:=auth.uid();sid:=(auth.jwt()->>'session_id')::uuid;
- if auth.jwt()->>'iss'is distinct from 'https://voalfpxiyznnqfcqcymd.supabase.co/auth/v1'or auth.jwt()->>'sub'is distinct from a::text or p_request is null or p_confirmation is distinct from 'RECOVER EXISTING ALEX R2 SUPERVISION ONLY'then raise exception 'Exact authenticated recovery request required'using errcode='42501';end if;
+ if auth.jwt()->>'iss'is distinct from 'https://voalfpxiyznnqfcqcymd.supabase.co/auth/v1'or auth.jwt()->>'sub'is distinct from a::text or p_request is null or p_confirmation is distinct from 'RECOVER EXISTING REVISION TWO SUPERVISION ONLY'then raise exception 'Exact authenticated recovery request required'using errcode='42501';end if;
  perform private.roadmap_voice_r2_recovery_validate('recover');
  perform private.roadmap_voice_r2_recovery_check_owner(a,sid,true);
  if exists(select 1 from auth.mfa_factors where user_id=a and status='verified')and auth.jwt()->>'aal'is distinct from 'aal2'then raise exception 'Current Owner MFA required'using errcode='42501';end if;

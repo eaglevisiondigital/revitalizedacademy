@@ -1,10 +1,10 @@
 /* LOCAL candidate: same original Owner, one append-only binding; never generates. */
 (function(root){'use strict';
 function createApp({portal,panel,api}){
- const doc=panel.ownerDocument,win=doc.defaultView,host=doc.createElement('section');host.hidden=true;host.className='rv5-card';host.setAttribute('aria-label','Existing Alex Revision 2 Owner supervision recovery');
- const title=doc.createElement('h3');title.textContent='Recover existing Alex Revision 2 supervision';
+ const doc=panel.ownerDocument,win=doc.defaultView,host=doc.createElement('section');host.hidden=true;host.className='rv5-card';host.setAttribute('aria-label','Existing Revision 2 Owner supervision recovery');
+ const title=doc.createElement('h3');title.textContent='Recover existing Revision 2 supervision';
  const note=doc.createElement('p');note.textContent='Original issuing Owner only. This recovers the existing authority; it does not create another grant or generate a report. Keep this exact Owner browser session signed in during authorized use; another login cannot replace it.';
- const label=doc.createElement('label'),box=doc.createElement('input');box.type='checkbox';label.append(box,doc.createTextNode(' Recover the existing Alex-only authority once, with the same scope and expiration.'));
+ const label=doc.createElement('label'),box=doc.createElement('input');box.type='checkbox';label.append(box,doc.createTextNode(' Recover the existing source-specific authority once, with the same scope and expiration.'));
  const button=doc.createElement('button');button.type='button';button.textContent='Recover existing supervision once';button.disabled=true;
  const status=doc.createElement('p');status.setAttribute('role','status');status.setAttribute('aria-live','polite');host.append(title,note,label,button,status);panel.append(host);
  let owner=null,attempted=false,busy=false,stopped=false,available=false;
@@ -25,7 +25,7 @@ function createApp({portal,panel,api}){
  button.addEventListener('click',async()=>{
   if(attempted||busy||!available||!box.checked||!owner||!current(owner))return;attempted=true;busy=true;button.disabled=true;box.disabled=true;const id=owner;
   status.textContent='Saving the one recovery binding. No generation requested.';
-  try{const r=await call('roadmap_voice_r2_owner_recover',{p_request:win.crypto.randomUUID(),p_confirmation:'RECOVER EXISTING ALEX R2 SUPERVISION ONLY'});if(!current(id)){clear();return;}
+  try{const r=await call('roadmap_voice_r2_owner_recover',{p_request:win.crypto.randomUUID(),p_confirmation:'RECOVER EXISTING REVISION TWO SUPERVISION ONLY'});if(!current(id)){clear();return;}
    status.textContent=r?.recovered===true&&r.new_authority===false&&r.processing===false?'Recovery recorded. Keep this Owner session signed in. Independent readback is required; do not generate yet.':'Recovery result uncertain. Do not retry; obtain independent readback.';
   }catch{if(current(id))status.textContent='Recovery not confirmed. Do not retry; obtain independent readback.';}finally{busy=false;}
  });
