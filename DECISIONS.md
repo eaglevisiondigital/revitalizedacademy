@@ -1,3 +1,7 @@
+## 2026-10-29 — Same-Owner recovery LOCAL preparation authorized; identity split confirmed
+
+Owner authorized design/local implementation and fictional PostgreSQL security tests only. Original issuing Owner personally reauthenticates; Justyn remains separately authenticated founder. This resolves the requirement ambiguity without substituting Justyn as issuer. Existing authority/history unchanged, one append-only recovery only, exact Oct31 11AMCentral expiry and one-use/source/worker restrictions preserved. No production installation, publication, actual recovery, runner activation or report generation authorized. Exact future correction needs separate reviewed source/SQL/artifact approval and independent readback.
+
 ## October21 owner-approved local narrative implementation — 2026-10-21
 
 Implement the missing personalized report intelligence locally using existing methodology and allseven qualitative October20directions. Keep those directions distinct from unapproved numerical coefficients. Approvedscope is local code/tests/preview only, preserving existing reports and no real-source regeneration. The next release and Caroline-onlyrevision2 invocation require separately scoped authorization within the existing deadline.
