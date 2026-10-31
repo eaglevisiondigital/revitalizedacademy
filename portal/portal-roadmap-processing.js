@@ -1,6 +1,6 @@
 /* Candidate private report controller. Host supplies current authenticated session and approved source ID. */
 (function(root){'use strict';
- function mount(host,{report,request,view=root.RVA_ROADMAP_VIEW,onError=()=>{},now=()=>Date.now(),schedule=root.setTimeout,cancel=root.clearTimeout,reviewOnly=false,onReconnect=null,actorId=null,onSavedDraft=null}){
+ function mount(host,{report,request,view=root.RVA_ROADMAP_VIEW,onError=()=>{},now=()=>Date.now(),schedule=root.setTimeout,cancel=root.clearTimeout,reviewOnly=false,onReconnect=null,actorId=null,onSavedDraft=null,explicitRevisionTwo=false}){
  let epoch=0,terminated=false,timer=null,watch=null,documentState=null,opening=null,generating=false,abort=new AbortController();
  const recoverable=reviewOnly&&typeof onReconnect==='function';let suspended=false,held=null,checking=false,pendingProposal=null,historyHost=null,historyNavigation=null,historySignature=null,heldPosition=null;const forms=new Map();
  const signature=value=>JSON.stringify(value,(_key,item)=>item&&typeof item==='object'&&!Array.isArray(item)?Object.fromEntries(Object.keys(item).sort().map(key=>[key,item[key]])):item);
@@ -31,7 +31,38 @@
  function acceptRead(result){if(!matching(result)){ended('Saved report or review scope changed. Private content and unsaved feedback have been cleared.');return false;}documentState=result;if(held){host.replaceChildren(held);held=null;heldPosition?.focus?.focus({preventScroll:true});if(heldPosition?.scroll)heldPosition.scroll.scrollTop=heldPosition.top;heldPosition=null;}suspended=false;proposals(result);if(watch!==null)cancel(watch);watch=schedule(check,15000);return true;}
  async function resume(){if(terminated)return false;const resumedEpoch=epoch;try{const result=await call('read');if(terminated)return false;if(!documentState?.document){render(result);return !terminated;}const restored=acceptRead(result);if(restored&&pendingProposal){const pending=pendingProposal,record=result.reviews.find(r=>actorId&&r.actor===actorId&&r.revision===pending.expectedRevision+1&&signature(r.proposal)===signature(pending.proposal));if(record){pending.confirmedOnResume=true;pending.form.saved=pending.value;pending.form.lastSubmitted=pending.value;pending.status.textContent='Cited founder proposal saved. Confirmed in attributed feedback after reconnection.';pending.button.disabled=false;pendingProposal=null;proposals(result);}else{pending.status.textContent='Save result is uncertain. No retry was sent. Check Attributed founder proposals before another submission.';pending.button.disabled=true;}}return restored;}catch(error){if(terminated||resumedEpoch!==epoch)return false;if(error.reviewKind==='denied')ended('Saved review access ended. Private content and unsaved feedback have been cleared.');else{suspend('Unable to reconnect yet. Unsaved feedback remains in memory while this tab stays open. Use Resume saved review after your normal session is available.');onReconnect();}return false;}}
 
+ // This entrypoint does not authorize processing. The server still requires the exact
+ // one-time authority, recovered personal Owner session, source and approved worker.
+ let revisionAttempted=false;
+ function revisionControls(result){
+  host.replaceChildren();const expiry=Date.parse(result?.expires_at);
+  if(!result?.document||result.review_only===true||typeof result.version_id!=='string'||result.revision!==1||!Number.isFinite(expiry)||expiry<=now()){
+   ended('Revision 2 generation is unavailable here. Use Saved Roadmap review for existing reports; obtain independent readback before any processing.');return;
+  }
+  if(timer!==null)cancel(timer);timer=schedule(()=>ended('Authorization expired. No further action was requested.'),Math.min(expiry-now(),2147483647));
+  const title=el('h3','Separately authorized Revision 2 generation'),status=el('p','Opening these controls only read the saved Revision 1. It did not generate, record consent or change a report.');status.setAttribute('role','status');status.setAttribute('aria-live','polite');
+  const label=el('label'),confirm=el('input');confirm.type='checkbox';label.append(confirm,document.createTextNode(' The Owner separately approved this exact one-time Revision 2 generation and its protected recovery was independently verified.'));
+  const button=el('button','Generate separately authorized Revision 2 once');button.type='button';button.disabled=true;
+  confirm.onchange=()=>button.disabled=terminated||revisionAttempted||!confirm.checked;
+  button.onclick=async()=>{
+   if(terminated||revisionAttempted||!confirm.checked||button.disabled)return;
+   revisionAttempted=true;generating=true;confirm.disabled=true;button.disabled=true;status.textContent='Checking the same saved parent before the single authorized request…';
+   try{
+    const current=await call('read');
+    if(current?.version_id!==result.version_id||current.revision!==1||current.review_only===true||signature(current.document)!==signature(result.document)||Date.parse(current.expires_at)!==expiry||expiry<=now())throw Error('Parent or authority changed');
+    status.textContent='One Revision 2 request in progress. Do not refresh, retry or generate elsewhere.';
+    await call('regenerate',{version_id:result.version_id,request_key:crypto.randomUUID()});
+    const saved=await call('process');
+    if(!saved?.document||saved.document.sourceFingerprint!==result.document.sourceFingerprint||saved.revision!==2||typeof saved.version_id!=='string'||saved.version_id===result.version_id||!Number.isFinite(Date.parse(saved.expires_at))||Date.parse(saved.expires_at)<=now())throw Error('Saved result not confirmed');
+    render(saved);
+   }catch{if(!terminated){status.textContent='Revision 2 was not independently confirmed. Do not retry. Obtain protected readback of the existing job and saved versions; no automatic retry was sent.';onError('Revision 2 result requires independent readback.');}}
+   finally{generating=false;}
+  };
+  host.append(title,status,label,button);
+ }
  function render(result){
+ if(explicitRevisionTwo&&(reviewOnly||typeof onSavedDraft!=='function')){ended('Explicit generation requires a protected saved-review handoff and separate server authorization.');return;}
+ if(explicitRevisionTwo&&result?.revision!==2){revisionControls(result);return;}
  // Saved reports leave the nonrecoverable Calibration lifecycle before editing.
  if(result?.document&&typeof onSavedDraft==='function'){
   const valid=typeof result.version_id==='string'&&Number.isSafeInteger(result.revision)&&result.revision>0&&Date.parse(result.expires_at)>now();

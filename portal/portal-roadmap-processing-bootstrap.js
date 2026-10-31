@@ -10,6 +10,7 @@
  if(!report||!host||typeof staffSession?.userId!=='string'||portal.currentStaffRole?.()!=='owner')return;
  const section=document.createElement('section');section.className='roadmap-processing';
  const launch=document.createElement('button');launch.type='button';launch.textContent='Open authorized internal draft workflow';section.append(launch);
+ const revisionLaunch=document.createElement('button');revisionLaunch.type='button';revisionLaunch.textContent='Open separately authorized Revision 2 controls';section.append(revisionLaunch);
  // Keep actions/review outside the sticky answers + long manual-review grid.
  const sourceWorkspace=host.closest('.rv6-workspace');
  if(sourceWorkspace)sourceWorkspace.before(section);else(host.parentElement||host).append(section);
@@ -34,8 +35,14 @@
  return result;
  }finally{pending.delete(abort);signal?.removeEventListener('abort',cancel);}
  }
+ const savedDraft=reportHost=>pin=>{const detail={...pin,accepted:false};document.dispatchEvent(new CustomEvent('ra:roadmap-open-saved-review',{detail}));if(!detail.accepted&&reportHost.isConnected)reportHost.append(document.createTextNode('Close Calibration and choose Saved Roadmap review to read the same saved revision. No retry or processing was requested.'));};
+ revisionLaunch.addEventListener('click',async()=>{
+ if(!valid()||revisionLaunch.disabled)return;revisionLaunch.disabled=true;launch.disabled=true;
+ controller?.stop();const reportHost=document.createElement('section');section.append(reportHost);
+ try{controller=window.RVA_ROADMAP_PROCESSING.mount(reportHost,{report,request,explicitRevisionTwo:true,onSavedDraft:savedDraft(reportHost)});await controller.start();}catch{if(valid())reportHost.textContent='Revision 2 controls unavailable. No retry was sent; obtain independent readback.';}
+ });
  launch.addEventListener('click',async()=>{
- if(!valid()||launch.disabled)return;launch.disabled=true;
+ if(!valid()||launch.disabled)return;launch.disabled=true;revisionLaunch.disabled=true;
  const purpose=document.createElement('label'),box=document.createElement('input');box.type='checkbox';purpose.append(box,document.createTextNode(' I acknowledge separately authorized private internal draft storage and review. This is additional to the read-only pilot; operator approval is still required. No client delivery or exports.'));
  const status=document.createElement('p');status.setAttribute('role','status');status.setAttribute('aria-live','polite');status.dataset.state='pending';status.textContent='Pending: no storage-purpose recording has been confirmed in this workspace.';
  const attest=document.createElement('button');attest.type='button';attest.textContent='Record draft-processing purpose';attest.disabled=true;
@@ -57,7 +64,7 @@
  }finally{if(valid())attest.removeAttribute('aria-busy');}
  });
  section.append(purpose,attest,status);const reportHost=document.createElement('section');section.append(reportHost);
- try{controller=window.RVA_ROADMAP_PROCESSING.mount(reportHost,{report,request,onSavedDraft:pin=>{const detail={...pin,accepted:false};document.dispatchEvent(new CustomEvent('ra:roadmap-open-saved-review',{detail}));if(!detail.accepted&&reportHost.isConnected)reportHost.append(document.createTextNode('Close Calibration and choose Saved Roadmap review to read the same saved revision. No retry or processing was requested.'));}});await controller.start();}catch{if(valid())reportHost.replaceChildren(document.createTextNode('Internal draft workflow unavailable. Check its separate operator authorization; your storage-purpose status is shown above.'));}
+ try{controller=window.RVA_ROADMAP_PROCESSING.mount(reportHost,{report,request,onSavedDraft:savedDraft(reportHost)});await controller.start();}catch{if(valid())reportHost.replaceChildren(document.createTextNode('Internal draft workflow unavailable. Check its separate operator authorization; your storage-purpose status is shown above.'));}
  });
  });
 })();
