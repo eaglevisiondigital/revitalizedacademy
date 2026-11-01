@@ -1,0 +1,1 @@
+BASELINE_CONFIRMED: no source-pinned combined manual-copy / QR / educational-reference action; existing endpoint404. This is missing composition, not missing source approval or permission.

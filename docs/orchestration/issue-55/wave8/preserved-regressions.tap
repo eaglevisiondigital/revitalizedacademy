@@ -1,0 +1,1102 @@
+TAP version 13
+# Subtest: real email QR independently decodes to exact personal synthetic URL
+ok 1 - real email QR independently decodes to exact personal synthetic URL
+  ---
+  duration_ms: 1005.832541
+  type: 'test'
+  ...
+# Subtest: real sms QR independently decodes to exact personal synthetic URL
+ok 2 - real sms QR independently decodes to exact personal synthetic URL
+  ---
+  duration_ms: 601.365541
+  type: 'test'
+  ...
+# Subtest: real dm QR independently decodes to exact personal synthetic URL
+ok 3 - real dm QR independently decodes to exact personal synthetic URL
+  ---
+  duration_ms: 631.700375
+  type: 'test'
+  ...
+# Subtest: real social QR independently decodes to exact personal synthetic URL
+ok 4 - real social QR independently decodes to exact personal synthetic URL
+  ---
+  duration_ms: 602.246875
+  type: 'test'
+  ...
+# Subtest: revoked fixture produces no QR/copy/link
+ok 5 - revoked fixture produces no QR/copy/link
+  ---
+  duration_ms: 0.213666
+  type: 'test'
+  ...
+# Subtest: expired fixture produces no QR/copy/link
+ok 6 - expired fixture produces no QR/copy/link
+  ---
+  duration_ms: 0.076833
+  type: 'test'
+  ...
+# Subtest: wrong-account fixture produces no QR/copy/link
+ok 7 - wrong-account fixture produces no QR/copy/link
+  ---
+  duration_ms: 0.073667
+  type: 'test'
+  ...
+# Subtest: unknown channel/state cannot select arbitrary fixture or URL
+ok 8 - unknown channel/state cannot select arbitrary fixture or URL
+  ---
+  duration_ms: 0.159875
+  type: 'test'
+  ...
+# Subtest: loopback tool rejects foreign origin and arbitrary payload fields
+ok 9 - loopback tool rejects foreign origin and arbitrary payload fields
+  ---
+  duration_ms: 37.997334
+  type: 'test'
+  ...
+# Subtest: resolver-backed email share returns only approved own copy/link/QR input
+ok 10 - resolver-backed email share returns only approved own copy/link/QR input
+  ---
+  duration_ms: 6.156417
+  type: 'test'
+  ...
+# Subtest: resolver-backed sms share returns only approved own copy/link/QR input
+ok 11 - resolver-backed sms share returns only approved own copy/link/QR input
+  ---
+  duration_ms: 0.696417
+  type: 'test'
+  ...
+# Subtest: resolver-backed dm share returns only approved own copy/link/QR input
+ok 12 - resolver-backed dm share returns only approved own copy/link/QR input
+  ---
+  duration_ms: 0.556791
+  type: 'test'
+  ...
+# Subtest: resolver-backed social share returns only approved own copy/link/QR input
+ok 13 - resolver-backed social share returns only approved own copy/link/QR input
+  ---
+  duration_ms: 0.470834
+  type: 'test'
+  ...
+# Subtest: caller identity rejected before any session/resolver call
+ok 14 - caller identity rejected before any session/resolver call
+  ---
+  duration_ms: 0.178417
+  type: 'test'
+  ...
+# Subtest: caller user_id rejected before any session/resolver call
+ok 15 - caller user_id rejected before any session/resolver call
+  ---
+  duration_ms: 0.086917
+  type: 'test'
+  ...
+# Subtest: caller contact_id rejected before any session/resolver call
+ok 16 - caller contact_id rejected before any session/resolver call
+  ---
+  duration_ms: 0.078375
+  type: 'test'
+  ...
+# Subtest: caller profile rejected before any session/resolver call
+ok 17 - caller profile rejected before any session/resolver call
+  ---
+  duration_ms: 0.07
+  type: 'test'
+  ...
+# Subtest: caller approval rejected before any session/resolver call
+ok 18 - caller approval rejected before any session/resolver call
+  ---
+  duration_ms: 0.092667
+  type: 'test'
+  ...
+# Subtest: caller destination_url rejected before any session/resolver call
+ok 19 - caller destination_url rejected before any session/resolver call
+  ---
+  duration_ms: 0.138542
+  type: 'test'
+  ...
+# Subtest: caller copy rejected before any session/resolver call
+ok 20 - caller copy rejected before any session/resolver call
+  ---
+  duration_ms: 0.072458
+  type: 'test'
+  ...
+# Subtest: caller consent rejected before any session/resolver call
+ok 21 - caller consent rejected before any session/resolver call
+  ---
+  duration_ms: 0.060208
+  type: 'test'
+  ...
+# Subtest: caller now rejected before any session/resolver call
+ok 22 - caller now rejected before any session/resolver call
+  ---
+  duration_ms: 0.051833
+  type: 'test'
+  ...
+# Subtest: caller state rejected before any session/resolver call
+ok 23 - caller state rejected before any session/resolver call
+  ---
+  duration_ms: 0.051792
+  type: 'test'
+  ...
+# Subtest: request getters and prototype pollution are rejected without executing accessors
+ok 24 - request getters and prototype pollution are rejected without executing accessors
+  ---
+  duration_ms: 0.118584
+  type: 'test'
+  ...
+# Subtest: caller mutation across await cannot replace the snapshotted channel/resource
+ok 25 - caller mutation across await cannot replace the snapshotted channel/resource
+  ---
+  duration_ms: 0.522958
+  type: 'test'
+  ...
+# Subtest: async share logout invalidates pending authority/source
+ok 26 - async share logout invalidates pending authority/source
+  ---
+  duration_ms: 0.597459
+  type: 'test'
+  ...
+# Subtest: async share switch invalidates pending authority/source
+ok 27 - async share switch invalidates pending authority/source
+  ---
+  duration_ms: 0.212042
+  type: 'test'
+  ...
+# Subtest: async share scope invalidates pending authority/source
+ok 28 - async share scope invalidates pending authority/source
+  ---
+  duration_ms: 0.172583
+  type: 'test'
+  ...
+# Subtest: async share role invalidates pending authority/source
+ok 29 - async share role invalidates pending authority/source
+  ---
+  duration_ms: 0.165666
+  type: 'test'
+  ...
+# Subtest: async share epoch invalidates pending authority/source
+ok 30 - async share epoch invalidates pending authority/source
+  ---
+  duration_ms: 0.155459
+  type: 'test'
+  ...
+# Subtest: async share revoke invalidates pending authority/source
+ok 31 - async share revoke invalidates pending authority/source
+  ---
+  duration_ms: 0.165125
+  type: 'test'
+  ...
+# Subtest: async share version invalidates pending authority/source
+ok 32 - async share version invalidates pending authority/source
+  ---
+  duration_ms: 0.16975
+  type: 'test'
+  ...
+# Subtest: same-account token renewal across async share preserves current request
+ok 33 - same-account token renewal across async share preserves current request
+  ---
+  duration_ms: 0.399917
+  type: 'test'
+  ...
+# Subtest: source changes without declared authority revision still fail snapshot comparison
+ok 34 - source changes without declared authority revision still fail snapshot comparison
+  ---
+  duration_ms: 0.292667
+  type: 'test'
+  ...
+# Subtest: final synchronous authority read prevents revocation after the last async session snapshot
+ok 35 - final synchronous authority read prevents revocation after the last async session snapshot
+  ---
+  duration_ms: 0.301458
+  type: 'test'
+  ...
+# Subtest: expiry is rechecked using server clock after resolver awaits
+ok 36 - expiry is rechecked using server clock after resolver awaits
+  ---
+  duration_ms: 0.564125
+  type: 'test'
+  ...
+# Subtest: campaign expected revision is mandatory and exact
+ok 37 - campaign expected revision is mandatory and exact
+  ---
+  duration_ms: 0.3825
+  type: 'test'
+  ...
+# Subtest: creative expected revision is mandatory and exact
+ok 38 - creative expected revision is mandatory and exact
+  ---
+  duration_ms: 0.222417
+  type: 'test'
+  ...
+# Subtest: wrong resolver resource or version tag cannot satisfy request
+ok 39 - wrong resolver resource or version tag cannot satisfy request
+  ---
+  duration_ms: 0.30675
+  type: 'test'
+  ...
+# Subtest: owner role uses same own-profile constraint and never cross-affiliate override
+ok 40 - owner role uses same own-profile constraint and never cross-affiliate override
+  ---
+  duration_ms: 0.51925
+  type: 'test'
+  ...
+# Subtest: server action scope cannot be overridden by Owner role or request
+ok 41 - server action scope cannot be overridden by Owner role or request
+  ---
+  duration_ms: 0.070834
+  type: 'test'
+  ...
+# Subtest: minimal referral response never exposes resolver identity, names, money or disclosure
+ok 42 - minimal referral response never exposes resolver identity, names, money or disclosure
+  ---
+  duration_ms: 3.268958
+  type: 'test'
+  ...
+# Subtest: referral wrong-owner cannot cross disclosure boundary
+ok 43 - referral wrong-owner cannot cross disclosure boundary
+  ---
+  duration_ms: 1.077541
+  type: 'test'
+  ...
+# Subtest: referral withdrawn cannot cross disclosure boundary
+ok 44 - referral withdrawn cannot cross disclosure boundary
+  ---
+  duration_ms: 3.200875
+  type: 'test'
+  ...
+# Subtest: referral expired cannot cross disclosure boundary
+ok 45 - referral expired cannot cross disclosure boundary
+  ---
+  duration_ms: 0.281083
+  type: 'test'
+  ...
+# Subtest: referral wrong-subject cannot cross disclosure boundary
+ok 46 - referral wrong-subject cannot cross disclosure boundary
+  ---
+  duration_ms: 0.165833
+  type: 'test'
+  ...
+# Subtest: referral private-row cannot cross disclosure boundary
+ok 47 - referral private-row cannot cross disclosure boundary
+  ---
+  duration_ms: 0.087292
+  type: 'test'
+  ...
+# Subtest: referral revoked during async resolver does not return old projection
+ok 48 - referral revoked during async resolver does not return old projection
+  ---
+  duration_ms: 0.149
+  type: 'test'
+  ...
+# Subtest: production destinations and malformed resolver snapshots remain unavailable
+ok 49 - production destinations and malformed resolver snapshots remain unavailable
+  ---
+  duration_ms: 0.208042
+  type: 'test'
+  ...
+# Subtest: resolver snapshot getters are rejected without invocation
+ok 50 - resolver snapshot getters are rejected without invocation
+  ---
+  duration_ms: 0.272667
+  type: 'test'
+  ...
+# Subtest: synchronous current-authority dependency cannot be an async snapshot
+ok 51 - synchronous current-authority dependency cannot be an async snapshot
+  ---
+  duration_ms: 0.121458
+  type: 'test'
+  ...
+# Subtest: fixture mode is mandatory; no dependencies or real mode cannot construct adapter
+ok 52 - fixture mode is mandatory; no dependencies or real mode cannot construct adapter
+  ---
+  duration_ms: 0.2575
+  type: 'test'
+  ...
+# Subtest: 100 parallel duplicates atomically create one isolated evidence row
+ok 53 - 100 parallel duplicates atomically create one isolated evidence row
+  ---
+  duration_ms: 42.118542
+  type: 'test'
+  ...
+# Subtest: parallel changed retry conflicts without overwriting the first evidence row
+ok 54 - parallel changed retry conflicts without overwriting the first evidence row
+  ---
+  duration_ms: 0.828833
+  type: 'test'
+  ...
+# Subtest: separate actors and separate adapter instances do not share fixture journals
+ok 55 - separate actors and separate adapter instances do not share fixture journals
+  ---
+  duration_ms: 0.674375
+  type: 'test'
+  ...
+# Subtest: payment.settled rejected before any dependency call
+ok 56 - payment.settled rejected before any dependency call
+  ---
+  duration_ms: 0.075083
+  type: 'test'
+  ...
+# Subtest: commission.earned rejected before any dependency call
+ok 57 - commission.earned rejected before any dependency call
+  ---
+  duration_ms: 0.039875
+  type: 'test'
+  ...
+# Subtest: payout.requested rejected before any dependency call
+ok 58 - payout.requested rejected before any dependency call
+  ---
+  duration_ms: 0.035
+  type: 'test'
+  ...
+# Subtest: reward.granted rejected before any dependency call
+ok 59 - reward.granted rejected before any dependency call
+  ---
+  duration_ms: 0.033958
+  type: 'test'
+  ...
+# Subtest: withdrawn tracking consent produces no hidden journal write
+ok 60 - withdrawn tracking consent produces no hidden journal write
+  ---
+  duration_ms: 0.376959
+  type: 'test'
+  ...
+# Subtest: bounded queue rejects overflow while accepted distinct writes remain atomic
+ok 61 - bounded queue rejects overflow while accepted distinct writes remain atomic
+  ---
+  duration_ms: 57.917459
+  type: 'test'
+  ...
+# Subtest: queued requests retain entry actor and never migrate into a later account
+ok 62 - queued requests retain entry actor and never migrate into a later account
+  ---
+  duration_ms: 0.437333
+  type: 'test'
+  ...
+# Subtest: rejected async current-authority dependency is consumed and fails closed
+ok 63 - rejected async current-authority dependency is consumed and fails closed
+  ---
+  duration_ms: 16.73425
+  type: 'test'
+  ...
+# Subtest: rejected async clock cannot leak or authorize a write
+ok 64 - rejected async clock cannot leak or authorize a write
+  ---
+  duration_ms: 1.882083
+  type: 'test'
+  ...
+# Subtest: async fictional catalog resolves exact educational citation from independent server receipt snapshot
+ok 65 - async fictional catalog resolves exact educational citation from independent server receipt snapshot
+  ---
+  duration_ms: 6.026
+  type: 'test'
+  ...
+# Subtest: caller session cannot become V3 verifier authority
+ok 66 - caller session cannot become V3 verifier authority
+  ---
+  duration_ms: 0.381584
+  type: 'test'
+  ...
+# Subtest: caller principal_ref cannot become V3 verifier authority
+ok 67 - caller principal_ref cannot become V3 verifier authority
+  ---
+  duration_ms: 0.246958
+  type: 'test'
+  ...
+# Subtest: caller source cannot become V3 verifier authority
+ok 68 - caller source cannot become V3 verifier authority
+  ---
+  duration_ms: 0.204917
+  type: 'test'
+  ...
+# Subtest: caller catalog cannot become V3 verifier authority
+ok 69 - caller catalog cannot become V3 verifier authority
+  ---
+  duration_ms: 0.21325
+  type: 'test'
+  ...
+# Subtest: caller receipt cannot become V3 verifier authority
+ok 70 - caller receipt cannot become V3 verifier authority
+  ---
+  duration_ms: 0.174917
+  type: 'test'
+  ...
+# Subtest: caller approval cannot become V3 verifier authority
+ok 71 - caller approval cannot become V3 verifier authority
+  ---
+  duration_ms: 0.183166
+  type: 'test'
+  ...
+# Subtest: caller audience cannot become V3 verifier authority
+ok 72 - caller audience cannot become V3 verifier authority
+  ---
+  duration_ms: 0.172125
+  type: 'test'
+  ...
+# Subtest: caller operation cannot become V3 verifier authority
+ok 73 - caller operation cannot become V3 verifier authority
+  ---
+  duration_ms: 0.198208
+  type: 'test'
+  ...
+# Subtest: caller intent cannot become V3 verifier authority
+ok 74 - caller intent cannot become V3 verifier authority
+  ---
+  duration_ms: 1.644875
+  type: 'test'
+  ...
+# Subtest: caller safetyHold cannot become V3 verifier authority
+ok 75 - caller safetyHold cannot become V3 verifier authority
+  ---
+  duration_ms: 0.22875
+  type: 'test'
+  ...
+# Subtest: async V3 principal drift fails closed
+ok 76 - async V3 principal drift fails closed
+  ---
+  duration_ms: 0.545
+  type: 'test'
+  ...
+# Subtest: async V3 audience drift fails closed
+ok 77 - async V3 audience drift fails closed
+  ---
+  duration_ms: 0.355917
+  type: 'test'
+  ...
+# Subtest: async V3 generation drift fails closed
+ok 78 - async V3 generation drift fails closed
+  ---
+  duration_ms: 0.28725
+  type: 'test'
+  ...
+# Subtest: async V3 epoch drift fails closed
+ok 79 - async V3 epoch drift fails closed
+  ---
+  duration_ms: 0.296
+  type: 'test'
+  ...
+# Subtest: async V3 revoked drift fails closed
+ok 80 - async V3 revoked drift fails closed
+  ---
+  duration_ms: 0.37
+  type: 'test'
+  ...
+# Subtest: async V3 catalog drift fails closed
+ok 81 - async V3 catalog drift fails closed
+  ---
+  duration_ms: 0.414875
+  type: 'test'
+  ...
+# Subtest: same-principal token renewal does not discard a legitimate educational lookup
+ok 82 - same-principal token renewal does not discard a legitimate educational lookup
+  ---
+  duration_ms: 1.034292
+  type: 'test'
+  ...
+# Subtest: receipt changes without authority bump cannot pass independent second snapshot
+ok 83 - receipt changes without authority bump cannot pass independent second snapshot
+  ---
+  duration_ms: 3.091125
+  type: 'test'
+  ...
+# Subtest: forged locally approved hashes do not replace independently resolved receipt pins
+ok 84 - forged locally approved hashes do not replace independently resolved receipt pins
+  ---
+  duration_ms: 0.645084
+  type: 'test'
+  ...
+# Subtest: final synchronous current authority catches late revocation
+ok 85 - final synchronous current authority catches late revocation
+  ---
+  duration_ms: 0.387416
+  type: 'test'
+  ...
+# Subtest: missing or duplicate receipts and source audience mismatch remain held
+ok 86 - missing or duplicate receipts and source audience mismatch remain held
+  ---
+  duration_ms: 1.029167
+  type: 'test'
+  ...
+# Subtest: raw dependency error and getter cannot leak or execute through V3 snapshots
+ok 87 - raw dependency error and getter cannot leak or execute through V3 snapshots
+  ---
+  duration_ms: 0.36475
+  type: 'test'
+  ...
+# Subtest: real mode and private request refuse before source resolver or verifier work
+ok 88 - real mode and private request refuse before source resolver or verifier work
+  ---
+  duration_ms: 0.338667
+  type: 'test'
+  ...
+# Subtest: loopback server current providers reach actual adapter, encoder and minimal referral projection
+ok 89 - loopback server current providers reach actual adapter, encoder and minimal referral projection
+  ---
+  duration_ms: 250.182125
+  type: 'test'
+  ...
+# Subtest: all 12 detached educational routes retain unique source locator and hashes
+ok 90 - all 12 detached educational routes retain unique source locator and hashes
+  ---
+  duration_ms: 64.756541
+  type: 'test'
+  ...
+# Subtest: 100 concurrent HTTP retries commit one event and preserve original attribution
+ok 91 - 100 concurrent HTTP retries commit one event and preserve original attribution
+  ---
+  duration_ms: 168.655708
+  type: 'test'
+  ...
+# Subtest: revoked stops new preview/events and emits no URL or QR
+ok 92 - revoked stops new preview/events and emits no URL or QR
+  ---
+  duration_ms: 5.292084
+  type: 'test'
+  ...
+# Subtest: expired stops new preview/events and emits no URL or QR
+ok 93 - expired stops new preview/events and emits no URL or QR
+  ---
+  duration_ms: 5.12525
+  type: 'test'
+  ...
+# Subtest: wrong-account stops new preview/events and emits no URL or QR
+ok 94 - wrong-account stops new preview/events and emits no URL or QR
+  ---
+  duration_ms: 4.608625
+  type: 'test'
+  ...
+# Subtest: logout stops new preview/events and emits no URL or QR
+ok 95 - logout stops new preview/events and emits no URL or QR
+  ---
+  duration_ms: 4.342208
+  type: 'test'
+  ...
+# Subtest: same-account transport renewal preserves journal event retry and educational citations
+ok 96 - same-account transport renewal preserves journal event retry and educational citations
+  ---
+  duration_ms: 11.806708
+  type: 'test'
+  ...
+# Subtest: renewal cannot revive revoked fixture authorization
+ok 97 - renewal cannot revive revoked fixture authorization
+  ---
+  duration_ms: 9.953333
+  type: 'test'
+  ...
+# Subtest: consent withdrawal blocks events without blocking approved copy or implying marketing permission
+ok 98 - consent withdrawal blocks events without blocking approved copy or implying marketing permission
+  ---
+  duration_ms: 142.579125
+  type: 'test'
+  ...
+# Subtest: education revocation stops lookup but does not rewrite approved share
+ok 99 - education revocation stops lookup but does not rewrite approved share
+  ---
+  duration_ms: 148.510792
+  type: 'test'
+  ...
+# Subtest: share API rejects caller-owned user_id
+ok 100 - share API rejects caller-owned user_id
+  ---
+  duration_ms: 2.175417
+  type: 'test'
+  ...
+# Subtest: share API rejects caller-owned actor
+ok 101 - share API rejects caller-owned actor
+  ---
+  duration_ms: 3.373125
+  type: 'test'
+  ...
+# Subtest: share API rejects caller-owned profile
+ok 102 - share API rejects caller-owned profile
+  ---
+  duration_ms: 2.101333
+  type: 'test'
+  ...
+# Subtest: share API rejects caller-owned url
+ok 103 - share API rejects caller-owned url
+  ---
+  duration_ms: 1.541167
+  type: 'test'
+  ...
+# Subtest: share API rejects caller-owned approval
+ok 104 - share API rejects caller-owned approval
+  ---
+  duration_ms: 1.619542
+  type: 'test'
+  ...
+# Subtest: share API rejects caller-owned consent
+ok 105 - share API rejects caller-owned consent
+  ---
+  duration_ms: 1.607167
+  type: 'test'
+  ...
+# Subtest: share API rejects caller-owned now
+ok 106 - share API rejects caller-owned now
+  ---
+  duration_ms: 1.776709
+  type: 'test'
+  ...
+# Subtest: share API rejects caller-owned permissions
+ok 107 - share API rejects caller-owned permissions
+  ---
+  duration_ms: 1.861458
+  type: 'test'
+  ...
+# Subtest: education API rejects client/authority field answers
+ok 108 - education API rejects client/authority field answers
+  ---
+  duration_ms: 3.446375
+  type: 'test'
+  ...
+# Subtest: education API rejects client/authority field clientId
+ok 109 - education API rejects client/authority field clientId
+  ---
+  duration_ms: 2.452334
+  type: 'test'
+  ...
+# Subtest: education API rejects client/authority field report
+ok 110 - education API rejects client/authority field report
+  ---
+  duration_ms: 1.852625
+  type: 'test'
+  ...
+# Subtest: education API rejects client/authority field audience
+ok 111 - education API rejects client/authority field audience
+  ---
+  duration_ms: 1.914792
+  type: 'test'
+  ...
+# Subtest: education API rejects client/authority field receipts
+ok 112 - education API rejects client/authority field receipts
+  ---
+  duration_ms: 2.045125
+  type: 'test'
+  ...
+# Subtest: education API rejects client/authority field intent
+ok 113 - education API rejects client/authority field intent
+  ---
+  duration_ms: 2.156709
+  type: 'test'
+  ...
+# Subtest: wrong catalog/source pins, unsupported operation and financial events denied
+ok 114 - wrong catalog/source pins, unsupported operation and financial events denied
+  ---
+  duration_ms: 4.22
+  type: 'test'
+  ...
+# Subtest: foreign Origin, Host and cross-site fetch denied; GET is no-op and CSP/no-store retained
+ok 115 - foreign Origin, Host and cross-site fetch denied; GET is no-op and CSP/no-store retained
+  ---
+  duration_ms: 7.554875
+  type: 'test'
+  ...
+# Subtest: stale cross-tab scenario cannot prepare a newly restored preview by passing active
+ok 116 - stale cross-tab scenario cannot prepare a newly restored preview by passing active
+  ---
+  duration_ms: 3.581625
+  type: 'test'
+  ...
+# Subtest: body limit/extra scenario fields/path traversal/malformed JSON fail closed
+ok 117 - body limit/extra scenario fields/path traversal/malformed JSON fail closed
+  ---
+  duration_ms: 4.170167
+  type: 'test'
+  ...
+# Subtest: adapters do not persist fixture state across separate server instances
+ok 118 - adapters do not persist fixture state across separate server instances
+  ---
+  duration_ms: 5.928167
+  type: 'test'
+  ...
+# Subtest: real local HTTP connects scoped client/assigned coach dashboard and denies unassigned fixture
+ok 119 - real local HTTP connects scoped client/assigned coach dashboard and denies unassigned fixture
+  ---
+  duration_ms: 67.637417
+  type: 'test'
+  ...
+# Subtest: real progress endpoint denies caller-supplied contact_id
+ok 120 - real progress endpoint denies caller-supplied contact_id
+  ---
+  duration_ms: 20.190791
+  type: 'test'
+  ...
+# Subtest: real progress endpoint denies caller-supplied role
+ok 121 - real progress endpoint denies caller-supplied role
+  ---
+  duration_ms: 5.527041
+  type: 'test'
+  ...
+# Subtest: real progress endpoint denies caller-supplied source
+ok 122 - real progress endpoint denies caller-supplied source
+  ---
+  duration_ms: 2.395625
+  type: 'test'
+  ...
+# Subtest: real progress endpoint denies caller-supplied answers
+ok 123 - real progress endpoint denies caller-supplied answers
+  ---
+  duration_ms: 8.7295
+  type: 'test'
+  ...
+# Subtest: real progress endpoint denies caller-supplied household
+ok 124 - real progress endpoint denies caller-supplied household
+  ---
+  duration_ms: 4.111167
+  type: 'test'
+  ...
+# Subtest: real progress endpoint denies caller-supplied permission
+ok 125 - real progress endpoint denies caller-supplied permission
+  ---
+  duration_ms: 2.654458
+  type: 'test'
+  ...
+# Subtest: real progress endpoint denies caller-supplied amount
+ok 126 - real progress endpoint denies caller-supplied amount
+  ---
+  duration_ms: 5.078084
+  type: 'test'
+  ...
+# Subtest: current expired blocks real progress endpoint
+ok 127 - current expired blocks real progress endpoint
+  ---
+  duration_ms: 4.71575
+  type: 'test'
+  ...
+# Subtest: current wrong-account blocks real progress endpoint
+ok 128 - current wrong-account blocks real progress endpoint
+  ---
+  duration_ms: 7.313083
+  type: 'test'
+  ...
+# Subtest: current logout blocks real progress endpoint
+ok 129 - current logout blocks real progress endpoint
+  ---
+  duration_ms: 4.93625
+  type: 'test'
+  ...
+# Subtest: 100 parallel HTTP reads do not consume allowance or create tracking; share and educational routes remain independent
+ok 130 - 100 parallel HTTP reads do not consume allowance or create tracking; share and educational routes remain independent
+  ---
+  duration_ms: 125.568209
+  type: 'test'
+  ...
+# Subtest: progress uses existing local origin, body, method and CSP protections
+ok 131 - progress uses existing local origin, body, method and CSP protections
+  ---
+  duration_ms: 10.655917
+  type: 'test'
+  ...
+# Subtest: creative revocation and consent withdrawal do not invent revoked client permission
+ok 132 - creative revocation and consent withdrawal do not invent revoked client permission
+  ---
+  duration_ms: 27.427041
+  type: 'test'
+  ...
+# Subtest: client projects own scoped habits/goals and unknown versus zero, withholding all private identity and editable controls
+ok 133 - client projects own scoped habits/goals and unknown versus zero, withholding all private identity and editable controls
+  ---
+  duration_ms: 26.309625
+  type: 'test'
+  ...
+# Subtest: assigned active coach reads minimal scoped client progress without household or raw health fields
+ok 134 - assigned active coach reads minimal scoped client progress without household or raw health fields
+  ---
+  duration_ms: 1.1285
+  type: 'test'
+  ...
+# Subtest: forged/unassigned/inactive actor denied {"role":"coach","assigned":false}
+ok 135 - forged/unassigned/inactive actor denied {"role":"coach","assigned":false}
+  ---
+  duration_ms: 0.635584
+  type: 'test'
+  ...
+# Subtest: forged/unassigned/inactive actor denied {"role":"owner"}
+ok 136 - forged/unassigned/inactive actor denied {"role":"owner"}
+  ---
+  duration_ms: 0.372792
+  type: 'test'
+  ...
+# Subtest: forged/unassigned/inactive actor denied {"active":false}
+ok 137 - forged/unassigned/inactive actor denied {"active":false}
+  ---
+  duration_ms: 0.172958
+  type: 'test'
+  ...
+# Subtest: forged/unassigned/inactive actor denied {"authenticated":false}
+ok 138 - forged/unassigned/inactive actor denied {"authenticated":false}
+  ---
+  duration_ms: 0.097167
+  type: 'test'
+  ...
+# Subtest: forged/unassigned/inactive actor denied {"contact_id":"fictional-other"}
+ok 139 - forged/unassigned/inactive actor denied {"contact_id":"fictional-other"}
+  ---
+  duration_ms: 0.073625
+  type: 'test'
+  ...
+# Subtest: forged/unassigned/inactive actor denied {"target_contact_id":"fictional-other"}
+ok 140 - forged/unassigned/inactive actor denied {"target_contact_id":"fictional-other"}
+  ---
+  duration_ms: 0.089417
+  type: 'test'
+  ...
+# Subtest: caller cannot supply authority/private/financial role
+ok 141 - caller cannot supply authority/private/financial role
+  ---
+  duration_ms: 0.133084
+  type: 'test'
+  ...
+# Subtest: caller cannot supply authority/private/financial contact_id
+ok 142 - caller cannot supply authority/private/financial contact_id
+  ---
+  duration_ms: 0.123416
+  type: 'test'
+  ...
+# Subtest: caller cannot supply authority/private/financial household_id
+ok 143 - caller cannot supply authority/private/financial household_id
+  ---
+  duration_ms: 0.066458
+  type: 'test'
+  ...
+# Subtest: caller cannot supply authority/private/financial allowance
+ok 144 - caller cannot supply authority/private/financial allowance
+  ---
+  duration_ms: 0.054625
+  type: 'test'
+  ...
+# Subtest: caller cannot supply authority/private/financial approval
+ok 145 - caller cannot supply authority/private/financial approval
+  ---
+  duration_ms: 0.040167
+  type: 'test'
+  ...
+# Subtest: caller cannot supply authority/private/financial answers
+ok 146 - caller cannot supply authority/private/financial answers
+  ---
+  duration_ms: 0.033584
+  type: 'test'
+  ...
+# Subtest: caller cannot supply authority/private/financial clinical_protocol
+ok 147 - caller cannot supply authority/private/financial clinical_protocol
+  ---
+  duration_ms: 0.034125
+  type: 'test'
+  ...
+# Subtest: caller cannot supply authority/private/financial financial_amount
+ok 148 - caller cannot supply authority/private/financial financial_amount
+  ---
+  duration_ms: 0.032167
+  type: 'test'
+  ...
+# Subtest: caller cannot supply authority/private/financial source
+ok 149 - caller cannot supply authority/private/financial source
+  ---
+  duration_ms: 0.032125
+  type: 'test'
+  ...
+# Subtest: read-only contract rejects update
+ok 150 - read-only contract rejects update
+  ---
+  duration_ms: 0.059792
+  type: 'test'
+  ...
+# Subtest: read-only contract rejects consume
+ok 151 - read-only contract rejects consume
+  ---
+  duration_ms: 0.0295
+  type: 'test'
+  ...
+# Subtest: read-only contract rejects extend
+ok 152 - read-only contract rejects extend
+  ---
+  duration_ms: 0.027583
+  type: 'test'
+  ...
+# Subtest: read-only contract rejects household
+ok 153 - read-only contract rejects household
+  ---
+  duration_ms: 0.030709
+  type: 'test'
+  ...
+# Subtest: read-only contract rejects generate
+ok 154 - read-only contract rejects generate
+  ---
+  duration_ms: 0.028167
+  type: 'test'
+  ...
+# Subtest: read-only contract rejects pay
+ok 155 - read-only contract rejects pay
+  ---
+  duration_ms: 0.029625
+  type: 'test'
+  ...
+# Subtest: snapshot source/row/hidden field mismatch held contact_id
+ok 156 - snapshot source/row/hidden field mismatch held contact_id
+  ---
+  duration_ms: 0.175458
+  type: 'test'
+  ...
+# Subtest: snapshot source/row/hidden field mismatch held authorization_revision
+ok 157 - snapshot source/row/hidden field mismatch held authorization_revision
+  ---
+  duration_ms: 0.128667
+  type: 'test'
+  ...
+# Subtest: snapshot source/row/hidden field mismatch held source_version
+ok 158 - snapshot source/row/hidden field mismatch held source_version
+  ---
+  duration_ms: 0.114042
+  type: 'test'
+  ...
+# Subtest: snapshot source/row/hidden field mismatch held household
+ok 159 - snapshot source/row/hidden field mismatch held household
+  ---
+  duration_ms: 0.117041
+  type: 'test'
+  ...
+# Subtest: snapshot source/row/hidden field mismatch held answers
+ok 160 - snapshot source/row/hidden field mismatch held answers
+  ---
+  duration_ms: 0.121709
+  type: 'test'
+  ...
+# Subtest: same actor token transport renewal leaves current consistent projection readable
+ok 161 - same actor token transport renewal leaves current consistent projection readable
+  ---
+  duration_ms: 0.271708
+  type: 'test'
+  ...
+# Subtest: revocation/account/assignment drift during lookup held {"authenticated":false}
+ok 162 - revocation/account/assignment drift during lookup held {"authenticated":false}
+  ---
+  duration_ms: 0.17175
+  type: 'test'
+  ...
+# Subtest: revocation/account/assignment drift during lookup held {"active":false}
+ok 163 - revocation/account/assignment drift during lookup held {"active":false}
+  ---
+  duration_ms: 0.146458
+  type: 'test'
+  ...
+# Subtest: revocation/account/assignment drift during lookup held {"assigned":false,"role":"coach"}
+ok 164 - revocation/account/assignment drift during lookup held {"assigned":false,"role":"coach"}
+  ---
+  duration_ms: 0.1425
+  type: 'test'
+  ...
+# Subtest: revocation/account/assignment drift during lookup held {"actor_id":"fictional-other"}
+ok 165 - revocation/account/assignment drift during lookup held {"actor_id":"fictional-other"}
+  ---
+  duration_ms: 0.146667
+  type: 'test'
+  ...
+# Subtest: revocation/account/assignment drift during lookup held {"authorization_revision":2}
+ok 166 - revocation/account/assignment drift during lookup held {"authorization_revision":2}
+  ---
+  duration_ms: 0.732125
+  type: 'test'
+  ...
+# Subtest: snapshot changes between reads held instead of combining inconsistent usage/progress
+ok 167 - snapshot changes between reads held instead of combining inconsistent usage/progress
+  ---
+  duration_ms: 0.277834
+  type: 'test'
+  ...
+# Subtest: unknown allowance never becomes free zero or unlimited {"limit":null}
+ok 168 - unknown allowance never becomes free zero or unlimited {"limit":null}
+  ---
+  duration_ms: 0.203459
+  type: 'test'
+  ...
+# Subtest: unknown allowance never becomes free zero or unlimited {"used":null}
+ok 169 - unknown allowance never becomes free zero or unlimited {"used":null}
+  ---
+  duration_ms: 0.149875
+  type: 'test'
+  ...
+# Subtest: unknown allowance never becomes free zero or unlimited {"limit":null,"used":null}
+ok 170 - unknown allowance never becomes free zero or unlimited {"limit":null,"used":null}
+  ---
+  duration_ms: 0.133458
+  type: 'test'
+  ...
+# Subtest: overdrawn usage needs explicit review rather than fabricated zero or negative allowance
+ok 171 - overdrawn usage needs explicit review rather than fabricated zero or negative allowance
+  ---
+  duration_ms: 0.144375
+  type: 'test'
+  ...
+# Subtest: malformed allowance fails closed -1
+ok 172 - malformed allowance fails closed -1
+  ---
+  duration_ms: 0.095084
+  type: 'test'
+  ...
+# Subtest: malformed allowance fails closed NaN
+ok 173 - malformed allowance fails closed NaN
+  ---
+  duration_ms: 0.091542
+  type: 'test'
+  ...
+# Subtest: malformed allowance fails closed Infinity
+ok 174 - malformed allowance fails closed Infinity
+  ---
+  duration_ms: 0.109584
+  type: 'test'
+  ...
+# Subtest: malformed allowance fails closed 60
+ok 175 - malformed allowance fails closed 60
+  ---
+  duration_ms: 0.093041
+  type: 'test'
+  ...
+# Subtest: malformed allowance fails closed 2.5
+ok 176 - malformed allowance fails closed 2.5
+  ---
+  duration_ms: 0.09175
+  type: 'test'
+  ...
+# Subtest: all missing weekly/habit evidence stays explicitly unknown without generated advice or score
+ok 177 - all missing weekly/habit evidence stays explicitly unknown without generated advice or score
+  ---
+  duration_ms: 0.235541
+  type: 'test'
+  ...
+# Subtest: dependency exceptions expose fixed category only
+ok 178 - dependency exceptions expose fixed category only
+  ---
+  duration_ms: 0.1265
+  type: 'test'
+  ...
+# Subtest: getter and untrusted prototype request are rejected without executing getter
+ok 179 - getter and untrusted prototype request are rejected without executing getter
+  ---
+  duration_ms: 0.085625
+  type: 'test'
+  ...
+# Subtest: async final authority rejected without leaking unhandled promise rejection
+ok 180 - async final authority rejected without leaking unhandled promise rejection
+  ---
+  duration_ms: 9.310208
+  type: 'test'
+  ...
+# Subtest: 100 parallel reads are nonmutating and deterministic; no allowance consumption or event creation
+ok 181 - 100 parallel reads are nonmutating and deterministic; no allowance consumption or event creation
+  ---
+  duration_ms: 15.30925
+  type: 'test'
+  ...
+# Subtest: fixture personas are demonstrative selectors only; unassigned denied and scenarios cannot restore expired session by read
+ok 182 - fixture personas are demonstrative selectors only; unassigned denied and scenarios cannot restore expired session by read
+  ---
+  duration_ms: 0.918208
+  type: 'test'
+  ...
+1..182
+# tests 182
+# suites 0
+# pass 182
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2980.639083

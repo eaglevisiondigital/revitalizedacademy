@@ -1,0 +1,1 @@
+Initial fictional loopback baseline failed before listen: EPERM operation not permitted127.0.0.1. No HTTP request or assertion executed. Escalated loopback-only run subsequently confirmed original404. No security assertion changed.

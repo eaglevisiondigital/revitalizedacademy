@@ -1,0 +1,37 @@
+{
+  "base": "2cbd6de16097890f501a410a276308ca5c4e000c",
+  "paths": [
+    {
+      "path": "tools/wave8-reviewed-share.cjs",
+      "sha256": "a0a8c043dadc6d50a93e4b83f49982ab04f6e3dbdae011cce1990b49feb2df63"
+    },
+    {
+      "path": "tools/affiliate-share-preview/server.cjs",
+      "sha256": "f40321ac9c6c3bdd9a856606925b8987cde8773036f604bdf5d769ea92254912"
+    },
+    {
+      "path": "tools/affiliate-share-preview/preview.js",
+      "sha256": "e8e92c5a9beda66a5b93f114c0488887c2bc96dc62a316ce75fe9364b5adc65d"
+    },
+    {
+      "path": "tools/affiliate-share-preview/index.html",
+      "sha256": "13abfaf3df1dcf3034b11e19a2b96dbfa79ed76e5ea3fdbfbdaf46cd95a35918"
+    },
+    {
+      "path": "tests/wave8-affiliate/baseline.cjs",
+      "sha256": "ee3c069e4953f22b3c8df7bd8a916b073d1b3f5f87fe96472edad016c5fecfbf"
+    },
+    {
+      "path": "tests/wave8-affiliate/browser.cjs",
+      "sha256": "9cfe58020238c46ce157fa10104c5246808efcc86e8c982349b90a25e7c04d4b"
+    },
+    {
+      "path": "tests/wave8-affiliate/http.test.cjs",
+      "sha256": "c2ee208fac876fb118bb81b67a5b77ecc5def640d09dd1613c26699b98008416"
+    },
+    {
+      "path": "tests/wave8-affiliate/reviewed.test.cjs",
+      "sha256": "986cc68829cb85949a24032045a2f35aa04c847bb22176e0b3d0119a9e9b403e"
+    }
+  ]
+}

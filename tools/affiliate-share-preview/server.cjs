@@ -5,6 +5,7 @@ const { spawnSync } = require('node:child_process');
 const {createProviders}=require('../wave5-fixture-providers.cjs');
 const {createProgressFixtures}=require('../wave6-progress-contract.cjs');
 const {createShareReview}=require('../wave7-share-review.cjs');
+const {createReviewedShare}=require('../wave8-reviewed-share.cjs');
 const { shareIntent } = require('../../js/rva-affiliate-share-contract.cjs');
 const { fixture } = require('../../tests/wave2-affiliate/fixtures.cjs');
 function preview({ channel, state }) {
@@ -30,7 +31,7 @@ function preview({ channel, state }) {
     quiet_zone_modules:qr.quiet_zone_modules, error_correction:qr.error_correction };
 }
 function createPreviewServer({providers=createProviders()}={}) {
-  const progress=createProgressFixtures(()=>providers.manifest()),review=createShareReview(providers);
+  const progress=createProgressFixtures(()=>providers.manifest()),review=createShareReview(providers),reviewedShare=createReviewedShare({providers});
   const server = http.createServer(async (req,res) => {
     const origin='http://127.0.0.1:'+server.address().port;
     const headers={'Cache-Control':'no-store','X-Content-Type-Options':'nosniff',
@@ -40,7 +41,7 @@ function createPreviewServer({providers=createProviders()}={}) {
     if(req.method==='GET'&&req.url==='/')return reply(200,fs.readFileSync(path.join(__dirname,'index.html'),'utf8'),'text/html; charset=utf-8');
     if(req.method==='GET'&&req.url==='/preview.js')return reply(200,fs.readFileSync(path.join(__dirname,'preview.js'),'utf8'),'application/javascript; charset=utf-8');
     if(req.method==='GET'&&req.url==='/api/bootstrap')return reply(200,providers.manifest());
-    if(req.method!=='POST'||!['/api/preview','/api/scenario','/api/share','/api/education','/api/progress','/api/source-review'].includes(req.url)||req.headers['content-type']!=='application/json')return reply(404,{error:'not_available'});
+    if(req.method!=='POST'||!['/api/preview','/api/scenario','/api/share','/api/education','/api/progress','/api/source-review','/api/reviewed-preview'].includes(req.url)||req.headers['content-type']!=='application/json')return reply(404,{error:'not_available'});
     let data='';
     try {
       for await(const chunk of req){data+=chunk;if(Buffer.byteLength(data)>4096)return reply(413,{error:'input_limit'});}
@@ -50,6 +51,7 @@ function createPreviewServer({providers=createProviders()}={}) {
         if(Object.keys(input).join(',')!=='state')return reply(400,{error:'invalid_fixture_selection'});
         return reply(200,providers.transition(input.state));
       }
+      if(req.url==='/api/reviewed-preview')return reply(200,await reviewedShare.execute(input));
       if(req.url==='/api/source-review')return reply(200,await review.execute(input));
       if(req.url==='/api/progress')return reply(200,await progress.execute(input));
       if(req.url==='/api/share')return reply(200,await providers.shareAdapter.execute(input));

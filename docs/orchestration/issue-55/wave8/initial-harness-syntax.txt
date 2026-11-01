@@ -1,0 +1,30 @@
+/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave8-affiliate/tests/wave8-affiliate/reviewed.test.cjs:19
+test('second preserved share read revalidates and denies mutated creative',async()=>{const p=createProviders();let shares=0;const wrapped={...p,shareAdapter:{execute:async input=>{if(input.action==='share'&&++shares===2)p.transition('revoked');return p.shareAdapter.execute(input);}};assert.equal((await build(wrapped).execute(request(p.manifest(),'email',DRIVERS[0]))).status,'held');});
+                                                                                                                                                                                                                                                                                           ^
+
+SyntaxError: Unexpected token ';'
+    at wrapSafe (node:internal/modules/cjs/loader:1861:18)
+    at Module._compile (node:internal/modules/cjs/loader:1903:20)
+    at Object..js (node:internal/modules/cjs/loader:2060:10)
+    at Module.load (node:internal/modules/cjs/loader:1651:32)
+    at Module._load (node:internal/modules/cjs/loader:1443:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.22.1
+✖ tests/wave8-affiliate/reviewed.test.cjs (46.884625ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 61.553916
+
+✖ failing tests:
+
+test at tests/wave8-affiliate/reviewed.test.cjs:1:1
+✖ tests/wave8-affiliate/reviewed.test.cjs (46.884625ms)
+  'test failed'

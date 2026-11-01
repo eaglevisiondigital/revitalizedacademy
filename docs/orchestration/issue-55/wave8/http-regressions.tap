@@ -1,0 +1,316 @@
+TAP version 13
+# Subtest: actual loopback route source review / copy / QR / event receipt
+ok 1 - actual loopback route source review / copy / QR / event receipt
+  ---
+  duration_ms: 483.571
+  type: 'test'
+  ...
+# Subtest: stale-tab exact pins rejected after revoked/restored synthetic transition
+ok 2 - stale-tab exact pins rejected after revoked/restored synthetic transition
+  ---
+  duration_ms: 8.023
+  type: 'test'
+  ...
+# Subtest: URL/source/identity overrides rejected by composed HTTP request
+ok 3 - URL/source/identity overrides rejected by composed HTTP request
+  ---
+  duration_ms: 6.041625
+  type: 'test'
+  ...
+# Subtest: cross-origin read composition denied without resolving source
+ok 4 - cross-origin read composition denied without resolving source
+  ---
+  duration_ms: 2.664667
+  type: 'test'
+  ...
+# Subtest: source-linked read-only composition: cellular_hydration
+ok 5 - source-linked read-only composition: cellular_hydration
+  ---
+  duration_ms: 10.135083
+  type: 'test'
+  ...
+# Subtest: source-linked read-only composition: systemic_detoxification
+ok 6 - source-linked read-only composition: systemic_detoxification
+  ---
+  duration_ms: 4.051583
+  type: 'test'
+  ...
+# Subtest: source-linked read-only composition: electrobiology_rhythms
+ok 7 - source-linked read-only composition: electrobiology_rhythms
+  ---
+  duration_ms: 3.351291
+  type: 'test'
+  ...
+# Subtest: source-linked read-only composition: the_living_diet
+ok 8 - source-linked read-only composition: the_living_diet
+  ---
+  duration_ms: 3.156208
+  type: 'test'
+  ...
+# Subtest: source-linked read-only composition: functional_training
+ok 9 - source-linked read-only composition: functional_training
+  ---
+  duration_ms: 3.31575
+  type: 'test'
+  ...
+# Subtest: source-linked read-only composition: holistic_recovery
+ok 10 - source-linked read-only composition: holistic_recovery
+  ---
+  duration_ms: 2.722458
+  type: 'test'
+  ...
+# Subtest: source-linked read-only composition: gastrointestinal_renovation
+ok 11 - source-linked read-only composition: gastrointestinal_renovation
+  ---
+  duration_ms: 2.806667
+  type: 'test'
+  ...
+# Subtest: source-linked read-only composition: hormone_balancing
+ok 12 - source-linked read-only composition: hormone_balancing
+  ---
+  duration_ms: 3.070292
+  type: 'test'
+  ...
+# Subtest: source-linked read-only composition: neural_repatterning
+ok 13 - source-linked read-only composition: neural_repatterning
+  ---
+  duration_ms: 3.313958
+  type: 'test'
+  ...
+# Subtest: source-linked read-only composition: momentum_regimens
+ok 14 - source-linked read-only composition: momentum_regimens
+  ---
+  duration_ms: 2.987166
+  type: 'test'
+  ...
+# Subtest: source-linked read-only composition: mentality_realignment
+ok 15 - source-linked read-only composition: mentality_realignment
+  ---
+  duration_ms: 2.326292
+  type: 'test'
+  ...
+# Subtest: source-linked read-only composition: wise_budgeting
+ok 16 - source-linked read-only composition: wise_budgeting
+  ---
+  duration_ms: 2.825166
+  type: 'test'
+  ...
+# Subtest: revoked fails closed without data
+ok 17 - revoked fails closed without data
+  ---
+  duration_ms: 0.911375
+  type: 'test'
+  ...
+# Subtest: expired fails closed without data
+ok 18 - expired fails closed without data
+  ---
+  duration_ms: 0.849583
+  type: 'test'
+  ...
+# Subtest: wrong-account fails closed without data
+ok 19 - wrong-account fails closed without data
+  ---
+  duration_ms: 0.631209
+  type: 'test'
+  ...
+# Subtest: logout fails closed without data
+ok 20 - logout fails closed without data
+  ---
+  duration_ms: 0.753833
+  type: 'test'
+  ...
+# Subtest: education-revoked fails closed without data
+ok 21 - education-revoked fails closed without data
+  ---
+  duration_ms: 0.945541
+  type: 'test'
+  ...
+# Subtest: withdrawn tracking consent preserves material viewing but event adapter denies tracking
+ok 22 - withdrawn tracking consent preserves material viewing but event adapter denies tracking
+  ---
+  duration_ms: 3.431916
+  type: 'test'
+  ...
+# Subtest: same-account renewal retains exact source review pins
+ok 23 - same-account renewal retains exact source review pins
+  ---
+  duration_ms: 2.953791
+  type: 'test'
+  ...
+# Subtest: stale source selector rejected: authority_revision
+ok 24 - stale source selector rejected: authority_revision
+  ---
+  duration_ms: 0.516875
+  type: 'test'
+  ...
+# Subtest: stale source selector rejected: campaign_revision
+ok 25 - stale source selector rejected: campaign_revision
+  ---
+  duration_ms: 0.437
+  type: 'test'
+  ...
+# Subtest: stale source selector rejected: creative_revision
+ok 26 - stale source selector rejected: creative_revision
+  ---
+  duration_ms: 0.448041
+  type: 'test'
+  ...
+# Subtest: stale source selector rejected: approval_generation
+ok 27 - stale source selector rejected: approval_generation
+  ---
+  duration_ms: 0.42325
+  type: 'test'
+  ...
+# Subtest: stale source selector rejected: catalog_hash
+ok 28 - stale source selector rejected: catalog_hash
+  ---
+  duration_ms: 0.580792
+  type: 'test'
+  ...
+# Subtest: stale source selector rejected: catalog_version
+ok 29 - stale source selector rejected: catalog_version
+  ---
+  duration_ms: 0.497792
+  type: 'test'
+  ...
+# Subtest: stale source selector rejected: campaign_id
+ok 30 - stale source selector rejected: campaign_id
+  ---
+  duration_ms: 0.403959
+  type: 'test'
+  ...
+# Subtest: caller cannot add client_id
+ok 31 - caller cannot add client_id
+  ---
+  duration_ms: 0.432584
+  type: 'test'
+  ...
+# Subtest: caller cannot add contact_id
+ok 32 - caller cannot add contact_id
+  ---
+  duration_ms: 0.398
+  type: 'test'
+  ...
+# Subtest: caller cannot add answers
+ok 33 - caller cannot add answers
+  ---
+  duration_ms: 0.382333
+  type: 'test'
+  ...
+# Subtest: caller cannot add permissions
+ok 34 - caller cannot add permissions
+  ---
+  duration_ms: 0.409833
+  type: 'test'
+  ...
+# Subtest: caller cannot add consent
+ok 35 - caller cannot add consent
+  ---
+  duration_ms: 0.553375
+  type: 'test'
+  ...
+# Subtest: caller cannot add event_id
+ok 36 - caller cannot add event_id
+  ---
+  duration_ms: 0.376416
+  type: 'test'
+  ...
+# Subtest: caller cannot add amount
+ok 37 - caller cannot add amount
+  ---
+  duration_ms: 0.37275
+  type: 'test'
+  ...
+# Subtest: rejects hostile getters without invocation
+ok 38 - rejects hostile getters without invocation
+  ---
+  duration_ms: 0.46875
+  type: 'test'
+  ...
+# Subtest: mid-read revocation discards all partially loaded content
+ok 39 - mid-read revocation discards all partially loaded content
+  ---
+  duration_ms: 0.81725
+  type: 'test'
+  ...
+# Subtest: mid-read same-account transport renewal does not invalidate authority
+ok 40 - mid-read same-account transport renewal does not invalidate authority
+  ---
+  duration_ms: 2.703083
+  type: 'test'
+  ...
+# Subtest: inspection does not create events; existing replay and content-conflict boundaries retained
+ok 41 - inspection does not create events; existing replay and content-conflict boundaries retained
+  ---
+  duration_ms: 35.625916
+  type: 'test'
+  ...
+# Subtest: dependency failures are sanitized
+ok 42 - dependency failures are sanitized
+  ---
+  duration_ms: 0.937834
+  type: 'test'
+  ...
+# Subtest: unapproved Driver rejected
+ok 43 - unapproved Driver rejected
+  ---
+  duration_ms: 0.452417
+  type: 'test'
+  ...
+# Subtest: selector objects cannot execute coercion code
+ok 44 - selector objects cannot execute coercion code
+  ---
+  duration_ms: 0.454084
+  type: 'test'
+  ...
+# Subtest: actual HTTP copy/source/encoded QR email
+ok 45 - actual HTTP copy/source/encoded QR email
+  ---
+  duration_ms: 484.0995
+  type: 'test'
+  ...
+# Subtest: actual HTTP copy/source/encoded QR sms
+ok 46 - actual HTTP copy/source/encoded QR sms
+  ---
+  duration_ms: 138.389834
+  type: 'test'
+  ...
+# Subtest: actual HTTP copy/source/encoded QR dm
+ok 47 - actual HTTP copy/source/encoded QR dm
+  ---
+  duration_ms: 134.609
+  type: 'test'
+  ...
+# Subtest: actual HTTP copy/source/encoded QR social
+ok 48 - actual HTTP copy/source/encoded QR social
+  ---
+  duration_ms: 135.841083
+  type: 'test'
+  ...
+# Subtest: actual cross-origin denial
+ok 49 - actual cross-origin denial
+  ---
+  duration_ms: 2.651417
+  type: 'test'
+  ...
+# Subtest: actual size limit / body rejection
+ok 50 - actual size limit / body rejection
+  ---
+  duration_ms: 2.604708
+  type: 'test'
+  ...
+# Subtest: actual missing source scope is held without copy or QR
+ok 51 - actual missing source scope is held without copy or QR
+  ---
+  duration_ms: 2.688917
+  type: 'test'
+  ...
+1..51
+# tests 51
+# suites 0
+# pass 51
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 964.423792

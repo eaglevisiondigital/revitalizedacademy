@@ -1,0 +1,220 @@
+TAP version 13
+# Subtest: coherent fictional package / cellular_hydration
+ok 1 - coherent fictional package / cellular_hydration
+  ---
+  duration_ms: 11.269334
+  type: 'test'
+  ...
+# Subtest: coherent fictional package / systemic_detoxification
+ok 2 - coherent fictional package / systemic_detoxification
+  ---
+  duration_ms: 4.271958
+  type: 'test'
+  ...
+# Subtest: coherent fictional package / electrobiology_rhythms
+ok 3 - coherent fictional package / electrobiology_rhythms
+  ---
+  duration_ms: 3.454458
+  type: 'test'
+  ...
+# Subtest: coherent fictional package / the_living_diet
+ok 4 - coherent fictional package / the_living_diet
+  ---
+  duration_ms: 2.955291
+  type: 'test'
+  ...
+# Subtest: coherent fictional package / functional_training
+ok 5 - coherent fictional package / functional_training
+  ---
+  duration_ms: 3.437042
+  type: 'test'
+  ...
+# Subtest: coherent fictional package / holistic_recovery
+ok 6 - coherent fictional package / holistic_recovery
+  ---
+  duration_ms: 2.641542
+  type: 'test'
+  ...
+# Subtest: coherent fictional package / gastrointestinal_renovation
+ok 7 - coherent fictional package / gastrointestinal_renovation
+  ---
+  duration_ms: 2.57075
+  type: 'test'
+  ...
+# Subtest: coherent fictional package / hormone_balancing
+ok 8 - coherent fictional package / hormone_balancing
+  ---
+  duration_ms: 2.987584
+  type: 'test'
+  ...
+# Subtest: coherent fictional package / neural_repatterning
+ok 9 - coherent fictional package / neural_repatterning
+  ---
+  duration_ms: 3.228958
+  type: 'test'
+  ...
+# Subtest: coherent fictional package / momentum_regimens
+ok 10 - coherent fictional package / momentum_regimens
+  ---
+  duration_ms: 2.969792
+  type: 'test'
+  ...
+# Subtest: coherent fictional package / mentality_realignment
+ok 11 - coherent fictional package / mentality_realignment
+  ---
+  duration_ms: 2.695959
+  type: 'test'
+  ...
+# Subtest: coherent fictional package / wise_budgeting
+ok 12 - coherent fictional package / wise_budgeting
+  ---
+  duration_ms: 3.148292
+  type: 'test'
+  ...
+# Subtest: scope denied / revoked
+ok 13 - scope denied / revoked
+  ---
+  duration_ms: 0.828209
+  type: 'test'
+  ...
+# Subtest: scope denied / expired
+ok 14 - scope denied / expired
+  ---
+  duration_ms: 0.678917
+  type: 'test'
+  ...
+# Subtest: scope denied / wrong-account
+ok 15 - scope denied / wrong-account
+  ---
+  duration_ms: 1.055708
+  type: 'test'
+  ...
+# Subtest: scope denied / education-revoked
+ok 16 - scope denied / education-revoked
+  ---
+  duration_ms: 0.894375
+  type: 'test'
+  ...
+# Subtest: scope denied / logout
+ok 17 - scope denied / logout
+  ---
+  duration_ms: 0.4785
+  type: 'test'
+  ...
+# Subtest: same-authority renewal preserves exact composition hash
+ok 18 - same-authority renewal preserves exact composition hash
+  ---
+  duration_ms: 5.491167
+  type: 'test'
+  ...
+# Subtest: consent withdrawal permits approved manual viewing but not events
+ok 19 - consent withdrawal permits approved manual viewing but not events
+  ---
+  duration_ms: 3.075833
+  type: 'test'
+  ...
+# Subtest: 30 concurrent read compositions emit no tracking event
+ok 20 - 30 concurrent read compositions emit no tracking event
+  ---
+  duration_ms: 55.116959
+  type: 'test'
+  ...
+# Subtest: encoding awaited / revocation discards every composed field
+ok 21 - encoding awaited / revocation discards every composed field
+  ---
+  duration_ms: 2.762833
+  type: 'test'
+  ...
+# Subtest: encoding awaited / transport renewal retains unchanged authority
+ok 22 - encoding awaited / transport renewal retains unchanged authority
+  ---
+  duration_ms: 2.052375
+  type: 'test'
+  ...
+# Subtest: encoder failure sanitized and no partial output
+ok 23 - encoder failure sanitized and no partial output
+  ---
+  duration_ms: 2.047667
+  type: 'test'
+  ...
+# Subtest: stale selector denied / authority_revision
+ok 24 - stale selector denied / authority_revision
+  ---
+  duration_ms: 0.424917
+  type: 'test'
+  ...
+# Subtest: stale selector denied / creative_revision
+ok 25 - stale selector denied / creative_revision
+  ---
+  duration_ms: 0.581666
+  type: 'test'
+  ...
+# Subtest: stale selector denied / campaign_revision
+ok 26 - stale selector denied / campaign_revision
+  ---
+  duration_ms: 0.37875
+  type: 'test'
+  ...
+# Subtest: stale selector denied / approval_generation
+ok 27 - stale selector denied / approval_generation
+  ---
+  duration_ms: 0.375
+  type: 'test'
+  ...
+# Subtest: hostile field denied / user_id
+ok 28 - hostile field denied / user_id
+  ---
+  duration_ms: 0.382916
+  type: 'test'
+  ...
+# Subtest: hostile field denied / client_id
+ok 29 - hostile field denied / client_id
+  ---
+  duration_ms: 0.363417
+  type: 'test'
+  ...
+# Subtest: hostile field denied / health_answers
+ok 30 - hostile field denied / health_answers
+  ---
+  duration_ms: 0.398875
+  type: 'test'
+  ...
+# Subtest: hostile field denied / commission
+ok 31 - hostile field denied / commission
+  ---
+  duration_ms: 0.371375
+  type: 'test'
+  ...
+# Subtest: hostile field denied / consent
+ok 32 - hostile field denied / consent
+  ---
+  duration_ms: 0.360083
+  type: 'test'
+  ...
+# Subtest: getters are never executed
+ok 33 - getters are never executed
+  ---
+  duration_ms: 0.408584
+  type: 'test'
+  ...
+# Subtest: second preserved share read revalidates and denies mutated creative
+ok 34 - second preserved share read revalidates and denies mutated creative
+  ---
+  duration_ms: 2.647916
+  type: 'test'
+  ...
+# Subtest: different channel / Driver changes fingerprint without new authority
+ok 35 - different channel / Driver changes fingerprint without new authority
+  ---
+  duration_ms: 5.966666
+  type: 'test'
+  ...
+1..35
+# tests 35
+# suites 0
+# pass 35
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 204.540791

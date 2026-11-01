@@ -1,0 +1,36 @@
+{
+  "base": "2cbd6de16097890f501a410a276308ca5c4e000c",
+  "nodeVersion": "v24.22.1",
+  "results": {
+    "unit.tap": {
+      "tests": 35,
+      "pass": 35,
+      "fail": 0
+    },
+    "http-regressions.tap": {
+      "tests": 51,
+      "pass": 51,
+      "fail": 0
+    },
+    "preserved-regressions.tap": {
+      "tests": 182,
+      "pass": 182,
+      "fail": 0
+    },
+    "browser.tap": {
+      "tests": 6,
+      "pass": 6,
+      "fail": 0
+    }
+  },
+  "newNodeHttp": 42,
+  "retainedNodeHttp": 226,
+  "nodeHttpTotal": 268,
+  "nativeTotal": 6,
+  "production": false,
+  "database": false,
+  "privateClient": false,
+  "financial": false,
+  "unapprovedMethodologyAdded": 0,
+  "fullPackageAcceptance": false
+}
