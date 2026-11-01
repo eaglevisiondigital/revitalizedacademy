@@ -64,6 +64,7 @@ declare a uuid:=auth.uid();sid uuid:=(auth.jwt()->>'session_id')::uuid;w private
  if a is null or sid is null or a is distinct from w.operator_id or auth.jwt()->>'iss'is distinct from 'https://voalfpxiyznnqfcqcymd.supabase.co/auth/v1'
  or auth.jwt()->>'sub'is distinct from a::text then raise exception 'Original authenticated issuing Owner required'using errcode='42501';end if;
  perform private.roadmap_voice_r2_recovery_check_owner(a,sid,p_fresh);
+ if not exists(select 1 from public.staff_access where user_id=a and role='owner'and status='active')then raise exception 'Original Owner role changed while authenticating'using errcode='42501';end if;
  if exists(select 1 from auth.mfa_factors where user_id=a and status='verified')and auth.jwt()->>'aal'is distinct from 'aal2'then raise exception 'Configured Owner MFA required'using errcode='42501';end if;
  return jsonb_build_object('actor',a,'session',sid);
 end $$;
@@ -84,6 +85,7 @@ declare o jsonb;c private.roadmap_voice_r2_contract;fs uuid;w uuid;begin
  if fs is null then raise exception 'Fresh personal founder Calibration check required'using errcode='42501';end if;
  perform private.roadmap_b6_live_session((c.pin->>'founder')::uuid,fs);
  if not exists(select 1 from private.roadmap_processing_controls where singleton and process and review and not ingest and not approve and not internal_pdf)then raise exception 'Restricted controls required'using errcode='42501';end if;
+ perform private.roadmap_alex_continuation_owner(true);
  insert into private.roadmap_alex_continuation(request_id,owner_id,owner_session,founder_session,binding_hash,expires_at,sop,custody)
  values(p_request,(o->>'actor')::uuid,(o->>'session')::uuid,fs,private.roadmap_alex_continuation_binding(),'2026-11-03T23:00:00Z',p_sop,p_custody)returning id into w;
  insert into private.roadmap_alex_continuation_audit(authority_id,actor_id,session_id,action)values(w,(o->>'actor')::uuid,(o->>'session')::uuid,'issue');
@@ -91,7 +93,7 @@ declare o jsonb;c private.roadmap_voice_r2_contract;fs uuid;w uuid;begin
 end $$;
 create function private.roadmap_alex_continuation_context(p_mode text)returns jsonb language plpgsql security definer set search_path=''as $$
 declare p jsonb;c private.roadmap_voice_r2_contract;w private.roadmap_alex_continuation;ctx jsonb;a uuid;sid uuid;begin
- a:=private.roadmap_b42_actor();sid:=(auth.jwt()->>'session_id')::uuid;p:=private.roadmap_alex_basis();select *into c from private.roadmap_voice_r2_contract where singleton;select *into w from private.roadmap_alex_continuation;
+ a:=private.roadmap_b42_actor();sid:=(auth.jwt()->>'session_id')::uuid;perform 1 from private.roadmap_processing_controls where singleton for share;p:=private.roadmap_alex_basis();select *into c from private.roadmap_voice_r2_contract where singleton;select *into w from private.roadmap_alex_continuation;
  if a is distinct from(p->>'founder')::uuid or p_mode is null or p_mode not in('read','review')or w.id is null or w.starts_at>clock_timestamp()or w.expires_at<=clock_timestamp()
  or w.binding_hash is distinct from private.roadmap_alex_continuation_binding()
  or exists(select 1 from private.roadmap_alex_continuation_audit where authority_id=w.id and action='revoke')
@@ -100,9 +102,11 @@ declare p jsonb;c private.roadmap_voice_r2_contract;w private.roadmap_alex_conti
  then raise exception 'Prospective Alex continuation unavailable'using errcode='42501';end if;
  perform private.roadmap_b6_live_session(a,sid);
  perform private.roadmap_voice_r2_recovery_check_owner(w.owner_id,w.owner_session,false);
+ if not exists(select 1 from public.staff_access where user_id=w.owner_id and role='owner'and status='active')then raise exception 'Supervising Owner role changed'using errcode='42501';end if;
  ctx:=private.roadmap_b4_context((p->>'report')::uuid,false);
  if ctx->>'source_fingerprint'is distinct from p->>'fingerprint'then raise exception 'Pinned source changed'using errcode='42501';end if;
- return ctx||jsonb_build_object('grant_sequence',(p->>'b6')::bigint,'purpose_sequence',(p->>'purpose')::bigint,'processing_grant',(select grant_sequence from private.roadmap_alex_windows),'operating_authority',w.id,'processing_expires_at',w.expires_at,'expires_at',w.expires_at,'can_feedback',true,'can_edit',false,'pins',private.roadmap_b6_pins(),'identity',private.roadmap_b42_public_metadata(private.roadmap_b42_descriptor((p->>'contact')::uuid,(p->>'report')::uuid)),'client_visible',false,'delivery','held','email','held','parent_version',c.parent_version,'parent_document_hash',c.parent_document_hash,'target_revision',2,'worker_sha256',c.worker_sha256,'voice_hash',c.voice_hash);
+ ctx:=ctx||jsonb_build_object('grant_sequence',(p->>'b6')::bigint,'purpose_sequence',(p->>'purpose')::bigint,'processing_grant',(select grant_sequence from private.roadmap_alex_windows),'operating_authority',w.id,'processing_expires_at',w.expires_at,'expires_at',w.expires_at,'can_feedback',true,'can_edit',false,'pins',private.roadmap_b6_pins(),'identity',private.roadmap_b42_public_metadata(private.roadmap_b42_descriptor((p->>'contact')::uuid,(p->>'report')::uuid)),'client_visible',false,'delivery','held','email','held','parent_version',c.parent_version,'parent_document_hash',c.parent_document_hash,'target_revision',2,'worker_sha256',c.worker_sha256,'voice_hash',c.voice_hash);
+ if w.expires_at<=clock_timestamp()then raise exception 'Continuation expired during validation'using errcode='42501';end if;return ctx;
 end $$;
 -- Preserve old implementations verbatim; empty installation delegates to them unchanged.
 do $copy$declare n text;body text;begin
@@ -178,11 +182,13 @@ declare o jsonb;c private.roadmap_voice_r2_contract;s private.roadmap_b42_sop_at
  values(p_request,f,v.report_id,v.id,v.fingerprint,v.document_hash,basis,'2026-11-13T23:00:00Z',(o->>'actor')::uuid,(o->>'session')::uuid)returning id into g;
  insert into private.roadmap_alex_review_audit(grant_id,actor_id,session_id,action)values(g,(o->>'actor')::uuid,(o->>'session')::uuid,'issue');
  end loop;end loop;
+ perform private.roadmap_alex_continuation_owner(true);
+ if clock_timestamp()>='2026-11-13T23:00:00Z'then raise exception 'Review issuance deadline passed'using errcode='42501';end if;
  return jsonb_build_object('issued',true,'grants',4,'processing',false,'expires_at','2026-11-13T23:00:00Z','independent_readback_required',true);
 end $$;
 create function private.roadmap_alex_review_context(p_report uuid,p_version uuid,p_write boolean,p_ack boolean default false)returns private.roadmap_alex_review_grants language plpgsql security definer set search_path=''as $$
 declare a uuid:=private.roadmap_b42_actor();sid uuid:=(auth.jwt()->>'session_id')::uuid;g private.roadmap_alex_review_grants;c private.roadmap_voice_r2_contract;begin
- perform pg_advisory_xact_lock(18062026);perform private.roadmap_b6_live_session(a,sid);select *into c from private.roadmap_voice_r2_contract where singleton;
+ perform pg_advisory_xact_lock(18062026);perform private.roadmap_b6_live_session(a,sid);perform 1 from private.roadmap_processing_controls where singleton for share;select *into c from private.roadmap_voice_r2_contract where singleton;
  select *into g from private.roadmap_alex_review_grants where founder_id=a and report_id=p_report and version_id=p_version;
  if g.id is null or g.starts_at>clock_timestamp()or g.expires_at<=clock_timestamp()
  or exists(select 1 from private.roadmap_alex_review_audit where grant_id=g.id and action='revoke')
@@ -191,6 +197,7 @@ declare a uuid:=private.roadmap_b42_actor();sid uuid:=(auth.jwt()->>'session_id'
  or g.source_basis_hash is distinct from private.roadmap_alex_review_basis(a,g.version_id)
  or not exists(select 1 from private.roadmap_processing_versions v where v.id=g.version_id and v.document_hash=g.document_hash and v.fingerprint=g.fingerprint)
  then raise exception 'Independent exact-document review denied'using errcode='42501';end if;
+ if g.expires_at<=clock_timestamp()then raise exception 'Review expired during validation'using errcode='42501';end if;
  if not p_ack and a<>(c.pin->>'founder')::uuid and not exists(select 1 from private.roadmap_alex_review_audit where grant_id=g.id and actor_id=a and action='purpose')then raise exception 'Own review-only purpose acknowledgment required'using errcode='42501';end if;
  return g;
 end $$;
@@ -198,7 +205,7 @@ end $$;
 create function private.roadmap_alex_review_api(p_action text,p_report uuid,p_payload jsonb)returns jsonb language plpgsql security definer set search_path=''as $$
 declare a uuid:=private.roadmap_b42_actor();sid uuid:=(auth.jwt()->>'session_id')::uuid;g private.roadmap_alex_review_grants;
  v private.roadmap_processing_versions;r private.roadmap_processing_reviews;gg private.roadmap_alex_review_grants;proposal_data jsonb;req uuid;hash text;n integer;seq bigint;history jsonb;rows jsonb:='[]';c private.roadmap_voice_r2_contract;begin
- perform pg_advisory_xact_lock(18062026);perform private.roadmap_b6_live_session(a,sid);select *into c from private.roadmap_voice_r2_contract where singleton;
+ perform pg_advisory_xact_lock(18062026);perform private.roadmap_b6_live_session(a,sid);perform 1 from private.roadmap_processing_controls where singleton for share;select *into c from private.roadmap_voice_r2_contract where singleton;
  if p_action is null or p_action not in('list','read','review','purpose')or p_payload is null or jsonb_typeof(p_payload)<>'object'or octet_length(p_payload::text)>20000 then raise exception 'Invalid exact-version review request'using errcode='22023';end if;
  if p_action='list'then
  if p_report is not null or p_payload<>'{}'::jsonb then raise exception 'Invalid review list'using errcode='22023';end if;
