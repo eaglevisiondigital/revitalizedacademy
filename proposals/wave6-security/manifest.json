@@ -1,0 +1,117 @@
+{
+  "base": "9beae3bb40c154d2bfd623e8d2355b3a6c3cd306",
+  "scope": "LOCAL_NONPRODUCTION_ONLY",
+  "policies": [
+    {
+      "table": "client_checkins",
+      "name": "wave6_client_checkins_scope_select",
+      "command": "SELECT",
+      "using": "((private.active_staff_session() AND private.staff_action_allowed(auth.uid(),'coaching.view',contact_id)) OR (contact_id IN (SELECT ca.contact_id FROM public.client_access ca WHERE ca.user_id=auth.uid() AND ca.status='active' AND NOT ca.needs_onboarding_claim)))",
+      "check": null
+    },
+    {
+      "table": "client_checkins",
+      "name": "wave6_client_checkins_scope_insert",
+      "command": "INSERT",
+      "using": null,
+      "check": "(((private.active_staff_session() AND private.staff_action_allowed(auth.uid(),'coaching.manage',contact_id)) OR (contact_id IN (SELECT ca.contact_id FROM public.client_access ca WHERE ca.user_id=auth.uid() AND ca.status='active' AND NOT ca.needs_onboarding_claim))) AND (client_checkins.membership_id IS NULL OR EXISTS(SELECT FROM public.client_memberships cm WHERE cm.id=client_checkins.membership_id AND cm.status='active' AND (cm.primary_contact_id=client_checkins.contact_id OR EXISTS(SELECT FROM public.client_access ca WHERE ca.membership_id=cm.id AND ca.contact_id=client_checkins.contact_id AND ca.status IN('active','ready'))))))"
+    },
+    {
+      "table": "client_checkins",
+      "name": "wave6_client_checkins_scope_update",
+      "command": "UPDATE",
+      "using": "((private.active_staff_session() AND private.staff_action_allowed(auth.uid(),'coaching.manage',contact_id)) AND (client_checkins.membership_id IS NULL OR EXISTS(SELECT FROM public.client_memberships cm WHERE cm.id=client_checkins.membership_id AND cm.status='active' AND (cm.primary_contact_id=client_checkins.contact_id OR EXISTS(SELECT FROM public.client_access ca WHERE ca.membership_id=cm.id AND ca.contact_id=client_checkins.contact_id AND ca.status IN('active','ready'))))))",
+      "check": "((private.active_staff_session() AND private.staff_action_allowed(auth.uid(),'coaching.manage',contact_id)) AND (client_checkins.membership_id IS NULL OR EXISTS(SELECT FROM public.client_memberships cm WHERE cm.id=client_checkins.membership_id AND cm.status='active' AND (cm.primary_contact_id=client_checkins.contact_id OR EXISTS(SELECT FROM public.client_access ca WHERE ca.membership_id=cm.id AND ca.contact_id=client_checkins.contact_id AND ca.status IN('active','ready'))))))"
+    },
+    {
+      "table": "client_assignments",
+      "name": "wave6_client_assignments_scope_select",
+      "command": "SELECT",
+      "using": "((private.active_staff_session() AND private.staff_action_allowed(auth.uid(),'coaching.view',contact_id)) OR (contact_id IN (SELECT ca.contact_id FROM public.client_access ca WHERE ca.user_id=auth.uid() AND ca.status='active' AND NOT ca.needs_onboarding_claim)))",
+      "check": null
+    },
+    {
+      "table": "client_assignments",
+      "name": "wave6_client_assignments_scope_insert",
+      "command": "INSERT",
+      "using": null,
+      "check": "((private.active_staff_session() AND private.staff_action_allowed(auth.uid(),'coaching.manage',contact_id)) AND (client_assignments.membership_id IS NULL OR EXISTS(SELECT FROM public.client_memberships cm WHERE cm.id=client_assignments.membership_id AND cm.status='active' AND (cm.primary_contact_id=client_assignments.contact_id OR EXISTS(SELECT FROM public.client_access ca WHERE ca.membership_id=cm.id AND ca.contact_id=client_assignments.contact_id AND ca.status IN('active','ready'))))))"
+    },
+    {
+      "table": "client_assignments",
+      "name": "wave6_client_assignments_scope_update",
+      "command": "UPDATE",
+      "using": "((private.active_staff_session() AND private.staff_action_allowed(auth.uid(),'coaching.manage',contact_id)) AND (client_assignments.membership_id IS NULL OR EXISTS(SELECT FROM public.client_memberships cm WHERE cm.id=client_assignments.membership_id AND cm.status='active' AND (cm.primary_contact_id=client_assignments.contact_id OR EXISTS(SELECT FROM public.client_access ca WHERE ca.membership_id=cm.id AND ca.contact_id=client_assignments.contact_id AND ca.status IN('active','ready'))))))",
+      "check": "((private.active_staff_session() AND private.staff_action_allowed(auth.uid(),'coaching.manage',contact_id)) AND (client_assignments.membership_id IS NULL OR EXISTS(SELECT FROM public.client_memberships cm WHERE cm.id=client_assignments.membership_id AND cm.status='active' AND (cm.primary_contact_id=client_assignments.contact_id OR EXISTS(SELECT FROM public.client_access ca WHERE ca.membership_id=cm.id AND ca.contact_id=client_assignments.contact_id AND ca.status IN('active','ready'))))))"
+    },
+    {
+      "table": "household_members",
+      "name": "wave6_household_members_scope_select",
+      "command": "SELECT",
+      "using": "((private.active_staff_session() AND private.staff_action_allowed(auth.uid(),'crm.view',contact_id)) OR (contact_id IN (SELECT ca.contact_id FROM public.client_access ca WHERE ca.user_id=auth.uid() AND ca.status='active' AND NOT ca.needs_onboarding_claim)))",
+      "check": null
+    },
+    {
+      "table": "household_members",
+      "name": "wave6_household_members_scope_insert",
+      "command": "INSERT",
+      "using": null,
+      "check": "(private.active_staff_session() AND private.staff_action_allowed(auth.uid(),'crm.manage',contact_id)) AND EXISTS(SELECT FROM public.households h WHERE h.id=household_members.household_id AND private.staff_action_allowed(auth.uid(),'crm.manage',h.primary_contact_id)) AND (guardian_contact_id IS NULL OR private.staff_action_allowed(auth.uid(),'crm.manage',guardian_contact_id))"
+    },
+    {
+      "table": "household_members",
+      "name": "wave6_household_members_scope_update",
+      "command": "UPDATE",
+      "using": "(private.active_staff_session() AND private.staff_action_allowed(auth.uid(),'crm.manage',contact_id))",
+      "check": "(private.active_staff_session() AND private.staff_action_allowed(auth.uid(),'crm.manage',contact_id))"
+    }
+  ],
+  "newFunctions": [
+    {
+      "signature": "private.wave6_operation_tuple_before()",
+      "definer": false,
+      "grantedExecute": []
+    }
+  ],
+  "newTriggers": [
+    {
+      "table": "client_checkins",
+      "name": "a_wave6_operation_tuple_before"
+    },
+    {
+      "table": "client_assignments",
+      "name": "a_wave6_operation_tuple_before"
+    },
+    {
+      "table": "household_members",
+      "name": "a_wave6_operation_tuple_before"
+    }
+  ],
+  "privilegeChanges": [
+    {
+      "table": "client_checkins",
+      "role": "authenticated",
+      "revoke": "TRUNCATE"
+    },
+    {
+      "table": "client_assignments",
+      "role": "authenticated",
+      "revoke": "TRUNCATE"
+    },
+    {
+      "table": "household_members",
+      "role": "authenticated",
+      "revoke": "TRUNCATE"
+    }
+  ],
+  "files": [
+    {
+      "path": "proposals/wave6-security/correction.sql",
+      "sha256": "4a545932faa3553e2c6461494db55257bb598c6cc10356bd8e23f4f589e6b4df"
+    },
+    {
+      "path": "proposals/wave6-security/revert.sql",
+      "sha256": "e4fa7c9231c4d0d41f8f1ff56a6a9366a92b86b85f7fb69fb80224b09279009f"
+    }
+  ]
+}

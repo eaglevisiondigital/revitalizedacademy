@@ -1,0 +1,19 @@
+# Wave6 security — local proposals, actual PostgreSQL execution blocked
+
+Base: `9beae3bb40c154d2bfd623e8d2355b3a6c3cd306`. No production queries or writes. No private records.
+
+`contract.test.cjs` executes nine **source/manifest contract** assertions, not a permission engine or PostgreSQL substitute. `security.test.cjs` prepares 45 actual PostgreSQL assertions using the existing strict fixture (UNIX socket and fictional Auth GUCs only). The existing five failure probes remain untouched in `tests/wave5-operations/durable-operations.test.cjs`. They must run unchanged before and after the proposal. The separate access-user hypothesis is explicitly not part of the five and remains NOT RUN; do not claim it is a confirmed exposure or fixed.
+
+Required independent execution order after a positively owned disposable PG slot is available:
+
+1. Pin all fixture, current-catalog, predecessor and Wave6 proposal hashes. Recreate only an empty fictional PG17 scaffold using accepted Wave3 current overlay, accepted Wave3 RPC, accepted Wave4 allowance isolation, exact Wave5 operations and security proposals, then the reviewed Wave5 current-operations catalog overlay. This is a cumulative LOCAL branch, not installed production.
+2. Execute the five original STRICT probes. Expected historical result is five failures; retain exact TAP and stage/hash evidence. Run the identity hypothesis separately with its actual outcome, without changing a probe to match observed behavior.
+3. Execute the complete Wave6 guarded correction. On any syntax/guard/RLS/caller error STOP; no production or persistent-DB fallback. Record failed candidate evidence before any bounded revision.
+4. Run unchanged five probes again; all five must PASS. Execute all 45 new actual PostgreSQL assertions and existing Wave5 security, usage/session concurrency, Wave4 isolation/session/RPC and durable check-in/idempotency/rollback suites. Old catalog-equality checks require an explicit additive-policy delta comparison, rather than silently asserting the old policy count still exists. The historical Wave4 test that requires a deadlock remains separately superseded by Wave5 two-backend commit tests.
+5. Run wrong-contact/membership/actor/household tests, both direct table and real existing invoker RPC cases. Preserve paid-Client lifecycle hold. No synthetic paid positive is fabricated by overriding payment predicates.
+6. Execute guarded local regression revert; rerun original five and require the same historical failures. Verify existing table rows, preexisting routine definitions/ACLs, new function/trigger removal and trusted-role rights are unchanged. Revert deliberately restores exposure and is not a safe production rollback.
+7. Stop/remove only the independently verified owned cluster. Verify sockets/processes/resources returned to the preflight inventory.
+
+**Actual execution in Wave6 Lane B:** BLOCKED/NOT RUN, before any initdb or SQL. Lane A established local SysV capacity exhaustion (32/32); no orphan segment can be safely attributed to this RVA workflow. No unrelated process/IPC resource was removed. No PostgreSQL semantic, rollback or concurrency PASS is inferred from source tests.
+
+Managed authentication limitations: GUC actor switching, active/suspended/inactive status and current permission revocation tests are not GoTrue, MFA, provider JWT verification, token expiry or `auth.sessions` logout/revocation acceptance. Existing `private.active_staff_session()` checks database staff status/onboarding and does not validate `session_id`. This proposal preserves that function and all shared authentication; managed-session revocation remains a separate security/business release gate.

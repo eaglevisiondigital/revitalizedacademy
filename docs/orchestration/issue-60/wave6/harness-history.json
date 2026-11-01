@@ -1,0 +1,10 @@
+{
+  "stage":"source-contract-harness-initial",
+  "pass":8,
+  "fail":1,
+  "failure":"The rollback source assertion wrongly matched TRUNCATE inside GRANT TRUNCATE; no actual SQL ran.",
+  "correction":"Destructive statement detection now matches statement-start TRUNCATE; permitted local-regression ACL restoration remains explicit.",
+  "correctedSourceContracts":{"pass":9,"fail":0},
+  "postgresExecuted":false,
+  "policyAssertionsWeakened":false
+}

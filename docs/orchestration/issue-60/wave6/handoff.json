@@ -1,0 +1,71 @@
+{
+  "issue": 60,
+  "lane": "Wave6 B Client/Coach/Family security",
+  "agent": "/root/wave6_security",
+  "base": "9beae3bb40c154d2bfd623e8d2355b3a6c3cd306",
+  "branch": "codex/rva-wave6-security-20261101",
+  "worktree": "academy-wave6-security",
+  "status": "LOCAL_PREPARED_POSTGRES_BLOCKED",
+  "fiveFailureResolution": [
+    "PREPARED_NOT_VERIFIED",
+    "PREPARED_NOT_VERIFIED",
+    "PREPARED_NOT_VERIFIED",
+    "PREPARED_NOT_VERIFIED",
+    "PREPARED_NOT_VERIFIED"
+  ],
+  "sourceContractTests": {
+    "pass": 9,
+    "fail": 0
+  },
+  "actualPgTests": {
+    "prepared": 45,
+    "executed": 0,
+    "status": "BLOCKED_LOCAL_DISPOSABLE_CAPACITY"
+  },
+  "existingFiveProbesModified": false,
+  "authSessionGuarantee": "NOT_VERIFIED_MANAGED_AUTH_NOT_CHANGED",
+  "accessIdentityHypothesis": "NOT_RUN_NOT_A_CONFIRMED_EXPOSURE",
+  "productionQueries": 0,
+  "productionWrites": 0,
+  "privateClientReads": 0,
+  "alex": "PAUSED",
+  "rollback": "REGRESSION_ONLY_REEXPOSES_OLD_FLAWS_NOT_PRODUCTION_RECOMMENDED",
+  "files": [
+    {
+      "path": "proposals/wave6-security/correction.sql",
+      "sha256": "4a545932faa3553e2c6461494db55257bb598c6cc10356bd8e23f4f589e6b4df"
+    },
+    {
+      "path": "proposals/wave6-security/revert.sql",
+      "sha256": "e4fa7c9231c4d0d41f8f1ff56a6a9366a92b86b85f7fb69fb80224b09279009f"
+    },
+    {
+      "path": "proposals/wave6-security/manifest.json",
+      "sha256": "58a12beb8cc06344cfeebca1efa7b6064e3be83cdf4bec25fb7b7740f97852f9"
+    },
+    {
+      "path": "tests/wave6-security/security.test.cjs",
+      "sha256": "94bd200eea999ee050708b1336af1cc11349129b31d2dead26656c5ba6f8b80c"
+    },
+    {
+      "path": "tests/wave6-security/contract.test.cjs",
+      "sha256": "8eafc5cd82b3f66f93c533328d77fad37b9e29a42d62d4e2d9d498a590056558"
+    },
+    {
+      "path": "tests/wave6-security/pending-access-identity-hypothesis.test.cjs",
+      "sha256": "ac58d159012e0224c0cb8ab40c3489ed87a7c4d9196364c645926623d0a20fc0"
+    },
+    {
+      "path": "tests/wave6-security/execution-pins.json",
+      "sha256": "72f930fbd6413c281a08638ceeb0715abf989b0743892dc1e68061475358efeb"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave6/contracts.tap",
+      "sha256": "ece93a662d931e8f448f04794a3e781264fd4e6783d25eb6fc213a887f879a40"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave6/REPORT.md",
+      "sha256": "83b37368a48aa2c9c3cff441083e1b6141bee36831d7dfc60237a307562152cc"
+    }
+  ]
+}
