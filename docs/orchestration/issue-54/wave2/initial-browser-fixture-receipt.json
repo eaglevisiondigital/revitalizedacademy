@@ -1,0 +1,11 @@
+{
+  "sourceCommit": "fc6737415da36b4306afa0060a525eca2f1131ca",
+  "startedAt": "2026-11-01T13:51:03.723Z",
+  "scope": "Actual onboarding HTML/environment/runtime with fake SDK/Auth/RPC transport; no dashboard/hosted/provider certification",
+  "productionCalls": 0,
+  "providerCalls": 0,
+  "results": [],
+  "result": "FAIL",
+  "error": "page.waitForFunction: Timeout 30000ms exceeded.",
+  "completedAt": "2026-11-01T13:51:35.785Z"
+}

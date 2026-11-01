@@ -1,0 +1,88 @@
+TAP version 13
+# Subtest: [N01] explicit permission denial wins over Owner default in actual helper
+ok 1 - [N01] explicit permission denial wins over Owner default in actual helper
+  ---
+  duration_ms: 90.0225
+  type: 'test'
+  ...
+# Subtest: [N01] inactive Coach with retained allow override loses actual scoped helper authority
+ok 2 - [N01] inactive Coach with retained allow override loses actual scoped helper authority
+  ---
+  duration_ms: 11.485333
+  type: 'test'
+  ...
+# Subtest: [N02] assigned Coach helper succeeds; unrelated Coach helper denied
+ok 3 - [N02] assigned Coach helper succeeds; unrelated Coach helper denied
+  ---
+  duration_ms: 12.352792
+  type: 'test'
+  ...
+# Subtest: [N04] Client cannot obtain staff action; anonymous cannot invoke it
+ok 4 - [N04] Client cannot obtain staff action; anonymous cannot invoke it
+  ---
+  duration_ms: 11.7315
+  type: 'test'
+  ...
+# Subtest: [N02 partial] actual assignment policy allows Owner/assigned Coach but denies unrelated Coach mutation
+ok 5 - [N02 partial] actual assignment policy allows Owner/assigned Coach but denies unrelated Coach mutation
+  ---
+  duration_ms: 13.150792
+  type: 'test'
+  ...
+# Subtest: [N06 partial] production lifecycle paid gate rejects fabricated active access without bound paid enrollment
+ok 6 - [N06 partial] production lifecycle paid gate rejects fabricated active access without bound paid enrollment
+  ---
+  duration_ms: 14.793209
+  type: 'test'
+  ...
+# Subtest: [N06 partial] production lifecycle paid gate rejects fabricated onboarding access without bound paid enrollment
+ok 7 - [N06 partial] production lifecycle paid gate rejects fabricated onboarding access without bound paid enrollment
+  ---
+  duration_ms: 12.132042
+  type: 'test'
+  ...
+# Subtest: [N06 partial] production lifecycle paid gate rejects fabricated payment_suspended access without bound paid enrollment
+ok 8 - [N06 partial] production lifecycle paid gate rejects fabricated payment_suspended access without bound paid enrollment
+  ---
+  duration_ms: 6.909542
+  type: 'test'
+  ...
+# Subtest: [N06 partial] production lifecycle paid gate rejects fabricated suspended access without bound paid enrollment
+ok 9 - [N06 partial] production lifecycle paid gate rejects fabricated suspended access without bound paid enrollment
+  ---
+  duration_ms: 7.393
+  type: 'test'
+  ...
+# Subtest: [N06 partial] production lifecycle paid gate rejects fabricated inactive access without bound paid enrollment
+ok 10 - [N06 partial] production lifecycle paid gate rejects fabricated inactive access without bound paid enrollment
+  ---
+  duration_ms: 9.228541
+  type: 'test'
+  ...
+# Subtest: [N06 partial] member goal/habit/progress writes remain denied under actual production payment hold
+ok 11 - [N06 partial] member goal/habit/progress writes remain denied under actual production payment hold
+  ---
+  duration_ms: 13.461084
+  type: 'test'
+  ...
+# Subtest: [E02 expiry partial] expired completed membership cannot bypass production paid-domain gate
+ok 12 - [E02 expiry partial] expired completed membership cannot bypass production paid-domain gate
+  ---
+  duration_ms: 10.476958
+  type: 'test'
+  ...
+# Subtest: [J05 partial] unrelated Client cannot read other Client onboarding enrollment or acceptance
+ok 13 - [J05 partial] unrelated Client cannot read other Client onboarding enrollment or acceptance
+  ---
+  duration_ms: 10.079542
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 340.319417

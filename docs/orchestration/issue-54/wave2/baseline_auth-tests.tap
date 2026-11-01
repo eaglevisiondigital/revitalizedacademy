@@ -1,0 +1,177 @@
+TAP version 13
+# Subtest: [N01] explicit permission denial wins over Owner default in actual helper
+ok 1 - [N01] explicit permission denial wins over Owner default in actual helper
+  ---
+  duration_ms: 93.29675
+  type: 'test'
+  ...
+# Subtest: [N01] inactive Coach with retained allow override loses actual scoped helper authority
+ok 2 - [N01] inactive Coach with retained allow override loses actual scoped helper authority
+  ---
+  duration_ms: 12.423625
+  type: 'test'
+  ...
+# Subtest: [N02] assigned Coach helper succeeds; unrelated Coach helper denied
+ok 3 - [N02] assigned Coach helper succeeds; unrelated Coach helper denied
+  ---
+  duration_ms: 10.834334
+  type: 'test'
+  ...
+# Subtest: [N04] Client cannot obtain staff action; anonymous cannot invoke it
+ok 4 - [N04] Client cannot obtain staff action; anonymous cannot invoke it
+  ---
+  duration_ms: 7.849416
+  type: 'test'
+  ...
+# Subtest: [N02 partial] actual assignment policy allows Owner/assigned Coach but denies unrelated Coach mutation
+ok 5 - [N02 partial] actual assignment policy allows Owner/assigned Coach but denies unrelated Coach mutation
+  ---
+  duration_ms: 11.55875
+  type: 'test'
+  ...
+# Subtest: [F02 partial] Client in household A cannot read or mutate household B members
+ok 6 - [F02 partial] Client in household A cannot read or mutate household B members
+  ---
+  duration_ms: 10.78375
+  type: 'test'
+  ...
+# Subtest: [C02 partial] actual member goal helper normalizes title and keeps actor/contact ownership
+ok 7 - [C02 partial] actual member goal helper normalizes title and keeps actor/contact ownership
+  ---
+  duration_ms: 15.236375
+  type: 'test'
+  ...
+# Subtest: [C02 partial] goal validation rejects empty title and unsupported priority without a row
+ok 8 - [C02 partial] goal validation rejects empty title and unsupported priority without a row
+  ---
+  duration_ms: 20.4795
+  type: 'test'
+  ...
+# Subtest: [N03] actual RLS hides unrelated client goal and cross-client update cannot mutate it
+ok 9 - [N03] actual RLS hides unrelated client goal and cross-client update cannot mutate it
+  ---
+  duration_ms: 48.0075
+  type: 'test'
+  ...
+# Subtest: [N03] actual RLS rejects forged cross-client goal insert
+ok 10 - [N03] actual RLS rejects forged cross-client goal insert
+  ---
+  duration_ms: 23.016667
+  type: 'test'
+  ...
+# Subtest: [C02 partial] actual habit helper validates target and frequency
+ok 11 - [C02 partial] actual habit helper validates target and frequency
+  ---
+  duration_ms: 14.550833
+  type: 'test'
+  ...
+# Subtest: [C02 partial] actual habit check-in upsert preserves one day/actor identity and real zero
+ok 12 - [C02 partial] actual habit check-in upsert preserves one day/actor identity and real zero
+  ---
+  duration_ms: 24.148958
+  type: 'test'
+  ...
+# Subtest: [N03] different Client cannot check in another Client habit
+ok 13 - [N03] different Client cannot check in another Client habit
+  ---
+  duration_ms: 15.153
+  type: 'test'
+  ...
+# Subtest: [C02 partial] progress actual helper preserves numeric zero; unknown numeric is rejected
+ok 14 - [C02 partial] progress actual helper preserves numeric zero; unknown numeric is rejected
+  ---
+  duration_ms: 15.680833
+  type: 'test'
+  ...
+# Subtest: [C02 partial] progress denies missing metric and range/type mismatch
+ok 15 - [C02 partial] progress denies missing metric and range/type mismatch
+  ---
+  duration_ms: 23.339292
+  type: 'test'
+  ...
+# Subtest: [E02 partial] actual session trigger reserves then consumes once across repeated completion writes
+ok 16 - [E02 partial] actual session trigger reserves then consumes once across repeated completion writes
+  ---
+  duration_ms: 17.562291
+  type: 'test'
+  ...
+# Subtest: [E02 partial] cancellation releases consumption through actual trigger and recalculation
+ok 17 - [E02 partial] cancellation releases consumption through actual trigger and recalculation
+  ---
+  duration_ms: 13.487708
+  type: 'test'
+  ...
+# Subtest: [E02 partial] no-show stays review and no usage consumed without explicit decision
+ok 18 - [E02 partial] no-show stays review and no usage consumed without explicit decision
+  ---
+  duration_ms: 6.98875
+  type: 'test'
+  ...
+# Subtest: [E02 partial] authorized review consumes/releases with recorded reason and actor
+not ok 19 - [E02 partial] authorized review consumes/releases with recorded reason and actor
+  ---
+  duration_ms: 7.20725
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-client/tests/wave2-client/sql-contracts.test.cjs:55:2'
+  failureType: 'testCodeFailure'
+  error: 'permission denied for function recalculate_coaching_entitlement_used_value'
+  code: '42501'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async actor (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-client/tests/wave2-client/sql-contracts.test.cjs:11:168)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-client/tests/wave2-client/sql-contracts.test.cjs:55:229)
+    async Test.run (node:internal/test_runner/test:1404:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+  ...
+# Subtest: [E02 partial] actual review RPC denies Client, missing reason and invalid resolution
+ok 20 - [E02 partial] actual review RPC denies Client, missing reason and invalid resolution
+  ---
+  duration_ms: 11.758708
+  type: 'test'
+  ...
+# Subtest: [E02 partial] unlimited numeric representation remains unknown remaining; no infinite number synthesized
+ok 21 - [E02 partial] unlimited numeric representation remains unknown remaining; no infinite number synthesized
+  ---
+  duration_ms: 9.85575
+  type: 'test'
+  ...
+# Subtest: [N02 STRICT] unrelated Coach cannot directly read another Client goal through actual RLS
+not ok 22 - [N02 STRICT] unrelated Coach cannot directly read another Client goal through actual RLS
+  ---
+  duration_ms: 11.718084
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-client/tests/wave2-client/sql-contracts.test.cjs:58:2'
+  failureType: 'testCodeFailure'
+  error: |-
+    Unassigned Coach must not receive private Client goal
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-client/tests/wave2-client/sql-contracts.test.cjs:58:210)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1404:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+  ...
+# Subtest: [N02/E02 STRICT] unrelated Coach cannot resolve another Client usage record
+ok 23 - [N02/E02 STRICT] unrelated Coach cannot resolve another Client usage record
+  ---
+  duration_ms: 48.917042
+  type: 'test'
+  ...
+1..23
+# tests 23
+# suites 0
+# pass 21
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 646.414708

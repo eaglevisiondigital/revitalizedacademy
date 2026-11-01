@@ -1,0 +1,102 @@
+{
+  "scope": "LOCAL_HISTORICAL_CATALOG_PLUS_EXPLICIT_PRODUCTION_LIFECYCLE_SOURCE",
+  "sourceCommit": "fc6737415da36b4306afa0060a525eca2f1131ca",
+  "startedAt": "2026-11-01T13:52:40.964Z",
+  "network": "unix_socket_only; listen_addresses empty",
+  "database": "wave2_client",
+  "managedAuth": "synthetic auth.uid/auth.jwt scaffolding, not GoTrue",
+  "productionCalls": 0,
+  "sourcePins": [
+    {
+      "path": "../revitalizedacademy/tests/backend/platform.sql",
+      "sha256": "8458676c4b1969845c1f651f421e53405dcf6d64be4c9100a81b1980f089a1b5",
+      "restore": true,
+      "stage": "baseline_auth"
+    },
+    {
+      "path": "../revitalizedacademy/supabase/baselines/2026-09-26/schema.sql",
+      "sha256": "60f38f157e338cce445e2ca391b1988a69c0586dfed9b289283380f3f3e9edc6",
+      "restore": true,
+      "stage": "baseline_auth"
+    },
+    {
+      "path": "../revitalizedacademy/supabase/migrations/20260926212638_authorization_and_enrollment_gate.sql",
+      "sha256": "373c3fe40ada08520b2c4c44cf620205dde9aa68e1357702bf80645efd4771f3",
+      "restore": true,
+      "stage": "baseline_auth"
+    },
+    {
+      "path": "supabase/migrations/20261007224150_production_client_lifecycle_v1.sql",
+      "sha256": "e3b37a26ef0d9d5c3574bb40f85438988a8cb2622842cb1563a795826caa1085",
+      "restore": true,
+      "stage": "production_hold"
+    },
+    {
+      "path": "../revitalizedacademy/supabase/baselines/2026-09-26/metadata.json",
+      "sha256": "cd1b37b0c7067b880ad7d30c7b27cff4bcd1d216716a3188313397b387e9e397",
+      "restore": false,
+      "stage": "baseline_auth"
+    },
+    {
+      "path": "member/onboarding/onboarding.js",
+      "sha256": "c04581828dca9eca3f497d1c8168e47c933a0ebd9e91fb4f3597f4edbb13d1c5",
+      "restore": false,
+      "stage": "baseline_auth"
+    },
+    {
+      "path": "member/onboarding/index.html",
+      "sha256": "bf672eb1bb5f936a6fc34e7b76517bc3f21efb89dbfb8d96a13347e07dcbf423",
+      "restore": false,
+      "stage": "baseline_auth"
+    },
+    {
+      "path": "portal/portal-client-lifecycle.js",
+      "sha256": "604f6f94a528921b1a3c4485e74bf23d6e7af363da7a679c58cd72f1c3f28a6e",
+      "restore": false,
+      "stage": "baseline_auth"
+    },
+    {
+      "path": "portal/portal.js",
+      "sha256": "197bad019aac3b86442d602820302213e8075215a78dc28d5ca77aa18cf12de1",
+      "restore": false,
+      "stage": "baseline_auth"
+    },
+    {
+      "path": "portal/portal-permissions.js",
+      "sha256": "087c276a9284914a5fe70849f14e6e7a7da3f7d06fd2393db8df069398fd2be8",
+      "restore": false,
+      "stage": "baseline_auth"
+    }
+  ],
+  "fixtureGlobalRoleChanges": "isolated new cluster only",
+  "testsRun": true,
+  "postgres": "postgres (PostgreSQL) 17.11 (Homebrew)",
+  "port": 57786,
+  "stages": [
+    {
+      "stage": "baseline_auth",
+      "testExitCode": 1,
+      "result": "FAIL_OR_BLOCKED_REVIEW_REQUIRED",
+      "tests": 23,
+      "pass": 21,
+      "fail": 2,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "stage": "production_hold",
+      "testExitCode": 0,
+      "result": "PASS_BOUNDED_SUBTESTS",
+      "tests": 13,
+      "pass": 13,
+      "fail": 0,
+      "skipped": 0,
+      "todo": 0
+    }
+  ],
+  "permissionHelperExcerptSha256": "7e1dc3596323d4dc73fb734197033e174ee6cb16109abb599ef7e0d4a7cb61ab",
+  "testResult": "FAIL_OR_BLOCKED_REVIEW_REQUIRED",
+  "clusterStopped": true,
+  "clusterRemoved": true,
+  "completedAt": "2026-11-01T13:52:54.474Z"
+}

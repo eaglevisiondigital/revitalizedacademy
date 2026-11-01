@@ -1,0 +1,62 @@
+{
+  "issue": "https://github.com/eaglevisiondigital/revitalizedacademy/issues/54",
+  "status": "VERIFIED-LOCAL-PARTIAL-WITH-FAILURES",
+  "agent": "/root/platform_scope_audit",
+  "branch": "codex/rva-wave2-client-20261101",
+  "worktree": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-client",
+  "baseSha": "fc6737415da36b4306afa0060a525eca2f1131ca",
+  "runtimeSourceSha": "fc6737415da36b4306afa0060a525eca2f1131ca",
+  "scope": "Actual fictional app JS/browser and existing SQL/helper/RLS execution, exclusive test/report paths",
+  "reports": [
+    "docs/orchestration/issue-54/wave2/REPORT.md",
+    "docs/orchestration/issue-54/wave2/results.json"
+  ],
+  "counts": {
+    "dom": {
+      "pass": 13,
+      "fail": 0
+    },
+    "postgres": {
+      "pass": 34,
+      "fail": 2
+    },
+    "browser": {
+      "pass": 24,
+      "fail": 0
+    },
+    "completeBusinessCases": 0
+  },
+  "blockingFindings": [
+    "L54-F01",
+    "L54-F02"
+  ],
+  "policyBlockers": [
+    "49-day curriculum/timing",
+    "rich coaching allowance selected rules",
+    "guardian/minor/adult sharing rules",
+    "self-guided/on-demand commercial choices"
+  ],
+  "sourceLimits": "Dated restored baseline + explicit pinned source profiles, not current production catalog certification",
+  "nextAction": "Independent QA integrate Lane A+B, rerun partial suites and preserve failures; core reconcile exact current-source policies/ACLs before any approved runtime correction",
+  "preservation": {
+    "runtimeFilesModified": false,
+    "authRlsMigrationsChanged": false,
+    "productionCalls": 0,
+    "protectedClientAccess": false,
+    "alexAuthorityChanged": false,
+    "pushPrDeploy": false,
+    "disposableClusterRemoved": true
+  },
+  "localCommit": "Exact final local commit returned through native handoff; no recursive self-hash field",
+  "testFileSha256": {
+    "tests/wave2-client/README.md": "3ef60dbf820be65c2325c90bfa6f0a48bdd602ef6e3cfbe44ba1c1eafcf5d064",
+    "tests/wave2-client/browser-transport.js": "e2797128fa1d9ebe322cf0fb15d26e461b952e785b1dfb4b7c81a90cf08019fe",
+    "tests/wave2-client/dependencies.cjs": "04fcdf31a23370ec3939dcaa3ef3348fbadd8a30d860d842183983bf3ad03522",
+    "tests/wave2-client/onboarding-fixture.cjs": "111a8a6135a11c133443a589eda377a682f7bbc05b7dd1cead08780bd35f78ee",
+    "tests/wave2-client/onboarding.test.cjs": "8093f84051be5e6f4d64d019786ebd2c584acbbf3bdb7765d2a20f44c78fcf1e",
+    "tests/wave2-client/run-browser.cjs": "13e1e0d13e94a2896c3ccdca19b1132f2673a37063798706fe15a11623905db3",
+    "tests/wave2-client/run-pg.cjs": "e558406f36abbaa60999212324d010c6c90459ac3c4f3fafe9b5f0b629ba4fae",
+    "tests/wave2-client/source-pins.json": "895672ad3f9c0d770b5fb89f106e85b85695e76c7b7b180ab45a25675c5e977a",
+    "tests/wave2-client/sql-contracts.test.cjs": "9339297dc2b8f8d76899447c20e6449dc64a27d15dbb6fb1af9c7040618eb3f0"
+  }
+}

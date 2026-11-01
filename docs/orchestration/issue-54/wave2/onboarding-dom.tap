@@ -1,0 +1,88 @@
+TAP version 13
+# Subtest: [J05 partial] signed-out normal entry shows sign-in without any data RPC
+ok 1 - [J05 partial] signed-out normal entry shows sign-in without any data RPC
+  ---
+  duration_ms: 90.5115
+  type: 'test'
+  ...
+# Subtest: [J05 partial] enroll credential stripped and unverified own account cannot claim
+ok 2 - [J05 partial] enroll credential stripped and unverified own account cannot claim
+  ---
+  duration_ms: 37.521208
+  type: 'test'
+  ...
+# Subtest: [J05 partial] invite credential stripped and unverified own account cannot claim
+ok 3 - [J05 partial] invite credential stripped and unverified own account cannot claim
+  ---
+  duration_ms: 33.659458
+  type: 'test'
+  ...
+# Subtest: [J05 partial] wrong-account/expired claim error clears private DOM before any context read
+ok 4 - [J05 partial] wrong-account/expired claim error clears private DOM before any context read
+  ---
+  duration_ms: 34.156583
+  type: 'test'
+  ...
+# Subtest: [J05 partial] eligible claim uses existing RPC then own context and refresh never reclaims
+ok 5 - [J05 partial] eligible claim uses existing RPC then own context and refresh never reclaims
+  ---
+  duration_ms: 61.259375
+  type: 'test'
+  ...
+# Subtest: [N06 partial] pending enrollment renders explicit payment hold and never activation/payment RPC
+ok 6 - [N06 partial] pending enrollment renders explicit payment hold and never activation/payment RPC
+  ---
+  duration_ms: 33.19425
+  type: 'test'
+  ...
+# Subtest: [N06 partial] inactive context cannot display supplied private agreement
+ok 7 - [N06 partial] inactive context cannot display supplied private agreement
+  ---
+  duration_ms: 34.633959
+  type: 'test'
+  ...
+# Subtest: [N06 partial] suspended context cannot display supplied private agreement
+ok 8 - [N06 partial] suspended context cannot display supplied private agreement
+  ---
+  duration_ms: 34.421875
+  type: 'test'
+  ...
+# Subtest: [N05 partial] logout synchronously clears identity, agreements and password
+ok 9 - [N05 partial] logout synchronously clears identity, agreements and password
+  ---
+  duration_ms: 64.628
+  type: 'test'
+  ...
+# Subtest: [N05 partial] delayed prior-user context cannot repaint a subsequent account
+ok 10 - [N05 partial] delayed prior-user context cannot repaint a subsequent account
+  ---
+  duration_ms: 88.037709
+  type: 'test'
+  ...
+# Subtest: [J04 partial] exact current document hash and actual single adult are sent once under double submit
+ok 11 - [J04 partial] exact current document hash and actual single adult are sent once under double submit
+  ---
+  duration_ms: 90.643
+  type: 'test'
+  ...
+# Subtest: [J05 partial] signup clears password and requests ordinary email verification without private admin call
+ok 12 - [J05 partial] signup clears password and requests ordinary email verification without private admin call
+  ---
+  duration_ms: 60.141042
+  type: 'test'
+  ...
+# Subtest: [J05 partial] recovery acknowledgement remains neutral across a fictional mailbox
+ok 13 - [J05 partial] recovery acknowledgement remains neutral across a fictional mailbox
+  ---
+  duration_ms: 58.144584
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1109.038958
