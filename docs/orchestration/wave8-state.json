@@ -1,0 +1,106 @@
+{
+  "wave": 8,
+  "base": "2cbd6de16097890f501a410a276308ca5c4e000c",
+  "scope": "LOCAL_FICTIONAL_ONLY",
+  "alex": "PAUSED_NO_PRIVATE_READS_OR_ACTIONS",
+  "productionWritesAuthorized": false,
+  "financialActivation": false,
+  "sourcePushed": false,
+  "pr59": {
+    "state": "OPEN_DRAFT",
+    "head": "fad394ef683b711ba34866ec614bed71a26cee93",
+    "baseBranch": "codex/rva-master-orchestration-20261101",
+    "headBranch": "codex/rva-wave2-integration-20261101"
+  },
+  "requirements": 101,
+  "sourceDetailGroups": 10,
+  "workstreams": 10,
+  "originalPackages": 57,
+  "sourceCompleteness": "PARTIAL;127-section source/49-day specifics/family policies remain unconfirmed",
+  "baselineVerification": {
+    "manifestEntries": 257,
+    "qaExecutionPins": 87,
+    "qaEvidencePins": 47,
+    "result": "PASS"
+  },
+  "issue62": "Read independently from GitHub; exact audited provisioning contract, no broadening or historical failure relabel",
+  "tasks": [
+    {
+      "lane": "A",
+      "issue": 62,
+      "agent": "/root/wave8_provisioning",
+      "branch": "codex/rva-wave8-provisioning-20261101",
+      "worktree": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave8-provisioning",
+      "baseSha": "2cbd6de16097890f501a410a276308ca5c4e000c",
+      "ownedPaths": [
+        "proposals/wave8-provisioning/",
+        "tests/wave8-provisioning/",
+        "docs/orchestration/issue-62/wave8/"
+      ],
+      "status": "ACTIVE",
+      "dispatch": {
+        "kind": "native-spawn-result",
+        "taskName": "/root/wave8_provisioning"
+      }
+    },
+    {
+      "lane": "B",
+      "issue": 54,
+      "agent": "/root/wave8_operations",
+      "branch": "codex/rva-wave8-operations-20261101",
+      "worktree": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave8-operations",
+      "baseSha": "2cbd6de16097890f501a410a276308ca5c4e000c",
+      "ownedPaths": [
+        "member/member110.js",
+        "portal/portal-coaching.js",
+        "tests/wave8-operations/",
+        "docs/orchestration/issue-54/wave8/"
+      ],
+      "status": "ACTIVE",
+      "dispatch": {
+        "kind": "native-spawn-result",
+        "taskName": "/root/wave8_operations"
+      }
+    },
+    {
+      "lane": "C",
+      "issue": 55,
+      "agent": "/root/wave8_affiliate",
+      "branch": "codex/rva-wave8-affiliate-20261101",
+      "worktree": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave8-affiliate",
+      "baseSha": "2cbd6de16097890f501a410a276308ca5c4e000c",
+      "ownedPaths": [
+        "tools/affiliate-share-preview/server.cjs",
+        "tools/affiliate-share-preview/preview.js",
+        "tools/affiliate-share-preview/index.html",
+        "tools/wave8-reviewed-share.cjs",
+        "tests/wave8-affiliate/",
+        "docs/orchestration/issue-55/wave8/"
+      ],
+      "status": "ACTIVE",
+      "dispatch": {
+        "kind": "native-spawn-result",
+        "taskName": "/root/wave8_affiliate"
+      }
+    },
+    {
+      "lane": "QA",
+      "issue": 56,
+      "agent": "/root/wave8_independent_qa",
+      "branch": "codex/rva-wave8-qa-20261101",
+      "worktree": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave8-qa",
+      "baseSha": "2cbd6de16097890f501a410a276308ca5c4e000c",
+      "ownedPaths": [
+        "tests/wave8-qa/",
+        "docs/orchestration/issue-56/wave8/"
+      ],
+      "status": "QUEUED",
+      "dispatch": {
+        "kind": "PENDING_NATIVE_SLOT",
+        "taskName": "/root/wave8_independent_qa"
+      }
+    }
+  ],
+  "capacity": "Master+3 active maximum; QA starts after a specialist returns",
+  "currentStatus": "ACTIVE_LOCAL_IMPLEMENTATION"
+}
