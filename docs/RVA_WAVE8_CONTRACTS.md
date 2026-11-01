@@ -21,3 +21,9 @@ NativeChromium/WebKit and actual loopback/QRdecode verify bounded UI behavior. C
 ## Source-control gate
 
 Owner permits pushing only an independently reviewable candidate under existing source-control approval. First establish exact source/evidence inventory, no private corpus/client/secrets, remote identity, isolated nonproduction branch and automatic build/deploy consequences. Do not update PR59/merge/forcepush/publish or assume a Gitpush is harmless if it can trigger unauthorized hosting. If these conditions are unverified, retain local source and report the precise remaining gate. No unrelated production investigation is needed for local engineering.
+
+## Independently demonstrated profile-integrity boundary — additional bounded ownership
+
+Independent QA executed authenticated TRUNCATEpublic.profiles inside its fictional rollback transaction. The command succeeded with no FK masking; the strict42501negative failed. This is a catalog-equivalent local exposure, not a production exploit assertion. No live profile/client/Auth records were read.
+
+Master assigns A only a new guarded LOCAL proposal under proposals/wave8-provisioning to revoke authenticatedTRUNCATEonpublic.profiles, plus a precise regression-revert and new tests in its owned Wave8directory. Preserve all other ACLs, policies, Auth functions, source routines and canonical migrations. No production correction is authorized. Guard exact captured ACL/ownership/security/caller prerequisites, apply atomically, prove denial/rollback and actual audited provisioning positives. The revert deliberately restores destructive access and is test sensitivity evidence, not a recommended production rollback. QA retains its original actual FAIL and independently validates the final new SQL after exclusive PG handoff. No other privilege family is silently certified or altered.

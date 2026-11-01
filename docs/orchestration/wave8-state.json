@@ -37,11 +37,14 @@
         "tests/wave8-provisioning/",
         "docs/orchestration/issue-62/wave8/"
       ],
-      "status": "ACTIVE",
+      "status": "ACTIVE_FOCUSED_QA_CORRECTION",
       "dispatch": {
         "kind": "native-spawn-result",
         "taskName": "/root/wave8_provisioning"
-      }
+      },
+      "implementationSha": "918cf8fcffa27a08d2902226e26dc05c501757fd",
+      "headSha": "316c8e1cbb9ccdfa4458e2dddcebfa7c28c582e9",
+      "additionalBoundedScope": "Guarded LOCAL authenticated profiles TRUNCATE revoke only, after QA independently demonstrated successful direct destructive access"
     },
     {
       "lane": "B",
@@ -56,13 +59,14 @@
         "tests/wave8-operations/",
         "docs/orchestration/issue-54/wave8/"
       ],
-      "status": "ACTIVE_FOCUSED_QA_CORRECTION",
+      "status": "RETURNED_LOCAL_QA_CORRECTION",
       "dispatch": {
         "kind": "native-spawn-result",
         "taskName": "/root/wave8_operations"
       },
       "implementationSha": "240c9d0f72528aba6975fe96e3d3fcd600021925",
-      "counterexample": "Successful verified absent user cleared only goals; QA whole-document fail retained; existing endMemberDocument correction authorized"
+      "counterexample": "Successful verified absent user cleared only goals; QA whole-document fail retained; existing endMemberDocument correction authorized",
+      "headSha": "6d3df5af98061c47b61089fcdb4dbfaff9162ce5"
     },
     {
       "lane": "C",
@@ -130,6 +134,7 @@
       "historicalExposureFail": 18,
       "legacyDirectBindingPositiveFail": 1
     },
-    "qa": "ACTIVE_NODE_NATIVE; PG queued untilauthorrelease"
+    "qa": "ACTIVE_NODE_NATIVE; PG queued untilauthorrelease",
+    "profilesTruncate": "INDEPENDENT_STRICT_DENIAL_FAIL; successful authenticated destructive access in fictional rollback, no FK masking; narrow LOCAL correction authorized, no production change"
   }
 }
