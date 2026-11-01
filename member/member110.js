@@ -8,6 +8,36 @@
   });
 
   const el = (id) => document.getElementById(id);
+  let memberUserId = null;
+  let memberSessionEpoch = 0;
+  let dashboardRun = 0;
+  let memberDocumentEnded = false;
+
+  function dashboardTaskCurrent(task) {
+    return !memberDocumentEnded && task.userId && task.userId === memberUserId &&
+      task.epoch === memberSessionEpoch && task.run === dashboardRun;
+  }
+
+  // A different established identity gets a fresh document, using the same SDK
+  // session. Clear cached member data and private DOM before navigation begins.
+  function endMemberDocument(navigate = true) {
+    if (memberDocumentEnded) return;
+    memberDocumentEnded = true;
+    memberSessionEpoch++;
+    dashboardRun++;
+    memberUserId = null;
+    currentMember = activeSessionPrep = activeHealthProvider = currentFamilyTarget = null;
+    activeAgreement = currentReferralCode = currentReferralShareUrl = currentReferralShareMessage = null;
+    activeCommunityPost = activeConversationId = checkinTemplate = null;
+    healthPermissionRows = latestHouseholdRows = communitySpaces = communityFeed = [];
+    currentCourses = currentCourseLessons = metricCatalog = checkinFields = [];
+    familyHubEnabled = false;
+    const status = document.createElement("p");
+    status.setAttribute("role", "status");
+    status.textContent = "Member session changed. Opening a fresh sign-in view…";
+    document.body.replaceChildren(status);
+    if (navigate) window.location.replace("/member/dashboard.html");
+  }
 
   function showStatus(target, message, type = "") {
     target.textContent = message || "";
@@ -2132,7 +2162,8 @@
     });
   }
 
-  async function renderCheckinForm() {
+  async function renderCheckinForm(task) {
+    if (!dashboardTaskCurrent(task)) return;
     const container = el("rm-checkin-fields");
     container.replaceChildren();
 
@@ -2151,6 +2182,7 @@
       .eq("period_start", period.start)
       .maybeSingle();
 
+    if (!dashboardTaskCurrent(task)) return;
     if (error) throw error;
 
     if (existing && existing.status !== "draft") {
@@ -2984,6 +3016,8 @@
   }
 
   async function loadDashboard() {
+    const task = {userId: memberUserId, epoch: memberSessionEpoch, run: ++dashboardRun};
+    if (!dashboardTaskCurrent(task)) return;
     const [
       bootstrapResult,
       dashboardResult,
@@ -3046,6 +3080,7 @@
       client.from("my_health_data_snapshot").select("*").order("label")
     ]);
 
+    if (!dashboardTaskCurrent(task)) return;
     const failed=[
       bootstrapResult,dashboardResult,entitlementsResult,householdResult,journeyResult,goalsResult,habitsResult,
       assignmentsResult,progressResult,metricsResult,templateResult,mealPlanResult,mealsResult,fitnessPlanResult,
@@ -3198,26 +3233,45 @@
         .select("*")
         .eq("template_id", checkinTemplate.id)
         .order("display_order");
+      if (!dashboardTaskCurrent(task)) return;
       if (fieldError) throw fieldError;
       checkinFields = fields || [];
     }
-    await renderCheckinForm();
+    await renderCheckinForm(task);
+    if (!dashboardTaskCurrent(task)) return;
 
     showOnly("rm-dashboard");
   }
 
   async function resolveSession() {
-    const { data: { session } } = await client.auth.getSession();
-    if (!session) {
-      showOnly("rm-auth");
+    const epoch = memberSessionEpoch;
+    let session;
+    try {
+      const result = await client.auth.getSession();
+      if (result.error) throw result.error;
+      session = result.data.session;
+    } catch {
+      if (!memberDocumentEnded && epoch === memberSessionEpoch) showOnly("rm-denied");
       return;
     }
+    if (memberDocumentEnded || epoch !== memberSessionEpoch) return;
+    if (!session) {
+      if (memberUserId) endMemberDocument();
+      else showOnly("rm-auth");
+      return;
+    }
+    if (memberUserId && memberUserId !== session.user.id) {
+      endMemberDocument();
+      return;
+    }
+    memberUserId = session.user.id;
 
+    const expectedRun = dashboardRun + 1;
     try {
       await loadDashboard();
     } catch (error) {
+      if (memberDocumentEnded || epoch !== memberSessionEpoch || expectedRun !== dashboardRun) return;
       showOnly("rm-denied");
-      console.error(error);
     }
   }
 
@@ -3231,6 +3285,7 @@
       password: el("rm-password").value
     });
 
+    if (memberDocumentEnded) return;
     if (error) {
       showStatus(status, "We could not sign you in with that email and password.", "error");
       return;
@@ -3241,9 +3296,14 @@
   });
 
   async function signOut() {
-    await client.auth.signOut();
-    showOnly("rm-auth");
-    el("rm-password").value = "";
+    endMemberDocument(false);
+    try {
+      const {error} = await client.auth.signOut();
+      if (error) throw error;
+      window.location.replace("/member/dashboard.html");
+    } catch {
+      document.body.firstElementChild.textContent = "Sign-out could not be completed. Close this tab and sign out again before using another account.";
+    }
   }
 
 
@@ -3492,8 +3552,21 @@
     await loadDashboard();
   });
 
-  client.auth.onAuthStateChange((_event, session) => {
-    if (!session) showOnly("rm-auth");
+  client.auth.onAuthStateChange((event, session) => {
+    if (memberDocumentEnded) return;
+    const nextUserId = session?.user?.id || null;
+    if (event === "SIGNED_OUT" || (memberUserId && nextUserId && nextUserId !== memberUserId)) {
+      if (memberUserId) endMemberDocument();
+      else {
+        memberSessionEpoch++;
+        dashboardRun++;
+        showOnly("rm-auth");
+      }
+    } else if (event === "SIGNED_IN" && nextUserId && !memberUserId) {
+      window.setTimeout(() => void resolveSession(), 0);
+    }
+    // INITIAL_SESSION with null is not an authoritative logout. Same-account
+    // TOKEN_REFRESHED retains the mounted workspace and pending form contents.
   });
 
   resolveSession();

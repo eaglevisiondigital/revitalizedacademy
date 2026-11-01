@@ -1,0 +1,1074 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="referrer" content="no-referrer">
+  <title>Member Dashboard | ReVitalized Academy</title>
+  <meta name="theme-color" content="#154734">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="ReVitalized">
+  <link rel="icon" type="image/png" href="../assets/images/revitalized-icon-approved.png">
+  <link rel="shortcut icon" type="image/png" href="../assets/images/revitalized-icon-approved.png">
+  <link rel="apple-touch-icon" href="../assets/images/revitalized-icon-approved.png">
+  <link rel="manifest" href="manifest.webmanifest?v=171">
+  <link rel="stylesheet" href="member110.css?v=192">
+</head>
+<body>
+  <main class="rm112-page">
+    <section id="rm-auth" class="rm112-auth">
+      <div class="rm112-brand">
+        <a href="../" aria-label="ReVitalized Academy home">
+          <img src="../assets/images/revitalized-logo-dark-approved-v69.png" alt="ReVitalized Academy">
+        </a>
+        <span>MEMBER ACCESS</span>
+      </div>
+
+      <div class="rm112-auth-card">
+        <div>
+          <p class="rm112-kicker">REVITALIZED ACADEMY</p>
+          <h1>Your health journey,<br><em>all in one place.</em></h1>
+          <p>Sign in to your ReVitalized member account to continue onboarding, see your current next step, access your program and stay connected with your coaching journey.</p>
+        </div>
+
+        <form id="rm-login-form" class="rm112-form">
+          <label>
+            <span>Email</span>
+            <input id="rm-email" type="email" autocomplete="email" required>
+          </label>
+          <label>
+            <span>Password</span>
+            <input id="rm-password" type="password" autocomplete="current-password" required>
+          </label>
+          <button type="submit">Sign In</button>
+          <p id="rm-login-status" class="rm112-status" aria-live="polite"></p>
+        </form>
+
+        <p><a href="/member/">Enrollment &amp; Signature Center</a></p>
+          <p class="rm112-auth-note">New member? Use the private activation link provided in your ReVitalized Journey after your membership becomes active.</p>
+      </div>
+    </section>
+
+    <section id="rm-dashboard" class="rm112-dashboard hidden">
+      <header class="rm112-header">
+        <a href="../" class="rm112-logo"><img src="../assets/images/revitalized-logo-dark-approved-v69.png" alt="ReVitalized Academy"></a>
+        <div class="rm112-header-actions">
+          <span id="rm-member-name"></span>
+          <button id="rm-signout" type="button">Sign Out</button>
+        </div>
+      </header>
+
+      <nav class="rm183-member-nav" aria-label="Member dashboard sections">
+        <button type="button" class="active" data-member-jump=".rm112-hero">Dashboard</button>
+        <button type="button" data-member-jump=".rm172-coaching-request-card">Coaching</button>
+        <button type="button" data-member-jump=".rm116-wellness-grid">Wellness</button>
+        <button type="button" data-member-jump=".rm119-learning-grid">Learning</button>
+        <button type="button" data-member-jump=".rm120-message-grid">Messages</button>
+        <button type="button" data-member-jump=".rm126-community-card">Community</button>
+        <button type="button" data-member-jump="#rm-ask-revitalized-card">Ask ReVitalized</button>
+        <button type="button" data-member-jump="#rm-family-hub-card">Family Hub</button>
+        <button type="button" data-member-jump="#rm-refuel-card">ReFuel</button>
+        <button type="button" data-member-jump="#rm-referral-card">Ambassador</button>
+        <button type="button" data-member-jump="#rm-billing-card">Billing</button>
+        <button type="button" data-member-jump="#rm-member-account-card">Account</button>
+      </nav>
+
+      <section class="rm112-hero">
+        <div>
+          <p class="rm112-kicker">YOUR REVITALIZED DASHBOARD</p>
+          <h1>Welcome back, <span id="rm-first-name">there</span>.</h1>
+          <p id="rm-program-copy">Your ReVitalized program and next steps are ready.</p>
+        </div>
+        <div class="rm112-program-card">
+          <span>Current program</span>
+          <strong id="rm-program-name">ReVitalized Academy</strong>
+          <small id="rm-membership-status">Active membership</small>
+        </div>
+      </section>
+
+      <section id="rm-attention-card" class="rm112-card rm187-attention-card">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">NEEDS YOUR ATTENTION</p>
+            <h2>Your Next Important Actions</h2>
+          </div>
+          <span id="rm-attention-count" class="rm112-chip">0 Items</span>
+        </div>
+        <div id="rm-attention-list" class="rm187-attention-list"></div>
+      </section>
+
+      <section class="rm112-card rm170-today-card">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">TODAY</p>
+            <h2>Your Daily Action Center</h2>
+          </div>
+          <span id="rm-today-progress" class="rm112-chip">Ready</span>
+        </div>
+        <p class="rm170-section-intro">Your habits, meals, workouts and current program priorities in one place.</p>
+        <div id="rm-today-summary" class="rm170-today-summary"></div>
+        <div class="rm170-today-grid">
+          <section>
+            <div class="rm170-subhead"><strong>Habits</strong><span id="rm-today-habit-count"></span></div>
+            <div id="rm-today-habits" class="rm170-action-list"></div>
+          </section>
+          <section>
+            <div class="rm170-subhead"><strong>Meals</strong><span id="rm-today-meal-count"></span></div>
+            <div id="rm-today-meals" class="rm170-action-list"></div>
+          </section>
+          <section>
+            <div class="rm170-subhead"><strong>Workouts</strong><span id="rm-today-workout-count"></span></div>
+            <div id="rm-today-workouts" class="rm170-action-list"></div>
+          </section>
+        </div>
+        <div id="rm-today-focus" class="rm170-focus-row"></div>
+        <p id="rm-today-status" class="rm112-status" aria-live="polite"></p>
+      </section>
+
+      <section class="rm112-card rm185-app-home-card">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">YOUR REVITALIZED</p>
+            <h2>Everything Moving With You</h2>
+          </div>
+          <span id="rm-home-notification-chip" class="rm112-chip">0 Notifications</span>
+        </div>
+        <div id="rm-app-home-metrics" class="rm185-home-metrics"></div>
+        <div id="rm-app-home-focus" class="rm185-home-focus"></div>
+      </section>
+
+      <section class="rm112-card rm187-program-hub-card">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">YOUR PROGRAM HUB</p>
+            <h2>Everything Included With Your Membership</h2>
+          </div>
+          <span id="rm-program-hub-count" class="rm112-chip">0 Features</span>
+        </div>
+        <div id="rm-program-hub" class="rm187-program-hub"></div>
+      </section>
+
+      <section class="rm112-card rm188-membership-overview-card">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">MEMBERSHIP OVERVIEW</p>
+            <h2>Your Program at a Glance</h2>
+          </div>
+          <span id="rm-membership-overview-status" class="rm112-chip">Active</span>
+        </div>
+        <div id="rm-membership-overview" class="rm188-membership-overview"></div>
+      </section>
+
+      <div class="rm112-grid rm170-week-grid">
+        <section class="rm112-card">
+          <div class="rm112-card-head">
+            <div>
+              <p class="rm112-kicker">YOUR WEEK</p>
+              <h2>Weekly Momentum</h2>
+            </div>
+          </div>
+          <div id="rm-weekly-summary" class="rm170-weekly-summary"></div>
+        </section>
+        <section class="rm112-card">
+          <div class="rm112-card-head">
+            <div>
+              <p class="rm112-kicker">RECENT ACTIVITY</p>
+              <h2>Your Progress Timeline</h2>
+            </div>
+          </div>
+          <div id="rm-activity-timeline" class="rm170-activity-list"></div>
+        </section>
+      </div>
+
+      <div class="rm112-grid">
+        <section class="rm112-card rm112-journey-card">
+          <div class="rm112-card-head">
+            <div>
+              <p class="rm112-kicker">YOUR JOURNEY</p>
+              <h2>What happens next</h2>
+            </div>
+            <span id="rm-progress-chip" class="rm112-chip">0%</span>
+          </div>
+          <div class="rm112-progress"><i id="rm-progress-bar"></i></div>
+          <div class="rm112-next">
+            <span>Current next step</span>
+            <strong id="rm-next-step">Loading...</strong>
+            <small id="rm-next-due"></small>
+          </div>
+          <button id="rm-continue-journey" class="rm112-primary" type="button">Continue My Journey</button>
+          <p id="rm-journey-status" class="rm112-status" aria-live="polite"></p>
+        </section>
+
+        <section class="rm112-card">
+          <div class="rm112-card-head">
+            <div>
+              <p class="rm112-kicker">COACHING</p>
+              <h2>Your Next Appointment</h2>
+            </div>
+          </div>
+          <div id="rm-appointment" class="rm112-empty">No upcoming appointment is currently scheduled.</div>
+        </section>
+      </div>
+
+      <section class="rm112-card rm188-journey-milestones-card">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">JOURNEY MILESTONES</p>
+            <h2>Your ReVitalized Path</h2>
+          </div>
+          <span id="rm-journey-stage-chip" class="rm112-chip">Active</span>
+        </div>
+        <div id="rm-journey-milestones" class="rm188-journey-milestones"></div>
+      </section>
+
+      <section class="rm112-card rm183-coaching-hub-card">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">COACHING HUB</p>
+            <h2>Your Coaching Command Center</h2>
+          </div>
+          <span id="rm-coaching-hub-unread" class="rm112-chip">0 Unread</span>
+        </div>
+        <div class="rm183-coaching-hub-grid">
+          <div><span>Primary Coach</span><strong id="rm-hub-coach">Being Assigned</strong></div>
+          <div><span>Open Assignments</span><strong id="rm-hub-open-assignments">0</strong></div>
+          <div><span>Due Next 7 Days</span><strong id="rm-hub-due-soon">0</strong></div>
+          <div><span>Overdue</span><strong id="rm-hub-overdue">0</strong></div>
+        </div>
+        <div class="rm183-coaching-hub-actions">
+          <button type="button" data-member-jump=".rm172-coaching-request-card">Request Coaching Time</button>
+          <button type="button" class="secondary" data-member-jump=".rm120-message-grid">Message Coaching Team</button>
+          <button type="button" class="secondary" data-member-jump="#rm-assignments">View Assignments</button>
+        </div>
+      </section>
+
+      <section class="rm112-card rm172-coaching-request-card">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">COACHING REQUESTS</p>
+            <h2>Request Time With Your Coach</h2>
+          </div>
+          <span id="rm-coaching-request-count" class="rm112-chip">0 Open</span>
+        </div>
+        <p class="rm172-section-intro">Share a few times that work for you and what you would like to cover. Your coaching team will confirm the session.</p>
+        <form id="rm-coaching-request-form" class="rm172-coaching-request-form">
+          <div class="rm172-availability-grid">
+            <label><span>Preferred Date</span><input id="rm-coaching-request-date-1" type="date" required></label>
+            <label><span>Preferred Time</span>
+              <select id="rm-coaching-request-window-1" required>
+                <option value="morning">Morning</option>
+                <option value="afternoon">Afternoon</option>
+                <option value="evening">Evening</option>
+              </select>
+            </label>
+            <label><span>Alternate Date</span><input id="rm-coaching-request-date-2" type="date"></label>
+            <label><span>Alternate Time</span>
+              <select id="rm-coaching-request-window-2">
+                <option value="">No Preference</option>
+                <option value="morning">Morning</option>
+                <option value="afternoon">Afternoon</option>
+                <option value="evening">Evening</option>
+              </select>
+            </label>
+          </div>
+          <label class="rm172-request-notes"><span>What Would You Like To Cover?</span><textarea id="rm-coaching-request-notes" rows="3" maxlength="2000" placeholder="Progress review, questions, next steps, accountability..."></textarea></label>
+          <div class="rm172-request-actions">
+            <button type="submit">Request Coaching Session</button>
+          </div>
+          <p id="rm-coaching-request-status" class="rm112-status" aria-live="polite"></p>
+        </form>
+        <div id="rm-coaching-requests" class="rm172-request-list"></div>
+      </section>
+
+      <section class="rm112-card rm185-session-history-card">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">COACHING HISTORY</p>
+            <h2>Your Sessions</h2>
+          </div>
+          <span id="rm-session-history-count" class="rm112-chip">0 Sessions</span>
+        </div>
+        <div id="rm-session-history" class="rm185-session-history"></div>
+      </section>
+
+      <div id="rm-session-prep-modal" class="rm119-modal hidden" aria-hidden="true">
+        <div class="rm119-modal-backdrop" data-session-prep-close></div>
+        <section class="rm119-dialog rm187-session-prep-dialog" role="dialog" aria-modal="true" aria-labelledby="rm-session-prep-title">
+          <button class="rm119-close" type="button" data-session-prep-close aria-label="Close session preparation">×</button>
+          <p class="rm112-kicker">SESSION PREP</p>
+          <h2 id="rm-session-prep-title">Prepare for Your Coaching Session</h2>
+          <p id="rm-session-prep-meta" class="rm187-session-prep-meta"></p>
+          <form id="rm-session-prep-form" class="rm187-session-prep-form">
+            <label>
+              <span>What would you like to make sure you cover?</span>
+              <textarea id="rm-session-agenda" rows="6" maxlength="4000" placeholder="Questions, wins, roadblocks, decisions or anything you want your coach to know before the session..."></textarea>
+            </label>
+            <div class="rm187-session-prep-actions">
+              <button class="secondary" type="button" data-session-prep-close>Cancel</button>
+              <button type="submit">Save Session Agenda</button>
+            </div>
+            <p id="rm-session-prep-status" class="rm112-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
+      <div class="rm112-grid rm114-coaching-grid">
+        <section class="rm112-card">
+          <div class="rm112-card-head">
+            <div>
+              <p class="rm112-kicker">YOUR COACH</p>
+              <h2>Connected support</h2>
+            </div>
+          </div>
+          <div id="rm-coach" class="rm112-empty">Your primary coach assignment is being prepared.</div>
+        </section>
+
+        <section class="rm112-card">
+          <div class="rm112-card-head">
+            <div>
+              <p class="rm112-kicker">COACH ASSIGNMENTS</p>
+              <h2>Your current action items</h2>
+            </div>
+            <span id="rm-assignment-count" class="rm112-chip">0 open</span>
+          </div>
+          <div id="rm-assignments" class="rm114-stack"></div>
+        </section>
+      </div>
+
+      <div class="rm112-grid rm114-coaching-grid">
+        <section class="rm112-card">
+          <div class="rm112-card-head">
+            <div>
+              <p class="rm112-kicker">YOUR GOALS</p>
+              <h2>What You’re Working Toward</h2>
+            </div>
+            <div class="rm191-head-actions">
+              <span id="rm-goal-active-count" class="rm112-chip">0 Active</span>
+              <button id="rm-add-goal" class="rm190-mini-action" type="button">Add Goal</button>
+            </div>
+          </div>
+          <div id="rm-goals" class="rm114-stack"></div>
+          <details id="rm-goal-history-wrap" class="rm191-history-wrap">
+            <summary>Paused &amp; Completed Goals <span id="rm-goal-history-count">0</span></summary>
+            <div id="rm-goal-history" class="rm191-history-list"></div>
+          </details>
+        </section>
+
+        <section class="rm112-card">
+          <div class="rm112-card-head">
+            <div>
+              <p class="rm112-kicker">HABITS</p>
+              <h2>Daily &amp; Weekly Rhythms</h2>
+            </div>
+            <div class="rm191-head-actions">
+              <span id="rm-habit-active-count" class="rm112-chip">0 Active</span>
+              <button id="rm-add-habit" class="rm190-mini-action" type="button">Add Habit</button>
+            </div>
+          </div>
+          <div id="rm-habits" class="rm114-stack"></div>
+          <details id="rm-habit-history-wrap" class="rm191-history-wrap">
+            <summary>Paused &amp; Completed Habits <span id="rm-habit-history-count">0</span></summary>
+            <div id="rm-habit-history" class="rm191-history-list"></div>
+          </details>
+        </section>
+      </div>
+
+      <div class="rm112-grid rm114-coaching-grid">
+        <section class="rm112-card">
+          <div class="rm112-card-head">
+            <div>
+              <p class="rm112-kicker">PROGRESS</p>
+              <h2>Log a progress metric</h2>
+            </div>
+          </div>
+          <form id="rm-progress-form" class="rm114-form">
+            <label>
+              <span>What are you tracking?</span>
+              <select id="rm-progress-metric" required></select>
+            </label>
+            <label>
+              <span>Value</span>
+              <input id="rm-progress-value" type="number" step="0.01" required>
+              <small id="rm-progress-unit"></small>
+            </label>
+            <label>
+              <span>Optional note</span>
+              <input id="rm-progress-note" type="text" maxlength="500">
+            </label>
+            <button type="submit">Save Progress</button>
+            <p id="rm-progress-status" class="rm112-status" aria-live="polite"></p>
+          </form>
+          <div id="rm-recent-progress" class="rm114-progress-list"></div>
+        </section>
+
+        <section class="rm112-card">
+          <div class="rm112-card-head">
+            <div>
+              <p class="rm112-kicker">WEEKLY CHECK-IN</p>
+              <h2>A quick pulse for your coach</h2>
+            </div>
+            <span id="rm-checkin-state" class="rm112-chip">Ready</span>
+          </div>
+          <form id="rm-checkin-form" class="rm114-form">
+            <div id="rm-checkin-fields" class="rm114-checkin-fields"></div>
+            <button id="rm-checkin-submit" type="submit">Submit Weekly Check-In</button>
+            <p id="rm-checkin-status" class="rm112-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
+
+      <div id="rm-goal-modal" class="rm119-modal hidden" aria-hidden="true">
+        <div class="rm119-modal-backdrop" data-goal-close></div>
+        <section class="rm119-dialog rm190-dialog" role="dialog" aria-modal="true" aria-labelledby="rm-goal-modal-title">
+          <button class="rm119-close" type="button" data-goal-close aria-label="Close goal form">×</button>
+          <p class="rm112-kicker">GOALS</p>
+          <h2 id="rm-goal-modal-title">Add a Personal Goal</h2>
+          <p class="rm190-dialog-copy">Create something meaningful to work toward. Your coaching team can see active goals and support your progress.</p>
+          <form id="rm-goal-form" class="rm190-form">
+            <label class="wide"><span>Goal</span><input id="rm-goal-title" type="text" maxlength="180" required placeholder="Example: Walk 8,000 steps at least 5 days each week"></label>
+            <label class="wide"><span>Description</span><textarea id="rm-goal-description" rows="3" maxlength="1200"></textarea></label>
+            <div class="rm190-form-grid">
+              <label><span>Target Value</span><input id="rm-goal-target-value" type="number" step="0.01" min="0"></label>
+              <label><span>Unit</span><input id="rm-goal-target-unit" type="text" maxlength="60" placeholder="steps, lbs, days..."></label>
+              <label><span>Target Date</span><input id="rm-goal-target-date" type="date"></label>
+              <label><span>Priority</span>
+                <select id="rm-goal-priority">
+                  <option value="1">High</option>
+                  <option value="2" selected>Normal</option>
+                  <option value="3">Lower</option>
+                </select>
+              </label>
+            </div>
+            <div class="rm190-form-actions">
+              <button class="secondary" type="button" data-goal-close>Cancel</button>
+              <button type="submit">Create Goal</button>
+            </div>
+            <p id="rm-goal-form-status" class="rm112-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
+      <div id="rm-habit-modal" class="rm119-modal hidden" aria-hidden="true">
+        <div class="rm119-modal-backdrop" data-habit-close></div>
+        <section class="rm119-dialog rm190-dialog" role="dialog" aria-modal="true" aria-labelledby="rm-habit-modal-title">
+          <button class="rm119-close" type="button" data-habit-close aria-label="Close habit form">×</button>
+          <p class="rm112-kicker">HABITS</p>
+          <h2 id="rm-habit-modal-title">Build a New Rhythm</h2>
+          <p class="rm190-dialog-copy">Add a simple behavior you want to practice consistently and track inside ReVitalized.</p>
+          <form id="rm-habit-form" class="rm190-form">
+            <label class="wide"><span>Habit</span><input id="rm-habit-title" type="text" maxlength="180" required placeholder="Example: Drink water before coffee"></label>
+            <div class="rm190-form-grid">
+              <label><span>Category</span>
+                <select id="rm-habit-category">
+                  <option value="nutrition">Nutrition</option>
+                  <option value="fitness">Fitness</option>
+                  <option value="sleep">Sleep</option>
+                  <option value="hydration">Hydration</option>
+                  <option value="mindset">Mindset</option>
+                  <option value="recovery">Recovery</option>
+                  <option value="general">General</option>
+                </select>
+              </label>
+              <label><span>Frequency</span>
+                <select id="rm-habit-frequency">
+                  <option value="daily">Daily</option>
+                  <option value="weekly">Weekly</option>
+                </select>
+              </label>
+              <label><span>Target Per Period</span><input id="rm-habit-target" type="number" min="1" step="1" value="1" required></label>
+              <label><span>Unit</span><input id="rm-habit-unit" type="text" maxlength="60" placeholder="times, cups, minutes..."></label>
+              <label class="wide"><span>Start Date</span><input id="rm-habit-start-date" type="date"></label>
+            </div>
+            <div class="rm190-form-actions">
+              <button class="secondary" type="button" data-habit-close>Cancel</button>
+              <button type="submit">Create Habit</button>
+            </div>
+            <p id="rm-habit-form-status" class="rm112-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
+      <section class="rm112-card rm185-progress-center">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">PROGRESS CENTER</p>
+            <h2>Your Momentum at a Glance</h2>
+          </div>
+          <span id="rm-progress-last-updated" class="rm112-chip">Progress Ready</span>
+        </div>
+        <div id="rm-progress-snapshot" class="rm185-progress-snapshot"></div>
+      </section>
+
+      <div class="rm112-grid rm116-wellness-grid">
+        <section class="rm112-card">
+          <div class="rm112-card-head">
+            <div>
+              <p class="rm112-kicker">NUTRITION</p>
+              <h2>Your meal plan</h2>
+            </div>
+            <span id="rm-meal-plan-chip" class="rm112-chip">Not assigned</span>
+          </div>
+          <div id="rm-meal-plan-summary" class="rm112-empty">Your ReVitalized nutrition plan will appear here once assigned.</div>
+          <div id="rm-upcoming-meals" class="rm114-stack"></div>
+          <div id="rm-grocery-list" class="rm116-grocery"></div>
+        </section>
+
+        <section class="rm112-card">
+          <div class="rm112-card-head">
+            <div>
+              <p class="rm112-kicker">FITNESS</p>
+              <h2>Your workout plan</h2>
+            </div>
+            <span id="rm-fitness-plan-chip" class="rm112-chip">Not assigned</span>
+          </div>
+          <div id="rm-fitness-plan-summary" class="rm112-empty">Your ReVitalized fitness plan will appear here once assigned.</div>
+          <div id="rm-upcoming-workouts" class="rm114-stack"></div>
+        </section>
+      </div>
+
+
+      <section class="rm112-card rm185-learning-progress-card">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">LEARNING PROGRESS</p>
+            <h2>Your Courses &amp; Completion</h2>
+          </div>
+          <span id="rm-learning-progress-chip" class="rm112-chip">0 Active</span>
+        </div>
+        <div id="rm-learning-progress" class="rm185-learning-progress"></div>
+      </section>
+
+      <div class="rm112-grid rm119-learning-grid">
+        <section class="rm112-card">
+          <div class="rm112-card-head">
+            <div>
+              <p class="rm112-kicker">LEARNING</p>
+              <h2>Your courses</h2>
+            </div>
+            <span id="rm-course-count" class="rm112-chip">0 courses</span>
+          </div>
+          <div id="rm-courses" class="rm114-stack"></div>
+        </section>
+
+        <section class="rm112-card">
+          <div class="rm112-card-head">
+            <div>
+              <p class="rm112-kicker">RESOURCES</p>
+              <h2>Your resource library</h2>
+            </div>
+          </div>
+          <div id="rm-resources" class="rm114-stack"></div>
+        </section>
+      </div>
+
+      <div id="rm-course-modal" class="rm119-modal hidden" aria-hidden="true">
+        <div class="rm119-modal-backdrop" data-course-close></div>
+        <section class="rm119-dialog" role="dialog" aria-modal="true" aria-labelledby="rm-course-title">
+          <button class="rm119-close" type="button" data-course-close aria-label="Close course">×</button>
+          <p class="rm112-kicker">REVITALIZED LEARNING</p>
+          <h2 id="rm-course-title">Course</h2>
+          <p id="rm-course-description" class="rm119-course-description"></p>
+          <div id="rm-course-progress" class="rm112-progress"><i></i></div>
+          <div id="rm-course-lessons" class="rm119-lessons"></div>
+        </section>
+      </div>
+
+
+      <div class="rm112-grid rm120-message-grid">
+        <section class="rm112-card">
+          <div class="rm112-card-head">
+            <div>
+              <p class="rm112-kicker">MESSAGES</p>
+              <h2>Your coaching conversation</h2>
+            </div>
+            <span id="rm-message-unread" class="rm112-chip">0 unread</span>
+          </div>
+          <div id="rm-conversations" class="rm114-stack"></div>
+        </section>
+
+        <section class="rm112-card">
+          <div class="rm112-card-head">
+            <div>
+              <p class="rm112-kicker">NOTIFICATIONS</p>
+              <h2>What Needs Your Attention</h2>
+            </div>
+            <button id="rm-notifications-mark-all" class="rm186-secondary-action" type="button">Mark All Read</button>
+          </div>
+          <div id="rm-notifications" class="rm114-stack"></div>
+        </section>
+      </div>
+
+      <div id="rm-message-modal" class="rm120-modal hidden" aria-hidden="true">
+        <div class="rm120-modal-backdrop" data-message-close></div>
+        <section class="rm120-dialog" role="dialog" aria-modal="true" aria-labelledby="rm-message-title">
+          <button class="rm120-close" type="button" data-message-close aria-label="Close conversation">×</button>
+          <p class="rm112-kicker">REVITALIZED MESSAGING</p>
+          <h2 id="rm-message-title">Conversation</h2>
+          <div id="rm-message-thread" class="rm120-thread"></div>
+          <form id="rm-message-form" class="rm120-compose">
+            <textarea id="rm-message-body" rows="3" maxlength="8000" placeholder="Write a message to your ReVitalized coaching team..." required></textarea>
+            <label class="rm120-attachment-field">
+              <span>Optional attachment</span>
+              <input id="rm-message-file" type="file" accept="application/pdf,image/jpeg,image/png,image/webp,audio/mpeg,audio/mp4,audio/x-m4a,audio/wav">
+              <small>PDF, image or audio up to 10 MB.</small>
+            </label>
+            <button type="submit">Send Message</button>
+            <p id="rm-message-status" class="rm112-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
+
+
+      <section id="rm-ask-revitalized-card" class="rm112-card rm169-ask-card hidden">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">ASK REVITALIZED</p>
+            <h2>Get help with your program</h2>
+          </div>
+          <span id="rm-ask-status-chip" class="rm112-chip">Ready</span>
+        </div>
+        <p class="rm169-ask-intro">Ask about your ReVitalized program, habits, nutrition, fitness, assignments or platform features. Questions that need personal health judgment are routed to your coaching team for review.</p>
+        <div id="rm-ask-activity-summary" class="rm188-ask-summary"></div>
+        <form id="rm-ask-form" class="rm169-ask-form">
+          <label>
+            <span>Question Category</span>
+            <select id="rm-ask-type" required></select>
+          </label>
+          <label>
+            <span>Your Question</span>
+            <textarea id="rm-ask-question" rows="4" maxlength="8000" placeholder="What would you like help with?" required></textarea>
+          </label>
+          <button type="submit">Ask ReVitalized</button>
+          <p id="rm-ask-form-status" class="rm112-status" aria-live="polite"></p>
+        </form>
+        <div class="rm169-ask-history-head">
+          <strong>Recent Questions</strong>
+          <span id="rm-ask-summary"></span>
+        </div>
+        <div id="rm-ask-history" class="rm169-ask-history"></div>
+      </section>
+
+      <section id="rm-member-account-card" class="rm112-card rm184-account-card">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">MY ACCOUNT</p>
+            <h2>Profile &amp; Security</h2>
+          </div>
+          <span id="rm-account-email-state" class="rm112-chip">Current Email</span>
+        </div>
+        <div class="rm184-account-grid">
+          <form id="rm-member-profile-form" class="rm184-profile-form">
+            <div class="rm184-fields">
+              <label><span>First Name</span><input id="rm-profile-first" type="text" maxlength="120" autocomplete="given-name" required></label>
+              <label><span>Last Name</span><input id="rm-profile-last" type="text" maxlength="120" autocomplete="family-name"></label>
+              <label><span>Email</span><input id="rm-profile-email" type="email" maxlength="320" autocomplete="email" required></label>
+              <label><span>Phone</span><input id="rm-profile-phone" type="tel" maxlength="40" autocomplete="tel"></label>
+              <label><span>City</span><input id="rm-profile-city" type="text" maxlength="120" autocomplete="address-level2"></label>
+              <label><span>State / Province</span><input id="rm-profile-state" type="text" maxlength="120" autocomplete="address-level1"></label>
+              <label class="wide"><span>Country</span><input id="rm-profile-country" type="text" maxlength="120" autocomplete="country-name"></label>
+            </div>
+            <div class="rm184-account-actions">
+              <button type="submit">Save Profile</button>
+              <button id="rm-member-change-password" class="secondary" type="button">Change Password</button>
+            </div>
+            <p class="rm184-account-note">If you change your email, you may be asked to confirm the new address before it becomes your sign-in email.</p>
+            <p id="rm-member-profile-status" class="rm112-status" aria-live="polite"></p>
+          </form>
+
+          <form id="rm-member-password-form" class="rm184-password-form hidden">
+            <strong>Change Password</strong>
+            <label><span>New Password</span><input id="rm-member-new-password" type="password" minlength="10" autocomplete="new-password" required></label>
+            <label><span>Confirm New Password</span><input id="rm-member-confirm-password" type="password" minlength="10" autocomplete="new-password" required></label>
+            <div class="rm184-account-actions">
+              <button type="submit">Save New Password</button>
+              <button id="rm-member-password-cancel" class="secondary" type="button">Cancel</button>
+            </div>
+            <p id="rm-member-password-status" class="rm112-status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+
+      <section class="rm112-card rm121-settings-card">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">NOTIFICATION SETTINGS</p>
+            <h2>How ReVitalized can reach you</h2>
+          </div>
+        </div>
+        <form id="rm-notification-form" class="rm121-preferences">
+          <label><input id="pref-in-app-messages" type="checkbox"><span>In-app message notifications</span></label>
+          <label><input id="pref-email-messages" type="checkbox"><span>Email me about private messages</span></label>
+          <label><input id="pref-sms-messages" type="checkbox"><span>Text me about private messages</span></label>
+          <label><input id="pref-email-coaching" type="checkbox"><span>Email coaching/session reminders</span></label>
+          <label><input id="pref-sms-coaching" type="checkbox"><span>Text coaching/session reminders</span></label>
+          <label><input id="pref-email-program" type="checkbox"><span>Email program updates</span></label>
+          <label><input id="pref-sms-program" type="checkbox"><span>Text program updates</span></label>
+          <label><input id="pref-email-billing" type="checkbox"><span>Email membership billing alerts</span></label>
+          <label><input id="pref-sms-billing" type="checkbox"><span>Text membership billing alerts</span></label>
+          <button type="submit">Save Notification Preferences</button>
+          <p id="rm-notification-status" class="rm112-status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="rm112-card rm112-access-card">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">PROGRAM ACCESS</p>
+            <h2>What your membership currently includes</h2>
+          </div>
+        </div>
+        <div id="rm-entitlements" class="rm112-entitlements"></div>
+      </section>
+
+      <section id="rm-family-hub-card" class="rm112-card">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">FAMILY HUB</p>
+            <h2>Your ReVitalized Household</h2>
+          </div>
+          <div class="rm170-household-head-actions">
+            <span id="rm-household-type" class="rm112-chip"></span>
+            <button id="rm-family-add" class="rm170-secondary hidden" type="button">Add Family Member</button>
+          </div>
+        </div>
+        <div id="rm-family-summary" class="rm188-family-summary"></div>
+        <div id="rm-household" class="rm112-household"></div>
+        <div class="rm170-family-requests-head">
+          <strong>Family Requests</strong>
+          <span>Changes are reviewed by the ReVitalized team before they are applied.</span>
+        </div>
+        <div id="rm-family-requests" class="rm170-family-requests"></div>
+      </section>
+
+      <div id="rm-family-modal" class="rm119-modal hidden" aria-hidden="true">
+        <div class="rm119-modal-backdrop" data-family-close></div>
+        <section class="rm119-dialog rm170-family-dialog" role="dialog" aria-modal="true" aria-labelledby="rm-family-title">
+          <button class="rm119-close" type="button" data-family-close aria-label="Close Family Hub request">×</button>
+          <p class="rm112-kicker">FAMILY HUB</p>
+          <h2 id="rm-family-title">Add Family Member</h2>
+          <p class="rm170-family-intro">Submit the details below. Your ReVitalized team will review the request before changing your household profile.</p>
+          <form id="rm-family-form" class="rm170-family-form">
+            <input id="rm-family-request-type" type="hidden" value="add_member">
+            <input id="rm-family-target-id" type="hidden">
+            <div class="rm170-family-fields">
+              <label><span>First Name</span><input id="rm-family-first" type="text" maxlength="120" required></label>
+              <label><span>Last Name</span><input id="rm-family-last" type="text" maxlength="120"></label>
+              <label><span>Relationship</span>
+                <select id="rm-family-relationship" required>
+                  <option value="husband">Husband</option>
+                  <option value="wife">Wife</option>
+                  <option value="child">Child</option>
+                  <option value="dependent">Dependent</option>
+                </select>
+              </label>
+              <label><span>Sex</span>
+                <select id="rm-family-sex" required>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </label>
+              <label><span>Date of Birth</span><input id="rm-family-dob" type="date"></label>
+              <label><span>Email</span><input id="rm-family-email" type="email" maxlength="240"></label>
+              <label class="wide"><span>Notes</span><textarea id="rm-family-notes" rows="3" maxlength="1000" placeholder="Anything your ReVitalized team should know?"></textarea></label>
+            </div>
+            <div class="rm170-family-actions">
+              <button id="rm-family-remove" class="rm170-danger hidden" type="button">Request Removal</button>
+              <span></span>
+              <button class="rm170-secondary" type="button" data-family-close>Cancel</button>
+              <button type="submit">Submit Request</button>
+            </div>
+            <p id="rm-family-status" class="rm112-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
+
+
+
+
+
+
+
+
+
+      <section class="rm112-card rm140-coaching-access-card">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">COACHING ACCESS</p>
+            <h2>Your coaching sessions</h2>
+          </div>
+        </div>
+        <div id="rm-coaching-entitlements" class="rm140-entitlements"></div>
+      </section>
+
+      <section class="rm112-card rm139-agreements-card">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">AGREEMENTS</p>
+            <h2>Your membership agreements</h2>
+          </div>
+          <span id="rm-agreement-action-count" class="rm112-chip">0 action needed</span>
+        </div>
+        <div id="rm-agreements" class="rm114-stack"></div>
+      </section>
+
+      <div id="rm-agreement-modal" class="rm126-modal hidden" aria-hidden="true">
+        <div class="rm126-modal-backdrop" data-agreement-close></div>
+        <section class="rm126-dialog rm139-agreement-dialog" role="dialog" aria-modal="true" aria-labelledby="rm-agreement-title">
+          <button class="rm126-close" type="button" data-agreement-close aria-label="Close agreement">×</button>
+          <p class="rm112-kicker">MEMBERSHIP AGREEMENT</p>
+          <h2 id="rm-agreement-title">Agreement</h2>
+          <p id="rm-agreement-meta" class="rm139-agreement-meta"></p>
+          <div id="rm-agreement-content" class="rm139-agreement-content"></div>
+          <div id="rm-agreement-completed" class="rm139-agreement-completed hidden"></div>
+          <form id="rm-agreement-sign-form" class="rm126-form">
+            <label><span>Primary client · type your legal name</span><input id="rm-agreement-signer-name" type="text" maxlength="240" required></label>
+            <label id="rm-agreement-secondary-signer-field" class="hidden"><span>Secondary client · Husband/Wife legal name</span><input id="rm-agreement-secondary-signer-name" type="text" maxlength="240"></label>
+            <label class="rm139-agreement-check"><input id="rm-agreement-accept" type="checkbox" required><span>I have read and agree to the terms above.</span></label>
+            <div class="rm139-agreement-actions">
+              <button id="rm-agreement-decline" type="button" class="rm139-secondary">Decline</button>
+              <button type="submit">Sign Agreement</button>
+            </div>
+            <p id="rm-agreement-sign-status" class="rm112-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
+      <section id="rm-billing-card" class="rm112-card rm137-billing-card hidden">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">MEMBERSHIP BILLING</p>
+            <h2>Your Billing Center</h2>
+          </div>
+          <span id="rm-billing-status-chip" class="rm112-chip">Pending</span>
+        </div>
+        <div id="rm-billing-alert" class="rm186-billing-alert hidden"></div>
+        <div id="rm-billing-summary" class="rm137-billing-summary"></div>
+
+        <div class="rm186-billing-grid">
+          <section>
+            <div class="rm186-subhead">
+              <strong>Invoices</strong>
+              <span id="rm-invoice-count">0</span>
+            </div>
+            <div id="rm-invoices" class="rm186-record-list"></div>
+          </section>
+          <section>
+            <div class="rm186-subhead">
+              <strong>Payment History</strong>
+              <span id="rm-payment-count">0</span>
+            </div>
+            <div id="rm-payment-history" class="rm186-record-list"></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="rm112-card rm136-documents-card">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">DOCUMENTS</p>
+            <h2>Your secure document vault</h2>
+          </div>
+          <button id="rm-document-upload-button" class="rm126-new-post" type="button">Upload Document</button>
+        </div>
+        <p class="rm136-doc-note">Only documents marked visible to you appear here. ReVitalized staff-only coaching, health or financial files remain private.</p>
+        <div id="rm-documents" class="rm114-stack"></div>
+      </section>
+
+      <div id="rm-document-upload-modal" class="rm126-modal hidden" aria-hidden="true">
+        <div class="rm126-modal-backdrop" data-document-upload-close></div>
+        <section class="rm126-dialog" role="dialog" aria-modal="true" aria-labelledby="rm-document-upload-title">
+          <button class="rm126-close" type="button" data-document-upload-close aria-label="Close document upload">×</button>
+          <p class="rm112-kicker">SECURE DOCUMENT UPLOAD</p>
+          <h2 id="rm-document-upload-title">Share a file with your ReVitalized team</h2>
+          <form id="rm-document-upload-form" class="rm126-form">
+            <label><span>Title</span><input id="rm-document-title" type="text" maxlength="240" required></label>
+            <label><span>Category</span>
+              <select id="rm-document-category">
+                <option value="general">General</option>
+                <option value="progress">Progress</option>
+              </select>
+            </label>
+            <label><span>Description</span><textarea id="rm-document-description" rows="3" maxlength="3000"></textarea></label>
+            <label><span>File</span><input id="rm-document-file" type="file" accept=".pdf,.jpg,.jpeg,.png,.webp,.txt,.doc,.docx,.xls,.xlsx" required></label>
+            <p class="rm126-privacy-note">Files are stored privately and are visible only to you and authorized ReVitalized staff.</p>
+            <button type="submit">Upload Securely</button>
+            <p id="rm-document-upload-status" class="rm112-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
+      <section id="rm-referral-card" class="rm112-card rm172-ambassador-card hidden">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">AMBASSADOR CENTER</p>
+            <h2>Share ReVitalized &amp; Track Your Impact</h2>
+          </div>
+          <span id="rm-referral-conversions" class="rm112-chip">0 Converted</span>
+        </div>
+        <div class="rm172-ambassador-hero">
+          <div class="rm172-share-card">
+            <span>Your Referral Code</span>
+            <strong id="rm-referral-code">—</strong>
+            <p id="rm-referral-message">Share ReVitalized with someone you care about.</p>
+            <div class="rm172-share-actions">
+              <button id="rm-referral-copy" type="button">Copy Referral Link</button>
+              <button id="rm-referral-copy-message" class="rm172-secondary" type="button">Copy Share Message</button>
+            </div>
+          </div>
+          <div class="rm172-ambassador-stats">
+            <div><span>Total Referrals</span><strong id="rm-referral-total">0</strong></div>
+            <div><span>Engaged</span><strong id="rm-referral-engaged">0</strong></div>
+            <div><span>Applicants</span><strong id="rm-referral-applicants">0</strong></div>
+            <div><span>Converted</span><strong id="rm-referral-converted">0</strong></div>
+            <div><span>Pending Rewards</span><strong id="rm-referral-pending">0</strong></div>
+            <div><span>Issued Rewards</span><strong id="rm-referral-issued">0</strong></div>
+          </div>
+        </div>
+        <div class="rm172-reward-summary">
+          <div><span>Pending Reward Value</span><strong id="rm-referral-pending-value">—</strong></div>
+          <div><span>Issued Reward Value</span><strong id="rm-referral-issued-value">—</strong></div>
+        </div>
+        <div class="rm172-activity-head">
+          <strong>Referral Activity</strong>
+          <span>Names are intentionally limited for privacy.</span>
+        </div>
+        <div id="rm-referral-activity" class="rm172-referral-activity"></div>
+      </section>
+
+      <section id="rm-refuel-card" class="rm112-card rm127-refuel-card hidden">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">REFUEL</p>
+            <h2>Your ReFuel access</h2>
+          </div>
+          <span id="rm-refuel-status" class="rm112-chip">Pending</span>
+        </div>
+        <div id="rm-refuel-content" class="rm127-refuel-content"></div>
+      </section>
+
+      <section class="rm112-card rm126-community-card">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">COMMUNITY &amp; FAMILY HUB</p>
+            <h2>Encouragement, wins &amp; connection</h2>
+          </div>
+          <button id="rm-community-new-post" class="rm126-new-post" type="button">New Post</button>
+        </div>
+        <div id="rm-community-spaces" class="rm126-spaces"></div>
+        <div id="rm-community-feed" class="rm126-feed"></div>
+      </section>
+
+      <div id="rm-community-post-modal" class="rm126-modal hidden" aria-hidden="true">
+        <div class="rm126-modal-backdrop" data-community-post-close></div>
+        <section class="rm126-dialog" role="dialog" aria-modal="true" aria-labelledby="rm-community-post-title">
+          <button class="rm126-close" type="button" data-community-post-close aria-label="Close new post">×</button>
+          <p class="rm112-kicker">COMMUNITY POST</p>
+          <h2 id="rm-community-post-title">Share with your ReVitalized space</h2>
+          <form id="rm-community-post-form" class="rm126-form">
+            <label><span>Space</span><select id="rm-community-space-select" required></select></label>
+            <label><span>Post type</span>
+              <select id="rm-community-post-type">
+                <option value="discussion">Discussion</option>
+                <option value="encouragement">Encouragement</option>
+                <option value="win">Win</option>
+                <option value="challenge_update">Challenge Update</option>
+              </select>
+            </label>
+            <label><span>Optional title</span><input id="rm-community-post-heading" type="text" maxlength="220"></label>
+            <label><span>Post</span><textarea id="rm-community-post-body" rows="6" maxlength="12000" required></textarea></label>
+            <p class="rm126-privacy-note">Keep private health details, assessments, payment information and confidential coaching conversations out of community posts.</p>
+            <button type="submit">Publish Post</button>
+            <p id="rm-community-post-status" class="rm112-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
+      <div id="rm-community-thread-modal" class="rm126-modal hidden" aria-hidden="true">
+        <div class="rm126-modal-backdrop" data-community-thread-close></div>
+        <section class="rm126-dialog" role="dialog" aria-modal="true" aria-labelledby="rm-community-thread-title">
+          <button class="rm126-close" type="button" data-community-thread-close aria-label="Close discussion">×</button>
+          <p class="rm112-kicker">COMMUNITY DISCUSSION</p>
+          <h2 id="rm-community-thread-title">Post</h2>
+          <div id="rm-community-thread-post"></div>
+          <div id="rm-community-comments" class="rm126-comments"></div>
+          <form id="rm-community-comment-form" class="rm126-form rm126-comment-form">
+            <label><span>Add a comment</span><textarea id="rm-community-comment-body" rows="3" maxlength="5000" required></textarea></label>
+            <button type="submit">Add Comment</button>
+            <p id="rm-community-comment-status" class="rm112-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
+      <section class="rm112-card rm124-challenges-card">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">CHALLENGES</p>
+            <h2>Individual &amp; family accountability</h2>
+          </div>
+          <span id="rm-challenge-points" class="rm112-chip">0 points</span>
+        </div>
+        <div id="rm-challenges" class="rm114-stack"></div>
+      </section>
+
+      <section class="rm112-card rm123-health-card">
+        <div class="rm112-card-head">
+          <div>
+            <p class="rm112-kicker">HEALTH CONNECTIONS</p>
+            <h2>Connected Health &amp; Wearable Data</h2>
+          </div>
+          <span id="rm-health-connection-count" class="rm112-chip">0 Connected</span>
+        </div>
+        <p class="rm123-health-note">Choose what ReVitalized may receive from supported health platforms. Apple Health and Android Health Connect will connect through the native ReVitalized mobile app when that bridge is released.</p>
+        <div id="rm-health-connections" class="rm192-health-provider-grid"></div>
+
+        <div class="rm192-health-data-head">
+          <div>
+            <strong>Latest Health Data</strong>
+            <span>Only approved metrics received through an active connection appear here.</span>
+          </div>
+          <span id="rm-health-data-count" class="rm112-chip">0 Metrics</span>
+        </div>
+        <div id="rm-health-data-snapshot" class="rm192-health-data-grid"></div>
+      </section>
+
+      <div id="rm-health-permissions-modal" class="rm119-modal hidden" aria-hidden="true">
+        <div class="rm119-modal-backdrop" data-health-permissions-close></div>
+        <section class="rm119-dialog rm192-health-dialog" role="dialog" aria-modal="true" aria-labelledby="rm-health-permissions-title">
+          <button class="rm119-close" type="button" data-health-permissions-close aria-label="Close health data permissions">×</button>
+          <p class="rm112-kicker">HEALTH DATA PERMISSIONS</p>
+          <h2 id="rm-health-permissions-title">Choose Health Data</h2>
+          <p id="rm-health-permissions-copy" class="rm192-health-permissions-copy"></p>
+          <form id="rm-health-permissions-form">
+            <div id="rm-health-permission-list" class="rm192-health-permission-list"></div>
+            <div class="rm192-health-permission-actions">
+              <button class="secondary" type="button" data-health-permissions-close>Cancel</button>
+              <button type="submit">Save Data Preferences</button>
+            </div>
+            <p id="rm-health-permissions-status" class="rm112-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+
+      <footer class="rm112-footer">ReVitalized Academy · Educational coaching platform · Not medical diagnosis or treatment.</footer>
+    </section>
+
+    <section id="rm-denied" class="rm112-auth hidden">
+      <div class="rm112-auth-card">
+        <p class="rm112-kicker">MEMBER ACCESS</p>
+        <h1>Your account is not active yet.</h1>
+        <p>This login is valid, but it is not currently connected to active ReVitalized member access. Contact the ReVitalized Academy team if you believe this is an error.</p>
+        <p><a href="/member/">Review enrollment and agreements</a></p>
+        <button id="rm-denied-signout" class="rm112-secondary" type="button">Sign Out</button>
+      </div>
+    </section>
+  </main>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
+  <script defer src="member110.js?v=193"></script>
+</body>
+</html>
