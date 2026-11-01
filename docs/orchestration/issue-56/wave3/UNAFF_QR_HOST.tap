@@ -1,0 +1,23 @@
+✔ chromium 1440 actual preview QR decode, manual select, revocation and stale result clearing (3324.632958ms)
+✔ chromium 768 actual preview QR decode, manual select, revocation and stale result clearing (1853.923541ms)
+✔ chromium 390 actual preview QR decode, manual select, revocation and stale result clearing (1764.667833ms)
+✔ webkit 1440 actual preview QR decode, manual select, revocation and stale result clearing (3535.842916ms)
+✔ webkit 768 actual preview QR decode, manual select, revocation and stale result clearing (2185.903584ms)
+✔ webkit 390 actual preview QR decode, manual select, revocation and stale result clearing (2181.966958ms)
+✔ real email QR independently decodes to exact personal synthetic URL (2661.076583ms)
+✔ real sms QR independently decodes to exact personal synthetic URL (695.708709ms)
+✔ real dm QR independently decodes to exact personal synthetic URL (614.069209ms)
+✔ real social QR independently decodes to exact personal synthetic URL (581.130542ms)
+✔ revoked fixture produces no QR/copy/link (0.21975ms)
+✔ expired fixture produces no QR/copy/link (0.074042ms)
+✔ wrong-account fixture produces no QR/copy/link (0.063541ms)
+✔ unknown channel/state cannot select arbitrary fixture or URL (0.158042ms)
+✔ loopback tool rejects foreign origin and arbitrary payload fields (41.2675ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15121.887167

@@ -1,0 +1,274 @@
+TAP version 13
+# Subtest: [E02/N04] current RPC stays invoker; private helper remains postgres-only
+ok 1 - [E02/N04] current RPC stays invoker; private helper remains postgres-only
+  ---
+  duration_ms: 60.94225
+  type: 'test'
+  ...
+# Subtest: [E02 metadata] 40 routine bodies/security match current; default ACL representations explicitly normalized
+ok 2 - [E02 metadata] 40 routine bodies/security match current; default ACL representations explicitly normalized
+  ---
+  duration_ms: 22.885667
+  type: 'test'
+  ...
+# Subtest: [E02 metadata] ledger and allowance have no user trigger; session trigger definitions match capture
+ok 3 - [E02 metadata] ledger and allowance have no user trigger; session trigger definitions match capture
+  ---
+  duration_ms: 8.070042
+  type: 'test'
+  ...
+# Subtest: [E02 metadata] target column names/types/nullability/defaults match current capture
+ok 4 - [E02 metadata] target column names/types/nullability/defaults match current capture
+  ---
+  duration_ms: 7.4605
+  type: 'test'
+  ...
+# Subtest: [E02] actual session trigger reserves without consuming
+ok 5 - [E02] actual session trigger reserves without consuming
+  ---
+  duration_ms: 9.982666
+  type: 'test'
+  ...
+# Subtest: [E02] repeated actual completion consumes one ledger unit once
+ok 6 - [E02] repeated actual completion consumes one ledger unit once
+  ---
+  duration_ms: 26.953
+  type: 'test'
+  ...
+# Subtest: [E02] actual cancellation releases prior consumption
+ok 7 - [E02] actual cancellation releases prior consumption
+  ---
+  duration_ms: 8.39925
+  type: 'test'
+  ...
+# Subtest: [E02] no-show remains review with existing reason and zero used
+ok 8 - [E02] no-show remains review with existing reason and zero used
+  ---
+  duration_ms: 6.249084
+  type: 'test'
+  ...
+# Subtest: [E02 STRICT EP61] authorized review consumes/releases with recorded reason and actor
+not ok 9 - [E02 STRICT EP61] authorized review consumes/releases with recorded reason and actor
+  ---
+  duration_ms: 9.275584
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-qa/tests/wave3-allowance/allowance.test.cjs:29:1'
+  failureType: 'testCodeFailure'
+  error: 'permission denied for function recalculate_coaching_entitlement_used_value'
+  code: '42501'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async actor (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-qa/tests/wave3-allowance/fixture.cjs:14:190)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-qa/tests/wave3-allowance/allowance.test.cjs:29:152)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [E02] Owner can resolve allowed fictional usage
+not ok 10 - [E02] Owner can resolve allowed fictional usage
+  ---
+  duration_ms: 8.970584
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-qa/tests/wave3-allowance/allowance.test.cjs:30:1'
+  failureType: 'testCodeFailure'
+  error: 'permission denied for function recalculate_coaching_entitlement_used_value'
+  code: '42501'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async actor (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-qa/tests/wave3-allowance/fixture.cjs:14:190)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-qa/tests/wave3-allowance/allowance.test.cjs:30:115)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [N02/E02 STRICT EP61] unrelated Coach cannot resolve another Client usage record
+ok 11 - [N02/E02 STRICT EP61] unrelated Coach cannot resolve another Client usage record
+  ---
+  duration_ms: 8.537917
+  type: 'test'
+  ...
+# Subtest: [N02] existing scoped helper agrees assigned Coach allowed and wrong Coach denied
+ok 12 - [N02] existing scoped helper agrees assigned Coach allowed and wrong Coach denied
+  ---
+  duration_ms: 6.828125
+  type: 'test'
+  ...
+# Subtest: [N04] Client and anonymous cannot resolve usage
+ok 13 - [N04] Client and anonymous cannot resolve usage
+  ---
+  duration_ms: 7.619333
+  type: 'test'
+  ...
+# Subtest: [E02] invalid resolution, blank reason and missing record remain rejected
+ok 14 - [E02] invalid resolution, blank reason and missing record remain rejected
+  ---
+  duration_ms: 7.796708
+  type: 'test'
+  ...
+# Subtest: [N06] suspended Coach retains explicit allow but cannot review through lifecycle RLS
+ok 15 - [N06] suspended Coach retains explicit allow but cannot review through lifecycle RLS
+  ---
+  duration_ms: 7.857333
+  type: 'test'
+  ...
+# Subtest: [N06] pending-onboarding Coach cannot review
+ok 16 - [N06] pending-onboarding Coach cannot review
+  ---
+  duration_ms: 12.525791
+  type: 'test'
+  ...
+# Subtest: [N06 partial] expired/completed membership does not give Client review authority
+ok 17 - [N06 partial] expired/completed membership does not give Client review authority
+  ---
+  duration_ms: 8.255708
+  type: 'test'
+  ...
+# Subtest: [N06 partial] suspended Client access cannot resolve usage
+ok 18 - [N06 partial] suspended Client access cannot resolve usage
+  ---
+  duration_ms: 6.110042
+  type: 'test'
+  ...
+# Subtest: [N02/E02] wrong client denied; same Client different program totals stay isolated
+not ok 19 - [N02/E02] wrong client denied; same Client different program totals stay isolated
+  ---
+  duration_ms: 8.272208
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-qa/tests/wave3-allowance/allowance.test.cjs:39:1'
+  failureType: 'testCodeFailure'
+  error: 'permission denied for function recalculate_coaching_entitlement_used_value'
+  code: '42501'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async actor (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-qa/tests/wave3-allowance/fixture.cjs:14:190)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-qa/tests/wave3-allowance/allowance.test.cjs:39:303)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [E02] full consumed aggregate includes every visible ledger row and usage unit
+not ok 20 - [E02] full consumed aggregate includes every visible ledger row and usage unit
+  ---
+  duration_ms: 10.05225
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-qa/tests/wave3-allowance/allowance.test.cjs:40:1'
+  failureType: 'testCodeFailure'
+  error: 'permission denied for function recalculate_coaching_entitlement_used_value'
+  code: '42501'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async actor (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-qa/tests/wave3-allowance/fixture.cjs:14:190)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-qa/tests/wave3-allowance/allowance.test.cjs:40:317)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [E02/N04] manage allowed but global usage view denied cannot write a partial total
+ok 21 - [E02/N04] manage allowed but global usage view denied cannot write a partial total
+  ---
+  duration_ms: 6.668334
+  type: 'test'
+  ...
+# Subtest: [E02] repeated review retries preserve one row and same consumed total
+not ok 22 - [E02] repeated review retries preserve one row and same consumed total
+  ---
+  duration_ms: 6.806666
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-qa/tests/wave3-allowance/allowance.test.cjs:42:1'
+  failureType: 'testCodeFailure'
+  error: 'permission denied for function recalculate_coaching_entitlement_used_value'
+  code: '42501'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async actor (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-qa/tests/wave3-allowance/fixture.cjs:14:190)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-qa/tests/wave3-allowance/allowance.test.cjs:42:159)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [E02] outer rollback restores ledger and allowance after successful review
+not ok 23 - [E02] outer rollback restores ledger and allowance after successful review
+  ---
+  duration_ms: 6.882625
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-qa/tests/wave3-allowance/allowance.test.cjs:43:1'
+  failureType: 'testCodeFailure'
+  error: 'permission denied for function recalculate_coaching_entitlement_used_value'
+  code: '42501'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async actor (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-qa/tests/wave3-allowance/fixture.cjs:14:190)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-qa/tests/wave3-allowance/allowance.test.cjs:43:170)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [E02] missing target allowance row fails closed without ledger mutation
+ok 24 - [E02] missing target allowance row fails closed without ledger mutation
+  ---
+  duration_ms: 7.347458
+  type: 'test'
+  ...
+# Subtest: [E02] target constraints match current catalog
+ok 25 - [E02] target constraints match current catalog
+  ---
+  duration_ms: 6.703917
+  type: 'test'
+  ...
+# Subtest: [E02] allowance UPDATE fault cannot silently commit ledger correction
+ok 26 - [E02] allowance UPDATE fault cannot silently commit ledger correction
+  ---
+  duration_ms: 9.478833
+  type: 'test'
+  ...
+# Subtest: [E02/N04] visible allowance with UPDATE denied cannot commit usage
+ok 27 - [E02/N04] visible allowance with UPDATE denied cannot commit usage
+  ---
+  duration_ms: 12.452125
+  type: 'test'
+  ...
+# Subtest: [E02 guard] nullable RPC config drift is rejected before correction/revert
+ok 28 - [E02 guard] nullable RPC config drift is rejected before correction/revert
+  ---
+  duration_ms: 9.569958
+  type: 'test'
+  ...
+# Subtest: [E02 guard] private helper definition drift is rejected without granting EXECUTE
+ok 29 - [E02 guard] private helper definition drift is rejected without granting EXECUTE
+  ---
+  duration_ms: 9.967167
+  type: 'test'
+  ...
+# Subtest: [E02 concurrency] separate reviews serialize allowance and sum both committed ledger rows
+not ok 30 - [E02 concurrency] separate reviews serialize allowance and sum both committed ledger rows
+  ---
+  duration_ms: 22.973542
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-qa/tests/wave3-allowance/allowance.test.cjs:65:1'
+  failureType: 'testCodeFailure'
+  error: 'permission denied for function recalculate_coaching_entitlement_used_value'
+  code: '42501'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async actor (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-qa/tests/wave3-allowance/fixture.cjs:14:190)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-qa/tests/wave3-allowance/allowance.test.cjs:68:52)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+1..30
+# tests 30
+# suites 0
+# pass 23
+# fail 7
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 456.193833

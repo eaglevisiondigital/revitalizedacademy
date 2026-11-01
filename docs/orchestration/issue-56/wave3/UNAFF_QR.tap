@@ -1,0 +1,206 @@
+✖ chromium 1440 actual preview QR decode, manual select, revocation and stale result clearing (5.541083ms)
+✖ chromium 768 actual preview QR decode, manual select, revocation and stale result clearing (2.018916ms)
+✖ chromium 390 actual preview QR decode, manual select, revocation and stale result clearing (0.203542ms)
+✖ webkit 1440 actual preview QR decode, manual select, revocation and stale result clearing (0.201583ms)
+✖ webkit 768 actual preview QR decode, manual select, revocation and stale result clearing (0.212417ms)
+✖ webkit 390 actual preview QR decode, manual select, revocation and stale result clearing (0.168083ms)
+✖ real email QR independently decodes to exact personal synthetic URL (2120.1445ms)
+✖ real sms QR independently decodes to exact personal synthetic URL (530.844083ms)
+✖ real dm QR independently decodes to exact personal synthetic URL (561.204458ms)
+✖ real social QR independently decodes to exact personal synthetic URL (529.254917ms)
+✔ revoked fixture produces no QR/copy/link (0.365167ms)
+✔ expired fixture produces no QR/copy/link (0.10125ms)
+✔ wrong-account fixture produces no QR/copy/link (0.098083ms)
+✔ unknown channel/state cannot select arbitrary fixture or URL (0.164166ms)
+✖ loopback tool rejects foreign origin and arbitrary payload fields (5.672083ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 4
+ℹ fail 11
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3800.152083
+
+✖ failing tests:
+
+test at tests/wave3-unaffected/preview-browser.cjs:6:77
+✖ chromium 1440 actual preview QR decode, manual select, revocation and stale result clearing (5.541083ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2145:21)
+      at listenInCluster (node:net:2224:12)
+      at node:net:2448:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tests/wave3-unaffected/preview-browser.cjs:6:77
+✖ chromium 768 actual preview QR decode, manual select, revocation and stale result clearing (2.018916ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2145:21)
+      at listenInCluster (node:net:2224:12)
+      at node:net:2448:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tests/wave3-unaffected/preview-browser.cjs:6:77
+✖ chromium 390 actual preview QR decode, manual select, revocation and stale result clearing (0.203542ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2145:21)
+      at listenInCluster (node:net:2224:12)
+      at node:net:2448:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tests/wave3-unaffected/preview-browser.cjs:6:77
+✖ webkit 1440 actual preview QR decode, manual select, revocation and stale result clearing (0.201583ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2145:21)
+      at listenInCluster (node:net:2224:12)
+      at node:net:2448:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tests/wave3-unaffected/preview-browser.cjs:6:77
+✖ webkit 768 actual preview QR decode, manual select, revocation and stale result clearing (0.212417ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2145:21)
+      at listenInCluster (node:net:2224:12)
+      at node:net:2448:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tests/wave3-unaffected/preview-browser.cjs:6:77
+✖ webkit 390 actual preview QR decode, manual select, revocation and stale result clearing (0.168083ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2145:21)
+      at listenInCluster (node:net:2224:12)
+      at node:net:2448:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tests/wave3-unaffected/qr.test.cjs:5:52
+✖ real email QR independently decodes to exact personal synthetic URL (2120.1445ms)
+  AssertionError [ERR_ASSERTION]: QR decode unavailable
+  
+  
+  1 !== 0
+  
+      at decode (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-qa/tests/wave3-unaffected/qr.test.cjs:4:241)
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-qa/tests/wave3-unaffected/qr.test.cjs:8:19)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave3-unaffected/qr.test.cjs:5:52
+✖ real sms QR independently decodes to exact personal synthetic URL (530.844083ms)
+  AssertionError [ERR_ASSERTION]: QR decode unavailable
+  
+  
+  1 !== 0
+  
+      at decode (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-qa/tests/wave3-unaffected/qr.test.cjs:4:241)
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-qa/tests/wave3-unaffected/qr.test.cjs:8:19)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave3-unaffected/qr.test.cjs:5:52
+✖ real dm QR independently decodes to exact personal synthetic URL (561.204458ms)
+  AssertionError [ERR_ASSERTION]: QR decode unavailable
+  
+  
+  1 !== 0
+  
+      at decode (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-qa/tests/wave3-unaffected/qr.test.cjs:4:241)
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-qa/tests/wave3-unaffected/qr.test.cjs:8:19)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave3-unaffected/qr.test.cjs:5:52
+✖ real social QR independently decodes to exact personal synthetic URL (529.254917ms)
+  AssertionError [ERR_ASSERTION]: QR decode unavailable
+  
+  
+  1 !== 0
+  
+      at decode (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-qa/tests/wave3-unaffected/qr.test.cjs:4:241)
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-qa/tests/wave3-unaffected/qr.test.cjs:8:19)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave3-unaffected/qr.test.cjs:13:1
+✖ loopback tool rejects foreign origin and arbitrary payload fields (5.672083ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2145:21)
+      at listenInCluster (node:net:2224:12)
+      at node:net:2448:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }

@@ -1,0 +1,85 @@
+TAP version 13
+# Subtest: independent pending QR result cannot revive revoked selection
+ok 1 - independent pending QR result cannot revive revoked selection
+  ---
+  duration_ms: 50.715458
+  type: 'test'
+  ...
+# Subtest: independent pending QR result cannot revive expired selection
+ok 2 - independent pending QR result cannot revive expired selection
+  ---
+  duration_ms: 8.805583
+  type: 'test'
+  ...
+# Subtest: independent pending QR result cannot revive wrong-account selection
+ok 3 - independent pending QR result cannot revive wrong-account selection
+  ---
+  duration_ms: 7.687333
+  type: 'test'
+  ...
+# Subtest: independent out-of-order QR responses retain only latest selected channel
+ok 4 - independent out-of-order QR responses retain only latest selected channel
+  ---
+  duration_ms: 8.28725
+  type: 'test'
+  ...
+# Subtest: independent non-OK QR response cannot expose returned copy or image
+ok 5 - independent non-OK QR response cannot expose returned copy or image
+  ---
+  duration_ms: 7.502875
+  type: 'test'
+  ...
+# Subtest: independent repeated same-account renewal retains one pending weekly write
+ok 6 - independent repeated same-account renewal retains one pending weekly write
+  ---
+  duration_ms: 108.869166
+  type: 'test'
+  ...
+# Subtest: independent switched-then-restored actor cannot resurrect ended member document
+ok 7 - independent switched-then-restored actor cannot resurrect ended member document
+  ---
+  duration_ms: 54.046667
+  type: 'test'
+  ...
+# Subtest: independent diff confinement: member runtime differs only inside weekly-checkin handler
+not ok 8 - independent diff confinement: member runtime differs only inside weekly-checkin handler
+  ---
+  duration_ms: 27.847625
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-qa/tests/wave3-qa/adversarial.test.cjs:32:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+    
+      assert(j>i)
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    split (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-qa/tests/wave3-qa/adversarial.test.cjs:35:100)
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-qa/tests/wave3-qa/adversarial.test.cjs:36:19)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: independent inventory preserves exact 101 requirements, 10 details and 57 package IDs
+ok 9 - independent inventory preserves exact 101 requirements, 10 details and 57 package IDs
+  ---
+  duration_ms: 54.630333
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 8
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 629.562

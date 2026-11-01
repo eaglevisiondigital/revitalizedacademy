@@ -1,0 +1,1250 @@
+{
+  "schemaVersion": "rva-wave3-case-results-v1",
+  "sourceMatrixSha256": "58671aa98737d77175c452267cf74b432132e7506ed25dc53af2ce903e831746",
+  "exactOriginalIdsRetained": true,
+  "definitions": {
+    "PASS": "Entiredefinedpackagepassedwithappropriateevidence;noneclaimedfrompartialsubtests.",
+    "FAIL": "Relevantactualassertionfailed;doesnotassertallremainingcoverageexecuted.",
+    "BLOCKED": "Packagecannotbecompletedduetonamedpolicy/config/current-schema/integrationprerequisite;PASSsubsetsretained.",
+    "NOT_RUN": "Wholepackagewasnotexecuted;anyboundedsubsetislistedexplicitly."
+  },
+  "counts": {
+    "PASS": 0,
+    "FAIL": 2,
+    "BLOCKED": 43,
+    "NOT_RUN": 12
+  },
+  "cases": [
+    {
+      "caseId": "S01",
+      "title": "Approved asset and release-overlay identity",
+      "requirementIds": [
+        "WS-01-R01",
+        "WS-01-R02",
+        "WS-02-R08",
+        "WS-10-R08"
+      ],
+      "status": "NOT_RUN",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [
+        "A_CONTRACT",
+        "QA_INVARIANTS"
+      ],
+      "actualObservedSubtests": "Five approved asset/member CSS bytes and unchanged asset/style/Function source families checked; no current release artifact/pixel acceptance.",
+      "failureIds": [],
+      "remainingCoverage": "No asset replacement, crop, old Founders underline or global token normalization; untouched file and Function digests equal pinned manifest.",
+      "blockingOrNotRunReason": "The complete local procedure was not executed. The named passing source, error-rendering or responsive subsets do not satisfy the remaining checks; no production-approval prerequisite is being invented.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "S02",
+      "title": "Public CTA, accessibility and acquisition",
+      "requirementIds": [
+        "WS-01-R03",
+        "WS-01-R04",
+        "WS-01-R07",
+        "WS-01-R08"
+      ],
+      "status": "NOT_RUN",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [],
+      "actualObservedSubtests": "No independent actual business subtest from this package executed inthiswave.",
+      "failureIds": [],
+      "remainingCoverage": "Correct destination and source; no dead route, PII URL, focus trap or analytics before required consent.",
+      "blockingOrNotRunReason": "Fullpackage notexecuted; no completecasePASS isclaimed. ",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "S03",
+      "title": "HHL next-session, reminder and replay boundaries",
+      "requirementIds": [
+        "WS-01-R05",
+        "WS-01-R06",
+        "WS-03-R09"
+      ],
+      "status": "NOT_RUN",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [],
+      "actualObservedSubtests": "No independent actual business subtest from this package executed inthiswave.",
+      "failureIds": [],
+      "remainingCoverage": "Only published/open sessions; no duplicate CRM/notice or automatic Client status; manual attendance and approved replay lifecycle preserved.",
+      "blockingOrNotRunReason": "Fullpackage notexecuted; no completecasePASS isclaimed. ",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "J01",
+      "title": "Public lead to CRM identity",
+      "requirementIds": [
+        "WS-03-R01",
+        "WS-03-R02",
+        "WS-10-R04"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [
+        "C_NODE"
+      ],
+      "actualObservedSubtests": "Actual public assessment JS with fictional lead transport saves first capture independently and suppresses repeated requests; no actual canonical-contact SQL journey.",
+      "failureIds": [],
+      "remainingCoverage": "One canonical contact and source history; ambiguous collision quarantined; client identity/status never overwritten by public input.",
+      "blockingOrNotRunReason": "The bounded harness does not assemble the current canonical-contact/deduplication SQL journey.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "J02",
+      "title": "Assessment resume and immutable source",
+      "requirementIds": [
+        "WS-03-R03",
+        "WS-04-R03"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [
+        "C_NODE"
+      ],
+      "actualObservedSubtests": "Actual assessment/resume UI validates adult/child paths,zeros,restoration,failed-save retries,completion/credential handling through fake transport; no current SQL/Auth/provider proof.",
+      "failureIds": [],
+      "remainingCoverage": "Unknown is distinct from zero; no replay/edit after completion; source version/pins retained; no confidential fields in logs.",
+      "blockingOrNotRunReason": "The fake assessment transport does not supply current SQL, single-use credential enforcement or source-sealing integration.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "J03",
+      "title": "Consultation, coach availability and capacity",
+      "requirementIds": [
+        "WS-03-R04",
+        "WS-05-R03",
+        "WS-05-R05"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [],
+      "actualObservedSubtests": "No independent actual business subtest from this package executed inthiswave.",
+      "failureIds": [],
+      "remainingCoverage": "One allocation; explicit times; cancelled slot released under contract; unauthorized coach/contact and stale update denied.",
+      "blockingOrNotRunReason": "An approved booking/availability/capacity policy and its complete SQL fixture are not assembled.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "J04",
+      "title": "Exact agreement and independent adult signature",
+      "requirementIds": [
+        "WS-03-R05",
+        "WS-02-R05"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [
+        "A_BROWSER",
+        "B_DOM"
+      ],
+      "actualObservedSubtests": "Actual signing script sends current hash/own adult once under double-submit; browser root→dashboard→root roundtrip; backend signing/secondadult unverified.",
+      "failureIds": [],
+      "remainingCoverage": "Immutable version and actual actor; one acceptance; second adult signs personally; unrelated/forged/stale writes denied.",
+      "blockingOrNotRunReason": "Exact current agreement terms, two-adult rules and complete server-signature fixture are missing.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "J05",
+      "title": "Verified account claim and onboarding hold",
+      "requirementIds": [
+        "WS-03-R06",
+        "WS-05-R04"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [
+        "A_BROWSER",
+        "B_DOM",
+        "B_HOLD_SQL",
+        "B_BROWSER"
+      ],
+      "actualObservedSubtests": "Own-account/verification/claim/recovery UI and unrelated enrollment/agreement SQL denial; real managed Auth verification/token/delivery not exercised.",
+      "failureIds": [],
+      "remainingCoverage": "Only intended verified identity binds; neutral recovery; unpaid/unsigned access remains onboarding only; no privileged auto-confirm.",
+      "blockingOrNotRunReason": "The fixture lacks actual managed-Auth verification, delivery and expiry behavior and a complete current enrollment profile.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "J06",
+      "title": "Merchant, issuer, currency and environment routing",
+      "requirementIds": [
+        "WS-09-R01",
+        "WS-09-R02",
+        "WS-09-R03",
+        "WS-09-R04",
+        "WS-09-R13"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [
+        "PAYMENT_UNIT"
+      ],
+      "actualObservedSubtests": "Gateway/currency/environment isolation,route mismatch rejection and safe tokenized request; merchant/legal issuer/current certification absent.",
+      "failureIds": [],
+      "remainingCoverage": "Server chooses exact approved route/minor-unit currency; no fallback, client amount or assumed provider compatibility; no secrets returned.",
+      "blockingOrNotRunReason": "Selected merchant/legal issuer/currency certification and configured provider-contract evidence are absent.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "J07",
+      "title": "Hosted checkout, installments and receipts",
+      "requirementIds": [
+        "WS-09-R05",
+        "WS-09-R06"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [
+        "PAYMENT_UNIT"
+      ],
+      "actualObservedSubtests": "Fake hosted payment request,installment cents,month-end recurring,uncertain timeout and redaction; no real gateway/receipt ordurableSQL.",
+      "failureIds": [],
+      "remainingCoverage": "Card entry remains provider-hosted; exact cents/schedule; decline unpaid; no PAN/CVV; one receipt with safe retry.",
+      "blockingOrNotRunReason": "The local suite lacks the durable checkout/receipt database and provider adapter needed for this complete procedure.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "J08",
+      "title": "Verified webhook and duplicate/uncertain payment",
+      "requirementIds": [
+        "WS-09-R07",
+        "WS-10-R04"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [
+        "PAYMENT_UNIT"
+      ],
+      "actualObservedSubtests": "Raw-byte signature failure/success,fake claim-order,uncertainty hold and webhook payload exclusion; no durable inbox/race/realprovider readback.",
+      "failureIds": [],
+      "remainingCoverage": "Bad signature has no inbox write; provider readback owns amount/status; one transaction; uncertainty retained for review with no blind second charge.",
+      "blockingOrNotRunReason": "Current durable inbox, concurrent consumer and independent provider-readback fixtures are not assembled.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "J09",
+      "title": "Payment-to-enrollment atomic contract",
+      "requirementIds": [
+        "WS-03-R07",
+        "WS-05-R04",
+        "WS-09-R14"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [
+        "B_HOLD_SQL"
+      ],
+      "actualObservedSubtests": "Actual production lifecycle source denies fabricated paid access; no bound verified-payment→enrollment atomic transition.",
+      "failureIds": [],
+      "remainingCoverage": "One correctly bound posting; agreement/identity/payment all required; no broad hold removal; no partial or duplicate entitlement activation.",
+      "blockingOrNotRunReason": "The exact payment-to-enrollment binding contract and complete positive SQL fixture are missing; removing the hold is not a test strategy.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "J10",
+      "title": "Reachable member and coach operations",
+      "requirementIds": [
+        "WS-05-R01",
+        "WS-05-R03",
+        "WS-05-R07"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [
+        "A_BROWSER",
+        "A_CONTRACT",
+        "C_MEMBER_V3",
+        "QA_ADVERSARIAL"
+      ],
+      "actualObservedSubtests": "Actual goal/habit/checkin handlers and improved check-in identity race pass under fictional transport. Expected old handler race independently reproduced. Same-account renewal and ended-document callbacks independently probed. No backend paid Client positive acceptance.",
+      "failureIds": [],
+      "remainingCoverage": "Client sees own operational dashboard and assigned coach; coach sees authorized assigned subset; script/allowlist presence alone cannot pass.",
+      "blockingOrNotRunReason": "The new local route is exercised, but complete Coach operations and current role/entitlement SQL contracts are not assembled.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "J11",
+      "title": "49-day program, progress and renewal",
+      "requirementIds": [
+        "WS-05-R02",
+        "WS-05-R06",
+        "WS-05-R08",
+        "WS-05-R09",
+        "WS-03-R10"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [],
+      "actualObservedSubtests": "No independent actual business subtest from this package executed inthiswave.",
+      "failureIds": [],
+      "remainingCoverage": "Exact program cadence/content; no guessed 49-day curriculum; renewals preserve history and consent, suspend only approved scope, no duplicate tasks.",
+      "blockingOrNotRunReason": "The specific 49-day curriculum, calendar, unlock, pause, completion and renewal specification is missing.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "J12",
+      "title": "Whole public-lead-to-renewal acceptance",
+      "requirementIds": [
+        "WS-10-R04"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [],
+      "actualObservedSubtests": "No independent actual business subtest from this package executed inthiswave.",
+      "failureIds": [],
+      "remainingCoverage": "One connected journey and audit lineage across UI/API/SQL/outbox; failure branches recover without manual table edits, hidden route or paid bypass.",
+      "blockingOrNotRunReason": "The stage contracts and fixtures do not form one integrated lead-to-renewal chain.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "N01",
+      "title": "Owner permissions are explicit, revocable and server-owned",
+      "requirementIds": [
+        "WS-02-R01",
+        "WS-02-R02",
+        "WS-02-R03",
+        "WS-02-R04",
+        "WS-10-R03"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [
+        "B_BASELINE_SQL",
+        "B_HOLD_SQL"
+      ],
+      "actualObservedSubtests": "Actual dated-source Owner explicit deny and inactive Coach override revocation helper tests pass inbothprofiles; real JWT/session/Owner protected rights unverified.",
+      "failureIds": [],
+      "remainingCoverage": "Revoked/inactive actor denied server-side even with old UI; Owner label alone cannot grant protected founder or finance scope.",
+      "blockingOrNotRunReason": "A complete current catalog and managed JWT/session-revocation fixture are not supplied by the historical profile.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "N02",
+      "title": "Assigned coach versus unrelated/private contact",
+      "requirementIds": [
+        "WS-02-R03",
+        "WS-02-R04",
+        "WS-05-R03",
+        "WS-05-R07",
+        "WS-10-R03"
+      ],
+      "status": "FAIL",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [
+        "B_BASELINE_SQL",
+        "B_HOLD_SQL",
+        "A_CURRENT_ORIGINAL",
+        "A_CURRENT_CORRECTED",
+        "A_CURRENT_REVERTED_REGRESSION",
+        "B_DIRECT_STRICT",
+        "B_CORRECTED"
+      ],
+      "actualObservedSubtests": "Current-catalog goal access reproduced, narrow local contact policy verified with original/revert comparison. Narrow allowance RPC contact checks pass. Unrelated Coach direct usage SELECT/UPDATE and entitlement UPDATE still FAIL.",
+      "failureIds": [
+        "QA-W3-DIRECT-01",
+        "QA-W3-DIRECT-02",
+        "QA-W3-DIRECT-03"
+      ],
+      "remainingCoverage": "Allowed fields only; wrong assignment/permission/contact denied on every surface including exports/notes; no role escalation to finance or Owner.",
+      "blockingOrNotRunReason": "Current-equivalent direct allowance/usage table policies permit unrelated Coach operations. These strict failures remain unresolved; broader case incomplete.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "N03",
+      "title": "Cross-client and cross-organization isolation",
+      "requirementIds": [
+        "WS-02-R03",
+        "WS-02-R04",
+        "WS-10-R03"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [
+        "A_BROWSER",
+        "B_BASELINE_SQL"
+      ],
+      "actualObservedSubtests": "Actual dated-source unrelatedClient goal/habit/progress denial; A→B UI document clearing. No organization/tenant/storage fixture.",
+      "failureIds": [],
+      "remainingCoverage": "No records, aggregates, signed URLs or existence inference across identities/organizations; if tenant field is absent, block multi-org claim pending contract.",
+      "blockingOrNotRunReason": "The current organization model, per-field disclosure and Storage policy fixture are not assembled.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "N04",
+      "title": "No self-granted role or direct private access",
+      "requirementIds": [
+        "WS-02-R01",
+        "WS-02-R02",
+        "WS-02-R04"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [
+        "B_BASELINE_SQL",
+        "B_HOLD_SQL",
+        "B_CORRECTED",
+        "QA_ADVERSARIAL"
+      ],
+      "actualObservedSubtests": "Private helper EXECUTE remains denied; same public invoker ACL/owner retained; contact scope, missing visibility and lifecycle denials exercised. No hosted authentication acceptance.",
+      "failureIds": [],
+      "remainingCoverage": "Authoritative permissions and explicit ACL/RLS apply; service credential never browser-side; views checked for invoker/explicit deny.",
+      "blockingOrNotRunReason": "Current self-role, private DML, Storage and definer/RLS boundary fixtures are incomplete.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "N05",
+      "title": "Refresh, logout, account-switch and late response",
+      "requirementIds": [
+        "WS-02-R02",
+        "WS-02-R06",
+        "WS-05-R10"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [
+        "C_NODE",
+        "A_BROWSER",
+        "B_DOM",
+        "B_BROWSER"
+      ],
+      "actualObservedSubtests": "Actual member/staff source logout/account-switch/late-response/refresh tests pass with fictional event transport. Real SDK broadcast/revoked sessions and all-module data clearance unverified.",
+      "failureIds": [],
+      "remainingCoverage": "Private DOM/RAM clears promptly; late A response ignored; renewal retains legitimate task without bypass; no private persistence or stale authorizations.",
+      "blockingOrNotRunReason": "Real SDK cross-tab/revocation behavior and complete private-state clearance across all modules are not established by these adapters.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "N06",
+      "title": "Unpaid, suspended and cancelled paid-access denial",
+      "requirementIds": [
+        "WS-02-R03",
+        "WS-02-R04",
+        "WS-05-R04"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [
+        "A_BROWSER",
+        "B_DOM",
+        "B_HOLD_SQL",
+        "B_BROWSER",
+        "A_CURRENT_CORRECTED",
+        "B_CORRECTED"
+      ],
+      "actualObservedSubtests": "Current restrictive lifecycle, suspended/pending staff and denied Client actions exercised. Paid helper remains exact false; no invented positive membership. No hosted revocation/session provider test.",
+      "failureIds": [],
+      "remainingCoverage": "Server denies by approved entitlement state; onboarding remains accessible as designed; no synthetic/waived payment production bypass.",
+      "blockingOrNotRunReason": "The selected positive paid-access/renewal/suspension contract is not assembled; the hold-only profile deliberately denies access.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "N07",
+      "title": "Privacy, XSS, error and credential containment",
+      "requirementIds": [
+        "WS-02-R05",
+        "WS-02-R06"
+      ],
+      "status": "NOT_RUN",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [
+        "C_BROWSER",
+        "QA_ADVERSARIAL"
+      ],
+      "actualObservedSubtests": "Baseline malicious-error injection reproduces; patched actual source renders text across6browser cases and3ownpayload probes. Allother sinks/CSP/logs/storage/privacy unverified.",
+      "failureIds": [],
+      "remainingCoverage": "Untrusted text not executed; tokens and health answers absent; error neutral; CSP/origin and output encoding independently verified.",
+      "blockingOrNotRunReason": "The complete local procedure was not executed. The named passing source, error-rendering or responsive subsets do not satisfy the remaining checks; no production-approval prerequisite is being invented.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "N08",
+      "title": "Permissioned messaging and notification lease recovery",
+      "requirementIds": [
+        "WS-02-R06",
+        "WS-03-R08",
+        "WS-03-R09"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [],
+      "actualObservedSubtests": "No independent actual business subtest from this package executed inthiswave.",
+      "failureIds": [],
+      "remainingCoverage": "One allowed recipient/message; consent types distinct; uncertainty quarantined; no blind resend; redacted jobs retain adequate audit.",
+      "blockingOrNotRunReason": "Selected channel consent and operational outbox/provider lease and uncertain-retry fixtures are missing.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "R01",
+      "title": "Methodology, voice, unknowns and unsupported scores",
+      "requirementIds": [
+        "WS-04-R01",
+        "WS-04-R02",
+        "WS-04-R03",
+        "WS-04-R07"
+      ],
+      "status": "NOT_RUN",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [],
+      "actualObservedSubtests": "No independent actual business subtest from this package executed inthiswave.",
+      "failureIds": [],
+      "remainingCoverage": "No invented source facts, numerical conversions, medical/dose decisions or source doctrine; prior saved versions unchanged.",
+      "blockingOrNotRunReason": "Fullpackage notexecuted; no completecasePASS isclaimed. ",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "R02",
+      "title": "Immutable revision and single-use processing guards",
+      "requirementIds": [
+        "WS-04-R04",
+        "WS-04-R05",
+        "WS-04-R06"
+      ],
+      "status": "NOT_RUN",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [],
+      "actualObservedSubtests": "No independent actual business subtest from this package executed inthiswave.",
+      "failureIds": [],
+      "remainingCoverage": "One authorized synthetic attempt; wrong pins fail; read never generates; exact revision review independent; no existing private authority or client workflow touched.",
+      "blockingOrNotRunReason": "Fullpackage notexecuted; no completecasePASS isclaimed. ",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "R03",
+      "title": "V3 admission and Coach Companion retrieval",
+      "requirementIds": [
+        "WS-04-R08",
+        "WS-04-R09",
+        "WS-04-R10"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [
+        "V3_CATALOG",
+        "V3_QA_PROBES",
+        "C_MEMBER_V3",
+        "QA_ADVERSARIAL"
+      ],
+      "actualObservedSubtests": "8new author detached regressions and2independent frozen source/citation substitutions pass. Fictional receipts only;113intake and real source promotion remain held.",
+      "failureIds": [],
+      "remainingCoverage": "Unapproved intake never promoted to methodology; no actual private source ingestion, 40-day replacement, autonomous health advice or founder-policy invention. Adaptive intake, pre-session coach brief and client-result release need separately pinned approved field/source/actor gates; a collection prompt is not approval.",
+      "blockingOrNotRunReason": "Approved source admission, trusted registry, actual Auth/RLS and personalized retrieval/escalation integration remain absent. Fictional verifier tests cannot replace them.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "F01",
+      "title": "Adult Family Hub consented sharing",
+      "requirementIds": [
+        "WS-06-R01",
+        "WS-06-R02",
+        "WS-06-R03",
+        "WS-06-R04",
+        "WS-06-R07",
+        "WS-10-R05"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [],
+      "actualObservedSubtests": "No independent actual business subtest from this package executed inthiswave.",
+      "failureIds": [],
+      "remainingCoverage": "Only consented shared fields; membership/signature never implies private-health/notes access; revocation clears caches and future reads.",
+      "blockingOrNotRunReason": "Selected adult per-field sharing/consent/revocation rules and a compatible current schema fixture are missing.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "F02",
+      "title": "Guardian/minor and cross-household deny",
+      "requirementIds": [
+        "WS-06-R05",
+        "WS-06-R06",
+        "WS-06-R08",
+        "WS-10-R03"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [
+        "B_BASELINE_SQL"
+      ],
+      "actualObservedSubtests": "Actual historical-source cross-household member SELECT/UPDATE denial; guardian/minor rights and age transition/withdrawal unavailable.",
+      "failureIds": [],
+      "remainingCoverage": "No assumed guardian right; wrong household denied; unapproved minors path held; history and dependent privacy retained.",
+      "blockingOrNotRunReason": "Guardian/minor age-transition and consent policy is unanswered; a cross-household denial is only a subset.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "F03",
+      "title": "Family request concurrency and review",
+      "requirementIds": [
+        "WS-06-R08"
+      ],
+      "status": "NOT_RUN",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [],
+      "actualObservedSubtests": "No independent actual business subtest from this package executed inthiswave.",
+      "failureIds": [],
+      "remainingCoverage": "One reviewed application, canonical contact/member reused, stale review conflict; auditable status/reasons; no identity duplication.",
+      "blockingOrNotRunReason": "Fullpackage notexecuted; no completecasePASS isclaimed. ",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "C01",
+      "title": "Approved reusable content and provenance",
+      "requirementIds": [
+        "WS-07-R01",
+        "WS-07-R02",
+        "WS-07-R03",
+        "WS-07-R07"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [],
+      "actualObservedSubtests": "No independent actual business subtest from this package executed inthiswave.",
+      "failureIds": [],
+      "remainingCoverage": "Approved author/reviewer only; exact units and unknowns; no fabricated curriculum; imported provenance protected.",
+      "blockingOrNotRunReason": "Exact approved content and publication/methodology contracts are missing from this fixture.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "C02",
+      "title": "Private assignments, diary and progress",
+      "requirementIds": [
+        "WS-07-R04",
+        "WS-07-R05",
+        "WS-07-R06",
+        "WS-07-R09",
+        "WS-05-R06",
+        "WS-05-R08"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [
+        "B_BASELINE_SQL"
+      ],
+      "actualObservedSubtests": "Actual historical-source goal/habit/progress validation,ownership,zero and idempotentdaycheckin. No full nutrition/diary/lesson/workout package.",
+      "failureIds": [],
+      "remainingCoverage": "One assignment/completion; no cross-client diary or nutrition override; missing values not zero; plots reflect source period and units.",
+      "blockingOrNotRunReason": "Complete diary, assigned-content and Coach override contracts/fixtures are not assembled.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "C03",
+      "title": "One-way reusable content sync",
+      "requirementIds": [
+        "WS-07-R08",
+        "WS-02-R06"
+      ],
+      "status": "NOT_RUN",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [],
+      "actualObservedSubtests": "No independent actual business subtest from this package executed inthiswave.",
+      "failureIds": [],
+      "remainingCoverage": "Whitelist only, no operational/private identity data or production secrets; atomic idempotent receive; reverse direction denied.",
+      "blockingOrNotRunReason": "Fullpackage notexecuted; no completecasePASS isclaimed. ",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "A01",
+      "title": "Controlling127-section trace and received Phase0 disposition",
+      "requirementIds": [
+        "WS-08-R01",
+        "WS-08-R02",
+        "WS-10-R01"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [
+        "QA_INVARIANTS"
+      ],
+      "actualObservedSubtests": "Original127trace exacthash retained andmissing127honest; fullsource not recovered.",
+      "failureIds": [],
+      "remainingCoverage": "Phase0 is received/proposed, not approved; until controlling handoff is recovered all127 original rows remain SOURCE_MISSING with blank titles/content. Blueprint22sections and Option3/checklist127rows are separate indexes.",
+      "blockingOrNotRunReason": "The controlling original 127-section handoff remains missing; the recovered Phase0 draft does not replace it.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "A02",
+      "title": "Affiliate application, agreement and own dashboard",
+      "requirementIds": [
+        "WS-08-R03",
+        "WS-08-R04",
+        "WS-08-R13"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [
+        "C_NODE"
+      ],
+      "actualObservedSubtests": "Pure helper own active snapshot gating only; application/agreement/onboarding/dashboard absent.",
+      "failureIds": [],
+      "remainingCoverage": "Explicit affiliate eligibility separate from client or coach; scoped own statuses and typed balances; no privileged Mark Issued claim as provider proof.",
+      "blockingOrNotRunReason": "Affiliate eligibility, agreement, review and authenticated backend contracts are not implemented in this slice.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "A03",
+      "title": "Share Center, link/QR and channel consent",
+      "requirementIds": [
+        "WS-08-R05",
+        "WS-08-R06",
+        "WS-08-R07"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [
+        "C_NODE",
+        "C_BROWSER",
+        "C_QR_BROWSER",
+        "QA_ADVERSARIAL"
+      ],
+      "actualObservedSubtests": "Real fictional QR PNGs and rendered QR screenshots decode independently to exact own synthetic URL in6browser viewports. Revocation/expiry/account changes, stale ordering and denied responses clear output. No real consent/Auth/provider/send path.",
+      "failureIds": [],
+      "remainingCoverage": "Correct approved copy/disclosure; no automatic send; no open redirect/PII URL; expired campaign suppressed; own attribution binding.",
+      "blockingOrNotRunReason": "The QR encoder/decoder, media/clipboard and authenticated current-consent adapters needed for the complete case are absent.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "A04",
+      "title": "Referral click to settled-enrollment attribution",
+      "requirementIds": [
+        "WS-08-R08",
+        "WS-03-R02"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [
+        "C_NODE",
+        "QA_ADVERSARIAL"
+      ],
+      "actualObservedSubtests": "In-memory share/click/appointment events,replay100times and changed-key conflicts only. Own separate-consumer probe demonstrates no durable exactly-once guarantee; no settled attribution.",
+      "failureIds": [],
+      "remainingCoverage": "Booking/contact status alone earns nothing; consented minimal referral stage; original source/appeal history preserved; no duplicate qualification.",
+      "blockingOrNotRunReason": "Attribution window/dispute rules and verified settled-enrollment linkage are not selected or implemented.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "A05",
+      "title": "Affiliate privacy and approved AI review",
+      "requirementIds": [
+        "WS-08-R09",
+        "WS-08-R15",
+        "WS-02-R06"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [
+        "C_NODE",
+        "C_BROWSER",
+        "QA_ADVERSARIAL"
+      ],
+      "actualObservedSubtests": "Minimal generic referral stage projection strips private fields/prototypes; no AI/export/support/telemetry auth orapproved statuspolicy.",
+      "failureIds": [],
+      "remainingCoverage": "Health never exposed or inferred through status/details; review required before use; coach compensation remains separately authorized.",
+      "blockingOrNotRunReason": "Exact status-disclosure, AI, support/export and telemetry policies and server enforcement are absent.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "A06",
+      "title": "Typed rewards, recurring rules and conservation",
+      "requirementIds": [
+        "WS-08-R10",
+        "WS-08-R11",
+        "WS-08-R12",
+        "WS-09-R10",
+        "WS-09-R11"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [],
+      "actualObservedSubtests": "No independent actual business subtest from this package executed inthiswave.",
+      "failureIds": [],
+      "remainingCoverage": "Separate cash/credit/point units/ledgers; one component per qualifying event/period; no overspend, retroactive rewrite or cross-unit withdrawal.",
+      "blockingOrNotRunReason": "Approved financial qualification and distinct cash/credit/point ledger rules are missing.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "A07",
+      "title": "Single-level and separate coach compensation",
+      "requirementIds": [
+        "WS-08-R14",
+        "WS-08-R15",
+        "WS-09-R14"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [],
+      "actualObservedSubtests": "No independent actual business subtest from this package executed inthiswave.",
+      "failureIds": [],
+      "remainingCoverage": "MLM/genealogy/ranks remain OFF; no recursive earnings or compensation merge; financial activation is separately gated.",
+      "blockingOrNotRunReason": "There is no activated affiliate backend or approved compensation/Coach boundary fixture; OFF declarations alone cannot pass endpoint acceptance.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "P01",
+      "title": "Settlement, refund, dispute and reconciliation",
+      "requirementIds": [
+        "WS-09-R08",
+        "WS-09-R09",
+        "WS-09-R10"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [
+        "PAYMENT_UNIT"
+      ],
+      "actualObservedSubtests": "Pure payment metadata and unknown-outcome behavior; no actualsettlement ledger/currency books/refund/dispute/reconciliation.",
+      "failureIds": [],
+      "remainingCoverage": "Append-only linked reversals/corrections; balanced postings; discrepancies held; no revived eligibility or silent mixed-currency sums.",
+      "blockingOrNotRunReason": "Actual settlement books, refund/dispute and reconciliation contracts/fixtures are missing.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "P02",
+      "title": "Payout reserve, timeout and duplicate prevention",
+      "requirementIds": [
+        "WS-09-R11",
+        "WS-09-R12",
+        "WS-09-R13",
+        "WS-08-R13"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [],
+      "actualObservedSubtests": "No independent actual business subtest from this package executed inthiswave.",
+      "failureIds": [],
+      "remainingCoverage": "Atomic reserve once; uncertainty retains reservation and prevents retry; confirmed status reconciled; no real transfer or bank/tax identifiers.",
+      "blockingOrNotRunReason": "Payout provider, funded liability, reservation and authorization contracts are missing.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "A08",
+      "title": "Integrated optional affiliate-share-to-payout journey",
+      "requirementIds": [
+        "WS-10-R05",
+        "WS-08-R03",
+        "WS-08-R04",
+        "WS-08-R05",
+        "WS-08-R06",
+        "WS-08-R07",
+        "WS-08-R08",
+        "WS-09-R10",
+        "WS-09-R11",
+        "WS-09-R12"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [],
+      "actualObservedSubtests": "No independent actual business subtest from this package executed inthiswave.",
+      "failureIds": [],
+      "remainingCoverage": "Correlated approved single-level qualification and payout proof with all holds/negatives; no live financial/outreach call; held noncash first slice cannot certify later cash payout.",
+      "blockingOrNotRunReason": "The integrated affiliate qualification, settlement, ledger and payout chain is not assembled.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "O01",
+      "title": "Requirements, dispatch and ownership no-loss gate",
+      "requirementIds": [
+        "WS-10-R01",
+        "WS-10-R02",
+        "WS-10-R07"
+      ],
+      "status": "NOT_RUN",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [
+        "QA_INVARIANTS",
+        "QA_ADVERSARIAL"
+      ],
+      "actualObservedSubtests": "Exact101requirements,10source-detail groups and57original package IDs preserved; owned diff confinement independently verified. Full source completeness and dispatch policy exercise not claimed.",
+      "failureIds": [],
+      "remainingCoverage": "All ten scopes and exact historical gaps retained; actual dispatch independently referenced; structural pass is not original-source completeness.",
+      "blockingOrNotRunReason": "Fullpackage notexecuted; no completecasePASS isclaimed. Onlymetadata/localpartialreceipts available.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "O02",
+      "title": "Responsive, accessibility and mobile account journeys",
+      "requirementIds": [
+        "WS-10-R06",
+        "WS-01-R03",
+        "WS-01-R08",
+        "WS-05-R10"
+      ],
+      "status": "NOT_RUN",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [
+        "A_BROWSER",
+        "B_BROWSER",
+        "C_BROWSER",
+        "C_QR_BROWSER"
+      ],
+      "actualObservedSubtests": "6Chromium/WebKit1440/768/390 real QR/share preview cases pass without overflow or unexpected external calls/errors. Full platform accessibility/mobile journey remains unexecuted.",
+      "failureIds": [],
+      "remainingCoverage": "No overflow/lost action/focus/hidden error; natural portrait and approved breakpoints; no stale private screen after resume; PWA/app claims require own acceptance.",
+      "blockingOrNotRunReason": "The complete local procedure was not executed. The named passing source, error-rendering or responsive subsets do not satisfy the remaining checks; no production-approval prerequisite is being invented.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "O03",
+      "title": "Performance, scale and graceful failure",
+      "requirementIds": [
+        "WS-10-R06",
+        "WS-10-R07"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [],
+      "actualObservedSubtests": "No independent actual business subtest from this package executed inthiswave.",
+      "failureIds": [],
+      "remainingCoverage": "Owner-approved budgets and error/SLO limits met; bounded retries/backpressure; no row leak, join amplification or sensitive logs; absent budgets cannot be called passed.",
+      "blockingOrNotRunReason": "No approved load profile, performance budgets, service targets or scaled SQL dataset is provided.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "O04",
+      "title": "Backup and disaster-recovery restore drill",
+      "requirementIds": [
+        "WS-02-R07",
+        "WS-10-R09"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [],
+      "actualObservedSubtests": "No independent actual business subtest from this package executed inthiswave.",
+      "failureIds": [],
+      "remainingCoverage": "Documented approved RPO/RTO met with measured timing/checksums; erasure tombstones reapplied; no old grants/charges/notices resurrect; no production restore.",
+      "blockingOrNotRunReason": "No approved RPO/RTO, isolated restore package or erasure/provider reconciliation drill is provided.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "O05",
+      "title": "Exact release and retained artifact regression",
+      "requirementIds": [
+        "WS-10-R07",
+        "WS-10-R08"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [
+        "A_CONTRACT",
+        "QA_INVARIANTS",
+        "QA_ADVERSARIAL"
+      ],
+      "actualObservedSubtests": "Canonical migration,Functions,portal,protectedRoadmap,approvedimage/configsource families unchanged relative accepted checkpoint. No candidate created or release certified by QA.",
+      "failureIds": [],
+      "remainingCoverage": "Only approved paths change; exact dependencies/installed migration ledger and reversible plan checked; stale source/full old-worktree rebuild rejected; no deploy from this task.",
+      "blockingOrNotRunReason": "An exact candidate artifact/overlay and compatibility verification package is not built; source invariants and Master observations are partial evidence.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "O06",
+      "title": "Rollback and uncertain-outcome tabletop",
+      "requirementIds": [
+        "WS-10-R08",
+        "WS-10-R09"
+      ],
+      "status": "NOT_RUN",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [],
+      "actualObservedSubtests": "No independent actual business subtest from this package executed inthiswave.",
+      "failureIds": [],
+      "remainingCoverage": "Exact chosen plan preserves audit/financial/erasure history and current protected lane; no generic reset, old DB restore or payment retry; safe hold is available.",
+      "blockingOrNotRunReason": "Fullpackage notexecuted; no completecasePASS isclaimed. ",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "O07",
+      "title": "Support, training and operational handover",
+      "requirementIds": [
+        "WS-10-R09",
+        "WS-03-R08",
+        "WS-03-R10"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [],
+      "actualObservedSubtests": "No independent actual business subtest from this package executed inthiswave.",
+      "failureIds": [],
+      "remainingCoverage": "Named primary/backup/escalation, monitored alerts, redacted correlation IDs, incident/erasure/finance SOP, training signoff and service hours; support cannot impersonate or bypass holds.",
+      "blockingOrNotRunReason": "Named support/on-call owners, chosen SLA, training and incident/privacy/finance tabletop evidence are missing.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "O08",
+      "title": "CI evidence quality and reproducibility",
+      "requirementIds": [
+        "WS-10-R07",
+        "WS-02-R05"
+      ],
+      "status": "NOT_RUN",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [],
+      "actualObservedSubtests": "No independent actual business subtest from this package executed inthiswave.",
+      "failureIds": [],
+      "remainingCoverage": "CI triggers include owned source/API/migrations; artifacts name environment/time/hash/fixtures/result; unit/static/mock pass never promoted to hosted acceptance.",
+      "blockingOrNotRunReason": "Fullpackage notexecuted; no completecasePASS isclaimed. ",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "A09",
+      "title": "Source-aligned first affiliate commission and reversal acceptance",
+      "requirementIds": [
+        "WS-08-R03",
+        "WS-08-R05",
+        "WS-08-R07",
+        "WS-08-R08",
+        "WS-09-R08",
+        "WS-09-R09",
+        "WS-09-R10"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [],
+      "actualObservedSubtests": "No independent actual business subtest from this package executed inthiswave.",
+      "failureIds": [],
+      "remainingCoverage": "One immutable qualifying obligation and linked compensating reversal; a held credit demonstration alone cannot pass this stage. Replay100times/concurrently remains exactly once; no provider, cash transfer or live setup.",
+      "blockingOrNotRunReason": "The shared commission, ledger and reversal contracts and Phase0 gate dispositions are not cleared or assembled.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "E01",
+      "title": "Self-guided and optional on-demand membership progression",
+      "requirementIds": [
+        "WS-03-R06",
+        "WS-03-R07",
+        "WS-05-R04",
+        "WS-05-R05",
+        "WS-05-R09",
+        "WS-09-R05",
+        "WS-09-R06"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [],
+      "actualObservedSubtests": "No independent actual business subtest from this package executed inthiswave.",
+      "failureIds": [],
+      "remainingCoverage": "One existing identity; exact server-owned offer/usage/access rules; no assumed products, prices, seed/provisioning or extra access; failure preserves prior approved state.",
+      "blockingOrNotRunReason": "Selected self-guided/on-demand offer, allowance, upgrade and renewal rules remain unanswered.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "E02",
+      "title": "Coaching allowance modes and usage accounting",
+      "requirementIds": [
+        "WS-05-R04",
+        "WS-05-R05",
+        "WS-05-R09",
+        "WS-09-R14"
+      ],
+      "status": "FAIL",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [
+        "B_BASELINE_SQL",
+        "B_HOLD_SQL",
+        "B_ORIGINAL",
+        "B_CORRECTED",
+        "B_REVERTED",
+        "B_DIRECT_STRICT"
+      ],
+      "actualObservedSubtests": "Current RPC authorized helper failure reproduced7ways; local correction30/30PASS; exact revert repeats7failures. Reserve/consume/release/retry/aggregation/real lock wait/rollback guarded. Direct ledger and allowance paths retain3strictFAILs.",
+      "failureIds": [
+        "QA-W3-DIRECT-01",
+        "QA-W3-DIRECT-02",
+        "QA-W3-DIRECT-03"
+      ],
+      "remainingCoverage": "Each chargeable interaction consumes approved allowance once; no overspend/double-use or implied unlimited right; immutable correction/audit; absent selected policy blocks positive expectation.",
+      "blockingOrNotRunReason": "Narrow RPC repair does not close global direct-table reads/mutations. Selected allowance modes, resets, rollover/expiry/overage and full operational integration remain incomplete.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "E03",
+      "title": "Incumbent tool disposition and fictional migration rehearsal",
+      "requirementIds": [
+        "WS-02-R08",
+        "WS-03-R01",
+        "WS-10-R08",
+        "WS-10-R09"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [],
+      "actualObservedSubtests": "No independent actual business subtest from this package executed inthiswave.",
+      "failureIds": [],
+      "remainingCoverage": "No real data import; deterministic dedupe/mapping and audit; missing inventory retained; no silent old-source overwrite, erased-record resurrection or unapproved legacy shutdown.",
+      "blockingOrNotRunReason": "The actual tool inventory, migration disposition and consent/retirement criteria remain unanswered.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "E04",
+      "title": "Marketing/event scope and later-decision precedence",
+      "requirementIds": [
+        "WS-01-R04",
+        "WS-01-R05",
+        "WS-01-R07",
+        "WS-03-R09",
+        "WS-10-R09"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [],
+      "actualObservedSubtests": "No independent actual business subtest from this package executed inthiswave.",
+      "failureIds": [],
+      "remainingCoverage": "Preserve unfulfilled original scope or explicit supersession evidence; current HHL free/operational decision not overwritten by old commercial concept. No campaign launch, ad spend, bulk send or financial activation.",
+      "blockingOrNotRunReason": "Original event/acquisition fulfillment or supersession and selected campaign/consent contracts are unresolved.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "E05",
+      "title": "Group communication policy, moderation and escalation",
+      "requirementIds": [
+        "WS-02-R03",
+        "WS-02-R06",
+        "WS-03-R08",
+        "WS-03-R09",
+        "WS-05-R07",
+        "WS-06-R06"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [],
+      "actualObservedSubtests": "No independent actual business subtest from this package executed inthiswave.",
+      "failureIds": [],
+      "remainingCoverage": "No cross-group/member/minor leakage; unsupported channel/permission denied; consent and operational notices remain distinct; direct-message code alone cannot certify all channel functions.",
+      "blockingOrNotRunReason": "Selected group/channel/minor/SLA/moderation/retention/charging rules remain unanswered.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    },
+    {
+      "caseId": "E06",
+      "title": "Course workbook, quiz and completion policy",
+      "requirementIds": [
+        "WS-05-R02",
+        "WS-07-R03",
+        "WS-07-R04"
+      ],
+      "status": "BLOCKED",
+      "fullPackagePassed": false,
+      "completeCaseRun": false,
+      "actualSuiteIds": [],
+      "actualObservedSubtests": "No independent actual business subtest from this package executed inthiswave.",
+      "failureIds": [],
+      "remainingCoverage": "Exact approved education rules; no guessed quiz scoring or49-day curriculum; authored draft not client-published until approved; assessment result never implies health score or automatic clinical direction.",
+      "blockingOrNotRunReason": "Selected workbook, quiz, attempt, sequence and curriculum rules remain unanswered.",
+      "productionAcceptance": false,
+      "wave2EvidenceRetained": true
+    }
+  ],
+  "previousCheckpoint": "fad394ef683b711ba34866ec614bed71a26cee93",
+  "observedAt": "2026-11-01T15:31:50.302Z",
+  "previousFailuresReevaluatedAgainstCurrentCatalog": true,
+  "productionApproval": false
+}

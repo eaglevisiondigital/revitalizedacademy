@@ -1,0 +1,120 @@
+TAP version 13
+# Subtest: independent pending QR result cannot revive revoked selection
+ok 1 - independent pending QR result cannot revive revoked selection
+  ---
+  duration_ms: 282.441458
+  type: 'test'
+  ...
+# Subtest: independent pending QR result cannot revive expired selection
+ok 2 - independent pending QR result cannot revive expired selection
+  ---
+  duration_ms: 18.877458
+  type: 'test'
+  ...
+# Subtest: independent pending QR result cannot revive wrong-account selection
+ok 3 - independent pending QR result cannot revive wrong-account selection
+  ---
+  duration_ms: 56.451917
+  type: 'test'
+  ...
+# Subtest: independent out-of-order QR responses retain only latest selected channel
+ok 4 - independent out-of-order QR responses retain only latest selected channel
+  ---
+  duration_ms: 96.4985
+  type: 'test'
+  ...
+# Subtest: independent non-OK QR response cannot expose returned copy or image
+ok 5 - independent non-OK QR response cannot expose returned copy or image
+  ---
+  duration_ms: 19.58975
+  type: 'test'
+  ...
+# Subtest: independent repeated same-account renewal retains one pending weekly write
+ok 6 - independent repeated same-account renewal retains one pending weekly write
+  ---
+  duration_ms: 141.77925
+  type: 'test'
+  ...
+# Subtest: independent switched-then-restored actor cannot resurrect ended member document
+ok 7 - independent switched-then-restored actor cannot resurrect ended member document
+  ---
+  duration_ms: 106.616917
+  type: 'test'
+  ...
+# Subtest: independent diff confinement: member runtime differs only inside weekly-checkin handler
+ok 8 - independent diff confinement: member runtime differs only inside weekly-checkin handler
+  ---
+  duration_ms: 29.37975
+  type: 'test'
+  ...
+# Subtest: independent inventory preserves exact 101 requirements, 10 details and 57 package IDs
+ok 9 - independent inventory preserves exact 101 requirements, 10 details and 57 package IDs
+  ---
+  duration_ms: 60.716875
+  type: 'test'
+  ...
+# Subtest: independent detached V3 source-hash substitution fails frozen citation approval
+not ok 10 - independent detached V3 source-hash substitution fails frozen citation approval
+  ---
+  duration_ms: 9.053125
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-qa/tests/wave3-qa/adversarial.test.cjs:43:47'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'held_for_review'
+    - 'supported_education'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'supported_education'
+  actual: 'held_for_review'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-qa/tests/wave3-qa/adversarial.test.cjs:53:9)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: independent detached V3 locator substitution fails frozen citation approval
+not ok 11 - independent detached V3 locator substitution fails frozen citation approval
+  ---
+  duration_ms: 1.153541
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-qa/tests/wave3-qa/adversarial.test.cjs:43:47'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'held_for_review'
+    - 'supported_education'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'supported_education'
+  actual: 'held_for_review'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-qa/tests/wave3-qa/adversarial.test.cjs:53:9)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 9
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1275.895167

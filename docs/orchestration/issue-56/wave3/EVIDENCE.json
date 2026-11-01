@@ -1,0 +1,140 @@
+{
+  "schemaVersion": "rva-wave3-independent-qa-v1",
+  "observedAt": "2026-11-01T15:31:50.308Z",
+  "testedHead": "4fa1c148aaad7dff2019bbef0b8a82c80d3b67e1",
+  "branch": "codex/rva-wave3-qa-20261101",
+  "acceptedBase": "fad394ef683b711ba34866ec614bed71a26cee93",
+  "productionCalls": 0,
+  "realClientDataReads": 0,
+  "productionWrites": 0,
+  "financialActions": 0,
+  "suites": [
+    {
+      "id": "C_MEMBER_V3",
+      "file": "docs/orchestration/issue-56/wave3/UNAFF_MEMBER_V3.tap",
+      "sha256": "87eb4af187336d0ab574dfd0132c158acb27de0c0aa52c069f065baf2032331c",
+      "tests": 25,
+      "pass": 25,
+      "fail": 0,
+      "skipped": 0,
+      "scope": "Actual member JS+DOM against fictional transport; unchanged detached V3 catalog. 1 of25 is expected baseline reproduction, not a current product pass."
+    },
+    {
+      "id": "C_QR_BROWSER",
+      "file": "docs/orchestration/issue-56/wave3/UNAFF_QR_HOST.tap",
+      "sha256": "52b9c40481f8baac3582585603c7429dd93c032aab6f39be63a2b06ec4683036",
+      "tests": 15,
+      "pass": 15,
+      "fail": 0,
+      "skipped": 0,
+      "scope": "Loopback fictional server;4PNG QR roundtrips and6Chromium/WebKit desktop/tablet/mobile QR screenshot decodes via independent native Vision."
+    },
+    {
+      "id": "QA_ADVERSARIAL",
+      "file": "docs/orchestration/issue-56/wave3/INDEPENDENT_ADVERSARIAL.tap",
+      "sha256": "b982bd24e75f2e6fee6b24622a9bef8d483e627a421f17b0a75152f78c7fab58",
+      "tests": 12,
+      "pass": 12,
+      "fail": 0,
+      "skipped": 0,
+      "scope": "Own pending/stale response, repeated refresh, changed identity, source citation, diff confinement and no-loss inventories."
+    },
+    {
+      "id": "QA_CATALOG_LINEAGE",
+      "file": "docs/orchestration/issue-56/wave3/CATALOG_LINEAGE.tap",
+      "sha256": "06810f6e91baa70411a1fd2317c925ddec04e3f23740c7ae2701936eb5b109fe",
+      "tests": 3,
+      "pass": 3,
+      "fail": 0,
+      "skipped": 0,
+      "scope": "No production calls. Private capture hashes and checked-in fixture metadata compared against dated Master catalog."
+    },
+    {
+      "id": "B_ORIGINAL",
+      "file": "docs/orchestration/issue-56/wave3/B-pg/original.tap",
+      "sha256": "b09468165dd2f2c87ab23890dddc46c4474973fb5241892c1a7645c8225c78dd",
+      "tests": 30,
+      "pass": 23,
+      "fail": 7,
+      "skipped": 0,
+      "scope": "Actual PG17 current metadata overlay;original same strict assertions. Original/reverted7helper42501 failures are retained reproduction evidence."
+    },
+    {
+      "id": "B_CORRECTED",
+      "file": "docs/orchestration/issue-56/wave3/B-pg/corrected.tap",
+      "sha256": "259166ccda476f273748b2b19b08612aad0ebe96d7f6d410a0db8e7296e25973",
+      "tests": 30,
+      "pass": 30,
+      "fail": 0,
+      "skipped": 0,
+      "scope": "Actual PG17 current metadata overlay;corrected same strict assertions. Original/reverted7helper42501 failures are retained reproduction evidence."
+    },
+    {
+      "id": "B_REVERTED",
+      "file": "docs/orchestration/issue-56/wave3/B-pg/reverted.tap",
+      "sha256": "eaef95a6d269505b8da1e28d8101bc55f5caf895361f28c034a9ed773470b14a",
+      "tests": 30,
+      "pass": 23,
+      "fail": 7,
+      "skipped": 0,
+      "scope": "Actual PG17 current metadata overlay;reverted same strict assertions. Original/reverted7helper42501 failures are retained reproduction evidence."
+    },
+    {
+      "id": "B_DIRECT_STRICT",
+      "file": "docs/orchestration/issue-56/wave3/B-pg/direct-boundaries.tap",
+      "sha256": "cd4d6e837675162ddfee52abd32c53fe6582b6d928697646bf79d133a1e1524d",
+      "tests": 3,
+      "pass": 0,
+      "fail": 3,
+      "skipped": 0,
+      "scope": "Three strict currently unresolved direct-table isolation failures; never hidden by runner exit0."
+    },
+    {
+      "id": "A_CURRENT_ORIGINAL",
+      "tests": 35,
+      "pass": 29,
+      "fail": 6,
+      "file": "docs/orchestration/issue-56/wave3/A-pg/PG_RESULTS.json",
+      "sha256": "fdde171b7cc290b3e9d7346ea69d10e817041ecd1fd4c6635d56d626061fceec",
+      "scope": "Actual PG17 dated current-catalog equivalent goal scope; original/reverted failures retained, corrected local policy only."
+    },
+    {
+      "id": "A_CURRENT_CORRECTED",
+      "tests": 35,
+      "pass": 35,
+      "fail": 0,
+      "file": "docs/orchestration/issue-56/wave3/A-pg/PG_RESULTS.json",
+      "sha256": "fdde171b7cc290b3e9d7346ea69d10e817041ecd1fd4c6635d56d626061fceec",
+      "scope": "Actual PG17 dated current-catalog equivalent goal scope; original/reverted failures retained, corrected local policy only."
+    },
+    {
+      "id": "A_CURRENT_REVERTED_REGRESSION",
+      "tests": 35,
+      "pass": 29,
+      "fail": 6,
+      "file": "docs/orchestration/issue-56/wave3/A-pg/PG_RESULTS.json",
+      "sha256": "fdde171b7cc290b3e9d7346ea69d10e817041ecd1fd4c6635d56d626061fceec",
+      "scope": "Actual PG17 dated current-catalog equivalent goal scope; original/reverted failures retained, corrected local policy only."
+    }
+  ],
+  "totals": {
+    "tests": 253,
+    "pass": 224,
+    "fail": 29
+  },
+  "testsAreRepeatedAssertionInstancesNotUniqueBusinessJourneys": true,
+  "expectedBaselineMemberDefectReproductions": 1,
+  "expectedOriginalRevertedSQLFailures": 26,
+  "unresolvedStrictCurrentDirectFailures": 3,
+  "macroCounts": {
+    "PASS": 0,
+    "FAIL": 2,
+    "BLOCKED": 43,
+    "NOT_RUN": 12
+  },
+  "scaffoldLimit": "Current bodies/policies/critical ACLs are reconstructed on empty historical dependency schemas. Managed Auth is fictional, Postgres local version17.11 versus hosted17.6. No live exploit or hosted operation claimed.",
+  "aclLimit": "Three noncritical captured NULL/default ACL representations are verified effective-equivalent by PostgreSQL aclexplode/acldefault; critical raw ACLs exact.",
+  "clustersStoppedAndRemoved": true,
+  "productionRecommendation": "NO_GO",
+  "nextSafeLocalCheckpoint": "Narrow contact-bound direct usage/entitlement isolation proposal and current-equivalent strict tests; preserve paid-access hold and full101/10/57 inventory."
+}

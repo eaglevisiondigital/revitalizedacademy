@@ -1,0 +1,26 @@
+{
+  "blocked": null,
+  "equivalentTables": 25,
+  "stages": [
+    {
+      "name": "CURRENT_ORIGINAL",
+      "pass": 29,
+      "fail": 6,
+      "blocked": 0
+    },
+    {
+      "name": "CURRENT_CORRECTED",
+      "pass": 35,
+      "fail": 0,
+      "blocked": 0
+    },
+    {
+      "name": "CURRENT_REVERTED_REGRESSION",
+      "pass": 29,
+      "fail": 6,
+      "blocked": 0
+    }
+  ],
+  "clusterStopped": true,
+  "clusterRemoved": true
+}
