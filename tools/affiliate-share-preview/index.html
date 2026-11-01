@@ -1,0 +1,8 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Fictional Affiliate Share Preview</title>
+<style>body{font:16px system-ui;max-width:720px;margin:24px auto;padding:16px;background:#fbf8ef;color:#154734}label{display:block;margin:16px 0}textarea,input{box-sizing:border-box;width:100%;padding:10px}button{padding:10px;margin:4px;background:#154734;color:white;border:0}#qr{display:block;max-width:100%;height:auto}output{overflow-wrap:anywhere}h1{font-size:26px}</style>
+<h1>Fictional Share Preview</h1><p>Local synthetic fixture only. No real approvals, contacts, tracking, navigation or messages. The QR points to synthetic.invalid.</p>
+<label>Fixture state<select id="state"><option value="active">Active fictional creative</option><option value="revoked">Revoked creative</option><option value="expired">Expired creative</option><option value="wrong-account">Different fictional account</option></select></label>
+<label>Channel<select id="channel"><option>email</option><option>sms</option><option>dm</option><option>social</option></select></label>
+<button id="prepare" type="button">Prepare fictional preview</button><p id="status" role="status"></p>
+<section id="preview" hidden><label>Manual copy<textarea id="copy" readonly rows="6"></textarea></label><button id="select-copy" type="button">Select copy manually</button><label>Personalized fictional URL<input id="url" readonly></label><img id="qr" alt="QR encoding the exact fictional referral URL"><output id="qr-note"></output></section>
+<script src="/preview.js"></script></html>

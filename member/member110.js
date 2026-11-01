@@ -3499,7 +3499,10 @@
 
   el("rm-checkin-form").addEventListener("submit", async (event) => {
     event.preventDefault();
-    if (!currentMember || !checkinTemplate) return;
+    const task = {userId: memberUserId, epoch: memberSessionEpoch, run: dashboardRun};
+    if (!dashboardTaskCurrent(task) || !currentMember || !checkinTemplate) return;
+    const member = {contact_id: currentMember.contact_id, membership_id: currentMember.membership_id};
+    const templateId = checkinTemplate.id;
 
     const status = el("rm-checkin-status");
     showStatus(status, "Submitting your check-in...");
@@ -3529,20 +3532,27 @@
     }
 
     const period = weekPeriod();
-    const { data: { user } } = await client.auth.getUser();
+    const { data: authData, error: authError } = await client.auth.getUser();
+    if (!dashboardTaskCurrent(task)) return;
+    const user = authData?.user;
+    if (authError || user?.id !== task.userId) {
+      showStatus(status, "Your member session could not be verified. Please sign in again.", "error");
+      return;
+    }
 
     const { error } = await client.from("client_checkins").insert({
-      contact_id: currentMember.contact_id,
-      membership_id: currentMember.membership_id,
-      template_id: checkinTemplate.id,
+      contact_id: member.contact_id,
+      membership_id: member.membership_id,
+      template_id: templateId,
       period_start: period.start,
       period_end: period.end,
       status: "submitted",
       responses,
       submitted_at: new Date().toISOString(),
-      created_by: user?.id || null
+      created_by: task.userId
     });
 
+    if (!dashboardTaskCurrent(task)) return;
     if (error) {
       showStatus(status, error.code === "23505" ? "This week’s check-in has already been submitted." : error.message, "error");
       return;

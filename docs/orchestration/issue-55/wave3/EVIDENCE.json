@@ -1,0 +1,89 @@
+{
+  "issue": 55,
+  "wave": 3,
+  "owner_agent": "/root/affiliate_finance_audit",
+  "branch": "codex/rva-wave3-unaffected-20261101",
+  "base_sha": "fad394ef683b711ba34866ec614bed71a26cee93",
+  "worktree": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-unaffected",
+  "status": "VERIFIED_LOCAL_BOUNDED_SUBSETS",
+  "containing_commit_returned_in_native_handoff": true,
+  "observed_at": "2026-11-01T15:14:28.535396+00:00",
+  "features": [
+    "Real loopback fictional QR/share preview over existing unchanged helper",
+    "Independent macOS Vision decode of4PNG payloads and6actual rendered QR screenshots",
+    "Master-approved weekly-checkin-only task/identity snapshot guard",
+    "Actual member operations and8detached fictionalV3 regressions"
+  ],
+  "authorizations": {
+    "initial_scope": "tools/affiliate-share-preview;tests/wave3-unaffected;docs/orchestration/issue-55/wave3 only",
+    "expanded_member_runtime": "Master explicitly reviewed and approved weekly-checkin listener only after baseline race reproduction; no other member handler or Auth/API/RLS change"
+  },
+  "files_sha256": {
+    "tools/affiliate-share-preview/index.html": "909d07c61e93a51ce71a678fe796c28151fffb6fbfb13e956d28949185a72f3d",
+    "tools/affiliate-share-preview/encode.py": "13ca0632e2a0924aceb327883918ba41a728846db215bb2d42b3bc75cc6aed2d",
+    "tools/affiliate-share-preview/preview.js": "0ea03f2e34bcb17f13ab19cc79945d1c5219352aa0975bf40f00202cc156c260",
+    "tools/affiliate-share-preview/server.cjs": "ac7240cb8736d96605f9565ae4805039396edd0890b9b2935a1e804a37591f45",
+    "tests/wave3-unaffected/member-fixture.cjs": "bf75ebba013a2319436cd02e8080c21185bea33389ffea4d8d92a1deb77825c5",
+    "tests/wave3-unaffected/member-operations.test.cjs": "d94682b80d6f72960ba3939a9a37b8a39888c39344a2a24bbd76102a9a05e17b",
+    "tests/wave3-unaffected/preview-browser.cjs": "988b7b74d7f4e1869e88e42e50d5c8d1a22c6aec9b561cd439e903fec1fffdfe",
+    "tests/wave3-unaffected/qr.test.cjs": "38909a0689ded38ffbdbe0b87f131455e1bcb5e4d1173c4f4731eda58a488dcd",
+    "tests/wave3-unaffected/v3-regression.test.cjs": "c6a636e4f8881e6022b1bb515fd8083e71e3ee7cc6f54f30e113d4499a71e63f",
+    "tests/wave3-unaffected/decode-qr.swift": "0da4e0169d9dcb8a1e722c5ba4241f586e71a598d01086c142045bc78c285697",
+    "member/member110.js": "080ae58a104cb3ed7e30cb71e0206400a256bebc60aacc415dd453dc871e654f"
+  },
+  "preserved_sources_sha256": {
+    "js/rva-affiliate-share-contract.cjs": "b6b3a9288f3048384ad9b0fd6963b242cfbdb38e92218f52a6fbe2b8882f2e13",
+    "tools/coach-companion-catalog/index.cjs": "5ac8a0d1f5cfaab995c937a8685cdbeb5fcc71fe7bce0316f60cf7d0b1734266",
+    "docs/orchestration/issue-55/127_SECTION_TRACE.csv": "10a58e5a8471a6212a0742787fdca87aaa825a9a6377432a387c012c66b02f6c",
+    "docs/orchestration/issue-55/REPORT.md": "d23a3fc1e48dc9005629e9480e733dfd0be34300024d34f270709fdd811cebfc",
+    "docs/orchestration/issue-55/SOURCE_PACKET_ADDENDUM.md": "c883a1b0c26fc29e73302ce6904d431e304aa1f020398027818ae98f997a92ce"
+  },
+  "actual_tests": {
+    "QR_preview": 15,
+    "member_operation_cases": 17,
+    "member_current_passes": 16,
+    "expected_baseline_member_defect_reproductions": 1,
+    "detachedV3_new_regressions": 8,
+    "total_assertion_cases": 40,
+    "unexpected_failures": 0,
+    "syntax_checks": 3,
+    "whitespace": "PASS",
+    "decoder_independence": "ReportLab encoder versus native Vision decoder"
+  },
+  "baseline_defect": "Account switch during awaited getUser clears currentMember, then old handler throws on contact_id; no insert occurred. Reproduced exact accepted-base source.",
+  "fixed_contract": "Capture existing task identity/epoch/run, member IDs and template; revalidate task and actual getUser result before insert; revalidate after insert before status/reload. Preserve same-user token refresh.",
+  "fixture_limits": [
+    "Full actual JS and DOM, fictional Auth/query/RPC/insert responses only",
+    "Wrong-actor42501 is simulated server denial, not backend/RLS proof",
+    "No real signed approval or consent receipts",
+    "No financial/clinical knowledge/rule activation",
+    "No full57 macro package acceptance"
+  ],
+  "unchanged_holds": [
+    "Existing two SQL findings outside this lane",
+    "All127originalaffiliate sections remain SOURCE_MISSING",
+    "MLM/genealogy/ranks OFF;coach compensation separate",
+    "49day/minor/marketing/financial decisions not invented",
+    "113V3 intake and engine/worker unchanged",
+    "Alex private issuance untouched"
+  ],
+  "production_calls": 0,
+  "real_data_reads": 0,
+  "credential_access": 0,
+  "DB_tests_or_changes": 0,
+  "RLS_or_grant_changes": 0,
+  "provider_or_financial_actions": 0,
+  "messages_sent": 0,
+  "QA_mapping": "QA_PACKAGE_MAPPING.json,57retained,3partial,0fullnewPASS",
+  "documentation": "Ownedwave3 docs only; Master owns shared CURRENT_BUILD_STATE",
+  "next_action": "IndependentQA reruns exact commit and verifies handler-only scope. Product authentication/media/server/RLS/financial acceptance remain separately gated.",
+  "evidence_sha256": {
+    "docs/orchestration/issue-55/wave3/DEPENDENCIES.json": "dc97e559affbbf9b7983f7bbf1d03faeaf318d3ba98e3ea1dc902ef5e2a991e2",
+    "docs/orchestration/issue-55/wave3/QR_RESULTS.json": "b5f9d277e5a077451dcaa09e6c26fa2a4eb94e6fcd0b87e72b964d9656a318c9",
+    "docs/orchestration/issue-55/wave3/OPERATIONS_V3.tap": "3ec8d38a3d8e09e805d2062d27b5cb6944e69279e60119894701ea63c1cb3829",
+    "docs/orchestration/issue-55/wave3/REPORT.md": "6c6006a2f037b06bdff43dc49cb5ad824ae59c011f7841c7c519a10f0af7bfd9",
+    "docs/orchestration/issue-55/wave3/QA_PACKAGE_MAPPING.json": "001a6768d3540de82d5b2b3787b08653e0f7bcce3a347649da63e9f26a6e7045"
+  },
+  "application_build_or_deploy": false,
+  "native_decoder_uses_local_Swift_module_cache": true
+}

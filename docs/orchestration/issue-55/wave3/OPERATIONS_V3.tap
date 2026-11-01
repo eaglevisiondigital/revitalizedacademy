@@ -1,0 +1,33 @@
+✔ actual create goal handler maps typed fictional values to existing scoped RPC (139.728208ms)
+✔ actual create habit handler uses existing RPC and numeric schedule input (70.466917ms)
+✔ actual check-in form validates required responses before any write (53.180625ms)
+✔ actual weekly check-in creates exact current-member payload via existing table (63.065792ms)
+✔ actual goal handler displays fictional server wrong-actor denial without claiming authorization success (51.002459ms)
+✔ actual check-in surfaces duplicate server response, not a second success (47.70425ms)
+✔ BASELINE reproduction: stale weekly check-in switch throws before write (86.548708ms)
+✔ fixed pending identity check ignores account switch (63.147791ms)
+✔ fixed pending identity check ignores logout (48.201459ms)
+✔ fixed identity response fails closed {"authUserId":null} (46.957ms)
+✔ fixed identity response fails closed {"authUserId":"synthetic-b"} (48.519458ms)
+✔ fixed identity response fails closed {"authError":{"message":"Fictional identity unavailable"}} (54.734083ms)
+✔ fixed response after switch ignores completed write (63.638875ms)
+✔ fixed response after switch ignores completed duplicate (62.273708ms)
+✔ fixed response after logout ignores completed write (65.878125ms)
+✔ fixed response after logout ignores completed duplicate (61.122208ms)
+✔ same-account token renewal keeps pending check-in and exact current-actor payload (55.123333ms)
+✔ two-driver fictional catalog keeps exact independent provenance without cross-topic carryover (3.54125ms)
+✔ source audience restriction holds only its matching education topic (1.240166ms)
+✔ claim source swap without matching source hash/version cannot migrate approved provenance (1.47525ms)
+✔ selection-only receipt cannot become education by relabeling text or envelope (1.424125ms)
+✔ new catalog generation invalidates both stale request and old synthetic verifier (1.218ms)
+✔ invented intake remains held despite approved local flags and a fresh fixture verifier (1.106291ms)
+✔ real mode and private request never invoke a fictional approval verifier (0.3745ms)
+✔ fictional instruction-like content remains inert cited source text (0.874791ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1466.253375

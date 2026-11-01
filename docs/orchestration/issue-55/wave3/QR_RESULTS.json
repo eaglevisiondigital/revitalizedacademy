@@ -1,0 +1,118 @@
+{
+  "scope": "LOCAL_FICTIONAL_ONLY",
+  "receipt_kind": "Successful runner outcome recorded from actual native tool output; independent QA rerun pending",
+  "tests": 15,
+  "pass": 15,
+  "fail": 0,
+  "browser_cases": [
+    {
+      "engine": "Chromium",
+      "width": 1440,
+      "result": "PASS",
+      "rendered_qr_independently_decoded": true,
+      "exact_expected_url_match": true,
+      "manual_copy_selection": true,
+      "revoked_expired_wrong_account_clear": true,
+      "stale_preview_response_discarded": true,
+      "external_requests": 0
+    },
+    {
+      "engine": "Chromium",
+      "width": 768,
+      "result": "PASS",
+      "rendered_qr_independently_decoded": true,
+      "exact_expected_url_match": true,
+      "manual_copy_selection": true,
+      "revoked_expired_wrong_account_clear": true,
+      "stale_preview_response_discarded": true,
+      "external_requests": 0
+    },
+    {
+      "engine": "Chromium",
+      "width": 390,
+      "result": "PASS",
+      "rendered_qr_independently_decoded": true,
+      "exact_expected_url_match": true,
+      "manual_copy_selection": true,
+      "revoked_expired_wrong_account_clear": true,
+      "stale_preview_response_discarded": true,
+      "external_requests": 0
+    },
+    {
+      "engine": "WebKit",
+      "width": 1440,
+      "result": "PASS",
+      "rendered_qr_independently_decoded": true,
+      "exact_expected_url_match": true,
+      "manual_copy_selection": true,
+      "revoked_expired_wrong_account_clear": true,
+      "stale_preview_response_discarded": true,
+      "external_requests": 0
+    },
+    {
+      "engine": "WebKit",
+      "width": 768,
+      "result": "PASS",
+      "rendered_qr_independently_decoded": true,
+      "exact_expected_url_match": true,
+      "manual_copy_selection": true,
+      "revoked_expired_wrong_account_clear": true,
+      "stale_preview_response_discarded": true,
+      "external_requests": 0
+    },
+    {
+      "engine": "WebKit",
+      "width": 390,
+      "result": "PASS",
+      "rendered_qr_independently_decoded": true,
+      "exact_expected_url_match": true,
+      "manual_copy_selection": true,
+      "revoked_expired_wrong_account_clear": true,
+      "stale_preview_response_discarded": true,
+      "external_requests": 0
+    }
+  ],
+  "direct_channels": [
+    {
+      "channel": "email",
+      "result": "PASS",
+      "independent_decoded_url_equals_input": true
+    },
+    {
+      "channel": "sms",
+      "result": "PASS",
+      "independent_decoded_url_equals_input": true
+    },
+    {
+      "channel": "dm",
+      "result": "PASS",
+      "independent_decoded_url_equals_input": true
+    },
+    {
+      "channel": "social",
+      "result": "PASS",
+      "independent_decoded_url_equals_input": true
+    }
+  ],
+  "additional_cases": [
+    "revoked hold",
+    "expired hold",
+    "wrong-account hold",
+    "invalid selection denied",
+    "foreign Origin/arbitrary fields/unknown path denied"
+  ],
+  "encoder": "Installed ReportLab4.4.9 qrencoder; Pillow12.3.0 PNG",
+  "independent_decoder": "macOS Vision QR via Swift; receives generated PNG/screenshots only",
+  "quiet_zone_modules": 4,
+  "error_correction": "M",
+  "actual_url_example": "https://academy.synthetic.invalid/enroll?ref=RVA-FICTIONAL001&rva_campaign=fictional-campaign&rva_creative=fictional-creative&rva_channel=email",
+  "setup_history": [
+    "Initial Vision sandbox framework decode failed",
+    "Identical PNG independently decoded outside sandbox after approved native execution"
+  ],
+  "production_calls": 0,
+  "provider_calls": 0,
+  "live_navigation": false,
+  "OS_clipboard_write": false,
+  "new_dependencies_installed": false
+}

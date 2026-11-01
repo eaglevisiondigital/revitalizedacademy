@@ -1,0 +1,669 @@
+{
+  "package_count": 57,
+  "whole_packages_newly_passed": 0,
+  "partial_packages": 3,
+  "source_matrix_sha256": "58671aa98737d77175c452267cf74b432132e7506ed25dc53af2ce903e831746",
+  "cases": [
+    {
+      "id": "S01",
+      "requirement_ids": [
+        "WS-01-R01",
+        "WS-01-R02",
+        "WS-02-R08",
+        "WS-10-R08"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "S02",
+      "requirement_ids": [
+        "WS-01-R03",
+        "WS-01-R04",
+        "WS-01-R07",
+        "WS-01-R08"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "S03",
+      "requirement_ids": [
+        "WS-01-R05",
+        "WS-01-R06",
+        "WS-03-R09"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "J01",
+      "requirement_ids": [
+        "WS-03-R01",
+        "WS-03-R02",
+        "WS-10-R04"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "J02",
+      "requirement_ids": [
+        "WS-03-R03",
+        "WS-04-R03"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "J03",
+      "requirement_ids": [
+        "WS-03-R04",
+        "WS-05-R03",
+        "WS-05-R05"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "J04",
+      "requirement_ids": [
+        "WS-03-R05",
+        "WS-02-R05"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "J05",
+      "requirement_ids": [
+        "WS-03-R06",
+        "WS-05-R04"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "J06",
+      "requirement_ids": [
+        "WS-09-R01",
+        "WS-09-R02",
+        "WS-09-R03",
+        "WS-09-R04",
+        "WS-09-R13"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "J07",
+      "requirement_ids": [
+        "WS-09-R05",
+        "WS-09-R06"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "J08",
+      "requirement_ids": [
+        "WS-09-R07",
+        "WS-10-R04"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "J09",
+      "requirement_ids": [
+        "WS-03-R07",
+        "WS-05-R04",
+        "WS-09-R14"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "J10",
+      "requirement_ids": [
+        "WS-05-R01",
+        "WS-05-R03",
+        "WS-05-R07"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "PARTIAL_LOCAL_SUBSET_PASS",
+      "verified_subset": "Actual member script goal/habit/checkin payload, required and server-denial display; approved weekly check-in identity/epoch race repair",
+      "remaining": "Mocked transport only, no real RLS/backend security/complete coach operations"
+    },
+    {
+      "id": "J11",
+      "requirement_ids": [
+        "WS-05-R02",
+        "WS-05-R06",
+        "WS-05-R08",
+        "WS-05-R09",
+        "WS-03-R10"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "J12",
+      "requirement_ids": [
+        "WS-10-R04"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "N01",
+      "requirement_ids": [
+        "WS-02-R01",
+        "WS-02-R02",
+        "WS-02-R03",
+        "WS-02-R04",
+        "WS-10-R03"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "N02",
+      "requirement_ids": [
+        "WS-02-R03",
+        "WS-02-R04",
+        "WS-05-R03",
+        "WS-05-R07",
+        "WS-10-R03"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "N03",
+      "requirement_ids": [
+        "WS-02-R03",
+        "WS-02-R04",
+        "WS-10-R03"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "N04",
+      "requirement_ids": [
+        "WS-02-R01",
+        "WS-02-R02",
+        "WS-02-R04"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "N05",
+      "requirement_ids": [
+        "WS-02-R02",
+        "WS-02-R06",
+        "WS-05-R10"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "N06",
+      "requirement_ids": [
+        "WS-02-R03",
+        "WS-02-R04",
+        "WS-05-R04"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "N07",
+      "requirement_ids": [
+        "WS-02-R05",
+        "WS-02-R06"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "N08",
+      "requirement_ids": [
+        "WS-02-R06",
+        "WS-03-R08",
+        "WS-03-R09"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "R01",
+      "requirement_ids": [
+        "WS-04-R01",
+        "WS-04-R02",
+        "WS-04-R03",
+        "WS-04-R07"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "R02",
+      "requirement_ids": [
+        "WS-04-R04",
+        "WS-04-R05",
+        "WS-04-R06"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "R03",
+      "requirement_ids": [
+        "WS-04-R08",
+        "WS-04-R09",
+        "WS-04-R10"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "PARTIAL_LOCAL_SUBSET_PASS",
+      "verified_subset": "Eight new two-source/driver detached fictional admission/retrieval regressions",
+      "remaining": "No real sources,113intake promotion, signed approvals or production registry"
+    },
+    {
+      "id": "F01",
+      "requirement_ids": [
+        "WS-06-R01",
+        "WS-06-R02",
+        "WS-06-R03",
+        "WS-06-R04",
+        "WS-06-R07",
+        "WS-10-R05"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "F02",
+      "requirement_ids": [
+        "WS-06-R05",
+        "WS-06-R06",
+        "WS-06-R08",
+        "WS-10-R03"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "F03",
+      "requirement_ids": [
+        "WS-06-R08"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "C01",
+      "requirement_ids": [
+        "WS-07-R01",
+        "WS-07-R02",
+        "WS-07-R03",
+        "WS-07-R07"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "C02",
+      "requirement_ids": [
+        "WS-07-R04",
+        "WS-07-R05",
+        "WS-07-R06",
+        "WS-07-R09",
+        "WS-05-R06",
+        "WS-05-R08"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "C03",
+      "requirement_ids": [
+        "WS-07-R08",
+        "WS-02-R06"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "A01",
+      "requirement_ids": [
+        "WS-08-R01",
+        "WS-08-R02",
+        "WS-10-R01"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "A02",
+      "requirement_ids": [
+        "WS-08-R03",
+        "WS-08-R04",
+        "WS-08-R13"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "A03",
+      "requirement_ids": [
+        "WS-08-R05",
+        "WS-08-R06",
+        "WS-08-R07"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "PARTIAL_LOCAL_SUBSET_PASS",
+      "verified_subset": "Real fictional QR encoder and independent direct/browser screenshot decode; manual copy and stale/revoked/expired/account preview clearing",
+      "remaining": "Authenticated/live approved content, media download and communications remain absent"
+    },
+    {
+      "id": "A04",
+      "requirement_ids": [
+        "WS-08-R08",
+        "WS-03-R02"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "A05",
+      "requirement_ids": [
+        "WS-08-R09",
+        "WS-08-R15",
+        "WS-02-R06"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "A06",
+      "requirement_ids": [
+        "WS-08-R10",
+        "WS-08-R11",
+        "WS-08-R12",
+        "WS-09-R10",
+        "WS-09-R11"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "A07",
+      "requirement_ids": [
+        "WS-08-R14",
+        "WS-08-R15",
+        "WS-09-R14"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "P01",
+      "requirement_ids": [
+        "WS-09-R08",
+        "WS-09-R09",
+        "WS-09-R10"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "P02",
+      "requirement_ids": [
+        "WS-09-R11",
+        "WS-09-R12",
+        "WS-09-R13",
+        "WS-08-R13"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "A08",
+      "requirement_ids": [
+        "WS-10-R05",
+        "WS-08-R03",
+        "WS-08-R04",
+        "WS-08-R05",
+        "WS-08-R06",
+        "WS-08-R07",
+        "WS-08-R08",
+        "WS-09-R10",
+        "WS-09-R11",
+        "WS-09-R12"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "O01",
+      "requirement_ids": [
+        "WS-10-R01",
+        "WS-10-R02",
+        "WS-10-R07"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "O02",
+      "requirement_ids": [
+        "WS-10-R06",
+        "WS-01-R03",
+        "WS-01-R08",
+        "WS-05-R10"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "O03",
+      "requirement_ids": [
+        "WS-10-R06",
+        "WS-10-R07"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "O04",
+      "requirement_ids": [
+        "WS-02-R07",
+        "WS-10-R09"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "O05",
+      "requirement_ids": [
+        "WS-10-R07",
+        "WS-10-R08"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "O06",
+      "requirement_ids": [
+        "WS-10-R08",
+        "WS-10-R09"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "O07",
+      "requirement_ids": [
+        "WS-10-R09",
+        "WS-03-R08",
+        "WS-03-R10"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "O08",
+      "requirement_ids": [
+        "WS-10-R07",
+        "WS-02-R05"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "A09",
+      "requirement_ids": [
+        "WS-08-R03",
+        "WS-08-R05",
+        "WS-08-R07",
+        "WS-08-R08",
+        "WS-09-R08",
+        "WS-09-R09",
+        "WS-09-R10"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "E01",
+      "requirement_ids": [
+        "WS-03-R06",
+        "WS-03-R07",
+        "WS-05-R04",
+        "WS-05-R05",
+        "WS-05-R09",
+        "WS-09-R05",
+        "WS-09-R06"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "E02",
+      "requirement_ids": [
+        "WS-05-R04",
+        "WS-05-R05",
+        "WS-05-R09",
+        "WS-09-R14"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "E03",
+      "requirement_ids": [
+        "WS-02-R08",
+        "WS-03-R01",
+        "WS-10-R08",
+        "WS-10-R09"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "E04",
+      "requirement_ids": [
+        "WS-01-R04",
+        "WS-01-R05",
+        "WS-01-R07",
+        "WS-03-R09",
+        "WS-10-R09"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "E05",
+      "requirement_ids": [
+        "WS-02-R03",
+        "WS-02-R06",
+        "WS-03-R08",
+        "WS-03-R09",
+        "WS-05-R07",
+        "WS-06-R06"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    },
+    {
+      "id": "E06",
+      "requirement_ids": [
+        "WS-05-R02",
+        "WS-07-R03",
+        "WS-07-R04"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "status": "NOT_RUN_IN_THIS_LANE"
+    }
+  ]
+}
