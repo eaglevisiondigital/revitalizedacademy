@@ -1,0 +1,122 @@
+{
+  "wave": 7,
+  "base": "38f086792addaa9b131cecaf261ef21f89f5ffc7",
+  "scope": "LOCAL_FICTIONAL_ONLY",
+  "alex": "PAUSED_NO_PRIVATE_READS_OR_ACTIONS",
+  "productionWritesAuthorized": false,
+  "financialActivation": false,
+  "sourcePushed": false,
+  "pr59": "DRAFT_PRODUCTION_NO_GO",
+  "requirements": 101,
+  "sourceDetailGroups": 10,
+  "workstreams": 10,
+  "originalPackages": 57,
+  "sourceCompleteness": "PARTIAL; controlling127-section handoff and approved policy gaps remain",
+  "baselineVerification": {
+    "sourceManifestEntries": 113,
+    "qaExecutionPins": 40,
+    "result": "PASS"
+  },
+  "initialPostgresCapacity": {
+    "status": "READY",
+    "occupied": 1,
+    "limit": 32,
+    "free": 31,
+    "persistentPidPreserved": 991,
+    "causeOfChange": "UNCONFIRMED",
+    "resourceMutations": 0
+  },
+  "tasks": [
+    {
+      "lane": "A",
+      "issue": 60,
+      "agent": "/root/wave7_security",
+      "worktree": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-security",
+      "branch": "codex/rva-wave7-security-20261101",
+      "baseSha": "38f086792addaa9b131cecaf261ef21f89f5ffc7",
+      "status": "ACTIVE",
+      "ownedPaths": [
+        "proposals/wave7-security/",
+        "tests/wave7-security/",
+        "tools/wave7-postgres/",
+        "docs/orchestration/issue-60/wave7/"
+      ],
+      "dispatch": {
+        "kind": "native-spawn-result",
+        "taskName": "/root/wave7_security"
+      }
+    },
+    {
+      "lane": "B",
+      "issue": 54,
+      "agent": "/root/wave7_operations",
+      "worktree": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations",
+      "branch": "codex/rva-wave7-operations-20261101",
+      "baseSha": "38f086792addaa9b131cecaf261ef21f89f5ffc7",
+      "status": "ACTIVE",
+      "ownedPaths": [
+        "member/member110.js",
+        "portal/portal-coaching.js",
+        "tests/wave7-operations/",
+        "docs/orchestration/issue-54/wave7/"
+      ],
+      "dispatch": {
+        "kind": "native-spawn-result",
+        "taskName": "/root/wave7_operations"
+      }
+    },
+    {
+      "lane": "C",
+      "issue": 55,
+      "agent": "/root/wave7_affiliate",
+      "worktree": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-affiliate",
+      "branch": "codex/rva-wave7-affiliate-20261101",
+      "baseSha": "38f086792addaa9b131cecaf261ef21f89f5ffc7",
+      "status": "RETURNED_LOCAL_IMPLEMENTATION",
+      "ownedPaths": [
+        "tools/affiliate-share-preview/server.cjs",
+        "tools/affiliate-share-preview/preview.js",
+        "tools/affiliate-share-preview/index.html",
+        "tools/wave7-share-review.cjs",
+        "tests/wave7-affiliate/",
+        "docs/orchestration/issue-55/wave7/"
+      ],
+      "dispatch": {
+        "kind": "native-spawn-result",
+        "taskName": "/root/wave7_affiliate"
+      },
+      "implementationSha": "7838227eb11b8bfa31c003ea92d49860de2eb019"
+    },
+    {
+      "status": "ACTIVE",
+      "issue": 56,
+      "worktree": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-qa",
+      "branch": "codex/rva-wave7-qa-20261101",
+      "ownedPaths": [
+        "tests/wave7-qa/",
+        "docs/orchestration/issue-56/wave7/"
+      ],
+      "lane": "QA",
+      "agent": "/root/wave7_independent_qa",
+      "baseSha": "38f086792addaa9b131cecaf261ef21f89f5ffc7",
+      "dispatch": {
+        "kind": "native-spawn-result",
+        "taskName": "/root/wave7_independent_qa"
+      }
+    }
+  ],
+  "capacity": "Master+3 active maximum; independent QA launched after C returned",
+  "initialSqlFindings": {
+    "originalFiveBaselineFailures": 5,
+    "originalFiveCorrectedPass": 5,
+    "originalFiveRevertedFailures": 5,
+    "newConfirmedCases": [
+      "client_access identity substitution",
+      "parent household foreign SELECT",
+      "parent household primary-contact rebinding"
+    ],
+    "guards": "new copies correct pretty-format representation; original packages retained",
+    "ownedTeardown": "VERIFIED_AUTHOR_LOOPS",
+    "independentPg": "QUEUED_UNTIL_EXCLUSIVE_SLOT_RELEASED"
+  }
+}

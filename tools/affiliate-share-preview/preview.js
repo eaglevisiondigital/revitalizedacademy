@@ -1,12 +1,12 @@
 'use strict';
 (() => {
- const el=id=>document.getElementById(id);let epoch=0,manifest=null,scenarioReady=Promise.resolve(),eventId=null,scenarioSequence=0;
+ const el=id=>document.getElementById(id);let epoch=0,manifest=null,scenarioReady=Promise.resolve(),eventId=null,scenarioSequence=0,sourceReviewSequence=0;
  const channel=typeof BroadcastChannel==='function'?new BroadcastChannel('rva-fictional-preview-reset'):null;
  // Broadcast carries no identity/data/approval; it only clears stale synthetic views.
  if(channel)channel.onmessage=()=>{clear('Fixture changed in another local tab.');busy(true);const sequence=++scenarioSequence;scenarioReady=scenarioReady.catch(()=>{}).then(()=>bootstrap(sequence)).then(()=>{if(sequence===scenarioSequence)busy(false);}).catch(()=>{if(sequence===scenarioSequence)clear('Local fixture unavailable; choose a scenario to retry.');});};
  addEventListener('pagehide',()=>channel?.close());
  function clear(message='Preview cleared.') {
-  epoch++;eventId=null;el('preview').hidden=true;el('copy').value='';el('url').value='';el('qr').removeAttribute('src');el('qr-note').textContent='';el('status').textContent=message;
+  epoch++;sourceReviewSequence++;eventId=null;el('preview').hidden=true;el('copy').value='';el('url').value='';el('qr').removeAttribute('src');el('qr-note').textContent='';el('status').textContent=message;
   el('referral-result').textContent='';el('event-result').textContent='';el('education-result').replaceChildren();el('progress-result').replaceChildren();el('source-review-result').replaceChildren();
  }
  async function json(url,data){const response=await fetch(url,data?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}:{});const result=await response.json();if(!response.ok)throw Error('local_unavailable');return result;}
@@ -27,13 +27,13 @@
  }catch{if(run===epoch)el('progress-result').textContent='Local progress unavailable; no changes were made.';}});
 
  el('source-review').addEventListener('click',async()=>{
-  const run=epoch,driver=el('driver').value,selectedChannel=el('channel').value;el('source-review-result').replaceChildren();
-  try{await scenarioReady;const r=await json('/api/source-review',{authority_revision:manifest.authority_revision,campaign_id:manifest.share.campaign_id,creative_id:manifest.share.creative_id,campaign_revision:manifest.share.expected_campaign_revision,creative_revision:manifest.share.expected_creative_revision,catalog_id:manifest.education.catalog_id,catalog_version:manifest.education.expected_catalog_version,catalog_hash:manifest.education.expected_catalog_hash,approval_generation:manifest.education.expected_approval_generation,channel:selectedChannel,driver});if(run!==epoch)return;
-   if(r.status!=='ready'){el('source-review-result').textContent='Held: '+(r.reason||'unavailable');return;}
+  const request=++sourceReviewSequence,run=epoch,driver=el('driver').value,selectedChannel=el('channel').value;el('source-review-result').replaceChildren();
+  try{await scenarioReady;const r=await json('/api/source-review',{authority_revision:manifest.authority_revision,campaign_id:manifest.share.campaign_id,creative_id:manifest.share.creative_id,campaign_revision:manifest.share.expected_campaign_revision,creative_revision:manifest.share.expected_creative_revision,catalog_id:manifest.education.catalog_id,catalog_version:manifest.education.expected_catalog_version,catalog_hash:manifest.education.expected_catalog_hash,approval_generation:manifest.education.expected_approval_generation,channel:selectedChannel,driver});if(run!==epoch||request!==sourceReviewSequence)return;
+   if(r.status!=='ready'){clear('Held: '+(r.reason||'unavailable'));el('source-review-result').textContent='Held: '+(r.reason||'unavailable');return;}
    const lines=['Fictional source review — read only',r.copy,'Campaign revision '+r.pins.campaign_revision+'; creative revision '+r.pins.creative_revision+'; catalog '+r.pins.catalog_version+' / SHA256 '+r.pins.catalog_hash,'Own fictional referral: '+r.referral.status,'Event consent: '+r.boundaries.trackingConsent+'. This lookup records no share, click, completed viewing or conversion.',r.explanation];
    for(const row of r.education)lines.push(row.text,'Source '+row.citation.sourceId+' / '+row.citation.sourceVersion+' / '+row.citation.locator+' / SHA256 '+row.citation.sourceHash+' / claim '+row.citation.claimHash);
    for(const text of lines){const p=document.createElement('p');p.textContent=text;el('source-review-result').append(p);}
-  }catch{if(run===epoch)el('source-review-result').textContent='Local source review unavailable; nothing recorded.';}
+  }catch{if(run===epoch&&request===sourceReviewSequence)el('source-review-result').textContent='Local source review unavailable; nothing recorded.';}
  });
  el('select-copy').addEventListener('click',()=>{if(!el('preview').hidden){el('copy').focus();el('copy').select();}});
  el('prepare').addEventListener('click',async()=>{
