@@ -34,7 +34,7 @@
       "worktree": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-security",
       "branch": "codex/rva-wave7-security-20261101",
       "baseSha": "38f086792addaa9b131cecaf261ef21f89f5ffc7",
-      "status": "ACTIVE",
+      "status": "RETURNED_LOCAL_IMPLEMENTATION",
       "ownedPaths": [
         "proposals/wave7-security/",
         "tests/wave7-security/",
@@ -44,7 +44,9 @@
       "dispatch": {
         "kind": "native-spawn-result",
         "taskName": "/root/wave7_security"
-      }
+      },
+      "implementationSha": "ea8b53f5308a943361dd22c703be64a1646a2923",
+      "headSha": "313a468c9c336c73649fd7314d0b140cb570f641"
     },
     {
       "lane": "B",
@@ -53,7 +55,7 @@
       "worktree": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations",
       "branch": "codex/rva-wave7-operations-20261101",
       "baseSha": "38f086792addaa9b131cecaf261ef21f89f5ffc7",
-      "status": "ACTIVE",
+      "status": "RETURNED_LOCAL_IMPLEMENTATION",
       "ownedPaths": [
         "member/member110.js",
         "portal/portal-coaching.js",
@@ -63,7 +65,8 @@
       "dispatch": {
         "kind": "native-spawn-result",
         "taskName": "/root/wave7_operations"
-      }
+      },
+      "implementationSha": "b202cd5d7902e4b33d64c2d7328a2ec135f4a889"
     },
     {
       "lane": "C",
@@ -113,10 +116,19 @@
     "newConfirmedCases": [
       "client_access identity substitution",
       "parent household foreign SELECT",
-      "parent household primary-contact rebinding"
+      "parent household primary-contact rebinding",
+      "client_access household association substitution"
     ],
     "guards": "new copies correct pretty-format representation; original packages retained",
     "ownedTeardown": "VERIFIED_AUTHOR_LOOPS",
-    "independentPg": "QUEUED_UNTIL_EXCLUSIVE_SLOT_RELEASED"
+    "independentPg": "EXECUTED_233_ASSERTIONS_214_PASS_19_FAIL; 18 historical exposure reproductions and one provisioning compatibility regression"
+  },
+  "compatibilityHold": "Original direct authenticated nonnull account provisioning positive FAILS with42501; no permissive workaround; full business acceptance NO-GO",
+  "resourceFollowup": "QA before/after had2segments: unrelated persistent991 plus preexisting unattached5308417 of unconfirmed provenance; neither removed; no new IPC",
+  "masterRepair": {
+    "sourceSha": "7175d2a5a52e87a3b310ecdbdabd1fd46396fbbd",
+    "scope": "preview read sequence prevents stale ready response after newer held response",
+    "originalBrowserFailures": 2,
+    "correctedIndependentPass": 2
   }
 }
