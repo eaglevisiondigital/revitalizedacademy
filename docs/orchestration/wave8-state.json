@@ -77,11 +77,12 @@
         "tests/wave8-affiliate/",
         "docs/orchestration/issue-55/wave8/"
       ],
-      "status": "ACTIVE",
+      "status": "RETURNED_LOCAL_IMPLEMENTATION",
       "dispatch": {
         "kind": "native-spawn-result",
         "taskName": "/root/wave8_affiliate"
-      }
+      },
+      "implementationSha": "69b6a3ec4726b7852325693992e3a854f8c4d4ce"
     },
     {
       "lane": "QA",
@@ -94,13 +95,27 @@
         "tests/wave8-qa/",
         "docs/orchestration/issue-56/wave8/"
       ],
-      "status": "QUEUED",
+      "status": "ACTIVE",
       "dispatch": {
-        "kind": "PENDING_NATIVE_SLOT",
+        "kind": "native-spawn-result",
         "taskName": "/root/wave8_independent_qa"
       }
     }
   ],
   "capacity": "Master+3 active maximum; QA starts after a specialist returns",
-  "currentStatus": "ACTIVE_LOCAL_IMPLEMENTATION"
+  "currentStatus": "ACTIVE_LOCAL_IMPLEMENTATION",
+  "hostingReadOnlyObservation": {
+    "deploy": "6ae6b971e17bce85e37aa95c",
+    "source": "10dec6682e7e87bf637482fc027e54c6800260e4",
+    "locked": true,
+    "functionCount": 13,
+    "mutation": false,
+    "scope": "Metadata only; no reports/Auth/grant/client reads"
+  },
+  "sourceControlAssessment": {
+    "isolatedBranch": "codex/rva-wave8-integration-20261101",
+    "existingPr59Updated": false,
+    "status": "WAITING_INDEPENDENT_SOURCE_REVIEW",
+    "automaticDeployAvoidance": "Final commit must carry [skip ci] [skip netlify]; no PR/candidate deployment; current canonical remains locked"
+  }
 }
