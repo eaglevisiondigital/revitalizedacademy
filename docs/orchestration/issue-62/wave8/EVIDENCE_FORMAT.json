@@ -1,0 +1,173 @@
+{
+  "scope": "Only generated TAP/psql trailing whitespace normalized; full original bytes gzip-retained. No execution input SQL/test/source modified.",
+  "files": [
+    {
+      "path": "docs/orchestration/issue-62/wave8/dom-integration/household-constraints.txt",
+      "rawSha256": "cb4c66e614d29199ddcc82330924c6a2d7b4a8ce1f68d5c57f3996ba735e0d26",
+      "normalizedSha256": "312afaad0cd71f5168699082ad047fcd90279d20048a7e8ff6bd36e55b11fe07",
+      "rawArchive": "docs/orchestration/issue-62/wave8/dom-integration/household-constraints.txt.raw.gz",
+      "rawArchiveSha256": "043eb4d8e1471d7f9f875bbb575bbadb2cd0e4367a4fd3a6d3974b89f7d1d8fc"
+    },
+    {
+      "path": "docs/orchestration/issue-62/wave8/initial/identity-original-reverted.tap",
+      "rawSha256": "2347092105f403bee26bbfe981703a311a65d2dc41fcdd541cb07c2498883fb8",
+      "normalizedSha256": "747d10ec71049c4525df1bfbb686edd2cc8137d4ac6c9cfbe033854f9bb22b46",
+      "rawArchive": "docs/orchestration/issue-62/wave8/initial/identity-original-reverted.tap.raw.gz",
+      "rawArchiveSha256": "95d5e996f1d71068f421a12c01b49e9b2079126f571ee5afc815b7c936894f56"
+    },
+    {
+      "path": "docs/orchestration/issue-62/wave8/initial/access-household-original-reverted.tap",
+      "rawSha256": "7a63a33cafe02131a5bfb67ca69c1ef7431bee2244d3e60bc482127a14fcb760",
+      "normalizedSha256": "9371dcdc2d9bee9a41c472d84d5aa3ccdad35df0040d41c5ce0b69b7fb335f17",
+      "rawArchive": "docs/orchestration/issue-62/wave8/initial/access-household-original-reverted.tap.raw.gz",
+      "rawArchiveSha256": "f708a3ad7c62516863831c3b267e9830da1c38d280469b59a1338175c637b603"
+    },
+    {
+      "path": "docs/orchestration/issue-62/wave8/initial/parent-original-baseline.tap",
+      "rawSha256": "5b7c8e5a18287d6ebc26ca5e1996a27ffd179055eb404c2a76d25b660970d610",
+      "normalizedSha256": "47d42d79f73ac5fc8663cdb0f4ef12d7c4bfd95f52d717fc58696a396724cb39",
+      "rawArchive": "docs/orchestration/issue-62/wave8/initial/parent-original-baseline.tap.raw.gz",
+      "rawArchiveSha256": "44ea8c8d46733651e894bf292b0f73c5bab4877ecbbfb36fc17623da30b4abc8"
+    },
+    {
+      "path": "docs/orchestration/issue-62/wave8/initial/household-constraints.txt",
+      "rawSha256": "cb4c66e614d29199ddcc82330924c6a2d7b4a8ce1f68d5c57f3996ba735e0d26",
+      "normalizedSha256": "312afaad0cd71f5168699082ad047fcd90279d20048a7e8ff6bd36e55b11fe07",
+      "rawArchive": "docs/orchestration/issue-62/wave8/initial/household-constraints.txt.raw.gz",
+      "rawArchiveSha256": "043eb4d8e1471d7f9f875bbb575bbadb2cd0e4367a4fd3a6d3974b89f7d1d8fc"
+    },
+    {
+      "path": "docs/orchestration/issue-62/wave8/initial/original-five-baseline.tap",
+      "rawSha256": "e9d23ac2a1676a1e8a47b5ff16b99333a6010112fc7353d365f77fbc38121a62",
+      "normalizedSha256": "f260655d4a0468bd93e12849d81013701ef23d62860aff465ce4554cf42a8a16",
+      "rawArchive": "docs/orchestration/issue-62/wave8/initial/original-five-baseline.tap.raw.gz",
+      "rawArchiveSha256": "c2cb3f5e4313723b075d94612f330b68d6bf6bf3587fef37d8a6c0d9b795a808"
+    },
+    {
+      "path": "docs/orchestration/issue-62/wave8/initial/identity-original-baseline.tap",
+      "rawSha256": "a5df778f6803caedd90712d67f1f98bdd7edcc6d9d324c57889c1dd35cdda0b4",
+      "normalizedSha256": "b3184c47a6c11a719cd7adb85f0805d665ddc775a1ce5e06e58d6f278b091c6a",
+      "rawArchive": "docs/orchestration/issue-62/wave8/initial/identity-original-baseline.tap.raw.gz",
+      "rawArchiveSha256": "25cf465b01bfa539e3f6f941ba1bc0d014003a46df49ff987c3a058cd8106f09"
+    },
+    {
+      "path": "docs/orchestration/issue-62/wave8/initial/access-household-original-baseline.tap",
+      "rawSha256": "2e1274936897a92d7786dfbb54e34315e7b3dee2c5b974b296d7924b11245498",
+      "normalizedSha256": "eb120f4f6134d409f13ae79af33aa950d929fdf0b15757504d6a4d8d38ea4ccb",
+      "rawArchive": "docs/orchestration/issue-62/wave8/initial/access-household-original-baseline.tap.raw.gz",
+      "rawArchiveSha256": "f26cf69bc383f5cd8c2c4e168dbbe7a90155cd5427c89f49c84a2d94b6c93711"
+    },
+    {
+      "path": "docs/orchestration/issue-62/wave8/initial/parent-original-reverted.tap",
+      "rawSha256": "bde63ea4fe7bbf20eca311d9949629ee51cb9057c85652c49d93626246033ac9",
+      "normalizedSha256": "d9b9002d8f1b3de55c187a69741f7432e18b24dbe819d62aa3104562830f508e",
+      "rawArchive": "docs/orchestration/issue-62/wave8/initial/parent-original-reverted.tap.raw.gz",
+      "rawArchiveSha256": "74ef5c08b3a05163bd07ab30385c80bc5b9492bc098adc051eac4beedcc4589c"
+    },
+    {
+      "path": "docs/orchestration/issue-62/wave8/initial/original-five-reverted.tap",
+      "rawSha256": "56e43b9fb0ea405d7bb69c72173444386e167a39d4f91fb149e9116698fe87d8",
+      "normalizedSha256": "115113219942e772c0a3e381a954185fd4edca761520e58e150cc19e08f3e36f",
+      "rawArchive": "docs/orchestration/issue-62/wave8/initial/original-five-reverted.tap.raw.gz",
+      "rawArchiveSha256": "49528984f7ab60b4e98d6a87cf3bfc6f83afd3aec9bab11f4bc9c5db3f0465d7"
+    },
+    {
+      "path": "docs/orchestration/issue-62/wave8/final-pinned/identity-original-reverted.tap",
+      "rawSha256": "57c7f12404cbde9a60cf1af7aec497dd6afd7fa884af282c3571e3743c9335d8",
+      "normalizedSha256": "c407848a30050528a5d6ea2c936d0cbb0e5179eeaf217f6e362ca76128443995",
+      "rawArchive": "docs/orchestration/issue-62/wave8/final-pinned/identity-original-reverted.tap.raw.gz",
+      "rawArchiveSha256": "0bb07e04e8dabcd4e8eae08de95317f6eb3c09ef418a42b7041fa6e82775ae80"
+    },
+    {
+      "path": "docs/orchestration/issue-62/wave8/final-pinned/access-household-original-reverted.tap",
+      "rawSha256": "b773134f25e12b0d3ef3e5edfc8f76f4646d29cc1eddef7e9bb7fefa16d8b252",
+      "normalizedSha256": "afdc872f080d949b44c6ba6e9f3592ac475bb46af6ab3a0ceca9fb12e517dc38",
+      "rawArchive": "docs/orchestration/issue-62/wave8/final-pinned/access-household-original-reverted.tap.raw.gz",
+      "rawArchiveSha256": "f587321ea281e088f8bdb489c200b7244552b4c65d53791cd84cb364b5ba769c"
+    },
+    {
+      "path": "docs/orchestration/issue-62/wave8/final-pinned/parent-original-baseline.tap",
+      "rawSha256": "f407416d53b06e0d2f70979cf14774f5d1a677237e5c0ef4c7242a556c843e4d",
+      "normalizedSha256": "fd0b7d65c63ea83928c7d9ad1c7ecacfc5925a6c11e34341256fd784f0fc0e3a",
+      "rawArchive": "docs/orchestration/issue-62/wave8/final-pinned/parent-original-baseline.tap.raw.gz",
+      "rawArchiveSha256": "8457ce9b89b25f2dd6f1132c2485d346209d2c0443eba9b00c610d8fa9b4207b"
+    },
+    {
+      "path": "docs/orchestration/issue-62/wave8/final-pinned/household-constraints.txt",
+      "rawSha256": "cb4c66e614d29199ddcc82330924c6a2d7b4a8ce1f68d5c57f3996ba735e0d26",
+      "normalizedSha256": "312afaad0cd71f5168699082ad047fcd90279d20048a7e8ff6bd36e55b11fe07",
+      "rawArchive": "docs/orchestration/issue-62/wave8/final-pinned/household-constraints.txt.raw.gz",
+      "rawArchiveSha256": "043eb4d8e1471d7f9f875bbb575bbadb2cd0e4367a4fd3a6d3974b89f7d1d8fc"
+    },
+    {
+      "path": "docs/orchestration/issue-62/wave8/final-pinned/original-five-baseline.tap",
+      "rawSha256": "d2cf2d5293af68c226035b828e667eeeacaec2f3feed465241150013d0d8a0a7",
+      "normalizedSha256": "4dcafa4dd8876e5a60eb742dff0e61723d199f7d74489bf164f1438ab12b27e9",
+      "rawArchive": "docs/orchestration/issue-62/wave8/final-pinned/original-five-baseline.tap.raw.gz",
+      "rawArchiveSha256": "02e25d306603ac183edc7623acd1cc5a34fad79d8eadc75636c53d1a4a981d51"
+    },
+    {
+      "path": "docs/orchestration/issue-62/wave8/final-pinned/identity-original-baseline.tap",
+      "rawSha256": "cd6895054719fd8d9612dab0db02681fcf0ea140d1e06aa115f482e1e23fb401",
+      "normalizedSha256": "86fe881baf62681fea6286e62360fbdd8938334c642d511801021b1cf67b1603",
+      "rawArchive": "docs/orchestration/issue-62/wave8/final-pinned/identity-original-baseline.tap.raw.gz",
+      "rawArchiveSha256": "264d8bcf6529132dbb081136571ca4eb199a1b4e76b6a7cc92cecd0217756530"
+    },
+    {
+      "path": "docs/orchestration/issue-62/wave8/final-pinned/access-household-original-baseline.tap",
+      "rawSha256": "2ed20d65bf98c4eb43197373e730fb4f4b523f818cf4ce09613d91b6dfc6693f",
+      "normalizedSha256": "af7b9f22f54a858c6a24e08105cd3396efe7b088956fe9c986cbb08738360154",
+      "rawArchive": "docs/orchestration/issue-62/wave8/final-pinned/access-household-original-baseline.tap.raw.gz",
+      "rawArchiveSha256": "a0130834aea0a39d1797c2b28de9b3908ab09f8da59a8091d41a428c8234e330"
+    },
+    {
+      "path": "docs/orchestration/issue-62/wave8/final-pinned/parent-original-reverted.tap",
+      "rawSha256": "c64504f0517915cfeaa910da97593d559c3da353b85968c418f965b1cf631c50",
+      "normalizedSha256": "f02cb82be95d20dfed8518a74fe2327088737b9d90c3372e71a9fbf390556663",
+      "rawArchive": "docs/orchestration/issue-62/wave8/final-pinned/parent-original-reverted.tap.raw.gz",
+      "rawArchiveSha256": "bad4f02b149694ccbda3783aae9fcb4f582b90ee58ff75fb32b1490bff69bc21"
+    },
+    {
+      "path": "docs/orchestration/issue-62/wave8/final-pinned/original-five-reverted.tap",
+      "rawSha256": "422ecb03aba6f99f38831b02dba8e0c6ba1710a79be3603a3c4c610faf6197d7",
+      "normalizedSha256": "10d75bdd7ff8b40d697c71e9cc35ddb6008045464c0fa4560f9c015826a1161d",
+      "rawArchive": "docs/orchestration/issue-62/wave8/final-pinned/original-five-reverted.tap.raw.gz",
+      "rawArchiveSha256": "61fec9b88b0fc4782c896896bedde4bd9c18fad6697aa82baeb0b5ec980bba9d"
+    },
+    {
+      "path": "docs/orchestration/issue-62/wave8/third/household-constraints.txt",
+      "rawSha256": "cb4c66e614d29199ddcc82330924c6a2d7b4a8ce1f68d5c57f3996ba735e0d26",
+      "normalizedSha256": "312afaad0cd71f5168699082ad047fcd90279d20048a7e8ff6bd36e55b11fe07",
+      "rawArchive": "docs/orchestration/issue-62/wave8/third/household-constraints.txt.raw.gz",
+      "rawArchiveSha256": "043eb4d8e1471d7f9f875bbb575bbadb2cd0e4367a4fd3a6d3974b89f7d1d8fc"
+    },
+    {
+      "path": "docs/orchestration/issue-62/wave8/second/household-constraints.txt",
+      "rawSha256": "cb4c66e614d29199ddcc82330924c6a2d7b4a8ce1f68d5c57f3996ba735e0d26",
+      "normalizedSha256": "312afaad0cd71f5168699082ad047fcd90279d20048a7e8ff6bd36e55b11fe07",
+      "rawArchive": "docs/orchestration/issue-62/wave8/second/household-constraints.txt.raw.gz",
+      "rawArchiveSha256": "043eb4d8e1471d7f9f875bbb575bbadb2cd0e4367a4fd3a6d3974b89f7d1d8fc"
+    },
+    {
+      "path": "docs/orchestration/issue-62/wave8/fourth/household-constraints.txt",
+      "rawSha256": "cb4c66e614d29199ddcc82330924c6a2d7b4a8ce1f68d5c57f3996ba735e0d26",
+      "normalizedSha256": "312afaad0cd71f5168699082ad047fcd90279d20048a7e8ff6bd36e55b11fe07",
+      "rawArchive": "docs/orchestration/issue-62/wave8/fourth/household-constraints.txt.raw.gz",
+      "rawArchiveSha256": "043eb4d8e1471d7f9f875bbb575bbadb2cd0e4367a4fd3a6d3974b89f7d1d8fc"
+    },
+    {
+      "path": "docs/orchestration/issue-62/wave8/concurrency/household-constraints.txt",
+      "rawSha256": "cb4c66e614d29199ddcc82330924c6a2d7b4a8ce1f68d5c57f3996ba735e0d26",
+      "normalizedSha256": "312afaad0cd71f5168699082ad047fcd90279d20048a7e8ff6bd36e55b11fe07",
+      "rawArchive": "docs/orchestration/issue-62/wave8/concurrency/household-constraints.txt.raw.gz",
+      "rawArchiveSha256": "043eb4d8e1471d7f9f875bbb575bbadb2cd0e4367a4fd3a6d3974b89f7d1d8fc"
+    },
+    {
+      "path": "docs/orchestration/issue-62/wave8/security-expanded/household-constraints.txt",
+      "rawSha256": "cb4c66e614d29199ddcc82330924c6a2d7b4a8ce1f68d5c57f3996ba735e0d26",
+      "normalizedSha256": "312afaad0cd71f5168699082ad047fcd90279d20048a7e8ff6bd36e55b11fe07",
+      "rawArchive": "docs/orchestration/issue-62/wave8/security-expanded/household-constraints.txt.raw.gz",
+      "rawArchiveSha256": "043eb4d8e1471d7f9f875bbb575bbadb2cd0e4367a4fd3a6d3974b89f7d1d8fc"
+    }
+  ]
+}

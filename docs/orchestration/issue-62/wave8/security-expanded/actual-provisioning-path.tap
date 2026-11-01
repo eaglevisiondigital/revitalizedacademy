@@ -1,0 +1,207 @@
+TAP version 13
+# Subtest: actual Owner public plan intent provisions foundation under unchanged strict identity hold
+ok 1 - actual Owner public plan intent provisions foundation under unchanged strict identity hold
+  ---
+  duration_ms: 62.673083
+  type: 'test'
+  ...
+# Subtest: actual verified member claim binds own foundation and records exact actor without paid access
+ok 2 - actual verified member claim binds own foundation and records exact actor without paid access
+  ---
+  duration_ms: 13.249875
+  type: 'test'
+  ...
+# Subtest: wrong verified Auth identity denied by actual claim
+ok 3 - wrong verified Auth identity denied by actual claim
+  ---
+  duration_ms: 10.844875
+  type: 'test'
+  ...
+# Subtest: Owner plan intent retry is idempotent for activation/membership/household and audit
+ok 4 - Owner plan intent retry is idempotent for activation/membership/household and audit
+  ---
+  duration_ms: 11.64275
+  type: 'test'
+  ...
+# Subtest: suspended/inactive issuing Owner denied: suspended
+ok 5 - suspended/inactive issuing Owner denied: suspended
+  ---
+  duration_ms: 2.41225
+  type: 'test'
+  ...
+# Subtest: suspended/inactive issuing Owner denied: inactive
+ok 6 - suspended/inactive issuing Owner denied: inactive
+  ---
+  duration_ms: 2.509833
+  type: 'test'
+  ...
+# Subtest: non-Owner cannot provision through Owner RPC
+ok 7 - non-Owner cannot provision through Owner RPC
+  ---
+  duration_ms: 2.05975
+  type: 'test'
+  ...
+# Subtest: missing finance.manage permission denies even Owner role
+ok 8 - missing finance.manage permission denies even Owner role
+  ---
+  duration_ms: 2.797291
+  type: 'test'
+  ...
+# Subtest: anonymous claim denied and cannot bind an account
+ok 9 - anonymous claim denied and cannot bind an account
+  ---
+  duration_ms: 11.075541
+  type: 'test'
+  ...
+# Subtest: unknown exact-length token denied
+ok 10 - unknown exact-length token denied
+  ---
+  duration_ms: 10.223084
+  type: 'test'
+  ...
+# Subtest: malformed token denied without binding
+ok 11 - malformed token denied without binding
+  ---
+  duration_ms: 7.919917
+  type: 'test'
+  ...
+# Subtest: invitation expired rejected
+ok 12 - invitation expired rejected
+  ---
+  duration_ms: 7.394083
+  type: 'test'
+  ...
+# Subtest: invitation revoked rejected
+ok 13 - invitation revoked rejected
+  ---
+  duration_ms: 6.849333
+  type: 'test'
+  ...
+# Subtest: unconfirmed Auth email rejected
+ok 14 - unconfirmed Auth email rejected
+  ---
+  duration_ms: 7.305916
+  type: 'test'
+  ...
+# Subtest: current verified Auth email must match contact email
+ok 15 - current verified Auth email must match contact email
+  ---
+  duration_ms: 6.382708
+  type: 'test'
+  ...
+# Subtest: profile must map current actor to exact invited contact
+not ok 16 - profile must map current actor to exact invited contact
+  ---
+  duration_ms: 7.108416
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave8-provisioning/tests/wave8-provisioning/provisioning.test.cjs:50:1'
+  failureType: 'testCodeFailure'
+  error: 'duplicate key value violates unique constraint "profiles_contact_id_key"'
+  code: '23505'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave8-provisioning/tests/wave8-provisioning/provisioning.test.cjs:51:2)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: self-edited profile alone cannot replace verified Auth/contact email match
+not ok 17 - self-edited profile alone cannot replace verified Auth/contact email match
+  ---
+  duration_ms: 7.014666
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave8-provisioning/tests/wave8-provisioning/provisioning.test.cjs:52:1'
+  failureType: 'testCodeFailure'
+  error: 'permission denied for table profiles'
+  code: '42501'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async actor (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave8-provisioning/tests/wave4-access/fixture.cjs:14:190)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave8-provisioning/tests/wave8-provisioning/provisioning.test.cjs:52:134)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: caller metadata role/email spoof cannot replace Auth identity
+ok 18 - caller metadata role/email spoof cannot replace Auth identity
+  ---
+  duration_ms: 6.790625
+  type: 'test'
+  ...
+# Subtest: existing different account binding cannot be replaced by invitation
+ok 19 - existing different account binding cannot be replaced by invitation
+  ---
+  duration_ms: 6.4855
+  type: 'test'
+  ...
+# Subtest: access inactive cannot be claimed
+ok 20 - access inactive cannot be claimed
+  ---
+  duration_ms: 6.3385
+  type: 'test'
+  ...
+# Subtest: access suspended cannot be claimed
+ok 21 - access suspended cannot be claimed
+  ---
+  duration_ms: 6.997334
+  type: 'test'
+  ...
+# Subtest: membership cancelled cannot be claimed
+ok 22 - membership cancelled cannot be claimed
+  ---
+  duration_ms: 6.88125
+  type: 'test'
+  ...
+# Subtest: membership completed cannot be claimed
+ok 23 - membership completed cannot be claimed
+  ---
+  duration_ms: 6.951208
+  type: 'test'
+  ...
+# Subtest: claim rollback preserves account state, invitation-use timestamp and audit
+ok 24 - claim rollback preserves account state, invitation-use timestamp and audit
+  ---
+  duration_ms: 7.57475
+  type: 'test'
+  ...
+# Subtest: same account invitation re-open preserves one account and foundation; audits each actual read claim
+ok 25 - same account invitation re-open preserves one account and foundation; audits each actual read claim
+  ---
+  duration_ms: 9.048625
+  type: 'test'
+  ...
+# Subtest: different account replay denied after valid claim
+ok 26 - different account replay denied after valid claim
+  ---
+  duration_ms: 7.672875
+  type: 'test'
+  ...
+# Subtest: claim does not issue agreement, send email, record consent, payment or paid access
+ok 27 - claim does not issue agreement, send email, record consent, payment or paid access
+  ---
+  duration_ms: 9.747209
+  type: 'test'
+  ...
+# Subtest: foundation creates only its own individual household; claim cannot expose unrelated parent
+ok 28 - foundation creates only its own individual household; claim cannot expose unrelated parent
+  ---
+  duration_ms: 7.699084
+  type: 'test'
+  ...
+# Subtest: existing private provisioning trigger cannot be called directly by authenticated member
+ok 29 - existing private provisioning trigger cannot be called directly by authenticated member
+  ---
+  duration_ms: 1.901542
+  type: 'test'
+  ...
+1..29
+# tests 29
+# suites 0
+# pass 27
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 341.545708
