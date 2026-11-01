@@ -2,67 +2,67 @@ TAP version 13
 # Subtest: exact proposal file hashes and accepted base are pinned
 ok 1 - exact proposal file hashes and accepted base are pinned
   ---
-  duration_ms: 2.669708
+  duration_ms: 3.946417
   type: 'test'
   ...
 # Subtest: nine additive restrictions preserve all original permissive policies
 ok 2 - nine additive restrictions preserve all original permissive policies
   ---
-  duration_ms: 0.645083
+  duration_ms: 0.64325
   type: 'test'
   ...
 # Subtest: no existing routine or table definition is replaced and no EXECUTE is granted
 ok 3 - no existing routine or table definition is replaced and no EXECUTE is granted
   ---
-  duration_ms: 0.587
+  duration_ms: 0.847542
   type: 'test'
   ...
 # Subtest: three authenticated TRUNCATE revocations leave trusted role privileges unchanged
 ok 4 - three authenticated TRUNCATE revocations leave trusted role privileges unchanged
   ---
-  duration_ms: 0.181417
+  duration_ms: 0.305458
   type: 'test'
   ...
 # Subtest: source tuples and actor attribution cannot be silently moved by an authorized writer
 ok 5 - source tuples and actor attribution cannot be silently moved by an authorized writer
   ---
-  duration_ms: 0.147792
+  duration_ms: 0.216792
   type: 'test'
   ...
 # Subtest: all three current table schemas, policies and security dependencies are guarded
 ok 6 - all three current table schemas, policies and security dependencies are guarded
   ---
-  duration_ms: 0.143375
+  duration_ms: 0.166375
   type: 'test'
   ...
 # Subtest: reversion restores only this proposal and explicitly warns against production regression
 ok 7 - reversion restores only this proposal and explicitly warns against production regression
   ---
-  duration_ms: 0.191542
+  duration_ms: 0.208084
   type: 'test'
   ...
 # Subtest: original five-failure regression file is preserved byte-for-byte
 ok 8 - original five-failure regression file is preserved byte-for-byte
   ---
-  duration_ms: 107.62275
+  duration_ms: 26.4045
   type: 'test'
   ...
 # Subtest: actual PG security suite contains no network target or production credentials
 ok 9 - actual PG security suite contains no network target or production credentials
   ---
-  duration_ms: 1.660792
+  duration_ms: 0.533084
   type: 'test'
   ...
 # Subtest: helper identity/ACL and private schema captured metadata are independently pinned
 ok 10 - helper identity/ACL and private schema captured metadata are independently pinned
   ---
-  duration_ms: 1.313125
+  duration_ms: 1.256958
   type: 'test'
   ...
-# Subtest: unavailable production metadata explicitly blocks installation readiness
-ok 11 - unavailable production metadata explicitly blocks installation readiness
+# Subtest: independent schema-only capture closes missing pins but actual PostgreSQL installation readiness stays blocked
+ok 11 - independent schema-only capture closes missing pins but actual PostgreSQL installation readiness stays blocked
   ---
-  duration_ms: 0.215292
+  duration_ms: 0.618708
   type: 'test'
   ...
 1..11
@@ -73,4 +73,4 @@ ok 11 - unavailable production metadata explicitly blocks installation readiness
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 256.730667
+# duration_ms 121.543834

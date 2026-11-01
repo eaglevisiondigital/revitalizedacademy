@@ -1,0 +1,245 @@
+{
+  "scope": "SCHEMA_METADATA_ONLY_NO_RECORDS",
+  "database": "postgres",
+  "households": {
+    "acl": "{postgres=arwdDxtm/postgres,authenticated=arwdDxtm/postgres,service_role=arwdDxtm/postgres}",
+    "rls": true,
+    "owner": "postgres",
+    "table": "households",
+    "schema": "public",
+    "columns": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "default": "gen_random_uuid()",
+        "notNull": true
+      },
+      {
+        "name": "household_type",
+        "type": "text",
+        "default": "'individual'::text",
+        "notNull": true
+      },
+      {
+        "name": "status",
+        "type": "text",
+        "default": "'draft'::text",
+        "notNull": true
+      },
+      {
+        "name": "primary_contact_id",
+        "type": "uuid",
+        "default": null,
+        "notNull": true
+      },
+      {
+        "name": "household_name",
+        "type": "text",
+        "default": null,
+        "notNull": false
+      },
+      {
+        "name": "created_by",
+        "type": "uuid",
+        "default": null,
+        "notNull": false
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "default": "now()",
+        "notNull": true
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "default": "now()",
+        "notNull": true
+      }
+    ],
+    "indexes": [
+      "CREATE INDEX households_created_by_idx ON public.households USING btree (created_by)",
+      "CREATE UNIQUE INDEX households_pkey ON public.households USING btree (id)",
+      "CREATE UNIQUE INDEX households_primary_contact_unique_idx ON public.households USING btree (primary_contact_id)"
+    ],
+    "forceRls": false,
+    "policies": [
+      {
+        "name": "households_staff_insert",
+        "check": "(EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid))))",
+        "roles": [
+          "authenticated"
+        ],
+        "using": null,
+        "command": "a",
+        "permissive": true
+      },
+      {
+        "name": "households_staff_or_member_select",
+        "check": null,
+        "roles": [
+          "authenticated"
+        ],
+        "using": "((EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid)))) OR (id IN ( SELECT ca.household_id\n   FROM client_access ca\n  WHERE (ca.user_id = ( SELECT auth.uid() AS uid)))))",
+        "command": "r",
+        "permissive": true
+      },
+      {
+        "name": "households_staff_update",
+        "check": "(EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid))))",
+        "roles": [
+          "authenticated"
+        ],
+        "using": "(EXISTS ( SELECT 1\n   FROM staff_access s\n  WHERE (s.user_id = ( SELECT auth.uid() AS uid))))",
+        "command": "w",
+        "permissive": true
+      },
+      {
+        "name": "lifecycle_paid_access",
+        "check": "(( SELECT private.active_staff_session() AS active_staff_session) OR ( SELECT private.full_member_access() AS full_member_access))",
+        "roles": [
+          "authenticated"
+        ],
+        "using": "(( SELECT private.active_staff_session() AS active_staff_session) OR ( SELECT private.full_member_access() AS full_member_access))",
+        "command": "*",
+        "permissive": false
+      }
+    ],
+    "constraints": [
+      {
+        "name": "households_created_by_fkey",
+        "type": "f",
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "definition": "FOREIGN KEY (created_by) REFERENCES auth.users(id) ON DELETE SET NULL"
+      },
+      {
+        "name": "households_household_type_check",
+        "type": "c",
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "definition": "CHECK (household_type = ANY (ARRAY['individual'::text, 'couple'::text, 'family'::text]))"
+      },
+      {
+        "name": "households_pkey",
+        "type": "p",
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "households_primary_contact_id_fkey",
+        "type": "f",
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "definition": "FOREIGN KEY (primary_contact_id) REFERENCES contacts(id) ON DELETE RESTRICT"
+      },
+      {
+        "name": "households_status_check",
+        "type": "c",
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "definition": "CHECK (status = ANY (ARRAY['draft'::text, 'active'::text, 'inactive'::text]))"
+      }
+    ]
+  },
+  "captured_at": "2026-11-01T22:13:21.09269+00:00",
+  "original_triggers": [
+    {
+      "name": "notify_client_assignment_completion_trigger",
+      "type": 21,
+      "table": "client_assignments",
+      "schema": "public",
+      "enabled": "O",
+      "args_hex": "",
+      "deferred": false,
+      "function": "private.notify_client_assignment_completion()",
+      "internal": false,
+      "deferrable": false,
+      "definition": "CREATE TRIGGER notify_client_assignment_completion_trigger AFTER INSERT OR UPDATE OF status ON client_assignments FOR EACH ROW EXECUTE FUNCTION private.notify_client_assignment_completion()"
+    },
+    {
+      "name": "notify_client_assignment_trigger",
+      "type": 21,
+      "table": "client_assignments",
+      "schema": "public",
+      "enabled": "O",
+      "args_hex": "",
+      "deferred": false,
+      "function": "private.notify_client_assignment()",
+      "internal": false,
+      "deferrable": false,
+      "definition": "CREATE TRIGGER notify_client_assignment_trigger AFTER INSERT OR UPDATE OF status, title, due_at ON client_assignments FOR EACH ROW EXECUTE FUNCTION private.notify_client_assignment()"
+    },
+    {
+      "name": "sync_evt_assignments",
+      "type": 29,
+      "table": "client_assignments",
+      "schema": "public",
+      "enabled": "O",
+      "args_hex": "636c69656e745f61737369676e6d656e7400",
+      "deferred": false,
+      "function": "private.emit_member_sync_event()",
+      "internal": false,
+      "deferrable": false,
+      "definition": "CREATE TRIGGER sync_evt_assignments AFTER INSERT OR DELETE OR UPDATE ON client_assignments FOR EACH ROW EXECUTE FUNCTION private.emit_member_sync_event('client_assignment')"
+    },
+    {
+      "name": "process_submitted_client_checkin_trigger",
+      "type": 21,
+      "table": "client_checkins",
+      "schema": "public",
+      "enabled": "O",
+      "args_hex": "",
+      "deferred": false,
+      "function": "private.process_submitted_client_checkin()",
+      "internal": false,
+      "deferrable": false,
+      "definition": "CREATE TRIGGER process_submitted_client_checkin_trigger AFTER INSERT OR UPDATE OF status ON client_checkins FOR EACH ROW EXECUTE FUNCTION private.process_submitted_client_checkin()"
+    },
+    {
+      "name": "sync_household_conversation_from_members",
+      "type": 29,
+      "table": "household_members",
+      "schema": "public",
+      "enabled": "O",
+      "args_hex": "",
+      "deferred": false,
+      "function": "private.sync_household_conversation()",
+      "internal": false,
+      "deferrable": false,
+      "definition": "CREATE TRIGGER sync_household_conversation_from_members AFTER INSERT OR DELETE OR UPDATE OF status, household_id ON household_members FOR EACH ROW EXECUTE FUNCTION private.sync_household_conversation()"
+    },
+    {
+      "name": "validate_active_household_member_change_trigger",
+      "type": 29,
+      "table": "household_members",
+      "schema": "public",
+      "enabled": "O",
+      "args_hex": "",
+      "deferred": true,
+      "function": "private.validate_active_household_after_member_change()",
+      "internal": false,
+      "deferrable": true,
+      "definition": "CREATE CONSTRAINT TRIGGER validate_active_household_member_change_trigger AFTER INSERT OR DELETE OR UPDATE ON household_members DEFERRABLE INITIALLY DEFERRED FOR EACH ROW EXECUTE FUNCTION private.validate_active_household_after_member_change()"
+    },
+    {
+      "name": "validate_household_member_trigger",
+      "type": 23,
+      "table": "household_members",
+      "schema": "public",
+      "enabled": "O",
+      "args_hex": "",
+      "deferred": false,
+      "function": "private.validate_household_member()",
+      "internal": false,
+      "deferrable": false,
+      "definition": "CREATE TRIGGER validate_household_member_trigger BEFORE INSERT OR UPDATE OF household_id, relationship_type, sex ON household_members FOR EACH ROW EXECUTE FUNCTION private.validate_household_member()"
+    }
+  ]
+}

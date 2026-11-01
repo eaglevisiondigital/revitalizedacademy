@@ -13,9 +13,20 @@
     "name": "private",
     "owner": "postgres"
   },
-  "missingProductionPins": [
+  "installReady": false,
+  "historicalMissingProductionPins": [
     "public.households current columns owner RLS policies constraints ACL",
     "original operations trigger enabled state, raw event attributes and function linkage capture"
   ],
-  "installReady": false
+  "missingProductionPins": [],
+  "currentHouseholdTriggerCapture": {
+    "sourcePath": "../deployment-evidence/2026-11-01-wave6/household-trigger-schema.json",
+    "sourceSha256": "bbf2b17ea66da8b18a5c3e3f298e05afd6fb300944a8eb2414aa0aa94558a7b1",
+    "capturedAt": "2026-11-01T22:13:21.09269+00:00",
+    "productionReadPerformedBy": "MASTER ONLY; Lane B performed no production query",
+    "sameOriginalTriggerDefinitions": 7
+  },
+  "installationBlockers": [
+    "Exact cumulative actual PostgreSQL security/rollback/concurrency execution remains blocked by safe disposable capacity"
+  ]
 }

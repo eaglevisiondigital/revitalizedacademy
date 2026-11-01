@@ -4,6 +4,20 @@
 
 Base: `9beae3bb40c154d2bfd623e8d2355b3a6c3cd306`. Branch `codex/rva-wave6-security-20261101`; worktree `academy-wave6-security`. Exclusive changes: `proposals/wave6-security/`, `tests/wave6-security/`, this report folder. No application runtime, canonical migration, Function, Auth, report/voice/ruleset, financial or public-asset change. Alex remains paused. No production queries, writes, grant/session actions or private records.
 
+## Latest guard-only follow-up — 2026-11-01T22:13:21.09269Z metadata checkpoint
+
+Master supplied one read-only, schema-only capture of public.households and seven original operations triggers. Lane B independently compared every trigger definition/function linkage with the prior row-free catalog: **7/7 unchanged**. Households columns, constraints and original policies match the inspected source architecture; no unexpected difference was found. Exact capture SHA256 `bbf2b17ea66da8b18a5c3e3f298e05afd6fb300944a8eb2414aa0aa94558a7b1`.
+
+Current forward SQL SHA256: `d471396eeee21d4109dcc556b80548a64ce193949ebc1291f33589d698d14be9`.
+Current manifest SHA256: `e58057a70b43f2beb254da91beb1a4622f6b64c9570ed7fd402ca4ecd52ff1b7`.
+Local revert unchanged: `e4fa7c9231c4d0d41f8f1ff56a6a9366a92b86b85f7fb69fb80224b09279009f`.
+
+Guard-only follow-up pins households owner/RLS/ACL/columns/indexes/policies/constraint definitions+validation+deferrability and all seven original trigger definitions/linkage/type/args/enabled/deferrability. This replaces the previously missing metadata pins below; the historical finding is retained. Function body, all nine proposed policies, three new trigger attachments and privilege changes remain byte-identical to the previous candidate. The proposal adds only read/lock guards, no new behavior, policy, table or authority.
+
+**Installation still BLOCKED:** exact cumulative PostgreSQL execution, all five before/after denials, rollback and concurrency remain NOT RUN because no safely owned disposable slot exists. `installationReady:false`; missingMetadataPins is now empty, but actual execution blockers remain explicit. Lane B performed zero production queries; Master alone obtained the schema-only capture, with no client records/Auth sessions/Alex read.
+
+**Additional source-review-only hypothesis:** parent `public.households` retains broad staff EXISTS policies and a primary_contact_id update surface. Child household_members restrictions do not prove parent-row isolation. This is **NOT RUN**, not a new demonstrated failure; parent-table access/rebinding requires a separately bounded local security follow-up. No behavior/policy expansion is included now.
+
 ## Five-failure matrix
 
 All five were **actually demonstrated in Wave5 fictional PostgreSQL**, not claimed production attacks. Unchanged source `tests/wave5-operations/durable-operations.test.cjs` SHA256 `c65c35c7b6b2a01f3fe388434c7683fd289de8a386f4c4291942a9fa4914e0fe`; original failure TAP SHA256 `7d859447a45b6bdbae40b01fd4259da9ade0333efdcdc8ebf9a8d4cbb85ebf76` at `docs/orchestration/issue-54/wave5/receipts/current-unresolved-scopes.tap`.
@@ -41,7 +55,7 @@ Manifest SHA256: `7882e25aaea36732b35484a7b26da3420c90b905692b65e672a1d2b279fa7e
 - **Actual PostgreSQL execution, final guarded SQL syntax/installation, original-five before/after closure, rollback, concurrency and full-package business acceptance remain BLOCKED.** Lane A found Mac SysV shared-memory capacity exhausted at 32/32; remaining resources cannot be safely attributed to this RVA workflow. Lane B attempted no initdb/SQL and removed no process/resource. No persistent/staging/production DB fallback is used.
 - One initial source-test harness assertion incorrectly matched the word TRUNCATE in `GRANT TRUNCATE` as if it were a destructive statement. Corrected to reject statement-start TRUNCATE; initial 8PASS/1FAIL is retained in `harness-history.json`. No policy or permission assertion was weakened.
 
-## Additional installation-integrity hold
+## Historical additional installation-integrity hold — captured at commit338a046; metadata gap resolved above
 
 Independent review requested authorization-helper ownership/ACL and private-schema ACL guards. Existing row-free Wave3 metadata supplies those exact values; they are now pinned, and original trigger definition/function linkage is checked. `tgenabled='O'` is an explicit fail-closed runtime prerequisite, **not** a claimed historically captured enabled state.
 

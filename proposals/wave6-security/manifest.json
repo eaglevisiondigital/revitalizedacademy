@@ -2,12 +2,19 @@
   "base": "9beae3bb40c154d2bfd623e8d2355b3a6c3cd306",
   "scope": "LOCAL_NONPRODUCTION_ONLY",
   "installationReady": false,
-  "missingProductionPins": [
-    "public.households current columns owner RLS policies constraints ACL",
-    "original operations trigger enabled state, raw event attributes and function linkage capture"
+  "missingProductionPins": [],
+  "installationBlockers": [
+    "Exact cumulative actual PostgreSQL security/rollback/concurrency execution remains blocked by safe disposable capacity"
   ],
+  "metadataCapture": {
+    "sourcePath": "../deployment-evidence/2026-11-01-wave6/household-trigger-schema.json",
+    "sourceSha256": "bbf2b17ea66da8b18a5c3e3f298e05afd6fb300944a8eb2414aa0aa94558a7b1",
+    "capturedAt": "2026-11-01T22:13:21.09269+00:00",
+    "productionReadPerformedBy": "MASTER ONLY; Lane B performed no production query",
+    "sameOriginalTriggerDefinitions": 7
+  },
   "runtimePrerequisites": [
-    "All original operations triggers enabled O; expected condition, not historically captured state"
+    "All seven original operations triggers match full schema-only capture 2026-11-01T22:13:21.09269+00:00"
   ],
   "policies": [
     {
@@ -115,7 +122,7 @@
   "files": [
     {
       "path": "proposals/wave6-security/correction.sql",
-      "sha256": "b7d89303db6867e1c5093a04e50856dd6a2592a077aa7e376bb909b8e4cc2b25"
+      "sha256": "d471396eeee21d4109dcc556b80548a64ce193949ebc1291f33589d698d14be9"
     },
     {
       "path": "proposals/wave6-security/revert.sql",
