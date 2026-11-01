@@ -49,11 +49,20 @@
     },
     {
       "path": "proposals/wave6-security/correction.sql",
-      "sha256": "4a545932faa3553e2c6461494db55257bb598c6cc10356bd8e23f4f589e6b4df"
+      "sha256": "b7d89303db6867e1c5093a04e50856dd6a2592a077aa7e376bb909b8e4cc2b25"
     },
     {
       "path": "proposals/wave6-security/revert.sql",
       "sha256": "e4fa7c9231c4d0d41f8f1ff56a6a9366a92b86b85f7fb69fb80224b09279009f"
+    },
+    {
+      "path": "tests/wave6-security/known-dependencies.json",
+      "sha256": "b02d12816290c546a0fcfa0856c1ed0cf7c95ef5ae79104333536422bb89f1cb"
     }
+  ],
+  "installationReady": false,
+  "missingProductionPins": [
+    "public.households current columns owner RLS policies constraints ACL",
+    "original operations trigger enabled state, raw event attributes and function linkage capture"
   ]
 }

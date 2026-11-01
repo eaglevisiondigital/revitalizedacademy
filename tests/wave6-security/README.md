@@ -2,7 +2,7 @@
 
 Base: `9beae3bb40c154d2bfd623e8d2355b3a6c3cd306`. No production queries or writes. No private records.
 
-`contract.test.cjs` executes nine **source/manifest contract** assertions, not a permission engine or PostgreSQL substitute. `security.test.cjs` prepares 45 actual PostgreSQL assertions using the existing strict fixture (UNIX socket and fictional Auth GUCs only). The existing five failure probes remain untouched in `tests/wave5-operations/durable-operations.test.cjs`. They must run unchanged before and after the proposal. The separate access-user hypothesis is explicitly not part of the five and remains NOT RUN; do not claim it is a confirmed exposure or fixed.
+`contract.test.cjs` executes eleven **source/manifest contract** assertions, not a permission engine or PostgreSQL substitute. `security.test.cjs` prepares 45 actual PostgreSQL assertions using the existing strict fixture (UNIX socket and fictional Auth GUCs only). The existing five failure probes remain untouched in `tests/wave5-operations/durable-operations.test.cjs`. They must run unchanged before and after the proposal. The separate access-user hypothesis is explicitly not part of the five and remains NOT RUN; do not claim it is a confirmed exposure or fixed.
 
 Required independent execution order after a positively owned disposable PG slot is available:
 
@@ -17,3 +17,5 @@ Required independent execution order after a positively owned disposable PG slot
 **Actual execution in Wave6 Lane B:** BLOCKED/NOT RUN, before any initdb or SQL. Lane A established local SysV capacity exhaustion (32/32); no orphan segment can be safely attributed to this RVA workflow. No unrelated process/IPC resource was removed. No PostgreSQL semantic, rollback or concurrency PASS is inferred from source tests.
 
 Managed authentication limitations: GUC actor switching, active/suspended/inactive status and current permission revocation tests are not GoTrue, MFA, provider JWT verification, token expiry or `auth.sessions` logout/revocation acceptance. Existing `private.active_staff_session()` checks database staff status/onboarding and does not validate `session_id`. This proposal preserves that function and all shared authentication; managed-session revocation remains a separate security/business release gate.
+
+Independent review added known helper owner/ACL/private-schema pins and original trigger definition/linkage guards. Manifest installationReady remains false because current households metadata and full original trigger raw/enabled metadata have not been captured. Expected tgenabled=O is an explicit runtime prerequisite, not historical state proof. No production query was performed.

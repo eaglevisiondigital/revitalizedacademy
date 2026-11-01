@@ -1,6 +1,7 @@
 from pathlib import Path
 import json,hashlib,re
 root=Path(__file__).resolve().parents[2]; out=root/'proposals/wave6-security';out.mkdir(parents=True,exist_ok=True)
+known=json.loads((root/'tests/wave6-security/known-dependencies.json').read_text());schema=known['schema']
 catalog=json.loads((root/'tests/wave5-operations/current-operations-catalog.json').read_text());deps=json.loads((root/'tests/wave3-allowance/current-subset.json').read_text())
 def lit(x):return "'"+x.replace("'","''")+"'"
 def js(x):return lit(json.dumps(x,separators=(',',':')))+'::jsonb'
@@ -34,6 +35,13 @@ for t in catalog['tables']:
 for name in ['active_staff_session','staff_action_allowed','staff_can_access_contact','staff_has_permission','full_member_access']:
  r=next(r for r in deps['routines']if r['schema']=='private'and r['name']==name);sig={'staff_action_allowed':'private.staff_action_allowed(uuid,text,uuid)','staff_can_access_contact':'private.staff_can_access_contact(uuid,uuid)','staff_has_permission':'private.staff_has_permission(uuid,text)'}.get(name,f'private.{name}()')
  pre+=f" p:={lit(sig)}::regprocedure; IF md5(pg_get_functiondef(p)) IS DISTINCT FROM {lit(hashlib.md5(r['definition'].encode()).hexdigest())} THEN RAISE EXCEPTION 'Wave6 authorization dependency drift: {name}'; END IF;\n"
+for name in ['active_staff_session','staff_action_allowed','staff_can_access_contact','staff_has_permission','full_member_access']:
+ r=next(r for r in deps['routines']if r['schema']=='private'and r['name']==name);sig={'staff_action_allowed':'private.staff_action_allowed(uuid,text,uuid)','staff_can_access_contact':'private.staff_can_access_contact(uuid,uuid)','staff_has_permission':'private.staff_has_permission(uuid,text)'}.get(name,f'private.{name}()')
+ pre+=f" p:={lit(sig)}::regprocedure; IF (SELECT pg_get_userbyid(proowner) IS DISTINCT FROM {lit(r['owner'])} OR prosecdef IS DISTINCT FROM {'true'if r['security_definer']else'false'} OR proconfig IS DISTINCT FROM ARRAY[{','.join(lit(x)for x in r['config'])}]::text[] OR (SELECT jsonb_agg(x::text ORDER BY x::text) FROM unnest(coalesce(proacl,acldefault('f',proowner))) x) IS DISTINCT FROM {js(sorted(r['acl']))} FROM pg_proc WHERE oid=p) THEN RAISE EXCEPTION 'Wave6 authorization helper security drift: {name}'; END IF;\n"
+pre+=f" IF (SELECT pg_get_userbyid(nspowner) IS DISTINCT FROM {lit(schema['owner'])} OR (SELECT jsonb_agg(x::text ORDER BY x::text) FROM unnest(nspacl) x) IS DISTINCT FROM {js(sorted(schema['acl']))} FROM pg_namespace WHERE nspname='private') THEN RAISE EXCEPTION 'Wave6 private schema security drift'; END IF;\n"
+for t in catalog['tables']:
+ for tr in t['triggers']:
+  pre+=f" IF NOT EXISTS(SELECT FROM pg_trigger WHERE tgrelid='public.{t['name']}'::regclass AND tgname={lit(tr['name'])} AND tgfoid={lit(tr['function'])}::regprocedure AND md5(pg_get_triggerdef(oid))={lit(hashlib.md5(tr['definition'].encode()).hexdigest())} AND tgenabled='O') THEN RAISE EXCEPTION 'Wave6 original trigger definition/linkage/runtime-enabled prerequisite: {tr['name']}'; END IF;\n"
 pre+=" IF EXISTS(SELECT FROM pg_roles WHERE rolname IN('authenticated','anon') AND (rolsuper OR rolbypassrls)) THEN RAISE EXCEPTION 'Wave6 caller-role drift'; END IF;\n IF to_regprocedure('private.wave6_operation_tuple_before()') IS NOT NULL THEN RAISE EXCEPTION 'Wave6 function collision'; END IF;\nEND $guard$;\n"
 fn="""CREATE FUNCTION private.wave6_operation_tuple_before() RETURNS trigger LANGUAGE plpgsql SECURITY INVOKER SET search_path='' AS $function$
 BEGIN
@@ -71,5 +79,5 @@ revert+="END $guard$;\n"
 for t in ['client_checkins','client_assignments','household_members']:revert+=f'DROP TRIGGER a_wave6_operation_tuple_before ON public.{t};\nGRANT TRUNCATE ON TABLE public.{t} TO authenticated;\n'
 for p in reversed(policies):revert+=f"DROP POLICY {p['name']} ON public.{p['table']};\n"
 revert+='DROP FUNCTION private.wave6_operation_tuple_before();\nCOMMIT;\n';(out/'revert.sql').write_text(revert)
-manifest={'base':'9beae3bb40c154d2bfd623e8d2355b3a6c3cd306','scope':'LOCAL_NONPRODUCTION_ONLY','policies':policies,'newFunctions':[{'signature':'private.wave6_operation_tuple_before()','definer':False,'grantedExecute':[]}],'newTriggers':[{'table':t,'name':'a_wave6_operation_tuple_before'}for t in ['client_checkins','client_assignments','household_members']],'privilegeChanges':[{'table':t,'role':'authenticated','revoke':'TRUNCATE'}for t in ['client_checkins','client_assignments','household_members']],'files':[{'path':str(p.relative_to(root)),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()}for p in [out/'correction.sql',out/'revert.sql']]}
+manifest={'base':'9beae3bb40c154d2bfd623e8d2355b3a6c3cd306','scope':'LOCAL_NONPRODUCTION_ONLY','installationReady':False,'missingProductionPins':known['missingProductionPins'],'runtimePrerequisites':['All original operations triggers enabled O; expected condition, not historically captured state'],'policies':policies,'newFunctions':[{'signature':'private.wave6_operation_tuple_before()','definer':False,'grantedExecute':[]}],'newTriggers':[{'table':t,'name':'a_wave6_operation_tuple_before'}for t in ['client_checkins','client_assignments','household_members']],'privilegeChanges':[{'table':t,'role':'authenticated','revoke':'TRUNCATE'}for t in ['client_checkins','client_assignments','household_members']],'files':[{'path':str(p.relative_to(root)),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()}for p in [out/'correction.sql',out/'revert.sql']]}
 (out/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')

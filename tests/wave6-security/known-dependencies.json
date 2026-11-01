@@ -1,0 +1,21 @@
+{
+  "scope": "row-free captured schema metadata only",
+  "sourcePath": "../deployment-evidence/2026-11-01-wave3/catalog-normalized.json",
+  "sourceSha256": "94322f192cda7bdaeae45c7fb2137745933bf66eef2816467c012f41d380e757",
+  "observedAt": "2026-11-01T15:07:11.086986+00:00",
+  "schema": {
+    "acl": [
+      "postgres=UC/postgres",
+      "anon=U/postgres",
+      "authenticated=U/postgres",
+      "service_role=U/postgres"
+    ],
+    "name": "private",
+    "owner": "postgres"
+  },
+  "missingProductionPins": [
+    "public.households current columns owner RLS policies constraints ACL",
+    "original operations trigger enabled state, raw event attributes and function linkage capture"
+  ],
+  "installReady": false
+}

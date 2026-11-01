@@ -14,7 +14,7 @@
     "PREPARED_NOT_VERIFIED"
   ],
   "sourceContractTests": {
-    "pass": 9,
+    "pass": 11,
     "fail": 0
   },
   "actualPgTests": {
@@ -33,7 +33,7 @@
   "files": [
     {
       "path": "proposals/wave6-security/correction.sql",
-      "sha256": "4a545932faa3553e2c6461494db55257bb598c6cc10356bd8e23f4f589e6b4df"
+      "sha256": "b7d89303db6867e1c5093a04e50856dd6a2592a077aa7e376bb909b8e4cc2b25"
     },
     {
       "path": "proposals/wave6-security/revert.sql",
@@ -41,7 +41,7 @@
     },
     {
       "path": "proposals/wave6-security/manifest.json",
-      "sha256": "58a12beb8cc06344cfeebca1efa7b6064e3be83cdf4bec25fb7b7740f97852f9"
+      "sha256": "7882e25aaea36732b35484a7b26da3420c90b905692b65e672a1d2b279fa7eaa"
     },
     {
       "path": "tests/wave6-security/security.test.cjs",
@@ -49,7 +49,7 @@
     },
     {
       "path": "tests/wave6-security/contract.test.cjs",
-      "sha256": "8eafc5cd82b3f66f93c533328d77fad37b9e29a42d62d4e2d9d498a590056558"
+      "sha256": "bf659454fc69540cff9b0bdb82640e6a4680781a3c9958d9a6298525881bd316"
     },
     {
       "path": "tests/wave6-security/pending-access-identity-hypothesis.test.cjs",
@@ -57,15 +57,24 @@
     },
     {
       "path": "tests/wave6-security/execution-pins.json",
-      "sha256": "72f930fbd6413c281a08638ceeb0715abf989b0743892dc1e68061475358efeb"
+      "sha256": "a32449657dec34b678eca34265fcc1d9c691faef2441fa3a904e22868fb7d3cc"
     },
     {
       "path": "docs/orchestration/issue-60/wave6/contracts.tap",
-      "sha256": "ece93a662d931e8f448f04794a3e781264fd4e6783d25eb6fc213a887f879a40"
+      "sha256": "c21d0f5216000435b5937d43e1e56ea4819c656a3674012291a51bfc13114ef3"
     },
     {
       "path": "docs/orchestration/issue-60/wave6/REPORT.md",
-      "sha256": "83b37368a48aa2c9c3cff441083e1b6141bee36831d7dfc60237a307562152cc"
+      "sha256": "eff3ecbe0d57d41bcce77a18e58360dbf441da42e4da43d8bbebe43abb21691f"
+    },
+    {
+      "path": "tests/wave6-security/known-dependencies.json",
+      "sha256": "b02d12816290c546a0fcfa0856c1ed0cf7c95ef5ae79104333536422bb89f1cb"
     }
+  ],
+  "installationReady": false,
+  "missingProductionPins": [
+    "public.households current columns owner RLS policies constraints ACL",
+    "original operations trigger enabled state, raw event attributes and function linkage capture"
   ]
 }

@@ -1,6 +1,14 @@
 {
   "base": "9beae3bb40c154d2bfd623e8d2355b3a6c3cd306",
   "scope": "LOCAL_NONPRODUCTION_ONLY",
+  "installationReady": false,
+  "missingProductionPins": [
+    "public.households current columns owner RLS policies constraints ACL",
+    "original operations trigger enabled state, raw event attributes and function linkage capture"
+  ],
+  "runtimePrerequisites": [
+    "All original operations triggers enabled O; expected condition, not historically captured state"
+  ],
   "policies": [
     {
       "table": "client_checkins",
@@ -107,7 +115,7 @@
   "files": [
     {
       "path": "proposals/wave6-security/correction.sql",
-      "sha256": "4a545932faa3553e2c6461494db55257bb598c6cc10356bd8e23f4f589e6b4df"
+      "sha256": "b7d89303db6867e1c5093a04e50856dd6a2592a077aa7e376bb909b8e4cc2b25"
     },
     {
       "path": "proposals/wave6-security/revert.sql",

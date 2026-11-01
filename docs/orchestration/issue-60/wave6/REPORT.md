@@ -28,18 +28,24 @@ Root cause is the existing permissive `EXISTS(staff_access WHERE user_id=auth.ui
 - Revoke only authenticated TRUNCATE on the three tables. RLS cannot restrict TRUNCATE. Trusted-role privileges and all other caller rights are retained.
 - Forward transaction guards pin original schema columns/indexes, owner/RLS/ACL, original policies, original trigger routine source/security and authorization-helper definitions, reject bypass-role/function collisions, and use bounded locks/timeouts. Applying twice must fail closed, not silently duplicate policies.
 
-SQL SHA256: `4a545932faa3553e2c6461494db55257bb598c6cc10356bd8e23f4f589e6b4df`.
+SQL SHA256: `b7d89303db6867e1c5093a04e50856dd6a2592a077aa7e376bb909b8e4cc2b25`.
 Local regression revert SHA256: `e4fa7c9231c4d0d41f8f1ff56a6a9366a92b86b85f7fb69fb80224b09279009f`.
-Manifest SHA256: `58a12beb8cc06344cfeebca1efa7b6064e3be83cdf4bec25fb7b7740f97852f9`.
+Manifest SHA256: `7882e25aaea36732b35484a7b26da3420c90b905692b65e672a1d2b279fa7eaa`.
 
 ## Tests and honest limits
 
-- **9/9 source/manifest contract checks PASS** (`contracts.tap`). They verify exact hashes/scope, restrictive-only policies, no grant/definer broadening, original failure source preservation and source/actor guard coverage. They are **not PostgreSQL/RLS acceptance**.
+- **11/11 source/manifest contract checks PASS** (`contracts.tap`). They verify exact hashes/scope, restrictive-only policies, no grant/definer broadening, original failure source preservation and source/actor guard coverage. They are **not PostgreSQL/RLS acceptance**.
 - Node syntax checks PASS for the prepared SQL regression test sources.
 - **45 actual PostgreSQL security assertions PREPARED / NOT RUN**, plus the unchanged original five probes and separately staged current-access identity hypothesis. Coverage includes assigned Coach/Owner positives, role/permission/contact revocation, null/changed actor, direct versus existing invoker RPC, household identity holds, TRUNCATE ACL, active membership/actor binding and transactional rollback.
 - Existing Wave5 actual two-backend concurrency/idempotency/rollback probes are retained for combined independent execution. Their historical author PASS is not a current combined PASS.
 - **Actual PostgreSQL execution, final guarded SQL syntax/installation, original-five before/after closure, rollback, concurrency and full-package business acceptance remain BLOCKED.** Lane A found Mac SysV shared-memory capacity exhausted at 32/32; remaining resources cannot be safely attributed to this RVA workflow. Lane B attempted no initdb/SQL and removed no process/resource. No persistent/staging/production DB fallback is used.
 - One initial source-test harness assertion incorrectly matched the word TRUNCATE in `GRANT TRUNCATE` as if it were a destructive statement. Corrected to reject statement-start TRUNCATE; initial 8PASS/1FAIL is retained in `harness-history.json`. No policy or permission assertion was weakened.
+
+## Additional installation-integrity hold
+
+Independent review requested authorization-helper ownership/ACL and private-schema ACL guards. Existing row-free Wave3 metadata supplies those exact values; they are now pinned, and original trigger definition/function linkage is checked. `tgenabled='O'` is an explicit fail-closed runtime prerequisite, **not** a claimed historically captured enabled state.
+
+The existing metadata packet does **not** include current `public.households` columns/owner/RLS/policies/constraints/ACL, nor a complete original operations trigger raw-attribute/enabled-state capture. No production query was authorized or performed to fill that gap. `manifest.json` explicitly states `installationReady:false` and lists the missing pins. Before any future production release request, obtain a separately scoped read-only schema-only capture of those objects, independently reconcile it, and prepare/execute the exact guarded proposal in disposable PostgreSQL. Do not substitute historical scaffold assumptions for current production pins. This is an additional installation BLOCK, independent of local resource exhaustion.
 
 ## Authentication and policy boundaries
 
