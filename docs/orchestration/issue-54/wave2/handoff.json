@@ -49,14 +49,28 @@
   },
   "localCommit": "Exact final local commit returned through native handoff; no recursive self-hash field",
   "testFileSha256": {
-    "tests/wave2-client/README.md": "3ef60dbf820be65c2325c90bfa6f0a48bdd602ef6e3cfbe44ba1c1eafcf5d064",
+    "tests/wave2-client/README.md": "20930f47cffd5e51db7e982268d666e4bbdf0719104a2587d51c018dfe96aba5",
     "tests/wave2-client/browser-transport.js": "e2797128fa1d9ebe322cf0fb15d26e461b952e785b1dfb4b7c81a90cf08019fe",
     "tests/wave2-client/dependencies.cjs": "04fcdf31a23370ec3939dcaa3ef3348fbadd8a30d860d842183983bf3ad03522",
     "tests/wave2-client/onboarding-fixture.cjs": "111a8a6135a11c133443a589eda377a682f7bbc05b7dd1cead08780bd35f78ee",
     "tests/wave2-client/onboarding.test.cjs": "8093f84051be5e6f4d64d019786ebd2c584acbbf3bdb7765d2a20f44c78fcf1e",
-    "tests/wave2-client/run-browser.cjs": "13e1e0d13e94a2896c3ccdca19b1132f2673a37063798706fe15a11623905db3",
-    "tests/wave2-client/run-pg.cjs": "e558406f36abbaa60999212324d010c6c90459ac3c4f3fafe9b5f0b629ba4fae",
+    "tests/wave2-client/output-directory.cjs": "86785138cce6f86c3eb70ee632f91093142a4da0a141bc1e9f1a94edd56dbaa4",
+    "tests/wave2-client/output-directory.test.cjs": "9529177abcb7a3847ffab73ee6cb672bb519d5e9d22b1df00c028c91fcc406ec",
+    "tests/wave2-client/run-browser.cjs": "886e3e3e2e83e26c65ac4153ce56ba09a35dd2ee55c44b241919474ffded9175",
+    "tests/wave2-client/run-dom.cjs": "71eeec4b06ff95d7fe6315b2e7da16584d057fa7a6a95baf86e40ebb3ee39e3b",
+    "tests/wave2-client/run-pg.cjs": "e4cea05127f5f2776d9741df2c2667f0bedb00a23a1369566b52e7a1c1e8e173",
     "tests/wave2-client/source-pins.json": "895672ad3f9c0d770b5fb89f106e85b85695e76c7b7b180ab45a25675c5e977a",
     "tests/wave2-client/sql-contracts.test.cjs": "9339297dc2b8f8d76899447c20e6449dc64a27d15dbb6fb1af9c7040618eb3f0"
+  },
+  "outputRoutingRevision": {
+    "environmentVariable": "RVA_WAVE2_B_OUTPUT",
+    "authorDefaultPreserved": true,
+    "authorReceiptsUnchanged": true,
+    "evidence": "docs/orchestration/issue-54/wave2/runner-output-revision.json",
+    "unitCasesPassed": 3,
+    "domWrapperSeparateDirectoryPassed": 13,
+    "pgPreflightOnlyPassed": true,
+    "primaryBusinessCountsUnchanged": true,
+    "pgBrowserFullRetestAfterOutputOnlyChange": false
   }
 }

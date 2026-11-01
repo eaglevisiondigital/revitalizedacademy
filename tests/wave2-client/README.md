@@ -7,7 +7,7 @@ This suite executes existing application JavaScript and exact existing SQL in bo
 From repository root:
 
 ```sh
-node --test --test-reporter=tap tests/wave2-client/onboarding.test.cjs
+node tests/wave2-client/run-dom.cjs
 node tests/wave2-client/run-pg.cjs
 RVA_WAVE2_CHROMIUM='/path/to/installed/Chromium' node tests/wave2-client/run-browser.cjs
 ```
@@ -35,3 +35,15 @@ No assertion is skipped, inverted or marked expected-pass. Fixing production aut
 The browser runner fulfills all requests from local source or a labeled fake SDK/Auth/RPC transport at `academy-fixture.invalid`. It executes actual onboarding HTML, environment.js and onboarding.js in Chromium/WebKit, at desktop/mobile sizes. It is not a real Supabase SDK/Auth/provider acceptance or the newly restored dashboard route; Lane A owns that runtime and QA integrates the lanes.
 
 See `docs/orchestration/issue-54/wave2/REPORT.md` and `results.json` for exact matrix IDs, execution results, initial fixture errors, blockers and evidence limits.
+
+## Independent QA evidence destination
+
+All three receipt runners accept optional `RVA_WAVE2_B_OUTPUT`. The default remains `docs/orchestration/issue-54/wave2`; an absolute override is used directly, while a relative override resolves from the current repository root. For example:
+
+```sh
+RVA_WAVE2_B_OUTPUT=/private/tmp/qa-wave2-client node tests/wave2-client/run-dom.cjs
+RVA_WAVE2_B_OUTPUT=/private/tmp/qa-wave2-client node tests/wave2-client/run-pg.cjs
+RVA_WAVE2_B_OUTPUT=/private/tmp/qa-wave2-client RVA_WAVE2_CHROMIUM='/path/to/installed/Chromium' node tests/wave2-client/run-browser.cjs
+```
+
+Use a fresh independent directory to preserve author receipts. CLI stdout remains available for caller-controlled capture. New receipts include their exact runner SHA256 and effective output directory. The output-only revision does not alter SQL inputs or substantive assertions. `runner-output-revision.json` distinguishes hashes of the initially executed PG/browser runners from the final output-configurable versions.

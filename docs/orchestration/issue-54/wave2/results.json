@@ -209,5 +209,16 @@
   "ownedPaths": [
     "tests/wave2-client/",
     "docs/orchestration/issue-54/wave2/"
-  ]
+  ],
+  "outputRoutingRevision": {
+    "environmentVariable": "RVA_WAVE2_B_OUTPUT",
+    "authorDefaultPreserved": true,
+    "authorReceiptsUnchanged": true,
+    "evidence": "docs/orchestration/issue-54/wave2/runner-output-revision.json",
+    "unitCasesPassed": 3,
+    "domWrapperSeparateDirectoryPassed": 13,
+    "pgPreflightOnlyPassed": true,
+    "primaryBusinessCountsUnchanged": true,
+    "pgBrowserFullRetestAfterOutputOnlyChange": false
+  }
 }

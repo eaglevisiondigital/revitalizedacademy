@@ -1,11 +1,12 @@
 // Actual source SQL in a private disposable PG17 cluster; no migration globs or live connection settings.
 const fs=require('node:fs'),path=require('node:path'),os=require('node:os'),crypto=require('node:crypto'),{spawnSync}=require('node:child_process');
-const root=path.resolve(__dirname,'../..'),owned=path.join(root,'docs/orchestration/issue-54/wave2');
+const root=path.resolve(__dirname,'../..'),owned=require('./output-directory.cjs')(root);
+fs.mkdirSync(owned,{recursive:true});
 const manifest=require('./source-pins.json');
 const bin=process.env.RVA_WAVE2_PG_BIN||'/opt/homebrew/opt/postgresql@17/bin';
 const hash=b=>crypto.createHash('sha256').update(b).digest('hex');
 function call(exe,args,options={}){const r=spawnSync(exe,args,{encoding:'utf8',maxBuffer:24*1024*1024,timeout:120000,...options});if(r.status!==0)throw Error(`${path.basename(exe)} failed: ${(r.stderr||r.stdout||r.error?.message||'').slice(-3500)}`);return r;}
-const receipt={scope:'LOCAL_HISTORICAL_CATALOG_PLUS_EXPLICIT_PRODUCTION_LIFECYCLE_SOURCE',sourceCommit:call('git',['rev-parse','HEAD'],{cwd:root}).stdout.trim(),startedAt:new Date().toISOString(),network:'unix_socket_only; listen_addresses empty',database:'wave2_client',managedAuth:'synthetic auth.uid/auth.jwt scaffolding, not GoTrue',productionCalls:0,sourcePins:manifest.files,fixtureGlobalRoleChanges:'isolated new cluster only',testsRun:false};
+const receipt={runnerSha256:hash(fs.readFileSync(__filename)),outputDirectory:owned,scope:'LOCAL_HISTORICAL_CATALOG_PLUS_EXPLICIT_PRODUCTION_LIFECYCLE_SOURCE',sourceCommit:call('git',['rev-parse','HEAD'],{cwd:root}).stdout.trim(),startedAt:new Date().toISOString(),network:'unix_socket_only; listen_addresses empty',database:'wave2_client',managedAuth:'synthetic auth.uid/auth.jwt scaffolding, not GoTrue',productionCalls:0,sourcePins:manifest.files,fixtureGlobalRoleChanges:'isolated new cluster only',testsRun:false};
 let scratch,started=false;
 try{
  for(const x of manifest.files){const p=path.resolve(root,x.path);if(hash(fs.readFileSync(p))!==x.sha256)throw Error('Pinned source drift: '+x.path);}

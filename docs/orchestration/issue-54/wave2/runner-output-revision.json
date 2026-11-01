@@ -1,0 +1,46 @@
+{
+  "originalExecutionCommit": "b188a8abd9ed7751ae619d49a74a4498ea7d8d4e",
+  "change": "Output-directory selection and runner receipt self-hash only; no SQL/policy/substantive assertion changes",
+  "environmentVariable": "RVA_WAVE2_B_OUTPUT",
+  "defaultUnchanged": true,
+  "outputPathUnitCases": {
+    "pass": 3,
+    "fail": 0
+  },
+  "pgOutputPreflightSmoke": {
+    "pass": true,
+    "testsRun": false,
+    "clusterStarted": false
+  },
+  "domSeparateDirectorySmoke": {
+    "pass": 13,
+    "fail": 0
+  },
+  "authorReceiptsUnchanged": true,
+  "authorReceiptSha256": {
+    "baseline_auth-tests.tap": "bf239f8b343efadc6d6013fcb7671af4978249589615f34435b4dc0b71b4ae50",
+    "production_hold-tests.tap": "6ed1dd79362ff200f90eb6c3981adad043a50385c66a408a5cd36171efdfaeae",
+    "postgres-receipt.json": "2f152c698c1bd6e2053ab8f719c29309abb6e9bbc5d7c9e45acbd607a18f3769",
+    "browser-receipt.json": "8a7fea3af3f81d759abcd12bbb86070e1908580df8e7ad967dc667ddb6c6cbd7",
+    "onboarding-dom.tap": "c29b6c7943bf96d52a1acef82eb106603d01b5d22803a4d3fcd244d20c00d773"
+  },
+  "runners": {
+    "run-pg.cjs": {
+      "executedForPrimaryReceiptsSha256": "e558406f36abbaa60999212324d010c6c90459ac3c4f3fafe9b5f0b629ba4fae",
+      "outputOnlyFinalSha256": "e4cea05127f5f2776d9741df2c2667f0bedb00a23a1369566b52e7a1c1e8e173",
+      "fullPgOrBrowserRerunAfterOutputOnlyChange": false
+    },
+    "run-browser.cjs": {
+      "executedForPrimaryReceiptsSha256": "13e1e0d13e94a2896c3ccdca19b1132f2673a37063798706fe15a11623905db3",
+      "outputOnlyFinalSha256": "886e3e3e2e83e26c65ac4153ce56ba09a35dd2ee55c44b241919474ffded9175",
+      "fullPgOrBrowserRerunAfterOutputOnlyChange": false
+    },
+    "run-dom.cjs": {
+      "wrapperSha256": "71eeec4b06ff95d7fe6315b2e7da16584d057fa7a6a95baf86e40ebb3ee39e3b",
+      "executedToSeparateDirectory": true,
+      "pass": 13,
+      "fail": 0,
+      "substantiveAssertionsUnchanged": true
+    }
+  }
+}
