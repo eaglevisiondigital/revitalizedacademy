@@ -1,0 +1,24 @@
+✔ QA share entry snapshot rejects authorization epoch ABA despite same identity (4.686042ms)
+✔ QA final synchronous clock mutation cannot sneak revoked consent past authority check (0.913ms)
+✔ QA currentAuthority error message redacted even with private-looking error (0.488667ms)
+✔ QA rejected callback cannot poison next queued touchpoint (2.406959ms)
+✔ QA same actor in another scope gets isolated journal (0.999ms)
+✔ QA duplicate cannot reveal previous journal after tracking consent withdrawal (1.077041ms)
+✔ QA same event identifier under changed approved creative revision conflicts (0.639709ms)
+✔ QA source snapshot getters are never invoked (0.188208ms)
+✔ QA queue overflow is held and nonfinancial receipt stays minimal (33.548666ms)
+✔ QA fixture factory never silently defaults to production or missing authority provider (0.305167ms)
+✔ QA V3 receipt-generation ABA increments authority and holds (2.90825ms)
+✔ QA V3 fresh same-principal token leaves education lookup available (1.603791ms)
+✔ QA V3 revoked source receipt rejects entire educational result (0.849666ms)
+✔ QA V3 trusted callback failure cannot leak backend text (0.320917ms)
+✔ QA V3 caller supplied safety or audience cannot select authority (0.508959ms)
+✔ QA V3 factory denies accidental live mode and missing synchronous authority (0.178084ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 131.524167

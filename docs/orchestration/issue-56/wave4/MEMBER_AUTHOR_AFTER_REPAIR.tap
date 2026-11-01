@@ -1,0 +1,706 @@
+TAP version 13
+# Subtest: BASELINE progress pending identity switch throws before write
+ok 1 - BASELINE progress pending identity switch throws before write
+  ---
+  duration_ms: 270.429917
+  type: 'test'
+  ...
+# Subtest: BASELINE progress pending identity logout throws before write
+ok 2 - BASELINE progress pending identity logout throws before write
+  ---
+  duration_ms: 164.867208
+  type: 'test'
+  ...
+# Subtest: BASELINE goal duplicate pending submit dispatches twice
+ok 3 - BASELINE goal duplicate pending submit dispatches twice
+  ---
+  duration_ms: 100.28075
+  type: 'test'
+  ...
+# Subtest: BASELINE habit duplicate pending submit dispatches twice
+ok 4 - BASELINE habit duplicate pending submit dispatches twice
+  ---
+  duration_ms: 115.291
+  type: 'test'
+  ...
+# Subtest: BASELINE goal late denial alerts after switch
+ok 5 - BASELINE goal late denial alerts after switch
+  ---
+  duration_ms: 85.983333
+  type: 'test'
+  ...
+# Subtest: BASELINE habit late denial alerts after switch
+ok 6 - BASELINE habit late denial alerts after switch
+  ---
+  duration_ms: 109.916459
+  type: 'test'
+  ...
+# Subtest: BASELINE progress pending identity reads changed note instead of submitted snapshot
+ok 7 - BASELINE progress pending identity reads changed note instead of submitted snapshot
+  ---
+  duration_ms: 142.57775
+  type: 'test'
+  ...
+# Subtest: BASELINE habit mark-today late denial alerts after logout
+ok 8 - BASELINE habit mark-today late denial alerts after logout
+  ---
+  duration_ms: 73.401875
+  type: 'test'
+  ...
+# Subtest: UNCHANGED Coach full module reproduces missing capacity result on fictional active membership
+ok 9 - UNCHANGED Coach full module reproduces missing capacity result on fictional active membership
+  ---
+  duration_ms: 354.776
+  type: 'test'
+  ...
+# Subtest: Coach successful then 42501 refresh clears coaching private lists/draft and closes workspace
+ok 10 - Coach successful then 42501 refresh clears coaching private lists/draft and closes workspace
+  ---
+  duration_ms: 321.725916
+  type: 'test'
+  ...
+# Subtest: Coach successful then 401 refresh clears coaching private lists/draft and closes workspace
+ok 11 - Coach successful then 401 refresh clears coaching private lists/draft and closes workspace
+  ---
+  duration_ms: 166.947583
+  type: 'test'
+  ...
+# Subtest: Coach successful then 403 refresh clears coaching private lists/draft and closes workspace
+ok 12 - Coach successful then 403 refresh clears coaching private lists/draft and closes workspace
+  ---
+  duration_ms: 159.427583
+  type: 'test'
+  ...
+# Subtest: Coach same-context transient failure preserves user draft and authorized workspace for retry
+ok 13 - Coach same-context transient failure preserves user draft and authorized workspace for retry
+  ---
+  duration_ms: 148.792042
+  type: 'test'
+  ...
+# Subtest: Coach close while client_access pending cannot restore prior workspace
+ok 14 - Coach close while client_access pending cannot restore prior workspace
+  ---
+  duration_ms: 187.231834
+  type: 'test'
+  ...
+# Subtest: Coach close while client_goals pending cannot restore prior workspace
+ok 15 - Coach close while client_goals pending cannot restore prior workspace
+  ---
+  duration_ms: 123.524416
+  type: 'test'
+  ...
+# Subtest: Coach A/B out of order at client_access keeps only B and hides A promptly
+ok 16 - Coach A/B out of order at client_access keeps only B and hides A promptly
+  ---
+  duration_ms: 153.750459
+  type: 'test'
+  ...
+# Subtest: Coach A/B out of order at client_goals keeps only B and hides A promptly
+ok 17 - Coach A/B out of order at client_goals keeps only B and hides A promptly
+  ---
+  duration_ms: 153.870458
+  type: 'test'
+  ...
+# Subtest: Coach changed identity at client_access cannot resurrect same-contact workspace
+ok 18 - Coach changed identity at client_access cannot resurrect same-contact workspace
+  ---
+  duration_ms: 126.751958
+  type: 'test'
+  ...
+# Subtest: Coach changed identity at client_goals cannot resurrect same-contact workspace
+ok 19 - Coach changed identity at client_goals cannot resurrect same-contact workspace
+  ---
+  duration_ms: 126.078667
+  type: 'test'
+  ...
+# Subtest: Coach same-actor renewal while load pending retains legitimate current load
+ok 20 - Coach same-actor renewal while load pending retains legitimate current load
+  ---
+  duration_ms: 105.329833
+  type: 'test'
+  ...
+# Subtest: fixed full Coach loader selects existing six-field capacity contract and keeps assigned Coach enabled
+ok 21 - fixed full Coach loader selects existing six-field capacity contract and keeps assigned Coach enabled
+  ---
+  duration_ms: 326.821625
+  type: 'test'
+  ...
+# Subtest: fixed full Coach loader empty capacity preserves staff selection without fabricating limits
+ok 22 - fixed full Coach loader empty capacity preserves staff selection without fabricating limits
+  ---
+  duration_ms: 135.940417
+  type: 'test'
+  ...
+# Subtest: fixed full Coach loader surfaces denied capacity without showing prepared coaching workspace
+ok 23 - fixed full Coach loader surfaces denied capacity without showing prepared coaching workspace
+  ---
+  duration_ms: 147.546791
+  type: 'test'
+  ...
+# Subtest: unchanged Coach goal handler preserves contact/member/actor payload and displays backend denial
+ok 24 - unchanged Coach goal handler preserves contact/member/actor payload and displays backend denial
+  ---
+  duration_ms: 685.282125
+  type: 'test'
+  ...
+# Subtest: unchanged Coach habit handler preserves contact/member/actor payload and displays backend denial
+ok 25 - unchanged Coach habit handler preserves contact/member/actor payload and displays backend denial
+  ---
+  duration_ms: 462.145209
+  type: 'test'
+  ...
+# Subtest: progress pending identity switch ignores stale request
+ok 26 - progress pending identity switch ignores stale request
+  ---
+  duration_ms: 272.8355
+  type: 'test'
+  ...
+# Subtest: progress pending identity logout ignores stale request
+ok 27 - progress pending identity logout ignores stale request
+  ---
+  duration_ms: 101.138708
+  type: 'test'
+  ...
+# Subtest: progress identity failure denies {"authUserId":null}
+ok 28 - progress identity failure denies {"authUserId":null}
+  ---
+  duration_ms: 69.451042
+  type: 'test'
+  ...
+# Subtest: progress identity failure denies {"authUserId":"synthetic-b"}
+ok 29 - progress identity failure denies {"authUserId":"synthetic-b"}
+  ---
+  duration_ms: 72.475458
+  type: 'test'
+  ...
+# Subtest: progress identity failure denies {"authError":{"message":"Fictional auth unavailable"}}
+ok 30 - progress identity failure denies {"authError":{"message":"Fictional auth unavailable"}}
+  ---
+  duration_ms: 83.746333
+  type: 'test'
+  ...
+# Subtest: progress snapshot survives changed input and same-account renewal
+ok 31 - progress snapshot survives changed input and same-account renewal
+  ---
+  duration_ms: 94.935542
+  type: 'test'
+  ...
+# Subtest: goal concurrent submits dispatch once and unlock for retry
+ok 32 - goal concurrent submits dispatch once and unlock for retry
+  ---
+  duration_ms: 93.459833
+  type: 'test'
+  ...
+# Subtest: habit concurrent submits dispatch once and unlock for retry
+ok 33 - habit concurrent submits dispatch once and unlock for retry
+  ---
+  duration_ms: 114.685875
+  type: 'test'
+  ...
+# Subtest: progress concurrent submits dispatch once and unlock for retry
+ok 34 - progress concurrent submits dispatch once and unlock for retry
+  ---
+  duration_ms: 85.223958
+  type: 'test'
+  ...
+# Subtest: goal server 42501 remains visible and retryable
+ok 35 - goal server 42501 remains visible and retryable
+  ---
+  duration_ms: 54.415125
+  type: 'test'
+  ...
+# Subtest: goal server 23505 remains visible and retryable
+ok 36 - goal server 23505 remains visible and retryable
+  ---
+  duration_ms: 48.64925
+  type: 'test'
+  ...
+# Subtest: habit server 42501 remains visible and retryable
+ok 37 - habit server 42501 remains visible and retryable
+  ---
+  duration_ms: 49.216708
+  type: 'test'
+  ...
+# Subtest: habit server 23505 remains visible and retryable
+ok 38 - habit server 23505 remains visible and retryable
+  ---
+  duration_ms: 49.843167
+  type: 'test'
+  ...
+# Subtest: progress server 42501 remains visible and retryable
+ok 39 - progress server 42501 remains visible and retryable
+  ---
+  duration_ms: 47.251333
+  type: 'test'
+  ...
+# Subtest: progress server 23505 remains visible and retryable
+ok 40 - progress server 23505 remains visible and retryable
+  ---
+  duration_ms: 48.732041
+  type: 'test'
+  ...
+# Subtest: goal pending transport success after switch has no late UI/reload
+ok 41 - goal pending transport success after switch has no late UI/reload
+  ---
+  duration_ms: 63.253333
+  type: 'test'
+  ...
+# Subtest: goal pending transport denial after switch has no late UI/reload
+ok 42 - goal pending transport denial after switch has no late UI/reload
+  ---
+  duration_ms: 65.228459
+  type: 'test'
+  ...
+# Subtest: goal pending transport success after logout has no late UI/reload
+ok 43 - goal pending transport success after logout has no late UI/reload
+  ---
+  duration_ms: 62.6945
+  type: 'test'
+  ...
+# Subtest: goal pending transport denial after logout has no late UI/reload
+ok 44 - goal pending transport denial after logout has no late UI/reload
+  ---
+  duration_ms: 62.609042
+  type: 'test'
+  ...
+# Subtest: habit pending transport success after switch has no late UI/reload
+ok 45 - habit pending transport success after switch has no late UI/reload
+  ---
+  duration_ms: 65.366333
+  type: 'test'
+  ...
+# Subtest: habit pending transport denial after switch has no late UI/reload
+ok 46 - habit pending transport denial after switch has no late UI/reload
+  ---
+  duration_ms: 61.762875
+  type: 'test'
+  ...
+# Subtest: habit pending transport success after logout has no late UI/reload
+ok 47 - habit pending transport success after logout has no late UI/reload
+  ---
+  duration_ms: 63.824334
+  type: 'test'
+  ...
+# Subtest: habit pending transport denial after logout has no late UI/reload
+ok 48 - habit pending transport denial after logout has no late UI/reload
+  ---
+  duration_ms: 61.548167
+  type: 'test'
+  ...
+# Subtest: progress pending transport success after switch has no late UI/reload
+ok 49 - progress pending transport success after switch has no late UI/reload
+  ---
+  duration_ms: 61.668792
+  type: 'test'
+  ...
+# Subtest: progress pending transport denial after switch has no late UI/reload
+ok 50 - progress pending transport denial after switch has no late UI/reload
+  ---
+  duration_ms: 65.848334
+  type: 'test'
+  ...
+# Subtest: progress pending transport success after logout has no late UI/reload
+ok 51 - progress pending transport success after logout has no late UI/reload
+  ---
+  duration_ms: 59.957709
+  type: 'test'
+  ...
+# Subtest: progress pending transport denial after logout has no late UI/reload
+ok 52 - progress pending transport denial after logout has no late UI/reload
+  ---
+  duration_ms: 61.205834
+  type: 'test'
+  ...
+# Subtest: goal status completion after switch stays silent false
+ok 53 - goal status completion after switch stays silent false
+  ---
+  duration_ms: 59.71725
+  type: 'test'
+  ...
+# Subtest: goal status completion after switch stays silent true
+ok 54 - goal status completion after switch stays silent true
+  ---
+  duration_ms: 64.169583
+  type: 'test'
+  ...
+# Subtest: goal status completion after logout stays silent false
+ok 55 - goal status completion after logout stays silent false
+  ---
+  duration_ms: 66.395833
+  type: 'test'
+  ...
+# Subtest: goal status completion after logout stays silent true
+ok 56 - goal status completion after logout stays silent true
+  ---
+  duration_ms: 61.517875
+  type: 'test'
+  ...
+# Subtest: habit status completion after switch stays silent false
+ok 57 - habit status completion after switch stays silent false
+  ---
+  duration_ms: 64.894916
+  type: 'test'
+  ...
+# Subtest: habit status completion after switch stays silent true
+ok 58 - habit status completion after switch stays silent true
+  ---
+  duration_ms: 62.787917
+  type: 'test'
+  ...
+# Subtest: habit status completion after logout stays silent false
+ok 59 - habit status completion after logout stays silent false
+  ---
+  duration_ms: 63.882958
+  type: 'test'
+  ...
+# Subtest: habit status completion after logout stays silent true
+ok 60 - habit status completion after logout stays silent true
+  ---
+  duration_ms: 77.770875
+  type: 'test'
+  ...
+# Subtest: goal row pending status double tap dispatches once; renewal retains task
+ok 61 - goal row pending status double tap dispatches once; renewal retains task
+  ---
+  duration_ms: 73.635583
+  type: 'test'
+  ...
+# Subtest: habit row pending status double tap dispatches once; renewal retains task
+ok 62 - habit row pending status double tap dispatches once; renewal retains task
+  ---
+  duration_ms: 71.110375
+  type: 'test'
+  ...
+# Subtest: progress range -1 rejects before identity/write
+ok 63 - progress range -1 rejects before identity/write
+  ---
+  duration_ms: 45.038125
+  type: 'test'
+  ...
+# Subtest: progress range 101 rejects before identity/write
+ok 64 - progress range 101 rejects before identity/write
+  ---
+  duration_ms: 44.213208
+  type: 'test'
+  ...
+# Subtest: progress zero remains a valid fictional measurement
+ok 65 - progress zero remains a valid fictional measurement
+  ---
+  duration_ms: 50.963708
+  type: 'test'
+  ...
+# Subtest: goal normal current actor success preserves scoped RPC payload
+ok 66 - goal normal current actor success preserves scoped RPC payload
+  ---
+  duration_ms: 51.678291
+  type: 'test'
+  ...
+# Subtest: habit normal current actor success preserves scoped RPC payload
+ok 67 - habit normal current actor success preserves scoped RPC payload
+  ---
+  duration_ms: 51.259584
+  type: 'test'
+  ...
+# Subtest: habit mark-today stale completion stays silent after switch
+ok 68 - habit mark-today stale completion stays silent after switch
+  ---
+  duration_ms: 66.061917
+  type: 'test'
+  ...
+# Subtest: habit mark-today stale completion stays silent after logout
+ok 69 - habit mark-today stale completion stays silent after logout
+  ---
+  duration_ms: 59.554208
+  type: 'test'
+  ...
+# Subtest: createGoal actual getUser failure denies before RPC {"authUserId":null}
+ok 70 - createGoal actual getUser failure denies before RPC {"authUserId":null}
+  ---
+  duration_ms: 46.546459
+  type: 'test'
+  ...
+# Subtest: createGoal actual getUser failure denies before RPC {"authUserId":"synthetic-b"}
+ok 71 - createGoal actual getUser failure denies before RPC {"authUserId":"synthetic-b"}
+  ---
+  duration_ms: 48.275291
+  type: 'test'
+  ...
+# Subtest: createGoal actual getUser failure denies before RPC {"authError":{"message":"Fictional auth unavailable"}}
+ok 72 - createGoal actual getUser failure denies before RPC {"authError":{"message":"Fictional auth unavailable"}}
+  ---
+  duration_ms: 44.190125
+  type: 'test'
+  ...
+# Subtest: createHabit actual getUser failure denies before RPC {"authUserId":null}
+ok 73 - createHabit actual getUser failure denies before RPC {"authUserId":null}
+  ---
+  duration_ms: 48.998042
+  type: 'test'
+  ...
+# Subtest: createHabit actual getUser failure denies before RPC {"authUserId":"synthetic-b"}
+ok 74 - createHabit actual getUser failure denies before RPC {"authUserId":"synthetic-b"}
+  ---
+  duration_ms: 44.737666
+  type: 'test'
+  ...
+# Subtest: createHabit actual getUser failure denies before RPC {"authError":{"message":"Fictional auth unavailable"}}
+ok 75 - createHabit actual getUser failure denies before RPC {"authError":{"message":"Fictional auth unavailable"}}
+  ---
+  duration_ms: 44.084958
+  type: 'test'
+  ...
+# Subtest: updateGoal actual getUser failure denies before RPC {"authUserId":null}
+ok 76 - updateGoal actual getUser failure denies before RPC {"authUserId":null}
+  ---
+  duration_ms: 42.571917
+  type: 'test'
+  ...
+# Subtest: updateGoal actual getUser failure denies before RPC {"authUserId":"synthetic-b"}
+ok 77 - updateGoal actual getUser failure denies before RPC {"authUserId":"synthetic-b"}
+  ---
+  duration_ms: 44.80175
+  type: 'test'
+  ...
+# Subtest: updateGoal actual getUser failure denies before RPC {"authError":{"message":"Fictional auth unavailable"}}
+ok 78 - updateGoal actual getUser failure denies before RPC {"authError":{"message":"Fictional auth unavailable"}}
+  ---
+  duration_ms: 47.872416
+  type: 'test'
+  ...
+# Subtest: updateHabit actual getUser failure denies before RPC {"authUserId":null}
+ok 79 - updateHabit actual getUser failure denies before RPC {"authUserId":null}
+  ---
+  duration_ms: 42.155916
+  type: 'test'
+  ...
+# Subtest: updateHabit actual getUser failure denies before RPC {"authUserId":"synthetic-b"}
+ok 80 - updateHabit actual getUser failure denies before RPC {"authUserId":"synthetic-b"}
+  ---
+  duration_ms: 46.077375
+  type: 'test'
+  ...
+# Subtest: updateHabit actual getUser failure denies before RPC {"authError":{"message":"Fictional auth unavailable"}}
+ok 81 - updateHabit actual getUser failure denies before RPC {"authError":{"message":"Fictional auth unavailable"}}
+  ---
+  duration_ms: 45.771917
+  type: 'test'
+  ...
+# Subtest: markHabit actual getUser failure denies before RPC {"authUserId":null}
+ok 82 - markHabit actual getUser failure denies before RPC {"authUserId":null}
+  ---
+  duration_ms: 46.399333
+  type: 'test'
+  ...
+# Subtest: markHabit actual getUser failure denies before RPC {"authUserId":"synthetic-b"}
+ok 83 - markHabit actual getUser failure denies before RPC {"authUserId":"synthetic-b"}
+  ---
+  duration_ms: 49.481
+  type: 'test'
+  ...
+# Subtest: markHabit actual getUser failure denies before RPC {"authError":{"message":"Fictional auth unavailable"}}
+ok 84 - markHabit actual getUser failure denies before RPC {"authError":{"message":"Fictional auth unavailable"}}
+  ---
+  duration_ms: 45.825791
+  type: 'test'
+  ...
+# Subtest: createGoal pending getUser switch dispatches no stale RPC
+ok 85 - createGoal pending getUser switch dispatches no stale RPC
+  ---
+  duration_ms: 45.737083
+  type: 'test'
+  ...
+# Subtest: createGoal pending getUser logout dispatches no stale RPC
+ok 86 - createGoal pending getUser logout dispatches no stale RPC
+  ---
+  duration_ms: 46.166958
+  type: 'test'
+  ...
+# Subtest: createHabit pending getUser switch dispatches no stale RPC
+ok 87 - createHabit pending getUser switch dispatches no stale RPC
+  ---
+  duration_ms: 45.948625
+  type: 'test'
+  ...
+# Subtest: createHabit pending getUser logout dispatches no stale RPC
+ok 88 - createHabit pending getUser logout dispatches no stale RPC
+  ---
+  duration_ms: 46.743042
+  type: 'test'
+  ...
+# Subtest: updateGoal pending getUser switch dispatches no stale RPC
+ok 89 - updateGoal pending getUser switch dispatches no stale RPC
+  ---
+  duration_ms: 44.63525
+  type: 'test'
+  ...
+# Subtest: updateGoal pending getUser logout dispatches no stale RPC
+ok 90 - updateGoal pending getUser logout dispatches no stale RPC
+  ---
+  duration_ms: 44.070417
+  type: 'test'
+  ...
+# Subtest: updateHabit pending getUser switch dispatches no stale RPC
+ok 91 - updateHabit pending getUser switch dispatches no stale RPC
+  ---
+  duration_ms: 47.393083
+  type: 'test'
+  ...
+# Subtest: updateHabit pending getUser logout dispatches no stale RPC
+ok 92 - updateHabit pending getUser logout dispatches no stale RPC
+  ---
+  duration_ms: 43.990542
+  type: 'test'
+  ...
+# Subtest: markHabit pending getUser switch dispatches no stale RPC
+ok 93 - markHabit pending getUser switch dispatches no stale RPC
+  ---
+  duration_ms: 47.377166
+  type: 'test'
+  ...
+# Subtest: markHabit pending getUser logout dispatches no stale RPC
+ok 94 - markHabit pending getUser logout dispatches no stale RPC
+  ---
+  duration_ms: 43.468792
+  type: 'test'
+  ...
+# Subtest: goal delayed modal close after synthetic-b respects completed task lineage
+ok 95 - goal delayed modal close after synthetic-b respects completed task lineage
+  ---
+  duration_ms: 56.573666
+  type: 'test'
+  ...
+# Subtest: goal delayed modal close after null respects completed task lineage
+ok 96 - goal delayed modal close after null respects completed task lineage
+  ---
+  duration_ms: 58.380666
+  type: 'test'
+  ...
+# Subtest: goal delayed modal close after renew respects completed task lineage
+ok 97 - goal delayed modal close after renew respects completed task lineage
+  ---
+  duration_ms: 60.905833
+  type: 'test'
+  ...
+# Subtest: habit delayed modal close after synthetic-b respects completed task lineage
+ok 98 - habit delayed modal close after synthetic-b respects completed task lineage
+  ---
+  duration_ms: 53.575042
+  type: 'test'
+  ...
+# Subtest: habit delayed modal close after null respects completed task lineage
+ok 99 - habit delayed modal close after null respects completed task lineage
+  ---
+  duration_ms: 57.727
+  type: 'test'
+  ...
+# Subtest: habit delayed modal close after renew respects completed task lineage
+ok 100 - habit delayed modal close after renew respects completed task lineage
+  ---
+  duration_ms: 55.815209
+  type: 'test'
+  ...
+# Subtest: goal successful old modal timer cannot close newly reopened same-user draft
+ok 101 - goal successful old modal timer cannot close newly reopened same-user draft
+  ---
+  duration_ms: 57.644459
+  type: 'test'
+  ...
+# Subtest: habit successful old modal timer cannot close newly reopened same-user draft
+ok 102 - habit successful old modal timer cannot close newly reopened same-user draft
+  ---
+  duration_ms: 58.770958
+  type: 'test'
+  ...
+# Subtest: goal old finally cannot unlock replacement form after account reset
+ok 103 - goal old finally cannot unlock replacement form after account reset
+  ---
+  duration_ms: 67.327
+  type: 'test'
+  ...
+# Subtest: habit old finally cannot unlock replacement form after account reset
+ok 104 - habit old finally cannot unlock replacement form after account reset
+  ---
+  duration_ms: 59.964083
+  type: 'test'
+  ...
+# Subtest: progress old finally cannot unlock replacement form after account reset
+ok 105 - progress old finally cannot unlock replacement form after account reset
+  ---
+  duration_ms: 61.678
+  type: 'test'
+  ...
+# Subtest: goal reopened during pending RPC ignores old success status and timer
+ok 106 - goal reopened during pending RPC ignores old success status and timer
+  ---
+  duration_ms: 286.040958
+  type: 'test'
+  ...
+# Subtest: goal reopened during pending RPC ignores old 42501 status and timer
+ok 107 - goal reopened during pending RPC ignores old 42501 status and timer
+  ---
+  duration_ms: 108.080083
+  type: 'test'
+  ...
+# Subtest: goal reopened during pending RPC ignores old 23505 status and timer
+ok 108 - goal reopened during pending RPC ignores old 23505 status and timer
+  ---
+  duration_ms: 80.11625
+  type: 'test'
+  ...
+# Subtest: habit reopened during pending RPC ignores old success status and timer
+ok 109 - habit reopened during pending RPC ignores old success status and timer
+  ---
+  duration_ms: 98.239708
+  type: 'test'
+  ...
+# Subtest: habit reopened during pending RPC ignores old 42501 status and timer
+ok 110 - habit reopened during pending RPC ignores old 42501 status and timer
+  ---
+  duration_ms: 87.79425
+  type: 'test'
+  ...
+# Subtest: habit reopened during pending RPC ignores old 23505 status and timer
+ok 111 - habit reopened during pending RPC ignores old 23505 status and timer
+  ---
+  duration_ms: 85.474583
+  type: 'test'
+  ...
+# Subtest: goal old finally cannot unlock newer same-form generation request
+ok 112 - goal old finally cannot unlock newer same-form generation request
+  ---
+  duration_ms: 123.645833
+  type: 'test'
+  ...
+# Subtest: habit old finally cannot unlock newer same-form generation request
+ok 113 - habit old finally cannot unlock newer same-form generation request
+  ---
+  duration_ms: 105.55025
+  type: 'test'
+  ...
+# Subtest: all member source outside six approved mutation handlers and two exact modal-open functions stays byte-identical
+ok 114 - all member source outside six approved mutation handlers and two exact modal-open functions stays byte-identical
+  ---
+  duration_ms: 308.73525
+  type: 'test'
+  ...
+# Subtest: Coach source outside exact loader/clear/sequence/contact-close contract stays byte-identical
+ok 115 - Coach source outside exact loader/clear/sequence/contact-close contract stays byte-identical
+  ---
+  duration_ms: 109.089125
+  type: 'test'
+  ...
+# Subtest: tracked runtime changes remain restricted to two cleared files; no branding/schema/Auth change
+ok 116 - tracked runtime changes remain restricted to two cleared files; no branding/schema/Auth change
+  ---
+  duration_ms: 76.587583
+  type: 'test'
+  ...
+1..116
+# tests 116
+# suites 0
+# pass 116
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5284.284375

@@ -1,0 +1,34 @@
+{
+  "scope": "INDEPENDENT_REAL_BROWSER_FICTIONAL_TRANSPORT",
+  "results": [
+    {
+      "engine": "chromium",
+      "kind": "goal",
+      "status": "PASS",
+      "outside": 0
+    },
+    {
+      "engine": "chromium",
+      "kind": "habit",
+      "status": "PASS",
+      "outside": 0
+    },
+    {
+      "engine": "webkit",
+      "kind": "goal",
+      "status": "PASS",
+      "outside": 0
+    },
+    {
+      "engine": "webkit",
+      "kind": "habit",
+      "status": "PASS",
+      "outside": 0
+    }
+  ],
+  "counts": {
+    "pass": 4,
+    "fail": 0
+  },
+  "productionCalls": 0
+}

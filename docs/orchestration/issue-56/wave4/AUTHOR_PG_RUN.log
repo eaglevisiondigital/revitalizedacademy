@@ -1,0 +1,1736 @@
+TAP version 13
+# Subtest: [N02/E02 old strict] wrong Coach cannot SELECT unrelated usage
+not ok 1 - [N02/E02 old strict] wrong Coach cannot SELECT unrelated usage
+  ---
+  duration_ms: 60.096208
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:9:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    1 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:9:109)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+# Subtest: [N02/E02 old strict] wrong Coach cannot UPDATE unrelated usage
+not ok 2 - [N02/E02 old strict] wrong Coach cannot UPDATE unrelated usage
+  ---
+  duration_ms: 10.668209
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:10:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    mutation must be hidden or rejected
+
+    1 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    deniedMutation (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:6:266)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:10:102)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [N02/E02 old strict] wrong Coach cannot UPDATE unrelated allowance
+not ok 3 - [N02/E02 old strict] wrong Coach cannot UPDATE unrelated allowance
+  ---
+  duration_ms: 7.203375
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:11:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    1 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:11:92)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [N02/E02] wrong Coach cannot SELECT unrelated allowance
+not ok 4 - [N02/E02] wrong Coach cannot SELECT unrelated allowance
+  ---
+  duration_ms: 6.135417
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:12:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    1 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:12:81)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [N02/E02] assigned Coach and Owner see legitimate usage and allowance
+ok 5 - [N02/E02] assigned Coach and Owner see legitimate usage and allowance
+  ---
+  duration_ms: 7.308208
+  type: 'test'
+  ...
+# Subtest: [E02] authorized direct usage consumes/releases and total matches ledger
+not ok 6 - [E02] authorized direct usage consumes/releases and total matches ledger
+  ---
+  duration_ms: 6.199042
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:14:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 2
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 2
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:14:229)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [E02] original public review remains allowed and exact after direct changes
+not ok 7 - [E02] original public review remains allowed and exact after direct changes
+  ---
+  duration_ms: 10.861625
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:15:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    1 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:15:284)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [N02/E02] direct usage rejects forged membership_id
+not ok 8 - [N02/E02] direct usage rejects forged membership_id
+  ---
+  duration_ms: 6.849709
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:16:106'
+  failureType: 'testCodeFailure'
+  error: |-
+    mutation must be hidden or rejected
+
+    1 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    deniedMutation (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:6:266)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:16:531)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [N02/E02] direct usage rejects forged contact_id
+not ok 9 - [N02/E02] direct usage rejects forged contact_id
+  ---
+  duration_ms: 6.82825
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:16:106'
+  failureType: 'testCodeFailure'
+  error: |-
+    mutation must be hidden or rejected
+
+    1 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    deniedMutation (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:6:266)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:16:531)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [N02/E02] direct usage rejects forged coaching_session_id
+ok 10 - [N02/E02] direct usage rejects forged coaching_session_id
+  ---
+  duration_ms: 7.342167
+  type: 'test'
+  ...
+# Subtest: [N02/E02] direct usage rejects forged entitlement_id
+not ok 11 - [N02/E02] direct usage rejects forged entitlement_id
+  ---
+  duration_ms: 7.282875
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:16:106'
+  failureType: 'testCodeFailure'
+  error: |-
+    mutation must be hidden or rejected
+
+    1 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    deniedMutation (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:6:266)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:16:531)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [N02/E02] direct usage rejects forged entitlement_key
+not ok 12 - [N02/E02] direct usage rejects forged entitlement_key
+  ---
+  duration_ms: 8.199875
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:16:106'
+  failureType: 'testCodeFailure'
+  error: |-
+    mutation must be hidden or rejected
+
+    1 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    deniedMutation (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:6:266)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:16:531)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [N02/E02] wrong Coach cannot INSERT ledger for another Client session
+not ok 13 - [N02/E02] wrong Coach cannot INSERT ledger for another Client session
+  ---
+  duration_ms: 8.486458
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:17:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  operator: 'rejects'
+  stack: |-
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:17:196)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [N02/E02] assigned Coach may INSERT exact session-backed ledger row
+not ok 14 - [N02/E02] assigned Coach may INSERT exact session-backed ledger row
+  ---
+  duration_ms: 8.177625
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:18:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:18:493)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [N02/E02] INSERT with own contact but wrong session/membership is rejected
+not ok 15 - [N02/E02] INSERT with own contact but wrong session/membership is rejected
+  ---
+  duration_ms: 7.130167
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:19:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  operator: 'rejects'
+  stack: |-
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:19:244)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [N06] suspended Coach loses usage and allowance access despite retained overrides
+ok 16 - [N06] suspended Coach loses usage and allowance access despite retained overrides
+  ---
+  duration_ms: 9.3875
+  type: 'test'
+  ...
+# Subtest: [N06] inactive Coach loses usage and allowance access despite retained overrides
+ok 17 - [N06] inactive Coach loses usage and allowance access despite retained overrides
+  ---
+  duration_ms: 8.049584
+  type: 'test'
+  ...
+# Subtest: [N06] pending Coach cannot access usage/allowance
+ok 18 - [N06] pending Coach cannot access usage/allowance
+  ---
+  duration_ms: 6.5475
+  type: 'test'
+  ...
+# Subtest: [N04] null authenticated actor and anon remain denied
+ok 19 - [N04] null authenticated actor and anon remain denied
+  ---
+  duration_ms: 5.744041
+  type: 'test'
+  ...
+# Subtest: [N06 current paid hold] fictional own and other Client cannot read/write paid usage
+ok 20 - [N06 current paid hold] fictional own and other Client cannot read/write paid usage
+  ---
+  duration_ms: 8.978125
+  type: 'test'
+  ...
+# Subtest: [E02] direct cache forgery is rejected even for permitted Owner/Coach
+not ok 21 - [E02] direct cache forgery is rejected even for permitted Owner/Coach
+  ---
+  duration_ms: 6.330042
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:25:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  operator: 'rejects'
+  stack: |-
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:25:135)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [E02] referenced coaching allowance rejects malicious membership_id transfer
+ok 22 - [E02] referenced coaching allowance rejects malicious membership_id transfer
+  ---
+  duration_ms: 6.154167
+  type: 'test'
+  ...
+# Subtest: [E02] referenced coaching allowance rejects malicious entitlement_key transfer
+not ok 23 - [E02] referenced coaching allowance rejects malicious entitlement_key transfer
+  ---
+  duration_ms: 5.499333
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:26:54'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  operator: 'rejects'
+  stack: |-
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:26:154)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [E02] non-coaching entitlement behavior is preserved, including existing broad staff access
+ok 24 - [E02] non-coaching entitlement behavior is preserved, including existing broad staff access
+  ---
+  duration_ms: 5.489375
+  type: 'test'
+  ...
+# Subtest: [E02] direct actor spoof is replaced by trusted actor identity
+not ok 25 - [E02] direct actor spoof is replaced by trusted actor identity
+  ---
+  duration_ms: 5.977458
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:28:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+
+    + '3c744ef6-c5e8-487f-b61b-6210ad3cf2a1'
+    - 'bbc88953-c47e-4c32-9c81-f5de0dd2af3b'
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'bbc88953-c47e-4c32-9c81-f5de0dd2af3b'
+  actual: '3c744ef6-c5e8-487f-b61b-6210ad3cf2a1'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:28:209)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [N02] reassignment revokes old Coach only after every existing scope channel is closed
+not ok 26 - [N02] reassignment revokes old Coach only after every existing scope channel is closed
+  ---
+  duration_ms: 5.308042
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:29:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    1 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:29:458)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [N01] role transition obeys current defaults after explicit allows removed
+ok 27 - [N01] role transition obeys current defaults after explicit allows removed
+  ---
+  duration_ms: 5.560416
+  type: 'test'
+  ...
+# Subtest: [E02 shared] partial contact visibility cannot undercount complete membership usage
+not ok 28 - [E02 shared] partial contact visibility cannot undercount complete membership usage
+  ---
+  duration_ms: 6.076834
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:31:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    1 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:31:484)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [E02 shared] no usage SELECT permission cannot overwrite a complete aggregate
+ok 29 - [E02 shared] no usage SELECT permission cannot overwrite a complete aggregate
+  ---
+  duration_ms: 6.572834
+  type: 'test'
+  ...
+# Subtest: [E02] session-backed usage binding transfer fails closed and preserves old total
+not ok 30 - [E02] session-backed usage binding transfer fails closed and preserves old total
+  ---
+  duration_ms: 6.387875
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:33:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  operator: 'rejects'
+  stack: |-
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:33:136)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [E02] replay and outer rollback preserve exact ledger total
+ok 31 - [E02] replay and outer rollback preserve exact ledger total
+  ---
+  duration_ms: 17.145917
+  type: 'test'
+  ...
+# Subtest: [E02] existing session tracking without an entitlement remains valid
+ok 32 - [E02] existing session tracking without an entitlement remains valid
+  ---
+  duration_ms: 4.611708
+  type: 'test'
+  ...
+# Subtest: [E02] failed existing cache UPDATE rolls back the ledger
+ok 33 - [E02] failed existing cache UPDATE rolls back the ledger
+  ---
+  duration_ms: 9.818875
+  type: 'test'
+  ...
+# Subtest: [N04] new predicate is boolean-only actor-bound allowlisted and fixed-search-path
+ok 34 - [N04] new predicate is boolean-only actor-bound allowlisted and fixed-search-path
+  ---
+  duration_ms: 8.315541
+  type: 'test'
+  ...
+# Subtest: [E02 concurrency] direct plus RPC plus session trigger serialize full totals
+not ok 35 - [E02 concurrency] direct plus RPC plus session trigger serialize full totals
+  ---
+  duration_ms: 1324.920041
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:46:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:48:417)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [E02 tuple race] first direct insertion and session move cannot commit inconsistent tuple
+not ok 36 - [E02 tuple race] first direct insertion and session move cannot commit inconsistent tuple
+  ---
+  duration_ms: 34.111958
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:51:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    session move must reject after first usage commits
+
+    true !== false
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:53:404)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [E02 competing row order] session versus direct usage aborts safely and retry preserves totals
+not ok 37 - [E02 competing row order] session versus direct usage aborts safely and retry preserves totals
+  ---
+  duration_ms: 34.972084
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:56:1'
+  failureType: 'testCodeFailure'
+  error: 'Opposing natural row order must expose safe abort limitation'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:58:447)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [E02 guard] preexisting malformed tuples are rejected rather than grandfathered
+ok 38 - [E02 guard] preexisting malformed tuples are rejected rather than grandfathered
+  ---
+  duration_ms: 9.492458
+  type: 'test'
+  ...
+# Subtest: [E02 guard] preexisting inconsistent cache is rejected with no repair
+ok 39 - [E02 guard] preexisting inconsistent cache is rejected with no repair
+  ---
+  duration_ms: 12.296542
+  type: 'test'
+  ...
+# Subtest: [E02 sorted locks] opposite OLD/NEW key transfers lock consistently then fail closed
+not ok 40 - [E02 sorted locks] opposite OLD/NEW key transfers lock consistently then fail closed
+  ---
+  duration_ms: 1440.60625
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:65:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:65:617)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+1..40
+# tests 40
+# suites 0
+# pass 17
+# fail 23
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3269.662958
+TAP version 13
+# Subtest: [NEW session-entry] assigned Coach cannot charge/reserve unrelated membership completed
+not ok 1 - [NEW session-entry] assigned Coach cannot charge/reserve unrelated membership completed
+  ---
+  duration_ms: 49.973709
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/session-entry.test.cjs:5:47'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  operator: 'rejects'
+  stack: |-
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/session-entry.test.cjs:5:150)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+# Subtest: [NEW session-entry] assigned Coach cannot charge/reserve unrelated membership scheduled
+not ok 2 - [NEW session-entry] assigned Coach cannot charge/reserve unrelated membership scheduled
+  ---
+  duration_ms: 15.497459
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/session-entry.test.cjs:5:47'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  operator: 'rejects'
+  stack: |-
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/session-entry.test.cjs:5:150)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [NEW session-entry] explicit primary contact relation permits normal completion
+ok 3 - [NEW session-entry] explicit primary contact relation permits normal completion
+  ---
+  duration_ms: 11.94625
+  type: 'test'
+  ...
+# Subtest: [NEW session-entry] explicit client_access supports nonprimary contact without inferred family sharing
+ok 4 - [NEW session-entry] explicit client_access supports nonprimary contact without inferred family sharing
+  ---
+  duration_ms: 13.374917
+  type: 'test'
+  ...
+# Subtest: [NEW session-entry] nullable nonconsuming session stays supported
+ok 5 - [NEW session-entry] nullable nonconsuming session stays supported
+  ---
+  duration_ms: 10.665834
+  type: 'test'
+  ...
+# Subtest: [NEW session-entry] null-session tuple change rejects unrelated membership before first usage
+not ok 6 - [NEW session-entry] null-session tuple change rejects unrelated membership before first usage
+  ---
+  duration_ms: 11.067375
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/session-entry.test.cjs:9:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  operator: 'rejects'
+  stack: |-
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/session-entry.test.cjs:9:157)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [NEW session-entry] direct usage cannot legitimize a preexisting forged session membership
+not ok 7 - [NEW session-entry] direct usage cannot legitimize a preexisting forged session membership
+  ---
+  duration_ms: 9.455958
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/session-entry.test.cjs:10:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  operator: 'rejects'
+  stack: |-
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/session-entry.test.cjs:10:408)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [NEW session-entry guard] preexisting unrelated session blocks installation with no backfill
+ok 8 - [NEW session-entry guard] preexisting unrelated session blocks installation with no backfill
+  ---
+  duration_ms: 12.28925
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 4
+# fail 4
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 225.093583
+TAP version 13
+# Subtest: [N02/E02 old strict] wrong Coach cannot SELECT unrelated usage
+ok 1 - [N02/E02 old strict] wrong Coach cannot SELECT unrelated usage
+  ---
+  duration_ms: 51.193375
+  type: 'test'
+  ...
+# Subtest: [N02/E02 old strict] wrong Coach cannot UPDATE unrelated usage
+ok 2 - [N02/E02 old strict] wrong Coach cannot UPDATE unrelated usage
+  ---
+  duration_ms: 12.057875
+  type: 'test'
+  ...
+# Subtest: [N02/E02 old strict] wrong Coach cannot UPDATE unrelated allowance
+ok 3 - [N02/E02 old strict] wrong Coach cannot UPDATE unrelated allowance
+  ---
+  duration_ms: 7.632625
+  type: 'test'
+  ...
+# Subtest: [N02/E02] wrong Coach cannot SELECT unrelated allowance
+ok 4 - [N02/E02] wrong Coach cannot SELECT unrelated allowance
+  ---
+  duration_ms: 7.119334
+  type: 'test'
+  ...
+# Subtest: [N02/E02] assigned Coach and Owner see legitimate usage and allowance
+ok 5 - [N02/E02] assigned Coach and Owner see legitimate usage and allowance
+  ---
+  duration_ms: 10.598208
+  type: 'test'
+  ...
+# Subtest: [E02] authorized direct usage consumes/releases and total matches ledger
+ok 6 - [E02] authorized direct usage consumes/releases and total matches ledger
+  ---
+  duration_ms: 13.387958
+  type: 'test'
+  ...
+# Subtest: [E02] original public review remains allowed and exact after direct changes
+ok 7 - [E02] original public review remains allowed and exact after direct changes
+  ---
+  duration_ms: 17.816958
+  type: 'test'
+  ...
+# Subtest: [N02/E02] direct usage rejects forged membership_id
+ok 8 - [N02/E02] direct usage rejects forged membership_id
+  ---
+  duration_ms: 9.678583
+  type: 'test'
+  ...
+# Subtest: [N02/E02] direct usage rejects forged contact_id
+ok 9 - [N02/E02] direct usage rejects forged contact_id
+  ---
+  duration_ms: 8.238291
+  type: 'test'
+  ...
+# Subtest: [N02/E02] direct usage rejects forged coaching_session_id
+ok 10 - [N02/E02] direct usage rejects forged coaching_session_id
+  ---
+  duration_ms: 7.951958
+  type: 'test'
+  ...
+# Subtest: [N02/E02] direct usage rejects forged entitlement_id
+ok 11 - [N02/E02] direct usage rejects forged entitlement_id
+  ---
+  duration_ms: 9.188709
+  type: 'test'
+  ...
+# Subtest: [N02/E02] direct usage rejects forged entitlement_key
+ok 12 - [N02/E02] direct usage rejects forged entitlement_key
+  ---
+  duration_ms: 8.575958
+  type: 'test'
+  ...
+# Subtest: [N02/E02] wrong Coach cannot INSERT ledger for another Client session
+ok 13 - [N02/E02] wrong Coach cannot INSERT ledger for another Client session
+  ---
+  duration_ms: 7.297833
+  type: 'test'
+  ...
+# Subtest: [N02/E02] assigned Coach may INSERT exact session-backed ledger row
+ok 14 - [N02/E02] assigned Coach may INSERT exact session-backed ledger row
+  ---
+  duration_ms: 6.811083
+  type: 'test'
+  ...
+# Subtest: [N02/E02] INSERT with own contact but wrong session/membership is rejected
+ok 15 - [N02/E02] INSERT with own contact but wrong session/membership is rejected
+  ---
+  duration_ms: 6.5995
+  type: 'test'
+  ...
+# Subtest: [N06] suspended Coach loses usage and allowance access despite retained overrides
+ok 16 - [N06] suspended Coach loses usage and allowance access despite retained overrides
+  ---
+  duration_ms: 8.234083
+  type: 'test'
+  ...
+# Subtest: [N06] inactive Coach loses usage and allowance access despite retained overrides
+ok 17 - [N06] inactive Coach loses usage and allowance access despite retained overrides
+  ---
+  duration_ms: 7.6575
+  type: 'test'
+  ...
+# Subtest: [N06] pending Coach cannot access usage/allowance
+ok 18 - [N06] pending Coach cannot access usage/allowance
+  ---
+  duration_ms: 7.021458
+  type: 'test'
+  ...
+# Subtest: [N04] null authenticated actor and anon remain denied
+ok 19 - [N04] null authenticated actor and anon remain denied
+  ---
+  duration_ms: 7.166291
+  type: 'test'
+  ...
+# Subtest: [N06 current paid hold] fictional own and other Client cannot read/write paid usage
+ok 20 - [N06 current paid hold] fictional own and other Client cannot read/write paid usage
+  ---
+  duration_ms: 11.895583
+  type: 'test'
+  ...
+# Subtest: [E02] direct cache forgery is rejected even for permitted Owner/Coach
+ok 21 - [E02] direct cache forgery is rejected even for permitted Owner/Coach
+  ---
+  duration_ms: 12.315958
+  type: 'test'
+  ...
+# Subtest: [E02] referenced coaching allowance rejects malicious membership_id transfer
+ok 22 - [E02] referenced coaching allowance rejects malicious membership_id transfer
+  ---
+  duration_ms: 8.574417
+  type: 'test'
+  ...
+# Subtest: [E02] referenced coaching allowance rejects malicious entitlement_key transfer
+ok 23 - [E02] referenced coaching allowance rejects malicious entitlement_key transfer
+  ---
+  duration_ms: 7.91475
+  type: 'test'
+  ...
+# Subtest: [E02] non-coaching entitlement behavior is preserved, including existing broad staff access
+ok 24 - [E02] non-coaching entitlement behavior is preserved, including existing broad staff access
+  ---
+  duration_ms: 6.256375
+  type: 'test'
+  ...
+# Subtest: [E02] direct actor spoof is replaced by trusted actor identity
+ok 25 - [E02] direct actor spoof is replaced by trusted actor identity
+  ---
+  duration_ms: 10.537291
+  type: 'test'
+  ...
+# Subtest: [N02] reassignment revokes old Coach only after every existing scope channel is closed
+ok 26 - [N02] reassignment revokes old Coach only after every existing scope channel is closed
+  ---
+  duration_ms: 7.282875
+  type: 'test'
+  ...
+# Subtest: [N01] role transition obeys current defaults after explicit allows removed
+ok 27 - [N01] role transition obeys current defaults after explicit allows removed
+  ---
+  duration_ms: 6.508084
+  type: 'test'
+  ...
+# Subtest: [E02 shared] partial contact visibility cannot undercount complete membership usage
+ok 28 - [E02 shared] partial contact visibility cannot undercount complete membership usage
+  ---
+  duration_ms: 18.759833
+  type: 'test'
+  ...
+# Subtest: [E02 shared] no usage SELECT permission cannot overwrite a complete aggregate
+ok 29 - [E02 shared] no usage SELECT permission cannot overwrite a complete aggregate
+  ---
+  duration_ms: 8.200917
+  type: 'test'
+  ...
+# Subtest: [E02] session-backed usage binding transfer fails closed and preserves old total
+ok 30 - [E02] session-backed usage binding transfer fails closed and preserves old total
+  ---
+  duration_ms: 6.267166
+  type: 'test'
+  ...
+# Subtest: [E02] replay and outer rollback preserve exact ledger total
+ok 31 - [E02] replay and outer rollback preserve exact ledger total
+  ---
+  duration_ms: 36.346458
+  type: 'test'
+  ...
+# Subtest: [E02] existing session tracking without an entitlement remains valid
+ok 32 - [E02] existing session tracking without an entitlement remains valid
+  ---
+  duration_ms: 5.098208
+  type: 'test'
+  ...
+# Subtest: [E02] failed existing cache UPDATE rolls back the ledger
+ok 33 - [E02] failed existing cache UPDATE rolls back the ledger
+  ---
+  duration_ms: 13.468208
+  type: 'test'
+  ...
+# Subtest: [N04] new predicate is boolean-only actor-bound allowlisted and fixed-search-path
+ok 34 - [N04] new predicate is boolean-only actor-bound allowlisted and fixed-search-path
+  ---
+  duration_ms: 14.768125
+  type: 'test'
+  ...
+# Subtest: [E02 concurrency] direct plus RPC plus session trigger serialize full totals
+ok 35 - [E02 concurrency] direct plus RPC plus session trigger serialize full totals
+  ---
+  duration_ms: 50.774625
+  type: 'test'
+  ...
+# Subtest: [E02 tuple race] first direct insertion and session move cannot commit inconsistent tuple
+ok 36 - [E02 tuple race] first direct insertion and session move cannot commit inconsistent tuple
+  ---
+  duration_ms: 35.313292
+  type: 'test'
+  ...
+# Subtest: [E02 competing row order] session versus direct usage aborts safely and retry preserves totals
+ok 37 - [E02 competing row order] session versus direct usage aborts safely and retry preserves totals
+  ---
+  duration_ms: 129.666125
+  type: 'test'
+  ...
+# Subtest: [E02 guard] preexisting malformed tuples are rejected rather than grandfathered
+ok 38 - [E02 guard] preexisting malformed tuples are rejected rather than grandfathered
+  ---
+  duration_ms: 7.448209
+  type: 'test'
+  ...
+# Subtest: [E02 guard] preexisting inconsistent cache is rejected with no repair
+ok 39 - [E02 guard] preexisting inconsistent cache is rejected with no repair
+  ---
+  duration_ms: 9.998125
+  type: 'test'
+  ...
+# Subtest: [E02 sorted locks] opposite OLD/NEW key transfers lock consistently then fail closed
+ok 40 - [E02 sorted locks] opposite OLD/NEW key transfers lock consistently then fail closed
+  ---
+  duration_ms: 37.831125
+  type: 'test'
+  ...
+1..40
+# tests 40
+# suites 0
+# pass 40
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 727.853084
+TAP version 13
+# Subtest: [NEW session-entry] assigned Coach cannot charge/reserve unrelated membership completed
+ok 1 - [NEW session-entry] assigned Coach cannot charge/reserve unrelated membership completed
+  ---
+  duration_ms: 32.194125
+  type: 'test'
+  ...
+# Subtest: [NEW session-entry] assigned Coach cannot charge/reserve unrelated membership scheduled
+ok 2 - [NEW session-entry] assigned Coach cannot charge/reserve unrelated membership scheduled
+  ---
+  duration_ms: 11.6155
+  type: 'test'
+  ...
+# Subtest: [NEW session-entry] explicit primary contact relation permits normal completion
+ok 3 - [NEW session-entry] explicit primary contact relation permits normal completion
+  ---
+  duration_ms: 10.050042
+  type: 'test'
+  ...
+# Subtest: [NEW session-entry] explicit client_access supports nonprimary contact without inferred family sharing
+ok 4 - [NEW session-entry] explicit client_access supports nonprimary contact without inferred family sharing
+  ---
+  duration_ms: 7.754667
+  type: 'test'
+  ...
+# Subtest: [NEW session-entry] nullable nonconsuming session stays supported
+ok 5 - [NEW session-entry] nullable nonconsuming session stays supported
+  ---
+  duration_ms: 6.894375
+  type: 'test'
+  ...
+# Subtest: [NEW session-entry] null-session tuple change rejects unrelated membership before first usage
+ok 6 - [NEW session-entry] null-session tuple change rejects unrelated membership before first usage
+  ---
+  duration_ms: 7.257666
+  type: 'test'
+  ...
+# Subtest: [NEW session-entry] direct usage cannot legitimize a preexisting forged session membership
+ok 7 - [NEW session-entry] direct usage cannot legitimize a preexisting forged session membership
+  ---
+  duration_ms: 5.895916
+  type: 'test'
+  ...
+# Subtest: [NEW session-entry guard] preexisting unrelated session blocks installation with no backfill
+ok 8 - [NEW session-entry guard] preexisting unrelated session blocks installation with no backfill
+  ---
+  duration_ms: 8.699417
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 148.414334
+TAP version 13
+# Subtest: [N02/E02 old strict] wrong Coach cannot SELECT unrelated usage
+not ok 1 - [N02/E02 old strict] wrong Coach cannot SELECT unrelated usage
+  ---
+  duration_ms: 43.939708
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:9:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    1 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:9:109)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+# Subtest: [N02/E02 old strict] wrong Coach cannot UPDATE unrelated usage
+not ok 2 - [N02/E02 old strict] wrong Coach cannot UPDATE unrelated usage
+  ---
+  duration_ms: 10.141042
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:10:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    mutation must be hidden or rejected
+
+    1 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    deniedMutation (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:6:266)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:10:102)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [N02/E02 old strict] wrong Coach cannot UPDATE unrelated allowance
+not ok 3 - [N02/E02 old strict] wrong Coach cannot UPDATE unrelated allowance
+  ---
+  duration_ms: 6.793916
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:11:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    1 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:11:92)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [N02/E02] wrong Coach cannot SELECT unrelated allowance
+not ok 4 - [N02/E02] wrong Coach cannot SELECT unrelated allowance
+  ---
+  duration_ms: 6.4365
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:12:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    1 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:12:81)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [N02/E02] assigned Coach and Owner see legitimate usage and allowance
+ok 5 - [N02/E02] assigned Coach and Owner see legitimate usage and allowance
+  ---
+  duration_ms: 7.712792
+  type: 'test'
+  ...
+# Subtest: [E02] authorized direct usage consumes/releases and total matches ledger
+not ok 6 - [E02] authorized direct usage consumes/releases and total matches ledger
+  ---
+  duration_ms: 6.223125
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:14:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 2
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 2
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:14:229)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [E02] original public review remains allowed and exact after direct changes
+not ok 7 - [E02] original public review remains allowed and exact after direct changes
+  ---
+  duration_ms: 10.416167
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:15:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    1 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:15:284)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [N02/E02] direct usage rejects forged membership_id
+not ok 8 - [N02/E02] direct usage rejects forged membership_id
+  ---
+  duration_ms: 6.723084
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:16:106'
+  failureType: 'testCodeFailure'
+  error: |-
+    mutation must be hidden or rejected
+
+    1 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    deniedMutation (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:6:266)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:16:531)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [N02/E02] direct usage rejects forged contact_id
+not ok 9 - [N02/E02] direct usage rejects forged contact_id
+  ---
+  duration_ms: 6.801375
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:16:106'
+  failureType: 'testCodeFailure'
+  error: |-
+    mutation must be hidden or rejected
+
+    1 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    deniedMutation (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:6:266)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:16:531)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [N02/E02] direct usage rejects forged coaching_session_id
+ok 10 - [N02/E02] direct usage rejects forged coaching_session_id
+  ---
+  duration_ms: 7.167042
+  type: 'test'
+  ...
+# Subtest: [N02/E02] direct usage rejects forged entitlement_id
+not ok 11 - [N02/E02] direct usage rejects forged entitlement_id
+  ---
+  duration_ms: 6.976209
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:16:106'
+  failureType: 'testCodeFailure'
+  error: |-
+    mutation must be hidden or rejected
+
+    1 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    deniedMutation (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:6:266)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:16:531)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [N02/E02] direct usage rejects forged entitlement_key
+not ok 12 - [N02/E02] direct usage rejects forged entitlement_key
+  ---
+  duration_ms: 6.642166
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:16:106'
+  failureType: 'testCodeFailure'
+  error: |-
+    mutation must be hidden or rejected
+
+    1 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    deniedMutation (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:6:266)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:16:531)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [N02/E02] wrong Coach cannot INSERT ledger for another Client session
+not ok 13 - [N02/E02] wrong Coach cannot INSERT ledger for another Client session
+  ---
+  duration_ms: 6.29425
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:17:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  operator: 'rejects'
+  stack: |-
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:17:196)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [N02/E02] assigned Coach may INSERT exact session-backed ledger row
+not ok 14 - [N02/E02] assigned Coach may INSERT exact session-backed ledger row
+  ---
+  duration_ms: 6.352291
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:18:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:18:493)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [N02/E02] INSERT with own contact but wrong session/membership is rejected
+not ok 15 - [N02/E02] INSERT with own contact but wrong session/membership is rejected
+  ---
+  duration_ms: 5.206584
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:19:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  operator: 'rejects'
+  stack: |-
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:19:244)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [N06] suspended Coach loses usage and allowance access despite retained overrides
+ok 16 - [N06] suspended Coach loses usage and allowance access despite retained overrides
+  ---
+  duration_ms: 6.802417
+  type: 'test'
+  ...
+# Subtest: [N06] inactive Coach loses usage and allowance access despite retained overrides
+ok 17 - [N06] inactive Coach loses usage and allowance access despite retained overrides
+  ---
+  duration_ms: 6.641166
+  type: 'test'
+  ...
+# Subtest: [N06] pending Coach cannot access usage/allowance
+ok 18 - [N06] pending Coach cannot access usage/allowance
+  ---
+  duration_ms: 6.256
+  type: 'test'
+  ...
+# Subtest: [N04] null authenticated actor and anon remain denied
+ok 19 - [N04] null authenticated actor and anon remain denied
+  ---
+  duration_ms: 5.255833
+  type: 'test'
+  ...
+# Subtest: [N06 current paid hold] fictional own and other Client cannot read/write paid usage
+ok 20 - [N06 current paid hold] fictional own and other Client cannot read/write paid usage
+  ---
+  duration_ms: 9.230083
+  type: 'test'
+  ...
+# Subtest: [E02] direct cache forgery is rejected even for permitted Owner/Coach
+not ok 21 - [E02] direct cache forgery is rejected even for permitted Owner/Coach
+  ---
+  duration_ms: 5.243083
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:25:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  operator: 'rejects'
+  stack: |-
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:25:135)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [E02] referenced coaching allowance rejects malicious membership_id transfer
+ok 22 - [E02] referenced coaching allowance rejects malicious membership_id transfer
+  ---
+  duration_ms: 5.62125
+  type: 'test'
+  ...
+# Subtest: [E02] referenced coaching allowance rejects malicious entitlement_key transfer
+not ok 23 - [E02] referenced coaching allowance rejects malicious entitlement_key transfer
+  ---
+  duration_ms: 5.314542
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:26:54'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  operator: 'rejects'
+  stack: |-
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:26:154)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [E02] non-coaching entitlement behavior is preserved, including existing broad staff access
+ok 24 - [E02] non-coaching entitlement behavior is preserved, including existing broad staff access
+  ---
+  duration_ms: 5.235042
+  type: 'test'
+  ...
+# Subtest: [E02] direct actor spoof is replaced by trusted actor identity
+not ok 25 - [E02] direct actor spoof is replaced by trusted actor identity
+  ---
+  duration_ms: 6.2205
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:28:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+
+    + '0bbc4d29-701d-4ba4-a815-23b1a812d3bc'
+    - '75bf7669-2b49-4874-8669-385f5b352af8'
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '75bf7669-2b49-4874-8669-385f5b352af8'
+  actual: '0bbc4d29-701d-4ba4-a815-23b1a812d3bc'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:28:209)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [N02] reassignment revokes old Coach only after every existing scope channel is closed
+not ok 26 - [N02] reassignment revokes old Coach only after every existing scope channel is closed
+  ---
+  duration_ms: 5.44475
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:29:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    1 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:29:458)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [N01] role transition obeys current defaults after explicit allows removed
+ok 27 - [N01] role transition obeys current defaults after explicit allows removed
+  ---
+  duration_ms: 5.553125
+  type: 'test'
+  ...
+# Subtest: [E02 shared] partial contact visibility cannot undercount complete membership usage
+not ok 28 - [E02 shared] partial contact visibility cannot undercount complete membership usage
+  ---
+  duration_ms: 6.660833
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:31:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    1 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:31:484)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [E02 shared] no usage SELECT permission cannot overwrite a complete aggregate
+ok 29 - [E02 shared] no usage SELECT permission cannot overwrite a complete aggregate
+  ---
+  duration_ms: 6.800458
+  type: 'test'
+  ...
+# Subtest: [E02] session-backed usage binding transfer fails closed and preserves old total
+not ok 30 - [E02] session-backed usage binding transfer fails closed and preserves old total
+  ---
+  duration_ms: 6.597791
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:33:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  operator: 'rejects'
+  stack: |-
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:33:136)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [E02] replay and outer rollback preserve exact ledger total
+ok 31 - [E02] replay and outer rollback preserve exact ledger total
+  ---
+  duration_ms: 18.070334
+  type: 'test'
+  ...
+# Subtest: [E02] existing session tracking without an entitlement remains valid
+ok 32 - [E02] existing session tracking without an entitlement remains valid
+  ---
+  duration_ms: 5.0135
+  type: 'test'
+  ...
+# Subtest: [E02] failed existing cache UPDATE rolls back the ledger
+ok 33 - [E02] failed existing cache UPDATE rolls back the ledger
+  ---
+  duration_ms: 9.337958
+  type: 'test'
+  ...
+# Subtest: [N04] new predicate is boolean-only actor-bound allowlisted and fixed-search-path
+ok 34 - [N04] new predicate is boolean-only actor-bound allowlisted and fixed-search-path
+  ---
+  duration_ms: 8.5195
+  type: 'test'
+  ...
+# Subtest: [E02 concurrency] direct plus RPC plus session trigger serialize full totals
+not ok 35 - [E02 concurrency] direct plus RPC plus session trigger serialize full totals
+  ---
+  duration_ms: 1277.908417
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:46:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:48:417)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [E02 tuple race] first direct insertion and session move cannot commit inconsistent tuple
+not ok 36 - [E02 tuple race] first direct insertion and session move cannot commit inconsistent tuple
+  ---
+  duration_ms: 29.907625
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:51:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    session move must reject after first usage commits
+
+    true !== false
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:53:404)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [E02 competing row order] session versus direct usage aborts safely and retry preserves totals
+not ok 37 - [E02 competing row order] session versus direct usage aborts safely and retry preserves totals
+  ---
+  duration_ms: 30.480417
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:56:1'
+  failureType: 'testCodeFailure'
+  error: 'Opposing natural row order must expose safe abort limitation'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:58:447)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [E02 guard] preexisting malformed tuples are rejected rather than grandfathered
+ok 38 - [E02 guard] preexisting malformed tuples are rejected rather than grandfathered
+  ---
+  duration_ms: 7.390958
+  type: 'test'
+  ...
+# Subtest: [E02 guard] preexisting inconsistent cache is rejected with no repair
+ok 39 - [E02 guard] preexisting inconsistent cache is rejected with no repair
+  ---
+  duration_ms: 9.909583
+  type: 'test'
+  ...
+# Subtest: [E02 sorted locks] opposite OLD/NEW key transfers lock consistently then fail closed
+not ok 40 - [E02 sorted locks] opposite OLD/NEW key transfers lock consistently then fail closed
+  ---
+  duration_ms: 1335.24425
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:65:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/access.test.cjs:65:617)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+1..40
+# tests 40
+# suites 0
+# pass 17
+# fail 23
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3037.95925
+TAP version 13
+# Subtest: [NEW session-entry] assigned Coach cannot charge/reserve unrelated membership completed
+not ok 1 - [NEW session-entry] assigned Coach cannot charge/reserve unrelated membership completed
+  ---
+  duration_ms: 125.291958
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/session-entry.test.cjs:5:47'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  operator: 'rejects'
+  stack: |-
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/session-entry.test.cjs:5:150)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+# Subtest: [NEW session-entry] assigned Coach cannot charge/reserve unrelated membership scheduled
+not ok 2 - [NEW session-entry] assigned Coach cannot charge/reserve unrelated membership scheduled
+  ---
+  duration_ms: 28.180084
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/session-entry.test.cjs:5:47'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  operator: 'rejects'
+  stack: |-
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/session-entry.test.cjs:5:150)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [NEW session-entry] explicit primary contact relation permits normal completion
+ok 3 - [NEW session-entry] explicit primary contact relation permits normal completion
+  ---
+  duration_ms: 22.35375
+  type: 'test'
+  ...
+# Subtest: [NEW session-entry] explicit client_access supports nonprimary contact without inferred family sharing
+ok 4 - [NEW session-entry] explicit client_access supports nonprimary contact without inferred family sharing
+  ---
+  duration_ms: 58.952042
+  type: 'test'
+  ...
+# Subtest: [NEW session-entry] nullable nonconsuming session stays supported
+ok 5 - [NEW session-entry] nullable nonconsuming session stays supported
+  ---
+  duration_ms: 54.516958
+  type: 'test'
+  ...
+# Subtest: [NEW session-entry] null-session tuple change rejects unrelated membership before first usage
+not ok 6 - [NEW session-entry] null-session tuple change rejects unrelated membership before first usage
+  ---
+  duration_ms: 80.47525
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/session-entry.test.cjs:9:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  operator: 'rejects'
+  stack: |-
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/session-entry.test.cjs:9:157)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [NEW session-entry] direct usage cannot legitimize a preexisting forged session membership
+not ok 7 - [NEW session-entry] direct usage cannot legitimize a preexisting forged session membership
+  ---
+  duration_ms: 20.665
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/session-entry.test.cjs:10:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  operator: 'rejects'
+  stack: |-
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-access/session-entry.test.cjs:10:408)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [NEW session-entry guard] preexisting unrelated session blocks installation with no backfill
+ok 8 - [NEW session-entry guard] preexisting unrelated session blocks installation with no backfill
+  ---
+  duration_ms: 36.932583
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 4
+# fail 4
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 535.585167

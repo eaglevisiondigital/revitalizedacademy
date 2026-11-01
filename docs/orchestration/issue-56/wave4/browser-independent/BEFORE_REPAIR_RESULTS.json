@@ -1,0 +1,38 @@
+{
+  "scope": "INDEPENDENT_REAL_BROWSER_FICTIONAL_TRANSPORT",
+  "results": [
+    {
+      "engine": "chromium",
+      "kind": "goal",
+      "status": "FAIL",
+      "message": "Original pending action must not close reopened draft\n\n'true' !== 'false'\n",
+      "outside": 0
+    },
+    {
+      "engine": "chromium",
+      "kind": "habit",
+      "status": "FAIL",
+      "message": "Original pending action must not close reopened draft\n\n'true' !== 'false'\n",
+      "outside": 0
+    },
+    {
+      "engine": "webkit",
+      "kind": "goal",
+      "status": "FAIL",
+      "message": "Original pending action must not close reopened draft\n\n'true' !== 'false'\n",
+      "outside": 0
+    },
+    {
+      "engine": "webkit",
+      "kind": "habit",
+      "status": "FAIL",
+      "message": "Original pending action must not close reopened draft\n\n'true' !== 'false'\n",
+      "outside": 0
+    }
+  ],
+  "counts": {
+    "pass": 0,
+    "fail": 4
+  },
+  "productionCalls": 0
+}

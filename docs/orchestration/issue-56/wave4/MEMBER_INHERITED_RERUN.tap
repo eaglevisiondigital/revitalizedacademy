@@ -1,0 +1,29 @@
+✔ existing member enrollment route changes only by an explicit dashboard link (42.163833ms)
+✔ dashboard supplies every literal rm DOM target required by actual script, with no duplicate IDs (2.848333ms)
+✔ canonical existing member CSS and five approved assets remain byte-identical (132.338083ms)
+✔ build integration stays held rather than silently publishing a new route (116.576917ms)
+✔ actual create goal handler maps typed fictional values to existing scoped RPC (141.358583ms)
+✔ actual create habit handler uses existing RPC and numeric schedule input (64.497958ms)
+✔ actual check-in form validates required responses before any write (50.837958ms)
+✔ actual weekly check-in creates exact current-member payload via existing table (67.573584ms)
+✔ actual goal handler displays fictional server wrong-actor denial without claiming authorization success (47.65875ms)
+✔ actual check-in surfaces duplicate server response, not a second success (677.817416ms)
+✔ BASELINE reproduction: stale weekly check-in switch throws before write (75.664459ms)
+✔ fixed pending identity check ignores account switch (63.059375ms)
+✔ fixed pending identity check ignores logout (47.00275ms)
+✔ fixed identity response fails closed {"authUserId":null} (49.933708ms)
+✔ fixed identity response fails closed {"authUserId":"synthetic-b"} (45.587917ms)
+✔ fixed identity response fails closed {"authError":{"message":"Fictional identity unavailable"}} (50.814375ms)
+✔ fixed response after switch ignores completed write (61.094125ms)
+✔ fixed response after switch ignores completed duplicate (64.370958ms)
+✔ fixed response after logout ignores completed write (67.064291ms)
+✔ fixed response after logout ignores completed duplicate (62.46925ms)
+✔ same-account token renewal keeps pending check-in and exact current-actor payload (56.842875ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2072.661333

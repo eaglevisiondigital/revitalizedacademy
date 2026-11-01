@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: QA current Coach denied refresh must hide prior prepared workspace
+ok 1 - QA current Coach denied refresh must hide prior prepared workspace
+  ---
+  duration_ms: 220.989875
+  type: 'test'
+  ...
+# Subtest: QA current Coach pending load cannot reopen workspace after contact closed
+ok 2 - QA current Coach pending load cannot reopen workspace after contact closed
+  ---
+  duration_ms: 133.744167
+  type: 'test'
+  ...
+# Subtest: QA current Coach oldcontact response cannot overwrite newly loaded contact
+ok 3 - QA current Coach oldcontact response cannot overwrite newly loaded contact
+  ---
+  duration_ms: 147.409667
+  type: 'test'
+  ...
+# Subtest: QA goal payload remains snapshot across identity lookup and renewal
+ok 4 - QA goal payload remains snapshot across identity lookup and renewal
+  ---
+  duration_ms: 172.695125
+  type: 'test'
+  ...
+# Subtest: QA habit payload remains snapshot across identity lookup and renewal
+ok 5 - QA habit payload remains snapshot across identity lookup and renewal
+  ---
+  duration_ms: 77.812167
+  type: 'test'
+  ...
+# Subtest: QA markHabit and pause share rendered-row guard
+ok 6 - QA markHabit and pause share rendered-row guard
+  ---
+  duration_ms: 82.038541
+  type: 'test'
+  ...
+# Subtest: QA goal reopened draft while old write pending must remain open after completion
+ok 7 - QA goal reopened draft while old write pending must remain open after completion
+  ---
+  duration_ms: 85.561333
+  type: 'test'
+  ...
+# Subtest: QA habit reopened draft while old write pending must remain open after completion
+ok 8 - QA habit reopened draft while old write pending must remain open after completion
+  ---
+  duration_ms: 86.397667
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 992.3425

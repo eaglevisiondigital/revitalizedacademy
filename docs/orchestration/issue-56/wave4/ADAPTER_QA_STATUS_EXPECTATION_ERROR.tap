@@ -1,0 +1,45 @@
+✔ QA share entry snapshot rejects authorization epoch ABA despite same identity (4.319834ms)
+✔ QA final synchronous clock mutation cannot sneak revoked consent past authority check (0.860334ms)
+✔ QA currentAuthority error message redacted even with private-looking error (0.438208ms)
+✔ QA rejected callback cannot poison next queued touchpoint (1.576792ms)
+✔ QA same actor in another scope gets isolated journal (0.961042ms)
+✔ QA duplicate cannot reveal previous journal after tracking consent withdrawal (1.01325ms)
+✔ QA same event identifier under changed approved creative revision conflicts (0.609ms)
+✔ QA source snapshot getters are never invoked (0.168416ms)
+✔ QA queue overflow is held and nonfinancial receipt stays minimal (29.67575ms)
+✔ QA fixture factory never silently defaults to production or missing authority provider (0.331625ms)
+✔ QA V3 receipt-generation ABA increments authority and holds (2.573875ms)
+✖ QA V3 fresh same-principal token leaves education lookup available (2.126709ms)
+✔ QA V3 revoked source receipt rejects entire educational result (0.931ms)
+✔ QA V3 trusted callback failure cannot leak backend text (0.364833ms)
+✔ QA V3 caller supplied safety or audience cannot select authority (0.532167ms)
+✔ QA V3 factory denies accidental live mode and missing synchronous authority (0.181833ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 15
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 113.645375
+
+✖ failing tests:
+
+test at tests/wave4-qa/adapters.test.cjs:19:1
+✖ QA V3 fresh same-principal token leaves education lookup available (2.126709ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + 'supported_education'
+  - 'ok'
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-qa/adapters.test.cjs:19:216)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'supported_education',
+    expected: 'ok',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

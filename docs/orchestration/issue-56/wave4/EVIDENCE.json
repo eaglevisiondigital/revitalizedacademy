@@ -1,0 +1,408 @@
+{
+  "schemaVersion": "rva-wave4-independent-qa-v1",
+  "testedSource": "3d310675487af7197666ce9fad394b148cb09c57",
+  "acceptedBase": "5926b915f60b1be6d009c94362b91356a303cb33",
+  "authorSources": {
+    "affiliate": "00f20235a53983b5a64ded972d548df74a4b880e",
+    "member": "7662679a0204037f4d03e0d5159631867f114880",
+    "memberFollowup": "1c5e6fa881ef52c29ab7152f352501117a3ea5f8",
+    "allowance": "fffab8b85e29e302e46ff4f6e5c5ba06a3bbc07b"
+  },
+  "finalResults": {
+    "nodeDom": {
+      "tests": 244,
+      "pass": 244,
+      "fail": 0,
+      "intentionalBaselineReproductions": 10
+    },
+    "nativeBrowser": {
+      "tests": 38,
+      "pass": 38,
+      "fail": 0,
+      "intentionalBaselineReproductions": 2
+    },
+    "postgres": {
+      "corrected": {
+        "tests": 57,
+        "pass": 57,
+        "fail": 0
+      },
+      "baseline": {
+        "tests": 57,
+        "pass": 26,
+        "fail": 31
+      },
+      "reverted": {
+        "tests": 57,
+        "pass": 26,
+        "fail": 31
+      },
+      "repeatedExecutions": 171,
+      "passExecutions": 109,
+      "expectedFailureExecutions": 62,
+      "sqlSafetyPassDoesNotResolveDeadlockAvailability": true
+    },
+    "full57Packages": {
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 45,
+      "NOT_RUN": 12
+    }
+  },
+  "initialDiagnosticsRetained": {
+    "memberLaneAllowlist": {
+      "pass": 96,
+      "fail": 1,
+      "type": "combined-source test harness restriction"
+    },
+    "ownAdapterExpectedStatusTypo": {
+      "pass": 15,
+      "fail": 1,
+      "type": "QA status string error, no runtime source defect"
+    },
+    "memberRaceBeforeRepair": {
+      "pass": 3,
+      "fail": 2
+    },
+    "coachBeforeRepairExpanded": {
+      "pass": 1,
+      "fail": 2
+    },
+    "nativeModalBeforeRepair": {
+      "pass": 0,
+      "fail": 4
+    }
+  },
+  "security": {
+    "alexPaused": true,
+    "privateAlexReadsOrActions": 0,
+    "productionConnections": 0,
+    "productionMutations": 0,
+    "realClientFixtures": 0,
+    "financialActivation": false,
+    "unapprovedV3Promotions": 0,
+    "canonicalMigrationsChanged": false,
+    "functionsChanged": false,
+    "actualManagedAuthOrMFAProof": false,
+    "adapterProviders": "TRUSTED_FICTIONAL_ONLY_NOT_AUTH_OR_APPROVAL_VERIFIERS",
+    "sqlStageBaseline": "CURRENT_METADATA_PLUS_ACCEPTED_LOCAL_WAVE3_RPC_NOT_INSTALLED_PRODUCTION",
+    "sourceBoundary": "two approved runtime files, detached adapters, local SQL proposals, tests/docs only"
+  },
+  "preservation": {
+    "requirementGroups": 101,
+    "sourceDetailGroups": 10,
+    "workstreams": 10,
+    "originalPackageIds": 57
+  },
+  "productionReadiness": "NO-GO; safe-deadlock operational behavior, undefined business/policy/paid/member/managedAuth/integration gates remain",
+  "runtimeInputs": [
+    {
+      "path": "member/member110.js",
+      "sha256": "2a938062bf3ecfbba272340434dcd5172ab0236b5d223488a01eebc685b0932d"
+    },
+    {
+      "path": "portal/portal-coaching.js",
+      "sha256": "ae5413969d2b5b4e04b45f22a96f7ae45e79ec3819761c0d4109a74a346f60c0"
+    },
+    {
+      "path": "proposals/issue-61/wave4/correction.sql",
+      "sha256": "2879f97322fc53c679e6cc83c8516795877ff7518541cc05cb3d1f3635bb89f3"
+    },
+    {
+      "path": "proposals/issue-61/wave4/revert.sql",
+      "sha256": "97da48ea449f4ea4af022a2cc589f50b97d3476191ec228edd4981af0385229d"
+    },
+    {
+      "path": "tests/wave4-qa/README.md",
+      "sha256": "99f511e6305bca9bf1cbe42a21d3da9ec28e8dd329962ec321f6e429291c57e9"
+    },
+    {
+      "path": "tests/wave4-qa/adapters.test.cjs",
+      "sha256": "2ac991e30be27cc0ddb237bcb02a5d6801877496173c4b4c7fe1c30bec5876eb"
+    },
+    {
+      "path": "tests/wave4-qa/allowance-adversarial.test.cjs",
+      "sha256": "f4ec43421d05a916b1c09836c3e7e0f8dacd62300ebbde3675625be6d56703fb"
+    },
+    {
+      "path": "tests/wave4-qa/browser-independent.cjs",
+      "sha256": "b83cd4b16db2904f8f78f2cef7eda0c955ff7da6e2eb654076c16403eec427e3"
+    },
+    {
+      "path": "tests/wave4-qa/coach-refresh.test.cjs",
+      "sha256": "9b5c422958d5204a137c54f6b9ad4e4906b3d7a85de7cd635a4f86695d326cbd"
+    },
+    {
+      "path": "tests/wave4-qa/invariants.test.cjs",
+      "sha256": "32b25a6e7f3b15782fca30aaf20ead97b6d28cd357101868f9f8fa50a4c20481"
+    },
+    {
+      "path": "tests/wave4-qa/member-adversarial.test.cjs",
+      "sha256": "2c4f8b55e24ed2f8fffc92c3c2ff06e4b9781362dfc2927ba01977861e765b7b"
+    },
+    {
+      "path": "tests/wave4-qa/run-independent-pg.cjs",
+      "sha256": "2ea681818f1645b200d67ac86368732d2c011f1614c4f7ff57be1be50f6f7e92"
+    },
+    {
+      "path": "tools/affiliate-share-preview/adapter.cjs",
+      "sha256": "afdda7ee71425928f4648ea18081bf194ffc011082b68acee3a96bbfdab9e9a3"
+    },
+    {
+      "path": "tools/coach-companion-catalog/async-fixture-adapter.cjs",
+      "sha256": "053043d5576767756dfd5b567959f6642f22fc522a5ae9ab2c356dd5ad619501"
+    }
+  ],
+  "evidenceFiles": [
+    {
+      "path": "docs/orchestration/issue-56/wave4/ADAPTER_AUTHOR_RERUN.tap",
+      "sha256": "b9d3ff9a5c6dd0b692fcb85d3ddf1b08694e5f2ea34153a34700dd59b6ab62ff"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/ADAPTER_INDEPENDENT.tap",
+      "sha256": "25d91222cd0373addb39576406d0015d1f34b85d13a11cca1efc98f528449776"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/ADAPTER_QA_STATUS_EXPECTATION_ERROR.tap",
+      "sha256": "726112a3ecce8ea50bc007663fa09065a526a8923cd95148dde596599ee3910a"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/AUTHOR_PG_RUN.log",
+      "sha256": "754dba7aa723c1d7b47cc6512e304ce8c64c2996c5a148446adb796ed96a6d22"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/COACH_INDEPENDENT.tap",
+      "sha256": "26d26a0afb5d25ec109becbfc78c8a11668b8efd82ca2d56c1acef703b152b3c"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/COACH_INDEPENDENT_EXPANDED.tap",
+      "sha256": "c03ea2412b382f1081820cefe7b5db18fe7fff012d7dca4436351bb048d6cc24"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/FINAL_ADAPTER_INVARIANTS.tap",
+      "sha256": "a157597693296cbbd5b09a78239ffff76206d7c84d88783fb13aff3b3f8087dc"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/FINAL_MEMBER_COACH.tap",
+      "sha256": "9b25f9cf9419b1005a2fca9ee6939d9353a14f743202a29dcbe3404d8b126383"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/INDEPENDENT_PG_BEFORE_STRONGER_DENIAL.tap",
+      "sha256": "f153a16a0c08ff23bcd6a62888f88c7ab8d2ce99aee84221bab1318168329ccd"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/INDEPENDENT_PG_RUN.log",
+      "sha256": "d8ad94aaad989ab0610e55b5e915eae8a9db881800cd6eebff41585e8d30326c"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/INVARIANTS.tap",
+      "sha256": "42362986f6b36f2528eb4ccd42b145cf697a5faf460a822577b65b6608ca2d9f"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/MEMBER_AUTHOR_AFTER_REPAIR.tap",
+      "sha256": "2e31b614a36a115d8599d256eb5c575cd5a6e18fe7330938f4dc2193bcadab5a"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/MEMBER_AUTHOR_RERUN.tap",
+      "sha256": "59f2168cf420360c1f0e9a56563f8c34093c7ad3eb4dfd5aa2ea86e6e25eb102"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/MEMBER_COACH_AFTER_REPAIR.tap",
+      "sha256": "e44193d8ec0d6094be2a9a06ac57e3d82e00d5d568f6c2652f579e28e68a4bdb"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/MEMBER_INDEPENDENT.tap",
+      "sha256": "b60c73acab2ff1b82849e9c76c3343e76afce93f3a1bf557640dd9e6dcf783d4"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/MEMBER_INHERITED_RERUN.tap",
+      "sha256": "42e188265a9ad95f1830c7bb97522d7e86d2544894a0f63048d974fa114aa001"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/REPORT.md",
+      "sha256": "a54df17f6f44c1b5cae221673debdf3dbb3780c4c4810e046443eb7fe74cd52e"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/RESULTS_MATRIX.json",
+      "sha256": "bde1e4241bb5b56cf3beea3da9c642636b0607b823d533d01e5103b1846d29f9"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/author-pg/baseline-session-entry.tap",
+      "sha256": "b52cb7e144b718228f17cc969ad1f50bbe083160651533a55e786ff55775f257"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/author-pg/baseline.tap",
+      "sha256": "c84e69b9bc4ef28abbd147222303094bf7afb2613ff86fe1efde0cfd96194064"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/author-pg/corrected-session-entry.tap",
+      "sha256": "87b4635cffaec63f1c679bc8085033fb79db793b562a62893a0ec572caaef27f"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/author-pg/corrected.tap",
+      "sha256": "8c291e85ea5c70fde8d8b2cf10b89620647b1c97dba953a045aba414a49d2b85"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/author-pg/postgres-receipt.json",
+      "sha256": "26de2133175f8b61394618aff6031063c8312deee33402038c853ce21e0999a4"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/author-pg/reverted-session-entry.tap",
+      "sha256": "ccadaeedd783042baa7ffc07fc8e0d0ff8d54a0d3b8919c3f129b72fdf3e3eae"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/author-pg/reverted.tap",
+      "sha256": "8c06dcb898763aae903050dfea58bc4777777588f9e545c84defbe1998d04e4b"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/browser/BROWSER_RESULTS.json",
+      "sha256": "7559eed6badaa8028d98d00ecf3381beb8805aa98f020512a64fb856d960d37b"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/browser/chromium-1440-progress.png",
+      "sha256": "18d5c6030f876a53fb74dfc7829d1c068c9f2fa11fd55dee343dfab9c5831ed1"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/browser/chromium-320-progress.png",
+      "sha256": "88d63d40f534c6b2ebe38d29171f5b8cc4acccfeb8a5e02d820d1994ae8ba09e"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/browser/chromium-768-progress.png",
+      "sha256": "ee9db6618762d8cdf460d8804f2fbdc65f8d1f0bd02a5110140c897a15241fde"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/browser/webkit-1440-progress.png",
+      "sha256": "d0af71ad6df2fd462c85212cb1352b11f9b15644a2ca4e30c1692e4415706570"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/browser/webkit-320-progress.png",
+      "sha256": "48ec4a32007c988f6d5b21df43106b30cfd98e342365dc92588f7f510a18a700"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/browser/webkit-768-progress.png",
+      "sha256": "7cd3aa634b70212819a3f7b1d9b856dfaab191a06182687d28bceefe8427c021"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/browser-after-repair/BROWSER_RESULTS.json",
+      "sha256": "7559eed6badaa8028d98d00ecf3381beb8805aa98f020512a64fb856d960d37b"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/browser-after-repair/chromium-1440-progress.png",
+      "sha256": "18d5c6030f876a53fb74dfc7829d1c068c9f2fa11fd55dee343dfab9c5831ed1"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/browser-after-repair/chromium-320-progress.png",
+      "sha256": "88d63d40f534c6b2ebe38d29171f5b8cc4acccfeb8a5e02d820d1994ae8ba09e"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/browser-after-repair/chromium-768-progress.png",
+      "sha256": "ee9db6618762d8cdf460d8804f2fbdc65f8d1f0bd02a5110140c897a15241fde"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/browser-after-repair/webkit-1440-progress.png",
+      "sha256": "d0af71ad6df2fd462c85212cb1352b11f9b15644a2ca4e30c1692e4415706570"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/browser-after-repair/webkit-320-progress.png",
+      "sha256": "48ec4a32007c988f6d5b21df43106b30cfd98e342365dc92588f7f510a18a700"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/browser-after-repair/webkit-768-progress.png",
+      "sha256": "7cd3aa634b70212819a3f7b1d9b856dfaab191a06182687d28bceefe8427c021"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/browser-independent/BEFORE_REPAIR_RESULTS.json",
+      "sha256": "14f6d1c4fb2bf4fb26fe13a391b8d7a0ebd5ec447828d2a2ed609c986cd7eda4"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/browser-independent/RESULTS.json",
+      "sha256": "3fbae733eeed1056dff1f3291268d24d8c7a7e1f516b2e1307e6693cd2c1fcfe"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/independent-pg/baseline.tap",
+      "sha256": "7d462a4f4121873fdcd30ead987fd1c17268d52fad66bbb7ad865b06ed865b7f"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/independent-pg/corrected.tap",
+      "sha256": "202e0440977f984dd21d58d7ef193e239b2d49d02958adcc56f69fdd9dcce179"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/independent-pg/postgres-receipt.json",
+      "sha256": "722c30d203c0123e29898adc6d835ec3d3d291f4a85f7878185bff997d44666b"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave4/independent-pg/reverted.tap",
+      "sha256": "0d2c20ec18c19f221c4eec3e0e7995124f84e3057e6f61841a60a875b9a357bc"
+    }
+  ],
+  "completedAt": "2026-11-01T17:07:58.206672+00:00",
+  "runtimeVersions": {
+    "node": "24.19.0",
+    "postgres": "17.11",
+    "pg": "8.16.3",
+    "jsdom": "26.1.0",
+    "playwright": "1.62.1",
+    "nativeChromiumRevision": "1248",
+    "nativeWebKitRevision": "2336"
+  },
+  "generatedEvidenceWhitespaceNormalization": {
+    "operation": "strip trailing spaces/tabs from .tap/.log lines only; no test execution or source change",
+    "files": [
+      {
+        "path": "docs/orchestration/issue-56/wave4/ADAPTER_QA_STATUS_EXPECTATION_ERROR.tap",
+        "rawSha256": "a12f792cc150bd5a9816f3c07d54e0bd74d96da6db7aaf6835576b849e8a1577",
+        "normalizedSha256": "726112a3ecce8ea50bc007663fa09065a526a8923cd95148dde596599ee3910a"
+      },
+      {
+        "path": "docs/orchestration/issue-56/wave4/INDEPENDENT_PG_RUN.log",
+        "rawSha256": "1b1aac611c6e6f38991b6634bc11ed98bbf9cd79a53b326737d560a641504375",
+        "normalizedSha256": "d8ad94aaad989ab0610e55b5e915eae8a9db881800cd6eebff41585e8d30326c"
+      },
+      {
+        "path": "docs/orchestration/issue-56/wave4/MEMBER_INDEPENDENT.tap",
+        "rawSha256": "dc578c680625aaaa67fac19fd2d83ffd4c0f9fd9fb05f0ce1e86aadd698c4db5",
+        "normalizedSha256": "b60c73acab2ff1b82849e9c76c3343e76afce93f3a1bf557640dd9e6dcf783d4"
+      },
+      {
+        "path": "docs/orchestration/issue-56/wave4/COACH_INDEPENDENT.tap",
+        "rawSha256": "bf9bc85ed12893edbac4a6b06ad31ce064275ea025dc48493b125e46b5099053",
+        "normalizedSha256": "26d26a0afb5d25ec109becbfc78c8a11668b8efd82ca2d56c1acef703b152b3c"
+      },
+      {
+        "path": "docs/orchestration/issue-56/wave4/MEMBER_AUTHOR_RERUN.tap",
+        "rawSha256": "301daa7a81421553837293df30434fcae999b4d8a3ba1d00e6ea8c14ad84346f",
+        "normalizedSha256": "59f2168cf420360c1f0e9a56563f8c34093c7ad3eb4dfd5aa2ea86e6e25eb102"
+      },
+      {
+        "path": "docs/orchestration/issue-56/wave4/COACH_INDEPENDENT_EXPANDED.tap",
+        "rawSha256": "b9052e52100cccff689661ecfd84b32e1d0e3cf0bd99760d29d1bce84d27fc42",
+        "normalizedSha256": "c03ea2412b382f1081820cefe7b5db18fe7fff012d7dca4436351bb048d6cc24"
+      },
+      {
+        "path": "docs/orchestration/issue-56/wave4/AUTHOR_PG_RUN.log",
+        "rawSha256": "8742ad2a636a8721854ca6d06f709277d3f0868cb476428a5bce499c2bc7e3a5",
+        "normalizedSha256": "754dba7aa723c1d7b47cc6512e304ce8c64c2996c5a148446adb796ed96a6d22"
+      },
+      {
+        "path": "docs/orchestration/issue-56/wave4/independent-pg/baseline.tap",
+        "rawSha256": "034ee5f6893533ad86ce2cb6cfa30c2947e04b17f9c9b86216d72d1c101003a3",
+        "normalizedSha256": "7d462a4f4121873fdcd30ead987fd1c17268d52fad66bbb7ad865b06ed865b7f"
+      },
+      {
+        "path": "docs/orchestration/issue-56/wave4/independent-pg/reverted.tap",
+        "rawSha256": "6aaa0f9dc750fe21dfac267f1299ab7786782fed6b3beaaaa9101ca1333b3ee0",
+        "normalizedSha256": "0d2c20ec18c19f221c4eec3e0e7995124f84e3057e6f61841a60a875b9a357bc"
+      },
+      {
+        "path": "docs/orchestration/issue-56/wave4/author-pg/baseline.tap",
+        "rawSha256": "ef199006795014d10c65511cddfbac2b24efc58ff7614af70ecc66eb791ae1ab",
+        "normalizedSha256": "c84e69b9bc4ef28abbd147222303094bf7afb2613ff86fe1efde0cfd96194064"
+      },
+      {
+        "path": "docs/orchestration/issue-56/wave4/author-pg/reverted.tap",
+        "rawSha256": "e43b1ee70b0f874992d5a20105548ea94ba620f8ee9f4d0233cdb8fe62db1efc",
+        "normalizedSha256": "8c06dcb898763aae903050dfea58bc4777777588f9e545c84defbe1998d04e4b"
+      }
+    ]
+  }
+}
