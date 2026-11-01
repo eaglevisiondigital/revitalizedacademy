@@ -1,5 +1,7 @@
 # Wave 6 Lane C — local functional checkpoint; production NO-GO
 
+**Latest narrow follow-up:** the verified different-account/getUser boundary is corrected in both new daily helpers. See `IDENTITY_CORRECTION_REPORT.md`, `IDENTITY_FINAL_COMBINED.tap` and `IDENTITY_BROWSER.tap`. The first-checkpoint results below remain retained historical evidence. The latest EVIDENCE.json preserves and explicitly supersedes its predecessor.
+
 Native author `/root/wave6_features`; Issues #54/#55/#57; branch `codex/rva-wave6-features-20261101`, worktree `academy-wave6-features`, accepted base `9beae3bb40c154d2bfd623e8d2355b3a6c3cd306`. No source push, production access/write, Auth/RLS change, grant, financial activation, messages or real-client processing. Alex stays paused. The Master owns the consolidated CURRENT_BUILD_STATE and 57-package dispositions.
 
 ## Completed

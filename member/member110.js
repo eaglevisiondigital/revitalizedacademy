@@ -249,6 +249,7 @@
     try{
       const {data:authData,error:authError}=await client.auth.getUser();
       if(!dashboardTaskCurrent(task)||dailyHabitAccessDenied||read!==dailyHabitReadSequence)return;
+      if(!authError&&authData?.user?.id&&authData.user.id!==task.userId){endMemberDocument();return;}
       if(authError||authData?.user?.id!==task.userId)throw Error("member_session_unverified");
       // Refresh only the existing daily-actions projection: unrelated in-progress forms stay mounted.
       const {data,error}=await client.from("my_app_bootstrap_v2").select("daily_actions").single();
@@ -286,6 +287,7 @@
     try{
       const {data:authData,error:authError}=await client.auth.getUser();
       if(!dashboardTaskCurrent(task)||dailyHabitAccessDenied){if(sameActor())dailyHabitWrites.delete(key);return;}
+      if(!authError&&authData?.user?.id&&authData.user.id!==task.userId){endMemberDocument();return;}
       if(authError||authData?.user?.id!==task.userId){
         dailyHabitWrites.delete(key);
         showStatus(status,"Your member session could not be verified. Please sign in again.","error");return;

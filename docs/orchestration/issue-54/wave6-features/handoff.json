@@ -21,10 +21,11 @@
     "uncertain-save read-only status recovery without blind retry",
     "narrow daily projection refresh preserving unrelated drafts",
     "independent denial-race repair with serialized reads, sequence/epoch fence and document denial hold",
-    "connected fictional client/assigned Coach progress/habits/goals/usage projection alongside ShareCenter/QR/Companion"
+    "connected fictional client/assigned Coach progress/habits/goals/usage projection alongside ShareCenter/QR/Companion",
+    "verified different getUser without Auth callback invokes existing document teardown in both new daily paths"
   ],
   "finalResults": {
-    "nodeDomHttpSourcePass": 221,
+    "nodeDomHttpSourcePass": 227,
     "nativeBrowserPass": 14,
     "finalFail": 0,
     "historicalDefectReproductions": 3
@@ -38,5 +39,6 @@
   ],
   "rollback": "local Git source revert only; restores prior defects; no production or stored data to reverse",
   "production": "NO-GO; zero writes or push",
-  "alex": "PAUSED"
+  "alex": "PAUSED",
+  "predecessorSource": "704124a8d94225f70d68b96cc2b64806d5aa3cff"
 }

@@ -1,0 +1,39 @@
+✔ independent: verified different getUser identity clears old private document even without Auth callback (158.037417ms)
+✔ independent: read-only status reauthentication mismatch clears prior private state without another write (71.461167ms)
+✔ independent: getUser transport uncertainty retains draft and cannot send new habit RPC (54.930042ms)
+✔ independent: concurrent status reads cannot restore protected daily card after a genuine authorization denial (540.858209ms)
+✔ daily habit rapid double action dispatches one scoped RPC and retains completed state after stale read (173.548375ms)
+✔ daily habit freezes exact target 0 and ID across valid renewal and changed render source (70.651084ms)
+✔ daily habit freezes exact target 2.5 and ID across valid renewal and changed render source (58.743ms)
+✔ daily habit pending auth null issues no stale RPC (57.318916ms)
+✔ daily habit pending auth synthetic-b issues no stale RPC (49.994625ms)
+✔ daily habit late success after null causes no status revival or read (91.369125ms)
+✔ daily habit late denial after null causes no status revival or read (65.139875ms)
+✔ daily habit late success after synthetic-b causes no status revival or read (71.645875ms)
+✔ daily habit late denial after synthetic-b causes no status revival or read (66.158667ms)
+✔ daily habit verified getUser denial prevents write {"authUserId":null} (49.574209ms)
+✔ daily habit verified getUser denial prevents write {"authUserId":"synthetic-b"} (54.563125ms)
+✔ daily habit verified getUser denial prevents write {"authError":{"message":"Fictional unavailable"}} (46.333833ms)
+✔ daily habit malformed target -1 does not dispatch (51.028583ms)
+✔ daily habit malformed target not-a-number does not dispatch (45.227458ms)
+✔ daily habit malformed target Infinity does not dispatch (45.788334ms)
+✔ daily habit lost response remains uncertain and read-only status checks never blindly repeat write (50.743625ms)
+✔ daily habit returned nonauthorization error is uncertain, not successful completion (45.002583ms)
+✔ daily habit genuine 42501 does not report save or invoke dashboard read (46.706625ms)
+✔ daily habit success plus dashboard transport failure remains saved, never retransmitted (50.446709ms)
+✔ daily habit rendering escapes untrusted labels and completed source does not write (43.766083ms)
+✔ daily habit UTC date and actor are frozen before midnight; old response cannot mark current day complete (49.321875ms)
+✔ daily habit readback 42501 clears only protected daily card and does not claim a successful status read (48.250291ms)
+✔ daily habit failed getUser transport never dispatches or reports a saved habit (45.327333ms)
+✔ author regression: serialized status reads and persistent denial fence prevent stale private-card restoration (69.789625ms)
+✔ verified different identity during readback clears private document without another write (46.80425ms)
+✔ unverified readback identity/transport preserves draft and never dispatches another RPC {"data":{"user":null},"error":null} (46.872208ms)
+✔ unverified readback identity/transport preserves draft and never dispatches another RPC {"data":{"user":{"id":"synthetic-b"}},"error":{"message":"Fictional timeout"}} (50.1595ms)
+ℹ tests 31
+ℹ suites 0
+ℹ pass 31
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2032.769875

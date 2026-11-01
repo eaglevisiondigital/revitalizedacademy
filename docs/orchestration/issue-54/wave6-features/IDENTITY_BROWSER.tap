@@ -1,0 +1,20 @@
+✔ chromium 390 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence (2109.75675ms)
+✔ chromium 768 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence (1804.822833ms)
+✔ chromium 1440 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence (2680.364ms)
+✔ webkit 390 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence (1854.186667ms)
+✔ webkit 768 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence (2170.459875ms)
+✔ webkit 1440 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence (2251.220333ms)
+✔ chromium 390 actual daily habit duplicate/renewal/uncertain readback/draft/privacy boundary (945.5475ms)
+✔ chromium 768 actual daily habit duplicate/renewal/uncertain readback/draft/privacy boundary (986.740291ms)
+✔ chromium 1440 actual daily habit duplicate/renewal/uncertain readback/draft/privacy boundary (764.350792ms)
+✔ webkit 390 actual daily habit duplicate/renewal/uncertain readback/draft/privacy boundary (1350.698083ms)
+✔ webkit 768 actual daily habit duplicate/renewal/uncertain readback/draft/privacy boundary (1509.325833ms)
+✔ webkit 1440 actual daily habit duplicate/renewal/uncertain readback/draft/privacy boundary (1115.0405ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13176.672083

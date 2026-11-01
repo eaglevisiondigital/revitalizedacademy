@@ -2,7 +2,7 @@
   "base": "9beae3bb40c154d2bfd623e8d2355b3a6c3cd306",
   "scope": "local fictional inputs and final evidence; no production data",
   "files": {
-    "member/member110.js": "7e10f4bcec9068bf4574ad735a67b2b21f54a7b423bd8f13c459068632eb3d03",
+    "member/member110.js": "ce11af68411c32ac1170f4210c3d9b98258cf2d40c445398f1d707cd4eb4db0c",
     "tools/affiliate-share-preview/index.html": "4917631c77fab5cce0322bd6f8cf52fcd0c35e21c8b1a8d8f552a14f65adefdc",
     "tools/affiliate-share-preview/preview.js": "f34e565758b4e24b38d19eabed036dc4600ee825b5a1c1944d3c28967cb68ec6",
     "tools/affiliate-share-preview/server.cjs": "a57841085a4aa57aae178dca532fc3e4bbea5184872af7b5a0000406f2e15c6a",
@@ -10,9 +10,9 @@
     "tests/wave6-features/baseline.test.cjs": "f6d1f63619e7db140deddf5ca810b0fc60300806fe82c518765f51a39da89480",
     "tests/wave6-features/browser.cjs": "4ab61791cde2263303bb102c5e4331fd05d95c4d97c6d00cd13a612c84dd0cd1",
     "tests/wave6-features/daily-fixture.cjs": "404014b855f022c26b8c186d5fb6b5d975299216c8b236048b826e2f056dea7f",
-    "tests/wave6-features/daily.test.cjs": "62bb8f9962c94832a493bda8b23e2a27f822f93f3151b7a64c0417666901a0cc",
+    "tests/wave6-features/daily.test.cjs": "d91ccc0e208004114887e86f6bdc49b74d32de8ee54ad619f3506bee2548c81c",
     "tests/wave6-features/http.test.cjs": "6c58cec38c53be9800b71f22d98ae5c94cad82a28212993ded4980b3b06b85e7",
-    "tests/wave6-features/member-browser.cjs": "94116e514941e724e783c58973a39923f635f1ba4263860b494347819d3df5ae",
+    "tests/wave6-features/member-browser.cjs": "6d5e877d7eaf169d780514132f8f06f28d0ec1cfcf50d57cd3257ec567940514",
     "tests/wave6-features/preservation.test.cjs": "b9fd2898c8aa42283184d2b081cc16cf13024b9c61b1ef592e9cce6bdabfb411",
     "tests/wave6-features/progress.test.cjs": "4bb6fcb13f360870cbf18ac0fc8838194887d4ac5e6c5349a587ef9d6881b310",
     "docs/orchestration/issue-54/wave6-features/BASELINE_REPRODUCTIONS.tap": "f5f74fb37a28c6805b58f7f69adf04f00aadaf2b59a5bda050789164627f8a1a",
@@ -28,6 +28,9 @@
     "docs/orchestration/issue-54/wave6-features/DAILY_VERIFIED.tap": "34e3a6cb2b7eb8c283a89c48a2f14e3822837edb74db69290baee57f01afa81b",
     "docs/orchestration/issue-54/wave6-features/HTTP.tap": "b45fbca499a144b8c7d5732953905418b008e947e71eeae7fd92867190f5e026",
     "docs/orchestration/issue-54/wave6-features/HTTP_FINAL.tap": "c4ef8a82a2bdaee67d7d879f3bbe43332a9564e4130cb0cde17e2e7d5774cb6b",
+    "docs/orchestration/issue-54/wave6-features/IDENTITY_BROWSER.tap": "9e9d419d8d90a8a5009fb2a41e271095909757dba506a23af836aedbd727c45f",
+    "docs/orchestration/issue-54/wave6-features/IDENTITY_CORRECTION.tap": "171f466b86c17aa550fa0709ad63f4264f9a652f92396adc8c145464983d56bf",
+    "docs/orchestration/issue-54/wave6-features/IDENTITY_FINAL_COMBINED.tap": "cfd1ef8154b0b56be8e0b0317c4e5a5ff4fafcda1218ea78c783189db82dbea0",
     "docs/orchestration/issue-54/wave6-features/INITIAL_DAILY.tap": "76886cfc80e45d480fe540bb2adfb85b34ad2d7a4837e08fc340233cbbb9e008",
     "docs/orchestration/issue-54/wave6-features/PRESERVATION.tap": "6b752294e2d58daf16a9a2b34e69b75395b70a3a9a85ce86676aa37a43642a4f",
     "docs/orchestration/issue-54/wave6-features/PRESERVATION_FINAL.tap": "3737558cd07b4e43e231626307ffae7e08b190942cba50e03d9f06b90d9e4999",
@@ -39,22 +42,38 @@
   },
   "protectedFileCountCompared": 413,
   "results": {
-    "nodeDomHttpSourcePass": 221,
+    "nodeDomHttpSourcePass": 227,
     "nativeBrowserPass": 14,
     "fail": 0,
     "intentionalBaselineDefectReproductions": 3,
     "pg": "NOT RUN; separate shared-memory blocker",
-    "fullBusinessPackagePassAdded": 0
+    "fullBusinessPackagePassAdded": 0,
+    "combinedReceipt": "IDENTITY_FINAL_COMBINED.tap:229PASS includes2native scenario regressions",
+    "responsiveReceipt": "IDENTITY_BROWSER.tap:12PASS"
   },
   "independentQaAssertion": {
     "path": "tests/wave6-qa/daily-adversarial.test.cjs",
-    "sha256": "f5ee2c1fd28ace3ad77145bc67d61063cdb80de929ce3f95eea1cf7a23629300",
-    "result": "PASS unchanged; executed against this worktree"
+    "sha256": "a8a11221d9aa9da1c50f6a7b508343e81b92c2459b0659c6eb2fae60ac995a71",
+    "result": "4 PASS unchanged; executed against this corrected worktree"
   },
   "productionWrites": 0,
   "sourcePushes": 0,
   "grantsIssued": 0,
   "realClientProcessing": 0,
   "unapprovedMethodologyAdded": 0,
-  "alex": "PAUSED"
+  "alex": "PAUSED",
+  "predecessorEvidence": {
+    "commit": "704124a8d94225f70d68b96cc2b64806d5aa3cff",
+    "path": "docs/orchestration/issue-54/wave6-features/EVIDENCE_BEFORE_IDENTITY_CORRECTION.json",
+    "sha256": "bdf1c32403be2d3229a90b597d47269d2328d70789aafc07231ca46012f1fb44",
+    "results": {
+      "nodeDomHttpSourcePass": 221,
+      "nativeBrowserPass": 14,
+      "fail": 0,
+      "intentionalBaselineDefectReproductions": 3,
+      "pg": "NOT RUN; separate shared-memory blocker",
+      "fullBusinessPackagePassAdded": 0
+    }
+  },
+  "runtimeCorrection": "exactly two new verified-different-identity teardown lines since704124a"
 }
