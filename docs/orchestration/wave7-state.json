@@ -91,7 +91,7 @@
       "implementationSha": "7838227eb11b8bfa31c003ea92d49860de2eb019"
     },
     {
-      "status": "ACTIVE",
+      "status": "RETURNED_INDEPENDENT_QA",
       "issue": 56,
       "worktree": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-qa",
       "branch": "codex/rva-wave7-qa-20261101",
@@ -105,7 +105,9 @@
       "dispatch": {
         "kind": "native-spawn-result",
         "taskName": "/root/wave7_independent_qa"
-      }
+      },
+      "implementationSha": "6dadbdb631278e58554622fc250f2cc9cba0f4a2",
+      "executionSourceSha": "5b01f3065fc381d4adba8212333a19f17aaef36c"
     }
   ],
   "capacity": "Master+3 active maximum; independent QA launched after C returned",
@@ -130,5 +132,28 @@
     "scope": "preview read sequence prevents stale ready response after newer held response",
     "originalBrowserFailures": 2,
     "correctedIndependentPass": 2
-  }
+  },
+  "finalVerification": {
+    "nodeDomHttpSourcePass": 521,
+    "nativeBrowserPass": 14,
+    "postgres": {
+      "assertions": 233,
+      "pass": 214,
+      "fail": 19,
+      "historicalExpectedFail": 18,
+      "compatibilityRegressionFail": 1
+    },
+    "completePackages": {
+      "PASS": 1,
+      "FAIL": 1,
+      "BLOCKED": 44,
+      "NOT_RUN": 11
+    },
+    "protectedPathsUnchanged": 413,
+    "qaSourcePins": 87,
+    "qaEvidencePins": 47,
+    "production": "NO_GO",
+    "next": "Trace/test existing audited provisioning/claim workflow; preserve original positive FAIL; no identity guard relaxation"
+  },
+  "status": "COMPLETED_LOCAL_CHECKPOINT_NO_BACKGROUND_WORK"
 }
