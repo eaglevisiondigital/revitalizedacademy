@@ -212,9 +212,9 @@ not ok 35 - [E02 concurrency] direct plus RPC plus session trigger serialize ful
   failureType: 'testCodeFailure'
   error: |-
     canceling statement due to lock timeout
-    
+
     false !== true
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected: true

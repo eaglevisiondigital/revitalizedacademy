@@ -1,0 +1,84 @@
+{
+  "operation": "Remove trailing spaces/tabs only from generated TAP/log lines; no result/assertion/source change",
+  "reason": "Complete source-range whitespace check identified generated blank-line indentation",
+  "files": [
+    {
+      "path": "docs/orchestration/issue-61/wave4/expanded-harness-ordering-failure/baseline.tap",
+      "rawSha256": "ce972fbf6ea8c4693597773090ca3332d2c44c5fe0c25e0b7957db7bc33658f1",
+      "normalizedSha256": "d086cfe55c8ab9dabb9ec82b119d7a673c50bab6944d0eddf10bd256c8ad8f3d",
+      "rawPreservedInAuthorCommit": "fffab8b85e29e302e46ff4f6e5c5ba06a3bbc07b",
+      "rawLocalArchive": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave4/raw-author-logs/docs/orchestration/issue-61/wave4/expanded-harness-ordering-failure/baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-61/wave4/expanded-harness-ordering-failure/corrected.tap",
+      "rawSha256": "bd104b8622ffb653fc653ee5107aca2c4ce3156f097e350e2a16f7377aa94c59",
+      "normalizedSha256": "acc5705bc993a0181c9ef3f724320e83545fc41b3ec7d5c1369b1bd7c6db270d",
+      "rawPreservedInAuthorCommit": "fffab8b85e29e302e46ff4f6e5c5ba06a3bbc07b",
+      "rawLocalArchive": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave4/raw-author-logs/docs/orchestration/issue-61/wave4/expanded-harness-ordering-failure/corrected.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-61/wave4/expanded-harness-ordering-failure/reverted.tap",
+      "rawSha256": "a27ebb32fd4075acbb0b4351458e9b34e781ad3f49f070393f38025a392e5a69",
+      "normalizedSha256": "a0236815b22429d50b7fc289edf5b7315287588ac62ffffcfc62497a6842d846",
+      "rawPreservedInAuthorCommit": "fffab8b85e29e302e46ff4f6e5c5ba06a3bbc07b",
+      "rawLocalArchive": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave4/raw-author-logs/docs/orchestration/issue-61/wave4/expanded-harness-ordering-failure/reverted.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-61/wave4/first-comparison/baseline.tap",
+      "rawSha256": "ac811e293ba9cea14ce4a04d9ec1d4cd5f93a0e7d267f95da8c88ff83d2c207c",
+      "normalizedSha256": "c06661e022657d2bdfb0ef7bd488981d17c4f3b5036687dd9c86e269580cf004",
+      "rawPreservedInAuthorCommit": "fffab8b85e29e302e46ff4f6e5c5ba06a3bbc07b",
+      "rawLocalArchive": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave4/raw-author-logs/docs/orchestration/issue-61/wave4/first-comparison/baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-61/wave4/first-comparison/reverted.tap",
+      "rawSha256": "e31c2dea56a4923c70750a8a9f6ca9fe6392bf043674cd2be99e558af68407cb",
+      "normalizedSha256": "6e3415070688df8ce6c0adbd353698636faf8805085b93561edfe4de7ba4459b",
+      "rawPreservedInAuthorCommit": "fffab8b85e29e302e46ff4f6e5c5ba06a3bbc07b",
+      "rawLocalArchive": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave4/raw-author-logs/docs/orchestration/issue-61/wave4/first-comparison/reverted.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-61/wave4/forty-case-pre-session-entry-checkpoint/baseline.tap",
+      "rawSha256": "933dc41fa5690fc647e92009bc608ac6c748f608f7a78c3ae4928944c5a700f6",
+      "normalizedSha256": "4103b709bd4042858ca010e09ab0bd5070a1aa37789612909cd520af4be4ecd7",
+      "rawPreservedInAuthorCommit": "fffab8b85e29e302e46ff4f6e5c5ba06a3bbc07b",
+      "rawLocalArchive": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave4/raw-author-logs/docs/orchestration/issue-61/wave4/forty-case-pre-session-entry-checkpoint/baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-61/wave4/forty-case-pre-session-entry-checkpoint/reverted.tap",
+      "rawSha256": "e5b509b3e823c2e55fdf1783bb8fa34a45dc78e7f71e7f61e86390b5a69ef786",
+      "normalizedSha256": "22fad9cde1dc0698aea861c58b59cd341e5520f9251e10e76f7d8b91f6d795a4",
+      "rawPreservedInAuthorCommit": "fffab8b85e29e302e46ff4f6e5c5ba06a3bbc07b",
+      "rawLocalArchive": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave4/raw-author-logs/docs/orchestration/issue-61/wave4/forty-case-pre-session-entry-checkpoint/reverted.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-61/wave4/guard-stops-contaminated-baseline/baseline.tap",
+      "rawSha256": "a75d57343b6d3d77d65b5a612d76be0a19bf27ef79fdca7eb8fed8b34abbe6b9",
+      "normalizedSha256": "1f2eceaafd83609a9d692e9f808a82dd6ea963ef7b053968da85f02cef193249",
+      "rawPreservedInAuthorCommit": "fffab8b85e29e302e46ff4f6e5c5ba06a3bbc07b",
+      "rawLocalArchive": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave4/raw-author-logs/docs/orchestration/issue-61/wave4/guard-stops-contaminated-baseline/baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-61/wave4/initial-baseline/baseline.tap",
+      "rawSha256": "d5ffbd1f33b26d88610a2aba15ca5c7f26d4b8bf9e8f23909834f2b4782c4041",
+      "normalizedSha256": "8247cab988de52d19e9f3782ee0fea94f35e21f86e027955659254e3fd11d9a9",
+      "rawPreservedInAuthorCommit": "fffab8b85e29e302e46ff4f6e5c5ba06a3bbc07b",
+      "rawLocalArchive": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave4/raw-author-logs/docs/orchestration/issue-61/wave4/initial-baseline/baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-61/wave4/receipts/baseline.tap",
+      "rawSha256": "a800296fbf08af0f1178a96b159e5f459d975a80ee4a6df1305a5a8cca43fdb3",
+      "normalizedSha256": "625ac5c4ddec3460e2bd4af6890d2675bf6d99e6162596394451d94b1394da72",
+      "rawPreservedInAuthorCommit": "fffab8b85e29e302e46ff4f6e5c5ba06a3bbc07b",
+      "rawLocalArchive": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave4/raw-author-logs/docs/orchestration/issue-61/wave4/receipts/baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-61/wave4/receipts/reverted.tap",
+      "rawSha256": "b2a3abfbffbc256228b960c5afc3918531466cb23262bfbe5e7baf7b074d8e51",
+      "normalizedSha256": "706e23a9fb4875d3ef226f67e096d4e3b2bc0c8c9955f119bdf537f597e32981",
+      "rawPreservedInAuthorCommit": "fffab8b85e29e302e46ff4f6e5c5ba06a3bbc07b",
+      "rawLocalArchive": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave4/raw-author-logs/docs/orchestration/issue-61/wave4/receipts/reverted.tap"
+    }
+  ],
+  "runtimeAndSQLUnchanged": true
+}

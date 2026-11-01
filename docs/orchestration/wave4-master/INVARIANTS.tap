@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: tracked changes remain inside explicitly owned Wave 4 paths
+ok 1 - tracked changes remain inside explicitly owned Wave 4 paths
+  ---
+  duration_ms: 3.720208
+  type: 'test'
+  ...
+# Subtest: canonical migrations, Functions, assets, payment and release configuration are untouched
+ok 2 - canonical migrations, Functions, assets, payment and release configuration are untouched
+  ---
+  duration_ms: 0.321875
+  type: 'test'
+  ...
+# Subtest: the approved methodology and voice source remain byte-identical
+ok 3 - the approved methodology and voice source remain byte-identical
+  ---
+  duration_ms: 58.368458
+  type: 'test'
+  ...
+# Subtest: all original requirements and source details remain unchanged
+ok 4 - all original requirements and source details remain unchanged
+  ---
+  duration_ms: 85.533834
+  type: 'test'
+  ...
+# Subtest: the 57-package source matrix is preserved, without claiming full acceptance
+ok 5 - the 57-package source matrix is preserved, without claiming full acceptance
+  ---
+  duration_ms: 34.563375
+  type: 'test'
+  ...
+# Subtest: Alex is paused and production mutation remains unauthorized
+ok 6 - Alex is paused and production mutation remains unauthorized
+  ---
+  duration_ms: 0.693959
+  type: 'test'
+  ...
+# Subtest: only the two reviewed existing runtime files can change
+ok 7 - only the two reviewed existing runtime files can change
+  ---
+  duration_ms: 67.76525
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 411.846625

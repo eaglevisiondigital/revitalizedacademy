@@ -8,9 +8,9 @@ not ok 1 - [N02/E02 old strict] wrong Coach cannot SELECT unrelated usage
   failureType: 'testCodeFailure'
   error: |-
     Expected values to be strictly equal:
-    
+
     1 !== 0
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected: 0
@@ -31,9 +31,9 @@ not ok 2 - [N02/E02 old strict] wrong Coach cannot UPDATE unrelated usage
   failureType: 'testCodeFailure'
   error: |-
     mutation must be hidden or rejected
-    
+
     1 !== 0
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected: 0
@@ -55,9 +55,9 @@ not ok 3 - [N02/E02 old strict] wrong Coach cannot UPDATE unrelated allowance
   failureType: 'testCodeFailure'
   error: |-
     Expected values to be strictly equal:
-    
+
     1 !== 0
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected: 0
@@ -78,9 +78,9 @@ not ok 4 - [N02/E02] wrong Coach cannot SELECT unrelated allowance
   failureType: 'testCodeFailure'
   error: |-
     Expected values to be strictly equal:
-    
+
     1 !== 0
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected: 0
@@ -107,9 +107,9 @@ not ok 6 - [E02] authorized direct usage consumes/releases and total matches led
   failureType: 'testCodeFailure'
   error: |-
     Expected values to be strictly equal:
-    
+
     0 !== 2
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected: 2
@@ -130,9 +130,9 @@ not ok 7 - [E02] original public review remains allowed and exact after direct c
   failureType: 'testCodeFailure'
   error: |-
     Expected values to be strictly equal:
-    
+
     1 !== 0
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected: 0
@@ -153,9 +153,9 @@ not ok 8 - [N02/E02] direct usage rejects forged membership_id
   failureType: 'testCodeFailure'
   error: |-
     mutation must be hidden or rejected
-    
+
     1 !== 0
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected: 0
@@ -177,9 +177,9 @@ not ok 9 - [N02/E02] direct usage rejects forged contact_id
   failureType: 'testCodeFailure'
   error: |-
     mutation must be hidden or rejected
-    
+
     1 !== 0
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected: 0
@@ -207,9 +207,9 @@ not ok 11 - [N02/E02] direct usage rejects forged entitlement_id
   failureType: 'testCodeFailure'
   error: |-
     mutation must be hidden or rejected
-    
+
     1 !== 0
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected: 0
@@ -231,9 +231,9 @@ not ok 12 - [N02/E02] direct usage rejects forged entitlement_key
   failureType: 'testCodeFailure'
   error: |-
     mutation must be hidden or rejected
-    
+
     1 !== 0
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected: 0
@@ -272,9 +272,9 @@ not ok 14 - [N02/E02] assigned Coach may INSERT exact session-backed ledger row
   failureType: 'testCodeFailure'
   error: |-
     Expected values to be strictly equal:
-    
+
     0 !== 1
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected: 1
@@ -389,10 +389,10 @@ not ok 25 - [E02] direct actor spoof is replaced by trusted actor identity
   error: |-
     Expected values to be strictly equal:
     + actual - expected
-    
+
     + '0e581253-0a84-46df-903d-78b7e543db4a'
     - 'b2c2601c-ed91-4c0c-90f5-d1820ff7b4d9'
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected: 'b2c2601c-ed91-4c0c-90f5-d1820ff7b4d9'
@@ -413,9 +413,9 @@ not ok 26 - [N02] reassignment revokes old Coach only after every existing scope
   failureType: 'testCodeFailure'
   error: |-
     Expected values to be strictly equal:
-    
+
     1 !== 0
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected: 0
@@ -442,9 +442,9 @@ not ok 28 - [E02 shared] partial contact visibility cannot undercount complete m
   failureType: 'testCodeFailure'
   error: |-
     Expected values to be strictly equal:
-    
+
     1 !== 0
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected: 0
@@ -512,9 +512,9 @@ not ok 35 - [E02 concurrency] direct plus RPC plus session trigger serialize ful
   failureType: 'testCodeFailure'
   error: |-
     Expected values to be strictly equal:
-    
+
     false !== true
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected: true
@@ -534,9 +534,9 @@ not ok 36 - [E02 tuple race] first direct insertion and session move cannot comm
   failureType: 'testCodeFailure'
   error: |-
     session move must reject after first usage commits
-    
+
     true !== false
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected: false
