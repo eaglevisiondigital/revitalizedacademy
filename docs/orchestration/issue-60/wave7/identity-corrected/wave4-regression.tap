@@ -1,0 +1,244 @@
+TAP version 13
+# Subtest: [N02/E02 old strict] wrong Coach cannot SELECT unrelated usage
+ok 1 - [N02/E02 old strict] wrong Coach cannot SELECT unrelated usage
+  ---
+  duration_ms: 54.20325
+  type: 'test'
+  ...
+# Subtest: [N02/E02 old strict] wrong Coach cannot UPDATE unrelated usage
+ok 2 - [N02/E02 old strict] wrong Coach cannot UPDATE unrelated usage
+  ---
+  duration_ms: 12.089459
+  type: 'test'
+  ...
+# Subtest: [N02/E02 old strict] wrong Coach cannot UPDATE unrelated allowance
+ok 3 - [N02/E02 old strict] wrong Coach cannot UPDATE unrelated allowance
+  ---
+  duration_ms: 8.355417
+  type: 'test'
+  ...
+# Subtest: [N02/E02] wrong Coach cannot SELECT unrelated allowance
+ok 4 - [N02/E02] wrong Coach cannot SELECT unrelated allowance
+  ---
+  duration_ms: 7.223417
+  type: 'test'
+  ...
+# Subtest: [N02/E02] assigned Coach and Owner see legitimate usage and allowance
+ok 5 - [N02/E02] assigned Coach and Owner see legitimate usage and allowance
+  ---
+  duration_ms: 11.576
+  type: 'test'
+  ...
+# Subtest: [E02] authorized direct usage consumes/releases and total matches ledger
+ok 6 - [E02] authorized direct usage consumes/releases and total matches ledger
+  ---
+  duration_ms: 14.648167
+  type: 'test'
+  ...
+# Subtest: [E02] original public review remains allowed and exact after direct changes
+ok 7 - [E02] original public review remains allowed and exact after direct changes
+  ---
+  duration_ms: 19.00375
+  type: 'test'
+  ...
+# Subtest: [N02/E02] direct usage rejects forged membership_id
+ok 8 - [N02/E02] direct usage rejects forged membership_id
+  ---
+  duration_ms: 9.622291
+  type: 'test'
+  ...
+# Subtest: [N02/E02] direct usage rejects forged contact_id
+ok 9 - [N02/E02] direct usage rejects forged contact_id
+  ---
+  duration_ms: 8.774417
+  type: 'test'
+  ...
+# Subtest: [N02/E02] direct usage rejects forged coaching_session_id
+ok 10 - [N02/E02] direct usage rejects forged coaching_session_id
+  ---
+  duration_ms: 9.351166
+  type: 'test'
+  ...
+# Subtest: [N02/E02] direct usage rejects forged entitlement_id
+ok 11 - [N02/E02] direct usage rejects forged entitlement_id
+  ---
+  duration_ms: 10.078625
+  type: 'test'
+  ...
+# Subtest: [N02/E02] direct usage rejects forged entitlement_key
+ok 12 - [N02/E02] direct usage rejects forged entitlement_key
+  ---
+  duration_ms: 9.133
+  type: 'test'
+  ...
+# Subtest: [N02/E02] wrong Coach cannot INSERT ledger for another Client session
+ok 13 - [N02/E02] wrong Coach cannot INSERT ledger for another Client session
+  ---
+  duration_ms: 7.851375
+  type: 'test'
+  ...
+# Subtest: [N02/E02] assigned Coach may INSERT exact session-backed ledger row
+ok 14 - [N02/E02] assigned Coach may INSERT exact session-backed ledger row
+  ---
+  duration_ms: 7.847291
+  type: 'test'
+  ...
+# Subtest: [N02/E02] INSERT with own contact but wrong session/membership is rejected
+ok 15 - [N02/E02] INSERT with own contact but wrong session/membership is rejected
+  ---
+  duration_ms: 6.482125
+  type: 'test'
+  ...
+# Subtest: [N06] suspended Coach loses usage and allowance access despite retained overrides
+ok 16 - [N06] suspended Coach loses usage and allowance access despite retained overrides
+  ---
+  duration_ms: 8.783375
+  type: 'test'
+  ...
+# Subtest: [N06] inactive Coach loses usage and allowance access despite retained overrides
+ok 17 - [N06] inactive Coach loses usage and allowance access despite retained overrides
+  ---
+  duration_ms: 8.788458
+  type: 'test'
+  ...
+# Subtest: [N06] pending Coach cannot access usage/allowance
+ok 18 - [N06] pending Coach cannot access usage/allowance
+  ---
+  duration_ms: 7.654125
+  type: 'test'
+  ...
+# Subtest: [N04] null authenticated actor and anon remain denied
+ok 19 - [N04] null authenticated actor and anon remain denied
+  ---
+  duration_ms: 8.123958
+  type: 'test'
+  ...
+# Subtest: [N06 current paid hold] fictional own and other Client cannot read/write paid usage
+ok 20 - [N06 current paid hold] fictional own and other Client cannot read/write paid usage
+  ---
+  duration_ms: 13.788792
+  type: 'test'
+  ...
+# Subtest: [E02] direct cache forgery is rejected even for permitted Owner/Coach
+ok 21 - [E02] direct cache forgery is rejected even for permitted Owner/Coach
+  ---
+  duration_ms: 12.034625
+  type: 'test'
+  ...
+# Subtest: [E02] referenced coaching allowance rejects malicious membership_id transfer
+ok 22 - [E02] referenced coaching allowance rejects malicious membership_id transfer
+  ---
+  duration_ms: 10.235542
+  type: 'test'
+  ...
+# Subtest: [E02] referenced coaching allowance rejects malicious entitlement_key transfer
+ok 23 - [E02] referenced coaching allowance rejects malicious entitlement_key transfer
+  ---
+  duration_ms: 10.408
+  type: 'test'
+  ...
+# Subtest: [E02] non-coaching entitlement behavior is preserved, including existing broad staff access
+ok 24 - [E02] non-coaching entitlement behavior is preserved, including existing broad staff access
+  ---
+  duration_ms: 8.757209
+  type: 'test'
+  ...
+# Subtest: [E02] direct actor spoof is replaced by trusted actor identity
+ok 25 - [E02] direct actor spoof is replaced by trusted actor identity
+  ---
+  duration_ms: 11.562875
+  type: 'test'
+  ...
+# Subtest: [N02] reassignment revokes old Coach only after every existing scope channel is closed
+ok 26 - [N02] reassignment revokes old Coach only after every existing scope channel is closed
+  ---
+  duration_ms: 9.52925
+  type: 'test'
+  ...
+# Subtest: [N01] role transition obeys current defaults after explicit allows removed
+ok 27 - [N01] role transition obeys current defaults after explicit allows removed
+  ---
+  duration_ms: 7.967
+  type: 'test'
+  ...
+# Subtest: [E02 shared] partial contact visibility cannot undercount complete membership usage
+ok 28 - [E02 shared] partial contact visibility cannot undercount complete membership usage
+  ---
+  duration_ms: 20.501459
+  type: 'test'
+  ...
+# Subtest: [E02 shared] no usage SELECT permission cannot overwrite a complete aggregate
+ok 29 - [E02 shared] no usage SELECT permission cannot overwrite a complete aggregate
+  ---
+  duration_ms: 9.616875
+  type: 'test'
+  ...
+# Subtest: [E02] session-backed usage binding transfer fails closed and preserves old total
+ok 30 - [E02] session-backed usage binding transfer fails closed and preserves old total
+  ---
+  duration_ms: 7.285458
+  type: 'test'
+  ...
+# Subtest: [E02] replay and outer rollback preserve exact ledger total
+ok 31 - [E02] replay and outer rollback preserve exact ledger total
+  ---
+  duration_ms: 41.633167
+  type: 'test'
+  ...
+# Subtest: [E02] existing session tracking without an entitlement remains valid
+ok 32 - [E02] existing session tracking without an entitlement remains valid
+  ---
+  duration_ms: 5.327459
+  type: 'test'
+  ...
+# Subtest: [E02] failed existing cache UPDATE rolls back the ledger
+ok 33 - [E02] failed existing cache UPDATE rolls back the ledger
+  ---
+  duration_ms: 14.806208
+  type: 'test'
+  ...
+# Subtest: [N04] new predicate is boolean-only actor-bound allowlisted and fixed-search-path
+ok 34 - [N04] new predicate is boolean-only actor-bound allowlisted and fixed-search-path
+  ---
+  duration_ms: 15.068833
+  type: 'test'
+  ...
+# Subtest: [E02 concurrency] direct plus RPC plus session trigger serialize full totals
+ok 35 - [E02 concurrency] direct plus RPC plus session trigger serialize full totals
+  ---
+  duration_ms: 54.86875
+  type: 'test'
+  ...
+# Subtest: [E02 tuple race] first direct insertion and session move cannot commit inconsistent tuple
+ok 36 - [E02 tuple race] first direct insertion and session move cannot commit inconsistent tuple
+  ---
+  duration_ms: 36.784334
+  type: 'test'
+  ...
+# Subtest: [E02 guard] preexisting malformed tuples are rejected rather than grandfathered
+ok 37 - [E02 guard] preexisting malformed tuples are rejected rather than grandfathered
+  ---
+  duration_ms: 9.825
+  type: 'test'
+  ...
+# Subtest: [E02 guard] preexisting inconsistent cache is rejected with no repair
+ok 38 - [E02 guard] preexisting inconsistent cache is rejected with no repair
+  ---
+  duration_ms: 11.286333
+  type: 'test'
+  ...
+# Subtest: [E02 sorted locks] opposite OLD/NEW key transfers lock consistently then fail closed
+ok 39 - [E02 sorted locks] opposite OLD/NEW key transfers lock consistently then fail closed
+  ---
+  duration_ms: 36.221083
+  type: 'test'
+  ...
+1..39
+# tests 39
+# suites 0
+# pass 39
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 647.961708

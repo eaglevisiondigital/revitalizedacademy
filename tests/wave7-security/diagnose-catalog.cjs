@@ -1,0 +1,46 @@
+'use strict';
+// PREPARED NOT EXECUTED: independent Wave6 combined security/rollback runner. Owned disposable PG only.
+const fs=require('node:fs'),path=require('node:path'),os=require('node:os'),crypto=require('node:crypto'),{spawnSync}=require('node:child_process');
+const root=path.resolve(__dirname,'../..'),output=path.resolve(root,process.env.RVA_WAVE6_QA_OUTPUT||'docs/orchestration/issue-60/wave7/catalog-diagnosis'),bin='/opt/homebrew/opt/postgresql@17/bin';
+const hash=x=>crypto.createHash('sha256').update(x).digest('hex'),pins=require('../wave3-allowance/source-pins.json');
+function call(exe,args,opts={}){const r=spawnSync(exe,args,{encoding:'utf8',timeout:120000,maxBuffer:24*1024*1024,...opts});if(r.status!==0)throw Error(path.basename(exe)+' failed: '+(r.stderr||r.stdout||r.error?.message||'').slice(-4000));return r;}
+const resource=require('../../tools/wave6-postgres/resource-gate.cjs');let scratch,started=false;const receipt={startedAt:new Date().toISOString(),runnerSha256:hash(fs.readFileSync(__filename)),scope:'CURRENT_CATALOG_FICTIONAL_LOCAL_WAVE4_PREDECESSOR',productionCalls:0,connection:'disposable UNIX socket only; synthetic Auth GUCs; not GoTrue or PostgREST acceptance',sourceCommit:call('git',['rev-parse','HEAD'],{cwd:root}).stdout.trim(),stages:[]};
+let leaseHeld=false;const lock=path.join(os.tmpdir(),'rva-wave6-disposable-pg-exclusive.lock');
+try{fs.mkdirSync(lock,{mode:0o700});leaseHeld=true;fs.writeFileSync(path.join(lock,'lease.json'),JSON.stringify({pid:process.pid,scope:'RVA_WAVE6_DISPOSABLE_ONLY'}),{mode:0o600});
+ const inputPaths=['tests/wave6-qa/sql-adversarial.test.cjs','proposals/wave6-security/correction.sql','proposals/wave6-security/revert.sql','tests/wave6-security/security.test.cjs','tests/wave6-security/pending-access-identity-hypothesis.test.cjs','proposals/wave5-security/correction.sql','proposals/wave5-security/revert.sql','tests/wave5-security/security.test.cjs','tests/wave5-operations/concurrency.test.cjs','tests/wave5-operations/durable-operations.test.cjs','tests/wave5-operations/catalog-overlay.cjs','tests/wave5-operations/current-operations-catalog.json','tests/wave4-access/fixture.cjs','proposals/issue-61/correction.sql','proposals/issue-61/wave4/correction.sql','proposals/wave5-operations/correction.sql','proposals/wave5-operations/revert.sql'];receipt.executionInputs=inputPaths.map(p=>({path:p,sha256:hash(fs.readFileSync(path.join(root,p)))}));
+ for(const x of [...pins.files,...require('../wave3-allowance/current-pins.json').files,...require('../wave6-security/execution-pins.json').files])if(hash(fs.readFileSync(path.resolve(root,x.path)))!==x.sha256)throw Error('Pinned input drift: '+x.path);
+ receipt.resourceBefore=resource.inspect();if(receipt.resourceBefore.capacity.result!=='READY')throw Error('BLOCKED_SYSV_CAPACITY_BEFORE_INITDB');
+ receipt.postgres=call(path.join(bin,'postgres'),['--version']).stdout.trim();if(!/PostgreSQL\) 17\./.test(receipt.postgres))throw Error('PG17 required');
+ scratch=fs.mkdtempSync(path.join(os.tmpdir(),'rva-wave4-access-wave6-'));const data=path.join(scratch,'data'),sock=path.join(scratch,'socket');fs.mkdirSync(sock);
+ call(path.join(bin,'initdb'),['-D',data,'-U','postgres','--auth-local=trust','--auth-host=reject','--no-locale','--encoding=UTF8']);const port=String(56000+process.pid%5000);
+ call(path.join(bin,'pg_ctl'),['-D',data,'-l',path.join(scratch,'postgres.log'),'-o',`-F -k ${sock} -p ${port} -c listen_addresses='' -c max_connections=12 -c shared_buffers=8MB -c max_worker_processes=0 -c autovacuum=off -c max_wal_senders=0`,'-w','start']);started=true;
+ const env={PATH:process.env.PATH,HOME:process.env.HOME,PGHOST:sock,PGPORT:port,PGUSER:'postgres',PGDATABASE:'wave4_access',RVA_WAVE4_SOCKET:sock,RVA_WAVE4_PORT:port,RVA_WAVE4_DATABASE:'wave4_access',RVA_WAVE4_DEPENDENCIES:path.resolve(root,'../revitalizedacademy/node_modules')};
+ function sql(input){return call(path.join(bin,'psql'),['-X','-v','ON_ERROR_STOP=1'],{env,input});}
+ function restore(){call(path.join(bin,'createdb'),['wave4_access'],{env});for(const x of pins.files.filter(x=>/platform.sql$|schema.sql$/.test(x.path)))sql(fs.readFileSync(path.resolve(root,x.path),'utf8'));sql("insert into public.program_catalog(program_code,name,program_type) values('holistic-foundations','Fictional source prerequisite','membership')");sql(fs.readFileSync(path.resolve(root,pins.files.find(x=>x.path.includes('production_client_lifecycle_v1')).path),'utf8'));for(const p of ['tests/wave3-allowance/current-overlay.sql','proposals/issue-61/correction.sql','proposals/issue-61/wave4/correction.sql'])sql(fs.readFileSync(path.join(root,p),'utf8'));}
+ function test(file,name,extra=[]){const r=spawnSync(process.execPath,['--test','--test-concurrency=1','--test-reporter=tap',...extra,path.join(root,file)],{cwd:root,env,encoding:'utf8',timeout:180000,maxBuffer:16*1024*1024});const entry={name,file,exitCode:r.status};for(const k of ['tests','pass','fail','skipped']){const m=r.stdout.match(new RegExp('^# '+k+' (\\d+)$','m'));if(m)entry[k]=Number(m[1]);}fs.mkdirSync(output,{recursive:true});fs.writeFileSync(path.join(output,name+'.tap'),r.stdout+(r.stderr||''));receipt.stages.push(entry);process.stdout.write(JSON.stringify(entry)+'\n');return entry;}
+ for(const stage of ['corrected']){
+ restore();
+ for(const p of ['proposals/wave5-operations/correction.sql','proposals/wave5-security/correction.sql'])sql(fs.readFileSync(path.join(root,p),'utf8'));
+ sql(require('../wave5-operations/catalog-overlay.cjs').sql());fs.mkdirSync(output,{recursive:true});
+ fs.writeFileSync(path.join(output,'fixture-acls.json'),sql("select json_build_object('defaults',(select json_agg(x) from(select * from pg_default_acl)x),'functions',(select json_agg(x) from(select oid::regprocedure::text name,proacl from pg_proc where pronamespace='private'::regnamespace and proname like 'notify_client_assignment%')x))").stdout);if(stage!=='baseline')sql(fs.readFileSync(path.join(root,'proposals/wave6-security/correction.sql'),'utf8'));
+ if(stage==='reverted')sql(fs.readFileSync(path.join(root,'proposals/wave6-security/revert.sql'),'utf8'));
+ env.RVA_WAVE5_STAGE='corrected';env.RVA_WAVE4_STAGE='corrected';
+ // Exact original source and strict assertions unchanged. Historical baseline/revert must reproduce five failures.
+ const strict=test('tests/wave5-operations/durable-operations.test.cjs','original-five-'+stage,['--test-name-pattern=STRICT']);
+ if(stage==='corrected'){if(strict.fail!==0||strict.pass!==5)throw Error('Original five not resolved');
+ test('tests/wave6-security/security.test.cjs','author-wave6-security');
+ test('tests/wave6-qa/sql-adversarial.test.cjs','independent-precise-denials');
+ test('tests/wave6-security/pending-access-identity-hypothesis.test.cjs','separate-identity-hypothesis');
+ test('tests/wave5-security/security.test.cjs','author-wave5-security');
+ test('tests/wave5-operations/concurrency.test.cjs','usage-concurrency');
+ test('tests/wave4-access/access.test.cjs','wave4-regression',['--test-skip-pattern=competing row order']);
+ test('tests/wave4-access/session-entry.test.cjs','wave4-session-regression');
+ test('tests/wave4-qa/allowance-adversarial.test.cjs','wave4-independent-regression');
+ test('tests/wave5-operations/durable-operations.test.cjs','durable-checkin-assignment',['--test-skip-pattern=STRICT|exact current check-in partial unique index and four policies']);
+ }else if(strict.fail!==5)throw Error('Historical five failure reproduction differs');
+ call(path.join(bin,'dropdb'),['wave4_access'],{env});
+ }
+ for(const x of receipt.executionInputs)if(hash(fs.readFileSync(path.join(root,x.path)))!==x.sha256)throw Error('Input changed during run: '+x.path);
+ receipt.result=receipt.stages.filter(x=>!['original-five-baseline','original-five-reverted'].includes(x.name)).every(x=>x.exitCode===0)?'COMBINED_LOCAL_SECURITY_PASS_WITH_RETAINED_HISTORICAL_FAILURES':'CORRECTED_SOURCE_FAILURE_RETAINED';process.exitCode=receipt.result.startsWith('COMBINED')?0:1;
+}catch(e){receipt.error=e.message;process.stderr.write(e.message+'\n');process.exitCode=1;}
+finally{if(started)try{call(path.join(bin,'pg_ctl'),['-D',path.join(scratch,'data'),'-m','immediate','-w','stop']);receipt.clusterStopped=true;}catch(e){receipt.cleanupError=e.message;process.exitCode=1;}if(scratch&&(!started||receipt.clusterStopped)){fs.rmSync(scratch,{recursive:true,force:true});receipt.clusterRemoved=true;}if(receipt.resourceBefore){try{receipt.resourceAfter=resource.inspect();receipt.unexpectedNewSegments=receipt.resourceAfter.segments.filter(x=>!receipt.resourceBefore.segments.some(y=>x.id===y.id&&x.key===y.key));if(receipt.unexpectedNewSegments.length){receipt.cleanupError='Unattributed new IPC retained: ownership review required';process.exitCode=1;}}catch(e){receipt.resourceAfterError=e.message;process.exitCode=1;}}if(leaseHeld){fs.unlinkSync(path.join(lock,'lease.json'));fs.rmdirSync(lock);}receipt.completedAt=new Date().toISOString();fs.mkdirSync(output,{recursive:true});fs.writeFileSync(path.join(output,'postgres-receipt.json'),JSON.stringify(receipt,null,2)+'\n');}

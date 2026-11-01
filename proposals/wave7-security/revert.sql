@@ -1,0 +1,32 @@
+-- LOCAL regression only: restores demonstrated exposure. Not a recommended production rollback.
+BEGIN;
+SET LOCAL lock_timeout='5s';
+DO $guard$ BEGIN
+ IF (SELECT md5(prosrc) IS DISTINCT FROM '2fa6fbba9ce8c6f6f9cd281236711b27' OR prosecdef IS DISTINCT FROM false OR proconfig IS DISTINCT FROM ARRAY['search_path=""']::text[] OR pg_get_userbyid(proowner) IS DISTINCT FROM 'postgres' OR proacl::text IS DISTINCT FROM '{postgres=X/postgres}' FROM pg_proc WHERE oid='private.wave6_operation_tuple_before()'::regprocedure) THEN RAISE EXCEPTION 'Wave6 revert function drift'; END IF;
+ IF NOT EXISTS(SELECT FROM pg_policy WHERE polrelid='public.client_checkins'::regclass AND polname='wave6_client_checkins_scope_select' AND polpermissive=false AND polroles=ARRAY['authenticated'::regrole]::oid[] AND polcmd='r') THEN RAISE EXCEPTION 'Wave6 revert policy drift'; END IF;
+ IF NOT EXISTS(SELECT FROM pg_policy WHERE polrelid='public.client_checkins'::regclass AND polname='wave6_client_checkins_scope_insert' AND polpermissive=false AND polroles=ARRAY['authenticated'::regrole]::oid[] AND polcmd='a') THEN RAISE EXCEPTION 'Wave6 revert policy drift'; END IF;
+ IF NOT EXISTS(SELECT FROM pg_policy WHERE polrelid='public.client_checkins'::regclass AND polname='wave6_client_checkins_scope_update' AND polpermissive=false AND polroles=ARRAY['authenticated'::regrole]::oid[] AND polcmd='w') THEN RAISE EXCEPTION 'Wave6 revert policy drift'; END IF;
+ IF NOT EXISTS(SELECT FROM pg_policy WHERE polrelid='public.client_assignments'::regclass AND polname='wave6_client_assignments_scope_select' AND polpermissive=false AND polroles=ARRAY['authenticated'::regrole]::oid[] AND polcmd='r') THEN RAISE EXCEPTION 'Wave6 revert policy drift'; END IF;
+ IF NOT EXISTS(SELECT FROM pg_policy WHERE polrelid='public.client_assignments'::regclass AND polname='wave6_client_assignments_scope_insert' AND polpermissive=false AND polroles=ARRAY['authenticated'::regrole]::oid[] AND polcmd='a') THEN RAISE EXCEPTION 'Wave6 revert policy drift'; END IF;
+ IF NOT EXISTS(SELECT FROM pg_policy WHERE polrelid='public.client_assignments'::regclass AND polname='wave6_client_assignments_scope_update' AND polpermissive=false AND polroles=ARRAY['authenticated'::regrole]::oid[] AND polcmd='w') THEN RAISE EXCEPTION 'Wave6 revert policy drift'; END IF;
+ IF NOT EXISTS(SELECT FROM pg_policy WHERE polrelid='public.household_members'::regclass AND polname='wave6_household_members_scope_select' AND polpermissive=false AND polroles=ARRAY['authenticated'::regrole]::oid[] AND polcmd='r') THEN RAISE EXCEPTION 'Wave6 revert policy drift'; END IF;
+ IF NOT EXISTS(SELECT FROM pg_policy WHERE polrelid='public.household_members'::regclass AND polname='wave6_household_members_scope_insert' AND polpermissive=false AND polroles=ARRAY['authenticated'::regrole]::oid[] AND polcmd='a') THEN RAISE EXCEPTION 'Wave6 revert policy drift'; END IF;
+ IF NOT EXISTS(SELECT FROM pg_policy WHERE polrelid='public.household_members'::regclass AND polname='wave6_household_members_scope_update' AND polpermissive=false AND polroles=ARRAY['authenticated'::regrole]::oid[] AND polcmd='w') THEN RAISE EXCEPTION 'Wave6 revert policy drift'; END IF;
+END $guard$;
+DROP TRIGGER a_wave6_operation_tuple_before ON public.client_checkins;
+GRANT TRUNCATE ON TABLE public.client_checkins TO authenticated;
+DROP TRIGGER a_wave6_operation_tuple_before ON public.client_assignments;
+GRANT TRUNCATE ON TABLE public.client_assignments TO authenticated;
+DROP TRIGGER a_wave6_operation_tuple_before ON public.household_members;
+GRANT TRUNCATE ON TABLE public.household_members TO authenticated;
+DROP POLICY wave6_household_members_scope_update ON public.household_members;
+DROP POLICY wave6_household_members_scope_insert ON public.household_members;
+DROP POLICY wave6_household_members_scope_select ON public.household_members;
+DROP POLICY wave6_client_assignments_scope_update ON public.client_assignments;
+DROP POLICY wave6_client_assignments_scope_insert ON public.client_assignments;
+DROP POLICY wave6_client_assignments_scope_select ON public.client_assignments;
+DROP POLICY wave6_client_checkins_scope_update ON public.client_checkins;
+DROP POLICY wave6_client_checkins_scope_insert ON public.client_checkins;
+DROP POLICY wave6_client_checkins_scope_select ON public.client_checkins;
+DROP FUNCTION private.wave6_operation_tuple_before();
+COMMIT;

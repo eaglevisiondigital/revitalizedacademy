@@ -1,0 +1,161 @@
+{
+  "startedAt": "2026-11-01T22:35:03.739Z",
+  "runnerSha256": "aac3b69d4dc9c1f5b9be64760818abaea3888d5d8fb470d9521d0b6c7191d4b4",
+  "scope": "CURRENT_CATALOG_FICTIONAL_LOCAL_WAVE4_PREDECESSOR",
+  "productionCalls": 0,
+  "connection": "disposable UNIX socket only; synthetic Auth GUCs; not GoTrue or PostgREST acceptance",
+  "sourceCommit": "38f086792addaa9b131cecaf261ef21f89f5ffc7",
+  "stages": [
+    {
+      "name": "original-five-baseline",
+      "file": "tests/wave5-operations/durable-operations.test.cjs",
+      "exitCode": 1,
+      "tests": 5,
+      "pass": 0,
+      "fail": 5,
+      "skipped": 0
+    }
+  ],
+  "executionInputs": [
+    {
+      "path": "tests/wave6-qa/sql-adversarial.test.cjs",
+      "sha256": "9dff37d8759a711d22c46734fe99f194dd8a1ca7d686a6541986bde74b5bfa66"
+    },
+    {
+      "path": "proposals/wave6-security/correction.sql",
+      "sha256": "d471396eeee21d4109dcc556b80548a64ce193949ebc1291f33589d698d14be9"
+    },
+    {
+      "path": "proposals/wave6-security/revert.sql",
+      "sha256": "e4fa7c9231c4d0d41f8f1ff56a6a9366a92b86b85f7fb69fb80224b09279009f"
+    },
+    {
+      "path": "tests/wave6-security/security.test.cjs",
+      "sha256": "94bd200eea999ee050708b1336af1cc11349129b31d2dead26656c5ba6f8b80c"
+    },
+    {
+      "path": "tests/wave6-security/pending-access-identity-hypothesis.test.cjs",
+      "sha256": "ac58d159012e0224c0cb8ab40c3489ed87a7c4d9196364c645926623d0a20fc0"
+    },
+    {
+      "path": "proposals/wave5-security/correction.sql",
+      "sha256": "3c3ed1f351e8ffdc687f80fdbf4455197c752e4b988c80a89ed64df39f1e55a8"
+    },
+    {
+      "path": "proposals/wave5-security/revert.sql",
+      "sha256": "083009a044252580062653de07c1af885047a9e7ae074a950d60cf5f233b5c01"
+    },
+    {
+      "path": "tests/wave5-security/security.test.cjs",
+      "sha256": "f7cc4a5b1673eb60850672f74ac3b124b9e92555c009663b833efd25fc6898a4"
+    },
+    {
+      "path": "tests/wave5-operations/concurrency.test.cjs",
+      "sha256": "1f9e6d6742bbc8979b98c84ed24ec3e17b709694af690c2da6de8cb6dbbc8007"
+    },
+    {
+      "path": "tests/wave5-operations/durable-operations.test.cjs",
+      "sha256": "c65c35c7b6b2a01f3fe388434c7683fd289de8a386f4c4291942a9fa4914e0fe"
+    },
+    {
+      "path": "tests/wave5-operations/catalog-overlay.cjs",
+      "sha256": "845f91758e2fb877d3654557a44bae0bc352ab7e4c4f81e8231be3649126cdc5"
+    },
+    {
+      "path": "tests/wave5-operations/current-operations-catalog.json",
+      "sha256": "4b582a4d4dca09d1a18fc2c7ef575ccff398dd6ffeb0d59c7f82594f4d50df02"
+    },
+    {
+      "path": "tests/wave4-access/fixture.cjs",
+      "sha256": "8c6b33bc65b714249749c4d4bf14e0085ae346b488f2c2bd317a1a4cee3c606e"
+    },
+    {
+      "path": "proposals/issue-61/correction.sql",
+      "sha256": "abceb1378897461bb4faa57fd69acddb60611132924a593c8a33cc5684136908"
+    },
+    {
+      "path": "proposals/issue-61/wave4/correction.sql",
+      "sha256": "2879f97322fc53c679e6cc83c8516795877ff7518541cc05cb3d1f3635bb89f3"
+    },
+    {
+      "path": "proposals/wave5-operations/correction.sql",
+      "sha256": "f3ed018354545d2ef677593298f3b798f0683914a79034dd69ebdcdac39cc8c0"
+    },
+    {
+      "path": "proposals/wave5-operations/revert.sql",
+      "sha256": "d28aa24f562ca97de3a80a61152d13a76580080588b2878ec630d75e6d67af22"
+    }
+  ],
+  "resourceBefore": {
+    "at": "2026-11-01T22:35:03.823Z",
+    "platform": "darwin",
+    "scope": "LOCAL_RESOURCE_METADATA_ONLY",
+    "productionCalls": 0,
+    "mutations": 0,
+    "limits": {
+      "shmmni": 32,
+      "shmseg": 8,
+      "shmmax": 4194304
+    },
+    "segments": [
+      {
+        "id": 65536,
+        "key": "0x0074b647",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 6,
+        "bytes": 56,
+        "creatorPid": 991,
+        "lastPid": 991
+      }
+    ],
+    "capacity": {
+      "limit": 32,
+      "occupied": 1,
+      "available": 31,
+      "reserve": 2,
+      "result": "READY"
+    },
+    "cleanupAuthorized": [],
+    "note": "Same UID, zero attachments, small size or dead creator do not establish RVA ownership. Unknown segments are never removed."
+  },
+  "postgres": "postgres (PostgreSQL) 17.11 (Homebrew)",
+  "error": "psql failed: ERROR:  Wave6 original trigger security drift: notify_client_assignment_completion_trigger\nCONTEXT:  PL/pgSQL function inline_code_block line 7 at RAISE\n",
+  "clusterStopped": true,
+  "clusterRemoved": true,
+  "resourceAfter": {
+    "at": "2026-11-01T22:35:09.079Z",
+    "platform": "darwin",
+    "scope": "LOCAL_RESOURCE_METADATA_ONLY",
+    "productionCalls": 0,
+    "mutations": 0,
+    "limits": {
+      "shmmni": 32,
+      "shmseg": 8,
+      "shmmax": 4194304
+    },
+    "segments": [
+      {
+        "id": 65536,
+        "key": "0x0074b647",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 6,
+        "bytes": 56,
+        "creatorPid": 991,
+        "lastPid": 991
+      }
+    ],
+    "capacity": {
+      "limit": 32,
+      "occupied": 1,
+      "available": 31,
+      "reserve": 2,
+      "result": "READY"
+    },
+    "cleanupAuthorized": [],
+    "note": "Same UID, zero attachments, small size or dead creator do not establish RVA ownership. Unknown segments are never removed."
+  },
+  "unexpectedNewSegments": [],
+  "completedAt": "2026-11-01T22:35:09.079Z"
+}

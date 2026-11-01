@@ -1,0 +1,119 @@
+TAP version 13
+# Subtest: [N02 STRICT current uncorrected] unassigned Coach cannot read another Client weekly check-in
+not ok 1 - [N02 STRICT current uncorrected] unassigned Coach cannot read another Client weekly check-in
+  ---
+  duration_ms: 74.906583
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-security/tests/wave5-operations/durable-operations.test.cjs:20:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    1 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-security/tests/wave5-operations/durable-operations.test.cjs:20:157)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+# Subtest: [N02 STRICT current uncorrected] unassigned Coach cannot read another Client assignment
+not ok 2 - [N02 STRICT current uncorrected] unassigned Coach cannot read another Client assignment
+  ---
+  duration_ms: 13.179417
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-security/tests/wave5-operations/durable-operations.test.cjs:21:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    1 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-security/tests/wave5-operations/durable-operations.test.cjs:21:303)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: [N02 STRICT current uncorrected] unassigned Coach cannot forge cross-client assignment with unrelated valid membership
+not ok 3 - [N02 STRICT current uncorrected] unassigned Coach cannot forge cross-client assignment with unrelated valid membership
+  ---
+  duration_ms: 9.422458
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-security/tests/wave5-operations/durable-operations.test.cjs:22:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  operator: 'rejects'
+  stack: |-
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-security/tests/wave5-operations/durable-operations.test.cjs:22:137)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: [F02 STRICT current uncorrected] unassigned Coach cannot read another household relationship
+not ok 4 - [F02 STRICT current uncorrected] unassigned Coach cannot read another household relationship
+  ---
+  duration_ms: 12.968834
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-security/tests/wave5-operations/durable-operations.test.cjs:25:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    1 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-security/tests/wave5-operations/durable-operations.test.cjs:25:147)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: [F02 STRICT current uncorrected] unassigned Coach cannot forge guardian relationship to valid unrelated contact
+not ok 5 - [F02 STRICT current uncorrected] unassigned Coach cannot forge guardian relationship to valid unrelated contact
+  ---
+  duration_ms: 10.09625
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-security/tests/wave5-operations/durable-operations.test.cjs:26:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    1 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-security/tests/wave5-operations/durable-operations.test.cjs:26:344)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 0
+# fail 5
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 248.918334

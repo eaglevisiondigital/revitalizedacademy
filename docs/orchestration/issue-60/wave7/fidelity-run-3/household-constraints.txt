@@ -1,0 +1,9 @@
+              conname               |                                    pg_get_constraintdef                                    | condeferrable | condeferred | convalidated
+------------------------------------+--------------------------------------------------------------------------------------------+---------------+-------------+--------------
+ households_created_by_fkey         | FOREIGN KEY (created_by) REFERENCES auth.users(id) ON DELETE SET NULL                      | f             | f           | t
+ households_household_type_check    | CHECK ((household_type = ANY (ARRAY['individual'::text, 'couple'::text, 'family'::text]))) | f             | f           | t
+ households_pkey                    | PRIMARY KEY (id)                                                                           | f             | f           | t
+ households_primary_contact_id_fkey | FOREIGN KEY (primary_contact_id) REFERENCES contacts(id) ON DELETE RESTRICT                | f             | f           | t
+ households_status_check            | CHECK ((status = ANY (ARRAY['draft'::text, 'active'::text, 'inactive'::text])))            | f             | f           | t
+(5 rows)
+

@@ -1,0 +1,341 @@
+{
+  "operation": "Trailing spaces/tabs only; no assertions/results changed; raw retained outsideGit",
+  "files": [
+    {
+      "path": "docs/orchestration/issue-60/wave7/final-combined/identity-original-reverted.tap",
+      "rawSha256": "c00f73ad7e8bbb02f7b20e588c37c3289152261ffb2f92ce7de974edac9bfa15",
+      "normalizedSha256": "953dac126ecb635e0e7621d10420029f11648a97b8a4624aa3ef887a9e67b245",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/final-combined/identity-original-reverted.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/final-combined/parent-original-baseline.tap",
+      "rawSha256": "f98f87632922a34b83dd23bc324b6dfd7e6a22ceaca76a4e83cc6906ac6e765d",
+      "normalizedSha256": "d634533837619c37e629309758490fbc2481b0310af8c7af98e61b420c750677",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/final-combined/parent-original-baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/final-combined/household-constraints.txt",
+      "rawSha256": "cb4c66e614d29199ddcc82330924c6a2d7b4a8ce1f68d5c57f3996ba735e0d26",
+      "normalizedSha256": "312afaad0cd71f5168699082ad047fcd90279d20048a7e8ff6bd36e55b11fe07",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/final-combined/household-constraints.txt"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/final-combined/original-five-baseline.tap",
+      "rawSha256": "d8cf7931f8b39a3097197e43146025d006f4d529d82511652e4f09151a463a03",
+      "normalizedSha256": "fbbd3b113fe1c1a863663aa9eb5b2bc3569a8a224cd0acffb565ec2b058d04ef",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/final-combined/original-five-baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/final-combined/identity-original-baseline.tap",
+      "rawSha256": "f3fda08bf9e16c5d8446c0dd289ea12ba479483c7d8feb98a54b9e481374dff7",
+      "normalizedSha256": "27cd2e2abadf5d22662ce532d8154cdfbdd87c7108fcef38af3e12b9dfd8a3cd",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/final-combined/identity-original-baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/final-combined/parent-original-reverted.tap",
+      "rawSha256": "f28bbb4886357dfd2cc775f11b72be1243b5f40361b139e5f147b77b1cdefbca",
+      "normalizedSha256": "e2c13f8795fc8b53224e5960c497b64c0e0f13359d0e7095c3bd296ba4038b06",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/final-combined/parent-original-reverted.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/final-combined/original-five-reverted.tap",
+      "rawSha256": "6ad5dae5bbca9feb3b77e2b4535db2ca73fff07dbb21d372db2913b3ddc74f4e",
+      "normalizedSha256": "812d81ee3080a5cfd36879d3a00b4757c50efeb8b530af175fdc786e46aee0c3",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/final-combined/original-five-reverted.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/hypotheses/separate-identity-hypothesis.tap",
+      "rawSha256": "822e8510c204dcc6a21a02b96c9cb4d3bad84531f673fa518a244514335f7cc3",
+      "normalizedSha256": "c57395a1196d8b5ca84fa1d94f63744f1084e9ee7cf6ef8097b0b3f3baf1916a",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/hypotheses/separate-identity-hypothesis.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/hypotheses/household-constraints.txt",
+      "rawSha256": "cb4c66e614d29199ddcc82330924c6a2d7b4a8ce1f68d5c57f3996ba735e0d26",
+      "normalizedSha256": "312afaad0cd71f5168699082ad047fcd90279d20048a7e8ff6bd36e55b11fe07",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/hypotheses/household-constraints.txt"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/hypotheses/original-five-baseline.tap",
+      "rawSha256": "66c07f1d0e6e0d5f70160082cbb96ddd3316eb7f5be83269740fdedf5c039b39",
+      "normalizedSha256": "52a1ce8a8108441bfad3ed2e0c3b3d233759c5a7d92d117bcc050c0d17587651",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/hypotheses/original-five-baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/hypotheses/parent-household-hypothesis.tap",
+      "rawSha256": "bfec1eb62a33b9f07b3bd0ca5d3cbfb801584ab0732d7b98605adb9b3df152c5",
+      "normalizedSha256": "09f9e60f8b1ffcda9777743ada71d2b24f9437ad826a952b654cc8640e712173",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/hypotheses/parent-household-hypothesis.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/hypotheses/original-five-reverted.tap",
+      "rawSha256": "8e2ed59e53d55a213bd46618de9e19e2cc3a806217f520f25b3f2053079baffe",
+      "normalizedSha256": "8d8d45a3d2864b5f73359f7a8dfcabca298f302202c9dd5cba5662ecb054e3ff",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/hypotheses/original-five-reverted.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/third-combined/separate-identity-hypothesis.tap",
+      "rawSha256": "d0743c99a21ef6c962f83bfbbae4fd7d9fad9d0ddad5ed84ee0a8d8d3dfc4ec0",
+      "normalizedSha256": "8d096bd6613d7a0e88090514e8fb47c757e1b0fa49c89d39000e50b1c5d4cd73",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/third-combined/separate-identity-hypothesis.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/third-combined/household-constraints.txt",
+      "rawSha256": "cb4c66e614d29199ddcc82330924c6a2d7b4a8ce1f68d5c57f3996ba735e0d26",
+      "normalizedSha256": "312afaad0cd71f5168699082ad047fcd90279d20048a7e8ff6bd36e55b11fe07",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/third-combined/household-constraints.txt"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/third-combined/original-five-baseline.tap",
+      "rawSha256": "e858b69c5e4d48f825a6abb293788082775b5f1389d1523c2227ebdccc80ab50",
+      "normalizedSha256": "77d8e73422f4832ecd406d4df5204f749fe9da055420460723c014e112b35e8c",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/third-combined/original-five-baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/third-combined/original-five-reverted.tap",
+      "rawSha256": "7055ec6a16f617df189165aeb23ad916bcb64e5e712a49afbfdf29d85216fde0",
+      "normalizedSha256": "4babe82a6d014585732cf65c3a47b4aabdc3f66eee219fdadf51dd41e8c896cc",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/third-combined/original-five-reverted.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/final-pinned/parent-original-baseline.tap",
+      "rawSha256": "304c2c365f24aef242a5c2593da234e341389de5da7b1148305c8876833f4e4a",
+      "normalizedSha256": "820702f4e942e6843575653ed91c9e7d62d706df9d822176d2995da3ff497ae8",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/final-pinned/parent-original-baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/final-pinned/household-constraints.txt",
+      "rawSha256": "cb4c66e614d29199ddcc82330924c6a2d7b4a8ce1f68d5c57f3996ba735e0d26",
+      "normalizedSha256": "312afaad0cd71f5168699082ad047fcd90279d20048a7e8ff6bd36e55b11fe07",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/final-pinned/household-constraints.txt"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/final-pinned/original-five-baseline.tap",
+      "rawSha256": "766dd640c63abd79115e0c75253554ecd994160247258ba6284e904def4e2773",
+      "normalizedSha256": "b1165dcd5b3478c44a6b2120462c6dcf8dab9168423dd5d785dc20b9ee0f93a2",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/final-pinned/original-five-baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/final-pinned/identity-original-baseline.tap",
+      "rawSha256": "68929c1d9c3ea3e5fa1c04801e6a5da459bad96525e208576d539252766490d6",
+      "normalizedSha256": "4e7f91ac501212229a1b330887590abfb7337f53f30a895ab9c94624d8a9c9ff",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/final-pinned/identity-original-baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/final-pinned/access-household-original-baseline.tap",
+      "rawSha256": "5b9dda731d5c48f5b88f14d07c298dd6b227eb3c96018797d3b3e69285347471",
+      "normalizedSha256": "de11f4f6983da58ed7e9df8374e4b632201b0811f75ee88a8d943e14abbbbddc",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/final-pinned/access-household-original-baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/identity-corrected/identity-original-reverted.tap",
+      "rawSha256": "6f3269e65ad20cb8cef127e4eebf74498d1bee926edf5681880a09662b45d8c3",
+      "normalizedSha256": "625aad5e0b0df1c39443b09d307b2821dce7263403775704513b2e6882f6549c",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/identity-corrected/identity-original-reverted.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/identity-corrected/author-wave6-security.tap",
+      "rawSha256": "94e5c23bd30308dcb6afa523650ee23a1f68ef8f43a5104aef3660491e9b2e82",
+      "normalizedSha256": "b749922c49ae2211b7627cea2e96a36f6ded91c3ffbd8b5b266b03162757a29c",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/identity-corrected/author-wave6-security.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/identity-corrected/parent-original-baseline.tap",
+      "rawSha256": "78f1fa0ae9a99b121ba730cce74b39f8a3230255163d9c480e1556cccf9a8d39",
+      "normalizedSha256": "4528efd5bec157856aec789e794e0611c6f7205caa41d3977233950cf6587eb7",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/identity-corrected/parent-original-baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/identity-corrected/household-constraints.txt",
+      "rawSha256": "cb4c66e614d29199ddcc82330924c6a2d7b4a8ce1f68d5c57f3996ba735e0d26",
+      "normalizedSha256": "312afaad0cd71f5168699082ad047fcd90279d20048a7e8ff6bd36e55b11fe07",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/identity-corrected/household-constraints.txt"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/identity-corrected/original-five-baseline.tap",
+      "rawSha256": "861d101de382d09ca854f589cb199269b97c6ffa1edbf43632e70c417b8bc5e6",
+      "normalizedSha256": "0180283c59e50735dc2283b2c5ca89a12d940c251939cdc98298c0909c71dc74",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/identity-corrected/original-five-baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/identity-corrected/identity-original-baseline.tap",
+      "rawSha256": "97040abe94e4f4d0729806b2aa38da4c58d86c91aeebbc10921ed8b63ad749cb",
+      "normalizedSha256": "d11bcfc4a0410ec33eb5c5a2a8684bf404fbedaf9ede0296b1b0d8d1b1be1f1c",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/identity-corrected/identity-original-baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/identity-corrected/parent-original-reverted.tap",
+      "rawSha256": "179615fce4a829b1413e9f50b22fa5ea300b4bfcbee3e274d0a45f13b3d5b14e",
+      "normalizedSha256": "fca3bb0808de739bba6c60cfa6138b7c176a6587a072276767f317183e220d86",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/identity-corrected/parent-original-reverted.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/identity-corrected/original-five-reverted.tap",
+      "rawSha256": "aae365cae7341ed23deb0ec8afe32739afeff1b94cfe3b1602ab34c6c5356efa",
+      "normalizedSha256": "394fe19064e671bc6c89db4dc9e61cc1c01478069059e262e508ebcf12f636cb",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/identity-corrected/original-five-reverted.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/first-combined/household-constraints.txt",
+      "rawSha256": "e1ac92b93b13c43be4e9eea2c484ff6a1482e465bc3dc1eb19912fd8e274e38c",
+      "normalizedSha256": "dff004e8cf5dfd0e36179d9984ab39546637150eb8c1fb8b3ff8d1789c08463c",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/first-combined/household-constraints.txt"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/first-combined/original-five-baseline.tap",
+      "rawSha256": "bb8569f0e23cb8242f848b192c8438a8517b3d12e1f0054076ed922cc1cfbd54",
+      "normalizedSha256": "9aef9089b828a4d5400528abf8d4cedfb5547107eefbc25b0010835b500be44b",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/first-combined/original-five-baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/second-combined/household-constraints.txt",
+      "rawSha256": "cb4c66e614d29199ddcc82330924c6a2d7b4a8ce1f68d5c57f3996ba735e0d26",
+      "normalizedSha256": "312afaad0cd71f5168699082ad047fcd90279d20048a7e8ff6bd36e55b11fe07",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/second-combined/household-constraints.txt"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/second-combined/original-five-baseline.tap",
+      "rawSha256": "7733b34d8c7b01217bb12722969a283ced724722e7e40fba64c584e82e183cbd",
+      "normalizedSha256": "543f4d072263b7c1d8bd9803d3d6d58d11b5a37c5bbe87abd1008c4781285cc3",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/second-combined/original-five-baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/schema-diagnosis/household-constraints.txt",
+      "rawSha256": "4fb28c53dc98a9dbdf94a64f732299352b0170c850adc7d7ecac3f6d7efbc4a0",
+      "normalizedSha256": "4125a565d551205236d6b5ed61ece361867794350020d8747539fa7d361a49d7",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/schema-diagnosis/household-constraints.txt"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/schema-diagnosis/original-five-baseline.tap",
+      "rawSha256": "22a6e5475abda01a4636d781ed9dfff9b3c83d5f9fc4857cd69544334b4975ae",
+      "normalizedSha256": "92cf6f64dd0eab9c9305c68af07975efe07230551350dd3fdd537994e5dc9862",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/schema-diagnosis/original-five-baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/initial-exact/original-five-baseline.tap",
+      "rawSha256": "dbcab83b1b391b4583d9506dc83edb798011fb027e4220a72c3cc58a814257c8",
+      "normalizedSha256": "b66c545145351bca235ed84a0832d8e3a718d06aeff62e693e3507f67e2dad4b",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/initial-exact/original-five-baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/final-pinned-2/identity-original-reverted.tap",
+      "rawSha256": "1d8f487ae50c13a70297dcd48063bc12d5e743c16f4630849873e799897a4030",
+      "normalizedSha256": "3fca317f3a18b362a84cbca1af31e17b4490d50b27b83545f9cc2e1040cbc567",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/final-pinned-2/identity-original-reverted.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/final-pinned-2/access-household-original-reverted.tap",
+      "rawSha256": "92ce868cd9de4be3bb09c71b1aa2fe4ba12ad4f9a76f0589ca4e21a5d8a8dab4",
+      "normalizedSha256": "cb1d726cf0cb40dd449c6a473d2bd4fde223fc5f74c0610874a62742257f600b",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/final-pinned-2/access-household-original-reverted.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/final-pinned-2/parent-original-baseline.tap",
+      "rawSha256": "9d3ab3138d71d9c399c0f0f03eec0df9485a6787b8ab9c276d322b52c196c57d",
+      "normalizedSha256": "a8d4b75d4f2a6a180bc65a3bd4a443fd93258ab063f52221600459cae6e3b330",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/final-pinned-2/parent-original-baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/final-pinned-2/household-constraints.txt",
+      "rawSha256": "cb4c66e614d29199ddcc82330924c6a2d7b4a8ce1f68d5c57f3996ba735e0d26",
+      "normalizedSha256": "312afaad0cd71f5168699082ad047fcd90279d20048a7e8ff6bd36e55b11fe07",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/final-pinned-2/household-constraints.txt"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/final-pinned-2/original-five-baseline.tap",
+      "rawSha256": "156759c68f7b38bdc84c770674eec9383d27ad58abdaa885d9226e1e6d9074ab",
+      "normalizedSha256": "6b5b1152f0f191683daa586c4888ae05f7a83ff5e1105941c9ac2ea3b630e476",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/final-pinned-2/original-five-baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/final-pinned-2/identity-original-baseline.tap",
+      "rawSha256": "f6dd2e6079eb54b5f75373a931408e6953376690f8696ab771e1943ea808a2be",
+      "normalizedSha256": "9751aad2586addbd4ed71454fb3c98158a4deaff2b3a1abd008f6209c537eb6f",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/final-pinned-2/identity-original-baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/final-pinned-2/access-household-original-baseline.tap",
+      "rawSha256": "ea719da25408261e4a85b308c6477e64e3b91af68fcb72ca1d12fc5b09b58946",
+      "normalizedSha256": "204a5ee5cc1fb16aa2c9a88c94697c41bd033c98340cf2a2425b88eddd1c78aa",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/final-pinned-2/access-household-original-baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/final-pinned-2/parent-original-reverted.tap",
+      "rawSha256": "b198c22c21ae05c3e6f21bcd9e14985558b4d69753bf2638f15194bb7c4b659c",
+      "normalizedSha256": "2c37e6b7e9ab4ede6f72f6d0b6be68babe91729c1b7a65cea46845f6a7ce3f1a",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/final-pinned-2/parent-original-reverted.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/final-pinned-2/original-five-reverted.tap",
+      "rawSha256": "51423c788edb55164018571622cad1ac19ba0c61a875a2b0183a20c052d4b893",
+      "normalizedSha256": "f110436886eb68bf4c662f0f10273e5e1710dcad972def05e3201eacf90fe36c",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/final-pinned-2/original-five-reverted.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/access-household-probe/identity-original-reverted.tap",
+      "rawSha256": "3769429c44de3a13bacd6f245d1abe512e9ff476ae6e45cf3c42ee44c78964a5",
+      "normalizedSha256": "6da91c964505fb6cd183fc1e053d5d74bd8aebefb287ed0102972643e80a624e",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/access-household-probe/identity-original-reverted.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/access-household-probe/parent-original-baseline.tap",
+      "rawSha256": "6247855878576d64a4c0317ee4be98775ce8d4e89a617d8488cb0d619ede6187",
+      "normalizedSha256": "2f7880a2a0c52ccdf9d3c03856f1b6f4c0b3dbade4284b73b4086cad2f4ebe7c",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/access-household-probe/parent-original-baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/access-household-probe/household-constraints.txt",
+      "rawSha256": "cb4c66e614d29199ddcc82330924c6a2d7b4a8ce1f68d5c57f3996ba735e0d26",
+      "normalizedSha256": "312afaad0cd71f5168699082ad047fcd90279d20048a7e8ff6bd36e55b11fe07",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/access-household-probe/household-constraints.txt"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/access-household-probe/original-five-baseline.tap",
+      "rawSha256": "b901e1a6cff1148d2559ebebb9822138d7f2c6f01da345e963aff96642ab88c7",
+      "normalizedSha256": "8a8566740eac79c245abec3cbf443eb2bceb23fd169f9c34d69f5bc092666feb",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/access-household-probe/original-five-baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/access-household-probe/identity-original-baseline.tap",
+      "rawSha256": "f36d1830618702f85820afadd4c25f4f2beda0e35d5871bb46f168a70a8aedcf",
+      "normalizedSha256": "224ddc89245d24bcf8cdb5c93045711318bfbcfef679641664425efc9c4f50df",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/access-household-probe/identity-original-baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/access-household-probe/parent-original-reverted.tap",
+      "rawSha256": "e5ca2ccc0223130d90da68d9a61fb95a877b207e3f5a43b70ee3aecac0310118",
+      "normalizedSha256": "fda1bfe6ed0c42730da2375176c1a7555301abf890dc29a39313e02a67c7d12c",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/access-household-probe/parent-original-reverted.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/access-household-probe/access-household-hypothesis.tap",
+      "rawSha256": "cf3212554b18ee5cb7646b7e4fc4c1696e44ae6c624ef55c9bb94a36085b6850",
+      "normalizedSha256": "d1e3567fe68c1a3cf0268355f060dffb58efb7bb11497e240b7e9cc97b85415b",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/access-household-probe/access-household-hypothesis.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/access-household-probe/original-five-reverted.tap",
+      "rawSha256": "93da70d463c4ac24a08a44aed901cae70bcf7a5245cfc31705bd855bc3a145c4",
+      "normalizedSha256": "2bce3b2c0023ca53477b86ef83e8bed1fa39aa6a6887adec26309a193ef414c3",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/access-household-probe/original-five-reverted.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/fidelity-run-2/original-five-baseline.tap",
+      "rawSha256": "7c5251fc06ed788085675a387661fc9012fab7c49013ad02a695c8bb60871e34",
+      "normalizedSha256": "3adbb4a69fc63ea83c2b9436bd3429056693ec67aa2d276568d353e61611a966",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/fidelity-run-2/original-five-baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/fidelity-run-3/household-constraints.txt",
+      "rawSha256": "e1ac92b93b13c43be4e9eea2c484ff6a1482e465bc3dc1eb19912fd8e274e38c",
+      "normalizedSha256": "dff004e8cf5dfd0e36179d9984ab39546637150eb8c1fb8b3ff8d1789c08463c",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/fidelity-run-3/household-constraints.txt"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/fidelity-run-3/original-five-baseline.tap",
+      "rawSha256": "0fe90ec9ce7be111067a1f4d182f00448015dd85cf960a242dbd2df2d59e3e91",
+      "normalizedSha256": "f96c99e922773e621f5a96995c53f0a62e9acccf9349557a4f6076e4f2fe6b29",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/fidelity-run-3/original-five-baseline.tap"
+    }
+  ]
+}

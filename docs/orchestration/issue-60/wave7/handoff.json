@@ -1,0 +1,67 @@
+{
+  "base": "38f086792addaa9b131cecaf261ef21f89f5ffc7",
+  "branch": "codex/rva-wave7-security-20261101",
+  "worktree": "academy-wave7-security",
+  "lane": "A executable PostgreSQL and Client/Coach/Family isolation",
+  "status": "LOCAL_SQL_EXECUTED_WITH_IDENTITY_PROVISIONING_COMPATIBILITY_HOLD",
+  "finalReceipt": "docs/orchestration/issue-60/wave7/final-pinned-2/postgres-receipt.json",
+  "actualPG": {
+    "total": 217,
+    "pass": 198,
+    "fail": 19,
+    "historicalBaselineRevertFailures": 18,
+    "intentionalCompatibilityFailures": 1,
+    "correctedPass": 194,
+    "correctedFail": 1
+  },
+  "originalFive": {
+    "baselinePass": 0,
+    "baselineFail": 5,
+    "correctedPass": 5,
+    "correctedFail": 0,
+    "revertedPass": 0,
+    "revertedFail": 5
+  },
+  "newSourceBoundaryProbes": {
+    "baselineFail": 4,
+    "correctedPass": 4,
+    "revertedFail": 4
+  },
+  "sourceTests": {
+    "pass": 3
+  },
+  "resourceRecovery": "SAFE_DISPOSABLE_EXECUTION_VERIFIED; former orphan disappearance unconfirmed",
+  "persistentPid": 991,
+  "unexpectedNewSegments": [],
+  "clusterStopped": true,
+  "clusterRemoved": true,
+  "exclusivePgSlot": "RELEASED",
+  "productionQueries": 0,
+  "productionWrites": 0,
+  "sourcePushes": 0,
+  "alex": "PAUSED_NO_PRIVATE_READS",
+  "installationReady": false,
+  "securityHolds": [
+    "Direct nonnull-user/household CA INSERT requires reviewed audited provisioning workflow",
+    "Managed Auth/JWT session guarantees not verified through synthetic GUCs",
+    "Paid Client, Support/financial and family policy compatibility remain held"
+  ],
+  "newSql": [
+    {
+      "path": "proposals/wave7-security/correction.sql",
+      "sha256": "4bc3cbef3c6b28e22b2d834ec6d2ba904281d16baffda7b391aaa45af5fa3a9f"
+    },
+    {
+      "path": "proposals/wave7-security/identity-household-revert.sql",
+      "sha256": "79ae86437f473628652f5dad1321515f230f93d17157df154c25d59ea1a288c9"
+    },
+    {
+      "path": "proposals/wave7-security/identity-household.sql",
+      "sha256": "ed92e3db3baca09a7ac901050b9d4e733d252bd89aae8187d04e41a9b9ccc610"
+    },
+    {
+      "path": "proposals/wave7-security/revert.sql",
+      "sha256": "e4fa7c9231c4d0d41f8f1ff56a6a9366a92b86b85f7fb69fb80224b09279009f"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: [N02 STRICT current uncorrected] unassigned Coach cannot read another Client weekly check-in
+ok 1 - [N02 STRICT current uncorrected] unassigned Coach cannot read another Client weekly check-in
+  ---
+  duration_ms: 81.632666
+  type: 'test'
+  ...
+# Subtest: [N02 STRICT current uncorrected] unassigned Coach cannot read another Client assignment
+ok 2 - [N02 STRICT current uncorrected] unassigned Coach cannot read another Client assignment
+  ---
+  duration_ms: 15.174
+  type: 'test'
+  ...
+# Subtest: [N02 STRICT current uncorrected] unassigned Coach cannot forge cross-client assignment with unrelated valid membership
+ok 3 - [N02 STRICT current uncorrected] unassigned Coach cannot forge cross-client assignment with unrelated valid membership
+  ---
+  duration_ms: 12.616583
+  type: 'test'
+  ...
+# Subtest: [F02 STRICT current uncorrected] unassigned Coach cannot read another household relationship
+ok 4 - [F02 STRICT current uncorrected] unassigned Coach cannot read another household relationship
+  ---
+  duration_ms: 19.623166
+  type: 'test'
+  ...
+# Subtest: [F02 STRICT current uncorrected] unassigned Coach cannot forge guardian relationship to valid unrelated contact
+ok 5 - [F02 STRICT current uncorrected] unassigned Coach cannot forge guardian relationship to valid unrelated contact
+  ---
+  duration_ms: 16.240458
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 220.481875

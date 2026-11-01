@@ -1,0 +1,76 @@
+TAP version 13
+# Subtest: [C02 durable] two real backend submitted INSERTs race; one commit, one23505, one activity
+ok 1 - [C02 durable] two real backend submitted INSERTs race; one commit, one23505, one activity
+  ---
+  duration_ms: 135.558791
+  type: 'test'
+  ...
+# Subtest: [C02 durable] committed unknown-response readback returns same UUID without new write
+ok 2 - [C02 durable] committed unknown-response readback returns same UUID without new write
+  ---
+  duration_ms: 22.371416
+  type: 'test'
+  ...
+# Subtest: [C02 rollback] aborted request rolls back check-in and trigger side effects before explicit retry
+ok 3 - [C02 rollback] aborted request rolls back check-in and trigger side effects before explicit retry
+  ---
+  duration_ms: 26.905917
+  type: 'test'
+  ...
+# Subtest: [C02 current hold] Client cannot bypass actual payment predicate on direct check-in write/read
+ok 4 - [C02 current hold] Client cannot bypass actual payment predicate on direct check-in write/read
+  ---
+  duration_ms: 15.12175
+  type: 'test'
+  ...
+# Subtest: [C02 minimal read] another Client cannot read submitted identity or overwrite another check-in
+ok 5 - [C02 minimal read] another Client cannot read submitted identity or overwrite another check-in
+  ---
+  duration_ms: 23.743
+  type: 'test'
+  ...
+# Subtest: [C02 durable] period/template/client keys are independent and do not content-deduplicate legitimate distinct submissions
+not ok 6 - [C02 durable] period/template/client keys are independent and do not content-deduplicate legitimate distinct submissions
+  ---
+  duration_ms: 13.485666
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-security/tests/wave5-operations/durable-operations.test.cjs:16:1'
+  failureType: 'testCodeFailure'
+  error: 'Check-in actor mismatch'
+  code: '42501'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async actor (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-security/tests/wave4-access/fixture.cjs:14:190)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-security/tests/wave5-operations/durable-operations.test.cjs:16:156)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: [C02 existing semantics] draft remains outside submitted unique key and is never overwritten
+ok 7 - [C02 existing semantics] draft remains outside submitted unique key and is never overwritten
+  ---
+  duration_ms: 14.529958
+  type: 'test'
+  ...
+# Subtest: [C02 assignment update] replaying a completed assignment cannot duplicate completion notification
+ok 8 - [C02 assignment update] replaying a completed assignment cannot duplicate completion notification
+  ---
+  duration_ms: 37.1145
+  type: 'test'
+  ...
+# Subtest: [F02 current hold] Client cannot read or mutate unrelated household member
+ok 9 - [F02 current hold] Client cannot read or mutate unrelated household member
+  ---
+  duration_ms: 17.0875
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 8
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 395.043375
