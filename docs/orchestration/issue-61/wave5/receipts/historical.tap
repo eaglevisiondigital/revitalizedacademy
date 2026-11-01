@@ -8,9 +8,9 @@ not ok 1 - [historical direct three: retained Wave4 correction] SELECT usage
   failureType: 'testCodeFailure'
   error: |-
     Expected values to be strictly equal:
-    
+
     1 !== 0
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected: 0
@@ -32,9 +32,9 @@ not ok 2 - [historical direct three: retained Wave4 correction] UPDATE usage
   failureType: 'testCodeFailure'
   error: |-
     Expected values to be strictly equal:
-    
+
     1 !== 0
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected: 0
@@ -56,9 +56,9 @@ not ok 3 - [historical direct three: retained Wave4 correction] UPDATE allowance
   failureType: 'testCodeFailure'
   error: |-
     Expected values to be strictly equal:
-    
+
     1 !== 0
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected: 0

@@ -242,9 +242,9 @@ not ok 40 - [guard] accepted private boolean privilege drift fails closed before
   failureType: 'testCodeFailure'
   error: |-
     The input did not match the regular expression /accepted boolean dependency drift/. Input:
-    
+
     'error: Wave5 original policy drift: client_access'
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected:

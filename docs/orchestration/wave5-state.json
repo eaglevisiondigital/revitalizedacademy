@@ -27,7 +27,7 @@
         "tests/wave5-security/",
         "docs/orchestration/issue-61/wave5/"
       ],
-      "status": "AUTHOR_COMPLETE_QA_PENDING",
+      "status": "RETURNED_LOCAL_CHECKPOINT_COMPLETE",
       "dispatch": {
         "kind": "native-spawn-result",
         "taskName": "/root/wave5_security"
@@ -47,7 +47,7 @@
         "docs/orchestration/issue-54/wave5/",
         "member/member110.js"
       ],
-      "status": "AUTHOR_COMPLETE_QA_PENDING",
+      "status": "RETURNED_LOCAL_CHECKPOINT_COMPLETE",
       "dispatch": {
         "kind": "native-spawn-result",
         "taskName": "/root/wave5_operations"
@@ -69,7 +69,7 @@
         "tools/affiliate-share-preview/index.html",
         "tools/wave5-fixture-providers.cjs"
       ],
-      "status": "AUTHOR_COMPLETE_QA_ACTIVE",
+      "status": "RETURNED_LOCAL_CHECKPOINT_COMPLETE",
       "dispatch": {
         "kind": "native-spawn-result",
         "taskName": "/root/wave5_affiliate"
@@ -87,12 +87,14 @@
         "tests/wave5-qa/",
         "docs/orchestration/issue-56/wave5/"
       ],
-      "status": "ACTIVE",
+      "status": "RETURNED_LOCAL_CHECKPOINT_COMPLETE",
       "dispatch": {
         "kind": "native-spawn-result",
         "taskName": "/root/wave5_independent_qa"
       },
-      "sourceBeforeMasterGate": "8a0642eb51887894d5ff3d81023dd92293dcfcbf"
+      "sourceBeforeMasterGate": "8a0642eb51887894d5ff3d81023dd92293dcfcbf",
+      "implementationSha": "239df4075f87bff4db25872774514f9ff8113fa4",
+      "testedSource": "366125cc311072053b4a898f0181a97c709af8ee"
     }
   ],
   "nativeObservation": {
@@ -117,5 +119,31 @@
   ],
   "masterRepair": "cacdd727244e36cf632d9790c036318fc6ccb385",
   "contracts": "docs/RVA_WAVE5_CONTRACTS.md",
-  "combinedPostgresVerification": "BLOCKED_LOCAL_SYSV_SHARED_MEMORY_LIMIT; no unknown resource cleanup"
+  "combinedPostgresVerification": "BLOCKED_LOCAL_SYSV_SHARED_MEMORY_LIMIT; no unknown resource cleanup",
+  "agentsRunning": false,
+  "independentResults": {
+    "nodeDomHttpPass": 272,
+    "browserPass": 14,
+    "wholePackages": {
+      "PASS": 1,
+      "FAIL": 3,
+      "BLOCKED": 42,
+      "NOT_RUN": 11
+    },
+    "O01": "PASS_LOCAL_STRUCTURAL_ONLY",
+    "actualUnresolvedScopeFailures": 5,
+    "combinedPostgres": "NOT_RUN_RESOURCE_BLOCKED",
+    "identityForgeryHypothesis": "NOT_RUN",
+    "testInputHashesVerified": 27
+  },
+  "sourcePreservation": {
+    "protectedFilesCompared": 281,
+    "mismatches": 0,
+    "all101RequirementsPreserved": true,
+    "tenDetailGroupsPreserved": true,
+    "original57DefinitionsPreserved": true
+  },
+  "pr59ObservedHead": "fad394ef683b711ba34866ec614bed71a26cee93",
+  "pushed": false,
+  "productionRelease": "NO_GO"
 }

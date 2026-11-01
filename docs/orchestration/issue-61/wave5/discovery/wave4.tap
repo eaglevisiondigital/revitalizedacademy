@@ -26,9 +26,9 @@ not ok 4 - [new relationship scope] unassigned Coach cannot SELECT unrelated mem
   failureType: 'testCodeFailure'
   error: |-
     Expected values to be strictly equal:
-    
+
     1 !== 0
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected: 0
@@ -49,9 +49,9 @@ not ok 5 - [new relationship scope] unassigned Coach cannot SELECT unrelated cli
   failureType: 'testCodeFailure'
   error: |-
     Expected values to be strictly equal:
-    
+
     1 !== 0
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected: 0
@@ -72,9 +72,9 @@ not ok 6 - [new escalation] unassigned Coach cannot appoint self and gain usage 
   failureType: 'testCodeFailure'
   error: |-
     Expected values to be strictly equal:
-    
+
     1 !== 0
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected: 0
@@ -96,9 +96,9 @@ not ok 7 - [new forged relation] assigned Coach cannot link own contact to unrel
   failureType: 'testCodeFailure'
   error: |-
     Expected values to be strictly equal:
-    
+
     1 !== 0
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected: 0

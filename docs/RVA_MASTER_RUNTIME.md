@@ -73,3 +73,7 @@ See [RVA_WAVE3_STATUS_2026-11-01.md](RVA_WAVE3_STATUS_2026-11-01.md), [RVA_WAVE3
 ## Wave 4 local checkpoint — November 1, 2026
 
 See `RVA_WAVE4_STATUS_2026-11-01.md` and `orchestration/wave4-state.json` for actual author/QA sources, worktrees, tests and remaining gates. All101requirement groups, ten source-detail groups and ten workstreams remain unchanged. Alex is paused. Full57 packages remain0PASS/45BLOCKED/12NOT_RUN; no production or financial activation, source push or protected client work. PR59 remains draft/unmerged.
+
+## Wave 5 local checkpoint — November 1, 2026
+
+Actual isolated lane implementations and independent QA are recorded in [Wave 5 status](RVA_WAVE5_STATUS_2026-11-01.md) and `orchestration/wave5-state.json`. All 101 requirements, ten source-detail groups and ten workstreams remain; missing source/business policy is not invented. Five current-schema fictional isolation failures and final combined PostgreSQL verification remain blocking. One O01 structural PASS is not business acceptance. PR #59 stays draft/unpushed for this checkpoint; production and financial activation are NO-GO. Alex remains paused.

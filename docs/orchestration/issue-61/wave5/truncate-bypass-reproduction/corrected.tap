@@ -248,9 +248,9 @@ not ok 41 - [privilege escalation] unassigned Coach cannot TRUNCATE usage throug
   failureType: 'testCodeFailure'
   error: |-
     RLS is not sufficient: authenticated TRUNCATE must be revoked
-    
+
     false !== true
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected: true

@@ -1,0 +1,132 @@
+{
+  "operation": "Generated TAP trailing horizontal whitespace only; assertions/results unchanged",
+  "authorCommit": "5591c1b00f9b391c7c9cbb0980b490d2d9b827a6",
+  "files": [
+    {
+      "path": "docs/orchestration/issue-61/wave5/discovery/wave4.tap",
+      "rawSha256": "d407cd4eef95c1d949a33734b5e7e0edf0d47d7cba9c46be4844dfa5686d8949",
+      "normalizedSha256": "93d856339c070b58fae4e6a595b6734be016aa58d11b4e94f5806b48b929793f",
+      "rawExternalCopy": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave5/raw-author-logs/docs/orchestration/issue-61/wave5/discovery/wave4.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-61/wave5/first-recursive-subquery-comparison/historical.tap",
+      "rawSha256": "a9cbe6b37709211885618fd581f43878e2ecdfd2005bfe0461984b7ee064b590",
+      "normalizedSha256": "340bd34058e7974733e7e8f1b6e6c84a9458761dd573a7473d586fb9e18c1c09",
+      "rawExternalCopy": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave5/raw-author-logs/docs/orchestration/issue-61/wave5/first-recursive-subquery-comparison/historical.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-61/wave5/first-recursive-subquery-comparison/reverted.tap",
+      "rawSha256": "95178f6a4b47d2778a99ecc0d6ec6e658f96fe491d9bcd652a9b656471c3207c",
+      "normalizedSha256": "b41f427731d4d71d0649940445cd807e889202a5c55a8ab0c8ee3e77c3fe5477",
+      "rawExternalCopy": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave5/raw-author-logs/docs/orchestration/issue-61/wave5/first-recursive-subquery-comparison/reverted.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-61/wave5/first-recursive-subquery-comparison/wave4.tap",
+      "rawSha256": "513022106836256e46374f6cbb06e572bf375c9a440f3e0539ff73ba7fa4961d",
+      "normalizedSha256": "0675d350e149d3e8fb7ea9658f3933302d2f01ea4450aa41f432035c8edd312b",
+      "rawExternalCopy": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave5/raw-author-logs/docs/orchestration/issue-61/wave5/first-recursive-subquery-comparison/wave4.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-61/wave5/guard-probe-ordering-failure/corrected.tap",
+      "rawSha256": "04414037ff428812a4e0df78906e4f0917dc6c84421a27bacc2736fed2e44db5",
+      "normalizedSha256": "74750562392a1dbe8ac5935668b9122bb30a8ba296b086646568d900dd8fd120",
+      "rawExternalCopy": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave5/raw-author-logs/docs/orchestration/issue-61/wave5/guard-probe-ordering-failure/corrected.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-61/wave5/guard-probe-ordering-failure/historical.tap",
+      "rawSha256": "0e21d34b3639f631215b53a3c69bdf7f5c51ff0eef3ddc0ed1554d855d0b500c",
+      "normalizedSha256": "72c80315181e1a3aeeeaa611674e24c66779fb0a2bc3181e80e1590eeae22a63",
+      "rawExternalCopy": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave5/raw-author-logs/docs/orchestration/issue-61/wave5/guard-probe-ordering-failure/historical.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-61/wave5/guard-probe-ordering-failure/reverted.tap",
+      "rawSha256": "f8438e93e02fcf083b88180b8c47e2af689f2f410196cf1958941fc05f27365a",
+      "normalizedSha256": "6493f79141f5fda23d7647223f97bb9d3d3f77db74f5417186e38ba192b2e8d6",
+      "rawExternalCopy": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave5/raw-author-logs/docs/orchestration/issue-61/wave5/guard-probe-ordering-failure/reverted.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-61/wave5/guard-probe-ordering-failure/wave4.tap",
+      "rawSha256": "7087a41c733327015af5bea2749e3032f2154b4c2b547559a9685cadf348f69b",
+      "normalizedSha256": "42114255c29c843f6513bce71ddbe27ec99de56051d38839f134b19bb5e42459",
+      "rawExternalCopy": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave5/raw-author-logs/docs/orchestration/issue-61/wave5/guard-probe-ordering-failure/wave4.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-61/wave5/paid-hold-fixture-positive-failure/historical.tap",
+      "rawSha256": "83605ab889f485707b781e0f187df22221bcfd9227c2dd24d43fbb47880303b9",
+      "normalizedSha256": "856ba198981f6036a7a65dc1d7e06d25bd5fab7aed9632bb5ea9136b6716d385",
+      "rawExternalCopy": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave5/raw-author-logs/docs/orchestration/issue-61/wave5/paid-hold-fixture-positive-failure/historical.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-61/wave5/paid-hold-fixture-positive-failure/reverted.tap",
+      "rawSha256": "7bdd3a5531fd209eec310008972eed7da9349d4026cb10d71d7ac39a31013a92",
+      "normalizedSha256": "cc37a6df8feba98e40ecd838ade9343e244fb087f0d9db671dd5154c3e2a0861",
+      "rawExternalCopy": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave5/raw-author-logs/docs/orchestration/issue-61/wave5/paid-hold-fixture-positive-failure/reverted.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-61/wave5/paid-hold-fixture-positive-failure/wave4.tap",
+      "rawSha256": "a4e05bf7359c7a9a216df19e7d6e8a761bc40890108c12ef1ea5b0d7896f45d8",
+      "normalizedSha256": "1ad46a9275b43c4a4bebf486356b069503198fc2017565271bf4110a9a5b2233",
+      "rawExternalCopy": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave5/raw-author-logs/docs/orchestration/issue-61/wave5/paid-hold-fixture-positive-failure/wave4.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-61/wave5/receipts/historical.tap",
+      "rawSha256": "0bf50e67dff424f6263e1bc94d192082d42acf15e0702597f59adb36e0006c90",
+      "normalizedSha256": "a15b649f90730df539dbbd68b2f1d484be375fd156771e78e5dd83f5feea474e",
+      "rawExternalCopy": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave5/raw-author-logs/docs/orchestration/issue-61/wave5/receipts/historical.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-61/wave5/receipts/reverted.tap",
+      "rawSha256": "000d08ac1fbd654f1a257fa750b35178da78348662f1a7057d43a5194fabbd6e",
+      "normalizedSha256": "a182376ecaecd28237963b1f8258eefd2761c0eb9135cbf974c7eea836167520",
+      "rawExternalCopy": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave5/raw-author-logs/docs/orchestration/issue-61/wave5/receipts/reverted.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-61/wave5/receipts/wave4.tap",
+      "rawSha256": "87a3c36dd627995b9fd67992f4e2561ddc6c88c8808a9eefd4aed09262f22e6f",
+      "normalizedSha256": "e0cdad1a0bbda7a4d766394a4aeaa30e7ea4c8317ac9976e8c861cff7c0d6cd0",
+      "rawExternalCopy": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave5/raw-author-logs/docs/orchestration/issue-61/wave5/receipts/wave4.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-61/wave5/six-policy-checkpoint/historical.tap",
+      "rawSha256": "d0566e5359983a26673f40578077a96afc75c5c80dd15473a75a9115c145afa6",
+      "normalizedSha256": "855b84857a0e9c934045f04119fcfbd2c6a27d5a7d91b01ebb0e2251d23b26bd",
+      "rawExternalCopy": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave5/raw-author-logs/docs/orchestration/issue-61/wave5/six-policy-checkpoint/historical.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-61/wave5/six-policy-checkpoint/reverted.tap",
+      "rawSha256": "27937fc7d8a5c626660fffedc95e69e69f52f4d4d972bac27341157be6006af3",
+      "normalizedSha256": "28309ad12b9631f295c8ce4b351b28247d38c07dd8cfc74bdaeff49d085ee88f",
+      "rawExternalCopy": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave5/raw-author-logs/docs/orchestration/issue-61/wave5/six-policy-checkpoint/reverted.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-61/wave5/six-policy-checkpoint/wave4.tap",
+      "rawSha256": "91223e8c55c9c088ec4a45adf1e118c7b93fb90faed8c5fe541d84090f8d8adb",
+      "normalizedSha256": "e300633af5e7635c3b9a24974b128a3c05d6b81028318ad85e2f63a0e1e010f9",
+      "rawExternalCopy": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave5/raw-author-logs/docs/orchestration/issue-61/wave5/six-policy-checkpoint/wave4.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-61/wave5/truncate-bypass-reproduction/corrected.tap",
+      "rawSha256": "9449770c47a4300ec5fd38d59feab687fe9a77a34cb76777f21704c6f2565a2a",
+      "normalizedSha256": "d4b307f5a5e8ba8bfb50fcdf73e01b0da43bdc92d9efbed64a139cb6c06d4a7b",
+      "rawExternalCopy": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave5/raw-author-logs/docs/orchestration/issue-61/wave5/truncate-bypass-reproduction/corrected.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-61/wave5/truncate-bypass-reproduction/historical.tap",
+      "rawSha256": "c71e3b6e06e49345b8bdfabadb8a7512855e1c82a9ab5e53068eed8430431094",
+      "normalizedSha256": "d90f8511268c2d7bc8bd17552f376ca00557bedf17e51ae80fc0c23b367d00dd",
+      "rawExternalCopy": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave5/raw-author-logs/docs/orchestration/issue-61/wave5/truncate-bypass-reproduction/historical.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-61/wave5/truncate-bypass-reproduction/reverted.tap",
+      "rawSha256": "5967b2940c9342fec841502b2d9c528b924a6369fd139c99ff409601f6d84d4d",
+      "normalizedSha256": "03707008104df1007bbec55c06f231cf65698a1fd9e1bfb7ac1024e59574e401",
+      "rawExternalCopy": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave5/raw-author-logs/docs/orchestration/issue-61/wave5/truncate-bypass-reproduction/reverted.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-61/wave5/truncate-bypass-reproduction/wave4.tap",
+      "rawSha256": "0e33813b3826c8c78d8f9c17099fd556390d7ebdc7eb22707e1050b09140d3c2",
+      "normalizedSha256": "f29ca572e385ae3d12e98479b436094585601f20984683a15ec71731b68adb68",
+      "rawExternalCopy": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave5/raw-author-logs/docs/orchestration/issue-61/wave5/truncate-bypass-reproduction/wave4.tap"
+    }
+  ]
+}
