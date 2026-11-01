@@ -1,3 +1,7 @@
+## 2026-10-31 — Local continuation/review preparation only
+
+Owner approved preparation/testing, not installation, publication, live grants or generation. Preserve expired Oct31 authority and completed recovery. Prospective successor expires Nov3 5PM Central; independent Justyn/Elle version-pinned review expires Nov13 5PM Central. Use original Owner normal browser Auth/MFA and append-only issuance, not another recovery or private Terminal runner. V3 excluded. Reviewed hashes and subsequent exact approvals remain required.
+
 ## 2026-10-29 — Same-Owner recovery LOCAL preparation authorized; identity split confirmed
 
 Owner authorized design/local implementation and fictional PostgreSQL security tests only. Original issuing Owner personally reauthenticates; Justyn remains separately authenticated founder. This resolves the requirement ambiguity without substituting Justyn as issuer. Existing authority/history unchanged, one append-only recovery only, exact Oct31 11AMCentral expiry and one-use/source/worker restrictions preserved. No production installation, publication, actual recovery, runner activation or report generation authorized. Exact future correction needs separate reviewed source/SQL/artifact approval and independent readback.

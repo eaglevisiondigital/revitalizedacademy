@@ -1,3 +1,7 @@
+## LOCAL bounded continuation and independent saved review — 2026-10-31
+
+Reuse existing V2 queue/worker/sealing and founder UI. Add append-only successor and independent exact-identity/document review grants; three SQL delegation changes, no Function replacement. Original Owner browser workflow directly binds fresh authenticated session, avoiding temporary Terminal-session logout. Saved review explicitly selects version and reuses recoverable in-memory proposals. No engine/scoring/questionnaire changes. See docs/ALEX_R2_CONTINUATION_REVIEW.md; installation/publication/private issuance remain separately gated.
+
 ## Roadmap narrative extension — local candidate — 2026-10-21
 
 A pure versioned narrative builder and source-component trace module extend the existing all12Driver document; they add no new queue/Auth/database. The pipeline version and B6pins remain unchanged; the document adds narrativeVersion/ruleHash and source-cited findings, relationships and phase actions. Existing guarded regeneration creates a separate immutable revision. Shared citations reference the same source and never count toward health arithmetic. No hosted installation.

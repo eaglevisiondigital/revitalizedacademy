@@ -21,7 +21,7 @@ function createApp({portal,panel}){
  }
  function reset(){close(true);launch.hidden=true;captured=null;task=null;}
  async function request(action,report=null,payload={}){
-  if(!['list','read','review'].includes(action)||!captured||!sameAccount())throw failure('denied');
+  if(!['list','read','review','purpose'].includes(action)||!captured||!sameAccount())throw failure('denied');
   if(revalidating())throw failure('temporary');
   if(!eligible())throw failure('denied');
   if(!guard.current(task))throw failure('temporary');
@@ -90,13 +90,15 @@ function createApp({portal,panel}){
    const pin=preferred&&typeof preferred.report==='string'?preferred:null;
    if(pin&&!rows?.some(row=>row.report_id===pin.report&&row.revision===pin.revision))throw failure('denied');
    if(!Array.isArray(rows))throw failure('denied');status.textContent=rows.length?'Select the separately authorized saved revision.':'No active saved-review authorization for this account.';
+   const purposeGroups=new Map();
    for(const row of rows){if(row.review_only!==true||(!Number.isSafeInteger(row.revision)||row.revision<1)||typeof row.report_id!=='string')throw failure('denied');
     const choose=el('button','Read '+row.label);choose.type='button';main.append(choose);let loading=false;
+    if(row.purpose_required===true){choose.disabled=true;const prior=purposeGroups.get(row.report_id);if(prior){prior.push(choose);}else{const group=[choose];purposeGroups.set(row.report_id,group);const label=el('label'),box=el('input');box.type='checkbox';label.append(box,doc.createTextNode(' I authorize my own private read and cited feedback on this exact saved report only. No processing, scoring, export or client delivery.'));const ack=el('button','Acknowledge my saved-review purpose');ack.type='button';ack.disabled=true;box.onchange=()=>ack.disabled=!box.checked;ack.onclick=async()=>{ack.disabled=true;box.disabled=true;try{const result=await request('purpose',row.report_id,{version_id:row.version_id,acknowledgment:'ALEX_SAVED_DOCUMENT_READ_CITED_FEEDBACK_ONLY'});if(e!==epoch)return;if(result?.acknowledged!==true)throw failure('denied');group.forEach(button=>button.disabled=false);ack.textContent='Review purpose recorded';}catch{if(e===epoch)status.textContent='Purpose was not confirmed. Close and reopen saved review to check; no automatic retry.';}};main.append(label,ack);}}
     choose.onclick=async()=>{if(loading||e!==epoch||controller)return;loading=true;choose.disabled=true;const host=el('section');host.className='roadmap-processing';main.append(host);
-     controller=root.RVA_ROADMAP_PROCESSING.mount(host,{report:row.report_id,reviewOnly:true,actorId:captured.userId,onReconnect:showReconnect,request:body=>{if(body.report!==row.report_id)throw failure('denied');return request(body.action,body.report,body.payload).then(result=>{if(pin&&body.action==='read'&&(result?.version_id!==pin.versionId||result?.revision!==pin.revision))throw failure('denied');return result;});},onError:()=>{if(e===epoch)status.textContent='Saved review unavailable or expired. No retry or processing was started.';}});
+     controller=root.RVA_ROADMAP_PROCESSING.mount(host,{report:row.report_id,reviewOnly:true,actorId:captured.userId,onReconnect:showReconnect,request:body=>{if(body.report!==row.report_id)throw failure('denied');const payload={...body.payload};if(row.version_id){if(payload.version_id&&payload.version_id!==row.version_id)throw failure('denied');payload.version_id=row.version_id;}return request(body.action,body.report,payload).then(result=>{if(body.action==='read'&&((pin&&(result?.version_id!==pin.versionId||result?.revision!==pin.revision))||(row.version_id&&(result?.version_id!==row.version_id||result?.revision!==row.revision))))throw failure('denied');return result;});},onError:()=>{if(e===epoch)status.textContent='Saved review unavailable or expired. No retry or processing was started.';}});
      await controller.start();if(e===epoch)loading=false;
     };
-    if(pin&&row.report_id===pin.report)await choose.onclick();
+    if(pin&&row.report_id===pin.report&&row.revision===pin.revision&&(!row.version_id||row.version_id===pin.versionId)&&row.purpose_required!==true)await choose.onclick();
    }
   }catch{if(e===epoch){controller?.stop();status.textContent='Saved review unavailable. Check the current session and separate review window. No processing was requested.';}}
   finally{if(e===epoch)pending=false;opener=null;}})();return opener;

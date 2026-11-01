@@ -1,0 +1,25 @@
+# Alex R2 continuation and independent founder review — local candidate
+
+This package is LOCAL ONLY. It does not activate any authority or generate a real report. Baseline is exact approved production source 5425f09483c4964dbac5beba7a71c296f89fb8f6, deploy6ae5df08aa53cf88aaeebd12. V2/45 directions/Founder Coaching Voice and all 13 Function archives remain unchanged.
+
+## Database
+
+One guarded, empty-authority migration: `20261101031426_roadmap_alex_r2_continuation_review.sql` (CLI-generated UTC filename). Preserve expired original authority, one completed recovery, every immutable report, source pin, consent and audit. New append-only continuation binds actual original-Owner browser authentication, Justyn's separate current Calibration session, new SOP/key-custody acknowledgment and exact source/R1/worker/voice/ruleset. Activation uses actual server time; expiry November 3, 2026 at 5 PM America/Chicago (23:00 UTC). No scheduled start deadline, backdating or overlap. Exactly one R2 job/attempt across histories; the existing worker/queue/sealing gates are reused.
+
+Three existing SQL routines narrowly delegate to new contexts: `private.roadmap_alex_context`, `private.roadmap_voice_r2_context`, `public.roadmap_saved_review`. All other existing function definitions/security metadata and existing table security remain unchanged. The Calibration B6 list/read enters the same restored source context before emitting the source-open event that mounts explicit R2 controls. Do not repeat consent or use the old recovery click/Terminal runner.
+
+Independent grants bind each verified founder and actual R1/R2 version/hash, four tuples total, only after both saved versions and their bundle digest are verified. Read, cited feedback and explicit version comparison expire November 13 at 5 PM Central (23:00 UTC). Processing flag/expiry/key lifetime and continued issuer session are not required for review. Founder identity/own live session, current source consent, unchanged document and unrevoked review scope are always required. Source revocation is evaluated using latest append-only consent/cohort events, not stale active rows. Justyn retains completed purpose records; Elle makes one new own-case review-only acknowledgment covering the two explicitly granted versions. No new processing access for Elle.
+
+Private tables have RLS, no client/service table privileges, immutable history triggers, and narrowly allowed authenticated command gateways with fixed search paths. Wrong issuer/session/role/MFA/source/document, expiry, replay and concurrent duplicate use fail closed. Feedback reuses the existing source-citation validation, optimistic revision/idempotency and append-only attributed proposal workflow. No numerical scores, Spectrum activation, report modification/approval, PDF/export/email/client delivery, V3 or other participant access.
+
+## Portal
+
+Three static paths only: index cache/script reference, existing Saved Roadmap review launcher and a new original-Owner continuation/review permission widget. The Owner signs in through normal production Auth/MFA; no passwords/tokens are captured by new UI and no private Terminal runner is used. This avoids temporary-session logout after issuance. Exact recovered historical session is never edited. Keep the newly issuing Owner session signed in through the single separately cleared generation; review becomes independent after verified review issuance.
+
+Explicit R1/R2 buttons send exact version IDs and reject mismatched responses. New purpose acknowledgment never invokes processing. Existing same-account refresh recovery, in-memory unsaved feedback, duplicate-save reconciliation, citations, focus and scrolling remain intact.
+
+## Validation and release
+
+24 actual PostgreSQL17 cases, 9 new DOM +28 existing DOM cases, six Chromium/WebKit desktop/tablet/mobile cases and two actual pinned SDK refresh/broadcast cases pass with fictional data only. They cover one V2/voice R2 through actual processing/sealing, R1/history preservation, B6 gate, identity/source/expiry/revocation, one-use/concurrency, independent review, purpose, version binding, cited proposal retries, safe rollback and metadata/ACL parity. All browser requests intercepted; no hosted test writes or real-client processing. Prior harness/fixture failures are retained in private evidence and corrected; no unresolved test failures. Private evidence/package: deployment-evidence/2026-11-01-alex-continuation-review outside the publish directory.
+
+Exact SQL/static/manifest/private procedure hashes, rollback/hold and staged approvals are required before hosted work. Empty rollback restores three original routines and disables new issuance RPCs, preserving tables/history. After any issuance, use separately approved source-specific administrative HOLD; preserve saved reports, grants and audit history. No automatic expiry extension or rollback/reissue.
