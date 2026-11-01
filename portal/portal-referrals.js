@@ -128,7 +128,10 @@
 
     const failed=[pipelineResult,rewardResult,metricsResult].find((r)=>r.error);
     if(failed?.error){
-      el("referral-admin-list").innerHTML='<div class="empty-state">Referral data could not be loaded. '+failed.error.message+'</div>';
+      const message=document.createElement("div");
+      message.className="empty-state";
+      message.textContent="Referral data could not be loaded. "+failed.error.message;
+      el("referral-admin-list").replaceChildren(message);
       return;
     }
 

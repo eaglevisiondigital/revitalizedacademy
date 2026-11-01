@@ -1,0 +1,258 @@
+TAP version 13
+# Subtest: [N01] explicit permission denial wins over Owner default in actual helper
+ok 1 - [N01] explicit permission denial wins over Owner default in actual helper
+  ---
+  duration_ms: 45.134791
+  type: 'test'
+  ...
+# Subtest: [N01] inactive Coach with retained allow override loses actual scoped helper authority
+ok 2 - [N01] inactive Coach with retained allow override loses actual scoped helper authority
+  ---
+  duration_ms: 7.070875
+  type: 'test'
+  ...
+# Subtest: [N02] assigned Coach helper succeeds; unrelated Coach helper denied
+ok 3 - [N02] assigned Coach helper succeeds; unrelated Coach helper denied
+  ---
+  duration_ms: 7.588
+  type: 'test'
+  ...
+# Subtest: [N04] Client cannot obtain staff action; anonymous cannot invoke it
+ok 4 - [N04] Client cannot obtain staff action; anonymous cannot invoke it
+  ---
+  duration_ms: 5.665083
+  type: 'test'
+  ...
+# Subtest: [C02 partial] actual member goal helper normalizes title and keeps actor/contact ownership
+ok 5 - [C02 partial] actual member goal helper normalizes title and keeps actor/contact ownership
+  ---
+  duration_ms: 6.336083
+  type: 'test'
+  ...
+# Subtest: [C02 partial] goal validation rejects empty title and unsupported priority without a row
+ok 6 - [C02 partial] goal validation rejects empty title and unsupported priority without a row
+  ---
+  duration_ms: 4.978209
+  type: 'test'
+  ...
+# Subtest: [N03] actual RLS hides unrelated client goal and cross-client update cannot mutate it
+ok 7 - [N03] actual RLS hides unrelated client goal and cross-client update cannot mutate it
+  ---
+  duration_ms: 5.688042
+  type: 'test'
+  ...
+# Subtest: [N03] actual RLS rejects forged cross-client goal insert
+ok 8 - [N03] actual RLS rejects forged cross-client goal insert
+  ---
+  duration_ms: 4.140208
+  type: 'test'
+  ...
+# Subtest: [C02 partial] actual habit helper validates target and frequency
+ok 9 - [C02 partial] actual habit helper validates target and frequency
+  ---
+  duration_ms: 5.251208
+  type: 'test'
+  ...
+# Subtest: [C02 partial] actual habit check-in upsert preserves one day/actor identity and real zero
+ok 10 - [C02 partial] actual habit check-in upsert preserves one day/actor identity and real zero
+  ---
+  duration_ms: 11.841167
+  type: 'test'
+  ...
+# Subtest: [N03] different Client cannot check in another Client habit
+ok 11 - [N03] different Client cannot check in another Client habit
+  ---
+  duration_ms: 5.5325
+  type: 'test'
+  ...
+# Subtest: [C02 partial] progress actual helper preserves numeric zero; unknown numeric is rejected
+ok 12 - [C02 partial] progress actual helper preserves numeric zero; unknown numeric is rejected
+  ---
+  duration_ms: 7.40325
+  type: 'test'
+  ...
+# Subtest: [C02 partial] progress denies missing metric and range/type mismatch
+ok 13 - [C02 partial] progress denies missing metric and range/type mismatch
+  ---
+  duration_ms: 5.127375
+  type: 'test'
+  ...
+# Subtest: [E02 partial] actual session trigger reserves then consumes once across repeated completion writes
+ok 14 - [E02 partial] actual session trigger reserves then consumes once across repeated completion writes
+  ---
+  duration_ms: 10.449583
+  type: 'test'
+  ...
+# Subtest: [E02 partial] cancellation releases consumption through actual trigger and recalculation
+ok 15 - [E02 partial] cancellation releases consumption through actual trigger and recalculation
+  ---
+  duration_ms: 4.448666
+  type: 'test'
+  ...
+# Subtest: [E02 partial] no-show stays review and no usage consumed without explicit decision
+ok 16 - [E02 partial] no-show stays review and no usage consumed without explicit decision
+  ---
+  duration_ms: 3.659084
+  type: 'test'
+  ...
+# Subtest: [E02 partial] authorized review consumes/releases with recorded reason and actor
+not ok 17 - [E02 partial] authorized review consumes/releases with recorded reason and actor
+  ---
+  duration_ms: 4.870583
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-client/tests/wave2-client/sql-contracts.test.cjs:41:2'
+  failureType: 'testCodeFailure'
+  error: 'permission denied for function recalculate_coaching_entitlement_used_value'
+  code: '42501'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async actor (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-client/tests/wave2-client/sql-contracts.test.cjs:11:168)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-client/tests/wave2-client/sql-contracts.test.cjs:41:229)
+    async Test.run (node:internal/test_runner/test:1404:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+  ...
+# Subtest: [E02 partial] actual review RPC denies Client, missing reason and invalid resolution
+ok 18 - [E02 partial] actual review RPC denies Client, missing reason and invalid resolution
+  ---
+  duration_ms: 6.820875
+  type: 'test'
+  ...
+# Subtest: [E02 partial] unlimited numeric representation remains unknown remaining; no infinite number synthesized
+ok 19 - [E02 partial] unlimited numeric representation remains unknown remaining; no infinite number synthesized
+  ---
+  duration_ms: 5.031459
+  type: 'test'
+  ...
+# Subtest: [N02 STRICT] unrelated Coach cannot directly read another Client goal through actual RLS
+not ok 20 - [N02 STRICT] unrelated Coach cannot directly read another Client goal through actual RLS
+  ---
+  duration_ms: 5.083
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-client/tests/wave2-client/sql-contracts.test.cjs:44:2'
+  failureType: 'testCodeFailure'
+  error: |-
+    Unassigned Coach must not receive private Client goal
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-client/tests/wave2-client/sql-contracts.test.cjs:44:210)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1404:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+  ...
+# Subtest: [N02/E02 STRICT] unrelated Coach cannot resolve another Client usage record
+ok 21 - [N02/E02 STRICT] unrelated Coach cannot resolve another Client usage record
+  ---
+  duration_ms: 5.247333
+  type: 'test'
+  ...
+1..21
+# tests 21
+# suites 0
+# pass 19
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 253.937042
+TAP version 13
+# Subtest: [N01] explicit permission denial wins over Owner default in actual helper
+ok 1 - [N01] explicit permission denial wins over Owner default in actual helper
+  ---
+  duration_ms: 47.555042
+  type: 'test'
+  ...
+# Subtest: [N01] inactive Coach with retained allow override loses actual scoped helper authority
+ok 2 - [N01] inactive Coach with retained allow override loses actual scoped helper authority
+  ---
+  duration_ms: 7.497459
+  type: 'test'
+  ...
+# Subtest: [N02] assigned Coach helper succeeds; unrelated Coach helper denied
+ok 3 - [N02] assigned Coach helper succeeds; unrelated Coach helper denied
+  ---
+  duration_ms: 8.444917
+  type: 'test'
+  ...
+# Subtest: [N04] Client cannot obtain staff action; anonymous cannot invoke it
+ok 4 - [N04] Client cannot obtain staff action; anonymous cannot invoke it
+  ---
+  duration_ms: 5.476833
+  type: 'test'
+  ...
+# Subtest: [N06 partial] production lifecycle paid gate rejects fabricated active access without bound paid enrollment
+ok 5 - [N06 partial] production lifecycle paid gate rejects fabricated active access without bound paid enrollment
+  ---
+  duration_ms: 6.302209
+  type: 'test'
+  ...
+# Subtest: [N06 partial] production lifecycle paid gate rejects fabricated onboarding access without bound paid enrollment
+ok 6 - [N06 partial] production lifecycle paid gate rejects fabricated onboarding access without bound paid enrollment
+  ---
+  duration_ms: 6.406083
+  type: 'test'
+  ...
+# Subtest: [N06 partial] production lifecycle paid gate rejects fabricated payment_suspended access without bound paid enrollment
+ok 7 - [N06 partial] production lifecycle paid gate rejects fabricated payment_suspended access without bound paid enrollment
+  ---
+  duration_ms: 5.963792
+  type: 'test'
+  ...
+# Subtest: [N06 partial] production lifecycle paid gate rejects fabricated suspended access without bound paid enrollment
+ok 8 - [N06 partial] production lifecycle paid gate rejects fabricated suspended access without bound paid enrollment
+  ---
+  duration_ms: 5.475541
+  type: 'test'
+  ...
+# Subtest: [N06 partial] production lifecycle paid gate rejects fabricated inactive access without bound paid enrollment
+ok 9 - [N06 partial] production lifecycle paid gate rejects fabricated inactive access without bound paid enrollment
+  ---
+  duration_ms: 5.384791
+  type: 'test'
+  ...
+# Subtest: [N06 partial] member goal/habit/progress writes remain denied under actual production payment hold
+ok 10 - [N06 partial] member goal/habit/progress writes remain denied under actual production payment hold
+  ---
+  duration_ms: 7.559333
+  type: 'test'
+  ...
+# Subtest: [E02 expiry partial] expired inactive membership cannot bypass production paid-domain gate
+not ok 11 - [E02 expiry partial] expired inactive membership cannot bypass production paid-domain gate
+  ---
+  duration_ms: 4.0845
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-client/tests/wave2-client/sql-contracts.test.cjs:49:2'
+  failureType: 'testCodeFailure'
+  error: 'new row for relation "client_memberships" violates check constraint "client_memberships_status_check"'
+  code: '23514'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-client/tests/wave2-client/sql-contracts.test.cjs:49:110)
+    async Test.run (node:internal/test_runner/test:1404:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+  ...
+# Subtest: [J05 partial] unrelated Client cannot read other Client onboarding enrollment or acceptance
+ok 12 - [J05 partial] unrelated Client cannot read other Client onboarding enrollment or acceptance
+  ---
+  duration_ms: 5.96975
+  type: 'test'
+  ...
+1..12
+# tests 12
+# suites 0
+# pass 11
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 187.599042

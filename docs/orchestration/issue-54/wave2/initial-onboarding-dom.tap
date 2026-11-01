@@ -1,0 +1,108 @@
+TAP version 13
+# Subtest: [J05 partial] signed-out normal entry shows sign-in without any data RPC
+ok 1 - [J05 partial] signed-out normal entry shows sign-in without any data RPC
+  ---
+  duration_ms: 79.572916
+  type: 'test'
+  ...
+# Subtest: [J05 partial] enroll credential stripped and unverified own account cannot claim
+ok 2 - [J05 partial] enroll credential stripped and unverified own account cannot claim
+  ---
+  duration_ms: 36.279375
+  type: 'test'
+  ...
+# Subtest: [J05 partial] invite credential stripped and unverified own account cannot claim
+ok 3 - [J05 partial] invite credential stripped and unverified own account cannot claim
+  ---
+  duration_ms: 34.565709
+  type: 'test'
+  ...
+# Subtest: [J05 partial] wrong-account/expired claim error clears private DOM before any context read
+ok 4 - [J05 partial] wrong-account/expired claim error clears private DOM before any context read
+  ---
+  duration_ms: 33.980875
+  type: 'test'
+  ...
+# Subtest: [J05 partial] eligible claim uses existing RPC then own context and refresh never reclaims
+ok 5 - [J05 partial] eligible claim uses existing RPC then own context and refresh never reclaims
+  ---
+  duration_ms: 59.917083
+  type: 'test'
+  ...
+# Subtest: [N06 partial] pending enrollment renders explicit payment hold and never activation/payment RPC
+ok 6 - [N06 partial] pending enrollment renders explicit payment hold and never activation/payment RPC
+  ---
+  duration_ms: 32.584875
+  type: 'test'
+  ...
+# Subtest: [N06 partial] inactive context cannot display supplied private agreement
+ok 7 - [N06 partial] inactive context cannot display supplied private agreement
+  ---
+  duration_ms: 32.324833
+  type: 'test'
+  ...
+# Subtest: [N06 partial] suspended context cannot display supplied private agreement
+ok 8 - [N06 partial] suspended context cannot display supplied private agreement
+  ---
+  duration_ms: 33.235875
+  type: 'test'
+  ...
+# Subtest: [N05 partial] logout synchronously clears identity, agreements and password
+ok 9 - [N05 partial] logout synchronously clears identity, agreements and password
+  ---
+  duration_ms: 61.034
+  type: 'test'
+  ...
+# Subtest: [N05 partial] delayed prior-user context cannot repaint a subsequent account
+ok 10 - [N05 partial] delayed prior-user context cannot repaint a subsequent account
+  ---
+  duration_ms: 84.099625
+  type: 'test'
+  ...
+# Subtest: [J04 partial] exact current document hash and actual single adult are sent once under double submit
+not ok 11 - [J04 partial] exact current document hash and actual single adult are sent once under double submit
+  ---
+  duration_ms: 60.032958
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-client/tests/wave2-client/onboarding.test.cjs:11:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Values have same structure but are not reference-equal:
+    
+    [
+      'primary_client'
+    ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 'primary_client'
+  actual:
+    0: 'primary_client'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-client/tests/wave2-client/onboarding.test.cjs:11:1060)
+    async Test.run (node:internal/test_runner/test:1404:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+  ...
+# Subtest: [J05 partial] signup clears password and requests ordinary email verification without private admin call
+ok 12 - [J05 partial] signup clears password and requests ordinary email verification without private admin call
+  ---
+  duration_ms: 59.690042
+  type: 'test'
+  ...
+# Subtest: [J05 partial] recovery acknowledgement remains neutral across a fictional mailbox
+ok 13 - [J05 partial] recovery acknowledgement remains neutral across a fictional mailbox
+  ---
+  duration_ms: 59.831125
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 12
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1086.29925

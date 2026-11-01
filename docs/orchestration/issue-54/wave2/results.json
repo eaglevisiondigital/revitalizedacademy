@@ -1,0 +1,224 @@
+{
+  "issue": 54,
+  "phase": "WAVE2_ACTUAL_EXECUTION",
+  "runtimeSourceSha": "fc6737415da36b4306afa0060a525eca2f1131ca",
+  "actualApplicationRuntimeDom": {
+    "tests": 13,
+    "pass": 13,
+    "fail": 0,
+    "adapter": "fake Auth/RPC; actual existing app JS/HTML"
+  },
+  "actualSql": {
+    "engine": "postgres (PostgreSQL) 17.11 (Homebrew)",
+    "profiles": [
+      {
+        "stage": "baseline_auth",
+        "testExitCode": 1,
+        "result": "FAIL_OR_BLOCKED_REVIEW_REQUIRED",
+        "tests": 23,
+        "pass": 21,
+        "fail": 2,
+        "skipped": 0,
+        "todo": 0
+      },
+      {
+        "stage": "production_hold",
+        "testExitCode": 0,
+        "result": "PASS_BOUNDED_SUBTESTS",
+        "tests": 13,
+        "pass": 13,
+        "fail": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    ],
+    "total": 36,
+    "pass": 34,
+    "fail": 2,
+    "skipped": 0,
+    "clusterRemoved": true,
+    "currentProductionCatalogCertified": false
+  },
+  "actualBrowser": {
+    "result": "PASS_PARTIAL",
+    "cases": 24,
+    "engines": [
+      "chromium",
+      "webkit"
+    ],
+    "versions": [
+      "156.0.8078.4",
+      "26.5"
+    ],
+    "transport": "all requests locally intercepted; fake SDK/Auth/RPC",
+    "managedAuthCertified": false
+  },
+  "functionalInstances": 73,
+  "passedInstances": 71,
+  "failedInstances": 2,
+  "fullMatrixCasesCompleted": 0,
+  "productionCalls": 0,
+  "providerCalls": 0,
+  "runtimeChanges": 0,
+  "matrixSubcaseEvidence": [
+    {
+      "matrixId": "J04",
+      "executionStatus": "PARTIAL_PASS",
+      "scopeAndLimit": "DOM exact-hash/single-adult/double-submit transport contract only; no server signature/second-adult acceptance",
+      "completeCaseRun": false,
+      "productionAcceptance": false
+    },
+    {
+      "matrixId": "J05",
+      "executionStatus": "PARTIAL_PASS",
+      "scopeAndLimit": "Onboarding own-account/verification/denied claim/recovery rendering and unrelated SQL read denial; no managed Auth/delivery/token-expiry proof",
+      "completeCaseRun": false,
+      "productionAcceptance": false
+    },
+    {
+      "matrixId": "J10",
+      "executionStatus": "NOT_RUN",
+      "scopeAndLimit": "Lane A new dashboard mount not integrated here; QA owns combined normal-route acceptance",
+      "completeCaseRun": false,
+      "productionAcceptance": false
+    },
+    {
+      "matrixId": "J11",
+      "executionStatus": "BLOCKED",
+      "scopeAndLimit": "49-day curriculum/timing/renewal policy absent; generic goal/habit checks do not pass this case",
+      "completeCaseRun": false,
+      "productionAcceptance": false
+    },
+    {
+      "matrixId": "J12",
+      "executionStatus": "NOT_RUN",
+      "scopeAndLimit": "Whole integrated lead-to-renewal journey not executed",
+      "completeCaseRun": false,
+      "productionAcceptance": false
+    },
+    {
+      "matrixId": "N01",
+      "executionStatus": "PARTIAL_PASS",
+      "scopeAndLimit": "Actual dated-source helper Owner deny/inactive Coach tests; no current JWT/session revocation metadata",
+      "completeCaseRun": false,
+      "productionAcceptance": false
+    },
+    {
+      "matrixId": "N02",
+      "executionStatus": "PARTIAL_FAIL",
+      "scopeAndLimit": "Scoped helper/assignment policy pass, strict unrelated-Coach goal read fails in baseline_auth; not current production certification",
+      "completeCaseRun": false,
+      "productionAcceptance": false
+    },
+    {
+      "matrixId": "N03",
+      "executionStatus": "PARTIAL_PASS",
+      "scopeAndLimit": "Actual cross-client goal/habit/progress denial; no organization/tenant fixture",
+      "completeCaseRun": false,
+      "productionAcceptance": false
+    },
+    {
+      "matrixId": "N04",
+      "executionStatus": "PARTIAL_PASS",
+      "scopeAndLimit": "Client staff-action and anonymous RPC denials only; not full direct-private/self-role suite",
+      "completeCaseRun": false,
+      "productionAcceptance": false
+    },
+    {
+      "matrixId": "N05",
+      "executionStatus": "PARTIAL_PASS",
+      "scopeAndLimit": "Actual onboarding logout and delayed account context DOM; real browser logout; no real SDK broadcast/multi-tab acceptance",
+      "completeCaseRun": false,
+      "productionAcceptance": false
+    },
+    {
+      "matrixId": "N06",
+      "executionStatus": "PARTIAL_PASS",
+      "scopeAndLimit": "Exact production lifecycle paid-hold SQL 13/13 and onboarding UI states; actual verified payment activation not tested",
+      "completeCaseRun": false,
+      "productionAcceptance": false
+    },
+    {
+      "matrixId": "C02",
+      "executionStatus": "PARTIAL_PASS",
+      "scopeAndLimit": "Actual historical-source goal/habit/check-in/progress validation and ownership only; no full diary/meal/workout assignment package",
+      "completeCaseRun": false,
+      "productionAcceptance": false
+    },
+    {
+      "matrixId": "E02",
+      "executionStatus": "PARTIAL_FAIL",
+      "scopeAndLimit": "Actual reserve/consume/release/idempotency/no-show and NULL allowance observations; authorized review RPC fails private helper EXECUTE. Rich selected policy cases blocked",
+      "completeCaseRun": false,
+      "productionAcceptance": false
+    },
+    {
+      "matrixId": "F01",
+      "executionStatus": "BLOCKED",
+      "scopeAndLimit": "Independent adult consented sharing policy/source not reconstructed; no automatic sharing expectation",
+      "completeCaseRun": false,
+      "productionAcceptance": false
+    },
+    {
+      "matrixId": "F02",
+      "executionStatus": "PARTIAL_PASS",
+      "scopeAndLimit": "Historical source cross-household member read/update denials only; guardian/minor policy remains blocked",
+      "completeCaseRun": false,
+      "productionAcceptance": false
+    },
+    {
+      "matrixId": "F03",
+      "executionStatus": "NOT_RUN",
+      "scopeAndLimit": "Family request concurrency/review flow not executed",
+      "completeCaseRun": false,
+      "productionAcceptance": false
+    }
+  ],
+  "findings": [
+    {
+      "id": "L54-F01",
+      "matrixIds": [
+        "N02"
+      ],
+      "status": "FAIL_LOCAL_DATED_SOURCE",
+      "test": "[N02 STRICT] unrelated Coach cannot directly read another Client goal through actual RLS",
+      "observed": "One row read when expected zero",
+      "next": "Core compare applicable installed/current approved policy sources; no production claim or automatic fix"
+    },
+    {
+      "id": "L54-F02",
+      "matrixIds": [
+        "E02"
+      ],
+      "status": "FAIL_LOCAL_DATED_SOURCE",
+      "test": "[E02 partial] authorized review consumes/releases with recorded reason and actor",
+      "observed": "42501 EXECUTE denied on private.recalculate_coaching_entitlement_used_value",
+      "next": "Reconcile exact current RPC/helper ACL/owner/search path and guarded correction scope; do not grant broadly"
+    }
+  ],
+  "sourceManifest": "tests/wave2-client/source-pins.json",
+  "evidence": [
+    "onboarding-dom.tap",
+    "baseline_auth-tests.tap",
+    "production_hold-tests.tap",
+    "postgres-receipt.json",
+    "browser-receipt.json"
+  ],
+  "laneAContractReviewedReadOnly": "38c16c9baeaa013e867e1230d775c179e91410e4",
+  "laneAIntegratedHere": false,
+  "ownedPaths": [
+    "tests/wave2-client/",
+    "docs/orchestration/issue-54/wave2/"
+  ],
+  "outputRoutingRevision": {
+    "environmentVariable": "RVA_WAVE2_B_OUTPUT",
+    "authorDefaultPreserved": true,
+    "authorReceiptsUnchanged": true,
+    "evidence": "docs/orchestration/issue-54/wave2/runner-output-revision.json",
+    "unitCasesPassed": 3,
+    "domWrapperSeparateDirectoryPassed": 13,
+    "pgPreflightOnlyPassed": true,
+    "primaryBusinessCountsUnchanged": true,
+    "pgBrowserFullRetestAfterOutputOnlyChange": false
+  }
+}

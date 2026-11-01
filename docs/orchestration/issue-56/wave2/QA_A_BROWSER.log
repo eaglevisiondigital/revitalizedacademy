@@ -1,0 +1,267 @@
+{
+  "scope": "LOCAL_FICTIONAL_BROWSER_ONLY",
+  "results": [
+    {
+      "engine": "chromium",
+      "name": "baseline pending logout defect reproduced",
+      "status": "PASS",
+      "fictionalTransport": true,
+      "baseline": true,
+      "gateTable": "my_app_bootstrap_v2"
+    },
+    {
+      "engine": "chromium",
+      "name": "normal dashboard route and layout 320",
+      "status": "PASS",
+      "fictionalTransport": true,
+      "width": 320
+    },
+    {
+      "engine": "chromium",
+      "name": "normal dashboard route and layout 390",
+      "status": "PASS",
+      "fictionalTransport": true,
+      "width": 390
+    },
+    {
+      "engine": "chromium",
+      "name": "normal dashboard route and layout 768",
+      "status": "PASS",
+      "fictionalTransport": true,
+      "width": 768
+    },
+    {
+      "engine": "chromium",
+      "name": "normal dashboard route and layout 1440",
+      "status": "PASS",
+      "fictionalTransport": true,
+      "width": 1440
+    },
+    {
+      "engine": "chromium",
+      "name": "logout rejects late my_app_bootstrap_v2",
+      "status": "PASS",
+      "fictionalTransport": true,
+      "gateTable": "my_app_bootstrap_v2",
+      "checkin": false
+    },
+    {
+      "engine": "chromium",
+      "name": "logout rejects late checkin_template_fields",
+      "status": "PASS",
+      "fictionalTransport": true,
+      "gateTable": "checkin_template_fields",
+      "checkin": true
+    },
+    {
+      "engine": "chromium",
+      "name": "logout rejects late client_checkins",
+      "status": "PASS",
+      "fictionalTransport": true,
+      "gateTable": "client_checkins",
+      "checkin": true
+    },
+    {
+      "engine": "chromium",
+      "name": "pending initial session cannot restore after logout",
+      "status": "PASS",
+      "fictionalTransport": true,
+      "gateSession": true
+    },
+    {
+      "engine": "chromium",
+      "name": "pending source and appointment load rejects account switch",
+      "status": "PASS",
+      "fictionalTransport": true,
+      "gateTable": "my_app_bootstrap_v2"
+    },
+    {
+      "engine": "chromium",
+      "name": "established account switch gets fresh B document",
+      "status": "PASS",
+      "fictionalTransport": true
+    },
+    {
+      "engine": "chromium",
+      "name": "same account token refresh retains workspace and form",
+      "status": "PASS",
+      "fictionalTransport": true
+    },
+    {
+      "engine": "chromium",
+      "name": "ambiguous null INITIAL_SESSION does not reload established document",
+      "status": "PASS",
+      "fictionalTransport": true
+    },
+    {
+      "engine": "chromium",
+      "name": "unavailable or unpaid membership denies {\"denied\":true}",
+      "status": "PASS",
+      "fictionalTransport": true,
+      "denied": true
+    },
+    {
+      "engine": "chromium",
+      "name": "unavailable or unpaid membership denies {\"failure\":\"my_member_entitlements\"}",
+      "status": "PASS",
+      "fictionalTransport": true,
+      "failure": "my_member_entitlements"
+    },
+    {
+      "engine": "chromium",
+      "name": "unavailable or unpaid membership denies {\"sessionError\":true}",
+      "status": "PASS",
+      "fictionalTransport": true,
+      "sessionError": true
+    },
+    {
+      "engine": "chromium",
+      "name": "explicit signout clears private view",
+      "status": "PASS",
+      "fictionalTransport": true
+    },
+    {
+      "engine": "chromium",
+      "name": "member root signing and dashboard roundtrip",
+      "status": "PASS",
+      "fictionalTransport": true,
+      "route": "/member/",
+      "width": 390
+    },
+    {
+      "engine": "webkit",
+      "name": "baseline pending logout defect reproduced",
+      "status": "PASS",
+      "fictionalTransport": true,
+      "baseline": true,
+      "gateTable": "my_app_bootstrap_v2"
+    },
+    {
+      "engine": "webkit",
+      "name": "normal dashboard route and layout 320",
+      "status": "PASS",
+      "fictionalTransport": true,
+      "width": 320
+    },
+    {
+      "engine": "webkit",
+      "name": "normal dashboard route and layout 390",
+      "status": "PASS",
+      "fictionalTransport": true,
+      "width": 390
+    },
+    {
+      "engine": "webkit",
+      "name": "normal dashboard route and layout 768",
+      "status": "PASS",
+      "fictionalTransport": true,
+      "width": 768
+    },
+    {
+      "engine": "webkit",
+      "name": "normal dashboard route and layout 1440",
+      "status": "PASS",
+      "fictionalTransport": true,
+      "width": 1440
+    },
+    {
+      "engine": "webkit",
+      "name": "logout rejects late my_app_bootstrap_v2",
+      "status": "PASS",
+      "fictionalTransport": true,
+      "gateTable": "my_app_bootstrap_v2",
+      "checkin": false
+    },
+    {
+      "engine": "webkit",
+      "name": "logout rejects late checkin_template_fields",
+      "status": "PASS",
+      "fictionalTransport": true,
+      "gateTable": "checkin_template_fields",
+      "checkin": true
+    },
+    {
+      "engine": "webkit",
+      "name": "logout rejects late client_checkins",
+      "status": "PASS",
+      "fictionalTransport": true,
+      "gateTable": "client_checkins",
+      "checkin": true
+    },
+    {
+      "engine": "webkit",
+      "name": "pending initial session cannot restore after logout",
+      "status": "PASS",
+      "fictionalTransport": true,
+      "gateSession": true
+    },
+    {
+      "engine": "webkit",
+      "name": "pending source and appointment load rejects account switch",
+      "status": "PASS",
+      "fictionalTransport": true,
+      "gateTable": "my_app_bootstrap_v2"
+    },
+    {
+      "engine": "webkit",
+      "name": "established account switch gets fresh B document",
+      "status": "PASS",
+      "fictionalTransport": true
+    },
+    {
+      "engine": "webkit",
+      "name": "same account token refresh retains workspace and form",
+      "status": "PASS",
+      "fictionalTransport": true
+    },
+    {
+      "engine": "webkit",
+      "name": "ambiguous null INITIAL_SESSION does not reload established document",
+      "status": "PASS",
+      "fictionalTransport": true
+    },
+    {
+      "engine": "webkit",
+      "name": "unavailable or unpaid membership denies {\"denied\":true}",
+      "status": "PASS",
+      "fictionalTransport": true,
+      "denied": true
+    },
+    {
+      "engine": "webkit",
+      "name": "unavailable or unpaid membership denies {\"failure\":\"my_member_entitlements\"}",
+      "status": "PASS",
+      "fictionalTransport": true,
+      "failure": "my_member_entitlements"
+    },
+    {
+      "engine": "webkit",
+      "name": "unavailable or unpaid membership denies {\"sessionError\":true}",
+      "status": "PASS",
+      "fictionalTransport": true,
+      "sessionError": true
+    },
+    {
+      "engine": "webkit",
+      "name": "explicit signout clears private view",
+      "status": "PASS",
+      "fictionalTransport": true
+    },
+    {
+      "engine": "webkit",
+      "name": "member root signing and dashboard roundtrip",
+      "status": "PASS",
+      "fictionalTransport": true,
+      "route": "/member/",
+      "width": 390
+    }
+  ],
+  "failures": [],
+  "counts": {
+    "pass": 36,
+    "fail": 0,
+    "blocked": 0
+  },
+  "productionCalls": 0,
+  "realClientData": false
+}

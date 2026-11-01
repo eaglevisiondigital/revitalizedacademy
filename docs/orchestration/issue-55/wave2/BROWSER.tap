@@ -1,0 +1,14 @@
+✔ Chromium 1440px baseline injection proof, fixed error DOM, opt-in share/CRM fixture (1208.018041ms)
+✔ Chromium 768px baseline injection proof, fixed error DOM, opt-in share/CRM fixture (623.606708ms)
+✔ Chromium 390px baseline injection proof, fixed error DOM, opt-in share/CRM fixture (606.079875ms)
+✔ WebKit 1440px baseline injection proof, fixed error DOM, opt-in share/CRM fixture (1792.029ms)
+✔ WebKit 768px baseline injection proof, fixed error DOM, opt-in share/CRM fixture (1700.829083ms)
+✔ WebKit 390px baseline injection proof, fixed error DOM, opt-in share/CRM fixture (1289.167334ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7544.399

@@ -1,0 +1,28 @@
+{
+  "at": "2026-11-01T13:52:28.579763+00:00",
+  "baseCommit": "fc6737415da36b4306afa0060a525eca2f1131ca",
+  "implementationCommit": "38c16c9baeaa013e867e1230d775c179e91410e4",
+  "historicalShellCommit": "670bd73c35e3c2330bedca5ca4240b55047e7075",
+  "node": "v24.20.0",
+  "playwrightVersion": "1.62.1",
+  "fileSha256": {
+    "member/index.html": "8558a7e8883d075cda87eead98cb0a89750c549eee5813074c2d66fd2ad7a6bd",
+    "member/dashboard.html": "66d6f222fa12f2a1dd800ba34822df009ecb895c0a0b8fa561896419fe58c54a",
+    "member/member110.js": "9cf5f62a4ca59055b0c50c45bfa8cf1bd3cd825d3cc2c48a3f04d1be54b95a1b",
+    "tests/wave2-architecture/browser.cjs": "18794d7e096ad55add64e6e36a40063c07fc66ddbc00cba9e613702f172e168b",
+    "tests/wave2-architecture/contracts.test.cjs": "2dcafdd289ef65b76e7f7f8bfba27af20cf5465ae577d6b3d269efb648348d43",
+    "tests/wave2-architecture/fixture.cjs": "4db9409c433e463bc36d09c378463ed797acfa4881de134b172b41e9dffaf542",
+    "member/onboarding/index.html": "bf672eb1bb5f936a6fc34e7b76517bc3f21efb89dbfb8d96a13347e07dcbf423",
+    "member/onboarding/onboarding.js": "c04581828dca9eca3f497d1c8168e47c933a0ebd9e91fb4f3597f4edbb13d1c5",
+    "member/member110.css": "aef6cd75a1068ab4a381201a46903e3ea9b13f77dd9f90461742300f481774dc",
+    "config/production-public-files.json": "5747f3b954123ad002eeceb28a1cc1c478b1d14047566873848221173f41af56"
+  },
+  "receiptSha256": {
+    "CONTRACT_RESULTS.json": "bf9a016a11d76756ef02b2218efb0b1ec1dfc77bee9e859df9986fcc9c8fb3f8",
+    "BROWSER_RESULTS.json": "06390156eb87147d7a59cfc70f323852d961e8fa78c38abcfac18252917593af"
+  },
+  "browserTransport": "SDK client and backend query/Auth events are fictional; actual baseline/patched application scripts and existing CSS/HTML execute in browsers",
+  "productionCallsByLane": 0,
+  "browserRunnerHashAt36CaseExecution": "e753aed58a93d48b8c368a024e5070a5f044455eac1ca39fecf90d3b12a434cd",
+  "browserRunnerSubsequentChange": "Output destination only: RVA_WAVE2_A_OUTPUT optional override, default unchanged; syntax checked; no runtime code change or repeated browser run."
+}

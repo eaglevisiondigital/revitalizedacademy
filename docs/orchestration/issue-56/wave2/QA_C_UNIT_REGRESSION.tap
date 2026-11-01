@@ -1,0 +1,580 @@
+TAP version 13
+# node:internal/modules/cjs/loader:1568
+#   throw err;
+#   ^
+# Error: Cannot find module 'jsdom'
+# Require stack:
+# - /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-qa/tests/assessment-person.cjs
+#     at Module._resolveFilename (node:internal/modules/cjs/loader:1564:15)
+#     at wrapResolveFilename (node:internal/modules/cjs/loader:1118:27)
+#     at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1142:10)
+#     at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1169:12)
+#     at Module._load (node:internal/modules/cjs/loader:1341:5)
+#     at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+#     at Module.require (node:internal/modules/cjs/loader:1674:12)
+#     at require (node:internal/modules/helpers:157:16)
+#     at Object.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-qa/tests/assessment-person.cjs:7:19)
+#     at Module._compile (node:internal/modules/cjs/loader:1929:14) {
+#   code: 'MODULE_NOT_FOUND',
+#   requireStack: [
+#     '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-qa/tests/assessment-person.cjs'
+#   ]
+# }
+# Node.js v24.20.0
+# Subtest: tests/assessment-person.cjs
+not ok 1 - tests/assessment-person.cjs
+  ---
+  duration_ms: 70.662292
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-qa/tests/assessment-person.cjs:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# node:internal/modules/cjs/loader:1568
+#   throw err;
+#   ^
+# Error: Cannot find module 'jsdom'
+# Require stack:
+# - /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-qa/tests/staff-session-runtime.cjs
+#     at Module._resolveFilename (node:internal/modules/cjs/loader:1564:15)
+#     at wrapResolveFilename (node:internal/modules/cjs/loader:1118:27)
+#     at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1142:10)
+#     at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1169:12)
+#     at Module._load (node:internal/modules/cjs/loader:1341:5)
+#     at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+#     at Module.require (node:internal/modules/cjs/loader:1674:12)
+#     at require (node:internal/modules/helpers:157:16)
+#     at Object.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-qa/tests/staff-session-runtime.cjs:5:30)
+#     at Module._compile (node:internal/modules/cjs/loader:1929:14) {
+#   code: 'MODULE_NOT_FOUND',
+#   requireStack: [
+#     '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-qa/tests/staff-session-runtime.cjs'
+#   ]
+# }
+# Node.js v24.20.0
+# Subtest: tests/staff-session-runtime.cjs
+not ok 2 - tests/staff-session-runtime.cjs
+  ---
+  duration_ms: 65.909458
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-qa/tests/staff-session-runtime.cjs:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# node:internal/modules/cjs/loader:1568
+#   throw err;
+#   ^
+# Error: Cannot find module 'jsdom'
+# Require stack:
+# - /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-qa/tests/vitality-resume.cjs
+#     at Module._resolveFilename (node:internal/modules/cjs/loader:1564:15)
+#     at wrapResolveFilename (node:internal/modules/cjs/loader:1118:27)
+#     at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1142:10)
+#     at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1169:12)
+#     at Module._load (node:internal/modules/cjs/loader:1341:5)
+#     at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+#     at Module.require (node:internal/modules/cjs/loader:1674:12)
+#     at require (node:internal/modules/helpers:157:16)
+#     at Object.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-qa/tests/vitality-resume.cjs:1:152)
+#     at Module._compile (node:internal/modules/cjs/loader:1929:14) {
+#   code: 'MODULE_NOT_FOUND',
+#   requireStack: [
+#     '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-qa/tests/vitality-resume.cjs'
+#   ]
+# }
+# Node.js v24.20.0
+# Subtest: tests/vitality-resume.cjs
+not ok 3 - tests/vitality-resume.cjs
+  ---
+  duration_ms: 63.353125
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-qa/tests/vitality-resume.cjs:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: approved email returns own link/copy/disclosure and exact QR input
+ok 4 - approved email returns own link/copy/disclosure and exact QR input
+  ---
+  duration_ms: 2.704416
+  type: 'test'
+  ...
+# Subtest: approved sms returns own link/copy/disclosure and exact QR input
+ok 5 - approved sms returns own link/copy/disclosure and exact QR input
+  ---
+  duration_ms: 0.303959
+  type: 'test'
+  ...
+# Subtest: approved dm returns own link/copy/disclosure and exact QR input
+ok 6 - approved dm returns own link/copy/disclosure and exact QR input
+  ---
+  duration_ms: 0.215833
+  type: 'test'
+  ...
+# Subtest: approved social returns own link/copy/disclosure and exact QR input
+ok 7 - approved social returns own link/copy/disclosure and exact QR input
+  ---
+  duration_ms: 0.1355
+  type: 'test'
+  ...
+# Subtest: default disabled
+ok 8 - default disabled
+  ---
+  duration_ms: 0.257458
+  type: 'test'
+  ...
+# Subtest: unauthenticated snapshot
+ok 9 - unauthenticated snapshot
+  ---
+  duration_ms: 0.066709
+  type: 'test'
+  ...
+# Subtest: wrong user
+ok 10 - wrong user
+  ---
+  duration_ms: 0.061333
+  type: 'test'
+  ...
+# Subtest: wrong contact
+ok 11 - wrong contact
+  ---
+  duration_ms: 0.056417
+  type: 'test'
+  ...
+# Subtest: revoked profile
+ok 12 - revoked profile
+  ---
+  duration_ms: 0.080083
+  type: 'test'
+  ...
+# Subtest: draft campaign
+ok 13 - draft campaign
+  ---
+  duration_ms: 0.117834
+  type: 'test'
+  ...
+# Subtest: campaign edit requires reapproval
+ok 14 - campaign edit requires reapproval
+  ---
+  duration_ms: 0.061083
+  type: 'test'
+  ...
+# Subtest: stale creative campaign pin
+ok 15 - stale creative campaign pin
+  ---
+  duration_ms: 0.050916
+  type: 'test'
+  ...
+# Subtest: unapproved creative
+ok 16 - unapproved creative
+  ---
+  duration_ms: 0.046
+  type: 'test'
+  ...
+# Subtest: creative edit requires reapproval
+ok 17 - creative edit requires reapproval
+  ---
+  duration_ms: 0.041291
+  type: 'test'
+  ...
+# Subtest: unapproved copy revision
+ok 18 - unapproved copy revision
+  ---
+  duration_ms: 0.042791
+  type: 'test'
+  ...
+# Subtest: unsupported channel
+ok 19 - unsupported channel
+  ---
+  duration_ms: 0.033792
+  type: 'test'
+  ...
+# Subtest: channel not approved for creative
+ok 20 - channel not approved for creative
+  ---
+  duration_ms: 0.036125
+  type: 'test'
+  ...
+# Subtest: market not approved
+ok 21 - market not approved
+  ---
+  duration_ms: 0.033625
+  type: 'test'
+  ...
+# Subtest: blank disclosure
+ok 22 - blank disclosure
+  ---
+  duration_ms: 0.037958
+  type: 'test'
+  ...
+# Subtest: oversized copy
+ok 23 - oversized copy
+  ---
+  duration_ms: 0.050375
+  type: 'test'
+  ...
+# Subtest: control byte in copy
+ok 24 - control byte in copy
+  ---
+  duration_ms: 0.039583
+  type: 'test'
+  ...
+# Subtest: campaign revoked
+ok 25 - campaign revoked
+  ---
+  duration_ms: 0.063333
+  type: 'test'
+  ...
+# Subtest: campaign expired at exact boundary
+ok 26 - campaign expired at exact boundary
+  ---
+  duration_ms: 0.048667
+  type: 'test'
+  ...
+# Subtest: campaign future availability
+ok 27 - campaign future availability
+  ---
+  duration_ms: 0.05025
+  type: 'test'
+  ...
+# Subtest: campaign malformed time
+ok 28 - campaign malformed time
+  ---
+  duration_ms: 0.047667
+  type: 'test'
+  ...
+# Subtest: creative revoked
+ok 29 - creative revoked
+  ---
+  duration_ms: 0.040708
+  type: 'test'
+  ...
+# Subtest: creative expired at exact boundary
+ok 30 - creative expired at exact boundary
+  ---
+  duration_ms: 0.03125
+  type: 'test'
+  ...
+# Subtest: creative future availability
+ok 31 - creative future availability
+  ---
+  duration_ms: 0.043375
+  type: 'test'
+  ...
+# Subtest: creative malformed time
+ok 32 - creative malformed time
+  ---
+  duration_ms: 0.03975
+  type: 'test'
+  ...
+# Subtest: destination rejects javascript:alert(1)
+ok 33 - destination rejects javascript:alert(1)
+  ---
+  duration_ms: 0.568375
+  type: 'test'
+  ...
+# Subtest: destination rejects data:text/html,x
+ok 34 - destination rejects data:text/html,x
+  ---
+  duration_ms: 0.110166
+  type: 'test'
+  ...
+# Subtest: destination rejects //evil.invalid/enroll
+ok 35 - destination rejects //evil.invalid/enroll
+  ---
+  duration_ms: 0.064042
+  type: 'test'
+  ...
+# Subtest: destination rejects http://academy.invalid/enroll
+ok 36 - destination rejects http://academy.invalid/enroll
+  ---
+  duration_ms: 0.041458
+  type: 'test'
+  ...
+# Subtest: destination rejects https://academy.invalid.evil.invalid/enroll
+ok 37 - destination rejects https://academy.invalid.evil.invalid/enroll
+  ---
+  duration_ms: 0.042875
+  type: 'test'
+  ...
+# Subtest: destination rejects https://evil.invalid/enroll
+ok 38 - destination rejects https://evil.invalid/enroll
+  ---
+  duration_ms: 0.054125
+  type: 'test'
+  ...
+# Subtest: destination rejects https://a@academy.invalid/enroll
+ok 39 - destination rejects https://a@academy.invalid/enroll
+  ---
+  duration_ms: 0.056209
+  type: 'test'
+  ...
+# Subtest: destination rejects https://academy.invalid/enroll\#x
+ok 40 - destination rejects https://academy.invalid/enroll\#x
+  ---
+  duration_ms: 0.042417
+  type: 'test'
+  ...
+# Subtest: destination rejects https://academy.invalid/enroll?redirect=https://evil.invalid
+ok 41 - destination rejects https://academy.invalid/enroll?redirect=https://evil.invalid
+  ---
+  duration_ms: 0.041
+  type: 'test'
+  ...
+# Subtest: destination rejects https://academy.invalid/%2fenroll
+ok 42 - destination rejects https://academy.invalid/%2fenroll
+  ---
+  duration_ms: 0.055625
+  type: 'test'
+  ...
+# Subtest: destination rejects https://academy.invalid/enroll%0A
+ok 43 - destination rejects https://academy.invalid/enroll%0A
+  ---
+  duration_ms: 0.060125
+  type: 'test'
+  ...
+# Subtest: destination rejects https://academy.invalid\\evil/enroll
+ok 44 - destination rejects https://academy.invalid\\evil/enroll
+  ---
+  duration_ms: 0.042375
+  type: 'test'
+  ...
+# Subtest: asset rejects javascript:alert(1)
+ok 45 - asset rejects javascript:alert(1)
+  ---
+  duration_ms: 0.117084
+  type: 'test'
+  ...
+# Subtest: asset rejects https://evil.invalid/a.pdf
+ok 46 - asset rejects https://evil.invalid/a.pdf
+  ---
+  duration_ms: 0.087416
+  type: 'test'
+  ...
+# Subtest: asset rejects https://media.invalid/a.pdf?token=private
+ok 47 - asset rejects https://media.invalid/a.pdf?token=private
+  ---
+  duration_ms: 0.06675
+  type: 'test'
+  ...
+# Subtest: asset rejects https://u:p@media.invalid/a.pdf
+ok 48 - asset rejects https://u:p@media.invalid/a.pdf
+  ---
+  duration_ms: 0.05775
+  type: 'test'
+  ...
+# Subtest: wrong affiliate URL code
+ok 49 - wrong affiliate URL code
+  ---
+  duration_ms: 0.060791
+  type: 'test'
+  ...
+# Subtest: duplicate ref query
+ok 50 - duplicate ref query
+  ---
+  duration_ms: 0.058875
+  type: 'test'
+  ...
+# Subtest: extra URL field can carry PII
+ok 51 - extra URL field can carry PII
+  ---
+  duration_ms: 0.061042
+  type: 'test'
+  ...
+# Subtest: invalid code
+ok 52 - invalid code
+  ---
+  duration_ms: 0.047875
+  type: 'test'
+  ...
+# Subtest: HTML copy stays data; never becomes markup
+ok 53 - HTML copy stays data; never becomes markup
+  ---
+  duration_ms: 0.069416
+  type: 'test'
+  ...
+# Subtest: minimal CRM projection discards health, identity, money and arbitrary metadata
+ok 54 - minimal CRM projection discards health, identity, money and arbitrary metadata
+  ---
+  duration_ms: 0.850875
+  type: 'test'
+  ...
+# Subtest: CRM denies wrong affiliate
+ok 55 - CRM denies wrong affiliate
+  ---
+  duration_ms: 0.062416
+  type: 'test'
+  ...
+# Subtest: CRM denies wrong disclosure user
+ok 56 - CRM denies wrong disclosure user
+  ---
+  duration_ms: 0.040291
+  type: 'test'
+  ...
+# Subtest: CRM denies wrong disclosure subject
+ok 57 - CRM denies wrong disclosure subject
+  ---
+  duration_ms: 0.0385
+  type: 'test'
+  ...
+# Subtest: CRM denies no approved disclosure
+ok 58 - CRM denies no approved disclosure
+  ---
+  duration_ms: 0.039041
+  type: 'test'
+  ...
+# Subtest: CRM denies revoked disclosure
+ok 59 - CRM denies revoked disclosure
+  ---
+  duration_ms: 0.043542
+  type: 'test'
+  ...
+# Subtest: CRM denies expired disclosure
+ok 60 - CRM denies expired disclosure
+  ---
+  duration_ms: 0.039167
+  type: 'test'
+  ...
+# Subtest: CRM denies future disclosure
+ok 61 - CRM denies future disclosure
+  ---
+  duration_ms: 0.037208
+  type: 'test'
+  ...
+# Subtest: CRM denies unconsented converted stage
+ok 62 - CRM denies unconsented converted stage
+  ---
+  duration_ms: 0.037875
+  type: 'test'
+  ...
+# Subtest: CRM denies health stage value
+ok 63 - CRM denies health stage value
+  ---
+  duration_ms: 0.040584
+  type: 'test'
+  ...
+# Subtest: 100 duplicate clicks result in one minimal evidence row, no earning
+ok 64 - 100 duplicate clicks result in one minimal evidence row, no earning
+  ---
+  duration_ms: 0.717458
+  type: 'test'
+  ...
+# Subtest: changed attribution under same event key is rejected without state mutation
+ok 65 - changed attribution under same event key is rejected without state mutation
+  ---
+  duration_ms: 0.437917
+  type: 'test'
+  ...
+# Subtest: share.created is nonfinancial evidence only
+ok 66 - share.created is nonfinancial evidence only
+  ---
+  duration_ms: 0.036541
+  type: 'test'
+  ...
+# Subtest: share.clicked is nonfinancial evidence only
+ok 67 - share.clicked is nonfinancial evidence only
+  ---
+  duration_ms: 0.0355
+  type: 'test'
+  ...
+# Subtest: appointment.booked is nonfinancial evidence only
+ok 68 - appointment.booked is nonfinancial evidence only
+  ---
+  duration_ms: 0.022333
+  type: 'test'
+  ...
+# Subtest: payment.settled cannot enter touchpoint reducer
+ok 69 - payment.settled cannot enter touchpoint reducer
+  ---
+  duration_ms: 0.048209
+  type: 'test'
+  ...
+# Subtest: commission.earned cannot enter touchpoint reducer
+ok 70 - commission.earned cannot enter touchpoint reducer
+  ---
+  duration_ms: 0.030333
+  type: 'test'
+  ...
+# Subtest: payout.requested cannot enter touchpoint reducer
+ok 71 - payout.requested cannot enter touchpoint reducer
+  ---
+  duration_ms: 0.030041
+  type: 'test'
+  ...
+# Subtest: touchpoint denies wrong state scope
+ok 72 - touchpoint denies wrong state scope
+  ---
+  duration_ms: 0.064917
+  type: 'test'
+  ...
+# Subtest: touchpoint denies wrong state owner
+ok 73 - touchpoint denies wrong state owner
+  ---
+  duration_ms: 0.044
+  type: 'test'
+  ...
+# Subtest: touchpoint denies wrong event owner
+ok 74 - touchpoint denies wrong event owner
+  ---
+  duration_ms: 0.038333
+  type: 'test'
+  ...
+# Subtest: touchpoint denies future event
+ok 75 - touchpoint denies future event
+  ---
+  duration_ms: 0.034834
+  type: 'test'
+  ...
+# Subtest: touchpoint denies missing tracking consent
+ok 76 - touchpoint denies missing tracking consent
+  ---
+  duration_ms: 0.04
+  type: 'test'
+  ...
+# Subtest: touchpoint denies revoked tracking consent
+ok 77 - touchpoint denies revoked tracking consent
+  ---
+  duration_ms: 0.035459
+  type: 'test'
+  ...
+# Subtest: touchpoint denies expired tracking consent
+ok 78 - touchpoint denies expired tracking consent
+  ---
+  duration_ms: 0.034792
+  type: 'test'
+  ...
+# Subtest: replay reprojects previous state and drops private extra fields
+ok 79 - replay reprojects previous state and drops private extra fields
+  ---
+  duration_ms: 0.332667
+  type: 'test'
+  ...
+# Subtest: bounded event state has an explicit capacity boundary
+ok 80 - bounded event state has an explicit capacity boundary
+  ---
+  duration_ms: 1.168583
+  type: 'test'
+  ...
+# Subtest: preexisting duplicate state is rejected rather than amplified
+ok 81 - preexisting duplicate state is rejected rather than amplified
+  ---
+  duration_ms: 0.064333
+  type: 'test'
+  ...
+1..81
+# tests 81
+# suites 0
+# pass 78
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 104.277625

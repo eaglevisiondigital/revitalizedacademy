@@ -1,0 +1,862 @@
+TAP version 13
+# Subtest: first lead saves independently; failed lead does not advance
+ok 1 - first lead saves independently; failed lead does not advance
+  ---
+  duration_ms: 1665.595875
+  type: 'test'
+  ...
+# Subtest: proxy details, relationship, age and authorization are required; switching hides stale values
+ok 2 - proxy details, relationship, age and authorization are required; switching hides stale values
+  ---
+  duration_ms: 3170.474917
+  type: 'test'
+  ...
+# Subtest: full completion: Myself, age self, Male, Male
+ok 3 - full completion: Myself, age self, Male, Male
+  ---
+  duration_ms: 10589.787833
+  type: 'test'
+  ...
+# Subtest: full completion: My child, age 19, Male, Male
+ok 4 - full completion: My child, age 19, Male, Male
+  ---
+  duration_ms: 10160.881
+  type: 'test'
+  ...
+# Subtest: full completion: My spouse, age 35, Female, Pregnant
+ok 5 - full completion: My spouse, age 35, Female, Pregnant
+  ---
+  duration_ms: 18473.272334
+  type: 'test'
+  ...
+# Subtest: full completion: Someone else, age 35, Female, Postpartum
+ok 6 - full completion: Someone else, age 35, Female, Postpartum
+  ---
+  duration_ms: 16985.211541
+  type: 'test'
+  ...
+# Subtest: full completion: Someone else, age 55, Female, Perimenopause
+ok 7 - full completion: Someone else, age 55, Female, Perimenopause
+  ---
+  duration_ms: 8727.817583
+  type: 'test'
+  ...
+# Subtest: full completion: Someone else, age 60, Female, Menopause
+ok 8 - full completion: Someone else, age 60, Female, Menopause
+  ---
+  duration_ms: 9182.01425
+  type: 'test'
+  ...
+# Subtest: new subject display is text-only and never alters clinical section markup
+ok 9 - new subject display is text-only and never alters clinical section markup
+  ---
+  duration_ms: 1323.1395
+  type: 'test'
+  ...
+# Subtest: child age 0: full approved questionnaire, independent lead, child-only coach record
+ok 10 - child age 0: full approved questionnaire, independent lead, child-only coach record
+  ---
+  duration_ms: 2895.638292
+  type: 'test'
+  ...
+# Subtest: child age 8: full approved questionnaire, independent lead, child-only coach record
+ok 11 - child age 8: full approved questionnaire, independent lead, child-only coach record
+  ---
+  duration_ms: 5127.251458
+  type: 'test'
+  ...
+# Subtest: child age 18: full approved questionnaire, independent lead, child-only coach record
+ok 12 - child age 18: full approved questionnaire, independent lead, child-only coach record
+  ---
+  duration_ms: 2908.64175
+  type: 'test'
+  ...
+# Subtest: switching child/adult question sets drops stale answers and preserves lead and identity controls
+ok 13 - switching child/adult question sets drops stale answers and preserves lead and identity controls
+  ---
+  duration_ms: 1729.001958
+  type: 'test'
+  ...
+# Subtest: child follow-ups clear deselected concerns; period and digestion branches disable hidden answers
+ok 14 - child follow-ups clear deselected concerns; period and digestion branches disable hidden answers
+  ---
+  duration_ms: 1244.103458
+  type: 'test'
+  ...
+# Subtest: child required choices and detail questions block precisely; skipped optional puberty does not block
+ok 15 - child required choices and detail questions block precisely; skipped optional puberty does not block
+  ---
+  duration_ms: 1630.405041
+  type: 'test'
+  ...
+# Subtest: missing child module blocks child continuation without losing captured lead or breaking adults
+ok 16 - missing child module blocks child continuation without losing captured lead or breaking adults
+  ---
+  duration_ms: 1328.274459
+  type: 'test'
+  ...
+# Subtest: gut questions appear once in Driver 7; stool choices cap at three and validate without change events
+ok 17 - gut questions appear once in Driver 7; stool choices cap at three and validate without change events
+  ---
+  duration_ms: 13482.0895
+  type: 'test'
+  ...
+# Subtest: reproductive pathways require a selection and validate only the visible sex-specific symptom details
+ok 18 - reproductive pathways require a selection and validate only the visible sex-specific symptom details
+  ---
+  duration_ms: 3590.274208
+  type: 'test'
+  ...
+# Subtest: adult and child submissions have a separate required closing step and optional context
+ok 19 - adult and child submissions have a separate required closing step and optional context
+  ---
+  duration_ms: 12056.618834
+  type: 'test'
+  ...
+# Subtest: child gender offers only Male and Female, requires an answer and clears on adult switch
+ok 20 - child gender offers only Male and Female, requires an answer and clears on adult switch
+  ---
+  duration_ms: 2166.951542
+  type: 'test'
+  ...
+# Subtest: staff auth client keeps persistent storage and automatic token refresh enabled
+ok 21 - staff auth client keeps persistent storage and automatic token refresh enabled
+  ---
+  duration_ms: 219.165916
+  type: 'test'
+  ...
+# Subtest: temporary empty startup session remains neutral until INITIAL_SESSION restores staff
+ok 22 - temporary empty startup session remains neutral until INITIAL_SESSION restores staff
+  ---
+  duration_ms: 175.747292
+  type: 'test'
+  ...
+# Subtest: normal refresh, hard-refresh bootstrap and a second tab restore one staff identity
+ok 23 - normal refresh, hard-refresh bootstrap and a second tab restore one staff identity
+  ---
+  duration_ms: 335.626958
+  type: 'test'
+  ...
+# Subtest: duplicate restore events do not issue duplicate staff bootstrap requests
+ok 24 - duplicate restore events do not issue duplicate staff bootstrap requests
+  ---
+  duration_ms: 152.720459
+  type: 'test'
+  ...
+# Subtest: token refresh preserves visible workspace while reauthorizing, then fails closed if revoked
+ok 25 - token refresh preserves visible workspace while reauthorizing, then fails closed if revoked
+  ---
+  duration_ms: 197.757375
+  type: 'test'
+  ...
+# Subtest: logout clears private state across tabs and remains logged out after a new bootstrap
+ok 26 - logout clears private state across tabs and remains logged out after a new bootstrap
+  ---
+  duration_ms: 335.88425
+  type: 'test'
+  ...
+# Subtest: different-account event destroys the prior staff document before resolving the new account
+ok 27 - different-account event destroys the prior staff document before resolving the new account
+  ---
+  duration_ms: 110.533
+  type: 'test'
+  ...
+# Subtest: same-account access transport failure pauses without restarting or trusting cached access
+ok 28 - same-account access transport failure pauses without restarting or trusting cached access
+  ---
+  duration_ms: 147.6085
+  type: 'test'
+  ...
+# Subtest: a thrown same-account access request remains recoverable without an unhandled exception
+ok 29 - a thrown same-account access request remains recoverable without an unhandled exception
+  ---
+  duration_ms: 145.641792
+  type: 'test'
+  ...
+# Subtest: authoritative denial or changed role still destroys the old workspace
+ok 30 - authoritative denial or changed role still destroys the old workspace
+  ---
+  duration_ms: 283.412542
+  type: 'test'
+  ...
+# Subtest: first contact capture remains independent and health entry waits for verified email
+ok 31 - first contact capture remains independent and health entry waits for verified email
+  ---
+  duration_ms: 367.469959
+  type: 'test'
+  ...
+# Subtest: referral source is required and exposes only the selected conditional detail
+ok 32 - referral source is required and exposes only the selected conditional detail
+  ---
+  duration_ms: 265.257375
+  type: 'test'
+  ...
+# Subtest: Sales Rep referral is included in the initial secure payload and restored identity
+ok 33 - Sales Rep referral is included in the initial secure payload and restored identity
+  ---
+  duration_ms: 910.19925
+  type: 'test'
+  ...
+# Subtest: no raw answers are written to browser storage
+ok 34 - no raw answers are written to browser storage
+  ---
+  duration_ms: 639.567291
+  type: 'test'
+  ...
+# Subtest: closing a tab loses its credential; plain new tab needs fresh email recovery without resetting the server draft
+ok 35 - closing a tab loses its credential; plain new tab needs fresh email recovery without resetting the server draft
+  ---
+  duration_ms: 2369.464792
+  type: 'test'
+  ...
+# Subtest: a second email-link open fails closed without replacing the draft or invalidating its original session
+ok 36 - a second email-link open fails closed without replacing the draft or invalidating its original session
+  ---
+  duration_ms: 2386.796667
+  type: 'test'
+  ...
+# Subtest: debounce coalesces repeated text input and only acknowledges a server save
+ok 37 - debounce coalesces repeated text input and only acknowledges a server save
+  ---
+  duration_ms: 1380.788792
+  type: 'test'
+  ...
+# Subtest: radio restores after a new document using server state
+ok 38 - radio restores after a new document using server state
+  ---
+  duration_ms: 1856.424292
+  type: 'test'
+  ...
+# Subtest: checkbox restores after a new document using server state
+ok 39 - checkbox restores after a new document using server state
+  ---
+  duration_ms: 1932.409958
+  type: 'test'
+  ...
+# Subtest: text restores after a new document using server state
+ok 40 - text restores after a new document using server state
+  ---
+  duration_ms: 2122.203417
+  type: 'test'
+  ...
+# Subtest: range-zero restores after a new document using server state
+ok 41 - range-zero restores after a new document using server state
+  ---
+  duration_ms: 1614.9465
+  type: 'test'
+  ...
+# Subtest: numeric zero remains numeric and blank numeric remains blank
+ok 42 - numeric zero remains numeric and blank numeric remains blank
+  ---
+  duration_ms: 888.466625
+  type: 'test'
+  ...
+# Subtest: child pathway, guardian permission and conditional proxy details restore
+ok 43 - child pathway, guardian permission and conditional proxy details restore
+  ---
+  duration_ms: 1566.501541
+  type: 'test'
+  ...
+# Subtest: adult proxy and permission restore without requiring paid membership
+ok 44 - adult proxy and permission restore without requiring paid membership
+  ---
+  duration_ms: 2022.857
+  type: 'test'
+  ...
+# Subtest: dynamic symptom detail restores after its controlling checkbox creates the fields
+ok 45 - dynamic symptom detail restores after its controlling checkbox creates the fields
+  ---
+  duration_ms: 1806.202375
+  type: 'test'
+  ...
+# Subtest: section and progress restore with a retained session credential after document reload
+ok 46 - section and progress restore with a retained session credential after document reload
+  ---
+  duration_ms: 1725.427958
+  type: 'test'
+  ...
+# Subtest: failed autosave retains current answers and Retry succeeds without false Saved
+ok 47 - failed autosave retains current answers and Retry succeeds without false Saved
+  ---
+  duration_ms: 560.096958
+  type: 'test'
+  ...
+# Subtest: edits during an outstanding save are serialized and latest content is persisted
+ok 48 - edits during an outstanding save are serialized and latest content is persisted
+  ---
+  duration_ms: 648.169666
+  type: 'test'
+  ...
+# Subtest: continue later flushes before sending recovery request
+ok 49 - continue later flushes before sending recovery request
+  ---
+  duration_ms: 535.394958
+  type: 'test'
+  ...
+# Subtest: email-only recovery never restores answers directly
+ok 50 - email-only recovery never restores answers directly
+  ---
+  duration_ms: 180.921667
+  type: 'test'
+  ...
+# Subtest: required fields still block section navigation after resume
+ok 51 - required fields still block section navigation after resume
+  ---
+  duration_ms: 657.810459
+  type: 'test'
+  ...
+# Subtest: completed state cannot reopen editable fields and shows 100 percent
+ok 52 - completed state cannot reopen editable fields and shows 100 percent
+  ---
+  duration_ms: 228.100208
+  type: 'test'
+  ...
+# Subtest: final submission is routed through the secure contract and locks the form
+ok 53 - final submission is routed through the secure contract and locks the form
+  ---
+  duration_ms: 556.857292
+  type: 'test'
+  ...
+# Subtest: normal final submission after server restoration retains coach summary and completes once
+ok 54 - normal final submission after server restoration retains coach summary and completes once
+  ---
+  duration_ms: 28204.076583
+  type: 'test'
+  ...
+# Subtest: entry offers Start and Resume without requests or creating an identity
+ok 55 - entry offers Start and Resume without requests or creating an identity
+  ---
+  duration_ms: 226.098625
+  type: 'test'
+  ...
+# Subtest: Resume opens the one existing recovery form and switching preserves unsent contact fields
+ok 56 - Resume opens the one existing recovery form and switching preserves unsent contact fields
+  ---
+  duration_ms: 217.37625
+  type: 'test'
+  ...
+# Subtest: invalid recovery email sends no request
+ok 57 - invalid recovery email sends no request
+  ---
+  duration_ms: 203.6595
+  type: 'test'
+  ...
+# Subtest: recovery uses the existing endpoint with email only and a fixed neutral confirmation
+ok 58 - recovery uses the existing endpoint with email only and a fixed neutral confirmation
+  ---
+  duration_ms: 435.477625
+  type: 'test'
+  ...
+# Subtest: duplicate recovery submission is suppressed while one request is pending
+ok 59 - duplicate recovery submission is suppressed while one request is pending
+  ---
+  duration_ms: 230.416208
+  type: 'test'
+  ...
+# Subtest: recovery transport failure keeps form retryable without a success confirmation
+ok 60 - recovery transport failure keeps form retryable without a success confirmation
+  ---
+  duration_ms: 200.833541
+  type: 'test'
+  ...
+# Subtest: verified restoration hides entry/recovery choices and preserves the active assessment stage
+ok 61 - verified restoration hides entry/recovery choices and preserves the active assessment stage
+  ---
+  duration_ms: 511.77475
+  type: 'test'
+  ...
+# Subtest: completed reload marks all three stages complete, keeps 100%, and cannot expose entry controls
+ok 62 - completed reload marks all three stages complete, keeps 100%, and cannot expose entry controls
+  ---
+  duration_ms: 241.618959
+  type: 'test'
+  ...
+# Subtest: five rapid contact submits lock immediately, make one secure start and no browser Netlify posts
+ok 63 - five rapid contact submits lock immediately, make one secure start and no browser Netlify posts
+  ---
+  duration_ms: 252.013833
+  type: 'test'
+  ...
+# Subtest: pending opaque mail credential survives script-loading reload and clears after direct resume
+ok 64 - pending opaque mail credential survives script-loading reload and clears after direct resume
+  ---
+  duration_ms: 566.725041
+  type: 'test'
+  ...
+# Subtest: approved email returns own link/copy/disclosure and exact QR input
+ok 65 - approved email returns own link/copy/disclosure and exact QR input
+  ---
+  duration_ms: 2.949167
+  type: 'test'
+  ...
+# Subtest: approved sms returns own link/copy/disclosure and exact QR input
+ok 66 - approved sms returns own link/copy/disclosure and exact QR input
+  ---
+  duration_ms: 0.283416
+  type: 'test'
+  ...
+# Subtest: approved dm returns own link/copy/disclosure and exact QR input
+ok 67 - approved dm returns own link/copy/disclosure and exact QR input
+  ---
+  duration_ms: 0.157166
+  type: 'test'
+  ...
+# Subtest: approved social returns own link/copy/disclosure and exact QR input
+ok 68 - approved social returns own link/copy/disclosure and exact QR input
+  ---
+  duration_ms: 0.124917
+  type: 'test'
+  ...
+# Subtest: default disabled
+ok 69 - default disabled
+  ---
+  duration_ms: 0.253709
+  type: 'test'
+  ...
+# Subtest: unauthenticated snapshot
+ok 70 - unauthenticated snapshot
+  ---
+  duration_ms: 0.061041
+  type: 'test'
+  ...
+# Subtest: wrong user
+ok 71 - wrong user
+  ---
+  duration_ms: 0.058583
+  type: 'test'
+  ...
+# Subtest: wrong contact
+ok 72 - wrong contact
+  ---
+  duration_ms: 0.055333
+  type: 'test'
+  ...
+# Subtest: revoked profile
+ok 73 - revoked profile
+  ---
+  duration_ms: 0.070667
+  type: 'test'
+  ...
+# Subtest: draft campaign
+ok 74 - draft campaign
+  ---
+  duration_ms: 0.114458
+  type: 'test'
+  ...
+# Subtest: campaign edit requires reapproval
+ok 75 - campaign edit requires reapproval
+  ---
+  duration_ms: 0.066041
+  type: 'test'
+  ...
+# Subtest: stale creative campaign pin
+ok 76 - stale creative campaign pin
+  ---
+  duration_ms: 0.051583
+  type: 'test'
+  ...
+# Subtest: unapproved creative
+ok 77 - unapproved creative
+  ---
+  duration_ms: 0.042792
+  type: 'test'
+  ...
+# Subtest: creative edit requires reapproval
+ok 78 - creative edit requires reapproval
+  ---
+  duration_ms: 0.044042
+  type: 'test'
+  ...
+# Subtest: unapproved copy revision
+ok 79 - unapproved copy revision
+  ---
+  duration_ms: 0.133292
+  type: 'test'
+  ...
+# Subtest: unsupported channel
+ok 80 - unsupported channel
+  ---
+  duration_ms: 0.119417
+  type: 'test'
+  ...
+# Subtest: channel not approved for creative
+ok 81 - channel not approved for creative
+  ---
+  duration_ms: 0.054958
+  type: 'test'
+  ...
+# Subtest: market not approved
+ok 82 - market not approved
+  ---
+  duration_ms: 0.0625
+  type: 'test'
+  ...
+# Subtest: blank disclosure
+ok 83 - blank disclosure
+  ---
+  duration_ms: 0.054625
+  type: 'test'
+  ...
+# Subtest: oversized copy
+ok 84 - oversized copy
+  ---
+  duration_ms: 0.054625
+  type: 'test'
+  ...
+# Subtest: control byte in copy
+ok 85 - control byte in copy
+  ---
+  duration_ms: 0.048875
+  type: 'test'
+  ...
+# Subtest: campaign revoked
+ok 86 - campaign revoked
+  ---
+  duration_ms: 0.045917
+  type: 'test'
+  ...
+# Subtest: campaign expired at exact boundary
+ok 87 - campaign expired at exact boundary
+  ---
+  duration_ms: 0.042792
+  type: 'test'
+  ...
+# Subtest: campaign future availability
+ok 88 - campaign future availability
+  ---
+  duration_ms: 0.058416
+  type: 'test'
+  ...
+# Subtest: campaign malformed time
+ok 89 - campaign malformed time
+  ---
+  duration_ms: 0.443042
+  type: 'test'
+  ...
+# Subtest: creative revoked
+ok 90 - creative revoked
+  ---
+  duration_ms: 0.129417
+  type: 'test'
+  ...
+# Subtest: creative expired at exact boundary
+ok 91 - creative expired at exact boundary
+  ---
+  duration_ms: 0.060916
+  type: 'test'
+  ...
+# Subtest: creative future availability
+ok 92 - creative future availability
+  ---
+  duration_ms: 0.060833
+  type: 'test'
+  ...
+# Subtest: creative malformed time
+ok 93 - creative malformed time
+  ---
+  duration_ms: 0.039666
+  type: 'test'
+  ...
+# Subtest: destination rejects javascript:alert(1)
+ok 94 - destination rejects javascript:alert(1)
+  ---
+  duration_ms: 0.116708
+  type: 'test'
+  ...
+# Subtest: destination rejects data:text/html,x
+ok 95 - destination rejects data:text/html,x
+  ---
+  duration_ms: 0.07275
+  type: 'test'
+  ...
+# Subtest: destination rejects //evil.invalid/enroll
+ok 96 - destination rejects //evil.invalid/enroll
+  ---
+  duration_ms: 0.051292
+  type: 'test'
+  ...
+# Subtest: destination rejects http://academy.invalid/enroll
+ok 97 - destination rejects http://academy.invalid/enroll
+  ---
+  duration_ms: 0.040917
+  type: 'test'
+  ...
+# Subtest: destination rejects https://academy.invalid.evil.invalid/enroll
+ok 98 - destination rejects https://academy.invalid.evil.invalid/enroll
+  ---
+  duration_ms: 0.041791
+  type: 'test'
+  ...
+# Subtest: destination rejects https://evil.invalid/enroll
+ok 99 - destination rejects https://evil.invalid/enroll
+  ---
+  duration_ms: 0.053667
+  type: 'test'
+  ...
+# Subtest: destination rejects https://a@academy.invalid/enroll
+ok 100 - destination rejects https://a@academy.invalid/enroll
+  ---
+  duration_ms: 0.046541
+  type: 'test'
+  ...
+# Subtest: destination rejects https://academy.invalid/enroll\#x
+ok 101 - destination rejects https://academy.invalid/enroll\#x
+  ---
+  duration_ms: 0.046791
+  type: 'test'
+  ...
+# Subtest: destination rejects https://academy.invalid/enroll?redirect=https://evil.invalid
+ok 102 - destination rejects https://academy.invalid/enroll?redirect=https://evil.invalid
+  ---
+  duration_ms: 0.042041
+  type: 'test'
+  ...
+# Subtest: destination rejects https://academy.invalid/%2fenroll
+ok 103 - destination rejects https://academy.invalid/%2fenroll
+  ---
+  duration_ms: 0.055292
+  type: 'test'
+  ...
+# Subtest: destination rejects https://academy.invalid/enroll%0A
+ok 104 - destination rejects https://academy.invalid/enroll%0A
+  ---
+  duration_ms: 0.041292
+  type: 'test'
+  ...
+# Subtest: destination rejects https://academy.invalid\\evil/enroll
+ok 105 - destination rejects https://academy.invalid\\evil/enroll
+  ---
+  duration_ms: 0.035875
+  type: 'test'
+  ...
+# Subtest: asset rejects javascript:alert(1)
+ok 106 - asset rejects javascript:alert(1)
+  ---
+  duration_ms: 0.125916
+  type: 'test'
+  ...
+# Subtest: asset rejects https://evil.invalid/a.pdf
+ok 107 - asset rejects https://evil.invalid/a.pdf
+  ---
+  duration_ms: 0.089917
+  type: 'test'
+  ...
+# Subtest: asset rejects https://media.invalid/a.pdf?token=private
+ok 108 - asset rejects https://media.invalid/a.pdf?token=private
+  ---
+  duration_ms: 0.07025
+  type: 'test'
+  ...
+# Subtest: asset rejects https://u:p@media.invalid/a.pdf
+ok 109 - asset rejects https://u:p@media.invalid/a.pdf
+  ---
+  duration_ms: 0.057834
+  type: 'test'
+  ...
+# Subtest: wrong affiliate URL code
+ok 110 - wrong affiliate URL code
+  ---
+  duration_ms: 0.064833
+  type: 'test'
+  ...
+# Subtest: duplicate ref query
+ok 111 - duplicate ref query
+  ---
+  duration_ms: 0.069458
+  type: 'test'
+  ...
+# Subtest: extra URL field can carry PII
+ok 112 - extra URL field can carry PII
+  ---
+  duration_ms: 0.053584
+  type: 'test'
+  ...
+# Subtest: invalid code
+ok 113 - invalid code
+  ---
+  duration_ms: 0.048792
+  type: 'test'
+  ...
+# Subtest: HTML copy stays data; never becomes markup
+ok 114 - HTML copy stays data; never becomes markup
+  ---
+  duration_ms: 0.066292
+  type: 'test'
+  ...
+# Subtest: minimal CRM projection discards health, identity, money and arbitrary metadata
+ok 115 - minimal CRM projection discards health, identity, money and arbitrary metadata
+  ---
+  duration_ms: 0.4975
+  type: 'test'
+  ...
+# Subtest: CRM denies wrong affiliate
+ok 116 - CRM denies wrong affiliate
+  ---
+  duration_ms: 0.061584
+  type: 'test'
+  ...
+# Subtest: CRM denies wrong disclosure user
+ok 117 - CRM denies wrong disclosure user
+  ---
+  duration_ms: 0.039791
+  type: 'test'
+  ...
+# Subtest: CRM denies wrong disclosure subject
+ok 118 - CRM denies wrong disclosure subject
+  ---
+  duration_ms: 0.038625
+  type: 'test'
+  ...
+# Subtest: CRM denies no approved disclosure
+ok 119 - CRM denies no approved disclosure
+  ---
+  duration_ms: 0.040959
+  type: 'test'
+  ...
+# Subtest: CRM denies revoked disclosure
+ok 120 - CRM denies revoked disclosure
+  ---
+  duration_ms: 0.036625
+  type: 'test'
+  ...
+# Subtest: CRM denies expired disclosure
+ok 121 - CRM denies expired disclosure
+  ---
+  duration_ms: 0.039333
+  type: 'test'
+  ...
+# Subtest: CRM denies future disclosure
+ok 122 - CRM denies future disclosure
+  ---
+  duration_ms: 0.039
+  type: 'test'
+  ...
+# Subtest: CRM denies unconsented converted stage
+ok 123 - CRM denies unconsented converted stage
+  ---
+  duration_ms: 0.038916
+  type: 'test'
+  ...
+# Subtest: CRM denies health stage value
+ok 124 - CRM denies health stage value
+  ---
+  duration_ms: 0.045167
+  type: 'test'
+  ...
+# Subtest: 100 duplicate clicks result in one minimal evidence row, no earning
+ok 125 - 100 duplicate clicks result in one minimal evidence row, no earning
+  ---
+  duration_ms: 0.7435
+  type: 'test'
+  ...
+# Subtest: changed attribution under same event key is rejected without state mutation
+ok 126 - changed attribution under same event key is rejected without state mutation
+  ---
+  duration_ms: 0.086041
+  type: 'test'
+  ...
+# Subtest: share.created is nonfinancial evidence only
+ok 127 - share.created is nonfinancial evidence only
+  ---
+  duration_ms: 0.183334
+  type: 'test'
+  ...
+# Subtest: share.clicked is nonfinancial evidence only
+ok 128 - share.clicked is nonfinancial evidence only
+  ---
+  duration_ms: 0.231125
+  type: 'test'
+  ...
+# Subtest: appointment.booked is nonfinancial evidence only
+ok 129 - appointment.booked is nonfinancial evidence only
+  ---
+  duration_ms: 0.081334
+  type: 'test'
+  ...
+# Subtest: payment.settled cannot enter touchpoint reducer
+ok 130 - payment.settled cannot enter touchpoint reducer
+  ---
+  duration_ms: 0.130666
+  type: 'test'
+  ...
+# Subtest: commission.earned cannot enter touchpoint reducer
+ok 131 - commission.earned cannot enter touchpoint reducer
+  ---
+  duration_ms: 0.04175
+  type: 'test'
+  ...
+# Subtest: payout.requested cannot enter touchpoint reducer
+ok 132 - payout.requested cannot enter touchpoint reducer
+  ---
+  duration_ms: 0.033375
+  type: 'test'
+  ...
+# Subtest: touchpoint denies wrong state scope
+ok 133 - touchpoint denies wrong state scope
+  ---
+  duration_ms: 0.071708
+  type: 'test'
+  ...
+# Subtest: touchpoint denies wrong state owner
+ok 134 - touchpoint denies wrong state owner
+  ---
+  duration_ms: 0.067458
+  type: 'test'
+  ...
+# Subtest: touchpoint denies wrong event owner
+ok 135 - touchpoint denies wrong event owner
+  ---
+  duration_ms: 0.041792
+  type: 'test'
+  ...
+# Subtest: touchpoint denies future event
+ok 136 - touchpoint denies future event
+  ---
+  duration_ms: 0.039708
+  type: 'test'
+  ...
+# Subtest: touchpoint denies missing tracking consent
+ok 137 - touchpoint denies missing tracking consent
+  ---
+  duration_ms: 0.045208
+  type: 'test'
+  ...
+# Subtest: touchpoint denies revoked tracking consent
+ok 138 - touchpoint denies revoked tracking consent
+  ---
+  duration_ms: 0.038792
+  type: 'test'
+  ...
+# Subtest: touchpoint denies expired tracking consent
+ok 139 - touchpoint denies expired tracking consent
+  ---
+  duration_ms: 0.038583
+  type: 'test'
+  ...
+# Subtest: replay reprojects previous state and drops private extra fields
+ok 140 - replay reprojects previous state and drops private extra fields
+  ---
+  duration_ms: 0.135584
+  type: 'test'
+  ...
+# Subtest: bounded event state has an explicit capacity boundary
+ok 141 - bounded event state has an explicit capacity boundary
+  ---
+  duration_ms: 1.243584
+  type: 'test'
+  ...
+# Subtest: preexisting duplicate state is rejected rather than amplified
+ok 142 - preexisting duplicate state is rejected rather than amplified
+  ---
+  duration_ms: 0.096042
+  type: 'test'
+  ...
+1..142
+# tests 142
+# suites 0
+# pass 142
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 128912.056333

@@ -1,0 +1,849 @@
+{
+  "schema_version": "rva-wave2-affiliate-qa-map-v1",
+  "source_matrix_sha256": "58671aa98737d77175c452267cf74b432132e7506ed25dc53af2ce903e831746",
+  "package_count": 57,
+  "whole_packages_passed": 0,
+  "local_subset_packages": 4,
+  "packages": [
+    {
+      "package_id": "S01",
+      "title": "Approved asset and release-overlay identity",
+      "requirement_ids": [
+        "WS-01-R01",
+        "WS-01-R02",
+        "WS-02-R08",
+        "WS-10-R08"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "S02",
+      "title": "Public CTA, accessibility and acquisition",
+      "requirement_ids": [
+        "WS-01-R03",
+        "WS-01-R04",
+        "WS-01-R07",
+        "WS-01-R08"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "S03",
+      "title": "HHL next-session, reminder and replay boundaries",
+      "requirement_ids": [
+        "WS-01-R05",
+        "WS-01-R06",
+        "WS-03-R09"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "J01",
+      "title": "Public lead to CRM identity",
+      "requirement_ids": [
+        "WS-03-R01",
+        "WS-03-R02",
+        "WS-10-R04"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "J02",
+      "title": "Assessment resume and immutable source",
+      "requirement_ids": [
+        "WS-03-R03",
+        "WS-04-R03"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "J03",
+      "title": "Consultation, coach availability and capacity",
+      "requirement_ids": [
+        "WS-03-R04",
+        "WS-05-R03",
+        "WS-05-R05"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "J04",
+      "title": "Exact agreement and independent adult signature",
+      "requirement_ids": [
+        "WS-03-R05",
+        "WS-02-R05"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "J05",
+      "title": "Verified account claim and onboarding hold",
+      "requirement_ids": [
+        "WS-03-R06",
+        "WS-05-R04"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "J06",
+      "title": "Merchant, issuer, currency and environment routing",
+      "requirement_ids": [
+        "WS-09-R01",
+        "WS-09-R02",
+        "WS-09-R03",
+        "WS-09-R04",
+        "WS-09-R13"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "J07",
+      "title": "Hosted checkout, installments and receipts",
+      "requirement_ids": [
+        "WS-09-R05",
+        "WS-09-R06"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "J08",
+      "title": "Verified webhook and duplicate/uncertain payment",
+      "requirement_ids": [
+        "WS-09-R07",
+        "WS-10-R04"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "J09",
+      "title": "Payment-to-enrollment atomic contract",
+      "requirement_ids": [
+        "WS-03-R07",
+        "WS-05-R04",
+        "WS-09-R14"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "J10",
+      "title": "Reachable member and coach operations",
+      "requirement_ids": [
+        "WS-05-R01",
+        "WS-05-R03",
+        "WS-05-R07"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "J11",
+      "title": "49-day program, progress and renewal",
+      "requirement_ids": [
+        "WS-05-R02",
+        "WS-05-R06",
+        "WS-05-R08",
+        "WS-05-R09",
+        "WS-03-R10"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "J12",
+      "title": "Whole public-lead-to-renewal acceptance",
+      "requirement_ids": [
+        "WS-10-R04"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "N01",
+      "title": "Owner permissions are explicit, revocable and server-owned",
+      "requirement_ids": [
+        "WS-02-R01",
+        "WS-02-R02",
+        "WS-02-R03",
+        "WS-02-R04",
+        "WS-10-R03"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "N02",
+      "title": "Assigned coach versus unrelated/private contact",
+      "requirement_ids": [
+        "WS-02-R03",
+        "WS-02-R04",
+        "WS-05-R03",
+        "WS-05-R07",
+        "WS-10-R03"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "N03",
+      "title": "Cross-client and cross-organization isolation",
+      "requirement_ids": [
+        "WS-02-R03",
+        "WS-02-R04",
+        "WS-10-R03"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "N04",
+      "title": "No self-granted role or direct private access",
+      "requirement_ids": [
+        "WS-02-R01",
+        "WS-02-R02",
+        "WS-02-R04"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "N05",
+      "title": "Refresh, logout, account-switch and late response",
+      "requirement_ids": [
+        "WS-02-R02",
+        "WS-02-R06",
+        "WS-05-R10"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "N06",
+      "title": "Unpaid, suspended and cancelled paid-access denial",
+      "requirement_ids": [
+        "WS-02-R03",
+        "WS-02-R04",
+        "WS-05-R04"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "N07",
+      "title": "Privacy, XSS, error and credential containment",
+      "requirement_ids": [
+        "WS-02-R05",
+        "WS-02-R06"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "N08",
+      "title": "Permissioned messaging and notification lease recovery",
+      "requirement_ids": [
+        "WS-02-R06",
+        "WS-03-R08",
+        "WS-03-R09"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "R01",
+      "title": "Methodology, voice, unknowns and unsupported scores",
+      "requirement_ids": [
+        "WS-04-R01",
+        "WS-04-R02",
+        "WS-04-R03",
+        "WS-04-R07"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "R02",
+      "title": "Immutable revision and single-use processing guards",
+      "requirement_ids": [
+        "WS-04-R04",
+        "WS-04-R05",
+        "WS-04-R06"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "R03",
+      "title": "V3 admission and Coach Companion retrieval",
+      "requirement_ids": [
+        "WS-04-R08",
+        "WS-04-R09",
+        "WS-04-R10"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "F01",
+      "title": "Adult Family Hub consented sharing",
+      "requirement_ids": [
+        "WS-06-R01",
+        "WS-06-R02",
+        "WS-06-R03",
+        "WS-06-R04",
+        "WS-06-R07",
+        "WS-10-R05"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "F02",
+      "title": "Guardian/minor and cross-household deny",
+      "requirement_ids": [
+        "WS-06-R05",
+        "WS-06-R06",
+        "WS-06-R08",
+        "WS-10-R03"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "F03",
+      "title": "Family request concurrency and review",
+      "requirement_ids": [
+        "WS-06-R08"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "C01",
+      "title": "Approved reusable content and provenance",
+      "requirement_ids": [
+        "WS-07-R01",
+        "WS-07-R02",
+        "WS-07-R03",
+        "WS-07-R07"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "C02",
+      "title": "Private assignments, diary and progress",
+      "requirement_ids": [
+        "WS-07-R04",
+        "WS-07-R05",
+        "WS-07-R06",
+        "WS-07-R09",
+        "WS-05-R06",
+        "WS-05-R08"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "C03",
+      "title": "One-way reusable content sync",
+      "requirement_ids": [
+        "WS-07-R08",
+        "WS-02-R06"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "A01",
+      "title": "Controlling127-section trace and received Phase0 disposition",
+      "requirement_ids": [
+        "WS-08-R01",
+        "WS-08-R02",
+        "WS-10-R01"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "A02",
+      "title": "Affiliate application, agreement and own dashboard",
+      "requirement_ids": [
+        "WS-08-R03",
+        "WS-08-R04",
+        "WS-08-R13"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "PARTIAL_LOCAL_SUBSET_PASS",
+      "verified_subset": "Own profile/user/contact validation and wrong-account denial only",
+      "evidence_paths": [
+        "tests/wave2-affiliate/share-contract.test.cjs",
+        "tests/wave2-affiliate/browser.test.cjs"
+      ],
+      "limitations": "No application, agreement, real dashboard or server auth acceptance"
+    },
+    {
+      "package_id": "A03",
+      "title": "Share Center, link/QR and channel consent",
+      "requirement_ids": [
+        "WS-08-R05",
+        "WS-08-R06",
+        "WS-08-R07"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "PARTIAL_LOCAL_SUBSET_PASS",
+      "verified_subset": "Approval/current revision/channel/market/link/asset metadata, personal QR input, fictional copy selection and revocation",
+      "evidence_paths": [
+        "tests/wave2-affiliate/share-contract.test.cjs",
+        "tests/wave2-affiliate/browser.test.cjs"
+      ],
+      "limitations": "No QR renderer/decoder, OS clipboard write, media download, real approved content or production UI"
+    },
+    {
+      "package_id": "A04",
+      "title": "Referral click to settled-enrollment attribution",
+      "requirement_ids": [
+        "WS-08-R08",
+        "WS-03-R02"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "PARTIAL_LOCAL_SUBSET_PASS",
+      "verified_subset": "100 sequential duplicate nonfinancial touchpoints and changed replay rejection; consented minimal CRM stage",
+      "evidence_paths": [
+        "tests/wave2-affiliate/share-contract.test.cjs"
+      ],
+      "limitations": "No durable ingestion/concurrency, competing attribution, lead merge or settled enrollment"
+    },
+    {
+      "package_id": "A05",
+      "title": "Affiliate privacy and approved AI review",
+      "requirement_ids": [
+        "WS-08-R09",
+        "WS-08-R15",
+        "WS-02-R06"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "PARTIAL_LOCAL_SUBSET_PASS",
+      "verified_subset": "Allowlists omit identity/health/notes/rewards/metadata; current subject/viewer disclosure checks",
+      "evidence_paths": [
+        "tests/wave2-affiliate/share-contract.test.cjs"
+      ],
+      "limitations": "No AI, support, export, logs or hosted RLS acceptance"
+    },
+    {
+      "package_id": "A06",
+      "title": "Typed rewards, recurring rules and conservation",
+      "requirement_ids": [
+        "WS-08-R10",
+        "WS-08-R11",
+        "WS-08-R12",
+        "WS-09-R10",
+        "WS-09-R11"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "A07",
+      "title": "Single-level and separate coach compensation",
+      "requirement_ids": [
+        "WS-08-R14",
+        "WS-08-R15",
+        "WS-09-R14"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "P01",
+      "title": "Settlement, refund, dispute and reconciliation",
+      "requirement_ids": [
+        "WS-09-R08",
+        "WS-09-R09",
+        "WS-09-R10"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "P02",
+      "title": "Payout reserve, timeout and duplicate prevention",
+      "requirement_ids": [
+        "WS-09-R11",
+        "WS-09-R12",
+        "WS-09-R13",
+        "WS-08-R13"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "A08",
+      "title": "Integrated optional affiliate-share-to-payout journey",
+      "requirement_ids": [
+        "WS-10-R05",
+        "WS-08-R03",
+        "WS-08-R04",
+        "WS-08-R05",
+        "WS-08-R06",
+        "WS-08-R07",
+        "WS-08-R08",
+        "WS-09-R10",
+        "WS-09-R11",
+        "WS-09-R12"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "O01",
+      "title": "Requirements, dispatch and ownership no-loss gate",
+      "requirement_ids": [
+        "WS-10-R01",
+        "WS-10-R02",
+        "WS-10-R07"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "O02",
+      "title": "Responsive, accessibility and mobile account journeys",
+      "requirement_ids": [
+        "WS-10-R06",
+        "WS-01-R03",
+        "WS-01-R08",
+        "WS-05-R10"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "O03",
+      "title": "Performance, scale and graceful failure",
+      "requirement_ids": [
+        "WS-10-R06",
+        "WS-10-R07"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "O04",
+      "title": "Backup and disaster-recovery restore drill",
+      "requirement_ids": [
+        "WS-02-R07",
+        "WS-10-R09"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "O05",
+      "title": "Exact release and retained artifact regression",
+      "requirement_ids": [
+        "WS-10-R07",
+        "WS-10-R08"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "O06",
+      "title": "Rollback and uncertain-outcome tabletop",
+      "requirement_ids": [
+        "WS-10-R08",
+        "WS-10-R09"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "O07",
+      "title": "Support, training and operational handover",
+      "requirement_ids": [
+        "WS-10-R09",
+        "WS-03-R08",
+        "WS-03-R10"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "O08",
+      "title": "CI evidence quality and reproducibility",
+      "requirement_ids": [
+        "WS-10-R07",
+        "WS-02-R05"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "A09",
+      "title": "Source-aligned first affiliate commission and reversal acceptance",
+      "requirement_ids": [
+        "WS-08-R03",
+        "WS-08-R05",
+        "WS-08-R07",
+        "WS-08-R08",
+        "WS-09-R08",
+        "WS-09-R09",
+        "WS-09-R10"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "E01",
+      "title": "Self-guided and optional on-demand membership progression",
+      "requirement_ids": [
+        "WS-03-R06",
+        "WS-03-R07",
+        "WS-05-R04",
+        "WS-05-R05",
+        "WS-05-R09",
+        "WS-09-R05",
+        "WS-09-R06"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "E02",
+      "title": "Coaching allowance modes and usage accounting",
+      "requirement_ids": [
+        "WS-05-R04",
+        "WS-05-R05",
+        "WS-05-R09",
+        "WS-09-R14"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "E03",
+      "title": "Incumbent tool disposition and fictional migration rehearsal",
+      "requirement_ids": [
+        "WS-02-R08",
+        "WS-03-R01",
+        "WS-10-R08",
+        "WS-10-R09"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "E04",
+      "title": "Marketing/event scope and later-decision precedence",
+      "requirement_ids": [
+        "WS-01-R04",
+        "WS-01-R05",
+        "WS-01-R07",
+        "WS-03-R09",
+        "WS-10-R09"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "E05",
+      "title": "Group communication policy, moderation and escalation",
+      "requirement_ids": [
+        "WS-02-R03",
+        "WS-02-R06",
+        "WS-03-R08",
+        "WS-03-R09",
+        "WS-05-R07",
+        "WS-06-R06"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    },
+    {
+      "package_id": "E06",
+      "title": "Course workbook, quiz and completion policy",
+      "requirement_ids": [
+        "WS-05-R02",
+        "WS-07-R03",
+        "WS-07-R04"
+      ],
+      "whole_package_pass": false,
+      "production_acceptance": false,
+      "lane_status": "NOT_RUN_IN_THIS_LANE",
+      "evidence_paths": [],
+      "limitations": "No business journey/package completion claimed by this lane"
+    }
+  ]
+}

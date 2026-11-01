@@ -1,0 +1,130 @@
+{
+  "schemaVersion": "rva-wave2-independent-qa-handoff-v1",
+  "issue": 56,
+  "masterIssue": 58,
+  "ownerAgent": "/root/issue56_independent_qa",
+  "status": "IN-REVIEW",
+  "executionComplete": true,
+  "releaseVerdict": "NO-GO",
+  "branch": "codex/rva-wave2-qa-20261101",
+  "worktree": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-qa",
+  "acceptedBase": "fc6737415da36b4306afa0060a525eca2f1131ca",
+  "combinedTestedSourceSha": "e2f108261b831668618588acdc635e2113dcdf8a",
+  "containingQaCommit": "Returned in final message; not embedded circularly",
+  "exclusivePaths": [
+    "tests/wave2-qa/",
+    "docs/orchestration/issue-56/wave2/"
+  ],
+  "runtimeFilesEditedByQA": [],
+  "original57MatrixUnchanged": true,
+  "caseCounts": {
+    "PASS": 0,
+    "FAIL": 2,
+    "BLOCKED": 43,
+    "NOT_RUN": 12
+  },
+  "independentTestInstances": {
+    "testInstances": 390,
+    "passed": 388,
+    "failed": 2,
+    "browserInstances": 66,
+    "note": "390 final test instances include 15 static/output-routing/invariant controls and two expected baseline-reproduction browser cases. This is not a count of complete journeys. Startup failures and the earlier rerun of the same eight invariants are retained separately, not double-counted.",
+    "functionalAndSourceTestInstances": 375,
+    "functionalAndSourcePassed": 373,
+    "metadataAndStaticControlInstances": 15
+  },
+  "failures": [
+    {
+      "id": "QA-W2-F01",
+      "severity": "P1_LOCAL_SECURITY_ASSERTION",
+      "caseIds": [
+        "N02"
+      ],
+      "status": "FAIL",
+      "profile": "B_BASELINE_SQL",
+      "test": "[N02 STRICT] unrelated Coach cannot directly read another Client goal through actual RLS",
+      "expected": "0 rows",
+      "actual": "1 row",
+      "scope": "Pinned Sep26 historical schema+authorization composition; helper denies scope but table policy returns goal. Not current production exploit/certification.",
+      "evidencePath": "docs/orchestration/issue-56/wave2/B-pg/baseline_auth-tests.tap",
+      "nextSafeAction": "Core reconcile exact applicable current policy/catalog and approved rights; propose narrow reviewed correction only after source/state proof. No live or broad RLS change from QA."
+    },
+    {
+      "id": "QA-W2-F02",
+      "severity": "P1_LOCAL_FUNCTIONAL_ASSERTION",
+      "caseIds": [
+        "E02"
+      ],
+      "status": "FAIL",
+      "profile": "B_BASELINE_SQL",
+      "test": "[E02 partial] authorized review consumes/releases with recorded reason and actor",
+      "expected": "Assigned permitted Coach review consumes then releases allowance and records actor/reason",
+      "actual": "42501 permission denied for function recalculate_coaching_entitlement_used_value",
+      "scope": "Pinned historical invoker/helper EXECUTE composition; no current catalog conclusion.",
+      "evidencePath": "docs/orchestration/issue-56/wave2/B-pg/baseline_auth-tests.tap",
+      "nextSafeAction": "Reconcile exact current RPC/helper owner,ACL/search path and guard chain; do not grant broad private-helper EXECUTE to silence assertion."
+    }
+  ],
+  "policyCurrentCatalogAndAdapterLimits": "Each package has actual subtests and remaining coverage. Historical SQL failures are not asserted current production exploits. No whole package PASS from a subset.",
+  "localComponentEvidence": [
+    "C142 unit/regression and6 browser",
+    "A4 contracts and36 browser, including2 baseline reproductions",
+    "B13DOM,34/36SQL,24browser and3output routing",
+    "Payment18 unit",
+    "Detached V3 87 plus3 independent probes",
+    "QA10 adversarial plus8 final invariants"
+  ],
+  "sourcePins": {
+    "C_authorCommit": "d93dc1a0da0771babcf2283da3f8907137d9229a",
+    "A_authorRuntimeCommit": "38c16c9baeaa013e867e1230d775c179e91410e4",
+    "A_authorReceiptOutputCommit": "c1428ad6bd4a10aefb9492cd20db536620e53e3d",
+    "B_authorOutputCommit": "c0d7ebfbc6e4099b83390fed43a6196553dc65cd",
+    "V3_authorDetachedCommit": "1fdd49bb7da911f73ac0ee0382fbe6254a9f6a3e",
+    "V3_baseImport": "NONE;onlyfiveexplicitnewfilescherry-picked",
+    "qaAcceptedBase": "fc6737415da36b4306afa0060a525eca2f1131ca",
+    "qaCombinedSourceHead": "e2f108261b831668618588acdc635e2113dcdf8a",
+    "C_executionHeadNote": "C142startedat7e8f00aef99c71c8b43d56a3dff1ed637c9fab49;MasterintegratedAwhileit ran;executedassessment/staff/Cfilefamiliesunchanged."
+  },
+  "sqlCleanup": {
+    "clusterStopped": true,
+    "clusterRemoved": true,
+    "tcpEnabled": false,
+    "productionConnectionSettingsUsed": false
+  },
+  "security": {
+    "productionCalls": 0,
+    "providerCalls": 0,
+    "realPrivateAnswersOrCredentialsAccessed": false,
+    "protectedAlexActions": 0,
+    "authRlsRuntimeChanges": 0,
+    "FunctionAssetsMigrationAuthAndBuildSourceUnchanged": true,
+    "canonicalEvidenceObservedBy": "Master13:41; reused, not freshly queried by QA"
+  },
+  "remainingBlockers": [
+    "Current catalog applicability and approved scope for N02 goal policy/E02 helper ACL reconciliation",
+    "Original127 handoff and specific49-day policy/content",
+    "Chosen Family/finance/channel/offer/usage/source-admission policies",
+    "Complete adapters, ledger/payout/notifications, operational restore/support/performance/CI acceptance"
+  ],
+  "nextSafeAction": "Master reviews candidate components and this independent NO-GO, reconciles exact current goal-policy/helper ACL source before a narrow correction package, retains all broader source/policy/readiness gates. No live mutation or broad grants.",
+  "documentation": "Master owns CURRENT_BUILD_STATE and shared registers; own Wave2 report/results/evidence only updated.",
+  "artifactSha256": {
+    "docs/orchestration/issue-56/wave2/REPORT.md": "6f38115139dfc76cd0ec4eddb0abad953a3da7f75052aa6530b5391afaf8d445",
+    "docs/orchestration/issue-56/wave2/RESULTS_MATRIX.json": "dffcfdbab8904f48227cc373db8eb86d6ce79cbc03d1c36bff6464c5ecd60e7e",
+    "docs/orchestration/issue-56/wave2/EVIDENCE.json": "77078e61b668426f32c897969f02630fb57eea8f17c2a2d941d8705e6338268a"
+  },
+  "validation": {
+    "result": "PASS",
+    "exact57IdsRetained": true,
+    "101BaselineAnd10DetailsPreserved": true,
+    "allSuiteHashesAndTapCountsMatch": true,
+    "allSourceHashesMatch": true,
+    "allAuthorArtifactsUnchanged": true,
+    "sqlCleanupVerified": true,
+    "originalMatrixUnmodified": true,
+    "ownedPathsOnly": true,
+    "productionCalls": 0,
+    "checksAreDocumentationIntegrityNotAdditionalBusinessCases": true,
+    "rawLogWhitespace": "Runner-emitted trailing spaces retained in raw failure TAP/log evidence; full staged diff check reports them. Source/document whitespace check passes."
+  }
+}

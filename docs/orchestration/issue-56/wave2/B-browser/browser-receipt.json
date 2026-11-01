@@ -1,0 +1,397 @@
+{
+  "runnerSha256": "886e3e3e2e83e26c65ac4153ce56ba09a35dd2ee55c44b241919474ffded9175",
+  "outputDirectory": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-qa/docs/orchestration/issue-56/wave2/B-browser",
+  "sourceCommit": "05590b9b35dd8525a78ce8a69da2ff19c7d89f32",
+  "startedAt": "2026-11-01T14:02:52.733Z",
+  "scope": "Actual onboarding HTML/environment/runtime with fake SDK/Auth/RPC transport; no dashboard/hosted/provider certification",
+  "productionCalls": 0,
+  "providerCalls": 0,
+  "results": [
+    {
+      "engine": "chromium",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scenario": "signed-out",
+      "browserVersion": "156.0.8078.4",
+      "matrixIds": [
+        "J05"
+      ],
+      "result": "PASS_PARTIAL",
+      "adapter": "fictional SDK/Auth/RPC",
+      "unexpectedBrowserErrors": 0,
+      "unexpectedRequests": 0
+    },
+    {
+      "engine": "chromium",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scenario": "unverified",
+      "browserVersion": "156.0.8078.4",
+      "matrixIds": [
+        "J05"
+      ],
+      "result": "PASS_PARTIAL",
+      "adapter": "fictional SDK/Auth/RPC",
+      "unexpectedBrowserErrors": 0,
+      "unexpectedRequests": 0
+    },
+    {
+      "engine": "chromium",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scenario": "wrong-claim",
+      "browserVersion": "156.0.8078.4",
+      "matrixIds": [
+        "J05"
+      ],
+      "result": "PASS_PARTIAL",
+      "adapter": "fictional SDK/Auth/RPC",
+      "unexpectedBrowserErrors": 0,
+      "unexpectedRequests": 0
+    },
+    {
+      "engine": "chromium",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scenario": "pending",
+      "browserVersion": "156.0.8078.4",
+      "matrixIds": [
+        "N06"
+      ],
+      "result": "PASS_PARTIAL",
+      "adapter": "fictional SDK/Auth/RPC",
+      "unexpectedBrowserErrors": 0,
+      "unexpectedRequests": 0
+    },
+    {
+      "engine": "chromium",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scenario": "suspended",
+      "browserVersion": "156.0.8078.4",
+      "matrixIds": [
+        "N06"
+      ],
+      "result": "PASS_PARTIAL",
+      "adapter": "fictional SDK/Auth/RPC",
+      "unexpectedBrowserErrors": 0,
+      "unexpectedRequests": 0
+    },
+    {
+      "engine": "chromium",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scenario": "logout",
+      "browserVersion": "156.0.8078.4",
+      "matrixIds": [
+        "N05"
+      ],
+      "result": "PASS_PARTIAL",
+      "adapter": "fictional SDK/Auth/RPC",
+      "unexpectedBrowserErrors": 0,
+      "unexpectedRequests": 0
+    },
+    {
+      "engine": "chromium",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scenario": "signed-out",
+      "browserVersion": "156.0.8078.4",
+      "matrixIds": [
+        "J05"
+      ],
+      "result": "PASS_PARTIAL",
+      "adapter": "fictional SDK/Auth/RPC",
+      "unexpectedBrowserErrors": 0,
+      "unexpectedRequests": 0
+    },
+    {
+      "engine": "chromium",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scenario": "unverified",
+      "browserVersion": "156.0.8078.4",
+      "matrixIds": [
+        "J05"
+      ],
+      "result": "PASS_PARTIAL",
+      "adapter": "fictional SDK/Auth/RPC",
+      "unexpectedBrowserErrors": 0,
+      "unexpectedRequests": 0
+    },
+    {
+      "engine": "chromium",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scenario": "wrong-claim",
+      "browserVersion": "156.0.8078.4",
+      "matrixIds": [
+        "J05"
+      ],
+      "result": "PASS_PARTIAL",
+      "adapter": "fictional SDK/Auth/RPC",
+      "unexpectedBrowserErrors": 0,
+      "unexpectedRequests": 0
+    },
+    {
+      "engine": "chromium",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scenario": "pending",
+      "browserVersion": "156.0.8078.4",
+      "matrixIds": [
+        "N06"
+      ],
+      "result": "PASS_PARTIAL",
+      "adapter": "fictional SDK/Auth/RPC",
+      "unexpectedBrowserErrors": 0,
+      "unexpectedRequests": 0
+    },
+    {
+      "engine": "chromium",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scenario": "suspended",
+      "browserVersion": "156.0.8078.4",
+      "matrixIds": [
+        "N06"
+      ],
+      "result": "PASS_PARTIAL",
+      "adapter": "fictional SDK/Auth/RPC",
+      "unexpectedBrowserErrors": 0,
+      "unexpectedRequests": 0
+    },
+    {
+      "engine": "chromium",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scenario": "logout",
+      "browserVersion": "156.0.8078.4",
+      "matrixIds": [
+        "N05"
+      ],
+      "result": "PASS_PARTIAL",
+      "adapter": "fictional SDK/Auth/RPC",
+      "unexpectedBrowserErrors": 0,
+      "unexpectedRequests": 0
+    },
+    {
+      "engine": "webkit",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scenario": "signed-out",
+      "browserVersion": "26.5",
+      "matrixIds": [
+        "J05"
+      ],
+      "result": "PASS_PARTIAL",
+      "adapter": "fictional SDK/Auth/RPC",
+      "unexpectedBrowserErrors": 0,
+      "unexpectedRequests": 0
+    },
+    {
+      "engine": "webkit",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scenario": "unverified",
+      "browserVersion": "26.5",
+      "matrixIds": [
+        "J05"
+      ],
+      "result": "PASS_PARTIAL",
+      "adapter": "fictional SDK/Auth/RPC",
+      "unexpectedBrowserErrors": 0,
+      "unexpectedRequests": 0
+    },
+    {
+      "engine": "webkit",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scenario": "wrong-claim",
+      "browserVersion": "26.5",
+      "matrixIds": [
+        "J05"
+      ],
+      "result": "PASS_PARTIAL",
+      "adapter": "fictional SDK/Auth/RPC",
+      "unexpectedBrowserErrors": 0,
+      "unexpectedRequests": 0
+    },
+    {
+      "engine": "webkit",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scenario": "pending",
+      "browserVersion": "26.5",
+      "matrixIds": [
+        "N06"
+      ],
+      "result": "PASS_PARTIAL",
+      "adapter": "fictional SDK/Auth/RPC",
+      "unexpectedBrowserErrors": 0,
+      "unexpectedRequests": 0
+    },
+    {
+      "engine": "webkit",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scenario": "suspended",
+      "browserVersion": "26.5",
+      "matrixIds": [
+        "N06"
+      ],
+      "result": "PASS_PARTIAL",
+      "adapter": "fictional SDK/Auth/RPC",
+      "unexpectedBrowserErrors": 0,
+      "unexpectedRequests": 0
+    },
+    {
+      "engine": "webkit",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scenario": "logout",
+      "browserVersion": "26.5",
+      "matrixIds": [
+        "N05"
+      ],
+      "result": "PASS_PARTIAL",
+      "adapter": "fictional SDK/Auth/RPC",
+      "unexpectedBrowserErrors": 0,
+      "unexpectedRequests": 0
+    },
+    {
+      "engine": "webkit",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scenario": "signed-out",
+      "browserVersion": "26.5",
+      "matrixIds": [
+        "J05"
+      ],
+      "result": "PASS_PARTIAL",
+      "adapter": "fictional SDK/Auth/RPC",
+      "unexpectedBrowserErrors": 0,
+      "unexpectedRequests": 0
+    },
+    {
+      "engine": "webkit",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scenario": "unverified",
+      "browserVersion": "26.5",
+      "matrixIds": [
+        "J05"
+      ],
+      "result": "PASS_PARTIAL",
+      "adapter": "fictional SDK/Auth/RPC",
+      "unexpectedBrowserErrors": 0,
+      "unexpectedRequests": 0
+    },
+    {
+      "engine": "webkit",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scenario": "wrong-claim",
+      "browserVersion": "26.5",
+      "matrixIds": [
+        "J05"
+      ],
+      "result": "PASS_PARTIAL",
+      "adapter": "fictional SDK/Auth/RPC",
+      "unexpectedBrowserErrors": 0,
+      "unexpectedRequests": 0
+    },
+    {
+      "engine": "webkit",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scenario": "pending",
+      "browserVersion": "26.5",
+      "matrixIds": [
+        "N06"
+      ],
+      "result": "PASS_PARTIAL",
+      "adapter": "fictional SDK/Auth/RPC",
+      "unexpectedBrowserErrors": 0,
+      "unexpectedRequests": 0
+    },
+    {
+      "engine": "webkit",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scenario": "suspended",
+      "browserVersion": "26.5",
+      "matrixIds": [
+        "N06"
+      ],
+      "result": "PASS_PARTIAL",
+      "adapter": "fictional SDK/Auth/RPC",
+      "unexpectedBrowserErrors": 0,
+      "unexpectedRequests": 0
+    },
+    {
+      "engine": "webkit",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scenario": "logout",
+      "browserVersion": "26.5",
+      "matrixIds": [
+        "N05"
+      ],
+      "result": "PASS_PARTIAL",
+      "adapter": "fictional SDK/Auth/RPC",
+      "unexpectedBrowserErrors": 0,
+      "unexpectedRequests": 0
+    }
+  ],
+  "result": "PASS_PARTIAL",
+  "completedAt": "2026-11-01T14:02:57.723Z"
+}

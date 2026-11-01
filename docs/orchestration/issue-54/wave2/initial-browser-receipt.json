@@ -1,0 +1,11 @@
+{
+  "sourceCommit": "fc6737415da36b4306afa0060a525eca2f1131ca",
+  "startedAt": "2026-11-01T13:50:11.713Z",
+  "scope": "Actual onboarding HTML/environment/runtime with fake SDK/Auth/RPC transport; no dashboard/hosted/provider certification",
+  "productionCalls": 0,
+  "providerCalls": 0,
+  "results": [],
+  "result": "FAIL",
+  "error": "browserType.launch: Executable doesn't exist at /Users/davesmacbookpro/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
+  "completedAt": "2026-11-01T13:50:11.721Z"
+}

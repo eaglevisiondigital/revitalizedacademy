@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: original accepted57case matrix remains exact immutable input
+ok 1 - original accepted57case matrix remains exact immutable input
+  ---
+  duration_ms: 1.64825
+  type: 'test'
+  ...
+# Subtest: all101baseline identities wording workstreams and owners remain retained
+ok 2 - all101baseline identities wording workstreams and owners remain retained
+  ---
+  duration_ms: 1.499583
+  type: 'test'
+  ...
+# Subtest: ten accepted inventory details retain false policy/runtime and valid parents
+ok 3 - ten accepted inventory details retain false policy/runtime and valid parents
+  ---
+  duration_ms: 0.607583
+  type: 'test'
+  ...
+# Subtest: all Netlify and Supabase Function source families stay unchanged from acceptedbase
+ok 4 - all Netlify and Supabase Function source families stay unchanged from acceptedbase
+  ---
+  duration_ms: 22.29375
+  type: 'test'
+  ...
+# Subtest: migrations and existing authorization source families stay unchanged
+ok 5 - migrations and existing authorization source families stay unchanged
+  ---
+  duration_ms: 16.465792
+  type: 'test'
+  ...
+# Subtest: approved asset and style source families stay unchanged
+ok 6 - approved asset and style source families stay unchanged
+  ---
+  duration_ms: 19.612167
+  type: 'test'
+  ...
+# Subtest: build publish allowlist and Netlify routing stay held and unchanged
+ok 7 - build publish allowlist and Netlify routing stay held and unchanged
+  ---
+  duration_ms: 16.365042
+  type: 'test'
+  ...
+# Subtest: controlling127 source trace remains honestly missing and unreplaced
+ok 8 - controlling127 source trace remains honestly missing and unreplaced
+  ---
+  duration_ms: 0.581916
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 138.112208

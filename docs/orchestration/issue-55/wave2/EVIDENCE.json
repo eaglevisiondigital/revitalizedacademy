@@ -1,0 +1,93 @@
+{
+  "issue": 55,
+  "wave": 2,
+  "owner_agent": "/root/affiliate_finance_audit",
+  "worktree": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-affiliate",
+  "branch": "codex/rva-wave2-affiliate-20261101",
+  "base_sha": "fc6737415da36b4306afa0060a525eca2f1131ca",
+  "observed_at": "2026-11-01T13:48:56.467562+00:00",
+  "status": "VERIFIED_LOCAL_BOUNDED_SUBSET_UNACTIVATED",
+  "containing_commit_returned_in_lane_completion": true,
+  "source_sha256": {
+    "portal/portal-referrals.js": "bda8722c7c44fbc5cb728569c37d0f45db18b22f3ae8a864ddd8047b996c5c1b",
+    "js/rva-affiliate-share-contract.cjs": "b6b3a9288f3048384ad9b0fd6963b242cfbdb38e92218f52a6fbe2b8882f2e13",
+    "tests/wave2-affiliate/fixtures.cjs": "2a07dc2d4b93cb25a9b2d5e7f079e1a199f4c51510e708a52de06e28512a8260",
+    "tests/wave2-affiliate/share-contract.test.cjs": "ed72d71b7d4453fc52867e7575ca54d2e4f7d7ed031e7ebb295ded29093239fd",
+    "tests/wave2-affiliate/browser.test.cjs": "53a95206565484d74311e41d2fd73b49aa3a47b100c2c0b0d78d8e50328bba1e"
+  },
+  "evidence_sha256": {
+    "docs/orchestration/issue-55/wave2/IMPLEMENTATION.md": "461629240739b997fb1a5b4b62266da952cbe536237060fce8455eadd5a307df",
+    "docs/orchestration/issue-55/wave2/QA_PACKAGE_MAPPING.json": "b00e75f2a16a612d90008a983a1dc9bc707b09c7da0dda25171c0fb40ec49406",
+    "docs/orchestration/issue-55/wave2/UNIT_REGRESSION.tap": "af3a5dbd02572708bfddf467ab60ed6b77d8e0ec5c270d64f00a8bb50c9a4c46",
+    "docs/orchestration/issue-55/wave2/BROWSER.tap": "6ea095b9f8a670b85c2d7f77a5e7b0e53437f4d5241ec81051876166587b0921"
+  },
+  "actual_tests": {
+    "new_contract_cases": 78,
+    "existing_assessment_session_regression_cases": 64,
+    "combined_pass": 142,
+    "combined_fail": 0,
+    "browser_cases": 6,
+    "browsers": [
+      "Chromium1248",
+      "WebKit2336"
+    ],
+    "viewport_widths": [
+      1440,
+      768,
+      390
+    ],
+    "syntax_checks": 2,
+    "whitespace": "PASS",
+    "external_browser_requests": 0,
+    "unexpected_page_errors": 0,
+    "sequential_touchpoint_replays": 100
+  },
+  "launch_history": {
+    "initial_browser_attempt": "FAILED_BEFORE_ASSERTIONS_MISSING_CHROMIUM1234_AND_SANDBOX_WEBKIT",
+    "successful_final": "EXISTING_CHROMIUM1248_EXECUTABLE_OVERRIDE_AND_AUTHORIZED_ISOLATED_BROWSER_LAUNCH",
+    "dependencies_downloaded": false,
+    "user_browser_profile_used": false
+  },
+  "baseline_error_proof": "Exact pinned base source parsed malicious mocked server error as image DOM and executed its handler; fixed source shows literal text without image/handler. Not a claim of production exploit.",
+  "new_module_trust_boundary": "Pure opt-in helper. Auth/approval/consent/clock/scope/policy are reauthorized server snapshot input contracts, not trust assigned to browser flags; no RLS/signature/real approval receipt verification or backend integration.",
+  "limits": [
+    "QR payload only; no QR rendering/decoding",
+    "Fictional test UI only; production Share Center not mounted",
+    "Copy preparation/selection; no clipboard or outbound send",
+    "Media URL metadata only; no media fetch/download",
+    "In-memory sequential event reduction; no durable transaction/concurrency proof",
+    "No application/agreement/financial/ledger/recurring/payout code or authority",
+    "Full127 source still missing; Phase0 proposed only"
+  ],
+  "current_build_state_update": "Owned wave2 documentation only; shared CURRENT_BUILD_STATE reserved for integrator",
+  "preserved_source_documents": {
+    "docs/orchestration/issue-55/REPORT.md": "d23a3fc1e48dc9005629e9480e733dfd0be34300024d34f270709fdd811cebfc",
+    "docs/orchestration/issue-55/127_SECTION_TRACE.csv": "10a58e5a8471a6212a0742787fdca87aaa825a9a6377432a387c012c66b02f6c",
+    "docs/orchestration/issue-55/SOURCE_PACKET_ADDENDUM.md": "c883a1b0c26fc29e73302ce6904d431e304aa1f020398027818ae98f997a92ce",
+    "docs/orchestration/issue-55/SOURCE_TO_SCOPE_DECISION_TRACE.csv": "0ec302aa90d41f956d9dc2c473c1691a24dd59a873862cf9806c5b6808b4f385",
+    "docs/orchestration/issue-55/handoff.json": "4529d0be62f5ccc618eb4c4a1e927841be95258f39acc13d5faf78d91f5954db"
+  },
+  "qa_packages": {
+    "total_retained": 57,
+    "partial_local_subset": 4,
+    "whole_packages_passed": 0
+  },
+  "negative_tests": [
+    "malicious URL schemes/origins/userinfo/query/control bytes",
+    "stale/unapproved/revoked campaign and creative",
+    "wrong affiliate user/contact/link/code and disclosure",
+    "health/name/contact/reward/metadata projection exclusion",
+    "changed replay and duplicate prior state",
+    "unsupported financial event types",
+    "current server error unsafe DOM sink"
+  ],
+  "production_calls": 0,
+  "provider_calls": 0,
+  "database_tests": 0,
+  "rls_changes": 0,
+  "financial_actions": 0,
+  "marketing_sends": 0,
+  "protected_alex_actions": 0,
+  "new_public_loader_or_manifest": false,
+  "next_slice": "Review current receipt/consent/identity input contracts and separately authorize authenticated adapter plus approved QR encoder/decoder; preserve full advanced scope and missing source/financial decision holds."
+}
