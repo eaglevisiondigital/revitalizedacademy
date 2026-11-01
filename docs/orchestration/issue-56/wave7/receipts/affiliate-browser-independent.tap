@@ -1,0 +1,14 @@
+✔ chromium 390 coherent source review / actual QR / event replay / consent / stale tab / progress (4286.865833ms)
+✔ chromium 768 coherent source review / actual QR / event replay / consent / stale tab / progress (1975.702333ms)
+✔ chromium 1440 coherent source review / actual QR / event replay / consent / stale tab / progress (2046.743333ms)
+✔ webkit 390 coherent source review / actual QR / event replay / consent / stale tab / progress (3064.650583ms)
+✔ webkit 768 coherent source review / actual QR / event replay / consent / stale tab / progress (2958.968167ms)
+✔ webkit 1440 coherent source review / actual QR / event replay / consent / stale tab / progress (2300.179959ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16864.412083

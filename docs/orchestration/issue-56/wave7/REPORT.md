@@ -1,0 +1,44 @@
+# Wave 7 independent QA — LOCAL checkpoint; production NO-GO
+
+Issue56, actual native agent `/root/wave7_independent_qa`; isolated branch `codex/rva-wave7-qa-20261101`, worktree `academy-wave7-qa`. Accepted base `38f086792addaa9b131cecaf261ef21f89f5ffc7`. Runtime execution source `5b01f3065fc381d4adba8212333a19f17aaef36c`, containing exact C7838227, Bb202cd5, Master7175d2 and Aea8b53f/313a468 changes. All edits by QA confined to `tests/wave7-qa/` and this evidence directory. Original author source/evidence unchanged. No push, hosted action, grant, migration installation, private Alex access or financial activation.
+
+## Independent PostgreSQL execution
+
+The exclusive owned disposable PostgreSQL17 slot was obtained only after A explicitly released it. The runner creates its own private socket-only cluster with host authentication rejected; no persistent/production/staging database is used. Current-catalog metadata is schema-only and fictional data is created locally. Exact SQL/test/fixture hashes are recorded before execution and rechecked afterward.
+
+**233 actual assertions:214PASS/19FAIL overall.** Eighteen failures are deliberately preserved baseline/revert demonstrations of nine historical/new boundary vulnerabilities. One failure is an unchanged legitimate positive provisioning regression in corrected source. Do not call this233/233PASS or full security/business acceptance.
+
+- Original five unchanged probes: baseline0PASS/5FAIL; corrected5PASS/0FAIL; exact revert0PASS/5FAIL. Foreign check-in read, assignment read, foreign assignment insert, household-member read and guardian rebinding are all locally closed.
+- Four new strict boundaries reproduce before and after revert and deny after correction: assigned Coach account identity substitution; foreign parent-household SELECT; parent primary-contact change; assigned Coach rewiring own client_access.household_id to an unrelated parent. Member-data leakage is not claimed because the existing paid-member predicate remains held.
+- Corrected stage: **202PASS/1FAIL**. Includes45Wave6 security,4prior precise denial,8new independent exact42501/positive pairs,13usage concurrency,39access,8session-entry,9independent allowance,9durable operations,4parent,12identity,1account-hypothesis,1household-association and44/45old security cases plus originalfive. Per-suite receipt is authoritative.
+- Eight independent baseline guard challenges PASS: bypass-role, RLS, ACL, original policy, original trigger enablement, authorization helper security/search_path and household constraint drift. Exact guarded SQL rejects atomically; no partial helper/policy survives. These eight belong to the baseline guard phase, not corrected-stage arithmetic.
+- The existing direct Coach INSERT positive with nonnull client_access.user_id now receives42501. **This is a real compatibility FAIL**, not a security PASS. The conservative identity guard may be appropriate, but no tested application/Owner provisioning replacement is established. Trusted postgres fixture seeding proves no such workflow. Production remains NO-GO.
+
+`pg-combined/postgres-receipt.json` confirms cluster stop/removal and unchanged inputs. Before/after each contain the same two IPC segments: persistent PID991 and preexisting unattached ID5308417/creator25030. Neither was removed, ownership of the latter is unknown, and there are zero unexpected new segments. Exclusive lease was removed. No unrelated process/kernel/service/socket/database was changed. Earlier orphan disappearance remains unconfirmed; capacity availability is not proof of safe cleanup ownership.
+
+Original Wave6 correction and old fixtures remain byte-identical. A's new copied core differs only in explicit pretty=true captured deparse representation; the fixture reconstitutes captured ACL/trigger semantics instead of weakening guard expectations. Existing five strict assertions unchanged. One old durable INSERT positive lacked created_by; its original failure remains in author evidence, while a copied positive supplies the actual actor and preserves uniqueness assertions. Original compatibility-positive assertion is retained and still fails.
+
+## Functional and browser execution
+
+**521 final Node/DOM/HTTP/source assertions PASS;14 native Chromium/WebKit cases PASS.** These are component/synthetic flow results, not521complete Academy features. Final Node inputs remained unchanged throughout. Native cases use actual member HTML/CSS/JS with intercepted fictional SDK transport and actual loopback ShareCenter handlers; QR is independently decoded using macOS Vision. Final combined responsive execution covers390/768/1440px, both actual habit surfaces, same-user renewal, uncertain response/readback, draft retention, logout/denial, exact submitted value, source citations and no unexpected external requests or page errors.
+
+QA added17actual HTTP adversarial cases: late share/referral/education wrong-account/revocation/consent changes, creative/catalog/approval/source version changes and100concurrent read-only lookups followed by exactly one explicit nonfinancial event. Partial content never survives a failed composed read. Six independent member cases challenge changed actor during uncertain read, transport preserving drafts and20concurrent opposite-surface actions with one RPC.
+
+QA reproduced a real composed-review race in both engines: hold an actual ready response; revoke provider authority; allow a second current request to produce Held; then release old ready. Both original assertions FAIL because stale content revives. Master performed the isolated UI correction; unchanged QA assertions now PASS2/2 and are included in14finalbrowsercases. Original two failures remain `receipts/share-race-initial.tap`.
+
+The first broad Node run retained516PASS/1FAIL: old Wave6 preservation explicitly required MarkToday to remain unchanged, which conflicts with this wave's approved unification. The original assertion/evidence remains unchanged. Only that aggregate historical preservation assertion was superseded; five new exact source tests separately verify unchanged meal/workout handlers, shared Auth event code, loadDashboard and the declared habit-handler replacement. The older generic23505-implies-saved assertion remains narrowly superseded by the already approved durable readback semantics. No functional denial or business assertion was weakened. Final521PASS excludes both superseded assertions and includes the five replacement preservation checks.
+
+## Complete integration matrix and preservation
+
+Original57definitions and stable IDs unchanged. Current full-package outcomes: **1PASS/1FAIL/44BLOCKED/11NOT_RUN**.
+
+- O01 alone PASS: complete LOCAL structural procedure checks all101requirements,ten detail groups,ten workstreams,127-source gap,actual native dispatch/worktrees/branches, disjoint ownership, original57definitions and no-production/no-financial/no-Alex scope.15structuralchecks are included in521. It does not establish complete business/source functionality.
+- N02,C02,F02 move from historicalFAIL to BLOCKED only after exact local closure. FullUI/API/RPC/storage/paid-member/guardian/minor/age-transition policy and actual managed-session requirements remain incomplete.
+- J05 is FAIL for the actual source-bound account provisioning compatibility regression. Failure does not imply the whole J05business procedure was executed; relevant subset evidence is explicit.
+- All other prior blocked/not-run business packages retain their status; synthetic feature/component passes do not promote them.
+
+Source preservation receipt verifies protected portal/js/assets/css/Functions/canonicalSQL/member-source paths against accepted38f0867, excluding only the explicitly owned member JavaScript runtime. All101requirements,ten details,original57definitions and127trace unchanged. No new clinical methodology,real identity,protected answers or source archives were used. Real Auth/JWT/MFA/provider-session revocation, durable distributed event journals,cross-device exactly-once and paid-client positives remain unverified. GUC actor/staff-status/scope transitions are labeled exactly and are not GoTrue session proof. Family/minor/sharing,CRM-onlySupport/finance compatibility,original127handoff and49-day program details remain held.
+
+## Verdict and next safe checkpoint
+
+**GO for further bounded local engineering; NO-GO for production/release installation.** Preserve immutable source/evidence and intentionally failing compatibility positive. Trace and test the existing audited account-claim/provisioning workflow without reopening arbitrary account or household transfer; then resolve remaining managed-session/paid-client/family business gates. No new permission request is needed for already authorized local analysis/testing. Any eventual production proposal needs separately reviewed exact artifacts and explicit Owner authorization. Alex stays paused.

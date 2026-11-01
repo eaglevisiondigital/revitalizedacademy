@@ -1,0 +1,22 @@
+TAP version 13
+# Subtest: chromium late ready cannot revive source review after genuine denied read
+ok 1 - chromium late ready cannot revive source review after genuine denied read
+  ---
+  duration_ms: 1244.949666
+  type: 'test'
+  ...
+# Subtest: webkit late ready cannot revive source review after genuine denied read
+ok 2 - webkit late ready cannot revive source review after genuine denied read
+  ---
+  duration_ms: 1556.84725
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3066.161625

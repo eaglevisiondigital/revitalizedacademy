@@ -1,0 +1,54 @@
+✖ chromium late ready cannot revive source review after genuine denied read (1291.996167ms)
+✖ webkit late ready cannot revive source review after genuine denied read (1785.539792ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3318.660958
+
+✖ failing tests:
+
+test at tests/wave7-qa/share-browser.cjs:6:43
+✖ chromium late ready cannot revive source review after genuine denied read (1291.996167ms)
+  AssertionError [ERR_ASSERTION]: The input was expected to not match the regular expression /Fictional source review — read only/. Input:
+
+  'Held: source_version_mismatchFictional source review — read onlyFictional resource for email.\n' +
+    '\n' +
+    'Fictional approved disclosure for testing only.\n' +
+    '\n' +
+    'https://academy.synthetic.invalid/enroll?ref=RVA-FICTIONAL001&rva_campaign=fictional-campaign&rva_creative=fictional-creative&rva_channel=emailCampaign revision 2; creative revision 4; catalog fictional-wave5-catalog-v1 / SHA256 b3ff5ff123b62b13a5917cd3c7ff0ed807ebabe5f545ae19a03b66fd76653fb7Own fictional referral: engagedEvent consent: separate_explicit_event_only. This lookup records no share, click, completed viewing or conversion.Source review only: educational references do not establish a client need, referral conversion, coaching recommendation or completed viewing.SYNTHETIC ONLY: invented educational reference for cellular hydration. Not personalized coaching or medical advice.Source fictional-wave5-source / fictional-source-v1 / fictional paragraph 1 / SHA256 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa / claim 8011b70ac6706b2e85c648c342d6279e34567cceb54bf87f54e873523efd8673'
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-qa/tests/wave7-qa/share-browser.cjs:11:302)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Held: source_version_mismatchFictional source review — read onlyFictional resource for email.\n\nFictional approved disclosure for testing only.\n\nhttps://academy.synthetic.invalid/enroll?ref=RVA-FICTIONAL001&rva_campaign=fictional-campaign&rva_creative=fictional-creative&rva_channel=emailCampaign revision 2; creative revision 4; catalog fictional-wave5-catalog-v1 / SHA256 b3ff5ff123b62b13a5917cd3c7ff0ed807ebabe5f545ae19a03b66fd76653fb7Own fictional referral: engagedEvent consent: separate_explicit_event_only. This lookup records no share, click, completed viewing or conversion.Source review only: educational references do not establish a client need, referral conversion, coaching recommendation or completed viewing.SYNTHETIC ONLY: invented educational reference for cellular hydration. Not personalized coaching or medical advice.Source fictional-wave5-source / fictional-source-v1 / fictional paragraph 1 / SHA256 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa / claim 8011b70ac6706b2e85c648c342d6279e34567cceb54bf87f54e873523efd8673',
+    expected: /Fictional source review — read only/,
+    operator: 'doesNotMatch',
+    diff: 'simple'
+  }
+
+test at tests/wave7-qa/share-browser.cjs:6:43
+✖ webkit late ready cannot revive source review after genuine denied read (1785.539792ms)
+  AssertionError [ERR_ASSERTION]: The input was expected to not match the regular expression /Fictional source review — read only/. Input:
+
+  'Held: source_version_mismatchFictional source review — read onlyFictional resource for email.\n' +
+    '\n' +
+    'Fictional approved disclosure for testing only.\n' +
+    '\n' +
+    'https://academy.synthetic.invalid/enroll?ref=RVA-FICTIONAL001&rva_campaign=fictional-campaign&rva_creative=fictional-creative&rva_channel=emailCampaign revision 2; creative revision 4; catalog fictional-wave5-catalog-v1 / SHA256 b3ff5ff123b62b13a5917cd3c7ff0ed807ebabe5f545ae19a03b66fd76653fb7Own fictional referral: engagedEvent consent: separate_explicit_event_only. This lookup records no share, click, completed viewing or conversion.Source review only: educational references do not establish a client need, referral conversion, coaching recommendation or completed viewing.SYNTHETIC ONLY: invented educational reference for cellular hydration. Not personalized coaching or medical advice.Source fictional-wave5-source / fictional-source-v1 / fictional paragraph 1 / SHA256 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa / claim 8011b70ac6706b2e85c648c342d6279e34567cceb54bf87f54e873523efd8673'
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-qa/tests/wave7-qa/share-browser.cjs:11:302)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Held: source_version_mismatchFictional source review — read onlyFictional resource for email.\n\nFictional approved disclosure for testing only.\n\nhttps://academy.synthetic.invalid/enroll?ref=RVA-FICTIONAL001&rva_campaign=fictional-campaign&rva_creative=fictional-creative&rva_channel=emailCampaign revision 2; creative revision 4; catalog fictional-wave5-catalog-v1 / SHA256 b3ff5ff123b62b13a5917cd3c7ff0ed807ebabe5f545ae19a03b66fd76653fb7Own fictional referral: engagedEvent consent: separate_explicit_event_only. This lookup records no share, click, completed viewing or conversion.Source review only: educational references do not establish a client need, referral conversion, coaching recommendation or completed viewing.SYNTHETIC ONLY: invented educational reference for cellular hydration. Not personalized coaching or medical advice.Source fictional-wave5-source / fictional-source-v1 / fictional paragraph 1 / SHA256 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa / claim 8011b70ac6706b2e85c648c342d6279e34567cceb54bf87f54e873523efd8673',
+    expected: /Fictional source review — read only/,
+    operator: 'doesNotMatch',
+    diff: 'simple'
+  }

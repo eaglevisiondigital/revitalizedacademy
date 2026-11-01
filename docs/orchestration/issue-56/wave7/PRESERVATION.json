@@ -1,0 +1,1672 @@
+{
+  "base": "38f086792addaa9b131cecaf261ef21f89f5ffc7",
+  "protectedPathsCompared": 413,
+  "result": "PASS_UNCHANGED_SOURCE",
+  "privateProductionReadPerformed": false,
+  "changedExistingRuntime": [
+    "member/member110.js",
+    "tools/affiliate-share-preview/server.cjs",
+    "tools/affiliate-share-preview/preview.js",
+    "tools/affiliate-share-preview/index.html"
+  ],
+  "sourceRegistersExact": [
+    "docs/orchestration/requirements.json",
+    "docs/orchestration/requirements-source-details.json",
+    "docs/orchestration/issue-56/ACCEPTANCE_MATRIX.json",
+    "docs/orchestration/issue-55/127_SECTION_TRACE.csv"
+  ],
+  "files": [
+    {
+      "path": "assets/data/social-proof-mini.json",
+      "gitBlob": "00584ec4a298a928662d0474943f1a628f08433d"
+    },
+    {
+      "path": "assets/data/transformation-stories.json",
+      "gitBlob": "f6aa57690f0574d071e7432ea05d8707686aa257"
+    },
+    {
+      "path": "assets/fonts/DMSerifDisplay-Regular.ttf",
+      "gitBlob": "bc5ed0cea657f264ea9c2a11a54da62ed619c5da"
+    },
+    {
+      "path": "assets/fonts/OFL-DMSerifDisplay.txt",
+      "gitBlob": "be384f0ec9b54c6fed236106d3f6dfa029780b1b"
+    },
+    {
+      "path": "assets/images/about-our-founders-hero-approved-v96.jpg",
+      "gitBlob": "af1ea843762cf59d1e9fcfb7b306e0f948178526"
+    },
+    {
+      "path": "assets/images/about-our-founders-hero-approved.png",
+      "gitBlob": "2b828d1578de62a950e5140d684ab5d47c070f31"
+    },
+    {
+      "path": "assets/images/app-screen-dashboard.png",
+      "gitBlob": "9c3a7037d7bfeabc6a74217b6150c6cc8882a226"
+    },
+    {
+      "path": "assets/images/app-screen-meal-plans.png",
+      "gitBlob": "8f2c877699868a1e1a9a78e80e60bb28b907c3e5"
+    },
+    {
+      "path": "assets/images/app-screen-progress.png",
+      "gitBlob": "3f1cf2c428a00f3736dbf1b5eae90dd6e96d38a9"
+    },
+    {
+      "path": "assets/images/app-screen-refuel.png",
+      "gitBlob": "31857fc143e0fc31963566c4c8e4bab3478407e3"
+    },
+    {
+      "path": "assets/images/approved-hero-justyn-elle.png",
+      "gitBlob": "45ac663b97463abe7af300c00afce9db2eaa3590"
+    },
+    {
+      "path": "assets/images/approved-homepage-mockup.png",
+      "gitBlob": "ca39d65172d85737ce352db4d0d2a402abe6ea31"
+    },
+    {
+      "path": "assets/images/athletic-focus-approved.png",
+      "gitBlob": "8d7f8ce100e6160a28e2dffb6ef4849288eb4bdf"
+    },
+    {
+      "path": "assets/images/coaching76/accountability.png",
+      "gitBlob": "605438bd93c64c0723a428fdf67a99428e707d68"
+    },
+    {
+      "path": "assets/images/coaching76/approved-desktop.png",
+      "gitBlob": "bb58c38d7c0f2bf772b544cd30237cb95732dba0"
+    },
+    {
+      "path": "assets/images/coaching76/botanical-edge.png",
+      "gitBlob": "5a965736bc2706960cb2af854775a1a48531ecec"
+    },
+    {
+      "path": "assets/images/coaching76/clarity-signature.png",
+      "gitBlob": "53e9fdd4f619ad7fdb9813a0f575695003184a56"
+    },
+    {
+      "path": "assets/images/coaching76/coaches.png",
+      "gitBlob": "8d7ae40cc2edcdede55e4cf4d48b9ad14dc4abad"
+    },
+    {
+      "path": "assets/images/coaching76/compass.png",
+      "gitBlob": "0be51cf31984c0ff006ac43041fe21d18f35661e"
+    },
+    {
+      "path": "assets/images/coaching76/mountain-detail.png",
+      "gitBlob": "2b780a95f54b79e2a9f0beca5e4a272b69c79d9c"
+    },
+    {
+      "path": "assets/images/coaching76/person.png",
+      "gitBlob": "703066fbd1003ed52cabbc0166e306c372cb1fb8"
+    },
+    {
+      "path": "assets/images/coaching76/progress.png",
+      "gitBlob": "d939c37c439a11828f8c50c0486bf7220abe1267"
+    },
+    {
+      "path": "assets/images/coaching76/star.png",
+      "gitBlob": "b6cc94f873690fbfcc81c058e6cb4f9d61a46c95"
+    },
+    {
+      "path": "assets/images/coaching99/accountability.svg",
+      "gitBlob": "799f1bbe34603da67e3588933ddeaafb13dcd1a0"
+    },
+    {
+      "path": "assets/images/coaching99/brand-background.svg",
+      "gitBlob": "ff8a38dfe36981ad6b3eb55e48b4450125b7df34"
+    },
+    {
+      "path": "assets/images/coaching99/coaches.svg",
+      "gitBlob": "f6c129edc23e65f8b6a735eda9c059cc84d55df0"
+    },
+    {
+      "path": "assets/images/coaching99/compass.svg",
+      "gitBlob": "cd6f2956d2b0e6da1beb87ad88e6c18b9a8056fd"
+    },
+    {
+      "path": "assets/images/coaching99/person.svg",
+      "gitBlob": "932a32ddbcdd1db7488ab2b37bd750e5d234b847"
+    },
+    {
+      "path": "assets/images/coaching99/progress.svg",
+      "gitBlob": "0a7a767c4fe1d502a95bd7d394adc91ad1518c89"
+    },
+    {
+      "path": "assets/images/coaching99/star.svg",
+      "gitBlob": "42232d2546a5bde8cc36218e33b879ab76b4d5b9"
+    },
+    {
+      "path": "assets/images/ecosystem-preview-placeholder.png",
+      "gitBlob": "20906e22147dd1e5674d5d429d5aaf90b40a0451"
+    },
+    {
+      "path": "assets/images/family-health77/approved-desktop.png",
+      "gitBlob": "f3fb4213ac384e9545eab6bba65661044ca2ce0c"
+    },
+    {
+      "path": "assets/images/family-health77/approved-family-mobile.webp",
+      "gitBlob": "2fed0e5a38b6d13f21d7d99c0ba0bcee4a15c168"
+    },
+    {
+      "path": "assets/images/family-health77/together-signature.png",
+      "gitBlob": "d2170b659608b8a117d5372dc9d009ebb33621ea"
+    },
+    {
+      "path": "assets/images/family-health78/grandparents.png",
+      "gitBlob": "cded8dd09224a8cfca6cfb0cd035cd5f252e1668"
+    },
+    {
+      "path": "assets/images/family-health78/kids.png",
+      "gitBlob": "a4f219e17f45c9eb632e5525fda5eb469fea861e"
+    },
+    {
+      "path": "assets/images/family-health78/parents.png",
+      "gitBlob": "7669d9410004d1bc3fa687922c3dd0b2f0ddcd6b"
+    },
+    {
+      "path": "assets/images/family-health78/teens.png",
+      "gitBlob": "8036dab11ddeb2f24c7abde2848002b9909f2d3f"
+    },
+    {
+      "path": "assets/images/family-health79/family-walk.webp",
+      "gitBlob": "9e38b22b2e82eb1c1104ada26342d89c9cec26a6"
+    },
+    {
+      "path": "assets/images/family-photo-clean-v56.jpg",
+      "gitBlob": "4f39ca36064dbedc58d397ca5764621296b97a25"
+    },
+    {
+      "path": "assets/images/founders-hero-approved.png",
+      "gitBlob": "0a1cfbe067d6a29c556f92deaab69eaad504baf3"
+    },
+    {
+      "path": "assets/images/founders-hero-background-build117.webp",
+      "gitBlob": "e7d2ec7f85d271ef0403268ae0ecf46e58699313"
+    },
+    {
+      "path": "assets/images/free-help80/cream-library.webp",
+      "gitBlob": "c40a57db20afcd0d81777b0f7f7532b58972add8"
+    },
+    {
+      "path": "assets/images/free-help80/emerald-botanical.webp",
+      "gitBlob": "8913acc7bfea6cf73f879cffba9a326b95b25b40"
+    },
+    {
+      "path": "assets/images/hero54-background.png",
+      "gitBlob": "eac66a1756f7db30b5c8b9200885a4bfe2221630"
+    },
+    {
+      "path": "assets/images/home/hero-approved.png",
+      "gitBlob": "af2819182cda7c0da84114629edefeb51558dec7"
+    },
+    {
+      "path": "assets/images/home/mobile-hero-photographic-v3.png",
+      "gitBlob": "4255a087dd41a2fbb0813fa9fab320514825c5d9"
+    },
+    {
+      "path": "assets/images/home/source/hero-digital-solutions.png",
+      "gitBlob": "af2819182cda7c0da84114629edefeb51558dec7"
+    },
+    {
+      "path": "assets/images/home/web/hero-digital-solutions.webp",
+      "gitBlob": "284248f49f523dbf4ceef77fb30e2fc5e78740c7"
+    },
+    {
+      "path": "assets/images/icon-athletic-approved.png",
+      "gitBlob": "d5467b36688020a07d4359f27a32f3b616fee499"
+    },
+    {
+      "path": "assets/images/icon-energized-approved.png",
+      "gitBlob": "c56b3fd32121593da4b19db3862ffb75828b8bc2"
+    },
+    {
+      "path": "assets/images/icon-organized-approved.png",
+      "gitBlob": "63d67384d2211d8130b80164611c7ffedd561caf"
+    },
+    {
+      "path": "assets/images/icon-refined-approved.png",
+      "gitBlob": "bc93eeabf2c9db84ff090b2e48c77b7671438158"
+    },
+    {
+      "path": "assets/images/justyn-elle-approved-only.png",
+      "gitBlob": "500e19571f2a3d53064710ec251ae0102b246aa5"
+    },
+    {
+      "path": "assets/images/justyn-elle-approved-untouched.png",
+      "gitBlob": "500e19571f2a3d53064710ec251ae0102b246aa5"
+    },
+    {
+      "path": "assets/images/justyn-elle-professional-approved-102.png",
+      "gitBlob": "c6edd2fbe75e54cef5bad796ee5b25b5b6fe9a0a"
+    },
+    {
+      "path": "assets/images/justyn-elle-source.png",
+      "gitBlob": "a62db3ef280667483617953f45709a5ff80fd4e7"
+    },
+    {
+      "path": "assets/images/longevity-lifestyle-green-webinar.svg",
+      "gitBlob": "10186b786a6c01e88fcf7d6ead63b85e13c15416"
+    },
+    {
+      "path": "assets/images/longevity-matrix-approved-2026.png",
+      "gitBlob": "4fe76ede3fe7be6fbb45804b23984b704f6d1e7a"
+    },
+    {
+      "path": "assets/images/longevity-matrix-approved-right-transparent.png",
+      "gitBlob": "1fa56b90a01044743a200c0e0f6aadc29acec24e"
+    },
+    {
+      "path": "assets/images/longevity-matrix-approved-right.png",
+      "gitBlob": "b167496f2a0b5f066b33a03ffd19513f202f25cb"
+    },
+    {
+      "path": "assets/images/longevity-matrix-approved.png",
+      "gitBlob": "225a2eb4385804dfa058ee7e76747020dc278447"
+    },
+    {
+      "path": "assets/images/longevity-matrix-brief.jpg",
+      "gitBlob": "126ba015fb951ecf544db1b3889fd654171ef98a"
+    },
+    {
+      "path": "assets/images/longevity-matrix-full.jpg",
+      "gitBlob": "316132da3d7984b654d0b5e776b28d7aa3a93c3c"
+    },
+    {
+      "path": "assets/images/longevity-matrix-square.png",
+      "gitBlob": "1e9f0b564a008c8ca2cb52379dc86aa50606a4d9"
+    },
+    {
+      "path": "assets/images/matrix-athletic-detail.jpg",
+      "gitBlob": "285d2e8e509f74492825c4a4d9c02eabb4cd307d"
+    },
+    {
+      "path": "assets/images/matrix-energized-detail.jpg",
+      "gitBlob": "1d3e7e8b8a5f37ac30e3eb8d4bb3c86e5e26bb4f"
+    },
+    {
+      "path": "assets/images/matrix-focus-athletic.png",
+      "gitBlob": "7bcc8380055bce4daacc5d101bffde6956f8fcb8"
+    },
+    {
+      "path": "assets/images/matrix-focus-energized.png",
+      "gitBlob": "388c70afc3745937da88319098f2b86b8515537b"
+    },
+    {
+      "path": "assets/images/matrix-focus-organized.png",
+      "gitBlob": "b641dc4f9e694e84ee67fc395ddbd6044b9a6b0a"
+    },
+    {
+      "path": "assets/images/matrix-focus-refined.png",
+      "gitBlob": "101f354a1fedd11ed47994cbd1e3a3034b04316a"
+    },
+    {
+      "path": "assets/images/matrix-organized-detail.jpg",
+      "gitBlob": "8e0e84cd83f038f2e0f77892bb2d945fa66bc151"
+    },
+    {
+      "path": "assets/images/matrix-refined-detail.jpg",
+      "gitBlob": "cf2adb3ea39ad3c5614f328a18ee714f0a1c9026"
+    },
+    {
+      "path": "assets/images/refuel-coming-2027.png",
+      "gitBlob": "3e436b8b3d328038a64ab123a4a0d965be06a7a8"
+    },
+    {
+      "path": "assets/images/refuel-vanilla-pouch.png",
+      "gitBlob": "0611839b4170d1d91f0ff18211412047c0ebf05e"
+    },
+    {
+      "path": "assets/images/revitalized-app-ecosystem-four-phone.png",
+      "gitBlob": "e6c2d9b2b97fbea85de7f36923647aa2aa9b72be"
+    },
+    {
+      "path": "assets/images/revitalized-icon-approved.png",
+      "gitBlob": "251ef0d66693afc3f5be91ff7f8715d9f927951d"
+    },
+    {
+      "path": "assets/images/revitalized-logo-dark-approved-v69.png",
+      "gitBlob": "4824d20046c414949177d136477bf8c7b3e742b8"
+    },
+    {
+      "path": "assets/images/revitalized-logo-dark-approved.png",
+      "gitBlob": "4824d20046c414949177d136477bf8c7b3e742b8"
+    },
+    {
+      "path": "assets/images/revitalized-logo-dark.png",
+      "gitBlob": "4824d20046c414949177d136477bf8c7b3e742b8"
+    },
+    {
+      "path": "assets/images/revitalized-logo-light-approved.png",
+      "gitBlob": "19fe3f54c599f77acc98ec8b3bc6791953b089f9"
+    },
+    {
+      "path": "assets/images/revitalized-logo-light.png",
+      "gitBlob": "19fe3f54c599f77acc98ec8b3bc6791953b089f9"
+    },
+    {
+      "path": "assets/images/revitalized-shield-approved-v69.png",
+      "gitBlob": "1704c78e02b5174ed52655ca57877e250f831822"
+    },
+    {
+      "path": "assets/images/revitalized-shield.png",
+      "gitBlob": "80f68e8c7881f8f8783cec70f3c86cd1462462fc"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6979.svg",
+      "gitBlob": "7818096496e374220e4234d3490687c13d6184bd"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6980.svg",
+      "gitBlob": "ca5cb594db0737ac9f883d5faeb332aa4017be71"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6981.svg",
+      "gitBlob": "4e5c0a7f7b7ee238bbb959c029d1977e60de0df4"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6982.svg",
+      "gitBlob": "b4599af887091068633cd57b5542232d1af5db34"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6983.svg",
+      "gitBlob": "251425d03f54134e6a1987badf3eed351e514edf"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6984.svg",
+      "gitBlob": "72a737e86ff268828663bb6ff1eb080353638deb"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6985.svg",
+      "gitBlob": "e0d27acfe364d118988c3ec79519eeb005ed256d"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6986.svg",
+      "gitBlob": "be2c80bd8fed4fa6c578a500d15b179f1a92bf5b"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6987.svg",
+      "gitBlob": "4237fcb1980a6729d4e4814d7531013dec42af7a"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6988.svg",
+      "gitBlob": "5b1558a9ed3adc7ef4fcd5c8e58fa32dc9e83892"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6989.svg",
+      "gitBlob": "e14d001e03ba81009a72fdca7cf7b6fe9ab046d9"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6990.svg",
+      "gitBlob": "a6d34fd21cfffd35f3adb0c2a1751a11bc3d6bf2"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6991.svg",
+      "gitBlob": "df1eb9962a1c22287c454e3835049b9278771862"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6992.svg",
+      "gitBlob": "6b47fdfca3d7ada5ec63c103e71f157d4c7bfc9a"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6993.svg",
+      "gitBlob": "70a9b1efc3808df21a058dc7d510d132f67b0476"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6994.svg",
+      "gitBlob": "bbd289a2f8d9fc89f0a8acbf11cb572b346a1fa2"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6995.svg",
+      "gitBlob": "df9685486efdb1988a1ddea72c7089648a5acc3d"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6996.svg",
+      "gitBlob": "f8259ebbb6e5c2bf4055a90ae1884aaa31b3d91a"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6997.svg",
+      "gitBlob": "3f6c233c3a9278fee96451497919eb065b878586"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6998.svg",
+      "gitBlob": "2b4bd48c1f5a6694d3b7b5852dfbf5647fe0346e"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6999.svg",
+      "gitBlob": "e90dce4df145331220f544e312bd2335768b7f63"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_7001.svg",
+      "gitBlob": "756f8b81f5b34af46be6c8d75a11213d3640c63d"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_7002.svg",
+      "gitBlob": "7c8d963ecf488f0fe0feaea1368ea751c954e2ce"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_7003.svg",
+      "gitBlob": "5238a41c4476d1b9b1bccbaad761b2fb92899157"
+    },
+    {
+      "path": "assets/images/social-proof/claudia-emerald-testimonial.svg",
+      "gitBlob": "4493db6bea4de0fd4d6224fdb5ec5767a0f30fb4"
+    },
+    {
+      "path": "assets/images/social-proof/rodney-emerald-testimonial.svg",
+      "gitBlob": "ab07efa4bddb3eeb096def3add098dc90f09651c"
+    },
+    {
+      "path": "assets/images/story-claudia.jpg",
+      "gitBlob": "0a2d4a0707b7c7e30ab22f8053171754622d74a0"
+    },
+    {
+      "path": "assets/images/story-claudia.webp",
+      "gitBlob": "6f10c5e9c7363ddbc5690a5185b01f7b9efece7d"
+    },
+    {
+      "path": "assets/images/story-julien.jpg",
+      "gitBlob": "72bea9aab01b6cc5ef509e75f155f29d61a17e07"
+    },
+    {
+      "path": "assets/images/story-julien.webp",
+      "gitBlob": "764c279e3ba9174a6b0cb2966d41bf6504da7ffc"
+    },
+    {
+      "path": "assets/images/video-thumb-coaching-approved.png",
+      "gitBlob": "9bedf052433bd794e052a3b2b903213e17e62c68"
+    },
+    {
+      "path": "assets/images/video-thumb-coaching.png",
+      "gitBlob": "9bedf052433bd794e052a3b2b903213e17e62c68"
+    },
+    {
+      "path": "assets/images/video-thumb-longevity-matrix-approved.png",
+      "gitBlob": "4238a806175b9e38a228260053e2767ad7e35383"
+    },
+    {
+      "path": "assets/images/video-thumb-longevity-matrix.png",
+      "gitBlob": "4238a806175b9e38a228260053e2767ad7e35383"
+    },
+    {
+      "path": "assets/images/video-thumb-revitalized-journey-approved.png",
+      "gitBlob": "0a4c69588a08cb4b2de1cff1665e6b867421f95a"
+    },
+    {
+      "path": "assets/images/video-thumb-revitalized-journey.png",
+      "gitBlob": "0a4c69588a08cb4b2de1cff1665e6b867421f95a"
+    },
+    {
+      "path": "assets/images/vitality-roadmap-results-sample-v2.svg",
+      "gitBlob": "eb98e58f0b7eb8bcb3f5bfac4eb9b690f4e85843"
+    },
+    {
+      "path": "css/account104.css",
+      "gitBlob": "c6b58b3f6dff687a3d5cceca3674165f14e625e5"
+    },
+    {
+      "path": "css/admin104.css",
+      "gitBlob": "231216fa9ff1f4601f293afe8e838d0f52bfe39b"
+    },
+    {
+      "path": "css/coaching-path94.css",
+      "gitBlob": "79f5bdd96584f10b577e69b0b0fea601e3db4a6b"
+    },
+    {
+      "path": "css/coaching76-base.css",
+      "gitBlob": "e5c10325abe663ddfc3269194c5646dcef80b46f"
+    },
+    {
+      "path": "css/coaching76.css",
+      "gitBlob": "18193e8ba6dfe0cd081d2f89201820e843478f3e"
+    },
+    {
+      "path": "css/coaching98-photo-layers.css",
+      "gitBlob": "9fddfcf05ce7e0875e9d6d2f06983a8bd631ba4f"
+    },
+    {
+      "path": "css/coaching99-brand-layers.css",
+      "gitBlob": "7e77a2a283bd8da9ec254e2beddfd0e6900adf69"
+    },
+    {
+      "path": "css/enrollment-health90.css",
+      "gitBlob": "fe744be431eb2039d164a4f3506770d08aeb1055"
+    },
+    {
+      "path": "css/enrollment82-program-picker.css",
+      "gitBlob": "966ed69338b56dfbf4829cdb453419834dc26e01"
+    },
+    {
+      "path": "css/enrollment82.css",
+      "gitBlob": "f4963d2c658183e3878a2f6de5a175c79d6d37c3"
+    },
+    {
+      "path": "css/enrollment83-premium.css",
+      "gitBlob": "bc1d6155481b8872f9423bfa8a215eda3c5989bd"
+    },
+    {
+      "path": "css/enrollment84-premium.css",
+      "gitBlob": "1303dfd37134f20d8d381d84dd0f47a7519bd8e8"
+    },
+    {
+      "path": "css/enrollment88-refinement.css",
+      "gitBlob": "8305328c9a9b934da0d0fa572fa0ab81425c5ff7"
+    },
+    {
+      "path": "css/enrollment93-program-modal.css",
+      "gitBlob": "188c64a118c626ad32cff2790b470ab323d1294a"
+    },
+    {
+      "path": "css/family-health77.css",
+      "gitBlob": "a27a62d427a8a854bfc9f352891221582e049eff"
+    },
+    {
+      "path": "css/family-health78.css",
+      "gitBlob": "900d9efc03c1772e3c5452841e99a1323c939e42"
+    },
+    {
+      "path": "css/family-health79.css",
+      "gitBlob": "59807a0579b6f47539681a28fff3aacff1ba898f"
+    },
+    {
+      "path": "css/founders103.css",
+      "gitBlob": "3d47eaf86b233ef7d8fe9ce3206f484698c415c1"
+    },
+    {
+      "path": "css/founders64.css",
+      "gitBlob": "040f840ff6727d27448d5d63855d0d4f4510adc5"
+    },
+    {
+      "path": "css/founders65.css",
+      "gitBlob": "e36401ac3cd5586af699e5b9a4c4b2e052f21611"
+    },
+    {
+      "path": "css/free-help80.css",
+      "gitBlob": "17c068b1b5de173b70d092349f39bc0a47b13bac"
+    },
+    {
+      "path": "css/header-glass.css",
+      "gitBlob": "10e140c35be3e9b258a8af6afa1af2f7d8179ccb"
+    },
+    {
+      "path": "css/header87-continuity.css",
+      "gitBlob": "95350400328fe2ef3b0463c91e278c087784d134"
+    },
+    {
+      "path": "css/health-hope-live.css",
+      "gitBlob": "73a9abe6bba52d99bd6ede3967e5c039c86d19ee"
+    },
+    {
+      "path": "css/health-profile91.css",
+      "gitBlob": "667109d84d81a3936f4026509fde25750cbd81b7"
+    },
+    {
+      "path": "css/health-profile92-polish.css",
+      "gitBlob": "a702ab51089027a0d5b40970196b914673945a8e"
+    },
+    {
+      "path": "css/health-profile95-nav.css",
+      "gitBlob": "97bf52b2e8b990ce2e0b351d2371e579caeb5b5a"
+    },
+    {
+      "path": "css/hero102-portrait.css",
+      "gitBlob": "3e081e8e63255f8f3f169164af5c5084e4bcd8ad"
+    },
+    {
+      "path": "css/hero54.css",
+      "gitBlob": "cca53317e8bf534cbbfda10f3adf12023add2ee9"
+    },
+    {
+      "path": "css/home-programs-banner89.css",
+      "gitBlob": "3542aac0b4ace91b3f953b7d9539cec228823355"
+    },
+    {
+      "path": "css/homepage-mobile-hero.css",
+      "gitBlob": "15549b8bfc482af12ae9aa331b7c9c9e8e8fcecf"
+    },
+    {
+      "path": "css/plans85-base.css",
+      "gitBlob": "3575584151ee39da2679a0276bb69d082b605a72"
+    },
+    {
+      "path": "css/plans85-loader.css",
+      "gitBlob": "a1d8b3e5b9e721ca6c11d245b93ec52bab0d7328"
+    },
+    {
+      "path": "css/plans85-premium.css",
+      "gitBlob": "8413c03b949f58998403c61215a7039d27d45a9a"
+    },
+    {
+      "path": "css/plans86-readability.css",
+      "gitBlob": "66ab952cf3d3caf15384cbedd31e4423c79c8e8e"
+    },
+    {
+      "path": "css/social-proof-mini.css",
+      "gitBlob": "3362cacceafedaf7a154eece57d833142c31feec"
+    },
+    {
+      "path": "css/story-video95.css",
+      "gitBlob": "205e97b5a4fc7700fe52fc7249d94ef509846e6d"
+    },
+    {
+      "path": "css/styles.css",
+      "gitBlob": "e6706982b0b4598b20c5b4538d5d315977cc6aba"
+    },
+    {
+      "path": "css/vitality-next106.css",
+      "gitBlob": "56aff0a74693cc542a4d1badffd27224b4b30704"
+    },
+    {
+      "path": "css/vitality-report-preview.css",
+      "gitBlob": "aef21b4e4d119c372888f66e192a2436de8f2645"
+    },
+    {
+      "path": "css/vitality-roadmap-workspace.css",
+      "gitBlob": "be60c588c144cf00ba6190375185662cb6bc09f2"
+    },
+    {
+      "path": "css/vitality55.css",
+      "gitBlob": "1c4797f1acccd7826265eb301640db2e6bb35bf3"
+    },
+    {
+      "path": "css/webinar-founders.css",
+      "gitBlob": "3e8e6453be4cce00cbf8f91dc108faa16ebce199"
+    },
+    {
+      "path": "css/webinar-hero-promo.css",
+      "gitBlob": "a04fe1e03a2c99507146becf5d049321e16b78b9"
+    },
+    {
+      "path": "css/webinar81.css",
+      "gitBlob": "9217b9c65f52fc430b54d84d742b3c4bd18193ae"
+    },
+    {
+      "path": "js/account104.js",
+      "gitBlob": "2ae0cf213360d9d89f64ab41e19ca65070fcb534"
+    },
+    {
+      "path": "js/admin104.js",
+      "gitBlob": "37131fc58ec07049dee3916df17b94d2f32c9961"
+    },
+    {
+      "path": "js/app.js",
+      "gitBlob": "bb9a47e2cf76637257974c7e6c3450d7e78448fa"
+    },
+    {
+      "path": "js/coaching-path94.js",
+      "gitBlob": "177c5f2400df4edc442e5be4ce7f73c5a93bfb8b"
+    },
+    {
+      "path": "js/enrollment-health90-bridge.js",
+      "gitBlob": "907a7698849bd5c14e3472221e024a8d28d04524"
+    },
+    {
+      "path": "js/enrollment82.js",
+      "gitBlob": "457bf8acbb710d57e65bbb51dc686ebddff3115a"
+    },
+    {
+      "path": "js/enrollment83-bridge.js",
+      "gitBlob": "57d7484710d98769967ef5675dda71ab16f20a0b"
+    },
+    {
+      "path": "js/enrollment88-family.js",
+      "gitBlob": "47e4e9ca07b655ebb121faddaca372157dcda47b"
+    },
+    {
+      "path": "js/environment.js",
+      "gitBlob": "47dd2d51653f56d64cd90c37c94f0e7896ccca28"
+    },
+    {
+      "path": "js/family-health77.js",
+      "gitBlob": "4ee868d81b88420a8052496021a3cf1d5380c0df"
+    },
+    {
+      "path": "js/family-health79.js",
+      "gitBlob": "55ce3b74be1954435d4cd0a9927473f5aa4d7915"
+    },
+    {
+      "path": "js/free-help80.js",
+      "gitBlob": "0066dcd154886a81ed0e71d667ed5c4cd2c731b9"
+    },
+    {
+      "path": "js/health-hope-live.js",
+      "gitBlob": "20965d74428548458163047eaf7bc051bc3e3a8c"
+    },
+    {
+      "path": "js/health-profile107-bridge.js",
+      "gitBlob": "361377e1d96ccf4b0aaf21813aca8fdc303bb629"
+    },
+    {
+      "path": "js/health-profile91-data-1.js",
+      "gitBlob": "7aead8a1104653bbe57976cbedb40d1590d3816e"
+    },
+    {
+      "path": "js/health-profile91-data-2.js",
+      "gitBlob": "5bd06ce79c4185d688a8b1c2f9543e1d6bc3e746"
+    },
+    {
+      "path": "js/health-profile91-data-3.js",
+      "gitBlob": "1f3090b3589a750e18840da6fa5cccfa13506166"
+    },
+    {
+      "path": "js/health-profile91-data-4.js",
+      "gitBlob": "63e7dcc0121d4a58e4dbf7c0a9247b91590fbd43"
+    },
+    {
+      "path": "js/health-profile91-engine.js",
+      "gitBlob": "1fe5286681422a30342bc1161be30eeec2574f67"
+    },
+    {
+      "path": "js/revitalized-data.js",
+      "gitBlob": "1068f4ca9214640c588f19dc2032afe975286af8"
+    },
+    {
+      "path": "js/rva-affiliate-share-contract.cjs",
+      "gitBlob": "ce0af87dcd494b0497ebf49334684c1d2acb4573"
+    },
+    {
+      "path": "js/social-proof-mini.js",
+      "gitBlob": "9a625f45d21e3b88c402fdfcdd7cf5b65bb313e6"
+    },
+    {
+      "path": "js/transformation-stories.js",
+      "gitBlob": "bf15f0819d6d888f872e93694c360201f9e6973e"
+    },
+    {
+      "path": "js/vitality-child.js",
+      "gitBlob": "8894b7cc2ae233f896e22d18a9f79169247aaa73"
+    },
+    {
+      "path": "js/vitality-next106.js",
+      "gitBlob": "4e703568eec863c0662b58aaeaa0646806c35db7"
+    },
+    {
+      "path": "js/vitality-questionnaire-draft.cjs",
+      "gitBlob": "105ace05c59f0a40c99fdabdf6d3660a20d75751"
+    },
+    {
+      "path": "js/vitality-report-preview.js",
+      "gitBlob": "0b4a029b35521b2ce061ef2b7a6ea559b326f666"
+    },
+    {
+      "path": "js/vitality-resume.js",
+      "gitBlob": "a5ef6e3a480ea80589b27a6d311e1055bcd8d843"
+    },
+    {
+      "path": "js/vitality-roadmap-b2-engine.js",
+      "gitBlob": "9db412f49deff8b025bc59e1c7bcd82a86a0352c"
+    },
+    {
+      "path": "js/vitality-roadmap-b2-scenarios.js",
+      "gitBlob": "b8171a2741a36e62b4ba1a59c91f5a1acd9e7c35"
+    },
+    {
+      "path": "js/vitality-roadmap-b21-engine.js",
+      "gitBlob": "3b3d61b7a132fbb0dbcacabce9424d68c2252e69"
+    },
+    {
+      "path": "js/vitality-roadmap-b21-scenarios.js",
+      "gitBlob": "e7d66c8c286611782c50586e06e006a5464b893b"
+    },
+    {
+      "path": "js/vitality-roadmap-b4-coverage.js",
+      "gitBlob": "efe205ebc583075e762807bfb2f1ad3e36e7a50d"
+    },
+    {
+      "path": "js/vitality-roadmap-b4-source-map.js",
+      "gitBlob": "cfa9be5f8ad88c044e68a251cabcdd7c33f4298e"
+    },
+    {
+      "path": "js/vitality-roadmap-b5-cases.cjs",
+      "gitBlob": "c16a865af4009464c5e09ccbc8ae5858a1629f2f"
+    },
+    {
+      "path": "js/vitality-roadmap-b5-contract.js",
+      "gitBlob": "df931c7a0b13c03e9b02f9e6f07a419d2c31d0c7"
+    },
+    {
+      "path": "js/vitality-roadmap-b6-adapter.cjs",
+      "gitBlob": "c190972dac576a5864340304059e9b316f96a8d1"
+    },
+    {
+      "path": "js/vitality-roadmap-b6-private-comparison.cjs",
+      "gitBlob": "a2244f17fbc007963afbf819313c611e716ced1b"
+    },
+    {
+      "path": "js/vitality-roadmap-founder-direction.cjs",
+      "gitBlob": "eba6a34dd23e467b99fd172b9f4af78ea0d27488"
+    },
+    {
+      "path": "js/vitality-roadmap-founder-voice.cjs",
+      "gitBlob": "f98da2bbb41e694e0cc1d65ed77e751a907adb4d"
+    },
+    {
+      "path": "js/vitality-roadmap-measurement-traces.cjs",
+      "gitBlob": "38ccdee0bf8671b76ea3af8d18f645a931f710e8"
+    },
+    {
+      "path": "js/vitality-roadmap-narrative.cjs",
+      "gitBlob": "c50289ed097832b581c1b65860276f41ed992d06"
+    },
+    {
+      "path": "js/vitality-roadmap-processing.cjs",
+      "gitBlob": "4422ce233842468c612161776991fe6acea92f33"
+    },
+    {
+      "path": "js/vitality-roadmap-v2-gate.cjs",
+      "gitBlob": "bb2d5d8e94e9905115e152f6b8bf470be4ed53f4"
+    },
+    {
+      "path": "js/vitality-roadmap-view.js",
+      "gitBlob": "99eba8d19415750cf3e11d89bb1498fdf8b5a93b"
+    },
+    {
+      "path": "js/vitality55.js",
+      "gitBlob": "cb2b78975096d25d45bf35dc2cb49f637bdeeb8a"
+    },
+    {
+      "path": "member/activate/activate112.css",
+      "gitBlob": "fd278f30f7f8dd5da0d2e26787353fff37f57c4d"
+    },
+    {
+      "path": "member/activate/activate112.js",
+      "gitBlob": "3cf20f5c8709c47e73b6ad4f1813644c4b15ff3b"
+    },
+    {
+      "path": "member/activate/index.html",
+      "gitBlob": "9672683192ea4e8a3893212d5eddcf6aaf19decb"
+    },
+    {
+      "path": "member/dashboard.html",
+      "gitBlob": "55eebacd385437e20be4296c81fe6bfdc89ddf6a"
+    },
+    {
+      "path": "member/index.html",
+      "gitBlob": "bd01b6a8201b1e3d0e57115ce361640910fc7483"
+    },
+    {
+      "path": "member/manifest.webmanifest",
+      "gitBlob": "63f3dabe35f2ced5f3c3a8df0164ba6b3429c6f3"
+    },
+    {
+      "path": "member/member110.css",
+      "gitBlob": "2029cdfd158aa2e52e5cbfe417b36a3901f2db88"
+    },
+    {
+      "path": "member/onboarding/index.html",
+      "gitBlob": "09c036ae865cbe3abc24f2347cad894602fa3b6e"
+    },
+    {
+      "path": "member/onboarding/onboarding.css",
+      "gitBlob": "7239620ebc396195815415b710e1af6952e1a35b"
+    },
+    {
+      "path": "member/onboarding/onboarding.js",
+      "gitBlob": "facc4904f672ac3cd26267551c82276747741ed4"
+    },
+    {
+      "path": "member/password-reset.html",
+      "gitBlob": "cac79cf49173c4cde19a8c9d13cf4d785f92f520"
+    },
+    {
+      "path": "netlify/functions/_shared/authorize-net.mjs",
+      "gitBlob": "a8c1f4b80de5db8fe95692330c1196bd31947103"
+    },
+    {
+      "path": "netlify/functions/_shared/health-hope-live-acceptance.mjs",
+      "gitBlob": "536ecb0d7e256f8216bed7481f3a4c9d033dcfd9"
+    },
+    {
+      "path": "netlify/functions/_shared/health-hope-live-meeting.mjs",
+      "gitBlob": "1fa95c3d0a4418e4f2cdd0c3ec061be3c139bd2b"
+    },
+    {
+      "path": "netlify/functions/_shared/health-hope-live.mjs",
+      "gitBlob": "b1c556188991457e3ecf8ee2da9f771d28e8fd7e"
+    },
+    {
+      "path": "netlify/functions/_shared/payment-domain.mjs",
+      "gitBlob": "036af81d7949d4cc6d2e2061681e6c0e96f46c95"
+    },
+    {
+      "path": "netlify/functions/_shared/payments.mjs",
+      "gitBlob": "36c8905811664eeb967ba63449372bcfc580c3c9"
+    },
+    {
+      "path": "netlify/functions/exercise-library.mjs",
+      "gitBlob": "dc5f22cd87d83817da200677505657ac4eb05596"
+    },
+    {
+      "path": "netlify/functions/food-database.mjs",
+      "gitBlob": "982158b31433872997b4d38175f3b339dcd0f863"
+    },
+    {
+      "path": "netlify/functions/health-hope-live-retention.mjs",
+      "gitBlob": "fedfb6af6e2c9a8291616a8079e5a0d3397aaeea"
+    },
+    {
+      "path": "netlify/functions/health-hope-live-worker.mjs",
+      "gitBlob": "0730dba10f658f107ea1da9ab2e0ab66c2d02e92"
+    },
+    {
+      "path": "netlify/functions/health-hope-live.mjs",
+      "gitBlob": "2c97a688cf252f4993a93b21090fe1a6ae281b25"
+    },
+    {
+      "path": "netlify/functions/payment-webhook.mts",
+      "gitBlob": "09be4dbe696d55d2ccb4dbc1ee6a4484171a6b0a"
+    },
+    {
+      "path": "netlify/functions/payment-worker.mts",
+      "gitBlob": "5e459f113cca5e92cc81e26497310e901c2235db"
+    },
+    {
+      "path": "netlify/functions/payments.mts",
+      "gitBlob": "a8193eab1b8d1382d1f4d71c5c9ea0bf1c48ce7e"
+    },
+    {
+      "path": "netlify/functions/reusable-content-sync.mjs",
+      "gitBlob": "1d3c377360dc3370a31ea3c816a0b9dd004a7447"
+    },
+    {
+      "path": "netlify/functions/roadmap-founder.mjs",
+      "gitBlob": "884efb5df72e500ef4af1ea6bff0c84ff1a00356"
+    },
+    {
+      "path": "netlify/functions/roadmap-processing.mjs",
+      "gitBlob": "ee4772cfed5375104454bb49a922c1e337407be1"
+    },
+    {
+      "path": "netlify/functions/roadmap-scoring-lab.mjs",
+      "gitBlob": "77598d6d1d119b990cb443826f6015baf3844f17"
+    },
+    {
+      "path": "netlify/functions/roadmap-verification.mjs",
+      "gitBlob": "5196e913c2cdc89f1312dfd1a793d8a718dc572b"
+    },
+    {
+      "path": "netlify/lib/content-sync-contract.json",
+      "gitBlob": "a260667dcb9e3be3311c481e75b9e693713db163"
+    },
+    {
+      "path": "netlify/lib/content-sync-service.cjs",
+      "gitBlob": "833f4b657d566ae952495a55067406b9d6dda592"
+    },
+    {
+      "path": "netlify/lib/exercise-library-service.cjs",
+      "gitBlob": "7128e3900f515f400817e32356da2cc85986e1ee"
+    },
+    {
+      "path": "netlify/lib/food-database-service.cjs",
+      "gitBlob": "2bb1e64382caa545050f1479f332b45a0a19a834"
+    },
+    {
+      "path": "netlify/lib/fooddata.cjs",
+      "gitBlob": "435c8aa7593d0ad52046657c8016c3c7099ff808"
+    },
+    {
+      "path": "netlify/lib/nutrient-target-contract.cjs",
+      "gitBlob": "1690acb42d5d1310150c0b2b014d2af7a09580c1"
+    },
+    {
+      "path": "netlify/lib/repdb.cjs",
+      "gitBlob": "600014caf0cee5b9c3fddb4f1919e4d09a1ea9be"
+    },
+    {
+      "path": "netlify/lib/roadmap-calibration.cjs",
+      "gitBlob": "54bd87cc0d36b39951980fbd594d335a8dbe4dc9"
+    },
+    {
+      "path": "netlify/lib/roadmap-founder.cjs",
+      "gitBlob": "91bde7ba01a1f69b7df5c9668bd3de591d479bc5"
+    },
+    {
+      "path": "netlify/lib/roadmap-processing-print.cjs",
+      "gitBlob": "77ac101e9fa0844c21d343f1d73568013f703e10"
+    },
+    {
+      "path": "netlify/lib/roadmap-processing-seal.cjs",
+      "gitBlob": "3d0fcc2dd2554dbfbeeeccfc5b6436ea7e12c99f"
+    },
+    {
+      "path": "netlify/lib/roadmap-processing.cjs",
+      "gitBlob": "4185bb33717e919f12bb4e26837bf25ef27ae05d"
+    },
+    {
+      "path": "netlify/lib/roadmap-scoring-lab.cjs",
+      "gitBlob": "54c672f41b85521a11e57a0eae21eb0c26ed8545"
+    },
+    {
+      "path": "netlify/lib/roadmap-verification.cjs",
+      "gitBlob": "710730ee8facc8a902ee661321c741dc12b86437"
+    },
+    {
+      "path": "portal/health-hope-live.css",
+      "gitBlob": "6455c718fb66ecc346bb8a73e51febc9f99811a1"
+    },
+    {
+      "path": "portal/health-hope-live.html",
+      "gitBlob": "2b55e5e96ffe444d8d0f5032f0c1c34acb5d47bd"
+    },
+    {
+      "path": "portal/health-hope-live.js",
+      "gitBlob": "7d2f73ec958281f6ac1ab2379a438bf3a20220de"
+    },
+    {
+      "path": "portal/index.html",
+      "gitBlob": "2a026078c1c8cc20c06ed7320b8bfa2774fa8fdf"
+    },
+    {
+      "path": "portal/manifest.webmanifest",
+      "gitBlob": "eb383c8b5fe29a44ea0543ca4076b4bd44d7b826"
+    },
+    {
+      "path": "portal/password-reset.html",
+      "gitBlob": "e32c18bbd8e24a9ada97e8b765c213233457e599"
+    },
+    {
+      "path": "portal/portal-account.js",
+      "gitBlob": "a5790995c65d65b7eb6d7485d050f3769b063a77"
+    },
+    {
+      "path": "portal/portal-action-center.css",
+      "gitBlob": "fa881b38345d1a149f9e738d2e5ac4e4b4512bfa"
+    },
+    {
+      "path": "portal/portal-action-center.js",
+      "gitBlob": "10add9f7a472768cd9938e3d0d06716d3955cf29"
+    },
+    {
+      "path": "portal/portal-agreements.css",
+      "gitBlob": "5ee6aefe0e471247d5725d908115735e5d688845"
+    },
+    {
+      "path": "portal/portal-agreements.js",
+      "gitBlob": "c65cabb37ca4de51b9c8a781e507184659116469"
+    },
+    {
+      "path": "portal/portal-billing.css",
+      "gitBlob": "01163e1393134b3f08d151bfd9683c610b8b4fc0"
+    },
+    {
+      "path": "portal/portal-billing.js",
+      "gitBlob": "c209361d7b0c7b5c0b3ea46c8671797be2637b8b"
+    },
+    {
+      "path": "portal/portal-challenges.css",
+      "gitBlob": "de2a2effc1f2e40e3515fc68d06adaa10e7d5f31"
+    },
+    {
+      "path": "portal/portal-challenges.js",
+      "gitBlob": "90b3a56708621296104d48d7395309d46117d5b1"
+    },
+    {
+      "path": "portal/portal-client-billing.js",
+      "gitBlob": "550672cbcc796410a38ab5cec30b0ead98e44e53"
+    },
+    {
+      "path": "portal/portal-client-foundation.css",
+      "gitBlob": "672c7a74b7331ff46256bbac2368b7a61b870cb7"
+    },
+    {
+      "path": "portal/portal-client-foundation.js",
+      "gitBlob": "7efdb30c7942e70479446697cd07c3a419fddf47"
+    },
+    {
+      "path": "portal/portal-client-lifecycle.css",
+      "gitBlob": "2f5026346ebf1e543c67e9115c33ba7510876f3f"
+    },
+    {
+      "path": "portal/portal-client-lifecycle.js",
+      "gitBlob": "bfc83d987d02c674089a93e369213b3010d0c6b4"
+    },
+    {
+      "path": "portal/portal-coach-capacity.css",
+      "gitBlob": "076d15fc96c4e4729cd621be45ce301d39eec1ce"
+    },
+    {
+      "path": "portal/portal-coach-capacity.js",
+      "gitBlob": "963d2336675017dec4c0858f65a477b30e436b1c"
+    },
+    {
+      "path": "portal/portal-coaching.css",
+      "gitBlob": "2e59c3473adac3532f30f5a5367ee18866aa7d39"
+    },
+    {
+      "path": "portal/portal-coaching.js",
+      "gitBlob": "ef15e9570755fa3a20317fe4d9e508df55c9f819"
+    },
+    {
+      "path": "portal/portal-community.css",
+      "gitBlob": "1b2c39fb1c17f6b24cf5f9a17979e63f38139df8"
+    },
+    {
+      "path": "portal/portal-community.js",
+      "gitBlob": "ae5266fd60ed57a69492fb9a6aaa5eca5320ffe5"
+    },
+    {
+      "path": "portal/portal-companion.css",
+      "gitBlob": "24a973cc01a352031280f19a5f08cf7aceda8b14"
+    },
+    {
+      "path": "portal/portal-companion.js",
+      "gitBlob": "ed69cf88fd30dc6382f0ddb39569aa724e5fa50c"
+    },
+    {
+      "path": "portal/portal-content-composition.js",
+      "gitBlob": "0f4355a531dd20bde570d3d723180b0d682381f8"
+    },
+    {
+      "path": "portal/portal-content-sync.js",
+      "gitBlob": "54e44c8158e3bafbe9c5e07e8a9dda95ac1711f1"
+    },
+    {
+      "path": "portal/portal-documents.css",
+      "gitBlob": "2fe8381b9295516794256e88fe13d7aa8d375480"
+    },
+    {
+      "path": "portal/portal-documents.js",
+      "gitBlob": "6a66c53c13f4d9dbace1e98cd711777c47ef1586"
+    },
+    {
+      "path": "portal/portal-executive.css",
+      "gitBlob": "eb21d5ce37ccf20ee67451b2945ca1bba5d4e641"
+    },
+    {
+      "path": "portal/portal-executive.js",
+      "gitBlob": "c1973166d3f38eaefa8c222cb17c6e961d4ccc00"
+    },
+    {
+      "path": "portal/portal-exercise-library.css",
+      "gitBlob": "c6a128e67fd69df0cc5dd67a747f8853a3b03719"
+    },
+    {
+      "path": "portal/portal-exercise-library.js",
+      "gitBlob": "86c1f59dc75fa9f0f8ce688064f404270f44c275"
+    },
+    {
+      "path": "portal/portal-family-requests.css",
+      "gitBlob": "417e6c6072e8e2e98053af58cedea2dfb27f2765"
+    },
+    {
+      "path": "portal/portal-family-requests.js",
+      "gitBlob": "c203f3ade15816f4cac7e3d9858281c2e515254e"
+    },
+    {
+      "path": "portal/portal-food-database.css",
+      "gitBlob": "fa9814988c480f1a3f1af84a4df63f22314689c2"
+    },
+    {
+      "path": "portal/portal-food-database.js",
+      "gitBlob": "2abeaae2413b46d8375fa9994cec9215543509c3"
+    },
+    {
+      "path": "portal/portal-health-integrations.css",
+      "gitBlob": "79150a9ed36978f03826407d3049c92ddb653468"
+    },
+    {
+      "path": "portal/portal-health-integrations.js",
+      "gitBlob": "47bf4920f1634a46fdd5cbbe5a8d9bd4a37a8fdf"
+    },
+    {
+      "path": "portal/portal-journey.css",
+      "gitBlob": "e07709dff0b6a37fe5d413c7c4d83e78af8c1e87"
+    },
+    {
+      "path": "portal/portal-journey.js",
+      "gitBlob": "7a12ebf373e33ad2a85fab87b3be11e69834db5d"
+    },
+    {
+      "path": "portal/portal-learning.css",
+      "gitBlob": "69cb8fe1c5e5dab486589b311aa2b5155335116e"
+    },
+    {
+      "path": "portal/portal-learning.js",
+      "gitBlob": "1aa038ef0f27d2ce3c9cc45b2d54aaa935af9fa2"
+    },
+    {
+      "path": "portal/portal-member-messaging.css",
+      "gitBlob": "8ccea39f51a47339b9e26e5fe7dde8c2c9806486"
+    },
+    {
+      "path": "portal/portal-member-messaging.js",
+      "gitBlob": "01225e4bca676f224a6230a097bf5bc4a535925d"
+    },
+    {
+      "path": "portal/portal-messaging.css",
+      "gitBlob": "b8d81d842a06c04245a539f2bba82bdf34b74130"
+    },
+    {
+      "path": "portal/portal-messaging.js",
+      "gitBlob": "c00a576fdf557847ea1b25eb695b193d9e95ed8b"
+    },
+    {
+      "path": "portal/portal-overrides.css",
+      "gitBlob": "f79053aa0a6e64391020bb1451ade36b616f803b"
+    },
+    {
+      "path": "portal/portal-overrides.js",
+      "gitBlob": "71c312101e7a5ae3673965f838797c854718eb2b"
+    },
+    {
+      "path": "portal/portal-payment-requests.css",
+      "gitBlob": "4147e7cba7785abf4903a4543b4756684914f343"
+    },
+    {
+      "path": "portal/portal-payment-requests.js",
+      "gitBlob": "c48d975be64f57be27251909a21d1dc6e548e5d5"
+    },
+    {
+      "path": "portal/portal-people-directory.js",
+      "gitBlob": "680501ea3fe1b6445b47041f71c02f489cedc0a9"
+    },
+    {
+      "path": "portal/portal-people.css",
+      "gitBlob": "074f0d744d8c3220a0a2956be402c9d1300d5a30"
+    },
+    {
+      "path": "portal/portal-people.js",
+      "gitBlob": "04349a85c8f69265bee69cb3854d4ae3291aa280"
+    },
+    {
+      "path": "portal/portal-permissions.js",
+      "gitBlob": "76ae39bc3d5afa45c2b17bddb80ebb554634c570"
+    },
+    {
+      "path": "portal/portal-pipeline.js",
+      "gitBlob": "82516d0f92acef8dce835be1f025c209c892c8c4"
+    },
+    {
+      "path": "portal/portal-polish.css",
+      "gitBlob": "7f07488b2e5e98f462dd69d6cfc5ad91f42d92cc"
+    },
+    {
+      "path": "portal/portal-programs.css",
+      "gitBlob": "30aa87a6a9798415d7fde366a4aa635bec88f004"
+    },
+    {
+      "path": "portal/portal-programs.js",
+      "gitBlob": "acdb1d9c3af17e443712c3c93ecd5a391a0ed172"
+    },
+    {
+      "path": "portal/portal-recipe-builder.js",
+      "gitBlob": "4a2cdaa6ac53a93578326c1a50c9fe503b3bdc44"
+    },
+    {
+      "path": "portal/portal-referrals.css",
+      "gitBlob": "9f692b6e3031d6c11e15fdd0b0cdd9b14470a6d8"
+    },
+    {
+      "path": "portal/portal-referrals.js",
+      "gitBlob": "d23af0e29bd22600982fe9d1781e15ae8e991037"
+    },
+    {
+      "path": "portal/portal-refuel.css",
+      "gitBlob": "b6b82e0bdeb42206d39ef2454cbef6bd0530601a"
+    },
+    {
+      "path": "portal/portal-refuel.js",
+      "gitBlob": "777f723ff5997f337f3804a2148da5a1dad33cbe"
+    },
+    {
+      "path": "portal/portal-roadmap-calibration-bootstrap.js",
+      "gitBlob": "8b5da2e4c4139320d213a3dd33a0e681e627e17e"
+    },
+    {
+      "path": "portal/portal-roadmap-calibration.css",
+      "gitBlob": "3136cb6c69370db52c797b708ef734418b22e0a2"
+    },
+    {
+      "path": "portal/portal-roadmap-calibration.js",
+      "gitBlob": "8a192bf83fef27e8c17c38cf39b931449605c6a7"
+    },
+    {
+      "path": "portal/portal-roadmap-founder.js",
+      "gitBlob": "73ab819b29502902c8461cb4a4baf45054871838"
+    },
+    {
+      "path": "portal/portal-roadmap-owner-continuation.js",
+      "gitBlob": "678d4bc021231ece847172d6c3a4adc0e0caa269"
+    },
+    {
+      "path": "portal/portal-roadmap-owner-recovery.js",
+      "gitBlob": "0c0d5b4fa9ccd87b594ecb43e09413af43bb0532"
+    },
+    {
+      "path": "portal/portal-roadmap-processing-bootstrap.js",
+      "gitBlob": "37a52d23c079bdf0fa45066b1515557e977a97d9"
+    },
+    {
+      "path": "portal/portal-roadmap-processing.css",
+      "gitBlob": "ee1c66fc8d4dede4d155b5cc8297af5cd750268a"
+    },
+    {
+      "path": "portal/portal-roadmap-processing.js",
+      "gitBlob": "93de91bef4bc642a61b681dbf921ab63f8780629"
+    },
+    {
+      "path": "portal/portal-roadmap-saved-review.js",
+      "gitBlob": "8ee47fc0a8008378ba8a73d28679e82f270f4181"
+    },
+    {
+      "path": "portal/portal-roadmap-scoring-lab-bootstrap.js",
+      "gitBlob": "b0d90fdadfef6cc0924a40c8c1032c933f544e21"
+    },
+    {
+      "path": "portal/portal-roadmap-scoring-lab-reference.js",
+      "gitBlob": "214909ce0da2ee60839453ed9af60cee0c9b6615"
+    },
+    {
+      "path": "portal/portal-roadmap-scoring-lab-view.js",
+      "gitBlob": "53e3cb8bc2fdbfd51328a92e15a93b02daf9108b"
+    },
+    {
+      "path": "portal/portal-roadmap-scoring-lab.css",
+      "gitBlob": "35b06589b64da739a4b8ac0a79742d34b63a72f7"
+    },
+    {
+      "path": "portal/portal-roadmap-scoring-lab.js",
+      "gitBlob": "d06562c3e2631f10b1f9ec2499ef96fb1f78f8de"
+    },
+    {
+      "path": "portal/portal-roadmap-verification.css",
+      "gitBlob": "00f92e84d8b89828b6fd2a05714c7fd333ec89f0"
+    },
+    {
+      "path": "portal/portal-roadmap-verification.js",
+      "gitBlob": "340f8deb7267cd80ee465060ac4165da685c4ebb"
+    },
+    {
+      "path": "portal/portal-shell.css",
+      "gitBlob": "d88526edd6faa0e021f232bf0a91e3df432c00f0"
+    },
+    {
+      "path": "portal/portal-shell.js",
+      "gitBlob": "04119b5458a0070fd78d068f9d645c79f8e15583"
+    },
+    {
+      "path": "portal/portal-staff-access.css",
+      "gitBlob": "e1f4b0bc872fb4fa6fd5e2aeec20a2fef23b25ee"
+    },
+    {
+      "path": "portal/portal-staff-access.js",
+      "gitBlob": "085ca0e12a1e6affa1050d227495dd4c9e6fb13f"
+    },
+    {
+      "path": "portal/portal-staff-onboarding.css",
+      "gitBlob": "1bbba73089d9c037b60ed97c989284cbc2423666"
+    },
+    {
+      "path": "portal/portal-staff-onboarding.js",
+      "gitBlob": "41a6833d0fae8579d661ed81761035c8497f5dd1"
+    },
+    {
+      "path": "portal/portal-team-calendar.css",
+      "gitBlob": "6564dc4623bf1aa8ec3923a7ed1a3acf8281d5f8"
+    },
+    {
+      "path": "portal/portal-team-calendar.js",
+      "gitBlob": "a37b455e59a993801b7a09b9ea0b0e8843d6e686"
+    },
+    {
+      "path": "portal/portal-vitality-assessments.css",
+      "gitBlob": "5bd6c0a5bc7d16a003854ff9e701e85edd35be02"
+    },
+    {
+      "path": "portal/portal-vitality-assessments.js",
+      "gitBlob": "2d16edd5f2f42b0e503cfecd059c0b19675dd3fe"
+    },
+    {
+      "path": "portal/portal-wellness.css",
+      "gitBlob": "156502a48dd99516ddbb56dc27c8282bce378795"
+    },
+    {
+      "path": "portal/portal-wellness.js",
+      "gitBlob": "7fd981bdb78a91ad3c90f3b9e783e1dced2eb60e"
+    },
+    {
+      "path": "portal/portal-work-desk.css",
+      "gitBlob": "57beddc9219305d0c34a8752610d8acbc7108e95"
+    },
+    {
+      "path": "portal/portal-work-desk.js",
+      "gitBlob": "0e630aaba324ec885c2685c9233f743448d7abba"
+    },
+    {
+      "path": "portal/portal.css",
+      "gitBlob": "583df442e5a80d5e6396560a8d4d97c151270492"
+    },
+    {
+      "path": "portal/portal.js",
+      "gitBlob": "a3edcab229e0e6dbc39561ceee49bd6d33267d08"
+    },
+    {
+      "path": "portal/vitality-question-catalog.js",
+      "gitBlob": "c9c06826131fd726e6ed766966ff0f52752f11a5"
+    },
+    {
+      "path": "supabase/SOURCE_RECOVERY.md",
+      "gitBlob": "585073a52eb887094770885a789b012725e1972a"
+    },
+    {
+      "path": "supabase/environment-migrations/beta/20261007073534_reusable_content_sync_receive.sql",
+      "gitBlob": "1b869b22b79bcb829e70b76e202bdf17bb9d9725"
+    },
+    {
+      "path": "supabase/environment-migrations/beta/20261007201539_repdb_exercise_library.sql",
+      "gitBlob": "656f041196bf6ae3fdc47eb85e58d249d946341a"
+    },
+    {
+      "path": "supabase/environment-migrations/production/20261016062751_vitality_roadmap_b4_founder_workspace.sql",
+      "gitBlob": "3ba4e564ba5a30f8b599cb4f82a031456c7e17f3"
+    },
+    {
+      "path": "supabase/environment-migrations/production/20261016195245_vitality_roadmap_b42_identity_verification.sql",
+      "gitBlob": "afcc6c2b430ecd7c082454710f106c5e348bb740"
+    },
+    {
+      "path": "supabase/environment-migrations/production/20261016215456_vitality_roadmap_b5_scoring_lab.sql",
+      "gitBlob": "69fe0eb2f19d36b2c03ae5b97c4562b95a2164d3"
+    },
+    {
+      "path": "supabase/environment-migrations/production/20261018051432_vitality_roadmap_b6_calibration.sql",
+      "gitBlob": "8f86dae798705c51fc83061bfd7c28df36a63f11"
+    },
+    {
+      "path": "supabase/environment-migrations/production/20261019180611_roadmap_internal_processing_v1.sql",
+      "gitBlob": "d9a33cb8b33fcf260f16634b15cd4a9e6dab363a"
+    },
+    {
+      "path": "supabase/environment-migrations/production/20261019213244_b6_purpose_acknowledgment_feedback.sql",
+      "gitBlob": "d04729d484d5a143ce1fddeba7e755a81d370d03"
+    },
+    {
+      "path": "supabase/environment-migrations/production/20261020004206_roadmap_three_source_processing_scope.sql",
+      "gitBlob": "045a9849f63bce47271a2a1c24920486de293ca0"
+    },
+    {
+      "path": "supabase/environment-migrations/production/20261020184635_roadmap_b6_session_continuity.sql",
+      "gitBlob": "988df32cf5cbfc309a496e4fffb8b72d7d26f3ae"
+    },
+    {
+      "path": "supabase/environment-migrations/production/20261022135700_roadmap_saved_revision_review_only.sql",
+      "gitBlob": "ba51686d00c270296940c638d0aadad06d4914a1"
+    },
+    {
+      "path": "supabase/environment-migrations/production/20261023012739_roadmap_saved_review_replacement_window.sql",
+      "gitBlob": "02414078eafb6adb57af81c7e68e030e39145fc9"
+    },
+    {
+      "path": "supabase/environment-migrations/production/20261027151440_roadmap_alex_only_72h_authority.sql",
+      "gitBlob": "bfb2bd7f4f0aeda7663a98e97948e1a0b0ec01dc"
+    },
+    {
+      "path": "supabase/environment-migrations/production/20261028181937_roadmap_alex_saved_review_list_isolation.sql",
+      "gitBlob": "fa75d82fdcb87ea5e7f972855c39e38c9c348bb2"
+    },
+    {
+      "path": "supabase/environment-migrations/production/20261029134527_roadmap_alex_voice_r2_authority.sql",
+      "gitBlob": "9c372f2c94ebc6fd6e9de0161e073dfe971fef4d"
+    },
+    {
+      "path": "supabase/environment-migrations/production/20261029204419_roadmap_alex_r2_same_owner_recovery.sql",
+      "gitBlob": "d3d3b6f5a2cb8becd8307a974c0f03c6892a32a7"
+    },
+    {
+      "path": "supabase/functions/_shared/environment.ts",
+      "gitBlob": "1579a32e8d4fd5e4c98b204d9d997d4afbf9a49b"
+    },
+    {
+      "path": "supabase/functions/_shared/runtime.d.ts",
+      "gitBlob": "432ca7d63bbdb412d24b30cc70b5c29b02da4545"
+    },
+    {
+      "path": "supabase/functions/agreement-sign/handler.ts",
+      "gitBlob": "1e814280e5089cc3eff2f94369213ee67ce07ed2"
+    },
+    {
+      "path": "supabase/functions/agreement-sign/index.ts",
+      "gitBlob": "1645f59807a4c73f2026d65f8798cd6f0d4d93e0"
+    },
+    {
+      "path": "supabase/functions/client-lifecycle-delivery/handler.ts",
+      "gitBlob": "99fa9db12de46058c5edf5b9f83fb0b98fee2b9a"
+    },
+    {
+      "path": "supabase/functions/client-lifecycle-delivery/index.ts",
+      "gitBlob": "514e78808d222aa89a4dcca32687e67fa4b78b1e"
+    },
+    {
+      "path": "supabase/functions/deno.json",
+      "gitBlob": "118f113d3d1b1ded7024ba038d72f2970006a550"
+    },
+    {
+      "path": "supabase/functions/deno.lock",
+      "gitBlob": "58827b89483ad41abb7557c9cbb32f41f0ac6a51"
+    },
+    {
+      "path": "supabase/functions/member-account/handler.ts",
+      "gitBlob": "efd84afcdb1910f8b3a1a0cfff7257b6eb99de47"
+    },
+    {
+      "path": "supabase/functions/member-account/index.ts",
+      "gitBlob": "16ca2a164371a935cacc36e0b61f555794e02b56"
+    },
+    {
+      "path": "supabase/functions/member-password-reset/handler.ts",
+      "gitBlob": "99ac9fde5d0d1558cc83bd1a1b9c9d7ae3710a8c"
+    },
+    {
+      "path": "supabase/functions/member-password-reset/index.ts",
+      "gitBlob": "cf3896e61e94cbd40e31d9b788b47be06efa4a9f"
+    },
+    {
+      "path": "supabase/functions/notification-delivery/index.ts",
+      "gitBlob": "222cb0b6fb6cd3c87c58a3b2ce559d97ca7f1250"
+    },
+    {
+      "path": "supabase/functions/vitality-resume/handler.ts",
+      "gitBlob": "3c087da48464cfbc020371f74b2118e073afc520"
+    },
+    {
+      "path": "supabase/functions/vitality-resume/index.ts",
+      "gitBlob": "aaca36eef7d8309eef2885073029805405837325"
+    },
+    {
+      "path": "supabase/functions/vitality-resume/mail.ts",
+      "gitBlob": "d3d75dc9177806101ff6e081496b0bef17326991"
+    },
+    {
+      "path": "supabase/migrations/20261005110245_vitality_assessment_secure_resume.sql",
+      "gitBlob": "2c24b6d0206bd705dd160eaf64ff0e61e257c014"
+    },
+    {
+      "path": "supabase/migrations/20261005170000_vitality_referral_source_tracking.sql",
+      "gitBlob": "3915667158a96e71261011acd2fbad781b0a5d6a"
+    },
+    {
+      "path": "supabase/migrations/20261005190000_vitality_referral_rollout_compatibility.sql",
+      "gitBlob": "27f2d5cf5e2a230b5b1de45e2974c2461328cb2d"
+    },
+    {
+      "path": "supabase/migrations/20261006135457_vitality_assessment_staff_review.sql",
+      "gitBlob": "aea67ce406abafd9580e23dc6e634ea0c4a8eb82"
+    },
+    {
+      "path": "supabase/migrations/20261006164158_production_durable_content.sql",
+      "gitBlob": "09f6c2f8429985e5c6c5a18352efa1f4bfd3ec03"
+    },
+    {
+      "path": "supabase/migrations/20261006211025_vitality_review_decoder_performance.sql",
+      "gitBlob": "7c3236c19e05d00790eee84dabe1ea6e7efc15b9"
+    },
+    {
+      "path": "supabase/migrations/20261007010000_vitality_historical_review.sql",
+      "gitBlob": "57a3eec102de77b1755e14f2b99acda58981a79d"
+    },
+    {
+      "path": "supabase/migrations/20261007012000_vitality_unlinked_source_reconciliation.sql",
+      "gitBlob": "20b11ff5bab690c3193d116e3f5f086f9fba1580"
+    },
+    {
+      "path": "supabase/migrations/20261007050706_fooddata_central_recipe_nutrition.sql",
+      "gitBlob": "12d34539ae6fd602c8e0526298ba4a92d2d3bff6"
+    },
+    {
+      "path": "supabase/migrations/20261007072413_food_source_unchanged_refresh_audit.sql",
+      "gitBlob": "3f1b4ca4f0b8cfc4f54386ed4ab776225e7939e9"
+    },
+    {
+      "path": "supabase/migrations/20261007073533_reusable_content_sync_export.sql",
+      "gitBlob": "6ccacde7e38cfabf95300aa455d611c8f1f2d9d8"
+    },
+    {
+      "path": "supabase/migrations/20261007201539_repdb_exercise_library.sql",
+      "gitBlob": "d87a204a9ea88f6342e55d7a1bd4513ad808531f"
+    },
+    {
+      "path": "supabase/migrations/20261007220506_repdb_delete_guard_return_contract.sql",
+      "gitBlob": "a4455af97e97910d4972f532d0bbe841f761a360"
+    },
+    {
+      "path": "supabase/migrations/20261007224150_production_client_lifecycle_v1.sql",
+      "gitBlob": "ca368a6ea675cb0aa1113e7ea3cf4a2c3b6b8ec2"
+    },
+    {
+      "path": "supabase/migrations/20261008192530_vitality_start_delivery_reliability.sql",
+      "gitBlob": "e614828c75e0435fb9728baddfcaf9cf3f596d8d"
+    },
+    {
+      "path": "supabase/migrations/20261010120000_holistic_foundations_pricing_v2.sql",
+      "gitBlob": "bf70173eea43ca094883a1246fde6e4c6dd1d40d"
+    },
+    {
+      "path": "supabase/migrations/20261010121000_payments_v1.sql",
+      "gitBlob": "8068b852eb76689a6181c5ba7e48d844bbb307b4"
+    },
+    {
+      "path": "supabase/migrations/20261020141529_health_hope_live.sql",
+      "gitBlob": "a3cab3296787374831b193469bc0829c6d71702c"
+    },
+    {
+      "path": "supabase/migrations/20261020193400_health_hope_live_registered_guests.sql",
+      "gitBlob": "9271979a870f16d395b299ce3535370e25ef3327"
+    },
+    {
+      "path": "supabase/migrations/20261020201535_health_hope_live_privacy_retention.sql",
+      "gitBlob": "66b02fbb5277c790376f4dc5b450347e0894bf01"
+    },
+    {
+      "path": "supabase/migrations/20261020215108_health_hope_live_launch_acceptance.sql",
+      "gitBlob": "7a54b926c404ef7fcdb24b2ae5eed9b965d60e09"
+    },
+    {
+      "path": "supabase/migrations/20261021144712_health_hope_live_safe_updates.sql",
+      "gitBlob": "c1fca46c70ba7b4e686a2fcb7ba1f49db925a21a"
+    },
+    {
+      "path": "supabase/migrations/20261101031426_roadmap_alex_r2_continuation_review.sql",
+      "gitBlob": "029c7dbbab4a1b9913d58f062f83b18d587066e9"
+    }
+  ]
+}

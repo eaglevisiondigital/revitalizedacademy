@@ -1,0 +1,25 @@
+{
+  "issue": 56,
+  "agent": "/root/wave7_independent_qa",
+  "branch": "codex/rva-wave7-qa-20261101",
+  "base": "38f086792addaa9b131cecaf261ef21f89f5ffc7",
+  "executionSource": "5b01f3065fc381d4adba8212333a19f17aaef36c",
+  "status": "LOCAL_PASS_WITH_EXPLICIT_PROVISIONING_COMPATIBILITY_FAILURE_PRODUCTION_NO_GO",
+  "nodePass": 521,
+  "browserPass": 14,
+  "postgres": {
+    "pass": 214,
+    "fail": 19,
+    "historicalFailures": 18,
+    "compatibilityFail": 1
+  },
+  "matrix": {
+    "PASS": 1,
+    "FAIL": 1,
+    "BLOCKED": 44,
+    "NOT_RUN": 11
+  },
+  "productionActions": 0,
+  "privateAlexActions": 0,
+  "next": "Trace/test existing audited account provisioning; no arbitrary identity restoration. Preserve failing positive; no production release."
+}

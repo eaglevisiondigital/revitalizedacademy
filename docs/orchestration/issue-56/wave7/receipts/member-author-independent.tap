@@ -1,0 +1,34 @@
+✔ both mounted habit surfaces share pending/saved key; first mark (152.524042ms)
+✔ both mounted habit surfaces share pending/saved key; first act (81.967958ms)
+✔ distinct semantics retain exact daily zero and show action/value on both surfaces (57.395917ms)
+✔ Mark Today retains value1 while daily target is2.5 without claiming2.5saved (58.179ms)
+✔ alternate lost response holds both surfaces and checks status without duplicate or dashboard remount (60.615458ms)
+✔ genuine rpc denial clears both surfaces and holds future renders (73.025458ms)
+✔ genuine read denial clears both surfaces and holds future renders (54.051083ms)
+✔ alternate pending auth null clears private document without write (53.274958ms)
+✔ alternate pending auth synthetic-b clears private document without write (53.057875ms)
+✔ alternate verified identity mismatch without callback tears down before RPC (49.373542ms)
+✔ same-user renewal preserves modal and weekly drafts, exact alternate row, no full dashboard remount (60.25975ms)
+✔ rerendered source invalidates old alternate binding before dispatch (50.091375ms)
+✔ unclicked prior-day alternate row cannot send a new-day request; started request freezes prior day (51.066792ms)
+✔ alternate status is scoped to habit list, not goal list (51.783417ms)
+✔ new authoritative completed render cannot be erased by stale pending-auth cleanup (47.617ms)
+✔ rerender cancellation must not hide a verified changed actor without callback (48.193833ms)
+✔ pending habit status change prevents mark without new RPC (74.55925ms)
+✔ pending habit status change prevents act without new RPC (102.994125ms)
+✔ pending mark holds same habit status change without duplicate operation (64.377625ms)
+✔ pending act holds same habit status change without duplicate operation (66.836583ms)
+✔ independent mark uncertain status after changed actor clears both surfaces and weekly draft without second RPC (133.337333ms)
+✔ independent act uncertain status after changed actor clears both surfaces and weekly draft without second RPC (63.212833ms)
+✔ independent mark auth transport failure retains both drafts and sends no RPC (55.969667ms)
+✔ independent act auth transport failure retains both drafts and sends no RPC (57.253334ms)
+✔ independent mark pending write cannot change actor/source/date through other surface (82.6625ms)
+✔ independent act pending write cannot change actor/source/date through other surface (81.750875ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 26
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1665.8585

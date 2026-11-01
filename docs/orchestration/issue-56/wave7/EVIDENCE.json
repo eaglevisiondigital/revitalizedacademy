@@ -1,0 +1,195 @@
+{
+  "evidence": [
+    {
+      "path": "docs/orchestration/issue-56/wave7/EVIDENCE_FORMAT.json",
+      "sha256": "1490df3c285f6d987641dc1ccd050f1aa7c36479d7193383458fb971609e4582"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/EXECUTION.json",
+      "sha256": "ed1fffe064e731f9fec407984994702e6231b995fff506fc0500f05891864f31"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/PRESERVATION.json",
+      "sha256": "d710bd129811e47910dfccdfa2589e189439c7d5a0dc1219f61d4d344c05ca46"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/REPORT.md",
+      "sha256": "5dbc9e64810ef3a00a639feab9e44099f481291cfc4fa1f040b89133224b71e8"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/RESULTS_MATRIX.json",
+      "sha256": "8e9c9d51165cae1c43a14794f62ef71e6b3ca7d8d40297048bfb8ccf13c0d622"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/coordination-master-state.json",
+      "sha256": "69172f8cc6c78af9e6d6d1df1c21a08bb05d10a17e7dfcb212787193a13165dc"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/coordination-native-observation.json",
+      "sha256": "4b88db731c466b9f4e3ba3509a843d99a80709880e6561f590659baf7efd2617"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/handoff.json",
+      "sha256": "e995f4fdf9e01026d5e0c006e4e07d8685cce1cb6c81bc336ebd9bf2d9ef5ec8"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/receipts/NODE_FINAL.json",
+      "sha256": "20a53ea4b80ae25277a956efba982b3d97264223bdf4456c5987de2e23ef7bdf"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/receipts/NODE_FINAL.tap",
+      "sha256": "2d17166ba9477ad6e9fccc1a33f98808ef6fb3cc21f8e7b036e59a89a4e747f3"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/receipts/NODE_INITIAL_SUPERSEDED_PRESERVATION.json",
+      "sha256": "d99e24a3b58a3eadc0239a9ebf7495ffe2d769625c4d542f86486ef46aeb02bd"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/receipts/NODE_INITIAL_SUPERSEDED_PRESERVATION.tap",
+      "sha256": "bb855a15453448f00a674c4501f42d74913630f10a0619c27b560fe65c8ee0ee"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/receipts/affiliate-author-independent.tap",
+      "sha256": "08afda0e21ea6a5d2ff84e19200b773cd70f65473404a55071381344ce5496be"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/receipts/affiliate-browser-independent.tap",
+      "sha256": "fa9d8a4217ab78635e874792806f01eae662e46d386cb9023be2ed5e9373e3ed"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/receipts/affiliate-regressions-independent.tap",
+      "sha256": "d2294dafd200800d56d67ca4a905390218f0fd55fef3f26d63066aafbc10d335"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/receipts/browser-final.tap",
+      "sha256": "8390ea792efb21aa8671b0849ca841e7fd518e06616505d5c2fdcdc24b7d4495"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/receipts/member-author-independent.tap",
+      "sha256": "9bd1f770e5e7e8caebe3f91d737a949d6d7be6f3da114c9635d359696190ad5c"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/receipts/member-browser-independent.tap",
+      "sha256": "016087f10d5a3e8bea7b1068db4a2d98576184fbc14c8d5a809c70b449645797"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/receipts/pg-combined-stdout.txt",
+      "sha256": "6227b630194a7e951bedde29ac81317b0a4e1655508aa183d354c2d8b357d802"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/receipts/share-adversarial-http.tap",
+      "sha256": "6e0e1bcb2caa049ed0427c09ca11fee8d4f2ed4bfbb520cc0675979aa4f4e2c3"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/receipts/share-race-corrected.tap",
+      "sha256": "1c8c82e9d34971b9f622cfb9aea9385a7758b071298695e2a0c9e8874872706e"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/receipts/share-race-initial.tap",
+      "sha256": "020e84b2c8f565ca336ccfcf849403e591a570f647ae8158e057115d21b5eb84"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/pg-combined/access-household-hypothesis.tap",
+      "sha256": "21527e45eb017e9c1dd663c16095f67bb7b085d243908d619af96666696cd2f5"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/pg-combined/access-household-original-baseline.tap",
+      "sha256": "621d06bd8d6b982d89927593d5429bdedb48f78f2d19a0fcfa6f809e4371dc00"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/pg-combined/access-household-original-reverted.tap",
+      "sha256": "221baf60b46f14669ce474e320f2e33cb9833ff72b2161126bf0c40382b2e8f4"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/pg-combined/author-wave5-security-compatibility-hold.tap",
+      "sha256": "2a2e85cd2d9e138a8f82dc3cc3c16c848d4623c8aa9cd838ae553200e3d0dd7f"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/pg-combined/author-wave6-security.tap",
+      "sha256": "0efa6910dfeb5dec7541385fed5d565109e089c77dfa5da14839ce0f66a75214"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/pg-combined/durable-checkin-assignment.tap",
+      "sha256": "770a3c619d32ddfde238dc962e8d82edeffa24fcccfd56aca837dc2e5c6947b1"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/pg-combined/household-constraints.txt",
+      "sha256": "312afaad0cd71f5168699082ad047fcd90279d20048a7e8ff6bd36e55b11fe07"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/pg-combined/identity-original-baseline.tap",
+      "sha256": "4e41e9d7901d5283d9408415437f8bb703300955999932a6c23ff4b84afc6a2f"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/pg-combined/identity-original-reverted.tap",
+      "sha256": "4fe305ea3c616ab89b2828f3ee02f38a5faf749a00594df431d5959c2f29912f"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/pg-combined/independent-exact-guard-drift.tap",
+      "sha256": "2e75e29b184c49e7796078195f2e0ce419725d04d098420e02ae01d612987748"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/pg-combined/independent-new-precise-denials.tap",
+      "sha256": "0a375228cc5b039fcc26da146cfac30ac18837ddcb40494b3b951bbd34fa6a2a"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/pg-combined/independent-precise-denials.tap",
+      "sha256": "94a5d3e8785ba7508be20d4196276fe8874fdb65f0ed5c7542f9d8ee4248a0cd"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/pg-combined/new-identity-boundaries.tap",
+      "sha256": "100d5a4522b1235a8daa61b26e3af40b8e08e9ab14049783dc6ddb4e7f7b8fd6"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/pg-combined/original-five-baseline.tap",
+      "sha256": "d153735e878f3e96e270b5a2bca988f9afc22d200e7ac7747c7fe80de8c27a1d"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/pg-combined/original-five-corrected.tap",
+      "sha256": "d632076666e21e32a5e0fb0e93fa2bc73867cc89934fb14952f340b4113efc78"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/pg-combined/original-five-reverted.tap",
+      "sha256": "1bd34030692fc20012400d5c6ddfed980cb172bf7e2b586f105a8b50c09df24d"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/pg-combined/parent-household-hypothesis.tap",
+      "sha256": "8e6a0d564d8ca69a88b591af14792c562f6f234ef056d69b280e1f65ceac8796"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/pg-combined/parent-original-baseline.tap",
+      "sha256": "3353f10be2b75538ee0e9f76a652dbacda436576136317d297b1bdadb828b53e"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/pg-combined/parent-original-reverted.tap",
+      "sha256": "fd6dd9fa511914c23ee0fb0f689582f00b00382a0afc90df0d84598c53f64c62"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/pg-combined/postgres-receipt.json",
+      "sha256": "ff6a18ca5299fb97ef47953e341a06d435ef2e3694642a732ad0865b4758acc6"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/pg-combined/separate-identity-hypothesis.tap",
+      "sha256": "93ed00db6494838d603ea148b9236a51526b32b55bb93fc68d0075da40435f64"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/pg-combined/usage-concurrency.tap",
+      "sha256": "3aa671a5e2580cb79a0e52e5daf73928daa95db6603f2d4bb1f0ac9a6d511289"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/pg-combined/wave4-independent-regression.tap",
+      "sha256": "990e06396f966e5ea97c8775957cd9d489b64a3e48a9ecf2482735a09b6a9e4c"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/pg-combined/wave4-regression.tap",
+      "sha256": "903c75f56996c56e006de948d51226b686c3f57c9cfc366e911d94b412b1c55a"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/pg-combined/wave4-session-regression.tap",
+      "sha256": "98d65d3ee7150b24a67b21d19111ddc5cbffc9148ec0fe6257aacb8bc719f67f"
+    }
+  ],
+  "allExecutionInputsMatch": true,
+  "historicalFailuresRetained": true,
+  "rawLogMapping": "EVIDENCE_FORMAT.json"
+}

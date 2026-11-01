@@ -1,0 +1,25 @@
+✔ actual HTTP mid-share wrong-account discards partial result (34.604042ms)
+✔ actual HTTP mid-share revoked discards partial result (6.075458ms)
+✔ actual HTTP mid-share consent-revoked discards partial result (3.195333ms)
+✔ actual HTTP mid-share education-revoked discards partial result (2.657125ms)
+✔ actual HTTP mid-referral wrong-account discards partial result (2.998792ms)
+✔ actual HTTP mid-referral revoked discards partial result (2.29925ms)
+✔ actual HTTP mid-referral consent-revoked discards partial result (2.992292ms)
+✔ actual HTTP mid-referral education-revoked discards partial result (2.589417ms)
+✔ actual HTTP mid-education wrong-account discards partial result (7.110834ms)
+✔ actual HTTP mid-education revoked discards partial result (5.191375ms)
+✔ actual HTTP mid-education consent-revoked discards partial result (4.949375ms)
+✔ actual HTTP mid-education education-revoked discards partial result (3.953292ms)
+✔ actual HTTP late creative version rejects composition (4.207042ms)
+✔ actual HTTP late catalog version rejects composition (3.881167ms)
+✔ actual HTTP late approval version rejects composition (3.610334ms)
+✔ actual HTTP late source version rejects composition (3.4385ms)
+✔ 100 concurrent real HTTP reads never create event; following explicit event remains first (237.535292ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 391.035375

@@ -1,0 +1,3136 @@
+TAP version 13
+# Subtest: actual create goal handler maps typed fictional values to existing scoped RPC
+ok 1 - actual create goal handler maps typed fictional values to existing scoped RPC
+  ---
+  duration_ms: 127.303417
+  type: 'test'
+  ...
+# Subtest: actual create habit handler uses existing RPC and numeric schedule input
+ok 2 - actual create habit handler uses existing RPC and numeric schedule input
+  ---
+  duration_ms: 67.717333
+  type: 'test'
+  ...
+# Subtest: actual check-in form validates required responses before any write
+ok 3 - actual check-in form validates required responses before any write
+  ---
+  duration_ms: 50.072917
+  type: 'test'
+  ...
+# Subtest: actual weekly check-in creates exact current-member payload via existing table
+ok 4 - actual weekly check-in creates exact current-member payload via existing table
+  ---
+  duration_ms: 58.126292
+  type: 'test'
+  ...
+# Subtest: actual goal handler displays fictional server wrong-actor denial without claiming authorization success
+ok 5 - actual goal handler displays fictional server wrong-actor denial without claiming authorization success
+  ---
+  duration_ms: 66.524542
+  type: 'test'
+  ...
+# Subtest: BASELINE reproduction: stale weekly check-in switch throws before write
+ok 6 - BASELINE reproduction: stale weekly check-in switch throws before write
+  ---
+  duration_ms: 69.337542
+  type: 'test'
+  ...
+# Subtest: fixed pending identity check ignores account switch
+ok 7 - fixed pending identity check ignores account switch
+  ---
+  duration_ms: 51.559833
+  type: 'test'
+  ...
+# Subtest: fixed pending identity check ignores logout
+ok 8 - fixed pending identity check ignores logout
+  ---
+  duration_ms: 50.302
+  type: 'test'
+  ...
+# Subtest: fixed identity response fails closed {"authUserId":null}
+ok 9 - fixed identity response fails closed {"authUserId":null}
+  ---
+  duration_ms: 44.621292
+  type: 'test'
+  ...
+# Subtest: fixed identity response fails closed {"authUserId":"synthetic-b"}
+ok 10 - fixed identity response fails closed {"authUserId":"synthetic-b"}
+  ---
+  duration_ms: 48.907917
+  type: 'test'
+  ...
+# Subtest: fixed identity response fails closed {"authError":{"message":"Fictional identity unavailable"}}
+ok 11 - fixed identity response fails closed {"authError":{"message":"Fictional identity unavailable"}}
+  ---
+  duration_ms: 47.280083
+  type: 'test'
+  ...
+# Subtest: fixed response after switch ignores completed write
+ok 12 - fixed response after switch ignores completed write
+  ---
+  duration_ms: 67.108708
+  type: 'test'
+  ...
+# Subtest: fixed response after switch ignores completed duplicate
+ok 13 - fixed response after switch ignores completed duplicate
+  ---
+  duration_ms: 60.510875
+  type: 'test'
+  ...
+# Subtest: fixed response after logout ignores completed write
+ok 14 - fixed response after logout ignores completed write
+  ---
+  duration_ms: 60.570166
+  type: 'test'
+  ...
+# Subtest: fixed response after logout ignores completed duplicate
+ok 15 - fixed response after logout ignores completed duplicate
+  ---
+  duration_ms: 62.735959
+  type: 'test'
+  ...
+# Subtest: same-account token renewal keeps pending check-in and exact current-actor payload
+ok 16 - same-account token renewal keeps pending check-in and exact current-actor payload
+  ---
+  duration_ms: 53.536875
+  type: 'test'
+  ...
+# Subtest: real email QR independently decodes to exact personal synthetic URL
+ok 17 - real email QR independently decodes to exact personal synthetic URL
+  ---
+  duration_ms: 716.433291
+  type: 'test'
+  ...
+# Subtest: real sms QR independently decodes to exact personal synthetic URL
+ok 18 - real sms QR independently decodes to exact personal synthetic URL
+  ---
+  duration_ms: 535.9925
+  type: 'test'
+  ...
+# Subtest: real dm QR independently decodes to exact personal synthetic URL
+ok 19 - real dm QR independently decodes to exact personal synthetic URL
+  ---
+  duration_ms: 539.221542
+  type: 'test'
+  ...
+# Subtest: real social QR independently decodes to exact personal synthetic URL
+ok 20 - real social QR independently decodes to exact personal synthetic URL
+  ---
+  duration_ms: 536.172167
+  type: 'test'
+  ...
+# Subtest: revoked fixture produces no QR/copy/link
+ok 21 - revoked fixture produces no QR/copy/link
+  ---
+  duration_ms: 0.195541
+  type: 'test'
+  ...
+# Subtest: expired fixture produces no QR/copy/link
+ok 22 - expired fixture produces no QR/copy/link
+  ---
+  duration_ms: 0.072084
+  type: 'test'
+  ...
+# Subtest: wrong-account fixture produces no QR/copy/link
+ok 23 - wrong-account fixture produces no QR/copy/link
+  ---
+  duration_ms: 0.068625
+  type: 'test'
+  ...
+# Subtest: unknown channel/state cannot select arbitrary fixture or URL
+ok 24 - unknown channel/state cannot select arbitrary fixture or URL
+  ---
+  duration_ms: 0.152667
+  type: 'test'
+  ...
+# Subtest: loopback tool rejects foreign origin and arbitrary payload fields
+ok 25 - loopback tool rejects foreign origin and arbitrary payload fields
+  ---
+  duration_ms: 40.14425
+  type: 'test'
+  ...
+# Subtest: resolver-backed email share returns only approved own copy/link/QR input
+ok 26 - resolver-backed email share returns only approved own copy/link/QR input
+  ---
+  duration_ms: 3.129667
+  type: 'test'
+  ...
+# Subtest: resolver-backed sms share returns only approved own copy/link/QR input
+ok 27 - resolver-backed sms share returns only approved own copy/link/QR input
+  ---
+  duration_ms: 0.554708
+  type: 'test'
+  ...
+# Subtest: resolver-backed dm share returns only approved own copy/link/QR input
+ok 28 - resolver-backed dm share returns only approved own copy/link/QR input
+  ---
+  duration_ms: 0.472166
+  type: 'test'
+  ...
+# Subtest: resolver-backed social share returns only approved own copy/link/QR input
+ok 29 - resolver-backed social share returns only approved own copy/link/QR input
+  ---
+  duration_ms: 0.408292
+  type: 'test'
+  ...
+# Subtest: caller identity rejected before any session/resolver call
+ok 30 - caller identity rejected before any session/resolver call
+  ---
+  duration_ms: 0.140667
+  type: 'test'
+  ...
+# Subtest: caller user_id rejected before any session/resolver call
+ok 31 - caller user_id rejected before any session/resolver call
+  ---
+  duration_ms: 0.086792
+  type: 'test'
+  ...
+# Subtest: caller contact_id rejected before any session/resolver call
+ok 32 - caller contact_id rejected before any session/resolver call
+  ---
+  duration_ms: 0.073542
+  type: 'test'
+  ...
+# Subtest: caller profile rejected before any session/resolver call
+ok 33 - caller profile rejected before any session/resolver call
+  ---
+  duration_ms: 0.073125
+  type: 'test'
+  ...
+# Subtest: caller approval rejected before any session/resolver call
+ok 34 - caller approval rejected before any session/resolver call
+  ---
+  duration_ms: 0.082542
+  type: 'test'
+  ...
+# Subtest: caller destination_url rejected before any session/resolver call
+ok 35 - caller destination_url rejected before any session/resolver call
+  ---
+  duration_ms: 0.128584
+  type: 'test'
+  ...
+# Subtest: caller copy rejected before any session/resolver call
+ok 36 - caller copy rejected before any session/resolver call
+  ---
+  duration_ms: 0.075916
+  type: 'test'
+  ...
+# Subtest: caller consent rejected before any session/resolver call
+ok 37 - caller consent rejected before any session/resolver call
+  ---
+  duration_ms: 0.056167
+  type: 'test'
+  ...
+# Subtest: caller now rejected before any session/resolver call
+ok 38 - caller now rejected before any session/resolver call
+  ---
+  duration_ms: 0.068958
+  type: 'test'
+  ...
+# Subtest: caller state rejected before any session/resolver call
+ok 39 - caller state rejected before any session/resolver call
+  ---
+  duration_ms: 0.045458
+  type: 'test'
+  ...
+# Subtest: request getters and prototype pollution are rejected without executing accessors
+ok 40 - request getters and prototype pollution are rejected without executing accessors
+  ---
+  duration_ms: 0.120292
+  type: 'test'
+  ...
+# Subtest: caller mutation across await cannot replace the snapshotted channel/resource
+ok 41 - caller mutation across await cannot replace the snapshotted channel/resource
+  ---
+  duration_ms: 0.451958
+  type: 'test'
+  ...
+# Subtest: async share logout invalidates pending authority/source
+ok 42 - async share logout invalidates pending authority/source
+  ---
+  duration_ms: 0.493125
+  type: 'test'
+  ...
+# Subtest: async share switch invalidates pending authority/source
+ok 43 - async share switch invalidates pending authority/source
+  ---
+  duration_ms: 0.219292
+  type: 'test'
+  ...
+# Subtest: async share scope invalidates pending authority/source
+ok 44 - async share scope invalidates pending authority/source
+  ---
+  duration_ms: 0.174541
+  type: 'test'
+  ...
+# Subtest: async share role invalidates pending authority/source
+ok 45 - async share role invalidates pending authority/source
+  ---
+  duration_ms: 0.159333
+  type: 'test'
+  ...
+# Subtest: async share epoch invalidates pending authority/source
+ok 46 - async share epoch invalidates pending authority/source
+  ---
+  duration_ms: 0.150375
+  type: 'test'
+  ...
+# Subtest: async share revoke invalidates pending authority/source
+ok 47 - async share revoke invalidates pending authority/source
+  ---
+  duration_ms: 0.190625
+  type: 'test'
+  ...
+# Subtest: async share version invalidates pending authority/source
+ok 48 - async share version invalidates pending authority/source
+  ---
+  duration_ms: 0.180125
+  type: 'test'
+  ...
+# Subtest: same-account token renewal across async share preserves current request
+ok 49 - same-account token renewal across async share preserves current request
+  ---
+  duration_ms: 0.643333
+  type: 'test'
+  ...
+# Subtest: source changes without declared authority revision still fail snapshot comparison
+ok 50 - source changes without declared authority revision still fail snapshot comparison
+  ---
+  duration_ms: 0.336208
+  type: 'test'
+  ...
+# Subtest: final synchronous authority read prevents revocation after the last async session snapshot
+ok 51 - final synchronous authority read prevents revocation after the last async session snapshot
+  ---
+  duration_ms: 0.267209
+  type: 'test'
+  ...
+# Subtest: expiry is rechecked using server clock after resolver awaits
+ok 52 - expiry is rechecked using server clock after resolver awaits
+  ---
+  duration_ms: 0.562708
+  type: 'test'
+  ...
+# Subtest: campaign expected revision is mandatory and exact
+ok 53 - campaign expected revision is mandatory and exact
+  ---
+  duration_ms: 0.377375
+  type: 'test'
+  ...
+# Subtest: creative expected revision is mandatory and exact
+ok 54 - creative expected revision is mandatory and exact
+  ---
+  duration_ms: 0.224666
+  type: 'test'
+  ...
+# Subtest: wrong resolver resource or version tag cannot satisfy request
+ok 55 - wrong resolver resource or version tag cannot satisfy request
+  ---
+  duration_ms: 0.396916
+  type: 'test'
+  ...
+# Subtest: owner role uses same own-profile constraint and never cross-affiliate override
+ok 56 - owner role uses same own-profile constraint and never cross-affiliate override
+  ---
+  duration_ms: 0.44675
+  type: 'test'
+  ...
+# Subtest: server action scope cannot be overridden by Owner role or request
+ok 57 - server action scope cannot be overridden by Owner role or request
+  ---
+  duration_ms: 0.076125
+  type: 'test'
+  ...
+# Subtest: minimal referral response never exposes resolver identity, names, money or disclosure
+ok 58 - minimal referral response never exposes resolver identity, names, money or disclosure
+  ---
+  duration_ms: 0.626084
+  type: 'test'
+  ...
+# Subtest: referral wrong-owner cannot cross disclosure boundary
+ok 59 - referral wrong-owner cannot cross disclosure boundary
+  ---
+  duration_ms: 0.376167
+  type: 'test'
+  ...
+# Subtest: referral withdrawn cannot cross disclosure boundary
+ok 60 - referral withdrawn cannot cross disclosure boundary
+  ---
+  duration_ms: 0.1485
+  type: 'test'
+  ...
+# Subtest: referral expired cannot cross disclosure boundary
+ok 61 - referral expired cannot cross disclosure boundary
+  ---
+  duration_ms: 0.14
+  type: 'test'
+  ...
+# Subtest: referral wrong-subject cannot cross disclosure boundary
+ok 62 - referral wrong-subject cannot cross disclosure boundary
+  ---
+  duration_ms: 0.121
+  type: 'test'
+  ...
+# Subtest: referral private-row cannot cross disclosure boundary
+ok 63 - referral private-row cannot cross disclosure boundary
+  ---
+  duration_ms: 0.06875
+  type: 'test'
+  ...
+# Subtest: referral revoked during async resolver does not return old projection
+ok 64 - referral revoked during async resolver does not return old projection
+  ---
+  duration_ms: 0.123208
+  type: 'test'
+  ...
+# Subtest: production destinations and malformed resolver snapshots remain unavailable
+ok 65 - production destinations and malformed resolver snapshots remain unavailable
+  ---
+  duration_ms: 0.166
+  type: 'test'
+  ...
+# Subtest: resolver snapshot getters are rejected without invocation
+ok 66 - resolver snapshot getters are rejected without invocation
+  ---
+  duration_ms: 0.095708
+  type: 'test'
+  ...
+# Subtest: synchronous current-authority dependency cannot be an async snapshot
+ok 67 - synchronous current-authority dependency cannot be an async snapshot
+  ---
+  duration_ms: 0.066
+  type: 'test'
+  ...
+# Subtest: fixture mode is mandatory; no dependencies or real mode cannot construct adapter
+ok 68 - fixture mode is mandatory; no dependencies or real mode cannot construct adapter
+  ---
+  duration_ms: 0.207
+  type: 'test'
+  ...
+# Subtest: 100 parallel duplicates atomically create one isolated evidence row
+ok 69 - 100 parallel duplicates atomically create one isolated evidence row
+  ---
+  duration_ms: 20.615334
+  type: 'test'
+  ...
+# Subtest: parallel changed retry conflicts without overwriting the first evidence row
+ok 70 - parallel changed retry conflicts without overwriting the first evidence row
+  ---
+  duration_ms: 0.58975
+  type: 'test'
+  ...
+# Subtest: separate actors and separate adapter instances do not share fixture journals
+ok 71 - separate actors and separate adapter instances do not share fixture journals
+  ---
+  duration_ms: 0.770375
+  type: 'test'
+  ...
+# Subtest: payment.settled rejected before any dependency call
+ok 72 - payment.settled rejected before any dependency call
+  ---
+  duration_ms: 0.063708
+  type: 'test'
+  ...
+# Subtest: commission.earned rejected before any dependency call
+ok 73 - commission.earned rejected before any dependency call
+  ---
+  duration_ms: 0.035708
+  type: 'test'
+  ...
+# Subtest: payout.requested rejected before any dependency call
+ok 74 - payout.requested rejected before any dependency call
+  ---
+  duration_ms: 0.032792
+  type: 'test'
+  ...
+# Subtest: reward.granted rejected before any dependency call
+ok 75 - reward.granted rejected before any dependency call
+  ---
+  duration_ms: 0.030916
+  type: 'test'
+  ...
+# Subtest: withdrawn tracking consent produces no hidden journal write
+ok 76 - withdrawn tracking consent produces no hidden journal write
+  ---
+  duration_ms: 0.400083
+  type: 'test'
+  ...
+# Subtest: bounded queue rejects overflow while accepted distinct writes remain atomic
+ok 77 - bounded queue rejects overflow while accepted distinct writes remain atomic
+  ---
+  duration_ms: 27.586125
+  type: 'test'
+  ...
+# Subtest: queued requests retain entry actor and never migrate into a later account
+ok 78 - queued requests retain entry actor and never migrate into a later account
+  ---
+  duration_ms: 0.398042
+  type: 'test'
+  ...
+# Subtest: rejected async current-authority dependency is consumed and fails closed
+ok 79 - rejected async current-authority dependency is consumed and fails closed
+  ---
+  duration_ms: 8.604041
+  type: 'test'
+  ...
+# Subtest: rejected async clock cannot leak or authorize a write
+ok 80 - rejected async clock cannot leak or authorize a write
+  ---
+  duration_ms: 0.622125
+  type: 'test'
+  ...
+# Subtest: async fictional catalog resolves exact educational citation from independent server receipt snapshot
+ok 81 - async fictional catalog resolves exact educational citation from independent server receipt snapshot
+  ---
+  duration_ms: 3.33575
+  type: 'test'
+  ...
+# Subtest: caller session cannot become V3 verifier authority
+ok 82 - caller session cannot become V3 verifier authority
+  ---
+  duration_ms: 0.309083
+  type: 'test'
+  ...
+# Subtest: caller principal_ref cannot become V3 verifier authority
+ok 83 - caller principal_ref cannot become V3 verifier authority
+  ---
+  duration_ms: 0.220875
+  type: 'test'
+  ...
+# Subtest: caller source cannot become V3 verifier authority
+ok 84 - caller source cannot become V3 verifier authority
+  ---
+  duration_ms: 0.197333
+  type: 'test'
+  ...
+# Subtest: caller catalog cannot become V3 verifier authority
+ok 85 - caller catalog cannot become V3 verifier authority
+  ---
+  duration_ms: 0.184125
+  type: 'test'
+  ...
+# Subtest: caller receipt cannot become V3 verifier authority
+ok 86 - caller receipt cannot become V3 verifier authority
+  ---
+  duration_ms: 0.161166
+  type: 'test'
+  ...
+# Subtest: caller approval cannot become V3 verifier authority
+ok 87 - caller approval cannot become V3 verifier authority
+  ---
+  duration_ms: 0.165666
+  type: 'test'
+  ...
+# Subtest: caller audience cannot become V3 verifier authority
+ok 88 - caller audience cannot become V3 verifier authority
+  ---
+  duration_ms: 0.159625
+  type: 'test'
+  ...
+# Subtest: caller operation cannot become V3 verifier authority
+ok 89 - caller operation cannot become V3 verifier authority
+  ---
+  duration_ms: 0.451042
+  type: 'test'
+  ...
+# Subtest: caller intent cannot become V3 verifier authority
+ok 90 - caller intent cannot become V3 verifier authority
+  ---
+  duration_ms: 0.224209
+  type: 'test'
+  ...
+# Subtest: caller safetyHold cannot become V3 verifier authority
+ok 91 - caller safetyHold cannot become V3 verifier authority
+  ---
+  duration_ms: 0.168375
+  type: 'test'
+  ...
+# Subtest: async V3 principal drift fails closed
+ok 92 - async V3 principal drift fails closed
+  ---
+  duration_ms: 0.423125
+  type: 'test'
+  ...
+# Subtest: async V3 audience drift fails closed
+ok 93 - async V3 audience drift fails closed
+  ---
+  duration_ms: 0.293
+  type: 'test'
+  ...
+# Subtest: async V3 generation drift fails closed
+ok 94 - async V3 generation drift fails closed
+  ---
+  duration_ms: 0.258375
+  type: 'test'
+  ...
+# Subtest: async V3 epoch drift fails closed
+ok 95 - async V3 epoch drift fails closed
+  ---
+  duration_ms: 0.26625
+  type: 'test'
+  ...
+# Subtest: async V3 revoked drift fails closed
+ok 96 - async V3 revoked drift fails closed
+  ---
+  duration_ms: 0.280125
+  type: 'test'
+  ...
+# Subtest: async V3 catalog drift fails closed
+ok 97 - async V3 catalog drift fails closed
+  ---
+  duration_ms: 0.366125
+  type: 'test'
+  ...
+# Subtest: same-principal token renewal does not discard a legitimate educational lookup
+ok 98 - same-principal token renewal does not discard a legitimate educational lookup
+  ---
+  duration_ms: 0.926292
+  type: 'test'
+  ...
+# Subtest: receipt changes without authority bump cannot pass independent second snapshot
+ok 99 - receipt changes without authority bump cannot pass independent second snapshot
+  ---
+  duration_ms: 0.402125
+  type: 'test'
+  ...
+# Subtest: forged locally approved hashes do not replace independently resolved receipt pins
+ok 100 - forged locally approved hashes do not replace independently resolved receipt pins
+  ---
+  duration_ms: 0.476125
+  type: 'test'
+  ...
+# Subtest: final synchronous current authority catches late revocation
+ok 101 - final synchronous current authority catches late revocation
+  ---
+  duration_ms: 0.33775
+  type: 'test'
+  ...
+# Subtest: missing or duplicate receipts and source audience mismatch remain held
+ok 102 - missing or duplicate receipts and source audience mismatch remain held
+  ---
+  duration_ms: 0.743625
+  type: 'test'
+  ...
+# Subtest: raw dependency error and getter cannot leak or execute through V3 snapshots
+ok 103 - raw dependency error and getter cannot leak or execute through V3 snapshots
+  ---
+  duration_ms: 0.29875
+  type: 'test'
+  ...
+# Subtest: real mode and private request refuse before source resolver or verifier work
+ok 104 - real mode and private request refuse before source resolver or verifier work
+  ---
+  duration_ms: 0.285667
+  type: 'test'
+  ...
+# Subtest: progress pending identity switch ignores stale request
+ok 105 - progress pending identity switch ignores stale request
+  ---
+  duration_ms: 114.071625
+  type: 'test'
+  ...
+# Subtest: progress pending identity logout ignores stale request
+ok 106 - progress pending identity logout ignores stale request
+  ---
+  duration_ms: 58.689292
+  type: 'test'
+  ...
+# Subtest: progress identity failure denies {"authUserId":null}
+ok 107 - progress identity failure denies {"authUserId":null}
+  ---
+  duration_ms: 51.509083
+  type: 'test'
+  ...
+# Subtest: progress identity failure denies {"authUserId":"synthetic-b"}
+ok 108 - progress identity failure denies {"authUserId":"synthetic-b"}
+  ---
+  duration_ms: 46.710417
+  type: 'test'
+  ...
+# Subtest: progress identity failure denies {"authError":{"message":"Fictional auth unavailable"}}
+ok 109 - progress identity failure denies {"authError":{"message":"Fictional auth unavailable"}}
+  ---
+  duration_ms: 47.978833
+  type: 'test'
+  ...
+# Subtest: progress snapshot survives changed input and same-account renewal
+ok 110 - progress snapshot survives changed input and same-account renewal
+  ---
+  duration_ms: 60.094625
+  type: 'test'
+  ...
+# Subtest: goal concurrent submits dispatch once and unlock for retry
+ok 111 - goal concurrent submits dispatch once and unlock for retry
+  ---
+  duration_ms: 86.886209
+  type: 'test'
+  ...
+# Subtest: habit concurrent submits dispatch once and unlock for retry
+ok 112 - habit concurrent submits dispatch once and unlock for retry
+  ---
+  duration_ms: 71.636583
+  type: 'test'
+  ...
+# Subtest: progress concurrent submits dispatch once and unlock for retry
+ok 113 - progress concurrent submits dispatch once and unlock for retry
+  ---
+  duration_ms: 73.423167
+  type: 'test'
+  ...
+# Subtest: goal server 42501 remains visible and retryable
+ok 114 - goal server 42501 remains visible and retryable
+  ---
+  duration_ms: 47.002708
+  type: 'test'
+  ...
+# Subtest: goal server 23505 remains visible and retryable
+ok 115 - goal server 23505 remains visible and retryable
+  ---
+  duration_ms: 45.882917
+  type: 'test'
+  ...
+# Subtest: habit server 42501 remains visible and retryable
+ok 116 - habit server 42501 remains visible and retryable
+  ---
+  duration_ms: 47.31
+  type: 'test'
+  ...
+# Subtest: habit server 23505 remains visible and retryable
+ok 117 - habit server 23505 remains visible and retryable
+  ---
+  duration_ms: 43.063209
+  type: 'test'
+  ...
+# Subtest: progress server 42501 remains visible and retryable
+ok 118 - progress server 42501 remains visible and retryable
+  ---
+  duration_ms: 46.9055
+  type: 'test'
+  ...
+# Subtest: progress server 23505 remains visible and retryable
+ok 119 - progress server 23505 remains visible and retryable
+  ---
+  duration_ms: 44.476292
+  type: 'test'
+  ...
+# Subtest: goal pending transport success after switch has no late UI/reload
+ok 120 - goal pending transport success after switch has no late UI/reload
+  ---
+  duration_ms: 61.525375
+  type: 'test'
+  ...
+# Subtest: goal pending transport denial after switch has no late UI/reload
+ok 121 - goal pending transport denial after switch has no late UI/reload
+  ---
+  duration_ms: 64.444417
+  type: 'test'
+  ...
+# Subtest: goal pending transport success after logout has no late UI/reload
+ok 122 - goal pending transport success after logout has no late UI/reload
+  ---
+  duration_ms: 60.451
+  type: 'test'
+  ...
+# Subtest: goal pending transport denial after logout has no late UI/reload
+ok 123 - goal pending transport denial after logout has no late UI/reload
+  ---
+  duration_ms: 60.862459
+  type: 'test'
+  ...
+# Subtest: habit pending transport success after switch has no late UI/reload
+ok 124 - habit pending transport success after switch has no late UI/reload
+  ---
+  duration_ms: 58.821041
+  type: 'test'
+  ...
+# Subtest: habit pending transport denial after switch has no late UI/reload
+ok 125 - habit pending transport denial after switch has no late UI/reload
+  ---
+  duration_ms: 59.422
+  type: 'test'
+  ...
+# Subtest: habit pending transport success after logout has no late UI/reload
+ok 126 - habit pending transport success after logout has no late UI/reload
+  ---
+  duration_ms: 64.137667
+  type: 'test'
+  ...
+# Subtest: habit pending transport denial after logout has no late UI/reload
+ok 127 - habit pending transport denial after logout has no late UI/reload
+  ---
+  duration_ms: 58.970875
+  type: 'test'
+  ...
+# Subtest: progress pending transport success after switch has no late UI/reload
+ok 128 - progress pending transport success after switch has no late UI/reload
+  ---
+  duration_ms: 61.352667
+  type: 'test'
+  ...
+# Subtest: progress pending transport denial after switch has no late UI/reload
+ok 129 - progress pending transport denial after switch has no late UI/reload
+  ---
+  duration_ms: 59.36125
+  type: 'test'
+  ...
+# Subtest: progress pending transport success after logout has no late UI/reload
+ok 130 - progress pending transport success after logout has no late UI/reload
+  ---
+  duration_ms: 59.595667
+  type: 'test'
+  ...
+# Subtest: progress pending transport denial after logout has no late UI/reload
+ok 131 - progress pending transport denial after logout has no late UI/reload
+  ---
+  duration_ms: 62.875208
+  type: 'test'
+  ...
+# Subtest: goal status completion after switch stays silent false
+ok 132 - goal status completion after switch stays silent false
+  ---
+  duration_ms: 60.763875
+  type: 'test'
+  ...
+# Subtest: goal status completion after switch stays silent true
+ok 133 - goal status completion after switch stays silent true
+  ---
+  duration_ms: 61.546958
+  type: 'test'
+  ...
+# Subtest: goal status completion after logout stays silent false
+ok 134 - goal status completion after logout stays silent false
+  ---
+  duration_ms: 60.943417
+  type: 'test'
+  ...
+# Subtest: goal status completion after logout stays silent true
+ok 135 - goal status completion after logout stays silent true
+  ---
+  duration_ms: 61.630625
+  type: 'test'
+  ...
+# Subtest: habit status completion after switch stays silent false
+ok 136 - habit status completion after switch stays silent false
+  ---
+  duration_ms: 64.197375
+  type: 'test'
+  ...
+# Subtest: habit status completion after switch stays silent true
+ok 137 - habit status completion after switch stays silent true
+  ---
+  duration_ms: 59.65625
+  type: 'test'
+  ...
+# Subtest: habit status completion after logout stays silent false
+ok 138 - habit status completion after logout stays silent false
+  ---
+  duration_ms: 61.606292
+  type: 'test'
+  ...
+# Subtest: habit status completion after logout stays silent true
+ok 139 - habit status completion after logout stays silent true
+  ---
+  duration_ms: 58.18975
+  type: 'test'
+  ...
+# Subtest: goal row pending status double tap dispatches once; renewal retains task
+ok 140 - goal row pending status double tap dispatches once; renewal retains task
+  ---
+  duration_ms: 69.666042
+  type: 'test'
+  ...
+# Subtest: habit row pending status double tap dispatches once; renewal retains task
+ok 141 - habit row pending status double tap dispatches once; renewal retains task
+  ---
+  duration_ms: 71.746375
+  type: 'test'
+  ...
+# Subtest: progress range -1 rejects before identity/write
+ok 142 - progress range -1 rejects before identity/write
+  ---
+  duration_ms: 42.71325
+  type: 'test'
+  ...
+# Subtest: progress range 101 rejects before identity/write
+ok 143 - progress range 101 rejects before identity/write
+  ---
+  duration_ms: 42.979667
+  type: 'test'
+  ...
+# Subtest: progress zero remains a valid fictional measurement
+ok 144 - progress zero remains a valid fictional measurement
+  ---
+  duration_ms: 51.943875
+  type: 'test'
+  ...
+# Subtest: goal normal current actor success preserves scoped RPC payload
+ok 145 - goal normal current actor success preserves scoped RPC payload
+  ---
+  duration_ms: 50.34675
+  type: 'test'
+  ...
+# Subtest: habit normal current actor success preserves scoped RPC payload
+ok 146 - habit normal current actor success preserves scoped RPC payload
+  ---
+  duration_ms: 51.141167
+  type: 'test'
+  ...
+# Subtest: habit mark-today stale completion stays silent after switch
+ok 147 - habit mark-today stale completion stays silent after switch
+  ---
+  duration_ms: 62.603916
+  type: 'test'
+  ...
+# Subtest: habit mark-today stale completion stays silent after logout
+ok 148 - habit mark-today stale completion stays silent after logout
+  ---
+  duration_ms: 59.721292
+  type: 'test'
+  ...
+# Subtest: createGoal actual getUser failure denies before RPC {"authUserId":null}
+ok 149 - createGoal actual getUser failure denies before RPC {"authUserId":null}
+  ---
+  duration_ms: 43.371458
+  type: 'test'
+  ...
+# Subtest: createGoal actual getUser failure denies before RPC {"authUserId":"synthetic-b"}
+ok 150 - createGoal actual getUser failure denies before RPC {"authUserId":"synthetic-b"}
+  ---
+  duration_ms: 45.472833
+  type: 'test'
+  ...
+# Subtest: createGoal actual getUser failure denies before RPC {"authError":{"message":"Fictional auth unavailable"}}
+ok 151 - createGoal actual getUser failure denies before RPC {"authError":{"message":"Fictional auth unavailable"}}
+  ---
+  duration_ms: 43.715583
+  type: 'test'
+  ...
+# Subtest: createHabit actual getUser failure denies before RPC {"authUserId":null}
+ok 152 - createHabit actual getUser failure denies before RPC {"authUserId":null}
+  ---
+  duration_ms: 45.758208
+  type: 'test'
+  ...
+# Subtest: createHabit actual getUser failure denies before RPC {"authUserId":"synthetic-b"}
+ok 153 - createHabit actual getUser failure denies before RPC {"authUserId":"synthetic-b"}
+  ---
+  duration_ms: 42.334125
+  type: 'test'
+  ...
+# Subtest: createHabit actual getUser failure denies before RPC {"authError":{"message":"Fictional auth unavailable"}}
+ok 154 - createHabit actual getUser failure denies before RPC {"authError":{"message":"Fictional auth unavailable"}}
+  ---
+  duration_ms: 43.403708
+  type: 'test'
+  ...
+# Subtest: updateGoal actual getUser failure denies before RPC {"authUserId":null}
+ok 155 - updateGoal actual getUser failure denies before RPC {"authUserId":null}
+  ---
+  duration_ms: 41.335792
+  type: 'test'
+  ...
+# Subtest: updateGoal actual getUser failure denies before RPC {"authUserId":"synthetic-b"}
+ok 156 - updateGoal actual getUser failure denies before RPC {"authUserId":"synthetic-b"}
+  ---
+  duration_ms: 44.239125
+  type: 'test'
+  ...
+# Subtest: updateGoal actual getUser failure denies before RPC {"authError":{"message":"Fictional auth unavailable"}}
+ok 157 - updateGoal actual getUser failure denies before RPC {"authError":{"message":"Fictional auth unavailable"}}
+  ---
+  duration_ms: 46.731
+  type: 'test'
+  ...
+# Subtest: updateHabit actual getUser failure denies before RPC {"authUserId":null}
+ok 158 - updateHabit actual getUser failure denies before RPC {"authUserId":null}
+  ---
+  duration_ms: 41.799542
+  type: 'test'
+  ...
+# Subtest: updateHabit actual getUser failure denies before RPC {"authUserId":"synthetic-b"}
+ok 159 - updateHabit actual getUser failure denies before RPC {"authUserId":"synthetic-b"}
+  ---
+  duration_ms: 43.180708
+  type: 'test'
+  ...
+# Subtest: updateHabit actual getUser failure denies before RPC {"authError":{"message":"Fictional auth unavailable"}}
+ok 160 - updateHabit actual getUser failure denies before RPC {"authError":{"message":"Fictional auth unavailable"}}
+  ---
+  duration_ms: 43.284791
+  type: 'test'
+  ...
+# Subtest: markHabit actual getUser failure denies before RPC {"authUserId":null}
+ok 161 - markHabit actual getUser failure denies before RPC {"authUserId":null}
+  ---
+  duration_ms: 43.726833
+  type: 'test'
+  ...
+# Subtest: markHabit actual getUser failure denies before RPC {"authUserId":"synthetic-b"}
+ok 162 - markHabit actual getUser failure denies before RPC {"authUserId":"synthetic-b"}
+  ---
+  duration_ms: 45.568084
+  type: 'test'
+  ...
+# Subtest: markHabit actual getUser failure denies before RPC {"authError":{"message":"Fictional auth unavailable"}}
+ok 163 - markHabit actual getUser failure denies before RPC {"authError":{"message":"Fictional auth unavailable"}}
+  ---
+  duration_ms: 45.563166
+  type: 'test'
+  ...
+# Subtest: createGoal pending getUser switch dispatches no stale RPC
+ok 164 - createGoal pending getUser switch dispatches no stale RPC
+  ---
+  duration_ms: 43.060833
+  type: 'test'
+  ...
+# Subtest: createGoal pending getUser logout dispatches no stale RPC
+ok 165 - createGoal pending getUser logout dispatches no stale RPC
+  ---
+  duration_ms: 46.739833
+  type: 'test'
+  ...
+# Subtest: createHabit pending getUser switch dispatches no stale RPC
+ok 166 - createHabit pending getUser switch dispatches no stale RPC
+  ---
+  duration_ms: 42.285916
+  type: 'test'
+  ...
+# Subtest: createHabit pending getUser logout dispatches no stale RPC
+ok 167 - createHabit pending getUser logout dispatches no stale RPC
+  ---
+  duration_ms: 45.753625
+  type: 'test'
+  ...
+# Subtest: updateGoal pending getUser switch dispatches no stale RPC
+ok 168 - updateGoal pending getUser switch dispatches no stale RPC
+  ---
+  duration_ms: 42.937459
+  type: 'test'
+  ...
+# Subtest: updateGoal pending getUser logout dispatches no stale RPC
+ok 169 - updateGoal pending getUser logout dispatches no stale RPC
+  ---
+  duration_ms: 43.146208
+  type: 'test'
+  ...
+# Subtest: updateHabit pending getUser switch dispatches no stale RPC
+ok 170 - updateHabit pending getUser switch dispatches no stale RPC
+  ---
+  duration_ms: 47.500042
+  type: 'test'
+  ...
+# Subtest: updateHabit pending getUser logout dispatches no stale RPC
+ok 171 - updateHabit pending getUser logout dispatches no stale RPC
+  ---
+  duration_ms: 42.369291
+  type: 'test'
+  ...
+# Subtest: markHabit pending getUser switch dispatches no stale RPC
+ok 172 - markHabit pending getUser switch dispatches no stale RPC
+  ---
+  duration_ms: 45.4915
+  type: 'test'
+  ...
+# Subtest: markHabit pending getUser logout dispatches no stale RPC
+ok 173 - markHabit pending getUser logout dispatches no stale RPC
+  ---
+  duration_ms: 43.242
+  type: 'test'
+  ...
+# Subtest: goal delayed modal close after synthetic-b respects completed task lineage
+ok 174 - goal delayed modal close after synthetic-b respects completed task lineage
+  ---
+  duration_ms: 52.858708
+  type: 'test'
+  ...
+# Subtest: goal delayed modal close after null respects completed task lineage
+ok 175 - goal delayed modal close after null respects completed task lineage
+  ---
+  duration_ms: 55.65725
+  type: 'test'
+  ...
+# Subtest: goal delayed modal close after renew respects completed task lineage
+ok 176 - goal delayed modal close after renew respects completed task lineage
+  ---
+  duration_ms: 55.313709
+  type: 'test'
+  ...
+# Subtest: habit delayed modal close after synthetic-b respects completed task lineage
+ok 177 - habit delayed modal close after synthetic-b respects completed task lineage
+  ---
+  duration_ms: 66.56425
+  type: 'test'
+  ...
+# Subtest: habit delayed modal close after null respects completed task lineage
+ok 178 - habit delayed modal close after null respects completed task lineage
+  ---
+  duration_ms: 53.551167
+  type: 'test'
+  ...
+# Subtest: habit delayed modal close after renew respects completed task lineage
+ok 179 - habit delayed modal close after renew respects completed task lineage
+  ---
+  duration_ms: 53.1935
+  type: 'test'
+  ...
+# Subtest: goal successful old modal timer cannot close newly reopened same-user draft
+ok 180 - goal successful old modal timer cannot close newly reopened same-user draft
+  ---
+  duration_ms: 55.505291
+  type: 'test'
+  ...
+# Subtest: habit successful old modal timer cannot close newly reopened same-user draft
+ok 181 - habit successful old modal timer cannot close newly reopened same-user draft
+  ---
+  duration_ms: 50.273917
+  type: 'test'
+  ...
+# Subtest: goal old finally cannot unlock replacement form after account reset
+ok 182 - goal old finally cannot unlock replacement form after account reset
+  ---
+  duration_ms: 60.205292
+  type: 'test'
+  ...
+# Subtest: habit old finally cannot unlock replacement form after account reset
+ok 183 - habit old finally cannot unlock replacement form after account reset
+  ---
+  duration_ms: 61.558916
+  type: 'test'
+  ...
+# Subtest: progress old finally cannot unlock replacement form after account reset
+ok 184 - progress old finally cannot unlock replacement form after account reset
+  ---
+  duration_ms: 59.761083
+  type: 'test'
+  ...
+# Subtest: goal reopened during pending RPC ignores old success status and timer
+ok 185 - goal reopened during pending RPC ignores old success status and timer
+  ---
+  duration_ms: 140.640334
+  type: 'test'
+  ...
+# Subtest: goal reopened during pending RPC ignores old 42501 status and timer
+ok 186 - goal reopened during pending RPC ignores old 42501 status and timer
+  ---
+  duration_ms: 73.174333
+  type: 'test'
+  ...
+# Subtest: goal reopened during pending RPC ignores old 23505 status and timer
+ok 187 - goal reopened during pending RPC ignores old 23505 status and timer
+  ---
+  duration_ms: 68.113041
+  type: 'test'
+  ...
+# Subtest: habit reopened during pending RPC ignores old success status and timer
+ok 188 - habit reopened during pending RPC ignores old success status and timer
+  ---
+  duration_ms: 75.61675
+  type: 'test'
+  ...
+# Subtest: habit reopened during pending RPC ignores old 42501 status and timer
+ok 189 - habit reopened during pending RPC ignores old 42501 status and timer
+  ---
+  duration_ms: 63.42275
+  type: 'test'
+  ...
+# Subtest: habit reopened during pending RPC ignores old 23505 status and timer
+ok 190 - habit reopened during pending RPC ignores old 23505 status and timer
+  ---
+  duration_ms: 68.503166
+  type: 'test'
+  ...
+# Subtest: goal old finally cannot unlock newer same-form generation request
+ok 191 - goal old finally cannot unlock newer same-form generation request
+  ---
+  duration_ms: 94.481625
+  type: 'test'
+  ...
+# Subtest: habit old finally cannot unlock newer same-form generation request
+ok 192 - habit old finally cannot unlock newer same-form generation request
+  ---
+  duration_ms: 89.545542
+  type: 'test'
+  ...
+# Subtest: QA current Coach denied refresh must hide prior prepared workspace
+ok 193 - QA current Coach denied refresh must hide prior prepared workspace
+  ---
+  duration_ms: 180.993916
+  type: 'test'
+  ...
+# Subtest: QA current Coach pending load cannot reopen workspace after contact closed
+ok 194 - QA current Coach pending load cannot reopen workspace after contact closed
+  ---
+  duration_ms: 128.340458
+  type: 'test'
+  ...
+# Subtest: QA current Coach oldcontact response cannot overwrite newly loaded contact
+ok 195 - QA current Coach oldcontact response cannot overwrite newly loaded contact
+  ---
+  duration_ms: 130.081375
+  type: 'test'
+  ...
+# Subtest: QA goal payload remains snapshot across identity lookup and renewal
+ok 196 - QA goal payload remains snapshot across identity lookup and renewal
+  ---
+  duration_ms: 125.010375
+  type: 'test'
+  ...
+# Subtest: QA habit payload remains snapshot across identity lookup and renewal
+ok 197 - QA habit payload remains snapshot across identity lookup and renewal
+  ---
+  duration_ms: 71.086625
+  type: 'test'
+  ...
+# Subtest: QA markHabit and pause share rendered-row guard
+ok 198 - QA markHabit and pause share rendered-row guard
+  ---
+  duration_ms: 67.316375
+  type: 'test'
+  ...
+# Subtest: QA goal reopened draft while old write pending must remain open after completion
+ok 199 - QA goal reopened draft while old write pending must remain open after completion
+  ---
+  duration_ms: 79.853667
+  type: 'test'
+  ...
+# Subtest: QA habit reopened draft while old write pending must remain open after completion
+ok 200 - QA habit reopened draft while old write pending must remain open after completion
+  ---
+  duration_ms: 73.533083
+  type: 'test'
+  ...
+# Subtest: loopback server current providers reach actual adapter, encoder and minimal referral projection
+ok 201 - loopback server current providers reach actual adapter, encoder and minimal referral projection
+  ---
+  duration_ms: 167.976292
+  type: 'test'
+  ...
+# Subtest: all 12 detached educational routes retain unique source locator and hashes
+ok 202 - all 12 detached educational routes retain unique source locator and hashes
+  ---
+  duration_ms: 43.07825
+  type: 'test'
+  ...
+# Subtest: 100 concurrent HTTP retries commit one event and preserve original attribution
+ok 203 - 100 concurrent HTTP retries commit one event and preserve original attribution
+  ---
+  duration_ms: 73.13725
+  type: 'test'
+  ...
+# Subtest: revoked stops new preview/events and emits no URL or QR
+ok 204 - revoked stops new preview/events and emits no URL or QR
+  ---
+  duration_ms: 3.679375
+  type: 'test'
+  ...
+# Subtest: expired stops new preview/events and emits no URL or QR
+ok 205 - expired stops new preview/events and emits no URL or QR
+  ---
+  duration_ms: 3.671542
+  type: 'test'
+  ...
+# Subtest: wrong-account stops new preview/events and emits no URL or QR
+ok 206 - wrong-account stops new preview/events and emits no URL or QR
+  ---
+  duration_ms: 2.873666
+  type: 'test'
+  ...
+# Subtest: logout stops new preview/events and emits no URL or QR
+ok 207 - logout stops new preview/events and emits no URL or QR
+  ---
+  duration_ms: 3.220583
+  type: 'test'
+  ...
+# Subtest: same-account transport renewal preserves journal event retry and educational citations
+ok 208 - same-account transport renewal preserves journal event retry and educational citations
+  ---
+  duration_ms: 6.181334
+  type: 'test'
+  ...
+# Subtest: renewal cannot revive revoked fixture authorization
+ok 209 - renewal cannot revive revoked fixture authorization
+  ---
+  duration_ms: 2.853625
+  type: 'test'
+  ...
+# Subtest: consent withdrawal blocks events without blocking approved copy or implying marketing permission
+ok 210 - consent withdrawal blocks events without blocking approved copy or implying marketing permission
+  ---
+  duration_ms: 124.577792
+  type: 'test'
+  ...
+# Subtest: education revocation stops lookup but does not rewrite approved share
+ok 211 - education revocation stops lookup but does not rewrite approved share
+  ---
+  duration_ms: 121.1435
+  type: 'test'
+  ...
+# Subtest: share API rejects caller-owned user_id
+ok 212 - share API rejects caller-owned user_id
+  ---
+  duration_ms: 1.598833
+  type: 'test'
+  ...
+# Subtest: share API rejects caller-owned actor
+ok 213 - share API rejects caller-owned actor
+  ---
+  duration_ms: 2.166292
+  type: 'test'
+  ...
+# Subtest: share API rejects caller-owned profile
+ok 214 - share API rejects caller-owned profile
+  ---
+  duration_ms: 1.413375
+  type: 'test'
+  ...
+# Subtest: share API rejects caller-owned url
+ok 215 - share API rejects caller-owned url
+  ---
+  duration_ms: 1.172958
+  type: 'test'
+  ...
+# Subtest: share API rejects caller-owned approval
+ok 216 - share API rejects caller-owned approval
+  ---
+  duration_ms: 1.084875
+  type: 'test'
+  ...
+# Subtest: share API rejects caller-owned consent
+ok 217 - share API rejects caller-owned consent
+  ---
+  duration_ms: 1.045375
+  type: 'test'
+  ...
+# Subtest: share API rejects caller-owned now
+ok 218 - share API rejects caller-owned now
+  ---
+  duration_ms: 1.338667
+  type: 'test'
+  ...
+# Subtest: share API rejects caller-owned permissions
+ok 219 - share API rejects caller-owned permissions
+  ---
+  duration_ms: 1.271875
+  type: 'test'
+  ...
+# Subtest: education API rejects client/authority field answers
+ok 220 - education API rejects client/authority field answers
+  ---
+  duration_ms: 2.081917
+  type: 'test'
+  ...
+# Subtest: education API rejects client/authority field clientId
+ok 221 - education API rejects client/authority field clientId
+  ---
+  duration_ms: 1.459125
+  type: 'test'
+  ...
+# Subtest: education API rejects client/authority field report
+ok 222 - education API rejects client/authority field report
+  ---
+  duration_ms: 1.152916
+  type: 'test'
+  ...
+# Subtest: education API rejects client/authority field audience
+ok 223 - education API rejects client/authority field audience
+  ---
+  duration_ms: 1.093666
+  type: 'test'
+  ...
+# Subtest: education API rejects client/authority field receipts
+ok 224 - education API rejects client/authority field receipts
+  ---
+  duration_ms: 1.130458
+  type: 'test'
+  ...
+# Subtest: education API rejects client/authority field intent
+ok 225 - education API rejects client/authority field intent
+  ---
+  duration_ms: 1.100833
+  type: 'test'
+  ...
+# Subtest: wrong catalog/source pins, unsupported operation and financial events denied
+ok 226 - wrong catalog/source pins, unsupported operation and financial events denied
+  ---
+  duration_ms: 2.452791
+  type: 'test'
+  ...
+# Subtest: foreign Origin, Host and cross-site fetch denied; GET is no-op and CSP/no-store retained
+ok 227 - foreign Origin, Host and cross-site fetch denied; GET is no-op and CSP/no-store retained
+  ---
+  duration_ms: 5.576333
+  type: 'test'
+  ...
+# Subtest: stale cross-tab scenario cannot prepare a newly restored preview by passing active
+ok 228 - stale cross-tab scenario cannot prepare a newly restored preview by passing active
+  ---
+  duration_ms: 2.253375
+  type: 'test'
+  ...
+# Subtest: body limit/extra scenario fields/path traversal/malformed JSON fail closed
+ok 229 - body limit/extra scenario fields/path traversal/malformed JSON fail closed
+  ---
+  duration_ms: 3.218875
+  type: 'test'
+  ...
+# Subtest: adapters do not persist fixture state across separate server instances
+ok 230 - adapters do not persist fixture state across separate server instances
+  ---
+  duration_ms: 3.073792
+  type: 'test'
+  ...
+# Subtest: O01 complete local procedure: exact registers, source gaps, dispatch and real worktrees
+ok 231 - O01 complete local procedure: exact registers, source gaps, dispatch and real worktrees
+  ---
+  duration_ms: 131.213
+  type: 'test'
+  ...
+# Subtest: O01 denies renamed requirement ID
+ok 232 - O01 denies renamed requirement ID
+  ---
+  duration_ms: 1.202375
+  type: 'test'
+  ...
+# Subtest: O01 denies rewritten approved wording
+ok 233 - O01 denies rewritten approved wording
+  ---
+  duration_ms: 0.434625
+  type: 'test'
+  ...
+# Subtest: O01 denies discarded missing-source warning
+ok 234 - O01 denies discarded missing-source warning
+  ---
+  duration_ms: 0.388042
+  type: 'test'
+  ...
+# Subtest: O01 denies discarded source-detail group
+ok 235 - O01 denies discarded source-detail group
+  ---
+  duration_ms: 0.297167
+  type: 'test'
+  ...
+# Subtest: O01 denies invented complete package
+ok 236 - O01 denies invented complete package
+  ---
+  duration_ms: 1.156167
+  type: 'test'
+  ...
+# Subtest: O01 denies substituted controlling127 trace
+ok 237 - O01 denies substituted controlling127 trace
+  ---
+  duration_ms: 0.509417
+  type: 'test'
+  ...
+# Subtest: O01 denies issue creation presented as actual delegation
+ok 238 - O01 denies issue creation presented as actual delegation
+  ---
+  duration_ms: 1.508083
+  type: 'test'
+  ...
+# Subtest: O01 denies arbitrary unknown agent receipt
+ok 239 - O01 denies arbitrary unknown agent receipt
+  ---
+  duration_ms: 0.81225
+  type: 'test'
+  ...
+# Subtest: O01 denies consistently forged state and self-declared native observation
+ok 240 - O01 denies consistently forged state and self-declared native observation
+  ---
+  duration_ms: 1.042
+  type: 'test'
+  ...
+# Subtest: O01 requires separate trusted observation input
+ok 241 - O01 requires separate trusted observation input
+  ---
+  duration_ms: 0.748541
+  type: 'test'
+  ...
+# Subtest: O01 denies real worktree branch mismatch
+ok 242 - O01 denies real worktree branch mismatch
+  ---
+  duration_ms: 30.46775
+  type: 'test'
+  ...
+# Subtest: O01 denies source not descending from approved base
+ok 243 - O01 denies source not descending from approved base
+  ---
+  duration_ms: 1.04425
+  type: 'test'
+  ...
+# Subtest: O01 denies exact or nested lane ownership conflicts
+ok 244 - O01 denies exact or nested lane ownership conflicts
+  ---
+  duration_ms: 117.089
+  type: 'test'
+  ...
+# Subtest: O01 denies ownership path escape
+ok 245 - O01 denies ownership path escape
+  ---
+  duration_ms: 29.917458
+  type: 'test'
+  ...
+# Subtest: O01 denies silent production, financial or Alex scope expansion
+ok 246 - O01 denies silent production, financial or Alex scope expansion
+  ---
+  duration_ms: 2.633208
+  type: 'test'
+  ...
+# Subtest: O01 retains incomplete source status and draft release hold
+ok 247 - O01 retains incomplete source status and draft release hold
+  ---
+  duration_ms: 1.630458
+  type: 'test'
+  ...
+# Subtest: weekly check-in UI serializes concurrent submits while a real request is pending
+ok 248 - weekly check-in UI serializes concurrent submits while a real request is pending
+  ---
+  duration_ms: 142.64275
+  type: 'test'
+  ...
+# Subtest: committed INSERT with lost response is read back on explicit manual retry without another INSERT
+ok 249 - committed INSERT with lost response is read back on explicit manual retry without another INSERT
+  ---
+  duration_ms: 68.495417
+  type: 'test'
+  ...
+# Subtest: failed read after unknown outcome never submits again until a later successful read
+ok 250 - failed read after unknown outcome never submits again until a later successful read
+  ---
+  duration_ms: 62.124584
+  type: 'test'
+  ...
+# Subtest: known failed INSERT retries only after an explicit fresh successful existence read
+ok 251 - known failed INSERT retries only after an explicit fresh successful existence read
+  ---
+  duration_ms: 63.6645
+  type: 'test'
+  ...
+# Subtest: separate tabs race one natural-key record and reconcile duplicate without overwrite
+ok 252 - separate tabs race one natural-key record and reconcile duplicate without overwrite
+  ---
+  duration_ms: 137.916417
+  type: 'test'
+  ...
+# Subtest: check-in snapshot denies stale identity before existence read/write synthetic-b
+ok 253 - check-in snapshot denies stale identity before existence read/write synthetic-b
+  ---
+  duration_ms: 54.527875
+  type: 'test'
+  ...
+# Subtest: check-in snapshot denies stale identity before existence read/write null
+ok 254 - check-in snapshot denies stale identity before existence read/write null
+  ---
+  duration_ms: 59.208791
+  type: 'test'
+  ...
+# Subtest: same-user renewal preserves submitted payload and prevents input changes across auth await
+ok 255 - same-user renewal preserves submitted payload and prevents input changes across auth await
+  ---
+  duration_ms: 62.682042
+  type: 'test'
+  ...
+# Subtest: existence read is minimal and explicitly tied to own contact, template, period and submitted status
+ok 256 - existence read is minimal and explicitly tied to own contact, template, period and submitted status
+  ---
+  duration_ms: 63.068958
+  type: 'test'
+  ...
+# Subtest: first read denial fails closed without disabling future recoverable explicit retry
+ok 257 - first read denial fails closed without disabling future recoverable explicit retry
+  ---
+  duration_ms: 58.980917
+  type: 'test'
+  ...
+# Subtest: required empty answer validates without any read, write or permanent busy state
+ok 258 - required empty answer validates without any read, write or permanent busy state
+  ---
+  duration_ms: 54.485417
+  type: 'test'
+  ...
+# Subtest: QA O01 independently references actual bounded dispatch and each real branch/base
+ok 259 - QA O01 independently references actual bounded dispatch and each real branch/base
+  ---
+  duration_ms: 377.723959
+  type: 'test'
+  ...
+# Subtest: QA O01 consistently forged task+dispatch+applicant evidence cannot replace independent native receipt
+ok 260 - QA O01 consistently forged task+dispatch+applicant evidence cannot replace independent native receipt
+  ---
+  duration_ms: 73.458042
+  type: 'test'
+  ...
+# Subtest: QA O01 ownership mutation that matches a real file in another lane is rejected
+ok 261 - QA O01 ownership mutation that matches a real file in another lane is rejected
+  ---
+  duration_ms: 137.070791
+  type: 'test'
+  ...
+# Subtest: QA O01 edited source gaps and requirement text cannot be hidden by an unmodified count
+ok 262 - QA O01 edited source gaps and requirement text cannot be hidden by an unmodified count
+  ---
+  duration_ms: 149.357583
+  type: 'test'
+  ...
+# Subtest: QA selectors are not authority: prototype-shaped selectors and unauthorized endpoint operations fail without changing scenario
+ok 263 - QA selectors are not authority: prototype-shaped selectors and unauthorized endpoint operations fail without changing scenario
+  ---
+  duration_ms: 44.9095
+  type: 'test'
+  ...
+# Subtest: QA changing state in another HTTP consumer invalidates old share request without minting consent or leaking identity
+ok 264 - QA changing state in another HTTP consumer invalidates old share request without minting consent or leaking identity
+  ---
+  duration_ms: 13.756625
+  type: 'test'
+  ...
+# Subtest: QA all Driver education results withhold personalized/financial/medical processing; changed request pins rejected
+ok 265 - QA all Driver education results withhold personalized/financial/medical processing; changed request pins rejected
+  ---
+  duration_ms: 47.934125
+  type: 'test'
+  ...
+# Subtest: QA mixed parallel retries preserve event identity and reject changed attribution without financial records
+ok 266 - QA mixed parallel retries preserve event identity and reject changed attribution without financial records
+  ---
+  duration_ms: 31.717333
+  type: 'test'
+  ...
+# Subtest: QA 101 requirement groups, ten detail groups and all ten workstreams retain exact approved definitions
+ok 267 - QA 101 requirement groups, ten detail groups and all ten workstreams retain exact approved definitions
+  ---
+  duration_ms: 41.614625
+  type: 'test'
+  ...
+# Subtest: QA original 57 whole-package definitions retain exact bytes and IDs
+ok 268 - QA original 57 whole-package definitions retain exact bytes and IDs
+  ---
+  duration_ms: 20.400542
+  type: 'test'
+  ...
+# Subtest: QA existing protected runtime source permits only approved member handler; no Functions/assets/permissions migrations touched
+ok 269 - QA existing protected runtime source permits only approved member handler; no Functions/assets/permissions migrations touched
+  ---
+  duration_ms: 25.406375
+  type: 'test'
+  ...
+# Subtest: QA foundational share/catalog engines, async trust adapters, QR encoder and real decoder remain exact
+ok 270 - QA foundational share/catalog engines, async trust adapters, QR encoder and real decoder remain exact
+  ---
+  duration_ms: 107.603666
+  type: 'test'
+  ...
+# Subtest: QA security proposal manifest pins exact bytes and only six restrictive policies plus four TRUNCATE removals
+ok 271 - QA security proposal manifest pins exact bytes and only six restrictive policies plus four TRUNCATE removals
+  ---
+  duration_ms: 2.252167
+  type: 'test'
+  ...
+# Subtest: QA operations proposal preserves predecessor/body/trigger pins and contains only one existing private trigger replacement
+ok 272 - QA operations proposal preserves predecessor/body/trigger pins and contains only one existing private trigger replacement
+  ---
+  duration_ms: 1.035833
+  type: 'test'
+  ...
+# Subtest: metadata parses exact current macOS column structure without commands/credentials
+ok 273 - metadata parses exact current macOS column structure without commands/credentials
+  ---
+  duration_ms: 1.440958
+  type: 'test'
+  ...
+# Subtest: metadata denied fails closed
+ok 274 - metadata denied fails closed
+  ---
+  duration_ms: 0.241167
+  type: 'test'
+  ...
+# Subtest: missing shared memory section fails closed
+ok 275 - missing shared memory section fails closed
+  ---
+  duration_ms: 0.071458
+  type: 'test'
+  ...
+# Subtest: malformed row fails closed
+ok 276 - malformed row fails closed
+  ---
+  duration_ms: 0.066292
+  type: 'test'
+  ...
+# Subtest: noninteger fields fail closed
+ok 277 - noninteger fields fail closed
+  ---
+  duration_ms: 0.123041
+  type: 'test'
+  ...
+# Subtest: full SHMMNI inventory BLOCKS without asserting orphan ownership
+ok 278 - full SHMMNI inventory BLOCKS without asserting orphan ownership
+  ---
+  duration_ms: 0.105666
+  type: 'test'
+  ...
+# Subtest: one free slot conservatively BLOCKS
+ok 279 - one free slot conservatively BLOCKS
+  ---
+  duration_ms: 0.050958
+  type: 'test'
+  ...
+# Subtest: two free slots permit serialized test only
+ok 280 - two free slots permit serialized test only
+  ---
+  duration_ms: 0.053041
+  type: 'test'
+  ...
+# Subtest: invalid kernel limit cannot imply ready
+ok 281 - invalid kernel limit cannot imply ready
+  ---
+  duration_ms: 0.065875
+  type: 'test'
+  ...
+# Subtest: reserve cannot be weakened to one
+ok 282 - reserve cannot be weakened to one
+  ---
+  duration_ms: 0.106792
+  type: 'test'
+  ...
+# Subtest: lease excludes simultaneous holder and leaves existing holder untouched
+ok 283 - lease excludes simultaneous holder and leaves existing holder untouched
+  ---
+  duration_ms: 1.845042
+  type: 'test'
+  ...
+# Subtest: successful callback returns value and teardown removes only own lock
+ok 284 - successful callback returns value and teardown removes only own lock
+  ---
+  duration_ms: 0.938166
+  type: 'test'
+  ...
+# Subtest: throwing callback removes own lease and preserves error
+ok 285 - throwing callback removes own lease and preserves error
+  ---
+  duration_ms: 0.60625
+  type: 'test'
+  ...
+# Subtest: relative lock path is rejected
+ok 286 - relative lock path is rejected
+  ---
+  duration_ms: 0.058584
+  type: 'test'
+  ...
+# Subtest: source wrapper rejects relative source/output before database execution
+ok 287 - source wrapper rejects relative source/output before database execution
+  ---
+  duration_ms: 3.843625
+  type: 'test'
+  ...
+# Subtest: source wrapper rejects writing accepted source tree
+ok 288 - source wrapper rejects writing accepted source tree
+  ---
+  duration_ms: 0.077041
+  type: 'test'
+  ...
+# Subtest: source wrapper rejects normalized traversal into source
+ok 289 - source wrapper rejects normalized traversal into source
+  ---
+  duration_ms: 0.051084
+  type: 'test'
+  ...
+# Subtest: source wrapper rejects output symlink into source before executing git or PG
+ok 290 - source wrapper rejects output symlink into source before executing git or PG
+  ---
+  duration_ms: 0.741583
+  type: 'test'
+  ...
+# Subtest: tooling contains no cleanup or production route primitives
+ok 291 - tooling contains no cleanup or production route primitives
+  ---
+  duration_ms: 0.559833
+  type: 'test'
+  ...
+# Subtest: daily habit rapid double action dispatches one scoped RPC and retains completed state after stale read
+ok 292 - daily habit rapid double action dispatches one scoped RPC and retains completed state after stale read
+  ---
+  duration_ms: 144.281542
+  type: 'test'
+  ...
+# Subtest: daily habit freezes exact target 0 and ID across valid renewal and changed render source
+ok 293 - daily habit freezes exact target 0 and ID across valid renewal and changed render source
+  ---
+  duration_ms: 67.706458
+  type: 'test'
+  ...
+# Subtest: daily habit freezes exact target 2.5 and ID across valid renewal and changed render source
+ok 294 - daily habit freezes exact target 2.5 and ID across valid renewal and changed render source
+  ---
+  duration_ms: 56.509125
+  type: 'test'
+  ...
+# Subtest: daily habit pending auth null issues no stale RPC
+ok 295 - daily habit pending auth null issues no stale RPC
+  ---
+  duration_ms: 57.197333
+  type: 'test'
+  ...
+# Subtest: daily habit pending auth synthetic-b issues no stale RPC
+ok 296 - daily habit pending auth synthetic-b issues no stale RPC
+  ---
+  duration_ms: 50.966708
+  type: 'test'
+  ...
+# Subtest: daily habit late success after null causes no status revival or read
+ok 297 - daily habit late success after null causes no status revival or read
+  ---
+  duration_ms: 86.741084
+  type: 'test'
+  ...
+# Subtest: daily habit late denial after null causes no status revival or read
+ok 298 - daily habit late denial after null causes no status revival or read
+  ---
+  duration_ms: 67.442417
+  type: 'test'
+  ...
+# Subtest: daily habit late success after synthetic-b causes no status revival or read
+ok 299 - daily habit late success after synthetic-b causes no status revival or read
+  ---
+  duration_ms: 72.585417
+  type: 'test'
+  ...
+# Subtest: daily habit late denial after synthetic-b causes no status revival or read
+ok 300 - daily habit late denial after synthetic-b causes no status revival or read
+  ---
+  duration_ms: 64.726708
+  type: 'test'
+  ...
+# Subtest: daily habit verified getUser denial prevents write {"authUserId":null}
+ok 301 - daily habit verified getUser denial prevents write {"authUserId":null}
+  ---
+  duration_ms: 50.660042
+  type: 'test'
+  ...
+# Subtest: daily habit verified getUser denial prevents write {"authUserId":"synthetic-b"}
+ok 302 - daily habit verified getUser denial prevents write {"authUserId":"synthetic-b"}
+  ---
+  duration_ms: 51.236083
+  type: 'test'
+  ...
+# Subtest: daily habit verified getUser denial prevents write {"authError":{"message":"Fictional unavailable"}}
+ok 303 - daily habit verified getUser denial prevents write {"authError":{"message":"Fictional unavailable"}}
+  ---
+  duration_ms: 45.748292
+  type: 'test'
+  ...
+# Subtest: daily habit malformed target -1 does not dispatch
+ok 304 - daily habit malformed target -1 does not dispatch
+  ---
+  duration_ms: 46.656833
+  type: 'test'
+  ...
+# Subtest: daily habit malformed target not-a-number does not dispatch
+ok 305 - daily habit malformed target not-a-number does not dispatch
+  ---
+  duration_ms: 51.237792
+  type: 'test'
+  ...
+# Subtest: daily habit malformed target Infinity does not dispatch
+ok 306 - daily habit malformed target Infinity does not dispatch
+  ---
+  duration_ms: 45.768916
+  type: 'test'
+  ...
+# Subtest: daily habit lost response remains uncertain and read-only status checks never blindly repeat write
+ok 307 - daily habit lost response remains uncertain and read-only status checks never blindly repeat write
+  ---
+  duration_ms: 49.456375
+  type: 'test'
+  ...
+# Subtest: daily habit returned nonauthorization error is uncertain, not successful completion
+ok 308 - daily habit returned nonauthorization error is uncertain, not successful completion
+  ---
+  duration_ms: 48.884167
+  type: 'test'
+  ...
+# Subtest: daily habit genuine 42501 does not report save or invoke dashboard read
+ok 309 - daily habit genuine 42501 does not report save or invoke dashboard read
+  ---
+  duration_ms: 48.70675
+  type: 'test'
+  ...
+# Subtest: daily habit success plus dashboard transport failure remains saved, never retransmitted
+ok 310 - daily habit success plus dashboard transport failure remains saved, never retransmitted
+  ---
+  duration_ms: 47.378875
+  type: 'test'
+  ...
+# Subtest: daily habit rendering escapes untrusted labels and completed source does not write
+ok 311 - daily habit rendering escapes untrusted labels and completed source does not write
+  ---
+  duration_ms: 50.754
+  type: 'test'
+  ...
+# Subtest: daily habit UTC date and actor are frozen before midnight; old response cannot mark current day complete
+ok 312 - daily habit UTC date and actor are frozen before midnight; old response cannot mark current day complete
+  ---
+  duration_ms: 47.603417
+  type: 'test'
+  ...
+# Subtest: daily habit readback 42501 clears only protected daily card and does not claim a successful status read
+ok 313 - daily habit readback 42501 clears only protected daily card and does not claim a successful status read
+  ---
+  duration_ms: 47.632625
+  type: 'test'
+  ...
+# Subtest: daily habit failed getUser transport never dispatches or reports a saved habit
+ok 314 - daily habit failed getUser transport never dispatches or reports a saved habit
+  ---
+  duration_ms: 48.811791
+  type: 'test'
+  ...
+# Subtest: author regression: serialized status reads and persistent denial fence prevent stale private-card restoration
+ok 315 - author regression: serialized status reads and persistent denial fence prevent stale private-card restoration
+  ---
+  duration_ms: 65.819083
+  type: 'test'
+  ...
+# Subtest: verified different identity during readback clears private document without another write
+ok 316 - verified different identity during readback clears private document without another write
+  ---
+  duration_ms: 47.578
+  type: 'test'
+  ...
+# Subtest: unverified readback identity/transport preserves draft and never dispatches another RPC {"data":{"user":null},"error":null}
+ok 317 - unverified readback identity/transport preserves draft and never dispatches another RPC {"data":{"user":null},"error":null}
+  ---
+  duration_ms: 51.260792
+  type: 'test'
+  ...
+# Subtest: unverified readback identity/transport preserves draft and never dispatches another RPC {"data":{"user":{"id":"synthetic-b"}},"error":{"message":"Fictional timeout"}}
+ok 318 - unverified readback identity/transport preserves draft and never dispatches another RPC {"data":{"user":{"id":"synthetic-b"}},"error":{"message":"Fictional timeout"}}
+  ---
+  duration_ms: 51.16875
+  type: 'test'
+  ...
+# Subtest: real local HTTP connects scoped client/assigned coach dashboard and denies unassigned fixture
+ok 319 - real local HTTP connects scoped client/assigned coach dashboard and denies unassigned fixture
+  ---
+  duration_ms: 45.4885
+  type: 'test'
+  ...
+# Subtest: real progress endpoint denies caller-supplied contact_id
+ok 320 - real progress endpoint denies caller-supplied contact_id
+  ---
+  duration_ms: 5.266708
+  type: 'test'
+  ...
+# Subtest: real progress endpoint denies caller-supplied role
+ok 321 - real progress endpoint denies caller-supplied role
+  ---
+  duration_ms: 2.551417
+  type: 'test'
+  ...
+# Subtest: real progress endpoint denies caller-supplied source
+ok 322 - real progress endpoint denies caller-supplied source
+  ---
+  duration_ms: 2.044375
+  type: 'test'
+  ...
+# Subtest: real progress endpoint denies caller-supplied answers
+ok 323 - real progress endpoint denies caller-supplied answers
+  ---
+  duration_ms: 2.321792
+  type: 'test'
+  ...
+# Subtest: real progress endpoint denies caller-supplied household
+ok 324 - real progress endpoint denies caller-supplied household
+  ---
+  duration_ms: 2.916791
+  type: 'test'
+  ...
+# Subtest: real progress endpoint denies caller-supplied permission
+ok 325 - real progress endpoint denies caller-supplied permission
+  ---
+  duration_ms: 2.129667
+  type: 'test'
+  ...
+# Subtest: real progress endpoint denies caller-supplied amount
+ok 326 - real progress endpoint denies caller-supplied amount
+  ---
+  duration_ms: 2.288
+  type: 'test'
+  ...
+# Subtest: current expired blocks real progress endpoint
+ok 327 - current expired blocks real progress endpoint
+  ---
+  duration_ms: 3.933458
+  type: 'test'
+  ...
+# Subtest: current wrong-account blocks real progress endpoint
+ok 328 - current wrong-account blocks real progress endpoint
+  ---
+  duration_ms: 3.163208
+  type: 'test'
+  ...
+# Subtest: current logout blocks real progress endpoint
+ok 329 - current logout blocks real progress endpoint
+  ---
+  duration_ms: 2.789792
+  type: 'test'
+  ...
+# Subtest: 100 parallel HTTP reads do not consume allowance or create tracking; share and educational routes remain independent
+ok 330 - 100 parallel HTTP reads do not consume allowance or create tracking; share and educational routes remain independent
+  ---
+  duration_ms: 77.636166
+  type: 'test'
+  ...
+# Subtest: progress uses existing local origin, body, method and CSP protections
+ok 331 - progress uses existing local origin, body, method and CSP protections
+  ---
+  duration_ms: 4.515667
+  type: 'test'
+  ...
+# Subtest: creative revocation and consent withdrawal do not invent revoked client permission
+ok 332 - creative revocation and consent withdrawal do not invent revoked client permission
+  ---
+  duration_ms: 12.739334
+  type: 'test'
+  ...
+# Subtest: source diff permits only the explicit member daily-action runtime slice; all other protected sources match accepted Wave5
+ok 333 - source diff permits only the explicit member daily-action runtime slice; all other protected sources match accepted Wave5
+  ---
+  duration_ms: 14382.992
+  type: 'test'
+  ...
+# Subtest: original register remains exact docs/orchestration/requirements.json
+ok 334 - original register remains exact docs/orchestration/requirements.json
+  ---
+  duration_ms: 19.390709
+  type: 'test'
+  ...
+# Subtest: original register remains exact docs/orchestration/requirements-source-details.json
+ok 335 - original register remains exact docs/orchestration/requirements-source-details.json
+  ---
+  duration_ms: 17.325833
+  type: 'test'
+  ...
+# Subtest: original register remains exact docs/orchestration/issue-56/ACCEPTANCE_MATRIX.json
+ok 336 - original register remains exact docs/orchestration/issue-56/ACCEPTANCE_MATRIX.json
+  ---
+  duration_ms: 17.095333
+  type: 'test'
+  ...
+# Subtest: new progress and UI cannot invoke grants, financial effects, external transport or clinical engines
+ok 337 - new progress and UI cannot invoke grants, financial effects, external transport or clinical engines
+  ---
+  duration_ms: 89.655292
+  type: 'test'
+  ...
+# Subtest: client projects own scoped habits/goals and unknown versus zero, withholding all private identity and editable controls
+ok 338 - client projects own scoped habits/goals and unknown versus zero, withholding all private identity and editable controls
+  ---
+  duration_ms: 10.814833
+  type: 'test'
+  ...
+# Subtest: assigned active coach reads minimal scoped client progress without household or raw health fields
+ok 339 - assigned active coach reads minimal scoped client progress without household or raw health fields
+  ---
+  duration_ms: 0.347625
+  type: 'test'
+  ...
+# Subtest: forged/unassigned/inactive actor denied {"role":"coach","assigned":false}
+ok 340 - forged/unassigned/inactive actor denied {"role":"coach","assigned":false}
+  ---
+  duration_ms: 0.155833
+  type: 'test'
+  ...
+# Subtest: forged/unassigned/inactive actor denied {"role":"owner"}
+ok 341 - forged/unassigned/inactive actor denied {"role":"owner"}
+  ---
+  duration_ms: 0.083792
+  type: 'test'
+  ...
+# Subtest: forged/unassigned/inactive actor denied {"active":false}
+ok 342 - forged/unassigned/inactive actor denied {"active":false}
+  ---
+  duration_ms: 0.075958
+  type: 'test'
+  ...
+# Subtest: forged/unassigned/inactive actor denied {"authenticated":false}
+ok 343 - forged/unassigned/inactive actor denied {"authenticated":false}
+  ---
+  duration_ms: 0.072083
+  type: 'test'
+  ...
+# Subtest: forged/unassigned/inactive actor denied {"contact_id":"fictional-other"}
+ok 344 - forged/unassigned/inactive actor denied {"contact_id":"fictional-other"}
+  ---
+  duration_ms: 0.067833
+  type: 'test'
+  ...
+# Subtest: forged/unassigned/inactive actor denied {"target_contact_id":"fictional-other"}
+ok 345 - forged/unassigned/inactive actor denied {"target_contact_id":"fictional-other"}
+  ---
+  duration_ms: 0.073958
+  type: 'test'
+  ...
+# Subtest: caller cannot supply authority/private/financial role
+ok 346 - caller cannot supply authority/private/financial role
+  ---
+  duration_ms: 0.093
+  type: 'test'
+  ...
+# Subtest: caller cannot supply authority/private/financial contact_id
+ok 347 - caller cannot supply authority/private/financial contact_id
+  ---
+  duration_ms: 0.129542
+  type: 'test'
+  ...
+# Subtest: caller cannot supply authority/private/financial household_id
+ok 348 - caller cannot supply authority/private/financial household_id
+  ---
+  duration_ms: 0.062334
+  type: 'test'
+  ...
+# Subtest: caller cannot supply authority/private/financial allowance
+ok 349 - caller cannot supply authority/private/financial allowance
+  ---
+  duration_ms: 0.044167
+  type: 'test'
+  ...
+# Subtest: caller cannot supply authority/private/financial approval
+ok 350 - caller cannot supply authority/private/financial approval
+  ---
+  duration_ms: 0.0375
+  type: 'test'
+  ...
+# Subtest: caller cannot supply authority/private/financial answers
+ok 351 - caller cannot supply authority/private/financial answers
+  ---
+  duration_ms: 0.030667
+  type: 'test'
+  ...
+# Subtest: caller cannot supply authority/private/financial clinical_protocol
+ok 352 - caller cannot supply authority/private/financial clinical_protocol
+  ---
+  duration_ms: 0.029417
+  type: 'test'
+  ...
+# Subtest: caller cannot supply authority/private/financial financial_amount
+ok 353 - caller cannot supply authority/private/financial financial_amount
+  ---
+  duration_ms: 0.033042
+  type: 'test'
+  ...
+# Subtest: caller cannot supply authority/private/financial source
+ok 354 - caller cannot supply authority/private/financial source
+  ---
+  duration_ms: 0.034292
+  type: 'test'
+  ...
+# Subtest: read-only contract rejects update
+ok 355 - read-only contract rejects update
+  ---
+  duration_ms: 0.068291
+  type: 'test'
+  ...
+# Subtest: read-only contract rejects consume
+ok 356 - read-only contract rejects consume
+  ---
+  duration_ms: 0.047958
+  type: 'test'
+  ...
+# Subtest: read-only contract rejects extend
+ok 357 - read-only contract rejects extend
+  ---
+  duration_ms: 0.041459
+  type: 'test'
+  ...
+# Subtest: read-only contract rejects household
+ok 358 - read-only contract rejects household
+  ---
+  duration_ms: 0.033292
+  type: 'test'
+  ...
+# Subtest: read-only contract rejects generate
+ok 359 - read-only contract rejects generate
+  ---
+  duration_ms: 0.034709
+  type: 'test'
+  ...
+# Subtest: read-only contract rejects pay
+ok 360 - read-only contract rejects pay
+  ---
+  duration_ms: 0.0335
+  type: 'test'
+  ...
+# Subtest: snapshot source/row/hidden field mismatch held contact_id
+ok 361 - snapshot source/row/hidden field mismatch held contact_id
+  ---
+  duration_ms: 0.109
+  type: 'test'
+  ...
+# Subtest: snapshot source/row/hidden field mismatch held authorization_revision
+ok 362 - snapshot source/row/hidden field mismatch held authorization_revision
+  ---
+  duration_ms: 0.097708
+  type: 'test'
+  ...
+# Subtest: snapshot source/row/hidden field mismatch held source_version
+ok 363 - snapshot source/row/hidden field mismatch held source_version
+  ---
+  duration_ms: 0.086334
+  type: 'test'
+  ...
+# Subtest: snapshot source/row/hidden field mismatch held household
+ok 364 - snapshot source/row/hidden field mismatch held household
+  ---
+  duration_ms: 0.111917
+  type: 'test'
+  ...
+# Subtest: snapshot source/row/hidden field mismatch held answers
+ok 365 - snapshot source/row/hidden field mismatch held answers
+  ---
+  duration_ms: 0.103917
+  type: 'test'
+  ...
+# Subtest: same actor token transport renewal leaves current consistent projection readable
+ok 366 - same actor token transport renewal leaves current consistent projection readable
+  ---
+  duration_ms: 0.2435
+  type: 'test'
+  ...
+# Subtest: revocation/account/assignment drift during lookup held {"authenticated":false}
+ok 367 - revocation/account/assignment drift during lookup held {"authenticated":false}
+  ---
+  duration_ms: 0.166917
+  type: 'test'
+  ...
+# Subtest: revocation/account/assignment drift during lookup held {"active":false}
+ok 368 - revocation/account/assignment drift during lookup held {"active":false}
+  ---
+  duration_ms: 0.139542
+  type: 'test'
+  ...
+# Subtest: revocation/account/assignment drift during lookup held {"assigned":false,"role":"coach"}
+ok 369 - revocation/account/assignment drift during lookup held {"assigned":false,"role":"coach"}
+  ---
+  duration_ms: 0.140833
+  type: 'test'
+  ...
+# Subtest: revocation/account/assignment drift during lookup held {"actor_id":"fictional-other"}
+ok 370 - revocation/account/assignment drift during lookup held {"actor_id":"fictional-other"}
+  ---
+  duration_ms: 0.229917
+  type: 'test'
+  ...
+# Subtest: revocation/account/assignment drift during lookup held {"authorization_revision":2}
+ok 371 - revocation/account/assignment drift during lookup held {"authorization_revision":2}
+  ---
+  duration_ms: 0.48875
+  type: 'test'
+  ...
+# Subtest: snapshot changes between reads held instead of combining inconsistent usage/progress
+ok 372 - snapshot changes between reads held instead of combining inconsistent usage/progress
+  ---
+  duration_ms: 0.217209
+  type: 'test'
+  ...
+# Subtest: unknown allowance never becomes free zero or unlimited {"limit":null}
+ok 373 - unknown allowance never becomes free zero or unlimited {"limit":null}
+  ---
+  duration_ms: 0.169792
+  type: 'test'
+  ...
+# Subtest: unknown allowance never becomes free zero or unlimited {"used":null}
+ok 374 - unknown allowance never becomes free zero or unlimited {"used":null}
+  ---
+  duration_ms: 0.177334
+  type: 'test'
+  ...
+# Subtest: unknown allowance never becomes free zero or unlimited {"limit":null,"used":null}
+ok 375 - unknown allowance never becomes free zero or unlimited {"limit":null,"used":null}
+  ---
+  duration_ms: 0.12375
+  type: 'test'
+  ...
+# Subtest: overdrawn usage needs explicit review rather than fabricated zero or negative allowance
+ok 376 - overdrawn usage needs explicit review rather than fabricated zero or negative allowance
+  ---
+  duration_ms: 0.143667
+  type: 'test'
+  ...
+# Subtest: malformed allowance fails closed -1
+ok 377 - malformed allowance fails closed -1
+  ---
+  duration_ms: 0.099625
+  type: 'test'
+  ...
+# Subtest: malformed allowance fails closed NaN
+ok 378 - malformed allowance fails closed NaN
+  ---
+  duration_ms: 0.08725
+  type: 'test'
+  ...
+# Subtest: malformed allowance fails closed Infinity
+ok 379 - malformed allowance fails closed Infinity
+  ---
+  duration_ms: 0.116375
+  type: 'test'
+  ...
+# Subtest: malformed allowance fails closed 60
+ok 380 - malformed allowance fails closed 60
+  ---
+  duration_ms: 0.085417
+  type: 'test'
+  ...
+# Subtest: malformed allowance fails closed 2.5
+ok 381 - malformed allowance fails closed 2.5
+  ---
+  duration_ms: 0.090792
+  type: 'test'
+  ...
+# Subtest: all missing weekly/habit evidence stays explicitly unknown without generated advice or score
+ok 382 - all missing weekly/habit evidence stays explicitly unknown without generated advice or score
+  ---
+  duration_ms: 0.233208
+  type: 'test'
+  ...
+# Subtest: dependency exceptions expose fixed category only
+ok 383 - dependency exceptions expose fixed category only
+  ---
+  duration_ms: 0.123167
+  type: 'test'
+  ...
+# Subtest: getter and untrusted prototype request are rejected without executing getter
+ok 384 - getter and untrusted prototype request are rejected without executing getter
+  ---
+  duration_ms: 0.074834
+  type: 'test'
+  ...
+# Subtest: async final authority rejected without leaking unhandled promise rejection
+ok 385 - async final authority rejected without leaking unhandled promise rejection
+  ---
+  duration_ms: 8.273458
+  type: 'test'
+  ...
+# Subtest: 100 parallel reads are nonmutating and deterministic; no allowance consumption or event creation
+ok 386 - 100 parallel reads are nonmutating and deterministic; no allowance consumption or event creation
+  ---
+  duration_ms: 10.127542
+  type: 'test'
+  ...
+# Subtest: fixture personas are demonstrative selectors only; unassigned denied and scenarios cannot restore expired session by read
+ok 387 - fixture personas are demonstrative selectors only; unassigned denied and scenarios cannot restore expired session by read
+  ---
+  duration_ms: 0.523042
+  type: 'test'
+  ...
+# Subtest: independent: verified different getUser identity clears old private document even without Auth callback
+ok 388 - independent: verified different getUser identity clears old private document even without Auth callback
+  ---
+  duration_ms: 123.608917
+  type: 'test'
+  ...
+# Subtest: independent: read-only status reauthentication mismatch clears prior private state without another write
+ok 389 - independent: read-only status reauthentication mismatch clears prior private state without another write
+  ---
+  duration_ms: 65.924458
+  type: 'test'
+  ...
+# Subtest: independent: getUser transport uncertainty retains draft and cannot send new habit RPC
+ok 390 - independent: getUser transport uncertainty retains draft and cannot send new habit RPC
+  ---
+  duration_ms: 55.863291
+  type: 'test'
+  ...
+# Subtest: independent: concurrent status reads cannot restore protected daily card after a genuine authorization denial
+ok 391 - independent: concurrent status reads cannot restore protected daily card after a genuine authorization denial
+  ---
+  duration_ms: 534.733125
+  type: 'test'
+  ...
+# Subtest: independent exact final SQL and all reviewed execution inputs match published local proposal pins
+ok 392 - independent exact final SQL and all reviewed execution inputs match published local proposal pins
+  ---
+  duration_ms: 4.580458
+  type: 'test'
+  ...
+# Subtest: independent original five actual-failure tests and assertions remain exact accepted bytes
+ok 393 - independent original five actual-failure tests and assertions remain exact accepted bytes
+  ---
+  duration_ms: 22.264459
+  type: 'test'
+  ...
+# Subtest: independent additive scope: exactly9 restrictive policies3 triggers1 invoker function3 TRUNCATE revokes
+ok 394 - independent additive scope: exactly9 restrictive policies3 triggers1 invoker function3 TRUNCATE revokes
+  ---
+  duration_ms: 0.471833
+  type: 'test'
+  ...
+# Subtest: independent narrow household policy never enables guardian invention or changes existing immutable identity tuple
+ok 395 - independent narrow household policy never enables guardian invention or changes existing immutable identity tuple
+  ---
+  duration_ms: 0.28325
+  type: 'test'
+  ...
+# Subtest: independent actual caller actor attribution is required for both inserts and review
+ok 396 - independent actual caller actor attribution is required for both inserts and review
+  ---
+  duration_ms: 0.107083
+  type: 'test'
+  ...
+# Subtest: independent auth dependencies use captured Owner/ACL/schema guards rather than replacing authentication
+ok 397 - independent auth dependencies use captured Owner/ACL/schema guards rather than replacing authentication
+  ---
+  duration_ms: 0.19975
+  type: 'test'
+  ...
+# Subtest: independent captured household and trigger pins close metadata gap but do not imply executed SQL readiness
+ok 398 - independent captured household and trigger pins close metadata gap but do not imply executed SQL readiness
+  ---
+  duration_ms: 1.190791
+  type: 'test'
+  ...
+# Subtest: independent reversion restores only this proposal and cannot delete stored records
+ok 399 - independent reversion restores only this proposal and cannot delete stored records
+  ---
+  duration_ms: 0.179875
+  type: 'test'
+  ...
+# Subtest: independent prepared PG runner gates before initdb and preserves original STRICT assertions in allthree stages
+ok 400 - independent prepared PG runner gates before initdb and preserves original STRICT assertions in allthree stages
+  ---
+  duration_ms: 0.418542
+  type: 'test'
+  ...
+# Subtest: exact proposal file hashes and accepted base are pinned
+ok 401 - exact proposal file hashes and accepted base are pinned
+  ---
+  duration_ms: 0.933125
+  type: 'test'
+  ...
+# Subtest: nine additive restrictions preserve all original permissive policies
+ok 402 - nine additive restrictions preserve all original permissive policies
+  ---
+  duration_ms: 0.209
+  type: 'test'
+  ...
+# Subtest: no existing routine or table definition is replaced and no EXECUTE is granted
+ok 403 - no existing routine or table definition is replaced and no EXECUTE is granted
+  ---
+  duration_ms: 0.418417
+  type: 'test'
+  ...
+# Subtest: three authenticated TRUNCATE revocations leave trusted role privileges unchanged
+ok 404 - three authenticated TRUNCATE revocations leave trusted role privileges unchanged
+  ---
+  duration_ms: 0.134667
+  type: 'test'
+  ...
+# Subtest: source tuples and actor attribution cannot be silently moved by an authorized writer
+ok 405 - source tuples and actor attribution cannot be silently moved by an authorized writer
+  ---
+  duration_ms: 0.145625
+  type: 'test'
+  ...
+# Subtest: all three current table schemas, policies and security dependencies are guarded
+ok 406 - all three current table schemas, policies and security dependencies are guarded
+  ---
+  duration_ms: 0.700792
+  type: 'test'
+  ...
+# Subtest: reversion restores only this proposal and explicitly warns against production regression
+ok 407 - reversion restores only this proposal and explicitly warns against production regression
+  ---
+  duration_ms: 0.187541
+  type: 'test'
+  ...
+# Subtest: original five-failure regression file is preserved byte-for-byte
+ok 408 - original five-failure regression file is preserved byte-for-byte
+  ---
+  duration_ms: 18.58675
+  type: 'test'
+  ...
+# Subtest: actual PG security suite contains no network target or production credentials
+ok 409 - actual PG security suite contains no network target or production credentials
+  ---
+  duration_ms: 0.243334
+  type: 'test'
+  ...
+# Subtest: helper identity/ACL and private schema captured metadata are independently pinned
+ok 410 - helper identity/ACL and private schema captured metadata are independently pinned
+  ---
+  duration_ms: 1.179167
+  type: 'test'
+  ...
+# Subtest: independent schema-only capture closes missing pins but actual PostgreSQL installation readiness stays blocked
+ok 411 - independent schema-only capture closes missing pins but actual PostgreSQL installation readiness stays blocked
+  ---
+  duration_ms: 0.481083
+  type: 'test'
+  ...
+# Subtest: actual loopback route source review / copy / QR / event receipt
+ok 412 - actual loopback route source review / copy / QR / event receipt
+  ---
+  duration_ms: 267.416625
+  type: 'test'
+  ...
+# Subtest: stale-tab exact pins rejected after revoked/restored synthetic transition
+ok 413 - stale-tab exact pins rejected after revoked/restored synthetic transition
+  ---
+  duration_ms: 8.537375
+  type: 'test'
+  ...
+# Subtest: URL/source/identity overrides rejected by composed HTTP request
+ok 414 - URL/source/identity overrides rejected by composed HTTP request
+  ---
+  duration_ms: 5.437125
+  type: 'test'
+  ...
+# Subtest: cross-origin read composition denied without resolving source
+ok 415 - cross-origin read composition denied without resolving source
+  ---
+  duration_ms: 2.685791
+  type: 'test'
+  ...
+# Subtest: source-linked read-only composition: cellular_hydration
+ok 416 - source-linked read-only composition: cellular_hydration
+  ---
+  duration_ms: 10.514709
+  type: 'test'
+  ...
+# Subtest: source-linked read-only composition: systemic_detoxification
+ok 417 - source-linked read-only composition: systemic_detoxification
+  ---
+  duration_ms: 3.765375
+  type: 'test'
+  ...
+# Subtest: source-linked read-only composition: electrobiology_rhythms
+ok 418 - source-linked read-only composition: electrobiology_rhythms
+  ---
+  duration_ms: 2.966792
+  type: 'test'
+  ...
+# Subtest: source-linked read-only composition: the_living_diet
+ok 419 - source-linked read-only composition: the_living_diet
+  ---
+  duration_ms: 2.735125
+  type: 'test'
+  ...
+# Subtest: source-linked read-only composition: functional_training
+ok 420 - source-linked read-only composition: functional_training
+  ---
+  duration_ms: 3.261458
+  type: 'test'
+  ...
+# Subtest: source-linked read-only composition: holistic_recovery
+ok 421 - source-linked read-only composition: holistic_recovery
+  ---
+  duration_ms: 2.814417
+  type: 'test'
+  ...
+# Subtest: source-linked read-only composition: gastrointestinal_renovation
+ok 422 - source-linked read-only composition: gastrointestinal_renovation
+  ---
+  duration_ms: 2.63675
+  type: 'test'
+  ...
+# Subtest: source-linked read-only composition: hormone_balancing
+ok 423 - source-linked read-only composition: hormone_balancing
+  ---
+  duration_ms: 2.485416
+  type: 'test'
+  ...
+# Subtest: source-linked read-only composition: neural_repatterning
+ok 424 - source-linked read-only composition: neural_repatterning
+  ---
+  duration_ms: 2.789125
+  type: 'test'
+  ...
+# Subtest: source-linked read-only composition: momentum_regimens
+ok 425 - source-linked read-only composition: momentum_regimens
+  ---
+  duration_ms: 2.505208
+  type: 'test'
+  ...
+# Subtest: source-linked read-only composition: mentality_realignment
+ok 426 - source-linked read-only composition: mentality_realignment
+  ---
+  duration_ms: 2.507291
+  type: 'test'
+  ...
+# Subtest: source-linked read-only composition: wise_budgeting
+ok 427 - source-linked read-only composition: wise_budgeting
+  ---
+  duration_ms: 2.786625
+  type: 'test'
+  ...
+# Subtest: revoked fails closed without data
+ok 428 - revoked fails closed without data
+  ---
+  duration_ms: 0.898667
+  type: 'test'
+  ...
+# Subtest: expired fails closed without data
+ok 429 - expired fails closed without data
+  ---
+  duration_ms: 0.923209
+  type: 'test'
+  ...
+# Subtest: wrong-account fails closed without data
+ok 430 - wrong-account fails closed without data
+  ---
+  duration_ms: 0.618375
+  type: 'test'
+  ...
+# Subtest: logout fails closed without data
+ok 431 - logout fails closed without data
+  ---
+  duration_ms: 0.460667
+  type: 'test'
+  ...
+# Subtest: education-revoked fails closed without data
+ok 432 - education-revoked fails closed without data
+  ---
+  duration_ms: 0.953292
+  type: 'test'
+  ...
+# Subtest: withdrawn tracking consent preserves material viewing but event adapter denies tracking
+ok 433 - withdrawn tracking consent preserves material viewing but event adapter denies tracking
+  ---
+  duration_ms: 2.935584
+  type: 'test'
+  ...
+# Subtest: same-account renewal retains exact source review pins
+ok 434 - same-account renewal retains exact source review pins
+  ---
+  duration_ms: 2.682958
+  type: 'test'
+  ...
+# Subtest: stale source selector rejected: authority_revision
+ok 435 - stale source selector rejected: authority_revision
+  ---
+  duration_ms: 0.529792
+  type: 'test'
+  ...
+# Subtest: stale source selector rejected: campaign_revision
+ok 436 - stale source selector rejected: campaign_revision
+  ---
+  duration_ms: 0.446333
+  type: 'test'
+  ...
+# Subtest: stale source selector rejected: creative_revision
+ok 437 - stale source selector rejected: creative_revision
+  ---
+  duration_ms: 0.5785
+  type: 'test'
+  ...
+# Subtest: stale source selector rejected: approval_generation
+ok 438 - stale source selector rejected: approval_generation
+  ---
+  duration_ms: 0.4275
+  type: 'test'
+  ...
+# Subtest: stale source selector rejected: catalog_hash
+ok 439 - stale source selector rejected: catalog_hash
+  ---
+  duration_ms: 0.42825
+  type: 'test'
+  ...
+# Subtest: stale source selector rejected: catalog_version
+ok 440 - stale source selector rejected: catalog_version
+  ---
+  duration_ms: 0.4195
+  type: 'test'
+  ...
+# Subtest: stale source selector rejected: campaign_id
+ok 441 - stale source selector rejected: campaign_id
+  ---
+  duration_ms: 0.455958
+  type: 'test'
+  ...
+# Subtest: caller cannot add client_id
+ok 442 - caller cannot add client_id
+  ---
+  duration_ms: 0.424791
+  type: 'test'
+  ...
+# Subtest: caller cannot add contact_id
+ok 443 - caller cannot add contact_id
+  ---
+  duration_ms: 0.562875
+  type: 'test'
+  ...
+# Subtest: caller cannot add answers
+ok 444 - caller cannot add answers
+  ---
+  duration_ms: 0.390083
+  type: 'test'
+  ...
+# Subtest: caller cannot add permissions
+ok 445 - caller cannot add permissions
+  ---
+  duration_ms: 0.399
+  type: 'test'
+  ...
+# Subtest: caller cannot add consent
+ok 446 - caller cannot add consent
+  ---
+  duration_ms: 0.391459
+  type: 'test'
+  ...
+# Subtest: caller cannot add event_id
+ok 447 - caller cannot add event_id
+  ---
+  duration_ms: 0.363667
+  type: 'test'
+  ...
+# Subtest: caller cannot add amount
+ok 448 - caller cannot add amount
+  ---
+  duration_ms: 0.362667
+  type: 'test'
+  ...
+# Subtest: rejects hostile getters without invocation
+ok 449 - rejects hostile getters without invocation
+  ---
+  duration_ms: 0.406375
+  type: 'test'
+  ...
+# Subtest: mid-read revocation discards all partially loaded content
+ok 450 - mid-read revocation discards all partially loaded content
+  ---
+  duration_ms: 0.784125
+  type: 'test'
+  ...
+# Subtest: mid-read same-account transport renewal does not invalidate authority
+ok 451 - mid-read same-account transport renewal does not invalidate authority
+  ---
+  duration_ms: 2.083125
+  type: 'test'
+  ...
+# Subtest: inspection does not create events; existing replay and content-conflict boundaries retained
+ok 452 - inspection does not create events; existing replay and content-conflict boundaries retained
+  ---
+  duration_ms: 33.013875
+  type: 'test'
+  ...
+# Subtest: dependency failures are sanitized
+ok 453 - dependency failures are sanitized
+  ---
+  duration_ms: 0.790166
+  type: 'test'
+  ...
+# Subtest: unapproved Driver rejected
+ok 454 - unapproved Driver rejected
+  ---
+  duration_ms: 0.435083
+  type: 'test'
+  ...
+# Subtest: selector objects cannot execute coercion code
+ok 455 - selector objects cannot execute coercion code
+  ---
+  duration_ms: 0.434083
+  type: 'test'
+  ...
+# Subtest: both mounted habit surfaces share pending/saved key; first mark
+ok 456 - both mounted habit surfaces share pending/saved key; first mark
+  ---
+  duration_ms: 146.269708
+  type: 'test'
+  ...
+# Subtest: both mounted habit surfaces share pending/saved key; first act
+ok 457 - both mounted habit surfaces share pending/saved key; first act
+  ---
+  duration_ms: 82.226458
+  type: 'test'
+  ...
+# Subtest: distinct semantics retain exact daily zero and show action/value on both surfaces
+ok 458 - distinct semantics retain exact daily zero and show action/value on both surfaces
+  ---
+  duration_ms: 59.576958
+  type: 'test'
+  ...
+# Subtest: Mark Today retains value1 while daily target is2.5 without claiming2.5saved
+ok 459 - Mark Today retains value1 while daily target is2.5 without claiming2.5saved
+  ---
+  duration_ms: 54.364541
+  type: 'test'
+  ...
+# Subtest: alternate lost response holds both surfaces and checks status without duplicate or dashboard remount
+ok 460 - alternate lost response holds both surfaces and checks status without duplicate or dashboard remount
+  ---
+  duration_ms: 64.367541
+  type: 'test'
+  ...
+# Subtest: genuine rpc denial clears both surfaces and holds future renders
+ok 461 - genuine rpc denial clears both surfaces and holds future renders
+  ---
+  duration_ms: 70.423042
+  type: 'test'
+  ...
+# Subtest: genuine read denial clears both surfaces and holds future renders
+ok 462 - genuine read denial clears both surfaces and holds future renders
+  ---
+  duration_ms: 56.285458
+  type: 'test'
+  ...
+# Subtest: alternate pending auth null clears private document without write
+ok 463 - alternate pending auth null clears private document without write
+  ---
+  duration_ms: 54.693083
+  type: 'test'
+  ...
+# Subtest: alternate pending auth synthetic-b clears private document without write
+ok 464 - alternate pending auth synthetic-b clears private document without write
+  ---
+  duration_ms: 57.753542
+  type: 'test'
+  ...
+# Subtest: alternate verified identity mismatch without callback tears down before RPC
+ok 465 - alternate verified identity mismatch without callback tears down before RPC
+  ---
+  duration_ms: 51.212166
+  type: 'test'
+  ...
+# Subtest: same-user renewal preserves modal and weekly drafts, exact alternate row, no full dashboard remount
+ok 466 - same-user renewal preserves modal and weekly drafts, exact alternate row, no full dashboard remount
+  ---
+  duration_ms: 64.330542
+  type: 'test'
+  ...
+# Subtest: rerendered source invalidates old alternate binding before dispatch
+ok 467 - rerendered source invalidates old alternate binding before dispatch
+  ---
+  duration_ms: 51.198583
+  type: 'test'
+  ...
+# Subtest: unclicked prior-day alternate row cannot send a new-day request; started request freezes prior day
+ok 468 - unclicked prior-day alternate row cannot send a new-day request; started request freezes prior day
+  ---
+  duration_ms: 49.352334
+  type: 'test'
+  ...
+# Subtest: alternate status is scoped to habit list, not goal list
+ok 469 - alternate status is scoped to habit list, not goal list
+  ---
+  duration_ms: 50.561583
+  type: 'test'
+  ...
+# Subtest: new authoritative completed render cannot be erased by stale pending-auth cleanup
+ok 470 - new authoritative completed render cannot be erased by stale pending-auth cleanup
+  ---
+  duration_ms: 53.80475
+  type: 'test'
+  ...
+# Subtest: rerender cancellation must not hide a verified changed actor without callback
+ok 471 - rerender cancellation must not hide a verified changed actor without callback
+  ---
+  duration_ms: 49.976959
+  type: 'test'
+  ...
+# Subtest: pending habit status change prevents mark without new RPC
+ok 472 - pending habit status change prevents mark without new RPC
+  ---
+  duration_ms: 76.4025
+  type: 'test'
+  ...
+# Subtest: pending habit status change prevents act without new RPC
+ok 473 - pending habit status change prevents act without new RPC
+  ---
+  duration_ms: 71.77025
+  type: 'test'
+  ...
+# Subtest: pending mark holds same habit status change without duplicate operation
+ok 474 - pending mark holds same habit status change without duplicate operation
+  ---
+  duration_ms: 65.952333
+  type: 'test'
+  ...
+# Subtest: pending act holds same habit status change without duplicate operation
+ok 475 - pending act holds same habit status change without duplicate operation
+  ---
+  duration_ms: 70.148583
+  type: 'test'
+  ...
+# Subtest: O01 entire local structural definition: exact source gaps, actual dispatch/worktrees, ownership and no production scope
+ok 476 - O01 entire local structural definition: exact source gaps, actual dispatch/worktrees, ownership and no production scope
+  ---
+  duration_ms: 220.646042
+  type: 'test'
+  ...
+# Subtest: O01 rejects count-preserving requirement rewrite
+ok 477 - O01 rejects count-preserving requirement rewrite
+  ---
+  duration_ms: 19.558291
+  type: 'test'
+  ...
+# Subtest: O01 rejects renamed stable ID
+ok 478 - O01 rejects renamed stable ID
+  ---
+  duration_ms: 20.075958
+  type: 'test'
+  ...
+# Subtest: O01 rejects discarded source detail
+ok 479 - O01 rejects discarded source detail
+  ---
+  duration_ms: 37.057208
+  type: 'test'
+  ...
+# Subtest: O01 rejects invented original 127 source
+ok 480 - O01 rejects invented original 127 source
+  ---
+  duration_ms: 71.6805
+  type: 'test'
+  ...
+# Subtest: O01 rejects consistent applicant task/dispatch forgery
+ok 481 - O01 rejects consistent applicant task/dispatch forgery
+  ---
+  duration_ms: 83.797167
+  type: 'test'
+  ...
+# Subtest: O01 rejects issue creation pretending to dispatch
+ok 482 - O01 rejects issue creation pretending to dispatch
+  ---
+  duration_ms: 73.508042
+  type: 'test'
+  ...
+# Subtest: O01 rejects ownership overlap
+ok 483 - O01 rejects ownership overlap
+  ---
+  duration_ms: 141.919833
+  type: 'test'
+  ...
+# Subtest: O01 rejects ownership escape
+ok 484 - O01 rejects ownership escape
+  ---
+  duration_ms: 131.551875
+  type: 'test'
+  ...
+# Subtest: O01 rejects wrong actual worktree branch
+ok 485 - O01 rejects wrong actual worktree branch
+  ---
+  duration_ms: 89.509958
+  type: 'test'
+  ...
+# Subtest: O01 rejects production permission
+ok 486 - O01 rejects production permission
+  ---
+  duration_ms: 69.22725
+  type: 'test'
+  ...
+# Subtest: O01 rejects financial activation
+ok 487 - O01 rejects financial activation
+  ---
+  duration_ms: 73.542625
+  type: 'test'
+  ...
+# Subtest: O01 rejects Alex resumed
+ok 488 - O01 rejects Alex resumed
+  ---
+  duration_ms: 61.628125
+  type: 'test'
+  ...
+# Subtest: O01 rejects business completeness implied
+ok 489 - O01 rejects business completeness implied
+  ---
+  duration_ms: 64.414333
+  type: 'test'
+  ...
+# Subtest: O01 rejects missing separate trusted observation
+ok 490 - O01 rejects missing separate trusted observation
+  ---
+  duration_ms: 62.022917
+  type: 'test'
+  ...
+# Subtest: independent mark uncertain status after changed actor clears both surfaces and weekly draft without second RPC
+ok 491 - independent mark uncertain status after changed actor clears both surfaces and weekly draft without second RPC
+  ---
+  duration_ms: 118.065375
+  type: 'test'
+  ...
+# Subtest: independent act uncertain status after changed actor clears both surfaces and weekly draft without second RPC
+ok 492 - independent act uncertain status after changed actor clears both surfaces and weekly draft without second RPC
+  ---
+  duration_ms: 63.151083
+  type: 'test'
+  ...
+# Subtest: independent mark auth transport failure retains both drafts and sends no RPC
+ok 493 - independent mark auth transport failure retains both drafts and sends no RPC
+  ---
+  duration_ms: 52.633375
+  type: 'test'
+  ...
+# Subtest: independent act auth transport failure retains both drafts and sends no RPC
+ok 494 - independent act auth transport failure retains both drafts and sends no RPC
+  ---
+  duration_ms: 52.905
+  type: 'test'
+  ...
+# Subtest: independent mark pending write cannot change actor/source/date through other surface
+ok 495 - independent mark pending write cannot change actor/source/date through other surface
+  ---
+  duration_ms: 77.360833
+  type: 'test'
+  ...
+# Subtest: independent act pending write cannot change actor/source/date through other surface
+ok 496 - independent act pending write cannot change actor/source/date through other surface
+  ---
+  duration_ms: 75.587334
+  type: 'test'
+  ...
+# Subtest: unaffected member source exact   async function completeMeal(meal){
+ok 497 - unaffected member source exact   async function completeMeal(meal){
+  ---
+  duration_ms: 0.488541
+  type: 'test'
+  ...
+# Subtest: unaffected member source exact   async function completeMeal(row){
+ok 498 - unaffected member source exact   async function completeMeal(row){
+  ---
+  duration_ms: 0.115458
+  type: 'test'
+  ...
+# Subtest: unaffected member source exact   async function loadDashboard() {
+ok 499 - unaffected member source exact   async function loadDashboard() {
+  ---
+  duration_ms: 0.124125
+  type: 'test'
+  ...
+# Subtest: unaffected member source exact   client.auth.onAuthStateChange
+ok 500 - unaffected member source exact   client.auth.onAuthStateChange
+  ---
+  duration_ms: 0.120583
+  type: 'test'
+  ...
+# Subtest: previous Mark Today preservation assertion superseded only by explicitly approved shared habit coordinator
+ok 501 - previous Mark Today preservation assertion superseded only by explicitly approved shared habit coordinator
+  ---
+  duration_ms: 0.663958
+  type: 'test'
+  ...
+# Subtest: actual HTTP mid-share wrong-account discards partial result
+ok 502 - actual HTTP mid-share wrong-account discards partial result
+  ---
+  duration_ms: 32.848958
+  type: 'test'
+  ...
+# Subtest: actual HTTP mid-share revoked discards partial result
+ok 503 - actual HTTP mid-share revoked discards partial result
+  ---
+  duration_ms: 6.178208
+  type: 'test'
+  ...
+# Subtest: actual HTTP mid-share consent-revoked discards partial result
+ok 504 - actual HTTP mid-share consent-revoked discards partial result
+  ---
+  duration_ms: 3.596667
+  type: 'test'
+  ...
+# Subtest: actual HTTP mid-share education-revoked discards partial result
+ok 505 - actual HTTP mid-share education-revoked discards partial result
+  ---
+  duration_ms: 3.078041
+  type: 'test'
+  ...
+# Subtest: actual HTTP mid-referral wrong-account discards partial result
+ok 506 - actual HTTP mid-referral wrong-account discards partial result
+  ---
+  duration_ms: 3.397167
+  type: 'test'
+  ...
+# Subtest: actual HTTP mid-referral revoked discards partial result
+ok 507 - actual HTTP mid-referral revoked discards partial result
+  ---
+  duration_ms: 2.547042
+  type: 'test'
+  ...
+# Subtest: actual HTTP mid-referral consent-revoked discards partial result
+ok 508 - actual HTTP mid-referral consent-revoked discards partial result
+  ---
+  duration_ms: 2.976125
+  type: 'test'
+  ...
+# Subtest: actual HTTP mid-referral education-revoked discards partial result
+ok 509 - actual HTTP mid-referral education-revoked discards partial result
+  ---
+  duration_ms: 2.306792
+  type: 'test'
+  ...
+# Subtest: actual HTTP mid-education wrong-account discards partial result
+ok 510 - actual HTTP mid-education wrong-account discards partial result
+  ---
+  duration_ms: 6.920584
+  type: 'test'
+  ...
+# Subtest: actual HTTP mid-education revoked discards partial result
+ok 511 - actual HTTP mid-education revoked discards partial result
+  ---
+  duration_ms: 5.5065
+  type: 'test'
+  ...
+# Subtest: actual HTTP mid-education consent-revoked discards partial result
+ok 512 - actual HTTP mid-education consent-revoked discards partial result
+  ---
+  duration_ms: 4.654084
+  type: 'test'
+  ...
+# Subtest: actual HTTP mid-education education-revoked discards partial result
+ok 513 - actual HTTP mid-education education-revoked discards partial result
+  ---
+  duration_ms: 3.798292
+  type: 'test'
+  ...
+# Subtest: actual HTTP late creative version rejects composition
+ok 514 - actual HTTP late creative version rejects composition
+  ---
+  duration_ms: 3.866459
+  type: 'test'
+  ...
+# Subtest: actual HTTP late catalog version rejects composition
+ok 515 - actual HTTP late catalog version rejects composition
+  ---
+  duration_ms: 3.584667
+  type: 'test'
+  ...
+# Subtest: actual HTTP late approval version rejects composition
+ok 516 - actual HTTP late approval version rejects composition
+  ---
+  duration_ms: 3.590417
+  type: 'test'
+  ...
+# Subtest: actual HTTP late source version rejects composition
+ok 517 - actual HTTP late source version rejects composition
+  ---
+  duration_ms: 3.3535
+  type: 'test'
+  ...
+# Subtest: 100 concurrent real HTTP reads never create event; following explicit event remains first
+ok 518 - 100 concurrent real HTTP reads never create event; following explicit event remains first
+  ---
+  duration_ms: 233.42875
+  type: 'test'
+  ...
+# Subtest: Wave7 core SQL differs from frozen Wave6 only by explicit captured deparse formatting
+ok 519 - Wave7 core SQL differs from frozen Wave6 only by explicit captured deparse formatting
+  ---
+  duration_ms: 1.871084
+  type: 'test'
+  ...
+# Subtest: retained exact original five probes and complete Wave6 security assertions remain pinned
+ok 520 - retained exact original five probes and complete Wave6 security assertions remain pinned
+  ---
+  duration_ms: 2.345125
+  type: 'test'
+  ...
+# Subtest: catalog fixture targets captured seven triggers and only drops two no-dependency notification functions
+ok 521 - catalog fixture targets captured seven triggers and only drops two no-dependency notification functions
+  ---
+  duration_ms: 0.790459
+  type: 'test'
+  ...
+1..521
+# tests 521
+# suites 0
+# pass 521
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 36323.338958

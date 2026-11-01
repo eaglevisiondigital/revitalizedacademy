@@ -1,0 +1,73 @@
+{
+  "onlyTrailingSpacesTabsRemoved": true,
+  "sourceSqlTestsUnchanged": true,
+  "initialFormattingScriptError": "TypeError missing re.sub string; before any writes; corrected locally",
+  "files": [
+    {
+      "path": "docs/orchestration/issue-56/wave7/receipts/share-race-initial.tap",
+      "rawSha256": "673f63f463979b5fd121a4a1483b697aa47b48d3c1dd01bc6bb4019893458f3c",
+      "normalizedSha256": "020e84b2c8f565ca336ccfcf849403e591a570f647ae8158e057115d21b5eb84",
+      "rawRetained": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave7/raw-qa-logs/docs/orchestration/issue-56/wave7/receipts/share-race-initial.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/receipts/NODE_INITIAL_SUPERSEDED_PRESERVATION.tap",
+      "rawSha256": "5d743ca16c794cc682545125fd79a904b9667fa98c2874fc0d0cdc9e441a6b6f",
+      "normalizedSha256": "bb855a15453448f00a674c4501f42d74913630f10a0619c27b560fe65c8ee0ee",
+      "rawRetained": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave7/raw-qa-logs/docs/orchestration/issue-56/wave7/receipts/NODE_INITIAL_SUPERSEDED_PRESERVATION.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/pg-combined/identity-original-reverted.tap",
+      "rawSha256": "f9b7905b8fc60558ca57883e2e05ec3fcc6afcc5d4e09f9b5dec20f4f27919ed",
+      "normalizedSha256": "4fe305ea3c616ab89b2828f3ee02f38a5faf749a00594df431d5959c2f29912f",
+      "rawRetained": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave7/raw-qa-logs/docs/orchestration/issue-56/wave7/pg-combined/identity-original-reverted.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/pg-combined/access-household-original-reverted.tap",
+      "rawSha256": "ed6fdf676ed5a1c51d037578d1fe04cf53fe1cb4a38009f3594611c3673e3f94",
+      "normalizedSha256": "221baf60b46f14669ce474e320f2e33cb9833ff72b2161126bf0c40382b2e8f4",
+      "rawRetained": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave7/raw-qa-logs/docs/orchestration/issue-56/wave7/pg-combined/access-household-original-reverted.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/pg-combined/parent-original-baseline.tap",
+      "rawSha256": "1622e6037d202b0bec565a057c29711a6b6cb594e3c38de5429453cc972cda41",
+      "normalizedSha256": "3353f10be2b75538ee0e9f76a652dbacda436576136317d297b1bdadb828b53e",
+      "rawRetained": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave7/raw-qa-logs/docs/orchestration/issue-56/wave7/pg-combined/parent-original-baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/pg-combined/household-constraints.txt",
+      "rawSha256": "cb4c66e614d29199ddcc82330924c6a2d7b4a8ce1f68d5c57f3996ba735e0d26",
+      "normalizedSha256": "312afaad0cd71f5168699082ad047fcd90279d20048a7e8ff6bd36e55b11fe07",
+      "rawRetained": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave7/raw-qa-logs/docs/orchestration/issue-56/wave7/pg-combined/household-constraints.txt"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/pg-combined/original-five-baseline.tap",
+      "rawSha256": "bf39df551da5430c87cf3bba4758abb903268ed5797b4087c960740dba4c9ef0",
+      "normalizedSha256": "d153735e878f3e96e270b5a2bca988f9afc22d200e7ac7747c7fe80de8c27a1d",
+      "rawRetained": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave7/raw-qa-logs/docs/orchestration/issue-56/wave7/pg-combined/original-five-baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/pg-combined/identity-original-baseline.tap",
+      "rawSha256": "2d4ba47657e92ff7834f4d6b57949f9429dc77c566a9924b2095aca9807ae477",
+      "normalizedSha256": "4e41e9d7901d5283d9408415437f8bb703300955999932a6c23ff4b84afc6a2f",
+      "rawRetained": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave7/raw-qa-logs/docs/orchestration/issue-56/wave7/pg-combined/identity-original-baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/pg-combined/access-household-original-baseline.tap",
+      "rawSha256": "ac231a399fca7fc5c39bfa9621d36e5476b88f3458aa0d96e6261a7f7a87978b",
+      "normalizedSha256": "621d06bd8d6b982d89927593d5429bdedb48f78f2d19a0fcfa6f809e4371dc00",
+      "rawRetained": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave7/raw-qa-logs/docs/orchestration/issue-56/wave7/pg-combined/access-household-original-baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/pg-combined/parent-original-reverted.tap",
+      "rawSha256": "d3544f324ea68058c830b5257273942b15d9dd6c11d67704dcbb7cf2c5292e88",
+      "normalizedSha256": "fd6dd9fa511914c23ee0fb0f689582f00b00382a0afc90df0d84598c53f64c62",
+      "rawRetained": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave7/raw-qa-logs/docs/orchestration/issue-56/wave7/pg-combined/parent-original-reverted.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/pg-combined/original-five-reverted.tap",
+      "rawSha256": "bb5cc591645cefd00145e484a57269f3a905e1785b07a6e1468df140fd4487e2",
+      "normalizedSha256": "1bd34030692fc20012400d5c6ddfed980cb172bf7e2b586f105a8b50c09df24d",
+      "rawRetained": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave7/raw-qa-logs/docs/orchestration/issue-56/wave7/pg-combined/original-five-reverted.tap"
+    }
+  ]
+}

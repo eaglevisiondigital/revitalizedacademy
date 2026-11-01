@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: [C02 durable] two real backend submitted INSERTs race; one commit, one23505, one activity
+ok 1 - [C02 durable] two real backend submitted INSERTs race; one commit, one23505, one activity
+  ---
+  duration_ms: 83.037542
+  type: 'test'
+  ...
+# Subtest: [C02 durable] committed unknown-response readback returns same UUID without new write
+ok 2 - [C02 durable] committed unknown-response readback returns same UUID without new write
+  ---
+  duration_ms: 15.193042
+  type: 'test'
+  ...
+# Subtest: [C02 rollback] aborted request rolls back check-in and trigger side effects before explicit retry
+ok 3 - [C02 rollback] aborted request rolls back check-in and trigger side effects before explicit retry
+  ---
+  duration_ms: 11.686458
+  type: 'test'
+  ...
+# Subtest: [C02 current hold] Client cannot bypass actual payment predicate on direct check-in write/read
+ok 4 - [C02 current hold] Client cannot bypass actual payment predicate on direct check-in write/read
+  ---
+  duration_ms: 7.435125
+  type: 'test'
+  ...
+# Subtest: [C02 minimal read] another Client cannot read submitted identity or overwrite another check-in
+ok 5 - [C02 minimal read] another Client cannot read submitted identity or overwrite another check-in
+  ---
+  duration_ms: 10.788375
+  type: 'test'
+  ...
+# Subtest: [C02 durable] period/template/client keys are independent and do not content-deduplicate legitimate distinct submissions
+ok 6 - [C02 durable] period/template/client keys are independent and do not content-deduplicate legitimate distinct submissions
+  ---
+  duration_ms: 10.547916
+  type: 'test'
+  ...
+# Subtest: [C02 existing semantics] draft remains outside submitted unique key and is never overwritten
+ok 7 - [C02 existing semantics] draft remains outside submitted unique key and is never overwritten
+  ---
+  duration_ms: 8.743541
+  type: 'test'
+  ...
+# Subtest: [C02 assignment update] replaying a completed assignment cannot duplicate completion notification
+ok 8 - [C02 assignment update] replaying a completed assignment cannot duplicate completion notification
+  ---
+  duration_ms: 24.296542
+  type: 'test'
+  ...
+# Subtest: [F02 current hold] Client cannot read or mutate unrelated household member
+ok 9 - [F02 current hold] Client cannot read or mutate unrelated household member
+  ---
+  duration_ms: 10.911916
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 247.330042

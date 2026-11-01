@@ -1,0 +1,12 @@
+{
+  "source": "native-tool-observation",
+  "tasks": [
+    "/root/wave7_security",
+    "/root/wave7_operations",
+    "/root/wave7_affiliate",
+    "/root/wave7_independent_qa"
+  ],
+  "recordedAt": "2026-11-01T22:37:03.813587+00:00",
+  "qa": "ACTUALLY_DISPATCHED_AFTER_C_RETURNED",
+  "updatedAt": "2026-11-01T22:40:32.506835+00:00"
+}

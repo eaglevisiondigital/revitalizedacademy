@@ -1,0 +1,14 @@
+✔ chromium 390 actual dual habit surfaces preserve drafts, uncertainty, denial and actor boundary (4495.411166ms)
+✔ chromium 768 actual dual habit surfaces preserve drafts, uncertainty, denial and actor boundary (455.778458ms)
+✔ chromium 1440 actual dual habit surfaces preserve drafts, uncertainty, denial and actor boundary (403.082625ms)
+✔ webkit 390 actual dual habit surfaces preserve drafts, uncertainty, denial and actor boundary (1238.547417ms)
+✔ webkit 768 actual dual habit surfaces preserve drafts, uncertainty, denial and actor boundary (839.034167ms)
+✔ webkit 1440 actual dual habit surfaces preserve drafts, uncertainty, denial and actor boundary (1146.139625ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8831.68575
