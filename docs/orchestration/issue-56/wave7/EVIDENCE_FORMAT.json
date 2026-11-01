@@ -36,8 +36,9 @@
     {
       "path": "docs/orchestration/issue-56/wave7/pg-combined/household-constraints.txt",
       "rawSha256": "cb4c66e614d29199ddcc82330924c6a2d7b4a8ce1f68d5c57f3996ba735e0d26",
-      "normalizedSha256": "312afaad0cd71f5168699082ad047fcd90279d20048a7e8ff6bd36e55b11fe07",
-      "rawRetained": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave7/raw-qa-logs/docs/orchestration/issue-56/wave7/pg-combined/household-constraints.txt"
+      "normalizedSha256": "81c67c3f5d77a77c51ed2da390329e5fa00b197f874484a096574992888d27ba",
+      "rawRetained": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave7/raw-qa-logs/docs/orchestration/issue-56/wave7/pg-combined/household-constraints.txt",
+      "alsoRemovedOnlyExtraFinalBlankLine": true
     },
     {
       "path": "docs/orchestration/issue-56/wave7/pg-combined/original-five-baseline.tap",
