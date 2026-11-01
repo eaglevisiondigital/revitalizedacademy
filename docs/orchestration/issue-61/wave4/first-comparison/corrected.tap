@@ -1,0 +1,130 @@
+TAP version 13
+# Subtest: [N02/E02 old strict] wrong Coach cannot SELECT unrelated usage
+ok 1 - [N02/E02 old strict] wrong Coach cannot SELECT unrelated usage
+  ---
+  duration_ms: 47.057709
+  type: 'test'
+  ...
+# Subtest: [N02/E02 old strict] wrong Coach cannot UPDATE unrelated usage
+ok 2 - [N02/E02 old strict] wrong Coach cannot UPDATE unrelated usage
+  ---
+  duration_ms: 12.968333
+  type: 'test'
+  ...
+# Subtest: [N02/E02 old strict] wrong Coach cannot UPDATE unrelated allowance
+ok 3 - [N02/E02 old strict] wrong Coach cannot UPDATE unrelated allowance
+  ---
+  duration_ms: 9.210666
+  type: 'test'
+  ...
+# Subtest: [N02/E02] wrong Coach cannot SELECT unrelated allowance
+ok 4 - [N02/E02] wrong Coach cannot SELECT unrelated allowance
+  ---
+  duration_ms: 6.492542
+  type: 'test'
+  ...
+# Subtest: [N02/E02] assigned Coach and Owner see legitimate usage and allowance
+ok 5 - [N02/E02] assigned Coach and Owner see legitimate usage and allowance
+  ---
+  duration_ms: 12.795208
+  type: 'test'
+  ...
+# Subtest: [E02] authorized direct usage consumes/releases and total matches ledger
+ok 6 - [E02] authorized direct usage consumes/releases and total matches ledger
+  ---
+  duration_ms: 14.633458
+  type: 'test'
+  ...
+# Subtest: [E02] original public review remains allowed and exact after direct changes
+ok 7 - [E02] original public review remains allowed and exact after direct changes
+  ---
+  duration_ms: 19.557958
+  type: 'test'
+  ...
+# Subtest: [N02/E02] direct usage rejects forged membership_id
+ok 8 - [N02/E02] direct usage rejects forged membership_id
+  ---
+  duration_ms: 13.066208
+  type: 'test'
+  ...
+# Subtest: [N02/E02] direct usage rejects forged contact_id
+ok 9 - [N02/E02] direct usage rejects forged contact_id
+  ---
+  duration_ms: 8.644584
+  type: 'test'
+  ...
+# Subtest: [N02/E02] direct usage rejects forged coaching_session_id
+ok 10 - [N02/E02] direct usage rejects forged coaching_session_id
+  ---
+  duration_ms: 9.319667
+  type: 'test'
+  ...
+# Subtest: [N02/E02] direct usage rejects forged entitlement_id
+ok 11 - [N02/E02] direct usage rejects forged entitlement_id
+  ---
+  duration_ms: 9.8385
+  type: 'test'
+  ...
+# Subtest: [N02/E02] direct usage rejects forged entitlement_key
+ok 12 - [N02/E02] direct usage rejects forged entitlement_key
+  ---
+  duration_ms: 8.377167
+  type: 'test'
+  ...
+# Subtest: [N02/E02] wrong Coach cannot INSERT ledger for another Client session
+ok 13 - [N02/E02] wrong Coach cannot INSERT ledger for another Client session
+  ---
+  duration_ms: 8.544166
+  type: 'test'
+  ...
+# Subtest: [N02/E02] assigned Coach may INSERT exact session-backed ledger row
+ok 14 - [N02/E02] assigned Coach may INSERT exact session-backed ledger row
+  ---
+  duration_ms: 7.243792
+  type: 'test'
+  ...
+# Subtest: [N02/E02] INSERT with own contact but wrong session/membership is rejected
+ok 15 - [N02/E02] INSERT with own contact but wrong session/membership is rejected
+  ---
+  duration_ms: 7.256042
+  type: 'test'
+  ...
+# Subtest: [N06] suspended Coach loses usage and allowance access despite retained overrides
+ok 16 - [N06] suspended Coach loses usage and allowance access despite retained overrides
+  ---
+  duration_ms: 10.451542
+  type: 'test'
+  ...
+# Subtest: [N06] inactive Coach loses usage and allowance access despite retained overrides
+ok 17 - [N06] inactive Coach loses usage and allowance access despite retained overrides
+  ---
+  duration_ms: 7.737875
+  type: 'test'
+  ...
+# Subtest: [N06] pending Coach cannot access usage/allowance
+ok 18 - [N06] pending Coach cannot access usage/allowance
+  ---
+  duration_ms: 6.593416
+  type: 'test'
+  ...
+# Subtest: [N04] null authenticated actor and anon remain denied
+ok 19 - [N04] null authenticated actor and anon remain denied
+  ---
+  duration_ms: 5.58875
+  type: 'test'
+  ...
+# Subtest: [N06 current paid hold] fictional own and other Client cannot read/write paid usage
+ok 20 - [N06 current paid hold] fictional own and other Client cannot read/write paid usage
+  ---
+  duration_ms: 11.089958
+  type: 'test'
+  ...
+1..20
+# tests 20
+# suites 0
+# pass 20
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 310.37175

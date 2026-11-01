@@ -1,0 +1,172 @@
+{
+  "issue": 61,
+  "status": "TESTED_LOCAL_COACHING_ISOLATION_CONCURRENCY_AND_POLICY_HELD",
+  "base": "5926b915f60b1be6d009c94362b91356a303cb33",
+  "branch": "codex/rva-wave4-access-20261101",
+  "ownedPaths": [
+    "tests/wave4-access/",
+    "proposals/issue-61/wave4/",
+    "docs/orchestration/issue-61/wave4/"
+  ],
+  "baseline": "Pinned current metadata plus accepted LOCAL Wave3 RPC; not installed production",
+  "mainTests": [
+    {
+      "stage": "baseline",
+      "exitCode": 1,
+      "tests": 40,
+      "pass": 17,
+      "fail": 23,
+      "skipped": 0
+    },
+    {
+      "stage": "corrected",
+      "exitCode": 0,
+      "tests": 40,
+      "pass": 40,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "stage": "reverted",
+      "exitCode": 1,
+      "tests": 40,
+      "pass": 17,
+      "fail": 23,
+      "skipped": 0
+    }
+  ],
+  "separateNewSessionEntryTests": [
+    {
+      "stage": "baseline",
+      "exitCode": 1,
+      "tests": 8,
+      "pass": 4,
+      "fail": 4,
+      "skipped": 0
+    },
+    {
+      "stage": "corrected",
+      "exitCode": 0,
+      "tests": 8,
+      "pass": 8,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "stage": "reverted",
+      "exitCode": 1,
+      "tests": 8,
+      "pass": 4,
+      "fail": 4,
+      "skipped": 0
+    }
+  ],
+  "postgres": "postgres (PostgreSQL) 17.11 (Homebrew)",
+  "clusterStopped": true,
+  "clusterRemoved": true,
+  "hashes": {
+    "proposals/issue-61/wave4/correction.sql": "2879f97322fc53c679e6cc83c8516795877ff7518541cc05cb3d1f3635bb89f3",
+    "proposals/issue-61/wave4/revert.sql": "97da48ea449f4ea4af022a2cc589f50b97d3476191ec228edd4981af0385229d",
+    "tests/wave4-access/access.test.cjs": "e7f0d35704c9463a5a0530d35e819b9b055bc0b1bf3ddb770bea3e329b0d4944",
+    "tests/wave4-access/session-entry.test.cjs": "d5cdd926419d4f8950e2c0a8f766fbff467e638fadc6cefb52da718b1271c850",
+    "tests/wave4-access/run-pg.cjs": "95ec2a40eb089602f152e9ed420a26164357d2bafd40f1f370b48f9deca10fcb",
+    "tests/wave4-access/fixture.cjs": "8c6b33bc65b714249749c4d4bf14e0085ae346b488f2c2bd317a1a4cee3c606e",
+    "docs/orchestration/issue-61/wave4/REPORT.md": "db4f6e99b34819a4013f80fb9da95bc5f3bd5cb79c600c0e0efe771b08810b06"
+  },
+  "executionInputs": [
+    {
+      "path": "tests/wave4-access/access.test.cjs",
+      "sha256": "e7f0d35704c9463a5a0530d35e819b9b055bc0b1bf3ddb770bea3e329b0d4944"
+    },
+    {
+      "path": "tests/wave4-access/session-entry.test.cjs",
+      "sha256": "d5cdd926419d4f8950e2c0a8f766fbff467e638fadc6cefb52da718b1271c850"
+    },
+    {
+      "path": "tests/wave4-access/fixture.cjs",
+      "sha256": "8c6b33bc65b714249749c4d4bf14e0085ae346b488f2c2bd317a1a4cee3c606e"
+    },
+    {
+      "path": "proposals/issue-61/wave4/correction.sql",
+      "sha256": "2879f97322fc53c679e6cc83c8516795877ff7518541cc05cb3d1f3635bb89f3"
+    },
+    {
+      "path": "proposals/issue-61/wave4/revert.sql",
+      "sha256": "97da48ea449f4ea4af022a2cc589f50b97d3476191ec228edd4981af0385229d"
+    }
+  ],
+  "inventory": {
+    "newPrivateFunctions": [
+      "wave4_membership_allowed(uuid,text)",
+      "wave4_usage_before()",
+      "wave4_usage_after()",
+      "wave4_entitlement_before()",
+      "wave4_session_binding_before()"
+    ],
+    "newTriggers": [
+      [
+        "public.coaching_entitlement_usage",
+        "wave4_usage_before",
+        "BEFORE INSERT OR UPDATE OR DELETE",
+        "wave4_usage_before"
+      ],
+      [
+        "public.coaching_entitlement_usage",
+        "wave4_usage_after",
+        "AFTER INSERT OR UPDATE OR DELETE",
+        "wave4_usage_after"
+      ],
+      [
+        "public.membership_entitlements",
+        "wave4_entitlement_before",
+        "BEFORE INSERT OR UPDATE",
+        "wave4_entitlement_before"
+      ],
+      [
+        "public.coaching_sessions",
+        "wave4_session_binding_before",
+        "BEFORE INSERT OR UPDATE OF contact_id,membership_id",
+        "wave4_session_binding_before"
+      ]
+    ],
+    "policies": [
+      "wave4_usage_scope_select",
+      "wave4_usage_scope_insert",
+      "wave4_usage_scope_update",
+      "wave4_entitlement_scope_select",
+      "wave4_entitlement_scope_insert",
+      "wave4_entitlement_scope_update"
+    ],
+    "changedFunctions": [
+      "public.resolve_coaching_entitlement_review(uuid,text,text)",
+      "private.recalculate_coaching_entitlement_used_value(uuid,text)"
+    ],
+    "authExecuteOnlyNewPredicate": "private.wave4_membership_allowed(uuid,text)"
+  },
+  "scope": "private_coaching only; other counters/permissions preserved and unreviewed",
+  "newGrant": "authenticated EXECUTE only on actor-bound boolean private.wave4_membership_allowed(uuid,text); all new trigger functions postgres-only",
+  "changedExistingRoutines": [
+    "public.resolve_coaching_entitlement_review(uuid,text,text)",
+    "private.recalculate_coaching_entitlement_used_value(uuid,text)"
+  ],
+  "preserved": "Wave3 old files/receipts, existing session sync, lifecycle/payment holds, noncoaching behavior, sharedAuth/runtime/Functions/private sources",
+  "matrix57": {
+    "E02": "PARTIAL_ONLY; concurrency/retry/businesspolicy held",
+    "N02": "coaching direct-boundaries pass locally; no wholecase acceptance",
+    "N04": "passing limited new internal privilege evidence",
+    "N06": "current hold preserved; paid positive blocked"
+  },
+  "wholeCasePassesAdded": 0,
+  "productionCalls": 0,
+  "alex": "PAUSED_UNTOUCHED",
+  "remainingBlocks": [
+    "Natural competing session/direct row order safely deadlocks; no approved app retry/availability design",
+    "No production integrity preflight or installation authority",
+    "Paid Client positive blocked by current payment hold",
+    "Shared/family/historical affiliation policy not inferred",
+    "Other entitlement isolation unreviewed",
+    "Not standalone production migration; independent QA and guard/integration review pending"
+  ],
+  "revertWarning": "Restores known broad boundary defects; regression proof only, not recommended production rollback",
+  "nextAction": "Independent QA exact owned commit: both suites plus entry-path probes; then bounded application retry/lock-order review. No scope expansion or production activation."
+}

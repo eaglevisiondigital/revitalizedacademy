@@ -1,0 +1,48 @@
+{
+  "newPrivateFunctions": [
+    "wave4_membership_allowed(uuid,text)",
+    "wave4_usage_before()",
+    "wave4_usage_after()",
+    "wave4_entitlement_before()",
+    "wave4_session_binding_before()"
+  ],
+  "newTriggers": [
+    [
+      "public.coaching_entitlement_usage",
+      "wave4_usage_before",
+      "BEFORE INSERT OR UPDATE OR DELETE",
+      "wave4_usage_before"
+    ],
+    [
+      "public.coaching_entitlement_usage",
+      "wave4_usage_after",
+      "AFTER INSERT OR UPDATE OR DELETE",
+      "wave4_usage_after"
+    ],
+    [
+      "public.membership_entitlements",
+      "wave4_entitlement_before",
+      "BEFORE INSERT OR UPDATE",
+      "wave4_entitlement_before"
+    ],
+    [
+      "public.coaching_sessions",
+      "wave4_session_binding_before",
+      "BEFORE INSERT OR UPDATE OF contact_id,membership_id",
+      "wave4_session_binding_before"
+    ]
+  ],
+  "policies": [
+    "wave4_usage_scope_select",
+    "wave4_usage_scope_insert",
+    "wave4_usage_scope_update",
+    "wave4_entitlement_scope_select",
+    "wave4_entitlement_scope_insert",
+    "wave4_entitlement_scope_update"
+  ],
+  "changedFunctions": [
+    "public.resolve_coaching_entitlement_review(uuid,text,text)",
+    "private.recalculate_coaching_entitlement_used_value(uuid,text)"
+  ],
+  "authExecuteOnlyNewPredicate": "private.wave4_membership_allowed(uuid,text)"
+}

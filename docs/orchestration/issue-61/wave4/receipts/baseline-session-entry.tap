@@ -1,0 +1,102 @@
+TAP version 13
+# Subtest: [NEW session-entry] assigned Coach cannot charge/reserve unrelated membership completed
+not ok 1 - [NEW session-entry] assigned Coach cannot charge/reserve unrelated membership completed
+  ---
+  duration_ms: 41.580292
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-access/tests/wave4-access/session-entry.test.cjs:5:47'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  operator: 'rejects'
+  stack: |-
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-access/tests/wave4-access/session-entry.test.cjs:5:150)
+    async Test.run (node:internal/test_runner/test:1404:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+# Subtest: [NEW session-entry] assigned Coach cannot charge/reserve unrelated membership scheduled
+not ok 2 - [NEW session-entry] assigned Coach cannot charge/reserve unrelated membership scheduled
+  ---
+  duration_ms: 13.308542
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-access/tests/wave4-access/session-entry.test.cjs:5:47'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  operator: 'rejects'
+  stack: |-
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-access/tests/wave4-access/session-entry.test.cjs:5:150)
+    async Test.run (node:internal/test_runner/test:1404:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+  ...
+# Subtest: [NEW session-entry] explicit primary contact relation permits normal completion
+ok 3 - [NEW session-entry] explicit primary contact relation permits normal completion
+  ---
+  duration_ms: 9.209125
+  type: 'test'
+  ...
+# Subtest: [NEW session-entry] explicit client_access supports nonprimary contact without inferred family sharing
+ok 4 - [NEW session-entry] explicit client_access supports nonprimary contact without inferred family sharing
+  ---
+  duration_ms: 7.795292
+  type: 'test'
+  ...
+# Subtest: [NEW session-entry] nullable nonconsuming session stays supported
+ok 5 - [NEW session-entry] nullable nonconsuming session stays supported
+  ---
+  duration_ms: 8.040416
+  type: 'test'
+  ...
+# Subtest: [NEW session-entry] null-session tuple change rejects unrelated membership before first usage
+not ok 6 - [NEW session-entry] null-session tuple change rejects unrelated membership before first usage
+  ---
+  duration_ms: 9.456417
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-access/tests/wave4-access/session-entry.test.cjs:9:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  operator: 'rejects'
+  stack: |-
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-access/tests/wave4-access/session-entry.test.cjs:9:157)
+    async Test.run (node:internal/test_runner/test:1404:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+  ...
+# Subtest: [NEW session-entry] direct usage cannot legitimize a preexisting forged session membership
+not ok 7 - [NEW session-entry] direct usage cannot legitimize a preexisting forged session membership
+  ---
+  duration_ms: 6.571833
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-access/tests/wave4-access/session-entry.test.cjs:10:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  operator: 'rejects'
+  stack: |-
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-access/tests/wave4-access/session-entry.test.cjs:10:408)
+    async Test.run (node:internal/test_runner/test:1404:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+  ...
+# Subtest: [NEW session-entry guard] preexisting unrelated session blocks installation with no backfill
+ok 8 - [NEW session-entry guard] preexisting unrelated session blocks installation with no backfill
+  ---
+  duration_ms: 9.836333
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 4
+# fail 4
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 176.035125
