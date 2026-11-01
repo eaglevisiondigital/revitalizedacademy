@@ -2,4 +2,3 @@
 ---------+-----------------------------------------------------------------------------------------
  private | {postgres=UC/postgres,anon=U/postgres,authenticated=U/postgres,service_role=U/postgres}
 (1 row)
-

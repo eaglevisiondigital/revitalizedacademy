@@ -336,6 +336,90 @@
       "rawSha256": "0fe90ec9ce7be111067a1f4d182f00448015dd85cf960a242dbd2df2d59e3e91",
       "normalizedSha256": "f96c99e922773e621f5a96995c53f0a62e9acccf9349557a4f6076e4f2fe6b29",
       "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/fidelity-run-3/original-five-baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/final-combined/household-constraints.txt",
+      "rawSha256": "cb4c66e614d29199ddcc82330924c6a2d7b4a8ce1f68d5c57f3996ba735e0d26",
+      "normalizedSha256": "81c67c3f5d77a77c51ed2da390329e5fa00b197f874484a096574992888d27ba",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/final-combined/household-constraints.txt",
+      "additional": "Remove final blank output line only"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/hypotheses/household-constraints.txt",
+      "rawSha256": "cb4c66e614d29199ddcc82330924c6a2d7b4a8ce1f68d5c57f3996ba735e0d26",
+      "normalizedSha256": "81c67c3f5d77a77c51ed2da390329e5fa00b197f874484a096574992888d27ba",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/hypotheses/household-constraints.txt",
+      "additional": "Remove final blank output line only"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/third-combined/household-constraints.txt",
+      "rawSha256": "cb4c66e614d29199ddcc82330924c6a2d7b4a8ce1f68d5c57f3996ba735e0d26",
+      "normalizedSha256": "81c67c3f5d77a77c51ed2da390329e5fa00b197f874484a096574992888d27ba",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/third-combined/household-constraints.txt",
+      "additional": "Remove final blank output line only"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/final-pinned/household-constraints.txt",
+      "rawSha256": "cb4c66e614d29199ddcc82330924c6a2d7b4a8ce1f68d5c57f3996ba735e0d26",
+      "normalizedSha256": "81c67c3f5d77a77c51ed2da390329e5fa00b197f874484a096574992888d27ba",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/final-pinned/household-constraints.txt",
+      "additional": "Remove final blank output line only"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/identity-corrected/household-constraints.txt",
+      "rawSha256": "cb4c66e614d29199ddcc82330924c6a2d7b4a8ce1f68d5c57f3996ba735e0d26",
+      "normalizedSha256": "81c67c3f5d77a77c51ed2da390329e5fa00b197f874484a096574992888d27ba",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/identity-corrected/household-constraints.txt",
+      "additional": "Remove final blank output line only"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/first-combined/household-constraints.txt",
+      "rawSha256": "e1ac92b93b13c43be4e9eea2c484ff6a1482e465bc3dc1eb19912fd8e274e38c",
+      "normalizedSha256": "54413d9335b0aa583d9040783c5961c4327e4058d15e67afd60ed73e5d55d760",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/first-combined/household-constraints.txt",
+      "additional": "Remove final blank output line only"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/second-combined/household-constraints.txt",
+      "rawSha256": "cb4c66e614d29199ddcc82330924c6a2d7b4a8ce1f68d5c57f3996ba735e0d26",
+      "normalizedSha256": "81c67c3f5d77a77c51ed2da390329e5fa00b197f874484a096574992888d27ba",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/second-combined/household-constraints.txt",
+      "additional": "Remove final blank output line only"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/schema-diagnosis/household-constraints.txt",
+      "rawSha256": "4fb28c53dc98a9dbdf94a64f732299352b0170c850adc7d7ecac3f6d7efbc4a0",
+      "normalizedSha256": "869b8f08dd3ec7a30110c097d20037f1a6528175af6849f7db5278194b96423b",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/schema-diagnosis/household-constraints.txt",
+      "additional": "Remove final blank output line only"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/final-pinned-2/household-constraints.txt",
+      "rawSha256": "cb4c66e614d29199ddcc82330924c6a2d7b4a8ce1f68d5c57f3996ba735e0d26",
+      "normalizedSha256": "81c67c3f5d77a77c51ed2da390329e5fa00b197f874484a096574992888d27ba",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/final-pinned-2/household-constraints.txt",
+      "additional": "Remove final blank output line only"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/access-household-probe/household-constraints.txt",
+      "rawSha256": "cb4c66e614d29199ddcc82330924c6a2d7b4a8ce1f68d5c57f3996ba735e0d26",
+      "normalizedSha256": "81c67c3f5d77a77c51ed2da390329e5fa00b197f874484a096574992888d27ba",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/access-household-probe/household-constraints.txt",
+      "additional": "Remove final blank output line only"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/fidelity-run-3/household-constraints.txt",
+      "rawSha256": "e1ac92b93b13c43be4e9eea2c484ff6a1482e465bc3dc1eb19912fd8e274e38c",
+      "normalizedSha256": "54413d9335b0aa583d9040783c5961c4327e4058d15e67afd60ed73e5d55d760",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/fidelity-run-3/household-constraints.txt",
+      "additional": "Remove final blank output line only"
+    },
+    {
+      "path": "docs/orchestration/issue-60/wave7/catalog-diagnosis/fixture-acls.json",
+      "rawSha256": "9299395063ac8e8c03d12c8ffa95b98a4c0e3eeb23c7893969707e9bc77ec086",
+      "normalizedSha256": "e11c6e13043cec8e04ecb50a4d7e65f68f4d1d63a580450a0c99a2f92044ce6e",
+      "rawRetainedOutsideGit": "../deployment-evidence/2026-11-01-wave7/raw-security-logs/docs/orchestration/issue-60/wave7/catalog-diagnosis/fixture-acls.json",
+      "additional": "Remove final blank output line only"
     }
   ]
 }

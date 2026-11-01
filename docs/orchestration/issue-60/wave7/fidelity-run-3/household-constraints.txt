@@ -6,4 +6,3 @@
  households_primary_contact_id_fkey | FOREIGN KEY (primary_contact_id) REFERENCES contacts(id) ON DELETE RESTRICT                | f             | f           | t
  households_status_check            | CHECK ((status = ANY (ARRAY['draft'::text, 'active'::text, 'inactive'::text])))            | f             | f           | t
 (5 rows)
-
