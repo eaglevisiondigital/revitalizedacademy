@@ -1,0 +1,88 @@
+TAP version 13
+# Subtest: [E02 availability] opposing session and direct updates both commit without retry
+ok 1 - [E02 availability] opposing session and direct updates both commit without retry
+  ---
+  duration_ms: 98.006417
+  type: 'test'
+  ...
+# Subtest: [E02 availability] opposing session and rpc updates both commit without retry
+ok 2 - [E02 availability] opposing session and rpc updates both commit without retry
+  ---
+  duration_ms: 55.019958
+  type: 'test'
+  ...
+# Subtest: [E02 tuple race] first ledger INSERT versus session move insert-first
+ok 3 - [E02 tuple race] first ledger INSERT versus session move insert-first
+  ---
+  duration_ms: 44.517458
+  type: 'test'
+  ...
+# Subtest: [E02 tuple race] first ledger INSERT versus session move move-first
+ok 4 - [E02 tuple race] first ledger INSERT versus session move move-first
+  ---
+  duration_ms: 41.951584
+  type: 'test'
+  ...
+# Subtest: [E02 durable uniqueness] concurrent repeated session completion uses exactly one existing usage row
+ok 5 - [E02 durable uniqueness] concurrent repeated session completion uses exactly one existing usage row
+  ---
+  duration_ms: 40.676125
+  type: 'test'
+  ...
+# Subtest: [E02 durable state replay] lost response after committed review reconciles by immutable ID before an explicit repeat
+ok 6 - [E02 durable state replay] lost response after committed review reconciles by immutable ID before an explicit repeat
+  ---
+  duration_ms: 39.378208
+  type: 'test'
+  ...
+# Subtest: [E02 atomic rollback] known transaction abort does not charge or create a duplicate
+ok 7 - [E02 atomic rollback] known transaction abort does not charge or create a duplicate
+  ---
+  duration_ms: 25.372417
+  type: 'test'
+  ...
+# Subtest: [N02 relation invariant] immutable usage contact_id cannot transfer after lock correction
+ok 8 - [N02 relation invariant] immutable usage contact_id cannot transfer after lock correction
+  ---
+  duration_ms: 11.68625
+  type: 'test'
+  ...
+# Subtest: [N02 relation invariant] immutable usage membership_id cannot transfer after lock correction
+ok 9 - [N02 relation invariant] immutable usage membership_id cannot transfer after lock correction
+  ---
+  duration_ms: 12.050083
+  type: 'test'
+  ...
+# Subtest: [N02 relation invariant] immutable usage coaching_session_id cannot transfer after lock correction
+ok 10 - [N02 relation invariant] immutable usage coaching_session_id cannot transfer after lock correction
+  ---
+  duration_ms: 10.625583
+  type: 'test'
+  ...
+# Subtest: [N02 current session scope] unrelated Coach cannot read or resolve original usage
+ok 11 - [N02 current session scope] unrelated Coach cannot read or resolve original usage
+  ---
+  duration_ms: 10.222417
+  type: 'test'
+  ...
+# Subtest: [N06 revoked scope] inactive or explicit-denied Coach cannot write after lock correction
+ok 12 - [N06 revoked scope] inactive or explicit-denied Coach cannot write after lock correction
+  ---
+  duration_ms: 8.892375
+  type: 'test'
+  ...
+# Subtest: [N04 metadata] function remains postgres-only trigger with identical RLS and no public execution
+ok 13 - [N04 metadata] function remains postgres-only trigger with identical RLS and no public execution
+  ---
+  duration_ms: 9.03225
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 477.880208

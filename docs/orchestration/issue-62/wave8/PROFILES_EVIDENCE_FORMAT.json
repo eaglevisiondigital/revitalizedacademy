@@ -1,0 +1,103 @@
+{
+  "scope": "Only new generated TAP/psql whitespace normalized; original bytes retained. Old receipts unchanged.",
+  "files": [
+    {
+      "path": "docs/orchestration/issue-62/wave8/profiles-original/profiles-privilege-original.tap",
+      "rawSha256": "37d007e9e314c6c84969970a15af7bdea46d074891fc134b1e74d5ac1e3a7310",
+      "normalizedSha256": "1c62b2dde23f41decd708af730d792fb95e204dd7cd5b52d62d1f007e1bf211d",
+      "rawArchive": "docs/orchestration/issue-62/wave8/profiles-original/profiles-privilege-original.tap.raw.gz",
+      "rawArchiveSha256": "5edc610dded9f808a7b7f34fa4f079106432c9e92eb015651f0866f0470defe6"
+    },
+    {
+      "path": "docs/orchestration/issue-62/wave8/profiles-original/household-constraints.txt",
+      "rawSha256": "cb4c66e614d29199ddcc82330924c6a2d7b4a8ce1f68d5c57f3996ba735e0d26",
+      "normalizedSha256": "81c67c3f5d77a77c51ed2da390329e5fa00b197f874484a096574992888d27ba",
+      "rawArchive": "docs/orchestration/issue-62/wave8/profiles-original/household-constraints.txt.raw.gz",
+      "rawArchiveSha256": "043eb4d8e1471d7f9f875bbb575bbadb2cd0e4367a4fd3a6d3974b89f7d1d8fc"
+    },
+    {
+      "path": "docs/orchestration/issue-62/wave8/profiles-corrected-first/household-constraints.txt",
+      "rawSha256": "cb4c66e614d29199ddcc82330924c6a2d7b4a8ce1f68d5c57f3996ba735e0d26",
+      "normalizedSha256": "81c67c3f5d77a77c51ed2da390329e5fa00b197f874484a096574992888d27ba",
+      "rawArchive": "docs/orchestration/issue-62/wave8/profiles-corrected-first/household-constraints.txt.raw.gz",
+      "rawArchiveSha256": "043eb4d8e1471d7f9f875bbb575bbadb2cd0e4367a4fd3a6d3974b89f7d1d8fc"
+    },
+    {
+      "path": "docs/orchestration/issue-62/wave8/profiles-final/identity-original-reverted.tap",
+      "rawSha256": "c11cf097ab1839e16ebce1265e1c1bfd677dcaf7496978fa9f53201e48558194",
+      "normalizedSha256": "18e24be0dff20e174fff125c790bf4f22ae3d53af97b9cba2c00ba36ebdb097f",
+      "rawArchive": "docs/orchestration/issue-62/wave8/profiles-final/identity-original-reverted.tap.raw.gz",
+      "rawArchiveSha256": "de8c3ba8c58c54c038fb495509533722510d8eddb7850c6c8a2187a76caef2b0"
+    },
+    {
+      "path": "docs/orchestration/issue-62/wave8/profiles-final/access-household-original-reverted.tap",
+      "rawSha256": "b7b851c7e8f90f50ae25e1be5d2c08b071ca67e64af6bde19c38b20a0968c00c",
+      "normalizedSha256": "2d7baf6090d25226278bed3df9247396ac9e4c594da0d21a7e2582f6cfa4134a",
+      "rawArchive": "docs/orchestration/issue-62/wave8/profiles-final/access-household-original-reverted.tap.raw.gz",
+      "rawArchiveSha256": "19286a647797c60c14f3f21e928dbbedf443186a976343bee31c3855fadd05cb"
+    },
+    {
+      "path": "docs/orchestration/issue-62/wave8/profiles-final/profiles-boundary-reverted.tap",
+      "rawSha256": "ca6548bbcf656e9e06359d2da79498c470b7923ebebb0edddcdfcdcec33c6f2b",
+      "normalizedSha256": "edd86cea8b1287d0cf7cd0e078e17abef96532612d2303a353fdbcddd2770fe9",
+      "rawArchive": "docs/orchestration/issue-62/wave8/profiles-final/profiles-boundary-reverted.tap.raw.gz",
+      "rawArchiveSha256": "55fd3dfa2914defbabce9527675ae24fe8e04b87185cef1977841ba2c995d312"
+    },
+    {
+      "path": "docs/orchestration/issue-62/wave8/profiles-final/parent-original-baseline.tap",
+      "rawSha256": "5ca36066898ae7a69548c3bc10a833acbca92f5159cd27dadec52dea7acee133",
+      "normalizedSha256": "20c739fe5cc36d8246ee44e6232b1702e06862e901a72341a56da2d57fd0edac",
+      "rawArchive": "docs/orchestration/issue-62/wave8/profiles-final/parent-original-baseline.tap.raw.gz",
+      "rawArchiveSha256": "5199fd702fae56dbb00ba2c5ef2a760ea8416cdc9f146327b433335541255ee8"
+    },
+    {
+      "path": "docs/orchestration/issue-62/wave8/profiles-final/household-constraints.txt",
+      "rawSha256": "cb4c66e614d29199ddcc82330924c6a2d7b4a8ce1f68d5c57f3996ba735e0d26",
+      "normalizedSha256": "81c67c3f5d77a77c51ed2da390329e5fa00b197f874484a096574992888d27ba",
+      "rawArchive": "docs/orchestration/issue-62/wave8/profiles-final/household-constraints.txt.raw.gz",
+      "rawArchiveSha256": "043eb4d8e1471d7f9f875bbb575bbadb2cd0e4367a4fd3a6d3974b89f7d1d8fc"
+    },
+    {
+      "path": "docs/orchestration/issue-62/wave8/profiles-final/original-five-baseline.tap",
+      "rawSha256": "35ccbb7fcdd90f0db0038a0a94983cd0991bf2e129cce4c5ebbf95e758d56f76",
+      "normalizedSha256": "c43733271f19ebd38668cf9adc7c1da1d54deebe9b3d9ff716297584f0986e53",
+      "rawArchive": "docs/orchestration/issue-62/wave8/profiles-final/original-five-baseline.tap.raw.gz",
+      "rawArchiveSha256": "4b852827c7d0f6e01ca951657e9732a92d9444d15a204b2319b1413e60aef86d"
+    },
+    {
+      "path": "docs/orchestration/issue-62/wave8/profiles-final/identity-original-baseline.tap",
+      "rawSha256": "2914bd818830925f9ea40f291909b55bf647b48fdf1c343dc1dbe7bd0fb6a42f",
+      "normalizedSha256": "7f557486224f2a2047aabc7b48febe0ddc2265debdb82be636ec052dd07dd687",
+      "rawArchive": "docs/orchestration/issue-62/wave8/profiles-final/identity-original-baseline.tap.raw.gz",
+      "rawArchiveSha256": "f67bf33cbf7978db288d58ffd1e51deb0343823439aa4e5c33b248756e1c2b5f"
+    },
+    {
+      "path": "docs/orchestration/issue-62/wave8/profiles-final/access-household-original-baseline.tap",
+      "rawSha256": "4daf0f81c03f858c249fb394eb0f0e0350f6d207af3f23bc1167402d4d1a86a7",
+      "normalizedSha256": "10f8ea8892406fcdbc655a37942248cf6b2876456657cd269109cc510d9fcd13",
+      "rawArchive": "docs/orchestration/issue-62/wave8/profiles-final/access-household-original-baseline.tap.raw.gz",
+      "rawArchiveSha256": "9a536e742f9fbef1988039c0002003a739d280dc9537d654553a770f700db25b"
+    },
+    {
+      "path": "docs/orchestration/issue-62/wave8/profiles-final/profiles-boundary-baseline.tap",
+      "rawSha256": "91ba47ab97363f29c6374d74ca3fc515564cb7d3007092c7236260c1697f3566",
+      "normalizedSha256": "f591efa835e656c3e4020e1a5209bf6dd01b0c82250fff3e47f6e4a32a8292bb",
+      "rawArchive": "docs/orchestration/issue-62/wave8/profiles-final/profiles-boundary-baseline.tap.raw.gz",
+      "rawArchiveSha256": "ef70da1125cd40e90374e33629c80027345202192f22601d1b6f3bb1c5395c10"
+    },
+    {
+      "path": "docs/orchestration/issue-62/wave8/profiles-final/parent-original-reverted.tap",
+      "rawSha256": "157e6c274bef7ed920781bfcad08490312dc974cc91afd5311b92f20e3f2180b",
+      "normalizedSha256": "6b7848b3d66730f31638f35debf71119359d217ab764fb03d89fa20fbb511edb",
+      "rawArchive": "docs/orchestration/issue-62/wave8/profiles-final/parent-original-reverted.tap.raw.gz",
+      "rawArchiveSha256": "046b555d7b661edfcde122198b30112f003dd9bc0472796f6d158ab1a6639d91"
+    },
+    {
+      "path": "docs/orchestration/issue-62/wave8/profiles-final/original-five-reverted.tap",
+      "rawSha256": "61881da62e37ce04b8f51fa00388c624fdfa6bed56d75ada422f18077f9e00c3",
+      "normalizedSha256": "be92ef440ee7118401e24db6fb40343c65cc66ef13f68b53add642e6e733b430",
+      "rawArchive": "docs/orchestration/issue-62/wave8/profiles-final/original-five-reverted.tap.raw.gz",
+      "rawArchiveSha256": "b9008dc0eba137772f46e439520304d3bfcd2e7ea26528406733afe71d4e6cfd"
+    }
+  ]
+}

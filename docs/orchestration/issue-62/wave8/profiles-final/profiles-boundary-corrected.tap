@@ -1,0 +1,102 @@
+TAP version 13
+# {"scope":"FICTIONAL_LOCAL_ONLY","stage":"corrected","role":"authenticated","profileRowsBefore":10,"profileRowsAfterAttempt":10,"denialCode":"42501","rollbackRestored":10}
+# Subtest: STRICT authenticated cannot TRUNCATE profiles; precise42501 and all mapping rows preserved
+ok 1 - STRICT authenticated cannot TRUNCATE profiles; precise42501 and all mapping rows preserved
+  ---
+  duration_ms: 13.838042
+  type: 'test'
+  ...
+# {"scope":"FICTIONAL_LOCAL_ONLY","stage":"corrected","role":"anon","profileRowsBefore":10,"profileRowsAfterAttempt":10,"denialCode":"42501","rollbackRestored":10}
+# Subtest: STRICT anon cannot TRUNCATE profiles; precise42501 and all mapping rows preserved
+ok 2 - STRICT anon cannot TRUNCATE profiles; precise42501 and all mapping rows preserved
+  ---
+  duration_ms: 3.362
+  type: 'test'
+  ...
+# Subtest: scope is exactly TRUNCATE for anon/authenticated; all other profile ACL bits preserved
+ok 3 - scope is exactly TRUNCATE for anon/authenticated; all other profile ACL bits preserved
+  ---
+  duration_ms: 4.164375
+  type: 'test'
+  ...
+# Subtest: profile mapping UPDATE remains denied with precise42501
+ok 4 - profile mapping UPDATE remains denied with precise42501
+  ---
+  duration_ms: 2.3325
+  type: 'test'
+  ...
+# Subtest: noninstaller authenticated cannot run the guarded correction
+ok 5 - noninstaller authenticated cannot run the guarded correction
+  ---
+  duration_ms: 2.001375
+  type: 'test'
+  ...
+# Subtest: replay installation fails before a second privilege change
+ok 6 - replay installation fails before a second privilege change
+  ---
+  duration_ms: 2.00075
+  type: 'test'
+  ...
+# Subtest: installation guard rejects row security drift atomically
+ok 7 - installation guard rejects row security drift atomically
+  ---
+  duration_ms: 1.504292
+  type: 'test'
+  ...
+# Subtest: installation guard rejects forced row security drift atomically
+ok 8 - installation guard rejects forced row security drift atomically
+  ---
+  duration_ms: 2.037917
+  type: 'test'
+  ...
+# Subtest: installation guard rejects owner drift atomically
+ok 9 - installation guard rejects owner drift atomically
+  ---
+  duration_ms: 2.452583
+  type: 'test'
+  ...
+# Subtest: installation guard rejects extra authenticated UPDATE drift atomically
+ok 10 - installation guard rejects extra authenticated UPDATE drift atomically
+  ---
+  duration_ms: 2.098334
+  type: 'test'
+  ...
+# Subtest: installation guard rejects extra anonymous UPDATE drift atomically
+ok 11 - installation guard rejects extra anonymous UPDATE drift atomically
+  ---
+  duration_ms: 1.771208
+  type: 'test'
+  ...
+# Subtest: installation guard rejects caller BYPASSRLS drift atomically
+ok 12 - installation guard rejects caller BYPASSRLS drift atomically
+  ---
+  duration_ms: 2.497167
+  type: 'test'
+  ...
+# Subtest: installation guard rejects caller SUPERUSER drift atomically
+ok 13 - installation guard rejects caller SUPERUSER drift atomically
+  ---
+  duration_ms: 1.941167
+  type: 'test'
+  ...
+# Subtest: installation guard rejects inherited privilege drift atomically
+ok 14 - installation guard rejects inherited privilege drift atomically
+  ---
+  duration_ms: 2.476458
+  type: 'test'
+  ...
+# Subtest: transaction rollback restores pre-proposal ACL without changing mappings
+ok 15 - transaction rollback restores pre-proposal ACL without changing mappings
+  ---
+  duration_ms: 3.18075
+  type: 'test'
+  ...
+1..15
+# tests 15
+# suites 0
+# pass 15
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 119.940375

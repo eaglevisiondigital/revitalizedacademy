@@ -1,0 +1,70 @@
+TAP version 13
+# {"scope":"FICTIONAL_LOCAL_ONLY","stage":"reverted","role":"authenticated","profileRowsBefore":10,"profileRowsAfterAttempt":0,"denialCode":null,"rollbackRestored":10}
+# Subtest: STRICT authenticated cannot TRUNCATE profiles; precise42501 and all mapping rows preserved
+not ok 1 - STRICT authenticated cannot TRUNCATE profiles; precise42501 and all mapping rows preserved
+  ---
+  duration_ms: 17.863791
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave8-provisioning/tests/wave8-provisioning/profiles-boundary.test.cjs:12:44'
+  failureType: 'testCodeFailure'
+  error: |-
+    only privilege denial passes; success/FK errors do not
+
+    null !== '42501'
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '42501'
+  actual: ~
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave8-provisioning/tests/wave8-provisioning/profiles-boundary.test.cjs:18:9)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+# {"scope":"FICTIONAL_LOCAL_ONLY","stage":"reverted","role":"anon","profileRowsBefore":10,"profileRowsAfterAttempt":0,"denialCode":null,"rollbackRestored":10}
+# Subtest: STRICT anon cannot TRUNCATE profiles; precise42501 and all mapping rows preserved
+not ok 2 - STRICT anon cannot TRUNCATE profiles; precise42501 and all mapping rows preserved
+  ---
+  duration_ms: 4.380625
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave8-provisioning/tests/wave8-provisioning/profiles-boundary.test.cjs:12:44'
+  failureType: 'testCodeFailure'
+  error: |-
+    only privilege denial passes; success/FK errors do not
+
+    null !== '42501'
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '42501'
+  actual: ~
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave8-provisioning/tests/wave8-provisioning/profiles-boundary.test.cjs:18:9)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: scope is exactly TRUNCATE for anon/authenticated; all other profile ACL bits preserved
+ok 3 - scope is exactly TRUNCATE for anon/authenticated; all other profile ACL bits preserved
+  ---
+  duration_ms: 4.251042
+  type: 'test'
+  ...
+# Subtest: profile mapping UPDATE remains denied with precise42501
+ok 4 - profile mapping UPDATE remains denied with precise42501
+  ---
+  duration_ms: 1.757459
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 2
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 96.493208

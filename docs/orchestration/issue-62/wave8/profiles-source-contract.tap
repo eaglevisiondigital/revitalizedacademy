@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: original failing direct account-INSERT assertion and prior guards are byte preserved
+ok 1 - original failing direct account-INSERT assertion and prior guards are byte preserved
+  ---
+  duration_ms: 57.499459
+  type: 'test'
+  ...
+# Subtest: actual staff enrollment UI uses reviewed public plan RPC, not direct identity INSERT
+ok 2 - actual staff enrollment UI uses reviewed public plan RPC, not direct identity INSERT
+  ---
+  duration_ms: 0.584208
+  type: 'test'
+  ...
+# Subtest: actual member UI verifies user before exact token claim and reads existing onboarding context
+ok 3 - actual member UI verifies user before exact token claim and reads existing onboarding context
+  ---
+  duration_ms: 0.548166
+  type: 'test'
+  ...
+# Subtest: existing claim verifies server Auth email plus exact profile/contact and locked active invitation
+ok 4 - existing claim verifies server Auth email plus exact profile/contact and locked active invitation
+  ---
+  duration_ms: 0.872417
+  type: 'test'
+  ...
+# Subtest: only lifecycle canonical migration defines claim/provision; newer pricing intent actually invokes enrollment trigger
+ok 5 - only lifecycle canonical migration defines claim/provision; newer pricing intent actually invokes enrollment trigger
+  ---
+  duration_ms: 4.931958
+  type: 'test'
+  ...
+# Subtest: effective captured profile ACL does not grant authenticated UPDATE despite self policy
+ok 6 - effective captured profile ACL does not grant authenticated UPDATE despite self policy
+  ---
+  duration_ms: 1.032
+  type: 'test'
+  ...
+# Subtest: no canonical runtime, migration, Auth or Function source changed by this lane
+ok 7 - no canonical runtime, migration, Auth or Function source changed by this lane
+  ---
+  duration_ms: 23.493083
+  type: 'test'
+  ...
+# Subtest: profile correction mutates only the two demonstrated TRUNCATE privileges
+ok 8 - profile correction mutates only the two demonstrated TRUNCATE privileges
+  ---
+  duration_ms: 0.492708
+  type: 'test'
+  ...
+# Subtest: profile regression revert only restores demonstrated exposure and is explicitly not production rollback
+ok 9 - profile regression revert only restores demonstrated exposure and is explicitly not production rollback
+  ---
+  duration_ms: 0.375625
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 146.630166
