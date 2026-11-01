@@ -120,3 +120,8 @@ The received packet is traced separately in [source-packet-receipt.json](orchest
 ## Wave2 implementation checkpoint — November1,2026
 
 The Owner explicitly authorized bounded non-production implementation after coordinationfc673741. Initial discovery-only runtime holds above are historical for that phase, not a ban on this new authorized wave. Exact owned runtime/test contracts and independent results are in [RVA_WAVE2_STATUS_2026-11-01.md](RVA_WAVE2_STATUS_2026-11-01.md) and [RVA_WAVE2_CONTRACTS.md](RVA_WAVE2_CONTRACTS.md). All101baseline IDs/wording and10inventory groups remain preserved. Two dated-source SQL failures are retained; productionNO-GO. No newproduction/financial/privateauthority authorization is inferred.
+
+
+## Wave 3 current local checkpoint — November 1
+
+See [RVA_WAVE3_STATUS_2026-11-01.md](RVA_WAVE3_STATUS_2026-11-01.md), [RVA_WAVE3_CONTRACTS.md](RVA_WAVE3_CONTRACTS.md) and [orchestration/wave3-state.json](orchestration/wave3-state.json) for the actually launched agents, returned source, independently executed current-catalog tests and next ownership boundary. All 101 baseline groups, ten source-detail groups, ten workstreams and 57 original package IDs remain unchanged. Goal/RPC corrections are local proposals; three direct allowance-table failures keep production NO-GO. Prior runtime snapshots remain dated history, not a claim that workers are still running. PR59 remains draft at its accepted head; no Wave3 push, production change or unapproved V3 promotion.
