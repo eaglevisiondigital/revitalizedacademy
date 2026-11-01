@@ -1,0 +1,105 @@
+✖ actual loopback route source review / copy / QR / event receipt (21.198541ms)
+✖ stale-tab exact pins rejected after revoked/restored synthetic transition (4.349541ms)
+✖ URL/source/identity overrides rejected by composed HTTP request (2.568209ms)
+✖ cross-origin read composition denied without resolving source (1.100917ms)
+✔ source-linked read-only composition: cellular_hydration (21.055208ms)
+✔ source-linked read-only composition: systemic_detoxification (9.066166ms)
+✔ source-linked read-only composition: electrobiology_rhythms (5.048ms)
+✔ source-linked read-only composition: the_living_diet (3.316292ms)
+✔ source-linked read-only composition: functional_training (5.755042ms)
+✔ source-linked read-only composition: holistic_recovery (2.938041ms)
+✔ source-linked read-only composition: gastrointestinal_renovation (3.227334ms)
+✔ source-linked read-only composition: hormone_balancing (2.921625ms)
+✔ source-linked read-only composition: neural_repatterning (3.863667ms)
+✔ source-linked read-only composition: momentum_regimens (4.210125ms)
+✔ source-linked read-only composition: mentality_realignment (3.04625ms)
+✔ source-linked read-only composition: wise_budgeting (3.054667ms)
+✔ revoked fails closed without data (0.964292ms)
+✔ expired fails closed without data (0.997375ms)
+✔ wrong-account fails closed without data (0.735417ms)
+✔ logout fails closed without data (0.759542ms)
+✔ education-revoked fails closed without data (0.9765ms)
+✔ withdrawn tracking consent preserves material viewing but event adapter denies tracking (3.612041ms)
+✔ same-account renewal retains exact source review pins (3.239ms)
+✔ stale source selector rejected: authority_revision (0.665625ms)
+✔ stale source selector rejected: campaign_revision (0.526416ms)
+✔ stale source selector rejected: creative_revision (0.7815ms)
+✔ stale source selector rejected: approval_generation (0.427667ms)
+✔ stale source selector rejected: catalog_hash (0.415334ms)
+✔ stale source selector rejected: catalog_version (0.41325ms)
+✔ stale source selector rejected: campaign_id (0.464708ms)
+✔ caller cannot add client_id (0.453ms)
+✔ caller cannot add contact_id (0.558708ms)
+✔ caller cannot add answers (0.398584ms)
+✔ caller cannot add permissions (0.473ms)
+✔ caller cannot add consent (0.417666ms)
+✔ caller cannot add event_id (0.38275ms)
+✔ caller cannot add amount (0.383417ms)
+✔ rejects hostile getters without invocation (0.698042ms)
+✔ mid-read revocation discards all partially loaded content (0.817875ms)
+✔ mid-read same-account transport renewal does not invalidate authority (2.725209ms)
+✔ inspection does not create events; existing replay and content-conflict boundaries retained (46.28025ms)
+✔ dependency failures are sanitized (0.947625ms)
+✔ unapproved Driver rejected (0.490875ms)
+ℹ tests 43
+ℹ suites 0
+ℹ pass 39
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 239.034833
+
+✖ failing tests:
+
+test at tests/wave7-affiliate/http.test.cjs:6:1
+✖ actual loopback route source review / copy / QR / event receipt (21.198541ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2368:21)
+      at listenInCluster (node:net:2499:12)
+      at node:net:2728:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tests/wave7-affiliate/http.test.cjs:7:1
+✖ stale-tab exact pins rejected after revoked/restored synthetic transition (4.349541ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2368:21)
+      at listenInCluster (node:net:2499:12)
+      at node:net:2728:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tests/wave7-affiliate/http.test.cjs:8:1
+✖ URL/source/identity overrides rejected by composed HTTP request (2.568209ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2368:21)
+      at listenInCluster (node:net:2499:12)
+      at node:net:2728:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tests/wave7-affiliate/http.test.cjs:9:1
+✖ cross-origin read composition denied without resolving source (1.100917ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2368:21)
+      at listenInCluster (node:net:2499:12)
+      at node:net:2728:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }

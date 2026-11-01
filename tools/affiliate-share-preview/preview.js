@@ -7,10 +7,10 @@
  addEventListener('pagehide',()=>channel?.close());
  function clear(message='Preview cleared.') {
   epoch++;eventId=null;el('preview').hidden=true;el('copy').value='';el('url').value='';el('qr').removeAttribute('src');el('qr-note').textContent='';el('status').textContent=message;
-  el('referral-result').textContent='';el('event-result').textContent='';el('education-result').replaceChildren();el('progress-result').replaceChildren();
+  el('referral-result').textContent='';el('event-result').textContent='';el('education-result').replaceChildren();el('progress-result').replaceChildren();el('source-review-result').replaceChildren();
  }
  async function json(url,data){const response=await fetch(url,data?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}:{});const result=await response.json();if(!response.ok)throw Error('local_unavailable');return result;}
- function busy(yes){for(const id of ['prepare','referral','record','lookup','progress-read'])el(id).disabled=yes;}
+ function busy(yes){for(const id of ['prepare','referral','record','lookup','progress-read','source-review'])el(id).disabled=yes;}
  async function bootstrap(sequence){const value=await json('/api/bootstrap');if(sequence!==scenarioSequence)return;manifest=value;el('state').value=manifest.state;if(el('driver').options.length===0)for(const driver of manifest.drivers){const option=document.createElement('option');option.value=driver;option.textContent=driver.replaceAll('_',' ');el('driver').append(option);}}
  busy(true);const initialSequence=++scenarioSequence;scenarioReady=bootstrap(initialSequence).then(()=>{if(initialSequence===scenarioSequence)busy(false);}).catch(()=>{if(initialSequence===scenarioSequence)clear('Local fixture unavailable; choose a scenario to retry.');});
  el('state').addEventListener('change',()=>{
@@ -18,13 +18,23 @@
   // Serialize scenario transitions across tabs/requests; selectors are not authentication.
   scenarioReady=scenarioReady.catch(()=>{}).then(()=>json('/api/scenario',{state})).then(value=>{if(sequence===scenarioSequence){manifest=value;el('state').value=value.state;busy(false);channel?.postMessage('fixture_changed');}}).catch(()=>{if(sequence===scenarioSequence)clear('Fixture change unavailable; choose a scenario to retry.');});
  });
- el('channel').addEventListener('change',()=>clear());el('driver').addEventListener('change',()=>{epoch++;el('education-result').replaceChildren();});
+ el('channel').addEventListener('change',()=>clear());el('driver').addEventListener('change',()=>{epoch++;el('education-result').replaceChildren();el('source-review-result').replaceChildren();});
  el('progress-persona').addEventListener('change',()=>{epoch++;el('progress-result').replaceChildren();});
  el('progress-read').addEventListener('click',async()=>{const run=epoch,persona=el('progress-persona').value;el('progress-result').replaceChildren();try{await scenarioReady;const r=await json('/api/progress',{persona});if(run!==epoch||persona!==el('progress-persona').value)return;
   if(r.status!=='ready'){el('progress-result').textContent='Held: '+(r.reason||'unavailable');return;}
   const lines=['Fictional '+r.view+' dashboard — read only','Habits: '+r.habits.map(h=>h.title+' ('+(h.completed_today?'complete':'not marked complete')+')').join('; '),'Goals: '+r.goals.map(g=>g.title+' ('+g.status+')').join('; '),'Active habit days: '+(r.weekly.habit_days??'Unknown'),'Progress entries: '+(r.weekly.progress_entries??'Unknown'),'Coaching allowance: '+(r.allowance.remaining===null?'Unknown / needs review':r.allowance.remaining+' '+r.allowance.unit+' remaining')+'; '+r.allowance.status,'No clinical scores, financial effects or household information.'];
   for(const text of lines){const p=document.createElement('p');p.textContent=text;el('progress-result').append(p);}
  }catch{if(run===epoch)el('progress-result').textContent='Local progress unavailable; no changes were made.';}});
+
+ el('source-review').addEventListener('click',async()=>{
+  const run=epoch,driver=el('driver').value,selectedChannel=el('channel').value;el('source-review-result').replaceChildren();
+  try{await scenarioReady;const r=await json('/api/source-review',{authority_revision:manifest.authority_revision,campaign_id:manifest.share.campaign_id,creative_id:manifest.share.creative_id,campaign_revision:manifest.share.expected_campaign_revision,creative_revision:manifest.share.expected_creative_revision,catalog_id:manifest.education.catalog_id,catalog_version:manifest.education.expected_catalog_version,catalog_hash:manifest.education.expected_catalog_hash,approval_generation:manifest.education.expected_approval_generation,channel:selectedChannel,driver});if(run!==epoch)return;
+   if(r.status!=='ready'){el('source-review-result').textContent='Held: '+(r.reason||'unavailable');return;}
+   const lines=['Fictional source review — read only',r.copy,'Campaign revision '+r.pins.campaign_revision+'; creative revision '+r.pins.creative_revision+'; catalog '+r.pins.catalog_version+' / SHA256 '+r.pins.catalog_hash,'Own fictional referral: '+r.referral.status,'Event consent: '+r.boundaries.trackingConsent+'. This lookup records no share, click, completed viewing or conversion.',r.explanation];
+   for(const row of r.education)lines.push(row.text,'Source '+row.citation.sourceId+' / '+row.citation.sourceVersion+' / '+row.citation.locator+' / SHA256 '+row.citation.sourceHash+' / claim '+row.citation.claimHash);
+   for(const text of lines){const p=document.createElement('p');p.textContent=text;el('source-review-result').append(p);}
+  }catch{if(run===epoch)el('source-review-result').textContent='Local source review unavailable; nothing recorded.';}
+ });
  el('select-copy').addEventListener('click',()=>{if(!el('preview').hidden){el('copy').focus();el('copy').select();}});
  el('prepare').addEventListener('click',async()=>{
   clear('Preparing fictional preview…');const run=epoch;

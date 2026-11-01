@@ -1,0 +1,57 @@
+{
+  "issue": 55,
+  "agent": "/root/wave7_affiliate",
+  "base": "38f086792addaa9b131cecaf261ef21f89f5ffc7",
+  "branch": "codex/rva-wave7-affiliate-20261101",
+  "worktree": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-affiliate",
+  "status": "LOCAL_COMPONENT_PASS_INDEPENDENT_QA_PENDING",
+  "version": "rva-share-source-review-fixture-v1-20261101",
+  "tests": {
+    "newNodeAndHttp": 44,
+    "existingRegressions": 158,
+    "nativeBrowser": 6,
+    "postgresAssertions": 0
+  },
+  "sourcePins": [
+    {
+      "path": "tools/wave7-share-review.cjs",
+      "sha256": "864d3b2c662cd8e3e47ae18af3a750fd831c1e77ca6b9ff07c6dcdb7147ba66b"
+    },
+    {
+      "path": "tools/affiliate-share-preview/server.cjs",
+      "sha256": "b7fbd7150c07b477ee4905229da0948f6396c3fdb92a79d33679d7a20d9acf28"
+    },
+    {
+      "path": "tools/affiliate-share-preview/preview.js",
+      "sha256": "23777bbcaa8372ccda56d94e1d854ee1c803a96c6290bcb3f52d989dcd743aa8"
+    },
+    {
+      "path": "tools/affiliate-share-preview/index.html",
+      "sha256": "f6592317f237446c77caaa94d2f5f82a9a03b4366204892009d3be59f08150d5"
+    },
+    {
+      "path": "tests/wave7-affiliate/browser.cjs",
+      "sha256": "582f637f61377e96cfea10ee1f48e9773423a6d38ef4090e2f498a1590664569"
+    },
+    {
+      "path": "tests/wave7-affiliate/http.test.cjs",
+      "sha256": "812938a0ba88c91f56c7c3f234f2b603b70bcd3b2ee1450e1cd4ca763850812e"
+    },
+    {
+      "path": "tests/wave7-affiliate/review.test.cjs",
+      "sha256": "63d66cc1b327df391e0a21db85959eccecabe90e574f9ec81970ec88aa821ca8"
+    }
+  ],
+  "limits": [
+    "fictional providers only",
+    "no actual Auth/RLS or approval verification",
+    "no durable/distributed journal",
+    "no identity join or personalized advice",
+    "full integration package verdict belongs to independent QA"
+  ],
+  "productionActions": 0,
+  "pushes": 0,
+  "financialActivation": 0,
+  "alexPaused": true,
+  "nextAction": "Independent exact-source contract and native-browser adversarial verification"
+}
