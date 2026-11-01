@@ -1,0 +1,76 @@
+{
+  "scope": "LOCAL_ACTUAL_JS_DOM_WITH_FICTIONAL_TRANSPORTS",
+  "base": "5926b915f60b1be6d009c94362b91356a303cb33",
+  "branch": "codex/rva-wave4-member-20261101",
+  "before44Continuity": {
+    "tests": 44,
+    "pass": 15,
+    "fail": 29
+  },
+  "beforeModalReopenEdge": {
+    "tests": 2,
+    "pass": 0,
+    "fail": 2
+  },
+  "finalLaneDOM": {
+    "tests": 97,
+    "pass": 97,
+    "fail": 0
+  },
+  "finalLaneBreakdown": {
+    "currentContinuity": 80,
+    "preservation": 3,
+    "expectedMemberBaselineReproductions": 8,
+    "expectedCoachBaselineReproduction": 1,
+    "CoachMutationDenialPayload": 2,
+    "CoachLoaderCurrent": 3
+  },
+  "inheritedBefore": {
+    "tests": 21,
+    "pass": 21,
+    "fail": 0
+  },
+  "inheritedAfter": {
+    "tests": 21,
+    "pass": 21,
+    "fail": 0
+  },
+  "browserFinal": {
+    "pass": 34,
+    "fail": 0
+  },
+  "browserExpectedBaselineReproductions": 2,
+  "initialBrowserBaselineOnly": {
+    "pass": 2,
+    "fail": 0
+  },
+  "intermediateBrowserFixtureSelectorFailures": {
+    "pass": 30,
+    "fail": 4,
+    "resolvedBy": "Select actual Close button instead of backdrop; no runtime change",
+    "receipt": "timer-selector-initial-browser.json"
+  },
+  "finalUnresolvedOwnedRuntimeAssertions": 0,
+  "productionCalls": 0,
+  "realSQL": false,
+  "realSDKSession": false,
+  "existingBrowserProfile": false,
+  "screenshotsVisuallyInspected": [
+    "after-browser/chromium-320-progress.png"
+  ],
+  "preservation": "Byte-identical member source outside six handlers; exact approved Coach query/check diff; other tracked runtime untouched",
+  "limits": [
+    "Frontend transport mocks are not SQL/RLS or real SDK/provider proof",
+    "Already-dispatched writes cannot be undone or server-deduplicated by client guards",
+    "Per-form/per-row busy does not promise cross-tab or backend idempotency",
+    "Coach denial test covers initial hidden workspace, not portal-wide stale-contact teardown",
+    "Paid activation/family/49-day/allowance/full57 journey acceptance remain blocked or unverified"
+  ],
+  "qa57PartialOnly": [
+    "N02",
+    "N05",
+    "N06",
+    "N07",
+    "C02"
+  ]
+}

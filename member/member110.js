@@ -2264,29 +2264,72 @@
   }
 
   async function markHabit(row) {
-    const {error}=await client.rpc("check_in_my_habit",{
-      p_habit_id:row.id,
-      p_value:1,
-      p_note:null,
-      p_checkin_date:new Date().toISOString().slice(0,10)
-    });
-    if(error){
-      window.alert("Could not log this habit: "+error.message);
-      return;
+    const task = {userId: memberUserId, epoch: memberSessionEpoch, run: dashboardRun};
+    if (!dashboardTaskCurrent(task) || row._memberMutationPending) return;
+    const payload = {p_habit_id: row.id, p_value: 1, p_note: null, p_checkin_date: new Date().toISOString().slice(0,10)};
+    row._memberMutationPending = true;
+    try {
+      const {data: authData, error: authError} = await client.auth.getUser();
+      if (!dashboardTaskCurrent(task)) return;
+      if (authError || authData?.user?.id !== task.userId) {
+        window.alert("Your member session could not be verified. Please sign in again.");
+        return;
+      }
+      const {error} = await client.rpc("check_in_my_habit", payload);
+      if (!dashboardTaskCurrent(task)) return;
+      if (error) { window.alert("Could not log this habit: " + error.message); return; }
+      await loadDashboard();
+    } catch (error) {
+      if (dashboardTaskCurrent(task)) window.alert(error.message || "This update could not be completed.");
+    } finally {
+      row._memberMutationPending = false;
     }
-    await loadDashboard();
   }
 
-  async function updateGoalStatus(row,status){
-    const {error}=await client.rpc("update_my_goal_status",{p_goal_id:row.id,p_status:status});
-    if(error){window.alert(error.message);return;}
-    await loadDashboard();
+  async function updateGoalStatus(row,status) {
+    const task = {userId: memberUserId, epoch: memberSessionEpoch, run: dashboardRun};
+    if (!dashboardTaskCurrent(task) || row._memberMutationPending) return;
+    const payload = {p_goal_id: row.id, p_status: status};
+    row._memberMutationPending = true;
+    try {
+      const {data: authData, error: authError} = await client.auth.getUser();
+      if (!dashboardTaskCurrent(task)) return;
+      if (authError || authData?.user?.id !== task.userId) {
+        window.alert("Your member session could not be verified. Please sign in again.");
+        return;
+      }
+      const {error} = await client.rpc("update_my_goal_status", payload);
+      if (!dashboardTaskCurrent(task)) return;
+      if (error) { window.alert(error.message); return; }
+      await loadDashboard();
+    } catch (error) {
+      if (dashboardTaskCurrent(task)) window.alert(error.message || "This update could not be completed.");
+    } finally {
+      row._memberMutationPending = false;
+    }
   }
 
-  async function updateHabitStatus(row,status){
-    const {error}=await client.rpc("update_my_habit_status",{p_habit_id:row.id,p_status:status});
-    if(error){window.alert(error.message);return;}
-    await loadDashboard();
+  async function updateHabitStatus(row,status) {
+    const task = {userId: memberUserId, epoch: memberSessionEpoch, run: dashboardRun};
+    if (!dashboardTaskCurrent(task) || row._memberMutationPending) return;
+    const payload = {p_habit_id: row.id, p_status: status};
+    row._memberMutationPending = true;
+    try {
+      const {data: authData, error: authError} = await client.auth.getUser();
+      if (!dashboardTaskCurrent(task)) return;
+      if (authError || authData?.user?.id !== task.userId) {
+        window.alert("Your member session could not be verified. Please sign in again.");
+        return;
+      }
+      const {error} = await client.rpc("update_my_habit_status", payload);
+      if (!dashboardTaskCurrent(task)) return;
+      if (error) { window.alert(error.message); return; }
+      await loadDashboard();
+    } catch (error) {
+      if (dashboardTaskCurrent(task)) window.alert(error.message || "This update could not be completed.");
+    } finally {
+      row._memberMutationPending = false;
+    }
   }
 
   function openGoalModal(){
@@ -2303,21 +2346,47 @@
   }
   async function createGoal(event){
     event.preventDefault();
-    const status=el("rm-goal-form-status");
-    showStatus(status,"Creating goal...");
+    const task = {userId: memberUserId, epoch: memberSessionEpoch, run: dashboardRun};
+    const form = event.currentTarget;
+    if (!dashboardTaskCurrent(task) || form.getAttribute("aria-busy") === "true") return;
+    const status = el("rm-goal-form-status");
     const value=el("rm-goal-target-value").value;
-    const {error}=await client.rpc("create_my_goal",{
+    const payload = {
       p_title:el("rm-goal-title").value.trim(),
       p_description:el("rm-goal-description").value.trim()||null,
       p_target_value:value===""?null:Number(value),
       p_target_unit:el("rm-goal-target-unit").value.trim()||null,
       p_target_date:el("rm-goal-target-date").value||null,
       p_priority:Number(el("rm-goal-priority").value||2)
-    });
-    if(error){showStatus(status,error.message,"error");return;}
-    showStatus(status,"Goal created.","success");
-    await loadDashboard();
-    window.setTimeout(closeGoalModal,450);
+    };
+    const submit = form.querySelector('button[type="submit"]');
+    form.setAttribute("aria-busy", "true");
+    submit.disabled = true;
+    showStatus(status, "Creating goal...");
+    try {
+      const {data: authData, error: authError} = await client.auth.getUser();
+      if (!dashboardTaskCurrent(task)) return;
+      if (authError || authData?.user?.id !== task.userId) {
+        showStatus(status, "Your member session could not be verified. Please sign in again.", "error");
+        return;
+      }
+      const {error} = await client.rpc("create_my_goal", payload);
+      if (!dashboardTaskCurrent(task)) return;
+      if (error) { showStatus(status, error.message, "error"); return; }
+      showStatus(status, "Goal created.", "success");
+      const refreshedTask = {...task, run: task.run + 1};
+      await loadDashboard();
+      if (!dashboardTaskCurrent(refreshedTask)) return;
+      window.setTimeout(() => {
+        if (dashboardTaskCurrent(refreshedTask) && status.textContent === "Goal created." &&
+            form.getAttribute("aria-busy") !== "true") closeGoalModal();
+      }, 450);
+    } catch (error) {
+      if (dashboardTaskCurrent(task)) showStatus(status, error.message || "This goal could not be created.", "error");
+    } finally {
+      form.removeAttribute("aria-busy");
+      submit.disabled = false;
+    }
   }
 
   function openHabitModal(){
@@ -2337,20 +2406,46 @@
   }
   async function createHabit(event){
     event.preventDefault();
-    const status=el("rm-habit-form-status");
-    showStatus(status,"Creating habit...");
-    const {error}=await client.rpc("create_my_habit",{
+    const task = {userId: memberUserId, epoch: memberSessionEpoch, run: dashboardRun};
+    const form = event.currentTarget;
+    if (!dashboardTaskCurrent(task) || form.getAttribute("aria-busy") === "true") return;
+    const status = el("rm-habit-form-status");
+    const payload = {
       p_title:el("rm-habit-title").value.trim(),
       p_category:el("rm-habit-category").value,
       p_frequency:el("rm-habit-frequency").value,
       p_target_per_period:Number(el("rm-habit-target").value||1),
       p_unit:el("rm-habit-unit").value.trim()||null,
       p_starts_on:el("rm-habit-start-date").value||new Date().toISOString().slice(0,10)
-    });
-    if(error){showStatus(status,error.message,"error");return;}
-    showStatus(status,"Habit created.","success");
-    await loadDashboard();
-    window.setTimeout(closeHabitModal,450);
+    };
+    const submit = form.querySelector('button[type="submit"]');
+    form.setAttribute("aria-busy", "true");
+    submit.disabled = true;
+    showStatus(status, "Creating habit...");
+    try {
+      const {data: authData, error: authError} = await client.auth.getUser();
+      if (!dashboardTaskCurrent(task)) return;
+      if (authError || authData?.user?.id !== task.userId) {
+        showStatus(status, "Your member session could not be verified. Please sign in again.", "error");
+        return;
+      }
+      const {error} = await client.rpc("create_my_habit", payload);
+      if (!dashboardTaskCurrent(task)) return;
+      if (error) { showStatus(status, error.message, "error"); return; }
+      showStatus(status, "Habit created.", "success");
+      const refreshedTask = {...task, run: task.run + 1};
+      await loadDashboard();
+      if (!dashboardTaskCurrent(refreshedTask)) return;
+      window.setTimeout(() => {
+        if (dashboardTaskCurrent(refreshedTask) && status.textContent === "Habit created." &&
+            form.getAttribute("aria-busy") !== "true") closeHabitModal();
+      }, 450);
+    } catch (error) {
+      if (dashboardTaskCurrent(task)) showStatus(status, error.message || "This habit could not be created.", "error");
+    } finally {
+      form.removeAttribute("aria-busy");
+      submit.disabled = false;
+    }
   }
 
   async function updateAssignmentStatus(row,status){
@@ -3451,11 +3546,11 @@
 
   el("rm-progress-form").addEventListener("submit", async (event) => {
     event.preventDefault();
-    if (!currentMember) return;
-
+    const task = {userId: memberUserId, epoch: memberSessionEpoch, run: dashboardRun};
+    const form = event.currentTarget;
+    if (!dashboardTaskCurrent(task) || !currentMember || form.getAttribute("aria-busy") === "true") return;
+    const member = {contact_id: currentMember.contact_id, membership_id: currentMember.membership_id};
     const status = el("rm-progress-status");
-    showStatus(status, "Saving progress...");
-
     const metric = metricCatalog.find((row) => row.metric_key === el("rm-progress-metric").value);
     const value = Number(el("rm-progress-value").value);
 
@@ -3474,27 +3569,40 @@
       return;
     }
 
-    const { data: { user } } = await client.auth.getUser();
-    const { error } = await client.from("progress_entries").insert({
-      contact_id: currentMember.contact_id,
-      membership_id: currentMember.membership_id,
+    const payload = {
+      contact_id: member.contact_id,
+      membership_id: member.membership_id,
       metric_key: metric.metric_key,
       value_numeric: value,
       recorded_at: new Date().toISOString(),
       source: "member",
-      created_by: user?.id || null,
+      created_by: task.userId,
       note: el("rm-progress-note").value.trim() || null
-    });
-
-    if (error) {
-      showStatus(status, error.message, "error");
-      return;
+    };
+    const submit = form.querySelector('button[type="submit"]');
+    form.setAttribute("aria-busy", "true");
+    submit.disabled = true;
+    showStatus(status, "Saving progress...");
+    try {
+      const {data: authData, error: authError} = await client.auth.getUser();
+      if (!dashboardTaskCurrent(task)) return;
+      if (authError || authData?.user?.id !== task.userId) {
+        showStatus(status, "Your member session could not be verified. Please sign in again.", "error");
+        return;
+      }
+      const {error} = await client.from("progress_entries").insert(payload);
+      if (!dashboardTaskCurrent(task)) return;
+      if (error) { showStatus(status, error.message, "error"); return; }
+      el("rm-progress-value").value = "";
+      el("rm-progress-note").value = "";
+      showStatus(status, "Progress saved.", "success");
+      await loadDashboard();
+    } catch (error) {
+      if (dashboardTaskCurrent(task)) showStatus(status, error.message || "Progress could not be saved.", "error");
+    } finally {
+      form.removeAttribute("aria-busy");
+      submit.disabled = false;
     }
-
-    el("rm-progress-value").value = "";
-    el("rm-progress-note").value = "";
-    showStatus(status, "Progress saved.", "success");
-    await loadDashboard();
   });
 
   el("rm-checkin-form").addEventListener("submit", async (event) => {

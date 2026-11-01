@@ -1,0 +1,22 @@
+✔ BASELINE progress pending identity switch throws before write (157.853583ms)
+✔ BASELINE progress pending identity logout throws before write (82.273ms)
+✔ BASELINE goal duplicate pending submit dispatches twice (81.300667ms)
+✔ BASELINE habit duplicate pending submit dispatches twice (76.215375ms)
+✔ BASELINE goal late denial alerts after switch (64.777166ms)
+✔ BASELINE habit late denial alerts after switch (83.669542ms)
+✔ BASELINE progress pending identity reads changed note instead of submitted snapshot (77.354958ms)
+✔ BASELINE habit mark-today late denial alerts after logout (68.8065ms)
+✔ UNCHANGED Coach full module reproduces missing capacity result on fictional active membership (194.104708ms)
+✔ fixed full Coach loader selects existing six-field capacity contract and keeps assigned Coach enabled (175.366625ms)
+✔ fixed full Coach loader empty capacity preserves staff selection without fabricating limits (101.199666ms)
+✔ fixed full Coach loader surfaces denied capacity without showing prepared coaching workspace (88.555834ms)
+✔ unchanged Coach goal handler preserves contact/member/actor payload and displays backend denial (505.683792ms)
+✔ unchanged Coach habit handler preserves contact/member/actor payload and displays backend denial (449.080083ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1190.277459

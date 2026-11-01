@@ -1,0 +1,142 @@
+{
+  "issue": "54/53",
+  "ownerNativeAgent": "/root/roadmap_design_contract_audit",
+  "branch": "codex/rva-wave4-member-20261101",
+  "base": "5926b915f60b1be6d009c94362b91356a303cb33",
+  "worktree": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member",
+  "status": "VERIFIED_LOCAL_AWAITING_INDEPENDENT_QA",
+  "commit": "Exact final SHA returned to Master after local commit; no push",
+  "modifiedRuntime": [
+    "member/member110.js six approved handlers",
+    "portal/portal-coaching.js missing existing capacity query + failure check"
+  ],
+  "otherOwnedPaths": [
+    "tests/wave4-member/",
+    "docs/orchestration/issue-54/wave4/"
+  ],
+  "masterApprovals": [
+    "Baseline-reproduced six member handler contract",
+    "Existing six-field invoker admin_coach_capacity query/check contract"
+  ],
+  "actualCounters": {
+    "scope": "LOCAL_ACTUAL_JS_DOM_WITH_FICTIONAL_TRANSPORTS",
+    "base": "5926b915f60b1be6d009c94362b91356a303cb33",
+    "branch": "codex/rva-wave4-member-20261101",
+    "before44Continuity": {
+      "tests": 44,
+      "pass": 15,
+      "fail": 29
+    },
+    "beforeModalReopenEdge": {
+      "tests": 2,
+      "pass": 0,
+      "fail": 2
+    },
+    "finalLaneDOM": {
+      "tests": 97,
+      "pass": 97,
+      "fail": 0
+    },
+    "finalLaneBreakdown": {
+      "currentContinuity": 80,
+      "preservation": 3,
+      "expectedMemberBaselineReproductions": 8,
+      "expectedCoachBaselineReproduction": 1,
+      "CoachMutationDenialPayload": 2,
+      "CoachLoaderCurrent": 3
+    },
+    "inheritedBefore": {
+      "tests": 21,
+      "pass": 21,
+      "fail": 0
+    },
+    "inheritedAfter": {
+      "tests": 21,
+      "pass": 21,
+      "fail": 0
+    },
+    "browserFinal": {
+      "pass": 34,
+      "fail": 0
+    },
+    "browserExpectedBaselineReproductions": 2,
+    "initialBrowserBaselineOnly": {
+      "pass": 2,
+      "fail": 0
+    },
+    "intermediateBrowserFixtureSelectorFailures": {
+      "pass": 30,
+      "fail": 4,
+      "resolvedBy": "Select actual Close button instead of backdrop; no runtime change",
+      "receipt": "timer-selector-initial-browser.json"
+    },
+    "finalUnresolvedOwnedRuntimeAssertions": 0,
+    "productionCalls": 0,
+    "realSQL": false,
+    "realSDKSession": false,
+    "existingBrowserProfile": false,
+    "screenshotsVisuallyInspected": [
+      "after-browser/chromium-320-progress.png"
+    ],
+    "preservation": "Byte-identical member source outside six handlers; exact approved Coach query/check diff; other tracked runtime untouched",
+    "limits": [
+      "Frontend transport mocks are not SQL/RLS or real SDK/provider proof",
+      "Already-dispatched writes cannot be undone or server-deduplicated by client guards",
+      "Per-form/per-row busy does not promise cross-tab or backend idempotency",
+      "Coach denial test covers initial hidden workspace, not portal-wide stale-contact teardown",
+      "Paid activation/family/49-day/allowance/full57 journey acceptance remain blocked or unverified"
+    ],
+    "qa57PartialOnly": [
+      "N02",
+      "N05",
+      "N06",
+      "N07",
+      "C02"
+    ]
+  },
+  "sourcePins": {
+    "base": "5926b915f60b1be6d009c94362b91356a303cb33",
+    "baselineSource": {
+      "member/member110.js": "080ae58a104cb3ed7e30cb71e0206400a256bebc60aacc415dd453dc871e654f",
+      "portal/portal-coaching.js": "166be79c0490b425c02795bfd8755ff2b311031af22f1078c23080a6b907577b",
+      "member/dashboard.html": "66d6f222fa12f2a1dd800ba34822df009ecb895c0a0b8fa561896419fe58c54a",
+      "portal/index.html": "a3d02ab2a8ed638ffc00a47d7e332a6b843a8e6b43684b1d20379a3256a879ec"
+    },
+    "currentSource": {
+      "member/member110.js": "c8de97310700cb57a0373aa7241dc412b48153b06ff3e3f2ecd0bfe9ec81260e",
+      "portal/portal-coaching.js": "618996521562470ff840cf84895e9ad4b946c2d21b55b9cc860ade70a2ba4893",
+      "member/dashboard.html": "66d6f222fa12f2a1dd800ba34822df009ecb895c0a0b8fa561896419fe58c54a",
+      "portal/index.html": "a3d02ab2a8ed638ffc00a47d7e332a6b843a8e6b43684b1d20379a3256a879ec"
+    },
+    "metadataReadByMasterOnly": {
+      "path": "../deployment-evidence/2026-11-01-wave4/coach-capacity-metadata.json",
+      "sha256": "a9818db385c93e6242b1f0d20564ea93e4d224dc6157ebe4f3b0e9472e1563eb"
+    },
+    "realSQLRunThisWave": false,
+    "productionCallsByLane": 0
+  },
+  "artifactSHA256": {
+    "docs/orchestration/issue-54/wave4/RESULTS.json": "12abdab9ae0365d71264c1523e4a4149b2873a73e0fc8c51a8304b43ab1726d3",
+    "docs/orchestration/issue-54/wave4/after-browser/BROWSER_RESULTS.json": "7559eed6badaa8028d98d00ecf3381beb8805aa98f020512a64fb856d960d37b",
+    "docs/orchestration/issue-54/wave4/final-dom.tap": "bb27848f3124279404862db3b8c78884b1e5439e624b73afd6ad66a209e7bfe6",
+    "docs/orchestration/issue-54/wave4/inherited-after.tap": "5054856823d0e367f83b704d955665620ddc8306e66aad86c01601d626bee4ba",
+    "member/member110.js": "c8de97310700cb57a0373aa7241dc412b48153b06ff3e3f2ecd0bfe9ec81260e",
+    "portal/portal-coaching.js": "618996521562470ff840cf84895e9ad4b946c2d21b55b9cc860ade70a2ba4893",
+    "tests/wave4-member/README.md": "6e517397693d80ea04fe2eca168fe8a96fbf5063b4eea0681f230dc9c7f5bc50",
+    "tests/wave4-member/baseline.test.cjs": "9f11d02c5add4478229fa7b7781c4319c6a5c03d567f879a9f86bf23ad12f97c",
+    "tests/wave4-member/browser-transport.cjs": "247c712b0e0c797c511270fb84bce11f5c04b8f50312dea9893a9a9178a74bb4",
+    "tests/wave4-member/browser.cjs": "2b7145bd208bf5b0bb843c68359ca8fe29dc491c87140813cebecca5d116c040",
+    "tests/wave4-member/coach-discovery.test.cjs": "cd1e83e9051d0b98decfbeb06ed3472aa7c2f82b58445500dfc689ca35b10679",
+    "tests/wave4-member/coach-loader.test.cjs": "bc36a2e730d613daa61de5c1ee8e981b55668a451fc9582a0769b7c7d748e5cf",
+    "tests/wave4-member/coach-operations.test.cjs": "525591b6ba7bacae579de62d57b27fd80edecf5fab3bca514a3177d4abdfe465",
+    "tests/wave4-member/continuity.test.cjs": "7143f4a73ca830d7f96eb0a71c03f7d766009f25b6f4aa6679078c0185e56cef",
+    "tests/wave4-member/dom-fixture.cjs": "f79f07a0710d84a3d080918bd0743ccb9f422a0abf5d85c3fe97e876376f7328",
+    "tests/wave4-member/preservation.test.cjs": "6e9380df81a5b75bb9c04209b27b6e8a80cfb42133631e921e507ac02366958b",
+    "tests/wave4-member/source-pins.json": "ae1a1042a7f9814963933626f0833fcb4c9e0bd2e141a229e76d955d7f1d4b69"
+  },
+  "rollback": "Restore exactly two runtime files from accepted base; reintroduces demonstrated races and Coach loader error, no DB/data rollback",
+  "nextGate": "Independent QA exact commit; Master integration; separate production release approval",
+  "Alex": "PAUSED; untouched/no private reads/Auth/grants/processing",
+  "productionMutation": false,
+  "sharedAuthCSSSchemaAssetsNavigationUnchanged": true
+}

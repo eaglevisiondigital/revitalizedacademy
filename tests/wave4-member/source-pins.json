@@ -1,0 +1,21 @@
+{
+  "base": "5926b915f60b1be6d009c94362b91356a303cb33",
+  "baselineSource": {
+    "member/member110.js": "080ae58a104cb3ed7e30cb71e0206400a256bebc60aacc415dd453dc871e654f",
+    "portal/portal-coaching.js": "166be79c0490b425c02795bfd8755ff2b311031af22f1078c23080a6b907577b",
+    "member/dashboard.html": "66d6f222fa12f2a1dd800ba34822df009ecb895c0a0b8fa561896419fe58c54a",
+    "portal/index.html": "a3d02ab2a8ed638ffc00a47d7e332a6b843a8e6b43684b1d20379a3256a879ec"
+  },
+  "currentSource": {
+    "member/member110.js": "c8de97310700cb57a0373aa7241dc412b48153b06ff3e3f2ecd0bfe9ec81260e",
+    "portal/portal-coaching.js": "618996521562470ff840cf84895e9ad4b946c2d21b55b9cc860ade70a2ba4893",
+    "member/dashboard.html": "66d6f222fa12f2a1dd800ba34822df009ecb895c0a0b8fa561896419fe58c54a",
+    "portal/index.html": "a3d02ab2a8ed638ffc00a47d7e332a6b843a8e6b43684b1d20379a3256a879ec"
+  },
+  "metadataReadByMasterOnly": {
+    "path": "../deployment-evidence/2026-11-01-wave4/coach-capacity-metadata.json",
+    "sha256": "a9818db385c93e6242b1f0d20564ea93e4d224dc6157ebe4f3b0e9472e1563eb"
+  },
+  "realSQLRunThisWave": false,
+  "productionCallsByLane": 0
+}

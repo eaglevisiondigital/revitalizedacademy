@@ -1,0 +1,27 @@
+{
+  "scope": "ACTUAL_MEMBER_JS_DOM_FICTIONAL_TRANSPORT_ONLY",
+  "base": "5926b915f60b1be6d009c94362b91356a303cb33",
+  "results": [
+    {
+      "engine": "chromium",
+      "name": "BASELINE progress pending logout throws",
+      "status": "PASS",
+      "baseline": true,
+      "expectedError": true
+    },
+    {
+      "engine": "webkit",
+      "name": "BASELINE progress pending logout throws",
+      "status": "PASS",
+      "baseline": true,
+      "expectedError": true
+    }
+  ],
+  "counts": {
+    "pass": 2,
+    "fail": 0
+  },
+  "productionCalls": 0,
+  "realSDK": false,
+  "actualSQL": false
+}

@@ -1,0 +1,217 @@
+{
+  "scope": "ACTUAL_MEMBER_JS_DOM_FICTIONAL_TRANSPORT_ONLY",
+  "base": "5926b915f60b1be6d009c94362b91356a303cb33",
+  "results": [
+    {
+      "engine": "chromium",
+      "name": "BASELINE progress pending logout throws",
+      "status": "PASS",
+      "baseline": true,
+      "expectedError": true
+    },
+    {
+      "engine": "chromium",
+      "name": "goal form focus/server error/retry at 320",
+      "status": "PASS",
+      "width": 320
+    },
+    {
+      "engine": "chromium",
+      "name": "habit form focus/server error/retry at 320",
+      "status": "PASS",
+      "width": 320
+    },
+    {
+      "engine": "chromium",
+      "name": "progress form focus/server error/retry at 320",
+      "status": "PASS",
+      "width": 320
+    },
+    {
+      "engine": "chromium",
+      "name": "goal form focus/server error/retry at 768",
+      "status": "PASS",
+      "width": 768
+    },
+    {
+      "engine": "chromium",
+      "name": "habit form focus/server error/retry at 768",
+      "status": "PASS",
+      "width": 768
+    },
+    {
+      "engine": "chromium",
+      "name": "progress form focus/server error/retry at 768",
+      "status": "PASS",
+      "width": 768
+    },
+    {
+      "engine": "chromium",
+      "name": "goal form focus/server error/retry at 1440",
+      "status": "PASS",
+      "width": 1440
+    },
+    {
+      "engine": "chromium",
+      "name": "habit form focus/server error/retry at 1440",
+      "status": "PASS",
+      "width": 1440
+    },
+    {
+      "engine": "chromium",
+      "name": "progress form focus/server error/retry at 1440",
+      "status": "PASS",
+      "width": 1440
+    },
+    {
+      "engine": "chromium",
+      "name": "goal pending submit deduplicates and renewal preserves current task",
+      "status": "PASS"
+    },
+    {
+      "engine": "chromium",
+      "name": "habit pending submit deduplicates and renewal preserves current task",
+      "status": "PASS"
+    },
+    {
+      "engine": "chromium",
+      "name": "progress pending submit deduplicates and renewal preserves current task",
+      "status": "PASS"
+    },
+    {
+      "engine": "chromium",
+      "name": "goal old close timer preserves newly reopened draft",
+      "status": "FAIL",
+      "message": "locator.click: Timeout 7000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#rm-goal-modal [data-goal-close]').first()\u001b[22m\n\u001b[2m    - locator resolved to <div data-goal-close=\"\" class=\"rm119-modal-backdrop\"></div>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <textarea rows=\"3\" maxlength=\"1200\" id=\"rm-goal-description\"></textarea> from <section role=\"dialog\" aria-modal=\"true\" class=\"rm119-dialog rm190-dialog\" aria-labelledby=\"rm-goal-modal-title\">…</section> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <textarea rows=\"3\" maxlength=\"1200\" id=\"rm-goal-description\"></textarea> from <section role=\"dialog\" aria-modal=\"true\" class=\"rm119-dialog rm190-dialog\" aria-labelledby=\"rm-goal-modal-title\">…</section> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    13 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <textarea rows=\"3\" maxlength=\"1200\" id=\"rm-goal-description\"></textarea> from <section role=\"dialog\" aria-modal=\"true\" class=\"rm119-dialog rm190-dialog\" aria-labelledby=\"rm-goal-modal-title\">…</section> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+      "errors": [],
+      "gateModalTimers": true
+    },
+    {
+      "engine": "chromium",
+      "name": "habit old close timer preserves newly reopened draft",
+      "status": "FAIL",
+      "message": "locator.click: Timeout 7000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#rm-habit-modal [data-habit-close]').first()\u001b[22m\n\u001b[2m    - locator resolved to <div data-habit-close=\"\" class=\"rm119-modal-backdrop\"></div>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"rm190-form-grid\">…</div> from <section role=\"dialog\" aria-modal=\"true\" class=\"rm119-dialog rm190-dialog\" aria-labelledby=\"rm-habit-modal-title\">…</section> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"rm190-form-grid\">…</div> from <section role=\"dialog\" aria-modal=\"true\" class=\"rm119-dialog rm190-dialog\" aria-labelledby=\"rm-habit-modal-title\">…</section> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    13 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <div class=\"rm190-form-grid\">…</div> from <section role=\"dialog\" aria-modal=\"true\" class=\"rm119-dialog rm190-dialog\" aria-labelledby=\"rm-habit-modal-title\">…</section> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+      "errors": [],
+      "gateModalTimers": true
+    },
+    {
+      "engine": "chromium",
+      "name": "progress pending identity switch clears old DOM without throwing",
+      "status": "PASS"
+    },
+    {
+      "engine": "chromium",
+      "name": "progress pending identity logout clears old DOM without throwing",
+      "status": "PASS"
+    },
+    {
+      "engine": "webkit",
+      "name": "BASELINE progress pending logout throws",
+      "status": "PASS",
+      "baseline": true,
+      "expectedError": true
+    },
+    {
+      "engine": "webkit",
+      "name": "goal form focus/server error/retry at 320",
+      "status": "PASS",
+      "width": 320
+    },
+    {
+      "engine": "webkit",
+      "name": "habit form focus/server error/retry at 320",
+      "status": "PASS",
+      "width": 320
+    },
+    {
+      "engine": "webkit",
+      "name": "progress form focus/server error/retry at 320",
+      "status": "PASS",
+      "width": 320
+    },
+    {
+      "engine": "webkit",
+      "name": "goal form focus/server error/retry at 768",
+      "status": "PASS",
+      "width": 768
+    },
+    {
+      "engine": "webkit",
+      "name": "habit form focus/server error/retry at 768",
+      "status": "PASS",
+      "width": 768
+    },
+    {
+      "engine": "webkit",
+      "name": "progress form focus/server error/retry at 768",
+      "status": "PASS",
+      "width": 768
+    },
+    {
+      "engine": "webkit",
+      "name": "goal form focus/server error/retry at 1440",
+      "status": "PASS",
+      "width": 1440
+    },
+    {
+      "engine": "webkit",
+      "name": "habit form focus/server error/retry at 1440",
+      "status": "PASS",
+      "width": 1440
+    },
+    {
+      "engine": "webkit",
+      "name": "progress form focus/server error/retry at 1440",
+      "status": "PASS",
+      "width": 1440
+    },
+    {
+      "engine": "webkit",
+      "name": "goal pending submit deduplicates and renewal preserves current task",
+      "status": "PASS"
+    },
+    {
+      "engine": "webkit",
+      "name": "habit pending submit deduplicates and renewal preserves current task",
+      "status": "PASS"
+    },
+    {
+      "engine": "webkit",
+      "name": "progress pending submit deduplicates and renewal preserves current task",
+      "status": "PASS"
+    },
+    {
+      "engine": "webkit",
+      "name": "goal old close timer preserves newly reopened draft",
+      "status": "FAIL",
+      "message": "locator.click: Timeout 7000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#rm-goal-modal [data-goal-close]').first()\u001b[22m\n\u001b[2m    - locator resolved to <div data-goal-close=\"\" class=\"rm119-modal-backdrop\"></div>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <textarea rows=\"3\" maxlength=\"1200\" id=\"rm-goal-description\"></textarea> from <section role=\"dialog\" aria-modal=\"true\" class=\"rm119-dialog rm190-dialog\" aria-labelledby=\"rm-goal-modal-title\">…</section> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <textarea rows=\"3\" maxlength=\"1200\" id=\"rm-goal-description\"></textarea> from <section role=\"dialog\" aria-modal=\"true\" class=\"rm119-dialog rm190-dialog\" aria-labelledby=\"rm-goal-modal-title\">…</section> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    13 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <textarea rows=\"3\" maxlength=\"1200\" id=\"rm-goal-description\"></textarea> from <section role=\"dialog\" aria-modal=\"true\" class=\"rm119-dialog rm190-dialog\" aria-labelledby=\"rm-goal-modal-title\">…</section> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+      "errors": [],
+      "gateModalTimers": true
+    },
+    {
+      "engine": "webkit",
+      "name": "habit old close timer preserves newly reopened draft",
+      "status": "FAIL",
+      "message": "locator.click: Timeout 7000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#rm-habit-modal [data-habit-close]').first()\u001b[22m\n\u001b[2m    - locator resolved to <div data-habit-close=\"\" class=\"rm119-modal-backdrop\"></div>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"rm190-form-grid\">…</div> from <section role=\"dialog\" aria-modal=\"true\" class=\"rm119-dialog rm190-dialog\" aria-labelledby=\"rm-habit-modal-title\">…</section> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"rm190-form-grid\">…</div> from <section role=\"dialog\" aria-modal=\"true\" class=\"rm119-dialog rm190-dialog\" aria-labelledby=\"rm-habit-modal-title\">…</section> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    13 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <div class=\"rm190-form-grid\">…</div> from <section role=\"dialog\" aria-modal=\"true\" class=\"rm119-dialog rm190-dialog\" aria-labelledby=\"rm-habit-modal-title\">…</section> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+      "errors": [],
+      "gateModalTimers": true
+    },
+    {
+      "engine": "webkit",
+      "name": "progress pending identity switch clears old DOM without throwing",
+      "status": "PASS"
+    },
+    {
+      "engine": "webkit",
+      "name": "progress pending identity logout clears old DOM without throwing",
+      "status": "PASS"
+    }
+  ],
+  "counts": {
+    "pass": 30,
+    "fail": 4
+  },
+  "productionCalls": 0,
+  "realSDK": false,
+  "actualSQL": false
+}

@@ -1,0 +1,15 @@
+'use strict';
+const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs');
+const {JSDOM,VirtualConsole}=require('../wave2-client/dependencies.cjs').jsdom();
+async function fixture(){
+ const writes=[],handlers=new Map(),vc=new VirtualConsole();vc.on('error',()=>{});
+ const dom=new JSDOM(fs.readFileSync('portal/index.html','utf8'),{url:'https://coach.synthetic.invalid/portal/',runScripts:'outside-only',virtualConsole:vc}),w=dom.window;
+ const add=w.EventTarget.prototype.addEventListener;w.EventTarget.prototype.addEventListener=function(type,fn,...rest){if(this.id)handlers.set(this.id+':'+type,fn);return add.call(this,type,fn,...rest);};
+ function from(table){let single=false,method,payload;const q={};for(const n of ['select','eq','order','limit'])q[n]=()=>q;for(const n of ['single','maybeSingle'])q[n]=()=>{single=true;return q;};for(const n of ['insert','update'])q[n]=p=>{method=n;payload=p;return q;};q.then=(yes,no)=>{if(method){writes.push({table,method,payload:structuredClone(payload)});return Promise.resolve({data:null,error:{code:'42501',message:'Fictional scoped denial'}}).then(yes,no);}return Promise.resolve({data:table==='client_access'?{contact_id:'fictional-contact',membership_id:'fictional-membership',household_id:'fictional-household'}:table==='client_memberships'?{id:'fictional-membership',status:'active'}:single?{}:[],error:null}).then(yes,no);};return q;}
+ w.RA_PORTAL={authClient:{from},titleCase:s=>s,staffDirectory:()=>[],currentUserId:()=> 'fictional-coach',loadDashboard:async()=>{},logActivity:async()=>{}};w.fetch=()=>{throw Error('external_forbidden');};w.eval(fs.readFileSync('portal/portal-coaching.js','utf8'));w.document.dispatchEvent(new w.CustomEvent('ra:contact-opened',{detail:{contactId:'fictional-contact',contact:{id:'fictional-contact',first_name:'Fictional',last_name:'Adult'}}}));
+ for(let i=0;i<30&&!w.document.getElementById('client-coaching-status').textContent;i++)await new Promise(r=>setTimeout(r,10));
+ return {w,writes,async submit(kind){const id='coaching-'+kind+'-form',target=w.document.getElementById(id);await handlers.get(id+':submit').call(target,{preventDefault(){},currentTarget:target});},close:()=>w.close()};
+}
+for(const kind of ['goal','habit'])test('unchanged Coach '+kind+' handler preserves contact/member/actor payload and displays backend denial',async()=>{
+ const f=await fixture();try{f.w.document.getElementById('coaching-'+kind+'-title').value='Fictional '+kind;await f.submit(kind);assert.equal(f.writes.length,1);const x=f.writes[0];assert.equal(x.table,'client_'+kind+'s');assert.equal(x.payload.contact_id,'fictional-contact');assert.equal(x.payload.membership_id,'fictional-membership');assert.equal(x.payload[kind==='goal'?'created_by_user_id':'created_by'],'fictional-coach');assert.equal(f.w.document.getElementById('coaching-'+kind+'-status').textContent,'Fictional scoped denial');assert.equal(f.w.document.getElementById('coaching-'+kind+'-title').value,'Fictional '+kind);}finally{f.close();}
+});

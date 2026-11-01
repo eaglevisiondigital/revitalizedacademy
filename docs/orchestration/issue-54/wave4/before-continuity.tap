@@ -1,0 +1,534 @@
+✖ progress pending identity switch ignores stale request (1354.081709ms)
+✖ progress pending identity logout ignores stale request (157.7755ms)
+✖ progress identity failure denies {"authUserId":null} (68.465334ms)
+✖ progress identity failure denies {"authUserId":"synthetic-b"} (67.970792ms)
+✖ progress identity failure denies {"authError":{"message":"Fictional auth unavailable"}} (86.638417ms)
+✖ progress snapshot survives changed input and same-account renewal (69.860667ms)
+✖ goal concurrent submits dispatch once and unlock for retry (54.022834ms)
+✖ habit concurrent submits dispatch once and unlock for retry (59.306458ms)
+✖ progress concurrent submits dispatch once and unlock for retry (66.3555ms)
+✔ goal server 42501 remains visible and retryable (49.560375ms)
+✔ goal server 23505 remains visible and retryable (48.938375ms)
+✔ habit server 42501 remains visible and retryable (50.15075ms)
+✔ habit server 23505 remains visible and retryable (55.434709ms)
+✔ progress server 42501 remains visible and retryable (47.386291ms)
+✔ progress server 23505 remains visible and retryable (46.346166ms)
+✖ goal pending transport success after switch has no late UI/reload (57.161541ms)
+✖ goal pending transport denial after switch has no late UI/reload (55.344125ms)
+✖ goal pending transport success after logout has no late UI/reload (60.732542ms)
+✖ goal pending transport denial after logout has no late UI/reload (49.148416ms)
+✖ habit pending transport success after switch has no late UI/reload (48.018792ms)
+✖ habit pending transport denial after switch has no late UI/reload (70.774417ms)
+✖ habit pending transport success after logout has no late UI/reload (337.652375ms)
+✖ habit pending transport denial after logout has no late UI/reload (304.645625ms)
+✖ progress pending transport success after switch has no late UI/reload (911.306875ms)
+✖ progress pending transport denial after switch has no late UI/reload (189.266666ms)
+✖ progress pending transport success after logout has no late UI/reload (77.994125ms)
+✖ progress pending transport denial after logout has no late UI/reload (64.218917ms)
+✔ goal status completion after switch stays silent false (61.212125ms)
+✖ goal status completion after switch stays silent true (48.072375ms)
+✔ goal status completion after logout stays silent false (48.149708ms)
+✖ goal status completion after logout stays silent true (50.794583ms)
+✔ habit status completion after switch stays silent false (51.457833ms)
+✖ habit status completion after switch stays silent true (53.036833ms)
+✔ habit status completion after logout stays silent false (52.42425ms)
+✖ habit status completion after logout stays silent true (47.385917ms)
+✖ goal row pending status double tap dispatches once; renewal retains task (50.534625ms)
+✖ habit row pending status double tap dispatches once; renewal retains task (80.033041ms)
+✔ progress range -1 rejects before identity/write (47.258875ms)
+✔ progress range 101 rejects before identity/write (46.619417ms)
+✔ progress zero remains a valid fictional measurement (54.084792ms)
+✔ goal normal current actor success preserves scoped RPC payload (61.677542ms)
+✔ habit normal current actor success preserves scoped RPC payload (54.471667ms)
+✖ habit mark-today stale completion stays silent after switch (48.159833ms)
+✖ habit mark-today stale completion stays silent after logout (50.118792ms)
+ℹ tests 44
+ℹ suites 0
+ℹ pass 15
+ℹ fail 29
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5880.433292
+
+✖ failing tests:
+
+test at tests/wave4-member/continuity.test.cjs:7:40
+✖ progress pending identity switch ignores stale request (1354.081709ms)
+  TypeError: Cannot read properties of null (reading 'contact_id')
+      at Proxy.eval (eval at memberFixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/dom-fixture.cjs:44:41), <anonymous>:3479:33)
+      at async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/continuity.test.cjs:8:162)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+
+test at tests/wave4-member/continuity.test.cjs:7:40
+✖ progress pending identity logout ignores stale request (157.7755ms)
+  TypeError: Cannot read properties of null (reading 'contact_id')
+      at Proxy.eval (eval at memberFixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/dom-fixture.cjs:44:41), <anonymous>:3479:33)
+      at async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/continuity.test.cjs:8:162)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+
+test at tests/wave4-member/continuity.test.cjs:10:117
+✖ progress identity failure denies {"authUserId":null} (68.465334ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  1 !== 0
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/continuity.test.cjs:11:104)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/continuity.test.cjs:10:117
+✖ progress identity failure denies {"authUserId":"synthetic-b"} (67.970792ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  1 !== 0
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/continuity.test.cjs:11:104)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/continuity.test.cjs:10:117
+✖ progress identity failure denies {"authError":{"message":"Fictional auth unavailable"}} (86.638417ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  1 !== 0
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/continuity.test.cjs:11:104)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/continuity.test.cjs:13:1
+✖ progress snapshot survives changed input and same-account renewal (69.860667ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + 'Fictional later draft'
+  - 'Fictional submitted note'
+               ^
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/continuity.test.cjs:14:264)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Fictional later draft',
+    expected: 'Fictional submitted note',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/continuity.test.cjs:16:47
+✖ goal concurrent submits dispatch once and unlock for retry (54.022834ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  2 !== 1
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/continuity.test.cjs:17:214)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/continuity.test.cjs:16:47
+✖ habit concurrent submits dispatch once and unlock for retry (59.306458ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  2 !== 1
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/continuity.test.cjs:17:214)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/continuity.test.cjs:16:47
+✖ progress concurrent submits dispatch once and unlock for retry (66.3555ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  2 !== 1
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/continuity.test.cjs:17:214)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/continuity.test.cjs:22:160
+✖ goal pending transport success after switch has no late UI/reload (57.161541ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + 'Goal created.'
+  - 'Creating goal...'
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/continuity.test.cjs:23:438)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Goal created.',
+    expected: 'Creating goal...',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/continuity.test.cjs:22:160
+✖ goal pending transport denial after switch has no late UI/reload (55.344125ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + 'Fictional stale denial'
+  - 'Creating goal...'
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/continuity.test.cjs:23:438)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Fictional stale denial',
+    expected: 'Creating goal...',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/continuity.test.cjs:22:160
+✖ goal pending transport success after logout has no late UI/reload (60.732542ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + 'Goal created.'
+  - 'Creating goal...'
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/continuity.test.cjs:23:438)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Goal created.',
+    expected: 'Creating goal...',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/continuity.test.cjs:22:160
+✖ goal pending transport denial after logout has no late UI/reload (49.148416ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + 'Fictional stale denial'
+  - 'Creating goal...'
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/continuity.test.cjs:23:438)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Fictional stale denial',
+    expected: 'Creating goal...',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/continuity.test.cjs:22:160
+✖ habit pending transport success after switch has no late UI/reload (48.018792ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + 'Habit created.'
+  - 'Creating habit...'
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/continuity.test.cjs:23:438)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Habit created.',
+    expected: 'Creating habit...',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/continuity.test.cjs:22:160
+✖ habit pending transport denial after switch has no late UI/reload (70.774417ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + 'Fictional stale denial'
+  - 'Creating habit...'
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/continuity.test.cjs:23:438)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Fictional stale denial',
+    expected: 'Creating habit...',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/continuity.test.cjs:22:160
+✖ habit pending transport success after logout has no late UI/reload (337.652375ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + 'Habit created.'
+  - 'Creating habit...'
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/continuity.test.cjs:23:438)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Habit created.',
+    expected: 'Creating habit...',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/continuity.test.cjs:22:160
+✖ habit pending transport denial after logout has no late UI/reload (304.645625ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + 'Fictional stale denial'
+  - 'Creating habit...'
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/continuity.test.cjs:23:438)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Fictional stale denial',
+    expected: 'Creating habit...',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/continuity.test.cjs:22:160
+✖ progress pending transport success after switch has no late UI/reload (911.306875ms)
+  TypeError: Cannot set properties of null (setting 'value')
+      at Proxy.eval (eval at memberFixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/dom-fixture.cjs:44:41), <anonymous>:3494:35)
+      at async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/continuity.test.cjs:23:421)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+
+test at tests/wave4-member/continuity.test.cjs:22:160
+✖ progress pending transport denial after switch has no late UI/reload (189.266666ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + 'Fictional stale denial'
+  - 'Saving progress...'
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/continuity.test.cjs:23:438)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Fictional stale denial',
+    expected: 'Saving progress...',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/continuity.test.cjs:22:160
+✖ progress pending transport success after logout has no late UI/reload (77.994125ms)
+  TypeError: Cannot set properties of null (setting 'value')
+      at Proxy.eval (eval at memberFixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/dom-fixture.cjs:44:41), <anonymous>:3494:35)
+      at async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/continuity.test.cjs:23:421)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+
+test at tests/wave4-member/continuity.test.cjs:22:160
+✖ progress pending transport denial after logout has no late UI/reload (64.218917ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + 'Fictional stale denial'
+  - 'Saving progress...'
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/continuity.test.cjs:23:438)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Fictional stale denial',
+    expected: 'Saving progress...',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/continuity.test.cjs:25:149
+✖ goal status completion after switch stays silent true (48.072375ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  1 !== 0
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/continuity.test.cjs:26:282)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/continuity.test.cjs:25:149
+✖ goal status completion after logout stays silent true (50.794583ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  1 !== 0
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/continuity.test.cjs:26:282)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/continuity.test.cjs:25:149
+✖ habit status completion after switch stays silent true (53.036833ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  1 !== 0
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/continuity.test.cjs:26:282)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/continuity.test.cjs:25:149
+✖ habit status completion after logout stays silent true (47.385917ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  1 !== 0
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/continuity.test.cjs:26:282)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/continuity.test.cjs:28:36
+✖ goal row pending status double tap dispatches once; renewal retains task (50.534625ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  2 !== 1
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/continuity.test.cjs:29:244)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/continuity.test.cjs:28:36
+✖ habit row pending status double tap dispatches once; renewal retains task (80.033041ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  2 !== 1
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/continuity.test.cjs:29:244)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/continuity.test.cjs:40:40
+✖ habit mark-today stale completion stays silent after switch (48.159833ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  2 !== 1
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/continuity.test.cjs:41:240)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/continuity.test.cjs:40:40
+✖ habit mark-today stale completion stays silent after logout (50.118792ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  2 !== 1
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/continuity.test.cjs:41:240)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
