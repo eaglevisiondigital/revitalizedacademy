@@ -1,0 +1,70 @@
+{
+  "scope": "LOCAL_WAVE4_QA_FOLLOWUP",
+  "branch": "codex/rva-wave4-member-repair-20261101",
+  "base": "7662679a0204037f4d03e0d5159631867f114880",
+  "modalBefore": {
+    "tests": 8,
+    "pass": 0,
+    "fail": 8
+  },
+  "modalAfter": {
+    "tests": 8,
+    "pass": 8,
+    "fail": 0
+  },
+  "coachBefore": {
+    "tests": 11,
+    "pass": 3,
+    "fail": 8
+  },
+  "coachAfter": {
+    "tests": 11,
+    "pass": 11,
+    "fail": 0
+  },
+  "allOwnedDOM": {
+    "tests": 116,
+    "pass": 116,
+    "fail": 0
+  },
+  "QAReferenceDOM": {
+    "tests": 7,
+    "pass": 7,
+    "fail": 0
+  },
+  "inheritedAfter": {
+    "tests": 21,
+    "pass": 21,
+    "fail": 0
+  },
+  "browser": {
+    "pass": 34,
+    "fail": 0
+  },
+  "QAReferenceBrowser": {
+    "pass": 4,
+    "fail": 0
+  },
+  "referenceAdaptation": {
+    "source": "../academy-wave4-qa/tests/wave4-qa/browser-independent.cjs",
+    "sha256": "b83cd4b16db2904f8f78f2cef7eda0c955ff7da6e2eb654076c16403eec427e3",
+    "adaptation": "Only root/output declaration redirected; assertions and browser behavior unchanged",
+    "independentExecutionClaim": false
+  },
+  "QAInitialAuthorReceipt": {
+    "tests": 97,
+    "pass": 96,
+    "fail": 1
+  },
+  "productionCalls": 0,
+  "actualSQL": false,
+  "realAuthOrExistingBrowserProfile": false,
+  "independentVerificationClaim": false,
+  "pendingGate": "Independent QA rerun exact followup commit; Master integration; separate production approval",
+  "remainingLimitations": [
+    "Transport tests do not establish current SQL/RLS/paid-access/provider acceptance",
+    "Already-dispatched mutations are not canceled or rolled back",
+    "Same-form reopened generation may intentionally submit a separate draft; no backend idempotency claim",
+    "Coach lifecycle coverage is limited to loader/clear/contact-close; other mutation callbacks and shared portal/Auth remain unchanged"
+  ]
+}

@@ -1,0 +1,19 @@
+✔ Coach successful then 42501 refresh clears coaching private lists/draft and closes workspace (239.161417ms)
+✔ Coach successful then 401 refresh clears coaching private lists/draft and closes workspace (171.886666ms)
+✔ Coach successful then 403 refresh clears coaching private lists/draft and closes workspace (125.585375ms)
+✔ Coach same-context transient failure preserves user draft and authorized workspace for retry (125.529584ms)
+✔ Coach close while client_access pending cannot restore prior workspace (126.060916ms)
+✔ Coach close while client_goals pending cannot restore prior workspace (121.173375ms)
+✔ Coach A/B out of order at client_access keeps only B and hides A promptly (156.367667ms)
+✔ Coach A/B out of order at client_goals keeps only B and hides A promptly (145.040958ms)
+✔ Coach changed identity at client_access cannot resurrect same-contact workspace (123.952916ms)
+✔ Coach changed identity at client_goals cannot resurrect same-contact workspace (121.275458ms)
+✔ Coach same-actor renewal while load pending retains legitimate current load (104.285542ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1785.693792

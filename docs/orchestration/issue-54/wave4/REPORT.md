@@ -1,3 +1,5 @@
+> Historical author package. Independent QA found additional failures; current repair and limitations are in followup/REPORT.md and followup/RESULTS.json.
+
 # Wave4 Lane B — member / Coach continuity (LOCAL ONLY)
 
 COMPLETED

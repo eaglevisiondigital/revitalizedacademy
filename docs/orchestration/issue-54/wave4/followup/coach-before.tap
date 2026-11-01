@@ -1,0 +1,159 @@
+✖ Coach successful then 42501 refresh clears coaching private lists/draft and closes workspace (221.245167ms)
+✖ Coach successful then 401 refresh clears coaching private lists/draft and closes workspace (143.890916ms)
+✖ Coach successful then 403 refresh clears coaching private lists/draft and closes workspace (133.782709ms)
+✔ Coach same-context transient failure preserves user draft and authorized workspace for retry (127.940958ms)
+✖ Coach close while client_access pending cannot restore prior workspace (126.197667ms)
+✔ Coach close while client_goals pending cannot restore prior workspace (121.276292ms)
+✖ Coach A/B out of order at client_access keeps only B and hides A promptly (118.462208ms)
+✖ Coach A/B out of order at client_goals keeps only B and hides A promptly (118.419417ms)
+✖ Coach changed identity at client_access cannot resurrect same-contact workspace (133.04775ms)
+✖ Coach changed identity at client_goals cannot resurrect same-contact workspace (149.527458ms)
+✔ Coach same-actor renewal while load pending retains legitimate current load (135.724083ms)
+ℹ Error: Test "Coach A/B out of order at client_access keeps only B and hides A promptly" at tests/wave4-member/coach-lifecycle.test.cjs:17:53 generated asynchronous activity after the test ended. This activity created the error "TypeError: Cannot read properties of undefined (reading 'getElementById')" and would have caused the test to fail, but instead triggered an unhandledRejection event.
+ℹ Error: Test "Coach A/B out of order at client_goals keeps only B and hides A promptly" at tests/wave4-member/coach-lifecycle.test.cjs:17:53 generated asynchronous activity after the test ended. This activity created the error "TypeError: Cannot read properties of undefined (reading 'getElementById')" and would have caused the test to fail, but instead triggered an unhandledRejection event.
+ℹ tests 11
+ℹ suites 0
+ℹ pass 3
+ℹ fail 8
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1937.472833
+
+✖ failing tests:
+
+test at tests/wave4-member/coach-lifecycle.test.cjs:14:41
+✖ Coach successful then 42501 refresh clears coaching private lists/draft and closes workspace (221.245167ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  false !== true
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/coach-lifecycle.test.cjs:14:570)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/coach-lifecycle.test.cjs:14:41
+✖ Coach successful then 401 refresh clears coaching private lists/draft and closes workspace (143.890916ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  false !== true
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/coach-lifecycle.test.cjs:14:570)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/coach-lifecycle.test.cjs:14:41
+✖ Coach successful then 403 refresh clears coaching private lists/draft and closes workspace (133.782709ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  false !== true
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/coach-lifecycle.test.cjs:14:570)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/coach-lifecycle.test.cjs:16:53
+✖ Coach close while client_access pending cannot restore prior workspace (126.197667ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  false !== true
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/coach-lifecycle.test.cjs:16:247)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/coach-lifecycle.test.cjs:17:53
+✖ Coach A/B out of order at client_access keeps only B and hides A promptly (118.462208ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  false !== true
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/coach-lifecycle.test.cjs:17:246)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/coach-lifecycle.test.cjs:17:53
+✖ Coach A/B out of order at client_goals keeps only B and hides A promptly (118.419417ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  false !== true
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/coach-lifecycle.test.cjs:17:246)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/coach-lifecycle.test.cjs:18:53
+✖ Coach changed identity at client_access cannot resurrect same-contact workspace (133.04775ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  false !== true
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/coach-lifecycle.test.cjs:18:292)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/coach-lifecycle.test.cjs:18:53
+✖ Coach changed identity at client_goals cannot resurrect same-contact workspace (149.527458ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  false !== true
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/coach-lifecycle.test.cjs:18:292)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

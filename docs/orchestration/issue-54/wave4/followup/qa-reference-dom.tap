@@ -1,0 +1,15 @@
+✔ QA current Coach denied refresh must hide prior prepared workspace (199.730959ms)
+✔ QA current Coach pending load cannot reopen workspace after contact closed (132.415458ms)
+✔ QA goal payload remains snapshot across identity lookup and renewal (147.382833ms)
+✔ QA habit payload remains snapshot across identity lookup and renewal (76.192125ms)
+✔ QA markHabit and pause share rendered-row guard (81.610333ms)
+✔ QA goal reopened draft while old write pending must remain open after completion (87.988959ms)
+✔ QA habit reopened draft while old write pending must remain open after completion (76.835375ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 816.123792

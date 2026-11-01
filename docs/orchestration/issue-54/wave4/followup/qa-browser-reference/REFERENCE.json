@@ -1,0 +1,6 @@
+{
+  "source": "../academy-wave4-qa/tests/wave4-qa/browser-independent.cjs",
+  "sha256": "b83cd4b16db2904f8f78f2cef7eda0c955ff7da6e2eb654076c16403eec427e3",
+  "adaptation": "Only root/output declaration redirected; assertions and browser behavior unchanged",
+  "independentExecutionClaim": false
+}

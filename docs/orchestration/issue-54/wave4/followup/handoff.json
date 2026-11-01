@@ -1,0 +1,99 @@
+{
+  "issue": "54/53",
+  "ownerNativeAgent": "/root/roadmap_design_contract_audit",
+  "status": "LOCAL_QA_REPAIR_AWAITING_INDEPENDENT_RERUN",
+  "branch": "codex/rva-wave4-member-repair-20261101",
+  "base": "7662679a0204037f4d03e0d5159631867f114880",
+  "commit": "Exact local followup SHA sent to Master after commit",
+  "runtimeFiles": [
+    "member/member110.js",
+    "portal/portal-coaching.js"
+  ],
+  "clearedContract": [
+    "two modal-open functions plus goal/habit create handlers",
+    "Coach sequence/loader/clear-helper/contact-close only"
+  ],
+  "results": {
+    "scope": "LOCAL_WAVE4_QA_FOLLOWUP",
+    "branch": "codex/rva-wave4-member-repair-20261101",
+    "base": "7662679a0204037f4d03e0d5159631867f114880",
+    "modalBefore": {
+      "tests": 8,
+      "pass": 0,
+      "fail": 8
+    },
+    "modalAfter": {
+      "tests": 8,
+      "pass": 8,
+      "fail": 0
+    },
+    "coachBefore": {
+      "tests": 11,
+      "pass": 3,
+      "fail": 8
+    },
+    "coachAfter": {
+      "tests": 11,
+      "pass": 11,
+      "fail": 0
+    },
+    "allOwnedDOM": {
+      "tests": 116,
+      "pass": 116,
+      "fail": 0
+    },
+    "QAReferenceDOM": {
+      "tests": 7,
+      "pass": 7,
+      "fail": 0
+    },
+    "inheritedAfter": {
+      "tests": 21,
+      "pass": 21,
+      "fail": 0
+    },
+    "browser": {
+      "pass": 34,
+      "fail": 0
+    },
+    "QAReferenceBrowser": {
+      "pass": 4,
+      "fail": 0
+    },
+    "referenceAdaptation": {
+      "source": "../academy-wave4-qa/tests/wave4-qa/browser-independent.cjs",
+      "sha256": "b83cd4b16db2904f8f78f2cef7eda0c955ff7da6e2eb654076c16403eec427e3",
+      "adaptation": "Only root/output declaration redirected; assertions and browser behavior unchanged",
+      "independentExecutionClaim": false
+    },
+    "QAInitialAuthorReceipt": {
+      "tests": 97,
+      "pass": 96,
+      "fail": 1
+    },
+    "productionCalls": 0,
+    "actualSQL": false,
+    "realAuthOrExistingBrowserProfile": false,
+    "independentVerificationClaim": false,
+    "pendingGate": "Independent QA rerun exact followup commit; Master integration; separate production approval",
+    "remainingLimitations": [
+      "Transport tests do not establish current SQL/RLS/paid-access/provider acceptance",
+      "Already-dispatched mutations are not canceled or rolled back",
+      "Same-form reopened generation may intentionally submit a separate draft; no backend idempotency claim",
+      "Coach lifecycle coverage is limited to loader/clear/contact-close; other mutation callbacks and shared portal/Auth remain unchanged"
+    ]
+  },
+  "artifactSHA256": {
+    "member/member110.js": "2a938062bf3ecfbba272340434dcd5172ab0236b5d223488a01eebc685b0932d",
+    "portal/portal-coaching.js": "ae5413969d2b5b4e04b45f22a96f7ae45e79ec3819761c0d4109a74a346f60c0",
+    "tests/wave4-member/source-pins.json": "335f0959efcdb7436e70bef135e23ec79b62a2af92c1840dab0d6728e54d10a7",
+    "docs/orchestration/issue-54/wave4/followup/RESULTS.json": "a001b9b66324d36994d36793382e43c55d0240409870ae7c16979680dc23d078",
+    "docs/orchestration/issue-54/wave4/followup/final-dom.tap": "bebb7901f9403c08e263447b5a43db5ffbf8c4bb41b2e24f6e720b4018bce6ff",
+    "docs/orchestration/issue-54/wave4/followup/qa-reference-dom.tap": "81dd991ae1f01aab47fad9d12e8f64297ee0455a0a8bba11d9d48087c86ccfda",
+    "docs/orchestration/issue-54/wave4/followup/browser/BROWSER_RESULTS.json": "7559eed6badaa8028d98d00ecf3381beb8805aa98f020512a64fb856d960d37b",
+    "docs/orchestration/issue-54/wave4/followup/qa-browser-reference/RESULTS.json": "3fbae733eeed1056dff1f3291268d24d8c7a7e1f516b2e1307e6693cd2c1fcfe"
+  },
+  "rollback": "Restore runtime from7662679; restores known QA failures, no DB/data rollback",
+  "Alex": "PAUSED/untouched",
+  "productionApprovalNeeded": true
+}

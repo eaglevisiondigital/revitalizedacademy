@@ -21,6 +21,7 @@
   let sessions = [];
   let notes = [];
   let coachCapacity = [];
+  let coachingLoadSequence = 0;
 
   function setStatus(id, message, type = "") {
     const target = el(id);
@@ -126,84 +127,100 @@
     setStatus("client-coaching-status", "");
   }
 
-  async function loadCoaching(contactId, contactRecord = contact) {
-    contact = contactRecord || contact;
-    if (!contactId) return;
-
-    const accessResult = await client
-      .from("client_access")
-      .select("*")
-      .eq("contact_id", contactId)
-      .maybeSingle();
-
-    if (accessResult.error) throw accessResult.error;
-    access = accessResult.data || null;
-    membership = null;
-    summary = null;
-    goals = [];
-    habits = [];
-    assignments = [];
-    checkins = [];
-    progress = [];
-    metricCatalog = [];
+  function clearCoachingState(clearContact = false) {
+    if (clearContact) contact = null;
+    access = membership = summary = null;
+    goals = habits = assignments = checkins = progress = metricCatalog = sessions = notes = coachCapacity = [];
     checkinFieldMap = new Map();
-    sessions = [];
-    notes = [];
-
-    if (!access?.membership_id) {
-      renderSummary();
-      return;
+    closeModal();
+    el("client-coaching-section").classList.add("hidden");
+    for (const id of ["coaching-goal-list","coaching-habit-list","coaching-assignment-list",
+      "coaching-checkin-list","coaching-progress-list","coaching-session-list","coaching-note-list",
+      "coaching-primary-coach","coaching-session-coach","coaching-note-session","client-coach-name",
+      "client-goal-count","client-habit-count","client-assignment-count","client-last-checkin","client-last-progress"]) {
+      el(id).replaceChildren();
     }
+    for (const id of ["coaching-goal-form","coaching-habit-form","coaching-assignment-form",
+      "coaching-checkin-review-form","coaching-session-form","coaching-note-form"]) el(id).reset();
+    el("coaching-checkin-review-form").classList.add("hidden");
+  }
 
-    const [
-      membershipResult,
-      summaryResult,
-      goalsResult,
-      habitsResult,
-      assignmentsResult,
-      checkinsResult,
-      progressResult,
-      metricResult,
-      fieldResult,
-      sessionsResult,
-      notesResult,
-      capacityResult
-    ] = await Promise.all([
-      client.from("client_memberships").select("*").eq("id", access.membership_id).maybeSingle(),
-      client.from("admin_client_coaching_summary").select("*").eq("contact_id", contactId).maybeSingle(),
-      client.from("client_goals").select("*").eq("contact_id", contactId).order("priority").order("created_at", { ascending: false }),
-      client.from("client_habits").select("*").eq("contact_id", contactId).order("created_at", { ascending: false }),
-      client.from("client_assignments").select("*").eq("contact_id", contactId).order("created_at", { ascending: false }),
-      client.from("client_checkins").select("*").eq("contact_id", contactId).order("created_at", { ascending: false }).limit(8),
-      client.from("progress_entries").select("*").eq("contact_id", contactId).order("recorded_at", { ascending: false }).limit(20),
-      client.from("progress_metric_catalog").select("*").eq("active", true).order("display_order"),
-      client.from("checkin_template_fields").select("field_key,label,display_order").order("display_order"),
-      client.from("coaching_sessions").select("*").eq("contact_id", contactId).order("scheduled_start", { ascending: false }).limit(15),
-      client.from("coaching_session_notes").select("*").eq("contact_id", contactId).order("created_at", { ascending: false }).limit(20),
-      client.from("admin_coach_capacity").select("user_id,accepts_new_clients,max_active_clients,max_sessions_per_week,active_clients,scheduled_sessions_this_week")
-    ]);
+  async function loadCoaching(contactId, contactRecord = contact) {
+    const userId = portal.currentUserId();
+    const sequence = ++coachingLoadSequence;
+    if (!contactId || !userId) { clearCoachingState(true); return; }
+    if (contact?.id !== contactId) clearCoachingState(true);
+    contact = contactRecord || {id: contactId};
+    const taskCurrent = () => sequence === coachingLoadSequence &&
+      portal.currentUserId() === userId && contact?.id === contactId;
+    const abandonChangedIdentity = () => {
+      if (sequence === coachingLoadSequence) clearCoachingState(true);
+    };
+    try {
+      const accessResult = await client.from("client_access").select("*").eq("contact_id", contactId).maybeSingle();
+      if (!taskCurrent()) { abandonChangedIdentity(); return; }
+      if (accessResult.error) throw accessResult.error;
+      const nextAccess = accessResult.data || null;
+      if (!nextAccess?.membership_id) { clearCoachingState(); return; }
+      const [
+        membershipResult,
+        summaryResult,
+        goalsResult,
+        habitsResult,
+        assignmentsResult,
+        checkinsResult,
+        progressResult,
+        metricResult,
+        fieldResult,
+        sessionsResult,
+        notesResult,
+        capacityResult
+      ] = await Promise.all([
+        client.from("client_memberships").select("*").eq("id", nextAccess.membership_id).maybeSingle(),
+        client.from("admin_client_coaching_summary").select("*").eq("contact_id", contactId).maybeSingle(),
+        client.from("client_goals").select("*").eq("contact_id", contactId).order("priority").order("created_at", { ascending: false }),
+        client.from("client_habits").select("*").eq("contact_id", contactId).order("created_at", { ascending: false }),
+        client.from("client_assignments").select("*").eq("contact_id", contactId).order("created_at", { ascending: false }),
+        client.from("client_checkins").select("*").eq("contact_id", contactId).order("created_at", { ascending: false }).limit(8),
+        client.from("progress_entries").select("*").eq("contact_id", contactId).order("recorded_at", { ascending: false }).limit(20),
+        client.from("progress_metric_catalog").select("*").eq("active", true).order("display_order"),
+        client.from("checkin_template_fields").select("field_key,label,display_order").order("display_order"),
+        client.from("coaching_sessions").select("*").eq("contact_id", contactId).order("scheduled_start", { ascending: false }).limit(15),
+        client.from("coaching_session_notes").select("*").eq("contact_id", contactId).order("created_at", { ascending: false }).limit(20),
+        client.from("admin_coach_capacity").select("user_id,accepts_new_clients,max_active_clients,max_sessions_per_week,active_clients,scheduled_sessions_this_week")
+      ]);
 
-    const failed = [
-      membershipResult,summaryResult,goalsResult,habitsResult,assignmentsResult,
-      checkinsResult,progressResult,metricResult,fieldResult,sessionsResult,notesResult,capacityResult
-    ].find((result) => result.error);
+      if (!taskCurrent()) { abandonChangedIdentity(); return; }
 
-    if (failed?.error) throw failed.error;
+      const failed = [
+        membershipResult,summaryResult,goalsResult,habitsResult,assignmentsResult,
+        checkinsResult,progressResult,metricResult,fieldResult,sessionsResult,notesResult,capacityResult
+      ].find((result) => result.error);
 
-    membership = membershipResult.data || null;
-    summary = summaryResult.data || null;
-    goals = goalsResult.data || [];
-    habits = habitsResult.data || [];
-    assignments = assignmentsResult.data || [];
-    checkins = checkinsResult.data || [];
-    progress = progressResult.data || [];
-    metricCatalog = metricResult.data || [];
-    (fieldResult.data || []).forEach((row) => checkinFieldMap.set(row.field_key, row.label));
-    sessions = sessionsResult.data || [];
-    notes = notesResult.data || [];
-    coachCapacity = capacityResult.data || [];
+      if (failed?.error) throw failed.error;
 
-    renderSummary();
+      access = nextAccess;
+      membership = membershipResult.data || null;
+      summary = summaryResult.data || null;
+      goals = goalsResult.data || [];
+      habits = habitsResult.data || [];
+      assignments = assignmentsResult.data || [];
+      checkins = checkinsResult.data || [];
+      progress = progressResult.data || [];
+      metricCatalog = metricResult.data || [];
+      checkinFieldMap = new Map();
+      (fieldResult.data || []).forEach((row) => checkinFieldMap.set(row.field_key, row.label));
+      sessions = sessionsResult.data || [];
+      notes = notesResult.data || [];
+      coachCapacity = capacityResult.data || [];
+
+      renderSummary();
+    } catch (error) {
+      if (!taskCurrent()) { abandonChangedIdentity(); return; }
+      if (["42501","401","403"].includes(String(error.code)) || ["401","403"].includes(String(error.status))) clearCoachingState();
+      console.error("Coaching workspace load failed", error);
+      setStatus("client-coaching-status", error.message || "Coaching data could not be loaded. Please try again.", "error");
+    }
   }
 
   function empty(message) {
@@ -903,19 +920,8 @@
   });
 
   document.addEventListener("ra:contact-closed", () => {
-    contact = null;
-    access = null;
-    membership = null;
-    summary = null;
-    goals = [];
-    habits = [];
-    assignments = [];
-    checkins = [];
-    progress = [];
-    sessions = [];
-    notes = [];
-    el("client-coaching-section").classList.add("hidden");
-    closeModal();
+    coachingLoadSequence++;
+    clearCoachingState(true);
   });
 
   el("client-manage-coaching").addEventListener("click", () => openModal(false));

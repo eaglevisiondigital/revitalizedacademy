@@ -1,0 +1,16 @@
+✔ goal reopened during pending RPC ignores old success status and timer (204.487334ms)
+✔ goal reopened during pending RPC ignores old 42501 status and timer (78.943333ms)
+✔ goal reopened during pending RPC ignores old 23505 status and timer (71.37ms)
+✔ habit reopened during pending RPC ignores old success status and timer (78.588834ms)
+✔ habit reopened during pending RPC ignores old 42501 status and timer (70.639292ms)
+✔ habit reopened during pending RPC ignores old 23505 status and timer (66.237709ms)
+✔ goal old finally cannot unlock newer same-form generation request (96.492167ms)
+✔ habit old finally cannot unlock newer same-form generation request (88.934042ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1402.119666

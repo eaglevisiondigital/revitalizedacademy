@@ -1,0 +1,166 @@
+✖ goal reopened during pending RPC ignores old success status and timer (166.053084ms)
+✖ goal reopened during pending RPC ignores old 42501 status and timer (79.84275ms)
+✖ goal reopened during pending RPC ignores old 23505 status and timer (69.92075ms)
+✖ habit reopened during pending RPC ignores old success status and timer (87.395167ms)
+✖ habit reopened during pending RPC ignores old 42501 status and timer (68.488083ms)
+✖ habit reopened during pending RPC ignores old 23505 status and timer (67.237958ms)
+✖ goal old finally cannot unlock newer same-form generation request (591.146ms)
+✖ habit old finally cannot unlock newer same-form generation request (601.120208ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 0
+ℹ fail 8
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2089.10075
+
+✖ failing tests:
+
+test at tests/wave4-member/modal-generation.test.cjs:5:157
+✖ goal reopened during pending RPC ignores old success status and timer (166.053084ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + 'Goal created.'
+  - ''
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/modal-generation.test.cjs:6:469)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Goal created.',
+    expected: '',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/modal-generation.test.cjs:5:157
+✖ goal reopened during pending RPC ignores old 42501 status and timer (79.84275ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + 'Fictional old denied'
+  - ''
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/modal-generation.test.cjs:6:469)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Fictional old denied',
+    expected: '',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/modal-generation.test.cjs:5:157
+✖ goal reopened during pending RPC ignores old 23505 status and timer (69.92075ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + 'Fictional old duplicate'
+  - ''
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/modal-generation.test.cjs:6:469)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Fictional old duplicate',
+    expected: '',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/modal-generation.test.cjs:5:157
+✖ habit reopened during pending RPC ignores old success status and timer (87.395167ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + 'Habit created.'
+  - ''
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/modal-generation.test.cjs:6:469)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Habit created.',
+    expected: '',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/modal-generation.test.cjs:5:157
+✖ habit reopened during pending RPC ignores old 42501 status and timer (68.488083ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + 'Fictional old denied'
+  - ''
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/modal-generation.test.cjs:6:469)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Fictional old denied',
+    expected: '',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/modal-generation.test.cjs:5:157
+✖ habit reopened during pending RPC ignores old 23505 status and timer (67.237958ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + 'Fictional old duplicate'
+  - ''
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/modal-generation.test.cjs:6:469)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Fictional old duplicate',
+    expected: '',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/modal-generation.test.cjs:8:36
+✖ goal old finally cannot unlock newer same-form generation request (591.146ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  1 !== 2
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/modal-generation.test.cjs:9:451)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-member/modal-generation.test.cjs:8:36
+✖ habit old finally cannot unlock newer same-form generation request (601.120208ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  1 !== 2
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-member/tests/wave4-member/modal-generation.test.cjs:9:451)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

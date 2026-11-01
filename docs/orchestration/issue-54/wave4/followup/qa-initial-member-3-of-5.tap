@@ -1,0 +1,49 @@
+✔ QA goal payload remains snapshot across identity lookup and renewal (181.548834ms)
+✔ QA habit payload remains snapshot across identity lookup and renewal (79.462958ms)
+✔ QA markHabit and pause share rendered-row guard (83.559208ms)
+✖ QA goal reopened draft while old write pending must remain open after completion (82.915458ms)
+✖ QA habit reopened draft while old write pending must remain open after completion (85.119083ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 3
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 891.218208
+
+✖ failing tests:
+
+test at tests/wave4-qa/member-adversarial.test.cjs:7:36
+✖ QA goal reopened draft while old write pending must remain open after completion (82.915458ms)
+  AssertionError [ERR_ASSERTION]: Old request must not close new draft
+
+  'true' !== 'false'
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-qa/member-adversarial.test.cjs:7:578)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'true',
+    expected: 'false',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave4-qa/member-adversarial.test.cjs:7:36
+✖ QA habit reopened draft while old write pending must remain open after completion (85.119083ms)
+  AssertionError [ERR_ASSERTION]: Old request must not close new draft
+
+  'true' !== 'false'
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave4-qa/tests/wave4-qa/member-adversarial.test.cjs:7:578)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'true',
+    expected: 'false',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

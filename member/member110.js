@@ -2333,7 +2333,11 @@
   }
 
   function openGoalModal(){
-    el("rm-goal-form").reset();
+    const form = el("rm-goal-form");
+    form._modalOpenGeneration = (form._modalOpenGeneration || 0) + 1;
+    form.removeAttribute("aria-busy");
+    form.querySelector('button[type="submit"]').disabled = false;
+    form.reset();
     el("rm-goal-priority").value="2";
     showStatus(el("rm-goal-form-status"),"");
     el("rm-goal-modal").classList.remove("hidden");
@@ -2349,6 +2353,8 @@
     const task = {userId: memberUserId, epoch: memberSessionEpoch, run: dashboardRun};
     const form = event.currentTarget;
     if (!dashboardTaskCurrent(task) || form.getAttribute("aria-busy") === "true") return;
+    const modalGeneration = form._modalOpenGeneration || 0;
+    const modalCurrent = () => (form._modalOpenGeneration || 0) === modalGeneration;
     const status = el("rm-goal-form-status");
     const value=el("rm-goal-target-value").value;
     const payload = {
@@ -2367,30 +2373,36 @@
       const {data: authData, error: authError} = await client.auth.getUser();
       if (!dashboardTaskCurrent(task)) return;
       if (authError || authData?.user?.id !== task.userId) {
-        showStatus(status, "Your member session could not be verified. Please sign in again.", "error");
+        if (modalCurrent()) showStatus(status, "Your member session could not be verified. Please sign in again.", "error");
         return;
       }
       const {error} = await client.rpc("create_my_goal", payload);
       if (!dashboardTaskCurrent(task)) return;
-      if (error) { showStatus(status, error.message, "error"); return; }
-      showStatus(status, "Goal created.", "success");
+      if (error) { if (modalCurrent()) showStatus(status, error.message, "error"); return; }
+      if (modalCurrent()) showStatus(status, "Goal created.", "success");
       const refreshedTask = {...task, run: task.run + 1};
       await loadDashboard();
       if (!dashboardTaskCurrent(refreshedTask)) return;
       window.setTimeout(() => {
-        if (dashboardTaskCurrent(refreshedTask) && status.textContent === "Goal created." &&
+        if (dashboardTaskCurrent(refreshedTask) && modalCurrent() && status.textContent === "Goal created." &&
             form.getAttribute("aria-busy") !== "true") closeGoalModal();
       }, 450);
     } catch (error) {
-      if (dashboardTaskCurrent(task)) showStatus(status, error.message || "This goal could not be created.", "error");
+      if (dashboardTaskCurrent(task) && modalCurrent()) showStatus(status, error.message || "This goal could not be created.", "error");
     } finally {
-      form.removeAttribute("aria-busy");
-      submit.disabled = false;
+      if (modalCurrent()) {
+        form.removeAttribute("aria-busy");
+        submit.disabled = false;
+      }
     }
   }
 
   function openHabitModal(){
-    el("rm-habit-form").reset();
+    const form = el("rm-habit-form");
+    form._modalOpenGeneration = (form._modalOpenGeneration || 0) + 1;
+    form.removeAttribute("aria-busy");
+    form.querySelector('button[type="submit"]').disabled = false;
+    form.reset();
     el("rm-habit-target").value="1";
     el("rm-habit-frequency").value="daily";
     el("rm-habit-category").value="general";
@@ -2409,6 +2421,8 @@
     const task = {userId: memberUserId, epoch: memberSessionEpoch, run: dashboardRun};
     const form = event.currentTarget;
     if (!dashboardTaskCurrent(task) || form.getAttribute("aria-busy") === "true") return;
+    const modalGeneration = form._modalOpenGeneration || 0;
+    const modalCurrent = () => (form._modalOpenGeneration || 0) === modalGeneration;
     const status = el("rm-habit-form-status");
     const payload = {
       p_title:el("rm-habit-title").value.trim(),
@@ -2426,25 +2440,27 @@
       const {data: authData, error: authError} = await client.auth.getUser();
       if (!dashboardTaskCurrent(task)) return;
       if (authError || authData?.user?.id !== task.userId) {
-        showStatus(status, "Your member session could not be verified. Please sign in again.", "error");
+        if (modalCurrent()) showStatus(status, "Your member session could not be verified. Please sign in again.", "error");
         return;
       }
       const {error} = await client.rpc("create_my_habit", payload);
       if (!dashboardTaskCurrent(task)) return;
-      if (error) { showStatus(status, error.message, "error"); return; }
-      showStatus(status, "Habit created.", "success");
+      if (error) { if (modalCurrent()) showStatus(status, error.message, "error"); return; }
+      if (modalCurrent()) showStatus(status, "Habit created.", "success");
       const refreshedTask = {...task, run: task.run + 1};
       await loadDashboard();
       if (!dashboardTaskCurrent(refreshedTask)) return;
       window.setTimeout(() => {
-        if (dashboardTaskCurrent(refreshedTask) && status.textContent === "Habit created." &&
+        if (dashboardTaskCurrent(refreshedTask) && modalCurrent() && status.textContent === "Habit created." &&
             form.getAttribute("aria-busy") !== "true") closeHabitModal();
       }, 450);
     } catch (error) {
-      if (dashboardTaskCurrent(task)) showStatus(status, error.message || "This habit could not be created.", "error");
+      if (dashboardTaskCurrent(task) && modalCurrent()) showStatus(status, error.message || "This habit could not be created.", "error");
     } finally {
-      form.removeAttribute("aria-busy");
-      submit.disabled = false;
+      if (modalCurrent()) {
+        form.removeAttribute("aria-busy");
+        submit.disabled = false;
+      }
     }
   }
 
