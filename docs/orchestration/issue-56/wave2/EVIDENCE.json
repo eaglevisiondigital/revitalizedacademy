@@ -1,0 +1,497 @@
+{
+  "schemaVersion": "rva-wave2-independent-qa-v1",
+  "issue": 56,
+  "phase": "ACTUAL_LOCAL_FOUNDATION_EXECUTION",
+  "observedAt": "2026-11-01T14:10:25.609761+00:00",
+  "branch": "codex/rva-wave2-qa-20261101",
+  "worktree": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-qa",
+  "acceptedBase": "fc6737415da36b4306afa0060a525eca2f1131ca",
+  "testedHead": "e2f108261b831668618588acdc635e2113dcdf8a",
+  "originalMatrix": {
+    "path": "docs/orchestration/issue-56/ACCEPTANCE_MATRIX.json",
+    "sha256": "58671aa98737d77175c452267cf74b432132e7506ed25dc53af2ce903e831746",
+    "cases": 57,
+    "modified": false
+  },
+  "suites": [
+    {
+      "id": "C_NODE",
+      "evidencePath": "docs/orchestration/issue-56/wave2/QA_C_UNIT_REGRESSION_RETRY.tap",
+      "tests": 142,
+      "passed": 142,
+      "failed": 0,
+      "adapter": "Actual assessment/resume/staff-session JS via JSDOM/fake RPC; actual pure affiliate helper with fictional snapshots",
+      "command": "node --test --test-reporter=tap tests/assessment-person.cjs tests/staff-session-runtime.cjs tests/vitality-resume.cjs tests/wave2-affiliate/share-contract.test.cjs",
+      "sha256": "2e6924bd62e3445784be670e4217a0fb5af56dc61cdbb59ca798a2df06c4518a",
+      "independentlyExecuted": true
+    },
+    {
+      "id": "C_BROWSER",
+      "evidencePath": "docs/orchestration/issue-56/wave2/QA_C_BROWSER_RETRY.tap",
+      "tests": 6,
+      "passed": 6,
+      "failed": 0,
+      "adapter": "Actual baseline/fixed portal source plus standalone fictional Share Center form; Chromium/WebKit1440/768/390; request interception",
+      "command": "node --test --test-reporter=tap tests/wave2-affiliate/browser.test.cjs",
+      "sha256": "55ea4083a611ac841bf20126d4147c10b83562c273e42b19e20bc6b4cc08ee5d",
+      "independentlyExecuted": true
+    },
+    {
+      "id": "A_CONTRACT",
+      "evidencePath": "docs/orchestration/issue-56/wave2/QA_A_CONTRACTS.tap",
+      "tests": 4,
+      "passed": 4,
+      "failed": 0,
+      "adapter": "Source/DOM references, asset/CSS/signing/build-hold assertions",
+      "command": "node --test --test-reporter=tap tests/wave2-architecture/contracts.test.cjs",
+      "sha256": "ccb30ba774120d673197aebfa75d9ba9584b5df214d3b5175a6a95e134582f90",
+      "independentlyExecuted": true
+    },
+    {
+      "id": "A_BROWSER",
+      "evidencePath": "docs/orchestration/issue-56/wave2/A-browser/BROWSER_RESULTS.json",
+      "tests": 36,
+      "passed": 36,
+      "failed": 0,
+      "adapter": "Actual member HTML/CSS/JS; fake SDK/Auth/RPC;34current assertions and2expected baseline race reproductions;320/390/768/1440 Chromium/WebKit",
+      "command": "RVA_WAVE2_A_OUTPUT=<QA>/A-browser node tests/wave2-architecture/browser.cjs",
+      "sha256": "06390156eb87147d7a59cfc70f323852d961e8fa78c38abcfac18252917593af",
+      "independentlyExecuted": true
+    },
+    {
+      "id": "PAYMENT_UNIT",
+      "evidencePath": "docs/orchestration/issue-56/wave2/QA_PAYMENTS.tap",
+      "tests": 18,
+      "passed": 18,
+      "failed": 0,
+      "adapter": "Actual payment modules; injected fake gateway/Auth/database fetchers; no provider or real SQL",
+      "command": "node --test --test-reporter=tap tests/payments-v1.test.mjs",
+      "sha256": "5837ce31b0ee54637beed4314eab58a42217801bcd1d0442c5e57bcfa70deab8",
+      "independentlyExecuted": true
+    },
+    {
+      "id": "B_DOM",
+      "evidencePath": "docs/orchestration/issue-56/wave2/B-dom/onboarding-dom.tap",
+      "tests": 13,
+      "passed": 13,
+      "failed": 0,
+      "adapter": "Actual onboarding HTML/JS; fake SDK/Auth/RPC and delayed callbacks",
+      "command": "RVA_WAVE2_B_OUTPUT=<QA>/B-dom node tests/wave2-client/run-dom.cjs",
+      "sha256": "d52e4458ba739a3ce57525828af20857a946ed7cca0c853a4e304b5a331279f1",
+      "independentlyExecuted": true
+    },
+    {
+      "id": "B_BASELINE_SQL",
+      "evidencePath": "docs/orchestration/issue-56/wave2/B-pg/baseline_auth-tests.tap",
+      "tests": 23,
+      "passed": 21,
+      "failed": 2,
+      "adapter": "Actual PostgreSQL17.11/RLS/RPCs from pinned Sep26 schema+authorization source; synthetic Auth helpers, roles/data only in disposable Unix-socket cluster",
+      "command": "RVA_WAVE2_B_OUTPUT=<QA>/B-pg node tests/wave2-client/run-pg.cjs",
+      "sha256": "4d683ca771f9cea7cd75906b7a5d365d17ff11564d2b9a62c21d330390bb50b7",
+      "independentlyExecuted": true
+    },
+    {
+      "id": "B_HOLD_SQL",
+      "evidencePath": "docs/orchestration/issue-56/wave2/B-pg/production_hold-tests.tap",
+      "tests": 13,
+      "passed": 13,
+      "failed": 0,
+      "adapter": "Fresh actualPG17 baseline+exact permission helper+production lifecycle SQL; labeled fictional catalog precondition, not full/current production catalog",
+      "command": "same B PG runner second fresh profile",
+      "sha256": "d19df90387d2d8667620d0b8559c3b25027afb3084136b92bc52167dcd967ad1",
+      "independentlyExecuted": true
+    },
+    {
+      "id": "B_BROWSER",
+      "evidencePath": "docs/orchestration/issue-56/wave2/B-browser/browser-receipt.json",
+      "tests": 24,
+      "passed": 24,
+      "failed": 0,
+      "adapter": "Actual onboarding HTML/environment/JS; intercepted fake SDK/Auth/RPC;Chromium/WebKit1440/390",
+      "command": "RVA_WAVE2_B_OUTPUT=<QA>/B-browser node tests/wave2-client/run-browser.cjs",
+      "sha256": "40ca3c136f4362f0fa2e8304394c32b38c0d9ddf056bd1d9a6a93589ad730b7e",
+      "independentlyExecuted": true
+    },
+    {
+      "id": "QA_ADVERSARIAL",
+      "evidencePath": "docs/orchestration/issue-56/wave2/QA_ADVERSARIAL.tap",
+      "tests": 10,
+      "passed": 10,
+      "failed": 0,
+      "adapter": "3actual source malicious error DOM probes plus7pure-module trust/privacy/type/replay characterizations",
+      "command": "node --test --test-reporter=tap tests/wave2-qa/adversarial.test.cjs",
+      "sha256": "85733555d01b12293e10a7c76697c632eba53f39dbfc26cad06452538b4ad04c",
+      "independentlyExecuted": true
+    },
+    {
+      "id": "QA_INVARIANTS",
+      "evidencePath": "docs/orchestration/issue-56/wave2/QA_INVARIANTS_FINAL.tap",
+      "tests": 8,
+      "passed": 8,
+      "failed": 0,
+      "adapter": "Pinned57matrix/101baseline/10inventory/source preservation assertions",
+      "command": "node --test --test-reporter=tap tests/wave2-qa/invariants.test.cjs",
+      "sha256": "23f33a2a8aa5c46a397e3d1d07cf2132499edb74ebcb67ba4e4073c00cbddadf",
+      "independentlyExecuted": true,
+      "initialEvidencePath": "docs/orchestration/issue-56/wave2/QA_INVARIANTS.tap",
+      "note": "Same8controlsreexecutedafterfinalintegration;latest8countedonce."
+    },
+    {
+      "id": "B_OUTPUT",
+      "evidencePath": "docs/orchestration/issue-56/wave2/QA_B_OUTPUT_ROUTING.tap",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0,
+      "adapter": "Output path resolver only",
+      "command": "node --test --test-reporter=tap tests/wave2-client/output-directory.test.cjs",
+      "sha256": "4fd80d0b09f0d006f4ac9a0a075b7a7e4fbde459c243b3160e313f1165cc00ec",
+      "independentlyExecuted": true
+    },
+    {
+      "id": "V3_CATALOG",
+      "evidencePath": "docs/orchestration/issue-56/wave2/QA_V3_CATALOG.tap",
+      "tests": 87,
+      "passed": 87,
+      "failed": 0,
+      "adapter": "Detached pure builtins-only adapter,fullyinventedcatalog/receiptverifier;nottrustedapproval/managedAuth/RLS/medicalclassifier",
+      "command": "node --test --test-reporter=tap tests/coach-companion-catalog.cjs",
+      "sha256": "02a0ae14996ce7eed43f2393d65b4b61ba0abda1044c94a6058079799f575f60",
+      "independentlyExecuted": true
+    },
+    {
+      "id": "V3_QA_PROBES",
+      "evidencePath": "docs/orchestration/issue-56/wave2/QA_V3_PROBES.tap",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0,
+      "adapter": "Independent production-mode unavailable/privatepayload rejection/unknownspeaker hold withfictionalverifier",
+      "command": "node --test --test-reporter=tap tests/wave2-qa/catalog-probes.test.cjs",
+      "sha256": "832270f6aa2e7b30bbb1871b22010bc69615c65c19ed44f26f6dd0874b7f396f",
+      "independentlyExecuted": true
+    }
+  ],
+  "executionCounts": {
+    "testInstances": 390,
+    "passed": 388,
+    "failed": 2,
+    "browserInstances": 66,
+    "note": "390 final test instances include 15 static/output-routing/invariant controls and two expected baseline-reproduction browser cases. This is not a count of complete journeys. Startup failures and the earlier rerun of the same eight invariants are retained separately, not double-counted.",
+    "functionalAndSourceTestInstances": 375,
+    "functionalAndSourcePassed": 373,
+    "metadataAndStaticControlInstances": 15
+  },
+  "bootstrapAttempts": [
+    {
+      "path": "docs/orchestration/issue-56/wave2/QA_C_UNIT_REGRESSION.tap",
+      "status": "BOOTSTRAP_BLOCKED",
+      "reason": "jsdom absentfrombundledNODE_PATH; correctedbyexistingpinnedprojectdependency,noinstall."
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave2/QA_C_BROWSER.tap",
+      "status": "BOOTSTRAP_BLOCKED",
+      "reason": "hostbrowserlaunchsandbox; isolatedauthorizedretry6/6pass."
+    }
+  ],
+  "runtimeFailures": [
+    {
+      "id": "QA-W2-F01",
+      "severity": "P1_LOCAL_SECURITY_ASSERTION",
+      "caseIds": [
+        "N02"
+      ],
+      "status": "FAIL",
+      "profile": "B_BASELINE_SQL",
+      "test": "[N02 STRICT] unrelated Coach cannot directly read another Client goal through actual RLS",
+      "expected": "0 rows",
+      "actual": "1 row",
+      "scope": "Pinned Sep26 historical schema+authorization composition; helper denies scope but table policy returns goal. Not current production exploit/certification.",
+      "evidencePath": "docs/orchestration/issue-56/wave2/B-pg/baseline_auth-tests.tap",
+      "nextSafeAction": "Core reconcile exact applicable current policy/catalog and approved rights; propose narrow reviewed correction only after source/state proof. No live or broad RLS change from QA."
+    },
+    {
+      "id": "QA-W2-F02",
+      "severity": "P1_LOCAL_FUNCTIONAL_ASSERTION",
+      "caseIds": [
+        "E02"
+      ],
+      "status": "FAIL",
+      "profile": "B_BASELINE_SQL",
+      "test": "[E02 partial] authorized review consumes/releases with recorded reason and actor",
+      "expected": "Assigned permitted Coach review consumes then releases allowance and records actor/reason",
+      "actual": "42501 permission denied for function recalculate_coaching_entitlement_used_value",
+      "scope": "Pinned historical invoker/helper EXECUTE composition; no current catalog conclusion.",
+      "evidencePath": "docs/orchestration/issue-56/wave2/B-pg/baseline_auth-tests.tap",
+      "nextSafeAction": "Reconcile exact current RPC/helper owner,ACL/search path and guard chain; do not grant broad private-helper EXECUTE to silence assertion."
+    }
+  ],
+  "caseCounts": {
+    "PASS": 0,
+    "FAIL": 2,
+    "BLOCKED": 43,
+    "NOT_RUN": 12
+  },
+  "releaseVerdict": "NO-GO",
+  "actualProductionCalls": 0,
+  "actualProviderCalls": 0,
+  "realClientDataAccessed": false,
+  "runtimeOrAuthRlsFilesEditedByQA": [],
+  "disposableSql": {
+    "profiles": [
+      "baseline_auth",
+      "production_hold"
+    ],
+    "engine": "PostgreSQL17.11",
+    "network": "Unixsocketonly,TCPdisabled",
+    "clusterStopped": true,
+    "clusterRemoved": true,
+    "managedAuth": "minimalfictionalAuthhelpers;notGoTrue",
+    "currentCatalogCertified": false
+  },
+  "masterObservations": {
+    "canonical": {
+      "pass": true,
+      "deploy": "6ae6b971e17bce85e37aa95c",
+      "source": "10dec6682e7e87bf637482fc027e54c6800260e4",
+      "reviewedSecurityContract": true,
+      "functions": 13,
+      "paths": 459,
+      "publicationLock": true,
+      "workerSha256": "cc623b456d18cad5a94adaef6230a4749565e4948e7a153640ed9f8f115aa0d4",
+      "at": "2026-11-01T13:41:54.228Z",
+      "publishedAt": "2026-11-01T04:15:31.201Z",
+      "secretEndpointsRequested": false,
+      "processingInvoked": false,
+      "observedBy": "Master via existing canonical read-only verifier; not independently queried by specialistQA"
+    },
+    "memberMount": {
+      "at": "2026-11-01T13:46:11.832Z",
+      "credentialFreePublicRead": true,
+      "results": [
+        {
+          "path": "/member/",
+          "status": 200,
+          "finalURL": "https://revitalizedacademy.com/member/",
+          "title": "Enrollment &amp; Signature Center | ReVitalized Academy",
+          "scripts": [
+            "/runtime-config.js",
+            "/js/environment.js",
+            "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js",
+            "/member/onboarding/onboarding.js?v=100"
+          ],
+          "sha256": "bf672eb1bb5f936a6fc34e7b76517bc3f21efb89dbfb8d96a13347e07dcbf423",
+          "bytes": 3209
+        },
+        {
+          "path": "/member/onboarding/",
+          "status": 200,
+          "finalURL": "https://revitalizedacademy.com/member/onboarding/",
+          "title": "Enrollment &amp; Signature Center | ReVitalized Academy",
+          "scripts": [
+            "/runtime-config.js",
+            "/js/environment.js",
+            "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js",
+            "/member/onboarding/onboarding.js?v=100"
+          ],
+          "sha256": "bf672eb1bb5f936a6fc34e7b76517bc3f21efb89dbfb8d96a13347e07dcbf423",
+          "bytes": 3209
+        }
+      ]
+    },
+    "independentlyQueriedByQA": false
+  },
+  "pending": [],
+  "qaContainingCommit": "Returnedbyfinalhandoff;selfSHAisnotembeddedincircularcommittedartifact",
+  "componentSourcePins": {
+    "C_authorCommit": "d93dc1a0da0771babcf2283da3f8907137d9229a",
+    "A_authorRuntimeCommit": "38c16c9baeaa013e867e1230d775c179e91410e4",
+    "A_authorReceiptOutputCommit": "c1428ad6bd4a10aefb9492cd20db536620e53e3d",
+    "B_authorOutputCommit": "c0d7ebfbc6e4099b83390fed43a6196553dc65cd",
+    "V3_authorDetachedCommit": "1fdd49bb7da911f73ac0ee0382fbe6254a9f6a3e",
+    "V3_baseImport": "NONE;onlyfiveexplicitnewfilescherry-picked",
+    "qaAcceptedBase": "fc6737415da36b4306afa0060a525eca2f1131ca",
+    "qaCombinedSourceHead": "e2f108261b831668618588acdc635e2113dcdf8a",
+    "C_executionHeadNote": "C142startedat7e8f00aef99c71c8b43d56a3dff1ed637c9fab49;MasterintegratedAwhileit ran;executedassessment/staff/Cfilefamiliesunchanged."
+  },
+  "executedSourceSha256": {
+    "js/rva-affiliate-share-contract.cjs": "b6b3a9288f3048384ad9b0fd6963b242cfbdb38e92218f52a6fbe2b8882f2e13",
+    "portal/portal-referrals.js": "bda8722c7c44fbc5cb728569c37d0f45db18b22f3ae8a864ddd8047b996c5c1b",
+    "tests/wave2-affiliate/share-contract.test.cjs": "ed72d71b7d4453fc52867e7575ca54d2e4f7d7ed031e7ebb295ded29093239fd",
+    "tests/wave2-affiliate/browser.test.cjs": "53a95206565484d74311e41d2fd73b49aa3a47b100c2c0b0d78d8e50328bba1e",
+    "tests/wave2-affiliate/fixtures.cjs": "2a07dc2d4b93cb25a9b2d5e7f079e1a199f4c51510e708a52de06e28512a8260",
+    "member/index.html": "8558a7e8883d075cda87eead98cb0a89750c549eee5813074c2d66fd2ad7a6bd",
+    "member/dashboard.html": "66d6f222fa12f2a1dd800ba34822df009ecb895c0a0b8fa561896419fe58c54a",
+    "member/member110.js": "9cf5f62a4ca59055b0c50c45bfa8cf1bd3cd825d3cc2c48a3f04d1be54b95a1b",
+    "member/onboarding/index.html": "bf672eb1bb5f936a6fc34e7b76517bc3f21efb89dbfb8d96a13347e07dcbf423",
+    "member/onboarding/onboarding.js": "c04581828dca9eca3f497d1c8168e47c933a0ebd9e91fb4f3597f4edbb13d1c5",
+    "member/member110.css": "aef6cd75a1068ab4a381201a46903e3ea9b13f77dd9f90461742300f481774dc",
+    "tests/wave2-architecture/browser.cjs": "18794d7e096ad55add64e6e36a40063c07fc66ddbc00cba9e613702f172e168b",
+    "tests/wave2-architecture/contracts.test.cjs": "2dcafdd289ef65b76e7f7f8bfba27af20cf5465ae577d6b3d269efb648348d43",
+    "tests/wave2-architecture/fixture.cjs": "4db9409c433e463bc36d09c378463ed797acfa4881de134b172b41e9dffaf542",
+    "tests/wave2-client/run-pg.cjs": "e4cea05127f5f2776d9741df2c2667f0bedb00a23a1369566b52e7a1c1e8e173",
+    "tests/wave2-client/run-dom.cjs": "71eeec4b06ff95d7fe6315b2e7da16584d057fa7a6a95baf86e40ebb3ee39e3b",
+    "tests/wave2-client/run-browser.cjs": "886e3e3e2e83e26c65ac4153ce56ba09a35dd2ee55c44b241919474ffded9175",
+    "tests/wave2-client/sql-contracts.test.cjs": "9339297dc2b8f8d76899447c20e6449dc64a27d15dbb6fb1af9c7040618eb3f0",
+    "tests/wave2-client/onboarding.test.cjs": "8093f84051be5e6f4d64d019786ebd2c584acbbf3bdb7765d2a20f44c78fcf1e",
+    "tests/wave2-client/source-pins.json": "895672ad3f9c0d770b5fb89f106e85b85695e76c7b7b180ab45a25675c5e977a",
+    "tools/coach-companion-catalog/index.cjs": "5ac8a0d1f5cfaab995c937a8685cdbeb5fcc71fe7bce0316f60cf7d0b1734266",
+    "tests/coach-companion-catalog.cjs": "ceb5e8b07f3b82e59ce661380999776c4f4b33787eb20470c99f413e333b545d",
+    "tests/wave2-qa/adversarial.test.cjs": "d8b8bca769b88c83dd6b76ea1ff04a30578465a9583d8e4067af71f5642b2f9d",
+    "tests/wave2-qa/invariants.test.cjs": "f96f77f72880b19b350534d907484a804eb6484e70a43023d5ad56c435f26c32",
+    "tests/wave2-qa/catalog-probes.test.cjs": "7e893a083e2e105478437cd8be6c2219a6b34618bb1ad9d874d948b86014cee8"
+  },
+  "historicalSqlPins": {
+    "version": 1,
+    "baseCommit": "fc6737415da36b4306afa0060a525eca2f1131ca",
+    "baselineSourceCommit": "88ee646c85cad9f5433b97099638582962ea9a7e",
+    "files": [
+      {
+        "path": "../revitalizedacademy/tests/backend/platform.sql",
+        "sha256": "8458676c4b1969845c1f651f421e53405dcf6d64be4c9100a81b1980f089a1b5",
+        "restore": true,
+        "stage": "baseline_auth"
+      },
+      {
+        "path": "../revitalizedacademy/supabase/baselines/2026-09-26/schema.sql",
+        "sha256": "60f38f157e338cce445e2ca391b1988a69c0586dfed9b289283380f3f3e9edc6",
+        "restore": true,
+        "stage": "baseline_auth"
+      },
+      {
+        "path": "../revitalizedacademy/supabase/migrations/20260926212638_authorization_and_enrollment_gate.sql",
+        "sha256": "373c3fe40ada08520b2c4c44cf620205dde9aa68e1357702bf80645efd4771f3",
+        "restore": true,
+        "stage": "baseline_auth"
+      },
+      {
+        "path": "supabase/migrations/20261007224150_production_client_lifecycle_v1.sql",
+        "sha256": "e3b37a26ef0d9d5c3574bb40f85438988a8cb2622842cb1563a795826caa1085",
+        "restore": true,
+        "stage": "production_hold"
+      },
+      {
+        "path": "../revitalizedacademy/supabase/baselines/2026-09-26/metadata.json",
+        "sha256": "cd1b37b0c7067b880ad7d30c7b27cff4bcd1d216716a3188313397b387e9e397",
+        "restore": false,
+        "stage": "baseline_auth"
+      },
+      {
+        "path": "member/onboarding/onboarding.js",
+        "sha256": "c04581828dca9eca3f497d1c8168e47c933a0ebd9e91fb4f3597f4edbb13d1c5",
+        "restore": false,
+        "stage": "baseline_auth"
+      },
+      {
+        "path": "member/onboarding/index.html",
+        "sha256": "bf672eb1bb5f936a6fc34e7b76517bc3f21efb89dbfb8d96a13347e07dcbf423",
+        "restore": false,
+        "stage": "baseline_auth"
+      },
+      {
+        "path": "portal/portal-client-lifecycle.js",
+        "sha256": "604f6f94a528921b1a3c4485e74bf23d6e7af363da7a679c58cd72f1c3f28a6e",
+        "restore": false,
+        "stage": "baseline_auth"
+      },
+      {
+        "path": "portal/portal.js",
+        "sha256": "197bad019aac3b86442d602820302213e8075215a78dc28d5ca77aa18cf12de1",
+        "restore": false,
+        "stage": "baseline_auth"
+      },
+      {
+        "path": "portal/portal-permissions.js",
+        "sha256": "087c276a9284914a5fe70849f14e6e7a7da3f7d06fd2393db8df069398fd2be8",
+        "restore": false,
+        "stage": "baseline_auth"
+      }
+    ]
+  },
+  "qaProvenanceChecks": {
+    "original57MatrixUnchanged": true,
+    "baseline101And10InventoryRetained": true,
+    "FunctionSourceFamiliesMigrationsAuthRlsAssetsStylesAndBuildControlsUnchanged": true,
+    "canonical13Functions459pathsAt1341": "Master-observedonly;noQAhostedcalls",
+    "memberPublicMountAt1346": "MasterobservedbothpathsOnboarding;newdashboardislocal/unallowlisted",
+    "authorReceiptOutputsOverwrittenByQA": false,
+    "rawSourcesOrRealPrivateAnswersCopied": false
+  },
+  "authorArtifactSha256": {
+    "docs/orchestration/issue-53/wave2/handoff.json": "63e04dc2226f94438263363d337ba24b94ccec31624c13e51eb64f7322b4cf33",
+    "docs/orchestration/issue-53/wave2/CONTRACT_RESULTS.json": "bf9a016a11d76756ef02b2218efb0b1ec1dfc77bee9e859df9986fcc9c8fb3f8",
+    "docs/orchestration/issue-53/wave2/chromium-1440-dashboard.png": "021ade0b31e72bf7dbae565bc714f085622ddcb9ed14fc6b0d69614309f10c6a",
+    "docs/orchestration/issue-53/wave2/chromium-320-dashboard.png": "840a9108ad682a8b8dd40eb6b3e2c383370943e1999d1977a818abc588f6e21e",
+    "docs/orchestration/issue-53/wave2/webkit-1440-dashboard.png": "d25d8c8f3599dc8b45c13d4229e1269f90d50f022b32d1959f0d860b1852f8fd",
+    "docs/orchestration/issue-53/wave2/REPORT.md": "af1a8a591a736dfed3bc49cc3ed538f0e0c5ed0ab2d477e36d698da2fa506900",
+    "docs/orchestration/issue-53/wave2/chromium-768-dashboard.png": "fb7cced66a405ad55ac956f05b5aa3147ec0d304844aa7c5a1d48be93a3591f1",
+    "docs/orchestration/issue-53/wave2/BROWSER_RESULTS.json": "06390156eb87147d7a59cfc70f323852d961e8fa78c38abcfac18252917593af",
+    "docs/orchestration/issue-53/wave2/chromium-390-dashboard.png": "5add1c788974b2b54cd746af8caebec2ff1c452f680012252e17b9a19e8553af",
+    "docs/orchestration/issue-53/wave2/INPUTS.json": "92cdfb05c0bfe161b23a8f30957af5d9cc4f3714b0655cb3f6d8ca714df1df02",
+    "docs/orchestration/issue-53/wave2/webkit-320-dashboard.png": "0c0dbbffbeebb6f331b892a2dcfa778f0ab262dc74afe8c59e65e2d79b808d15",
+    "docs/orchestration/issue-53/wave2/webkit-768-dashboard.png": "feb099718986c0baf359bfd33fc555f30d8d4c33c86172985397ee1b4bcaa65d",
+    "docs/orchestration/issue-53/wave2/webkit-390-dashboard.png": "90596c7a84fc6be7500cfe770e14edb1ef10f614d0830f7dbb23a5605066700d",
+    "docs/orchestration/issue-54/wave2/postgres-receipt.json": "2f152c698c1bd6e2053ab8f719c29309abb6e9bbc5d7c9e45acbd607a18f3769",
+    "docs/orchestration/issue-54/wave2/output-routing-tests.tap": "23b131018b216a17e38a92d3ac7bb9a4fad9f1f2f0b06c51230270b861d05d78",
+    "docs/orchestration/issue-54/wave2/handoff.json": "06cc1f8f5060fb9c51ab0bb8b33afdf1f0c1e0ff43afd9f66525db22fdabdea1",
+    "docs/orchestration/issue-54/wave2/browser-receipt.json": "8a7fea3af3f81d759abcd12bbb86070e1908580df8e7ad967dc667ddb6c6cbd7",
+    "docs/orchestration/issue-54/wave2/baseline_auth-tests.tap": "bf239f8b343efadc6d6013fcb7671af4978249589615f34435b4dc0b71b4ae50",
+    "docs/orchestration/issue-54/wave2/browser-run.log": "4e42d40abc015a3ca6014d7e876ff879b1f7f2011140fe2e2d5c4d131e3de277",
+    "docs/orchestration/issue-54/wave2/REPORT.md": "98bfcbcc9a3127c8dac761ca82804df648f8a4f15f679bcea870906f1615bad0",
+    "docs/orchestration/issue-54/wave2/results.json": "c5aee449c5a131147836ecf2738f2e97cbfe91b85d73a65d978911ff773a94ea",
+    "docs/orchestration/issue-54/wave2/runner-output-revision.json": "2df1ddc6831085bce6080c8e3c414dadd342b687ff7e7f762779426e23fe70e9",
+    "docs/orchestration/issue-54/wave2/initial-browser-receipt.json": "aa8feb28314ef49bd0074856fd12d677dd531a2ef7aaa2710d7551a9f99018cd",
+    "docs/orchestration/issue-54/wave2/onboarding-dom.tap": "c29b6c7943bf96d52a1acef82eb106603d01b5d22803a4d3fcd244d20c00d773",
+    "docs/orchestration/issue-54/wave2/second-fixture-run.log": "609dd93fc89053f9cc83b5cdbaabbf148085f984afbd860bac41f62727533fb5",
+    "docs/orchestration/issue-54/wave2/initial-browser-fixture-receipt.json": "393ea2cb93a31bc761489da0a7044be2cc40d9234ff15bceabae0a72fd183f94",
+    "docs/orchestration/issue-54/wave2/initial-fixture-run.log": "14b096145a62fefccdbdf5b795417001360bc52299fac905b724e7c84ad898d1",
+    "docs/orchestration/issue-54/wave2/third-fixture-run.log": "62323095d4837c19549eed3db3d1925a4ddecca1d0d8581b19bb130d4a825cb9",
+    "docs/orchestration/issue-54/wave2/production_hold-tests.tap": "6ed1dd79362ff200f90eb6c3981adad043a50385c66a408a5cd36171efdfaeae",
+    "docs/orchestration/issue-54/wave2/initial-onboarding-dom.tap": "aafd6e80e749ca09cdf128bb7a890de556990871304b93552c05e3c125d7af71",
+    "docs/orchestration/issue-54/wave2/initial-fixture-receipt.json": "1499de4777addd84312f2e21f2e896627f0f5bdd7ce9ab0126e2a6225444e47e",
+    "docs/orchestration/issue-54/wave2/third-fixture-receipt.json": "28148d6baa703e630d7cc7fd78709668005154e2fdb4f2a16e45f0911748c411",
+    "docs/orchestration/issue-54/wave2/second-fixture-receipt.json": "c29264fb727ad3e8b414e165135e52c7ef560954d48128eda914e5bf7da7fd83",
+    "docs/orchestration/issue-54/wave2/pg-run.log": "1cce534d87a42b250bcd1a44a6ee059bb09494a4599c3ae02e552f70b442cb51",
+    "docs/orchestration/issue-55/wave2/EVIDENCE.json": "0fd6f5c9b0e576a9e781a02d4685cee0530215bbd5b6ea8ce66f846c02dfe5aa",
+    "docs/orchestration/issue-55/wave2/IMPLEMENTATION.md": "461629240739b997fb1a5b4b62266da952cbe536237060fce8455eadd5a307df",
+    "docs/orchestration/issue-55/wave2/QA_PACKAGE_MAPPING.json": "b00e75f2a16a612d90008a983a1dc9bc707b09c7da0dda25171c0fb40ec49406",
+    "docs/orchestration/issue-55/wave2/UNIT_REGRESSION.tap": "af3a5dbd02572708bfddf467ab60ed6b77d8e0ec5c270d64f00a8bb50c9a4c46",
+    "docs/orchestration/issue-55/wave2/BROWSER.tap": "6ea095b9f8a670b85c2d7f77a5e7b0e53437f4d5241ec81051876166587b0921",
+    "docs/orchestration/issue-57/wave2/handoff.json": "5a07e1d79a5eee45405d9b56e3fed1845948a7350277e6ab556ae4396b8427b5",
+    "docs/orchestration/issue-57/wave2/REPORT.md": "e06b12998702c9fc2ab3db94c388a9c4d9cb7d4d0e4607b2dbe57cd35f9fb6be",
+    "docs/orchestration/issue-57/wave2/node-tests.tap": "567e83588bfb08cbbb17fa7408b04483f39155310c174fa6aee97e1745163f9a"
+  },
+  "wave2Worktrees": [
+    "worktree /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-affiliate\nHEAD d93dc1a0da0771babcf2283da3f8907137d9229a\nbranch refs/heads/codex/rva-wave2-affiliate-20261101",
+    "worktree /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-architecture\nHEAD c1428ad6bd4a10aefb9492cd20db536620e53e3d\nbranch refs/heads/codex/rva-wave2-architecture-20261101",
+    "worktree /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-client\nHEAD c0d7ebfbc6e4099b83390fed43a6196553dc65cd\nbranch refs/heads/codex/rva-wave2-client-20261101",
+    "worktree /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-integration\nHEAD b47fe6a64d2bfa197e6d8f1feaea08f9f7151d2d\nbranch refs/heads/codex/rva-wave2-integration-20261101",
+    "worktree /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-qa\nHEAD e2f108261b831668618588acdc635e2113dcdf8a\nbranch refs/heads/codex/rva-wave2-qa-20261101",
+    "worktree /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-v3\nHEAD 1fdd49bb7da911f73ac0ee0382fbe6254a9f6a3e\nbranch refs/heads/codex/rva-wave2-v3-20261101"
+  ],
+  "reproductionEnvironment": {
+    "Node": "24.20.0",
+    "jsdom": "26.1.0",
+    "pg": "8.16.3",
+    "Playwright": "1.62.1",
+    "PostgreSQL": "17.11",
+    "NODE_PATH": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules:/Users/davesmacbookpro/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules",
+    "ChromiumExecutable": "/Users/davesmacbookpro/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+    "AOutputEnv": "RVA_WAVE2_A_OUTPUT=<absolute own QA directory>/A-browser",
+    "BOutputEnv": "RVA_WAVE2_B_OUTPUT=<absolute own QA directory>/B-pg or B-dom or B-browser",
+    "browserLaunch": "Authorized isolated sandbox exception; no user profile or external requests"
+  },
+  "validation": {
+    "result": "PASS",
+    "exact57IdsRetained": true,
+    "101BaselineAnd10DetailsPreserved": true,
+    "allSuiteHashesAndTapCountsMatch": true,
+    "allSourceHashesMatch": true,
+    "allAuthorArtifactsUnchanged": true,
+    "sqlCleanupVerified": true,
+    "originalMatrixUnmodified": true,
+    "ownedPathsOnly": true,
+    "productionCalls": 0,
+    "checksAreDocumentationIntegrityNotAdditionalBusinessCases": true,
+    "rawLogWhitespace": "Runner-emitted trailing spaces retained in raw failure TAP/log evidence; full staged diff check reports them. Source/document whitespace check passes."
+  }
+}

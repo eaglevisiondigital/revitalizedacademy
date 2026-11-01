@@ -1,0 +1,15 @@
+{
+  "runnerSha256": "71eeec4b06ff95d7fe6315b2e7da16584d057fa7a6a95baf86e40ebb3ee39e3b",
+  "outputDirectory": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-qa/docs/orchestration/issue-56/wave2/B-dom",
+  "sourceCommit": "05590b9b35dd8525a78ce8a69da2ff19c7d89f32",
+  "startedAt": "2026-11-01T14:02:46.570Z",
+  "adapter": "Actual onboarding HTML/JS; fake Auth/RPC; no managed Auth or production acceptance",
+  "productionCalls": 0,
+  "tests": 13,
+  "pass": 13,
+  "fail": 0,
+  "skipped": 0,
+  "exitCode": 0,
+  "result": "PASS_PARTIAL",
+  "completedAt": "2026-11-01T14:02:47.861Z"
+}

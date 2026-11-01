@@ -1,0 +1,118 @@
+TAP version 13
+# Subtest: cent conversion rejects rounding, malformed and negative amounts
+ok 1 - cent conversion rejects rounding, malformed and negative amounts
+  ---
+  duration_ms: 1.311333
+  type: 'test'
+  ...
+# Subtest: equal splits balance every approved count without fractional cents
+ok 2 - equal splits balance every approved count without fractional cents
+  ---
+  duration_ms: 0.612709
+  type: 'test'
+  ...
+# Subtest: plans enforce exact sum, ordering and market-route isolation
+ok 3 - plans enforce exact sum, ordering and market-route isolation
+  ---
+  duration_ms: 0.260375
+  type: 'test'
+  ...
+# Subtest: secure payment credentials are random 256-bit tokens hashed for persistence
+ok 4 - secure payment credentials are random 256-bit tokens hashed for persistence
+  ---
+  duration_ms: 0.576375
+  type: 'test'
+  ...
+# Subtest: webhook HMAC validates exact raw bytes, rejects missing/wrong signatures
+ok 5 - webhook HMAC validates exact raw bytes, rejects missing/wrong signatures
+  ---
+  duration_ms: 1.193583
+  type: 'test'
+  ...
+# Subtest: next monthly ARB date clamps month end and preserves UTC date
+ok 6 - next monthly ARB date clamps month end and preserves UTC date
+  ---
+  duration_ms: 0.114041
+  type: 'test'
+  ...
+# Subtest: transaction normalization discards provider secrets, raw card/address fields and preserves only last four
+ok 7 - transaction normalization discards provider secrets, raw card/address fields and preserves only last four
+  ---
+  duration_ms: 0.466958
+  type: 'test'
+  ...
+# Subtest: void/authorization metadata uses auth amount when settlement is zero
+ok 8 - void/authorization metadata uses auth amount when settlement is zero
+  ---
+  duration_ms: 0.103708
+  type: 'test'
+  ...
+# Subtest: Accept Hosted card-entry request has no application card fields and uses explicit sandbox host
+ok 9 - Accept Hosted card-entry request has no application card fields and uses explicit sandbox host
+  ---
+  duration_ms: 13.248416
+  type: 'test'
+  ...
+# Subtest: Holistic Foundations 3-month monthly cadence uses ARB with next-month start after first capture; future-first starts on chosen date
+ok 10 - Holistic Foundations 3-month monthly cadence uses ARB with next-month start after first capture; future-first starts on chosen date
+  ---
+  duration_ms: 0.696042
+  type: 'test'
+  ...
+# Subtest: provider timeout or malformed response reports uncertainty, never raw response
+ok 11 - provider timeout or malformed response reports uncertainty, never raw response
+  ---
+  duration_ms: 0.24525
+  type: 'test'
+  ...
+# Subtest: environment mismatch prevents any network call or cross-environment service credential use
+ok 12 - environment mismatch prevents any network call or cross-environment service credential use
+  ---
+  duration_ms: 0.146041
+  type: 'test'
+  ...
+# Subtest: sandbox and live credential namespaces and origins cannot be crossed
+ok 13 - sandbox and live credential namespaces and origins cannot be crossed
+  ---
+  duration_ms: 2.14475
+  type: 'test'
+  ...
+# Subtest: foreign origin rejected before database/provider request
+ok 14 - foreign origin rejected before database/provider request
+  ---
+  duration_ms: 0.290334
+  type: 'test'
+  ...
+# Subtest: staff action requires independently verified identity and uses user JWT for database authorization
+ok 15 - staff action requires independently verified identity and uses user JWT for database authorization
+  ---
+  duration_ms: 0.65325
+  type: 'test'
+  ...
+# Subtest: hosted response is emitted once only after the server has claimed its attempt
+ok 16 - hosted response is emitted once only after the server has claimed its attempt
+  ---
+  duration_ms: 0.568834
+  type: 'test'
+  ...
+# Subtest: uncertain provider response marks durable attempt for review and cannot be represented as paid
+ok 17 - uncertain provider response marks durable attempt for review and cannot be represented as paid
+  ---
+  duration_ms: 0.396458
+  type: 'test'
+  ...
+# Subtest: invalid webhook never enters durable inbox and valid webhook ignores claimed paid amount
+ok 18 - invalid webhook never enters durable inbox and valid webhook ignores claimed paid amount
+  ---
+  duration_ms: 0.484458
+  type: 'test'
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 18
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 95.029
