@@ -37,13 +37,13 @@
         "tests/wave8-provisioning/",
         "docs/orchestration/issue-62/wave8/"
       ],
-      "status": "ACTIVE_FOCUSED_QA_CORRECTION",
+      "status": "RETURNED_LOCAL_QA_CORRECTION",
       "dispatch": {
         "kind": "native-spawn-result",
         "taskName": "/root/wave8_provisioning"
       },
       "implementationSha": "918cf8fcffa27a08d2902226e26dc05c501757fd",
-      "headSha": "316c8e1cbb9ccdfa4458e2dddcebfa7c28c582e9",
+      "headSha": "6c33bbdb684f2c97f39f6ffed2aa4add261f0ead",
       "additionalBoundedScope": "Guarded LOCAL authenticated profiles TRUNCATE revoke only, after QA independently demonstrated successful direct destructive access"
     },
     {
@@ -101,15 +101,17 @@
         "tests/wave8-qa/",
         "docs/orchestration/issue-56/wave8/"
       ],
-      "status": "ACTIVE",
+      "status": "RETURNED_INDEPENDENT_QA",
       "dispatch": {
         "kind": "native-spawn-result",
         "taskName": "/root/wave8_independent_qa"
-      }
+      },
+      "headSha": "295ccae4b4fb0c4b8de82552825e1000ccefc6ec",
+      "executionSourceSha": "2eb3080d6e50ae7780308345ebafcb986cc96ca2"
     }
   ],
   "capacity": "Master+3 active maximum; QA starts after a specialist returns",
-  "currentStatus": "ACTIVE_LOCAL_IMPLEMENTATION",
+  "currentStatus": "COMPLETED_LOCAL_REVIEW_CANDIDATE_PRE_PUSH",
   "hostingReadOnlyObservation": {
     "deploy": "6ae6b971e17bce85e37aa95c",
     "source": "10dec6682e7e87bf637482fc027e54c6800260e4",
@@ -121,20 +123,48 @@
   "sourceControlAssessment": {
     "isolatedBranch": "codex/rva-wave8-integration-20261101",
     "existingPr59Updated": false,
-    "status": "WAITING_INDEPENDENT_SOURCE_REVIEW",
-    "automaticDeployAvoidance": "Final commit must carry [skip ci] [skip netlify]; no PR/candidate deployment; current canonical remains locked"
+    "status": "INDEPENDENTLY_REVIEWABLE_AFTER_MASTER_FINAL_PIN_CHECK",
+    "automaticDeployAvoidance": "Final commit must carry [skip ci] [skip netlify]; no PR/candidate deployment; current canonical remains locked",
+    "repositoryPublic": true,
+    "remoteBranchAbsentBeforePush": true,
+    "activeGitHooks": 0,
+    "finalRemoteEvidence": "deployment-evidence/2026-11-01-wave8/SOURCE_PUSH_RESULT.json",
+    "policyReference": "https://docs.netlify.com/deploy/manage-deploys/manage-deploys-overview/"
   },
   "currentFindings": {
-    "provisioning": "Author actual audited RPC workflow39PASS in each of3stages; original forbidden direct binding assertion remains FAIL; awaiting independent proof",
-    "profileAcl": "Effective captured UPDATE/INSERT denies42501 despite selfupdate policy; other privilege safety not certified",
-    "combinedAuthorPg": {
-      "assertions": 334,
-      "pass": 315,
-      "fail": 19,
-      "historicalExposureFail": 18,
-      "legacyDirectBindingPositiveFail": 1
+    "provisioning": "Actual established audited RPC/trigger/verified-claim path PASS39casesx3; original direct-Coach binding expectation FAIL retained; J05BLOCKED, no new bypass",
+    "profilesTruncate": "Both-role destructive operation reproduced; guarded LOCAL profilesTRUNCATE-only revoke independently PASS; canonical migration unmodified/uninstalled",
+    "goalAbsentIdentity": "Unchanged independent whole-document teardown regression now PASS afterforwardBfix; transport retains drafts",
+    "providerLimit": "Detached fixture requires monotonic trusted authority/source versions; deliberately nonconforming stale manifest is NOT certified"
+  },
+  "sourcePushedAsOf": "Commit creation, before exact remote publication; SOURCE_PUSH_RESULT.json outsideGit records subsequent actual result",
+  "finalVerification": {
+    "nodeDomHttpSourcePass": 609,
+    "finalFocusedSourcePass": 8,
+    "finalPreservationPass": 6,
+    "nativeBrowserPass": 22,
+    "postgres": {
+      "assertions": 382,
+      "pass": 359,
+      "fail": 23,
+      "originalHistoricalExposureFail": 18,
+      "profileHistoricalExposureFail": 4,
+      "legacyDirectBindingExpectationFail": 1,
+      "auditedProvisioningPass": 117,
+      "correctedOriginalIsolationPass": 9
     },
-    "qa": "ACTIVE_NODE_NATIVE; PG queued untilauthorrelease",
-    "profilesTruncate": "INDEPENDENT_STRICT_DENIAL_FAIL; successful authenticated destructive access in fictional rollback, no FK masking; narrow LOCAL correction authorized, no production change"
-  }
+    "completePackages": {
+      "PASS": 1,
+      "FAIL": 0,
+      "BLOCKED": 45,
+      "NOT_RUN": 11
+    },
+    "protectedPathsUnchanged": 413,
+    "executionPinsVerifiedByMaster": 101,
+    "evidencePinsVerifiedByMaster": 148,
+    "sourcePrivacyReviewedFiles": 1136,
+    "production": "NO_GO",
+    "sqlSha256": "276ecd10534e7ad092138d636f449e26beca017349d87a3ccd6fa89ce95cccf7"
+  },
+  "backgroundWork": "NONE_ALL_NATIVE_SPECIALISTS_AND_QA_RETURNED"
 }
