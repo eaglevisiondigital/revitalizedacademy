@@ -1,0 +1,291 @@
+{
+  "startedAt": "2026-11-01T15:12:53.934Z",
+  "runnerSha256": "e9b836423277d213713d78fd26a29c0372b87b868c0304df52ff75a41d6924b1",
+  "scope": "LOCAL_CATALOG_OVERLAY_ON_HISTORICAL_EMPTY_DEPENDENCY_SCAFFOLD",
+  "productionCalls": 0,
+  "connection": "new cluster; listen_addresses empty; socket only; fake managed Auth",
+  "sourceCommit": "fad394ef683b711ba34866ec614bed71a26cee93",
+  "outputDirectory": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/docs/orchestration/issue-61/wave3/receipts",
+  "stages": [
+    {
+      "stage": "original",
+      "exitCode": 1,
+      "tests": 24,
+      "pass": 0,
+      "fail": 24,
+      "skipped": 0
+    },
+    {
+      "stage": "corrected",
+      "exitCode": 1,
+      "tests": 24,
+      "pass": 0,
+      "fail": 24,
+      "skipped": 0
+    },
+    {
+      "stage": "reverted",
+      "exitCode": 1,
+      "tests": 24,
+      "pass": 0,
+      "fail": 24,
+      "skipped": 0
+    }
+  ],
+  "currentPins": {
+    "observedAt": "2026-11-01T15:07:11.086986+00:00",
+    "supplementObservedAt": "2026-11-01T15:09:32.301961+00:00",
+    "files": [
+      {
+        "path": "../deployment-evidence/2026-11-01-wave3/current-catalog.json",
+        "sha256": "26018c0d318252c775c6c059999e2d82371fddfdf6d83b6559abc8de12cd4ad9"
+      },
+      {
+        "path": "../deployment-evidence/2026-11-01-wave3/catalog-normalized.json",
+        "sha256": "94322f192cda7bdaeae45c7fb2137745933bf66eef2816467c012f41d380e757"
+      },
+      {
+        "path": "../deployment-evidence/2026-11-01-wave3/catalog-supplement.json",
+        "sha256": "7cc1fb4f753edc6eb703212f2ee9970c0d0f8607758663a07f84f49a15227c94"
+      },
+      {
+        "path": "tests/wave3-allowance/current-overlay.sql",
+        "sha256": "9039f0eec674b6b296259d445a81538ede22e61f50c1837da5afbaba31f73c27"
+      },
+      {
+        "path": "tests/wave3-allowance/current-subset.json",
+        "sha256": "b9e1a1f5a131f438171192801614298f26d8bebb40a63edf609fc34e024bf0d0"
+      }
+    ],
+    "routineHashes": [
+      {
+        "name": "private.active_staff_session",
+        "definitionSha256": "a2d726ca82efa80aea131928395eb8619b3b0901cd31a381ebd90c8fdb0f6e1f",
+        "securityMetadataSha256": "e7dd6d46314f0f5d66c3e7fd21bd6cfebc9e147576597d953f35eb240ae6f845"
+      },
+      {
+        "name": "private.agreement_signatures_satisfied",
+        "definitionSha256": "0038edf146cd183a46be8fb1f60d5e6f39145da61a019e12f127eee4c3a04bf5",
+        "securityMetadataSha256": "995a00a336bd256bf0d794204cb26074fc1bc68daaa2b40f7647bd4554dbf7b8"
+      },
+      {
+        "name": "private.audit_client_access_transition",
+        "definitionSha256": "7c534fd9a400a174dde4cdc8e808ac6053c8fce4d9ddad45c4d422b9c6fae77b",
+        "securityMetadataSha256": "69a73bbca1350b35e622ba754e6959c0ea97c6f55cad98142c609e35ce8e04bb"
+      },
+      {
+        "name": "private.complete_journey_action_from_task",
+        "definitionSha256": "9b996db4775111b425ae22732b7896f07a045919eecbee38f769c1138caf8f24",
+        "securityMetadataSha256": "3ecd3a529b172ee9d18288b67db99bb443026a4c78171d026ff6401d4fd9f23d"
+      },
+      {
+        "name": "private.create_coaching_session_prep_task",
+        "definitionSha256": "c4c0541290eb1e058bde18b31eb100ef0c8865f385de3c90ee5e7dd10ce4dddb",
+        "securityMetadataSha256": "429a62547286b89e27f4e612faf4d172a58d23e6b849f68ac6d068cdb9f43e0c"
+      },
+      {
+        "name": "private.enrollment_gates_complete",
+        "definitionSha256": "3e7aa60533df62524fea9a3bd830ac4df8e9bd27e3e1b1500ba6dc859ef88900",
+        "securityMetadataSha256": "44c1893a667c5121f88ae43c60bb8806ad788d788ef5eb5e94af45fb45892d33"
+      },
+      {
+        "name": "private.enrollment_payment_satisfied",
+        "definitionSha256": "8bc0b76205d3f29a094c943c94d1aaaf240987f360fb15a59858b343fb1dd36e",
+        "securityMetadataSha256": "17da2e4f6c482d77e6539fa4ba84368a2a14b9431758fd4aec14595b2b5d1fcc"
+      },
+      {
+        "name": "private.ensure_notification_preferences",
+        "definitionSha256": "22544fe5520bdeaca930d996c7ce0155b8ccbb45e737961c17f50e8044fc77dc",
+        "securityMetadataSha256": "359541236c266be95bfff31748862611289fff66c29a80dd317fa3ecd34071d1"
+      },
+      {
+        "name": "private.full_member_access",
+        "definitionSha256": "2ec0d6d72343ac929ba7e9a875b3af331abb0f9a247d932bce264ecf8984b45d",
+        "securityMetadataSha256": "ec179b78e15d4a7b26d76c5e387ba7d7226f2fdfec418e7037557d96866faba9"
+      },
+      {
+        "name": "private.guard_client_paid_access",
+        "definitionSha256": "f547a21c9495a1b6c3e22d8389adffcfcf57547938df74b4e2985dcb749a8a2e",
+        "securityMetadataSha256": "1d75ede923958cdaecc7aa1e0bc36a94d470df677d8b605e85fe0dee47e34a00"
+      },
+      {
+        "name": "private.issue_required_agreements_for_membership",
+        "definitionSha256": "253d514737889647d4eb2a23713c9da51801f929a53f0a3065b1619e258bb419",
+        "securityMetadataSha256": "262263baef7bdca5d6be64d2f2b0fd4479977a6310bfc7c7865b88ac0494cfaf"
+      },
+      {
+        "name": "private.issue_required_coach_nda",
+        "definitionSha256": "d3329a74d33316d30963185a513c3005781ca1644b94e04b2ac229cfeacfb5e9",
+        "securityMetadataSha256": "f5b1ccbfa6b08e27d8ac2db9858fb4b7590c70aacb73edcfada09ebf0e210aa2"
+      },
+      {
+        "name": "private.link_profile_to_client_access",
+        "definitionSha256": "14ee1ebbd5301395a6c9d91b3c8842636374fc79d1b6a83d50706c1765bb10ae",
+        "securityMetadataSha256": "1e328aecd76fc87d0fe598b014166f2c2be154d60bc043b139ab31cd2a1c29b8"
+      },
+      {
+        "name": "private.notify_member_access_activation",
+        "definitionSha256": "5d439b19494b9ac00875eccef96b8c127c6cbf01925d5d16821243e9f6b8cbc8",
+        "securityMetadataSha256": "098c93bde8433bfe8fb7e906c1ff99cdc97051b709b671bf650acc55eb6a1d8b"
+      },
+      {
+        "name": "private.production_client_agreement_publication_released",
+        "definitionSha256": "8a12a9cd40aa86a94235b3c8b9b596b05829d434fd5d3099b32c5316dbfe9401",
+        "securityMetadataSha256": "99eb40a89469f0e21d4d380bbd6e4797d4b72ddba3792e859827de83038fc362"
+      },
+      {
+        "name": "private.recalculate_coaching_entitlement_used_value",
+        "definitionSha256": "28718562f96809f31fa5f1f00d7e194a618182e789904c51a2158af92d888f76",
+        "securityMetadataSha256": "9db8788820cedb9c9afeaace3ea8422dc0447979abaeb661fd20fc138477afca"
+      },
+      {
+        "name": "private.reconcile_membership_entitlements",
+        "definitionSha256": "50f34a01d4c5a97d95ce68a79c02e7c694a98ab4f33961f809c739990bcac222",
+        "securityMetadataSha256": "848da43319601e745c480d156b9068958e02d151aee710cd21b7b3197c0557d0"
+      },
+      {
+        "name": "private.refresh_client_lifecycle",
+        "definitionSha256": "ac5fde5caf59938e377769eb86f304cac3aba9032ae95368f2bd709ade4c5faa",
+        "securityMetadataSha256": "7b25ebc598d55eb2e27accc838ee6b0e2e04119af44063fbb3506deca98261f6"
+      },
+      {
+        "name": "private.render_agreement_content",
+        "definitionSha256": "5bf3f8d1fbfdf00f347f2065c27b84de7a647b6dcab128a33168ac28ebbb6833",
+        "securityMetadataSha256": "e0b62f72c3f8be9912fb724ec6c4ee5fed7da39225db6e81f2c8f8ed2ab8a179"
+      },
+      {
+        "name": "private.repair_coach_conversation_participants",
+        "definitionSha256": "916e68e1932e70dea8570e0369ce21f671fa11cc09f4bfe9ed8c294bee92ab33",
+        "securityMetadataSha256": "439c8065a8a042a620d68c6f9876c7e7765999405ae01e749b1c49d521e3b199"
+      },
+      {
+        "name": "private.staff_action_allowed",
+        "definitionSha256": "821e25bc0938a7344ee9e95c800377f2540c84917cdda2dee8507f4ee383b528",
+        "securityMetadataSha256": "7848b57e5abdb4ce85d2870452b23ff23ed87aef25e22ac43f5f95c52ca06357"
+      },
+      {
+        "name": "private.staff_can_access_contact",
+        "definitionSha256": "fa491b97552a28a38fed400528a7c702cd330859d3c2ddb0b76e6f357f9020bb",
+        "securityMetadataSha256": "58d5f9e2f1c2704148e2727f1a2439cb0c6bafed95ec76dc5a84fa0fcb01f3fd"
+      },
+      {
+        "name": "private.staff_has_permission",
+        "definitionSha256": "d107b8e704a622f395cfab988f7ef7519cb420b9c86ed935aeee5e56406cd30f",
+        "securityMetadataSha256": "50f06c34e91caa9f0daf0532a514577c4a7ee4b3b20ef4c72e79701baa576405"
+      },
+      {
+        "name": "private.sync_access_to_community",
+        "definitionSha256": "31d79fbf5d1227469095d8100ec3e25c25007506bf4a201fface47e7d3b02e3e",
+        "securityMetadataSha256": "f2ceda4fea48b9c9dcabbd89291dbfabb05e264a6acdeb90f7388bbf5f9e7c33"
+      },
+      {
+        "name": "private.sync_coach_client_conversation",
+        "definitionSha256": "5e67da9d8e66fe51be4e05ab3c7b272d448f1c841ba77f1a4a7d4369669a2da2",
+        "securityMetadataSha256": "5397a64694ba9a0b997d6cb7b202965a1225e2e93f4e7fafacbfcbaf425a4fdd"
+      },
+      {
+        "name": "private.sync_coaching_session_entitlement",
+        "definitionSha256": "f3692b55a6e6744da066aa4ba8b92e2e2acaaaa8b192865eb132b205d79f75bb",
+        "securityMetadataSha256": "545e8b2a70872961eceb9da6b7a902623478f8916e938ec8eabfbc922539af6f"
+      },
+      {
+        "name": "private.sync_coaching_session_status",
+        "definitionSha256": "3bd290d47f45d4080e8b30be7508dd51c208a4e33b7adecdacea71930990d82a",
+        "securityMetadataSha256": "8c8eda624c595a7f97d4000575cd3d266be3fb7458db414a560a2f72e2779556"
+      },
+      {
+        "name": "private.sync_household_conversation",
+        "definitionSha256": "c2ec674acd767d842823c52afefb74a5e2332d4b2b8a95ea09356f63d0366f7f",
+        "securityMetadataSha256": "b2b85ae1d5c7d828ef7fe67c9e22273a13c8b37d36d70adc677246ec3a8604c7"
+      },
+      {
+        "name": "private.sync_member_community_access",
+        "definitionSha256": "846d7411c394ba4f80e10d22c208d09f78e98ceb88a87375a04ad5d0c8f85ff7",
+        "securityMetadataSha256": "a0566b54c8a205087e65007401aafea24124939e3e886e0fd5ba9dd6a6100e5f"
+      },
+      {
+        "name": "private.sync_membership_entitlements",
+        "definitionSha256": "818cd248a954553dfc2e866d7bb2c349e9e6b16bcbf80a8e86331a253a92c854",
+        "securityMetadataSha256": "8d87376b067e386f30907efe547576090d4a6309ff7a2dfefb434221d03792ff"
+      },
+      {
+        "name": "private.sync_primary_coach_assignment",
+        "definitionSha256": "4ffa7bd94dbfda0abdc7c05260f8d9a4192d8ee3db88205af8cb3d03a98f82c2",
+        "securityMetadataSha256": "322afcd23702af884b282bf335dc0144222908c81a037692bf6fd7bbba6e07c8"
+      },
+      {
+        "name": "private.sync_program_challenges_from_membership",
+        "definitionSha256": "82da3159a23e58dcdfebdae9f0723929b484052f161574f0c656ded3201fbf4c",
+        "securityMetadataSha256": "9d81df87e9ed42d83dc51167c8c84f4b94db039171a4370fca46ab8ce02bf1c8"
+      },
+      {
+        "name": "private.sync_program_learning_access",
+        "definitionSha256": "658b12cee3a2b47cdf7b1de28dc549f8863c27a939da6ebf34069e4c0e5c025b",
+        "securityMetadataSha256": "5b790165b4bc3733901dec39b8c46f5cef81c4373b942bf177d1a090fe55a568"
+      },
+      {
+        "name": "private.sync_referral_profile_from_access",
+        "definitionSha256": "1c83e942a3755a5f02d6f08a0010a947f90e35a13b3aedd0c58a57f150e5798a",
+        "securityMetadataSha256": "f2b734bb59cfc4b86cdf8b1e9677febeb84f5043b192a40789ad1b051019d85a"
+      },
+      {
+        "name": "private.sync_referral_status_from_contact",
+        "definitionSha256": "3e0ec759d76028d894caf2829ef5ca5ebc7e538023fa0ce203aa74ca6546d953",
+        "securityMetadataSha256": "e3605c43bf279eb20892470e45e030b3e27fe648848b1ae748c347bf6a37f956"
+      },
+      {
+        "name": "private.sync_staff_directory",
+        "definitionSha256": "589b72a7ae07b411f23f5a22b9fa5f6701caa01a671048114e68b43737562780",
+        "securityMetadataSha256": "027bac40e1d60ca6e1055835202d30a71ec27b99d932ad436d4b39aa83ee08e9"
+      },
+      {
+        "name": "public.member_paid_access_allowed",
+        "definitionSha256": "2e6882f8fa6eb513309ec04d5b18727286e160c7ea5410327af86088ab11d173",
+        "securityMetadataSha256": "8471485571aa7dc4bad855cefc89d19836f1df0d48f7f8d3e0db40ee6a67bb35"
+      },
+      {
+        "name": "public.resolve_coaching_entitlement_review",
+        "definitionSha256": "6a0f50565a975bad20ffb96329d18fb5ff1af108c19f2411027206d5e76ff4a3",
+        "securityMetadataSha256": "9e8f93a1723e32a01407784836a1064ff77dd171e14cda52fed6fd5621fe34b5"
+      },
+      {
+        "name": "public.staff_action_allowed",
+        "definitionSha256": "2d7440a8a036a0a41f1340e0ab15d348e3021ec03bde533cbd6cc91d24f948da",
+        "securityMetadataSha256": "9a8258ad139ff6b12e6cc063e41feb74a361bc266053beb9e909b04092b01792"
+      },
+      {
+        "name": "public.touch_updated_at",
+        "definitionSha256": "1d6585da2e03baf67f9289aeed2256c53c09bd9b64aaf5a636fd27eb737d8c64",
+        "securityMetadataSha256": "914ae17bfde7aab8fc25e89926690bd0a9f8c9222ddadf2360cd0ac2487aabf8"
+      }
+    ]
+  },
+  "scaffoldPins": {
+    "acceptedBase": "fad394ef683b711ba34866ec614bed71a26cee93",
+    "scope": "Historical empty schema supplies dependency scaffold only; relevant current metadata must overlay and verify before test claims.",
+    "files": [
+      {
+        "path": "../revitalizedacademy/tests/backend/platform.sql",
+        "sha256": "8458676c4b1969845c1f651f421e53405dcf6d64be4c9100a81b1980f089a1b5"
+      },
+      {
+        "path": "../revitalizedacademy/supabase/baselines/2026-09-26/schema.sql",
+        "sha256": "60f38f157e338cce445e2ca391b1988a69c0586dfed9b289283380f3f3e9edc6"
+      },
+      {
+        "path": "../revitalizedacademy/supabase/baselines/2026-09-26/metadata.json",
+        "sha256": "cd1b37b0c7067b880ad7d30c7b27cff4bcd1d216716a3188313397b387e9e397"
+      },
+      {
+        "path": "supabase/migrations/20261007224150_production_client_lifecycle_v1.sql",
+        "sha256": "e3b37a26ef0d9d5c3574bb40f85438988a8cb2622842cb1563a795826caa1085"
+      }
+    ],
+    "currentCatalogRequired": "../deployment-evidence/2026-11-01-wave3/current-catalog.json"
+  },
+  "postgres": "postgres (PostgreSQL) 17.11 (Homebrew)",
+  "result": "REVIEW_REQUIRED",
+  "clusterStopped": true,
+  "clusterRemoved": true,
+  "completedAt": "2026-11-01T15:12:57.353Z"
+}

@@ -1,0 +1,190 @@
+TAP version 13
+# Subtest: [E02/N04] current RPC stays invoker; private helper remains postgres-only
+ok 1 - [E02/N04] current RPC stays invoker; private helper remains postgres-only
+  ---
+  duration_ms: 50.766833
+  type: 'test'
+  ...
+# Subtest: [E02 metadata] 40 routine bodies/security match current; default ACL representations explicitly normalized
+ok 2 - [E02 metadata] 40 routine bodies/security match current; default ACL representations explicitly normalized
+  ---
+  duration_ms: 21.76025
+  type: 'test'
+  ...
+# Subtest: [E02 metadata] ledger and allowance have no user trigger; session trigger definitions match capture
+ok 3 - [E02 metadata] ledger and allowance have no user trigger; session trigger definitions match capture
+  ---
+  duration_ms: 7.210625
+  type: 'test'
+  ...
+# Subtest: [E02 metadata] target column names/types/nullability/defaults match current capture
+ok 4 - [E02 metadata] target column names/types/nullability/defaults match current capture
+  ---
+  duration_ms: 6.534
+  type: 'test'
+  ...
+# Subtest: [E02] actual session trigger reserves without consuming
+ok 5 - [E02] actual session trigger reserves without consuming
+  ---
+  duration_ms: 8.925542
+  type: 'test'
+  ...
+# Subtest: [E02] repeated actual completion consumes one ledger unit once
+ok 6 - [E02] repeated actual completion consumes one ledger unit once
+  ---
+  duration_ms: 29.070166
+  type: 'test'
+  ...
+# Subtest: [E02] actual cancellation releases prior consumption
+ok 7 - [E02] actual cancellation releases prior consumption
+  ---
+  duration_ms: 9.89275
+  type: 'test'
+  ...
+# Subtest: [E02] no-show remains review with existing reason and zero used
+ok 8 - [E02] no-show remains review with existing reason and zero used
+  ---
+  duration_ms: 8.518291
+  type: 'test'
+  ...
+# Subtest: [E02 STRICT EP61] authorized review consumes/releases with recorded reason and actor
+ok 9 - [E02 STRICT EP61] authorized review consumes/releases with recorded reason and actor
+  ---
+  duration_ms: 15.123125
+  type: 'test'
+  ...
+# Subtest: [E02] Owner can resolve allowed fictional usage
+ok 10 - [E02] Owner can resolve allowed fictional usage
+  ---
+  duration_ms: 10.179625
+  type: 'test'
+  ...
+# Subtest: [N02/E02 STRICT EP61] unrelated Coach cannot resolve another Client usage record
+ok 11 - [N02/E02 STRICT EP61] unrelated Coach cannot resolve another Client usage record
+  ---
+  duration_ms: 8.553125
+  type: 'test'
+  ...
+# Subtest: [N02] existing scoped helper agrees assigned Coach allowed and wrong Coach denied
+ok 12 - [N02] existing scoped helper agrees assigned Coach allowed and wrong Coach denied
+  ---
+  duration_ms: 9.420167
+  type: 'test'
+  ...
+# Subtest: [N04] Client and anonymous cannot resolve usage
+ok 13 - [N04] Client and anonymous cannot resolve usage
+  ---
+  duration_ms: 8.519166
+  type: 'test'
+  ...
+# Subtest: [E02] invalid resolution, blank reason and missing record remain rejected
+ok 14 - [E02] invalid resolution, blank reason and missing record remain rejected
+  ---
+  duration_ms: 9.891375
+  type: 'test'
+  ...
+# Subtest: [N06] suspended Coach retains explicit allow but cannot review through lifecycle RLS
+ok 15 - [N06] suspended Coach retains explicit allow but cannot review through lifecycle RLS
+  ---
+  duration_ms: 9.298875
+  type: 'test'
+  ...
+# Subtest: [N06] pending-onboarding Coach cannot review
+ok 16 - [N06] pending-onboarding Coach cannot review
+  ---
+  duration_ms: 7.422292
+  type: 'test'
+  ...
+# Subtest: [N06 partial] expired/completed membership does not give Client review authority
+ok 17 - [N06 partial] expired/completed membership does not give Client review authority
+  ---
+  duration_ms: 6.997083
+  type: 'test'
+  ...
+# Subtest: [N06 partial] suspended Client access cannot resolve usage
+ok 18 - [N06 partial] suspended Client access cannot resolve usage
+  ---
+  duration_ms: 6.181834
+  type: 'test'
+  ...
+# Subtest: [N02/E02] wrong client denied; same Client different program totals stay isolated
+ok 19 - [N02/E02] wrong client denied; same Client different program totals stay isolated
+  ---
+  duration_ms: 12.197959
+  type: 'test'
+  ...
+# Subtest: [E02] full consumed aggregate includes every visible ledger row and usage unit
+ok 20 - [E02] full consumed aggregate includes every visible ledger row and usage unit
+  ---
+  duration_ms: 10.68075
+  type: 'test'
+  ...
+# Subtest: [E02/N04] manage allowed but global usage view denied cannot write a partial total
+ok 21 - [E02/N04] manage allowed but global usage view denied cannot write a partial total
+  ---
+  duration_ms: 7.06225
+  type: 'test'
+  ...
+# Subtest: [E02] repeated review retries preserve one row and same consumed total
+ok 22 - [E02] repeated review retries preserve one row and same consumed total
+  ---
+  duration_ms: 25.842042
+  type: 'test'
+  ...
+# Subtest: [E02] outer rollback restores ledger and allowance after successful review
+ok 23 - [E02] outer rollback restores ledger and allowance after successful review
+  ---
+  duration_ms: 8.086125
+  type: 'test'
+  ...
+# Subtest: [E02] missing target allowance row fails closed without ledger mutation
+ok 24 - [E02] missing target allowance row fails closed without ledger mutation
+  ---
+  duration_ms: 8.874
+  type: 'test'
+  ...
+# Subtest: [E02] target constraints match current catalog
+ok 25 - [E02] target constraints match current catalog
+  ---
+  duration_ms: 6.542625
+  type: 'test'
+  ...
+# Subtest: [E02] allowance UPDATE fault cannot silently commit ledger correction
+ok 26 - [E02] allowance UPDATE fault cannot silently commit ledger correction
+  ---
+  duration_ms: 10.5985
+  type: 'test'
+  ...
+# Subtest: [E02/N04] visible allowance with UPDATE denied cannot commit usage
+ok 27 - [E02/N04] visible allowance with UPDATE denied cannot commit usage
+  ---
+  duration_ms: 13.65475
+  type: 'test'
+  ...
+# Subtest: [E02 guard] nullable RPC config drift is rejected before correction/revert
+ok 28 - [E02 guard] nullable RPC config drift is rejected before correction/revert
+  ---
+  duration_ms: 6.813125
+  type: 'test'
+  ...
+# Subtest: [E02 guard] private helper definition drift is rejected without granting EXECUTE
+ok 29 - [E02 guard] private helper definition drift is rejected without granting EXECUTE
+  ---
+  duration_ms: 7.532917
+  type: 'test'
+  ...
+# Subtest: [E02 concurrency] separate reviews serialize allowance and sum both committed ledger rows
+ok 30 - [E02 concurrency] separate reviews serialize allowance and sum both committed ledger rows
+  ---
+  duration_ms: 40.207292
+  type: 'test'
+  ...
+1..30
+# tests 30
+# suites 0
+# pass 30
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 470.011792

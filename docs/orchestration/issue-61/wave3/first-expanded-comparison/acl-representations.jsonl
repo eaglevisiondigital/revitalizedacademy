@@ -1,0 +1,12 @@
+{"stage":"original","name":"private.notify_member_access_activation","captured":null,"fixture":["postgres=X/postgres","=X/postgres"],"effectiveEqual":true}
+{"stage":"original","name":"private.sync_membership_entitlements","captured":null,"fixture":["postgres=X/postgres","=X/postgres"],"effectiveEqual":true}
+{"stage":"original","name":"private.sync_program_challenges_from_membership","captured":null,"fixture":["postgres=X/postgres","=X/postgres"],"effectiveEqual":true}
+{"stage":"original","name":"public.touch_updated_at","captured":["=X/postgres","postgres=X/postgres","anon=X/postgres","authenticated=X/postgres","service_role=X/postgres"],"fixture":["postgres=X/postgres","=X/postgres","anon=X/postgres","authenticated=X/postgres","service_role=X/postgres"],"effectiveEqual":true}
+{"stage":"corrected","name":"private.notify_member_access_activation","captured":null,"fixture":["postgres=X/postgres","=X/postgres"],"effectiveEqual":true}
+{"stage":"corrected","name":"private.sync_membership_entitlements","captured":null,"fixture":["postgres=X/postgres","=X/postgres"],"effectiveEqual":true}
+{"stage":"corrected","name":"private.sync_program_challenges_from_membership","captured":null,"fixture":["postgres=X/postgres","=X/postgres"],"effectiveEqual":true}
+{"stage":"corrected","name":"public.touch_updated_at","captured":["=X/postgres","postgres=X/postgres","anon=X/postgres","authenticated=X/postgres","service_role=X/postgres"],"fixture":["postgres=X/postgres","=X/postgres","anon=X/postgres","authenticated=X/postgres","service_role=X/postgres"],"effectiveEqual":true}
+{"stage":"reverted","name":"private.notify_member_access_activation","captured":null,"fixture":["postgres=X/postgres","=X/postgres"],"effectiveEqual":true}
+{"stage":"reverted","name":"private.sync_membership_entitlements","captured":null,"fixture":["postgres=X/postgres","=X/postgres"],"effectiveEqual":true}
+{"stage":"reverted","name":"private.sync_program_challenges_from_membership","captured":null,"fixture":["postgres=X/postgres","=X/postgres"],"effectiveEqual":true}
+{"stage":"reverted","name":"public.touch_updated_at","captured":["=X/postgres","postgres=X/postgres","anon=X/postgres","authenticated=X/postgres","service_role=X/postgres"],"fixture":["postgres=X/postgres","=X/postgres","anon=X/postgres","authenticated=X/postgres","service_role=X/postgres"],"effectiveEqual":true}

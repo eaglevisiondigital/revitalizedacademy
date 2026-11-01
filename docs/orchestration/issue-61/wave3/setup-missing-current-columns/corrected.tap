@@ -1,0 +1,514 @@
+TAP version 13
+# Subtest: [E02/N04] current RPC stays invoker; private helper remains postgres-only
+not ok 1 - [E02/N04] current RPC stays invoker; private helper remains postgres-only
+  ---
+  duration_ms: 39.121625
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:11:1'
+  failureType: 'hookFailed'
+  error: 'column requirement.plan_code does not exist'
+  code: '42703'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async val (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:10:89)
+    async fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:23:19)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:9:61)
+    async TestHook.run (node:internal/test_runner/test:1404:7)
+    async Test.runHook (node:internal/test_runner/test:1284:9)
+    async Test.run (node:internal/test_runner/test:1357:9)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+# Subtest: [E02 metadata] core routines exactly match captured current definitions except proposed RPC
+not ok 2 - [E02 metadata] core routines exactly match captured current definitions except proposed RPC
+  ---
+  duration_ms: 4.167375
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:16:1'
+  failureType: 'hookFailed'
+  error: 'column requirement.plan_code does not exist'
+  code: '42703'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async val (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:10:89)
+    async fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:23:19)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:9:61)
+    async TestHook.run (node:internal/test_runner/test:1404:7)
+    async Test.runHook (node:internal/test_runner/test:1284:9)
+    async Test.run (node:internal/test_runner/test:1357:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+  ...
+# Subtest: [E02 metadata] ledger and allowance have no user trigger; session trigger definitions match capture
+not ok 3 - [E02 metadata] ledger and allowance have no user trigger; session trigger definitions match capture
+  ---
+  duration_ms: 3.031208
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:19:1'
+  failureType: 'hookFailed'
+  error: 'column requirement.plan_code does not exist'
+  code: '42703'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async val (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:10:89)
+    async fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:23:19)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:9:61)
+    async TestHook.run (node:internal/test_runner/test:1404:7)
+    async Test.runHook (node:internal/test_runner/test:1284:9)
+    async Test.run (node:internal/test_runner/test:1357:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+  ...
+# Subtest: [E02 metadata] target column names/types/nullability/defaults match current capture
+not ok 4 - [E02 metadata] target column names/types/nullability/defaults match current capture
+  ---
+  duration_ms: 3.160833
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:22:1'
+  failureType: 'hookFailed'
+  error: 'column requirement.plan_code does not exist'
+  code: '42703'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async val (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:10:89)
+    async fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:23:19)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:9:61)
+    async TestHook.run (node:internal/test_runner/test:1404:7)
+    async Test.runHook (node:internal/test_runner/test:1284:9)
+    async Test.run (node:internal/test_runner/test:1357:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+  ...
+# Subtest: [E02] actual session trigger reserves without consuming
+not ok 5 - [E02] actual session trigger reserves without consuming
+  ---
+  duration_ms: 3.076792
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:25:1'
+  failureType: 'hookFailed'
+  error: 'column requirement.plan_code does not exist'
+  code: '42703'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async val (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:10:89)
+    async fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:23:19)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:9:61)
+    async TestHook.run (node:internal/test_runner/test:1404:7)
+    async Test.runHook (node:internal/test_runner/test:1284:9)
+    async Test.run (node:internal/test_runner/test:1357:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+  ...
+# Subtest: [E02] repeated actual completion consumes one ledger unit once
+not ok 6 - [E02] repeated actual completion consumes one ledger unit once
+  ---
+  duration_ms: 3.477375
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:26:1'
+  failureType: 'hookFailed'
+  error: 'column requirement.plan_code does not exist'
+  code: '42703'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async val (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:10:89)
+    async fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:23:19)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:9:61)
+    async TestHook.run (node:internal/test_runner/test:1404:7)
+    async Test.runHook (node:internal/test_runner/test:1284:9)
+    async Test.run (node:internal/test_runner/test:1357:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+  ...
+# Subtest: [E02] actual cancellation releases prior consumption
+not ok 7 - [E02] actual cancellation releases prior consumption
+  ---
+  duration_ms: 2.917541
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:27:1'
+  failureType: 'hookFailed'
+  error: 'column requirement.plan_code does not exist'
+  code: '42703'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async val (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:10:89)
+    async fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:23:19)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:9:61)
+    async TestHook.run (node:internal/test_runner/test:1404:7)
+    async Test.runHook (node:internal/test_runner/test:1284:9)
+    async Test.run (node:internal/test_runner/test:1357:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+  ...
+# Subtest: [E02] no-show remains review with existing reason and zero used
+not ok 8 - [E02] no-show remains review with existing reason and zero used
+  ---
+  duration_ms: 2.818375
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:28:1'
+  failureType: 'hookFailed'
+  error: 'column requirement.plan_code does not exist'
+  code: '42703'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async val (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:10:89)
+    async fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:23:19)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:9:61)
+    async TestHook.run (node:internal/test_runner/test:1404:7)
+    async Test.runHook (node:internal/test_runner/test:1284:9)
+    async Test.run (node:internal/test_runner/test:1357:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+  ...
+# Subtest: [E02 STRICT EP61] authorized review consumes/releases with recorded reason and actor
+not ok 9 - [E02 STRICT EP61] authorized review consumes/releases with recorded reason and actor
+  ---
+  duration_ms: 2.832333
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:29:1'
+  failureType: 'hookFailed'
+  error: 'column requirement.plan_code does not exist'
+  code: '42703'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async val (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:10:89)
+    async fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:23:19)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:9:61)
+    async TestHook.run (node:internal/test_runner/test:1404:7)
+    async Test.runHook (node:internal/test_runner/test:1284:9)
+    async Test.run (node:internal/test_runner/test:1357:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+  ...
+# Subtest: [E02] Owner can resolve allowed fictional usage
+not ok 10 - [E02] Owner can resolve allowed fictional usage
+  ---
+  duration_ms: 3.737916
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:30:1'
+  failureType: 'hookFailed'
+  error: 'column requirement.plan_code does not exist'
+  code: '42703'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async val (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:10:89)
+    async fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:23:19)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:9:61)
+    async TestHook.run (node:internal/test_runner/test:1404:7)
+    async Test.runHook (node:internal/test_runner/test:1284:9)
+    async Test.run (node:internal/test_runner/test:1357:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+  ...
+# Subtest: [N02/E02 STRICT EP61] unrelated Coach cannot resolve another Client usage record
+not ok 11 - [N02/E02 STRICT EP61] unrelated Coach cannot resolve another Client usage record
+  ---
+  duration_ms: 3.219542
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:31:1'
+  failureType: 'hookFailed'
+  error: 'column requirement.plan_code does not exist'
+  code: '42703'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async val (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:10:89)
+    async fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:23:19)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:9:61)
+    async TestHook.run (node:internal/test_runner/test:1404:7)
+    async Test.runHook (node:internal/test_runner/test:1284:9)
+    async Test.run (node:internal/test_runner/test:1357:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+  ...
+# Subtest: [N02] existing scoped helper agrees assigned Coach allowed and wrong Coach denied
+not ok 12 - [N02] existing scoped helper agrees assigned Coach allowed and wrong Coach denied
+  ---
+  duration_ms: 3.788583
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:32:1'
+  failureType: 'hookFailed'
+  error: 'column requirement.plan_code does not exist'
+  code: '42703'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async val (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:10:89)
+    async fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:23:19)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:9:61)
+    async TestHook.run (node:internal/test_runner/test:1404:7)
+    async Test.runHook (node:internal/test_runner/test:1284:9)
+    async Test.run (node:internal/test_runner/test:1357:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+  ...
+# Subtest: [N04] Client and anonymous cannot resolve usage
+not ok 13 - [N04] Client and anonymous cannot resolve usage
+  ---
+  duration_ms: 3.165084
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:33:1'
+  failureType: 'hookFailed'
+  error: 'column requirement.plan_code does not exist'
+  code: '42703'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async val (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:10:89)
+    async fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:23:19)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:9:61)
+    async TestHook.run (node:internal/test_runner/test:1404:7)
+    async Test.runHook (node:internal/test_runner/test:1284:9)
+    async Test.run (node:internal/test_runner/test:1357:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+  ...
+# Subtest: [E02] invalid resolution, blank reason and missing record remain rejected
+not ok 14 - [E02] invalid resolution, blank reason and missing record remain rejected
+  ---
+  duration_ms: 3.28625
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:34:1'
+  failureType: 'hookFailed'
+  error: 'column requirement.plan_code does not exist'
+  code: '42703'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async val (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:10:89)
+    async fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:23:19)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:9:61)
+    async TestHook.run (node:internal/test_runner/test:1404:7)
+    async Test.runHook (node:internal/test_runner/test:1284:9)
+    async Test.run (node:internal/test_runner/test:1357:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+  ...
+# Subtest: [N06] suspended Coach retains explicit allow but cannot review through lifecycle RLS
+not ok 15 - [N06] suspended Coach retains explicit allow but cannot review through lifecycle RLS
+  ---
+  duration_ms: 2.835458
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:35:1'
+  failureType: 'hookFailed'
+  error: 'column requirement.plan_code does not exist'
+  code: '42703'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async val (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:10:89)
+    async fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:23:19)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:9:61)
+    async TestHook.run (node:internal/test_runner/test:1404:7)
+    async Test.runHook (node:internal/test_runner/test:1284:9)
+    async Test.run (node:internal/test_runner/test:1357:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+  ...
+# Subtest: [N06] pending-onboarding Coach cannot review
+not ok 16 - [N06] pending-onboarding Coach cannot review
+  ---
+  duration_ms: 2.971167
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:36:1'
+  failureType: 'hookFailed'
+  error: 'column requirement.plan_code does not exist'
+  code: '42703'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async val (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:10:89)
+    async fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:23:19)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:9:61)
+    async TestHook.run (node:internal/test_runner/test:1404:7)
+    async Test.runHook (node:internal/test_runner/test:1284:9)
+    async Test.run (node:internal/test_runner/test:1357:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+  ...
+# Subtest: [N06 partial] expired/completed membership does not give Client review authority
+not ok 17 - [N06 partial] expired/completed membership does not give Client review authority
+  ---
+  duration_ms: 2.919125
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:37:1'
+  failureType: 'hookFailed'
+  error: 'column requirement.plan_code does not exist'
+  code: '42703'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async val (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:10:89)
+    async fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:23:19)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:9:61)
+    async TestHook.run (node:internal/test_runner/test:1404:7)
+    async Test.runHook (node:internal/test_runner/test:1284:9)
+    async Test.run (node:internal/test_runner/test:1357:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+  ...
+# Subtest: [N06 partial] suspended Client access cannot resolve usage
+not ok 18 - [N06 partial] suspended Client access cannot resolve usage
+  ---
+  duration_ms: 3.029958
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:38:1'
+  failureType: 'hookFailed'
+  error: 'column requirement.plan_code does not exist'
+  code: '42703'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async val (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:10:89)
+    async fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:23:19)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:9:61)
+    async TestHook.run (node:internal/test_runner/test:1404:7)
+    async Test.runHook (node:internal/test_runner/test:1284:9)
+    async Test.run (node:internal/test_runner/test:1357:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+  ...
+# Subtest: [N02/E02] wrong client denied; same Client different program totals stay isolated
+not ok 19 - [N02/E02] wrong client denied; same Client different program totals stay isolated
+  ---
+  duration_ms: 3.235792
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:39:1'
+  failureType: 'hookFailed'
+  error: 'column requirement.plan_code does not exist'
+  code: '42703'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async val (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:10:89)
+    async fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:23:19)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:9:61)
+    async TestHook.run (node:internal/test_runner/test:1404:7)
+    async Test.runHook (node:internal/test_runner/test:1284:9)
+    async Test.run (node:internal/test_runner/test:1357:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+  ...
+# Subtest: [E02] full consumed aggregate includes every visible ledger row and usage unit
+not ok 20 - [E02] full consumed aggregate includes every visible ledger row and usage unit
+  ---
+  duration_ms: 3.085292
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:40:1'
+  failureType: 'hookFailed'
+  error: 'column requirement.plan_code does not exist'
+  code: '42703'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async val (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:10:89)
+    async fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:23:19)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:9:61)
+    async TestHook.run (node:internal/test_runner/test:1404:7)
+    async Test.runHook (node:internal/test_runner/test:1284:9)
+    async Test.run (node:internal/test_runner/test:1357:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+  ...
+# Subtest: [E02/N04] manage allowed but global usage view denied cannot write a partial total
+not ok 21 - [E02/N04] manage allowed but global usage view denied cannot write a partial total
+  ---
+  duration_ms: 3.056334
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:41:1'
+  failureType: 'hookFailed'
+  error: 'column requirement.plan_code does not exist'
+  code: '42703'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async val (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:10:89)
+    async fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:23:19)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:9:61)
+    async TestHook.run (node:internal/test_runner/test:1404:7)
+    async Test.runHook (node:internal/test_runner/test:1284:9)
+    async Test.run (node:internal/test_runner/test:1357:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+  ...
+# Subtest: [E02] repeated review retries preserve one row and same consumed total
+not ok 22 - [E02] repeated review retries preserve one row and same consumed total
+  ---
+  duration_ms: 3.758708
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:42:1'
+  failureType: 'hookFailed'
+  error: 'column requirement.plan_code does not exist'
+  code: '42703'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async val (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:10:89)
+    async fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:23:19)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:9:61)
+    async TestHook.run (node:internal/test_runner/test:1404:7)
+    async Test.runHook (node:internal/test_runner/test:1284:9)
+    async Test.run (node:internal/test_runner/test:1357:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+  ...
+# Subtest: [E02] outer rollback restores ledger and allowance after successful review
+not ok 23 - [E02] outer rollback restores ledger and allowance after successful review
+  ---
+  duration_ms: 2.996417
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:43:1'
+  failureType: 'hookFailed'
+  error: 'column requirement.plan_code does not exist'
+  code: '42703'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async val (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:10:89)
+    async fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:23:19)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:9:61)
+    async TestHook.run (node:internal/test_runner/test:1404:7)
+    async Test.runHook (node:internal/test_runner/test:1284:9)
+    async Test.run (node:internal/test_runner/test:1357:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+  ...
+# Subtest: [E02] missing target allowance row fails closed without ledger mutation
+not ok 24 - [E02] missing target allowance row fails closed without ledger mutation
+  ---
+  duration_ms: 3.357375
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:44:1'
+  failureType: 'hookFailed'
+  error: 'column requirement.plan_code does not exist'
+  code: '42703'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async val (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:10:89)
+    async fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/fixture.cjs:23:19)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave3-allowance/tests/wave3-allowance/allowance.test.cjs:9:61)
+    async TestHook.run (node:internal/test_runner/test:1404:7)
+    async Test.runHook (node:internal/test_runner/test:1284:9)
+    async Test.run (node:internal/test_runner/test:1357:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+  ...
+1..24
+# tests 24
+# suites 0
+# pass 0
+# fail 24
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 187.043458

@@ -1,0 +1,109 @@
+{
+  "issue": 61,
+  "status": "VERIFIED_LOCAL_NARROW_RPC_CORRECTION_WIDER_SECURITY_HELD",
+  "branch": "codex/rva-wave3-allowance-20261101",
+  "base": "fad394ef683b711ba34866ec614bed71a26cee93",
+  "ownedPaths": [
+    "tests/wave3-allowance/",
+    "proposals/issue-61/",
+    "docs/orchestration/issue-61/wave3/"
+  ],
+  "currentObservation": "2026-11-01T15:07:11.086986+00:00",
+  "currentSupplementObservation": "2026-11-01T15:09:32.301961+00:00",
+  "tests": {
+    "actualPostgres": "postgres (PostgreSQL) 17.11 (Homebrew)",
+    "comparison": [
+      {
+        "stage": "original",
+        "exitCode": 1,
+        "tests": 30,
+        "pass": 23,
+        "fail": 7,
+        "skipped": 0
+      },
+      {
+        "stage": "corrected",
+        "exitCode": 0,
+        "tests": 30,
+        "pass": 30,
+        "fail": 0,
+        "skipped": 0
+      },
+      {
+        "stage": "reverted",
+        "exitCode": 1,
+        "tests": 30,
+        "pass": 23,
+        "fail": 7,
+        "skipped": 0
+      }
+    ],
+    "strictDirectBoundaries": {
+      "exitCode": 1,
+      "tests": 3,
+      "pass": 0,
+      "fail": 3
+    },
+    "browser": "NOT_RUN",
+    "managedAuth": "fictional scaffold; no GoTrue/live session",
+    "clusterStopped": true,
+    "clusterRemoved": true,
+    "whole57CasePassesAdded": 0
+  },
+  "permissions": "RPC remains invoker and same owner/ACL/searchpath; private helper remains postgres-only; scoped existing helper plus caller-RLS inline aggregate; no new definer/grant",
+  "equivalenceLimits": [
+    "Historical empty dependency schema plus pinned lifecycle source; current overlay40routines14tablemetadata and support columns",
+    "Critical explicit raw ACL exact;3noncritical NULL/default representations normalized with aclexplode/acldefault and recorded raw",
+    "Target3table columns/constraints/sessiontriggers verified; no full hosted Auth replica",
+    "Local owner superuser vs hosted owner non-superuser; both bypass RLS; actors non-superuser",
+    "Only public-review concurrency pair proven; no all-trigger/booking race claim"
+  ],
+  "matrix57": {
+    "E02": "HELD_FAIL_WHOLE; narrow correction30pass",
+    "N02": "FAIL_WHOLE; direct boundaries3fail",
+    "N01": "PARTIAL_ONLY",
+    "N04": "PARTIAL_ONLY",
+    "N06": "PARTIAL_ONLY"
+  },
+  "productionCalls": 0,
+  "runtimeEdits": 0,
+  "canonicalMigrations": 0,
+  "protectedClientOperations": 0,
+  "hashes": {
+    "proposals/issue-61/correction.sql": "abceb1378897461bb4faa57fd69acddb60611132924a593c8a33cc5684136908",
+    "proposals/issue-61/revert.sql": "a85c273c02a070373eb698283c1926866cad4d6697f293c022cf9c4a78c62828",
+    "tests/wave3-allowance/run-pg.cjs": "c516d69881e64c8114f46515c369ee5af15e18eb182e819a726380b1981fcd5a",
+    "tests/wave3-allowance/allowance.test.cjs": "3fd8789b773b7ac11dd0169300006e355ecc1cfa1980d9f6e43a3f1cb993acda",
+    "tests/wave3-allowance/direct-boundaries.test.cjs": "19ca7f1661d1a50e24c554e4fd0190cecbaa752774962401620888d3da6e3a07",
+    "tests/wave3-allowance/current-pins.json": "292dac5f07bb0d88fcfb5bf4a013e3cf2f658556782a803fa38f6875f6a50760",
+    "docs/orchestration/issue-61/wave3/REPORT.md": "38bcdcc75fcc0323abce15bd76949e0aefc985e78f2172365c7baf0a950eb0aa"
+  },
+  "testInputHashes": [
+    {
+      "path": "tests/wave3-allowance/allowance.test.cjs",
+      "sha256": "3fd8789b773b7ac11dd0169300006e355ecc1cfa1980d9f6e43a3f1cb993acda"
+    },
+    {
+      "path": "tests/wave3-allowance/direct-boundaries.test.cjs",
+      "sha256": "19ca7f1661d1a50e24c554e4fd0190cecbaa752774962401620888d3da6e3a07"
+    },
+    {
+      "path": "tests/wave3-allowance/fixture.cjs",
+      "sha256": "dcfc1a73aa1bd92191323d52769cc35c84ad53489474edb479d116f9ebf99ed0"
+    },
+    {
+      "path": "tests/wave3-allowance/current-pins.json",
+      "sha256": "292dac5f07bb0d88fcfb5bf4a013e3cf2f658556782a803fa38f6875f6a50760"
+    },
+    {
+      "path": "proposals/issue-61/correction.sql",
+      "sha256": "abceb1378897461bb4faa57fd69acddb60611132924a593c8a33cc5684136908"
+    },
+    {
+      "path": "proposals/issue-61/revert.sql",
+      "sha256": "a85c273c02a070373eb698283c1926866cad4d6697f293c022cf9c4a78c62828"
+    }
+  ],
+  "nextAction": "Independent QA rerun exact package using separate RVA_WAVE3_B_OUTPUT; Master review disjoint direct-table policy proposal next. Do not mark Issue61 or whole E02 resolved; no production activation.",
+  "productionApprovalScope": "Not authorized. Any future exact function-only proposal/revert execution requires separate Owner approval after independent QA/current guard preflight; no helper/grant/policy/Auth/data/deploy/private-client actions."
+}

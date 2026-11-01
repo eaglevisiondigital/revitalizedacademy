@@ -1,0 +1,7 @@
+// These independent strict security assertions intentionally remain FAIL on the current catalog.
+const {test,before,after,beforeEach,afterEach}=require('node:test'),assert=require('node:assert/strict');
+const {db,q,val,actor,fixture,session,usage}=require('./fixture.cjs');let f;
+before(()=>db.connect());after(()=>db.end());beforeEach(async()=>{await q('begin');f=await fixture();});afterEach(()=>q('rollback'));
+test('[N02/E02 DIRECT STRICT] unrelated Coach must not read other Client usage',async()=>{const id=await usage(await session(f,'no_show'));assert.equal((await actor(f.wrongCoach,'select id from coaching_entitlement_usage where id=$1',[id])).rowCount,0,'Current global coaching.view exposes unrelated usage');});
+test('[N02/E02 DIRECT STRICT] unrelated Coach must not update other Client usage',async()=>{const id=await usage(await session(f,'no_show'));assert.equal((await actor(f.wrongCoach,"update coaching_entitlement_usage set status='consumed',review_reason='Fictional direct intrusion' where id=$1 returning id",[id])).rowCount,0,'Current global coaching.manage permits unrelated ledger mutation');});
+test('[N02/E02 DIRECT STRICT] unrelated Coach must not edit other Client allowance',async()=>{assert.equal((await actor(f.wrongCoach,'update membership_entitlements set used_value=99 where membership_id=$1 returning id',[f.membership])).rowCount,0,'Current staff-existence policy permits unrelated allowance mutation');});
