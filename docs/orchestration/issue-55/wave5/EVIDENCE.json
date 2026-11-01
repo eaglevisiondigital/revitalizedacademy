@@ -1,0 +1,78 @@
+{
+  "base": "024b1c20c802ce6a9470fc46fabdd3bae75ed980",
+  "branch": "codex/rva-wave5-affiliate-20261101",
+  "source_kind": "LOCAL_ONLY_UNPUSHED",
+  "results": {
+    "http": {
+      "pass": 30,
+      "fail": 0
+    },
+    "browser": {
+      "pass": 6,
+      "fail": 0
+    },
+    "preserved_regressions": {
+      "pass": 88,
+      "fail": 0
+    },
+    "whole_business_packages_newly_passed": 0
+  },
+  "files": [
+    {
+      "path": "docs/orchestration/issue-55/wave5/BROWSER.tap",
+      "sha256": "0582f8cd16434e6377e52d085c459f52a5b665af5d18888276b24e1c7214e4e5"
+    },
+    {
+      "path": "docs/orchestration/issue-55/wave5/CONTRACT_AND_REPORT.md",
+      "sha256": "ca7e397c74be08c0221f27dc4c8ae1288caa249c258c4cf56d0fa6e066a32723"
+    },
+    {
+      "path": "docs/orchestration/issue-55/wave5/HTTP.tap",
+      "sha256": "b24cc948e5193adc372fbf75a61c234bb7d6aa41262a5ff35325099d1e5ec9e9"
+    },
+    {
+      "path": "docs/orchestration/issue-55/wave5/INITIAL_BROWSER_PASS.tap",
+      "sha256": "4cef581fcad17145987790a93001f15a9ab12d425c048c67259b6ba87ea6f163"
+    },
+    {
+      "path": "docs/orchestration/issue-55/wave5/INITIAL_HTTP.tap",
+      "sha256": "aaff82b1bf5c8ad142d881fa8c94e1a739dbcad501ffe3a386980f07af204dc9"
+    },
+    {
+      "path": "docs/orchestration/issue-55/wave5/PRESERVATION.json",
+      "sha256": "3f68720992291198777d1acc1151cba7f253ccd132eeb5a3c3100eeda464d814"
+    },
+    {
+      "path": "docs/orchestration/issue-55/wave5/PRESERVED_CONTRACTS.tap",
+      "sha256": "f27b04725648417cb2683d351f6c8985c52dcf874ffd2f92c2b70f30cc80f2cb"
+    },
+    {
+      "path": "docs/orchestration/issue-55/wave5/QA_PACKAGE_MAPPING.json",
+      "sha256": "a85324f6cd55afb6688e7f258bc4aa7d366d01f83d3077c6e8796e21659f4629"
+    },
+    {
+      "path": "tests/wave5-affiliate/browser.cjs",
+      "sha256": "ef2d97a91b6f16c0e3d93997a80b227763a1d7521b21300d0b3b1fb7fba373d3"
+    },
+    {
+      "path": "tests/wave5-affiliate/http.test.cjs",
+      "sha256": "03329be05c74dd32cc18acc56a0941776a54411ea329c5fce96487417ac84762"
+    },
+    {
+      "path": "tools/affiliate-share-preview/index.html",
+      "sha256": "c0c42b4050a2334e0efe1d0a5301740a45b6aee9fc820043e1edb7b2c311bbbb"
+    },
+    {
+      "path": "tools/affiliate-share-preview/preview.js",
+      "sha256": "8a5399e755fbc28eeae538d5759d02092a35a7f46bf912dccae7d2b8914000ba"
+    },
+    {
+      "path": "tools/affiliate-share-preview/server.cjs",
+      "sha256": "d010a40294df434d5ba2f5d812b3ca577dbe99791ead73f02ca1aa1f99366f0b"
+    },
+    {
+      "path": "tools/wave5-fixture-providers.cjs",
+      "sha256": "6258f9bddcb2661715679d2cf9426b885548da9bd91cfd7aad3d0f1134df7ef9"
+    }
+  ]
+}

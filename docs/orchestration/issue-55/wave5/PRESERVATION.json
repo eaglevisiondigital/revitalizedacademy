@@ -1,0 +1,60 @@
+{
+  "base": "024b1c20c802ce6a9470fc46fabdd3bae75ed980",
+  "status": "PASS",
+  "unchanged": [
+    {
+      "path": "tools/affiliate-share-preview/adapter.cjs",
+      "sha256": "afdda7ee71425928f4648ea18081bf194ffc011082b68acee3a96bbfdab9e9a3",
+      "unchanged": true
+    },
+    {
+      "path": "js/rva-affiliate-share-contract.cjs",
+      "sha256": "b6b3a9288f3048384ad9b0fd6963b242cfbdb38e92218f52a6fbe2b8882f2e13",
+      "unchanged": true
+    },
+    {
+      "path": "tools/coach-companion-catalog/index.cjs",
+      "sha256": "5ac8a0d1f5cfaab995c937a8685cdbeb5fcc71fe7bce0316f60cf7d0b1734266",
+      "unchanged": true
+    },
+    {
+      "path": "tools/coach-companion-catalog/async-fixture-adapter.cjs",
+      "sha256": "053043d5576767756dfd5b567959f6642f22fc522a5ae9ab2c356dd5ad619501",
+      "unchanged": true
+    },
+    {
+      "path": "tools/affiliate-share-preview/encode.py",
+      "sha256": "13ca0632e2a0924aceb327883918ba41a728846db215bb2d42b3bc75cc6aed2d",
+      "unchanged": true
+    },
+    {
+      "path": "tests/wave3-unaffected/decode-qr.swift",
+      "sha256": "0da4e0169d9dcb8a1e722c5ba4241f586e71a598d01086c142045bc78c285697",
+      "unchanged": true
+    },
+    {
+      "path": "docs/orchestration/requirements.json",
+      "sha256": "701eabce0827e1820325cb24fdbdd1111a10d48bebe25e7362671831baadf70e",
+      "unchanged": true
+    },
+    {
+      "path": "docs/orchestration/requirements-source-details.json",
+      "sha256": "bb828787d71c51a74da2003f0ee09c05085fcd7f3f5a796d437448a8c5149734",
+      "unchanged": true
+    },
+    {
+      "path": "docs/orchestration/issue-56/ACCEPTANCE_MATRIX.json",
+      "sha256": "58671aa98737d77175c452267cf74b432132e7506ed25dc53af2ce903e831746",
+      "unchanged": true
+    }
+  ],
+  "existing_changed_files": [
+    "tools/affiliate-share-preview/index.html",
+    "tools/affiliate-share-preview/preview.js",
+    "tools/affiliate-share-preview/server.cjs"
+  ],
+  "requirement_groups": 101,
+  "source_detail_groups": 10,
+  "production_changes": false,
+  "alex": "PAUSED"
+}

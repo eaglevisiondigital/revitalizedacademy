@@ -1,0 +1,408 @@
+{
+  "source_matrix_sha256": "58671aa98737d77175c452267cf74b432132e7506ed25dc53af2ce903e831746",
+  "package_count": 57,
+  "partial_packages": 5,
+  "whole_new_passes": 0,
+  "cases": [
+    {
+      "id": "S01",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "S02",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "S03",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "J01",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "J02",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "J03",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "J04",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "J05",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "J06",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "J07",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "J08",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "J09",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "J10",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "J11",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "J12",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "N01",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "N02",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "N03",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "N04",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "N05",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "N06",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "N07",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "N08",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "R01",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "R02",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "R03",
+      "status": "PARTIAL_LOCAL_SUBSET_PASS",
+      "subset_and_limits": "Actual detached Companion UI/HTTP lookup across12 synthetic Driver entries with catalog/receipt/source pins, late-response/revocation denial; no real113-source promotion",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "F01",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "F02",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "F03",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "C01",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "C02",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "C03",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "A01",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "A02",
+      "status": "PARTIAL_LOCAL_SUBSET_PASS",
+      "subset_and_limits": "Current server-owned fixture identity/scopes reach loopback service; actual account/onboarding/agreement not wired",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "A03",
+      "status": "PARTIAL_LOCAL_SUBSET_PASS",
+      "subset_and_limits": "Actual UI/current adapter/approved synthetic copy/personal URL/rendered QR+independent decode across six responsive browsers; no real campaign service/media/send",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "A04",
+      "status": "PARTIAL_LOCAL_SUBSET_PASS",
+      "subset_and_limits": "Actual HTTP concurrent event retries + UI response-loss retries/attribution conflict; journal in-memory only, no persistent click ingress/settled attribution",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "A05",
+      "status": "PARTIAL_LOCAL_SUBSET_PASS",
+      "subset_and_limits": "Actual UI/HTTP minimal disclosure-bound fictional referral projection; no real CRM/RLS/privacy certification",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "A06",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "A07",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "P01",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "P02",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "A08",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "O01",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "O02",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "O03",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "O04",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "O05",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "O06",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "O07",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "O08",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "A09",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "E01",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "E02",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "E03",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "E04",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "E05",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    },
+    {
+      "id": "E06",
+      "status": "NOT_RUN_IN_THIS_LANE",
+      "subset_and_limits": "No new execution in this lane",
+      "whole_package_pass": false,
+      "production_acceptance": false
+    }
+  ],
+  "wave": 5
+}

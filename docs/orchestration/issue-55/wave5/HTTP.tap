@@ -1,0 +1,38 @@
+✔ loopback server current providers reach actual adapter, encoder and minimal referral projection (376.2255ms)
+✔ all 12 detached educational routes retain unique source locator and hashes (49.927334ms)
+✔ 100 concurrent HTTP retries commit one event and preserve original attribution (86.904625ms)
+✔ revoked stops new preview/events and emits no URL or QR (4.958625ms)
+✔ expired stops new preview/events and emits no URL or QR (2.876375ms)
+✔ wrong-account stops new preview/events and emits no URL or QR (2.928209ms)
+✔ logout stops new preview/events and emits no URL or QR (2.750583ms)
+✔ same-account transport renewal preserves journal event retry and educational citations (7.124583ms)
+✔ renewal cannot revive revoked fixture authorization (3.817042ms)
+✔ consent withdrawal blocks events without blocking approved copy or implying marketing permission (129.357125ms)
+✔ education revocation stops lookup but does not rewrite approved share (142.955333ms)
+✔ share API rejects caller-owned user_id (1.816709ms)
+✔ share API rejects caller-owned actor (1.388875ms)
+✔ share API rejects caller-owned profile (1.427ms)
+✔ share API rejects caller-owned url (1.449459ms)
+✔ share API rejects caller-owned approval (1.380459ms)
+✔ share API rejects caller-owned consent (1.442708ms)
+✔ share API rejects caller-owned now (2.17075ms)
+✔ share API rejects caller-owned permissions (1.595208ms)
+✔ education API rejects client/authority field answers (1.56975ms)
+✔ education API rejects client/authority field clientId (1.395417ms)
+✔ education API rejects client/authority field report (1.261416ms)
+✔ education API rejects client/authority field audience (1.360041ms)
+✔ education API rejects client/authority field receipts (1.4675ms)
+✔ education API rejects client/authority field intent (2.322791ms)
+✔ wrong catalog/source pins, unsupported operation and financial events denied (2.943667ms)
+✔ foreign Origin, Host and cross-site fetch denied; GET is no-op and CSP/no-store retained (5.2385ms)
+✔ stale cross-tab scenario cannot prepare a newly restored preview by passing active (2.01075ms)
+✔ body limit/extra scenario fields/path traversal/malformed JSON fail closed (2.845417ms)
+✔ adapters do not persist fixture state across separate server instances (4.596875ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 949.174167

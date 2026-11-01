@@ -1,0 +1,14 @@
+✔ chromium 1440 real ShareCenter/CRM/QR/education + denial/retry/cross-tab lifecycle (4483.393875ms)
+✔ chromium 768 real ShareCenter/CRM/QR/education + denial/retry/cross-tab lifecycle (3230.821333ms)
+✔ chromium 390 real ShareCenter/CRM/QR/education + denial/retry/cross-tab lifecycle (2772.635ms)
+✔ webkit 1440 real ShareCenter/CRM/QR/education + denial/retry/cross-tab lifecycle (3423.35325ms)
+✔ webkit 768 real ShareCenter/CRM/QR/education + denial/retry/cross-tab lifecycle (3046.719542ms)
+✔ webkit 390 real ShareCenter/CRM/QR/education + denial/retry/cross-tab lifecycle (3293.931792ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 20544.750375

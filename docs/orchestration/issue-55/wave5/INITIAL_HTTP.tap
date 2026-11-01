@@ -1,0 +1,122 @@
+✖ loopback server current providers reach actual adapter, encoder and minimal referral projection (213.823ms)
+✔ all 12 detached educational routes retain unique source locator and hashes (50.362542ms)
+✔ 100 concurrent HTTP retries commit one event and preserve original attribution (81.4985ms)
+✔ revoked stops new preview/events and emits no URL or QR (4.257083ms)
+✔ expired stops new preview/events and emits no URL or QR (4.618833ms)
+✔ wrong-account stops new preview/events and emits no URL or QR (3.542875ms)
+✔ logout stops new preview/events and emits no URL or QR (3.613458ms)
+✔ same-account transport renewal preserves journal event retry and educational citations (7.845791ms)
+✔ renewal cannot revive revoked fixture authorization (4.382042ms)
+✖ consent withdrawal blocks events without blocking approved copy or implying marketing permission (39.328541ms)
+✖ education revocation stops lookup but does not rewrite approved share (37.191042ms)
+✔ share API rejects caller-owned user_id (2.094959ms)
+✔ share API rejects caller-owned actor (2.072875ms)
+✔ share API rejects caller-owned profile (1.275208ms)
+✔ share API rejects caller-owned url (1.348667ms)
+✔ share API rejects caller-owned approval (1.578583ms)
+✔ share API rejects caller-owned consent (1.521584ms)
+✔ share API rejects caller-owned now (1.560292ms)
+✔ share API rejects caller-owned permissions (1.329583ms)
+✔ education API rejects client/authority field answers (2.269125ms)
+✔ education API rejects client/authority field clientId (1.591667ms)
+✔ education API rejects client/authority field report (4.506625ms)
+✔ education API rejects client/authority field audience (1.453917ms)
+✔ education API rejects client/authority field receipts (1.20025ms)
+✔ education API rejects client/authority field intent (1.123916ms)
+✔ wrong catalog/source pins, unsupported operation and financial events denied (3.0775ms)
+✖ foreign Origin, Host and cross-site fetch denied; GET is no-op and CSP/no-store retained (3.41075ms)
+✔ stale cross-tab scenario cannot prepare a newly restored preview by passing active (2.317666ms)
+✔ body limit/extra scenario fields/path traversal/malformed JSON fail closed (3.637042ms)
+✔ adapters do not persist fixture state across separate server instances (2.791541ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 26
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 561.760416
+
+✖ failing tests:
+
+test at tests/wave5-affiliate/http.test.cjs:8:1
+✖ loopback server current providers reach actual adapter, encoder and minimal referral projection (213.823ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + undefined
+  - 'ready'
+
+      at /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-affiliate/tests/wave5-affiliate/http.test.cjs:8:223
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-affiliate/tests/wave5-affiliate/http.test.cjs:6:435)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'ready',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave5-affiliate/http.test.cjs:14:1
+✖ consent withdrawal blocks events without blocking approved copy or implying marketing permission (39.328541ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + undefined
+  - 'ready'
+
+      at /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-affiliate/tests/wave5-affiliate/http.test.cjs:14:203
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-affiliate/tests/wave5-affiliate/http.test.cjs:6:435)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'ready',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave5-affiliate/http.test.cjs:15:1
+✖ education revocation stops lookup but does not rewrite approved share (37.191042ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + undefined
+  - 'ready'
+
+      at /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-affiliate/tests/wave5-affiliate/http.test.cjs:15:336
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-affiliate/tests/wave5-affiliate/http.test.cjs:6:435)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'ready',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave5-affiliate/http.test.cjs:19:1
+✖ foreign Origin, Host and cross-site fetch denied; GET is no-op and CSP/no-store retained (3.41075ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  200 !== 403
+
+      at /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-affiliate/tests/wave5-affiliate/http.test.cjs:19:297
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-affiliate/tests/wave5-affiliate/http.test.cjs:6:435)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 403,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
