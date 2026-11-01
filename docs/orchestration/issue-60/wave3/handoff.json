@@ -1,0 +1,95 @@
+{
+  "issue": 60,
+  "lane": "A",
+  "branch": "codex/rva-wave3-goals-20261101",
+  "base": "fad394ef683b711ba34866ec614bed71a26cee93",
+  "currentCommit": "Final local commit SHA reported to Master after commit; no push",
+  "status": "LOCAL_CORRECTION_TESTED_PENDING_QA_AND_PRODUCTION_APPROVAL",
+  "scope": [
+    "tests/wave3-goals/",
+    "proposals/issue-60/",
+    "docs/orchestration/issue-60/wave3/"
+  ],
+  "currentCaptureSHA256": "94322f192cda7bdaeae45c7fb2137745933bf66eef2816467c012f41d380e757",
+  "catalogInputs": [
+    {
+      "path": "../deployment-evidence/2026-11-01-wave3/catalog-normalized.json",
+      "sha256": "94322f192cda7bdaeae45c7fb2137745933bf66eef2816467c012f41d380e757"
+    },
+    {
+      "path": "../deployment-evidence/2026-11-01-wave3/catalog-supplement.json",
+      "sha256": "7cc1fb4f753edc6eb703212f2ee9970c0d0f8607758663a07f84f49a15227c94"
+    },
+    {
+      "path": "../deployment-evidence/2026-11-01-wave3/catalog-trigger-supplement.json",
+      "sha256": "701101757c450145361c670316e72ca83ca669877f28ce2dcb26d948b5aebff3"
+    },
+    {
+      "path": "../deployment-evidence/2026-11-01-wave3/catalog-goal-fk-supplement.json",
+      "sha256": "f64786c8b9aeb292dc020694fb72ab2df5329003d49e41a72cdc1e0645f27dda"
+    },
+    {
+      "path": "../deployment-evidence/2026-11-01-wave3/catalog-price-fk-supplement.json",
+      "sha256": "d519bfae09ecfba8a6b02f9355691fb6bd433f6c7ce8ded426f502982902af0f"
+    }
+  ],
+  "actualStages": [
+    {
+      "name": "CURRENT_ORIGINAL",
+      "pass": 29,
+      "fail": 6,
+      "blocked": 0
+    },
+    {
+      "name": "CURRENT_CORRECTED",
+      "pass": 35,
+      "fail": 0,
+      "blocked": 0
+    },
+    {
+      "name": "CURRENT_REVERTED_REGRESSION",
+      "pass": 29,
+      "fail": 6,
+      "blocked": 0
+    }
+  ],
+  "blockedAcceptanceItems": [
+    "BLOCKED_BY_EXACT_CURRENT_SELECT_FALSE_PAYMENT_HELPER; no gate stubbed"
+  ],
+  "equivalence": {
+    "tables": 25,
+    "routines": 80,
+    "roleAttributes": 4,
+    "myGoalsInvoker": true
+  },
+  "guards": {
+    "before": "cb7b2e6846e07c3683ff02cb82e3c51b74846b3d7e33cac075fe28ba9e98c0d5",
+    "after": "b910261dcb90e564e6f16ef25ca9ba2fd85d90152ced4f2535c77a1c19f8854c",
+    "originalDriftRejected": true,
+    "rollbackDriftRejected": true,
+    "replayRejected": true,
+    "exactReversion": true
+  },
+  "qa57PartialOnly": [
+    "N02",
+    "N03",
+    "N04",
+    "N06",
+    "C02"
+  ],
+  "productionCalls": 0,
+  "productionMutations": 0,
+  "runtimeChanged": false,
+  "rollback": "Local-only regression SQL restores known broad scope; production hold/fail closed and forward repair recommended. Separate authorization required.",
+  "nextGate": "Independent QA exact commit; Master integration; refreshed metadata/reference review and separately authorized forward production migration.",
+  "artifactSHA256": {
+    "docs/orchestration/issue-60/wave3/PG_RESULTS.json": "4d41f2d06703cdf94ef38e0021f08b038a3cf5e5fd37a2e105016ab2f316a8e1",
+    "proposals/issue-60/goal-contact-scope-local-revert.sql": "ba588ced2b29433d419e4067714562b1e0f166f5e9c8d0cb3b82f451033655b7",
+    "proposals/issue-60/goal-contact-scope-proposal.sql": "06834387bf3106298a0b072dfd1d5a5080c8b61f13a335b1d1e08abc122b17b6",
+    "tests/wave3-goals/README.md": "dc2a4a48054ff3273b4fdb48e216800a9e7a0872edd8e334b559eef001cb4d37",
+    "tests/wave3-goals/reconstruct.cjs": "acbb4fdda4cf316b096ac07212f9135cb1e6b63f270a4b22696d7616c7736022",
+    "tests/wave3-goals/run.cjs": "d824414c026d6e5c049ddaf3320893c273596f2d021eaf9695d07e3d9104756b",
+    "tests/wave3-goals/source-pins.json": "9d9c6c6532f8073c91ec4d1f8fdbecd2b9e3c646106dc1881f366c808bf7867d",
+    "tests/wave3-goals/verify.cjs": "2868ddd438939768499aaf46d4d34fc57caac89974803c98c6c88c03c4388f40"
+  }
+}

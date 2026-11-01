@@ -1,0 +1,5 @@
+# Local Issue60 goals proof
+
+Run `node tests/wave3-goals/run.cjs` from the repository. Use `RVA_WAVE3_GOALS_OUTPUT=/absolute/qa/path` for independent output; optional `RVA_WAVE3_PG_BIN` must point to PostgreSQL17. Inputs and hashes are in source-pins.json. The runner only creates a fresh private Unix-socket cluster, rejects host connections, reconstructs finite current metadata, runs actual captured policies/RPCs with invented actors, applies a guarded local proposal, proves drift/replay refusal, and reverts. It stops/removes its own cluster. It does not connect using application credentials or PG environment connection strings.
+
+Original/revert strict failures are deliberately retained. Exit0 means corrected checks and regression equivalence passed, not that original was secure. Future paid-Client positive acceptance remains blocked by captured SELECTfalse payment helper. Detailed scope and limitations: docs/orchestration/issue-60/wave3/REPORT.md. SQL files under proposals/issue-60 are unapproved local proposals, not migrations.

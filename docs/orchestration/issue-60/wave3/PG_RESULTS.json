@@ -1,0 +1,718 @@
+{
+  "scope": "LOCAL_CURRENT_CATALOG_GOALS_EQUIVALENCE_ONLY",
+  "startedAt": "2026-11-01T15:29:08.968Z",
+  "productionCalls": 0,
+  "network": "UNIX_SOCKET_ONLY; listen_addresses empty",
+  "tests": [],
+  "base": "fad394ef683b711ba34866ec614bed71a26cee93",
+  "pins": {
+    "base": "fad394ef683b711ba34866ec614bed71a26cee93",
+    "historicalScaffoldOnly": [
+      {
+        "path": "../revitalizedacademy/tests/backend/platform.sql",
+        "sha256": "8458676c4b1969845c1f651f421e53405dcf6d64be4c9100a81b1980f089a1b5"
+      },
+      {
+        "path": "../revitalizedacademy/supabase/baselines/2026-09-26/schema.sql",
+        "sha256": "60f38f157e338cce445e2ca391b1988a69c0586dfed9b289283380f3f3e9edc6"
+      },
+      {
+        "path": "supabase/migrations/20261007224150_production_client_lifecycle_v1.sql",
+        "sha256": "e3b37a26ef0d9d5c3574bb40f85438988a8cb2622842cb1563a795826caa1085"
+      }
+    ],
+    "catalogs": [
+      {
+        "path": "../deployment-evidence/2026-11-01-wave3/catalog-normalized.json",
+        "sha256": "94322f192cda7bdaeae45c7fb2137745933bf66eef2816467c012f41d380e757"
+      },
+      {
+        "path": "../deployment-evidence/2026-11-01-wave3/catalog-supplement.json",
+        "sha256": "7cc1fb4f753edc6eb703212f2ee9970c0d0f8607758663a07f84f49a15227c94"
+      },
+      {
+        "path": "../deployment-evidence/2026-11-01-wave3/catalog-trigger-supplement.json",
+        "sha256": "701101757c450145361c670316e72ca83ca669877f28ce2dcb26d948b5aebff3"
+      },
+      {
+        "path": "../deployment-evidence/2026-11-01-wave3/catalog-goal-fk-supplement.json",
+        "sha256": "f64786c8b9aeb292dc020694fb72ab2df5329003d49e41a72cdc1e0645f27dda"
+      },
+      {
+        "path": "../deployment-evidence/2026-11-01-wave3/catalog-price-fk-supplement.json",
+        "sha256": "d519bfae09ecfba8a6b02f9355691fb6bd433f6c7ce8ded426f502982902af0f"
+      }
+    ]
+  },
+  "postgres": "postgres (PostgreSQL) 17.11 (Homebrew)",
+  "equivalence": {
+    "tables": [
+      {
+        "table": "public.client_goals",
+        "columnCount": 19,
+        "policyCount": 4,
+        "triggerCount": 2,
+        "allCompared": true
+      },
+      {
+        "table": "public.staff_access",
+        "columnCount": 10,
+        "policyCount": 1,
+        "triggerCount": 3,
+        "allCompared": true
+      },
+      {
+        "table": "public.client_access",
+        "columnCount": 13,
+        "policyCount": 3,
+        "triggerCount": 7,
+        "allCompared": true
+      },
+      {
+        "table": "public.contacts",
+        "columnCount": 21,
+        "policyCount": 4,
+        "triggerCount": 2,
+        "allCompared": true
+      },
+      {
+        "table": "public.client_coach_assignments",
+        "columnCount": 10,
+        "policyCount": 4,
+        "triggerCount": 0,
+        "allCompared": true
+      },
+      {
+        "table": "public.follow_up_tasks",
+        "columnCount": 15,
+        "policyCount": 5,
+        "triggerCount": 1,
+        "allCompared": true
+      },
+      {
+        "table": "public.profiles",
+        "columnCount": 4,
+        "policyCount": 2,
+        "triggerCount": 3,
+        "allCompared": true
+      },
+      {
+        "table": "public.staff_permission_catalog",
+        "columnCount": 7,
+        "policyCount": 1,
+        "triggerCount": 0,
+        "allCompared": true
+      },
+      {
+        "table": "public.staff_permission_overrides",
+        "columnCount": 6,
+        "policyCount": 1,
+        "triggerCount": 0,
+        "allCompared": true
+      },
+      {
+        "table": "public.staff_role_permission_defaults",
+        "columnCount": 3,
+        "policyCount": 1,
+        "triggerCount": 0,
+        "allCompared": true
+      },
+      {
+        "table": "public.staff_role_permissions",
+        "columnCount": 4,
+        "policyCount": 1,
+        "triggerCount": 0,
+        "allCompared": true
+      },
+      {
+        "table": "public.client_memberships",
+        "columnCount": 26,
+        "policyCount": 4,
+        "triggerCount": 8,
+        "allCompared": true
+      },
+      {
+        "table": "public.journey_enrollment_activations",
+        "columnCount": 42,
+        "policyCount": 4,
+        "triggerCount": 7,
+        "allCompared": true
+      },
+      {
+        "table": "public.client_agreements",
+        "columnCount": 26,
+        "policyCount": 4,
+        "triggerCount": 7,
+        "allCompared": true
+      },
+      {
+        "table": "public.agreement_acceptances",
+        "columnCount": 13,
+        "policyCount": 2,
+        "triggerCount": 0,
+        "allCompared": true
+      },
+      {
+        "table": "public.program_agreement_requirements",
+        "columnCount": 9,
+        "policyCount": 4,
+        "triggerCount": 2,
+        "allCompared": true
+      },
+      {
+        "table": "public.agreement_templates",
+        "columnCount": 18,
+        "policyCount": 4,
+        "triggerCount": 4,
+        "allCompared": true
+      },
+      {
+        "table": "public.households",
+        "columnCount": 8,
+        "policyCount": 4,
+        "triggerCount": 1,
+        "allCompared": true
+      },
+      {
+        "table": "public.household_members",
+        "columnCount": 11,
+        "policyCount": 4,
+        "triggerCount": 3,
+        "allCompared": true
+      },
+      {
+        "table": "public.member_sync_events",
+        "columnCount": 8,
+        "policyCount": 2,
+        "triggerCount": 0,
+        "allCompared": true
+      },
+      {
+        "table": "public.member_notifications",
+        "columnCount": 12,
+        "policyCount": 3,
+        "triggerCount": 3,
+        "allCompared": true
+      },
+      {
+        "table": "public.program_catalog",
+        "columnCount": 9,
+        "policyCount": 2,
+        "triggerCount": 0,
+        "allCompared": true
+      },
+      {
+        "table": "public.program_product_plans",
+        "columnCount": 16,
+        "policyCount": 0,
+        "triggerCount": 0,
+        "allCompared": true
+      },
+      {
+        "table": "public.program_plan_prices",
+        "columnCount": 14,
+        "policyCount": 0,
+        "triggerCount": 0,
+        "allCompared": true
+      },
+      {
+        "table": "public.payment_merchant_routes",
+        "columnCount": 10,
+        "policyCount": 0,
+        "triggerCount": 0,
+        "allCompared": true
+      }
+    ],
+    "routinesCompared": 80,
+    "roleAttributesCompared": 4,
+    "myGoalsInvokerViewCompared": true,
+    "managedAuth": "Exact captured auth.uid/auth.jwt bodies; fictional GUC claims and minimal managed platform scaffold, not GoTrue"
+  },
+  "goalCatalogBeforeHash": "cb7b2e6846e07c3683ff02cb82e3c51b74846b3d7e33cac075fe28ba9e98c0d5",
+  "stages": [
+    {
+      "name": "CURRENT_ORIGINAL",
+      "pass": 29,
+      "fail": 6,
+      "blocked": 0,
+      "results": [
+        {
+          "name": "owner direct SELECT authorized A",
+          "status": "PASS"
+        },
+        {
+          "name": "assigned-coach direct SELECT authorized A",
+          "status": "PASS"
+        },
+        {
+          "name": "unassigned-coach direct SELECT private A denied",
+          "status": "FAIL",
+          "code": "ERR_ASSERTION",
+          "message": "Expected values to be strictly equal:\n\n1 !== 0\n"
+        },
+        {
+          "name": "suspended-owner direct SELECT private A denied",
+          "status": "PASS"
+        },
+        {
+          "name": "suspended-coach direct SELECT private A denied",
+          "status": "PASS"
+        },
+        {
+          "name": "pending-coach direct SELECT private A denied",
+          "status": "PASS"
+        },
+        {
+          "name": "client-a direct SELECT private A denied",
+          "status": "PASS"
+        },
+        {
+          "name": "client-b direct SELECT private A denied",
+          "status": "PASS"
+        },
+        {
+          "name": "household-peer direct SELECT private A denied",
+          "status": "PASS"
+        },
+        {
+          "name": "null direct SELECT private A denied",
+          "status": "PASS"
+        },
+        {
+          "name": "assigned Coach cannot read unrelated B",
+          "status": "FAIL",
+          "code": "ERR_ASSERTION",
+          "message": "Expected values to be strictly equal:\n\n1 !== 0\n"
+        },
+        {
+          "name": "assigned Coach cannot read another adult in same household",
+          "status": "FAIL",
+          "code": "ERR_ASSERTION",
+          "message": "Expected values to be strictly equal:\n\n1 !== 0\n"
+        },
+        {
+          "name": "owner direct INSERT current scope and sync audit preserved",
+          "status": "PASS"
+        },
+        {
+          "name": "assigned-coach direct INSERT current scope and sync audit preserved",
+          "status": "PASS"
+        },
+        {
+          "name": "unassigned-coach direct INSERT A denied without sync event",
+          "status": "FAIL",
+          "code": "ERR_ASSERTION",
+          "message": "Missing expected rejection."
+        },
+        {
+          "name": "suspended-owner direct INSERT A denied without sync event",
+          "status": "PASS"
+        },
+        {
+          "name": "suspended-coach direct INSERT A denied without sync event",
+          "status": "PASS"
+        },
+        {
+          "name": "pending-coach direct INSERT A denied without sync event",
+          "status": "PASS"
+        },
+        {
+          "name": "client-a direct INSERT A denied without sync event",
+          "status": "PASS"
+        },
+        {
+          "name": "client-b direct INSERT A denied without sync event",
+          "status": "PASS"
+        },
+        {
+          "name": "owner direct UPDATE A and sync audit preserved",
+          "status": "PASS"
+        },
+        {
+          "name": "assigned-coach direct UPDATE A and sync audit preserved",
+          "status": "PASS"
+        },
+        {
+          "name": "unassigned-coach direct UPDATE A denied without row mutation",
+          "status": "FAIL",
+          "code": "ERR_ASSERTION",
+          "message": "Expected values to be strictly equal:\n\n1 !== 0\n"
+        },
+        {
+          "name": "suspended-owner direct UPDATE A denied without row mutation",
+          "status": "PASS"
+        },
+        {
+          "name": "suspended-coach direct UPDATE A denied without row mutation",
+          "status": "PASS"
+        },
+        {
+          "name": "pending-coach direct UPDATE A denied without row mutation",
+          "status": "PASS"
+        },
+        {
+          "name": "client-a direct UPDATE A denied without row mutation",
+          "status": "PASS"
+        },
+        {
+          "name": "client-b direct UPDATE A denied without row mutation",
+          "status": "PASS"
+        },
+        {
+          "name": "assigned Coach cannot reassign A goal to unrelated B contact",
+          "status": "FAIL",
+          "code": "ERR_ASSERTION",
+          "message": "Missing expected rejection."
+        },
+        {
+          "name": "current Client paid gate remains false; own and unrelated my_goals empty",
+          "status": "PASS"
+        },
+        {
+          "name": "Client RPC create remains held by current policies; no owner forgery",
+          "status": "PASS"
+        },
+        {
+          "name": "Client RPC status cannot mutate unrelated or held own goal",
+          "status": "PASS"
+        },
+        {
+          "name": "RPC malformed title/priority/status reject without data changes",
+          "status": "PASS"
+        },
+        {
+          "name": "anonymous direct SELECT denied by existing ACL",
+          "status": "PASS"
+        },
+        {
+          "name": "self Client branch still true while paid gate false; unrelated branch false",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "CURRENT_CORRECTED",
+      "pass": 35,
+      "fail": 0,
+      "blocked": 0,
+      "results": [
+        {
+          "name": "owner direct SELECT authorized A",
+          "status": "PASS"
+        },
+        {
+          "name": "assigned-coach direct SELECT authorized A",
+          "status": "PASS"
+        },
+        {
+          "name": "unassigned-coach direct SELECT private A denied",
+          "status": "PASS"
+        },
+        {
+          "name": "suspended-owner direct SELECT private A denied",
+          "status": "PASS"
+        },
+        {
+          "name": "suspended-coach direct SELECT private A denied",
+          "status": "PASS"
+        },
+        {
+          "name": "pending-coach direct SELECT private A denied",
+          "status": "PASS"
+        },
+        {
+          "name": "client-a direct SELECT private A denied",
+          "status": "PASS"
+        },
+        {
+          "name": "client-b direct SELECT private A denied",
+          "status": "PASS"
+        },
+        {
+          "name": "household-peer direct SELECT private A denied",
+          "status": "PASS"
+        },
+        {
+          "name": "null direct SELECT private A denied",
+          "status": "PASS"
+        },
+        {
+          "name": "assigned Coach cannot read unrelated B",
+          "status": "PASS"
+        },
+        {
+          "name": "assigned Coach cannot read another adult in same household",
+          "status": "PASS"
+        },
+        {
+          "name": "owner direct INSERT current scope and sync audit preserved",
+          "status": "PASS"
+        },
+        {
+          "name": "assigned-coach direct INSERT current scope and sync audit preserved",
+          "status": "PASS"
+        },
+        {
+          "name": "unassigned-coach direct INSERT A denied without sync event",
+          "status": "PASS"
+        },
+        {
+          "name": "suspended-owner direct INSERT A denied without sync event",
+          "status": "PASS"
+        },
+        {
+          "name": "suspended-coach direct INSERT A denied without sync event",
+          "status": "PASS"
+        },
+        {
+          "name": "pending-coach direct INSERT A denied without sync event",
+          "status": "PASS"
+        },
+        {
+          "name": "client-a direct INSERT A denied without sync event",
+          "status": "PASS"
+        },
+        {
+          "name": "client-b direct INSERT A denied without sync event",
+          "status": "PASS"
+        },
+        {
+          "name": "owner direct UPDATE A and sync audit preserved",
+          "status": "PASS"
+        },
+        {
+          "name": "assigned-coach direct UPDATE A and sync audit preserved",
+          "status": "PASS"
+        },
+        {
+          "name": "unassigned-coach direct UPDATE A denied without row mutation",
+          "status": "PASS"
+        },
+        {
+          "name": "suspended-owner direct UPDATE A denied without row mutation",
+          "status": "PASS"
+        },
+        {
+          "name": "suspended-coach direct UPDATE A denied without row mutation",
+          "status": "PASS"
+        },
+        {
+          "name": "pending-coach direct UPDATE A denied without row mutation",
+          "status": "PASS"
+        },
+        {
+          "name": "client-a direct UPDATE A denied without row mutation",
+          "status": "PASS"
+        },
+        {
+          "name": "client-b direct UPDATE A denied without row mutation",
+          "status": "PASS"
+        },
+        {
+          "name": "assigned Coach cannot reassign A goal to unrelated B contact",
+          "status": "PASS"
+        },
+        {
+          "name": "current Client paid gate remains false; own and unrelated my_goals empty",
+          "status": "PASS"
+        },
+        {
+          "name": "Client RPC create remains held by current policies; no owner forgery",
+          "status": "PASS"
+        },
+        {
+          "name": "Client RPC status cannot mutate unrelated or held own goal",
+          "status": "PASS"
+        },
+        {
+          "name": "RPC malformed title/priority/status reject without data changes",
+          "status": "PASS"
+        },
+        {
+          "name": "anonymous direct SELECT denied by existing ACL",
+          "status": "PASS"
+        },
+        {
+          "name": "self Client branch still true while paid gate false; unrelated branch false",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "CURRENT_REVERTED_REGRESSION",
+      "pass": 29,
+      "fail": 6,
+      "blocked": 0,
+      "results": [
+        {
+          "name": "owner direct SELECT authorized A",
+          "status": "PASS"
+        },
+        {
+          "name": "assigned-coach direct SELECT authorized A",
+          "status": "PASS"
+        },
+        {
+          "name": "unassigned-coach direct SELECT private A denied",
+          "status": "FAIL",
+          "code": "ERR_ASSERTION",
+          "message": "Expected values to be strictly equal:\n\n1 !== 0\n"
+        },
+        {
+          "name": "suspended-owner direct SELECT private A denied",
+          "status": "PASS"
+        },
+        {
+          "name": "suspended-coach direct SELECT private A denied",
+          "status": "PASS"
+        },
+        {
+          "name": "pending-coach direct SELECT private A denied",
+          "status": "PASS"
+        },
+        {
+          "name": "client-a direct SELECT private A denied",
+          "status": "PASS"
+        },
+        {
+          "name": "client-b direct SELECT private A denied",
+          "status": "PASS"
+        },
+        {
+          "name": "household-peer direct SELECT private A denied",
+          "status": "PASS"
+        },
+        {
+          "name": "null direct SELECT private A denied",
+          "status": "PASS"
+        },
+        {
+          "name": "assigned Coach cannot read unrelated B",
+          "status": "FAIL",
+          "code": "ERR_ASSERTION",
+          "message": "Expected values to be strictly equal:\n\n1 !== 0\n"
+        },
+        {
+          "name": "assigned Coach cannot read another adult in same household",
+          "status": "FAIL",
+          "code": "ERR_ASSERTION",
+          "message": "Expected values to be strictly equal:\n\n1 !== 0\n"
+        },
+        {
+          "name": "owner direct INSERT current scope and sync audit preserved",
+          "status": "PASS"
+        },
+        {
+          "name": "assigned-coach direct INSERT current scope and sync audit preserved",
+          "status": "PASS"
+        },
+        {
+          "name": "unassigned-coach direct INSERT A denied without sync event",
+          "status": "FAIL",
+          "code": "ERR_ASSERTION",
+          "message": "Missing expected rejection."
+        },
+        {
+          "name": "suspended-owner direct INSERT A denied without sync event",
+          "status": "PASS"
+        },
+        {
+          "name": "suspended-coach direct INSERT A denied without sync event",
+          "status": "PASS"
+        },
+        {
+          "name": "pending-coach direct INSERT A denied without sync event",
+          "status": "PASS"
+        },
+        {
+          "name": "client-a direct INSERT A denied without sync event",
+          "status": "PASS"
+        },
+        {
+          "name": "client-b direct INSERT A denied without sync event",
+          "status": "PASS"
+        },
+        {
+          "name": "owner direct UPDATE A and sync audit preserved",
+          "status": "PASS"
+        },
+        {
+          "name": "assigned-coach direct UPDATE A and sync audit preserved",
+          "status": "PASS"
+        },
+        {
+          "name": "unassigned-coach direct UPDATE A denied without row mutation",
+          "status": "FAIL",
+          "code": "ERR_ASSERTION",
+          "message": "Expected values to be strictly equal:\n\n1 !== 0\n"
+        },
+        {
+          "name": "suspended-owner direct UPDATE A denied without row mutation",
+          "status": "PASS"
+        },
+        {
+          "name": "suspended-coach direct UPDATE A denied without row mutation",
+          "status": "PASS"
+        },
+        {
+          "name": "pending-coach direct UPDATE A denied without row mutation",
+          "status": "PASS"
+        },
+        {
+          "name": "client-a direct UPDATE A denied without row mutation",
+          "status": "PASS"
+        },
+        {
+          "name": "client-b direct UPDATE A denied without row mutation",
+          "status": "PASS"
+        },
+        {
+          "name": "assigned Coach cannot reassign A goal to unrelated B contact",
+          "status": "FAIL",
+          "code": "ERR_ASSERTION",
+          "message": "Missing expected rejection."
+        },
+        {
+          "name": "current Client paid gate remains false; own and unrelated my_goals empty",
+          "status": "PASS"
+        },
+        {
+          "name": "Client RPC create remains held by current policies; no owner forgery",
+          "status": "PASS"
+        },
+        {
+          "name": "Client RPC status cannot mutate unrelated or held own goal",
+          "status": "PASS"
+        },
+        {
+          "name": "RPC malformed title/priority/status reject without data changes",
+          "status": "PASS"
+        },
+        {
+          "name": "anonymous direct SELECT denied by existing ACL",
+          "status": "PASS"
+        },
+        {
+          "name": "self Client branch still true while paid gate false; unrelated branch false",
+          "status": "PASS"
+        }
+      ]
+    }
+  ],
+  "originalDriftGuardRejected": true,
+  "goalCatalogAfterHash": "b910261dcb90e564e6f16ef25ca9ba2fd85d90152ced4f2535c77a1c19f8854c",
+  "rollbackDriftGuardRejected": true,
+  "proposalReplayRejected": true,
+  "rollbackExact": true,
+  "originalStrictDenyFailures": 6,
+  "correctedPass": true,
+  "futurePaidClientPositive": "BLOCKED_BY_EXACT_CURRENT_SELECT_FALSE_PAYMENT_HELPER; no gate stubbed",
+  "policyOnlyPreservation": true,
+  "proposals": {
+    "applySha256": "06834387bf3106298a0b072dfd1d5a5080c8b61f13a335b1d1e08abc122b17b6",
+    "revertSha256": "ba588ced2b29433d419e4067714562b1e0f166f5e9c8d0cb3b82f451033655b7"
+  },
+  "clusterStopped": true,
+  "clusterRemoved": true,
+  "completedAt": "2026-11-01T15:29:12.075Z"
+}
