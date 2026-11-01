@@ -1,0 +1,187 @@
+{
+  "wave": 6,
+  "acceptedBase": "9beae3bb40c154d2bfd623e8d2355b3a6c3cd306",
+  "scope": "LOCAL_FICTIONAL_ONLY",
+  "alex": "PAUSED_NO_PRIVATE_READS_OR_ACTIONS",
+  "productionWritesAuthorized": false,
+  "financialActivation": false,
+  "requirements": 101,
+  "sourceDetailGroups": 10,
+  "workstreams": 10,
+  "originalPackages": 57,
+  "pr59": "DRAFT_PRODUCTION_NO_GO",
+  "pushed": false,
+  "sourceCompleteness": "PARTIAL; controlling127-section source and approved policy gaps remain",
+  "wave5Verification": {
+    "manifestFiles": 161,
+    "qaPinnedFiles": 27,
+    "result": "PASS",
+    "manifestSha256": "a07841a261aa6059c6ed0de6f771a7e042e1cf4046e4ec19cbf2e6b3e94de683"
+  },
+  "capacity": "Master+3 active maximum; QA launched after A returned",
+  "tasks": [
+    {
+      "lane": "A",
+      "issue": 56,
+      "agent": "/root/wave6_environment",
+      "worktree": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-environment",
+      "branch": "codex/rva-wave6-environment-20261101",
+      "baseSha": "9beae3bb40c154d2bfd623e8d2355b3a6c3cd306",
+      "status": "RETURNED_BLOCKED_ENVIRONMENT_SAFE_NO_MUTATION",
+      "dispatch": {
+        "kind": "native-spawn-result",
+        "taskName": "/root/wave6_environment"
+      },
+      "ownedPaths": [
+        "tools/wave6-postgres/",
+        "tests/wave6-environment/",
+        "docs/orchestration/issue-56/wave6-environment/"
+      ],
+      "implementationSha": "a24c17829d1355192369d7fc25786949fb18571a"
+    },
+    {
+      "lane": "B",
+      "issue": 60,
+      "agent": "/root/wave6_security",
+      "worktree": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-security",
+      "branch": "codex/rva-wave6-security-20261101",
+      "baseSha": "9beae3bb40c154d2bfd623e8d2355b3a6c3cd306",
+      "status": "RETURNED_LOCAL_PREPARED_NOT_PG_VERIFIED",
+      "dispatch": {
+        "kind": "native-spawn-result",
+        "taskName": "/root/wave6_security"
+      },
+      "ownedPaths": [
+        "proposals/wave6-security/",
+        "tests/wave6-security/",
+        "docs/orchestration/issue-60/wave6/"
+      ],
+      "implementationSha": "cb107a64c7f06424061bf3a9791cc65aaa7ae2b7",
+      "commits": [
+        "3014364eb2cc72445a586d8e66ea355fb16b75fa",
+        "338a0465a099f3af13184208ec211fcaa9043b4a",
+        "cb107a64c7f06424061bf3a9791cc65aaa7ae2b7"
+      ]
+    },
+    {
+      "lane": "C",
+      "issue": 54,
+      "agent": "/root/wave6_features",
+      "worktree": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-features",
+      "branch": "codex/rva-wave6-features-20261101",
+      "baseSha": "9beae3bb40c154d2bfd623e8d2355b3a6c3cd306",
+      "status": "RETURNED_LOCAL_FUNCTIONAL_CHECKPOINT",
+      "dispatch": {
+        "kind": "native-spawn-result",
+        "taskName": "/root/wave6_features"
+      },
+      "ownedPaths": [
+        "member/member110.js",
+        "tools/affiliate-share-preview/index.html",
+        "tools/affiliate-share-preview/preview.js",
+        "tools/affiliate-share-preview/server.cjs",
+        "tools/wave6-progress-contract.cjs",
+        "tests/wave6-features/",
+        "docs/orchestration/issue-54/wave6-features/"
+      ],
+      "implementationSha": "704124a8d94225f70d68b96cc2b64806d5aa3cff"
+    },
+    {
+      "status": "ACTIVE",
+      "worktree": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-qa",
+      "branch": "codex/rva-wave6-qa-20261101",
+      "ownedPaths": [
+        "tests/wave6-qa/",
+        "docs/orchestration/issue-56/wave6/"
+      ],
+      "lane": "QA",
+      "issue": 56,
+      "agent": "/root/wave6_independent_qa",
+      "dispatch": {
+        "kind": "native-spawn-result",
+        "taskName": "/root/wave6_independent_qa"
+      },
+      "baseSha": "9beae3bb40c154d2bfd623e8d2355b3a6c3cd306"
+    }
+  ],
+  "pr59Observed": {
+    "state": "OPEN",
+    "isDraft": true,
+    "headSha": "fad394ef683b711ba34866ec614bed71a26cee93",
+    "baseBranch": "codex/rva-master-orchestration-20261101",
+    "method": "read-only gh pr view"
+  },
+  "currentEnvironmentObservation": "32/32 SysV slots:1unrelated persistent PG,31unattached/unattributed; none removed; no test launch before safe allocation",
+  "environmentResult": {
+    "status": "BLOCKED_SYSV_CAPACITY",
+    "testToolAssertionsPass": 19,
+    "sourceBlobsVerified": 1823,
+    "initdbAttempts": 0,
+    "sqlAssertions": 0,
+    "unknownResourcesRemoved": 0,
+    "persistentServicesTouched": 0
+  },
+  "masterReadOnlyMetadata": {
+    "projectRef": "voalfpxiyznnqfcqcymd",
+    "capturedAt": "2026-11-01T22:13:21.09269+00:00",
+    "scope": "SCHEMA_METADATA_ONLY_NO_RECORDS",
+    "transaction": "BEGIN READ ONLY; catalog SELECT only; ROLLBACK",
+    "tables": 1,
+    "originalTriggers": 7,
+    "recordsRead": 0,
+    "privateAlexReads": 0,
+    "productionWrites": 0,
+    "externalSnapshotSha256": "bbf2b17ea66da8b18a5c3e3f298e05afd6fb300944a8eb2414aa0aa94558a7b1"
+  },
+  "fiveFailureResolution": [
+    {
+      "failure": "unassigned_coach_checkin_select",
+      "historicalResult": "FAIL_ACTUAL_WAVE5_FICTIONAL_POSTGRES",
+      "current": "PREPARED_NOT_VERIFIED",
+      "actualWave6PgAssertions": 0
+    },
+    {
+      "failure": "unassigned_coach_assignment_select",
+      "historicalResult": "FAIL_ACTUAL_WAVE5_FICTIONAL_POSTGRES",
+      "current": "PREPARED_NOT_VERIFIED",
+      "actualWave6PgAssertions": 0
+    },
+    {
+      "failure": "foreign_assignment_membership_insert",
+      "historicalResult": "FAIL_ACTUAL_WAVE5_FICTIONAL_POSTGRES",
+      "current": "PREPARED_NOT_VERIFIED",
+      "actualWave6PgAssertions": 0
+    },
+    {
+      "failure": "unrelated_household_member_select",
+      "historicalResult": "FAIL_ACTUAL_WAVE5_FICTIONAL_POSTGRES",
+      "current": "PREPARED_NOT_VERIFIED",
+      "actualWave6PgAssertions": 0
+    },
+    {
+      "failure": "forged_guardian_update",
+      "historicalResult": "FAIL_ACTUAL_WAVE5_FICTIONAL_POSTGRES",
+      "current": "PREPARED_NOT_VERIFIED",
+      "actualWave6PgAssertions": 0
+    }
+  ],
+  "securityProposal": {
+    "sqlSha256": "d471396eeee21d4109dcc556b80548a64ce193949ebc1291f33589d698d14be9",
+    "manifestSha256": "e58057a70b43f2beb254da91beb1a4622f6b64c9570ed7fd402ca4ecd52ff1b7",
+    "sourceContractsPass": 11,
+    "actualPgPrepared": 45,
+    "actualPgExecuted": 0,
+    "installationReady": false,
+    "missingMetadataPins": [],
+    "block": "EXACT_COMBINED_PG_NOT_RUN"
+  },
+  "featuresAuthor": {
+    "nodeDomHttpSourcePass": 221,
+    "browserPass": 14,
+    "historicalBaselineReproductionsSeparate": 3,
+    "protectedFilesCompared": 413,
+    "evidencePinsVerified": 34,
+    "methodologyPromoted": 0
+  },
+  "independentQaStatus": "ACTIVE_FINAL_COMBINED_SOURCE_VERIFICATION"
+}
