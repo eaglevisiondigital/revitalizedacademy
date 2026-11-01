@@ -1,0 +1,76 @@
+{
+  "lane": "A",
+  "scope": "WAVE6_LOCAL_RESOURCE_RECOVERY",
+  "base": "9beae3bb40c154d2bfd623e8d2355b3a6c3cd306",
+  "worktree": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-environment",
+  "branch": "codex/rva-wave6-environment-20261101",
+  "result": "BLOCKED_NO_OWNERSHIP_SAFE_SYSV_SLOT",
+  "cause": "32 occupied SysV IDs / SHMMNI32;31 unattached unknown-owner-workflow resources;one active unrelated persistentPG segment",
+  "tests": {
+    "fictionalNode": {
+      "pass": 19,
+      "fail": 0
+    },
+    "actualPostgresAssertions": 0,
+    "initdbAttempts": 0,
+    "pinnedSourceBlobs": 1823
+  },
+  "cleanup": {
+    "processesTerminated": 0,
+    "IPCRemoved": 0,
+    "preexistingDirectoriesRemoved": 0,
+    "ownExclusiveLeaseRemoved": true,
+    "compiledMetadataProbeTemporaryOnly": true
+  },
+  "productionCalls": 0,
+  "Alex": "PAUSED",
+  "limitations": [
+    "Original cause of orphancreation unconfirmed",
+    "Newestcandidate excluded as unrelated project",
+    "No disposable factorycreated whileunknownslotsfull",
+    "CombinedSQLNOT_RUN",
+    "Timeout interruptedlegacyrunner mustBLOCK and ownershipreview; no automaticIPCcleanup"
+  ],
+  "files": [
+    {
+      "path": "docs/orchestration/issue-56/wave6-environment/receipts/candidate-header.json",
+      "sha256": "f3e540ec60dd739e34211e93205c08a2532cac17597e29a6f51bfefa95df1150"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave6-environment/receipts/pinned-wave5/resource-wrapper-receipt.json",
+      "sha256": "f63f6fba1793c120f9f7a816f06ca41ed663b195b7b0357a29a897799010f75c"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave6-environment/receipts/postgres-process-metadata.txt",
+      "sha256": "23cb14ad84f706ed6842a8ff3e1bcb0858f2bd23a95ee72b161b5a89110a54ff"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave6-environment/receipts/resource-gate.tap",
+      "sha256": "8160f7c6e2aa32ad8bfb88db829c21dcd2b75e756a4bd48fed9a30e4f7d206e9"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave6-environment/receipts/resource-inventory.json",
+      "sha256": "be8fb0bec200b7ac9ed757878ba4612d407d9c1bceffd67517d5fd55ce357bb7"
+    },
+    {
+      "path": "tests/wave6-environment/resource-gate.test.cjs",
+      "sha256": "629537d24de50d4ec6829428556cd953e01805c5db851546f09fe02b2fb91164"
+    },
+    {
+      "path": "tools/wave6-postgres/README.md",
+      "sha256": "ac2e622a3929440dfe3e3a8c8845484516caf9ad44a4390c833e238df6ac6dce"
+    },
+    {
+      "path": "tools/wave6-postgres/resource-gate.cjs",
+      "sha256": "2f1456880c75e9465ff2c6e1d6236410d4ef134b517d6500efa980fce3b22434"
+    },
+    {
+      "path": "tools/wave6-postgres/run-pinned-wave5.cjs",
+      "sha256": "2941a2114ed3106d3f9b5b0db4645fe8619941ac6156bb76bb8d786479a402c2"
+    },
+    {
+      "path": "tools/wave6-postgres/shim-metadata.c",
+      "sha256": "f436105def0f97c666fda71b3065e4b7b721c138b3c9a360bfd37a7864db4001"
+    }
+  ]
+}

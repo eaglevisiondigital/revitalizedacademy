@@ -1,0 +1,354 @@
+{
+  "at": "2026-11-01T22:05:23.135Z",
+  "pins": {
+    "source": "9beae3bb40c154d2bfd623e8d2355b3a6c3cd306",
+    "files": 1823,
+    "runnerSha256": "006dfd43f23b9e918a38d30eb4311b59e3838db17a17a3697be3900e7c8b05a9"
+  },
+  "productionCalls": 0,
+  "runnerInvoked": false,
+  "before": {
+    "at": "2026-11-01T22:05:23.917Z",
+    "platform": "darwin",
+    "scope": "LOCAL_RESOURCE_METADATA_ONLY",
+    "productionCalls": 0,
+    "mutations": 0,
+    "limits": {
+      "shmmni": 32,
+      "shmseg": 8,
+      "shmmax": 4194304
+    },
+    "segments": [
+      {
+        "id": 65536,
+        "key": "0x0074b647",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 6,
+        "bytes": 56,
+        "creatorPid": 1041,
+        "lastPid": 1041
+      },
+      {
+        "id": 1376257,
+        "key": "0x0283a827",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 0,
+        "bytes": 56,
+        "creatorPid": 71122,
+        "lastPid": 0
+      },
+      {
+        "id": 2031618,
+        "key": "0x028f1c6b",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 0,
+        "bytes": 56,
+        "creatorPid": 74577,
+        "lastPid": 0
+      },
+      {
+        "id": 4653059,
+        "key": "0x02927dd5",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 0,
+        "bytes": 56,
+        "creatorPid": 3672,
+        "lastPid": 0
+      },
+      {
+        "id": 5636100,
+        "key": "0x0295e2fd",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 0,
+        "bytes": 56,
+        "creatorPid": 31887,
+        "lastPid": 0
+      },
+      {
+        "id": 5963781,
+        "key": "0x029b4e4d",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 0,
+        "bytes": 56,
+        "creatorPid": 6422,
+        "lastPid": 0
+      },
+      {
+        "id": 2686982,
+        "key": "0x029caa0f",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 0,
+        "bytes": 56,
+        "creatorPid": 25495,
+        "lastPid": 0
+      },
+      {
+        "id": 4325383,
+        "key": "0x02ab2a5d",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 0,
+        "bytes": 56,
+        "creatorPid": 16995,
+        "lastPid": 0
+      },
+      {
+        "id": 393224,
+        "key": "0x02ab4159",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 0,
+        "bytes": 56,
+        "creatorPid": 17677,
+        "lastPid": 0
+      },
+      {
+        "id": 1048585,
+        "key": "0x02ab81da",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 0,
+        "bytes": 56,
+        "creatorPid": 19412,
+        "lastPid": 0
+      },
+      {
+        "id": 2359306,
+        "key": "0x02ad1af8",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 0,
+        "bytes": 56,
+        "creatorPid": 34613,
+        "lastPid": 0
+      },
+      {
+        "id": 3670027,
+        "key": "0x02b0d53f",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 0,
+        "bytes": 56,
+        "creatorPid": 69985,
+        "lastPid": 0
+      },
+      {
+        "id": 4325388,
+        "key": "0x02b30507",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 0,
+        "bytes": 56,
+        "creatorPid": 95821,
+        "lastPid": 0
+      },
+      {
+        "id": 7143437,
+        "key": "0x02b4fda0",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 0,
+        "bytes": 56,
+        "creatorPid": 18278,
+        "lastPid": 0
+      },
+      {
+        "id": 8257550,
+        "key": "0x02bff66c",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 0,
+        "bytes": 56,
+        "creatorPid": 96791,
+        "lastPid": 0
+      },
+      {
+        "id": 11599887,
+        "key": "0x02c2cad0",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 0,
+        "bytes": 56,
+        "creatorPid": 26407,
+        "lastPid": 0
+      },
+      {
+        "id": 4915216,
+        "key": "0x02d2f73b",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 0,
+        "bytes": 56,
+        "creatorPid": 35608,
+        "lastPid": 0
+      },
+      {
+        "id": 6291473,
+        "key": "0x02d79569",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 0,
+        "bytes": 56,
+        "creatorPid": 65037,
+        "lastPid": 0
+      },
+      {
+        "id": 65554,
+        "key": "0x02d79da2",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 0,
+        "bytes": 56,
+        "creatorPid": 65381,
+        "lastPid": 0
+      },
+      {
+        "id": 720915,
+        "key": "0x02d7c849",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 0,
+        "bytes": 56,
+        "creatorPid": 66967,
+        "lastPid": 0
+      },
+      {
+        "id": 720916,
+        "key": "0x02dd0a08",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 0,
+        "bytes": 56,
+        "creatorPid": 33190,
+        "lastPid": 0
+      },
+      {
+        "id": 4653077,
+        "key": "0x02dd2741",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 0,
+        "bytes": 56,
+        "creatorPid": 37386,
+        "lastPid": 0
+      },
+      {
+        "id": 1703958,
+        "key": "0x02dddd97",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 0,
+        "bytes": 56,
+        "creatorPid": 49300,
+        "lastPid": 0
+      },
+      {
+        "id": 720919,
+        "key": "0x02deccd9",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 0,
+        "bytes": 56,
+        "creatorPid": 72215,
+        "lastPid": 0
+      },
+      {
+        "id": 1048600,
+        "key": "0x02def723",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 0,
+        "bytes": 56,
+        "creatorPid": 75955,
+        "lastPid": 0
+      },
+      {
+        "id": 393241,
+        "key": "0x02df0068",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 0,
+        "bytes": 56,
+        "creatorPid": 78241,
+        "lastPid": 0
+      },
+      {
+        "id": 2359322,
+        "key": "0x02df5c99",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 0,
+        "bytes": 56,
+        "creatorPid": 84250,
+        "lastPid": 0
+      },
+      {
+        "id": 65563,
+        "key": "0x02df3e2e",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 0,
+        "bytes": 56,
+        "creatorPid": 82100,
+        "lastPid": 0
+      },
+      {
+        "id": 2359324,
+        "key": "0x02dfe887",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 0,
+        "bytes": 56,
+        "creatorPid": 86022,
+        "lastPid": 0
+      },
+      {
+        "id": 24772637,
+        "key": "0x02eeaab4",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 0,
+        "bytes": 56,
+        "creatorPid": 21980,
+        "lastPid": 47273
+      },
+      {
+        "id": 2949150,
+        "key": "0x02e17639",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 0,
+        "bytes": 56,
+        "creatorPid": 99207,
+        "lastPid": 0
+      },
+      {
+        "id": 1376287,
+        "key": "0x02e2192b",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 0,
+        "bytes": 56,
+        "creatorPid": 4719,
+        "lastPid": 0
+      }
+    ],
+    "capacity": {
+      "limit": 32,
+      "occupied": 32,
+      "available": 0,
+      "reserve": 2,
+      "result": "BLOCKED_SYSV_CAPACITY"
+    },
+    "cleanupAuthorized": [],
+    "note": "Same UID, zero attachments, small size or dead creator do not establish RVA ownership. Unknown segments are never removed."
+  },
+  "result": "BLOCKED_SYSV_CAPACITY"
+}

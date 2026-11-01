@@ -1,0 +1,124 @@
+TAP version 13
+# Subtest: metadata parses exact current macOS column structure without commands/credentials
+ok 1 - metadata parses exact current macOS column structure without commands/credentials
+  ---
+  duration_ms: 2.725625
+  type: 'test'
+  ...
+# Subtest: metadata denied fails closed
+ok 2 - metadata denied fails closed
+  ---
+  duration_ms: 2.797916
+  type: 'test'
+  ...
+# Subtest: missing shared memory section fails closed
+ok 3 - missing shared memory section fails closed
+  ---
+  duration_ms: 0.149
+  type: 'test'
+  ...
+# Subtest: malformed row fails closed
+ok 4 - malformed row fails closed
+  ---
+  duration_ms: 0.08625
+  type: 'test'
+  ...
+# Subtest: noninteger fields fail closed
+ok 5 - noninteger fields fail closed
+  ---
+  duration_ms: 0.168542
+  type: 'test'
+  ...
+# Subtest: full SHMMNI inventory BLOCKS without asserting orphan ownership
+ok 6 - full SHMMNI inventory BLOCKS without asserting orphan ownership
+  ---
+  duration_ms: 0.212583
+  type: 'test'
+  ...
+# Subtest: one free slot conservatively BLOCKS
+ok 7 - one free slot conservatively BLOCKS
+  ---
+  duration_ms: 0.230958
+  type: 'test'
+  ...
+# Subtest: two free slots permit serialized test only
+ok 8 - two free slots permit serialized test only
+  ---
+  duration_ms: 0.096083
+  type: 'test'
+  ...
+# Subtest: invalid kernel limit cannot imply ready
+ok 9 - invalid kernel limit cannot imply ready
+  ---
+  duration_ms: 0.104958
+  type: 'test'
+  ...
+# Subtest: reserve cannot be weakened to one
+ok 10 - reserve cannot be weakened to one
+  ---
+  duration_ms: 0.122666
+  type: 'test'
+  ...
+# Subtest: lease excludes simultaneous holder and leaves existing holder untouched
+ok 11 - lease excludes simultaneous holder and leaves existing holder untouched
+  ---
+  duration_ms: 15.854084
+  type: 'test'
+  ...
+# Subtest: successful callback returns value and teardown removes only own lock
+ok 12 - successful callback returns value and teardown removes only own lock
+  ---
+  duration_ms: 1.417167
+  type: 'test'
+  ...
+# Subtest: throwing callback removes own lease and preserves error
+ok 13 - throwing callback removes own lease and preserves error
+  ---
+  duration_ms: 0.837333
+  type: 'test'
+  ...
+# Subtest: relative lock path is rejected
+ok 14 - relative lock path is rejected
+  ---
+  duration_ms: 0.065958
+  type: 'test'
+  ...
+# Subtest: source wrapper rejects relative source/output before database execution
+ok 15 - source wrapper rejects relative source/output before database execution
+  ---
+  duration_ms: 9.12325
+  type: 'test'
+  ...
+# Subtest: source wrapper rejects writing accepted source tree
+ok 16 - source wrapper rejects writing accepted source tree
+  ---
+  duration_ms: 0.122625
+  type: 'test'
+  ...
+# Subtest: source wrapper rejects normalized traversal into source
+ok 17 - source wrapper rejects normalized traversal into source
+  ---
+  duration_ms: 0.059166
+  type: 'test'
+  ...
+# Subtest: source wrapper rejects output symlink into source before executing git or PG
+ok 18 - source wrapper rejects output symlink into source before executing git or PG
+  ---
+  duration_ms: 1.337125
+  type: 'test'
+  ...
+# Subtest: tooling contains no cleanup or production route primitives
+ok 19 - tooling contains no cleanup or production route primitives
+  ---
+  duration_ms: 0.501875
+  type: 'test'
+  ...
+1..19
+# tests 19
+# suites 0
+# pass 19
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 141.144667

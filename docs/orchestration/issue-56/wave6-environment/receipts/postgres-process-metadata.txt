@@ -1,0 +1,6 @@
+ 1041     1   0.0    320 /opt/homebrew/opt/postgresql@17/bin/postgres
+ 1608  1041   0.0     48 postgres: checkpointer
+ 1609  1041   0.0    464 postgres: background writer
+ 1617  1041   0.0    336 postgres: walwriter
+ 1618  1041   0.0    272 postgres: autovacuum launcher
+ 1619  1041   0.0    240 postgres: logical replication launcher
