@@ -1,0 +1,229 @@
+{
+  "issue": 55,
+  "issue_url": "https://github.com/eaglevisiondigital/revitalizedacademy/issues/55",
+  "issue_state_observed": "OPEN",
+  "owner_agent": "/root/affiliate_finance_audit",
+  "status": "COMPLETED-DOCS",
+  "issue_complete": false,
+  "implementation_status": "NOT_CLEARED_GATE_0A_PARTIAL_AND_0B_0C_0D_OPEN",
+  "scope": "Read-only source packet reconciliation and documentation/test planning; no implementation",
+  "base_sha": "3baef48590fbcd7955946bcc5e9988b7f88bf6b4",
+  "code_sha": "3baef48590fbcd7955946bcc5e9988b7f88bf6b4",
+  "branch": "codex/academy-affiliate-foundation",
+  "worktree": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-affiliate-foundation",
+  "recorded_production_source": "10dec6682e7e87bf637482fc027e54c6800260e4",
+  "recorded_production_deploy": "6ae6b971e17bce85e37aa95c",
+  "live_identity_reverified": false,
+  "files_touched": [
+    "docs/orchestration/issue-55/REPORT.md",
+    "docs/orchestration/issue-55/127_SECTION_TRACE.csv",
+    "docs/orchestration/issue-55/handoff.json",
+    "docs/orchestration/issue-55/SOURCE_PACKET_ADDENDUM.md",
+    "docs/orchestration/issue-55/SOURCE_TO_SCOPE_DECISION_TRACE.csv"
+  ],
+  "source_hashes": {
+    "AGENTS.md": "8bc038cdf4920c94e8f19fa074d83bfe38eb515bb25cb28f0bb9acd35d57b6cc",
+    "docs/RVA_MASTER_ORCHESTRATION.md": "c0731fb40a1b23003da00f7e5c2408b068467ab588e8fb1fe0b56b1ee46ce919",
+    "docs/RVA_WORKSTREAM_REGISTER.md": "8ddc81909932dd735b3fea5ab132945667fd77e4a0af60f41ab1890d20a84675",
+    "portal/portal-referrals.js": "6fd68faa430fa0f0636b00d83e52113039dabe4bc93398c2451be188bb9d86f8",
+    "portal/portal-people.js": "dc52e427e6e16bd115e1f14fc6e52f6336295cf205b54f5541d41b201e221030",
+    "supabase/migrations/20261010121000_payments_v1.sql": "c22c8586739e1cd56498e78c03b7dd9b7b7dd833019cfd1c868e0c94cacdd6da",
+    "supabase/migrations/20261007224150_production_client_lifecycle_v1.sql": "e3b37a26ef0d9d5c3574bb40f85438988a8cb2622842cb1563a795826caa1085",
+    "supabase/SOURCE_RECOVERY.md": "9d48b9f05f812bc3117145f62bac1bd124c79ac220d8562dd631e78d9d7637d5"
+  },
+  "original_handoff": {
+    "recovered": false,
+    "expected_sections": 127,
+    "recovered_sections": 0,
+    "missing_sections": 127,
+    "october12_phase0_recovered": true,
+    "invented_titles_or_content": false,
+    "phase0_status": "SOURCE_RECEIVED_PROPOSED_ARCHITECTURE_NOT_APPROVED"
+  },
+  "contracts": {
+    "status": "PROPOSED_REVIEW_ONLY",
+    "families": [
+      "identity/agreement",
+      "campaign/media/channel consent",
+      "CRM attribution",
+      "settlement/enrollment",
+      "cash earning/holds/reversals",
+      "restricted credits",
+      "points",
+      "bonus qualification",
+      "payout reservation/reconciliation",
+      "privacy/retention",
+      "coach compensation separate"
+    ]
+  },
+  "rva_plan": {
+    "single_level": true,
+    "mlm_enabled": false,
+    "genealogy_enabled": false,
+    "ranks_enabled": false,
+    "affiliate_health_data_allowed": false,
+    "coach_compensation_separate": true
+  },
+  "dependencies": [
+    "B01 controlling127 original handoff remains missing; Phase0 recovery resolved",
+    "A02-A17 business approvals",
+    "B03 scoped operational readiness verification",
+    "B04 shared owner/interface review"
+  ],
+  "tests": {
+    "actual": [
+      "read-only source/ref/issue inspection",
+      "document validation (see validation result)",
+      "source packet SHA256/full-read/heading and 51-row source-decision coverage validation"
+    ],
+    "runtime_tests_run": 0,
+    "database_tests_run": 0,
+    "browser_tests_run": 0,
+    "live_tests_run": 0,
+    "proposed_case_ids": [
+      "T01",
+      "T02",
+      "T03",
+      "T04",
+      "T05",
+      "T06",
+      "T07",
+      "T08",
+      "T09",
+      "T10",
+      "T11",
+      "T12",
+      "T13",
+      "T14",
+      "T15",
+      "T16",
+      "T17",
+      "T18",
+      "T19",
+      "T20",
+      "T21",
+      "T22",
+      "T23",
+      "T24",
+      "T25",
+      "T26",
+      "T27",
+      "T28",
+      "T29",
+      "T30",
+      "T31",
+      "T32",
+      "T33",
+      "T34",
+      "T35",
+      "T36",
+      "T37",
+      "T38",
+      "T39",
+      "T40",
+      "T41",
+      "T42",
+      "T43"
+    ],
+    "historical_test_counts_recertified": false,
+    "validation": {
+      "json_parse": "PASS",
+      "trace_127_unique_sequential": "PASS",
+      "missing_source_honesty": "PASS",
+      "exact_branch_base": "PASS",
+      "proposed_behavior_cases": 43,
+      "allowed_paths_only": "PASS",
+      "source_hash_preservation": "PASS",
+      "report_trace_hashes": "PASS",
+      "phase0_hash_full_read": "PASS",
+      "numbered_sections_22": "PASS",
+      "source_trace_51_unique": "PASS",
+      "original_report_and_127_trace_preserved": "PASS",
+      "source_line_references": "PASS",
+      "all_51_source_refs_verified": "PASS",
+      "owned_paths_5_only": "PASS",
+      "raw_source_absent": "PASS",
+      "history_current_phase0_separation": "PASS",
+      "historical_snapshot_deepcopy_isolation": "PASS"
+    }
+  },
+  "risks": [
+    "Missing original requirements",
+    "Historical schema is not current live catalog",
+    "Mixed currency/join/status/concurrency concerns require characterization",
+    "No approved compensation/settlement/payout contract",
+    "Shared portal/CRM/finance ownership overlaps"
+  ],
+  "approvals": {
+    "discovery_and_docs": "AUTHORIZED",
+    "runtime_or_security_changes": "NOT_AUTHORIZED_BY_THIS_ASSIGNMENT",
+    "staging_slice": "PROPOSED_ONLY",
+    "production_or_financial_activation": "NOT_AUTHORIZED"
+  },
+  "sensitive_actions_performed": [],
+  "integration_next_action": "Recover controlling127 handoff; review source PA-DEC001-008 and gates0B-0D; continue independent planning without declaring project-wide blockage; no code/staging setup before clearance.",
+  "report_sha256": "d23a3fc1e48dc9005629e9480e733dfd0be34300024d34f270709fdd811cebfc",
+  "trace_sha256": "10a58e5a8471a6212a0742787fdca87aaa825a9a6377432a387c012c66b02f6c",
+  "history": [
+    {
+      "checkpoint": "initial_discovery_before_source_packet",
+      "original_handoff": {
+        "recovered": false,
+        "expected_sections": 127,
+        "recovered_sections": 0,
+        "missing_sections": 127,
+        "october12_phase0_recovered": false,
+        "invented_titles_or_content": false
+      },
+      "implementation_status": "BLOCKED_ON_SOURCE_AND_CONTRACT_CLEARANCE",
+      "report_sha256": "d23a3fc1e48dc9005629e9480e733dfd0be34300024d34f270709fdd811cebfc",
+      "trace_sha256": "10a58e5a8471a6212a0742787fdca87aaa825a9a6377432a387c012c66b02f6c"
+    }
+  ],
+  "source_packet": {
+    "zip_sha256": "28598c5c74901a97c37abdd0e4ad32136194a431eb42ed2b182671e2c69e3b7c",
+    "phase0_artifact": "PROPEL_AFFILIATES_PHASE_0_BLUEPRINT_V0_1.md",
+    "phase0_sha256": "46fcd92550e71228f0f3e50ada5a09694e54ca89ece2fb4b0c4dec84fac33ba8",
+    "phase0_bytes": 24499,
+    "phase0_lines": 198,
+    "full_read": true,
+    "numbered_blueprint_sections": 22,
+    "logical_domains": 11,
+    "explicit_proposed_decisions": 8,
+    "gates": 4,
+    "release_increments": 6,
+    "controlling127_sections_present": false,
+    "raw_source_committed": false,
+    "proposal_approved_by_delivery": false,
+    "cross_project_lockliel_audit_performed": false,
+    "option3_checklist_owned_by_issue": 54
+  },
+  "gates": {
+    "0A": {
+      "state": "PARTIAL",
+      "disposition": "Phase0 received;127 original sections missing"
+    },
+    "0B": {
+      "state": "PROPOSED",
+      "disposition": "Service/topology/edge/event/provider decisions not cleared"
+    },
+    "0C": {
+      "state": "PLANNED",
+      "disposition": "Independent review and market/consent/provider policies remain open"
+    },
+    "0D": {
+      "state": "PROPOSED",
+      "disposition": "Test/slice proposal available; no staging installation approval"
+    }
+  },
+  "safe_parallel_work": [
+    "source trace recovery",
+    "proposed interface/data classification",
+    "threat/test planning",
+    "other independently authorized Academy lanes"
+  ],
+  "slices_cleared_for_implementation": false,
+  "staging_slice_reconciliation": "Held test credit is a pre-acceptance substep; source R1/PA-DEC008 needs explainable single-level commission, audited ledger and refund/reversal after gate clearance.",
+  "addendum_sha256": "c883a1b0c26fc29e73302ce6904d431e304aa1f020398027818ae98f997a92ce",
+  "source_scope_trace_sha256": "0ec302aa90d41f956d9dc2c473c1691a24dd59a873862cf9806c5b6808b4f385"
+}

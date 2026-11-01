@@ -1,0 +1,1039 @@
+{
+  "schemaVersion": 1,
+  "coverage": "ALL_NAMED_SCOPE_RETAINED; ORIGINAL_SOURCE_COMPLETENESS_NOT_YET_VERIFIED",
+  "sourceGaps": [
+    "Original Option3 Complete Coaching Ecosystem",
+    "Original platform information checklist",
+    "Full numbered127-section affiliate handoff and October12 Phase0 original"
+  ],
+  "requirements": [
+    {
+      "id": "WS-01-R01",
+      "requirement": "Approved logo, portrait and brand assets",
+      "workstream": "WS-01",
+      "ownerIssue": 53,
+      "source": "Issue#53; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-01-R02",
+      "requirement": "Approved public/portal visual tokens and reusable components",
+      "workstream": "WS-01",
+      "ownerIssue": 53,
+      "source": "Issue#53; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-01-R03",
+      "requirement": "Responsive public website and preserved desktop/mobile boundaries",
+      "workstream": "WS-01",
+      "ownerIssue": 53,
+      "source": "Issue#53; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-01-R04",
+      "requirement": "All approved CTA routes and conversion journeys",
+      "workstream": "WS-01",
+      "ownerIssue": 53,
+      "source": "Issue#53; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-01-R05",
+      "requirement": "Health & Hope Live registration and Zoom information",
+      "workstream": "WS-01",
+      "ownerIssue": 53,
+      "source": "Issue#53; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-01-R06",
+      "requirement": "Published-session rollover and approved replay lifecycle",
+      "workstream": "WS-01",
+      "ownerIssue": 53,
+      "source": "Issue#53; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-01-R07",
+      "requirement": "SEO and consent-appropriate analytics",
+      "workstream": "WS-01",
+      "ownerIssue": 53,
+      "source": "Issue#53; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-01-R08",
+      "requirement": "Accessible website and campaign/funnel presentation",
+      "workstream": "WS-01",
+      "ownerIssue": 53,
+      "source": "Issue#53; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-02-R01",
+      "requirement": "Original Owner, Coach, Client, Family and Affiliate identity model",
+      "workstream": "WS-02",
+      "ownerIssue": 53,
+      "source": "Issue#53; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-02-R02",
+      "requirement": "Account creation, sign-in, renewal, revocation and logout",
+      "workstream": "WS-02",
+      "ownerIssue": 53,
+      "source": "Issue#53; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-02-R03",
+      "requirement": "Permission, contact-scope and tenant/household isolation",
+      "workstream": "WS-02",
+      "ownerIssue": 53,
+      "source": "Issue#53; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-02-R04",
+      "requirement": "RLS and protected API/database ownership",
+      "workstream": "WS-02",
+      "ownerIssue": 53,
+      "source": "Issue#53; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-02-R05",
+      "requirement": "Immutable audits and source/version integrity",
+      "workstream": "WS-02",
+      "ownerIssue": 53,
+      "source": "Issue#53; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-02-R06",
+      "requirement": "Privacy, retention and safe credentials custody",
+      "workstream": "WS-02",
+      "ownerIssue": 53,
+      "source": "Issue#53; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-02-R07",
+      "requirement": "Backup, disaster recovery and operational recovery",
+      "workstream": "WS-02",
+      "ownerIssue": 53,
+      "source": "Issue#53; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-02-R08",
+      "requirement": "Current deployed-source versus staging and overlay provenance",
+      "workstream": "WS-02",
+      "ownerIssue": 53,
+      "source": "Issue#53; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-03-R01",
+      "requirement": "CRM contacts and duplicate/reuse handling",
+      "workstream": "WS-03",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-03-R02",
+      "requirement": "Lead stages and referral-source preservation",
+      "workstream": "WS-03",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-03-R03",
+      "requirement": "Intake and source-pinned assessment",
+      "workstream": "WS-03",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-03-R04",
+      "requirement": "Consultation and scheduling",
+      "workstream": "WS-03",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-03-R05",
+      "requirement": "Approved legal agreement and exact-hash signing",
+      "workstream": "WS-03",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-03-R06",
+      "requirement": "Plan intent, enrollment and verified account claim",
+      "workstream": "WS-03",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-03-R07",
+      "requirement": "Payment-to-enrollment contract with no assumed entitlement activation",
+      "workstream": "WS-03",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-03-R08",
+      "requirement": "Permission-scoped messaging and notifications",
+      "workstream": "WS-03",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-03-R09",
+      "requirement": "Communication consent and retry/deduplication",
+      "workstream": "WS-03",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-03-R10",
+      "requirement": "Lead-to-renewal automation and Owner visibility",
+      "workstream": "WS-03",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-04-R01",
+      "requirement": "MK10 current twelve-Driver terminology and four principles",
+      "workstream": "WS-04",
+      "ownerIssue": 57,
+      "source": "Issue#57; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-04-R02",
+      "requirement": "Approved founder methodology and personal coaching voice",
+      "workstream": "WS-04",
+      "ownerIssue": 57,
+      "source": "Issue#57; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-04-R03",
+      "requirement": "Person-specific evidence, unknowns and unsupported-score withholding",
+      "workstream": "WS-04",
+      "ownerIssue": 57,
+      "source": "Issue#57; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-04-R04",
+      "requirement": "Immutable revisions and source/worker/ruleset lineage",
+      "workstream": "WS-04",
+      "ownerIssue": 57,
+      "source": "Issue#57; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-04-R05",
+      "requirement": "Independent founder read, cited feedback and comparison",
+      "workstream": "WS-04",
+      "ownerIssue": 57,
+      "source": "Issue#57; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-04-R06",
+      "requirement": "Protected single-use generation and separate review authority",
+      "workstream": "WS-04",
+      "ownerIssue": 57,
+      "source": "Issue#57; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-04-R07",
+      "requirement": "Cross-Driver relationships and approved progression/action plan",
+      "workstream": "WS-04",
+      "ownerIssue": 57,
+      "source": "Issue#57; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-04-R08",
+      "requirement": "V3 source provenance, speakers, admission and conflicts",
+      "workstream": "WS-04",
+      "ownerIssue": 57,
+      "source": "Issue#57; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-04-R09",
+      "requirement": "Unapproved intake and proposed forty-day mission remain held",
+      "workstream": "WS-04",
+      "ownerIssue": 57,
+      "source": "Issue#57; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-04-R10",
+      "requirement": "Coach Companion retrieval, review and escalation contracts",
+      "workstream": "WS-04",
+      "ownerIssue": 57,
+      "source": "Issue#57; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-05-R01",
+      "requirement": "Reachable Client and Coach dashboard routes",
+      "workstream": "WS-05",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-05-R02",
+      "requirement": "Original forty-nine-day coaching program specification",
+      "workstream": "WS-05",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-05-R03",
+      "requirement": "Coach assignment, availability and capacity",
+      "workstream": "WS-05",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-05-R04",
+      "requirement": "Plan, membership and entitlement lifecycle",
+      "workstream": "WS-05",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-05-R05",
+      "requirement": "Sessions and scheduling",
+      "workstream": "WS-05",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-05-R06",
+      "requirement": "Goals, habits, tasks and check-ins",
+      "workstream": "WS-05",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-05-R07",
+      "requirement": "Private notes, messaging and assigned activities",
+      "workstream": "WS-05",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-05-R08",
+      "requirement": "Progress charts and review context",
+      "workstream": "WS-05",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-05-R09",
+      "requirement": "Renewal and continuity between program stages",
+      "workstream": "WS-05",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-05-R10",
+      "requirement": "Normal session renewal and multi-tab operation",
+      "workstream": "WS-05",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-06-R01",
+      "requirement": "Adult household and family-profile management",
+      "workstream": "WS-06",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-06-R02",
+      "requirement": "Consented shared family goals and activities",
+      "workstream": "WS-06",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-06-R03",
+      "requirement": "Family calendar and schedule",
+      "workstream": "WS-06",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-06-R04",
+      "requirement": "Consented meal/activity sharing",
+      "workstream": "WS-06",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-06-R05",
+      "requirement": "Parent, guardian and dependent relationships",
+      "workstream": "WS-06",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-06-R06",
+      "requirement": "Minors consent and scoped disclosure",
+      "workstream": "WS-06",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-06-R07",
+      "requirement": "No automatic adult private-health sharing",
+      "workstream": "WS-06",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-06-R08",
+      "requirement": "Family-request review and cross-household denials",
+      "workstream": "WS-06",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-07-R01",
+      "requirement": "Food, recipe and exercise reference libraries",
+      "workstream": "WS-07",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-07-R02",
+      "requirement": "Approved meal templates, grocery plans and workouts",
+      "workstream": "WS-07",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-07-R03",
+      "requirement": "Course, lesson and resource authoring",
+      "workstream": "WS-07",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-07-R04",
+      "requirement": "Private client assignments and completion tracking",
+      "workstream": "WS-07",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-07-R05",
+      "requirement": "Habits, challenges and progress",
+      "workstream": "WS-07",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-07-R06",
+      "requirement": "Nutrition diary, targets and trends with unknowns preserved",
+      "workstream": "WS-07",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-07-R07",
+      "requirement": "Exercise/workout and reusable-content provenance",
+      "workstream": "WS-07",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-07-R08",
+      "requirement": "One-way reusable content sync excludes operational/private records",
+      "workstream": "WS-07",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-07-R09",
+      "requirement": "Coach review permissions and client-specific override contracts",
+      "workstream": "WS-07",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-08-R01",
+      "requirement": "Full original numbered127-section Propel Affiliates handoff",
+      "workstream": "WS-08",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-08-R02",
+      "requirement": "October12 Phase0 architecture and partner/adapter boundaries",
+      "workstream": "WS-08",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-08-R03",
+      "requirement": "Affiliate application, agreement and onboarding",
+      "workstream": "WS-08",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-08-R04",
+      "requirement": "Personal dashboard, CRM and reporting",
+      "workstream": "WS-08",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-08-R05",
+      "requirement": "Campaign-approved images, videos, PDFs and Share Center",
+      "workstream": "WS-08",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-08-R06",
+      "requirement": "Copy-to-email, text, DM and social with consent boundaries",
+      "workstream": "WS-08",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-08-R07",
+      "requirement": "Personal unique links and QR codes",
+      "workstream": "WS-08",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-08-R08",
+      "requirement": "Click-to-consultation-to-settled-enrollment attribution",
+      "workstream": "WS-08",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-08-R09",
+      "requirement": "Approved AI outreach review and escalation",
+      "workstream": "WS-08",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-08-R10",
+      "requirement": "Bonuses and refer-X-get-Y rules",
+      "workstream": "WS-08",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-08-R11",
+      "requirement": "Distinct points, restricted credits and cash commissions",
+      "workstream": "WS-08",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-08-R12",
+      "requirement": "Recurring eligibility, holds, reversals and disputes",
+      "workstream": "WS-08",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-08-R13",
+      "requirement": "Finance/back-office visibility and payout explanations",
+      "workstream": "WS-08",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-08-R14",
+      "requirement": "RVA single-level activation; optional MLM/genealogy/ranks OFF",
+      "workstream": "WS-08",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-08-R15",
+      "requirement": "Affiliate privacy; coach compensation kept separate",
+      "workstream": "WS-08",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-09-R01",
+      "requirement": "Canadian CAD merchant identity and processor certification",
+      "workstream": "WS-09",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-09-R02",
+      "requirement": "Separate US corporation/account USD sandbox routing",
+      "workstream": "WS-09",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-09-R03",
+      "requirement": "No assumed UK/GBP activation or PriorityMX compatibility",
+      "workstream": "WS-09",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-09-R04",
+      "requirement": "Private server credentials and explicit merchant/legal-issuer routing",
+      "workstream": "WS-09",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-09-R05",
+      "requirement": "Checkout, secure invoices and hosted payment links",
+      "workstream": "WS-09",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-09-R06",
+      "requirement": "Subscriptions, installments, receipts and transaction records",
+      "workstream": "WS-09",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-09-R07",
+      "requirement": "Webhook signature validation, idempotency and uncertain outcomes",
+      "workstream": "WS-09",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-09-R08",
+      "requirement": "Settlement ledger, reconciliation and accounting",
+      "workstream": "WS-09",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-09-R09",
+      "requirement": "Refund, void and chargeback policy/execution boundaries",
+      "workstream": "WS-09",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-09-R10",
+      "requirement": "Affiliate qualifying financial events and recurring eligibility",
+      "workstream": "WS-09",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-09-R11",
+      "requirement": "Credits, points and withdrawable cash have distinct rules/ledgers",
+      "workstream": "WS-09",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-09-R12",
+      "requirement": "Payout provider, payout authorization and duplicate prevention",
+      "workstream": "WS-09",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-09-R13",
+      "requirement": "Tax, legal issuer, currency and financial reporting decisions",
+      "workstream": "WS-09",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-09-R14",
+      "requirement": "Live billing, entitlements, commissions and payouts remain separately gated",
+      "workstream": "WS-09",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-10-R01",
+      "requirement": "All-ten-workstream completion and no-loss requirements register",
+      "workstream": "WS-10",
+      "ownerIssue": 56,
+      "source": "Issue#56; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-10-R02",
+      "requirement": "Single integration owner and shared-file/migration collision arbitration",
+      "workstream": "WS-10",
+      "ownerIssue": 56,
+      "source": "Issue#56; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-10-R03",
+      "requirement": "Owner/Coach/Client/Family/Affiliate negative and journey acceptance",
+      "workstream": "WS-10",
+      "ownerIssue": 56,
+      "source": "Issue#56; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-10-R04",
+      "requirement": "Public-lead-to-renewal integrated fictional acceptance",
+      "workstream": "WS-10",
+      "ownerIssue": 56,
+      "source": "Issue#56; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-10-R05",
+      "requirement": "Optional affiliate-share-to-payout and consented family journeys",
+      "workstream": "WS-10",
+      "ownerIssue": 56,
+      "source": "Issue#56; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-10-R06",
+      "requirement": "Mobile, performance, accessibility and failure-recovery acceptance",
+      "workstream": "WS-10",
+      "ownerIssue": 56,
+      "source": "Issue#56; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-10-R07",
+      "requirement": "CI/test coverage and evidence freshness/limitations",
+      "workstream": "WS-10",
+      "ownerIssue": 56,
+      "source": "Issue#56; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-10-R08",
+      "requirement": "Exact-SHA release, artifact/Function preservation and rollback",
+      "workstream": "WS-10",
+      "ownerIssue": 56,
+      "source": "Issue#56; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    },
+    {
+      "id": "WS-10-R09",
+      "requirement": "Support readiness, training, backups and disaster recovery",
+      "workstream": "WS-10",
+      "ownerIssue": 56,
+      "source": "Issue#56; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true
+    }
+  ],
+  "sourceGapInterpretation": "Historical source-gap identities retained; see sourceReceipts for new received evidence. Do not infer historical gaps remain unresolved after a receipt.",
+  "sourceReceipts": [
+    {
+      "receipt": "docs/orchestration/source-packet-receipt.json",
+      "zipSha256": "28598c5c74901a97c37abdd0e4ad32136194a431eb42ed2b182671e2c69e3b7c",
+      "resolvesSourceAvailability": [
+        "Original Option3 Complete Coaching Ecosystem",
+        "Original platform information checklist",
+        "October12Phase0blueprint"
+      ],
+      "doesNotResolve": [
+        "Full numbered127-section affiliate handoff",
+        "Unfilled business/content decisions"
+      ],
+      "coverageReconciliation": "COMPLETE_FOR_THREE_RECEIVED_SOURCES; HISTORICAL_COMPLETENESS_UNVERIFIED"
+    }
+  ],
+  "sourceDetailRegister": "docs/orchestration/requirements-source-details.json"
+}

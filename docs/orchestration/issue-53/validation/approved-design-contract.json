@@ -1,0 +1,37 @@
+{
+  "version": "rva-issue53-local-design-contract-v1",
+  "status": "LOCAL_VALIDATION_ONLY",
+  "claim": "OBSERVED_SOURCE_DECLARATIONS_ONLY",
+  "codeCommit": "3baef48590fbcd7955946bcc5e9988b7f88bf6b4",
+  "globalTokenNormalization": "forbidden",
+  "productionEligible": false,
+  "assets": [
+    {"path":"assets/images/justyn-elle-professional-approved-102.png","sha256":"83719262d46ad793deccf87964549c4debadd7a51673267b818379098eec8816"},
+    {"path":"assets/images/revitalized-logo-dark-approved-v69.png","sha256":"b00de1a2943bdf26cf70a265f3e2aef5614bdd59698724057f2efecffdcb3ba4"},
+    {"path":"assets/images/revitalized-logo-light-approved.png","sha256":"23d5ed12350a7e8f960820a9c454f7a80a3c21d819c6c63eabddd8c49001eb0c"},
+    {"path":"assets/images/revitalized-shield-approved-v69.png","sha256":"b764c6dbed64e86fc1c78a4f8553086bbfde50102392f15e3566184c61193328"},
+    {"path":"assets/images/revitalized-shield.png","sha256":"4c806b2646028c96ee50916e5fd43cecc76f2c6daeab1f1654e0477ddbd16933"}
+  ],
+  "profiles": [
+    {"id":"public-legacy","path":"css/styles.css","sha256":"e5b39dc6ba188ba7161c93502b4932fb0929211a92d3ef3744fdb4ea0ee6c901","claim":"OBSERVED_SOURCE_DECLARATIONS_ONLY","declarations":["--green:#239408","--cream:#fbfbf8","--gold:#e9a413"]},
+    {"id":"portal","path":"portal/portal.css","sha256":"e4db5d0a52fad0a484b0cb44a669d8e2de7305ef49162e0cd42c936bebc29134","claim":"OBSERVED_SOURCE_DECLARATIONS_ONLY","declarations":["--green:#154734","--cream:#fcf5ee","--gold:#b18845","--gold-bright:#d8a62a"]},
+    {"id":"member","path":"member/member110.css","sha256":"aef6cd75a1068ab4a381201a46903e3ea9b13f77dd9f90461742300f481774dc","claim":"OBSERVED_SOURCE_DECLARATIONS_ONLY","declarations":["--green:#154734","--cream:#fcf5ee","--gold:#b18845"]},
+    {"id":"mobile-homepage","path":"css/homepage-mobile-hero.css","sha256":"8188728d20bd4a8e8d2dde85e2dc70dc177618295ef0c200ca9df3d987858c5f","claim":"OBSERVED_SOURCE_DECLARATIONS_ONLY","declarations":["@media (max-width:600px)","color:#f2c44e!important","font-size:18px!important","font-size:19px"],"scope":{"maxWidthPx":600,"unchangedAboveStartsPx":601}}
+  ],
+  "founders": {
+    "approvedRootReference": "../deployment-evidence/2026-10-21-founders-release-preflight/static",
+    "missingReferencePolicy": "BLOCKED_NO_RAW_FALLBACK",
+    "files": [
+      {"path":"founders.html","origin":"approved-release-static","approvedSha256":"9a55b56f816f6a1ed24385d9139cbcba72dd4f81bcce9fb75655d8ea987fc020","inheritedRawSha256":"cf456836399c51f170a834aa159d545fb1bd809246fcbc6aafe9fa292dce7aec"},
+      {"path":"css/founders103.css","origin":"approved-release-static","approvedSha256":"43efe83bc2fd5b56d9fec4c13798894f435a4b2daca1ff72c040a0aba76b0034","inheritedRawSha256":"6d44fcc648333c74b9539011cd534a81ba7712ac1d2ee44c89d5bb15fa805089"}
+    ],
+    "responsiveMetadata":{"stackMaxWidthPx":1100,"desktopStartsPx":1101},
+    "claim":"ARTIFACT_IDENTITY_ONLY_NOT_LIVE_OR_PIXEL_CERTIFICATION"
+  },
+  "limitations": [
+    "The reviewed local contract is a trust input, not a signature or authenticated production approval registry.",
+    "CSS strings are observed source declarations; this checker does not parse cascade, compute styles, render pixels, or verify accessibility.",
+    "Only listed public files are read. Approved overlays are read-only references and are never copied or reconstructed.",
+    "Code, canonical release, Auth, API, schema, RLS, component integration and all product behavior require separate review and acceptance."
+  ]
+}

@@ -1,0 +1,4311 @@
+{
+  "schemaVersion": "rva-independent-acceptance-v1",
+  "issue": 56,
+  "observedAt": "2026-11-01T13:31:35.446897+00:00",
+  "codeSha": "3baef48590fbcd7955946bcc5e9988b7f88bf6b4",
+  "canonicalReadOnlyEvidence": {
+    "pass": true,
+    "deploy": "6ae6b971e17bce85e37aa95c",
+    "source": "10dec6682e7e87bf637482fc027e54c6800260e4",
+    "reviewedSecurityContract": true,
+    "functions": 13,
+    "paths": 459,
+    "publicationLock": true,
+    "workerSha256": "cc623b456d18cad5a94adaef6230a4749565e4948e7a153640ed9f8f115aa0d4",
+    "at": "2026-11-01T12:54:36.598Z",
+    "publishedAt": "2026-11-01T04:15:31.201Z",
+    "secretEndpointsRequested": false,
+    "processingInvoked": false
+  },
+  "scope": "independent discovery/evidence audit and fictional test planning, not release acceptance",
+  "requirementsOriginalCompleteness": "PARTIAL_SOURCES_RECEIVED_127_HANDOFF_AND49DAY_POLICY_STILL_MISSING",
+  "allTenWorkstreamsPreserved": true,
+  "knownRequirementCount": 101,
+  "originalAffiliate127": {
+    "recovered": 0,
+    "missing": 127,
+    "unknownTitlesInvented": false,
+    "trace": "../academy-affiliate-foundation/docs/orchestration/issue-55/127_SECTION_TRACE.csv",
+    "phase0Received": true,
+    "phase0Approval": "PROPOSED_ONLY",
+    "sectionTraceUnchanged": true
+  },
+  "inputSnapshots": [
+    {
+      "path": "academy-master-coordination/docs/RVA_MASTER_RUNTIME.md",
+      "sha256": "5cf56fd432e2888adc5c8e1c4520faf57b7438873f30587900343ea0502b6675",
+      "observation": "local input snapshot; mutable uncommitted handoff may later change"
+    },
+    {
+      "path": "academy-master-coordination/docs/RVA_REQUIREMENTS_REGISTER.md",
+      "sha256": "1100e0df43d11520c6b83ca9d335ace0602b9291916cab7691251691411d5e88",
+      "observation": "local input snapshot; mutable uncommitted handoff may later change"
+    },
+    {
+      "path": "academy-master-coordination/docs/orchestration/requirements.json",
+      "sha256": "f9f3ad04ac09c6c3fbe389deed904e44085a559dc6be651636ab9e4c93339b25",
+      "observation": "local input snapshot; mutable uncommitted handoff may later change"
+    },
+    {
+      "path": "academy-master-coordination/docs/orchestration/master-state.json",
+      "sha256": "1f4f76a77197e994982fd050ff220e0bafa47f4613299074f62896ef790f3304",
+      "observation": "local input snapshot; mutable uncommitted handoff may later change"
+    },
+    {
+      "path": "academy-master-coordination/scripts/rva-master-coordination.cjs",
+      "sha256": "b51c8a7234f57a15ccbd3571a209ee7b9de7e992e35338f220e6a3af0fb07ba2",
+      "observation": "local input snapshot; mutable uncommitted handoff may later change"
+    },
+    {
+      "path": "academy-master-coordination/tests/rva-master-coordination.cjs",
+      "sha256": "04533d8b520c889a136e2b8527855b1aead45fe0815aca1fd3aae3e2a42e349c",
+      "observation": "local input snapshot; mutable uncommitted handoff may later change"
+    },
+    {
+      "path": "academy-architecture-design-core/docs/orchestration/issue-53/DISCOVERY_AND_CONTRACT_PLAN.md",
+      "sha256": "52a038d5beb94efb094c6614ffa2925fe8528958b5c1ac1bb26f5a25c7840b9f",
+      "observation": "local input snapshot; mutable uncommitted handoff may later change"
+    },
+    {
+      "path": "academy-architecture-design-core/docs/orchestration/issue-53/handoff.json",
+      "sha256": "69502e546f0e592092118978200c1c6ed80de92b6026958393b738f1f321503e",
+      "observation": "local input snapshot; mutable uncommitted handoff may later change"
+    },
+    {
+      "path": "academy-client-coach-family/docs/orchestration/issue-54/handoff.json",
+      "sha256": "dd3bed5a4cc4dec72e784476c1fe48d819a9f58cd6898267f95bd70b85923736",
+      "observation": "local input snapshot; mutable uncommitted handoff may later change"
+    },
+    {
+      "path": "academy-affiliate-foundation/docs/orchestration/issue-55/REPORT.md",
+      "sha256": "d23a3fc1e48dc9005629e9480e733dfd0be34300024d34f270709fdd811cebfc",
+      "observation": "local input snapshot; mutable uncommitted handoff may later change"
+    },
+    {
+      "path": "academy-affiliate-foundation/docs/orchestration/issue-55/127_SECTION_TRACE.csv",
+      "sha256": "10a58e5a8471a6212a0742787fdca87aaa825a9a6377432a387c012c66b02f6c",
+      "observation": "local input snapshot; mutable uncommitted handoff may later change"
+    },
+    {
+      "path": "academy-affiliate-foundation/docs/orchestration/issue-55/handoff.json",
+      "sha256": "978f4a4fc64537511f615c67cb14affa584327a19369021d0676df5dcd4134ce",
+      "observation": "local input snapshot; mutable uncommitted handoff may later change"
+    },
+    {
+      "path": "deployment-evidence/2026-11-01-master-coordination/CANONICAL_READ_ONLY.json",
+      "sha256": "fdbbc4f5626fa8f449621e46bb483a23691342a94caa2b2953ebe04bc2af8f3a",
+      "observation": "local input snapshot; mutable uncommitted handoff may later change"
+    },
+    {
+      "path": "academy-master-coordination/docs/RVA_MASTER_RUNTIME.md",
+      "sha256": "c6e7b55d9260ee01480899d09f0531279d4d88a713b36888c8e2ac4345caa265",
+      "observation": "final independent retest snapshot"
+    },
+    {
+      "path": "academy-master-coordination/docs/RVA_REQUIREMENTS_REGISTER.md",
+      "sha256": "1100e0df43d11520c6b83ca9d335ace0602b9291916cab7691251691411d5e88",
+      "observation": "final independent retest snapshot"
+    },
+    {
+      "path": "academy-master-coordination/docs/orchestration/requirements.json",
+      "sha256": "f9f3ad04ac09c6c3fbe389deed904e44085a559dc6be651636ab9e4c93339b25",
+      "observation": "final independent retest snapshot"
+    },
+    {
+      "path": "academy-master-coordination/docs/orchestration/master-state.json",
+      "sha256": "be540b085c396188680918434e6ec2efe6e980f63a82fc46d279f6bcffa67807",
+      "observation": "final independent retest snapshot"
+    },
+    {
+      "path": "academy-master-coordination/docs/orchestration/requirements-baseline.json",
+      "sha256": "83280254c056d732c6eba3676b6c4008cbf2a637beb2244d93d5e2148bb50c18",
+      "observation": "final independent retest snapshot"
+    },
+    {
+      "path": "academy-master-coordination/scripts/rva-master-coordination.cjs",
+      "sha256": "b51c8a7234f57a15ccbd3571a209ee7b9de7e992e35338f220e6a3af0fb07ba2",
+      "observation": "final independent retest snapshot"
+    },
+    {
+      "path": "academy-master-coordination/tests/rva-master-coordination.cjs",
+      "sha256": "04533d8b520c889a136e2b8527855b1aead45fe0815aca1fd3aae3e2a42e349c",
+      "observation": "final independent retest snapshot"
+    },
+    {
+      "path": "academy-client-coach-family/docs/orchestration/issue-54/REPORT.md",
+      "sha256": "723bd3ed839b3c762b46b6c7118d20625554631f51afec1ee409a7fd96876b2b",
+      "observation": "final completed Issue54 snapshot"
+    },
+    {
+      "path": "academy-client-coach-family/docs/orchestration/issue-54/handoff.json",
+      "sha256": "dd3bed5a4cc4dec72e784476c1fe48d819a9f58cd6898267f95bd70b85923736",
+      "observation": "final completed Issue54 snapshot"
+    },
+    {
+      "path": "academy-integration-qa/founders.html",
+      "sha256": "cf456836399c51f170a834aa159d545fb1bd809246fcbc6aafe9fa292dce7aec",
+      "observation": "independently inspected source/artifact bytes at pinned code baseline"
+    },
+    {
+      "path": "academy-integration-qa/css/founders103.css",
+      "sha256": "6d44fcc648333c74b9539011cd534a81ba7712ac1d2ee44c89d5bb15fa805089",
+      "observation": "independently inspected source/artifact bytes at pinned code baseline"
+    },
+    {
+      "path": "deployment-evidence/2026-10-21-founders-release-preflight/static/founders.html",
+      "sha256": "9a55b56f816f6a1ed24385d9139cbcba72dd4f81bcce9fb75655d8ea987fc020",
+      "observation": "independently inspected source/artifact bytes at pinned code baseline"
+    },
+    {
+      "path": "deployment-evidence/2026-10-21-founders-release-preflight/static/css/founders103.css",
+      "sha256": "43efe83bc2fd5b56d9fec4c13798894f435a4b2daca1ff72c040a0aba76b0034",
+      "observation": "independently inspected source/artifact bytes at pinned code baseline"
+    },
+    {
+      "path": "academy-integration-qa/portal/portal-referrals.js",
+      "sha256": "6fd68faa430fa0f0636b00d83e52113039dabe4bc93398c2451be188bb9d86f8",
+      "observation": "independently inspected source/artifact bytes at pinned code baseline"
+    },
+    {
+      "path": "academy-integration-qa/member/index.html",
+      "sha256": "bf672eb1bb5f936a6fc34e7b76517bc3f21efb89dbfb8d96a13347e07dcbf423",
+      "observation": "independently inspected source/artifact bytes at pinned code baseline"
+    },
+    {
+      "path": "academy-integration-qa/member/onboarding/index.html",
+      "sha256": "bf672eb1bb5f936a6fc34e7b76517bc3f21efb89dbfb8d96a13347e07dcbf423",
+      "observation": "independently inspected source/artifact bytes at pinned code baseline"
+    },
+    {
+      "path": "academy-integration-qa/supabase/migrations/20261010121000_payments_v1.sql",
+      "sha256": "c22c8586739e1cd56498e78c03b7dd9b7b7dd833019cfd1c868e0c94cacdd6da",
+      "observation": "independently inspected source/artifact bytes at pinned code baseline"
+    },
+    {
+      "path": "academy-integration-qa/supabase/migrations/20261007224150_production_client_lifecycle_v1.sql",
+      "sha256": "e3b37a26ef0d9d5c3574bb40f85438988a8cb2622842cb1563a795826caa1085",
+      "observation": "independently inspected source/artifact bytes at pinned code baseline"
+    },
+    {
+      "path": "academy-architecture-design-core/docs/orchestration/issue-53/DISCOVERY_AND_CONTRACT_PLAN.md",
+      "sha256": "f21b41ab9d3f42a83a22a4e89570cb903cf0153b0e0fc63e2474e1be58b4fc21",
+      "observation": "source-packet phase final independent input snapshot"
+    },
+    {
+      "path": "academy-architecture-design-core/docs/orchestration/issue-53/handoff.json",
+      "sha256": "0422c875b735da071332a18bbbcbe07ba5922ca4f99b1d0bd3fb1c727c52cb90",
+      "observation": "source-packet phase final independent input snapshot"
+    },
+    {
+      "path": "academy-architecture-design-core/docs/orchestration/issue-53/validation/approved-design-contract.json",
+      "sha256": "ad698d5d1d63bb3ed3d778dbdb4eaaa0f7369afdbc560a4afa183c3597bf812d",
+      "observation": "source-packet phase final independent input snapshot"
+    },
+    {
+      "path": "academy-architecture-design-core/docs/orchestration/issue-53/validation/validator.cjs",
+      "sha256": "4b9877b769c4b5bac139680459bf16daf7a24b8d04828f8ae5c1356c23d49b7e",
+      "observation": "source-packet phase final independent input snapshot"
+    },
+    {
+      "path": "academy-architecture-design-core/docs/orchestration/issue-53/validation/validator.test.cjs",
+      "sha256": "07b3f9b0b034496a098baa02865cb0ee12ab5439dd825be52330a806d924bf26",
+      "observation": "source-packet phase final independent input snapshot"
+    },
+    {
+      "path": "academy-client-coach-family/docs/orchestration/issue-54/REPORT.md",
+      "sha256": "723bd3ed839b3c762b46b6c7118d20625554631f51afec1ee409a7fd96876b2b",
+      "observation": "source-packet phase final independent input snapshot"
+    },
+    {
+      "path": "academy-client-coach-family/docs/orchestration/issue-54/SOURCE_PACKET_ADDENDUM.md",
+      "sha256": "524b0547094339688da387c3a35ff722b4c7b0b10ff3c3b9dd96eadb11a1a938",
+      "observation": "source-packet phase final independent input snapshot"
+    },
+    {
+      "path": "academy-client-coach-family/docs/orchestration/issue-54/SOURCE_REQUIREMENTS_TRACE.csv",
+      "sha256": "9376fb3ffe020dfe4de35b6cc42aa40484aa362c12d66aa678a625f9c57b857b",
+      "observation": "source-packet phase final independent input snapshot"
+    },
+    {
+      "path": "academy-client-coach-family/docs/orchestration/issue-54/MASTER101_SOURCE_CROSSWALK.csv",
+      "sha256": "60cf31912c432f5031045d1e34cf1ada466f7945de9ef2b2cd71ea4f92db439e",
+      "observation": "source-packet phase final independent input snapshot"
+    },
+    {
+      "path": "academy-client-coach-family/docs/orchestration/issue-54/handoff.json",
+      "sha256": "8a1d341ea627e57808de2d50d3e8619190a2df39306f75f10ec973f6daae398b",
+      "observation": "source-packet phase final independent input snapshot"
+    },
+    {
+      "path": "academy-affiliate-foundation/docs/orchestration/issue-55/REPORT.md",
+      "sha256": "d23a3fc1e48dc9005629e9480e733dfd0be34300024d34f270709fdd811cebfc",
+      "observation": "source-packet phase final independent input snapshot"
+    },
+    {
+      "path": "academy-affiliate-foundation/docs/orchestration/issue-55/SOURCE_PACKET_ADDENDUM.md",
+      "sha256": "c883a1b0c26fc29e73302ce6904d431e304aa1f020398027818ae98f997a92ce",
+      "observation": "source-packet phase final independent input snapshot"
+    },
+    {
+      "path": "academy-affiliate-foundation/docs/orchestration/issue-55/SOURCE_TO_SCOPE_DECISION_TRACE.csv",
+      "sha256": "0ec302aa90d41f956d9dc2c473c1691a24dd59a873862cf9806c5b6808b4f385",
+      "observation": "source-packet phase final independent input snapshot"
+    },
+    {
+      "path": "academy-affiliate-foundation/docs/orchestration/issue-55/127_SECTION_TRACE.csv",
+      "sha256": "10a58e5a8471a6212a0742787fdca87aaa825a9a6377432a387c012c66b02f6c",
+      "observation": "source-packet phase final independent input snapshot"
+    },
+    {
+      "path": "academy-affiliate-foundation/docs/orchestration/issue-55/handoff.json",
+      "sha256": "4529d0be62f5ccc618eb4c4a1e927841be95258f39acc13d5faf78d91f5954db",
+      "observation": "source-packet phase final independent input snapshot"
+    },
+    {
+      "path": "deployment-evidence/2026-11-01-master-coordination/ORIGINAL_SOURCE_PACKET_INTAKE.json",
+      "sha256": "994806a76e9134dd3baae61935bbd5ec1ee2345b495f82a475d302d303553e18",
+      "observation": "source-packet intake manifest final"
+    },
+    {
+      "path": "academy-master-coordination/docs/orchestration/requirements-source-details.json",
+      "sha256": "bb828787d71c51a74da2003f0ee09c05085fcd7f3f5a796d437448a8c5149734",
+      "observation": "final Master inventory-only disposition/metadata correction"
+    },
+    {
+      "path": "academy-client-coach-family/docs/orchestration/issue-54/handoff.json",
+      "sha256": "8a1d341ea627e57808de2d50d3e8619190a2df39306f75f10ec973f6daae398b",
+      "observation": "final Master inventory-only disposition/metadata correction"
+    }
+  ],
+  "fixtureContract": {
+    "identities": [
+      "fictional Owner O",
+      "Admin D",
+      "assigned Coach A",
+      "unassigned Coach B",
+      "verified Client A",
+      "unrelated Client B",
+      "adult Family A/B",
+      "guardian/dependent after approved policy",
+      "Affiliate A/B",
+      "anonymous",
+      "revoked/inactive/unverified actors"
+    ],
+    "data": "example.invalid identities, invented answers and nonfinancial fake provider events only; no production data copy",
+    "isolation": "disposable approved SQL/storage target, zero outbound I/O adapters, no production credentials; production fake-settlement adapter prohibited",
+    "clock": "fixed UTC clock plus America/New_York and America/Chicago DST/month-end cases",
+    "policy": "approved version/hash required for positive rights; absent policy stays blocked; deny cases can be prepared independently",
+    "reset": "per-case transaction/isolated fixture reset; preserve audit assertions; never reset a real environment"
+  },
+  "evidenceLevels": {
+    "SCHEMA_CODE": "implementation source exists",
+    "ROUTE_REACHABILITY": "normal page/role path observed; not inferred from allowlist",
+    "LOCAL_UNIT_STATIC": "isolated assertions or mocked RPC",
+    "LOCAL_INTEGRATION": "actual handler + disposable SQL + UI with documented fake adapters",
+    "HOSTED_SYNTHETIC": "separately authorized real Auth/API/provider sandbox path",
+    "BUSINESS_ACCEPTED": "named Owner/reviewer accepts scope after operational evidence"
+  },
+  "actualChecks": [
+    {
+      "id": "ACT01",
+      "command": "git status --short; git rev-parse HEAD; git branch --show-current; git diff --stat 10dec6682e7e87bf637482fc027e54c6800260e4 HEAD",
+      "result": "PASS: clean start; pinned branch/HEAD; only three coordination documents differ from deployed-source ancestor",
+      "environment": "local read-only"
+    },
+    {
+      "id": "ACT02",
+      "command": "gh issue view 56 --repo eaglevisiondigital/revitalizedacademy --json number,title,body,state,labels,assignees,url",
+      "result": "PASS after sandbox network retry; exact issue read only",
+      "environment": "GitHub read-only"
+    },
+    {
+      "id": "ACT03",
+      "command": "node --test tests/rva-master-coordination.cjs in academy-master-coordination",
+      "result": "9 passed, 0 failed",
+      "environment": "metadata-only local; no application/runtime suite"
+    },
+    {
+      "id": "ACT04",
+      "command": "in-memory require(validate) mutation probes: rename exact requirement ID; erase named source gaps; liveAcceptanceEvidence=x",
+      "result": "all three unexpectedly accepted; B09",
+      "environment": "local read-only memory; source files unchanged"
+    },
+    {
+      "id": "ACT05",
+      "command": "hashlib.sha256 four raw/approved Founders HTML/CSS inputs",
+      "result": "confirmed both raw/approved pairs differ exactly as #53 reports",
+      "environment": "local artifact comparison"
+    },
+    {
+      "id": "ACT06",
+      "command": "csv.DictReader trace: count, unique sequential1..127, SOURCE_MISSING and blank original titles/content",
+      "result": "PASS127/127 missing rows preserved honestly",
+      "environment": "local document validation"
+    },
+    {
+      "id": "ACT07",
+      "command": "source route search: HTML script references for member110.js, inspect member/index.html and member/onboarding/index.html",
+      "result": "normal member entries mount Enrollment & Signature Center; no HTML script reference to member110.js found",
+      "environment": "static source; current released UI not exercised"
+    },
+    {
+      "id": "ACT08",
+      "command": "node --test tests/rva-master-coordination.cjs after Master hardening",
+      "result": "14 passed,0 failed; baseline SHA83280254c056d732c6eba3676b6c4008cbf2a637beb2244d93d5e2148bb50c18",
+      "environment": "local metadata-only, source authored by Master"
+    },
+    {
+      "id": "ACT09",
+      "command": "rerun same three independent in-memory mutation probes",
+      "result": "PASS: all3 rejected after hardening; B09 resolved for tested cases",
+      "environment": "local memory-only; no source modification"
+    },
+    {
+      "id": "ACT10",
+      "command": "validate current Master state and inspect task statuses",
+      "result": "PASS:53/54/55 COMPLETED-DOCS;56/57 ACTIVE; all10 scopes/101 groups; dispatchConfirmed flags true",
+      "environment": "cooperative metadata snapshot, not agent-runtime attestation"
+    },
+    {
+      "id": "ACT11",
+      "command": "Python matrix assertions:50 unique cases/101 exact IDs/all10 scopes,NOT_RUN flags,evidence path existence,127 trace honesty,pinned branch/HEAD,no tracked changes",
+      "result": "PASS",
+      "environment": "local document/read-only validation"
+    },
+    {
+      "id": "ACT12",
+      "command": "Python hashlib+zipfile: ZIP digest/exact3member allowlist/CRC/entry type/staged bytes,size,hash comparison",
+      "result": "PASS; packet28598c5c74901a97c37abdd0e4ad32136194a431eb42ed2b182671e2c69e3b7c",
+      "environment": "local read-only owner-supplied source; no scripts run"
+    },
+    {
+      "id": "ACT13",
+      "command": "pdfinfo+pypdf page/text structure; view existing page1 renders",
+      "result": "PASS7/16pages,no JS/forms/encryption;153blank underline runs;100Option3action markers; no explicit49day/sevenweek spec found",
+      "environment": "local source inspection; no fullvisual/policy certification"
+    },
+    {
+      "id": "ACT14",
+      "command": "node docs/orchestration/issue-53/validation/validator.cjs in architecture-design-core",
+      "result": "PASS_LOCAL_OBSERVATION;13/13hashes matched;production/computedStyles/pixels/live flags false",
+      "environment": "local public source/artifact identity"
+    },
+    {
+      "id": "ACT15",
+      "command": "node --test --test-reporter=tap docs/orchestration/issue-53/validation/validator.test.cjs",
+      "result": "16passed,0failed,0skipped;contract/checker/test3file digests independently match handoff",
+      "environment": "fictional local temporary roots; no application/runtime acceptance"
+    },
+    {
+      "id": "ACT16",
+      "command": "Issue54 final artifact hash,127trace/100action/16phase/25section/101crosswalk/reference/owner/wording checks",
+      "result": "PASS;64mapped,38new,25unanswered;73scope overlap,28independent retained;initialreport unchanged",
+      "environment": "local documentation; mappings do not prove operational/policy completeness"
+    },
+    {
+      "id": "ACT17",
+      "command": "Issue55 final51row trace/sourcehash/line/22heading checks;initial report+127trace bytes;history correction check",
+      "result": "PASS; historicalPhase0false/currenttrue corrected at4529d0be62f5ccc618eb4c4a1e927841be95258f39acc13d5faf78d91f5954db; controlling127stillmissing",
+      "environment": "local documentation/proposed blueprint only"
+    },
+    {
+      "id": "ACT18",
+      "command": "read/hash final Master ten-group inventory,assert exact proposal IDs,parent baseline membership,false businessPolicy/runtime flags and NOT_CLAIMED;verify54next_action correction",
+      "result": "PASS;101baseline retained,ten inventory groups accepted only;final54handoff8a1d341e...",
+      "environment": "local metadata-only; no runtime tests or changes"
+    },
+    {
+      "id": "ACT19",
+      "command": "final57case/101ID/10inventorygroup/NOT_RUN/path/history/127trace/exactHEAD/ownedfiles assertions",
+      "result": "PASS",
+      "environment": "local documentation-only final validation"
+    }
+  ],
+  "actualApplicationRuntimeTests": 0,
+  "actualDatabaseTests": 0,
+  "actualBrowserTests": 0,
+  "actualProviderCalls": 0,
+  "actualProductionCalls": 0,
+  "requirements": [
+    {
+      "id": "WS-01-R01",
+      "requirement": "Approved logo, portrait and brand assets",
+      "workstream": "WS-01",
+      "ownerIssue": 53,
+      "source": "Issue#53; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "S01"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-01-R02",
+      "requirement": "Approved public/portal visual tokens and reusable components",
+      "workstream": "WS-01",
+      "ownerIssue": 53,
+      "source": "Issue#53; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "S01"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-01-R03",
+      "requirement": "Responsive public website and preserved desktop/mobile boundaries",
+      "workstream": "WS-01",
+      "ownerIssue": 53,
+      "source": "Issue#53; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "S02",
+        "O02"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-01-R04",
+      "requirement": "All approved CTA routes and conversion journeys",
+      "workstream": "WS-01",
+      "ownerIssue": 53,
+      "source": "Issue#53; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "S02",
+        "E04"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-01-R05",
+      "requirement": "Health & Hope Live registration and Zoom information",
+      "workstream": "WS-01",
+      "ownerIssue": 53,
+      "source": "Issue#53; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "S03",
+        "E04"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-01-R06",
+      "requirement": "Published-session rollover and approved replay lifecycle",
+      "workstream": "WS-01",
+      "ownerIssue": 53,
+      "source": "Issue#53; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "S03"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-01-R07",
+      "requirement": "SEO and consent-appropriate analytics",
+      "workstream": "WS-01",
+      "ownerIssue": 53,
+      "source": "Issue#53; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "S02",
+        "E04"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-01-R08",
+      "requirement": "Accessible website and campaign/funnel presentation",
+      "workstream": "WS-01",
+      "ownerIssue": 53,
+      "source": "Issue#53; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "S02",
+        "O02"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-02-R01",
+      "requirement": "Original Owner, Coach, Client, Family and Affiliate identity model",
+      "workstream": "WS-02",
+      "ownerIssue": 53,
+      "source": "Issue#53; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "N01",
+        "N04"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-02-R02",
+      "requirement": "Account creation, sign-in, renewal, revocation and logout",
+      "workstream": "WS-02",
+      "ownerIssue": 53,
+      "source": "Issue#53; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "N01",
+        "N04",
+        "N05"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-02-R03",
+      "requirement": "Permission, contact-scope and tenant/household isolation",
+      "workstream": "WS-02",
+      "ownerIssue": 53,
+      "source": "Issue#53; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "N01",
+        "N02",
+        "N03",
+        "N06",
+        "E05"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-02-R04",
+      "requirement": "RLS and protected API/database ownership",
+      "workstream": "WS-02",
+      "ownerIssue": 53,
+      "source": "Issue#53; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "N01",
+        "N02",
+        "N03",
+        "N04",
+        "N06"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-02-R05",
+      "requirement": "Immutable audits and source/version integrity",
+      "workstream": "WS-02",
+      "ownerIssue": 53,
+      "source": "Issue#53; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "J04",
+        "N07",
+        "O08"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-02-R06",
+      "requirement": "Privacy, retention and safe credentials custody",
+      "workstream": "WS-02",
+      "ownerIssue": 53,
+      "source": "Issue#53; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "N05",
+        "N07",
+        "N08",
+        "C03",
+        "A05",
+        "E05"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-02-R07",
+      "requirement": "Backup, disaster recovery and operational recovery",
+      "workstream": "WS-02",
+      "ownerIssue": 53,
+      "source": "Issue#53; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "O04"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-02-R08",
+      "requirement": "Current deployed-source versus staging and overlay provenance",
+      "workstream": "WS-02",
+      "ownerIssue": 53,
+      "source": "Issue#53; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "S01",
+        "E03"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-03-R01",
+      "requirement": "CRM contacts and duplicate/reuse handling",
+      "workstream": "WS-03",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "J01",
+        "E03"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-03-R02",
+      "requirement": "Lead stages and referral-source preservation",
+      "workstream": "WS-03",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "J01",
+        "A04"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-03-R03",
+      "requirement": "Intake and source-pinned assessment",
+      "workstream": "WS-03",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "J02"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-03-R04",
+      "requirement": "Consultation and scheduling",
+      "workstream": "WS-03",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "J03"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-03-R05",
+      "requirement": "Approved legal agreement and exact-hash signing",
+      "workstream": "WS-03",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "J04"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-03-R06",
+      "requirement": "Plan intent, enrollment and verified account claim",
+      "workstream": "WS-03",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "J05",
+        "E01"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-03-R07",
+      "requirement": "Payment-to-enrollment contract with no assumed entitlement activation",
+      "workstream": "WS-03",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "J09",
+        "E01"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-03-R08",
+      "requirement": "Permission-scoped messaging and notifications",
+      "workstream": "WS-03",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "N08",
+        "O07",
+        "E05"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-03-R09",
+      "requirement": "Communication consent and retry/deduplication",
+      "workstream": "WS-03",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "S03",
+        "N08",
+        "E04",
+        "E05"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-03-R10",
+      "requirement": "Lead-to-renewal automation and Owner visibility",
+      "workstream": "WS-03",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "J11",
+        "O07"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-04-R01",
+      "requirement": "MK10 current twelve-Driver terminology and four principles",
+      "workstream": "WS-04",
+      "ownerIssue": 57,
+      "source": "Issue#57; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "R01"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-04-R02",
+      "requirement": "Approved founder methodology and personal coaching voice",
+      "workstream": "WS-04",
+      "ownerIssue": 57,
+      "source": "Issue#57; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "R01"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-04-R03",
+      "requirement": "Person-specific evidence, unknowns and unsupported-score withholding",
+      "workstream": "WS-04",
+      "ownerIssue": 57,
+      "source": "Issue#57; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "J02",
+        "R01"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-04-R04",
+      "requirement": "Immutable revisions and source/worker/ruleset lineage",
+      "workstream": "WS-04",
+      "ownerIssue": 57,
+      "source": "Issue#57; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "R02"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-04-R05",
+      "requirement": "Independent founder read, cited feedback and comparison",
+      "workstream": "WS-04",
+      "ownerIssue": 57,
+      "source": "Issue#57; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "R02"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-04-R06",
+      "requirement": "Protected single-use generation and separate review authority",
+      "workstream": "WS-04",
+      "ownerIssue": 57,
+      "source": "Issue#57; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "R02"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-04-R07",
+      "requirement": "Cross-Driver relationships and approved progression/action plan",
+      "workstream": "WS-04",
+      "ownerIssue": 57,
+      "source": "Issue#57; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "R01"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-04-R08",
+      "requirement": "V3 source provenance, speakers, admission and conflicts",
+      "workstream": "WS-04",
+      "ownerIssue": 57,
+      "source": "Issue#57; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "R03"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-04-R09",
+      "requirement": "Unapproved intake and proposed forty-day mission remain held",
+      "workstream": "WS-04",
+      "ownerIssue": 57,
+      "source": "Issue#57; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "R03"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-04-R10",
+      "requirement": "Coach Companion retrieval, review and escalation contracts",
+      "workstream": "WS-04",
+      "ownerIssue": 57,
+      "source": "Issue#57; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "R03"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-05-R01",
+      "requirement": "Reachable Client and Coach dashboard routes",
+      "workstream": "WS-05",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "J10"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-05-R02",
+      "requirement": "Original forty-nine-day coaching program specification",
+      "workstream": "WS-05",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "J11",
+        "E06"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-05-R03",
+      "requirement": "Coach assignment, availability and capacity",
+      "workstream": "WS-05",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "J03",
+        "J10",
+        "N02"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-05-R04",
+      "requirement": "Plan, membership and entitlement lifecycle",
+      "workstream": "WS-05",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "J05",
+        "J09",
+        "N06",
+        "E01",
+        "E02"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-05-R05",
+      "requirement": "Sessions and scheduling",
+      "workstream": "WS-05",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "J03",
+        "E01",
+        "E02"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-05-R06",
+      "requirement": "Goals, habits, tasks and check-ins",
+      "workstream": "WS-05",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "J11",
+        "C02"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-05-R07",
+      "requirement": "Private notes, messaging and assigned activities",
+      "workstream": "WS-05",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "J10",
+        "N02",
+        "E05"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-05-R08",
+      "requirement": "Progress charts and review context",
+      "workstream": "WS-05",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "J11",
+        "C02"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-05-R09",
+      "requirement": "Renewal and continuity between program stages",
+      "workstream": "WS-05",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "J11",
+        "E01",
+        "E02"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-05-R10",
+      "requirement": "Normal session renewal and multi-tab operation",
+      "workstream": "WS-05",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "N05",
+        "O02"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-06-R01",
+      "requirement": "Adult household and family-profile management",
+      "workstream": "WS-06",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "F01"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-06-R02",
+      "requirement": "Consented shared family goals and activities",
+      "workstream": "WS-06",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "F01"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-06-R03",
+      "requirement": "Family calendar and schedule",
+      "workstream": "WS-06",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "F01"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-06-R04",
+      "requirement": "Consented meal/activity sharing",
+      "workstream": "WS-06",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "F01"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-06-R05",
+      "requirement": "Parent, guardian and dependent relationships",
+      "workstream": "WS-06",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "F02"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-06-R06",
+      "requirement": "Minors consent and scoped disclosure",
+      "workstream": "WS-06",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "F02",
+        "E05"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-06-R07",
+      "requirement": "No automatic adult private-health sharing",
+      "workstream": "WS-06",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "F01"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-06-R08",
+      "requirement": "Family-request review and cross-household denials",
+      "workstream": "WS-06",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "F02",
+        "F03"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-07-R01",
+      "requirement": "Food, recipe and exercise reference libraries",
+      "workstream": "WS-07",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "C01"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-07-R02",
+      "requirement": "Approved meal templates, grocery plans and workouts",
+      "workstream": "WS-07",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "C01"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-07-R03",
+      "requirement": "Course, lesson and resource authoring",
+      "workstream": "WS-07",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "C01",
+        "E06"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-07-R04",
+      "requirement": "Private client assignments and completion tracking",
+      "workstream": "WS-07",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "C02",
+        "E06"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-07-R05",
+      "requirement": "Habits, challenges and progress",
+      "workstream": "WS-07",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "C02"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-07-R06",
+      "requirement": "Nutrition diary, targets and trends with unknowns preserved",
+      "workstream": "WS-07",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "C02"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-07-R07",
+      "requirement": "Exercise/workout and reusable-content provenance",
+      "workstream": "WS-07",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "C01"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-07-R08",
+      "requirement": "One-way reusable content sync excludes operational/private records",
+      "workstream": "WS-07",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "C03"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-07-R09",
+      "requirement": "Coach review permissions and client-specific override contracts",
+      "workstream": "WS-07",
+      "ownerIssue": 54,
+      "source": "Issue#54; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "C02"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-08-R01",
+      "requirement": "Full original numbered127-section Propel Affiliates handoff",
+      "workstream": "WS-08",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "A01"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-08-R02",
+      "requirement": "October12 Phase0 architecture and partner/adapter boundaries",
+      "workstream": "WS-08",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "A01"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-08-R03",
+      "requirement": "Affiliate application, agreement and onboarding",
+      "workstream": "WS-08",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "A02",
+        "A08",
+        "A09"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-08-R04",
+      "requirement": "Personal dashboard, CRM and reporting",
+      "workstream": "WS-08",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "A02",
+        "A08"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-08-R05",
+      "requirement": "Campaign-approved images, videos, PDFs and Share Center",
+      "workstream": "WS-08",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "A03",
+        "A08",
+        "A09"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-08-R06",
+      "requirement": "Copy-to-email, text, DM and social with consent boundaries",
+      "workstream": "WS-08",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "A03",
+        "A08"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-08-R07",
+      "requirement": "Personal unique links and QR codes",
+      "workstream": "WS-08",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "A03",
+        "A08",
+        "A09"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-08-R08",
+      "requirement": "Click-to-consultation-to-settled-enrollment attribution",
+      "workstream": "WS-08",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "A04",
+        "A08",
+        "A09"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-08-R09",
+      "requirement": "Approved AI outreach review and escalation",
+      "workstream": "WS-08",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "A05"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-08-R10",
+      "requirement": "Bonuses and refer-X-get-Y rules",
+      "workstream": "WS-08",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "A06"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-08-R11",
+      "requirement": "Distinct points, restricted credits and cash commissions",
+      "workstream": "WS-08",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "A06"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-08-R12",
+      "requirement": "Recurring eligibility, holds, reversals and disputes",
+      "workstream": "WS-08",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "A06"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-08-R13",
+      "requirement": "Finance/back-office visibility and payout explanations",
+      "workstream": "WS-08",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "A02",
+        "P02"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-08-R14",
+      "requirement": "RVA single-level activation; optional MLM/genealogy/ranks OFF",
+      "workstream": "WS-08",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "A07"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-08-R15",
+      "requirement": "Affiliate privacy; coach compensation kept separate",
+      "workstream": "WS-08",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "A05",
+        "A07"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-09-R01",
+      "requirement": "Canadian CAD merchant identity and processor certification",
+      "workstream": "WS-09",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "J06"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-09-R02",
+      "requirement": "Separate US corporation/account USD sandbox routing",
+      "workstream": "WS-09",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "J06"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-09-R03",
+      "requirement": "No assumed UK/GBP activation or PriorityMX compatibility",
+      "workstream": "WS-09",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "J06"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-09-R04",
+      "requirement": "Private server credentials and explicit merchant/legal-issuer routing",
+      "workstream": "WS-09",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "J06"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-09-R05",
+      "requirement": "Checkout, secure invoices and hosted payment links",
+      "workstream": "WS-09",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "J07",
+        "E01"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-09-R06",
+      "requirement": "Subscriptions, installments, receipts and transaction records",
+      "workstream": "WS-09",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "J07",
+        "E01"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-09-R07",
+      "requirement": "Webhook signature validation, idempotency and uncertain outcomes",
+      "workstream": "WS-09",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "J08"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-09-R08",
+      "requirement": "Settlement ledger, reconciliation and accounting",
+      "workstream": "WS-09",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "P01",
+        "A09"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-09-R09",
+      "requirement": "Refund, void and chargeback policy/execution boundaries",
+      "workstream": "WS-09",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "P01",
+        "A09"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-09-R10",
+      "requirement": "Affiliate qualifying financial events and recurring eligibility",
+      "workstream": "WS-09",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "A06",
+        "P01",
+        "A08",
+        "A09"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-09-R11",
+      "requirement": "Credits, points and withdrawable cash have distinct rules/ledgers",
+      "workstream": "WS-09",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "A06",
+        "P02",
+        "A08"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-09-R12",
+      "requirement": "Payout provider, payout authorization and duplicate prevention",
+      "workstream": "WS-09",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "P02",
+        "A08"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-09-R13",
+      "requirement": "Tax, legal issuer, currency and financial reporting decisions",
+      "workstream": "WS-09",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "J06",
+        "P02"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-09-R14",
+      "requirement": "Live billing, entitlements, commissions and payouts remain separately gated",
+      "workstream": "WS-09",
+      "ownerIssue": 55,
+      "source": "Issue#55; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "J09",
+        "A07",
+        "E02"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-10-R01",
+      "requirement": "All-ten-workstream completion and no-loss requirements register",
+      "workstream": "WS-10",
+      "ownerIssue": 56,
+      "source": "Issue#56; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "A01",
+        "O01"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-10-R02",
+      "requirement": "Single integration owner and shared-file/migration collision arbitration",
+      "workstream": "WS-10",
+      "ownerIssue": 56,
+      "source": "Issue#56; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "O01"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-10-R03",
+      "requirement": "Owner/Coach/Client/Family/Affiliate negative and journey acceptance",
+      "workstream": "WS-10",
+      "ownerIssue": 56,
+      "source": "Issue#56; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "N01",
+        "N02",
+        "N03",
+        "F02"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-10-R04",
+      "requirement": "Public-lead-to-renewal integrated fictional acceptance",
+      "workstream": "WS-10",
+      "ownerIssue": 56,
+      "source": "Issue#56; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "J01",
+        "J08",
+        "J12"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-10-R05",
+      "requirement": "Optional affiliate-share-to-payout and consented family journeys",
+      "workstream": "WS-10",
+      "ownerIssue": 56,
+      "source": "Issue#56; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "F01",
+        "A08"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-10-R06",
+      "requirement": "Mobile, performance, accessibility and failure-recovery acceptance",
+      "workstream": "WS-10",
+      "ownerIssue": 56,
+      "source": "Issue#56; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "O02",
+        "O03"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-10-R07",
+      "requirement": "CI/test coverage and evidence freshness/limitations",
+      "workstream": "WS-10",
+      "ownerIssue": 56,
+      "source": "Issue#56; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "O01",
+        "O03",
+        "O05",
+        "O08"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-10-R08",
+      "requirement": "Exact-SHA release, artifact/Function preservation and rollback",
+      "workstream": "WS-10",
+      "ownerIssue": 56,
+      "source": "Issue#56; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "S01",
+        "O05",
+        "O06",
+        "E03"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    },
+    {
+      "id": "WS-10-R09",
+      "requirement": "Support readiness, training, backups and disaster recovery",
+      "workstream": "WS-10",
+      "ownerIssue": 56,
+      "source": "Issue#56; existing approved source documents require specialist reconciliation",
+      "status": "UNVERIFIED",
+      "operationalAcceptance": "NOT_CLAIMED",
+      "scopePreserved": true,
+      "caseIds": [
+        "O04",
+        "O06",
+        "O07",
+        "E03",
+        "E04"
+      ],
+      "independentAcceptance": "NOT_RUN"
+    }
+  ],
+  "cases": [
+    {
+      "id": "S01",
+      "requirementIds": [
+        "WS-01-R01",
+        "WS-01-R02",
+        "WS-02-R08",
+        "WS-10-R08"
+      ],
+      "title": "Approved asset and release-overlay identity",
+      "roles": [
+        "Public",
+        "Owner"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Render reviewed artifact at desktop/mobile; compare exact approved logo/portrait hashes and surface-specific tokens.",
+      "expected": "No asset replacement, crop, old Founders underline or global token normalization; untouched file and Function digests equal pinned manifest.",
+      "blockingFindings": [
+        "B01"
+      ],
+      "evidenceOrImplementationPaths": [
+        "founders.html",
+        "css/founders103.css",
+        "css/homepage-mobile-hero.css"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false,
+      "partialEvidence": {
+        "status": "PASS_LOCAL_OBSERVATION_ONLY",
+        "actualHashesMatched": 13,
+        "fictionalValidatorTestsPassed": 16,
+        "independentRerun": true,
+        "completeCaseRun": false,
+        "computedStylesPixelsAccessibilityOrLiveVerified": false
+      }
+    },
+    {
+      "id": "S02",
+      "requirementIds": [
+        "WS-01-R03",
+        "WS-01-R04",
+        "WS-01-R07",
+        "WS-01-R08"
+      ],
+      "title": "Public CTA, accessibility and acquisition",
+      "roles": [
+        "Anonymous"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Traverse every approved homepage/program/contact/assessment CTA with keyboard and mobile touch; inspect analytics consent states.",
+      "expected": "Correct destination and source; no dead route, PII URL, focus trap or analytics before required consent.",
+      "blockingFindings": [
+        "B02"
+      ],
+      "evidenceOrImplementationPaths": [
+        "index.html",
+        "enroll.html",
+        "consult.html"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "S03",
+      "requirementIds": [
+        "WS-01-R05",
+        "WS-01-R06",
+        "WS-03-R09"
+      ],
+      "title": "HHL next-session, reminder and replay boundaries",
+      "roles": [
+        "Guest",
+        "scoped staff"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Use fictional clock before/after session, DST and cancellation; register once, repeat, decline marketing, cancel and inspect only own notice.",
+      "expected": "Only published/open sessions; no duplicate CRM/notice or automatic Client status; manual attendance and approved replay lifecycle preserved.",
+      "blockingFindings": [
+        "B02"
+      ],
+      "evidenceOrImplementationPaths": [
+        "docs/HEALTH_HOPE_LIVE_CONTROLLED_ACCEPTANCE_2026-10-21.md",
+        "netlify/functions/health-hope-live.mjs"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "J01",
+      "requirementIds": [
+        "WS-03-R01",
+        "WS-03-R02",
+        "WS-10-R04"
+      ],
+      "title": "Public lead to CRM identity",
+      "roles": [
+        "Anonymous",
+        "CRM staff"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Submit fictional lead twice with same request; use changed email/phone collisions and two concurrent same-event submits.",
+      "expected": "One canonical contact and source history; ambiguous collision quarantined; client identity/status never overwritten by public input.",
+      "blockingFindings": [
+        "B02"
+      ],
+      "evidenceOrImplementationPaths": [
+        "portal/portal-people.js",
+        "tests/backend/production-client-lifecycle.test.cjs"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "J02",
+      "requirementIds": [
+        "WS-03-R03",
+        "WS-04-R03"
+      ],
+      "title": "Assessment resume and immutable source",
+      "roles": [
+        "Client A"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Save invented unknown/declined/zero/unit values; exchange newest resume token; complete; retry older or consumed token.",
+      "expected": "Unknown is distinct from zero; no replay/edit after completion; source version/pins retained; no confidential fields in logs.",
+      "blockingFindings": [
+        "B03"
+      ],
+      "evidenceOrImplementationPaths": [
+        "tests/backend/vitality-reliability.test.cjs",
+        "js/vitality55.js"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "J03",
+      "requirementIds": [
+        "WS-03-R04",
+        "WS-05-R03",
+        "WS-05-R05"
+      ],
+      "title": "Consultation, coach availability and capacity",
+      "roles": [
+        "Client A",
+        "Coach A",
+        "Owner"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Book approved slot then race same final slot; change IANA timezone, cancel, rebook and use stale revision.",
+      "expected": "One allocation; explicit times; cancelled slot released under contract; unauthorized coach/contact and stale update denied.",
+      "blockingFindings": [
+        "B02"
+      ],
+      "evidenceOrImplementationPaths": [
+        "portal/portal-team-calendar.js",
+        "portal/portal-coaching.js"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "J04",
+      "requirementIds": [
+        "WS-03-R05",
+        "WS-02-R05"
+      ],
+      "title": "Exact agreement and independent adult signature",
+      "roles": [
+        "Client A",
+        "adult B"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Prepare exact approved template/version/plan; sign expected hash twice; attempt changed hash, other adult, revoked invitation and browser acceptance insert.",
+      "expected": "Immutable version and actual actor; one acceptance; second adult signs personally; unrelated/forged/stale writes denied.",
+      "blockingFindings": [
+        "B04"
+      ],
+      "evidenceOrImplementationPaths": [
+        "supabase/migrations/20261007224150_production_client_lifecycle_v1.sql",
+        "tests/backend/production-client-lifecycle.test.cjs"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "J05",
+      "requirementIds": [
+        "WS-03-R06",
+        "WS-05-R04"
+      ],
+      "title": "Verified account claim and onboarding hold",
+      "roles": [
+        "Client A",
+        "unrelated Client B"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Create own fictional account, confirm email, claim intended invitation, then retry with wrong/unverified account and expired token.",
+      "expected": "Only intended verified identity binds; neutral recovery; unpaid/unsigned access remains onboarding only; no privileged auto-confirm.",
+      "blockingFindings": [
+        "B04"
+      ],
+      "evidenceOrImplementationPaths": [
+        "member/onboarding/onboarding.js",
+        "supabase/functions/member-account/index.ts"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "J06",
+      "requirementIds": [
+        "WS-09-R01",
+        "WS-09-R02",
+        "WS-09-R03",
+        "WS-09-R04",
+        "WS-09-R13"
+      ],
+      "title": "Merchant, issuer, currency and environment routing",
+      "roles": [
+        "Finance Owner"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Use fake CA/CAD route; deny disabled CAD, mismatched legal issuer, US/USD route, unsupported GB/GBP and sandbox/live credential crossing.",
+      "expected": "Server chooses exact approved route/minor-unit currency; no fallback, client amount or assumed provider compatibility; no secrets returned.",
+      "blockingFindings": [
+        "B04"
+      ],
+      "evidenceOrImplementationPaths": [
+        "netlify/functions/_shared/authorize-net.mjs",
+        "supabase/migrations/20261010121000_payments_v1.sql"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "J07",
+      "requirementIds": [
+        "WS-09-R05",
+        "WS-09-R06"
+      ],
+      "title": "Hosted checkout, installments and receipts",
+      "roles": [
+        "Client A"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Run fake hosted checkout success/decline, split amount with remainder, month-end recurring date, receipt delivery failure.",
+      "expected": "Card entry remains provider-hosted; exact cents/schedule; decline unpaid; no PAN/CVV; one receipt with safe retry.",
+      "blockingFindings": [
+        "B04"
+      ],
+      "evidenceOrImplementationPaths": [
+        "tests/payments-v1.test.mjs",
+        "netlify/functions/_shared/payment-domain.mjs"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "J08",
+      "requirementIds": [
+        "WS-09-R07",
+        "WS-10-R04"
+      ],
+      "title": "Verified webhook and duplicate/uncertain payment",
+      "roles": [
+        "Provider adapter",
+        "server"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Submit raw-byte valid/invalid signatures; replay event, race 20 consumers, reuse key with changed payload; timeout after simulated provider acceptance.",
+      "expected": "Bad signature has no inbox write; provider readback owns amount/status; one transaction; uncertainty retained for review with no blind second charge.",
+      "blockingFindings": [
+        "B04"
+      ],
+      "evidenceOrImplementationPaths": [
+        "netlify/functions/_shared/payments.mjs",
+        "tests/backend/payments-v1.test.cjs"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "J09",
+      "requirementIds": [
+        "WS-03-R07",
+        "WS-05-R04",
+        "WS-09-R14"
+      ],
+      "title": "Payment-to-enrollment atomic contract",
+      "roles": [
+        "Finance server",
+        "Client A"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Consume verified fictional payment with exact enrollment/contact/plan/entity/currency; replay, refund and mismatch; fail between posting and access reconciliation.",
+      "expected": "One correctly bound posting; agreement/identity/payment all required; no broad hold removal; no partial or duplicate entitlement activation.",
+      "blockingFindings": [
+        "B04"
+      ],
+      "evidenceOrImplementationPaths": [
+        "supabase/migrations/20261010121000_payments_v1.sql",
+        "supabase/migrations/20261007224150_production_client_lifecycle_v1.sql"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "J10",
+      "requirementIds": [
+        "WS-05-R01",
+        "WS-05-R03",
+        "WS-05-R07"
+      ],
+      "title": "Reachable member and coach operations",
+      "roles": [
+        "Client A",
+        "assigned Coach A"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Start from normal sign-in/invitation and navigate dashboard; assign coach; use session/task/message from visible route rather than evaluating detached script.",
+      "expected": "Client sees own operational dashboard and assigned coach; coach sees authorized assigned subset; script/allowlist presence alone cannot pass.",
+      "blockingFindings": [
+        "B05"
+      ],
+      "evidenceOrImplementationPaths": [
+        "member/index.html",
+        "member/member110.js",
+        "portal/portal-coaching.js"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "J11",
+      "requirementIds": [
+        "WS-05-R02",
+        "WS-05-R06",
+        "WS-05-R08",
+        "WS-05-R09",
+        "WS-03-R10"
+      ],
+      "title": "49-day program, progress and renewal",
+      "roles": [
+        "Client A",
+        "Coach A",
+        "Owner"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Apply recovered approved day/stage specification; assign/check off lessons/habits; advance clock across renewal, pause, failed renewal and resumption.",
+      "expected": "Exact program cadence/content; no guessed 49-day curriculum; renewals preserve history and consent, suspend only approved scope, no duplicate tasks.",
+      "blockingFindings": [
+        "B02"
+      ],
+      "evidenceOrImplementationPaths": [
+        "member/member110.js",
+        "portal/portal-coaching.js",
+        "docs/RVA_WORKSTREAM_REGISTER.md"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "J12",
+      "requirementIds": [
+        "WS-10-R04"
+      ],
+      "title": "Whole public-lead-to-renewal acceptance",
+      "roles": [
+        "All allowed journey roles"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Run S02 \u2192 J01 \u2192 J02 \u2192 J03 \u2192 J04 \u2192 J05 \u2192 J06 \u2192 J07 \u2192 J08 \u2192 J09 \u2192 J10 \u2192 J11 with one correlated fictional identity.",
+      "expected": "One connected journey and audit lineage across UI/API/SQL/outbox; failure branches recover without manual table edits, hidden route or paid bypass.",
+      "blockingFindings": [
+        "B02",
+        "B04",
+        "B05"
+      ],
+      "evidenceOrImplementationPaths": [
+        "docs/RVA_MASTER_ORCHESTRATION.md"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "N01",
+      "requirementIds": [
+        "WS-02-R01",
+        "WS-02-R02",
+        "WS-02-R03",
+        "WS-02-R04",
+        "WS-10-R03"
+      ],
+      "title": "Owner permissions are explicit, revocable and server-owned",
+      "roles": [
+        "Owner",
+        "Admin"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Remove effective permission/inactivate session in disposable fixtures; replay old JWT, browser permission cache and direct RPC.",
+      "expected": "Revoked/inactive actor denied server-side even with old UI; Owner label alone cannot grant protected founder or finance scope.",
+      "blockingFindings": [
+        "B03"
+      ],
+      "evidenceOrImplementationPaths": [
+        "portal/portal.js",
+        "portal/portal-permissions.js",
+        "tests/backend/production-client-lifecycle.test.cjs"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "N02",
+      "requirementIds": [
+        "WS-02-R03",
+        "WS-02-R04",
+        "WS-05-R03",
+        "WS-05-R07",
+        "WS-10-R03"
+      ],
+      "title": "Assigned coach versus unrelated/private contact",
+      "roles": [
+        "Coach A",
+        "Coach B"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Read/update own permitted assigned synthetic contact; change contact ID to unassigned/sibling/other organization; call underlying RPC/view/storage directly.",
+      "expected": "Allowed fields only; wrong assignment/permission/contact denied on every surface including exports/notes; no role escalation to finance or Owner.",
+      "blockingFindings": [
+        "B03"
+      ],
+      "evidenceOrImplementationPaths": [
+        "portal/portal-coaching.js",
+        "supabase/migrations/20261007224150_production_client_lifecycle_v1.sql"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "N03",
+      "requirementIds": [
+        "WS-02-R03",
+        "WS-02-R04",
+        "WS-10-R03"
+      ],
+      "title": "Cross-client and cross-organization isolation",
+      "roles": [
+        "Client A",
+        "Client B",
+        "organization B"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Swap IDs in API/SQL/URL/storage, list/count views, messages and subscriptions; use mismatched organization envelope.",
+      "expected": "No records, aggregates, signed URLs or existence inference across identities/organizations; if tenant field is absent, block multi-org claim pending contract.",
+      "blockingFindings": [
+        "B03"
+      ],
+      "evidenceOrImplementationPaths": [
+        "member/member110.js",
+        "supabase/migrations/20261007224150_production_client_lifecycle_v1.sql"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "N04",
+      "requirementIds": [
+        "WS-02-R01",
+        "WS-02-R02",
+        "WS-02-R04"
+      ],
+      "title": "No self-granted role or direct private access",
+      "roles": [
+        "Anonymous",
+        "Client",
+        "service adapter"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Alter user-editable metadata role, call public definer/helper RPCs, attempt direct private DML, storage upsert and service browser request.",
+      "expected": "Authoritative permissions and explicit ACL/RLS apply; service credential never browser-side; views checked for invoker/explicit deny.",
+      "blockingFindings": [
+        "B03"
+      ],
+      "evidenceOrImplementationPaths": [
+        "SECURITY_MODEL.md",
+        "portal/portal-permissions.js"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "N05",
+      "requirementIds": [
+        "WS-02-R02",
+        "WS-02-R06",
+        "WS-05-R10"
+      ],
+      "title": "Refresh, logout, account-switch and late response",
+      "roles": [
+        "Client A then B",
+        "staff"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Delay A responses, refresh token during task, sign out, switch to B, restore foreground and second tab.",
+      "expected": "Private DOM/RAM clears promptly; late A response ignored; renewal retains legitimate task without bypass; no private persistence or stale authorizations.",
+      "blockingFindings": [
+        "B03"
+      ],
+      "evidenceOrImplementationPaths": [
+        "portal/portal.js",
+        "tests/staff-session-runtime.cjs",
+        "tests/production-client-lifecycle.cjs"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "N06",
+      "requirementIds": [
+        "WS-02-R03",
+        "WS-02-R04",
+        "WS-05-R04"
+      ],
+      "title": "Unpaid, suspended and cancelled paid-access denial",
+      "roles": [
+        "Client A"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Attempt paid library/session/assignment direct API as unpaid, partially paid, failed renewal, paused/cancelled; forge amount zero or manual paid flag.",
+      "expected": "Server denies by approved entitlement state; onboarding remains accessible as designed; no synthetic/waived payment production bypass.",
+      "blockingFindings": [
+        "B04"
+      ],
+      "evidenceOrImplementationPaths": [
+        "supabase/migrations/20261007224150_production_client_lifecycle_v1.sql"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "N07",
+      "requirementIds": [
+        "WS-02-R05",
+        "WS-02-R06"
+      ],
+      "title": "Privacy, XSS, error and credential containment",
+      "roles": [
+        "All roles"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Inject script/HTML in fictional server error, campaign, name and message; inspect URLs/logs/exports/analytics/browser storage.",
+      "expected": "Untrusted text not executed; tokens and health answers absent; error neutral; CSP/origin and output encoding independently verified.",
+      "blockingFindings": [
+        "B03",
+        "B10"
+      ],
+      "evidenceOrImplementationPaths": [
+        "portal/portal-referrals.js",
+        "SECURITY_MODEL.md"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "N08",
+      "requirementIds": [
+        "WS-02-R06",
+        "WS-03-R08",
+        "WS-03-R09"
+      ],
+      "title": "Permissioned messaging and notification lease recovery",
+      "roles": [
+        "Client A",
+        "Coach A",
+        "delivery adapter"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Queue operational notice and optional marketing; race lease workers; timeout after fake acceptance; withdraw consent; retry before/after key window.",
+      "expected": "One allowed recipient/message; consent types distinct; uncertainty quarantined; no blind resend; redacted jobs retain adequate audit.",
+      "blockingFindings": [
+        "B07"
+      ],
+      "evidenceOrImplementationPaths": [
+        "supabase/functions/client-lifecycle-delivery/index.ts",
+        "netlify/functions/_shared/health-hope-live.mjs"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "R01",
+      "requirementIds": [
+        "WS-04-R01",
+        "WS-04-R02",
+        "WS-04-R03",
+        "WS-04-R07"
+      ],
+      "title": "Methodology, voice, unknowns and unsupported scores",
+      "roles": [
+        "Fictional founder fixtures"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Compare reviewed pinned MK10/12 Drivers and founder rules against synthetic report; unknown quantities, conflict and explicit units retained.",
+      "expected": "No invented source facts, numerical conversions, medical/dose decisions or source doctrine; prior saved versions unchanged.",
+      "blockingFindings": [
+        "B02",
+        "B03"
+      ],
+      "evidenceOrImplementationPaths": [
+        "docs/RVA_MASTER_ORCHESTRATION.md",
+        "js/vitality-roadmap-view.js"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "R02",
+      "requirementIds": [
+        "WS-04-R04",
+        "WS-04-R05",
+        "WS-04-R06"
+      ],
+      "title": "Immutable revision and single-use processing guards",
+      "roles": [
+        "Fictional Owner/founders only"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "In later disposable approved fixture, test wrong source/worker/hash/session, expired/revoked authority, concurrent claim, exact-version feedback and read-only saved review.",
+      "expected": "One authorized synthetic attempt; wrong pins fail; read never generates; exact revision review independent; no existing private authority or client workflow touched.",
+      "blockingFindings": [
+        "B03"
+      ],
+      "evidenceOrImplementationPaths": [
+        "SECURITY_MODEL.md",
+        "docs/RVA_MASTER_ORCHESTRATION.md"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "R03",
+      "requirementIds": [
+        "WS-04-R08",
+        "WS-04-R09",
+        "WS-04-R10"
+      ],
+      "title": "V3 admission and Coach Companion retrieval",
+      "roles": [
+        "Fictional coach/founder"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Use invented approved/unapproved/conflicting sources and attributed speakers; retrieve cited response; unsupported question escalates.",
+      "expected": "Unapproved intake never promoted to methodology; no actual private source ingestion, 40-day replacement, autonomous health advice or founder-policy invention. Adaptive intake, pre-session coach brief and client-result release need separately pinned approved field/source/actor gates; a collection prompt is not approval.",
+      "blockingFindings": [
+        "B02",
+        "B03"
+      ],
+      "evidenceOrImplementationPaths": [
+        "docs/RVA_WORKSTREAM_REGISTER.md"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "F01",
+      "requirementIds": [
+        "WS-06-R01",
+        "WS-06-R02",
+        "WS-06-R03",
+        "WS-06-R04",
+        "WS-06-R07",
+        "WS-10-R05"
+      ],
+      "title": "Adult Family Hub consented sharing",
+      "roles": [
+        "Adult A",
+        "adult B",
+        "Family manager"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Invite adult B through approved relationship flow; separately grant goal/calendar/meal permissions; withdraw one permission and remove membership.",
+      "expected": "Only consented shared fields; membership/signature never implies private-health/notes access; revocation clears caches and future reads.",
+      "blockingFindings": [
+        "B06"
+      ],
+      "evidenceOrImplementationPaths": [
+        "portal/portal-family-requests.js",
+        "member/member110.js"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "F02",
+      "requirementIds": [
+        "WS-06-R05",
+        "WS-06-R06",
+        "WS-06-R08",
+        "WS-10-R03"
+      ],
+      "title": "Guardian/minor and cross-household deny",
+      "roles": [
+        "Guardian fixture",
+        "dependent",
+        "unrelated adult"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "After approved policy exists, test verified guardian scope/age transition/withdrawal; swap household/member IDs and forge relation request.",
+      "expected": "No assumed guardian right; wrong household denied; unapproved minors path held; history and dependent privacy retained.",
+      "blockingFindings": [
+        "B06"
+      ],
+      "evidenceOrImplementationPaths": [
+        "portal/portal-family-requests.js",
+        "member/member110.js"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "F03",
+      "requirementIds": [
+        "WS-06-R08"
+      ],
+      "title": "Family request concurrency and review",
+      "roles": [
+        "Adult A",
+        "scoped reviewer"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Create/update/remove request twice; race two reviewers with expected revision; deny requester executing privileged apply directly.",
+      "expected": "One reviewed application, canonical contact/member reused, stale review conflict; auditable status/reasons; no identity duplication.",
+      "blockingFindings": [
+        "B06"
+      ],
+      "evidenceOrImplementationPaths": [
+        "portal/portal-family-requests.js"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "C01",
+      "requirementIds": [
+        "WS-07-R01",
+        "WS-07-R02",
+        "WS-07-R03",
+        "WS-07-R07"
+      ],
+      "title": "Approved reusable content and provenance",
+      "roles": [
+        "Content author",
+        "Coach",
+        "Client"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Create draft food/recipe/workout/course; approve/publish from exact source; alter imported-global provenance and unknown nutrition fields.",
+      "expected": "Approved author/reviewer only; exact units and unknowns; no fabricated curriculum; imported provenance protected.",
+      "blockingFindings": [
+        "B02",
+        "B03"
+      ],
+      "evidenceOrImplementationPaths": [
+        "portal/portal-learning.js",
+        "supabase/migrations/20261006164158_production_durable_content.sql"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "C02",
+      "requirementIds": [
+        "WS-07-R04",
+        "WS-07-R05",
+        "WS-07-R06",
+        "WS-07-R09",
+        "WS-05-R06",
+        "WS-05-R08"
+      ],
+      "title": "Private assignments, diary and progress",
+      "roles": [
+        "Client A",
+        "Coach A"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Assign approved lesson/activity; record invented completion/diary; coach reviews own authorized scope; override has explicit contract/reason.",
+      "expected": "One assignment/completion; no cross-client diary or nutrition override; missing values not zero; plots reflect source period and units.",
+      "blockingFindings": [
+        "B03",
+        "B05"
+      ],
+      "evidenceOrImplementationPaths": [
+        "member/member110.js",
+        "portal/portal-wellness.js"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "C03",
+      "requirementIds": [
+        "WS-07-R08",
+        "WS-02-R06"
+      ],
+      "title": "One-way reusable content sync",
+      "roles": [
+        "Owner author",
+        "fixture target"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Export approved reusable content to fake beta target; include prohibited client/household/diary/creator fields; attempt reverse sync and partial failure.",
+      "expected": "Whitelist only, no operational/private identity data or production secrets; atomic idempotent receive; reverse direction denied.",
+      "blockingFindings": [
+        "B03"
+      ],
+      "evidenceOrImplementationPaths": [
+        "netlify/functions/reusable-content-sync.mjs",
+        "supabase/migrations/20261007073533_reusable_content_sync_export.sql"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "A01",
+      "requirementIds": [
+        "WS-08-R01",
+        "WS-08-R02",
+        "WS-10-R01"
+      ],
+      "title": "Controlling127-section trace and received Phase0 disposition",
+      "roles": [
+        "Owner",
+        "requirements reviewer"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Retain received Phase0 draft and independently verified hashes; recover exact controlling original127/version/hash and map each numbered section without replacing its numbering with blueprint or Option3 trace IDs.",
+      "expected": "Phase0 is received/proposed, not approved; until controlling handoff is recovered all127 original rows remain SOURCE_MISSING with blank titles/content. Blueprint22sections and Option3/checklist127rows are separate indexes.",
+      "blockingFindings": [
+        "B02"
+      ],
+      "evidenceOrImplementationPaths": [
+        "../academy-affiliate-foundation/docs/orchestration/issue-55/127_SECTION_TRACE.csv"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "A02",
+      "requirementIds": [
+        "WS-08-R03",
+        "WS-08-R04",
+        "WS-08-R13"
+      ],
+      "title": "Affiliate application, agreement and own dashboard",
+      "roles": [
+        "Affiliate A",
+        "reviewer"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Approve/reject fictional application, accept exact affiliate terms, access own dashboard; revoke and try affiliate B IDs.",
+      "expected": "Explicit affiliate eligibility separate from client or coach; scoped own statuses and typed balances; no privileged Mark Issued claim as provider proof.",
+      "blockingFindings": [
+        "B08"
+      ],
+      "evidenceOrImplementationPaths": [
+        "portal/portal-referrals.js"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "A03",
+      "requirementIds": [
+        "WS-08-R05",
+        "WS-08-R06",
+        "WS-08-R07"
+      ],
+      "title": "Share Center, link/QR and channel consent",
+      "roles": [
+        "Affiliate A"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Select approved campaign revision; copy email/SMS/DM/social, download media, decode own QR; revoke campaign, change target/code or consent.",
+      "expected": "Correct approved copy/disclosure; no automatic send; no open redirect/PII URL; expired campaign suppressed; own attribution binding.",
+      "blockingFindings": [
+        "B08"
+      ],
+      "evidenceOrImplementationPaths": [
+        "../academy-affiliate-foundation/docs/orchestration/issue-55/REPORT.md"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "A04",
+      "requirementIds": [
+        "WS-08-R08",
+        "WS-03-R02"
+      ],
+      "title": "Referral click to settled-enrollment attribution",
+      "roles": [
+        "Affiliate A",
+        "CRM",
+        "finance adapter"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Ingest duplicate clicks/bookings/lead merge; resolve competing attribution under approved model; consume fake settled exact enrollment.",
+      "expected": "Booking/contact status alone earns nothing; consented minimal referral stage; original source/appeal history preserved; no duplicate qualification.",
+      "blockingFindings": [
+        "B08"
+      ],
+      "evidenceOrImplementationPaths": [
+        "portal/portal-people.js",
+        "supabase/migrations/20261010121000_payments_v1.sql"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "A05",
+      "requirementIds": [
+        "WS-08-R09",
+        "WS-08-R15",
+        "WS-02-R06"
+      ],
+      "title": "Affiliate privacy and approved AI review",
+      "roles": [
+        "Affiliate A",
+        "coach"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Attempt assessment/notes/health in lead export, dashboard, AI prompt and telemetry; generate outreach only from approved fictional corpus.",
+      "expected": "Health never exposed or inferred through status/details; review required before use; coach compensation remains separately authorized.",
+      "blockingFindings": [
+        "B03",
+        "B08"
+      ],
+      "evidenceOrImplementationPaths": [
+        "../academy-affiliate-foundation/docs/orchestration/issue-55/REPORT.md"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "A06",
+      "requirementIds": [
+        "WS-08-R10",
+        "WS-08-R11",
+        "WS-08-R12",
+        "WS-09-R10",
+        "WS-09-R11"
+      ],
+      "title": "Typed rewards, recurring rules and conservation",
+      "roles": [
+        "Affiliate A",
+        "reward adapter"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Apply approved effective-dated rule to fake settled periods; concurrent replay, threshold bonus, refund and simultaneous credit redeem.",
+      "expected": "Separate cash/credit/point units/ledgers; one component per qualifying event/period; no overspend, retroactive rewrite or cross-unit withdrawal.",
+      "blockingFindings": [
+        "B08"
+      ],
+      "evidenceOrImplementationPaths": [
+        "../academy-affiliate-foundation/docs/orchestration/issue-55/REPORT.md"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "A07",
+      "requirementIds": [
+        "WS-08-R14",
+        "WS-08-R15",
+        "WS-09-R14"
+      ],
+      "title": "Single-level and separate coach compensation",
+      "roles": [
+        "Affiliate",
+        "Coach",
+        "Owner"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Submit genealogy/rank/upline configuration or forged coach/affiliate conversion to endpoint; inspect visible balances.",
+      "expected": "MLM/genealogy/ranks remain OFF; no recursive earnings or compensation merge; financial activation is separately gated.",
+      "blockingFindings": [
+        "B08"
+      ],
+      "evidenceOrImplementationPaths": [
+        "docs/RVA_MASTER_ORCHESTRATION.md"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "P01",
+      "requirementIds": [
+        "WS-09-R08",
+        "WS-09-R09",
+        "WS-09-R10"
+      ],
+      "title": "Settlement, refund, dispute and reconciliation",
+      "roles": [
+        "Finance reviewer",
+        "fake provider"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Compare invoice/provider/settlement/ledger by legal entity/currency; partial/full refund, void, chargeback, out-of-order events and missing transaction.",
+      "expected": "Append-only linked reversals/corrections; balanced postings; discrepancies held; no revived eligibility or silent mixed-currency sums.",
+      "blockingFindings": [
+        "B08"
+      ],
+      "evidenceOrImplementationPaths": [
+        "../academy-affiliate-foundation/docs/orchestration/issue-55/REPORT.md",
+        "tests/backend/payments-v1.test.cjs"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "P02",
+      "requirementIds": [
+        "WS-09-R11",
+        "WS-09-R12",
+        "WS-09-R13",
+        "WS-08-R13"
+      ],
+      "title": "Payout reserve, timeout and duplicate prevention",
+      "roles": [
+        "Affiliate A",
+        "finance reviewer",
+        "fake provider"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Request same eligible cash twice/concurrently; simulate accepted transfer then timeout; replay signed callbacks; attempt credit/point/held payout.",
+      "expected": "Atomic reserve once; uncertainty retains reservation and prevents retry; confirmed status reconciled; no real transfer or bank/tax identifiers.",
+      "blockingFindings": [
+        "B08"
+      ],
+      "evidenceOrImplementationPaths": [
+        "../academy-affiliate-foundation/docs/orchestration/issue-55/REPORT.md"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "A08",
+      "requirementIds": [
+        "WS-10-R05",
+        "WS-08-R03",
+        "WS-08-R04",
+        "WS-08-R05",
+        "WS-08-R06",
+        "WS-08-R07",
+        "WS-08-R08",
+        "WS-09-R10",
+        "WS-09-R11",
+        "WS-09-R12"
+      ],
+      "title": "Integrated optional affiliate-share-to-payout journey",
+      "roles": [
+        "Affiliate A",
+        "lead B",
+        "finance fixture"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Run A02\u2192A03\u2192J01\u2192J03\u2192J04\u2192J05\u2192J08\u2192J09\u2192A04\u2192A06\u2192P01\u2192P02 in isolated fake-provider environment.",
+      "expected": "Correlated approved single-level qualification and payout proof with all holds/negatives; no live financial/outreach call; held noncash first slice cannot certify later cash payout.",
+      "blockingFindings": [
+        "B04",
+        "B08"
+      ],
+      "evidenceOrImplementationPaths": [
+        "docs/RVA_MASTER_ORCHESTRATION.md"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "O01",
+      "requirementIds": [
+        "WS-10-R01",
+        "WS-10-R02",
+        "WS-10-R07"
+      ],
+      "title": "Requirements, dispatch and ownership no-loss gate",
+      "roles": [
+        "Master",
+        "independent QA"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Validate exact stable IDs/text/source gaps/127 trace plus actual dispatched task/worktree; challenge renamed IDs, arbitrary evidence and overlapping ownership.",
+      "expected": "All ten scopes and exact historical gaps retained; actual dispatch independently referenced; structural pass is not original-source completeness.",
+      "blockingFindings": [
+        "B09"
+      ],
+      "evidenceOrImplementationPaths": [
+        "../academy-master-coordination/scripts/rva-master-coordination.cjs",
+        "../academy-master-coordination/tests/rva-master-coordination.cjs"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "O02",
+      "requirementIds": [
+        "WS-10-R06",
+        "WS-01-R03",
+        "WS-01-R08",
+        "WS-05-R10"
+      ],
+      "title": "Responsive, accessibility and mobile account journeys",
+      "roles": [
+        "Each role on Chromium/WebKit"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Run normal success/failure/logout at320/390/600/601/768/1024/1100/1101/1440px; keyboard/screen-reader,200%zoom,slow/offline/back/foreground and duplicate touch.",
+      "expected": "No overflow/lost action/focus/hidden error; natural portrait and approved breakpoints; no stale private screen after resume; PWA/app claims require own acceptance.",
+      "blockingFindings": [
+        "B07"
+      ],
+      "evidenceOrImplementationPaths": [
+        "css/homepage-mobile-hero.css",
+        "member/onboarding/onboarding.css",
+        "portal/portal.css"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "O03",
+      "requirementIds": [
+        "WS-10-R06",
+        "WS-10-R07"
+      ],
+      "title": "Performance, scale and graceful failure",
+      "roles": [
+        "Anonymous",
+        "each authenticated role"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "With approved synthetic scale/load profile, measure p50/p95/p99 route/API/SQL and Web Vitals; fail provider, saturate workers and inspect indexed plans/joins.",
+      "expected": "Owner-approved budgets and error/SLO limits met; bounded retries/backpressure; no row leak, join amplification or sensitive logs; absent budgets cannot be called passed.",
+      "blockingFindings": [
+        "B07"
+      ],
+      "evidenceOrImplementationPaths": [
+        "netlify/functions/_shared/payments.mjs",
+        "package.json"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "O04",
+      "requirementIds": [
+        "WS-02-R07",
+        "WS-10-R09"
+      ],
+      "title": "Backup and disaster-recovery restore drill",
+      "roles": [
+        "Isolated recovery operator",
+        "QA"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Restore synthetic database/object artifacts into isolated target; reconcile code/schema/provider journals, expired/erased records, sessions and worker holds.",
+      "expected": "Documented approved RPO/RTO met with measured timing/checksums; erasure tombstones reapplied; no old grants/charges/notices resurrect; no production restore.",
+      "blockingFindings": [
+        "B07"
+      ],
+      "evidenceOrImplementationPaths": [
+        "docs/HEALTH_HOPE_LIVE_ACTIVATION_READINESS_2026-10-20.md"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "O05",
+      "requirementIds": [
+        "WS-10-R07",
+        "WS-10-R08"
+      ],
+      "title": "Exact release and retained artifact regression",
+      "roles": [
+        "Release integrator",
+        "independent reviewer"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Pin fresh canonical manifest, commit/diff/migration/config/archive hashes; dry-run candidate overlay and compare all459 reference paths/13Functions or reviewed successor.",
+      "expected": "Only approved paths change; exact dependencies/installed migration ledger and reversible plan checked; stale source/full old-worktree rebuild rejected; no deploy from this task.",
+      "blockingFindings": [
+        "B01",
+        "B03"
+      ],
+      "evidenceOrImplementationPaths": [
+        "../deployment-evidence/2026-11-01-master-coordination/CANONICAL_READ_ONLY.json",
+        "scripts/build-production-vitality.cjs"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "O06",
+      "requirementIds": [
+        "WS-10-R08",
+        "WS-10-R09"
+      ],
+      "title": "Rollback and uncertain-outcome tabletop",
+      "roles": [
+        "Integrator",
+        "finance",
+        "privacy",
+        "support"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Exercise RB-DOC/RB-STATIC/RB-APP/RB-DB/RB-FIN/RB-DR decision paths on fictional evidence and deliberately unknown provider outcome.",
+      "expected": "Exact chosen plan preserves audit/financial/erasure history and current protected lane; no generic reset, old DB restore or payment retry; safe hold is available.",
+      "blockingFindings": [
+        "B07"
+      ],
+      "evidenceOrImplementationPaths": [
+        "docs/HEALTH_HOPE_LIVE_ACTIVATION_READINESS_2026-10-20.md"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "O07",
+      "requirementIds": [
+        "WS-10-R09",
+        "WS-03-R08",
+        "WS-03-R10"
+      ],
+      "title": "Support, training and operational handover",
+      "roles": [
+        "Owner",
+        "Coach",
+        "support",
+        "on-call backup"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Run fictional invitation failure, disputed charge, consent withdrawal, unauthorized access, unavailable coach and outage tabletop from support entrypoint.",
+      "expected": "Named primary/backup/escalation, monitored alerts, redacted correlation IDs, incident/erasure/finance SOP, training signoff and service hours; support cannot impersonate or bypass holds.",
+      "blockingFindings": [
+        "B07"
+      ],
+      "evidenceOrImplementationPaths": [
+        "member/index.html",
+        "docs/RVA_MASTER_ORCHESTRATION.md"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "O08",
+      "requirementIds": [
+        "WS-10-R07",
+        "WS-02-R05"
+      ],
+      "title": "CI evidence quality and reproducibility",
+      "roles": [
+        "Independent QA"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Pin exact input SHA/test runner/dependencies; run actual handlers against isolated SQL, UI through normal routes, negative roles and concurrency; record adapters and skips.",
+      "expected": "CI triggers include owned source/API/migrations; artifacts name environment/time/hash/fixtures/result; unit/static/mock pass never promoted to hosted acceptance.",
+      "blockingFindings": [
+        "B07"
+      ],
+      "evidenceOrImplementationPaths": [
+        "package.json",
+        ".github/workflows/assessment-regression.yml",
+        ".github/workflows/enrollment82.yml"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false
+    },
+    {
+      "id": "A09",
+      "requirementIds": [
+        "WS-08-R03",
+        "WS-08-R05",
+        "WS-08-R07",
+        "WS-08-R08",
+        "WS-09-R08",
+        "WS-09-R09",
+        "WS-09-R10"
+      ],
+      "title": "Source-aligned first affiliate commission and reversal acceptance",
+      "roles": [
+        "Affiliate A",
+        "finance fixture"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "After source gates/contracts are cleared, run fictional application/agreement\u2192approved asset/link/QR\u2192consented minimal milestone\u2192verified eligible sale\u2192single-level explainable commission/obligation\u2192balanced journal\u2192refund/reversal/readback.",
+      "expected": "One immutable qualifying obligation and linked compensating reversal; a held credit demonstration alone cannot pass this stage. Replay100times/concurrently remains exactly once; no provider, cash transfer or live setup.",
+      "blockingFindings": [
+        "B02",
+        "B08"
+      ],
+      "evidenceOrImplementationPaths": [
+        "../academy-affiliate-foundation/docs/orchestration/issue-55/SOURCE_PACKET_ADDENDUM.md"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false,
+      "introducedByPhase": "owner_source_packet_review"
+    },
+    {
+      "id": "E01",
+      "requirementIds": [
+        "WS-03-R06",
+        "WS-03-R07",
+        "WS-05-R04",
+        "WS-05-R05",
+        "WS-05-R09",
+        "WS-09-R05",
+        "WS-09-R06"
+      ],
+      "title": "Self-guided and optional on-demand membership progression",
+      "roles": [
+        "Client A",
+        "Coach A"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Using only approved fictional offer/policy snapshots, traverse self-guided entitlement, optional on-demand booking/payment stub, upgrade/downgrade, cancellation and renewal.",
+      "expected": "One existing identity; exact server-owned offer/usage/access rules; no assumed products, prices, seed/provisioning or extra access; failure preserves prior approved state.",
+      "blockingFindings": [
+        "B02",
+        "B04",
+        "B05"
+      ],
+      "evidenceOrImplementationPaths": [
+        "../academy-client-coach-family/docs/orchestration/issue-54/SOURCE_PACKET_ADDENDUM.md"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false,
+      "introducedByPhase": "owner_source_packet_review"
+    },
+    {
+      "id": "E02",
+      "requirementIds": [
+        "WS-05-R04",
+        "WS-05-R05",
+        "WS-05-R09",
+        "WS-09-R14"
+      ],
+      "title": "Coaching allowance modes and usage accounting",
+      "roles": [
+        "Client A",
+        "Coach A",
+        "scoped reviewer"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Build approved session/minute/combined/unlimited/custom truth table; race booking/complete/cancel; test reset,expiry,rollover,bonus,complimentary,freeze,upgrade,no-show and overage with fixed clock.",
+      "expected": "Each chargeable interaction consumes approved allowance once; no overspend/double-use or implied unlimited right; immutable correction/audit; absent selected policy blocks positive expectation.",
+      "blockingFindings": [
+        "B02",
+        "B04"
+      ],
+      "evidenceOrImplementationPaths": [
+        "../academy-client-coach-family/docs/orchestration/issue-54/SOURCE_REQUIREMENTS_TRACE.csv"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false,
+      "introducedByPhase": "owner_source_packet_review"
+    },
+    {
+      "id": "E03",
+      "requirementIds": [
+        "WS-02-R08",
+        "WS-03-R01",
+        "WS-10-R08",
+        "WS-10-R09"
+      ],
+      "title": "Incumbent tool disposition and fictional migration rehearsal",
+      "roles": [
+        "Master",
+        "migration fixture",
+        "support"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Document approved keep/integrate/replace/migrate-later decisions; map invented records/content, import twice, inject partial failure, reconcile counts/ownership/consent/erasure and rehearse rollback/training/retirement.",
+      "expected": "No real data import; deterministic dedupe/mapping and audit; missing inventory retained; no silent old-source overwrite, erased-record resurrection or unapproved legacy shutdown.",
+      "blockingFindings": [
+        "B02",
+        "B03",
+        "B07"
+      ],
+      "evidenceOrImplementationPaths": [
+        "../academy-client-coach-family/docs/orchestration/issue-54/SOURCE_PACKET_ADDENDUM.md"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false,
+      "introducedByPhase": "owner_source_packet_review"
+    },
+    {
+      "id": "E04",
+      "requirementIds": [
+        "WS-01-R04",
+        "WS-01-R05",
+        "WS-01-R07",
+        "WS-03-R09",
+        "WS-10-R09"
+      ],
+      "title": "Marketing/event scope and later-decision precedence",
+      "roles": [
+        "Owner",
+        "marketing fixture",
+        "privacy reviewer"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Trace original controlled founder/public funnel requirements to current approved event/offer/media/consent decisions; offline simulate follow-up,analytics,retargeting suppression,creative review and launch contingency.",
+      "expected": "Preserve unfulfilled original scope or explicit supersession evidence; current HHL free/operational decision not overwritten by old commercial concept. No campaign launch, ad spend, bulk send or financial activation.",
+      "blockingFindings": [
+        "B02",
+        "B04",
+        "B07"
+      ],
+      "evidenceOrImplementationPaths": [
+        "../academy-client-coach-family/docs/orchestration/issue-54/SOURCE_PACKET_ADDENDUM.md"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false,
+      "introducedByPhase": "owner_source_packet_review"
+    },
+    {
+      "id": "E05",
+      "requirementIds": [
+        "WS-02-R03",
+        "WS-02-R06",
+        "WS-03-R08",
+        "WS-03-R09",
+        "WS-05-R07",
+        "WS-06-R06"
+      ],
+      "title": "Group communication policy, moderation and escalation",
+      "roles": [
+        "Client A",
+        "scoped coach",
+        "group member",
+        "unrelated adult"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "After selected policy is pinned, test organization/group/channel membership,private attachment/voice/read receipt,minor restrictions,hours/SLA,moderation,retention,escalation and allowance billing with fake notification transport.",
+      "expected": "No cross-group/member/minor leakage; unsupported channel/permission denied; consent and operational notices remain distinct; direct-message code alone cannot certify all channel functions.",
+      "blockingFindings": [
+        "B02",
+        "B03",
+        "B06",
+        "B07"
+      ],
+      "evidenceOrImplementationPaths": [
+        "../academy-client-coach-family/docs/orchestration/issue-54/SOURCE_PACKET_ADDENDUM.md"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false,
+      "introducedByPhase": "owner_source_packet_review"
+    },
+    {
+      "id": "E06",
+      "requirementIds": [
+        "WS-05-R02",
+        "WS-07-R03",
+        "WS-07-R04"
+      ],
+      "title": "Course workbook, quiz and completion policy",
+      "roles": [
+        "Content author",
+        "Client A",
+        "Coach A"
+      ],
+      "environment": "PROPOSED_ISOLATED_SYNTHETIC_ONLY",
+      "executionStatus": "NOT_RUN",
+      "result": "NOT_ESTABLISHED",
+      "procedure": "Use approved fictional course/audience/module/media/workbook/assignment/quiz requirements; test sequence/attempt/score/completion/version changes and unrelated-client access.",
+      "expected": "Exact approved education rules; no guessed quiz scoring or49-day curriculum; authored draft not client-published until approved; assessment result never implies health score or automatic clinical direction.",
+      "blockingFindings": [
+        "B02",
+        "B03",
+        "B05"
+      ],
+      "evidenceOrImplementationPaths": [
+        "../academy-client-coach-family/docs/orchestration/issue-54/SOURCE_PACKET_ADDENDUM.md"
+      ],
+      "requiredEvidence": [
+        "exact source/artifact SHA and schema version",
+        "fictional fixture identifiers/correlation",
+        "actual UI/API/SQL/outbox assertions and negative results",
+        "environment/adapter/clock/browser details",
+        "dated sanitized runner receipt and reviewer"
+      ],
+      "productionAcceptance": false,
+      "introducedByPhase": "owner_source_packet_review"
+    }
+  ],
+  "counts": {
+    "proposedCases": 57,
+    "requirementsMapped": 101,
+    "executedBusinessJourneyCases": 0,
+    "workstreams": 10,
+    "initialCasePackagesPreserved": 50,
+    "sourcePhaseCasePackagesAdded": 7,
+    "proposedSourceDetailGroups": 10
+  },
+  "findingStates": {
+    "B09": "RESOLVED_BOUNDED_METADATA_RETEST",
+    "B01-B08": "RELEASE_OR_ACCEPTANCE_BLOCKERS",
+    "B10": "SOURCE_RISK_REQUIRES_CHARACTERIZATION",
+    "B02": "PARTIALLY_RESOLVED_SOURCE_RECEIPT;CONTROLLING127_49DAY_AND_POLICY_GAPS_OPEN",
+    "B11": "RESOLVED_BOUNDED_HISTORICAL_RECEIPT_METADATA_CORRECTION"
+  },
+  "finalValidation": {
+    "result": "PASS",
+    "uniqueCases": 57,
+    "originalCasesPreserved": 50,
+    "sourceDerivedCasesAdded": 7,
+    "allBusinessCasesNotRun": true,
+    "exactKnownRequirementIds": 101,
+    "workstreams": 10,
+    "inventoryOnlyDetailGroups": 10,
+    "affiliateOriginalsMissing": 127,
+    "issue54TraceRowsDistinctFromAffiliate127": true,
+    "source54MasterCrosswalkIdsAndOwnersPreserved": 101,
+    "allCaseEvidencePathsExist": true,
+    "initialReportRetainedVerbatim": true,
+    "businessCasesExecuted": 0,
+    "localArtifactValidatorTestsPassed": 16,
+    "actualPublicHashesMatched": 13,
+    "trackedSourceChanges": 0
+  },
+  "phaseHistory": [
+    {
+      "phase": "initial_independent_discovery",
+      "status": "COMPLETED-DOCS",
+      "codeSha": "3baef48590fbcd7955946bcc5e9988b7f88bf6b4",
+      "completedBeforeSourcePacket": true,
+      "reportSha256": "d49154ceac3c2abaff486506227da4b02dbdb2aa23b213b741a359d22f584caf",
+      "matrixSha256": "233e0d6ecea7d893ddcd0885ab8a152a03e25ba13d406e12c848472d585b2308",
+      "handoffSha256": "1334b598c26ac9102df5dabb423717d4db3d0c0686874a9fa08b452e07c5f08f",
+      "coverage": {
+        "proposedCases": 50,
+        "requirementsMapped": 101,
+        "executedBusinessJourneyCases": 0,
+        "workstreams": 10
+      },
+      "originalCompleteness": "UNVERIFIED",
+      "sourceCompleteness": {
+        "knownNamedRequirementGroups": 101,
+        "originalHistoricalCompleteness": "UNVERIFIED",
+        "affiliate127Recovered": 0,
+        "affiliate127Missing": 127,
+        "originalTitlesInvented": false
+      }
+    }
+  ],
+  "phase": "owner_source_packet_and_local_artifact_independent_review",
+  "sourcePacketReview": {
+    "status": "INDEPENDENT_DOCUMENT_PROVENANCE_AND_TRACE_CHECKS_PASS",
+    "intakeManifest": "../deployment-evidence/2026-11-01-master-coordination/ORIGINAL_SOURCE_PACKET_INTAKE.json",
+    "zipSha256": "28598c5c74901a97c37abdd0e4ad32136194a431eb42ed2b182671e2c69e3b7c",
+    "archiveChecks": {
+      "exactThreeMemberAllowlist": true,
+      "crcPassed": true,
+      "allStagedBytesSizesAndHashesMatchArchive": true,
+      "noNestedTraversalSymlinksDirectoriesOrScripts": true,
+      "scriptsExecuted": 0
+    },
+    "documents": [
+      {
+        "name": "ReVitalized_Option3_Project_To_Do_List.pdf",
+        "bytes": 18410,
+        "sha256": "a1d2cd7279ac9e63dc5aba3cd5e49fd9c6200441324b5fc3097357d12aa4b1b7",
+        "pages": 7,
+        "status": "RECEIVED_OWNER_SUPPLIED_SOURCE"
+      },
+      {
+        "name": "ReVitalized_Academy_Platform_Information_Checklist.pdf",
+        "bytes": 199160,
+        "sha256": "65eba5e22851e624804f4f0008fcc2a5110d464e780a9b8683a50cd2767c4440",
+        "pages": 16,
+        "status": "RECEIVED_OWNER_SUPPLIED_SOURCE"
+      },
+      {
+        "name": "PROPEL_AFFILIATES_PHASE_0_BLUEPRINT_V0_1.md",
+        "bytes": 24499,
+        "sha256": "46fcd92550e71228f0f3e50ada5a09694e54ca89ece2fb4b0c4dec84fac33ba8",
+        "pages": null,
+        "status": "RECEIVED_PROPOSED_PHASE0_DRAFT"
+      }
+    ],
+    "authorityLimit": "Integrity links received owner packet/archive/staged files. Metadata/receipt do not independently authenticate prior approval, complete missing policy answers or activate a source recommendation.",
+    "rawSourceCopiedToRepository": false,
+    "issue54": {
+      "tracePath": "../academy-client-coach-family/docs/orchestration/issue-54/SOURCE_REQUIREMENTS_TRACE.csv",
+      "crosswalkPath": "../academy-client-coach-family/docs/orchestration/issue-54/MASTER101_SOURCE_CROSSWALK.csv",
+      "traceRows": 127,
+      "option3ActionBullets": 100,
+      "option3Phases": 16,
+      "checklistSections": 25,
+      "contextRows": 2,
+      "classifications": {
+        "MAPPED": 64,
+        "NEW": 38,
+        "OWNER_DETAIL_UNANSWERED": 25
+      },
+      "master101ScopeOverlap": 73,
+      "master101IndependentlyRetainedWithoutOverlap": 28,
+      "newActionDetailIsNotApprovedPolicy": true,
+      "proposedAdditiveDetailGroups": 10,
+      "crosswalkIdentityWordingWorkstreamOwnerVerified": true,
+      "noOperationalAcceptanceClaimed": true,
+      "notOriginalAffiliate127": true,
+      "masterDetailDisposition": "Ten groups accepted by Master for inventory/ownership only; original101baseline unchanged",
+      "staleNextActionCorrection": "Resolved; final handoff SHA8a1d341ea627e57808de2d50d3e8619190a2df39306f75f10ec973f6daae398b"
+    },
+    "issue55": {
+      "tracePath": "../academy-affiliate-foundation/docs/orchestration/issue-55/SOURCE_TO_SCOPE_DECISION_TRACE.csv",
+      "traceRows": 51,
+      "blueprintSections": 22,
+      "logicalDomains": 11,
+      "proposedDecisions": 8,
+      "gates": 4,
+      "releaseIncrements": 6,
+      "draftApproval": "NOT_ESTABLISHED_BY_DELIVERY",
+      "original127Received": false,
+      "initialReportAnd127TraceBytesUnchanged": true,
+      "historyCorrection": "Independent review found initial Phase0 receipt incorrectly marked true; corrected to false while current true; corrected handoff independently verified SHA4529d0be62f5ccc618eb4c4a1e927841be95258f39acc13d5faf78d91f5954db"
+    },
+    "remainingSourceGaps": [
+      "controlling complete original127affiliate handoff and section titles/content/version",
+      "specific approved49-day curriculum,day anchor,unlock,pause,completion and renewal semantics",
+      "selected checklist policy/content/permission decisions or pinned later approvals",
+      "Phase0 proposed architecture/gates need explicit disposition; received is not approved"
+    ],
+    "independentPdfChecks": {
+      "pages": [
+        7,
+        16
+      ],
+      "javascript": false,
+      "forms": false,
+      "encrypted": false,
+      "selectedVisualReview": "existing page1 renders of both PDFs inspected; no layout/full-render certification",
+      "checklistBlankUnderlineRuns": 153,
+      "explicit49DayOrSevenWeekSpecificationFound": false,
+      "option3ActionBulletMarkerCount": 100
+    },
+    "masterDetailInventory": {
+      "path": "../academy-master-coordination/docs/orchestration/requirements-source-details.json",
+      "sha256": "bb828787d71c51a74da2003f0ee09c05085fcd7f3f5a796d437448a8c5149734",
+      "groups": 10,
+      "parentIdsValid": true,
+      "policyAndRuntimeFlagsFalse": true,
+      "operationalAcceptance": "NOT_CLAIMED"
+    }
+  },
+  "sourceDetailProposals": [
+    {
+      "proposedId": "ISS54-ADD-01",
+      "sourceTraceIds": [
+        "O3-P01-B04",
+        "O3-P12-B01",
+        "O3-P12-B02",
+        "O3-P12-B03",
+        "O3-P12-B04",
+        "O3-P12-B05",
+        "PIC-S01"
+      ],
+      "caseIds": [
+        "E01",
+        "J11",
+        "N06"
+      ],
+      "approval": "MASTER_ACCEPTED_AS_INVENTORY_DETAIL_ONLY",
+      "policyAnswers": "UNANSWERED_UNLESS_SEPARATELY_PINNED_LATER_DECISION",
+      "sourceScopeOverlapIsNotCompleteAcceptance": true,
+      "masterOwnerIssue": 54,
+      "masterParentRequirements": [
+        "WS-05-R04",
+        "WS-05-R09",
+        "WS-03-R07"
+      ],
+      "businessPolicyApproved": false,
+      "runtimeImplementationCleared": false
+    },
+    {
+      "proposedId": "ISS54-ADD-02",
+      "sourceTraceIds": [
+        "O3-P10-B01",
+        "O3-P10-B02",
+        "O3-P10-B03",
+        "O3-P10-B05",
+        "PIC-S02"
+      ],
+      "caseIds": [
+        "E02",
+        "J03",
+        "N06"
+      ],
+      "approval": "MASTER_ACCEPTED_AS_INVENTORY_DETAIL_ONLY",
+      "policyAnswers": "UNANSWERED_UNLESS_SEPARATELY_PINNED_LATER_DECISION",
+      "sourceScopeOverlapIsNotCompleteAcceptance": true,
+      "masterOwnerIssue": 54,
+      "masterParentRequirements": [
+        "WS-05-R04",
+        "WS-05-R05",
+        "WS-05-R09"
+      ],
+      "businessPolicyApproved": false,
+      "runtimeImplementationCleared": false
+    },
+    {
+      "proposedId": "ISS54-ADD-03",
+      "sourceTraceIds": [
+        "O3-P07-B05",
+        "O3-P07-B06"
+      ],
+      "caseIds": [
+        "J11",
+        "N08",
+        "O03"
+      ],
+      "approval": "MASTER_ACCEPTED_AS_INVENTORY_DETAIL_ONLY",
+      "policyAnswers": "UNANSWERED_UNLESS_SEPARATELY_PINNED_LATER_DECISION",
+      "sourceScopeOverlapIsNotCompleteAcceptance": true,
+      "masterOwnerIssue": 54,
+      "masterParentRequirements": [
+        "WS-03-R10",
+        "WS-05-R08"
+      ],
+      "businessPolicyApproved": false,
+      "runtimeImplementationCleared": false
+    },
+    {
+      "proposedId": "ISS54-ADD-04",
+      "sourceTraceIds": [
+        "O3-P08-B01",
+        "O3-P08-B04",
+        "PIC-S23"
+      ],
+      "caseIds": [
+        "E05",
+        "N08",
+        "N03"
+      ],
+      "approval": "MASTER_ACCEPTED_AS_INVENTORY_DETAIL_ONLY",
+      "policyAnswers": "UNANSWERED_UNLESS_SEPARATELY_PINNED_LATER_DECISION",
+      "sourceScopeOverlapIsNotCompleteAcceptance": true,
+      "masterOwnerIssue": 54,
+      "masterParentRequirements": [
+        "WS-03-R08",
+        "WS-03-R09",
+        "WS-05-R07"
+      ],
+      "businessPolicyApproved": false,
+      "runtimeImplementationCleared": false
+    },
+    {
+      "proposedId": "ISS54-ADD-05",
+      "sourceTraceIds": [
+        "PIC-S20"
+      ],
+      "caseIds": [
+        "E06",
+        "C01",
+        "C02"
+      ],
+      "approval": "MASTER_ACCEPTED_AS_INVENTORY_DETAIL_ONLY",
+      "policyAnswers": "UNANSWERED_UNLESS_SEPARATELY_PINNED_LATER_DECISION",
+      "sourceScopeOverlapIsNotCompleteAcceptance": true,
+      "masterOwnerIssue": 54,
+      "masterParentRequirements": [
+        "WS-07-R03",
+        "WS-07-R04",
+        "WS-05-R02"
+      ],
+      "businessPolicyApproved": false,
+      "runtimeImplementationCleared": false
+    },
+    {
+      "proposedId": "ISS54-ADD-06",
+      "sourceTraceIds": [
+        "O3-P00-B02",
+        "O3-P00-B03",
+        "PIC-S25"
+      ],
+      "caseIds": [
+        "E03",
+        "O04"
+      ],
+      "approval": "MASTER_ACCEPTED_AS_INVENTORY_DETAIL_ONLY",
+      "policyAnswers": "UNANSWERED_UNLESS_SEPARATELY_PINNED_LATER_DECISION",
+      "sourceScopeOverlapIsNotCompleteAcceptance": true,
+      "masterOwnerIssue": 53,
+      "masterParentRequirements": [
+        "WS-02-R08",
+        "WS-10-R09"
+      ],
+      "businessPolicyApproved": false,
+      "runtimeImplementationCleared": false
+    },
+    {
+      "proposedId": "ISS54-ADD-07",
+      "sourceTraceIds": [
+        "O3-P05-B05",
+        "O3-P15-B01",
+        "O3-P15-B05",
+        "O3-P15-B06"
+      ],
+      "caseIds": [
+        "E03",
+        "O06",
+        "O07"
+      ],
+      "approval": "MASTER_ACCEPTED_AS_INVENTORY_DETAIL_ONLY",
+      "policyAnswers": "UNANSWERED_UNLESS_SEPARATELY_PINNED_LATER_DECISION",
+      "sourceScopeOverlapIsNotCompleteAcceptance": true,
+      "masterOwnerIssue": 56,
+      "masterParentRequirements": [
+        "WS-03-R01",
+        "WS-10-R09"
+      ],
+      "businessPolicyApproved": false,
+      "runtimeImplementationCleared": false
+    },
+    {
+      "proposedId": "ISS54-ADD-08",
+      "sourceTraceIds": [
+        "O3-P03-B01",
+        "O3-P03-B02",
+        "O3-P03-B03",
+        "O3-P03-B04",
+        "O3-P03-B05",
+        "O3-P03-B08",
+        "O3-P04-B02",
+        "O3-P04-B04",
+        "O3-P04-B05",
+        "O3-P04-B06",
+        "O3-P04-B08"
+      ],
+      "caseIds": [
+        "E04",
+        "S02",
+        "S03"
+      ],
+      "approval": "MASTER_ACCEPTED_AS_INVENTORY_DETAIL_ONLY",
+      "policyAnswers": "UNANSWERED_UNLESS_SEPARATELY_PINNED_LATER_DECISION",
+      "sourceScopeOverlapIsNotCompleteAcceptance": true,
+      "masterOwnerIssue": 53,
+      "masterParentRequirements": [
+        "WS-01-R04",
+        "WS-01-R05",
+        "WS-01-R07",
+        "WS-01-R08"
+      ],
+      "businessPolicyApproved": false,
+      "runtimeImplementationCleared": false
+    },
+    {
+      "proposedId": "ISS54-ADD-09",
+      "sourceTraceIds": [
+        "O3-P09-B04",
+        "PIC-S15",
+        "PIC-S18"
+      ],
+      "caseIds": [
+        "C01",
+        "C02",
+        "R01"
+      ],
+      "approval": "MASTER_ACCEPTED_AS_INVENTORY_DETAIL_ONLY",
+      "policyAnswers": "UNANSWERED_UNLESS_SEPARATELY_PINNED_LATER_DECISION",
+      "sourceScopeOverlapIsNotCompleteAcceptance": true,
+      "masterOwnerIssue": 54,
+      "masterParentRequirements": [
+        "WS-07-R07",
+        "WS-07-R09"
+      ],
+      "businessPolicyApproved": false,
+      "runtimeImplementationCleared": false
+    },
+    {
+      "proposedId": "ISS54-ADD-10",
+      "sourceTraceIds": [
+        "O3-P11-B01",
+        "O3-P11-B02",
+        "O3-P11-B03",
+        "O3-P11-B04",
+        "O3-P11-B05",
+        "O3-P11-B06",
+        "PIC-S06",
+        "PIC-S07",
+        "PIC-S08",
+        "PIC-S09",
+        "PIC-S10"
+      ],
+      "caseIds": [
+        "J02",
+        "R03",
+        "R01",
+        "N02"
+      ],
+      "approval": "MASTER_ACCEPTED_AS_INVENTORY_DETAIL_ONLY",
+      "policyAnswers": "UNANSWERED_UNLESS_SEPARATELY_PINNED_LATER_DECISION",
+      "sourceScopeOverlapIsNotCompleteAcceptance": true,
+      "masterOwnerIssue": 57,
+      "masterParentRequirements": [
+        "WS-04-R02",
+        "WS-04-R03",
+        "WS-04-R08",
+        "WS-04-R10"
+      ],
+      "businessPolicyApproved": false,
+      "runtimeImplementationCleared": false
+    }
+  ],
+  "actualLocalArtifactValidatorTests": 16,
+  "actualBusinessJourneyCases": 0
+}

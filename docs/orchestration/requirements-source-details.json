@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-01T13:30:14.310410+00:00",
+  "decision": "Master accepts ten source-detail groups for inventory and ownership; no new selected policy, behavior or sensitive permission is approved. Original101baselineIDs/wording unchanged.",
+  "sourceTrace": "docs/orchestration/issue-54/SOURCE_REQUIREMENTS_TRACE.csv",
+  "details": [
+    {
+      "id": "ISS54-ADD-01",
+      "detail": "Self-guided/on-demand offer and progression detail",
+      "ownerIssue": 54,
+      "parentRequirements": [
+        "WS-05-R04",
+        "WS-05-R09",
+        "WS-03-R07"
+      ],
+      "sourceAnchors": [
+        "O3-P12-B01..B05",
+        "PIC-S01"
+      ],
+      "status": "ACCEPTED_AS_INVENTORY_DETAIL_ONLY",
+      "businessPolicyApproved": false,
+      "runtimeImplementationCleared": false,
+      "operationalAcceptance": "NOT_CLAIMED"
+    },
+    {
+      "id": "ISS54-ADD-02",
+      "detail": "Coaching allowance modes/reset/rollover/bonus/freeze/overage detail",
+      "ownerIssue": 54,
+      "parentRequirements": [
+        "WS-05-R04",
+        "WS-05-R05",
+        "WS-05-R09"
+      ],
+      "sourceAnchors": [
+        "O3-P10-B01..B03,B05",
+        "PIC-S02"
+      ],
+      "status": "ACCEPTED_AS_INVENTORY_DETAIL_ONLY",
+      "businessPolicyApproved": false,
+      "runtimeImplementationCleared": false,
+      "operationalAcceptance": "NOT_CLAIMED"
+    },
+    {
+      "id": "ISS54-ADD-03",
+      "detail": "Inactivity/milestone/assessment triggers and workload analytics",
+      "ownerIssue": 54,
+      "parentRequirements": [
+        "WS-03-R10",
+        "WS-05-R08"
+      ],
+      "sourceAnchors": [
+        "O3-P07-B05,B06"
+      ],
+      "status": "ACCEPTED_AS_INVENTORY_DETAIL_ONLY",
+      "businessPolicyApproved": false,
+      "runtimeImplementationCleared": false,
+      "operationalAcceptance": "NOT_CLAIMED"
+    },
+    {
+      "id": "ISS54-ADD-04",
+      "detail": "Group/organization communication and channel-policy detail",
+      "ownerIssue": 54,
+      "parentRequirements": [
+        "WS-03-R08",
+        "WS-03-R09",
+        "WS-05-R07"
+      ],
+      "sourceAnchors": [
+        "O3-P08-B01,B04",
+        "PIC-S23"
+      ],
+      "status": "ACCEPTED_AS_INVENTORY_DETAIL_ONLY",
+      "businessPolicyApproved": false,
+      "runtimeImplementationCleared": false,
+      "operationalAcceptance": "NOT_CLAIMED"
+    },
+    {
+      "id": "ISS54-ADD-05",
+      "detail": "Course workbook/quiz/assessment and sequence detail",
+      "ownerIssue": 54,
+      "parentRequirements": [
+        "WS-07-R03",
+        "WS-07-R04",
+        "WS-05-R02"
+      ],
+      "sourceAnchors": [
+        "PIC-S20"
+      ],
+      "status": "ACCEPTED_AS_INVENTORY_DETAIL_ONLY",
+      "businessPolicyApproved": false,
+      "runtimeImplementationCleared": false,
+      "operationalAcceptance": "NOT_CLAIMED"
+    },
+    {
+      "id": "ISS54-ADD-06",
+      "detail": "Incumbent tool inventory and disposition decisions",
+      "ownerIssue": 53,
+      "parentRequirements": [
+        "WS-02-R08",
+        "WS-10-R09"
+      ],
+      "sourceAnchors": [
+        "O3-P00-B02,B03",
+        "PIC-S25"
+      ],
+      "status": "ACCEPTED_AS_INVENTORY_DETAIL_ONLY",
+      "businessPolicyApproved": false,
+      "runtimeImplementationCleared": false,
+      "operationalAcceptance": "NOT_CLAIMED"
+    },
+    {
+      "id": "ISS54-ADD-07",
+      "detail": "Migration validation/retirement/training detail",
+      "ownerIssue": 56,
+      "parentRequirements": [
+        "WS-03-R01",
+        "WS-10-R09"
+      ],
+      "sourceAnchors": [
+        "O3-P05-B05",
+        "O3-P15-B01,B05,B06"
+      ],
+      "status": "ACCEPTED_AS_INVENTORY_DETAIL_ONLY",
+      "businessPolicyApproved": false,
+      "runtimeImplementationCleared": false,
+      "operationalAcceptance": "NOT_CLAIMED"
+    },
+    {
+      "id": "ISS54-ADD-08",
+      "detail": "Public event/acquisition/retargeting/launch SOP detail",
+      "ownerIssue": 53,
+      "parentRequirements": [
+        "WS-01-R04",
+        "WS-01-R05",
+        "WS-01-R07",
+        "WS-01-R08"
+      ],
+      "sourceAnchors": [
+        "O3-P03",
+        "O3-P04"
+      ],
+      "status": "ACCEPTED_AS_INVENTORY_DETAIL_ONLY",
+      "businessPolicyApproved": false,
+      "runtimeImplementationCleared": false,
+      "operationalAcceptance": "NOT_CLAIMED"
+    },
+    {
+      "id": "ISS54-ADD-09",
+      "detail": "Approved nutrition/training restrictions/progression guardrails",
+      "ownerIssue": 54,
+      "parentRequirements": [
+        "WS-07-R07",
+        "WS-07-R09"
+      ],
+      "sourceAnchors": [
+        "O3-P09-B04",
+        "PIC-S15",
+        "PIC-S18"
+      ],
+      "status": "ACCEPTED_AS_INVENTORY_DETAIL_ONLY",
+      "businessPolicyApproved": false,
+      "runtimeImplementationCleared": false,
+      "operationalAcceptance": "NOT_CLAIMED"
+    },
+    {
+      "id": "ISS54-ADD-10",
+      "detail": "Approved adaptive intake/coach brief/client-result review",
+      "ownerIssue": 57,
+      "parentRequirements": [
+        "WS-04-R02",
+        "WS-04-R03",
+        "WS-04-R08",
+        "WS-04-R10"
+      ],
+      "sourceAnchors": [
+        "O3-P11",
+        "PIC-S06..PIC-S10"
+      ],
+      "status": "ACCEPTED_AS_INVENTORY_DETAIL_ONLY",
+      "businessPolicyApproved": false,
+      "runtimeImplementationCleared": false,
+      "operationalAcceptance": "NOT_CLAIMED"
+    }
+  ]
+}

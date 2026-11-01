@@ -1,0 +1,17 @@
+'use strict';
+const{test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),{validate}=require('../scripts/rva-master-coordination.cjs');
+const dir=path.resolve(__dirname,'../docs/orchestration');const data=()=>({s:JSON.parse(fs.readFileSync(dir+'/master-state.json')),r:JSON.parse(fs.readFileSync(dir+'/requirements.json'))});
+test('actual dispatch register preserves all ten workstreams and full known scope',()=>{const{s,r}=data();assert(validate(s,r).pass);});
+test('queued issue cannot masquerade as active native agent',()=>{const{s,r}=data();s.tasks[3].status='ACTIVE';s.tasks[3].agent=null;assert.throws(()=>validate(s,r));});
+test('four specialists cannot exceed Master-inclusive native capacity',()=>{const{s,r}=data();for(const t of s.tasks.slice(0,4)){t.status='ACTIVE';t.agent='/root/fictional-'+t.issue;}assert.throws(()=>validate(s,r),/capacity/);});
+test('shared runtime file cannot enter initial discovery ownership',()=>{const{s,r}=data();s.tasks[0].ownedPaths=['portal/portal.js'];assert.throws(()=>validate(s,r),/outside assigned/);});
+test('overlapping report ownership cannot be assigned',()=>{const{s,r}=data();s.tasks[0].ownedPaths.push(s.tasks[0].ownedPaths[0]+'nested/');assert.throws(()=>validate(s,r),/Overlapping/);});
+test('an omitted family workstream cannot silently disappear',()=>{const{s,r}=data();s.tasks[1].workstreams=s.tasks[1].workstreams.filter(x=>x!=='WS-06');assert.throws(()=>validate(s,r));});
+test('source existence cannot be promoted to live acceptance without evidence',()=>{const{s,r}=data();s.tasks[0].status='VERIFIED-LIVE';assert.throws(()=>validate(s,r),/live claim/);});
+test('coordination metadata cannot activate sensitive actions or runtime writes',()=>{const{s,r}=data();s.sensitiveActionsAuthorized=true;assert.throws(()=>validate(s,r));});
+test('historical requirement gaps remain explicit instead of claiming completeness',()=>{const{s,r}=data();r.sourceGaps=[];assert.throws(()=>validate(s,r),/completeness gaps/);});
+test('replacing a known requirement with an unrelated ID is rejected',()=>{const{s,r}=data();r.requirements[0].id='UNRELATED-REPLACEMENT';assert.throws(()=>validate(s,r),/identity silently removed/);});
+test('generic gap cannot replace the named missing original sources',()=>{const{s,r}=data();r.sourceGaps=['Some unspecified gap'];assert.throws(()=>validate(s,r),/Required source gap/);});
+test('fabricated evidence cannot turn discovery into live certification',()=>{const{s,r}=data();s.tasks[0].status='VERIFIED-LIVE';s.tasks[0].liveAcceptanceEvidence='x';assert.throws(()=>validate(s,r),/live claim/);});
+test('scope wording cannot silently change under the same ID',()=>{const{s,r}=data();r.requirements[0].requirement='Only a basic referral MVP';assert.throws(()=>validate(s,r),/changed without review/);});
+test('operational acceptance is not certified by attaching an arbitrary string',()=>{const{s,r}=data();r.requirements[0].operationalAcceptance='VERIFIED';r.requirements[0].evidence='x';assert.throws(()=>validate(s,r),/cannot certify/);});
