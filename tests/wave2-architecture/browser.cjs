@@ -3,7 +3,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
 const pw=require(process.env.RVA_PLAYWRIGHT_PATH||'/Users/davesmacbookpro/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
 const {installFixture}=require('./fixture.cjs');
 const root=path.resolve(__dirname,'../..'),origin='https://member-fixture.invalid';
-const out=path.resolve(root,'docs/orchestration/issue-53/wave2');fs.mkdirSync(out,{recursive:true});
+const out=path.resolve(process.env.RVA_WAVE2_A_OUTPUT||path.join(root,'docs/orchestration/issue-53/wave2'));fs.mkdirSync(out,{recursive:true});
 const results=[],failures=[];
 const baseline=cp.execFileSync('git',['show','fc6737415da36b4306afa0060a525eca2f1131ca:member/member110.js'],{cwd:root,encoding:'utf8'});
 async function fixture(browser,options={}){
