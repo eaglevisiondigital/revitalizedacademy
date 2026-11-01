@@ -1,0 +1,318 @@
+✔ resolver-backed email share returns only approved own copy/link/QR input (3.434375ms)
+✔ resolver-backed sms share returns only approved own copy/link/QR input (0.608708ms)
+✔ resolver-backed dm share returns only approved own copy/link/QR input (0.486458ms)
+✔ resolver-backed social share returns only approved own copy/link/QR input (0.427334ms)
+✔ caller identity rejected before any session/resolver call (0.153291ms)
+✔ caller user_id rejected before any session/resolver call (0.084916ms)
+✔ caller contact_id rejected before any session/resolver call (0.075416ms)
+✔ caller profile rejected before any session/resolver call (0.064958ms)
+✔ caller approval rejected before any session/resolver call (0.0755ms)
+✔ caller destination_url rejected before any session/resolver call (0.127709ms)
+✔ caller copy rejected before any session/resolver call (0.068042ms)
+✔ caller consent rejected before any session/resolver call (0.054125ms)
+✔ caller now rejected before any session/resolver call (0.046458ms)
+✔ caller state rejected before any session/resolver call (0.045083ms)
+✔ request getters and prototype pollution are rejected without executing accessors (0.119917ms)
+✔ caller mutation across await cannot replace the snapshotted channel/resource (0.450292ms)
+✔ async share logout invalidates pending authority/source (0.50075ms)
+✔ async share switch invalidates pending authority/source (0.2305ms)
+✔ async share scope invalidates pending authority/source (0.173833ms)
+✔ async share role invalidates pending authority/source (0.154708ms)
+✔ async share epoch invalidates pending authority/source (0.145625ms)
+✔ async share revoke invalidates pending authority/source (0.263791ms)
+✔ async share version invalidates pending authority/source (0.215375ms)
+✔ same-account token renewal across async share preserves current request (0.434334ms)
+✔ source changes without declared authority revision still fail snapshot comparison (0.299708ms)
+✔ final synchronous authority read prevents revocation after the last async session snapshot (0.283292ms)
+✔ expiry is rechecked using server clock after resolver awaits (0.477417ms)
+✔ campaign expected revision is mandatory and exact (0.412959ms)
+✔ creative expected revision is mandatory and exact (0.205458ms)
+✔ wrong resolver resource or version tag cannot satisfy request (0.280709ms)
+✔ owner role uses same own-profile constraint and never cross-affiliate override (0.421666ms)
+✔ server action scope cannot be overridden by Owner role or request (0.068459ms)
+✔ minimal referral response never exposes resolver identity, names, money or disclosure (0.629708ms)
+✔ referral wrong-owner cannot cross disclosure boundary (0.178709ms)
+✔ referral withdrawn cannot cross disclosure boundary (0.524167ms)
+✔ referral expired cannot cross disclosure boundary (0.188041ms)
+✔ referral wrong-subject cannot cross disclosure boundary (0.15375ms)
+✔ referral private-row cannot cross disclosure boundary (0.076042ms)
+✔ referral revoked during async resolver does not return old projection (0.15575ms)
+✔ production destinations and malformed resolver snapshots remain unavailable (0.186166ms)
+✔ resolver snapshot getters are rejected without invocation (0.1085ms)
+✔ synchronous current-authority dependency cannot be an async snapshot (0.073834ms)
+✔ fixture mode is mandatory; no dependencies or real mode cannot construct adapter (0.234917ms)
+✔ 100 parallel duplicates atomically create one isolated evidence row (19.965333ms)
+✔ parallel changed retry conflicts without overwriting the first evidence row (0.652708ms)
+✔ separate actors and separate adapter instances do not share fixture journals (0.812458ms)
+✔ payment.settled rejected before any dependency call (0.065666ms)
+✔ commission.earned rejected before any dependency call (0.039541ms)
+✔ payout.requested rejected before any dependency call (0.03425ms)
+✔ reward.granted rejected before any dependency call (0.032ms)
+✔ withdrawn tracking consent produces no hidden journal write (0.3665ms)
+✔ bounded queue rejects overflow while accepted distinct writes remain atomic (29.503125ms)
+✔ queued requests retain entry actor and never migrate into a later account (0.425167ms)
+✔ rejected async current-authority dependency is consumed and fails closed (8.676041ms)
+✔ rejected async clock cannot leak or authorize a write (0.665166ms)
+✔ async fictional catalog resolves exact educational citation from independent server receipt snapshot (3.7125ms)
+✔ caller session cannot become V3 verifier authority (0.341209ms)
+✔ caller principal_ref cannot become V3 verifier authority (0.235042ms)
+✔ caller source cannot become V3 verifier authority (0.205667ms)
+✔ caller catalog cannot become V3 verifier authority (0.199416ms)
+✔ caller receipt cannot become V3 verifier authority (0.169958ms)
+✔ caller approval cannot become V3 verifier authority (0.173375ms)
+✔ caller audience cannot become V3 verifier authority (0.168875ms)
+✔ caller operation cannot become V3 verifier authority (0.197666ms)
+✔ caller intent cannot become V3 verifier authority (0.4005ms)
+✔ caller safetyHold cannot become V3 verifier authority (0.250958ms)
+✔ async V3 principal drift fails closed (0.543042ms)
+✔ async V3 audience drift fails closed (0.287042ms)
+✔ async V3 generation drift fails closed (0.274917ms)
+✔ async V3 epoch drift fails closed (0.277916ms)
+✔ async V3 revoked drift fails closed (0.283375ms)
+✔ async V3 catalog drift fails closed (0.436416ms)
+✔ same-principal token renewal does not discard a legitimate educational lookup (1.123375ms)
+✔ receipt changes without authority bump cannot pass independent second snapshot (0.461542ms)
+✔ forged locally approved hashes do not replace independently resolved receipt pins (0.542542ms)
+✔ final synchronous current authority catches late revocation (0.369458ms)
+✔ missing or duplicate receipts and source audience mismatch remain held (0.940084ms)
+✔ raw dependency error and getter cannot leak or execute through V3 snapshots (0.32725ms)
+✔ real mode and private request refuse before source resolver or verifier work (0.327625ms)
+✖ actual loopback route source review / copy / QR / event receipt (7.882208ms)
+✖ stale-tab exact pins rejected after revoked/restored synthetic transition (2.705666ms)
+✖ URL/source/identity overrides rejected by composed HTTP request (1.297291ms)
+✖ cross-origin read composition denied without resolving source (0.6955ms)
+✔ source-linked read-only composition: cellular_hydration (9.638ms)
+✔ source-linked read-only composition: systemic_detoxification (3.520208ms)
+✔ source-linked read-only composition: electrobiology_rhythms (2.976917ms)
+✔ source-linked read-only composition: the_living_diet (2.797375ms)
+✔ source-linked read-only composition: functional_training (3.156833ms)
+✔ source-linked read-only composition: holistic_recovery (2.443792ms)
+✔ source-linked read-only composition: gastrointestinal_renovation (2.788208ms)
+✔ source-linked read-only composition: hormone_balancing (2.594166ms)
+✔ source-linked read-only composition: neural_repatterning (3.166625ms)
+✔ source-linked read-only composition: momentum_regimens (2.710417ms)
+✔ source-linked read-only composition: mentality_realignment (2.381791ms)
+✔ source-linked read-only composition: wise_budgeting (2.471917ms)
+✔ revoked fails closed without data (0.88275ms)
+✔ expired fails closed without data (0.866875ms)
+✔ wrong-account fails closed without data (0.646667ms)
+✔ logout fails closed without data (0.462083ms)
+✔ education-revoked fails closed without data (1.113208ms)
+✔ withdrawn tracking consent preserves material viewing but event adapter denies tracking (2.986875ms)
+✔ same-account renewal retains exact source review pins (2.529ms)
+✔ stale source selector rejected: authority_revision (0.484583ms)
+✔ stale source selector rejected: campaign_revision (0.4085ms)
+✔ stale source selector rejected: creative_revision (0.422958ms)
+✔ stale source selector rejected: approval_generation (0.406292ms)
+✔ stale source selector rejected: catalog_hash (0.395583ms)
+✔ stale source selector rejected: catalog_version (0.678041ms)
+✔ stale source selector rejected: campaign_id (0.505375ms)
+✔ caller cannot add client_id (0.440375ms)
+✔ caller cannot add contact_id (0.377083ms)
+✔ caller cannot add answers (0.377125ms)
+✔ caller cannot add permissions (0.411542ms)
+✔ caller cannot add consent (0.402459ms)
+✔ caller cannot add event_id (0.51925ms)
+✔ caller cannot add amount (0.383833ms)
+✔ rejects hostile getters without invocation (0.504958ms)
+✔ mid-read revocation discards all partially loaded content (0.78425ms)
+✔ mid-read same-account transport renewal does not invalidate authority (2.300709ms)
+✔ inspection does not create events; existing replay and content-conflict boundaries retained (33.315875ms)
+✔ dependency failures are sanitized (0.979333ms)
+✔ unapproved Driver rejected (0.440458ms)
+✔ selector objects cannot execute coercion code (0.463042ms)
+✖ actual HTTP copy/source/encoded QR email (7.02425ms)
+✖ actual HTTP copy/source/encoded QR sms (2.749459ms)
+✖ actual HTTP copy/source/encoded QR dm (1.456167ms)
+✖ actual HTTP copy/source/encoded QR social (0.652084ms)
+✖ actual cross-origin denial (1.140416ms)
+✖ actual size limit / body rejection (0.711709ms)
+✖ actual missing source scope is held without copy or QR (0.62675ms)
+✔ coherent fictional package / cellular_hydration (10.266208ms)
+✔ coherent fictional package / systemic_detoxification (3.8625ms)
+✔ coherent fictional package / electrobiology_rhythms (3.551833ms)
+✔ coherent fictional package / the_living_diet (2.8045ms)
+✔ coherent fictional package / functional_training (3.12175ms)
+✔ coherent fictional package / holistic_recovery (2.833292ms)
+✔ coherent fictional package / gastrointestinal_renovation (2.743708ms)
+✔ coherent fictional package / hormone_balancing (2.699458ms)
+✔ coherent fictional package / neural_repatterning (3.551917ms)
+✔ coherent fictional package / momentum_regimens (3.078209ms)
+✔ coherent fictional package / mentality_realignment (2.743166ms)
+✔ coherent fictional package / wise_budgeting (2.78225ms)
+✔ scope denied / revoked (1.132208ms)
+✔ scope denied / expired (0.613709ms)
+✔ scope denied / wrong-account (0.672791ms)
+✔ scope denied / education-revoked (1.047083ms)
+✔ scope denied / logout (0.737833ms)
+✔ same-authority renewal preserves exact composition hash (4.874333ms)
+✔ consent withdrawal permits approved manual viewing but not events (2.834875ms)
+✔ 30 concurrent read compositions emit no tracking event (54.728042ms)
+✔ encoding awaited / revocation discards every composed field (2.387417ms)
+✔ encoding awaited / transport renewal retains unchanged authority (2.665625ms)
+✔ encoder failure sanitized and no partial output (2.155583ms)
+✔ stale selector denied / authority_revision (0.432958ms)
+✔ stale selector denied / creative_revision (0.382334ms)
+✔ stale selector denied / campaign_revision (0.381125ms)
+✔ stale selector denied / approval_generation (0.381958ms)
+✔ hostile field denied / user_id (0.586833ms)
+✔ hostile field denied / client_id (0.369583ms)
+✔ hostile field denied / health_answers (0.392791ms)
+✔ hostile field denied / commission (0.363458ms)
+✔ hostile field denied / consent (0.361791ms)
+✔ getters are never executed (0.4145ms)
+✔ second preserved share read revalidates and denies mutated creative (2.178708ms)
+✔ different channel / Driver changes fingerprint without new authority (5.653792ms)
+ℹ tests 165
+ℹ suites 0
+ℹ pass 154
+ℹ fail 11
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 669.129625
+
+✖ failing tests:
+
+test at tests/wave7-affiliate/http.test.cjs:6:1
+✖ actual loopback route source review / copy / QR / event receipt (7.882208ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2368:21)
+      at listenInCluster (node:net:2499:12)
+      at node:net:2728:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tests/wave7-affiliate/http.test.cjs:7:1
+✖ stale-tab exact pins rejected after revoked/restored synthetic transition (2.705666ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2368:21)
+      at listenInCluster (node:net:2499:12)
+      at node:net:2728:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tests/wave7-affiliate/http.test.cjs:8:1
+✖ URL/source/identity overrides rejected by composed HTTP request (1.297291ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2368:21)
+      at listenInCluster (node:net:2499:12)
+      at node:net:2728:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tests/wave7-affiliate/http.test.cjs:9:1
+✖ cross-origin read composition denied without resolving source (0.6955ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2368:21)
+      at listenInCluster (node:net:2499:12)
+      at node:net:2728:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tests/wave8-affiliate/http.test.cjs:8:52
+✖ actual HTTP copy/source/encoded QR email (7.02425ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2368:21)
+      at listenInCluster (node:net:2499:12)
+      at node:net:2728:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tests/wave8-affiliate/http.test.cjs:8:52
+✖ actual HTTP copy/source/encoded QR sms (2.749459ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2368:21)
+      at listenInCluster (node:net:2499:12)
+      at node:net:2728:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tests/wave8-affiliate/http.test.cjs:8:52
+✖ actual HTTP copy/source/encoded QR dm (1.456167ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2368:21)
+      at listenInCluster (node:net:2499:12)
+      at node:net:2728:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tests/wave8-affiliate/http.test.cjs:8:52
+✖ actual HTTP copy/source/encoded QR social (0.652084ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2368:21)
+      at listenInCluster (node:net:2499:12)
+      at node:net:2728:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tests/wave8-affiliate/http.test.cjs:9:1
+✖ actual cross-origin denial (1.140416ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2368:21)
+      at listenInCluster (node:net:2499:12)
+      at node:net:2728:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tests/wave8-affiliate/http.test.cjs:10:1
+✖ actual size limit / body rejection (0.711709ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2368:21)
+      at listenInCluster (node:net:2499:12)
+      at node:net:2728:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tests/wave8-affiliate/http.test.cjs:11:1
+✖ actual missing source scope is held without copy or QR (0.62675ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2368:21)
+      at listenInCluster (node:net:2499:12)
+      at node:net:2728:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }

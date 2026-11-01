@@ -1,0 +1,63 @@
+TAP version 13
+# Subtest: all canonical migrations, thirteen Functions, shared Auth, protected Roadmap, finance and branding source preserved
+ok 1 - all canonical migrations, thirteen Functions, shared Auth, protected Roadmap, finance and branding source preserved
+  ---
+  duration_ms: 17178.631459
+  type: 'test'
+  ...
+# Subtest: source and requirement lineage exact docs/orchestration/requirements.json
+ok 2 - source and requirement lineage exact docs/orchestration/requirements.json
+  ---
+  duration_ms: 21.845459
+  type: 'test'
+  ...
+# Subtest: source and requirement lineage exact docs/orchestration/requirements-source-details.json
+ok 3 - source and requirement lineage exact docs/orchestration/requirements-source-details.json
+  ---
+  duration_ms: 18.936459
+  type: 'test'
+  ...
+# Subtest: source and requirement lineage exact docs/orchestration/issue-56/ACCEPTANCE_MATRIX.json
+ok 4 - source and requirement lineage exact docs/orchestration/issue-56/ACCEPTANCE_MATRIX.json
+  ---
+  duration_ms: 21.692459
+  type: 'test'
+  ...
+# Subtest: source and requirement lineage exact docs/orchestration/issue-55/127_SECTION_TRACE.csv
+ok 5 - source and requirement lineage exact docs/orchestration/issue-55/127_SECTION_TRACE.csv
+  ---
+  duration_ms: 19.631459
+  type: 'test'
+  ...
+# Subtest: member changes remain within approved goal coordination and fail-closed identity callback
+not ok 6 - member changes remain within approved goal coordination and fail-closed identity callback
+  ---
+  duration_ms: 38.931375
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave8-qa/tests/wave8-qa/preservation.test.cjs:12:1'
+  failureType: 'testCodeFailure'
+  error: '  function renderHabits(rows) { exact extraction bounds'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    section (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave8-qa/tests/wave8-qa/preservation.test.cjs:12:583)
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave8-qa/tests/wave8-qa/preservation.test.cjs:12:682)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 5
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 17376.534792

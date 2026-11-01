@@ -1,0 +1,640 @@
+{
+  "startedAt": "2026-11-01T23:18:41.712Z",
+  "runnerSha256": "a43217a1005da8b8eff583eee13dc6a5ec7acefeee45fe50285126c5f9cc2f7c",
+  "scope": "CURRENT_CATALOG_FICTIONAL_LOCAL_WAVE4_PREDECESSOR",
+  "productionCalls": 0,
+  "connection": "disposable UNIX socket only; synthetic Auth GUCs; not GoTrue or PostgREST acceptance",
+  "sourceCommit": "7a4861b78e5380ffdf79d12192583b09bb2644bb",
+  "stages": [
+    {
+      "name": "independent-exact-guard-drift",
+      "file": "tests/wave7-qa/guard-drift.test.cjs",
+      "exitCode": 0,
+      "tests": 8,
+      "pass": 8,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "name": "actual-provisioning-baseline",
+      "file": "tests/wave8-provisioning/provisioning.test.cjs",
+      "exitCode": 0,
+      "tests": 39,
+      "pass": 39,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "name": "access-household-original-baseline",
+      "file": "tests/wave7-security/access-household.test.cjs",
+      "exitCode": 1,
+      "tests": 1,
+      "pass": 0,
+      "fail": 1,
+      "skipped": 0
+    },
+    {
+      "name": "identity-original-baseline",
+      "file": "tests/wave6-security/pending-access-identity-hypothesis.test.cjs",
+      "exitCode": 1,
+      "tests": 1,
+      "pass": 0,
+      "fail": 1,
+      "skipped": 0
+    },
+    {
+      "name": "parent-original-baseline",
+      "file": "tests/wave7-security/parent-household.test.cjs",
+      "exitCode": 1,
+      "tests": 4,
+      "pass": 2,
+      "fail": 2,
+      "skipped": 0
+    },
+    {
+      "name": "original-five-baseline",
+      "file": "tests/wave5-operations/durable-operations.test.cjs",
+      "exitCode": 1,
+      "tests": 5,
+      "pass": 0,
+      "fail": 5,
+      "skipped": 0
+    },
+    {
+      "name": "actual-provisioning-corrected",
+      "file": "tests/wave8-provisioning/provisioning.test.cjs",
+      "exitCode": 0,
+      "tests": 39,
+      "pass": 39,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "name": "original-five-corrected",
+      "file": "tests/wave5-operations/durable-operations.test.cjs",
+      "exitCode": 0,
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "name": "author-wave6-security",
+      "file": "tests/wave6-security/security.test.cjs",
+      "exitCode": 0,
+      "tests": 45,
+      "pass": 45,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "name": "independent-new-precise-denials",
+      "file": "tests/wave7-qa/sql-precise.test.cjs",
+      "exitCode": 0,
+      "tests": 8,
+      "pass": 8,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "name": "independent-provisioning-profile-boundaries",
+      "file": "tests/wave8-qa/provisioning-adversarial.test.cjs",
+      "exitCode": 1,
+      "tests": 8,
+      "pass": 3,
+      "fail": 5,
+      "skipped": 0
+    },
+    {
+      "name": "independent-precise-denials",
+      "file": "tests/wave6-qa/sql-adversarial.test.cjs",
+      "exitCode": 0,
+      "tests": 4,
+      "pass": 4,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "name": "separate-identity-hypothesis",
+      "file": "tests/wave6-security/pending-access-identity-hypothesis.test.cjs",
+      "exitCode": 0,
+      "tests": 1,
+      "pass": 1,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "name": "parent-household-hypothesis",
+      "file": "tests/wave7-security/parent-household.test.cjs",
+      "exitCode": 0,
+      "tests": 4,
+      "pass": 4,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "name": "author-wave5-security-compatibility-hold",
+      "file": "tests/wave5-security/security.test.cjs",
+      "exitCode": 1,
+      "tests": 45,
+      "pass": 44,
+      "fail": 1,
+      "skipped": 0
+    },
+    {
+      "name": "new-identity-boundaries",
+      "file": "tests/wave7-security/identity-boundaries.test.cjs",
+      "exitCode": 0,
+      "tests": 12,
+      "pass": 12,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "name": "access-household-hypothesis",
+      "file": "tests/wave7-security/access-household.test.cjs",
+      "exitCode": 0,
+      "tests": 1,
+      "pass": 1,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "name": "usage-concurrency",
+      "file": "tests/wave5-operations/concurrency.test.cjs",
+      "exitCode": 0,
+      "tests": 13,
+      "pass": 13,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "name": "wave4-regression",
+      "file": "tests/wave4-access/access.test.cjs",
+      "exitCode": 0,
+      "tests": 39,
+      "pass": 39,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "name": "wave4-session-regression",
+      "file": "tests/wave4-access/session-entry.test.cjs",
+      "exitCode": 0,
+      "tests": 8,
+      "pass": 8,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "name": "wave4-independent-regression",
+      "file": "tests/wave4-qa/allowance-adversarial.test.cjs",
+      "exitCode": 0,
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "name": "durable-checkin-assignment",
+      "file": "tests/wave7-security/durable-operations.test.cjs",
+      "exitCode": 0,
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "name": "actual-provisioning-reverted",
+      "file": "tests/wave8-provisioning/provisioning.test.cjs",
+      "exitCode": 0,
+      "tests": 39,
+      "pass": 39,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "name": "access-household-original-reverted",
+      "file": "tests/wave7-security/access-household.test.cjs",
+      "exitCode": 1,
+      "tests": 1,
+      "pass": 0,
+      "fail": 1,
+      "skipped": 0
+    },
+    {
+      "name": "identity-original-reverted",
+      "file": "tests/wave6-security/pending-access-identity-hypothesis.test.cjs",
+      "exitCode": 1,
+      "tests": 1,
+      "pass": 0,
+      "fail": 1,
+      "skipped": 0
+    },
+    {
+      "name": "parent-original-reverted",
+      "file": "tests/wave7-security/parent-household.test.cjs",
+      "exitCode": 1,
+      "tests": 4,
+      "pass": 2,
+      "fail": 2,
+      "skipped": 0
+    },
+    {
+      "name": "original-five-reverted",
+      "file": "tests/wave5-operations/durable-operations.test.cjs",
+      "exitCode": 1,
+      "tests": 5,
+      "pass": 0,
+      "fail": 5,
+      "skipped": 0
+    }
+  ],
+  "executionInputs": [
+    {
+      "path": "tests/wave8-qa/provisioning-adversarial.test.cjs",
+      "sha256": "ad157ec4ca49a7703ff5b4ea47372f26a7bb8cdc624cf574763fcb883a4e55ac"
+    },
+    {
+      "path": "tests/wave7-qa/guard-drift.test.cjs",
+      "sha256": "b487777ff4ee28e48b587c900733c47f807fc0d24aeffcd8be6fc36d879466e6"
+    },
+    {
+      "path": "tests/wave7-qa/sql-precise.test.cjs",
+      "sha256": "0c99de889771d97f4f38b0182dc4e6e6f15c38412b8ea9d25323763eeef7481a"
+    },
+    {
+      "path": "tests/wave8-provisioning/provisioning.test.cjs",
+      "sha256": "180349fa60a3b215c4a78746b79bb3cd308663c294f22c7d2e64069ca8ad5c98"
+    },
+    {
+      "path": "supabase/migrations/20261010120000_holistic_foundations_pricing_v2.sql",
+      "sha256": "77ffca1959f9c344bb575227b24b092ba63610c0e5a15014c9b60b04e7a63d12"
+    },
+    {
+      "path": "member/onboarding/onboarding.js",
+      "sha256": "c04581828dca9eca3f497d1c8168e47c933a0ebd9e91fb4f3597f4edbb13d1c5"
+    },
+    {
+      "path": "member/onboarding/index.html",
+      "sha256": "bf672eb1bb5f936a6fc34e7b76517bc3f21efb89dbfb8d96a13347e07dcbf423"
+    },
+    {
+      "path": "portal/portal-client-lifecycle.js",
+      "sha256": "604f6f94a528921b1a3c4485e74bf23d6e7af363da7a679c58cd72f1c3f28a6e"
+    },
+    {
+      "path": "tests/wave3-allowance/current-subset.json",
+      "sha256": "b9e1a1f5a131f438171192801614298f26d8bebb40a63edf609fc34e024bf0d0"
+    },
+    {
+      "path": "tests/wave7-security/catalog-fidelity.cjs",
+      "sha256": "d4e190950bf244253b649c775a01d902edc62fdece9321f339ba5b6b94220e0b"
+    },
+    {
+      "path": "tests/wave7-security/durable-operations.test.cjs",
+      "sha256": "6a87990407293d53ba4ccabec64fd2f0d6dfd292a0f5df5e99d69721600df993"
+    },
+    {
+      "path": "tests/wave7-security/parent-household.test.cjs",
+      "sha256": "d6bc1e94eb79b7a1eeb6b86e3bb344fc81238750ef28dde92d8e4b11095a7189"
+    },
+    {
+      "path": "tests/wave7-security/identity-boundaries.test.cjs",
+      "sha256": "59dd602ee6794e97a0f846282d8f6f0bbc186b768a78392ad2bd4a218cba7a59"
+    },
+    {
+      "path": "tests/wave7-security/access-household.test.cjs",
+      "sha256": "c9e52a8163a2c0395066069b3fcd34e70e99d07259b3c1477a8de6de835ecb00"
+    },
+    {
+      "path": "proposals/wave7-security/correction.sql",
+      "sha256": "4bc3cbef3c6b28e22b2d834ec6d2ba904281d16baffda7b391aaa45af5fa3a9f"
+    },
+    {
+      "path": "proposals/wave7-security/revert.sql",
+      "sha256": "e4fa7c9231c4d0d41f8f1ff56a6a9366a92b86b85f7fb69fb80224b09279009f"
+    },
+    {
+      "path": "proposals/wave7-security/identity-household.sql",
+      "sha256": "ed92e3db3baca09a7ac901050b9d4e733d252bd89aae8187d04e41a9b9ccc610"
+    },
+    {
+      "path": "proposals/wave7-security/identity-household-revert.sql",
+      "sha256": "79ae86437f473628652f5dad1321515f230f93d17157df154c25d59ea1a288c9"
+    },
+    {
+      "path": "tests/wave6-qa/sql-adversarial.test.cjs",
+      "sha256": "9dff37d8759a711d22c46734fe99f194dd8a1ca7d686a6541986bde74b5bfa66"
+    },
+    {
+      "path": "proposals/wave6-security/correction.sql",
+      "sha256": "d471396eeee21d4109dcc556b80548a64ce193949ebc1291f33589d698d14be9"
+    },
+    {
+      "path": "proposals/wave6-security/revert.sql",
+      "sha256": "e4fa7c9231c4d0d41f8f1ff56a6a9366a92b86b85f7fb69fb80224b09279009f"
+    },
+    {
+      "path": "tests/wave6-security/security.test.cjs",
+      "sha256": "94bd200eea999ee050708b1336af1cc11349129b31d2dead26656c5ba6f8b80c"
+    },
+    {
+      "path": "tests/wave6-security/pending-access-identity-hypothesis.test.cjs",
+      "sha256": "ac58d159012e0224c0cb8ab40c3489ed87a7c4d9196364c645926623d0a20fc0"
+    },
+    {
+      "path": "proposals/wave5-security/correction.sql",
+      "sha256": "3c3ed1f351e8ffdc687f80fdbf4455197c752e4b988c80a89ed64df39f1e55a8"
+    },
+    {
+      "path": "proposals/wave5-security/revert.sql",
+      "sha256": "083009a044252580062653de07c1af885047a9e7ae074a950d60cf5f233b5c01"
+    },
+    {
+      "path": "tests/wave5-security/security.test.cjs",
+      "sha256": "f7cc4a5b1673eb60850672f74ac3b124b9e92555c009663b833efd25fc6898a4"
+    },
+    {
+      "path": "tests/wave5-operations/concurrency.test.cjs",
+      "sha256": "1f9e6d6742bbc8979b98c84ed24ec3e17b709694af690c2da6de8cb6dbbc8007"
+    },
+    {
+      "path": "tests/wave5-operations/durable-operations.test.cjs",
+      "sha256": "c65c35c7b6b2a01f3fe388434c7683fd289de8a386f4c4291942a9fa4914e0fe"
+    },
+    {
+      "path": "tests/wave5-operations/catalog-overlay.cjs",
+      "sha256": "845f91758e2fb877d3654557a44bae0bc352ab7e4c4f81e8231be3649126cdc5"
+    },
+    {
+      "path": "tests/wave5-operations/current-operations-catalog.json",
+      "sha256": "4b582a4d4dca09d1a18fc2c7ef575ccff398dd6ffeb0d59c7f82594f4d50df02"
+    },
+    {
+      "path": "tests/wave4-access/fixture.cjs",
+      "sha256": "8c6b33bc65b714249749c4d4bf14e0085ae346b488f2c2bd317a1a4cee3c606e"
+    },
+    {
+      "path": "proposals/issue-61/correction.sql",
+      "sha256": "abceb1378897461bb4faa57fd69acddb60611132924a593c8a33cc5684136908"
+    },
+    {
+      "path": "proposals/issue-61/wave4/correction.sql",
+      "sha256": "2879f97322fc53c679e6cc83c8516795877ff7518541cc05cb3d1f3635bb89f3"
+    },
+    {
+      "path": "proposals/wave5-operations/correction.sql",
+      "sha256": "f3ed018354545d2ef677593298f3b798f0683914a79034dd69ebdcdac39cc8c0"
+    },
+    {
+      "path": "proposals/wave5-operations/revert.sql",
+      "sha256": "d28aa24f562ca97de3a80a61152d13a76580080588b2878ec630d75e6d67af22"
+    }
+  ],
+  "resourceBefore": {
+    "at": "2026-11-01T23:18:41.755Z",
+    "platform": "darwin",
+    "scope": "LOCAL_RESOURCE_METADATA_ONLY",
+    "productionCalls": 0,
+    "mutations": 0,
+    "limits": {
+      "shmmni": 32,
+      "shmseg": 8,
+      "shmmax": 4194304
+    },
+    "segments": [
+      {
+        "id": 65536,
+        "key": "0x0074b647",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 6,
+        "bytes": 56,
+        "creatorPid": 991,
+        "lastPid": 991
+      },
+      {
+        "id": 5308417,
+        "key": "0x02f49b65",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 0,
+        "bytes": 56,
+        "creatorPid": 25030,
+        "lastPid": 0
+      }
+    ],
+    "capacity": {
+      "limit": 32,
+      "occupied": 2,
+      "available": 30,
+      "reserve": 2,
+      "result": "READY"
+    },
+    "cleanupAuthorized": [],
+    "note": "Same UID, zero attachments, small size or dead creator do not establish RVA ownership. Unknown segments are never removed."
+  },
+  "postgres": "postgres (PostgreSQL) 17.11 (Homebrew)",
+  "provisioningRoutinePreservation": [
+    {
+      "acl": "{postgres=X/postgres,authenticated=X/postgres}",
+      "owner": "postgres",
+      "config": [
+        "search_path=pg_catalog, private"
+      ],
+      "definer": false,
+      "signature": "claim_onboarding_enrollment(text)",
+      "definitionSha256": "e5f411cb076ff13292e2b4159d85b029057571ed8b9346b7c3e9ba8f17fd7155"
+    },
+    {
+      "acl": "{postgres=X/postgres,authenticated=X/postgres}",
+      "owner": "postgres",
+      "config": [
+        "search_path=\"\""
+      ],
+      "definer": false,
+      "signature": "create_production_client(uuid,jsonb)",
+      "definitionSha256": "a7bed4f12ea41a836d641c28223a2a5f2dfd112f7d72e2f8a5fc3f9e0fdbc91e"
+    },
+    {
+      "acl": "{postgres=X/postgres,service_role=X/postgres,supabase_auth_admin=X/postgres}",
+      "owner": "postgres",
+      "config": [
+        "search_path=public"
+      ],
+      "definer": true,
+      "signature": "handle_new_user()",
+      "definitionSha256": "65130204c97f5f5d7dc99927e71b53f4c27642818eeefcb621754e18ff72c0a6"
+    },
+    {
+      "acl": "{postgres=X/postgres,authenticated=X/postgres}",
+      "owner": "postgres",
+      "config": [
+        "search_path=pg_catalog, private"
+      ],
+      "definer": false,
+      "signature": "my_onboarding_context()",
+      "definitionSha256": "1293fdf78512625b36c617aff921c76b1fcf90de150dd21c0f6f0eb03b11642b"
+    },
+    {
+      "acl": "{postgres=X/postgres,authenticated=X/postgres}",
+      "owner": "postgres",
+      "config": [
+        "search_path=pg_catalog, public, private, extensions"
+      ],
+      "definer": true,
+      "signature": "private.claim_onboarding_enrollment(text)",
+      "definitionSha256": "7a0baff1e26c930e01efcfaaccfb012d3cec2e8746b45323379b5d7848c378a7"
+    },
+    {
+      "acl": "{postgres=X/postgres,authenticated=X/postgres}",
+      "owner": "postgres",
+      "config": [
+        "search_path=pg_catalog, public, private"
+      ],
+      "definer": true,
+      "signature": "private.client_onboarding_context()",
+      "definitionSha256": "ebeac1f2bcc5431dfc4d0f31d5c8c162602010417743dd96a59ea484a03080b4"
+    },
+    {
+      "acl": "{postgres=X/postgres,authenticated=X/postgres}",
+      "owner": "postgres",
+      "config": [
+        "search_path=\"\""
+      ],
+      "definer": true,
+      "signature": "private.create_production_client(uuid,jsonb)",
+      "definitionSha256": "53eae311cf59ce6d8a566ad056ad498fc89ed5a679a2fdb5f4a15b4a5983d884"
+    },
+    {
+      "acl": "{postgres=X/postgres,authenticated=X/postgres}",
+      "owner": "postgres",
+      "config": [
+        "search_path=\"\""
+      ],
+      "definer": true,
+      "signature": "private.production_client_enrollment_state(uuid)",
+      "definitionSha256": "6ee757a1aafe6f23828f6a4b7e417cd534af2ae37499136e0e7f0916d5667db6"
+    },
+    {
+      "acl": "{postgres=X/postgres}",
+      "owner": "postgres",
+      "config": [
+        "search_path=pg_catalog, public, private"
+      ],
+      "definer": true,
+      "signature": "private.provision_client_foundation()",
+      "definitionSha256": "defc1047e3ce5fa88b767adadbf0eaa5bd0627d3b68685a037ffc832378ae166"
+    },
+    {
+      "acl": null,
+      "owner": "postgres",
+      "config": [
+        "search_path=pg_catalog, public, private, extensions"
+      ],
+      "definer": true,
+      "signature": "private.queue_primary_client_agreement_email()",
+      "definitionSha256": "efe248b133f21a21ffdc3f14589c35d3d0aac8aab6983870053f7fe54ed48259"
+    },
+    {
+      "acl": "{postgres=X/postgres}",
+      "owner": "postgres",
+      "config": [
+        "search_path=pg_catalog, public, private"
+      ],
+      "definer": true,
+      "signature": "private.refresh_client_lifecycle(uuid)",
+      "definitionSha256": "ac5fde5caf59938e377769eb86f304cac3aba9032ae95368f2bd709ade4c5faa"
+    },
+    {
+      "acl": "{postgres=X/postgres,authenticated=X/postgres}",
+      "owner": "postgres",
+      "config": [
+        "search_path=\"\""
+      ],
+      "definer": true,
+      "signature": "private.require_production_enrollment_owner(uuid)",
+      "definitionSha256": "341f15f14649cd17453f20ee576380ca0875530f8c10698d38d73f8a499a4f7b"
+    },
+    {
+      "acl": "{postgres=X/postgres,authenticated=X/postgres}",
+      "owner": "postgres",
+      "config": [
+        "search_path=\"\""
+      ],
+      "definer": true,
+      "signature": "private.save_production_client_plan_intent(uuid,text)",
+      "definitionSha256": "0037d30fdb52fc2f60bdcfdb9fe8859632d4aca7d1fd1902aa97eab1c40d8b88"
+    },
+    {
+      "acl": "{postgres=X/postgres,authenticated=X/postgres}",
+      "owner": "postgres",
+      "config": [
+        "search_path=\"\""
+      ],
+      "definer": false,
+      "signature": "production_client_enrollment_state(uuid)",
+      "definitionSha256": "ea68407889a30a9b7c6c77c86ffd3125e32162414318a0cabad06eeade5f62ff"
+    },
+    {
+      "acl": "{postgres=X/postgres,authenticated=X/postgres}",
+      "owner": "postgres",
+      "config": [
+        "search_path=\"\""
+      ],
+      "definer": false,
+      "signature": "save_production_client_plan_intent(uuid,text)",
+      "definitionSha256": "e5b3d26d1c25d07ffa1f1c41d3d8e37e131aab3135aeebddb9ad86697ccea576"
+    }
+  ],
+  "mode": "COMPLETE_THREE_STAGE",
+  "result": "CORRECTED_SOURCE_FAILURE_RETAINED",
+  "clusterStopped": true,
+  "clusterRemoved": true,
+  "resourceAfter": {
+    "at": "2026-11-01T23:18:57.594Z",
+    "platform": "darwin",
+    "scope": "LOCAL_RESOURCE_METADATA_ONLY",
+    "productionCalls": 0,
+    "mutations": 0,
+    "limits": {
+      "shmmni": 32,
+      "shmseg": 8,
+      "shmmax": 4194304
+    },
+    "segments": [
+      {
+        "id": 65536,
+        "key": "0x0074b647",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 6,
+        "bytes": 56,
+        "creatorPid": 991,
+        "lastPid": 991
+      },
+      {
+        "id": 5308417,
+        "key": "0x02f49b65",
+        "owner": "davesmacbookpro",
+        "creator": "davesmacbookpro",
+        "attachments": 0,
+        "bytes": 56,
+        "creatorPid": 25030,
+        "lastPid": 0
+      }
+    ],
+    "capacity": {
+      "limit": 32,
+      "occupied": 2,
+      "available": 30,
+      "reserve": 2,
+      "result": "READY"
+    },
+    "cleanupAuthorized": [],
+    "note": "Same UID, zero attachments, small size or dead creator do not establish RVA ownership. Unknown segments are never removed."
+  },
+  "unexpectedNewSegments": [],
+  "completedAt": "2026-11-01T23:18:57.594Z"
+}

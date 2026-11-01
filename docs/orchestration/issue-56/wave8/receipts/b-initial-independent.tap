@@ -1,0 +1,218 @@
+TAP version 13
+# Subtest: accepted goal status reconciles only my_goals and preserves weekly/modal drafts
+ok 1 - accepted goal status reconciles only my_goals and preserves weekly/modal drafts
+  ---
+  duration_ms: 130.871334
+  type: 'test'
+  ...
+# Subtest: same-document replacement cannot bypass pending goal lock
+ok 2 - same-document replacement cannot bypass pending goal lock
+  ---
+  duration_ms: 85.773542
+  type: 'test'
+  ...
+# Subtest: lost response never retransmits and observed status does not claim exact request saved
+ok 3 - lost response never retransmits and observed status does not claim exact request saved
+  ---
+  duration_ms: 55.482209
+  type: 'test'
+  ...
+# Subtest: uncertain conflicting current goal status remains held without rewriting either status
+ok 4 - uncertain conflicting current goal status remains held without rewriting either status
+  ---
+  duration_ms: 56.938625
+  type: 'test'
+  ...
+# Subtest: accepted write with readThrow keeps Check status and recovers by read only
+ok 5 - accepted write with readThrow keeps Check status and recovers by read only
+  ---
+  duration_ms: 51.705
+  type: 'test'
+  ...
+# Subtest: accepted write with readError keeps Check status and recovers by read only
+ok 6 - accepted write with readError keeps Check status and recovers by read only
+  ---
+  duration_ms: 51.325167
+  type: 'test'
+  ...
+# Subtest: stale goal render during getUser cancels before dispatch
+ok 7 - stale goal render during getUser cancels before dispatch
+  ---
+  duration_ms: 62.521417
+  type: 'test'
+  ...
+# Subtest: status payload is frozen even when original source is changed during auth
+ok 8 - status payload is frozen even when original source is changed during auth
+  ---
+  duration_ms: 51.556791
+  type: 'test'
+  ...
+# Subtest: goal auth after logout cannot revive private goal UI
+ok 9 - goal auth after logout cannot revive private goal UI
+  ---
+  duration_ms: 47.829458
+  type: 'test'
+  ...
+# Subtest: goal rpc after logout cannot revive private goal UI
+ok 10 - goal rpc after logout cannot revive private goal UI
+  ---
+  duration_ms: 67.375959
+  type: 'test'
+  ...
+# Subtest: goal read after logout cannot revive private goal UI
+ok 11 - goal read after logout cannot revive private goal UI
+  ---
+  duration_ms: 71.658584
+  type: 'test'
+  ...
+# Subtest: goal auth after synthetic-b cannot revive private goal UI
+ok 12 - goal auth after synthetic-b cannot revive private goal UI
+  ---
+  duration_ms: 47.726125
+  type: 'test'
+  ...
+# Subtest: goal rpc after synthetic-b cannot revive private goal UI
+ok 13 - goal rpc after synthetic-b cannot revive private goal UI
+  ---
+  duration_ms: 63.220208
+  type: 'test'
+  ...
+# Subtest: goal read after synthetic-b cannot revive private goal UI
+ok 14 - goal read after synthetic-b cannot revive private goal UI
+  ---
+  duration_ms: 68.920542
+  type: 'test'
+  ...
+# Subtest: authoritative rpc 42501 clears goal surfaces and cannot be revived
+ok 15 - authoritative rpc 42501 clears goal surfaces and cannot be revived
+  ---
+  duration_ms: 49.368583
+  type: 'test'
+  ...
+# Subtest: authoritative read 42501 clears goal surfaces and cannot be revived
+ok 16 - authoritative read 42501 clears goal surfaces and cannot be revived
+  ---
+  duration_ms: 52.705375
+  type: 'test'
+  ...
+# Subtest: verified different getUser identity ends document even after source replacement
+ok 17 - verified different getUser identity ends document even after source replacement
+  ---
+  duration_ms: 47.131833
+  type: 'test'
+  ...
+# Subtest: nonauthoritative auth transport sends no update and preserves drafts
+ok 18 - nonauthoritative auth transport sends no update and preserves drafts
+  ---
+  duration_ms: 51.426708
+  type: 'test'
+  ...
+# Subtest: verified absent getUser identity clears goal data and denies status changes
+ok 19 - verified absent getUser identity clears goal data and denies status changes
+  ---
+  duration_ms: 50.374917
+  type: 'test'
+  ...
+# Subtest: existing boolean false RPC contract holds unavailable/unauthorized goal and never claims success
+ok 20 - existing boolean false RPC contract holds unavailable/unauthorized goal and never claims success
+  ---
+  duration_ms: 55.75675
+  type: 'test'
+  ...
+# Subtest: unexpected RPC result remains uncertain, not accepted or retried
+ok 21 - unexpected RPC result remains uncertain, not accepted or retried
+  ---
+  duration_ms: 50.284042
+  type: 'test'
+  ...
+# Subtest: accepted update with a conflicting current saved status remains held for reconciliation
+ok 22 - accepted update with a conflicting current saved status remains held for reconciliation
+  ---
+  duration_ms: 56.197792
+  type: 'test'
+  ...
+# Subtest: uncertain read transport preserves request and drafts without dispatching again
+ok 23 - uncertain read transport preserves request and drafts without dispatching again
+  ---
+  duration_ms: 53.319917
+  type: 'test'
+  ...
+# Subtest: stale successful goal read cannot replace a newer source render
+ok 24 - stale successful goal read cannot replace a newer source render
+  ---
+  duration_ms: 66.987417
+  type: 'test'
+  ...
+# Subtest: preserved Resume action reaches exact existing status RPC
+ok 25 - preserved Resume action reaches exact existing status RPC
+  ---
+  duration_ms: 52.056042
+  type: 'test'
+  ...
+# Subtest: preserved Cancel Goal action reaches exact existing status RPC
+ok 26 - preserved Cancel Goal action reaches exact existing status RPC
+  ---
+  duration_ms: 46.646375
+  type: 'test'
+  ...
+# Subtest: preserved Reopen action reaches exact existing status RPC
+ok 27 - preserved Reopen action reaches exact existing status RPC
+  ---
+  duration_ms: 48.917542
+  type: 'test'
+  ...
+# Subtest: independent two distinct goals may finish concurrently without duplicate dispatch or lost drafts
+ok 28 - independent two distinct goals may finish concurrently without duplicate dispatch or lost drafts
+  ---
+  duration_ms: 167.868791
+  type: 'test'
+  ...
+# Subtest: independent concurrent Check status clicks do not retransmit uncertain mutation
+ok 29 - independent concurrent Check status clicks do not retransmit uncertain mutation
+  ---
+  duration_ms: 82.40875
+  type: 'test'
+  ...
+# Subtest: independent malformed successful read is held, never treated as acknowledged mutation
+ok 30 - independent malformed successful read is held, never treated as acknowledged mutation
+  ---
+  duration_ms: 54.483791
+  type: 'test'
+  ...
+# Subtest: independent absent saved goal remains held without recreating goal or blind retry
+ok 31 - independent absent saved goal remains held without recreating goal or blind retry
+  ---
+  duration_ms: 57.05725
+  type: 'test'
+  ...
+# Subtest: independent authoritative absent verified user fails closed for entire protected document
+not ok 32 - independent authoritative absent verified user fails closed for entire protected document
+  ---
+  duration_ms: 60.476292
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave8-qa/tests/wave8-qa/goals-adversarial.test.cjs:23:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    authoritative absence must not leave protected controls/drafts mounted
+
+    56 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 56
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave8-qa/tests/wave8-qa/goals-adversarial.test.cjs:23:289)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+1..32
+# tests 32
+# suites 0
+# pass 31
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2450.634666

@@ -1,0 +1,23 @@
+{
+  "recordedAt": "2026-11-01T23:09:41.882349+00:00",
+  "tool": "collaboration.list_agents",
+  "running": [
+    "/root",
+    "/root/wave8_affiliate",
+    "/root/wave8_operations",
+    "/root/wave8_provisioning"
+  ],
+  "qa": "QUEUED_UNTIL_NATIVE_SLOT_FREES",
+  "persistentThreads": 0,
+  "qaLaunchedAfterCReturned": {
+    "at": "2026-11-01T23:14:13.873709+00:00",
+    "task": "/root/wave8_independent_qa",
+    "result": "native-spawn-result",
+    "activeNames": [
+      "/root",
+      "/root/wave8_provisioning",
+      "/root/wave8_operations",
+      "/root/wave8_independent_qa"
+    ]
+  }
+}

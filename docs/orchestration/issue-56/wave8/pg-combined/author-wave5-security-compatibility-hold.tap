@@ -1,0 +1,292 @@
+TAP version 13
+# Subtest: [historical direct three: retained Wave4 correction] SELECT usage
+ok 1 - [historical direct three: retained Wave4 correction] SELECT usage
+  ---
+  duration_ms: 56.139166
+  type: 'test'
+  ...
+# Subtest: [historical direct three: retained Wave4 correction] UPDATE usage
+ok 2 - [historical direct three: retained Wave4 correction] UPDATE usage
+  ---
+  duration_ms: 13.289792
+  type: 'test'
+  ...
+# Subtest: [historical direct three: retained Wave4 correction] UPDATE allowance
+ok 3 - [historical direct three: retained Wave4 correction] UPDATE allowance
+  ---
+  duration_ms: 10.378083
+  type: 'test'
+  ...
+# Subtest: [new relationship scope] unassigned Coach cannot SELECT unrelated membership
+ok 4 - [new relationship scope] unassigned Coach cannot SELECT unrelated membership
+  ---
+  duration_ms: 7.304083
+  type: 'test'
+  ...
+# Subtest: [new relationship scope] unassigned Coach cannot SELECT unrelated client access
+ok 5 - [new relationship scope] unassigned Coach cannot SELECT unrelated client access
+  ---
+  duration_ms: 6.964083
+  type: 'test'
+  ...
+# Subtest: [new escalation] unassigned Coach cannot appoint self and gain usage scope
+ok 6 - [new escalation] unassigned Coach cannot appoint self and gain usage scope
+  ---
+  duration_ms: 9.82775
+  type: 'test'
+  ...
+# Subtest: [new forged relation] assigned Coach cannot link own contact to unrelated membership
+ok 7 - [new forged relation] assigned Coach cannot link own contact to unrelated membership
+  ---
+  duration_ms: 8.78425
+  type: 'test'
+  ...
+# Subtest: [new escalation] unassigned Coach cannot steal existing client user binding
+ok 8 - [new escalation] unassigned Coach cannot steal existing client user binding
+  ---
+  duration_ms: 7.629791
+  type: 'test'
+  ...
+# Subtest: [positive] assigned Coach can read own membership/access and authorized RPC
+ok 9 - [positive] assigned Coach can read own membership/access and authorized RPC
+  ---
+  duration_ms: 18.288958
+  type: 'test'
+  ...
+# Subtest: [negative] unassigned Coach RPC remains rejected
+ok 10 - [negative] unassigned Coach RPC remains rejected
+  ---
+  duration_ms: 8.740458
+  type: 'test'
+  ...
+# Subtest: [lifecycle] suspended Coach retains no membership/access mutation
+ok 11 - [lifecycle] suspended Coach retains no membership/access mutation
+  ---
+  duration_ms: 9.015333
+  type: 'test'
+  ...
+# Subtest: [lifecycle] inactive Coach retains no membership/access mutation
+ok 12 - [lifecycle] inactive Coach retains no membership/access mutation
+  ---
+  duration_ms: 8.851792
+  type: 'test'
+  ...
+# Subtest: [lifecycle] pending Coach does not gain access through explicit overrides
+ok 13 - [lifecycle] pending Coach does not gain access through explicit overrides
+  ---
+  duration_ms: 7.361584
+  type: 'test'
+  ...
+# Subtest: [scope] changing OWN membership primary contact to unrelated contact rejected
+ok 14 - [scope] changing OWN membership primary contact to unrelated contact rejected
+  ---
+  duration_ms: 7.813917
+  type: 'test'
+  ...
+# Subtest: [scope] direct assignment insertion cannot bootstrap scope on unrelated contact
+ok 15 - [scope] direct assignment insertion cannot bootstrap scope on unrelated contact
+  ---
+  duration_ms: 7.700084
+  type: 'test'
+  ...
+# Subtest: [scope] INSERT membership for unrelated contact rejected
+ok 16 - [scope] INSERT membership for unrelated contact rejected
+  ---
+  duration_ms: 8.528167
+  type: 'test'
+  ...
+# Subtest: [positive] assigned Coach can create membership for scoped client
+ok 17 - [positive] assigned Coach can create membership for scoped client
+  ---
+  duration_ms: 8.306083
+  type: 'test'
+  ...
+# Subtest: [positive] Owner retains membership reads and scoped management
+ok 18 - [positive] Owner retains membership reads and scoped management
+  ---
+  duration_ms: 14.829583
+  type: 'test'
+  ...
+# Subtest: [positive] existing client own access record remains readable while paid membership held
+ok 19 - [positive] existing client own access record remains readable while paid membership held
+  ---
+  duration_ms: 8.3205
+  type: 'test'
+  ...
+# Subtest: [positive] no-op existing valid access update and explicit valid nonprimary link
+ok 20 - [positive] no-op existing valid access update and explicit valid nonprimary link
+  ---
+  duration_ms: 14.622958
+  type: 'test'
+  ...
+# Subtest: [negative] missing crm.manage override cannot mutate own relationships
+ok 21 - [negative] missing crm.manage override cannot mutate own relationships
+  ---
+  duration_ms: 9.179
+  type: 'test'
+  ...
+# Subtest: [negative] null actor and anonymous role cannot read membership or access
+ok 22 - [negative] null actor and anonymous role cannot read membership or access
+  ---
+  duration_ms: 7.692458
+  type: 'test'
+  ...
+# Subtest: [negative] claimed Owner role in caller metadata cannot replace database actor
+ok 23 - [negative] claimed Owner role in caller metadata cannot replace database actor
+  ---
+  duration_ms: 8.130958
+  type: 'test'
+  ...
+# Subtest: [privilege] no new helper/EXECUTE or permissive policy, existing invoker RPC unchanged
+ok 24 - [privilege] no new helper/EXECUTE or permissive policy, existing invoker RPC unchanged
+  ---
+  duration_ms: 6.966208
+  type: 'test'
+  ...
+# Subtest: [rollback] outer transaction rolls back authorized relationship change and audit
+ok 25 - [rollback] outer transaction rolls back authorized relationship change and audit
+  ---
+  duration_ms: 10.053125
+  type: 'test'
+  ...
+# Subtest: [scope source] unassigned Coach cannot bootstrap via contacts.assigned_to
+ok 26 - [scope source] unassigned Coach cannot bootstrap via contacts.assigned_to
+  ---
+  duration_ms: 8.574583
+  type: 'test'
+  ...
+# Subtest: [scope source] unassigned Coach cannot bootstrap via open follow-up task
+ok 27 - [scope source] unassigned Coach cannot bootstrap via open follow-up task
+  ---
+  duration_ms: 6.174292
+  type: 'test'
+  ...
+# Subtest: [INSERT] unrelated access tuple cannot be forged after record deletion
+ok 28 - [INSERT] unrelated access tuple cannot be forged after record deletion
+  ---
+  duration_ms: 5.130416
+  type: 'test'
+  ...
+# Subtest: [INSERT] own contact cannot use unrelated membership when existing record absent
+ok 29 - [INSERT] own contact cannot use unrelated membership when existing record absent
+  ---
+  duration_ms: 5.026958
+  type: 'test'
+  ...
+# Subtest: [positive] scoped original tuple can be restored without status activation
+not ok 30 - [positive] scoped original tuple can be restored without status activation
+  ---
+  duration_ms: 5.512084
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave8-qa/tests/wave5-security/security.test.cjs:34:1'
+  failureType: 'testCodeFailure'
+  error: 'Account binding requires existing reviewed provisioning workflow'
+  code: '42501'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async actor (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave8-qa/tests/wave4-access/fixture.cjs:14:190)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave8-qa/tests/wave5-security/security.test.cjs:34:176)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: [session] switching authenticated actor within same connection re-evaluates scope
+ok 31 - [session] switching authenticated actor within same connection re-evaluates scope
+  ---
+  duration_ms: 12.606666
+  type: 'test'
+  ...
+# Subtest: [compatibility hold] financial-only direct membership writes narrow; no new grant
+ok 32 - [compatibility hold] financial-only direct membership writes narrow; no new grant
+  ---
+  duration_ms: 7.252833
+  type: 'test'
+  ...
+# Subtest: [preservation] original private onboarding/assignment trigger owner ACL remains postgres-only
+ok 33 - [preservation] original private onboarding/assignment trigger owner ACL remains postgres-only
+  ---
+  duration_ms: 6.975125
+  type: 'test'
+  ...
+# Subtest: [reference-role positive] owner scoped membership/access management
+ok 34 - [reference-role positive] owner scoped membership/access management
+  ---
+  duration_ms: 12.824833
+  type: 'test'
+  ...
+# Subtest: [reference-role positive] admin scoped membership/access management
+ok 35 - [reference-role positive] admin scoped membership/access management
+  ---
+  duration_ms: 12.914042
+  type: 'test'
+  ...
+# Subtest: [reference-role positive] coach scoped membership/access management
+ok 36 - [reference-role positive] coach scoped membership/access management
+  ---
+  duration_ms: 13.275375
+  type: 'test'
+  ...
+# Subtest: [compatibility hold] CRM-only Support cannot rebind coaching membership through accepted boolean
+ok 37 - [compatibility hold] CRM-only Support cannot rebind coaching membership through accepted boolean
+  ---
+  duration_ms: 7.196792
+  type: 'test'
+  ...
+# Subtest: [diagnostic only: expected old exposure] self-assignment chain reaches usage before policy correction
+ok 38 - [diagnostic only: expected old exposure] self-assignment chain reaches usage before policy correction
+  ---
+  duration_ms: 9.216209
+  type: 'test'
+  ...
+# Subtest: [diagnostic only: expected old exposure] forged access relationship can charge unrelated allowance before correction
+ok 39 - [diagnostic only: expected old exposure] forged access relationship can charge unrelated allowance before correction
+  ---
+  duration_ms: 9.845416
+  type: 'test'
+  ...
+# Subtest: [guard] accepted private boolean privilege drift fails closed before policy installation
+ok 40 - [guard] accepted private boolean privilege drift fails closed before policy installation
+  ---
+  duration_ms: 8.944792
+  type: 'test'
+  ...
+# Subtest: [privilege escalation] unassigned Coach cannot TRUNCATE usage through table ACL
+ok 41 - [privilege escalation] unassigned Coach cannot TRUNCATE usage through table ACL
+  ---
+  duration_ms: 6.415834
+  type: 'test'
+  ...
+# Subtest: [privilege escalation] authenticated SQL TRUNCATE membership_entitlements denied by ACL, not FK masking
+ok 42 - [privilege escalation] authenticated SQL TRUNCATE membership_entitlements denied by ACL, not FK masking
+  ---
+  duration_ms: 6.372792
+  type: 'test'
+  ...
+# Subtest: [privilege escalation] authenticated SQL TRUNCATE client_memberships denied by ACL, not FK masking
+ok 43 - [privilege escalation] authenticated SQL TRUNCATE client_memberships denied by ACL, not FK masking
+  ---
+  duration_ms: 6.682041
+  type: 'test'
+  ...
+# Subtest: [privilege escalation] authenticated SQL TRUNCATE client_access denied by ACL, not FK masking
+ok 44 - [privilege escalation] authenticated SQL TRUNCATE client_access denied by ACL, not FK masking
+  ---
+  duration_ms: 7.438042
+  type: 'test'
+  ...
+# Subtest: [privilege preservation] only authenticated TRUNCATE revoked; trusted roles and other rights exact
+ok 45 - [privilege preservation] only authenticated TRUNCATE revoked; trusted roles and other rights exact
+  ---
+  duration_ms: 8.070084
+  type: 'test'
+  ...
+1..45
+# tests 45
+# suites 0
+# pass 44
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 520.6415

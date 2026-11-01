@@ -1,0 +1,77 @@
+TAP version 13
+# Subtest: independent actual account claim binds exact original source and audit, no paid privilege
+ok 1 - independent actual account claim binds exact original source and audit, no paid privilege
+  ---
+  duration_ms: 65.531166
+  type: 'test'
+  ...
+# Subtest: independent revoked invite claim leaves original household and null ownership unchanged
+ok 2 - independent revoked invite claim leaves original household and null ownership unchanged
+  ---
+  duration_ms: 14.640167
+  type: 'test'
+  ...
+# Subtest: independent current identity remains required after foreign profile association attempt
+ok 3 - independent current identity remains required after foreign profile association attempt
+  ---
+  duration_ms: 12.650208
+  type: 'test'
+  ...
+# Subtest: independent successful claim rollback restores exact source and all audit/consent counts
+ok 4 - independent successful claim rollback restores exact source and all audit/consent counts
+  ---
+  duration_ms: 14.162
+  type: 'test'
+  ...
+# Subtest: independent changed verified Auth email does not inherit prior claim eligibility
+ok 5 - independent changed verified Auth email does not inherit prior claim eligibility
+  ---
+  duration_ms: 12.255834
+  type: 'test'
+  ...
+# Subtest: independent expired original invite cannot be revived by new actor metadata
+ok 6 - independent expired original invite cannot be revived by new actor metadata
+  ---
+  duration_ms: 13.047875
+  type: 'test'
+  ...
+# Subtest: independent effective profile UPDATE ACL denial survives permissive self-policy
+ok 7 - independent effective profile UPDATE ACL denial survives permissive self-policy
+  ---
+  duration_ms: 9.914834
+  type: 'test'
+  ...
+# Subtest: independent direct authenticated TRUNCATE profiles is privilege-denied and retains all ownership records
+not ok 8 - independent direct authenticated TRUNCATE profiles is privilege-denied and retains all ownership records
+  ---
+  duration_ms: 13.389
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave8-qa/tests/wave8-qa/provisioning-adversarial.test.cjs:13:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    RLS cannot protect TRUNCATE; require actual ACL denial, not FK masking
+    + actual - expected
+
+    + undefined
+    - '42501'
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '42501'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave8-qa/tests/wave8-qa/provisioning-adversarial.test.cjs:13:594)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# {"profileRowsBefore":12,"profileRowsAfterAttempt":0,"denialCode":null,"rollbackRestoredRows":12}
+1..8
+# tests 8
+# suites 0
+# pass 7
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 229.040042

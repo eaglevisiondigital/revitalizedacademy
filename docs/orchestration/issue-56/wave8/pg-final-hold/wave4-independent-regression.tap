@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: QA membership auth lookup grants only boolean and cannot impersonate Owner with JWT user_metadata
+ok 1 - QA membership auth lookup grants only boolean and cannot impersonate Owner with JWT user_metadata
+  ---
+  duration_ms: 59.399917
+  type: 'test'
+  ...
+# Subtest: QA direct own ledger write preserves another contact contribution without exposing shared total
+ok 2 - QA direct own ledger write preserves another contact contribution without exposing shared total
+  ---
+  duration_ms: 23.904334
+  type: 'test'
+  ...
+# Subtest: QA new usage updated_by cannot be attributed to unrelated Owner
+ok 3 - QA new usage updated_by cannot be attributed to unrelated Owner
+  ---
+  duration_ms: 12.250375
+  type: 'test'
+  ...
+# Subtest: QA exact contact scope withdrawal affects boolean and direct-table reads immediately
+ok 4 - QA exact contact scope withdrawal affects boolean and direct-table reads immediately
+  ---
+  duration_ms: 8.954416
+  type: 'test'
+  ...
+# Subtest: QA internal trigger functions remain unreachable to authenticated/anon and public RPC remains invoker
+ok 5 - QA internal trigger functions remain unreachable to authenticated/anon and public RPC remains invoker
+  ---
+  duration_ms: 7.659125
+  type: 'test'
+  ...
+# Subtest: QA caller supplied app_role does not unlock unrelated contact ledger
+ok 6 - QA caller supplied app_role does not unlock unrelated contact ledger
+  ---
+  duration_ms: 7.798667
+  type: 'test'
+  ...
+# Subtest: QA checked ledger mutation and derived cache roll back together in outer transaction
+ok 7 - QA checked ledger mutation and derived cache roll back together in outer transaction
+  ---
+  duration_ms: 11.889959
+  type: 'test'
+  ...
+# Subtest: QA readonly Coach cannot exploit aggregate lookup as write capability
+ok 8 - QA readonly Coach cannot exploit aggregate lookup as write capability
+  ---
+  duration_ms: 12.576958
+  type: 'test'
+  ...
+# Subtest: QA contact-scoped Coach cannot charge unrelated membership through privileged session synchronization
+ok 9 - QA contact-scoped Coach cannot charge unrelated membership through privileged session synchronization
+  ---
+  duration_ms: 9.467875
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 221.074041

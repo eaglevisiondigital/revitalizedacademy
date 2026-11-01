@@ -1,0 +1,58 @@
+{
+  "scope": "Changed candidate text and decompressed raw failure evidence only; metadata classifications, no matched private text output",
+  "files": [
+    {
+      "path": "CURRENT_BUILD_STATE.md",
+      "labels": [
+        {
+          "label": "named_client",
+          "matches": 5
+        },
+        {
+          "label": "nonfixture_email",
+          "matches": 5
+        },
+        {
+          "label": "private_source_content",
+          "matches": 1
+        }
+      ]
+    },
+    {
+      "path": "docs/RVA_WAVE3_STATUS_2026-11-01.md",
+      "labels": [
+        {
+          "label": "named_client",
+          "matches": 1
+        }
+      ]
+    },
+    {
+      "path": "docs/orchestration/issue-54/wave6-features/REPORT.md",
+      "labels": [
+        {
+          "label": "private_source_content",
+          "matches": 1
+        }
+      ]
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave7/REPORT.md",
+      "labels": [
+        {
+          "label": "private_source_content",
+          "matches": 1
+        }
+      ]
+    },
+    {
+      "path": "tests/wave8-qa/source-hygiene.cjs",
+      "labels": [
+        {
+          "label": "named_client",
+          "matches": 4
+        }
+      ]
+    }
+  ]
+}

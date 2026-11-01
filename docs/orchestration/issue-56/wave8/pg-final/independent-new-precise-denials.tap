@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: typed foreign INSERT denied and same-actor own client_checkins INSERT succeeds
+ok 1 - typed foreign INSERT denied and same-actor own client_checkins INSERT succeeds
+  ---
+  duration_ms: 56.326875
+  type: 'test'
+  ...
+# Subtest: typed foreign INSERT denied and same-actor own client_assignments INSERT succeeds
+ok 2 - typed foreign INSERT denied and same-actor own client_assignments INSERT succeeds
+  ---
+  duration_ms: 15.431458
+  type: 'test'
+  ...
+# Subtest: scoped user_id substitution rejects42501, preserves old user, role and source tuple
+ok 3 - scoped user_id substitution rejects42501, preserves old user, role and source tuple
+  ---
+  duration_ms: 10.916041
+  type: 'test'
+  ...
+# Subtest: CA household rebinding cannot introduce foreign household visibility
+ok 4 - CA household rebinding cannot introduce foreign household visibility
+  ---
+  duration_ms: 9.703292
+  type: 'test'
+  ...
+# Subtest: parent foreign read hidden and foreign primary transfer typed denial with own noop positive
+ok 5 - parent foreign read hidden and foreign primary transfer typed denial with own noop positive
+  ---
+  duration_ms: 13.786917
+  type: 'test'
+  ...
+# Subtest: revoked assignment permission uses current catalog, remaining read permit not turned into write
+ok 6 - revoked assignment permission uses current catalog, remaining read permit not turned into write
+  ---
+  duration_ms: 7.467
+  type: 'test'
+  ...
+# Subtest: same backend actor changes do not retain prior authorized parent read
+ok 7 - same backend actor changes do not retain prior authorized parent read
+  ---
+  duration_ms: 9.662084
+  type: 'test'
+  ...
+# Subtest: rollback removes successful own assignment and its notification; failed forged actor never alters counts
+ok 8 - rollback removes successful own assignment and its notification; failed forged actor never alters counts
+  ---
+  duration_ms: 11.611792
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 202.175625

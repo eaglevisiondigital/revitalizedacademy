@@ -1,0 +1,118 @@
+TAP version 13
+# Subtest: chromium late ready cannot revive source review after genuine denied read
+ok 1 - chromium late ready cannot revive source review after genuine denied read
+  ---
+  duration_ms: 950.1585
+  type: 'test'
+  ...
+# Subtest: webkit late ready cannot revive source review after genuine denied read
+ok 2 - webkit late ready cannot revive source review after genuine denied read
+  ---
+  duration_ms: 1621.576542
+  type: 'test'
+  ...
+# Subtest: chromium 390 actual reviewed package / QR decode / source changes / stale denial / no event
+ok 3 - chromium 390 actual reviewed package / QR decode / source changes / stale denial / no event
+  ---
+  duration_ms: 3888.1545
+  type: 'test'
+  ...
+# Subtest: chromium 768 actual reviewed package / QR decode / source changes / stale denial / no event
+ok 4 - chromium 768 actual reviewed package / QR decode / source changes / stale denial / no event
+  ---
+  duration_ms: 6977.997208
+  type: 'test'
+  ...
+# Subtest: chromium 1440 actual reviewed package / QR decode / source changes / stale denial / no event
+ok 5 - chromium 1440 actual reviewed package / QR decode / source changes / stale denial / no event
+  ---
+  duration_ms: 3278.237708
+  type: 'test'
+  ...
+# Subtest: webkit 390 actual reviewed package / QR decode / source changes / stale denial / no event
+ok 6 - webkit 390 actual reviewed package / QR decode / source changes / stale denial / no event
+  ---
+  duration_ms: 3329.559084
+  type: 'test'
+  ...
+# Subtest: webkit 768 actual reviewed package / QR decode / source changes / stale denial / no event
+ok 7 - webkit 768 actual reviewed package / QR decode / source changes / stale denial / no event
+  ---
+  duration_ms: 2850.846334
+  type: 'test'
+  ...
+# Subtest: webkit 1440 actual reviewed package / QR decode / source changes / stale denial / no event
+ok 8 - webkit 1440 actual reviewed package / QR decode / source changes / stale denial / no event
+  ---
+  duration_ms: 2827.868291
+  type: 'test'
+  ...
+# Subtest: real authority transition during QR encoding fails closed revoked
+ok 9 - real authority transition during QR encoding fails closed revoked
+  ---
+  duration_ms: 10.81275
+  type: 'test'
+  ...
+# Subtest: real authority transition during QR encoding fails closed expired
+ok 10 - real authority transition during QR encoding fails closed expired
+  ---
+  duration_ms: 4.269125
+  type: 'test'
+  ...
+# Subtest: real authority transition during QR encoding fails closed wrong-account
+ok 11 - real authority transition during QR encoding fails closed wrong-account
+  ---
+  duration_ms: 3.0535
+  type: 'test'
+  ...
+# Subtest: real authority transition during QR encoding fails closed education-revoked
+ok 12 - real authority transition during QR encoding fails closed education-revoked
+  ---
+  duration_ms: 3.085875
+  type: 'test'
+  ...
+# Subtest: real authority transition during QR encoding fails closed logout
+ok 13 - real authority transition during QR encoding fails closed logout
+  ---
+  duration_ms: 3.283583
+  type: 'test'
+  ...
+# Subtest: real authority transition during QR encoding fails closed consent-revoked
+ok 14 - real authority transition during QR encoding fails closed consent-revoked
+  ---
+  duration_ms: 3.092584
+  type: 'test'
+  ...
+# Subtest: exact unchanged provider renewal is allowed, without new event or identity join
+ok 15 - exact unchanged provider renewal is allowed, without new event or identity join
+  ---
+  duration_ms: 3.215958
+  type: 'test'
+  ...
+# Subtest: documented trusted-provider contract limitation: stale manifest is not independent revocation proof
+ok 16 - documented trusted-provider contract limitation: stale manifest is not independent revocation proof
+  ---
+  duration_ms: 3.295209
+  type: 'test'
+  ...
+# Subtest: chromium delayed coherent bundle cannot revive after actual independent source denial
+ok 17 - chromium delayed coherent bundle cannot revive after actual independent source denial
+  ---
+  duration_ms: 4447.818125
+  type: 'test'
+  ...
+# Subtest: webkit delayed coherent bundle cannot revive after actual independent source denial
+ok 18 - webkit delayed coherent bundle cannot revive after actual independent source denial
+  ---
+  duration_ms: 1894.681708
+  type: 'test'
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 18
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 32881.873375

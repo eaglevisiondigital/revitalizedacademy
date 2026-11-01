@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: exact core guard rejects bypass role drift atomically
+ok 1 - exact core guard rejects bypass role drift atomically
+  ---
+  duration_ms: 18.265833
+  type: 'test'
+  ...
+# Subtest: exact core guard rejects table RLS drift atomically
+ok 2 - exact core guard rejects table RLS drift atomically
+  ---
+  duration_ms: 4.109542
+  type: 'test'
+  ...
+# Subtest: exact core guard rejects table ACL drift atomically
+ok 3 - exact core guard rejects table ACL drift atomically
+  ---
+  duration_ms: 3.794791
+  type: 'test'
+  ...
+# Subtest: exact core guard rejects original policy drift atomically
+ok 4 - exact core guard rejects original policy drift atomically
+  ---
+  duration_ms: 3.467041
+  type: 'test'
+  ...
+# Subtest: exact core guard rejects trigger enabled drift atomically
+ok 5 - exact core guard rejects trigger enabled drift atomically
+  ---
+  duration_ms: 8.707375
+  type: 'test'
+  ...
+# Subtest: exact core guard rejects dependency security drift atomically
+ok 6 - exact core guard rejects dependency security drift atomically
+  ---
+  duration_ms: 9.314834
+  type: 'test'
+  ...
+# Subtest: exact core guard rejects dependency searchpath drift atomically
+ok 7 - exact core guard rejects dependency searchpath drift atomically
+  ---
+  duration_ms: 7.592333
+  type: 'test'
+  ...
+# Subtest: exact core guard rejects household constraint drift atomically
+ok 8 - exact core guard rejects household constraint drift atomically
+  ---
+  duration_ms: 8.281125
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 178.021792

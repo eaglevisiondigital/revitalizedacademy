@@ -1,0 +1,461 @@
+{
+  "acceptedBase": "2cbd6de16097890f501a410a276308ca5c4e000c",
+  "finalTestSourceCommit": "2eb3080d6e50ae7780308345ebafcb986cc96ca2",
+  "scope": "LOCAL_FICTIONAL_ONLY",
+  "productionAcceptance": false,
+  "alex": "PAUSED",
+  "productionCallsByQa": 0,
+  "node": {
+    "fullRetainedPass": 609,
+    "focusedFinalSourcePass": 8,
+    "preservationPass": 6,
+    "note": "623 executions if summed, not623 unique cases. Full609 includes six earlier A source assertions; finalA8 repeats6 and adds2. Only2A test-harness files changed afterward; all shared runtime hashes unchanged.",
+    "priorSourceHarnessChanges": [
+      "tests/wave8-provisioning/source-contract.test.cjs",
+      "tests/wave8-provisioning/run-combined-pg.cjs"
+    ],
+    "oldReceiptPreserved": "docs/orchestration/issue-56/wave8/receipts/NODE_FINAL.json"
+  },
+  "native": {
+    "pass": 22,
+    "goalHabit": 12,
+    "coherentQr": 6,
+    "denialRaces": 4
+  },
+  "postgres": {
+    "tests": 382,
+    "pass": 359,
+    "fail": 23,
+    "historicalOriginalIsolationFailures": 18,
+    "historicalProfileRoleFailures": 4,
+    "legacyDirectCoachAssertionFailures": 1,
+    "currentCorrectedFailures": 0,
+    "receipt": "docs/orchestration/issue-56/wave8/pg-final/postgres-receipt.json",
+    "provisioningPathExecutionsPass": 117,
+    "previousNineCorrected": true,
+    "clusterStopped": true,
+    "clusterRemoved": true,
+    "unexpectedNewSegments": []
+  },
+  "inputHashes": [
+    {
+      "path": "member/member110.js",
+      "sha256": "8d6881960cebd104b8c1d2e9298e95232189fd119b8326e7edcdab88dd5348a7"
+    },
+    {
+      "path": "member/onboarding/index.html",
+      "sha256": "bf672eb1bb5f936a6fc34e7b76517bc3f21efb89dbfb8d96a13347e07dcbf423"
+    },
+    {
+      "path": "member/onboarding/onboarding.js",
+      "sha256": "c04581828dca9eca3f497d1c8168e47c933a0ebd9e91fb4f3597f4edbb13d1c5"
+    },
+    {
+      "path": "portal/portal-client-lifecycle.js",
+      "sha256": "604f6f94a528921b1a3c4485e74bf23d6e7af363da7a679c58cd72f1c3f28a6e"
+    },
+    {
+      "path": "portal/portal-coaching.js",
+      "sha256": "ae5413969d2b5b4e04b45f22a96f7ae45e79ec3819761c0d4109a74a346f60c0"
+    },
+    {
+      "path": "proposals/issue-61/correction.sql",
+      "sha256": "abceb1378897461bb4faa57fd69acddb60611132924a593c8a33cc5684136908"
+    },
+    {
+      "path": "proposals/issue-61/wave4/correction.sql",
+      "sha256": "2879f97322fc53c679e6cc83c8516795877ff7518541cc05cb3d1f3635bb89f3"
+    },
+    {
+      "path": "proposals/wave5-operations/correction.sql",
+      "sha256": "f3ed018354545d2ef677593298f3b798f0683914a79034dd69ebdcdac39cc8c0"
+    },
+    {
+      "path": "proposals/wave5-operations/revert.sql",
+      "sha256": "d28aa24f562ca97de3a80a61152d13a76580080588b2878ec630d75e6d67af22"
+    },
+    {
+      "path": "proposals/wave5-security/correction.sql",
+      "sha256": "3c3ed1f351e8ffdc687f80fdbf4455197c752e4b988c80a89ed64df39f1e55a8"
+    },
+    {
+      "path": "proposals/wave5-security/revert.sql",
+      "sha256": "083009a044252580062653de07c1af885047a9e7ae074a950d60cf5f233b5c01"
+    },
+    {
+      "path": "proposals/wave6-security/correction.sql",
+      "sha256": "d471396eeee21d4109dcc556b80548a64ce193949ebc1291f33589d698d14be9"
+    },
+    {
+      "path": "proposals/wave6-security/manifest.json",
+      "sha256": "e58057a70b43f2beb254da91beb1a4622f6b64c9570ed7fd402ca4ecd52ff1b7"
+    },
+    {
+      "path": "proposals/wave6-security/revert.sql",
+      "sha256": "e4fa7c9231c4d0d41f8f1ff56a6a9366a92b86b85f7fb69fb80224b09279009f"
+    },
+    {
+      "path": "proposals/wave7-security/correction.sql",
+      "sha256": "4bc3cbef3c6b28e22b2d834ec6d2ba904281d16baffda7b391aaa45af5fa3a9f"
+    },
+    {
+      "path": "proposals/wave7-security/identity-household-revert.sql",
+      "sha256": "79ae86437f473628652f5dad1321515f230f93d17157df154c25d59ea1a288c9"
+    },
+    {
+      "path": "proposals/wave7-security/identity-household.sql",
+      "sha256": "ed92e3db3baca09a7ac901050b9d4e733d252bd89aae8187d04e41a9b9ccc610"
+    },
+    {
+      "path": "proposals/wave7-security/revert.sql",
+      "sha256": "e4fa7c9231c4d0d41f8f1ff56a6a9366a92b86b85f7fb69fb80224b09279009f"
+    },
+    {
+      "path": "proposals/wave8-provisioning/profiles-truncate-revert.sql",
+      "sha256": "29b8016cc9a7a5d638c59a499884964cebd67eacac6aec48b8da890231175b54"
+    },
+    {
+      "path": "proposals/wave8-provisioning/profiles-truncate.sql",
+      "sha256": "276ecd10534e7ad092138d636f449e26beca017349d87a3ccd6fa89ce95cccf7"
+    },
+    {
+      "path": "supabase/migrations/20261010120000_holistic_foundations_pricing_v2.sql",
+      "sha256": "77ffca1959f9c344bb575227b24b092ba63610c0e5a15014c9b60b04e7a63d12"
+    },
+    {
+      "path": "tests/wave3-allowance/current-subset.json",
+      "sha256": "b9e1a1f5a131f438171192801614298f26d8bebb40a63edf609fc34e024bf0d0"
+    },
+    {
+      "path": "tests/wave3-unaffected/member-operations.test.cjs",
+      "sha256": "d94682b80d6f72960ba3939a9a37b8a39888c39344a2a24bbd76102a9a05e17b"
+    },
+    {
+      "path": "tests/wave3-unaffected/qr.test.cjs",
+      "sha256": "38909a0689ded38ffbdbe0b87f131455e1bcb5e4d1173c4f4731eda58a488dcd"
+    },
+    {
+      "path": "tests/wave4-access/fixture.cjs",
+      "sha256": "8c6b33bc65b714249749c4d4bf14e0085ae346b488f2c2bd317a1a4cee3c606e"
+    },
+    {
+      "path": "tests/wave4-affiliate/adapter.test.cjs",
+      "sha256": "7bda6b36683eb0682c6aa25f2850bc3ab49abf4430caebfea2bb21932ca7f3b3"
+    },
+    {
+      "path": "tests/wave4-affiliate/v3-async.test.cjs",
+      "sha256": "36cc531d29b45a66678bf551d768f5f4ab3ad846afe91b53a7080d0185f84d06"
+    },
+    {
+      "path": "tests/wave4-member/continuity.test.cjs",
+      "sha256": "7143f4a73ca830d7f96eb0a71c03f7d766009f25b6f4aa6679078c0185e56cef"
+    },
+    {
+      "path": "tests/wave4-member/modal-generation.test.cjs",
+      "sha256": "52ff178178660573c53eb1efbc98a5a417e509bfc1af5f7753bac4aa0d83b313"
+    },
+    {
+      "path": "tests/wave4-qa/coach-refresh.test.cjs",
+      "sha256": "9b5c422958d5204a137c54f6b9ad4e4906b3d7a85de7cd635a4f86695d326cbd"
+    },
+    {
+      "path": "tests/wave4-qa/member-adversarial.test.cjs",
+      "sha256": "2c4f8b55e24ed2f8fffc92c3c2ff06e4b9781362dfc2927ba01977861e765b7b"
+    },
+    {
+      "path": "tests/wave5-affiliate/http.test.cjs",
+      "sha256": "03329be05c74dd32cc18acc56a0941776a54411ea329c5fce96487417ac84762"
+    },
+    {
+      "path": "tests/wave5-master/coordination.test.cjs",
+      "sha256": "062cb43ad86b51b3efdd7f736c8080744c220d8dc571c2d0f606c754d5f57710"
+    },
+    {
+      "path": "tests/wave5-operations/catalog-overlay.cjs",
+      "sha256": "845f91758e2fb877d3654557a44bae0bc352ab7e4c4f81e8231be3649126cdc5"
+    },
+    {
+      "path": "tests/wave5-operations/checkin.test.cjs",
+      "sha256": "8aaaa89c76da34c828bf72211fd9316123334bd0b4e2920c0c5c9fc0446a215e"
+    },
+    {
+      "path": "tests/wave5-operations/concurrency.test.cjs",
+      "sha256": "1f9e6d6742bbc8979b98c84ed24ec3e17b709694af690c2da6de8cb6dbbc8007"
+    },
+    {
+      "path": "tests/wave5-operations/current-operations-catalog.json",
+      "sha256": "4b582a4d4dca09d1a18fc2c7ef575ccff398dd6ffeb0d59c7f82594f4d50df02"
+    },
+    {
+      "path": "tests/wave5-operations/durable-operations.test.cjs",
+      "sha256": "c65c35c7b6b2a01f3fe388434c7683fd289de8a386f4c4291942a9fa4914e0fe"
+    },
+    {
+      "path": "tests/wave5-qa/coordination-adversarial.test.cjs",
+      "sha256": "d884fd0d0434bccd543953d215727f66fe3078b493ddaa78227580e4631a045a"
+    },
+    {
+      "path": "tests/wave5-qa/http-adversarial.test.cjs",
+      "sha256": "73bab13d5994b8e23e7d80d8c1f9397716cfe1a972e7e091309db2b92eb009ac"
+    },
+    {
+      "path": "tests/wave5-qa/invariants.test.cjs",
+      "sha256": "164e390e88c06a4bc23d8aec14b981b7691249ac95585f5ec06aaf6daf520670"
+    },
+    {
+      "path": "tests/wave5-qa/sql-manifest.test.cjs",
+      "sha256": "96ae9972824fdddb8efa2918f8835fd96b49310eb9a08c4d5f42bed83bebdb27"
+    },
+    {
+      "path": "tests/wave5-security/security.test.cjs",
+      "sha256": "f7cc4a5b1673eb60850672f74ac3b124b9e92555c009663b833efd25fc6898a4"
+    },
+    {
+      "path": "tests/wave6-environment/resource-gate.test.cjs",
+      "sha256": "629537d24de50d4ec6829428556cd953e01805c5db851546f09fe02b2fb91164"
+    },
+    {
+      "path": "tests/wave6-features/daily.test.cjs",
+      "sha256": "d91ccc0e208004114887e86f6bdc49b74d32de8ee54ad619f3506bee2548c81c"
+    },
+    {
+      "path": "tests/wave6-features/http.test.cjs",
+      "sha256": "6c58cec38c53be9800b71f22d98ae5c94cad82a28212993ded4980b3b06b85e7"
+    },
+    {
+      "path": "tests/wave6-features/preservation.test.cjs",
+      "sha256": "b9fd2898c8aa42283184d2b081cc16cf13024b9c61b1ef592e9cce6bdabfb411"
+    },
+    {
+      "path": "tests/wave6-features/progress.test.cjs",
+      "sha256": "4bb6fcb13f360870cbf18ac0fc8838194887d4ac5e6c5349a587ef9d6881b310"
+    },
+    {
+      "path": "tests/wave6-qa/daily-adversarial.test.cjs",
+      "sha256": "a8a11221d9aa9da1c50f6a7b508343e81b92c2459b0659c6eb2fae60ac995a71"
+    },
+    {
+      "path": "tests/wave6-qa/sql-adversarial.test.cjs",
+      "sha256": "9dff37d8759a711d22c46734fe99f194dd8a1ca7d686a6541986bde74b5bfa66"
+    },
+    {
+      "path": "tests/wave6-qa/sql-source-review.test.cjs",
+      "sha256": "ac4779e44c5e13fd0bff60aa30a09dfb2a2ce766ff30538a53b54cf2e35be374"
+    },
+    {
+      "path": "tests/wave6-security/contract.test.cjs",
+      "sha256": "c7114fe3053eb9940d5e7ab588b0b5c9b9d07dd59f4d25046e2d4c2a00d3e7df"
+    },
+    {
+      "path": "tests/wave6-security/household-trigger-catalog.json",
+      "sha256": "bbf2b17ea66da8b18a5c3e3f298e05afd6fb300944a8eb2414aa0aa94558a7b1"
+    },
+    {
+      "path": "tests/wave6-security/pending-access-identity-hypothesis.test.cjs",
+      "sha256": "ac58d159012e0224c0cb8ab40c3489ed87a7c4d9196364c645926623d0a20fc0"
+    },
+    {
+      "path": "tests/wave6-security/security.test.cjs",
+      "sha256": "94bd200eea999ee050708b1336af1cc11349129b31d2dead26656c5ba6f8b80c"
+    },
+    {
+      "path": "tests/wave7-affiliate/http.test.cjs",
+      "sha256": "812938a0ba88c91f56c7c3f234f2b603b70bcd3b2ee1450e1cd4ca763850812e"
+    },
+    {
+      "path": "tests/wave7-affiliate/review.test.cjs",
+      "sha256": "63d66cc1b327df391e0a21db85959eccecabe90e574f9ec81970ec88aa821ca8"
+    },
+    {
+      "path": "tests/wave7-operations/browser.cjs",
+      "sha256": "ef244a53dbb9638515c801d1c2bf792da17cc5412cbbf9e34393996404c3757e"
+    },
+    {
+      "path": "tests/wave7-operations/habits.test.cjs",
+      "sha256": "f5113ecbd9f39f553cefab04c079af7897b6777b2064ddb2fe9bef1b0cf5220f"
+    },
+    {
+      "path": "tests/wave7-qa/guard-drift.test.cjs",
+      "sha256": "b487777ff4ee28e48b587c900733c47f807fc0d24aeffcd8be6fc36d879466e6"
+    },
+    {
+      "path": "tests/wave7-qa/member-adversarial.test.cjs",
+      "sha256": "609e6b1195a8844a7b897d9b52f6970c2478475281fcc4d51681b4affe75ce47"
+    },
+    {
+      "path": "tests/wave7-qa/preservation.test.cjs",
+      "sha256": "6ac7a9901119f5ba0a520fb8c05a2bb6ac0d5969b369b76404a60b904eab8a99"
+    },
+    {
+      "path": "tests/wave7-qa/share-browser.cjs",
+      "sha256": "8bba97b33a67dc6233236b30c47555c46103184d7dfabfd9e623fa0b4581c589"
+    },
+    {
+      "path": "tests/wave7-qa/share-http.test.cjs",
+      "sha256": "3a2af1e84c32b9b809e4fb7adf11474c7180e0d86649157af711cb38f0d7719a"
+    },
+    {
+      "path": "tests/wave7-qa/sql-precise.test.cjs",
+      "sha256": "0c99de889771d97f4f38b0182dc4e6e6f15c38412b8ea9d25323763eeef7481a"
+    },
+    {
+      "path": "tests/wave7-security/access-household.test.cjs",
+      "sha256": "c9e52a8163a2c0395066069b3fcd34e70e99d07259b3c1477a8de6de835ecb00"
+    },
+    {
+      "path": "tests/wave7-security/catalog-fidelity.cjs",
+      "sha256": "d4e190950bf244253b649c775a01d902edc62fdece9321f339ba5b6b94220e0b"
+    },
+    {
+      "path": "tests/wave7-security/durable-operations.test.cjs",
+      "sha256": "6a87990407293d53ba4ccabec64fd2f0d6dfd292a0f5df5e99d69721600df993"
+    },
+    {
+      "path": "tests/wave7-security/guard-representation.test.cjs",
+      "sha256": "d7eb32b8c777a32e88e3894a5abc1b64d28260478d83a22bd60f1b87d20b1a48"
+    },
+    {
+      "path": "tests/wave7-security/identity-boundaries.test.cjs",
+      "sha256": "59dd602ee6794e97a0f846282d8f6f0bbc186b768a78392ad2bd4a218cba7a59"
+    },
+    {
+      "path": "tests/wave7-security/parent-household.test.cjs",
+      "sha256": "d6bc1e94eb79b7a1eeb6b86e3bb344fc81238750ef28dde92d8e4b11095a7189"
+    },
+    {
+      "path": "tests/wave8-affiliate/browser.cjs",
+      "sha256": "9cfe58020238c46ce157fa10104c5246808efcc86e8c982349b90a25e7c04d4b"
+    },
+    {
+      "path": "tests/wave8-affiliate/http.test.cjs",
+      "sha256": "c2ee208fac876fb118bb81b67a5b77ecc5def640d09dd1613c26699b98008416"
+    },
+    {
+      "path": "tests/wave8-affiliate/reviewed.test.cjs",
+      "sha256": "986cc68829cb85949a24032045a2f35aa04c847bb22176e0b3d0119a9e9b403e"
+    },
+    {
+      "path": "tests/wave8-operations/browser.cjs",
+      "sha256": "054f628c2d5502cbde0d8ac9a5299ee33db126ad7346de69c5999a4f1a02509f"
+    },
+    {
+      "path": "tests/wave8-operations/goals.test.cjs",
+      "sha256": "51e6a5b6f0bf8da9ca51aec5010b6627d411d467b11316822f218535fe97917d"
+    },
+    {
+      "path": "tests/wave8-provisioning/profiles-boundary.test.cjs",
+      "sha256": "e6b38444a319e11e220dd76b76eb83bd3ded10a6df6cc4d60bd9713494560e5f"
+    },
+    {
+      "path": "tests/wave8-provisioning/provisioning.test.cjs",
+      "sha256": "180349fa60a3b215c4a78746b79bb3cd308663c294f22c7d2e64069ca8ad5c98"
+    },
+    {
+      "path": "tests/wave8-provisioning/run-combined-pg.cjs",
+      "sha256": "3f496823ab643ea7d142b981119fb506442e61a830e97c1825e22111e2f6cc07"
+    },
+    {
+      "path": "tests/wave8-provisioning/source-contract.test.cjs",
+      "sha256": "ca2ffa88b2bef3e7e2e47305f3bd73fb793685c227d26ed5517ee6259da2c0a5"
+    },
+    {
+      "path": "tests/wave8-qa/coordination.test.cjs",
+      "sha256": "9b2d6f13b987a20f6f6ed270083953b1380a41b84f829277fed2ca0980daa0c6"
+    },
+    {
+      "path": "tests/wave8-qa/goals-adversarial.test.cjs",
+      "sha256": "9d7a81a83f4448f1875948baeae5a23a876d4fed0c0ca870c19b3160fb769271"
+    },
+    {
+      "path": "tests/wave8-qa/matrix.cjs",
+      "sha256": "07ee5cbadd8a938d53d6a21cdb1d5ebb32097e2a8d100126a8b2551d71435880"
+    },
+    {
+      "path": "tests/wave8-qa/preservation.test.cjs",
+      "sha256": "98f25cf0e1c085192e944788fcdf3ffbac804c2c40ae07f11f63bb37271f0056"
+    },
+    {
+      "path": "tests/wave8-qa/provisioning-adversarial.test.cjs",
+      "sha256": "771b6f55058b64784fb2d982a002b72187c979b52fac16e66315c3c2434ec876"
+    },
+    {
+      "path": "tests/wave8-qa/run-node.cjs",
+      "sha256": "d8a07ed558c21fc935cd44ae7b2c6fc2a6b47f2553252d00bc519b4c366b746e"
+    },
+    {
+      "path": "tests/wave8-qa/run-pg.cjs",
+      "sha256": "9dc3c4c76ce35e5962ede9df8161eecd024c74d9b494fa0c2e08d87443ce9992"
+    },
+    {
+      "path": "tests/wave8-qa/share-adversarial.test.cjs",
+      "sha256": "0bab3754316de53b075258bba1f6214453e886723efdd3485f3a418a690a6e6b"
+    },
+    {
+      "path": "tests/wave8-qa/share-cross-action-browser.cjs",
+      "sha256": "baeef4169a50e9b1ec6c0391b53eae7a5ec7968eb1694e7d4f029c9d2e1440a1"
+    },
+    {
+      "path": "tests/wave8-qa/source-hygiene.cjs",
+      "sha256": "8a54b9a26e92e082b429657b9bbc9302b40fd7cddb396589bde30ee4d665cb1a"
+    },
+    {
+      "path": "tools/affiliate-share-preview/adapter.cjs",
+      "sha256": "afdda7ee71425928f4648ea18081bf194ffc011082b68acee3a96bbfdab9e9a3"
+    },
+    {
+      "path": "tools/affiliate-share-preview/index.html",
+      "sha256": "13abfaf3df1dcf3034b11e19a2b96dbfa79ed76e5ea3fdbfbdaf46cd95a35918"
+    },
+    {
+      "path": "tools/affiliate-share-preview/preview.js",
+      "sha256": "e8e92c5a9beda66a5b93f114c0488887c2bc96dc62a316ce75fe9364b5adc65d"
+    },
+    {
+      "path": "tools/affiliate-share-preview/server.cjs",
+      "sha256": "f40321ac9c6c3bdd9a856606925b8987cde8773036f604bdf5d769ea92254912"
+    },
+    {
+      "path": "tools/coach-companion-catalog/async-fixture-adapter.cjs",
+      "sha256": "053043d5576767756dfd5b567959f6642f22fc522a5ae9ab2c356dd5ad619501"
+    },
+    {
+      "path": "tools/coach-companion-catalog/index.cjs",
+      "sha256": "5ac8a0d1f5cfaab995c937a8685cdbeb5fcc71fe7bce0316f60cf7d0b1734266"
+    },
+    {
+      "path": "tools/rva-coordination-gate.cjs",
+      "sha256": "bcc2b0269dfc89d525454fa7b75b9b1d77ccb3f1e79a380d80a0369e72697e30"
+    },
+    {
+      "path": "tools/wave5-fixture-providers.cjs",
+      "sha256": "6258f9bddcb2661715679d2cf9426b885548da9bd91cfd7aad3d0f1134df7ef9"
+    },
+    {
+      "path": "tools/wave6-progress-contract.cjs",
+      "sha256": "9a1a8339cae5ad577935a6bedbe2810c105c64a688f79f46f422945afc4bdbfd"
+    },
+    {
+      "path": "tools/wave7-share-review.cjs",
+      "sha256": "864d3b2c662cd8e3e47ae18af3a750fd831c1e77ca6b9ff07c6dcdb7147ba66b"
+    },
+    {
+      "path": "tools/wave8-reviewed-share.cjs",
+      "sha256": "a0a8c043dadc6d50a93e4b83f49982ab04f6e3dbdae011cce1990b49feb2df63"
+    }
+  ],
+  "matrix": {
+    "PASS": 1,
+    "FAIL": 0,
+    "BLOCKED": 45,
+    "NOT_RUN": 11
+  },
+  "harnessCorrections": [
+    "coordinator state wording",
+    "invalid preservation extraction bounds",
+    "actual Auth trigger exactuid prebinding expected instead ofnull"
+  ],
+  "realInitialDefectsPreserved": [
+    "verified absent identity left protected document mounted",
+    "authenticated/anon profile TRUNCATE allowed"
+  ]
+}

@@ -1,0 +1,66 @@
+TAP version 13
+# Subtest: independent actual account claim binds exact original source and audit, no paid privilege
+ok 1 - independent actual account claim binds exact original source and audit, no paid privilege
+  ---
+  duration_ms: 62.799209
+  type: 'test'
+  ...
+# Subtest: independent revoked invite claim leaves original household and null ownership unchanged
+ok 2 - independent revoked invite claim leaves original household and null ownership unchanged
+  ---
+  duration_ms: 13.420375
+  type: 'test'
+  ...
+# Subtest: independent current identity remains required after foreign profile association attempt
+ok 3 - independent current identity remains required after foreign profile association attempt
+  ---
+  duration_ms: 13.43175
+  type: 'test'
+  ...
+# Subtest: independent successful claim rollback restores exact source and all audit/consent counts
+ok 4 - independent successful claim rollback restores exact source and all audit/consent counts
+  ---
+  duration_ms: 12.208792
+  type: 'test'
+  ...
+# Subtest: independent changed verified Auth email does not inherit prior claim eligibility
+ok 5 - independent changed verified Auth email does not inherit prior claim eligibility
+  ---
+  duration_ms: 11.512333
+  type: 'test'
+  ...
+# Subtest: independent expired original invite cannot be revived by new actor metadata
+ok 6 - independent expired original invite cannot be revived by new actor metadata
+  ---
+  duration_ms: 12.20725
+  type: 'test'
+  ...
+# Subtest: independent effective profile UPDATE ACL denial survives permissive self-policy
+ok 7 - independent effective profile UPDATE ACL denial survives permissive self-policy
+  ---
+  duration_ms: 8.018459
+  type: 'test'
+  ...
+# Subtest: independent direct authenticated TRUNCATE profiles is privilege-denied and retains all ownership records
+ok 8 - independent direct authenticated TRUNCATE profiles is privilege-denied and retains all ownership records
+  ---
+  duration_ms: 7.599167
+  type: 'test'
+  ...
+# {"role":"authenticated","profileRowsBefore":12,"profileRowsAfterAttempt":12,"denialCode":"42501","rollbackRestoredRows":12}
+# Subtest: independent direct anon TRUNCATE profiles is privilege-denied and retains all ownership records
+ok 9 - independent direct anon TRUNCATE profiles is privilege-denied and retains all ownership records
+  ---
+  duration_ms: 6.870417
+  type: 'test'
+  ...
+# {"role":"anon","profileRowsBefore":12,"profileRowsAfterAttempt":12,"denialCode":"42501","rollbackRestoredRows":12}
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 214.803125

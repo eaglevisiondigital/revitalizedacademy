@@ -1,0 +1,597 @@
+{
+  "scope": "Final and explicitly labeled historical QA evidence; source audit manifest excluded to avoid circular hashes",
+  "files": [
+    {
+      "path": "docs/orchestration/issue-56/wave8/EVIDENCE_FORMAT.json",
+      "sha256": "5ced992fe1cd4f3e4628db43e906514e674b4aed241dfedefb7a592d4373811f"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/EXECUTION.json",
+      "sha256": "cba436fb0870e312a45d4f0f66cc4561a8ac406c9013426acb6da0e355aef177"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/PRESERVATION.json",
+      "sha256": "a5577f743ab44734f73c3316b919b3388c6a6c2b57039908278fd4d115c6eb50"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/PRIVACY_CLASSIFICATION_QUEUE.json",
+      "sha256": "4aa30867c4fdc34bef64d4e71f348b4eb4ed7affd54e0f0f32f531310ef2385a"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/REPORT.md",
+      "sha256": "77e9e19e5a74261ebf0b1d20787fca744a603590f6916405c06ca365b0054ef2"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/RESULTS_MATRIX.json",
+      "sha256": "f8224f2347e80f23be1272df772da2c5043585b4c2d298ca4b9f149bfb5eb0b3"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/coordination-master-state.json",
+      "sha256": "0b43d25f5f4c456696d501d0b6868871136567e11870c59e9a3adbd34f2c1428"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/coordination-native-observation.json",
+      "sha256": "1e62593e3f5c7289b8d4b66c5a3e559670023cc1963b1f32ca724dd05c83eee1"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/access-household-hypothesis.tap",
+      "sha256": "3d4dfbc83c626664f10db7bdf74073c68c6ec5db1cd89e2c94aeeaee09f78e3c"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/access-household-original-baseline.tap",
+      "sha256": "21d952f10a482de08f9c694f9f9899359ca07a48148eee884bfdc35198565033"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/access-household-original-baseline.tap.raw.gz",
+      "sha256": "1fd6ad25468337906302d312cc5a2098dc40b51df161441cc05422ed9a1c9e7d"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/access-household-original-reverted.tap",
+      "sha256": "09acd761a527fd64a3f700b6766baf7c52fbe1c7a0db2ddba4ada0bb2afade9f"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/access-household-original-reverted.tap.raw.gz",
+      "sha256": "e43ba84be0ae4d2676ce6feee22241276c9f6f7943cd09a5081611d098b19f4d"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/actual-provisioning-baseline.tap",
+      "sha256": "5fadc3ce2fca627d98aec0930e7ff11136c840ef7a47ad7d9b1bd1e4e8f3d753"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/actual-provisioning-corrected.tap",
+      "sha256": "9e1055a66438f023ae0fba726fcee805f3396aca45c245eb097d22a56d0df598"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/actual-provisioning-reverted.tap",
+      "sha256": "f106a967d9f451421b510b609452b7facbb2087ff64787d7a44e0e94d5004bc9"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/author-wave5-security-compatibility-hold.tap",
+      "sha256": "19d9bf6fe0c3925c1a5c553283a736f6af3fba7882d3e53fb4fa312078e50e42"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/author-wave6-security.tap",
+      "sha256": "2e19a1ab753b888394bfa260729b1e8319ae2cde1601edce8cbe7e0edbe59808"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/durable-checkin-assignment.tap",
+      "sha256": "b5dad2c7ce18c161573b9d9265c4ca5d4a252b775680627520969b2c6c31d3f9"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/household-constraints.txt",
+      "sha256": "81c67c3f5d77a77c51ed2da390329e5fa00b197f874484a096574992888d27ba"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/household-constraints.txt.raw.gz",
+      "sha256": "043eb4d8e1471d7f9f875bbb575bbadb2cd0e4367a4fd3a6d3974b89f7d1d8fc"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/identity-original-baseline.tap",
+      "sha256": "3d7f295fa3c054bba080e85a327e38e0510c597ba691691f1ff8023874626284"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/identity-original-baseline.tap.raw.gz",
+      "sha256": "e2c5f718496818add50f104acfec5e25580c17d59868208f0f7dd1a9e841b151"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/identity-original-reverted.tap",
+      "sha256": "5c83743bc3f2b7aea1a75a835856a16ed5151a45248faafb49eff703589d5dfb"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/identity-original-reverted.tap.raw.gz",
+      "sha256": "6b5bc52bc5fe21ce9539cec29ad92d199253f59dac9f2a20a2f7774cf97aad9e"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/independent-exact-guard-drift.tap",
+      "sha256": "8a95ba1e825b0af9b654a474aea1bc63ee0a4b7f2a5795a51e1503cfee72384a"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/independent-new-precise-denials.tap",
+      "sha256": "1324a1784ff0c2a29c71a5c2becc4279fd5bc6ef9cd36a1dbd6c1bb36d7a7a9f"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/independent-precise-denials.tap",
+      "sha256": "00c5eca795428b42fdeeda9d4f555d0c3730b39c231c062b31f28804f3f121fd"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/independent-provisioning-profile-boundaries.tap",
+      "sha256": "54982dcd34a484b12d6226b4fd8f1525acd620974c99f092087bc8053ec541d0"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/independent-provisioning-profile-boundaries.tap.raw.gz",
+      "sha256": "079e51fcdb0f2aa33fb3993e56bcbd2577ecf1d474da3ae57196f5063e903b5e"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/new-identity-boundaries.tap",
+      "sha256": "7b171004ddbb5d9465c35f58658c8f590bf16e9be59b65cb2604f2f7b0114c72"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/original-five-baseline.tap",
+      "sha256": "43b8c3f2b8d322ebea26d1c894ed121047a4b93d4bcf0800ec82075e29deb866"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/original-five-baseline.tap.raw.gz",
+      "sha256": "1eb5e0e61ef2056143711d80079e381f0421c90aafb02c01c1b7b6639a53f0ff"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/original-five-corrected.tap",
+      "sha256": "583ce5e59a0fdb4c88f1dd9f9c86b3eae837e3117b513bd32edb67a033171763"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/original-five-reverted.tap",
+      "sha256": "b14aa88fc0770a6554aaf31f21083183cfe091292617e1a58b0d1534400b59f5"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/original-five-reverted.tap.raw.gz",
+      "sha256": "85a59cc9347e6ab28c646832b52dee6bb13fc5590221a1f55789a2e874a4a8eb"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/parent-household-hypothesis.tap",
+      "sha256": "de5d5f2b9f55c0afdef85bbc120ca960574500efac221bec51cffac6678add3e"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/parent-original-baseline.tap",
+      "sha256": "16f1420907ecf94ed35bd4a621a8cd0e9c1ba1466160b41c2debead0c04d1812"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/parent-original-baseline.tap.raw.gz",
+      "sha256": "22297ea0388be103acb579b8884101bf9c11349e38d10d1610299c85cc33c7d9"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/parent-original-reverted.tap",
+      "sha256": "463df625dc51229023cda4f70970adc5e70bd1940e2223cf1f0b33c8ed8b1c4d"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/parent-original-reverted.tap.raw.gz",
+      "sha256": "b0927168bbebd020c27e975d436b3a7882d6569f98ccc44618f132fb2533a8c2"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/postgres-receipt.json",
+      "sha256": "72dc94dcec268721d946277fa919dfcd190b9c02ebd9eed04628b425ba0cc5f8"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/separate-identity-hypothesis.tap",
+      "sha256": "4f56c835a5eb1d2ac99bc4e0a0077eefa3431ec289996b7db5f104c023aa1894"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/usage-concurrency.tap",
+      "sha256": "c7694ed1e0b3a7b769afeef416825b4ed9ce8fee0d76c9319c2fe6a0e22de73e"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/wave4-independent-regression.tap",
+      "sha256": "350065ff59b18e7bb56ba1bde3efe8e79beae9b655cd828b5939088c3f1b60c0"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/wave4-regression.tap",
+      "sha256": "bbbe729a4d59c6a9d212371c08b6723be77b047783273dc72e7bcb557b45ae80"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/wave4-session-regression.tap",
+      "sha256": "dedc5f974797f6114ce9d22e76ed47b9171b9691d6c7e93c95bd3157d6957246"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/access-household-hypothesis.tap",
+      "sha256": "9666f9e020326b1030263625dcef59bb3fe1edf4cbcb286578c27766bbd900ec"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/access-household-original-baseline.tap",
+      "sha256": "f03b7cb635e5e06fe6be31be22303d257895f2863c1ba69238afa5d48f2e8a67"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/access-household-original-baseline.tap.raw.gz",
+      "sha256": "4fd2570fe8e930d537b2f4eeb1c3ae4013726c8ec10777abd448a98406e4f462"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/access-household-original-reverted.tap",
+      "sha256": "4a9990588d2860720f98e9ae7b9d89998515c4fdbdae84b9bc997084ebba9cf3"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/access-household-original-reverted.tap.raw.gz",
+      "sha256": "42be6f05a398a234abea80cc4bf1a43ffa27e56173cda2f9c4d8388cd17e066f"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/actual-provisioning-baseline.tap",
+      "sha256": "abd8ec203383eaeec9cdb826ef7c104a9258594e4c14f2c54da50c1b35da7038"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/actual-provisioning-corrected.tap",
+      "sha256": "7ab71121063d16c72ee013ddafa27e3d324650ab8174aa883c344b5858b99414"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/actual-provisioning-reverted.tap",
+      "sha256": "76fc0523822d62e218fd3e453ee1ed7c8f72b392c2938e96993a23018309c727"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/author-wave5-security-compatibility-hold.tap",
+      "sha256": "c27fcb5ab41b344df447baa3c1cf36560f79ce17ccbb88ea2981e7ecb5c922ba"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/author-wave6-security.tap",
+      "sha256": "938a4e7ff6c7249438297df4f849a8bf65f2c34afa4cf991a21764b38e8dd3f2"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/durable-checkin-assignment.tap",
+      "sha256": "2907e83418e3307d98f77fc0a12b2e14f9baf7157636c3b3a507ac0cb42b8981"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/household-constraints.txt",
+      "sha256": "81c67c3f5d77a77c51ed2da390329e5fa00b197f874484a096574992888d27ba"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/household-constraints.txt.raw.gz",
+      "sha256": "043eb4d8e1471d7f9f875bbb575bbadb2cd0e4367a4fd3a6d3974b89f7d1d8fc"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/identity-original-baseline.tap",
+      "sha256": "ae13d2e191e7ee8b6f1eb37cfe9e016aa49c513120058d2cbc96649e7a794502"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/identity-original-baseline.tap.raw.gz",
+      "sha256": "d136e519433b189db88a5c8c3e08dd8f32c3b6ef7a170b0b07a27eb372995af2"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/identity-original-reverted.tap",
+      "sha256": "3c00c9288367413a1df92f65c4b1a74422c45bcf9082b0ee2754a317f71f8db6"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/identity-original-reverted.tap.raw.gz",
+      "sha256": "c34d500e664e60cc8fb141f6aec3a35590f59a52dba66a7474ecdb16809d0a0a"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/independent-exact-guard-drift.tap",
+      "sha256": "b9ecb6b537889a360498725be73bec3e49eef10441a043de491ceed35843d38c"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/independent-new-precise-denials.tap",
+      "sha256": "5984787c833479db7f9e9e5f4829dfc8f67cfd96b2b46b2a275c2efc31425fd3"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/independent-precise-denials.tap",
+      "sha256": "d66dba48897b6387965ba6391384d7be86a51e84665aad84019499b52556156e"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/independent-provisioning-profile-boundaries.tap",
+      "sha256": "a997edf44cf6fe41564e0298cda489745126f539f990d3817f48c16ca3635532"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/new-identity-boundaries.tap",
+      "sha256": "a22352bc47ccd99afaa2cbc4744cffe1a3a65d4b5923cd1359bde2e0c621460a"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/original-five-baseline.tap",
+      "sha256": "2351875c23fdb1cbf18381c595d534d9182952ef3c0217c6e80925321293f64a"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/original-five-baseline.tap.raw.gz",
+      "sha256": "3eada7b27e6704ca982a8116fea164510a13f5be78d2b12bdc66ec023ffb5a4f"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/original-five-corrected.tap",
+      "sha256": "fc995085cf5853f2159f8e79a053554c21107bcc54780179a6c58ef04164ebe8"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/original-five-reverted.tap",
+      "sha256": "acd07dba798491d33285a9675a382981b55762e7e5182e0906239d851b139c5f"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/original-five-reverted.tap.raw.gz",
+      "sha256": "1df38bc3ddea5bd2bf189d5dd7b37e5d79495a800cdae7b5747c336838ebd147"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/parent-household-hypothesis.tap",
+      "sha256": "40faf81b5b0c5d2dd1383cbf930ff0469eb0aa3f640e94c857ade06b26d65a5c"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/parent-original-baseline.tap",
+      "sha256": "354ec55139bcc08dbe3db8f7e2e2a54364d63675db1eaa2d757af2e476c04c53"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/parent-original-baseline.tap.raw.gz",
+      "sha256": "c9f065deacb97177ba916eadebbc9d252d37a8670a568cdac49fe7257dbc4110"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/parent-original-reverted.tap",
+      "sha256": "3d43e804b98f9a52e85b4c094ec5553cec483220ffc480a963dc241d58f27226"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/parent-original-reverted.tap.raw.gz",
+      "sha256": "bc3cc952cf00ea941b745a171aa73b15eb025d314c5bd46b38ddea8e015e9cca"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/postgres-receipt.json",
+      "sha256": "3f3ee56c045ceb50a7dbcdf86b341937e1ec7524d544b64ec85694c1a0a2a3ee"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/profiles-boundary-baseline.tap",
+      "sha256": "e828aa822337027343b06f56c45ee1c178c6eab1a8736cfc5be71b56adf4db44"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/profiles-boundary-baseline.tap.raw.gz",
+      "sha256": "167135d85c3d97735aa5f2c56e29081520b15c1668777f372e2c9822535ae4c6"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/profiles-boundary-corrected.tap",
+      "sha256": "15cbff3864c5fa31adaea37bb13cf3376b8096414a5690ade1f807499ab9d523"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/profiles-boundary-reverted.tap",
+      "sha256": "b7ec131cca8bc4a002d751c1036505a36ec6b9e08ec5cc1ff4cc58f611a0838b"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/profiles-boundary-reverted.tap.raw.gz",
+      "sha256": "0f6f5002c9f5d3f7517103392ed661064cc0cd7f780fbd1791fcbfcce9e0b922"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/separate-identity-hypothesis.tap",
+      "sha256": "de8f31b2090d7dfb2ff8a9d41615ee7fe2d7ac03fd00c326f7d110926ad84cb8"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/usage-concurrency.tap",
+      "sha256": "54245d70de5a73047a20284d086d94342ad11722e71322387f9d5e8f96817943"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/wave4-independent-regression.tap",
+      "sha256": "ee8598217b563cd28aec886730ddbcc86316b3cf90369c3eb83492d58837bd17"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/wave4-regression.tap",
+      "sha256": "91fdf954affe6bf95284a02763ab849e008182f9f87e2b3d4ac11df683a938ee"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/wave4-session-regression.tap",
+      "sha256": "c85d3746dc9c6fb58805adb9ca62dc39b2089afe71e6b792d426f65c651fa164"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/access-household-hypothesis.tap",
+      "sha256": "1048a936bd7a5f56f97252f8855af8af31f34ec3dd898c233a14dc38637e2e70"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/access-household-original-baseline.tap",
+      "sha256": "92116519d1456b56b7225cc6c99775d437737b498545d5e5d1fbc514c5cb0dd1"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/access-household-original-baseline.tap.raw.gz",
+      "sha256": "c47e2554fa3e97522524d5441b4c3c6ba7997d9b3173201466d3bd5502881371"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/access-household-original-reverted.tap",
+      "sha256": "6631e137821e55f8e44834475d336279b53be77c2ab63f549fbf8c5c08aa61ff"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/access-household-original-reverted.tap.raw.gz",
+      "sha256": "2da88902a5f42a3885de9b7900e2bde2370b7bc1d1a793966820b779d648402e"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/actual-provisioning-baseline.tap",
+      "sha256": "f6cf92c6aaafedcad5aec5fde5b296c6647e1a70e7aa9f3e825baa9ec60d93bd"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/actual-provisioning-corrected.tap",
+      "sha256": "756eeab4a9a3fd140b9a5173dccc1a59bf0ce1815cd003daddb99c1c96e70af9"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/actual-provisioning-reverted.tap",
+      "sha256": "25b57d5e0718cc9204d5934f23e746a19c7c40efc18c3ddb357297277996ad50"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/author-wave5-security-compatibility-hold.tap",
+      "sha256": "2d146906aec068252bf5880ca0f44d98a1453735a99300725f45a60bc96e3380"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/author-wave6-security.tap",
+      "sha256": "f642dde4adfadc6692c4eb9efe5b319b8929d4febb75cb8889978a80871b6527"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/durable-checkin-assignment.tap",
+      "sha256": "43c2f8bff5efcbf91d0bdcb1ccb9a8432666e26f5057c380de99dbf79af15f85"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/household-constraints.txt",
+      "sha256": "81c67c3f5d77a77c51ed2da390329e5fa00b197f874484a096574992888d27ba"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/household-constraints.txt.raw.gz",
+      "sha256": "043eb4d8e1471d7f9f875bbb575bbadb2cd0e4367a4fd3a6d3974b89f7d1d8fc"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/identity-original-baseline.tap",
+      "sha256": "9e0ef40bf80de5ea9d7639034c589b2dd8b6d018b5496ba57f8dcce71e7bec77"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/identity-original-baseline.tap.raw.gz",
+      "sha256": "3bb969bb58b3900d51ec94a1eb9f29d6d08430e88ae37076436652775ded47ca"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/identity-original-reverted.tap",
+      "sha256": "9c1b1b1e25fcdc83a531bbbb042a999e11c99b267263cffe253e1f1f83dd4f00"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/identity-original-reverted.tap.raw.gz",
+      "sha256": "eb63f03f12559f7976397adcb1faed95287b0918e5da5dbc6c3b34948b631496"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/independent-exact-guard-drift.tap",
+      "sha256": "2a663d6da4393ae7e5e58ea7e5480ac54f2f740d726d202bf2b4ebe93925d30b"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/independent-new-precise-denials.tap",
+      "sha256": "7c76e2a324c0f7a2ae43140dab6d89e2bd1da78f7b340147cad07f38f42766f1"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/independent-precise-denials.tap",
+      "sha256": "d944aa8f7376b7a952504a2385b330832e3a2776e2494f6cb9b64c71a9e0181f"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/independent-provisioning-profile-boundaries.tap",
+      "sha256": "a5703562be3425585afdb72ca25e3c43138f1364b46cc155738edb0ce1d7b8f7"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/independent-provisioning-profile-boundaries.tap.raw.gz",
+      "sha256": "6f655381e6d6cfbe61590e8a21d57429d6849edf6f863def90362edf902fa8d3"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/new-identity-boundaries.tap",
+      "sha256": "682b72e570a60d693f0397261477ffe4befb8dddbc81bb176a59b05512dc6b80"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/original-five-baseline.tap",
+      "sha256": "65c7548c11929a9eac0ae4cf390189ad7482b9c674264a3ea9400998e5ef8ecb"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/original-five-baseline.tap.raw.gz",
+      "sha256": "7f3769965e2d6e52650005372723136a2453aa79cf8617d007dd2ccab716569f"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/original-five-corrected.tap",
+      "sha256": "9a03de88ab9c34907e777c8df2c57d63302f57d03ce029418228e6d58b225cdd"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/original-five-reverted.tap",
+      "sha256": "4b25eabf31d542e8d0e75aa1f2d96997439effcc3ef18270ca543f5060e07796"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/original-five-reverted.tap.raw.gz",
+      "sha256": "79611b6f4efb7eab6865e5e356d783351e9d32045633a99a49bdf01eb0c90a49"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/parent-household-hypothesis.tap",
+      "sha256": "0ee67a1d016a0ca30a07593c2f8f493283c2dabb4b67bf3b15ab76296bf2871c"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/parent-original-baseline.tap",
+      "sha256": "26a130481a1ebe702b0ae741117776842bdf7a641267215c39306653a64248f3"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/parent-original-baseline.tap.raw.gz",
+      "sha256": "75d48a1f91820754cf718f6def28b741751779ed150195a29c0bf90aea8ebc0a"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/parent-original-reverted.tap",
+      "sha256": "d8fc1619821cb7ef992f0b572183e77c25aee3cf2a16f0003d9fec360df0dfcd"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/parent-original-reverted.tap.raw.gz",
+      "sha256": "702e14ace2ee277f0fa11ea8eae4487ffcddd23b7907af17ccd15711cd8bba78"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/postgres-receipt.json",
+      "sha256": "e0e0dfe725eb438422d0db266065c0fc588917973a9725cc54247689c36b488a"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/separate-identity-hypothesis.tap",
+      "sha256": "d06c91cf44b719caa80841082f45fa6358d286eede4b1dff2f52a9cbc0025e61"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/usage-concurrency.tap",
+      "sha256": "4421bc2773f43599042830b00d9185e3327ac53c7d4c14d82bc347abbbcac5c4"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/wave4-independent-regression.tap",
+      "sha256": "e3bbb35122dadb8e463b269e3a0625d496d250374a585950ca78785242d7b087"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/wave4-regression.tap",
+      "sha256": "5b864fd43e59d20c40b40a1a70ac375d2c005c2d0315291051bdf072b240a42e"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/wave4-session-regression.tap",
+      "sha256": "0772a5a1758f16cc94aab9a1fce8454bd7d29370d294e66342d6ef1a7ff89e21"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/receipts/NODE_FINAL.json",
+      "sha256": "6e2e4a65859a4e984022cb7b0247bdf168efe650ef697e4d8f5a15526708b041"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/receipts/NODE_FINAL.tap",
+      "sha256": "7d58d509c6030c5435777ccd9af7458b4729fe6150b915ddc8106bd4f3c4e949"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/receipts/a-final-source-contract.tap",
+      "sha256": "7f0247efe19d8350b2144eb2f6c5aac95f6b62387af6ec773a043853c259243c"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/receipts/b-corrected-independent.tap",
+      "sha256": "8d5dd45a06b13129b86d87119bfd4f57f888c39e0120d8eb2b1cb0396da2d34f"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/receipts/b-initial-independent.tap",
+      "sha256": "9d7e2f12332b52144a386ecc823ed9622f69a2cf53db2b5a0ae0dd671dd213f5"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/receipts/b-initial-independent.tap.raw.gz",
+      "sha256": "ca2b147c7488727b6b80f965b218d055d580e5146c3380a08ac38349409740ea"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/receipts/b-native-final.tap",
+      "sha256": "0baaa01c258313374659ccf3ae2f368bd5d67e60511c2190cb0cf0e06df922d5"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/receipts/c-adversarial-native.tap",
+      "sha256": "eca0c351de526e1988a206354aa9a4350d9f5e3fdc8aec32af562cd750a49ad7"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/receipts/c-independent-node.tap",
+      "sha256": "9b0bf4aed52f0067a253f886103e7c1d7414ba058f9010d68218846048aa8ecf"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/receipts/c-initial-sandbox-block.txt",
+      "sha256": "16dee495bfea1ec260a9e11f5de4740d4fe7315a4bcaa0424d1dfac2d3873f09"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/receipts/coordination-initial-harness-wording.tap",
+      "sha256": "5835fa66e4c0cf775510f2d0bd8522f6672ce722ffd6ef7d50db3f5e8183dc4f"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/receipts/coordination-initial-harness-wording.tap.raw.gz",
+      "sha256": "1e0d435774982e295d8f31476f238a36e058e610d3c5b769d3da6cf6437460db"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/receipts/pg-combined-stdout.txt",
+      "sha256": "b5932a0a226e1e7182e362f2be1d801b403e076cc591049b9eb0f03f02fd24e0"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/receipts/pg-final-hold-stdout.txt",
+      "sha256": "72c485a50993e1d13de56b5bc3ee7b96478307046342e9794138f44505b7ca32"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/receipts/pg-final-stdout.txt",
+      "sha256": "b26691b79fa754c2c1d10900d45ad2b6b69e8858014608962b2b36871c4db081"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/receipts/preservation-initial-harness-boundary.tap",
+      "sha256": "02a4ac3da2722141e7baf961da20ed4076116634eb9d0d2d46c3fcc7522b8182"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/receipts/preservation-initial-harness-boundary.tap.raw.gz",
+      "sha256": "56d1c3e3d2802c0ed2e4c5f0c522e3dc6250e3a1a2681a9bd85d71b76a6b4e14"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/receipts/preservation-second-harness-boundary.tap",
+      "sha256": "383e56e9fe7cdde7516a9ffb1578e243cf116f13aee73f2cbb01d2483ac305d5"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/receipts/preservation.tap",
+      "sha256": "63a75f22c2c81441c6f3e63af275029032561201c8c2a1c4892496cba4a129e6"
+    }
+  ]
+}

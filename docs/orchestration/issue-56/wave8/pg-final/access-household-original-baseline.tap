@@ -1,0 +1,33 @@
+TAP version 13
+# Subtest: assigned Coach must not point own client access at unrelated household; current member hold does not legitimize forged relationship
+not ok 1 - assigned Coach must not point own client access at unrelated household; current member hold does not legitimize forged relationship
+  ---
+  duration_ms: 52.874042
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave8-qa/tests/wave7-security/access-household.test.cjs:4:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    household source relation may not be forged through already-authorized contact
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave8-qa/tests/wave7-security/access-household.test.cjs:4:548)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 0
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 127.592167

@@ -1,0 +1,277 @@
+{
+  "files": [
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/access-household-original-baseline.tap",
+      "rawSha256": "5a156807eaa184d6520d95106d6ccdf112eb38d30bf014260046649e830fb298",
+      "normalizedSha256": "21d952f10a482de08f9c694f9f9899359ca07a48148eee884bfdc35198565033",
+      "rawGzipPath": "docs/orchestration/issue-56/wave8/pg-combined/access-household-original-baseline.tap.raw.gz",
+      "gzipSha256": "1fd6ad25468337906302d312cc5a2098dc40b51df161441cc05422ed9a1c9e7d",
+      "scope": "Trailing whitespace only; original assertion/output bytes preserved in gzip"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/access-household-original-reverted.tap",
+      "rawSha256": "d22d62ca31fe45bbcf0d88be9a3114a8279dadd11c0afb59a89fb5cf06c9cb4f",
+      "normalizedSha256": "09acd761a527fd64a3f700b6766baf7c52fbe1c7a0db2ddba4ada0bb2afade9f",
+      "rawGzipPath": "docs/orchestration/issue-56/wave8/pg-combined/access-household-original-reverted.tap.raw.gz",
+      "gzipSha256": "e43ba84be0ae4d2676ce6feee22241276c9f6f7943cd09a5081611d098b19f4d",
+      "scope": "Trailing whitespace only; original assertion/output bytes preserved in gzip"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/household-constraints.txt",
+      "rawSha256": "cb4c66e614d29199ddcc82330924c6a2d7b4a8ce1f68d5c57f3996ba735e0d26",
+      "normalizedSha256": "81c67c3f5d77a77c51ed2da390329e5fa00b197f874484a096574992888d27ba",
+      "rawGzipPath": "docs/orchestration/issue-56/wave8/pg-combined/household-constraints.txt.raw.gz",
+      "gzipSha256": "043eb4d8e1471d7f9f875bbb575bbadb2cd0e4367a4fd3a6d3974b89f7d1d8fc",
+      "scope": "Trailing whitespace only; original assertion/output bytes preserved in gzip"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/identity-original-baseline.tap",
+      "rawSha256": "3e4f7f3ec8dc26733b8baf7e08d7de534b80ec7cd9b562d0bc5b55206df08ee4",
+      "normalizedSha256": "3d7f295fa3c054bba080e85a327e38e0510c597ba691691f1ff8023874626284",
+      "rawGzipPath": "docs/orchestration/issue-56/wave8/pg-combined/identity-original-baseline.tap.raw.gz",
+      "gzipSha256": "e2c5f718496818add50f104acfec5e25580c17d59868208f0f7dd1a9e841b151",
+      "scope": "Trailing whitespace only; original assertion/output bytes preserved in gzip"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/identity-original-reverted.tap",
+      "rawSha256": "10a18c260d67e0a6cda9bcec992238b5ddceb18010f48683a6fcb1b5c831b3c2",
+      "normalizedSha256": "5c83743bc3f2b7aea1a75a835856a16ed5151a45248faafb49eff703589d5dfb",
+      "rawGzipPath": "docs/orchestration/issue-56/wave8/pg-combined/identity-original-reverted.tap.raw.gz",
+      "gzipSha256": "6b5bc52bc5fe21ce9539cec29ad92d199253f59dac9f2a20a2f7774cf97aad9e",
+      "scope": "Trailing whitespace only; original assertion/output bytes preserved in gzip"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/independent-provisioning-profile-boundaries.tap",
+      "rawSha256": "5a17fbb879e4a671f10cca71421e94faef39e69ea523c56d1e645902882911d0",
+      "normalizedSha256": "54982dcd34a484b12d6226b4fd8f1525acd620974c99f092087bc8053ec541d0",
+      "rawGzipPath": "docs/orchestration/issue-56/wave8/pg-combined/independent-provisioning-profile-boundaries.tap.raw.gz",
+      "gzipSha256": "079e51fcdb0f2aa33fb3993e56bcbd2577ecf1d474da3ae57196f5063e903b5e",
+      "scope": "Trailing whitespace only; original assertion/output bytes preserved in gzip"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/original-five-baseline.tap",
+      "rawSha256": "89926c3652be7926851958588e2f84c9afca54c7e2f095701f395e848ab62114",
+      "normalizedSha256": "43b8c3f2b8d322ebea26d1c894ed121047a4b93d4bcf0800ec82075e29deb866",
+      "rawGzipPath": "docs/orchestration/issue-56/wave8/pg-combined/original-five-baseline.tap.raw.gz",
+      "gzipSha256": "1eb5e0e61ef2056143711d80079e381f0421c90aafb02c01c1b7b6639a53f0ff",
+      "scope": "Trailing whitespace only; original assertion/output bytes preserved in gzip"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/original-five-reverted.tap",
+      "rawSha256": "4bb5c8fbf4b62103efc10e95f537a8baa5b564e9a1be68b0180c8dd77cfccc47",
+      "normalizedSha256": "b14aa88fc0770a6554aaf31f21083183cfe091292617e1a58b0d1534400b59f5",
+      "rawGzipPath": "docs/orchestration/issue-56/wave8/pg-combined/original-five-reverted.tap.raw.gz",
+      "gzipSha256": "85a59cc9347e6ab28c646832b52dee6bb13fc5590221a1f55789a2e874a4a8eb",
+      "scope": "Trailing whitespace only; original assertion/output bytes preserved in gzip"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/parent-original-baseline.tap",
+      "rawSha256": "80abec9106342546c1cd378cc5e87c25e7dd408e2dc3304a8661c4a2300c5067",
+      "normalizedSha256": "16f1420907ecf94ed35bd4a621a8cd0e9c1ba1466160b41c2debead0c04d1812",
+      "rawGzipPath": "docs/orchestration/issue-56/wave8/pg-combined/parent-original-baseline.tap.raw.gz",
+      "gzipSha256": "22297ea0388be103acb579b8884101bf9c11349e38d10d1610299c85cc33c7d9",
+      "scope": "Trailing whitespace only; original assertion/output bytes preserved in gzip"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-combined/parent-original-reverted.tap",
+      "rawSha256": "4e28d5f4ae9d5c5f20ef9c9a1e066443c72c0b2bacf710b3f727e37dc11359ef",
+      "normalizedSha256": "463df625dc51229023cda4f70970adc5e70bd1940e2223cf1f0b33c8ed8b1c4d",
+      "rawGzipPath": "docs/orchestration/issue-56/wave8/pg-combined/parent-original-reverted.tap.raw.gz",
+      "gzipSha256": "b0927168bbebd020c27e975d436b3a7882d6569f98ccc44618f132fb2533a8c2",
+      "scope": "Trailing whitespace only; original assertion/output bytes preserved in gzip"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/access-household-original-baseline.tap",
+      "rawSha256": "b041b677ddcde2559a255cf490ee143ad1c582423cef6246e0b7bd791689bbc7",
+      "normalizedSha256": "f03b7cb635e5e06fe6be31be22303d257895f2863c1ba69238afa5d48f2e8a67",
+      "rawGzipPath": "docs/orchestration/issue-56/wave8/pg-final/access-household-original-baseline.tap.raw.gz",
+      "gzipSha256": "4fd2570fe8e930d537b2f4eeb1c3ae4013726c8ec10777abd448a98406e4f462",
+      "scope": "Trailing whitespace only; original assertion/output bytes preserved in gzip"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/access-household-original-reverted.tap",
+      "rawSha256": "07532a37ba9f25595f6104beeabc5327dedb6134ad5a827875765bf1865923b6",
+      "normalizedSha256": "4a9990588d2860720f98e9ae7b9d89998515c4fdbdae84b9bc997084ebba9cf3",
+      "rawGzipPath": "docs/orchestration/issue-56/wave8/pg-final/access-household-original-reverted.tap.raw.gz",
+      "gzipSha256": "42be6f05a398a234abea80cc4bf1a43ffa27e56173cda2f9c4d8388cd17e066f",
+      "scope": "Trailing whitespace only; original assertion/output bytes preserved in gzip"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/household-constraints.txt",
+      "rawSha256": "cb4c66e614d29199ddcc82330924c6a2d7b4a8ce1f68d5c57f3996ba735e0d26",
+      "normalizedSha256": "81c67c3f5d77a77c51ed2da390329e5fa00b197f874484a096574992888d27ba",
+      "rawGzipPath": "docs/orchestration/issue-56/wave8/pg-final/household-constraints.txt.raw.gz",
+      "gzipSha256": "043eb4d8e1471d7f9f875bbb575bbadb2cd0e4367a4fd3a6d3974b89f7d1d8fc",
+      "scope": "Trailing whitespace only; original assertion/output bytes preserved in gzip"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/identity-original-baseline.tap",
+      "rawSha256": "ae6ccd3b21224098607c8fb739b00bd092733863ada9e5b61735d963693b1447",
+      "normalizedSha256": "ae13d2e191e7ee8b6f1eb37cfe9e016aa49c513120058d2cbc96649e7a794502",
+      "rawGzipPath": "docs/orchestration/issue-56/wave8/pg-final/identity-original-baseline.tap.raw.gz",
+      "gzipSha256": "d136e519433b189db88a5c8c3e08dd8f32c3b6ef7a170b0b07a27eb372995af2",
+      "scope": "Trailing whitespace only; original assertion/output bytes preserved in gzip"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/identity-original-reverted.tap",
+      "rawSha256": "69e128af8e7ec0443961aa7c36852e7b1b8f86a9aff7ce0df906d1bee4bd4b41",
+      "normalizedSha256": "3c00c9288367413a1df92f65c4b1a74422c45bcf9082b0ee2754a317f71f8db6",
+      "rawGzipPath": "docs/orchestration/issue-56/wave8/pg-final/identity-original-reverted.tap.raw.gz",
+      "gzipSha256": "c34d500e664e60cc8fb141f6aec3a35590f59a52dba66a7474ecdb16809d0a0a",
+      "scope": "Trailing whitespace only; original assertion/output bytes preserved in gzip"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/original-five-baseline.tap",
+      "rawSha256": "501484ae44c376c6ddbceffa9eb08b91c8a41963ca539d4d710a821ba3316464",
+      "normalizedSha256": "2351875c23fdb1cbf18381c595d534d9182952ef3c0217c6e80925321293f64a",
+      "rawGzipPath": "docs/orchestration/issue-56/wave8/pg-final/original-five-baseline.tap.raw.gz",
+      "gzipSha256": "3eada7b27e6704ca982a8116fea164510a13f5be78d2b12bdc66ec023ffb5a4f",
+      "scope": "Trailing whitespace only; original assertion/output bytes preserved in gzip"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/original-five-reverted.tap",
+      "rawSha256": "bc7864b22f2f796ea05d64a6a4c88ec2950ccc9abe2c986ae1eb919fd835783a",
+      "normalizedSha256": "acd07dba798491d33285a9675a382981b55762e7e5182e0906239d851b139c5f",
+      "rawGzipPath": "docs/orchestration/issue-56/wave8/pg-final/original-five-reverted.tap.raw.gz",
+      "gzipSha256": "1df38bc3ddea5bd2bf189d5dd7b37e5d79495a800cdae7b5747c336838ebd147",
+      "scope": "Trailing whitespace only; original assertion/output bytes preserved in gzip"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/parent-original-baseline.tap",
+      "rawSha256": "f33e226fee3b33046c1b0acaa1c9eafacd8d77491f5a3319b91fc6a47daeda71",
+      "normalizedSha256": "354ec55139bcc08dbe3db8f7e2e2a54364d63675db1eaa2d757af2e476c04c53",
+      "rawGzipPath": "docs/orchestration/issue-56/wave8/pg-final/parent-original-baseline.tap.raw.gz",
+      "gzipSha256": "c9f065deacb97177ba916eadebbc9d252d37a8670a568cdac49fe7257dbc4110",
+      "scope": "Trailing whitespace only; original assertion/output bytes preserved in gzip"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/parent-original-reverted.tap",
+      "rawSha256": "bc5b05eaa1a318e19c360017ad2c4f4d1717d15aae2dda953ef76b06800744a5",
+      "normalizedSha256": "3d43e804b98f9a52e85b4c094ec5553cec483220ffc480a963dc241d58f27226",
+      "rawGzipPath": "docs/orchestration/issue-56/wave8/pg-final/parent-original-reverted.tap.raw.gz",
+      "gzipSha256": "bc3cc952cf00ea941b745a171aa73b15eb025d314c5bd46b38ddea8e015e9cca",
+      "scope": "Trailing whitespace only; original assertion/output bytes preserved in gzip"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/profiles-boundary-baseline.tap",
+      "rawSha256": "6667790f48074318884052b6cd772fe8fd00f1a30dd5a58f1b90ab4c186b45b6",
+      "normalizedSha256": "e828aa822337027343b06f56c45ee1c178c6eab1a8736cfc5be71b56adf4db44",
+      "rawGzipPath": "docs/orchestration/issue-56/wave8/pg-final/profiles-boundary-baseline.tap.raw.gz",
+      "gzipSha256": "167135d85c3d97735aa5f2c56e29081520b15c1668777f372e2c9822535ae4c6",
+      "scope": "Trailing whitespace only; original assertion/output bytes preserved in gzip"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final/profiles-boundary-reverted.tap",
+      "rawSha256": "b4166fa13ff8cd1cc9fc516c3b9d165be401153567c5bc884dc314cc78e19749",
+      "normalizedSha256": "b7ec131cca8bc4a002d751c1036505a36ec6b9e08ec5cc1ff4cc58f611a0838b",
+      "rawGzipPath": "docs/orchestration/issue-56/wave8/pg-final/profiles-boundary-reverted.tap.raw.gz",
+      "gzipSha256": "0f6f5002c9f5d3f7517103392ed661064cc0cd7f780fbd1791fcbfcce9e0b922",
+      "scope": "Trailing whitespace only; original assertion/output bytes preserved in gzip"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/access-household-original-baseline.tap",
+      "rawSha256": "02c2ba7f99b9d40c3982b311efdc5d18e9bfb778511ccdbb4657107fec110d5b",
+      "normalizedSha256": "92116519d1456b56b7225cc6c99775d437737b498545d5e5d1fbc514c5cb0dd1",
+      "rawGzipPath": "docs/orchestration/issue-56/wave8/pg-final-hold/access-household-original-baseline.tap.raw.gz",
+      "gzipSha256": "c47e2554fa3e97522524d5441b4c3c6ba7997d9b3173201466d3bd5502881371",
+      "scope": "Trailing whitespace only; original assertion/output bytes preserved in gzip"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/access-household-original-reverted.tap",
+      "rawSha256": "160ef488372a5972ef53a1fbb1a357d867d5f05da51715d0d37a81571186a17a",
+      "normalizedSha256": "6631e137821e55f8e44834475d336279b53be77c2ab63f549fbf8c5c08aa61ff",
+      "rawGzipPath": "docs/orchestration/issue-56/wave8/pg-final-hold/access-household-original-reverted.tap.raw.gz",
+      "gzipSha256": "2da88902a5f42a3885de9b7900e2bde2370b7bc1d1a793966820b779d648402e",
+      "scope": "Trailing whitespace only; original assertion/output bytes preserved in gzip"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/household-constraints.txt",
+      "rawSha256": "cb4c66e614d29199ddcc82330924c6a2d7b4a8ce1f68d5c57f3996ba735e0d26",
+      "normalizedSha256": "81c67c3f5d77a77c51ed2da390329e5fa00b197f874484a096574992888d27ba",
+      "rawGzipPath": "docs/orchestration/issue-56/wave8/pg-final-hold/household-constraints.txt.raw.gz",
+      "gzipSha256": "043eb4d8e1471d7f9f875bbb575bbadb2cd0e4367a4fd3a6d3974b89f7d1d8fc",
+      "scope": "Trailing whitespace only; original assertion/output bytes preserved in gzip"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/identity-original-baseline.tap",
+      "rawSha256": "7cf80bae5438bcaa682a852d4dac11e1a19012e8cf89ab06a01047dd87a35904",
+      "normalizedSha256": "9e0ef40bf80de5ea9d7639034c589b2dd8b6d018b5496ba57f8dcce71e7bec77",
+      "rawGzipPath": "docs/orchestration/issue-56/wave8/pg-final-hold/identity-original-baseline.tap.raw.gz",
+      "gzipSha256": "3bb969bb58b3900d51ec94a1eb9f29d6d08430e88ae37076436652775ded47ca",
+      "scope": "Trailing whitespace only; original assertion/output bytes preserved in gzip"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/identity-original-reverted.tap",
+      "rawSha256": "a0b9e38c9e627e84dc25da96c90c088a20e0083547d8c3c7e398a613fbb5bc00",
+      "normalizedSha256": "9c1b1b1e25fcdc83a531bbbb042a999e11c99b267263cffe253e1f1f83dd4f00",
+      "rawGzipPath": "docs/orchestration/issue-56/wave8/pg-final-hold/identity-original-reverted.tap.raw.gz",
+      "gzipSha256": "eb63f03f12559f7976397adcb1faed95287b0918e5da5dbc6c3b34948b631496",
+      "scope": "Trailing whitespace only; original assertion/output bytes preserved in gzip"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/independent-provisioning-profile-boundaries.tap",
+      "rawSha256": "c35bbcf13ada687916bdcf1b5ed11459ac5f2dc38c9d53c6394875ccd027b3b1",
+      "normalizedSha256": "a5703562be3425585afdb72ca25e3c43138f1364b46cc155738edb0ce1d7b8f7",
+      "rawGzipPath": "docs/orchestration/issue-56/wave8/pg-final-hold/independent-provisioning-profile-boundaries.tap.raw.gz",
+      "gzipSha256": "6f655381e6d6cfbe61590e8a21d57429d6849edf6f863def90362edf902fa8d3",
+      "scope": "Trailing whitespace only; original assertion/output bytes preserved in gzip"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/original-five-baseline.tap",
+      "rawSha256": "f1326406897c3bfe1952b78d1ae071c7d86a83ef2a4fe1a3e1b0775bbbcb3724",
+      "normalizedSha256": "65c7548c11929a9eac0ae4cf390189ad7482b9c674264a3ea9400998e5ef8ecb",
+      "rawGzipPath": "docs/orchestration/issue-56/wave8/pg-final-hold/original-five-baseline.tap.raw.gz",
+      "gzipSha256": "7f3769965e2d6e52650005372723136a2453aa79cf8617d007dd2ccab716569f",
+      "scope": "Trailing whitespace only; original assertion/output bytes preserved in gzip"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/original-five-reverted.tap",
+      "rawSha256": "759cc17c682d6e74f201c9bd721366735128e52b917ca9f06b7fab94119b125e",
+      "normalizedSha256": "4b25eabf31d542e8d0e75aa1f2d96997439effcc3ef18270ca543f5060e07796",
+      "rawGzipPath": "docs/orchestration/issue-56/wave8/pg-final-hold/original-five-reverted.tap.raw.gz",
+      "gzipSha256": "79611b6f4efb7eab6865e5e356d783351e9d32045633a99a49bdf01eb0c90a49",
+      "scope": "Trailing whitespace only; original assertion/output bytes preserved in gzip"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/parent-original-baseline.tap",
+      "rawSha256": "a38f7bb77b16ed0ef10c09619e86bee6acd85e0bafadf267522cf7e26c18de97",
+      "normalizedSha256": "26a130481a1ebe702b0ae741117776842bdf7a641267215c39306653a64248f3",
+      "rawGzipPath": "docs/orchestration/issue-56/wave8/pg-final-hold/parent-original-baseline.tap.raw.gz",
+      "gzipSha256": "75d48a1f91820754cf718f6def28b741751779ed150195a29c0bf90aea8ebc0a",
+      "scope": "Trailing whitespace only; original assertion/output bytes preserved in gzip"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/pg-final-hold/parent-original-reverted.tap",
+      "rawSha256": "379f109f313d4974dcd90a11f926ba241578911a8437a6bcba1d710846d28948",
+      "normalizedSha256": "d8fc1619821cb7ef992f0b572183e77c25aee3cf2a16f0003d9fec360df0dfcd",
+      "rawGzipPath": "docs/orchestration/issue-56/wave8/pg-final-hold/parent-original-reverted.tap.raw.gz",
+      "gzipSha256": "702e14ace2ee277f0fa11ea8eae4487ffcddd23b7907af17ccd15711cd8bba78",
+      "scope": "Trailing whitespace only; original assertion/output bytes preserved in gzip"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/receipts/b-initial-independent.tap",
+      "rawSha256": "82bc6fce0d07f584d70b0096b484cd03ee4634ec81dd621ec2296ef0ee241b6d",
+      "normalizedSha256": "9d7e2f12332b52144a386ecc823ed9622f69a2cf53db2b5a0ae0dd671dd213f5",
+      "rawGzipPath": "docs/orchestration/issue-56/wave8/receipts/b-initial-independent.tap.raw.gz",
+      "gzipSha256": "ca2b147c7488727b6b80f965b218d055d580e5146c3380a08ac38349409740ea",
+      "scope": "Trailing whitespace only; original assertion/output bytes preserved in gzip"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/receipts/coordination-initial-harness-wording.tap",
+      "rawSha256": "6589569664befb1bd70a9dcada7a3d9b7629235935b79e114636b32df6f00acd",
+      "normalizedSha256": "5835fa66e4c0cf775510f2d0bd8522f6672ce722ffd6ef7d50db3f5e8183dc4f",
+      "rawGzipPath": "docs/orchestration/issue-56/wave8/receipts/coordination-initial-harness-wording.tap.raw.gz",
+      "gzipSha256": "1e0d435774982e295d8f31476f238a36e058e610d3c5b769d3da6cf6437460db",
+      "scope": "Trailing whitespace only; original assertion/output bytes preserved in gzip"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave8/receipts/preservation-initial-harness-boundary.tap",
+      "rawSha256": "958d7b3c39ea2d75ab05a3a1c06d82a3399e62230f3db117aa970e6b5479cf3e",
+      "normalizedSha256": "02a4ac3da2722141e7baf961da20ed4076116634eb9d0d2d46c3fcc7522b8182",
+      "rawGzipPath": "docs/orchestration/issue-56/wave8/receipts/preservation-initial-harness-boundary.tap.raw.gz",
+      "gzipSha256": "56d1c3e3d2802c0ed2e4c5f0c522e3dc6250e3a1a2681a9bd85d71b76a6b4e14",
+      "scope": "Trailing whitespace only; original assertion/output bytes preserved in gzip"
+    }
+  ],
+  "assertionsChanged": false
+}

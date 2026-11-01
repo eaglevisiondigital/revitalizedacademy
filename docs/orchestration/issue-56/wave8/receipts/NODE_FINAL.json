@@ -1,0 +1,252 @@
+{
+  "startedAt": "2026-11-01T23:19:50.754Z",
+  "sourceCommit": "afdc48a0d7631e9f6c7ef596033d019d9e68ff9c",
+  "scope": "LOCAL_FICTIONAL_NODE_DOM_HTTP_ONLY",
+  "productionCalls": 0,
+  "files": [
+    {
+      "path": "tests/wave6-environment/resource-gate.test.cjs",
+      "sha256": "629537d24de50d4ec6829428556cd953e01805c5db851546f09fe02b2fb91164"
+    },
+    {
+      "path": "tests/wave6-security/contract.test.cjs",
+      "sha256": "c7114fe3053eb9940d5e7ab588b0b5c9b9d07dd59f4d25046e2d4c2a00d3e7df"
+    },
+    {
+      "path": "tests/wave6-features/daily.test.cjs",
+      "sha256": "d91ccc0e208004114887e86f6bdc49b74d32de8ee54ad619f3506bee2548c81c"
+    },
+    {
+      "path": "tests/wave6-features/progress.test.cjs",
+      "sha256": "4bb6fcb13f360870cbf18ac0fc8838194887d4ac5e6c5349a587ef9d6881b310"
+    },
+    {
+      "path": "tests/wave6-features/http.test.cjs",
+      "sha256": "6c58cec38c53be9800b71f22d98ae5c94cad82a28212993ded4980b3b06b85e7"
+    },
+    {
+      "path": "tests/wave6-features/preservation.test.cjs",
+      "sha256": "b9fd2898c8aa42283184d2b081cc16cf13024b9c61b1ef592e9cce6bdabfb411"
+    },
+    {
+      "path": "tests/wave6-qa/daily-adversarial.test.cjs",
+      "sha256": "a8a11221d9aa9da1c50f6a7b508343e81b92c2459b0659c6eb2fae60ac995a71"
+    },
+    {
+      "path": "tests/wave6-qa/sql-source-review.test.cjs",
+      "sha256": "ac4779e44c5e13fd0bff60aa30a09dfb2a2ce766ff30538a53b54cf2e35be374"
+    },
+    {
+      "path": "tests/wave8-qa/coordination.test.cjs",
+      "sha256": "9b2d6f13b987a20f6f6ed270083953b1380a41b84f829277fed2ca0980daa0c6"
+    },
+    {
+      "path": "tests/wave5-operations/checkin.test.cjs",
+      "sha256": "8aaaa89c76da34c828bf72211fd9316123334bd0b4e2920c0c5c9fc0446a215e"
+    },
+    {
+      "path": "tests/wave3-unaffected/member-operations.test.cjs",
+      "sha256": "d94682b80d6f72960ba3939a9a37b8a39888c39344a2a24bbd76102a9a05e17b"
+    },
+    {
+      "path": "tests/wave4-member/continuity.test.cjs",
+      "sha256": "7143f4a73ca830d7f96eb0a71c03f7d766009f25b6f4aa6679078c0185e56cef"
+    },
+    {
+      "path": "tests/wave4-member/modal-generation.test.cjs",
+      "sha256": "52ff178178660573c53eb1efbc98a5a417e509bfc1af5f7753bac4aa0d83b313"
+    },
+    {
+      "path": "tests/wave5-qa/invariants.test.cjs",
+      "sha256": "164e390e88c06a4bc23d8aec14b981b7691249ac95585f5ec06aaf6daf520670"
+    },
+    {
+      "path": "tests/wave5-qa/sql-manifest.test.cjs",
+      "sha256": "96ae9972824fdddb8efa2918f8835fd96b49310eb9a08c4d5f42bed83bebdb27"
+    },
+    {
+      "path": "tests/wave4-qa/member-adversarial.test.cjs",
+      "sha256": "2c4f8b55e24ed2f8fffc92c3c2ff06e4b9781362dfc2927ba01977861e765b7b"
+    },
+    {
+      "path": "tests/wave4-qa/coach-refresh.test.cjs",
+      "sha256": "9b5c422958d5204a137c54f6b9ad4e4906b3d7a85de7cd635a4f86695d326cbd"
+    },
+    {
+      "path": "tests/wave5-affiliate/http.test.cjs",
+      "sha256": "03329be05c74dd32cc18acc56a0941776a54411ea329c5fce96487417ac84762"
+    },
+    {
+      "path": "tests/wave5-qa/http-adversarial.test.cjs",
+      "sha256": "73bab13d5994b8e23e7d80d8c1f9397716cfe1a972e7e091309db2b92eb009ac"
+    },
+    {
+      "path": "tests/wave4-affiliate/adapter.test.cjs",
+      "sha256": "7bda6b36683eb0682c6aa25f2850bc3ab49abf4430caebfea2bb21932ca7f3b3"
+    },
+    {
+      "path": "tests/wave4-affiliate/v3-async.test.cjs",
+      "sha256": "36cc531d29b45a66678bf551d768f5f4ab3ad846afe91b53a7080d0185f84d06"
+    },
+    {
+      "path": "tests/wave3-unaffected/qr.test.cjs",
+      "sha256": "38909a0689ded38ffbdbe0b87f131455e1bcb5e4d1173c4f4731eda58a488dcd"
+    },
+    {
+      "path": "tests/wave5-master/coordination.test.cjs",
+      "sha256": "062cb43ad86b51b3efdd7f736c8080744c220d8dc571c2d0f606c754d5f57710"
+    },
+    {
+      "path": "tests/wave5-qa/coordination-adversarial.test.cjs",
+      "sha256": "d884fd0d0434bccd543953d215727f66fe3078b493ddaa78227580e4631a045a"
+    },
+    {
+      "path": "tests/wave8-operations/goals.test.cjs",
+      "sha256": "51e6a5b6f0bf8da9ca51aec5010b6627d411d467b11316822f218535fe97917d"
+    },
+    {
+      "path": "tests/wave8-qa/goals-adversarial.test.cjs",
+      "sha256": "9d7a81a83f4448f1875948baeae5a23a876d4fed0c0ca870c19b3160fb769271"
+    },
+    {
+      "path": "tests/wave8-affiliate/reviewed.test.cjs",
+      "sha256": "986cc68829cb85949a24032045a2f35aa04c847bb22176e0b3d0119a9e9b403e"
+    },
+    {
+      "path": "tests/wave8-affiliate/http.test.cjs",
+      "sha256": "c2ee208fac876fb118bb81b67a5b77ecc5def640d09dd1613c26699b98008416"
+    },
+    {
+      "path": "tests/wave8-qa/share-adversarial.test.cjs",
+      "sha256": "0bab3754316de53b075258bba1f6214453e886723efdd3485f3a418a690a6e6b"
+    },
+    {
+      "path": "tests/wave8-provisioning/source-contract.test.cjs",
+      "sha256": "f7568e91e001ab3052622a830fde78b27c9c23d6ff5817774846898fc7f05ebf"
+    },
+    {
+      "path": "tests/wave7-qa/preservation.test.cjs",
+      "sha256": "6ac7a9901119f5ba0a520fb8c05a2bb6ac0d5969b369b76404a60b904eab8a99"
+    },
+    {
+      "path": "tests/wave7-operations/habits.test.cjs",
+      "sha256": "f5113ecbd9f39f553cefab04c079af7897b6777b2064ddb2fe9bef1b0cf5220f"
+    },
+    {
+      "path": "tests/wave7-qa/member-adversarial.test.cjs",
+      "sha256": "609e6b1195a8844a7b897d9b52f6970c2478475281fcc4d51681b4affe75ce47"
+    },
+    {
+      "path": "tests/wave7-affiliate/review.test.cjs",
+      "sha256": "63d66cc1b327df391e0a21db85959eccecabe90e574f9ec81970ec88aa821ca8"
+    },
+    {
+      "path": "tests/wave7-affiliate/http.test.cjs",
+      "sha256": "812938a0ba88c91f56c7c3f234f2b603b70bcd3b2ee1450e1cd4ca763850812e"
+    },
+    {
+      "path": "tests/wave7-qa/share-http.test.cjs",
+      "sha256": "3a2af1e84c32b9b809e4fb7adf11474c7180e0d86649157af711cb38f0d7719a"
+    },
+    {
+      "path": "tests/wave7-security/guard-representation.test.cjs",
+      "sha256": "d7eb32b8c777a32e88e3894a5abc1b64d28260478d83a22bd60f1b87d20b1a48"
+    },
+    {
+      "path": "tools/wave8-reviewed-share.cjs",
+      "sha256": "a0a8c043dadc6d50a93e4b83f49982ab04f6e3dbdae011cce1990b49feb2df63"
+    },
+    {
+      "path": "tests/wave8-provisioning/run-combined-pg.cjs",
+      "sha256": "8a02f87c5928aa34be402b9b9394515aa6dee7dfe7bea4082fd921ae507e89e4"
+    },
+    {
+      "path": "tests/wave8-provisioning/provisioning.test.cjs",
+      "sha256": "180349fa60a3b215c4a78746b79bb3cd308663c294f22c7d2e64069ca8ad5c98"
+    },
+    {
+      "path": "tools/wave6-progress-contract.cjs",
+      "sha256": "9a1a8339cae5ad577935a6bedbe2810c105c64a688f79f46f422945afc4bdbfd"
+    },
+    {
+      "path": "proposals/wave6-security/correction.sql",
+      "sha256": "d471396eeee21d4109dcc556b80548a64ce193949ebc1291f33589d698d14be9"
+    },
+    {
+      "path": "proposals/wave6-security/manifest.json",
+      "sha256": "e58057a70b43f2beb254da91beb1a4622f6b64c9570ed7fd402ca4ecd52ff1b7"
+    },
+    {
+      "path": "tests/wave6-security/household-trigger-catalog.json",
+      "sha256": "bbf2b17ea66da8b18a5c3e3f298e05afd6fb300944a8eb2414aa0aa94558a7b1"
+    },
+    {
+      "path": "member/member110.js",
+      "sha256": "8d6881960cebd104b8c1d2e9298e95232189fd119b8326e7edcdab88dd5348a7"
+    },
+    {
+      "path": "portal/portal-coaching.js",
+      "sha256": "ae5413969d2b5b4e04b45f22a96f7ae45e79ec3819761c0d4109a74a346f60c0"
+    },
+    {
+      "path": "tools/affiliate-share-preview/server.cjs",
+      "sha256": "f40321ac9c6c3bdd9a856606925b8987cde8773036f604bdf5d769ea92254912"
+    },
+    {
+      "path": "tools/affiliate-share-preview/preview.js",
+      "sha256": "e8e92c5a9beda66a5b93f114c0488887c2bc96dc62a316ce75fe9364b5adc65d"
+    },
+    {
+      "path": "tools/affiliate-share-preview/index.html",
+      "sha256": "13abfaf3df1dcf3034b11e19a2b96dbfa79ed76e5ea3fdbfbdaf46cd95a35918"
+    },
+    {
+      "path": "tools/wave5-fixture-providers.cjs",
+      "sha256": "6258f9bddcb2661715679d2cf9426b885548da9bd91cfd7aad3d0f1134df7ef9"
+    },
+    {
+      "path": "tools/affiliate-share-preview/adapter.cjs",
+      "sha256": "afdda7ee71425928f4648ea18081bf194ffc011082b68acee3a96bbfdab9e9a3"
+    },
+    {
+      "path": "tools/coach-companion-catalog/async-fixture-adapter.cjs",
+      "sha256": "053043d5576767756dfd5b567959f6642f22fc522a5ae9ab2c356dd5ad619501"
+    },
+    {
+      "path": "tools/coach-companion-catalog/index.cjs",
+      "sha256": "5ac8a0d1f5cfaab995c937a8685cdbeb5fcc71fe7bce0316f60cf7d0b1734266"
+    },
+    {
+      "path": "tools/rva-coordination-gate.cjs",
+      "sha256": "bcc2b0269dfc89d525454fa7b75b9b1d77ccb3f1e79a380d80a0369e72697e30"
+    },
+    {
+      "path": "proposals/wave5-security/correction.sql",
+      "sha256": "3c3ed1f351e8ffdc687f80fdbf4455197c752e4b988c80a89ed64df39f1e55a8"
+    },
+    {
+      "path": "proposals/wave5-operations/correction.sql",
+      "sha256": "f3ed018354545d2ef677593298f3b798f0683914a79034dd69ebdcdac39cc8c0"
+    },
+    {
+      "path": "tools/wave7-share-review.cjs",
+      "sha256": "864d3b2c662cd8e3e47ae18af3a750fd831c1e77ca6b9ff07c6dcdb7147ba66b"
+    },
+    {
+      "path": "proposals/wave7-security/correction.sql",
+      "sha256": "4bc3cbef3c6b28e22b2d834ec6d2ba904281d16baffda7b391aaa45af5fa3a9f"
+    },
+    {
+      "path": "proposals/wave7-security/identity-household.sql",
+      "sha256": "ed92e3db3baca09a7ac901050b9d4e733d252bd89aae8187d04e41a9b9ccc610"
+    }
+  ],
+  "narrowHistoricalExclusion": "actual check-in surfaces duplicate server response; superseded by explicit durable readback requirement; old source/assertion retained",
+  "exitCode": 0,
+  "tests": 609,
+  "pass": 609,
+  "fail": 0,
+  "skipped": 0,
+  "inputsUnchanged": true,
+  "completedAt": "2026-11-01T23:20:35.357Z"
+}

@@ -1,0 +1,244 @@
+TAP version 13
+# Subtest: actual Owner public plan intent provisions foundation under unchanged strict identity hold
+ok 1 - actual Owner public plan intent provisions foundation under unchanged strict identity hold
+  ---
+  duration_ms: 61.554167
+  type: 'test'
+  ...
+# Subtest: actual verified member claim binds own foundation and records exact actor without paid access
+ok 2 - actual verified member claim binds own foundation and records exact actor without paid access
+  ---
+  duration_ms: 13.877458
+  type: 'test'
+  ...
+# Subtest: wrong verified Auth identity denied by actual claim
+ok 3 - wrong verified Auth identity denied by actual claim
+  ---
+  duration_ms: 10.809583
+  type: 'test'
+  ...
+# Subtest: Owner plan intent retry is idempotent for activation/membership/household and audit
+ok 4 - Owner plan intent retry is idempotent for activation/membership/household and audit
+  ---
+  duration_ms: 12.47775
+  type: 'test'
+  ...
+# Subtest: suspended/inactive issuing Owner denied: suspended
+ok 5 - suspended/inactive issuing Owner denied: suspended
+  ---
+  duration_ms: 3.024834
+  type: 'test'
+  ...
+# Subtest: suspended/inactive issuing Owner denied: inactive
+ok 6 - suspended/inactive issuing Owner denied: inactive
+  ---
+  duration_ms: 1.878584
+  type: 'test'
+  ...
+# Subtest: non-Owner cannot provision through Owner RPC
+ok 7 - non-Owner cannot provision through Owner RPC
+  ---
+  duration_ms: 1.574458
+  type: 'test'
+  ...
+# Subtest: missing finance.manage permission denies even Owner role
+ok 8 - missing finance.manage permission denies even Owner role
+  ---
+  duration_ms: 2.842458
+  type: 'test'
+  ...
+# Subtest: anonymous claim denied and cannot bind an account
+ok 9 - anonymous claim denied and cannot bind an account
+  ---
+  duration_ms: 8.774792
+  type: 'test'
+  ...
+# Subtest: unknown exact-length token denied
+ok 10 - unknown exact-length token denied
+  ---
+  duration_ms: 9.4205
+  type: 'test'
+  ...
+# Subtest: malformed token denied without binding
+ok 11 - malformed token denied without binding
+  ---
+  duration_ms: 7.113584
+  type: 'test'
+  ...
+# Subtest: invitation expired rejected
+ok 12 - invitation expired rejected
+  ---
+  duration_ms: 7.779042
+  type: 'test'
+  ...
+# Subtest: invitation revoked rejected
+ok 13 - invitation revoked rejected
+  ---
+  duration_ms: 6.941334
+  type: 'test'
+  ...
+# Subtest: unconfirmed Auth email rejected
+ok 14 - unconfirmed Auth email rejected
+  ---
+  duration_ms: 7.293416
+  type: 'test'
+  ...
+# Subtest: current verified Auth email must match contact email
+ok 15 - current verified Auth email must match contact email
+  ---
+  duration_ms: 7.755417
+  type: 'test'
+  ...
+# Subtest: profile must map current actor to exact invited contact
+ok 16 - profile must map current actor to exact invited contact
+  ---
+  duration_ms: 7.229833
+  type: 'test'
+  ...
+# Subtest: current captured profile ACL denies self-forgery before claim
+ok 17 - current captured profile ACL denies self-forgery before claim
+  ---
+  duration_ms: 7.497083
+  type: 'test'
+  ...
+# Subtest: corrupted profile mapping alone still cannot substitute verified Auth email
+ok 18 - corrupted profile mapping alone still cannot substitute verified Auth email
+  ---
+  duration_ms: 7.290291
+  type: 'test'
+  ...
+# Subtest: caller metadata role/email spoof cannot replace Auth identity
+ok 19 - caller metadata role/email spoof cannot replace Auth identity
+  ---
+  duration_ms: 7.697417
+  type: 'test'
+  ...
+# Subtest: existing different account binding cannot be replaced by invitation
+ok 20 - existing different account binding cannot be replaced by invitation
+  ---
+  duration_ms: 6.409584
+  type: 'test'
+  ...
+# Subtest: access inactive cannot be claimed
+ok 21 - access inactive cannot be claimed
+  ---
+  duration_ms: 7.085625
+  type: 'test'
+  ...
+# Subtest: access suspended cannot be claimed
+ok 22 - access suspended cannot be claimed
+  ---
+  duration_ms: 9.071791
+  type: 'test'
+  ...
+# Subtest: membership cancelled cannot be claimed
+ok 23 - membership cancelled cannot be claimed
+  ---
+  duration_ms: 7.558792
+  type: 'test'
+  ...
+# Subtest: membership completed cannot be claimed
+ok 24 - membership completed cannot be claimed
+  ---
+  duration_ms: 7.417458
+  type: 'test'
+  ...
+# Subtest: claim rollback preserves account state, invitation-use timestamp and audit
+ok 25 - claim rollback preserves account state, invitation-use timestamp and audit
+  ---
+  duration_ms: 7.271625
+  type: 'test'
+  ...
+# Subtest: same account invitation re-open preserves one account and foundation; audits each actual read claim
+ok 26 - same account invitation re-open preserves one account and foundation; audits each actual read claim
+  ---
+  duration_ms: 9.26325
+  type: 'test'
+  ...
+# Subtest: different account replay denied after valid claim
+ok 27 - different account replay denied after valid claim
+  ---
+  duration_ms: 8.130417
+  type: 'test'
+  ...
+# Subtest: claim does not issue agreement, send email, record consent, payment or paid access
+ok 28 - claim does not issue agreement, send email, record consent, payment or paid access
+  ---
+  duration_ms: 9.342125
+  type: 'test'
+  ...
+# Subtest: foundation creates only its own individual household; claim cannot expose unrelated parent
+ok 29 - foundation creates only its own individual household; claim cannot expose unrelated parent
+  ---
+  duration_ms: 7.639625
+  type: 'test'
+  ...
+# Subtest: existing private provisioning trigger cannot be called directly by authenticated member
+ok 30 - existing private provisioning trigger cannot be called directly by authenticated member
+  ---
+  duration_ms: 2.197542
+  type: 'test'
+  ...
+# Subtest: new account after enrollment claims NULL-user foundation through actual Auth trigger and public claim
+ok 31 - new account after enrollment claims NULL-user foundation through actual Auth trigger and public claim
+  ---
+  duration_ms: 9.721583
+  type: 'test'
+  ...
+# Subtest: concurrent same-account claims serialize on existing link lock without duplicate foundations
+ok 32 - concurrent same-account claims serialize on existing link lock without duplicate foundations
+  ---
+  duration_ms: 26.338833
+  type: 'test'
+  ...
+# Subtest: concurrent valid and wrong-account requests preserve exact original actor binding
+ok 33 - concurrent valid and wrong-account requests preserve exact original actor binding
+  ---
+  duration_ms: 18.961625
+  type: 'test'
+  ...
+# Subtest: concurrent Owner intent retries create one activation and one provisioning audit
+ok 34 - concurrent Owner intent retries create one activation and one provisioning audit
+  ---
+  duration_ms: 42.422416
+  type: 'test'
+  ...
+# Subtest: agreement publication hold cannot be bypassed by successful plan intent or claim
+ok 35 - agreement publication hold cannot be bypassed by successful plan intent or claim
+  ---
+  duration_ms: 9.956459
+  type: 'test'
+  ...
+# Subtest: actual onboarding HTML/script calls public claim then real context RPC and renders paid hold
+ok 36 - actual onboarding HTML/script calls public claim then real context RPC and renders paid hold
+  ---
+  duration_ms: 347.227584
+  type: 'test'
+  ...
+# Subtest: actual onboarding rejects wrong verified account without loading context or rendering enrollment
+ok 37 - actual onboarding rejects wrong verified account without loading context or rendering enrollment
+  ---
+  duration_ms: 25.012667
+  type: 'test'
+  ...
+# Subtest: actual onboarding requires verified email before any claim/context request
+ok 38 - actual onboarding requires verified email before any claim/context request
+  ---
+  duration_ms: 19.605333
+  type: 'test'
+  ...
+# Subtest: actual onboarding Refresh reads context without duplicating claim or account foundation
+ok 39 - actual onboarding Refresh reads context without duplicating claim or account foundation
+  ---
+  duration_ms: 26.324708
+  type: 'test'
+  ...
+1..39
+# tests 39
+# suites 0
+# pass 39
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 872.571292

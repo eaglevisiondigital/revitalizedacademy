@@ -1,0 +1,280 @@
+TAP version 13
+# Subtest: legitimate assigned Coach and original Owner can SELECT check-in, assignment and own scoped household
+ok 1 - legitimate assigned Coach and original Owner can SELECT check-in, assignment and own scoped household
+  ---
+  duration_ms: 62.771
+  type: 'test'
+  ...
+# Subtest: Owner may create/update a valid source-bound assignment; completion notification replay remains one
+ok 2 - Owner may create/update a valid source-bound assignment; completion notification replay remains one
+  ---
+  duration_ms: 29.143125
+  type: 'test'
+  ...
+# Subtest: assigned Coach can create assignment and review check-in with own actor attribution
+ok 3 - assigned Coach can create assignment and review check-in with own actor attribution
+  ---
+  duration_ms: 15.416291
+  type: 'test'
+  ...
+# Subtest: authorized Owner check-in inserts preserve own creator and original immutable source
+ok 4 - authorized Owner check-in inserts preserve own creator and original immutable source
+  ---
+  duration_ms: 8.92075
+  type: 'test'
+  ...
+# Subtest: assignment contact_id cannot be rebound even by scoped original Owner
+ok 5 - assignment contact_id cannot be rebound even by scoped original Owner
+  ---
+  duration_ms: 10.480708
+  type: 'test'
+  ...
+# Subtest: assignment membership_id cannot be rebound even by scoped original Owner
+ok 6 - assignment membership_id cannot be rebound even by scoped original Owner
+  ---
+  duration_ms: 8.995459
+  type: 'test'
+  ...
+# Subtest: assignment assigned_by cannot be rebound even by scoped original Owner
+ok 7 - assignment assigned_by cannot be rebound even by scoped original Owner
+  ---
+  duration_ms: 10.154875
+  type: 'test'
+  ...
+# Subtest: check-in contact_id source cannot be rebound
+ok 8 - check-in contact_id source cannot be rebound
+  ---
+  duration_ms: 9.868541
+  type: 'test'
+  ...
+# Subtest: check-in membership_id source cannot be rebound
+ok 9 - check-in membership_id source cannot be rebound
+  ---
+  duration_ms: 8.474333
+  type: 'test'
+  ...
+# Subtest: check-in template_id source cannot be rebound
+ok 10 - check-in template_id source cannot be rebound
+  ---
+  duration_ms: 9.334875
+  type: 'test'
+  ...
+# Subtest: check-in created_by source cannot be rebound
+ok 11 - check-in created_by source cannot be rebound
+  ---
+  duration_ms: 10.456875
+  type: 'test'
+  ...
+# Subtest: check-in responses cannot silently change during authorized review
+ok 12 - check-in responses cannot silently change during authorized review
+  ---
+  duration_ms: 9.406083
+  type: 'test'
+  ...
+# Subtest: cannot submit check-in or assignment attributing a different actor
+ok 13 - cannot submit check-in or assignment attributing a different actor
+  ---
+  duration_ms: 6.752291
+  type: 'test'
+  ...
+# Subtest: cannot attribute check-in review to another actor
+ok 14 - cannot attribute check-in review to another actor
+  ---
+  duration_ms: 8.062833
+  type: 'test'
+  ...
+# Subtest: client_checkins rejects foreign membership even for globally scoped Owner
+ok 15 - client_checkins rejects foreign membership even for globally scoped Owner
+  ---
+  duration_ms: 8.283958
+  type: 'test'
+  ...
+# Subtest: client_assignments rejects foreign membership even for globally scoped Owner
+ok 16 - client_assignments rejects foreign membership even for globally scoped Owner
+  ---
+  duration_ms: 7.299
+  type: 'test'
+  ...
+# Subtest: nonactive paused membership cannot accept a new assignment even for Owner
+ok 17 - nonactive paused membership cannot accept a new assignment even for Owner
+  ---
+  duration_ms: 7.185625
+  type: 'test'
+  ...
+# Subtest: nonactive cancelled membership cannot accept a new assignment even for Owner
+ok 18 - nonactive cancelled membership cannot accept a new assignment even for Owner
+  ---
+  duration_ms: 6.5935
+  type: 'test'
+  ...
+# Subtest: nonactive pending membership cannot accept a new assignment even for Owner
+ok 19 - nonactive pending membership cannot accept a new assignment even for Owner
+  ---
+  duration_ms: 6.954166
+  type: 'test'
+  ...
+# Subtest: explicit valid secondary contact access remains eligible for own associated membership
+ok 20 - explicit valid secondary contact access remains eligible for own associated membership
+  ---
+  duration_ms: 8.604875
+  type: 'test'
+  ...
+# Subtest: suspended Coach cannot read or write with still-present permission overrides
+ok 21 - suspended Coach cannot read or write with still-present permission overrides
+  ---
+  duration_ms: 13.222791
+  type: 'test'
+  ...
+# Subtest: inactive Coach cannot read or write with still-present permission overrides
+ok 22 - inactive Coach cannot read or write with still-present permission overrides
+  ---
+  duration_ms: 14.639584
+  type: 'test'
+  ...
+# Subtest: pending onboarding overrides cannot restore Coach access
+ok 23 - pending onboarding overrides cannot restore Coach access
+  ---
+  duration_ms: 6.8995
+  type: 'test'
+  ...
+# Subtest: coaching permission revocation denies reads and writes under current catalog
+ok 24 - coaching permission revocation denies reads and writes under current catalog
+  ---
+  duration_ms: 8.986875
+  type: 'test'
+  ...
+# Subtest: withdrawn primary/active Coach relationship removes record visibility immediately
+ok 25 - withdrawn primary/active Coach relationship removes record visibility immediately
+  ---
+  duration_ms: 6.854541
+  type: 'test'
+  ...
+# Subtest: same backend switched actor does not retain a previous Coach visibility decision
+ok 26 - same backend switched actor does not retain a previous Coach visibility decision
+  ---
+  duration_ms: 10.170292
+  type: 'test'
+  ...
+# Subtest: JWT editable metadata role does not create Owner capability
+ok 27 - JWT editable metadata role does not create Owner capability
+  ---
+  duration_ms: 6.971583
+  type: 'test'
+  ...
+# Subtest: null authenticated actor and anon do not read check-in or assignment
+ok 28 - null authenticated actor and anon do not read check-in or assignment
+  ---
+  duration_ms: 8.139084
+  type: 'test'
+  ...
+# Subtest: client_checkins authenticated TRUNCATE is denied by exact ACL
+ok 29 - client_checkins authenticated TRUNCATE is denied by exact ACL
+  ---
+  duration_ms: 7.502083
+  type: 'test'
+  ...
+# Subtest: client_assignments authenticated TRUNCATE is denied by exact ACL
+ok 30 - client_assignments authenticated TRUNCATE is denied by exact ACL
+  ---
+  duration_ms: 7.03325
+  type: 'test'
+  ...
+# Subtest: household_members authenticated TRUNCATE is denied by exact ACL
+ok 31 - household_members authenticated TRUNCATE is denied by exact ACL
+  ---
+  duration_ms: 5.641917
+  type: 'test'
+  ...
+# Subtest: direct authenticated household contact_id rebinding is held, including scoped Owner
+ok 32 - direct authenticated household contact_id rebinding is held, including scoped Owner
+  ---
+  duration_ms: 8.708541
+  type: 'test'
+  ...
+# Subtest: direct authenticated household household_id rebinding is held, including scoped Owner
+ok 33 - direct authenticated household household_id rebinding is held, including scoped Owner
+  ---
+  duration_ms: 7.993708
+  type: 'test'
+  ...
+# Subtest: direct authenticated household guardian_contact_id rebinding is held, including scoped Owner
+ok 34 - direct authenticated household guardian_contact_id rebinding is held, including scoped Owner
+  ---
+  duration_ms: 9.452458
+  type: 'test'
+  ...
+# Subtest: direct authenticated household relationship_type rebinding is held, including scoped Owner
+ok 35 - direct authenticated household relationship_type rebinding is held, including scoped Owner
+  ---
+  duration_ms: 7.810583
+  type: 'test'
+  ...
+# Subtest: direct authenticated household date_of_birth rebinding is held, including scoped Owner
+ok 36 - direct authenticated household date_of_birth rebinding is held, including scoped Owner
+  ---
+  duration_ms: 8.566375
+  type: 'test'
+  ...
+# Subtest: direct authenticated household is_primary rebinding is held, including scoped Owner
+ok 37 - direct authenticated household is_primary rebinding is held, including scoped Owner
+  ---
+  duration_ms: 8.93275
+  type: 'test'
+  ...
+# Subtest: Owner and scoped Coach can update existing household status without identity change
+ok 38 - Owner and scoped Coach can update existing household status without identity change
+  ---
+  duration_ms: 11.258292
+  type: 'test'
+  ...
+# Subtest: Owner can insert an existing own-contact household row through original table workflow
+ok 39 - Owner can insert an existing own-contact household row through original table workflow
+  ---
+  duration_ms: 12.067625
+  type: 'test'
+  ...
+# Subtest: all new direct guardian bindings remain explicitly held without approved family policy
+ok 40 - all new direct guardian bindings remain explicitly held without approved family policy
+  ---
+  duration_ms: 9.602083
+  type: 'test'
+  ...
+# Subtest: foreign household insertion with only own-contact authorization is denied
+ok 41 - foreign household insertion with only own-contact authorization is denied
+  ---
+  duration_ms: 7.796708
+  type: 'test'
+  ...
+# Subtest: outer rollback preserves original source and prevents extra activity/notifications
+ok 42 - outer rollback preserves original source and prevents extra activity/notifications
+  ---
+  duration_ms: 16.071334
+  type: 'test'
+  ...
+# Subtest: existing authorized invoker allowance RPC still works, unrelated Coach denied
+ok 43 - existing authorized invoker allowance RPC still works, unrelated Coach denied
+  ---
+  duration_ms: 19.153959
+  type: 'test'
+  ...
+# Subtest: existing update_my_assignment RPC cannot bypass paid-Client hold or foreign ownership
+ok 44 - existing update_my_assignment RPC cannot bypass paid-Client hold or foreign ownership
+  ---
+  duration_ms: 10.499917
+  type: 'test'
+  ...
+# Subtest: all new policies RESTRICTIVE; trigger is INVOKER with no caller EXECUTE; original permissive set exact
+ok 45 - all new policies RESTRICTIVE; trigger is INVOKER with no caller EXECUTE; original permissive set exact
+  ---
+  duration_ms: 6.788375
+  type: 'test'
+  ...
+1..45
+# tests 45
+# suites 0
+# pass 45
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 562.286417

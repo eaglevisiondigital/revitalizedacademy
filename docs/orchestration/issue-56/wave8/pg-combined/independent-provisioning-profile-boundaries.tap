@@ -1,0 +1,152 @@
+TAP version 13
+# Subtest: independent actual account claim binds exact original source and audit, no paid privilege
+not ok 1 - independent actual account claim binds exact original source and audit, no paid privilege
+  ---
+  duration_ms: 60.497208
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave8-qa/tests/wave8-qa/provisioning-adversarial.test.cjs:6:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+
+    + '11e74581-c752-4470-8e98-91d6f1fdc69d'
+    - null
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: '11e74581-c752-4470-8e98-91d6f1fdc69d'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave8-qa/tests/wave8-qa/provisioning-adversarial.test.cjs:6:110)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+# Subtest: independent revoked invite claim leaves original household and null ownership unchanged
+ok 2 - independent revoked invite claim leaves original household and null ownership unchanged
+  ---
+  duration_ms: 13.873916
+  type: 'test'
+  ...
+# Subtest: independent current identity remains required after foreign profile association attempt
+not ok 3 - independent current identity remains required after foreign profile association attempt
+  ---
+  duration_ms: 12.674833
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave8-qa/tests/wave8-qa/provisioning-adversarial.test.cjs:8:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+
+    + '12976625-553a-4d1f-b833-0956e60de179'
+    - null
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: '12976625-553a-4d1f-b833-0956e60de179'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave8-qa/tests/wave8-qa/provisioning-adversarial.test.cjs:8:343)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: independent successful claim rollback restores exact source and all audit/consent counts
+not ok 4 - independent successful claim rollback restores exact source and all audit/consent counts
+  ---
+  duration_ms: 11.25425
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave8-qa/tests/wave8-qa/provisioning-adversarial.test.cjs:9:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+
+    + '9b0c370a-c2ad-4aed-8bca-3d8059857ae5'
+    - null
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: '9b0c370a-c2ad-4aed-8bca-3d8059857ae5'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave8-qa/tests/wave8-qa/provisioning-adversarial.test.cjs:9:457)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: independent changed verified Auth email does not inherit prior claim eligibility
+ok 5 - independent changed verified Auth email does not inherit prior claim eligibility
+  ---
+  duration_ms: 10.646916
+  type: 'test'
+  ...
+# Subtest: independent expired original invite cannot be revived by new actor metadata
+not ok 6 - independent expired original invite cannot be revived by new actor metadata
+  ---
+  duration_ms: 12.875709
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave8-qa/tests/wave8-qa/provisioning-adversarial.test.cjs:11:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+
+    + 'e634b33b-5a38-4259-890e-e3ba6514606c'
+    - null
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: 'e634b33b-5a38-4259-890e-e3ba6514606c'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave8-qa/tests/wave8-qa/provisioning-adversarial.test.cjs:11:474)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: independent effective profile UPDATE ACL denial survives permissive self-policy
+ok 7 - independent effective profile UPDATE ACL denial survives permissive self-policy
+  ---
+  duration_ms: 8.582583
+  type: 'test'
+  ...
+# Subtest: independent direct authenticated TRUNCATE profiles is privilege-denied and retains all ownership records
+not ok 8 - independent direct authenticated TRUNCATE profiles is privilege-denied and retains all ownership records
+  ---
+  duration_ms: 9.978875
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave8-qa/tests/wave8-qa/provisioning-adversarial.test.cjs:13:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    RLS cannot protect TRUNCATE; require actual ACL denial, not FK masking
+    + actual - expected
+
+    + undefined
+    - '42501'
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '42501'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave8-qa/tests/wave8-qa/provisioning-adversarial.test.cjs:13:412)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 3
+# fail 5
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 207.607584

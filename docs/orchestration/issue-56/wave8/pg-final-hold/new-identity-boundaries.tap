@@ -1,0 +1,82 @@
+TAP version 13
+# Subtest: assigned Coach cannot forge account identity by INSERT after deleting own scoped tuple
+ok 1 - assigned Coach cannot forge account identity by INSERT after deleting own scoped tuple
+  ---
+  duration_ms: 64.776583
+  type: 'test'
+  ...
+# Subtest: compatibility HOLD: direct authenticated Owner cannot install nonnull account binding without reviewed provisioning
+ok 2 - compatibility HOLD: direct authenticated Owner cannot install nonnull account binding without reviewed provisioning
+  ---
+  duration_ms: 11.61075
+  type: 'test'
+  ...
+# Subtest: existing scoped NULL-user onboarding insertion remains eligible; later direct binding remains held
+ok 3 - existing scoped NULL-user onboarding insertion remains eligible; later direct binding remains held
+  ---
+  duration_ms: 14.242541
+  type: 'test'
+  ...
+# Subtest: same-tuple authorized access update and explicit membership association remain available
+ok 4 - same-tuple authorized access update and explicit membership association remain available
+  ---
+  duration_ms: 15.159083
+  type: 'test'
+  ...
+# Subtest: household scoped Owner noop succeeds but even Owner direct primary transfer rejects
+ok 5 - household scoped Owner noop succeeds but even Owner direct primary transfer rejects
+  ---
+  duration_ms: 13.389958
+  type: 'test'
+  ...
+# Subtest: unassigned Coach cannot INSERT parent household for foreign contact; scoped Owner can
+ok 6 - unassigned Coach cannot INSERT parent household for foreign contact; scoped Owner can
+  ---
+  duration_ms: 9.948208
+  type: 'test'
+  ...
+# Subtest: suspended Coach loses parent household read and own scoped write
+ok 7 - suspended Coach loses parent household read and own scoped write
+  ---
+  duration_ms: 10.239209
+  type: 'test'
+  ...
+# Subtest: inactive Coach loses parent household read and own scoped write
+ok 8 - inactive Coach loses parent household read and own scoped write
+  ---
+  duration_ms: 14.020791
+  type: 'test'
+  ...
+# Subtest: withdrawn contact and permission scopes remove parent visibility on same backend
+ok 9 - withdrawn contact and permission scopes remove parent visibility on same backend
+  ---
+  duration_ms: 10.312042
+  type: 'test'
+  ...
+# Subtest: TRUNCATE exact household ACL denies authenticated and preserves trusted roles
+ok 10 - TRUNCATE exact household ACL denies authenticated and preserves trusted roles
+  ---
+  duration_ms: 8.024834
+  type: 'test'
+  ...
+# Subtest: new helper is invoker, no EXECUTE to callers, and all3 parent policies restrictive
+ok 11 - new helper is invoker, no EXECUTE to callers, and all3 parent policies restrictive
+  ---
+  duration_ms: 10.3465
+  type: 'test'
+  ...
+# Subtest: direct INSERT with NULL user still cannot forge foreign household association
+ok 12 - direct INSERT with NULL user still cannot forge foreign household association
+  ---
+  duration_ms: 7.172416
+  type: 'test'
+  ...
+1..12
+# tests 12
+# suites 0
+# pass 12
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 268.892292
