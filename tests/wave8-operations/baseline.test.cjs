@@ -1,0 +1,6 @@
+'use strict';
+const {test}=require('node:test'),a=require('node:assert/strict');
+const {fixture}=require('./fixture.cjs');
+test('BASELINE accepted goal status reloads full dashboard and discards weekly draft',async()=>{const f=await fixture({baseline:true});try{f.w.document.querySelector('[name=checkin_fictional_note]').value='Fictional retained draft';await f.act();a.equal(f.w.document.querySelector('[name=checkin_fictional_note]').value,'');a(f.calls.filter(x=>x.table==='my_member_dashboard').length>1);}finally{f.close();}});
+test('BASELINE lost response permits a blind second status mutation',async()=>{const f=await fixture({baseline:true});try{f.store.loss=true;await f.act();await f.act();a.equal(f.calls.filter(x=>x.name==='update_my_goal_status').length,2);}finally{f.close();}});
+test('BASELINE replaced same-document goal row bypasses old row pending lock',async()=>{const f=await fixture({baseline:true,rpcGate:'update_my_goal_status'});try{const first=f.act();for(let i=0;i<30&&!f.pending.length;i++)await f.tick();f.render();const second=f.act();for(let i=0;i<30&&f.pending.length<2;i++)await f.tick();a.equal(f.calls.filter(x=>x.name==='update_my_goal_status').length,2);f.release();await Promise.all([first,second]);}finally{f.close();}});

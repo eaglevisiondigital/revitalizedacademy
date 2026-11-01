@@ -1,0 +1,14 @@
+✔ chromium 390 mounted goal status continuity, readback, uncertainty, security and responsive layout (686.575416ms)
+✔ chromium 768 mounted goal status continuity, readback, uncertainty, security and responsive layout (391.032542ms)
+✔ chromium 1440 mounted goal status continuity, readback, uncertainty, security and responsive layout (395.187458ms)
+✔ webkit 390 mounted goal status continuity, readback, uncertainty, security and responsive layout (1130.052375ms)
+✔ webkit 768 mounted goal status continuity, readback, uncertainty, security and responsive layout (862.775458ms)
+✔ webkit 1440 mounted goal status continuity, readback, uncertainty, security and responsive layout (872.130958ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4561.7575

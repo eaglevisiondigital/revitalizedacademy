@@ -20,6 +20,11 @@
   const habitButtons = new Map();
   const habitWriteDetails = new Map();
   const habitSurfaceRuns = {daily:0,habits:0};
+  // Same-document goal coordination only; the existing RPC remains authoritative.
+  const goalStatusWrites = new Map();
+  const goalStatusButtons = new Map();
+  let goalSurfaceRun = 0, goalReadSequence = 0, goalReadPending = false;
+  let goalAccessDenied = false, goalNotice = {message:"",type:""};
   const dailyHabitKey = (id,date=new Date().toISOString().slice(0,10)) => memberUserId + ":" + id + ":" + date;
 
   function habitStatus(message,type=""){
@@ -75,6 +80,9 @@
     dailyHabitWrites.clear();
     habitButtons.clear();
     habitWriteDetails.clear();
+    goalStatusWrites.clear();
+    goalStatusButtons.clear();
+    goalReadSequence++;
     dailyHabitReadSequence++;
     currentMember = activeSessionPrep = activeHealthProvider = currentFamilyTarget = null;
     activeAgreement = currentReferralCode = currentReferralShareUrl = currentReferralShareMessage = null;
@@ -1999,10 +2007,18 @@
   }
 
   function renderGoals(rows) {
+    goalSurfaceRun++;
+    goalStatusButtons.clear();
+    if(goalAccessDenied)rows=[];
     const list = el("rm-goals");
     const history = el("rm-goal-history");
     list.replaceChildren();
     history.replaceChildren();
+    const updateStatus=document.createElement("p");
+    updateStatus.id="rm-goal-update-status";
+    updateStatus.setAttribute("role","status");
+    showStatus(updateStatus,goalNotice.message,goalNotice.type);
+    list.append(updateStatus);
 
     const active = rows.filter((row) => row.status === "active");
     const historical = rows.filter((row) => ["paused","completed"].includes(row.status));
@@ -2011,7 +2027,9 @@
     el("rm-goal-history-count").textContent=String(historical.length);
 
     if (!active.length) {
-      list.innerHTML = '<div class="rm112-empty">No active goals yet. Add one when you are ready to define your next target.</div>';
+      const empty=document.createElement("div");empty.className="rm112-empty";
+      empty.textContent=goalAccessDenied?"Goal access is no longer authorized.":"No active goals yet. Add one when you are ready to define your next target.";
+      list.append(empty);
     }
 
     active.forEach((row) => {
@@ -2045,12 +2063,12 @@
       complete.type="button";
       complete.className="primary";
       complete.textContent="Complete Goal";
-      complete.addEventListener("click",()=>updateGoalStatus(row,"completed"));
+      bindGoalStatusButton(complete,row,"completed");
       const pause=document.createElement("button");
       pause.type="button";
       pause.className="muted";
       pause.textContent="Pause";
-      pause.addEventListener("click",()=>updateGoalStatus(row,"paused"));
+      bindGoalStatusButton(pause,row,"paused");
       actions.append(complete,pause);
       item.append(actions);
       list.append(item);
@@ -2081,18 +2099,18 @@
           const resume=document.createElement("button");
           resume.type="button";
           resume.textContent="Resume";
-          resume.addEventListener("click",()=>updateGoalStatus(row,"active"));
+          bindGoalStatusButton(resume,row,"active");
           const cancel=document.createElement("button");
           cancel.type="button";
           cancel.className="cancel";
           cancel.textContent="Cancel Goal";
-          cancel.addEventListener("click",()=>updateGoalStatus(row,"cancelled"));
+          bindGoalStatusButton(cancel,row,"cancelled");
           actions.append(resume,cancel);
         }else{
           const reopen=document.createElement("button");
           reopen.type="button";
           reopen.textContent="Reopen";
-          reopen.addEventListener("click",()=>updateGoalStatus(row,"active"));
+          bindGoalStatusButton(reopen,row,"active");
           actions.append(reopen);
         }
         item.append(copy,actions);
@@ -2408,26 +2426,105 @@
     return { start: iso(start), end: iso(end) };
   }
 
-  async function updateGoalStatus(row,status) {
+  function goalStatusNotice(message,type=""){
+    goalNotice={message,type};
+    const target=el("rm-goal-update-status");
+    if(target)showStatus(target,message,type);
+  }
+
+  function syncGoalStatusButtons(){
+    for(const [button,binding] of goalStatusButtons){
+      const state=goalStatusWrites.get(binding.key);
+      button.disabled=memberDocumentEnded||goalAccessDenied||binding.userId!==memberUserId||binding.epoch!==memberSessionEpoch||state?.phase==="pending"||goalReadPending;
+      button.textContent=state&&state.phase!=="pending"?"Check status":binding.label;
+      if(state?.phase==="pending"||goalReadPending)button.setAttribute("aria-busy","true");else button.removeAttribute("aria-busy");
+    }
+  }
+
+  function bindGoalStatusButton(button,row,status){
+    const binding={key:memberUserId+":"+row.id,userId:memberUserId,epoch:memberSessionEpoch,run:goalSurfaceRun,label:button.textContent};
+    const snapshot=Object.freeze({...row});
+    goalStatusButtons.set(button,binding);
+    button.addEventListener("click",()=>updateGoalStatus(snapshot,status,binding));
+    syncGoalStatusButtons();
+  }
+
+  function denyGoalStatusAccess(message="Goal access is no longer authorized. No further goal update will be sent."){
+    goalAccessDenied=true;
+    goalReadSequence++;
+    goalStatusNotice(message,"error");
+    renderGoals([]);
+  }
+
+  async function refreshGoalStatus(task,key){
+    if(goalReadPending||goalAccessDenied||!dashboardTaskCurrent(task))return;
+    const run=goalSurfaceRun,sequence=++goalReadSequence;
+    goalReadPending=true;syncGoalStatusButtons();
+    try{
+      const {data,error}=await client.from("my_goals").select("*");
+      if(memberDocumentEnded||memberUserId!==task.userId||memberSessionEpoch!==task.epoch)return;
+      if(error?.code==="42501"){denyGoalStatusAccess();return;}
+      if(!dashboardTaskCurrent(task)||run!==goalSurfaceRun||sequence!==goalReadSequence)return;
+      if(error||!Array.isArray(data))throw Error("Goal status unavailable");
+      const state=goalStatusWrites.get(key),row=data.find(item=>item.id===state?.id);
+      if(state?.phase==="accepted"&&row?.status===state.status){
+        goalStatusWrites.delete(key);
+        goalStatusNotice(state.title+": Current saved goal status: "+title(row.status)+".","success");
+      }else if(state){
+        goalStatusNotice(state.title+": "+(row?"Current saved goal status: "+title(row.status)+". ":"This goal is not currently available. ")+
+          "Requested status: "+title(state.status)+". "+
+          (state.phase==="uncertain"?"The earlier update is still unconfirmed. No new update was sent.":"The accepted update could not be reconciled with the saved status. No new update was sent."),"error");
+      }
+      renderGoals(data);
+    }finally{goalReadPending=false;syncGoalStatusButtons();}
+  }
+
+  async function updateGoalStatus(row,status,binding) {
     const task = {userId: memberUserId, epoch: memberSessionEpoch, run: dashboardRun};
-    if (!dashboardTaskCurrent(task) || row._memberMutationPending) return;
+    if(!dashboardTaskCurrent(task)||goalAccessDenied||!row?.id||!binding||binding.run!==goalSurfaceRun||binding.userId!==task.userId||binding.epoch!==task.epoch)return;
+    const key=binding.key,state=goalStatusWrites.get(key);
+    if(state?.phase==="pending"||goalReadPending)return;
     const payload = {p_goal_id: row.id, p_status: status};
-    row._memberMutationPending = true;
+    const sameActor=()=>!memberDocumentEnded&&memberUserId===task.userId&&memberSessionEpoch===task.epoch;
+    let dispatched=false;
+    const requested={id:row.id,title:String(row.title||"Selected goal"),status};
+    goalStatusWrites.set(key,state||{phase:"pending",...requested});
+    syncGoalStatusButtons();
     try {
       const {data: authData, error: authError} = await client.auth.getUser();
-      if (!dashboardTaskCurrent(task)) return;
-      if (authError || authData?.user?.id !== task.userId) {
-        window.alert("Your member session could not be verified. Please sign in again.");
+      if(!authError&&authData?.user?.id&&authData.user.id!==task.userId){endMemberDocument();return;}
+      if(!authError&&!authData?.user){denyGoalStatusAccess();return;}
+      if(!dashboardTaskCurrent(task)||goalAccessDenied||binding.run!==goalSurfaceRun){
+        if(!state&&sameActor()&&goalStatusWrites.get(key)?.phase==="pending")goalStatusWrites.delete(key);
         return;
       }
-      const {error} = await client.rpc("update_my_goal_status", payload);
-      if (!dashboardTaskCurrent(task)) return;
-      if (error) { window.alert(error.message); return; }
-      await loadDashboard();
-    } catch (error) {
-      if (dashboardTaskCurrent(task)) window.alert(error.message || "This update could not be completed.");
+      if (authError || authData?.user?.id !== task.userId) {
+        if(!state)goalStatusWrites.delete(key);
+        goalStatusNotice("Your member session could not be verified. No goal update was sent.","error");
+        return;
+      }
+      if(state){await refreshGoalStatus(task,key);return;}
+      goalStatusNotice(requested.title+": Updating goal to "+title(status)+"…");
+      dispatched=true;
+      const {data:updated,error} = await client.rpc("update_my_goal_status", payload);
+      if(!sameActor()||goalAccessDenied)return;
+      if(error?.code==="42501"){denyGoalStatusAccess();return;}
+      if(updated===false){denyGoalStatusAccess("Goal update is unavailable or no longer authorized. No further goal update will be sent.");return;}
+      if(error||updated!==true)throw Error("Goal update not confirmed");
+      goalStatusWrites.set(key,{phase:"accepted",...requested});
+      goalStatusNotice("Goal update accepted. Checking the saved status.");
+      await refreshGoalStatus(task,key);
+    } catch {
+      if(!sameActor()||goalAccessDenied)return;
+      if(dispatched){
+        if(goalStatusWrites.get(key)?.phase!=="accepted")goalStatusWrites.set(key,{phase:"uncertain",...requested});
+        goalStatusNotice(requested.title+": Goal update status is unconfirmed (requested "+title(status)+"). Use Check status; no automatic retry will be sent.","error");
+      }else{
+        if(!state)goalStatusWrites.delete(key);
+        goalStatusNotice(state?"Goal status is unavailable. No new update was sent.":"Your member session could not be verified. No goal update was sent.","error");
+      }
     } finally {
-      row._memberMutationPending = false;
+      syncGoalStatusButtons();
     }
   }
 

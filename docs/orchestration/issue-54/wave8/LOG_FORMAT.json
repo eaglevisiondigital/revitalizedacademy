@@ -1,0 +1,8 @@
+{
+  "scope": "Trailing whitespace only, no outcome/content removal",
+  "originalSha256": "f51b1cf618ac93098898c4fcb9f8244669fc84d607fed77484d711061d440cc7",
+  "readableSha256": "14d6c8ca8103d192e5b91b2851f6ad3fe5cd09e69834eeebd30ab90a1282434c",
+  "originalBytes": 34443,
+  "originalArchive": "BROWSER_INITIAL.raw.tap.gz",
+  "archiveSha256": "db197a6db6de7847b790f196b880084f192a3c59bb81eb27c7f03dfbc561f963"
+}
