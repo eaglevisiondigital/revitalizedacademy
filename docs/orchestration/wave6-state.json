@@ -84,7 +84,11 @@
         "tests/wave6-features/",
         "docs/orchestration/issue-54/wave6-features/"
       ],
-      "implementationSha": "704124a8d94225f70d68b96cc2b64806d5aa3cff"
+      "implementationSha": "c6dd729ee9c2e7b34fc421b41c9a85abbc89dd3b",
+      "commits": [
+        "704124a8d94225f70d68b96cc2b64806d5aa3cff",
+        "c6dd729ee9c2e7b34fc421b41c9a85abbc89dd3b"
+      ]
     },
     {
       "status": "ACTIVE",
@@ -176,12 +180,24 @@
     "block": "EXACT_COMBINED_PG_NOT_RUN"
   },
   "featuresAuthor": {
-    "nodeDomHttpSourcePass": 221,
+    "nodeDomHttpSourcePass": 227,
     "browserPass": 14,
     "historicalBaselineReproductionsSeparate": 3,
     "protectedFilesCompared": 413,
     "evidencePinsVerified": 34,
     "methodologyPromoted": 0
   },
-  "independentQaStatus": "ACTIVE_FINAL_COMBINED_SOURCE_VERIFICATION"
+  "independentQaStatus": "ACTIVE_FINAL_COMBINED_SOURCE_VERIFICATION",
+  "independentFindings": [
+    {
+      "finding": "42501 followed by stale success revived daily card",
+      "original": "1 FAIL",
+      "correction": "C single-read sequence and denial hold; unchanged assertion PASS"
+    },
+    {
+      "finding": "different verified getUser before subscription left old private DOM",
+      "original": "2 FAIL",
+      "correction": "C reuses existing document teardown; unchanged assertion PASS"
+    }
+  ]
 }
