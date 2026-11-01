@@ -1,0 +1,33 @@
+✔ independent: concurrent status reads cannot restore protected daily card after a genuine authorization denial (658.62175ms)
+✔ daily habit rapid double action dispatches one scoped RPC and retains completed state after stale read (173.826ms)
+✔ daily habit freezes exact target 0 and ID across valid renewal and changed render source (68.371333ms)
+✔ daily habit freezes exact target 2.5 and ID across valid renewal and changed render source (69.271167ms)
+✔ daily habit pending auth null issues no stale RPC (58.092083ms)
+✔ daily habit pending auth synthetic-b issues no stale RPC (51.022042ms)
+✔ daily habit late success after null causes no status revival or read (157.572625ms)
+✔ daily habit late denial after null causes no status revival or read (170.888042ms)
+✔ daily habit late success after synthetic-b causes no status revival or read (167.443375ms)
+✔ daily habit late denial after synthetic-b causes no status revival or read (193.0245ms)
+✔ daily habit verified getUser denial prevents write {"authUserId":null} (441.471042ms)
+✔ daily habit verified getUser denial prevents write {"authUserId":"synthetic-b"} (426.639416ms)
+✔ daily habit verified getUser denial prevents write {"authError":{"message":"Fictional unavailable"}} (277.476958ms)
+✔ daily habit malformed target -1 does not dispatch (71.502209ms)
+✔ daily habit malformed target not-a-number does not dispatch (63.410417ms)
+✔ daily habit malformed target Infinity does not dispatch (70.2505ms)
+✔ daily habit lost response remains uncertain and read-only status checks never blindly repeat write (95.851875ms)
+✔ daily habit returned nonauthorization error is uncertain, not successful completion (348.091416ms)
+✔ daily habit genuine 42501 does not report save or invoke dashboard read (114.305917ms)
+✔ daily habit success plus dashboard transport failure remains saved, never retransmitted (76.208083ms)
+✔ daily habit rendering escapes untrusted labels and completed source does not write (57.276917ms)
+✔ daily habit UTC date and actor are frozen before midnight; old response cannot mark current day complete (57.67325ms)
+✔ daily habit readback 42501 clears only protected daily card and does not claim a successful status read (101.01925ms)
+✔ daily habit failed getUser transport never dispatches or reports a saved habit (63.024625ms)
+✔ author regression: serialized status reads and persistent denial fence prevent stale private-card restoration (72.944916ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3880.269959

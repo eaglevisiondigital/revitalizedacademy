@@ -1,0 +1,11 @@
+✔ EXPECTED BASELINE DEFECT: daily rapid double action dispatches two RPCs (409.769833ms)
+✔ EXPECTED BASELINE DEFECT: daily habit skips verified getUser and writes with mismatched current identity (176.693209ms)
+✔ EXPECTED BASELINE DEFECT: successful daily action whole-dashboard reload erases unrelated weekly draft (182.560333ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2330.649208

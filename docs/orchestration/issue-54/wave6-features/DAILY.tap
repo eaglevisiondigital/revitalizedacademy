@@ -1,0 +1,49 @@
+✔ daily habit rapid double action dispatches one scoped RPC and retains completed state after stale read (201.098625ms)
+✔ daily habit freezes exact target 0 and ID across valid renewal and changed render source (103.248625ms)
+✔ daily habit freezes exact target 2.5 and ID across valid renewal and changed render source (80.710667ms)
+✔ daily habit pending auth null issues no stale RPC (98.474416ms)
+✔ daily habit pending auth synthetic-b issues no stale RPC (83.489625ms)
+✔ daily habit late success after null causes no status revival or read (73.4605ms)
+✔ daily habit late denial after null causes no status revival or read (95.780792ms)
+✔ daily habit late success after synthetic-b causes no status revival or read (75.05ms)
+✔ daily habit late denial after synthetic-b causes no status revival or read (76.144208ms)
+✔ daily habit verified getUser denial prevents write {"authUserId":null} (78.6835ms)
+✔ daily habit verified getUser denial prevents write {"authUserId":"synthetic-b"} (61.886167ms)
+✔ daily habit verified getUser denial prevents write {"authError":{"message":"Fictional unavailable"}} (59.131375ms)
+✔ daily habit malformed target -1 does not dispatch (54.197125ms)
+✔ daily habit malformed target not-a-number does not dispatch (55.413834ms)
+✔ daily habit malformed target Infinity does not dispatch (53.166ms)
+✖ daily habit lost response remains uncertain and read-only status checks never blindly repeat write (53.096375ms)
+✔ daily habit returned nonauthorization error is uncertain, not successful completion (52.921541ms)
+✔ daily habit genuine 42501 does not report save or invoke dashboard read (68.674958ms)
+✔ daily habit success plus dashboard transport failure remains saved, never retransmitted (53.342125ms)
+✔ daily habit rendering escapes untrusted labels and completed source does not write (59.175375ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 19
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2197.820375
+
+✖ failing tests:
+
+test at tests/wave6-features/daily.test.cjs:12:1
+✖ daily habit lost response remains uncertain and read-only status checks never blindly repeat write (53.096375ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + 'Check status'
+  - 'Done'
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-features/tests/wave6-features/daily.test.cjs:12:531)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Check status',
+    expected: 'Done',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

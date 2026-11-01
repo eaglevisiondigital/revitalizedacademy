@@ -1,0 +1,30 @@
+✔ chromium 390 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence (1921.097958ms)
+✔ chromium 768 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence (1601.996458ms)
+✔ chromium 1440 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence (1543.862ms)
+✔ webkit 390 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence (1971.875833ms)
+✔ webkit 768 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence (2052.19725ms)
+✔ webkit 1440 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence (2116.585458ms)
+✔ chromium 390 actual daily habit duplicate/renewal/uncertain readback/draft/privacy boundary (741.700709ms)
+✔ chromium 768 actual daily habit duplicate/renewal/uncertain readback/draft/privacy boundary (569.467583ms)
+✔ chromium 1440 actual daily habit duplicate/renewal/uncertain readback/draft/privacy boundary (1072.137416ms)
+✔ webkit 390 actual daily habit duplicate/renewal/uncertain readback/draft/privacy boundary (1019.934625ms)
+✖ webkit 768 actual daily habit duplicate/renewal/uncertain readback/draft/privacy boundary (934.071917ms)
+✔ webkit 1440 actual daily habit duplicate/renewal/uncertain readback/draft/privacy boundary (1208.589ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 11
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 11459.328209
+
+✖ failing tests:
+
+test at tests/wave6-features/member-browser.cjs:13:75
+✖ webkit 768 actual daily habit duplicate/renewal/uncertain readback/draft/privacy boundary (934.071917ms)
+  page.evaluate: Execution context was destroyed, most likely because of a navigation
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-features/tests/wave6-features/member-browser.cjs:21:450) {
+    name: 'Error',
+    log: []
+  }

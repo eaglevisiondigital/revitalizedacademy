@@ -1,0 +1,46 @@
+✔ chromium 390 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence (3137.256417ms)
+✔ chromium 768 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence (3870.610708ms)
+✔ chromium 1440 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence (1893.1875ms)
+✔ webkit 390 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence (2144.790333ms)
+✔ webkit 768 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence (1956.171667ms)
+✔ webkit 1440 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence (1871.012292ms)
+✖ chromium 390 actual daily habit duplicate/renewal/uncertain readback/draft/privacy boundary (8472.062958ms)
+✖ chromium 768 actual daily habit duplicate/renewal/uncertain readback/draft/privacy boundary (7590.726375ms)
+✖ chromium 1440 actual daily habit duplicate/renewal/uncertain readback/draft/privacy boundary (7378.876ms)
+✔ webkit 390 actual daily habit duplicate/renewal/uncertain readback/draft/privacy boundary (1258.111542ms)
+✔ webkit 768 actual daily habit duplicate/renewal/uncertain readback/draft/privacy boundary (841.370334ms)
+✔ webkit 1440 actual daily habit duplicate/renewal/uncertain readback/draft/privacy boundary (768.816042ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 9
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 26631.047541
+
+✖ failing tests:
+
+test at tests/wave6-features/member-browser.cjs:13:75
+✖ chromium 390 actual daily habit duplicate/renewal/uncertain readback/draft/privacy boundary (8472.062958ms)
+  page.waitForFunction: Timeout 7000ms exceeded.
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-features/tests/wave6-features/member-browser.cjs:21:348) {
+    name: 'TimeoutError',
+    log: []
+  }
+
+test at tests/wave6-features/member-browser.cjs:13:75
+✖ chromium 768 actual daily habit duplicate/renewal/uncertain readback/draft/privacy boundary (7590.726375ms)
+  page.waitForFunction: Timeout 7000ms exceeded.
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-features/tests/wave6-features/member-browser.cjs:21:348) {
+    name: 'TimeoutError',
+    log: []
+  }
+
+test at tests/wave6-features/member-browser.cjs:13:75
+✖ chromium 1440 actual daily habit duplicate/renewal/uncertain readback/draft/privacy boundary (7378.876ms)
+  page.waitForFunction: Timeout 7000ms exceeded.
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-features/tests/wave6-features/member-browser.cjs:21:348) {
+    name: 'TimeoutError',
+    log: []
+  }

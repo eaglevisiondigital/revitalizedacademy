@@ -1,0 +1,28 @@
+✔ daily habit rapid double action dispatches one scoped RPC and retains completed state after stale read (242.648166ms)
+✔ daily habit freezes exact target 0 and ID across valid renewal and changed render source (102.426792ms)
+✔ daily habit freezes exact target 2.5 and ID across valid renewal and changed render source (73.525667ms)
+✔ daily habit pending auth null issues no stale RPC (88.849834ms)
+✔ daily habit pending auth synthetic-b issues no stale RPC (73.870917ms)
+✔ daily habit late success after null causes no status revival or read (87.495209ms)
+✔ daily habit late denial after null causes no status revival or read (181.47125ms)
+✔ daily habit late success after synthetic-b causes no status revival or read (87.393834ms)
+✔ daily habit late denial after synthetic-b causes no status revival or read (80.972166ms)
+✔ daily habit verified getUser denial prevents write {"authUserId":null} (82.758916ms)
+✔ daily habit verified getUser denial prevents write {"authUserId":"synthetic-b"} (73.807459ms)
+✔ daily habit verified getUser denial prevents write {"authError":{"message":"Fictional unavailable"}} (75.627792ms)
+✔ daily habit malformed target -1 does not dispatch (57.966458ms)
+✔ daily habit malformed target not-a-number does not dispatch (74.771041ms)
+✔ daily habit malformed target Infinity does not dispatch (65.323958ms)
+✔ daily habit lost response remains uncertain and read-only status checks never blindly repeat write (56.815666ms)
+✔ daily habit returned nonauthorization error is uncertain, not successful completion (56.553667ms)
+✔ daily habit genuine 42501 does not report save or invoke dashboard read (50.41925ms)
+✔ daily habit success plus dashboard transport failure remains saved, never retransmitted (51.472416ms)
+✔ daily habit rendering escapes untrusted labels and completed source does not write (53.882792ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2379.048667

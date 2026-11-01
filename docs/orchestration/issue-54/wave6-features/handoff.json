@@ -1,0 +1,42 @@
+{
+  "agent": "/root/wave6_features",
+  "issues": [
+    54,
+    55,
+    57
+  ],
+  "branch": "codex/rva-wave6-features-20261101",
+  "worktree": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-features",
+  "base": "9beae3bb40c154d2bfd623e8d2355b3a6c3cd306",
+  "sourceCommit": "returned with native final handoff",
+  "sourceFiles": [
+    "member/member110.js",
+    "tools/affiliate-share-preview/index.html",
+    "tools/affiliate-share-preview/preview.js",
+    "tools/affiliate-share-preview/server.cjs",
+    "tools/wave6-progress-contract.cjs"
+  ],
+  "implemented": [
+    "actual daily habit identity/date/target snapshot and duplicate-action guard",
+    "uncertain-save read-only status recovery without blind retry",
+    "narrow daily projection refresh preserving unrelated drafts",
+    "independent denial-race repair with serialized reads, sequence/epoch fence and document denial hold",
+    "connected fictional client/assigned Coach progress/habits/goals/usage projection alongside ShareCenter/QR/Companion"
+  ],
+  "finalResults": {
+    "nodeDomHttpSourcePass": 221,
+    "nativeBrowserPass": 14,
+    "finalFail": 0,
+    "historicalDefectReproductions": 3
+  },
+  "fullPackageCertificationAdded": 0,
+  "remaining": [
+    "combined PostgreSQL and five scope cases are separate Lane A/B/QA gates",
+    "alternate Mark Today and cross-tab/device durable habit idempotency not certified by daily-card guard",
+    "fictional persona/provider is not real Auth or production permission service",
+    "paid/support/family/49day/persistent attribution and approved source/policy gaps remain"
+  ],
+  "rollback": "local Git source revert only; restores prior defects; no production or stored data to reverse",
+  "production": "NO-GO; zero writes or push",
+  "alex": "PAUSED"
+}

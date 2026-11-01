@@ -1,0 +1,19 @@
+{
+  "scope": "generated local fictional receipts only",
+  "changes": [
+    {
+      "file": "docs/orchestration/issue-54/wave6-features/DAILY.tap",
+      "rawPath": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave6/features-raw-receipts/DAILY.tap",
+      "rawSHA256": "5c0052afcdb65bb7dca46955a2114945e99345d0c51b3c200b5bf8c3618b060b",
+      "normalizedSHA256": "4715033e50ece80e7c82af2f333a5fc5e5ff017d8485c660e15cf3d1567dd1e5",
+      "change": "trailing space/tab removal only; no assertions or results changed"
+    },
+    {
+      "file": "docs/orchestration/issue-54/wave6-features/INITIAL_DAILY.tap",
+      "rawPath": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave6/features-raw-receipts/INITIAL_DAILY.tap",
+      "rawSHA256": "70fe8b774bd4eeddc014964de4aed381734f2bc73669dc388e3e1f82bdf50b44",
+      "normalizedSHA256": "76886cfc80e45d480fe540bb2adfb85b34ad2d7a4837e08fc340233cbbb9e008",
+      "change": "trailing space/tab removal only; no assertions or results changed"
+    }
+  ]
+}

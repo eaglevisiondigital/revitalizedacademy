@@ -1,0 +1,83 @@
+✖ source diff permits only the explicit member daily-action runtime slice; all other protected sources match accepted Wave5 (223.197375ms)
+✔ original register remains exact docs/orchestration/requirements.json (19.338708ms)
+✖ original register remains exact docs/orchestration/source-detail-register.json (0.134458ms)
+✖ original register remains exact docs/orchestration/integration-test-matrix.json (0.063875ms)
+✔ existing habit/meal/workout alternate handlers, shared auth event code and loadDashboard remain exact (20.132667ms)
+✔ new progress and UI cannot invoke grants, financial effects, external transport or clinical engines (100.731917ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 3
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 460.46975
+
+✖ failing tests:
+
+test at tests/wave6-features/preservation.test.cjs:6:1
+✖ source diff permits only the explicit member daily-action runtime slice; all other protected sources match accepted Wave5 (223.197375ms)
+  Error: spawnSync git ENOBUFS
+      at Object.spawnSync (node:internal/child_process:1160:20)
+      at spawnSync (node:child_process:928:24)
+      at Object.execFileSync (node:child_process:971:15)
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-features/tests/wave6-features/preservation.test.cjs:6:497)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    errno: -55,
+    code: 'ENOBUFS',
+    syscall: 'spawnSync git',
+    path: 'git',
+    spawnargs: [ 'show', '9beae3bb40c154d2bfd623e8d2355b3a6c3cd306:assets/images/about-our-founders-hero-approved.png' ],
+    error: Error: spawnSync git ENOBUFS
+        at Object.spawnSync (node:internal/child_process:1160:20)
+        at spawnSync (node:child_process:928:24)
+        at Object.execFileSync (node:child_process:971:15)
+        at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-features/tests/wave6-features/preservation.test.cjs:6:497)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1382:25)
+        at Test.start (node:internal/test_runner/test:1242:17)
+        at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17),
+    status: null,
+    signal: 'SIGTERM',
+    output: [ null, <Buffer 89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 06 88 00 00 03 ad 08 02 00 00 00 3d e4 70 5e 00 00 5c 41 63 61 42 58 00 00 5c 41 6a 75 6d 62 00 ... 1114062 more bytes>, <Buffer > ],
+    pid: 56378,
+    stdout: <Buffer 89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 06 88 00 00 03 ad 08 02 00 00 00 3d e4 70 5e 00 00 5c 41 63 61 42 58 00 00 5c 41 6a 75 6d 62 00 ... 1114062 more bytes>,
+    stderr: <Buffer >
+  }
+
+test at tests/wave6-features/preservation.test.cjs:7:155
+✖ original register remains exact docs/orchestration/source-detail-register.json (0.134458ms)
+  Error: ENOENT: no such file or directory, open 'docs/orchestration/source-detail-register.json'
+      at Object.readFileSync (node:fs:484:20)
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-features/tests/wave6-features/preservation.test.cjs:7:218)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: 'docs/orchestration/source-detail-register.json'
+  }
+
+test at tests/wave6-features/preservation.test.cjs:7:155
+✖ original register remains exact docs/orchestration/integration-test-matrix.json (0.063875ms)
+  Error: ENOENT: no such file or directory, open 'docs/orchestration/integration-test-matrix.json'
+      at Object.readFileSync (node:fs:484:20)
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-features/tests/wave6-features/preservation.test.cjs:7:218)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: 'docs/orchestration/integration-test-matrix.json'
+  }

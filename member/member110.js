@@ -12,6 +12,12 @@
   let memberSessionEpoch = 0;
   let dashboardRun = 0;
   let memberDocumentEnded = false;
+  // In-memory only; backend ownership and habit/day uniqueness remain authoritative.
+  const dailyHabitWrites = new Map();
+  let dailyHabitReadPending = false;
+  let dailyHabitReadSequence = 0;
+  let dailyHabitAccessDenied = false;
+  const dailyHabitKey = (id) => memberUserId + ":" + id + ":" + new Date().toISOString().slice(0,10);
 
   function dashboardTaskCurrent(task) {
     return !memberDocumentEnded && task.userId && task.userId === memberUserId &&
@@ -26,6 +32,8 @@
     memberSessionEpoch++;
     dashboardRun++;
     memberUserId = null;
+    dailyHabitWrites.clear();
+    dailyHabitReadSequence++;
     currentMember = activeSessionPrep = activeHealthProvider = currentFamilyTarget = null;
     activeAgreement = currentReferralCode = currentReferralShareUrl = currentReferralShareMessage = null;
     activeCommunityPost = activeConversationId = checkinTemplate = null;
@@ -129,6 +137,7 @@
   }
 
   function renderDailyActions(row){
+    if(dailyHabitAccessDenied)row=null;
     const summary=el("rm-today-summary");
     const habits=Array.isArray(row?.habits)?row.habits:[];
     const meals=Array.isArray(row?.meals)?row.meals:[];
@@ -168,8 +177,14 @@
       const meta=document.createElement("span");
       meta.textContent=h.completed_today?"Completed today":[h.target?String(h.target):null,h.unit||null].filter(Boolean).join(" ")||title(h.frequency||"daily");
       copy.append(name,meta);
-      const btn=document.createElement("button");btn.type="button";btn.className=h.completed_today?"":"primary";btn.disabled=Boolean(h.completed_today);btn.textContent=h.completed_today?"Done":"Check In";
-      btn.addEventListener("click",()=>completeHabit(h));
+      const key=dailyHabitKey(h.habit_id);
+      if(h.completed_today)dailyHabitWrites.set(key,"saved");
+      const held=dailyHabitWrites.get(key),done=h.completed_today||held==="saved";
+      const btn=document.createElement("button");btn.type="button";btn.className=done?"":"primary";
+      btn.disabled=Boolean(done||held==="pending");
+      btn.textContent=done?"Done":held==="pending"?"Saving…":held==="uncertain"?"Check status":"Check In";
+      if(held==="uncertain")meta.textContent="Save status unconfirmed. Check status before taking another action.";
+      btn.addEventListener("click",()=>completeHabit(h,btn));
       item.append(copy,btn);habitList.append(item);
     });
 
@@ -218,17 +233,90 @@
     }
   }
 
-  async function completeHabit(habit){
-    showStatus(el("rm-today-status"),"Saving habit check-in...");
-    const {error}=await client.rpc("check_in_my_habit",{
-      p_habit_id:habit.habit_id,
-      p_value:Number(habit.target||1),
-      p_note:null,
-      p_checkin_date:new Date().toISOString().slice(0,10)
-    });
-    if(error){showStatus(el("rm-today-status"),error.message,"error");return;}
-    showStatus(el("rm-today-status"),"Habit completed.","success");
-    await loadDashboard();
+  function denyDailyHabitAccess(){
+    dailyHabitAccessDenied=true;
+    dailyHabitReadSequence++;
+    dailyHabitWrites.clear();
+    renderDailyActions(null);
+    showStatus(el("rm-today-status"),"Daily habit access is no longer authorized. Reload only after your access is restored.","error");
+  }
+
+  async function refreshDailyHabitStatus(task){
+    if(dailyHabitReadPending||dailyHabitAccessDenied)return;
+    // One status read at a time; a genuine denial holds this document until a fresh authorized load.
+    dailyHabitReadPending=true;
+    const read=++dailyHabitReadSequence;
+    try{
+      const {data:authData,error:authError}=await client.auth.getUser();
+      if(!dashboardTaskCurrent(task)||dailyHabitAccessDenied||read!==dailyHabitReadSequence)return;
+      if(authError||authData?.user?.id!==task.userId)throw Error("member_session_unverified");
+      // Refresh only the existing daily-actions projection: unrelated in-progress forms stay mounted.
+      const {data,error}=await client.from("my_app_bootstrap_v2").select("daily_actions").single();
+      if(!dashboardTaskCurrent(task)||dailyHabitAccessDenied||read!==dailyHabitReadSequence)return;
+      if(error?.code==="42501"){denyDailyHabitAccess();return;}
+      if(error||!data?.daily_actions||!Array.isArray(data.daily_actions.habits))throw Error("daily_status_unavailable");
+      renderDailyActions(data.daily_actions);
+    }finally{dailyHabitReadPending=false;}
+  }
+
+  async function completeHabit(habit,button){
+    const task={userId:memberUserId,epoch:memberSessionEpoch,run:dashboardRun};
+    if(!dashboardTaskCurrent(task)||dailyHabitAccessDenied||!currentMember||!habit?.habit_id)return;
+    const key=dailyHabitKey(habit.habit_id),held=dailyHabitWrites.get(key);
+    if(habit.completed_today||held==="pending"||held==="saved")return;
+    const status=el("rm-today-status");
+    if(held==="uncertain"){
+      showStatus(status,"Checking the saved habit status; no new check-in will be sent.");
+      try{await refreshDailyHabitStatus(task);}catch{if(dashboardTaskCurrent(task))showStatus(status,"Habit status is unavailable. No new check-in was sent.","error");}
+      return;
+    }
+    const payload={p_habit_id:habit.habit_id,p_value:Number(habit.target??1),p_note:null,p_checkin_date:key.slice(-10)};
+    if(!Number.isFinite(payload.p_value)||payload.p_value<0){showStatus(status,"This habit target is unavailable. Please ask your coach to review it.","error");return;}
+    dailyHabitWrites.set(key,"pending");
+    if(button){button.disabled=true;button.textContent="Saving…";button.setAttribute("aria-busy","true");}
+    showStatus(status,"Saving habit check-in...");
+    // Same-user renewal preserves the task. A different established identity ends this document.
+    const sameActor=()=>!memberDocumentEnded&&memberUserId===task.userId&&memberSessionEpoch===task.epoch;
+    let dispatched=false;
+    const uncertain=()=>{
+      if(!sameActor()||dailyHabitAccessDenied)return;
+      dailyHabitWrites.set(key,"uncertain");
+      showStatus(status,"Habit save status is unconfirmed. Use Check status; no automatic retry will be sent.","error");
+    };
+    try{
+      const {data:authData,error:authError}=await client.auth.getUser();
+      if(!dashboardTaskCurrent(task)||dailyHabitAccessDenied){if(sameActor())dailyHabitWrites.delete(key);return;}
+      if(authError||authData?.user?.id!==task.userId){
+        dailyHabitWrites.delete(key);
+        showStatus(status,"Your member session could not be verified. Please sign in again.","error");return;
+      }
+      dispatched=true;
+      const {error}=await client.rpc("check_in_my_habit",payload);
+      if(!sameActor()||dailyHabitAccessDenied)return;
+      if(error){
+        if(error.code==="42501"){
+          denyDailyHabitAccess();
+        }else uncertain();
+        return;
+      }
+      dailyHabitWrites.set(key,"saved");
+      if(!dashboardTaskCurrent(task))return;
+      showStatus(status,payload.p_checkin_date===new Date().toISOString().slice(0,10)?"Habit completed.":"Previous day’s habit saved. Checking the current day’s status.","success");
+      try{await refreshDailyHabitStatus(task);}catch{if(sameActor())showStatus(status,"Habit saved. The dashboard could not refresh; no new check-in is needed.","success");}
+    }catch{
+      if(dispatched)uncertain();
+      else if(sameActor()){
+        dailyHabitWrites.delete(key);
+        showStatus(status,"Your member session could not be verified. No habit check-in was sent.","error");
+      }
+    }finally{
+      if(button){
+        button.removeAttribute("aria-busy");
+        const state=dailyHabitWrites.get(key);
+        button.disabled=!sameActor()||dailyHabitAccessDenied||state==="saved"||state==="pending";
+        button.textContent=state==="saved"?"Done":state==="uncertain"?"Check status":"Check In";
+      }
+    }
   }
 
   async function completeMeal(meal){

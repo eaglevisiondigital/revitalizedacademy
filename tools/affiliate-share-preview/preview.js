@@ -7,10 +7,10 @@
  addEventListener('pagehide',()=>channel?.close());
  function clear(message='Preview cleared.') {
   epoch++;eventId=null;el('preview').hidden=true;el('copy').value='';el('url').value='';el('qr').removeAttribute('src');el('qr-note').textContent='';el('status').textContent=message;
-  el('referral-result').textContent='';el('event-result').textContent='';el('education-result').replaceChildren();
+  el('referral-result').textContent='';el('event-result').textContent='';el('education-result').replaceChildren();el('progress-result').replaceChildren();
  }
  async function json(url,data){const response=await fetch(url,data?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}:{});const result=await response.json();if(!response.ok)throw Error('local_unavailable');return result;}
- function busy(yes){for(const id of ['prepare','referral','record','lookup'])el(id).disabled=yes;}
+ function busy(yes){for(const id of ['prepare','referral','record','lookup','progress-read'])el(id).disabled=yes;}
  async function bootstrap(sequence){const value=await json('/api/bootstrap');if(sequence!==scenarioSequence)return;manifest=value;el('state').value=manifest.state;if(el('driver').options.length===0)for(const driver of manifest.drivers){const option=document.createElement('option');option.value=driver;option.textContent=driver.replaceAll('_',' ');el('driver').append(option);}}
  busy(true);const initialSequence=++scenarioSequence;scenarioReady=bootstrap(initialSequence).then(()=>{if(initialSequence===scenarioSequence)busy(false);}).catch(()=>{if(initialSequence===scenarioSequence)clear('Local fixture unavailable; choose a scenario to retry.');});
  el('state').addEventListener('change',()=>{
@@ -19,6 +19,12 @@
   scenarioReady=scenarioReady.catch(()=>{}).then(()=>json('/api/scenario',{state})).then(value=>{if(sequence===scenarioSequence){manifest=value;el('state').value=value.state;busy(false);channel?.postMessage('fixture_changed');}}).catch(()=>{if(sequence===scenarioSequence)clear('Fixture change unavailable; choose a scenario to retry.');});
  });
  el('channel').addEventListener('change',()=>clear());el('driver').addEventListener('change',()=>{epoch++;el('education-result').replaceChildren();});
+ el('progress-persona').addEventListener('change',()=>{epoch++;el('progress-result').replaceChildren();});
+ el('progress-read').addEventListener('click',async()=>{const run=epoch,persona=el('progress-persona').value;el('progress-result').replaceChildren();try{await scenarioReady;const r=await json('/api/progress',{persona});if(run!==epoch||persona!==el('progress-persona').value)return;
+  if(r.status!=='ready'){el('progress-result').textContent='Held: '+(r.reason||'unavailable');return;}
+  const lines=['Fictional '+r.view+' dashboard — read only','Habits: '+r.habits.map(h=>h.title+' ('+(h.completed_today?'complete':'not marked complete')+')').join('; '),'Goals: '+r.goals.map(g=>g.title+' ('+g.status+')').join('; '),'Active habit days: '+(r.weekly.habit_days??'Unknown'),'Progress entries: '+(r.weekly.progress_entries??'Unknown'),'Coaching allowance: '+(r.allowance.remaining===null?'Unknown / needs review':r.allowance.remaining+' '+r.allowance.unit+' remaining')+'; '+r.allowance.status,'No clinical scores, financial effects or household information.'];
+  for(const text of lines){const p=document.createElement('p');p.textContent=text;el('progress-result').append(p);}
+ }catch{if(run===epoch)el('progress-result').textContent='Local progress unavailable; no changes were made.';}});
  el('select-copy').addEventListener('click',()=>{if(!el('preview').hidden){el('copy').focus();el('copy').select();}});
  el('prepare').addEventListener('click',async()=>{
   clear('Preparing fictional preview…');const run=epoch;

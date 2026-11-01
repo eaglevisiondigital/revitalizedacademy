@@ -1,0 +1,22 @@
+✔ real local HTTP connects scoped client/assigned coach dashboard and denies unassigned fixture (347.013167ms)
+✔ real progress endpoint denies caller-supplied contact_id (10.310917ms)
+✔ real progress endpoint denies caller-supplied role (14.732667ms)
+✔ real progress endpoint denies caller-supplied source (10.256792ms)
+✔ real progress endpoint denies caller-supplied answers (10.2925ms)
+✔ real progress endpoint denies caller-supplied household (10.969542ms)
+✔ real progress endpoint denies caller-supplied permission (4.094458ms)
+✔ real progress endpoint denies caller-supplied amount (3.861875ms)
+✔ current expired blocks real progress endpoint (9.789708ms)
+✔ current wrong-account blocks real progress endpoint (11.418792ms)
+✔ current logout blocks real progress endpoint (7.367125ms)
+✔ 100 parallel HTTP reads do not consume allowance or create tracking; share and educational routes remain independent (446.366875ms)
+✔ progress uses existing local origin, body, method and CSP protections (14.619666ms)
+✔ creative revocation and consent withdrawal do not invent revoked client permission (108.765958ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1353.361166

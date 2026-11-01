@@ -1,0 +1,87 @@
+✔ daily habit rapid double action dispatches one scoped RPC and retains completed state after stale read (172.424709ms)
+✖ daily habit freezes exact target 0 and ID across valid renewal and changed render source (82.163875ms)
+✖ daily habit freezes exact target 2.5 and ID across valid renewal and changed render source (75.979458ms)
+✔ daily habit pending auth null issues no stale RPC (56.473167ms)
+✔ daily habit pending auth synthetic-b issues no stale RPC (56.440167ms)
+✔ daily habit late success after null causes no status revival or read (68.783542ms)
+✔ daily habit late denial after null causes no status revival or read (121.538917ms)
+✔ daily habit late success after synthetic-b causes no status revival or read (86.051334ms)
+✔ daily habit late denial after synthetic-b causes no status revival or read (79.903959ms)
+✔ daily habit verified getUser denial prevents write {"authUserId":null} (72.138125ms)
+✔ daily habit verified getUser denial prevents write {"authUserId":"synthetic-b"} (62.0915ms)
+✔ daily habit verified getUser denial prevents write {"authError":{"message":"Fictional unavailable"}} (52.151959ms)
+✔ daily habit malformed target -1 does not dispatch (52.692916ms)
+✔ daily habit malformed target not-a-number does not dispatch (54.840042ms)
+✔ daily habit malformed target Infinity does not dispatch (49.375958ms)
+✖ daily habit lost response remains uncertain and read-only status checks never blindly repeat write (64.38725ms)
+✔ daily habit returned nonauthorization error is uncertain, not successful completion (47.994667ms)
+✔ daily habit genuine 42501 does not report save or invoke dashboard read (48.176791ms)
+✔ daily habit success plus dashboard transport failure remains saved, never retransmitted (59.145666ms)
+✔ daily habit rendering escapes untrusted labels and completed source does not write (56.39775ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 17
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1907.032833
+
+✖ failing tests:
+
+test at tests/wave6-features/daily.test.cjs:7:29
+✖ daily habit freezes exact target 0 and ID across valid renewal and changed render source (82.163875ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + ''
+  - 'Fictional unsaved draft'
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-features/tests/wave6-features/daily.test.cjs:7:562)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: 'Fictional unsaved draft',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave6-features/daily.test.cjs:7:29
+✖ daily habit freezes exact target 2.5 and ID across valid renewal and changed render source (75.979458ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + ''
+  - 'Fictional unsaved draft'
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-features/tests/wave6-features/daily.test.cjs:7:562)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: 'Fictional unsaved draft',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave6-features/daily.test.cjs:12:1
+✖ daily habit lost response remains uncertain and read-only status checks never blindly repeat write (64.38725ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + 'Check status'
+  - 'Done'
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-features/tests/wave6-features/daily.test.cjs:12:531)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Check status',
+    expected: 'Done',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

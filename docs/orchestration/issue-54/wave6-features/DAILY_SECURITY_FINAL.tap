@@ -1,0 +1,31 @@
+✔ daily habit rapid double action dispatches one scoped RPC and retains completed state after stale read (188.977291ms)
+✔ daily habit freezes exact target 0 and ID across valid renewal and changed render source (96.817166ms)
+✔ daily habit freezes exact target 2.5 and ID across valid renewal and changed render source (79.049833ms)
+✔ daily habit pending auth null issues no stale RPC (69.350875ms)
+✔ daily habit pending auth synthetic-b issues no stale RPC (73.516834ms)
+✔ daily habit late success after null causes no status revival or read (84.18475ms)
+✔ daily habit late denial after null causes no status revival or read (86.166125ms)
+✔ daily habit late success after synthetic-b causes no status revival or read (69.922084ms)
+✔ daily habit late denial after synthetic-b causes no status revival or read (107.4305ms)
+✔ daily habit verified getUser denial prevents write {"authUserId":null} (109.602917ms)
+✔ daily habit verified getUser denial prevents write {"authUserId":"synthetic-b"} (69.654666ms)
+✔ daily habit verified getUser denial prevents write {"authError":{"message":"Fictional unavailable"}} (60.173292ms)
+✔ daily habit malformed target -1 does not dispatch (57.415916ms)
+✔ daily habit malformed target not-a-number does not dispatch (66.048583ms)
+✔ daily habit malformed target Infinity does not dispatch (64.058209ms)
+✔ daily habit lost response remains uncertain and read-only status checks never blindly repeat write (56.347708ms)
+✔ daily habit returned nonauthorization error is uncertain, not successful completion (66.4715ms)
+✔ daily habit genuine 42501 does not report save or invoke dashboard read (50.503ms)
+✔ daily habit success plus dashboard transport failure remains saved, never retransmitted (52.497292ms)
+✔ daily habit rendering escapes untrusted labels and completed source does not write (50.7925ms)
+✔ daily habit UTC date and actor are frozen before midnight; old response cannot mark current day complete (50.914292ms)
+✔ daily habit readback 42501 clears only protected daily card and does not claim a successful status read (59.414208ms)
+✔ daily habit failed getUser transport never dispatches or reports a saved habit (49.489209ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2090.570584

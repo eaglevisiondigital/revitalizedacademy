@@ -1,0 +1,14 @@
+✔ source diff permits only the explicit member daily-action runtime slice; all other protected sources match accepted Wave5 (30210.597708ms)
+✔ original register remains exact docs/orchestration/requirements.json (30.505791ms)
+✔ original register remains exact docs/orchestration/requirements-source-details.json (30.141542ms)
+✔ original register remains exact docs/orchestration/issue-56/ACCEPTANCE_MATRIX.json (98.501958ms)
+✔ existing habit/meal/workout alternate handlers, shared auth event code and loadDashboard remain exact (34.075666ms)
+✔ new progress and UI cannot invoke grants, financial effects, external transport or clinical engines (110.578125ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 30588.140083
