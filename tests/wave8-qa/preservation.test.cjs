@@ -1,0 +1,12 @@
+'use strict';
+const {test}=require('node:test'),a=require('node:assert/strict'),fs=require('node:fs'),cp=require('node:child_process'),crypto=require('node:crypto');
+const base='2cbd6de16097890f501a410a276308ca5c4e000c',git=(...args)=>cp.execFileSync('git',args,{encoding:'utf8'}),sha=x=>crypto.createHash('sha256').update(x).digest('hex');
+const protect=p=>/^(?:portal\/|js\/|assets\/|css\/|netlify\/|supabase\/|functions\/)/.test(p)||p.startsWith('member/')&&p!=='member/member110.js';
+test('all canonical migrations, thirteen Functions, shared Auth, protected Roadmap, finance and branding source preserved',()=>{
+ const names=git('ls-tree','-r','--name-only',base).trim().split('\n').filter(protect),files=[];
+ for(const path of names){const original=git('rev-parse',base+':'+path).trim(),current=git('hash-object','--',path).trim();a.equal(current,original,path);files.push({path,gitBlob:current});}
+ a.ok(names.length>400);a.deepEqual(git('diff','--name-only',base,'--').trim().split('\n').filter(protect),[]);
+ fs.mkdirSync('docs/orchestration/issue-56/wave8',{recursive:true});fs.writeFileSync('docs/orchestration/issue-56/wave8/PRESERVATION.json',JSON.stringify({base,protectedPathsCompared:names.length,result:'PASS_UNCHANGED_SOURCE',privateProductionReadPerformed:false,existingRuntimeChanged:['member/member110.js','tools/affiliate-share-preview/server.cjs','tools/affiliate-share-preview/preview.js','tools/affiliate-share-preview/index.html'],files},null,2)+'\n');
+});
+for(const path of ['docs/orchestration/requirements.json','docs/orchestration/requirements-source-details.json','docs/orchestration/issue-56/ACCEPTANCE_MATRIX.json','docs/orchestration/issue-55/127_SECTION_TRACE.csv'])test('source and requirement lineage exact '+path,()=>a.equal(sha(fs.readFileSync(path)),sha(git('show',base+':'+path))));
+test('member changes remain within approved goal coordination and fail-closed identity callback',()=>{const before=git('show',base+':member/member110.js'),now=fs.readFileSync('member/member110.js','utf8');for(const[start,end]of [['  function renderHabits(rows) {','  function renderAssignments(rows) {'],['  async function completeMeal(meal){','  function renderWeeklySummary'],['  async function loadDashboard() {','  async function resolveSession'],['  client.auth.onAuthStateChange','  resolveSession();']]){const section=s=>{const begin=s.indexOf(start),finish=s.indexOf(end,begin);a.ok(begin>=0&&finish>begin,start+' exact extraction bounds');return s.slice(begin,finish);};a.equal(section(now),section(before),start);}});
