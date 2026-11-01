@@ -1,0 +1,32 @@
+TAP version 13
+# Subtest: independent: concurrent status reads cannot restore protected daily card after a genuine authorization denial
+not ok 1 - independent: concurrent status reads cannot restore protected daily card after a genuine authorization denial
+  ---
+  duration_ms: 191.731834
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-qa/tests/wave6-qa/daily-adversarial.test.cjs:5:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    late successful transport must not undo an established 42501 denial
+
+    1 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-qa/tests/wave6-qa/daily-adversarial.test.cjs:15:15)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 0
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1147.453833

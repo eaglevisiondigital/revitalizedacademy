@@ -1,0 +1,33 @@
+{
+  "scope": "QA-owned generated TAP formatting only",
+  "files": [
+    {
+      "path": "docs/orchestration/issue-56/wave6/receipts/security-contract-initial.tap",
+      "rawPath": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave6/qa-raw/receipts/security-contract-initial.tap",
+      "rawSha256": "c489b512b7443370a1ad314eb6c6b667ed36e9d564d10c72c05be264c7e4c067",
+      "normalizedSha256": "5ded3e6a842722a7738b48d99585be8aba4bd31de6772b0f042f67a1bdba54f8",
+      "change": "Trailing horizontal whitespace only; no assertion/result/source alteration"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave6/receipts/daily-identity-initial.tap",
+      "rawPath": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave6/qa-raw/receipts/daily-identity-initial.tap",
+      "rawSha256": "557d0b4438b2acccbf8fbc524d3a233a74b95d6aebe329b614d94cb17f4ab0a8",
+      "normalizedSha256": "74d1e4e5b77a61e7f001733975991f113c15e72b092ccf046b4264e9112db969",
+      "change": "Trailing horizontal whitespace only; no assertion/result/source alteration"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave6/receipts/daily-denial-initial.tap",
+      "rawPath": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave6/qa-raw/receipts/daily-denial-initial.tap",
+      "rawSha256": "fc06588b4ad15c69f8e9717d2e4b597817ae41d3e02f550c5ae793294a1ea599",
+      "normalizedSha256": "d169dc359bc3ba25aa9223ee9f8fffa1facf5c71e93a51ee2275cc9a3c777e5e",
+      "change": "Trailing horizontal whitespace only; no assertion/result/source alteration"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave6/receipts/NODE_INITIAL_PYTHON_ENV.tap",
+      "rawPath": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave6/qa-raw/receipts/NODE_INITIAL_PYTHON_ENV.tap",
+      "rawSha256": "1dfc182a9964ccf20acdee74f0ad609ce1ff6bbe3146a77fd424cb4b2a8f8f09",
+      "normalizedSha256": "e0a160d5d2f02fa9a9d4dae76f290a1c97eb15b74a97a9e45aa7d496a0e009a4",
+      "change": "Trailing horizontal whitespace only; no assertion/result/source alteration"
+    }
+  ]
+}

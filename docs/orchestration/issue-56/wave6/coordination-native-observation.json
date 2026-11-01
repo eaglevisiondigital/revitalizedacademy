@@ -1,0 +1,13 @@
+{
+  "source": "native-tool-observation",
+  "tasks": [
+    "/root/wave6_environment",
+    "/root/wave6_security",
+    "/root/wave6_features",
+    "/root/wave6_independent_qa"
+  ],
+  "recordedAt": "2026-11-01T22:01:52.050360+00:00",
+  "qa": "ACTUALLY_DISPATCHED_AFTER_A_RETURNED",
+  "notes": "Native spawn_agent tool actually returned each task; no issue creation treated as dispatch.",
+  "updatedAt": "2026-11-01T22:07:59.526149+00:00"
+}

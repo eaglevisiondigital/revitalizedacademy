@@ -1,0 +1,178 @@
+TAP version 13
+# Subtest: QA chromium pending scenario plus channel selection cannot strand controls
+ok 1 - QA chromium pending scenario plus channel selection cannot strand controls
+  ---
+  duration_ms: 1422.466875
+  type: 'test'
+  ...
+# Subtest: QA webkit pending scenario plus channel selection cannot strand controls
+ok 2 - QA webkit pending scenario plus channel selection cannot strand controls
+  ---
+  duration_ms: 2437.385875
+  type: 'test'
+  ...
+# Subtest: chromium 390 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence
+not ok 3 - chromium 390 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence
+  ---
+  duration_ms: 8302.489417
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-qa/tests/wave6-features/browser.cjs:5:75'
+  failureType: 'testCodeFailure'
+  error: 'page.waitForFunction: Timeout 7000ms exceeded.'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TimeoutError'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-qa/tests/wave6-features/browser.cjs:13:42)
+  ...
+# Subtest: chromium 768 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence
+not ok 4 - chromium 768 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence
+  ---
+  duration_ms: 8147.400291
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-qa/tests/wave6-features/browser.cjs:5:75'
+  failureType: 'testCodeFailure'
+  error: 'page.waitForFunction: Timeout 7000ms exceeded.'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TimeoutError'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-qa/tests/wave6-features/browser.cjs:13:42)
+  ...
+# Subtest: chromium 1440 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence
+not ok 5 - chromium 1440 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence
+  ---
+  duration_ms: 8192.8095
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-qa/tests/wave6-features/browser.cjs:5:75'
+  failureType: 'testCodeFailure'
+  error: 'page.waitForFunction: Timeout 7000ms exceeded.'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TimeoutError'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-qa/tests/wave6-features/browser.cjs:13:42)
+  ...
+# Subtest: webkit 390 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence
+not ok 6 - webkit 390 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence
+  ---
+  duration_ms: 8813.915208
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-qa/tests/wave6-features/browser.cjs:5:75'
+  failureType: 'testCodeFailure'
+  error: 'page.waitForFunction: Timeout 7000ms exceeded.'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TimeoutError'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-qa/tests/wave6-features/browser.cjs:13:42)
+  ...
+# Subtest: webkit 768 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence
+not ok 7 - webkit 768 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence
+  ---
+  duration_ms: 8521.83125
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-qa/tests/wave6-features/browser.cjs:5:75'
+  failureType: 'testCodeFailure'
+  error: 'page.waitForFunction: Timeout 7000ms exceeded.'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TimeoutError'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-qa/tests/wave6-features/browser.cjs:13:42)
+  ...
+# Subtest: webkit 1440 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence
+not ok 8 - webkit 1440 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence
+  ---
+  duration_ms: 8466.816083
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-qa/tests/wave6-features/browser.cjs:5:75'
+  failureType: 'testCodeFailure'
+  error: 'page.waitForFunction: Timeout 7000ms exceeded.'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TimeoutError'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-qa/tests/wave6-features/browser.cjs:13:42)
+  ...
+# Subtest: chromium 390 independent daily denial race, renewal, readback, draft and logout
+not ok 9 - chromium 390 independent daily denial race, renewal, readback, draft and logout
+  ---
+  duration_ms: 7775.068584
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-qa/tests/wave6-qa/member-browser.cjs:14:75'
+  failureType: 'testCodeFailure'
+  error: 'page.waitForFunction: Timeout 7000ms exceeded.'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TimeoutError'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-qa/tests/wave6-qa/member-browser.cjs:23:392)
+  ...
+# Subtest: chromium 768 independent daily denial race, renewal, readback, draft and logout
+not ok 10 - chromium 768 independent daily denial race, renewal, readback, draft and logout
+  ---
+  duration_ms: 7494.038084
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-qa/tests/wave6-qa/member-browser.cjs:14:75'
+  failureType: 'testCodeFailure'
+  error: 'page.waitForFunction: Timeout 7000ms exceeded.'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TimeoutError'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-qa/tests/wave6-qa/member-browser.cjs:23:392)
+  ...
+# Subtest: chromium 1440 independent daily denial race, renewal, readback, draft and logout
+not ok 11 - chromium 1440 independent daily denial race, renewal, readback, draft and logout
+  ---
+  duration_ms: 7570.663917
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-qa/tests/wave6-qa/member-browser.cjs:14:75'
+  failureType: 'testCodeFailure'
+  error: 'page.waitForFunction: Timeout 7000ms exceeded.'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TimeoutError'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-qa/tests/wave6-qa/member-browser.cjs:23:392)
+  ...
+# Subtest: webkit 390 independent daily denial race, renewal, readback, draft and logout
+not ok 12 - webkit 390 independent daily denial race, renewal, readback, draft and logout
+  ---
+  duration_ms: 8646.388375
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-qa/tests/wave6-qa/member-browser.cjs:14:75'
+  failureType: 'testCodeFailure'
+  error: 'page.waitForFunction: Timeout 7000ms exceeded.'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TimeoutError'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-qa/tests/wave6-qa/member-browser.cjs:23:392)
+  ...
+# Subtest: webkit 768 independent daily denial race, renewal, readback, draft and logout
+not ok 13 - webkit 768 independent daily denial race, renewal, readback, draft and logout
+  ---
+  duration_ms: 8796.067833
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-qa/tests/wave6-qa/member-browser.cjs:14:75'
+  failureType: 'testCodeFailure'
+  error: 'page.waitForFunction: Timeout 7000ms exceeded.'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TimeoutError'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-qa/tests/wave6-qa/member-browser.cjs:23:392)
+  ...
+# Subtest: webkit 1440 independent daily denial race, renewal, readback, draft and logout
+not ok 14 - webkit 1440 independent daily denial race, renewal, readback, draft and logout
+  ---
+  duration_ms: 8197.256125
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-qa/tests/wave6-qa/member-browser.cjs:14:75'
+  failureType: 'testCodeFailure'
+  error: 'page.waitForFunction: Timeout 7000ms exceeded.'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TimeoutError'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-qa/tests/wave6-qa/member-browser.cjs:23:392)
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 2
+# fail 12
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 103541.739708

@@ -1,0 +1,16 @@
+TAP version 13
+# Subtest: independent: concurrent status reads cannot restore protected daily card after a genuine authorization denial
+ok 1 - independent: concurrent status reads cannot restore protected daily card after a genuine authorization denial
+  ---
+  duration_ms: 624.112583
+  type: 'test'
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1116.109291

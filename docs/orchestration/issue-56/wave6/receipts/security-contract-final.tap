@@ -1,0 +1,130 @@
+TAP version 13
+# Subtest: independent exact final SQL and all reviewed execution inputs match published local proposal pins
+ok 1 - independent exact final SQL and all reviewed execution inputs match published local proposal pins
+  ---
+  duration_ms: 6.696125
+  type: 'test'
+  ...
+# Subtest: independent original five actual-failure tests and assertions remain exact accepted bytes
+ok 2 - independent original five actual-failure tests and assertions remain exact accepted bytes
+  ---
+  duration_ms: 30.646125
+  type: 'test'
+  ...
+# Subtest: independent additive scope: exactly9 restrictive policies3 triggers1 invoker function3 TRUNCATE revokes
+ok 3 - independent additive scope: exactly9 restrictive policies3 triggers1 invoker function3 TRUNCATE revokes
+  ---
+  duration_ms: 0.44025
+  type: 'test'
+  ...
+# Subtest: independent narrow household policy never enables guardian invention or changes existing immutable identity tuple
+ok 4 - independent narrow household policy never enables guardian invention or changes existing immutable identity tuple
+  ---
+  duration_ms: 0.284875
+  type: 'test'
+  ...
+# Subtest: independent actual caller actor attribution is required for both inserts and review
+ok 5 - independent actual caller actor attribution is required for both inserts and review
+  ---
+  duration_ms: 0.101875
+  type: 'test'
+  ...
+# Subtest: independent auth dependencies use captured Owner/ACL/schema guards rather than replacing authentication
+ok 6 - independent auth dependencies use captured Owner/ACL/schema guards rather than replacing authentication
+  ---
+  duration_ms: 0.774042
+  type: 'test'
+  ...
+# Subtest: independent captured household and trigger pins close metadata gap but do not imply executed SQL readiness
+ok 7 - independent captured household and trigger pins close metadata gap but do not imply executed SQL readiness
+  ---
+  duration_ms: 1.197125
+  type: 'test'
+  ...
+# Subtest: independent reversion restores only this proposal and cannot delete stored records
+ok 8 - independent reversion restores only this proposal and cannot delete stored records
+  ---
+  duration_ms: 0.271959
+  type: 'test'
+  ...
+# Subtest: independent prepared PG runner gates before initdb and preserves original STRICT assertions in allthree stages
+ok 9 - independent prepared PG runner gates before initdb and preserves original STRICT assertions in allthree stages
+  ---
+  duration_ms: 0.8035
+  type: 'test'
+  ...
+# Subtest: exact proposal file hashes and accepted base are pinned
+ok 10 - exact proposal file hashes and accepted base are pinned
+  ---
+  duration_ms: 3.282291
+  type: 'test'
+  ...
+# Subtest: nine additive restrictions preserve all original permissive policies
+ok 11 - nine additive restrictions preserve all original permissive policies
+  ---
+  duration_ms: 0.508917
+  type: 'test'
+  ...
+# Subtest: no existing routine or table definition is replaced and no EXECUTE is granted
+ok 12 - no existing routine or table definition is replaced and no EXECUTE is granted
+  ---
+  duration_ms: 0.717542
+  type: 'test'
+  ...
+# Subtest: three authenticated TRUNCATE revocations leave trusted role privileges unchanged
+ok 13 - three authenticated TRUNCATE revocations leave trusted role privileges unchanged
+  ---
+  duration_ms: 0.225875
+  type: 'test'
+  ...
+# Subtest: source tuples and actor attribution cannot be silently moved by an authorized writer
+ok 14 - source tuples and actor attribution cannot be silently moved by an authorized writer
+  ---
+  duration_ms: 0.257875
+  type: 'test'
+  ...
+# Subtest: all three current table schemas, policies and security dependencies are guarded
+ok 15 - all three current table schemas, policies and security dependencies are guarded
+  ---
+  duration_ms: 0.173792
+  type: 'test'
+  ...
+# Subtest: reversion restores only this proposal and explicitly warns against production regression
+ok 16 - reversion restores only this proposal and explicitly warns against production regression
+  ---
+  duration_ms: 0.154042
+  type: 'test'
+  ...
+# Subtest: original five-failure regression file is preserved byte-for-byte
+ok 17 - original five-failure regression file is preserved byte-for-byte
+  ---
+  duration_ms: 32.641416
+  type: 'test'
+  ...
+# Subtest: actual PG security suite contains no network target or production credentials
+ok 18 - actual PG security suite contains no network target or production credentials
+  ---
+  duration_ms: 0.312875
+  type: 'test'
+  ...
+# Subtest: helper identity/ACL and private schema captured metadata are independently pinned
+ok 19 - helper identity/ACL and private schema captured metadata are independently pinned
+  ---
+  duration_ms: 1.297208
+  type: 'test'
+  ...
+# Subtest: independent schema-only capture closes missing pins but actual PostgreSQL installation readiness stays blocked
+ok 20 - independent schema-only capture closes missing pins but actual PostgreSQL installation readiness stays blocked
+  ---
+  duration_ms: 0.496
+  type: 'test'
+  ...
+1..20
+# tests 20
+# suites 0
+# pass 20
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 149.231958

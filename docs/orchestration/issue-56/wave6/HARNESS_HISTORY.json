@@ -1,0 +1,44 @@
+{
+  "initialNode": {
+    "pass": 414,
+    "fail": 7,
+    "cause": "Established bundled Python QR dependency absent from runner environment",
+    "raw": "receipts/NODE_INITIAL_PYTHON_ENV.tap"
+  },
+  "initialNative": {
+    "pass": 2,
+    "fail": 12,
+    "causes": [
+      "6 QR timeouts due missing bundled Python",
+      "6 independent fixture timeouts: changed fresh SDK object instead of actual app-held fixture client"
+    ],
+    "raw": "receipts/browser-initial-harness.tap"
+  },
+  "initialSqlContract": {
+    "pass": 19,
+    "fail": 1,
+    "cause": "QA regex overmatched helper calls in CREATE POLICY; anchored function declaration check corrected",
+    "raw": "receipts/security-contract-initial.tap"
+  },
+  "matrixPreparation": "Original uses id rather than caseId; generator assertion rejected mismatch before writing output; corrected property without changing definitions",
+  "actualProductFindings": [
+    {
+      "case": "Concurrent genuine42501 status denial followed by stale successful response",
+      "initial": {
+        "pass": 0,
+        "fail": 1
+      },
+      "source": "receipts/daily-denial-initial.tap",
+      "corrected": "same unchanged assertion PASS final427"
+    },
+    {
+      "case": "Different verified getUser identity without subscription callback, preflight and status read",
+      "initial": {
+        "pass": 2,
+        "fail": 2
+      },
+      "source": "receipts/daily-identity-initial.tap",
+      "corrected": "same four assertions PASS final427; matching native identity transitions pass"
+    }
+  ]
+}

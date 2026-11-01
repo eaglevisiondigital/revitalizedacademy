@@ -1,0 +1,1631 @@
+{
+  "base": "9beae3bb40c154d2bfd623e8d2355b3a6c3cd306",
+  "protectedSourceFilesCompared": 403,
+  "files": [
+    {
+      "path": "assets/data/social-proof-mini.json",
+      "sha256": "1ae64e902a387ffa2cb343887573f3091d3cdda4066a72ad7afd3231ad6fd742"
+    },
+    {
+      "path": "assets/data/transformation-stories.json",
+      "sha256": "70b1a54ef660364d80b16aad4e37127a24cdf50cc973c1cabe591b3c73167b88"
+    },
+    {
+      "path": "assets/fonts/DMSerifDisplay-Regular.ttf",
+      "sha256": "8cc3643535edf039aa5d95440a8542735e9197e4f4b8d9303e980fefbf5ab616"
+    },
+    {
+      "path": "assets/fonts/OFL-DMSerifDisplay.txt",
+      "sha256": "a3e5cdd67d4571dd0a24fcc968de0efde7ae97ef752daf0906e4767619dd7231"
+    },
+    {
+      "path": "assets/images/about-our-founders-hero-approved-v96.jpg",
+      "sha256": "2e59dd78fe746fa42324d052f456419861fc169e394e13c2f50fe91188929d27"
+    },
+    {
+      "path": "assets/images/about-our-founders-hero-approved.png",
+      "sha256": "bfa25f155625577e7fd2d7ac377ce44ab437bfba58e6d2fb17b9f646f43dd1b6"
+    },
+    {
+      "path": "assets/images/app-screen-dashboard.png",
+      "sha256": "963e4afb5d67a61382c95106bbb8b03fa9be3bdf7e3853ad79cdd683cdc4766f"
+    },
+    {
+      "path": "assets/images/app-screen-meal-plans.png",
+      "sha256": "ab2dd3301dae924a0c937a101cd7d9c47650699aeae54e207a89f835a03496cc"
+    },
+    {
+      "path": "assets/images/app-screen-progress.png",
+      "sha256": "8927a1d6a53742c85ebc86edbd0b5ce8874f3b4041a679dec7804a20f10dfaef"
+    },
+    {
+      "path": "assets/images/app-screen-refuel.png",
+      "sha256": "f06febf8ca242123534e5f5cfa47b0f74136b7954b645efb7c409896949aedb8"
+    },
+    {
+      "path": "assets/images/approved-hero-justyn-elle.png",
+      "sha256": "1da278396f98a7ad6c8b30948ddc7a97498411d1aaa36dcd18878afb5f89906c"
+    },
+    {
+      "path": "assets/images/approved-homepage-mockup.png",
+      "sha256": "8be4f77893aeed8596a543750aad63039563bfeff46e94fa37302820465ba98c"
+    },
+    {
+      "path": "assets/images/athletic-focus-approved.png",
+      "sha256": "5105d12f18bee1f5ab6befa66c67030f9f8b410fe0a41540e9cb674d4e234066"
+    },
+    {
+      "path": "assets/images/coaching76/accountability.png",
+      "sha256": "9c7947fa17d095104f6867ee50eaee56e0bfc2301498f54c4de610fb7af0bdd8"
+    },
+    {
+      "path": "assets/images/coaching76/approved-desktop.png",
+      "sha256": "aa4716501e9050c978a2cad2c451828c72af4b52f860d0973774fe6dd61fce82"
+    },
+    {
+      "path": "assets/images/coaching76/botanical-edge.png",
+      "sha256": "169c28a12e83b023cfa6719a34c229945411a1ae4abfad6d30959691ee01d555"
+    },
+    {
+      "path": "assets/images/coaching76/clarity-signature.png",
+      "sha256": "4b261eb3020ddf6673f4ded39d66be860e574c2f3ad0dc3f2f1b23dd20e7ed0f"
+    },
+    {
+      "path": "assets/images/coaching76/coaches.png",
+      "sha256": "6b6164c2d5a2b3dc54ca6f14a19d4833337f6fce91c40a7937d9e4bab5bbef15"
+    },
+    {
+      "path": "assets/images/coaching76/compass.png",
+      "sha256": "ea3fc045f10167cad2a79ee321fe9c52abc2c43949ac913021caac3bfb118856"
+    },
+    {
+      "path": "assets/images/coaching76/mountain-detail.png",
+      "sha256": "a5987118f763ad574f5aedf3cd030bb08e204b7ae77c92822dad183d98db727c"
+    },
+    {
+      "path": "assets/images/coaching76/person.png",
+      "sha256": "d9bc0a5b0b71d4309b15208ae4a218108d9346444dbd9675cd060d878f0c0fcc"
+    },
+    {
+      "path": "assets/images/coaching76/progress.png",
+      "sha256": "63812fcf8dd144f7f3315f0b46434a15555b139dcd015b6b86d4c95da5755efc"
+    },
+    {
+      "path": "assets/images/coaching76/star.png",
+      "sha256": "f5e49abdc5926ff7526e09676ed18955c0fad202f1f35a3f198edaa9060ea6a0"
+    },
+    {
+      "path": "assets/images/coaching99/accountability.svg",
+      "sha256": "ac0c42cf6a78b25fd8dd9d1d58486900d4c843e452036436b9351f0155fcdbd8"
+    },
+    {
+      "path": "assets/images/coaching99/brand-background.svg",
+      "sha256": "f6da9cc714c53745d6fa51a1bfc7f726e8b371344b1692da33c3064eb2ae6e43"
+    },
+    {
+      "path": "assets/images/coaching99/coaches.svg",
+      "sha256": "913491c679ec5d765dabc316082cee3dff71ebdcf7bf237fa1b31b3ee2c07709"
+    },
+    {
+      "path": "assets/images/coaching99/compass.svg",
+      "sha256": "14c93398cb2ad777e7f14060fd6b9a3ad784655d8372507ed0003daee8be5f64"
+    },
+    {
+      "path": "assets/images/coaching99/person.svg",
+      "sha256": "2b6d66565125691d7b5c35dd1611ca784b744311f41d9a822d525715456d2501"
+    },
+    {
+      "path": "assets/images/coaching99/progress.svg",
+      "sha256": "5be8ce6b7f9221aa9d5f7082b413d45023ac3946ed4d8adf4018075a900582a0"
+    },
+    {
+      "path": "assets/images/coaching99/star.svg",
+      "sha256": "b11814b65dd3467d0f6bd9394ba9d5088e7f145509f9c05c9dfd53bf8da56133"
+    },
+    {
+      "path": "assets/images/ecosystem-preview-placeholder.png",
+      "sha256": "2953111875525089283fdad723c82a675ac9776e8791502d72aff255020b524a"
+    },
+    {
+      "path": "assets/images/family-health77/approved-desktop.png",
+      "sha256": "6e1aad6dd8174564cf39378374bb238ace22b576cf1ec93ce1b2a148934364c0"
+    },
+    {
+      "path": "assets/images/family-health77/approved-family-mobile.webp",
+      "sha256": "c8929331c087903001fb143bfdf5927630b5be03a029b8f045566d0feefc77d5"
+    },
+    {
+      "path": "assets/images/family-health77/together-signature.png",
+      "sha256": "daa3b22a7fdc9c3ad8fc0327a07420ba6a8531e78c6f767bcb3fa699df638665"
+    },
+    {
+      "path": "assets/images/family-health78/grandparents.png",
+      "sha256": "b97e73603467074b37cd137283dfa925ca86406c580eb16d7dab690fdfa6a67a"
+    },
+    {
+      "path": "assets/images/family-health78/kids.png",
+      "sha256": "0f5ba29311a7b2d1d976904e8249a98c975f1110e4d11d696fc6e8e24d6c9f08"
+    },
+    {
+      "path": "assets/images/family-health78/parents.png",
+      "sha256": "c40b61a9e0988e763f29d032f9274e20c89d9e5a7ed84d286cb642be9895f81c"
+    },
+    {
+      "path": "assets/images/family-health78/teens.png",
+      "sha256": "a93b1d5d5014748ad1d43dec4a8c2f2692e9538dfd935cc0db444eb384a892bd"
+    },
+    {
+      "path": "assets/images/family-health79/family-walk.webp",
+      "sha256": "7d96f714cac17aad469bd8777cf398dbae08d91308bb03435016c3da0900b204"
+    },
+    {
+      "path": "assets/images/family-photo-clean-v56.jpg",
+      "sha256": "11668eb90869890ee7870f7b031747b0d92ccf4431429f044c3541e935f87d6b"
+    },
+    {
+      "path": "assets/images/founders-hero-approved.png",
+      "sha256": "6c8a5528794b3250e80e050ae05e78eb5a05801705ae05e5555da57cb46693b9"
+    },
+    {
+      "path": "assets/images/founders-hero-background-build117.webp",
+      "sha256": "7209c796953bc3b48e4d1b3b5b49e151a6363434522d24bc8fdd68f0c3e74b05"
+    },
+    {
+      "path": "assets/images/free-help80/cream-library.webp",
+      "sha256": "9d3274ec6dd9995f47159757360d8b827729a4a4345455fe8de928245316f89b"
+    },
+    {
+      "path": "assets/images/free-help80/emerald-botanical.webp",
+      "sha256": "2da83721c975a43e2aa99133a48b4f57971ff807a89b47e712c2a191448a5586"
+    },
+    {
+      "path": "assets/images/hero54-background.png",
+      "sha256": "afd200d8767d362d889eb6bd87b71812d7a33d6ab31ec75e2b619e85bc73f476"
+    },
+    {
+      "path": "assets/images/home/hero-approved.png",
+      "sha256": "1de1daf063ad02a97c99a06aad170f98e67f8ae59bfe4dba9262452b86c42d46"
+    },
+    {
+      "path": "assets/images/home/mobile-hero-photographic-v3.png",
+      "sha256": "32300c421a071f5fdafb4c2046a9c5cf0d61f39042f71c5230f517d34e7ad0b2"
+    },
+    {
+      "path": "assets/images/home/source/hero-digital-solutions.png",
+      "sha256": "1de1daf063ad02a97c99a06aad170f98e67f8ae59bfe4dba9262452b86c42d46"
+    },
+    {
+      "path": "assets/images/home/web/hero-digital-solutions.webp",
+      "sha256": "7c1b6c1806398c8a950b8132426e2db59dc6cffde4398c21888895540694253f"
+    },
+    {
+      "path": "assets/images/icon-athletic-approved.png",
+      "sha256": "922843d17827ddaa0e0612cb00ad5bcb99f05d28fd47346cf3cee9fe5fc66a97"
+    },
+    {
+      "path": "assets/images/icon-energized-approved.png",
+      "sha256": "c1ca76d9d95011bfd033d27367250b74d68bca6efe3328e587ef3648b6d44844"
+    },
+    {
+      "path": "assets/images/icon-organized-approved.png",
+      "sha256": "4001e11955a69ef21b358e194e1defa5804c58a91bfd6549ce4eb6795e245365"
+    },
+    {
+      "path": "assets/images/icon-refined-approved.png",
+      "sha256": "ccd5319263467875001b2471719560041e15692e9ee476911cb5c752102fe29c"
+    },
+    {
+      "path": "assets/images/justyn-elle-approved-only.png",
+      "sha256": "d55fee36130abb700e23ca3ed0a62b407c8a38b3a16e2d2aec5d812d25bbf77e"
+    },
+    {
+      "path": "assets/images/justyn-elle-approved-untouched.png",
+      "sha256": "d55fee36130abb700e23ca3ed0a62b407c8a38b3a16e2d2aec5d812d25bbf77e"
+    },
+    {
+      "path": "assets/images/justyn-elle-professional-approved-102.png",
+      "sha256": "83719262d46ad793deccf87964549c4debadd7a51673267b818379098eec8816"
+    },
+    {
+      "path": "assets/images/justyn-elle-source.png",
+      "sha256": "af4a634337702f7df955a54dd52d5c778e7fbfb00c5af0d1f1743b0ac31be3f7"
+    },
+    {
+      "path": "assets/images/longevity-lifestyle-green-webinar.svg",
+      "sha256": "de08449d59ee677a7f6fdb9d47aeeb55dba1670b1f5f9564e63250187f3787cc"
+    },
+    {
+      "path": "assets/images/longevity-matrix-approved-2026.png",
+      "sha256": "6a3a04ad8317c120c0e5e10afa6dfc0432b633f6f8d0de033dd5608ea81a5ee4"
+    },
+    {
+      "path": "assets/images/longevity-matrix-approved-right-transparent.png",
+      "sha256": "385c3d41d1ccd1551f3507a1456fbcae0384882424609faed1bf110a62e2259e"
+    },
+    {
+      "path": "assets/images/longevity-matrix-approved-right.png",
+      "sha256": "12cf42ba73ff2b5c47855238f1b0eaa8a313d1d97816f70ca4eaad486ef73ee6"
+    },
+    {
+      "path": "assets/images/longevity-matrix-approved.png",
+      "sha256": "39171eec2d641de1b3b42680750649b420dc60341a94152cb2ad50f3a071661b"
+    },
+    {
+      "path": "assets/images/longevity-matrix-brief.jpg",
+      "sha256": "be1dce8c1a4d2a8ddb99e5b6827a57da7f5d187d7764be50f7cc69bba3573756"
+    },
+    {
+      "path": "assets/images/longevity-matrix-full.jpg",
+      "sha256": "b1b82a1987c81a99529af9ee77536e9a4176a8d380279e7be080b7d1b88103fb"
+    },
+    {
+      "path": "assets/images/longevity-matrix-square.png",
+      "sha256": "2ccda8d67bcda6a775e7e5d94f450ebb4a6daa9617474d7149b49ad41a10761d"
+    },
+    {
+      "path": "assets/images/matrix-athletic-detail.jpg",
+      "sha256": "c873a5416a8e1fc2c9882895ad3e5b927a240227dc1625d60d0d53c054fc9ee6"
+    },
+    {
+      "path": "assets/images/matrix-energized-detail.jpg",
+      "sha256": "8c5706c50fef3a3a825e8647564b30774dd149c0edda497efa5260d201ded189"
+    },
+    {
+      "path": "assets/images/matrix-focus-athletic.png",
+      "sha256": "aa2255624f5e608a0a39d775ed93c2d5d4c7c0c139055f83bac00688b25d68de"
+    },
+    {
+      "path": "assets/images/matrix-focus-energized.png",
+      "sha256": "94abe14e7accbfb548388125e2142ad8bb1c5d6d73684864afaa5ac40610005d"
+    },
+    {
+      "path": "assets/images/matrix-focus-organized.png",
+      "sha256": "b38d9c3c7cc2512448c9efd685d87bcb09310e22088480af1a8c6dd55789e28e"
+    },
+    {
+      "path": "assets/images/matrix-focus-refined.png",
+      "sha256": "147cfa2d948ac6126815cc24bb2d37cd2a6a860ea274e1c91330909c087d82e3"
+    },
+    {
+      "path": "assets/images/matrix-organized-detail.jpg",
+      "sha256": "94731ba02ee9c114cc117e65c5eafcafa1538cd1260c57e58699be18b6ce6564"
+    },
+    {
+      "path": "assets/images/matrix-refined-detail.jpg",
+      "sha256": "17a287c727a33621d9f72a3c2ea97fa546a1549091407c810c46b5e67daaf9f3"
+    },
+    {
+      "path": "assets/images/refuel-coming-2027.png",
+      "sha256": "984e12768f8d28c23ec56f6724a1d4b61d5c692d06673e624afe1fb7781cfb1d"
+    },
+    {
+      "path": "assets/images/refuel-vanilla-pouch.png",
+      "sha256": "e823f363349552f537750c5dc5fb5f23f8d63663988554c9bd56363489e305e7"
+    },
+    {
+      "path": "assets/images/revitalized-app-ecosystem-four-phone.png",
+      "sha256": "eff0b848a2c08e4956cb364356b18b69d8ff23c37624dd4c0ec3a0b0660fc8b9"
+    },
+    {
+      "path": "assets/images/revitalized-icon-approved.png",
+      "sha256": "57a74be0b726e22e3798ae58263ca47fe3bdbce55da8f4eb5943d786077a07c3"
+    },
+    {
+      "path": "assets/images/revitalized-logo-dark-approved-v69.png",
+      "sha256": "b00de1a2943bdf26cf70a265f3e2aef5614bdd59698724057f2efecffdcb3ba4"
+    },
+    {
+      "path": "assets/images/revitalized-logo-dark-approved.png",
+      "sha256": "b00de1a2943bdf26cf70a265f3e2aef5614bdd59698724057f2efecffdcb3ba4"
+    },
+    {
+      "path": "assets/images/revitalized-logo-dark.png",
+      "sha256": "b00de1a2943bdf26cf70a265f3e2aef5614bdd59698724057f2efecffdcb3ba4"
+    },
+    {
+      "path": "assets/images/revitalized-logo-light-approved.png",
+      "sha256": "23d5ed12350a7e8f960820a9c454f7a80a3c21d819c6c63eabddd8c49001eb0c"
+    },
+    {
+      "path": "assets/images/revitalized-logo-light.png",
+      "sha256": "23d5ed12350a7e8f960820a9c454f7a80a3c21d819c6c63eabddd8c49001eb0c"
+    },
+    {
+      "path": "assets/images/revitalized-shield-approved-v69.png",
+      "sha256": "b764c6dbed64e86fc1c78a4f8553086bbfde50102392f15e3566184c61193328"
+    },
+    {
+      "path": "assets/images/revitalized-shield.png",
+      "sha256": "4c806b2646028c96ee50916e5fd43cecc76f2c6daeab1f1654e0477ddbd16933"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6979.svg",
+      "sha256": "3eb3bb7f76f9800172093a9d63fb9083b8b2dc34986448652c72cd3d23125224"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6980.svg",
+      "sha256": "82651487d85137eb8e7a263b0a4d4e0cf1b01e8ac2b6db902ef60916a2845f14"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6981.svg",
+      "sha256": "8849ba53e001a7f6c546248e48ca57a50618f87d71b3f59e1dde6ec5a04a7862"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6982.svg",
+      "sha256": "3af1ac847e0ae35d9dfa93feaad7ec01c9ffbef124d743b2217549903130fb85"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6983.svg",
+      "sha256": "33c03a2be51dc2364f66e63bf930586b4c562abebc8bcf7c132c5c62d740c5c7"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6984.svg",
+      "sha256": "2c0aa8899704ba5387ae87bf896d16b87c2994dba45832be043337d7f0dd35c0"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6985.svg",
+      "sha256": "6f9e61a04001da5b414249f4bf99fb55fb7158d1f068223c96fe7740d5a5769c"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6986.svg",
+      "sha256": "045f3a02a161585fee1e9a27d2cab828a148e4755ca2a2d2a594d12cad5268e7"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6987.svg",
+      "sha256": "4715aaf4f337a1ed4cb369481b80814228fc27bd498b9761069fe250dc661f09"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6988.svg",
+      "sha256": "f096cfa02092df4e24dbe5dd07334366eefd86e4a2c6efce8c52e37421b023f8"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6989.svg",
+      "sha256": "6805e0c2758ee756eb7ce914b1c3a10df269ab35f1646ea481e8769a7569266c"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6990.svg",
+      "sha256": "a99949e7e43eab1c89d348778bec3e192a0081eeaf0d12518224f0ae251eb321"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6991.svg",
+      "sha256": "d8c154d81a9b6e07f5e70f9fbdae7a6f31b54997c2cdb9a61d4551aab79c5988"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6992.svg",
+      "sha256": "285005691615fe4d21f4ac916dbaa920d167b8c12db9285bbeba0a32829cdd5a"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6993.svg",
+      "sha256": "e87b5808d1bdfb11eb3c8a3b900b66722e5094a8dcd4f32a561f108c0457338f"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6994.svg",
+      "sha256": "79c4d4b176a00f0baf5f332fec8badf4f981906e6c60c2242eb3164b608bfd89"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6995.svg",
+      "sha256": "eea75f4ae3b825c869a9eb24a7f7073260c9e4f1fd7ad5b53e68640bb136d8fe"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6996.svg",
+      "sha256": "cf7eaab9a5b1f5fcfe715f83fe151ee59f037aa2774b40604002f3117d8174cc"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6997.svg",
+      "sha256": "6c259046bb2c638f4f9785ad3b1fc3655ae1fed9db232081135bd8a314c75ebb"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6998.svg",
+      "sha256": "7e9d9c5d1551aa75dc7a8e9728f939e047e7ef8125529f5c880eb7306bacfbf8"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_6999.svg",
+      "sha256": "eebbbbb07868d08c02e49fa0aac3af5da064076e91faca03af8bc455682c596e"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_7001.svg",
+      "sha256": "3bcca0aeeb7bbe1346b2cd1cca1a387453f7bba2fe79af368a9c09b8c114efe1"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_7002.svg",
+      "sha256": "1b220a117d03c93ee79c5fff5639b52c8adbd9f57c437739ac18c51d4f7c67c5"
+    },
+    {
+      "path": "assets/images/social-proof/IMG_7003.svg",
+      "sha256": "ce2ad45cd98b80ec6f3d822ed7ff9614f2ccdfeb8698c2606c842fcde74f344c"
+    },
+    {
+      "path": "assets/images/social-proof/claudia-emerald-testimonial.svg",
+      "sha256": "db5719cbe1c0a033b3b23e55a6bb5c0b5b6c9aacb83cabce5346d30fb91ac32f"
+    },
+    {
+      "path": "assets/images/social-proof/rodney-emerald-testimonial.svg",
+      "sha256": "8bdc386b75cb70eaf4bbe495f2bc038ead5a45bf583a71bba6eddb08943a21c2"
+    },
+    {
+      "path": "assets/images/story-claudia.jpg",
+      "sha256": "172ec395d9aa4e23468b31e0e4361018b1a8fb894098e2149db4a7c3a4a7ec40"
+    },
+    {
+      "path": "assets/images/story-claudia.webp",
+      "sha256": "a0399104ffab64be2bc52bc2443b3028fc1ce588f95646de2d2f73b43c7b97f9"
+    },
+    {
+      "path": "assets/images/story-julien.jpg",
+      "sha256": "35a0cf8c11c4ff59651bbfa38b56ea0f77e216723284171733c9f097d02889c2"
+    },
+    {
+      "path": "assets/images/story-julien.webp",
+      "sha256": "422ede9e4891db615ac6cb6875fa9e646e15bf00d8e2ec4492ae3b849989531b"
+    },
+    {
+      "path": "assets/images/video-thumb-coaching-approved.png",
+      "sha256": "4010c29633ab41a9981cfb144975f5f5e16a09f72794c7a30c116ab150fa156a"
+    },
+    {
+      "path": "assets/images/video-thumb-coaching.png",
+      "sha256": "4010c29633ab41a9981cfb144975f5f5e16a09f72794c7a30c116ab150fa156a"
+    },
+    {
+      "path": "assets/images/video-thumb-longevity-matrix-approved.png",
+      "sha256": "be42496af53c23b49a40449107df54709c31ec529d2859b7a090414180546587"
+    },
+    {
+      "path": "assets/images/video-thumb-longevity-matrix.png",
+      "sha256": "be42496af53c23b49a40449107df54709c31ec529d2859b7a090414180546587"
+    },
+    {
+      "path": "assets/images/video-thumb-revitalized-journey-approved.png",
+      "sha256": "69a54477433baae62a3644450ca2c288767f2b4fe3d08773f85ac474a4eada30"
+    },
+    {
+      "path": "assets/images/video-thumb-revitalized-journey.png",
+      "sha256": "69a54477433baae62a3644450ca2c288767f2b4fe3d08773f85ac474a4eada30"
+    },
+    {
+      "path": "assets/images/vitality-roadmap-results-sample-v2.svg",
+      "sha256": "323f539bbfd86f9cf5efa9515cdbc2b843dd471ebd47d2c88da045d4c437d394"
+    },
+    {
+      "path": "css/account104.css",
+      "sha256": "b4fdce7531cef8df855e00955edcca046b01b40bd10a62573c797058d319262b"
+    },
+    {
+      "path": "css/admin104.css",
+      "sha256": "7318d8a65e3d554cf24ca86149375551166223b9f28adb75fb0373a6401f9c5c"
+    },
+    {
+      "path": "css/coaching-path94.css",
+      "sha256": "3d1c08ed2a586252c6c9ff10dbbcfff99a4c8728254a9dff7fb08504a4be14d5"
+    },
+    {
+      "path": "css/coaching76-base.css",
+      "sha256": "71b2a51ebdb58e985afd50c1eeabc1b99519ced660ecbe47aa9f5d895b7e6f5c"
+    },
+    {
+      "path": "css/coaching76.css",
+      "sha256": "5a2b71fba02dd6995be1aa9e08fe77c40eccedfe6c22a1cd7a84c366e2d2c020"
+    },
+    {
+      "path": "css/coaching98-photo-layers.css",
+      "sha256": "8e225d4df613d172061cc694ac05dd97b29876a1e8d45c49b7bf11b0b569190f"
+    },
+    {
+      "path": "css/coaching99-brand-layers.css",
+      "sha256": "ebf27d8d8bf1cdaaca4aa4b205cefa411f3f7094d0101efdd602d46b9bfcbb76"
+    },
+    {
+      "path": "css/enrollment-health90.css",
+      "sha256": "545b05a23fb9b20fb76a13e092c59f324c6fcd0f8550e5bbf0bd7a694c6f0a04"
+    },
+    {
+      "path": "css/enrollment82-program-picker.css",
+      "sha256": "dc41681644694b0935c343ab5b8fdaad1eb07a4c81277fa9823f92ca4e9990fd"
+    },
+    {
+      "path": "css/enrollment82.css",
+      "sha256": "54195ff01be7947c46e567e75e0c0743e8ba313d0a9fc7632b3fce7cce027127"
+    },
+    {
+      "path": "css/enrollment83-premium.css",
+      "sha256": "1d1932be3519a1cedf279af6fb0edde466e81c8e436f00c76339212ef2c12a8a"
+    },
+    {
+      "path": "css/enrollment84-premium.css",
+      "sha256": "e2d90b474b698bfc3e0cc34d2f2573fe6a88a392a9435736c860e8bab68c3fff"
+    },
+    {
+      "path": "css/enrollment88-refinement.css",
+      "sha256": "350faa81d516ea3dc039ca621ca1a9b489fd3137ee91ff0f96b78f966d3b6ecb"
+    },
+    {
+      "path": "css/enrollment93-program-modal.css",
+      "sha256": "7de9699c52d869af51f4cbd0e0ac8f3c75d8da6c9ae4048d7ec70f4bb97b4553"
+    },
+    {
+      "path": "css/family-health77.css",
+      "sha256": "ceb1329c40b4ca5ee66f174a7b150e84279105a275f6b1c8ce21fdd4d67fa271"
+    },
+    {
+      "path": "css/family-health78.css",
+      "sha256": "63e6ccdfd600c05cd90ceafb97855a5eaede0ead2165b755694d52c2dffa16d5"
+    },
+    {
+      "path": "css/family-health79.css",
+      "sha256": "e1ec0a31044f457c4997c8a6029a0beb4e947c4b02091b98c57878153b8c432a"
+    },
+    {
+      "path": "css/founders103.css",
+      "sha256": "6d44fcc648333c74b9539011cd534a81ba7712ac1d2ee44c89d5bb15fa805089"
+    },
+    {
+      "path": "css/founders64.css",
+      "sha256": "70cae8814c4da4d996928771ae1feb77723223be1c3f20fae0aa50f7267da227"
+    },
+    {
+      "path": "css/founders65.css",
+      "sha256": "d988cb449aa20ee120d1cc03c2b19c0232ffbecce80e010e20546c3206c52a2d"
+    },
+    {
+      "path": "css/free-help80.css",
+      "sha256": "37f4ec0526ccaafe3d78a8674ccfbe958d20285a80dceddb66e94e2b3f36c6b1"
+    },
+    {
+      "path": "css/header-glass.css",
+      "sha256": "35742e1040eff705cc0fa7232f325fd9d5e8b759a78df991258e609eb9fc32d5"
+    },
+    {
+      "path": "css/header87-continuity.css",
+      "sha256": "8b315a1cd1a281a74f8b0a9d64114cd4539f686b880fe6eb5037bfadbb134165"
+    },
+    {
+      "path": "css/health-hope-live.css",
+      "sha256": "f92d375ff9e0c0b952975c88477c87f62247b0f981823126d800812e7da42846"
+    },
+    {
+      "path": "css/health-profile91.css",
+      "sha256": "d51cb0e712902d6d96624a42a6e10c0ccb48131ad8f25c7b57a2a7fb326be681"
+    },
+    {
+      "path": "css/health-profile92-polish.css",
+      "sha256": "c1f0dedec5cedc05b0b3381209acfc52ebc1ab075a0917342e48228f7e211bb5"
+    },
+    {
+      "path": "css/health-profile95-nav.css",
+      "sha256": "4d0a20796cf5775ccd0603e158f9093be36dd8786b83e2cc46b2e4ddbb13b0ac"
+    },
+    {
+      "path": "css/hero102-portrait.css",
+      "sha256": "871921aedbe48388b25a546b2bc9dcb2ddccdb49375ad4d7a1b5797d4e330d67"
+    },
+    {
+      "path": "css/hero54.css",
+      "sha256": "b7f53f22312b7f0c86dc75d40e12b0466993b507b3e757f45eac02525ba484a8"
+    },
+    {
+      "path": "css/home-programs-banner89.css",
+      "sha256": "9a1d4ae714f4722f27e9a5aec100279dc21d293175910ccbb45d16976bc17356"
+    },
+    {
+      "path": "css/homepage-mobile-hero.css",
+      "sha256": "8188728d20bd4a8e8d2dde85e2dc70dc177618295ef0c200ca9df3d987858c5f"
+    },
+    {
+      "path": "css/plans85-base.css",
+      "sha256": "5de4d59819868e39bd46db525a4af0cab9b9336ebe83b8a28085a3551550c328"
+    },
+    {
+      "path": "css/plans85-loader.css",
+      "sha256": "749e30255fa9a83e537c43f430641073c733dbce8a73431dc117bd44548e8ac3"
+    },
+    {
+      "path": "css/plans85-premium.css",
+      "sha256": "0c986ace12292a108b3f3219de34fa71a0522c5bef2c5e9f338e19734c0b6df7"
+    },
+    {
+      "path": "css/plans86-readability.css",
+      "sha256": "ba14672b20bfce0ac9fa37553ff5a8622541e18a8931634981d26708d407f45c"
+    },
+    {
+      "path": "css/social-proof-mini.css",
+      "sha256": "10013fdc3a59e01aea3646489c67c023b19b68454ed12c1441cabb3ccb912657"
+    },
+    {
+      "path": "css/story-video95.css",
+      "sha256": "549f6ea806a621f29056be8229fa9386bc6d1f3e5a2bcc140f9fe4e7c541c737"
+    },
+    {
+      "path": "css/styles.css",
+      "sha256": "e5b39dc6ba188ba7161c93502b4932fb0929211a92d3ef3744fdb4ea0ee6c901"
+    },
+    {
+      "path": "css/vitality-next106.css",
+      "sha256": "2152baea1215e2d67c4e0ca9eccf90b2e5fd1dc389aa38c3a397ff08bde16516"
+    },
+    {
+      "path": "css/vitality-report-preview.css",
+      "sha256": "5be6b8be4706a2b137010627373b78090fd1ae8843d9f86f78b038a6e90f927e"
+    },
+    {
+      "path": "css/vitality-roadmap-workspace.css",
+      "sha256": "1e4d959502aeaf16a3d9c8622651e7837585b10dc23c6d897168a41e87060f7a"
+    },
+    {
+      "path": "css/vitality55.css",
+      "sha256": "bef203c612d24af42d952d38846b02e3e3e96dc454cb79b1819e51b1b2c795c9"
+    },
+    {
+      "path": "css/webinar-founders.css",
+      "sha256": "1e720c37701a4eb3a17a21c2712aff89aa6ba45d1116064b94448f145c048438"
+    },
+    {
+      "path": "css/webinar-hero-promo.css",
+      "sha256": "5dccd25e82f5af9cbd9b9a2e9620776799ee861f4dfaab887b741ad7a290f861"
+    },
+    {
+      "path": "css/webinar81.css",
+      "sha256": "a801824fb5a75fb579e477c089f6d2ebf018b88ccd73ea99101b41dfcbe115f3"
+    },
+    {
+      "path": "js/account104.js",
+      "sha256": "07e0df21538527c1dd5029f04da1fd6b7d9ec8312fcb189a27536b788910b713"
+    },
+    {
+      "path": "js/admin104.js",
+      "sha256": "e2417079de931c30bf3c2cc8e414478a9532416ec4126a0bb8a6c6aa2a8cbecd"
+    },
+    {
+      "path": "js/app.js",
+      "sha256": "1c19cab1cae9e68b6f45ce24f4fe2a29bec00155ea72674e36c269eb463a29a4"
+    },
+    {
+      "path": "js/coaching-path94.js",
+      "sha256": "c314bf0d15f8624aee8a0bffea0d0156d5bdc5b50cd3828e57b737641815bd13"
+    },
+    {
+      "path": "js/enrollment-health90-bridge.js",
+      "sha256": "32d2e4c277f5a4cbc3c5e40b19b5c19595b826bf5af660a394758a06cef1d054"
+    },
+    {
+      "path": "js/enrollment82.js",
+      "sha256": "bdac10920d9d8a68d14168d474cf8d207f026bee6bc67ed378e0be45d20ea153"
+    },
+    {
+      "path": "js/enrollment83-bridge.js",
+      "sha256": "ece1e06bc85b097a75dd14f46814095ec41d26f6507234202211f218c5eee0ad"
+    },
+    {
+      "path": "js/enrollment88-family.js",
+      "sha256": "2ab03c0ef8f08ac25ee13279ee5a7ade6c8908d601f9d5fe30083f3368f48c3b"
+    },
+    {
+      "path": "js/environment.js",
+      "sha256": "b87d45e9ae09946e218ac3856aad0d0d0de692e87518e4ed07a5119b1c2d9b25"
+    },
+    {
+      "path": "js/family-health77.js",
+      "sha256": "75f9921d1630bab6552c1a1a5d2aa2a74eb4efa8473d891aefebf20766b72b27"
+    },
+    {
+      "path": "js/family-health79.js",
+      "sha256": "81487b2bde2d5ff193cf110d23fe1180a486f8af5fc87934ac616117620b2782"
+    },
+    {
+      "path": "js/free-help80.js",
+      "sha256": "bf2f2117ef31d94684c951ca1cf7bf742fdfb7ea09f5f78478b1144a08c33d7b"
+    },
+    {
+      "path": "js/health-hope-live.js",
+      "sha256": "f01a0e2c13dd04e5a9cc8cdc137b74a4e2239a6cc6687fa277a41d530bf4061c"
+    },
+    {
+      "path": "js/health-profile107-bridge.js",
+      "sha256": "73dc0b27ee13a847bd08ff69ee63bdc23809aa20003da44a21ddba43d5766610"
+    },
+    {
+      "path": "js/health-profile91-data-1.js",
+      "sha256": "53ebc17348db2fd60bc2a0d1e55fe639cbd43ab8b02ffc02d834479cf7036d82"
+    },
+    {
+      "path": "js/health-profile91-data-2.js",
+      "sha256": "72ceb8ef69ca1b48477f213cd732b64a183c2179d05397aca02ada9969e96b92"
+    },
+    {
+      "path": "js/health-profile91-data-3.js",
+      "sha256": "7a8a0f496c90c2fcc30db80eafb05f8d7004b648d7fd877ea0e31487c06b9cf2"
+    },
+    {
+      "path": "js/health-profile91-data-4.js",
+      "sha256": "6de5b415b57042821f988c7380974f32f4a942458626fe1d5397f7aff8d87dfe"
+    },
+    {
+      "path": "js/health-profile91-engine.js",
+      "sha256": "226225cc0b1170dab3546f4237e6121bedb3e11b49669cf4c5b55e691da3cd5f"
+    },
+    {
+      "path": "js/revitalized-data.js",
+      "sha256": "8a908ae7260d31519c6f32921a5960d4139265da6c8bab00c041f48c6b949f3b"
+    },
+    {
+      "path": "js/rva-affiliate-share-contract.cjs",
+      "sha256": "b6b3a9288f3048384ad9b0fd6963b242cfbdb38e92218f52a6fbe2b8882f2e13"
+    },
+    {
+      "path": "js/social-proof-mini.js",
+      "sha256": "ab2d457bf5e0d475c7093f66778f3d15d0054a193ac7d7af4b8da09c34f69dc0"
+    },
+    {
+      "path": "js/transformation-stories.js",
+      "sha256": "43f7d129b69b02a7d00b92ffd2792cd1a5afbdb16a44552575051f2d6a211c62"
+    },
+    {
+      "path": "js/vitality-child.js",
+      "sha256": "ef6c024bdb5abc96d2d7dd3affc5f2c4326ff8b366c85b0717f751619babaee2"
+    },
+    {
+      "path": "js/vitality-next106.js",
+      "sha256": "92d57f18b9bd3a42a9b5947aad90bf7d1062f04e467f331b369a495e881a4f64"
+    },
+    {
+      "path": "js/vitality-questionnaire-draft.cjs",
+      "sha256": "ce15b37436e3a74c6e5383c8034a884ce9d4b228c28032d728a318a2b748c1bb"
+    },
+    {
+      "path": "js/vitality-report-preview.js",
+      "sha256": "b7a23457b7320ead885dc5aa4db06c8d01a60cb290b8b95e96cc305b3b60a1fd"
+    },
+    {
+      "path": "js/vitality-resume.js",
+      "sha256": "d98aeda66801a89d8791345ba0990dcfe9fc6cd17dfca745c78eec25ff30e84b"
+    },
+    {
+      "path": "js/vitality-roadmap-b2-engine.js",
+      "sha256": "2e81397373e098af9647f1f81acc7f75741cc602237cdc4b526913090c670f69"
+    },
+    {
+      "path": "js/vitality-roadmap-b2-scenarios.js",
+      "sha256": "eaa559723c94ce4fd1c0c9e3012aaa15b93187ee4b25a213bb83d65ed1e440cd"
+    },
+    {
+      "path": "js/vitality-roadmap-b21-engine.js",
+      "sha256": "bb22e6a87b00489b5d4b6770b8d6ab56ae9427ac70862ace6dd6e4c4bc67b463"
+    },
+    {
+      "path": "js/vitality-roadmap-b21-scenarios.js",
+      "sha256": "81f3902b576ea28b25c2c18324de3f13cc707291baa15cb753f2f563765d87e4"
+    },
+    {
+      "path": "js/vitality-roadmap-b4-coverage.js",
+      "sha256": "2fe30c8bfc9a39da7e96394ecca897b87e05035c9fea9b0ba3e14ded91864781"
+    },
+    {
+      "path": "js/vitality-roadmap-b4-source-map.js",
+      "sha256": "cbeab7a1c4a9efaa783da1d9f6a2d4ccdc21f3d7fd89d4e4a4f354bf623ff289"
+    },
+    {
+      "path": "js/vitality-roadmap-b5-cases.cjs",
+      "sha256": "89d7c4fdc80ea7df0d5cb548d1bc104fce7ee98228a8d1befb2bd3b257eb6870"
+    },
+    {
+      "path": "js/vitality-roadmap-b5-contract.js",
+      "sha256": "9faa311cdd6ba999d089d57338e64c6068130c9b669d01a5b07f7e5e3ea7cd78"
+    },
+    {
+      "path": "js/vitality-roadmap-b6-adapter.cjs",
+      "sha256": "dd7005f142f210abfffe740bb77932324276b5d87c9e9d0eb6a0780638ca6929"
+    },
+    {
+      "path": "js/vitality-roadmap-b6-private-comparison.cjs",
+      "sha256": "d3cc7f5b0f9811310dad5b5b3980e2ab748312bcde012dd5211b5af31bca6753"
+    },
+    {
+      "path": "js/vitality-roadmap-founder-direction.cjs",
+      "sha256": "ab68a1a0915874d6942595a3e86e750a0c4f0d4d78b4b98bdc2e0132edaff2b3"
+    },
+    {
+      "path": "js/vitality-roadmap-founder-voice.cjs",
+      "sha256": "47a2165dd9dc59486c17b6f02014490db12c8a340113ba0d9c0f376d6ec345db"
+    },
+    {
+      "path": "js/vitality-roadmap-measurement-traces.cjs",
+      "sha256": "24d1e2aac0bb22126b2be45737d4dcab827735f9a4cc46a3d4896f3c53a140f1"
+    },
+    {
+      "path": "js/vitality-roadmap-narrative.cjs",
+      "sha256": "780a8ecb464992512dfacb64a0fabd8ee2d798505692813a160ebbe5c0445d0d"
+    },
+    {
+      "path": "js/vitality-roadmap-processing.cjs",
+      "sha256": "2ce05fea84879b5d3fd0948994191b0b81737336f7b5178aa0bb996e0619fc9e"
+    },
+    {
+      "path": "js/vitality-roadmap-v2-gate.cjs",
+      "sha256": "2b93860a81b409bc1c2ff7ac37cad5e5bf0c17d6bcfc49a75c1439f2962844d2"
+    },
+    {
+      "path": "js/vitality-roadmap-view.js",
+      "sha256": "d3db20ca5f3fa43468f1a19bc754a3c795e66588c9778868547d8c93d31848bc"
+    },
+    {
+      "path": "js/vitality55.js",
+      "sha256": "f37245fe91407b8e2b02fbbebf91cf4af32f468ef67e321753f8d91ce0c4af59"
+    },
+    {
+      "path": "netlify.toml",
+      "sha256": "d9b44ad53860826bb3f7e62a46aa9cc00a356210fa0641ea9d415d9ad3cc186f"
+    },
+    {
+      "path": "netlify/functions/_shared/authorize-net.mjs",
+      "sha256": "de4332127c269ab42517551cd9da69460b2c6c27564ce96b528f12ecc3764f51"
+    },
+    {
+      "path": "netlify/functions/_shared/health-hope-live-acceptance.mjs",
+      "sha256": "ddc7236e8f3eb4e92d8b08c0872f789d70dfd3e488535016664ca2e7b57f53ea"
+    },
+    {
+      "path": "netlify/functions/_shared/health-hope-live-meeting.mjs",
+      "sha256": "bfe852be72f9fd89124299b71309707e4a0cb1ea09a99167fff7fb7331960287"
+    },
+    {
+      "path": "netlify/functions/_shared/health-hope-live.mjs",
+      "sha256": "a7f57184d1782a570cffaeb2413f28a3bd02f4d7526af5dcf805bae28246825a"
+    },
+    {
+      "path": "netlify/functions/_shared/payment-domain.mjs",
+      "sha256": "5c653a76ef7e7eb6ea495615a73e6cbad5a9a1f70d234b5d6fbea60c910a540b"
+    },
+    {
+      "path": "netlify/functions/_shared/payments.mjs",
+      "sha256": "b893a58f750b8058b899e6c261c2d9dcbc4cb96cc47f12e94211c41f4edde2a5"
+    },
+    {
+      "path": "netlify/functions/exercise-library.mjs",
+      "sha256": "c505cfc59c3230666a01d4b9012a29804eed89760b67c4b6fd2baf9dc365d6ce"
+    },
+    {
+      "path": "netlify/functions/food-database.mjs",
+      "sha256": "7ad9d5b47d63c49308057feb8d7c24c198dafa8fabf491962dc9d1e5579aecd3"
+    },
+    {
+      "path": "netlify/functions/health-hope-live-retention.mjs",
+      "sha256": "2cbc0e0a155e8fe6bdab6467cf08f5b9da751bd34c9ba82181ec51e52d170bdb"
+    },
+    {
+      "path": "netlify/functions/health-hope-live-worker.mjs",
+      "sha256": "7858cf638994c62ea874364de4708c9906d4c979cd320df0b493a0241d8ccc5c"
+    },
+    {
+      "path": "netlify/functions/health-hope-live.mjs",
+      "sha256": "c03f09a4148c120be3dc4f1acc24ad3d868680fe4c85e7a708e077fc2d6096ee"
+    },
+    {
+      "path": "netlify/functions/payment-webhook.mts",
+      "sha256": "86e863024c007af1f992b044a6fdfac85cbab564be82a54aced37ff594396f37"
+    },
+    {
+      "path": "netlify/functions/payment-worker.mts",
+      "sha256": "eaf9963c53fb56bcae242925c7848ff892e8e8f938057f9a6fec9e687a4d0868"
+    },
+    {
+      "path": "netlify/functions/payments.mts",
+      "sha256": "dd9c30fe9d8a0690eb43a20c44c659e4150d19490e0ef77dea82588e4bd5bb64"
+    },
+    {
+      "path": "netlify/functions/reusable-content-sync.mjs",
+      "sha256": "2c4d64c15794c378df003457ed0926b448fedf6d3a4eb272ce8696277dfe9b05"
+    },
+    {
+      "path": "netlify/functions/roadmap-founder.mjs",
+      "sha256": "ef9bdc21aef6402bc63058dacb1703ff8fe423c07471e792def4c00577af0c51"
+    },
+    {
+      "path": "netlify/functions/roadmap-processing.mjs",
+      "sha256": "98f2c1452c231e627c8ded917d30f182a5d191f98218f2af594672629d9a4404"
+    },
+    {
+      "path": "netlify/functions/roadmap-scoring-lab.mjs",
+      "sha256": "c95b14cf7c57afa0591ed460ead19e4ce0b537255203a54905dbbe67c6c8907b"
+    },
+    {
+      "path": "netlify/functions/roadmap-verification.mjs",
+      "sha256": "db141c07aba1661789edacb34348af6db084299092b0094d71b58a0ada2ebe69"
+    },
+    {
+      "path": "netlify/lib/content-sync-contract.json",
+      "sha256": "3c9130a7862c392f1804c17ec1f00138470204c303b9b0f0adbf9594e840dca9"
+    },
+    {
+      "path": "netlify/lib/content-sync-service.cjs",
+      "sha256": "152de6359cc8144c06fb2eab96ccf6ef64348b641eea76217bb53a73112c1fd7"
+    },
+    {
+      "path": "netlify/lib/exercise-library-service.cjs",
+      "sha256": "6c8301030822d9d0e20ae0d2452c86af825f2891037c86821a01c2b047158b31"
+    },
+    {
+      "path": "netlify/lib/food-database-service.cjs",
+      "sha256": "9d5c74bf3caf4487bb879a1e95ec77c91ad506e0ff774d4fd126d06155cadcfd"
+    },
+    {
+      "path": "netlify/lib/fooddata.cjs",
+      "sha256": "4377c9df3eae2cc280dc3c2187ccc5b7b25c82baf75a29a07f248b9bc92dce0e"
+    },
+    {
+      "path": "netlify/lib/nutrient-target-contract.cjs",
+      "sha256": "750257e1ee97b0af5e167c323f93f65a5293a5be373be29befc5b4144fbfb302"
+    },
+    {
+      "path": "netlify/lib/repdb.cjs",
+      "sha256": "32da76635d9b2e4c9a84b229e49781ffc1106ed6d74c254b561a3695eacab2a5"
+    },
+    {
+      "path": "netlify/lib/roadmap-calibration.cjs",
+      "sha256": "aab0a885a3000cb2898754c396a5de84cdb807589476d6f2ae1f82ea4b143a10"
+    },
+    {
+      "path": "netlify/lib/roadmap-founder.cjs",
+      "sha256": "237fe6968a319536f4e87e8555c4adef5c92223959d85a21e880580a469f7a33"
+    },
+    {
+      "path": "netlify/lib/roadmap-processing-print.cjs",
+      "sha256": "852800eaf1594818ec65e54c87e0568a319e9b049af7a5ac636932fed95445f0"
+    },
+    {
+      "path": "netlify/lib/roadmap-processing-seal.cjs",
+      "sha256": "aea6b1314e484350e1c3590b46861439d512cfdafb0fe6d40eb20b929bf80a08"
+    },
+    {
+      "path": "netlify/lib/roadmap-processing.cjs",
+      "sha256": "203b47a2a0cf5ab9e01ded4205ce92d1c5e7efd814af05aa4fdbce1010844a2f"
+    },
+    {
+      "path": "netlify/lib/roadmap-scoring-lab.cjs",
+      "sha256": "a852e398eecc4c5855de1b9c3a50103014fc1418fa6cd92e5feae73f7e38222b"
+    },
+    {
+      "path": "netlify/lib/roadmap-verification.cjs",
+      "sha256": "f0aa245bbaafbef3a07f51a3be1db555342b4bc1efd488ae70acba05bb9c2a2c"
+    },
+    {
+      "path": "portal/health-hope-live.css",
+      "sha256": "170cde3ed78616cdfd6026661d7e8e5adced4e8d047899c55242841321eebb00"
+    },
+    {
+      "path": "portal/health-hope-live.html",
+      "sha256": "99d3a64268b56076269c31425bd0c14f71a218ae6259bbbd07a5a04c471d52cb"
+    },
+    {
+      "path": "portal/health-hope-live.js",
+      "sha256": "b94061472ecd8e6cb039bac9cbb63bfe9f1c5f2376235b59b630f490547f51e6"
+    },
+    {
+      "path": "portal/index.html",
+      "sha256": "a3d02ab2a8ed638ffc00a47d7e332a6b843a8e6b43684b1d20379a3256a879ec"
+    },
+    {
+      "path": "portal/manifest.webmanifest",
+      "sha256": "370140d8c01316866638ef68f21f4024b00c2aef77c854a57468197aa1ddbc33"
+    },
+    {
+      "path": "portal/password-reset.html",
+      "sha256": "636025926be2ddeeb26577da88320d75bc1626f568ed167129ac73a8e1c6b2b7"
+    },
+    {
+      "path": "portal/portal-account.js",
+      "sha256": "e4eaf37f075fcf45fe416cb3cc7117a00d206f677ecf04043714b89eb0171594"
+    },
+    {
+      "path": "portal/portal-action-center.css",
+      "sha256": "ddd0aa1756c532d067a4fbd1d960fb4527c00747445b7f70ffb99d60953cc7bf"
+    },
+    {
+      "path": "portal/portal-action-center.js",
+      "sha256": "743981b4e6cd88109a012a7073773eed7c3435bc88a101395473c020a31fcebe"
+    },
+    {
+      "path": "portal/portal-agreements.css",
+      "sha256": "0c85e2182a60e63a5cffd3eef3a3b277be45f7b91d4d8495e340e19b722325c0"
+    },
+    {
+      "path": "portal/portal-agreements.js",
+      "sha256": "77adde499919f00629ad688b569b24f1ab3ed19245e42689edcba08fa4497047"
+    },
+    {
+      "path": "portal/portal-billing.css",
+      "sha256": "5f952ecd104917b9499b868b886bfb56cb14da16b4c2884f5a9db2305319cfb4"
+    },
+    {
+      "path": "portal/portal-billing.js",
+      "sha256": "f402a20ef82c1ca893f82cb6dbae30ca60cf904f8458f7d8a3e3907f38eab111"
+    },
+    {
+      "path": "portal/portal-challenges.css",
+      "sha256": "ea091db8d79eaf126e450122be383e0d4cbd4efbca4bb69d9a1d51a84c5cae1d"
+    },
+    {
+      "path": "portal/portal-challenges.js",
+      "sha256": "9b2232a53793085f27be8630c51740686de046f06d53807c15443cc5358f05da"
+    },
+    {
+      "path": "portal/portal-client-billing.js",
+      "sha256": "2a5eedd4ae641790552a5969e38c0391f2d25b83a3243b02b6500b7ffb5a40c9"
+    },
+    {
+      "path": "portal/portal-client-foundation.css",
+      "sha256": "c81f5221365095eaf395dfcf04497aacff3d1350875848a8247a8aa264b864b6"
+    },
+    {
+      "path": "portal/portal-client-foundation.js",
+      "sha256": "04d97b4567ae0c08513f7e0571cec42f4ec39216a3174b24f8ba5067361ac0cd"
+    },
+    {
+      "path": "portal/portal-client-lifecycle.css",
+      "sha256": "13784ba6ba6519268983fef92669a98a0997c503253ec85f6f8cc92bf1a9cf14"
+    },
+    {
+      "path": "portal/portal-client-lifecycle.js",
+      "sha256": "604f6f94a528921b1a3c4485e74bf23d6e7af363da7a679c58cd72f1c3f28a6e"
+    },
+    {
+      "path": "portal/portal-coach-capacity.css",
+      "sha256": "c18df3c3d73efaba6740fb3d1d080b3c77e67ae22d5e3a384f1c90a2fa2b418c"
+    },
+    {
+      "path": "portal/portal-coach-capacity.js",
+      "sha256": "5149342f6cc5b54f60cd8e4f334a7db553379cdb5093901b4a7274658dcaa178"
+    },
+    {
+      "path": "portal/portal-coaching.css",
+      "sha256": "77e44d74f9847d417f7a14bfdfecd52efea4813f813dc24e3fc897478b8427b5"
+    },
+    {
+      "path": "portal/portal-coaching.js",
+      "sha256": "ae5413969d2b5b4e04b45f22a96f7ae45e79ec3819761c0d4109a74a346f60c0"
+    },
+    {
+      "path": "portal/portal-community.css",
+      "sha256": "d9ebae90b94cabcfbe783bace74b113c046594739e22a1d0e00bf08420539a34"
+    },
+    {
+      "path": "portal/portal-community.js",
+      "sha256": "10f0362dc6ffd3ab19c7567b88475b9c7581df95650aa9ebb5663f16f8892f56"
+    },
+    {
+      "path": "portal/portal-companion.css",
+      "sha256": "cda9041c649bd1c51fb0c027fe6b804aa384750e6d9e939aeb230809ba02c9ff"
+    },
+    {
+      "path": "portal/portal-companion.js",
+      "sha256": "31c950f85f533cb7e3a710fa74542c377e7cc2eb6f8612f69598efc59eb4d658"
+    },
+    {
+      "path": "portal/portal-content-composition.js",
+      "sha256": "50fa70cf2eb7b841df1e9b73c4160eee551171e453125036860f1c50a6ea23fc"
+    },
+    {
+      "path": "portal/portal-content-sync.js",
+      "sha256": "dd87460725510780fe91f3c29e2b24b02ae878532be128b73199a12064a74574"
+    },
+    {
+      "path": "portal/portal-documents.css",
+      "sha256": "0787e97a6753238035933b5c2a5b545d8783d84cda9347821bf7f9484c483a77"
+    },
+    {
+      "path": "portal/portal-documents.js",
+      "sha256": "10f90ee19ce3882a677e8c0b103c99bf575d7dae55179ad18bf2309cc017f46d"
+    },
+    {
+      "path": "portal/portal-executive.css",
+      "sha256": "f478a47cc7eaae898c913752fd880052ec12e9415d67bd50c9e751f4dc26d7e8"
+    },
+    {
+      "path": "portal/portal-executive.js",
+      "sha256": "d32b57a1813909b4386181470a07cdfedabf0b668f053cecba039d8aa034eb86"
+    },
+    {
+      "path": "portal/portal-exercise-library.css",
+      "sha256": "8707d06435c38ebd061da37a1c7cbcce367f17d9fcc44b82d289e55beb1e99d8"
+    },
+    {
+      "path": "portal/portal-exercise-library.js",
+      "sha256": "1d33279da6fe1739bb6e6d076aa4b589865018111155c91fe78d0ed0e04a26eb"
+    },
+    {
+      "path": "portal/portal-family-requests.css",
+      "sha256": "34a553118c4cd924baced3d917107d26d6a107e7783dda22fa16abd571090891"
+    },
+    {
+      "path": "portal/portal-family-requests.js",
+      "sha256": "4a34af53c74d71278d2b8eb2caf2813dc269ec701dc76055ad6dd1fa4b040f31"
+    },
+    {
+      "path": "portal/portal-food-database.css",
+      "sha256": "a374ec3058dbea7d6ab1ba3a5d64704ac9c7302c793da30e9aab87a88ca6eecd"
+    },
+    {
+      "path": "portal/portal-food-database.js",
+      "sha256": "c4a5e67b4cfab146eccb4ad517f2e6b968197a570b390ffa84674155374fb1a6"
+    },
+    {
+      "path": "portal/portal-health-integrations.css",
+      "sha256": "27ea910dba40b08b2464dbfd4ab2a1585885436293a19c60a1e8ec7b67c9e296"
+    },
+    {
+      "path": "portal/portal-health-integrations.js",
+      "sha256": "7dfe6a50954234e09dc9068a33bd5124270f9a60afb6f08aca42c6f8a38d1b7a"
+    },
+    {
+      "path": "portal/portal-journey.css",
+      "sha256": "be8b3167c2a9d892a1238308a7f5cee5c40663ae7e48d26fa31ae3e0615b87e9"
+    },
+    {
+      "path": "portal/portal-journey.js",
+      "sha256": "ea0e5c7a74292621517a14003567ae691bf7dc3cd4acb9b14483dc9a13cadff6"
+    },
+    {
+      "path": "portal/portal-learning.css",
+      "sha256": "278cd74f618c3da10bb8f09b70bb14a7e85d29b3a5701aa03e997d10f3c762fb"
+    },
+    {
+      "path": "portal/portal-learning.js",
+      "sha256": "4e95ab475f4c05251a4ecbfcb975b41b5d9d01c93338561365df33adfc00ae2d"
+    },
+    {
+      "path": "portal/portal-member-messaging.css",
+      "sha256": "4314731bed815232a589b167fe277a76db0cf4f599049467682302eef4fd0d25"
+    },
+    {
+      "path": "portal/portal-member-messaging.js",
+      "sha256": "c1b9c932450f06528ff24eb54ab18aa83702c67c62a75edc2a84e59777990f41"
+    },
+    {
+      "path": "portal/portal-messaging.css",
+      "sha256": "76ddd4b5bd38e9c31aef4183e18dc4aede6a16e3dcda674f425d51acef462ebf"
+    },
+    {
+      "path": "portal/portal-messaging.js",
+      "sha256": "700b1d90bc9f07afb07c7fe88f2075d492ff621ff21fa00b61807e379daec7b8"
+    },
+    {
+      "path": "portal/portal-overrides.css",
+      "sha256": "f496bd958fbf2e83aa5098bcfb0df42062888ddbf39f567e2277d1892e69cd1c"
+    },
+    {
+      "path": "portal/portal-overrides.js",
+      "sha256": "9356c3ed9e3ec14b04d7ebe634978ae59ac5a4480b8045f0c42e81d80069b132"
+    },
+    {
+      "path": "portal/portal-payment-requests.css",
+      "sha256": "8bd3df1ea2f26c96073a904cde75c6839532bbdc17f89f29b2037362a95de14c"
+    },
+    {
+      "path": "portal/portal-payment-requests.js",
+      "sha256": "9322f93115e4a433ef5ec000cce86e5f51824938097712b9573747ef099735a8"
+    },
+    {
+      "path": "portal/portal-people-directory.js",
+      "sha256": "3da97eedb1bed844505059228db9cd610626a4bdcde30f685a8c4e1571b40390"
+    },
+    {
+      "path": "portal/portal-people.css",
+      "sha256": "3ef35257fba72df4db22a74e073580099d8e5653fafbe3398657b1eab7198f55"
+    },
+    {
+      "path": "portal/portal-people.js",
+      "sha256": "dc52e427e6e16bd115e1f14fc6e52f6336295cf205b54f5541d41b201e221030"
+    },
+    {
+      "path": "portal/portal-permissions.js",
+      "sha256": "087c276a9284914a5fe70849f14e6e7a7da3f7d06fd2393db8df069398fd2be8"
+    },
+    {
+      "path": "portal/portal-pipeline.js",
+      "sha256": "0c9ad7c58dd4f6783a65023776816830d8405b020973711b5a0c3af0c9050247"
+    },
+    {
+      "path": "portal/portal-polish.css",
+      "sha256": "b0412fb64d2ddd917e077567c684dc2ddc6b18b9bcef8d0a26c70df2606e81df"
+    },
+    {
+      "path": "portal/portal-programs.css",
+      "sha256": "8f922ca59115bbc4b31b078bfb5f42846a4d61ac9168137498e88c2244054e33"
+    },
+    {
+      "path": "portal/portal-programs.js",
+      "sha256": "b5cb13ded9638e4844504f4c982b8efefee3d40cf077a561c80607181c006f83"
+    },
+    {
+      "path": "portal/portal-recipe-builder.js",
+      "sha256": "04662c483568b01a847b4a126daf11aa2d1938ee607f8bf5eedef9d56f6660db"
+    },
+    {
+      "path": "portal/portal-referrals.css",
+      "sha256": "33f8037968f5352e82d99d64e531d491e11d807b5fa75428bc267f35c4cd7fde"
+    },
+    {
+      "path": "portal/portal-referrals.js",
+      "sha256": "bda8722c7c44fbc5cb728569c37d0f45db18b22f3ae8a864ddd8047b996c5c1b"
+    },
+    {
+      "path": "portal/portal-refuel.css",
+      "sha256": "e9be1c79a9a416275410f93e0545fed6adb90247039729f833eb9b303999200c"
+    },
+    {
+      "path": "portal/portal-refuel.js",
+      "sha256": "c41139c792720d8a415837740f59c580c82679aa8e17316aad5583bf70bf54ad"
+    },
+    {
+      "path": "portal/portal-roadmap-calibration-bootstrap.js",
+      "sha256": "fa391b53cd430eb016893c87c34745fcb58b78751cb5d89d9619aa6b6e324743"
+    },
+    {
+      "path": "portal/portal-roadmap-calibration.css",
+      "sha256": "fcb65460cf03ccc3ff3944d56f2e1aa1f6f416c17aedc3aa51040c952fd670b2"
+    },
+    {
+      "path": "portal/portal-roadmap-calibration.js",
+      "sha256": "705de13fb33d7ee7bf0d83d2290b7fab8572e7e9691063ff3c94fcbc29181721"
+    },
+    {
+      "path": "portal/portal-roadmap-founder.js",
+      "sha256": "d2672b7441d207067588e91ee88a9204fc2f886cb82ab40266f646181b27dcb6"
+    },
+    {
+      "path": "portal/portal-roadmap-owner-continuation.js",
+      "sha256": "b8092c1346234aeb2b11568379f1718199f0f3b9c638d5c19de989ca1eea1ffa"
+    },
+    {
+      "path": "portal/portal-roadmap-owner-recovery.js",
+      "sha256": "fb8c2804cc65ab8b101d771a5783f5fb004038feecfaa377842ebd1846abfce6"
+    },
+    {
+      "path": "portal/portal-roadmap-processing-bootstrap.js",
+      "sha256": "cc86c94fc3e6343887137911eb522132c826d872f3ef54509f7edb3eea4c7800"
+    },
+    {
+      "path": "portal/portal-roadmap-processing.css",
+      "sha256": "ee689c0b234f1d0b58707f0cee0b06aecd49d789156640f7f748d9642bdee345"
+    },
+    {
+      "path": "portal/portal-roadmap-processing.js",
+      "sha256": "9119ca86b03a27c792e20f0ae9aa6085aa92059e9bbae48ebc78b5568a180ace"
+    },
+    {
+      "path": "portal/portal-roadmap-saved-review.js",
+      "sha256": "7e2fdfebf5b915654d169d4080c5d3babccee0ff185b698851143cb3c79f50ff"
+    },
+    {
+      "path": "portal/portal-roadmap-scoring-lab-bootstrap.js",
+      "sha256": "e7ed0a1ac6252dec3f64a5333f25cd7d8776591b4d6c445cebbaf218e2c8be16"
+    },
+    {
+      "path": "portal/portal-roadmap-scoring-lab-reference.js",
+      "sha256": "61fbd4bba66d268af876dee55f176099e44291ff25e129c31e448b878e8bb5ce"
+    },
+    {
+      "path": "portal/portal-roadmap-scoring-lab-view.js",
+      "sha256": "8cd8555e428ef423376936c5bb36f17ebc9bc3bbefeaf58eca9c57c7c4f74e7c"
+    },
+    {
+      "path": "portal/portal-roadmap-scoring-lab.css",
+      "sha256": "bc3a2cd5aa3c1aca647141e1f422bdc0196c4773bf8d926a76b9357001694087"
+    },
+    {
+      "path": "portal/portal-roadmap-scoring-lab.js",
+      "sha256": "bd3f886bc5ecc1ebe21f86601a4db972992b7a4e0edf77dae1d47fb03581499e"
+    },
+    {
+      "path": "portal/portal-roadmap-verification.css",
+      "sha256": "1dbef6614938d1c61d79d16f3182635e060fa423393a1541e8ffdbdea3224f89"
+    },
+    {
+      "path": "portal/portal-roadmap-verification.js",
+      "sha256": "fa7eb3f433bba5bfb73f20df435d7fbea936f3f8c3f120839eff387c5197c61d"
+    },
+    {
+      "path": "portal/portal-shell.css",
+      "sha256": "c175f9f74beb0a8db08efb0ef4c6f45cb78e94d1363b453ad2149471e29c15d8"
+    },
+    {
+      "path": "portal/portal-shell.js",
+      "sha256": "c58c6f43c13aa7eee75f11d060415ccf54eb122e585e4b3daeb2f1fa5ddd67ac"
+    },
+    {
+      "path": "portal/portal-staff-access.css",
+      "sha256": "cd19a4f0f40ecc1ff11ee171afb70f453181be4f0d48c9b420ec680abd1ccfe4"
+    },
+    {
+      "path": "portal/portal-staff-access.js",
+      "sha256": "9bc672424d00f08d6a58f427f20f46df323a5729eee6b9bf389a9c205783f596"
+    },
+    {
+      "path": "portal/portal-staff-onboarding.css",
+      "sha256": "dff20e4e1da5e09b366205743be617783d7246d22be71555656a7c175c64ddef"
+    },
+    {
+      "path": "portal/portal-staff-onboarding.js",
+      "sha256": "322bf8c68ae84de2ce7e7b53659ebbcfe78ae2de9c139755ddfea54037acc25e"
+    },
+    {
+      "path": "portal/portal-team-calendar.css",
+      "sha256": "ecc41e7ebdf31fb6f1f718c2301e941880c219a7b44d40ee153fdcd06032cd8a"
+    },
+    {
+      "path": "portal/portal-team-calendar.js",
+      "sha256": "0823785373f6a1fb196522534cddc09408b5552efe659b9e52849f83a426e1f8"
+    },
+    {
+      "path": "portal/portal-vitality-assessments.css",
+      "sha256": "473d64f7ef9bda60b35fc36e629bbee8096bb8759249f96c1a64e53f08f066b7"
+    },
+    {
+      "path": "portal/portal-vitality-assessments.js",
+      "sha256": "54c497b9b149af86955133523cd8efbd31d9b9e27e148f3648bc46e771cf40b4"
+    },
+    {
+      "path": "portal/portal-wellness.css",
+      "sha256": "a4dccb6de7c786032bd56e11e239ad979d16993b459488e86d2ed2b9c1c70cc2"
+    },
+    {
+      "path": "portal/portal-wellness.js",
+      "sha256": "da3d073361414c0c1e694a8ae96a14834ac69d34d2512f5ad03322cfa84bfd37"
+    },
+    {
+      "path": "portal/portal-work-desk.css",
+      "sha256": "3e7f19d53b335d8e63fed969a7c5e1099deaaabf94b2d9f07aebb5847e18d3c2"
+    },
+    {
+      "path": "portal/portal-work-desk.js",
+      "sha256": "4e6ef3cb23d8d5d9b10cf49614a89b458a244180bb272fe401b2dfb2faeb21a7"
+    },
+    {
+      "path": "portal/portal.css",
+      "sha256": "e4db5d0a52fad0a484b0cb44a669d8e2de7305ef49162e0cd42c936bebc29134"
+    },
+    {
+      "path": "portal/portal.js",
+      "sha256": "197bad019aac3b86442d602820302213e8075215a78dc28d5ca77aa18cf12de1"
+    },
+    {
+      "path": "portal/vitality-question-catalog.js",
+      "sha256": "66daae2e5d086bbaeb7626515baa3723c22198f9ee448b8524d264c8c95965e5"
+    },
+    {
+      "path": "supabase/SOURCE_RECOVERY.md",
+      "sha256": "9d48b9f05f812bc3117145f62bac1bd124c79ac220d8562dd631e78d9d7637d5"
+    },
+    {
+      "path": "supabase/environment-migrations/beta/20261007073534_reusable_content_sync_receive.sql",
+      "sha256": "3b1d0a6ee989135fa06bd32f4af8eec9437b48cb17b28bd5d200c2a8b6665f6c"
+    },
+    {
+      "path": "supabase/environment-migrations/beta/20261007201539_repdb_exercise_library.sql",
+      "sha256": "7f95d26e8c7035df41463df13ab810db60ae8c0012cf44196da2356d074c9f87"
+    },
+    {
+      "path": "supabase/environment-migrations/production/20261016062751_vitality_roadmap_b4_founder_workspace.sql",
+      "sha256": "0ace9e12e706b302cc6523103fd986cc3470a624cc9756cd338ac59cc38111f2"
+    },
+    {
+      "path": "supabase/environment-migrations/production/20261016195245_vitality_roadmap_b42_identity_verification.sql",
+      "sha256": "784e7ce94b47154da0b2821c9764e2c1306d86544e2d38f477c537dd52d0abe1"
+    },
+    {
+      "path": "supabase/environment-migrations/production/20261016215456_vitality_roadmap_b5_scoring_lab.sql",
+      "sha256": "af9c2c9808a180f7a5c9ee8e6d1d5577f5fac64b7796a27228a580bbed055803"
+    },
+    {
+      "path": "supabase/environment-migrations/production/20261018051432_vitality_roadmap_b6_calibration.sql",
+      "sha256": "a0456fd7c1c6059c63eacaa5c4418d11106047637d4aec0915813a625a029f3f"
+    },
+    {
+      "path": "supabase/environment-migrations/production/20261019180611_roadmap_internal_processing_v1.sql",
+      "sha256": "dde1ac92ceb3b8385b2f8a899237185f769b6d176c85cf2d4fcfd14497c84b2e"
+    },
+    {
+      "path": "supabase/environment-migrations/production/20261019213244_b6_purpose_acknowledgment_feedback.sql",
+      "sha256": "8df96be7da7c8236dbae1fcbe5437f5c0a47a51db89ae65efc3e128ee84d6a93"
+    },
+    {
+      "path": "supabase/environment-migrations/production/20261020004206_roadmap_three_source_processing_scope.sql",
+      "sha256": "c623974c5fb7f488da44abc7368e9517e56facf89acf017452c027a657f6abc9"
+    },
+    {
+      "path": "supabase/environment-migrations/production/20261020184635_roadmap_b6_session_continuity.sql",
+      "sha256": "2d4b5d1a306d699f2c325c8e7844f801f92cec5336fab196fe41921e7f0f072d"
+    },
+    {
+      "path": "supabase/environment-migrations/production/20261022135700_roadmap_saved_revision_review_only.sql",
+      "sha256": "7392a0a80afebac243a32d1234c333c4369c1446b7a02407c5105825a1ccbc0c"
+    },
+    {
+      "path": "supabase/environment-migrations/production/20261023012739_roadmap_saved_review_replacement_window.sql",
+      "sha256": "a176a9db4edea3dd9ef50c4f5399356f19a104ca2cf26fac244695b2a2104490"
+    },
+    {
+      "path": "supabase/environment-migrations/production/20261027151440_roadmap_alex_only_72h_authority.sql",
+      "sha256": "0b568fae93f3fdb981ae6bfd2559f0ce268a6acc9dddf8af2817e5c3df6db900"
+    },
+    {
+      "path": "supabase/environment-migrations/production/20261028181937_roadmap_alex_saved_review_list_isolation.sql",
+      "sha256": "2ba3205494e8a418b47904b388a33c2ae01c79504c057b0c34b6448d7d02790e"
+    },
+    {
+      "path": "supabase/environment-migrations/production/20261029134527_roadmap_alex_voice_r2_authority.sql",
+      "sha256": "38c35853f5d25a2f3a10d056553d3825b97b88eb18dffdcbad4b1f3744304b6d"
+    },
+    {
+      "path": "supabase/environment-migrations/production/20261029204419_roadmap_alex_r2_same_owner_recovery.sql",
+      "sha256": "4299db839cdeebe2e61dd2fd89e5e99a699ace614b3416c74edfc79ac3e40bde"
+    },
+    {
+      "path": "supabase/functions/_shared/environment.ts",
+      "sha256": "c9cd6068369b100b2eb4db3a7e834e43ee13b7492fa01bf1671a771570c7250c"
+    },
+    {
+      "path": "supabase/functions/_shared/runtime.d.ts",
+      "sha256": "c8f351ee3d2d94c29530981940fa700d7b74db1c9383c57455b143a6ce501ae8"
+    },
+    {
+      "path": "supabase/functions/agreement-sign/handler.ts",
+      "sha256": "385f3b7d17d3ebd5061d10775aec4839c890a4451bd68fbf8437df59dcfb52df"
+    },
+    {
+      "path": "supabase/functions/agreement-sign/index.ts",
+      "sha256": "1ce0bc0dc6b0970c90cd9dca9a0f0cd6ef0aae2a88049b96e7807cf42d6341ba"
+    },
+    {
+      "path": "supabase/functions/client-lifecycle-delivery/handler.ts",
+      "sha256": "6bc724c396557ff07132bd27b504d614e96471fab5ca826743d9d287af17c000"
+    },
+    {
+      "path": "supabase/functions/client-lifecycle-delivery/index.ts",
+      "sha256": "f4ff97b82935f44828e953595b55d32e2feb89a6d9904589633bc4fcc14e3ec3"
+    },
+    {
+      "path": "supabase/functions/deno.json",
+      "sha256": "734cdb9fe1ee04f62cabd5f588296d679b61d081cd43f1cfff5804c26e069d9c"
+    },
+    {
+      "path": "supabase/functions/deno.lock",
+      "sha256": "ef7924564db7c4428d6087015d40769066f033f608f81ec2769d203deef9b58f"
+    },
+    {
+      "path": "supabase/functions/member-account/handler.ts",
+      "sha256": "1694b5e0052f67643527c5ba7313e11d655201e1359e68402b2f90f22bd9010e"
+    },
+    {
+      "path": "supabase/functions/member-account/index.ts",
+      "sha256": "e1ffe38b62a7e250ac2585c02655f18e51e7dc6b4e00826eccbe471163859b51"
+    },
+    {
+      "path": "supabase/functions/member-password-reset/handler.ts",
+      "sha256": "74e8ff190ff938ad4b1abac8cdfb018b148844f04f37bbdf0397ced6b4df38ce"
+    },
+    {
+      "path": "supabase/functions/member-password-reset/index.ts",
+      "sha256": "2c606a194ca80ca75d8ac1e9c416af68b4f54568b6075654d5789bc97a83dd18"
+    },
+    {
+      "path": "supabase/functions/notification-delivery/index.ts",
+      "sha256": "755937ebf925c8b051331a3c38a82a5b0a1b7fb0467fdeacdbcd08472d3d2e47"
+    },
+    {
+      "path": "supabase/functions/vitality-resume/handler.ts",
+      "sha256": "fe0d6a2ed14289b3f8f3bcd3df464de0f264f3624134cc664d37bfc0be541bac"
+    },
+    {
+      "path": "supabase/functions/vitality-resume/index.ts",
+      "sha256": "0bda721127634844d77808d0b61876e6c74483b8c193f40be9e67a9845e540db"
+    },
+    {
+      "path": "supabase/functions/vitality-resume/mail.ts",
+      "sha256": "0e17f9c379f4cec40bd2d280657ac2ddf72d7e027fc311066411bc5292cb0a9a"
+    },
+    {
+      "path": "supabase/migrations/20261005110245_vitality_assessment_secure_resume.sql",
+      "sha256": "0f8559474b774a6deb2ba37c52ab00523e0b94f3751e4b35a7c89d6bf9b52df9"
+    },
+    {
+      "path": "supabase/migrations/20261005170000_vitality_referral_source_tracking.sql",
+      "sha256": "96785be129963855b47b25320c1e78fa3d179005a9a287a239daeea79ef6bcd6"
+    },
+    {
+      "path": "supabase/migrations/20261005190000_vitality_referral_rollout_compatibility.sql",
+      "sha256": "b7bbf59fadf15600c7244cb7c7dc12f66ef96a44a03efe68c35924589bb44092"
+    },
+    {
+      "path": "supabase/migrations/20261006135457_vitality_assessment_staff_review.sql",
+      "sha256": "5e454a431026f780333a41eb94a3d584bcec9be1c2420aa015993cc9ef9d4b6f"
+    },
+    {
+      "path": "supabase/migrations/20261006164158_production_durable_content.sql",
+      "sha256": "ac7e87273204dab0ecac5f4787015c828f3148ed6316ac97a01181ddf283bb5c"
+    },
+    {
+      "path": "supabase/migrations/20261006211025_vitality_review_decoder_performance.sql",
+      "sha256": "858529b3b371f8ba9e717717ca1302f77163d6aee9a12044f53aed6cd22fce15"
+    },
+    {
+      "path": "supabase/migrations/20261007010000_vitality_historical_review.sql",
+      "sha256": "de51e07c4539df15a8f6504419b6a7a383ea46e0d9361eebfd57a6f63a6bf69e"
+    },
+    {
+      "path": "supabase/migrations/20261007012000_vitality_unlinked_source_reconciliation.sql",
+      "sha256": "ce097be5a7b4f094474a68be74b1be4dfb4c876c5c333ac92d1c92e5761495c5"
+    },
+    {
+      "path": "supabase/migrations/20261007050706_fooddata_central_recipe_nutrition.sql",
+      "sha256": "58c8831d2909703d972870afcb5b3b9dcb395e05d88435e673c2d46b166c3fff"
+    },
+    {
+      "path": "supabase/migrations/20261007072413_food_source_unchanged_refresh_audit.sql",
+      "sha256": "06d42da502e3063d8219147347c42eda9084c09f0ae407fa99853cda13b2cbdb"
+    },
+    {
+      "path": "supabase/migrations/20261007073533_reusable_content_sync_export.sql",
+      "sha256": "7dd2ec62ffa8b02d300bcd2148804eaa415a2eaa9e96b4104aba5f623f93ba67"
+    },
+    {
+      "path": "supabase/migrations/20261007201539_repdb_exercise_library.sql",
+      "sha256": "67b5fdcc299e62c29af8138e7fc60509e42faa314ee2d1e360861b2751618acf"
+    },
+    {
+      "path": "supabase/migrations/20261007220506_repdb_delete_guard_return_contract.sql",
+      "sha256": "1382ce22448e9ff03011071b209ea883ee9e2f4cb1ec0f83bcbdf3e2149f24c0"
+    },
+    {
+      "path": "supabase/migrations/20261007224150_production_client_lifecycle_v1.sql",
+      "sha256": "e3b37a26ef0d9d5c3574bb40f85438988a8cb2622842cb1563a795826caa1085"
+    },
+    {
+      "path": "supabase/migrations/20261008192530_vitality_start_delivery_reliability.sql",
+      "sha256": "16e71079c12abc13bccffad5101daeda1c0007aa8c91914fc71b5545b19b83a2"
+    },
+    {
+      "path": "supabase/migrations/20261010120000_holistic_foundations_pricing_v2.sql",
+      "sha256": "77ffca1959f9c344bb575227b24b092ba63610c0e5a15014c9b60b04e7a63d12"
+    },
+    {
+      "path": "supabase/migrations/20261010121000_payments_v1.sql",
+      "sha256": "c22c8586739e1cd56498e78c03b7dd9b7b7dd833019cfd1c868e0c94cacdd6da"
+    },
+    {
+      "path": "supabase/migrations/20261020141529_health_hope_live.sql",
+      "sha256": "3c34381dbb2add5bde325e5a932edac977980404b3ae38d848f8a1077a1c79aa"
+    },
+    {
+      "path": "supabase/migrations/20261020193400_health_hope_live_registered_guests.sql",
+      "sha256": "4bfafeb108713436c2aaf46283bdfb008a4089dd28bfd7bf3ad6750a9d530b24"
+    },
+    {
+      "path": "supabase/migrations/20261020201535_health_hope_live_privacy_retention.sql",
+      "sha256": "40abdf1017f2ced902e0273bed55db35e42fa8d441ee55934eb1c4171f78909a"
+    },
+    {
+      "path": "supabase/migrations/20261020215108_health_hope_live_launch_acceptance.sql",
+      "sha256": "284a7dbd0ac72e05475641c0b068255240a491ff993e1010315351cff692e92a"
+    },
+    {
+      "path": "supabase/migrations/20261021144712_health_hope_live_safe_updates.sql",
+      "sha256": "4799e7565458b36a33db5fefe73958d240f76441378a130f409d4f49a7156066"
+    },
+    {
+      "path": "supabase/migrations/20261101031426_roadmap_alex_r2_continuation_review.sql",
+      "sha256": "6319a66762f0d32f0d28392f987068960d74243bcdba7122e206d5fa9a5f5e7a"
+    }
+  ],
+  "runtimeMatchesMaster": [
+    "member/member110.js",
+    "tools/affiliate-share-preview/server.cjs",
+    "tools/affiliate-share-preview/preview.js",
+    "tools/affiliate-share-preview/index.html",
+    "tools/wave6-progress-contract.cjs",
+    "proposals/wave6-security/correction.sql",
+    "proposals/wave6-security/revert.sql",
+    "proposals/wave6-security/manifest.json",
+    "tools/wave6-postgres/resource-gate.cjs",
+    "tools/wave6-postgres/run-pinned-wave5.cjs"
+  ],
+  "productionAcceptance": false
+}

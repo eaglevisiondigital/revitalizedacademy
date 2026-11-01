@@ -1,0 +1,27 @@
+✔ metadata parses exact current macOS column structure without commands/credentials (5.261666ms)
+✔ metadata denied fails closed (5.518458ms)
+✔ missing shared memory section fails closed (0.2645ms)
+✔ malformed row fails closed (1.581458ms)
+✔ noninteger fields fail closed (1.063333ms)
+✔ full SHMMNI inventory BLOCKS without asserting orphan ownership (0.365583ms)
+✔ one free slot conservatively BLOCKS (0.342542ms)
+✔ two free slots permit serialized test only (0.085417ms)
+✔ invalid kernel limit cannot imply ready (0.091625ms)
+✔ reserve cannot be weakened to one (0.216333ms)
+✔ lease excludes simultaneous holder and leaves existing holder untouched (14.91925ms)
+✔ successful callback returns value and teardown removes only own lock (8.844ms)
+✔ throwing callback removes own lease and preserves error (6.814708ms)
+✔ relative lock path is rejected (0.250584ms)
+✔ source wrapper rejects relative source/output before database execution (16.91825ms)
+✔ source wrapper rejects writing accepted source tree (0.324792ms)
+✔ source wrapper rejects normalized traversal into source (0.206ms)
+✔ source wrapper rejects output symlink into source before executing git or PG (1.130083ms)
+✔ tooling contains no cleanup or production route primitives (1.613708ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 258.404

@@ -1,0 +1,12 @@
+{
+  "at": "2026-11-01T22:08:38.757Z",
+  "pins": {
+    "source": "9beae3bb40c154d2bfd623e8d2355b3a6c3cd306",
+    "files": 1823,
+    "runnerSha256": "006dfd43f23b9e918a38d30eb4311b59e3838db17a17a3697be3900e7c8b05a9"
+  },
+  "productionCalls": 0,
+  "runnerInvoked": false,
+  "result": "BLOCKED",
+  "error": "ipcs metadata unavailable"
+}

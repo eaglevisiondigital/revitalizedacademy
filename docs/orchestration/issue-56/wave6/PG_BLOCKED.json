@@ -1,0 +1,44 @@
+{
+  "scope": "LOCAL_FICTIONAL_ONLY",
+  "sourceCommitAtPreparation": "bb79c31721e3c6d017bc2dd77c30df9e212abfc1",
+  "postgresResult": "BLOCKED_NOT_RUN",
+  "sqlAssertionsExecuted": 0,
+  "initdbAttempts": 0,
+  "testClusterTeardown": "NOT_RUN_NO_CLUSTER_CREATED",
+  "resourceGate": {
+    "result": "BLOCKED_SYSV_CAPACITY",
+    "occupied": 32,
+    "limit": 32,
+    "sourceBlobsVerified": 1823,
+    "runnerInvoked": false
+  },
+  "knownFiveHistoricalFailuresRetained": 5,
+  "correctedFiveResults": [
+    "NOT_RUN",
+    "NOT_RUN",
+    "NOT_RUN",
+    "NOT_RUN",
+    "NOT_RUN"
+  ],
+  "preciseDenialAndPositivePairedProbes": "PREPARED_NOT_EXECUTED",
+  "authorActualPgSecurityCasesPrepared": 45,
+  "independentNewPgCasesPrepared": 4,
+  "sameSourceFiveOriginalAssertionsUnmodified": true,
+  "accessIdentityHypothesis": "NOT_RUN_NOT_CONFIRMED",
+  "parentHouseholdsHypothesis": "SOURCE_REVIEW_ONLY_NOT_RUN_NOT_CONFIRMED",
+  "managedAuthRevocation": "NOT_VERIFIED_DB_ROLE_GUC_NOT_PROVIDER_SESSION",
+  "productionCallsByQA": 0,
+  "productionMutations": 0,
+  "ownerCleanupOnly": "exclusive wrapper-created lease released; no process termination IPC removal kernel changes or preexisting directory deletion",
+  "finalSql": [
+    {
+      "path": "proposals/wave6-security/correction.sql",
+      "sha256": "d471396eeee21d4109dcc556b80548a64ce193949ebc1291f33589d698d14be9"
+    },
+    {
+      "path": "proposals/wave6-security/revert.sql",
+      "sha256": "e4fa7c9231c4d0d41f8f1ff56a6a9366a92b86b85f7fb69fb80224b09279009f"
+    }
+  ],
+  "unexecutedRunnerSha256": "aac3b69d4dc9c1f5b9be64760818abaea3888d5d8fb470d9521d0b6c7191d4b4"
+}

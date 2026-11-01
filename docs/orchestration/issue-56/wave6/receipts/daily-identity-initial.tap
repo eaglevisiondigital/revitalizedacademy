@@ -1,0 +1,66 @@
+TAP version 13
+# Subtest: independent: verified different getUser identity clears old private document even without Auth callback
+not ok 1 - independent: verified different getUser identity clears old private document even without Auth callback
+  ---
+  duration_ms: 135.571333
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-qa/tests/wave6-qa/daily-adversarial.test.cjs:5:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    verified account mismatch must clear old private data, not merely disable writes
+
+    2 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 2
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-qa/tests/wave6-qa/daily-adversarial.test.cjs:6:224)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+# Subtest: independent: read-only status reauthentication mismatch clears prior private state without another write
+not ok 2 - independent: read-only status reauthentication mismatch clears prior private state without another write
+  ---
+  duration_ms: 67.263
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-qa/tests/wave6-qa/daily-adversarial.test.cjs:8:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    2 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 2
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-qa/tests/wave6-qa/daily-adversarial.test.cjs:9:254)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: independent: getUser transport uncertainty retains draft and cannot send new habit RPC
+ok 3 - independent: getUser transport uncertainty retains draft and cannot send new habit RPC
+  ---
+  duration_ms: 54.546583
+  type: 'test'
+  ...
+# Subtest: independent: concurrent status reads cannot restore protected daily card after a genuine authorization denial
+ok 4 - independent: concurrent status reads cannot restore protected daily card after a genuine authorization denial
+  ---
+  duration_ms: 546.893833
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 2
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1175.84675

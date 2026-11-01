@@ -1,0 +1,27 @@
+{
+  "agent": "/root/wave6_independent_qa",
+  "issue": 56,
+  "worktree": "academy-wave6-qa",
+  "branch": "codex/rva-wave6-qa-20261101",
+  "acceptedBase": "9beae3bb40c154d2bfd623e8d2355b3a6c3cd306",
+  "testedSource": "c987a57d03a128a64422083417f32c488902c201",
+  "status": "RETURNED_LOCAL_CHECKPOINT_PRODUCTION_NO_GO",
+  "nodePass": 427,
+  "nativePass": 20,
+  "actualPgAssertions": 0,
+  "pg": "BLOCKED_NOT_RUN_LOCAL_SYSV_CAPACITY",
+  "packages": {
+    "PASS": 1,
+    "FAIL": 3,
+    "BLOCKED": 42,
+    "NOT_RUN": 11
+  },
+  "historicalFiveFailures": "RETAINED_CORRECTED_ACTUAL_SQL_NOT_RUN",
+  "productionCallsByQA": 0,
+  "productionWrites": 0,
+  "alex": "PAUSED",
+  "unapprovedV3Promoted": 0,
+  "report": "docs/orchestration/issue-56/wave6/REPORT.md",
+  "evidenceSha256": "6af5d159f64f14462d6d6231c8688b5605d31aaa0086566638d5afd241e30597",
+  "next": "positivelyowneddisposablePG and exactcumulativeSQL/security/rollback; managedAuth and remainingbusinessgates; no productionrelease"
+}

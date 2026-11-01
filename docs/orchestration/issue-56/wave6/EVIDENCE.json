@@ -1,0 +1,214 @@
+{
+  "scope": "LOCAL_FICTIONAL_INDEPENDENT_WAVE6_QA",
+  "createdAt": "2026-11-01T22:24:30.916040+00:00",
+  "acceptedBase": "9beae3bb40c154d2bfd623e8d2355b3a6c3cd306",
+  "testedSource": "c987a57d03a128a64422083417f32c488902c201",
+  "masterRuntimeEqualsFinal": true,
+  "node": {
+    "pass": 427,
+    "fail": 0,
+    "inputPins": 40,
+    "inputsUnchanged": true,
+    "receipt": "receipts/NODE_FINAL.json"
+  },
+  "native": {
+    "pass": 20,
+    "fail": 0,
+    "engines": [
+      "Chromium1248",
+      "WebKit2336"
+    ],
+    "widths": [
+      390,
+      768,
+      1440
+    ],
+    "receipt": "receipts/browser-final.tap",
+    "transport": "All member traffic intercepted; preview only127.0.0.1; actual SDK Auth/RLS not tested"
+  },
+  "currentCoordinationPackage": {
+    "status": "PASS_LOCAL_STRUCTURAL_ONLY",
+    "assertions": 15,
+    "externalInputs": [
+      {
+        "originalPath": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-integration/docs/orchestration/wave6-state.json",
+        "snapshotPath": "docs/orchestration/issue-56/wave6/coordination-master-state.json",
+        "sha256": "e9d85e67a935775c1c5206924af6cd5075c7c2ee287e9f5d552b394edaf8c83d",
+        "scope": "Coordinator state/native-tool observation; independent source supplied separately from applicant state"
+      },
+      {
+        "originalPath": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave6/NATIVE_OBSERVATION.json",
+        "snapshotPath": "docs/orchestration/issue-56/wave6/coordination-native-observation.json",
+        "sha256": "25f303470edd0a78531264c488aea4c9baff6997f4318ae83d798b861c9da42f",
+        "scope": "Coordinator state/native-tool observation; independent source supplied separately from applicant state"
+      }
+    ],
+    "notCryptographicAttestation": true
+  },
+  "postgres": {
+    "status": "BLOCKED_NOT_RUN",
+    "sqlAssertions": 0,
+    "initdbAttempts": 0,
+    "runnerInvoked": false,
+    "actualTeardown": "NOT_RUN_NO_CLUSTER_CREATED",
+    "sourceBlobsVerified": 1823,
+    "occupiedSysV": 32,
+    "limit": 32
+  },
+  "packages": {
+    "PASS": 1,
+    "FAIL": 3,
+    "BLOCKED": 42,
+    "NOT_RUN": 11
+  },
+  "historicalFiveActualFailuresRetained": true,
+  "unexecutedSourceHypotheses": [
+    "client_access.user_id binding",
+    "parent households visibility/rebinding"
+  ],
+  "productionCallsByQA": 0,
+  "productionMutations": 0,
+  "masterSchemaOnlyRead": 1,
+  "financialActivation": false,
+  "unapprovedV3MethodologyPromoted": 0,
+  "alex": "PAUSED_NO_PRIVATE_READS_OR_ACTIONS",
+  "privateDataUsed": false,
+  "files": [
+    {
+      "path": "docs/orchestration/issue-56/wave6/EVIDENCE_FORMAT.json",
+      "sha256": "1eb0fcb20496f7de14f55a9d3f5e94d397f586311d37ec1ba11ea3df1a1609b2"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave6/HARNESS_HISTORY.json",
+      "sha256": "37f1d766d69f94dcb7c0b7576e6843666fcbf488687b2a3970214110dfc66e34"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave6/PG_BLOCKED.json",
+      "sha256": "56f3a4e5eb42f7d309a1d7e1354dc80c4162a845c32d3519145bb179deaf0068"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave6/PRESERVATION.json",
+      "sha256": "0249f2161eb54caeac56e75c64e0fe5dd66a774b92f0a480e66b5831a3ca25ba"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave6/REPORT.md",
+      "sha256": "6458551fcc6135743de03615b2d136d1756319f7d6838c3e29505197fabe8eb6"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave6/RESULTS_MATRIX.json",
+      "sha256": "e8cd8b7bebe6ae10003c1f5b8d7b624518e9bf8ece31e9f6fc43bf1ba1320975"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave6/coordination-master-state.json",
+      "sha256": "e9d85e67a935775c1c5206924af6cd5075c7c2ee287e9f5d552b394edaf8c83d"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave6/coordination-native-observation.json",
+      "sha256": "25f303470edd0a78531264c488aea4c9baff6997f4318ae83d798b861c9da42f"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave6/receipts/NODE_FINAL.json",
+      "sha256": "682193af4a03f5104b1df3331349962112d456ae1ac7b82e15599ca264a760a1"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave6/receipts/NODE_FINAL.tap",
+      "sha256": "02db64fdf3a464cf48451eb61b76b12f38b658a1057f7fa3c733a749f086b345"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave6/receipts/NODE_INITIAL_PYTHON_ENV.json",
+      "sha256": "5eaa081b59d8a6bf3f92eb2766e4ce342625dc7f32c56cbb32db5f0e1c71d503"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave6/receipts/NODE_INITIAL_PYTHON_ENV.tap",
+      "sha256": "e0a160d5d2f02fa9a9d4dae76f290a1c97eb15b74a97a9e45aa7d496a0e009a4"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave6/receipts/browser-final.tap",
+      "sha256": "b0bd15f24b867e6667901c38fecd9fc89224ec49c7c52a87ba74b389c41e45f7"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave6/receipts/browser-initial-harness.tap",
+      "sha256": "8388308db1414243fce50a43040f9046fcccda5941bbbe6d613fe177c4c4afa5"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave6/receipts/coordination.tap",
+      "sha256": "316a3a83a0b646c2c3f2efcf39da3b0c59044592683b3997ee6d1b715a3e6124"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave6/receipts/daily-denial-corrected.tap",
+      "sha256": "36007eb93165a632ac87edf168cd8ddafaf9a76288d58661b896a9513ecb65a4"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave6/receipts/daily-denial-initial.tap",
+      "sha256": "d169dc359bc3ba25aa9223ee9f8fffa1facf5c71e93a51ee2275cc9a3c777e5e"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave6/receipts/daily-identity-initial.tap",
+      "sha256": "74d1e4e5b77a61e7f001733975991f113c15e72b092ccf046b4264e9112db969"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave6/receipts/environment.tap",
+      "sha256": "ce1afe6c5469fa7dcd3870ea2f26f274f615afda6424d93e29315f00eeffa765"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave6/receipts/pinned-wave5/resource-wrapper-receipt.json",
+      "sha256": "a6e301fefcd2462974d68aa56ec13826f307ef3d4dcfe76a03eddffa041d09b4"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave6/receipts/pinned-wave5-escalated/resource-wrapper-receipt.json",
+      "sha256": "ba7ae295fada9527005a2cdd0ae90e83d5d5df615d46ce424feec7b6d43c0db0"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave6/receipts/resource-inventory.json",
+      "sha256": "c4f066ff11a7022667315f1318090e1e066118293828136a73ee360df15bea3d"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave6/receipts/security-contract-final.tap",
+      "sha256": "c6b64a55dfe3bad5b87b0e4deeea35e7670689899a4110a07aab602faacdd44d"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave6/receipts/security-contract-initial.tap",
+      "sha256": "5ded3e6a842722a7738b48d99585be8aba4bd31de6772b0f042f67a1bdba54f8"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave6/receipts/security-contract-intermediate.tap",
+      "sha256": "fea1613493213dd4bd0d734df8990f8d0d1823a3426e5113d4c991d39921bb28"
+    },
+    {
+      "path": "tests/wave6-qa/README.md",
+      "sha256": "75e9d1cf419bd06fb9a661d95001f723864d68ba3afd51e20ecc8d55b6b4561c"
+    },
+    {
+      "path": "tests/wave6-qa/coordination.test.cjs",
+      "sha256": "b109716f61b2cbee2e1c83922df5485766d595fa444e5472bde503cc511967f1"
+    },
+    {
+      "path": "tests/wave6-qa/daily-adversarial.test.cjs",
+      "sha256": "a8a11221d9aa9da1c50f6a7b508343e81b92c2459b0659c6eb2fae60ac995a71"
+    },
+    {
+      "path": "tests/wave6-qa/matrix.cjs",
+      "sha256": "2f394bab70ec6ad0fc393a457f65bfb91a1969d32607129c3248f44cd70d4da4"
+    },
+    {
+      "path": "tests/wave6-qa/member-browser.cjs",
+      "sha256": "2f1178ca3dcc7d41a63c54485da0e6c333e65db7b1a59175fd492e031b231991"
+    },
+    {
+      "path": "tests/wave6-qa/run-combined-pg.cjs",
+      "sha256": "aac3b69d4dc9c1f5b9be64760818abaea3888d5d8fb470d9521d0b6c7191d4b4"
+    },
+    {
+      "path": "tests/wave6-qa/run-node.cjs",
+      "sha256": "eb88a295749d16692039cdeaf8112dd468dda2598b5dc4bc42f4ca8b72028afe"
+    },
+    {
+      "path": "tests/wave6-qa/sql-adversarial.test.cjs",
+      "sha256": "9dff37d8759a711d22c46734fe99f194dd8a1ca7d686a6541986bde74b5bfa66"
+    },
+    {
+      "path": "tests/wave6-qa/sql-source-review.test.cjs",
+      "sha256": "ac4779e44c5e13fd0bff60aa30a09dfb2a2ce766ff30538a53b54cf2e35be374"
+    }
+  ]
+}

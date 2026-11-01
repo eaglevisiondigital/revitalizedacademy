@@ -1,0 +1,130 @@
+TAP version 13
+# Subtest: QA chromium pending scenario plus channel selection cannot strand controls
+ok 1 - QA chromium pending scenario plus channel selection cannot strand controls
+  ---
+  duration_ms: 1617.616042
+  type: 'test'
+  ...
+# Subtest: QA webkit pending scenario plus channel selection cannot strand controls
+ok 2 - QA webkit pending scenario plus channel selection cannot strand controls
+  ---
+  duration_ms: 2453.118125
+  type: 'test'
+  ...
+# Subtest: chromium 390 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence
+ok 3 - chromium 390 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence
+  ---
+  duration_ms: 2192.168167
+  type: 'test'
+  ...
+# Subtest: chromium 768 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence
+ok 4 - chromium 768 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence
+  ---
+  duration_ms: 1573.930084
+  type: 'test'
+  ...
+# Subtest: chromium 1440 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence
+ok 5 - chromium 1440 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence
+  ---
+  duration_ms: 1487.975667
+  type: 'test'
+  ...
+# Subtest: webkit 390 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence
+ok 6 - webkit 390 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence
+  ---
+  duration_ms: 2332.162416
+  type: 'test'
+  ...
+# Subtest: webkit 768 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence
+ok 7 - webkit 768 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence
+  ---
+  duration_ms: 1904.24925
+  type: 'test'
+  ...
+# Subtest: webkit 1440 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence
+ok 8 - webkit 1440 progress dashboard/scoped persona, stale result, network, cross-tab and source/QR coexistence
+  ---
+  duration_ms: 2128.820459
+  type: 'test'
+  ...
+# Subtest: chromium 390 actual daily habit duplicate/renewal/uncertain readback/draft/privacy boundary
+ok 9 - chromium 390 actual daily habit duplicate/renewal/uncertain readback/draft/privacy boundary
+  ---
+  duration_ms: 972.423375
+  type: 'test'
+  ...
+# Subtest: chromium 768 actual daily habit duplicate/renewal/uncertain readback/draft/privacy boundary
+ok 10 - chromium 768 actual daily habit duplicate/renewal/uncertain readback/draft/privacy boundary
+  ---
+  duration_ms: 866.847625
+  type: 'test'
+  ...
+# Subtest: chromium 1440 actual daily habit duplicate/renewal/uncertain readback/draft/privacy boundary
+ok 11 - chromium 1440 actual daily habit duplicate/renewal/uncertain readback/draft/privacy boundary
+  ---
+  duration_ms: 4104.580667
+  type: 'test'
+  ...
+# Subtest: webkit 390 actual daily habit duplicate/renewal/uncertain readback/draft/privacy boundary
+ok 12 - webkit 390 actual daily habit duplicate/renewal/uncertain readback/draft/privacy boundary
+  ---
+  duration_ms: 2458.013416
+  type: 'test'
+  ...
+# Subtest: webkit 768 actual daily habit duplicate/renewal/uncertain readback/draft/privacy boundary
+ok 13 - webkit 768 actual daily habit duplicate/renewal/uncertain readback/draft/privacy boundary
+  ---
+  duration_ms: 1461.110875
+  type: 'test'
+  ...
+# Subtest: webkit 1440 actual daily habit duplicate/renewal/uncertain readback/draft/privacy boundary
+ok 14 - webkit 1440 actual daily habit duplicate/renewal/uncertain readback/draft/privacy boundary
+  ---
+  duration_ms: 1047.114375
+  type: 'test'
+  ...
+# Subtest: chromium 390 independent daily denial race, renewal, readback, draft and logout
+ok 15 - chromium 390 independent daily denial race, renewal, readback, draft and logout
+  ---
+  duration_ms: 7693.007083
+  type: 'test'
+  ...
+# Subtest: chromium 768 independent daily denial race, renewal, readback, draft and logout
+ok 16 - chromium 768 independent daily denial race, renewal, readback, draft and logout
+  ---
+  duration_ms: 592.877083
+  type: 'test'
+  ...
+# Subtest: chromium 1440 independent daily denial race, renewal, readback, draft and logout
+ok 17 - chromium 1440 independent daily denial race, renewal, readback, draft and logout
+  ---
+  duration_ms: 569.913917
+  type: 'test'
+  ...
+# Subtest: webkit 390 independent daily denial race, renewal, readback, draft and logout
+ok 18 - webkit 390 independent daily denial race, renewal, readback, draft and logout
+  ---
+  duration_ms: 1484.59625
+  type: 'test'
+  ...
+# Subtest: webkit 768 independent daily denial race, renewal, readback, draft and logout
+ok 19 - webkit 768 independent daily denial race, renewal, readback, draft and logout
+  ---
+  duration_ms: 1589.493375
+  type: 'test'
+  ...
+# Subtest: webkit 1440 independent daily denial race, renewal, readback, draft and logout
+ok 20 - webkit 1440 independent daily denial race, renewal, readback, draft and logout
+  ---
+  duration_ms: 1470.3315
+  type: 'test'
+  ...
+1..20
+# tests 20
+# suites 0
+# pass 20
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 40994.290209

@@ -1,0 +1,176 @@
+{
+  "startedAt": "2026-11-01T22:22:12.862Z",
+  "sourceCommit": "c987a57d03a128a64422083417f32c488902c201",
+  "scope": "LOCAL_FICTIONAL_NODE_DOM_HTTP_ONLY",
+  "productionCalls": 0,
+  "files": [
+    {
+      "path": "tests/wave6-environment/resource-gate.test.cjs",
+      "sha256": "629537d24de50d4ec6829428556cd953e01805c5db851546f09fe02b2fb91164"
+    },
+    {
+      "path": "tests/wave6-security/contract.test.cjs",
+      "sha256": "c7114fe3053eb9940d5e7ab588b0b5c9b9d07dd59f4d25046e2d4c2a00d3e7df"
+    },
+    {
+      "path": "tests/wave6-features/daily.test.cjs",
+      "sha256": "d91ccc0e208004114887e86f6bdc49b74d32de8ee54ad619f3506bee2548c81c"
+    },
+    {
+      "path": "tests/wave6-features/progress.test.cjs",
+      "sha256": "4bb6fcb13f360870cbf18ac0fc8838194887d4ac5e6c5349a587ef9d6881b310"
+    },
+    {
+      "path": "tests/wave6-features/http.test.cjs",
+      "sha256": "6c58cec38c53be9800b71f22d98ae5c94cad82a28212993ded4980b3b06b85e7"
+    },
+    {
+      "path": "tests/wave6-features/preservation.test.cjs",
+      "sha256": "b9fd2898c8aa42283184d2b081cc16cf13024b9c61b1ef592e9cce6bdabfb411"
+    },
+    {
+      "path": "tests/wave6-qa/daily-adversarial.test.cjs",
+      "sha256": "a8a11221d9aa9da1c50f6a7b508343e81b92c2459b0659c6eb2fae60ac995a71"
+    },
+    {
+      "path": "tests/wave6-qa/sql-source-review.test.cjs",
+      "sha256": "ac4779e44c5e13fd0bff60aa30a09dfb2a2ce766ff30538a53b54cf2e35be374"
+    },
+    {
+      "path": "tests/wave6-qa/coordination.test.cjs",
+      "sha256": "b109716f61b2cbee2e1c83922df5485766d595fa444e5472bde503cc511967f1"
+    },
+    {
+      "path": "tests/wave5-operations/checkin.test.cjs",
+      "sha256": "8aaaa89c76da34c828bf72211fd9316123334bd0b4e2920c0c5c9fc0446a215e"
+    },
+    {
+      "path": "tests/wave3-unaffected/member-operations.test.cjs",
+      "sha256": "d94682b80d6f72960ba3939a9a37b8a39888c39344a2a24bbd76102a9a05e17b"
+    },
+    {
+      "path": "tests/wave4-member/continuity.test.cjs",
+      "sha256": "7143f4a73ca830d7f96eb0a71c03f7d766009f25b6f4aa6679078c0185e56cef"
+    },
+    {
+      "path": "tests/wave4-member/modal-generation.test.cjs",
+      "sha256": "52ff178178660573c53eb1efbc98a5a417e509bfc1af5f7753bac4aa0d83b313"
+    },
+    {
+      "path": "tests/wave5-qa/invariants.test.cjs",
+      "sha256": "164e390e88c06a4bc23d8aec14b981b7691249ac95585f5ec06aaf6daf520670"
+    },
+    {
+      "path": "tests/wave5-qa/sql-manifest.test.cjs",
+      "sha256": "96ae9972824fdddb8efa2918f8835fd96b49310eb9a08c4d5f42bed83bebdb27"
+    },
+    {
+      "path": "tests/wave4-qa/member-adversarial.test.cjs",
+      "sha256": "2c4f8b55e24ed2f8fffc92c3c2ff06e4b9781362dfc2927ba01977861e765b7b"
+    },
+    {
+      "path": "tests/wave4-qa/coach-refresh.test.cjs",
+      "sha256": "9b5c422958d5204a137c54f6b9ad4e4906b3d7a85de7cd635a4f86695d326cbd"
+    },
+    {
+      "path": "tests/wave5-affiliate/http.test.cjs",
+      "sha256": "03329be05c74dd32cc18acc56a0941776a54411ea329c5fce96487417ac84762"
+    },
+    {
+      "path": "tests/wave5-qa/http-adversarial.test.cjs",
+      "sha256": "73bab13d5994b8e23e7d80d8c1f9397716cfe1a972e7e091309db2b92eb009ac"
+    },
+    {
+      "path": "tests/wave4-affiliate/adapter.test.cjs",
+      "sha256": "7bda6b36683eb0682c6aa25f2850bc3ab49abf4430caebfea2bb21932ca7f3b3"
+    },
+    {
+      "path": "tests/wave4-affiliate/v3-async.test.cjs",
+      "sha256": "36cc531d29b45a66678bf551d768f5f4ab3ad846afe91b53a7080d0185f84d06"
+    },
+    {
+      "path": "tests/wave3-unaffected/qr.test.cjs",
+      "sha256": "38909a0689ded38ffbdbe0b87f131455e1bcb5e4d1173c4f4731eda58a488dcd"
+    },
+    {
+      "path": "tests/wave5-master/coordination.test.cjs",
+      "sha256": "062cb43ad86b51b3efdd7f736c8080744c220d8dc571c2d0f606c754d5f57710"
+    },
+    {
+      "path": "tests/wave5-qa/coordination-adversarial.test.cjs",
+      "sha256": "d884fd0d0434bccd543953d215727f66fe3078b493ddaa78227580e4631a045a"
+    },
+    {
+      "path": "tools/wave6-progress-contract.cjs",
+      "sha256": "9a1a8339cae5ad577935a6bedbe2810c105c64a688f79f46f422945afc4bdbfd"
+    },
+    {
+      "path": "proposals/wave6-security/correction.sql",
+      "sha256": "d471396eeee21d4109dcc556b80548a64ce193949ebc1291f33589d698d14be9"
+    },
+    {
+      "path": "proposals/wave6-security/manifest.json",
+      "sha256": "e58057a70b43f2beb254da91beb1a4622f6b64c9570ed7fd402ca4ecd52ff1b7"
+    },
+    {
+      "path": "tests/wave6-security/household-trigger-catalog.json",
+      "sha256": "bbf2b17ea66da8b18a5c3e3f298e05afd6fb300944a8eb2414aa0aa94558a7b1"
+    },
+    {
+      "path": "member/member110.js",
+      "sha256": "ce11af68411c32ac1170f4210c3d9b98258cf2d40c445398f1d707cd4eb4db0c"
+    },
+    {
+      "path": "portal/portal-coaching.js",
+      "sha256": "ae5413969d2b5b4e04b45f22a96f7ae45e79ec3819761c0d4109a74a346f60c0"
+    },
+    {
+      "path": "tools/affiliate-share-preview/server.cjs",
+      "sha256": "a57841085a4aa57aae178dca532fc3e4bbea5184872af7b5a0000406f2e15c6a"
+    },
+    {
+      "path": "tools/affiliate-share-preview/preview.js",
+      "sha256": "f34e565758b4e24b38d19eabed036dc4600ee825b5a1c1944d3c28967cb68ec6"
+    },
+    {
+      "path": "tools/affiliate-share-preview/index.html",
+      "sha256": "4917631c77fab5cce0322bd6f8cf52fcd0c35e21c8b1a8d8f552a14f65adefdc"
+    },
+    {
+      "path": "tools/wave5-fixture-providers.cjs",
+      "sha256": "6258f9bddcb2661715679d2cf9426b885548da9bd91cfd7aad3d0f1134df7ef9"
+    },
+    {
+      "path": "tools/affiliate-share-preview/adapter.cjs",
+      "sha256": "afdda7ee71425928f4648ea18081bf194ffc011082b68acee3a96bbfdab9e9a3"
+    },
+    {
+      "path": "tools/coach-companion-catalog/async-fixture-adapter.cjs",
+      "sha256": "053043d5576767756dfd5b567959f6642f22fc522a5ae9ab2c356dd5ad619501"
+    },
+    {
+      "path": "tools/coach-companion-catalog/index.cjs",
+      "sha256": "5ac8a0d1f5cfaab995c937a8685cdbeb5fcc71fe7bce0316f60cf7d0b1734266"
+    },
+    {
+      "path": "tools/rva-coordination-gate.cjs",
+      "sha256": "bcc2b0269dfc89d525454fa7b75b9b1d77ccb3f1e79a380d80a0369e72697e30"
+    },
+    {
+      "path": "proposals/wave5-security/correction.sql",
+      "sha256": "3c3ed1f351e8ffdc687f80fdbf4455197c752e4b988c80a89ed64df39f1e55a8"
+    },
+    {
+      "path": "proposals/wave5-operations/correction.sql",
+      "sha256": "f3ed018354545d2ef677593298f3b798f0683914a79034dd69ebdcdac39cc8c0"
+    }
+  ],
+  "narrowHistoricalExclusion": "actual check-in surfaces duplicate server response; superseded by explicit durable readback requirement; old source/assertion retained",
+  "exitCode": 0,
+  "tests": 427,
+  "pass": 427,
+  "fail": 0,
+  "skipped": 0,
+  "inputsUnchanged": true,
+  "completedAt": "2026-11-01T22:22:57.805Z"
+}
