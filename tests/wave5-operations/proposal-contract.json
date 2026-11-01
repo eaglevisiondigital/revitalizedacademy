@@ -1,0 +1,12 @@
+{
+  "base": "024b1c20c802ce6a9470fc46fabdd3bae75ed980",
+  "scope": "one existing private trigger function body; no ACL/schema/policy/data changes",
+  "function": "private.wave4_usage_before()",
+  "originalProsrcMd5": "af337b7d4c7afccddf3a63ce6308297f",
+  "correctedProsrcMd5": "68255a89069e6d25d761357c9ed68985",
+  "sessionGuardProsrcMd5": "80325a9c1722e12cfc78705092928f0d",
+  "files": {
+    "proposals/wave5-operations/correction.sql": "f3ed018354545d2ef677593298f3b798f0683914a79034dd69ebdcdac39cc8c0",
+    "proposals/wave5-operations/revert.sql": "d28aa24f562ca97de3a80a61152d13a76580080588b2878ec630d75e6d67af22"
+  }
+}

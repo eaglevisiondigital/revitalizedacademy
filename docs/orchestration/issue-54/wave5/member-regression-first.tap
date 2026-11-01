@@ -1,0 +1,722 @@
+TAP version 13
+# Subtest: actual create goal handler maps typed fictional values to existing scoped RPC
+ok 1 - actual create goal handler maps typed fictional values to existing scoped RPC
+  ---
+  duration_ms: 168.30675
+  type: 'test'
+  ...
+# Subtest: actual create habit handler uses existing RPC and numeric schedule input
+ok 2 - actual create habit handler uses existing RPC and numeric schedule input
+  ---
+  duration_ms: 94.016167
+  type: 'test'
+  ...
+# Subtest: actual check-in form validates required responses before any write
+ok 3 - actual check-in form validates required responses before any write
+  ---
+  duration_ms: 56.200375
+  type: 'test'
+  ...
+# Subtest: actual weekly check-in creates exact current-member payload via existing table
+ok 4 - actual weekly check-in creates exact current-member payload via existing table
+  ---
+  duration_ms: 72.138417
+  type: 'test'
+  ...
+# Subtest: actual goal handler displays fictional server wrong-actor denial without claiming authorization success
+ok 5 - actual goal handler displays fictional server wrong-actor denial without claiming authorization success
+  ---
+  duration_ms: 58.885125
+  type: 'test'
+  ...
+# Subtest: actual check-in surfaces duplicate server response, not a second success
+not ok 6 - actual check-in surfaces duplicate server response, not a second success
+  ---
+  duration_ms: 51.785041
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-operations/tests/wave3-unaffected/member-operations.test.cjs:33:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /already been submitted/. Input:
+
+    'Submission status could not be confirmed. Your answers remain here. Submit again to check before another save.'
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual: 'Submission status could not be confirmed. Your answers remain here. Submit again to check before another save.'
+  operator: 'match'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-operations/tests/wave3-unaffected/member-operations.test.cjs:35:181)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: BASELINE reproduction: stale weekly check-in switch throws before write
+ok 7 - BASELINE reproduction: stale weekly check-in switch throws before write
+  ---
+  duration_ms: 97.682375
+  type: 'test'
+  ...
+# Subtest: fixed pending identity check ignores account switch
+ok 8 - fixed pending identity check ignores account switch
+  ---
+  duration_ms: 51.720875
+  type: 'test'
+  ...
+# Subtest: fixed pending identity check ignores logout
+ok 9 - fixed pending identity check ignores logout
+  ---
+  duration_ms: 55.259375
+  type: 'test'
+  ...
+# Subtest: fixed identity response fails closed {"authUserId":null}
+ok 10 - fixed identity response fails closed {"authUserId":null}
+  ---
+  duration_ms: 55.019792
+  type: 'test'
+  ...
+# Subtest: fixed identity response fails closed {"authUserId":"synthetic-b"}
+ok 11 - fixed identity response fails closed {"authUserId":"synthetic-b"}
+  ---
+  duration_ms: 51.549209
+  type: 'test'
+  ...
+# Subtest: fixed identity response fails closed {"authError":{"message":"Fictional identity unavailable"}}
+ok 12 - fixed identity response fails closed {"authError":{"message":"Fictional identity unavailable"}}
+  ---
+  duration_ms: 62.128625
+  type: 'test'
+  ...
+# Subtest: fixed response after switch ignores completed write
+ok 13 - fixed response after switch ignores completed write
+  ---
+  duration_ms: 64.431333
+  type: 'test'
+  ...
+# Subtest: fixed response after switch ignores completed duplicate
+ok 14 - fixed response after switch ignores completed duplicate
+  ---
+  duration_ms: 69.321833
+  type: 'test'
+  ...
+# Subtest: fixed response after logout ignores completed write
+ok 15 - fixed response after logout ignores completed write
+  ---
+  duration_ms: 65.1695
+  type: 'test'
+  ...
+# Subtest: fixed response after logout ignores completed duplicate
+ok 16 - fixed response after logout ignores completed duplicate
+  ---
+  duration_ms: 65.749791
+  type: 'test'
+  ...
+# Subtest: same-account token renewal keeps pending check-in and exact current-actor payload
+ok 17 - same-account token renewal keeps pending check-in and exact current-actor payload
+  ---
+  duration_ms: 64.79875
+  type: 'test'
+  ...
+# Subtest: progress pending identity switch ignores stale request
+ok 18 - progress pending identity switch ignores stale request
+  ---
+  duration_ms: 124.722792
+  type: 'test'
+  ...
+# Subtest: progress pending identity logout ignores stale request
+ok 19 - progress pending identity logout ignores stale request
+  ---
+  duration_ms: 75.431667
+  type: 'test'
+  ...
+# Subtest: progress identity failure denies {"authUserId":null}
+ok 20 - progress identity failure denies {"authUserId":null}
+  ---
+  duration_ms: 56.721833
+  type: 'test'
+  ...
+# Subtest: progress identity failure denies {"authUserId":"synthetic-b"}
+ok 21 - progress identity failure denies {"authUserId":"synthetic-b"}
+  ---
+  duration_ms: 63.948584
+  type: 'test'
+  ...
+# Subtest: progress identity failure denies {"authError":{"message":"Fictional auth unavailable"}}
+ok 22 - progress identity failure denies {"authError":{"message":"Fictional auth unavailable"}}
+  ---
+  duration_ms: 55.374917
+  type: 'test'
+  ...
+# Subtest: progress snapshot survives changed input and same-account renewal
+ok 23 - progress snapshot survives changed input and same-account renewal
+  ---
+  duration_ms: 75.543917
+  type: 'test'
+  ...
+# Subtest: goal concurrent submits dispatch once and unlock for retry
+ok 24 - goal concurrent submits dispatch once and unlock for retry
+  ---
+  duration_ms: 96.092083
+  type: 'test'
+  ...
+# Subtest: habit concurrent submits dispatch once and unlock for retry
+ok 25 - habit concurrent submits dispatch once and unlock for retry
+  ---
+  duration_ms: 73.896917
+  type: 'test'
+  ...
+# Subtest: progress concurrent submits dispatch once and unlock for retry
+ok 26 - progress concurrent submits dispatch once and unlock for retry
+  ---
+  duration_ms: 74.120417
+  type: 'test'
+  ...
+# Subtest: goal server 42501 remains visible and retryable
+ok 27 - goal server 42501 remains visible and retryable
+  ---
+  duration_ms: 54.878917
+  type: 'test'
+  ...
+# Subtest: goal server 23505 remains visible and retryable
+ok 28 - goal server 23505 remains visible and retryable
+  ---
+  duration_ms: 52.555875
+  type: 'test'
+  ...
+# Subtest: habit server 42501 remains visible and retryable
+ok 29 - habit server 42501 remains visible and retryable
+  ---
+  duration_ms: 48.241875
+  type: 'test'
+  ...
+# Subtest: habit server 23505 remains visible and retryable
+ok 30 - habit server 23505 remains visible and retryable
+  ---
+  duration_ms: 51.428292
+  type: 'test'
+  ...
+# Subtest: progress server 42501 remains visible and retryable
+ok 31 - progress server 42501 remains visible and retryable
+  ---
+  duration_ms: 49.566291
+  type: 'test'
+  ...
+# Subtest: progress server 23505 remains visible and retryable
+ok 32 - progress server 23505 remains visible and retryable
+  ---
+  duration_ms: 51.230042
+  type: 'test'
+  ...
+# Subtest: goal pending transport success after switch has no late UI/reload
+ok 33 - goal pending transport success after switch has no late UI/reload
+  ---
+  duration_ms: 63.242625
+  type: 'test'
+  ...
+# Subtest: goal pending transport denial after switch has no late UI/reload
+ok 34 - goal pending transport denial after switch has no late UI/reload
+  ---
+  duration_ms: 63.290708
+  type: 'test'
+  ...
+# Subtest: goal pending transport success after logout has no late UI/reload
+ok 35 - goal pending transport success after logout has no late UI/reload
+  ---
+  duration_ms: 61.999625
+  type: 'test'
+  ...
+# Subtest: goal pending transport denial after logout has no late UI/reload
+ok 36 - goal pending transport denial after logout has no late UI/reload
+  ---
+  duration_ms: 61.949042
+  type: 'test'
+  ...
+# Subtest: habit pending transport success after switch has no late UI/reload
+ok 37 - habit pending transport success after switch has no late UI/reload
+  ---
+  duration_ms: 67.797041
+  type: 'test'
+  ...
+# Subtest: habit pending transport denial after switch has no late UI/reload
+ok 38 - habit pending transport denial after switch has no late UI/reload
+  ---
+  duration_ms: 60.940333
+  type: 'test'
+  ...
+# Subtest: habit pending transport success after logout has no late UI/reload
+ok 39 - habit pending transport success after logout has no late UI/reload
+  ---
+  duration_ms: 62.862417
+  type: 'test'
+  ...
+# Subtest: habit pending transport denial after logout has no late UI/reload
+ok 40 - habit pending transport denial after logout has no late UI/reload
+  ---
+  duration_ms: 62.88625
+  type: 'test'
+  ...
+# Subtest: progress pending transport success after switch has no late UI/reload
+ok 41 - progress pending transport success after switch has no late UI/reload
+  ---
+  duration_ms: 63.352375
+  type: 'test'
+  ...
+# Subtest: progress pending transport denial after switch has no late UI/reload
+ok 42 - progress pending transport denial after switch has no late UI/reload
+  ---
+  duration_ms: 66.241666
+  type: 'test'
+  ...
+# Subtest: progress pending transport success after logout has no late UI/reload
+ok 43 - progress pending transport success after logout has no late UI/reload
+  ---
+  duration_ms: 68.947791
+  type: 'test'
+  ...
+# Subtest: progress pending transport denial after logout has no late UI/reload
+ok 44 - progress pending transport denial after logout has no late UI/reload
+  ---
+  duration_ms: 64.99075
+  type: 'test'
+  ...
+# Subtest: goal status completion after switch stays silent false
+ok 45 - goal status completion after switch stays silent false
+  ---
+  duration_ms: 61.873375
+  type: 'test'
+  ...
+# Subtest: goal status completion after switch stays silent true
+ok 46 - goal status completion after switch stays silent true
+  ---
+  duration_ms: 64.110834
+  type: 'test'
+  ...
+# Subtest: goal status completion after logout stays silent false
+ok 47 - goal status completion after logout stays silent false
+  ---
+  duration_ms: 66.696709
+  type: 'test'
+  ...
+# Subtest: goal status completion after logout stays silent true
+ok 48 - goal status completion after logout stays silent true
+  ---
+  duration_ms: 63.806292
+  type: 'test'
+  ...
+# Subtest: habit status completion after switch stays silent false
+ok 49 - habit status completion after switch stays silent false
+  ---
+  duration_ms: 64.214209
+  type: 'test'
+  ...
+# Subtest: habit status completion after switch stays silent true
+ok 50 - habit status completion after switch stays silent true
+  ---
+  duration_ms: 59.645458
+  type: 'test'
+  ...
+# Subtest: habit status completion after logout stays silent false
+ok 51 - habit status completion after logout stays silent false
+  ---
+  duration_ms: 62.588583
+  type: 'test'
+  ...
+# Subtest: habit status completion after logout stays silent true
+ok 52 - habit status completion after logout stays silent true
+  ---
+  duration_ms: 65.4285
+  type: 'test'
+  ...
+# Subtest: goal row pending status double tap dispatches once; renewal retains task
+ok 53 - goal row pending status double tap dispatches once; renewal retains task
+  ---
+  duration_ms: 70.761292
+  type: 'test'
+  ...
+# Subtest: habit row pending status double tap dispatches once; renewal retains task
+ok 54 - habit row pending status double tap dispatches once; renewal retains task
+  ---
+  duration_ms: 72.914
+  type: 'test'
+  ...
+# Subtest: progress range -1 rejects before identity/write
+ok 55 - progress range -1 rejects before identity/write
+  ---
+  duration_ms: 52.401875
+  type: 'test'
+  ...
+# Subtest: progress range 101 rejects before identity/write
+ok 56 - progress range 101 rejects before identity/write
+  ---
+  duration_ms: 45.053375
+  type: 'test'
+  ...
+# Subtest: progress zero remains a valid fictional measurement
+ok 57 - progress zero remains a valid fictional measurement
+  ---
+  duration_ms: 53.785334
+  type: 'test'
+  ...
+# Subtest: goal normal current actor success preserves scoped RPC payload
+ok 58 - goal normal current actor success preserves scoped RPC payload
+  ---
+  duration_ms: 58.338625
+  type: 'test'
+  ...
+# Subtest: habit normal current actor success preserves scoped RPC payload
+ok 59 - habit normal current actor success preserves scoped RPC payload
+  ---
+  duration_ms: 53.542125
+  type: 'test'
+  ...
+# Subtest: habit mark-today stale completion stays silent after switch
+ok 60 - habit mark-today stale completion stays silent after switch
+  ---
+  duration_ms: 62.673292
+  type: 'test'
+  ...
+# Subtest: habit mark-today stale completion stays silent after logout
+ok 61 - habit mark-today stale completion stays silent after logout
+  ---
+  duration_ms: 66.782709
+  type: 'test'
+  ...
+# Subtest: createGoal actual getUser failure denies before RPC {"authUserId":null}
+ok 62 - createGoal actual getUser failure denies before RPC {"authUserId":null}
+  ---
+  duration_ms: 43.518416
+  type: 'test'
+  ...
+# Subtest: createGoal actual getUser failure denies before RPC {"authUserId":"synthetic-b"}
+ok 63 - createGoal actual getUser failure denies before RPC {"authUserId":"synthetic-b"}
+  ---
+  duration_ms: 45.086583
+  type: 'test'
+  ...
+# Subtest: createGoal actual getUser failure denies before RPC {"authError":{"message":"Fictional auth unavailable"}}
+ok 64 - createGoal actual getUser failure denies before RPC {"authError":{"message":"Fictional auth unavailable"}}
+  ---
+  duration_ms: 93.541292
+  type: 'test'
+  ...
+# Subtest: createHabit actual getUser failure denies before RPC {"authUserId":null}
+ok 65 - createHabit actual getUser failure denies before RPC {"authUserId":null}
+  ---
+  duration_ms: 49.863916
+  type: 'test'
+  ...
+# Subtest: createHabit actual getUser failure denies before RPC {"authUserId":"synthetic-b"}
+ok 66 - createHabit actual getUser failure denies before RPC {"authUserId":"synthetic-b"}
+  ---
+  duration_ms: 51.042209
+  type: 'test'
+  ...
+# Subtest: createHabit actual getUser failure denies before RPC {"authError":{"message":"Fictional auth unavailable"}}
+ok 67 - createHabit actual getUser failure denies before RPC {"authError":{"message":"Fictional auth unavailable"}}
+  ---
+  duration_ms: 44.473792
+  type: 'test'
+  ...
+# Subtest: updateGoal actual getUser failure denies before RPC {"authUserId":null}
+ok 68 - updateGoal actual getUser failure denies before RPC {"authUserId":null}
+  ---
+  duration_ms: 53.874833
+  type: 'test'
+  ...
+# Subtest: updateGoal actual getUser failure denies before RPC {"authUserId":"synthetic-b"}
+ok 69 - updateGoal actual getUser failure denies before RPC {"authUserId":"synthetic-b"}
+  ---
+  duration_ms: 46.087416
+  type: 'test'
+  ...
+# Subtest: updateGoal actual getUser failure denies before RPC {"authError":{"message":"Fictional auth unavailable"}}
+ok 70 - updateGoal actual getUser failure denies before RPC {"authError":{"message":"Fictional auth unavailable"}}
+  ---
+  duration_ms: 45.834792
+  type: 'test'
+  ...
+# Subtest: updateHabit actual getUser failure denies before RPC {"authUserId":null}
+ok 71 - updateHabit actual getUser failure denies before RPC {"authUserId":null}
+  ---
+  duration_ms: 47.337
+  type: 'test'
+  ...
+# Subtest: updateHabit actual getUser failure denies before RPC {"authUserId":"synthetic-b"}
+ok 72 - updateHabit actual getUser failure denies before RPC {"authUserId":"synthetic-b"}
+  ---
+  duration_ms: 45.15525
+  type: 'test'
+  ...
+# Subtest: updateHabit actual getUser failure denies before RPC {"authError":{"message":"Fictional auth unavailable"}}
+ok 73 - updateHabit actual getUser failure denies before RPC {"authError":{"message":"Fictional auth unavailable"}}
+  ---
+  duration_ms: 54.871666
+  type: 'test'
+  ...
+# Subtest: markHabit actual getUser failure denies before RPC {"authUserId":null}
+ok 74 - markHabit actual getUser failure denies before RPC {"authUserId":null}
+  ---
+  duration_ms: 56.558459
+  type: 'test'
+  ...
+# Subtest: markHabit actual getUser failure denies before RPC {"authUserId":"synthetic-b"}
+ok 75 - markHabit actual getUser failure denies before RPC {"authUserId":"synthetic-b"}
+  ---
+  duration_ms: 53.511083
+  type: 'test'
+  ...
+# Subtest: markHabit actual getUser failure denies before RPC {"authError":{"message":"Fictional auth unavailable"}}
+ok 76 - markHabit actual getUser failure denies before RPC {"authError":{"message":"Fictional auth unavailable"}}
+  ---
+  duration_ms: 45.474542
+  type: 'test'
+  ...
+# Subtest: createGoal pending getUser switch dispatches no stale RPC
+ok 77 - createGoal pending getUser switch dispatches no stale RPC
+  ---
+  duration_ms: 45.231167
+  type: 'test'
+  ...
+# Subtest: createGoal pending getUser logout dispatches no stale RPC
+ok 78 - createGoal pending getUser logout dispatches no stale RPC
+  ---
+  duration_ms: 52.084417
+  type: 'test'
+  ...
+# Subtest: createHabit pending getUser switch dispatches no stale RPC
+ok 79 - createHabit pending getUser switch dispatches no stale RPC
+  ---
+  duration_ms: 49.184084
+  type: 'test'
+  ...
+# Subtest: createHabit pending getUser logout dispatches no stale RPC
+ok 80 - createHabit pending getUser logout dispatches no stale RPC
+  ---
+  duration_ms: 47.183167
+  type: 'test'
+  ...
+# Subtest: updateGoal pending getUser switch dispatches no stale RPC
+ok 81 - updateGoal pending getUser switch dispatches no stale RPC
+  ---
+  duration_ms: 54.248792
+  type: 'test'
+  ...
+# Subtest: updateGoal pending getUser logout dispatches no stale RPC
+ok 82 - updateGoal pending getUser logout dispatches no stale RPC
+  ---
+  duration_ms: 50.409916
+  type: 'test'
+  ...
+# Subtest: updateHabit pending getUser switch dispatches no stale RPC
+ok 83 - updateHabit pending getUser switch dispatches no stale RPC
+  ---
+  duration_ms: 52.607333
+  type: 'test'
+  ...
+# Subtest: updateHabit pending getUser logout dispatches no stale RPC
+ok 84 - updateHabit pending getUser logout dispatches no stale RPC
+  ---
+  duration_ms: 44.02875
+  type: 'test'
+  ...
+# Subtest: markHabit pending getUser switch dispatches no stale RPC
+ok 85 - markHabit pending getUser switch dispatches no stale RPC
+  ---
+  duration_ms: 44.9625
+  type: 'test'
+  ...
+# Subtest: markHabit pending getUser logout dispatches no stale RPC
+ok 86 - markHabit pending getUser logout dispatches no stale RPC
+  ---
+  duration_ms: 51.901875
+  type: 'test'
+  ...
+# Subtest: goal delayed modal close after synthetic-b respects completed task lineage
+ok 87 - goal delayed modal close after synthetic-b respects completed task lineage
+  ---
+  duration_ms: 58.626459
+  type: 'test'
+  ...
+# Subtest: goal delayed modal close after null respects completed task lineage
+ok 88 - goal delayed modal close after null respects completed task lineage
+  ---
+  duration_ms: 66.93075
+  type: 'test'
+  ...
+# Subtest: goal delayed modal close after renew respects completed task lineage
+ok 89 - goal delayed modal close after renew respects completed task lineage
+  ---
+  duration_ms: 58.025958
+  type: 'test'
+  ...
+# Subtest: habit delayed modal close after synthetic-b respects completed task lineage
+ok 90 - habit delayed modal close after synthetic-b respects completed task lineage
+  ---
+  duration_ms: 56.16275
+  type: 'test'
+  ...
+# Subtest: habit delayed modal close after null respects completed task lineage
+ok 91 - habit delayed modal close after null respects completed task lineage
+  ---
+  duration_ms: 56.285167
+  type: 'test'
+  ...
+# Subtest: habit delayed modal close after renew respects completed task lineage
+ok 92 - habit delayed modal close after renew respects completed task lineage
+  ---
+  duration_ms: 61.122583
+  type: 'test'
+  ...
+# Subtest: goal successful old modal timer cannot close newly reopened same-user draft
+ok 93 - goal successful old modal timer cannot close newly reopened same-user draft
+  ---
+  duration_ms: 60.599875
+  type: 'test'
+  ...
+# Subtest: habit successful old modal timer cannot close newly reopened same-user draft
+ok 94 - habit successful old modal timer cannot close newly reopened same-user draft
+  ---
+  duration_ms: 63.463458
+  type: 'test'
+  ...
+# Subtest: goal old finally cannot unlock replacement form after account reset
+ok 95 - goal old finally cannot unlock replacement form after account reset
+  ---
+  duration_ms: 70.978875
+  type: 'test'
+  ...
+# Subtest: habit old finally cannot unlock replacement form after account reset
+ok 96 - habit old finally cannot unlock replacement form after account reset
+  ---
+  duration_ms: 71.143875
+  type: 'test'
+  ...
+# Subtest: progress old finally cannot unlock replacement form after account reset
+ok 97 - progress old finally cannot unlock replacement form after account reset
+  ---
+  duration_ms: 63.729
+  type: 'test'
+  ...
+# Subtest: goal reopened during pending RPC ignores old success status and timer
+ok 98 - goal reopened during pending RPC ignores old success status and timer
+  ---
+  duration_ms: 154.763916
+  type: 'test'
+  ...
+# Subtest: goal reopened during pending RPC ignores old 42501 status and timer
+ok 99 - goal reopened during pending RPC ignores old 42501 status and timer
+  ---
+  duration_ms: 90.179334
+  type: 'test'
+  ...
+# Subtest: goal reopened during pending RPC ignores old 23505 status and timer
+ok 100 - goal reopened during pending RPC ignores old 23505 status and timer
+  ---
+  duration_ms: 75.260083
+  type: 'test'
+  ...
+# Subtest: habit reopened during pending RPC ignores old success status and timer
+ok 101 - habit reopened during pending RPC ignores old success status and timer
+  ---
+  duration_ms: 88.47575
+  type: 'test'
+  ...
+# Subtest: habit reopened during pending RPC ignores old 42501 status and timer
+ok 102 - habit reopened during pending RPC ignores old 42501 status and timer
+  ---
+  duration_ms: 75.327541
+  type: 'test'
+  ...
+# Subtest: habit reopened during pending RPC ignores old 23505 status and timer
+ok 103 - habit reopened during pending RPC ignores old 23505 status and timer
+  ---
+  duration_ms: 74.317791
+  type: 'test'
+  ...
+# Subtest: goal old finally cannot unlock newer same-form generation request
+ok 104 - goal old finally cannot unlock newer same-form generation request
+  ---
+  duration_ms: 118.454417
+  type: 'test'
+  ...
+# Subtest: habit old finally cannot unlock newer same-form generation request
+ok 105 - habit old finally cannot unlock newer same-form generation request
+  ---
+  duration_ms: 110.176917
+  type: 'test'
+  ...
+# Subtest: weekly check-in UI serializes concurrent submits while a real request is pending
+ok 106 - weekly check-in UI serializes concurrent submits while a real request is pending
+  ---
+  duration_ms: 6420.727958
+  type: 'test'
+  ...
+# Subtest: committed INSERT with lost response is read back on explicit manual retry without another INSERT
+ok 107 - committed INSERT with lost response is read back on explicit manual retry without another INSERT
+  ---
+  duration_ms: 1338.870709
+  type: 'test'
+  ...
+# Subtest: failed read after unknown outcome never submits again until a later successful read
+ok 108 - failed read after unknown outcome never submits again until a later successful read
+  ---
+  duration_ms: 153.147708
+  type: 'test'
+  ...
+# Subtest: known failed INSERT retries only after an explicit fresh successful existence read
+ok 109 - known failed INSERT retries only after an explicit fresh successful existence read
+  ---
+  duration_ms: 121.327
+  type: 'test'
+  ...
+# Subtest: separate tabs race one natural-key record and reconcile duplicate without overwrite
+ok 110 - separate tabs race one natural-key record and reconcile duplicate without overwrite
+  ---
+  duration_ms: 432.745875
+  type: 'test'
+  ...
+# Subtest: check-in snapshot denies stale identity before existence read/write synthetic-b
+ok 111 - check-in snapshot denies stale identity before existence read/write synthetic-b
+  ---
+  duration_ms: 71.461583
+  type: 'test'
+  ...
+# Subtest: check-in snapshot denies stale identity before existence read/write null
+ok 112 - check-in snapshot denies stale identity before existence read/write null
+  ---
+  duration_ms: 64.622916
+  type: 'test'
+  ...
+# Subtest: same-user renewal preserves submitted payload and prevents input changes across auth await
+ok 113 - same-user renewal preserves submitted payload and prevents input changes across auth await
+  ---
+  duration_ms: 85.737583
+  type: 'test'
+  ...
+# Subtest: existence read is minimal and explicitly tied to own contact, template, period and submitted status
+ok 114 - existence read is minimal and explicitly tied to own contact, template, period and submitted status
+  ---
+  duration_ms: 77.158584
+  type: 'test'
+  ...
+# Subtest: first read denial fails closed without disabling future recoverable explicit retry
+ok 115 - first read denial fails closed without disabling future recoverable explicit retry
+  ---
+  duration_ms: 62.979625
+  type: 'test'
+  ...
+# Subtest: required empty answer validates without any read, write or permanent busy state
+ok 116 - required empty answer validates without any read, write or permanent busy state
+  ---
+  duration_ms: 79.178834
+  type: 'test'
+  ...
+1..116
+# tests 116
+# suites 0
+# pass 115
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 17130.130417

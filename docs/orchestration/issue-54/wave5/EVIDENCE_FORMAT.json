@@ -1,0 +1,53 @@
+{
+  "scope": "Output-only trailing ASCII space/tab cleanup; no test, source, assertions, counts or statuses changed",
+  "files": [
+    {
+      "path": "docs/orchestration/issue-54/wave5/member-regression-first.tap",
+      "rawSha256": "b2b58775720ba3fa3c739d06123b2b57ba98900bed4cbe8dbaae1321a53d3319",
+      "normalizedSha256": "c14714789cc82737a4665685a3a2e386db2ab97c53c4294b71bf648d6be70017",
+      "rawOutsideGitPath": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave5/operations-raw-evidence/member-regression-first.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-54/wave5/checkin-baseline-first.tap",
+      "rawSha256": "47b5fbc7584667985002ff6729b2556568f2d7728e60c458d37fe63bc9340ed4",
+      "normalizedSha256": "6eda59b3f154a38489f341e232f02636e1aa2a30e02ad755f383ea101875e73e",
+      "rawOutsideGitPath": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave5/operations-raw-evidence/checkin-baseline-first.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-54/wave5/checkin-baseline.tap",
+      "rawSha256": "fc869af02609839b30777d3ff18de456b19039abf697f55c3c98b6f490cc5f53",
+      "normalizedSha256": "696928d3d241af103e3daf0747199cb9f228cfe4b55ec387eb31660870bb0746",
+      "rawOutsideGitPath": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave5/operations-raw-evidence/checkin-baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-54/wave5/receipts/baseline.tap",
+      "rawSha256": "4844e8853fab707762ed5072b878524ac38b94c3a6ed6fe9ce6a10a9026dbdca",
+      "normalizedSha256": "bfbaf6e7a8fac3e36164616fdaa57903a51a85fb47d889c818a4e74568bbd9c3",
+      "rawOutsideGitPath": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave5/operations-raw-evidence/receipts/baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-54/wave5/receipts/current-unresolved-scopes.tap",
+      "rawSha256": "0bcf0cbb97ae16e42b7650893ff2df9dfe6fc43bc9d98dd9ead694e2eb4e08a7",
+      "normalizedSha256": "7d859447a45b6bdbae40b01fd4259da9ade0333efdcdc8ebf9a8d4cbb85ebf76",
+      "rawOutsideGitPath": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave5/operations-raw-evidence/receipts/current-unresolved-scopes.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-54/wave5/receipts/reverted.tap",
+      "rawSha256": "14774d7d9a9313a8ccfbdcb80d43e1defb2ebf355e6769f62a828c5f499f187c",
+      "normalizedSha256": "c10a9313d8c461e92b9be0650ca0d5bae415c4f348e30e6097c60048bb36954c",
+      "rawOutsideGitPath": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave5/operations-raw-evidence/receipts/reverted.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-54/wave5/first-comparison/baseline.tap",
+      "rawSha256": "9bd67ea6929a2135226380ab949df4c774c0532c1f5449edee898d85b93a4749",
+      "normalizedSha256": "aa4569c8d99a437f37aa0ce03317ba7e5f6480f98a033b2256a09d81b28c0bc1",
+      "rawOutsideGitPath": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave5/operations-raw-evidence/first-comparison/baseline.tap"
+    },
+    {
+      "path": "docs/orchestration/issue-54/wave5/first-comparison/reverted.tap",
+      "rawSha256": "899f500d5c3631d3a1507c3b8b9c9324ad1d0914f19be2e2377c3a2ca21f7edd",
+      "normalizedSha256": "46cc6d565b97f03a21b25217a5814b000bf4928ed556725894e3d584e4c80fb1",
+      "rawOutsideGitPath": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave5/operations-raw-evidence/first-comparison/reverted.tap"
+    }
+  ]
+}

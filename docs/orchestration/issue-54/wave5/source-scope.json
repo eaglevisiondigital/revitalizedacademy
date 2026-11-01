@@ -1,0 +1,10 @@
+{
+  "base": "024b1c20c802ce6a9470fc46fabdd3bae75ed980",
+  "onlyExistingRuntimeFile": "member/member110.js",
+  "onlyHandler": "rm-checkin-form submit",
+  "prefixUnchanged": true,
+  "suffixUnchanged": true,
+  "baseSha256": "2a938062bf3ecfbba272340434dcd5172ab0236b5d223488a01eebc685b0932d",
+  "currentSha256": "7980cf1b8db883844834ce2518b1c48086c38a9f4e687d743af65cc57135c963",
+  "currentHandlerSha256": "efa33e8682e0e78ba4280c39659573c033a8adb53efd65addf127d1896d4f1d7"
+}

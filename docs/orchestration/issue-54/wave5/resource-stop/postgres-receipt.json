@@ -1,0 +1,56 @@
+{
+  "startedAt": "2026-11-01T21:38:45.557Z",
+  "runnerSha256": "37e1ae6791f08d8d896e31000d8573e3273510a459897bdcd3b508ec4d192813",
+  "scope": "CURRENT_CATALOG_FICTIONAL_LOCAL_WAVE4_PREDECESSOR",
+  "productionCalls": 0,
+  "connection": "disposable UNIX socket only; synthetic Auth GUCs; not GoTrue or PostgREST acceptance",
+  "sourceCommit": "024b1c20c802ce6a9470fc46fabdd3bae75ed980",
+  "stages": [],
+  "executionInputs": [
+    {
+      "path": "tests/wave5-operations/concurrency.test.cjs",
+      "sha256": "1f9e6d6742bbc8979b98c84ed24ec3e17b709694af690c2da6de8cb6dbbc8007"
+    },
+    {
+      "path": "tests/wave5-operations/durable-operations.test.cjs",
+      "sha256": "c65c35c7b6b2a01f3fe388434c7683fd289de8a386f4c4291942a9fa4914e0fe"
+    },
+    {
+      "path": "tests/wave5-operations/catalog-overlay.cjs",
+      "sha256": "845f91758e2fb877d3654557a44bae0bc352ab7e4c4f81e8231be3649126cdc5"
+    },
+    {
+      "path": "tests/wave5-operations/current-operations-catalog.json",
+      "sha256": "4b582a4d4dca09d1a18fc2c7ef575ccff398dd6ffeb0d59c7f82594f4d50df02"
+    },
+    {
+      "path": "tests/wave4-access/fixture.cjs",
+      "sha256": "8c6b33bc65b714249749c4d4bf14e0085ae346b488f2c2bd317a1a4cee3c606e"
+    },
+    {
+      "path": "proposals/issue-61/correction.sql",
+      "sha256": "abceb1378897461bb4faa57fd69acddb60611132924a593c8a33cc5684136908"
+    },
+    {
+      "path": "proposals/issue-61/wave4/correction.sql",
+      "sha256": "2879f97322fc53c679e6cc83c8516795877ff7518541cc05cb3d1f3635bb89f3"
+    },
+    {
+      "path": "proposals/wave5-operations/correction.sql",
+      "sha256": "f3ed018354545d2ef677593298f3b798f0683914a79034dd69ebdcdac39cc8c0"
+    },
+    {
+      "path": "proposals/wave5-operations/revert.sql",
+      "sha256": "d28aa24f562ca97de3a80a61152d13a76580080588b2878ec630d75e6d67af22"
+    }
+  ],
+  "operationMetadata": {
+    "observedAt": "2026-11-01 21:26:56.477688+00",
+    "sourceSha256": "3fdad39ef4ff71234af2607af46f70dbeb4468b659df22edb5aeca0bf9c2175d",
+    "privateRowsIncluded": false
+  },
+  "postgres": "postgres (PostgreSQL) 17.11 (Homebrew)",
+  "error": "initdb failed: 2026-11-01 15:38:46.529 CST [22276] FATAL:  could not create shared memory segment: No space left on device\n2026-11-01 15:38:46.529 CST [22276] DETAIL:  Failed system call was shmget(key=49196005, size=56, 03600).\n2026-11-01 15:38:46.529 CST [22276] HINT:  This error does *not* mean that you have run out of disk space.  It occurs either if all available shared memory IDs have been taken, in which case you need to raise the SHMMNI parameter in your kernel, or because the system's overall limit for shared memory has been reached.\n\tThe PostgreSQL documentation contains more information about shared memory configuration.\nchild process exited with exit code 1\ninitdb: removing data directory \"/var/folders/ks/d_d9y4vx1mq1nm63bjgh8n_40000gn/T/rva-wave4-access-wave5-xCRGqZ/data\"\n",
+  "clusterRemoved": true,
+  "completedAt": "2026-11-01T21:38:46.538Z"
+}

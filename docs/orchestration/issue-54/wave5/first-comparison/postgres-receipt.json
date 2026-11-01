@@ -1,0 +1,95 @@
+{
+  "startedAt": "2026-11-01T21:26:41.934Z",
+  "runnerSha256": "b0570cf5d124ecffb5e5bd6e8bb5811450d841ebb4ae5a6732b2351398cf7766",
+  "scope": "CURRENT_CATALOG_FICTIONAL_LOCAL_WAVE4_PREDECESSOR",
+  "productionCalls": 0,
+  "connection": "disposable UNIX socket only; synthetic Auth GUCs; not GoTrue or PostgREST acceptance",
+  "sourceCommit": "024b1c20c802ce6a9470fc46fabdd3bae75ed980",
+  "stages": [
+    {
+      "name": "baseline",
+      "file": "tests/wave5-operations/concurrency.test.cjs",
+      "exitCode": 1,
+      "tests": 13,
+      "pass": 11,
+      "fail": 2,
+      "skipped": 0
+    },
+    {
+      "name": "corrected",
+      "file": "tests/wave5-operations/concurrency.test.cjs",
+      "exitCode": 0,
+      "tests": 13,
+      "pass": 13,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "name": "wave4-regression",
+      "file": "tests/wave4-access/access.test.cjs",
+      "exitCode": 1,
+      "tests": 40,
+      "pass": 39,
+      "fail": 1,
+      "skipped": 0
+    },
+    {
+      "name": "wave4-session-regression",
+      "file": "tests/wave4-access/session-entry.test.cjs",
+      "exitCode": 0,
+      "tests": 8,
+      "pass": 8,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "name": "wave4-independent-regression",
+      "file": "tests/wave4-qa/allowance-adversarial.test.cjs",
+      "exitCode": 0,
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "name": "reverted",
+      "file": "tests/wave5-operations/concurrency.test.cjs",
+      "exitCode": 1,
+      "tests": 13,
+      "pass": 11,
+      "fail": 2,
+      "skipped": 0
+    }
+  ],
+  "executionInputs": [
+    {
+      "path": "tests/wave5-operations/concurrency.test.cjs",
+      "sha256": "1f9e6d6742bbc8979b98c84ed24ec3e17b709694af690c2da6de8cb6dbbc8007"
+    },
+    {
+      "path": "tests/wave4-access/fixture.cjs",
+      "sha256": "8c6b33bc65b714249749c4d4bf14e0085ae346b488f2c2bd317a1a4cee3c606e"
+    },
+    {
+      "path": "proposals/issue-61/correction.sql",
+      "sha256": "abceb1378897461bb4faa57fd69acddb60611132924a593c8a33cc5684136908"
+    },
+    {
+      "path": "proposals/issue-61/wave4/correction.sql",
+      "sha256": "2879f97322fc53c679e6cc83c8516795877ff7518541cc05cb3d1f3635bb89f3"
+    },
+    {
+      "path": "proposals/wave5-operations/correction.sql",
+      "sha256": "a2138ee5bdc95264cf25d6ab7b9c2dff3bca5f6488c1028d06566a8eef9c598a"
+    },
+    {
+      "path": "proposals/wave5-operations/revert.sql",
+      "sha256": "a3bef946c9ddf33ed60575de986164dd1e77c78d11a80fb41b76c813eb355ffd"
+    }
+  ],
+  "postgres": "postgres (PostgreSQL) 17.11 (Homebrew)",
+  "result": "REVIEW_REQUIRED",
+  "clusterStopped": true,
+  "clusterRemoved": true,
+  "completedAt": "2026-11-01T21:26:53.330Z"
+}

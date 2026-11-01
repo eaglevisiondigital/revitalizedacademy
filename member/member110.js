@@ -3623,67 +3623,85 @@
 
   el("rm-checkin-form").addEventListener("submit", async (event) => {
     event.preventDefault();
+    const form = event.currentTarget;
+    if (form.getAttribute("aria-busy") === "true") return;
     const task = {userId: memberUserId, epoch: memberSessionEpoch, run: dashboardRun};
     if (!dashboardTaskCurrent(task) || !currentMember || !checkinTemplate) return;
     const member = {contact_id: currentMember.contact_id, membership_id: currentMember.membership_id};
     const templateId = checkinTemplate.id;
-
+    const period = weekPeriod();
     const status = el("rm-checkin-status");
-    showStatus(status, "Submitting your check-in...");
-
     const responses = {};
     for (const field of checkinFields) {
       const name = "checkin_" + field.field_key;
-      const inputs = [...event.currentTarget.querySelectorAll('[name="' + CSS.escape(name) + '"]')];
+      const inputs = [...form.querySelectorAll('[name="' + CSS.escape(name) + '"]')];
       if (!inputs.length) continue;
-
-      let value = "";
-      if (inputs[0].type === "radio") {
-        value = inputs.find((input) => input.checked)?.value || "";
-      } else {
-        value = inputs[0].value.trim();
-      }
-
+      const value = inputs[0].type === "radio"
+        ? inputs.find((input) => input.checked)?.value || ""
+        : inputs[0].value.trim();
       if (field.required && !value) {
         showStatus(status, "Please complete all required check-in questions.", "error");
         return;
       }
-
       responses[field.field_key] =
-        ["rating","number","percent"].includes(field.field_type) && value !== ""
-          ? Number(value)
-          : value;
+        ["rating","number","percent"].includes(field.field_type) && value !== "" ? Number(value) : value;
     }
-
-    const period = weekPeriod();
-    const { data: authData, error: authError } = await client.auth.getUser();
-    if (!dashboardTaskCurrent(task)) return;
-    const user = authData?.user;
-    if (authError || user?.id !== task.userId) {
-      showStatus(status, "Your member session could not be verified. Please sign in again.", "error");
-      return;
+    const payload = {
+      contact_id: member.contact_id, membership_id: member.membership_id,
+      template_id: templateId, period_start: period.start, period_end: period.end,
+      status: "submitted", responses, submitted_at: new Date().toISOString(), created_by: task.userId
+    };
+    const submit = form.querySelector('[type="submit"]');
+    let saved = false;
+    form.setAttribute("aria-busy", "true");
+    if (submit) submit.disabled = true;
+    showStatus(status, "Checking your weekly submission...");
+    // The existing partial UNIQUE index is the durable cross-tab safeguard.
+    // This read never loads answers and never overwrites another submission.
+    const findSaved = () => client.from("client_checkins").select("id,status")
+      .eq("contact_id", member.contact_id).eq("template_id", templateId)
+      .eq("period_start", period.start).neq("status", "draft").maybeSingle();
+    const uncertain = () => showStatus(status,
+      "Submission status could not be confirmed. Your answers remain here. Submit again to check before another save.", "error");
+    try {
+      const { data: authData, error: authError } = await client.auth.getUser();
+      if (!dashboardTaskCurrent(task)) return;
+      if (authError || authData?.user?.id !== task.userId) {
+        showStatus(status, "Your member session could not be verified. Please sign in again.", "error");
+        return;
+      }
+      const existing = await findSaved();
+      if (!dashboardTaskCurrent(task)) return;
+      if (existing.error) { uncertain(); return; }
+      if (existing.data) {
+        saved = true;
+        showStatus(status, "A saved check-in already exists for this period. No answers were replaced.", "success");
+        await loadDashboard();
+        return;
+      }
+      showStatus(status, "Submitting your check-in...");
+      const { error } = await client.from("client_checkins").insert(payload);
+      if (!dashboardTaskCurrent(task)) return;
+      if (error?.code === "23505") {
+        const existingAfterConflict = await findSaved();
+        if (!dashboardTaskCurrent(task)) return;
+        if (existingAfterConflict.error || !existingAfterConflict.data) { uncertain(); return; }
+        saved = true;
+        showStatus(status, "A saved check-in already exists for this period. No answers were replaced.", "success");
+      } else if (error) {
+        uncertain();
+        return;
+      } else {
+        saved = true;
+        showStatus(status, "Check-in submitted to your coaching team.", "success");
+      }
+      await loadDashboard();
+    } catch (error) {
+      if (dashboardTaskCurrent(task)) uncertain();
+    } finally {
+      form.removeAttribute("aria-busy");
+      if (submit) submit.disabled = saved;
     }
-
-    const { error } = await client.from("client_checkins").insert({
-      contact_id: member.contact_id,
-      membership_id: member.membership_id,
-      template_id: templateId,
-      period_start: period.start,
-      period_end: period.end,
-      status: "submitted",
-      responses,
-      submitted_at: new Date().toISOString(),
-      created_by: task.userId
-    });
-
-    if (!dashboardTaskCurrent(task)) return;
-    if (error) {
-      showStatus(status, error.code === "23505" ? "This week’s check-in has already been submitted." : error.message, "error");
-      return;
-    }
-
-    showStatus(status, "Check-in submitted to your coaching team.", "success");
-    await loadDashboard();
   });
 
   client.auth.onAuthStateChange((event, session) => {

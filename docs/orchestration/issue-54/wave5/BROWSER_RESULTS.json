@@ -1,0 +1,47 @@
+{
+  "scope": "ACTUAL_MEMBER_CODE_FICTIONAL_BROWSER_TRANSPORT; no real SDK/Auth/production acceptance",
+  "sourceSha256": "7980cf1b8db883844834ce2518b1c48086c38a9f4e687d743af65cc57135c963",
+  "results": [
+    {
+      "engine": "chromium",
+      "width": 390,
+      "result": "PASS",
+      "checks": "actual handler double-submit/renewal/committed lost response/read error/manual retry/retained text/minimal one write/accessibility/overflow"
+    },
+    {
+      "engine": "chromium",
+      "width": 768,
+      "result": "PASS",
+      "checks": "actual handler double-submit/renewal/committed lost response/read error/manual retry/retained text/minimal one write/accessibility/overflow"
+    },
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "result": "PASS",
+      "checks": "actual handler double-submit/renewal/committed lost response/read error/manual retry/retained text/minimal one write/accessibility/overflow"
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "result": "PASS",
+      "checks": "actual handler double-submit/renewal/committed lost response/read error/manual retry/retained text/minimal one write/accessibility/overflow"
+    },
+    {
+      "engine": "webkit",
+      "width": 768,
+      "result": "PASS",
+      "checks": "actual handler double-submit/renewal/committed lost response/read error/manual retry/retained text/minimal one write/accessibility/overflow"
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "result": "PASS",
+      "checks": "actual handler double-submit/renewal/committed lost response/read error/manual retry/retained text/minimal one write/accessibility/overflow"
+    }
+  ],
+  "counts": {
+    "pass": 6,
+    "fail": 0
+  },
+  "productionCalls": 0
+}

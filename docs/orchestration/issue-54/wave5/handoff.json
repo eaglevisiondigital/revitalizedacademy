@@ -1,0 +1,47 @@
+{
+  "status": "LOCAL_IMPLEMENTED; FINAL_SQL_GUARD_RUNTIME_VERIFY_BLOCKED; CURRENT_SCOPE_FAILURES_RETAINED",
+  "base": "024b1c20c802ce6a9470fc46fabdd3bae75ed980",
+  "branch": "codex/rva-wave5-operations-20261101",
+  "worktree": "academy-wave5-operations",
+  "alex": "PAUSED_UNTOUCHED",
+  "productionCalls": 0,
+  "canonicalMigrationsChanged": 0,
+  "pushed": false,
+  "objects": [
+    "private.wave4_usage_before() local proposal only"
+  ],
+  "runtimeScope": [
+    "member/member110.js rm-checkin-form submit handler only"
+  ],
+  "counts": {
+    "nodeDomPass": 115,
+    "includedHistoricalExpectedReproduction": 1,
+    "newNodeCasesIncluded": 11,
+    "browserPass": 6,
+    "pgFunctionalPass": 79,
+    "pgUnresolvedStrictFail": 5,
+    "pgBaselinePass": 11,
+    "pgBaselineFail": 2,
+    "pgRevertedPass": 11,
+    "pgRevertedFail": 2
+  },
+  "finalGuardRuntimeVerification": "BLOCKED_LOCAL_SHMMNI32_BEFORE_SQL",
+  "proposal": {
+    "base": "024b1c20c802ce6a9470fc46fabdd3bae75ed980",
+    "scope": "one existing private trigger function body; no ACL/schema/policy/data changes",
+    "function": "private.wave4_usage_before()",
+    "originalProsrcMd5": "af337b7d4c7afccddf3a63ce6308297f",
+    "correctedProsrcMd5": "68255a89069e6d25d761357c9ed68985",
+    "sessionGuardProsrcMd5": "80325a9c1722e12cfc78705092928f0d",
+    "files": {
+      "proposals/wave5-operations/correction.sql": "f3ed018354545d2ef677593298f3b798f0683914a79034dd69ebdcdac39cc8c0",
+      "proposals/wave5-operations/revert.sql": "d28aa24f562ca97de3a80a61152d13a76580080588b2878ec630d75e6d67af22"
+    }
+  },
+  "artifacts": {
+    "docs/orchestration/issue-54/wave5/member-regression.tap": "56baf3b686c46869039ca8c30b4e7618820f983002fd295e140a58e2c97abf04",
+    "docs/orchestration/issue-54/wave5/BROWSER_RESULTS.json": "4221fdb85e24908e2928c9528b34b9db8ecb6ab47c11363179e571e7a7c47e7d",
+    "docs/orchestration/issue-54/wave5/source-scope.json": "38ee3e9d40e465f43b30297fea00a557c0b3bc8a2bb806213d2f41fcdcdbd10f",
+    "tests/wave5-operations/current-operations-catalog.json": "4b582a4d4dca09d1a18fc2c7ef575ccff398dd6ffeb0d59c7f82594f4d50df02"
+  }
+}
