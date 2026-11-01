@@ -1,0 +1,28 @@
+{
+  "issue": 54,
+  "base": "38f086792addaa9b131cecaf261ef21f89f5ffc7",
+  "branch": "codex/rva-wave7-operations-20261101",
+  "runtimeFiles": [
+    "member/member110.js"
+  ],
+  "node": {
+    "pass": 139,
+    "fail": 0
+  },
+  "nativeBrowser": {
+    "pass": 6,
+    "fail": 0
+  },
+  "baselineIntentionalDefectReproductions": 3,
+  "databaseAssertions": 0,
+  "productionChanges": false,
+  "pushed": false,
+  "Alex": "PAUSED/no access",
+  "limits": [
+    "same-document only; no cross-tab durable guarantee",
+    "managed Auth/MFA/JWT and live API not tested",
+    "server-side date/uniqueness/authorization unchanged",
+    "SQL and complete-business acceptance remain blocked outside this lane"
+  ],
+  "next": "Independent QA on integrated exact source; no automatic production release"
+}

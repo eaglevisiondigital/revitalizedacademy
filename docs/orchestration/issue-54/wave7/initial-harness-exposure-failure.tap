@@ -1,0 +1,167 @@
+✔ daily habit rapid double action dispatches one scoped RPC and retains completed state after stale read (174.556541ms)
+✔ daily habit freezes exact target 0 and ID across valid renewal and changed render source (79.012042ms)
+✔ daily habit freezes exact target 2.5 and ID across valid renewal and changed render source (65.275ms)
+✔ daily habit pending auth null issues no stale RPC (65.276916ms)
+✔ daily habit pending auth synthetic-b issues no stale RPC (60.890208ms)
+✔ daily habit late success after null causes no status revival or read (81.105917ms)
+✔ daily habit late denial after null causes no status revival or read (77.117791ms)
+✔ daily habit late success after synthetic-b causes no status revival or read (72.212708ms)
+✔ daily habit late denial after synthetic-b causes no status revival or read (79.807042ms)
+✔ daily habit verified getUser denial prevents write {"authUserId":null} (54.206375ms)
+✔ daily habit verified getUser denial prevents write {"authUserId":"synthetic-b"} (53.627917ms)
+✔ daily habit verified getUser denial prevents write {"authError":{"message":"Fictional unavailable"}} (57.146833ms)
+✔ daily habit malformed target -1 does not dispatch (74.001792ms)
+✔ daily habit malformed target not-a-number does not dispatch (57.715208ms)
+✔ daily habit malformed target Infinity does not dispatch (55.065458ms)
+✔ daily habit lost response remains uncertain and read-only status checks never blindly repeat write (58.086ms)
+✔ daily habit returned nonauthorization error is uncertain, not successful completion (51.257291ms)
+✔ daily habit genuine 42501 does not report save or invoke dashboard read (52.864959ms)
+✔ daily habit success plus dashboard transport failure remains saved, never retransmitted (52.264042ms)
+✔ daily habit rendering escapes untrusted labels and completed source does not write (49.10475ms)
+✔ daily habit UTC date and actor are frozen before midnight; old response cannot mark current day complete (52.688125ms)
+✔ daily habit readback 42501 clears only protected daily card and does not claim a successful status read (51.010333ms)
+✔ daily habit failed getUser transport never dispatches or reports a saved habit (47.962584ms)
+✔ author regression: serialized status reads and persistent denial fence prevent stale private-card restoration (72.6795ms)
+✔ verified different identity during readback clears private document without another write (49.636833ms)
+✔ unverified readback identity/transport preserves draft and never dispatches another RPC {"data":{"user":null},"error":null} (75.71325ms)
+✔ unverified readback identity/transport preserves draft and never dispatches another RPC {"data":{"user":{"id":"synthetic-b"}},"error":{"message":"Fictional timeout"}} (55.513625ms)
+✖ both mounted habit surfaces share pending/saved key; first mark (148.994125ms)
+✖ both mounted habit surfaces share pending/saved key; first act (78.237708ms)
+✖ distinct semantics retain exact daily zero and show action/value on both surfaces (57.767292ms)
+✖ Mark Today retains value1 while daily target is2.5 without claiming2.5saved (61.488542ms)
+✖ alternate lost response holds both surfaces and checks status without duplicate or dashboard remount (61.358417ms)
+✖ genuine rpc denial clears both surfaces and holds future renders (62.973917ms)
+✖ genuine read denial clears both surfaces and holds future renders (48.758166ms)
+✖ alternate pending auth null clears private document without write (56.46575ms)
+✖ alternate pending auth synthetic-b clears private document without write (47.439125ms)
+✖ alternate verified identity mismatch without callback tears down before RPC (56.334125ms)
+✖ same-user renewal preserves modal and weekly drafts, exact alternate row, no full dashboard remount (52.509291ms)
+✖ rerendered source invalidates old alternate binding before dispatch (47.403916ms)
+✖ unclicked prior-day alternate row cannot send a new-day request; started request freezes prior day (53.676709ms)
+ℹ tests 40
+ℹ suites 0
+ℹ pass 27
+ℹ fail 13
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2313.462042
+
+✖ failing tests:
+
+test at tests/wave7-operations/habits.test.cjs:6:34
+✖ both mounted habit surfaces share pending/saved key; first mark (148.994125ms)
+  TypeError [Error]: f.w.__wave6Daily.renderHabits is not a function
+      at renderAlternate (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/fixture.cjs:10:45)
+      at fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/fixture.cjs:10:65)
+      at async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/habits.test.cjs:6:125)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+
+test at tests/wave7-operations/habits.test.cjs:6:34
+✖ both mounted habit surfaces share pending/saved key; first act (78.237708ms)
+  TypeError [Error]: f.w.__wave6Daily.renderHabits is not a function
+      at renderAlternate (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/fixture.cjs:10:45)
+      at fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/fixture.cjs:10:65)
+      at async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/habits.test.cjs:6:125)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/wave7-operations/habits.test.cjs:7:1
+✖ distinct semantics retain exact daily zero and show action/value on both surfaces (57.767292ms)
+  TypeError [Error]: f.w.__wave6Daily.renderHabits is not a function
+      at renderAlternate (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/fixture.cjs:10:45)
+      at fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/fixture.cjs:10:65)
+      at async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/habits.test.cjs:7:108)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/wave7-operations/habits.test.cjs:8:1
+✖ Mark Today retains value1 while daily target is2.5 without claiming2.5saved (61.488542ms)
+  TypeError [Error]: f.w.__wave6Daily.renderHabits is not a function
+      at renderAlternate (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/fixture.cjs:10:45)
+      at fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/fixture.cjs:10:65)
+      at async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/habits.test.cjs:8:102)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/wave7-operations/habits.test.cjs:9:1
+✖ alternate lost response holds both surfaces and checks status without duplicate or dashboard remount (61.358417ms)
+  TypeError [Error]: f.w.__wave6Daily.renderHabits is not a function
+      at renderAlternate (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/fixture.cjs:10:45)
+      at fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/fixture.cjs:10:65)
+      at async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/habits.test.cjs:9:127)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/wave7-operations/habits.test.cjs:10:33
+✖ genuine rpc denial clears both surfaces and holds future renders (62.973917ms)
+  TypeError [Error]: f.w.__wave6Daily.renderHabits is not a function
+      at renderAlternate (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/fixture.cjs:10:45)
+      at fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/fixture.cjs:10:65)
+      at async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/habits.test.cjs:10:128)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/wave7-operations/habits.test.cjs:10:33
+✖ genuine read denial clears both surfaces and holds future renders (48.758166ms)
+  TypeError [Error]: f.w.__wave6Daily.renderHabits is not a function
+      at renderAlternate (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/fixture.cjs:10:45)
+      at fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/fixture.cjs:10:65)
+      at async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/habits.test.cjs:10:128)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/wave7-operations/habits.test.cjs:11:40
+✖ alternate pending auth null clears private document without write (56.46575ms)
+  TypeError [Error]: f.w.__wave6Daily.renderHabits is not a function
+      at renderAlternate (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/fixture.cjs:10:45)
+      at fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/fixture.cjs:10:65)
+      at async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/habits.test.cjs:11:136)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/wave7-operations/habits.test.cjs:11:40
+✖ alternate pending auth synthetic-b clears private document without write (47.439125ms)
+  TypeError [Error]: f.w.__wave6Daily.renderHabits is not a function
+      at renderAlternate (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/fixture.cjs:10:45)
+      at fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/fixture.cjs:10:65)
+      at async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/habits.test.cjs:11:136)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/wave7-operations/habits.test.cjs:12:1
+✖ alternate verified identity mismatch without callback tears down before RPC (56.334125ms)
+  TypeError [Error]: f.w.__wave6Daily.renderHabits is not a function
+      at renderAlternate (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/fixture.cjs:10:45)
+      at fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/fixture.cjs:10:65)
+      at async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/habits.test.cjs:12:102)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/wave7-operations/habits.test.cjs:13:1
+✖ same-user renewal preserves modal and weekly drafts, exact alternate row, no full dashboard remount (52.509291ms)
+  TypeError [Error]: f.w.__wave6Daily.renderHabits is not a function
+      at renderAlternate (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/fixture.cjs:10:45)
+      at fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/fixture.cjs:10:65)
+      at async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/habits.test.cjs:13:126)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/wave7-operations/habits.test.cjs:14:1
+✖ rerendered source invalidates old alternate binding before dispatch (47.403916ms)
+  TypeError [Error]: f.w.__wave6Daily.renderHabits is not a function
+      at renderAlternate (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/fixture.cjs:10:45)
+      at fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/fixture.cjs:10:65)
+      at async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/habits.test.cjs:14:94)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/wave7-operations/habits.test.cjs:15:1
+✖ unclicked prior-day alternate row cannot send a new-day request; started request freezes prior day (53.676709ms)
+  TypeError [Error]: f.w.__wave6Daily.renderHabits is not a function
+      at renderAlternate (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/fixture.cjs:10:45)
+      at fixture (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/fixture.cjs:10:65)
+      at async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/habits.test.cjs:15:125)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)

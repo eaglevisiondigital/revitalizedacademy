@@ -1,0 +1,181 @@
+✖ chromium 390 actual dual habit surfaces preserve drafts, uncertainty, denial and actor boundary (427.302958ms)
+✖ chromium 768 actual dual habit surfaces preserve drafts, uncertainty, denial and actor boundary (528.914625ms)
+✖ chromium 1440 actual dual habit surfaces preserve drafts, uncertainty, denial and actor boundary (385.1145ms)
+✖ webkit 390 actual dual habit surfaces preserve drafts, uncertainty, denial and actor boundary (568.049291ms)
+✖ webkit 768 actual dual habit surfaces preserve drafts, uncertainty, denial and actor boundary (286.030791ms)
+✖ webkit 1440 actual dual habit surfaces preserve drafts, uncertainty, denial and actor boundary (313.942458ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 0
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2736.464916
+
+✖ failing tests:
+
+test at tests/wave7-operations/browser.cjs:12:75
+✖ chromium 390 actual dual habit surfaces preserve drafts, uncertainty, denial and actor boundary (427.302958ms)
+  browserType.launch: Target page, context or browser has been closed
+  Browser logs:
+
+  <launching> /Users/davesmacbookpro/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-arm64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/var/folders/ks/d_d9y4vx1mq1nm63bjgh8n_40000gn/T/playwright_chromiumdev_profile-9BuhsJ --remote-debugging-pipe --no-startup-window
+  <launched> pid=15434
+  [pid=15434][err] [1101/163820.395594:ERROR:base/power_monitor/thermal_state_observer_mac.mm:122] ThermalStateObserverMac unable to register to power notifications. Result: 9
+  [pid=15434][err] [1101/163820.398167:ERROR:net/dns/dns_config_service_posix.cc:139] DNS config watch failed to start.
+  [pid=15434][err] [1101/163820.401019:FATAL:base/apple/mach_port_rendezvous_mac.cc:159] Check failed: kr == KERN_SUCCESS. bootstrap_check_in org.chromium.Chromium.MachPortRendezvousServer.15434: Permission denied (1100)
+  Call log:
+  [2m  - <launching> /Users/davesmacbookpro/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-arm64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/var/folders/ks/d_d9y4vx1mq1nm63bjgh8n_40000gn/T/playwright_chromiumdev_profile-9BuhsJ --remote-debugging-pipe --no-startup-window[22m
+  [2m  - <launched> pid=15434[22m
+  [2m  - [pid=15434][err] [1101/163820.395594:ERROR:base/power_monitor/thermal_state_observer_mac.mm:122] ThermalStateObserverMac unable to register to power notifications. Result: 9[22m
+  [2m  - [pid=15434][err] [1101/163820.398167:ERROR:net/dns/dns_config_service_posix.cc:139] DNS config watch failed to start.[22m
+  [2m  - [pid=15434][err] [1101/163820.401019:FATAL:base/apple/mach_port_rendezvous_mac.cc:159] Check failed: kr == KERN_SUCCESS. bootstrap_check_in org.chromium.Chromium.MachPortRendezvousServer.15434: Permission denied (1100)[22m
+  [2m  - [pid=15434] <gracefully close start>[22m
+  [2m  - [pid=15434] <kill>[22m
+  [2m  - [pid=15434] <will force kill>[22m
+  [2m  - [pid=15434] exception while trying to kill process: Error: kill EPERM[22m
+  [2m  - [pid=15434] <process did exit: exitCode=null, signal=SIGTRAP>[22m
+  [2m  - [pid=15434] starting temporary directories cleanup[22m
+  [2m  - [pid=15434] finished temporary directories cleanup[22m
+  [2m  - [pid=15434] <gracefully close end>[22m
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/browser.cjs:14:33) {
+    log: [ '  - <launching> /Users/davesmacbookpro/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-arm64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/var/folders/ks/d_d9y4vx1mq1nm63bjgh8n_40000gn/T/playwright_chromiumdev_profile-9BuhsJ --remote-debugging-pipe --no-startup-window', '  - <launched> pid=15434', '  - [pid=15434][err] [1101/163820.395594:ERROR:base/power_monitor/thermal_state_observer_mac.mm:122] ThermalStateObserverMac unable to register to power notifications. Result: 9', '  - [pid=15434][err] [1101/163820.398167:ERROR:net/dns/dns_config_service_posix.cc:139] DNS config watch failed to start.', '  - [pid=15434][err] [1101/163820.401019:FATAL:base/apple/mach_port_rendezvous_mac.cc:159] Check failed: kr == KERN_SUCCESS. bootstrap_check_in org.chromium.Chromium.MachPortRendezvousServer.15434: Permission denied (1100)', '  - [pid=15434] <gracefully close start>', '  - [pid=15434] <kill>', '  - [pid=15434] <will force kill>', '  - [pid=15434] exception while trying to kill process: Error: kill EPERM', '  - [pid=15434] <process did exit: exitCode=null, signal=SIGTRAP>', '  - [pid=15434] starting temporary directories cleanup', '  - [pid=15434] finished temporary directories cleanup', '  - [pid=15434] <gracefully close end>' ]
+  }
+
+test at tests/wave7-operations/browser.cjs:12:75
+✖ chromium 768 actual dual habit surfaces preserve drafts, uncertainty, denial and actor boundary (528.914625ms)
+  browserType.launch: Target page, context or browser has been closed
+  Browser logs:
+
+  <launching> /Users/davesmacbookpro/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-arm64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/var/folders/ks/d_d9y4vx1mq1nm63bjgh8n_40000gn/T/playwright_chromiumdev_profile-6kjIdp --remote-debugging-pipe --no-startup-window
+  <launched> pid=15449
+  [pid=15449][err] [1101/163820.807335:ERROR:base/power_monitor/thermal_state_observer_mac.mm:122] ThermalStateObserverMac unable to register to power notifications. Result: 9
+  [pid=15449][err] [1101/163820.809628:ERROR:net/dns/dns_config_service_posix.cc:139] DNS config watch failed to start.
+  [pid=15449][err] [1101/163820.810591:FATAL:base/apple/mach_port_rendezvous_mac.cc:159] Check failed: kr == KERN_SUCCESS. bootstrap_check_in org.chromium.Chromium.MachPortRendezvousServer.15449: Permission denied (1100)
+  Call log:
+  [2m  - <launching> /Users/davesmacbookpro/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-arm64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/var/folders/ks/d_d9y4vx1mq1nm63bjgh8n_40000gn/T/playwright_chromiumdev_profile-6kjIdp --remote-debugging-pipe --no-startup-window[22m
+  [2m  - <launched> pid=15449[22m
+  [2m  - [pid=15449][err] [1101/163820.807335:ERROR:base/power_monitor/thermal_state_observer_mac.mm:122] ThermalStateObserverMac unable to register to power notifications. Result: 9[22m
+  [2m  - [pid=15449][err] [1101/163820.809628:ERROR:net/dns/dns_config_service_posix.cc:139] DNS config watch failed to start.[22m
+  [2m  - [pid=15449][err] [1101/163820.810591:FATAL:base/apple/mach_port_rendezvous_mac.cc:159] Check failed: kr == KERN_SUCCESS. bootstrap_check_in org.chromium.Chromium.MachPortRendezvousServer.15449: Permission denied (1100)[22m
+  [2m  - [pid=15449] <gracefully close start>[22m
+  [2m  - [pid=15449] <kill>[22m
+  [2m  - [pid=15449] <will force kill>[22m
+  [2m  - [pid=15449] exception while trying to kill process: Error: kill EPERM[22m
+  [2m  - [pid=15449] <process did exit: exitCode=null, signal=SIGTRAP>[22m
+  [2m  - [pid=15449] starting temporary directories cleanup[22m
+  [2m  - [pid=15449] finished temporary directories cleanup[22m
+  [2m  - [pid=15449] <gracefully close end>[22m
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/browser.cjs:14:33) {
+    log: [ '  - <launching> /Users/davesmacbookpro/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-arm64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/var/folders/ks/d_d9y4vx1mq1nm63bjgh8n_40000gn/T/playwright_chromiumdev_profile-6kjIdp --remote-debugging-pipe --no-startup-window', '  - <launched> pid=15449', '  - [pid=15449][err] [1101/163820.807335:ERROR:base/power_monitor/thermal_state_observer_mac.mm:122] ThermalStateObserverMac unable to register to power notifications. Result: 9', '  - [pid=15449][err] [1101/163820.809628:ERROR:net/dns/dns_config_service_posix.cc:139] DNS config watch failed to start.', '  - [pid=15449][err] [1101/163820.810591:FATAL:base/apple/mach_port_rendezvous_mac.cc:159] Check failed: kr == KERN_SUCCESS. bootstrap_check_in org.chromium.Chromium.MachPortRendezvousServer.15449: Permission denied (1100)', '  - [pid=15449] <gracefully close start>', '  - [pid=15449] <kill>', '  - [pid=15449] <will force kill>', '  - [pid=15449] exception while trying to kill process: Error: kill EPERM', '  - [pid=15449] <process did exit: exitCode=null, signal=SIGTRAP>', '  - [pid=15449] starting temporary directories cleanup', '  - [pid=15449] finished temporary directories cleanup', '  - [pid=15449] <gracefully close end>' ]
+  }
+
+test at tests/wave7-operations/browser.cjs:12:75
+✖ chromium 1440 actual dual habit surfaces preserve drafts, uncertainty, denial and actor boundary (385.1145ms)
+  browserType.launch: Target page, context or browser has been closed
+  Browser logs:
+
+  <launching> /Users/davesmacbookpro/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-arm64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/var/folders/ks/d_d9y4vx1mq1nm63bjgh8n_40000gn/T/playwright_chromiumdev_profile-RqiE3X --remote-debugging-pipe --no-startup-window
+  <launched> pid=15453
+  [pid=15453][err] [1101/163821.344234:ERROR:base/power_monitor/thermal_state_observer_mac.mm:122] ThermalStateObserverMac unable to register to power notifications. Result: 9
+  [pid=15453][err] [1101/163821.346476:ERROR:net/dns/dns_config_service_posix.cc:139] DNS config watch failed to start.
+  [pid=15453][err] [1101/163821.347270:WARNING:net/dns/dns_config_service_posix.cc:198] Failed to read DnsConfig.
+  [pid=15453][err] [1101/163821.347509:FATAL:base/apple/mach_port_rendezvous_mac.cc:159] Check failed: kr == KERN_SUCCESS. bootstrap_check_in org.chromium.Chromium.MachPortRendezvousServer.15453: Permission denied (1100)
+  Call log:
+  [2m  - <launching> /Users/davesmacbookpro/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-arm64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/var/folders/ks/d_d9y4vx1mq1nm63bjgh8n_40000gn/T/playwright_chromiumdev_profile-RqiE3X --remote-debugging-pipe --no-startup-window[22m
+  [2m  - <launched> pid=15453[22m
+  [2m  - [pid=15453][err] [1101/163821.344234:ERROR:base/power_monitor/thermal_state_observer_mac.mm:122] ThermalStateObserverMac unable to register to power notifications. Result: 9[22m
+  [2m  - [pid=15453][err] [1101/163821.346476:ERROR:net/dns/dns_config_service_posix.cc:139] DNS config watch failed to start.[22m
+  [2m  - [pid=15453][err] [1101/163821.347270:WARNING:net/dns/dns_config_service_posix.cc:198] Failed to read DnsConfig.[22m
+  [2m  - [pid=15453][err] [1101/163821.347509:FATAL:base/apple/mach_port_rendezvous_mac.cc:159] Check failed: kr == KERN_SUCCESS. bootstrap_check_in org.chromium.Chromium.MachPortRendezvousServer.15453: Permission denied (1100)[22m
+  [2m  - [pid=15453] <gracefully close start>[22m
+  [2m  - [pid=15453] <kill>[22m
+  [2m  - [pid=15453] <will force kill>[22m
+  [2m  - [pid=15453] exception while trying to kill process: Error: kill EPERM[22m
+  [2m  - [pid=15453] <process did exit: exitCode=null, signal=SIGTRAP>[22m
+  [2m  - [pid=15453] starting temporary directories cleanup[22m
+  [2m  - [pid=15453] finished temporary directories cleanup[22m
+  [2m  - [pid=15453] <gracefully close end>[22m
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/browser.cjs:14:33) {
+    log: [ '  - <launching> /Users/davesmacbookpro/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-arm64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/var/folders/ks/d_d9y4vx1mq1nm63bjgh8n_40000gn/T/playwright_chromiumdev_profile-RqiE3X --remote-debugging-pipe --no-startup-window', '  - <launched> pid=15453', '  - [pid=15453][err] [1101/163821.344234:ERROR:base/power_monitor/thermal_state_observer_mac.mm:122] ThermalStateObserverMac unable to register to power notifications. Result: 9', '  - [pid=15453][err] [1101/163821.346476:ERROR:net/dns/dns_config_service_posix.cc:139] DNS config watch failed to start.', '  - [pid=15453][err] [1101/163821.347270:WARNING:net/dns/dns_config_service_posix.cc:198] Failed to read DnsConfig.', '  - [pid=15453][err] [1101/163821.347509:FATAL:base/apple/mach_port_rendezvous_mac.cc:159] Check failed: kr == KERN_SUCCESS. bootstrap_check_in org.chromium.Chromium.MachPortRendezvousServer.15453: Permission denied (1100)', '  - [pid=15453] <gracefully close start>', '  - [pid=15453] <kill>', '  - [pid=15453] <will force kill>', '  - [pid=15453] exception while trying to kill process: Error: kill EPERM', '  - [pid=15453] <process did exit: exitCode=null, signal=SIGTRAP>', '  - [pid=15453] starting temporary directories cleanup', '  - [pid=15453] finished temporary directories cleanup', '  - [pid=15453] <gracefully close end>' ]
+  }
+
+test at tests/wave7-operations/browser.cjs:12:75
+✖ webkit 390 actual dual habit surfaces preserve drafts, uncertainty, denial and actor boundary (568.049291ms)
+  browserType.launch: Target page, context or browser has been closed
+  Browser logs:
+
+  <launching> /Users/davesmacbookpro/Library/Caches/ms-playwright/webkit-2336/pw_run.sh --inspector-pipe --headless --no-startup-window
+  <launched> pid=15462
+  [pid=15462][err] /Users/davesmacbookpro/Library/Caches/ms-playwright/webkit-2336/pw_run.sh: line 7: 15469 Abort trap: 6           DYLD_FRAMEWORK_PATH="$DYLIB_PATH" DYLD_LIBRARY_PATH="$DYLIB_PATH" "$PLAYWRIGHT" "$@"
+  [pid=15462] <process did exit: exitCode=134, signal=null>
+  [pid=15462] starting temporary directories cleanup
+  Call log:
+  [2m  - <launching> /Users/davesmacbookpro/Library/Caches/ms-playwright/webkit-2336/pw_run.sh --inspector-pipe --headless --no-startup-window[22m
+  [2m  - <launched> pid=15462[22m
+  [2m  - [pid=15462][err] /Users/davesmacbookpro/Library/Caches/ms-playwright/webkit-2336/pw_run.sh: line 7: 15469 Abort trap: 6           DYLD_FRAMEWORK_PATH="$DYLIB_PATH" DYLD_LIBRARY_PATH="$DYLIB_PATH" "$PLAYWRIGHT" "$@"[22m
+  [2m  - [pid=15462] <process did exit: exitCode=134, signal=null>[22m
+  [2m  - [pid=15462] starting temporary directories cleanup[22m
+  [2m  - [pid=15462] <gracefully close start>[22m
+  [2m  - [pid=15462] <kill>[22m
+  [2m  - [pid=15462] <skipped force kill spawnedProcess.killed=false processClosed=true>[22m
+  [2m  - [pid=15462] finished temporary directories cleanup[22m
+  [2m  - [pid=15462] <gracefully close end>[22m
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/browser.cjs:14:33) {
+    log: [ '  - <launching> /Users/davesmacbookpro/Library/Caches/ms-playwright/webkit-2336/pw_run.sh --inspector-pipe --headless --no-startup-window', '  - <launched> pid=15462', '  - [pid=15462][err] /Users/davesmacbookpro/Library/Caches/ms-playwright/webkit-2336/pw_run.sh: line 7: 15469 Abort trap: 6           DYLD_FRAMEWORK_PATH="$DYLIB_PATH" DYLD_LIBRARY_PATH="$DYLIB_PATH" "$PLAYWRIGHT" "$@"', '  - [pid=15462] <process did exit: exitCode=134, signal=null>', '  - [pid=15462] starting temporary directories cleanup', '  - [pid=15462] <gracefully close start>', '  - [pid=15462] <kill>', '  - [pid=15462] <skipped force kill spawnedProcess.killed=false processClosed=true>', '  - [pid=15462] finished temporary directories cleanup', '  - [pid=15462] <gracefully close end>' ]
+  }
+
+test at tests/wave7-operations/browser.cjs:12:75
+✖ webkit 768 actual dual habit surfaces preserve drafts, uncertainty, denial and actor boundary (286.030791ms)
+  browserType.launch: Target page, context or browser has been closed
+  Browser logs:
+
+  <launching> /Users/davesmacbookpro/Library/Caches/ms-playwright/webkit-2336/pw_run.sh --inspector-pipe --headless --no-startup-window
+  <launched> pid=15485
+  [pid=15485][err] /Users/davesmacbookpro/Library/Caches/ms-playwright/webkit-2336/pw_run.sh: line 7: 15491 Abort trap: 6           DYLD_FRAMEWORK_PATH="$DYLIB_PATH" DYLD_LIBRARY_PATH="$DYLIB_PATH" "$PLAYWRIGHT" "$@"
+  Call log:
+  [2m  - <launching> /Users/davesmacbookpro/Library/Caches/ms-playwright/webkit-2336/pw_run.sh --inspector-pipe --headless --no-startup-window[22m
+  [2m  - <launched> pid=15485[22m
+  [2m  - [pid=15485][err] /Users/davesmacbookpro/Library/Caches/ms-playwright/webkit-2336/pw_run.sh: line 7: 15491 Abort trap: 6           DYLD_FRAMEWORK_PATH="$DYLIB_PATH" DYLD_LIBRARY_PATH="$DYLIB_PATH" "$PLAYWRIGHT" "$@"[22m
+  [2m  - [pid=15485] <gracefully close start>[22m
+  [2m  - [pid=15485] <kill>[22m
+  [2m  - [pid=15485] <will force kill>[22m
+  [2m  - [pid=15485] exception while trying to kill process: Error: kill EPERM[22m
+  [2m  - [pid=15485] <process did exit: exitCode=134, signal=null>[22m
+  [2m  - [pid=15485] starting temporary directories cleanup[22m
+  [2m  - [pid=15485] finished temporary directories cleanup[22m
+  [2m  - [pid=15485] <gracefully close end>[22m
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/browser.cjs:14:33) {
+    log: [ '  - <launching> /Users/davesmacbookpro/Library/Caches/ms-playwright/webkit-2336/pw_run.sh --inspector-pipe --headless --no-startup-window', '  - <launched> pid=15485', '  - [pid=15485][err] /Users/davesmacbookpro/Library/Caches/ms-playwright/webkit-2336/pw_run.sh: line 7: 15491 Abort trap: 6           DYLD_FRAMEWORK_PATH="$DYLIB_PATH" DYLD_LIBRARY_PATH="$DYLIB_PATH" "$PLAYWRIGHT" "$@"', '  - [pid=15485] <gracefully close start>', '  - [pid=15485] <kill>', '  - [pid=15485] <will force kill>', '  - [pid=15485] exception while trying to kill process: Error: kill EPERM', '  - [pid=15485] <process did exit: exitCode=134, signal=null>', '  - [pid=15485] starting temporary directories cleanup', '  - [pid=15485] finished temporary directories cleanup', '  - [pid=15485] <gracefully close end>' ]
+  }
+
+test at tests/wave7-operations/browser.cjs:12:75
+✖ webkit 1440 actual dual habit surfaces preserve drafts, uncertainty, denial and actor boundary (313.942458ms)
+  browserType.launch: Target page, context or browser has been closed
+  Browser logs:
+
+  <launching> /Users/davesmacbookpro/Library/Caches/ms-playwright/webkit-2336/pw_run.sh --inspector-pipe --headless --no-startup-window
+  <launched> pid=15494
+  [pid=15494][err] /Users/davesmacbookpro/Library/Caches/ms-playwright/webkit-2336/pw_run.sh: line 7: 15500 Abort trap: 6           DYLD_FRAMEWORK_PATH="$DYLIB_PATH" DYLD_LIBRARY_PATH="$DYLIB_PATH" "$PLAYWRIGHT" "$@"
+  Call log:
+  [2m  - <launching> /Users/davesmacbookpro/Library/Caches/ms-playwright/webkit-2336/pw_run.sh --inspector-pipe --headless --no-startup-window[22m
+  [2m  - <launched> pid=15494[22m
+  [2m  - [pid=15494][err] /Users/davesmacbookpro/Library/Caches/ms-playwright/webkit-2336/pw_run.sh: line 7: 15500 Abort trap: 6           DYLD_FRAMEWORK_PATH="$DYLIB_PATH" DYLD_LIBRARY_PATH="$DYLIB_PATH" "$PLAYWRIGHT" "$@"[22m
+  [2m  - [pid=15494] <gracefully close start>[22m
+  [2m  - [pid=15494] <kill>[22m
+  [2m  - [pid=15494] <will force kill>[22m
+  [2m  - [pid=15494] exception while trying to kill process: Error: kill EPERM[22m
+  [2m  - [pid=15494] <process did exit: exitCode=134, signal=null>[22m
+  [2m  - [pid=15494] starting temporary directories cleanup[22m
+  [2m  - [pid=15494] finished temporary directories cleanup[22m
+  [2m  - [pid=15494] <gracefully close end>[22m
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/browser.cjs:14:33) {
+    log: [ '  - <launching> /Users/davesmacbookpro/Library/Caches/ms-playwright/webkit-2336/pw_run.sh --inspector-pipe --headless --no-startup-window', '  - <launched> pid=15494', '  - [pid=15494][err] /Users/davesmacbookpro/Library/Caches/ms-playwright/webkit-2336/pw_run.sh: line 7: 15500 Abort trap: 6           DYLD_FRAMEWORK_PATH="$DYLIB_PATH" DYLD_LIBRARY_PATH="$DYLIB_PATH" "$PLAYWRIGHT" "$@"', '  - [pid=15494] <gracefully close start>', '  - [pid=15494] <kill>', '  - [pid=15494] <will force kill>', '  - [pid=15494] exception while trying to kill process: Error: kill EPERM', '  - [pid=15494] <process did exit: exitCode=134, signal=null>', '  - [pid=15494] starting temporary directories cleanup', '  - [pid=15494] finished temporary directories cleanup', '  - [pid=15494] <gracefully close end>' ]
+  }

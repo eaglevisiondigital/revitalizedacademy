@@ -1,0 +1,67 @@
+✔ daily habit rapid double action dispatches one scoped RPC and retains completed state after stale read (153.381834ms)
+✔ daily habit freezes exact target 0 and ID across valid renewal and changed render source (75.685542ms)
+✔ daily habit freezes exact target 2.5 and ID across valid renewal and changed render source (59.347416ms)
+✔ daily habit pending auth null issues no stale RPC (58.497833ms)
+✔ daily habit pending auth synthetic-b issues no stale RPC (59.817125ms)
+✔ daily habit late success after null causes no status revival or read (92.842917ms)
+✔ daily habit late denial after null causes no status revival or read (77.828125ms)
+✔ daily habit late success after synthetic-b causes no status revival or read (71.253209ms)
+✔ daily habit late denial after synthetic-b causes no status revival or read (75.684625ms)
+✔ daily habit verified getUser denial prevents write {"authUserId":null} (51.353875ms)
+✔ daily habit verified getUser denial prevents write {"authUserId":"synthetic-b"} (63.08275ms)
+✔ daily habit verified getUser denial prevents write {"authError":{"message":"Fictional unavailable"}} (56.302708ms)
+✔ daily habit malformed target -1 does not dispatch (51.52375ms)
+✔ daily habit malformed target not-a-number does not dispatch (48.170167ms)
+✔ daily habit malformed target Infinity does not dispatch (49.371959ms)
+✔ daily habit lost response remains uncertain and read-only status checks never blindly repeat write (51.001417ms)
+✔ daily habit returned nonauthorization error is uncertain, not successful completion (49.703709ms)
+✔ daily habit genuine 42501 does not report save or invoke dashboard read (54.425958ms)
+✔ daily habit success plus dashboard transport failure remains saved, never retransmitted (48.247958ms)
+✔ daily habit rendering escapes untrusted labels and completed source does not write (49.795708ms)
+✔ daily habit UTC date and actor are frozen before midnight; old response cannot mark current day complete (55.441959ms)
+✔ daily habit readback 42501 clears only protected daily card and does not claim a successful status read (45.465417ms)
+✔ daily habit failed getUser transport never dispatches or reports a saved habit (47.6385ms)
+✔ author regression: serialized status reads and persistent denial fence prevent stale private-card restoration (72.295958ms)
+✔ verified different identity during readback clears private document without another write (46.764083ms)
+✔ unverified readback identity/transport preserves draft and never dispatches another RPC {"data":{"user":null},"error":null} (49.223584ms)
+✔ unverified readback identity/transport preserves draft and never dispatches another RPC {"data":{"user":{"id":"synthetic-b"}},"error":{"message":"Fictional timeout"}} (57.270125ms)
+✔ both mounted habit surfaces share pending/saved key; first mark (154.791917ms)
+✔ both mounted habit surfaces share pending/saved key; first act (89.373166ms)
+✔ distinct semantics retain exact daily zero and show action/value on both surfaces (58.903ms)
+✔ Mark Today retains value1 while daily target is2.5 without claiming2.5saved (60.649875ms)
+✔ alternate lost response holds both surfaces and checks status without duplicate or dashboard remount (91.288666ms)
+✔ genuine rpc denial clears both surfaces and holds future renders (57.903084ms)
+✔ genuine read denial clears both surfaces and holds future renders (63.505333ms)
+✔ alternate pending auth null clears private document without write (55.748375ms)
+✔ alternate pending auth synthetic-b clears private document without write (56.849208ms)
+✔ alternate verified identity mismatch without callback tears down before RPC (49.590833ms)
+✖ same-user renewal preserves modal and weekly drafts, exact alternate row, no full dashboard remount (52.424875ms)
+✔ rerendered source invalidates old alternate binding before dispatch (64.196709ms)
+✔ unclicked prior-day alternate row cannot send a new-day request; started request freezes prior day (53.648125ms)
+ℹ tests 40
+ℹ suites 0
+ℹ pass 39
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1922.972792
+
+✖ failing tests:
+
+test at tests/wave7-operations/habits.test.cjs:13:1
+✖ same-user renewal preserves modal and weekly drafts, exact alternate row, no full dashboard remount (52.424875ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  'true' !== 'false'
+
+      at TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave7-operations/tests/wave7-operations/habits.test.cjs:13:729)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'true',
+    expected: 'false',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

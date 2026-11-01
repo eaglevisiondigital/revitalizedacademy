@@ -1,0 +1,26 @@
+{
+  "base": "38f086792addaa9b131cecaf261ef21f89f5ffc7",
+  "files": {
+    "member/member110.js": "005b9c70507d89b513e8fd60c64ccb3f3d39abfb3ce32bea5887d65e8bca4fcd",
+    "tests/wave7-operations/baseline.test.cjs": "bd10a75701243c45ad2de260a62dce0b4a2c8f8bf3d50790b23388d9867361ae",
+    "tests/wave7-operations/browser.cjs": "ef244a53dbb9638515c801d1c2bf792da17cc5412cbbf9e34393996404c3757e",
+    "tests/wave7-operations/fixture.cjs": "f4f0b417153c29534007054557c93fb6ddfac09bc9028fc58e152081aa76577b",
+    "tests/wave7-operations/habits.test.cjs": "f5113ecbd9f39f553cefab04c079af7897b6777b2064ddb2fe9bef1b0cf5220f",
+    "docs/orchestration/issue-54/wave7/author-browser.tap": "9e5089a0cec62b735f0ef2f7294f50af9b3311fd2f8c9239958673d5ac992131",
+    "docs/orchestration/issue-54/wave7/author-node.tap": "9a7ecd6f93920b20ce08e4dcf48ea581bff610d685eeb2c7b0063c1e66030c81",
+    "docs/orchestration/issue-54/wave7/baseline-reproductions.tap": "4688eb74cc3b6d1c9ec743194204107e4b7cd579d33bae8488e1fc4422adf4a1",
+    "docs/orchestration/issue-54/wave7/initial-harness-exposure-failure.tap": "a777725f57e9b92f9231e010fd31ec8c903f88df437d5a0d00647138a5db65e8",
+    "docs/orchestration/issue-54/wave7/initial-sandbox-browser-blocked.tap": "a83b9e9d344a4c7f08e3375f6e9ac1ddfb6e3286aa02f1b7061393111aa834fb",
+    "docs/orchestration/issue-54/wave7/second-harness-modal-failure.tap": "5e2a66210ca924c38c7da2f6f071ee0fbdbc668c4063c0eda731c4319fdce526",
+    "docs/orchestration/issue-54/wave7/REPORT.md": "cb6538aed000b04a76e01451c2bda795b814081d402abb5397587fe2f88a3a6c",
+    "docs/orchestration/issue-54/wave7/LOG_FORMAT.json": "9484191c20519d3d63bb6cd0c81ab6606ba5bbe1c0cb2c608c5bc9a814f8f3e5",
+    "tests/wave6-features/daily.test.cjs": "d91ccc0e208004114887e86f6bdc49b74d32de8ee54ad619f3506bee2548c81c",
+    "tests/wave6-features/daily-fixture.cjs": "404014b855f022c26b8c186d5fb6b5d975299216c8b236048b826e2f056dea7f",
+    "tests/wave6-qa/daily-adversarial.test.cjs": "a8a11221d9aa9da1c50f6a7b508343e81b92c2459b0659c6eb2fae60ac995a71",
+    "tests/wave4-member/dom-fixture.cjs": "f79f07a0710d84a3d080918bd0743ccb9f422a0abf5d85c3fe97e876376f7328",
+    "tests/wave4-member/browser-transport.cjs": "247c712b0e0c797c511270fb84bce11f5c04b8f50312dea9893a9a9178a74bb4",
+    "tests/wave4-member/continuity.test.cjs": "7143f4a73ca830d7f96eb0a71c03f7d766009f25b6f4aa6679078c0185e56cef",
+    "tests/wave4-member/modal-generation.test.cjs": "52ff178178660573c53eb1efbc98a5a417e509bfc1af5f7753bac4aa0d83b313",
+    "member/dashboard.html": "66d6f222fa12f2a1dd800ba34822df009ecb895c0a0b8fa561896419fe58c54a"
+  }
+}

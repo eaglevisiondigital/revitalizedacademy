@@ -17,7 +17,47 @@
   let dailyHabitReadPending = false;
   let dailyHabitReadSequence = 0;
   let dailyHabitAccessDenied = false;
-  const dailyHabitKey = (id) => memberUserId + ":" + id + ":" + new Date().toISOString().slice(0,10);
+  const habitButtons = new Map();
+  const habitWriteDetails = new Map();
+  const habitSurfaceRuns = {daily:0,habits:0};
+  const dailyHabitKey = (id,date=new Date().toISOString().slice(0,10)) => memberUserId + ":" + id + ":" + date;
+
+  function habitStatus(message,type=""){
+    showStatus(el("rm-today-status"),message,type);
+    const alternate=el("rm-habits-checkin-status");
+    if(alternate)showStatus(alternate,message,type);
+  }
+
+  function beginHabitSurface(surface){
+    habitSurfaceRuns[surface]++;
+    for(const [button,binding] of habitButtons)if(binding.surface===surface)habitButtons.delete(button);
+  }
+
+  function syncHabitButtons(){
+    for(const [button,binding] of habitButtons){
+      const state=dailyHabitWrites.get(binding.key),done=binding.done||state==="saved";
+      const valid=!memberDocumentEnded&&memberUserId===binding.userId&&memberSessionEpoch===binding.epoch;
+      const detail=habitWriteDetails.get(binding.key);
+      binding.note.textContent=detail&&(state==="saved"||state==="uncertain")?(state==="saved"?"Saved value: ":"Unconfirmed value: ")+detail.value+" ("+detail.action+").":"";
+      const currentDay=binding.date===new Date().toISOString().slice(0,10);
+      if(binding.note.textContent)binding.note.textContent+=" Date: "+binding.date+".";
+      button.disabled=!valid||dailyHabitAccessDenied||!currentDay||done||state==="pending";
+      button.textContent=!currentDay?"Previous day — reopen habits":done?(binding.surface==="daily"?"Done":"Logged Today ✓"):state==="pending"?(binding.surface==="daily"?"Saving…":"Mark Today"):state==="uncertain"?"Check status":binding.surface==="daily"?"Check In":"Mark Today";
+      if(state==="pending")button.setAttribute("aria-busy","true");else button.removeAttribute("aria-busy");
+    }
+  }
+
+  function bindHabitButton(button,habit,surface,done,sourceRow=null){
+    const date=new Date().toISOString().slice(0,10);
+    const snapshot=Object.freeze({...habit});
+    const binding={surface,sourceRow,run:habitSurfaceRuns[surface],date,key:dailyHabitKey(snapshot.habit_id,date),userId:memberUserId,epoch:memberSessionEpoch,done:Boolean(done)};
+    if(done)dailyHabitWrites.set(binding.key,"saved");
+    binding.note=document.createElement("small");
+    habitButtons.set(button,binding);
+    button.addEventListener("click",()=>completeHabit(snapshot,button,binding));
+    syncHabitButtons();
+    return binding.note;
+  }
 
   function dashboardTaskCurrent(task) {
     return !memberDocumentEnded && task.userId && task.userId === memberUserId &&
@@ -33,6 +73,8 @@
     dashboardRun++;
     memberUserId = null;
     dailyHabitWrites.clear();
+    habitButtons.clear();
+    habitWriteDetails.clear();
     dailyHabitReadSequence++;
     currentMember = activeSessionPrep = activeHealthProvider = currentFamilyTarget = null;
     activeAgreement = currentReferralCode = currentReferralShareUrl = currentReferralShareMessage = null;
@@ -137,6 +179,7 @@
   }
 
   function renderDailyActions(row){
+    beginHabitSurface("daily");
     if(dailyHabitAccessDenied)row=null;
     const summary=el("rm-today-summary");
     const habits=Array.isArray(row?.habits)?row.habits:[];
@@ -184,8 +227,8 @@
       btn.disabled=Boolean(done||held==="pending");
       btn.textContent=done?"Done":held==="pending"?"Saving…":held==="uncertain"?"Check status":"Check In";
       if(held==="uncertain")meta.textContent="Save status unconfirmed. Check status before taking another action.";
-      btn.addEventListener("click",()=>completeHabit(h,btn));
-      item.append(copy,btn);habitList.append(item);
+      const note=bindHabitButton(btn,h,"daily",h.completed_today);
+      item.append(copy,btn,note);habitList.append(item);
     });
 
     const mealList=el("rm-today-meals");mealList.replaceChildren();
@@ -237,8 +280,10 @@
     dailyHabitAccessDenied=true;
     dailyHabitReadSequence++;
     dailyHabitWrites.clear();
+    habitWriteDetails.clear();
     renderDailyActions(null);
-    showStatus(el("rm-today-status"),"Daily habit access is no longer authorized. Reload only after your access is restored.","error");
+    renderHabits([]);
+    habitStatus("Daily habit access is no longer authorized. Reload only after your access is restored.","error");
   }
 
   async function refreshDailyHabitStatus(task){
@@ -248,8 +293,9 @@
     const read=++dailyHabitReadSequence;
     try{
       const {data:authData,error:authError}=await client.auth.getUser();
-      if(!dashboardTaskCurrent(task)||dailyHabitAccessDenied||read!==dailyHabitReadSequence)return;
+      if(!dashboardTaskCurrent(task))return;
       if(!authError&&authData?.user?.id&&authData.user.id!==task.userId){endMemberDocument();return;}
+      if(dailyHabitAccessDenied||read!==dailyHabitReadSequence)return;
       if(authError||authData?.user?.id!==task.userId)throw Error("member_session_unverified");
       // Refresh only the existing daily-actions projection: unrelated in-progress forms stay mounted.
       const {data,error}=await client.from("my_app_bootstrap_v2").select("daily_actions").single();
@@ -257,40 +303,48 @@
       if(error?.code==="42501"){denyDailyHabitAccess();return;}
       if(error||!data?.daily_actions||!Array.isArray(data.daily_actions.habits))throw Error("daily_status_unavailable");
       renderDailyActions(data.daily_actions);
+      syncHabitButtons();
     }finally{dailyHabitReadPending=false;}
   }
 
-  async function completeHabit(habit,button){
+  async function completeHabit(habit,button,binding){
     const task={userId:memberUserId,epoch:memberSessionEpoch,run:dashboardRun};
     if(!dashboardTaskCurrent(task)||dailyHabitAccessDenied||!currentMember||!habit?.habit_id)return;
-    const key=dailyHabitKey(habit.habit_id),held=dailyHabitWrites.get(key);
-    if(habit.completed_today||held==="pending"||held==="saved")return;
-    const status=el("rm-today-status");
+    if(binding&&(binding.userId!==task.userId||binding.epoch!==task.epoch||binding.run!==habitSurfaceRuns[binding.surface]||binding.date!==new Date().toISOString().slice(0,10))){
+      habitStatus("This habit view is out of date. Reopen the current habit view before logging.","error");return;
+    }
+    const key=binding?.key||dailyHabitKey(habit.habit_id),held=dailyHabitWrites.get(key);
+    const sourceRows=[...habitButtons.values()].filter(item=>item.key===key&&item.sourceRow).map(item=>item.sourceRow);
+    if(habit.completed_today||held==="pending"||held==="saved"||sourceRows.some(row=>row._memberMutationPending))return;
     if(held==="uncertain"){
-      showStatus(status,"Checking the saved habit status; no new check-in will be sent.");
-      try{await refreshDailyHabitStatus(task);}catch{if(dashboardTaskCurrent(task))showStatus(status,"Habit status is unavailable. No new check-in was sent.","error");}
+      habitStatus("Checking the saved habit status; no new check-in will be sent.");
+      try{await refreshDailyHabitStatus(task);}catch{if(dashboardTaskCurrent(task))habitStatus("Habit status is unavailable. No new check-in was sent.","error");}
       return;
     }
     const payload={p_habit_id:habit.habit_id,p_value:Number(habit.target??1),p_note:null,p_checkin_date:key.slice(-10)};
-    if(!Number.isFinite(payload.p_value)||payload.p_value<0){showStatus(status,"This habit target is unavailable. Please ask your coach to review it.","error");return;}
+    if(!Number.isFinite(payload.p_value)||payload.p_value<0){habitStatus("This habit target is unavailable. Please ask your coach to review it.","error");return;}
     dailyHabitWrites.set(key,"pending");
-    if(button){button.disabled=true;button.textContent="Saving…";button.setAttribute("aria-busy","true");}
-    showStatus(status,"Saving habit check-in...");
+    sourceRows.forEach(row=>row._memberMutationPending=true);
+    habitWriteDetails.set(key,{value:payload.p_value,action:binding?.surface==="habits"?"Mark Today":"Check In"});
+    syncHabitButtons();
+    habitStatus("Saving habit check-in...");
     // Same-user renewal preserves the task. A different established identity ends this document.
     const sameActor=()=>!memberDocumentEnded&&memberUserId===task.userId&&memberSessionEpoch===task.epoch;
     let dispatched=false;
     const uncertain=()=>{
       if(!sameActor()||dailyHabitAccessDenied)return;
       dailyHabitWrites.set(key,"uncertain");
-      showStatus(status,"Habit save status is unconfirmed. Use Check status; no automatic retry will be sent.","error");
+      habitStatus("Habit save status is unconfirmed. Use Check status; no automatic retry will be sent.","error");
     };
     try{
       const {data:authData,error:authError}=await client.auth.getUser();
-      if(!dashboardTaskCurrent(task)||dailyHabitAccessDenied){if(sameActor())dailyHabitWrites.delete(key);return;}
+      if(!dashboardTaskCurrent(task)){if(sameActor()&&dailyHabitWrites.get(key)==="pending")dailyHabitWrites.delete(key);return;}
       if(!authError&&authData?.user?.id&&authData.user.id!==task.userId){endMemberDocument();return;}
+      // A changed view cancels dispatch, but must not mask a verified identity change.
+      if(dailyHabitAccessDenied||binding&&binding.run!==habitSurfaceRuns[binding.surface]){if(sameActor()&&dailyHabitWrites.get(key)==="pending")dailyHabitWrites.delete(key);return;}
       if(authError||authData?.user?.id!==task.userId){
         dailyHabitWrites.delete(key);
-        showStatus(status,"Your member session could not be verified. Please sign in again.","error");return;
+        habitStatus("Your member session could not be verified. Please sign in again.","error");return;
       }
       dispatched=true;
       const {error}=await client.rpc("check_in_my_habit",payload);
@@ -303,21 +357,17 @@
       }
       dailyHabitWrites.set(key,"saved");
       if(!dashboardTaskCurrent(task))return;
-      showStatus(status,payload.p_checkin_date===new Date().toISOString().slice(0,10)?"Habit completed.":"Previous day’s habit saved. Checking the current day’s status.","success");
-      try{await refreshDailyHabitStatus(task);}catch{if(sameActor())showStatus(status,"Habit saved. The dashboard could not refresh; no new check-in is needed.","success");}
+      habitStatus(payload.p_checkin_date===new Date().toISOString().slice(0,10)?"Habit completed.":"Previous day’s habit saved. Checking the current day’s status.","success");
+      try{await refreshDailyHabitStatus(task);}catch{if(sameActor())habitStatus("Habit saved. The dashboard could not refresh; no new check-in is needed.","success");}
     }catch{
       if(dispatched)uncertain();
       else if(sameActor()){
         dailyHabitWrites.delete(key);
-        showStatus(status,"Your member session could not be verified. No habit check-in was sent.","error");
+        habitStatus("Your member session could not be verified. No habit check-in was sent.","error");
       }
     }finally{
-      if(button){
-        button.removeAttribute("aria-busy");
-        const state=dailyHabitWrites.get(key);
-        button.disabled=!sameActor()||dailyHabitAccessDenied||state==="saved"||state==="pending";
-        button.textContent=state==="saved"?"Done":state==="uncertain"?"Check status":"Check In";
-      }
+      sourceRows.forEach(row=>row._memberMutationPending=false);
+      syncHabitButtons();
     }
   }
 
@@ -2051,10 +2101,15 @@
   }
 
   function renderHabits(rows) {
+    beginHabitSurface("habits");
+    if(dailyHabitAccessDenied)rows=[];
     const list = el("rm-habits");
     const history = el("rm-habit-history");
     list.replaceChildren();
     history.replaceChildren();
+    const status=document.createElement("p");status.id="rm-habits-checkin-status";
+    status.className="rm112-status";status.setAttribute("role","status");status.setAttribute("aria-live","polite");
+    list.append(status);
 
     const active = rows.filter((row) => row.status === "active");
     const historical = rows.filter((row) => ["paused","completed"].includes(row.status));
@@ -2063,7 +2118,7 @@
     el("rm-habit-history-count").textContent=String(historical.length);
 
     if (!active.length) {
-      list.innerHTML = '<div class="rm112-empty">No active habits yet. Add a rhythm when you are ready to start tracking it.</div>';
+      const empty=document.createElement("div");empty.className="rm112-empty";empty.textContent="No active habits yet. Add a rhythm when you are ready to start tracking it.";list.append(empty);
     }
 
     active.forEach((row) => {
@@ -2096,8 +2151,8 @@
       const doneToday = Number(row.today_value || 0) > 0;
       button.textContent = doneToday ? "Logged Today ✓" : "Mark Today";
       button.disabled = doneToday;
-      button.addEventListener("click", () => markHabit(row));
-      actions.append(button);
+      const note=bindHabitButton(button,{habit_id:row.id,target:1,completed_today:doneToday},"habits",doneToday,row);
+      actions.append(button,note);
 
       const pause=document.createElement("button");
       pause.type="button";
@@ -2351,29 +2406,6 @@
       return y + "-" + m + "-" + d;
     };
     return { start: iso(start), end: iso(end) };
-  }
-
-  async function markHabit(row) {
-    const task = {userId: memberUserId, epoch: memberSessionEpoch, run: dashboardRun};
-    if (!dashboardTaskCurrent(task) || row._memberMutationPending) return;
-    const payload = {p_habit_id: row.id, p_value: 1, p_note: null, p_checkin_date: new Date().toISOString().slice(0,10)};
-    row._memberMutationPending = true;
-    try {
-      const {data: authData, error: authError} = await client.auth.getUser();
-      if (!dashboardTaskCurrent(task)) return;
-      if (authError || authData?.user?.id !== task.userId) {
-        window.alert("Your member session could not be verified. Please sign in again.");
-        return;
-      }
-      const {error} = await client.rpc("check_in_my_habit", payload);
-      if (!dashboardTaskCurrent(task)) return;
-      if (error) { window.alert("Could not log this habit: " + error.message); return; }
-      await loadDashboard();
-    } catch (error) {
-      if (dashboardTaskCurrent(task)) window.alert(error.message || "This update could not be completed.");
-    } finally {
-      row._memberMutationPending = false;
-    }
   }
 
   async function updateGoalStatus(row,status) {

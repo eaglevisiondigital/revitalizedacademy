@@ -1,0 +1,16 @@
+[
+  {
+    "path": "docs/orchestration/issue-54/wave7/initial-sandbox-browser-blocked.tap",
+    "rawPath": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave7/operations-raw-logs/initial-sandbox-browser-blocked.tap",
+    "rawSha256": "682806208d9447d10b18106d977520708516926347acf5d01ac6490b0c351fdf",
+    "normalizedSha256": "a83b9e9d344a4c7f08e3375f6e9ac1ddfb6e3286aa02f1b7061393111aa834fb",
+    "change": "trailing spaces/tabs only; assertions and outcomes retained"
+  },
+  {
+    "path": "docs/orchestration/issue-54/wave7/second-harness-modal-failure.tap",
+    "rawPath": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave7/operations-raw-logs/second-harness-modal-failure.tap",
+    "rawSha256": "9014119804a5592425365d6caee24cc3f6e8bd6593bb8725841ea601243c8bc7",
+    "normalizedSha256": "5e2a66210ca924c38c7da2f6f071ee0fbdbc668c4063c0eda731c4319fdce526",
+    "change": "trailing spaces/tabs only; assertions and outcomes retained"
+  }
+]
