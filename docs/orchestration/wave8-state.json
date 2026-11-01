@@ -56,11 +56,13 @@
         "tests/wave8-operations/",
         "docs/orchestration/issue-54/wave8/"
       ],
-      "status": "ACTIVE",
+      "status": "ACTIVE_FOCUSED_QA_CORRECTION",
       "dispatch": {
         "kind": "native-spawn-result",
         "taskName": "/root/wave8_operations"
-      }
+      },
+      "implementationSha": "240c9d0f72528aba6975fe96e3d3fcd600021925",
+      "counterexample": "Successful verified absent user cleared only goals; QA whole-document fail retained; existing endMemberDocument correction authorized"
     },
     {
       "lane": "C",
@@ -117,5 +119,17 @@
     "existingPr59Updated": false,
     "status": "WAITING_INDEPENDENT_SOURCE_REVIEW",
     "automaticDeployAvoidance": "Final commit must carry [skip ci] [skip netlify]; no PR/candidate deployment; current canonical remains locked"
+  },
+  "currentFindings": {
+    "provisioning": "Author actual audited RPC workflow39PASS in each of3stages; original forbidden direct binding assertion remains FAIL; awaiting independent proof",
+    "profileAcl": "Effective captured UPDATE/INSERT denies42501 despite selfupdate policy; other privilege safety not certified",
+    "combinedAuthorPg": {
+      "assertions": 334,
+      "pass": 315,
+      "fail": 19,
+      "historicalExposureFail": 18,
+      "legacyDirectBindingPositiveFail": 1
+    },
+    "qa": "ACTIVE_NODE_NATIVE; PG queued untilauthorrelease"
   }
 }
