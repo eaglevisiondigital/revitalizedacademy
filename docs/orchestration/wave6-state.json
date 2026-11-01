@@ -91,7 +91,7 @@
       ]
     },
     {
-      "status": "ACTIVE",
+      "status": "RETURNED_INDEPENDENT_LOCAL_CHECKPOINT",
       "worktree": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave6-qa",
       "branch": "codex/rva-wave6-qa-20261101",
       "ownedPaths": [
@@ -105,7 +105,9 @@
         "kind": "native-spawn-result",
         "taskName": "/root/wave6_independent_qa"
       },
-      "baseSha": "9beae3bb40c154d2bfd623e8d2355b3a6c3cd306"
+      "baseSha": "9beae3bb40c154d2bfd623e8d2355b3a6c3cd306",
+      "implementationSha": "681ade8717594d588dbb55dc521f6b5a33c3a512",
+      "testedSource": "c987a57d03a128a64422083417f32c488902c201"
     }
   ],
   "pr59Observed": {
@@ -184,10 +186,10 @@
     "browserPass": 14,
     "historicalBaselineReproductionsSeparate": 3,
     "protectedFilesCompared": 413,
-    "evidencePinsVerified": 34,
+    "evidencePinsVerified": 37,
     "methodologyPromoted": 0
   },
-  "independentQaStatus": "ACTIVE_FINAL_COMBINED_SOURCE_VERIFICATION",
+  "independentQaStatus": "RETURNED",
   "independentFindings": [
     {
       "finding": "42501 followed by stale success revived daily card",
@@ -199,5 +201,38 @@
       "original": "2 FAIL",
       "correction": "C reuses existing document teardown; unchanged assertion PASS"
     }
-  ]
+  ],
+  "agentsRunning": false,
+  "independentResults": {
+    "nodeDomHttpSourcePass": 427,
+    "nativeBrowserPass": 20,
+    "executionInputPinsVerified": 40,
+    "evidencePinsVerified": 34,
+    "protectedFilesComparedByQA": 403,
+    "O01AssertionsIncludedIn427": 15,
+    "O01": "PASS_LOCAL_STRUCTURAL_ONLY",
+    "actualPostgresAssertions": 0,
+    "postgres": "BLOCKED_NOT_RUN",
+    "completePackages": {
+      "PASS": 1,
+      "FAIL": 3,
+      "BLOCKED": 42,
+      "NOT_RUN": 11
+    }
+  },
+  "masterPreservation": {
+    "acceptedBaseFiles": 1823,
+    "unchangedAcceptedFiles": 1815,
+    "existingApplicationRuntimeFilesChanged": [
+      "member/member110.js"
+    ],
+    "existingDetachedToolsChanged": 3,
+    "preservedRequirements": 101,
+    "preservedDetails": 10,
+    "preservedWorkstreams": 10,
+    "preservedOriginalPackageDefinitions": 57
+  },
+  "sourcePushed": false,
+  "productionRelease": "NO_GO",
+  "nextCheckpoint": "Owned disposable PostgreSQL capacity, exact cumulative baseline/corrected/revert and independent security/concurrency/rollback execution before release preparation; continue bounded unaffected local features."
 }
