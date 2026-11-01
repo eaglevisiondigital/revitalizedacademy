@@ -1,0 +1,141 @@
+{
+  "schemaVersion": "rva-specialist-implementation-handoff-v1",
+  "issue": 57,
+  "issueUrl": "https://github.com/eaglevisiondigital/revitalizedacademy/issues/57",
+  "wave": 2,
+  "status": "VERIFIED-LOCAL",
+  "completionScope": "Detached fictional catalog validator and educational lookup only; full Issue 57 and live Coach Companion remain open",
+  "agent": "/root/issue57_v3_preparation",
+  "masterThreadId": "01a0df6c-7089-7d21-9318-865f54ca8100",
+  "masterIssue": 58,
+  "workstreams": ["WS-04"],
+  "repository": "eaglevisiondigital/revitalizedacademy",
+  "branch": "codex/rva-wave2-v3-20261101",
+  "worktree": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave2-v3",
+  "baseSha": "cbc1a925913867dab27777bd28c3fc36c9b04b68",
+  "acceptedCoordinationSha": "fc6737415da36b4306afa0060a525eca2f1131ca",
+  "initialWorktreeClean": true,
+  "commitShaResolution": "Exact containing commit SHA is returned to Master after local commit; no self-referential commit hash embedded in this file",
+  "pushAuthorized": false,
+  "sharedRuntimeWriteAllowed": false,
+  "newOwnedPaths": [
+    "tools/coach-companion-catalog/index.cjs",
+    "tests/coach-companion-catalog.cjs",
+    "docs/orchestration/issue-57/wave2/REPORT.md",
+    "docs/orchestration/issue-57/wave2/node-tests.tap",
+    "docs/orchestration/issue-57/wave2/handoff.json"
+  ],
+  "features": [
+    "Bounded strict fictional JSON catalog/request validation with typed failures",
+    "Exact educational Driver/topic matching with deterministic frozen results and citation pins",
+    "Catalog/source/claim target integrity and independently pinned synthetic verifier decisions",
+    "Unapproved category/speaker/scope, source/version mismatch, conflict, revoked/superseded and missing approval holds",
+    "Relevant held claim suppresses topic; unused source holds exposed in validation",
+    "Private/person/free-form payload and real audience/case-operation denial",
+    "Explicit clinical/dosing/safety holds",
+    "Source prompt/HTML instructions remain inert marked text",
+    "Production/trusted modes unavailable before processing or verifier invocation",
+    "No adapter network/database/persistence/telemetry/I/O or existing V3 imports"
+  ],
+  "api": {
+    "entrypoint": "tools/coach-companion-catalog/index.cjs",
+    "exports": ["VERSION", "CATALOG_SCHEMA", "REQUEST_SCHEMA", "LIMITS", "fingerprint", "validateCatalog", "lookupEducational"],
+    "mode": "fictional-preview only",
+    "audience": "fictional_reviewer only",
+    "supportedOperation": "educational_lookup",
+    "supportedClaimKind": "education",
+    "supportedScope": "global",
+    "validationStatuses": ["valid_catalog", "held_for_review"],
+    "lookupStatuses": ["supported_education", "no_approved_support", "held_for_review", "safety_hold"],
+    "productionEligible": false,
+    "fixtureOnly": true,
+    "trustedRegistryImplemented": false,
+    "fixtureVerifierAuthenticatesRealApproval": false,
+    "dependencies": ["node:crypto", "node:util"],
+    "requiresV3EngineOrConfig": false
+  },
+  "tests": {
+    "finalCommand": "node --test --test-reporter=tap tests/coach-companion-catalog.cjs",
+    "nodeVersion": "v24.20.0",
+    "exitCode": 0,
+    "passed": 87,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "durationMs": 159.005916,
+    "evidence": "docs/orchestration/issue-57/wave2/node-tests.tap",
+    "syntaxChecks": ["node --check tools/coach-companion-catalog/index.cjs", "node --check tests/coach-companion-catalog.cjs"],
+    "syntaxChecksPassed": true,
+    "whitespaceCheckPassed": true,
+    "firstRun": {"passed": 83, "failed": 2, "total": 85, "cause": "Test fixture helpers built verifier pins from malformed null-approval/oversize input before reaching adapter", "resolution": "Capture fixture pins before intentional corruption"},
+    "secondRun": {"passed": 85, "failed": 0, "total": 85},
+    "finalAddedCases": ["Aggregate canonical serialized-byte budget including escaping", "Bounded failure for throwing active-object traps"],
+    "previous42EngineTestsRerun": false,
+    "preservationInsteadOfEngineRerun": true,
+    "liveAuthRlsBrowserOrRealSourceTests": false,
+    "selfContainedDependencySmokePassed": true
+  },
+  "cpMatrix": [
+    {"id": "CP-01", "actual": "PASS", "coverage": "Exact educational result and pinned citations", "limit": "Fictional sources only"},
+    {"id": "CP-02", "actual": "PASS", "coverage": "Intake/participant/outsider/unknown-speaker and matching held-content suppression", "limit": "No real corpus review"},
+    {"id": "CP-03", "actual": "PASS", "coverage": "Changed/missing source/version/text, duplicate IDs and catalog/request integrity mismatch", "limit": "No raw archive or manifest completeness verification"},
+    {"id": "CP-04", "actual": "PASS-SYNTHETIC", "coverage": "Missing/forged/rehashed approval, malformed/async/error verifier and unavailable trusted/production mode", "limit": "No authenticated registry; fixture callback only"},
+    {"id": "CP-05", "actual": "PASS", "coverage": "Embedded tool/HTML/approval instructions remain inert source text", "limit": "No LLM or browser consumer integration"},
+    {"id": "CP-06", "actual": "PASS-SYNTHETIC", "coverage": "Pending/revoked/superseded states, changed generation and stale request pins", "limit": "No registry or cache; adapter has no cache"},
+    {"id": "CP-07", "actual": "PASS", "coverage": "Unsupported rule kinds/missions/sequences, conflict/receipt/attribution/scope holds", "limit": "No founder decisions invented"},
+    {"id": "CP-08", "actual": "PASS", "coverage": "Explicit clinical/dosing intent and request/claim safety flag suppression", "limit": "No natural-language medical classifier or live escalation"},
+    {"id": "CP-09", "actual": "PASS", "coverage": "Private/person/free-form/nested/getter payload rejection", "limit": "No guarantee that falsely labeled arbitrary prose contains no PHI"},
+    {"id": "CP-10", "actual": "PASS-BOUNDARY-ONLY", "coverage": "Real audiences, missing audience, tenant/person fields and case operations denied", "limit": "No actual account, organization/RLS or role integration"},
+    {"id": "CP-11", "actual": "PASS", "coverage": "Empty/no-match/null/malformed/unavailable-verifier bounded statuses", "limit": "No provider/network exists"},
+    {"id": "CP-12", "actual": "PASS", "coverage": "Determinism, immutability, result limits, unchanged inputs and built-in-only subprocess", "limit": "No deployed journey verification"}
+  ],
+  "newCodeSha256": {
+    "tools/coach-companion-catalog/index.cjs": "5ac8a0d1f5cfaab995c937a8685cdbeb5fcc71fe7bce0316f60cf7d0b1734266",
+    "tests/coach-companion-catalog.cjs": "ceb5e8b07f3b82e59ce661380999776c4f4b33787eb20470c99f413e333b545d"
+  },
+  "preservedSha256": {
+    "config/roadmap-v3/foundation.json": "3e378451b2c57af9d335a003490d7704d8862347a086f10e28522b37f5b10cba",
+    "js/vitality-roadmap-v3-intelligence.cjs": "e79a21ac9b1b5aa1b2d6795cd943bda1a655ee410d4afedffa82b98dafd94e5c",
+    "tests/roadmap-v3-intelligence.cjs": "7dec684955ef1fe39f1054223c07a2e11dd6c1cf299e60b4c096b76f22c62319",
+    "js/vitality-roadmap-processing.cjs": "2ce05fea84879b5d3fd0948994191b0b81737336f7b5178aa0bb996e0619fc9e",
+    "js/vitality-roadmap-founder-voice.cjs": "47a2165dd9dc59486c17b6f02014490db12c8a340113ba0d9c0f376d6ec345db"
+  },
+  "securityPrivacy": {
+    "newMethodologyInventedOrPromoted": false,
+    "realSourcesOr113IntakeRead": false,
+    "older21RecordingCorpusRead": false,
+    "privateClientDataOrCredentialsRead": false,
+    "existingEngineConfigAuthWorkerOrSharedFileEdits": false,
+    "networkDatabasePersistenceInAdapter": false,
+    "grantRecoveryConsentMigrationGenerationScoringPdfDeliveryOrDeployment": false,
+    "productionIdentityOrStateRefreshed": false,
+    "callbackOrProxySandboxClaimed": false,
+    "realApprovalAuthenticationClaimed": false
+  },
+  "sharedContracts": [
+    {"name": "Fictional catalog and educational lookup v1", "status": "Implemented only in detached new module; no shared endpoint"},
+    {"name": "Authenticated approval registry", "status": "Unavailable; production/trusted modes fail closed"},
+    {"name": "WS-02 identity / WS-05 audience / WS-04 safety and source admission", "status": "Unchanged and unresolved for live integration"}
+  ],
+  "remainingDecisions": [
+    "Authoritative current MK10/full Holistic Clarity sources and private custody/manifest reconciliation",
+    "113-item source/speaker/provenance and scoped founder approval/conflict decisions",
+    "Real approval-registry trust root, revocation and review authority",
+    "Live Coach Companion audience/permissions, safety escalation and retention",
+    "Separate exact integration/release/real-source assignment and authorization"
+  ],
+  "integrationRisks": [
+    "Mistaking a synthetic callback or hashes for real approval authentication",
+    "Mistaking a fictional marker for proof that arbitrary prose contains no private data",
+    "Treating source excerpts as executable HTML or higher-trust instructions",
+    "Overstating CP-10 as live Auth/RLS certification or CP-08 as a semantic safety classifier",
+    "Merging unrelated old V3-base changes instead of this new-files-only patch"
+  ],
+  "documentation": {
+    "report": "docs/orchestration/issue-57/wave2/REPORT.md",
+    "sharedBuildStateOrRegisterEdited": false,
+    "summaryOwner": "Master; exclusive assignment permits only new owned paths"
+  },
+  "nextSafeAction": "Independent QA applies/reviews only the new owned files on the coordination base; reconcile real source/approval/audience contracts before any separately assigned live integration",
+  "chatHandoff": "Wave 2 Issue 57 implemented a detached fictional catalog validator/educational lookup with 87 passing local tests across CP-01–12. Existing V3 code/config/worker is preserved, and production/trusted modes always deny. Synthetic receipts authenticate nothing real. Patch contains new owned code/tests/docs only; no source promotion, private client action, push or release. Live source custody, approvals, safety/permissions/retention remain separate decisions."
+}

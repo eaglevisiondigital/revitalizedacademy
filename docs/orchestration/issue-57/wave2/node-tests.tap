@@ -1,0 +1,532 @@
+TAP version 13
+# Subtest: CP-01 valid fictional catalog returns exact educational text and every citation pin
+ok 1 - CP-01 valid fictional catalog returns exact educational text and every citation pin
+  ---
+  duration_ms: 3.851958
+  type: 'test'
+  ...
+# Subtest: CP-02 held source cannot enter retrieval: intake/verified_founder
+ok 2 - CP-02 held source cannot enter retrieval: intake/verified_founder
+  ---
+  duration_ms: 0.814708
+  type: 'test'
+  ...
+# Subtest: CP-02 held source cannot enter retrieval: participant/participant
+ok 3 - CP-02 held source cannot enter retrieval: participant/participant
+  ---
+  duration_ms: 1.281708
+  type: 'test'
+  ...
+# Subtest: CP-02 held source cannot enter retrieval: outside/outside_expert
+ok 4 - CP-02 held source cannot enter retrieval: outside/outside_expert
+  ---
+  duration_ms: 0.547125
+  type: 'test'
+  ...
+# Subtest: CP-02 held source cannot enter retrieval: founder_foundation/unknown
+ok 5 - CP-02 held source cannot enter retrieval: founder_foundation/unknown
+  ---
+  duration_ms: 0.754958
+  type: 'test'
+  ...
+# Subtest: CP-02 relevant held content is not hidden by a valid matching item
+ok 6 - CP-02 relevant held content is not hidden by a valid matching item
+  ---
+  duration_ms: 0.758125
+  type: 'test'
+  ...
+# Subtest: CP-02 unused unapproved source is still visible as a source hold
+ok 7 - CP-02 unused unapproved source is still visible as a source hold
+  ---
+  duration_ms: 0.531833
+  type: 'test'
+  ...
+# Subtest: CP-03 changed or missing source/claim evidence is held: source-bytes
+ok 8 - CP-03 changed or missing source/claim evidence is held: source-bytes
+  ---
+  duration_ms: 0.596917
+  type: 'test'
+  ...
+# Subtest: CP-03 changed or missing source/claim evidence is held: source-version
+ok 9 - CP-03 changed or missing source/claim evidence is held: source-version
+  ---
+  duration_ms: 1.321583
+  type: 'test'
+  ...
+# Subtest: CP-03 changed or missing source/claim evidence is held: claim-text
+ok 10 - CP-03 changed or missing source/claim evidence is held: claim-text
+  ---
+  duration_ms: 0.810291
+  type: 'test'
+  ...
+# Subtest: CP-03 changed or missing source/claim evidence is held: missing-source
+ok 11 - CP-03 changed or missing source/claim evidence is held: missing-source
+  ---
+  duration_ms: 0.6545
+  type: 'test'
+  ...
+# Subtest: CP-03 duplicate source IDs reject the complete envelope
+ok 12 - CP-03 duplicate source IDs reject the complete envelope
+  ---
+  duration_ms: 0.566875
+  type: 'test'
+  ...
+# Subtest: CP-03 duplicate claim IDs reject the complete envelope
+ok 13 - CP-03 duplicate claim IDs reject the complete envelope
+  ---
+  duration_ms: 0.577875
+  type: 'test'
+  ...
+# Subtest: CP-03 catalog checksum and explicit request version/hash pins cannot be substituted
+ok 14 - CP-03 catalog checksum and explicit request version/hash pins cannot be substituted
+  ---
+  duration_ms: 0.458667
+  type: 'test'
+  ...
+# Subtest: CP-03 unsupported nested archive manifest is rejected rather than claiming completeness
+ok 15 - CP-03 unsupported nested archive manifest is rejected rather than claiming completeness
+  ---
+  duration_ms: 0.26275
+  type: 'test'
+  ...
+# Subtest: CP-04 local approved flags and hashes without a fixture verifier grant nothing
+ok 16 - CP-04 local approved flags and hashes without a fixture verifier grant nothing
+  ---
+  duration_ms: 0.21425
+  type: 'test'
+  ...
+# Subtest: CP-04 independently pinned fixture decision rejects forged receiptHash
+ok 17 - CP-04 independently pinned fixture decision rejects forged receiptHash
+  ---
+  duration_ms: 0.292417
+  type: 'test'
+  ...
+# Subtest: CP-04 independently pinned fixture decision rejects forged targetHash
+ok 18 - CP-04 independently pinned fixture decision rejects forged targetHash
+  ---
+  duration_ms: 0.261958
+  type: 'test'
+  ...
+# Subtest: CP-04 independently pinned fixture decision rejects forged generation
+ok 19 - CP-04 independently pinned fixture decision rejects forged generation
+  ---
+  duration_ms: 0.487709
+  type: 'test'
+  ...
+# Subtest: CP-04 recomputing all local hashes does not change independent synthetic verifier pins
+ok 20 - CP-04 recomputing all local hashes does not change independent synthetic verifier pins
+  ---
+  duration_ms: 0.339542
+  type: 'test'
+  ...
+# Subtest: CP-04 malformed verifier response/exception never leaks raw exception text
+ok 21 - CP-04 malformed verifier response/exception never leaks raw exception text
+  ---
+  duration_ms: 0.664708
+  type: 'test'
+  ...
+# Subtest: CP-04 production/trusted mode fails before verifier or payload processing: production
+ok 22 - CP-04 production/trusted mode fails before verifier or payload processing: production
+  ---
+  duration_ms: 0.182084
+  type: 'test'
+  ...
+# Subtest: CP-04 production/trusted mode fails before verifier or payload processing: trusted
+ok 23 - CP-04 production/trusted mode fails before verifier or payload processing: trusted
+  ---
+  duration_ms: 0.183417
+  type: 'test'
+  ...
+# Subtest: CP-04 production/trusted mode fails before verifier or payload processing: real-source
+ok 24 - CP-04 production/trusted mode fails before verifier or payload processing: real-source
+  ---
+  duration_ms: 0.145958
+  type: 'test'
+  ...
+# Subtest: CP-04 production/trusted mode fails before verifier or payload processing: undefined
+ok 25 - CP-04 production/trusted mode fails before verifier or payload processing: undefined
+  ---
+  duration_ms: 0.146875
+  type: 'test'
+  ...
+# Subtest: CP-05 embedded tool, HTML and approval instructions remain exact inert source text
+ok 26 - CP-05 embedded tool, HTML and approval instructions remain exact inert source text
+  ---
+  duration_ms: 0.49125
+  type: 'test'
+  ...
+# Subtest: CP-06 local pending state cannot be retrieved
+ok 27 - CP-06 local pending state cannot be retrieved
+  ---
+  duration_ms: 0.274667
+  type: 'test'
+  ...
+# Subtest: CP-06 local revoked state cannot be retrieved
+ok 28 - CP-06 local revoked state cannot be retrieved
+  ---
+  duration_ms: 0.3275
+  type: 'test'
+  ...
+# Subtest: CP-06 local superseded state cannot be retrieved
+ok 29 - CP-06 local superseded state cannot be retrieved
+  ---
+  duration_ms: 0.292167
+  type: 'test'
+  ...
+# Subtest: CP-06 current synthetic verifier revoked overrides stale approved catalog
+ok 30 - CP-06 current synthetic verifier revoked overrides stale approved catalog
+  ---
+  duration_ms: 0.271083
+  type: 'test'
+  ...
+# Subtest: CP-06 current synthetic verifier superseded overrides stale approved catalog
+ok 31 - CP-06 current synthetic verifier superseded overrides stale approved catalog
+  ---
+  duration_ms: 0.251417
+  type: 'test'
+  ...
+# Subtest: CP-06 generation changes invalidate stale requests and receipts without a cache
+ok 32 - CP-06 generation changes invalidate stale requests and receipts without a cache
+  ---
+  duration_ms: 0.431334
+  type: 'test'
+  ...
+# Subtest: CP-07 educational adapter holds unsupported rule kind selection
+ok 33 - CP-07 educational adapter holds unsupported rule kind selection
+  ---
+  duration_ms: 0.294959
+  type: 'test'
+  ...
+# Subtest: CP-07 educational adapter holds unsupported rule kind sequence
+ok 34 - CP-07 educational adapter holds unsupported rule kind sequence
+  ---
+  duration_ms: 0.279042
+  type: 'test'
+  ...
+# Subtest: CP-07 educational adapter holds unsupported rule kind monitoring
+ok 35 - CP-07 educational adapter holds unsupported rule kind monitoring
+  ---
+  duration_ms: 0.270208
+  type: 'test'
+  ...
+# Subtest: CP-07 educational adapter holds unsupported rule kind progression
+ok 36 - CP-07 educational adapter holds unsupported rule kind progression
+  ---
+  duration_ms: 0.280584
+  type: 'test'
+  ...
+# Subtest: CP-07 educational adapter holds unsupported rule kind adaptation
+ok 37 - CP-07 educational adapter holds unsupported rule kind adaptation
+  ---
+  duration_ms: 0.412292
+  type: 'test'
+  ...
+# Subtest: CP-07 educational adapter holds unsupported rule kind relationship
+ok 38 - CP-07 educational adapter holds unsupported rule kind relationship
+  ---
+  duration_ms: 0.386833
+  type: 'test'
+  ...
+# Subtest: CP-07 educational adapter holds unsupported rule kind mission40
+ok 39 - CP-07 educational adapter holds unsupported rule kind mission40
+  ---
+  duration_ms: 0.392083
+  type: 'test'
+  ...
+# Subtest: CP-07 unresolved source conflict is held
+ok 40 - CP-07 unresolved source conflict is held
+  ---
+  duration_ms: 0.3775
+  type: 'test'
+  ...
+# Subtest: CP-07 unresolved claim conflict is held
+ok 41 - CP-07 unresolved claim conflict is held
+  ---
+  duration_ms: 0.333542
+  type: 'test'
+  ...
+# Subtest: CP-07 resolved conflict needs a pinned decision receipt
+ok 42 - CP-07 resolved conflict needs a pinned decision receipt
+  ---
+  duration_ms: 0.935459
+  type: 'test'
+  ...
+# Subtest: CP-07 source scope, speaker attribution and claim assessment scope cannot be inferred
+ok 43 - CP-07 source scope, speaker attribution and claim assessment scope cannot be inferred
+  ---
+  duration_ms: 0.796125
+  type: 'test'
+  ...
+# Subtest: CP-08 clinical request is held before verifier
+ok 44 - CP-08 clinical request is held before verifier
+  ---
+  duration_ms: 0.136792
+  type: 'test'
+  ...
+# Subtest: CP-08 dosing request is held before verifier
+ok 45 - CP-08 dosing request is held before verifier
+  ---
+  duration_ms: 0.131667
+  type: 'test'
+  ...
+# Subtest: CP-08 synthetic safety flags suppress output at request and claim boundaries
+ok 46 - CP-08 synthetic safety flags suppress output at request and claim boundaries
+  ---
+  duration_ms: 0.886167
+  type: 'test'
+  ...
+# Subtest: CP-09 private/person/free-form request field rejected: clientId
+ok 47 - CP-09 private/person/free-form request field rejected: clientId
+  ---
+  duration_ms: 0.285333
+  type: 'test'
+  ...
+# Subtest: CP-09 private/person/free-form request field rejected: personId
+ok 48 - CP-09 private/person/free-form request field rejected: personId
+  ---
+  duration_ms: 0.2
+  type: 'test'
+  ...
+# Subtest: CP-09 private/person/free-form request field rejected: answers
+ok 49 - CP-09 private/person/free-form request field rejected: answers
+  ---
+  duration_ms: 0.170667
+  type: 'test'
+  ...
+# Subtest: CP-09 private/person/free-form request field rejected: assessment
+ok 50 - CP-09 private/person/free-form request field rejected: assessment
+  ---
+  duration_ms: 0.168625
+  type: 'test'
+  ...
+# Subtest: CP-09 private/person/free-form request field rejected: report
+ok 51 - CP-09 private/person/free-form request field rejected: report
+  ---
+  duration_ms: 0.171542
+  type: 'test'
+  ...
+# Subtest: CP-09 private/person/free-form request field rejected: document
+ok 52 - CP-09 private/person/free-form request field rejected: document
+  ---
+  duration_ms: 0.166542
+  type: 'test'
+  ...
+# Subtest: CP-09 private/person/free-form request field rejected: session
+ok 53 - CP-09 private/person/free-form request field rejected: session
+  ---
+  duration_ms: 0.174791
+  type: 'test'
+  ...
+# Subtest: CP-09 private/person/free-form request field rejected: actor
+ok 54 - CP-09 private/person/free-form request field rejected: actor
+  ---
+  duration_ms: 0.135625
+  type: 'test'
+  ...
+# Subtest: CP-09 private/person/free-form request field rejected: organizationId
+ok 55 - CP-09 private/person/free-form request field rejected: organizationId
+  ---
+  duration_ms: 0.176042
+  type: 'test'
+  ...
+# Subtest: CP-09 private/person/free-form request field rejected: tenantId
+ok 56 - CP-09 private/person/free-form request field rejected: tenantId
+  ---
+  duration_ms: 0.149292
+  type: 'test'
+  ...
+# Subtest: CP-09 private/person/free-form request field rejected: approvalJson
+ok 57 - CP-09 private/person/free-form request field rejected: approvalJson
+  ---
+  duration_ms: 0.355334
+  type: 'test'
+  ...
+# Subtest: CP-09 private/person/free-form request field rejected: query
+ok 58 - CP-09 private/person/free-form request field rejected: query
+  ---
+  duration_ms: 0.171375
+  type: 'test'
+  ...
+# Subtest: CP-09 nested private fields are rejected without invoking getters or verifier
+ok 59 - CP-09 nested private fields are rejected without invoking getters or verifier
+  ---
+  duration_ms: 0.386875
+  type: 'test'
+  ...
+# Subtest: CP-10 only fictional-reviewer audience supported, no real role admission: coach
+ok 60 - CP-10 only fictional-reviewer audience supported, no real role admission: coach
+  ---
+  duration_ms: 0.179208
+  type: 'test'
+  ...
+# Subtest: CP-10 only fictional-reviewer audience supported, no real role admission: client
+ok 61 - CP-10 only fictional-reviewer audience supported, no real role admission: client
+  ---
+  duration_ms: 0.14075
+  type: 'test'
+  ...
+# Subtest: CP-10 only fictional-reviewer audience supported, no real role admission: family
+ok 62 - CP-10 only fictional-reviewer audience supported, no real role admission: family
+  ---
+  duration_ms: 0.131625
+  type: 'test'
+  ...
+# Subtest: CP-10 only fictional-reviewer audience supported, no real role admission: unavailable_audience
+ok 63 - CP-10 only fictional-reviewer audience supported, no real role admission: unavailable_audience
+  ---
+  duration_ms: 0.1295
+  type: 'test'
+  ...
+# Subtest: CP-10 missing audience and unavailable operation fail closed; no permissions are inferred
+ok 64 - CP-10 missing audience and unavailable operation fail closed; no permissions are inferred
+  ---
+  duration_ms: 0.502167
+  type: 'test'
+  ...
+# Subtest: CP-11 empty catalog, missing topic/driver match and unavailable verifier return bounded statuses
+ok 65 - CP-11 empty catalog, missing topic/driver match and unavailable verifier return bounded statuses
+  ---
+  duration_ms: 0.793708
+  type: 'test'
+  ...
+# Subtest: CP-11 asynchronous verifier is unsupported and fails closed without an unhandled rejection
+ok 66 - CP-11 asynchronous verifier is unsupported and fails closed without an unhandled rejection
+  ---
+  duration_ms: 9.492
+  type: 'test'
+  ...
+# Subtest: CP-12 deterministic frozen output does not mutate any catalog/request and sorts/limits exact matches
+ok 67 - CP-12 deterministic frozen output does not mutate any catalog/request and sorts/limits exact matches
+  ---
+  duration_ms: 1.648417
+  type: 'test'
+  ...
+# Subtest: CP-12 adapter is self-contained: isolated fresh Node process denies every dependency except built-ins
+ok 68 - CP-12 adapter is self-contained: isolated fresh Node process denies every dependency except built-ins
+  ---
+  duration_ms: 45.156667
+  type: 'test'
+  ...
+# Subtest: malformed or nonfictional schema is rejected without throwing: c => { c.claims[0].unknown = true; }
+ok 69 - malformed or nonfictional schema is rejected without throwing: c => { c.claims[0].unknown = true; }
+  ---
+  duration_ms: 0.392375
+  type: 'test'
+  ...
+# Subtest: malformed or nonfictional schema is rejected without throwing: c => { c.claims[0].approval.scopes = 'education'; }
+ok 70 - malformed or nonfictional schema is rejected without throwing: c => { c.claims[0].approval.scopes = 'education'; }
+  ---
+  duration_ms: 0.219292
+  type: 'test'
+  ...
+# Subtest: malformed or nonfictional schema is rejected without throwing: c => { c.claims[0].approval = null; }
+ok 71 - malformed or nonfictional schema is rejected without throwing: c => { c.claims[0].approval = null; }
+  ---
+  duration_ms: 0.191458
+  type: 'test'
+  ...
+# Subtest: malformed or nonfictional schema is rejected without throwing: c => { c.sources[0].id = 'real-source'; }
+ok 72 - malformed or nonfictional schema is rejected without throwing: c => { c.sources[0].id = 'real-source'; }
+  ---
+  duration_ms: 0.177125
+  type: 'test'
+  ...
+# Subtest: malformed or nonfictional schema is rejected without throwing: c => { c.dataClass = 'real'; }
+ok 73 - malformed or nonfictional schema is rejected without throwing: c => { c.dataClass = 'real'; }
+  ---
+  duration_ms: 0.178209
+  type: 'test'
+  ...
+# Subtest: malformed or nonfictional schema is rejected without throwing: c => { c.claims[0].text = 'Not fictional text'; }
+ok 74 - malformed or nonfictional schema is rejected without throwing: c => { c.claims[0].text = 'Not fictional text'; }
+  ---
+  duration_ms: 0.178
+  type: 'test'
+  ...
+# Subtest: non-JSON or malformed root fails closed: [object Null]
+ok 75 - non-JSON or malformed root fails closed: [object Null]
+  ---
+  duration_ms: 0.073
+  type: 'test'
+  ...
+# Subtest: non-JSON or malformed root fails closed: [object Array]
+ok 76 - non-JSON or malformed root fails closed: [object Array]
+  ---
+  duration_ms: 0.047292
+  type: 'test'
+  ...
+# Subtest: non-JSON or malformed root fails closed: [object String]
+ok 77 - non-JSON or malformed root fails closed: [object String]
+  ---
+  duration_ms: 0.039958
+  type: 'test'
+  ...
+# Subtest: non-JSON or malformed root fails closed: [object Boolean]
+ok 78 - non-JSON or malformed root fails closed: [object Boolean]
+  ---
+  duration_ms: 0.040625
+  type: 'test'
+  ...
+# Subtest: non-JSON or malformed root fails closed: [object Number]
+ok 79 - non-JSON or malformed root fails closed: [object Number]
+  ---
+  duration_ms: 0.03775
+  type: 'test'
+  ...
+# Subtest: non-JSON or malformed root fails closed: [object Date]
+ok 80 - non-JSON or malformed root fails closed: [object Date]
+  ---
+  duration_ms: 0.041625
+  type: 'test'
+  ...
+# Subtest: non-JSON or malformed root fails closed: [object Map]
+ok 81 - non-JSON or malformed root fails closed: [object Map]
+  ---
+  duration_ms: 0.038208
+  type: 'test'
+  ...
+# Subtest: non-JSON or malformed root fails closed: [object Object]
+ok 82 - non-JSON or malformed root fails closed: [object Object]
+  ---
+  duration_ms: 0.044792
+  type: 'test'
+  ...
+# Subtest: prototype keys, inherited data, accessors, symbols, cycles, sparse arrays and extra array keys are rejected
+ok 83 - prototype keys, inherited data, accessors, symbols, cycles, sparse arrays and extra array keys are rejected
+  ---
+  duration_ms: 0.959
+  type: 'test'
+  ...
+# Subtest: bounded input rejects oversized bytes, text, depth, collections and result limits
+ok 84 - bounded input rejects oversized bytes, text, depth, collections and result limits
+  ---
+  duration_ms: 3.710792
+  type: 'test'
+  ...
+# Subtest: serialized byte budget includes JSON escaping and large total payloads
+ok 85 - serialized byte budget includes JSON escaping and large total payloads
+  ---
+  duration_ms: 1.025792
+  type: 'test'
+  ...
+# Subtest: throwing active-object traps return bounded failure rather than raw exception details
+ok 86 - throwing active-object traps return bounded failure rather than raw exception details
+  ---
+  duration_ms: 0.196292
+  type: 'test'
+  ...
+# Subtest: option accessors and extra keys are rejected before a callback can run
+ok 87 - option accessors and extra keys are rejected before a callback can run
+  ---
+  duration_ms: 0.190375
+  type: 'test'
+  ...
+1..87
+# tests 87
+# suites 0
+# pass 87
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 159.005916
