@@ -1,0 +1,35 @@
+{
+  "base": "024b1c20c802ce6a9470fc46fabdd3bae75ed980",
+  "branch": "codex/rva-wave5-security-20261101",
+  "worktree": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security",
+  "scope": "LOCAL_ONLY_ALEX_PAUSED",
+  "current": {
+    "securityAssertions": 45,
+    "pass": 45,
+    "fail": 0,
+    "wave4RegressionPass": 48
+  },
+  "historicalThree": {
+    "pass": 0,
+    "fail": 3
+  },
+  "beforeAndReverted": {
+    "eachPass": 27,
+    "eachFail": 18
+  },
+  "productionCalls": 0,
+  "newFunctions": 0,
+  "changedFunctions": 0,
+  "executeGrants": 0,
+  "restrictivePolicies": 6,
+  "authenticatedTruncateRevokes": 4,
+  "sharedContract": "Existing actor-bound wave4_membership_allowed helper unchanged; LaneB owns usage/session/recalc; new policy dependency allparticipant scope +coaching.manage",
+  "compatibilityHolds": [
+    "CRM-only Support access changes involving membership",
+    "Financial-only direct membership write",
+    "future paid-member current SELECTfalse",
+    "managedAuth/service/fulljourney"
+  ],
+  "manifestSha256": "da8d0e30d822dcc156243d7d2a17d59307aac8c5db8111fb199bcb0c3514c3b6",
+  "receiptSha256": "a75d0b495aedaa57df454d216ae7016aff470846f7ea3402fa5eae0b711d4d91"
+}

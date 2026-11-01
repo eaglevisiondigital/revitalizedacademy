@@ -1,0 +1,65 @@
+{
+  "base": "024b1c20c802ce6a9470fc46fabdd3bae75ed980",
+  "scope": "LOCAL_NONPRODUCTION_ONLY",
+  "objects": [
+    {
+      "table": "client_memberships",
+      "name": "wave5_client_memberships_scope_select"
+    },
+    {
+      "table": "client_memberships",
+      "name": "wave5_client_memberships_scope_insert"
+    },
+    {
+      "table": "client_memberships",
+      "name": "wave5_client_memberships_scope_update"
+    },
+    {
+      "table": "client_access",
+      "name": "wave5_client_access_scope_select"
+    },
+    {
+      "table": "client_access",
+      "name": "wave5_client_access_scope_insert"
+    },
+    {
+      "table": "client_access",
+      "name": "wave5_client_access_scope_update"
+    }
+  ],
+  "newFunctions": [],
+  "changedFunctions": [],
+  "grants": [],
+  "revokes": [
+    {
+      "table": "coaching_entitlement_usage",
+      "role": "authenticated",
+      "privilege": "TRUNCATE"
+    },
+    {
+      "table": "membership_entitlements",
+      "role": "authenticated",
+      "privilege": "TRUNCATE"
+    },
+    {
+      "table": "client_memberships",
+      "role": "authenticated",
+      "privilege": "TRUNCATE"
+    },
+    {
+      "table": "client_access",
+      "role": "authenticated",
+      "privilege": "TRUNCATE"
+    }
+  ],
+  "files": [
+    {
+      "path": "proposals/wave5-security/correction.sql",
+      "sha256": "3c3ed1f351e8ffdc687f80fdbf4455197c752e4b988c80a89ed64df39f1e55a8"
+    },
+    {
+      "path": "proposals/wave5-security/revert.sql",
+      "sha256": "083009a044252580062653de07c1af885047a9e7ae074a950d60cf5f233b5c01"
+    }
+  ]
+}

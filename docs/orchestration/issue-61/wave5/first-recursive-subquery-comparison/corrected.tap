@@ -1,0 +1,314 @@
+TAP version 13
+# Subtest: [historical direct three: retained Wave4 correction] SELECT usage
+ok 1 - [historical direct three: retained Wave4 correction] SELECT usage
+  ---
+  duration_ms: 46.719792
+  type: 'test'
+  ...
+# Subtest: [historical direct three: retained Wave4 correction] UPDATE usage
+ok 2 - [historical direct three: retained Wave4 correction] UPDATE usage
+  ---
+  duration_ms: 11.677583
+  type: 'test'
+  ...
+# Subtest: [historical direct three: retained Wave4 correction] UPDATE allowance
+ok 3 - [historical direct three: retained Wave4 correction] UPDATE allowance
+  ---
+  duration_ms: 7.912333
+  type: 'test'
+  ...
+# Subtest: [new relationship scope] unassigned Coach cannot SELECT unrelated membership
+ok 4 - [new relationship scope] unassigned Coach cannot SELECT unrelated membership
+  ---
+  duration_ms: 6.155541
+  type: 'test'
+  ...
+# Subtest: [new relationship scope] unassigned Coach cannot SELECT unrelated client access
+ok 5 - [new relationship scope] unassigned Coach cannot SELECT unrelated client access
+  ---
+  duration_ms: 6.257333
+  type: 'test'
+  ...
+# Subtest: [new escalation] unassigned Coach cannot appoint self and gain usage scope
+ok 6 - [new escalation] unassigned Coach cannot appoint self and gain usage scope
+  ---
+  duration_ms: 10.166541
+  type: 'test'
+  ...
+# Subtest: [new forged relation] assigned Coach cannot link own contact to unrelated membership
+not ok 7 - [new forged relation] assigned Coach cannot link own contact to unrelated membership
+  ---
+  duration_ms: 6.558583
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:12:1'
+  failureType: 'testCodeFailure'
+  error: 'bounded PostgreSQL denial'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    hiddenOrDenied (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:6:155)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:12:103)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [new escalation] unassigned Coach cannot steal existing client user binding
+not ok 8 - [new escalation] unassigned Coach cannot steal existing client user binding
+  ---
+  duration_ms: 6.401208
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:13:1'
+  failureType: 'testCodeFailure'
+  error: 'bounded PostgreSQL denial'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    hiddenOrDenied (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:6:155)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:13:94)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [positive] assigned Coach can read own membership/access and authorized RPC
+ok 9 - [positive] assigned Coach can read own membership/access and authorized RPC
+  ---
+  duration_ms: 16.341834
+  type: 'test'
+  ...
+# Subtest: [negative] unassigned Coach RPC remains rejected
+ok 10 - [negative] unassigned Coach RPC remains rejected
+  ---
+  duration_ms: 8.157125
+  type: 'test'
+  ...
+# Subtest: [lifecycle] suspended Coach retains no membership/access mutation
+ok 11 - [lifecycle] suspended Coach retains no membership/access mutation
+  ---
+  duration_ms: 7.471792
+  type: 'test'
+  ...
+# Subtest: [lifecycle] inactive Coach retains no membership/access mutation
+ok 12 - [lifecycle] inactive Coach retains no membership/access mutation
+  ---
+  duration_ms: 6.759167
+  type: 'test'
+  ...
+# Subtest: [lifecycle] pending Coach does not gain access through explicit overrides
+not ok 13 - [lifecycle] pending Coach does not gain access through explicit overrides
+  ---
+  duration_ms: 6.480084
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:17:1'
+  failureType: 'testCodeFailure'
+  error: 'bounded PostgreSQL denial'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    hiddenOrDenied (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:6:155)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:17:293)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [scope] changing OWN membership primary contact to unrelated contact rejected
+ok 14 - [scope] changing OWN membership primary contact to unrelated contact rejected
+  ---
+  duration_ms: 7.204834
+  type: 'test'
+  ...
+# Subtest: [scope] direct assignment insertion cannot bootstrap scope on unrelated contact
+ok 15 - [scope] direct assignment insertion cannot bootstrap scope on unrelated contact
+  ---
+  duration_ms: 6.073209
+  type: 'test'
+  ...
+# Subtest: [scope] INSERT membership for unrelated contact rejected
+ok 16 - [scope] INSERT membership for unrelated contact rejected
+  ---
+  duration_ms: 7.641167
+  type: 'test'
+  ...
+# Subtest: [positive] assigned Coach can create membership for scoped client
+ok 17 - [positive] assigned Coach can create membership for scoped client
+  ---
+  duration_ms: 7.394709
+  type: 'test'
+  ...
+# Subtest: [positive] Owner retains membership reads and scoped management
+ok 18 - [positive] Owner retains membership reads and scoped management
+  ---
+  duration_ms: 14.268458
+  type: 'test'
+  ...
+# Subtest: [positive] existing client own access record remains readable while paid membership held
+not ok 19 - [positive] existing client own access record remains readable while paid membership held
+  ---
+  duration_ms: 6.776625
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:23:1'
+  failureType: 'testCodeFailure'
+  error: 'bounded PostgreSQL denial'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    hiddenOrDenied (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:6:155)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:23:335)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [positive] no-op existing valid access update and explicit valid nonprimary link
+not ok 20 - [positive] no-op existing valid access update and explicit valid nonprimary link
+  ---
+  duration_ms: 5.562458
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:24:1'
+  failureType: 'testCodeFailure'
+  error: 'infinite recursion detected in policy for relation "client_access"'
+  code: '42P17'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async actor (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave4-access/fixture.cjs:14:190)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:24:113)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [negative] missing crm.manage override cannot mutate own relationships
+not ok 21 - [negative] missing crm.manage override cannot mutate own relationships
+  ---
+  duration_ms: 7.316333
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:25:1'
+  failureType: 'testCodeFailure'
+  error: 'bounded PostgreSQL denial'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    hiddenOrDenied (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:6:155)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:25:428)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [negative] null actor and anonymous role cannot read membership or access
+ok 22 - [negative] null actor and anonymous role cannot read membership or access
+  ---
+  duration_ms: 6.679208
+  type: 'test'
+  ...
+# Subtest: [negative] claimed Owner role in caller metadata cannot replace database actor
+ok 23 - [negative] claimed Owner role in caller metadata cannot replace database actor
+  ---
+  duration_ms: 8.02625
+  type: 'test'
+  ...
+# Subtest: [privilege] no new helper/EXECUTE or permissive policy, existing invoker RPC unchanged
+ok 24 - [privilege] no new helper/EXECUTE or permissive policy, existing invoker RPC unchanged
+  ---
+  duration_ms: 6.369375
+  type: 'test'
+  ...
+# Subtest: [rollback] outer transaction rolls back authorized relationship change and audit
+not ok 25 - [rollback] outer transaction rolls back authorized relationship change and audit
+  ---
+  duration_ms: 5.246667
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:29:1'
+  failureType: 'testCodeFailure'
+  error: 'infinite recursion detected in policy for relation "client_access"'
+  code: '42P17'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async actor (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave4-access/fixture.cjs:14:190)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:29:228)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [scope source] unassigned Coach cannot bootstrap via contacts.assigned_to
+ok 26 - [scope source] unassigned Coach cannot bootstrap via contacts.assigned_to
+  ---
+  duration_ms: 6.501416
+  type: 'test'
+  ...
+# Subtest: [scope source] unassigned Coach cannot bootstrap via open follow-up task
+ok 27 - [scope source] unassigned Coach cannot bootstrap via open follow-up task
+  ---
+  duration_ms: 5.885292
+  type: 'test'
+  ...
+# Subtest: [INSERT] unrelated access tuple cannot be forged after record deletion
+ok 28 - [INSERT] unrelated access tuple cannot be forged after record deletion
+  ---
+  duration_ms: 5.526708
+  type: 'test'
+  ...
+# Subtest: [INSERT] own contact cannot use unrelated membership when existing record absent
+ok 29 - [INSERT] own contact cannot use unrelated membership when existing record absent
+  ---
+  duration_ms: 5.311166
+  type: 'test'
+  ...
+# Subtest: [positive] scoped original tuple can be restored without status activation
+not ok 30 - [positive] scoped original tuple can be restored without status activation
+  ---
+  duration_ms: 4.801
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:34:1'
+  failureType: 'testCodeFailure'
+  error: 'infinite recursion detected in policy for relation "client_access"'
+  code: '42P17'
+  name: 'error'
+  stack: |-
+    /Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/revitalizedacademy/node_modules/pg/lib/client.js:545:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async actor (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave4-access/fixture.cjs:14:190)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:34:176)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [session] switching authenticated actor within same connection re-evaluates scope
+ok 31 - [session] switching authenticated actor within same connection re-evaluates scope
+  ---
+  duration_ms: 9.311375
+  type: 'test'
+  ...
+# Subtest: [compatibility hold] financial-only direct membership writes narrow; no new grant
+ok 32 - [compatibility hold] financial-only direct membership writes narrow; no new grant
+  ---
+  duration_ms: 8.830416
+  type: 'test'
+  ...
+# Subtest: [preservation] original private onboarding/assignment trigger owner ACL remains postgres-only
+ok 33 - [preservation] original private onboarding/assignment trigger owner ACL remains postgres-only
+  ---
+  duration_ms: 5.251791
+  type: 'test'
+  ...
+1..33
+# tests 33
+# suites 0
+# pass 25
+# fail 8
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 354.242

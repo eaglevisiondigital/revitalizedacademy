@@ -1,0 +1,477 @@
+TAP version 13
+# Subtest: [historical direct three: retained Wave4 correction] SELECT usage
+ok 1 - [historical direct three: retained Wave4 correction] SELECT usage
+  ---
+  duration_ms: 55.157958
+  type: 'test'
+  ...
+# Subtest: [historical direct three: retained Wave4 correction] UPDATE usage
+ok 2 - [historical direct three: retained Wave4 correction] UPDATE usage
+  ---
+  duration_ms: 14.177292
+  type: 'test'
+  ...
+# Subtest: [historical direct three: retained Wave4 correction] UPDATE allowance
+ok 3 - [historical direct three: retained Wave4 correction] UPDATE allowance
+  ---
+  duration_ms: 11.073375
+  type: 'test'
+  ...
+# Subtest: [new relationship scope] unassigned Coach cannot SELECT unrelated membership
+not ok 4 - [new relationship scope] unassigned Coach cannot SELECT unrelated membership
+  ---
+  duration_ms: 8.190083
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:9:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:9:102)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [new relationship scope] unassigned Coach cannot SELECT unrelated client access
+not ok 5 - [new relationship scope] unassigned Coach cannot SELECT unrelated client access
+  ---
+  duration_ms: 8.924958
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:10:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:10:105)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [new escalation] unassigned Coach cannot appoint self and gain usage scope
+not ok 6 - [new escalation] unassigned Coach cannot appoint self and gain usage scope
+  ---
+  duration_ms: 11.893125
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:11:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    hiddenOrDenied (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:6:56)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:11:142)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [new forged relation] assigned Coach cannot link own contact to unrelated membership
+not ok 7 - [new forged relation] assigned Coach cannot link own contact to unrelated membership
+  ---
+  duration_ms: 8.083708
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:12:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    hiddenOrDenied (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:6:56)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:12:103)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [new escalation] unassigned Coach cannot steal existing client user binding
+not ok 8 - [new escalation] unassigned Coach cannot steal existing client user binding
+  ---
+  duration_ms: 8.143417
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:13:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    hiddenOrDenied (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:6:56)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:13:94)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [positive] assigned Coach can read own membership/access and authorized RPC
+ok 9 - [positive] assigned Coach can read own membership/access and authorized RPC
+  ---
+  duration_ms: 17.835083
+  type: 'test'
+  ...
+# Subtest: [negative] unassigned Coach RPC remains rejected
+ok 10 - [negative] unassigned Coach RPC remains rejected
+  ---
+  duration_ms: 9.803625
+  type: 'test'
+  ...
+# Subtest: [lifecycle] suspended Coach retains no membership/access mutation
+not ok 11 - [lifecycle] suspended Coach retains no membership/access mutation
+  ---
+  duration_ms: 8.0145
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:16:46'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:16:327)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [lifecycle] inactive Coach retains no membership/access mutation
+not ok 12 - [lifecycle] inactive Coach retains no membership/access mutation
+  ---
+  duration_ms: 7.251375
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:16:46'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:16:327)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [lifecycle] pending Coach does not gain access through explicit overrides
+not ok 13 - [lifecycle] pending Coach does not gain access through explicit overrides
+  ---
+  duration_ms: 8.348541
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:17:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    hiddenOrDenied (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:6:56)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:17:293)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [scope] changing OWN membership primary contact to unrelated contact rejected
+not ok 14 - [scope] changing OWN membership primary contact to unrelated contact rejected
+  ---
+  duration_ms: 7.00975
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:18:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    hiddenOrDenied (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:6:56)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:18:96)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [scope] direct assignment insertion cannot bootstrap scope on unrelated contact
+ok 15 - [scope] direct assignment insertion cannot bootstrap scope on unrelated contact
+  ---
+  duration_ms: 8.988833
+  type: 'test'
+  ...
+# Subtest: [scope] INSERT membership for unrelated contact rejected
+not ok 16 - [scope] INSERT membership for unrelated contact rejected
+  ---
+  duration_ms: 7.025
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:20:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  operator: 'rejects'
+  stack: |-
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:20:75)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [positive] assigned Coach can create membership for scoped client
+ok 17 - [positive] assigned Coach can create membership for scoped client
+  ---
+  duration_ms: 7.057667
+  type: 'test'
+  ...
+# Subtest: [positive] Owner retains membership reads and scoped management
+ok 18 - [positive] Owner retains membership reads and scoped management
+  ---
+  duration_ms: 8.673667
+  type: 'test'
+  ...
+# Subtest: [positive] existing client own access record remains readable while paid membership held
+ok 19 - [positive] existing client own access record remains readable while paid membership held
+  ---
+  duration_ms: 7.770708
+  type: 'test'
+  ...
+# Subtest: [positive] no-op existing valid access update and explicit valid nonprimary link
+ok 20 - [positive] no-op existing valid access update and explicit valid nonprimary link
+  ---
+  duration_ms: 7.214875
+  type: 'test'
+  ...
+# Subtest: [negative] missing crm.manage override cannot mutate own relationships
+not ok 21 - [negative] missing crm.manage override cannot mutate own relationships
+  ---
+  duration_ms: 7.710042
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:25:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    hiddenOrDenied (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:6:56)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:25:297)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [negative] null actor and anonymous role cannot read membership or access
+ok 22 - [negative] null actor and anonymous role cannot read membership or access
+  ---
+  duration_ms: 8.209125
+  type: 'test'
+  ...
+# Subtest: [negative] claimed Owner role in caller metadata cannot replace database actor
+not ok 23 - [negative] claimed Owner role in caller metadata cannot replace database actor
+  ---
+  duration_ms: 8.080459
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:27:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    hiddenOrDenied (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:6:56)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:27:218)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [privilege] no new helper/EXECUTE or permissive policy, existing invoker RPC unchanged
+ok 24 - [privilege] no new helper/EXECUTE or permissive policy, existing invoker RPC unchanged
+  ---
+  duration_ms: 8.197583
+  type: 'test'
+  ...
+# Subtest: [rollback] outer transaction rolls back authorized relationship change and audit
+ok 25 - [rollback] outer transaction rolls back authorized relationship change and audit
+  ---
+  duration_ms: 6.785041
+  type: 'test'
+  ...
+# Subtest: [scope source] unassigned Coach cannot bootstrap via contacts.assigned_to
+ok 26 - [scope source] unassigned Coach cannot bootstrap via contacts.assigned_to
+  ---
+  duration_ms: 8.249208
+  type: 'test'
+  ...
+# Subtest: [scope source] unassigned Coach cannot bootstrap via open follow-up task
+ok 27 - [scope source] unassigned Coach cannot bootstrap via open follow-up task
+  ---
+  duration_ms: 6.443166
+  type: 'test'
+  ...
+# Subtest: [INSERT] unrelated access tuple cannot be forged after record deletion
+not ok 28 - [INSERT] unrelated access tuple cannot be forged after record deletion
+  ---
+  duration_ms: 12.604667
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:32:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  operator: 'rejects'
+  stack: |-
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:32:163)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [INSERT] own contact cannot use unrelated membership when existing record absent
+not ok 29 - [INSERT] own contact cannot use unrelated membership when existing record absent
+  ---
+  duration_ms: 20.302958
+  type: 'test'
+  location: '/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:33:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  operator: 'rejects'
+  stack: |-
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/academy-wave5-security/tests/wave5-security/security.test.cjs:33:168)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: [positive] scoped original tuple can be restored without status activation
+ok 30 - [positive] scoped original tuple can be restored without status activation
+  ---
+  duration_ms: 13.431792
+  type: 'test'
+  ...
+# Subtest: [session] switching authenticated actor within same connection re-evaluates scope
+ok 31 - [session] switching authenticated actor within same connection re-evaluates scope
+  ---
+  duration_ms: 13.226292
+  type: 'test'
+  ...
+# Subtest: [compatibility hold] financial-only direct membership writes narrow; no new grant
+ok 32 - [compatibility hold] financial-only direct membership writes narrow; no new grant
+  ---
+  duration_ms: 6.872417
+  type: 'test'
+  ...
+# Subtest: [preservation] original private onboarding/assignment trigger owner ACL remains postgres-only
+ok 33 - [preservation] original private onboarding/assignment trigger owner ACL remains postgres-only
+  ---
+  duration_ms: 6.375208
+  type: 'test'
+  ...
+# Subtest: [reference-role positive] owner scoped membership/access management
+ok 34 - [reference-role positive] owner scoped membership/access management
+  ---
+  duration_ms: 7.8
+  type: 'test'
+  ...
+# Subtest: [reference-role positive] admin scoped membership/access management
+ok 35 - [reference-role positive] admin scoped membership/access management
+  ---
+  duration_ms: 7.403208
+  type: 'test'
+  ...
+# Subtest: [reference-role positive] coach scoped membership/access management
+ok 36 - [reference-role positive] coach scoped membership/access management
+  ---
+  duration_ms: 7.819291
+  type: 'test'
+  ...
+# Subtest: [compatibility hold] CRM-only Support cannot rebind coaching membership through accepted boolean
+ok 37 - [compatibility hold] CRM-only Support cannot rebind coaching membership through accepted boolean
+  ---
+  duration_ms: 7.031917
+  type: 'test'
+  ...
+# Subtest: [diagnostic only: expected old exposure] self-assignment chain reaches usage before policy correction
+ok 38 - [diagnostic only: expected old exposure] self-assignment chain reaches usage before policy correction
+  ---
+  duration_ms: 9.42125
+  type: 'test'
+  ...
+# Subtest: [diagnostic only: expected old exposure] forged access relationship can charge unrelated allowance before correction
+ok 39 - [diagnostic only: expected old exposure] forged access relationship can charge unrelated allowance before correction
+  ---
+  duration_ms: 8.356917
+  type: 'test'
+  ...
+# Subtest: [guard] accepted private boolean privilege drift fails closed before policy installation
+ok 40 - [guard] accepted private boolean privilege drift fails closed before policy installation
+  ---
+  duration_ms: 8.446167
+  type: 'test'
+  ...
+1..40
+# tests 40
+# suites 0
+# pass 26
+# fail 14
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 489.146083
