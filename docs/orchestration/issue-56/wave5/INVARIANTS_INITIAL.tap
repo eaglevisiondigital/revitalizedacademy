@@ -1,0 +1,34 @@
+TAP version 13
+# Subtest: QA 101 requirement groups, ten detail groups and all ten workstreams retain exact approved definitions
+ok 1 - QA 101 requirement groups, ten detail groups and all ten workstreams retain exact approved definitions
+  ---
+  duration_ms: 52.106916
+  type: 'test'
+  ...
+# Subtest: QA original 57 whole-package definitions retain exact bytes and IDs
+ok 2 - QA original 57 whole-package definitions retain exact bytes and IDs
+  ---
+  duration_ms: 24.403333
+  type: 'test'
+  ...
+# Subtest: QA existing protected runtime source permits only approved member handler; no Functions/assets/permissions migrations touched
+ok 3 - QA existing protected runtime source permits only approved member handler; no Functions/assets/permissions migrations touched
+  ---
+  duration_ms: 28.168917
+  type: 'test'
+  ...
+# Subtest: QA foundational share/catalog engines, async trust adapters, QR encoder and real decoder remain exact
+ok 4 - QA foundational share/catalog engines, async trust adapters, QR encoder and real decoder remain exact
+  ---
+  duration_ms: 123.4185
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 4
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 306.177542

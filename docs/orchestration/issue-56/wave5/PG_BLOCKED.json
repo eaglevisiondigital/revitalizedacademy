@@ -1,0 +1,21 @@
+{
+  "status": "BLOCKED_RESOURCE_NO_QA_PG_ATTEMPT",
+  "source": "366125cc311072053b4a898f0181a97c709af8ee",
+  "reason": "Author final initdb failed before SQL: Mac SysV shared-memory ID limit. Master instructed no retry, no unowned cleanup, no alternative route.",
+  "independentQaPgAttempts": 0,
+  "independentQaClustersStarted": 0,
+  "unknownIpcRemoved": false,
+  "persistentServersChanged": false,
+  "kernelChanges": false,
+  "finalOperationsSqlSha256": "f3ed018354545d2ef677593298f3b798f0683914a79034dd69ebdcdac39cc8c0",
+  "securitySqlSha256": "3c3ed1f351e8ffdc687f80fdbf4455197c752e4b988c80a89ed64df39f1e55a8",
+  "authorResourceEvidence": {
+    "path": "docs/orchestration/issue-54/wave5/resource-stop/postgres-receipt.json",
+    "sha256": "610e93611d60d9b6b0ab7b9e661108de9dcc66383dc819b95b0de01da570af44"
+  },
+  "identityForgeryHypothesis": "NOT_RUN; no actual failure/exposure claimed",
+  "preparedIndependentTests": [
+    "tests/wave5-qa/run-combined-pg.cjs",
+    "tests/wave5-qa/sql-adversarial.test.cjs"
+  ]
+}

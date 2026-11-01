@@ -1,0 +1,12 @@
+{
+  "formattingOnly": true,
+  "scope": "QA-owned TAP/log whitespace; no source/assertion/result alteration",
+  "files": [
+    {
+      "path": "docs/orchestration/issue-56/wave5/C_INDEPENDENT_INITIAL.tap",
+      "rawSha256": "c24dfcb4b5ddfc7251de170f0bec7aa0670628c21089aef2d1bc43837b5afdf6",
+      "normalizedSha256": "3c5c338fbcb580b7ddee23cb9bcd2519a8eec1d831d671e26f50b8d8d60bcefe",
+      "rawOutsideGit": "/Users/davesmacbookpro/Documents/ChatGPT/revitalized academy/deployment-evidence/2026-11-01-wave5/qa-raw/C_INDEPENDENT_INITIAL.tap"
+    }
+  ]
+}

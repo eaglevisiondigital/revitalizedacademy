@@ -1,0 +1,136 @@
+TAP version 13
+# Subtest: O01 complete local procedure: exact registers, source gaps, dispatch and real worktrees
+ok 1 - O01 complete local procedure: exact registers, source gaps, dispatch and real worktrees
+  ---
+  duration_ms: 185.217458
+  type: 'test'
+  ...
+# Subtest: O01 denies renamed requirement ID
+ok 2 - O01 denies renamed requirement ID
+  ---
+  duration_ms: 2.049666
+  type: 'test'
+  ...
+# Subtest: O01 denies rewritten approved wording
+ok 3 - O01 denies rewritten approved wording
+  ---
+  duration_ms: 0.714667
+  type: 'test'
+  ...
+# Subtest: O01 denies discarded missing-source warning
+ok 4 - O01 denies discarded missing-source warning
+  ---
+  duration_ms: 0.480125
+  type: 'test'
+  ...
+# Subtest: O01 denies discarded source-detail group
+ok 5 - O01 denies discarded source-detail group
+  ---
+  duration_ms: 0.455583
+  type: 'test'
+  ...
+# Subtest: O01 denies invented complete package
+ok 6 - O01 denies invented complete package
+  ---
+  duration_ms: 1.367417
+  type: 'test'
+  ...
+# Subtest: O01 denies substituted controlling127 trace
+ok 7 - O01 denies substituted controlling127 trace
+  ---
+  duration_ms: 0.7385
+  type: 'test'
+  ...
+# Subtest: O01 denies issue creation presented as actual delegation
+ok 8 - O01 denies issue creation presented as actual delegation
+  ---
+  duration_ms: 1.298541
+  type: 'test'
+  ...
+# Subtest: O01 denies arbitrary unknown agent receipt
+ok 9 - O01 denies arbitrary unknown agent receipt
+  ---
+  duration_ms: 1.441084
+  type: 'test'
+  ...
+# Subtest: O01 denies consistently forged state and self-declared native observation
+ok 10 - O01 denies consistently forged state and self-declared native observation
+  ---
+  duration_ms: 1.415917
+  type: 'test'
+  ...
+# Subtest: O01 requires separate trusted observation input
+ok 11 - O01 requires separate trusted observation input
+  ---
+  duration_ms: 0.897667
+  type: 'test'
+  ...
+# Subtest: O01 denies real worktree branch mismatch
+ok 12 - O01 denies real worktree branch mismatch
+  ---
+  duration_ms: 65.965667
+  type: 'test'
+  ...
+# Subtest: O01 denies source not descending from approved base
+ok 13 - O01 denies source not descending from approved base
+  ---
+  duration_ms: 1.308083
+  type: 'test'
+  ...
+# Subtest: O01 denies exact or nested lane ownership conflicts
+ok 14 - O01 denies exact or nested lane ownership conflicts
+  ---
+  duration_ms: 203.061541
+  type: 'test'
+  ...
+# Subtest: O01 denies ownership path escape
+ok 15 - O01 denies ownership path escape
+  ---
+  duration_ms: 46.15025
+  type: 'test'
+  ...
+# Subtest: O01 denies silent production, financial or Alex scope expansion
+ok 16 - O01 denies silent production, financial or Alex scope expansion
+  ---
+  duration_ms: 3.072625
+  type: 'test'
+  ...
+# Subtest: O01 retains incomplete source status and draft release hold
+ok 17 - O01 retains incomplete source status and draft release hold
+  ---
+  duration_ms: 2.184417
+  type: 'test'
+  ...
+# Subtest: QA O01 independently references actual bounded dispatch and each real branch/base
+ok 18 - QA O01 independently references actual bounded dispatch and each real branch/base
+  ---
+  duration_ms: 503.265083
+  type: 'test'
+  ...
+# Subtest: QA O01 consistently forged task+dispatch+applicant evidence cannot replace independent native receipt
+ok 19 - QA O01 consistently forged task+dispatch+applicant evidence cannot replace independent native receipt
+  ---
+  duration_ms: 108.934
+  type: 'test'
+  ...
+# Subtest: QA O01 ownership mutation that matches a real file in another lane is rejected
+ok 20 - QA O01 ownership mutation that matches a real file in another lane is rejected
+  ---
+  duration_ms: 160.601875
+  type: 'test'
+  ...
+# Subtest: QA O01 edited source gaps and requirement text cannot be hidden by an unmodified count
+ok 21 - QA O01 edited source gaps and requirement text cannot be hidden by an unmodified count
+  ---
+  duration_ms: 168.5895
+  type: 'test'
+  ...
+1..21
+# tests 21
+# suites 0
+# pass 21
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1023.621167

@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: chromium 1440 real ShareCenter/CRM/QR/education + denial/retry/cross-tab lifecycle
+ok 1 - chromium 1440 real ShareCenter/CRM/QR/education + denial/retry/cross-tab lifecycle
+  ---
+  duration_ms: 5779.603667
+  type: 'test'
+  ...
+# Subtest: chromium 768 real ShareCenter/CRM/QR/education + denial/retry/cross-tab lifecycle
+ok 2 - chromium 768 real ShareCenter/CRM/QR/education + denial/retry/cross-tab lifecycle
+  ---
+  duration_ms: 3941.922041
+  type: 'test'
+  ...
+# Subtest: chromium 390 real ShareCenter/CRM/QR/education + denial/retry/cross-tab lifecycle
+ok 3 - chromium 390 real ShareCenter/CRM/QR/education + denial/retry/cross-tab lifecycle
+  ---
+  duration_ms: 2950.6575
+  type: 'test'
+  ...
+# Subtest: webkit 1440 real ShareCenter/CRM/QR/education + denial/retry/cross-tab lifecycle
+ok 4 - webkit 1440 real ShareCenter/CRM/QR/education + denial/retry/cross-tab lifecycle
+  ---
+  duration_ms: 5992.527875
+  type: 'test'
+  ...
+# Subtest: webkit 768 real ShareCenter/CRM/QR/education + denial/retry/cross-tab lifecycle
+ok 5 - webkit 768 real ShareCenter/CRM/QR/education + denial/retry/cross-tab lifecycle
+  ---
+  duration_ms: 4920.786917
+  type: 'test'
+  ...
+# Subtest: webkit 390 real ShareCenter/CRM/QR/education + denial/retry/cross-tab lifecycle
+ok 6 - webkit 390 real ShareCenter/CRM/QR/education + denial/retry/cross-tab lifecycle
+  ---
+  duration_ms: 3478.083416
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 27392.709375

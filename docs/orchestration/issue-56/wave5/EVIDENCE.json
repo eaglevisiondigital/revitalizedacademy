@@ -1,0 +1,157 @@
+{
+  "testedSource": "366125cc311072053b4a898f0181a97c709af8ee",
+  "acceptedBase": "024b1c20c802ce6a9470fc46fabdd3bae75ed980",
+  "recordedAt": "2026-11-01T21:49:29.009608+00:00",
+  "branch": "codex/rva-wave5-qa-20261101",
+  "independentResults": {
+    "nodeDomHttpPass": 272,
+    "nodeDomHttpFail": 0,
+    "browserPass": 14,
+    "browserFail": 0,
+    "includedHistoricalExpectedNodeReproduction": 1,
+    "actualCombinedPg": "BLOCKED_NOT_RUN",
+    "qaPgAttempts": 0
+  },
+  "historicalIndependentFinding": {
+    "sharePreviewScenarioRaceBrowserFail": 2,
+    "sameAssertionsCorrectedBrowserPass": 2
+  },
+  "packages": {
+    "PASS": 1,
+    "FAIL": 3,
+    "BLOCKED": 42,
+    "NOT_RUN": 11
+  },
+  "fiveDistinctActualSqlFailures": "Earlier author current-catalog fictional evidence, not independent combined runtime; relevant subset maps to three packages",
+  "ownerRuntimeEditsByQa": 0,
+  "productionCalls": 0,
+  "alex": "PAUSED_NO_PRIVATE_READS_OR_ACTIONS",
+  "nativeObservation": {
+    "path": "../deployment-evidence/2026-11-01-wave5/NATIVE_OBSERVATION.json",
+    "sha256": "09919144d4a84fa0e800ca3364990bb63e76af26e94dabbb7989335899b54f35",
+    "trust": "Independently cross-checked coordinator/native task observation, not cryptographic or application authentication"
+  },
+  "finalSql": {
+    "security": "3c3ed1f351e8ffdc687f80fdbf4455197c752e4b988c80a89ed64df39f1e55a8",
+    "operations": "f3ed018354545d2ef677593298f3b798f0683914a79034dd69ebdcdac39cc8c0",
+    "execution": "Final combined actualPG NOT_RUN; static manifest checksPASS"
+  },
+  "files": [
+    {
+      "path": "tests/wave5-qa/README.md",
+      "sha256": "1ee6eed2227a1d5a74e661aa55294552e05d2e73896d4accd2084264d7ae0b35"
+    },
+    {
+      "path": "tests/wave5-qa/browser-adversarial.cjs",
+      "sha256": "70b3dae64b86a086429deb310ba536cbfda0819e71118949f82176c81cb0a1a2"
+    },
+    {
+      "path": "tests/wave5-qa/coordination-adversarial.test.cjs",
+      "sha256": "d884fd0d0434bccd543953d215727f66fe3078b493ddaa78227580e4631a045a"
+    },
+    {
+      "path": "tests/wave5-qa/http-adversarial.test.cjs",
+      "sha256": "73bab13d5994b8e23e7d80d8c1f9397716cfe1a972e7e091309db2b92eb009ac"
+    },
+    {
+      "path": "tests/wave5-qa/invariants.test.cjs",
+      "sha256": "164e390e88c06a4bc23d8aec14b981b7691249ac95585f5ec06aaf6daf520670"
+    },
+    {
+      "path": "tests/wave5-qa/member-browser-rerun.cjs",
+      "sha256": "4b9bd9cf29d25ace736e4fc2432f7bb65421bca45acc19597ed58f56dd13d56c"
+    },
+    {
+      "path": "tests/wave5-qa/run-combined-pg.cjs",
+      "sha256": "006dfd43f23b9e918a38d30eb4311b59e3838db17a17a3697be3900e7c8b05a9"
+    },
+    {
+      "path": "tests/wave5-qa/run-node.cjs",
+      "sha256": "bb5a202903759ad536e719da818cca966d1d798a13c2d2403defc090702c5662"
+    },
+    {
+      "path": "tests/wave5-qa/sql-adversarial.test.cjs",
+      "sha256": "d46ade2d1141476d168f6f7e110bff9cc938d1e5f905e50b2ba1efe2a30600f2"
+    },
+    {
+      "path": "tests/wave5-qa/sql-manifest.test.cjs",
+      "sha256": "96ae9972824fdddb8efa2918f8835fd96b49310eb9a08c4d5f42bed83bebdb27"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave5/B_BROWSER_RERUN.json",
+      "sha256": "4221fdb85e24908e2928c9528b34b9db8ecb6ab47c11363179e571e7a7c47e7d"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave5/B_BROWSER_RERUN.log",
+      "sha256": "40c8f760456438545a114601f69629e16850a5361044b0223bd7be30ac2aafca"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave5/C_BROWSER_AUTHOR_RERUN.tap",
+      "sha256": "1b35ee978fd2798454ba660e7b5fbedba4517babea2a9f00faa3b97462be8fca"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave5/C_BROWSER_FINAL_RERUN.tap",
+      "sha256": "c34e095693c6c6cab844e411791ec33bccf8967bb2de6867b32600ef9c082cfd"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave5/C_BROWSER_INDEPENDENT_FINAL.tap",
+      "sha256": "2802696a78250196474df64111dd333e2cc98e056488939625536b4cd1a50e9f"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave5/C_HTTP_RERUN.tap",
+      "sha256": "0e1eaebadb06150d26089618464fbaec4c74b0c99195d0dcc4f5574ba2f97f22"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave5/C_HTTP_RERUN_APPROVED.tap",
+      "sha256": "08af1633eae552d64c7826515b86df927a60b351c2fef30c17bf5bdae4307afd"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave5/C_INDEPENDENT_CORRECTED.tap",
+      "sha256": "24adf2ef48d2d1f23982c7145971909d930ff6a8b2f9b732bb53b70b6bb43fc5"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave5/C_INDEPENDENT_INITIAL.tap",
+      "sha256": "3c5c338fbcb580b7ddee23cb9bcd2519a8eec1d831d671e26f50b8d8d60bcefe"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave5/C_PRESERVED_RERUN.tap",
+      "sha256": "022b012cae5d1397e714726caba689a9fb06d4b530114a0a15c0ebc92ef85c6d"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave5/EVIDENCE_FORMAT.json",
+      "sha256": "12feda796311f3a7ccfc97ebcac3d6ac2ad5387f83e85696da097d6b292b0bcd"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave5/INVARIANTS_INITIAL.tap",
+      "sha256": "7b39728c813f2b23a57af18b41e77646ae3b75c509afc9da851ebf7bb751642c"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave5/NODE_COMBINED.tap",
+      "sha256": "bae02513cde0bb7e4effa8c59070bd08d56eb67df7c2a1f776ceee68ea64e198"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave5/NODE_FINAL.json",
+      "sha256": "5c6a025b51ede8e65b258e7b1666a676bc3bbfeb9dc86096d0111e368b614a1f"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave5/NODE_FINAL.tap",
+      "sha256": "79a683aa44da87607188ef0dc4e72cdd2102f75295a529d959c977768fda76bb"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave5/O01_INDEPENDENT.tap",
+      "sha256": "d99d812782d0d6cb6a3e0342ef1435e9597ad02e2d1620ccfa57407f77173ffa"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave5/PG_BLOCKED.json",
+      "sha256": "f7ef1867a2f40625d1760e1bda309fe29be9d44019f6c15e0b560497ba3ab82f"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave5/REPORT.md",
+      "sha256": "94c890c91b3dd579b67073a7783334cb196ec9c9bcbd584486172d0baafd6401"
+    },
+    {
+      "path": "docs/orchestration/issue-56/wave5/RESULTS_MATRIX.json",
+      "sha256": "8fe4a4ea249c57d24d4947c2d81065d890f71b22f9608eebe0ab0b0f1d4ec709"
+    }
+  ]
+}

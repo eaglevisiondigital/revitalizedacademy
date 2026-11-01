@@ -1,0 +1,190 @@
+TAP version 13
+# Subtest: loopback server current providers reach actual adapter, encoder and minimal referral projection
+ok 1 - loopback server current providers reach actual adapter, encoder and minimal referral projection
+  ---
+  duration_ms: 386.888208
+  type: 'test'
+  ...
+# Subtest: all 12 detached educational routes retain unique source locator and hashes
+ok 2 - all 12 detached educational routes retain unique source locator and hashes
+  ---
+  duration_ms: 56.617458
+  type: 'test'
+  ...
+# Subtest: 100 concurrent HTTP retries commit one event and preserve original attribution
+ok 3 - 100 concurrent HTTP retries commit one event and preserve original attribution
+  ---
+  duration_ms: 96.238084
+  type: 'test'
+  ...
+# Subtest: revoked stops new preview/events and emits no URL or QR
+ok 4 - revoked stops new preview/events and emits no URL or QR
+  ---
+  duration_ms: 4.298
+  type: 'test'
+  ...
+# Subtest: expired stops new preview/events and emits no URL or QR
+ok 5 - expired stops new preview/events and emits no URL or QR
+  ---
+  duration_ms: 5.595584
+  type: 'test'
+  ...
+# Subtest: wrong-account stops new preview/events and emits no URL or QR
+ok 6 - wrong-account stops new preview/events and emits no URL or QR
+  ---
+  duration_ms: 4.846083
+  type: 'test'
+  ...
+# Subtest: logout stops new preview/events and emits no URL or QR
+ok 7 - logout stops new preview/events and emits no URL or QR
+  ---
+  duration_ms: 4.578666
+  type: 'test'
+  ...
+# Subtest: same-account transport renewal preserves journal event retry and educational citations
+ok 8 - same-account transport renewal preserves journal event retry and educational citations
+  ---
+  duration_ms: 8.060791
+  type: 'test'
+  ...
+# Subtest: renewal cannot revive revoked fixture authorization
+ok 9 - renewal cannot revive revoked fixture authorization
+  ---
+  duration_ms: 3.405917
+  type: 'test'
+  ...
+# Subtest: consent withdrawal blocks events without blocking approved copy or implying marketing permission
+ok 10 - consent withdrawal blocks events without blocking approved copy or implying marketing permission
+  ---
+  duration_ms: 146.158916
+  type: 'test'
+  ...
+# Subtest: education revocation stops lookup but does not rewrite approved share
+ok 11 - education revocation stops lookup but does not rewrite approved share
+  ---
+  duration_ms: 138.775167
+  type: 'test'
+  ...
+# Subtest: share API rejects caller-owned user_id
+ok 12 - share API rejects caller-owned user_id
+  ---
+  duration_ms: 1.71825
+  type: 'test'
+  ...
+# Subtest: share API rejects caller-owned actor
+ok 13 - share API rejects caller-owned actor
+  ---
+  duration_ms: 2.282459
+  type: 'test'
+  ...
+# Subtest: share API rejects caller-owned profile
+ok 14 - share API rejects caller-owned profile
+  ---
+  duration_ms: 2.013834
+  type: 'test'
+  ...
+# Subtest: share API rejects caller-owned url
+ok 15 - share API rejects caller-owned url
+  ---
+  duration_ms: 1.729083
+  type: 'test'
+  ...
+# Subtest: share API rejects caller-owned approval
+ok 16 - share API rejects caller-owned approval
+  ---
+  duration_ms: 1.754291
+  type: 'test'
+  ...
+# Subtest: share API rejects caller-owned consent
+ok 17 - share API rejects caller-owned consent
+  ---
+  duration_ms: 1.842167
+  type: 'test'
+  ...
+# Subtest: share API rejects caller-owned now
+ok 18 - share API rejects caller-owned now
+  ---
+  duration_ms: 2.021458
+  type: 'test'
+  ...
+# Subtest: share API rejects caller-owned permissions
+ok 19 - share API rejects caller-owned permissions
+  ---
+  duration_ms: 2.173542
+  type: 'test'
+  ...
+# Subtest: education API rejects client/authority field answers
+ok 20 - education API rejects client/authority field answers
+  ---
+  duration_ms: 2.929459
+  type: 'test'
+  ...
+# Subtest: education API rejects client/authority field clientId
+ok 21 - education API rejects client/authority field clientId
+  ---
+  duration_ms: 1.857625
+  type: 'test'
+  ...
+# Subtest: education API rejects client/authority field report
+ok 22 - education API rejects client/authority field report
+  ---
+  duration_ms: 2.31675
+  type: 'test'
+  ...
+# Subtest: education API rejects client/authority field audience
+ok 23 - education API rejects client/authority field audience
+  ---
+  duration_ms: 2.021833
+  type: 'test'
+  ...
+# Subtest: education API rejects client/authority field receipts
+ok 24 - education API rejects client/authority field receipts
+  ---
+  duration_ms: 1.795208
+  type: 'test'
+  ...
+# Subtest: education API rejects client/authority field intent
+ok 25 - education API rejects client/authority field intent
+  ---
+  duration_ms: 1.586458
+  type: 'test'
+  ...
+# Subtest: wrong catalog/source pins, unsupported operation and financial events denied
+ok 26 - wrong catalog/source pins, unsupported operation and financial events denied
+  ---
+  duration_ms: 4.203875
+  type: 'test'
+  ...
+# Subtest: foreign Origin, Host and cross-site fetch denied; GET is no-op and CSP/no-store retained
+ok 27 - foreign Origin, Host and cross-site fetch denied; GET is no-op and CSP/no-store retained
+  ---
+  duration_ms: 7.522459
+  type: 'test'
+  ...
+# Subtest: stale cross-tab scenario cannot prepare a newly restored preview by passing active
+ok 28 - stale cross-tab scenario cannot prepare a newly restored preview by passing active
+  ---
+  duration_ms: 2.533208
+  type: 'test'
+  ...
+# Subtest: body limit/extra scenario fields/path traversal/malformed JSON fail closed
+ok 29 - body limit/extra scenario fields/path traversal/malformed JSON fail closed
+  ---
+  duration_ms: 4.103083
+  type: 'test'
+  ...
+# Subtest: adapters do not persist fixture state across separate server instances
+ok 30 - adapters do not persist fixture state across separate server instances
+  ---
+  duration_ms: 4.360167
+  type: 'test'
+  ...
+1..30
+# tests 30
+# suites 0
+# pass 30
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1004.544833
