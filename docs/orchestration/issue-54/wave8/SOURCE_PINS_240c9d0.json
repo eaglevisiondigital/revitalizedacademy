@@ -1,0 +1,151 @@
+{
+  "base": "2cbd6de16097890f501a410a276308ca5c4e000c",
+  "branch": "codex/rva-wave8-operations-20261101",
+  "scope": "LOCAL fictional goal status continuity only",
+  "finalResults": {
+    "nodeDom": {
+      "pass": 135,
+      "fail": 0
+    },
+    "nativeBrowser": {
+      "pass": 6,
+      "fail": 0
+    },
+    "historicalBaseline": {
+      "pass": 3,
+      "fail": 0
+    }
+  },
+  "inputs": [
+    {
+      "path": "member/member110.js",
+      "bytes": 175137,
+      "sha256": "c695409d2a8c5645a0577fd74970364c34d4adb21ab6613d5d680a30ae7abb85"
+    },
+    {
+      "path": "member/dashboard.html",
+      "bytes": 54549,
+      "sha256": "66d6f222fa12f2a1dd800ba34822df009ecb895c0a0b8fa561896419fe58c54a"
+    },
+    {
+      "path": "tests/wave8-operations/fixture.cjs",
+      "bytes": 2283,
+      "sha256": "fa2cba1dfe774054bd3e537ecf4d651182e3faf805bea9ae7ce08c99ea05b87a"
+    },
+    {
+      "path": "tests/wave8-operations/baseline.test.cjs",
+      "bytes": 1262,
+      "sha256": "e704ade5e4fc25a4eea7dc6fbc104ed1a0830e5e3fb9449128b01441618eea63"
+    },
+    {
+      "path": "tests/wave8-operations/goals.test.cjs",
+      "bytes": 9122,
+      "sha256": "8478ab193314556ecbd1a9b2d6b326f26a3f93b5654de3456bd84d2be7ed0cf0"
+    },
+    {
+      "path": "tests/wave8-operations/browser.cjs",
+      "bytes": 6519,
+      "sha256": "82410ac5478d92a607841911db440da4611f80295b86e64560769e5f9005fa02"
+    },
+    {
+      "path": "tests/wave4-member/dom-fixture.cjs",
+      "bytes": 5217,
+      "sha256": "f79f07a0710d84a3d080918bd0743ccb9f422a0abf5d85c3fe97e876376f7328"
+    },
+    {
+      "path": "tests/wave4-member/browser-transport.cjs",
+      "bytes": 5257,
+      "sha256": "247c712b0e0c797c511270fb84bce11f5c04b8f50312dea9893a9a9178a74bb4"
+    },
+    {
+      "path": "tests/wave4-member/continuity.test.cjs",
+      "bytes": 11033,
+      "sha256": "7143f4a73ca830d7f96eb0a71c03f7d766009f25b6f4aa6679078c0185e56cef"
+    },
+    {
+      "path": "tests/wave4-member/modal-generation.test.cjs",
+      "bytes": 2469,
+      "sha256": "52ff178178660573c53eb1efbc98a5a417e509bfc1af5f7753bac4aa0d83b313"
+    },
+    {
+      "path": "tests/wave7-operations/fixture.cjs",
+      "bytes": 1157,
+      "sha256": "f4f0b417153c29534007054557c93fb6ddfac09bc9028fc58e152081aa76577b"
+    },
+    {
+      "path": "tests/wave7-operations/habits.test.cjs",
+      "bytes": 7481,
+      "sha256": "f5113ecbd9f39f553cefab04c079af7897b6777b2064ddb2fe9bef1b0cf5220f"
+    },
+    {
+      "path": "tests/wave6-features/daily-fixture.cjs",
+      "bytes": 2571,
+      "sha256": "404014b855f022c26b8c186d5fb6b5d975299216c8b236048b826e2f056dea7f"
+    },
+    {
+      "path": "tests/wave2-client/dependencies.cjs",
+      "bytes": 476,
+      "sha256": "04fcdf31a23370ec3939dcaa3ef3348fbadd8a30d860d842183983bf3ad03522"
+    },
+    {
+      "path": "docs/orchestration/issue-54/wave8/BASELINE.tap",
+      "bytes": 382,
+      "sha256": "09a682d6054266d5278416e70d43ec098f47b11e8a7cec4dcfda708bc44833f7"
+    },
+    {
+      "path": "docs/orchestration/issue-54/wave8/BROWSER_FINAL.tap",
+      "bytes": 820,
+      "sha256": "e16bf830fd4e3f71b302c761bfe75a5d7389ae0afa6d2b548866963f64e28215"
+    },
+    {
+      "path": "docs/orchestration/issue-54/wave8/BROWSER_FINAL_SOURCE.tap",
+      "bytes": 819,
+      "sha256": "01f07ef6db82dda15e9421673957cd819ca85a60d98c09d2ada1a772142a10f9"
+    },
+    {
+      "path": "docs/orchestration/issue-54/wave8/BROWSER_INITIAL.tap",
+      "bytes": 34419,
+      "sha256": "14d6c8ca8103d192e5b91b2851f6ad3fe5cd09e69834eeebd30ab90a1282434c"
+    },
+    {
+      "path": "docs/orchestration/issue-54/wave8/BROWSER_RELEASE_SOURCE.tap",
+      "bytes": 817,
+      "sha256": "07f2f648fb72f1ca69f0435ce925d76c873057ee9fc710d06b5c346ab6c983ed"
+    },
+    {
+      "path": "docs/orchestration/issue-54/wave8/NODE_FINAL.tap",
+      "bytes": 11233,
+      "sha256": "6aa16cd797d3a5a9b21394b337e391e6ebf807bfc3eeff4383e47ed175811a1e"
+    },
+    {
+      "path": "docs/orchestration/issue-54/wave8/NODE_FINAL_SOURCE.tap",
+      "bytes": 11492,
+      "sha256": "c5cd2445f2b12d596c3ab730741614661fda771ae6b71dd92e5f3e14914aa62c"
+    },
+    {
+      "path": "docs/orchestration/issue-54/wave8/NODE_INITIAL.tap",
+      "bytes": 12063,
+      "sha256": "3a13274b4a8790a14ec9c6e1888da02c9f843becdebf17484df2553471b3e380"
+    },
+    {
+      "path": "docs/orchestration/issue-54/wave8/NODE_RELEASE_SOURCE.tap",
+      "bytes": 11724,
+      "sha256": "f6994ce43096c1da6c38b9744ee5d987caf274fb1889a490babe8ce0f8c7f8da"
+    },
+    {
+      "path": "docs/orchestration/issue-54/wave8/REPORT.md",
+      "bytes": 6030,
+      "sha256": "894980668c1ac5879bf26babb93956e338aae3b8798a69e215628fc6f45d0dfc"
+    },
+    {
+      "path": "docs/orchestration/issue-54/wave8/BROWSER_INITIAL.raw.tap.gz",
+      "bytes": 2962,
+      "sha256": "db197a6db6de7847b790f196b880084f192a3c59bb81eb27c7f03dfbc561f963"
+    },
+    {
+      "path": "docs/orchestration/issue-54/wave8/LOG_FORMAT.json",
+      "bytes": 410,
+      "sha256": "f2f8b22068b60f2af69c220ed84665fbcdf9b72cfcc72cde218170df94c9aa98"
+    }
+  ]
+}

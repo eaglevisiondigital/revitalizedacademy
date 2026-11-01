@@ -2493,7 +2493,7 @@
     try {
       const {data: authData, error: authError} = await client.auth.getUser();
       if(!authError&&authData?.user?.id&&authData.user.id!==task.userId){endMemberDocument();return;}
-      if(!authError&&!authData?.user){denyGoalStatusAccess();return;}
+      if(!authError&&!authData?.user){endMemberDocument();return;}
       if(!dashboardTaskCurrent(task)||goalAccessDenied||binding.run!==goalSurfaceRun){
         if(!state&&sameActor()&&goalStatusWrites.get(key)?.phase==="pending")goalStatusWrites.delete(key);
         return;

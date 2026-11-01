@@ -1,0 +1,13 @@
+✔ independent two distinct goals may finish concurrently without duplicate dispatch or lost drafts (161.023834ms)
+✔ independent concurrent Check status clicks do not retransmit uncertain mutation (83.903ms)
+✔ independent malformed successful read is held, never treated as acknowledged mutation (56.171834ms)
+✔ independent absent saved goal remains held without recreating goal or blind retry (53.60125ms)
+✔ independent authoritative absent verified user fails closed for entire protected document (68.190292ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 726.099

@@ -32,3 +32,11 @@ The existing captured routine/view definitions and prior current-catalog tests w
 ## Rollback and next checkpoint
 
 Local reversal is the one member JavaScript diff; there is no persistent state or schema rollback. Keep historical receipts and prior branches. Independent QA should run the unchanged 28 new cases and challenge delayed read/RPC, source replacement, false RPC, identity/session change and denied-render revival. Production remains NO-GO. The bounded local checkpoint needs no new Owner approval; any hosted release remains separately authorized after security/business gates pass.
+
+## Forward correction after independent QA
+
+Independent QA found a real missed boundary in initial commit `240c9d0f72528aba6975fe96e3d3fcd600021925`: successful `getUser` with `{user:null,error:null}` held only the goal surface and left other protected controls/drafts mounted. The initial absent-user test covered goal removal only and was insufficient. Historical source, tests and receipts remain available at that immutable commit; `SOURCE_PINS_240c9d0.json` preserves its original manifest. QA retains its original failing assertion unchanged.
+
+The forward correction changes that single branch to the existing `endMemberDocument()` lifecycle. It clears the complete private document and navigates to the existing fresh-session view. Auth errors/transport failures still preserve valid same-user drafts; scoped RPC/read 42501 behavior is unchanged. No shared Auth, SDK, identity model, SQL or other handler was modified.
+
+The focused absent-user test now asserts no private inputs/textarea/goals remain without an Auth callback, and the six native browser scenarios also exercise this absent-user boundary before their preserved callback-logout check. **135/135 Node/DOM and 6/6 Chromium/WebKit cases PASS** on the corrected source. The author additionally reran QA's unchanged five adversarial assertions and obtained **5/5 PASS**; that author rerun is not independent certification. QA must independently execute the forward commit. Final forward receipts are `NODE_NULL_IDENTITY_CORRECTED.tap`, `BROWSER_NULL_IDENTITY_CORRECTED.tap` and `QA_UNCHANGED_ASSERTIONS_AUTHOR_RECHECK.tap`. Production and all prior limitations remain unchanged.

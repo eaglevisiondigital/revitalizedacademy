@@ -19,8 +19,8 @@
   "inputs": [
     {
       "path": "member/member110.js",
-      "bytes": 175137,
-      "sha256": "c695409d2a8c5645a0577fd74970364c34d4adb21ab6613d5d680a30ae7abb85"
+      "bytes": 175134,
+      "sha256": "8d6881960cebd104b8c1d2e9298e95232189fd119b8326e7edcdab88dd5348a7"
     },
     {
       "path": "member/dashboard.html",
@@ -39,13 +39,13 @@
     },
     {
       "path": "tests/wave8-operations/goals.test.cjs",
-      "bytes": 9122,
-      "sha256": "8478ab193314556ecbd1a9b2d6b326f26a3f93b5654de3456bd84d2be7ed0cf0"
+      "bytes": 9296,
+      "sha256": "51e6a5b6f0bf8da9ca51aec5010b6627d411d467b11316822f218535fe97917d"
     },
     {
       "path": "tests/wave8-operations/browser.cjs",
-      "bytes": 6519,
-      "sha256": "82410ac5478d92a607841911db440da4611f80295b86e64560769e5f9005fa02"
+      "bytes": 7396,
+      "sha256": "054f628c2d5502cbde0d8ac9a5299ee33db126ad7346de69c5999a4f1a02509f"
     },
     {
       "path": "tests/wave4-member/dom-fixture.cjs",
@@ -134,8 +134,8 @@
     },
     {
       "path": "docs/orchestration/issue-54/wave8/REPORT.md",
-      "bytes": 6030,
-      "sha256": "894980668c1ac5879bf26babb93956e338aae3b8798a69e215628fc6f45d0dfc"
+      "bytes": 7677,
+      "sha256": "b94b53de654b5c86cc6ec3d9aa71674e3b9369058a6b26e795f49e4b66fe0a8d"
     },
     {
       "path": "docs/orchestration/issue-54/wave8/BROWSER_INITIAL.raw.tap.gz",
@@ -146,6 +146,32 @@
       "path": "docs/orchestration/issue-54/wave8/LOG_FORMAT.json",
       "bytes": 410,
       "sha256": "f2f8b22068b60f2af69c220ed84665fbcdf9b72cfcc72cde218170df94c9aa98"
+    },
+    {
+      "path": "docs/orchestration/issue-54/wave8/SOURCE_PINS_240c9d0.json",
+      "bytes": 5027,
+      "sha256": "4f9b0bcaf072d2269352858b51237b82bab51a64844c69c90995fa99e829c86d"
+    },
+    {
+      "path": "docs/orchestration/issue-54/wave8/NODE_NULL_IDENTITY_CORRECTED.tap",
+      "bytes": 11772,
+      "sha256": "b33a488de9cd88486c0550596b33d1636771a371338e7f01e7776720e629b34a"
+    },
+    {
+      "path": "docs/orchestration/issue-54/wave8/BROWSER_NULL_IDENTITY_CORRECTED.tap",
+      "bytes": 818,
+      "sha256": "20df5ac623b040d5a385ab640a34227467f8cca9204f9284be5cbac9a5fa5726"
+    },
+    {
+      "path": "docs/orchestration/issue-54/wave8/QA_UNCHANGED_ASSERTIONS_AUTHOR_RECHECK.tap",
+      "bytes": 634,
+      "sha256": "bb47a1796112ddc559e61909491feaa9ef1737ba83d1ab3f6541a2b24758ab38"
     }
-  ]
+  ],
+  "forwardBase": "240c9d0f72528aba6975fe96e3d3fcd600021925",
+  "unchangedQaAssertionInput": {
+    "path": "../academy-wave8-qa/tests/wave8-qa/goals-adversarial.test.cjs",
+    "sha256": "9d7a81a83f4448f1875948baeae5a23a876d4fed0c0ca870c19b3160fb769271",
+    "result": "5 PASS author recheck only; independent QA pending"
+  }
 }
